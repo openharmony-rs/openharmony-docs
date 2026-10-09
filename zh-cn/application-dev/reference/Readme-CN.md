@@ -37,6 +37,7 @@
 - [Camera Kit API参考](apis-camera-kit/Readme-CN.md)
 - [Connectivity Kit API参考](apis-connectivity-kit/Readme-CN.md)
 - [Contacts Kit API参考](apis-contacts-kit/Readme-CN.md)
+- [Content Embed Kit API参考](apis-content-embed-kit/Readme-CN.md)
 - [Core File Kit API参考](apis-core-file-kit/Readme-CN.md)
 - [Crypto Architecture Kit API参考](apis-crypto-architecture-kit/Readme-CN.md)
 - [Data Protection Kit API参考](apis-data-protection-kit/Readme-CN.md)

@@ -1,11 +1,11 @@
-# USB批量传输
+# USB批量传输（ArkTS）
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: USB-->
 <!--Owner: @hwymlgitcode-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @fang-jinxu-->
 
 ## 场景介绍
 
@@ -22,7 +22,7 @@
 
 - SDK版本配置：
 
-  扩展外设管理提供的ArkTs接口，所需SDK版本为API16及以上才可使用。
+  扩展外设管理提供的ArkTS接口，所需SDK版本为API 16及以上才可使用。
 
 
 - HDC配置：
@@ -32,7 +32,7 @@
 ### 搭建环境
 
 - 在PC上安装[DevEco Studio](https://developer.huawei.com/consumer/cn/download/deveco-studio)，要求版本在4.1及以上。
-- 将public-SDK更新到API 16或以上<!--Del-->，更新SDK的具体操作可参见[更新指南](https://gitcode.com/openharmony/docs/blob/master/zh-cn/application-dev/faqs/full-sdk-switch-guide.md)<!--DelEnd-->。
+- 将public-SDK更新到API 16或以上<!--Del-->，更新SDK的具体操作可参见[更新指南](../../../../faqs/full-sdk-switch-guide.md)<!--DelEnd-->。
 - PC安装HDC工具，通过该工具可以在Windows/Linux/Mac系统上与真实设备或者模拟器进行交互。
 - 用USB线缆将搭载OpenHarmony的设备连接到PC。
 
@@ -44,7 +44,7 @@
 |-------------------------------------------------------------------------------------------------------------------|-----------------------|
 | bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, timeout ?: number): Promise&lt;number&gt;  | 批量传输。                 |
 
-更多关于设备管理和传输模式的详细接口介绍，请查阅[API参考文档](../../../../reference/apis-basic-services-kit/js-apis-usbManager.md)。
+更多关于设备管理和传输模式的详细接口介绍，请查阅[@ohos.usbManager](../../../../reference/apis-basic-services-kit/js-apis-usbManager.md)。
 
 ### 开发步骤
 
@@ -56,7 +56,7 @@
 
 1. 导入模块。
 
-   <!-- @[head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    // 导入usbManager模块
@@ -72,11 +72,18 @@
    >
    > 批量传输只能在[传输类型](../../../../reference/apis-basic-services-kit/js-apis-usbManager.md#usbendpointtransfertype18)为2的端点上进行，若不匹配会返回IO错误。
    
-   <!-- @[getDevices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[getDevices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->  
    
    ``` TypeScript
    // 获取设备列表。
-   let deviceList: usbManager.USBDevice[] = usbManager.getDevices();
+   let deviceList: usbManager.USBDevice[] = [];
+   try {
+     deviceList = usbManager.getDevices();
+   } catch (error) {
+       console.error(`USB getDevices failed: ${error}`);
+       this.logInfo_ += '\n[ERROR] USB getDevices failed: ' + JSON.stringify(error);
+   }
+   
    console.info(`deviceList: ${deviceList}`);
    this.logInfo_ += '\n[INFO] deviceList: ' + JSON.stringify(deviceList);
    if (deviceList === undefined || deviceList.length === 0) {
@@ -85,63 +92,63 @@
      return;
    }
    /*
-   deviceList结构示例
-   [
-     {
-       name: '1-1',
-       serial: '',
-       manufacturerName: '',
-       productName: '',
-       version: '',
-       vendorId: 7531,
-       productId: 2,
-       clazz: 9,
-       subClass: 0,
-       protocol: 1,
-       devAddress: 1,
-       busNum: 1,
-       configs: [
-         {
-           id: 1,
-           attributes: 224,
-           isRemoteWakeup: true,
-           isSelfPowered: true,
-           maxPower: 0,
-           name: '1-1',
-           interfaces: [
-             {
-               id: 0,
-               protocol: 0,
-               clazz: 9,
-               subClass: 0,
-               alternateSetting: 0,
-               name: '1-1',
-               endpoints: [
-                 {
-                   address: 129,
-                   attributes: 3,
-                   interval: 12,
-                   maxPacketSize: 4,
-                   direction: 128,
-                   number: 1,
-                   type: 3,
-                   interfaceId: 0,
-                 }
-               ]
-             }
-           ]
-         }
-       ]
-     }
-   ]
-   */
+     deviceList结构示例
+     [
+       {
+         name: '1-1',
+         serial: '',
+         manufacturerName: '',
+         productName: '',
+         version: '',
+         vendorId: 7531,
+         productId: 2,
+         clazz: 9,
+         subClass: 0,
+         protocol: 1,
+         devAddress: 1,
+         busNum: 1,
+         configs: [
+           {
+             id: 1,
+             attributes: 224,
+             isRemoteWakeup: true,
+             isSelfPowered: true,
+             maxPower: 0,
+             name: '1-1',
+             interfaces: [
+               {
+                 id: 0,
+                 protocol: 0,
+                 clazz: 9,
+                 subClass: 0,
+                 alternateSetting: 0,
+                 name: '1-1',
+                 endpoints: [
+                   {
+                     address: 129,
+                     attributes: 3,
+                     interval: 12,
+                     maxPacketSize: 4,
+                     direction: 128,
+                     number: 1,
+                     type: 3,
+                     interfaceId: 0,
+                   }
+                 ]
+               }
+             ]
+           }
+         ]
+       }
+     ]
+    */
    this.deviceList_ = deviceList;
    ```
 
 
 3. 获取设备操作权限。
 
-   <!-- @[requestRight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[requestRight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    if (this.deviceList_ === undefined || this.deviceList_.length === 0) {
@@ -173,28 +180,57 @@
      return;
    }
    let deviceList: usbManager.USBDevice[] = this.deviceList_;
-   if (!usbManager.hasRight(deviceList[0]?.name)) {
-     console.error('permission denied');
-     this.logInfo_ += '\n[ERROR] permission denied';
-     return;
+   try {
+     if (!usbManager.hasRight(deviceList[0]?.name)) {
+       console.error('permission denied');
+       this.logInfo_ += '\n[ERROR] permission denied';
+       return;
+     }
+     // 打开设备，获取数据传输通道。
+     let pipe: usbManager.USBDevicePipe = usbManager.connectDevice(deviceList[0]);
+     if (!pipe) {
+       console.error('connectDevice failed, pipe is undefined');
+       this.logInfo_ += '\n[ERROR] connectDevice failed, pipe is undefined';
+       return;
+     }
+     if (!deviceList?.[0]?.configs?.[0]?.interfaces?.[0]) {
+       console.error('invalid interface');
+       this.logInfo_ += '\n[ERROR] invalid interface';
+       return;
+     }
+     let interface1: usbManager.USBInterface = deviceList?.[0]?.configs?.[0]?.interfaces?.[0];
+     /*
+       打开对应接口，在设备信息（deviceList）中选取对应的interface。
+       interface1为设备配置中的一个接口。
+       开关关闭时调用claimInterface（共享式占用，返回0成功），
+       开关打开时调用claimInterfaceExclusive（独占式占用，失败抛出BusinessError）。
+      */
+     if (this.isExclusiveClaim_) {
+       usbManager.claimInterfaceExclusive(pipe, interface1, true, (conflict: usbManager.InterfaceConflictInfo) => {
+         // 其他应用claim同一接口时的异步冲突通知
+         const conflictMsg = `busNum = ${conflict.busNum}, devAddr = ${conflict.devAddr}, ` +
+           `interfaceId = ${conflict.interfaceId}`;
+         console.info(`interface conflict: ${conflictMsg}`);
+         this.logInfo_ += `\n[INFO] interface conflict: ${conflictMsg}`;
+       });
+       console.info('claimInterfaceExclusive success');
+       this.logInfo_ += '\n[INFO] claimInterfaceExclusive success';
+     } else {
+       let claimInterfaceResult: number = usbManager.claimInterface(pipe, interface1, true);
+       if (claimInterfaceResult !== 0) {
+         console.error(`claimInterface error = ${claimInterfaceResult}`);
+         this.logInfo_ += '\n[ERROR] claimInterface error = ' + JSON.stringify(claimInterfaceResult);
+         return;
+       }
+     }
+     this.pipe_ = pipe;
+     this.interface_ = interface1;
+     console.info('open device success');
+     this.logInfo_ += '\n[INFO] open device success';
+   } catch (error) {
+     console.error(`USB hasRight failed: ${error}`);
+     this.logInfo_ += '\n[ERROR] USB hasRight failed: ' + JSON.stringify(error);
    }
-   // 打开设备，获取数据传输通道。
-   let pipe: usbManager.USBDevicePipe = usbManager.connectDevice(deviceList[0]);
-   if (!deviceList?.[0]?.configs?.[0]?.interfaces?.[0]) {
-     console.error('invalid interface');
-     this.logInfo_ += '\n[ERROR] invalid interface';
-     return;
-   }
-   let interface1: usbManager.USBInterface = deviceList?.[0]?.configs?.[0]?.interfaces?.[0];
-   /*
-    打开对应接口，在设备信息（deviceList）中选取对应的interface。
-   interface1为设备配置中的一个接口。
-   */
-   usbManager.claimInterface(pipe, interface1, true);
-   this.pipe_ = pipe;
-   this.interface_ = interface1;
-   console.info('open device success');
-   this.logInfo_ += '\n[INFO] open device success';
    ```
 
 
@@ -204,9 +240,9 @@
    >
    > 在数据传输前建议先获取interface所属endpoint的type，通过type判断interface是否支持所需的传输类型。
    >
-   > 若调用传输接口失败，请先确认设备interface是否支持[模式切换](../../../../reference/apis-basic-services-kit/js-apis-usbManager.md#usbinterface)。若alternateSetting支持切换设置，可在传输前调用[usbManager.setInterface](../../../../reference/apis-basic-services-kit/js-apis-usbManager.md#usbmanagersetinterface)重新设置interface，使端点和传输类型匹配，保证端点正常通信。
+   > 若调用传输接口失败，请先确认设备interface是否支持模式切换。若alternateSetting支持切换设置，可在传输前调用[usbManager.setInterface](../../../../reference/apis-basic-services-kit/js-apis-usbManager.md#usbmanagersetinterface)重新设置interface，使端点和传输类型匹配，保证端点正常通信。
 
-   <!-- @[bulkTransfer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[bulkTransfer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    if (this.pipe_ === undefined || this.interface_ === undefined) {
@@ -217,9 +253,9 @@
    let pipe: usbManager.USBDevicePipe = this.pipe_;
    let interface1: usbManager.USBInterface = this.interface_;
    /*
-   读取数据，在device信息中选取对应数据接收的endpoint来做数据传输
-   （endpoint.direction == 0x80）；dataUint8Array是要读取的数据，类型为Uint8Array。
-   */
+     读取数据，在device信息中选取对应数据接收的endpoint来做数据传输
+    （endpoint.direction == 0x80）；dataUint8Array是要读取的数据，类型为Uint8Array。
+    */
    let inEndpoint: usbManager.USBEndpoint = interface1.endpoints?.[1];
    let outEndpoint: usbManager.USBEndpoint = interface1.endpoints?.[0];
    let dataUint8Array: Uint8Array = new Uint8Array(1024);
@@ -268,8 +304,14 @@
    }
    let pipe: usbManager.USBDevicePipe = this.pipe_;
    let interface1: usbManager.USBInterface = this.interface_;
-   usbManager.releaseInterface(pipe, interface1);
-   usbManager.closePipe(pipe);
+   try {
+     usbManager.releaseInterface(pipe, interface1);
+     usbManager.closePipe(pipe);
+   } catch (error) {
+     console.error(`failed: ${error}`);
+     this.logInfo_ += '\n[ERROR] failed: ' + JSON.stringify(error);
+   }
+   
    this.pipe_ = undefined;
    this.interface_ = undefined;
    console.info('close device success');

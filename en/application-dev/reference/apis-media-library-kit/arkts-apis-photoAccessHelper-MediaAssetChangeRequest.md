@@ -1,10 +1,12 @@
 # Class (MediaAssetChangeRequest)
+
 <!--Kit: Media Library Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @yixiaoff-->
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=b4558baf2653dbc4e06627859cd656768663a602 translatedAt=2026-06-23T07:32:36.264Z pushedAt=2026-06-23T09:25:46.746Z -->
 
 MediaAssetChangeRequest implements [MediaChangeRequest](arkts-apis-photoAccessHelper-i.md#mediachangerequest11).
 
@@ -20,6 +22,18 @@ MediaAssetChangeRequest represents a media asset change request.
 ```ts
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 ```
+
+## Attributes
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| Name          | Type   | Read-Only  | Optional | Description  |
+| ------------ | ------ | ---- | ---- | ------- |
+| comment<sup>23+</sup>    | string | Yes   | No  | Used to verify the [MediaChangeRequest](arkts-apis-photoAccessHelper-i.md#mediachangerequest11) type.<br>If a class (such as **MediaAssetChangeRequest**) object can be accessed, it is an implementation class of **MediaChangeRequest**.|
 
 ## constructor<sup>11+</sup>
 
@@ -72,7 +86,7 @@ static createImageAssetRequest(context: Context, fileUri: string): MediaAssetCha
 
 Creates an image asset change request.
 
-Use **fileUri** to specify the data source of the asset to be created. For details, see [FileUri](../apis-core-file-kit/js-apis-file-fileuri.md).
+For details about data source of the asset to be created, see [@ohos.file.fileuri (File URI)](../apis-core-file-kit/js-apis-file-fileuri.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -126,7 +140,7 @@ static createVideoAssetRequest(context: Context, fileUri: string): MediaAssetCha
 
 Creates a video asset change request.
 
-Use **fileUri** to specify the data source of the asset to be created. For details, see [FileUri](../apis-core-file-kit/js-apis-file-fileuri.md).
+For details about data source of the asset to be created, see [@ohos.file.fileuri (File URI)](../apis-core-file-kit/js-apis-file-fileuri.md).
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -235,7 +249,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 static deleteAssets(context: Context, assets: Array&lt;PhotoAsset&gt;): Promise&lt;void&gt;
 
-Deletes media assets. The deleted assets are moved to the trash. This API uses a promise to return the result.
+Deletes a media asset through a **PhotoAsset** object. The deleted asset will enter the recycle bin. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.WRITE_IMAGEVIDEO
 
@@ -293,7 +307,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 static deleteAssets(context: Context, uriList: Array&lt;string&gt;): Promise&lt;void&gt;
 
-Deletes media assets. The deleted assets are moved to the trash. This API uses a promise to return the result.
+Deletes a media asset by URI. The deleted asset will enter the recycle bin. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.WRITE_IMAGEVIDEO
 
@@ -414,8 +428,11 @@ Sets the media asset title.
 | title | string | Yes  | Title to set.|
 
 The title must meet the following requirements:
+
 - It must not contain a file name extension.
+
 - The total length of the file name must be between 1 and 255 characters.
+
 - It must not contain any invalid characters, which are:<br> . \ / : * ? " ' ` < > | { } [ ]
 
 **Error codes**
@@ -514,7 +531,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 addResource(type: ResourceType, fileUri: string): void
 
-Adds a resource using [fileUri](../apis-core-file-kit/js-apis-file-fileuri.md).
+Adds resources from the application sandbox based on the file URI. For details about the data source, see [@ohos.file.fileuri (File URI)](../apis-core-file-kit/js-apis-file-fileuri.md).
 
 > **NOTE**
 >
@@ -655,7 +672,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, asse
 
 saveCameraPhoto(imageFileType: ImageFileType): void
 
-Saves the photo taken by the camera.
+Saves a captured photo. The type to save must be specified.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 

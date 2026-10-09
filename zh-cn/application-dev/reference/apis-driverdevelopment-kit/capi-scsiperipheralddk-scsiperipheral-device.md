@@ -1,10 +1,10 @@
 # ScsiPeripheral_Device
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
 
 ```c
 typedef struct ScsiPeripheral_Device ScsiPeripheral_Device
@@ -12,7 +12,7 @@ typedef struct ScsiPeripheral_Device ScsiPeripheral_Device
 
 ## 概述
 
-不透明的SCSI设备结构体。
+不透明的SCSI设备结构体，用于表示与SCSI外设交互的设备句柄。
 
 **起始版本：** 18
 

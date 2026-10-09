@@ -1,8 +1,8 @@
 # DisplaySoloist_ExpectedRateRange
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hudi33-->
-<!--Designer: @hudi33-->
+<!--Owner: @wh_qwe-->
+<!--Designer: @wh_qwe-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
 
@@ -12,7 +12,7 @@ typedef struct {...} DisplaySoloist_ExpectedRateRange
 
 ## 概述
 
-提供期望帧率范围结构体。
+期望帧率范围结构体，用于设置DisplaySoloist（可变帧率独立线程绘制）的期望帧率范围。设置的期望帧率范围将作为系统调度的参考，系统会尽量在此范围内调整绘制帧率。
 
 **起始版本：** 12
 
@@ -26,37 +26,6 @@ typedef struct {...} DisplaySoloist_ExpectedRateRange
 
 | 名称 | 描述 |
 | -- | -- |
-| int32_t min | 期望帧率范围最小值，取值范围为[0,120]。 |
-| int32_t max | 期望帧率范围最大值，取值范围为[0,120]。 |
-| int32_t expected | 期望帧率，取值范围为[0,120]。 |
-
-
-### 成员函数
-
-| 名称 | typedef关键字 | 描述 |
-| -- | -- | -- |
-| [typedef void (\*OH_DisplaySoloist_FrameCallback)(long long timestamp, long long targetTimestamp, void* data)](#oh_displaysoloist_framecallback) | OH_DisplaySoloist_FrameCallback() | OH_DisplaySoloist回调函数类型。<br>**起始版本：** 12 |
-
-## 成员函数说明
-
-### OH_DisplaySoloist_FrameCallback()
-
-```c
-typedef void (*OH_DisplaySoloist_FrameCallback)(long long timestamp, long long targetTimestamp, void* data)
-```
-
-**描述**
-
-OH_DisplaySoloist回调函数类型。
-
-**起始版本：** 12
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| long long timestamp | 当前帧VSync时间戳。 |
-|  long long targetTimestamp | 预期的下一帧VSync时间戳。 |
-|  void* data | 用户自定义数据。 |
-
-
+| int32_t min | 期望的最小帧率，单位为帧/秒（fps），取值范围为[0, 设备支持的最大刷新率]。 |
+| int32_t max | 期望的最大帧率，单位为帧/秒（fps），取值范围为[min, 设备支持的最大刷新率]。 |
+| int32_t expected | 期望的目标帧率，单位为帧/秒（fps），取值范围为[min, max]。 |

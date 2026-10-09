@@ -1,10 +1,10 @@
 # MDM Kit<!--mdm-api-->
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 - ArkTS APIs<!--mdm-arkts-->
   - [@ohos.enterprise.accountManager (Account Management)](js-apis-enterprise-accountManager.md)
@@ -25,12 +25,12 @@
   - [@ohos.enterprise.usbManager (USB Management)](js-apis-enterprise-usbManager.md)
   - [@ohos.enterprise.wifiManager (Wi-Fi Management)](js-apis-enterprise-wifiManager.md)
   - [@ohos.enterprise.EnterpriseAdminExtensionAbility (EnterpriseAdminExtensionAbility)](js-apis-EnterpriseAdminExtensionAbility.md)
-  - [@ohos.enterprise.telephony (Telephony Management)](js-apis-enterprise-telephonyManager.md)
+  - [@ohos.enterprise.telephonyManager (Telephony Management)](js-apis-enterprise-telephonyManager.md)
   <!--Del-->
   - [@ohos.enterprise.accountManager (Account Management) (System API)](js-apis-enterprise-accountManager-sys.md)
   - [@ohos.enterprise.adminManager (Administrator Permission Management) (System API)](js-apis-enterprise-adminManager-sys.md)
   - [@ohos.enterprise.applicationManager (Application Management) (System API)](js-apis-enterprise-applicationManager-sys.md)
-  - [@ohos.enterprise.bluetoothManager (Bluetooth Management) (System Interface)](js-apis-enterprise-bluetoothManager-sys.md)
+  - [@ohos.enterprise.bluetoothManager (Bluetooth Management) (System API)](js-apis-enterprise-bluetoothManager-sys.md)
   - [@ohos.enterprise.browser (Browser Management) (System API)](js-apis-enterprise-browser-sys.md)
   - [@ohos.enterprise.bundleManager (Bundle Management) (System API)](js-apis-enterprise-bundleManager-sys.md)
   - [@ohos.enterprise.dateTimeManager (System Time Management) (System API)](js-apis-enterprise-dateTimeManager-sys.md)

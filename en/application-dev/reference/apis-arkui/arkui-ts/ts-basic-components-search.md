@@ -1,18 +1,20 @@
 #  Search
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @kangshihui-->
+<!--Owner: @jiaxiaguang-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The **Search** component provides an area for users to enter search queries.
+The **Search** component supports configurations such as the search icon, clear button, search button, placeholder text, and custom keyboard. It is applicable to scenarios such as the text box for browser search and in-application search.
 
 > **NOTE**
 >
-> This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> This component supports only the single text style. To implement the rich text style, you are advised to use the [RichEditor](ts-basic-components-richeditor.md) component.
+> - This component supports plain text only. For rich text, use the [RichEditor](ts-basic-components-richeditor.md) component.
+>
+> - To set whether to clear the text selection and handle when the user touches outside the text component, use the [setTextSelectionClearPolicy](../arkts-apis-uicontext-uicontext.md#settextselectionclearpolicy) API.
 
 ## Child Components
 
@@ -30,7 +32,7 @@ Search(options?: SearchOptions)
 
 | Name     | Type        | Mandatory| Description       |
 | ----------- | ------------- | ---- | ------------- |
-| options       | [SearchOptions](#searchoptions18)| No  | Initialization options of the **Search** component.|
+| options       | [SearchOptions](#searchoptions18)| No  | Initialization options of the **Search** component. This parameter is passed when you need to set the initial value, placeholder text, icon, or controller of the search box. If this parameter is not passed, the default configuration is used.|
 
 ## SearchOptions<sup>18+</sup>
 
@@ -42,14 +44,17 @@ Describes the initialization options of the **Search** component.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+<!--Table: 15%; 15%; 10%; 10%; 50%-->
 | Name     | Type        | Read-Only| Optional| Description       |
 | ----------- | ------------- | ---- | ---- | ------------- |
-| value<sup>8+</sup>       | [ResourceStr](ts-types.md#resourcestr)   | No  | Yes| Sets the text input in the search text box.<br>Since API version 10, this parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>Since API version 18, this parameter supports two-way binding through [!!](../../../ui/state-management/arkts-new-binding.md#two-way-binding-between-built-in-component-parameters).<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>The Resource type is supported since API version 20.|
-| placeholder<sup>8+</sup> | [ResourceStr](ts-types.md#resourcestr) | No  | Yes| Text displayed when there is no input.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| icon<sup>8+</sup>        | string                                               | No  | Yes| Path to the search icon. By default, the system search icon is used.<br>**NOTE**<br>The icon data source supports both [relative paths](./ts-basic-components-image.md#example-25-displaying-an-image-using-a-relative-path) and network images.<br>- The supported formats include PNG, JPG, BMP, SVG, GIF, pixelmap, and HEIF.<br>- The Base64 string is supported in the following format: data:image/[png\|jpeg\|bmp\|webp\|heif];base64,[base64 data], where *[base64 data]* is a Base64 string.<br>If this attribute and the **searchIcon** attribute are both set, the **searchIcon** attribute takes precedence.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| controller<sup>8+</sup>  | [SearchController](#searchcontroller) | No  | Yes| Controller of the **Search** component.<br>**Atomic service API**: This API can be used in atomic services since API version 11.  |
+| value<sup>8+</sup>       | [ResourceStr](ts-types.md#resourcestr)   | No  | Yes| Sets the text input in the search text box. This parameter is passed when you need to set the initial text content of the search box. If this parameter is not passed, the search box is empty.<br>Since API version 10, this parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>Since API version 18, this parameter supports two-way binding through [!!](../../../ui/state-management/arkts-new-binding.md#two-way-binding-between-built-in-component-parameters).<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>The Resource type is supported since API version 20.|
+| placeholder<sup>8+</sup> | [ResourceStr](ts-types.md#resourcestr) | No  | Yes| Text displayed when there is no input. This parameter is passed when you need to customize the placeholder text. If this parameter is not passed, the placeholder text is not displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| icon<sup>8+</sup>        | string                                               | No  | Yes| Path to the search icon. By default, the system search icon is used.<br>**NOTE**<br>The icon data source supports both [relative paths](./ts-basic-components-image.md#example-25-displaying-an-image-using-a-relative-path) and network images.<br>- The supported formats include PNG, JPG, BMP, SVG, GIF, pixelmap, and HEIF.<br>- The Base64 string is supported in the following format: The format is **data:image/[png\|jpeg\|bmp\|webp\|heif];base64,[base64 data]**, where **[base64 data]** is a Base64 string.<br>If this attribute and the **searchIcon** attribute are both set, the **searchIcon** attribute takes precedence.<br>The default icon size on wearable devices is 16 vp.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| controller<sup>8+</sup>  | [SearchController](#searchcontroller) | No  | Yes| Controller of the **Search** component. This parameter is passed when you need to use the controller to operate the search box (for example, setting the cursor position or stopping editing). If this parameter is not passed, controller-related methods cannot be used.<br>**Atomic service API**: This API can be used in atomic services since API version 11.  |
 
 ## Attributes
 
@@ -74,13 +79,13 @@ The default font size on wearable devices is 18 fp.
 | Name| Type                                                 | Mandatory| Description                        |
 | ------ | ----------------------------------------------------- | ---- | ---------------------------- |
 | value  | [ResourceStr](ts-types.md#resourcestr)                | Yes  | Text on the search button located next to the search text box.<br>The Resource type is supported since API version 20.|
-| option | [SearchButtonOptions](#searchbuttonoptions10) | No  | Text style of the search button located next to the search text box.<br>Default value:<br>{<br>fontSize: '16fp',<br>fontColor: '#ff3f97e9'<br>}         |
+| option | [SearchButtonOptions](#searchbuttonoptions10) | No  | Style of the search button located next to the search box.<br>Default value:<br>{<br>fontSize: '16fp',<br>fontColor: '#ff3f97e9'<br>}         |
 
 ### placeholderColor
 
 placeholderColor(value: ResourceColor)
 
-Sets the placeholder text color. The default value is '#99ffffff' on wearable devices.
+Sets the placeholder text color. If this API is not used, the default placeholder text color is **'#99182431'** (dark gray, with 60% opacity) and **'#99ffffff'** (white, with 60% opacity) on wearables.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -90,13 +95,19 @@ Sets the placeholder text color. The default value is '#99ffffff' on wearable de
 
 | Name| Type                                      | Mandatory| Description                                            |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Placeholder text color.<br>Default value: **'#99182431'**|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Placeholder text color.|
 
 ### placeholderFont
 
 placeholderFont(value?: Font)
 
 Placeholder text style, including the font size, font weight, font family, and font style.
+
+The default font size on wearable devices is 18 fp.
+
+> **NOTE**
+>
+> You can use [loadFontSync](../../apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync) to register custom fonts.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -106,11 +117,7 @@ Placeholder text style, including the font size, font weight, font family, and f
 
 | Name| Type                    | Mandatory| Description                 |
 | ------ | ------------------------ | ---- | --------------------- |
-| value  | [Font](ts-types.md#font) | No  | Placeholder text style.|
-
-> **NOTE**
->
-> You can use [loadFontSync](../../apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync) to register custom fonts.
+| value  | [Font](ts-types.md#font) | No  | Placeholder text style. If no value is passed, the default font style is used.|
 
 ### textFont
 
@@ -120,6 +127,10 @@ Style of the text entered in the search box, including the font size, font weigh
 
 The default font size on wearable devices is 18 fp.
 
+> **NOTE**
+>
+> You can use [loadFontSync](../../apis-arkgraphics2d/js-apis-graphics-text.md#loadfontsync) to register custom fonts.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -128,13 +139,17 @@ The default font size on wearable devices is 18 fp.
 
 | Name| Type                    | Mandatory| Description                  |
 | ------ | ------------------------ | ---- | ---------------------- |
-| value  | [Font](ts-types.md#font) | No  | Text font of the search text box.|
+| value  | [Font](ts-types.md#font) | No  | Text font of the search text box. If no value is passed, the default font style is used.|
 
 ### textAlign<sup>9+</sup>
 
 textAlign(value: TextAlign)
 
-Sets the text alignment mode in the search text box. Currently, the following alignment modes are supported: TextAlign.Start, TextAlign.Center, TextAlign.End, TextAlign.LEFT and TextAlign.RIGHT. **TextAlign.JUSTIFY** behaves the same as **TextAlign.Start**.
+Sets the text alignment mode in the search text box. Currently, the following alignment modes are supported: **TextAlign.Start**, **TextAlign.Center**, **TextAlign.End**, **TextAlign.LEFT**, and **TextAlign.RIGHT**. **TextAlign.JUSTIFY** behaves the same as **TextAlign.Start**. If this API is not used, the default alignment mode is **TextAlign.Start**.
+
+>  **NOTE** 
+>
+>  **textAlign** only adjusts the overall text layout and does not affect character display order. For character display order adjustment, see [Bidirectional Text Layout and Alignment](../../../ui/arkts-internationalization.md#bidirectional-text-layout-and-alignment).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -144,19 +159,17 @@ Sets the text alignment mode in the search text box. Currently, the following al
 
 | Name| Type                                       | Mandatory| Description                                                  |
 | ------ | ------------------------------------------- | ---- | ------------------------------------------------------ |
-| value  | [TextAlign](ts-appendix-enums.md#textalign) | Yes  | Text alignment mode in the search text box.<br>Default value: **TextAlign.Start**|
-
->  **NOTE** 
->
->  **textAlign** only adjusts the overall text layout and does not affect character display order. For character display order adjustment, see [Bidirectional Text Layout and Alignment](../../../ui/arkts-internationalization.md#bidirectional-text-layout-and-alignment).
+| value  | [TextAlign](ts-appendix-enums.md#textalign) | Yes  | Text alignment mode in the search text box.|
 
 ### textDirection<sup>23+</sup>
 
 textDirection(direction: TextDirection | undefined)
 
-Specifies the text layout direction. If this parameter is not set, the default text layout direction follows the component layout direction.
+Specifies the text layout direction. If this API is not used, the default text layout direction follows the component layout direction.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -164,13 +177,61 @@ Specifies the text layout direction. If this parameter is not set, the default t
 
 | Name| Type                                       | Mandatory| Description                                                      |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
-| direction  | [TextDirection](ts-text-common.md#textdirection22) \| undefined | Yes  | Enumerates the text directions.<br>If this parameter is set to **undefined**, the text layout direction follows the component layout direction according to **TextDirection.DEFAULT**.|
+| direction  | [TextDirection](ts-text-common.md#textdirection22) \| undefined | Yes  | Defines the text layout direction.<br>If this parameter is set to **undefined**, the text layout direction follows the component layout direction as defined by **TextDirection.DEFAULT**.|
+
+### strokeJoinStyle
+
+strokeJoinStyle(strokeJoinStyle: StrokeJoinStyle | undefined)
+
+Defines the stroke join style of the text. This parameter is valid only when **strokeWidth** is used to set the text stroke.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name          | Type            | Mandatory| Description                                           |
+| ---------------- | ------- | ---- | ----------------------------------------------- |
+| strokeJoinStyle         | [StrokeJoinStyle](ts-text-common.md#strokejoinstyle) \| undefined | Yes| Text stroke join style.<br>If the value is **undefined**, the value **StrokeJoinStyle.MITER_JOIN** is used. For details, see [StrokeJoinStyle](ts-text-common.md#strokejoinstyle). The stroke join style is a sharp angle.|
+
+### shaderStyle
+
+shaderStyle(shader: ShaderStyle | undefined)
+
+Sets the text shader effect, such as linear gradient and radial gradient. If this API is not used, there is no gradient effect by default.
+
+>**NOTE**
+>
+> - If both **shaderStyle** and [strokeWidth](#strokewidth20) are set, **shaderStyle** does not take effect.
+>
+> - If both **shaderStyle** and [fontColor](#fontcolor10) are set, **fontColor** does not take effect.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name          | Type            | Mandatory| Description                                           |
+| ---------------- | ------- | ---- | ----------------------------------------------- |
+| shader         | [ShaderStyle](ts-text-common.md#shaderstyle20) \| undefined | Yes| Text shader effect.<br>**NOTE**<br>If both **shaderStyle** and [strokeWidth](#strokewidth20) are set, **shaderStyle** does not take effect.<br>If both **shaderStyle** and [fontColor](#fontcolor10) are set, **fontColor** does not take effect.<br>If the value is **undefined**, no gradient effect is applied.|
 
 ### copyOption<sup>9+</sup>
 
 copyOption(value: CopyOptions)
 
-Sets whether copy and paste is allowed. When CopyOptions.None is set, the text in the current search cannot be copied, cut, translated, shared, searched, or written. Paste and select all are supported.
+Sets whether the input text can be copied. If this API is not used, **CopyOptions.LocalDevice** is supported by default.
+
+If this attribute is set to **CopyOptions.None**, the **Search** component supports paste and select-all operations, while other operations such as copy, cut, translate, and share, as well as the Celia Writer assisted writing feature, are disabled.
 
 Dragging is not allowed when **CopyOptions.None** is set.
 
@@ -182,17 +243,19 @@ Dragging is not allowed when **CopyOptions.None** is set.
 
 | Name| Type                                            | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [CopyOptions](ts-appendix-enums.md#copyoptions9) | Yes  | Whether copy and paste is allowed.<br>Default value: **CopyOptions.LocalDevice**|
+| value  | [CopyOptions](ts-appendix-enums.md#copyoptions9) | Yes  | Whether the input text can be copied.<br>**NOTE**<br>If the value of **copyOption** is not **CopyOptions.LocalDevice** or **CopyOptions.CROSS_DEVICE**, [enableSelectedDataDetector](#enableselecteddatadetector22) does not take effect.|
 
 ### searchIcon<sup>10+</sup>
 
 searchIcon(value: IconOptions | SymbolGlyphModifier)
 
-Sets the style of the search icon on the left.
+Sets the style of the search icon on the left. If this parameter and the **icon** parameter are set at the same time, this parameter takes precedence.
 
 The default icon size on wearable devices is 16 vp.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -200,17 +263,17 @@ The default icon size on wearable devices is 16 vp.
 
 | Name| Type                                 | Mandatory| Description              |
 | ------ | ------------------------------------- | ---- | ------------------ |
-| value  | [IconOptions](#iconoptions10) \| [SymbolGlyphModifier](ts-universal-attributes-text-style.md#symbolglyphmodifier12) | Yes  | Style of the search icon on the left.<!--RP1--><br>Default value in light mode:<br>{<br>size: '16vp',<br>color: '#99182431',<br>src: ' '<br>}<br>Default value in dark mode:<br>{<br>size: '16vp',<br>color: '#99ffffff',<br>src: ' '<br>} <!--RP1End-->|
+| value  | [IconOptions](#iconoptions10) \| [SymbolGlyphModifier](ts-universal-attributes-text-style.md#symbolglyphmodifier12)| Yes  | Style of the search icon on the left. If this parameter and the **icon** parameter are set at the same time, this parameter takes precedence.<!--RP1--><br>Default value in light mode:<br>{<br>size: '16vp',<br>color: '#99182431',<br>src: ' '<br>}<br>Default value in dark mode:<br>{<br>size: '16vp',<br>color: '#99ffffff',<br>src: ' '<br>} <!--RP1End-->|
 
 ### cancelButton<sup>10+</sup>
 
 cancelButton(value: CancelButtonOptions | CancelButtonSymbolOptions)
 
-Sets the style of the Cancel button on the right. For details, see [Example 2: Setting Search and Delete Icons](#example-2-setting-search-and-delete-icons) and [Example 11: Setting a Custom Symbol-Type Cancel Button](#example-11-setting-a-custom-symbol-type-cancel-button).
-
-The default icon size on wearable devices is 18 fp.
+Sets the style of the cancel button on the right. For details, see [Example 2: Setting Search and Delete Icons](#example-2-setting-search-and-delete-icons) and [Example 11: Setting a Custom Symbol-Type Cancel Button](#example-11-setting-a-custom-symbol-type-cancel-button). If this API is not used, the default style of the cancel button is **CancelButtonStyle.INPUT** (input style), the icon size is 16 vp (18 fp on wearables), and the color is **'#99ffffff'** (white, with 60% opacity).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -218,15 +281,21 @@ The default icon size on wearable devices is 18 fp.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [CancelButtonOptions](#cancelbuttonoptions12) \| [CancelButtonSymbolOptions](#cancelbuttonsymboloptions12) | Yes  | Style of the Cancel button on the right.<br>Default value:<br>{<br>style: CancelButtonStyle.INPUT,<br>icon:&nbsp;{<br>size: '16vp',<br>color: '#99ffffff',<br>src: ' '<br>}<br>}<br>When **style** is set to **CancelButtonStyle.CONSTANT**, the Cancel button is always displayed.|
+| value  | [CancelButtonOptions](#cancelbuttonoptions12) \| [CancelButtonSymbolOptions](#cancelbuttonsymboloptions12)| Yes  | Style of the cancel button on the right. When style is set to **CancelButtonStyle.CONSTANT**, the cancel button is displayed in a default style.|
 
 ### fontColor<sup>10+</sup>
 
 fontColor(value: ResourceColor)
 
-Sets the font color of the input text. fontSize, fontStyle, fontWeight, and fontFamily are set in the [textFont](#textfont) attribute.
+Sets the font color of the input text. If this API is not set, the default font color of the input text is **'#FF182431'** (dark gray). On wearables, the default font color is **'#dbffffff'** (white, with 86% opacity). **fontSize**, **fontStyle**, **fontWeight**, and **fontFamily** are set in the [textFont](#textfont) attribute.
+
+> **NOTE**
+>
+> If both **fontColor** and [shaderStyle](#shaderstyle) are set, **fontColor** does not take effect.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -234,15 +303,21 @@ Sets the font color of the input text. fontSize, fontStyle, fontWeight, and font
 
 | Name| Type                                      | Mandatory| Description                                           |
 | ------ | ------------------------------------------ | ---- | ----------------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Font color of the input text.<br>Default value: '#FF182431'<br>Default value on wearable devices: '#dbffffff'|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Font color of the input text.<br>**NOTE**<br>If both **fontColor** and [shaderStyle](#shaderstyle) are set, **fontColor** does not take effect.|
 
 ### caretStyle<sup>10+</sup>
 
 caretStyle(value: CaretStyle)
 
-Sets the caret style.
+Sets the caret style. If this API is not used, the default caret width is 2.0 vp and the color is **'#007DFF'** (blue).
+
+>  **NOTE**
+>
+> Since API version 12, this API can be used to set the text handle color, which is the same as the caret color.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -250,20 +325,19 @@ Sets the caret style.
 
 | Name| Type                               | Mandatory| Description                                                        |
 | ------ | ----------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [CaretStyle](ts-text-common.md#caretstyle10) | Yes  | Caret style.<br>Default value:<br>{<br>width: '2.0vp',<br>color: '#007DFF'<br>} |
-
->  **NOTE**    
->   Since API version 12, this API can be used to set the text handle color, which is the same as the caret color.
+| value  | [CaretStyle](ts-text-common.md#caretstyle10) | Yes  | Caret style.|
 
 ### enableKeyboardOnFocus<sup>10+</sup>
 
 enableKeyboardOnFocus(value: boolean)
 
-Sets whether to enable the input method when the **Search** component obtains focus in a way other than clicking.
+Sets whether to pop up the soft keyboard when the **Search** component obtains focus in a way other than clicking. If this API is not used, the soft keyboard is displayed by default.
 
-Since API version 10, the **Search** component brings up the keyboard by default when it obtains focus.
+Since API version 10, the **Search** component is bound to the input method by default when it obtains focus.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -271,15 +345,17 @@ Since API version 10, the **Search** component brings up the keyboard by default
 
 | Name| Type   | Mandatory| Description                                           |
 | ------ | ------- | ---- | ----------------------------------------------- |
-| value  | boolean | Yes  | Whether to enable the input method when the component obtains focus in a way other than clicking.<br>**true** to bring up the keyboard, **false** otherwise.<br>Default value: **true**|
+| value  | boolean | Yes  | Whether to automatically pop up the soft keyboard when the **Search** component gains focus.<br>**true**: The soft keyboard pops up. **false**: The soft keyboard does not pop up.|
 
 ### selectionMenuHidden<sup>10+</sup>
 
 selectionMenuHidden(value: boolean)
 
-Sets whether to hide the system text selection menu.
+Sets whether to hide the system text selection menu. If this API is not used, the system text selection menu is displayed by default.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -287,7 +363,7 @@ Sets whether to hide the system text selection menu.
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | boolean | Yes  | Whether to hide the system text selection menu.<br>**true**: Tapping, long-pressing, double-tapping, triple-tapping, or right-clicking the text box will not trigger the system text selection menu.<br>**false**: Tapping, long-pressing, double-tapping, triple-tapping, or right-clicking the text box will trigger the system text selection menu.<br>Default value: **false**|
+| value  | boolean | Yes  | Whether to hide the system text selection menu.<br>**true**: The system text selection menu is hidden when a user clicks the text box cursor, long-presses the text box, double-taps the text box, triple-taps the text box, or right-clicks the text box.<br>**false**: The system text selection menu is displayed.|
 
 ### customKeyboard<sup>10+</sup>
 
@@ -299,13 +375,15 @@ When a custom keyboard is set, activating the text box opens the specified custo
 
 The custom keyboard's height can be set through the **height** attribute of the custom component's root node, and its width is fixed at the default value.
 
-The custom keyboard is presented by overlaying the original screen. It is not compressed or lifted if avoid mode is not enabled or avoidance is not needed for the text box.
+The custom keyboard is displayed by overlaying the original UI. The original application screen is not compressed or lifted if avoidance mode is not enabled or the text box does not need to be avoided.
 
-The custom keyboard cannot obtain the focus, but it blocks gesture events.
+The custom keyboard cannot obtain focus, but it blocks gesture events.
 
-By default, the custom keyboard is closed when the input component loses the focus. You can also use the [stopEditing](#stopediting10) API to close the keyboard.
+By default, the custom keyboard is closed when the input component loses focus. You can also use the [stopEditing](#stopediting10) API to close the keyboard.
 
 When setting a custom keyboard, you can bind the [onKeyPreIme](ts-universal-events-key.md#onkeypreime12) event to prevent input from the physical keyboard.
+
+From API version 23, the [setCustomKeyboardContinueFeature](../arkts-apis-uicontext-uicontext.md#setcustomkeyboardcontinuefeature23) API can be used to enable the continuation feature for custom keyboards. When switching between custom keyboards, the system changes the keyboard directly without triggering the close and open animations.
 
 > **NOTE**
 >
@@ -313,24 +391,32 @@ When setting a custom keyboard, you can bind the [onKeyPreIme](ts-universal-even
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name               | Type                                       | Mandatory| Description                            |
 | --------------------- | ------------------------------------------- | ---- | -------------------------------- |
-| value                 | [CustomBuilder](ts-types.md#custombuilder8)  \| [ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)<sup>22+</sup> \| undefined<sup>22+</sup> | Yes  | Custom keyboard. If the value is **undefined**, the custom keyboard is disabled.                    |
-| options<sup>12+</sup> | [KeyboardOptions](ts-basic-components-richeditor.md#keyboardoptions12)       | No  | Whether to support keyboard avoidance.|
+| value                 | [CustomBuilder](ts-types.md#custombuilder8)  \| [ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)<sup>22+</sup> \| undefined<sup>22+</sup> | Yes  | Custom keyboard. If the value is **undefined**, the custom keyboard is closed.                    |
+| options<sup>12+</sup> | [KeyboardOptions](ts-basic-components-richeditor.md#keyboardoptions12)       | No  | Whether to support keyboard avoidance. If this parameter is not passed, the default configuration is used.|
 
 ### type<sup>11+</sup>
 
 type(value: SearchType)
 
-Sets the text box type.
+Sets the text box type. If this API is not used, the default text box type is **SearchType.NORMAL** (basic input type without special restrictions).
 
 Different **SearchType** values trigger corresponding keyboard types and enforce input restrictions.
 
+> **NOTE**
+>
+> If [inputFilter](#inputfilter12) is also set and the input is not an empty string, the text filter effect attached to the **type** API will become invalid, and the filtering rules specified by **inputFilter** will take precedence.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -338,7 +424,7 @@ Different **SearchType** values trigger corresponding keyboard types and enforce
 
 | Name| Type                               | Mandatory| Description                       |
 | ------ | ----------------------------------- | ---- | -------------------------- |
-| value  | [SearchType](#searchtype11) | Yes  | Text box type.<br>Default value: SearchType.NORMAL|
+| value  | [SearchType](#searchtype11) | Yes  | Text box type.<br>If [inputFilter](#inputfilter12) is also set and the input is not an empty string, the text filter effect attached to the **type** API becomes invalid.|
 
 ### maxLength<sup>11+</sup>
 
@@ -348,21 +434,25 @@ Sets the maximum number of characters for text input. By default, there is no ma
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                               | Mandatory| Description                  |
 | ------ | ----------------------------------- | ---- | ---------------------- |
-| value  | number | Yes  | Maximum number of characters for text input.<br> If the value is less than 0, the default value is used, and there is no limit.|
+| value  | number | Yes  | Maximum number of characters for text input. The value range is [0, +∞). When the value is less than 0, the default value is used and no limit is applied.|
 
 ### enterKeyType<sup>12+</sup>
 
 enterKeyType(value: EnterKeyType)
 
-Sets the type of the Enter key.
+Sets the type of the Enter key. If this API is not used, the Enter key type of the default input method is **EnterKeyType.Search**.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -370,19 +460,25 @@ Sets the type of the Enter key.
 
 | Name| Type                                            | Mandatory| Description                                              |
 | ------ | ------------------------------------------------ | ---- | -------------------------------------------------- |
-| value  | [EnterKeyType](ts-basic-components-textinput.md#enterkeytype) | Yes  | Type of the Enter key.<br>Default value: **EnterKeyType.Search**|
+| value  | [EnterKeyType](ts-basic-components-textinput.md#enterkeytype) | Yes  | Type of the Enter key.|
 
 ### enableSelectedDataDetector<sup>22+</sup>
 
 enableSelectedDataDetector(enable: boolean | undefined)
 
-Sets whether to enable entity recognition for selected text. This API only works on devices that provide text recognition.
+Sets whether to enable entity recognition for selected text. This API only works on devices that provide text recognition. If this API is not used, entity recognition is enabled for selected text by default, all types of entities are recognized, and the AI menu is enabled by default.
 
-When **enableSelectedDataDetector** is set to **true**, all entity types are recognized by default.
+After this feature is enabled, the entities such as email addresses, phone numbers, URLs, dates, and addresses in the selection area can be recognized, and the corresponding AI menu items can be displayed in the text selection menu.
+
+When the AI menu feature is enabled, selecting text in the component allows the text selection menu to display corresponding AI menu items, including **url** (opening a link), **email** (creating an email), **phoneNumber** (making a call), **address** (navigating), and **dateTime** (creating a new event) in [TextMenuItemId](ts-text-common.md#textmenuitemid12).
+
+When the AI menu is active, the corresponding menu item is displayed only if the selected range contains exactly one complete AI entity. This menu item does not appear at the same time as the **askAI** menu item in [TextMenuItemId](ts-text-common.md#textmenuitemid12).
 
 This feature is only effective when [CopyOptions](ts-appendix-enums.md#copyoptions9) is set to **CopyOptions.LocalDevice** or **CopyOptions.CrossDevice**.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -390,7 +486,7 @@ This feature is only effective when [CopyOptions](ts-appendix-enums.md#copyoptio
 
 | Name| Type   | Mandatory| Description                             |
 | ------ | ------- | ---- | --------------------------------- |
-| enable  | boolean \| undefined | Yes  | Whether to enable entity recognition for selected text.<br>**true**: Enable entity recognition. **false**: Disable entity recognition. Default value: **true**.|
+| enable  | boolean \| undefined | Yes  | Whether to enable selected text entity recognition.<br>**true**: Entity recognition is enabled. **false**: Entity recognition is disabled.|
 
 ### lineHeight<sup>12+</sup>
 
@@ -398,7 +494,13 @@ lineHeight(value: number | string | Resource)
 
 Sets the text line height. If the value is less than or equal to **0**, the line height is not limited and the font size is adaptive. If the value is of the number type, the unit fp is used.
 
+>  **NOTE**
+>  
+>  If certain characters have significantly taller glyphs than others on the same line, layout anomalies such as clipping, overlap, or misalignment may occur. In this case, adjust component attributes such as height and line height to ensure proper layout rendering.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -406,19 +508,23 @@ Sets the text line height. If the value is less than or equal to **0**, the line
 
 | Name| Type                                                        | Mandatory| Description            |
 | ------ | ------------------------------------------------------------ | ---- | ---------------- |
-| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Text line height.|
-
->  **NOTE**
->  
->  If certain characters have significantly taller glyphs than others on the same line, layout anomalies such as clipping, overlap, or misalignment may occur. In this case, adjust component attributes such as height and line height to ensure proper layout rendering.
+| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Line height of the text.<br><br>For the number type, the unit is fp. For the string type, numeric string values with optional units, for example, **"10"** or **"10fp"**, are supported.|
 
 ### decoration<sup>12+</sup>
 
 decoration(value: TextDecorationOptions)
 
-Sets the color, type, and style of the text decorative line.
+Sets the color, type, and style of the text decorative line. If this API is not used, the default decorative line type is **TextDecorationType.None** (no decorative line), the color is **Color.Black** (black), the style is **TextDecorationStyle.SOLID** (solid line), and the thickness scaling is **1.0**.
+
+>**NOTE**
+>
+> - When the bottom contour of a character intersects with the decoration, underline avoidance is triggered, commonly affecting characters like "g", "j", "y", "q", and "p".
+>
+> - If the decoration color is set to **Color.Transparent**, it inherits the text color of the first character in each line. If the decoration color is set to **"#00FFFFFF"**, the line becomes fully transparent.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -426,19 +532,13 @@ Sets the color, type, and style of the text decorative line.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [TextDecorationOptions](ts-universal-attributes-text-style.md#textdecorationoptions12) | Yes  | Text decorative line options.<br>Default value: {<br>&nbsp;type:&nbsp;TextDecorationType.None,<br>&nbsp;color:&nbsp;Color.Black,<br>&nbsp;style:&nbsp;TextDecorationStyle.SOLID&nbsp;<br>} |
-
->  **NOTE**
->
->  When the bottom contour of a character intersects with the decoration, underline avoidance is triggered, commonly affecting characters like "g", "j", "y", "q", and "p."
->
->  If the decoration color is set to **Color.Transparent**, it inherits the text color of the first character in each line. If the decoration color is set to **"#00FFFFFF"**, the line becomes fully transparent.
+| value  | [TextDecorationOptions](ts-universal-attributes-text-style.md#textdecorationoptions12) | Yes  | Text decorative line options.|
 
 ### letterSpacing<sup>12+</sup>
 
 letterSpacing(value: number | string | Resource)
 
-Sets the letter spacing for a text style. If the value specified is a percentage or 0, the default value is used. For the string type, numeric string values with optional units, for example, **"10"** or **"10fp"**, are supported.
+Sets the letter spacing for a text style. If the value specified is a percentage or **0**, the default value is used. For the string type, numeric string values with optional units, for example, **"10"** or **"10fp"**, are supported.
 
 If the value specified is a negative value, the text is compressed. A negative value too small may result in the text being compressed to 0 and no content being displayed.
 
@@ -446,13 +546,15 @@ This setting applies to every character, including those at line endings.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                      | Mandatory| Description          |
 | ------ | -------------------------- | ---- | -------------- |
-| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Letter spacing.<br>Unit: [fp](ts-pixel-units.md)|
+| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Letter spacing.<br>Unit: [fp](ts-pixel-units.md#basic-pixel-units)|
 
 ### fontFeature<sup>12+</sup>
 
@@ -470,27 +572,31 @@ For example, the input format for monospaced clock fonts is "ss01" on.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type  | Mandatory| Description          |
 | ------ | ------ | ---- | -------------- |
-| value  | string | Yes  | Font feature.|
+| value  | string | Yes  | Font feature, which is used to set the advanced typesetting capabilities of OpenType fonts, such as hyphenation and monospace.<br>Format: **"ss01" on**. For details about the supported attributes, see the [fontFeature](ts-basic-components-text.md#fontfeature12) list.|
 
-For details about the supported font features, see [Font Feature List](ts-basic-components-text.md#fontfeature12).
+For details about the supported font features, see the [fontFeature](ts-basic-components-text.md#fontfeature12) list.
 
-Font features are advanced typographic features, such as ligatures and monospace, for OpenType fonts. They are typically used in custom fonts and require the support of the font itself.
+Sets the font feature attribute. The font feature is an advanced typesetting capability (such as hyphenation and monospace) of OpenType fonts. It is generally used for font customization and requires the font to support this capability.
 
-For more information about the font features, see [Low-level font feature settings control: the font-feature-settings property](https://www.w3.org/TR/css-fonts-3/#font-feature-settings-prop) and [The Complete CSS Demo for OpenType Features](https://sparanoid.com/lab/opentype-features/).
+For more information about the font feature, see [font-feature-settings property](https://www.w3.org/TR/css-fonts-3/#font-feature-settings-prop) and [OpenType Features](https://sparanoid.com/lab/opentype-features/).
 
 ### selectedBackgroundColor<sup>12+</sup>
 
 selectedBackgroundColor(value: ResourceColor)
 
-Sets the background color of the selected text. If the opacity is not set, a 20% opacity will be used.
+Sets the highlight color for the selected text. If this API is not used, the default color is **'#007DFF'** (blue).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -498,13 +604,13 @@ Sets the background color of the selected text. If the opacity is not set, a 20%
 
 | Name| Type                                      | Mandatory| Description                                      |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Background color of the selected text.|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Highlight color for the selected text. If the color is not set with opacity or is set to fully opaque, 20% opacity is used by default.|
 
 ### inputFilter<sup>12+</sup>
 
 inputFilter(value: ResourceStr, error?: &nbsp;Callback<&nbsp;string&nbsp;>)
 
-Sets the regular expression for input filtering. Only inputs that comply with the regular expression can be displayed. Other inputs are filtered out.
+Sets the regular expression for input filtering. Only inputs that comply with the regular expression can be displayed. Other inputs are filtered out. This API is applicable to scenarios where the user input format needs to be restricted, for example, allowing only letters, digits, or specific characters.
 
 For single-character input scenarios, only single-character matching is supported; for multi-character input scenarios (such as pasting), string matching is supported.
 
@@ -512,22 +618,26 @@ If **inputFilter** is set and the entered characters are not null, the filtering
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                                  | Mandatory| Description                              |
 | ------ | -------------------------------------- | ---- | ---------------------------------- |
-| value  | [ResourceStr](ts-types.md#resourcestr) | Yes  | Regular expression.                      |
-| error  | &nbsp;Callback<&nbsp;string&nbsp;>     | No  | Filtered-out content to return when regular expression matching fails.|
+| value  | [ResourceStr](ts-types.md#resourcestr) | Yes  | Regular expression of the input filter. Only inputs that comply with the regular expression can be displayed. Other inputs are filtered out.                      |
+| error  |  Callback\<string\>     | No  | Filtered-out content to return when regular expression matching fails. If not passed, this callback will not be triggered.|
 
 ### textIndent<sup>12+</sup>
 
 textIndent(value: Dimension)
 
-Sets the indent of the first line text.
+Sets the indent of the first line text. If this API is not used, the default indent of the first line text is 0.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -535,7 +645,7 @@ Sets the indent of the first line text.
 
 | Name| Type                                | Mandatory| Description                        |
 | ------ | ----------------------------------- | ---- | ---------------------------- |
-| value  | [Dimension](ts-types.md#dimension10)| Yes  | Indent of the first line text.<br>Default value: **0**  |
+| value  | [Dimension](ts-types.md#dimension10)| Yes  | Indent of the first line text.<br>Unit: [vp](ts-pixel-units.md#basic-pixel-units)<br>The value must be greater than or equal to 0. If the value is a negative number, the default value is used. |
 
 ### minFontSize<sup>12+</sup>
 
@@ -547,9 +657,11 @@ For the setting to take effect, this attribute must be used together with [maxFo
 
 When the adaptive font size is used, the **fontSize** settings do not take effect.
 
-If minFontSize is less than or equal to 0, the adaptive font size does not take effect. In this case, the value of size in the [textFont](#textfont) attribute takes effect. If the value is not set, the default value takes effect.
+If **minFontSize** is less than or equal to 0, the adaptive font size does not take effect. In this case, the value of **size** in the [textFont](#textfont) attribute takes effect. If **size** is not set, the default value applies.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -557,7 +669,7 @@ If minFontSize is less than or equal to 0, the adaptive font size does not take 
 
 | Name| Type                                                        | Mandatory| Description              |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
-| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Minimum font size.<br>Unit: [fp](ts-pixel-units.md)|
+| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Minimum font size.<br>Unit: [fp](ts-pixel-units.md#basic-pixel-units)|
 
 ### maxFontSize<sup>12+</sup>
 
@@ -569,9 +681,11 @@ For the setting to take effect, this attribute must be used together with [minFo
 
 When the adaptive font size is used, the **fontSize** settings do not take effect.
 
-If maxFontSize is less than or equal to 0 or maxFontSize is less than minFontSize, the adaptive font size does not take effect. In this case, the value of size in the [textFont](#textfont) attribute takes effect. If the value is not set, the default value takes effect.
+If **maxFontSize** is less than or equal to 0 or **maxFontSize** is less than **minFontSize**, the adaptive font size does not take effect. In this case, the value of **size** in the [textFont](#textfont) attribute takes effect. If **size** is not set, the default value applies.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -579,15 +693,17 @@ If maxFontSize is less than or equal to 0 or maxFontSize is less than minFontSiz
 
 | Name| Type                                                        | Mandatory| Description              |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
-| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Maximum font size.<br>Unit: [fp](ts-pixel-units.md)|
+| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Maximum font size.<br>Unit: [fp](ts-pixel-units.md#basic-pixel-units)|
 
 ### halfLeading<sup>18+</sup>
 
 halfLeading(halfLeading: Optional\<boolean>)
 
-Sets the vertical center of the text in the line to equally divide the line spacing to the top and bottom of the line.
+Enables half leading for text, which splits the leading equally between the top and bottom of the line. This API is applicable to scenarios where vertical center alignment of text needs to be precisely controlled in multi-line text layout, such as mixed arrangement of text and icons, and mixed arrangement of multiple languages. If this API is not used, half leading is disabled by default.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -595,7 +711,7 @@ Sets the vertical center of the text in the line to equally divide the line spac
 
 | Name| Type                                         | Mandatory| Description                                         |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| halfLeading | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes | Sets whether the text is centered vertically.<br>Whether half leading is enabled. Half leading is the leading split in half and applied equally to the top and bottom edges. The value **true** means that half leading is enabled, and **false** means the opposite.<br>Default value: **false**|
+| halfLeading | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes | Whether half leading is enabled. Half leading refers to splitting the leading in half and applying it equally to the top and bottom of the line.<br>**true**: Half leading is enabled. **false**: Half leading is not enabled.|
 
 ### minFontScale<sup>18+</sup>
 
@@ -605,13 +721,15 @@ Sets the minimum font scale factor for text.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                                         | Mandatory| Description                                         |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| scale  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number \| [Resource](ts-types.md#resource)> | Yes  | Minimum font scale factor for text. The **undefined** type is supported.<br>Value range: [0, 1]<br>**NOTE**<br>A value less than 0 is handled as 0. A value greater than 1 is handled as 1. Abnormal values are ineffective by default.<br>Before use, the **configuration.json** file and **app.json5** file must be configured in the project. For details, see [Example 19: Setting the Minimum and Maximum Font Scale Factors](#example-19-setting-the-minimum-and-maximum-font-scale-factors).|
+| scale  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number \| [Resource](ts-types.md#resource)> | Yes  | Minimum font scale factor for text. The **undefined** type is supported.<br>Value range: [0, 1]<br>**NOTE**<br>A value less than 0 is handled as **0**. A value greater than 1 is handled as **1**. If **undefined** is set, the original value is retained. Invalid values do not take effect by default.<br>Before use, you need to configure the [configuration.json](../../../quick-start/app-configuration-file.md#tags-in-the-configuration-file) and [app.json5](../../../quick-start/app-configuration-file.md) files in the project. For details, see [Example 19: Setting the Minimum and Maximum Font Scale Factors](#example-19-setting-the-minimum-and-maximum-font-scale-factors).|
 
 ### maxFontScale<sup>18+</sup>
 
@@ -621,23 +739,27 @@ Sets the maximum font scale factor for text.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                                         | Mandatory| Description                                         |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| scale  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number \| [Resource](ts-types.md#resource)> | Yes  | Maximum font scale factor for text. The **undefined** type is supported.<br>Value range: [1, +∞)<br>**NOTE**<br>A value less than 1 is handled as 1. Abnormal values are ineffective by default.<br>After the maxFontScale attribute is set, the content of the search component can be zoomed in twice at most.<br>Before use, the **configuration.json** and **app.json5** files must be configured in the project. For details, see [Example 19: Setting the Minimum and Maximum Font Scale Factors](#example-19-setting-the-minimum-and-maximum-font-scale-factors).|
+| scale  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number \| [Resource](ts-types.md#resource)> | Yes  | Maximum font scale factor for text. The **undefined** type is supported.<br>Value range: [1, +∞)<br>**NOTE**<br>A value less than 1 is handled as **1**. If **undefined** is set, the original value is retained. Invalid values do not take effect by default.<br>After the **maxFontScale** attribute is set, the content of the **Search** component can be scaled up to 2 times at most.<br>Before use, you need to configure the [configuration.json](../../../quick-start/app-configuration-file.md#tags-in-the-configuration-file) and [app.json5](../../../quick-start/app-configuration-file.md) files in the project. For details, see [Example 19: Setting the Minimum and Maximum Font Scale Factors](#example-19-setting-the-minimum-and-maximum-font-scale-factors).|
 
 ### editMenuOptions<sup>12+</sup>
 
 editMenuOptions(editMenu: EditMenuOptions)
 
-Sets the extended options of the custom context menu on selection, including the text content, icon, and callback.
+Sets the extended options of the custom menu, including the text content, icon, and callback.
 
-When [disableMenuItems](../arkts-apis-uicontext-textmenucontroller.md#disablemenuitems20) or [disableSystemServiceMenuItems](../arkts-apis-uicontext-textmenucontroller.md#disablesystemservicemenuitems20) is used to disable system service menu items in the context menu on selection, the disabled menu options will be excluded from the parameter list in the [onCreateMenu](./ts-text-common.md#oncreatemenu12) callback of **editMenuOptions**.
+When [disableMenuItems](../arkts-apis-uicontext-textmenucontroller.md#disablemenuitems20) or [disableSystemServiceMenuItems](../arkts-apis-uicontext-textmenucontroller.md#disablesystemservicemenuitems20) is used to disable system service menu items in the text selection menu, the disabled menu options will be excluded from the parameter list in the [onCreateMenu](./ts-text-common.md#oncreatemenu12) callback of **editMenuOptions**.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -645,17 +767,23 @@ When [disableMenuItems](../arkts-apis-uicontext-textmenucontroller.md#disablemen
 
 | Name| Type                                         | Mandatory| Description                                         |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| editMenu  | [EditMenuOptions](ts-text-common.md#editmenuoptions) | Yes  | Extended options of the custom context menu on selection.|
+| editMenu  | [EditMenuOptions](ts-text-common.md#editmenuoptions) | Yes  | Extended menu options, which are used to set the text content, icon, and callback of the custom menu extension items. Use this parameter when you need to add custom options to the text selection menu.|
 
 ### enablePreviewText<sup>12+</sup>
 
 enablePreviewText(enable: boolean)
 
-Sets whether to enable preview text.
+Sets whether to enable preview text. If this API is not used, preview text is enabled by default.
 
-The preview content is defined as a text temporary storage state. Currently, the text interception function is not supported.
+The preview content is defined as a temporary, uncommitted input state. Currently, the text interception function is not supported.
+
+>  **NOTE**
+>  
+>  Preview text represents a temporary, uncommitted input state. This feature requires support from the input method with pre-commit text functionality enabled. During text entry, when candidate words have not been confirmed yet, the text box displays marked text in a provisional state. For example, when users enter Chinese using Pinyin input, the Pinyin letters appear in the input box before a word is selected from the candidate word list. This intermediate state constitutes preview text.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -663,29 +791,27 @@ The preview content is defined as a text temporary storage state. Currently, the
 
 | Name| Type   | Mandatory| Description                              |
 | ------ | ------- | ---- | ---------------------------------- |
-| enable | boolean | Yes  | Whether to enable preview text.<br>**true**: Enable preview text. **false**: Disable preview text. <br>Default value: **true**|
-
->  **NOTE**
->  
->  Preview text represents a temporary, uncommitted input state. This feature requires support from the input method with pre-commit text functionality enabled. During text entry, when candidate words have not been confirmed yet, the text box displays marked text in a provisional state. For example, when typing Chinese using Pinyin input, the Pinyin letters appear in the input box before selecting from the candidate word list. This intermediate state constitutes preview text.
+| enable | boolean | Yes  | Whether to enable preview text.<br>**true**: Preview text is enabled. **false**: Preview text is disabled.|
 
 ### enableHapticFeedback<sup>13+</sup>
 
 enableHapticFeedback(isEnabled: boolean)
 
-Specifies whether to enable haptic feedback.
+Specifies whether to enable haptic feedback. If this API is not used, haptic feedback is enabled by default.
 
-To enable haptic feedback, you must declare the ohos.permission.VIBRATE permission under **requestPermissions** in the **module.json5** file of the project.
+To enable haptic feedback, you must declare the **ohos.permission.VIBRATE** permission under **requestPermissions** in the [module.json5](../../../quick-start/module-configuration-file.md) file of the project.
 
 ```json
 "requestPermissions": [
- {
-    "name": "ohos.permission.VIBRATE",
- }
+  {
+    "name": "ohos.permission.VIBRATE"
+  }
 ]
 ```
 
 **Atomic service API**: This API can be used in atomic services since API version 13.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -693,15 +819,17 @@ To enable haptic feedback, you must declare the ohos.permission.VIBRATE permissi
 
 | Name| Type   | Mandatory| Description                              |
 | ------ | ------- | ---- | ---------------------------------- |
-| isEnabled | boolean | Yes  | Whether to enable haptic feedback.<br>The value **true** means to enable haptic feedback, and **false** means the opposite.<br>Default value: **true**|
+| isEnabled | boolean | Yes  | Whether to enable haptic feedback.<br>**true**: Haptic feedback is enabled. **false**: Haptic feedback is disabled.|
 
 ### autoCapitalizationMode<sup>20+</sup>
 
 autoCapitalizationMode(mode: AutoCapitalizationMode)
 
-Sets the auto-capitalization text mode. This API provides the capability, but actual implementation depends on the input method application.
+Sets the text auto-capitalization mode. This API provides the capability, but actual implementation depends on the input method application. If this API is not used, the auto-capitalization effect is not generated by default. Actual implementation depends on the input method application.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -709,15 +837,17 @@ Sets the auto-capitalization text mode. This API provides the capability, but ac
 
 | Name  | Type                                     | Mandatory| Description                      |
 | -------- | ----------------------------------------- | ---- | -------------------------- |
-| mode | [AutoCapitalizationMode](ts-text-common.md#autocapitalizationmode20) | Yes  | Auto-capitalization mode. The default state is inactive.|
+| mode | [AutoCapitalizationMode](ts-text-common.md#autocapitalizationmode20) | Yes  | Auto-capitalization mode, which is used to set the case conversion rules of the input method. Actual implementation depends on the input method application.|
 
 ### keyboardAppearance<sup>15+</sup>
 
 keyboardAppearance(appearance: Optional\<KeyboardAppearance>)
 
-Sets the keyboard appearance for the text box. This setting takes effect only after input method adaptation. For details, see [Immersive Mode of the Input Method Application](../../../inputmethod/inputmethod-immersive-mode-guide.md).
+Sets the keyboard appearance for the text box. This setting takes effect only after input method adaptation. If this API is not used, the default keyboard appearance is **KeyboardAppearance.NONE_IMMERSIVE** (non-immersive mode). For details, see [Immersive Mode of the Input Method Application](../../../inputmethod/inputmethod-immersive-mode-guide.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -725,15 +855,21 @@ Sets the keyboard appearance for the text box. This setting takes effect only af
 
 | Name| Type| Mandatory| Description|
 | ------ | ----------------------------------------- | ---- | ------------------------------------------------------ |
-| appearance | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[KeyboardAppearance](ts-text-common.md#keyboardappearance15)> | Yes  | Appearance of the keyboard.<br>Default value: **KeyboardAppearance.NONE_IMMERSIVE**|
+| appearance | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[KeyboardAppearance](ts-text-common.md#keyboardappearance15)> | Yes  | Appearance of the keyboard.|
 
 ### strokeWidth<sup>20+</sup>
 
 strokeWidth(width: Optional\<LengthMetrics>)
 
-Sets the text stroke width.
+Sets the text stroke width. If this API is not used, the default value **0** is used, indicating that no stroke is applied.
+
+> **NOTE**
+>
+> If both **strokeWidth** and [shaderStyle](#shaderstyle) are set, **shaderStyle** does not take effect.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -741,7 +877,7 @@ Sets the text stroke width.
 
 | Name| Type                                                        | Mandatory| Description            |
 | ------ | ------------------------------------------------------------ | ---- | ---------------- |
-| width  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)> | Yes  | Text stroke width. When the unit of **LengthMetrics** is **px**:<br>Values < 0: solid text. Values > 0: outlined text.<br>Default value: **0** (no stroke).|
+| width  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)> | Yes  | Text stroke width. If the **unit** attribute of the **LengthMetrics** object is set to **LengthUnit.PERCENT**, the current setting does not take effect and the default value is used.<br>Values < 0: solid text.<br>Values > 0: outlined text.<br>**NOTE**<br>If both **strokeWidth** and [shaderStyle](#shaderstyle) are set, **shaderStyle** does not take effect.<br>[strokeJoinStyle](#strokejoinstyle) takes effect only when [strokeWidth] is used to set the text stroke. |
 
 ### strokeColor<sup>20+</sup>
 
@@ -751,21 +887,25 @@ Sets the text stroke color.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                                      | Mandatory| Description      |
 | ------ | ------------------------------------------ | ---- | ---------- |
-| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ResourceColor](ts-types.md#resourcecolor)> | Yes  | Stroke color. Default value: font color. Invalid values are treated as the default value.|
+| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ResourceColor](ts-types.md#resourcecolor)> | Yes  | Stroke color. If this API is not used, the default stroke color is the text color. Invalid values are treated as the default value. This parameter takes effect only after the stroke width is set using [strokeWidth](#strokewidth20).|
 
 ### stopBackPress<sup>15+</sup>
 
 stopBackPress(isStopped: Optional\<boolean>)
 
-Sets whether to prevent the return key from being passed.
+Sets whether to stop the back button event from being passed upward. If this parameter is set to **true**, the back button event is intercepted and the default back behavior of the system is not triggered. If this parameter is set to **false**, the back button event is passed upward normally. This API is applicable to scenarios where the back button behavior needs to be customized. For example, during a search, the back button is blocked to prevent accidental exits, or a confirmation dialog is displayed before the user exits. If this API is not used, the back button is blocked by default.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -773,15 +913,17 @@ Sets whether to prevent the return key from being passed.
 
 | Name| Type   | Mandatory| Description                              |
 | ------ | ------- | ---- | ---------------------------------- |
-| isStopped | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether to prevent the back button press from being propagated to other components or applications.<br>**true** to prevent, **false** otherwise.<br>Default value: **true** The default value is used for abnormal values.|
+| isStopped | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes  | Whether to prevent the back key event from being propagated.<br>**true**: Propagation is prevented. **false**: Propagation is allowed.<br>The default value is used for abnormal values.|
 
 ### enableAutoSpacing<sup>20+</sup>
 
 enableAutoSpacing(enabled: Optional\<boolean>)
 
-Sets whether to enable automatic spacing between Chinese and Western characters.
+Sets whether to enable automatic spacing between Chinese and Western characters. If this API is not used, automatic spacing between Chinese and Western characters is disabled by default.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -789,7 +931,7 @@ Sets whether to enable automatic spacing between Chinese and Western characters.
 
 | Name| Type   | Mandatory| Description                              |
 | ------ | ------- | ---- | ---------------------------------- |
-| enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether to enable automatic spacing between Chinese and Western characters.<br>**true** to enable, **false** otherwise.<br>Default value: **false**|
+| enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes  | Whether to enable automatic spacing between Chinese and Western characters.<br>**true**: Enabled. **false**: Disabled.|
 
 ### selectedDragPreviewStyle<sup>23+</sup>
 
@@ -799,13 +941,15 @@ Sets the drag preview style for text being dragged in the search box.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                                            | Mandatory| Description                                                      |
 | ------ | ------------------------------------------------ | ---- | ---------------------------------------------------------- |
-| value  | [SelectedDragPreviewStyle](ts-text-common.md#selecteddragpreviewstyle23) \| undefined | Yes  | Drag preview style for text being dragged in the search box.<br>If this parameter is set to **undefined**, the drag preview follows the theme. The white color is used in light mode, and the black color is used in dark mode.|
+| value  | [SelectedDragPreviewStyle](ts-text-common.md#selecteddragpreviewstyle23) \| undefined| Yes  | Drag preview style for text being dragged in the search box.<br>If this parameter is set to **undefined**, the drag preview follows the theme: white in light mode and black in dark mode.|
 
 ### dividerColor<sup>23+</sup>
 
@@ -815,27 +959,31 @@ Sets the color of the text box divider.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type   | Mandatory| Description                              |
 | ------ | ------- | ---- | ---------------------------------- |
-| color | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)> | Yes  | Divider color.<br>By default, system theme colors are used: 0x33000000 in light mode (appears as light black), 0x33FFFFFF in dark mode (appears as light white).|
+| color | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)> | Yes  | Divider color.<br>By default, the system theme color is used: **0x33000000** in light color mode (black with 20% opacity), and **0x33FFFFFF** in dark color mode (white with 20% opacity).|
 
 ### compressLeadingPunctuation<sup>23+</sup>
 
 compressLeadingPunctuation(enabled: Optional\<boolean>)
 
-Sets whether to use punctuation compression at the beginning of a line.
+Sets whether to enable leading punctuation compression. After this feature is enabled, the spacing on the left of the punctuation mark at the beginning of a line is compressed. This API is applicable to CJK text scenarios that require beautiful typesetting, such as Chinese and Japanese.
 
 > **NOTE**
 >
-> - By default, punctuation at the beginning of a line is not compressed.
+> - Leading punctuation is not compressed by default.
 >
-> - For details about the punctuation that can be compressed, see the punctuation scope of [ParagraphStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#paragraphstyle).
+> - For the list of punctuation marks that support compression, see the punctuation range at the beginning of a line in [ParagraphStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#paragraphstyle).
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -843,15 +991,17 @@ Sets whether to use punctuation compression at the beginning of a line.
 
 | Name| Type   | Mandatory| Description                              |
 | ------ | ------- | ---- | ---------------------------------- |
-| enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether to enable punctuation compression at the beginning of a line.<br>**true**: Compress punctuation at the beginning of a line. **false**: Do not compress punctuation at the beginning of a line.|
+| enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes  | Whether to enable leading punctuation compression.<br>**true**: Leading punctuation compression is enabled. **false**: Leading punctuation compression is disabled.|
 
 ### includeFontPadding<sup>23+</sup>
 
 includeFontPadding(include: Optional\<boolean>)
 
-Sets whether to add spacing at the first and last lines to avoid text truncation. If this API is not used, no spacing is added by default.
+Sets whether to add spacing to the first and last lines to avoid text truncation. If this attribute is not set, no spacing is added by default.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -859,13 +1009,13 @@ Sets whether to add spacing at the first and last lines to avoid text truncation
 
 | Name | Type                                                        | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| include | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether to add spacing at the first and last lines to avoid text truncation.<br>**true**: Add spacing at the first and last lines. **false**: Do not add spacing at the first and last lines.|
+| include | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes  | Whether to add spacing to the first and last lines to avoid text truncation.<br>**true**: Spacing is added to the first and last lines. **false**: Spacing is not added to the first and last lines.|
 
 ### fallbackLineSpacing<sup>23+</sup>
 
 fallbackLineSpacing(enabled: Optional\<boolean>)
 
-For multi-line text overlay, the line height can be automatically adjusted based on the actual text height. This API takes effect only when the line height is less than the actual text height. If this API is not used, the line height does not adapt to the actual text height by default.
+Adapts the line height to the actual text height for overlapped multi-line text. This API takes effect only when the line height is less than the actual text height. If this API is not set, the line height does not adapt to the actual text height by default.
 
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
@@ -878,45 +1028,55 @@ For multi-line text overlay, the line height can be automatically adjusted based
 
 | Name | Type                                                        | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | Yes  | Whether the line height is adaptive based on the actual text height.<br>**true**: The line height is adaptive based on the actual text height. **false**: The line height is not adaptive based on the actual text height.|
+| enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes  | Whether the line height is adapted to the actual text height.<br>This API takes effect only when the line height is less than the actual text height.<br>**true**: Line height is adapted to the actual text height. **false**: Line height is not adapted to the actual text height.|
 
 ## IconOptions<sup>10+</sup>
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name| Type                                  | Read-Only| Optional| Description   |
 | ------ | ------------------------------------------ | ---- | ---- | ----------- |
-| size   | [Length](ts-types.md#length)               | No  | Yes| Icon size. It cannot be set in percentage.   |
-| color  | [ResourceColor](ts-types.md#resourcecolor) | No  | Yes| Icon color.   |
-| src    | [ResourceStr](ts-types.md#resourcestr)     | No  | Yes| Image source of the icon.|
+| size   | [Length](ts-types.md#length)               | No  | Yes| Icon size. If no unit is specified, the default unit is vp. Percentages are not supported. If a percentage is passed, it does not take effect.   |
+| color  | [ResourceColor](ts-types.md#resourcecolor) | No  | Yes| Icon color. If this parameter is not passed, the default color is used. In light color mode, the default color is **'#99182431'**, indicating dark gray with 60% opacity. In dark color mode, the default color is **'#99ffffff'**, indicating white with 60% opacity.   |
+| src    | [ResourceStr](ts-types.md#resourcestr)     | No  | Yes| Image source of the icon. If no value is passed, the default icon is used.|
 
 ## SearchButtonOptions<sup>10+</sup>
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name   | Type                                  | Read-Only| Optional| Description        |
 | --------- | ------------------------------------------ | ---- | ---- | ---------------- |
-| fontSize  | [Length](ts-types.md#length)               | No  | Yes| Font size of the button. It cannot be set in percentage. **Atomic service API**: This API can be used in atomic services since API version 11.|
+| fontSize  | [Length](ts-types.md#length)               | No  | Yes| Font size of the text button. If no unit is specified, the default unit is vp. Percentages are not supported. If a percentage is passed, it does not take effect.<br>The default value follows the theme. **Atomic service API**: This API can be used in atomic services since API version 11.|
 | fontColor | [ResourceColor](ts-types.md#resourcecolor) | No  | Yes| Font color of the button. **Atomic service API**: This API can be used in atomic services since API version 11.|
-| autoDisable<sup>18+</sup>  | Boolean                   | No  | Yes| Whether to disable the search button when there is no text input.<br>Default value: **false**<br>**true**: The search button is disabled when there is no text input.<br>**false**: The search button remains enabled regardless of the text input.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| autoDisable<sup>18+</sup>  | Boolean                   | No  | Yes| Whether to disable the search button when there is no text input.<br>Default value: **false**<br>**true**: The search button is disabled when there is no text input. **false**: The search button remains enabled regardless of the text input.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 
 ## CancelButtonStyle<sup>10+</sup>
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name                   | Description       |
-| ----------------------- | ---------------- |
-| CONSTANT  | The Cancel button is always displayed.|
-| INVISIBLE | The Cancel button is always hidden.|
-| INPUT     | The Cancel button is displayed when there is text input.|
+| Name                   | Value|Description       |
+| ----------------------- | ---- |---------------- |
+| CONSTANT  | - | The Cancel button is always displayed.|
+| INVISIBLE | - | The Cancel button is always hidden.|
+| INPUT     | - | The Cancel button is displayed when there is text input.|
 
 ## SearchType<sup>11+</sup>
 
-Enumerates search text box type.
+Enumerates the text input types of a search box.
+
+<!--Table: 30%; 10%; 60%-->
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -924,33 +1084,37 @@ Enumerates search text box type.
 | ------------------ | ------ | ------------- |
 | NORMAL   | 0 | Basic input mode with no special restrictions.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | NUMBER   | 2 | Digit input mode.<br>**Atomic service API**: This API can be used in atomic services since API version 12.     |
-| PHONE_NUMBER | 3 | Phone number input mode.<br>In this mode, the following are allowed: digits, spaces, plus signs (+), hyphens (-), asterisks (*), and number signs (#); the length is not limited.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| EMAIL    | 5 | Email address input mode.<br>This mode accepts only digits, letters, underscores (_), dots (.), and the following special characters: ! # $ % & ' * + - / = ? ^ ` \{ \| \} ~ @ (which can only appear once)<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| PHONE_NUMBER | 3 | Phone number input mode.<br>In this mode, the following characters are allowed: digits, spaces, plus signs (+), hyphens (-), asterisks (*), and number signs (#); the length is not limited.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| EMAIL    | 5 | Email address input mode.<br>This mode accepts only digits, letters, underscores (_), dots (.), and the following special characters: ! # $ % & ' * + - / = ? ^ ` \{ \| \} ~ @. The at sign can appear only once.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | NUMBER_DECIMAL<sup>12+</sup>  | 12 | Number input mode with a decimal point.<br>The value can contain digits and one decimal point.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | URL<sup>12+</sup>  | 13 | URL input mode with no special restrictions.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| ONE_TIME_CODE<sup>20+</sup>  | 14 | One-time code (verification code) input mode with no special restrictions.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| ONE_TIME_CODE<sup>20+</sup>  | 14 | One-time code (verification code) input mode with no special restrictions. In this type, the system input method is started by default after the component is focused.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
 ## CancelButtonOptions<sup>12+</sup>
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name   | Type                                  | Read-Only| Optional| Description        |
 | --------- | ------------------------------------------ | ---- | ---- | ---------------- |
-| style  | [CancelButtonStyle](#cancelbuttonstyle10)               | No  | Yes| Display state of the Cancel button on the right.|
-| icon | [IconOptions](#iconoptions10) | No  | Yes| Icon of the Cancel button on the right.|
+| style  | [CancelButtonStyle](#cancelbuttonstyle10)               | No  | Yes| Display state of the Cancel button on the right. Default value: **CancelButtonStyle.INPUT**|
+| icon | [IconOptions](#iconoptions10) | No  | Yes| Icon of the Cancel button on the right. If no value is passed, the default cancel icon style is used.|
 
 ## CancelButtonSymbolOptions<sup>12+</sup>
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name   | Type                                  | Read-Only| Optional| Description        |
 | --------- | ------------------------------------------ | ---- | ---- | ---------------- |
-| style  | [CancelButtonStyle](#cancelbuttonstyle10)               | No  | Yes| Display state of the Cancel button on the right.|
-| icon | [SymbolGlyphModifier](ts-universal-attributes-text-style.md#symbolglyphmodifier12) | No  | Yes| Symbol icon of the Cancel button on the right.|
+| style  | [CancelButtonStyle](#cancelbuttonstyle10)               | No  | Yes| Display state of the Cancel button on the right. Default value: **CancelButtonStyle.INPUT**|
+| icon | [SymbolGlyphModifier](ts-universal-attributes-text-style.md#symbolglyphmodifier12) | No  | Yes| Symbol icon of the Cancel button on the right. If no value is passed, the default cancel icon style is used.|
 
 ## Events
 
@@ -960,7 +1124,7 @@ In addition to the [universal events](ts-component-general-events.md), the follo
 
 onSubmit(callback: Callback\<string>)
 
-Invoked when users click the search icon or the search button, or touch the search button on a soft keyboard.
+Called when the search icon, search button, or soft keyboard search button is clicked.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -980,21 +1144,30 @@ Invoked when the search icon, search button, or soft keyboard search button is c
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type   | Mandatory| Description                         |
 | ------ | ------- | ---- | ----------------------------- |
-| callback | [SearchSubmitCallback](#searchsubmitcallback14) | Yes  | Callback triggered when the search icon, search button, or soft keyboard search button is clicked.|
+| callback | [SearchSubmitCallback](#searchsubmitcallback14) | Yes  | Callback invoked when the search icon, search button, or soft keyboard search button is clicked.|
 
 ### onChange
 
 onChange(callback:&nbsp;EditableTextOnChangeCallback)
 
-Invoked when the input in the text box changes.
+Called when the input in the text box changes.
 
-In this callback, if cursor operations are performed, you must adjust the cursor logic based on the **previewText** parameter to ensure it works seamlessly within the preview display scenario.
+In this callback, if caret operations are performed, you must adjust the caret logic based on the **previewText** parameter to ensure it works seamlessly within the preview display scenario.
+
+> **NOTE**
+>
+> **onWillChange** and **onChange** form the **will/did** time sequence mode:
+> - The **onWillChange** callback is triggered before the text change. You can return **false** to intercept the change. If **true** is returned, the change is allowed and the **onChange** callback is triggered.
+> - The **onChange** callback is triggered after the change is complete and cannot be intercepted.
+> - The two callbacks can be used together. The **onWillChange** callback is used for interception control, and the **onChange** callback is used to obtain the change result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1010,7 +1183,14 @@ In this callback, if cursor operations are performed, you must adjust the cursor
 
 onCopy(callback:Callback\<string>)
 
-Invoked when a copy operation is performed.
+Called when a copy operation is performed.
+
+> **NOTE**
+>
+> **onWillCopy** and **onCopy** form the **will/did** time sequence mode:
+> - **onWillCopy** is triggered before the copy operation is performed. You can return **false** to intercept the copy operation. If **true** is returned, the copy operation is allowed and **onCopy** is triggered.
+> - **onCopy** is triggered after the copy operation is complete and cannot be intercepted.
+> - The two APIs can be used together. **onWillCopy** is used for interception control, and **onCopy** is used to obtain the copy result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1022,11 +1202,45 @@ Invoked when a copy operation is performed.
 | --------- | ------- | ---- | ---------------- |
 | callback | Callback\<string> | Yes  | Callback used to return the copied text content.|
 
+### onWillCopy
+
+onWillCopy(callback: Callback\<string, boolean>)
+
+Called before the copy operation is performed.
+
+> **NOTE**
+>
+> **onWillCopy** and **onCopy** form the **will/did** time sequence mode:
+> - **onWillCopy** is triggered before the copy operation is performed. You can return **false** to intercept the copy operation. If **true** is returned, the copy operation is allowed and **onCopy** is triggered.
+> - **onCopy** is triggered after the copy operation is complete and cannot be intercepted.
+> - The two APIs can be used together. **onWillCopy** is used for interception control, and **onCopy** is used to obtain the copy result.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description            |
+| ------ | ------ | ---- | ---------------- |
+| callback  | Callback\<string, boolean> | Yes  | Called before the copy operation. If the callback returns a string, the value indicates the text content to be copied. If the callback returns a boolean value, the value indicates whether the selected text can be copied. The value **true** indicates that the text can be copied, and **false** indicates that the text cannot be copied.|
+
 ### onCut
 
 onCut(callback:Callback\<string>)
 
-Invoked when a cut operation is performed.
+Called when a cut operation is performed.
+
+> **NOTE**
+>
+> **onWillCut** and **onCut** form the **will/did** time sequence mode:
+> - **onWillCut** is triggered before the cut operation. You can return **false** to intercept the cut operation. If **true** is returned, the cut operation is allowed and **onCut** is triggered.
+> - **onCut** is triggered after the cut operation is complete and cannot be intercepted.
+> - The two APIs can be used together. **onWillCut** is used for interception control, and **onCut** is used to obtain the cut result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1038,11 +1252,38 @@ Invoked when a cut operation is performed.
 | --------- | ------- | ---- | ---------------- |
 | callback | Callback\<string> | Yes  | Callback used to return the cut text content.|
 
+### onWillCut
+
+onWillCut(callback: Callback\<string, boolean>)
+
+Called before the cut operation is performed.
+
+> **NOTE**
+>
+> **onWillCut** and **onCut** form the **will/did** time sequence mode:
+> - **onWillCut** is triggered before the cut operation. You can return **false** to intercept the cut operation. If **true** is returned, the cut operation is allowed and **onCut** is triggered.
+> - **onCut** is triggered after the cut operation is complete and cannot be intercepted.
+> - The two APIs can be used together. **onWillCut** is used for interception control, and **onCut** is used to obtain the cut result.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description            |
+| ------ | ------ | ---- | ---------------- |
+| callback  | Callback\<string, boolean> | Yes  | Callback invoked before the cut operation. If the callback returns a string, the value indicates the text content to be cut. If the callback returns a boolean value, the value indicates whether the selected text is allowed to be cut. **true**: yes. **false**: no.|
+
 ### onPaste
 
 onPaste(callback:OnPasteCallback )
 
-Invoked when a paste operation is performed.
+Called when a paste operation is performed.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1057,9 +1298,11 @@ Invoked when a paste operation is performed.
 
 onTextSelectionChange(callback: OnTextSelectionChangeCallback)
 
-Called when the cursor position changes during text selection or editing.
+Called when the text selection changes or the caret position changes during editing.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1067,15 +1310,17 @@ Called when the cursor position changes during text selection or editing.
 
 | Name        | Type  | Mandatory| Description                                             |
 | -------------- | ------ | ---- | ------------------------------------------------- |
-| callback | [OnTextSelectionChangeCallback](ts-basic-components-textinput.md#ontextselectionchangecallback18) | Yes  | Callback for text selection changes or cursor position changes.|
+| callback | [OnTextSelectionChangeCallback](ts-basic-components-textinput.md#ontextselectionchangecallback18) | Yes  | Callback for text selection changes or caret position changes.|
 
 ### onContentScroll<sup>10+</sup>
 
 onContentScroll(callback: OnContentScrollCallback)
 
-Invoked when the text content is scrolled.
+Called when the text content is scrolled.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1083,15 +1328,17 @@ Invoked when the text content is scrolled.
 
 | Name      | Type  | Mandatory| Description                              |
 | ------------ | ------ | ---- | ---------------------------------- |
-| callback | [OnContentScrollCallback](ts-basic-components-textinput.md#oncontentscrollcallback18) | Yes  | Callback for text content scrolling.|
+| callback | [OnContentScrollCallback](ts-basic-components-textinput.md#oncontentscrollcallback18) | Yes  | Callback invoked when the text content is scrolled. The callback parameters include **totalOffsetX** (horizontal scroll offset) and **totalOffsetY** (vertical scroll offset).|
 
 ### onEditChange<sup>12+</sup>
 
 onEditChange(callback:&nbsp;Callback<&nbsp;boolean&nbsp;>)
 
-Invoked when the input status changes. The text box is in the editing state when it has the caret placed in it, and is in the non-editing state otherwise.
+Called when the input state changes. The text box is in the editing state when it has the caret placed in it, and is in the non-editing state otherwise.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1099,15 +1346,24 @@ Invoked when the input status changes. The text box is in the editing state when
 
 | Name   | Type                               | Mandatory| Description                |
 | --------- | ---------------------------------- | ---- | -------------------- |
-| callback | &nbsp;Callback<&nbsp;boolean&nbsp;> | Yes  | Callback triggered when the editing state changes. Returns **true** if the component is in an editing state.|
+| callback | &nbsp;Callback<&nbsp;boolean&nbsp;> | Yes  | Callback for editing state changes. The value **true** indicates that the text is being inserted, and **false** indicates that the text box is out of focus and text cannot be inserted.|
 
 ### onWillInsert<sup>12+</sup>
 
 onWillInsert(callback: Callback\<InsertValue, boolean>)
 
-Invoked when text is about to be inserted.
+Called when text is about to be inserted.
+
+> **NOTE**
+>
+> **onWillInsert** and **onDidInsert** form the **will/did** time sequence mode:
+> - **onWillInsert** is triggered before the insertion operation. You can return **false** to intercept the insertion operation. If **true** is returned, the insertion operation is allowed and **onDidInsert** is triggered.
+> - **onDidInsert** is triggered after the insertion operation is complete and cannot be intercepted.
+> - The two APIs can be used together. **onWillInsert** is used for interception control, and **onDidInsert** is used to obtain the insertion result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1115,15 +1371,24 @@ Invoked when text is about to be inserted.
 
 | Name| Type                                                        | Mandatory| Description              |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
-| callback  | Callback\<[InsertValue](ts-text-common.md#insertvalue12), boolean> | Yes  | Callback invoked when text is about to be inserted.<br>It returns **true** if the text is inserted; returns **false** otherwise.<br>This callback is not triggered for pre-edit or candidate word operations.<br>It is available only for system input methods.|
+| callback  | Callback\<[InsertValue](ts-text-common.md#insertvalue12), boolean> | Yes  | Callback invoked when text is about to be inserted.<br>It returns **true** if the text is inserted; returns **false** otherwise.<br>This callback is not invoked for pre-edit or candidate word operations.<br>It is available only for system input methods.|
 
 ### onDidInsert<sup>12+</sup>
 
 onDidInsert(callback: Callback\<InsertValue>)
 
-Triggered when text is inserted.
+Called when text is inserted.
+
+> **NOTE**
+>
+> **onWillInsert** and **onDidInsert** form the **will/did** time sequence mode:
+> - **onWillInsert** is triggered before the insertion operation. You can return **false** to intercept the insertion operation. If **true** is returned, the insertion operation is allowed and **onDidInsert** is triggered.
+> - **onDidInsert** is triggered after the insertion operation is complete and cannot be intercepted.
+> - The two APIs can be used together. **onWillInsert** is used for interception control, and **onDidInsert** is used to obtain the insertion result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1137,9 +1402,19 @@ Triggered when text is inserted.
 
 onWillDelete(callback: Callback\<DeleteValue, boolean>)
 
-Invoked when text is about to be deleted.
+Called when text is about to be deleted.
+
+> **NOTE**
+>
+> - Clicking the deletion button does not trigger the **onWillDelete** callback.
+> - **onWillDelete** and **onDidDelete** form the **will/did** time sequence mode:
+>   - **onWillDelete** is triggered before the deletion operation. You can return **false** to intercept the deletion operation. If **true** is returned, the deletion is allowed and **onDidDelete** is triggered.
+>   - **onDidDelete** is triggered after the deletion is complete and cannot be intercepted.
+>   - The two APIs can be used together. **onWillDelete** is used for interception control, and **onDidDelete** is used to obtain the deletion result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1155,7 +1430,17 @@ onDidDelete(callback: Callback\<DeleteValue>)
 
 Called when text is deleted.
 
+> **NOTE**
+>
+> - Clicking the clear button does not trigger the **onDidDelete** callback.
+> - **onWillDelete** and **onDidDelete** form the **will/did** time sequence mode:
+>   - **onWillDelete** is triggered before the deletion operation. You can return **false** to intercept the deletion operation. If **true** is returned, the deletion is allowed and **onDidDelete** is triggered.
+>   - **onDidDelete** is triggered after the deletion is complete and cannot be intercepted.
+>   - The two APIs can be used together. **onWillDelete** is used for interception control, and **onDidDelete** is used to obtain the deletion result.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1165,19 +1450,22 @@ Called when text is deleted.
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
 | callback  | Callback\<[DeleteValue](ts-text-common.md#deletevalue12)> | Yes  | Callback invoked when text is deleted.<br>It is available only for system input methods.|
 
->  **NOTE**
->
->  Clicking the clear button does not trigger the **onDidDelete** callback.
-
 ### onWillChange<sup>15+</sup>
 
 onWillChange(callback: Callback\<EditableTextChangeValue, boolean>)
 
 Called when the text content is about to change.
 
-This callback is triggered after **onWillInsert** and **onWillDelete**, but before **onDidInsert** and **onDidDelete**.
+> **NOTE**
+> - This callback is triggered after **onWillInsert** and **onWillDelete**, but before **onDidInsert** and **onDidDelete**.
+> - **onWillChange** and **onChange** form the **will/did** time sequence mode:
+>   - The **onWillChange** callback is triggered before the text change. You can return **false** to intercept the change. If **true** is returned, the change is allowed and the **onChange** callback is triggered.
+>   - The **onChange** callback is triggered after the change is complete and cannot be intercepted.
+>   - The two callbacks can be used together. The **onWillChange** callback is used for interception control, and the **onChange** callback is used to obtain the change result.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1185,7 +1473,7 @@ This callback is triggered after **onWillInsert** and **onWillDelete**, but befo
 
 | Name| Type                                                        | Mandatory| Description              |
 | ------ | ------------------------------------------------------------ | ---- | ------------------ |
-| callback  | Callback\<[EditableTextChangeValue](ts-text-common.md#editabletextchangevalue15), boolean> | Yes  | Callback triggered when the text content is about to change.<br>Returning **true** allows the change to proceed, while returning **false** cancels the change.|
+| callback  | Callback\<[EditableTextChangeValue](ts-text-common.md#editabletextchangevalue15), boolean> | Yes  | Callback invoked when the text content is about to change.<br>Returning **true** allows the change to proceed, while returning **false** cancels the change.|
 
 ### onWillAttachIME<sup>20+</sup>
 
@@ -1194,17 +1482,19 @@ onWillAttachIME(callback: Callback\<IMEClient>)
 Called when the search box is about to be bound to an input method.
 
 <!--Del-->
-Before the search box is bound to an input method, you can use the [setKeyboardAppearanceConfig](../js-apis-arkui-UIContext-sys.md#setkeyboardappearanceconfig20) system interface of UIContext to set the keyboard style.<!--DelEnd-->
+Before the search box is bound to an input method, you can use the [setKeyboardAppearanceConfig](../js-apis-arkui-UIContext-sys.md#setkeyboardappearanceconfig20) API of **UIContext** to set the keyboard style.<!--DelEnd-->
 
-From API version 22, you can call the [setExtraConfig](ts-text-common.md#setextraconfig22) method of [IMEClient](ts-text-common.md#imeclient20) to set input method extension information. After the input method is bound, it receives this extension information, which can be used to implement custom functionality.
+From API version 22, the [setExtraConfig](ts-text-common.md#setextraconfig22) method of [IMEClient](ts-text-common.md#imeclient20) can be called to set input method extension information. After the input method is bound, it receives this extension information, which can be used to implement custom functionality.
 
-IMEClient is valid only during the execution of onWillAttachIME and cannot be called asynchronously.
+**IMEClient** is valid only during the execution of **onWillAttachIME** and cannot be called asynchronously.
 
 > **NOTE**
 >
 > This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1216,7 +1506,7 @@ IMEClient is valid only during the execution of onWillAttachIME and cannot be ca
 
 ## SearchController
 
-The controller for the **Search** component inherits from [TextContentControllerBase](ts-universal-attributes-text-style.md#textcontentcontrollerbase). The APIs involved are as follows: [getTextContentRect](ts-universal-attributes-text-style.md#gettextcontentrect), [getTextContentLineCount](ts-universal-attributes-text-style.md#gettextcontentlinecount), [getCaretOffset](ts-universal-attributes-text-style.md#getcaretoffset11), [addText](ts-universal-attributes-text-style.md#addtext15), [deleteText](ts-universal-attributes-text-style.md#deletetext15), [getSelection](ts-universal-attributes-text-style.md#getselection15), [clearPreviewText](ts-universal-attributes-text-style.md#clearpreviewtext17), [setStyledPlaceholder](ts-universal-attributes-text-style.md#setstyledplaceholder22), [deleteBackward](ts-universal-attributes-text-style.md#deletebackward23)<!--Del-->, system API [getText](ts-text-common-sys.md#gettext19)<!--DelEnd-->.
+The controller of the **Search** component is inherited from [TextContentControllerBase](ts-universal-attributes-text-style.md#textcontentcontrollerbase). The involved APIs include: [getTextContentRect](ts-universal-attributes-text-style.md#gettextcontentrect), [getTextContentLineCount](ts-universal-attributes-text-style.md#gettextcontentlinecount), [getCaretOffset](ts-universal-attributes-text-style.md#getcaretoffset11), [addText](ts-universal-attributes-text-style.md#addtext15), [deleteText](ts-universal-attributes-text-style.md#deletetext15), [getSelection](ts-universal-attributes-text-style.md#getselection15), [clearPreviewText](ts-universal-attributes-text-style.md#clearpreviewtext17), [setStyledPlaceholder](ts-universal-attributes-text-style.md#setstyledplaceholder22), [deleteBackward](ts-universal-attributes-text-style.md#deletebackward23), [scrollToVisible](ts-universal-attributes-text-style.md#scrolltovisible23)<!--Del-->, and system API [getText](ts-text-common-sys.md#gettext19)<!--DelEnd-->.
 
 ### Objects to Import
 ```ts
@@ -1247,7 +1537,7 @@ Sets the position of the caret.
 
 | Name| Type| Mandatory| Description                          |
 | ------ | -------- | ---- | ---------------------------------- |
-| value  | number   | Yes  | Length from the start of the character string to the position where the caret is located.<br>Values less than 0 are treated as 0. Values greater than the string length are treated as the string length.|
+| value  | number   | Yes  | Length from the start of the character string to the position where the caret is located.<br>Values less than 0 are treated as **0**. Values greater than the string length are treated as the string length.|
 
 ### stopEditing<sup>10+</sup>
 
@@ -1257,15 +1547,27 @@ Exits the editing state.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 ### setTextSelection<sup>12+</sup>
 
 setTextSelection(selectionStart: number, selectionEnd: number, options?: SelectionOptions): void;
 
-When the component is focused, this API is called to set the text selection area and highlight the text. The text is selected and highlighted only when the value of selectionStart is less than that of selectionEnd.
+Sets the text selection range and highlights the selected text when the component is focused. This API works only when the value of **selectionStart** is less than that of **selectionEnd**.
+
+>**NOTE**
+>
+> - If **selectionStart** or **selectionEnd** is set to **undefined**, the value **0** will be used.
+>
+> - If **selectionMenuHidden** is set to **true** or a 2-in-1 device is used, calling **setTextSelection** does not display the text selection menu even when **options** is set to **MenuPolicy.SHOW**.
+>
+> - If the selected text contains an emoji, the emoji is selected when its start position is within the text selection range.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1274,24 +1576,18 @@ When the component is focused, this API is called to set the text selection area
 | Name        | Type| Mandatory| Description  |
 | -------------- | -------- | ---- | -------- |
 | selectionStart | number   | Yes  | Start position of the text selection range. The start position of text in the text box is 0.<br>A value less than 0 is handled as **0**. A value greater than the maximum text length is handled as the maximum text length.<br>|
-| selectionEnd   | number   | Yes  | End position of the text selection range.<br>A value less than 0 is handled as the value **0**. A value greater than the maximum text length is handled as the maximum text length.<br>|
+| selectionEnd   | number   | Yes  | End position of the text selection range.<br>A value less than 0 is handled as **0**. A value greater than the maximum text length is handled as the maximum text length.<br>|
 | options | [SelectionOptions](ts-universal-attributes-text-style.md#selectionoptions12) | No   | Configuration options for text selection.<br>Default value: **MenuPolicy.DEFAULT**|
-
->  **NOTE**
->
->  If **selectionStart** or **selectionEnd** is set to **undefined**, the value **0** will be used.
->
->  If **selectionMenuHidden** is set to **true** or a 2-in-1 device is used, calling **setTextSelection** does not display the context menu even when **options** is set to **MenuPolicy.SHOW**.
->
->  If the selected text contains an emoji, the emoji is selected when its start position is within the text selection range.
 
 ## SearchSubmitCallback<sup>14+</sup>
 
 type SearchSubmitCallback = (searchContent: string, event?: SubmitEvent) => void
 
-Represents the callback triggered when the search icon, search button, or soft keyboard search button is clicked.
+Called when the search icon, search button, or soft keyboard search button is clicked.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -1300,13 +1596,13 @@ Represents the callback triggered when the search icon, search button, or soft k
 | Name  | Type                                                        | Mandatory| Description                                                    |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------------------------- |
 | searchContent | string             | Yes  | Current text input.|
-| event    | [SubmitEvent](ts-basic-components-textinput.md#submitevent11) | No  | Submit event.   |
+| event    | [SubmitEvent](ts-basic-components-textinput.md#submitevent11) | No  | Submission event object, which can be used to maintain the editing state of the **Search** component. If this parameter is not passed, the editing state cannot be maintained.|
 
 ##  Example
 
-### Example 1: Setting and Obtaining the Cursor Position
+### Example 1: Setting and Obtaining the Caret Position
 
-This example shows how to set and obtain the caret position using [controller](#searchcontroller), available since API version 8.
+This example demonstrates how to set and obtain the caret position using [controller](#searchcontroller), available since API version 8.
 
 ```ts
 // xxx.ets
@@ -1344,6 +1640,7 @@ struct SearchExample {
         })
       Button('Get CaretOffset')
         .onClick(() => {
+          // Obtain the caret position information.
           this.positionInfo = this.controller.getCaretOffset();
         })
     }.width('100%')
@@ -1355,7 +1652,7 @@ struct SearchExample {
 
 ### Example 2: Setting Search and Delete Icons
 
-This example uses the [searchButton](#searchbutton) (since API version 8), [searchIcon](#searchicon10) (since API version 10), and [cancelButton](#cancelbutton10) (since API version 10) attributes to show the effect of setting the search and delete icons.
+This example demonstrates the effect of setting the search and delete icons using the [searchButton](#searchbutton) (available since API version 8), [searchIcon](#searchicon10) (available since API version 10), and [cancelButton](#cancelbutton10) (available since API version 10) attributes.
 
 ```ts
 // xxx.ets
@@ -1403,13 +1700,14 @@ struct SearchExample {
 
 ### Example 3: Implementing a Custom Keyboard
 
-This example uses the [customKeyboard](#customkeyboard10) attribute (available since API version 10) to set the input parameter type in value to [CustomBuilder](ts-types.md#custombuilder8) and [ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1), respectively, to implement the custom keyboard function.
+This example implements a custom keyboard using the [customKeyboard](#customkeyboard10) attribute (available since API version 10) to set the input parameter type in **value** to [CustomBuilder](ts-types.md#custombuilder8) and [ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1).
 
-[ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1) has been added to the input parameter type of [customKeyboard](#customkeyboard10) since API version 22.
+Since API version 22, [ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1) is added to the input parameter type of [customKeyboard](#customkeyboard10).
 
 ```ts
 // xxx.ets
 import { ComponentContent } from '@kit.ArkUI';
+
 class BuilderParams {
   inputValue: string;
   controller: SearchController;
@@ -1419,6 +1717,7 @@ class BuilderParams {
     this.controller = controller;
   }
 }
+
 @Builder
 function CustomKeyboardBuilder(builderParams: BuilderParams) {
   Column() {
@@ -1432,7 +1731,7 @@ function CustomKeyboardBuilder(builderParams: BuilderParams) {
     Grid() {
       ForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, '*', 0, '#'], (item: number | string) => {
         GridItem() {
-          Button(item + "")
+          Button(item + '')
             .width(110).onClick(() => {
             builderParams.inputValue += item;
           })
@@ -1441,6 +1740,7 @@ function CustomKeyboardBuilder(builderParams: BuilderParams) {
     }.maxCount(3).columnsGap(10).rowsGap(10).padding(5)
   }.backgroundColor(Color.Gray)
 }
+
 @Entry
 @Component
 struct SearchExample {
@@ -1452,18 +1752,20 @@ struct SearchExample {
 
   aboutToAppear(): void {
     // Create a ComponentContent instance.
-    this.componentContent = new ComponentContent(this.getUIContext(), wrapBuilder(CustomKeyboardBuilder), this.builderParam);
+    this.componentContent =
+      new ComponentContent(this.getUIContext(), wrapBuilder(CustomKeyboardBuilder), this.builderParam);
   }
-  build(){
+
+  build() {
     Column() {
       Text('Builder').margin(10).border({ width: 1 })
       Search({ controller: this.builderParam.controller, value: this.builderParam.inputValue })
-        .customKeyboard(this.componentContent, { supportAvoidance: this.supportAvoidance })
+        .customKeyboard(CustomKeyboardBuilder(this.builderParam), { supportAvoidance: this.supportAvoidance })
         .margin(10).border({ width: 1 }).height('48vp')
 
       Text('ComponentContent').margin(10).border({ width: 1 })
       Search({ controller: this.builderParam.controller, value: this.builderParam.inputValue })
-        .customKeyboard(CustomKeyboardBuilder(this.builderParam), { supportAvoidance: this.supportAvoidance })
+        .customKeyboard(this.componentContent, { supportAvoidance: this.supportAvoidance })
         .margin(10).border({ width: 1 }).height('48vp')
     }
   }
@@ -1474,7 +1776,7 @@ struct SearchExample {
 
 ### Example 4: Setting the Enter Key Type
 
-This example uses the [enterKeyType](#enterkeytype12) property to dynamically switch the enter key type. (This property is available since API version 12.)
+This example demonstrates how to dynamically switch the enter key type using the [enterKeyType](#enterkeytype12) attribute, available since API version 12.
 
 ```ts
 // xxx.ets
@@ -1508,7 +1810,7 @@ struct SearchExample {
 
 ### Example 5: Setting the Text Style
 
-This example showcases various text styles by using the [lineHeight](#lineheight12), [letterSpacing](#letterspacing12), and [decoration](#decoration12) attributes, which are supported since API version 12.
+This example showcases various text styles by using the [lineHeight](#lineheight12), [letterSpacing](#letterspacing12), and [decoration](#decoration12) attributes, available since API version 12.
 
 ```ts
 // xxx.ets
@@ -1555,9 +1857,9 @@ struct SearchExample {
 
 ![SearchDecoration](figures/search_decoration.png)
 
-### Example 6: Setting Text Feature Effects
+### Example 6: Setting Font Features
 
-This sample uses the [fontFeature](#fontfeature12) (available since API version 12) attribute to display text with different font features.
+This example demonstrates how to display text with different font features using the [fontFeature](#fontfeature12) attribute, available since API version 12.
 
 ```ts
 // xxx.ets
@@ -1571,10 +1873,10 @@ struct SearchExample {
     Column(){
       Search({value: this.text1})
         .margin({top:200})
-        .fontFeature("\"ss01\" on")
+        .fontFeature('"ss01" on')
       Search({value: this.text2})
         .margin({top:10})
-        .fontFeature("\"ss01\" off")
+        .fontFeature('"ss01" off')
     }
     .width("90%")
     .margin("5%")
@@ -1593,7 +1895,7 @@ This example implements the custom keyboard avoidance effect by configuring the 
 @Component
 struct SearchExample {
   controller: SearchController = new SearchController();
-  @State inputValue: string = "";
+  @State inputValue: string = '';
   @State height1: string | number = '80%';
   @State supportAvoidance: boolean = true;
 
@@ -1611,7 +1913,7 @@ struct SearchExample {
       Grid() {
         ForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, '*', 0, '#'], (item: number | string) => {
           GridItem() {
-            Button(item + "")
+            Button(item + '')
               .width(110).onClick(() => {
               this.inputValue += item;
             })
@@ -1625,25 +1927,25 @@ struct SearchExample {
   build() {
     Column() {
       Row() {
-        Button("20%")
+        Button('20%')
           .fontSize(24)
           .onClick(() => {
-            this.height1 = "20%";
+            this.height1 = '20%';
           })
-        Button("80%")
+        Button('80%')
           .fontSize(24)
           .margin({ left: 20 })
           .onClick(() => {
-            this.height1 = "80%";
+            this.height1 = '80%';
           })
       }
       .justifyContent(FlexAlign.Center)
       .alignItems(VerticalAlign.Bottom)
       .height(this.height1)
-      .width("100%")
+      .width('100%')
       .padding({ bottom: 50 })
 
-      Search({ controller: this.controller, value: this.inputValue })// Bind a custom keyboard.
+      Search({ controller: this.controller, value: this.inputValue }) // Bind a custom keyboard.
         .customKeyboard(this.CustomKeyboardBuilder(), { supportAvoidance: this.supportAvoidance })
         .margin(10)
         .border({ width: 1 })
@@ -1659,7 +1961,7 @@ struct SearchExample {
 
 ### Example 8: Setting Text Auto-Adaptation
 
-From API version 12 onwards, this example uses the [minFontSize](#minfontsize12) and [maxFontSize](#maxfontsize12) attributes to display the effect of text adaptation.
+This example implements the text auto-adaptation effect by using the [minFontSize](#minfontsize12) and [maxFontSize](#maxfontsize12) attributes, both available since API version 12.
 
 ```ts
 // xxx.ets
@@ -1689,21 +1991,21 @@ struct SearchExample {
 
 ### Example 9: Setting Insert and Delete Callbacks
 
-In API version 12 and later versions, the [onWillInsert](#onwillinsert12), [onDidInsert](#ondidinsert12), [onWillDelete](#onwilldelete12) and [onDidDelete](#ondiddelete12) APIs are used to implement insertion and deletion. Since API version 15, the [onWillChange](#onwillchange15) callback is used to display detailed information about the text content to be changed.
+This example implements the text insertion and deletion effects using the [onWillInsert](#onwillinsert12), [onDidInsert](#ondidinsert12), [onWillDelete](#onwilldelete12), and [onDidDelete](#ondiddelete12) APIs, available since API version 12. The [onWillChange](#onwillchange15) API, available since API version 15, is used to display detailed information about the text content to be changed.
 
 ```ts
 // xxx.ets
 class ChangeState {
-  changeContent: string = "";
+  changeContent: string = '';
   changePreviewOffset: number | undefined = 0;
-  changePreviewValue: string | undefined = "";
+  changePreviewValue: string | undefined = '';
   changeTextChangeRangeBeforeX: number | undefined = 0;
   changeTextChangeRangeBeforeY: number | undefined = 0;
   changeTextChangeRangeAfterX: number | undefined = 0;
   changeTextChangeRangeAfterY: number | undefined = 0;
-  changeTextChangeOldContent: string | undefined = "";
-  changeTextChangechangePreviewOffset: number | undefined = 0;
-  changeTextChangechangePreviewValue: string | undefined = "";
+  changeTextChangeOldContent: string | undefined = '';
+  changeTextChangeOldPreviewOffset: number | undefined = 0;
+  changeTextChangeOldPreviewValue: string | undefined = '';
 
   SetInfo(info: EditableTextChangeValue) {
     this.changeContent = info.content;
@@ -1714,16 +2016,16 @@ class ChangeState {
     this.changeTextChangeRangeAfterX = info.options?.rangeAfter.start;
     this.changeTextChangeRangeAfterY = info.options?.rangeAfter.end;
     this.changeTextChangeOldContent = info.options?.oldContent;
-    this.changeTextChangechangePreviewOffset = info.options?.oldPreviewText.offset;
-    this.changeTextChangechangePreviewValue = info.options?.oldPreviewText.value;
+    this.changeTextChangeOldPreviewOffset = info.options?.oldPreviewText.offset;
+    this.changeTextChangeOldPreviewValue = info.options?.oldPreviewText.value;
   }
 }
 
 @Entry
 @Component
 struct SearchExample {
-  @State insertValue: string = "";
-  @State deleteValue: string = "";
+  @State insertValue: string = '';
+  @State deleteValue: string = '';
   @State insertOffset: number = 0;
   @State deleteOffset: number = 0;
   @State deleteDirection: number = 0;
@@ -1733,7 +2035,7 @@ struct SearchExample {
   build() {
     Row() {
       Column() {
-        Search({ value: "Insert callbacks are supported" })
+        Search({ value: 'Insert callbacks are supported' })
           .height(60)
           .onWillInsert((info: InsertValue) => {
             this.insertValue = info.insertValue;
@@ -1747,22 +2049,22 @@ struct SearchExample {
             this.insertOffset = info.insertOffset;
           })
 
-        Text("insertValue:" + this.insertValue + "  insertOffset:" + this.insertOffset).height(20)
+        Text('insertValue:' + this.insertValue + '  insertOffset:' + this.insertOffset).height(20)
 
         Blank(30)
 
-        Text("context:" + this.changeState1.changeContent).height(20)
-        Text("previewText-offset:" + this.changeState1.changePreviewOffset).height(20)
-        Text("previewText-value:" + this.changeState1.changePreviewValue).height(20)
-        Text("options-rangeBefore-start:" + this.changeState1.changeTextChangeRangeBeforeX).height(20)
-        Text("options-rangeBefore-end:" + this.changeState1.changeTextChangeRangeBeforeY).height(20)
-        Text("options-rangeAfter-start:" + this.changeState1.changeTextChangeRangeAfterX).height(20)
-        Text("options-rangeAfter-end:" + this.changeState1.changeTextChangeRangeAfterY).height(20)
-        Text("options-oldContent:" + this.changeState1.changeTextChangeOldContent).height(20)
-        Text("options-oldPreviewText-offset:" + this.changeState1.changeTextChangechangePreviewOffset).height(20)
-        Text("options-oldPreviewText-value:" + this.changeState1.changeTextChangechangePreviewValue).height(20)
+        Text('context:' + this.changeState1.changeContent).height(20)
+        Text('previewText-offset:' + this.changeState1.changePreviewOffset).height(20)
+        Text('previewText-value:' + this.changeState1.changePreviewValue).height(20)
+        Text('options-rangeBefore-start:' + this.changeState1.changeTextChangeRangeBeforeX).height(20)
+        Text('options-rangeBefore-end:' + this.changeState1.changeTextChangeRangeBeforeY).height(20)
+        Text('options-rangeAfter-start:' + this.changeState1.changeTextChangeRangeAfterX).height(20)
+        Text('options-rangeAfter-end:' + this.changeState1.changeTextChangeRangeAfterY).height(20)
+        Text('options-oldContent:' + this.changeState1.changeTextChangeOldContent).height(20)
+        Text('options-oldPreviewText-offset:' + this.changeState1.changeTextChangeOldPreviewOffset).height(20)
+        Text('options-oldPreviewText-value:' + this.changeState1.changeTextChangeOldPreviewValue).height(20)
 
-        Search({ value: "Delete callbacks are supported" })
+        Search({ value: 'Delete callbacks are supported' })
           .height(60)
           .onWillDelete((info: DeleteValue) => {
             this.deleteValue = info.deleteValue;
@@ -1770,6 +2072,7 @@ struct SearchExample {
             return true;
           })
           .onWillChange((info: EditableTextChangeValue) => {
+            // Process text change information.
             this.changeState2.SetInfo(info);
             return true;
           })
@@ -1778,21 +2081,21 @@ struct SearchExample {
             this.deleteDirection = info.direction;
           })
 
-        Text("deleteValue:" + this.deleteValue + "  deleteOffset:" + this.deleteOffset).height(20)
-        Text("deleteDirection:" + (this.deleteDirection == 0 ? "BACKWARD" : "FORWARD")).height(20)
+        Text('deleteValue:' + this.deleteValue + '  deleteOffset:' + this.deleteOffset).height(20)
+        Text('deleteDirection:' + (this.deleteDirection == 0 ? 'BACKWARD' : 'FORWARD')).height(20)
 
         Blank(30)
 
-        Text("context:" + this.changeState2.changeContent).height(20)
-        Text("previewText-offset:" + this.changeState2.changePreviewOffset).height(20)
-        Text("previewText-value:" + this.changeState2.changePreviewValue).height(20)
-        Text("options-rangeBefore-start:" + this.changeState2.changeTextChangeRangeBeforeX).height(20)
-        Text("options-rangeBefore-end:" + this.changeState2.changeTextChangeRangeBeforeY).height(20)
-        Text("options-rangeAfter-start:" + this.changeState2.changeTextChangeRangeAfterX).height(20)
-        Text("options-rangeAfter-end:" + this.changeState2.changeTextChangeRangeAfterY).height(20)
-        Text("options-oldContent:" + this.changeState2.changeTextChangeOldContent).height(20)
-        Text("options-oldPreviewText-offset:" + this.changeState2.changeTextChangechangePreviewOffset).height(20)
-        Text("options-oldPreviewText-value:" + this.changeState2.changeTextChangechangePreviewValue).height(20)
+        Text('context:' + this.changeState2.changeContent).height(20)
+        Text('previewText-offset:' + this.changeState2.changePreviewOffset).height(20)
+        Text('previewText-value:' + this.changeState2.changePreviewValue).height(20)
+        Text('options-rangeBefore-start:' + this.changeState2.changeTextChangeRangeBeforeX).height(20)
+        Text('options-rangeBefore-end:' + this.changeState2.changeTextChangeRangeBeforeY).height(20)
+        Text('options-rangeAfter-start:' + this.changeState2.changeTextChangeRangeAfterX).height(20)
+        Text('options-rangeAfter-end:' + this.changeState2.changeTextChangeRangeAfterY).height(20)
+        Text('options-oldContent:' + this.changeState2.changeTextChangeOldContent).height(20)
+        Text('options-oldPreviewText-offset:' + this.changeState2.changeTextChangeOldPreviewOffset).height(20)
+        Text('options-oldPreviewText-value:' + this.changeState2.changeTextChangeOldPreviewValue).height(20)
 
       }.width('100%')
     }
@@ -1815,23 +2118,28 @@ struct SearchExample {
   @State text: string = 'Search editMenuOptions';
   @State endIndex: number = 0;
   onCreateMenu = (menuItems: Array<TextMenuItem>) => {
+    // Create the first custom menu item for menu extension.
     // Replace $r('app.media.startIcon') with the image resource file you use.
     let item1: TextMenuItem = {
       content: 'create1',
       icon: $r('app.media.startIcon'),
       id: TextMenuItemId.of('create1'),
     };
+    // Create the second custom menu item.
     let item2: TextMenuItem = {
       content: 'create2',
       id: TextMenuItemId.of('create2'),
       icon: $r('app.media.startIcon'),
     };
+    // Add the custom menu items to the menu list: item1 to the end and item2 to the beginning.
     menuItems.push(item1);
     menuItems.unshift(item2);
+    // Find and remove the system AI-assisted writing menu item.
     let targetIndex = menuItems.findIndex(item => item.id.equals(TextMenuItemId.AI_WRITER));
     if (targetIndex !== -1) {
       menuItems.splice(targetIndex, 1); // Delete an element at the target index.
     }
+    // Remove the autofill menu item.
     // TextMenuItemId.autoFill is supported since API version 23.
     targetIndex = menuItems.findIndex(item => item.id.equals(TextMenuItemId.autoFill));
     if (targetIndex !== -1) {
@@ -1840,31 +2148,33 @@ struct SearchExample {
     return menuItems;
   }
   onMenuItemClick = (menuItem: TextMenuItem, textRange: TextRange) => {
-    if (menuItem.id.equals(TextMenuItemId.of("create2"))) {
-      console.info("Intercept id: create2 start:" + textRange.start + "; end:" + textRange.end);
+    if (menuItem.id.equals(TextMenuItemId.of('create2'))) {
+      console.info('Intercept id: create2 start:' + textRange.start + '; end:' + textRange.end);
       return true;
     }
-    if (menuItem.id.equals(TextMenuItemId.of("prepare1"))) {
-      console.info("Intercept id: prepare1 start:" + textRange.start + "; end:" + textRange.end);
+    if (menuItem.id.equals(TextMenuItemId.of('prepare1'))) {
+      console.info('Intercept id: prepare1 start:' + textRange.start + '; end:' + textRange.end);
       return true;
     }
     if (menuItem.id.equals(TextMenuItemId.COPY)) {
-      console.info("Intercept COPY start:" + textRange.start + "; end:" + textRange.end);
+      console.info('Intercept id: COPY start:' + textRange.start + '; end:' + textRange.end);
       return true;
     }
     if (menuItem.id.equals(TextMenuItemId.SELECT_ALL)) {
-      console.info("Do not intercept SELECT_ALL start:" + textRange.start + "; end:" + textRange.end);
+      console.info('Do not intercept id: SELECT_ALL start:' + textRange.start + '; end:' + textRange.end);
       return false;
     }
     return false;
   }
   // Replace $r('app.media.startIcon') with the image resource file you use.
   onPrepareMenu = (menuItems: Array<TextMenuItem>) => {
+    // Create a dynamic menu item, which contains the current selection end position.
     let item1: TextMenuItem = {
       content: 'prepare1_' + this.endIndex,
       icon: $r('app.media.startIcon'),
       id: TextMenuItemId.of('prepare1'),
     };
+    // Add the dynamic menu item to the beginning of the menu list.
     menuItems.unshift(item1);
     return menuItems;
   }
@@ -1884,8 +2194,8 @@ struct SearchExample {
           this.endIndex = selectionEnd;
         })
     }
-    .width("90%")
-    .margin("5%")
+    .width('90%')
+    .margin('5%')
   }
 }
 ```
@@ -1935,7 +2245,9 @@ struct SearchExample {
 
 ### Example 12: Setting Whether Text is Copyable
 
-In API version 9 and later versions, the [copyOption](#copyoption9) attribute is used to set whether the text can be copied.
+This example shows how to set text copying, intercept system copying, and intercept system cutting using [copyOption](#copyoption9), [onWillCopy](#onwillcopy), and [onWillCut](#onwillcut).
+
+The [onWillCopy](#onwillcopy) and [onWillCut](#onwillcut) APIs are added since API version 26.0.0.
 
 ```ts
 // xxx.ets
@@ -1949,14 +2261,19 @@ struct SearchExample {
 
   build() {
     Column({ space: 3 }) {
-      Text("copy: " + this.copyValue)
-      Text("cut:" + this.cutValue)
+      Text('copy: ' + this.copyValue)
+      Text('cut:' + this.cutValue)
       Search({ value: 'Search CopyOption:None', controller: this.controller })
         .width('95%')
         .height(40)
         .copyOption(CopyOptions.None)
         .onCopy((value: string) => {
           this.copyValue = value;
+        })
+        // onWillCopy is supported since API version 26.0.0.
+        .onWillCopy((value: string) => {
+          this.copyValue = value;
+          return false;
         })
         .onCut((value: string) => {
           this.cutValue = value;
@@ -1970,6 +2287,11 @@ struct SearchExample {
         })
         .onCut((value: string) => {
           this.cutValue = value;
+        })
+        // onWillCut is supported since API version 26.0.0.
+        .onWillCut((value: string) => {
+          this.cutValue = value;
+          return false;
         })
       Search({ value: 'Search CopyOption:LocalDevice', controller: this.controller })
         .width('95%')
@@ -1992,7 +2314,7 @@ struct SearchExample {
 
 ### Example 13: Setting the Horizontal Alignment, Caret Style, and Background Color of the Selected Text
 
-This sample shows how to set the text horizontal alignment, caret style, and selected background color using the [textAlign](#textalign9) (available since API version 9), [caretStyle](#caretstyle10) (available since API version 10), and [selectedBackgroundColor](#selectedbackgroundcolor12) (available since API version 12) properties.
+This example demonstrates how to set the horizontal alignment, caret style, and background color of the selected text using the [textAlign](#textalign9) (available since API version 9), [caretStyle](#caretstyle10) (available since API version 10), and [selectedBackgroundColor](#selectedbackgroundcolor12) (available since API version 12) attributes.
 
 ```ts
 // xxx.ets
@@ -2022,7 +2344,7 @@ struct SearchExample {
 
 ### Example 14: Configuring the Text Box to Receive Default Focus and Bring Up the Soft Keyboard
 
-This sample shows how to set the default focus and enable the keyboard using the [defaultFocus](ts-universal-attributes-focus.md#defaultfocus9) (available since API version 9) and [enableKeyboardOnFocus](#enablekeyboardonfocus10) (available since API version 10) properties.
+This example demonstrates how to configure the text box to receive default focus and bring up the soft keyboard using the [defaultFocus](ts-universal-attributes-focus.md#defaultfocus9) (available since API version 9) and [enableKeyboardOnFocus](#enablekeyboardonfocus10) (available since API version 10) attributes.
 
 ```ts
 // xxx.ets
@@ -2055,9 +2377,9 @@ struct SearchExample {
 
 ![searchEnableKeyboardOnFocus](figures/searchEnableKeyboardOnFocus.gif)
 
-### Example 15: Disabling the System Context Menu on Selection
+### Example 15: Disabling the System Text Selection Menu
 
-This sample shows how to hide the system text selection menu by using the [selectionMenuHidden](#selectionmenuhidden10) property.
+This example demonstrates how to disable the system text selection menu by using the [selectionMenuHidden](#selectionmenuhidden10) attribute, available since API version 10.
 
 ```ts
 // xxx.ets
@@ -2085,7 +2407,7 @@ struct SearchExample {
 
 ### Example 16: Setting Input Filtering
 
-In API version 12 and later versions, this example uses the [inputFilter](#inputfilter12) attribute to filter input text.
+This example demonstrates how to set input filtering using the [inputFilter](#inputfilter12) attribute, available since API version 12.
 
 ```ts
 // xxx.ets
@@ -2118,7 +2440,7 @@ struct SearchExample {
 
 ### Example 17: Setting Text Selection for a Specified Region
 
-This example uses the [setTextSelection](#settextselection12) method (available since API version 12) to set the text in a specified area and the policy for showing or hiding the menu.
+This example demonstrates how to set text selection for a specified region and the display/hide strategy of the menu using the [setTextSelection](#settextselection12) API, available since API version 12.
 
 ```ts
 // xxx.ets
@@ -2155,11 +2477,11 @@ struct SearchExample {
 }
 ```
 
-
+![searchSetTextSelection](figures/searchSetTextSelection.png)
 
 ### Example 18: Handling Text Scrolling Events
 
-In API version 10 and later versions, this sample uses the [onContentScroll](#oncontentscroll10) event to show how to set the callback for a text scrolling event.
+This example demonstrates how to set the callback for text scrolling events using the [onContentScroll](#oncontentscroll10) event, available since API version 10.
 
 ```ts
 // xxx.ets
@@ -2192,9 +2514,9 @@ struct SearchExample {
 
 ### Example 19: Setting the Minimum and Maximum Font Scale Factors
 
-In API version 18 and later versions, you can set the minimum and maximum font scales by using the [minFontScale](#minfontscale18) and [maxFontScale](#maxfontscale18) parameters. When the system font size is adjusted, the text font size remains within the range defined by [minFontScale](#minfontscale18) and [maxFontScale](#maxfontscale18). The following example demonstrates how the **Search** component scales its font size according to system font size changes, within different font size limits.
+Since API version 18, [minFontScale](#minfontscale18) and [maxFontScale](#maxfontscale18) are used to set the minimum and maximum font scale factors. When the system font size is adjusted, the text font size remains within the range defined by [minFontScale](#minfontscale18) and [maxFontScale](#maxfontscale18). The following example demonstrates how the **Search** component scales its font size according to system font size changes, within different font size limits.
 
-```json
+```json5
 // Enable application font scaling to follow system settings.
 // Create a new directory named profile in the following path: AppScope/resources/base.
 // Inside the newly created profile directory, create a file named configuration.json.
@@ -2207,7 +2529,7 @@ In API version 18 and later versions, you can set the minimum and maximum font s
 }
 ```
 
-```json
+```json5
 // Modify the app.json5 file in AppScope as follows:
 {
   "app": {
@@ -2235,10 +2557,10 @@ struct SearchExample {
   build() {
     Column() {
       Column() {
-        Text("System font scales up and down: aaaaaaaAAAAAA")
+        Text('System font scales up and down: aaaaaaaAAAAAA')
         Blank(30)
-        Text("minFontScale = " + this.minFontScale)
-        Text("maxFontScale = " + this.maxFontScale)
+        Text('minFontScale = ' + this.minFontScale)
+        Text('maxFontScale = ' + this.maxFontScale)
         Search({
           placeholder: 'The text area can hold an unlimited amount of text. input your word...',
         })
@@ -2247,8 +2569,8 @@ struct SearchExample {
 
         Blank(30)
 
-        Text("minFontScale = " + this.minFontScale2)
-        Text("maxFontScale = " + this.maxFontScale2)
+        Text('minFontScale = ' + this.minFontScale2)
+        Text('maxFontScale = ' + this.maxFontScale2)
         Search({
           placeholder: 'The text area can hold an unlimited amount of text. input your word...',
         })
@@ -2265,6 +2587,8 @@ struct SearchExample {
 ### Example 20: Setting Text Stroke
 
 This example demonstrates how to set the stroke width and color for text using the [strokeWidth](#strokewidth20) and [strokeColor](#strokecolor20) attributes, available since API version 20.
+
+The [strokeJoinStyle](#strokejoinstyle) API is added since API version 26.0.0 to set the stroke join style for text.
 
 ```ts
 // xxx.ets
@@ -2299,6 +2623,7 @@ struct SearchExample {
           .minFontSize(40)
           .maxFontSize(40)
           .strokeWidth(LengthMetrics.px(3.0))
+          .strokeJoinStyle(StrokeJoinStyle.MITER_JOIN)
           .strokeColor(Color.Red)
       }.height('90%')
     }
@@ -2312,7 +2637,7 @@ struct SearchExample {
 
 ### Example 21: Configuring Automatic Spacing Between Chinese and Western Text
 
-This example shows how to configure automatic spacing between Chinese and Western characters using the [enableAutoSpacing](#enableautospacing20) attribute, available since API version 20.
+This example demonstrates how to configure automatic spacing between Chinese and Western characters using the [enableAutoSpacing](#enableautospacing20) attribute, available since API version 20.
 
 ```ts
 // xxx.ets
@@ -2323,10 +2648,10 @@ struct SearchExample {
     Row() {
       Column() {
         Text('Automatic spacing: Enabled').margin(5)
-        Search ({value: 'Auto Spacing for Chinese and English Texts'})
+        Search({value: '中文Text'})
           .enableAutoSpacing(true)
         Text('Automatic spacing: Disabled').margin(5)
-        Search ({value: 'Auto Spacing for Chinese and English Texts'})
+        Search({value: '中文Text'})
           .enableAutoSpacing(false)
       }.height('100%')
     }
@@ -2348,7 +2673,7 @@ import { LengthMetrics } from '@kit.ArkUI';
 @Component
 struct SearchExample {
   styledString: MutableStyledString =
-    new MutableStyledString("Text box rich text: Text",
+    new MutableStyledString('Text box rich text: Text',
       [
         {
           start: 0,
@@ -2382,13 +2707,14 @@ struct SearchExample {
   controller: SearchController = new SearchController();
 
   aboutToAppear() {
+    // Set the placeholder rich text format.
     this.controller.setStyledPlaceholder(this.styledString)
   }
 
   build() {
     Scroll() {
       Column() {
-        Text("Search Placeholder Rich Text"")
+        Text('Search placeholder rich text')
           .fontSize(8)
         Search({
           controller: this.controller
@@ -2416,10 +2742,11 @@ struct SearchExample {
     Column() {
       Search({ value: 'Execute onWillAttachIME callback before launching the input method' })
         .onWillAttachIME((client: IMEClient) => {
+          // Set the extended information of the input method, including the custom attributes of the Search component.
           client.setExtraConfig({
             customSettings: {
-              name: "Search", // Custom property
-              id: client.nodeId // Custom Property
+              name: "Search", // Custom attribute: component name
+              id: client.nodeId // Custom attribute: node ID
             }
           })
         })
@@ -2430,7 +2757,7 @@ struct SearchExample {
 
 ### Example 24: Setting the Color of the Text Box Divider
 
-This example shows how to use the [dividerColor](#dividercolor23) API to set the color of the text box divider, supported since API version 23.
+This example demonstrates how to set the color of the text box divider using the [dividerColor](#dividercolor23) API, supported since API version 23.
 
 ```ts
 // xxx.ets
@@ -2448,16 +2775,16 @@ struct SearchExample {
   @State colorType: ColorMetrics[] =
     [this.colorTypeRGB, this.colorTypeARGB, this.colorTypeColorWithSpace, this.colorTypeRGBA, this.colorTypeRes];
   @State colorTypeName: string[] =
-    ["colorTypeRGB", "colorTypeARGB", "colorTypeColorWithSpace", "colorTypeRGBA", "colorTypeRes"];
+    ['colorTypeRGB', 'colorTypeARGB', 'colorTypeColorWithSpace', 'colorTypeRGBA', 'colorTypeRes'];
   @State count: number = 0;
 
   build() {
     Column() {
       Blank(30)
-      Search({ value: "Input search text" })
-        .searchButton("SEARCH", { fontSize: '14vp' })
+      Search({ value: 'Input search text' })
+        .searchButton('SEARCH', { fontSize: '14vp' })
         .dividerColor(this.colorType[this.count])
-      Button("Change ColorType: " + this.colorTypeName[this.count]).onClick(() => {
+      Button('Change ColorType: ' + this.colorTypeName[this.count]).onClick(() => {
         this.count = (this.count + 1) % (this.colorType.length)
       })
         .fontSize('14vp')
@@ -2471,7 +2798,7 @@ struct SearchExample {
 
 ### Example 25: Setting Leading Punctuation Compression
 
-This example uses the [compressLeadingPunctuation](#compressleadingpunctuation23) API to set leading punctuation compression. If a punctuation mark with a space on its left appears at the start of a line, the punctuation mark will be compressed to the left boundary.
+This example demonstrates how to set leading punctuation compression using the [compressLeadingPunctuation](#compressleadingpunctuation23) API. If a punctuation mark with a leading space appears at the start of a line, the punctuation mark will be compressed to the left boundary.
 
 The **compressLeadingPunctuation** API is supported since API version 23.
 
@@ -2482,12 +2809,12 @@ The **compressLeadingPunctuation** API is supported since API version 23.
 struct Index {
   build() {
     Column(){
-      Search({ value: "[Leading punctuation compression] enabled" })
+      Search({ value: '\u300CLeading punctuation compression enabled' })
         .compressLeadingPunctuation(true)
         .margin(5)
         .textFont({size:30})
         .width("90%")
-      Search({ value: "[Leading punctuation compression] disabled" })
+      Search({ value: '\u300CLeading punctuation compression disabled' })
         .compressLeadingPunctuation(false)
         .textFont({size:30})
         .width("90%")
@@ -2495,11 +2822,11 @@ struct Index {
   }
 }
 ```
+![searchCompressLeadingPunctuation](figures/searchCompressLeadingPunctuation.gif)
 
+### Example 26: Setting Adaptive Spacing
 
-### Example 26: Configuring Automatic Spacing
-
-This example uses the [includeFontPadding](#includefontpadding23) API to add the spacing of the first and last lines and the [fallbackLineSpacing](#fallbacklinespacing23) API to set the adaptive line spacing.
+This example uses the [includeFontPadding](#includefontpadding23) API to add the spacing of the first and last lines and the [fallbackLineSpacing](#fallbacklinespacing23) API to set adaptive line spacing.
 
 The [includeFontPadding](#includefontpadding23) and [fallbackLineSpacing](#fallbacklinespacing23) APIs are supported since API version 23.
 
@@ -2518,7 +2845,7 @@ struct Index {
     Column() {
       Search({
         value: this.displayText,
-        placeholder: '-Enter-'
+        placeholder: 'Enter'
       })
         .includeFontPadding(this.include)
         .fallbackLineSpacing(this.fallback)
@@ -2539,7 +2866,7 @@ struct Index {
             .margin({ bottom: 10 })
 
           // --- Button related to FallbackLineSpacing ---
-          Button('Set fallbackLineSpacing: ' this.fallback)
+          Button('Set fallbackLineSpacing: ' + this.fallback)
             .onClick(() => {
               this.fallback = this.fallback === false ? true : false;
             })
@@ -2566,7 +2893,7 @@ struct Index {
 
 ### Example 27: Setting the Drag Preview Style for Text Being Dragged
 
-This example shows how to set the drag preview style for text being dragged using the [selectedDragPreviewStyle](#selecteddragpreviewstyle23) API.
+This example demonstrates how to set the drag preview style for text being dragged using the [selectedDragPreviewStyle](#selecteddragpreviewstyle23) API.
 
 The **selectedDragPreviewStyle** API is supported since API version 23.
 
@@ -2593,7 +2920,7 @@ struct SearchTest {
 
 ### Example 28: Deleting the Last Character in a Text Box
 
-This example calls the [deleteBackward](ts-universal-attributes-text-style.md#deletebackward23) API to delete the last character in the text box.
+This example demonstrates how to delete the last character in a text box using the [deleteBackward](ts-universal-attributes-text-style.md#deletebackward23) API.
 
 The [deleteBackward](ts-universal-attributes-text-style.md#deletebackward23) API is supported since API version 23.
 
@@ -2605,7 +2932,7 @@ struct Page {
 
   build() {
     Column() {
-      Search({ placeholder: 'Search box example', controller: this.controller })
+      Search({ placeholder: 'Enter', controller: this.controller })
       Button('Delete backward')
         .onClick(() => {
           this.controller.deleteBackward();
@@ -2615,11 +2942,11 @@ struct Page {
 }
 ```
 
-
+![searchDeleteBackward](figures/Search_DeleteBackward.gif)
 
 ### Example 29: Setting the Text Layout Direction
 
-This example uses the [textDirection](#textdirection23) API to set the text layout direction.
+This example demonstrates how to set the text layout direction using the [textDirection](#textdirection23) API.
 
 The **textDirection** API is supported since API version 23.
 
@@ -2628,24 +2955,24 @@ The **textDirection** API is supported since API version 23.
 @Entry
 @Component
 struct SearchExample {
-  @State text: string = 'Search text layout direction example';
+  @State text: string = 'Search text direction example';
 
   build() {
     Column({ space: 3 }) {
-      Text('Search text direction: RTL, layout direction: default')
+      Text('Search text direction: RTL, component layout direction: default')
         .fontSize(12).width('90%').margin(5)
       Search({ value: this.text })
         .width('95%')
         .height(40)
         .textDirection(TextDirection.RTL)
-      Text('Search text layout direction: RTL, layout direction: default, horizontal alignment: LEFT')
+      Text('Search text direction: RTL, component layout direction: default, horizontal alignment: LEFT')
         .fontSize(12).width('90%').margin(5)
       Search({ value: this.text })
         .width('95%')
         .height(40)
         .textDirection(TextDirection.RTL)
         .textAlign(TextAlign.LEFT)
-      Text('Search text layout direction: LTR, layout direction: RTL')
+      Text('Search text direction: LTR, component layout direction: RTL')
         .fontSize(12).width('90%').margin(5)
       Search({ value: this.text })
         .width('95%')
@@ -2659,11 +2986,11 @@ struct SearchExample {
 }
 ```
 
-
+![searchTextDirection](figures/searchTextDirection.PNG)
 
 ### Example 30: Scrolling the Text in a Specified Range to the Visible Area
 
-This example uses the [scrollToVisible](./ts-universal-attributes-text-style.md#scrolltovisible23) API to scroll the text outside the visible area to the visible area.
+This example demonstrates how to scroll the text in a specified range to the visible area using the [scrollToVisible](./ts-universal-attributes-text-style.md#scrolltovisible23) API.
 
 The **scrollToVisible** API is supported since API version 23.
 
@@ -2680,7 +3007,7 @@ struct SearchExample {
       Search({ value: this.text, controller: this.controller })
         .width(336)
         .height(56)
-      Button("Scroll Text to Visible Area").onClick(()=> {
+      Button('Scroll Text to Visible Area').onClick(()=> {
         this.controller.scrollToVisible({ start: 22, end: 30})
       })
     }.width('100%').height('100%').backgroundColor('#F1F3F5')
@@ -2689,3 +3016,102 @@ struct SearchExample {
 ```
 
 ![searchscrolltovisible](figures/search_scroll_to_visible.gif)
+
+### Example 31: Setting the Text Shader Effect
+
+This example demonstrates how to use [shaderStyle](#shaderstyle) to set the text shader effect in the **Search** component.
+
+Since API version 26.0.0, the **shaderStyle** API is added.
+
+```ts
+@Entry
+@Component
+struct ShaderColorStyle {
+  @State message: string = 'Hello World';
+  @State linearGradientOptions1: LinearGradientOptions =
+    {
+      angle: 45,
+      colors: [[Color.Red, 0.0], [Color.Blue, 0.3], [Color.Green, 0.5]]
+    };
+  @State linearGradientOptions2: LinearGradientOptions =
+    {
+      direction: GradientDirection.LeftTop,
+      colors: [[Color.Red, 0.0], [Color.Blue, 0.3], [Color.Green, 0.5]],
+      repeating: true,
+    };
+  @State radialGradientOptions: RadialGradientOptions =
+    {
+      center: [50, 50],
+      radius: 20,
+      colors: [[Color.Red, 0.0], [Color.Blue, 0.3], [Color.Green, 0.5]],
+      repeating: true,
+    };
+  @State colorShaderStyle: ColorShaderStyle =
+    {
+      color: Color.Blue
+    };
+  build() {
+    Column({ space: 5 }) {
+      Text('Linear gradient with angle setting to 45°').fontSize(18).width('90%')
+        .margin({ top: 40, left: 40 })
+      Search({ value: this.message })
+        .minFontSize(20)
+        .width('80%')
+        .height(40)
+        .shaderStyle(this.linearGradientOptions1)
+      Text('Linear gradient with direction setting to LeftTop').fontSize(18).width('90%')
+        .margin({ top: 40, left: 40 })
+      Search({ value: this.message })
+        .minFontSize(20)
+        .width('80%')
+        .height(40)
+        .shaderStyle(this.linearGradientOptions2)
+      Text('Radial gradient').fontSize(18).width('90%')
+        .margin({ top: 40, left: 40 })
+      Search({ value: this.message })
+        .minFontSize(20)
+        .width('80%')
+        .height(40)
+        .shaderStyle(this.radialGradientOptions)
+      Text('Solid color').fontSize(18).width('90%')
+        .margin({ top: 40, left: 40 })
+      Search({ value: this.message })
+        .minFontSize(20)
+        .width('80%')
+        .height(40)
+        .shaderStyle(this.colorShaderStyle)
+    }
+  }
+}
+```
+![SearchShaderStyle](figures/searchShaderStyle.png)
+
+### Example 32: Setting an AI Menu for Text Selection
+
+This example demonstrates how to configure the AI menu for text selection using the [enableSelectedDataDetector](#enableselecteddatadetector22) API.
+
+The **enableSelectedDataDetector** API is added in API version 22.
+
+```ts
+@Entry
+@Component
+struct SearchExample {
+  exampleText: string ='Example website: www.example.com';
+
+  build() {
+    Column() {
+      Row() {
+        Search({ value: this.exampleText })
+          .copyOption(CopyOptions.LocalDevice)
+          .enableSelectedDataDetector(true)
+          .border({ width: 1, color: Color.Black })
+          .height(300)
+          .margin(10)
+      }
+    }
+  }
+}
+```
+<!--RP3--><!--RP3End-->
+
+<!--no_check-->

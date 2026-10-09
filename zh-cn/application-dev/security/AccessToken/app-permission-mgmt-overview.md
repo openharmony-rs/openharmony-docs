@@ -31,6 +31,8 @@
 
 - 用户拒绝授予某个权限后，应用与此权限无关的其他业务功能应允许正常使用。
 
+- 当用户主动撤销权限时，如果权限状态由“已授权”变更为“未授权”，系统通常会终止对应应用进程。而在系统主动回收权限的场景中（如安全控件的单次授权，在授权周期结束后由系统自动回收），权限状态也会发生变化，但应用进程不会因此被终止。
+
 ## 授权方式
 
 根据授权方式的不同，权限类型可分为system_grant（系统授权）、user_grant（用户授权）和manual_settings（手动设置授权）。
@@ -101,9 +103,9 @@ manual_settings指的是手动设置授权类型，在该类型的权限许可�
 
   如上所述，权限APL等级和应用APL等级一一对应。原则上，低APL等级的应用默认无法申请更高等级的权限。访问控制列表ACL（Access Control List）提供了低等级应用访问高等级权限的特殊渠道。
 
-  系统权限均定义了“ACL使能”字段。当该字段为TRUE时，应用可以使用ACL方式跨级别申请权限。具体权限定义，可参考[受限开放权限](restricted-permissions.md)<!--Del-->、[系统应用可用权限（系统授权）](permissions-for-system-apps.md)和[系统应用可用权限（用户授权）](permissions-for-system-apps-user.md)<!--DelEnd-->。
+  系统权限均定义了“是否支持证书授权”字段。当该字段为TRUE时，应用可以使用ACL方式跨级别申请权限。具体权限定义，可参考[受限开放权限](restricted-permissions.md)<!--Del-->、[系统应用可用权限（系统授权）](permissions-for-system-apps.md)和[系统应用可用权限（用户授权）](permissions-for-system-apps-user.md)<!--DelEnd-->。
 
-  场景举例：如开发者正在开发APL等级为normal的A应用，由于功能场景需要，A应用需要跨级申请等级为system_basic的P权限。当P权限的ACL使能为TRUE时，A应用可以通过ACL方式跨级申请权限P。
+  场景举例：如开发者正在开发APL等级为normal的A应用，由于功能场景需要，A应用需要跨级申请等级为system_basic的P权限。当P权限的“是否支持证书授权”为TRUE时，A应用可以通过ACL方式跨级申请权限P。
 
 - **携带数据的权限类型**
 

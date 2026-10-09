@@ -3,8 +3,8 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @memghaiyang-->
+<!--Adviser: @HelloCrease-->
 
 本模块提供应用拦截能力。对应用设置处置状态后，应用会被禁止运行；用户点击桌面图标时，会根据应用的处置状态，跳转到对应的页面。本模块支持对应用的处置状态进行设置、获取、删除。
 
@@ -16,7 +16,7 @@
 
 ## 导入模块
 
-``` ts
+```ts
 import { appControl } from '@kit.AbilityKit';
 ```
 
@@ -43,11 +43,11 @@ setDisposedStatus(appId: string, disposedWant: Want): Promise\<void>
 
 | 类型                        | 说明                 |
 | ------------------------- | ------------------ |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                |
 | ------ | -------------------------------------- |
@@ -61,8 +61,7 @@ setDisposedStatus(appId: string, disposedWant: Want): Promise\<void>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { Want } from '@kit.AbilityKit';
-import { appControl } from '@kit.AbilityKit';
+import { Want, appControl } from '@kit.AbilityKit';
 
 let appId = "com.example.myapplication_xxxxx";
 let want: Want = { bundleName: 'com.example.myapplication' };
@@ -97,13 +96,13 @@ setDisposedStatus(appId: string, disposedWant: Want, callback: AsyncCallback\<vo
 
 | 参数名       | 类型                              | 必填   | 说明                                    |
 | ----------- | ------------------------------- | ---- | --------------------------------------- |
-| appId  | string | 是    | 需要设置处置的应用的appId。<br> appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](../../quick-start/common-problem-of-application.md#如何获取应用信息中的appid)。                      |
+| appId  | string | 是    | 需要设置处置状态的应用的appId。<br> appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](../../quick-start/common-problem-of-application.md#如何获取应用信息中的appid)。                      |
 | disposedWant | Want  | 是 | 对应用的处置意图。 |
-| callback    | AsyncCallback\<void> | 是    | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当设置处置状态成功，err为null，否则为错误对象。 |
+| callback    | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)\<void> | 是    | 回调函数。当设置处置状态成功，err为null；否则为错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                |
 | ------ | -------------------------------------- |
@@ -116,9 +115,8 @@ setDisposedStatus(appId: string, disposedWant: Want, callback: AsyncCallback\<vo
 **示例：**
 
 ```ts
-import { appControl } from '@kit.AbilityKit';
+import { Want, appControl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { Want } from '@kit.AbilityKit';
 
 let appId = "com.example.myapplication_xxxxx";
 let want: Want = { bundleName: 'com.example.myapplication' };
@@ -155,12 +153,12 @@ setDisposedStatusSync(appId: string, disposedWant: Want): void;
 
 | 参数名       | 类型                              | 必填   | 说明                                    |
 | ----------- | ------------------------------- | ---- | --------------------------------------- |
-| appId  | string | 是    | 需要设置处置的应用的appId。<br> appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](../../quick-start/common-problem-of-application.md#如何获取应用信息中的appid)。                      |
+| appId  | string | 是    | 需要设置处置状态的应用的appId。<br> appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](../../quick-start/common-problem-of-application.md#如何获取应用信息中的appid)。                      |
 | disposedWant | Want  | 是 | 对应用的处置意图。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                |
 | ------ | -------------------------------------- |
@@ -173,9 +171,8 @@ setDisposedStatusSync(appId: string, disposedWant: Want): void;
 **示例：**
 
 ```ts
-import { appControl } from '@kit.AbilityKit';
+import { Want, appControl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { Want } from '@kit.AbilityKit';
 
 let appId: string = "com.example.myapplication_xxxxx";
 let want: Want = { bundleName: 'com.example.myapplication' };
@@ -214,7 +211,7 @@ getDisposedStatus(appId: string): Promise\<Want>;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                |
 | ------ | -------------------------------------- |
@@ -263,11 +260,11 @@ getDisposedStatus(appId: string, callback: AsyncCallback\<Want>): void;
 | 参数名       | 类型     | 必填   | 说明                                  |
 | ----------- | ------ | ---- | --------------------------------------- |
 | appId  | string | 是    | 要查询的应用的appId。<br> appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](../../quick-start/common-problem-of-application.md#如何获取应用信息中的appid)。  |
-| callback    | AsyncCallback\<Want> | 是    | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)。当获取应用的处置状态成功时，err为null，data为获取到的处置状态；否则为错误对象。                    |
+| callback    | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)\<Want> | 是    | 回调函数。当获取应用的处置状态成功时，err为null，data为获取到的处置状态；否则为错误对象。                    |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                |
 | ------ | -------------------------------------- |
@@ -326,7 +323,7 @@ getDisposedStatusSync(appId: string): Want;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                |
 | ------ | -------------------------------------- |
@@ -339,9 +336,8 @@ getDisposedStatusSync(appId: string): Want;
 **示例：**
 
 ```ts
-import { appControl } from '@kit.AbilityKit';
+import { Want, appControl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { Want } from '@kit.AbilityKit';
 
 let appId: string = "com.example.myapplication_xxxxx";
 let want: Want;
@@ -358,7 +354,7 @@ try {
 
 deleteDisposedStatus(appId: string): Promise\<void>
 
-删除应用的处置状态。使用promise异步回调，成功返回null，失败返回对应错误信息。
+删除应用的处置状态。使用Promise异步回调，成功返回null，失败返回对应错误信息。
 
 **系统接口：** 此接口为系统接口。
 
@@ -370,17 +366,17 @@ deleteDisposedStatus(appId: string): Promise\<void>
 
 | 参数名       | 类型     | 必填   | 说明                                    |
 | ----------- | ------ | ---- | --------------------------------------- |
-| appId  | string | 是    | 要删除拦截规则的应用的appId或appIdentifier。使用appId设置的拦截规则只能通过appId删除，使用appIdentifier设置的同理。<br/>**说明：**<br/> appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](../../quick-start/common-problem-of-application.md#如何获取应用信息中的appid)。<br> [appIdentifier](js-apis-bundleManager-bundleInfo.md#signatureinfo)也是应用的唯一标识，详情信息可参考[什么是appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)，获取方法参见[获取应用的appIdentifier](../../quick-start/common-problem-of-application.md#如何获取应用信息中的appidentifier)。  |
+| appId  | string | 是    | 要删除处置状态的应用的appId或appIdentifier。使用appId设置的处置状态只能通过appId删除，使用appIdentifier设置的同理。<br/>**说明：**<br/> appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](../../quick-start/common-problem-of-application.md#如何获取应用信息中的appid)。<br> [appIdentifier](js-apis-bundleManager-bundleInfo.md#signatureinfo)也是应用的唯一标识，详情信息可参考[什么是appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)，获取方法参见[获取应用的appIdentifier](../../quick-start/common-problem-of-application.md#如何获取应用信息中的appidentifier)。  |
 
 **返回值：**
 
 | 类型                        | 说明                 |
 | ------------------------- | ------------------ |
-| Promise\<void> | Promise对象，无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                |
 | ------ | -------------------------------------- |
@@ -428,12 +424,12 @@ deleteDisposedStatus(appId: string, callback: AsyncCallback\<void>) : void
 
 | 参数名       | 类型     | 必填   | 说明                                    |
 | ----------- | ------ | ---- | --------------------------------------- |
-| appId  | string | 是    | 要删除拦截规则的应用的appId或appIdentifier。使用appId设置的拦截规则只能通过appId删除，使用appIdentifier设置的同理。<br/>**说明：**<br/> appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](../../quick-start/common-problem-of-application.md#如何获取应用信息中的appid)。<br> [appIdentifier](js-apis-bundleManager-bundleInfo.md#signatureinfo)也是应用的唯一标识，详情信息可参考[什么是appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)，获取方法参见[获取应用的appIdentifier](../../quick-start/common-problem-of-application.md#如何获取应用信息中的appidentifier)。  |
-| callback    | AsyncCallback\<void> | 是    | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)，当设置处置状态成功时，err返回null。否则回调函数返回具体错误对象。                   |
+| appId  | string | 是    | 要删除处置状态的应用的appId或appIdentifier。使用appId设置的处置状态只能通过appId删除，使用appIdentifier设置的同理。<br/>**说明：**<br/> appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](../../quick-start/common-problem-of-application.md#如何获取应用信息中的appid)。<br> [appIdentifier](js-apis-bundleManager-bundleInfo.md#signatureinfo)也是应用的唯一标识，详情信息可参考[什么是appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)，获取方法参见[获取应用的appIdentifier](../../quick-start/common-problem-of-application.md#如何获取应用信息中的appidentifier)。  |
+| callback    | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)\<void> | 是    | 回调函数。当删除处置状态成功时，err返回null；否则回调函数返回具体错误对象。                   |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                |
 | ------ | -------------------------------------- |
@@ -480,12 +476,12 @@ deleteDisposedStatusSync(appId: string, appIndex?: number) : void
 
 | 参数名       | 类型     | 必填   | 说明                                    |
 | ----------- | ------ | ---- | --------------------------------------- |
-| appId  | string | 是    | 要删除拦截规则的应用的appId或appIdentifier。使用appId设置的拦截规则只能通过appId删除，使用appIdentifier设置的同理。<br/>**说明：**<br/> appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](../../quick-start/common-problem-of-application.md#如何获取应用信息中的appid)。<br> [appIdentifier](js-apis-bundleManager-bundleInfo.md#signatureinfo)也是应用的唯一标识，详情信息可参考[什么是appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)，获取方法参见[获取应用的appIdentifier](../../quick-start/common-problem-of-application.md#如何获取应用信息中的appidentifier)。  |
+| appId  | string | 是    | 要删除处置状态的应用的appId或appIdentifier。使用appId设置的处置状态只能通过appId删除，使用appIdentifier设置的同理。<br/>**说明：**<br/> appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](../../quick-start/common-problem-of-application.md#如何获取应用信息中的appid)。<br> [appIdentifier](js-apis-bundleManager-bundleInfo.md#signatureinfo)也是应用的唯一标识，详情信息可参考[什么是appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)，获取方法参见[获取应用的appIdentifier](../../quick-start/common-problem-of-application.md#如何获取应用信息中的appidentifier)。  |
 | appIndex<sup>12+</sup>   | number  | 否   | 表示分身应用的索引，默认值为0。<br> appIndex为0时，表示删除主应用的处置状态。appIndex大于0时，表示删除指定分身应用的处置状态。  |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                |
 | ------ | -------------------------------------- |
@@ -494,7 +490,7 @@ deleteDisposedStatusSync(appId: string, appIndex?: number) : void
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
 | 17700005 | The specified app ID is invalid. |
-| 17700061 | AppIndex is not in the valid range. |
+| 17700061 | AppIndex is not in the valid range.<br>适用版本： 12+ |
 
 **示例：**
 
@@ -540,7 +536,7 @@ getDisposedRule(appId: string, appIndex?: number): DisposedRule
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                |
 | ------ | -------------------------------------- |
@@ -549,7 +545,7 @@ getDisposedRule(appId: string, appIndex?: number): DisposedRule
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
 | 17700005 | The specified app ID is invalid. |
-| 17700061 | AppIndex is not in the valid range. |
+| 17700061 | AppIndex is not in the valid range.<br>适用版本： 12+ |
 
 **示例：**
 
@@ -686,7 +682,7 @@ setDisposedRule(appId: string, rule: DisposedRule, appIndex?: number): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                |
 | ------ | -------------------------------------- |
@@ -695,15 +691,13 @@ setDisposedRule(appId: string, rule: DisposedRule, appIndex?: number): void
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 801 | Capability not supported. |
 | 17700005 | The specified app ID is invalid. |
-| 17700061 | AppIndex is not in the valid range. |
+| 17700061 | AppIndex is not in the valid range.<br>适用版本： 12+ |
 
 **示例：**
 
 ```ts
-import { appControl } from '@kit.AbilityKit';
+import { appControl, Want, bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { Want } from '@kit.AbilityKit';
-import { bundleManager } from '@kit.AbilityKit';
 
 let appId = "com.example.myapplication_xxxxx";
 let want: Want = {
@@ -724,7 +718,8 @@ let rule: appControl.DisposedRule = {
   elementList: [
     elementName
   ],
-  priority: 100
+  priority: 100,
+  pageJump: appControl.PageJumpMode.PAGE_JUMP_WINDOW_SHOW
 };
 
 try {
@@ -755,7 +750,7 @@ setDisposedRules(disposedRuleConfigurations: Array\<DisposedRuleConfiguration\>)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -789,7 +784,8 @@ let rule: appControl.DisposedRule = {
   elementList: [
     elementName
   ],
-  priority: 100
+  priority: 100,
+  pageJump: appControl.PageJumpMode.PAGE_JUMP_WINDOW_SHOW
 };
 
 let disposedRuleConfiguration: appControl.DisposedRuleConfiguration = {
@@ -845,7 +841,7 @@ setUninstallDisposedRule(appIdentifier: string, rule: UninstallDisposedRule, app
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                |
 | ------ | -------------------------------------- |
@@ -860,9 +856,8 @@ setUninstallDisposedRule(appIdentifier: string, rule: UninstallDisposedRule, app
 **示例：**
 
 ```ts
-import { appControl } from '@kit.AbilityKit';
+import { Want, appControl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { Want } from '@kit.AbilityKit';
 
 let appIdentifier = "com.example.myapplication_xxxxx";
 let want: Want = {
@@ -911,7 +906,7 @@ getUninstallDisposedRule(appIdentifier: string, appIndex?: number): UninstallDis
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                |
 | ------ | -------------------------------------- |
@@ -960,7 +955,7 @@ deleteUninstallDisposedRule(appIdentifier: string, appIndex?: number): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                |
 | ------ | -------------------------------------- |
@@ -991,7 +986,7 @@ try {
 
 标识拦截规则。
 
-**系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl。
+**系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
 
  **系统接口：** 此接口为系统接口。
 
@@ -999,16 +994,17 @@ try {
 | --------- | -------------- | ---- | ---- | --------------------------- |
 | want | [Want](js-apis-app-ability-want.md)     | 否   | 否   | 指定应用被拦截时，跳转到的页面。 |
 | componentType | [ComponentType](#componenttype11)  | 否   | 否   | 拦截时将提升的能力的类型。 |
-| disposedType | [DisposedType](#disposedrule11) | 否   | 否 | 对应用的拦截规则。 |
+| disposedType | [DisposedType](#disposedtype11) | 否   | 否 | 对应用的拦截规则。 |
 | controlType | [ControlType](#controltype11) | 否   | 否 | 拦截指定应用程序的不同策略。 |
 | elementList | Array\<[ElementName](js-apis-bundleManager-elementName.md)> | 否   | 否 | 拦截指定应用程序能力的列表。 |
 | priority | number | 否   | 否 | 拦截规则的优先级，用于规则列表查询结果排序。取值为整数，数值越小，优先级越高，排序越靠前。 |
+| pageJump | [PageJumpMode](#pagejumpmode) | 否   | 是 | 指定目标应用被拦截时是否跳转到页面。默认值为PageJumpMode.PAGE_JUMP_WINDOW_SHOW。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**起始版本：** 26.0.0 |
 
 ### ComponentType<sup>11+</sup>
 
 标识功能组件类型。
 
-**系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl。
+**系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
 
  **系统接口：** 此接口为系统接口。
 
@@ -1021,7 +1017,7 @@ try {
 
 标识拦截应用程序的方式，例如禁用应用的全部能力、禁用应用的指定能力、或者不禁用。
 
-**系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl。
+**系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
 
  **系统接口：** 此接口为系统接口。
 
@@ -1035,7 +1031,7 @@ try {
 
 标识拦截指定应用程序的不同策略。
 
-**系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl。
+**系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
 
  **系统接口：** 此接口为系统接口。
 
@@ -1044,25 +1040,42 @@ try {
 | ALLOWED_LIST | 1    | 允许运行指定功能的列表。 |
 | DISALLOWED_LIST | 2    | 不允许运行指定功能的列表。 |
 
+### PageJumpMode
+
+标识目标应用被拦截时是否跳转到页面。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称    | 值   | 说明                 |
+| ------- | ---- | -------------------- |
+| PAGE_JUMP_WINDOW_SHOW | 0    | 目标应用被拦截时跳转到页面。 |
+| PAGE_JUMP_WINDOW_NOT_SHOW | 1    | 目标应用被拦截时不跳转到页面。 |
+
 ## UninstallDisposedRule<sup>15+</sup>
 
 标识卸载处置规则。
 
-**系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl。
+**系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
 
  **系统接口：** 此接口为系统接口。
 
 | 名称      | 类型           | 只读 | 可选 | 说明                        |
 | --------- | -------------- | ---- | ---- | --------------------------- |
 | want | [Want](js-apis-app-ability-want.md)     | 否   | 否   | 指定应用被拦截时，跳转到的组件。 |
-| UninstallComponentType | [UninstallComponentType](#uninstallcomponenttype15)  | 否   | 否   | 拦截时将拉起能力的类型。 |
-| priority | number | 否 | 否 | 拦截规则的优先级，用于规则列表查询结果排序。取值为整数，数值越小，优先级越高，排序越靠前。 |
+| uninstallComponentType | [UninstallComponentType](#uninstallcomponenttype15)  | 否   | 否   | 拦截时将拉起能力的类型。 |
+| priority | number | 否 | 否 | 卸载处置规则的优先级，用于规则列表查询结果排序。取值为整数，数值越小，优先级越高，排序越靠前。 |
 
 ### UninstallComponentType<sup>15+</sup>
 
 标识卸载时功能组件类型。
 
-**系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl。
+**系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
 
  **系统接口：** 此接口为系统接口。
 

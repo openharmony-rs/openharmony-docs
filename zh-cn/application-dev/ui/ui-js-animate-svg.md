@@ -1,8 +1,8 @@
 # svg动画
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -40,7 +40,7 @@
 </div>
 ```
 
-![zh-cn_image_0000001183871404](figures/zh-cn_image_0000001183871404.gif)
+![animate3](figures/animate3.gif)
 
 > **说明：** 
 >
@@ -66,7 +66,7 @@
 </div>
 ```
 
-![zh-cn_image_0000001229510983](figures/zh-cn_image_0000001229510983.gif)
+![animateMotion](figures/animateMotion.gif)
 
 
 ## animateTransform动画
@@ -111,4 +111,4 @@
 }
 ```
 
-![zh-cn_image_0000001182832088](figures/zh-cn_image_0000001182832088.gif)
+![animateTransform](figures/animateTransform.gif)

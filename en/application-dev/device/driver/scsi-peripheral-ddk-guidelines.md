@@ -1,10 +1,12 @@
 # SCSI Peripheral DDK Development
+
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=09d00a95d1d887d97b87c4ee8f0a2a7b0621646c translatedAt=2026-08-20T06:24:27.130Z pushedAt=2026-08-20T13:03:29.050Z -->
 
 ## Overview
 
@@ -42,7 +44,7 @@ Before you get started, understand the following concepts:
 
 - **Logical block**
 
-    A logical block is a basic data storage unit. It represents a data area of a fixed size on a device and is usually used for data read and write operations. The size of a logical block may be 512 bytes, 1024 bytes, 2048 bytes, and so on. A specific size depends on a configuration of the device and a design of the file system.
+    A logical block is a basic data storage unit. It represents a data area of a fixed size on a device and is usually used for data read and write operations. The size of a logical block may be 512 bytes, 1024 bytes, 2048 bytes, and so on. The specific size depends on a configuration of the device and a design of the file system.
 
 - **CDB**
 
@@ -77,7 +79,7 @@ Before you get started, make necessary preparations by following instructions in
 | int32_t OH_ScsiPeripheral_Init(void) | Initializes the ScsiPeripheralDDK.|
 | int32_t OH_ScsiPeripheral_Release(void) | Releases the ScsiPeripheralDDK.|
 | int32_t OH_ScsiPeripheral_Open(uint64_t deviceId, uint8_t interfaceIndex, ScsiPeripheral_Device **dev) | Opens the SCSI device specified by **deviceId** and **interfaceIndex**.|
-| int32_t OH_ScsiPeripheral_Close(ScsiPeripheral_Device **dev) | Disables the SCSI device.|
+| int32_t OH_ScsiPeripheral_Close(ScsiPeripheral_Device **dev) | Closes the SCSI device.|
 | int32_t OH_ScsiPeripheral_TestUnitReady(ScsiPeripheral_Device *dev, ScsiPeripheral_TestUnitReadyRequest *request, ScsiPeripheral_Response *response) | Checks whether the logical units are ready.|
 | int32_t OH_ScsiPeripheral_Inquiry(ScsiPeripheral_Device *dev, ScsiPeripheral_InquiryRequest *request, ScsiPeripheral_InquiryInfo *inquiryInfo, ScsiPeripheral_Response *response) | Queries basic information about the SCSI device.|
 | int32_t OH_ScsiPeripheral_ReadCapacity10(ScsiPeripheral_Device *dev, ScsiPeripheral_ReadCapacityRequest *request, ScsiPeripheral_CapacityInfo *capacityInfo, ScsiPeripheral_Response *response) | Obtains the capacity information about the SCSI device.|
@@ -99,11 +101,13 @@ The following describes how to use the ScsiPeripheralDDK to develop non-standard
 **Adding Dynamic Link Libraries**
 
 Add the following libraries to **CMakeLists.txt**.
+
 ```txt
 libscsi.z.so
 ```
 
 **Including Header Files**
+
 ```c++
 #include <scsi_peripheral/scsi_peripheral_api.h>
 #include <scsi_peripheral/scsi_peripheral_types.h>
@@ -114,7 +118,7 @@ libscsi.z.so
    Call **OH_ScsiPeripheral_Init** in **scsi_peripheral_api.h** to initialize the ScsiPeripheralDDK.
 
    <!-- @[driver_scsi_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
-   
+
    ``` C++
    // Initialize the ScsiPeripheralDDK.
    int32_t ret = OH_ScsiPeripheral_Init();
@@ -125,7 +129,7 @@ libscsi.z.so
    After the ScsiPeripheralDDK is initialized, call **OH_ScsiPeripheral_Open** in **scsi_peripheral_api.h** to open the SCSI device.
 
    <!-- @[driver_scsi_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
-   
+
    ``` C++
    ret = OH_ScsiPeripheral_Open(g_devHandle, interfaceIndex, &g_scsiPeripheralDevice);
    ```
@@ -135,7 +139,7 @@ libscsi.z.so
    Use **OH_ScsiPeripheral_CreateDeviceMemMap** in **scsi_peripheral_api.h** to create the memory buffer **devMmap**.
 
    <!-- @[driver_scsi_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
-   
+
    ``` C++
    ret = OH_ScsiPeripheral_CreateDeviceMemMap(g_scsiPeripheralDevice, DEVICE_MEM_MAP_SIZE, &g_scsiDeviceMemMap);
    ```
@@ -145,7 +149,7 @@ libscsi.z.so
    Use **OH_ScsiPeripheral_TestUnitReady** in **scsi_peripheral_api.h** to check whether the logical unit is ready.
 
    <!-- @[driver_scsi_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
-   
+
    ``` C++
    int32_t ret = OH_ScsiPeripheral_TestUnitReady(g_scsiPeripheralDevice, &request, &response);
    ```
@@ -155,7 +159,7 @@ libscsi.z.so
    Use **OH_ScsiPeripheral_Inquiry** in **scsi_peripheral_api.h** to obtain the basic information about the SCSI device.
 
    <!-- @[driver_scsi_step5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
-   
+
    ``` C++
    int32_t ret = OH_ScsiPeripheral_Inquiry(g_scsiPeripheralDevice, &inquiryRequest, &inquiryInfo, &response);
    ```
@@ -165,7 +169,7 @@ libscsi.z.so
    Use **OH_ScsiPeripheral_ReadCapacity10** in **scsi_peripheral_api.h** to obtain the SCSI device capacity information.
 
    <!-- @[driver_scsi_step6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
-   
+
    ``` C++
    ret = OH_ScsiPeripheral_ReadCapacity10(g_scsiPeripheralDevice, &readCapacityRequest, &capacityInfo, &response);
    ```
@@ -175,7 +179,7 @@ libscsi.z.so
    Use **OH_ScsiPeripheral_RequestSense** in **scsi_peripheral_api.h** to obtain sense data.
 
    <!-- @[driver_scsi_step7](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
-   
+
    ``` C++
    int32_t ret = OH_ScsiPeripheral_RequestSense(g_scsiPeripheralDevice, &senseRequest, &response);
    ```
@@ -185,7 +189,7 @@ libscsi.z.so
    Use **OH_ScsiPeripheral_ParseBasicSenseInfo** in **scsi_peripheral_api.h** to parse basic sense data, including the **Information**, **Command specific information**, and **Sense key specific** fields.
 
    <!-- @[driver_scsi_step8](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
-   
+
    ``` C++
    int32_t ret = OH_ScsiPeripheral_ParseBasicSenseInfo(response.senseData, SCSIPERIPHERAL_MAX_SENSE_DATA_LEN,
        &senseInfo);
@@ -196,7 +200,7 @@ libscsi.z.so
    Use **OH_ScsiPeripheral_Read10** in **scsi_peripheral_api.h** to read data from a specified logical block.
 
    <!-- @[driver_scsi_step9](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
-   
+
    ``` C++
    int32_t ret = OH_ScsiPeripheral_Read10(g_scsiPeripheralDevice, &request, &response);
    ```
@@ -206,7 +210,7 @@ libscsi.z.so
     Use **OH_ScsiPeripheral_Write10** in **scsi_peripheral_api.h** to write data to a specified logical block of the device.
 
     <!-- @[driver_scsi_step10](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
-    
+
     ``` C++
     int32_t ret = OH_ScsiPeripheral_Write10(g_scsiPeripheralDevice, &request, &response);
     ```
@@ -216,17 +220,17 @@ libscsi.z.so
     Use **OH_ScsiPeripheral_Verify10** in **scsi_peripheral_api.h** to verify a specified logical block.
 
     <!-- @[driver_scsi_step11](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
-    
+
     ``` C++
     int32_t ret = OH_ScsiPeripheral_Verify10(g_scsiPeripheralDevice, &request, &response);
     ```
 
 12. (Optional) Send SCSI commands in CDB mode.
 
-    Use **OH_SCSIPeripheral_SendRequestByCdb** in **scsi_peripheral_api.h** to send SCSI commands.
+    Use **OH_ScsiPeripheral_SendRequestByCdb** in **scsi_peripheral_api.h** to send SCSI commands.
 
     <!-- @[driver_scsi_step12](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
-    
+
     ``` C++
     int32_t ret = OH_ScsiPeripheral_SendRequestByCdb(g_scsiPeripheralDevice, &request, &response);
     ```
@@ -236,7 +240,7 @@ libscsi.z.so
     After all requests are processed and before the program exits, use **OH_ScsiPeripheral_DestroyDeviceMemMap** in **scsi_peripheral_api.h** to destroy the buffer.
 
     <!-- @[driver_scsi_step13](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
-    
+
     ``` C++
     ret = OH_ScsiPeripheral_DestroyDeviceMemMap(g_scsiDeviceMemMap);
     ```
@@ -246,7 +250,7 @@ libscsi.z.so
     After the buffer is destroyed, use **OH_ScsiPeripheral_Close** in **scsi_peripheral_api.h** to close the device.
 
     <!-- @[driver_scsi_step14](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
-    
+
     ``` C++
     ret = OH_ScsiPeripheral_Close(&g_scsiPeripheralDevice);
     ```
@@ -256,17 +260,19 @@ libscsi.z.so
     After the SCSI device is closed, call **OH_ScsiPeripheral_Release** in **scsi_peripheral_api.h** to release the ScsiPeripheralDDK.
 
     <!-- @[driver_scsi_step15](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
-    
+
     ``` C++
     ret = OH_ScsiPeripheral_Release();
     ```
-
 
 ### Debugging and Verification
 
 Upon completion of driver application development, you can install the application on the OpenHarmony device. The test procedure is as follows:
 
 1. Click the driver application on the device. The application is started on the device.
+
 2. Check whether the application can read the basic information about the SCSI device.
+
 3. Select a SCSI command, enter parameters, and click the **Send** button.
+
 4. (Optional) Set the direction, CDB data, and CDB length, and click the **Send** button to run the corresponding SCSI command.

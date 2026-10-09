@@ -9,7 +9,7 @@
 
 Text是文本组件，用于展示用户视图，如显示文章的文字内容。该组件支持绑定自定义文本选择菜单，用户可根据需要选择不同功能。此外，还可以扩展自定义菜单，丰富可用选项，进一步提升用户体验。Span则用于展示行内文本。  
 
-具体用法请参考[Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)和[Span](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md)组件的使用说明。
+具体用法请参考[Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)和[Span](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md)组件的API文档。
 
 常见问题请参考[文本显示（Text/Span）常见问题](./arkts-text-faq.md#文本显示textspan常见问题)。
 
@@ -27,7 +27,7 @@ Text可通过以下两种方式来创建：
   ```
 
 
-![zh-cn_image_0000001563060685](figures/zh-cn_image_0000001563060685.png)
+![text-basic](figures/text-basic.png)
 
 
 - 引用Resource资源。
@@ -57,93 +57,22 @@ Text可通过以下两种方式来创建：
     .width(300)
   ```
 
-  ![zh-cn_image_0000001511580872](figures/zh-cn_image_0000001511580872.png)
+  ![text-create](figures/text-create.png)
 
+## 绑定文本事件
 
-## 添加子组件
+Text组件可以添加通用事件，可以绑定[onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick)、[onTouch](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#ontouch)等事件来响应操作。
 
-[Span](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md)只能作为[Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)和[RichEditor](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md)组件的子组件显示文本内容。可以在一个Text内添加多个Span来显示一段信息，例如产品说明书、承诺书等。
+以下示例通过在文本上绑定事件，实现触发事件时刷新文本下方展示内容。
 
-- 创建Span。
-
-  Span组件需嵌入在Text组件中才能显示，单独使用时不会显示任何内容。Text与Span同时配置文本内容时，Span内容将覆盖Text内容。
-
-
-  <!-- @[create_span](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextSpan.ets) -->
-  
-  ``` TypeScript
-  // 请将$r('app.string.TextSpan_textContent_text')替换为实际资源文件，在本示例中该资源文件的value值为"我是Text"
-  Text($r('app.string.TextSpan_textContent_text')) {
-    // 请将$r('app.string.TextSpan_textContent_span')替换为实际资源文件，在本示例中该资源文件的value值为"我是Span"
-    Span($r('app.string.TextSpan_textContent_span'))
-  }
-  .padding(10)
-  .borderWidth(1)
-  ```
-
-  ![zh-cn_image_0000001562700441](figures/zh-cn_image_0000001562700441.png)
-
-- 设置文本装饰线及颜色。
-
-  通过[decoration](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md#decoration)设置文本装饰线及颜色。
-
-
-  <!-- @[create_span_with_lines](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextSpan.ets) -->
-  
-  ``` TypeScript
-  Text() {
-    // 请将$r('app.string.TextSpan_textContent_span_one')替换为实际资源文件，在本示例中该资源文件的value值为"我是Span1，"
-    Span($r('app.string.TextSpan_textContent_span_one'))
-      .fontSize(16)
-      .fontColor(Color.Grey)
-      .decoration({ type: TextDecorationType.LineThrough, color: Color.Red })
-    // 请将$r('app.string.TextSpan_textContent_span_two')替换为实际资源文件，在本示例中该资源文件的value值为"我是Span2"
-    Span($r('app.string.TextSpan_textContent_span_two'))
-      .fontColor(Color.Blue)
-      .fontSize(16)
-      .fontStyle(FontStyle.Italic)
-      .decoration({ type: TextDecorationType.Underline, color: Color.Black })
-    // 请将$r('app.string.TextSpan_textContent_span_three')替换为实际资源文件，在本示例中该资源文件的value值为"，我是Span3"
-    Span($r('app.string.TextSpan_textContent_span_three'))
-      .fontSize(16)
-      .fontColor(Color.Grey)
-      .decoration({ type: TextDecorationType.Overline, color: Color.Green })
-  }
-  .borderWidth(1)
-  .padding(10)
-  ```
-
-  ![zh-cn_image_0000001562700437](figures/zh-cn_image_0000001562700437.png)
-
-- 通过[textCase](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md#textcase)设置文字一直保持大写或者小写状态。
-
-  <!-- @[create_span_with_upper_case](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextSpan.ets) -->
-  
-  ``` TypeScript
-  Text() {
-    Span('I am Upper-span').fontSize(12)
-      .textCase(TextCase.UpperCase)
-  }
-  .borderWidth(1)
-  .padding(10)
-  ```
-
-  ![zh-cn_image_0000001562940525](figures/zh-cn_image_0000001562940525.png)
-
-- 添加事件。
-
-  由于Span组件无尺寸信息，仅支持添加点击事件[onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick)、悬浮事件[onHover](../reference/apis-arkui/arkui-ts/ts-universal-events-hover.md#onhover)。
-
-
-  <!-- @[textspan_onhover](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextSpanOnHover.ets) -->
+  <!-- @[General_Events](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/GeneralEvents.ets) -->
   
   ``` TypeScript
   // xxx.ets
   import { hilog } from '@kit.PerformanceAnalysisKit';
-  
   @Entry
   @Component
-  export struct TextSpanOnHover {
+  struct GeneralEvents {
     @State textStr1: string = '';
     @State textStr2: string = '';
   
@@ -151,36 +80,32 @@ Text可通过以下两种方式来创建：
       NavDestination() {
         Row() {
           Column() {
-            Text() {
-              Span('I am Upper-span')
-                .textCase(TextCase.UpperCase)
-                .fontSize(30)
-                .onClick(() => {
-                  hilog.info(0x0000, 'Sample_TextComponent', 'Span onClick is triggering');
-                  this.textStr1 = 'Span onClick is triggering';
-                })
-                .onHover(() => {
-                  hilog.info(0x0000, 'Sample_TextComponent', 'Span onHover is triggering');
-                  this.textStr2 = 'Span onHover is triggering';
-                })
-            }
-  
+            Text('This is a text component.')
+              .fontSize(30)
+              .onClick(() => {
+                hilog.info(0x0000, 'Sample_TextComponent', 'Text onClick is triggering');
+                this.textStr1 = 'Text onClick is triggering';
+              })
+              .onTouch(() => {
+                hilog.info(0x0000, 'Sample_TextComponent', 'Text onTouch is triggering');
+                this.textStr2 = 'Text onTouch is triggering';
+              })
             Text('onClick：' + this.textStr1)
               .fontSize(20)
-            Text('onHover：' + this.textStr2)
+            Text('onTouch：' + this.textStr2)
               .fontSize(20)
           }.width('100%')
         }
         .height('100%')
       }
-      // ···
+      // ...
     }
   }
   ```
 
-  ![span_event](figures/span_event.gif)
+![text_event](figures/text_event.gif)
 
-## 创建自定义文本样式
+## 设置文本样式
 
 Text组件支持创建自定义文本样式，以下为修改文本样式的主要属性。
 
@@ -246,7 +171,7 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
     .padding(10)
   ```
 
-  ![zh-cn_image_0000001511421260](figures/zh-cn_image_0000001511421260.png)
+  ![text-styled](figures/text-styled.png)
 
 - 通过[textOverflow](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textoverflow)属性控制文本超长处理，textOverflow需配合[maxLines](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#maxlines)一起使用（默认情况下文本自动折行）。从API version 18开始，文本超长时设置跑马灯的方式展示时，支持设置跑马灯的配置项，比如开关、步长、循环次数、方向等。
 
@@ -302,7 +227,7 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
     })
   ```
 
-  ![zh-cn_image_0000001563060701](figures/zh-cn_image_0000001563060701.gif)
+  ![text-custom-style](figures/text-custom-style.gif)
 
 - 通过[lineHeight](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#lineheight)属性设置文本行高。
 
@@ -319,7 +244,7 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
     .lineHeight(20)
   ```
 
-  ![zh-cn_image_0000001511740480](figures/zh-cn_image_0000001511740480.png)
+  ![text-line-height](figures/text-line-height.png)
 
 - 通过[decoration](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#decoration)属性设置文本装饰线样式、颜色及其粗细。
 
@@ -405,7 +330,7 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
     .margin(5)
   ```
 
-  ![zh-cn_image_0000001562820789](figures/zh-cn_image_0000001562820789.png)
+  ![text-styled-span](figures/text-styled-span.png)
 
 - 通过[letterSpacing](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#letterspacing)属性设置文本字符间距。
 
@@ -435,7 +360,7 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
     .margin(5)
   ```
 
-  ![zh-cn_image_0000001562940513](figures/zh-cn_image_0000001562940513.png)
+  ![text-styled-span2](figures/text-styled-span2.png)
 
 - 通过[minFontSize](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#minfontsize)与[maxFontSize](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#maxfontsize)自适应字体大小。
 
@@ -444,8 +369,9 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
   <!-- @[custom_the_size_of_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CustomTextStyle.ets) -->
   
   ``` TypeScript
-  /* 请将$r('app.string.CustomTextStyle_textContent_one_style')替换为实际资源文件，在本示例中该资源文件的
-   value值为"我的最大字号为30，最小字号为5，宽度为250，maxLines为1" */
+  /* 请将$r('app.string.CustomTextStyle_textContent_one_style')替换为实际资源文件，
+   * 在本示例中该资源文件的value值为"我的最大字号为30，最小字号为5，宽度为250，maxLines为1"
+   */
   Text($r('app.string.CustomTextStyle_textContent_one_style'))
     .width(250)
     .maxLines(1)
@@ -455,7 +381,8 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
     .padding(10)
     .margin(5)
   /* 请将$r('app.string.CustomTextStyle_textContent_two_style')替换为实际资源文件，
-   在本示例中该资源文件的value值为"我的最大字号为30，最小字号为5，宽度为250，maxLines为2" */
+   * 在本示例中该资源文件的value值为"我的最大字号为30，最小字号为5，宽度为250，maxLines为2"
+   */
   Text($r('app.string.CustomTextStyle_textContent_two_style'))
     .width(250)
     .maxLines(2)
@@ -464,8 +391,9 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
     .border({ width: 1 })
     .padding(10)
     .margin(5)
-  /* 请将$r('app.string.CustomTextStyle_textContent_no_max')替换为实际资源文件，在本示例中该资源文件的
-    value值为"我的最大字号为30，最小字号为15，宽度为250,高度为50" */
+  /* 请将$r('app.string.CustomTextStyle_textContent_no_max')替换为实际资源文件，
+   * 在本示例中该资源文件的value值为"我的最大字号为30，最小字号为15，宽度为250,高度为50"
+   */
   Text($r('app.string.CustomTextStyle_textContent_no_max'))
     .width(250)
     .height(50)
@@ -474,8 +402,9 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
     .border({ width: 1 })
     .padding(10)
     .margin(5)
-  /* 请将$r('app.string.CustomTextStyle_textContent_high')替换为实际资源文件，在本示例中该资源文件的
-    value值为"我的最大字号为30，最小字号为15，宽度为250,高度为100" */
+  /* 请将$r('app.string.CustomTextStyle_textContent_high')替换为实际资源文件，
+   * 在本示例中该资源文件的value值为"我的最大字号为30，最小字号为15，宽度为250,高度为100"
+   */
   Text($r('app.string.CustomTextStyle_textContent_high'))
     .width(250)
     .height(100)
@@ -486,7 +415,7 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
     .margin(5)
   ```
 
-  ![zh-cn_image_0000001511740472](figures/zh-cn_image_0000001511740472.png)
+  ![radio-styled](figures/radio-styled.png)
 
 - 通过[textCase](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textcase)属性设置文本大小写。
 
@@ -495,7 +424,6 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
   ``` TypeScript
   Text('This is the text content with textCase set to Normal.')
     .textCase(TextCase.Normal)
-    .padding(10)
     .border({ width: 1 })
     .padding(10)
     .margin(5)
@@ -515,7 +443,7 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
     .margin(5)
   ```
   
-  ![zh-cn_image_0000001562940529](figures/zh-cn_image_0000001562940529.png)
+  ![text-styled-span3](figures/text-styled-span3.png)
 
 - 通过[copyOption](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#copyoption9)属性设置文本是否可复制粘贴。
 
@@ -528,9 +456,9 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
     .copyOption(CopyOptions.InApp)
   ```
 
-  ![zh-cn_image_0000001511580868](figures/zh-cn_image_0000001511580868.png)
+  ![text-copy-option](figures/text-copy-option.png)
 
-- 通过[fontFamily](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#fontfamily)属性设置字体列表。应用当前支持'HarmonyOS Sans'字体和[注册自定义字体](../reference/apis-arkui/js-apis-font.md)。
+- 通过[fontFamily](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#fontfamily)属性设置文本字体族。应用当前支持'HarmonyOS Sans'字体和[注册自定义字体](../reference/apis-arkui/js-apis-font.md)。
 
   <!-- @[custom_the_text_fontFamily](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CustomTextStyle.ets) -->
   
@@ -550,9 +478,9 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
   
   @Entry
   @Component
-  export struct ContentTransition {
+  struct ContentTransitionDemo {
     private static readonly INITIAL_SCORE: number = 98;
-    @State number: number = ContentTransition.INITIAL_SCORE;
+    @State number: number = ContentTransitionDemo.INITIAL_SCORE;
     @State numberTransition: NumericTextTransition =
       new NumericTextTransition({ flipDirection: FlipDirection.DOWN, enableBlur: false });
     build() {
@@ -562,7 +490,7 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
             .borderWidth(1)
             .fontSize(40)
             .contentTransition(this.numberTransition)
-          Button('chang number')
+          Button('change number')
             .onClick(() => {
               this.number++
             })
@@ -620,7 +548,7 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
   
   @Entry
   @Component
-  export struct LineSpacing {
+  struct LineSpacing {
     build() {
       NavDestination() {
         Column() {
@@ -643,7 +571,7 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
   ``` TypeScript
   @Entry
   @Component
-  export struct EnableAutoSpacing {
+  struct EnableAutoSpacing {
     @State enableSpacing: boolean = false;
   
     build() {
@@ -672,8 +600,9 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
           .margin({ bottom: 20 })
   
         // 设置是否应用中西文自动间距
-        /* 请将$r('app.string.Chinese_and_Western_Auto_Spacing_automatic_spacing')替换为实际资源文件，在本示例中该资源文件的
-          value值为"中西文Auto Spacing自动间距" */
+        /* 请将$r('app.string.Chinese_and_Western_Auto_Spacing_automatic_spacing')替换为实际资源文件，
+         * 在本示例中该资源文件的value值为"中西文Auto Spacing自动间距"
+         */
         Text($r('app.string.Chinese_and_Western_Auto_Spacing_automatic_spacing'))
           .fontSize(24)
           .padding(15)
@@ -699,7 +628,7 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
   ``` TypeScript
   @Entry
   @Component
-  export struct ShaderStyle {
+  struct ShaderStyleDemo {
     @State message: string = 'Hello World';
     @State linearGradientOptions: LinearGradientOptions =
       {
@@ -730,55 +659,7 @@ Text组件支持创建自定义文本样式，以下为修改文本样式的主�
 
   ![Text_shader_style](figures/Text_shader_style.png)
 
-## 添加事件
-
-Text组件可以添加通用事件，可以绑定[onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick)、[onTouch](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#ontouch)等事件来响应操作。
-
-  <!-- @[General_Events](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/GeneralEvents.ets) -->
-  
-  ``` TypeScript
-  // xxx.ets
-  import { hilog } from '@kit.PerformanceAnalysisKit';
-  @Entry
-  @Component
-  export struct GeneralEvents {
-    @State textStr1: string = '';
-    @State textStr2: string = '';
-  
-    build() {
-      NavDestination() {
-        Row() {
-          Column() {
-            Text('This is a text component.')
-              .fontSize(30)
-              .onClick(() => {
-                hilog.info(0x0000, 'Sample_TextComponent', 'Text onClick is triggering');
-                this.textStr1 = 'Text onClick is triggering';
-              })
-              .onTouch(() => {
-                hilog.info(0x0000, 'Sample_TextComponent', 'Text onTouch is triggering');
-                this.textStr2 = 'Text onTouch is triggering';
-              })
-            Text('onClick：' + this.textStr1)
-              .fontSize(20)
-            Text('onTouch：' + this.textStr2)
-              .fontSize(20)
-          }.width('100%')
-        }
-        .height('100%')
-      }
-      // ···
-    }
-  }
-  ```
-
-![text_event](figures/text_event.gif)
-
-## 设置垂直居中
-
-从API version 20开始，Text组件支持通过[textVerticalAlign](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textverticalalign20)属性实现文本段落在垂直方向的对齐。
-
-  - 以下示例展示了如何通过textVerticalAlign属性设置文本垂直居中对齐效果。
+- 从API version 20开始，Text组件支持通过[textVerticalAlign](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textverticalalign20)属性实现文本段落在垂直方向的对齐。以下示例展示了如何通过textVerticalAlign属性设置文本垂直居中对齐效果。
 
     <!-- @[text_VerticalAlign](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextLayout.ets) -->
     
@@ -797,95 +678,211 @@ Text组件可以添加通用事件，可以绑定[onClick](../reference/apis-ark
 
     ![Text_vertical_align](figures/Text_vertical_align.png)
 
-## 设置选中菜单
+## 添加文本Span子组件
 
-### 弹出选中菜单
+[Span](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md)只能作为[Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)和[RichEditor](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md)组件的子组件显示文本内容。可以在一个Text内添加多个Span来显示一段信息，例如产品说明书、承诺书等。
 
-  - 设置Text被选中时，会弹出包含复制、翻译、搜索的菜单。
+### 创建Span
 
-    Text组件需要设置[copyOption](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#copyoption9)属性才可以被选中。
+Span组件需嵌入在Text组件中才能显示，单独使用时不会显示任何内容。Text与Span同时配置文本内容时，Span内容将覆盖Text内容。
 
-    <!-- @[copy_Option](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextLayout.ets) -->
-    
-    ``` TypeScript
-    // 请将$r('app.string.selected_menu')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段文本，用来展示选中菜单"
-    Text($r('app.string.selected_menu'))
-      .fontSize(30)
-      .copyOption(CopyOptions.InApp)
-    ```
+<!-- @[create_span](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextSpan.ets) -->
 
-    ![Text_select_menu](figures/Text_select_menu.jpg)
+``` TypeScript
+// 请将$r('app.string.TextSpan_textContent_text')替换为实际资源文件，在本示例中该资源文件的value值为"我是Text"
+Text($r('app.string.TextSpan_textContent_text')) {
+  // 请将$r('app.string.TextSpan_textContent_span')替换为实际资源文件，在本示例中该资源文件的value值为"我是Span"
+  Span($r('app.string.TextSpan_textContent_span'))
+}
+.padding(10)
+.borderWidth(1)
+```
 
-  - Text组件通过设置[bindSelectionMenu](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#bindselectionmenu11)属性绑定自定义选择菜单。
+![text-child-component](figures/text-child-component.png)
 
-    <!-- @[set_selection_menu_with_bindselectionmenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectMenu.ets) -->
-    
-    ``` TypeScript
-    controller: TextController = new TextController();
-    options: TextOptions = { controller: this.controller };
-    ```
+### 设置Span文本装饰线及颜色
 
-    <!-- @[set_selection_menu_with_bindselectionmenu_sec](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectMenu.ets) -->
-    
-    ``` TypeScript
-    // 请将$r('app.string.show_selected_menu')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段文本，用来展示选中菜单"
-    Text($r('app.string.show_selected_menu'), this.options)
-      .fontSize(30)
-      .copyOption(CopyOptions.InApp)
-      .bindSelectionMenu(TextSpanType.TEXT, this.RightClickTextCustomMenu, TextResponseType.RIGHT_CLICK, {
-        onAppear: () => {
-          // 请将$r('app.string.SelectMenu_Text_Ejected')替换为实际资源文件，在本示例中该资源文件的value值为"自定义选择菜单弹出时触发该回调"
-          hilog.info(0x0000, 'Sample_TextComponent',
-            this.getUIContext()
-              .getHostContext()!.resourceManager.getStringSync($r('app.string.SelectMenu_Text_Ejected').id));
-        },
-        onDisappear: () => {
-          // 'SelectMenu_Text_Close'资源文件中的value值为'自定义选择菜单关闭时触发该回调'
-          hilog.info(0x0000, 'Sample_TextComponent',
-            this.getUIContext()
-              .getHostContext()!.resourceManager.getStringSync($r('app.string.SelectMenu_Text_Close').id));
+通过[decoration](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md#decoration)设置文本装饰线及颜色。
+
+<!-- @[create_span_with_lines](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextSpan.ets) -->
+
+``` TypeScript
+Text() {
+  // 请将$r('app.string.TextSpan_textContent_span_one')替换为实际资源文件，在本示例中该资源文件的value值为"我是Span1，"
+  Span($r('app.string.TextSpan_textContent_span_one'))
+    .fontSize(16)
+    .fontColor(Color.Grey)
+    .decoration({ type: TextDecorationType.LineThrough, color: Color.Red })
+  // 请将$r('app.string.TextSpan_textContent_span_two')替换为实际资源文件，在本示例中该资源文件的value值为"我是Span2"
+  Span($r('app.string.TextSpan_textContent_span_two'))
+    .fontColor(Color.Blue)
+    .fontSize(16)
+    .fontStyle(FontStyle.Italic)
+    .decoration({ type: TextDecorationType.Underline, color: Color.Black })
+  // 请将$r('app.string.TextSpan_textContent_span_three')替换为实际资源文件，在本示例中该资源文件的value值为"，我是Span3"
+  Span($r('app.string.TextSpan_textContent_span_three'))
+    .fontSize(16)
+    .fontColor(Color.Grey)
+    .decoration({ type: TextDecorationType.Overline, color: Color.Green })
+}
+.borderWidth(1)
+.padding(10)
+```
+
+![text-child-span](figures/text-child-span.png)
+
+### 设置Span文本大小写
+
+通过[textCase](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md#textcase)设置文字一直保持大写或者小写状态。
+
+  <!-- @[create_span_with_upper_case](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextSpan.ets) -->
+  
+  ``` TypeScript
+  Text() {
+    Span('I am Upper-span').fontSize(12)
+      .textCase(TextCase.UpperCase)
+  }
+  .borderWidth(1)
+  .padding(10)
+  ```
+
+  ![text-child-image](figures/text-child-image.png)
+
+### 绑定Span文本事件
+
+由于Span组件无尺寸信息，仅支持添加点击事件[onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick)、悬浮事件[onHover](../reference/apis-arkui/arkui-ts/ts-universal-events-hover.md#onhover)。
+
+
+  <!-- @[textspan_onhover](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextSpanOnHover.ets) -->
+  
+  ``` TypeScript
+  // xxx.ets
+  import { hilog } from '@kit.PerformanceAnalysisKit';
+  
+  @Entry
+  @Component
+  struct TextSpanOnHover {
+    @State textStr1: string = '';
+    @State textStr2: string = '';
+  
+    build() {
+      NavDestination() {
+        Row() {
+          Column() {
+            Text() {
+              Span('I am Upper-span')
+                .textCase(TextCase.UpperCase)
+                .fontSize(30)
+                .onClick(() => {
+                  hilog.info(0x0000, 'Sample_TextComponent', 'Span onClick is triggering');
+                  this.textStr1 = 'Span onClick is triggering';
+                })
+                .onHover(() => {
+                  hilog.info(0x0000, 'Sample_TextComponent', 'Span onHover is triggering');
+                  this.textStr2 = 'Span onHover is triggering';
+                })
+            }
+  
+            Text('onClick：' + this.textStr1)
+              .fontSize(20)
+            Text('onHover：' + this.textStr2)
+              .fontSize(20)
+          }.width('100%')
         }
-      })
-    ```
-
-    <!-- @[Right_Click_Text_CustomMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectMenu.ets) -->
-    
-    ``` TypeScript
-    // 定义菜单项
-    @Builder
-    RightClickTextCustomMenu() {
-      Column() {
-        Menu() {
-          MenuItemGroup() {
-            // 请将$r('app.media.app_icon')替换为实际资源文件
-            MenuItem({ startIcon: $r('app.media.app_icon'), content: 'CustomMenu One', labelInfo: '' })
-              .onClick(() => {
-                // 使用closeSelectionMenu接口关闭菜单
-                this.controller.closeSelectionMenu();
-              })
-            MenuItem({ startIcon: $r('app.media.app_icon'), content: 'CustomMenu Two', labelInfo: '' })
-            MenuItem({ startIcon: $r('app.media.app_icon'), content: 'CustomMenu Three', labelInfo: '' })
-          }
-        }.backgroundColor('#F0F0F0')
+        .height('100%')
       }
+      // ...
     }
-    ```
+  }
+  ```
 
-    ![text_bindselectionmenu](figures/text_bindselectionmenu.gif)
+  ![span_event](figures/span_event.gif)
 
-  - Text组件通过设置[editMenuOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#editmenuoptions12)属性扩展自定义选择菜单，可以设置扩展项的文本内容、图标以及回调方法。
+## 设置文本菜单
+文本菜单包括系统菜单、AI菜单、自定义菜单。
 
-    <!-- @[set_selection_menu_with_editmenuoptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectMenu.ets) -->
-    
-    ``` TypeScript
-    // 请将$r('app.string.show_selected_menu')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段文本，用来展示选中菜单"
-    Text($r('app.string.show_selected_menu'))
-      .fontSize(20)
-      .copyOption(CopyOptions.LocalDevice)
-      .editMenuOptions({
-        onCreateMenu: this.onCreateMenu, onMenuItemClick: this.onMenuItemClick
-      })
-    ```
+系统菜单是系统预置的菜单项，无需配置自动出现，包括剪切、复制、粘贴、全选、翻译、搜索、分享等菜单选项，适用于大多数标准文本交互。
+
+AI菜单是基于AI文本分析动态识别实体后出现的智能操作菜单，菜单项包括电话号码、网址、邮箱地址等（AI识别出对应实体才显示，未检测到则不显示），与系统菜单的关键区别是菜单内容由AI检测结果决定，不是固定的，适用于含实体信息的文本内容。
+
+自定义菜单是由开发者完全自定义菜单内容，需要主动调用API配置，适用于有特殊业务需求的文本交互。
+
+### 使用系统菜单
+设置Text被选中时，会弹出包含复制、翻译、搜索的菜单。
+
+Text组件需要设置[copyOption](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#copyoption9)属性才可以被选中。
+
+  <!-- @[copy_Option](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextLayout.ets) -->
+  
+  ``` TypeScript
+  // 请将$r('app.string.selected_menu')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段文本，用来展示选中菜单"
+  Text($r('app.string.selected_menu'))
+    .fontSize(30)
+    .copyOption(CopyOptions.InApp)
+  ```
+
+  ![Text_select_menu](figures/Text_select_menu.jpg)
+
+可在Text组件区域内点击空白处正常关闭选择状态和菜单；若Text组件区域外点击空白处关闭选中菜单，需要设置[selection](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#selection11)属性，具体示例如下。
+
+  <!-- @[Selection_Change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectionChange.ets) -->
+  
+  ``` TypeScript
+  // xxx.ets
+  @Entry
+  @Component
+  struct SelectionChange {
+    @State text: string =
+      'This is set selection to Selection text content This is set selection to Selection text content.';
+    @State start: number = 0;
+    @State end: number = 20;
+  
+    build() {
+      NavDestination() {
+        Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start, justifyContent: FlexAlign.Start }) {
+          Text(this.text)
+            .fontSize(12)
+            .border({ width: 1 })
+            .lineHeight(20)
+            .margin(30)
+            .copyOption(CopyOptions.InApp)
+            .selection(this.start, this.end)
+            .onTextSelectionChange((selectionStart, selectionEnd) => {
+              // 更新选中态位置
+              this.start = selectionStart;
+              this.end = selectionEnd;
+            })
+        }
+        .height(600)
+        .width(335)
+        .borderWidth(1)
+        .onClick(() => {
+          // 监听父组件的点击事件，将选中首尾位置均设置为-1，即可清除选中
+          this.start = -1;
+          this.end = -1;
+        })
+      }
+      // ...
+    }
+  }
+  ```
+
+![close_selection_menu](figures/close_selection_menu.gif)
+
+### 系统菜单中自定义菜单项
+- Text组件通过设置[editMenuOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#editmenuoptions12)属性扩展自定义选择菜单，可以设置扩展项的文本内容、图标以及回调方法。
+
+  <!-- @[set_selection_menu_with_editmenuoptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectMenu.ets) -->
+  
+  ``` TypeScript
+  // 请将$r('app.string.show_selected_menu')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段文本，用来展示选中菜单"
+  Text($r('app.string.show_selected_menu'))
+    .fontSize(20)
+    .copyOption(CopyOptions.LocalDevice)
+    .editMenuOptions({
+      onCreateMenu: this.onCreateMenu, onMenuItemClick: this.onMenuItemClick
+    })
+  ```
 
     <!-- @[onCreate_Menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectMenu.ets) -->
     
@@ -938,302 +935,9 @@ Text组件可以添加通用事件，可以绑定[onClick](../reference/apis-ark
 
     ![text_editmenuoptions](figures/text_editmenuoptions.gif)
 
-### 关闭选中菜单
+- 从API version 20开始，当文本选择区域变化后显示菜单之前触发[onPrepareMenu](../reference/apis-arkui/arkui-ts/ts-text-common.md#属性-1)回调，可在该回调中进行菜单数据设置，提供系统菜单自定义刷新能力。
 
-  使用Text组件时，若需要实现点击空白处关闭选中的场景，分为以下两种情况：
-
-  - 在Text组件区域内点击空白处，会正常关闭选中态和菜单；
-  - 在Text组件区域外点击空白处，前提是Text组件设置[selection](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#selection11)属性，具体示例如下：
-
-    <!-- @[Selection_Change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectionChange.ets) -->
-    
-    ``` TypeScript
-    // xxx.ets
-    @Entry
-    @Component
-    export struct SelectionChange {
-      @State text: string =
-        'This is set selection to Selection text content This is set selection to Selection text content.';
-      @State start: number = 0;
-      @State end: number = 20;
-    
-      build() {
-        NavDestination() {
-          Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start, justifyContent: FlexAlign.Start }) {
-            Text(this.text)
-              .fontSize(12)
-              .border({ width: 1 })
-              .lineHeight(20)
-              .margin(30)
-              .copyOption(CopyOptions.InApp)
-              .selection(this.start, this.end)
-              .onTextSelectionChange((selectionStart, selectionEnd) => {
-                // 更新选中态位置
-                this.start = selectionStart;
-                this.end = selectionEnd;
-              })
-          }
-          .height(600)
-          .width(335)
-          .borderWidth(1)
-          .onClick(() => {
-            // 监听父组件的点击事件，将选中首尾位置均设置为-1，即可清除选中
-            this.start = -1;
-            this.end = -1;
-          })
-        }
-        // ···
-      }
-    }
-    ```
-
-### 屏蔽系统菜单回调和自定义扩展菜单
-
-从API version 12开始，支持通过[editMenuOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#editmenuoptions12)屏蔽系统菜单回调和自定义扩展菜单项。 
-
-  <!-- @[Custom_Block_Menus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CustomAndBlockMenus.ets) -->
-  
-  ``` TypeScript
-  // xxx.ets
-  @Entry
-  @Component
-  export struct CustomAndBlockMenus {
-    private static readonly CREATE_MENU_ITEM_ID_1: string = 'create1';
-    private static readonly CREATE_MENU_ITEM_ID_2: string = 'create2';
-    private static readonly PREPARE_MENU_ITEM_ID: string = 'prepare1';
-    @State private text: string = 'Text editMenuOptions';
-    @State private endIndex: number = 0;
-    @State blockCallbackText: string = '';
-  
-    // 创建菜单项辅助方法
-    private createMenuItem(id: string, content: string): TextMenuItem {
-      // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件
-      return {
-        content: content,
-        icon: $r('app.media.startIcon'),
-        id: TextMenuItemId.of(id)
-      };
-    }
-  
-    // 查找菜单项索引
-    private findMenuItemIndex(menuItems: Array<TextMenuItem>, menuItemId: TextMenuItemId): number {
-      return menuItems.findIndex((item: TextMenuItem) => item.id.equals(menuItemId));
-    }
-  
-    // 创建菜单回调
-    private onCreateMenu = (menuItems: Array<TextMenuItem>): Array<TextMenuItem> => {
-      const createItem1: TextMenuItem = this.createMenuItem(
-        CustomAndBlockMenus.CREATE_MENU_ITEM_ID_1,
-        'create1'
-      );
-  
-      const createItem2: TextMenuItem = this.createMenuItem(
-        CustomAndBlockMenus.CREATE_MENU_ITEM_ID_2,
-        'create2'
-      );
-  
-      // 添加自定义菜单项
-      menuItems.push(createItem1);
-      menuItems.unshift(createItem2);
-  
-      // 移除不需要的系统菜单项
-      this.removeMenuItemById(menuItems, TextMenuItemId.AI_WRITER);
-      this.removeMenuItemById(menuItems, TextMenuItemId.TRANSLATE);
-  
-      return menuItems;
-    }
-  
-    // 移除指定菜单项
-    private removeMenuItemById(menuItems: Array<TextMenuItem>, menuItemId: TextMenuItemId): void {
-      const targetIndex: number = this.findMenuItemIndex(menuItems, menuItemId);
-      if (targetIndex !== -1) {
-        menuItems.splice(targetIndex, 1);
-      }
-    }
-  
-    // 菜单项点击回调
-    private onMenuItemClick = (menuItem: TextMenuItem, textRange: TextRange): boolean => {
-      const menuItemId: TextMenuItemId = menuItem.id;
-  
-      // 处理自定义菜单项
-      if (menuItemId.equals(TextMenuItemId.of(CustomAndBlockMenus.CREATE_MENU_ITEM_ID_2))) {
-        let msg = '拦截 id: create2 start:' + textRange.start + '; end:' + textRange.end;
-        this.blockCallbackText = msg
-        return true;
-      }
-  
-      if (menuItemId.equals(TextMenuItemId.of(CustomAndBlockMenus.PREPARE_MENU_ITEM_ID))) {
-        let msg = '拦截 id: prepare1 start:' + textRange.start + '; end:+' + textRange.end;
-        this.blockCallbackText = msg
-        return true;
-      }
-  
-      // 处理系统菜单项
-      if (menuItemId.equals(TextMenuItemId.COPY)) {
-        let msg = '拦截 COPY start:' + textRange.start + '; end:' + textRange.end;
-        this.blockCallbackText = msg
-        return true;
-      }
-  
-      if (menuItemId.equals(TextMenuItemId.SELECT_ALL)) {
-        let msg = '不拦截 SELECT_ALL start:' + textRange.start + '; end:' + textRange.end;
-        this.blockCallbackText = msg
-        return false;
-      }
-  
-      return false;
-    }
-    // 准备菜单回调
-    private onPrepareMenu = (menuItems: Array<TextMenuItem>): Array<TextMenuItem> => {
-      const prepareItem: TextMenuItem = this.createMenuItem(
-        CustomAndBlockMenus.PREPARE_MENU_ITEM_ID,
-        `prepare1_${this.endIndex}`
-      );
-  
-      menuItems.unshift(prepareItem);
-      return menuItems;
-    }
-    // 编辑菜单选项
-    @State private editMenuOptions: EditMenuOptions = {
-      onCreateMenu: this.onCreateMenu,
-      onMenuItemClick: this.onMenuItemClick,
-      onPrepareMenu: this.onPrepareMenu
-    };
-    // 文本选择变化回调
-    private onTextSelectionChange = (selectionStart: number, selectionEnd: number): void => {
-      this.endIndex = selectionEnd;
-    }
-  
-    build() {
-      NavDestination() {
-        Column() {
-          Text(this.text)
-            .fontSize(20)
-            .copyOption(CopyOptions.LocalDevice)
-            .editMenuOptions(this.editMenuOptions)
-            .margin({ top: 100 })
-            .onTextSelectionChange(this.onTextSelectionChange)
-          Text(this.blockCallbackText).borderWidth(1)
-        }
-        .width('90%')
-        .margin('5%')
-      }
-    }
-  }
-  ```
-
-  ![text_disable_system_menu_callback_and_custom_menu](figures/text_disable_system_menu_callback_and_custom_menu.gif)
-
-### 屏蔽系统服务类菜单
-
-- 从API version 20开始，支持通过[disableSystemServiceMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablesystemservicemenuitems20)屏蔽文本选择菜单内所有系统服务菜单项。
-
-  <!-- @[Service_MenuItems](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/ServiceMenuItems.ets) -->
-  
-  ``` TypeScript
-  import { TextMenuController } from '@kit.ArkUI';
-  // xxx.ets
-  @Entry
-  @Component
-  export struct ServiceMenuItems {
-    aboutToAppear(): void {
-      // 禁用所有系统服务菜单
-      TextMenuController.disableSystemServiceMenuItems(true);
-    }
-  
-    aboutToDisappear(): void {
-      // 页面消失恢复系统服务菜单
-      TextMenuController.disableSystemServiceMenuItems(false);
-    }
-    build() {
-      NavDestination() {
-        Row() {
-          Column() {
-            // 请将$r('app.string.Service_MenuItems_Text')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段文本，长按弹出文本选择菜单。"
-            Text($r('app.string.Service_MenuItems_Text'))
-              .height(60)
-              .fontStyle(FontStyle.Italic)
-              .fontWeight(FontWeight.Bold)
-              .textAlign(TextAlign.Center)
-              .copyOption(CopyOptions.InApp)
-              .editMenuOptions({
-                onCreateMenu: (menuItems: Array<TextMenuItem>) => {
-                  // menuItems不包含被屏蔽的系统菜单项
-                  return menuItems;
-                },
-                onMenuItemClick: (menuItem: TextMenuItem, textRange: TextRange) => {
-                  return false;
-                }
-              })
-          }.width('100%')
-        }
-        .height('100%')
-      }
-      // ...
-    }
-  }
-  ```
-
-  ![text_disable_system_service_menuItems](figures/text_disable_system_service_menuItems.jpg)
-
-- 从API version 20开始，支持通过[disableMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablemenuitems20)屏蔽文本选择菜单内指定的系统服务菜单项。
-
-  <!-- @[Disable_MenuItems](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/DisableMenuItems.ets) -->
-  
-  ``` TypeScript
-  import { TextMenuController } from '@kit.ArkUI';
-  
-  // xxx.ets
-  @Entry
-  @Component
-  export struct DisableMenuItems {
-    aboutToAppear(): void {
-      // 禁用搜索菜单
-      TextMenuController.disableMenuItems([TextMenuItemId.SEARCH])
-    }
-  
-    aboutToDisappear(): void {
-      // 恢复系统服务菜单
-      TextMenuController.disableMenuItems([])
-    }
-  
-    build() {
-      NavDestination() {
-        Row() {
-          Column() {
-            // 请将$r('app.string.Service_MenuItems_Text')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段文本，长按弹出文本选择菜单。"
-            Text($r('app.string.Service_MenuItems_Text'))
-              .height(60)
-              .fontStyle(FontStyle.Italic)
-              .fontWeight(FontWeight.Bold)
-              .textAlign(TextAlign.Center)
-              .copyOption(CopyOptions.InApp)
-              .editMenuOptions({
-                onCreateMenu: (menuItems: Array<TextMenuItem>) => {
-                  // menuItems不包含搜索
-                  return menuItems;
-                },
-                onMenuItemClick: (menuItem: TextMenuItem, textRange: TextRange) => {
-                  return false
-                }
-              })
-          }.width('100%')
-        }
-        .height('100%')
-      }
-      // ...
-    }
-  }
-  ```
-  
-
-  ![text_disable_menuItems](figures/text_disable_menuItems.jpg)
-
-### 默认菜单支持自定义刷新能力
-
-从API version 20开始，当文本选择区域变化后显示菜单之前触发[onPrepareMenu](../reference/apis-arkui/arkui-ts/ts-text-common.md#属性-1)回调，可在该回调中进行菜单数据设置。
-
-  <!-- @[Prepare_Menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/PrepareMenu.ets) -->
+  <!-- @[Prepare_Menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/PrepareMenu.ets) -->  
   
   ``` TypeScript
   // 请将$r('app.media.xxx')替换为实际资源文件
@@ -1242,8 +946,7 @@ Text组件可以添加通用事件，可以绑定[onClick](../reference/apis-ark
   const DOMAIN = 0x0000;
   @Entry
   @Component
-  
-  export struct PrepareMenu {
+  struct PrepareMenu {
     @State text: string = 'Text editMenuOptions';
     @State endIndex: number = 0;
     onCreateMenu = (menuItems: Array<TextMenuItem>) => {
@@ -1314,11 +1017,252 @@ Text组件可以添加通用事件，可以绑定[onClick](../reference/apis-ark
     }
   }
   ```
+
+    ![text_on_prepare_menu](figures/text_on_prepare_menu.gif)
+
+### 系统菜单中屏蔽系统服务类菜单项
+
+- 从API version 20开始，支持通过[disableSystemServiceMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablesystemservicemenuitems20)屏蔽文本选择菜单内所有系统服务菜单项。更多详见[disableSystemServiceMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablesystemservicemenuitems20)的API文档接口说明。以下示例只是完整示例工程中的一个示例，为了不影响工程其他页面示例效果，仅在页面的出现和消失生命周期中进行系统服务菜单的禁用和恢复，实际场景可自行选择其他时机，比如[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)的[onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)和[onDestroy](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#ondestroy)。
+
+  <!-- @[Service_MenuItems](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/ServiceMenuItems.ets) -->
   
+  ``` TypeScript
+  import { TextMenuController } from '@kit.ArkUI';
+  // xxx.ets
+  @Entry
+  @Component
+  struct ServiceMenuItems {
+    aboutToAppear(): void {
+      // 禁用所有系统服务菜单
+      TextMenuController.disableSystemServiceMenuItems(true);
+    }
+  
+    aboutToDisappear(): void {
+      // 页面消失恢复系统服务菜单
+      TextMenuController.disableSystemServiceMenuItems(false);
+    }
+    build() {
+      NavDestination() {
+        Row() {
+          Column() {
+            // 请将$r('app.string.Service_MenuItems_Text')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段文本，长按弹出文本选择菜单。"
+            Text($r('app.string.Service_MenuItems_Text'))
+              .height(60)
+              .fontStyle(FontStyle.Italic)
+              .fontWeight(FontWeight.Bold)
+              .textAlign(TextAlign.Center)
+              .copyOption(CopyOptions.InApp)
+              .editMenuOptions({
+                onCreateMenu: (menuItems: Array<TextMenuItem>) => {
+                  // menuItems不包含被屏蔽的系统菜单项
+                  return menuItems;
+                },
+                onMenuItemClick: (menuItem: TextMenuItem, textRange: TextRange) => {
+                  return false;
+                }
+              })
+          }.width('100%')
+        }
+        .height('100%')
+      }
+      // ...
+    }
+  }
+  ```
 
-![text_on_prepare_menu](figures/text_on_prepare_menu.gif)
+    ![text_disable_system_service_menuItems](figures/text_disable_system_service_menuItems.jpg)
 
-## 设置AI菜单
+- 从API version 20开始，支持通过[disableMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablemenuitems20)屏蔽文本选择菜单内指定的系统服务菜单项。更多详见[disableMenuItems](../reference/apis-arkui/arkts-apis-uicontext-textmenucontroller.md#disablemenuitems20)的API文档接口说明。以下示例只是完整示例工程中的一个示例，为了不影响工程其他页面示例效果，仅在页面的出现和消失生命周期中进行系统服务菜单的禁用和恢复，实际场景可自行选择其他时机，比如[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)的[onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)和[onDestroy](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#ondestroy)。
+
+  <!-- @[Disable_MenuItems](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/DisableMenuItems.ets) -->
+  
+  ``` TypeScript
+  import { TextMenuController } from '@kit.ArkUI';
+  
+  // xxx.ets
+  @Entry
+  @Component
+  struct DisableMenuItems {
+    aboutToAppear(): void {
+      // 禁用搜索菜单
+      TextMenuController.disableMenuItems([TextMenuItemId.SEARCH])
+    }
+  
+    aboutToDisappear(): void {
+      // 恢复系统服务菜单
+      TextMenuController.disableMenuItems([])
+    }
+  
+    build() {
+      NavDestination() {
+        Row() {
+          Column() {
+            // 请将$r('app.string.Service_MenuItems_Text')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段文本，长按弹出文本选择菜单。"
+            Text($r('app.string.Service_MenuItems_Text'))
+              .height(60)
+              .fontStyle(FontStyle.Italic)
+              .fontWeight(FontWeight.Bold)
+              .textAlign(TextAlign.Center)
+              .copyOption(CopyOptions.InApp)
+              .editMenuOptions({
+                onCreateMenu: (menuItems: Array<TextMenuItem>) => {
+                  // menuItems不包含搜索
+                  return menuItems;
+                },
+                onMenuItemClick: (menuItem: TextMenuItem, textRange: TextRange) => {
+                  return false
+                }
+              })
+          }.width('100%')
+        }
+        .height('100%')
+      }
+      // ...
+    }
+  }
+  ```
+
+    ![text_disable_menuItems](figures/text_disable_menuItems.jpg)
+
+- 从API version 12开始，支持通过[editMenuOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#editmenuoptions12)屏蔽系统菜单回调和自定义扩展菜单项。 
+
+  <!-- @[Custom_Block_Menus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CustomAndBlockMenus.ets) -->
+  
+  ``` TypeScript
+  // xxx.ets
+  @Entry
+  @Component
+  struct CustomAndBlockMenus {
+    private static readonly CREATE_MENU_ITEM_ID_1: string = 'create1';
+    private static readonly CREATE_MENU_ITEM_ID_2: string = 'create2';
+    private static readonly PREPARE_MENU_ITEM_ID: string = 'prepare1';
+    private controller: TextController = new TextController();
+    @State private text: string = 'Text editMenuOptions';
+    @State private endIndex: number = 0;
+    @State blockCallbackText: string = '';
+  
+    // 创建菜单项辅助方法
+    private createMenuItem(id: string, content: string): TextMenuItem {
+      // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件
+      return {
+        content: content,
+        icon: $r('app.media.startIcon'),
+        id: TextMenuItemId.of(id)
+      };
+    }
+  
+    // 查找菜单项索引
+    private findMenuItemIndex(menuItems: Array<TextMenuItem>, menuItemId: TextMenuItemId): number {
+      return menuItems.findIndex((item: TextMenuItem) => item.id.equals(menuItemId));
+    }
+  
+    // 创建菜单回调
+    private onCreateMenu = (menuItems: Array<TextMenuItem>): Array<TextMenuItem> => {
+      const createItem1: TextMenuItem = this.createMenuItem(
+        CustomAndBlockMenus.CREATE_MENU_ITEM_ID_1,
+        'create1'
+      );
+  
+      const createItem2: TextMenuItem = this.createMenuItem(
+        CustomAndBlockMenus.CREATE_MENU_ITEM_ID_2,
+        'create2'
+      );
+  
+      // 添加自定义菜单项
+      menuItems.push(createItem1);
+      menuItems.unshift(createItem2);
+  
+      // 移除不需要的系统菜单项
+      this.removeMenuItemById(menuItems, TextMenuItemId.AI_WRITER);
+      this.removeMenuItemById(menuItems, TextMenuItemId.TRANSLATE);
+  
+      return menuItems;
+    }
+  
+    // 移除指定菜单项
+    private removeMenuItemById(menuItems: Array<TextMenuItem>, menuItemId: TextMenuItemId): void {
+      const targetIndex: number = this.findMenuItemIndex(menuItems, menuItemId);
+      if (targetIndex !== -1) {
+        menuItems.splice(targetIndex, 1);
+      }
+    }
+  
+    // 菜单项点击回调
+    private onMenuItemClick = (menuItem: TextMenuItem, textRange: TextRange): boolean => {
+      const menuItemId: TextMenuItemId = menuItem.id;
+  
+      // 处理自定义菜单项，return false，点击自定义菜单项后菜单会关闭
+      if (menuItemId.equals(TextMenuItemId.of(CustomAndBlockMenus.CREATE_MENU_ITEM_ID_2))) {
+        let msg = '拦截 id: create2 start:' + textRange.start + '; end:' + textRange.end;
+        this.blockCallbackText = msg;
+        return false;
+      }
+      // 处理自定义菜单项，return true，点击自定义菜单项后菜单不会关闭
+      if (menuItemId.equals(TextMenuItemId.of(CustomAndBlockMenus.PREPARE_MENU_ITEM_ID))) {
+        let msg = '拦截 id: prepare1 start:' + textRange.start + '; end:+' + textRange.end;
+        this.blockCallbackText = msg;
+        return true;
+      }
+  
+      // 处理系统菜单项，return true，拦截系统默认逻辑，此时点击复制菜单不会关闭
+      if (menuItemId.equals(TextMenuItemId.COPY)) {
+        let msg = '拦截 COPY start:' + textRange.start + '; end:' + textRange.end;
+        this.blockCallbackText = msg;
+        // 可以通过文本控制器关闭菜单，手柄也会消失，仅保持选中区域，点击可消失
+        this.controller.closeSelectionMenu();
+        return true;
+      }
+      // 处理系统菜单项，return false，不拦截系统默认逻辑，自定义逻辑亦会被执行
+      if (menuItemId.equals(TextMenuItemId.SELECT_ALL)) {
+        let msg = '不拦截 SELECT_ALL start:' + textRange.start + '; end:' + textRange.end;
+        this.blockCallbackText = msg;
+        return false;
+      }
+  
+      return false;
+    }
+    // 准备菜单回调
+    private onPrepareMenu = (menuItems: Array<TextMenuItem>): Array<TextMenuItem> => {
+      const prepareItem: TextMenuItem = this.createMenuItem(
+        CustomAndBlockMenus.PREPARE_MENU_ITEM_ID,
+        `prepare1_${this.endIndex}`
+      );
+  
+      menuItems.unshift(prepareItem);
+      return menuItems;
+    }
+    // 编辑菜单选项
+    @State private editMenuOptions: EditMenuOptions = {
+      onCreateMenu: this.onCreateMenu,
+      onMenuItemClick: this.onMenuItemClick,
+      onPrepareMenu: this.onPrepareMenu
+    };
+    // 文本选择变化回调
+    private onTextSelectionChange = (selectionStart: number, selectionEnd: number): void => {
+      this.endIndex = selectionEnd;
+    }
+  
+    build() {
+      NavDestination() {
+        Column() {
+          Text(this.text, { controller: this.controller })
+            .fontSize(20)
+            .copyOption(CopyOptions.LocalDevice)
+            .editMenuOptions(this.editMenuOptions)
+            .margin({ top: 100 })
+            .onTextSelectionChange(this.onTextSelectionChange)
+          Text(this.blockCallbackText).borderWidth(1)
+        }
+        .width('90%')
+        .margin('5%')
+      }
+    }
+  }
+  ```
+
+    ![text_disable_system_menu_callback_and_custom_menu](figures/text_disable_system_menu_callback_and_custom_menu.gif)
+
+### 设置AI菜单
 
 Text组件通过[enableDataDetector](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#enabledatadetector11)和[dataDetectorConfig](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#datadetectorconfig11)属性实现AI菜单的显示。AI菜单的表现形式包括：单击AI实体（指可被识别的内容，包括地址、邮箱等）弹出菜单的实体识别选项，选中文本后，文本选择菜单与鼠标右键菜单中显示的实体识别选项。
 
@@ -1328,9 +1272,8 @@ Text组件通过[enableDataDetector](../reference/apis-arkui/arkui-ts/ts-basic-c
 >
 >  该功能生效时，需选中范围内，包括一个完整的AI实体，才能展示对应的选项。
 
-- 如果需要单击AI实体弹出菜单的实体识别选项，可以配置[enableDataDetector](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#enabledatadetector11)为true。
-- 如果在单击的交互方式之外，还需要文本选择菜单与鼠标右键菜单中显示的实体识别选项，可以配置[enableDataDetector](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#enabledatadetector11)为true，且[copyOption](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#copyoption9)设置为CopyOptions.LocalDevice，具体示例如下所示：
-  <!-- @[set_ai_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/AIMenu.ets) -->
+- 如果需要单击AI实体弹出菜单的实体识别选项，可以配置[enableDataDetector](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#enabledatadetector11)为true。具体示例如下所示：
+  <!-- @[set_ai_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/AIMenu.ets) --> 
   
   ``` TypeScript
   // 'app.string.AIMenu_Text_One'资源文件中的value值为'电话号码：(86) (755) ********  \n \n 链接：www.********.com
@@ -1347,11 +1290,558 @@ Text组件通过[enableDataDetector](../reference/apis-arkui/arkui-ts/ts-basic-c
       }
     })
   ```
-  
+
 
 - 如果需要调整识别出的样式，可以通过[dataDetectorConfig](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#datadetectorconfig11)实现，具体可以参考[TextDataDetectorConfig](../reference/apis-arkui/arkui-ts/ts-text-common.md#textdatadetectorconfig11对象说明)配置项。
 - 如果需要调整菜单的位置，可以通过[editMenuOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#editmenuoptions12)实现，具体可以参考示例[文本扩展自定义菜单](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#示例12文本扩展自定义菜单)。 
 <!--RP2--><!--RP2End-->
+
+### 设置自定义菜单
+
+Text组件通过设置[bindSelectionMenu](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#bindselectionmenu11)属性绑定自定义选择菜单。
+
+  <!-- @[set_selection_menu_with_bindselectionmenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectMenu.ets) -->
+  
+  ``` TypeScript
+  controller: TextController = new TextController();
+  options: TextOptions = { controller: this.controller };
+  ```
+
+  <!-- @[set_selection_menu_with_bindselectionmenu_sec](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectMenu.ets) -->
+  
+  ``` TypeScript
+  // 请将$r('app.string.show_selected_menu')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段文本，用来展示选中菜单"
+  Text($r('app.string.show_selected_menu'), this.options)
+    .fontSize(30)
+    .copyOption(CopyOptions.InApp)
+    .bindSelectionMenu(TextSpanType.TEXT, this.RightClickTextCustomMenu, TextResponseType.RIGHT_CLICK, {
+      onAppear: () => {
+        // 请将$r('app.string.SelectMenu_Text_Ejected')替换为实际资源文件，在本示例中该资源文件的value值为"自定义选择菜单弹出时触发该回调"
+        hilog.info(0x0000, 'Sample_TextComponent',
+          this.getUIContext()
+            .getHostContext()!.resourceManager.getStringSync($r('app.string.SelectMenu_Text_Ejected').id));
+      },
+      onDisappear: () => {
+        // 'SelectMenu_Text_Close'资源文件中的value值为'自定义选择菜单关闭时触发该回调'
+        hilog.info(0x0000, 'Sample_TextComponent',
+          this.getUIContext()
+            .getHostContext()!.resourceManager.getStringSync($r('app.string.SelectMenu_Text_Close').id));
+      }
+    })
+  ```
+
+  <!-- @[Right_Click_Text_CustomMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectMenu.ets) -->
+  
+  ``` TypeScript
+  // 定义菜单项
+  @Builder
+  RightClickTextCustomMenu() {
+    Column() {
+      Menu() {
+        MenuItemGroup() {
+          // 请将$r('app.media.app_icon')替换为实际资源文件
+          MenuItem({ startIcon: $r('app.media.app_icon'), content: 'CustomMenu One', labelInfo: '' })
+            .onClick(() => {
+              // 使用closeSelectionMenu接口关闭菜单
+              this.controller.closeSelectionMenu();
+            })
+          MenuItem({ startIcon: $r('app.media.app_icon'), content: 'CustomMenu Two', labelInfo: '' })
+          MenuItem({ startIcon: $r('app.media.app_icon'), content: 'CustomMenu Three', labelInfo: '' })
+        }
+      }.backgroundColor('#F0F0F0')
+    }
+  }
+  ```
+
+  ![text_bindselectionmenu](figures/text_bindselectionmenu.gif)
+
+### 在子窗口中显示文本菜单
+
+Text组件通过设置[TextMenuShowMode](../reference/apis-arkui/arkui-ts/ts-text-common.md#textmenushowmode16)控制文本菜单在哪个窗口中渲染。主窗口模式下，菜单节点挂载到主窗口根节点，菜单可能被页面内容遮挡、受页面滚动影响；子窗口模式下，菜单节点挂载到独立子窗口的根节点，菜单浮在主窗口之上，不受页面布局影响。
+
+  <!-- @[set_menu_options_with_textmenushowmode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextMenuShowSubWindow.ets) -->
+  
+  ``` TypeScript
+  this.getUIContext()
+    .getTextMenuController()
+    .setMenuOptions(
+      {
+        showMode: TextMenuShowMode.PREFER_WINDOW
+      }
+    );
+  ```
+
+  <!-- @[textmenushowmode_create_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextMenuShowSubWindow.ets) -->
+  
+  ``` TypeScript
+  // 请将$r('app.string.Service_MenuItems_Text')替换为实际资源文件，在本示例中该资源文件的value值为"这是一段文本，长按弹出文本选择菜单"
+  Text($r('app.string.Service_MenuItems_Text'))
+    .fontSize(15)
+    .margin({ top: 100 })
+    .copyOption(CopyOptions.InApp)
+  ```
+
+  ![Text-menu-subwindow](figures/Text-menu-subwindow.gif)
+
+## 跨节点选中
+
+在文章阅读、商品详情、协议条款等场景中，正文内容通常由标题、副标题、多个段落等独立Text组件分别承载。若无法跨越多个文本组件边界连续选择，多Text组件场景下选择体验存在割裂。
+
+从API版本26.0.0开始，可通过[SelectionContainer](../reference/apis-arkui/arkui-ts/ts-basic-components-selectioncontainer.md)组件为多个Text子组件提供统一的跨节点文本选中、复制及菜单扩展能力。用户长按后可在不同Text节点之间拖拽连续选中文本，选中文本按Text组件视觉顺序拼接后统一复制，同时支持统一配置选中手柄颜色、高亮颜色、文本拼接策略及自定义菜单。SelectionContainer默认采用[Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md)布局，如需线性布局请在SelectionContainer内放置Column或Row等容器组件。
+
+### 实现跨节点文本选中与复制
+
+将多个Text组件置于SelectionContainer内，通过[copyOption](../reference/apis-arkui/arkui-ts/ts-basic-components-selectioncontainer.md#copyoption)设置可复制范围，即可实现跨Text组件的连续选中和复制。通过[caretColor](../reference/apis-arkui/arkui-ts/ts-basic-components-selectioncontainer.md#caretcolor)和[selectedBackgroundColor](../reference/apis-arkui/arkui-ts/ts-basic-components-selectioncontainer.md#selectedbackgroundcolor)可统一设置选中手柄和高亮颜色，通过[onTextSelectionChange](../reference/apis-arkui/arkui-ts/ts-basic-components-selectioncontainer.md#ontextselectionchange)、[onWillCopy](../reference/apis-arkui/arkui-ts/ts-basic-components-selectioncontainer.md#onwillcopy)、[onCopy](../reference/apis-arkui/arkui-ts/ts-basic-components-selectioncontainer.md#oncopy)可监听选中变化和复制流程。
+
+  <!-- @[cross_node_selection_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectionContainerDemo.ets) -->
+  
+  ``` TypeScript
+  // xxx.ets
+  import {
+    SelectionContainer,
+    SelectionContainerAttribute,
+    SelectionContainerTextJoinStyle
+  } from '@kit.ArkUI';
+  
+  @Entry
+  @Component
+  struct SelectionContainerDemo {
+    @State selectedParts: string = '';
+    @State copiedText: string = '';
+  
+    build() {
+      NavDestination() {
+        Column({ space: 16 }) {
+          Text('请在下方区域跨节点选中文本')
+            .fontSize(16)
+            .fontColor('#999999')
+  
+          SelectionContainer() {
+            Column({ space: 12 }) {
+              Text('跨节点选中示例文章')
+                .fontSize(24)
+                .fontWeight(FontWeight.Bold)
+              Text('在文章阅读场景中，标题与正文通常由多个Text组件分别承载。用户期望能够跨段落连续选中文本。')
+                .fontSize(16)
+              Text('SelectionContainer组件为多个文本节点提供跨节点选中、复制及菜单扩展能力，提升复杂文本布局中的交互体验。')
+                .fontSize(16)
+            }
+          }
+          .copyOption(CopyOptions.InApp)
+          .textJoinStyle(SelectionContainerTextJoinStyle.NEWLINE)
+          .caretColor(Color.Red)
+          .selectedBackgroundColor('#33007DFF')
+          .onTextSelectionChange((value: Array<string>) => {
+            this.selectedParts = value.join(' | ');
+          })
+          .onWillCopy((value: string) => {
+            this.copiedText = `准备复制：${value}`;
+            return true;
+          })
+          .onCopy((value: string) => {
+            this.copiedText = `复制成功：${value}`;
+          })
+          .border({ width: 1, color: '#DCDCDC' })
+          .padding(12)
+          .width('100%')
+  
+          Text(`选中内容：${this.selectedParts}`)
+            .fontSize(14)
+            .fontColor('#666666')
+          Text(this.copiedText)
+            .fontSize(14)
+            .fontColor('#666666')
+        }
+        .width('100%')
+        .padding(16)
+      }
+      // ...
+    }
+  }
+  ```
+
+  ![text-cross-node-selection](figures/text-cross-node-selection.gif)
+
+### 配置跨节点文本拼接方式
+
+跨节点选中涉及多个Text组件时，复制到剪贴板的文本需按视觉顺序拼接。通过[textJoinStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-selectioncontainer.md#textjoinstyle)可设置拼接方式：[SelectionContainerTextJoinStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-selectioncontainer.md#selectioncontainertextjoinstyle).NEWLINE在不同文本节点间插入换行符，.DIRECT直接拼接不添加分隔符。
+
+  <!-- @[cross_node_join_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectionContainerJoinStyle.ets) -->
+  
+  ``` TypeScript
+  // xxx.ets
+  import {
+    SelectionContainer,
+    SelectionContainerAttribute,
+    SelectionContainerTextJoinStyle
+  } from '@kit.ArkUI';
+  
+  @Entry
+  @Component
+  struct SelectionContainerJoinStyle {
+    @State joinStyle: SelectionContainerTextJoinStyle = SelectionContainerTextJoinStyle.NEWLINE;
+    @State selectedText: string = '';
+    @State copiedText: string = '';
+  
+    build() {
+      NavDestination() {
+        Column({ space: 16 }) {
+          Row({ space: 12 }) {
+            Button('换行拼接')
+              .type(ButtonType.Capsule)
+              .backgroundColor(this.joinStyle === SelectionContainerTextJoinStyle.NEWLINE ? '#007DFF' : '#E0E0E0')
+              .fontColor(this.joinStyle === SelectionContainerTextJoinStyle.NEWLINE ? Color.White : Color.Black)
+              .onClick(() => {
+                this.joinStyle = SelectionContainerTextJoinStyle.NEWLINE;
+              })
+            Button('直接拼接')
+              .type(ButtonType.Capsule)
+              .backgroundColor(this.joinStyle === SelectionContainerTextJoinStyle.DIRECT ? '#007DFF' : '#E0E0E0')
+              .fontColor(this.joinStyle === SelectionContainerTextJoinStyle.DIRECT ? Color.White : Color.Black)
+              .onClick(() => {
+                this.joinStyle = SelectionContainerTextJoinStyle.DIRECT;
+              })
+          }
+  
+          SelectionContainer() {
+            Column({ space: 12 }) {
+              Text('第一段文本：选中后复制的拼接方式由textJoinStyle决定。')
+                .fontSize(18)
+              Text('第二段文本：换行拼接时两段文本间会插入换行符，直接拼接时不插入任何分隔符。')
+                .fontSize(18)
+            }
+          }
+          .copyOption(CopyOptions.InApp)
+          .textJoinStyle(this.joinStyle)
+          .onTextSelectionChange((value: Array<string>) => {
+            this.selectedText = value.join(' | ');
+          })
+          .onWillCopy((value: string) => {
+            this.copiedText = value;
+            return true;
+          })
+          .onCopy((value: string) => {
+            this.copiedText = value;
+          })
+          .border({ width: 1, color: '#DCDCDC' })
+          .padding(12)
+          .width('100%')
+  
+          Text(`选中内容：${this.selectedText}`)
+            .fontSize(14)
+            .fontColor('#666666')
+          Text('复制内容（体现拼接方式差异）：')
+            .fontSize(14)
+            .fontColor('#666666')
+          Text(this.copiedText)
+            .fontSize(14)
+            .fontColor('#333333')
+            .backgroundColor('#F5F5F5')
+            .padding(8)
+            .borderRadius(4)
+            .width('100%')
+        }
+        .width('100%')
+        .padding(16)
+      }
+      // ...
+    }
+  }
+  ```
+
+  ![text-cross-node-join-style](figures/text-cross-node-join-style.gif)
+
+### 绑定自定义选择菜单
+
+当系统默认菜单无法满足业务需求时，可通过[bindSelectionMenu](../reference/apis-arkui/arkui-ts/ts-basic-components-selectioncontainer.md#bindselectionmenu)绑定完全自定义的选择菜单。与系统菜单不同，自定义菜单的内容、样式和触发条件均由开发者定义。
+
+  <!-- @[cross_node_custom_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectionContainerCustomMenu.ets) -->
+  
+  ``` TypeScript
+  // xxx.ets
+  import {
+    SelectionContainer,
+    SelectionContainerAttribute,
+    SelectionContainerMenuOptions,
+    SelectionContainerTextJoinStyle
+  } from '@kit.ArkUI';
+  
+  @Entry
+  @Component
+  struct SelectionContainerCustomMenu {
+    @State selectedText: string = '';
+    @State menuLog: string = '';
+  
+    build() {
+      NavDestination() {
+        Column({ space: 16 }) {
+          Text('请在下方区域选中文本，体验自定义菜单')
+            .fontSize(16)
+            .fontColor('#999999')
+  
+          SelectionContainer() {
+            Column({ space: 12 }) {
+              Text('第一段文本：跨节点选中后长按可弹出完全自定义的选择菜单。')
+                .fontSize(18)
+              Text('第二段文本：通过bindSelectionMenu绑定自定义菜单，可替代系统默认菜单。')
+                .fontSize(18)
+            }
+          }
+          .copyOption(CopyOptions.InApp)
+          .textJoinStyle(SelectionContainerTextJoinStyle.DIRECT)
+          .bindSelectionMenu(
+            TextSpanType.TEXT,
+            this.menuBuilder,
+            TextResponseType.DEFAULT,
+            {
+              onAppear: (text: string) => {
+                this.menuLog = `菜单出现，选中文本：${text}`;
+              },
+              onDisappear: () => {
+                this.menuLog = '菜单消失';
+              }
+            } as SelectionContainerMenuOptions
+          )
+          .onTextSelectionChange((value: Array<string>) => {
+            this.selectedText = value.join(' | ');
+          })
+          .border({ width: 1, color: '#DCDCDC' })
+          .padding(12)
+          .width('100%')
+  
+          Text(`选中内容：${this.selectedText}`)
+            .fontSize(14)
+            .fontColor('#666666')
+          Text(this.menuLog)
+            .fontSize(14)
+            .fontColor('#999999')
+        }
+        .width('100%')
+        .padding(16)
+      }
+      // ...
+    }
+  
+    @Builder
+    menuBuilder() {
+      Column() {
+        Menu() {
+          MenuItemGroup() {
+            MenuItem({ content: '自定义复制', labelInfo: '' })
+              .onClick(() => {
+                this.menuLog = '点击了自定义复制';
+              })
+            MenuItem({ content: '自定义分享', labelInfo: '' })
+              .onClick(() => {
+                this.menuLog = '点击了自定义分享';
+              })
+            MenuItem({ content: '自定义翻译', labelInfo: '' })
+              .onClick(() => {
+                this.menuLog = '点击了自定义翻译';
+              })
+          }
+        }
+        .radius($r('sys.float.ohos_id_corner_radius_card'))
+        .clip(true)
+        .backgroundColor('#F0F0F0')
+      }
+    }
+  }
+  ```
+
+  ![text-cross-node-bind-menu](figures/text-cross-node-bind-menu.gif)
+
+### 扩展系统菜单选项
+
+若需在保留系统菜单项的基础上增加自定义选项，可通过[editMenuOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-selectioncontainer.md#editmenuoptions)实现。该方式支持添加自定义菜单项、移除指定系统菜单项，并在[onMenuItemClick](../reference/apis-arkui/arkui-ts/ts-basic-components-selectioncontainer.md#onmenuitemclickwithtextcallback)回调中通过返回值拦截或放行系统默认行为。
+
+  <!-- @[cross_node_extend_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectionContainerExtendMenu.ets) -->
+  
+  ``` TypeScript
+  // xxx.ets
+  import {
+    OnMenuItemClickWithTextCallback,
+    SelectionContainer,
+    SelectionContainerAttribute,
+    SelectionContainerEditMenuOptions,
+    SelectionContainerTextJoinStyle
+  } from '@kit.ArkUI';
+  
+  @Entry
+  @Component
+  struct SelectionContainerExtendMenu {
+    @State selectedText: string = '';
+    @State menuClickLog: string = '';
+  
+    onCreateMenu = (menuItems: Array<TextMenuItem>): Array<TextMenuItem> => {
+      let targetIndex: number = menuItems.findIndex((item: TextMenuItem) => item.id.equals(TextMenuItemId.TRANSLATE));
+      if (targetIndex !== -1) {
+        menuItems.splice(targetIndex, 1);
+      }
+      targetIndex = menuItems.findIndex((item: TextMenuItem) => item.id.equals(TextMenuItemId.SEARCH));
+      if (targetIndex !== -1) {
+        menuItems.splice(targetIndex, 1);
+      }
+      let highlightItem: TextMenuItem = {
+        content: '标注',
+        id: TextMenuItemId.of('highlight')
+      };
+      let bookmarkItem: TextMenuItem = {
+        content: '收藏',
+        id: TextMenuItemId.of('bookmark')
+      };
+      let commentItem: TextMenuItem = {
+        content: '批注',
+        id: TextMenuItemId.of('comment')
+      };
+      menuItems.push(highlightItem);
+      menuItems.push(bookmarkItem);
+      menuItems.push(commentItem);
+      return menuItems;
+    }
+  
+    onMenuItemClick: OnMenuItemClickWithTextCallback = (menuItem: TextMenuItem, text: string): boolean => {
+      this.menuClickLog = `点击菜单项：${menuItem.content}，选中文本：${text}`;
+      if (menuItem.id.equals(TextMenuItemId.COPY)) {
+        this.selectedText = `已复制：${text}`;
+        return true;
+      }
+      if (menuItem.id.equals(TextMenuItemId.SELECT_ALL)) {
+        this.selectedText = `全选操作：${text}`;
+        return false;
+      }
+      if (menuItem.id.equals(TextMenuItemId.of('highlight'))) {
+        this.selectedText = `已标注：${text}`;
+        return true;
+      }
+      if (menuItem.id.equals(TextMenuItemId.of('bookmark'))) {
+        this.selectedText = `已收藏：${text}`;
+        return true;
+      }
+      if (menuItem.id.equals(TextMenuItemId.of('comment'))) {
+        this.selectedText = `已批注：${text}`;
+        return true;
+      }
+      return false;
+    }
+  
+    @State editMenuOptions: SelectionContainerEditMenuOptions = {
+      onCreateMenu: this.onCreateMenu,
+      onMenuItemClick: this.onMenuItemClick
+    };
+  
+    build() {
+      NavDestination() {
+        Column({ space: 16 }) {
+          Text('请在下方区域选中文本，体验扩展菜单')
+            .fontSize(16)
+            .fontColor('#999999')
+  
+          SelectionContainer() {
+            Column({ space: 12 }) {
+              Text('第一段文本：通过editMenuOptions可以在系统菜单基础上扩展自定义项。')
+                .fontSize(18)
+              Text('第二段文本：可以移除不需要的系统菜单项，并添加标注、收藏、批注等自定义项。')
+                .fontSize(18)
+            }
+          }
+          .copyOption(CopyOptions.InApp)
+          .textJoinStyle(SelectionContainerTextJoinStyle.DIRECT)
+          .editMenuOptions(this.editMenuOptions)
+          .onTextSelectionChange((value: Array<string>) => {
+            this.selectedText = value.join(' | ');
+          })
+          .border({ width: 1, color: '#DCDCDC' })
+          .padding(12)
+          .width('100%')
+  
+          Text(this.selectedText)
+            .fontSize(14)
+            .fontColor('#666666')
+          Text(this.menuClickLog)
+            .fontSize(14)
+            .fontColor('#999999')
+        }
+        .width('100%')
+        .padding(16)
+      }
+      // ...
+    }
+  }
+  ```
+
+  ![text-cross-node-extend-menu](figures/text-cross-node-extend-menu.gif)
+
+### 通过控制器关闭菜单与清除选中
+
+在页面跳转、弹窗遮盖等场景下，需主动关闭选择菜单或清除选中状态。可通过[SelectionContainerController](../reference/apis-arkui/arkui-ts/ts-basic-components-selectioncontainer.md#selectioncontainercontroller)的[closeSelectionMenu](../reference/apis-arkui/arkui-ts/ts-basic-components-selectioncontainer.md#closeselectionmenu)关闭菜单，通过[clearTextSelection](../reference/apis-arkui/arkui-ts/ts-basic-components-selectioncontainer.md#cleartextselection)清除选中态。
+
+  <!-- @[cross_node_controller](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectionContainerControllerDemo.ets) -->
+  
+  ``` TypeScript
+  // xxx.ets
+  import {
+    SelectionContainer,
+    SelectionContainerAttribute,
+    SelectionContainerController
+  } from '@kit.ArkUI';
+  
+  @Entry
+  @Component
+  struct SelectionContainerControllerDemo {
+    private controller: SelectionContainerController = new SelectionContainerController();
+    @State selectedText: string = '';
+  
+    build() {
+      NavDestination() {
+        Column({ space: 16 }) {
+          Text('请在下方区域跨节点选中文本，再点击按钮操作')
+            .fontSize(16)
+            .fontColor('#999999')
+  
+          SelectionContainer({ controller: this.controller }) {
+            Column({ space: 12 }) {
+              Text('第一段文本：选中后可通过控制器关闭选择菜单或清除选中文本。')
+                .fontSize(18)
+              Text('第二段文本：closeSelectionMenu仅关闭菜单，clearTextSelection会同时清除选中态。')
+                .fontSize(18)
+            }
+          }
+          .copyOption(CopyOptions.InApp)
+          .onTextSelectionChange((value: Array<string>) => {
+            this.selectedText = value.join(' | ');
+          })
+          .border({ width: 1, color: '#DCDCDC' })
+          .padding(12)
+          .width('100%')
+  
+          Row({ space: 12 }) {
+            Button('关闭选择菜单')
+              .type(ButtonType.Capsule)
+              .onClick(() => {
+                this.controller.closeSelectionMenu();
+              })
+            Button('清除文本选中')
+              .type(ButtonType.Capsule)
+              .onClick(() => {
+                this.controller.clearTextSelection();
+                this.selectedText = '';
+              })
+          }
+  
+          Text(`选中内容：${this.selectedText}`)
+            .fontSize(14)
+            .fontColor('#666666')
+        }
+        .width('100%')
+        .padding(16)
+      }
+      // ...
+    }
+  }
+  ```
+
+  ![text-cross-node-controller](figures/text-cross-node-controller.gif)
 
 ## 实现热搜榜
 
@@ -1360,11 +1850,9 @@ Text组件通过[enableDataDetector](../reference/apis-arkui/arkui-ts/ts-basic-c
   <!-- @[the_text_fact_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextHotSearch.ets) -->
   
   ``` TypeScript
-  import { ComponentCard } from '../../common/Card';
-  
   @Entry
   @Component
-  export struct TextHotSearch {
+  struct TextHotSearch {
     build() {
       NavDestination() {
         Column({ space: 12 }) {
@@ -1394,8 +1882,9 @@ Text组件通过[enableDataDetector](../reference/apis-arkui/arkui-ts/ts-basic-c
   
               Row() {
                 Text('2').fontSize(14).fontColor(Color.Red).margin({ left: 10, right: 10 })
-                /* 请将$r('app.string.TextHotSearch_textContent_three')替换为实际资源文件，在本示例中该资源文件的
-                  value值为"我是热搜词条2 我是热搜词条2 我是热搜词条2 我是热搜词条2 我是热搜词条2" */
+                /* 请将$r('app.string.TextHotSearch_textContent_three')替换为实际资源文件，
+                 * 在本示例中该资源文件的value值为"我是热搜词条2 我是热搜词条2 我是热搜词条2 我是热搜词条2 我是热搜词条2"
+                 */
                 Text($r('app.string.TextHotSearch_textContent_three'))
                   .fontSize(12)
                   .fontColor(Color.Blue)
@@ -1441,8 +1930,9 @@ Text组件通过[enableDataDetector](../reference/apis-arkui/arkui-ts/ts-basic-c
   
               Row() {
                 Text('4').fontSize(14).fontColor(Color.Grey).margin({ left: 10, right: 10 })
-                /* 请将$r('app.string.TextHotSearch_textContent_six')替换为实际资源文件，在本示例中该资源文件的
-                  value值为"我是热搜词条4 我是热搜词条4 我是热搜词条4 我是热搜词条4 我是热搜词条4" */
+                /* 请将$r('app.string.TextHotSearch_textContent_six')替换为实际资源文件，
+                 * 在本示例中该资源文件的value值为"我是热搜词条4 我是热搜词条4 我是热搜词条4 我是热搜词条4 我是热搜词条4"
+                 */
                 Text($r('app.string.TextHotSearch_textContent_six'))
                   .fontSize(12)
                   .fontColor(Color.Blue)
@@ -1464,5 +1954,5 @@ Text组件通过[enableDataDetector](../reference/apis-arkui/arkui-ts/ts-basic-c
   ```
   
 
-![zh-cn_image_0000001562820805](figures/zh-cn_image_0000001562820805.png)
+![text-hot-search](figures/text-hot-search.png)
 <!--RP1--><!--RP1End-->

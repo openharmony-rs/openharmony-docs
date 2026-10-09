@@ -6,6 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=7b8b9d8ce742c4a1126ab4e1f2ad4f9170b54175 translatedAt=2026-09-23T01:44:08.303Z pushedAt=2026-09-24T06:00:14.164Z -->
 
 > **NOTE**
 >
@@ -122,15 +123,15 @@ This error code is reported if the number of network requests exceeds the maximu
 
 - The number of requests for activating a network or listening to network status changes has reached the maximum value.
 
-- The maximum number of 2.NetConnection.register interfaces has been reached.
+- The maximum number of **NetConnection.register** APIs has been reached.
 
 **Procedure**
 
 1. Locate the fault based on the "Over the max request number" log record.
 
-2. After using **NetConnection.register**, call **NetConnection.unregister** to cancel the registered listener in a timely manner.
+2. After using **NetConnection.register**, call **unregister** to cancel the registered listener in a timely manner.
 
-## 2100301 The caller fails to be authenticated (non-VPN application).
+## 2100301 Failed to Authenticate the Caller (Non-VPN Application)
 
 **Error Message**
 
@@ -147,3 +148,39 @@ The API caller is not a VPN application.
 **Procedure**
 
 Ensure that the API is called in a VPN application.
+
+## 2100400 Incorrect NIC Name (Non-Ethernet)
+
+**Error Message**
+
+The input network interface is incorrect.
+
+**Description**
+
+The NIC name passed in the API call is incorrect.
+
+**Cause**
+
+The NIC name passed in the API call is not an Ethernet NIC name such as **eth0**.
+
+**Procedure**
+
+Ensure that the NIC name is an Ethernet NIC name such as **eth0**.
+
+## 2100401 No IP Address Configured on the VLAN Is Found
+
+**Error Message**
+
+The input ip address not found.
+
+**Description**
+
+The input IP address is not found.
+
+**Cause**
+
+The input IP address is not found on the VLAN.
+
+**Procedure**
+
+Ensure that the input IP address is configured on the VLAN.

@@ -118,3 +118,74 @@ struct Index {
 ```
 
 ![ButtonModifier差异示意图](figures/ButtonModifier.png)
+
+## Button组件设置type时，ButtonType枚举值与数字值不一致
+
+**问题现象**
+
+Button组件的type属性支持使用[ButtonType](../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-button.md#buttontype枚举说明)枚举或数字进行设置，但SDK中枚举的数值与实际type可用的数值不一致。例如ButtonType.ROUNDED_RECTANGLE枚举数值为3，但是使用`type(ButtonType.ROUNDED_RECTANGLE)`与`type(3)`的效果不同。
+
+**可能原因**
+
+[ButtonType](../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-button.md#buttontype枚举说明)枚举数值的定义仅表示枚举项的索引，与type属性实际接收数值不同。映射如下：
+
+| ButtonType枚举 | 枚举值 | type实际数值 |
+| --- | --- | --- |
+| Normal | 2 | 0 |
+| Capsule | 0 | 1 |
+| Circle | 1 | 2 |
+| ROUNDED_RECTANGLE | 3 | 8 |
+
+因此，`type(8)`的效果等同于`type(ButtonType.ROUNDED_RECTANGLE)`，而`type(3)`不对应任何有效类型，API version 18之前会使用默认值ButtonType.Capsule，API version 18及之后会使用默认值ButtonType.ROUNDED_RECTANGLE。
+
+**解决措施**
+
+建议使用[ButtonType](../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-button.md#buttontype枚举说明)枚举进行设置，避免直接使用数字值可能带来的混淆。如果确需使用数字值，请参照上表中的"type实际数值"列进行设置。
+
+**示例**
+
+<!-- @[button_type_faq](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/pages/ButtonTypeFAQ.ets) -->
+
+``` TypeScript
+// pages/ButtonTypeFAQ.ets
+@Entry
+@Component
+struct ButtonTypeDemo {
+  build() {
+    Column({ space: 20 }) {
+      // 使用枚举设置（推荐）
+      Text('使用枚举设置：')
+      Button('Capsule')
+        .type(ButtonType.Capsule)
+      Button('Circle')
+        .type(ButtonType.Circle)
+      Button('Normal')
+        .type(ButtonType.Normal)
+      Button('ROUNDED_RECTANGLE')
+        .type(ButtonType.ROUNDED_RECTANGLE)
+
+      // 使用数字设置（需使用type实际数值）
+      Text('使用数字设置：')
+      Button('type(1)')
+        .type(1) // 等同于 ButtonType.Capsule
+      Button('type(2)')
+        .type(2) // 等同于 ButtonType.Circle
+      Button('type(0)')
+        .type(0) // 等同于 ButtonType.Normal
+      Button('type(8)')
+        .type(8) // 等同于 ButtonType.ROUNDED_RECTANGLE
+
+      // 错误示例：使用SDK枚举值作为type数字
+      Text('错误示例（使用SDK枚举值）：')
+      Button('type(3)')
+        .type(3) // 不对应任何类型，使用默认样式
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(Color.White)
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
+![ButtonType枚举与数值示意图](figures/ButtonTypeValue.png)

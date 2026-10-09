@@ -2,12 +2,12 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
-描述字型绘制时所使用的属性，如大小、字体等。
+Font类用于描述字型绘制时所使用的属性（如大小、字体、粗细、倾斜、缩放等），并支持文本测量、字形转换、路径轮廓获取、主题字体跟随等能力。
 
 > **说明：**
 >
@@ -27,7 +27,7 @@ import { drawing } from '@kit.ArkGraphics2D';
 
 isSubpixel(): boolean
 
-获取字型是否使用次像素渲染。
+获取字型是否使用亚像素渲染。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -37,12 +37,12 @@ isSubpixel(): boolean
 
 | 类型   | 说明                 |
 | ------ | -------------------- |
-| boolean | 返回字型是否使用次像素渲染的结果，true表示使用，false表示不使用。 |
+| boolean | 返回字型是否使用亚像素渲染的结果，true表示使用，false表示不使用。 |
 
 **示例：**
 
 ```ts
-import {drawing} from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
 
 let font: drawing.Font = new drawing.Font();
 font.enableSubpixel(true)
@@ -68,10 +68,10 @@ isLinearMetrics(): boolean
 **示例：**
 
 ```ts
-import {drawing} from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
 
 let font: drawing.Font = new drawing.Font();
-font.enableLinearMetrics(true)
+font.enableLinearMetrics(true);
 console.info("values=" + font.isLinearMetrics());
 ```
 
@@ -79,7 +79,7 @@ console.info("values=" + font.isLinearMetrics());
 
 getSkewX(): number
 
-获取字型在x轴方向上的倾斜度。
+获取字型在x轴方向上的倾斜比例。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -89,15 +89,15 @@ getSkewX(): number
 
 | 类型   | 说明                 |
 | ------ | -------------------- |
-| number | 返回字型在x轴方向上的倾斜度。 |
+| number | 返回字型在x轴方向上的倾斜比例。 |
 
 **示例：**
 
 ```ts
-import {drawing} from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
 
 let font: drawing.Font = new drawing.Font();
-font.setSkewX(-1)
+font.setSkewX(-1);
 console.info("values=" + font.getSkewX());
 ```
 
@@ -120,7 +120,7 @@ isEmbolden(): boolean
 **示例：**
 
 ```ts
-import {drawing} from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
 
 let font: drawing.Font = new drawing.Font();
 font.enableEmbolden(true);
@@ -146,7 +146,7 @@ getScaleX(): number
 **示例：**
 
 ```ts
-import {drawing} from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
 
 let font: drawing.Font = new drawing.Font();
 font.setScaleX(2);
@@ -172,7 +172,7 @@ getHinting(): FontHinting
 **示例：**
 
 ```ts
-import {drawing} from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
 
 let font: drawing.Font = new drawing.Font();
 console.info("values=" + font.getHinting());
@@ -197,7 +197,7 @@ getEdging(): FontEdging
 **示例：**
 
 ```ts
-import {drawing} from '@kit.ArkGraphics2D';
+import { drawing } from '@kit.ArkGraphics2D';
 
 let font: drawing.Font = new drawing.Font();
 console.info("values=" + font.getEdging());
@@ -225,7 +225,7 @@ enableSubpixel(isSubpixel: boolean): void
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -258,7 +258,7 @@ enableEmbolden(isEmbolden: boolean): void
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -291,7 +291,7 @@ enableLinearMetrics(isLinearMetrics: boolean): void
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -316,7 +316,7 @@ setSize(textSize: number): void
 
 | 参数名   | 类型   | 必填 | 说明             |
 | -------- | ------ | ---- | ---------------- |
-| textSize | number | 是   | 字型大小，该参数为浮点数，为负数时字型大小会被置为0。字型大小为0时，绘制的文字不会显示。|
+| textSize | number | 是   | 字型大小。该参数为浮点数，为负数时会被置为0，为0时绘制的文字不会显示。单位为物理像素px。|
 
 **错误码：**
 
@@ -324,7 +324,7 @@ setSize(textSize: number): void
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types;3.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -349,7 +349,7 @@ getSize(): number
 
 | 类型   | 说明             |
 | ------ | ---------------- |
-| number | 字型大小，浮点数。 |
+| number | 返回字型大小，浮点数。单位为物理像素px。 |
 
 **示例：**
 
@@ -383,7 +383,7 @@ setTypeface(typeface: Typeface): void
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -433,7 +433,7 @@ getMetrics(): FontMetrics
 
 | 类型                        | 说明              |
 | --------------------------- | ----------------- |
-| [FontMetrics](arkts-apis-graphics-drawing-i.md#fontmetrics) | FontMetrics属性。 |
+| [FontMetrics](arkts-apis-graphics-drawing-i.md#fontmetrics) | 与字体关联的度量属性对象。 |
 
 **示例：**
 
@@ -462,14 +462,14 @@ measureText(text: string, encoding: TextEncoding): number
 
 | 参数名   | 类型                          | 必填 | 说明       |
 | -------- | ----------------------------- | ---- | ---------- |
-| text     | string                        | 是   | 文本内容。 |
-| encoding | [TextEncoding](arkts-apis-graphics-drawing-e.md#textencoding) | 是   | 编码格式。 |
+| text     | string                        | 是   | 待测量的文本内容，将按encoding指定的编码方式进行解析。 |
+| encoding | [TextEncoding](arkts-apis-graphics-drawing-e.md#textencoding) | 是   | 指定文本的编码格式。 |
 
 **返回值：**
 
 | 类型   | 说明             |
 | ------ | ---------------- |
-| number | 文本的宽度，浮点数。 |
+| number | 文本的宽度，浮点数。单位为物理像素px。 |
 
 **错误码：**
 
@@ -477,7 +477,7 @@ measureText(text: string, encoding: TextEncoding): number
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -486,6 +486,48 @@ import { drawing } from '@kit.ArkGraphics2D';
 
 let font = new drawing.Font();
 font.measureText("drawing", drawing.TextEncoding.TEXT_ENCODING_UTF8);
+```
+
+## measureTextWithFallback
+
+measureTextWithFallback(text: string, encoding: TextEncoding): number
+
+测量文本的宽度，支持字体回退。若当前字型的字体不支持文本中的某些字符（无对应字形）时，会自动从系统字体中查找能支持该字符的回退字体，并使用回退字体测量该字符宽度；若未找到回退字体，则仍使用当前字型的字体进行测量。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| text | string | 是 | 待测量的文本内容，将按encoding指定的编码方式进行解析。 |
+| encoding | [TextEncoding](arkts-apis-graphics-drawing-e.md#textencoding) | 是 | 指定文本的编码格式。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| number | 返回包含回退字体的文本宽度，浮点数。单位为物理像素px。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[图形绘制与显示错误码](errorcode-drawing.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 25900001 | Parameter error. Possible causes: Incorrect parameter range. |
+
+**示例：**
+
+```ts
+import { drawing } from '@kit.ArkGraphics2D';
+
+let font = new drawing.Font();
+font.measureTextWithFallback("drawing", drawing.TextEncoding.TEXT_ENCODING_UTF8);
 ```
 
 ## measureSingleCharacter<sup>12+</sup>
@@ -498,7 +540,7 @@ measureSingleCharacter(text: string): number
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-**参数**
+**参数：**
 
 | 参数名 | 类型                | 必填 | 说明        |
 | ------ | ------------------- | ---- | ----------- |
@@ -508,7 +550,7 @@ measureSingleCharacter(text: string): number
 
 | 类型   | 说明             |
 | ------ | ---------------- |
-| number | 字符的宽度，浮点数。 |
+| number | 字符的宽度，浮点数。单位为物理像素px。 |
 
 **错误码：**
 
@@ -516,7 +558,7 @@ measureSingleCharacter(text: string): number
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types;3.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -526,7 +568,6 @@ import { drawing } from '@kit.ArkGraphics2D';
 
 class DrawingRenderNode extends RenderNode {
   draw(context : DrawContext) {
-    const canvas = context.canvas;
     const font = new drawing.Font();
     font.setSize(20);
     let width = font.measureSingleCharacter("你");
@@ -544,18 +585,18 @@ measureSingleCharacterWithFeatures(text: string, features: Array\<FontFeature\>)
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-**参数**
+**参数：**
 
 | 参数名 | 类型                | 必填 | 说明        |
 | ------ | ------------------- | ---- | ----------- |
 | text | string | 是 | 待测量的单个字符。字符串长度必须为1。 |
-| features | Array\<[FontFeature](arkts-apis-graphics-drawing-i.md#fontfeature20)\> | 是 | 字体特征对象数组。参数为空数组时使用TTF(TrueType Font)文件中预设的字体特征。|
+| features | Array\<[FontFeature](arkts-apis-graphics-drawing-i.md#fontfeature20)\> | 是 | 字体特征对象数组。参数为空数组时使用TTF（TrueType Font）文件中预设的字体特征。|
 
 **返回值：**
 
 | 类型   | 说明             |
 | ------ | ---------------- |
-| number | 字符的宽度，浮点数，单位为px。 |
+| number | 字符的宽度，浮点数。单位为物理像素px。 |
 
 **错误码：**
 
@@ -586,7 +627,7 @@ class DrawingRenderNode extends RenderNode {
 
 setScaleX(scaleX: number): void
 
-设置字型对象在x轴上的缩放比例。
+设置字型在x轴方向上的缩放比例。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -596,7 +637,7 @@ setScaleX(scaleX: number): void
 
 | 参数名   | 类型                          | 必填 | 说明       |
 | -------- | ----------------------------- | ---- | ---------- |
-| scaleX     | number                      | 是   | 文本在x轴上的缩放比例，该参数为浮点数。 |
+| scaleX     | number                      | 是   | 字型在x轴上的缩放比例，该参数为浮点数。 |
 
 **错误码：**
 
@@ -604,7 +645,7 @@ setScaleX(scaleX: number): void
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -632,7 +673,7 @@ class DrawingRenderNode extends RenderNode {
 
 setSkewX(skewX: number): void
 
-设置字型对象在x轴上的倾斜比例。
+设置字型在x轴方向上的倾斜比例。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -642,7 +683,7 @@ setSkewX(skewX: number): void
 
 | 参数名   | 类型                          | 必填 | 说明       |
 | -------- | ----------------------------- | ---- | ---------- |
-| skewX     | number                      | 是   | 文本在x轴上的倾斜比例，正数表示往左边倾斜，负数表示往右边倾斜，该参数为浮点数。 |
+| skewX     | number                      | 是   | 字型在x轴方向上的倾斜比例，正数表示向左倾斜，负数表示向右倾斜，该参数为浮点数。 |
 
 **错误码：**
 
@@ -650,7 +691,7 @@ setSkewX(skewX: number): void
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -696,7 +737,7 @@ setEdging(edging: FontEdging): void
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -729,7 +770,7 @@ setHinting(hinting: FontHinting): void
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -754,7 +795,7 @@ countText(text: string): number
 
 | 参数名   | 类型                          | 必填 | 说明       |
 | -------- | ----------------------------- | ---- | ---------- |
-| text     | string                        | 是   | 文本内容。 |
+| text     | string                        | 是   | 待计数的文本内容。 |
 
 **返回值：**
 
@@ -768,7 +809,7 @@ countText(text: string): number
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -794,7 +835,7 @@ setBaselineSnap(isBaselineSnap: boolean): void
 
 | 参数名          | 类型    | 必填 | 说明                                       |
 | --------------- | ------- | ---- | ---------------------------------------- |
-| isBaselineSnap | boolean | 是   | 指示字型基线是否和像素对齐，true表示对齐，false表示不对齐。 |
+| isBaselineSnap | boolean | 是   | 表示字型基线是否与像素对齐，true表示对齐，false表示不对齐。 |
 
 **错误码：**
 
@@ -802,7 +843,7 @@ setBaselineSnap(isBaselineSnap: boolean): void
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -814,7 +855,7 @@ font.setBaselineSnap(true);
 console.info("drawing font isBaselineSnap: " + font.isBaselineSnap());
 ```
 
-## isBaselineSnap()<sup>12+</sup>
+## isBaselineSnap<sup>12+</sup>
 
 isBaselineSnap(): boolean
 
@@ -828,7 +869,7 @@ isBaselineSnap(): boolean
 
 | 类型   | 说明             |
 | ------ | ---------------- |
-| boolean | 返回字型基线是否与像素对齐，true为对齐，false为没有对齐。 |
+| boolean | 返回字型基线是否与像素对齐，true表示对齐，false表示不对齐。 |
 
 **示例：**
 
@@ -845,7 +886,7 @@ console.info("drawing font isBaselineSnap: " + font.isBaselineSnap());
 
 setEmbeddedBitmaps(isEmbeddedBitmaps: boolean): void
 
-设置字型是否转换成位图处理。
+设置字型是否使用字体文件中内嵌的位图字形进行渲染。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -855,7 +896,7 @@ setEmbeddedBitmaps(isEmbeddedBitmaps: boolean): void
 
 | 参数名   | 类型   | 必填 | 说明             |
 | -------- | ------ | ---- | ---------------- |
-| isEmbeddedBitmaps | boolean | 是   | 设置字型是否转换成位图处理，true表示转换成位图处理，false表示不转换成位图处理。 |
+| isEmbeddedBitmaps | boolean | 是   | 设置字型是否使用字体文件中内嵌的位图字形进行渲染，true表示使用内嵌位图字形，false表示不转换成位图处理。 |
 
 **错误码：**
 
@@ -863,7 +904,7 @@ setEmbeddedBitmaps(isEmbeddedBitmaps: boolean): void
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -876,11 +917,11 @@ font.setEmbeddedBitmaps(false);
 console.info("draw isEmbeddedBitmaps: " + font.isEmbeddedBitmaps());
 ```
 
-## isEmbeddedBitmaps()<sup>12+</sup>
+## isEmbeddedBitmaps<sup>12+</sup>
 
 isEmbeddedBitmaps(): boolean
 
-获取字型是否转换成位图处理的结果。
+获取字型是否使用内嵌位图渲染的结果。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -890,7 +931,7 @@ isEmbeddedBitmaps(): boolean
 
 | 类型   | 说明             |
 | ------ | ---------------- |
-| boolean | 返回字型是否转换成位图处理结果，true表示转换成位图处理，false表示不转换成位图处理。 |
+| boolean | 返回字型是否使用内嵌位图渲染的结果，true表示使用内嵌位图字形，false表示不转换成位图处理。 |
 
 **示例：**
 
@@ -907,7 +948,7 @@ console.info("draw isEmbeddedBitmaps: " + font.isEmbeddedBitmaps());
 
 setForceAutoHinting(isForceAutoHinting: boolean): void
 
-设置是否自动调整字型轮廓。
+设置是否自动调整字型轮廓以优化渲染效果。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -917,7 +958,7 @@ setForceAutoHinting(isForceAutoHinting: boolean): void
 
 | 参数名   | 类型   | 必填 | 说明             |
 | -------- | ------ | ---- | ---------------- |
-| isForceAutoHinting | boolean | 是   | 是否自动调整字型轮廓，true为自动调整，false为不自动调整。 |
+| isForceAutoHinting | boolean | 是   | 是否自动调整字型轮廓以优化渲染效果，true为自动调整，false为不自动调整。 |
 
 **错误码：**
 
@@ -925,7 +966,7 @@ setForceAutoHinting(isForceAutoHinting: boolean): void
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -942,7 +983,7 @@ console.info("drawing isForceAutoHinting:  " + font.isForceAutoHinting());
 
 isForceAutoHinting(): boolean
 
-获取字型轮廓是否自动调整的结果。
+获取字型是否自动调整轮廓以优化渲染效果的结果。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -952,7 +993,7 @@ isForceAutoHinting(): boolean
 
 | 类型   | 说明             |
 | ------ | ---------------- |
-| boolean | 返回字型轮廓是否自动调整，true为自动调整，false为不自动调整。 |
+| boolean | 返回字型是否自动调整轮廓以优化渲染效果的结果，true为自动调整，false为不自动调整。 |
 
 **示例：**
 
@@ -979,13 +1020,13 @@ getWidths(glyphs: Array\<number>): Array\<number>
 
 | 参数名   | 类型                  | 必填 | 说明   |
 | -------- | --------------------- | ---- | ------ |
-| glyphs | Array\<number> | 是   | 字形索引数组，可由[textToGlyphs](#texttoglyphs12)生成。 |
+| glyphs | Array\<number> | 是   | 字形索引数组，可由[textToGlyphs](#texttoglyphs12)生成。针对搭载<!--PR1-->OpenHarmony7.1<!--PR1End-->及以上版本的设备，限制数组长度上限为9000000。 |
 
 **返回值：**
 
 | 类型   | 说明             |
 | ------ | ---------------- |
-| Array\<number> | 返回字形宽度数组。 |
+| Array\<number> | 返回字形宽度数组，浮点数。单位为物理像素px。 |
 
 **错误码：**
 
@@ -993,7 +1034,7 @@ getWidths(glyphs: Array\<number>): Array\<number>
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -1023,8 +1064,8 @@ textToGlyphs(text: string, glyphCount?: number): Array\<number>
 
 | 参数名   | 类型                          | 必填 | 说明       |
 | -------- | ----------------------------- | ---- | ---------- |
-| text     | string                        | 是   | 文本字符串。 |
-| glyphCount | number | 否   | 文本表示的字符数量，必须与[countText](#counttext12)获取的值相等，默认为text的字符数量，该参数为整数。 |
+| text     | string                        | 是   | 待转换为字形索引的文本字符串。 |
+| glyphCount | number | 否   | 文本表示的字符数量，该参数为整数。传入时必须与[countText](#counttext12)获取的值相等，不传入时默认为text表示的字符数量。 |
 
 **返回值：**
 
@@ -1038,7 +1079,7 @@ textToGlyphs(text: string, glyphCount?: number): Array\<number>
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 
@@ -1049,6 +1090,67 @@ let font : drawing.Font = new drawing.Font();
 let text : string = 'hello world';
 let glyphs : number[] = font.textToGlyphs(text);
 console.info("drawing text toglyphs OnTestFunction num =  " + glyphs.length );
+```
+
+## textToGlyphsWithFallback
+
+textToGlyphsWithFallback(text: string, glyphCount?: number): Array\<TypefaceFallbackInfo>
+
+将文本转换为字形索引，支持字体回退。若当前字型的字体不支持文本中的某些字符（无对应字形）时，会自动从系统字体中查找能支持该字符的回退字体，并使用回退字体的字形索引；若未找到回退字体，则仍使用当前字型字体的notdef占位字形。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| text | string | 是 | 待转换为字形索引的文本字符串。 |
+| glyphCount | number | 否 | 文本表示的字符数量，该参数为整数。传入时必须与[countText](#counttext12)获取的值相等，不传入时默认为text表示的字符数量。传入浮点数，按照向下取整处理。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Array\<[TypefaceFallbackInfo](arkts-apis-graphics-drawing-i.md#typefacefallbackinfo)> | 返回字体回退信息数组。数组中的每个元素包含使用相同回退字体的字形索引数组。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[图形绘制与显示错误码](errorcode-drawing.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 25900001 | Parameter error. Possible causes: Incorrect parameter range. |
+
+**示例：**
+
+```ts
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let font : drawing.Font = new drawing.Font();
+    let text : string = 'hello world';
+    let infos : Array<drawing.TypefaceFallbackInfo> = font.textToGlyphsWithFallback(text);
+    console.info("drawing textToGlyphsWithFallback infos length = " + infos.length );
+    let offset = 0;
+    for (let run of infos) {
+      font.setTypeface(run.typeface);
+      let positions: Array<common2D.Point> = [];
+      let glyphWidths = font.getWidths(run.glyphIds);
+      for (let j = 0; j < run.glyphIds.length; j++) {
+        positions.push({x: offset, y: 80});
+        offset += glyphWidths[j];
+      }
+      canvas.drawGlyphs(run.glyphIds, 0, positions, 0, run.glyphIds.length, font);
+    }
+  }
+}
 ```
 
 ## getBounds<sup>18+</sup>
@@ -1065,7 +1167,7 @@ getBounds(glyphs: Array\<number>): Array\<common2D.Rect>
 
 | 参数名   | 类型                  | 必填 | 说明   |
 | -------- | --------------------- | ---- | ------ |
-| glyphs | Array\<number> | 是   | 字形索引数组，可由[textToGlyphs](#texttoglyphs12)生成。 |
+| glyphs | Array\<number> | 是   | 字形索引数组，可由[textToGlyphs](#texttoglyphs12)生成。针对搭载<!--PR1-->OpenHarmony7.1<!--PR1End-->及以上版本的设备，限制数组长度上限为9000000。 |
 
 **返回值：**
 
@@ -1083,7 +1185,7 @@ let text: string = 'hello world';
 let glyphs: number[] = font.textToGlyphs(text);
 let fontBounds: Array<common2D.Rect> = font.getBounds(glyphs);
 for (let index = 0; index < fontBounds.length; index++) {
-  console.info("get fontWidths[", index, "] left:", fontBounds[index].left, " top:", fontBounds[index].top,
+  console.info("get fontBounds[", index, "] left:", fontBounds[index].left, " top:", fontBounds[index].top,
     " right:", fontBounds[index].right, " bottom:", fontBounds[index].bottom);
 }
 ```
@@ -1092,7 +1194,7 @@ for (let index = 0; index < fontBounds.length; index++) {
 
 getTextPath(text: string, byteLength: number, x: number, y: number): Path
 
-获取文字的轮廓路径。
+获取文字的路径轮廓。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -1102,10 +1204,10 @@ getTextPath(text: string, byteLength: number, x: number, y: number): Path
 
 | 参数名    | 类型                                               | 必填 | 说明                    |
 | ------   | ------------------------------------------------   | ---- | ---------------------- |
-|   text   |    string                                          | 是   | 表示存储UTF-8 文本编码的字符。|
-|byteLength|    number                                          | 是   | 表示要获取对应文本路径的字节长度，按传入的字节长度和实际的文本字节大小之间的最小值来获取对应的文本路径。|
-|    x     |    number                                          | 是   | 表示文本在绘图区域内以原点为起始位置的X坐标。|
-|    y     |    number                                          | 是   | 表示文本在绘图区域内以原点为起始位置的Y坐标。|
+|   text   |    string                                          | 是   | 表示以UTF-8格式编码的文本字符串。|
+|byteLength|    number                                          | 是   | 表示要获取对应文本路径的字节长度。按传入的字节长度和实际的文本字节大小之间的最小值来获取对应的文本路径。|
+|    x     |    number                                          | 是   | 表示文本在绘图区域内以原点为起始位置的X坐标。单位为物理像素px。|
+|    y     |    number                                          | 是   | 表示文本在绘图区域内以原点为起始位置的Y坐标。单位为物理像素px。|
 
 **返回值：**
 
@@ -1119,7 +1221,7 @@ getTextPath(text: string, byteLength: number, x: number, y: number): Path
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types;3.Parameter verification failed. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -1141,6 +1243,56 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+## getTextPathWithFallback
+
+getTextPathWithFallback(text: string, byteLength: number, x: number, y: number): Path
+
+获取文字的轮廓路径，支持字体回退能力。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**参数：**
+
+| 参数名    | 类型                                               | 必填 | 说明                    |
+| ------   | ------------------------------------------------   | ---- | ---------------------- |
+|   text   |    string                                          | 是   | 表示以UTF-8格式编码的文本字符串。|
+|byteLength|    number                                          | 是   | 表示要获取对应文本路径的字节长度，按传入的字节长度和实际的文本字节大小之间的最小值来获取对应的文本路径。|
+|    x     |    number                                          | 是   | 表示文本在绘图区域内以原点为起始位置的X坐标。单位为物理像素px。|
+|    y     |    number                                          | 是   | 表示文本在绘图区域内以原点为起始位置的Y坐标。单位为物理像素px。|
+
+**返回值：**
+
+| 类型   | 说明             |
+| ------ | ---------------- |
+| [Path](arkts-apis-graphics-drawing-Path.md) | 返回获取到的文本路径轮廓。路径对象创建失败时返回undefined。 |
+
+**示例：**
+
+```ts
+import { drawing } from '@kit.ArkGraphics2D';
+import { buffer } from '@kit.ArkTS';
+import { RenderNode, DrawContext } from '@kit.ArkUI';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let font = new drawing.Font();
+    font.setSize(50);
+    let myString: string = "Hello";
+    let length = buffer.from(myString).length;
+    let path = font.getTextPathWithFallback(myString, length, 0, 100);
+    if (path == undefined) {
+      return;
+    }
+    canvas.drawPath(path);
+  }
+}
+```
+
 ## createPathForGlyph<sup>18+</sup>
 
 createPathForGlyph(index: number): Path
@@ -1155,7 +1307,7 @@ createPathForGlyph(index: number): Path
 
 | 参数名   | 类型                  | 必填 | 说明   |
 | -------- | --------------------- | ---- | ------ |
-| index | number | 是   | 字形索引。 |
+| index | number | 是   | 字形索引，可由[textToGlyphs](#texttoglyphs12)生成。 |
 
 **返回值：**
 
@@ -1173,12 +1325,12 @@ class DrawingRenderNode extends RenderNode {
   draw(context : DrawContext) {
     const canvas = context.canvas;
     let font = new drawing.Font();
-    font.setSize(50)
+    font.setSize(50);
     let text: string = '你好';
     let glyphs: number[] = font.textToGlyphs(text);
     for (let index = 0; index < glyphs.length; index++) {
-      let path: drawing.Path = font.createPathForGlyph(glyphs[index])
-      canvas.drawPath(path)
+      let path: drawing.Path = font.createPathForGlyph(glyphs[index]);
+      canvas.drawPath(path);
     }
   }
 }
@@ -1206,7 +1358,7 @@ setThemeFontFollowed(followed: boolean): void
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
-| 401 | Parameter error.Possible causes:1.Mandatory parameters are left unspecified;2.Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例：**
 

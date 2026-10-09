@@ -25,7 +25,7 @@ import { connection } from '@kit.NetworkKit';
 
 createNetConnection(netSpecifier?: NetSpecifier, timeout?: number): NetConnection
 
-创建一个NetConnection对象，可用于监听网络状态。[netSpecifier](#netspecifier)表示需要监听网络的网络特征；timeout是超时时间（单位：毫秒)；netSpecifier是timeout的必要条件，两者都没有则表示关注默认网络。
+创建一个NetConnection对象，可用于监听网络状态。[netSpecifier](#netspecifier)表示需要监听网络的网络特征；timeout是超时时间（单位：ms)；netSpecifier是timeout的必要条件，两者都没有则表示关注默认网络。
 
 >**说明：**
 >
@@ -40,7 +40,7 @@ createNetConnection(netSpecifier?: NetSpecifier, timeout?: number): NetConnectio
 | 参数名       | 类型                          | 必填 | 说明                                                         |
 | ------------ | ----------------------------- | ---- | ------------------------------------------------------------ |
 | netSpecifier | [NetSpecifier](#netspecifier) | 否   | 需要监听网络的网络特征，缺省则表示监听默认网络。                   |
-| timeout      | number                        | 否   | 获取netSpecifier指定网络时的超时时间，传入值需为uint32_t范围内的整数，仅netSpecifier存在时生效，默认值为0。<br>**说明**：当监听网络不存在时，会尝试激活此网络。若超过设置的超时时间，且注册了网络状态监听，则会触发netUnavailable事件。|
+| timeout      | number                        | 否   | 获取netSpecifier指定网络时的超时时间，单位为毫秒(ms)，传入值需为uint32_t范围内的整数，仅netSpecifier存在时生效，默认值为0。<br>**说明**：当监听网络不存在时，会尝试激活此网络。若超过设置的超时时间，且注册了网络状态监听，则会触发netUnavailable事件。|
 
 **返回值：**
 
@@ -53,7 +53,7 @@ createNetConnection(netSpecifier?: NetSpecifier, timeout?: number): NetConnectio
 ```ts
 import { connection } from '@kit.NetworkKit';
 
-// 示例1：仅关注默认网络, 无需指定netSpecifier参数，timeout参数未传入说明未使用超时时间，此时timeout为0。
+// 示例1：仅关注默认网络，无需指定netSpecifier参数，timeout参数未传入说明未使用超时时间，此时timeout为0。
 let netConnection = connection.createNetConnection();
 
 // 示例2：仅关注蜂窝网络，需要指定网络类型为蜂窝网络。
@@ -153,7 +153,7 @@ getDefaultNet(): Promise\<NetHandle>
 
 | 类型                              | 说明                                  |
 | --------------------------------- | ------------------------------------- |
-| Promise\<[NetHandle](#nethandle)> | 以Promise形式返回默认网络的网络句柄。 |
+| Promise\<[NetHandle](#nethandle)> | Promise对象，返回默认网络的网络句柄。 |
 
 **错误码：**
 
@@ -256,7 +256,9 @@ import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { http } from '@kit.NetworkKit';
 
-let exclusionStr = "192.168,baidu.com";
+// 将exclusionStr以逗号分隔为数组。
+let exclusionStr = "192.168,test.com";
+// exclusionArray将exclusionStr以逗号分隔为数组。
 let exclusionArray = exclusionStr.split(',');
 connection.setAppHttpProxy({
   host: "192.168.xx.xxx",
@@ -268,15 +270,15 @@ let options: http.HttpRequestOptions = {
   usingProxy: true, // 选择使用网络代理，从API 10开始支持该属性。
 };
 // 发起一个HTTP请求。
-httpRequest.request("EXAMPLE_URL", options, (err: Error, data: http.HttpResponse) => {
+httpRequest.request("EXAMPLE_URL", options, (err: BusinessError, data: http.HttpResponse) => {
   if (!err) {
-   console.info(`Result: ${data.result}`);
-   console.info(`code: ${data.responseCode}`);
-   console.info(`type: ${JSON.stringify(data.resultType)}`);
-   console.info(`header: ${JSON.stringify(data.header)}`);
-   console.info(`cookies: ${data.cookies}`); // 从API version 8开始支持cookie。
+   console.info('Succeeded to get result: ' + JSON.stringify(data.result));
+   console.info('Succeeded to get code: ' + JSON.stringify(data.responseCode));
+   console.info('Succeeded to get type: ' + JSON.stringify(data.resultType));
+   console.info('Succeeded to get header: ' + JSON.stringify(data.header));
+   console.info('Succeeded to get cookies: ' + JSON.stringify(data.cookies)); // 从API version 8开始支持cookie。
   } else {
-   console.error(`error: ${JSON.stringify(err)}`);
+   console.error(`Failed to get request. Code:${err.code}, message:${err.message}`);
   }
 });
 ```
@@ -341,7 +343,7 @@ getDefaultHttpProxy(): Promise\<HttpProxy>
 
 | 类型                             | 说明                                      |
 | -------------------------------- | ----------------------------------------- |
-| Promise<[HttpProxy](#httpproxy10)> | 以Promise形式返回网络默认的代理配置信息。 |
+| Promise<[HttpProxy](#httpproxy10)> | Promise对象，返回网络默认的代理配置信息。 |
 
 **错误码：**
 
@@ -359,9 +361,9 @@ import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.getDefaultHttpProxy().then((data: connection.HttpProxy) => {
-  console.info(JSON.stringify(data));
+  console.info("Succeeded to get data: " + JSON.stringify(data));
 }).catch((error: BusinessError) => {
-  console.info(JSON.stringify(error));
+  console.error(`Failed to get request. Code:${error.code}, message:${error.message} `);
 });
 ```
 
@@ -416,7 +418,7 @@ getAppNet(): Promise\<NetHandle>
 
 | 类型                              | 说明                                  |
 | --------------------------------- | ------------------------------------- |
-| Promise\<[NetHandle](#nethandle)> | 以Promise形式返回App绑定的网络信息。 |
+| Promise\<[NetHandle](#nethandle)> | Promise对象，返回App绑定的网络信息。 |
 
 **错误码：**
 
@@ -434,9 +436,9 @@ import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.getAppNet().then((data: connection.NetHandle) => {
-  console.info(JSON.stringify(data));
+  console.info("Succeeded to get data: " + JSON.stringify(data));
 }).catch((error: BusinessError) => {
-  console.info(JSON.stringify(error));
+  console.error(`Failed to get request. Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -468,7 +470,9 @@ getAppNetSync(): NetHandle
 ```ts
 import { connection } from '@kit.NetworkKit';
 
+// 获取App绑定的网络信息
 let netHandle = connection.getAppNetSync();
+console.info('Succeeded to getAppNetSync:' + JSON.stringify(netHandle));
 ```
 
 ## connection.setAppNet<sup>9+</sup>
@@ -490,6 +494,8 @@ setAppNet(netHandle: NetHandle, callback: AsyncCallback\<void>): void
 
 >**说明：**
 >
+> 当应用不再使用该网络或者该网络不可用时，需要解除App和指定网络的绑定关系，以免导致应用无法上网。
+> 
 > 如需解除App和指定网络的绑定关系，可以调用[setAppNet](#connectionsetappnet9)，并传入一个netId = 0的NetHandle对象，参考以下示例。
 
 ```ts
@@ -519,24 +525,55 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 
 **示例：**
 
+当应用绑定WIFI网络，WIFI弱信号或者断开时，如果不解绑，会导致应用无法上网。
+
+以下示例以绑定WIFI网络为例，结合[on('netAvailable')](#onnetavailable)、[on('netLost')](#onnetlost)接口，当监听到WIFI网络可用时绑定WIFI网络，不可用时解绑，使用默认网络。
+
 ```ts
+
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-connection.getDefaultNet((error: BusinessError, netHandle: connection.NetHandle) => {
-  if (netHandle.netId == 0) {
-    // 当前没有已连接的网络时，netHandle的netId为0，属于异常场景。可根据实际情况添加处理机制。
-    return;
+// 创建NetConnection对象。仅关注WIFI网络，需要指定网络类型为WIFI网络。
+let netCon = connection.createNetConnection({
+  netCapabilities: {
+    bearerTypes: [connection.NetBearType.BEARER_WIFI]
   }
-  // 表示APP使用当前默认网络访问网络
+});
+
+// 使用on接口订阅网络可用事件
+netCon.on('netAvailable', (netHandle: connection.NetHandle) => {
+  console.info("Succeeded to get data: " + JSON.stringify(netHandle));
   connection.setAppNet(netHandle, (error: BusinessError, data: void) => {
     if (error) {
-      console.error(`Failed to get default net. Code:${error.code}, message:${error.message}`);
+      console.error(`Failed to setAppNet. Code:${error.code}, message:${error.message}`);
       return;
     }
-    console.info("Succeeded to get data: " + JSON.stringify(data));
+    console.info("Succeeded to setAppNet, netid: " + JSON.stringify(netHandle.netId));
   });
 });
+
+// 使用on接口订阅网络丢失事件。
+netCon.on('netLost', (netHandle: connection.NetHandle) => {
+  console.info("Succeeded to get data: " + JSON.stringify(netHandle));
+  // 网络丢失时，需要主动解除指定网络的绑定关系
+  netHandle.netId = 0;
+  connection.setAppNet(netHandle, (error: BusinessError, data: void) => {
+    if (error) {
+      console.error(`Failed to setAppNet. Code:${error.code}, message:${error.message}`);
+      return;
+    }
+    console.info("Succeeded to setAppNet, netid: " + JSON.stringify(netHandle.netId));
+  });
+});
+
+// 注册网络状态变化事件。此接口要在调用on后调用。
+netCon.register((error: BusinessError) => {
+  if (error) {
+    console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
+  }
+});
+
 ```
 
 ## connection.setAppNet<sup>9+</sup>
@@ -557,17 +594,17 @@ setAppNet(netHandle: NetHandle): Promise\<void\>
 
 >**说明：**
 >
+> 当应用不再使用该网络或者该网络不可用时，需要解除App和指定网络的绑定关系，以免导致应用无法上网。
+> 
 > 如需解除App和指定网络的绑定关系，可以调用[setAppNet](#connectionsetappnet9)，并传入一个netId = 0的NetHandle对象，参考以下示例。
 ```ts
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   netHandle.netId = 0;
-  connection.setAppNet(netHandle, (error: BusinessError, data: void) => {
-    if (error) {
-      console.error(`Failed to get default net. Code:${error.code}, message:${error.message}`);
-      return;
-    }
-    console.info("Succeeded to get data: " + JSON.stringify(data));
-  });
+  connection.setAppNet(netHandle).then(() => {
+    console.info("Succeeded to setAppNet");
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to setAppNet. Code:${error.code}, message:${error.message}`);
+  })
 });
 ```
 
@@ -591,22 +628,51 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 
 **示例：**
 
+当应用绑定WIFI网络，WIFI弱信号或者断开时，如果不解绑，会导致应用无法上网。
+
+以下示例以绑定WIFI网络为例，结合[on('netAvailable')](#onnetavailable)、[on('netLost')](#onnetlost)接口，当监听到WIFI网络可用时绑定WIFI网络，不可用时解绑，使用默认网络。
+
 ```ts
+
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
-  if (netHandle.netId == 0) {
-    // 当前没有已连接的网络时，netHandle的netId为0，属于异常场景。可根据实际情况添加处理机制。
-    return;
+// 创建NetConnection对象。仅关注WIFI网络，需要指定网络类型为WIFI网络。
+let netCon = connection.createNetConnection({
+  netCapabilities: {
+    bearerTypes: [connection.NetBearType.BEARER_WIFI]
   }
+});
 
+// 使用on接口订阅网络可用事件
+netCon.on('netAvailable', (netHandle: connection.NetHandle) => {
+  console.info("Succeeded to get data: " + JSON.stringify(netHandle));
   connection.setAppNet(netHandle).then(() => {
-    console.info("success");
+    console.info("Succeeded to setAppNet, netid: " + JSON.stringify(netHandle.netId));
   }).catch((error: BusinessError) => {
-    console.error(JSON.stringify(error));
+    console.error(`Failed to setAppNet. Code:${error.code}, message:${error.message}`);
   })
 });
+
+// 使用on接口订阅网络丢失事件。
+netCon.on('netLost', (netHandle: connection.NetHandle) => {
+  console.info("Succeeded to get data: " + JSON.stringify(netHandle));
+  // 网络丢失时，需要主动解除指定网络的绑定关系
+  netHandle.netId = 0;
+  connection.setAppNet(netHandle).then(() => {
+    console.info("Succeeded to setAppNet, netid: " + JSON.stringify(netHandle.netId));
+  }).catch((error: BusinessError) => {
+    console.error(`Failed to setAppNet. Code:${error.code}, message:${error.message}`);
+  })
+});
+
+// 注册网络状态变化事件。此接口要在调用on后调用。
+netCon.register((error: BusinessError) => {
+  if (error) {
+    console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
+  }
+});
+
 ```
 
 ## connection.getAllNets
@@ -718,7 +784,9 @@ getAllNetsSync(): Array&lt;NetHandle&gt;
 ```ts
 import { connection } from '@kit.NetworkKit';
 
+// 获取所有处于连接状态的网络列表
 let netHandle = connection.getAllNetsSync();
+console.info("Succeeded to get netHandle: " + JSON.stringify(netHandle));
 ```
 
 ## connection.getConnectionProperties
@@ -863,16 +931,12 @@ getConnectionPropertiesSync(netHandle: NetHandle): ConnectionProperties
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let netHandle: connection.NetHandle;
-let connectionproperties: connection.ConnectionProperties;
-
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   if (netHandle.netId == 0) {
     // 当前没有已连接的网络时，netHandle的netId为0，属于异常场景。可根据实际情况添加处理机制。
     return;
   }
-  netHandle = connection.getDefaultNetSync();
-  connectionproperties = connection.getConnectionPropertiesSync(netHandle);
+  let connectionproperties = connection.getConnectionPropertiesSync(netHandle);
   console.info("Succeeded to get connectionproperties: " + JSON.stringify(connectionproperties));
 });
 ```
@@ -927,7 +991,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
     console.info("Succeeded to get data: " + JSON.stringify(data));
   })
 }).catch((error: BusinessError) => {
-    console.error(JSON.stringify(error));
+    console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -982,7 +1046,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
       console.info("Succeeded to get data: " + JSON.stringify(data));
   })
 }).catch((error: BusinessError) => {
-    console.error(JSON.stringify(error));
+    console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -1028,16 +1092,13 @@ getNetCapabilitiesSync(netHandle: NetHandle): NetCapabilities
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let netHandle: connection.NetHandle;
-let getNetCapabilitiesSync: connection.NetCapabilities;
-
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   if (netHandle.netId == 0) {
     // 当前没有已连接的网络时，netHandle的netId为0，属于异常场景。可根据实际情况添加处理机制。
     return;
   }
 
-  getNetCapabilitiesSync = connection.getNetCapabilitiesSync(netHandle);
+  let getNetCapabilitiesSync = connection.getNetCapabilitiesSync(netHandle);
   console.info("Succeeded to get net capabilities sync: " + JSON.stringify(getNetCapabilitiesSync));
 });
 ```
@@ -1076,8 +1137,8 @@ import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.isDefaultNetMetered((error: BusinessError, data: boolean) => {
-  console.error(JSON.stringify(error));
-  console.info('data: ' + data);
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
+  console.info("Succeeded to get data: " + JSON.stringify(data));
 });
 ```
 
@@ -1113,7 +1174,7 @@ isDefaultNetMetered(): Promise\<boolean>
 import { connection } from '@kit.NetworkKit';
 
 connection.isDefaultNetMetered().then((data: boolean) => {
-  console.info('data: ' + data);
+console.info("Succeeded to get data: " + JSON.stringify(data));
 });
 ```
 
@@ -1185,8 +1246,8 @@ import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.hasDefaultNet((error: BusinessError, data: boolean) => {
-  console.error(JSON.stringify(error));
-  console.info('data: ' + data);
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
+  console.info("Succeeded to get data: " + JSON.stringify(data));
 });
 ```
 
@@ -1222,7 +1283,7 @@ hasDefaultNet(): Promise\<boolean>
 import { connection } from '@kit.NetworkKit';
 
 connection.hasDefaultNet().then((data: boolean) => {
-  console.info('data: ' + data);
+  console.info("Succeeded to get data: " + JSON.stringify(data));
 });
 ```
 
@@ -1302,7 +1363,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   connection.reportNetConnected(netHandle, (error: BusinessError) => {
-    console.error(JSON.stringify(error));
+    console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
   });
 });
 ```
@@ -1347,7 +1408,7 @@ import { connection } from '@kit.NetworkKit';
 
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   connection.reportNetConnected(netHandle).then(() => {
-    console.info(`report success`);
+    console.info(`Succeeded to report`);
   });
 });
 ```
@@ -1397,7 +1458,7 @@ connection.getDefaultNet((error: BusinessError, netHandle: connection.NetHandle)
       console.error(`Failed to get default net. Code:${error.code}, message:${error.message}`);
       return;
     }
-    console.info("report success");
+    console.info("Succeeded to report");
   });
 });
 ```
@@ -1442,7 +1503,7 @@ import { connection } from '@kit.NetworkKit';
 
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   connection.reportNetDisconnected(netHandle).then( () => {
-    console.info(`report success`);
+    console.info(`Succeeded to report`);
   });
 });
 ```
@@ -1576,13 +1637,14 @@ getAddressesByNameWithOptions(host: string, option?: QueryOptions): Promise\<Arr
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 let option: connection.QueryOptions = {
   family: connection.FamilyType.FAMILY_TYPE_IPV4
 };
 connection.getAddressesByNameWithOptions("www.example.com", option).then((data: connection.NetAddress[]) => {
   console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-  console.error(`get ERROR msg: ${JSON.stringify(err)}`)
+  console.error(`Failed to get msg. Code:${err.code}, message:${err.message}`)
 });
 ```
 
@@ -1617,7 +1679,10 @@ addCustomDnsRule(host: string, ip: Array\<string\>, callback: AsyncCallback\<voi
 
 > **说明：**
 >
-> 不需要时可调用[removeCustomDnsRule](#connectionremovecustomdnsrule11)删除某一条自定义规则或调用[clearCustomDnsRules](#connectionclearcustomdnsrules11)删除当前应用程序的所有的自定义DNS规则 。
+> 不需要时可调用[removeCustomDnsRule](#connectionremovecustomdnsrule11)删除某一条自定义规则或调用[clearCustomDnsRules](#connectionclearcustomdnsrules11)删除当前应用程序的所有的自定义DNS规则 。<br>
+> 调用本接口添加自定义DNS规则后可持续生效，无需重复添加同一条规则。不需要时可按照上述方法删除。
+>
+> **网络切换说明：** 当设备从Wi-Fi网络切换至蜂窝数据网络时，配置过自定义DNS规则的应用可能出现无法访问目标系统或服务的情况。此时可开启后关闭飞行模式，或调用[clearCustomDnsRules](#connectionclearcustomdnsrules11)清除当前应用程序的自定义DNS规则后重试。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -1668,7 +1733,8 @@ addCustomDnsRule(host: string, ip: Array\<string\>): Promise\<void\>
 
 > **说明：**
 >
-> 不需要时可调用[removeCustomDnsRule](#connectionremovecustomdnsrule11)删除某一条自定义规则或调用[clearCustomDnsRules](#connectionclearcustomdnsrules11)删除当前应用程序的所有的自定义DNS规则 。
+> 不需要时可调用[removeCustomDnsRule](#connectionremovecustomdnsrule11)删除某一条自定义规则或调用[clearCustomDnsRules](#connectionclearcustomdnsrules11)删除当前应用程序的所有的自定义DNS规则 。<br>
+> 调用本接口添加自定义DNS规则后可持续生效，无需重复添加同一条规则。不需要时可按照上述方法删除。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -1710,7 +1776,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 connection.addCustomDnsRule("xxxx", ["xx.xx.xx.xx","xx.xx.xx.xx"]).then(() => {
     console.info("success");
 }).catch((error: BusinessError) => {
-    console.error(JSON.stringify(error));
+    console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 })
 ```
 
@@ -1722,6 +1788,7 @@ removeCustomDnsRule(host: string, callback: AsyncCallback\<void\>): void
 
 > **说明：**
 >
+> 删除前需确认当前无线程正在使用该自定义规则，以避免冲突。<br>
 > 可调用[addCustomDnsRule](#connectionaddcustomdnsrule11)添加自定义规则。
 
 **需要权限**：ohos.permission.INTERNET
@@ -1772,6 +1839,7 @@ removeCustomDnsRule(host: string): Promise\<void\>
 
 > **说明：**
 >
+> 删除前需确认当前无线程正在使用该自定义规则，以避免冲突。<br>
 > 可调用[addCustomDnsRule](#connectionaddcustomdnsrule11)添加自定义规则。
 
 **需要权限**：ohos.permission.INTERNET
@@ -1813,7 +1881,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 connection.removeCustomDnsRule("xxxx").then(() => {
     console.info("success");
 }).catch((error: BusinessError) => {
-    console.error(JSON.stringify(error));
+    console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 })
 ```
 
@@ -1822,6 +1890,11 @@ connection.removeCustomDnsRule("xxxx").then(() => {
 clearCustomDnsRules(callback: AsyncCallback\<void\>): void
 
 删除当前应用程序的所有的自定义DNS规则。使用callback异步回调。
+
+> **说明：**
+>
+> 删除前需确认当前无线程正在使用当前存在的自定义规则，以避免冲突。<br>
+> 可调用[addCustomDnsRule](#connectionaddcustomdnsrule11)添加自定义规则。
 
 **需要权限**：ohos.permission.INTERNET
 
@@ -1866,6 +1939,11 @@ clearCustomDnsRules(): Promise\<void\>
 
 删除当前应用程序的所有的自定义DNS规则。使用Promise异步回调。
 
+> **说明：**
+>
+> 删除前需确认当前无线程正在使用当前存在的自定义规则，以避免冲突。<br>
+> 可调用[addCustomDnsRule](#connectionaddcustomdnsrule11)添加自定义规则。
+
 **需要权限**：ohos.permission.INTERNET
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
@@ -1896,7 +1974,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 connection.clearCustomDnsRules().then(() => {
     console.info("success");
 }).catch((error: BusinessError) => {
-    console.error(JSON.stringify(error));
+    console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 })
 ```
 
@@ -1906,14 +1984,15 @@ setPacFileUrl(pacFileUrl: string): void
 
 设置PAC脚本（Proxy Auto-Configuration Script，代理自动配置脚本）的URL地址，并启动PAC代理能力，比如：http://127.0.0.1:21998/PacProxyScript.pac 。可通过调用[findProxyForUrl](#connectionfindproxyforurl20)解析URL地址来获取代理信息。
 
->**注意：**
+>**说明：** 
 >
-> 1、本接口当前只在PC设备上支持解析脚本并启用PAC代理能力，其他设备类型上只保存脚本地址，不会启用PAC代理能力。<br>
-> 2、该接口不会校验URL真实性，PC设备上在设置完成之后，会启动PAC代理，若URL有误，则启动代理失败，返回2100002错误码。
+> 该接口不会校验URL真实性，在启动PAC代理时，若URL有误，则启动代理失败，返回2100002错误码。
 
 **需要权限**：ohos.permission.SET_PAC_URL
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**设备行为差异**：本接口当前在PC/2in1<sup>20+</sup>、Phone<sup>23+</sup>、Tablet<sup>23+</sup>、TV<sup>23+</sup>设备上支持解析脚本并启用PAC代理能力，Wearable设备类型上只保存脚本地址，不会启用PAC代理能力。<br>
 
 **参数：**
 
@@ -1932,7 +2011,7 @@ setPacFileUrl(pacFileUrl: string): void
 
 **示例：**
 
-```typescript
+```ts
 import { connection } from '@kit.NetworkKit';
 
 let pacFileUrl = "http://example.com/proxy.pac";
@@ -1962,11 +2041,11 @@ getPacFileUrl(): string
 
 **示例：**
 
-```typescript
+```ts
 import { connection } from '@kit.NetworkKit';
 
 let pacFileUrl = connection.getPacFileUrl();
-console.info(pacFileUrl);
+console.info("Succeeded to get pacFileUrl");
 ```
 
 ## connection.findProxyForUrl<sup>20+</sup>
@@ -1977,9 +2056,9 @@ findProxyForUrl(url: string): string
 
 > **说明：**
 >
-> 1、可通过 [setPacFileUrl](#connectionsetpacfileurl20) 或 [setPacUrl](#connectionsetpacurl15) 设置PAC脚本。<br>
-> 2、如果调用本接口前未设置PAC脚本，则返回空字符串。
-> 3、由于[setPacFileUrl](#connectionsetpacfileurl20)接口当前仅支持PC设备解析脚本并启用PAC代理能力，因此本接口当前也仅支持PC设备获取PAC代理信息。 其他设备调用本接口功能不生效，返回空字串。
+> 1. 可通过 [setPacFileUrl](#connectionsetpacfileurl20) 或 [setPacUrl](#connectionsetpacurl15) 设置PAC脚本。<br>
+> 2. 如果调用本接口前未设置PAC脚本，则返回空字符串。<br>
+> 3. 由于[setPacFileUrl](#connectionsetpacfileurl20)接口支持PC/2in1<sup>20+</sup>、Phone<sup>23+</sup>、Tablet<sup>23+</sup>、TV<sup>23+</sup>设备解析脚本并启用PAC代理能力，因此本接口支持以上设备获取PAC代理信息。 Wearable设备调用本接口功能不生效，返回空字串。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -1998,7 +2077,7 @@ findProxyForUrl(url: string): string
 
 **示例：**
 
-```typescript
+```ts
 import { connection } from '@kit.NetworkKit';
 
 let proxyInfo = connection.findProxyForUrl("http://example.com");
@@ -2126,7 +2205,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   }
   let netExtAttribute: string = "xxx";
   connection.setNetExtAttribute(netHandle, netExtAttribute).then(() => {
-    console.info("setNetExtAttribute success");
+    console.info("Succeeded to setNetExtAttribute");
   }).catch((error: BusinessError) => {
     console.error("setNetExtAttribute failed, err: " + error.code);
   })
@@ -2222,7 +2301,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
     return;
   }
   connection.getNetExtAttribute(netHandle).then((netExtAttribute: string) => {
-    console.info("getNetExtAttribute: " + netExtAttribute);
+    console.info("Succeeded to getNetExtAttribute: " + netExtAttribute);
   }).catch((error: BusinessError) => {
     console.error("getNetExtAttribute failed, err: " + error.code);
   })
@@ -2272,7 +2351,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let netHandle = connection.getDefaultNetSync();
 if (netHandle.netId != 0) {
   let netExtAttribute: string = connection.getNetExtAttributeSync(netHandle);
-  console.info("getNetExtAttribute: " + netExtAttribute);
+  console.info("Succeeded to getNetExtAttribute: " + netExtAttribute);
 }
 ```
 
@@ -2317,12 +2396,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.getIpNeighTable().then((data: connection.NetIpMacInfo[]) => {
   if (data.length !== 0) {
-    console.info(`ipAddress:${data[0].ipAddress}`);
-    console.info(`ifaceName:${data[0].iface}`);
-    console.info(`macAddress:${data[0].macAddress}`);
+    console.info(`Succeeded to get ipAddress: ${JSON.stringify(data.ipAddress)}`);
+    console.info(`Succeeded to get iface: ${JSON.stringify(data.iface)}`);
+    console.info(`Succeeded to get macAddress: ${JSON.stringify(data.macAddress)}`);
   }
 }).catch((error: BusinessError) => {
-  console.error(`error fetching ip neigh table. Code:${error.code}, message:${error.message}`);
+  console.error(`Failed to get ip neigh table. Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -2375,12 +2454,12 @@ import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let protocol = connection.ProtocolType.PROTO_TYPE_TCP;
-let local: connection.NetAddress = { address: '192.168.1.100', family: 1, port: 6666 };
-let remote: connection.NetAddress = { address: '192.168.1.200', family: 1, port: 8888 };
+let local: connection.NetAddress = { address: 'xxx.xxx.x.xxx', family: 1, port: 6666 };
+let remote: connection.NetAddress = { address: 'xxx.xxx.x.xxx', family: 1, port: 8888 };
 connection.getConnectOwnerUid(protocol, local, remote).then((uid) => {
-  console.info(`uid: ${uid}`);
+  console.info(`Succeeded to get uid: ${uid}`);
 }).catch((error: BusinessError) => {
-  console.error(`getConnectOwnerUid failed. errorCode: ${error.code} message:${error.message}`);
+  console.error(`Failed to get ConnectOwnerUid. errorCode: ${error.code} message:${error.message}`);
 });
 ```
 
@@ -2435,14 +2514,14 @@ import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let protocol = connection.ProtocolType.PROTO_TYPE_TCP;
-let local: connection.NetAddress = { address: '192.168.1.100', family: 1, port: 6666 };
-let remote: connection.NetAddress = { address: '192.168.1.200', family: 1, port: 8888 };
+let local: connection.NetAddress = { address: 'xxx.xxx.x.xxx', family: 1, port: 6666 };
+let remote: connection.NetAddress = { address: 'xxx.xxx.x.xxx', family: 1, port: 8888 };
 try {
   let uid = connection.getConnectOwnerUidSync(protocol, local, remote);
-  console.info(`uid: ${uid}`);
+  console.info(`Succeeded to get uid: ${uid}`);
 } catch (e) {
   let err = e as BusinessError;
-  console.error(`getConnectOwnerUid failed. errorCode: ${err.code} message:${err.message}`);
+  console.error(`Failed to get ConnectOwnerUid. errorCode: ${err.code} message:${err.message}`);
 }
 ```
 
@@ -2486,13 +2565,13 @@ getDnsAscii(host: string, flag?: ConversionProcess): string
 
 **示例：**
 
-```typescript
+```ts
 import { connection } from '@kit.NetworkKit';
 
 let result = connection.getDnsAscii("www.示例.com", connection.ConversionProcess.NO_CONFIGURATION);
-console.info(result);  // 预期结果：www.xn--fsq092h.com
+console.info("Succeeded to getDnsAscii: " + result);  // 预期结果：www.xn--fsq092h.com
 let result = connection.getDnsAscii("www.example.com", connection.ConversionProcess.NO_CONFIGURATION);
-console.info(result);  // 预期结果：www.example.com
+console.info("Succeeded to getDnsAscii: " + result);  // 预期结果：www.example.com
 ```
 
 ## connection.getDnsUnicode<sup>23+</sup>
@@ -2528,13 +2607,241 @@ getDnsUnicode(host: string, flag?: ConversionProcess): string
 
 **示例：**
 
-```typescript
+```ts
 import { connection } from '@kit.NetworkKit';
 
 let result = connection.getDnsUnicode("www.xn--fsq092h.com", connection.ConversionProcess.NO_CONFIGURATION);
-console.info(result);  // 预期结果：www.示例.com
+console.info("Succeeded to getDnsUnicode: " + result);  // 预期结果：www.示例.com
 let result = connection.getDnsUnicode("www.example.com", connection.ConversionProcess.NO_CONFIGURATION);
-console.info(result);  // 预期结果：www.example.com
+console.info("Succeeded to getDnsUnicode: " + result);  // 预期结果：www.example.com
+```
+
+## connection.getSystemNetPortStates<sup>24+</sup>
+
+getSystemNetPortStates(): Promise\<NetPortStatesInfo>
+
+获取系统当前监听的所有TCP、UDP端口信息，以及监听端口进程的PID、UID，支持IPv4和IPv6。  
+
+> **说明：**
+>
+> 该接口获取系统当前监听的TCP、UDP端口信息，详细字段包括：
+>
+>  TCP端口字段：本地地址、本地端口、远端地址、远端端口、TCP连接状态、进程PID、进程UID  
+>
+>  UDP端口字段：本地地址、本地端口、进程PID 、进程UID  
+
+**需要权限**：ohos.permission.GET_IP_MAC_INFO
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ----------------------- |
+| Promise\<[NetPortStatesInfo](#netportstatesinfo24)> | Promise对象，返回系统当前监听的TCP、UDP端口信息。|
+
+
+**错误码：**
+
+以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                          |
+| ------- | --------------------------------- |
+| 201     | Permission denied.                |
+| 2100002 | Failed to connect to the service.|
+| 2100003 | System internal error.            |
+
+**示例：**
+
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+connection.getSystemNetPortStates().then((data: connection.NetPortStatesInfo) => {
+  console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
+  if (data.tcpPortStatesInfo?.length) {
+    data.tcpPortStatesInfo?.forEach(item => {
+      console.info(`Succeeded to get Tcp data: ${JSON.stringify(item)}`);
+    })
+  } else {
+    console.info("TcpPortStatesInfo is undefined ");
+  }
+  if (data.udpPortStatesInfo?.length) {
+    data.udpPortStatesInfo?.forEach(item => {
+      console.info(`Succeeded to get Udp data: ${JSON.stringify(item)}`);
+    })
+  } else {
+    console.info("UdpPortStatesInfo is undefined ");
+  }
+}).catch((error: BusinessError) => {
+  console.error(`Error fetching getSystemNetPortStates. Code:${error.code}, message:${error.message}`);
+});
+```
+
+## connection.queryTraceRoute
+
+queryTraceRoute(destination: string, option?: TraceRouteOptions): Promise\<TraceRouteInfo[]\>
+
+查询网络路由跟踪信息，使用Promise方式作为异步方法。
+
+> **说明：**
+>
+> 应用调用该接口需申请精确位置权限。<!--RP1-->根据[申请位置权限开发指导](../../device/location/location-permission-guidelines.md)<!--RP1End-->，调用方需同时申请ohos.permission.APPROXIMATELY_LOCATION和ohos.permission.LOCATION。
+
+**起始版本**：26.0.0
+
+**需要权限**：ohos.permission.INTERNET 和 ohos.permission.ACCESS_NET_TRACE_INFO 和 ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| destination | string | 是 | 目标域名或IP地址，例如www.example.com、8.8.8.8。 |
+| option | [TraceRouteOptions](#tracerouteoptions) | 否 | 路由跟踪的选项参数，缺省则使用默认配置。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise\<[TraceRouteInfo](#tracerouteinfo)[]\> | Promise对象，返回路由跟踪信息数组。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+| 2100001 | Invalid parameter value. |
+| 2100003 | Internal error. |
+
+**示例：**
+
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let dest: string = "www.example.com";
+let options: connection.TraceRouteOptions = {
+    maxJumpNumber: 30,
+    packetsType: connection.PacketsType.NETCONN_PACKETS_ICMP
+};
+
+connection.queryTraceRoute(dest, options).then((data: connection.TraceRouteInfo[]) => {
+           console.info('Succeeded to getDefaultHttpProxy:' + JSON.stringify(data));
+}).catch((err: BusinessError) => {
+    console.error(`Failed to get request. Code:${err.code}, message:${err.message}`);
+});
+```
+
+
+## connection.queryProbeResult
+
+queryProbeResult(destination: string, duration: number): Promise\<ProbeResultInfo\>
+
+查询网络探测结果。若出现异常（例如断网），导致发送请求失败，则接口会立即返回，不再进行后续探测。本接口使用Promise方式作为异步方法。
+
+> **说明：**
+>
+> 此接口用于对目标主机进行一段持续时间的网络探测，以获取丢包率和RTT信息。
+
+**起始版本**：26.0.0
+
+**需要权限**：ohos.permission.INTERNET
+
+**系统能力：** SystemCapability.Communication.NetManager.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| destination | string | 是 | 目标域名或IP地址，例如www.example.com、8.8.8.8。 |
+| duration | number | 是 | 探测持续时间，单位为秒(s)，取值范围\[1, 1000\]。探测间隔为1秒。若未出现异常（例如断网），探测时间到期后返回探测结果。该字段表示探测持续总时长，设置过长可能导致长时间占用应用线程资源。|
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise\<[ProbeResultInfo](#proberesultinfo)\> | Promise对象，返回探测结果信息。 |
+
+**错误码：**
+以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)和[通用错误码](../errorcode-universal.md)。
+  
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. |
+| 2100001 | Invalid parameter value. |
+| 2100003 | Internal error. |
+
+**示例：**
+
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let dest: string = "www.example.com";
+let duration: number = 10;
+
+connection.queryProbeResult(dest, duration).then((data: connection.ProbeResultInfo) => {
+    console.info(`Succeeded to get LossRate: ${data.lossRate}, Succeeded to get RTT: ${data.rtt}`);
+}).catch((err: BusinessError) => {
+    console.error(`Failed to get request. Code:${err.code}, message:${err.message}`);
+});
+```
+
+## connection.refreshGlobalHttpProxy
+
+refreshGlobalHttpProxy(): Promise\<HttpProxy\>
+
+通知系统重新认证全局代理。
+
+>**说明：**
+>
+>若当前未配置全局代理或代理配置信息有误（例如未正确配置username和password），则会抛出2100003错误码。可通过[getDefaultHttpProxy](#connectiongetdefaulthttpproxy10)接口查询当前代理配置信息。
+
+**起始版本**：26.0.0
+
+**需要权限**：ohos.permission.INTERNET
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**返回值：**
+
+| 类型   | 说明                     |
+| ------ | ----------------------- |
+| Promise\<[HttpProxy](#httpproxy10)\> | Promise对象，返回全局代理配置信息。其中username和password字段固定为空字符串，不返回有效信息。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                          |
+| ------- | --------------------------------- |
+| 201     | Permission denied.                |
+| 2100002 | Failed to connect to the service.|
+| 2100003 | System internal error.            |
+
+**示例：**
+
+```ts
+import { connection } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+connection.refreshGlobalHttpProxy().then((data: connection.HttpProxy) => {
+  console.info(`Succeeded to refresh global http proxy: ${JSON.stringify(data)}`);
+}).catch((error: BusinessError) => {
+  console.error(`Failed to refresh global http proxy. Code:${error.code}, message:${error.message}`);
+});
 ```
 
 ## NetConnection
@@ -2543,13 +2850,13 @@ console.info(result);  // 预期结果：www.example.com
 
 > **说明：**
 >
->（1）设备从无网络状态转变为有网络状态时，将触发netAvailable事件、netCapabilitiesChange事件和netConnectionPropertiesChange事件；
+>（1）设备从无网络状态转变为有网络状态时，将触发[on('netAvailable')](#onnetavailable)事件、[on('netCapabilitiesChange')](#onnetcapabilitieschange)事件和[on('netConnectionPropertiesChange')](#onnetconnectionpropertieschange)事件；
 >
->（2）接收到netAvailable事件后，若设备从有网络状态转变为无网络状态，将触发netLost事件；
+>（2）接收到[on('netAvailable')](#onnetavailable)事件后，若设备从有网络状态转变为无网络状态，将触发[on('netLost')](#onnetlost)事件；
 >
->（3）若未接收到netAvailable事件，则将直接接收到netUnavailable事件；
+>（3）若未接收到[on('netAvailable')](#onnetavailable)事件，则将直接接收到[on('netUnavailable')](#onnetunavailable)事件；
 >
->（4）设备从WiFi网络切换至蜂窝网络时，将先触发netLost事件（WiFi丢失），随后触发netAvailable事件（蜂窝可用）。
+>（4）设备从WiFi网络切换至蜂窝网络时，将先触发[on('netLost')](#onnetlost)事件（WiFi丢失），随后触发[on('netAvailable')](#onnetavailable)事件（蜂窝可用）。
 
 ### register
 
@@ -2559,7 +2866,7 @@ register(callback: AsyncCallback\<void>): void
 
 >**注意：**
 >
->使用完register接口后需要及时调用unregister取消注册。
+>使用完register接口后需要及时调用[unregister](#unregister)取消注册。
 
 **需要权限**：ohos.permission.GET_NETWORK_INFO
 
@@ -2594,7 +2901,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let netCon: connection.NetConnection = connection.createNetConnection();
 netCon.register((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to register.Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -2620,6 +2927,7 @@ unregister(callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息                          |
 | ------- | --------------------------------- |
+| 201     | Permission denied.   </br> 适用版本：8-11            |
 | 401     | Parameter error.                  |
 | 2100002 | Failed to connect to the service. |
 | 2100003 | System internal error.            |
@@ -2633,7 +2941,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let netCon: connection.NetConnection = connection.createNetConnection();
 netCon.unregister((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to unregister.Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -2641,7 +2949,7 @@ netCon.unregister((error: BusinessError) => {
 
 on(type: 'netAvailable', callback: Callback\<NetHandle>): void
 
-订阅网络可用事件。此接口需在调用register接口之前调用。若无需接收网络状态变化的回调通知，应使用unregister取消订阅默认的网络状态变化通知。
+订阅网络可用事件。此接口需在调用[register](#register)接口之前调用。若无需接收网络状态变化的回调通知，应使用[unregister](#unregister)取消订阅默认的网络状态变化通知。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2670,12 +2978,12 @@ netCon.on('netAvailable', (data: connection.NetHandle) => {
 
 // 注册网络状态变化事件。此接口要在调用on后调用。
 netCon.register((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to register.Code:${error.code}, message:${error.message}`);
 });
 
 // 使用unregister接口取消订阅网络可用事件。
 netCon.unregister((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to unregister.Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -2683,7 +2991,7 @@ netCon.unregister((error: BusinessError) => {
 
 on(type: 'netBlockStatusChange', callback: Callback\<NetBlockStatusInfo>): void
 
-订阅网络阻塞状态事件。此接口需要在调用register接口之前调用。若无需接收网络状态变化的回调通知，应使用unregister取消订阅默认的网络状态变化通知。
+订阅网络阻塞状态事件。此接口需要在调用[register](#register)接口之前调用。若无需接收网络状态变化的回调通知，应使用[unregister](#unregister)取消订阅默认的网络状态变化通知。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -2710,12 +3018,12 @@ netCon.on('netBlockStatusChange', (data: connection.NetBlockStatusInfo) => {
 
 // 注册网络状态变化事件。此接口要在调用on后调用。
 netCon.register((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 });
 
 // 使用unregister接口取消订阅网络阻塞状态事件。
 netCon.unregister((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -2723,7 +3031,7 @@ netCon.unregister((error: BusinessError) => {
 
 on(type: 'netCapabilitiesChange', callback: Callback\<NetCapabilityInfo\>): void
 
-订阅网络能力变化事件。此接口要在register接口调用前调用，不需要网络状态变化回调通知时，使用unregister取消订阅默认网络状态变化的通知。
+订阅网络能力变化事件。此接口要在[register](#register)接口调用前调用，不需要网络状态变化回调通知时，使用[unregister](#unregister)取消订阅默认网络状态变化的通知。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2752,12 +3060,12 @@ netCon.on('netCapabilitiesChange', (data: connection.NetCapabilityInfo) => {
 
 // 注册网络状态变化事件。此接口要在调用on后调用。
 netCon.register((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 });
 
 // 使用unregister接口取消订阅网络能力变化事件。
 netCon.unregister((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -2765,7 +3073,7 @@ netCon.unregister((error: BusinessError) => {
 
 on(type: 'netConnectionPropertiesChange', callback: Callback\<NetConnectionPropertyInfo\>): void
 
-订阅网络连接信息变化事件。此接口要在register接口调用前调用，不需要网络状态变化回调通知时，使用unregister取消订阅默认网络状态变化的通知。
+订阅网络连接信息变化事件。此接口要在[register](#register)接口调用前调用，不需要网络状态变化回调通知时，使用[unregister](#unregister)取消订阅默认网络状态变化的通知。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
@@ -2792,12 +3100,12 @@ netCon.on('netConnectionPropertiesChange', (data: connection.NetConnectionProper
 
 // 注册网络状态变化事件。此接口要在调用on后调用。
 netCon.register((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 });
 
 // 使用unregister接口取消订阅网络连接信息变化事件。
 netCon.unregister((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -2805,7 +3113,7 @@ netCon.unregister((error: BusinessError) => {
 
 on(type: 'netLost', callback: Callback\<NetHandle>): void
 
-订阅网络丢失事件。此接口要在register接口调用前调用，不需要网络状态变化回调通知时，使用unregister取消订阅默认网络状态变化的通知。
+订阅网络丢失事件。此接口要在[register](#register)接口调用前调用，不需要网络状态变化回调通知时，使用[unregister](#unregister)取消订阅默认网络状态变化的通知。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2834,12 +3142,12 @@ netCon.on('netLost', (data: connection.NetHandle) => {
 
 // 注册网络状态变化事件。此接口要在调用on后调用。
 netCon.register((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 });
 
 // 使用unregister接口取消订阅网络丢失事件。
 netCon.unregister((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to get request.Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -2847,7 +3155,7 @@ netCon.unregister((error: BusinessError) => {
 
 on(type: 'netUnavailable', callback: Callback\<void>): void
 
-订阅网络不可用事件。此接口要在register接口调用前调用，不需要网络状态变化回调通知时，使用unregister取消订阅默认网络状态变化的通知。
+订阅网络不可用事件。此接口要在[register](#register)接口调用前调用，不需要网络状态变化回调通知时，使用[unregister](#unregister)取消订阅默认网络状态变化的通知。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -2876,12 +3184,12 @@ netCon.on('netUnavailable', () => {
 
 // 注册网络状态变化事件。此接口要在调用on后调用。
 netCon.register((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to register. Code:${error.code}, message:${error.message}`);
 });
 
 // 使用unregister接口取消订阅网络不可用事件。
 netCon.unregister((error: BusinessError) => {
-  console.error(JSON.stringify(error));
+  console.error(`Failed to unregister. Code:${error.code}, message:${error.message}`);
 });
 ```
 
@@ -2948,7 +3256,7 @@ interface Data {
               port:8080,
               family:1} as socket.NetAddress, (error: Error) => {
       if (error) {
-        console.error('bind fail');
+        console.error(`Failed to bind. Code:${error.code}, message:${error.message}`);
         return;
       }
       netHandle.bindSocket(tcp, (error: BusinessError, data: void) => {
@@ -2956,13 +3264,13 @@ interface Data {
           console.error(`Failed to bind socket. Code:${error.code}, message:${error.message}`);
           return;
         } else {
-          console.info(JSON.stringify(data));
+          console.info('Succeeded to getdefaultHttpProxy:' + JSON.stringify(data));
         }
       });
     });
   } else {
     let callback: (value: Data) => void = (value: Data) => {
-      console.info("on message, message:" + value.message + ", remoteInfo:" + value.remoteInfo);
+      console.info("Succeeded to get message, message:" + value.message + ", Succeeded to get remoteInfo:" + value.remoteInfo);
     };
     udp.bind({address:"192.168.xxx.xxx",
               port:8080,
@@ -2979,7 +3287,7 @@ interface Data {
           console.error(`Failed to bind socket. Code:${error.code}, message:${error.message}`);
           return;
         } else {
-          console.info(JSON.stringify(data));
+          console.info('Succeeded to get defaultHttpProxy: ' + JSON.stringify(data));
         }
       });
     });
@@ -3042,11 +3350,11 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
               port:8080,
               family:1} as socket.NetAddress, (error: Error) => {
       if (error) {
-        console.error('bind fail');
+        console.error('Failed to bind');
         return;
       }
       netHandle.bindSocket(tcp).then(() => {
-        console.info("bind socket success");
+        console.info("Succeeded to bind socket");
       }).catch((error: BusinessError) => {
         console.error(`Failed to bind socket. Code:${error.code}, message:${error.message}`);
       });
@@ -3066,7 +3374,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
         console.info("Succeeded to get data: " + JSON.stringify(data));
       });
       netHandle.bindSocket(udp).then(() => {
-        console.info("bind socket success");
+        console.info("Succeeded to bind socket");
       }).catch((error: BusinessError) => {
         console.error(`Failed to bind socket. Code:${error.code}, message:${error.message}`);
       });
@@ -3114,7 +3422,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   if (netHandle.netId == 0) {
-    // 当前没有已连接的网络时，netHandler的netId为0，属于异常场景。可根据实际情况添加处理机制。
+    // 当前没有已连接的网络时，netHandle的netId为0，属于异常场景。可根据实际情况添加处理机制。
     return;
   }
   let host = "www.example.com";
@@ -3171,7 +3479,7 @@ import { connection } from '@kit.NetworkKit';
 
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   if (netHandle.netId == 0) {
-    // 当前没有已连接的网络时，netHandler的netId为0，属于异常场景。可根据实际情况添加处理机制。
+    // 当前没有已连接的网络时，netHandle的netId为0，属于异常场景。可根据实际情况添加处理机制。
     return;
   }
   let host = "www.example.com";
@@ -3225,7 +3533,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   if (netHandle.netId == 0) {
-    // 当前没有已连接的网络时，netHandler的netId为0，属于异常场景。可根据实际情况添加处理机制。
+    // 当前没有已连接的网络时，netHandle的netId为0，属于异常场景。可根据实际情况添加处理机制。
     return;
   }
   let host = "www.example.com";
@@ -3235,7 +3543,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   netHandle.getAddressesByNameWithOptions(host, option).then((data: connection.NetAddress[]) => {
     console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
   }).catch((err: BusinessError) => {
-    console.error(`get ERROR msg: ${JSON.stringify(err)}`)
+    console.error(`Failed to get addresses by name. Code:${err.code}, message:${err.message}`);
   });
 });
 ```
@@ -3277,7 +3585,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   if (netHandle.netId == 0) {
-    // 当前没有已连接的网络时，netHandler的netId为0，属于异常场景。可根据实际情况添加处理机制。
+    // 当前没有已连接的网络时，netHandle的netId为0，属于异常场景。可根据实际情况添加处理机制。
     return;
   }
   let host = "www.example.com";
@@ -3332,7 +3640,7 @@ import { connection } from '@kit.NetworkKit';
 
 connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
   if (netHandle.netId == 0) {
-    // 当前没有已连接的网络时，netHandler的netId为0，属于异常场景。可根据实际情况添加处理机制。
+    // 当前没有已连接的网络时，netHandle的netId为0，属于异常场景。可根据实际情况添加处理机制。
     return;
   }
   let host = "www.example.com";
@@ -3355,7 +3663,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 | NET_CAPABILITY_INTERNET  | 12   | 表示该网络应具有访问Internet的能力，此能力由网络提供者设置，但该网络访问Internet的连通性并未被网络管理成功验证。网络连通性可以通过NET_CAPABILITY_VALIDATED和NET_CAPABILITY_CHECKING_CONNECTIVITY判断。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | NET_CAPABILITY_NOT_VPN | 15 | 表示网络不使用VPN（Virtual&nbsp;Private&nbsp;Network，虚拟专用网络）。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | NET_CAPABILITY_VALIDATED | 16   | 表示网络管理通过该网络与华为云地址成功建立连接，此能力由网络管理模块设置。<br>**注意：** 网络管理可能会与华为云地址建立连接失败，导致网络能力不具备此标记位，但不完全代表该网络无法访问互联网。另外，对于新完成连接的网络，由于网络正在进行连通性验证，此值可能无法反映真实的验证结果。对此，应用可以通过NET_CAPABILITY_CHECKING_CONNECTIVITY<sup>12+</sup>检查网络是否正在检测连通性。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| NET_CAPABILITY_PORTAL<sup>12+</sup> | 17   | 表示系统发现该网络存在强制网络门户，需要用户登陆认证，该能力由网络管理模块设置。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| NET_CAPABILITY_PORTAL<sup>12+</sup> | 17   | 表示系统发现该网络存在强制网络门户，需要用户登录认证，该能力由网络管理模块设置。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | NET_CAPABILITY_CHECKING_CONNECTIVITY<sup>12+</sup> | 31   | 表示网络管理正在检验当前网络的连通性，此值会在网络连接时设置。当此值存在时，NET_CAPABILITY_VALIDATED的值不准确，连通性检测结束后不再设置，此时可以通过判断NetCap是否包含NET_CAPABILITY_VALIDATED判断连通性。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 
 ## NetBearType
@@ -3384,6 +3692,43 @@ ASCII/Unicode转码转换流程参数的枚举。
 | ALLOW_UNASSIGNED | 1 | 允许转换包含未分配Unicode代码点的域名(在Unicode字符集中，并非所有代码点都已分配字符，即未分配Unicode代码点)。 |
 | USE_STD3_ASCII_RULES | 2 | 在转换过程中，强制使用STD-3 ASCII规则（即RFC 1123标准）检查生成的ASCII域名。 |
 
+## TcpState<sup>24+</sup>
+
+TCP状态。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+|            名称         | 值   | 说明        |
+| ----------------------- | ---- | ---------- |
+| TCP_ESTABLISHED | 1  | 连接已建立，可正常收发数据。  |
+| TCP_SYN_SENT    | 2  | 客户端发送SYN，等待服务端ACK+SYN（三次握手的第一步）。 |
+| TCP_SYN_RECV    | 3  | 服务端接收SYN并发送ACK+SYN，等待客户端ACK（三次握手的第二步）。 |
+| TCP_FIN_WAIT1   | 4  | 主动端发送FIN，等待对方ACK。 |
+| TCP_FIN_WAIT2   | 5  | 主动端接收FIN的ACK，等待对方ACK。 |
+| TCP_TIME_WAIT   | 6  | 主动端接收对方FIN并回复ACK，等待2倍最大报文段生存时间后彻底释放。 |
+| TCP_CLOSE       | 7  | 初始/关闭状态，无连接。 |
+| TCP_CLOSE_WAIT  | 8  | 被动端接收FIN并发送ACK，等待对方FIN。 |
+| TCP_LAST_ACK    | 9  | 被动端发送FIN后，等待对方ACK。 |
+| TCP_LISTEN      | 10 | 服务端监听，等待客户端连接。 |
+| TCP_CLOSING     | 11 | 双方同时发送FIN，互相等待ACK。   |
+  
+  ## PacketsType
+
+网络探测数据包类型。
+
+**起始版本**：26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+  
+**系统能力：** SystemCapability.Communication.NetManager.Core
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| NETCONN_PACKETS_ICMP | 0 | ICMP数据包类型。 |
+| NETCONN_PACKETS_UDP | 1 | UDP数据包类型。 |
+
 ## HttpProxy<sup>10+</sup>
 
 网络代理配置信息
@@ -3398,6 +3743,40 @@ ASCII/Unicode转码转换流程参数的枚举。
 | username<sup>12+</sup>  | string | 否 |是  |使用代理的用户名。<br>**说明:** 需同时设置password参数才会生效。|
 | password<sup>12+</sup>  | string | 否 | 是| 使用代理的用户密码。<br>**说明:** 需同时设置username参数才会生效。|
 
+## Socks5DnsStrategy
+
+SOCKS5代理的DNS查询策略配置信息。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+| 名称             | 值   | 说明                     |
+| --------------- | ------ | ------------------------ |
+| SYSTEM_MODE     | 0 | 使用SOCKS5代理时，DNS解析由系统执行。|
+| PROXY_MODE      | 1 | 使用SOCKS5代理时，DNS解析由代理服务器执行。|
+
+## Socks5Proxy
+
+SOCKS5代理配置信息。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+| 名称    | 类型   | 只读|可选 |说明                      |
+| ------ | ------ | --- |---|------------------------- |
+| host  | string | 否  | 否 |代理服务器主机名。<br>**说明:** 当该项为空字符串时，视为未配置SOCKS5代理。|
+| port  | number | 否  |否  |主机端口。取值范围[0, 65535]。<br>**说明:** 当参数不在上述取值范围时，视为未配置SOCKS5代理。 |
+| username | string | 否 |是  |使用代理的用户名。<br>**说明:** 需同时设置password参数才会生效。|
+| password | string | 否 | 是| 使用代理的用户密码。<br>**说明:** 需同时设置username参数才会生效。|
+| dnsStrategy | [Socks5DnsStrategy](#socks5dnsstrategy) | 否 | 是 | 指定DNS解析由系统执行还是由代理服务器执行。<br>**说明:** 当此项未指定时，如果host有`socks5h://`协议前缀，则DNS解析由代理服务器执行，否则DNS解析由系统执行。 |
+| exclusionList  | Array\<string\> | 否  |是 |不使用代理的主机名列表，主机名支持域名、IP地址以及通配符形式，详细匹配规则如下：<br/>1、域名匹配规则：<br/>（1）完全匹配：代理服务器主机名只要与列表中的任意一个主机名完全相同，就可以匹配。<br/>（2）包含匹配：代理服务器主机名只要包含列表中的任意一个主机名，就可以匹配。<br/>例如，如果在主机名列表中设置了“example.com”，则“example.com”、“www.example.com”、“example.com:80”都会被匹配，而 “www.myexample.com”、“myexample.com.org”则不会被匹配。<br/>2、IP地址匹配规则：代理服务器主机名只要与列表中的任意一个IP地址完全相同，就可以匹配。<br/>3、域名跟IP地址可以同时添加到列表中进行匹配。<br/>4、单个“\*”是唯一有效的通配符，当列表中只有通配符时，将与所有代理服务器主机名匹配，表示禁用代理。通配符只能单独添加，不可以与其他域名、IP地址一起添加到列表中，否则通配符将不生效。<br/>5、匹配规则不区分主机名大小写。<br/>6、匹配主机名时，不考虑http、https、socks5、socks5h等协议前缀。 |
+
 ## NetSpecifier
 
 提供承载数据网络能力的实例。
@@ -3409,7 +3788,7 @@ ASCII/Unicode转码转换流程参数的枚举。
 | 名称    | 类型   | 只读|可选 |说明                      |
 | ------ | ------ | --- |---|------------------------- |
 | netCapabilities         | [NetCapabilities](#netcapabilities) |  否 | 否  | 存储数据网络的传输能力和承载类型。                                |
-| bearerPrivateIdentifier | string                              |  否 | 是  |  网络标识符，蜂窝网络的标识符是"slot0"（对应SIM卡1）、"slot1"（对应SIM卡2）。从API12开始可以通过传递注册的WLAN热点信息表示应用希望激活的指定的WLAN网络。 |
+| bearerPrivateIdentifier | string                              |  否 | 是  |   网络标识符。<br/>- 蜂窝网络：标识符为simId，可通过[sim.getSimAccountInfo](../apis-telephony-kit/js-apis-sim.md#simgetsimaccountinfo10)接口获取对应卡槽的simId（例如"simId1"，其中1表示当前SIM卡的索引）；<br/>- Wi-Fi网络：标识符固定为wlan0，但从API version 12开始，应用可通过传递已注册的WLAN热点信息来指定希望激活的WLAN网络；<br/>- 以太网：标识符为eth，可在hdc shell中执行ifconfig命令查看具体的网卡标识（例如"eth0"）。 |
 
 **示例：**
 
@@ -3432,7 +3811,7 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
    bearerPrivateIdentifier: `${networkId}`
  });
  netConnectionWlan.register((error: BusinessError) => {
-   console.error(JSON.stringify(error));
+   console.error(`Failed to register. Code:${error.code}, message:${error.message}`);
  });
 });
 ```
@@ -3498,14 +3877,16 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
-| 名称    | 类型   | 只读|可选 |说明                      |
-| ------ | ------ | --- |---|------------------------- |
-| interfaceName | string                              | 否 | 否 |网卡名称。                                |
-| domains       | string                              | 否 | 否 |域名。                                    |
-| linkAddresses | Array\<[LinkAddress](#linkaddress)> | 否 | 否 |链路信息。                                |
-| routes        | Array\<[RouteInfo](#routeinfo)>     | 否 | 否 |路由信息。                                |
-| dnses         | Array\<[NetAddress](#netaddress)>   | 否 | 否 |网络地址，参考[NetAddress](#netaddress)。 |
-| mtu           | number                              | 否 | 否 |最大传输单元。                            |
+| 名称    | 类型   | 只读|可选 | 说明                                                                                             |
+| ------ | ------ | --- |---|------------------------------------------------------------------------------------------------|
+| interfaceName | string                              | 否 | 否 | 网卡名称。                                                                                          |
+| domains       | string                              | 否 | 否 | 域名。                                                                                            |
+| linkAddresses | Array\<[LinkAddress](#linkaddress)> | 否 | 否 | 链路信息。                                                                                          |
+| routes        | Array\<[RouteInfo](#routeinfo)>     | 否 | 否 | 路由信息。                                                                                          |
+| dnses         | Array\<[NetAddress](#netaddress)>   | 否 | 否 | 网络地址，参考[NetAddress](#netaddress)。                                                              |
+| mtu           | number                              | 否 | 否 | 最大传输单元。                                                                                        |
+| isIPv4LinkValid<sup>24+</sup> | boolean                             | 否 | 是 | 当前网络的IPv4是否可用。true：当IPv4地址有效，且存在IPv4的默认路由时，认为IPv4可用；false：当IPv4地址无效，或者不存在IPv4的默认路由时，认为IPv4不可用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| isIPv6LinkValid<sup>24+</sup> | boolean                             | 否 | 是 | 当前网络的IPv6是否可用。true：当IPv6地址有效，且存在IPv6的默认路由时，认为IPv6可用；false：当IPv6地址无效，或者不存在IPv6的默认路由时，认为IPv6不可用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## RouteInfo
 
@@ -3608,3 +3989,100 @@ IP邻居表条目信息。
 | --------------- | ---- | ------------ |
 | PROTO_TYPE_TCP  | 6    | TCP网络协议。 |
 | PROTO_TYPE_UDP  | 17   | UDP网络协议。 |
+
+## TcpNetPortStatesInfo<sup>24+</sup>
+
+TCP端口状态信息。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+| 名称    | 类型   | 只读|可选 |说明                      |
+| ------ | ------ | --- |---|------------------------- |
+| tcpLocalIp    | string | 否 | 否 |TCP网络本地IP地址。                       |
+| tcpLocalPort  | number | 否 | 否 |TCP网络本地端口，取值范围\[0, 65535]。 |
+| tcpRemoteIp   | string | 否 | 否 |TCP网络远程IP地址。  |
+| tcpRemotePort | number | 否 | 否 |TCP网络远程端口，取值范围\[0, 65535]。 |
+| tcpUid        | number | 否 | 否 |监听该TCP端口的用户UID。 |
+| tcpPid        | number | 否 | 否 |监听该TCP端口的进程PID。 |
+| tcpState      | [TcpState](#tcpstate24) | 否 | 否 |TCP网络状态。  |
+
+
+## UdpNetPortStatesInfo<sup>24+</sup>
+
+UDP端口状态信息。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+| 名称    | 类型   | 只读|可选 |说明                      |
+| ------ | ------ | --- |---|------------------------- |
+| udpLocalIp    | string | 否 | 否 |UDP网络本地IP地址。                       |
+| udpLocalPort  | number | 否 | 否 |UDP网络本地端口，取值范围\[0, 65535]。 |
+| udpUid        | number | 否 | 否 |监听该UDP端口的用户UID。 |
+| udpPid        | number | 否 | 否 |监听该UDP端口的进程PID。 |
+
+
+## NetPortStatesInfo<sup>24+</sup>
+
+系统当前监听的TCP、UDP端口信息。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+| 名称    | 类型   | 只读|可选 |说明                      |
+| ------ | ------ | --- |---|------------------------- |
+| tcpPortStatesInfo | Array\<[TcpNetPortStatesInfo](#tcpnetportstatesinfo24)\> | 否 | 是 | 系统当前监听的TCP信息。   |
+| udpPortStatesInfo | Array\<[UdpNetPortStatesInfo](#udpnetportstatesinfo24)\> | 否 | 是 | 系统当前监听的UDP信息。   |
+  
+ 
+## TraceRouteOptions
+
+路由跟踪的选项。
+
+**起始版本**：26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+  
+**系统能力：** SystemCapability.Communication.NetManager.Core
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| maxJumpNumber | number | 否 | 是 | 最大跳数，取值范围\[1, 30\]，默认值为30。 |
+| packetsType | [PacketsType](#packetstype) | 否 | 是 | 探测使用的数据包类型，默认为NETCONN_PACKETS_ICMP。 |
+  
+
+## TraceRouteInfo
+
+路由跟踪信息。
+
+**起始版本**：26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+  
+**系统能力：** SystemCapability.Communication.NetManager.Core
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| jumpNo | number | 否 | 否 | 跳数序号。 |
+| address | string | 否 | 否 | 该跳的IP地址。 |
+| rtt | number[] | 否 | 否 | 往返时间（RTT），单位为毫秒(ms)。每一跳发送5个探测报文，数组元素依次为这些探测报文RTT中的最小值、平均值、最大值、标准差。 |
+  
+
+## ProbeResultInfo
+
+网络探测结果信息。
+
+**起始版本**：26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+  
+**系统能力：** SystemCapability.Communication.NetManager.Core
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| lossRate | number | 否 | 否 | 丢包率，取值范围\[0, 100\]。例如，100表示100%丢包，50表示50%丢包。 |
+| rtt | number[] | 否 | 否 | 往返时间（RTT），单位为毫秒(ms)。对目的主机发送多个探测报文，探测报文数量由[queryProbeResult](#connectionqueryproberesult)接口中duration参数决定。数组元素依次为这些探测报文RTT中最小值、平均值、最大值、标准差。 |

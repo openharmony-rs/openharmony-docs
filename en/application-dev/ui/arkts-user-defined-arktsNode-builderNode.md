@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
-<!--Tester: @sally__-->
+<!--Owner: @sunbees-->
+<!--Designer: @sunbees-->
+<!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ## Overview
@@ -55,7 +55,7 @@ Use the **build** API of **BuilderNode** to create a component tree. The tree is
 >
 > In scenarios where @Builder is nested within another @Builder in the **build** method, ensure that the parameters of the nested @Builder match the input parameters provided to the **build** method.
 > 
-> For scenarios where @Builder is nested within another @Builder, if the parameter types do not match, you must include the [BuilderOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#buildoptions12) field as a parameter for the [build](../reference/apis-arkui/js-apis-arkui-builderNode.md#build12) method.
+> For scenarios where @Builder is nested within another @Builder, if the parameter types do not match, you must include the [BuildOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#buildoptions12) field as a parameter for the [build](../reference/apis-arkui/js-apis-arkui-builderNode.md#build12) method.
 > 
 > To operate objects in a BuilderNode, ensure that the reference to the BuilderNode is not garbage collected. Once a BuilderNode object is collected by the virtual machine, its FrameNode and RenderNode objects will also be dereferenced from the backend nodes. This means that any FrameNode objects obtained from a BuilderNode will no longer correspond to any actual node if the BuilderNode is garbage collected.
 
@@ -63,7 +63,7 @@ Create offline nodes and component trees, and use them in conjunction with Frame
 
 The root node of the BuilderNode is directly used as the return value of [makeNode](../reference/apis-arkui/js-apis-arkui-nodeController.md#makenode) of [NodeController](../reference/apis-arkui/js-apis-arkui-nodeController.md).
 
-  <!-- @[Main_FrameNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/FrameNode.ets) --> 
+  <!-- @[Main_FrameNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/FrameNode.ets) -->   
   
   ``` TypeScript
   import { BuilderNode, FrameNode, NodeController, UIContext } from '@kit.ArkUI';
@@ -97,7 +97,7 @@ The root node of the BuilderNode is directly used as the return value of [makeNo
   
     makeNode(context: UIContext): FrameNode | null {
       this.textNode = new BuilderNode(context);
-      this.textNode.build(wrapBuilder<[Params]>(buildText), new Params(this.message))
+      this.textNode.build(wrapBuilder<[Params]>(buildText), new Params(this.message));
       return this.textNode.getFrameNode();
     }
   }
@@ -125,7 +125,7 @@ The root node of the BuilderNode is directly used as the return value of [makeNo
 
 When combining a BuilderNode with a RenderNode, note the following:
 
-If you mount the RenderNode from the BuilderNode under another RenderNode, you must explicitly specify [selfIdeaSize](../reference/apis-arkui/js-apis-arkui-builderNode.md#renderoptions) as the layout constraint for the BuilderNode. This approach to mounting nodes is not recommended.
+If you mount the RenderNode from the BuilderNode under another RenderNode, you must explicitly specify the **selfIdealSize** attribute of [RenderOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#renderoptions) as the layout constraint for the BuilderNode. This approach to mounting nodes is not recommended.
 
   <!-- @[Main_RenderNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/RenderNode.ets) -->
   
@@ -200,8 +200,6 @@ If you mount the RenderNode from the BuilderNode under another RenderNode, you m
   ```
 
 ## Updating a Component Tree
-
-The **build** API of a **BuilderNode** object constructs a component tree. The tree is constructed based on the **WrappedBuilder** object passed in, and the root node of the component tree is retained.
 
 Custom component updates follow the update mechanisms of [state management](../ui/state-management/arkts-state-management-overview.md). For custom components used directly in a **WrappedBuilder** object, their parent component is the **BuilderNode** object. Therefore, to update child components defined in the **WrappedBuilder** objects, you need to define the relevant state variables with the [\@Prop](../ui/state-management/arkts-prop.md) or [\@ObjectLink](../ui/state-management/arkts-observed-and-objectlink.md) decorator, in accordance with the specifications of state management and the needs of your application development.
 
@@ -312,7 +310,7 @@ Use the [updateConfiguration](../reference/apis-arkui/js-apis-arkui-builderNode.
   }
   ```
   
-  ![en-us_image_update_BuilderNode](figures/en-us_image_update_BuilderNode.gif)
+  ![en-us_image_update_BuilderNode](figures/update-BuilderNode.gif)
 
 ## Canceling the Reference to the Entity Node
 
@@ -322,7 +320,7 @@ A **BuilderNode** object is mapped to a backend entity node, and its memory rele
 >
 > Calling **dispose** on a **BuilderNode** object breaks its reference to the backend entity node, and also simultaneously severs the references of its contained FrameNode and RenderNode to their respective entity nodes.
 >
-> If the frontend object BuilderNode cannot be released, memory leaks may occur. To avoid this, be sure to call **dispose** on the BuilderNode when you no longer need it. This reduces the complexity of reference relationships and lowers the risk of memory leaks.
+> If the frontend object **BuilderNode** cannot be released, memory leaks may occur. To avoid this, be sure to call **dispose** on the BuilderNode when you no longer need it. This reduces the complexity of reference relationships and lowers the risk of memory leaks.
 
 ## Injecting a Touch Event
 
@@ -337,11 +335,11 @@ The following example forwards a touch event from one **Column** component to an
   ``` TypeScript
   import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
   import { hilog } from '@kit.PerformanceAnalysisKit';
-  
+
   class Params {
     public text: string = 'this is a text';
   }
-  
+
   @Builder
   function buttonBuilder(params: Params) {
     Column() {
@@ -353,7 +351,7 @@ The following example forwards a touch event from one **Column** component to an
         .gesture(
           TapGesture()
             .onAction((event: GestureEvent) => {
-              hilog.info(0xF811,'testTag','%{public}s','TapGesture');
+              hilog.info(0xF811, 'testTag', '%{public}s', 'TapGesture');
             })
         )
     }
@@ -361,34 +359,34 @@ The following example forwards a touch event from one **Column** component to an
     .height(300)
     .backgroundColor(Color.Gray)
   }
-  
+
   // Create and initialize BuilderNode.
   class MyNodeController extends NodeController {
     private rootNode: BuilderNode<[Params]> | null = null;
     private wrapBuilder: WrappedBuilder<[Params]> = wrapBuilder(buttonBuilder);
-  
+
     makeNode(uiContext: UIContext): FrameNode | null {
       this.rootNode = new BuilderNode(uiContext);
       this.rootNode.build(this.wrapBuilder, { text: 'this is a string' });
       return this.rootNode.getFrameNode();
     }
-  
+
     // Forward touch events to BuilderNode.
     postTouchEvent(touchEvent: TouchEvent): void {
       if (this.rootNode == null) {
         return;
       }
       let result = this.rootNode.postTouchEvent(touchEvent);
-      hilog.info(0xF811,'testTag','%{public}s','result' + result);
+      hilog.info(0xF811, 'testTag', '%{public}s', 'result' + result);
     }
   }
-  
+
   @Entry
   @Component
   struct postTouchEventPage {
     private nodeController: MyNodeController = new MyNodeController();
     @State bgColor: Color = Color.Pink;
-  
+
     build() {
       Column() {
         NodeContainer(this.nodeController)
@@ -409,6 +407,7 @@ The following example forwards a touch event from one **Column** component to an
       }
     }
   }
+
   ```
 
 ## BuilderProxyNode in BuilderNode Causes Tree Structure Changes
@@ -419,7 +418,7 @@ In the following example, touch events are bound to both the **Column** and **Ro
 
 ![BuilderNode_BuilderProxyNode_1](figures/BuilderNode_BuilderProxyNode_1.png)
 
-  <!-- @[Main_BuilderProxyNode01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/BuilderProxyNode01.ets) -->
+  <!-- @[Main_BuilderProxyNode01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/BuilderProxyNode01.ets) --> 
   
   ``` TypeScript
   import { BuilderNode, typeNode, NodeController, UIContext } from '@kit.ArkUI';
@@ -436,7 +435,7 @@ In the following example, touch events are bound to both the **Column** and **Ro
         .backgroundColor(0xFF2787D9)
         .onTouch((event: TouchEvent) => {
           // Touching the green Column does not trigger the blue Row's touch event.
-          hilog.info(0xF811,'testTag','%{public}s','blue touched: ' + event.type);
+          hilog.info(0xF811, 'testTag', '%{public}s', 'blue touched: ' + event.type);
         })
       }
     }
@@ -453,7 +452,7 @@ In the following example, touch events are bound to both the **Column** and **Ro
       .backgroundColor(0xFF17A98D)
       .hitTestBehavior(HitTestMode.Transparent)
       .onTouch((event: TouchEvent) => {
-        hilog.info(0xF811,'testTag','%{public}s','green touched: ' + event.type);
+        hilog.info(0xF811, 'testTag', '%{public}s', 'green touched: ' + event.type);
       })
     }
   }
@@ -503,7 +502,7 @@ In the preceding scenario, to enable touch event propagation, wrap the syntax no
 
 ![BuilderNode_BuilderProxyNode_2](figures/BuilderNode_BuilderProxyNode_2.png)
 
-  <!-- @[Main_BuilderProxyNode02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/BuilderProxyNode02.ets) -->
+  <!-- @[Main_BuilderProxyNode02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/BuilderProxyNode02.ets) --> 
   
   ``` TypeScript
   import { BuilderNode, typeNode, NodeController, UIContext } from '@kit.ArkUI';
@@ -520,7 +519,7 @@ In the preceding scenario, to enable touch event propagation, wrap the syntax no
         .backgroundColor(0xFF2787D9)
         .onTouch((event: TouchEvent) => {
           // Touching the green Column triggers the blue Row's touch event.
-          hilog.info(0xF811,'testTag','%{public}s','blue touched: ' + event.type);
+          hilog.info(0xF811, 'testTag', '%{public}s', 'blue touched: ' + event.type);
         })
       }
     }
@@ -536,7 +535,7 @@ In the preceding scenario, to enable touch event propagation, wrap the syntax no
       .backgroundColor(0xFF17A98D)
       .hitTestBehavior(HitTestMode.Transparent)
       .onTouch((event: TouchEvent) => {
-        hilog.info(0xF811,'testTag','%{public}s','green touched: ' + event.type);
+        hilog.info(0xF811, 'testTag', '%{public}s', 'green touched: ' + event.type);
       })
     }
   }
@@ -590,7 +589,7 @@ Alternatively, for custom components, you can directly set attributes. In this c
 
 ![BuilderNode_BuilderProxyNode_3](figures/BuilderNode_BuilderProxyNode_3.png)
 
-  <!-- @[Main_BuilderProxyNode03](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/BuilderProxyNode03.ets) -->
+  <!-- @[Main_BuilderProxyNode03](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/BuilderProxyNode03.ets) --> 
   
   ``` TypeScript
   import { BuilderNode, typeNode, NodeController, UIContext } from '@kit.ArkUI';
@@ -607,7 +606,7 @@ Alternatively, for custom components, you can directly set attributes. In this c
         .backgroundColor(0xFF2787D9)
         .onTouch((event: TouchEvent) => {
           // Touching the green Column triggers the blue Row's touch event.
-          hilog.info(0xF811,'testTag','%{public}s','blue touched: ' + event.type);
+          hilog.info(0xF811, 'testTag', '%{public}s', 'blue touched: ' + event.type);
         })
       }
     }
@@ -623,7 +622,7 @@ Alternatively, for custom components, you can directly set attributes. In this c
       .backgroundColor(0xFF17A98D)
       .hitTestBehavior(HitTestMode.Transparent)
       .onTouch((event: TouchEvent) => {
-        hilog.info(0xF811,'testTag','%{public}s','green touched: ' + event.type);
+        hilog.info(0xF811, 'testTag', '%{public}s', 'green touched: ' + event.type);
       })
     }
   }
@@ -679,7 +678,7 @@ In the following example, the custom component **ReusableChildComponent** can pa
 ![en-us_image_reuse-recycle](figures/reuse-recycle.png)
 
 
-  <!-- @[Main_ReusablePage01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/ReusablePage01.ets) -->
+  <!-- @[Main_ReusablePage01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/ReusablePage01.ets) --> 
   
   ``` TypeScript
   import { FrameNode, NodeController, BuilderNode, UIContext } from '@kit.ArkUI';
@@ -758,18 +757,19 @@ In the following example, the custom component **ReusableChildComponent** can pa
     }
   
     aboutToRecycle(): void {
-      hilog.info(0xF811,'testTag','%{public}s',`${TEST_TAG} ReusableChildComponent aboutToRecycle ${this.item}`);
+      hilog.info(0xF811, 'testTag', '%{public}s', `${TEST_TAG} ReusableChildComponent aboutToRecycle ${this.item}`);
   
-      // When the switch is open, pass the recycle event to the nested custom component, such as ChildComponent2, through the BuilderNode's recycle API to complete recycling.
+      // When the switch is open, pass the reuse event to the nested custom component, such as ChildComponent2, through the BuilderNode's reuse API to complete reuse.
       if (this.switch === 'open') {
         this.controller?.builderNode?.recycle();
       }
     }
   
     aboutToReuse(params: object): void {
-      hilog.info(0xF811,'testTag','%{public}s',`${TEST_TAG} ReusableChildComponent aboutToReuse ${JSON.stringify(params)}`);
+      hilog.info(0xF811, 'testTag', '%{public}s',
+        `${TEST_TAG} ReusableChildComponent aboutToReuse ${JSON.stringify(params)}`);
   
-      // When the switch is open, pass the recycle event to the nested custom component, such as ChildComponent2, through the BuilderNode's recycle API to complete recycling.
+      // When the switch is open, pass the reuse event to the nested custom component, such as ChildComponent2, through the BuilderNode's reuse API to complete reuse.
       if (this.switch === 'open') {
         this.controller?.builderNode?.reuse(params);
       }
@@ -789,11 +789,11 @@ In the following example, the custom component **ReusableChildComponent** can pa
     @Prop item: string = 'false';
   
     aboutToReuse(params: Record<string, object>) {
-      hilog.info(0xF811,'testTag','%{public}s',`${TEST_TAG} ChildComponent2 aboutToReuse ${JSON.stringify(params)}`);
+      hilog.info(0xF811, 'testTag', '%{public}s', `${TEST_TAG} ChildComponent2 aboutToReuse ${JSON.stringify(params)}`);
     }
   
     aboutToRecycle(): void {
-      hilog.info(0xF811,'testTag','%{public}s',`${TEST_TAG} ChildComponent2 aboutToRecycle ${this.item}`);
+      hilog.info(0xF811, 'testTag', '%{public}s', `${TEST_TAG} ChildComponent2 aboutToRecycle ${this.item}`);
     }
   
     build() {
@@ -811,11 +811,11 @@ In the following example, the custom component **ReusableChildComponent** can pa
     @Prop item: string = 'false';
   
     aboutToReuse(params: Record<string, object>) {
-      hilog.info(0xF811,'testTag','%{public}s',`${TEST_TAG} ChildComponent3 aboutToReuse ${JSON.stringify(params)}`);
+      hilog.info(0xF811, 'testTag', '%{public}s', `${TEST_TAG} ChildComponent3 aboutToReuse ${JSON.stringify(params)}`);
     }
   
     aboutToRecycle(): void {
-      hilog.info(0xF811,'testTag','%{public}s',`${TEST_TAG} ChildComponent3 aboutToRecycle ${this.item}`);
+      hilog.info(0xF811, 'testTag', '%{public}s', `${TEST_TAG} ChildComponent3 aboutToRecycle ${this.item}`);
     }
   
     build() {
@@ -869,7 +869,7 @@ In the following example, when **ReusableChildComponent** serves as a direct chi
 
 ![BuilderNode-Reusable](figures/BuilderNode-Reusable.png)
 
-  <!-- @[Main_ReusablePage02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/ReusablePage02.ets) -->
+  <!-- @[Main_ReusablePage02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/ReusablePage02.ets) --> 
   
   ``` TypeScript
   import { FrameNode, NodeController, BuilderNode, UIContext } from '@kit.ArkUI';
@@ -915,11 +915,12 @@ In the following example, when **ReusableChildComponent** serves as a direct chi
     @Prop item: string = '';
   
     aboutToReuse(params: object): void {
-      hilog.info(0xF811,'testTag','%{public}s',`${TEST_TAG} ReusableChildComponent aboutToReuse ${JSON.stringify(params)}`);
+      hilog.info(0xF811, 'testTag', '%{public}s',
+        `${TEST_TAG} ReusableChildComponent aboutToReuse ${JSON.stringify(params)}`);
     }
   
     aboutToRecycle(): void {
-      hilog.info(0xF811,'testTag','%{public}s',`${TEST_TAG} ReusableChildComponent aboutToRecycle ${this.item}`);
+      hilog.info(0xF811, 'testTag', '%{public}s', `${TEST_TAG} ReusableChildComponent aboutToRecycle ${this.item}`);
     }
   
     build() {
@@ -934,11 +935,11 @@ In the following example, when **ReusableChildComponent** serves as a direct chi
     @Prop item: string = '';
   
     aboutToReuse(params: Record<string, object>) {
-      hilog.info(0xF811,'testTag','%{public}s',`${TEST_TAG} ChildComponent2 aboutToReuse ${JSON.stringify(params)}`);
+      hilog.info(0xF811, 'testTag', '%{public}s', `${TEST_TAG} ChildComponent2 aboutToReuse ${JSON.stringify(params)}`);
     }
   
     aboutToRecycle(): void {
-      hilog.info(0xF811,'testTag','%{public}s',`${TEST_TAG} ChildComponent2 aboutToRecycle ${this.item}`);
+      hilog.info(0xF811, 'testTag', '%{public}s', `${TEST_TAG} ChildComponent2 aboutToRecycle ${this.item}`);
     }
   
     build() {
@@ -964,7 +965,7 @@ In the following example, when **ReusableChildComponent** serves as a direct chi
 
 ## Updating Nodes Based on System Environment Changes
 
-Use the [updateConfiguration](../reference/apis-arkui/js-apis-arkui-builderNode.md#updateconfiguration12) API to listen for [system environment changes](../reference/apis-ability-kit/js-apis-app-ability-configuration.md). This will trigger a full update of all nodes within the BuilderNode.
+Use the [updateConfiguration](../reference/apis-arkui/js-apis-arkui-builderNode.md#updateconfiguration12) API to listen for system environment changes. This will trigger a full update of all nodes. For details about system environment changes, see [@ohos.app.ability.Configuration (Environment Variables)](../reference/apis-ability-kit/js-apis-app-ability-configuration.md).
 
 > **NOTE**
 >
@@ -976,21 +977,21 @@ Use the [updateConfiguration](../reference/apis-arkui/js-apis-arkui-builderNode.
   import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
   import { AbilityConstant, Configuration, EnvironmentCallback } from '@kit.AbilityKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
-  
+
   class Params {
     public text: string = '';
-  
+
     constructor(text: string) {
       this.text = text;
     }
   }
-  
+
   // Custom component
   @Component
   struct TextBuilder {
     // The @Prop decorated attribute is the attribute to be updated in the custom component. It is a basic attribute.
     @Prop message: string = 'TextBuilder';
-  
+
     build() {
       Row() {
         Column() {
@@ -1004,7 +1005,7 @@ Use the [updateConfiguration](../reference/apis-arkui/js-apis-arkui-builderNode.
       }
     }
   }
-  
+
   @Builder
   function buildText(params: Params) {
     Column() {
@@ -1016,31 +1017,31 @@ Use the [updateConfiguration](../reference/apis-arkui/js-apis-arkui-builderNode.
       TextBuilder({ message: params.text }) // Custom component
     }.backgroundColor($r(`app.color.start_window_background`))
   }
-  
+
   class TextNodeController extends NodeController {
     private textNode: BuilderNode<[Params]> | null = null;
     private message: string = '';
-  
+
     constructor(message: string) {
       super();
       this.message = message;
     }
-  
+
     makeNode(context: UIContext): FrameNode | null {
-      return this.textNode?.getFrameNode() ? this.textNode?.getFrameNode() : null;
+      return this.textNode?.getFrameNode() ?? null;
     }
-  
+
     createNode(context: UIContext) {
       this.textNode = new BuilderNode(context);
       this.textNode.build(wrapBuilder<[Params]>(buildText), new Params(this.message));
       builderNodeMap.push(this.textNode);
     }
-  
+
     deleteNode() {
       let node = builderNodeMap.pop();
       node?.dispose();
     }
-  
+
     update(message: string) {
       if (this.textNode !== null) {
         // Call update to perform an update.
@@ -1048,31 +1049,31 @@ Use the [updateConfiguration](../reference/apis-arkui/js-apis-arkui-builderNode.
       }
     }
   }
-  
+
   // Record the created custom node object.
   const builderNodeMap: BuilderNode<[Params]>[] = [];
-  
+
   function updateColorMode() {
     builderNodeMap.forEach((value, index) => {
       // Notify BuilderNode of the environment changes.
       value.updateConfiguration();
     });
   }
-  
+
   @Entry
   @Component
   struct Index {
     @State message: string = 'hello';
     private textNodeController: TextNodeController = new TextNodeController(this.message);
     private count = 0;
-  
+
     aboutToAppear(): void {
       let environmentCallback: EnvironmentCallback = {
         onMemoryLevel: (level: AbilityConstant.MemoryLevel): void => {
-          hilog.info(0xF811,'testTag','%{public}s','onMemoryLevel');
+          hilog.info(0xF811, 'testTag', '%{public}s', 'onMemoryLevel');
         },
         onConfigurationUpdated: (config: Configuration): void => {
-          hilog.info(0xF811,'testTag','%{public}s','onConfigurationUpdated ' + JSON.stringify(config));
+          hilog.info(0xF811, 'testTag', '%{public}s', 'onConfigurationUpdated ' + JSON.stringify(config));
           updateColorMode();
         }
       };
@@ -1081,12 +1082,12 @@ Use the [updateConfiguration](../reference/apis-arkui/js-apis-arkui-builderNode.
       // Create a custom node and add it to the map.
       this.textNodeController.createNode(this.getUIContext());
     }
-  
+
     aboutToDisappear(): void {
       // Remove the reference to the custom node from the map and release the node.
       this.textNodeController.deleteNode();
     }
-  
+
     build() {
       Row() {
         Column() {
@@ -1111,9 +1112,9 @@ Use the [updateConfiguration](../reference/apis-arkui/js-apis-arkui-builderNode.
 
 ## Cross-Page Reuse Considerations
 
-With use of [routing](../reference/apis-arkui/arkts-apis-uicontext-router.md) APIs such as [router.replaceUrl](../reference/apis-arkui/arkts-apis-uicontext-router.md#replaceurl), [router.back](../reference/apis-arkui/arkts-apis-uicontext-router.md#back), [router.clear](../reference/apis-arkui/arkts-apis-uicontext-router.md#clear), and [router.replaceNamedRoute](../reference/apis-arkui/arkts-apis-uicontext-router.md#replacenamedroute) to navigate between pages, issues may arise when you reuse a cached BuilderNode from a page that is about to be destroyed. Specifically, the reused BuilderNode might not update its data correctly, or newly created nodes might not display as expected. For example, when you use [router.replaceNamedRoute](../reference/apis-arkui/arkts-apis-uicontext-router.md#replacenamedroute), consider the following scenario: When the **router replace** button is clicked, the page switches to PageTwo, and the flag **isShowText** is set to **false**.
+With use of [Class (Router)](../reference/apis-arkui/arkts-apis-uicontext-router.md) APIs such as [router.replaceUrl](../reference/apis-arkui/arkts-apis-uicontext-router.md#replaceurl), [router.back](../reference/apis-arkui/arkts-apis-uicontext-router.md#back), [router.clear](../reference/apis-arkui/arkts-apis-uicontext-router.md#clear), and [router.replaceNamedRoute](../reference/apis-arkui/arkts-apis-uicontext-router.md#replacenamedroute) to navigate between pages, issues may arise when you reuse a cached BuilderNode from a page that is about to be destroyed. Specifically, the reused BuilderNode might not update its data correctly, or newly created nodes might not display as expected. For example, when you use [router.replaceNamedRoute](../reference/apis-arkui/arkts-apis-uicontext-router.md#replacenamedroute), consider the following scenario: When the **router replace** button is clicked, the page switches to PageTwo, and the flag **isShowText** is set to **false**.
 
-  <!-- @[Main_RouterPage3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/RouterPage3.ets) -->
+  <!-- @[Main_RouterPage3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/RouterPage3.ets) --> 
   
   ``` TypeScript
   // ets/pages/RouterPage3.ets
@@ -1205,7 +1206,7 @@ With use of [routing](../reference/apis-arkui/arkts-apis-uicontext-router.md) AP
 
 The implementation of **PageTwo** is as follows:
 
-  <!-- @[Main_RouterPage2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/RouterPage2.ets) -->
+  <!-- @[Main_RouterPage2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/RouterPage2.ets) --> 
   
   ``` TypeScript
   // ets/pages/RouterPage2.ets
@@ -1234,12 +1235,12 @@ The implementation of **PageTwo** is as follows:
 
 In versions earlier than API version 16, you need to manually remove the BuilderNode from the cache, [AppStorage](../ui/state-management/arkts-appstorage.md) in this example, when the page is destroyed.
 
-Since API version 16, the BuilderNode automatically refreshes its content when reused in a new page. This means you no longer need to remove the BuilderNode from the cache when the page is destroyed.
+Since API version 16, the **BuilderNode** automatically refreshes its content when reused in a new page. This means you no longer need to remove the **BuilderNode** from the cache when the page is destroyed.
 
-  <!-- @[Main_RouterPage3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/RouterPage3.ets) -->
+  <!-- @[Main_RouterPage1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/RouterPage1.ets) -->
   
   ``` TypeScript
-  // ets/pages/RouterPage3.ets
+  // ets/pages/RouterPage1.ets
   import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
   import 'ets/pages/RouterPage2';
   
@@ -1310,8 +1311,6 @@ Since API version 16, the BuilderNode automatically refreshes its content when r
             .onClick(() => {
               // Change the state variable in AppStorage to trigger re-creation of the Text node.
               AppStorage.setOrCreate<boolean>('isShowText', false);
-              // Remove the BuilderNode from AppStorage.
-              AppStorage.delete('textNode');
   
               this.getUIContext().getRouter().replaceNamedRoute({ name: 'pageTwo' });
             })
@@ -1414,7 +1413,7 @@ All frontend nodes are bound to corresponding backend entity nodes. After **disp
 
 Since API version 20, you can use the [isDisposed](../reference/apis-arkui/js-apis-arkui-builderNode.md#isdisposed20) API to check whether a **BuilderNode** object has released its reference to backend entity nodes. This enables validation before node operations to prevent potential risks.
 
-  <!-- @[Main_IsDisposedPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/IsDisposedPage.ets) -->
+  <!-- @[Main_IsDisposedPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/IsDisposedPage.ets) --> 
   
   ``` TypeScript
   import { NodeController, FrameNode, BuilderNode } from '@kit.ArkUI';
@@ -1589,7 +1588,7 @@ Starting from API version 20, in state management V1, if a BuilderNode is config
   
     build() {
       Column() {
-        Button('update builderNode') // Clicking the button updates builderNode.
+        Button('update builderNode') // Clicking the button updates BuilderNode.
           .onClick(() => {
             textNodeController.update();
           })
@@ -1735,6 +1734,7 @@ import { BuilderNode, FrameNode, NodeController } from '@kit.ArkUI';
 @ObservedV2
 export class Book {
   @Trace name: string = "100";
+
   constructor(name: string) {
     this.name = name;
   }
@@ -1756,7 +1756,7 @@ class TextNodeController extends NodeController {
   makeNode(context: UIContext): FrameNode | null {
     this.rootNode = new FrameNode(context);
     this.textNode = new BuilderNode(context, { selfIdealSize: { width: 150, height: 150 } });
-    this.textNode.build(wrapBuilder<[Book]>(buildText), new  Book (this.name));
+    this.textNode.build(wrapBuilder<[Book]>(buildText), new Book(this.name));
     this.textNode.inheritFreezeOptions(true); // Configure the BuilderNode to inherit the freeze policy from its parent component.
     if (this.rootNode !== null) {
       this.rootNode.appendChild(this.textNode.getFrameNode()); // Mount the BuilderNode to the component tree.
@@ -1789,7 +1789,10 @@ struct BuildNodeChild {
   build() {
     Column() {
       Text(`Book name is  ${this.bookTest.name}`).fontSize(30)
-      Button('change').width('60%').height(40).fontSize(30)
+      Button('change')
+        .width('60%')
+        .height(40)
+        .fontSize(30)
         .onClick(() => {
           this.bookTest.name = "The Old Man and the Sea";
         })
@@ -2032,7 +2035,7 @@ struct MyNavigationTestStack {
 
   build() {
     Column() {
-      Button('update builderNode') // Clicking the button updates builderNode.
+      Button('update builderNode') // Clicking the button updates BuilderNode.
         .onClick(() => {
           textNodeController.update();
         })
@@ -2267,7 +2270,7 @@ export struct RepeatVirtualScrollFreeze {
 @ComponentV2({ freezeWhenInactive: true })
 struct FreezeBuildNode {
   storage: Params = Params.instance();
-  @Param @Require message: string ;
+  @Param @Require message: string;
   @Param @Require bgColor: Color;
   @Monitor('storage.bgColor')
   onBgColorChange(monitor: IMonitor) {
@@ -2285,10 +2288,10 @@ struct BuildNodeChild {
   storage: Params = Params.instance();
   @Param message: string = '';
 
-  // Listen for the change of storage.message using the @Monitor decorator.
+  // Listen for the change of storage.bgColor using the @Monitor decorator.
   @Monitor('storage.bgColor')
-  onMessageChange(monitor: IMonitor) {
-    console.info(`FreezeBuildNode buildNodeChild message callback func ${this.message}`);
+  onBgColorChange(monitor: IMonitor) {
+    hilog.info(0xF811, 'testTag', '%{public}s',`FreezeBuildNode buildNodeChild bgColor change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
   }
 
   build() {
@@ -2443,11 +2446,11 @@ struct FreezeBuildNode {
 
 In the preceding example:
 
-1. When **change** is clicked, the value of the **message** property changes, triggering the **onMessageUpdated** callback registered via @Monitor in the **buildNodeChild** component under the currently visible BuilderNode.
+1. When **change** is clicked, the value of the **message** property changes, triggering the **onMessageChange** callback registered via @Monitor in the **buildNodeChild** component under the currently visible BuilderNode.
 
-2. When **tab1** is clicked to navigate to another **TabContent** component, the component switches from inactive to active, triggering the corresponding **onMessageUpdated** callback registered via @Monitor in the **buildNodeChild** component under the currently visible BuilderNode.
+2. When **tab1** is clicked to navigate to another **TabContent** component, the component switches from inactive to active, triggering the corresponding **onMessageChange** callback registered via @Monitor in the **buildNodeChild** component under the currently visible BuilderNode.
 
-3. When **change** is clicked again, the value of **message** changes, triggering only the **onMessageUpdated** callback registered via @Monitor in of the **TabContent** component being displayed. Other inactive **TabContent** components do not trigger @Monitor decorated callbacks.
+3. When **change** is clicked again, the value of **message** changes, triggering only the **onMessageChange** callback registered via @Monitor in the **TabContent** component being displayed. Other inactive **TabContent** components do not trigger @Monitor decorated callbacks.
 
 ## Configuring the BuilderNode for Cross-Boundary @Provide-@Consume Communication (State Management V1)
 
@@ -2457,7 +2460,7 @@ For details, see [Example 5: Configuring the BuilderNode for Cross-Boundary @Pro
 
 ## Configuring the BuilderNode for Cross-Boundary @Provider-@Consumer Communication (State Management V2)
 
-Since API version 22, the BuilderNode supports cross-boundary state sharing between [@Consumer](./state-management/arkts-new-provider-and-consumer.md) and [@Provider](./state-management/arkts-new-provider-and-consumer.md) through the **BuildOptions** configuration. This feature enables seamless data flow from the host pages into BuilderNode's internal custom components.
+Since API version 23, the **BuilderNode** supports cross-boundary state sharing between [@Consumer](./state-management/arkts-new-provider-and-consumer.md) and [@Provider](./state-management/arkts-new-provider-and-consumer.md) through the **BuildOptions** configuration. This feature enables seamless data flow from the host pages into BuilderNode's internal custom components.
     
 For details, see [Example 6: Configuring the BuilderNode for Cross-Boundary @Provider-@Consumer Communication](../reference/apis-arkui/js-apis-arkui-builderNode.md#example-6-configuring-the-buildernode-for-cross-boundary-provider-consumer-communication).
 
@@ -2474,22 +2477,22 @@ Pre-rendering is particularly suitable for scenarios such as web page initializa
     <!-- @[Web_createNWeb](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/entryability/EntryAbility.ets) -->
     
     ``` TypeScript
-    import { AbilityConstant, ConfigurationConstant, UIAbility,   Want } from '@kit.AbilityKit';
+    import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
     import { createNWeb } from '../Common/CommonIndex';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { window } from '@kit.ArkUI';
-    
+
     const DOMAIN = 0x0000;
-    
+
     export default class EntryAbility extends UIAbility {
-    // ···
-    
+      // ···
+
       onWindowStageCreate(windowStage: window.WindowStage): void {
         // Main window is created, set main page for this ability
         hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
-    
+
         windowStage.loadContent('pages/Index', (err) => {
-          createNWeb('', windowStage.getMainWindowSync().getUIContext());
+          createNWeb('https://www.example.com', windowStage.getMainWindowSync().getUIContext());
           if (err.code) {
             hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
             return;
@@ -2497,37 +2500,40 @@ Pre-rendering is particularly suitable for scenarios such as web page initializa
           hilog.info(DOMAIN, 'testTag', 'Succeeded in loading the content.');
         });
       }
-    // ···
+
+      // ···
     }
     ```
 
 2. Create a NodeContainer and the corresponding NodeController for background rendering.
 
-    <!-- @[Common_CommonIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/Common/CommonIndex.ets) -->
-
+    <!-- @[Common_CommonIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/Common/CommonIndex.ets) --> 
+    
     ``` TypeScript
     import { UIContext } from '@kit.ArkUI';
     import { webview } from '@kit.ArkWeb';
     import { NodeController, BuilderNode, Size, FrameNode } from '@kit.ArkUI';
     import { hilog } from '@kit.PerformanceAnalysisKit';
-
+    
     // @Builder content for dynamic component content
     // Data class for input parameters
-    class Data{
-      public url: string = '';
+    class Data {
+      public url: string = 'https://www.example.com';
       public controller: WebviewController = new webview.WebviewController();
     }
+    
     // Use the Boolean variable shouldInactive to stop rendering after the web page is pre-rendered in the background.
     let shouldInactive: boolean = true;
+    
     @Builder
-    function webBuilder(data:Data) {
+    function webBuilder(data: Data) {
       Column() {
         Web({ src: data.url, controller: data.controller })
           .onPageBegin(() => {
             // Call onActive to enable rendering.
             data.controller.onActive();
           })
-          .onFirstMeaningfulPaint(() =>{
+          .onFirstMeaningfulPaint(() => {
             if (!shouldInactive) {
               return;
             }
@@ -2539,14 +2545,17 @@ Pre-rendering is particularly suitable for scenarios such as web page initializa
           .height('100%')
       }
     }
+    
     let wrap = wrapBuilder<Data[]>(webBuilder);
+    
     // The NodeController instance must be used with a NodeContainer for controlling and feeding back the behavior of the nodes in the NodeContainer.
     export class MyNodeController2 extends NodeController {
       private rootnode: BuilderNode<Data[]> | null = null;
+    
       // This function must be overridden, which is used to construct the number of nodes, return the nodes, and attach them to NodeContainer.
       // Called when the corresponding NodeContainer is created or called by the rebuild method.
       makeNode(uiContext: UIContext): FrameNode | null {
-        hilog.info(0xF811,'testTag','%{public}s',' uicontext is undefined :' + (uiContext === undefined));
+        hilog.info(0xF811, 'testTag', '%{public}s', ' uicontext is undefined :' + (uiContext === undefined));
         if (this.rootnode != null) {
           // Return the FrameNode object.
           return this.rootnode.getFrameNode();
@@ -2554,61 +2563,68 @@ Pre-rendering is particularly suitable for scenarios such as web page initializa
         // Return null to detach the dynamic component from the bound node.
         return null;
       }
+    
       // Called when the layout size changes.
       aboutToResize(size: Size) {
-        hilog.info(0xF811,'testTag','%{public}s','aboutToResize   width   : ' + size.width  +  ' height : ' + size.height );
+        hilog.info(0xF811, 'testTag', '%{public}s', 'aboutToResize width : ' + size.width + ' height : ' + size.height);
       }
+    
       // Called when the NodeContainer bound to the controller is about to appear.
       aboutToAppear() {
-        hilog.info(0xF811,'testTag','%{public}s','aboutToAppear');
+        hilog.info(0xF811, 'testTag', '%{public}s', 'aboutToAppear');
         // Keep rendering active when the page is brought to the foreground.
         shouldInactive = false;
       }
+    
       // Called when the NodeContainer bound to the controller is about to disappear.
       aboutToDisappear() {
-        hilog.info(0xF811,'testTag','%{public}s','aboutToDisappear');
+        hilog.info(0xF811, 'testTag', '%{public}s', 'aboutToDisappear');
       }
+    
       // This function is a custom function and can be used for initialization.
       // Initialize the BuilderNode through UIContext, and then initialize the content in @Builder through the build API in BuilderNode.
-      initWeb(url:string, uiContext:UIContext, control:WebviewController) {
-        if(this.rootnode != null){
+      initWeb(url: string, uiContext: UIContext, control: WebviewController) {
+        if (this.rootnode != null) {
           return;
         }
         // Create a node, during which the UIContext should be passed.
         this.rootnode = new BuilderNode(uiContext);
         // Create a dynamic Web component.
-        this.rootnode.build(wrap, { url:url, controller:control });
+        this.rootnode.build(wrap, { url: url, controller: control });
       }
     }
+    
     // Create a Map to store the required NodeController instance.
-    let nodeMap:Map<string, MyNodeController2 | undefined> = new Map();
+    let nodeMap: Map<string, MyNodeController2 | undefined> = new Map();
     // Create a Map to store the required WebViewController instance.
-    let controllerMap:Map<string, WebviewController | undefined> = new Map();
+    let controllerMap: Map<string, WebviewController | undefined> = new Map();
+    
     // UIContext is required for initialization and needs to be obtained from the ability.
     export const createNWeb = (url: string, uiContext: UIContext) => {
       // Create a NodeController instance.
       let baseNode = new MyNodeController2();
-      let controller = new webview.WebviewController() ;
+      let controller = new webview.WebviewController();
       // Initialize the custom Web component.
       baseNode.initWeb(url, uiContext, controller);
       controllerMap.set(url, controller);
       nodeMap.set(url, baseNode);
-    }
+    };
+    
     // Customize the API for obtaining the NodeController instance.
-    export const getNWeb = (url : string) : MyNodeController2 | undefined => {
+    export const getNWeb = (url: string): MyNodeController2 | undefined => {
       return nodeMap.get(url);
-    }
+    };
     ```
 
 3. Display the pre-rendered page through **NodeContainer**.
 
-    <!-- @[Main_ArkWebPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/ArkWebPage.ets) -->
-
+    <!-- @[Main_ArkWebPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/ArkWebPage.ets) --> 
+    
     ``` TypeScript
     // Page component using NodeController
     // pages/ArkWebPage.ets
     import { createNWeb, getNWeb } from '../Common/CommonIndex';
-
+    
     @Entry
     @Component
     struct Index {
@@ -2617,7 +2633,7 @@ Pre-rendering is particularly suitable for scenarios such as web page initializa
           Column() {
             // NodeContainer is used to bind to the NodeController. A rebuild call triggers makeNode.
             // The Page page is bound to the NodeController through the NodeContainer API to display the dynamic component.
-            NodeContainer(getNWeb(''))
+            NodeContainer(getNWeb('https://www.example.com'))
               .height('90%')
               .width('100%')
               .id('ArkWebPage')

@@ -17,6 +17,10 @@
 
 Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error.
 
+**错误描述**
+
+内部错误。可能原因：1. IPC通信失败；2. 内存操作错误；3. 文件操作错误。
+
 **可能原因**
 
 调用API时发生内部错误。
@@ -30,6 +34,10 @@ Internal error. Possible causes: 1. IPC communication failed; 2. Memory operatio
 **错误信息**
 
 The user cancels the installation operation.
+
+**错误描述**
+
+用户在证书管理对话框中取消操作。
 
 **可能原因**
 
@@ -45,6 +53,10 @@ The user cancels the installation operation.
 
 The user install certificate failed in the certificate manager dialog, such as the certificate is in an invalid format.
 
+**错误描述**
+
+用户在证书管理对话框中安装证书失败，例如证书格式无效。
+
 **可能原因**
 
 调用API安装证书时失败，可能是由于证书格式错误。
@@ -59,6 +71,10 @@ The user install certificate failed in the certificate manager dialog, such as t
 
 The API is not supported on this device.
 
+**错误描述**
+
+当前设备不支持该接口。
+
 **可能原因**
 
 调用API时当前设备非PC设备。
@@ -71,7 +87,11 @@ The API is not supported on this device.
 
 **错误信息**
 
-The operation does not comply with the device security policy, such as the device does not allow users to manage the ca certificate of the global user.
+The operation does not comply with the device security policy, such as the device does not allow users to manage the CA certificate of the global user.
+
+**错误描述**
+
+该操作不符合设备安全策略，例如设备不允许用户管理全局用户的CA证书。
 
 **可能原因**
 
@@ -87,6 +107,10 @@ The operation does not comply with the device security policy, such as the devic
 
 The input parameters validation failed.
 
+**错误描述**
+
+入参校验失败。
+
 **可能原因**
 
 参数格式异常或参数范围无效。
@@ -99,7 +123,11 @@ The input parameters validation failed.
 
 **错误信息**
 
-No Available certificate for authorization
+No available certificate for authorization.
+
+**错误描述**
+
+没有可用的证书用于授权。
 
 **可能原因**
 
@@ -108,3 +136,39 @@ No Available certificate for authorization
 **处理步骤**
 
 安装有效证书凭据。
+
+## 29700009 证书管理对话框操作超时
+
+**错误信息**
+
+The operation in the Ukey authentication dialog box timed out.
+
+**错误描述**
+
+证书管理对话框操作超时。
+
+**可能原因**
+
+用户在Ukey认证对话框中的操作超过约定时间。
+
+**处理步骤**
+
+重新发起认证操作。
+
+## 29700010 不支持并发调用
+
+**错误信息**
+
+The Ukey authentication dialog box cannot be opened concurrently. Please try again later.
+
+**错误描述**
+
+该API不支持并发调用。
+
+**可能原因**
+
+已存在正在显示的Ukey认证对话框。
+
+**处理步骤**
+
+等待当前Ukey认证对话框关闭后，再重新发起调用。

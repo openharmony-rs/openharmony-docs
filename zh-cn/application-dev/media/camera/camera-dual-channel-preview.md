@@ -14,7 +14,7 @@
 
 如果要实现双路预览，可以先参考[拍照](camera-shooting.md)，在双路预览中将拍照流改为另一路预览流，通过[ImageReceiver](../../reference/apis-image-kit/arkts-apis-image-ImageReceiver.md)的Surface创建另一个previewOutput，其余流程与拍照一致。
 
-详细的API说明请参考[Camera API参考](../../reference/apis-camera-kit/arkts-apis-camera.md)。
+详细的API说明请参考[@ohos.multimedia.camera (相机管理)](../../reference/apis-camera-kit/arkts-apis-camera.md)。
 
 ## 约束与限制
 
@@ -80,13 +80,13 @@
    ]);
    ```
 
-4. 注册监听处理预览流每帧图像数据：通过ImageReceiver组件中imageArrival事件监听获取底层返回的图像数据，详细的API说明请参考[Image API参考](../../reference/apis-image-kit/arkts-apis-image-ImageReceiver.md)。
+4. 注册监听处理预览流每帧图像数据：通过ImageReceiver组件中imageArrival事件监听获取底层返回的图像数据，详细的API说明请参考[ImageReceiver](../../reference/apis-image-kit/arkts-apis-image-ImageReceiver.md)。
 
    > **说明：**
    >
    > - 在通过[createPixelMap](../../reference/apis-image-kit/arkts-apis-image-f.md#imagecreatepixelmap8)接口创建[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)实例时，设置的Size、srcPixelFormat等属性必须和相机预览输出流previewProfile中配置的Size、Format属性保持一致，ImageReceiver图片像素格式请参考[PixelMapFormat](../../reference/apis-image-kit/arkts-apis-image-e.md#pixelmapformat7)，相机预览输出流previewProfile输出格式请参考[CameraFormat](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraformat)。
    > - 由于不同设备产品差异性，应用开发者在创建相机预览输出流前，必须先通过[getSupportedOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedoutputcapability11)方法获取当前设备支持的预览输出流previewProfile，再根据实际业务需求选择[CameraFormat](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraformat)和[Size](../../reference/apis-camera-kit/arkts-apis-camera-i.md#size)适合的预览输出流previewProfile。
-   > - ImageReceiver接收预览流图像数据实际format格式由应用开发者在创建预览输出流相机预览输出流时，根据实际业务需求选择的previewProfile中format格式参数影响，详细步骤请参考[创建预览流获取数据](camera-dual-channel-preview.md#创建预览流获取数据)。
+> - ImageReceiver接收预览流图像数据实际format格式由应用开发者在创建相机预览输出流时，根据实际业务需求选择的previewProfile中format格式参数影响，详细步骤请参考[创建预览流获取数据](camera-dual-channel-preview.md#创建预览流获取数据)。
 
    <!-- @[onImageArrival](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/DualPreview/camera/src/main/ets/cameramanagers/ImageReceiverManager.ets) -->
    

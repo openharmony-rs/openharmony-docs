@@ -7,7 +7,7 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
-The certificate algorithm library framework provides certificate-related APIs. The **certFramework** module depends on the basic algorithm capabilities of the Crypto framework. For details, see [Crypto Framework](../apis-crypto-architecture-kit/js-apis-cryptoFramework.md).
+The **cert** module provides APIs for performing certificate operations. For details about the APIs for implementing the basic algorithm capabilities based on the cryptographic (crypto) framework, see [@ohos.security.cryptoFramework (Crypto Framework)](../apis-crypto-architecture-kit/js-apis-cryptoFramework.md).
 
 > **NOTE**
 >
@@ -22,33 +22,49 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
 ## CertResult
 
- Enumerates the error codes.
+ Enumerates the operation results.
 
- **System capability**: SystemCapability.Security.Cert
+ **System capability:** SystemCapability.Security.Cert
 
 | Name                                 | Value  | Description                         |
 | --------------------------------------| -------- | -----------------------------|
-| INVALID_PARAMS                        | 401      | Invalid parameters.<br> **Atomic service API**: This API can be used in atomic services since API version 12.                    |
-| NOT_SUPPORT                           | 801      | This operation is not supported.<br> **Atomic service API**: This API can be used in atomic services since API version 12.                |
-| ERR_OUT_OF_MEMORY                     | 19020001 | Memory error.<br> **Atomic service API**: This API can be used in atomic services since API version 12.                |
-| ERR_RUNTIME_ERROR                     | 19020002 | Runtime error.<br> **Atomic service API**: This API can be used in atomic services since API version 12.             |
-| ERR_PARAMETER_CHECK_FAILED<sup>20+</sup>             | 19020003 | Parameter check failed.<br> **Atomic service API**: This API can be used in atomic services since API version 20.              |
-| ERR_CRYPTO_OPERATION                  | 19030001 | Crypto operation error.<br> **Atomic service API**: This API can be used in atomic services since API version 12.     |
-| ERR_CERT_SIGNATURE_FAILURE            | 19030002 | The certificate signature verification failed.<br> **Atomic service API**: This API can be used in atomic services since API version 12.          |
-| ERR_CERT_NOT_YET_VALID                | 19030003 | The certificate has not taken effect.<br> **Atomic service API**: This API can be used in atomic services since API version 12.             |
-| ERR_CERT_HAS_EXPIRED                  | 19030004 | The certificate has expired.<br> **Atomic service API**: This API can be used in atomic services since API version 12.                 |
-| ERR_UNABLE_TO_GET_ISSUER_CERT_LOCALLY | 19030005 | Failed to obtain the certificate issuer.<br> **Atomic service API**: This API can be used in atomic services since API version 12.      |
-| ERR_KEYUSAGE_NO_CERTSIGN              | 19030006 | The key cannot be used for signing a certificate.<br> **Atomic service API**: This API can be used in atomic services since API version 12. |
-| ERR_KEYUSAGE_NO_DIGITAL_SIGNATURE     | 19030007 |  The key cannot be used for digital signature.<br> **Atomic service API**: This API can be used in atomic services since API version 12. |
-| ERR_MAYBE_WRONG_PASSWORD<sup>18+</sup>              | 19030008 | The password for the private key is incorrect.<br> **Atomic service API**: This API can be used in atomic services since API version 18.       |
+| INVALID_PARAMS                        | 401      | Invalid parameter.<br> **Atomic service API:** This API can be used in atomic services since API version 12.                    |
+| NOT_SUPPORT                           | 801      | Unsupported operation.<br> **Atomic service API:** This API can be used in atomic services since API version 12.                |
+| ERR_OUT_OF_MEMORY                     | 19020001 | Memory error.<br> **Atomic service API:** This API can be used in atomic services since API version 12.                |
+| ERR_RUNTIME_ERROR                     | 19020002 | This error code is reported if an error occurs during running.<br> **Atomic service API:** This API can be used in atomic services since API version 12.             |
+| ERR_PARAMETER_CHECK_FAILED<sup>20+</sup>             | 19020003 | Parameter check failed.<br> **Atomic service API:** This API can be used in atomic services since API version 20.              |
+| ERR_CRYPTO_OPERATION                  | 19030001 | An error occurs when the API of a third-party algorithm library is called.<br> **Atomic service API:** This API can be used in atomic services since API version 12.     |
+| ERR_CERT_SIGNATURE_FAILURE            | 19030002 | The certificate signature verification failed.<br> **Atomic service API:** This API can be used in atomic services since API version 12.          |
+| ERR_CERT_NOT_YET_VALID                | 19030003 | The certificate has not taken effect.<br> **Atomic service API:** This API can be used in atomic services since API version 12.             |
+| ERR_CERT_HAS_EXPIRED                  | 19030004 | The certificate has expired.<br> **Atomic service API:** This API can be used in atomic services since API version 12.                 |
+| ERR_UNABLE_TO_GET_ISSUER_CERT_LOCALLY | 19030005 | Failed to obtain the certificate issuer.<br> **Atomic service API:** This API can be used in atomic services since API version 12.      |
+| ERR_KEYUSAGE_NO_CERTSIGN              | 19030006 | The key cannot be used for signing a certificate.<br> **Atomic service API:** This API can be used in atomic services since API version 12. |
+| ERR_KEYUSAGE_NO_DIGITAL_SIGNATURE     | 19030007 |  The key cannot be used for digital signature.<br> **Atomic service API:** This API can be used in atomic services since API version 12. |
+| ERR_MAYBE_WRONG_PASSWORD<sup>18+</sup>              | 19030008 | The private key password may be incorrect.<br> **Atomic service API:** This API can be used in atomic services since API version 18.       |
+| ERR_CERT_UNTRUSTED               | 19030009 | This error code is reported if the certificate is untrusted.<br> **Since:** 26.0.0<br> **Model restriction:** This API can be used only in the stage model.<br> **Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| ERR_CERT_HAS_REVOKED             | 19030010 | This error code is reported if the certificate has been revoked.<br> **Since:** 26.0.0<br> **Model restriction:** This API can be used only in the stage model.<br> **Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| ERR_UNKNOWN_CRITICAL_EXTENSION   | 19030011 | This error code is reported if there is an unknown critical extension.<br> **Since:** 26.0.0<br> **Model restriction:** This API can be used only in the stage model.<br> **Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| ERR_CERT_HOSTNAME_MISMATCH       | 19030012 | This error code is reported if the hostname is not matched.<br> **Since:** 26.0.0<br> **Model restriction:** This API can be used only in the stage model.<br> **Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| ERR_CERT_EMAIL_ADDRESS_MISMATCH  | 19030013 | The email address in the certificate is not matched.<br> **Since:** 26.0.0<br> **Model restriction:** This API can be used only in the stage model.<br> **Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| ERR_CERT_KEYUSAGE_MISMATCH       | 19030014 | Certificate key usage mismatch in the certificate.<br> **Since:** 26.0.0<br> **Model restriction:** This API can be used only in the stage model.<br> **Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| ERR_CRL_NOT_FOUND                | 19030015 | This error code is reported if the attempt to obtain the CRL fails.<br> **Since:** 26.0.0<br> **Model restriction:** This API can be used only in the stage model.<br> **Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| ERR_CRL_NOT_YET_VALID            | 19030016 | This error code is reported if the CRL has not taken effect.<br> **Since:** 26.0.0<br> **Model restriction:** This API can be used only in the stage model.<br> **Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| ERR_CRL_HAS_EXPIRED              | 19030017 | This error code is reported if the CRL has expired.<br> **Since:** 26.0.0<br> **Model restriction:** This API can be used only in the stage model.<br> **Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| ERR_CRL_SIGNATURE_FAILURE        | 19030018 | This error code is reported if the CRL signature verification fails.<br> **Since:** 26.0.0<br> **Model restriction:** This API can be used only in the stage model.<br> **Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| ERR_CRL_ISSUER_NOT_FOUND         | 19030019 | This error code is reported if the attempt to obtain the CRL issuer fails.<br> **Since:** 26.0.0<br> **Model restriction:** This API can be used only in the stage model.<br> **Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| ERR_OCSP_RESPONSE_NOT_FOUND      | 19030020 | This error code is reported if the attempt to obtain the Online Certificate Status Protocol (OCSP) response fails.<br> **Since:** 26.0.0<br> **Model restriction:** This API can be used only in the stage model.<br> **Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| ERR_OCSP_RESPONSE_INVALID        | 19030021 | This error code is reported if the OCSP response is invalid.<br> **Since:** 26.0.0<br> **Model restriction:** This API can be used only in the stage model.<br> **Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| ERR_OCSP_SIGNATURE_FAILURE       | 19030022 | This error code is reported if the OCSP signature verification fails.<br> **Since:** 26.0.0<br> **Model restriction:** This API can be used only in the stage model.<br> **Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| ERR_OCSP_CERT_STATUS_UNKNOWN     | 19030023 | This error code is reported if the OCSP certificate status is unknown.<br> **Since:** 26.0.0<br> **Model restriction:** This API can be used only in the stage model.<br> **Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
+| ERR_NETWORK_TIMEOUT              | 19030024 | This error code is reported if the network connection times out.<br> **Since:** 26.0.0<br> **Model restriction:** This API can be used only in the stage model.<br> **Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
 
 ## DataBlob
 
 Encapsulates binary data. The core field **data** is of the Uint8Array type.
 
- **Atomic service API**: This API can be used in atomic services since API version 12.
+ **Atomic service API:** This API can be used in atomic services since API version 12.
 
- **System capability**: SystemCapability.Security.Cert
+ **System capability:** SystemCapability.Security.Cert
 | Name          | Type          | Read-Only| Optional| Description             |
 | -------------- | -------------- | ---- | ---- | ----------------|
 | data           | Uint8Array     | No  | No  | Data.   |
@@ -57,9 +73,9 @@ Encapsulates binary data. The core field **data** is of the Uint8Array type.
 
 Defines a list of data arrays.
 
- **Atomic service API**: This API can be used in atomic services since API version 12.
+ **Atomic service API:** This API can be used in atomic services since API version 12.
 
- **System capability**: SystemCapability.Security.Cert
+ **System capability:** SystemCapability.Security.Cert
 | Name          | Type          | Read-Only| Optional| Description              |
 | -------------- | -------------- | ---- | ---- | ----------------|
 | data           | Array\<Uint8Array>     | No  | No  | Data list.   |
@@ -68,118 +84,120 @@ Defines a list of data arrays.
 
  Enumerates the certificate encoding formats.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
- **System capability**: SystemCapability.Security.Cert
+ **System capability:** SystemCapability.Security.Cert
 
 | Name      | Value|  Description     |
 | ---------- | ------ | --------- |
-| FORMAT_DER | 0      | Distinguished Encoding Rules (DER) format.|
-| FORMAT_PEM | 1      | Privacy-Enhanced Mail (PEM) format.|
-| FORMAT_PKCS7<sup>11+</sup> | 2 | PKCS #7 format.|
+| FORMAT_DER | 0      | DER.|
+| FORMAT_PEM | 1      | PEM.|
+| FORMAT_PKCS7<sup>11+</sup> | 2 | PKCS #7.|
 
 ## EncodingBaseFormat<sup>18+</sup>
 
- Enumerates the CSR encoding formats.
+ Enumerates the certificate data encoding formats.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
- **System capability**: SystemCapability.Security.Cert
+ **System capability:** SystemCapability.Security.Cert
 
 | Name      | Value|  Description     |
 | ---------- | ------ | --------- |
-| PEM | 0      | Privacy-Enhanced Mail (PEM) format.|
-| DER | 1      | Distinguished Encoding Rules (DER) format.|
+| PEM | 0      | PEM.|
+| DER | 1      | DER.|
 
 ## CsrAttribute<sup>18+</sup>
- Defines the extension attributes for the CSR encoding format configuration.
 
-OpenSSL defines extension types, such as challengePassword and keyUsage.
+Defines the CSR attribute.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+The CSR attribute field can only be set to a UTF-8 string currently. **type** is commonly set to **challengePassword**.
 
- **System capability**: SystemCapability.Security.Cert
+**Atomic service API:** This API can be used in atomic services since API version 18.
+
+ **System capability:** SystemCapability.Security.Cert
 
 | Name   | Type  | Read-Only| Optional| Description                                                        |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| type | string | No  | No  | Extension type defined by OpenSSL.|
-| value | string | No  | No | Extended value.|
+| type | string | No  | No  | Extension type defined by PKCS #9.|
+| value | string | No  | No | Attribute value.|
 
 ## CsrGenerationConfig<sup>18+</sup>
-Represents the configuration for generating a CSR using an RSA private key, including the subject, extension, message digest algorithm, and output format.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+Describes the configuration parameters for generating a CSR, including the subject name, extension, message digest (MD) algorithm, and output format.
 
-**System capability**: SystemCapability.Security.Cert
+**Atomic service API:** This API can be used in atomic services since API version 18.
+
+**System capability:** SystemCapability.Security.Cert
 
 | Name   | Type  | Read-Only| Optional| Description                                                        |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| subject | [X500DistinguishedName](#x500distinguishedname12) | No  | No  | Provides APIs for managing the **X500DistinguishedName** instance.|
-| mdName | string | No  | No  | MD algorithm to use.|
+| subject | [X500DistinguishedName](#x500distinguishedname12) | No  | No  | Subject name|
+| mdName | string | No  | No  | MD algorithm name. Currently, SHA-1, SHA-256, SHA-384, and SHA-512 are supported.|
 | attributes | Array\<[CsrAttribute](#csrattribute18)> | No  | Yes  | Extension.|
-| outFormat | [EncodingBaseFormat](#encodingbaseformat18) | No  | Yes  | Output format.|
+| outFormat | [EncodingBaseFormat](#encodingbaseformat18) | No  | Yes  | Output type. The default value is **PEM**.|
 
 > **NOTE**
 >
-> - **subject** is an object of the Name type defined by X509.
+> - **subject** is an **X500DistinguishedName** object.
 >
-> - **mdName** specifies the message digest algorithm. Currently, SHA-1, SHA-256, SHA-384, and SHA-512 are supported.
+> - **mdName** specifies the MD algorithm. Currently, SHA-1, SHA-256, SHA-384, and SHA-512 are supported.
 >
-> - **attributes** is optional. You can specify the extension types and values defined in OpenSSL to generate a CSR, for example, **challengePassword** and **keyUsage**.
+> - **attributes** is optional. You can specify the extension types and values defined in OpenSSL to generate a CSR, such as the challenge password and key usage.
 >
-> - **outFormat** specifies the format of the CSR generated. If it is not specified, the PEM format is used by default.
+> - **outFormat** specifies the format of the CSR generated. If no value is set, the PEM format is used by default.
 
 ## CertItemType<sup>10+</sup>
 
- Enumerates the certificate fields that can be obtained.
+ Enumerates the certificate fields that can be obtained. 
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
- **System capability**: SystemCapability.Security.Cert
+ **System capability:** SystemCapability.Security.Cert
 
 | Name                            | Value  | Description                          |
 | -------------------------------- | ---- | ------------------------------ |
-| CERT_ITEM_TYPE_TBS               | 0    | Information to be signed.    |
+| CERT_ITEM_TYPE_TBS               | 0    | To be signed certificate.    |
 | CERT_ITEM_TYPE_PUBLIC_KEY        | 1    | Public key of the certificate.      |
 | CERT_ITEM_TYPE_ISSUER_UNIQUE_ID  | 2    | Unique ID of the certificate issuer.|
 | CERT_ITEM_TYPE_SUBJECT_UNIQUE_ID | 3    | Unique ID of the certificate subject.  |
-| CERT_ITEM_TYPE_EXTENSIONS        | 4    | Certificate extensions, each of which is identified by a unique object identifier (OID).    |
+| CERT_ITEM_TYPE_EXTENSIONS        | 4    | Certificate extensions.    |
 
 ## ExtensionOidType<sup>10+</sup>
 
- Enumerates the OID types of the certificate extensions that can be obtained.
+ Enumerates certificate extension OID types.
 
- **Atomic service API**: This API can be used in atomic services since API version 12.
+ **Atomic service API:** This API can be used in atomic services since API version 12.
 
- **System capability**: SystemCapability.Security.Cert
+ **System capability:** SystemCapability.Security.Cert
 
 | Name                         | Value  | Description                                         |
 | ----------------------------- | ---- | --------------------------------------------- |
-| EXTENSION_OID_TYPE_ALL        | 0    | All object identifiers.           |
-| EXTENSION_OID_TYPE_CRITICAL   | 1    | Object identifier whose **critical** is **true**. |
-| EXTENSION_OID_TYPE_UNCRITICAL | 2    | Object identifier whose **critical** is **false**.|
+| EXTENSION_OID_TYPE_ALL        | 0    | All OIDs.           |
+| EXTENSION_OID_TYPE_CRITICAL   | 1    | OIDs whose **critical** is **true**. |
+| EXTENSION_OID_TYPE_UNCRITICAL | 2    | OID whose **critical** is **false**.|
 
 ## ExtensionEntryType<sup>10+</sup>
 
- Enumerates the object types in certificate extensions that can be obtained.
+ Enumerates certificate extension types.
 
- **Atomic service API**: This API can be used in atomic services since API version 12.
+ **Atomic service API:** This API can be used in atomic services since API version 12.
 
- **System capability**: SystemCapability.Security.Cert
+ **System capability:** SystemCapability.Security.Cert
 
 | Name                               | Value  | Description                        |
 | ----------------------------------- | ---- | ---------------------------- |
-| EXTENSION_ENTRY_TYPE_ENTRY          | 0    | Entire object.          |
-| EXTENSION_ENTRY_TYPE_ENTRY_CRITICAL | 1    | Critical attribute of the object.|
-| EXTENSION_ENTRY_TYPE_ENTRY_VALUE    | 2    | Data of the object.        |
+| EXTENSION_ENTRY_TYPE_ENTRY          | 0    | Entire extension.          |
+| EXTENSION_ENTRY_TYPE_ENTRY_CRITICAL | 1    | **critical** attribute of the extension.|
+| EXTENSION_ENTRY_TYPE_ENTRY_VALUE    | 2    | Value of the extension (extension-specific data).        |
 
 ## EncodingType<sup>12+</sup>
 
  Enumerates the obtained encoding formats.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
- **System capability**: SystemCapability.Security.Cert
+ **System capability:** SystemCapability.Security.Cert
 
 | Name      | Value|  Description     |
 | ---------- | ------ | --------- |
@@ -187,178 +205,173 @@ Represents the configuration for generating a CSR using an RSA private key, incl
 
 ## EncodingBlob
 
-Defines a certificate binary array in encoding format.
+Represents an encoded binary data block.
 
-### Properties
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name          | Type                             | Read-Only| Optional| Description                          |
 | -------------- | --------------------------------- | ---- | ---- | ------------------------------ |
-| data           | Uint8Array                        | No  | No  | Certificate data.|
-| encodingFormat | [EncodingFormat](#encodingformat) | No  | No  | Certificate encoding format.            |
+| data           | Uint8Array                        | No  | No  | Encoded data.|
+| encodingFormat | [EncodingFormat](#encodingformat) | No  | No  | Encoding format.            |
 
 
 ## CertChainData
 
 Defines the certificate chain data, which is passed in as input parameters during certificate chain verification.
 
-### Properties
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name          | Type                             | Read-Only| Optional| Description                                                        |
 | -------------- | --------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| data           | Uint8Array                        | No  | No  | Certificate data, which is a combination of the certificate length (2 bytes) and data. For example, **08ABCDEFGH07ABCDEFG** indicates that the first certificate is an 8-byte certificate, followed by 8-byte certificate data. The second certificate is a 7-byte certificate, followed by 7-byte certificate data.|
-| count          | number                            | No  | No  | Number of certificates contained in the input data.                              |
-| encodingFormat | [EncodingFormat](#encodingformat) | No  | No  | Certificate encoding format.                                          |
+| data           | Uint8Array                        | No  | No  | Certificate data, which is a combination of the certificate length (2 bytes) and data. For example, **08ABCDEFGH07ABCDEFG**, where **08ABCDEFGH** is the first certificate and **07ABCDEFG** is the second certificate. The first certificate is an 8-byte certificate, followed by 8-byte certificate data. The second certificate is a 7-byte certificate, followed by 7-byte certificate data.|
+| count          | number                            | No  | No  | Number of certificates.                              |
+| encodingFormat | [EncodingFormat](#encodingformat) | No  | No  | Encoding format.                                          |
 
 ## GeneralNameType<sup>12+</sup>
 
-Enumerates the types of the common name (CN), which uniquely identifies the subject of the certificate.
+Enumerates the general name types defined in X.509. These types can be used in the subject alternative name and other extensions.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name          | Value                             | Description              |
 | -------------- | --------------------------------- | ------------------ |
-| GENERAL_NAME_TYPE_OTHER_NAME | 0 |  Indicates others. |
-| GENERAL_NAME_TYPE_RFC822_NAME | 1 |  Indicates an email address. |
-| GENERAL_NAME_TYPE_DNS_NAME | 2 |  Indicates a DNS name. |
-| GENERAL_NAME_TYPE_X400_ADDRESS | 3 |  Indicates an X.400 address. |
-| GENERAL_NAME_TYPE_DIRECTORY_NAME | 4 |  Indicates a directory name. |
-| GENERAL_NAME_TYPE_EDI_PARTY_NAME | 5 |  Indicates an Electronic Data Interchange (EDI) entity. |
-| GENERAL_NAME_TYPE_UNIFORM_RESOURCE_ID | 6 |  Indicates a uniform resource identifier. |
-| GENERAL_NAME_TYPE_IP_ADDRESS | 7 |  Indicates an IP address. |
-| GENERAL_NAME_TYPE_REGISTERED_ID | 8 |  Indicates a registered object identifier. |
+| GENERAL_NAME_TYPE_OTHER_NAME | 0 |  Other name. |
+| GENERAL_NAME_TYPE_RFC822_NAME | 1 |  Email address. |
+| GENERAL_NAME_TYPE_DNS_NAME | 2 |  DNS name. |
+| GENERAL_NAME_TYPE_X400_ADDRESS | 3 |  X.400 address. |
+| GENERAL_NAME_TYPE_DIRECTORY_NAME | 4 |  Directory name. |
+| GENERAL_NAME_TYPE_EDI_PARTY_NAME | 5 |  Electronic Data Interchange (EDI) entity. |
+| GENERAL_NAME_TYPE_UNIFORM_RESOURCE_ID | 6 |  Uniform Resource Identifier (URI). |
+| GENERAL_NAME_TYPE_IP_ADDRESS | 7 |  IP address. |
+| GENERAL_NAME_TYPE_REGISTERED_ID | 8 |  Registered OID. |
 
 ## GeneralName<sup>12+</sup>
 
-Represents the CN information of a certificate.
+Represents an X.509 general name defined in RFC 5280, which can be used in the subject alternative name and other extensions.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name          | Type                             | Read-Only| Optional|Description              |
 | -------------- | --------------------------------- | ---- |  ---- |------------------ |
-| type | [GeneralNameType](#generalname12)    | No| No| Type of the certificate subject. |
-| name | Uint8Array    | No |  Yes|DER format of the certificate subject. |
+| type | [GeneralNameType](#generalnametype12)    | No| No| General name type. |
+| name | Uint8Array    | No |  Yes| Value of **GeneralName** encoded in DER format. |
 
 ## X509CertMatchParameters<sup>11+</sup>
 
 Defines the parameters used to match a certificate. If no parameter is specified, all certificates are matched.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
-
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name          | Type                             | Read-Only| Optional| Description              |
 | -------------- | --------------------------------- | ---- | ---- |------------------ |
-| x509Cert | [X509Cert](#x509cert)    | No| Yes| Certificate object. |
-| validDate | string    | No |  Yes|Certificate validity period. |
-| issuer | Uint8Array | No | Yes|Certificate issuer, in DER format.|
-| keyUsage | Array\<boolean> | No | Yes|Whether to match the key usage. **true**: yes; **false**: no.|
-| serialNumber | bigint    | No |  Yes|Serial number of the certificate. |
-| subject | Uint8Array | No | Yes|Certificate subject, in DER format.|
-| publicKey | [DataBlob](#datablob) | No | Yes|Public key of the certificate, in DER format.|
-| publicKeyAlgID | string | No | Yes|Algorithm of the certificate public key.|
-| subjectAlternativeNames<sup>12+</sup> | Array\<[GeneralName](#generalname12)> | No | Yes|Subject Alternative Names (SANs) of the certificate.|
-| matchAllSubjectAltNames<sup>12+</sup> | boolean | No | Yes|Whether to match all SANs of the certificate. **true**: yes; **false**: no.|
-| authorityKeyIdentifier<sup>12+</sup> | Uint8Array | No | Yes|Key of the certificate authority (CA).|
-| minPathLenConstraint<sup>12+</sup> | number | No | Yes|Minimum length of the certification path (chain of trust) that can be built from the certificate to a trusted root CA.|
-| extendedKeyUsage<sup>12+</sup> | Array\<string> | No | Yes|Usage of the certificate.|
-| nameConstraints<sup>12+</sup> | Uint8Array | No | Yes|Constraints on the subject names that can be included in certificates.|
-| certPolicy<sup>12+</sup> | Array\<string> | No | Yes|Certificate policy.|
-| privateKeyValid<sup>12+</sup> | string | No | Yes|Validity period of the certificate private key.|
-| subjectKeyIdentifier<sup>12+</sup> | Uint8Array | No | Yes|Identifier of the public key of the certificate's subject.|
+| x509Cert | [X509Cert](#x509cert)    | No| Yes| Certificate object.<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
+| validDate | string    | No |  Yes|Certificate validity period, for example, **20231121074700Z**.<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
+| issuer | Uint8Array | No | Yes|Certificate issuer, in DER format.<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
+| keyUsage | Array\<boolean> | No | Yes|Whether to match the key usage. **true**: yes; **false**: no.<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
+| serialNumber | bigint    | No |  Yes|Serial number of the certificate.<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
+| subject | Uint8Array | No | Yes|Certificate subject name, in DER format.<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
+| publicKey | [DataBlob](#datablob) | No | Yes|Public key of the certificate, in DER format.<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
+| publicKeyAlgID | string | No | Yes|Algorithm of the certificate public key.<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
+| subjectAlternativeNames<sup>12+</sup> | Array\<[GeneralName](#generalname12)> | No | Yes|Certificate subject alternative name (SAN).<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
+| matchAllSubjectAltNames<sup>12+</sup> | boolean | No | Yes|Whether to match all SANs of the certificate. **true**: yes; **false**: no.<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
+| authorityKeyIdentifier<sup>12+</sup> | Uint8Array | No | Yes|Key of the certificate authority (CA).<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
+| minPathLenConstraint<sup>12+</sup> | number | No | Yes|Path length of the CA certificate.<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
+| extendedKeyUsage<sup>12+</sup> | Array\<string> | No | Yes|Usage of the extended key.<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
+| nameConstraints<sup>12+</sup> | Uint8Array | No | Yes|Constraints on the subject names that can be included in certificates.<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
+| certPolicy<sup>12+</sup> | Array\<string> | No | Yes|Certificate policy<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
+| privateKeyValid<sup>12+</sup> | string | No | Yes|Validity period of the certificate private key.<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
+| subjectKeyIdentifier<sup>12+</sup> | Uint8Array | No | Yes|Public key identifier (Subject Key Identifier extension) of the certificate subject.<br>**Atomic service API:** This API can be used in atomic services since API version 12.|
+| privateKey | string \| Uint8Array | No | Yes|Private key of the certificate. The value can be a string (indicating a PEM-encoded private key) or a Uint8Array (indicating a DER-encoded private key).<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.|
 
 ## X509CRLMatchParameters<sup>11+</sup>
 
 Represents the parameters used to match a certificate revocation list (CRL). If no parameter is specified, all CRLs are matched.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name          | Type                             | Read-Only| Optional|Description              |
 | -------------- | --------------------------------- | ---- | ---- | ------------------ |
-| issuer | Array\<Uint8Array> | No | Yes |Issuers of the certificates. At least one issuer must be matched.|
+| issuer | Array\<Uint8Array> | No | Yes |CRL issuer, in DER format.|
 | x509Cert | [X509Cert](#x509cert) | No | Yes |Certificate object used to determine whether the certificate is in the CRL.|
-| updateDateTime<sup>12+</sup> | string | No | Yes |Certificate update time.|
-| maxCRL<sup>12+</sup> | bigint | No | Yes |Maximum number of CRLs.|
-| minCRL<sup>12+</sup> | bigint | No | Yes |Minimum number of CRLs.|
+| updateDateTime<sup>12+</sup> | string | No | Yes |CRL update time, for example, **20231121074700Z**.|
+| maxCRL<sup>12+</sup> | bigint | No | Yes |Maximum CRL number.|
+| minCRL<sup>12+</sup> | bigint | No | Yes |Minimum CRL number.|
 
 ## CertChainBuildParameters<sup>12+</sup>
 
-Represents the parameters for building a certificate chain.
+Defines the parameters for building a certificate chain.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name          | Type                             | Read-Only| Optional|Description              |
 | -------------- | --------------------------------- | ---- | ---- | ------------------ |
 | certMatchParameters | [X509CertMatchParameters](#x509certmatchparameters11) | No | No |Filter criteria.|
-| maxLength | number | No | Yes |Maximum length of the CA certificate in the certificate chain.|
-| validationParameters | [CertChainValidationParameters](#certchainvalidationparameters11) | No| No|Parameters for certificate chain validation.|
+| maxLength | number | No | Yes |Maximum number of CA certificates.|
+| validationParameters | [CertChainValidationParameters](#certchainvalidationparameters11) | No| No|Verification condition.|
 
 ## CertChainBuildResult<sup>12+</sup>
 
-Represents the certificate chain build result.
+Represents the result of building a certificate chain.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name          | Type                             | Read-Only| Optional|Description              |
 | -------------- | --------------------------------- | ---- | ---- |------------------ |
 | certChain | [X509CertChain](#x509certchain11) | Yes | No |Certificate chain object created.|
-| validationResult | [CertChainValidationResult](#certchainvalidationresult11) | Yes |  No |Result of the certificate chain validation.|
+| validationResult | [CertChainValidationResult](#certchainvalidationresult11) | Yes |  No |Certificate chain validation result.|
 
 ## X509TrustAnchor<sup>11+</sup>
 
 Represents an X.509 trust anchor, which is used to verify the certificate chain. The certificate or public key in the trust anchor is used as the trusted root to verify the certificate chain.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name     | Type                 | Read-Only| Optional| Description                       |
 | --------- | --------------------- | ---- | ---- | --------------------------- |
 | CACert    | [X509Cert](#x509cert) | No  | Yes  | Trusted CA certificate. If **CACert** is set, only **CACert** is used to validate the certificate chain. **CAPubKey** and **CASubject** are not used.|
 | CAPubKey  | Uint8Array            | No  | Yes  | Public key of the trusted CA certificate, in DER format. This parameter takes effect only when **CACert** is not set.|
-| CASubject | Uint8Array            | No  | Yes  | Subject of the trusted CA certificate, in DER format. This parameter takes effect only when **CAPubKey** is set. The validation object is determined based on the **CAPubKey** type (self-signed or upper-level), and can be the subject or issuer of the root certificate.|
+| CASubject | Uint8Array            | No  | Yes  | Subject name of the trusted CA certificate, in DER format. This parameter takes effect only when **CAPubKey** is set. The validation object is determined based on the CA public key type (self-signed or upper-level), and can be the subject or issuer name of the root certificate.|
 | nameConstraints<sup>12+</sup> | Uint8Array      | No  | Yes  | Name constraints, in DER format. Only the leaf certificate of the current certificate chain is validated.|
 
 ## RevocationCheckOptions<sup>12+</sup>
 
  Enumerates the options for checking the certificate revocation status.
 
- **System capability**: SystemCapability.Security.Cert
+ **System capability:** SystemCapability.Security.Cert
 
 | Name                                 | Value  | Description                         |
 | --------------------------------------| -------- | -----------------------------|
-| REVOCATION_CHECK_OPTION_PREFER_OCSP | 0 | Use OCSP over CRL (default).<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
-| REVOCATION_CHECK_OPTION_ACCESS_NETWORK | 1 | Obtain the CRL/OCSP response over the network. By default, it is disabled. Only the first CRL distribution point address can be obtained from the CDP extension of the certificate to check the certificate revocation status, or the first OCSP server address can be obtained from the AIA extension of the certificate to check the certificate revocation status. Moreover, only HTTP is supported. You must declare the ohos.permission.INTERNET permission.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
-| REVOCATION_CHECK_OPTION_FALLBACK_NO_PREFER | 2 | This parameter is valid when the **ACCESS_NETWORK** option is enabled. It allows the alternative solution to be used to obtain the certificate revocation status if the preferred solution cannot be used due to network problems.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
-| REVOCATION_CHECK_OPTION_FALLBACK_LOCAL | 3 | This parameter is valid when the **ACCESS_NETWORK** option is enabled. It allows the locally configured CRL/OCSP response to be used to check the certificate revocation status if the online CRL/OCSP response cannot be used due to network problems.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
-| REVOCATION_CHECK_OPTION_CHECK_INTERMEDIATE_CA_ONLINE<sup>22+</sup> | 4 | This parameter is valid when the **ACCESS_NETWORK** option is enabled. If this capability is enabled, the system continues to check the revocation status of the intermediate certificate if the OCSP or CRL check of the leaf certificate fails. This capability is disabled by default.<br>Note: This capability and **REVOCATION_CHECK_OPTION_LOCAL_CRL_ONLY_CHECK_END_ENTITY_CERT** cannot be enabled at the same time.<br> **Atomic service API**: This API can be used in atomic services since API version 22. |
-| REVOCATION_CHECK_OPTION_LOCAL_CRL_ONLY_CHECK_END_ENTITY_CERT<sup>22+</sup> | 5 | If this capability is enabled, the system checks the revocation status of the leaf certificate based on the local CRL. This capability is disabled by default.<br>Note: This capability and **REVOCATION_CHECK_OPTION_CHECK_INTERMEDIATE_CA_ONLINE** cannot be enabled at the same time.<br> **Atomic service API**: This API can be used in atomic services since API version 22. |
-| REVOCATION_CHECK_OPTION_IGNORE_NETWORK_ERROR<sup>23+</sup> | 6 | If this capability is enabled, the system ignores the network unreachable error when obtaining the CRL or OCSP response over the network for revocation status check. This capability is disabled by default. By default, the network unreachable error may cause certificate chain validation failure.<br> **Atomic service API**: This API can be used in atomic services since API version 23.|
+| REVOCATION_CHECK_OPTION_PREFER_OCSP | 0 | Use OCSP over CRL (default).<br> **Atomic service API:** This API can be used in atomic services since API version 12.|
+| REVOCATION_CHECK_OPTION_ACCESS_NETWORK | 1 | Obtain the CRL/OCSP response over the network. By default, it is disabled. The certificate revocation status can be checked by obtaining the first CRL distribution point address from the CDP extension or the first OCSP server address from the AIA extension. Only HTTP is supported. You must declare the ohos.permission.INTERNET permission.<br> **Atomic service API:** This API can be used in atomic services since API version 12.|
+| REVOCATION_CHECK_OPTION_FALLBACK_NO_PREFER | 2 | This parameter is valid when the **ACCESS_NETWORK** option is enabled. It allows the alternative solution to be used to obtain the certificate revocation status if the preferred solution cannot be used due to network problems.<br> **Atomic service API:** This API can be used in atomic services since API version 12.|
+| REVOCATION_CHECK_OPTION_FALLBACK_LOCAL | 3 | This parameter is valid when the **ACCESS_NETWORK** option is enabled. It allows the locally configured CRL/OCSP response to be used to check the certificate revocation status if the online CRL/OCSP response cannot be used due to network problems.<br> **Atomic service API:** This API can be used in atomic services since API version 12.|
+| REVOCATION_CHECK_OPTION_CHECK_INTERMEDIATE_CA_ONLINE<sup>22+</sup> | 4 | This parameter is valid when the **ACCESS_NETWORK** option is enabled. It allows checking the revocation status of the intermediate certificate if the CRL/OCSP response cannot be used to check the revocation status of the end entity certificate. It is disabled by default.<br>Note: This option and **REVOCATION_CHECK_OPTION_LOCAL_CRL_ONLY_CHECK_END_ENTITY_CERT** cannot be enabled at the same time.<br> **Atomic service API:** This API can be used in atomic services since API version 22. |
+| REVOCATION_CHECK_OPTION_LOCAL_CRL_ONLY_CHECK_END_ENTITY_CERT<sup>22+</sup> | 5 | If this option is enabled, the response of a local CRL is used to check the revocation status of the end entity certificate. It is disabled by default.<br>Note: This option and **REVOCATION_CHECK_OPTION_CHECK_INTERMEDIATE_CA_ONLINE** cannot be enabled at the same time.<br> **Atomic service API:** This API can be used in atomic services since API version 22. |
+| REVOCATION_CHECK_OPTION_IGNORE_NETWORK_ERROR<sup>23+</sup> | 6 | If this option is enabled, the CRL/OCSP response obtained over the network is used to check the certificate revocation status, ignoring the unreachable network error. It is disabled by default. The unreachable network error may cause failure to verify the certificate chain.<br> **Atomic service API:** This API can be used in atomic services since API version 23.|
 
 ## ValidationPolicyType<sup>12+</sup>
 
  Enumerates the types of the online certificate chain validation policy.
 
- **Atomic service API**: This API can be used in atomic services since API version 12.
+ **Atomic service API:** This API can be used in atomic services since API version 12.
 
- **System capability**: SystemCapability.Security.Cert
+ **System capability:** SystemCapability.Security.Cert
 
 | Name                                 | Value  | Description                         |
 | --------------------------------------| -------- | -----------------------------|
@@ -369,9 +382,9 @@ Represents an X.509 trust anchor, which is used to verify the certificate chain.
 
  Enumerates the purposes, for which the key in the certificate is used.
  
- **Atomic service API**: This API can be used in atomic services since API version 12.
+ **Atomic service API:** This API can be used in atomic services since API version 12.
 
- **System capability**: SystemCapability.Security.Cert
+ **System capability:** SystemCapability.Security.Cert
 
 | Name                                 | Value  | Description                         |
 | --------------------------------------| -------- | -----------------------------|
@@ -382,99 +395,190 @@ Represents an X.509 trust anchor, which is used to verify the certificate chain.
 | KEYUSAGE_KEY_AGREEMENT | 4 | The certificate holder can use the private key contained in the certificate to perform key agreement operations.|
 | KEYUSAGE_KEY_CERT_SIGN | 5 | The certificate holder can use the private key contained in the certificate to sign other certificates.|
 | KEYUSAGE_CRL_SIGN | 6 | The certificate holder can use the private key contained in the certificate to sign CRLs.|
-| KEYUSAGE_ENCIPHER_ONLY | 7 | The certificate holder can use the key to perform encryption operations only.|
-| KEYUSAGE_DECIPHER_ONLY | 8 | The certificate holder can use the key to perform decryption operations only.|
+| KEYUSAGE_ENCIPHER_ONLY | 7 | The certificate holder can use the key to perform encryption only.|
+| KEYUSAGE_DECIPHER_ONLY | 8 | The certificate holder can use the key to perform decryption only.|
+
+## CertRevocationFlag
+
+Enumerates certificate revocation flags.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability:** SystemCapability.Security.Cert
+
+| Name                                 | Value  | Description                         |
+| --------------------------------------| -------- | -----------------------------|
+| CERT_REVOCATION_PREFER_OCSP | 0 | OCSP check (preferred). This flag takes effect only when both **CERT_REVOCATION_CRL_CHECK** and **CERT_REVOCATION_OCSP_CHECK** are set.<br>After this flag is set, the OCSP check is performed first. If no response is found or the check times out, the CRL check is performed.<br>If this flag is not set, the CRL check is performed first. If no CRL is found or the check times out, the OCSP check is performed.|
+| CERT_REVOCATION_CRL_CHECK | 1 | CRL check. Verify the certificate status based on a CRL.<br>Match a CRL using the **crls** parameter of [X509CertRevokedParams](#x509certrevokedparams) first. If no CRL is matched and the **allowDownloadCrl** parameter of [X509CertRevokedParams](#x509certrevokedparams) is set to **true**, the CRL is downloaded using the CDP extension of the certificate.|
+| CERT_REVOCATION_OCSP_CHECK | 2 | OCSP check. Verify the certificate status based on the OCSP response.<br>Match an OCSP response using the **ocspResponses** parameter of [X509CertRevokedParams](#x509certrevokedparams) first. If no response is matched and the **allowOcspCheckOnline** parameter of [X509CertRevokedParams](#x509certrevokedparams) is set to **true**, the OCSP URL is obtained from the certificate AIA extension and a request is sent to obtain the response.<br>Always use the current system time to verify the validity period of the OCSP response. A time tolerance of 5 minutes before and after the current time is allowed.<br>Always use the current system time to verify the validity period of the OCSP signing certificate chain.<br>Lack of **nonce** and **nextUpdate** is allowed in the OCSP response.|
+| CERT_REVOCATION_CHECK_ALL_CERT | 3 | Revocation status check of all certificates.<br>After this parameter is set, the revocation statuses of all certificates (excluding self-signed certificates) in the certificate chain are checked.<br>If this parameter is not set, only the endpoint certificate (the first certificate in the certificate chain) is checked.|
+
+## OcspDigest
+
+Enumerates OCSP digest algorithms.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability:** SystemCapability.Security.Cert
+
+| Name                                 | Value  | Description                         |
+| --------------------------------------| -------- | -----------------------------|
+| SHA1 | 0 | SHA-1.|
+| SHA224 | 1 | SHA-224.|
+| SHA256 | 2 | SHA-256.|
+| SHA384 | 3 | SHA-384.|
+| SHA512 | 4 | SHA-512.|
+
+## X509CertRevokedParams
+
+Enumerates the certificate revocation check parameters.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability:** SystemCapability.Security.Cert
+
+| Name        | Type                                             | Read-Only| Optional|Description                                  |
+| ------------ | ------------------------------------------------- | ---- | ---- |--------------------------------------|
+| revocationFlags | Array\<[CertRevocationFlag](#certrevocationflag)> | No  | No  | Certificate revocation check flags. Value range: [1, 4]. The array must contain **CERT_REVOCATION_CRL_CHECK** or **CERT_REVOCATION_OCSP_CHECK**.|
+| crls | Array\<[X509CRL](#x509crl11)> | No  | Yes  | CRLs. Maximum number: 100.|
+| allowDownloadCrl | boolean | No  | Yes  | Whether to allow downloading CRLs. The default value is **false**. **true**: CRLs are downloaded using the CDP extension of the certificate. **false**: CRLs are not downloaded.|
+| ocspResponses | Array\<Uint8Array> | No  | Yes  | OCSP response data. Preset OCSP response data. Maximum number: 100.|
+| allowOcspCheckOnline | boolean | No  | Yes  | Whether to allow online OCSP check. The default value is **false**.<br>**true**: Perform online OCSP check. That is, obtain the OCSP URL from the certificate AIA extension and send a request to obtain a response.<br>**false**: Do not perform online OCSP check.|
+| ocspDigest | [OcspDigest](#ocspdigest) | No  | Yes  | Digest algorithm used for OCSP requests. The default value is **SHA256**.|
+
+## CertValidationParams
+
+Represents the parameters for certificate validation.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability:** SystemCapability.Security.Cert
+
+| Name        | Type                                             | Read-Only| Optional|Description                                  |
+| ------------ | ------------------------------------------------- | ---- | ---- |--------------------------------------|
+| untrustedCerts | Array\<[X509Cert](#x509cert)> | No  | Yes  | Untrusted certificates. The intermediate certificates used only for building a certificate chain cannot be used as trust anchors. Maximum number: 100.|
+| trustedCerts | Array\<[X509Cert](#x509cert)> | No  | Yes  | Trusted certificates. Trusted root certificates or intermediate CA certificates can be specified as trust anchors for verification. Maximum number: 100.<br>During verification, the certificate chain must be traceable back to a trusted certificate. Therefore, either this parameter or **trustSystemCa must** must be set to **true**.|
+| trustSystemCa | boolean | No  | Yes  | Whether to trust system CA certificates. The default value is **false**.<br>**true**: Use the system's prebuilt CA certificate store as the trust anchor.<br>**false**: Do not use the system's prebuilt CA certificate store as the trust anchor.<br>This parameter can be used to verify public website certificates. You do not need to manually configure the root certificate.|
+| partialChain | boolean | No  | Yes  | Whether to allow partial certificate chain verification. The default value is **false**.<br>**true**: Any certificate in the trusted certificate list can be used as the trust anchor, and it is not necessary to trace back to the root certificate.<br>**false**: The root certificate must be traced back to when the certificate chain is constructed.|
+| allowDownloadIntermediateCa | boolean | No  | Yes  | Whether to allow downloading intermediate CA certificates from the network. The default value is **false**.<br>**true**: When the intermediate certificate is missing in the certificate chain, it is allowed to download the issuer certificate using the issuer address in the certificate AIA extension so that the certificate chain is incomplete.<br>**false**: It is not allowed to download the intermediate CA certificate from the network.<br>The download address is obtained from the certificate AIA extension. Only HTTP is supported. To download the certificate from the network, the **ohos.permission.INTERNET** permission is required. For details about permission configuration, see [Declaring Permissions](../../security/AccessToken/declare-permissions.md).|
+| date | string | No  | Yes  | Verification date. The format is *YYMMDDHHMMSSZ* or *YYYYMMDDHHMMSSZ*. The current system time is used by default.<br>The verification time can be customized, which is applicable to scenarios such as offline verification of historical signatures.|
+| validateDate | boolean | No  | Yes  | Whether to verify the date. The default value is **true**. **true**: The certificate and CRL validity periods are verified. **false**: The certificate and CRL validity periods are not verified.|
+| ignoreErrs | Array\<[CertResult](#certresult)> | No  | Yes  | Whether to ignore specific verification errors. Maximum number: 8.<br>The following errors can be ignored: **ERR_CERT_NOT_YET_VALID**, **ERR_CERT_HAS_EXPIRED**, **ERR_UNKNOWN_CRITICAL_EXTENSION**, **ERR_CRL_NOT_FOUND**, **ERR_CRL_NOT_YET_VALID**, **ERR_CRL_HAS_EXPIRED**, **ERR_OCSP_RESPONSE_NOT_FOUND**, and **ERR_NETWORK_TIMEOUT**.|
+| hostnames | Array\<string> | No  | Yes  | Host names. This parameter is used to check whether the subject alternative name (SAN) or common name (CN) of a certificate contains the specified host name. A maximum of 100 host names are supported. Each host name contains a maximum of 128 characters.<br>This parameter is applicable to scenarios such as HTTPS.<br>If one of the host names is matched, the verification is successful.|
+| emailAddresses | Array\<string> | No  | Yes  | Email addresses. This parameter is used to verify that the certificate contains the specified email address. A maximum of one email address is supported. The email address contains a maximum of 128 characters.|
+| keyUsage | Array\<[KeyUsageType](#keyusagetype12)> | No  | Yes  | Key usages. This parameter is used to check whether the key usage extension of the certificate contains the specified usage. Maximum number: 9.<br>The verification is successful only when the certificate contains all specified key usages.|
+| userId | Uint8Array | No  | Yes  | User ID. This parameter is used to specify the user ID required for signature verification when the SM2 certificate is verified. Maximum length: 128 characters.<br>This parameter is commonly set to **[0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38]** for SM certificates, which corresponds to the ASCII string of **1234567812345678** of 16 bytes.<br>After **userId** is set, certificate revocation check is not supported.|
+| revokedParams | [X509CertRevokedParams](#x509certrevokedparams) | No  | Yes  | Certificate revocation check parameters, which are used to check whether a certificate is revoked. The parameters include the CRL list, OCSP response data, and whether to allow online check.|
+
+## CertValidationResult
+
+Represents the certificate verification result.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability:** SystemCapability.Security.Cert
+
+| Name        | Type                                             | Read-Only| Optional|Description                                  |
+| ------------ | ------------------------------------------------- | ---- | ---- |--------------------------------------|
+| certChain | Array\<[X509Cert](#x509cert)> | Yes  | No  | Verified certificate chain. When the verification is successful, a complete certificate chain (from the device certificate to the trust anchor) is returned. It can be used for subsequent certificate information query or other verification operations.|
 
 ## RevocationCheckParameter<sup>12+</sup>
 
 Represents the parameters for checking the certificate revocation status for a certificate chain.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name        | Type                                             | Read-Only| Optional|Description                                  |
 | ------------ | ------------------------------------------------- | ---- | ---- |-------------------------------------- |
 | ocspRequestExtension | Array\<Uint8Array> | No  | Yes  |OCSP request extensions.|
-| ocspResponderURI | string | No  | Yes  |URI of the alternative server used to send OCSP requests. HTTP and HTTPS are supported. The specific configuration is determined via the negotiation with the server.<br>Note: The URI takes effect only for the leaf certificate.|
+| ocspResponderURI | string | No  | Yes  |URI of the alternative server used to send OCSP requests. HTTP and HTTPS are supported. The specific configuration is determined via the negotiation with the server.<br>Note: The current URI takes effect only for entity certificates.|
 | ocspResponderCert | [X509Cert](#x509cert)  | No  | Yes  |Signing certificate used for verifying the signature of the OCSP response.|
 | ocspResponses | Uint8Array | No  | Yes  |Alternative OCSP responses.|
-| crlDownloadURI | string | No  | Yes  |Address used to download the CRLs.<br>Note: The URI takes effect only for the leaf certificate.|
+| crlDownloadURI | string | No  | Yes  |Alternative address used to download the CRLs.<br>Note: The current URI takes effect only for entity certificates.|
 | options | Array\<[RevocationCheckOptions](#revocationcheckoptions12)> | No  | Yes  |A set of rules for obtaining the certificate revocation status.|
-| ocspDigest | string | No  | Yes  |Hash algorithm used to create a certificate ID during OCSP communication. The options **MD5**, **SHA1**, **SHA224**, **SHA256**, **SHA384**, and **SHA512** are supported. The default value is **SHA256**.|
+| ocspDigest | string | No  | Yes  |Hash algorithm used to create a certificate ID during OCSP communication. The options include **MD5**, **SHA1**, **SHA224**, **SHA256**, **SHA384**, and **SHA512**. The default value is **SHA256**.|
 
 ## CertChainValidationParameters<sup>11+</sup>
 
 Represents the parameters for certificate chain validation.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name        | Type                                             | Read-Only| Optional|Description                                  |
 | ------------ | ------------------------------------------------- | ---- | ---- |-------------------------------------- |
-| date         | string                                            | No  | Yes |Validity period of the certificate to validate.<br> **Atomic service API**: This API can be used in atomic services since API version 12.           |
-| trustAnchors | Array\<[X509TrustAnchor](#x509trustanchor11)>     | No  | No  |List of trusted anchors.<br> **Atomic service API**: This API can be used in atomic services since API version 12.                    |
-| trustSystemCa<sup>20+</sup>| boolean | No  | Yes |Whether to use the prebuilt CA certificate to validate the certificate chain. **true** means yes; **false** otherwise.<br> **Atomic service API**: This API can be used in atomic services since API version 20.|
-| allowDownloadIntermediateCa<sup>23+</sup>| boolean | No  | Yes |Whether to allow the application to download the missing intermediate CA certificate from the network.<br>**true** means yes; **false** otherwise. The default value is **false**.<br>The download address is obtained from the certificate AIA extension. Only HTTP is supported. To use the network for download, you need to request the **ohos.permission.INTERNET** permission. For details about the permission configuration, see [Declaring Permissions](../../security/AccessToken/declare-permissions.md).<br> **Atomic service API**: This API can be used in atomic services since API version 23.|
-| certCRLs     | Array\<[CertCRLCollection](#certcrlcollection11)> | No  | Yes |Check whether the certificate is in a CRL.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
-| revocationCheckParam<sup>12+</sup>      | [RevocationCheckParameter](#revocationcheckparameter12) | No  | Yes |Parameters for checking the certificate revocation status online.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
-| policy<sup>12+</sup>     | [ValidationPolicyType](#validationpolicytype12) | No  | Yes |Type of the policy for certificate validation.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
-| sslHostname<sup>12+</sup> | string | No  | Yes |Host name in the certificate to be verified. This parameter must be used with **policy** together.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
-| keyUsage<sup>12+</sup>     | Array\<[KeyUsageType](#keyusagetype12)> | No  | Yes |Usage of the key in the certificate to be validated.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
+| date         | string                                            | No  | Yes |Date used to check the validity of a certificate.<br> **Atomic service API:** This API can be used in atomic services since API version 12.           |
+| trustAnchors | Array\<[X509TrustAnchor](#x509trustanchor11)>     | No  | No  |List of trusted anchors.<br> **Atomic service API:** This API can be used in atomic services since API version 12.                    |
+| trustSystemCa<sup>20+</sup>| boolean | No  | Yes |Whether to trust system CA certificates. The default value is **false**. **true**: Use the system's prebuilt CA certificate store as the trust anchor. **false**: Do not use the system's prebuilt CA certificate store as the trust anchor.<br> **Atomic service API:** This API can be used in atomic services since API version 20.|
+| allowDownloadIntermediateCa<sup>23+</sup>| boolean | No  | Yes |Whether to allow downloading the missing intermediate CA certificate from the network.<br>**true**: yes; **false**: no. The default value is **false**.<br>The download address is obtained from the certificate AIA extension. Only HTTP is supported. To use the network for download, you need to request the ohos.permission.INTERNET permission. For details about the permission configuration, see [Declaring Permissions](../../security/AccessToken/declare-permissions.md).<br> **Atomic service API:** This API can be used in atomic services since API version 23.|
+| certCRLs     | Array\<[CertCRLCollection](#certcrlcollection11)> | No  | Yes |CRLs used to check whether a certificate is revoked.<br> **Atomic service API:** This API can be used in atomic services since API version 12.|
+| revocationCheckParam<sup>12+</sup>      | [RevocationCheckParameter](#revocationcheckparameter12) | No  | Yes |Parameters for checking the certificate revocation status.<br> **Atomic service API:** This API can be used in atomic services since API version 12.|
+| policy<sup>12+</sup>     | [ValidationPolicyType](#validationpolicytype12) | No  | Yes |Type of the policy for certificate validation.<br> **Atomic service API:** This API can be used in atomic services since API version 12.|
+| sslHostname<sup>12+</sup> | string | No  | Yes |Host name in the certificate to be verified. This parameter must be used with **policy** together.<br> **Atomic service API:** This API can be used in atomic services since API version 12.|
+| keyUsage<sup>12+</sup>     | Array\<[KeyUsageType](#keyusagetype12)> | No  | Yes |Usage of the key in the certificate to be validated.<br> **Atomic service API:** This API can be used in atomic services since API version 12.|
 
 
 ## CertChainValidationResult<sup>11+</sup>
 
 Represents the return value of certificate chain validation.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name       | Type                                 | Read-Only| Optional| Description          |
 | ----------- | ------------------------------------- | ---- | ---- | -------------- |
 | trustAnchor | [X509TrustAnchor](#x509trustanchor11) | Yes  | No  | Trust anchor.  |
 | entityCert  | [X509Cert](#x509cert)                 | Yes  | No  | Entity certificate.|
 
-## EncodingBaseFormat<sup>18+</sup>
-
-Enumerates the basic encoding formats.
-
-**Atomic service API**: This API can be used in atomic services since API version 18.
-
-**System capability**: SystemCapability.Security.Cert
-
-| Name| Value| Description              |
-| ---- | --- | ------------------ |
-| PEM  | 0   | PEM.     |
-| DER  | 1   | DER.     |
-
 ## Pkcs12Data<sup>18+</sup>
 
-Represents data of the parsed PKCS #12 (.p12) file.
+Represents the PKCS #12 data, including the private key, certificate, and other certificates.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name        | Type                                             | Read-Only| Optional|Description                                  |
 | ------------ | ------------------------------------------------- | ---- | ---- |-------------------------------------- |
-| privateKey   | string \| Uint8Array                              | No  | Yes  |Private key obtained after the .p12 file is parsed.            |
-| cert         | [X509Cert](#x509cert)                             | No  | Yes  |X.509 certificate obtained after the .p12 file is parsed.                      |
-| otherCerts   | Array\<[X509Cert](#x509cert)>                     | No  | Yes  |Other certificates obtained after the .p12 file is parsed.|
+| privateKey   | string \| Uint8Array                              | No  | Yes  |Private key. The string is in PEM format, and the Uint8Array data is in DER format.            |
+| cert         | [X509Cert](#x509cert)                             | No  | Yes  |Certificate that matches the private key.                      |
+| otherCerts   | Array\<[X509Cert](#x509cert)>                     | No  | Yes  |Other certificates.|
 
 ## Pkcs12ParsingConfig<sup>18+</sup>
 
-Represents the configuration for parsing .p12 files.
+Represents the configuration for parsing PKCS #12 files.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name        | Type                                             |    Read-Only  | Optional| Description                                  |
 | ------------ | ------------------------------------------------- | ---- | ---- |-------------------------------------- |
-| password     | string                                            | No  | No  |Password of the .p12 file.            |
+| password     | string                                            | No  | No  |Password.           |
 | needsPrivateKey  | boolean                                       | No  | Yes  |Whether to obtain the private key. The default value is **true**.<br>**true**: To obtain the private key in PKCS #8 format; **false**: Not to obtain the private key.|
-| privateKeyFormat |  [EncodingBaseFormat](#encodingbaseformat18)                      | No  | Yes  |Format of the private key to be obtained. Currently, the PEM and DER formats are supported. If this parameter is not specified, the PEM format is used by default.<br>**Note**: This parameter is valid only when **needsPrivateKey** is set to **true**.|
+| privateKeyFormat |  [EncodingBaseFormat](#encodingbaseformat18)                      | No  | Yes  |Format of the private key to be obtained. Currently, the PEM and DER formats are supported. If this parameter is not specified, the PEM format is used by default.<br>Note: This parameter is valid only when **needsPrivateKey** is set to **true**.|
 | needsCert    | boolean                                           | No  | Yes  |Whether to obtain the certificate. The default value is **true**. **true**: yes; **false**: no.|
 | needsOtherCerts  | boolean                                       | No  | Yes  |Whether to obtain other certificates. The default value is **false**. **true**: yes; **false**: no.|
 
@@ -482,9 +586,9 @@ Represents the configuration for parsing .p12 files.
 
 Enumerates password-based encryption scheme (PBES) algorithms.
 
-**Atomic service API**: This API can be used in atomic services since API version 21.
+**Atomic service API:** This API can be used in atomic services since API version 21.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name      | Value  | Description         |
 | ----------| -------- | ---------------|
@@ -496,13 +600,13 @@ Enumerates password-based encryption scheme (PBES) algorithms.
 
 Enumerates PBES algorithm parameters. Currently, only PBES2 is supported.
 
-**Atomic service API**: This API can be used in atomic services since API version 21.
+**Atomic service API:** This API can be used in atomic services since API version 21.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name        | Type                                             |    Read-Only  | Optional| Description                                  |
 | ------------ | ------------------------------------------------- | ---- | ---- |-------------------------------------- |
-| saltLen      | number                                            | No  | Yes  |Length of the salt value. The default value is **16**, and the minimum value is **8**.|
+| saltLen      | number                                            | No  | Yes  |Salt length. The default value is **16**, and the minimum value is **8**.|
 | iterations | number                                          | No  | Yes  |Number of iterations. The default value is **2048**.                      |
 | encryptionAlgorithm    | [PbesEncryptionAlgorithm](#pbesencryptionalgorithm21)                 | No  | Yes  |PBES algorithm type. The default value is **AES_256_CBC**.       |
 
@@ -510,9 +614,9 @@ Enumerates PBES algorithm parameters. Currently, only PBES2 is supported.
 
 Enumerates the PKCS #12 MAC digest algorithms.
 
-**Atomic service API**: This API can be used in atomic services since API version 21.
+**Atomic service API:** This API can be used in atomic services since API version 21.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name                                 | Value  | Description                         |
 | --------------------------------------| -------- | -----------------------------|
@@ -522,79 +626,79 @@ Enumerates the PKCS #12 MAC digest algorithms.
 
 ## Pkcs12CreationConfig<sup>21+</sup>
 
-Represents the configuration for creating .p12 files.
+Represents the configuration for creating a PKCS #12 file.
 
-**Atomic service API**: This API can be used in atomic services since API version 21.
+**Atomic service API:** This API can be used in atomic services since API version 21.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name        | Type                                             |    Read-Only  | Optional| Description                                  |
 | ------------ | ------------------------------------------------- | ---- | ---- |-------------------------------------- |
-| password     | string                                            | No  | No  |Password of the .p12 file. The minimum length is 4.            |
+| password     | string                                            | No  | No  |Password of the PKCS #12 file. The minimum length is 4.            |
 | keyEncParams | [PbesParams](#pbesparams21)                       | No  | Yes  |Algorithm parameters for encrypting the private key.                      |
-| encryptCert  | boolean                                           | No  | Yes  |Whether to encrypt the certificate. The default value is **true**. **true** means to encrypt the certificate; **false** otherwise.|
+| encryptCert  | boolean                                           | No  | Yes  |Whether to encrypt the certificate. The default value is **true**. **true**: yes; **false**: no.|
 | certEncParams | [PbesParams](#pbesparams21)                      | No  | Yes  |Algorithm parameters for encrypting the certificate.|
-| macSaltLen   | number                                            | No  | Yes  |Length of the salt value of the P12 MAC. The minimum value is **8**, and the default value is **16**.|
-| macIterations | number                                           | No  | Yes  |Number of P12 MAC iterations. The default value is **2048**.|
-| macDigestAlgorithm | [Pkcs12MacDigestAlgorithm](#pkcs12macdigestalgorithm21) | No  | Yes  |Enumerates the P12 MAC digest algorithms. The default value is **SHA256**.|
+| macSaltLen   | number                                            | No  | Yes  |Salt length of the PKCS #12 MAC algorithm. The minimum value is **8**, and the default value is **16**.|
+| macIterations | number                                           | No  | Yes  |Number of iterations for the PKCS #12 MAC algorithm. The default value is **2048**.|
+| macDigestAlgorithm | [Pkcs12MacDigestAlgorithm](#pkcs12macdigestalgorithm21) | No  | Yes  |PKCS #12 MAC digest algorithm. The default value is **SHA256**.|
 
 ## CmsContentType<sup>18+</sup>
 
 Enumerates the Cryptographic Message Syntax (CMS) message types.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name                                 | Value  | Description                         |
 | --------------------------------------| -------- | -----------------------------|
-| SIGNED_DATA | 0 | Signature data.<br> **Atomic service API**: This API can be used in atomic services since API version 18.|
-| ENVELOPED_DATA<sup>22+</sup>  | 1 | Encapsulated data.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
+| SIGNED_DATA | 0 | Signed data.<br> **Atomic service API:** This API can be used in atomic services since API version 18.|
+| ENVELOPED_DATA<sup>22+</sup>  | 1 | Encapsulated data, including authenticated encapsulated data.<br> **Atomic service API:** This API can be used in atomic services since API version 22.|
 
 ## CmsContentDataFormat<sup>18+</sup>
 
 Enumerates the CMS message formats.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name  | Value| Description                    |
 | ------ | --- | ------------------------ |
-| BINARY | 0   | Binary.    |
-| TEXT   | 1   | Text.      |
+| BINARY | 0   | Binary data format.    |
+| TEXT   | 1   | Text data format.      |
 
 ## CmsFormat<sup>18+</sup>
 
-Enumerates the CMS signature formats.
+Enumerates the CMS encoding formats.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name| Value| Description              |
 | ---- | --- | ------------------ |
-| PEM  | 0   | PEM.     |
+| PEM  | 0   | PEM format.     |
 | DER  | 1   | DER.     |
 
 ## CmsRsaSignaturePadding<sup>22+</sup>
 
 Enumerates the RSA CMS signature padding modes.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name              | Value| Description               |
 |--------------------|----|---------------------|
-| PKCS1_PADDING      | 0  | PKCS #1 padding mode.    |
+| PKCS1_PADDING      | 0  | PKCS #1 v1.5 padding mode.    |
 | PKCS1_PSS_PADDING  | 1  | PKCS #1 PSS padding mode.|
 
 ## CmsKeyAgreeRecipientDigestAlgorithm<sup>22+</sup>
 
 Enumerates the digest algorithms of the CMS KeyAgree type.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name              | Value| Description               |
 |--------------------|----|---------------------|
@@ -604,41 +708,41 @@ Enumerates the digest algorithms of the CMS KeyAgree type.
 
 ## CmsRecipientEncryptionAlgorithm<sup>22+</sup>
 
-Enumerates the symmetric algorithms of the CMS recipient.
+Enumerates the encryption algorithms for CMS-encapsulated data.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name              | Value| Description               |
 |--------------------|----|---------------------|
-| AES_128_CBC      | 0  | AES_128_CBC.    |
-| AES_192_CBC      | 1  | AES_192_CBC.    |
-| AES_256_CBC      | 2  | AES_256_CBC.    |
-| AES_128_GCM      | 3  | AES_128_GCM.    |
-| AES_192_GCM      | 4  | AES_192_GCM.    |
-| AES_256_GCM      | 5  | AES_256_GCM.    |
+| AES_128_CBC      | 0  | AES-128-CBC.    |
+| AES_192_CBC      | 1  | AES-192-CBC.    |
+| AES_256_CBC      | 2  | AES-256-CBC.    |
+| AES_128_GCM      | 3  | AES-128-GCM.    |
+| AES_192_GCM      | 4  | AES-192-GCM.    |
+| AES_256_GCM      | 5  | AES-256-GCM.    |
 
 ## CmsCertType<sup>22+</sup>
 
 Enumerates certificate types obtained from CMS.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name              | Value| Description               |
 |--------------------|----|---------------------|
-| SIGNER_CERTS      | 0  | Signer certificates.    |
+| SIGNER_CERTS      | 0  | Signer certificate.    |
 | ALL_CERTS         | 1  | All certificates.    |
 
 ## PrivateKeyInfo<sup>18+</sup>
 
-Represents the private key information.
+Represents information about the private key.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name        | Type                                             | Read-Only| Optional|Description                                  |
 | ------------ | ------------------------------------------------- | ---- | ---- | -------------------------------------- |
@@ -649,23 +753,23 @@ Represents the private key information.
 
 Represents the configuration of the CMS signer.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name        | Type                                                 |  Read-Only |  Optional |Description                                  |
 | ------------ | ------------------------------------------------- | ---- | ---- |-------------------------------------- |
-| mdName                | string             | No | No |Message digest algorithm, for example, **SHA384**. Currently, **SHA1**, **SHA256**, **SHA384**, and **SHA512** are supported.<br> **Atomic service API**: This API can be used in atomic services since API version 18.               |
-| rsaSignaturePadding<sup>22+</sup>                | [CmsRsaSignaturePadding](#cmsrsasignaturepadding22)             | No | Yes |Padding mode for an RSA signature. The default value is **PKCS1_PADDING**.<br>When this parameter is set to **PKCS1_PSS_PADDING**, **mdName** must be set to **SHA256**, **SHA384**, or **SHA512**.<br> **Note**: This parameter is valid only when the private key type of the signature is RSA.<br> **Atomic service API**: This API can be used in atomic services since API version 22.            |
-| addCert               | boolean            | No  | Yes |Whether to add a certificate. The default value is **true**. **true**: yes; **false**: no.<br> **Atomic service API**: This API can be used in atomic services since API version 18.                           |
-| addAttr               | boolean            | No  | Yes|Whether to add the signature attribute. The default value is **true**. **true**: yes; **false**: no.<br> **Atomic service API**: This API can be used in atomic services since API version 18.          |
-| addSmimeCapAttr       | boolean            | No  | Yes |Whether to add the SMIME capability to the CMS object. The default value is **true**. **true**: yes; **false**: no.<br> **Atomic service API**: This API can be used in atomic services since API version 18.           |
+| mdName                | string             | No | No |Message digest algorithm, for example, **SHA384**. Currently, **SHA1**, **SHA256**, **SHA384**, and **SHA512** are supported.<br> **Atomic service API:** This API can be used in atomic services since API version 18.               |
+| rsaSignaturePadding<sup>22+</sup>                | [CmsRsaSignaturePadding](#cmsrsasignaturepadding22)             | No | Yes |Padding mode for an RSA signature. The default value is **PKCS1_PADDING**.<br>When this parameter is set to **PKCS1_PSS_PADDING**, **mdName** must be set to **SHA256**, **SHA384**, or **SHA512**.<br> Note: This parameter is valid only when the signer private key is an RSA key.<br> **Atomic service API:** This API can be used in atomic services since API version 22.            |
+| addCert               | boolean            | No  | Yes |Whether to add a certificate. The default value is **true**. **true**: yes; **false**: no.<br> **Atomic service API:** This API can be used in atomic services since API version 18.                           |
+| addAttr               | boolean            | No  | Yes|Whether to add the signature attribute. The default value is **true**. **true**: yes; **false**: no.<br> **Atomic service API:** This API can be used in atomic services since API version 18.          |
+| addSmimeCapAttr       | boolean            | No  | Yes |Whether to add the S/MIME capability for CMS objects. The default value is **true**. **true**: yes; **false**: no.<br> **Atomic service API:** This API can be used in atomic services since API version 18.           |
 
 ## CmsKeyTransRecipientInfo<sup>22+</sup>
 
-Represents KeyTrans recipient information encapsulated in CMS data.
+Represents the recipient information for key transport encapsulated using CMS.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name                 | Type                         | Read-Only| Optional|Description         |
 | --------------------- | ----------------------------- | ---- | ---- |------------- |
@@ -673,11 +777,11 @@ Represents KeyTrans recipient information encapsulated in CMS data.
 
 ## CmsKeyAgreeRecipientInfo<sup>22+</sup>
 
-Represents KeyAgree recipient information encapsulated in CMS data.
+Represents the recipient information for key agreement encapsulated using CMS.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name                 | Type                         | Read-Only| Optional|Description            |
 | --------------------- | ----------------------------- | ---- | ---- |--------------- |
@@ -686,81 +790,81 @@ Represents KeyAgree recipient information encapsulated in CMS data.
 
 ## CmsRecipientInfo<sup>22+</sup>
 
-Represents recipient information encapsulated in CMS data.
+Represents the recipient information encapsulated using CMS.
 
 > **NOTE**
 >
-> At least one recipient needs to be set.
+> At least one recipient must be set.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name                 | Type                         | Read-Only| Optional|Description                                                  |
 | --------------------- | ----------------------------- | ---- | ---- |------------------------------------------------------ |
-| keyTransInfo     | [CmsKeyTransRecipientInfo](#cmskeytransrecipientinfo22)               | No  | Yes  |KeyTrans recipient information.  |
-| keyAgreeInfo             | [CmsKeyAgreeRecipientInfo](#cmskeyagreerecipientinfo22)                          | No  |Yes  | keyAgree recipient information.        |
+| keyTransInfo     | [CmsKeyTransRecipientInfo](#cmskeytransrecipientinfo22)               | No  | Yes  |Recipient information for key transport.  |
+| keyAgreeInfo             | [CmsKeyAgreeRecipientInfo](#cmskeyagreerecipientinfo22)                          | No  |Yes  | Recipient information for key agreement.        |
 
 ## CmsGeneratorOptions<sup>18+</sup>
 
-Represents the configuration for generating the CMS signing result.
+Represents the configuration for generating a CMS message.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name                 | Type                         | Read-Only| Optional|Description                                                  |
 | --------------------- | ----------------------------- | ---- | ---- |------------------------------------------------------ |
 | contentDataFormat     | [CmsContentDataFormat](#cmscontentdataformat18)               | No  | Yes  |Format of the content. The default value is **CmsContentDataFormat.BINARY**.  |
 | outFormat             | [CmsFormat](#cmsformat18)                          | No  |Yes  | Format of the CMS data generated. The default value is **DER**.        |
-| isDetached     | boolean                            | No  |Yes  | Whether the final CMS data does not contain the raw data. The default value is **false**. **true**: raw data is contained; **false**: raw data is not contained.        |
+| isDetached     | boolean                            | No  |Yes  | Whether the CMS data generated contains raw data. The default value is **false**. **true**: yes; **false**: no.        |
 
 ## CmsVerificationConfig<sup>22+</sup>
 
-Represents CMS verification configuration.
+CMS signature verification configuration.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name                 | Type                         | Read-Only| Optional|Description                                                  |
 | --------------------- | ----------------------------- | ---- | ---- |------------------------------------------------------ |
-| trustCerts        |Array\<[X509Cert](#x509cert)>                        | No  | No  |Trust certificate.<br> Note: You need to configure the trust certificates of all signers.  |
-| signerCerts       |Array\<[X509Cert](#x509cert)>                        | No  | Yes  |Signing certificate. This parameter is left empty by default.        |
-| contentData       |Uint8Array                                           | No  | Yes  |Content data. If the detached mode is used, you need to specify the plaintext data. This parameter can be left empty in attached mode.  |
+| trustCerts        |Array\<[X509Cert](#x509cert)>                        | No  | No  |Trust certificate.<br> Note: You need to configure the trust certificates for all signers.  |
+| signerCerts       |Array\<[X509Cert](#x509cert)>                        | No  | Yes  |Signer certificate. This parameter is left empty by default.        |
+| contentData       |Uint8Array                                           | No  | Yes  |Content data. If the detached mode is used, you need to specify the plaintext data. This parameter is optional in attached mode.  |
 | contentDataFormat | [CmsContentDataFormat](#cmscontentdataformat18)     | No  | Yes  |Format of the content. The default value is **CmsContentDataFormat.BINARY**.  |
 
 ## CmsEnvelopedDecryptionConfig<sup>22+</sup>
 
-Represents CMS decapsulation configuration.
+Represents configuration for decapsulation with CMS.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name                    | Type                         | Read-Only| Optional|Description                                                  |
 | -----------------------  | ----------------------------- | ---- | ---- |------------------------------------------------------ |
 | keyInfo                  |[PrivateKeyInfo](#privatekeyinfo18)             | No  | Yes  |Private key parameter. This parameter is left empty by default.  |
 | cert                     |[X509Cert](#x509cert)                           | No  | Yes  |Public key certificate. This parameter is left empty by default. |
-| encryptedContentData     |Uint8Array                                       | No  | Yes  |Encrypted content data used when the CMS does not contain the specified data. This parameter is left empty by default.  |
+| encryptedContentData     |Uint8Array                                       | No  | Yes  |Encrypted content data. If the CMS does not contain content data, you can specify the data. This parameter is left empty by default.  |
 | contentDataFormat        |[CmsContentDataFormat](#cmscontentdataformat18)  | No  | Yes  |Format of the content. The default value is **CmsContentDataFormat.BINARY**.  |
 
 ## cert.createX509Cert
 
 createX509Cert(inStream : EncodingBlob, callback : AsyncCallback\<X509Cert>) : void
 
-Creates an **X509Cert** instance. This API uses an asynchronous callback to return the result.
+Creates an X.509 certificate object. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                                 | Mandatory| Description                      |
 | -------- | ------------------------------------- | ---- | -------------------------- |
 | inStream | [EncodingBlob](#encodingblob)         | Yes  | X.509 certificate serialization data.        |
-| callback | AsyncCallback\<[X509Cert](#x509cert)> | Yes  | Callback invoked to return the **X509Cert** instance created.|
+| callback | AsyncCallback\<[X509Cert](#x509cert)> | Yes  | Callback used to return the result. If the X.509 certificate object is successfully created, **err** is **undefined**, and **data** is the **X509Cert** instance obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -768,10 +872,10 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 801 | this operation is not supported. |
-| 19020001 | memory malloc failed. |
-| 19030001 | crypto operation error.      |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | This operation is not supported. |
+| 19020001 | Memory malloc failed. |
+| 19030001 | Crypto operation error.      |
 
 **Example**
 
@@ -804,7 +908,7 @@ let encodingBlob: cert.EncodingBlob = {
   encodingFormat: cert.EncodingFormat.FORMAT_PEM
 };
 
-cert.createX509Cert(encodingBlob, (error, x509Cert) => {
+cert.createX509Cert(encodingBlob, (error, _x509Cert) => {
   if (error) {
     console.error(`createX509Cert failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
@@ -817,11 +921,11 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 createX509Cert(inStream : EncodingBlob) : Promise\<X509Cert>
 
-Creates an **X509Cert** instance. This API uses a promise to return the result.
+Creates an X.509 certificate object. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -833,7 +937,7 @@ Creates an **X509Cert** instance. This API uses a promise to return the result.
 
 | Type    | Description            |
 | ------- | ---------------- |
-| Promise\<[X509Cert](#x509cert)> | Returns the **X509Cert** instance created.|
+| Promise\<[X509Cert](#x509cert)> | Promise that returns the **X509Cert** instance created.|
 
 **Error codes**
 
@@ -841,10 +945,10 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 801 | this operation is not supported. |
-| 19020001 | memory malloc failed. |
-| 19030001 | crypto operation error.      |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | This operation is not supported. |
+| 19020001 | Memory malloc failed. |
+| 19030001 | Crypto operation error.      |
 
 **Example**
 
@@ -878,7 +982,7 @@ let encodingBlob: cert.EncodingBlob = {
   encodingFormat: cert.EncodingFormat.FORMAT_PEM
 };
 
-cert.createX509Cert(encodingBlob).then(x509Cert => {
+cert.createX509Cert(encodingBlob).then(_x509Cert => {
   console.info('createX509Cert result: success.');
 }).catch((error: BusinessError) => {
   console.error(`createX509Cert failed, errCode: ${error.code}, errMsg: ${error.message}`);
@@ -887,7 +991,7 @@ cert.createX509Cert(encodingBlob).then(x509Cert => {
 
 ## X509Cert
 
-Provides APIs for X.509 certificate operations.
+Provides APIs for operations on X.509 certificates.
 
 ### verify
 
@@ -895,16 +999,16 @@ verify(key : cryptoFramework.PubKey, callback : AsyncCallback\<void>) : void
 
 Verifies the certificate signature. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                 | Mandatory| Description                                                        |
 | -------- | --------------------- | ---- | ------------------------------------------------------------ |
 | key      | [cryptoFramework.PubKey](../apis-crypto-architecture-kit/js-apis-cryptoFramework.md#pubkey) | Yes  | Public key used for signature verification.                                          |
-| callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If **error** is **null**, the signature verification is successful. If **error** is not **null**, the signature verification fails.|
+| callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If signature verification is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -912,8 +1016,8 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message          |
 | -------- | ------------------ |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19030001 | crypto operation error.      |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19030001 | Crypto operation error.      |
 
 **Example**
 
@@ -943,7 +1047,7 @@ let certData = '-----BEGIN CERTIFICATE-----\n' +
 
 let encodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(certData),
-  // Assign a value based on the encodingData format. FORMAT_PEM and FORMAT_DER are supported.
+  // Assign a value based on the encodingBlob format. FORMAT_PEM and FORMAT_DER are supported.
   encodingFormat: cert.EncodingFormat.FORMAT_PEM
 };
 
@@ -958,7 +1062,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
       let pubKey = x509Cert.getPublicKey();
 
       // Verify the certificate signature.
-      x509Cert.verify(pubKey, (err, data) => {
+      x509Cert.verify(pubKey, (err, _data) => {
         if (err) {
           console.error(`verify failed, errCode: ${err.code}, errMsg: ${err.message}`);
         } else {
@@ -979,9 +1083,9 @@ verify(key : cryptoFramework.PubKey) : Promise\<void>
 
 Verifies the certificate signature. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -993,7 +1097,7 @@ Verifies the certificate signature. This API uses a promise to return the result
 
 | Type          | Description       |
 | -------------- | ----------- |
-| Promise\<void> | Promise used to return the result.|
+| Promise\<void> | Promise that returns no value.|
 
 **Error codes**
 
@@ -1001,8 +1105,8 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message          |
 | -------- | ------------------ |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19030001 | crypto operation error.      |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19030001 | Crypto operation error.      |
 
 **Example**
 
@@ -1042,7 +1146,7 @@ cert.createX509Cert(encodingBlob).then(x509Cert => {
   try {
     // Obtain PubKey by using getPublicKey() of the upper-level X509Cert object (or the current certificate object is a self-signed certificate).
     let pubKey = x509Cert.getPublicKey();
-    x509Cert.verify(pubKey).then(result => {
+    x509Cert.verify(pubKey).then(_result => {
       console.info('verify result: success.');
     }).catch((error: BusinessError) => {
       console.error(`verify failed, errCode: ${error.code}, errMsg: ${error.message}`);
@@ -1061,15 +1165,15 @@ getEncoded(callback : AsyncCallback\<EncodingBlob>) : void
 
 Obtains the serialized X.509 certificate data. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                                         | Mandatory| Description                            |
 | -------- | --------------------------------------------- | ---- | -------------------------------- |
-| callback | AsyncCallback\<[EncodingBlob](#encodingblob)> | Yes  | Callback invoked to return the serialized X.509 certificate data obtained.|
+| callback | AsyncCallback\<[EncodingBlob](#encodingblob)> | Yes  | Callback used to return the result. If the serialized X.509 certificate data is successfully obtained, **err** is **undefined**, and **data** is the serialized X.509 certificate data obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -1077,10 +1181,10 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
-| 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
-| 19030001 | crypto operation error.|
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+| 19020001 | Memory malloc failed.                                     |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
+| 19030001 | Crypto operation error.|
 
 **Example**
 
@@ -1118,7 +1222,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
     console.error(`createX509Cert failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
     console.info('createX509Cert result: success.');
-    x509Cert.getEncoded((error, data) => {
+    x509Cert.getEncoded((error, _data) => {
       if (error) {
         console.error(`getEncoded failed, errCode: ${error.code}, errMsg: ${error.message}`);
       } else {
@@ -1135,15 +1239,15 @@ getEncoded() : Promise\<EncodingBlob>
 
 Obtains the serialized X.509 certificate data. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                                   | Description                  |
 | --------------------------------------- | ---------------------- |
-| Promise\<[EncodingBlob](#encodingblob)> | Serialized X.509 certificate data obtained.|
+| Promise\<[EncodingBlob](#encodingblob)> | Promise used to return the serialized X.509 certificate data.|
 
 **Error codes**
 
@@ -1151,10 +1255,10 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
-| 19030001 | crypto operation error.|
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed.                                     |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
+| 19030001 | Crypto operation error.|
 
 **Example**
 
@@ -1190,7 +1294,7 @@ let encodingBlob: cert.EncodingBlob = {
 };
 cert.createX509Cert(encodingBlob).then(x509Cert => {
   console.info('createX509Cert result: success.');
-  x509Cert.getEncoded().then(result => {
+  x509Cert.getEncoded().then(_result => {
     console.info('getEncoded result: success.');
   }).catch((error: BusinessError) => {
     console.error(`getEncoded failed, errCode: ${error.code}, errMsg: ${error.message}`);
@@ -1204,11 +1308,11 @@ cert.createX509Cert(encodingBlob).then(x509Cert => {
 
 getPublicKey() : cryptoFramework.PubKey
 
-Obtains the public key of this X.509 certificate.
+Obtains the public key of the X.509 certificate.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -1222,8 +1326,8 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 19020001 | memory malloc failed.                                     |
-| 19030001 | crypto operation error.|
+| 19020001 | Memory malloc failed.                                     |
+| 19030001 | Crypto operation error.|
 
 **Example**
 
@@ -1263,7 +1367,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
   } else {
     console.info('createX509Cert result: success.');
     try {
-      let pubKey = x509Cert.getPublicKey();
+      x509Cert.getPublicKey();
     } catch (error) {
       let e: BusinessError = error as BusinessError;
       console.error(`getPublicKey failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -1276,17 +1380,17 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 checkValidityWithDate(date: string) : void
 
-Checks the validity period of this X.509 certificate.
+Checks the validity period of the X.509 certificate.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type           | Mandatory| Description       |
 | -------- | -------------- | ---- | ---------- |
-| date     | string         | Yes  | Date in the ASN.1 format.|
+| date     | string         | Yes  | Date, in **ASN.1 UTCTime** or **GeneralizedTime** format.|
 
 **Error codes**
 
@@ -1294,11 +1398,11 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed.                                     |
-| 19030001 | crypto operation error.|
-| 19030003 | the certificate has not taken effect.                                     |
-| 19030004 | the certificate has expired.|
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed.                                     |
+| 19030001 | Crypto operation error.|
+| 19030003 | The certificate has not taken effect.                                     |
+| 19030004 | The certificate has expired.|
 
 **Example**
 
@@ -1356,9 +1460,9 @@ getVersion() : number
 
 Obtains the X.509 certificate version.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -1402,6 +1506,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
   } else {
     console.info('createX509Cert result: success.');
     let version = x509Cert.getVersion();
+    console.info('version = ' + version);
   }
 });
 ```
@@ -1416,7 +1521,7 @@ Obtains the X.509 certificate serial number.
 >
 > This API is supported since API version 9 and deprecated since API version 10. Use [getCertSerialNumber](#getcertserialnumber10) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -1461,6 +1566,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
   } else {
     console.info('createX509Cert result: success.');
     let serialNumber = x509Cert.getSerialNumber();
+    console.info('serialNumber = ' + serialNumber);
   }
 });
 ```
@@ -1471,9 +1577,9 @@ getCertSerialNumber() : bigint
 
 Obtains the X.509 certificate serial number.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -1487,7 +1593,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
 
 **Example**
 
@@ -1528,6 +1634,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
     console.info('createX509Cert result: success.');
     try {
       let serialNumber = x509Cert.getCertSerialNumber();
+      console.info('serialNumber = ' + serialNumber);
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`getCertSerialNumber failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -1540,21 +1647,23 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getIssuerName() : DataBlob
 
-Obtains the X.509 certificate issuer.
+Obtains the X.509 certificate issuer name.
 
 > **NOTE**
 >
-> The obtained X.509 certificate issuer name contains a string terminator.
+> The obtained X.509 certificate issuer name ends with a null terminator (with the value of **0**). Determine whether to remove the terminator based on service requirements.
+>
+> The obtained certificate issuer name is encoded in ASCII. After being converted into a string, the name starts with a slash (/), followed by a string of distinguished names separated by slashes (/).
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                 | Description                  |
 | --------------------- | ---------------------- |
-| [DataBlob](#datablob) | X.509 certificate issuer obtained.|
+| [DataBlob](#datablob) | X.509 certificate issuer name obtained.|
 
 **Error codes**
 
@@ -1562,9 +1671,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
-| 19030001 | crypto operation error.|
+| 19020001 | Memory malloc failed.                                     |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
+| 19030001 | Crypto operation error.|
 
 **Example**
 
@@ -1605,6 +1714,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
     console.info('createX509Cert result: success.');
     try {
       let issuerName = x509Cert.getIssuerName();
+      console.info('issuerName = ' + issuerName.data);
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`getIssuerName failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -1617,11 +1727,11 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getIssuerName(encodingType: EncodingType): string
 
-Obtains the issuer name of an X.509 certificate based on the encoding type.
+Obtains the X.509 certificate issuer name based on the encoding type.
 
-**Atomic service API**: This API can be used in atomic services since API version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -1641,10 +1751,10 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
-| 19020003 | parameter check failed. Possible causes: <br>1. The value of encodingType is not in the EncodingType enumeration range.|
-| 19030001 | crypto operation error.|
+| 19020001 | Memory malloc failed.                                     |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
+| 19020003 | Parameter check failed. Possible causes: <br>1. The value of encodingType is not in the EncodingType enumeration range.|
+| 19030001 | Crypto operation error.|
 
 **Example**
 
@@ -1710,27 +1820,31 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getSubjectName(encodingType?: EncodingType) : DataBlob
 
-Obtains the subject of this X.509 certificate.
+Obtains the X.509 certificate subject name.
 
 > **NOTE**
 >
-> The obtained X.509 certificate subject name contains a string terminator.
+> If **encodingType** is not set, the obtained certificate subject name ends with a null terminator (with the value of **0**). Determine whether to remove the terminator based on service requirements.
+> 
+> If **encodingType** is not set, the obtained certificate subject name is encoded in ASCII. After being converted into a string, the name starts with a slash (/), followed by a string of distinguished names separated by slashes (/).
+> 
+> You are advised to set **encodingType** to **EncodingType.ENCODING_UTF8**. In this case, the obtained certificate subject name is a string of distinguished names separated by commas (,).
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                                 | Mandatory| Description                          |
 | -------- | ------------------------------------- | ---- | ------------------------------ |
-| encodingType | [EncodingType](#encodingtype12)     | No  |  Encoding type. If this parameter is set, the subject name in UTF-8 format is to be obtained. If this parameter is not set, the subject name in ASCII encoding format is obtained by default.<br>This parameter is available since API version 12. |
+| encodingType | [EncodingType](#encodingtype12)     | No  |  Encoding type. The value is UTF-8. If this parameter is not set, ASCII encoding is used by default.<br>This parameter can be set in versions later than API version 12. |
 
 **Return value**
 
 | Type                 | Description                |
 | --------------------- | -------------------- |
-| [DataBlob](#datablob) | Subject name of an X.509 certificate, separated by commas (,) after being converted into a string.|
+| [DataBlob](#datablob) | Subject name of the X.509 certificate.|
 
 **Error codes**
 
@@ -1738,10 +1852,10 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401 | invalid parameters.  Possible causes: <br>1. Incorrect parameter types;<br>2. Parameter verification failed.           |
-| 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
-| 19030001 | crypto operation error.|
+| 401 | Invalid parameters.  Possible causes: <br>1. Incorrect parameter types;<br>2. Parameter verification failed. <br>Applicable versions: 12 and later         |
+| 19020001 | Memory malloc failed.                                     |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
+| 19030001 | Crypto operation error.|
 
 **Example**
 
@@ -1782,12 +1896,14 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
     console.info('createX509Cert result: success.');
     try {
       let subjectName = x509Cert.getSubjectName();
+      console.info('subjectName = ' + subjectName.data);
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`getSubjectName failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
     try {
       let subjectNameutf8 = x509Cert.getSubjectName(cert.EncodingType.ENCODING_UTF8);
+      console.info('subjectNameutf8 = ' + subjectNameutf8.data);
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`getSubjectNameUtf8 failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -1800,17 +1916,17 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getNotBeforeTime() : string
 
-Obtains the start time of this X.509 certificate.
+Obtains the start time of the X.509 certificate.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type  | Description                                                        |
 | ------ | ------------------------------------------------------------ |
-| string | Certificate start time obtained, in ASN.1 format.|
+| string | X.509 certificate effective time, in **ASN.1 UTCTime** or **GeneralizedTime** format.|
 
 **Error codes**
 
@@ -1818,9 +1934,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
-| 19030001 | crypto operation error.|
+| 19020001 | Memory malloc failed.                                     |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
+| 19030001 | Crypto operation error.|
 
 **Example**
 
@@ -1861,6 +1977,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
     console.info('createX509Cert result: success.');
     try {
       let notBefore = x509Cert.getNotBeforeTime();
+      console.info('notBefore = ' + notBefore);
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`getNotBeforeTime failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -1873,17 +1990,17 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getNotAfterTime() : string
 
-Obtains the expiration time of this X.509 certificate.
+Obtains the expiration time of the X.509 certificate.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type  | Description                                                        |
 | ------ | ------------------------------------------------------------ |
-| string | Certificate expiration time obtained, in ASN.1 format.|
+| string | X.509 certificate expiration time, in **ASN.1 UTCTime** or **GeneralizedTime** format.|
 
 **Error codes**
 
@@ -1891,15 +2008,14 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
-| 19030001 | crypto operation error.|
+| 19020001 | Memory malloc failed.                                     |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
+| 19030001 | Crypto operation error.|
 
 **Example**
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
-
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // Convert the string into a Uint8Array.
@@ -1935,6 +2051,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
     console.info('createX509Cert result: success.');
     try {
       let notAfter = x509Cert.getNotAfterTime();
+      console.info('notAfter = ' + notAfter);
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`getNotAfterTime failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -1947,17 +2064,17 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getSignature() : DataBlob
 
-Obtains the signature data of this X.509 certificate.
+Obtains the signature data of the X.509 certificate.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                 | Description                |
 | --------------------- | -------------------- |
-| [DataBlob](#datablob) | Signature data obtained.|
+| [DataBlob](#datablob) | Indicates the X.509 certificate signature data.|
 
 **Error codes**
 
@@ -1965,15 +2082,14 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
-| 19030001 | crypto operation error.|
+| 19020001 | Memory malloc failed.                                     |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
+| 19030001 | Crypto operation error.|
 
 **Example**
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
-
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // Convert the string into a Uint8Array.
@@ -2009,6 +2125,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
     console.info('createX509Cert result: success.');
     try {
       let signature = x509Cert.getSignature();
+      console.info('signature = ' + signature.data);
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`getSignature failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -2021,17 +2138,17 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getSignatureAlgName() : string
 
-Obtains the signing algorithm of this X.509 certificate.
+Obtains the name of the X.509 certificate signature algorithm.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type  | Description                    |
 | ------ | ------------------------ |
-| string | X.509 certificate signing algorithm obtained.|
+| string | Name of the X.509 certificate signature algorithm obtained.|
 
 **Error codes**
 
@@ -2039,15 +2156,14 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
-| 19030001 | crypto operation error.|
+| 19020001 | Memory malloc failed.                                     |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
+| 19030001 | Crypto operation error.|
 
 **Example**
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
-
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // Convert the string into a Uint8Array.
@@ -2083,6 +2199,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
     console.info('createX509Cert result: success.');
     try {
       let sigAlgName = x509Cert.getSignatureAlgName();
+      console.info('sigAlgName = ' + sigAlgName);
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`getSignatureAlgName failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -2095,17 +2212,17 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getSignatureAlgOid() : string
 
-Obtains the object identifier (OID) of the X.509 certificate signing algorithm. OIDs are allocated by the International Organization for Standardization (ISO).
+Obtains the object identifier (OID) of the X.509 certificate signature algorithm. OIDs are allocated by the ISO.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type  | Description                             |
 | ------ | --------------------------------- |
-| string | OID obtained. It will be truncated if the length exceeds 128 bytes.|
+| string | OID obtained. It will be truncated if the length exceeds 127 bytes.|
 
 **Error codes**
 
@@ -2113,9 +2230,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
-| 19030001 | crypto operation error.|
+| 19020001 | Memory malloc failed.                                     |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
+| 19030001 | Crypto operation error.|
 
 **Example**
 
@@ -2156,6 +2273,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
     console.info('createX509Cert result: success.');
     try {
       let sigAlgOid = x509Cert.getSignatureAlgOid();
+      console.info('sigAlgOid = ' + sigAlgOid);
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`getSignatureAlgOid failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -2168,17 +2286,17 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getSignatureAlgParams() : DataBlob
 
-Obtains the signing algorithm parameters of this X.509 certificate.
+Obtains parameters of the X.509 certificate signature algorithm.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                 | Description                    |
 | --------------------- | ------------------------ |
-| [DataBlob](#datablob) | X.509 certificate signing algorithm parameters obtained.|
+| [DataBlob](#datablob) | Parameters of the X.509 certificate signature algorithm obtained.|
 
 **Error codes**
 
@@ -2186,10 +2304,10 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 801 | this operation is not supported. |
-| 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
-| 19030001 | crypto operation error.|
+| 801 | This operation is not supported. |
+| 19020001 | Memory malloc failed.                                     |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
+| 19030001 | Crypto operation error.|
 
 **Example**
 
@@ -2245,6 +2363,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
     console.info('createX509Cert result: success.');
     try {
       let sigAlgParams = x509Cert.getSignatureAlgParams();
+      console.info('sigAlgParams = ' + sigAlgParams.data);
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`getSignatureAlgParams failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -2259,15 +2378,15 @@ getKeyUsage() : DataBlob
 
 Obtains the key usage of this X.509 certificate.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                 | Description                |
 | --------------------- | -------------------- |
-| [DataBlob](#datablob) | Key usage of the X.509 certificate obtained.|
+| [DataBlob](#datablob) | Usage of the X.509 certificate key.|
 
 **Error codes**
 
@@ -2275,8 +2394,8 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 19020001 | memory malloc failed.                                    |
-| 19030001 | crypto operation error.|
+| 19020001 | Memory malloc failed.                                    |
+| 19030001 | Crypto operation error.|
 
 **Example**
 
@@ -2327,6 +2446,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
     console.info('createX509Cert result: success.');
     try {
       let keyUsage = x509Cert.getKeyUsage();
+      console.info('keyUsage = ' + keyUsage.data);
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`getKeyUsage failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -2341,9 +2461,9 @@ getExtKeyUsage() : DataArray
 
 Obtains the usage of the extended key of this X.509 certificate.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -2357,9 +2477,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
-| 19030001 | crypto operation error.|
+| 19020001 | Memory malloc failed.                                     |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
+| 19030001 | Crypto operation error.|
 
 **Example**
 
@@ -2411,6 +2531,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
     console.info('createX509Cert result: success.');
     try {
       let extKeyUsage = x509Cert.getExtKeyUsage();
+      console.info('extKeyUsage = ' + extKeyUsage.data);
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`getExtKeyUsage failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -2423,11 +2544,11 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getBasicConstraints() : number
 
-Obtains the basic constraints for obtaining this X.509 certificate.
+Obtains basic constraints on the X.509 certificate.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -2472,6 +2593,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
   } else {
     console.info('createX509Cert result: success.');
     let basicConstraints = x509Cert.getBasicConstraints();
+    console.info('basicConstraints = ' + basicConstraints);
   }
 });
 ```
@@ -2480,21 +2602,21 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getSubjectAltNames() : DataArray
 
-Obtains the Subject Alternative Names (SANs) of this X.509 certificate.
+Obtains the alternative subject names of the X.509 certificate.
 
 > **NOTE**
 >
-> The obtained SANs contain a string terminator.
+> The obtained alternative subject names of the X.509 certificate contain a string terminator.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                   | Description                    |
 | ----------------------- | ------------------------ |
-| [DataArray](#dataarray) | SANs obtained.|
+| [DataArray](#dataarray) | Alternative subject names of the X.509 certificate obtained.|
 
 **Error codes**
 
@@ -2502,9 +2624,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
-| 19030001 | crypto operation error.|
+| 19020001 | Memory malloc failed.                                     |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
+| 19030001 | Crypto operation error.|
 
 **Example**
 
@@ -2556,6 +2678,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
     console.info('createX509Cert result: success.');
     try {
       let subjectAltNames = x509Cert.getSubjectAltNames();
+      console.info('subjectAltNames = ' + subjectAltNames.data);
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`getSubjectAltNames failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -2568,21 +2691,21 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 getIssuerAltNames() : DataArray
 
-Obtains the Issuer Alternative Names (IANs) of this X.509 certificate.
+Obtains the alternative issuer names of the X509 certificate.
 
 > **NOTE**
 >
-> The obtained IANs contain a string terminator.
+> The obtained alternative issuer names of the X509 certificate contain a string terminator.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                   | Description                      |
 | ----------------------- | -------------------------- |
-| [DataArray](#dataarray) | IANs obtained.|
+| [DataArray](#dataarray) | Alternative issuer names of the X509 certificate obtained.|
 
 **Error codes**
 
@@ -2590,9 +2713,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
-| 19030001 | crypto operation error.|
+| 19020001 | Memory malloc failed.                                     |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
+| 19030001 | Crypto operation error.|
 
 **Example**
 
@@ -2642,6 +2765,7 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
     console.info('createX509Cert result: success.');
     try {
       let issuerAltNames = x509Cert.getIssuerAltNames();
+      console.info('issuerAltNames = ' + issuerAltNames.data);
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`getIssuerAltNames failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -2656,9 +2780,9 @@ getItem(itemType: CertItemType) : DataBlob
 
 Obtains the fields in the X.509 certificate.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -2678,10 +2802,10 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -2722,7 +2846,9 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
     console.info('createX509Cert result: success.');
     try {
       let tbs = x509Cert.getItem(cert.CertItemType.CERT_ITEM_TYPE_TBS);
+      console.info('tbs = ' + tbs.data);
       let pubKey = x509Cert.getItem(cert.CertItemType.CERT_ITEM_TYPE_PUBLIC_KEY);
+      console.info('pubKey = ' + pubKey.data);
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`getItem failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -2734,11 +2860,11 @@ cert.createX509Cert(encodingBlob, (error, x509Cert) => {
 
 match(param: X509CertMatchParameters): boolean
 
-Checks whether this certificate matches the specified parameters.
+Checks whether the certificate matches the input parameters.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -2758,9 +2884,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed. |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed. |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -2778,7 +2904,7 @@ function stringToUint8Array(str: string): Uint8Array {
 }
 
 async function createX509Cert(): Promise<cert.X509Cert> {
-  let certData =  '-----BEGIN CERTIFICATE-----\n' +
+  let certData = '-----BEGIN CERTIFICATE-----\n' +
   'MIIDTTCCAjWgAwIBAgIBAzANBgkqhkiG9w0BAQsFADASMRAwDgYDVQQDDAdSb290\n' +
   'IENBMB4XDTI0MDMxOTAyMDM1NFoXDTM0MDMxNzAyMDM1NFowETEPMA0GA1UEAwwG\n' +
   'ZGV2aWNlMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuoGk2J0aKWTP\n' +
@@ -2826,6 +2952,7 @@ async function matchX509Cert() {
       publicKeyAlgID: '1.2.840.113549.1.1.1'
     };
     const result = x509Cert.match(param);
+    console.info('result = ' + result);
     console.info('call x509Cert match result: success.');
   } catch (err) {
     let e: BusinessError = err as BusinessError;
@@ -2838,11 +2965,11 @@ async function matchX509Cert() {
 
 getCRLDistributionPoint(): DataArray
 
-Obtains the CRL distribution points of this X.509 certificate.
+Obtains URIs of the distribution points for this X.509 CRL.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -2856,9 +2983,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -2902,6 +3029,7 @@ async function certGetCRLDistributionPoint() {
     x509Cert = await cert.createX509Cert(encodingBlob);
     console.info('createX509Cert result: success.');
     let point = x509Cert.getCRLDistributionPoint();
+    console.info('point = ' + point.data);
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error(`createX509Cert failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -2913,17 +3041,17 @@ async function certGetCRLDistributionPoint() {
 
 getIssuerX500DistinguishedName(): X500DistinguishedName
 
-Obtains the distinguished name (DN) of the X.509 certificate issuer.
+Obtains the X.500 distinguished name of the X.509 certificate issuer.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                 | Description                                     |
 | --------------------- | ----------------------------------------- |
-| [X500DistinguishedName](#x500distinguishedname12) | DN object obtained.|
+| [X500DistinguishedName](#x500distinguishedname12) | X.500 distinguished object.|
 
 **Error codes**
 
@@ -2931,9 +3059,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -2972,7 +3100,7 @@ let certData = '-----BEGIN CERTIFICATE-----\n' +
   'MnX1BeLxbAcAsTPYHjoeFJIrGkKlydLyt/8hDQzpLRW5uEUTjjqLh7vef0OaOP80\n' +
   'MmADt6ojRYvwdMDHF0ASJyupLQ+hiRLVadciK8Z5W34JGN2jwEw5X3nXyAgErIJZ\n' +
   'pqdTflnFLnSwy5M3QHB+xjYAcS9l1br2LA==\n' +
-  '-----END CERTIFICATE-----\n'
+  '-----END CERTIFICATE-----\n';
 
 // Certificate binary data, which needs to match your case.
 let encodingBlob: cert.EncodingBlob = {
@@ -2986,7 +3114,7 @@ async function certGetIssuerX500DistinguishedName() {
   try {
     x509Cert = await cert.createX509Cert(encodingBlob);
     console.info('createX509Cert result: success.');
-    let name = x509Cert.getIssuerX500DistinguishedName();
+    x509Cert.getIssuerX500DistinguishedName();
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error(`createX509Cert failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -2998,17 +3126,17 @@ async function certGetIssuerX500DistinguishedName() {
 
 getSubjectX500DistinguishedName(): X500DistinguishedName
 
-Obtains the DN of the X.509 certificate subject (holder).
+Obtains the X.500 distinguished name of the X.509 certificate subject.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                 | Description                                     |
 | --------------------- | ----------------------------------------- |
-| [X500DistinguishedName](#x500distinguishedname12) | DN object obtained.|
+| [X500DistinguishedName](#x500distinguishedname12) | X.500 distinguished object.|
 
 **Error codes**
 
@@ -3016,9 +3144,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -3057,7 +3185,7 @@ let certData = '-----BEGIN CERTIFICATE-----\n' +
   'MnX1BeLxbAcAsTPYHjoeFJIrGkKlydLyt/8hDQzpLRW5uEUTjjqLh7vef0OaOP80\n' +
   'MmADt6ojRYvwdMDHF0ASJyupLQ+hiRLVadciK8Z5W34JGN2jwEw5X3nXyAgErIJZ\n' +
   'pqdTflnFLnSwy5M3QHB+xjYAcS9l1br2LA==\n' +
-  '-----END CERTIFICATE-----\n'
+  '-----END CERTIFICATE-----\n';
 
 // Certificate binary data, which needs to match your case.
 let encodingBlob: cert.EncodingBlob = {
@@ -3071,7 +3199,7 @@ async function certGetSubjectX500DistinguishedName() {
   try {
     x509Cert = await cert.createX509Cert(encodingBlob);
     console.info('createX509Cert result: success.');
-    let name = x509Cert.getSubjectX500DistinguishedName();
+    x509Cert.getSubjectX500DistinguishedName();
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error(`createX509Cert failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -3085,9 +3213,9 @@ toString(): string
 
 Converts the object data into a string.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -3101,9 +3229,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -3142,7 +3270,7 @@ let certData = '-----BEGIN CERTIFICATE-----\n' +
   'MnX1BeLxbAcAsTPYHjoeFJIrGkKlydLyt/8hDQzpLRW5uEUTjjqLh7vef0OaOP80\n' +
   'MmADt6ojRYvwdMDHF0ASJyupLQ+hiRLVadciK8Z5W34JGN2jwEw5X3nXyAgErIJZ\n' +
   'pqdTflnFLnSwy5M3QHB+xjYAcS9l1br2LA==\n' +
-  '-----END CERTIFICATE-----\n'
+  '-----END CERTIFICATE-----\n';
 
 // Certificate binary data, which needs to match your case.
 let encodingBlob: cert.EncodingBlob = {
@@ -3170,9 +3298,9 @@ toString(encodingType: EncodingType): string
 
 Converts this object into a string in the specified encoding format. 
 
-**Atomic service API**: This API can be used in atomic services since API version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -3192,10 +3320,10 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19020003 | parameter check failed. Possible causes: <br>1. The value of encodingType is not in the EncodingType enumeration range.|
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19020003 | Parameter check failed. Possible causes: <br>1. The value of encodingType is not in the EncodingType enumeration range.|
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -3260,15 +3388,15 @@ hashCode(): Uint8Array
 
 Obtains the hash value of the data in DER format.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                 | Description                                     |
 | --------------------- | ----------------------------------------- |
-| Uint8Array | Hash value obtained.|
+| Uint8Array | Hash value in DER format obtained.|
 
 **Error codes**
 
@@ -3276,9 +3404,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -3317,7 +3445,7 @@ let certData = '-----BEGIN CERTIFICATE-----\n' +
   'MnX1BeLxbAcAsTPYHjoeFJIrGkKlydLyt/8hDQzpLRW5uEUTjjqLh7vef0OaOP80\n' +
   'MmADt6ojRYvwdMDHF0ASJyupLQ+hiRLVadciK8Z5W34JGN2jwEw5X3nXyAgErIJZ\n' +
   'pqdTflnFLnSwy5M3QHB+xjYAcS9l1br2LA==\n' +
-  '-----END CERTIFICATE-----\n'
+  '-----END CERTIFICATE-----\n';
 
 // Certificate binary data, which needs to match your case.
 let encodingBlob: cert.EncodingBlob = {
@@ -3343,17 +3471,17 @@ async function certHashCode() {
 
 getExtensionsObject(): CertExtension
 
-Obtains the certification extensions in DER format.
+Obtains the certificate extension object.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                 | Description                                     |
 | --------------------- | ----------------------------------------- |
-| [CertExtension](#certextension10) | Certificate extensions object obtained.|
+| [CertExtension](#certextension10) | Certificate extension object.|
 
 **Error codes**
 
@@ -3361,9 +3489,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -3402,7 +3530,7 @@ let certData = '-----BEGIN CERTIFICATE-----\n' +
   'MnX1BeLxbAcAsTPYHjoeFJIrGkKlydLyt/8hDQzpLRW5uEUTjjqLh7vef0OaOP80\n' +
   'MmADt6ojRYvwdMDHF0ASJyupLQ+hiRLVadciK8Z5W34JGN2jwEw5X3nXyAgErIJZ\n' +
   'pqdTflnFLnSwy5M3QHB+xjYAcS9l1br2LA==\n' +
-  '-----END CERTIFICATE-----\n'
+  '-----END CERTIFICATE-----\n';
 
 // Certificate binary data, which needs to match your case.
 let encodingBlob: cert.EncodingBlob = {
@@ -3416,7 +3544,7 @@ async function certGetExtensionsObject() {
   try {
     x509Cert = await cert.createX509Cert(encodingBlob);
     console.info('createX509Cert result: success.');
-    let object = x509Cert.getExtensionsObject();
+    x509Cert.getExtensionsObject();
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error(`createX509Cert failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -3430,16 +3558,16 @@ createCertExtension(inStream : EncodingBlob, callback : AsyncCallback\<CertExten
 
 Creates a certificate extension object. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                                             | Mandatory| Description                      |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
-| inStream | [EncodingBlob](#encodingblob)                     | Yes  | Serialized data obtained.|
-| callback | AsyncCallback\<[CertExtension](#certextension10)> | Yes  | Callback for the **CertExtension** instance.|
+| inStream | [EncodingBlob](#encodingblob)                     | Yes  | Serialized certificate extension data.|
+| callback | AsyncCallback\<[CertExtension](#certextension10)> | Yes  | Callback used to return the result. If the certificate extension object is successfully created, **err** is **undefined**, and **data** is the **CertExtension** instance obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -3447,10 +3575,10 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 801 | this operation is not supported. |
-| 19020001 | memory malloc failed. |
-| 19030001 | crypto operation error.      |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | This operation is not supported. |
+| 19020001 | Memory malloc failed. |
+| 19030001 | Crypto operation error.      |
 
 **Example**
 
@@ -3476,7 +3604,7 @@ let encodingBlob: cert.EncodingBlob = {
   encodingFormat: cert.EncodingFormat.FORMAT_DER
 };
 
-cert.createCertExtension(encodingBlob, (error, certExt) => {
+cert.createCertExtension(encodingBlob, (error, _certExt) => {
   if (error) {
     console.error(`createCertExtension failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
@@ -3491,21 +3619,21 @@ createCertExtension(inStream : EncodingBlob) : Promise\<CertExtension>
 
 Creates a certificate extension object. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                         | Mandatory| Description                      |
 | -------- | ----------------------------- | ---- | -------------------------- |
-| inStream | [EncodingBlob](#encodingblob) | Yes  | Serialized data obtained.|
+| inStream | [EncodingBlob](#encodingblob) | Yes  | Serialized certificate extension data.|
 
 **Return value**
 
 | Type                                       | Description                |
 | ------------------------------------------- | -------------------- |
-| Promise\<[CertExtension](#certextension10)> | Promise used to return the **CertExtension** instance created.|
+| Promise\<[CertExtension](#certextension10)> | Promise that returns the **CertExtension** instance created.|
 
 **Error codes**
 
@@ -3513,10 +3641,10 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 801 | this operation is not supported. |
-| 19020001 | memory malloc failed. |
-| 19030001 | crypto operation error.      |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | This operation is not supported. |
+| 19020001 | Memory malloc failed. |
+| 19030001 | Crypto operation error.      |
 
 **Example**
 
@@ -3543,7 +3671,7 @@ let encodingBlob: cert.EncodingBlob = {
   encodingFormat: cert.EncodingFormat.FORMAT_DER
 };
 
-cert.createCertExtension(encodingBlob).then(certExt => {
+cert.createCertExtension(encodingBlob).then(_certExt => {
   console.info('createCertExtension result: success.');
 }).catch((error: BusinessError) => {
   console.error(`createCertExtension failed, errCode: ${error.code}, errMsg: ${error.message}`);
@@ -3552,23 +3680,23 @@ cert.createCertExtension(encodingBlob).then(certExt => {
 
 ## CertExtension<sup>10+</sup>
 
-Provides APIs for operating the certificate extensions.
+Provides APIs for operations on X.509 certificate extensions.
 
 ### getEncoded<sup>10+</sup>
 
 getEncoded() : EncodingBlob
 
-Obtains the serialized data of the certificate extensions.
+Obtains the serialized data of a certificate extension.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                         | Description                        |
 | ----------------------------- | ---------------------------- |
-| [EncodingBlob](#encodingblob) | Serialized data obtained.|
+| [EncodingBlob](#encodingblob) | Serialized data of the obtained certificate extension.|
 
 **Error codes**
 
@@ -3576,9 +3704,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -3612,6 +3740,7 @@ cert.createCertExtension(encodingBlob, (error, certExt) => {
     console.info('createCertExtension result: success.');
     try {
       let extEncodedBlob = certExt.getEncoded();
+      console.info('extEncodedBlob = ' + extEncodedBlob.data);
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`ext getEncoded failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -3624,23 +3753,23 @@ cert.createCertExtension(encodingBlob, (error, certExt) => {
 
 getOidList(valueType : ExtensionOidType) : DataArray
 
-Obtains the OIDs of the certificate extensions.
+Obtains the OID list of a certificate extension.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name   | Type                                 | Mandatory| Description                          |
 | --------- | ------------------------------------- | ---- | ------------------------------ |
-| valueType | [ExtensionOidType](#extensionoidtype10) | Yes  | Type of the OIDs to obtain.|
+| valueType | [ExtensionOidType](#extensionoidtype10) | Yes  | Type of the OID to be obtained.|
 
 **Return value**
 
 | Type                   | Description                            |
 | ----------------------- | -------------------------------- |
-| [DataArray](#dataarray) | OIDs obtained.|
+| [DataArray](#dataarray) | OID list of the obtained certificate extension.|
 
 **Error codes**
 
@@ -3648,10 +3777,10 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -3685,6 +3814,7 @@ cert.createCertExtension(encodingBlob, (error, certExt) => {
     console.info('createCertExtension result: success.');
     try {
       let oidList = certExt.getOidList(cert.ExtensionOidType.EXTENSION_OID_TYPE_ALL);
+      console.info('oidList = ' + oidList.data);
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`ext getOidList failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -3697,24 +3827,24 @@ cert.createCertExtension(encodingBlob, (error, certExt) => {
 
 getEntry(valueType: ExtensionEntryType, oid : DataBlob) : DataBlob
 
-Obtains the certificate extension object information.
+Obtains the value of a certificate extension based on the OID.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name   | Type                                     | Mandatory| Description                            |
 | --------- | ----------------------------------------- | ---- | -------------------------------- |
-| valueType | [ExtensionEntryType](#extensionentrytype10) | Yes  | Type of the information to obtain.      |
-| oid       | [DataBlob](#datablob)                     | Yes  | OID of the certificate extension to obtain.|
+| valueType | [ExtensionEntryType](#extensionentrytype10) | Yes  | Type of the extension information to be obtained.      |
+| oid       | [DataBlob](#datablob)                     | Yes  | OID of the extension item to be obtained.|
 
 **Return value**
 
 | Type                 | Description                        |
 | --------------------- | ---------------------------- |
-| [DataBlob](#datablob) | Certificate extension object information obtained.|
+| [DataBlob](#datablob) | Certificate extension data obtained.|
 
 **Error codes**
 
@@ -3722,10 +3852,10 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -3760,9 +3890,10 @@ cert.createCertExtension(encodingBlob, (error, certExt) => {
     let oid = new Uint8Array([0x32, 0x2e, 0x35, 0x2e, 0x32, 0x39, 0x2e, 0x31, 0x35]);
     let oidBlob: cert.DataBlob = {
       data: oid
-    }
+    };
     try {
       let entry = certExt.getEntry(cert.ExtensionEntryType.EXTENSION_ENTRY_TYPE_ENTRY, oidBlob);
+      console.info('entry = ' + entry.data);
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`ext getEntry failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -3778,15 +3909,15 @@ checkCA() : number
 
 Checks whether the certificate is a CA certificate.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type  | Description                                                        |
 | ------ | ------------------------------------------------------------ |
-| number | If the key purpose in the certificate extension contains signing and the CA field in the basic constraints is **true**, the certificate is a CA certificate. Returns **-1** if the certificate is not a CA certificate; returns the path length in the basic constraints otherwise. Returns **-2** if the certificate is a CA certificate but the path length is not specified in the basic constraints, which means the path length is not limited.|
+| number | If the key usage in the certificate extension contains the **keyCertSign** bit and the **cA** field in the basic constraints is **true**, the certificate is a CA certificate. Returns **-1** if the certificate is not a CA certificate; returns the path length in the basic constraints otherwise. Returns **-2** if the certificate is a CA certificate but the path length is not specified in the basic constraints, which means the path length is not limited.|
 
 **Error codes**
 
@@ -3794,9 +3925,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -3829,6 +3960,7 @@ cert.createCertExtension(encodingBlob, (error, certExt) => {
     console.info('createCertExtension result: success.');
     try {
       let res = certExt.checkCA();
+      console.info('res = ' + res);
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`ext checkCA failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -3841,11 +3973,11 @@ cert.createCertExtension(encodingBlob, (error, certExt) => {
 
 hasUnsupportedCriticalExtension(): boolean
 
-Checks whether there is critical extension that is not supported.
+Checks whether there is any critical extension that is not supported.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -3859,9 +3991,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -3887,7 +4019,7 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createCertExtension(encodingBlob).then((extensionObj) => {
   console.info('createCertExtension result: success.');
-  const result = extensionObj.hasUnsupportedCriticalExtension()
+  const result = extensionObj.hasUnsupportedCriticalExtension();
   console.info('has unsupported critical extension result =' + result);
 }).catch((err: BusinessError) => {
   console.error(`createCertExtension failed, errCode: ${err.code}, errMsg: ${err.message}`);
@@ -3898,20 +4030,20 @@ cert.createCertExtension(encodingBlob).then((extensionObj) => {
 
 createX509Crl(inStream : EncodingBlob, callback : AsyncCallback\<X509Crl>) : void
 
-Creates an **X509Crl** instance. This API uses an asynchronous callback to return the result.
+Creates an X.509 CRL object. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [cert.createX509CRL](#certcreatex509crl11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                               | Mandatory| Description                          |
 | -------- | ----------------------------------- | ---- | ------------------------------ |
 | inStream | [EncodingBlob](#encodingblob)       | Yes  | Serialized CRL data.    |
-| callback | AsyncCallback\<[X509Crl](#x509crldeprecated)> | Yes  | Callback invoked to return the **X509Crl** instance created.|
+| callback | AsyncCallback\<[X509Crl](#x509crldeprecated)> | Yes  | Callback used to return the result. If the X.509 CRL object is successfully created, **err** is **undefined**, and **data** is the **X509Crl** instance obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -3919,9 +4051,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 801 | this operation is not supported. |
-| 19020001 | memory malloc failed. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | This operation is not supported. |
+| 19020001 | Memory malloc failed. |
 
 **Example**
 
@@ -3953,7 +4085,7 @@ let encodingBlob: cert.EncodingBlob = {
   encodingFormat: cert.EncodingFormat.FORMAT_PEM
 };
 
-cert.createX509Crl(encodingBlob, (error, x509Crl) => {
+cert.createX509Crl(encodingBlob, (error, _x509Crl) => {
   if (error) {
     console.error(`createX509Crl failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
@@ -3966,13 +4098,13 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 createX509Crl(inStream : EncodingBlob) : Promise\<X509Crl>
 
-Creates an **X509Crl** instance. This API uses a promise to return the result.
+Creates an X.509 CRL object. This API uses a promise to return the result.
 
 > **NOTE**
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [cert.createX509CRL](#certcreatex509crl11-1) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -3984,7 +4116,7 @@ Creates an **X509Crl** instance. This API uses a promise to return the result.
 
 | Type                         | Description                |
 | ----------------------------- | -------------------- |
-| Promise\<[X509Crl](#x509crldeprecated)> | **X509Crl** instance created.|
+| Promise\<[X509Crl](#x509crldeprecated)> | Promise that returns the **X509Crl** instance created.|
 
 **Error codes**
 
@@ -3992,9 +4124,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 801 | this operation is not supported. |
-| 19020001 | memory malloc failed. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | This operation is not supported. |
+| 19020001 | Memory malloc failed. |
 
 **Example**
 
@@ -4027,7 +4159,7 @@ let encodingBlob: cert.EncodingBlob = {
   encodingFormat: cert.EncodingFormat.FORMAT_PEM
 };
 
-cert.createX509Crl(encodingBlob).then(x509Crl => {
+cert.createX509Crl(encodingBlob).then(_x509Crl => {
   console.info('createX509Crl result: success.');
 }).catch((error: BusinessError) => {
   console.error(`createX509Crl failed, errCode: ${error.code}, errMsg: ${error.message}`);
@@ -4038,18 +4170,18 @@ cert.createX509Crl(encodingBlob).then(x509Crl => {
 
 createX509CRL(inStream : EncodingBlob, callback : AsyncCallback\<X509CRL>) : void
 
-Creates an **X509Crl** instance. This API uses an asynchronous callback to return the result.
+Creates an X.509 CRL object. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                                 | Mandatory| Description                          |
 | -------- | ------------------------------------- | ---- | ------------------------------ |
 | inStream | [EncodingBlob](#encodingblob)         | Yes  | Serialized CRL data. The data length cannot exceed 8192 bytes.    |
-| callback | AsyncCallback\<[X509CRL](#x509crl11)> | Yes  | Callback invoked to return the **X509Crl** instance created.|
+| callback | AsyncCallback\<[X509CRL](#x509crl11)> | Yes  | Callback used to return the result. If the X.509 CRL object is successfully created, **err** is **undefined**, and **data** is the **X509CRL** instance obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -4057,9 +4189,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 801 | this operation is not supported. |
-| 19020001 | memory malloc failed. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | This operation is not supported. |
+| 19020001 | Memory malloc failed. |
 
 **Example**
 
@@ -4091,7 +4223,7 @@ let encodingBlob: cert.EncodingBlob = {
   encodingFormat: cert.EncodingFormat.FORMAT_PEM
 };
 
-cert.createX509CRL(encodingBlob, (error, X509CRL) => {
+cert.createX509CRL(encodingBlob, (error, _X509CRL) => {
   if (error) {
     console.error(`createX509CRL failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
@@ -4104,11 +4236,11 @@ cert.createX509CRL(encodingBlob, (error, X509CRL) => {
 
 createX509CRL(inStream : EncodingBlob) : Promise\<X509CRL>
 
-Creates an **X509Crl** instance. This API uses a promise to return the result.
+Creates an X.509 CRL object. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -4120,7 +4252,7 @@ Creates an **X509Crl** instance. This API uses a promise to return the result.
 
 | Type                           | Description                |
 | ------------------------------- | -------------------- |
-| Promise\<[X509CRL](#x509crl11)> | **X509Crl** instance created.|
+| Promise\<[X509CRL](#x509crl11)> | Promise that returns the **X509CRL** instance created.|
 
 **Error codes**
 
@@ -4128,9 +4260,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 801 | this operation is not supported. |
-| 19020001 | memory malloc failed. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | This operation is not supported. |
+| 19020001 | Memory malloc failed. |
 
 **Example**
 
@@ -4163,7 +4295,7 @@ let encodingBlob: cert.EncodingBlob = {
   encodingFormat: cert.EncodingFormat.FORMAT_PEM
 };
 
-cert.createX509CRL(encodingBlob).then(X509CRL => {
+cert.createX509CRL(encodingBlob).then(_X509CRL => {
   console.info('createX509CRL result: success.');
 }).catch((error: BusinessError) => {
   console.error(`createX509CRL failed, errCode: ${error.code}, errMsg: ${error.message}`);
@@ -4172,7 +4304,7 @@ cert.createX509CRL(encodingBlob).then(X509CRL => {
 
 ## X509Crl<sup>(deprecated)</sup>
 
-Provides APIs for X.509 certificate CRL operations.
+Provides APIs for operations on X.509 CRLs.
 
 > **NOTE**
 >
@@ -4182,19 +4314,19 @@ Provides APIs for X.509 certificate CRL operations.
 
 isRevoked(cert : X509Cert) : boolean
 
-Checks whether an X.509 certificate is revoked.
+Checks whether the certificate is revoked.
 
 > **NOTE**
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.isRevoked](#isrevoked11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name| Type    | Mandatory| Description                |
 | ------ | -------- | ---- | -------------------- |
-| cert   | X509Cert | Yes  | X.509 certificate to check.|
+| cert   | [X509Cert](#x509cert) | Yes  | X.509 certificate to check.|
 
 **Return value**
 
@@ -4208,7 +4340,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 
 **Example**
 
@@ -4269,6 +4401,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
       } else {
         try {
           let revokedFlag = x509Crl.isRevoked(x509Cert);
+          console.info('revokedFlag = ' + revokedFlag);
         } catch (error) {
           let e: BusinessError = error as BusinessError;
           console.error(`isRevoked failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -4289,7 +4422,7 @@ Obtains the CRL type.
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getType](#gettype11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -4333,6 +4466,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
   } else {
     console.info('createX509Crl result: success.');
     let type = x509Crl.getType();
+    console.info('type = ' + type);
   }
 });
 ```
@@ -4347,13 +4481,13 @@ Obtains the serialized X.509 CRL data. This API uses an asynchronous callback to
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getEncoded](#getencoded11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                        | Mandatory| Description                                      |
 | -------- | ---------------------------- | ---- | ------------------------------------------ |
-| callback | AsyncCallback\<[EncodingBlob](#encodingblob)> | Yes  | Callback invoked to return the serialized X.509 CRL data obtained.|
+| callback | AsyncCallback\<[EncodingBlob](#encodingblob)> | Yes  | Callback used to return the result. If the serialized X.509 CRL data is successfully obtained, **err** is **undefined**, and **data** is the serialized X.509 CRL data obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -4361,10 +4495,10 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -4401,7 +4535,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
     console.error(`createX509Crl failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
     console.info('createX509Crl result: success.');
-    x509Crl.getEncoded((error, data) => {
+    x509Crl.getEncoded((error, _data) => {
       if (error) {
         console.error(`getEncoded failed, errCode: ${error.code}, errMsg: ${error.message}`);
       } else {
@@ -4422,13 +4556,13 @@ Obtains the serialized X.509 CRL data. This API uses a promise to return the res
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getEncoded](#getencoded11-1) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                  | Description                            |
 | ---------------------- | -------------------------------- |
-| Promise\<[EncodingBlob](#encodingblob)> | Promise used to return the serialized X.509 CRL data obtained.|
+| Promise\<[EncodingBlob](#encodingblob)> | Promise used to return the serialized X.509 CRL data.|
 
 **Error codes**
 
@@ -4436,10 +4570,10 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -4474,7 +4608,7 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509Crl(encodingBlob).then(x509Crl => {
   console.info('createX509Crl result: success.');
-  x509Crl.getEncoded().then(result => {
+  x509Crl.getEncoded().then(_result => {
     console.info('getEncoded result: success.');
   }).catch((error: BusinessError) => {
     console.error(`getEncoded failed, errCode: ${error.code}, errMsg: ${error.message}`);
@@ -4488,20 +4622,20 @@ cert.createX509Crl(encodingBlob).then(x509Crl => {
 
 verify(key : cryptoFramework.PubKey, callback : AsyncCallback\<void>) : void
 
-Verifies the signature of the X.509 CRL. This API uses an asynchronous callback to return the result. The RSA algorithm is supported.
+Verifies the X.509 CRL signature. This API uses an asynchronous callback to return the result. RSA can be used for signature verification.
 
 > **NOTE**
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.verify](#verify11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                | Mandatory| Description                                                        |
 | -------- | -------------------- | ---- | ------------------------------------------------------------ |
 | key      | [cryptoFramework.PubKey](../apis-crypto-architecture-kit/js-apis-cryptoFramework.md#pubkey) | Yes  | Public key used for signature verification.                                      |
-| callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If **error** is **null**, the signature verification is successful. If **error** is not **null**, the signature verification fails.|
+| callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If signature verification is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -4509,8 +4643,8 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -4607,29 +4741,28 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
   } else {
     console.info('createX509Crl result: success.');
     try {
-      // Generate the public key by AsyKeyGenerator.
       let keyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024|PRIMES_3');
       console.info('createAsyKeyGenerator result: success.');
       let priEncodingBlob: cryptoFramework.DataBlob = {
-        data: priKeyData,
+        data: priKeyData
       };
       let pubEncodingBlob: cryptoFramework.DataBlob = {
-        data: pubKeyData,
+        data: pubKeyData
       };
       keyGenerator.convertKey(pubEncodingBlob, priEncodingBlob, (e, keyPair) => {
         if (e) {
           console.error(`convert key failed, errCode: ${e.code}, errMsg: ${e.message}`);
         } else {
           console.info('convert key result: success.');
-          x509Crl.verify(keyPair.pubKey, (err, data) => {
+          x509Crl.verify(keyPair.pubKey, (err, _data) => {
             if (err) {
               console.error(`verify failed, errCode: ${err.code}, errMsg: ${err.message}`);
-            } else  {
+            } else {
               console.info('verify result: success.');
             }
           });
         }
-      })
+      });
     } catch (error) {
       let e: BusinessError = error as BusinessError;
       console.error(`get pubKey failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -4642,13 +4775,13 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 verify(key : cryptoFramework.PubKey) : Promise\<void>
 
-Verifies the signature of the X.509 CRL. This API uses a promise to return the result. The RSA algorithm is supported.
+Verifies the X.509 CRL signature. This API uses a promise to return the result. RSA can be used for signature verification.
 
 > **NOTE**
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.verify](#verify11-1) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -4660,7 +4793,7 @@ Verifies the signature of the X.509 CRL. This API uses a promise to return the r
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| Promise\<void> | Promise used to return the result.|
+| Promise\<void> | Promise that returns no value.|
 
 **Error codes**
 
@@ -4668,14 +4801,14 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19030001 | Crypto operation error. |
 
 **Example**
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
-import { cryptoFramework } from '@kit.CryptoArchitectureKit'
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // Convert the string into a Uint8Array.
@@ -4768,14 +4901,14 @@ cert.createX509Crl(encodingBlob).then(x509Crl => {
     let keyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024|PRIMES_3');
     console.info('createAsyKeyGenerator result: success.');
     let priEncodingBlob: cryptoFramework.DataBlob = {
-      data: priKeyData,
+      data: priKeyData
     };
     let pubEncodingBlob: cryptoFramework.DataBlob = {
-      data: pubKeyData,
+      data: pubKeyData
     };
     keyGenerator.convertKey(pubEncodingBlob, priEncodingBlob).then((keyPair) => {
       console.info('convert key result: success.');
-      x509Crl.verify(keyPair.pubKey).then(result => {
+      x509Crl.verify(keyPair.pubKey).then(_result => {
         console.info('verify result: success.');
       }).catch((error: BusinessError) => {
         console.error(`verify failed, errCode: ${error.code}, errMsg: ${error.message}`);
@@ -4802,13 +4935,13 @@ Obtains the version of the X.509 CRL.
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getVersion](#getversion11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type  | Description                            |
 | ------ | -------------------------------- |
-| number | Obtains the version of the X.509 CRL.|
+| number | Version of the X.509 CRL obtained.|
 
 **Example**
 
@@ -4846,6 +4979,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
   } else {
     console.info('createX509Crl result: success.');
     let version = x509Crl.getVersion();
+    console.info('version = ' + version);
   }
 });
 ```
@@ -4854,19 +4988,19 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 getIssuerName() : DataBlob
 
-Obtains the issuer of the X.509 CRL.
+Obtains the X.509 CRL issuer name.
 
 > **NOTE**
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getIssuerName](#getissuername11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                 | Description                          |
 | --------------------- | ------------------------------ |
-| [DataBlob](#datablob) | Issuer of the X.509 CRL obtained.|
+| [DataBlob](#datablob) | X.509 CRL issuer name obtained.|
 
 **Error codes**
 
@@ -4874,9 +5008,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -4916,6 +5050,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
     console.info('createX509Crl result: success.');
     try {
       let issuerName = x509Crl.getIssuerName();
+      console.info('issuerName = ' + issuerName.data);
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`getIssuerName failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -4928,19 +5063,19 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 getLastUpdate() : string
 
-Obtains the last update date of this X.509 CRL.
+Obtains the last update date of the X.509 CRL.
 
 > **NOTE**
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getLastUpdate](#getlastupdate11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type  | Description                                |
 | ------ | ------------------------------------ |
-| string | Last update date of the X.509 CRL, in ASN.1 format.|
+| string | Last update date of the X.509 CRL, in **ASN.1 UTCTime** or **GeneralizedTime** format.|
 
 **Error codes**
 
@@ -4948,9 +5083,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -4990,6 +5125,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
     console.info('createX509Crl result: success.');
     try {
       let lastUpdate = x509Crl.getLastUpdate();
+      console.info('lastUpdate = ' + lastUpdate);
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`getLastUpdate failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -5002,19 +5138,19 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 getNextUpdate() : string
 
-Obtains the next update date of this CRL.
+Obtains the date when the CRL will be updated the next time.
 
 > **NOTE**
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getNextUpdate](#getnextupdate11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type  | Description                                |
 | ------ | ------------------------------------ |
-| string | Next update date of the CRL, in ASN.1 format.|
+| string | Next update date of the X.509 CRL, in **ASN.1 UTCTime** or **GeneralizedTime** format.|
 
 **Error codes**
 
@@ -5022,9 +5158,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -5064,6 +5200,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
     console.info('createX509Crl result: success.');
     try {
       let nextUpdate = x509Crl.getNextUpdate();
+      console.info('nextUpdate = ' + nextUpdate);
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`getNextUpdate failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -5076,13 +5213,13 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 getRevokedCert(serialNumber : number) : X509CrlEntry
 
-Obtains the revoked X.509 certificate based on the specified serial number of the certificate.
+Obtains the revoked certificate based on the specified certificate serial number.
 
 > **NOTE**
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getRevokedCert](#getrevokedcert11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -5094,7 +5231,7 @@ Obtains the revoked X.509 certificate based on the specified serial number of th
 
 | Type                  | Description                  |
 | ---------------------- | --------------------- |
-| [X509CrlEntry](#x509crlentrydeprecated) | Revoked X.509 certificate obtained.|
+| [X509CrlEntry](#x509crlentrydeprecated) | CRL entry.|
 
 **Error codes**
 
@@ -5102,9 +5239,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed.           |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed.           |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -5144,7 +5281,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
     console.info('createX509Crl result: success.');
     let serialNumber = 1000;
     try {
-      let entry = x509Crl.getRevokedCert(serialNumber);
+      x509Crl.getRevokedCert(serialNumber);
     } catch (error) {
       let e: BusinessError = error as BusinessError;
       console.error(`getRevokedCert failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -5157,13 +5294,13 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 getRevokedCertWithCert(cert : X509Cert) : X509CrlEntry
 
-Obtains the revoked X.509 certificate based on the specified certificate.
+Obtains the revoked certificate based on the specified certificate object.
 
 > **NOTE**
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use X509CRL.getRevokedCertWithCert](#getrevokedcertwithcert11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -5175,7 +5312,7 @@ Obtains the revoked X.509 certificate based on the specified certificate.
 
 | Type        | Description                 |
 | ------------ | -------------------- |
-| [X509CrlEntry](#x509crlentrydeprecated) | Revoked X.509 certificate obtained.|
+| [X509CrlEntry](#x509crlentrydeprecated) | CRL entry.|
 
 **Error codes**
 
@@ -5183,9 +5320,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed.           |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed.           |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -5257,7 +5394,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
     // Create an X.509 certificate object.
     cert.createX509Cert(certEncodingBlob).then((x509Cert) => {
       try {
-        let entry = x509Crl.getRevokedCertWithCert(x509Cert);
+        x509Crl.getRevokedCertWithCert(x509Cert);
         console.info('getRevokedCertWithCert result: success.');
       } catch (error) {
         let e: BusinessError = error as BusinessError;
@@ -5265,7 +5402,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
       }
     }).catch((error: BusinessError) => {
       console.error(`createX509Cert failed, errCode: ${error.code}, errMsg: ${error.message}`);
-    })
+    });
   }
 });
 ```
@@ -5274,19 +5411,19 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 getRevokedCerts(callback : AsyncCallback<Array\<X509CrlEntry>>) : void
 
-Obtains all the revoked X.509 certificates. This API uses an asynchronous callback to return the result.
+Obtains revoked certificates. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getRevokedCerts](#getrevokedcerts11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                                                | Mandatory| Description                            |
 | -------- | ---------------------------------------------------- | ---- | -------------------------------- |
-| callback | AsyncCallback<Array\<[X509CrlEntry](#x509crlentrydeprecated)>> | Yes  | Callback invoked to return the revoked X.509 certificates obtained.|
+| callback | AsyncCallback<Array\<[X509CrlEntry](#x509crlentrydeprecated)>> | Yes  | Callback used to return the result. If the revoked certificates are obtained successfully, **err** is **undefined**, and **data** is the CRL obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -5294,9 +5431,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
-| 19020001 | memory malloc failed.           |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+| 19020001 | Memory malloc failed.           |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -5333,7 +5470,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
     console.error(`createX509Crl failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
     console.info('createX509Crl result: success.');
-    x509Crl.getRevokedCerts((error, array) => {
+    x509Crl.getRevokedCerts((error, _array) => {
       if (error) {
         console.error(`getRevokedCerts failed, errCode: ${error.code}, errMsg: ${error.message}`);
       } else {
@@ -5348,19 +5485,19 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 getRevokedCerts() : Promise<Array\<X509CrlEntry>>
 
-Obtains all the revoked X.509 certificates. This API uses a promise to return the result.
+ Obtains revoked certificates. This API uses a promise to return the result.
 
 > **NOTE**
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getRevokedCerts](#getrevokedcerts11-1) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                                          | Description                  |
 | ---------------------------------------------- | ---------------------- |
-| Promise<Array\<[X509CrlEntry](#x509crlentrydeprecated)>> | A list of revoked X.509 certificates.|
+| Promise<Array\<[X509CrlEntry](#x509crlentrydeprecated)>> | Promise used to return the revoked certificates.|
 
 **Error codes**
 
@@ -5368,9 +5505,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
-| 19020001 | memory malloc failed.           |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+| 19020001 | Memory malloc failed.           |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -5405,7 +5542,7 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509Crl(encodingBlob).then(x509Crl => {
   console.info('createX509Crl result: success.');
-  x509Crl.getRevokedCerts().then(array => {
+  x509Crl.getRevokedCerts().then(_array => {
     console.info('getRevokedCerts result: success.');
   }).catch((error: BusinessError) => {
     console.error(`getRevokedCerts failed, errCode: ${error.code}, errMsg: ${error.message}`);
@@ -5419,13 +5556,13 @@ cert.createX509Crl(encodingBlob).then(x509Crl => {
 
 getTbsInfo() : DataBlob
 
-Obtains the DER-encoded CRL information, that is, **tbsCertList** from this CRL.
+Obtains the to be signed certificate list (**tbsCertList**) of this CRL.
 
 > **NOTE**
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getTBSInfo](#gettbsinfo11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -5439,9 +5576,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -5481,6 +5618,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
     console.info('createX509Crl result: success.');
     try {
       let tbsInfo = x509Crl.getTbsInfo();
+      console.info('tbsInfo = ' + tbsInfo.data);
     } catch (error) {
       let e: BusinessError = error as BusinessError;
       console.error(`getTbsInfo failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -5499,7 +5637,7 @@ Obtains the signature data of the X.509 CRL.
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getSignature](#getsignature11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -5513,9 +5651,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -5555,6 +5693,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
     console.info('createX509Crl result: success.');
     try {
       let signature = x509Crl.getSignature();
+      console.info('signature = ' + signature.data);
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`getSignature failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -5567,19 +5706,19 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 getSignatureAlgName() : string
 
-Obtains the signing algorithm of the X.509 CRL.
+Obtains the signature algorithm of the X.509 CRL.
 
 > **NOTE**
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getSignatureAlgName](#getsignaturealgname11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type  | Description                            |
 | ------ | -------------------------------- |
-| string | Signing algorithm obtained.|
+| string | Signature algorithm name of the X.509 CRL obtained.|
 
 **Error codes**
 
@@ -5587,9 +5726,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -5629,6 +5768,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
     console.info('createX509Crl result: success.');
     try {
       let sigAlgName = x509Crl.getSignatureAlgName();
+      console.info('sigAlgName = ' + sigAlgName);
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`getSignatureAlgName failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -5641,19 +5781,19 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 getSignatureAlgOid() : string
 
-Obtains the OID of the X.509 CRL signing algorithm. OIDs are allocated by the International Organization for Standardization (ISO).
+Obtains the OID of the X.509 CRL signature algorithm. OIDs are allocated by the ISO.
 
 > **NOTE**
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getSignatureAlgOid](#getsignaturealgoid11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type  | Description                                         |
 | ------ | --------------------------------------------- |
-| string | OID of the X.509 CRL signing algorithm obtained.|
+| string | OID of the X.509 CRL signature algorithm obtained.|
 
 **Error codes**
 
@@ -5661,9 +5801,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -5703,6 +5843,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
     console.info('createX509Crl result: success.');
     try {
       let sigAlgOid = x509Crl.getSignatureAlgOid();
+      console.info('sigAlgOid = ' + sigAlgOid);
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`getSignatureAlgOid failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -5715,19 +5856,19 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 
 getSignatureAlgParams() : DataBlob
 
-Obtains the parameters of the X.509 CRL signing algorithm.
+Obtains the parameters of the X.509 CRL signature algorithm.
 
 > **NOTE**
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRL.getSignatureAlgParams](#getsignaturealgparams11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                 | Description                              |
 | --------------------- | ---------------------------------- |
-| [DataBlob](#datablob) | Algorithm parameters obtained.|
+| [DataBlob](#datablob) | Parameters of the X.509 CRL signature algorithm obtained.|
 
 **Error codes**
 
@@ -5735,10 +5876,10 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 801 | this operation is not supported. |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 801 | This operation is not supported. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -5778,6 +5919,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
     console.info('createX509Crl result: success.');
     try {
       let sigAlgParams = x509Crl.getSignatureAlgParams();
+      console.info('sigAlgParams = ' + sigAlgParams.data);
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`getSignatureAlgParams failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -5787,17 +5929,17 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 ```
 ## X509CRL<sup>11+</sup>
 
-Provides APIs for managing a CRL object.
+Provides APIs for operations on X.509 CRLs.
 
 ### isRevoked<sup>11+</sup>
 
 isRevoked(cert : X509Cert) : boolean
 
-Checks whether an X.509 certificate is revoked.
+Checks whether the certificate is revoked.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -5817,7 +5959,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 
 **Example**
 
@@ -5878,6 +6020,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
       } else {
         try {
           let revokedFlag = x509CRL.isRevoked(x509Cert);
+          console.info('revokedFlag = ' + revokedFlag);
         } catch (error) {
           let e: BusinessError = error as BusinessError;
           console.error(`isRevoked failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -5894,9 +6037,9 @@ getType() : string
 
 Obtains the CRL type.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -5940,6 +6083,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
   } else {
     console.info('createX509CRL result: success.');
     let type = x509CRL.getType();
+    console.info('type = ' + type);
   }
 });
 ```
@@ -5950,15 +6094,15 @@ getEncoded(callback : AsyncCallback\<EncodingBlob>) : void
 
 Obtains the serialized X.509 CRL data. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                                         | Mandatory| Description                                      |
 | -------- | --------------------------------------------- | ---- | ------------------------------------------ |
-| callback | AsyncCallback\<[EncodingBlob](#encodingblob)> | Yes  | Callback invoked to return the serialized X.509 CRL data obtained.|
+| callback | AsyncCallback\<[EncodingBlob](#encodingblob)> | Yes  | Callback used to return the result. If the serialized X.509 CRL data is successfully obtained, **err** is **undefined**, and **data** is the serialized X.509 CRL data obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -5966,10 +6110,10 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -6006,7 +6150,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
     console.error(`createX509CRL failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
     console.info('createX509CRL result: success.');
-    x509CRL.getEncoded((error, data) => {
+    x509CRL.getEncoded((error, _data) => {
       if (error) {
         console.error(`getEncoded failed, errCode: ${error.code}, errMsg: ${error.message}`);
       } else {
@@ -6023,15 +6167,15 @@ getEncoded() : Promise\<EncodingBlob>
 
 Obtains the serialized X.509 CRL data. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                                   | Description                            |
 | --------------------------------------- | -------------------------------- |
-| Promise\<[EncodingBlob](#encodingblob)> | Promise used to return the serialized X.509 CRL data obtained.|
+| Promise\<[EncodingBlob](#encodingblob)> | Promise used to return the serialized X.509 CRL data.|
 
 **Error codes**
 
@@ -6039,10 +6183,10 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -6077,7 +6221,7 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509CRL(encodingBlob).then(x509CRL => {
   console.info('createX509CRL result: success.');
-  x509CRL.getEncoded().then(result => {
+  x509CRL.getEncoded().then(_result => {
     console.info('getEncoded result: success.');
   }).catch((error: BusinessError) => {
     console.error(`getEncoded failed, errCode: ${error.code}, errMsg: ${error.message}`);
@@ -6091,18 +6235,18 @@ cert.createX509CRL(encodingBlob).then(x509CRL => {
 
 verify(key : cryptoFramework.PubKey, callback : AsyncCallback\<void>) : void
 
-Verifies the signature of the X.509 CRL. This API uses an asynchronous callback to return the result. The RSA algorithm is supported.
+Verifies the X.509 CRL signature. This API uses an asynchronous callback to return the result. RSA can be used for signature verification.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                                                       | Mandatory| Description                                                        |
 | -------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | key      | [cryptoFramework.PubKey](../apis-crypto-architecture-kit/js-apis-cryptoFramework.md#pubkey) | Yes  | Public key used for signature verification.                                      |
-| callback | AsyncCallback\<void>                                        | Yes  | Callback used to return the result. If **error** is **null**, the signature verification is successful. If **error** is not **null**, the signature verification fails.|
+| callback | AsyncCallback\<void>                                        | Yes  | Callback used to return the result. If signature verification is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -6110,8 +6254,8 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -6208,21 +6352,20 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
   } else {
     console.info('createX509Crl result: success.');
     try {
-      // Generate the public key by AsyKeyGenerator.
       let keyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024|PRIMES_3');
       console.info('createAsyKeyGenerator result: success.');
       let priEncodingBlob: cryptoFramework.DataBlob = {
-        data: priKeyData,
+        data: priKeyData
       };
       let pubEncodingBlob: cryptoFramework.DataBlob = {
-        data: pubKeyData,
+        data: pubKeyData
       };
       keyGenerator.convertKey(pubEncodingBlob, priEncodingBlob, (e, keyPair) => {
         if (e) {
           console.error(`convert key failed, errCode: ${e.code}, errMsg: ${e.message}`);
         } else {
           console.info('convert key result: success.');
-          x509CRL.verify(keyPair.pubKey, (err, data) => {
+          x509CRL.verify(keyPair.pubKey, (err, _data) => {
             if (err) {
               console.error(`verify failed, errCode: ${err.code}, errMsg: ${err.message}`);
             } else {
@@ -6230,7 +6373,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
             }
           });
         }
-      })
+      });
     } catch (error) {
       let e: BusinessError = error as BusinessError;
       console.error(`get pubKey failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -6243,11 +6386,11 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 verify(key : cryptoFramework.PubKey) : Promise\<void>
 
-Verifies the signature of the X.509 CRL. This API uses a promise to return the result. The RSA algorithm is supported.
+Verifies the X.509 CRL signature. This API uses a promise to return the result. RSA can be used for signature verification.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -6259,7 +6402,7 @@ Verifies the signature of the X.509 CRL. This API uses a promise to return the r
 
 | Type          | Description       |
 | -------------- | ----------- |
-| Promise\<void> | Promise used to return the result.|
+| Promise\<void> | Promise that returns no value.|
 
 **Error codes**
 
@@ -6267,14 +6410,14 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19030001 | Crypto operation error. |
 
 **Example**
 
 ```ts
 import { cert } from '@kit.DeviceCertificateKit';
-import { cryptoFramework } from '@kit.CryptoArchitectureKit'
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // Convert the string into a Uint8Array.
@@ -6367,14 +6510,14 @@ cert.createX509CRL(encodingBlob).then(x509CRL => {
     let keyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024|PRIMES_3');
     console.info('createAsyKeyGenerator result: success.');
     let priEncodingBlob: cryptoFramework.DataBlob = {
-      data: priKeyData,
+      data: priKeyData
     };
     let pubEncodingBlob: cryptoFramework.DataBlob = {
-      data: pubKeyData,
+      data: pubKeyData
     };
     keyGenerator.convertKey(pubEncodingBlob, priEncodingBlob).then((keyPair) => {
       console.info('convert key result: success.');
-      x509CRL.verify(keyPair.pubKey).then(result => {
+      x509CRL.verify(keyPair.pubKey).then(_result => {
         console.info('verify result: success.');
       }).catch((error: BusinessError) => {
         console.error(`verify failed, errCode: ${error.code}, errMsg: ${error.message}`);
@@ -6397,15 +6540,15 @@ getVersion() : number
 
 Obtains the version of the X.509 CRL.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type  | Description                            |
 | ------ | -------------------------------- |
-| number | Obtains the version of the X.509 CRL.|
+| number | Version of the X.509 CRL obtained.|
 
 **Example**
 
@@ -6443,6 +6586,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
   } else {
     console.info('createX509CRL result: success.');
     let version = x509CRL.getVersion();
+    console.info('version = ' + version);
   }
 });
 ```
@@ -6451,21 +6595,21 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 getIssuerName() : DataBlob
 
-Obtains the issuer of the X.509 CRL.
+Obtains the X.509 CRL issuer name.
 
 > **NOTE**
 >
 > The obtained X.509 CRL issuer name contains a string terminator.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                 | Description                          |
 | --------------------- | ------------------------------ |
-| [DataBlob](#datablob) | Issuer of the X.509 CRL obtained.|
+| [DataBlob](#datablob) | X.509 CRL issuer name obtained.|
 
 **Error codes**
 
@@ -6473,9 +6617,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -6515,6 +6659,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
     console.info('createX509CRL result: success.');
     try {
       let issuerName = x509CRL.getIssuerName();
+      console.info('issuerName = ' + issuerName.data);
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`getIssuerName failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -6527,11 +6672,11 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 getIssuerName(encodingType: EncodingType): string
 
-Obtains the issuer name of an X.509 CRL based on the encoding type.
+Obtains the X.509 CRL issuer name based on the encoding type.
 
-**Atomic service API**: This API can be used in atomic services since API version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -6551,10 +6696,10 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
-| 19020003 | parameter check failed. Possible causes: <br>1. The value of encodingType is not in the EncodingType enumeration range.|
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.                                     |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
+| 19020003 | Parameter check failed. Possible causes: <br>1. The value of encodingType is not in the EncodingType enumeration range.|
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -6610,17 +6755,17 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 getLastUpdate() : string
 
-Obtains the last update date of this X.509 CRL.
+Obtains the last update date of the X.509 CRL.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type  | Description                                |
 | ------ | ------------------------------------ |
-| string | Last update date of the X.509 CRL, in ASN.1 format.|
+| string | Last update date of the X.509 CRL, in **ASN.1 UTCTime** or **GeneralizedTime** format.|
 
 **Error codes**
 
@@ -6628,9 +6773,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -6669,7 +6814,8 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
   } else {
     console.info('createX509CRL result: success.');
     try {
-      let lastUpdate  = x509CRL.getLastUpdate();
+      let lastUpdate = x509CRL.getLastUpdate();
+      console.info('lastUpdate = ' + lastUpdate);
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`getLastUpdate failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -6682,17 +6828,17 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 getNextUpdate() : string
 
-Obtains the next update date of this CRL.
+Obtains the date when the CRL will be updated the next time.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type  | Description                                |
 | ------ | ------------------------------------ |
-| string | Next update date of the CRL, in ASN.1 format.|
+| string | Next update date of the X.509 CRL, in **ASN.1 UTCTime** or **GeneralizedTime** format.|
 
 **Error codes**
 
@@ -6700,9 +6846,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -6742,6 +6888,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
     console.info('createX509CRL result: success.');
     try {
       let nextUpdate = x509CRL.getNextUpdate();
+      console.info('nextUpdate = ' + nextUpdate);
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`getNextUpdate failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -6754,11 +6901,11 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 getRevokedCert(serialNumber : bigint) : X509CRLEntry
 
-Obtains the revoked X.509 certificate based on the specified serial number of the certificate.
+Obtains the revoked certificate based on the specified certificate serial number.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -6770,7 +6917,7 @@ Obtains the revoked X.509 certificate based on the specified serial number of th
 
 | Type                           | Description                  |
 | ------------------------------- | ---------------------- |
-| [X509CRLEntry](#x509crlentry11) | Revoked X.509 certificate obtained.|
+| [X509CRLEntry](#x509crlentry11) | CRL entry.|
 
 **Error codes**
 
@@ -6778,9 +6925,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed.           |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed.           |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -6820,7 +6967,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
     console.info('createX509CRL result: success.');
     let serialNumber = BigInt(1000);
     try {
-      let entry = x509CRL.getRevokedCert(serialNumber);
+      x509CRL.getRevokedCert(serialNumber);
     } catch (error) {
       let e: BusinessError = error as BusinessError;
       console.error(`getRevokedCert failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -6833,11 +6980,11 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 getRevokedCertWithCert(cert : X509Cert) : X509CRLEntry
 
-Obtains the revoked X.509 certificate based on the specified certificate.
+Obtains the revoked certificate based on the specified certificate object.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -6849,7 +6996,7 @@ Obtains the revoked X.509 certificate based on the specified certificate.
 
 | Type                           | Description                  |
 | ------------------------------- | ---------------------- |
-| [X509CRLEntry](#x509crlentry11) | Revoked X.509 certificate obtained.|
+| [X509CRLEntry](#x509crlentry11) | CRL entry.|
 
 **Error codes**
 
@@ -6857,9 +7004,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed.           |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed.           |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -6931,7 +7078,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
     // Create an X.509 certificate object.
     cert.createX509Cert(certEncodingBlob).then((x509Cert) => {
       try {
-        let entry = x509CRL.getRevokedCertWithCert(x509Cert);
+        x509CRL.getRevokedCertWithCert(x509Cert);
         console.info('getRevokedCertWithCert result: success.');
       } catch (error) {
         let e: BusinessError = error as BusinessError;
@@ -6939,7 +7086,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
       }
     }).catch((error: BusinessError) => {
       console.error(`createX509Cert failed, errCode: ${error.code}, errMsg: ${error.message}`);
-    })
+    });
   }
 });
 ```
@@ -6948,17 +7095,17 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 getRevokedCerts(callback : AsyncCallback<Array\<X509CRLEntry>>) : void
 
-Obtains all the revoked X.509 certificates. This API uses an asynchronous callback to return the result.
+Obtains revoked certificates. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                                                  | Mandatory| Description                            |
 | -------- | ------------------------------------------------------ | ---- | -------------------------------- |
-| callback | AsyncCallback<Array\<[X509CRLEntry](#x509crlentry11)>> | Yes  | Callback invoked to return the revoked X.509 certificates obtained.|
+| callback | AsyncCallback<Array\<[X509CRLEntry](#x509crlentry11)>> | Yes  | Callback used to return the result. If the revoked certificates are obtained successfully, **err** is **undefined**, and **data** is the CRL obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -6966,9 +7113,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
-| 19020001 | memory malloc failed.           |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+| 19020001 | Memory malloc failed.           |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -7005,7 +7152,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
     console.error(`createX509CRL failed, errCode: ${error.code}, errMsg: ${error.message}`);
   } else {
     console.info('createX509CRL result: success.');
-    x509CRL.getRevokedCerts((error, array) => {
+    x509CRL.getRevokedCerts((error, _array) => {
       if (error) {
         console.error(`getRevokedCerts failed, errCode: ${error.code}, errMsg: ${error.message}`);
       } else {
@@ -7020,17 +7167,17 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 getRevokedCerts() : Promise<Array\<X509CRLEntry>>
 
-Obtains all the revoked X.509 certificates. This API uses a promise to return the result.
+Obtains revoked certificates. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                                            | Description                  |
 | ------------------------------------------------ | ---------------------- |
-| Promise<Array\<[X509CRLEntry](#x509crlentry11)>> | A list of revoked X.509 certificates.|
+| Promise<Array\<[X509CRLEntry](#x509crlentry11)>> | Promise used to return the revoked certificates.|
 
 **Error codes**
 
@@ -7038,9 +7185,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
-| 19020001 | memory malloc failed.           |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+| 19020001 | Memory malloc failed.           |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -7075,7 +7222,7 @@ let encodingBlob: cert.EncodingBlob = {
 
 cert.createX509CRL(encodingBlob).then(x509CRL => {
   console.info('createX509CRL result: success.');
-  x509CRL.getRevokedCerts().then(array => {
+  x509CRL.getRevokedCerts().then(_array => {
     console.info('getRevokedCerts result: success.');
   }).catch((error: BusinessError) => {
     console.error(`getRevokedCerts failed, errCode: ${error.code}, errMsg: ${error.message}`);
@@ -7091,9 +7238,9 @@ getSignature() : DataBlob
 
 Obtains the signature data of the X.509 CRL.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -7107,9 +7254,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -7149,6 +7296,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
     console.info('createX509CRL result: success.');
     try {
       let signature = x509CRL.getSignature();
+      console.info('signature = ' + signature.data);
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`getSignature failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -7161,17 +7309,17 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 getSignatureAlgName() : string
 
-Obtains the signing algorithm of the X.509 CRL.
+Obtains the signature algorithm of the X.509 CRL.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type  | Description                            |
 | ------ | -------------------------------- |
-| string | Signing algorithm obtained.|
+| string | Signature algorithm name of the X.509 CRL obtained.|
 
 **Error codes**
 
@@ -7179,9 +7327,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -7221,6 +7369,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
     console.info('createX509CRL result: success.');
     try {
       let sigAlgName = x509CRL.getSignatureAlgName();
+      console.info('sigAlgName = ' + sigAlgName);
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`getSignatureAlgName failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -7233,17 +7382,17 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 getSignatureAlgOid() : string
 
-Obtains the OID of the X.509 CRL signing algorithm. OIDs are allocated by the International Organization for Standardization (ISO).
+Obtains the OID of the X.509 CRL signature algorithm. OIDs are allocated by the ISO.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type  | Description                                         |
 | ------ | --------------------------------------------- |
-| string | OID of the X.509 CRL signing algorithm obtained.|
+| string | OID of the X.509 CRL signature algorithm obtained.|
 
 **Error codes**
 
@@ -7251,9 +7400,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -7293,6 +7442,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
     console.info('createX509CRL result: success.');
     try {
       let sigAlgOid = x509CRL.getSignatureAlgOid();
+      console.info('sigAlgOid = ' + sigAlgOid);
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`getSignatureAlgOid failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -7305,17 +7455,17 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 getSignatureAlgParams() : DataBlob
 
-Obtains the parameters of the X.509 CRL signing algorithm.
+Obtains the parameters of the X.509 CRL signature algorithm.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                 | Description                              |
 | --------------------- | ---------------------------------- |
-| [DataBlob](#datablob) | Algorithm parameters obtained.|
+| [DataBlob](#datablob) | Parameters of the X.509 CRL signature algorithm obtained.|
 
 **Error codes**
 
@@ -7323,10 +7473,10 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 801 | this operation is not supported. |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 801 | This operation is not supported. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -7366,6 +7516,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
     console.info('createX509CRL result: success.');
     try {
       let sigAlgParams = x509CRL.getSignatureAlgParams();
+      console.info('sigAlgParams = ' + sigAlgParams.data);
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`getSignatureAlgParams failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -7378,11 +7529,11 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 getTBSInfo() : DataBlob
 
-Obtains the DER-encoded CRL information, that is, **tbsCertList** from this CRL.
+Obtains the to be signed certificate list (**tbsCertList**) of this CRL.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -7396,9 +7547,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -7438,6 +7589,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
     console.info('createX509CRL result: success.');
     try {
       let tbsInfo = x509CRL.getTBSInfo();
+      console.info('tbsInfo = ' + tbsInfo.data);
     } catch (error) {
       let e: BusinessError = error as BusinessError;
       console.error(`getTBSInfo failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -7450,17 +7602,17 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 getExtensions(): DataBlob
 
-Obtains the CRL extensions.
+Obtains CRL extensions, in DER format.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                 | Description               |
 | --------------------- | ------------------- |
-| [DataBlob](#datablob) | X.509 CRL extensions obtained.|
+| [DataBlob](#datablob) | CRL extensions, in DER format.|
 
 **Error codes**
 
@@ -7468,9 +7620,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -7513,6 +7665,7 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
     console.info('createX509CRL result: success.');
     try {
       let extensions = x509CRL.getExtensions();
+      console.info('extensions = ' + extensions.data);
     } catch (error) {
       let e: BusinessError = error as BusinessError;
       console.error(`getExtensions failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -7525,11 +7678,11 @@ cert.createX509CRL(encodingBlob, (error, x509CRL) => {
 
 match(param: X509CRLMatchParameters): boolean
 
-Checks whether this CRL matches the specified parameters.
+Checks whether the CRL matches the input parameters.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -7549,9 +7702,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message      |
 | -------- | -------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed.  |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed.  |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -7604,7 +7757,7 @@ const certData = '-----BEGIN CERTIFICATE-----\r\n' +
   '-----END CERTIFICATE-----\r\n';
 const certEncodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(certData),
-  encodingFormat: cert.EncodingFormat.FORMAT_PEM,
+  encodingFormat: cert.EncodingFormat.FORMAT_PEM
 };
 
 async function crlMatch() {
@@ -7631,8 +7784,9 @@ async function crlMatch() {
             0x06, 0x03, 0x55, 0x04, 0x0B, 0x13, 0x02, 0x74, 0x73, 0x31, 0x0B, 0x30, 0x09, 0x06, 0x03, 0x55, 0x04, 0x03,
             0x13, 0x02, 0x74, 0x73])],
           x509Cert: x509Cert
-        }
+        };
         const result = x509CRL.match(param);
+        console.info('result = ' + result);
       } catch (error) {
         let e: BusinessError = error as BusinessError;
         console.error(`x509CRL match failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -7646,17 +7800,17 @@ async function crlMatch() {
 
 getIssuerX500DistinguishedName(): X500DistinguishedName
 
-Obtains the distinguished name (DN) of the X.509 certificate issuer.
+Obtains the X.500 distinguished name object of the CRL issuer.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                 | Description                                     |
 | --------------------- | ----------------------------------------- |
-| [X500DistinguishedName](#x500distinguishedname12) | DN object obtained.|
+| [X500DistinguishedName](#x500distinguishedname12) | X.500 distinguished name object.|
 
 **Error codes**
 
@@ -7664,9 +7818,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message      |
 | -------- | -------------- |
-| 19020001 | memory malloc failed.  |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.  |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -7704,7 +7858,7 @@ async function crlGetIssuerX500DistinguishedName() {
   try {
     x509Crl = await cert.createX509CRL(crlEncodingBlob);
     console.info('createX509CRL result: success.');
-    let name = x509Crl.getIssuerX500DistinguishedName();
+    x509Crl.getIssuerX500DistinguishedName();
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error(`createX509CRL failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -7718,9 +7872,9 @@ toString(): string
 
 Converts the object data into a string.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -7734,9 +7888,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message      |
 | -------- | -------------- |
-| 19020001 | memory malloc failed.  |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.  |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -7788,9 +7942,9 @@ toString(encodingType: EncodingType): string
 
 Converts this object into a string in the specified encoding format.
 
-**Atomic service API**: This API can be used in atomic services since API version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -7810,10 +7964,10 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
-| 19020003 | parameter check failed. Possible causes: <br>1. The value of encodingType is not in the EncodingType enumeration range.|
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.                                     |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
+| 19020003 | Parameter check failed. Possible causes: <br>1. The value of encodingType is not in the EncodingType enumeration range.|
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -7868,15 +8022,15 @@ hashCode(): Uint8Array
 
 Obtains the hash value of the data in DER format.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                 | Description                                     |
 | --------------------- | ----------------------------------------- |
-| Uint8Array | Hash value obtained.|
+| Uint8Array | Hash value in DER format obtained.|
 
 **Error codes**
 
@@ -7884,9 +8038,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message      |
 | -------- | -------------- |
-| 19020001 | memory malloc failed.  |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.  |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -7936,17 +8090,17 @@ async function crlHashCode() {
 
 getExtensionsObject(): CertExtension
 
-Obtains the certification extensions in DER format.
+Obtains the CRL extension object.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                 | Description                                     |
 | --------------------- | ----------------------------------------- |
-| [CertExtension](#certextension10) | Certificate extensions object obtained.|
+| [CertExtension](#certextension10) | CRL extension object.|
 
 **Error codes**
 
@@ -7954,9 +8108,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message      |
 | -------- | -------------- |
-| 19020001 | memory malloc failed.  |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.  |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -7994,12 +8148,12 @@ let crlEncodingBlob: cert.EncodingBlob = {
   encodingFormat: cert.EncodingFormat.FORMAT_PEM
 };
 
-async function crlHashCode() {
+async function crlGetExtensionsObject() {
   let x509Crl: cert.X509CRL = {} as cert.X509CRL;
   try {
     x509Crl = await cert.createX509CRL(crlEncodingBlob);
     console.info('createX509CRL result: success.');
-    let object = x509Crl.getExtensionsObject();
+    x509Crl.getExtensionsObject();
   } catch (err) {
     let e: BusinessError = err as BusinessError;
     console.error(`createX509CRL failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -8011,17 +8165,17 @@ async function crlHashCode() {
 
 createCertChainValidator(algorithm :string) : CertChainValidator
 
-Creates a **CertChainValidator** object.
+Creates a certificate chain validator object.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name   | Type  | Mandatory| Description                                      |
 | --------- | ------ | ---- | ------------------------------------------ |
-| algorithm | string | Yes  | Certificate chain validator algorithm. Currently, only **PKIX** is supported.|
+| algorithm | string | Yes  | Algorithm of the certificate chain validator obtained. Currently, only **PKIX** is supported.|
 
 **Return value**
 
@@ -8035,11 +8189,11 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 801 | this operation is not supported. |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 801 | This operation is not supported. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -8048,44 +8202,45 @@ import { cert } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let validator = cert.createCertChainValidator('PKIX');
+  cert.createCertChainValidator('PKIX');
 } catch (error) {
   let e: BusinessError = error as BusinessError;
   console.error(`createCertChainValidator failed, errCode: ${e.code}, errMsg: ${e.message}`);
 }
 ```
+
 ## CertChainValidator
 
-Provides APIs for certificate chain validator operations.
+Describes a certificate chain validator object.
 
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 | Name   | Type  | Read-Only| Optional| Description                        |
 | ------- | ------ | ---- | ---- | -------------------------- |
-| algorithm  | string | Yes  | No  | Algorithm used by the X.509 certificate chain validator.|
+| algorithm  | string | Yes  | No  | Algorithm of the X.509 certificate chain validator.|
 
 
 ### validate
 
 validate(certChain : CertChainData, callback : AsyncCallback\<void>) : void
 
-Validates an X.509 certificate chain. This API uses an asynchronous callback to return the result.
+Verifies the X.509 certificate chain. This API uses an asynchronous callback to return the result.
 
-The certificate chain validator does not verify the certificate validity period because the system time on the device is untrusted. To check the validity period of a certificate, use the [checkValidityWithDate()](#checkvaliditywithdate) API of the **X509Cert** class. For details about certificate specifications, see [Certificate Specifications](../../security/DeviceCertificateKit/certificate-framework-overview.md#certificate-specifications).
+The certificate chain validator does not verify the certificate validity period because the device system time is untrusted. The [checkValidityWithDate()](#checkvaliditywithdate) API for the X.509 certificate can be used to check the validity period of a certificate. For details, see [Certificate Specifications](../../security/DeviceCertificateKit/certificate-framework-overview.md#certificate-specifications).
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name   | Type                           | Mandatory| Description                                                        |
 | --------- | ------------------------------- | ---- | ------------------------------------------------------------ |
 | certChain | [CertChainData](#certchaindata) | Yes  | Serialized X.509 certificate chain data.                                   |
-| callback  | AsyncCallback\<void>            | Yes  | Callback used to return the result. If **error** is **null**, the validation is successful. If **error** is not **null**, the validation fails.|
+| callback  | AsyncCallback\<void>            | Yes  | Callback used to return the result. If the verification is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -8093,16 +8248,16 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
-| 19030001 | crypto operation error.                           |
-| 19030002 | the certificate signature verification failed.    |
-| 19030003 | the certificate has not taken effect.             |
-| 19030004 | the certificate has expired.                      |
-| 19030005 | failed to obtain the certificate issuer.          |
-| 19030006 | the key cannot be used for signing a certificate. |
-| 19030007 | the key cannot be used for digital signature.     |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed.                                     |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
+| 19030001 | Crypto operation error.                           |
+| 19030002 | The certificate signature verification failed.    |
+| 19030003 | The certificate has not taken effect.             |
+| 19030004 | The certificate has expired.                      |
+| 19030005 | Failed to obtain the certificate issuer.          |
+| 19030006 | The key cannot be used for signing a certificate. |
+| 19030007 | The key cannot be used for a digital signature.     |
 
 **Example**
 
@@ -8164,15 +8319,15 @@ let caPem = '-----BEGIN CERTIFICATE-----\n' +
 let certPemData = stringToUint8Array(certPem);
 let caPemData = stringToUint8Array(caPem);
 
-let certPemDataLenData = new Uint8Array(new Uint16Array([certPemData.length]).buffer)
-let caPemDataLenData = new Uint8Array(new Uint16Array([caPemData.length]).buffer)
+let certPemDataLenData = new Uint8Array(new Uint16Array([certPemData.length]).buffer);
+let caPemDataLenData = new Uint8Array(new Uint16Array([caPemData.length]).buffer);
 
 let certChainBuff =
-  new Uint8Array(certPemDataLenData.length + certPemData.length + caPemDataLenData.length + caPemData.length)
-certChainBuff.set(certPemDataLenData)
-certChainBuff.set(certPemData, certPemDataLenData.length)
-certChainBuff.set(caPemDataLenData, certPemDataLenData.length + certPemData.length)
-certChainBuff.set(caPemData, certPemDataLenData.length + certPemData.length + caPemDataLenData.length)
+  new Uint8Array(certPemDataLenData.length + certPemData.length + caPemDataLenData.length + caPemData.length);
+certChainBuff.set(certPemDataLenData);
+certChainBuff.set(certPemData, certPemDataLenData.length);
+certChainBuff.set(caPemDataLenData, certPemDataLenData.length + certPemData.length);
+certChainBuff.set(caPemData, certPemDataLenData.length + certPemData.length + caPemDataLenData.length);
 
 let certChainData: cert.CertChainData = {
   data: certChainBuff,
@@ -8184,7 +8339,7 @@ let certChainData: cert.CertChainData = {
 
 try {
   let validator = cert.createCertChainValidator('PKIX');
-  validator.validate(certChainData, (error, data) => {
+  validator.validate(certChainData, (error, _data) => {
     if (error) {
       console.error(`validate failed, errCode: ${error.code}, errMsg: ${error.message}`);
     } else {
@@ -8201,12 +8356,13 @@ try {
 
 validate(certChain : CertChainData) : Promise\<void>
 
-Validates an X.509 certificate chain. This API uses a promise to return the result.
-The certificate chain validator does not verify the certificate validity period because the system time on the device is untrusted. To check the validity period of a certificate, use the [checkValidityWithDate()](#checkvaliditywithdate) API of the **X509Cert** class. For details about certificate specifications, see [Certificate Specifications](../../security/DeviceCertificateKit/certificate-framework-overview.md#certificate-specifications).
+Verifies the X.509 certificate chain. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+The certificate chain validator does not verify the certificate validity period because the device system time is untrusted. The [checkValidityWithDate()](#checkvaliditywithdate) API for the X.509 certificate can be used to check the validity period of a certificate. For details, see [Certificate Specifications](../../security/DeviceCertificateKit/certificate-framework-overview.md#certificate-specifications).
 
-**System capability**: SystemCapability.Security.Cert
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -8218,7 +8374,7 @@ The certificate chain validator does not verify the certificate validity period 
 
 | Type          | Description       |
 | -------------- | ----------- |
-| Promise\<void> | Promise used to return the result.|
+| Promise\<void> | Promise that returns no value.|
 
 **Error codes**
 
@@ -8226,16 +8382,16 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
-| 19030001 | crypto operation error.                           |
-| 19030002 | the certificate signature verification failed.    |
-| 19030003 | the certificate has not taken effect.             |
-| 19030004 | the certificate has expired.                      |
-| 19030005 | failed to obtain the certificate issuer.          |
-| 19030006 | the key cannot be used for signing a certificate. |
-| 19030007 | the key cannot be used for digital signature.     |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed.                                     |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
+| 19030001 | Crypto operation error.                           |
+| 19030002 | The certificate signature verification failed.    |
+| 19030003 | The certificate has not taken effect.             |
+| 19030004 | The certificate has expired.                      |
+| 19030005 | Failed to obtain the certificate issuer.          |
+| 19030006 | The key cannot be used for signing a certificate. |
+| 19030007 | The key cannot be used for a digital signature.     |
 
 **Example**
 
@@ -8297,15 +8453,15 @@ let caPem = '-----BEGIN CERTIFICATE-----\n' +
 let certPemData = stringToUint8Array(certPem);
 let caPemData = stringToUint8Array(caPem);
 
-let certPemDataLenData = new Uint8Array(new Uint16Array([certPemData.length]).buffer)
-let caPemDataLenData = new Uint8Array(new Uint16Array([caPemData.length]).buffer)
+let certPemDataLenData = new Uint8Array(new Uint16Array([certPemData.length]).buffer);
+let caPemDataLenData = new Uint8Array(new Uint16Array([caPemData.length]).buffer);
 
 let certChainBuff =
-  new Uint8Array(certPemDataLenData.length + certPemData.length + caPemDataLenData.length + caPemData.length)
-certChainBuff.set(certPemDataLenData)
-certChainBuff.set(certPemData, certPemDataLenData.length)
-certChainBuff.set(caPemDataLenData, certPemDataLenData.length + certPemData.length)
-certChainBuff.set(caPemData, certPemDataLenData.length + certPemData.length + caPemDataLenData.length)
+  new Uint8Array(certPemDataLenData.length + certPemData.length + caPemDataLenData.length + caPemData.length);
+certChainBuff.set(certPemDataLenData);
+certChainBuff.set(certPemData, certPemDataLenData.length);
+certChainBuff.set(caPemDataLenData, certPemDataLenData.length + certPemData.length);
+certChainBuff.set(caPemData, certPemDataLenData.length + certPemData.length + caPemDataLenData.length);
 
 let certChainData: cert.CertChainData = {
   data: certChainBuff,
@@ -8317,7 +8473,7 @@ let certChainData: cert.CertChainData = {
 
 try {
   let validator = cert.createCertChainValidator('PKIX');
-  validator.validate(certChainData).then(result => {
+  validator.validate(certChainData).then(_result => {
     console.info('validate result: success.');
   }).catch((error: BusinessError) => {
     console.error(`validate failed, errCode: ${error.code}, errMsg: ${error.message}`);
@@ -8328,13 +8484,196 @@ try {
 }
 ```
 
+### validateCert
+
+validateCert(cert: X509Cert, params: CertValidationParams): Promise&lt;CertValidationResult&gt;
+
+Validates a certificate by building and verifying a certificate chain. This API uses a promise to return the result.
+
+Follow the following rules when building a certificate chain:
+1. Trusted anchor source: Always use the trusted certificate list (**trustedCerts**) as the trusted anchor source. The pre-configured certificate can be used as a trusted anchor only when **trustSystemCa** is set to **true**.
+2. Issuer search sequence: The system searches for the issuer from the trusted anchor source first. If the issuer cannot be found, the system searches for the issuer from the untrusted certificate list (**untrustedCerts**). The intermediate CA certificate downloaded from the Internet is an untrusted certificate.
+3. Trust anchor locking: Once the issuer is found from the trusted anchor source, the subsequent search process does not back track to untrusted certificates. That is, subsequent certificates must come from the trusted anchor source.
+4. Build completion condition: If the value of **partialChain** is **false** (default value), the build is complete only when the root certificate (from the signing certificate) is found. If the value of **partialChain** is **true**, the build is complete when the issuer is initially found from the trust anchor source.
+5. Subsequent verification: After the certificate chain is built, other verification operations, such as certificate signature verification and certificate revocation check, are performed.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability:** SystemCapability.Security.Cert
+
+**Parameters**
+
+| Name   | Type                           | Mandatory| Description                      |
+| --------- | ------------------------------- | ---- | -------------------------- |
+| cert | [X509Cert](#x509cert) | Yes  | Certificate to be verified.|
+| params | [CertValidationParams](#certvalidationparams) | Yes  | Parameters for certificate validation.|
+
+**Return value**
+
+| Type          | Description       |
+| -------------- | ----------- |
+| Promise\<[CertValidationResult](#certvalidationresult)> | Promise used to return the verification result.|
+
+**Error codes**
+
+For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
+
+| ID| Error Message                                         |
+| -------- | ------------------------------------------------- |
+| 19020001 | Memory malloc failed.                                     |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
+| 19020003 | Parameter check failed.                           |
+| 19030001 | Crypto operation error.                           |
+| 19030002 | The certificate signature verification failed.    |
+| 19030003 | The certificate has not taken effect.             |
+| 19030004 | The certificate has expired.                      |
+| 19030005 | Failed to obtain the certificate issuer.          |
+| 19030006 | The key cannot be used for signing a certificate. |
+| 19030007 | The key cannot be used for a digital signature.     |
+| 19030009 | Untrusted certificate.    |
+| 19030010 | The certificate has been revoked.             |
+| 19030011 | Unsupported critical extension.          |
+| 19030012 | Hostname mismatch in the certificate. |
+| 19030013 | Email address mismatch in the certificate.     |
+| 19030014 | Key usage mismatch in the certificate. |
+| 19030015 | Failed to obtain the certificate revocation list.          |
+| 19030016 | The certificate revocation list has not taken effect.             |
+| 19030017 | The certificate revocation list has expired.                      |
+| 19030018 | Failed to verify the signature of the certificate revocation list.          |
+| 19030019 | Failed to find the issuer of the certificate revocation list. |
+| 19030020 | Failed to obtain the OCSP response.     |
+| 19030021 | Invalid OCSP response.             |
+| 19030022 | Failed to verify the OCSP signature.                      |
+| 19030023 | Unknown OCSP certificate status.          |
+| 19030024 | Network connection timed out. |
+
+**Example**
+
+```ts
+import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// EC P-256 certificate chain data
+const endEntityCertPem = '-----BEGIN CERTIFICATE-----\n' +
+    'MIICwzCCAmmgAwIBAgIUIThWddD/8p7w5QyXOoRY05O61FMwCgYIKoZIzj0EAwIw\n' +
+    'gYsxCzAJBgNVBAYTAkNOMRAwDgYDVQQIDAdCZWlqaW5nMRAwDgYDVQQHDAdCZWlq\n' +
+    'aW5nMRowGAYDVQQKDBFUZXN0IE9yZ2FuaXphdGlvbjEdMBsGA1UECwwUVGVzdCBJ\n' +
+    'bnRlcm1lZGlhdGUgQ0ExHTAbBgNVBAMMFFRlc3QgSW50ZXJtZWRpYXRlIENBMB4X\n' +
+    'DTI2MDMzMTA4MjY1OFoXDTI3MDMzMTA4MjY1OFowgYIxCzAJBgNVBAYTAkNOMRAw\n' +
+    'DgYDVQQIDAdCZWlqaW5nMRAwDgYDVQQHDAdCZWlqaW5nMRowGAYDVQQKDBFUZXN0\n' +
+    'IE9yZ2FuaXphdGlvbjEYMBYGA1UECwwPVGVzdCBEZXBhcnRtZW50MRkwFwYDVQQD\n' +
+    'DBB0ZXN0LmV4YW1wbGUuY29tMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEspH8\n' +
+    'JVcqNrg7oP4PYHADsW8tc1kIF86JG5SSjh1fz4ja3dF98PMMrsbQtcBZiwp8rD5e\n' +
+    'Gp2Nv/C2ymnjJfrig6OBsTCBrjAJBgNVHRMEAjAAMA4GA1UdDwEB/wQEAwIFoDAd\n' +
+    'BgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwHQYDVR0OBBYEFH6aJ7ZQayEZ\n' +
+    'LeenLt7zowBoafRpMB8GA1UdIwQYMBaAFI2lMRV2YgzF/DBP92jUzOLdzSDdMDIG\n' +
+    'A1UdEQQrMCmCEHRlc3QuZXhhbXBsZS5jb22CD3d3dy5leGFtcGxlLmNvbYcEfwAA\n' +
+    'ATAKBggqhkjOPQQDAgNIADBFAiEAidnsForpQc9qTBpa68YEYS0TQRUySHaUB/pr\n' +
+    'PNfAYqECIGGKM44mqQgSvZyYQHnlnu3jkbHpFJTaQBAvz9B1jFuc\n' +
+    '-----END CERTIFICATE-----\n';
+
+const intermediateCaPem = '-----BEGIN CERTIFICATE-----\n' +
+    'MIICbzCCAhWgAwIBAgIUI8/xor2S98OupuBX6hWevxhvK+wwCgYIKoZIzj0EAwIw\n' +
+    'ezELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n' +
+    'bmcxGjAYBgNVBAoMEVRlc3QgT3JnYW5pemF0aW9uMRUwEwYDVQQLDAxUZXN0IFJv\n' +
+    'b3QgQ0ExFTATBgNVBAMMDFRlc3QgUm9vdCBDQTAeFw0yNjAzMzEwODI2NThaFw0z\n' +
+    'MTAzMzAwODI2NThaMIGLMQswCQYDVQQGEwJDTjEQMA4GA1UECAwHQmVpamluZzEQ\n' +
+    'MA4GA1UEBwwHQmVpamluZzEaMBgGA1UECgwRVGVzdCBPcmdhbml6YXRpb24xHTAb\n' +
+    'BgNVBAsMFFRlc3QgSW50ZXJtZWRpYXRlIENBMR0wGwYDVQQDDBRUZXN0IEludGVy\n' +
+    'bWVkaWF0ZSBDQTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABER6WRsCn7Bh3v8c\n' +
+    'k6PIkLeM+ot5l0A46XJdfvuJco58ifzBHjtu4kFOkZTA9F0Hb6JefG590CK5ddiD\n' +
+    'g5lOHwKjZjBkMBIGA1UdEwEB/wQIMAYBAf8CAQAwDgYDVR0PAQH/BAQDAgEGMB0G\n' +
+    'A1UdDgQWBBSNpTEVdmIMxfwwT/do1Mzi3c0g3TAfBgNVHSMEGDAWgBS/nd4dYdW3\n' +
+    'zFxQ1pl2U8I/bfUA3zAKBggqhkjOPQQDAgNIADBFAiEA87NkGCv47e5RWc8DsFd/\n' +
+    'zL6/2Xn2EoveC+HoUYpxhZMCIAG+ZuTLmUsjalUGbWyR101hxHfvr4ImbEMeYSaA\n' +
+    'sVBn\n' +
+    '-----END CERTIFICATE-----\n';
+
+const rootCaPem = '-----BEGIN CERTIFICATE-----\n' +
+    'MIICWzCCAgGgAwIBAgIUd/I1bFJJw/xQtPEJP6C1E4Fj9jswCgYIKoZIzj0EAwIw\n' +
+    'ezELMAkGA1UEBhMCQ04xEDAOBgNVBAgMB0JlaWppbmcxEDAOBgNVBAcMB0JlaWpp\n' +
+    'bmcxGjAYBgNVBAoMEVRlc3QgT3JnYW5pemF0aW9uMRUwEwYDVQQLDAxUZXN0IFJv\n' +
+    'b3QgQ0ExFTATBgNVBAMMDFRlc3QgUm9vdCBDQTAeFw0yNjAzMzEwODI2NTdaFw0z\n' +
+    'NjAzMjgwODI2NTdaMHsxCzAJBgNVBAYTAkNOMRAwDgYDVQQIDAdCZWlqaW5nMRAw\n' +
+    'DgYDVQQHDAdCZWlqaW5nMRowGAYDVQQKDBFUZXN0IE9yZ2FuaXphdGlvbjEVMBMG\n' +
+    'A1UECwwMVGVzdCBSb290IENBMRUwEwYDVQQDDAxUZXN0IFJvb3QgQ0EwWTATBgcq\n' +
+    'hkjOPQIBBggqhkjOPQMBBwNCAASFeWawqQET+c6EowNooKYiTw1KPzJBgssxQXo7\n' +
+    'UEXSQnLHh8sBwVvNN4oFVFImT31DyJVKwxBXpwbrEN1s8J1Io2MwYTAPBgNVHRMB\n' +
+    'Af8EBTADAQH/MA4GA1UdDwEB/wQEAwIBBjAdBgNVHQ4EFgQUv53eHWHVt8xcUNaZ\n' +
+    'dlPCP231AN8wHwYDVR0jBBgwFoAUv53eHWHVt8xcUNaZdlPCP231AN8wCgYIKoZI\n' +
+    'zj0EAwIDSAAwRQIhAIbyIrOZL1GhkRiI2i4IhKmFa4AoXJftTEA5wev99QpkAiA3\n' +
+    'khFrJ4rRSpHqbfGN1U14HkFKiCXBalaIe+NISxgC3Q==\n' +
+    '-----END CERTIFICATE-----\n';
+
+// Convert the string into a Uint8Array.
+function stringToUint8Array(str: string): Uint8Array {
+  let arr: Array<number> = [];
+  for (let i = 0, j = str.length; i < j; i++) {
+    arr.push(str.charCodeAt(i));
+  }
+  return new Uint8Array(arr);
+}
+
+async function validateCert(): Promise<void> {
+  try {
+    // Create an endEntityCertPem object.
+    let certEncodingBlob: cert.EncodingBlob = {
+      data: stringToUint8Array(endEntityCertPem),
+      encodingFormat: cert.EncodingFormat.FORMAT_PEM
+    };
+    let x509Cert = await cert.createX509Cert(certEncodingBlob);
+
+    // Create a trust anchor certificate (root CA).
+    let rootCaEncodingBlob: cert.EncodingBlob = {
+      data: stringToUint8Array(rootCaPem),
+      encodingFormat: cert.EncodingFormat.FORMAT_PEM
+    };
+    let rootCaCert = await cert.createX509Cert(rootCaEncodingBlob);
+
+    // Create an intermediate certificate.
+    let intermediateCaEncodingBlob: cert.EncodingBlob = {
+      data: stringToUint8Array(intermediateCaPem),
+      encodingFormat: cert.EncodingFormat.FORMAT_PEM
+    };
+    let intermediateCaCert = await cert.createX509Cert(intermediateCaEncodingBlob);
+
+    // Set verification parameters.
+    let params: cert.CertValidationParams = {
+      trustedCerts: [rootCaCert],
+      untrustedCerts: [intermediateCaCert],
+      validateDate: false
+    };
+
+    // Create a validator and verify the certificate.
+    let validator = cert.createCertChainValidator('PKIX');
+    let result = await validator.validateCert(x509Cert, params);
+
+    console.info('Certificate validation succeeded!');
+    console.info(`Verified chain length: ${result.certChain.length}`);
+    for (let i = 0; i < result.certChain.length; i++) {
+      let subject = result.certChain[i].getSubjectX500DistinguishedName().getName(cert.EncodingType.ENCODING_UTF8);
+      console.info(`Cert ${i}: ${subject}`);
+    }
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    console.error(`validate failed, errCode: ${e.code}, errMsg: ${e.message}`);
+  }
+}
+
+validateCert();
+```
+
 ## X509CrlEntry<sup>(deprecated)</sup>
 
-Provides APIs for operating the revoked certificates.
+Represents the CRL entry.
 
 > **NOTE**
 >
-> This API is supported since API version 9 and deprecated since API version 11. Use [X509CrlEntry](#x509crlentry11) instead.
+> This API is supported since API version 9 and deprecated since API version 11. Use [X509CRLEntry](#x509crlentry11) instead.
 
 ### getEncoded<sup>(deprecated)</sup>
 
@@ -8346,13 +8685,13 @@ Obtains the serialized data of this revoked certificate. This API uses an asynch
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRLEntry.getEncoded](#getencoded11-2) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                                         | Mandatory| Description                                |
 | -------- | --------------------------------------------- | ---- | ------------------------------------ |
-| callback | AsyncCallback\<[EncodingBlob](#encodingblob)> | Yes  | Callback invoked to return the serialized data of the revoked certificate.|
+| callback | AsyncCallback\<[EncodingBlob](#encodingblob)> | Yes  | Callback used to return the result. If the serialized data of the CRL entry is obtained successfully, **err** is **undefined**, and **data** is the serialized data of the CRL entry obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -8360,10 +8699,10 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -8387,7 +8726,7 @@ let crlData = '-----BEGIN X509 CRL-----\n' +
   'J1LaNwiL+gDxI9rMQmlhsUGJmPIPdRs9uYyI+f854lsWYisD2PUEpn3DbEvzwYeQ\n' +
   '5SqQoPDoM+YfZZa23hoTLsu52toXobP74sf/9K501p/+8hm4ROMLBoRT86GQKY6g\n' +
   'eavsH0Q3\n' +
-  '-----END X509 CRL-----\n'
+  '-----END X509 CRL-----\n';
 
 let encodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(crlData),
@@ -8404,7 +8743,7 @@ cert.createX509Crl(encodingBlob, (err, x509Crl) => {
     try {
       let serialNumber = 1000;
       let crlEntry = x509Crl.getRevokedCert(serialNumber);
-      crlEntry.getEncoded((error, data) => {
+      crlEntry.getEncoded((error, _data) => {
         if (error) {
           console.error(`getEncoded failed, errCode: ${error.code}, errMsg: ${error.message}`);
         } else {
@@ -8416,7 +8755,7 @@ cert.createX509Crl(encodingBlob, (err, x509Crl) => {
       console.error(`getRevokedCert failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
-})
+});
 ```
 
 ### getEncoded<sup>(deprecated)</sup>
@@ -8429,13 +8768,13 @@ Obtains the serialized data of this revoked certificate. This API uses a promise
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRLEntry.getEncoded](#getencoded11-3) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                                   | Description                      |
 | --------------------------------------- | -------------------------- |
-| Promise\<[EncodingBlob](#encodingblob)> | Promise used to return the serialized data of the revoked certificate obtained.|
+| Promise\<[EncodingBlob](#encodingblob)> | Promise used to return the serialized data of the revoked certificate.|
 
 **Error codes**
 
@@ -8443,10 +8782,10 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -8470,7 +8809,7 @@ let crlData = '-----BEGIN X509 CRL-----\n' +
   'J1LaNwiL+gDxI9rMQmlhsUGJmPIPdRs9uYyI+f854lsWYisD2PUEpn3DbEvzwYeQ\n' +
   '5SqQoPDoM+YfZZa23hoTLsu52toXobP74sf/9K501p/+8hm4ROMLBoRT86GQKY6g\n' +
   'eavsH0Q3\n' +
-  '-----END X509 CRL-----\n'
+  '-----END X509 CRL-----\n';
 
 let encodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(crlData),
@@ -8487,7 +8826,7 @@ cert.createX509Crl(encodingBlob, (err, x509Crl) => {
     try {
       let serialNumber = 1000;
       let crlEntry = x509Crl.getRevokedCert(serialNumber);
-      crlEntry.getEncoded().then(result => {
+      crlEntry.getEncoded().then(_result => {
         console.info('getEncoded result: success.');
       }).catch((error: BusinessError) => {
         console.error(`getEncoded failed, errCode: ${error.code}, errMsg: ${error.message}`);
@@ -8497,7 +8836,7 @@ cert.createX509Crl(encodingBlob, (err, x509Crl) => {
       console.error(`getRevokedCert failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
-})
+});
 ```
 
 ### getSerialNumber<sup>(deprecated)</sup>
@@ -8510,7 +8849,7 @@ Obtains the serial number of this revoked certificate.
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRLEntry.getSerialNumber](#getserialnumber11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -8540,7 +8879,7 @@ let crlData = '-----BEGIN X509 CRL-----\n' +
   'J1LaNwiL+gDxI9rMQmlhsUGJmPIPdRs9uYyI+f854lsWYisD2PUEpn3DbEvzwYeQ\n' +
   '5SqQoPDoM+YfZZa23hoTLsu52toXobP74sf/9K501p/+8hm4ROMLBoRT86GQKY6g\n' +
   'eavsH0Q3\n' +
-  '-----END X509 CRL-----\n'
+  '-----END X509 CRL-----\n';
 
 let encodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(crlData),
@@ -8558,31 +8897,32 @@ cert.createX509Crl(encodingBlob, (err, x509Crl) => {
       let serialNumber = 1000;
       let crlEntry = x509Crl.getRevokedCert(serialNumber);
       serialNumber = crlEntry.getSerialNumber();
+      console.info('serialNumber = ' + serialNumber);
     } catch (error) {
       let e: BusinessError = error as BusinessError;
       console.error(`getRevokedCert or getSerialNumber failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
-})
+});
 ```
 
 ### getCertIssuer<sup>(deprecated)</sup>
 
 getCertIssuer() : DataBlob
 
-Obtains the issuer of a revoked certificate.
+Obtains the issuer name of a revoked certificate.
 
 > **NOTE**
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRLEntry.getCertIssuer](#getcertissuer11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                 | Description                    |
 | --------------------- | ----------------------- |
-| [DataBlob](#datablob) | Issuer of the revoked certificate obtained.|
+| [DataBlob](#datablob) | Issuer name of a revoked certificate.|
 
 **Error codes**
 
@@ -8590,9 +8930,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message      |
 | -------- | -------------- |
-| 801 | this operation is not supported. |
-| 19020001 | memory malloc failed.  |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
+| 801 | This operation is not supported. |
+| 19020001 | Memory malloc failed.  |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
 
 **Example**
 
@@ -8616,7 +8956,7 @@ let crlData = '-----BEGIN X509 CRL-----\n' +
   'J1LaNwiL+gDxI9rMQmlhsUGJmPIPdRs9uYyI+f854lsWYisD2PUEpn3DbEvzwYeQ\n' +
   '5SqQoPDoM+YfZZa23hoTLsu52toXobP74sf/9K501p/+8hm4ROMLBoRT86GQKY6g\n' +
   'eavsH0Q3\n' +
-  '-----END X509 CRL-----\n'
+  '-----END X509 CRL-----\n';
 
 let encodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(crlData),
@@ -8634,31 +8974,32 @@ cert.createX509Crl(encodingBlob, (err, x509Crl) => {
       let serialNumber = 1000;
       let crlEntry = x509Crl.getRevokedCert(serialNumber);
       let issuer = crlEntry.getCertIssuer();
+      console.info('issuer = ' + issuer.data);
     } catch (error) {
       let e: BusinessError = error as BusinessError;
       console.error(`getRevokedCert or getCertIssuer failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
-})
+});
 ```
 
 ### getRevocationDate<sup>(deprecated)</sup>
 
 getRevocationDate() : string
 
-Obtains the date when the certificate is revoked.
+Obtains the revocation date of a certificate.
 
 > **NOTE**
 >
 > This API is supported since API version 9 and deprecated since API version 11. Use [X509CRLEntry.getRevocationDate](#getrevocationdate11) instead.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type  | Description               |
 | ------ | ------------------ |
-| string | Certificate revocation date, in ASN.1 format.|
+| string | Certificate revocation date obtained, in **ASN.1 UTCTime** or **GeneralizedTime** format.|
 
 **Error codes**
 
@@ -8666,9 +9007,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -8692,7 +9033,7 @@ let crlData = '-----BEGIN X509 CRL-----\n' +
   'J1LaNwiL+gDxI9rMQmlhsUGJmPIPdRs9uYyI+f854lsWYisD2PUEpn3DbEvzwYeQ\n' +
   '5SqQoPDoM+YfZZa23hoTLsu52toXobP74sf/9K501p/+8hm4ROMLBoRT86GQKY6g\n' +
   'eavsH0Q3\n' +
-  '-----END X509 CRL-----\n'
+  '-----END X509 CRL-----\n';
 
 let encodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(crlData),
@@ -8710,33 +9051,34 @@ cert.createX509Crl(encodingBlob, (err, x509Crl) => {
       let serialNumber = 1000;
       let crlEntry = x509Crl.getRevokedCert(serialNumber);
       let date = crlEntry.getRevocationDate();
+      console.info('date = ' + date);
     } catch (error) {
       let e: BusinessError = error as BusinessError;
       console.error(`getRevokedCert or getRevocationDate failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
-})
+});
 ```
 
 ## X509CRLEntry<sup>11+</sup>
 
-Provides APIs for operating the revoked certificates.
+Represents the CRL entry.
 
 ### getEncoded<sup>11+</sup>
 
 getEncoded(callback : AsyncCallback\<EncodingBlob>) : void
 
-Obtains the serialized data of this revoked certificate. This API uses an asynchronous callback to return the result.
+Obtains the serialized data of a revoked certificate. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                                         | Mandatory| Description                                |
 | -------- | --------------------------------------------- | ---- | ------------------------------------ |
-| callback | AsyncCallback\<[EncodingBlob](#encodingblob)> | Yes  | Callback invoked to return the serialized data of the revoked certificate.|
+| callback | AsyncCallback\<[EncodingBlob](#encodingblob)> | Yes  | Callback used to return the result. If the serialized data of the CRL entry is obtained successfully, **err** is **undefined**, and **data** is the serialized data of the CRL entry obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -8744,10 +9086,10 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -8771,7 +9113,7 @@ let crlData = '-----BEGIN X509 CRL-----\n' +
   'J1LaNwiL+gDxI9rMQmlhsUGJmPIPdRs9uYyI+f854lsWYisD2PUEpn3DbEvzwYeQ\n' +
   '5SqQoPDoM+YfZZa23hoTLsu52toXobP74sf/9K501p/+8hm4ROMLBoRT86GQKY6g\n' +
   'eavsH0Q3\n' +
-  '-----END X509 CRL-----\n'
+  '-----END X509 CRL-----\n';
 
 let encodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(crlData),
@@ -8788,7 +9130,7 @@ cert.createX509CRL(encodingBlob, (err, x509CRL) => {
     try {
       let serialNumber = BigInt(1000);
       let crlEntry = x509CRL.getRevokedCert(serialNumber);
-      crlEntry.getEncoded((error, data) => {
+      crlEntry.getEncoded((error, _data) => {
         if (error) {
           console.error(`getEncoded failed, errCode: ${error.code}, errMsg: ${error.message}`);
         } else {
@@ -8800,24 +9142,24 @@ cert.createX509CRL(encodingBlob, (err, x509CRL) => {
       console.error(`getRevokedCert failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
-})
+});
 ```
 
 ### getEncoded<sup>11+</sup>
 
 getEncoded() : Promise\<EncodingBlob>
 
-Obtains the serialized data of this revoked certificate. This API uses a promise to return the result.
+Obtains the serialized data of a revoked certificate. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                                   | Description                      |
 | --------------------------------------- | -------------------------- |
-| Promise\<[EncodingBlob](#encodingblob)> | Promise used to return the serialized data of the revoked certificate obtained.|
+| Promise\<[EncodingBlob](#encodingblob)> | Promise used to return the serialized data of the CRL entry.|
 
 **Error codes**
 
@@ -8825,10 +9167,10 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types.|
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -8852,7 +9194,7 @@ let crlData = '-----BEGIN X509 CRL-----\n' +
   'J1LaNwiL+gDxI9rMQmlhsUGJmPIPdRs9uYyI+f854lsWYisD2PUEpn3DbEvzwYeQ\n' +
   '5SqQoPDoM+YfZZa23hoTLsu52toXobP74sf/9K501p/+8hm4ROMLBoRT86GQKY6g\n' +
   'eavsH0Q3\n' +
-  '-----END X509 CRL-----\n'
+  '-----END X509 CRL-----\n';
 
 let encodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(crlData),
@@ -8869,7 +9211,7 @@ cert.createX509CRL(encodingBlob, (err, x509CRL) => {
     try {
       let serialNumber = BigInt(1000);
       let crlEntry = x509CRL.getRevokedCert(serialNumber);
-      crlEntry.getEncoded().then(result => {
+      crlEntry.getEncoded().then(_result => {
         console.info('getEncoded result: success.');
       }).catch((error: BusinessError) => {
         console.error(`getEncoded failed, errCode: ${error.code}, errMsg: ${error.message}`);
@@ -8879,7 +9221,7 @@ cert.createX509CRL(encodingBlob, (err, x509CRL) => {
       console.error(`getRevokedCert failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
-})
+});
 ```
 
 ### getSerialNumber<sup>11+</sup>
@@ -8888,15 +9230,15 @@ getSerialNumber() : bigint
 
 Obtains the serial number of this revoked certificate.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type  | Description                  |
 | ------ | ---------------------- |
-| bigint | Serial number of the revoked certificate obtained.|
+| bigint | Serial number of a revoked certificate.|
 
 **Error codes**
 
@@ -8904,9 +9246,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -8930,7 +9272,7 @@ let crlData = '-----BEGIN X509 CRL-----\n' +
   'J1LaNwiL+gDxI9rMQmlhsUGJmPIPdRs9uYyI+f854lsWYisD2PUEpn3DbEvzwYeQ\n' +
   '5SqQoPDoM+YfZZa23hoTLsu52toXobP74sf/9K501p/+8hm4ROMLBoRT86GQKY6g\n' +
   'eavsH0Q3\n' +
-  '-----END X509 CRL-----\n'
+  '-----END X509 CRL-----\n';
 
 let encodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(crlData),
@@ -8948,33 +9290,34 @@ cert.createX509CRL(encodingBlob, (err, x509CRL) => {
       let serialNumber = BigInt(1000);
       let crlEntry = x509CRL.getRevokedCert(serialNumber);
       serialNumber = crlEntry.getSerialNumber();
+      console.info('serialNumber = ' + serialNumber);
     } catch (error) {
       let e: BusinessError = error as BusinessError;
       console.error(`getRevokedCert or getSerialNumber failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
-})
+});
 ```
 
 ### getCertIssuer<sup>11+</sup>
 
 getCertIssuer() : DataBlob
 
-Obtains the issuer of a revoked certificate.
+Obtains the issuer name of a revoked certificate.
 
 > **NOTE**
 >
-> The obtained issuer of this revoked certificate contains a string terminator.
+> The obtained issuer name of the revoked certificate contains a string terminator.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                 | Description                      |
 | --------------------- | -------------------------- |
-| [DataBlob](#datablob) | Issuer of the revoked certificate obtained.|
+| [DataBlob](#datablob) | Issuer name of a revoked certificate.|
 
 **Error codes**
 
@@ -8982,10 +9325,10 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 801 | this operation is not supported. |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 801 | This operation is not supported. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -9009,7 +9352,7 @@ let crlData = '-----BEGIN X509 CRL-----\n' +
   'J1LaNwiL+gDxI9rMQmlhsUGJmPIPdRs9uYyI+f854lsWYisD2PUEpn3DbEvzwYeQ\n' +
   '5SqQoPDoM+YfZZa23hoTLsu52toXobP74sf/9K501p/+8hm4ROMLBoRT86GQKY6g\n' +
   'eavsH0Q3\n' +
-  '-----END X509 CRL-----\n'
+  '-----END X509 CRL-----\n';
 
 let encodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(crlData),
@@ -9027,23 +9370,24 @@ cert.createX509CRL(encodingBlob, (err, x509CRL) => {
       let serialNumber = BigInt(1000);
       let crlEntry = x509CRL.getRevokedCert(serialNumber);
       let issuer = crlEntry.getCertIssuer();
+      console.info('issuer = ' + issuer.data);
     } catch (error) {
       let e: BusinessError = error as BusinessError;
       console.error(`getRevokedCert or getCertIssuer failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
-})
+});
 ```
 
 ### getCertIssuer<sup>20+</sup>
 
 getCertIssuer(encodingType: EncodingType): string
 
-Obtains the issuer information of a revoked certificate based on the encoding type.
+Obtains the issuer name of a revoked certificate based on the encoding type.
 
-**Atomic service API**: This API can be used in atomic services since API version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -9055,7 +9399,7 @@ Obtains the issuer information of a revoked certificate based on the encoding ty
 
 | Type  | Description                |
 | ------ | -------------------- |
-| string | Issuer information of a revoked certificate, separated by commas (,).|
+| string | Issuer name of a revoked certificate, separated by commas (,).|
 
 **Error codes**
 
@@ -9063,11 +9407,11 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 801 | this operation is not supported. |
-| 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
-| 19020003 | parameter check failed. Possible causes: <br>1. The value of encodingType is not in the EncodingType enumeration range.|
-| 19030001 | crypto operation error. |
+| 801 | This operation is not supported. |
+| 19020001 | Memory malloc failed.                                     |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
+| 19020003 | Parameter check failed. Possible causes: <br>1. The value of encodingType is not in the EncodingType enumeration range.|
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -9116,7 +9460,7 @@ cert.createX509CRL(encodingBlob, (err, x509CRL) => {
       console.error(`getRevokedCert or getCertIssuer failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
-})
+});
 ```
 
 ### getRevocationDate<sup>11+</sup>
@@ -9125,9 +9469,9 @@ getRevocationDate() : string
 
 Obtains the date when the certificate was revoked.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -9141,9 +9485,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -9167,7 +9511,7 @@ let crlData = '-----BEGIN X509 CRL-----\n' +
   'J1LaNwiL+gDxI9rMQmlhsUGJmPIPdRs9uYyI+f854lsWYisD2PUEpn3DbEvzwYeQ\n' +
   '5SqQoPDoM+YfZZa23hoTLsu52toXobP74sf/9K501p/+8hm4ROMLBoRT86GQKY6g\n' +
   'eavsH0Q3\n' +
-  '-----END X509 CRL-----\n'
+  '-----END X509 CRL-----\n';
 
 let encodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(crlData),
@@ -9185,12 +9529,13 @@ cert.createX509CRL(encodingBlob, (err, x509CRL) => {
       let serialNumber = BigInt(1000);
       let crlEntry = x509CRL.getRevokedCert(serialNumber);
       let date = crlEntry.getRevocationDate();
+      console.info('date = ' + date);
     } catch (error) {
       let e: BusinessError = error as BusinessError;
       console.error(`getRevokedCert or getRevocationDate failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
-})
+});
 ```
 
 ### getExtensions<sup>11+</sup>
@@ -9199,15 +9544,15 @@ getExtensions(): DataBlob
 
 Obtains the CRL extensions.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                 | Description                    |
 | --------------------- | ------------------------ |
-| [DataBlob](#datablob) | CRl extensions obtained.|
+| [DataBlob](#datablob) | X.509 CRL entry extensions obtained.|
 
 **Error codes**
 
@@ -9215,9 +9560,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -9262,29 +9607,30 @@ cert.createX509CRL(encodingBlob, (err, x509CRL) => {
       let serialNumber = BigInt(4);
       let crlEntry = x509CRL.getRevokedCert(serialNumber);
       let extensions = crlEntry.getExtensions();
+      console.info('extensions = ' + extensions.data);
     } catch (error) {
       let e: BusinessError = error as BusinessError;
       console.error(`getRevokedCert or getExtensions failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
-})
+});
 ```
 
 ### hasExtensions<sup>11+</sup>
 
 hasExtensions(): boolean
 
-Checks whether this CRL entry has extensions.
+Checks whether a CRL entry has extensions.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type   | Description                                                |
 | ------- | ---------------------------------------------------- |
-| boolean | Returns **true** if the CRL entry has extension; returns **false** otherwise.|
+| boolean | **true** is returned if the CRL entry has extensions; **false** is returned otherwise.|
 
 **Error codes**
 
@@ -9292,9 +9638,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -9318,7 +9664,7 @@ let crlData = '-----BEGIN X509 CRL-----\n' +
   'J1LaNwiL+gDxI9rMQmlhsUGJmPIPdRs9uYyI+f854lsWYisD2PUEpn3DbEvzwYeQ\n' +
   '5SqQoPDoM+YfZZa23hoTLsu52toXobP74sf/9K501p/+8hm4ROMLBoRT86GQKY6g\n' +
   'eavsH0Q3\n' +
-  '-----END X509 CRL-----\n'
+  '-----END X509 CRL-----\n';
 
 let encodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(crlData),
@@ -9336,29 +9682,30 @@ cert.createX509CRL(encodingBlob, (err, x509CRL) => {
       let serialNumber = BigInt(1000);
       let crlEntry = x509CRL.getRevokedCert(serialNumber);
       let hasExtensions = crlEntry.hasExtensions();
+      console.info('hasExtensions = ' + hasExtensions);
     } catch (error) {
       let e: BusinessError = error as BusinessError;
       console.error(`getRevokedCert or hasExtensions failed, errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
-})
+});
 ```
 
 ### getCertIssuerX500DistinguishedName<sup>12+</sup>
 
 getCertIssuerX500DistinguishedName(): X500DistinguishedName
 
-Obtains the DN of the certificate issuer.
+Obtains the X.500 distinguished name object of the issuer of a revoked certificate.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type   | Description                                                |
 | ------- | ---------------------------------------------------- |
-| [X500DistinguishedName](#x500distinguishedname12) | DN object obtained.|
+| [X500DistinguishedName](#x500distinguishedname12) | X.500 distinguished name object.|
 
 **Error codes**
 
@@ -9366,9 +9713,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -9392,7 +9739,7 @@ let crlData = '-----BEGIN X509 CRL-----\n' +
   'J1LaNwiL+gDxI9rMQmlhsUGJmPIPdRs9uYyI+f854lsWYisD2PUEpn3DbEvzwYeQ\n' +
   '5SqQoPDoM+YfZZa23hoTLsu52toXobP74sf/9K501p/+8hm4ROMLBoRT86GQKY6g\n' +
   'eavsH0Q3\n' +
-  '-----END X509 CRL-----\n'
+  '-----END X509 CRL-----\n';
 
 let encodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(crlData),
@@ -9405,7 +9752,7 @@ async function certGetCertIssuerX500DistinguishedName() {
   try {
     x509Crl = await cert.createX509CRL(encodingBlob);
     console.info('createX509CRL result: success.');
-    let name = x509Crl.getRevokedCert(BigInt(1000)).getCertIssuerX500DistinguishedName();
+    x509Crl.getRevokedCert(BigInt(1000)).getCertIssuerX500DistinguishedName();
   } catch (error) {
     let e: BusinessError = error as BusinessError;
     console.error(`createX509CRL failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -9419,9 +9766,9 @@ toString(): string
 
 Converts the object data into a string.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -9435,9 +9782,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -9461,7 +9808,7 @@ let crlData = '-----BEGIN X509 CRL-----\n' +
   'J1LaNwiL+gDxI9rMQmlhsUGJmPIPdRs9uYyI+f854lsWYisD2PUEpn3DbEvzwYeQ\n' +
   '5SqQoPDoM+YfZZa23hoTLsu52toXobP74sf/9K501p/+8hm4ROMLBoRT86GQKY6g\n' +
   'eavsH0Q3\n' +
-  '-----END X509 CRL-----\n'
+  '-----END X509 CRL-----\n';
 
 let encodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(crlData),
@@ -9488,15 +9835,15 @@ hashCode(): Uint8Array
 
 Obtains the hash value of the data in DER format.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type   | Description                                                |
 | ------- | ---------------------------------------------------- |
-| Uint8Array | Hash value obtained.|
+| Uint8Array | Hash value in DER format obtained.|
 
 **Error codes**
 
@@ -9504,9 +9851,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -9530,7 +9877,7 @@ let crlData = '-----BEGIN X509 CRL-----\n' +
   'J1LaNwiL+gDxI9rMQmlhsUGJmPIPdRs9uYyI+f854lsWYisD2PUEpn3DbEvzwYeQ\n' +
   '5SqQoPDoM+YfZZa23hoTLsu52toXobP74sf/9K501p/+8hm4ROMLBoRT86GQKY6g\n' +
   'eavsH0Q3\n' +
-  '-----END X509 CRL-----\n'
+  '-----END X509 CRL-----\n';
 
 let encodingBlob: cert.EncodingBlob = {
   data: stringToUint8Array(crlData),
@@ -9555,17 +9902,17 @@ async function certHashCode() {
 
 getExtensionsObject(): CertExtension
 
-Obtains the certification extensions in DER format.
+Obtains the extension object of a CRL entry.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type   | Description                                                |
 | ------- | ---------------------------------------------------- |
-| [CertExtension](#certextension10) | Certificate extensions object obtained.|
+| [CertExtension](#certextension10) | Extension object of a CRL entry.|
 
 **Error codes**
 
@@ -9573,9 +9920,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.          |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.         |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -9679,7 +10026,7 @@ async function certGetExtensionsObject() {
   try {
     x509Crl = await cert.createX509CRL(encodingBlob);
     console.info('createX509CRL result: success.');
-    let object = x509Crl.getRevokedCert(BigInt('14091103387070223745671018446433705560')).getExtensionsObject();
+    x509Crl.getRevokedCert(BigInt('14091103387070223745671018446433705560')).getExtensionsObject();
   } catch (error) {
     let e: BusinessError = error as BusinessError;
     console.error(`createX509CRL failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -9693,22 +10040,22 @@ createCertCRLCollection(certs: Array\<X509Cert>, crls?: Array\<X509CRL>): CertCR
 
 Creates an object for a collection of X.509 certificates and CRLs.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                                 | Mandatory| Description                          |
 | -------- | ------------------------------------- | ---- | ------------------------------ |
-| certs | Array\<[X509Cert](#x509cert)>    | Yes  |  X.509 certificates. |
-| crls | Array\<[X509CRL](#x509crl11)>     | No  |  X.509 CRLs. |
+| certs | Array\<[X509Cert](#x509cert)>    | Yes  |  X.509 certificate array. |
+| crls | Array\<[X509CRL](#x509crl11)>     | No  |  X.509 CRL array. |
 
 **Return value**
 
 | Type              | Description                |
 | ------------------ | -------------------- |
-| [CertCRLCollection](#certcrlcollection11) | **CertCRLCollection** object created.|
+| [CertCRLCollection](#certcrlcollection11) | Certificate and CRL collection.|
 
 **Error codes**
 
@@ -9716,8 +10063,8 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed.           |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed.           |
 
 **Example**
 
@@ -9791,7 +10138,7 @@ async function createCollection() {
   const x509Cert = await createX509Cert();
   const x509CRL = await createX509CRL();
   try {
-    const collection: cert.CertCRLCollection = cert.createCertCRLCollection([x509Cert], [x509CRL]);
+    cert.createCertCRLCollection([x509Cert], [x509CRL]);
     console.info('createCertCRLCollection result: success.');
   } catch (err) {
     let e: BusinessError = err as BusinessError;
@@ -9802,7 +10149,7 @@ async function createCollection() {
 
 ## CertCRLCollection<sup>11+</sup>
 
-Provides APIs for locating certificates or CRLs in a **CertCRLCollection** object.
+Certificate and CRL collection.
 
 ### selectCerts<sup>11+</sup>
 
@@ -9810,9 +10157,9 @@ selectCerts(param: X509CertMatchParameters): Promise\<Array\<X509Cert>>
 
 Selects certificates that match the specified parameters. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -9824,7 +10171,7 @@ Selects certificates that match the specified parameters. This API uses a promis
 
 | Type                                   | Description                                   |
 | --------------------------------------- | --------------------------------------- |
-| Promise\<Array\<[X509Cert](#x509cert)>> | Promise used to return the result. Matched certificates.|
+| Promise\<Array\<[X509Cert](#x509cert)>> | Promise used to return an array of matched certificate objects.|
 
 **Error codes**
 
@@ -9832,9 +10179,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed.           |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed.           |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -9886,11 +10233,13 @@ async function selectCerts() {
     const param: cert.X509CertMatchParameters = {
       x509Cert,
       validDate: '20231121074700Z',
-      issuer: new Uint8Array([0x30, 0x1a, 0x31, 0x18, 0x30, 0x16, 0x06, 0x03, 0x55, 0x04, 0x03, 0x0C, 0x0F, 0x45, 0x78, 0x61, 0x6D, 0x70, 0x6C, 0x65, 0x20, 0x52, 0x6F, 0x6F, 0x74, 0x20, 0x43, 0x41]),
-      subject: new Uint8Array([0x30, 0x1a, 0x31, 0x18, 0x30, 0x16, 0x06, 0x03, 0x55, 0x04, 0x03, 0x0C, 0x0F, 0x45, 0x78, 0x61, 0x6D, 0x70, 0x6C, 0x65, 0x20, 0x52, 0x6F, 0x6F, 0x74, 0x20, 0x43, 0x41]),
+      issuer: new Uint8Array([0x30, 0x1a, 0x31, 0x18, 0x30, 0x16, 0x06, 0x03, 0x55, 0x04, 0x03, 0x0C, 0x0F, 0x45, 0x78,
+        0x61, 0x6D, 0x70, 0x6C, 0x65, 0x20, 0x52, 0x6F, 0x6F, 0x74, 0x20, 0x43, 0x41]),
+      subject: new Uint8Array([0x30, 0x1a, 0x31, 0x18, 0x30, 0x16, 0x06, 0x03, 0x55, 0x04, 0x03, 0x0C, 0x0F, 0x45, 0x78,
+        0x61, 0x6D, 0x70, 0x6C, 0x65, 0x20, 0x52, 0x6F, 0x6F, 0x74, 0x20, 0x43, 0x41]),
       publicKeyAlgID: '1.2.840.10045.2.1'
     };
-    const certs = await collection.selectCerts(param);
+    await collection.selectCerts(param);
     console.info('call selectCerts result: success.');
   } catch (err) {
     let e: BusinessError = err as BusinessError;
@@ -9905,16 +10254,16 @@ selectCerts(param: X509CertMatchParameters, callback: AsyncCallback\<Array\<X509
 
 Selects certificates that match the specified parameters. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name   | Type                           | Mandatory| Description           |
 | --------- | ------------------------------- | ---- | ----------------- |
 | param | [X509CertMatchParameters](#x509certmatchparameters11) | Yes  | Parameters used to match the certificates.  |
-| callback  | AsyncCallback\<Array\<[X509Cert](#x509cert)>>    | Yes  | Callback invoked to return the matched certificates.|
+| callback  | AsyncCallback\<Array\<[X509Cert](#x509cert)>>    | Yes  | Callback used to return the result. If the certificate objects are successfully found, **err** is **undefined** and **data** is an array of matched certificate objects obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -9922,9 +10271,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed.           |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed.           |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -9975,11 +10324,13 @@ async function selectCerts() {
   const param: cert.X509CertMatchParameters = {
     x509Cert,
     validDate: '20231121074700Z',
-    issuer: new Uint8Array([0x30, 0x1a, 0x31, 0x18, 0x30, 0x16, 0x06, 0x03, 0x55, 0x04, 0x03, 0x0C, 0x0F, 0x45, 0x78, 0x61, 0x6D, 0x70, 0x6C, 0x65, 0x20, 0x52, 0x6F, 0x6F, 0x74, 0x20, 0x43, 0x41]),
-    subject: new Uint8Array([0x30, 0x1a, 0x31, 0x18, 0x30, 0x16, 0x06, 0x03, 0x55, 0x04, 0x03, 0x0C, 0x0F, 0x45, 0x78, 0x61, 0x6D, 0x70, 0x6C, 0x65, 0x20, 0x52, 0x6F, 0x6F, 0x74, 0x20, 0x43, 0x41]),
+    issuer: new Uint8Array([0x30, 0x1a, 0x31, 0x18, 0x30, 0x16, 0x06, 0x03, 0x55, 0x04, 0x03, 0x0C, 0x0F, 0x45, 0x78,
+      0x61, 0x6D, 0x70, 0x6C, 0x65, 0x20, 0x52, 0x6F, 0x6F, 0x74, 0x20, 0x43, 0x41]),
+    subject: new Uint8Array([0x30, 0x1a, 0x31, 0x18, 0x30, 0x16, 0x06, 0x03, 0x55, 0x04, 0x03, 0x0C, 0x0F, 0x45, 0x78,
+      0x61, 0x6D, 0x70, 0x6C, 0x65, 0x20, 0x52, 0x6F, 0x6F, 0x74, 0x20, 0x43, 0x41]),
     publicKeyAlgID: '1.2.840.10045.2.1'
   };
-  collection.selectCerts(param, (err, certs) => {
+  collection.selectCerts(param, (err, _certs) => {
     if (err) {
       console.error(`selectCerts failed, errCode: ${err.code}, errMsg: ${err.message}`);
     } else {
@@ -9995,9 +10346,9 @@ selectCRLs(param: X509CRLMatchParameters): Promise\<Array\<X509CRL>>
 
 Selects CRLs that match the specified parameters. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -10017,9 +10368,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed.           |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed.           |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -10083,7 +10434,7 @@ async function createX509Cert(): Promise<cert.X509Cert> {
     '-----END CERTIFICATE-----\r\n';
   const certEncodingBlob: cert.EncodingBlob = {
     data: stringToUint8Array(certData),
-    encodingFormat: cert.EncodingFormat.FORMAT_PEM,
+    encodingFormat: cert.EncodingFormat.FORMAT_PEM
   };
 
   let x509Cert: cert.X509Cert = {} as cert.X509Cert;
@@ -10109,9 +10460,9 @@ async function selectCRLs() {
       0x30, 0x09, 0x06, 0x03, 0x55, 0x04, 0x0A, 0x13, 0x02, 0x74, 0x73, 0x31, 0x0B, 0x30, 0x09, 0x06, 0x03, 0x55, 0x04,
       0x0B, 0x13, 0x02, 0x74, 0x73, 0x31, 0x0B, 0x30, 0x09, 0x06, 0x03, 0x55, 0x04, 0x03, 0x13, 0x02, 0x74, 0x73])],
     x509Cert: x509Cert
-  }
+  };
   try {
-    const crls = await collection.selectCRLs(param);
+    await collection.selectCRLs(param);
     console.info('selectCRLs result: success.');
   } catch (err) {
     let e: BusinessError = err as BusinessError;
@@ -10126,16 +10477,16 @@ selectCRLs(param: X509CRLMatchParameters, callback: AsyncCallback\<Array\<X509CR
 
 Selects CRLs that match the specified parameters. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name   | Type                           | Mandatory| Description           |
 | --------- | ------------------------------- | ---- | ----------------- |
 | param | [X509CRLMatchParameters](#x509crlmatchparameters11) | Yes  | Parameters used to match the CRLs.|
-| callback  | AsyncCallback\<Array\<[X509CRL](#x509crl11)>>    | Yes  | Callback used to return the matched CRLs.|
+| callback  | AsyncCallback\<Array\<[X509CRL](#x509crl11)>>    | Yes  | Callback used to return the result. If the CRLs are successfully found, **err** is **undefined** and **data** is an array of CRLs obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -10143,9 +10494,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed.           |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed.           |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -10209,7 +10560,7 @@ async function createX509Cert(): Promise<cert.X509Cert> {
     '-----END CERTIFICATE-----\r\n';
   const certEncodingBlob: cert.EncodingBlob = {
     data: stringToUint8Array(certData),
-    encodingFormat: cert.EncodingFormat.FORMAT_PEM,
+    encodingFormat: cert.EncodingFormat.FORMAT_PEM
   };
 
   let x509Cert: cert.X509Cert = {} as cert.X509Cert;
@@ -10235,8 +10586,8 @@ async function selectCRLs() {
       0x30, 0x09, 0x06, 0x03, 0x55, 0x04, 0x0A, 0x13, 0x02, 0x74, 0x73, 0x31, 0x0B, 0x30, 0x09, 0x06, 0x03, 0x55, 0x04,
       0x0B, 0x13, 0x02, 0x74, 0x73, 0x31, 0x0B, 0x30, 0x09, 0x06, 0x03, 0x55, 0x04, 0x03, 0x13, 0x02, 0x74, 0x73])],
     x509Cert: x509Cert
-  }
-  collection.selectCRLs(param, (err, crls) => {
+  };
+  collection.selectCRLs(param, (err, _crls) => {
     if (err) {
       console.error(`selectCRLs failed, errCode: ${err.code}, errMsg: ${err.message}`);
     } else {
@@ -10250,11 +10601,11 @@ async function selectCRLs() {
 
 createX509CertChain(inStream: EncodingBlob): Promise\<X509CertChain>
 
-Creates an **X509CertChain** instance. This API uses a promise to return the result.
+Creates an X.509 certificate chain object. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -10266,7 +10617,7 @@ Creates an **X509CertChain** instance. This API uses a promise to return the res
 
 | Type                           | Description            |
 | ------------------------------- | ---------------- |
-| Promise\<[X509CertChain](#x509certchain11)> | **X509CertChain** object created.|
+| Promise\<[X509CertChain](#x509certchain11)> | Promise that returns the **X509CertChain** instance created.|
 
 **Error codes**
 
@@ -10274,9 +10625,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed. |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed. |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -10372,18 +10723,18 @@ createX509CertChain();
 
 createX509CertChain(inStream: EncodingBlob, callback: AsyncCallback\<X509CertChain>): void
 
-Creates an **X509CertChain** instance. This API uses an asynchronous callback to return the result.
+Creates an X.509 certificate chain object. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                                 | Mandatory| Description                      |
 | -------- | ------------------------------------- | ---- | -------------------------- |
 | inStream | [EncodingBlob](#encodingblob)         | Yes  | X.509 certificate serialization data.       |
-| callback | AsyncCallback\<[X509CertChain](#x509certchain11)> | Yes  | Callback invoked to return the **X509CertChain** instance created.|
+| callback | AsyncCallback\<[X509CertChain](#x509certchain11)> | Yes  | Callback used to return the result. If the X.509 certificate chain object is successfully created, **err** is **undefined**, and **data** is the **X509CertChain** instance obtained. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -10391,9 +10742,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed. |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed. |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -10471,7 +10822,7 @@ let encodingBlob: cert.EncodingBlob = {
   encodingFormat: cert.EncodingFormat.FORMAT_PEM
 };
 
-cert.createX509CertChain(encodingBlob, (err, certChain) => {
+cert.createX509CertChain(encodingBlob, (err, _certChain) => {
   if (err) {
     console.error(`createX509CertChain failed, errCode: ${err.code}, errMsg: ${err.message}`);
   } else {
@@ -10486,21 +10837,21 @@ createX509CertChain(certs: Array\<X509Cert>): X509CertChain
 
 Creates an X.509 certificate chain object based on the specified certificates. This API returns the result synchronously.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                 | Mandatory| Description                      |
 | -------- | -------------------- | ---- | -------------------------- |
-| certs    | Array\<[X509Cert](#x509cert)> | Yes  | Array of X.509 certificates.|
+| certs    | Array\<[X509Cert](#x509cert)> | Yes  | X.509 certificates.|
 
 **Return value**
 
 | Type                             | Description                |
 | --------------------------------- | -------------------- |
-| [X509CertChain](#x509certchain11) | **X509CertChain** object created.|
+| [X509CertChain](#x509certchain11) | X.509 certificate chain object.|
 
 **Error codes**
 
@@ -10508,9 +10859,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed. |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed. |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -10572,25 +10923,25 @@ createX509CertChain();
 
 ## cert.buildX509CertChain<sup>12+</sup>
 
-buildX509CertChain(param: [CertChainBuildParameters](#certchainbuildparameters12)): Promise\<CertChainBuildResult>
+buildX509CertChain(param: CertChainBuildParameters): Promise\<CertChainBuildResult>
 
-Builds an X.509 certificate chain with a CertChainBuildParameters object. This API uses a promise to return the result.
+Builds an X.509 certificate chain with a **CertChainBuildParameters** object. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                 | Mandatory| Description                      |
 | -------- | -------------------- | ---- | -------------------------- |
-| param | [CertChainBuildParameters](#certchainbuildparameters12) | Yes  | Object used to build the certificate chain.<br> The value of **maxLength** in [CertChainBuildParameters](#certchainbuildparameters12) must be less than the number of certificates in the certificate set.|
+| param | [CertChainBuildParameters](#certchainbuildparameters12) | Yes  | Object used to build the certificate chain.|
 
 **Return value**
 
 | Type                             | Description                |
 | --------------------------------- | -------------------- |
-| Promise\<[CertChainBuildResult](#certchainbuildresult12)> | **X509CertChain** object created.|
+| Promise\<[CertChainBuildResult](#certchainbuildresult12)> | Promise that returns the **CertChainBuildResult** instance created.|
 
 **Error codes**
 
@@ -10598,16 +10949,16 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
-| 19030001 | crypto operation error.                           |
-| 19030002 | the certificate signature verification failed.    |
-| 19030003 | the certificate has not taken effect.             |
-| 19030004 | the certificate has expired.                      |
-| 19030005 | failed to obtain the certificate issuer.          |
-| 19030006 | the key cannot be used for signing a certificate. |
-| 19030007 | the key cannot be used for digital signature.     |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed.                                     |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
+| 19030001 | Crypto operation error.                           |
+| 19030002 | The certificate signature verification failed.    |
+| 19030003 | The certificate has not taken effect.             |
+| 19030004 | The certificate has expired.                      |
+| 19030005 | Failed to obtain the certificate issuer.          |
+| 19030006 | The key cannot be used for signing a certificate. |
+| 19030007 | The key cannot be used for a digital signature.     |
 
 **Example**
 
@@ -10695,12 +11046,12 @@ async function buildX509CertChain() {
       validationParameters: {
         date: '20240812080000Z',
         certCRLs: [certCrlCollection],
-        trustAnchors: [{ CACert: caCert }, { CACert: caCert }],
+        trustAnchors: [{ CACert: caCert }, { CACert: caCert }]
       }
-    }
+    };
     let certChainBuildResult = await cert.buildX509CertChain(param);
-    console.info("cert issuer name: " + certChainBuildResult.validationResult.entityCert.getIssuerName().data)
-    console.info("ca subject name: " + certChainBuildResult.validationResult.trustAnchor.CACert?.getSubjectName().data)
+    console.info('cert issuer name: ' + certChainBuildResult.validationResult.entityCert.getIssuerName().data);
+    console.info('ca subject name: ' + certChainBuildResult.validationResult.trustAnchor.CACert?.getSubjectName().data);
   } catch (error) {
     let e: BusinessError = error as BusinessError;
     console.error(`createX509CertChain failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -10714,24 +11065,24 @@ buildX509CertChain();
 
 parsePkcs12(data: Uint8Array, config: Pkcs12ParsingConfig): Pkcs12Data
 
-Parses a .p12 file. 
+Parse the PKCS #12 file.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                 | Mandatory| Description                      |
 | -------- | -------------------- | ---- | -------------------------- |
-| data | Uint8Array | Yes| .p12 file to parse, in DER format.|
-| config | [Pkcs12ParsingConfig](#pkcs12parsingconfig18) | Yes| Configuration for parsing the file.|
+| data | Uint8Array | Yes| Original data of the PKCS #12 file in DER format.|
+| config | [Pkcs12ParsingConfig](#pkcs12parsingconfig18) | Yes| Configuration for parsing the PKCS #12 file.|
 
 **Return value**
 
 | Type                             | Description                |
 | --------------------------------- | -------------------- |
-| [Pkcs12Data](#pkcs12data18) | Data parsed from the .p12 file.|
+| [Pkcs12Data](#pkcs12data18) | Certificate, private key, and other certificates parsed from a PKCS #12 file.|
 
 **Error codes**
 
@@ -10739,11 +11090,11 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
-| 19030001 | crypto operation error.                           |
-| 19030008 | maybe wrong password.            |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed.                                     |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
+| 19030001 | Crypto operation error.                           |
+| 19030008 | Maybe wrong password.            |
 
 **Example**
 
@@ -10752,7 +11103,7 @@ import { cert } from '@kit.DeviceCertificateKit';
 
 function doTestParsePkcs12() {
   try {
-    let p12_cert =
+    let p12Cert =
       new Uint8Array([0x30, 0x82, 0x09, 0x51, 0x02, 0x01, 0x03, 0x30, 0x82, 0x09, 0x17, 0x06, 0x09, 0x2a, 0x86, 0x48,
         0x86, 0xf7, 0x0d, 0x01, 0x07, 0x01, 0xa0, 0x82, 0x09, 0x08, 0x04, 0x82, 0x09, 0x04, 0x30, 0x82,
         0x09, 0x00, 0x30, 0x82, 0x03, 0xb7, 0x06, 0x09, 0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x07,
@@ -10909,12 +11260,12 @@ function doTestParsePkcs12() {
       needsCert: false,
       needsPrivateKey: true,
       privateKeyFormat: cert.EncodingBaseFormat.DER,
-      needsOtherCerts: false,
+      needsOtherCerts: false
     };
-    let p12: cert.Pkcs12Data = cert.parsePkcs12(p12_cert, conf);
+    let p12: cert.Pkcs12Data = cert.parsePkcs12(p12Cert, conf);
     console.info('parsePKCS12 result: success.');
     if (p12.privateKey) {
-      console.info('privateKey:' + p12.privateKey.toString())
+      console.info('privateKey:' + p12.privateKey.toString());
     }
   } catch (error) {
     console.error(`parsePKCS12 failed: errCode: ${error.code}, errMsg: ${error.message}`);
@@ -10926,24 +11277,24 @@ function doTestParsePkcs12() {
 
 parsePkcs12(data: Uint8Array, password: string): Promise\<Pkcs12Data>
 
-Parses a PKCS #12 file. This API uses a promise to return the result.
+Parse the PKCS #12 file. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 21.
+**Atomic service API:** This API can be used in atomic services since API version 21.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                 | Mandatory| Description                      |
 | -------- | -------------------- | ---- | -------------------------- |
-| data | Uint8Array | Yes| PKCS #12 file to parse, in DER format.|
-| password | string | Yes| PKCS #12 password.|
+| data | Uint8Array | Yes| Original data of the PKCS #12 file in DER format.|
+| password | string | Yes| Password.|
 
 **Return value**
 
 | Type                             | Description                |
 | --------------------------------- | -------------------- |
-| Promise\<[Pkcs12Data](#pkcs12data18)> | Promise used to return the certificate, private key, and other certificates parsed from the PKCS #12 file. The private key in the returned **Pkcs12Data** is encoded in PEM format.|
+| Promise\<[Pkcs12Data](#pkcs12data18)> | Promise used to return the parsed PKCS #12 data. The private key in the returned **Pkcs12Data** is encoded in PEM format.|
 
 **Error codes**
 
@@ -10951,11 +11302,11 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
-| 19020003 | parameter check failed. Possible causes: <br>1. The length of the data is zero or too large;<br>2. The length of the password is zero or too large.                                    |
-| 19030001 | crypto operation error.                           |
-| 19030008 | maybe wrong password.            |
+| 19020001 | Memory malloc failed.                                     |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
+| 19020003 | Parameter check failed. Possible causes: <br>1. The length of the data is zero or too large;<br>2. The length of the password is too large.                                    |
+| 19030001 | Crypto operation error.                           |
+| 19030008 | Maybe wrong password.            |
 
 **Example**
 
@@ -10964,7 +11315,7 @@ import { cert } from '@kit.DeviceCertificateKit';
 
 async function doTestParsePkcs12() {
   try {
-    let p12_cert =
+    let p12Cert =
       new Uint8Array([0x30, 0x82, 0x09, 0x51, 0x02, 0x01, 0x03, 0x30, 0x82, 0x09, 0x17, 0x06, 0x09, 0x2a, 0x86, 0x48,
         0x86, 0xf7, 0x0d, 0x01, 0x07, 0x01, 0xa0, 0x82, 0x09, 0x08, 0x04, 0x82, 0x09, 0x04, 0x30, 0x82,
         0x09, 0x00, 0x30, 0x82, 0x03, 0xb7, 0x06, 0x09, 0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x07,
@@ -11116,7 +11467,7 @@ async function doTestParsePkcs12() {
         0x61, 0x09, 0x4f, 0xdc, 0x95, 0xd7, 0x4f, 0x04, 0x08, 0x23, 0xc2, 0xc0, 0xc6, 0x8d, 0x5f, 0x70,
         0x7e, 0x02, 0x02, 0x08, 0x00]);
 
-    let p12: cert.Pkcs12Data = await cert.parsePkcs12(p12_cert, '123456');
+    let p12: cert.Pkcs12Data = await cert.parsePkcs12(p12Cert, '123456');
     console.info('parsePKCS12 result: success.');
     if (p12.privateKey) {
       console.info('privateKey:' + p12.privateKey.toString());
@@ -11146,20 +11497,20 @@ Creates PKCS #12 data. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 21.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                 | Mandatory| Description                      |
 | -------- | -------------------- | ---- | -------------------------- |
-| data | [Pkcs12Data](#pkcs12data18) | Yes| PKCS #12 data object to be packed.|
-| config | [Pkcs12CreationConfig](#pkcs12creationconfig21) | Yes| Configuration for creating the PKCS #12 file.|
+| data | [Pkcs12Data](#pkcs12data18) | Yes| P12 data object to be packed.|
+| config | [Pkcs12CreationConfig](#pkcs12creationconfig21) | Yes| Configuration for creating PKCS #12 data.|
 
 **Return value**
 
 | Type                             | Description                |
 | --------------------------------- | -------------------- |
-| Promise\<Uint8Array> | Promise used to return the result. PKCS #12 file created, in DER format.|
+| Promise\<Uint8Array> | Promise that returns the created PKCS #12 data in DER format.|
 
 **Error codes**
 
@@ -11167,10 +11518,10 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
-| 19020003 | parameter check failed. Possible causes: <br>1. The password is too short or too long;<br>2. The private key does not match the certificate;<br>3. Invalid encryption algorithm parameters.|
-| 19030001 | crypto operation error.                           |
+| 19020001 | Memory malloc failed.                                     |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
+| 19020003 | Parameter check failed. Possible causes: <br>1. The password is too short or too long;<br>2. The private key does not match the certificate;<br>3. Invalid encryption algorithm parameters.|
+| 19030001 | Crypto operation error.                           |
 
 **Example**
 
@@ -11206,7 +11557,7 @@ let priKey = '-----BEGIN PRIVATE KEY-----\n' +
   'a20rj9HG4sb8tUIHPBv0dgY=\n' +
   '-----END PRIVATE KEY-----\n';
 
-let othercert = '-----BEGIN CERTIFICATE-----\n' +
+let otherCert = '-----BEGIN CERTIFICATE-----\n' +
   'MIIDZTCCAk0CFAoqA7Irtoo7/3+sfOHy0s91pKkiMA0GCSqGSIb3DQEBCwUAMG8x\n' +
   'CzAJBgNVBAYTAkVOMQ0wCwYDVQQIDARURVNUMQ0wCwYDVQQHDAR4aWFuMQ8wDQYD\n' +
   'VQQKDAZodWF3ZWkxDTALBgNVBAsMBHhpYW4xDTALBgNVBAMMBHhpYW4xEzARBgkq\n' +
@@ -11277,26 +11628,26 @@ async function createX509Cert(certData: string): Promise<cert.X509Cert> {
 }
 
 async function doTestCreatePkcs12() {
-  const caCert = await createX509Cert(othercert);
+  const caCert = await createX509Cert(otherCert);
   const x509Cert = await createX509Cert(certData);
 
   let data: cert.Pkcs12Data = {
     privateKey: priKey,
     cert: x509Cert,
     otherCerts: [caCert]
-  }
+  };
 
   let keyParam: cert.PbesParams = {
     saltLen: 16,
     iterations: 2048,
     encryptionAlgorithm: cert.PbesEncryptionAlgorithm.AES_192_CBC
-  }
+  };
 
   let certParam: cert.PbesParams = {
     saltLen: 16,
     iterations: 2048,
     encryptionAlgorithm: cert.PbesEncryptionAlgorithm.AES_256_CBC
-  }
+  };
 
   let config: cert.Pkcs12CreationConfig = {
     password: '123456',
@@ -11306,7 +11657,7 @@ async function doTestCreatePkcs12() {
     macSaltLen: 16,
     macIterations: 2048,
     macDigestAlgorithm: cert.Pkcs12MacDigestAlgorithm.SHA384
-  }
+  };
   try {
     let p12 = await cert.createPkcs12(data, config);
     console.info('createPkcs12 result: success, p12 = ' + p12);
@@ -11316,28 +11667,28 @@ async function doTestCreatePkcs12() {
 }
 ```
 
-## cert.createPkcs12<sup>21+</sup>
+## cert.createPkcs12Sync<sup>21+</sup>
 
 createPkcs12Sync(data: Pkcs12Data, config: Pkcs12CreationConfig): Uint8Array
 
 Creates PKCS #12 data. This API uses a promise to return the result synchronously.
 
-**Atomic service API**: This API can be used in atomic services since API version 21.
+**Atomic service API:** This API can be used in atomic services since API version 21.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                 | Mandatory| Description                      |
 | -------- | -------------------- | ---- | -------------------------- |
 | data | [Pkcs12Data](#pkcs12data18) | Yes| P12 data object to be packed.|
-| config | [Pkcs12CreationConfig](#pkcs12creationconfig21) | Yes| Configuration for creating the P12 file.|
+| config | [Pkcs12CreationConfig](#pkcs12creationconfig21) | Yes| Configuration for creating PKCS #12 data.|
 
 **Return value**
 
 | Type                             | Description                |
 | --------------------------------- | -------------------- |
-| Uint8Array | P12 file created, in DER format.|
+| Uint8Array | PKCS #12 data created, in DER format.|
 
 **Error codes**
 
@@ -11345,10 +11696,10 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
-| 19020003 | parameter check failed. Possible causes: <br>1. The password is too short or too long;<br>2. The private key does not match the certificate;<br>3. Invalid encryption algorithm parameters.|
-| 19030001 | crypto operation error.                           |
+| 19020001 | Memory malloc failed.                                     |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
+| 19020003 | Parameter check failed. Possible causes: <br>1. The password is too short or too long;<br>2. The private key does not match the certificate;<br>3. Invalid encryption algorithm parameters.|
+| 19030001 | Crypto operation error.                           |
 
 **Example**
 
@@ -11384,7 +11735,7 @@ let priKey = '-----BEGIN PRIVATE KEY-----\n' +
   'a20rj9HG4sb8tUIHPBv0dgY=\n' +
   '-----END PRIVATE KEY-----\n';
 
-let othercert = '-----BEGIN CERTIFICATE-----\n' +
+let otherCert = '-----BEGIN CERTIFICATE-----\n' +
   'MIIDZTCCAk0CFAoqA7Irtoo7/3+sfOHy0s91pKkiMA0GCSqGSIb3DQEBCwUAMG8x\n' +
   'CzAJBgNVBAYTAkVOMQ0wCwYDVQQIDARURVNUMQ0wCwYDVQQHDAR4aWFuMQ8wDQYD\n' +
   'VQQKDAZodWF3ZWkxDTALBgNVBAsMBHhpYW4xDTALBgNVBAMMBHhpYW4xEzARBgkq\n' +
@@ -11455,26 +11806,26 @@ async function createX509Cert(certData: string): Promise<cert.X509Cert> {
 }
 
 async function doTestCreatePkcs12Sync() {
-  const caCert = await createX509Cert(othercert);
+  const caCert = await createX509Cert(otherCert);
   const x509Cert = await createX509Cert(certData);
 
   let data: cert.Pkcs12Data = {
     privateKey: priKey,
     cert: x509Cert,
     otherCerts: [caCert]
-  }
+  };
 
   let keyParam: cert.PbesParams = {
     saltLen: 16,
     iterations: 2048,
     encryptionAlgorithm: cert.PbesEncryptionAlgorithm.AES_192_CBC
-  }
+  };
 
   let certParam: cert.PbesParams = {
     saltLen: 16,
     iterations: 2048,
     encryptionAlgorithm: cert.PbesEncryptionAlgorithm.AES_256_CBC
-  }
+  };
 
   let config: cert.Pkcs12CreationConfig = {
     password: '123456',
@@ -11484,7 +11835,7 @@ async function doTestCreatePkcs12Sync() {
     macSaltLen: 16,
     macIterations: 2048,
     macDigestAlgorithm: cert.Pkcs12MacDigestAlgorithm.SHA384
-  }
+  };
   try {
     let p12 = cert.createPkcs12Sync(data, config);
     console.info('createPkcs12Sync result: success, p12 = ' + p12);
@@ -11496,26 +11847,26 @@ async function doTestCreatePkcs12Sync() {
 
 ## cert.createTrustAnchorsWithKeyStore<sup>12+</sup>
 
-createTrustAnchorsWithKeyStore(keystore: Uint8Array, pwd: string): Promise<Array\<[X509TrustAnchor](#x509trustanchor11)>>
+createTrustAnchorsWithKeyStore(keystore: Uint8Array, pwd: string): Promise<Array\<X509TrustAnchor>>
 
-Creates a [TrustAnchor](#x509trustanchor11) object array by using the CA certificate parsed from a .p12 keystore file. This API uses a promise to return the result.
+Creates a [TrustAnchor](#x509trustanchor11) object array by using the CA certificate parsed from a PKCS #12 file. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                 | Mandatory| Description                      |
 | -------- | -------------------- | ---- | -------------------------- |
-| keystore | Uint8Array | Yes| .p12 file to parse, in DER format.|
-| pwd | string | Yes| Password of the .p12 file.|
+| keystore | Uint8Array | Yes| Original data of the PKCS #12 file in DER format.|
+| pwd | string | Yes| Password.|
 
 **Return value**
 
 | Type                             | Description                |
 | --------------------------------- | -------------------- |
-| Promise\<Array\<[X509TrustAnchor](#x509trustanchor11)>> | **X509TrustAnchor** object array created.|
+| Promise\<Array\<[X509TrustAnchor](#x509trustanchor11)>> | Promise used to return the result, which is an array of **X509TrustAnchor** objects.|
 
 **Error codes**
 
@@ -11523,16 +11874,16 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message                                         |
 | -------- | ------------------------------------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed.                                     |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C.                                    |
-| 19030001 | crypto operation error.                           |
-| 19030002 | the certificate signature verification failed.    |
-| 19030003 | the certificate has not taken effect.             |
-| 19030004 | the certificate has expired.                      |
-| 19030005 | failed to obtain the certificate issuer.          |
-| 19030006 | the key cannot be used for signing a certificate. |
-| 19030007 | the key cannot be used for digital signature.     |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed.                                     |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.                                   |
+| 19030001 | Crypto operation error.                           |
+| 19030002 | The certificate signature verification failed.    |
+| 19030003 | The certificate has not taken effect.             |
+| 19030004 | The certificate has expired.                      |
+| 19030005 | Failed to obtain the certificate issuer.          |
+| 19030006 | The key cannot be used for signing a certificate. |
+| 19030007 | The key cannot be used for a digital signature.     |
 
 **Example**
 
@@ -11646,7 +11997,7 @@ try {
     console.info('createTrustAnchorsWithKeyStore result: success, number of the result = ' + data.length);
   }).catch((err: BusinessError) => {
     console.error(`createTrustAnchorsWithKeyStore failed: errCode: ${err.code}, errMsg: ${err.message}`);
-  })
+  });
 } catch (error) {
   console.error(`createTrustAnchorsWithKeyStore failed: errCode: ${error.code}, errMsg: ${error.message}`);
 }
@@ -11655,23 +12006,23 @@ try {
 
 ## X509CertChain<sup>11+</sup>
 
-Provides APIs for managing the X.509 certificate chain.
+Describes an X.509 certificate chain object.
 
 ### getCertList<sup>11+</sup>
 
 getCertList(): Array\<X509Cert>
 
-Obtains the X.509 certificate list.
+Obtains a list of X.509 certificates.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type          | Description       |
 | -------------- | ----------- |
-| Array\<[X509Cert](#x509cert)> | X.509 certificate list obtained.|
+| Array\<[X509Cert](#x509cert)> | X.509 certificates.|
 
 **Error codes**
 
@@ -11679,9 +12030,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed.           |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed.           |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -11766,7 +12117,7 @@ cert.createX509CertChain(encodingBlob, (err, certChain) => {
   } else {
     console.info('createX509CertChain result: success.');
     try {
-      let certList = certChain.getCertList();
+      certChain.getCertList();
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error(`X509CertChain getCertList failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -11779,23 +12130,23 @@ cert.createX509CertChain(encodingBlob, (err, certChain) => {
 
 validate(param: CertChainValidationParameters): Promise\<CertChainValidationResult>
 
-Validates a certificate chain. This API uses a promise to return the result.
+Verifies the certificate chain. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name   | Type                           | Mandatory| Description           |
 | --------- | ------------------------------- | ---- | ----------------- |
-| param | [CertChainValidationParameters](#certchainvalidationparameters11) | Yes  | Parameters for validating the X.509 certificate chain.|
+| param | [CertChainValidationParameters](#certchainvalidationparameters11) | Yes  | Parameters for verifying the X.509 certificate chain.|
 
 **Return value**
 
 | Type                                                        | Description                             |
 | ------------------------------------------------------------ | --------------------------------- |
-| Promise\<[CertChainValidationResult](#certchainvalidationresult11)> | Promise used to return the result.|
+| Promise\<[CertChainValidationResult](#certchainvalidationresult11)> | Promise used to return the certificate chain verification result.|
 
 **Error codes**
 
@@ -11803,16 +12154,16 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error.           |
-| 19030002 | the certificate signature verification failed. |
-| 19030003 | the certificate has not taken effect.           |
-| 19030004 | the certificate has expired. |
-| 19030005 | failed to obtain the certificate issuer.           |
-| 19030006 | the key cannot be used for signing a certificate. |
-| 19030007 | the key cannot be used for digital signature.      |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error.           |
+| 19030002 | The certificate signature verification failed. |
+| 19030003 | The certificate has not taken effect.           |
+| 19030004 | The certificate has expired. |
+| 19030005 | Failed to obtain the certificate issuer.           |
+| 19030006 | The key cannot be used for signing a certificate. |
+| 19030007 | The key cannot be used for a digital signature.      |
 
 **Example**
 
@@ -11915,11 +12266,11 @@ async function validate() {
         0x64, 0x31, 0x0f, 0x30, 0x0d, 0x06, 0x03, 0x55, 0x04, 0x07, 0x13, 0x06, 0x4c, 0x6f, 0x6e, 0x64, 0x6f, 0x6e,
         0x31, 0x0c, 0x30, 0x0a, 0x06, 0x03, 0x55, 0x04, 0x0a, 0x13, 0x03, 0x74, 0x73, 0x31, 0x31, 0x0c, 0x30, 0x0a,
         0x06, 0x03, 0x55, 0x04, 0x0b, 0x13, 0x03, 0x74, 0x73, 0x31, 0x31, 0x0c, 0x30, 0x0a, 0x06, 0x03, 0x55, 0x04,
-        0x03, 0x13, 0x03, 0x74, 0x73, 0x31]),
+        0x03, 0x13, 0x03, 0x74, 0x73, 0x31])
     }]
-  }
+  };
   try {
-    const validationRes = await certChain.validate(param);
+    await certChain.validate(param);
     console.info('X509CertChain validate result: success.');
   } catch (error) {
     let e: BusinessError = error as BusinessError;
@@ -11934,18 +12285,18 @@ validate();
 
 validate(param: CertChainValidationParameters, callback: AsyncCallback\<CertChainValidationResult>): void
 
-Validates a certificate chain. This API uses an asynchronous callback to return the result.
+Verifies a certificate chain using verification parameters. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name   | Type                           | Mandatory| Description     |
 | --------- | ------------------------------- | ---- | ------------ |
-| param | [CertChainValidationParameters](#certchainvalidationparameters11) | Yes  | Parameters for validating the X.509 certificate chain.|
-| callback  | AsyncCallback\<[CertChainValidationResult](#certchainvalidationresult11)> | Yes  | Callback used to return the certificate chain validation result.|
+| param | [CertChainValidationParameters](#certchainvalidationparameters11) | Yes  | Parameters for verifying the X.509 certificate chain.|
+| callback  | AsyncCallback\<[CertChainValidationResult](#certchainvalidationresult11)> | Yes  | Callback used to return the result. If the certificate chain is verified successfully, **err** is **undefined** and **data** is the obtained certificate chain verification result. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -11953,16 +12304,16 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed.           |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error.           |
-| 19030002 | the certificate signature verification failed. |
-| 19030003 | the certificate has not taken effect.           |
-| 19030004 | the certificate has expired. |
-| 19030005 | failed to obtain the certificate issuer.           |
-| 19030006 | the key cannot be used for signing a certificate. |
-| 19030007 | the key cannot be used for digital signature.      |
+| 401 | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed.           |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error.           |
+| 19030002 | The certificate signature verification failed. |
+| 19030003 | The certificate has not taken effect.           |
+| 19030004 | The certificate has expired. |
+| 19030005 | Failed to obtain the certificate issuer.           |
+| 19030006 | The key cannot be used for signing a certificate. |
+| 19030007 | The key cannot be used for a digital signature.      |
 
 **Example**
 
@@ -12052,7 +12403,7 @@ let param: cert.CertChainValidationParameters = {
       0x0f, 0x30, 0x0d, 0x06, 0x03, 0x55, 0x04, 0x07, 0x13, 0x06, 0x4c, 0x6f, 0x6e, 0x64, 0x6f, 0x6e, 0x31, 0x0c, 0x30,
       0x0a, 0x06, 0x03, 0x55, 0x04, 0x0a, 0x13, 0x03, 0x74, 0x73, 0x31, 0x31, 0x0c, 0x30, 0x0a, 0x06, 0x03, 0x55, 0x04,
       0x0b, 0x13, 0x03, 0x74, 0x73, 0x31, 0x31, 0x0c, 0x30, 0x0a, 0x06, 0x03, 0x55, 0x04, 0x03, 0x13, 0x03, 0x74, 0x73,
-      0x31]),
+      0x31])
   }]
 };
 
@@ -12061,7 +12412,7 @@ cert.createX509CertChain(encodingBlob, (err, certChain) => {
     console.error(`createX509CertChain failed, errCode: ${err.code}, errMsg: ${err.message}`);
   } else {
     console.info('createX509CertChain result: success.');
-    certChain.validate(param, (error, validationRes) => {
+    certChain.validate(param, (error, _validationRes) => {
       if (error) {
         console.error(`X509CertChain validate failed, errCode: ${error.code}, errMsg: ${error.message}`);
       } else {
@@ -12078,9 +12429,9 @@ toString(): string
 
 Converts the object data into a string.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -12094,9 +12445,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -12205,15 +12556,15 @@ hashCode(): Uint8Array
 
 Obtains the hash value of the data in DER format.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type   | Description                                                |
 | ------- | ---------------------------------------------------- |
-| Uint8Array | Hash value obtained.|
+| Uint8Array | Hash value in DER format obtained.|
 
 **Error codes**
 
@@ -12221,9 +12572,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message               |
 | -------- | ----------------------- |
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -12331,11 +12682,11 @@ async function certChainHashCode() {
 
 generateCsr(keyInfo: PrivateKeyInfo, config: CsrGenerationConfig): string | Uint8Array
 
-Generates a CSR.
+Generates a CSR using the specified private key by passing configuration parameters such as the subject, extension, MD algorithm, and output format.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -12356,11 +12707,11 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 401 | invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error. |
-| 19030008 | maybe wrong password. |
+| 401 | Invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error. |
+| 19030008 | Maybe wrong password. |
 
 **Example**
 
@@ -12370,7 +12721,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 async function createCsrTest() {
   let nameStr = '/CN=John Doe/OU=IT Department/O=ACME Inc./L=San Francisco/ST=California/C=US/CN=ALN C/CN=XTS';
-  let prikeyEnstr: string =
+  let priKeyEnstr: string =
     '-----BEGIN RSA PRIVATE KEY-----\n' +
       'Proc-Type: 4,ENCRYPTED\n' +
       'DEK-Info: AES-128-CBC,B5FFA3AEEE7176106FDDB0988B532F07\n\n' +
@@ -12389,9 +12740,9 @@ async function createCsrTest() {
       'd5Y4a6q13V4O5b73T5INmKl8rEbPGIw7WLR7BNj05QuzNcn5kA1aBFIJqsxQv46l\n' +
       '-----END RSA PRIVATE KEY-----\n';
   let priKeyInfo: cert.PrivateKeyInfo = {
-    key: prikeyEnstr,
+    key: priKeyEnstr,
     password: '123abc'
-  }
+  };
   let keyUsage: cert.CsrAttribute = {
     type: 'keyUsage',
     value: 'digitalSignature, keyEncipherment'
@@ -12412,10 +12763,10 @@ async function createCsrTest() {
       mdName: 'SHA256',
       outFormat: cert.EncodingBaseFormat.PEM,
       attributes: attribute
-    }
+    };
     try {
-      let csrStr = cert.generateCsr(priKeyInfo, conf)
-      console.info('generateCsr result: success, return str is ' + csrStr.toString())
+      let csrStr = cert.generateCsr(priKeyInfo, conf);
+      console.info('generateCsr result: success, return str is ' + csrStr.toString());
     } catch (error) {
       let e: BusinessError = error as BusinessError;
       console.error(`generateCsr failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -12433,21 +12784,21 @@ createX500DistinguishedName(nameStr: string): Promise\<X500DistinguishedName>
 
 Creates an **X500DistinguishedName** object with a name in the form of a string. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                         | Mandatory| Description                |
 | -------- | ----------------------------- | ---- | -------------------- |
-| nameStr | string | Yes|Name string format defined by X.509. The name is separated by slashes (/). Each distinguishable name is in the format of **attribute=value**. Common attributes include **CN** (common name), **O** (organization name), **OU** (organization unit), **C** (country/region), **ST** (province/state), and **L** (city/district). For example, **/CN=example.com/O=Example/C=CN**.|
+| nameStr | string | Yes|Distinguishable names of the string type are separated by slashes (/). Each distinguishable name is in the format of *an attribute***=***a value*. Common attributes include **CN** (common name), **O** (organization name), **OU** (organization unit), **C** (country/region), **ST** (province/state), and **L** (city/district). For example, **/CN=example.com/O=Example/C=CN**.|
 
 **Return value**
 
 | Type                           | Description            |
 | ------------------------------- | ---------------- |
-| Promise\<[X500DistinguishedName](#x500distinguishedname12)> | Promise used to return the **X500DistinguishedName** object created.|
+| Promise\<[X500DistinguishedName](#x500distinguishedname12)> | Promise used to return the **X500DistinguishedName** instance obtained.|
 
 **Error codes**
 
@@ -12455,16 +12806,16 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 401 | invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error. |
-| 19030002 | the certificate signature verification failed. |
-| 19030003 | the certificate has not taken effect. |
-| 19030004 | the certificate has expired. |
-| 19030005 | failed to obtain the certificate issuer. |
-| 19030006 | the key cannot be used for signing a certificate. |
-| 19030007 | the key cannot be used for digital signature. |
+| 401 | Invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error. |
+| 19030002 | The certificate signature verification failed. |
+| 19030003 | The certificate has not taken effect. |
+| 19030004 | The certificate has expired. |
+| 19030005 | Failed to obtain the certificate issuer. |
+| 19030006 | The key cannot be used for signing a certificate. |
+| 19030007 | The key cannot be used for a digital signature. |
 
 **Example**
 
@@ -12485,12 +12836,12 @@ let nameStr = '/CN=John Doe/OU=IT Department/O=ACME Inc./L=San Francisco/ST=Cali
 async function createX500DistinguishedName() {
   try {
     cert.createX500DistinguishedName(nameStr)
-      .then((data) => {
+      .then((_data) => {
         console.info('createX500DistinguishedName result: success.');
       })
       .catch((err: BusinessError) => {
         console.error(`createX500DistinguishedName failed, errCode: ${err.code}, errMsg: ${err.message}`);
-      })
+      });
   } catch (error) {
     let e: BusinessError = error as BusinessError;
     console.error(`createX500DistinguishedName failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -12504,21 +12855,21 @@ createX500DistinguishedName(nameDer: Uint8Array): Promise\<X500DistinguishedName
 
 Creates an **X500DistinguishedName** object with a name in DER format. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                         | Mandatory| Description                |
 | -------- | ----------------------------- | ---- | -------------------- |
-| nameDer | Uint8Array | Yes|Name of the Uint8Array type in DER format defined by X.509.|
+| nameDer | Uint8Array | Yes|X.500 distinguished name in DER format.|
 
 **Return value**
 
 | Type                           | Description            |
 | ------------------------------- | ---------------- |
-| Promise\<[X500DistinguishedName](#x500distinguishedname12)> | Promise used to return the **X500DistinguishedName** object created.|
+| Promise\<[X500DistinguishedName](#x500distinguishedname12)> | Promise used to return the **X500DistinguishedName** instance obtained.|
 
 **Error codes**
 
@@ -12526,16 +12877,16 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 401 | invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error. |
-| 19030002 | the certificate signature verification failed. |
-| 19030003 | the certificate has not taken effect. |
-| 19030004 | the certificate has expired. |
-| 19030005 | failed to obtain the certificate issuer. |
-| 19030006 | the key cannot be used for signing a certificate. |
-| 19030007 | the key cannot be used for digital signature. |
+| 401 | Invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error. |
+| 19030002 | The certificate signature verification failed. |
+| 19030003 | The certificate has not taken effect. |
+| 19030004 | The certificate has expired. |
+| 19030005 | Failed to obtain the certificate issuer. |
+| 19030006 | The key cannot be used for signing a certificate. |
+| 19030007 | The key cannot be used for a digital signature. |
 
 **Example**
 
@@ -12550,12 +12901,12 @@ let nameDer =
 async function createX500DistinguishedName() {
   try {
     cert.createX500DistinguishedName(nameDer)
-      .then((data) => {
+      .then((_data) => {
         console.info('createX500DistinguishedName result: success.');
       })
       .catch((err: BusinessError) => {
         console.error(`createX500DistinguishedName failed, errCode: ${err.code}, errMsg: ${err.message}`);
-      })
+      });
   } catch (error) {
     let e: BusinessError = error as BusinessError;
     console.error(`createX500DistinguishedName failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -12564,23 +12915,23 @@ async function createX500DistinguishedName() {
 ```
 ## X500DistinguishedName<sup>12+</sup>
 
-Provides APIs for managing the **X500DistinguishedName** instance.
+Provides APIs for X.500 distinguished name operations.
 
 ### getName<sup>12+</sup>
 
 getName(): string
 
-Obtains the DN in the form of a string.
+Obtains the distinguished name in the form of a string.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type   | Description                                             |
 | ------- | ------------------------------------------------- |
-| string | DN in the form of a string obtained.|
+| string | Distinguished name obtained.|
 
 **Error codes**
 
@@ -12588,9 +12939,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -12611,7 +12962,7 @@ async function getName() {
       })
       .catch((err: BusinessError) => {
         console.error(`createX500DistinguishedName failed, errCode: ${err.code}, errMsg: ${err.message}`);
-      })
+      });
   } catch (error) {
     let e: BusinessError = error as BusinessError;
     console.error(`createX500DistinguishedName failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -12623,23 +12974,23 @@ async function getName() {
 
 getName(type: string): Array\<string>
 
-Obtains DNs of the specified type.
+Obtains the string of the relative distinguished names (RDNs) of the specified types.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name      | Type  | Mandatory| Description          |
 | ------------ | ------ | ---- | -------------- |
-| type | string | Yes| Type of the DNs to obtain.|
+| type | string | Yes| RDN of the specified type. For example, **CN** and **OU**.|
 
 **Return value**
 
 | Type   | Description                                             |
 | ------- | ------------------------------------------------- |
-| Array\<string> | DNs obtained.|
+| Array\<string> | RDN string array.|
 
 **Error codes**
 
@@ -12647,10 +12998,10 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 401 | invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -12668,7 +13019,7 @@ async function getName() {
       })
       .catch((err: BusinessError) => {
         console.error(`createX500DistinguishedName failed, errCode: ${err.code}, errMsg: ${err.message}`);
-      })
+      });
   } catch (error) {
     let e: BusinessError = error as BusinessError;
     console.error(`createX500DistinguishedName failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -12682,21 +13033,21 @@ getName(encodingType: EncodingType): string
 
 Obtains the string of the distinguished names based on the specified encoding type.
 
-**Atomic service API**: This API can be used in atomic services since API version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name      | Type         | Mandatory| Description          |
 | ------------ | ------------- | ---- | -------------- |
-| encodingType | [EncodingType](#encodingtype12) | Yes| Encoding type.|
+| encodingType | [EncodingType](#encodingtype12) | Yes| Encoding format.|
 
 **Return value**
 
 | Type   | Description                                             |
 | ------- | ------------------------------------------------- |
-| string | A string of distinguishable names, separated by commas (,).|
+| string | String of the distinguished names separated by commas (,).|
 
 **Error codes**
 
@@ -12704,10 +13055,10 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19020003 | parameter check failed. Possible causes: <br>1. The value of encodingType is not in the EncodingType enumeration range.|
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19020003 | Parameter check failed. Possible causes: <br>1. The value of encodingType is not in the EncodingType enumeration range.|
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -12715,7 +13066,7 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 import { cert } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-et nameStr = '/CN=Shaanxi@Xi'an/OU=IT Department/O=ACME Inc./L=San Francisco/ST=California/C=US/CN=ALN C/CN=XTS';
+let nameStr = '/CN=Shaanxi@Baoji/OU=IT Department/O=ACME Inc./L=San Francisco/ST=California/C=US/CN=ALN C/CN=XTS'
 async function getName() {
   try {
     cert.createX500DistinguishedName(nameStr)
@@ -12725,7 +13076,69 @@ async function getName() {
       })
       .catch((err: BusinessError) => {
         console.error(`createX500DistinguishedName failed, errCode: ${err.code}, errMsg: ${err.message}`);
+      });
+  } catch (error) {
+    let e: BusinessError = error as BusinessError;
+    console.error(`createX500DistinguishedName failed, errCode: ${e.code}, errMsg: ${e.message}`);
+  }
+}
+```
+
+### getName
+
+getName(type: string, encodingType: EncodingType): Array\<string>
+
+Obtains an array of RDN strings based on the specified type and encoding format.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**System capability:** SystemCapability.Security.Cert
+
+**Parameters**
+
+| Name      | Type  | Mandatory| Description          |
+| ------------ | ------ | ---- | -------------- |
+| type | string | Yes| RDN of the specified type. For example, **CN** and **OU**.|
+| encodingType | [EncodingType](#encodingtype12) | Yes| Encoding format.|
+
+**Return value**
+
+| Type   | Description                                             |
+| ------- | ------------------------------------------------- |
+| Array\<string> | RDN string array.|
+
+**Error codes**
+
+For details about the error codes, see [Certificate Error Codes](errorcode-cert.md).
+
+| ID| Error Message     |
+| -------- | ------------- |
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19020003 | Parameter check failed. Possible causes: <br>1. The value of encodingType is invalid. |
+| 19030001 | Crypto operation error. |
+
+**Example**
+
+```ts
+import { cert } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let nameStr = '/CN=Example CA/OU=test cert/O=test/L=XA/ST=SX/C=CN/CN=RSA CA/CN=Test';
+async function getName() {
+  try {
+    cert.createX500DistinguishedName(nameStr)
+      .then((data) => {
+        console.info('createX500DistinguishedName result: success.');
+        console.info('createX500DistinguishedName getName: ' + data.getName("CN", cert.EncodingType.ENCODING_UTF8));
       })
+      .catch((err: BusinessError) => {
+        console.error(`createX500DistinguishedName failed, errCode: ${err.code}, errMsg: ${err.message}`);
+      });
   } catch (error) {
     let e: BusinessError = error as BusinessError;
     console.error(`createX500DistinguishedName failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -12737,17 +13150,17 @@ async function getName() {
 
 getEncoded(): EncodingBlob
 
-Obtains the data of the X.509 certificate **extensions** field.
+Obtains an X.500 distinguished name encoded in DER format.
 
-**Atomic service API**: This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type   | Description                                             |
 | ------- | ------------------------------------------------- |
-| [EncodingBlob](#encodingblob) | X.509 certificate serialization data obtained.|
+| [EncodingBlob](#encodingblob) | X.500 distinguished name encoded in DER format.|
 
 **Error codes**
 
@@ -12755,9 +13168,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -12772,10 +13185,11 @@ async function getEncoded() {
       .then((data) => {
         console.info('createX500DistinguishedName result: success.');
         let encodingBlobData = data.getEncoded();
+        console.info('encodingBlobData = ' + encodingBlobData.data);
       })
       .catch((err: BusinessError) => {
         console.error(`createX500DistinguishedName failed, errCode: ${err.code}, errMsg: ${err.message}`);
-      })
+      });
   } catch (error) {
     let e: BusinessError = error as BusinessError;
     console.error(`createX500DistinguishedName failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -12789,15 +13203,15 @@ createCmsGenerator(contentType: CmsContentType): CmsGenerator
 
 Creates a **CmsGenerator** object.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name  | Type                         | Mandatory| Description                |
 | -------- | ----------------------------- | ---- | -------------------- |
-| contentType | [CmsContentType](#cmscontenttype18) | Yes| CMS message type.|
+| contentType | [CmsContentType](#cmscontenttype18) | Yes| CMS content type.|
 
 **Return value**
 
@@ -12811,10 +13225,10 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 401 | invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error. |
+| 401 | Invalid parameters.  Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -12847,7 +13261,7 @@ function stringToUint8Array(str: string): Uint8Array {
   return new Uint8Array(arr);
 }
 
-function testcreateCmsGenerator() {
+function testCreateCmsGenerator() {
   let certEncodingBlob: cert.EncodingBlob = {
     data: stringToUint8Array(certData),
     // Assign a value based on the encodingData format. FORMAT_PEM and FORMAT_DER are supported.
@@ -12859,8 +13273,8 @@ function testcreateCmsGenerator() {
     } else {
         try {
           let cmsContentType = cert.CmsContentType.SIGNED_DATA;
-          let cmsGenerator = cert.createCmsGenerator(cmsContentType);
-          console.info('testcreateCmsGenerator createCmsGenerator result: success.');
+          cert.createCmsGenerator(cmsContentType);
+          console.info('testCreateCmsGenerator createCmsGenerator result: success.');
         } catch (err) {
           let e: BusinessError = err as BusinessError;
           console.error(`createCmsGenerator failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -12872,34 +13286,34 @@ function testcreateCmsGenerator() {
 
 ## CmsGenerator<sup>18+</sup>
 
-Provides APIs for generating the messages in CMS format.
+Provide APIs for generating messages in CMS format.
 
 > **NOTE**
 >
-> PKCS #7 is a standard syntax for storing signed or encrypted data. CMS is an extension of PKCS #7. PKCS#7 supports data types including data, signature data, envelope data,
-> signature and envelope data, message digest data, and encrypted data. It is often used to protect data integrity and confidentiality.
+> PKCS #7 is a standard syntax for storing signed or encrypted data. CMS is an extension of PKCS #7. PKCS#7 supports data types including data, signature data, encapsulated data,
+> MD data, and encryption data. It is often used to protect data integrity and confidentiality.
 
 ### addSigner<sup>18+</sup>
 
 addSigner(cert: X509Cert, keyInfo: PrivateKeyInfo, config: CmsSignerConfig): void;
 
-Adds signer information to the CMS whose content type is **SIGNED_DATA**.
+Adds a signer to the CMS **SIGNED_DATA** structure.
   
 > **NOTE**
 >
-> OpenSSL does not support signature verification for self-signed certificates. Therefore, self-signed certificates cannot be used as signers.
+> OpenSSL does not support signature verification of self-signed certificates. Therefore, self-signed certificates cannot be used as issuer certificates.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name      | Type  | Mandatory| Description          |
 | ------------ | ------ | ---- | -------------- |
-| cert |  [X509Cert](#x509cert) | Yes| X.509 certificate.|
+| cert |  [X509Cert](#x509cert) | Yes| X.509 certificate|
 | keyInfo | [PrivateKeyInfo](#privatekeyinfo18) | Yes| Private key information.|
-| config | [CmsSignerConfig](#cmssignerconfig18) | Yes| Signer configuration.|
+| config | [CmsSignerConfig](#cmssignerconfig18) | Yes| CMS signer configuration.|
 
 **Error codes**
 
@@ -12907,11 +13321,11 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 401      | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error. |
-| 19030008 | maybe wrong password. |
+| 401      | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error. |
+| 19030008 | Maybe wrong password. |
 
 **Example**
 
@@ -12935,7 +13349,7 @@ let certData = '-----BEGIN CERTIFICATE-----\n' +
   'a26pkDJhNeB/E3eBIbeydSY0A/dIGb6vbGo6BSq2KvnWAA==\n' +
   '-----END CERTIFICATE-----\n';
 
-let rsaStr1024: string  =
+let rsaStr1024: string =
   '-----BEGIN RSA PRIVATE KEY-----\n' +
     'Proc-Type: 4,ENCRYPTED\n' +
     'DEK-Info: DES-EDE3-CBC,DB0AC6E3BEE16420\n\n' +
@@ -12987,7 +13401,7 @@ function testAddSigner() {
             addCert:false,
             addAttr:false,
             addSmimeCapAttr:false
-          }
+          };
           cmsGenerator.addSigner(x509Cert, privateKeyInfo, config);
           console.info('testAddSigner addSigner result: success.');
         } catch (err) {
@@ -13003,19 +13417,19 @@ function testAddSigner() {
 
 addCert(cert: X509Cert): void
 
-Adds a CMS certificate of the **SIGNED_DATA** content type, for example, the issuer certificate of a signing certificate.
+Adds a certificate for the CMS **SIGNED_DATA** structure, for example, the issuer certificate of a signing certificate.
 
-If the **addSigner** API is not called and only the certificate is added, the generated CMS signature data contains only the certificate.
+If the certificate is added without calling **addSigner**, the generated CMS signature data contains only the certificate information.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name| Type     | Mandatory| Description                    |
 | ------ | --------- | ---- | ------------------------ |
-| cert   | [X509Cert](#x509cert)  | Yes  | X.509 certificate to add.     |
+| cert   | [X509Cert](#x509cert)  | Yes  | X.509 certificate to be added.     |
 
 **Error codes**
 
@@ -13023,10 +13437,10 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 401      | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error. |
+| 401      | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -13089,19 +13503,19 @@ function testAddCert() {
 
 setRecipientEncryptionAlgorithm(algorithm: CmsRecipientEncryptionAlgorithm): void
 
-Sets the encryption algorithm for the CMS whose content type is **ENVELOPED_DATA**.
+Sets the encryption algorithm for CMS **ENVELOPED_DATA**.
 
-This method should be called immediately after the **CmsGenerator** of the **ENVELOPED_DATA** type is created. If this method is not called, AES_256_GCM is used as the encryption algorithm by default.
+This API should be called immediately after a **CmsGenerator** object of the **ENVELOPED_DATA** type is created. If not, AES_256_GCM is used as the encryption algorithm by default.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name| Type     | Mandatory| Description                    |
 | ------ | --------- | ---- | ------------------------ |
-| algorithm   | [CmsRecipientEncryptionAlgorithm](#cmsrecipientencryptionalgorithm22)  | Yes  | Encryption algorithm used by the CMS to encapsulate data.     |
+| algorithm   | [CmsRecipientEncryptionAlgorithm](#cmsrecipientencryptionalgorithm22)  | Yes  | Encryption algorithm used to encapsulate data based on CMS.     |
 
 **Error codes**
 
@@ -13109,10 +13523,10 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19020003 | parameter check failed. Possible causes:<br>1. The type of algorithm is invalid or not supported. |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19020003 | Parameter check failed. Possible causes:<br>1. The type of algorithm is invalid or not supported. |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -13137,19 +13551,19 @@ function testSetRecipientEncryptionAlgorithm() {
 
 addRecipientInfo(recipientInfo: CmsRecipientInfo): Promise\<void>
 
-Adds recipient information to a CMS with the content type of **ENVELOPED_DATA**. This API uses a promise to return the result.
+Adds recipient information to the CMS **ENVELOPED_DATA** structure. This API uses a promise to return the result.
 
-At least one recipient needs to be set.
+At least one recipient must be set.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name| Type     | Mandatory| Description                    |
 | ------ | --------- | ---- | ------------------------ |
-| recipientInfo   | [CmsRecipientInfo](#cmsrecipientinfo22)  | Yes  | Recipient information.     |
+| recipientInfo   | [CmsRecipientInfo](#cmsrecipientinfo22)  | Yes  | Recipient Information.     |
 
 **Return value**
 
@@ -13163,10 +13577,10 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19020003 | parameter check failed. Possible causes: <br>1. The type of recipient certificate is invalid or not supported;<br>2. The digestAlgorithm of CmsKeyAgreeRecipientInfo is invalid or not supported;<br>3. The recipientInfo does not have any recipient info. |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19020003 | Parameter check failed. Possible causes: <br>1. The type of recipient certificate is invalid or not supported;<br>2. The digestAlgorithm of CmsKeyAgreeRecipientInfo is invalid or not supported;<br>3. The recipientInfo does not have any recipient info. |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -13214,34 +13628,34 @@ function stringToUint8Array(str: string): Uint8Array {
 }
 
 async function testAddRecipientInfo() {
-  let ecccertEncodingBlob: cert.EncodingBlob = {
+  let eccCertEncodingBlob: cert.EncodingBlob = {
     data: stringToUint8Array(eccCertData),
     // Assign a value based on the encodingData format. FORMAT_PEM and FORMAT_DER are supported.
     encodingFormat: cert.EncodingFormat.FORMAT_PEM
   };
 
-  let rsacertEncodingBlob: cert.EncodingBlob = {
+  let rsaCertEncodingBlob: cert.EncodingBlob = {
     data: stringToUint8Array(rsaCertData),
     // Assign a value based on the encodingData format. FORMAT_PEM and FORMAT_DER are supported.
     encodingFormat: cert.EncodingFormat.FORMAT_PEM
   };
   try {
-    let eccx509Certcert = await cert.createX509Cert(ecccertEncodingBlob);
-    let rsax509Certcert = await cert.createX509Cert(rsacertEncodingBlob);
+    let eccX509Cert = await cert.createX509Cert(eccCertEncodingBlob);
+    let rsaX509Cert = await cert.createX509Cert(rsaCertEncodingBlob);
     let cmsContentType = cert.CmsContentType.ENVELOPED_DATA;
     let cmsGenerator = cert.createCmsGenerator(cmsContentType);
     console.info(`createCmsGenerator result: success.`);
 
     let eccCert : cert.CmsKeyAgreeRecipientInfo = {
-      cert : eccx509Certcert,
-      digestAlgorithm : cert.CmsKeyAgreeRecipientDigestAlgorithm.SHA256,
+      cert : eccX509Cert,
+      digestAlgorithm : cert.CmsKeyAgreeRecipientDigestAlgorithm.SHA256
     };
     let rsaCert : cert.CmsKeyTransRecipientInfo = {
-      cert : rsax509Certcert,
+      cert : rsaX509Cert
     };
     let recipientInfo: cert.CmsRecipientInfo = {
       keyTransInfo : rsaCert,
-      keyAgreeInfo : eccCert,
+      keyAgreeInfo : eccCert
     };
     await cmsGenerator.addRecipientInfo(recipientInfo);
     console.info(`addRecipientInfo result: success.`);
@@ -13257,22 +13671,22 @@ doFinal(data: Uint8Array, options?: CmsGeneratorOptions): Promise<Uint8Array | s
 
 Obtains the CMS data, for example, the CMS signature data or CMS encapsulated data. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name     | Type               | Mandatory| Description                                      |
 | ----------- | ------------------- | ---- | ------------------------------------------ |
-| data        | Uint8Array         | Yes  | Data to be operated.                          |
+| data        | Uint8Array         | Yes  | CMS data to be operated.                          |
 | options     | [CmsGeneratorOptions](#cmsgeneratoroptions18)  | No  | Configuration of the CMS operation.                      |
 
 **Return value**
 
 | Type                           | Description            |
 | ------------------------------- | ---------------- |
-| Promise<Uint8Array \| string> | Promise used to return the CMS data.|
+| Promise<Uint8Array \| string> | Promise used to return CMS messages.|
 
 **Error codes**
 
@@ -13280,10 +13694,10 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 401      | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error. |
+| 401      | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -13307,7 +13721,7 @@ let certData = '-----BEGIN CERTIFICATE-----\n' +
   'a26pkDJhNeB/E3eBIbeydSY0A/dIGb6vbGo6BSq2KvnWAA==\n' +
   '-----END CERTIFICATE-----\n';
 
-let rsaStr1024: string  =
+let rsaStr1024: string =
   '-----BEGIN RSA PRIVATE KEY-----\n' +
     'Proc-Type: 4,ENCRYPTED\n' +
     'DEK-Info: DES-EDE3-CBC,DB0AC6E3BEE16420\n\n' +
@@ -13359,12 +13773,12 @@ async function testDoFinalByPromise() {
           addCert:false,
           addAttr:true,
           addSmimeCapAttr:true
-        }
+        };
         cmsGenerator.addSigner(x509Cert, privateKeyInfo, config);
         console.info('testDoFinalByPromise addSigner result: success.');
         cmsGenerator.addCert(x509Cert);
         console.info('testDoFinalByPromise addCert result: success.');
-        let content = new Uint8Array([1,2,3,4]);
+        let content = new Uint8Array([1, 2, 3, 4]);
         let optionsFinal: cert.CmsGeneratorOptions = {
           contentDataFormat : cert.CmsContentDataFormat.BINARY,
           outFormat : cert.CmsFormat.PEM,
@@ -13388,24 +13802,24 @@ async function testDoFinalByPromise() {
 
 doFinalSync(data: Uint8Array, options?: CmsGeneratorOptions): Uint8Array | string
 
-Obtains the CMS data, for example, the CMS signature data or CMS encapsulated data. This API returns the result synchronously.
+Obtains the CMS message, for example, the CMS signature data or CMS encapsulated data.
 
-**Atomic service API**: This API can be used in atomic services since API version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name     | Type               | Mandatory| Description                                      |
 | ----------- | ------------------- | ---- | ------------------------------------------ |
-| data        | Uint8Array         | Yes  | Data to be operated.                          |
+| data        | Uint8Array         | Yes  | CMS data to be operated.                          |
 | options     | [CmsGeneratorOptions](#cmsgeneratoroptions18)  | No  | Configuration of the CMS operation.                      |
 
 **Return value**
 
 | Type                           | Description            |
 | ------------------------------- | ---------------- |
-| Uint8Array \| string            | CMS data generated.|
+| Uint8Array \| string            | CMS message.|
 
 **Error codes**
 
@@ -13413,10 +13827,10 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 401      | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error. |
+| 401      | Invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed. |
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -13440,7 +13854,7 @@ let certData = '-----BEGIN CERTIFICATE-----\n' +
   'a26pkDJhNeB/E3eBIbeydSY0A/dIGb6vbGo6BSq2KvnWAA==\n' +
   '-----END CERTIFICATE-----\n';
 
-let rsaStr1024: string  =
+let rsaStr1024: string =
   '-----BEGIN RSA PRIVATE KEY-----\n' +
     'Proc-Type: 4,ENCRYPTED\n' +
     'DEK-Info: DES-EDE3-CBC,DB0AC6E3BEE16420\n\n' +
@@ -13492,19 +13906,19 @@ function testDoFinalSync() {
             addCert:false,
             addAttr:false,
             addSmimeCapAttr:false
-          }
+          };
           cmsGenerator.addSigner(x509Cert, privateKeyInfo, config);
           console.info('testDoFinalSync addSigner result: success.');
           cmsGenerator.addCert(x509Cert);
           console.info('testDoFinalSync addCert result: success.');
-          let content = new Uint8Array([1,2,3,4]);
+          let content = new Uint8Array([1, 2, 3, 4]);
           let optionsFinal: cert.CmsGeneratorOptions = {
             contentDataFormat : cert.CmsContentDataFormat.BINARY,
             outFormat : cert.CmsFormat.DER,
             isDetached : false
           };
           let output = cmsGenerator.doFinalSync(content, optionsFinal);
-          console.info('testDoFinalSync doFinalSync result: success, output = %s.',output);
+          console.info('testDoFinalSync doFinalSync result: success, output = %s.', output);
         } catch (err) {
           let e: BusinessError = err as BusinessError;
           console.error(`testDoFinalSync failed, errCode: ${e.code}, errMsg: ${e.message}`);
@@ -13518,13 +13932,13 @@ function testDoFinalSync() {
 
 getEncryptedContentData(): Promise\<Uint8Array>
 
-Obtains the encrypted content data of the CMS whose content type is **ENVELOPED_DATA**. This API uses a promise to return the result.
+Obtains the encrypted data of the CMS **ENVELOPED_DATA** structure. This API uses a promise to return the result.
 
-Obtains the encrypted content data if the **CmsGenerator** of the **ENVELOPED_DATA** type is created and data separation is used to generate CMS encapsulated data.
+Obtains the encrypted data if a **CmsGenerator** object of the **ENVELOPED_DATA** type is created and data separation is used to generate CMS encapsulated data.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
@@ -13538,9 +13952,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -13589,20 +14003,20 @@ function stringToUint8Array(str: string): Uint8Array {
 
 async function testGetEncryptedContentData() {
   try {
-    let ecccertEncodingBlob: cert.EncodingBlob = {
+    let eccCertEncodingBlob: cert.EncodingBlob = {
       data: stringToUint8Array(eccCertData),
       // Assign a value based on the encodingData format. FORMAT_PEM and FORMAT_DER are supported.
       encodingFormat: cert.EncodingFormat.FORMAT_PEM
     };
 
-    let rsacertEncodingBlob: cert.EncodingBlob = {
+    let rsaCertEncodingBlob: cert.EncodingBlob = {
       data: stringToUint8Array(rsaCertData),
       // Assign a value based on the encodingData format. FORMAT_PEM and FORMAT_DER are supported.
       encodingFormat: cert.EncodingFormat.FORMAT_PEM
     };
 
-    let eccx509Certcert = await cert.createX509Cert(ecccertEncodingBlob);
-    let rsax509Certcert = await cert.createX509Cert(rsacertEncodingBlob);
+    let eccX509Cert = await cert.createX509Cert(eccCertEncodingBlob);
+    let rsaX509Cert = await cert.createX509Cert(rsaCertEncodingBlob);
 
     let cmsContentType = cert.CmsContentType.ENVELOPED_DATA;
     let cmsGenerator = cert.createCmsGenerator(cmsContentType);
@@ -13611,19 +14025,19 @@ async function testGetEncryptedContentData() {
     cmsGenerator.setRecipientEncryptionAlgorithm(algorithm);
     console.info(`setRecipientEncryptionAlgorithm result: success.`);
     let eccCert : cert.CmsKeyAgreeRecipientInfo = {
-      cert : eccx509Certcert,
-      digestAlgorithm : cert.CmsKeyAgreeRecipientDigestAlgorithm.SHA256,
+      cert : eccX509Cert,
+      digestAlgorithm : cert.CmsKeyAgreeRecipientDigestAlgorithm.SHA256
     };
     let rsaCert : cert.CmsKeyTransRecipientInfo = {
-      cert : rsax509Certcert,
+      cert : rsaX509Cert
     };
     let recipientInfo: cert.CmsRecipientInfo = {
       keyTransInfo : rsaCert,
-      keyAgreeInfo : eccCert,
+      keyAgreeInfo : eccCert
     };
     await cmsGenerator.addRecipientInfo(recipientInfo);
     console.info(`addRecipientInfo result: success.`);
-    let content = new Uint8Array([1,2,3,4]);
+    let content = new Uint8Array([1, 2, 3, 4]);
     let optionsFinal: cert.CmsGeneratorOptions = {
       contentDataFormat : cert.CmsContentDataFormat.BINARY,
       outFormat : cert.CmsFormat.PEM,
@@ -13645,15 +14059,15 @@ createCmsParser(): CmsParser
 
 Creates a **CmsParser** object.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                           | Description            |
 | ------------------------------- | ---------------- |
-| [CmsParser](#cmsparser22) | CmsParser object.|
+| [CmsParser](#cmsparser22) | **CmsParser** object.|
 
 **Error codes**
 
@@ -13661,9 +14075,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error. |
 
 **Example**
 ```ts
@@ -13732,7 +14146,7 @@ function stringToUint8Array(str: string): Uint8Array {
   let arr: Array<number> = [];
   for (let i = 0, j = str.length; i < j; i++) {
     arr.push(str.charCodeAt(i));
-  };
+  }
   return new Uint8Array(arr);
 }
 
@@ -13753,7 +14167,7 @@ async function testCmsVerifyTest() {
     let x509CertRoot: cert.X509Cert = await createX509Cert(ECC_256_PUB_ROOT_CERT);
     let cms: cert.CmsGenerator = cert.createCmsGenerator(cert.CmsContentType.SIGNED_DATA);
     let signerConfig: cert.CmsSignerConfig = {
-      mdName: 'SHA256',
+      mdName: 'SHA256'
     };
     let keyInfo: cert.PrivateKeyInfo = {
       key: ECC_256_PRI_ENTRY_KEY
@@ -13764,7 +14178,7 @@ async function testCmsVerifyTest() {
     cms.addSigner(x509CertEntry, keyInfo, signerConfig);
     let signData = cms.doFinalSync(plainText, option);
     let config: cert.CmsVerificationConfig = {
-      trustCerts: [x509CertRoot, x509CertInter],
+      trustCerts: [x509CertRoot, x509CertInter]
     };
     let verify: cert.CmsParser = cert.createCmsParser();
     await verify.setRawData(signData, cert.CmsFormat.PEM);
@@ -13777,32 +14191,33 @@ async function testCmsVerifyTest() {
 ```
 
 ## CmsParser<sup>22+</sup>
-Verifies and decapsulates signed and encapsulated messages in CMS format.
+
+Provide APIs for parsing, verifying signatures, and decapsulating CMS messages.
 
 > **NOTE**
 >
-> PKCS #7 is a standard syntax for storing signed or encrypted data. CMS is an extension of PKCS #7. PKCS#7 supports data types including data, signature data, envelope data,
-> signature and envelope data, message digest data, and encrypted data. It is often used to protect data integrity and confidentiality.
+> PKCS #7 is a standard syntax for storing signed or encrypted data. CMS is an extension of PKCS #7. PKCS#7 supports data types including data, signature data, encapsulated data,
+> MD data, and encryption data. It is often used to protect data integrity and confidentiality.
 
 ### setRawData<sup>22+</sup>
 
 setRawData(data: Uint8Array | string, cmsFormat: CmsFormat): Promise\<void>
 
-Converts data in CMS format into CMS objects. This API uses a promise to return the result.
+Sets CMS message data. This API uses a promise to return the result.
   
 > **NOTE**
 >
-> CMS data in PEM and DER formats is supported. **string** corresponds to the PEM format, and **Uint8Array** corresponds to the DER format.
+> CMS messages in PEM and DER formats are supported. The string is in PEM format, and the Uint8Array data is in DER format.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name      | Type  | Mandatory| Description          |
 | ------------ | ------ | ---- | -------------- |
-| data |  Uint8Array \| string | Yes| CMS data content.|
+| data |  Uint8Array \| string | Yes| CMS message content.|
 | cmsFormat | [CmsFormat](#cmsformat18) | Yes| Input CMS format.|
 
 **Return value**
@@ -13817,10 +14232,10 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19020003 | parameter check failed. Possible causes: <br>1. The length of the data is zero or too large;<br>2. The type of the cmsFormat is invalid or not supported. |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19020003 | Parameter check failed. Possible causes: <br>1. The length of the data is zero or too large;<br>2. The type of the cmsFormat is invalid or not supported. |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -13913,7 +14328,7 @@ async function testCmsVerifyTest() {
     let x509CertRoot: cert.X509Cert = await createX509Cert(ECC_256_PUB_ROOT_CERT);
     let cms: cert.CmsGenerator = cert.createCmsGenerator(cert.CmsContentType.SIGNED_DATA);
     let signerConfig: cert.CmsSignerConfig = {
-      mdName: 'SHA256',
+      mdName: 'SHA256'
     };
     let keyInfo: cert.PrivateKeyInfo = {
       key: ECC_256_PRI_ENTRY_KEY
@@ -13924,7 +14339,7 @@ async function testCmsVerifyTest() {
     cms.addSigner(x509CertEntry, keyInfo, signerConfig);
     let signData = cms.doFinalSync(plainText, option);
     let config: cert.CmsVerificationConfig = {
-      trustCerts: [x509CertRoot, x509CertInter],
+      trustCerts: [x509CertRoot, x509CertInter]
     };
     let verify: cert.CmsParser = cert.createCmsParser();
     await verify.setRawData(signData, cert.CmsFormat.PEM);
@@ -13940,17 +14355,17 @@ async function testCmsVerifyTest() {
 
 getContentType(): CmsContentType
 
-Obtains the CMS data type. Currently, signature data and decapsulated data can be obtained.
+Obtains the CMS content type.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                             | Description                |
 | --------------------------------- | -------------------- |
-| [CmsContentType](#cmscontenttype18) |CMS data type.|
+| [CmsContentType](#cmscontenttype18) |CMS content type.|
 
 **Error codes**
 
@@ -13958,9 +14373,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -14030,7 +14445,7 @@ function stringToUint8Array(str: string): Uint8Array {
   let arr: Array<number> = [];
   for (let i = 0, j = str.length; i < j; i++) {
     arr.push(str.charCodeAt(i));
-  };
+  }
   return new Uint8Array(arr);
 }
 
@@ -14053,7 +14468,7 @@ async function testCmsVerifyTest() {
     let x509CertRoot: cert.X509Cert = await createX509Cert(ECC_256_PUB_ROOT_CERT);
     let cms: cert.CmsGenerator = cert.createCmsGenerator(cert.CmsContentType.SIGNED_DATA);
     let signerConfig: cert.CmsSignerConfig = {
-      mdName: 'SHA256',
+      mdName: 'SHA256'
     };
     let keyInfo: cert.PrivateKeyInfo = {
       key: ECC_256_PRI_ENTRY_KEY
@@ -14064,7 +14479,7 @@ async function testCmsVerifyTest() {
     cms.addSigner(x509CertEntry, keyInfo, signerConfig);
     let signData = cms.doFinalSync(plainText, option);
     let config: cert.CmsVerificationConfig = {
-      trustCerts: [x509CertRoot, x509CertInter],
+      trustCerts: [x509CertRoot, x509CertInter]
     };
     let verify: cert.CmsParser = cert.createCmsParser();
     await verify.setRawData(signData, cert.CmsFormat.PEM);
@@ -14082,11 +14497,11 @@ async function testCmsVerifyTest() {
 
 verifySignedData(config: CmsVerificationConfig): Promise\<void>
 
-Verifies the CMS of the **Signed_DATA** content type. This API uses a promise to return the result.
+Verifies the CMS message of the signature data type. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -14106,13 +14521,13 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19020003 | parameter check failed. Possible causes: <br>1. The trustCerts of config is empty;<br>2. The length of the contentData of config is zero or too large;<br>3. The contentDataFormat of config is invalid or not supported. |
-| 19030001 | crypto operation error. |
-| 19030003 | the certificate has not taken effect. |
-| 19030004 | the certificate has expired. |
-| 19030005 | failed to obtain the certificate issuer. |
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19020003 | Parameter check failed. Possible causes: <br>1. The trustCerts of config is empty;<br>2. The length of the contentData of config is zero or too large;<br>3. The contentDataFormat of config is invalid or not supported. |
+| 19030001 | Crypto operation error. |
+| 19030003 | The certificate has not taken effect. |
+| 19030004 | The certificate has expired. |
+| 19030005 | Failed to obtain the certificate issuer. |
 
 **Example**
 
@@ -14182,7 +14597,7 @@ function stringToUint8Array(str: string): Uint8Array {
   let arr: Array<number> = [];
   for (let i = 0, j = str.length; i < j; i++) {
     arr.push(str.charCodeAt(i));
-  };
+  }
   return new Uint8Array(arr);
 }
 
@@ -14204,7 +14619,7 @@ async function testCmsVerifyTest() {
     let x509CertRoot: cert.X509Cert = await createX509Cert(ECC_256_PUB_ROOT_CERT);
     let cms: cert.CmsGenerator = cert.createCmsGenerator(cert.CmsContentType.SIGNED_DATA);
     let signerConfig: cert.CmsSignerConfig = {
-      mdName: 'SHA256',
+      mdName: 'SHA256'
     };
     let keyInfo: cert.PrivateKeyInfo = {
       key: ECC_256_PRI_ENTRY_KEY
@@ -14215,7 +14630,7 @@ async function testCmsVerifyTest() {
     cms.addSigner(x509CertEntry, keyInfo, signerConfig);
     let signData = cms.doFinalSync(plainText, option);
     let config: cert.CmsVerificationConfig = {
-      trustCerts: [x509CertRoot, x509CertInter],
+      trustCerts: [x509CertRoot, x509CertInter]
     };
     let verify: cert.CmsParser = cert.createCmsParser();
     await verify.setRawData(signData, cert.CmsFormat.PEM);
@@ -14231,17 +14646,17 @@ async function testCmsVerifyTest() {
 
 getContentData(): Promise\<Uint8Array>
 
-Obtains the plaintext data from CMS data of the signature type. This API uses a promise to return the result.
+Obtains the content data from the CMS message of the signature data type. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Return value**
 
 | Type                             | Description                |
 | --------------------------------- | -------------------- |
-| Promise\<Uint8Array> |Promise used to return the original CMS data.|
+| Promise\<Uint8Array> |Promise used to return CMS content data.|
 
 **Error codes**
 
@@ -14249,9 +14664,9 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -14343,7 +14758,7 @@ async function testCmsVerifyTest() {
     let x509CertRoot: cert.X509Cert = await createX509Cert(ECC_256_PUB_ROOT_CERT);
     let cms: cert.CmsGenerator = cert.createCmsGenerator(cert.CmsContentType.SIGNED_DATA);
     let signerConfig: cert.CmsSignerConfig = {
-      mdName: 'SHA256',
+      mdName: 'SHA256'
     };
     let keyInfo: cert.PrivateKeyInfo = {
       key: ECC_256_PRI_ENTRY_KEY
@@ -14354,7 +14769,7 @@ async function testCmsVerifyTest() {
     cms.addSigner(x509CertEntry, keyInfo, signerConfig);
     let signData = cms.doFinalSync(plainText, option);
     let config: cert.CmsVerificationConfig = {
-      trustCerts: [x509CertRoot, x509CertInter],
+      trustCerts: [x509CertRoot, x509CertInter]
     };
     let verify: cert.CmsParser = cert.createCmsParser();
     await verify.setRawData(signData, cert.CmsFormat.PEM);
@@ -14370,13 +14785,13 @@ async function testCmsVerifyTest() {
 
 ### getCerts<sup>22+</sup>
 
-getCerts(type: CmsCertType): Promise<Array\<[X509Cert](#x509cert)>>
+getCerts(type: CmsCertType): Promise<Array\<X509Cert>>
 
-Obtains the certificate from CMS data of the signature type by passing enumerated values. The signer certificate or all certificates can be obtained. This API uses a promise to return the result.
+Obtains the certificate from CMS messages of the signature data type by passing enumerated values. Currently, the signer certificate or all certificates can be obtained. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
@@ -14396,10 +14811,10 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19020003 | parameter check failed. Possible causes: <br>1. The type of the cmsFormat is invalid or not supported. |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19020003 | Parameter check failed. Possible causes: <br>1. The value of type is invalid or not supported. |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -14492,7 +14907,7 @@ async function testCmsVerifyTest() {
     let x509CertRoot: cert.X509Cert = await createX509Cert(ECC_256_PUB_ROOT_CERT);
     let cms: cert.CmsGenerator = cert.createCmsGenerator(cert.CmsContentType.SIGNED_DATA);
     let signerConfig: cert.CmsSignerConfig = {
-      mdName: 'SHA256',
+      mdName: 'SHA256'
     };
     let keyInfo: cert.PrivateKeyInfo = {
       key: ECC_256_PRI_ENTRY_KEY
@@ -14503,7 +14918,7 @@ async function testCmsVerifyTest() {
     cms.addSigner(x509CertEntry, keyInfo, signerConfig);
     let signData = cms.doFinalSync(plainText, option);
     let config: cert.CmsVerificationConfig = {
-      trustCerts: [x509CertRoot, x509CertInter],
+      trustCerts: [x509CertRoot, x509CertInter]
     };
     let verify: cert.CmsParser = cert.createCmsParser();
     await verify.setRawData(signData, cert.CmsFormat.PEM);
@@ -14522,23 +14937,23 @@ async function testCmsVerifyTest() {
 
 decryptEnvelopedData(config: CmsEnvelopedDecryptionConfig): Promise\<Uint8Array>
 
-Verifies the CMS of the **Enveloped_DATA** content type. This API uses a promise to return the result.
+Decrypts the CMS message of the enveloped data type. This API uses a promise to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-**System capability**: SystemCapability.Security.Cert
+**System capability:** SystemCapability.Security.Cert
 
 **Parameters**
 
 | Name      | Type  | Mandatory| Description          |
 | ------------ | ------ | ---- | -------------- |
-| config |  [CmsEnvelopedDecryptionConfig](#cmsenvelopeddecryptionconfig22) | Yes| CMS decapsulation configuration content.|
+| config |  [CmsEnvelopedDecryptionConfig](#cmsenvelopeddecryptionconfig22) | Yes| CMS decryption configuration.|
 
 **Return value**
 
 | Type                             | Description                |
 | --------------------------------- | -------------------- |
-| Promise\<Uint8Array> |Promise used to return the decapsulation result.|
+| Promise\<Uint8Array> |Promise used to return the decryption result.|
 
 **Error codes**
 
@@ -14546,10 +14961,10 @@ For details about the error codes, see [Certificate Error Codes](errorcode-cert.
 
 | ID| Error Message     |
 | -------- | ------------- |
-| 19020001 | memory malloc failed. |
-| 19020002 | runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to convert parameters between ArkTS and C. |
-| 19020003 | parameter check failed. Possible causes: <br>1. The private key is invalid or not supported;<br>2. The recipient certificate is invalid or not supported. |
-| 19030001 | crypto operation error. |
+| 19020001 | Memory malloc failed. |
+| 19020002 | Runtime error. Possible causes: <br>1. Memory copy failed;<br>2. A null pointer occurs inside the system;<br>3. Failed to obtain the native object or convert parameters.|
+| 19020003 | Parameter check failed. Possible causes: <br>1. The private key is invalid or not supported;<br>2. The recipient certificate is invalid or not supported. |
+| 19030001 | Crypto operation error. |
 
 **Example**
 
@@ -14622,7 +15037,7 @@ async function testCmsDecryptTest() {
     let config: cert.CmsEnvelopedDecryptionConfig = {
       keyInfo: {
         key: ECC_256_PRIVATE
-      },
+      }
     };
     let cmsDecrypt: cert.CmsParser = cert.createCmsParser();
     await cmsDecrypt.setRawData(envelopeData, cert.CmsFormat.PEM);
@@ -14630,7 +15045,7 @@ async function testCmsDecryptTest() {
     console.info('[XTS] Decrypt result: success, decPlainText = ' + decPlainText);
     console.info('decryptEnvelopedData result: success.');
   } catch (error) {
-    console.error(`verifySignedData failed: errCode: ${error.code}, errMsg: ${error.message}`);
+    console.error(`decryptEnvelopedData failed: errCode: ${error.code}, errMsg: ${error.message}`);
   }
 }
 ```

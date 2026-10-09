@@ -1,15 +1,16 @@
 # Data Transfer and Processing
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @seaside_wu1-->
 <!--Designer: @shiyu_huang-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=93458ca6cb2d2618da5fc6bdfa2819210775aa38 translatedAt=2026-06-23T07:34:55.757Z pushedAt=2026-06-23T10:55:01.474Z -->
 
+## Props
 
-## props
-
-You can use **props** to declare attributes of a custom component and pass the attributes to the child component. The supported types of **props** include String, Number, Boolean, Array, Object, and Function. Note that a camel case attribute name (**compProp**) should be converted to the kebab case format (**comp-prop**) when you reference the attribute in an external parent component. The following is sample for adding **props** to a custom component and passing the attribute to the child component.
+You can use **props** to declare attributes of a custom component and pass the attributes to the child component. The supported types of **props** include String, Number, Boolean, Array, Object, and Function. Note that a camel case attribute name (**compProp**) should be converted to the kebab case format (**comp-prop**) when you reference the attribute in an external parent component. The following is a sample for adding **props** to a custom component and passing the attribute to the child component.
 
 ```html
 <!-- comp.hml -->
@@ -39,7 +40,7 @@ export default {
 
 ### Default Value
 
-You can set the default value for a child component attribute via **default**. The default value is used if the parent component does not have **default** set. In this case, the **props** attribute must be in object format instead of an array.
+You can set the default value for a child component attribute via **default**. The default value is used if the parent component does not have **default** set. In this case, the **props** attribute must be in object format instead of an array. The following is an example.
 
 ```html
 <!-- comp.hml -->
@@ -104,7 +105,6 @@ export default {
   },
 }
 ```
-
 
 ## computed
 

@@ -1,8 +1,8 @@
 # Web组件的生命周期
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @weixin_41848015-->
-<!--Designer: @libing23232323-->
+<!--Owner: @xingyihang-->
+<!--Designer: @spruceovo-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -16,7 +16,7 @@ Web组件的状态主要包括：Controller绑定到Web组件、网页加载开�
 
 Web页面保活可以参考[使用离线Web组件](../web/web-offline-mode.md)。
 
-自定义组件析构销毁时执行[aboutToDisappear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)函数，Web组件会被销毁，Web组件与WebviewController解绑，js运行环境也会一并销毁。
+自定义组件析构销毁时执行[aboutToDisappear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)函数，Web组件会被销毁，Web组件与[WebviewController](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md)解绑，js运行环境也会一并销毁。
 
 **图1**  Web组件网页正常加载过程中的回调事件
 
@@ -26,7 +26,7 @@ Web页面保活可以参考[使用离线Web组件](../web/web-offline-mode.md)�
 
 - [aboutToAppear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)函数：在创建自定义组件的新实例后，在执行其build函数前执行。建议在此设置WebDebug调试模式、自定义协议URL的权限、Cookie等。
 
-- [onControllerAttached](../reference/apis-arkweb/arkts-basic-components-web-events.md#oncontrollerattached10)事件：当Controller成功绑定到Web组件时触发该回调，且禁止在该事件回调前调用Web组件相关的接口，否则会抛出js-error异常。建议在此事件中注入JS对象、设置自定义用户代理，使用操作网页不相关的接口。但因该回调调用时网页还未加载，因此无法在回调中使用有关操作网页的接口，例如[zoomIn](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#zoomin)、[zoomOut](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#zoomout)等。
+- [onControllerAttached](../reference/apis-arkweb/arkts-basic-components-web-events.md#oncontrollerattached10)事件：当Controller成功绑定到Web组件时触发该回调，且禁止在该事件回调前调用Web组件相关的接口，否则会抛出js-error异常。建议在此事件中注入JS对象、设置自定义用户代理，使用操作网页不相关的接口。但因为该回调调用时网页还未加载，因此无法在回调中使用有关操作网页的接口，例如[zoomIn](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#zoomin)、[zoomOut](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#zoomout)等。
 
 - [onLoadIntercept](../reference/apis-arkweb/arkts-basic-components-web-events.md#onloadintercept10)事件：当Web组件加载url之前触发该回调，用于判断是否阻止此次访问。默认允许加载。
 
@@ -47,7 +47,7 @@ Web页面保活可以参考[使用离线Web组件](../web/web-offline-mode.md)�
 
 - [onDisAppear](../reference/apis-arkui/arkui-ts/ts-universal-events-show-hide.md#ondisappear)事件：组件卸载消失时触发此回调。该事件在组件卸载时触发。
 
-应用侧代码。
+- 应用侧代码。
 
   ```ts
   // xxx.ets
@@ -174,7 +174,7 @@ Web页面保活可以参考[使用离线Web组件](../web/web-offline-mode.md)�
 
 网页加载过程中需要关注一些重要的性能指标。例如，FCP(First Contentful Paint)首次内容绘制，FMP(First Meaningful Paint)首次有效绘制，LCP(Largest Contentful Paint)最大内容绘制等。Web组件提供了如下接口来通知开发者，接口仅支持在线非PDF网页，不支持本地网页和PDF网页。
 
-- [onFirstContentfulPaint](../reference/apis-arkweb/arkts-basic-components-web-events.md#onfirstcontentfulpaint10)事件：网页首次内容绘制的回调函数。首次绘制文本、图像、非空白Canvas或SVG的时间点。
+- [onFirstContentfulPaint](../reference/apis-arkweb/arkts-basic-components-web-events.md#onfirstcontentfulpaint10)事件：网页首次内容绘制的回调函数。首次绘制文本、图像、非空白[Canvas](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md)或SVG的时间点。
 
 - [onFirstMeaningfulPaint](../reference/apis-arkweb/arkts-basic-components-web-events.md#onfirstmeaningfulpaint12)事件：网页绘制页面主要内容的回调函数。首次绘制主要内容的时间点。
 
@@ -193,7 +193,7 @@ import { webview } from '@kit.ArkWeb';
 @Entry
 @Component
 struct WebComponent {
-  needReloadWhenVisible: boolean = false ;  // Web组件不可见时render退出后阻止重新加载页面，在可见时重新加载页面。
+  needReloadWhenVisible: boolean = false;  // Web组件不可见时render退出后阻止重新加载页面，在可见时重新加载页面。
   webIsVisible: boolean = false;            // 判断Web组件是否可见。
 
   // 此处是将子进程异常崩溃和其它异常原因做了区分，应用开发者可根据实际业务特点，细化对应异常的处理策略。

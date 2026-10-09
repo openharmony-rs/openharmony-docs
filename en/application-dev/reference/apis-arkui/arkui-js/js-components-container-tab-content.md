@@ -1,16 +1,15 @@
 # tab-content
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
 >  **NOTE**
->
->  This component is supported since API version 4. Updates will be marked with a superscript to indicate their earliest API version.
+> Supported since API version 4. Updates will be marked with a superscript to indicate their earliest API version.
 
-**<tab-content\>** is a child component of **[<tabs\>](js-components-container-tabs.md)** and is used to provide the area for displaying the tab content. By default, its height is such that all the remaining space of the **<tabs\>** component is filled. The child components are arranged horizontally. When **<tab-content\>** is used as a child element in a container, its length along the main axis must be specified. Otherwise, it cannot be displayed. **\<tab-content>** does not support page scrolling. If page scrolling is required, consider nesting a list.
+**tab-content** is a child component of <[tabs](js-components-container-tabs.md)> and is used to provide the area for displaying the tab content. By default, its height is such that all the remaining space of the **tabs** component is filled. The child components are arranged horizontally. When **tab-content** is used as a child element in a container, its length along the main axis must be specified. Otherwise, it cannot be displayed. **tab-content** does not support page scrolling. If page scrolling is required, consider nesting a list.
 
 ## Required Permissions
 
@@ -43,4 +42,4 @@ The [universal events](js-components-common-events.md) are supported.
 
 ## Example
 
-For details, see **Example** in [tabs](js-components-container-tabs.md#example).
+For details, see [Example in tabs](js-components-container-tabs.md#example).

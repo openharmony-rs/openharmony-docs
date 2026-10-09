@@ -1,12 +1,12 @@
 # @ohos.notificationExtensionSubscription (notificationExtensionSubscription模块)
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @cheerful_ricky-->
-<!--Designer: @dongqingran-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-本模块提供管理通知扩展的能力，具体包括：打开通知扩展订阅设置界面、订阅和取消订阅通知扩展、获取和设置通知授权状态。
+本模块提供管理通知扩展的能力，具体包括：打开通知扩展订阅设置界面、订阅和取消订阅通知扩展、获取和设置[通知授权](../../notification/notification-glossary.md#notification-authorization通知授权)状态。
 
 > **说明：**
 >
@@ -22,7 +22,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 openSubscriptionSettings(context: UIAbilityContext): Promise\<void\>
 
-打开应用的通知扩展订阅授权页面，以半模态弹窗形式显示。用户可在该页面授权"允许获取本机通知"开关与"已获取的本机通知"应用开关。使用Promise异步回调。
+打开应用的通知扩展订阅授权页面，以半模态弹窗形式显示。用户可在该页面授权“允许获取本机通知”开关与“已获取的本机通知”应用开关。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -32,7 +32,7 @@ openSubscriptionSettings(context: UIAbilityContext): Promise\<void\>
 
 | 参数名   | 类型                     | 必填 | 说明                 |
 | -------- | ------------------------ | ---- |--------------------|
-| context | [UIAbilityContext](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是   | 通知设置页面绑定Ability的上下文。 |
+| context | [UIAbilityContext](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是 | [通知设置](../../notification/notification-glossary.md#notification-setting通知设置)页面绑定Ability的上下文。 |
 
 **返回值：**
 
@@ -42,11 +42,11 @@ openSubscriptionSettings(context: UIAbilityContext): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied or current device not supported.     |  
+| 201      | Permission denied or current device not supported.     |
 | 1600001  | Internal error.                     |
 | 1600018  | The notification settings window is already displayed.           |
 | 1600023  | The application does not implement the NotificationSubscriberExtensionAbility.           |
@@ -57,16 +57,72 @@ openSubscriptionSettings(context: UIAbilityContext): Promise\<void\>
 import { common } from '@kit.AbilityKit';
 
 try {
-  // 请在组件内获取context，确保this.getuIContext().getHostContext()返回结果为UIAbilityContext。
+  // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   notificationExtensionSubscription.openSubscriptionSettings(context).then(() => {
-    console.info(`openSubscriberSettings success`);
-  }).catch((e:Error) => {
-    let error = e as BusinessError
-    console.error(`failed to call openSubscriptionSettings ${JSON.stringify(error)}`)
+    console.info(`openSubscriptionSettings success`);
+  }).catch((e: Error) => {
+    let error = e as BusinessError;
+    console.error(`failed to call openSubscriptionSettings, code is ${error.code}, message is ${error.message}`)
   });
 } catch (error) {
-  console.error(`failed to call openSubscriptionSettings ${JSON.stringify(error)}`)
+  console.error(`failed to call openSubscriptionSettings, code is ${error.code}, message is ${error.message}`)
+}
+```
+
+## notificationExtensionSubscription.openSubscriptionSettingsWithResult
+
+openSubscriptionSettingsWithResult(context: UIAbilityContext): Promise\<UserGrantSetting\>
+
+打开应用的通知扩展订阅授权页面，以半模态弹窗形式显示。用户可在该页面授权“允许获取本机通知”开关与“已获取的本机通知”应用开关。使用Promise异步回调，当半模态窗口关闭时返回用户设置的授权结果。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.SUBSCRIBE_NOTIFICATION
+
+**参数：**
+
+| 参数名   | 类型                     | 必填 | 说明                 |
+| -------- | ------------------------ | ---- |--------------------|
+| context | [UIAbilityContext](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是 | [通知设置](../../notification/notification-glossary.md#notification-setting通知设置)页面绑定Ability的上下文。 |
+
+**返回值：**
+
+| 类型     | 说明 | 
+| ------- |--|
+| Promise\<[UserGrantSetting](#usergrantsetting)\> | Promise对象，返回用户设置的授权结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | ----------------------------------- |
+| 201      | Permission denied or current device not supported.     |
+| 1600001  | Internal error.                     |
+| 1600018  | The notification settings window is already displayed.           |
+| 1600023  | The application does not implement the NotificationSubscriberExtensionAbility.           |
+
+**示例：**
+
+```ts
+import { common } from '@kit.AbilityKit';
+
+try {
+  // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
+  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  notificationExtensionSubscription.openSubscriptionSettingsWithResult(context).then((data) => {
+    console.info(`openSubscriptionSettingsWithResult success, data: ${JSON.stringify(data)}`);
+  }).catch((e: Error) => {
+    let error = e as BusinessError;
+    console.error(`failed to call openSubscriptionSettingsWithResult, code is ${error.code}, message is ${error.message}`)
+  });
+} catch (error) {
+  console.error(`failed to call openSubscriptionSettingsWithResult, code is ${error.code}, message is ${error.message}`)
 }
 ```
 
@@ -94,7 +150,7 @@ subscribe(info: NotificationExtensionSubscriptionInfo[]): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                                              |
 | -------- | ---------------------------------------------------- |
@@ -114,9 +170,9 @@ let infos: notificationExtensionSubscription.NotificationExtensionSubscriptionIn
   }
 ];
 notificationExtensionSubscription.subscribe(infos).then(() => {
-  console.info("subscribe success");
+  console.info(`subscribe success`);
 }).catch((err: BusinessError) => {
-  console.error(`subscribe fail: ${JSON.stringify(err)}`);
+  console.error(`subscribe fail, code is ${err.code}, message is ${err.message}`);
 });
 
 ```
@@ -139,7 +195,7 @@ unsubscribe(): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -152,9 +208,9 @@ unsubscribe(): Promise\<void\>
 ```ts
 
 notificationExtensionSubscription.unsubscribe().then(() => {
-  console.info("unsubscribe success");
+  console.info(`unsubscribe success`);
 }).catch((err: BusinessError) => {
-  console.error(`unsubscribe fail: ${JSON.stringify(err)}`);
+  console.error(`unsubscribe fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -176,7 +232,7 @@ getSubscribeInfo(): Promise\<NotificationExtensionSubscriptionInfo[]\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -191,7 +247,7 @@ getSubscribeInfo(): Promise\<NotificationExtensionSubscriptionInfo[]\>
 notificationExtensionSubscription.getSubscribeInfo().then((data: notificationExtensionSubscription.NotificationExtensionSubscriptionInfo[]) => {
   console.info(`getSubscribeInfo successfully. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-  console.error(`getSubscribeInfo fail: ${JSON.stringify(err)}`);
+  console.error(`getSubscribeInfo fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -199,7 +255,7 @@ notificationExtensionSubscription.getSubscribeInfo().then((data: notificationExt
 
 isUserGranted(): Promise\<boolean\>
 
-查询"允许获取本机通知"的开关状态。使用Promise异步回调。
+查询“允许获取本机通知”的开关状态。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -213,11 +269,11 @@ isUserGranted(): Promise\<boolean\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                                              |
 | -------- | ---------------------------------------------------- |
-| 201      | Permission denied or current device not supported. | 
+| 201      | Permission denied or current device not supported. |
 | 1600001  | Internal error.                                      |
 | 1600003  | Failed to connect to the service.                           |
 
@@ -232,7 +288,7 @@ notificationExtensionSubscription.isUserGranted().then((isOpen: boolean) => {
     console.info('isUserGranted false');
   }
 }).catch((err: BusinessError) => {
-  console.error(`isUserGranted fail: ${JSON.stringify(err)}`);
+  console.error(`isUserGranted fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -240,7 +296,7 @@ notificationExtensionSubscription.isUserGranted().then((isOpen: boolean) => {
 
 getUserGrantedEnabledBundles(): Promise\<GrantedBundleInfo[]\>
 
-获取指定应用中"已获取的本机通知"通知开关开启的应用列表。使用Promise异步回调。
+获取本应用中“已获取的本机通知”通知开关开启的应用列表。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -248,17 +304,17 @@ getUserGrantedEnabledBundles(): Promise\<GrantedBundleInfo[]\>
 
 **返回值：**
 
-| 类型     | 说明        | 
+| 类型     | 说明        |
 | ------- |-----------|
-| Promise\<[GrantedBundleInfo[]](./js-apis-inner-notification-notificationCommonDef.md#grantedbundleinfo22)\>   | Promise对象，返回获取指定应用中"已获取的本机通知"通知开关开启的应用列表。        |
+| Promise\<[GrantedBundleInfo](js-apis-inner-notification-notificationCommonDef.md#grantedbundleinfo22)[]\>   | Promise对象，返回本应用中“已获取的本机通知”通知开关开启的应用列表。        |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 201      | Permission denied or current device not supported.     |  
+| 201      | Permission denied or current device not supported.     |
 | 1600001  | Internal error.                     |
 | 1600003  | Failed to connect to the service.          |
 
@@ -269,7 +325,7 @@ getUserGrantedEnabledBundles(): Promise\<GrantedBundleInfo[]\>
 notificationExtensionSubscription.getUserGrantedEnabledBundles().then((data: notificationExtensionSubscription.GrantedBundleInfo[]) => {
   console.info(`getUserGrantedEnabledBundles successfully. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-  console.error(`getUserGrantedEnabledBundles fail: ${JSON.stringify(err)}`);
+  console.error(`getUserGrantedEnabledBundles fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -279,7 +335,7 @@ type NotificationExtensionSubscriptionInfo = _NotificationExtensionSubscriptionI
 
 用于描述通知扩展订阅的信息。
 
-**系统能力**： SystemCapability.Notification.Notification
+**系统能力**：SystemCapability.Notification.Notification
 
 | 类型 | 说明 |
 | --- | --- |
@@ -289,13 +345,13 @@ type NotificationExtensionSubscriptionInfo = _NotificationExtensionSubscriptionI
 
 type NotificationInfo = _NotificationInfo
 
-通知订阅扩展能力中[onReceiveMessage](js-apis-notificationSubscriberExtensionAbility.md#onreceivemessage)回调的通知信息。
+[通知订阅](../../notification/notification-glossary.md#notification-subscription通知订阅)扩展能力中[onReceiveMessage](js-apis-notificationSubscriberExtensionAbility.md#onreceivemessage)回调的通知信息。
 
 **系统能力**：SystemCapability.Notification.Notification
 
 | 类型 | 说明 |
 | --- | --- |
-| [_NotificationInfo](js-apis-inner-notification-notificationInfo.md) |通知订阅扩展能力中[onReceiveMessage](js-apis-notificationSubscriberExtensionAbility.md#onreceivemessage)回调的通知信息。|
+| [_NotificationInfo](js-apis-inner-notification-notificationInfo.md) | 通知订阅扩展能力中[onReceiveMessage](js-apis-notificationSubscriberExtensionAbility.md#onreceivemessage)回调的通知信息。 |
 
 ## SubscribeType
 
@@ -313,7 +369,7 @@ type BundleOption = _BundleOption
 
 指定应用的包信息。
 
-**系统能力**： SystemCapability.Notification.Notification
+**系统能力**：SystemCapability.Notification.Notification
 
 | 类型 | 说明 |
 | --- | --- |
@@ -325,8 +381,24 @@ type GrantedBundleInfo = _GrantedBundleInfo
 
 授权应用的包信息。
 
-**系统能力**： SystemCapability.Notification.Notification
+**系统能力**：SystemCapability.Notification.Notification
 
 | 类型 | 说明 |
 | --- | --- |
 | [_GrantedBundleInfo](js-apis-inner-notification-notificationCommonDef.md#grantedbundleinfo22) | 授权应用的包信息。 |
+
+## UserGrantSetting
+
+type UserGrantSetting = _UserGrantSetting
+
+用户授权的设置信息。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+| 类型 | 说明 |
+| --- | --- |
+| [_UserGrantSetting](js-apis-inner-notification-notificationCommonDef.md#usergrantsetting) | 用户授权的设置信息。 |

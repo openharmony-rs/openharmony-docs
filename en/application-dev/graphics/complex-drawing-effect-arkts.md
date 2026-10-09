@@ -61,7 +61,7 @@ function drawRenderNode(canvas: drawing.Canvas) {
 }
 ```
 
-![image_BlendMode_SrcIn.png](figures/image_BlendMode_SrcIn.png)
+![BlendMode-SrcIn.png](figures/BlendMode-SrcIn.png)
 
 
 ## Path Effect
@@ -164,7 +164,7 @@ canvas.drawRect(rect);
 canvas.detachBrush();
 ```
 
-![image_0000002158744106](figures/image_0000002158744106.png)
+![Gradient-Shader-Effect](figures/Gradient-Shader-Effect.png)
 
 
 ### Radial Gradient Shader Effect

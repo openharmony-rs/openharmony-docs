@@ -1,10 +1,12 @@
 # native_avcapability.h
+
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @yang-xiaoyu5-->
 <!--Designer: @dpy2650-->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=e8c5c20c2e613f3213142be6ac06f0d49df96fa7 translatedAt=2026-08-01T07:20:25.165Z pushedAt=2026-08-01T08:00:26.632Z -->
 
 ## Overview
 
@@ -34,6 +36,7 @@ The file declares the native APIs used to query the codec capability.
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [OH_AVCodecCategory](#oh_avcodeccategory) | OH_AVCodecCategory | Enumerates the codec categories.|
+| [OH_AVCodecType](#oh_avcodectype) | OH_AVCodecType | Codec type.|
 | [OH_AVCapabilityFeature](#oh_avcapabilityfeature) | OH_AVCapabilityFeature | Enumerates the optional features that can be used in specific codec scenarios.|
 
 ### Functions
@@ -42,8 +45,12 @@ The file declares the native APIs used to query the codec capability.
 | -- | -- |
 | [OH_AVCapability *OH_AVCodec_GetCapability(const char *mime, bool isEncoder)](#oh_avcodec_getcapability) | Obtains the codec capability recommended by the system.|
 | [OH_AVCapability *OH_AVCodec_GetCapabilityByCategory(const char *mime, bool isEncoder, OH_AVCodecCategory category)](#oh_avcodec_getcapabilitybycategory) | Obtains the codec capability by category, which can be a hardware codec or software codec.|
+| [OH_AVCapability **OH_AVCodec_GetCapabilityList(OH_AVCodecType codecType, uint32_t *count)](#oh_avcodec_getcapabilitylist) | Obtains the list of capabilities for the specified codec type. This function retrieves all matching codec capabilities supported by the system based on the provided codec type.|
 | [bool OH_AVCapability_IsHardware(OH_AVCapability *capability)](#oh_avcapability_ishardware) | Checks whether a codec capability instance describes a hardware codec.|
-| [const char *OH_AVCapability_GetName(OH_AVCapability *capability)](#oh_avcapability_getname) | Obtains the codec name.|
+| [bool OH_AVCapability_IsSecure(OH_AVCapability *capability)](#oh_avcapability_issecure) | Checks whether the capability instance describes a DRM decoder.|
+| [const char *OH_AVCapability_GetName(OH_AVCapability *capability)](#oh_avcapability_getname) | Obtains the corresponding codec name. |
+| [const char *OH_AVCapability_GetMimeType(OH_AVCapability *capability)](#oh_avcapability_getmimetype) | Obtains the MIME type of the codec.|
+| [bool OH_AVCapability_CheckMimeType(OH_AVCapability *capability, const char *mimeType)](#oh_avcapability_checkmimetype) | Checks whether the MIME type of the codec matches the specified MIME type.|
 | [int32_t OH_AVCapability_GetMaxSupportedInstances(OH_AVCapability *capability)](#oh_avcapability_getmaxsupportedinstances) | Obtains the maximum number of codec instances supported by a codec.|
 | [OH_AVErrCode OH_AVCapability_GetEncoderBitrateRange(OH_AVCapability *capability, OH_AVRange *bitrateRange)](#oh_avcapability_getencoderbitraterange) | Obtains the bit rate range supported by an encoder.|
 | [bool OH_AVCapability_IsEncoderBitrateModeSupported(OH_AVCapability *capability, OH_BitrateMode bitrateMode)](#oh_avcapability_isencoderbitratemodesupported) | Checks whether an encoder supports a specific bit rate mode.|
@@ -91,6 +98,25 @@ Enumerates the codec categories.
 | HARDWARE = 0 | Hardware codec.|
 | SOFTWARE | Software codec.|
 
+### OH_AVCodecType
+
+```c
+enum OH_AVCodecType
+```
+
+**Description**
+
+Codec type.
+
+**Since**: 24
+
+| Value| Description|
+| -- | -- |
+| OH_AVCODEC_TYPE_VIDEO_ENCODER = 0 | Video encoder.<br>**Since**: 24|
+| OH_AVCODEC_TYPE_VIDEO_DECODER = 1 | Video decoder.<br>**Since**: 24|
+| OH_AVCODEC_TYPE_AUDIO_ENCODER = 2 | Audio encoder.<br>**Since**: 24|
+| OH_AVCODEC_TYPE_AUDIO_DECODER = 3 | Audio decoder.<br>**Since**: 24|
+
 ### OH_AVCapabilityFeature
 
 ```c
@@ -111,7 +137,9 @@ Enumerates the optional features that can be used in specific codec scenarios.
 | VIDEO_ENCODER_LONG_TERM_REFERENCE = 1 | Long-term reference frame feature, which is available only in video encoding scenarios.|
 | VIDEO_LOW_LATENCY = 2 | Low latency feature, which is available only in video decoding scenarios.|
 | VIDEO_ENCODER_B_FRAME = 7 | B-frame encoding feature, which is available only in video encoding scenarios.<br>**Since**: 20|
-
+| VIDEO_DECODER_OUTPUT_IN_DECODING_ORDER = 8 | Decoding-order frame output feature, which is available only in video decoding scenarios.<br>**Since**: 26.0.0|
+| VIDEO_ENCODER_PREPROC_DOWNSAMPLING = 9 | Downsampling feature before video encoding, which is available only for video encoders.<br>This capability can be enabled only when the encoder is created through the [OH_VideoEncoder_CreatePrimaryWithPreproc](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_createprimarywithpreproc) or [OH_VideoEncoder_CreateSecondaryFromPrimary](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_createsecondaryfromprimary) API.<br>**Since**: 26.0.0|
+| VIDEO_ENCODER_PREPROC_CROP = 10 | Cropping feature before video encoding, which is available only for video encoders.<br>This capability can be enabled only when the encoder is created through the [OH_VideoEncoder_CreatePrimaryWithPreproc](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_createprimarywithpreproc) or [OH_VideoEncoder_CreateSecondaryFromPrimary](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_createsecondaryfromprimary) API.<br>**Since**: 26.0.0|
 
 ## Function Description
 
@@ -133,7 +161,7 @@ Obtains the codec capability recommended by the system.
 
 | Name| Description|
 | -- | -- |
-| const char *mime | Pointer to a string that describes the MIME type. For details, see [AVCODEC_MIME_TYPE](capi-native-avcodec-base-h.md#variables).|
+| const char *mime | Pointer to a string that describes the MIME type. For details, see [AVCODEC_MIME_TYPE variables](capi-native-avcodec-base-h.md#variables).|
 | bool isEncoder | Whether the instance is an encoder. The value **true** means an encoder and **false** means a decoder.|
 
 **Returns**
@@ -160,7 +188,7 @@ Obtains the codec capability by category, which can be a hardware codec or softw
 
 | Name| Description|
 | -- | -- |
-| const char *mime | Pointer to a string that describes the MIME type. For details, see [AVCODEC_MIME_TYPE](capi-native-avcodec-base-h.md#variables).|
+| const char *mime | Pointer to a string that describes the MIME type. For details, see [AVCODEC_MIME_TYPE variables](capi-native-avcodec-base-h.md#variables).|
 | bool isEncoder | Whether the instance is an encoder. The value **true** means an encoder and **false** means a decoder.|
 | [OH_AVCodecCategory](#oh_avcodeccategory) category | Codec category.|
 
@@ -169,6 +197,35 @@ Obtains the codec capability by category, which can be a hardware codec or softw
 | Type| Description|
 | -- | -- |
 | [OH_AVCapability](capi-avcapability-oh-avcapability.md) * | Pointer to the codec capability instance. If no existing codec matches, NULL is returned.|
+
+### OH_AVCodec_GetCapabilityList()
+
+```c
+OH_AVCapability **OH_AVCodec_GetCapabilityList(OH_AVCodecType codecType, uint32_t *count)
+```
+
+**Description**
+
+Obtains the list of capabilities for the specified codec type. This function retrieves all matching codec capabilities supported by the system based on the provided codec type.
+
+>**NOTE**
+> 
+>The memory for the codec capability list is globally maintained by the underlying system. Callers do not need to manage its lifecycle and must not manually allocate or free this memory.
+
+**Since**: 24
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_AVCodecType](capi-native-avcapability-h.md#oh_avcodectype) codecType | Codec type to be queried.|
+| uint32_t *count |  Pointer to a uint32_t variable for storing the number of matched codec capabilities.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_AVCapability **](capi-avcapability-oh-avcapability.md) | If a match is found, a pointer to an array of OH_AVCapability instances is returned.<br>         If no matching codec is found or an error occurs, **NULL** is returned.|
 
 ### OH_AVCapability_IsHardware()
 
@@ -196,6 +253,30 @@ Checks whether a codec capability instance describes a hardware codec.
 | -- | -- |
 | bool | Check result for whether the codec capability instance describes a hardware codec. **true** if it describes a hardware codec, **false** otherwise.|
 
+### OH_AVCapability_IsSecure()
+
+```c
+bool OH_AVCapability_IsSecure(OH_AVCapability *capability)
+```
+
+**Description**
+
+Checks whether the capability instance describes a DRM decoder.
+
+**Since**: 24
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_AVCapability](capi-avcapability-oh-avcapability.md) *capability | Pointer to the codec capability.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| bool | If the capability instance describes a DRM decoder, **true** is returned.<br>         If the capability instance does not describe a DRM decoder, **false** is returned.|
+
 ### OH_AVCapability_GetName()
 
 ```c
@@ -204,7 +285,7 @@ const char *OH_AVCapability_GetName(OH_AVCapability *capability)
 
 **Description**
 
-Obtains the codec name.
+Obtains the corresponding codec name.
 
 **System capability**: SystemCapability.Multimedia.Media.CodecBase
 
@@ -221,6 +302,55 @@ Obtains the codec name.
 | Type| Description|
 | -- | -- |
 | const char * | Codec name string.|
+
+### OH_AVCapability_GetMimeType()
+
+```c
+const char *OH_AVCapability_GetMimeType(OH_AVCapability *capability)
+```
+
+**Description**
+
+Obtains the MIME type of the codec.
+
+**Since**: 24
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_AVCapability](capi-avcapability-oh-avcapability.md) *capability | Pointer to the codec capability.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| const char * | String indicating the MIME type of the codec.|
+
+### OH_AVCapability_CheckMimeType()
+
+```c
+bool OH_AVCapability_CheckMimeType(OH_AVCapability *capability, const char *mimeType)
+```
+
+**Description**
+
+Checks whether the MIME type of the codec matches the specified MIME type.
+
+**Since**: 24
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_AVCapability](capi-avcapability-oh-avcapability.md) *capability | Pointer to the codec capability.|
+| const char *mimeType | Target MIME type string to be checked.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| bool | If the MIME types match, **true** is returned. Otherwise, **false** is returned.|
 
 ### OH_AVCapability_GetMaxSupportedInstances()
 
@@ -735,7 +865,7 @@ Obtains the video pixel formats supported by a video codec.
 | Name| Description|
 | -- | -- |
 | [OH_AVCapability](capi-avcapability-oh-avcapability.md) *capability | Pointer to the video codec capability. If a pointer to the audio codec capability is provided, undefined behavior occurs.|
-| const int32_t **pixelFormats |  Double pointer to the video pixel format array.|
+| const int32_t **pixelFormats | Output Parameter. Pointer to an array of video pixel formats. For details, see [OH_AVPixelFormat](../../reference/apis-avcodec-kit/capi-native-avformat-h.md#oh_avpixelformat). |
 | uint32_t *pixelFormatNum |  Pointer to the number of elements in the array.|
 
 **Returns**
@@ -791,7 +921,7 @@ Obtains the profiles supported by a codec.
 | Name| Description|
 | -- | -- |
 | [OH_AVCapability](capi-avcapability-oh-avcapability.md) *capability | Pointer to the codec capability.|
-| const int32_t **profiles |  Double pointer to the profile array.|
+| const int32_t **profiles | Output Parameter. Pointer to the profile array. For example, for H.264 profiles, see [OH_AVCProfile](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avcprofile). |
 | uint32_t *profileNum |  Pointer to the number of profiles in the array.|
 
 **Returns**
@@ -820,7 +950,7 @@ Obtains the codec levels supported by a profile.
 | -- | -- |
 | [OH_AVCapability](capi-avcapability-oh-avcapability.md) *capability | Pointer to the codec capability.|
 | int32_t profile | Codec profile.|
-| const int32_t **levels |  Double pointer to the codec level array.|
+| const int32_t **levels | Output Parameter. Pointer to the level array. For example, for H.264 levels, see [OH_AVCLevel](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avclevel). |
 | uint32_t *levelNum |  Pointer to the number of elements in the array.|
 
 **Returns**

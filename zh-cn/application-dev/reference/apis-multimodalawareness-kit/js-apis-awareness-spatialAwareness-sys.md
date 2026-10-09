@@ -2,11 +2,11 @@
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: MultimodalAwareness-->
 <!--Owner: @dilligencer-->
-<!--Designer: @zou_ye-->
+<!--Designer: @saga2025-->
 <!--Tester: @judan-->
 <!--Adviser: @hu-zhiqiong-->
 
-本模块提供对测距的感知能力。
+本模块提供对测距的感知能力，支持超声信号测试。
 
 > **说明：**
 >
@@ -30,7 +30,7 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 | WIFI_RSSI           | 1    | 表示WIFI强度。      |
 | ULTRASOUND          | 2    | 表示超声强度。      |
 | NEAR_LINK           | 3    | 表示星闪强度。  |
-| BLE_WIFI_RSSI       | 4    | 表示蓝牙和WIFI强度。|
+| WIFI_BLE_RSSI       | 4    | 表示WIFI和蓝牙强度。|
 
 ## spatialAwareness.ReportingMode
 
@@ -45,16 +45,16 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 
 ## spatialAwareness.DistanceRank
 
-测距结果的距离挡位，不同的挡位对应不同的距离范围。
+测距结果的距离档位，不同的档位对应不同的距离范围。
 
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
 
 | 名称                                 | 值                | 说明                   |
 | ------------------------------------ | ------------------| -----------------------|
-| RANK_ULTRA_SHORT_RANGE               | rankUltraShort    | 表示超短距。单位:cm，范围:[0:5]    |
-| RANK_SHORT_RANGE                     | rankShort         | 表示短距。单位:cm，范围:(5:100]     |
-| RANK_SHORT_MEDIUM_RANGE              | rankMediumShort   | 表示中短距。单位:cm，范围:(100:500] |
-| RANK_MEDIUM_RANGE                    | rankMedium        | 表示中距。单位:cm，范围:(500:1000]  |
+| RANK_ULTRA_SHORT_RANGE               | rankUltraShort    | 表示超短距。单位：cm，范围：[0:5]。    |
+| RANK_SHORT_RANGE                     | rankShort         | 表示短距。单位：cm，范围：(5:100]。     |
+| RANK_SHORT_MEDIUM_RANGE              | rankMediumShort   | 表示中短距。单位：cm，范围：(100:500]。 |
+| RANK_MEDIUM_RANGE                    | rankMedium        | 表示中距。单位：cm，范围：(500:1000]。  |
 
 ## spatialAwareness.DistanceMeasurementResponse
 
@@ -65,13 +65,13 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 | 名称               | 类型            | 只读   | 可选   | 说明     |
 | -------------------| ---------------| -------|------  |-------------|
 | rank               | DistanceRank   | 是     | 否     | 表示距离档位。|
-| distance           | float          | 是     | 否     | 表示距离。|
-| confidence         | float          | 是     | 否     | 表示置信度。|
-| deviceId           | string         | 是     | 否     | 表示设备Id号。|
+| distance           | float          | 是     | 否     | 表示距离，结果≥0。|
+| confidence         | float          | 是     | 否     | 表示置信度，取值范围：[0,1]。|
+| deviceId           | string         | 是     | 否     | 表示设备Id号，字符串长度：[1,128]。|
 
 ## spatialAwareness.PositionRelativeToDoor
 
-门内外识接口返回结果中表示门内或门外位置的枚举。
+门内外识别接口返回结果中表示门内或门外位置的枚举。
 
 **系统能力**：SystemCapability.MultimodalAwareness.DistanceMeasurement
 
@@ -88,9 +88,9 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 
 | 名称               | 类型                   | 只读      | 可选       | 说明     |
 | -------------------| ----------------------| ----------|----------|--------|
-| doorLockCode       | int                   | 是        | 否         | 表示门锁校验码。|
+| doorLockCode       | int                   | 是        | 否         | 表示门锁校验码，结果≥0。|
 | position           | PositionRelativeToDoor| 是        | 否          | 表示门内外位置信息。|
-| deviceId           | string                | 是        | 否         | 表示设备Id号。  |
+| deviceId           | string                | 是        | 否         | 表示设备Id号，字符串长度：[1,128]。  |
 
 ## spatialAwareness.DistanceMeasurementConfigParams
 
@@ -100,10 +100,10 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
 
 | 名称               |  类型                   | 只读      | 可选       | 说明     |
 | -------------------| ----------------------| -----------|------------|----------|
-| deviceList         | string[]              | 是         | 否 | 表示设备列表。|
+| deviceList         | string[]              | 是         | 否 | 表示设备列表，设备唯一标识符，字符串长度取值范围：[1,128]，数组长度取值范围：[1,128]。|
 | techType           | TechnologyType        | 是         | 否 | 表示信号类型。|
 | reportMode         | ReportingMode         | 是         | 否  | 表示结果上报模式。|
-| reportFrequency    | int                   | 是         | 否  | 表示结果上报频率。|
+| reportFrequency    | int                   | 是         | 否  | 表示结果上报频率，单位：Hz，取值范围：[0,999999]。|
 
 ## spatialAwareness.onDistanceMeasure<sup>23+</sup>
 
@@ -129,6 +129,7 @@ onDistanceMeasure(configParams: DistanceMeasurementConfigParams, callback: Callb
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied. |
+| 202      | Not system application. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities. |
 | 35100001 | Service exception. |
 | 35100002 | Subscription failed. |
@@ -148,10 +149,10 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
    console.info('call onDistanceMeasure start');
    try {
       spatialAwareness.onDistanceMeasure(configParams, (data:spatialAwareness.DistanceMeasurementResponse) => {
-         console.info('result = ${data.distance}');
+         console.info(`result = ${data.distance}`);
       });
    } catch (err) {
-      console.error('call onDistanceMeasure failed, errCode = ' + err.code);
+      console.error(`call onDistanceMeasure failed, Code: ${err.code}, message: ${err.message}`);
    }
 ```
 
@@ -170,7 +171,7 @@ offDistanceMeasure(configParams: DistanceMeasurementConfigParams, callback?: Cal
 | 参数名   | 类型                             | 必填 | 说明                                                         |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
 | configParams | DistanceMeasurementConfigParams | 是 | 测距接口配置参数 |
-| callback | Callback&lt;[DistanceMeasurementResponse](#spatialawarenessdistancemeasurementresponse)&gt; | 否   | 回调函数，返回测距结果。                                 |
+| callback | Callback&lt;[DistanceMeasurementResponse](#spatialawarenessdistancemeasurementresponse)&gt; | 否   | 表示取消指定的callback通知。如果输入空、undefined或null，则取消configParams订阅的所有测距通知事件。                                 |
 
 **错误码**：
 
@@ -179,6 +180,7 @@ offDistanceMeasure(configParams: DistanceMeasurementConfigParams, callback?: Cal
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied. |
+| 202      | Not system application. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities. |
 | 35100001 | Service exception. |
 | 35100003 | Unsubscription failed. |
@@ -198,10 +200,10 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
    console.info('call offDistanceMeasure start');
    try {
       spatialAwareness.offDistanceMeasure(configParams, (data:spatialAwareness.DistanceMeasurementResponse) => {
-         console.info('result = ${data.distance}');
+         console.info(`result = ${data.distance}`);
       });
    } catch (err) {
-      console.error('call offDistanceMeasure failed, errCode = ' + err.code);
+      console.error(`call offDistanceMeasure failed, Code: ${err.code}, message: ${err.message}`);
    }
 ```
 
@@ -229,6 +231,7 @@ onIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams, callbac
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied. |
+| 202      | Not system application. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities. |
 | 35100001 | Service exception. |
 | 35100002 | Subscription failed. |
@@ -248,10 +251,10 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
    console.info('call onIndoorOrOutdoorIdentify start');
    try {
       spatialAwareness.onIndoorOrOutdoorIdentify(configParams, (data:spatialAwareness.DoorPositionResponse) => {
-         console.info('result = ${data.position}');
+         console.info(`result = ${data.position}`);
       });
    } catch (err) {
-      console.error('call onIndoorOrOutdoorIdentify failed, errCode = ' + err.code);
+      console.error(`call onIndoorOrOutdoorIdentify failed, Code: ${err.code}, message: ${err.message}`);
    }
 ```
 
@@ -270,7 +273,7 @@ offIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams, callba
 | 参数名   | 类型                             | 必填 | 说明                                                         |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
 | configParams | DistanceMeasurementConfigParams | 是 | 测距接口配置参数 |
-| callback | Callback&lt;[DoorPositionResponse](#spatialawarenessdoorpositionresponse)&gt; | 否   | 回调函数，返回门内外信息。                                   |
+| callback | Callback&lt;[DoorPositionResponse](#spatialawarenessdoorpositionresponse)&gt; | 否   | 表示取消指定的callback通知。如果输入空、undefined或null，则取消configParams订阅的所有门内外识别通知事件。                                   |
 
 **错误码**：
 
@@ -279,6 +282,7 @@ offIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams, callba
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 201      | Permission denied. |
+| 202      | Not system application. |
 | 801      | Capability not supported. Function can not work correctly due to limited device capabilities. |
 | 35100001 | Service exception. |
 | 35100003 | Unsubscription failed. |
@@ -298,9 +302,9 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
    console.info('call offIndoorOrOutdoorIdentify start');
    try {
       spatialAwareness.offIndoorOrOutdoorIdentify(configParams, (data:spatialAwareness.DoorPositionResponse) => {
-         console.info('result = ${data.position}');
+         console.info(`result = ${data.position}`);
       });
    } catch (err) {
-      console.error('call offIndoorOrOutdoorIdentify failed, errCode = ' + err.code);
+      console.error(`call offIndoorOrOutdoorIdentify failed, Code: ${err.code}, message: ${err.message}`);
    }
 ```

@@ -39,7 +39,7 @@
 
 ### 手动同步
 
-由应用程序调用sync接口来触发，需要指定端端同步的设备列表和同步模式。同步模式分为PULL_ONLY（将远端数据拉取到本端）、PUSH_ONLY（将本端数据推送到远端）和PUSH_PULL（将本端数据推送到远端同时也将远端数据拉取到本端）。[带有Query参数的端端同步接口](../reference/apis-arkdata/js-apis-distributedKVStore.md#sync-1)，支持按条件过滤的方法进行端端同步，将符合条件的数据同步到远端。
+由应用程序调用sync接口来触发，需要指定端端同步的设备列表和同步模式。同步模式分为PULL_ONLY（将远端数据拉取到本端）、PUSH_ONLY（将本端数据推送到远端）和PUSH_PULL（将本端数据推送到远端同时也将远端数据拉取到本端）。带有Query参数的端端同步接口[sync](../reference/apis-arkdata/js-apis-distributedKVStore.md#sync-1)，支持按条件过滤的方法进行端端同步，将符合条件的数据同步到远端。
 
 ### 自动同步
 
@@ -85,7 +85,7 @@
 
 ## 接口说明
 
-以下是单版本键值型分布式数据库跨设备数据端端同步功能的相关接口，大部分为异步接口。异步接口均有callback和Promise两种返回形式，下表均以callback形式为例，更多接口及使用方式请见[分布式键值数据库](../reference/apis-arkdata/js-apis-distributedKVStore.md)。
+以下是单版本键值型分布式数据库跨设备数据端端同步功能的相关接口，更多接口及使用方式请见[分布式键值数据库](../reference/apis-arkdata/js-apis-distributedKVStore.md)。
 
 | 接口名称 | 描述 | 
 | -------- | -------- |
@@ -107,34 +107,22 @@
 >
 > 数据只允许向数据安全标签不高于对端设备安全等级的设备同步数据，具体规则可见[跨设备同步访问控制机制](access-control-by-device-and-data-level.md#跨设备同步访问控制机制)。
 
-1. 导入模块获取context。
+1. 导入模块获取context，此处以Stage模型为例，FA模型context的获取请见[context](../application-models/application-context-fa.md)。
 
-   ```ts
-   // 导入模块
-   // 在pages目录下新建KvStoreInterface.ets
+   <!-- @[get_context](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   
+   ``` TypeScript
    import { distributedKVStore } from '@kit.ArkData';
    import { BusinessError } from '@kit.BasicServicesKit';
    import { distributedDeviceManager } from '@kit.DistributedServiceKit';
    import EntryAbility from '../entryability/EntryAbility';
-   // Logger为hilog封装后实现的打印功能
    import Logger from '../common/Logger';
-
+   
    let kvManager: distributedKVStore.KVManager | undefined = undefined;
    let kvStore: distributedKVStore.SingleKVStore | undefined = undefined;
    let appId: string = 'com.example.kvstoresamples';
    let storeId: string = 'storeId';
-   // Stage模型context从EntryAbility.ets中获取
    const context = EntryAbility.getContext();
-
-   // FA模型获取context
-   import { featureAbility } from '@kit.AbilityKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-
-   let context = featureAbility.getContext();
-
-   // 下面所有接口的代码都实现在KvInterface中
-   export class KvInterface {
-   }
    ```
 
 2. 请求权限。
@@ -368,7 +356,7 @@
 
 针对键值型数据库开发，有以下相关实例可供参考：
 
-- [分布式组网认证（ArkTS）（Full SDK）（API10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/DistributedAppDev/DistributedAuthentication)
+- [分布式组网认证（ArkTS）（Full SDK）（API10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/DistributedAppDev/DistributedAuthentication)
 
 - [分布式数据管理（ArkTS）（Full SDK）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/DistributedAppDev/Kvstore)
 

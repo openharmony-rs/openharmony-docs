@@ -1,12 +1,13 @@
 # Ellipse
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zjsxstar-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=4a069bef211e2909151a4545b04d42a08cabac3f translatedAt=2026-08-28T01:23:15.754Z pushedAt=2026-08-31T02:55:17.162Z -->
 
-The **Ellipse** component is used to draw an ellipse.
+The **Ellipse** component is used to draw an ellipse. It draws an ellipse shape by setting the width and height attributes, rendering the ellipse outline and fill area within a given rectangular region.
 
 >  **NOTE**
 >
@@ -14,16 +15,37 @@ The **Ellipse** component is used to draw an ellipse.
 
 ## Child Components
 
-Not supported
-
+None
 
 ## APIs
 
-Ellipse(options?: EllipseOptions)
+### Ellipse
+
+new Ellipse(options?: EllipseOptions)
+
+Constructor used to draw an ellipse. After being called, it creates an **Ellipse** object, for which the width and height attributes can be set.
+
+**Atomic service API**: This API can be used in atomic services since API version 11.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| -------- | -------- | -------- | -------- |
+| options | [EllipseOptions](#ellipseoptions18) | No | Ellipse drawing configuration options, including the width and height settings. If not passed, the default size (both width and height are 0) is used.<br>The abnormal values **undefined** and **null** are handled as invalid values, and this setting does not take effect.<br>**Note:** Since API version 18, the **EllipseOptions** parameter must be used in the stage model.|
+
+### Ellipse
+
+Ellipse(options?: EllipseOptions)
+
+Constructor used to draw an ellipse. After being called, it creates an **Ellipse** object, for which the width and height attributes can be set.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Widget capability**: Since API version 9, this feature is supported in ArkTS widgets.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -31,11 +53,11 @@ Ellipse(options?: EllipseOptions)
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| options | [EllipseOptions](ts-drawing-components-ellipse.md#ellipseoptions18) | No| Dimensions for drawing an ellipse.<br>The **undefined** and **null** values are treated as invalid.|
+| options | [EllipseOptions](#ellipseoptions18) | No | Ellipse drawing configuration options, including the width and height settings. If not passed, the default size (both width and height are 0) is used.<br>The abnormal values **undefined** and **null** are handled as invalid values, and the setting does not take effect.<br>**Note:** Since API version 18, the EllipseOptions parameter must be used in the stage model.|
 
 ## EllipseOptions<sup>18+</sup>
 
-This object is used to describe the drawing attributes of the Ellipse component.
+Describes the options of the ellipse.
 
 > **NOTE**
 >
@@ -45,218 +67,22 @@ This object is used to describe the drawing attributes of the Ellipse component.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| width<sup>7+</sup> | [Length](ts-types.md#length) | No| Yes| Width. The value must be greater than or equal to 0.<br>Default value: **0**<br>Default unit: vp<br>If the value is **undefined**, **null**, **NaN**, or **Infinity**, the default value will be used.<br>The Resource type is supported since API version 20.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| height<sup>7+</sup> | [Length](ts-types.md#length) | No| Yes| Height. The value must be greater than or equal to 0.<br>Default value: **0**<br>Default unit: vp<br>If the value is **undefined**, **null**, **NaN**, or **Infinity**, the default value will be used.<br>The Resource type is supported since API version 20.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| width<sup>7+</sup> | [Length](ts-types.md#length) | No | Yes | Width, with the value range ≥ 0.<br>Default value: **0**<br>Default unit: vp<br>Abnormal values **undefined**, **null**, **NaN**, and **Infinity** are handled as the default value.<br>The Resource type is supported since API version 20.<br>**Widget capability:** This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API:** This API can be used in atomic services since API version 11. |
+| height<sup>7+</sup> | [Length](ts-types.md#length) | No | Yes | Height, with the value range ≥ 0.<br>Default value: **0**<br>Default unit: vp<br>Abnormal values **undefined**, **null**, **NaN**, and **Infinity** are handled as the default value.<br>The Resource type is supported since API version 20.<br>**Widget capability:** This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API:** This API can be used in atomic services since API version 11. |
 
 ## Attributes
 
-In addition to the [universal attributes](ts-component-general-attributes.md), the following attributes are supported.
+The [universal attributes](ts-component-general-attributes.md) and [universal attributes for drawing components](ts-drawing-components-common.md) are supported.
 
-### fill
+## Examples
 
-fill(value: ResourceColor)
-
-Sets the color of the fill area. This attribute can be dynamically set in [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). If an abnormal value is used, the default value is used. If this attribute and the universal attribute **foregroundColor** are both set, whichever is set later takes effect.
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type                                      | Mandatory| Description                                  |
-| ------ | ------------------------------------------ | ---- | -------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Color of the fill area.<br>Default value: **Color.Black**<br>If the value is **undefined**, **null**, **NaN**, or **Infinity**, the default value will be used.|
-
-### fillOpacity
-
-fillOpacity(value: number | string | Resource)
-
-Sets the opacity of the fill area. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type                                                        | Mandatory| Description                          |
-| ------ | ------------------------------------------------------------ | ---- | ------------------------------ |
-| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Opacity of the fill area.<br>**NOTE**<br>The value range is [0.0, 1.0]. A value less than 0.0 is treated as **0.0**. A value greater than 1.0 is treated as **1.0**. Any other value is treated as **1.0**.<br>The value can also be a string of the number format. The value range is the same as that of the number format.<br>The value can also be a string in the system or application resources. The value range is the same as that of the number format.<br>**NaN** is treated as **0.0**, while **undefined**, **null**, and **Infinity** are treated as **1.0**.<br>Default value: **1.0**|
-
-### stroke
-
-stroke(value: ResourceColor)
-
-Sets the border color. This attribute can be dynamically set in [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). If this attribute is not set, the default border opacity is 0, that is, no border is displayed.
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type                                      | Mandatory| Description      |
-| ------ | ------------------------------------------ | ---- | ---------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Stroke color.<br>If the value is undefined or null, the default value is used. If the value is NaN or Infinity, the value Color.Black is used.|
-
-### strokeDashArray
-
-strokeDashArray(value: Array&lt;any&gt;)
-
-Sets the border gap. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). The value must be greater than or equal to 0. If the value is abnormal, the default value is used.
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type            | Mandatory| Description                     |
-| ------ | ---------------- | ---- | ------------------------- |
-| value  | Array&lt;any&gt; | Yes  | Array defining the dash pattern for the ellipse outline. Elements alternate between dash length and gap length.<br>Default value: [] (empty array)<br>Default unit: vp<br>If the value is undefined or null, the default value is used.<br>**NOTE**<br>Empty array: solid line<br>Even-numbered array: Elements cycle sequentially, for example, [a, b, c, d] represents: dash a -> gap b -> dash c -> gap d -> dash a -> ...<br>Odd-numbered array: Elements are duplicated to create an even-numbered array, for example, [a, b, c] becomes [a, b, c, a, b, c], representing: dash a -> gap b -> dash c -> gap a -> dash b -> gap c -> dash a -> ...|
-
-### strokeDashOffset
-
-strokeDashOffset(value: number | string)
-
-Sets the offset of the border drawing start point. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type                      | Mandatory| Description                                |
-| ------ | -------------------------- | ---- | ------------------------------------ |
-| value  | number&nbsp;\|&nbsp;string | Yes  | Offset of the start point for drawing the stroke.<br>Default value: **0**<br>Default unit: vp<br>If the value is undefined or null, the default value will be used. If the value is NaN or Infinity, strokeDashArray will be ineffective.|
-
-### strokeLineCap
-
-strokeLineCap(value: LineCapStyle)
-
-Sets the border endpoint drawing style. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type                                             | Mandatory| Description                                            |
-| ------ | ------------------------------------------------- | ---- | ------------------------------------------------ |
-| value  | [LineCapStyle](ts-appendix-enums.md#linecapstyle) | Yes  | Cap style of the stroke.<br>Default value: **LineCapStyle.Butt**<br>If the value is **undefined**, **null**, **NaN**, or **Infinity**, the default value will be used.|
-
-### strokeLineJoin
-
-strokeLineJoin(value: LineJoinStyle)
-
-Sets the border corner drawing style. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). This attribute does not work for the **Ellipse** component, which does not have corners.
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type                                               | Mandatory| Description                                              |
-| ------ | --------------------------------------------------- | ---- | -------------------------------------------------- |
-| value  | [LineJoinStyle](ts-appendix-enums.md#linejoinstyle) | Yes  | Join style of the stroke.<br>Default value: **LineJoinStyle.Miter**<br>If the value is **undefined**, **null**, **NaN**, or **Infinity**, the default value will be used.|
-
-### strokeMiterLimit
-
-strokeMiterLimit(value: number | string)
-
-Sets the maximum ratio of the miter length to the border width. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). The Ellipse component does not support the setting of sharp corners. Therefore, this attribute is invalid.
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type                      | Mandatory| Description                                          |
-| ------ | -------------------------- | ---- | ---------------------------------------------- |
-| value  | number&nbsp;\|&nbsp;string | Yes  | Limit on the ratio of the miter length to the value of **strokeWidth** used to draw a miter join.<br>Default value: **4**<br>If the value is undefined, null, or NaN, the default value is used. If the value is Infinity, stroke becomes invalid.|
-
-### strokeOpacity
-
-strokeOpacity(value: number | string | Resource)
-
-Sets the border opacity. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). The value range is [0.0, 1.0]. If the set value is less than 0.0, **0.0** will be used. If the set value is greater than 1.0, **1.0** will be used.
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type                                                        | Mandatory| Description                      |
-| ------ | ------------------------------------------------------------ | ---- | -------------------------- |
-| value  | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | Yes  | Stroke opacity.<br>Default value: transparency set by the [stroke](#stroke) API.<br>**NaN** is treated as **0.0**, while **undefined**, **null**, and **Infinity** are treated as **1.0**.|
-
-### strokeWidth
-
-strokeWidth(value: Length)
-
-Sets the stroke width. This attribute can be dynamically set using the [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) method. If this attribute is of the string type, percentage values are not supported and will be treated as 1 px.
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type                        | Mandatory| Description                    |
-| ------ | ---------------------------- | ---- | ------------------------ |
-| value  | [Length](ts-types.md#length) | Yes  | Stroke width. The value must be greater than or equal to 0.<br>Default value: **1**<br>Default unit: vp<br>If the value is undefined, null, or NaN, the default value is used. If the value is Infinity, the value 0 is used.|
-
-### antiAlias
-
-antiAlias(value: boolean)
-
-Sets whether to enable anti-aliasing. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
-
-**Widget capability**: This API can be used in ArkTS widgets since API version 9.
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters**
-
-| Name| Type   | Mandatory| Description                                 |
-| ------ | ------- | ---- | ------------------------------------- |
-| value  | boolean | Yes  | Whether anti-aliasing is enabled.<br>**true**: Anti-aliasing is enabled.<br>**false**: Anti-aliasing is disabled.<br>Default value: **true**<br>If the value is undefined or null, the default value is used.|
-
-## Example
-
-### Example 1: Drawing Rectangles
+### Example 1: Drawing an Ellipse
 
 This example demonstrates how to use **fillOpacity** and **stroke** to set the opacity and stroke color of an ellipse.
 
@@ -281,11 +107,11 @@ struct EllipseExample {
 }
 ```
 
-![en-us_image_0000001174104394](figures/en-us_image_0000001174104394.png)
+![ellipse](figures/ellipse.png)
 
-### Example 2: Using Different Parameter Types to Draw an Ellipse
+### Example 2: Drawing an Ellipse with Different Parameter Types for Width and Height
 
-The width and height attributes are used to draw an ellipse with different length types.
+This example demonstrates how to draw an ellipse using different length types of the **width** and **height** attributes.
 
 ```ts
 // xxx.ets
@@ -296,9 +122,9 @@ struct EllipseTypeExample {
     Column({ space: 10 }) {
       // Draw a 150 x 80 ellipse.
       Ellipse({ width: '150', height: '80' }) // Use the string type.
-      // Draw an ellipse of 80 x 150.
+      // Draw an ellipse of 80 × 150.
       Ellipse({ width: 80, height: 150 }) // Use the number type.
-      // Draw an ellipse of 150 x 150.
+      // Use the Resource type to reference the ellipse with width and height resource strings.
       Ellipse({ width: $r('app.string.EllipseWidth'), height: $r('app.string.EllipseHeight') }) // Use the Resource type, which needs to be customized.
     }.width('100%')
   }
@@ -307,20 +133,20 @@ struct EllipseTypeExample {
 
 ![ellipseDemo2](figures/ellipseDemo2.png)
 
-### Example 3: Using attributeModifier to Dynamically Set Attributes of the Ellipse Component
+### Example 3: Dynamically Setting Attributes of the Ellipse Component Using attributeModifier
 
-The following example shows how to use attributeModifier to dynamically set the fill, fillOpacity, stroke, strokeDashArray, strokeDashOffset, strokeLineCap, strokeOpacity, strokeWidth, and antiAlias attributes of the Ellipse component.
+This example shows how to use **attributeModifier** to dynamically set the **fill**, **fillOpacity**, **stroke**, **strokeDashArray**, **strokeDashOffset**, **strokeLineCap**, **strokeOpacity**, **strokeWidth**, and **antiAlias** attributes of the **Ellipse** component.
 
 ```ts
 // xxx.ets
 class MyEllipseModifier implements AttributeModifier<EllipseAttribute> {
   applyNormalAttribute(instance: EllipseAttribute): void {
-    // Set the fill color to #707070, fill opacity to 0.5, border color to #2787D9, border gap to [20], left offset to 15, line end style to semi-circle, border opacity to 0.5, border width to 10, and anti-aliasing to enabled.
-    instance.fill("#707070")
+    // Fill color: #707070; fill opacity: 0.5; stroke color: #2787D9; stroke dash array: [20]; offset to left: 15; cap style: semi-circle; stroke opacity: 0.5; stroke width: 10; anti-aliasing enabled.
+    instance.fill('#707070')
     instance.fillOpacity(0.5)
-    instance.stroke("#2787D9")
+    instance.stroke('#2787D9')
     instance.strokeDashArray([20])
-    instance.strokeDashOffset("15")
+    instance.strokeDashOffset('15')
     instance.strokeLineCap(LineCapStyle.Round)
     instance.strokeOpacity(0.5)
     instance.strokeWidth(10)

@@ -20,10 +20,10 @@
       如果使用string类型，需要直接传入用于密钥派生的数据，而不是HexString、base64等字符串类型。同时需要确保该字符串为utf-8编码，否则派生结果会有差异。
   
    - salt：盐值。
-   - info：可选的上下文与应用相关信息， 可为空，用于拓展短密钥。
+   - info：可选的上下文与应用相关信息，可为空，用于扩展短密钥。
    - keySize：目标密钥的字节长度，需要为正整数。
 
-2. 调用[cryptoFramework.createKdf](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatekdf11)，指定字符串参数'HKDF|SHA256|EXTRACT_AND_EXPAND'，创建密钥派生算法为HKDF、HMAC函数摘要算法为SHA256、模式为提取和拓展的密钥派生函数对象（Kdf）。
+2. 调用[cryptoFramework.createKdf](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatekdf11)，指定字符串参数'HKDF|SHA256|EXTRACT_AND_EXPAND'，创建密钥派生算法为HKDF、HMAC函数摘要算法为SHA256、模式为提取和扩展的密钥派生函数对象（Kdf）。
 
 3. 输入HKDFSpec对象，调用[Kdf.generateSecret](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatesecret11)进行密钥派生。
 

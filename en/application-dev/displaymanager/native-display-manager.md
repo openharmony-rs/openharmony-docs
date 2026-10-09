@@ -1,10 +1,12 @@
 # Using OH_DisplayManager to Obtain Basic Display Information and Listen for Status Changes (C/C++)
+
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @oh_wangxk; @logn-->
-<!--Designer: @hejunfei1991-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @logn; @wulong158-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=7562b6c0a5050c30facd711764ab207b08a86029 translatedAt=2026-08-24T11:34:15.338Z pushedAt=2026-08-25T03:17:18.376Z -->
 
 ## When to Use
 
@@ -24,13 +26,13 @@ The [OH_DisplayManager](../reference/apis-arkui/capi-oh-displaymanager.md) modul
 
 ## Available APIs
 
-The following table lists the common APIs. For more API description, see [OH_DisplayManager](../reference/apis-arkui/capi-oh-displaymanager.md).
+The following table lists the common APIs. For more API descriptions, see [OH_DisplayManager](../reference/apis-arkui/capi-oh-displaymanager.md).
 
 | Name| Description|
 | -------- | -------- |
 | OH_NativeDisplayManager_GetDefaultDisplayRotation(NativeDisplayManager_Rotation *displayRotation) | Obtains the rotation angle of the default display.|
-| OH_NativeDisplayManager_CreateDefaultDisplayCutoutInfo(NativeDisplayManager_CutoutInfo **cutoutInfo) | Obtains the cutout information of the default display.|
-| OH_NativeDisplayManager_DestroyDefaultDisplayCutoutInfo(NativeDisplayManager_CutoutInfo *cutoutInfo) |  Destroys the cutout information of the default display.|
+| OH_NativeDisplayManager_CreateDefaultDisplayCutoutInfo(NativeDisplayManager_CutoutInfo **cutoutInfo) | Obtains information about unavailable areas of the default display, such as those on punch-hole, notch, and waterfall displays.|
+| OH_NativeDisplayManager_DestroyDefaultDisplayCutoutInfo(NativeDisplayManager_CutoutInfo *cutoutInfo) | Destroys information about unavailable areas of the default display, such as those on punch-hole, notch, and waterfall displays.|
 | OH_NativeDisplayManager_IsFoldable()|Checks whether the device is foldable.|
 | OH_NativeDisplayManager_RegisterDisplayChangeListener( OH_NativeDisplayManager_DisplayChangeCallback displayChangeCallback, uint32_t *listenerIndex)|Registers a listener for status changes (such as rotation, refresh rate, DPI, and resolution changes) of the display.|
 |OH_NativeDisplayManager_UnregisterDisplayChangeListener(uint32_t listenerIndex)|Cancels the listening for status changes of the display.|
@@ -39,9 +41,11 @@ The following table lists the common APIs. For more API description, see [OH_Dis
 
 ## Linking the Dynamic Library in the CMake Script
 
-```
-target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
-target_link_libraries(entry PUBLIC libnative_display_manager.so )
+<!-- @[add_display_target_link](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/CMakeLists.txt) -->
+
+``` Text
+target_link_libraries(nativedisplay PUBLIC libhilog_ndk.z.so)
+target_link_libraries(nativedisplay PUBLIC libnative_display_manager.so)
 ```
 
 ## Including Header Files
@@ -59,7 +63,7 @@ target_link_libraries(entry PUBLIC libnative_display_manager.so )
 1. Call **OH_NativeDisplayManager_GetDefaultDisplayRotation** to obtain the rotation angle of the default display.
 
     <!-- @[get_rotation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/napi_init.cpp) -->
-    
+
     ``` C++
     static napi_value GetDefaultDisplayRotation(napi_env env, napi_callback_info info)
     {
@@ -80,10 +84,10 @@ target_link_libraries(entry PUBLIC libnative_display_manager.so )
     }
     ```
 
-2. Call **OH_NativeDisplayManager_CreateDefaultDisplayCutoutInfo** to obtain the cutout information of the default display. Call **OH_NativeDisplayManager_DestroyDefaultDisplayCutoutInfo** to destroy the cutout information.
+2. Call **OH_NativeDisplayManager_CreateDefaultDisplayCutoutInfo** to obtain information about unavailable areas of the default display, such as those on punch-hole, notch, and waterfall displays. Call **OH_NativeDisplayManager_DestroyDefaultDisplayCutoutInfo** to destroy the cutout information.
 
     <!-- @[get_cutout_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/napi_init.cpp) -->
-    
+
     ``` C++
     static napi_value CreateDefaultDisplayCutoutInfo(napi_env env, napi_callback_info info)
     {
@@ -133,7 +137,7 @@ target_link_libraries(entry PUBLIC libnative_display_manager.so )
 
 ## Listening for Display Status Changes
 
-Call **OH_NativeDisplayManager_RegisterDisplayChangeListener** to register a listener for display status changes, including the rotation, resolution, refresh rate, and DPI changes. Call **OH_NativeDisplayManager_UnregisterDisplayChangeListener** to cancel the listening for the display status changes.
+Call **OH_NativeDisplayManager_RegisterDisplayChangeListener** to register a listener for display status changes, including the rotation, resolution, refresh rate, and DPI changes. Call **OH_NativeDisplayManager_UnregisterDisplayChangeListener** to unregister the listener for the display status changes.
 
 <!-- @[register_display_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/napi_init.cpp) -->
 
@@ -186,7 +190,7 @@ static napi_value UnregisterDisplayChangeListener(napi_env env, napi_callback_in
 1. Call **OH_NativeDisplayManager_IsFoldable** to check whether a device is foldable.
 
     <!-- @[get_foldable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/napi_init.cpp) -->
-    
+
     ``` C++
     static napi_value IsFoldable(napi_env env, napi_callback_info info)
     {
@@ -197,12 +201,11 @@ static napi_value UnregisterDisplayChangeListener(napi_env env, napi_callback_in
         return isFold;
     }
     ```
- 
 
 2. Call **OH_NativeDisplayManager_RegisterFoldDisplayModeChangeListener** to register a listener for folded/unfolded state changes of the display. Call **OH_NativeDisplayManager_UnregisterFoldDisplayModeChangeListener** to cancel the listening for the folded/unfolded state changes.
 
     <!-- @[register_displayMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/cpp/napi_init.cpp) -->
-    
+
     ``` C++
     void FoldDisplayModeChangeCallback(NativeDisplayManager_FoldDisplayMode displayMode)
     {
@@ -292,23 +295,6 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
 }
 ```
 
-``` C++
-static napi_module displayModule = {
-    .nm_version = 1,
-    .nm_flags = 0,
-    .nm_filename = nullptr,
-    .nm_register_func = Init,
-    .nm_modname = "nativedisplay",
-    .nm_priv = ((void*)0),
-    .reserved = { 0 },
-};
-
-extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
-{
-    napi_module_register(&displayModule);
-}
-```
-
 ## Calling the Functions in the index.ets File
 
 <!-- @[call_display_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
@@ -341,7 +327,7 @@ private callGetCutoutInfo(): void {
 }
 
 private callDealListenCallback(): void {
-  this.promptAction.openToast({ message: 'Call registerDisplayChange' }).catch((error: Error) => {
+  this.promptAction.openToast({ message: 'Call register change' }).catch((error: Error) => {
     console.error(`callDealListenCallback error ${JSON.stringify(error)}`);
   }).then(() => {
     let registerIndex = displayNapi.registerDisplayChange();

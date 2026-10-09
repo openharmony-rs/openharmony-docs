@@ -278,7 +278,7 @@ According to the preceding configuration, the obfuscation effect of `exampleName
    let params = obj1['ohos.want.action.home'];
    ```
 
-   Therefore, after `-enable-string-property-obfuscation` is enabled, if you want to retain the propertie of SDK API string constants used in the code, for example, **obj['ohos.want.action.home']**, you can use the [-keep-property-name](#-keep-property-name) option.
+   Therefore, after `-enable-string-property-obfuscation` is enabled, if you want to retain the properties of SDK API string constants used in the code, for example, **obj['ohos.want.action.home']**, you can use the [-keep-property-name](#-keep-property-name) option.
 
 ### -enable-toplevel-obfuscation
 
@@ -935,7 +935,7 @@ Since API version 23, the **-keep-object-props** configuration option can be use
 
 - If only property obfuscation (**-enable-property-obfuscation**) is enabled and the **-keep-object-props** option is selected, the property names in the object literals will be collected to the trustlist and will not be obfuscated.
 
-- If both property obfuscation (**-enable-property-obfuscation**) and string property obfuscation (**-enable-string-property-obfuscation**) are enabled and the**-keep-object-props** option is selected, the property names and string property names in the object literals will be collected to the trustlist and will not be obfuscated. 
+- If both property obfuscation (**-enable-property-obfuscation**) and string property obfuscation (**-enable-string-property-obfuscation**) are enabled and the **-keep-object-props** option is selected, the property names and string property names in the object literals will be collected to the trustlist and will not be obfuscated. 
 
 >**NOTE**
 >

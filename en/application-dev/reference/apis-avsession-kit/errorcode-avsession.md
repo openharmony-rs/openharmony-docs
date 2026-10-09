@@ -1,10 +1,11 @@
 # AVSession Management Error Codes
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @liao_qian-->
+<!--Owner: @ccfriend; @devil_red-->
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=41645ccd887f1faa76ea677e1eacb1a04eaf66bb translatedAt=2026-09-01T13:12:12.451Z pushedAt=2026-09-07T11:26:57.690Z -->
 
 > **NOTE**
 >
@@ -38,7 +39,7 @@ The session does not exist.
 
 **Description**
 
-Parameters are set for or commands are sent to the session that does not exist.
+Attributes are set for or commands are sent to the session that does not exist.
 
 **Possible Causes**
 
@@ -122,7 +123,9 @@ The session is in the inactive state.
 
 **Solution**
 
-Stop sending the command or event. Subscribe to the session activation status, and resume the sending when the session is activated.
+1. Stop sending the command or event.
+2. Monitor the activation status of the session.
+3. After the session is activated, resume sending the command or event.
 
 ## 6600107 Too Many Commands or Events
 
@@ -147,7 +150,7 @@ Control the frequency of sending commands or events.
 
 **Error Message**
 
-Device connection failed.
+Device connecting failed.
 
 **Description**
 
@@ -170,7 +173,7 @@ The remote connection is not established.
 
 **Description**
 
-The remote session does not exist, and the related API calls fail.
+The remote session does not exist, and the corresponding API calls fail.
 
 **Possible Causes**
 
@@ -179,6 +182,42 @@ The remote session has been destroyed or has not been created.
 **Solution**
 
 Query the session status again to determine whether the remote session exists.
+
+## 6600110 Desktop Lyrics Not Enabled for the Application
+
+**Error Message**
+
+The desktop lyrics feature of this application is not enabled.
+
+**Description**
+
+The desktop lyrics feature of the application is not enabled.
+
+**Possible Causes**
+
+The feature is enabled without calling the **enableDesktopLyric** API first.
+
+**Solution**
+
+Call the [enableDesktopLyric](./arkts-apis-avsession-AVSession.md#enabledesktoplyric23) API to enable the desktop lyrics feature.
+
+## 6600111 Desktop Lyrics Not Supported for the Current Device
+
+**Error Message**
+
+The desktop lyrics feature is not supported.
+
+**Description**
+
+The desktop lyrics feature is not supported on the current device.
+
+**Possible Causes**
+
+The desktop lyrics feature is not supported on the current device.
+
+**Solution**
+
+Use the [isDesktopLyricSupported](./arkts-apis-avsession-f.md#avsessionisdesktoplyricsupported23) API to check whether the current device supports the desktop lyrics feature.
 
 ## 6611000 Unknown Error in the Cast Controller
 
@@ -228,7 +267,7 @@ The playback position falls behind the live window.
 
 **Description**
 
-The loading position exceeds the total progress of the video to be played.
+The loaded progress exceeds the total progress of the cast video.
 
 **Possible Causes**
 
@@ -250,7 +289,7 @@ The loading of the cast controller times out.
 
 **Possible Causes**
 
-The loading of the cast controller takes a long period of time.
+The loading of the cast controller times out.
 
 **Solution**
 
@@ -342,7 +381,7 @@ The specified playback mode is not supported.
 
 **Possible Causes**
 
-The device does not support the specified playback mode.
+The specified playback mode is not supported.
 
 **Solution**
 
@@ -434,7 +473,7 @@ The operation is not allowed.
 
 **Possible Causes**
 
-The operation is not allowed.
+The operation cannot be performed in the current device status.
 
 **Solution**
 
@@ -452,11 +491,12 @@ An unknown I/O error occurs.
 
 **Possible Causes**
 
-The message from the peer device does not comply with the standard or fails to be parsed.
+1. The message sent by the local device does not comply with the standard or fails to be parsed.
+2. The message from the peer device does not comply with the standard or fails to be parsed.
 
 **Solution**
 
-Restart the remote device and initiate the session again.
+Check the parameters sent by the local device, restart the abnormal remote device, and initiate a session again.
 
 ## 6612001 Network Connection Failure
 
@@ -722,7 +762,7 @@ The number of times that the content is requested has reached the maximum allowe
 
 **Possible Causes**
 
-The number of times that the content is requested has reached the maximum allowed.
+The number of content usages has reached the authorization limit.
 
 **Solution**
 
@@ -772,7 +812,7 @@ Parsing error associated with media container format bit streams.
 
 **Description**
 
-Invalid type.
+An error occurs when the bit stream of the media container format is parsed.
 
 **Possible Causes**
 

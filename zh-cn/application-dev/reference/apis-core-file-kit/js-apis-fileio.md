@@ -1,9 +1,9 @@
 # @ohos.fileio (文件管理)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
-<!--Designer: @gsl_1234; @wangke25-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @Hun_Dun-->
+<!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
 
 该模块提供文件存储管理能力，包括文件基本管理、文件目录管理、文件信息统计、文件流式读写等常用功能。
@@ -22,21 +22,7 @@ import fileio from '@ohos.fileio';
 
 ## 使用说明
 
-使用该功能模块对文件/目录进行操作前，需要先获取其应用沙箱路径，获取方式及其接口用法请参考：
-
- ```ts
-  import UIAbility from '@ohos.app.ability.UIAbility';
-  import window from '@ohos.window';
-
-  export default class EntryAbility extends UIAbility {
-    onWindowStageCreate(windowStage: window.WindowStage) {
-      let context = this.context;
-      let pathDir = context.filesDir;
-    }
-  }
-  ```
-
-使用该功能模块对文件/目录进行操作前，需要先获取其应用沙箱路径，获取方式及其接口用法请参考：[应用上下文Context-获取应用文件路径](../../application-models/application-context-stage.md#获取应用文件路径)
+使用该功能模块对文件/目录进行操作前，需要先获取其应用沙箱路径pathDir，获取沙箱路径的方式及其接口用法可参考：[应用上下文Context-获取应用文件路径](../../application-models/application-context-stage.md#获取应用文件路径)。
 
 
 ## fileio.stat
@@ -47,7 +33,7 @@ stat(path: string): Promise&lt;Stat&gt;
 
 > **说明**：
 >
-> 从API version 9开始废弃，请使用[fs.stat](js-apis-file-fs.md#stat)替代。
+> 从API version 9开始废弃，请使用[fileIo.stat](js-apis-file-fs.md#fileiostat)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -84,7 +70,7 @@ stat(path: string, callback: AsyncCallback&lt;Stat&gt;): void
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.stat](js-apis-file-fs.md#fsstat-1)替代。
+> 从API version 9开始废弃，请使用[fileIo.stat](js-apis-file-fs.md#fileiostat-1)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -113,7 +99,7 @@ statSync(path: string): Stat
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.statSync](js-apis-file-fs.md#fsstatsync)替代。
+> 从API version 9开始废弃，请使用[fileIo.statSync](js-apis-file-fs.md#fileiostatsync)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -146,7 +132,7 @@ opendir(path: string): Promise&lt;Dir&gt;
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.listFile](js-apis-file-fs.md#fslistfile)替代。
+> 从API version 9开始废弃，请使用[fileIo.listFile](js-apis-file-fs.md#fileiolistfile)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -183,7 +169,7 @@ opendir(path: string, callback: AsyncCallback&lt;Dir&gt;): void
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.listFile](js-apis-file-fs.md#fslistfile-1)替代。
+> 从API version 9开始废弃，请使用[fileIo.listFile](js-apis-file-fs.md#fileiolistfile-1)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -213,7 +199,7 @@ opendirSync(path: string): Dir
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.listFileSync](js-apis-file-fs.md#fslistfilesync)替代。
+> 从API version 9开始废弃，请使用[fileIo.listFileSync](js-apis-file-fs.md#fileiolistfilesync)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -246,7 +232,7 @@ access(path: string, mode?: number): Promise&lt;void&gt;
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.access](js-apis-file-fs.md#fsaccess)替代。
+> 从API version 9开始废弃，请使用[fileIo.access](js-apis-file-fs.md#fileioaccess)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -284,7 +270,7 @@ access(path: string, mode?: number, callback: AsyncCallback&lt;void&gt;): void
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.access](js-apis-file-fs.md#fsaccess-1)替代。
+> 从API version 9开始废弃，请使用[fileIo.access](js-apis-file-fs.md#fileioaccess-1)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -315,7 +301,7 @@ accessSync(path: string, mode?: number): void
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.accessSync](js-apis-file-fs.md#fsaccesssync)替代。
+> 从API version 9开始废弃，请使用[fileIo.accessSync](js-apis-file-fs.md#fileioaccesssync)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -348,7 +334,7 @@ close(fd: number): Promise&lt;void&gt;
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.close](js-apis-file-fs.md#fsclose)替代。
+> 从API version 9开始废弃，请使用[fileIo.close](js-apis-file-fs.md#fileioclose)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -386,7 +372,7 @@ close(fd: number, callback: AsyncCallback&lt;void&gt;): void
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.close](js-apis-file-fs.md#fsclose-1)替代。
+> 从API version 9开始废弃，请使用[fileIo.close](js-apis-file-fs.md#fileioclose-1)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -417,7 +403,7 @@ closeSync(fd: number): void
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.closeSync](js-apis-file-fs.md#fsclosesync)替代。
+> 从API version 9开始废弃，请使用[fileIo.closeSync](js-apis-file-fs.md#fileioclosesync)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -444,7 +430,7 @@ copyFile(src: string|number, dest: string|number, mode?: number): Promise&lt;voi
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.copyFile](js-apis-file-fs.md#fscopyfile)替代。
+> 从API version 9开始废弃，请使用[fileIo.copyFile](js-apis-file-fs.md#fileiocopyfile)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -484,7 +470,7 @@ copyFile(src: string|number, dest: string|number, mode: number, callback: AsyncC
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.copyFile](js-apis-file-fs.md#fscopyfile-1)替代。
+> 从API version 9开始废弃，请使用[fileIo.copyFile](js-apis-file-fs.md#fileiocopyfile-1)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -517,7 +503,7 @@ copyFileSync(src: string|number, dest: string|number, mode?: number): void
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.copyFileSync](js-apis-file-fs.md#fscopyfilesync)替代。
+> 从API version 9开始废弃，请使用[fileIo.copyFileSync](js-apis-file-fs.md#fileiocopyfilesync)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -546,7 +532,7 @@ mkdir(path: string, mode?: number): Promise&lt;void&gt;
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.mkdir](js-apis-file-fs.md#fsmkdir)替代。
+> 从API version 9开始废弃，请使用[fileIo.mkdir](js-apis-file-fs.md#fileiomkdir)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -584,7 +570,7 @@ mkdir(path: string, mode: number, callback: AsyncCallback&lt;void&gt;): void
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.mkdir](js-apis-file-fs.md#fsmkdir-1)替代。
+> 从API version 9开始废弃，请使用[fileIo.mkdir](js-apis-file-fs.md#fileiomkdir-1)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -615,7 +601,7 @@ mkdirSync(path: string, mode?: number): void
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.mkdirSync](js-apis-file-fs.md#fsmkdirsync)替代。
+> 从API version 9开始废弃，请使用[fileIo.mkdirSync](js-apis-file-fs.md#fileiomkdirsync)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -642,7 +628,7 @@ open(path: string, flags?: number, mode?: number): Promise&lt;number&gt;
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.open](js-apis-file-fs.md#fsopen)替代。
+> 从API version 9开始废弃，请使用[fileIo.open](js-apis-file-fs.md#fileioopen)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -681,7 +667,7 @@ open(path: string, flags: number, mode: number, callback: AsyncCallback&lt;numbe
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.open](js-apis-file-fs.md#fsopen-1)替代。
+> 从API version 9开始废弃，请使用[fileIo.open](js-apis-file-fs.md#fileioopen-1)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -692,7 +678,7 @@ open(path: string, flags: number, mode: number, callback: AsyncCallback&lt;numbe
 | path     | string                          | 是   | 待打开文件的应用沙箱路径。                                   |
 | flags    | number                          | 否   | 打开文件的选项，必须指定如下选项中的一个，默认以只读方式打开：<br/>-&nbsp;0o0：只读打开。<br/>-&nbsp;0o1：只写打开。<br/>-&nbsp;0o2：读写打开。<br/>同时，也可给定如下选项，以按位或的方式追加，默认不给定任何额外选项：<br/>-&nbsp;0o100：若文件不存在，则创建文件。使用该选项时必须指定第三个参数&nbsp;mode。<br/>-&nbsp;0o200：如果追加了0o100选项，且文件已经存在，则出错。<br/>-&nbsp;0o1000：如果文件存在且文件具有写权限，则将其长度裁剪为零。<br/>-&nbsp;0o2000：以追加方式打开，后续写将追加到文件末尾。<br/>-&nbsp;0o4000：如果path指向FIFO、块特殊文件或字符特殊文件，则本次打开及后续&nbsp;IO&nbsp;进行非阻塞操作。<br/>-&nbsp;0o200000：如果path不指向目录，则出错。<br/>-&nbsp;0o400000：如果path指向符号链接，则出错。<br/>-&nbsp;0o4010000：以同步IO的方式打开文件。 |
 | mode     | number                          | 否   | 若创建文件，则指定文件的权限，可给定如下权限，以按位或的方式追加权限，默认给定0o660。<br/>-&nbsp;0o660：所有者具有读、写权限，所有用户组具有读、写权限。<br/>-&nbsp;0o700：所有者具有读、写及可执行权限。<br/>-&nbsp;0o400：所有者具有读权限。<br/>-&nbsp;0o200：所有者具有写权限。<br/>-&nbsp;0o100：所有者具有可执行权限。<br/>-&nbsp;0o070：所有用户组具有读、写及可执行权限。<br/>-&nbsp;0o040：所有用户组具有读权限。<br/>-&nbsp;0o020：所有用户组具有写权限。<br/>-&nbsp;0o010：所有用户组具有可执行权限。<br/>-&nbsp;0o007：其余用户具有读、写及可执行权限。<br/>-&nbsp;0o004：其余用户具有读权限。<br/>-&nbsp;0o002：其余用户具有写权限。<br/>-&nbsp;0o001：其余用户具有可执行权限。 |
-| callback | AsyncCallback&lt;number&gt; | 是   | 异步打开文件之后的回调。                                     |
+| callback | AsyncCallback&lt;number&gt; | 是   | 异步打开文件之后的回调，返回打开文件的文件描述符。                                     |
 
 **示例：**
 
@@ -713,7 +699,7 @@ openSync(path: string, flags?: number, mode?: number): number
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.openSync](js-apis-file-fs.md#fsopensync)替代。
+> 从API version 9开始废弃，请使用[fileIo.openSync](js-apis-file-fs.md#fileioopensync)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -740,7 +726,7 @@ read(fd: number, buffer: ArrayBuffer, options?: { offset?: number; length?: numb
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.read](js-apis-file-fs.md#fsread)替代。
+> 从API version 9开始废弃，请使用[fileIo.read](js-apis-file-fs.md#fileioread)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -750,7 +736,7 @@ read(fd: number, buffer: ArrayBuffer, options?: { offset?: number; length?: numb
 | ------- | ----------- | ---- | ------------------------------------------------------------ |
 | fd      | number      | 是   | 待读取文件的文件描述符。                                     |
 | buffer  | ArrayBuffer | 是   | 用于保存读取到的文件数据的缓冲区。                           |
-| options | Object      | 否   | 支持如下选项：<br/>-&nbsp;offset，number类型，表示将数据读取到缓冲区的位置，即相对于缓冲区首地址的偏移。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;position，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读。<br/>约束：offset+length<=buffer.size。 |
+| options | Object      | 否   | 支持如下选项：<br/>-&nbsp;offset，number类型，表示将数据读取到缓冲区的位置，即相对于缓冲区首地址的偏移，单位为Byte。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度减去偏移长度，单位为Byte。<br/>-&nbsp;position，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读，单位为Byte。<br/>约束：offset+length<=buffer.size。 |
 
 **返回值：**
 
@@ -767,7 +753,7 @@ read(fd: number, buffer: ArrayBuffer, options: { offset?: number; length?: numbe
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.read](js-apis-file-fs.md#fsread-1)替代。
+> 从API version 9开始废弃，请使用[fileIo.read](js-apis-file-fs.md#fileioread-1)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -777,7 +763,7 @@ read(fd: number, buffer: ArrayBuffer, options: { offset?: number; length?: numbe
   | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
   | fd       | number                                   | 是    | 待读取文件的文件描述符。                             |
   | buffer   | ArrayBuffer                              | 是    | 用于保存读取到的文件数据的缓冲区。                        |
-  | options  | Object                                   | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示将数据读取到缓冲区的位置，即相对于缓冲区首地址的偏移。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;position，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读。<br/>约束：offset+length<=buffer.size。  |
+  | options  | Object                                   | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示将数据读取到缓冲区的位置，单位为Byte，即相对于缓冲区首地址的偏移。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;position，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。<br/>约束：offset+length<=buffer.size。  |
   | callback | AsyncCallback&lt;[ReadOut](#readout)&gt; | 是    | 异步读取数据之后的回调。                             |
 
 
@@ -789,7 +775,7 @@ readSync(fd: number, buffer: ArrayBuffer, options?: { offset?: number; length?: 
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.readSync](js-apis-file-fs.md#fsreadsync)替代。
+> 从API version 9开始废弃，请使用[fileIo.readSync](js-apis-file-fs.md#fileioreadsync)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -799,13 +785,13 @@ readSync(fd: number, buffer: ArrayBuffer, options?: { offset?: number; length?: 
   | ------- | ----------- | ---- | ---------------------------------------- |
   | fd      | number      | 是    | 待读取文件的文件描述符。                             |
   | buffer  | ArrayBuffer | 是    | 用于保存读取到的文件数据的缓冲区。                        |
-  | options | Object      | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示将数据读取到缓冲区的位置，即相对于缓冲区首地址的偏移。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;position，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读。<br/>约束：offset+length<=buffer.size。  |
+  | options | Object      | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示将数据读取到缓冲区的位置，即相对于缓冲区首地址的偏移，单位为Byte。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度减去偏移长度，单位为Byte。<br/>-&nbsp;position，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读，单位为Byte。<br/>约束：offset+length<=buffer.size。  |
 
 **返回值：**
 
   | 类型     | 说明       |
   | ------ | -------- |
-  | number | 实际读取的长度。 |
+  | number | 实际读取的长度，单位为Byte。 |
 
 **示例：**
 
@@ -825,7 +811,7 @@ rmdir(path: string): Promise&lt;void&gt;
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.rmdir](js-apis-file-fs.md#fsrmdir)替代。
+> 从API version 9开始废弃，请使用[fileIo.rmdir](js-apis-file-fs.md#fileiormdir)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -862,7 +848,7 @@ rmdir(path: string, callback: AsyncCallback&lt;void&gt;): void
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.rmdir](js-apis-file-fs.md#fsrmdir-1)替代。
+> 从API version 9开始废弃，请使用[fileIo.rmdir](js-apis-file-fs.md#fileiormdir-1)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -893,7 +879,7 @@ rmdirSync(path: string): void
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.rmdirSync](js-apis-file-fs.md#fsrmdirsync)替代。
+> 从API version 9开始废弃，请使用[fileIo.rmdirSync](js-apis-file-fs.md#fileiormdirsync)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -919,7 +905,7 @@ unlink(path: string): Promise&lt;void&gt;
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.unlink](js-apis-file-fs.md#fsunlink)替代。
+> 从API version 9开始废弃，请使用[fileIo.unlink](js-apis-file-fs.md#fileiounlink)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -956,7 +942,7 @@ unlink(path: string, callback: AsyncCallback&lt;void&gt;): void
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.unlink](js-apis-file-fs.md#fsunlink-1)替代。
+> 从API version 9开始废弃，请使用[fileIo.unlink](js-apis-file-fs.md#fileiounlink-1)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -986,7 +972,7 @@ unlinkSync(path: string): void
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.unlinkSync](js-apis-file-fs.md#fsunlinksync)替代。
+> 从API version 9开始废弃，请使用[fileIo.unlinkSync](js-apis-file-fs.md#fileiounlinksync)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -1012,7 +998,7 @@ write(fd: number, buffer: ArrayBuffer|string, options?: { offset?: number; lengt
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.write](js-apis-file-fs.md#fswrite)替代。
+> 从API version 9开始废弃，请使用[fileIo.write](js-apis-file-fs.md#fileiowrite)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -1022,13 +1008,13 @@ write(fd: number, buffer: ArrayBuffer|string, options?: { offset?: number; lengt
   | ------- | ------------------------------- | ---- | ---------------------------------------- |
   | fd      | number                          | 是    | 待写入文件的文件描述符。                             |
   | buffer  | ArrayBuffer\|string | 是    | 待写入文件的数据，可来自缓冲区或字符串。                     |
-  | options | Object                          | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望写入数据的位置相对于数据首地址的偏移。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望写入数据的长度。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;position，number类型，表示期望写入文件的位置。可选，默认从当前位置开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。<br/>约束：offset+length<=buffer.size。 |
+  | options | Object                          | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望写入数据的位置相对于数据首地址的偏移，单位为Byte。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;position，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。<br/>约束：offset+length<=buffer.size。 |
 
 **返回值：**
 
   | 类型                    | 说明       |
   | --------------------- | -------- |
-  | Promise&lt;number&gt; | Promise对象。返回实际写入的长度。 |
+  | Promise&lt;number&gt; | Promise对象。返回实际写入的长度，单位为Byte。 |
 
 **示例：**
 
@@ -1052,7 +1038,7 @@ write(fd: number, buffer: ArrayBuffer|string, options: { offset?: number; length
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.write](js-apis-file-fs.md#fswrite-1)替代。
+> 从API version 9开始废弃，请使用[fileIo.write](js-apis-file-fs.md#fileiowrite-1)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -1062,8 +1048,8 @@ write(fd: number, buffer: ArrayBuffer|string, options: { offset?: number; length
   | -------- | ------------------------------- | ---- | ---------------------------------------- |
   | fd       | number                          | 是    | 待写入文件的文件描述符。                             |
   | buffer   | ArrayBuffer\|string | 是    | 待写入文件的数据，可来自缓冲区或字符串。                     |
-  | options  | Object                          | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望写入数据的位置相对于数据首地址的偏移。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望写入数据的长度。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;position，number类型，表示期望写入文件的位置。可选，默认从当前位置开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。<br/>约束：offset+length<=buffer.size。 |
-  | callback | AsyncCallback&lt;number&gt;     | 是    | 异步将数据写入完成后执行的回调函数。                       |
+  | options  | Object                          | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望写入数据的位置相对于数据首地址的偏移，单位为Byte。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;position，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。<br/>约束：offset+length<=buffer.size。 |
+  | callback | AsyncCallback&lt;number&gt;     | 是    | 异步将数据写入完成后执行的回调函数。返回实际写入的长度，单位为Byte。                       |
 
 **示例：**
 
@@ -1087,7 +1073,7 @@ writeSync(fd: number, buffer: ArrayBuffer|string, options?: { offset?: number; l
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.writeSync](js-apis-file-fs.md#fswritesync)替代。
+> 从API version 9开始废弃，请使用[fileIo.writeSync](js-apis-file-fs.md#fileiowritesync)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -1097,13 +1083,13 @@ writeSync(fd: number, buffer: ArrayBuffer|string, options?: { offset?: number; l
   | ------- | ------------------------------- | ---- | ---------------------------------------- |
   | fd      | number                          | 是    | 待写入文件的文件描述符。                             |
   | buffer  | ArrayBuffer\|string | 是    | 待写入文件的数据，可来自缓冲区或字符串。                     |
-  | options | Object                          | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望写入数据的位置相对于数据首地址的偏移。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望写入数据的长度。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;position，number类型，表示期望写入文件的位置。可选，默认从当前位置开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。<br/>约束：offset+length<=buffer.size。 |
+  | options | Object                          | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望写入数据的位置相对于数据首地址的偏移，单位为Byte。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;position，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。<br/>约束：offset+length<=buffer.size。 |
 
 **返回值：**
 
   | 类型     | 说明       |
   | ------ | -------- |
-  | number | 实际写入的长度。 |
+  | number | 实际写入的长度，单位为Byte。 |
 
 **示例：**
 
@@ -1122,7 +1108,7 @@ hash(path: string, algorithm: string): Promise&lt;string&gt;
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[hash.write](js-apis-file-hash.md#hashhash)替代。
+> 从API version 9开始废弃，请使用[hash.hash](js-apis-file-hash.md#hashhash)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -1160,7 +1146,7 @@ hash(path: string, algorithm: string, callback: AsyncCallback&lt;string&gt;): vo
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[hash.write](js-apis-file-hash.md#hashhash-1)替代。
+> 从API version 9开始废弃，请使用[hash.hash](js-apis-file-hash.md#hashhash-1)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -1289,7 +1275,7 @@ fstat(fd: number): Promise&lt;Stat&gt;
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.stat](js-apis-file-fs.md#fsstat)替代。
+> 从API version 9开始废弃，请使用[fileIo.stat](js-apis-file-fs.md#fileiostat)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -1327,7 +1313,7 @@ fstat(fd: number, callback: AsyncCallback&lt;Stat&gt;): void
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.stat](js-apis-file-fs.md#fsstat-1)替代。
+> 从API version 9开始废弃，请使用[fileIo.stat](js-apis-file-fs.md#fileiostat-1)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -1358,7 +1344,7 @@ fstatSync(fd: number): Stat
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.statSync](js-apis-file-fs.md#fsstatsync)替代。
+> 从API version 9开始废弃，请使用[fileIo.statSync](js-apis-file-fs.md#fileiostatsync)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -1391,7 +1377,7 @@ ftruncate(fd: number, len?: number): Promise&lt;void&gt;
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.truncate](js-apis-file-fs.md#fstruncate)替代。
+> 从API version 9开始废弃，请使用[fileIo.truncate](js-apis-file-fs.md#fileiotruncate)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -1400,7 +1386,7 @@ ftruncate(fd: number, len?: number): Promise&lt;void&gt;
   | 参数名  | 类型     | 必填   | 说明               |
   | ---- | ------ | ---- | ---------------- |
   | fd   | number | 是    | 待截断文件的文件描述符。     |
-  | len  | number | 否    | 文件截断后的长度，以字节为单位。 |
+  | len  | number | 否    | 文件截断后的长度，单位为Byte。默认为0。 |
 
 **返回值：**
 
@@ -1430,7 +1416,7 @@ ftruncate(fd: number, len?: number, callback: AsyncCallback&lt;void&gt;): void
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.truncate](js-apis-file-fs.md#fstruncate-1)替代。
+> 从API version 9开始废弃，请使用[fileIo.truncate](js-apis-file-fs.md#fileiotruncate-1)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -1439,7 +1425,7 @@ ftruncate(fd: number, len?: number, callback: AsyncCallback&lt;void&gt;): void
   | 参数名      | 类型                        | 必填   | 说明               |
   | -------- | ------------------------- | ---- | ---------------- |
   | fd       | number                    | 是    | 待截断文件的文件描述符。     |
-  | len      | number                    | 否    | 文件截断后的长度，以字节为单位。 |
+  | len      | number                    | 否    | 文件截断后的长度，单位为Byte。默认为0。|
   | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数，本调用无返回值。  |
 
 **示例：**
@@ -1463,7 +1449,7 @@ ftruncateSync(fd: number, len?: number): void
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.truncateSync](js-apis-file-fs.md#fstruncatesync)替代。
+> 从API version 9开始废弃，请使用[fileIo.truncateSync](js-apis-file-fs.md#fileiotruncatesync)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -1472,7 +1458,7 @@ ftruncateSync(fd: number, len?: number): void
   | 参数名  | 类型     | 必填   | 说明               |
   | ---- | ------ | ---- | ---------------- |
   | fd   | number | 是    | 待截断文件的文件描述符。     |
-  | len  | number | 否    | 文件截断后的长度，以字节为单位。 |
+  | len  | number | 否    | 文件截断后的长度，单位为Byte。默认为0。 |
 
 **示例：**
 
@@ -1492,7 +1478,7 @@ truncate(path: string, len?: number): Promise&lt;void&gt;
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.truncate](js-apis-file-fs.md#fstruncate)替代。
+> 从API version 9开始废弃，请使用[fileIo.truncate](js-apis-file-fs.md#fileiotruncate)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -1501,7 +1487,7 @@ truncate(path: string, len?: number): Promise&lt;void&gt;
 | 参数名 | 类型   | 必填 | 说明                             |
 | ------ | ------ | ---- | -------------------------------- |
 | path   | string | 是   | 待截断文件的应用沙箱路径。       |
-| len    | number | 否   | 文件截断后的长度，以字节为单位。 |
+| len    | number | 否   | 文件截断后的长度，单位为Byte。默认为0。 |
 
 **返回值：**
 
@@ -1531,7 +1517,7 @@ truncate(path: string, len?: number, callback: AsyncCallback&lt;void&gt;): void
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.truncate](js-apis-file-fs.md#fstruncate-1)替代。
+> 从API version 9开始废弃，请使用[fileIo.truncate](js-apis-file-fs.md#fileiotruncate-1)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -1540,7 +1526,7 @@ truncate(path: string, len?: number, callback: AsyncCallback&lt;void&gt;): void
 | 参数名   | 类型                      | 必填 | 说明                             |
 | -------- | ------------------------- | ---- | -------------------------------- |
 | path     | string                    | 是   | 待截断文件的应用沙箱路径。       |
-| len      | number                    | 否   | 文件截断后的长度，以字节为单位。 |
+| len      | number                    | 否   | 文件截断后的长度，单位为Byte。默认为0。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数，本调用无返回值。   |
 
 **示例：**
@@ -1563,7 +1549,7 @@ truncateSync(path: string, len?: number): void
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.truncateSync](js-apis-file-fs.md#fstruncatesync)替代。
+> 从API version 9开始废弃，请使用[fileIo.truncateSync](js-apis-file-fs.md#fileiotruncatesync)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -1572,7 +1558,7 @@ truncateSync(path: string, len?: number): void
 | 参数名 | 类型   | 必填 | 说明                             |
 | ------ | ------ | ---- | -------------------------------- |
 | path   | string | 是   | 待截断文件的应用沙箱路径。       |
-| len    | number | 否   | 文件截断后的长度，以字节为单位。 |
+| len    | number | 否   | 文件截断后的长度，单位为Byte。默认为0。 |
 
 **示例：**
 
@@ -1591,7 +1577,7 @@ readText(filePath: string, options?: { position?: number; length?: number; encod
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.readText](js-apis-file-fs.md#fsreadtext)替代。
+> 从API version 9开始废弃，请使用[fileIo.readText](js-apis-file-fs.md#fileioreadtext)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -1600,7 +1586,7 @@ readText(filePath: string, options?: { position?: number; length?: number; encod
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
 | filePath | string | 是   | 待读取文件的应用沙箱路径。                                   |
-| options  | Object | 否   | 支持如下选项：<br/>-&nbsp;position，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读取。<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;encoding，string类型，当数据是&nbsp;string&nbsp;类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'，仅支持&nbsp;'utf-8'。 |
+| options  | Object | 否   | 支持如下选项：<br/>-&nbsp;position，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读取。<br/>-&nbsp;length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;encoding，string类型，当数据是&nbsp;string&nbsp;类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'，仅支持&nbsp;'utf-8'。 |
 
 **返回值：**
 
@@ -1629,7 +1615,7 @@ readText(filePath: string, options: { position?: number; length?: number; encodi
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.readText](js-apis-file-fs.md#fsreadtext-1)替代。
+> 从API version 9开始废弃，请使用[fileIo.readText](js-apis-file-fs.md#fileioreadtext-1)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -1638,7 +1624,7 @@ readText(filePath: string, options: { position?: number; length?: number; encodi
 | 参数名   | 类型                        | 必填 | 说明                                                         |
 | -------- | --------------------------- | ---- | ------------------------------------------------------------ |
 | filePath | string                      | 是   | 待读取文件的应用沙箱路径。                                   |
-| options  | Object                      | 否   | 支持如下选项：<br/>-&nbsp;position，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读取。<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;encoding，string类型，表示数据的编码方式，默认&nbsp;'utf-8'，仅支持&nbsp;'utf-8'。 |
+| options  | Object                      | 否   | 支持如下选项：<br/>-&nbsp;position，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读取。<br/>-&nbsp;length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;encoding，string类型，表示数据的编码方式，默认&nbsp;'utf-8'，仅支持&nbsp;'utf-8'。 |
 | callback | AsyncCallback&lt;string&gt; | 是   | 回调函数，返回读取文件的内容。                         |
 
 **示例：**
@@ -1668,7 +1654,7 @@ readTextSync(filePath: string, options?: { position?: number; length?: number; e
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.readTextSync](js-apis-file-fs.md#fsreadtextsync)替代。
+> 从API version 9开始废弃，请使用[fileIo.readTextSync](js-apis-file-fs.md#fileioreadtextsync)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -1677,7 +1663,7 @@ readTextSync(filePath: string, options?: { position?: number; length?: number; e
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
 | filePath | string | 是   | 待读取文件的应用沙箱路径。                                   |
-| options  | Object | 否   | 支持如下选项：<br/>-&nbsp;position，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读取。<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;encoding，string类型，当数据是&nbsp;string&nbsp;类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'，仅支持&nbsp;'utf-8'。 |
+| options  | Object | 否   | 支持如下选项：<br/>-&nbsp;position，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读取。<br/>-&nbsp;length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;encoding，string类型，当数据是&nbsp;string&nbsp;类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'，仅支持&nbsp;'utf-8'。 |
 
 **返回值：**
 
@@ -1709,7 +1695,7 @@ lstat(path: string): Promise&lt;Stat&gt;
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.lstat](js-apis-file-fs.md#fslstat)替代。
+> 从API version 9开始废弃，请使用[fileIo.lstat](js-apis-file-fs.md#fileiolstat)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -1723,7 +1709,7 @@ lstat(path: string): Promise&lt;Stat&gt;
 
   | 类型                           | 说明         |
   | ---------------------------- | ---------- |
-  | Promise&lt;[Stat](#stat)&gt; | promise对象，返回文件对象，表示文件的具体信息，详情见stat。 |
+  | Promise&lt;[Stat](#stat)&gt; | Promise对象，返回文件对象，表示文件的具体信息，详情见stat。 |
 
 **示例：**
 
@@ -1746,7 +1732,7 @@ lstat(path: string, callback: AsyncCallback&lt;Stat&gt;): void
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.lstat](js-apis-file-fs.md#fslstat-1)替代。
+> 从API version 9开始废弃，请使用[fileIo.lstat](js-apis-file-fs.md#fileiolstat-1)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -1776,7 +1762,7 @@ lstatSync(path: string): Stat
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.lstatSync](js-apis-file-fs.md#fslstatsync)替代。
+> 从API version 9开始废弃，请使用[fileIo.lstatSync](js-apis-file-fs.md#fileiolstatsync)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -1808,7 +1794,7 @@ rename(oldPath: string, newPath: string): Promise&lt;void&gt;
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.rename](js-apis-file-fs.md#fsrename)替代。
+> 从API version 9开始废弃，请使用[fileIo.rename](js-apis-file-fs.md#fileiorename)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -1847,7 +1833,7 @@ rename(oldPath: string, newPath: string, callback: AsyncCallback&lt;void&gt;): v
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.rename](js-apis-file-fs.md#fsrename-1)替代。
+> 从API version 9开始废弃，请使用[fileIo.rename](js-apis-file-fs.md#fileiorename-1)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -1877,7 +1863,7 @@ renameSync(oldPath: string, newPath: string): void
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.renameSync](js-apis-file-fs.md#fsrenamesync)替代。
+> 从API version 9开始废弃，请使用[fileIo.renameSync](js-apis-file-fs.md#fileiorenamesync)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -1905,7 +1891,7 @@ fsync(fd: number): Promise&lt;void&gt;
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.fsync](js-apis-file-fs.md#fsfsync)替代。
+> 从API version 9开始废弃，请使用[fileIo.fsync](js-apis-file-fs.md#fileiofsync)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -1943,7 +1929,7 @@ fsync(fd: number, callback: AsyncCallback&lt;void&gt;): void
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.fsync](js-apis-file-fs.md#fsfsync-1)替代。
+> 从API version 9开始废弃，请使用[fileIo.fsync](js-apis-file-fs.md#fileiofsync-1)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -1974,7 +1960,7 @@ fsyncSync(fd: number): void
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.fsyncSync](js-apis-file-fs.md#fsfsyncsync)替代。
+> 从API version 9开始废弃，请使用[fileIo.fsyncSync](js-apis-file-fs.md#fileiofsyncsync)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -2001,7 +1987,7 @@ fdatasync(fd: number): Promise&lt;void&gt;
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.fdatasync](js-apis-file-fs.md#fsfdatasync)替代。
+> 从API version 9开始废弃，请使用[fileIo.fdatasync](js-apis-file-fs.md#fileiofdatasync)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -2039,7 +2025,7 @@ fdatasync(fd: number, callback: AsyncCallback&lt;void&gt;): void
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.fdatasync](js-apis-file-fs.md#fsfdatasync-1)替代。
+> 从API version 9开始废弃，请使用[fileIo.fdatasync](js-apis-file-fs.md#fileiofdatasync-1)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -2070,7 +2056,7 @@ fdatasyncSync(fd: number): void
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.fdatasyncSync](js-apis-file-fs.md#fsfdatasyncsync)替代。
+> 从API version 9开始废弃，请使用[fileIo.fdatasyncSync](js-apis-file-fs.md#fileiofdatasyncsync)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -2097,7 +2083,7 @@ symlink(target: string, srcPath: string): Promise&lt;void&gt;
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.symlink](js-apis-file-fs.md#fssymlink)替代。
+> 从API version 9开始废弃，请使用[fileIo.symlink](js-apis-file-fs.md#fileiosymlink)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -2136,7 +2122,7 @@ symlink(target: string, srcPath: string, callback: AsyncCallback&lt;void&gt;): v
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.symlink](js-apis-file-fs.md#fssymlink-1)替代。
+> 从API version 9开始废弃，请使用[fileIo.symlink](js-apis-file-fs.md#fileiosymlink-1)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -2168,7 +2154,7 @@ symlinkSync(target: string, srcPath: string): void
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.symlinkSync](js-apis-file-fs.md#fssymlinksync)替代。
+> 从API version 9开始废弃，请使用[fileIo.symlinkSync](js-apis-file-fs.md#fileiosymlinksync)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -2297,7 +2283,7 @@ mkdtemp(prefix: string): Promise&lt;string&gt;
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.mkdtemp](js-apis-file-fs.md#fsmkdtemp)替代。
+> 从API version 9开始废弃，请使用[fileIo.mkdtemp](js-apis-file-fs.md#fileiomkdtemp)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -2333,7 +2319,7 @@ mkdtemp(prefix: string, callback: AsyncCallback&lt;string&gt;): void
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.mkdtemp](js-apis-file-fs.md#fsmkdtemp-1)替代。
+> 从API version 9开始废弃，请使用[fileIo.mkdtemp](js-apis-file-fs.md#fileiomkdtemp-1)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -2362,7 +2348,7 @@ mkdtempSync(prefix: string): string
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.mkdtempSync](js-apis-file-fs.md#fsmkdtempsync)替代。
+> 从API version 9开始废弃，请使用[fileIo.mkdtempSync](js-apis-file-fs.md#fileiomkdtempsync)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -2495,7 +2481,7 @@ createStream(path: string, mode: string): Promise&lt;Stream&gt;
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.createStream](js-apis-file-fs.md#fscreatestream)替代。
+> 从API version 9开始废弃，请使用[fileIo.createStream](js-apis-file-fs.md#fileiocreatestream)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -2533,7 +2519,7 @@ createStream(path: string, mode: string, callback: AsyncCallback&lt;Stream&gt;):
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.createStream](js-apis-file-fs.md#fscreatestream-1)替代。
+> 从API version 9开始废弃，请使用[fileIo.createStream](js-apis-file-fs.md#fileiocreatestream-1)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -2564,7 +2550,7 @@ createStreamSync(path: string, mode: string): Stream
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.createStreamSync](js-apis-file-fs.md#fscreatestreamsync)替代。
+> 从API version 9开始废弃，请使用[fileIo.createStreamSync](js-apis-file-fs.md#fileiocreatestreamsync)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -2597,7 +2583,7 @@ fdopenStream(fd: number, mode: string): Promise&lt;Stream&gt;
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.fdopenStream](js-apis-file-fs.md#fsfdopenstream)替代。
+> 从API version 9开始废弃，请使用[fileIo.fdopenStream](js-apis-file-fs.md#fileiofdopenstream)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -2636,7 +2622,7 @@ fdopenStream(fd: number, mode: string, callback: AsyncCallback&lt;Stream&gt;): v
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.fdopenStream](js-apis-file-fs.md#fsfdopenstream-1)替代。
+> 从API version 9开始废弃，请使用[fileIo.fdopenStream](js-apis-file-fs.md#fileiofdopenstream-1)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -2668,7 +2654,7 @@ fdopenStreamSync(fd: number, mode: string): Stream
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.fdopenStreamSync](js-apis-file-fs.md#fsfdopenstreamsync)替代。
+> 从API version 9开始废弃，请使用[fileIo.fdopenStreamSync](js-apis-file-fs.md#fileiofdopenstreamsync)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -2918,7 +2904,7 @@ createWatcher(filename: string, events: number, callback: AsyncCallback&lt;numbe
 | 参数名   | 类型                              | 必填 | 说明                                                         |
 | -------- | --------------------------------- | ---- | ------------------------------------------------------------ |
 | filename | string                            | 是   | 待监视文件的应用沙箱路径。                                   |
-| events   | number                            | 是   | -&nbsp;1:&nbsp;监听文件或者目录是否发生重命名。<br/>-&nbsp;2：监听文件或者目录内容的是否修改。<br/>-&nbsp;3：两者都有。 |
+| events   | number                            | 是   | - 1：监听文件或者目录是否发生重命名。<br/>- 2：监听文件或者目录内容是否修改。<br/>- 3：两者都有。 |
 | callback | AsyncCallback&lt;number&gt; | 是   | 每发生变化一次，调用一次此函数。                             |
 
 **返回值：**
@@ -2949,8 +2935,8 @@ createWatcher(filename: string, events: number, callback: AsyncCallback&lt;numbe
 
 | 名称        | 类型       | 只读   | 可写   | 说明                |
 | --------- | ---------- | ---- | ---- | ----------------- |
-| bytesRead | number     | 是    | 是    | 实际读取长度。           |
-| offset    | number     | 是    | 是    | 读取数据相对于缓冲区首地址的偏移。 |
+| bytesRead | number     | 是    | 是    | 实际读取长度，单位为Byte。           |
+| offset    | number     | 是    | 是    | 读取数据相对于缓冲区首地址的偏移，单位为Byte。 |
 | buffer    | ArrayBuffer | 是    | 是    | 保存读取数据的缓冲区。       |
 
 
@@ -2960,7 +2946,7 @@ createWatcher(filename: string, events: number, callback: AsyncCallback&lt;numbe
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.Stat](js-apis-file-fs.md#stat)替代。
+> 从API version 9开始废弃，请使用[fileIo.Stat](js-apis-file-fs.md#stat)替代。
 
 **系统能力**：以下各项对应的系统能力均为SystemCapability.FileManagement.File.FileIO。
 
@@ -2975,7 +2961,7 @@ createWatcher(filename: string, events: number, callback: AsyncCallback&lt;numbe
 | uid    | number | 是    | 否    | 文件所有者的ID。                                |
 | gid    | number | 是    | 否    | 文件所有组的ID。                                |
 | rdev   | number | 是    | 否    | 标识包含该文件的从设备号。                            |
-| size   | number | 是    | 否    | 文件的大小，以字节为单位。仅对普通文件有效。                   |
+| size   | number | 是    | 否    | 文件的大小，单位为Byte。仅对普通文件有效。                   |
 | blocks | number | 是    | 否    | 文件占用的块数，计算时块大小按512B计算。                   |
 | atime  | number | 是    | 否    | 上次访问该文件的时间，表示距1970年1月1日0时0分0秒的秒数。        |
 | mtime  | number | 是    | 否    | 上次修改该文件的时间，表示距1970年1月1日0时0分0秒的秒数。        |
@@ -2990,7 +2976,7 @@ isBlockDevice(): boolean
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.Stat.isBlockDevice](js-apis-file-fs.md#isblockdevice)替代。
+> 从API version 9开始废弃，请使用[fileIo.Stat.isBlockDevice](js-apis-file-fs.md#isblockdevice)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -3016,7 +3002,7 @@ isCharacterDevice(): boolean
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.Stat.isCharacterDevice](js-apis-file-fs.md#ischaracterdevice)替代。
+> 从API version 9开始废弃，请使用[fileIo.Stat.isCharacterDevice](js-apis-file-fs.md#ischaracterdevice)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -3042,7 +3028,7 @@ isDirectory(): boolean
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.Stat.isDirectory](js-apis-file-fs.md#isdirectory)替代。
+> 从API version 9开始废弃，请使用[fileIo.Stat.isDirectory](js-apis-file-fs.md#isdirectory)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -3068,7 +3054,7 @@ isFIFO(): boolean
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.Stat.isFIFO](js-apis-file-fs.md#isfifo)替代。
+> 从API version 9开始废弃，请使用[fileIo.Stat.isFIFO](js-apis-file-fs.md#isfifo)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -3094,7 +3080,7 @@ isFile(): boolean
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.Stat.isFile](js-apis-file-fs.md#isfile)替代。
+> 从API version 9开始废弃，请使用[fileIo.Stat.isFile](js-apis-file-fs.md#isfile)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -3120,7 +3106,7 @@ isSocket(): boolean
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.Stat.isSocket](js-apis-file-fs.md#issocket)替代。
+> 从API version 9开始废弃，请使用[fileIo.Stat.isSocket](js-apis-file-fs.md#issocket)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -3146,7 +3132,7 @@ isSymbolicLink(): boolean
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.Stat.isSymbolicLink](js-apis-file-fs.md#issymboliclink)替代。
+> 从API version 9开始废弃，请使用[fileIo.Stat.isSymbolicLink](js-apis-file-fs.md#issymboliclink)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -3234,7 +3220,7 @@ stop(callback: AsyncCallback&lt;void&gt;): void
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.Stream](js-apis-file-fs.md#stream)替代。
+> 从API version 9开始废弃，请使用[fileIo.Stream](js-apis-file-fs.md#stream)替代。
 
 ### close<sup>7+</sup>
 
@@ -3244,7 +3230,7 @@ close(): Promise&lt;void&gt;
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.Stream.close](js-apis-file-fs.md#close)替代。
+> 从API version 9开始废弃，请使用[fileIo.Stream.close](js-apis-file-fs.md#close)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -3276,7 +3262,7 @@ close(callback: AsyncCallback&lt;void&gt;): void
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.Stream.close](js-apis-file-fs.md#close-1)替代。
+> 从API version 9开始废弃，请使用[fileIo.Stream.close](js-apis-file-fs.md#close-1)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -3306,7 +3292,7 @@ closeSync(): void
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.Stream.closeSync](js-apis-file-fs.md#closesync)替代。
+> 从API version 9开始废弃，请使用[fileIo.Stream.closeSync](js-apis-file-fs.md#closesync)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -3327,7 +3313,7 @@ flush(): Promise&lt;void&gt;
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.Stream.flush](js-apis-file-fs.md#flush)替代。
+> 从API version 9开始废弃，请使用[fileIo.Stream.flush](js-apis-file-fs.md#flush)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -3359,7 +3345,7 @@ flush(callback: AsyncCallback&lt;void&gt;): void
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.Stream.flush](js-apis-file-fs.md#flush-1)替代。
+> 从API version 9开始废弃，请使用[fileIo.Stream.flush](js-apis-file-fs.md#flush-1)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -3389,7 +3375,7 @@ flushSync(): void
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.Stream.flushSync](js-apis-file-fs.md#flushsync)替代。
+> 从API version 9开始废弃，请使用[fileIo.Stream.flushSync](js-apis-file-fs.md#flushsync)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -3410,7 +3396,7 @@ write(buffer: ArrayBuffer|string, options?: { offset?: number; length?: number; 
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.Stream.write](js-apis-file-fs.md#write)替代。
+> 从API version 9开始废弃，请使用[fileIo.Stream.write](js-apis-file-fs.md#write)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -3419,13 +3405,13 @@ write(buffer: ArrayBuffer|string, options?: { offset?: number; length?: number; 
   | 参数名     | 类型                              | 必填   | 说明                                       |
   | ------- | ------------------------------- | ---- | ---------------------------------------- |
   | buffer  | ArrayBuffer\|string | 是    | 待写入文件的数据，可来自缓冲区或字符串。                     |
-  | options | Object                          | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望写入数据的位置相对于数据首地址的偏移。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望写入数据的长度。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;position，number类型，表示期望写入文件的位置。可选，默认从当前位置开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。<br/>约束：offset+length<=buffer.size。  |
+  | options | Object                          | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望写入数据的位置相对于数据首地址的偏移，单位为Byte。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;position，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。<br/>约束：offset+length<=buffer.size。  |
 
 **返回值：**
 
   | 类型                    | 说明       |
   | --------------------- | -------- |
-  | Promise&lt;number&gt; | Promise对象。返回实际写入的长度。 |
+  | Promise&lt;number&gt; | Promise对象。返回实际写入的长度，单位为Byte。 |
 
 **示例：**
 
@@ -3459,7 +3445,7 @@ write(buffer: ArrayBuffer|string, options: { offset?: number; length?: number; p
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.Stream.write](js-apis-file-fs.md#write-1)替代。
+> 从API version 9开始废弃，请使用[fileIo.Stream.write](js-apis-file-fs.md#write-1)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -3468,8 +3454,8 @@ write(buffer: ArrayBuffer|string, options: { offset?: number; length?: number; p
   | 参数名   | 类型                            | 必填 | 说明                                                         |
   | -------- | ------------------------------- | ---- | ------------------------------------------------------------ |
   | buffer   | ArrayBuffer\|string | 是   | 待写入文件的数据，可来自缓冲区或字符串。                     |
-  | options  | Object                          | 否   | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望写入数据的位置相对于数据首地址的偏移。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望写入数据的长度。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;position，number类型，表示期望写入文件的位置。可选，默认从当前位置开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。<br/>约束：offset+length<=buffer.size。 |
-  | callback | AsyncCallback&lt;number&gt;     | 是   | 异步写入完成后执行的回调函数。                               |
+  | options  | Object                          | 否   | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望写入数据的位置相对于数据首地址的偏移，单位为Byte。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;position，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。<br/>约束：offset+length<=buffer.size。 |
+  | callback | AsyncCallback&lt;number&gt;     | 是   | 异步写入完成后执行的回调函数，返回实际写入的长度，单位为Byte。                               |
 
 **示例：**
 
@@ -3504,7 +3490,7 @@ writeSync(buffer: ArrayBuffer|string, options?: { offset?: number; length?: numb
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.Stream.writeSync](js-apis-file-fs.md#writesync)替代。
+> 从API version 9开始废弃，请使用[fileIo.Stream.writeSync](js-apis-file-fs.md#writesync)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -3513,13 +3499,13 @@ writeSync(buffer: ArrayBuffer|string, options?: { offset?: number; length?: numb
   | 参数名     | 类型                              | 必填   | 说明                                       |
   | ------- | ------------------------------- | ---- | ---------------------------------------- |
   | buffer  | ArrayBuffer\|string | 是    | 待写入文件的数据，可来自缓冲区或字符串。                     |
-  | options | Object                          | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望写入数据的位置相对于数据首地址的偏移。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望写入数据的长度。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;position，number类型，表示期望写入文件的位置。可选，默认从当前位置开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。<br/>约束：offset+length<=buffer.size。  |
+  | options | Object                          | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望写入数据的位置相对于数据首地址的偏移，单位为Byte。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望写入数据的长度。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;position，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。<br/>约束：offset+length<=buffer.size。  |
 
 **返回值：**
 
   | 类型     | 说明       |
   | ------ | -------- |
-  | number | 实际写入的长度。 |
+  | number | 实际写入的长度，单位为Byte。 |
 
 **示例：**
 
@@ -3548,7 +3534,7 @@ read(buffer: ArrayBuffer, options?: { position?: number; offset?: number; length
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.Stream.read](js-apis-file-fs.md#read)替代。
+> 从API version 9开始废弃，请使用[fileIo.Stream.read](js-apis-file-fs.md#read)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -3557,7 +3543,7 @@ read(buffer: ArrayBuffer, options?: { position?: number; offset?: number; length
   | 参数名     | 类型          | 必填   | 说明                                       |
   | ------- | ----------- | ---- | ---------------------------------------- |
   | buffer  | ArrayBuffer | 是    | 用于读取文件的缓冲区。                              |
-  | options | Object      | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示将数据读取到缓冲区的位置，即相对于缓冲区首地址的偏移。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;position，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读。<br/>约束：offset+length<=buffer.size。  |
+  | options | Object      | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示将数据读取到缓冲区的位置，即相对于缓冲区首地址的偏移，单位为Byte。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度减去偏移长度，单位为Byte。<br/>-&nbsp;position，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读，单位为Byte。<br/>约束：offset+length<=buffer.size。  |
 
 **返回值：**
 
@@ -3600,7 +3586,7 @@ read(buffer: ArrayBuffer, options: { position?: number; offset?: number; length?
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.Stream.read](js-apis-file-fs.md#read-1)替代。
+> 从API version 9开始废弃，请使用[fileIo.Stream.read](js-apis-file-fs.md#read-1)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -3609,7 +3595,7 @@ read(buffer: ArrayBuffer, options: { position?: number; offset?: number; length?
   | 参数名      | 类型                                       | 必填   | 说明                                       |
   | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
   | buffer   | ArrayBuffer                              | 是    | 用于读取文件的缓冲区。                              |
-  | options  | Object                                   | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示将数据读取到缓冲区的位置，即相对于缓冲区首地址的偏移。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;position，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读。<br/>约束：offset+length<=buffer.size。  |
+  | options  | Object                                   | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示将数据读取到缓冲区的位置，即相对于缓冲区首地址的偏移，单位为Byte。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;position，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。<br/>约束：offset+length<=buffer.size。  |
   | callback | AsyncCallback&lt;[ReadOut](#readout)&gt; | 是    | 异步从流文件读取数据之后的回调。                         |
 
 **示例：**
@@ -3647,7 +3633,7 @@ readSync(buffer: ArrayBuffer, options?: { position?: number; offset?: number; le
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.Stream.readSync](js-apis-file-fs.md#readsync)替代。
+> 从API version 9开始废弃，请使用[fileIo.Stream.readSync](js-apis-file-fs.md#readsync)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -3656,13 +3642,13 @@ readSync(buffer: ArrayBuffer, options?: { position?: number; offset?: number; le
   | 参数名     | 类型          | 必填   | 说明                                       |
   | ------- | ----------- | ---- | ---------------------------------------- |
   | buffer  | ArrayBuffer | 是    | 用于读取文件的缓冲区。                              |
-  | options | Object      | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示将数据读取到缓冲区的位置，即相对于缓冲区首地址的偏移。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;position，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读。<br/>约束：offset+length<=buffer.size。  |
+  | options | Object      | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示将数据读取到缓冲区的位置，即相对于缓冲区首地址的偏移，单位为Byte。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度减去偏移长度，单位为Byte。<br/>-&nbsp;position，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。<br/>约束：offset+length<=buffer.size。  |
 
 **返回值：**
 
   | 类型     | 说明       |
   | ------ | -------- |
-  | number | 实际读取的长度。 |
+  | number | 实际读取的长度，单位为Byte。 |
 
 **示例：**
 
@@ -3689,7 +3675,7 @@ readSync(buffer: ArrayBuffer, options?: { position?: number; offset?: number; le
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.listFile](js-apis-file-fs.md#fslistfile)替代。
+> 从API version 9开始废弃，请使用[fileIo.listFile](js-apis-file-fs.md#fileiolistfile)替代。
 
 ### read
 
@@ -3699,7 +3685,7 @@ read(): Promise&lt;Dirent&gt;
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.listFile](js-apis-file-fs.md#fslistfile)替代。
+> 从API version 9开始废弃，请使用[fileIo.listFile](js-apis-file-fs.md#fileiolistfile)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -3729,7 +3715,7 @@ read(callback: AsyncCallback&lt;Dirent&gt;): void
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.listFile](js-apis-file-fs.md#fslistfile-1)替代。
+> 从API version 9开始废弃，请使用[fileIo.listFile](js-apis-file-fs.md#fileiolistfile-1)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -3760,7 +3746,7 @@ readSync(): Dirent
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.listFileSync](js-apis-file-fs.md#fslistfilesync)替代。
+> 从API version 9开始废弃，请使用[fileIo.listFileSync](js-apis-file-fs.md#fileiolistfilesync)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -3781,11 +3767,11 @@ readSync(): Dirent
 
 close(): Promise&lt;void&gt;
 
-异步关闭目录，使用promise形式返回结果。目录被关闭后，Dir中持有的文件描述将被释放，后续将无法从Dir中读取目录项。
+异步关闭目录。使用Promise异步回调。目录被关闭后，Dir中持有的文件描述符将被释放，后续将无法从Dir中读取目录项。
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.listFile](js-apis-file-fs.md#fslistfile)替代。
+> 从API version 9开始废弃，请使用[fileIo.listFile](js-apis-file-fs.md#fileiolistfile)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -3803,11 +3789,11 @@ close(): Promise&lt;void&gt;
 
 close(callback: AsyncCallback&lt;void&gt;): void
 
-异步关闭目录，使用callback形式返回结果。目录被关闭后，Dir中持有的文件描述将被释放，后续将无法从Dir中读取目录项。
+异步关闭目录。使用callback异步回调。目录被关闭后，Dir中持有的文件描述符将被释放，后续将无法从Dir中读取目录项。
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.listFile](js-apis-file-fs.md#fslistfile-1)替代。
+> 从API version 9开始废弃，请使用[fileIo.listFile](js-apis-file-fs.md#fileiolistfile-1)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -3825,11 +3811,11 @@ close(callback: AsyncCallback&lt;void&gt;): void
 
 closeSync(): void
 
-用于关闭目录。目录被关闭后，Dir中持有的文件描述将被释放，后续将无法从Dir中读取目录项。
+用于关闭目录。目录被关闭后，Dir中持有的文件描述符将被释放，后续将无法从Dir中读取目录项。
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.listFileSync](js-apis-file-fs.md#fslistfilesync)替代。
+> 从API version 9开始废弃，请使用[fileIo.listFileSync](js-apis-file-fs.md#fileiolistfilesync)替代。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -3846,7 +3832,7 @@ closeSync(): void
 
 > **说明**： 
 >
-> 从API version 9开始废弃，请使用[fs.listFile](js-apis-file-fs.md#fslistfile)替代。
+> 从API version 9开始废弃，请使用[fileIo.listFile](js-apis-file-fs.md#fileiolistfile)替代。
 
 **系统能力**：以下各项对应的系统能力均为SystemCapability.FileManagement.File.FileIO。
 

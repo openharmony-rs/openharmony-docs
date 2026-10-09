@@ -17,11 +17,11 @@
 
 ## 开发步骤
 
-详细的API说明请参考[Camera API参考](../../reference/apis-camera-kit/capi-oh-camera.md)。
+详细的API说明请参考[OH_Camera](../../reference/apis-camera-kit/capi-oh-camera.md)。
 
 1. 导入NDK接口，接口中提供了相机相关的属性和方法，导入方法如下。
 
-   <!-- @[import_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.h) -->
+   <!-- @[import_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.h) -->     
    
    ``` C
    #include <cstdint>
@@ -32,7 +32,6 @@
    #include <cstdio>
    #include <fcntl.h>
    #include <map>
-   #include <string>
    #include <vector>
    #include <native_buffer/native_buffer.h>
    #include "iostream"
@@ -87,12 +86,12 @@
 
    通过[OH_CameraManager_CreatePhotoOutputWithoutSurface()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_createphotooutputwithoutsurface)方法创建拍照输出流。
 
-   <!-- @[create_photo_output](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+   <!-- @[create_photo_output](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->     
    
    ``` C++
    Camera_ErrorCode NDKCamera::CreatePhotoOutputWithoutSurfaceId()
    {
-       OH_LOG_ERROR(LOG_APP, "CreatePhotoOutputWithoutSurfaceId enter.");
+       OH_LOG_INFO(LOG_APP, "CreatePhotoOutputWithoutSurfaceId enter.");
        profile_ = cameraOutputCapability_->photoProfiles[0];
        Camera_Profile* profile = cameraOutputCapability_->photoProfiles[0];
        profile->size.width = NUM_1920;
@@ -292,7 +291,7 @@
      }
      ```
 
-     NAPI层buffer回处理参考示例代码：
+     NAPI层buffer回调处理参考示例代码：
 
      <!-- @[napi_buffer_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/main.cpp) -->
      
@@ -519,15 +518,15 @@
 
 ### 如何正确设置画质优先策略
 
-为了正确的在单段式拍照中设置画质优先策略，高性能拍照功能提供了如下两个接口： 
+为了正确地在单段式拍照中设置画质优先策略，高性能拍照功能提供了如下两个接口：
 
 - [OH_PhotoOutput_IsPhotoQualityPrioritizationSupported](../../reference/apis-camera-kit/capi-photo-output-h.md#oh_photooutput_isphotoqualityprioritizationsupported)：查询当前设备是否支持指定的画质优先策略。返回true表示支持，返回false表示不支持。在进行设置画质优先策略之前，必须先查询将要设置的画质优先策略在当前设备上是否可用。 
 - [OH_PhotoOutput_SetPhotoQualityPrioritization](../../reference/apis-camera-kit/capi-photo-output-h.md#oh_photooutput_setphotoqualityprioritization)：画质优先策略设置接口，通过该接口设置对应的画质优先策略，实现高性能拍照。 
 
 ### 开发步骤
- 	 
+
 高性能拍照相关接口需要在[会话管理(C/C++)](native-camera-session-management.md)流程的使能步骤中进行调用。  
- 	 
+
 具体调用时机如下： 
 
 - 在[会话管理(C/C++)](native-camera-session-management.md)流程中的使能步骤中的[OH_CaptureSession_CommitConfig()](../../reference/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_commitconfig)结束之后进行调用。 
@@ -578,7 +577,7 @@
   {
     Camera_PhotoQualityPrioritization quality = Camera_PhotoQualityPrioritization::CAMERA_PHOTO_QUALITY_PRIORITIZATION_HIGH_QUALITY;
     bool isSupported = false;
-    Camera_ErrorCode ret = OH_PhotoOutput_IsPhotoQualityPrioritizationSupported(photoOutput, quality, isSupported);
+    Camera_ErrorCode ret = OH_PhotoOutput_IsPhotoQualityPrioritizationSupported(photoOutput, quality, &isSupported);
     if (isSupported) {
       ret = OH_PhotoOutput_SetPhotoQualityPrioritization(photoOutput, quality);
       if (ret != 0) {
@@ -639,7 +638,7 @@
   {
     Camera_PhotoQualityPrioritization quality = Camera_PhotoQualityPrioritization::CAMERA_PHOTO_QUALITY_PRIORITIZATION_HIGH_QUALITY;
     bool isSupported = false;
-    Camera_ErrorCode ret = OH_PhotoOutput_IsPhotoQualityPrioritizationSupported(photoOutput, quality, isSupported);
+    Camera_ErrorCode ret = OH_PhotoOutput_IsPhotoQualityPrioritizationSupported(photoOutput, quality, &isSupported);
     if (isSupported) {
       ret = OH_PhotoOutput_SetPhotoQualityPrioritization(photoOutput, quality);
       if (ret != 0) {

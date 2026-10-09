@@ -1,12 +1,13 @@
 # Implicit Shared Element Transition (geometryTransition) (System API)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=d09068c013deef462b1019892f5d3232cec8f4e1 translatedAt=2026-09-01T11:54:27.319Z -->
 
-**geometryTransition** is used to create a smooth, seamless transition between views. By specifying the frame and position of the in and out components through **geometryTransition**, you can create a spatial linkage between the transition effects (such as opacity and scale) defined through the **transition** mechanism. In this way, you can guide the visual focus from the previous view (out component) to the new view (in component).
+**geometryTransition** is used to create a smooth, seamless transition between views. By specifying the frame and position of the **in** and **out** components through **geometryTransition**, you can create a spatial linkage between the transition effects (such as opacity and scale) defined through the **transition** mechanism. In this way, you can guide the visual focus from the previous view (**out** component) to the new view (**in** component).
 
 > **NOTE**
 >
@@ -16,31 +17,30 @@
 >
 > This topic describes only the system APIs provided by the module. For details about its public APIs, see [Implicit Shared Element Transition (geometryTransition)](ts-transition-animation-geometrytransition.md).
 
-## GeometryTransitionOptions<sup>11+<sup>
+## GeometryTransitionOptions<sup>11+</sup>
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
 
 **Parameters**
 
 | Name| Type| Read-Only| Optional| Description|
 | ------ | -------- | ---- | ---- | --------------------------------------------------------------------- |
-| hierarchyStrategy<sup>12+<sup> | [TransitionHierarchyStrategy](#transitionhierarchystrategy12)  | No  | Yes| <br>Strategy for the hierarchical position movement of in/out components in the component tree during the shared element transition process. Default value: **TransitionHierarchyStrategy.ADAPTIVE**.<br>The setting significantly affects the front-to-back overlap relationship of the in/out components in comparison to other components. Exercise caution with it under normal conditions.<br>You are advised to adjust this setting only when there is an error in the component overlap relationship observed during the shared element transition process.<br>**System API**: This is a system API.|
+| hierarchyStrategy<sup>12+</sup> | [TransitionHierarchyStrategy](#transitionhierarchystrategy12)  | No   | Yes | <br>Determines the strategy for moving the in/out components in the component hierarchy during the shared element transition. Default value: TransitionHierarchyStrategy.ADAPTIVE.<br>This parameter actually affects the front-to-back overlapping relationship between the bound in/out components and other components. Modify it with caution in normal cases.<br>It is recommended to set this parameter only when the front-to-back overlapping relationship between components is incorrect during the shared element transition and needs to be adjusted.<br>**System interface:** This is a system interface.<br/>**Model constraint:** This API can be used only in the Stage model.|
 
-## TransitionHierarchyStrategy<sup>12+<sup>
-Enumerates the strategies for the hierarchical position movement of in/out components in the component tree during the shared element transition process.
+## TransitionHierarchyStrategy<sup>12+</sup>
+
+Enumerates the strategies for the hierarchical position movement of **in**/**out** components in the component tree during the shared element transition process.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System API**: This is a system API.
 
 | Name  | Value| Description|
 | ------ | - | ---- |
-| NONE  | 0 | The in/out components maintain their original hierarchical positions and are affected by the scale and position of their parent components.|
-| ADAPTIVE | 1 | Relatively lower-level in/out components are promoted to a higher position in the component tree relative to the higher-level in/out components.<br>This mode also causes the promoted components to be decoupled from their parent components, not affected by the scale and position of their parent components.<br>For example, if the in component is at a higher hierarchy level than the out component, in this mode the out component will be decoupled from its own parent component during the animation process and promoted to the hierarchical position of the in component, while the in component's hierarchical position remains unchanged.|
+| NONE  | 0 | The **in**/**out** components maintain their original hierarchy levels and are affected by the scale and position of their parent components.|
+| ADAPTIVE | 1 | The component with the lower hierarchy level between the **in** and **out** components is promoted to the hierarchy level of the higher one in the component tree.<br>This mode also causes the promoted components to be decoupled from their parent components, not affected by the scale and position of their parent components.<br>For example, if the **in** component is at a higher hierarchy level than the **out** component, in this mode the **out** component will be decoupled from its own parent component during the animation process and promoted to the hierarchical position of the **in** component, while the **in** component's hierarchical position remains unchanged.|
 
 ## Example
 
@@ -84,7 +84,7 @@ struct Index {
     }
     .onClick(() => {
       this.getUIContext()?.animateTo({ duration: 1000 }, () => {
-        this.isShow = !this.isShow
+        this.isShow = !this.isShow;
       })
     })
   }

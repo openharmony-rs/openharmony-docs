@@ -1,9 +1,9 @@
 # ArkTS卡片使用自定义字体
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 API version 22开始新增了[ohos.graphics.text.FontCollection.getLocalInstance](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#getlocalinstance22)接口获取本地字体集实例，应用可以通过这个本地实例为卡片加载自定义字体。
@@ -17,7 +17,7 @@ API version 22开始新增了[ohos.graphics.text.FontCollection.getLocalInstance
 
     在卡片页面中布局两个按钮，点击按钮`load font`或按钮`unload font`，调用本地字体集实例的loadFontSync、unloadFontSync进行字体的加载、卸载。
 
-<!-- @[loadFontSyncCard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/CustomFontWidgetCards/entry/src/main/ets/widget/pages/WidgetCard.ets) -->  
+<!-- @[loadFontSyncCard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/CustomFontWidgetCards/entry/src/main/ets/widget/pages/WidgetCard.ets) --> 
 
 ``` TypeScript
 // entry/src/main/ets/widget/pages/WidgetCard.ets
@@ -25,7 +25,7 @@ import { text } from '@kit.ArkGraphics2D';
 
 @Entry
 @Component
-struct loadFontSyncCard {
+struct LoadFontSyncCard {
   // 在这里使用getLocalInstance访问本地字体集实例
   private fc: text.FontCollection = text.FontCollection.getLocalInstance();
   @State content: string = '默认字体';
@@ -54,7 +54,7 @@ struct loadFontSyncCard {
 
 > **说明：**
 >
-> - 本地字体集可加载多个自定义字体，内存限制最多可加载20MB的字体。
+> - 本地字体集可加载多个自定义字体，所有字体合计最大内存限制加载20MB。
 >
 > - 同一应用的所有卡片共用一个本地字体集实例。加载或卸载自定义字体后，所有卡片的字体显示会同步更新。
 

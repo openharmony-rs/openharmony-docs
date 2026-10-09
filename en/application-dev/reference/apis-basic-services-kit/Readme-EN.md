@@ -11,15 +11,19 @@
     - [@ohos.account.appAccount (Application Account Management)](js-apis-appAccount.md)
     - [@ohos.account.distributedAccount (Distributed Account Management)](js-apis-distributed-account.md)
     - [@ohos.account.osAccount (System Account Management)](js-apis-osAccount.md)
+    - [@ohos.account.osAccount.authorization (OS Account Authorization Manager)](js-apis-osAccount-authorization.md)
     <!--Del-->
     - [@ohos.account.distributedAccount (Distributed Account Management) (System API)](js-apis-distributed-account-sys.md)
     - [@ohos.account.osAccount (System Account Management) (System API)](js-apis-osAccount-sys.md)
     <!--DelEnd-->
+    - [OS Account Constraints](appendix-osAccount-constraints.md)
+    - [OS Account Privilege List](appendix-osAccount-authorization-privileges.md)
   - Device Management<!--device-management-arkts-->
     - [@ohos.batteryInfo (Battery Information)](js-apis-battery-info.md)
+    - [@ohos.busManager.serial (Serial Port Management)](js-apis-busmanager-serial.md)
     - [@ohos.deviceInfo (Device Information)](js-apis-device-info.md)
     - [@ohos.power (System Power Management)](js-apis-power.md)
-    - [@ohos.runningLock (Running Lock)](js-apis-runninglock.md)
+    - [@ohos.runningLock (RunningLock)](js-apis-runninglock.md)
     - [@ohos.thermal (Thermal Management)](js-apis-thermal.md)
     - [@ohos.usbManager (USB Manager)](js-apis-usbManager.md)
     - [@ohos.usbManager.serial (Serial Port Management)](js-apis-serialManager.md)
@@ -27,6 +31,7 @@
     - [@ohos.batteryInfo (Battery Information) (System API)](js-apis-battery-info-sys.md)
     - [@ohos.batteryStatistics (Battery Statistics) (System API)](js-apis-batteryStatistics-sys.md)
     - [@ohos.brightness (Screen Brightness) (System API)](js-apis-brightness-sys.md)
+    - [@ohos.busManager.serial (Serial Port Management) (System API)](js-apis-busmanager-serial-sys.md)
     - [@ohos.charger (Charging Type) (System API)](js-apis-charger-sys.md)
     - [@ohos.deviceAttest (Device Attestation) (System API)](js-apis-deviceAttest-sys.md)
     - [@ohos.power (Power Management) (System API)](js-apis-power-sys.md)
@@ -39,6 +44,7 @@
     <!--DelEnd-->
   - Data File Processing<!--data-file-processing-arkts-->
     - [@ohos.app.ability.PrintExtensionAbility (Print Extension Ability)](js-apis-app-ability-PrintExtensionAbility.md)
+    - [PrintExtensionContext](js-apis-PrintExtensionContext.md)
     - [@ohos.pasteboard (Pasteboard)](js-apis-pasteboard.md)
     - [@ohos.print (Print)](js-apis-print.md)
     - [@ohos.scan (Scan)](js-apis-scan.md)
@@ -58,7 +64,7 @@
   - Process and Thread Communication<!--process-thread-communi-arkts-->
     - [System Common Events](common_event/commonEventManager-definitions.md)
     <!--Del-->
-    - [System Common Events (System API)](common_event/commonEventManager-definitions-sys.md)
+    - [System Common Events (System API)] (common_event/commonEventManager-definitions-sys.md)
     <!--DelEnd-->
     - [@ohos.commonEventManager (Common Event)](js-apis-commonEventManager.md)
     - [@ohos.events.emitter (Emitter)](js-apis-emitter.md)
@@ -80,9 +86,11 @@
     - [@ohos.annotation (Annotation)](js-apis-annotation.md)
     - [@ohos.customization.customConfig (Custom Configurations)](js-apis-customization-customConfig.md)
     - [@ohos.settings (Data Item Settings)](js-apis-settings.md)
+    - [@ohos.settingsLite (Setting Information)](js-apis-settings-lite.md)
     - [@ohos.wallpaper (Wallpaper)](js-apis-wallpaper.md)
     - [@ohos.resourceschedule.systemload (System Load Level Management)](js-apis-resourceschedule-systemload.md)
     - [@ohos.systemDateTime (System Time and Time Zone)](js-apis-date-time.md)
+    - [@ohos.intelligentScene (Intelligent Scene)](js-apis-intelligentScene.md)
     <!--Del-->
     - [@ohos.configPolicy (Configuration Policy) (System API)](js-apis-configPolicy-sys.md)
     - [@ohos.settings (Data Item Settings) (System API)](js-apis-settings-sys.md)
@@ -91,7 +99,6 @@
     - [@ohos.wallpaper (Wallpaper) (System API)](js-apis-wallpaper-sys.md)
     - [@ohos.WallpaperExtensionAbility (WallpaperExtensionAbility) (System API)](js-apis-WallpaperExtensionAbility-sys.md)
     - [@ohos.systemTimer (System Timer) (System API)](js-apis-system-timer-sys.md)
-    - [@ohos.intelligentScene (Intelligent Scene)](js-apis-intelligentScene.md)
     <!--DelEnd-->
   - APIs No Longer Maintained<!--basic-services-arkts-dep-->
     - [System Common Events](common_event/commonEvent-definitions.md)
@@ -118,6 +125,7 @@
     - [OH_Print](capi-oh-print.md)
     - [Pasteboard](capi-pasteboard.md)
     - [TimeService](capi-timeservice.md)
+    - [UsbManager](capi-usbmanager.md)
   - Header Files<!--basic-services-headerfile-->
     - [deviceinfo.h](capi-deviceinfo-h.md)
     - [ohbattery_info.h](capi-ohbattery-info-h.md)
@@ -130,6 +138,7 @@
     - [ohprint.h](capi-ohprint-h.md)
     - [ohscan.h](capi-ohscan-h.md)
     - [time_service.h](capi-time-service-h.md)
+    - [ohusb_manager.h](capi-ohusb-manager-h.md)
   - Structs<!--basic-services-struct-->
     - [CommonEvent_SubscribeInfo](capi-oh-commonevent-commonevent-subscribeinfo.md)
     - [CommonEvent_PublishInfo](capi-oh-commonevent-commonevent-publishinfo.md)
@@ -154,8 +163,14 @@
     - [Scan_ScannerDevice](capi-oh-scan-scan-scannerdevice.md)
     - [Scan_PictureScanProgress](capi-oh-scan-scan-picturescanprogress.md)
     - [Scan_ScannerOptions](capi-oh-scan-scan-scanneroptions.md)
+    - [OH_UsbManager_UsbConfig](capi-usbmanager-oh-usbmanager-usbconfig.md)
+    - [OH_UsbManager_UsbDevice](capi-usbmanager-oh-usbmanager-usbdevice.md)
+    - [OH_UsbManager_UsbEndpoint](capi-usbmanager-oh-usbmanager-usbendpoint.md)
+    - [OH_UsbManager_UsbInterface](capi-usbmanager-oh-usbmanager-usbinterface.md)
+    - [OH_UsbManager_UsbPipe](capi-usbmanager-oh-usbmanager-usbpipe.md)
 - Error Codes<!--basic-services-arkts-errcode-->
   - [USB Error Codes](errorcode-usb.md)
+  - [Serial Port Management Error Codes](errorcode-busmanager-serial.md)
   - [Running Lock Error Codes](errorcode-runninglock.md)
   - [zlib Error Codes](errorcode-zlib.md)
   <!--Del-->
@@ -169,7 +184,7 @@
   - [Thermal Manager Error Codes](errorcode-thermal.md)
   - [Upload and Download Error Codes](errorcode-request.md)
   - [Time and Time Zone Service Error Codes](errorcode-time.md)
-  - [Event Error Codes](errorcode-CommonEventService.md)
+  - [Common Event Error Codes](errorcode-CommonEventService.md)
   <!--Del-->
   - [System Parameter Error Codes](errorcode-system-parameterV9.md)
   <!--DelEnd-->
@@ -181,9 +196,11 @@
   - [Print Service Error Codes](errorcode-print.md)
   - [Settings Error Codes](errorcode-settings.md)
   - [Word Selection Service Error Codes](errorcode-selection.md)
+  - [Intelligent Scene Error Codes](errorcode-intelligentScene.md)
   <!--Del-->
   - [Screen Lock Management Error Codes](errorcode-screenlock.md)
   - [Device Attestation Error Codes](errorcode-deviceAttest.md)
   - [Intelligent Voice Error Codes](errorcode-intelligentVoice.md)
-  - [Intelligent Scene Error Codes](errorcode-intelligentScene.md)
   <!--DelEnd-->
+  - [deviceInfo Error Codes](errorcode-device-info.md)
+<!--no_check-->

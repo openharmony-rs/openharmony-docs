@@ -1,7 +1,7 @@
 # 使用AVPlayer播放音频(ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @xushubo; @chennotfound-->
+<!--Owner: @chennotfound-->
 <!--Designer: @dongyu_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
@@ -31,7 +31,7 @@
 
 ## 开发步骤及注意事项
 
-详细的API说明请参考[AVPlayer API参考](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md)。
+详细的API说明请参考[AVPlayer](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md)。
 
 1. 创建实例createAVPlayer()，AVPlayer初始化idle状态。
 
@@ -70,13 +70,13 @@
     avPlayer.on('durationUpdate', (duration: number) => {
         // 开发者根据需要写入业务逻辑。
     });
-    avPlayer.on('timeUpdate', (time:number) => {
+    avPlayer.on('timeUpdate', (time: number) => {
         // 开发者根据需要写入业务逻辑。
     });
-    avPlayer.on('seekDone', (seekDoneTime:number) => {
+    avPlayer.on('seekDone', (seekDoneTime: number) => {
         // 开发者根据需要写入业务逻辑。
     });
-    avPlayer.on('speedDone', (speed:number) => {
+    avPlayer.on('speedDone', (speed: number) => {
         // 开发者根据需要写入业务逻辑。
     });
     avPlayer.on('volumeChange', (vol: number) => {
@@ -99,20 +99,34 @@
    > 
    > - 如果使用网络播放路径，需[声明权限](../../security/AccessToken/declare-permissions.md)：ohos.permission.INTERNET。
    > 
-   > - 如果使用ResourceManager.getRawFd打开HAP资源文件描述符，使用方法可参考[ResourceManager API参考](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfd9)。
+   > - 可以使用ResourceManager.[getRawFd](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfd9)打开HAP资源文件描述符。
    > 
    > - 需要使用[支持的播放格式与协议](media-kit-intro.md#支持的格式与协议)。
 
-    ```ts
-    let url = 'https://xxx.xxx.xxx.mp3';
-    if (avPlayer == null) {
-        return;
-    }
-    avPlayer.url = url;
-    ```
+   **示例一：播放网络媒体资源**
+
+   ```ts
+   let url = 'https://abc.bcd.example.mp3'; // 此处仅为示意，请替换为真实资源文件URL。
+   if (avPlayer == null) {
+       return;
+   }
+   avPlayer.url = url;
+   ```
+
+   **示例二：应用沙箱文件播放**
+
+   ```ts
+   let fdPath = 'fd://'; // 此处仅为示意，请替换为真实资源文件URL。
+   let path : string = `${this.context.filesDir}/${this.fileName}`; // 此处仅为示意，请替换为真实的应用沙箱文件路径。
+   let file = await fs.open(path);
+   fdPath = fdPath + file.fd;
+   this.avPlayer = await media.createAVPlayer();
+   this.avPlayer.url = fdPath;
+   ```
+
 4. （可选）设置音频渲染：只允许在initialized状态下，第一次调用prepare()之前设置，以便音频渲染器信息在之后生效。若媒体源包含视频，则usage默认值为STREAM_USAGE_MOVIE，否则usage默认值为STREAM_USAGE_MUSIC。rendererFlags默认值为0。
 
-    为了确保音频行为符合使用预期，建议根据具体业务场景和实际需求，主动配置[audio.AudioRendererInfo](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiorendererinfo8)，为音频选择恰当的流类型[usage](../../media/audio/using-right-streamusage-and-sourcetype.md)。
+    为了确保音频行为符合使用预期，建议根据具体业务场景和实际需求，主动配置[audio.AudioRendererInfo](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiorendererinfo8)，为音频[选择合适的播放流类型](../../media/audio/using-right-streamusage-for-playback.md)。
     
     ```ts
     import { audio } from '@kit.AudioKit';
@@ -138,6 +152,9 @@
     ```
 
 6. 音频播控：播放play()、暂停pause()、跳转seek()、停止stop() 等操作。
+   > **说明：**
+   >
+   > 在API version 23及之后版本中，播放音频时会跳过静音帧。
 
     ```ts
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -177,13 +194,13 @@
     avPlayer.reset((err: BusinessError) => {
         avPlayer.url = url;
         if (err) {
-            console.error('Failed to reset,error message is :' + err.message);
+            console.error('Failed to reset, error message is :' + err.message);
         } else {
             console.info('Succeeded in resetting');
         }
     });
-    // 更换url。
-    let url = 'https://xxx.xxx.xxx.mp3';
+    // 更换URL。
+    let url = 'https://example.com/audio.mp3'; // 此处仅为示意，请替换为真实资源文件URL。
     if (avPlayer == null) {
         return;
     }

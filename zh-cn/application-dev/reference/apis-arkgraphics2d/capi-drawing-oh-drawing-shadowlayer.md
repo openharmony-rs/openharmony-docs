@@ -1,8 +1,8 @@
 # OH_Drawing_ShadowLayer
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
@@ -12,7 +12,7 @@ typedef struct OH_Drawing_ShadowLayer OH_Drawing_ShadowLayer
 
 ## 概述
 
-定义一个阴影层，用于描述绘制内容的阴影层。
+定义一个阴影层，用于描述绘制内容的阴影效果。
 
 **起始版本：** 12
 

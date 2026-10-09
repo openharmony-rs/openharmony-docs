@@ -38,6 +38,7 @@ hdc shell "aa process -b com.example.myapplication -a EntryAbility -p perf-cmd"
 | appdebug | 等待调试命令。用于设置、取消设置应用等待调试状态，以及获取处于等待调试状态的应用包名和持久化信息。等待调试状态只对debug类型应用生效。appdebug的设置命令只对单个应用生效，当重复设置时，应用包名与持久化状态会替换成最新设置内容。|
 | process | 应用调试/调优命令。对应用进行调试或调优，IDE用该命令集成调试和调优工具。|
 | send-memory-level | onMemoryLevel回调命令。指定进程的pid和内存使用级别来触发该进程的onMemoryLevel生命周期回调。|
+| pre-start | 应用预启动命令。用于在后台预先启动应用到生命周期特定阶段，以提升用户点击应用的启动速度。|
 
 ## 帮助命令（help）
 
@@ -53,10 +54,10 @@ aa help
 ```bash
 # 显示启动Ability。
 # 如果需要启动分身应用，可以使用[--pi ohos.extra.param.key.appCloneIndex <unsigned integer-value>]来指定分身应用的索引。
-aa start [-d <deviceId>] [-a <abilityName> -b <bundleName>] [-m <moduleName>] [-c] [-E] [-D] [-R] [-S] [-W] [--pi <key> <unsigned integer-value>] [--pb <key> <bool-value: true/false/t/f大小写不敏感] [--ps <key> <value>] [--psn <key>] [--wl <windowLeft>] [--wt <windowTop>] [--wh <windowHeight>] [--ww <windowWidth>] [-p <perf-cmd>]
+aa start [-d <deviceId>] [-a <abilityName> -b <bundleName>] [-m <moduleName>] [-u <userId>] [-c] [-E] [-D] [-R] [-S] [-W] [--pi <key> <unsigned integer-value>] [--pb <key> <bool-value: true/false/t/f大小写不敏感] [--ps <key> <value>] [--psn <key>] [--wl <windowLeft>] [--wt <windowTop>] [--wh <windowHeight>] [--ww <windowWidth>] [-p <perf-cmd>]
 
 # 隐式启动Ability。如果命令中的参数都不填，会导致启动失败。
-aa start [-d <deviceId>] [-U <URI>] [-t <type>] [-A <action>] [-e <entity>] [-c] [-D] [-E] [-R] [--pi <key> <unsigned integer-value>] [--pb <key> <bool-value: true/false/t/f大小写不敏感] [--ps <key> <value>] [--psn <key>] [--wl <windowLeft>] [--wt <windowTop>] [--wh <windowHeight>] [--ww <windowWidth>] [-p <perf-cmd>]
+aa start [-d <deviceId>] [-U <URI>] [-t <type>] [-A <action>] [-e <entity>] [-u <userId>] [-c] [-D] [-E] [-R] [--pi <key> <unsigned integer-value>] [--pb <key> <bool-value: true/false/t/f大小写不敏感] [--ps <key> <value>] [--psn <key>] [--wl <windowLeft>] [--wt <windowTop>] [--wh <windowHeight>] [--ww <windowWidth>] [-p <perf-cmd>] 
 ```
 
   **启动命令参数列表**
@@ -71,6 +72,7 @@ aa start [-d <deviceId>] [-U <URI>] [-t <type>] [-A <action>] [-e <entity>] [-c]
   | -U | 可选参数，URI。<br>**说明：** 仅支持传递字符串。 |
   | -A | 可选参数，action。      |
   | -e | 可选参数，entity。      |
+  | -u | 可选参数，userId，表示用户ID。在多用户场景下，用于区分同一设备上不同用户账号下的应用。<br>**说明：** 从API版本26.0.0开始，支持该参数。|
   | -t | 可选参数，type。        |
   | --pi  | 可选参数，整型类型键值对。<br>**说明：** 仅支持无符号整型值。     |
   | --pb  | 可选参数，布尔类型键值对。     |
@@ -246,7 +248,7 @@ aa dump -a
   | -------- | -------- | -------- |
   | -h/--help | - | 帮助信息。 |
   | -a/--all | - | 打印所有mission内的应用组件信息。 |
-  | -l/--mission-list | type（缺省打印全部） | 服务侧为了方便管理任务链，内部维护了4种类型的任务链。<br/>可取值：<br/>-&nbsp;NORMAL：正常启动的任务链(比如A拉起B拉起C, 则对应的任务链是A->B->C)<br/>-&nbsp;DEFAULT_STANDARD：已经被破坏的任务链中的任务, 启动模式为`multiton`的任务被放到该任务链中, 这里面的任务之间没有关联关系<br/>-&nbsp;DEFAULT_SINGLE：已经被破坏的任务链中的任务, 启动模式为`singleton`的任务被放到该任务链中, 这里面的任务之间没有关联关系<br/>-&nbsp;LAUNCHER：launcher的任务链 |
+  | -l/--mission-list | type（缺省打印全部） | 服务侧为了方便管理任务链，内部维护了4种类型的任务链。<br/>可取值：<br/>-&nbsp;NORMAL：正常启动的任务链（比如A拉起B拉起C, 则对应的任务链是A->B->C）<br/>-&nbsp;DEFAULT_STANDARD：已经被破坏的任务链中的任务，启动模式为`multiton`的任务被放到该任务链中，这里面的任务之间没有关联关系<br/>-&nbsp;DEFAULT_SINGLE：已经被破坏的任务链中的任务，启动模式为`singleton`的任务被放到该任务链中，这里面的任务之间没有关联关系<br/>-&nbsp;LAUNCHER：launcher的任务链 |
   | -e/--extension | elementName | 打印扩展组件信息。 |
   | -u/--userId | UserId | 打印指定UserId的栈信息，需要和其他参数组合使用，例如aa&nbsp;dump&nbsp;-a&nbsp;-u&nbsp;100、aa&nbsp;dump&nbsp;-d&nbsp;-u&nbsp;100。 |
   | -d/--data | - | 打印DataAbility相关信息。 |
@@ -492,7 +494,7 @@ aa appdebug -b <bundleName> [-p]
 
 ## 应用调试/调优命令（process）
 
-对应用进行调试或调优，IDE用该命令集成调试和调优工具。
+对应用进行调试或调优，DevEco Studio用该命令集成调试和调优工具。
 
 ```bash
 # 调试应用
@@ -564,6 +566,43 @@ aa send-memory-level -p <processId> -l <memoryLevel>
 ```bash
 # 触发进程号为6066应用的onMemoryLevel回调，此时回调的level为0
 aa send-memory-level -p 6066 -l 0
+```
+
+## 应用预启动命令（pre-start）
+
+从 API version 26.0.0 开始，开发者可以通过此命令在后台预先启动应用，以提升用户点击应用的启动速度。当前支持预启动应用到生命周期的特定阶段，即会先将应用预启动到[onDidForeground](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#ondidforeground20)阶段（前台窗口会隐藏不显示），若默认30秒内用户未手动点击应用，系统会自动将应用预启动到[onDidBackground](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#ondidbackground20)阶段。
+
+```bash
+aa pre-start -m <MODE> -b <BUNDLE-NAME> -u <USER-ID>
+```
+
+**参数列表**
+
+| 参数 | 参数说明 |
+| -------- | -------- |
+| -h/--help | 帮助信息。用于显示命令的帮助信息。 |
+| -m | 必选参数，预启动模式。当前仅支持模式 1，表示预启动应用到生命周期特定阶段，参数值需设为 1。 |
+| -b | 必选参数，bundleName。表示要预启动的应用包名。 |
+| -u | 必选参数，userId。表示用户ID，用于指定预启动应用的用户。 |
+
+**返回值**：
+
+当执行成功时，返回"prestart successfully."；当执行失败时，返回"error: failed to prestart."；当输入未知参数时返回"fail: unknown option."并打印帮助信息。
+
+**错误码**：
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 10106003 | Currently, only mode 1 (Specific stage prelaunch) is supported. |
+
+**示例**：
+
+```bash
+# 预启动指定包名的应用
+aa pre-start -m 1 -b com.example.myapplication -u 100
+
+# 查看帮助信息
+aa pre-start -h
 ```
 
 ## aa工具错误码
@@ -743,6 +782,24 @@ aa start命令的参数wl、wt、wh、ww或aa test命令不支持release签名�
 
 使用Debug签名证书重新签名，安装新签名出的HAP后，再尝试执行该命令。
 
+### 10106003 不支持的预启动模式
+
+**错误信息**
+
+Currently, only mode 1 (Specific stage prelaunch) is supported.
+
+**错误描述**
+
+使用 aa pre-start 命令时指定的预启动模式不受支持，系统将返回该错误码。
+
+**可能原因**
+
+aa pre-start 命令的 -m 参数指定的值不是 1。当前仅支持模式 1，即预启动应用到生命周期特定阶段。
+
+**处理步骤**
+
+检查-m参数的值，确保设置为1。
+
 ### 10100101 获取应用信息失败
 
 **错误信息**
@@ -893,11 +950,17 @@ The target application is under control.
 
 - 目标应用疑似存在恶意行为，受到应用市场管控不允许启动。
 - 目标应用是系统预装应用，并且使用本地编译的版本进行覆盖安装。
+- 目标应用开发证书过期，拉起时被系统管控拦截，此时会有系统弹框提示“应用已过期”。
+- 目标应用刚完成应用克隆，处于数据恢复中，此时会有系统弹框提示“数据恢复中，请稍后再试”。
+- [创建试用调试Profile](https://developer.huawei.com/consumer/cn/doc/app/agc-help-apply-acl-0000002394212138#section1443958124819)的5天有效期已过期，导致应用拉起时被系统管控拦截。
 
 **处理步骤**
 
 - 针对可能原因1，建议卸载该应用。
 - 针对可能原因2，需要先卸载该应用，再使用本地编译的版本进行安装。
+- 针对可能原因3，需要[更换证书](https://developer.huawei.com/consumer/cn/doc/app/agc-help-cert-faq-0000002329508280#section11365113515519)。
+- 针对可能原因4，需要等待数据恢复完成后再尝试启动。
+- 针对可能原因5，需要重新[创建试用调试Profile](https://developer.huawei.com/consumer/cn/doc/app/agc-help-apply-acl-0000002394212138#section1443958124819)。
 
 ### 10106106 目标应用被EDM管控
 

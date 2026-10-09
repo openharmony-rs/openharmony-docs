@@ -26,7 +26,7 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 | ------------------------- | ------------------------ | ---- | ---- | ------------------------------------------------------ |
 | uri                       | string                   | 是   | 否   | 媒体文件资源URI（如：file://media/Photo/1/IMG_datetime_0001/displayName.jpg），详情参见用户文件URI介绍中的[媒体文件URI](../../file-management/user-file-uri-intro.md#媒体文件uri)。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。         |
 | photoType   | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype) | 是   | 否   | 媒体文件类型。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。                                               |
-| displayName               | string                   | 是   | 否   | 显示文件名，包含后缀名。字符串长度为1~255。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。           |
+| displayName               | string                   | 是   | 否   | 显示文件名，包含后缀名。字符串长度的取值范围为[1, 255]字符。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。         |
 
 ## get
 
@@ -42,7 +42,7 @@ get(member: string): MemberType
 
 | 参数名      | 类型                        | 必填   | 说明    |
 | -------- | ------------------------- | ---- | ----- |
-| member | string | 是    | 成员参数名称，在get时，除了'uri'、'media_type'、'subtype'和'display_name'四个属性之外，其他的属性都需要在fetchColumns中填入需要获取的[PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys)，例如：get title属性fetchColumns: ['title']。 |
+| member | string | 是    | 成员参数名称，在get时，除了'uri'、'media_type'、'subtype'和'display_name'四个属性之外，其他的属性都需要在fetchColumns中填入需要获取的[PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys)，例如：获取title属性时，需要在fetchColumns中填入['title']。 |
 
 **返回值：**
 
@@ -52,7 +52,7 @@ get(member: string): MemberType
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -97,8 +97,8 @@ set(member: string, value: string): void
 
 | 参数名      | 类型                        | 必填   | 说明    |
 | -------- | ------------------------- | ---- | ----- |
-| member | string | 是    | 成员参数名称例如：[PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).TITLE。字符串长度为1~255。 |
-| value | string | 是    | 设置成员参数名称，只能修改[PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).TITLE的值。title的参数规格为：<br>- 不应包含扩展名。<br>- 文件名字符串长度为1~255（资产文件名为标题+扩展名）。<br>- 不允许出现的非法英文字符，包括：. \ / : * ? " ' ` < > \| { } [ ]  |
+| member | string | 是    | 成员参数名称例如：[PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).TITLE。字符串长度的取值范围为[1, 255]字符。 |
+| value | string | 是    | 设置成员参数的值，只能修改[PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).TITLE的值。title的参数规格为：<br>- 不应包含扩展名。<br>- 文件名字符串长度的取值范围为[1, 255]（资产文件名为标题+扩展名）。<br>- 不允许出现的非法英文字符，包括：. \ / : * ? " ' ` < > \| { } [ ] |
 
 **错误码：**
 
@@ -106,9 +106,9 @@ set(member: string, value: string): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 13900020     | Invalid argument.         |
-| 14000014     | The provided member must be a property name of PhotoKey.         |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 13900020 | Invalid parameter. Possible causes:<br>1. The number of parameters is invalid, expected 1 or 2 parameters.<br>2. The member parameter must be a string. |
+| 14000014 | member not exist. |
 
 **示例：**
 
@@ -157,16 +157,17 @@ commitModify(callback: AsyncCallback&lt;void&gt;): void
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](../apis-core-file-kit/errorcode-filemanagement.md)。
 
-错误码14000001，请参考 [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys)获取有关文件名的格式和长度要求。
+错误码14000001表示显示名称无效，请参考[PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys)中的DISPLAY_NAME字段获取有关文件名的格式和长度要求。
 
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 201     | Permission denied.         |
-| 13900020     | Invalid argument.         |
-| 14000001      | Invalid display name.         |
-| 14000011       | System inner fail.         |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. <br> 适用版本：11+ |
+| 13900012     | Permission denied. <br> 适用版本：10         |
+| 13900020 | Invalid parameter. Possible causes:<br>1. The number of parameters exceeds the maximum limit.<br>2. The member parameter must be a string. |
+| 14000001 | Display name invalid. Possible causes:<br>1. Title is invalid.<br>2. Cannot modify displayName for burst photos.<br>3. Invalid displayName. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. IPC call failed, possible causes: <br>(1) Server internal error; <br>(2) Database operation failed. Please retry and check logs.<br>2. Database update failed, possible causes: <br>(1) Database exception; <br>(2) IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -182,14 +183,21 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     fetchColumns: ['title'],
     predicates: predicates
   };
+  // 获取照片资源集合。
   let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+  // 获取第一个照片资源对象。
   let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+  if (photoAsset === undefined) {
+    console.error('photoAsset is undefined');
+    return;
+  }
   let title: string = photoAccessHelper.PhotoKeys.TITLE.toString();
+  // 获取当前标题值。
   let photoAssetTitle: photoAccessHelper.MemberType = photoAsset.get(title);
   console.info('photoAsset get photoAssetTitle = ', photoAssetTitle);
   photoAsset.set(title, 'newTitle2');
   photoAsset.commitModify((err) => {
-    if (err === undefined) {
+    if (!err) {
       let newPhotoAssetTitle: photoAccessHelper.MemberType = photoAsset.get(title);
       console.info('photoAsset get newPhotoAssetTitle = ', newPhotoAssetTitle);
     } else {
@@ -227,11 +235,12 @@ commitModify(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 201     | Permission denied.         |
-| 13900020     | Invalid argument.         |
-| 14000001      | Invalid display name.         |
-| 14000011       | System inner fail.         |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. <br> 适用版本：11+ |
+| 13900012     | Permission denied. <br> 适用版本：10         |
+| 13900020 | Invalid parameter. Possible causes:<br>1. The number of parameters exceeds the maximum limit.<br>2. The member parameter must be a string. |
+| 14000001 | Display name invalid. Possible causes:<br>1. Title is invalid.<br>2. Cannot modify displayName for burst photos.<br>3. Invalid displayName. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. IPC call failed, possible causes: <br>(1) Server internal error; <br>(2) Database operation failed. Please retry and check logs.<br>2. Database update failed, possible causes: <br>(1) Database exception; <br>(2) IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -275,7 +284,7 @@ close(fd: number, callback: AsyncCallback&lt;void&gt;): void
 
 > **说明：**
 >
-> 从API version 10开始支持，从API version 11开始废弃，建议使用[fs.close](../apis-core-file-kit/js-apis-file-fs.md#fsclose-1)替代。
+> 从API version 10开始支持，从API version 11开始废弃，建议使用[fileIo.close](../apis-core-file-kit/js-apis-file-fs.md#fileioclose-1)替代。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -292,9 +301,9 @@ close(fd: number, callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 13900020 | Invalid parameter. Possible causes:<br>The member parameter is invalid, must be a valid member key. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The fd parameter is not a valid number, please check if it is a valid file descriptor returned by getReadOnlyFd().<br>2. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -313,7 +322,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     };
     let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
     let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
-    let fd: number = await photoAsset.open('rw');
+    let fd: number = await photoAsset.getReadOnlyFd();
     console.info('file fd', fd);
     photoAsset.close(fd, (err) => {
       if (err === undefined) {
@@ -336,7 +345,7 @@ close(fd: number): Promise&lt;void&gt;
 
 > **说明：**
 >
-> 从API version 10开始支持，从API version 11开始废弃，建议使用[fs.close](../apis-core-file-kit/js-apis-file-fs.md#fsclose)替代。
+> 从API version 10开始支持，从API version 11开始废弃，建议使用[fileIo.close](../apis-core-file-kit/js-apis-file-fs.md#fileioclose)替代。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -358,9 +367,9 @@ close(fd: number): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 13900020 | Invalid parameter. Possible causes:<br>1. Parameter count exceeds the limit, maximum 2 parameters.<br>2. Invalid parameter type. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. The PhotoAsset object is not a valid PhotoAsset.<br>2. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs.<br>3. Failed to query the thumbnail, possible causes: <br>(1) Thumbnail does not exist; <br>(2) Database exception. Please retry and check logs. |
 
 **示例：**
 
@@ -379,7 +388,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     };
     let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
     let asset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
-    let fd = await asset.open('rw');
+    let fd: number = await asset.getReadOnlyFd();
     console.info('file fd', fd);
     await asset.close(fd);
     console.info('asset close succeed.');
@@ -397,7 +406,7 @@ getThumbnail(callback: AsyncCallback&lt;image.PixelMap&gt;): void
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
-**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -415,7 +424,7 @@ getThumbnail(callback: AsyncCallback&lt;image.PixelMap&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900012     | Permission denied.         |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
@@ -438,7 +447,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   let asset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
   console.info('asset displayName = ', asset.displayName);
   asset.getThumbnail((err, pixelMap) => {
-    if (err === undefined) {
+    if (!err) {
       console.info('getThumbnail successful ' + pixelMap);
     } else {
       console.error(`getThumbnail fail with error: ${err.code}, ${err.message}`);
@@ -463,7 +472,7 @@ getThumbnail(size: image.Size, callback: AsyncCallback&lt;image.PixelMap&gt;): v
 
 | 参数名      | 类型                                  | 必填   | 说明               |
 | -------- | ----------------------------------- | ---- | ---------------- |
-| size     | [image.Size](../apis-image-kit/arkts-apis-image-i.md#size) | 是    | 缩略图尺寸。            |
+| size     | [image.Size](../apis-image-kit/arkts-apis-image-i.md#size) | 是    | 缩略图尺寸。取值原则：width和height为正整数，单位：像素（px）。 |
 | callback | AsyncCallback&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | 是    | 回调函数。当获取文件的缩略图成功，err为undefined，data为缩略图的PixelMap；否则为错误对象。  |
 
 **错误码：**
@@ -474,10 +483,10 @@ getThumbnail(size: image.Size, callback: AsyncCallback&lt;image.PixelMap&gt;): v
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900012     | Permission denied.         |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 13900020 | Invalid parameter. Possible causes:<br>1. Parameter count exceeds the limit, maximum 2 parameters.<br>2. Invalid parameter type. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. Invalid number of parameters, expected 0 to 2 parameters.<br>2. The PhotoAsset object is not a valid PhotoAsset.<br>3. The size parameter is not a valid image.Size object, please check if width and height are valid numbers.<br>4. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs.<br>5. Failed to query the thumbnail, possible causes: <br>(1) Thumbnail does not exist; <br>(2) Database exception. Please retry and check logs. |
 
 **示例：**
 
@@ -500,7 +509,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let asset = await fetchResult.getFirstObject();
     console.info('asset displayName = ', asset.displayName);
     asset.getThumbnail(size, (err, pixelMap) => {
-      if (err === undefined) {
+      if (!err) {
         console.info('getThumbnail successful ' + pixelMap);
       } else {
         console.error(`getThumbnail fail with error: ${err.code}, ${err.message}`);
@@ -528,7 +537,7 @@ getThumbnail(size?: image.Size): Promise&lt;image.PixelMap&gt;
 
 | 参数名  | 类型             | 必填   | 说明    |
 | ---- | -------------- | ---- | ----- |
-| size | [image.Size](../apis-image-kit/arkts-apis-image-i.md#size) | 否    | 缩略图尺寸。 |
+| size | [image.Size](../apis-image-kit/arkts-apis-image-i.md#size) | 否    | 缩略图尺寸。取值原则：width和height为正整数，不传则使用默认尺寸256×256。单位：像素（px）。 |
 
 **返回值：**
 
@@ -544,10 +553,10 @@ getThumbnail(size?: image.Size): Promise&lt;image.PixelMap&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 13900012     | Permission denied.         |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 13900020 | Invalid parameter. Possible causes:<br>1. Parameter count exceeds the limit, maximum 2 parameters.<br>2. Invalid parameter type. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. Invalid number of parameters, expected 0 to 2 parameters.<br>2. The PhotoAsset object is not a valid PhotoAsset.<br>3. The size parameter is not a valid image.Size object, please check if width and height are valid numbers.<br>4. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs.<br>5. Failed to query the thumbnail, possible causes: <br>(1) Thumbnail does not exist; <br>(2) Database exception. Please retry and check logs. |
 
 **示例：**
 
@@ -581,7 +590,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 clone(title: string): Promise&lt;PhotoAsset&gt;
 
-克隆资产，可设置文件名，但不支持修改文件类型。使用promise异步回调。
+克隆资产，可设置文件名，但不支持修改文件类型。使用Promise异步回调。
 
 **需要权限**：ohos.permission.WRITE\_IMAGEVIDEO
 
@@ -591,13 +600,13 @@ clone(title: string): Promise&lt;PhotoAsset&gt;
 
 | 参数名        | 类型      | 必填   | 说明                                 |
 | ---------- | ------- | ---- | ---------------------------------- |
-| title| string | 是    | 克隆后资产的标题。参数规格为：<br>- 不应包含扩展名。<br>- 文件名字符串长度为1~255（资产文件名为标题+扩展名）。<br>- 不允许出现的非法英文字符，包括：. \ / : * ? " ' ` < > \| { } [ ] |
+| title| string | 是    | 克隆后资产的标题。参数规格为：<br>- 不应包含扩展名。<br>- 文件名字符串长度的取值范围为[1, 255]字符（资产文件名为标题+扩展名）。<br>- 不允许出现的非法英文字符，包括：. \ / : * ? " ' ` < > \| { } [ ] |
 
 **返回值：**
 
 | 类型                | 说明                    |
 | ------------------- | ----------------------- |
-| Promise&lt;[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)&gt; | Promise对象，返回[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)。 |
+| Promise&lt;[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)&gt; | Promise对象，返回克隆后生成的新[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)对象。 |
 
 **错误码：**
 
@@ -605,9 +614,9 @@ clone(title: string): Promise&lt;PhotoAsset&gt;
 
 | 错误码ID    | 错误信息                              |
 | :------- | :-------------------------------- |
-| 201 | Permission denied. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011 | Internal system error. It is recommended to retry and check the logs.Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error, possible causes: 1. Database exception; 2. File system exception; 3. IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -645,7 +654,7 @@ getReadOnlyFd(callback: AsyncCallback&lt;number&gt;): void
 
 > **说明：**
 >
-> 从API version 10开始支持，从API version 11开始废弃，建议使用[fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen-1)替代。
+> 从API version 10开始支持，从API version 11开始废弃，建议使用[fileIo.open](../apis-core-file-kit/js-apis-file-fs.md#fileioopen-1)替代。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -665,10 +674,10 @@ getReadOnlyFd(callback: AsyncCallback&lt;number&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 201     | Permission denied.         |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.        |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 13900020 | Invalid parameter. Possible causes:<br>1. Parameter count exceeds the limit or invalid PhotoAsset object.<br>2. The PhotoAsset is not a valid PhotoAsset object. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs.<br>2. Failed to open the file, please check if the file exists and the application has permission to access it. |
 
 **示例：**
 
@@ -688,7 +697,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   let assetResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
   let photoAsset: photoAccessHelper.PhotoAsset = await assetResult.getFirstObject();
   photoAsset.getReadOnlyFd((err, fd) => {
-    if (fd !== undefined) {
+    if (!err) {
       console.info('File fd' + fd);
       photoAsset.close(fd);
     } else {
@@ -702,13 +711,13 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 getReadOnlyFd(): Promise&lt;number&gt;
 
-以只读方式打开当前文件。使用promise异步回调。
+以只读方式打开当前文件。使用Promise异步回调。
 
 返回的文件描述符在使用完毕后需要调用close进行释放。
 
 > **说明：**
 >
-> 从API version 10开始支持，从API version 11开始废弃，建议使用[fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen)替代。
+> 从API version 10开始支持，从API version 11开始废弃，建议使用[fileIo.open](../apis-core-file-kit/js-apis-file-fs.md#fileioopen)替代。
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -728,10 +737,10 @@ getReadOnlyFd(): Promise&lt;number&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 201     | Permission denied.         |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.        |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 13900020 | Invalid parameter. Possible causes:<br>1. Parameter count exceeds the limit or invalid PhotoAsset object.<br>2. The PhotoAsset is not a valid PhotoAsset object. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error, possible causes: <br>(1) Database exception; <br>(2) File system exception; <br>(3) IPC timeout. Please retry and check logs.<br>2. Failed to open the file, please check if the file exists and the application has permission to access it. |
 
 **示例：**
 
@@ -756,7 +765,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
       return;
     }
     let fd: number = await photoAsset.getReadOnlyFd();
-    if (fd !== undefined) {
+    if (!err) {
       console.info('File fd' + fd);
       photoAsset.close(fd);
     } else {

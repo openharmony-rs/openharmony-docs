@@ -1,8 +1,8 @@
 # ArkUI_TransitionEffect
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -12,7 +12,7 @@ typedef struct ArkUI_TransitionEffect ArkUI_TransitionEffect
 
 ## 概述
 
-定义transition属性配置转场参数对象。
+定义transition属性的转场效果参数对象，用于配置组件出现或消失时的过渡动画效果。
 
 **起始版本：** 12
 

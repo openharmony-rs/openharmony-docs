@@ -2,8 +2,8 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @hello_harmony; @leiguangyu-->
-<!--Designer: @kutcherzhou1-->
+<!--Owner: @leiguangyu-->
+<!--Designer: @mgce1-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
@@ -11,7 +11,7 @@ HiDebug可用于获取系统或应用进程的内存、CPU和GPU等数据，以�
 
 本文介绍HiDebug模块中的ArkTS和C/C++接口，并按接口能力分类。
 
-接口详情可查看[ArkTS API参考文档](../reference/apis-performance-analysis-kit/js-apis-hidebug.md)及[C API参考文档](../reference/apis-performance-analysis-kit/capi-hidebug-h.md)。
+接口详情可查看[@ohos.hidebug](../reference/apis-performance-analysis-kit/js-apis-hidebug.md)及[hidebug.h](../reference/apis-performance-analysis-kit/capi-hidebug-h.md)。
 
 ## 约束限制
 
@@ -37,6 +37,7 @@ HiDebug可用于获取整机内存、应用进程内存占用、应用线程内�
 | hidebug.getAppNativeMemInfoWithCache | 获取应用进程内存信息（该接口存在缓存机制以提高接口性能）。<br/>**说明**：从API version 20开始，支持该接口。 |
 | hidebug.getSystemMemInfo | 获取系统内存信息。读取/proc/meminfo节点的数据。 |
 | hidebug.getAppMemoryLimit | 获取应用程序进程内存限制，其中rsslimit由getrlimit 接口获取到的RLIMIT_RSS资源值，vsslimit由getrlimit接口获取到的RLIMIT_AS资源值。 |
+| hidebug.getRssInfo | 获取应用进程使用的物理内存信息。读取/proc/{pid}/status节点的数据。<br/>与hidebug.getAppNativeMemInfo相比，该接口开销小更加轻量。<br/>**说明**：从API version 24开始，支持该接口。 |
 
 ### 接口说明（C/C++）
 
@@ -60,7 +61,7 @@ HiDebug可获取应用占用的显存资源数据。在图形密集型应用中�
 | 接口名 | 描述                                                 |
 | -------- |----------------------------------------------------|
 | hidebug.getGraphicsMemory | 使用异步方式获取应用的显存总大小（graph + gl）。                      |
-| hidebug.getGraphicsMemorySync | 使用同步方式获取应用的显存总大小（graph + gl）。 |                   
+| hidebug.getGraphicsMemorySync | 使用同步方式获取应用的显存总大小（graph + gl）。 |
 | hidebug.getGraphicsMemorySummary | 使用异步方式获取应用程序的显存数据。<br/>说明：从API version 21开始，支持该接口。 |
 
 ### 接口说明（C/C++）
@@ -78,76 +79,76 @@ HiDebug可获取应用占用的显存资源数据。在图形密集型应用中�
 
 hiview进程每10秒获取一次当前CPU的运行数据并缓存，作为CPU使用率计算的基准，主要包括以下数据：
 
-1.系统CPU使用数据：
+1. 系统CPU使用数据：
 
-/proc/stat节点包含了自系统启动以来CPU 运行数据的统计信息，可在终端中使用以下命令查看该节点信息：
+   /proc/stat节点包含了自系统启动以来CPU 运行数据的统计信息，可在终端中使用以下命令查看该节点信息：
 
-``` text
-cat  /proc/stat
-cpu  648079 547 703220 16994706 23006 101071 0 0 0 0
-...
-```
+   ``` text
+   cat  /proc/stat
+   cpu  648079 547 703220 16994706 23006 101071 0 0 0 0
+   ...
+   ```
 
-CPU 指标字段含义：
+   CPU 指标字段含义：
 
-CPU的统计信息从左到右分别代表以下含义（其中cpu为所有cpu运行数据的总和，单位：jiffies）：
+   CPU的统计信息从左到右分别代表以下含义（其中cpu为所有cpu运行数据的总和，单位：jiffies）：
 
-- user: 非低优先级进程（nice <= 0）所占用的用户态时间。
+   - user: 非低优先级进程（nice <= 0）所占用的用户态时间。
 
-- nice: 低优先级进程（nice > 0）所占用的用户态时间。
+   - nice: 低优先级进程（nice > 0）所占用的用户态时间。
 
-- system: 内核态时间。
+   - system: 内核态时间。
 
-- idle: 空闲时间（不包含 IO 等待时间）。
+   - idle: 空闲时间（不包含 IO 等待时间）。
 
-- iowait: IO 等待时间。
+   - iowait: IO 等待时间。
 
-- irq: 硬中断时间。
+   - irq: 硬中断时间。
 
-- softirq: 软中断时间。
+   - softirq: 软中断时间。
 
-- steal: 虚拟化环境中，运行在非该虚拟机内进程上的时间。
+   - steal: 虚拟化环境中，运行在非该虚拟机内进程上的时间。
 
-- guest: 操作系统运行虚拟机中非低优先进程（nice <= 0）的时间（已包含在user字段中）。
+   - guest: 操作系统运行虚拟机中非低优先级进程（nice <= 0）的时间（已包含在user字段中）。
 
-- guest_nice: 操作系统运行虚拟机中低优先级进程（nice > 0）的时间（已包含在nice字段中）。
+   - guest_nice: 操作系统运行虚拟机中低优先级进程（nice > 0）的时间（已包含在nice字段中）。
 
-2.进程CPU使用数据/线程CPU使用数据：
+2. 进程CPU使用数据/线程CPU使用数据：
 
-``` text
-// 内核统计的进程cpu运行数据
-struct ucollection_process_cpu_item {
-    int pid;
-    unsigned int thread_total;
-    unsigned long long min_flt;
-    unsigned long long maj_flt;
-    unsigned long long cpu_usage_utime; // 用户态CPU运行时长
-    unsigned long long cpu_usage_stime;// 内核态CPU运行时长
-    unsigned long long cpu_load_time;
-};
-// 内核统计的线程cpu运行数据
-struct ucollection_thread_cpu_item {
-    int tid;
-    char name[16]; // 16 ：max length of thread name
-    unsigned long long cpu_usage_utime;// 用户态CPU运行时长
-    unsigned long long cpu_usage_stime;// 内核态CPU运行时长
-    unsigned long long cpu_load_time;
-};
-```
+   ``` text
+   // 内核统计的进程cpu运行数据
+   struct ucollection_process_cpu_item {
+       int pid;
+       unsigned int thread_total;
+       unsigned long long min_flt;
+       unsigned long long maj_flt;
+       unsigned long long cpu_usage_utime; // 用户态CPU运行时长
+       unsigned long long cpu_usage_stime;// 内核态CPU运行时长
+       unsigned long long cpu_load_time;
+   };
+   // 内核统计的线程cpu运行数据
+   struct ucollection_thread_cpu_item {
+       int tid;
+       char name[16]; // 16 ：max length of thread name
+       unsigned long long cpu_usage_utime;// 用户态CPU运行时长
+       unsigned long long cpu_usage_stime;// 内核态CPU运行时长
+       unsigned long long cpu_load_time;
+   };
+   ```
 
-调用接口，获取当前数据，计算与基准数据的增量，使用以下公式获取CPU使用率：
+   调用接口，获取当前数据，计算与基准数据的增量，使用以下公式获取CPU使用率：
 
-系统CPU使用率：
+   系统CPU使用率：
 
-``` text
-(systemUsage增量 + niceUsage增量 + userUsage增量) /(userTime增量 + niceTime增量 + systemTime增量 + idleTime增量 + ioWaitTime增量 + irqTime增量 + softIrqTime增量)
-```
+   ``` text
+   (systemUsage增量 + niceUsage增量 + userUsage增量) /(userTime增量 + niceTime增量 + systemTime增量 + idleTime增量 + ioWaitTime增量 + irqTime增量 + softIrqTime增量)
+   ```
 
-进程CPU使用率/线程CPU使用率 ：
+   进程CPU使用率/线程CPU使用率：
 
-``` text
-(cpu_usage_utime增量 + cpu_usage_stime增量) /(ms级时间戳增量)
-```
+   ``` text
+   (cpu_usage_utime增量 + cpu_usage_stime增量) /(ms级时间戳增量)
+   ```
 
 ### 接口说明（ArkTS）
 
@@ -177,9 +178,9 @@ HiDebug可用于获取VM内存数据、GC统计数据及VM堆转储。
 | hidebug.getAppVMMemoryInfo | 获取VM内存相关信息。 |
 | hidebug.getVMRuntimeStats | 获取系统[GC](../arkts-utils/gc-introduction.md)统计信息。 |
 | hidebug.getVMRuntimeStat | 根据参数获取指定的系统[GC](../arkts-utils/gc-introduction.md)统计信息。 |
-| hidebug.dumpJsRawHeapData | 使用异步方式为当前线程转储虚拟机的原始堆快照，辅助[JS内存泄漏分析](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-js-memleak-detection)。<br/>**说明**：从API version 18开始，支持该接口。 |
+| hidebug.dumpJsRawHeapData | 使用异步方式为当前线程转储虚拟机的原始堆快照，辅助[JS内存泄漏分析](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-js-memleak-detection)。<br/>**说明**：<br/>从API version 18开始，支持该接口。<br/>从API version 24开始，该接口支持清除nodeId缓存。 <br/>从API版本26.0.0开始，该接口支持转储当前线程所属进程的虚拟机原始堆快照。|
 | hidebug.setJsRawHeapTrimLevel | 设置当前进程转储虚拟机原始堆快照的裁剪级别。<br/>**说明**：从API version 20开始，支持该接口。 |
-| hidebug.dumpJsHeapData | 使用同步方式导出虚拟机堆，辅助[JS内存泄漏分析](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-js-memleak-detection)。 |
+| hidebug.dumpJsHeapData | 使用同步方式导出虚拟机堆，辅助[JS内存泄漏分析](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-js-memleak-detection)。<br/>**说明**：从API version 24开始，该接口支持清除nodeId缓存。 |
 | hidebug.getAppMemoryLimit | 获取应用程序进程内存限制，其中vmHeapLimit为当前线程对应的虚拟机堆大小限制，vmTotalHeapSize为当前进程所有虚拟机堆总和大小的限制。 |
 | hidebug.getAppVMObjectUsedSize | 获取当前虚拟机中ArkTS对象所占用的内存大小。<br/>**说明**：从API version 21开始，支持该接口。 |
 
@@ -187,12 +188,15 @@ HiDebug可用于获取VM内存数据、GC统计数据及VM堆转储。
 
 HiTrace提供业务流程调用链跟踪的维测接口，帮助开发者获取指定业务流程调用链的运行日志，定位跨设备、跨进程、跨线程的故障问题。详情请参考[Trace性能跟踪](hitracemeter-intro.md)。为了便于实现HiTrace的自动化采集，HiDebug模块提供了启动和停止HiTrace采集的接口。
 
+从API version 24开始，提供包括内核信息在内的请求Trace采集接口。
+
 ### 接口说明（ArkTS）
 
 | 接口名 | 描述   |
 | -------- | -------- |
 | hidebug.startAppTraceCapture | 启动应用Trace采集。 |
 | hidebug.stopAppTraceCapture | 停止应用Trace采集。 |
+| hidebug.requestTrace | 请求Trace采集。<br/>**说明**：从API version 24开始，支持该接口。 |
 
 ### 接口说明（C/C++）
 
@@ -200,6 +204,7 @@ HiTrace提供业务流程调用链跟踪的维测接口，帮助开发者获取�
 | -------- | -------- |
 | OH_HiDebug_StartAppTraceCapture | 启动应用Trace采集。 |
 | OH_HiDebug_StopAppTraceCapture | 停止应用Trace采集。 |
+| OH_HiDebug_RequestTrace | 请求Trace采集。<br/>**说明**：从API version 24开始，支持该接口。 |
 
 ## 启动虚拟机CpuProfiler采集
 
@@ -276,9 +281,9 @@ native帧格式如下：
 
    ```text
    41 #15 pc 000000000000a228 /data/storage/el1/bundle/libs/arm64/libentry.so(TestMyFunc()+120)(94ed3a52d7ef751a94358709d11c99545960cdd4)
-   ^   ^       ^                                                      ^              ^                   ^ 
+   ^   ^       ^                                                      ^              ^                   ^
    1   2       3                                                      4              5                   6
-   
+
    1 表示采样到此帧的次数，该值小于或等于线程采样次数。
    2 表示帧的调用层级，行缩进大小与该层级对应，当前层级的采样次数为下一层级的采样次数之和。
    3 为native帧PC值。
@@ -293,7 +298,7 @@ JS帧格式如下：
    42 #10 at AddThread (entry|entry|1.0.0|src/main/ets/pages/Index.ts:13:21)
    ^   ^         ^                                             ^
    1   2         3                                             4
-   
+
    1 表示采样到此帧的次数，与native帧意义相同。
    2 表示帧的调用层级，与native帧意义相同。
    3 表示调用函数名。
@@ -302,7 +307,7 @@ JS帧格式如下：
 
 > **注意**：
 >
-> 在使用Perf进行内核栈回溯采样时，采样栈深度小于50，且需借助帧指针（frame-pointer）。若采集的调用栈在三方库中中断，请检查对应的三方库是否开启栈指针功能。
+> 在使用Perf进行内核栈回溯采样时，采样栈深度小于50，且需借助帧指针（frame-pointer）。若采集的调用栈在三方库中中断，请检查对应的三方库是否开启帧指针功能。
 
 ### 接口说明（C/C++）
 
@@ -352,6 +357,63 @@ HiDebug提供修改转储堆快照级别的接口。
 | 接口名 | 描述 |
 | -------- | -------- |
 | hidebug.setProcDumpInSharedOOM | 当发生JS OOM的内存类型为SharedHeap，如果应用已经调用过该接口，且传参为true，那么转储的堆快照将会由线程级别变成进程级别。通过[订阅资源泄漏事件（ArkTS）](hiappevent-watcher-resourceleak-events-arkts.md)获取对应日志。<br/>该接口仅影响SharedHeap发生OOM时转储的堆快照，不影响其他情况下转储的堆快照。<br/>当应用需要定位JS泄漏问题时，建议总是调用该接口并传参为true。<br/>**说明**：从API version 24开始，支持该接口。 |
+
+## 采集进程资源调用栈
+
+从API version 24开始，HiDebug新增资源采集功能，支持按需采集应用进程资源分配栈至沙箱，覆盖文件描述符、线程、Native/GPU内存及全局句柄等类别，辅助定位资源泄漏。
+
+### 接口说明（C/C++）
+
+| 接口名 | 描述 |
+|--------|------|
+| OH_HiDebug_StartProfiler | 按指定类型启动资源分配栈信息采集，须与OH_HiDebug_StopProfiler配对使用。<br/>**说明**：从API version 24开始，支持该接口。 |
+| OH_HiDebug_StopProfiler | 停止资源分配栈信息采集，须与OH_HiDebug_StartProfiler配对使用。<br/>**说明**：从API version 24开始，支持该接口。 |
+| OH_HiDebug_CreateProfilerOptions | 创建资源Profiler配置对象。须与OH_HiDebug_DestroyProfilerOptions配对使用。<br/>**说明**：从API版本26.0.1开始，支持该接口。 |
+| OH_HiDebug_DestroyProfilerOptions | 释放通过OH_HiDebug_CreateProfilerOptions创建的配置对象。<br/>**说明**：从API版本26.0.1开始，支持该接口。 |
+| OH_HiDebug_SetMaxAsyncNestingDepth | 设置异步调用最大嵌套深度（也称为最大嵌套层数）。<br/>**说明**：从API版本26.0.1开始，支持该接口。 |
+| OH_HiDebug_SetMaxAsyncTaskStackDepth | 设置异步任务函数的最大回栈深度。<br/>**说明**：从API版本26.0.1开始，支持该接口。 |
+| OH_HiDebug_SetSampleIntervalBytes | 设置采样间隔，单位字节。<br/>**说明**：从API版本26.0.1开始，支持该接口。 |
+| OH_HiDebug_SetStatisticsIntervalSec | 设置统计间隔，单位秒。<br/>**说明**：从API版本26.0.1开始，支持该接口。 |
+| OH_HiDebug_SetMaxStackDepth | 设置最大回栈深度。<br/>**说明**：从API版本26.0.1开始，支持该接口。 |
+| OH_HiDebug_SetFilterSize | 设置内存分配过滤大小。<br/>**说明**：从API版本26.0.1开始，支持该接口。 |
+| OH_HiDebug_SetMaxDurationSec | 设置最大采集时长，单位秒。<br/>**说明**：从API版本26.0.1开始，支持该接口。 |
+| OH_HiDebug_SetStackTraceMode | 设置调用栈追踪模式，用于配置资源采集时已销毁调用栈追踪的处理方式。<br/>**说明**：从API版本26.0.1开始，支持该接口。 |
+| OH_HiDebug_StartProfilerWithOptions | 按指定资源类型和配置开启资源分配栈信息采集。须与OH_HiDebug_StopProfiler配对使用。<br/>**说明**：从API版本26.0.1开始，支持该接口。 |
+
+## 导出内存快照
+
+从API版本26.0.0开始，HiDebug支持注册内存导出监听器，用于在内存占用较高或通过[hidumper命令](hidumper.md#查询虚拟机堆内存)手动触发时导出应用内存快照，便于本地导出或上报。
+
+### 接口说明（C/C++）
+
+| 接口名 | 描述 |
+| -------- | -------- |
+| OH_HiDebug_RegisterMemDumpListener | 注册内存导出监听器。<br/>**说明**：从API版本26.0.0开始，支持该接口。 |
+| OH_HiDebug_UnregisterMemDumpListener | 注销已注册的内存导出监听器。<br/>**说明**：从API版本26.0.0开始，支持该接口。 |
+
+## 管理异步上下文
+
+从API版本26.0.0开始，HiDebug提供异步上下文管理接口，用于在自定义异步任务场景中建立和解除异步调用链关系。通过这些接口，开发者可以在异步任务提交和完成时分别压入和弹出异步上下文，仅支持[hiprofiler](hiprofiler.md#async_type参数介绍)调优组件追踪完整的异步调用栈。
+
+> **注意：**
+>
+> 该功能仅支持ARM64架构，且仅可在[debug版本应用](performance-analysis-kit-terminology.md#debug版本应用)中使用。
+
+### 使用流程
+
+1. 在异步任务提交前，调用[OH_HiDebug_AcquireAsyncContext](../reference/apis-performance-analysis-kit/capi-hidebug-h.md#oh_hidebug_acquireasynccontext)获取一个异步上下文。
+2. 在异步任务提交时，调用[OH_HiDebug_PushAsyncContext](../reference/apis-performance-analysis-kit/capi-hidebug-h.md#oh_hidebug_pushasynccontext)将异步上下文压入当前线程的运行上下文，建立异步调用链。
+3. 在异步任务完成时，调用[OH_HiDebug_PopAsyncContext](../reference/apis-performance-analysis-kit/capi-hidebug-h.md#oh_hidebug_popasynccontext)将异步上下文弹出，解除异步调用链。
+4. 在异步任务结束后，调用[OH_HiDebug_ReleaseAsyncContext](../reference/apis-performance-analysis-kit/capi-hidebug-h.md#oh_hidebug_releaseasynccontext)释放异步上下文资源，防止资源泄漏。
+
+### 接口说明（C/C++）
+
+| 接口名 | 描述 |
+| -------- | -------- |
+| OH_HiDebug_AcquireAsyncContext | 获取一个异步上下文（AsyncContext），用于后续的异步栈追踪操作。对应的释放函数为[OH_HiDebug_ReleaseAsyncContext](../reference/apis-performance-analysis-kit/capi-hidebug-h.md#oh_hidebug_releaseasynccontext)。<br/>**说明**：从API版本26.0.0开始，支持该接口。 |
+| OH_HiDebug_PushAsyncContext | 将异步上下文压入当前线程的运行上下文中，用于建立异步调用链关系。<br/>**说明**：从API版本26.0.0开始，支持该接口。 |
+| OH_HiDebug_PopAsyncContext | 将异步上下文从当前线程的运行上下文中弹出，用于解除异步调用链关系。<br/>**说明**：从API版本26.0.0开始，支持该接口。 |
+| OH_HiDebug_ReleaseAsyncContext | 释放通过OH_HiDebug_AcquireAsyncContext获取的异步上下文资源。<br/>**说明**：从API版本26.0.0开始，支持该接口。 |
 
 ## 其他
 

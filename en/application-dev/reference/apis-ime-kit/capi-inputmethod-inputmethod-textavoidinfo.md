@@ -1,8 +1,8 @@
 # InputMethod_TextAvoidInfo
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
-<!--Designer: @andeszhang-->
+<!--Owner: @codexu62-->
+<!--Designer: @zhaolinglan-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 

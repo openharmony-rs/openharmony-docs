@@ -2,10 +2,10 @@
 
 <!--Kit: Drm Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @qin_wei_jie-->
+<!--Owner: @hanzhengshi-->
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @qin_wei_jie-->
 
 DRM Kit（Digital Rights Management Kit，数字版权保护服务）提供了DRM加密节目授权解密的功能，包括DRM插件管理、DRM证书管理、DRM许可证管理、DRM节目授权、DRM节目解密等功能，可实现DRM解决方案的集成、DRM解决方案的证书下载、节目的授权及解密。
 
@@ -13,7 +13,7 @@ DRM Kit（Digital Rights Management Kit，数字版权保护服务）提供了DR
 
 通过DRM Kit，DRM解决方案集成方可以完成DRM解决方案的集成，应用开发者可以通过调用对应的DRM解决方案，实现DRM加密节目授权解密的功能，实现DRM节目的播放。
 
-- DRM插件管理: 通过实现DRM Kit提供的DRM HDI接口，实现对不同的DRM解决方案的支持，一般由DRM解决方案集成方实现。
+- DRM插件管理：通过实现DRM Kit提供的DRM HDI接口，实现对不同的DRM解决方案的支持，一般由DRM解决方案集成方实现。
 
 - DRM证书管理：支持DRM解决方案的设备证书的请求、处理，实现对应DRM解决方案的证书下载（Provision）功能。
 
@@ -99,3 +99,5 @@ DRM插件管理功能一般由DRM解决方案集成方实现<!--Del-->，具体�
 4. DRM节目解密：应用将MediaKeySession设置到Media Kit或AVCodec Kit，用于支持DRM节目解密。采用AVCodec Kit时，可以设置视音频数据帧的cencinfo，并设置到AVBuffer中，在调用PushInputBuffer的时候实现视音频数据帧的解密、解码。
 
 5. 许可证更新或过期：在节目播放过程中，在许可证需要更新的情况下，MediaKeySession将抛出许可证更新事件（keyRequired），此时需要重新请求DRM许可证。MediaKeySession如抛出许可证过期事件（keyExpired），则需要停止DRM节目播放。
+
+<!--RP3--><!--RP3End-->

@@ -1,12 +1,13 @@
 # @ohos.app.form.formAgent (FormAgent) (System API)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=7b6d71e47f53b837e962f24216c2c4fe674910ce translatedAt=2026-09-15T01:33:48.862Z pushedAt=2026-09-15T06:24:45.259Z -->
 
-The **FormAgent** module provides APIs related to the widget agent. Currently, you can use the APIs to request to publish widgets only.
+The FormAgent module provides APIs for widget agent-related capabilities, currently including only requesting to publish a widget. It is applicable to scenarios where a system application needs to publish a widget to the widget host (such as the home screen), helping system applications conveniently request widget publishing and simplifying the widget publishing process.
 
 > **NOTE**
 >
@@ -19,11 +20,11 @@ The **FormAgent** module provides APIs related to the widget agent. Currently, y
 import { formAgent } from '@kit.FormKit';
 ```
 
-## requestPublishForm
+## formAgent.requestPublishForm
 
 requestPublishForm(want: Want, callback: AsyncCallback&lt;string&gt;): void
 
-Requests to publish a widget to the widget host. This API uses an asynchronous callback to return the result. The widget host is usually the home screen.
+Requests to publish a widget to the widget host. This API uses an asynchronous callback to return the result. The widget host is usually the home screen. This is applicable to scenarios where a system application needs to proactively add a widget to the home screen.
 
 **Required permission**: ohos.permission.AGENT_REQUIRE_FORM
 
@@ -35,12 +36,12 @@ Requests to publish a widget to the widget host. This API uses an asynchronous c
 
 | Name  | Type                               | Mandatory| Description                                                        |
 | -------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
-| want     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | Publish request, which must contain the following fields:<br>**bundleName**: bundle name of the target widget.<br>**abilityName**: ability of the target widget.<br>parameters:<br>- **ohos.extra.param.key.form_dimension**: dimension of the target widget.<br>- **ohos.extra.param.key.form_name**: name of the target widget.<br>- **ohos.extra.param.key.module_name**: module name of the target widget.|
-| callback | AsyncCallback&lt;string&gt;         | Yes  |  Callback used to return the widget ID.|
+| want     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | Publish request, which must contain the following fields.<br>**bundleName**: **bundleName** of the target widget's owner app.<br>**abilityName**: ability of the target widget's owner app.<br>**parameters**:<br>- **ohos.extra.param.key.form_dimension**: target widget dimension. Values: **1** for 2x2, **2** for 2x4, **3** for 4x4, and so on. For details, see the widget configuration.<br>- **ohos.extra.param.key.form_name**: target widget name.<br>- **ohos.extra.param.key.module_name**: **moduleName** of the target widget.|
+| callback | AsyncCallback&lt;string&gt; | Yes | Callback used to return the widget ID asynchronously. The callback parameters are as follows: **error** indicates the error object, which is null if the operation is successful; **data** indicates the widget ID, which is a string. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -49,7 +50,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16500050 | IPC connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
-| 16501008 | Waiting for the form addition to the desktop timed out. |
+| 16501002 | The number of forms exceeds the maximum allowed. <br/>**Since:** 26.0.1 |
+| 16501008 | Waiting for the form addition to the desktop timed out. <br/>Applicable version: 12+|
+| 16501017 | There is no space to publish form. <br/>**Since:** 26.0.1 |
+| 16501018 | This form does not support publishing. <br/>**Since:** 26.0.1 |
 
 **Example**
 
@@ -80,11 +84,11 @@ try {
 }
 ```
 
-## requestPublishForm
+## formAgent.requestPublishForm
 
 requestPublishForm(want: Want): Promise&lt;string&gt;
 
-Requests to publish a widget to the widget host. This API uses a promise to return the result. The widget host is usually the home screen.
+Requests to publish a widget to the widget host. This API uses a promise to return the result. The widget host is usually the home screen. This is applicable to scenarios where a system application  needs to proactively add a widget to the home screen.
 
 **Required permission**: ohos.permission.AGENT_REQUIRE_FORM
 
@@ -96,7 +100,7 @@ Requests to publish a widget to the widget host. This API uses a promise to retu
 
 | Name         | Type                                                        | Mandatory| Description                                                        |
 | --------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| want     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | Publish request, which must contain the following fields:<br>**bundleName**: bundle name of the target widget.<br>**abilityName**: ability of the target widget.<br>parameters:<br>- **ohos.extra.param.key.form_dimension**: dimension of the target widget.<br>- **ohos.extra.param.key.form_name**: name of the target widget.<br>- **ohos.extra.param.key.module_name**: module name of the target widget.|
+| want     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | Publish request, which must contain the following fields:<br>**bundleName**: bundle name of the target widget.<br>**abilityName**: ability of the target widget.<br>**parameters**:<br>- **ohos.extra.param.key.form_dimension**: dimension of the target widget.<br>- **ohos.extra.param.key.form_name**: name of the target widget.<br>- **ohos.extra.param.key.module_name**: module name of the target widget.|
 
 **Return value**
 
@@ -106,7 +110,7 @@ Requests to publish a widget to the widget host. This API uses a promise to retu
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | ID| Error Message|
 | -------- | -------- |
@@ -115,7 +119,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16500050 | IPC connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
-| 16501008 | Waiting for the form addition to the desktop timed out. |
+| 16501002 | The number of forms exceeds the maximum allowed. <br/>**Since:** 26.0.1 |
+| 16501008 | Waiting for the form addition to the desktop timed out.<br/>Applicable version: 12+ |
+| 16501017 | There is no space to publish form. <br/>**Since:** 26.0.1 |
+| 16501018 | This form does not support publishing. <br/>**Since:** 26.0.1 |
 
 **Example**
 
@@ -141,5 +148,209 @@ try {
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+}
+```
+
+## formAgent.updateFormCrossBundle
+
+updateFormCrossBundle(formId: string, formBindingData: formBindingData.FormBindingData): Promise&lt;void&gt;
+
+Updates a widget across apps. This API uses a promise to return the result.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Required permission:** ohos.permission.UPDATE_FORM_CROSS_BUNDLE
+
+**System capability:** SystemCapability.Ability.Form
+
+**System API**: This is a system API.
+
+**Since**: 26.0.0
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ------ | ------ | ---- | -------|
+| formId | string | Yes | ID of the widget to be updated.|
+| formBindingData | [formBindingData.FormBindingData](js-apis-app-form-formBindingData.md#formbindingdata) | Yes | Widget data used for the update.|
+
+**Return value**
+
+| Type | Description |
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the following error codes, see [Universal Error Code](../errorcode-universal.md) and [Widget Error Code](errorcode-form.md).
+
+| ID | Error Message |
+| -------- | -------- |
+| 201 | Permissions denied. |
+| 202 | The application is not a system application. |
+| 16500050 | Possible cause IPC connection error. Such as the remote object does not exist. |
+| 16500060 | Possible cause Service State error. Such as the form is recovering. |
+| 16501000 | Possible cause internal functional error. Such as virtualization failed. |
+| 16501001 | The ID of the form to be operated does not exist. |
+| 16501003 | The form to be operated has been deleted already. |
+| 16501007 | The form to be operated is not trusted. |
+
+**Example**
+
+```ts
+import { formBindingData, formAgent } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let formId: string = '123456789'; // Widget ID of the form. Replace it with the actual widget ID.
+try {
+  let param: Record<string, string> = {
+    'temperature': '22c',
+    'time': '22:00'
+  };
+  let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
+  formAgent.updateFormCrossBundle(formId, obj).then(() => {
+    console.info('formAgent updateFormCrossBundle success');
+  }).catch((error: BusinessError) => {
+    console.error(`promise error, code: ${error?.code}, message: ${error?.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${error?.code}, message: ${error?.message}`);
+}
+```
+
+## formAgent.getAvailableFormHostServices
+
+getAvailableFormHostServices(): Promise&lt;Array&lt;formInfo.PeerFormHostServiceInfo&gt;&gt;
+
+Obtains the list of available widget host service information. This API uses a promise to return the result.
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Required permission**: ohos.permission.AGENT_REQUIRE_FORM
+
+**System capability**: SystemCapability.Ability.Form
+
+**System API:** This API is a system API.
+
+**Since:** 26.0.1
+
+**Return value**
+
+| Type                                                                                                                          | Description                          |
+|----------------------------------------------------------------------------------------------------------------------------|-----------------------------|
+| Promise&lt;Array&lt;[formInfo.PeerFormHostServiceInfo](js-apis-app-form-formInfo-sys.md#peerformhostserviceinfo)&gt;&gt; | Promise used to return the list of available widget host service information. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+
+| ID | Error Message |
+| -------- | -------- |
+| 201 | Permissions denied. |
+| 202 | The application is not a system application. |
+| 16500050 | IPC connection error. |
+| 16501000 | An internal functional error occurred. |
+
+**Example**
+
+```ts
+import { formAgent, formInfo } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formAgent.getAvailableFormHostServices().then((data: formInfo.PeerFormHostServiceInfo[]) => {
+    console.info(`formAgent getAvailableFormHostServices success, service count: ${data.length}`);
+  }).catch((error: BusinessError) => {
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+## formAgent.requestPublishFormCrossDevice
+
+requestPublishFormCrossDevice(peerServiceInfo: formInfo.PeerFormHostServiceInfo, want: Want, formBindingData?: formBindingData.FormBindingData): Promise&lt;formInfo.PublishFormCrossDeviceResult&gt;
+
+Requests to publish a widget to the widget host service on a remote device. This API uses an asynchronous callback to return the result.
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Required permission**: ohos.permission.AGENT_REQUIRE_FORM
+
+**System capability**: SystemCapability.Ability.Form
+
+**System API:** This is a system API.
+
+**Since:** 26.0.1
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ------ | ------ | ---- | -------|
+| peerServiceInfo | [formInfo.PeerFormHostServiceInfo](js-apis-app-form-formInfo-sys.md#peerformhostserviceinfo) | Yes | Information about the widget host service on the remote device. |
+| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes | Publish request, which must contain the following fields.<br>bundleName: Bundle name of the application that owns the target widget.<br>abilityName: Ability of the application that owns the target widget.<br>parameters:<br>- ohos.extra.param.key.form_dimension: Specification of the target widget.<br>- ohos.extra.param.key.form_name: Name of the target widget.<br>- ohos.extra.param.key.module_name: Module name of the target widget. |
+| formBindingData | [formBindingData.FormBindingData](js-apis-app-form-formBindingData.md#formbindingdata) | No | Widget data used for the update. |
+
+**Return value**
+
+| Type                                                                                                                  | Description                          |
+|--------------------------------------------------------------------------------------------------------------------|-----------------------------|
+| Promise&lt;[formInfo.PublishFormCrossDeviceResult](js-apis-app-form-formInfo-sys.md#publishformcrossdeviceresult)&gt; | Promise object used to return the result of publishing a widget across devices. |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
+
+| ID | Error Message |
+| -------- | -------- |
+| 201 | Permissions denied. |
+| 202 | The application is not a system application. |
+| 16500050 | IPC connection error. |
+| 16501020 | Remote form service is unavailable. |
+| 16501021 | The peer form application is not installed or the version is too old. |
+| 16501002 | The number of forms exceeds the maximum allowed. |
+| 16501017 | There is no space to publish the form. |
+| 16501018 | This form does not support publishing. |
+| 16501000 | An internal functional error occurred. |
+| 16501008 | Waiting for the form addition to the desktop timed out. |
+
+**Example**
+
+```ts
+import { formBindingData, formAgent, formInfo } from '@kit.FormKit';
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let want: Want = {
+  bundleName: 'com.ohos.exampledemo',
+  abilityName: 'FormAbility',
+  parameters: {
+    'ohos.extra.param.key.form_dimension': 2,
+    'ohos.extra.param.key.form_name': 'widget',
+    'ohos.extra.param.key.module_name': 'entry'
+  }
+};
+let peerServiceInfo: formInfo.PeerFormHostServiceInfo = {
+  serviceName: 'serviceName',
+  serviceDisplayName: 'serviceDisplayName',
+  displayId: '0',
+  deviceId: 'deviceId',
+  networkId: 'networkId',
+  serviceId: 'serviceId'
+};
+let param: Record<string, string> = {
+  'temperature': '22c',
+  'time': '22:00'
+};
+let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
+try {
+  formAgent.requestPublishFormCrossDevice(peerServiceInfo, want, obj).then((data: formInfo.PublishFormCrossDeviceResult) => {
+    console.info(`formAgent requestPublishFormCrossDevice success, form ID is: ${data.formId}`);
+  }).catch((error: BusinessError) => {
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```

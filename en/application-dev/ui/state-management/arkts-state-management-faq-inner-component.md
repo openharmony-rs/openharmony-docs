@@ -2,9 +2,10 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zany_pink-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @zhangwenhan12-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=6731353e95ca92d0b8b50de9083fe2085729362a translatedAt=2026-09-21T11:40:08.426Z pushedAt=2026-09-23T09:24:55.852Z -->
 
 In ArkUI application development, proper use of state management within components directly affects the application performance and development efficiency. However, developers often have insufficient understanding of the update mechanism in practice. As a result, the component behavior is abnormal or the rendering efficiency is reduced. This section describes the common problems and solutions of component state management.
 
@@ -19,10 +20,10 @@ The rendering process is as follows:
 2. Execute the **build** method of **Index** as follows:
 
    - Create a **Column** component.
-   - Create a Text component. **This.count++** is triggered when the **Text** component is created.
+   - Create a **Text** component. **this.count++** is triggered when the **Text** component is created.
    - The value change of **count** triggers the re-render of the **Text** component.
    - During the refresh, the component does not mark itself as dirty.
-   - Return value of **Text** is 2.
+   - The **Text** component finally displays **2**.
 
 <!-- @[state_problem_not_update_in_build_error_01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemNotUpdateInBuildError01.ets) --> 
 
@@ -43,7 +44,7 @@ struct Index {
 }
 ```
 
-During the initial creation of the component, the **Text** component is rendered multiple times, with the final display showing "2".
+During the initial creation of the component, the **Text** component is rendered one extra time, and finally displays "2".
 
 When the framework detects that a state variable is modified within the **build()** method, it generates the following error log:
 
@@ -51,10 +52,10 @@ When the framework detects that a state variable is modified within the **build(
 FIX THIS APPLICATION ERROR: @Component 'Index': State variable 'count' has changed during render! It's illegal to change @Component state while build (initial render or re-render) is on-going. Application error!
 ```
 
-In the preceding example, even though the **Text** component is rendered multiple times. This error does not cause immediate serious consequences and may be overlooked.
+In the preceding example, even though the **Text** component is rendered one extra time, this error does not cause immediate serious consequences and may be overlooked.
 
 However, this behavior poses significant hidden risks that escalate as project complexity increases. Example:
-<!-- @[state_problem_not_update_in_build_error_02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemNotUpdateInBuildError02.ets) -->  
+<!-- @[state_problem_not_update_in_build_error_02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemNotUpdateInBuildError02.ets) -->   
 
 ``` TypeScript
 @Entry
@@ -64,6 +65,7 @@ struct Index {
 
   build() {
     Column() {
+      // Typical error that causes the application to freeze.
       Text(`${this.message++}`)
       Text(`${this.message++}`)
     }
@@ -75,7 +77,7 @@ struct Index {
 
 The rendering process in the preceding example is as follows:
 
-1. Create the first Text component, trigger the change of this.message, and [mark the first Text component as dirty](./arkts-state-management-introduce.md#triggering-updates).
+1. Create the first **Text** component, trigger the change of **this.message**, and [mark the first Text component as dirty](./arkts-state-management-glossary.md#mark-dirty).
 2. Create the second Text component, trigger the change of this.message, and mark the two Text components as dirty.
 3. When the next frame arrives, the dirty system components are refreshed.
 4. When the first Text component is refreshed, this.message is changed. Only the second Text component is marked dirty.
@@ -85,19 +87,17 @@ The rendering process in the preceding example is as follows:
 
 Therefore, modifying state variables within the build method constitutes a critical error. When the error "FIX THIS APPLICATION ERROR: @Component ...has changed during render! It's illegal to change @Component state while build (initial render or re-render) is on-going. Application error!" log is found, immediate correction is required even if no immediate severe consequences are observed.
 
-## The status variable is not deregistered during registration callback. As a result, memory leakage occurs.
+## Memory Leak Caused by Changing State Variables in Callbacks Without Unregistering
 
-You can register the arrow function in [aboutToAppear](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear) to change the status variables in the component.
+You can register the arrow function in [aboutToAppear](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear) to change the state variables in the component.
 
 >**NOTE**
 >
->The registered function needs to be left empty in [aboutToDisappear](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear) to prevent the arrow function from capturing the **this** instance of the custom component. As a result, the custom component cannot be released, causing memory leakage.
+>The registered function needs to be left empty in [aboutToDisappear](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear) to prevent the arrow function from capturing the **this** instance of the custom component. Otherwise, the custom component cannot be released, causing a memory leak.
 
-<!-- @[state_problem_unregister_state_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemUnregisterStateCallback.ets) --> 
+<!-- @[state_problem_unregister_state_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemUnregisterStateCallback.ets) -->     
 
 ``` TypeScript
-import { common } from '@kit.AbilityKit';
-
 class Model {
   private callback: (() => void) | undefined = () => {
   };
@@ -123,7 +123,6 @@ let model: Model = new Model();
 @Component
 struct Test {
   @State count: number = 10;
-  private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
   aboutToAppear(): void {
     model.add(() => {
@@ -133,8 +132,7 @@ struct Test {
 
   build() {
     Column() {
-      // In the resources\base\element\string.json file, set name to state_countvalue_text1 and value to a non-null string.
-      Text(this.context.resourceManager.getStringByNameSync('state_countvalue_text1') + `${this.count}`)
+      Text(`count: ${this.count}`)
       Button('change')
         .onClick(() => {
           model.call();
@@ -259,9 +257,9 @@ struct Index {
 
 ### State Management (V1)
 
-In state management V1, a layer of proxy is added to class objects decorated by \@Observed and objects of the Class, Date, Map, Set, and Array types decorated by state variables such as @State to observe the changes of layer-1 attributes or API calls. When a complex constant is repeatedly assigned to a state variable, the system may determine that the old and new values are different because a proxy is added. As a result, unnecessary update occurs.
+In state management V1, a layer of proxy is added to class objects decorated by \@Observed and objects of the Class, Date, Map, Set, and Array types decorated by state variables such as @State to observe the changes of layer-1 attributes or API calls. When a complex constant is repeatedly assigned to a state variable, the system may determine that the old and new values are different because a proxy is added. As a result, an unnecessary update occurs.
 
-<!-- @[state_problem_complex_constant_repeat_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemComplexConstantRepeatRefresh.ets) --> 
+<!-- @[state_problem_complex_constant_repeat_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemComplexConstantRepeatRefresh.ets) -->  
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -284,6 +282,7 @@ struct Index {
     Column() {
       ConsumerChild({ dataObj: this.dataObjFromList })
       Button('change to self').onClick(() => {
+        // Assign the same class instance to a state variable of the Class type triggers a refresh.
         this.dataObjFromList = this.list[0];
       })
     }
@@ -316,7 +315,7 @@ In the preceding example, each time the **change to self** button is clicked, th
 To avoid unnecessary value changes and re-renders, use \@Observed to decorate the class, or use [UIUtils.getTarget()](./arkts-new-getTarget.md) to obtain the original value and compare it with the new value. If they are the same, skip the assignment.
 
 Method 1: Apply the \@Observed decorator.
-<!-- @[state_problem_complex_solution_01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemComplexSolution01.ets) --> 
+<!-- @[state_problem_complex_solution_01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemComplexSolution01.ets) -->  
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -340,6 +339,8 @@ struct Index {
     Column() {
       ConsumerChild({ dataObj: this.dataObjFromList })
       Button('change to self').onClick(() => {
+        // DataObj is decorated with @Observed, and list[0] is also of the Proxy type.
+        // When the same object is assigned again, no refresh is triggered.
         this.dataObjFromList = this.list[0];
       })
     }
@@ -487,7 +488,7 @@ struct Index {
 
 ## Unnecessary Deep Copy Caused by Using @Prop When Child Components Do Not Need to Modify State Variables
 
-During application development, a parent component often transfers values to its child components. If the subcomponent does not need to modify the status variable, using the [@Prop](./arkts-prop.md) decorator will increase the component creation time and affect the performance. In this case, you are advised to use [@ObjectLink](./arkts-observed-and-objectlink.md) instead.
+During application development, a parent component often transfers values to its child components. If the subcomponent does not need to modify the state variable, using the [@Prop](./arkts-prop.md) decorator will increase the component creation time and affect the performance. In this case, you are advised to use [@ObjectLink](./arkts-observed-and-objectlink.md) instead.
 
 **Incorrect Usage**
 
@@ -531,7 +532,7 @@ struct DeepReParent {
 }
 ```
 
-In the preceding example, the DeepRePropChild component does not change the value of \@Prop testClass: MyClass. Therefore, it is more appropriate to use \@ObjectLink. @Prop causes performance overhead due to deep data copy. Therefore, \@ObjectLink is a better choice than \@Prop.
+In the preceding example, the **DeepRePropChild** component does not change the value of \@Prop testClass: DeepReMyClass, so using \@ObjectLink is more appropriate. Because \@Prop performs a deep copy of data, incurring performance overhead, \@ObjectLink is a better choice than \@Prop.
 
 **Correct Usage**
 
@@ -577,11 +578,11 @@ struct Parent {
 
 ## Performance Deteriorates Due to Too Many Components Associated with State Variables
 
-It is recommended that the number of components associated with each state variable be less than 20. Precisely controlling the number of components associated with state variables can reduce unnecessary component updates and improve update efficiency. Sometimes, developers bind the same state variable to multiple component attributes at the same level. When the state changes, these components are updated synchronously, causing unnecessary updates. When the component complexity is high, the overall performance is greatly affected. On the contrary, binding the state variable to the parent components of these components can reduce the number of components that need to be refreshed and improve performance. During application development, you can use HiDumper to view the number of components associated with status variables.
+It is recommended that the number of components associated with each state variable be fewer than 20. Precisely controlling the number of components associated with a state variable can reduce unnecessary component refreshes and improve refresh efficiency. Sometimes developers bind the same state variable to multiple sibling component attributes. When the state changes, these components are updated synchronously, causing unnecessary refreshes. When component complexity is high, this significantly affects overall performance. Conversely, binding the state variable to the parent component of these components can reduce the number of components that need to be refreshed, thereby improving performance. During app development, HiDumper can be used to view the number of components associated with a state variable.
 
 **Incorrect Usage**
 
-<!-- @[precise_control_counterexamples](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/PreciseControlCounterexamples.ets) -->  
+<!-- @[precise_control_counterexamples](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/PreciseControlCounterexamples.ets) -->
 
 ``` TypeScript
 @Observed
@@ -707,7 +708,7 @@ During application development, do not frequently read state variables in the lo
 
 **Incorrect Usage**
 
-<!-- @[loop_state_inefficient](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/LoopStateInefficient.ets) --> 
+<!-- @[loop_state_inefficient](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/LoopStateInefficient.ets) -->  
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -722,6 +723,7 @@ struct Index {
       Button('Click to print log')
         .onClick(() => {
           for (let i = 0; i < 10; i++) {
+            // Frequently read state variables in loop logic.
             hilog.info(0x0000, 'TAG', '%{public}s', this.message);
           }
         })
@@ -743,7 +745,7 @@ struct Index {
 
 **Correct Usage**
 
-<!-- @[loop_state_optimized](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/LoopStateOptimized.ets) --> 
+<!-- @[loop_state_optimized](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/LoopStateOptimized.ets) -->  
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -757,6 +759,7 @@ struct Index {
     Column() {
       Button('Click to print log')
         .onClick(() => {
+          // Correct usage: Read the state variable outside the loop logic.
           let logMessage: string = this.message;
           for (let i = 0; i < 10; i++) {
             hilog.info(0x0000, 'TAG', '%{public}s', logMessage);
@@ -778,11 +781,11 @@ struct Index {
 }
 ```
 
-## Performance Deterioration Caused by Frequent Modification of Status Variables
+## Performance Deterioration Caused by Frequent Modification of State Variables
 
 During application development, you should reduce direct value changes to the state variables and compute data by using temporary variables.
 
-When a status variable changes, ArkUI queries the components that depend on the status variable and executes the update method of the components to complete component rendering. By using temporary variables instead of directly operating state variables, ArkUI can query and render components only when the last state variable changes, reducing unnecessary operations and improving application performance. For details about the behavior of state variables, see [@State Decorator: State Owned by Component](arkts-state.md).
+When a state variable changes, ArkUI queries the components that depend on the state variable and executes the update method of the components to complete component rendering. By using temporary variables instead of directly operating state variables, ArkUI can query and render components only when the last state variable changes, reducing unnecessary operations and improving application performance. For details about the behavior of state variables, see [@State Decorator: State Owned by Component](arkts-state.md).
 
 **Incorrect Usage**
 
@@ -827,7 +830,7 @@ struct Index {
 }
 ```
 
-Directly operate the status variable, trigger the calculation function for three times, and run the [time consumption](../ui-inspector-profiler.md#trace-debugging-capability) command. The result is as follows:
+Directly operating the state variable invokes the computation function three times. The [time consumption](../ui-inspector-profiler.md#trace-debugging-capability) result is as follows:
 
 ![hp_arkui_use_state_var](figures/hp_arkui_use_state_var.png)
 
@@ -882,10 +885,10 @@ Temporary variables are used to replace the calculation of state variables. The 
 
 [Summary]
 
-| **Computation Method**    | **Time Required (for Reference Only)**| **Remarks**                                         |
-| ---------------- | ------------------------------------------ | ------------------------------------------------- |
-| Changing state variables| 1.01ms                                     | Increases unnecessary query and rendering of ArkUI, causing poor performance.|
-| Using temporary variables for computing| 0.63ms                                     | Streamlines ArkUI behaviors and improve application performance.              |
+| **Calculation method** | **Time consumed (varies with device and scenario; for reference only)** | **Description** |
+| --- | --- | --- |
+| Directly operating state variables | 1.01ms | Adds unnecessary query and rendering behaviors to ArkUI, causing performance degradation. |
+| Using temporary variables for calculation | 0.63ms | Reduces unnecessary ArkUI behaviors and optimizes performance. |
 
 ## Performance Deteriorates When the LazyForEach Rebuilding Mechanism Is Used to Refresh the UI
 
@@ -1191,13 +1194,13 @@ Below you can see how the preceding code snippet works.
 
 In this example, the UI is re-rendered properly: The image does not flicker, and no log is generated, which indicates that the **Text** and **Image** components are not rebuilt.
 
-This is thanks to introduction of custom components, where state variables are directly changed through @Observed and @ObjectLink, instead of through **LazyForEach**. Decorate the **message** and **imgSrc** properties of the **StringData** type with [@Track](arkts-track.md) to further narrow down the render scope to the specified **Text** component.
+This is because, after custom components are introduced, state variables in a custom component can be directly changed through @Observed and @ObjectLink to implement refresh, instead of through **LazyForEach**. Decorate the **message** and **imgSrc** properties of the **StringData** type with [@Track](arkts-track.md) to further narrow down the render scope to the specified component.
 
 ## UI Is Not Refreshed Due to the Combination of ForEach and Object Arrays
 
 During development, the object array and [ForEach](../rendering-control/arkts-rendering-control-foreach.md) are often used together. However, if the writing method is improper, the UI may not be refreshed.
 
-<!-- @[StateArrayForeach_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayForeach.ets) -->  
+<!-- @[StateArrayForeach_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayForeach.ets) -->   
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1240,6 +1243,7 @@ struct Page {
           hilog.info(DOMAIN_NUMBER, TAG, 'change font size');
         })
       List() {
+        // The item generated in ForEach is a constant. When you tap to change the content within the item, the UI refresh cannot be observed.
         ForEach(this.styleList, (item: TextStyles) => {
           ListItem() {
             Text('Hello World')
@@ -1260,7 +1264,7 @@ Below you can see how the preceding code snippet works.
 
 The item generated in ForEach is a constant. Therefore, when you click to change the content in the item, the UI cannot be refreshed, although the log indicates that the value of the item has changed (this is reflected in the log of "change font size"). To fix this issue, you need to use custom components with @ObjectLink.
 
-<!-- @[TextComponent_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayForeach2.ets) -->  
+<!-- @[TextComponent_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayForeach2.ets) -->   
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1313,6 +1317,7 @@ struct Page {
           hilog.info(DOMAIN_NUMBER, TAG, 'change font size');
         })
       List() {
+        // Use @ObjectLink to accept the incoming item, so that the textStyle variable in the TextComponent component becomes observable.
         ForEach(this.styleList, (item: TextStyles) => {
           ListItem() {
             TextComponent({ textStyle: item })

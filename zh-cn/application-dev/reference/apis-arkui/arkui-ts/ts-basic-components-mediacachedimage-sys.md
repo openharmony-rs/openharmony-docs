@@ -1,4 +1,4 @@
-# MediaCachedImage（系统接口）
+# MediaCachedImage (系统接口)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @baosiyuan-->
@@ -23,6 +23,8 @@ MediaCachedImage(src: PixelMap | ResourceStr | DrawableDescriptor | ASTCResource
 
 **系统接口：** 此接口为系统接口。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **参数：** 
@@ -45,12 +47,14 @@ MediaCachedImage(src: PixelMap | ResourceStr | DrawableDescriptor | ASTCResource
 
 **系统接口：** 此接口为系统接口。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 参数名    | 类型 | 必填 | 说明                                      |
 | ------- | --- | --- | ------------------------------------------ |
 | sources | Array&lt;string&gt; | 是 | uri资源数组，表示进行拼接的纹理资源信息。 |
-| column  | number | 是 | 列大小，表示每行要拼接的纹理资源个数。    |
+| column  | number | 是 | 列大小，表示每行要拼接的纹理资源个数。<br>取值为正整数，非正整数会导致图片无法加载。 |
 
 ## 示例
 
@@ -89,4 +93,4 @@ struct MediaCachedImageExample {
 }
 ```
 
-![zh-cn_image_0000001592882500](figures/zh-cn_image_0000001592882500.gif)
+![zh-cn_image_0000001592882500](figures/loadingImagesOfBasicTypes.gif)

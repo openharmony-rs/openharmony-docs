@@ -2,7 +2,7 @@
 <!--Kit: Common-->
 <!--Subsystem: Common-->
 <!--Owner: @fang-jinxu-->
-<!--Designer: @lingminghw-->
+<!--Designer: @fang-jinxu-->
 <!--Tester: @RayShih-->
 <!--Adviser: @fang-jinxu-->
 - [NDK开发导读](ndk-development-overview.md)
@@ -19,20 +19,20 @@
     - [fdsan使用指导](fdsan.md)
   - 使用Node-API实现ArkTS/JS与C/C++语言交互<!--using-napi-interaction-with-cpp-->
     - [Node-API简介](napi-introduction.md)
-    - [Node-API接口返回状态码介绍](napi_status_introduction.md)
+    - [Node-API接口返回状态码介绍](napi-status-introduction.md)
     - [Node-API支持的数据类型和接口](napi-data-types-interfaces.md)
     - [Node-API开发规范](napi-guidelines.md)
     - [使用Node-API实现跨语言交互开发流程](use-napi-process.md)
     - Node-API使用指导<!--napi-use-->
       - [使用Node-API进行扩展能力功能开发](use-napi-about-extension.md)
-      - [使用Node-API进行array相关开发](use-napi-about-array.md)
-      - [使用Node-API进行arraybuffer相关开发](use-napi-about-arraybuffer.md)
+      - [使用Node-API接口进行array相关开发](use-napi-about-array.md)
+      - [使用Node-API接口进行ArrayBuffer相关开发](use-napi-about-arraybuffer.md)
       - [使用Node-API接口操作bigint类型值](use-napi-about-bigint.md)
       - [使用Node-API接口进行buffer相关开发](use-napi-about-buffer.md)
       - [使用Node-API接口创建基本数据类型](use-napi-basic-data-types.md)
       - [使用Node-API进行class相关开发](use-napi-about-class.md)
       - [使用Node-API接口注册和使用环境清理钩子](use-napi-about-cleanuphook.md)
-      - [使用Node-API接口进行date相关开发](use-napi-about-date.md)
+      - [使用Node-API接口进行Date相关开发](use-napi-about-date.md)
       - [使用Node-API接口进行错误处理开发](use-napi-about-error.md)
       - [使用Node-API接口关联数据，使其生命周期与当前环境的生命周期相关联](use-napi-about-environmental-life-cycle.md)
       - [使用Node-API接口进行函数创建和调用](use-napi-about-function.md)
@@ -53,13 +53,14 @@
       - [使用Node-API接口在主线程中进行模块加载](use-napi-load-module.md)
       - [使用扩展的Node-API接口在异步线程中运行和停止事件循环](use-napi-event-loop.md)
       - [使用Node-API接口进行模块加载](use-napi-load-module-with-info.md)
-      - [使用Node-API接口从异步线程向ArkTS线程投递指定优先级和入队方式的的任务](use-call-threadsafe-function-with-priority.md)
+      - [使用Node-API接口从异步线程向ArkTS线程投递指定优先级和入队方式的任务](use-call-threadsafe-function-with-priority.md)
       - [使用扩展的Node-API接口在当前线程中创建、切换和销毁上下文环境](use-napi-about-context.md)
       - [使用扩展的Node-API接口创建对ArkTS对象的强引用](use-napi-about-strong-reference.md)
       - [使用扩展的Node-API接口创建和销毁临界区作用域及访问字符串内容](use-napi-about-critical.md)
       - [使用Node-API接口产生的异常日志/崩溃分析](use-napi-about-crash.md)
       - [使用Node-API调用返回值为promise的ArkTS方法](use-napi-method-promise.md)
       - [使用扩展的Node-API接口创建对ArkTS对象的Sendable强引用](use-napi-about-sendable-reference.md)
+      - [使用扩展的Node-API接口加速属性访问](use-napi-about-fast-property-access.md)
     - Node-API常见问题汇总<!--napi-questions-->
       - [Node-API常见问题](use-napi-faqs.md)
       - [稳定性相关问题汇总](napi-faq-about-stability.md)
@@ -73,19 +74,20 @@
       - [JSVM-API使用规范](jsvm-guidelines.md)
       - [JSVM-API常见问题](jsvm-frequently-questions.md)
     - JSVM-API使用指导<!--jsvm-use-->
-      - [使用JSVM-API接口进行任务队列相关开发](use-jsvm-execute_tasks.md)
+      - [使用JSVM-API接口进行任务队列相关开发](use-jsvm-execute-tasks.md)
       - [使用JSVM-API接口进行虚拟机快照相关开发](use-jsvm-create-snapshot.md)
       - [使用JSVM-API接口进行WebAssembly模块相关开发](use-jsvm-about-wasm.md)
       - [使用JSVM-API接口进行函数创建和调用](use-jsvm-function-call.md)
       - [使用JSVM-API接口进行JSON操作](use-jsvm-about-JSON.md)
       - [使用JSVM-API接口进行array相关开发](use-jsvm-about-array.md)
       - [使用JSVM-API接口进行ArrayBuffer相关开发](use-jsvm-about-arraybuffer.md)
+      - [使用JSVM-API接口从外部内存创建ArrayBuffer](use-jsvm-about-external-arraybuffer.md)
       - [使用JSVM-API接口操作bigint类型值](use-jsvm-about-bigint.md)
       - [使用JSVM-API接口进行class相关开发](use-jsvm-about-class.md)
       - [使用JSVM-API接口进行Date相关开发](use-jsvm-about-date.md)
       - [使用JSVM-API接口进行debug操作](use-jsvm-about-debug-option.md)
       - [使用JSVM-API接口进行object相关开发](use-jsvm-about-object.md)
-      - [使用JSVM-API接口进行primitive类相关开发](use-jsvm-about-primitive.md)
+      - [使用JSVM-API接口进行primitive类型相关开发](use-jsvm-about-primitive.md)
       - [使用JSVM-API接口处理异步操作](use-jsvm-about-promise.md)
       - [使用JSVM-API接口设置JavaScript对象的属性](use-jsvm-about-property.md)
       - [使用JSVM-API接口创建和获取string值](use-jsvm-about-string.md)
@@ -97,6 +99,7 @@
       - [使用JSVM-API判断给定的两个JS value是否严格相等](use-jsvm-strict-equals.md)
       - [使用JSVM-API进行异常的定制化处理](use-jsvm-trigger-exceptions.md)
       - [使用JSVM-API感知JSVM引擎生命周期管理](use-jsvm-trigger-gc.md)
+      - [使用JSVM-API获取堆快照及监控堆内存阈值](use-jsvm-threshold-callback.md)
       - [使用JSVM-API接口进行 private 属性相关开发](use-jsvm-about-private.md)
       - [使用JSVM-API接口提供Latin1/UTF16格式字符串相关开发](use-jsvm-about-external-string.md)
       - [使用JSVM-API接口进行Proxy相关开发](use-jsvm-about-proxy.md)
@@ -106,7 +109,7 @@
     - JSVM-API典型使用场景指导<!--jsvm-scenarios-->
       - [JSVM-API调试&定位](jsvm-debugger-cpuprofiler-heapsnapshot.md)
       - [使用JSVM-API接口进行Trace相关开发](use-jsvm-about-trace.md)
-      - [JSVM 申请JIT权限指导](jsvm-apply-jit-profile.md)
+      - [JSVM-API 申请JIT权限指导](jsvm-apply-jit-profile.md)
       - [JSVM-API 坚盾守护模式](jsvm-secure-shield-mode.md)
       - [JSVM 定位内存泄漏问题指导](jsvm-locate-memory-leak.md)
       - JSVM-API调优&高性能使用示例<!--jsvm-usage-examples-->
@@ -114,7 +117,7 @@
         - [使用code cache加速编译](use-jsvm-about-code-cache.md)
         - [JSVM通用调优实践](jsvm-optimizations.md)
     - JSVM性能调试指导<!--jsvm-performance-->
-      - [使用HiSmartPerf采集V8 trace](use-jsvm-about-v8-trace.md)
+      - [使用HiSmartPerf采集JSVM trace](use-jsvm-about-v8-trace.md)
       - [使用DevTools进行网页内存分析](use-jsvm-about-analyze-memory-usage.md)
   - Longque-JS-API<!--longque-->
     - [Longque-JS-API使用指导](use-longque-js-api.md)
@@ -123,13 +126,8 @@
     - [OpenMP应用构建和运行指南](openmp-guideline.md)
   - 资源管理<!--resource-management-->
     - [Rawfile开发指导](rawfile-guidelines.md)
-  - 线程调度<!--thread-scheduling-->
-    - [QoS开发指导](qos-guidelines.md)
-    - [格物开发指导](gewu-ndk-api-guidelines.md)
-  - 内存管理<!--memory-management-->
-    - [Purgeable memory开发指导](purgeable-memory-guidelines.md)
   - 包管理<!--bundle-management-->
-    - [NativeBundle开发指导](native-bundle-guidelines.md)
+    - [NativeBundle开发指导](native-bundle-guidelines.md)<!--RP3--><!--RP3End-->
 - 调试和性能分析<!--debugging-profiling-->
   - [调试和性能分析概述](debug-performance-profiling-overview.md)
   - [C/C++内存错误检测](debug-asan.md)<!--RP2--><!--RP2End-->

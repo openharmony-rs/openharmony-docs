@@ -5,7 +5,8 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=6ff193a1258b05452b4935e34a160adf6db64d7a translatedAt=2026-09-11T01:17:37.943Z pushedAt=2026-09-11T03:26:13.086Z -->
 
 The **keyEvent** module provides key events reported by a device. It is inherited from [InputEvent](js-apis-inputevent.md).
 
@@ -44,7 +45,7 @@ Defines a key.
 | Name       | Type| Read-Only| Optional| Description          |
 | ----------- | -------- | ---- | ---- | -------------- |
 | code        | [KeyCode](js-apis-keycode.md#keycode)  | No  | No  | Key code.        |
-| pressedTime | number   | No  | No  | Key press time, in μs.|
+| pressedTime | number   | No   | No   | Time when the key is pressed, in microseconds (μs) since the system starts. |
 | deviceId    | number   | No  | No  | Unique ID of the input device. If a physical device is repeatedly reinstalled or restarted, its ID may change.  |
 
 ## KeyEvent
@@ -60,7 +61,7 @@ Key event.
 | action      | [Action](#action)   | No  | No  | Key event type.                      |
 | key         | [Key](#key)      | No  | No  | Defines a key.            |
 | unicodeChar | number   | No  | No  | Unicode character corresponding to the key.         |
-| keys        | [Key](#key) []    | No  | No  | List of pressed keys.    |
+| keys        | [Key](#key)[]    | No   | No   | List of keys that are currently in the pressed state.     |
 | ctrlKey     | boolean  | No  | No  | Whether ctrlKey is being pressed.<br>The value **true** indicates that the key is pressed, and the value **false** indicates the opposite.|
 | altKey      | boolean  | No  | No  | Whether altKey is being pressed.<br>The value **true** indicates that the key is pressed, and the value **false** indicates the opposite.    |
 | shiftKey    | boolean  | No  | No  | Whether shiftKey is being pressed.<br>The value **true** indicates that the key is pressed, and the value **false** indicates the opposite.  |

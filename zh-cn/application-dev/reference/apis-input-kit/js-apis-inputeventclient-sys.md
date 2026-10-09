@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 输入事件注入模块，提供输入按键、鼠标/触控板、触屏输入事件注入能力。
 
@@ -25,11 +25,13 @@ import { inputEventClient } from '@kit.InputKit';
 
 injectEvent({KeyEvent: KeyEvent}): void
 
-按键(包括单个按键和组合键)注入。
+按键（包括单个按键和组合键）注入。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+从API版本26.0.1开始，调用者可指定按键事件注入的displayId。若指定的displayId不存在，则操作不生效。
 
-**需要权限：** ohos.permission.INJECT_INPUT_EVENT
+**系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
+
+**需要权限**：ohos.permission.INJECT_INPUT_EVENT
 
 **参数：**
 
@@ -43,14 +45,15 @@ injectEvent({KeyEvent: KeyEvent}): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
-| 202  | Permission denied, non-system app called system api.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.<br/>适用版本：12+  |
+| 202 | Permission verification failed. A non-system application calls a system API.<br/>适用版本：12+  |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
 ```js
 import { inputEventClient } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -65,7 +68,8 @@ struct Index {
               keyCode: 2,
               keyDownDuration: 0,
               isIntercepted: false
-            }
+            };
+            // 注入事件
             inputEventClient.injectEvent({ KeyEvent: backKeyDown });
 
             let backKeyUp: inputEventClient.KeyEvent = {
@@ -74,9 +78,10 @@ struct Index {
               keyDownDuration: 0,
               isIntercepted: false
             };
+            // 注入事件
             inputEventClient.injectEvent({ KeyEvent: backKeyUp });
           } catch (error) {
-            console.error(`Failed to inject KeyEvent, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to inject KeyEvent, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -88,11 +93,13 @@ struct Index {
 
 injectKeyEvent(keyEvent: KeyEventData): void
 
-按键(包括单个按键和组合键)事件注入。
+按键（包括单个按键和组合键）事件注入。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+从API版本26.0.1开始，调用者可指定按键事件注入的displayId。若指定的displayId不存在，则操作不生效。
 
-**需要权限：** ohos.permission.INJECT_INPUT_EVENT
+**系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
+
+**需要权限**：ohos.permission.INJECT_INPUT_EVENT
 
 **参数：**
 
@@ -106,14 +113,15 @@ injectKeyEvent(keyEvent: KeyEventData): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
-| 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.<br/>适用版本：12+  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
 ```js
 import { inputEventClient } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -135,6 +143,7 @@ struct Index {
             }
 
             let eventDown: EventDown = { keyEvent: backKeyDown }
+            // 注入按键事件
             inputEventClient.injectKeyEvent(eventDown);
 
             let backKeyUp: inputEventClient.KeyEvent = {
@@ -149,9 +158,10 @@ struct Index {
             }
 
             let eventUp: EventUp = { keyEvent: backKeyUp }
+            // 注入按键事件
             inputEventClient.injectKeyEvent(eventUp);
           } catch (error) {
-            console.error(`Failed to inject KeyEvent, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to inject KeyEvent, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -164,9 +174,9 @@ injectMouseEvent(mouseEvent: MouseEventData): void
 
 鼠标/触控板事件注入。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+**系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
-**需要权限：** ohos.permission.INJECT_INPUT_EVENT
+**需要权限**：ohos.permission.INJECT_INPUT_EVENT
 
 **参数：**
 
@@ -180,15 +190,15 @@ injectMouseEvent(mouseEvent: MouseEventData): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
-| 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.<br/>适用版本：12+  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
 ```js
-import { inputEventClient } from '@kit.InputKit';
-import { MouseEvent } from '@kit.InputKit';
+import { inputEventClient, MouseEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -224,10 +234,11 @@ struct Index {
               numLock: false,
               scrollLock: false,
               toolType: 1,
-            }
+            };
             let mouseButtonUp: inputEventClient.MouseEventData = {
               mouseEvent: mouseButtonUpData
-            }
+            };
+            // 注入鼠标事件
             inputEventClient.injectMouseEvent(mouseButtonUp);
 
             let mouseButtonDownData: MouseEvent = {
@@ -256,15 +267,14 @@ struct Index {
               numLock: false,
               scrollLock: false,
               toolType: 1,
-            }
+            };
             let mouseButtonDown: inputEventClient.MouseEventData = {
               mouseEvent: mouseButtonDownData
             };
+            // 注入鼠标事件
             inputEventClient.injectMouseEvent(mouseButtonDown);
-          }
-
-          catch (error) {
-            console.error(`Failed to inject MouseEvent, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          } catch (error) {
+            console.error(`Failed to inject MouseEvent, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -278,9 +288,9 @@ injectTouchEvent(touchEvent: TouchEventData): void
 
 触屏输入事件注入。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+**系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
-**需要权限：** ohos.permission.INJECT_INPUT_EVENT
+**需要权限**：ohos.permission.INJECT_INPUT_EVENT
 
 **参数：**
 
@@ -294,15 +304,15 @@ injectTouchEvent(touchEvent: TouchEventData): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
-| 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.<br/>适用版本：12+  |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
 ```js
-import { inputEventClient } from '@kit.InputKit';
-import { Touch, TouchEvent } from '@kit.InputKit';
+import { inputEventClient, Touch, TouchEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -331,7 +341,7 @@ struct Index {
               rawX: 0,
               rawY: 0,
               toolType: 0,
-            }
+            };
 
             let touchEventUpData: TouchEvent = {
               action: 3,
@@ -343,11 +353,12 @@ struct Index {
               actionTime: 0,
               screenId: 0,
               windowId: 0
-            }
+            };
             ;
             let touchEventUp: inputEventClient.TouchEventData = {
               touchEvent: touchEventUpData
-            }
+            };
+            // 注入触摸事件
             inputEventClient.injectTouchEvent(touchEventUp);
 
             let touchEventDownData: TouchEvent = {
@@ -360,14 +371,15 @@ struct Index {
               actionTime: 0,
               screenId: 0,
               windowId: 0
-            }
+            };
             ;
             let touchEventDown: inputEventClient.TouchEventData = {
               touchEvent: touchEventDownData
             }
+            // 注入触摸事件
             inputEventClient.injectTouchEvent(touchEventDown);
           } catch (error) {
-            console.error(`Failed to inject touchEvent, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to inject touchEvent, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -381,9 +393,9 @@ permitInjection(result: boolean): void
 
 允许事件注入权限。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+**系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
-**需要权限：** ohos.permission.INJECT_INPUT_EVENT
+**需要权限**：ohos.permission.INJECT_INPUT_EVENT
 
 **参数：**
 
@@ -397,13 +409,15 @@ permitInjection(result: boolean): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201  | Permission denied.  |
-| 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
+**示例：**
 
 ```ts
 import { inputEventClient } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -414,9 +428,10 @@ struct Index {
         .onClick(() => {
           try {
             let result = true;
+            // 授权事件注入
             inputEventClient.permitInjection(result);
           }catch(error){
-            console.error("failed:" + JSON.stringify(error));
+            console.error(`Failed to permit injection, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -428,20 +443,21 @@ struct Index {
 
 按键注入描述信息。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+**系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ---- | ---- | ------- |
 | isPressed       | boolean | 否    |  否 | 按键是否按下。<br>true表示按键按下，false表示按键抬起。   |
 | keyCode         | number  | 否    |  否 | 按键键值。当前仅支持返回键/KEYCODE_BACK键。 |
-| keyDownDuration | number  | 否    |  否 | 按键按下持续时间，单位：μs。           |
+| keyDownDuration | number  | 否    |  否 | 按键按下持续时间，单位为微秒（μs）。           |
 | isIntercepted   | boolean | 否    |  否 | 按键是否可以被拦截。<br>true表示可以被拦截，false表示不可被拦截。 |
+| displayId | number | 否    |  是 | 目标屏幕ID。取值应为≥0的整数。<br>**起始版本：** 26.0.1<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## KeyEventData<sup>11+</sup>
 
 按键注入描述信息。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+**系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ---- | ---- | ------- |
@@ -451,7 +467,7 @@ struct Index {
 
 鼠标注入描述信息。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+**系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ---- | ---- | ------- |
@@ -462,9 +478,19 @@ struct Index {
 
 触屏注入描述信息。
 
-**系统能力：** SystemCapability.MultimodalInput.Input.InputSimulator
+**系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
 
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ---- | ---- | ------- |
 | touchEvent | [TouchEvent](js-apis-touchevent.md#touchevent) | 否    |  否 | 触屏输入事件。   |
 | useGlobalCoordinate<sup>20+</sup> | boolean | 否    |  是 | 是否使用全局坐标来计算注入的触屏输入事件。默认值为false，取值为false表示使用以指定屏幕左上角为原点的相对坐标系的坐标来计算注入的触屏输入事件。取值为true表示使用以主屏左上角为原点的全局坐标系的坐标来计算注入的触屏输入事件。   |
+
+## KeyEventInfo<sup>23+</sup>
+
+定义用户注入的按键事件信息。
+
+**系统能力**：SystemCapability.MultimodalInput.Input.InputSimulator
+
+| 名称        | 类型   | 只读   | 可选   | 说明      |
+| --------- | ------ | ---- | ---- | ------- |
+| KeyEvent       | [KeyEvent](#keyevent) | 否    |  否 | 按键注入描述信息。   |

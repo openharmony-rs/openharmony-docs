@@ -5,11 +5,14 @@
 <!--Designer: @HmQQQ; @stupig001-->
 <!--Tester: @xchaosioda; @xdlinc-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=3a82aaa292db02bd8ef5ce66d3801eb8d940f084 translatedAt=2026-09-16T04:33:04.871Z pushedAt=2026-09-20T10:19:47.015Z -->
 
 - ArkTS APIs<!--media-arkts-->
-  - @ohos.multimedia.media (Media)<!--js-apis-media-->
+  - @ohos.multimedia.media (Media Service)<!--js-apis-media-->
     - [Module Description](arkts-apis-media.md)
     - [Functions](arkts-apis-media-f.md)
+    - [Interface (AVAdsController)](arkts-apis-media-AVAdsController.md)
+    - [Interface (AVDownloaderManager)](arkts-apis-media-AVDownloaderManager.md)
     - [Interface (AVImageGenerator)](arkts-apis-media-AVImageGenerator.md)
     - [Interface (AVMetadataExtractor)](arkts-apis-media-AVMetadataExtractor.md)
     - [Interface (AVPlayer)](arkts-apis-media-AVPlayer.md)
@@ -24,6 +27,7 @@
     - [Deprecated Interface (AudioPlayer, deprecated)](arkts-apis-media-AudioPlayer.md)
     - [Deprecated Interface (AudioRecorder, deprecated)](arkts-apis-media-AudioRecorder.md)
     - [Deprecated Interface (VideoPlayer, deprecated)](arkts-apis-media-VideoPlayer.md)
+  - [@ohos.multimedia.videoProcessing (Video Processing)](arkts-apis-media-videoProcessing.md)
   <!--Del-->
   - [@ohos.multimedia.media (Media) (System API)](js-apis-media-sys.md)
   <!--DelEnd-->
@@ -95,6 +99,7 @@
     - [OH_VideoInfo](capi-avscreencapture-oh-videoinfo.md)
     - [OH_RecorderInfo](capi-avscreencapture-oh-recorderinfo.md)
     - [OH_AVScreenCaptureConfig](capi-avscreencapture-oh-avscreencaptureconfig.md)
+    - [OH_PrivacyProtectInfo](capi-avscreencapture-oh-privacyprotectinfo.md)
     - [OH_AVScreenCaptureCallback](capi-avscreencapture-oh-avscreencapturecallback.md)
     - [OH_Rect](capi-avscreencapture-oh-rect.md)
     - [OH_AudioBuffer](capi-avscreencapture-oh-audiobuffer.md)
@@ -122,5 +127,8 @@
     - [OH_AVSeiMessageArray](capi-avplayer-oh-avseimessagearray.md)
     - [OH_AVMetadataExtractor_OutputParam](capi-avmetadataextractor-oh-avmetadataextractor-outputparam.md)
     - [OH_AVMetadataExtractor_FrameInfo](capi-avmetadataextractor-oh-avmetadataextractor-frameinfo.md)
+    - [OH_MultiDisplayCapability](capi-avscreencapture-oh-multidisplaycapability.md)
+    - [OH_AVPlayerVideoOutput](capi-avplayer-oh-avplayervideooutput.md)
 - Error Codes<!--media-arkts-errcode-->
   - [Media Error Codes](errorcode-media.md)
+<!--no_check-->

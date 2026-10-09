@@ -1,23 +1,27 @@
 # ScenePostProcessSettings
+
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @zzhao0-->
+<!--Owner: @jason_stark-->
 <!--Designer: @zdustc-->
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=8bb9848b7b451305a97994d9b8833fe195588c67 translatedAt=2026-08-20T12:26:11.705Z pushedAt=2026-08-21T07:08:14.940Z -->
 
-The module provides image post-processing methods (for example, tone mapping) in 3D graphics.
+This module provides image post-processing methods such as tone mapping in ArkGraphics 3D.
 
 > **NOTE**
->
-> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> 
+> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Modules to Import
+
 ```ts
-import { ToneMappingType, ToneMappingSettings, BloomSettings, PostProcessSettings } from '@kit.ArkGraphics3D';
+import { ToneMappingType, ToneMappingSettings, BloomSettings, VignetteSettings, ColorFringeSettings, PostProcessSettings } from '@kit.ArkGraphics3D';
 ```
 
 ## ToneMappingType
+
 Enumerates the tone mapping types.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
@@ -29,6 +33,7 @@ Enumerates the tone mapping types.
 | FILMIC | 2 | Filmic.|
 
 ## ToneMappingSettings
+
 Describes the tone mapping settings.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
@@ -39,6 +44,7 @@ Describes the tone mapping settings.
 | exposure | number | No| Yes| Exposure. The value must be greater than 0. The default value is undefined.|
 
 ## BloomSettings<sup>18+</sup>
+
 Describes the settings for bloom effects. It is unavailable when [RenderingPipelineType](js-apis-inner-scene-types.md#renderingpipelinetype21) is set to **FORWARD_LIGHTWEIGHT**.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
@@ -51,26 +57,29 @@ Describes the settings for bloom effects. It is unavailable when [RenderingPipel
 | scatter | number | No| Yes| Scatter amount. The value must be greater than 0. The default value is **1.0**.|
 
 ## VignetteSettings<sup>22+</sup>
+
 Describes the settings for vignette effects.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| roundness | number | No| Yes| Extent of the effect. The value ranges from 0 to 1. The value **1** means a global effect. The default is **sqrt(0.5)**.|
-| intensity | number | No| Yes| Strength of the effect. The default value is **0.4**.|
+| roundness | number | No | Yes | Roundness of the vignette. The value range is [0, 1]. When the value is 0, the vignette shape approaches a rectangle; when the value is 1, the vignette shape approaches a circle. The default value is sqrt(0.5) (about 0.707). |
+| intensity | number | No| Yes| Effect strength. The value range is [0, 1]. The value **0** indicates no vignetting effect, and the value **1** indicates maximum vignetting intensity. The default value is **0.4**.|
 
 ## ColorFringeSettings<sup>22+</sup>
+
 Describes the settings for color fringing. It is unavailable when [RenderingPipelineType](js-apis-inner-scene-types.md#renderingpipelinetype21) is set to **FORWARD_LIGHTWEIGHT**.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| intensity | number | No| Yes| Strength of the effect. The value ranges from 0 to 1. The default value is **0.2**.|
+| intensity | number | No | Yes | Effect intensity. The value range is [0, 1], and the default value is 0.2. |
 
 ## PostProcessSettings
-Describes the post-processing settings.
+
+Post-processing settings, which are used to configure the image processing effect after camera rendering, including tone mapping, bloom, vignetting, and chromatic aberration. This is used as the postProcess attribute of [Camera](js-apis-inner-scene-nodes.md#camera).
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 

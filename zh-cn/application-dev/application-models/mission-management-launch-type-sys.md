@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @littlejerry1-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 如前文所述，一个UIAbility实例对应一个任务。UIAbility实例个数与UIAbility配置的启动模式有关。在[FA模型](ability-terminology.md#fa模型)下，通过config.json配置文件中的“launchType”属性配置；在[Stage模型](ability-terminology.md#stage模型)下，通过[module.json5配置文件](../quick-start/module-configuration-file.md)中的“launchType”属性配置。
 

@@ -1,7 +1,7 @@
 # 自定义组件生命周期
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiyujia926; @huyisuo-->
+<!--Owner: @jiyujia926; @xin11112-->
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
@@ -13,7 +13,7 @@
 
 - [onDidBuild](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#ondidbuild12)：在组件首次渲染触发的build函数执行完成之后回调该接口，后续组件重新渲染将不回调该接口。开发者可以在这个阶段实现埋点数据上报等不影响实际UI的功能。
 
-- [aboutToDisappear](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)：aboutToDisappear函数在自定义组件析构销毁之前执行。不允许在aboutToDisappear函数中改变状态变量，特别是@Link变量的修改可能会导致应用程序行为不稳定。
+- [aboutToDisappear](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)：aboutToDisappear函数在自定义组件析构销毁之前执行。不允许在aboutToDisappear函数中改变状态变量，特别是[@Link变量](./arkts-link.md)的修改可能会导致应用程序行为不稳定。
 
 > **说明：**
 >
@@ -34,11 +34,11 @@
 
 2. 初始化自定义组件的成员变量：通过本地默认值或者构造方法传递参数来初始化自定义组件的成员变量，初始化顺序为成员变量的定义顺序。
 
-3. 如果开发者定义了aboutToAppear，则执行build方法之前执行该方法。
+3. 如果开发者定义了aboutToAppear，则执行build函数之前执行该方法。
 
-4. 在首次渲染的时候，执行build方法渲染系统组件，如果子组件为自定义组件，则创建自定义组件的实例。在首次渲染的过程中，框架会记录状态变量和组件的映射关系，当状态变量改变时，驱动其相关的组件刷新。
+4. 在首次渲染的时候，执行build函数渲染系统组件，如果子组件为自定义组件，则创建自定义组件的实例。在首次渲染的过程中，框架会记录状态变量和组件的映射关系，当状态变量改变时，驱动其相关的组件刷新。
 
-5. 如果开发者定义了onDidBuild，则执行build方法之后执行该方法。
+5. 如果开发者定义了onDidBuild，则执行build函数之后执行该方法。
 
 ## 自定义组件重新渲染
 
@@ -54,7 +54,7 @@
 
 1. 在删除组件之前，将调用其aboutToDisappear生命周期函数，标记着该节点将要被销毁。ArkUI的节点删除机制是：后端节点直接从组件树上摘下，后端节点被销毁，对前端节点解引用，前端节点已经没有引用时，将被Ark虚拟机垃圾回收。
 
-2. 自定义组件和它的变量将被删除，如果组件有同步的变量（如[@Link](arkts-link.md)、[@Prop](arkts-prop.md)、[@StorageLink](arkts-appstorage.md#storagelink)），将从[同步源](arkts-state-management-glossary.md#数据源同步源data-source)上取消注册。
+2. 自定义组件和它的变量将被删除，如果组件有同步的变量（如[@Link](arkts-link.md)、[@Prop](arkts-prop.md)、[@StorageLink](arkts-appstorage.md#storagelink)），将从[状态数据源](arkts-state-management-glossary.md#state-data-source状态数据源)上取消注册。
 
 不建议在生命周期`aboutToDisappear`中使用`async await`。如果在此生命周期中使用异步操作（如 Promise 或回调方法），自定义组件将被保留在Promise的闭包中，直到回调方法执行完毕，这会阻止自定义组件的垃圾回收。
 
@@ -94,7 +94,8 @@ struct Parent {
       if (this.showChild) {
         Child()
       }
-      Button('delete Child')
+      Button(this.showChild ? 'delete Child' : 'add Child')
+        .width(300)
         .margin(20)
         .backgroundColor(this.btnColor)
         .onClick(() => {
@@ -103,6 +104,7 @@ struct Parent {
           this.showChild = !this.showChild;
         })
     }
+    .width('100%')
   }
 }
 
@@ -136,7 +138,9 @@ struct Child {
 }
 ```
 
-以上示例中，Index页面包含两个自定义组件，一个是Parent，一个是Child，Parent及其子组件Child分别声明了各自的自定义组件生命周期函数（aboutToAppear / onDidBuild / aboutToDisappear）。
+![page-custom-components-lifecycle-0](figures/page-custom-components-lifecycle-0.gif)
+
+以上示例中，Parent作为页面入口组件，包含一个子组件Child，Parent及其子组件Child分别声明了各自的自定义组件生命周期函数（aboutToAppear / onDidBuild / aboutToDisappear）。
 
 - 应用冷启动的初始化流程为：Parent aboutToAppear --&gt; Parent build --&gt; Parent onDidBuild --&gt; Child aboutToAppear --&gt; Child build --&gt; Child onDidBuild。此处体现了自定义组件懒展开特性，即Parent执行完onDidBuild之后才会执行Child组件的aboutToAppear。日志输出信息如下：
 

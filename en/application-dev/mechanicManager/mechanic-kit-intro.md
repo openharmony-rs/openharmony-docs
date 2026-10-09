@@ -74,3 +74,6 @@ Before using Mechanic Kit, ensure that the following conditions are met:
 > **NOTE**
 >
 > Before calling the APIs of Mechanic Kit, make sure the preceding conditions are met. Otherwise, service exceptions may occur.
+
+<!--RP1-->
+<!--RP1End-->

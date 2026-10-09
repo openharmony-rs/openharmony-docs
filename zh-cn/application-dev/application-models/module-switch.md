@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @wkljy-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 从[FA模型](ability-terminology.md#fa模型)切换到[Stage模型](ability-terminology.md#stage模型)时，开发者需要将config.json文件module标签下的配置迁移到module.json5配置文件module标签下，具体差异见下列表格。
 
@@ -54,7 +54,7 @@
 
 | FA模型示例 | Stage模型示例 |
 | -------- | -------- |
-| “metaData”: {<br/>    "customizeDate": [{<br/>        "name": "label",<br/>        "value": "string",<br/>        "extra": "$string:label",<br/>    }]<br/>} | “metaData”: [{<br/>    "name": "label",<br/>    "value": "string",<br/>    "resource": "$string:label",<br/>}] |
+| “metaData”: {<br/>    "customizeData": [{<br/>        "name": "label",<br/>        "value": "string",<br/>        "extra": "$string:label",<br/>    }]<br/>} | “metaData”: [{<br/>    "name": "label",<br/>    "value": "string",<br/>    "resource": "$string:label",<br/>}] |
 
 
 **表5** FA模型和Stage中abilities差异对比

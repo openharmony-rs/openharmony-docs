@@ -5,11 +5,11 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 > **说明：**
 >
-> - 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
+> - 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码](../errorcode-universal.md)。
 
 <!--Del-->
 ## 3900001 指定的设备不存在
@@ -68,6 +68,45 @@ It is prohibited for non-input applications.
 
 请使用输入法应用调用该接口。
 
+<!--Del-->
+## 3900004 指定的显示器不存在
+
+**错误信息**
+
+The specified display does not exist.
+
+**错误描述**
+
+指定的displayId不存在。
+
+**可能原因**
+
+当前设备上并没有此显示器ID。
+
+**处理步骤**
+
+1. 查询有效的显示器ID，并传入正确的显示器ID。
+2. 检查显示器的连接状态。<!--DelEnd-->
+
+<!--Del-->
+## 3900005 不支持的输入设备
+
+**错误信息**
+
+Unsupported input device.
+
+**错误描述**
+
+不支持此外设。
+
+**可能原因**
+
+设置的inputDeviceId对应的外设并不是外接的USB或蓝牙外设。
+
+**处理步骤**
+
+请重新设置外接的USB或蓝牙外设的ID。<!--DelEnd-->
+
 ## 3800001 多模输入服务内部错误
 
 **错误信息**
@@ -80,7 +119,7 @@ Input service exception. Possible causes: 1. Memory allocation failure. 2. Threa
 
 **可能原因**
 
-内存分配失败，线程繁忙，服务异常退出等非预期错误。
+内存分配失败，线程繁忙，服务运行异常等非预期错误。
 
 **处理步骤**
 

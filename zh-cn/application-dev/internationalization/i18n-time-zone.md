@@ -3,9 +3,9 @@
 <!--Kit: Localization Kit-->
 <!--Subsystem: Global-->
 <!--Owner: @yliupy-->
-<!--Designer: @sunyaozu-->
+<!--Designer: @zw_feifei-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @ningningW-->
 
 ## 使用场景
 
@@ -78,30 +78,6 @@
    // 系统支持的时区城市ID列表
    let cityIDs = i18n.TimeZone.getAvailableZoneCityIDs(); // cityIDs = ['Auckland', 'Magadan', ...]
    
-   // 遍历时区城市ID列表
-   let timezoneList: object[] = []; // 呈现给用户的时区列表
-   
-   class Item {
-     public cityDisplayName = '';
-     public timezoneId = '';
-     public offset = '';
-     public cityId = '';
-   };
-   
-   for (let i = 0; i < cityIDs.length; i++) {
-     let cityId = cityIDs[i];
-     let timezone: i18n.TimeZone = i18n.TimeZone.getTimezoneFromCity(cityId); // 城市ID对应的时区对象
-     let cityDisplayName = i18n.TimeZone.getCityDisplayName(cityId, 'zh-CN'); // 本地化城市名称
-     let timestamp = (new Date()).getTime();
-     let item: Item = {
-       cityDisplayName: cityDisplayName,
-       timezoneId: timezone.getID(),
-       offset: 'GMT' + (timezone.getOffset(timestamp) / 3600 * 1000),
-       cityId: cityId
-     };
-     timezoneList.push(item);
-   }
-   
    // 指定地理坐标所在的时区对象数组
    let timezoneArray: i18n.TimeZone[] = i18n.TimeZone.getTimezonesByLocation(-43.1, -22.5);
    
@@ -136,6 +112,7 @@
    appPreferredTimeZoneList.push(pauloTimezone);
    appPreferredTimeZoneList.push(defaultTimezone);
    
+   // ...
    let locale: Intl.Locale = i18n.System.getSystemLocaleInstance();
    for (let i = 0; i < appPreferredTimeZoneList.length; i++) {
      let timezone = appPreferredTimeZoneList[i].getID();
@@ -148,5 +125,6 @@
      let hour = calendar.get('hour');
      let minute = calendar.get('minute');
      let second = calendar.get('second');
+     // ...
    }
    ```

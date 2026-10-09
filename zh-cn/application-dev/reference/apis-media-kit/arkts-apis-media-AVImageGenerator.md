@@ -1,8 +1,8 @@
 # Interface (AVImageGenerator)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @hanzhengshi-->
+<!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -48,7 +48,7 @@ fetchFrameByTime(timeUs: number, options: AVImageQueryOptions, param: PixelMapPa
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                   |
 | -------- | ------------------------------------------ |
@@ -61,6 +61,7 @@ fetchFrameByTime(timeUs: number, options: AVImageQueryOptions, param: PixelMapPa
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 import { media } from '@kit.MediaKit';
+import { common } from '@kit.AbilityKit';
 
 let avImageGenerator: media.AVImageGenerator | undefined = undefined;
 let pixel_map: image.PixelMap | undefined = undefined;
@@ -76,19 +77,21 @@ let param: media.PixelMapParams = {
 };
 
 // 获取缩略图。
-media.createAVImageGenerator((err: BusinessError, generator: media.AVImageGenerator) => {
-  if (generator != null) {
+media.createAVImageGenerator(async (err: BusinessError, generator: media.AVImageGenerator) => {
+  if (generator) {
     avImageGenerator = generator;
     console.info(`Succeeded in creating AVImageGenerator`);
+    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    generator.fdSrc = await context.resourceManager.getRawFd('H264_AAC.mp4');
     avImageGenerator.fetchFrameByTime(timeUs, queryOption, param, (error: BusinessError, pixelMap) => {
       if (error) {
-        console.error(`Failed to fetch FrameByTime, err = ${JSON.stringify(error)}`);
+        console.error(`Failed to fetch FrameByTime, code: ${error.code}, message: ${error.message}`);
         return;
       }
       pixel_map = pixelMap;
     });
   } else {
-    console.error(`Failed to create AVImageGenerator, error message:${err.message}`);
+    console.error(`Failed to create AVImageGenerator, code: ${err.code}, message: ${err.message}`);
   }
 });
 ```
@@ -117,7 +120,7 @@ fetchFrameByTime(timeUs: number, options: AVImageQueryOptions, param: PixelMapPa
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -130,6 +133,7 @@ fetchFrameByTime(timeUs: number, options: AVImageQueryOptions, param: PixelMapPa
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 import { media } from '@kit.MediaKit';
+import { common } from '@kit.AbilityKit';
 
 let avImageGenerator: media.AVImageGenerator | undefined = undefined;
 let pixel_map: image.PixelMap | undefined = undefined;
@@ -145,17 +149,19 @@ let param: media.PixelMapParams = {
 };
 
 // 获取缩略图。
-media.createAVImageGenerator((err: BusinessError, generator: media.AVImageGenerator) => {
-  if (generator != null) {
+media.createAVImageGenerator(async (err: BusinessError, generator: media.AVImageGenerator) => {
+  if (generator) {
     avImageGenerator = generator;
     console.info(`Succeeded in creating AVImageGenerator`);
+    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    generator.fdSrc = await context.resourceManager.getRawFd('H264_AAC.mp4');
     avImageGenerator.fetchFrameByTime(timeUs, queryOption, param).then((pixelMap: image.PixelMap) => {
       pixel_map = pixelMap;
     }).catch((error: BusinessError) => {
-      console.error(`Failed to fetch FrameByTime, error message:${error.message}`);
+      console.error(`Failed to fetch FrameByTime, code: ${error.code}, message: ${error.message}`);
     });
   } else {
-    console.error(`Failed to create AVImageGenerator, error message:${err.message}`);
+    console.error(`Failed to create AVImageGenerator, code: ${err.code}, message: ${err.message}`);
   }
 });
 ```
@@ -174,7 +180,7 @@ fetchScaledFrameByTime(timeUs: number, queryMode: AVImageQueryOptions, outputSiz
 | ---------- | --------------------------------------------- | ---- | ---------------------------------------------------- |
 | timeUs     | number                                        | 是   | 在视频中需要获取的缩略图的时间点，单位为微秒（μs）。 |
 | queryMode  | [AVImageQueryOptions](arkts-apis-media-e.md#avimagequeryoptions12) | 是   | 需要获取的缩略图时间点与视频帧的对应关系。           |
-| outputSize | [OutputSize ](arkts-apis-media-i.md#outputsize20)                  | 否   | 定义帧的输出大小。默认按原图大小显示。               |
+| outputSize | [OutputSize](arkts-apis-media-i.md#outputsize20)                  | 否   | 定义帧的输出大小。默认按原图大小显示。               |
 
 **返回值：**
 
@@ -184,7 +190,7 @@ fetchScaledFrameByTime(timeUs: number, queryMode: AVImageQueryOptions, outputSiz
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -197,6 +203,7 @@ fetchScaledFrameByTime(timeUs: number, queryMode: AVImageQueryOptions, outputSiz
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 import { media } from '@kit.MediaKit';
+import { common } from '@kit.AbilityKit';
 
 let avImageGenerator: media.AVImageGenerator | undefined = undefined;
 let pixel_map: image.PixelMap | undefined = undefined;
@@ -208,17 +215,19 @@ let outputSize: media.OutputSize = {
   height: 300,
 };
 // 获取缩略图。
-media.createAVImageGenerator((err: BusinessError, generator: media.AVImageGenerator) => {
-  if (generator != null) {
+media.createAVImageGenerator(async (err: BusinessError, generator: media.AVImageGenerator) => {
+  if (generator) {
     avImageGenerator = generator;
     console.info(`Succeeded in creating AVImageGenerator`);
+    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    generator.fdSrc = await context.resourceManager.getRawFd('H264_AAC.mp4');
     avImageGenerator.fetchScaledFrameByTime(timeUs, queryOption, outputSize).then((pixelMap: image.PixelMap) => {
       pixel_map = pixelMap;
     }).catch((error: BusinessError) => {
-      console.error(`Failed to fetch ScaledFrameByTime, error message:${error.message}`);
+      console.error(`Failed to fetch ScaledFrameByTime, code: ${error.code}, message: ${error.message}`);
     });
   } else {
-    console.error(`Failed to create AVImageGenerator, error message:${err.message}`);
+    console.error(`Failed to create AVImageGenerator, code: ${err.code}, message: ${err.message}`);
   }
 });
 ```
@@ -239,7 +248,7 @@ release(callback: AsyncCallback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                   |
 | -------- | ------------------------------------------ |
@@ -255,18 +264,18 @@ let avImageGenerator: media.AVImageGenerator | undefined = undefined;
 
 // 释放资源。
 media.createAVImageGenerator((err: BusinessError, generator: media.AVImageGenerator) => {
-  if (generator != null) {
+  if (generator) {
     avImageGenerator = generator;
     console.info(`Succeeded in creating AVImageGenerator`);
     avImageGenerator.release((error: BusinessError) => {
       if (error) {
-        console.error(`Failed to release, err = ${JSON.stringify(error)}`);
+        console.error(`Failed to release, code: ${error.code}, message: ${error.message}`);
         return;
       }
       console.info(`Succeeded in releasing`);
     });
   } else {
-    console.error(`Failed to create AVImageGenerator, error message:${err.message}`);
+    console.error(`Failed to create AVImageGenerator, code: ${err.code}, message: ${err.message}`);
   }
 });
 ```
@@ -283,11 +292,11 @@ release(): Promise\<void>
 
 | 类型           | 说明                                     |
 | -------------- | ---------------------------------------- |
-| Promise\<void> | 异步方式释放资源release方法的Promise返回值。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -303,16 +312,16 @@ let avImageGenerator: media.AVImageGenerator | undefined = undefined;
 
 // 释放资源。
 media.createAVImageGenerator((err: BusinessError, generator: media.AVImageGenerator) => {
-  if (generator != null) {
+  if (generator) {
     avImageGenerator = generator;
     console.info(`Succeeded in creating AVImageGenerator`);
     avImageGenerator.release().then(() => {
       console.info(`Succeeded in releasing.`);
     }).catch((error: BusinessError) => {
-      console.error(`Failed to release, error message:${error.message}`);
+      console.error(`Failed to release, code: ${error.code}, message: ${error.message}`);
     });
   } else {
-    console.error(`Failed to create AVImageGenerator, error message:${err.message}`);
+    console.error(`Failed to create AVImageGenerator, code: ${err.code}, message: ${err.message}`);
   }
 });
 ```

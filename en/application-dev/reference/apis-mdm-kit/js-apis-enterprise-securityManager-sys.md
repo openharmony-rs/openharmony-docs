@@ -1,22 +1,22 @@
 # @ohos.enterprise.securityManager (Security Management) (System API)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
-<!--Owner: @huanleima-->
-<!--Designer: @liuzuming-->
+<!--Owner: @huanleima; @weizai16-->
+<!--Designer: @hp_guo-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 The **securityManager** module provides device security management capabilities, including obtaining the security patch status and file system encryption status.
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - The APIs of this module can be used only in the stage model.
+> The APIs of this module can be used only in the stage model.
 >
-> - The APIs of this module can be called only by a [device administrator application](../../mdm/mdm-kit-term.md#mdm-application-device-administrator-application) that is [enabled](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2).
+> The APIs of this module are available only to the [MDM application](../../mdm/mdm-kit-term.md#mdm-app), and can be called only after the device administrator application is activated via [enableAdmin](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2).
 >
-> - This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.enterprise.securityManager](js-apis-enterprise-securityManager.md).
+> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.enterprise.securityManager](js-apis-enterprise-securityManager.md).
 
 ## Modules to Import
 
@@ -24,11 +24,15 @@ The **securityManager** module provides device security management capabilities,
 import { securityManager } from '@kit.MDMKit';
 ```
 
-## securityManager.getSecurityPatchTag
+## securityManager.getSecurityPatchTag<sup>(deprecated)</sup>
 
 getSecurityPatchTag(admin: Want): string
 
 Queries the security patch tag of a device.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [getSecurityStatus](./js-apis-enterprise-securityManager.md#securitymanagergetsecuritystatus)
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -75,17 +79,21 @@ let wantTemp: Want = {
 };
 
 try {
-    let res: string = securityManager.getSecurityPatchTag(wantTemp);
-    console.info(`Succeeded in getting security patch tag. tag: ${res}`);
+  let res: string = securityManager.getSecurityPatchTag(wantTemp);
+  console.info(`Succeeded in getting security patch tag. tag: ${res}`);
 } catch(err) {
-    console.error(`Failed to get security patch tag. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get security patch tag. Code: ${err.code}, message: ${err.message}`);
 }
 ```
-## securityManager.getDeviceEncryptionStatus
+## securityManager.getDeviceEncryptionStatus<sup>(deprecated)</sup>
 
 getDeviceEncryptionStatus(admin: Want): DeviceEncryptionStatus
 
 Queries the encryption status of the device file system.
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [getSecurityStatus](./js-apis-enterprise-securityManager.md#securitymanagergetsecuritystatus)
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -132,10 +140,10 @@ let wantTemp: Want = {
 };
 
 try {
-    let result: securityManager.DeviceEncryptionStatus = securityManager.getDeviceEncryptionStatus(wantTemp);
-    console.info(`Succeeded in getting device encryption status. isEncrypted: ${result.isEncrypted}`);
+  let result: securityManager.DeviceEncryptionStatus = securityManager.getDeviceEncryptionStatus(wantTemp);
+  console.info(`Succeeded in getting device encryption status. isEncrypted: ${result.isEncrypted}`);
 } catch(err) {
-    console.error(`Failed to get device encryption status. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get device encryption status. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -143,7 +151,7 @@ try {
 
 getPasswordPolicy(): PasswordPolicy
 
-Obtains the password policy of this device.
+Obtains the device screen lock password policy.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -155,7 +163,7 @@ Obtains the password policy of this device.
 
 | Type                  | Description                     |
 | --------------------- | ------------------------- |
-| [PasswordPolicy](./js-apis-enterprise-securityManager.md#passwordpolicy) | Device password policy obtained.|
+| [PasswordPolicy](./js-apis-enterprise-securityManager.md#passwordpolicy) | Device screen lock password policy.|
 
 **Error codes**
 
@@ -171,10 +179,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { securityManager } from '@kit.MDMKit';
 
 try {
-    let result: securityManager.PasswordPolicy = securityManager.getPasswordPolicy();
-    console.info(`Succeeded in getting password policy, result : ${JSON.stringify(result)}`);
+  let result: securityManager.PasswordPolicy = securityManager.getPasswordPolicy();
+  console.info(`Succeeded in getting password policy, result : ${JSON.stringify(result)}`);
 } catch(err) {
-    console.error(`Failed to get password policy. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get password policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 

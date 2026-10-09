@@ -6,12 +6,12 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The **&lt;dialog&gt;** component is custom pop-up container for showing critical information or calling for an action. For details, see [dialog](../reference/apis-arkui/arkui-js/js-components-container-dialog.md).
+The **\<dialog>** component is custom pop-up container for showing critical information or calling for an action. For details, see [dialog](../reference/apis-arkui/arkui-js/js-components-container-dialog.md).
 
 
-## Creating a &lt;dialog&gt; Component
+## Creating a \<dialog> Component
 
-Create a **&lt;dialog&gt;** component in the .hml file under **pages/index** and add **&lt;button&gt;** components to trigger the **&lt;dialog&gt;**. The **&lt;dialog&gt;** component supports only the **width**, **height**, **margin**, **margin-[left|top|right|bottom]**, and **margin-[start|end]** styles.
+Create a **\<dialog>** component in the .hml file under **pages/index** and add **\<button>** components to trigger the **\<dialog>**. The **\<dialog>** component supports only the **width**, **height**, **margin**, **margin-[left|top|right|bottom]**, and **margin-[start|end]** styles.
 ```html
 <!-- xxx.hml -->
 <div class="doc-page">
@@ -60,14 +60,14 @@ button{
 ```js
 // xxx.js
 export default {
-  //Touch to open the dialog box.
+  // Click to open the dialog box.
   openDialog(){
     this.$element('dialogId').show()
   },
 }
 ```
 
-![en-us_image_0000001267767893](figures/en-us_image_0000001267767893.gif)
+![dialog-Component](figures/dialog-Component.gif)
 
 
 ## Setting Dialog Box Response
@@ -148,22 +148,21 @@ export default {
 ```
 
 
-![en-us_image_0000001223287720](figures/en-us_image_0000001223287720.gif)
+![Dialog-Box-Response](figures/Dialog-Box-Response.gif)
 
 
-> **NOTE**
->
+> **Note:**
 > - This component supports only one child component.
 >
-> - Attributes and styles of a **&lt;dialog&gt;** component cannot be dynamically updated.
+> - Attributes and styles of a **\<dialog>** component cannot be dynamically updated.
 >
-> - The **&lt;dialog&gt;** component does not support the **focusable** and **click-effect** attributes.
+> - The dialog component does not support the focusable and click-effect attributes.
 
 
 ## Example Scenario
 
 
-Use the **&lt;dialog&gt;** component to implement a schedule. When the dialog box is open, use the [&lt;textarea&gt;](../reference/apis-arkui/arkui-js/js-components-basic-textarea.md) component to add an event and touch the OK button to obtain the current time and save the input text. The events in the calendar are displayed in a list.
+Use the **\<dialog>** component to implement a schedule. Use the **&lt;dialog&gt;** component to implement a schedule. When the dialog box is open, use the [&lt;textarea&gt;](../reference/apis-arkui/arkui-js/js-components-basic-textarea.md) component to add an event and touch the OK button to obtain the current time and save the input text. The events in the calendar are displayed in a list. The events in the calendar are displayed in a list.
 
 
 ```html
@@ -307,13 +306,11 @@ export default {
       message: 'Event setting canceled.'
     })
   },
-//    Touch OK to save the data.
+  // Click OK to save the data.
   setSchedule(e) {
-    if (e.text === '') {
-      this.schedule = info
-    } else {
-      this.schedule = info
-      var addItem =  {schedule: this.schedule,}
+    this.schedule = info
+    if (e.text !== '') {
+      var addItem = {schedule: this.schedule}
       this.scheduleList.push(addItem)
     }
     this.$element('dateDialog').close()
@@ -322,4 +319,10 @@ export default {
 ```
 
 
-![en-us_image_0000001223127756](figures/en-us_image_0000001223127756.gif)
+![Example-Scenario-3](figures/Example-Scenario-3.gif)
+
+
+## Samples
+
+The following sample is provided to help you better understand how to develop **dialog**:
+- [Basic Usage of Dialogs (JS, API version 9)](https://gitcode.com/openharmony/codelabs/tree/master/JSUI/DialogDemo)

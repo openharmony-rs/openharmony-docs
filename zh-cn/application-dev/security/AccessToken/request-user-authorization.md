@@ -53,7 +53,7 @@
 效果展示：
 
 <!--RP4-->
-![zh-cn_image_location](figures/zh-cn_image_location.png)
+![image-location](figures/image-location.png)
 <!--RP4End-->
 
 1. 申请ohos.permission.LOCATION、ohos.permission.APPROXIMATELY_LOCATION权限，配置方式请参见[声明权限](declare-permissions.md)。
@@ -101,13 +101,13 @@
      // 精确定位权限只能跟模糊定位权限一起申请，或者已经有模糊定位权限才能申请精确定位权限。
      if (grantStatus2 && !grantStatus1) {
        // 申请精确定位权限。
-       // ···
+       // ...
      } else if (!grantStatus1 && !grantStatus2) {
        // 申请模糊定位权限与精确定位权限或单独申请模糊定位权限。
-       // ···
+       // ...
      } else {
        // 已经授权，可以继续访问目标操作。
-       // ···
+       // ...
      }
    }
    ```

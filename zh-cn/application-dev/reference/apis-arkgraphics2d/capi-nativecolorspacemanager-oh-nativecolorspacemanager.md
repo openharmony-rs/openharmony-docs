@@ -1,8 +1,8 @@
 # OH_NativeColorSpaceManager
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @xubo233-->
-<!--Designer: @dizuo1-->
+<!--Owner: @xiaojianfeng_jeffery-->
+<!--Designer: @njuptkid-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
 

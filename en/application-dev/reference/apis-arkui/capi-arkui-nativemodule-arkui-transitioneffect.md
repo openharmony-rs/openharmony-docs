@@ -1,8 +1,8 @@
 # ArkUI_TransitionEffect
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -12,7 +12,7 @@ typedef struct ArkUI_TransitionEffect ArkUI_TransitionEffect
 
 ## Overview
 
-Defines the transition parameter object for transition property configuration.
+Defines a transition effect object, which is used to configure the transition animation effect when a component appears or disappears.
 
 **Since**: 12
 

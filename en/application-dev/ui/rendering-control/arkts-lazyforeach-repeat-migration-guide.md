@@ -1,10 +1,12 @@
 # Migrating from LazyForEach to Repeat
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @maorh-->
 <!--Designer: @keerecles-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=b6623872619ac48b929789d5953bb2f79245713e translatedAt=2026-08-03T09:16:07.495Z pushedAt=2026-08-03T09:26:50.620Z -->
 
 [Repeat](./arkts-new-rendering-control-repeat.md) is a loop rendering component introduced in ArkUI since API version 12. Compared with [LazyForEach](./arkts-rendering-control-lazyforeach.md), **Repeat** offers a simpler API, enhanced functionality, and improved performance optimization. This topic provides guidance on migrating from **LazyForEach** to **Repeat**.
 
@@ -21,7 +23,7 @@ In Example 1, **LazyForEach** is used within a [List](../arkts-layout-developmen
 **Example 1 – Before Migration**
 
 ```ts
-/** For details about the BasicDataSource implementation of the string array, see the sample code at the end of this topic. **/
+/** For details about the BasicDataSource implementation of the string array, see the sample code at the end of this topic. */
 
 class MyDataSource extends BasicDataSource {
   private dataArray: string[] = [];
@@ -158,11 +160,12 @@ The example above illustrates a typical use case of **LazyForEach** for renderin
 4. Configure lazy loading.
 
    **Repeat** supports two rendering modes: [lazy loading and full loading](./arkts-new-rendering-control-repeat.md#lazy-loading-capability).
-   
+
    - Full loading mode renders all child components (similar to [ForEach](./arkts-rendering-control-foreach.md)).
+
    - Lazy loading mode dynamically renders only visible and preloaded components (requires container components, similar to **LazyForEach**).
 
-   When migrating from **LazyForEach**, enable lazy loading using the [virtualScroll](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#virtualscroll) attribute.
+When migrating from LazyForEach to Repeat, call the [virtualScroll](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#virtualscroll) attribute to enable lazy loading.
 
    ```ts
    // Before migration – LazyForEach
@@ -181,7 +184,8 @@ After the previous migration steps, Example 1 has been successfully converted fr
 
 ```ts
 @Entry
-@ComponentV2 // Using state management V2
+@ComponentV2
+  // Use state management V2.
 struct MyComponent {
   @Local data: Array<string> = []; // Data source is a state management V2 decorated array.
 
@@ -226,7 +230,7 @@ Example 2 demonstrates the primary data operations.
 **Example 2 – Before Migration**
 
 ```ts
-/** For details about the BasicDataSource implementation of the string array, see the sample code at the end of this topic. **/
+/** For details about the BasicDataSource implementation of the string array, see the sample code at the end of this topic. */
 
 class MyDataSource extends BasicDataSource {
   private dataArray: string[] = [];
@@ -334,14 +338,19 @@ The above example demonstrates how **LazyForEach** re-renders child components f
 1. Prepare for the migration.
 
    Follow the steps outlined in the "Initial Data Rendering" section to replace **LazyForEach** with **Repeat**:
+
      1. Adopt state management V2 decorators.
+
      2. Update data source implementation.
+
      3. Adapt component and key generation functions.
+
      4. Enable lazy loading.
 
-2. Update the data modification logic.
+2. Update the data source modification logic.
 
    - **LazyForEach** requires explicit API calls to notify the component of data changes.
+
    - For **Repeat**, state management V2 automatically detects data source modifications and triggers updates. Therefore, you only need to modify the data source.
 
    ```ts
@@ -350,7 +359,7 @@ The above example demonstrates how **LazyForEach** re-renders child components f
    class MyDataSource implements IDataSource {
      private dataArray: string[] = [];
      
-     public changeData(index: number, newData: string): void {
+     public changeData(index: number, data: string): void {
        this.dataArray.splice(index, 1, data);
        this.notifyDataChange(index);
      }
@@ -387,21 +396,33 @@ struct MyComponent {
     Column({ space: 3 }) {
       // Add a new item on click.
       Button('Add new item')
-        .onClick(() => { this.data.push(`New item ${this.count++}`); })
+        .onClick(() => {
+          this.data.push(`New item ${this.count++}`);
+        })
       // Delete an item on click.
       Button('Delete item 0')
-        .onClick(() => { this.data.splice(0, 1); })
+        .onClick(() => {
+          this.data.splice(0, 1);
+        })
       // Swap items on click.
       Button('Swap item 0 and item 1')
-        .onClick(() => { let temp: string = this.data[0];
-                         this.data[0] = this.data[1];
-                         this.data[1] = temp; })
+        .onClick(() => {
+          let temp: string = this.data[0];
+          this.data[0] = this.data[1];
+          this.data[1] = temp;
+        })
       // Modify a single item on click.
       Button('Change item 0')
-        .onClick(() => { this.data.splice(0, 1, `Changed item ${this.count++}`); })
+        .onClick(() => {
+          this.data.splice(0, 1, `Changed item ${this.count++}`);
+        })
       // Modify multiple items on click.
       Button('Change all items')
-        .onClick(() => { this.data = this.data.map((item: string) => { return 'Changed ' + item; }); })
+        .onClick(() => {
+          this.data = this.data.map((item: string) => {
+            return 'Changed ' + item;
+          });
+        })
       List({ space: 3 }) {
         Repeat(this.data)
           .each((repeatItem: RepeatItem<string>) => {
@@ -436,7 +457,7 @@ Example 3 demonstrates sub-property observation.
 **Example 3 – Before Migration**
 
 ```ts
-/** For details about the BasicDataSource implementation of the StringData array, see the sample code at the end of this topic. **/
+/** For details about the BasicDataSource implementation of the StringData array, see the sample code at the end of this topic. */
 
 class MyDataSource extends BasicDataSource {
   private dataArray: StringData[] = [];
@@ -569,7 +590,7 @@ Example 4 demonstrates how to use the @Local decorator with **LazyForEach** to o
 **Example 4 – Before Migration**
 
 ```ts
-/** For details about the BasicDataSource implementation of the StringData array, see the sample code at the end of this topic. **/
+/** For details about the BasicDataSource implementation of the StringData array, see the sample code at the end of this topic. */
 
 class MyDataSource extends BasicDataSource {
   private dataArray: StringData[] = [];
@@ -720,11 +741,10 @@ The [@Param](../state-management/arkts-new-param.md) decorator in state manageme
 
 Example 5 demonstrates how to use the @Param decorator with **LazyForEach** to observe data changes and trigger component updates.
 
-
 **Example 5 – Before Migration**
 
 ```ts
-/** For details about the BasicDataSource implementation of the StringData array, see the sample code at the end of this topic. **/
+/** For details about the BasicDataSource implementation of the StringData array, see the sample code at the end of this topic. */
 
 class MyDataSource extends BasicDataSource {
   private dataArray: StringData[] = [];
@@ -862,7 +882,7 @@ Example 6 demonstrates a typical implementation:
 **Example 6 – Before Migration**
 
 ```ts
-/** For details about the BasicDataSource implementation of the string array, see the sample code at the end of this topic. **/
+/** For details about the BasicDataSource implementation of the string array, see the sample code at the end of this topic. */
 
 class MyDataSource extends BasicDataSource {
   private dataArray: string[] = [];
@@ -990,7 +1010,7 @@ Example 7 demonstrates a typical component reuse scenario:
 **Example 7 – Before Migration**
 
 ```ts
-/** For details about the BasicDataSource implementation of the StringData array, see the sample code at the end of this topic. **/
+/** For details about the BasicDataSource implementation of the StringData array, see the sample code at the end of this topic. */
 
 class MyDataSource extends BasicDataSource {
   private dataArray: StringData[] = [];
@@ -1074,9 +1094,10 @@ struct ChildComponent {
 **Repeat** has built-in component reuse capability and can work with the [@ReusableV2](../state-management/arkts-new-reusableV2.md) decorator from state management V2. After migration, you can implement component reuse in one of two ways:
 
 1. Use the built-in reuse capability of **Repeat**.
+
 2. Use the reuse capability provided by the @ReusableV2 decorator.
 
-Note: The built-in reuse capability of **Repeat** is enabled by default and takes precedence over the @ReusableV2 decorator. To use @ReusableV2, you must manually disable the built-in reuse capability of **Repeat**. (Since API version 18, @ReusableV2 is supported and you can [disable the reuse capability of Repeat](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#virtualscrolloptions).)
+Note that Repeat enables its own reuse capability by default, and its priority is higher than that of the @ReusableV2 decorator. To use the @ReusableV2 decorator, you must first manually disable the built-in reuse capability of Repeat. (The @ReusableV2 decorator is supported since API version 18, and Repeat supports disabling its own reuse capability through [VirtualScrollOptions](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#virtualscrolloptions) since API version 18.)
 
 **Example 7 – Migration Solution 1: Using the Built-in Reuse Capability of Repeat**
 
@@ -1159,7 +1180,7 @@ struct MyComponent {
           }
         })
         .key((item: StringData, index: number) => index.toString())
-        .virtualScroll({ reusable: false }) // Disable the built-in reuse of Repeat (API version 19).
+        .virtualScroll({ reusable: false }) // Disable Repeat's own reuse capability (API 18).
     }.cachedCount(5)
   }
 }
@@ -1205,7 +1226,7 @@ Example 8 demonstrates a typical template rendering scenario:
 **Example 8 – Before Migration**
 
 ```ts
-/** For details about the BasicDataSource implementation of the StringData array, see the sample code at the end of this topic. **/
+/** For details about the BasicDataSource implementation of the StringData array, see the sample code at the end of this topic. */
 
 class MyDataSource extends BasicDataSource {
   private dataArray: StringData[] = [];
@@ -1330,6 +1351,7 @@ struct ChildComponentB {
   }
 }
 ```
+
 **Migrating to Repeat**
 
 **Repeat** provides built-in template rendering capability. You can use the [templateId](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#templateid) method to assign different templates to data items and the [template](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#template) API to configure distinct component generation functions for each template. In addition, you can implement custom logic to distribute data items to appropriate templates.
@@ -1360,7 +1382,7 @@ class StringData {
 @Entry
 @ComponentV2
 struct MyComponent {
-  data: StringData[] = [];
+  @Local data: StringData[] = [];
 
   aboutToAppear() {
     for (let i = 0; i <= 200; i++) {
@@ -1430,7 +1452,7 @@ class StringData {
 @Entry
 @ComponentV2
 struct MyComponent {
-  data: StringData[] = [];
+  @Local data: StringData[] = [];
 
   aboutToAppear() {
     for (let i = 0; i <= 200; i++) {
@@ -1458,7 +1480,7 @@ struct MyComponent {
           }
         })
         .key((item: StringData, index: number) => index.toString())
-        .virtualScroll({ reusable: false }) // Disable the built-in reuse of Repeat (API version 19) to prevent rendering issues.
+        .virtualScroll({ reusable: false }) // Disable Repeat's own reusability (API 18) to avoid rendering exceptions.
     }.cachedCount(5)
   }
 }
@@ -1589,8 +1611,7 @@ class BasicDataSource implements IDataSource {
   notifyDataMove(from: number, to: number): void {
     this.listeners.forEach(listener => {
       listener.onDataMove(from, to);
-      // Method 2: listener.onDatasetChange(
-      //         [{type: DataOperationType.EXCHANGE, index: {start: from, end: to}}]);
+      // Method 2: listener.onDatasetChange([{type: DataOperationType.EXCHANGE, index: {start: from, end: to}}]);
     });
   }
 

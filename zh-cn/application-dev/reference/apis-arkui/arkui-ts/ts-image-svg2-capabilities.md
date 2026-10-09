@@ -12,7 +12,7 @@
 
 - 仿射变换能力扩展：支持变换全局中心点可配置；支持rotate旋转的局部中心点；支持矩阵(matrix)转换方式；支持非法值的校验；裁剪路径内支持仿射变换操作；组合场景支持仿射变换操作。
 
-- 解析能力扩展：[viewBox](./ts-image-svg2-capabilities.md#viewbox属性支持对齐和缩放规则可配置)属性支持对齐和缩放规则的自定义配置；支持裁剪路径单元的解析；支持渐变单元的解析；支持遮罩单元和遮罩内容单元的解析；支持图案单元和图案内容单元的解析；支持滤镜单元和原语单元解析。
+- 解析能力扩展：[viewBox](#viewbox属性支持对齐和缩放规则可配置)属性支持对齐和缩放规则的自定义配置；支持裁剪路径单元的解析；支持渐变单元的解析；支持遮罩单元和遮罩内容单元的解析；支持图案单元和图案内容单元的解析；支持滤镜单元和原语单元解析。
 
 - 显示效果扩展：分组标签g元素中透明度opacity对整个分组下的多层子元素生效；增强g标签内clip-path裁剪路径规则的处理；pattern增强平铺效果和偏移值处理；线性渐变和径向渐变增强平移和缩放效果；mask和filter的参数异常时默认效果变更。
 
@@ -22,15 +22,15 @@
 
 | 元素           | 属性                                                         | 说明                                                         |
 | -------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| clipPath       | clipPathUnits                                                | clipPathUnits裁剪路径单元，指定裁剪路径的坐标系统基准。<br />clipPathUnits属性可取值：<br />`userSpaceOnUse`(基于绝对坐标系)、`objectBoundingBox`(被应用元素的边框作为基准的坐标系)。 |
-| filter         | filterUnits<br />primitiveUnits<br />x<br />y<br />width<br />height | filterUnits滤镜单元，定义滤镜效果（如模糊、阴影）的坐标和尺寸基准。<br />primitiveUnits滤镜原语单元，定义滤镜内元素效果的坐标和尺寸基准。<br />filterUnits和primitiveUnits两个属性均可取值：<br />`userSpaceOnUse`(基于绝对坐标系)、`objectBoundingBox`(被应用元素的边框作为基准的坐标系)。<br />x：滤镜区域x轴偏移分量，默认值：-10%  <br/>y：滤镜区域y轴偏移分量，默认值：-10%  <br/>width：滤镜区域宽，默认值：120%  <br/>height：滤镜区域高，默认值：120%  |
-| mask           | maskUnits<br />maskContentUnits<br />x<br />y<br />width<br />height | maskUnits遮罩单元，控制遮罩的坐标系统和内容渲染方式。<br />maskContentUnits遮罩内容单元，控制遮罩内元素的坐标系统和内容渲染方式。<br />maskUnits和maskContentUnits两个属性均可取值：<br />`userSpaceOnUse`(基于绝对坐标系)、`objectBoundingBox`(被应用元素的边框作为基准的坐标系)。<br />x：遮罩区域x轴偏移分量，默认值：-10% <br/>y：遮罩区域y轴偏移分量，默认值：-10%  <br/>width：遮罩区域宽，默认值：120% <br/>height：遮罩区域高，默认值：120%  |
-| radialGradient | gradientUnits                                                | gradientUnits渐变单元，决定渐变（线性/径向）的坐标参考系。<br />gradientUnits属性可取值：<br />`userSpaceOnUse`(基于绝对坐标系)、`objectBoundingBox`(被应用元素的边框作为基准的坐标系)。 |
-| linearGradient | gradientUnits                                                | gradientUnits渐变单元，决定渐变（线性/径向）的坐标参考系。<br />gradientUnits属性可取值：<br />`userSpaceOnUse`(基于绝对坐标系)、`objectBoundingBox`(被应用元素的边框作为基准的坐标系)。 |
-| pattern        | patternUnits<br />patternContentUnits                        | patternUnits图案单元，控制图案整体（`<pattern>`）的坐标系和内容缩放。<br />patternContentUnits图案内容单元，控制图案内部元素的坐标系和内容缩放。<br />patternUnits和patternContentUnits两个属性均可取值：<br />`userSpaceOnUse`(基于绝对坐标系)、`objectBoundingBox`(被应用元素的边框作为基准的坐标系)。 |
-| g              | opacity<br />clip-path                                       | opacity透明度：对整个分组下的多层子元素生效。<br />clip-path裁剪路径：对整个分组下的多层子元素生效。 |
-| 通用           | transform                                                    | 用于对SVG元素进行2D变换（如平移、旋转、缩放、倾斜等）。<br />translate(x, y)‌：沿X/Y轴平移元素。 ‌<br />rotate(angle, [cx], [cy])‌：旋转元素（可选参数指定旋转中心）。<br /> ‌scale(sx, [sy])‌：缩放元素（单参数时X/Y轴等比缩放）。<br /> ‌skewX(angle)/skewY(angle)‌：沿X/Y轴倾斜元素。 ‌<br />matrix(a, b, c, d, e, f)‌：通过矩阵定义复杂变换。 |
-| 通用           | transform-origin                                             | 用于定义变换的基准点。需和[transform](./ts-universal-attributes-transformation.md#transform)属性配合使用。<br />当配置transform-origin时，按照全局中心点（transform-origin）属性指定的坐标偏移(x,y)作为变换中心点进行仿射变换。 |
+| clipPath       | clipPathUnits                                                | clipPathUnits裁剪路径单元，指定裁剪路径的坐标系统基准。<br />clipPathUnits属性可取值：<br />`userSpaceOnUse`（基于绝对坐标系）、`objectBoundingBox`（被应用元素的边框作为基准的坐标系）。 |
+| filter         | filterUnits<br />primitiveUnits<br />x<br />y<br />width<br />height | filterUnits滤镜单元，定义滤镜效果（如模糊、阴影）的坐标和尺寸基准。<br />primitiveUnits滤镜原语单元，定义滤镜内元素效果的坐标和尺寸基准。<br />filterUnits和primitiveUnits两个属性均可取值：<br />`userSpaceOnUse`（基于绝对坐标系）、`objectBoundingBox`（被应用元素的边框作为基准的坐标系）。<br />x：滤镜区域x轴偏移分量，默认值：-10%  <br/>y：滤镜区域y轴偏移分量，默认值：-10%  <br/>width：滤镜区域宽，默认值：120%  <br/>height：滤镜区域高，默认值：120%  |
+| mask           | maskUnits<br />maskContentUnits<br />x<br />y<br />width<br />height | maskUnits遮罩单元，指定遮罩的坐标系统参考基准。<br />maskContentUnits遮罩内容单元，指定遮罩内元素的坐标系统参考基准。<br />maskUnits和maskContentUnits两个属性均可取值：<br />`userSpaceOnUse`（基于绝对坐标系）、`objectBoundingBox`（被应用元素的边框作为基准的坐标系）。<br />x：遮罩区域x轴偏移分量，默认值：-10% <br/>y：遮罩区域y轴偏移分量，默认值：-10%  <br/>width：遮罩区域宽，默认值：120% <br/>height：遮罩区域高，默认值：120%  |
+| radialGradient | gradientUnits                                                | gradientUnits渐变单元，决定渐变（线性/径向）的坐标参考系。<br />gradientUnits属性可取值：<br />`userSpaceOnUse`（基于绝对坐标系）、`objectBoundingBox`（被应用元素的边框作为基准的坐标系）。 |
+| linearGradient | gradientUnits                                                | gradientUnits渐变单元，决定渐变（线性/径向）的坐标参考系。<br />gradientUnits属性可取值：<br />`userSpaceOnUse`（基于绝对坐标系）、`objectBoundingBox`（被应用元素的边框作为基准的坐标系）。 |
+| pattern        | patternUnits<br />patternContentUnits                        | patternUnits图案单元，指定图案整体（`<pattern>`）的坐标系统参考基准。<br />patternContentUnits图案内容单元，指定图案内部元素的坐标系统参考基准。<br />patternUnits和patternContentUnits两个属性均可取值：<br />`userSpaceOnUse`（基于绝对坐标系）、`objectBoundingBox`（被应用元素的边框作为基准的坐标系）。 |
+| g              | opacity<br />clip-path                                       | opacity透明度：对整个分组下的多层子元素生效，取值范围[0,1]，0表示完全透明，1表示完全不透明。超出范围时自动钳制到边界值。<br />clip-path裁剪路径：对整个分组下的多层子元素生效。 |
+| 通用           | transform                                                    | 用于对SVG元素进行2D变换（如平移、旋转、缩放、倾斜等）。<br />translate(x, y)‌：沿X/Y轴平移元素。 ‌<br />rotate(angle, [cx], [cy])‌：旋转元素（可选参数指定旋转中心）。angle参数单位为deg（度）。<br /> ‌scale(sx, [sy])‌：缩放元素（单参数时X/Y轴等比缩放）。<br /> ‌skewX(angle)/skewY(angle)‌：沿X/Y轴倾斜元素。 ‌<br />matrix(a, b, c, d, e, f)‌：通过矩阵定义复杂变换。 |
+| 通用           | transform-origin                                             | 用于定义变换的基准点。需和[transform](./ts-universal-attributes-transformation.md#transform)属性配合使用，单独配置无效。<br />当配置transform-origin时，按照全局中心点（transform-origin）属性指定的坐标偏移(x,y)作为变换中心点进行仿射变换；未配置时，默认使用SVG ViewPort左上角坐标点(0,0)作为变换中心点。 |
 
 ## SVG易用性提升
 
@@ -42,7 +42,7 @@ SVG图源颜色默认解析格式从#ARGB变更为符合SVG标准规范的#RGBA�
 
 >**说明：**
 >
->SVG图片最终显示效果受Image组件的'objectFit'参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了'objectFit(ImageFit.Contain)'，开发者需要根据实际显示效果正确配置[objectFit](../../apis-media-library-kit/ohos-multimedia-movingphotoview.md#objectfit)参数。
+>SVG图片最终显示效果受Image组件的objectFit参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了objectFit(ImageFit.Contain)，开发者需要根据实际显示效果正确配置[objectFit](../../apis-media-library-kit/ohos-multimedia-movingphotoview.md#objectfit)参数。
 
 SVG图源属性设置8位十六进制格式的颜色时，示例图源和效果如下：
 
@@ -78,7 +78,7 @@ SVG图源属性设置4位十六进制格式的颜色时，示例图源和效果�
 
 | 提升前                                                | 提升后                                                |
 | :------------------------------------------------------------: | :------------------------------------------------------------: |
-| 系统会把4位的十六进制颜色当#ARGB格式解析并显示。<br>例如fill="#8888"的矩形显示效果。<br> ![提升前](figures/4hex_color_before.png) | 系统会把4位的十六进制颜色当#RGBA解析并显示。<br>例如fill="#0000"的矩形显示效果（全透明）。<br> ![提升后](figures/4hex_color_after.png) |
+| 系统会把4位的十六进制颜色当#ARGB格式解析并显示。<br>例如fill="#0000"的矩形显示效果。<br> ![提升前](figures/4hex_color_before.png) | 系统会把4位的十六进制颜色当#RGBA解析并显示。<br>例如fill="#0000"的矩形显示效果（全透明）。<br> ![提升后](figures/4hex_color_after.png) |
 
 ### 引用国际化资源标识（IRI）类型严格校验
 
@@ -86,11 +86,11 @@ SVG图源属性设置4位十六进制格式的颜色时，示例图源和效果�
 
 >**说明：**
 >
->SVG图片最终显示效果受Image组件的'objectFit'参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了'objectFit(ImageFit.Contain)'，开发者需要根据实际显示效果正确配置objectFit参数。
+>SVG图片最终显示效果受Image组件的objectFit参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了objectFit(ImageFit.Contain)，开发者需要根据实际显示效果正确配置objectFit参数。
 
 | 提升前                                             | 提升后                                     |
 | :---------------------------------------------------------: | :-------------------------------------------------: |
-| 滤镜/裁剪路径/遮罩引用的URL类型不匹配，导致错误的显示效果。 | 滤镜/裁剪路径/遮罩引用的URL类型不匹配时，不显示对应效果。<br> 例如，mask、clippath、filter、pattern、渐变等标签都有各自的id，filter、clip-path和mask属性绑定其它类型的标签id时，对应效果不生效。只有mask属性绑定mask标签id、clip-path属性绑定clipPath标签id和filter属性绑定filter标签id时，对应效果才生效。 |
+| 滤镜/裁剪路径/遮罩引用的URL类型不匹配，导致错误的显示效果。 | 滤镜/裁剪路径/遮罩引用的URL类型不匹配时，不显示对应效果。<br> 例如，mask、clipPath、filter、pattern、渐变等标签都有各自的id，filter、clip-path和mask属性绑定其它类型的标签id时，对应效果不生效。只有mask属性绑定mask标签id、clip-path属性绑定clipPath标签id和filter属性绑定filter标签id时，对应效果才生效。 |
 
 当URL类型不匹配时，遮罩效果不生效，示例图源如下：
 ```xml
@@ -112,11 +112,11 @@ SVG图源属性设置4位十六进制格式的颜色时，示例图源和效果�
 
 ### 调整colorFilter生效范围
 
-Image组件的[colorFilter](./ts-basic-components-image.md#colorfilter9)属性从只对stroke边框生效调整为对整个SVG图源生效。
+Image组件的[colorFilter](./ts-basic-components-image.md#colorfilter9)属性从只对stroke边框生效调整为对SVG图源中的所有元素（含填充与边框）生效。
 
 >**说明：**
 >
->SVG图片最终显示效果受Image组件的'objectFit'参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了'objectFit(ImageFit.Contain)'，开发者需要根据实际显示效果正确配置objectFit参数。
+>SVG图片最终显示效果受Image组件的objectFit参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了objectFit(ImageFit.Contain)，开发者需要根据实际显示效果正确配置objectFit参数。
 
 | 原始图源                                                | 提升前                                                | 提升后                                                |
 | :------------------------------------------------------------: | :------------------------------------------------------------: | :------------------------------------------------------------: |
@@ -136,8 +136,6 @@ Image组件的[colorFilter](./ts-basic-components-image.md#colorfilter9)属性�
 @Component
 
 struct Index {
-  @State select: boolean = true
-  @State effect:ImageFit = ImageFit.Contain
   build() {
     Row() {
       Column() {
@@ -165,11 +163,11 @@ struct Index {
 
 >**说明：**
 >
->SVG图片最终显示效果受Image组件的'objectFit'参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了'objectFit(ImageFit.Contain)'，开发者需要根据实际显示效果正确配置objectFit参数。
+>SVG图片最终显示效果受Image组件的objectFit参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了objectFit(ImageFit.Contain)，开发者需要根据实际显示效果正确配置objectFit参数。
 
 | 提升前                                                | 提升后                                                |
 | :------------------------------------------------------------: | :------------------------------------------------------------: |
-| Image组件的fillColor属性只对SVG图源中fill='none'的元素仍然填充颜色。<br> ![提升前](figures/fill_none_before.PNG) | Image组件的fillColor属性对SVG图源中fill='none'的元素不填充颜色。<br> ![提升后](figures/fill_none_after.PNG) |
+| Image组件的fillColor属性会对SVG图源中fill='none'的元素也填充颜色。<br> ![提升前](figures/fill_none_before.PNG) | Image组件的fillColor属性对SVG图源中fill='none'的元素不填充颜色。<br> ![提升后](figures/fill_none_after.PNG) |
 
 示例图源和示例代码如下：
 ```xml
@@ -183,8 +181,6 @@ struct Index {
 @Component
 
 struct Index {
-  @State select: boolean = true
-  @State effect:ImageFit = ImageFit.Contain
   build() {
     Row() {
       Column() {
@@ -208,21 +204,21 @@ struct Index {
 
 ### 支持变换全局中心点配置
 
-SVG支持解析[transform-origin](../arkui-js/js-components-common-animation.md)属性来配置全局中心点的能力，前后效果对比如下表格说明：
+SVG支持解析transform-origin属性来配置全局中心点的能力，前后效果对比如下表格说明：
 
 >**说明：**
 >
->SVG图片最终显示效果受Image组件的'[objectFit](./ts-basic-components-image.md#objectfit)'参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了'objectFit(ImageFit.Contain)'，开发者需要根据实际显示效果正确配置objectFit参数。
+>SVG图片最终显示效果受Image组件的[objectFit](./ts-basic-components-image.md#objectfit)参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了objectFit(ImageFit.Contain)，开发者需要根据实际显示效果正确配置objectFit参数。
 
 |                           SVG场景                            |                        扩展前                         |                        扩展后                         |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
 |        SVG基本图形配置变换功能和transform-origin属性。        | 固定按照SVG的ViewPort左上角坐标点(0,0)作为变换中心点进行仿射变换。 | 按照全局中心点（transform-origin）属性指定的坐标偏移(x,y)作为变换中心点进行仿射变换。 |
-| transform属性设置rotate旋转功能，同时配置transform-origin属性。</br>全局中心点值为图形元素右下角，如:'transform="rotate(30)" transform-origin="150 150"'。 |  ![](figures/base_rotate_before.PNG)  |  ![](figures/base_rotate_after.PNG)   |
+| transform属性设置rotate旋转功能，同时配置transform-origin属性。<br>全局中心点值为图形元素右下角，如:'transform="rotate(30)" transform-origin="150 150"'。 |  ![](figures/base_rotate_before.PNG)  |  ![](figures/base_rotate_after.PNG)   |
 | transform属性设置scale缩放功能，同时配置transform-origin属性。</br>全局中心点值为图形元素右下角，如:'transform="scale(0.77)" transform-origin="150 150"'。 |  ![](figures/base_scale_before.PNG)   |   ![](figures/base_scale_after.PNG)   |
 | transform属性设置skewX按x轴倾斜的功能，同时配置transform-origin属性。</br>全局中心点值为图形元素右下角，如:'transform="skewX(30)" transform-origin="150 150"'。 |  ![](figures/base_skewX_before.PNG)   |   ![](figures/base_skewX_after.PNG)   |
 | transform属性设置skewY按y轴倾斜的功能，同时配置transform-origin属性。</br>全局中心点值为图形元素右下角，如:'transform="skewY(30)" transform-origin="150 150"'。 |  ![](figures/base_skewY_before.PNG)   |   ![](figures/base_skewY_after.PNG)   |
 | transform属性设置translate平移功能，同时配置transform-origin属性。</br>全局中心点值为图形元素右下角，如:'transform="translate(30,30)" transform-origin="150 150"'。 | ![](figures/base_translate_before.PNG) | ![](figures/base_translate_after.PNG) |
-| transform属性链式调用多个功能，同时配置transform-origin属性。</br>全局中心点值为图形元素右下角，如:transform='"translate(10,10) rotate(10) scale(0.5) skewX(10)" transform-origin="150 150"'。 |   ![](figures/base_list_before.PNG)   |   ![](figures/base_list_after.PNG)    |
+| transform属性链式调用多个功能，同时配置transform-origin属性。<br>全局中心点值为图形元素右下角，如:'transform="translate(10,10) rotate(10) scale(0.5) skewX(10)" transform-origin="150 150"'。 |   ![](figures/base_list_before.PNG)   |   ![](figures/base_list_after.PNG)    |
 
 ### 支持rotate旋转功能局部中心点配置
 
@@ -230,23 +226,23 @@ SVG支持解析rotate旋转的局部中心点功能，例如'rotate(30, -10, -10
 
 >**说明：**
 >
->SVG图片最终显示效果受Image组件的'objectFit'参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了'objectFit(ImageFit.Contain)'，开发者需要根据实际显示效果正确配置objectFit参数。
+>SVG图片最终显示效果受Image组件的objectFit参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了objectFit(ImageFit.Contain)，开发者需要根据实际显示效果正确配置objectFit参数。
 
 | SVG场景                                                         | 扩展前                                                | 扩展后                                                |
 | :------------------------------------------------------------: | :------------------------------------------------------------: | :------------------------------------------------------------: |
-| SVG基本图形同时配置两个属性：</br>局部中心点和transform-origin，如'transform="rotate(30, -10, -10)" transform-origin="150 150"'。 | 按照局部中心点：rotate功能的最后2个参数指定的坐标偏移(x,y)作为变换中心点进行旋转。</br> ![](figures/base_rotate_loc_global_before.PNG) | 按照全局中心点transform-origin属性指定的坐标偏移(x,y)加局部中心点坐标偏移的和作为变换中心点进行旋转。</br> ![](figures/base_rotate_loc_global_after.PNG) |
+| SVG基本图形同时配置两个属性：<br>局部中心点和transform-origin，如'transform="rotate(30, -10, -10)" transform-origin="150 150"'。 | 按照局部中心点：rotate功能的最后2个参数指定的坐标偏移(x,y)作为变换中心点进行旋转。<br> ![](figures/base_rotate_loc_global_before.PNG) | 按照全局中心点transform-origin属性指定的坐标偏移(x,y)加局部中心点坐标偏移的和作为变换中心点进行旋转。<br> ![](figures/base_rotate_loc_global_after.PNG) |
 
 ### 支持矩阵(matrix)转换
 
-SVG支持解析transform属性的matrix矩阵转换能力。matrix允许对元素进行复杂的线性变换，包括平移、旋转、缩放和倾斜等，例如matrix(a, b, c, d, e, f)。其中各个字段的元素作用如下：a‌控制元素在x方向上的缩放，b‌控制元素在x方向上的倾斜，c‌控制元素在y方向上的倾斜‌，d‌控制元素在y方向上的缩放‌，e控制元素在x方向上的平移‌，f控制元素在y方向上的平移。
+SVG支持解析transform属性的matrix矩阵转换能力。matrix允许对元素进行复杂的线性变换，包括平移、旋转、缩放和倾斜等，例如matrix(a, b, c, d, e, f)。其中各个字段的元素作用如下：a‌控制元素在x方向上的缩放，b‌控制元素在y方向上的倾斜，c‌控制元素在x方向上的倾斜‌，d‌控制元素在y方向上的缩放‌，e控制元素在x方向上的平移‌，f控制元素在y方向上的平移。
 
 >**说明：**
 >
->SVG图片最终显示效果受Image组件的'objectFit'参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了'objectFit(ImageFit.Contain)'，开发者需要根据实际显示效果正确配置objectFit参数。
+>SVG图片最终显示效果受Image组件的objectFit参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了objectFit(ImageFit.Contain)，开发者需要根据实际显示效果正确配置objectFit参数。
 
 | SVG场景                                                         | 扩展前                                                | 扩展后                                                |
 | :------------------------------------------------------------: | :------------------------------------------------------------: | :------------------------------------------------------------: |
-| transform属性设置matrix矩阵变换，同时配置transform-origin属性。</br>全局中心点值为图形元素右下角，如:'transform="matrix(0.812,0.278,0.139,0.763,5.000,5.000" transform-origin="150 150"')。 |  ![](figures/base_matrix_before.PNG)  |  ![](figures/base_matrix_after.PNG)   |
+| transform属性设置matrix矩阵变换，同时配置transform-origin属性。</br>全局中心点值为图形元素右下角，如:'transform="matrix(0.812,0.278,0.139,0.763,5.000,5.000)" transform-origin="150 150"'。 |  ![](figures/base_matrix_before.PNG)  |  ![](figures/base_matrix_after.PNG)   |
 
 ### 支持非法值校验
 
@@ -254,7 +250,7 @@ SVG支持校验transform属性非法值的能力。对于transform属性，当�
 
 >**说明：**
 >
->SVG图片最终显示效果受Image组件的'objectFit'参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了'objectFit(ImageFit.Contain)'，开发者需要根据实际显示效果正确配置objectFit参数。
+>SVG图片最终显示效果受Image组件的objectFit参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了objectFit(ImageFit.Contain)，开发者需要根据实际显示效果正确配置objectFit参数。
 
 | SVG场景                                                         | 扩展前                                                | 扩展后                                                |
 | :------------------------------------------------------------: | :------------------------------------------------------------: | :------------------------------------------------------------: |
@@ -269,14 +265,14 @@ SVG支持校验transform属性非法值的能力。对于transform属性，当�
 
 >**说明：**
 >
->SVG图片最终显示效果受Image组件的'objectFit'参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了'objectFit(ImageFit.Contain)'，开发者需要根据实际显示效果正确配置objectFit参数。
+>SVG图片最终显示效果受Image组件的objectFit参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了objectFit(ImageFit.Contain)，开发者需要根据实际显示效果正确配置objectFit参数。
 
 ```xml
 <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
   <!-- 定义一个ID为circleClip的clipPath，使用objectBoundingBox单位 -->
   <defs>
     <clipPath id="circleClip" clipPathUnits="objectBoundingBox">
-      <!-- 圆心在对象中心，半径为0.5，即圆覆盖整个对象 -->
+      <!-- 圆心在(50,50)，半径为40，经translate(50 50)平移 -->
       <circle cx="50" cy="50" r="40" transform="translate(50 50)" />
     </clipPath>
   </defs>
@@ -297,7 +293,7 @@ SVG支持校验transform属性非法值的能力。对于transform属性，当�
 
 >**说明：**
 >
->SVG图片最终显示效果受Image组件的'objectFit'参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了'objectFit(ImageFit.Contain)'，开发者需要根据实际显示效果正确配置objectFit参数。
+>SVG图片最终显示效果受Image组件的objectFit参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了objectFit(ImageFit.Contain)，开发者需要根据实际显示效果正确配置objectFit参数。
 
 transform操作在use中，use对象也在相同的mask元素内。
 
@@ -348,15 +344,15 @@ viewBox主要用来控制在SVG动态拉伸效果，可以通过参数preserveAs
 
 >**说明：**
 >
->SVG图片最终显示效果受Image组件的'objectFit'参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了'objectFit(ImageFit.Contain)'，开发者需要根据实际显示效果正确配置objectFit参数。
+>SVG图片最终显示效果受Image组件的objectFit参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了objectFit(ImageFit.Contain)，开发者需要根据实际显示效果正确配置objectFit参数。
 
 SVG包含“preserveAspectRatio”属性且值为“none”，示例图源和行为变更如下：
 
 ```xml
 <svg width="200" height="100" viewBox="0 0 100 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
   <circle cx="50" cy="20" r="20" fill="red"/>
-  <line x1="0" y1="0" x2="0" y2="500" stroke="black" stroke-width="2" /> <!-- x 轴 -->
-  <line x1="0" y1="0" x2="500" y2="0" stroke="black" stroke-width="2" /> <!-- y 轴 -->
+  <line x1="0" y1="0" x2="0" y2="500" stroke="black" stroke-width="2" /> <!-- y 轴 -->
+  <line x1="0" y1="0" x2="500" y2="0" stroke="black" stroke-width="2" /> <!-- x 轴 -->
 </svg>
 ```
 
@@ -369,8 +365,8 @@ SVG包含“preserveAspectRatio”属性且值为“&lt;align&gt;  [&lt;meetOrSl
 ```xml
 <svg width="200" height="100" viewBox="0 0 100 100" preserveAspectRatio="xMinYMin meet" xmlns="http://www.w3.org/2000/svg">
   <circle cx="50" cy="20" r="20" fill="red"/>
-  <line x1="0" y1="0" x2="0" y2="500" stroke="black" stroke-width="2" /> <!-- x 轴 -->
-  <line x1="0" y1="0" x2="500" y2="0" stroke="black" stroke-width="2" /> <!-- y 轴 -->
+  <line x1="0" y1="0" x2="0" y2="500" stroke="black" stroke-width="2" /> <!-- y 轴 -->
+  <line x1="0" y1="0" x2="500" y2="0" stroke="black" stroke-width="2" /> <!-- x 轴 -->
 </svg>
 ```
 
@@ -385,7 +381,7 @@ SVG包含“preserveAspectRatio”属性且值为“&lt;align&gt;  [&lt;meetOrSl
 | xMinYMin slice | 按宽高比最小值进行统一缩放。<br/>SVG元素的viewBox属性的X的中点值与视图的X的中点值对齐，<br/>SVG元素的viewBox属性的Y的中点值与视图的Y的中点值对齐。<br/>![](figures/circle_xminymin_slice_before.png) | 按宽高比最大值进行统一缩放。<br/>SVG元素的viewBox属性的X的最小值与视图的X的最小值对齐，<br/>SVG元素的viewBox属性的Y的最小值与视图的Y的最小值对齐。<br/>![](figures/circle_xminymin_slice.png) |
 | xMidYMin slice | 按宽高比最小值进行统一缩放。<br/>SVG元素的viewBox属性的X的中点值与视图的X的中点值对齐，<br/>SVG元素的viewBox属性的Y的中点值与视图的Y的中点值对齐。<br/>![](figures/circle_xmidymin_slice_before.png) | 按宽高比最大值进行统一缩放。<br/>SVG元素的viewBox属性的X的中点值与视图的X的中点值对齐，<br/>SVG元素的viewBox属性的Y的最小值与视图的Y的最小值对齐。<br/>![](figures/circle_xmidymin_slice.png) |
 | xMaxYMin slice | 按宽高比最小值进行统一缩放。<br/>SVG元素的viewBox属性的X的中点值与视图的X的中点值对齐，<br/>SVG元素的viewBox属性的Y的中点值与视图的Y的中点值对齐。<br/>![](figures/circle_xmaxymin_slice_before.png) | 按宽高比最大值进行统一缩放。<br/>SVG元素的viewBox属性的X的最小值+元素的宽度与视图的X的最大值对齐，<br/>SVG元素的viewBox属性的Y的最小值与视图的Y的最小值对齐。<br/>![](figures/circle_xmaxymin_slice.png) |
-| xMinYMid slice | 按宽高比最小值进行统一缩放。<br/>SVG元素的viewBox属性的X的中点值与视图的X的中点值对齐，<br/>SVG元素的viewBox属性的Y的中点值与视图的Y的中点值对齐。<br/>![](figures/circle_xmaxymid_slice_before.png) | 按宽高比最大值进行统一缩放。<br/>SVG元素的viewBox属性的X的最小值与视图的X的最小值对齐，<br/>SVG元素的viewBox属性的Y的中点值与视图的Y的中点值对齐。<br/>![](figures/circle_xminymid_slice.png) |
+| xMinYMid slice | 按宽高比最小值进行统一缩放。<br/>SVG元素的viewBox属性的X的中点值与视图的X的中点值对齐，<br/>SVG元素的viewBox属性的Y的中点值与视图的Y的中点值对齐。<br/>![](figures/circle_xminymid_slice_before.png) | 按宽高比最大值进行统一缩放。<br/>SVG元素的viewBox属性的X的最小值与视图的X的最小值对齐，<br/>SVG元素的viewBox属性的Y的中点值与视图的Y的中点值对齐。<br/>![](figures/circle_xminymid_slice.png) |
 | xMidYMid slice | 按宽高比最小值进行统一缩放。<br/>SVG元素的viewBox属性的X的中点值与视图的X的中点值对齐，<br/>SVG元素的viewBox属性的Y的中点值与视图的Y的中点值对齐。<br/>![](figures/circle_xmidymid_slice_before.png) | 按宽高比最大值进行统一缩放。<br/>SVG元素的viewBox属性的X的中点值与视图的X的中点值对齐，<br/>SVG元素的viewBox属性的Y的中点值与视图的Y的中点值对齐。<br/>![](figures/circle_xmidymid_slice.png) |
 | xMaxYMid slice | 按宽高比最小值进行统一缩放。<br/>SVG元素的viewBox属性的X的中点值与视图的X的中点值对齐，<br/>SVG元素的viewBox属性的Y的中点值与视图的Y的中点值对齐。<br/>![](figures/circle_xmaxymid_slice_before.png) | 按宽高比最大值进行统一缩放。<br/>SVG元素的viewBox属性的X的最小值+元素的宽度与视图的X的最大值对齐，<br/>SVG元素的viewBox属性的Y的中点值与视图的Y的中点值对齐。<br/>![](figures/circle_xmaxymid_slice.png) |
 | xMinYMax slice | 按宽高比最小值进行统一缩放。<br/>SVG元素的viewBox属性的X的中点值与视图的X的中点值对齐，<br/>SVG元素的viewBox属性的Y的中点值与视图的Y的中点值对齐。<br/>![](figures/circle_xminymax_slice_before.png) | 按宽高比最大值进行统一缩放。<br/>SVG元素的viewBox属性的X的最小值与视图的X的最小值对齐，<br/>SVG元素的viewBox属性的Y的最小值+元素的高度与视图的Y的最大值对齐。<br/>![](figures/circle_xminymax_slice.png) |
@@ -394,13 +390,13 @@ SVG包含“preserveAspectRatio”属性且值为“&lt;align&gt;  [&lt;meetOrSl
 
 ### 支持裁剪路径单元的解析
 
-支持裁剪路径单元值[clipPathUnits](./ts-image-svg2-capabilities.md#svg标签解析能力增强对svg图源标签和属性的影响)的解析，增加clipPathUnits为objectBoundingBox（被应用元素的边框作为基准的坐标系）场景的处理。
+支持裁剪路径单元值clipPathUnits的解析，增加clipPathUnits为objectBoundingBox（被应用元素的边框作为基准的坐标系）场景的处理。
 
 >**说明：**
 >
->SVG图片最终显示效果受Image组件的'objectFit'参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了'objectFit(ImageFit.Contain)'，开发者需要根据实际显示效果正确配置objectFit参数。
+>SVG图片最终显示效果受Image组件的objectFit参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了objectFit(ImageFit.Contain)，开发者需要根据实际显示效果正确配置objectFit参数。
 
-下面图源示例当裁剪路径单元为"objectBoundingBox"时，长方形裁剪路径位于应用裁剪路径长方形图形左上角x,y乘以图形包围盒宽度和高度。尺寸为width乘以图形包围盒的宽度，height乘以图形包围盒的高度。
+下面图源示例当裁剪路径单元为"objectBoundingBox"时，裁剪路径的坐标值（x、y）相对于应用该裁剪路径的图形包围盒，实际位置为x值乘以图形包围盒宽度y值乘以图形包围盒高度；尺寸width、height同理分别为相对包围盒宽、高的比例。
 
 ```xml
 <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
@@ -419,13 +415,13 @@ SVG包含“preserveAspectRatio”属性且值为“&lt;align&gt;  [&lt;meetOrSl
 
 ### 支持渐变单元的解析
 
-支持渐变单元值[gradientUnits](./ts-image-svg2-capabilities.md#svg标签解析能力增强对svg图源标签和属性的影响)的解析，增加gradientUnits为objectBoundingBox（被应用元素的边框作为基准的坐标系）场景的处理。
+支持渐变单元值gradientUnits的解析，增加gradientUnits为objectBoundingBox（被应用元素的边框作为基准的坐标系）场景的处理。
 
 >**说明：**
 >
->SVG图片最终显示效果受Image组件的'objectFit'参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了'objectFit(ImageFit.Contain)'，开发者需要根据实际显示效果正确配置objectFit参数。
+>SVG图片最终显示效果受Image组件的objectFit参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了objectFit(ImageFit.Contain)，开发者需要根据实际显示效果正确配置objectFit参数。
 
-图源示例显示一个线性渐变从绝对坐标(10，10) 到 (180，180)的长方形范围内。
+图源示例显示一个线性渐变从绝对坐标(10, 10)到(180, 180)的长方形范围内。
 
 ```xml
  <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
@@ -443,7 +439,7 @@ SVG包含“preserveAspectRatio”属性且值为“&lt;align&gt;  [&lt;meetOrSl
 | ------------------------------------------------------------ | ----------------------------------------------------------- |
 | ![](figures/line_gradient_before.PNG) | ![](figures/line_gradient_after.PNG) |
 
-图源示例显示一个径向渐变从绝对坐标圆心 (100，90) 开始，半径为90的渐变效果。
+图源示例显示一个径向渐变从绝对坐标圆心(100, 100)开始，半径为90的渐变效果。
 
 ```xml
 <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
@@ -463,13 +459,13 @@ SVG包含“preserveAspectRatio”属性且值为“&lt;align&gt;  [&lt;meetOrSl
 
 ### 支持遮罩单元和遮罩内容单元的解析
 
-支持遮罩单元[maskUnits](./ts-image-svg2-capabilities.md#svg标签解析能力增强对svg图源标签和属性的影响)和遮罩内容单元[maskContentUnits](./ts-image-svg2-capabilities.md#svg标签解析能力增强对svg图源标签和属性的影响)的解析，增加maskContentUnits和maskUnits为objectBoundingBox（被应用元素的边框作为基准的坐标系）场景的处理。
+支持遮罩单元maskUnits和遮罩内容单元maskContentUnits的解析，增加maskContentUnits和maskUnits为objectBoundingBox（被应用元素的边框作为基准的坐标系）场景的处理。
 
 >**说明：**
 >
->SVG图片最终显示效果受Image组件的'objectFit'参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了'objectFit(ImageFit.Contain)'，开发者需要根据实际显示效果正确配置objectFit参数。
+>SVG图片最终显示效果受Image组件的objectFit参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了objectFit(ImageFit.Contain)，开发者需要根据实际显示效果正确配置objectFit参数。
 
-图源示例显示一个五角星遮罩范围从绝对坐标 (10，10)到(200，200)，遮罩内容相对于应用矩形左上角，水平尺寸乘以图形包围盒宽度，垂直尺寸乘以图形包围盒高度。
+图源示例显示一个五角星遮罩范围从绝对坐标(10, 10)到(200, 200)，遮罩内容相对于应用矩形左上角，水平尺寸乘以图形包围盒宽度，垂直尺寸乘以图形包围盒高度。
 
 ```xml
 <svg width="220" height="220" xmlns="http://www.w3.org/2000/svg">
@@ -488,11 +484,11 @@ SVG包含“preserveAspectRatio”属性且值为“&lt;align&gt;  [&lt;meetOrSl
 
 ### 支持图案单元和图案内容单元的解析
 
-支持图案单元[patternUnits](./ts-image-svg2-capabilities.md#svg标签解析能力增强对svg图源标签和属性的影响)和图案内容单元[patternContentUnits](./ts-image-svg2-capabilities.md#svg标签解析能力增强对svg图源标签和属性的影响)的解析，增加patternUnits和patternContentUnits为objectBoundingBox（被应用元素的边框作为基准的坐标系）场景的处理。
+支持图案单元patternUnits和图案内容单元patternContentUnits的解析，增加patternUnits和patternContentUnits为objectBoundingBox（被应用元素的边框作为基准的坐标系）场景的处理。
 
 >**说明：**
 >
->SVG图片最终显示效果受Image组件的'objectFit'参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了'objectFit(ImageFit.Contain)'，开发者需要根据实际显示效果正确配置objectFit参数。
+>SVG图片最终显示效果受Image组件的objectFit参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了objectFit(ImageFit.Contain)，开发者需要根据实际显示效果正确配置objectFit参数。
 
 示例图源图案单元位置尺寸为绝对坐标，图案内容位置、尺寸相对于应用图案的图形，横轴乘以图形包围盒宽度，纵轴乘以图形高度。
 
@@ -514,13 +510,13 @@ SVG包含“preserveAspectRatio”属性且值为“&lt;align&gt;  [&lt;meetOrSl
 
 ### 支持滤镜单元和原语单元解析
 
-支持滤镜单元[filterUnits](./ts-image-svg2-capabilities.md#svg标签解析能力增强对svg图源标签和属性的影响)和原语单元[primitiveUnits](./ts-image-svg2-capabilities.md#svg标签解析能力增强对svg图源标签和属性的影响)的解析，增加filterUnits和primitiveUnits为objectBoundingBox（被应用元素的边框作为基准的坐标系）场景的处理。目前支持到的原语有feFlood,feOffset,feGaussianBlur,feBlood,feColorMatrix,feComposite。
+支持滤镜单元filterUnits和原语单元primitiveUnits的解析，增加filterUnits和primitiveUnits为objectBoundingBox（被应用元素的边框作为基准的坐标系）场景的处理。目前支持到的原语有feFlood,feOffset,feGaussianBlur,feBlend,feColorMatrix,feComposite。
 
 >**说明：**
 >
->SVG图片最终显示效果受Image组件的'objectFit'参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了'objectFit(ImageFit.Contain)'，开发者需要根据实际显示效果正确配置objectFit参数。
+>SVG图片最终显示效果受Image组件的objectFit参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了objectFit(ImageFit.Contain)，开发者需要根据实际显示效果正确配置objectFit参数。
 
-图源示例：原语值为"objectBoundingBox"时，feGaussianBlur的模糊标准差X，Y轴的stdDeviation数值分别需要乘以应用滤镜图形包围盒的宽度和高度。滤镜原语子区间x，y坐标相对图形左上角分别乘以图形包围盒的宽度和高度，滤镜原语子区间尺寸的width，height参数分别乘以图形包围盒的宽度和高度。
+图源示例：当primitiveUnits为objectBoundingBox时，feGaussianBlur的模糊标准差X、Y轴stdDeviation为相对比例（无量纲，实际值需分别乘以应用滤镜图形包围盒的宽度和高度）；滤镜原语子区域的x、y坐标为相对图形包围盒左上角的偏移比例（实际位置为x值乘以包围盒宽度、y值乘以包围盒高度），width、height为相对尺寸比例（实际大小为width值乘以包围盒宽度、height值乘以包围盒高度）。
 
 ```xml
  <svg width="400" height="400" xmlns="http://www.w3.org/2000/svg"> 
@@ -554,7 +550,7 @@ SVG包含“preserveAspectRatio”属性且值为“&lt;align&gt;  [&lt;meetOrSl
 
 >**说明：**
 >
->SVG图片最终显示效果受Image组件的'objectFit'参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了'objectFit(ImageFit.Contain)'，开发者需要根据实际显示效果正确配置objectFit参数。
+>SVG图片最终显示效果受Image组件的objectFit参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了objectFit(ImageFit.Contain)，开发者需要根据实际显示效果正确配置objectFit参数。
 
 示例图源有两层分组标签嵌套，被裁剪路径截取的半圆形的透明度为0.4。
 
@@ -583,7 +579,7 @@ SVG包含“preserveAspectRatio”属性且值为“&lt;align&gt;  [&lt;meetOrSl
 
 >**说明：**
 >
->SVG图片最终显示效果受Image组件的'objectFit'参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了'objectFit(ImageFit.Contain)'，开发者需要根据实际显示效果正确配置objectFit参数。
+>SVG图片最终显示效果受Image组件的objectFit参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了objectFit(ImageFit.Contain)，开发者需要根据实际显示效果正确配置objectFit参数。
 
 示例图源裁剪路径引用于g标签里，默认裁剪路径规则为"nonzero"，路径标签里的填充规则为"evenodd"，左图实际的填充规则为"evenodd"，右图的填充规则为裁剪路径的默认规则，也就是"nonzero"。
 
@@ -609,11 +605,11 @@ SVG包含“preserveAspectRatio”属性且值为“&lt;align&gt;  [&lt;meetOrSl
 
 ### pattern支持平铺效果
 
-[pattern](./ts-image-svg2-capabilities.md#svg标签解析能力增强对svg图源标签和属性的影响)图案支持重复平铺效果。
+pattern图案支持重复平铺效果。
 
 >**说明：**
 >
->SVG图片最终显示效果受Image组件的'objectFit'参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了'objectFit(ImageFit.Contain)'，开发者需要根据实际显示效果正确配置objectFit参数。
+>SVG图片最终显示效果受Image组件的objectFit参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了objectFit(ImageFit.Contain)，开发者需要根据实际显示效果正确配置objectFit参数。
 
 示例图源如下：
 
@@ -635,11 +631,11 @@ SVG包含“preserveAspectRatio”属性且值为“&lt;align&gt;  [&lt;meetOrSl
 
 ### pattern偏移值处理
 
-支持pattern图案在x，y参数非0时，从只显示平移后的部分图形变更为显示完整图形。
+支持pattern图案在x，y参数非0时，扩展前仅显示按偏移量平移后的局部图案（部分被裁切）；扩展后完整显示平移后的图案（不再裁切），并支持重复平铺。
 
 >**说明：**
 >
->SVG图片最终显示效果受Image组件的'objectFit'参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了'objectFit(ImageFit.Contain)'，开发者需要根据实际显示效果正确配置objectFit参数。
+>SVG图片最终显示效果受Image组件的objectFit参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了objectFit(ImageFit.Contain)，开发者需要根据实际显示效果正确配置objectFit参数。
 
 ```xml
 <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -659,11 +655,11 @@ SVG包含“preserveAspectRatio”属性且值为“&lt;align&gt;  [&lt;meetOrSl
 
 ### 线性渐变
 
-[linearGradient](./ts-image-svg2-capabilities.md#svg标签解析能力增强对svg图源标签和属性的影响)线性渐变支持做平移和缩放。
+linearGradient线性渐变支持做平移和缩放。
 
 >**说明：**
 >
->SVG图片最终显示效果受Image组件的'objectFit'参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了'objectFit(ImageFit.Contain)'，开发者需要根据实际显示效果正确配置objectFit参数。
+>SVG图片最终显示效果受Image组件的objectFit参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了objectFit(ImageFit.Contain)，开发者需要根据实际显示效果正确配置objectFit参数。
 
 ```xml
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
@@ -684,11 +680,11 @@ SVG包含“preserveAspectRatio”属性且值为“&lt;align&gt;  [&lt;meetOrSl
 
 ### 径向渐变
 
-[radialGradient](./ts-image-svg2-capabilities.md#svg标签解析能力增强对svg图源标签和属性的影响)径向渐变支持做平移和缩放。
+radialGradient径向渐变支持做平移和缩放。
 
 >**说明：**
 >
->SVG图片最终显示效果受Image组件的'objectFit'参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了'objectFit(ImageFit.Contain)'，开发者需要根据实际显示效果正确配置objectFit参数。
+>SVG图片最终显示效果受Image组件的objectFit参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了objectFit(ImageFit.Contain)，开发者需要根据实际显示效果正确配置objectFit参数。
 
 ```xml
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
@@ -709,11 +705,11 @@ SVG包含“preserveAspectRatio”属性且值为“&lt;align&gt;  [&lt;meetOrSl
 
 ### mask参数异常时默认效果变更
 
-[mask](./ts-image-svg2-capabilities.md#svg标签解析能力增强对svg图源标签和属性的影响)遮罩的x、y、width、height等参数允许是数字、百分数、小数，当参数赋予错误类型时，从取0值变更为取默认值{-10%，-10%，120%，120%}。
+mask遮罩的x、y、width、height等参数允许是数字、百分数、小数，当参数赋予错误类型时，从取0值变更为取默认值{-10%，-10%，120%，120%}。
 
 >**说明：**
 >
->SVG图片最终显示效果受Image组件的'objectFit'参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了'objectFit(ImageFit.Contain)'，开发者需要根据实际显示效果正确配置objectFit参数。
+>SVG图片最终显示效果受Image组件的objectFit参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了objectFit(ImageFit.Contain)，开发者需要根据实际显示效果正确配置objectFit参数。
 
 ```xml
 <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
@@ -733,11 +729,11 @@ SVG包含“preserveAspectRatio”属性且值为“&lt;align&gt;  [&lt;meetOrSl
 
 ### filter参数异常时默认效果变更
 
-[filter](./ts-image-svg2-capabilities.md#svg标签解析能力增强对svg图源标签和属性的影响)滤镜的x、y、width、height等参数允许是数字、百分数、小数，当参数赋予错误类型时，从取0值变更为取默认值{-10%，-10%，120%，120%}。
+filter滤镜的x、y、width、height等参数允许是数字、百分数、小数，当参数赋予错误类型时，从取0值变更为取默认值{-10%，-10%，120%，120%}。
 
 >**说明：**
 >
->SVG图片最终显示效果受Image组件的'objectFit'参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了'objectFit(ImageFit.Contain)'，开发者需要根据实际显示效果正确配置objectFit参数。
+>SVG图片最终显示效果受Image组件的objectFit参数值影响，为了确保SVG图形完整且正确的显示，文档中用例图片都配置了objectFit(ImageFit.Contain)，开发者需要根据实际显示效果正确配置objectFit参数。
 
 ```xml
 <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" width="300" height="300">

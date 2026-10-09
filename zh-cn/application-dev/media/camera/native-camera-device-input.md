@@ -12,7 +12,7 @@
 
 ## 开发步骤
 
-详细的API说明请参考[Camera API参考](../../reference/apis-camera-kit/capi-oh-camera.md)。
+详细的API说明请参考[OH_Camera](../../reference/apis-camera-kit/capi-oh-camera.md)。
 
 1. 导入NDK接口。选择系统提供的NDK接口能力，导入NDK接口的方法如下。
 
@@ -107,7 +107,7 @@
        // 打开相机。
        ret = OH_CameraInput_Open(cameraInput);
        if (ret != CAMERA_OK) {
-           OH_LOG_ERROR(LOG_APP, "OH_CameraInput_open failed.");
+           OH_LOG_ERROR(LOG_APP, "OH_CameraInput_Open failed.");
            return;
        }
    }

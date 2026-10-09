@@ -1,9 +1,8 @@
 # 使用Emitter进行线程间通信
-
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -19,7 +18,7 @@ Emitter通过维护一个内部事件队列，来进行任务分发。应用需�
 ![emitter](figures/emitter.png)
 
 ## 接口说明
-详细请参见[Emitter接口文档](../../reference/apis-basic-services-kit/js-apis-emitter.md)。
+详细请参见[@ohos.events.emitter](../../reference/apis-basic-services-kit/js-apis-emitter.md)。
 | 接口名  | 用途   | 说明     |
 | ------- | ------ | -------- |
 | on | 订阅事件 | 持续订阅事件，直至该事件被取消订阅。 |

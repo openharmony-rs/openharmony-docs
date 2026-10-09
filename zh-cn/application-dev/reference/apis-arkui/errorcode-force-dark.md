@@ -1,16 +1,16 @@
 # 反色能力错误码
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @lushi871202-->
-<!--Designer: @demon_coffee-->
-<!--Tester: @demon_coffee-->
+<!--Owner: @fangzhiyuan1-->
+<!--Designer: @fangzhiyuan1-->
+<!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
 
 > **说明：**
 >
 > 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
 
-## 106205 反色能力入参错误
+## 106205 反色能力配置错误
 
 **错误信息**
 
@@ -18,12 +18,12 @@ Force dark config is invalid.
 
 **错误描述**
 
-反色能力入参错误。
+反色能力配置无效。
 
 **可能原因**
 
-开发者传入的参数错误。
+开发者传入的参数错误，例如参数值不在合法范围内或参数类型不匹配。有关参数约束详见反色能力相关API说明。
 
 **处理步骤**
 
-修改传入的参数。
+检查并修改传入的参数，确保参数值和类型符合反色能力配置要求。有关参数约束详见反色能力相关API说明。

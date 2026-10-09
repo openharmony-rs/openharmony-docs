@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 ## 功能介绍
 
@@ -31,3 +31,7 @@ Input Kit除了提供基础的输入事件服务之外，还提供了获取输�
 2. [组合按键](inputconsumer-guidelines-sys.md)、[事件注入](inputeventclient-guidelines-sys.md)、[输入监听](inputmonitor-guidelines-sys.md)、[快捷键](shortkey-guidelines-sys.md)模块接口为系统接口，其中[输入监听](inputmonitor-guidelines-sys.md)模块接口需要ohos.permission.INPUT_MONITORING权限。
 
 <!--DelEnd-->
+
+<!--RP1-->
+
+<!--RP1End-->

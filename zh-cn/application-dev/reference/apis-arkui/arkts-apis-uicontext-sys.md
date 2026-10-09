@@ -1,8 +1,8 @@
 # 模块描述(系统接口)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -14,14 +14,14 @@
 >
 > - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
 >
-> - 当前页面仅包含本模块的系统接口，其他公开接口参见[模块描述](arkts-apis-uicontext.md)。
+> - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.arkui.UIContext (UIContext)](arkts-apis-uicontext.md)。
 
 ## 导入模块
 
 ```ts
 import {
   BackgroundLuminanceSamplingConfigs, LuminanceSampler
-} from "@kit.ArkUI";
+} from '@kit.ArkUI';
 ```
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full

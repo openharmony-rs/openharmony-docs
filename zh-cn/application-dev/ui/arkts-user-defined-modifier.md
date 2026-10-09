@@ -1,8 +1,8 @@
 # 自定义扩展能力概述
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @sunbees-->
+<!--Designer: @sunbees-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -16,4 +16,4 @@ ArkUI框架提供一系列基于Modifier的自定义扩展能力，通过与UI�
 
 ## ContentModifier
 
-`ContentModifier`提供自定义绘制组件内容区的能力。当开发者期望自定义组件的内容区时，比如CheckBox的内部显示一个五角星等场景时，可以使用此功能。
+`ContentModifier`提供自定义绘制组件内容区的能力。当开发者期望自定义组件的内容区时，比如[Checkbox](../reference/apis-arkui/arkui-ts/ts-basic-components-checkbox.md)的内部显示一个五角星等场景时，可以使用此功能。

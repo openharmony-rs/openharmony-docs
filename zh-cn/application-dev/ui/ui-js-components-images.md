@@ -31,7 +31,7 @@ image是图片组件，用来渲染展示图片。具体用法请参考[image](.
 }
 ```
 
-![zh-cn_image_0000001211227617](figures/zh-cn_image_0000001211227617.png)
+![image-Component](figures/image-Component.png)
 
 
 ## 设置image样式
@@ -68,7 +68,7 @@ image{
 ```
 
 
-![zh-cn_image_0000001163532072](figures/zh-cn_image_0000001163532072.png)
+![Image-Style](figures/Image-Style.png)
 
 
 ## 加载图片
@@ -126,13 +126,13 @@ export default {
 }
 ```
 
-![zh-cn_image_images](figures/zh-cn_image_images.gif)
+![Loading-Image](figures/Loading-Image.gif)
 
 
 
 ## 场景示例
 
-在本场景中，开发者长按图片后将慢慢隐藏图片，当完全隐藏后再重新显示原始图片。定时器setInterval每隔一段时间改变图片透明度,实现慢慢隐藏的效果，当透明度为0时清除定时器，设置透明度为1。
+在本场景中，开发者长按图片后将慢慢隐藏图片，当完全隐藏后再重新显示原始图片。定时器setInterval每隔一段时间改变图片透明度，实现慢慢隐藏的效果，当透明度为0时清除定时器，设置透明度为1。
 ```html
 <!-- index.hml -->
 <div class="page-container">

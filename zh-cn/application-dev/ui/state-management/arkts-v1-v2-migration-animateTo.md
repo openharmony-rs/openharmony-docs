@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -11,6 +11,8 @@
 ## 执行动画前重新定义初始态场景
 
 **V1实现代码如下：**
+
+<!-- @[Local_Question_V1_animateTo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalQuestionV1animateTo.ets) -->   
 
 ``` TypeScript
 @Entry
@@ -102,9 +104,11 @@ struct Index {
 
 ### API version 22之前的迁移方案
 
-从API version 22之前，可以使用一个duration为0的[animateToImmediately](../../reference/apis-arkui/arkui-ts/ts-explicit-animatetoimmediately.md#animatetoimmediately)将额外的修改先刷新，再执行原来的动画达成预期的效果。
+在API version 22之前，可以使用一个duration为0的[animateToImmediately](../../reference/apis-arkui/arkui-ts/ts-explicit-animatetoimmediately.md#animatetoimmediately)将额外的修改先刷新，再执行原来的动画达成预期的效果。
 
 完整代码如下：
+
+<!-- @[Local_Question_animateToImmediately](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalQuestionAnimateToImmediately.ets) -->
 
 ``` TypeScript
 @Entry

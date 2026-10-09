@@ -2,10 +2,10 @@
 
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: Resourceschedule-->
-<!--Owner: @cheng-shichang-->
+<!--Owner: @xufu7-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 > **说明：**
 >
@@ -28,7 +28,7 @@ Notification is not enabled.
 
 **处理步骤**
 
-1. 申请通知使能权限弹窗[Notification.requestEnableNotification](../apis-notification-kit/js-apis-notification.md#notificationrequestenablenotification8)。
+1. 申请通知使能权限弹窗[notificationManager.requestEnableNotification](../apis-notification-kit/js-apis-notificationManager.md#notificationmanagerrequestenablenotification10)。
 2. 通知设置里开启应用通知开关。
 
 ## 1700002 提醒数量超出限制
@@ -43,7 +43,10 @@ The number of reminders exceeds the limit.
 
 **可能原因**
 <!--RP1-->
-1. 从API version 10开始，单个普通应用提醒数量不超过30个，单个系统应用提醒数量不超过10000个。API version 9及之前的版本，单个应用提醒数量均不超过30个。
+1. 应用提醒数量上限因API版本和应用类型而异：
+    - API版本26.0.0及以上：单个普通应用最多支持64个提醒，单个系统应用最多支持10000个提醒。
+    - API version 10至25：单个普通应用最多支持30个提醒，单个系统应用最多支持10000个提醒。
+    - API version 9及以下：单个应用最多支持30个提醒。 
 2. 从API version 10开始，所有应用提醒数量总和不超过12000个。API version 9及之前的版本，提醒数量总和不超过2000个。
 
 **处理步骤**

@@ -1,9 +1,9 @@
 # 应用触发数据备份/恢复（仅对系统应用开放）
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @lvzhenjie-->
-<!--Designer: @wang_zhangjun; @chenxi0605-->
-<!--Tester: @liuhonggang123-->
+<!--Owner: @rainlost-->
+<!--Designer: @rainlost-->
+<!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
 
 备份恢复框架是为设备上的应用、服务提供自身数据备份和恢复的解决方案。系统应用开发者可以根据需求，按下述指导开发应用，以触发备份/恢复数据。
@@ -16,7 +16,7 @@
 
 ## 开发说明
 
-备份恢复API的使用指导请参见[API参考](../reference/apis-core-file-kit/js-apis-file-backup-sys.md)。
+备份恢复API的使用指导请参见[@ohos.file.backup (备份恢复)(系统接口)](../reference/apis-core-file-kit/js-apis-file-backup-sys.md)。
 
 在使用备份恢复接口之前，需要：
 
@@ -36,10 +36,10 @@
 
 调用[backup.getLocalCapabilities()](../reference/apis-core-file-kit/js-apis-file-backup-sys.md#backupgetlocalcapabilities)获取能力文件。
 
-<!-- @[get_local_cap_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFileBackup/entry/src/main/ets/backuprestore/BackupRestore.ets) -->    
+<!-- @[get_local_cap_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFileBackup/entry/src/main/ets/backuprestore/BackupRestore.ets) -->
 
 ``` TypeScript
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 import { backup } from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 // ...
@@ -53,9 +53,9 @@ export async function getLocalCapabilities(): Promise<void> {
     let fileData = await backup.getLocalCapabilities();
     console.info('getLocalCapabilities success');
     let fpath = filesDir + '/localCapabilities.json';
-    fs.copyFileSync(fileData.fd, fpath);
+    fileIo.copyFileSync(fileData.fd, fpath);
     // ...
-    fs.closeSync(fileData.fd);
+    fileIo.closeSync(fileData.fd);
   } catch (error) {
     console.error(`getLocalCapabilities failed with err, code is ${error.code}, message is ${error.message}`);
   }
@@ -97,16 +97,16 @@ export async function getLocalCapabilities(): Promise<void> {
 
 开发者可以根据能力文件提供的应用信息，选择需要备份的应用数据。
 
-备份过程中，备份恢复服务会将应用的数据打包成文件，打包后的文件会以打开的文件句柄形式，通过创建实例时所注册的回调[onFileReady](../reference/apis-core-file-kit/js-apis-file-backup-sys.md#onfileready)接口返回。
+备份过程中，备份恢复服务会将应用的数据打包成文件，打包后的文件会以打开的文件句柄形式，通过创建实例时所注册的回调[generalcallbacks](../reference/apis-core-file-kit/js-apis-file-backup-sys.md#generalcallbacks)接口返回。
 
 开发者可以根据需要将文件内容保存到本地。
 
 **示例**
 
-  <!-- @[session_backup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFileBackup/entry/src/main/ets/backuprestore/BackupRestore.ets) -->    
+  <!-- @[session_backup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFileBackup/entry/src/main/ets/backuprestore/BackupRestore.ets) -->
   
   ``` TypeScript
-  import { fileIo as fs } from '@kit.CoreFileKit';
+  import { fileIo } from '@kit.CoreFileKit';
   import { backup } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   // ...
@@ -129,12 +129,12 @@ export async function getLocalCapabilities(): Promise<void> {
         }
         try {
           let bundlePath = filesDir + '/' + file.bundleName;
-          if (!fs.accessSync(bundlePath)) {
-            fs.mkdirSync(bundlePath);
+          if (!fileIo.accessSync(bundlePath)) {
+            fileIo.mkdirSync(bundlePath);
           }
           // 此处执行copyFileSync会多一次内存拷贝，开发者可以直接使用onFileReady的file.fd来进行数据处理，处理完成后close即可，这样会减少内存消耗
-          fs.copyFileSync(file.fd, bundlePath + `/${file.uri}`);
-          fs.closeSync(file.fd);
+          fileIo.copyFileSync(file.fd, bundlePath + `/${file.uri}`);
+          fileIo.closeSync(file.fd);
           console.info('onFileReady success');
         } catch (error) {
           let err: BusinessError = error as BusinessError;
@@ -196,16 +196,16 @@ export async function getLocalCapabilities(): Promise<void> {
 
 开发者可以根据能力文件提供的应用信息，选择需要恢复的应用数据。
 
-恢复过程中，备份恢复服务会根据开发者调用[getFileHandle](../reference/apis-core-file-kit/js-apis-file-backup-sys.md#getfilehandle)的请求内容，将应用待恢复数据的文件句柄，通过创建实例时注册的回调[onFileReady](../reference/apis-core-file-kit/js-apis-file-backup-sys.md#onfileready)接口返回。可以根据返回的[uri](../reference/apis-core-file-kit/js-apis-file-backup-sys.md#filemeta)将应用对应的待恢复数据写入到文件句柄中。写入完成后开发者调用[publishFile](../reference/apis-core-file-kit/js-apis-file-backup-sys.md#publishfile)通知服务写入完成。
+恢复过程中，备份恢复服务会根据开发者调用[getFileHandle](../reference/apis-core-file-kit/js-apis-file-backup-sys.md#getfilehandle)的请求内容，将应用待恢复数据的文件句柄，通过创建实例时注册的回调[generalcallbacks](../reference/apis-core-file-kit/js-apis-file-backup-sys.md#generalcallbacks)接口返回。可以根据返回的[uri](../reference/apis-core-file-kit/js-apis-file-backup-sys.md#filemeta)将应用对应的待恢复数据写入到文件句柄中。写入完成后开发者调用[publishFile](../reference/apis-core-file-kit/js-apis-file-backup-sys.md#publishfile)通知服务写入完成。
 
 待应用所有恢复数据准备就绪后，服务开始恢复应用数据。
 
 **示例**
 
-  <!-- @[session_restore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFileBackup/entry/src/main/ets/backuprestore/BackupRestore.ets) -->    
+  <!-- @[session_restore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFileBackup/entry/src/main/ets/backuprestore/BackupRestore.ets) -->  
   
   ``` TypeScript
-  import { fileIo as fs } from '@kit.CoreFileKit';
+  import { fileIo } from '@kit.CoreFileKit';
   import { backup } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   // ...
@@ -241,13 +241,13 @@ export async function getLocalCapabilities(): Promise<void> {
         }
         // 此处开发者请根据实际场景待恢复文件存放位置进行调整 bundlePath
         let bundlePath: string = `${filesDir}/${file.bundleName}/`;
-        if (!fs.accessSync(bundlePath)) {
+        if (!fileIo.accessSync(bundlePath)) {
           console.error('onFileReady bundlePath err : ' + bundlePath);
         }
         console.info('fd : ' + file.fd);
         let targetPath = `${bundlePath}${file.uri}`;
-        fs.copyFileSync(targetPath, file.fd);
-        fs.closeSync(file.fd);
+        fileIo.copyFileSync(targetPath, file.fd);
+        fileIo.closeSync(file.fd);
         let currentCount = countMap.get(file.bundleName) || 0; // 如果没有找到对应的计数，则默认返回 0
         countMap.set(file.bundleName, ++currentCount);
         // 恢复数据传输完成后，会通知服务端文件准备就绪
@@ -300,7 +300,7 @@ export async function getLocalCapabilities(): Promise<void> {
     let fileDat = await backup.getLocalCapabilities();
     await gSessionRestore.appendBundles(fileDat.fd, restoreApps);
     console.info('appendBundles success');
-    // 添加需要恢复的应用成功后，请根据需要恢复的应用名称，调用getFileHandle接口获取待恢复应用数文件的文件句柄
+    // 添加需要恢复的应用成功后，请根据需要恢复的应用名称，调用getFileHandle接口获取待恢复应用数据文件的文件句柄
     // 应用待恢复数据文件数请依据实际备份文件个数为准，此处仅为请求示例
     let handle: backup.FileMeta = {
       bundleName: restoreApps[0],

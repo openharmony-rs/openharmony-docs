@@ -2,7 +2,7 @@
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->
-<!--Designer: @andeszhang-->
+<!--Designer: @zhaolinglan-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -47,6 +47,7 @@ ArkUI: With respect to soft keyboards and custom text input boxes, IME Kit can u
 
 For the system API for switching between input method applications, the system permission is required. Some APIs can be called only by the current input method application.
 
+<!--RP1--><!--RP1End-->
 
 ## API Reference
 

@@ -1,10 +1,10 @@
-# DriverExtensionContext
+# DriverExtensionContext (定义驱动扩展的上下文)
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
 
 DriverExtensionContext模块是DriverExtensionAbility的上下文环境，继承自ExtensionContext。
 
@@ -18,7 +18,7 @@ DriverExtensionContext模块提供DriverExtensionAbility实现中需要主动发
 ## 导入模块
 
 ```ts
-import { common } from '@kit.AbilityKit';
+import { DriverExtensionAbility, DriverExtensionContext } from '@kit.DriverDevelopmentKit';
 ```
 
 ## 使用说明
@@ -26,9 +26,7 @@ import { common } from '@kit.AbilityKit';
 在使用DriverExtensionContext的功能前，需要通过DriverExtensionAbility子类实例获取。
 
 ```ts
-  import { DriverExtensionAbility, DriverExtensionContext } from '@kit.DriverDevelopmentKit';
-
-  let context : DriverExtensionContext | undefined;
+  let context: DriverExtensionContext | undefined;
   class EntryAbility extends DriverExtensionAbility {
     onInit() {
       context = this.context; // 获取DriverExtensionContext
@@ -42,13 +40,15 @@ updateDriverState(): void
 
 驱动状态上报。预留接口，暂不提供具体功能。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统能力**：SystemCapability.Driver.ExternalDevice
 
 **示例：**
 
   ```ts
   // 当前代码实现依赖上一节代码实现
-  if (context != null) {
+  if (context !== undefined) {
     context.updateDriverState();
   }
   ```

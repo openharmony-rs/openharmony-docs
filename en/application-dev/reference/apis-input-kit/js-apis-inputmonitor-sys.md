@@ -5,15 +5,16 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=6ff193a1258b05452b4935e34a160adf6db64d7a translatedAt=2026-09-11T01:06:42.870Z pushedAt=2026-09-11T06:51:44.599Z -->
 
-The **inputMonitor** module implements listening for events of input devices, including the touchscreen, mouse, touchpad, etc.
+The **inputMonitor** module implements listening for events of input devices, including the touchscreen, mouse, and touchpad.
 
 >**NOTE**
 >
 >- The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
->- In this document, **global** indicates the entire touchscreen or touchpad. For example, listening for global touch events means to listen for touch events triggered when a user touches at any position on the touchscreen.
+>- In this document, **global** indicates the entire touchscreen or touchpad. For example, listening for global touch events means to listen for touch events triggered when a user touches at any position on the touchpad.
 >
 >- The APIs provided by this module are system APIs.
 
@@ -27,7 +28,7 @@ import { inputMonitor } from '@kit.InputKit';
 
 on(type: 'touch', receiver: TouchEventReceiver): void
 
-Enables listening for global touch events.
+Listens for global touchscreen input events. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.INPUT_MONITORING
 
@@ -38,7 +39,7 @@ Enables listening for global touch events.
 | Name      | Type                                      | Mandatory  | Description                 |
 | -------- | ---------------------------------------- | ---- | ------------------- |
 | type     | string                                   | Yes   | Event type. This field has a fixed value of **touch**.|
-| receiver | [TouchEventReceiver](#toucheventreceiver) | Yes   | Callback used to return touch events asynchronously.|
+| receiver | [TouchEventReceiver](#toucheventreceiver) | Mandatory    | Callback used to return touchscreen input events. |
 
 **Error codes**
 
@@ -46,15 +47,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied.   |
-| 202  | Permission denied, non-system app called system api.   |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API.<br/>Applicable version: 12+  |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { TouchEvent } from '@kit.InputKit';
+import { inputMonitor, TouchEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -64,12 +65,13 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Subscribe to Touch Events
             inputMonitor.on('touch', (touchEvent: TouchEvent) => {
-              console.info(`Monitor on success ${JSON.stringify(touchEvent)}`);
+              console.info(`Succeeded in monitoring on ${JSON.stringify(touchEvent)}.`);
               return false;
             });
           } catch (error) {
-            console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor the touch screen event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -92,7 +94,7 @@ Enables listening for global mouse events. This API uses an asynchronous callbac
 | Name      | Type                        | Mandatory  | Description                 |
 | -------- | -------------------------- | ---- | ------------------- |
 | type     | string                     | Yes   | Event type. This field has a fixed value of **mouse**.|
-| receiver | Callback&lt;[MouseEvent](js-apis-mouseevent.md#mouseevent)&gt; | Yes   | Callback used to return mouse events asynchronously. |
+| receiver | Callback&lt;[MouseEvent](js-apis-mouseevent.md#mouseevent)&gt; | Mandatory    | Callback used to return the mouse input event.  |
 
 **Error codes**
 
@@ -100,15 +102,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied.   |
-| 202  | Permission denied, non-system app called system api.   |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API.<br/>Applicable Version: 12+  |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { MouseEvent } from '@kit.InputKit';
+import { inputMonitor, MouseEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -118,12 +120,13 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Subscribe to Mouse Events
             inputMonitor.on('mouse', (mouseEvent: MouseEvent) => {
-              console.info(`Monitor on success ${JSON.stringify(mouseEvent)}`);
+              console.info(`Succeeded in monitoring on ${JSON.stringify(mouseEvent)}.`);
               return false;
             });
           } catch (error) {
-            console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor the mouse event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -146,8 +149,8 @@ Enables listening for mouse events. When the mouse pointer moves to the specifie
 | Name      | Type                        | Mandatory  | Description                 |
 | -------- | -------------------------- | ---- | ------------------- |
 | type     | string                     | Yes   | Event type. This field has a fixed value of **mouse**.|
-| rect     | display.Rect[]             | Yes   | Rectangular area where a callback is triggered. One or two rectangular areas can be specified.|
-| receiver | Callback&lt;[MouseEvent](js-apis-mouseevent.md#mouseevent)&gt; | Yes   | Callback used to return mouse events asynchronously. |
+| rect     | [display.Rect](../apis-arkui/js-apis-display.md#rect9)[]             | Yes   | Rectangular area where a callback is triggered. One or two rectangular areas can be specified.|
+| receiver | Callback&lt;[MouseEvent](js-apis-mouseevent.md#mouseevent)&gt; | Mandatory    | Callback used to return the mouse input event.  |
 
 **Error codes**
 
@@ -155,16 +158,16 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied.   |
-| 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API.<br/>Applicable version: 12+  |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { MouseEvent } from '@kit.InputKit';
+import { inputMonitor, MouseEvent } from '@kit.InputKit';
 import { display } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -180,7 +183,7 @@ struct Index {
             this.getUIContext().getPromptAction().showToast({
               message: `Monitor on success: ${JSON.stringify(mouseEvent)}`
             })
-            console.info(`Monitor on success ${JSON.stringify(mouseEvent)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(mouseEvent)}.`);
             return false;
           };
 
@@ -200,9 +203,10 @@ struct Index {
           }];
 
           try {
+            // Subscribe to Mouse Events
             inputMonitor.on('mouse', rect, callback);
           } catch (error) {
-            console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor the mouse event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -214,7 +218,7 @@ struct Index {
 
 off(type: 'touch', receiver?: TouchEventReceiver): void
 
-Disables listening for global touch events.
+Cancels listening for global touchscreen input events. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.INPUT_MONITORING
 
@@ -233,15 +237,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied.   |
-| 202  | Permission denied, non-system app called system api.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API.<br/>Applicable version: 12+  |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { TouchEvent } from '@kit.InputKit';
+import { inputMonitor, TouchEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -252,15 +256,17 @@ struct Index {
         .onClick(() => {
           // Disable listening for a single callback.
           let callback = (touchEvent: TouchEvent) => {
-            console.info(`Monitor on success ${JSON.stringify(touchEvent)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(touchEvent)}.`);
             return false;
           };
           try {
+            // Subscribe to Touch Events
             inputMonitor.on('touch', callback);
+            // Unsubscribe from Touch Events
             inputMonitor.off('touch', callback);
-            console.info(`Monitor off success`);
+            console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor the touch screen event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -269,8 +275,8 @@ struct Index {
 ```
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { TouchEvent } from '@kit.InputKit';
+import { inputMonitor, TouchEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -281,15 +287,17 @@ struct Index {
         .onClick(() => {
           // Cancel listening for all callbacks.
           let callback = (touchEvent: TouchEvent) => {
-            console.info(`Monitor on success ${JSON.stringify(touchEvent)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(touchEvent)}.`);
             return false;
           };
           try {
+            // Subscribe to Touch Events
             inputMonitor.on('touch', callback);
+            // Unsubscribe from Touch Events
             inputMonitor.off('touch');
-            console.info(`Monitor off success`);
+            console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor the touch screen event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -312,7 +320,7 @@ Disables listening for global mouse events. This API uses an asynchronous callba
 | Name      | Type                        | Mandatory  | Description                 |
 | -------- | -------------------------- | ---- | ------------------- |
 | type     | string                     | Yes   | Event type. This field has a fixed value of **mouse**.|
-| receiver | Callback&lt;MouseEvent&gt; | No   | Callback for which listening is disabled. If this parameter is not specified, listening will be disabled for all callbacks registered by the current application.|
+| receiver | Callback&lt;[MouseEvent](js-apis-mouseevent.md#mouseevent)&gt; | No   | Callback for which listening is disabled. If this parameter is not specified, listening will be disabled for all callbacks registered by the current application.|
 
 **Error codes**
 
@@ -320,15 +328,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied.   |
-| 202  | Permission denied, non-system app called system api.   |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API.<br/>Applicable version: 12+  |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { MouseEvent } from '@kit.InputKit';
+import { inputMonitor, MouseEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -339,15 +347,17 @@ struct Index {
         .onClick(() => {
           // Disable listening for a single callback.
           let callback = (mouseEvent: MouseEvent) => {
-            console.info(`Monitor on success ${JSON.stringify(mouseEvent)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(mouseEvent)}.`);
             return false;
           };
           try {
+            // Subscribe to Mouse Events
             inputMonitor.on('mouse', callback);
+            // Unsubscribe from Mouse Events
             inputMonitor.off('mouse', callback);
-            console.info(`Monitor off success`);
+            console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor the mouse event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -356,8 +366,8 @@ struct Index {
 ```
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { MouseEvent } from '@kit.InputKit';
+import { inputMonitor, MouseEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -368,15 +378,17 @@ struct Index {
         .onClick(() => {
           // Cancel listening for all callbacks.
           let callback = (mouseEvent: MouseEvent) => {
-            console.info(`Monitor on success ${JSON.stringify(mouseEvent)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(mouseEvent)}.`);
             return false;
           };
           try {
+            // Subscribe to Mouse Events
             inputMonitor.on('mouse', callback);
+            // Unsubscribe from Mouse Events
             inputMonitor.off('mouse');
-            console.info(`Monitor off success`);
+            console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor the mouse event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -390,8 +402,6 @@ type TouchEventReceiver = (touchEvent: TouchEvent) => boolean
 
 Callback used to return the touch event.
 
-**Required permissions**: ohos.permission.INPUT_MONITORING
-
 **System capability**: SystemCapability.MultimodalInput.Input.InputMonitor
 
 **Parameters**
@@ -404,39 +414,11 @@ Callback used to return the touch event.
 
 | Type     | Description                                      |
 | ------- | ---------------------------------------- |
-| Boolean | Result indicating whether the touch event will be dispatched to the window. The value **true** indicates that the touch event will not be dispatched to the window, and the value **false** indicates the opposite.|
-
-**Example**
-
-```js
-import { inputMonitor } from '@kit.InputKit';
-
-@Entry
-@Component
-struct Index {
-  build() {
-    RelativeContainer() {
-      Text()
-        .onClick(() => {
-          try {
-            inputMonitor.on('touch', touchEvent => {
-              if (touchEvent.touches.length === 3) { // Three fingers are pressed.
-                return true;
-              }
-              return false;
-            });
-          } catch (error) {
-            console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
-          }
-        })
-    }
-  }
-}
-```
+| boolean | If **true** is returned, subsequent events generated by this touchscreen interaction will no longer be dispatched to the window. If **false** is returned, subsequent events generated by this touchscreen interaction will still be dispatched to the window. |
 
 ## inputMonitor.on('pinch')<sup>10+</sup>
 
-on(type: 'pinch', receiver: Callback&lt;[Pinch](js-apis-multimodalinput-gestureevent.md#pinch)&gt;): void
+on(type: 'pinch', receiver: Callback&lt;Pinch&gt;): void
 
 Enables listening for global touchpad pinch events. This API uses an asynchronous callback to return the result.
 
@@ -449,7 +431,7 @@ Enables listening for global touchpad pinch events. This API uses an asynchronou
 | Name      | Type                        | Mandatory  | Description                 |
 | -------- | -------------------------- | ---- | ------------------- |
 | type     | string                     | Yes   | Event type. This field has a fixed value of **pinch**.|
-| receiver | Callback&lt;[Pinch](js-apis-multimodalinput-gestureevent.md#pinch)&gt; | Yes   | Callback used to return pinch events asynchronously. |
+| receiver | Callback&lt;[Pinch](js-apis-multimodalinput-gestureevent.md#pinch)&gt; | Mandatory    | Callback used to return pinch input event.  |
 
 **Error codes**
 
@@ -457,14 +439,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied.   |
-| 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -474,12 +457,13 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Subscribe to Pinch Event
             inputMonitor.on('pinch', (pinchEvent) => {
-              console.info(`Monitor on success ${JSON.stringify(pinchEvent)}`);
+              console.info(`Succeeded in monitoring on ${JSON.stringify(pinchEvent)}.`);
               return false;
             });
           } catch (error) {
-            console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor the pinch event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -489,7 +473,7 @@ struct Index {
 
 ## inputMonitor.off('pinch')<sup>10+</sup>
 
-off(type: 'pinch', receiver?: Callback&lt;[Pinch](js-apis-multimodalinput-gestureevent.md#pinch)&gt;): void
+off(type: 'pinch', receiver?: Callback&lt;Pinch&gt;): void
 
 Disables listening for global touchpad pinch events. This API uses an asynchronous callback to return the result.
 
@@ -510,15 +494,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied.   |
-| 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { Pinch } from '@kit.InputKit';
+import { inputMonitor, Pinch } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -529,15 +513,17 @@ struct Index {
         .onClick(() => {
           // Disable listening for a single callback.
           let callback = (pinchEvent: Pinch) => {
-            console.info(`Monitor on success ${JSON.stringify(pinchEvent)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(pinchEvent)}.`);
             return false;
           };
           try {
+            // Subscribe to Pinch Event
             inputMonitor.on('pinch', callback);
+            // Unsubscribe from Pinch Event
             inputMonitor.off('pinch', callback);
-            console.info(`Monitor off success`);
+            console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to cancel monitor pinch event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -546,8 +532,8 @@ struct Index {
 ```
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { Pinch } from '@kit.InputKit';
+import { inputMonitor, Pinch } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -558,15 +544,17 @@ struct Index {
         .onClick(() => {
           // Cancel listening for all callbacks.
           let callback = (pinchEvent: Pinch) => {
-            console.info(`Monitor on success ${JSON.stringify(pinchEvent)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(pinchEvent)}.`);
             return false;
           };
           try {
+            // Subscribe to Pinch Event
             inputMonitor.on('pinch', callback);
+            // Unsubscribe from Pinch Event
             inputMonitor.off('pinch');
-            console.info(`Monitor off success`);
+            console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to cancel monitor pinch event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -576,7 +564,7 @@ struct Index {
 
 ## inputMonitor.on('threeFingersSwipe')<sup>10+</sup>
 
-on(type: 'threeFingersSwipe', receiver: Callback&lt;[ThreeFingersSwipe](js-apis-multimodalinput-gestureevent.md#threefingersswipe)&gt;): void
+on(type: 'threeFingersSwipe', receiver: Callback&lt;ThreeFingersSwipe&gt;): void
 
 Enables listening for three-finger swipe events. This API uses an asynchronous callback to return the result.
 
@@ -589,7 +577,7 @@ Enables listening for three-finger swipe events. This API uses an asynchronous c
 | Name      | Type                        | Mandatory  | Description                 |
 | -------- | -------------------------- | ---- | ------------------- |
 | type     | string                     | Yes   | Event type. This field has a fixed value of **threeFingersSwipe**.|
-| receiver | Callback&lt;[ThreeFingersSwipe](js-apis-multimodalinput-gestureevent.md#threefingersswipe)&gt; | Yes   | Callback used to return three-finger swipe events asynchronously. |
+| receiver | Callback&lt;[ThreeFingersSwipe](js-apis-multimodalinput-gestureevent.md#threefingersswipe)&gt; | Mandatory    | Callback used to return the three-finger swipe input event.  |
 
 **Error codes**
 
@@ -597,14 +585,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied.   |
-| 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -614,12 +603,13 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Subscribe to Three-Finger Swipe Events
             inputMonitor.on('threeFingersSwipe', (threeFingersSwipe) => {
-              console.info(`Monitor on success ${JSON.stringify(threeFingersSwipe)}`);
+              console.info(`Succeeded in monitoring on ${JSON.stringify(threeFingersSwipe)}.`);
               return false;
             });
           } catch (error) {
-            console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor three fingers swipe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -629,7 +619,7 @@ struct Index {
 
 ## inputMonitor.off('threeFingersSwipe')<sup>10+</sup>
 
-off(type: 'threeFingersSwipe', receiver?: Callback&lt;[ThreeFingersSwipe](js-apis-multimodalinput-gestureevent.md#threefingersswipe)&gt;): void
+off(type: 'threeFingersSwipe', receiver?: Callback&lt;ThreeFingersSwipe&gt;): void
 
 Disables listening for three-finger swipe events. This API uses an asynchronous callback to return the result.
 
@@ -650,15 +640,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied.   |
-| 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { ThreeFingersSwipe } from '@kit.InputKit';
+import { inputMonitor, ThreeFingersSwipe } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -669,15 +659,17 @@ struct Index {
         .onClick(() => {
           // Disable listening for a single callback.
           let callback = (threeFingersSwipe: ThreeFingersSwipe) => {
-            console.info(`Monitor on success ${JSON.stringify(threeFingersSwipe)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(threeFingersSwipe)}.`);
             return false;
           };
           try {
+            // Subscribe to Three-Finger Swipe Event
             inputMonitor.on('threeFingersSwipe', callback);
-            inputMonitor.off("threeFingersSwipe", callback);
-            console.info(`Monitor off success`);
+            // Unsubscribe from Three-Finger Swipe Event
+            inputMonitor.off('threeFingersSwipe', callback);
+            console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to cancel monitor three fingers swipe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -686,8 +678,8 @@ struct Index {
 ```
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { ThreeFingersSwipe } from '@kit.InputKit';
+import { inputMonitor, ThreeFingersSwipe } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -698,15 +690,17 @@ struct Index {
         .onClick(() => {
           // Cancel listening for all callbacks.
           let callback = (threeFingersSwipe: ThreeFingersSwipe) => {
-            console.info(`Monitor on success ${JSON.stringify(threeFingersSwipe)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(threeFingersSwipe)}.`);
             return false;
           };
           try {
-            inputMonitor.on("threeFingersSwipe", callback);
-            inputMonitor.off("threeFingersSwipe");
-            console.info(`Monitor off success`);
+            // Subscribe to Three-Finger Swipe Events
+            inputMonitor.on('threeFingersSwipe', callback);
+            // Unsubscribe from Three-Finger Swipe Events
+            inputMonitor.off('threeFingersSwipe');
+            console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to cancel monitor three fingers swipe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -716,7 +710,7 @@ struct Index {
 
 ## inputMonitor.on('fourFingersSwipe')<sup>10+</sup>
 
-on(type: 'fourFingersSwipe', receiver: Callback&lt;[FourFingersSwipe](js-apis-multimodalinput-gestureevent.md#fourfingersswipe)&gt;): void
+on(type: 'fourFingersSwipe', receiver: Callback&lt;FourFingersSwipe&gt;): void
 
 Enables listening for four-finger swipe events. This API uses an asynchronous callback to return the result.
 
@@ -729,7 +723,7 @@ Enables listening for four-finger swipe events. This API uses an asynchronous ca
 | Name      | Type                        | Mandatory  | Description                 |
 | -------- | -------------------------- | ---- | ------------------- |
 | type     | string                     | Yes   | Event type. This field has a fixed value of **fourFingersSwipe**.|
-| receiver | Callback&lt;[FourFingersSwipe](js-apis-multimodalinput-gestureevent.md#fourfingersswipe)&gt; | Yes   | Callback used to return four-finger swipe events asynchronously. |
+| receiver | Callback&lt;[FourFingersSwipe](js-apis-multimodalinput-gestureevent.md#fourfingersswipe)&gt; | Mandatory    | Callback used to return the four-finger swipe input event.  |
 
 **Error codes**
 
@@ -737,14 +731,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied.   |
-| 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -754,12 +749,13 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Subscribe to Four-Finger Swipe Events
             inputMonitor.on('fourFingersSwipe', (fourFingersSwipe) => {
-              console.info(`Monitor on success ${JSON.stringify(fourFingersSwipe)}`);
+              console.info(`Succeeded in monitoring on ${JSON.stringify(fourFingersSwipe)}.`);
               return false;
             });
           } catch (error) {
-            console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor four fingers swipe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -769,7 +765,7 @@ struct Index {
 
 ## inputMonitor.off('fourFingersSwipe')<sup>10+</sup>
 
-off(type: 'fourFingersSwipe', receiver?: Callback&lt;[FourFingersSwipe](js-apis-multimodalinput-gestureevent.md#fourfingersswipe)&gt;): void
+off(type: 'fourFingersSwipe', receiver?: Callback&lt;FourFingersSwipe&gt;): void
 
 Disables listening for four-finger swipe events. This API uses an asynchronous callback to return the result.
 
@@ -790,15 +786,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied.   |
-| 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { FourFingersSwipe } from '@kit.InputKit';
+import { inputMonitor, FourFingersSwipe } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -809,15 +805,17 @@ struct Index {
         .onClick(() => {
           // Disable listening for a single callback.
           let callback = (fourFingersSwipe: FourFingersSwipe) => {
-            console.info(`Monitor on success ${JSON.stringify(fourFingersSwipe)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(fourFingersSwipe)}.`);
             return false;
           };
           try {
+            // Subscribe to Four-Finger Swipe Event
             inputMonitor.on('fourFingersSwipe', callback);
+            // Unsubscribe from Four-Finger Swipe Event
             inputMonitor.off('fourFingersSwipe', callback);
-            console.info(`Monitor off success`);
+            console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to cancel monitoring four fingers swipe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -826,8 +824,8 @@ struct Index {
 ```
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { FourFingersSwipe } from '@kit.InputKit';
+import { inputMonitor, FourFingersSwipe } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -838,15 +836,17 @@ struct Index {
         .onClick(() => {
           // Cancel listening for all callbacks.
           let callback = (fourFingersSwipe: FourFingersSwipe) => {
-            console.info(`Monitor on success ${JSON.stringify(fourFingersSwipe)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(fourFingersSwipe)}.`);
             return false;
           };
           try {
+            // Subscribe to Four-Finger Swipe Event
             inputMonitor.on('fourFingersSwipe', callback);
+            // Unsubscribe from Four-Finger Swipe Event
             inputMonitor.off('fourFingersSwipe');
-            console.info(`Monitor off success`);
+            console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to cancel monitoring four fingers swipe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -870,7 +870,7 @@ Enables listening for rotation events of the touchpad. This API uses an asynchro
 | -------- | -------------------------- | ---- | ------------------- |
 | type     | string                     | Yes   | Event type. This field has a fixed value of **rotate**.|
 | fingers     | number                     | Yes   | Number of fingers that trigger a rotation. The value must not be greater than **2**.|
-| receiver | Callback&lt;[Rotate](js-apis-multimodalinput-gestureevent.md#rotate11)&gt; | Yes   | Callback used to return rotation events asynchronously. |
+| receiver | Callback&lt;[Rotate](js-apis-multimodalinput-gestureevent.md#rotate11)&gt; | Mandatory    | Callback used to return the rotation input event.  |
 
 **Error codes**
 
@@ -878,15 +878,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied.   |
-| 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { Rotate } from '@kit.InputKit';
+import { inputMonitor, Rotate } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -896,12 +896,13 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Number of Fingers for Rotation Gesture Monitoring: 2
             inputMonitor.on('rotate', 2, (rotateEvent: Rotate) => {
-              console.info(`Monitor on success ${JSON.stringify(rotateEvent)}`);
+              console.info(`Succeeded in monitoring on ${JSON.stringify(rotateEvent)}.`);
               return false;
             });
           } catch (error) {
-            console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor rotate event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -933,15 +934,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied.   |
-| 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { Rotate } from '@kit.InputKit';
+import { inputMonitor, Rotate } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -952,15 +953,17 @@ struct Index {
         .onClick(() => {
           // Disable listening for a single callback.
           let callback = (rotateEvent: Rotate) => {
-            console.info(`Monitor on success ${JSON.stringify(rotateEvent)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(rotateEvent)}.`);
             return false;
           };
           try {
+            // Rotation gesture listening finger count 2
             inputMonitor.on('rotate', 2, callback);
+            // Unsubscribe from rotation events
             inputMonitor.off('rotate', 2, callback);
-            console.info(`Monitor off success`);
+            console.info(`Succeeded in turning off monitor.`); 
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to cancel monitor rotate event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -969,8 +972,8 @@ struct Index {
 ```
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { Rotate } from '@kit.InputKit';
+import { inputMonitor, Rotate } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -981,15 +984,17 @@ struct Index {
         .onClick(() => {
           // Cancel listening for all callbacks.
           let callback = (rotateEvent: Rotate) => {
-            console.info(`Monitor on success ${JSON.stringify(rotateEvent)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(rotateEvent)}.`);
             return false;
           };
           try {
+            // Number of fingers for rotation gesture monitoring: 2
             inputMonitor.on('rotate', 2, callback);
+            // Unsubscribe from rotation events
             inputMonitor.off('rotate', 2);
-            console.info(`Monitor off success`);
+            console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to cancel monitor rotate event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1013,7 +1018,7 @@ Enables listening for global touchpad pinch events. This API uses an asynchronou
 | -------- | -------------------------- | ---- | ------------------- |
 | type     | string                     | Yes   | Event type. This field has a fixed value of **pinch**.|
 | fingers     | number                     | Yes   | Number of fingers that trigger the pinch. The value must be greater than or equal to **2**.|
-| receiver | Callback&lt;[Pinch](js-apis-multimodalinput-gestureevent.md#pinch)&gt; | Yes   | Callback used to return pinch events asynchronously. |
+| receiver | Callback&lt;[Pinch](js-apis-multimodalinput-gestureevent.md#pinch)&gt; | Mandatory    | Callback used to return the pinch input event.  |
 
 **Error codes**
 
@@ -1021,15 +1026,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied.   |
-| 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { Pinch } from '@kit.InputKit';
+import { inputMonitor, Pinch } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1039,12 +1044,13 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Number of fingers for pinch gesture monitoring: 2
             inputMonitor.on('pinch', 2, (pinchEvent: Pinch) => {
-              console.info(`Monitor on success ${JSON.stringify(pinchEvent)}`);
+              console.info(`Succeeded in monitoring on ${JSON.stringify(pinchEvent)}.`);
               return false;
             });
           } catch (error) {
-            console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor pinch event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1076,15 +1082,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied.   |
-| 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { Pinch } from '@kit.InputKit';
+import { inputMonitor, Pinch } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1095,15 +1101,17 @@ struct Index {
         .onClick(() => {
           // Disable listening for a single callback.
           let callback = (pinchEvent: Pinch) => {
-            console.info(`Monitor on success ${JSON.stringify(pinchEvent)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(pinchEvent)}.`);
             return false;
           };
           try {
+            // Subscribe to Pinch Event
             inputMonitor.on('pinch', 2, callback);
+            // Unsubscribe from Pinch Event
             inputMonitor.off('pinch', 2, callback);
-            console.info(`Monitor off success`);
+            console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to cancel monitor pinch event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1112,8 +1120,8 @@ struct Index {
 ```
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { Pinch } from '@kit.InputKit';
+import { inputMonitor, Pinch } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1124,15 +1132,17 @@ struct Index {
         .onClick(() => {
           // Cancel listening for all callbacks.
           let callback = (pinchEvent: Pinch) => {
-            console.info(`Monitor on success ${JSON.stringify(pinchEvent)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(pinchEvent)}.`);
             return false;
           };
           try {
+            // Number of fingers for pinch gesture monitoring: 2
             inputMonitor.on('pinch', 2, callback);
+            // Unsubscribe from pinch events
             inputMonitor.off('pinch', 2);
-            console.info(`Monitor off success`);
+            console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to cancel monitor pinch event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1142,7 +1152,7 @@ struct Index {
 
 ## inputMonitor.on('threeFingersTap')<sup>11+</sup>
 
-on(type: 'threeFingersTap', receiver: Callback&lt;[ThreeFingersTap](js-apis-multimodalinput-gestureevent.md#threefingerstap11)&gt;): void
+on(type: 'threeFingersTap', receiver: Callback&lt;ThreeFingersTap&gt;): void
 
 Enables listening for three-finger tap events. This API uses an asynchronous callback to return the result.
 
@@ -1155,7 +1165,7 @@ Enables listening for three-finger tap events. This API uses an asynchronous cal
 | Name  | Type                                                        | Mandatory| Description                                     |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------- |
 | type     | string                                                       | Yes  | Event type. This field has a fixed value of **threeFingersTap**.|
-| receiver | Callback&lt;[ThreeFingersTap](js-apis-multimodalinput-gestureevent.md#threefingerstap11)&gt; | Yes  | Callback used to return three-finger tap events asynchronously.     |
+| receiver | Callback&lt;[ThreeFingersTap](js-apis-multimodalinput-gestureevent.md#threefingerstap11)&gt; | Mandatory   | Callback used to return the three-finger tap input event.      |
 
 **Error codes**
 
@@ -1163,14 +1173,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied.   |
-| 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1180,12 +1191,13 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Subscribe to Three-Finger Tap Event
             inputMonitor.on('threeFingersTap', (threeFingersTap) => {
-              console.info(`Monitor on success ${JSON.stringify(threeFingersTap)}`);
+              console.info(`Succeeded in monitoring on ${JSON.stringify(threeFingersTap)}.`);
               return false;
             });
           } catch (error) {
-            console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor three fingers tap, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1195,7 +1207,7 @@ struct Index {
 
 ## inputMonitor.off('threeFingersTap')<sup>11+</sup>
 
-off(type: 'threeFingersTap', receiver?: Callback&lt;[ThreeFingersTap](js-apis-multimodalinput-gestureevent.md#threefingerstap11)&gt;): void
+off(type: 'threeFingersTap', receiver?: Callback&lt;ThreeFingersTap&gt;): void
 
 Disables listening for three-finger tap events. This API uses an asynchronous callback to return the result.
 
@@ -1216,15 +1228,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied.   |
-| 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { ThreeFingersTap } from '@kit.InputKit';
+import { inputMonitor, ThreeFingersTap } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1235,15 +1247,17 @@ struct Index {
         .onClick(() => {
           // Disable listening for a single callback.
           let callback = (threeFingersTap: ThreeFingersTap) => {
-            console.info(`Monitor on success ${JSON.stringify(threeFingersTap)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(threeFingersTap)}.`);
             return false;
           };
           try {
+            // Subscribe to three-finger tap event
             inputMonitor.on('threeFingersTap', callback);
-            inputMonitor.off("threeFingersTap", callback);
-            console.info(`Monitor off success`);
+            // Unsubscribe from three-finger tap event
+            inputMonitor.off('threeFingersTap', callback);
+            console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to cancel monitor three fingers tap, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1252,8 +1266,8 @@ struct Index {
 ```
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { ThreeFingersTap } from '@kit.InputKit';
+import { inputMonitor, ThreeFingersTap } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1264,15 +1278,17 @@ struct Index {
         .onClick(() => {
           // Cancel listening for all callbacks.
           let callback = (threeFingersTap: ThreeFingersTap) => {
-            console.info(`Monitor on success ${JSON.stringify(threeFingersTap)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(threeFingersTap)}.`);
             return false;
           };
           try {
+            // Subscribe to three-finger tap event
             inputMonitor.on('threeFingersTap', callback);
-            inputMonitor.off("threeFingersTap");
-            console.info(`Monitor off success`);
+            // Unsubscribe from three-finger tap event
+            inputMonitor.off('threeFingersTap');
+            console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to cancel monitor three fingers tap, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1295,8 +1311,8 @@ Enables listening for touchscreen swipe events. This API uses an asynchronous ca
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. This field has a fixed value of **touchscreenSwipe**.                   |
-| fingers  | number                                                       | Yes  | Number of fingers that trigger the swipe. The value range is [3, 5].|
-| receiver | Callback&lt;[TouchGestureEvent](js-apis-multimodalinput-gestureevent-sys.md#touchgestureevent18)&gt; | Yes  | Callback used to return touchscreen swipe events asynchronously.|
+| fingers  | number                                                       | Yes   | Number of fingers for the swipe gesture. Value range: [3, 5]. |
+| receiver | Callback&lt;[TouchGestureEvent](js-apis-multimodalinput-gestureevent-sys.md#touchgestureevent18)&gt; | Mandatory | Callback used to return the touchscreen swipe event. |
 
 **Error codes**
 
@@ -1304,15 +1320,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied.   |
-| 202  | Caller is not a system application.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@kit.InputKit';
+import { inputMonitor, TouchGestureEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1323,11 +1339,12 @@ struct Index {
         .onClick(() => {
           let fingers: number = 4;
           try {
+            // Subscribe to Touchscreen Swipe Events
             inputMonitor.on('touchscreenSwipe', fingers, (event: TouchGestureEvent) => {
-              console.info(`Monitor on success ${JSON.stringify(event)}`);
+              console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
             });
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor touch screen swipe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1350,7 +1367,7 @@ Disables listening for touchscreen swipe events. This API uses an asynchronous c
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. This field has a fixed value of **touchscreenSwipe**.                   |
-| fingers  | number                                                       | Yes  | Number of fingers that trigger the swipe. The value range is [3, 5].|
+| fingers  | number                                                       | Yes   | Number of fingers for the swipe gesture. Value range: [3, 5]. |
 | receiver | Callback&lt;[TouchGestureEvent](js-apis-multimodalinput-gestureevent-sys.md#touchgestureevent18)&gt; | No  | Callback for which listening is disabled. If this parameter is not specified, listening will be disabled for all callbacks registered by the current application.|
 
 **Error codes**
@@ -1359,15 +1376,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied.   |
-| 202  | Caller is not a system application.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@kit.InputKit';
+import { inputMonitor, TouchGestureEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1378,14 +1395,16 @@ struct Index {
         .onClick(() => {
           // Disable listening for a single callback.
           let callback = (event: TouchGestureEvent) => {
-            console.info(`Monitor on success ${JSON.stringify(event)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
           };
           let fingers: number = 4;
           try {
+            // Subscribe to Touchscreen Swipe Events
             inputMonitor.on('touchscreenSwipe', fingers, callback);
+            // Unsubscribe from Touchscreen Swipe Events
             inputMonitor.off('touchscreenSwipe', fingers, callback);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to cancel monitor touch screen swipe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1394,8 +1413,8 @@ struct Index {
 ```
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@kit.InputKit';
+import { inputMonitor, TouchGestureEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1407,12 +1426,14 @@ struct Index {
           // Cancel listening for all callbacks.
           let fingers: number = 4;
           try {
+            // Subscribe to Touchscreen Swipe Events
             inputMonitor.on('touchscreenSwipe', fingers, (event: TouchGestureEvent) => {
-              console.info(`Monitor on success ${JSON.stringify(event)}`);
+              console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
             });
+            // Unsubscribe from Touchscreen Swipe Events
             inputMonitor.off('touchscreenSwipe', fingers);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor touch screen swipe, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1435,8 +1456,8 @@ Enables listening for touchscreen pinch events. This API uses an asynchronous ca
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. This field has a fixed value of **touchscreenPinch**.                   |
-| fingers  | number                                                       | Yes  | Number of fingers that trigger the pinch. The value range is [4, 5].|
-| receiver | Callback&lt;[TouchGestureEvent](js-apis-multimodalinput-gestureevent-sys.md#touchgestureevent18)&gt; | Yes  | Callback used to return touchscreen pinch events asynchronously.|
+| fingers  | number                                                       | Yes   | Number of fingers for the pinch gesture. Value range: [4, 5]. |
+| receiver | Callback&lt;[TouchGestureEvent](js-apis-multimodalinput-gestureevent-sys.md#touchgestureevent18)&gt; | Mandatory | Callback used to return the touchscreen pinch event. |
 
 **Error codes**
 
@@ -1444,15 +1465,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied.   |
-| 202  | Caller is not a system application.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@kit.InputKit';
+import { inputMonitor, TouchGestureEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1463,11 +1484,12 @@ struct Index {
         .onClick(() => {
           let fingers: number = 4;
           try {
+            // Subscribe to Touchscreen Pinch Event
             inputMonitor.on('touchscreenPinch', fingers, (event: TouchGestureEvent) => {
-              console.info(`Monitor on success ${JSON.stringify(event)}`);
+              console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
             });
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor touch screen pinch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1490,7 +1512,7 @@ Disables listening for touchscreen pinch events. This API uses an asynchronous c
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. This field has a fixed value of **touchscreenPinch**.                   |
-| fingers  | number                                                       | Yes  | Number of fingers that trigger the pinch. The value range is [4, 5].|
+| fingers  | number                                                       | Yes   | Number of fingers for the pinch gesture. Value range: [4, 5]. |
 | receiver | Callback&lt;[TouchGestureEvent](js-apis-multimodalinput-gestureevent-sys.md#touchgestureevent18)&gt; | No  | Callback for which listening is disabled. If this parameter is not specified, listening will be disabled for all callbacks registered by the current application.|
 
 **Error codes**
@@ -1499,15 +1521,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied.   |
-| 202  | Caller is not a system application.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@kit.InputKit';
+import { inputMonitor, TouchGestureEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1518,14 +1540,16 @@ struct Index {
         .onClick(() => {
           // Disable listening for a single callback.
           let callback = (event: TouchGestureEvent) => {
-            console.info(`Monitor on success ${JSON.stringify(event)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
           };
           let fingers: number = 4;
           try {
+            // Subscribe to Touchscreen Pinch Event
             inputMonitor.on('touchscreenPinch', fingers, callback);
-            inputMonitor.off("touchscreenPinch", fingers, callback);
+            // Unsubscribe from Touchscreen Pinch Event
+            inputMonitor.off('touchscreenPinch', fingers, callback);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to cancel monitor touch screen pinch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1534,8 +1558,8 @@ struct Index {
 ```
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { TouchGestureEvent } from '@kit.InputKit';
+import { inputMonitor, TouchGestureEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1547,12 +1571,14 @@ struct Index {
           // Cancel listening for all callbacks.
           let fingers: number = 4;
           try {
+            // Subscribe to Touchscreen Pinch Event
             inputMonitor.on('touchscreenPinch', fingers, (event: TouchGestureEvent) => {
-              console.info(`Monitor on success ${JSON.stringify(event)}`);
+              console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
             });
-            inputMonitor.off("touchscreenPinch", fingers);
+            // Unsubscribe from Touchscreen Pinch Event
+            inputMonitor.off('touchscreenPinch', fingers);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to cancel monitor touch screen pinch, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1576,23 +1602,24 @@ Listens for the press and release events of the specified key, which can be the 
 | -------- | ----------------------------------------------------------- | ---- | ------------------------------------ |
 | type     | string                                                      | Yes  | Event type. This parameter has a fixed value of **keyPressed**.|
 | keys     | Array<[KeyCode](js-apis-keycode.md#keycode)> | Yes  | Key value. The following key values are supported: KEYCODE_META_LEFT, KEYCODE_META_RIGHT, KEYCODE_POWER, KEYCODE_VOLUME_DOWN, and KEYCODE_VOLUME_UP.                     |
-| receiver | Callback&lt;[KeyEvent](js-apis-keyevent.md#keyevent)&gt;    | Yes  | Callback used to receive reported data.        |
+| receiver | Callback&lt;[KeyEvent](js-apis-keyevent.md#keyevent)&gt;    | Mandatory   | Callback used to return the key input event.         |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Input Monitor Error Codes](errorcode-inputmonitor.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Input Monitor Error Codes](./errorcode-inputmonitor.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 202      | Permission denied, non-system app called system api.         |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 4100001  | Event listening not supported for the key.                   |
 
 **Example**
 
 ```js
 import { inputMonitor, KeyEvent, KeyCode } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1603,11 +1630,12 @@ struct Index {
         .onClick(() => {
           try {
             let keys: Array<KeyCode> = [KeyCode.KEYCODE_VOLUME_UP];
+            // Subscribe to Key Press Events
             inputMonitor.on('keyPressed', keys, (event: KeyEvent ) => {
-              console.info(`Monitor on success ${JSON.stringify(event)}`);
+              console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
             });
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor key pressed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1638,14 +1666,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 202      | Permission denied, non-system app called system api.         |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
 ```js
 import { inputMonitor, KeyEvent, KeyCode } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1657,13 +1686,15 @@ struct Index {
           // Disable listening for a single callback.
           try {
             let callback = (event: KeyEvent) => {
-              console.info(`Monitor on success ${JSON.stringify(event)}`);
+              console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
             };
             let keys: Array<KeyCode> = [KeyCode.KEYCODE_VOLUME_UP];
+            // Subscribe to Key Press Event
             inputMonitor.on('keyPressed', keys, callback);
-            inputMonitor.off("keyPressed", callback);
+            // Unsubscribe from Key Press Event
+            inputMonitor.off('keyPressed', callback);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to cancel monitor key pressed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1673,6 +1704,7 @@ struct Index {
 
 ```js
 import { inputMonitor, KeyEvent, KeyCode } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1684,12 +1716,14 @@ struct Index {
           // Cancel listening for all callbacks.
           try {
             let keys: Array<KeyCode> = [KeyCode.KEYCODE_VOLUME_UP];
+            // Subscribe to Key Press Events
             inputMonitor.on('keyPressed', keys, (event: KeyEvent) => {
-              console.info(`Monitor on success ${JSON.stringify(event)}`);
+              console.info(`Succeeded in monitoring on ${JSON.stringify(event)}.`);
             });
-            inputMonitor.off("keyPressed");
+            // Unsubscribe from Key Press Events
+            inputMonitor.off('keyPressed');
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to cancel monitor key pressed, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1701,7 +1735,7 @@ struct Index {
 
 queryTouchEvents(count: number): Promise&lt;Array&lt;TouchEvent&gt;&gt;
 
-Queries the latest touch events. This API uses a promise to return the result.
+Queries recent touchscreen input events. A maximum of 100 events can be queried. Since API version 26.0.0, a maximum of 60 events can be queried. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.INPUT_MONITORING
 
@@ -1711,13 +1745,13 @@ Queries the latest touch events. This API uses a promise to return the result.
 
 | Name  | Type                                                     | Mandatory| Description                                                        |
 | -------- | --------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| count     | number                                                    | Yes  | Number of touch events to be queried. The value range is [0, 100]. If the value is less than **0**, the value **0** is used. If the value is greater than **100**, the value **100** is used. If the number of touch events is 30 and the value of this parameter is set to **50**, only 30 touch events can be queried.|
+| count     | number                                                    | Yes   | Number of touch input events to query, which is an integer in the value range [0, 100]. If the value is less than 0, it is set to 0; if it is greater than 100, it is set to 100. Since API version 26.0.0, if the value is greater than 60, it is set to 60. If there are only 30 actual touch input events but this parameter is set to 50, only 30 touch input events can be queried. |
 
 **Return value**
 
 | Type         | Description                               |
 | :------------ | :---------------------------------- |
-| Promise&lt;Array&lt;[TouchEvent](js-apis-touchevent-sys.md#touchevent)&gt;&gt; | Promise used to return the touch event. The following valid information is included:<br>- **actionTime**: timestamp of the touch event, which is measured as the number of microseconds that have elapsed since the Unix epoch.<br>- [SourceType](js-apis-touchevent.md#sourcetype): touch source type.<br>- [isInject](js-apis-touchevent-sys.md#touchevent): whether the touch event is an injection event.<br>- **pressure**: pressure value. The value range is [0.0, 1.0]. The value **0.0** indicates that the pressure is not supported.<br>- **tiltX**: angle relative to the YZ plane. The value range is [-90, 90]. A positive value indicates a rightward tilt.<br>- **tiltY**: angle relative to the XZ plane. The value range is [-90, 90]. A positive value indicates a downward tilt.<br>From API version 23, the following additional valid information can be obtained:<br>- **[Action](js-apis-touchevent.md#action)**: touch event type.<br>- **screenX**: X-coordinate relative to the upper left corner of the screen, in pixels. The value range is [0, screen width], and the value increases rightwards. This parameter can be obtained only by specified applications.<br>- **screenY**: Y-coordinate relative to the upper left corner of the screen, in pixels. The value range is [0, screen height], and the value increases downwards. This parameter can be obtained only by specified applications.|
+| Promise&lt;Array&lt;[TouchEvent](js-apis-touchevent-sys.md#touchevent)&gt;&gt; | Promise used to return the queried touch input events. It contains the following valid information; all other information is invalid:<br/>- **actionTime**: Time when the touchscreen input event occurred, in microseconds (μs) since system startup.<br/>- [SourceType](js-apis-touchevent.md#sourcetype): Device type of the touch source.<br/>- [isInject](js-apis-touchevent-sys.md#touchevent): Whether the touchscreen input event is an injected event.<br/>- **pressure**: Pressure value, with a value range of [0.0, 1.0], where **0.0** indicates not supported.<br/>- **tiltX**: Angle relative to the YZ plane, with a value range of [-90, 90], where a positive value indicates tilting to the right.<br/>- **tiltY**: Angle relative to the XZ plane, with a value range of [-90, 90], where a positive value indicates tilting downward.<br/>Since API version 23, the following additional valid information can be obtained:<br/>- [Action](js-apis-touchevent.md#action): Touchscreen input event type.<br/>- **screenX**: X-axis coordinate relative to the upper left corner of the screen, in pixels, with a value range of [0, screen width], increasing to the right. It is available only for specified applications.<br/>- **screenY**: Y-axis coordinate relative to the upper left corner of the screen, in pixels, with a value range of [0, screen height], increasing downward. It is available only for specified applications.<br/>Since API version 26.0.0, a maximum of 60 events can be queried, and events of the MOVE and PULL_MOVE types will not be returned. **screenX** and **screenY** are no longer restricted to specified applications and can be obtained by all system applications. Additionally, the following valid information can be obtained:<br/>- **screenId**: Target screen ID. |
 
 **Error codes**
 
@@ -1725,27 +1759,174 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 202      | Permission denied, non-system app called system api.         |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 
 **Example**
 
 ```js
-import { inputMonitor, TouchEvent } from '@kit.InputKit'
+import { inputMonitor, TouchEvent } from '@kit.InputKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // Querying the Number of Touchscreen Events
   inputMonitor.queryTouchEvents(10).then((events: Array<TouchEvent>) => {
     events.forEach((event, index) => {
-      console.info(`Touch event ${index}: actionTime=${event.actionTime}, sourceType=${event.sourceType}`);
+      console.info(`Succeeded in querying touch event ${index}, actionTime=${event.actionTime}, sourceType=${event.sourceType}.`);
     });
   }).catch((error: BusinessError) => {
-    console.error('queryTouchEvents promise error: ' + JSON.stringify(error));
+    console.error(`Failed to query touch events promise, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
   });
 } catch (error) {
   const code = (error as BusinessError).code;
   const message = (error as BusinessError).message;
-  console.error(`queryTouchEvents failed, error code: ${code}, message: ${message}.`);
+  console.error(`Failed to query touch events, Code: ${code}, message: ${message}.`);
+}
+```
+
+## inputMonitor.on('swipeInward')<sup>12+</sup>
+
+on(type: 'swipeInward', receiver: Callback&lt;SwipeInward&gt;): void
+
+Listens for inward swipe events. This API uses an asynchronous callback to return the result.
+
+**Required permissions**: ohos.permission.INPUT_MONITORING
+
+**System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**Parameters**
+
+| Name  | Type                                                       | Mandatory| Description                                |
+| -------- | ----------------------------------------------------------- | ---- | ------------------------------------ |
+| type     | string                                                      | Yes   | Input event type, with the unique value 'swipeInward'. |
+| receiver | Callback&lt;[SwipeInward](js-apis-multimodalinput-gestureevent-sys.md#swipeinward)&gt;    | Mandatory   | Callback used to return the inward swipe event.         |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**Example**
+
+```js
+import { inputMonitor } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Text()
+        .onClick(() => {
+          try {
+            // Subscribe to Swipe Inward Event
+            inputMonitor.on('swipeInward', (SwipeInward) => {
+              console.info(`Succeeded in monitoring on ${JSON.stringify(SwipeInward)}.`);
+              return false;
+            });
+          } catch (error) {
+            console.error(`Failed to monitor swipe inward, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+          }
+        })
+    }
+  }
+}
+```
+
+## inputMonitor.off('swipeInward')<sup>12+</sup>
+
+off(type: 'swipeInward', receiver?: Callback&lt;SwipeInward&gt;): void
+
+Cancels listening for inward swipe events. This API uses an asynchronous callback to return the result.
+
+**Required permissions**: ohos.permission.INPUT_MONITORING
+
+**System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
+
+**Parameters**
+
+| Name  | Type                                                        | Mandatory| Description                                                        |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | Yes  | Input event type. The value is fixed at **swipeInward**.                   |
+| receiver | Callback&lt;[SwipeInward](js-apis-multimodalinput-gestureevent-sys.md#swipeinward)&gt; | No  | Callback for which listening is disabled. If this parameter is not specified, listening will be disabled for all callbacks registered by the current application.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message            |
+| ---- | --------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**Example**
+
+```js
+import { inputMonitor, SwipeInward } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+build() {
+  RelativeContainer() {
+    Text()
+      .onClick(() => {
+        // Disable listening for a single callback.
+        let callback = (swipeInward: SwipeInward) => {
+          console.info(`Succeeded in monitoring on ${JSON.stringify(swipeInward)}.`);
+          return false;
+        };
+        try {
+          // Subscribe to Swipe Inward Event
+          inputMonitor.on('swipeInward', callback);
+          // Unsubscribe from Swipe Inward Event
+          inputMonitor.off('swipeInward', callback);
+          console.info(`Succeeded in turning off monitor.`);
+        } catch (error) {
+          console.error(`Failed to cancel monitor swipe inward, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+        }
+      })
+  }
+}
+}
+```
+
+```js
+import { inputMonitor, SwipeInward } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+build() {
+  RelativeContainer() {
+    Text()
+      .onClick(() => {
+        // Cancel listening for all callbacks.
+        let callback = (swipeInward: SwipeInward) => {
+          console.info(`Succeeded in monitoring on ${JSON.stringify(swipeInward)}.`);
+          return false;
+        };
+        try {
+          // Subscribe to Swipe Inward Event
+          inputMonitor.on('swipeInward', callback);
+          // Unsubscribe from Swipe Inward Event
+          inputMonitor.off('swipeInward');
+          console.info(`Succeeded in turning off monitor.`);
+        } catch (error) {
+          console.error(`Failed to cancel monitor swipe inward, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
+        }
+      })
+  }
+}
 }
 ```
 
@@ -1757,14 +1938,14 @@ Enables listening for fingerprint gesture input events. This API uses an asynchr
 
 **Required permissions**: ohos.permission.INPUT_MONITORING
 
-**System capability**: SystemCapability.MultimodalInput.Input.InputMonitor
+**System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
 **Parameters**
 
 | Name  | Type                                                       | Mandatory| Description                                |
 | -------- | ----------------------------------------------------------- | ---- | ------------------------------------ |
 | type     | string                                                      | Yes  | Input event type. The value is unique and is **fingerprint**.|
-| receiver | Callback&lt;[FingerprintEvent](js-apis-shortKey-sys.md#fingerprintevent12)&gt;    | Yes  | Callback used to receive reported data.        |
+| receiver | Callback&lt;[FingerprintEvent](js-apis-shortKey-sys.md#fingerprintevent12)&gt;    | Mandatory   | Callback used to return the fingerprint device gesture input event.         |
 
 **Error codes**
 
@@ -1772,14 +1953,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 202      | Permission denied, non-system app called system api.         |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
 ```js
 import { inputMonitor } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1789,12 +1971,13 @@ struct Index {
       Text()
         .onClick(() => {
           try {
+            // Subscribe to Fingerprint Events
             inputMonitor.on('fingerprint', (FingerprintEvent) => {
-              console.info(`Monitor on success ${JSON.stringify(FingerprintEvent)}`);
+              console.info(`Succeeded in monitoring on ${JSON.stringify(FingerprintEvent)}.`);
               return false;
             });
           } catch (error) {
-            console.error(`Monitor on failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to monitor finger print event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1810,7 +1993,7 @@ Disables listening for fingerprint gesture input events. This API uses an asynch
 
 **Required permissions**: ohos.permission.INPUT_MONITORING
 
-**System capability**: SystemCapability.MultimodalInput.Input.InputMonitor
+**System capability:** SystemCapability.MultimodalInput.Input.InputMonitor
 
 **Parameters**
 
@@ -1825,15 +2008,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID | Error Message            |
 | ---- | --------------------- |
-| 201  | Permission denied.   |
-| 202  | SystemAPI permission error.  |
-| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Example**
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { FingerprintEvent } from '@kit.InputKit';
+import { inputMonitor, FingerprintEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1844,15 +2027,17 @@ struct Index {
         .onClick(() => {
           // Disable listening for a single callback.
           let callback = (fingerprintEvent: FingerprintEvent) => {
-            console.info(`Monitor on success ${JSON.stringify(fingerprintEvent)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(fingerprintEvent)}.`);
             return false;
           };
           try {
+            // Subscribe to Fingerprint Events
             inputMonitor.on('fingerprint', callback);
-            inputMonitor.off("fingerprint", callback);
-            console.info(`Monitor off success`);
+            // Unsubscribe from Fingerprint Events
+            inputMonitor.off('fingerprint', callback);
+            console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to cancel monitor finger print event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }
@@ -1861,8 +2046,8 @@ struct Index {
 ```
 
 ```js
-import { inputMonitor } from '@kit.InputKit';
-import { FingerprintEvent } from '@kit.InputKit';
+import { inputMonitor, FingerprintEvent } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -1873,15 +2058,17 @@ struct Index {
         .onClick(() => {
           // Cancel listening for all callbacks.
           let callback = (fingerprintEvent: FingerprintEvent) => {
-            console.info(`Monitor on success ${JSON.stringify(fingerprintEvent)}`);
+            console.info(`Succeeded in monitoring on ${JSON.stringify(fingerprintEvent)}.`);
             return false;
           };
           try {
+            // Subscribe to Fingerprint Events
             inputMonitor.on('fingerprint', callback);
-            inputMonitor.off("fingerprint");
-            console.info(`Monitor off success`);
+            // Unsubscribe from Fingerprint Events
+            inputMonitor.off('fingerprint');
+            console.info(`Succeeded in turning off monitor.`);
           } catch (error) {
-            console.error(`Monitor execute failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            console.error(`Failed to cancel monitor finger print event, Code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}.`);
           }
         })
     }

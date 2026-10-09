@@ -33,7 +33,7 @@
 | 名称 | 类型 | 默认值 | 必填 | 描述 |
 | -------- | -------- | -------- | -------- | -------- |
 | range | Array | - | 否 | 设置文本选择器的取值范围。<br/>使用时需要使用数据绑定的方式，如range&nbsp;=&nbsp;{{data}}，js中声明相应变量：data：["15",&nbsp;"20",&nbsp;"25"]。 |
-| selected | string | 0 | 否 | 设置文本选择器的默认选择值，该值需要为range的索引。 |
+| selected | number | 0 | 否 | 设置文本选择器的默认选择值，该值需要为range的索引。 |
 
 时间选择器：type=time
 
@@ -66,12 +66,12 @@ type=time：
 | selected-color | &lt;color&gt; | \#ffffff<br/> | 否 | 选中项字体颜色。 |
 | selected-font-size | &lt;length&gt; | 38px<br/> | 否 | 选中项字体尺寸，类型length，单位px。 |
 | selected-font-family | string | HYQiHei-65S | 否 | 选中项字体类型。 |
-| font-family | string | <br/>HYQiHei-65S | 否 | 选项字体类型。 |
+| font-family | string | <br/>HYQiHei-65S | 否 | 候选项字体类型。 |
 | width | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>5+</sup> | - | 否 | 设置组件自身的宽度。<br/>未设置时组件宽度默认为0。 |
 | height | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>5+</sup> | - | 否 | 设置组件自身的高度。<br/>未设置时组件高度默认为0。 |
 | padding | &lt;length&gt; | 0 | 否 | 使用简写属性设置所有的内边距属性。<br/>&nbsp;&nbsp;该属性可以有1到4个值：<br/>-&nbsp;指定一个值时，该值指定四个边的内边距。<br/>-&nbsp;指定两个值时，第一个值指定上下两边的内边距，第二个指定左右两边的内边距。<br/>-&nbsp;指定三个值时，第一个指定上边的内边距，第二个指定左右两边的内边距，第三个指定下边的内边距。<br/>-&nbsp;指定四个值时分别为上、右、下、左边的内边距（顺时针顺序）。 |
 | padding-[left\|top\|right\|bottom] | &lt;length&gt; | 0 | 否 | 设置左、上、右、下内边距属性。 |
-| margin | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>5+</sup> | 0 | 否 | 使用简写属性设置所有的外边距属性，该属性可以有1到4个值。<br/>-&nbsp;只有一个值时，这个值会被指定给全部的四个边。<br/>-&nbsp;两个值时，第一个值被匹配给上和下，第二个值被匹配给左和右。<br/>-&nbsp;三个值时，第一个值被匹配给上,&nbsp;第二个值被匹配给左和右，第三个值被匹配给下。<br/>-&nbsp;四个值时，会依次按上、右、下、左的顺序匹配&nbsp;(即顺时针顺序)。 |
+| margin | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>5+</sup> | 0 | 否 | 使用简写属性设置所有的外边距属性，该属性可以有1到4个值。<br/>-&nbsp;只有一个值时，这个值会被指定给全部的四个边。<br/>-&nbsp;两个值时，第一个值被匹配给上和下，第二个值被匹配给左和右。<br/>-&nbsp;三个值时，第一个值被匹配给上，第二个值被匹配给左和右，第三个值被匹配给下。<br/>-&nbsp;四个值时，会依次按上、右、下、左的顺序匹配&nbsp;(即顺时针顺序)。 |
 | margin-[left\|top\|right\|bottom] | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>5+</sup> | 0 | 否 | 设置左、上、右、下外边距属性。 |
 | border-width | &lt;length&gt; | 0 | 否 | 使用简写属性设置元素的所有边框宽度。 |
 | border-color | &lt;color&gt; | black | 否 | 使用简写属性设置元素的所有边框颜色。 |
@@ -91,11 +91,11 @@ type=time：
 
 ```html
 <!-- xxx.hml -->
-<div class="container" @swipe="handleSwipe">
+  <div class="container">
   <text class="title">
     Selected：{{time}}
   </text>
-  <picker-view class="time-picker" type="time" selected="{{defaultTime}}" @change="handleChange"></picker-view>
+  <picker-view class="time-picker" type="time" columns="2" ref="pickerViewObj" selected="{{defaultTime}}" @change="handleChange"></picker-view>
 </div>
 ```
 
@@ -132,6 +132,7 @@ export default {
   },
   onInit() {
     this.defaultTime = this.now();
+    this.time = this.defaultTime;
   },
   handleChange(data) {
     this.time = this.concat(data.hour, data.minute);
@@ -142,14 +143,18 @@ export default {
     const minutes = date.getMinutes();
     return this.concat(hours, minutes);
   },
-
   fill(value) {
     return (value > 9 ? "" : "0") + value;
   },
-
   concat(hours, minutes) {
     return `${this.fill(hours)}:${this.fill(minutes)}`;
   },
+  onShow() {
+    this.$refs.pickerViewObj.rotation({focus: true})
+  },
+  onHide() {
+    this.$refs.pickerViewObj.rotation({focus: false})
+  }
 }
 ```
 

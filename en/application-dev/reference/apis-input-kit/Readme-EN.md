@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 - ArkTS APIs<!--input-arkts-->
   - [@ohos.multimodalInput.inputDevice (Input Device)](js-apis-inputdevice.md)
@@ -14,16 +14,17 @@
   - [@ohos.multimodalInput.keyCode (Key Code)](js-apis-keycode.md)
   - [@ohos.multimodalInput.keyEvent (Key Event)](js-apis-keyevent.md)
   - [@ohos.multimodalInput.mouseEvent (Mouse Event)](js-apis-mouseevent.md)
-  - [@ohos.multimodalInput.gestureEvent (Gesture Input Event)](js-apis-multimodalinput-gestureevent.md)
+  - [@ohos.multimodalInput.gestureEvent (Gesture Event)](js-apis-multimodalinput-gestureevent.md)
   - [@ohos.multimodalInput.pointer (Mouse Pointer)](js-apis-pointer.md)
   - [@ohos.multimodalInput.touchEvent (Touch Event)](js-apis-touchevent.md)
   - [@ohos.multimodalInput.infraredEmitter (IR Management)](js-apis-infraredemitter.md)
-  - [@ohos.multimodalInput.inputConsumer (Global Shortcut Keys)](js-apis-inputconsumer.md)
+  - [@ohos.multimodalInput.inputConsumer (Global Hotkeys)](js-apis-inputconsumer.md)
+  - [@ohos.multimodalInput.inputEventClient (Input Event Injection)](js-apis-inputeventclient.md)
   <!--Del-->
   - [@ohos.multimodalInput.pointer (Mouse Pointer) (System API)](js-apis-pointer-sys.md)
   - [@ohos.multimodalInput.shortKey (Preset Global Shortcut Keys) (System API)](js-apis-shortKey-sys.md)
-  - [@ohos.multimodalInput.inputConsumer (Global Shortcut Keys) (system API)](js-apis-inputconsumer-sys.md)
-  - [@ohos.multimodalInput.inputDevice (Input device) (system API)](js-apis-inputdevice-sys.md)
+  - [@ohos.multimodalInput.inputConsumer (Global Hotkeys) (System API)](js-apis-inputconsumer-sys.md)
+  - [@ohos.multimodalInput.inputDevice (Input Device) (System API)](js-apis-inputdevice-sys.md)
   - [@ohos.multimodalInput.inputEventClient (Input Event Injection) (System API)](js-apis-inputeventclient-sys.md)
   - [@ohos.multimodalInput.inputMonitor (Input Monitor) (System API)](js-apis-inputmonitor-sys.md)
   - [@ohos.multimodalInput.gestureEvent (Gesture Event) (System API)](js-apis-multimodalinput-gestureevent-sys.md)
@@ -62,3 +63,5 @@
   - [Shortcut Key Error Codes](errorcode-inputconsumer.md)
   - [Input Device Error Codes](errorcode-inputdevice.md)
   - [Mouse Pointer Error Codes](errorcode-pointer.md)
+  - [IR Management Error Codes](errorcode-infraredemitter.md)
+  - [Input Event Injection Error Codes](errorcode-inputeventclient.md)

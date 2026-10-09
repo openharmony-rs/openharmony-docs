@@ -1,11 +1,11 @@
 # LLDB工具（仅对系统应用开放）
 
-<!--Kit: NDK-->
+<!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @Maxi_241437-->
 <!--Designer: @da_wei_li11-->
 <!--Tester: @chenhliang-->
-<!--Adviser: @fang-jinxu-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 概述
 LLDB（Low Level Debugger）是新一代高性能调试器。具备断点设置、变量查看与修改、内存操作、线程控制、表达式计算、堆栈回溯等功能，并支持跨平台和插件扩展。
@@ -22,7 +22,7 @@ LLDB调试器具备以下功能特点：
 - **插件扩展性**：支持插件扩展，方便开发者根据需求进行定制。
 
 ## 工具获取路径
-通过OpenHarmony的SDK获取，获取路径：http://ci.openharmony.cn/workbench/cicd/dailybuild
+通过OpenHarmony的SDK获取，获取路径：[每日构建](http://ci.openharmony.cn/workbench/cicd/dailybuild)。
 
 lldb工具在SDK中的路径为`\ohos-sdk\[system]\native\llvm`，其中system可选windows/linux/darwin。
 

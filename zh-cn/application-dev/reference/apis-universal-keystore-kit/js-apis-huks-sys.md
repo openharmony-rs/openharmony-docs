@@ -23,27 +23,29 @@ import { huks } from '@kit.UniversalKeystoreKit';
 
 generateKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) : Promise\<void>
 
-指定用户身份生成密钥，使用Promise方式异步返回结果。基于密钥不出TEE原则，通过promise不会返回密钥材料内容，只用于表示此次调用是否成功。
+指定用户身份生成密钥。使用Promise异步回调。
 
-**系统接口**：此接口为系统接口。
+基于密钥不出[TEE](../../security/UniversalKeystoreKit/huks-concepts.md#可信执行环境tee)原则，通过Promise不会返回密钥材料内容，只用于表示此次调用是否成功。
 
-**需要权限**：ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+**系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Security.Huks.Extension
+**需要权限：** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+
+**系统能力：** SystemCapability.Security.Huks.Extension
 
 **参数：**
 
 | 参数名   | 类型                        | 必填 | 说明                     |
 | -------- | --------------------------- | ---- | ------------------------ |
 | userId   | number                      | 是   | 用户ID。                 |
-| keyAlias | string                      | 是   | 密钥别名。密钥别名的最大长度为128字节，建议不包含个人信息等敏感词汇。               |
-| huksOptions  | [HuksOptions](js-apis-huks.md#huksoptions) | 是   | 用于存放生成key所需的[属性标签](capi-native-huks-type-h.md#枚举)。其中密钥使用的算法、密钥用途、密钥长度为必选参数。 |
+| keyAlias | string                      | 是   | 密钥别名。密钥别名的长度范围为1~128字节，建议不包含个人信息等敏感词汇。 |
+| huksOptions  | [HuksOptions](js-apis-huks.md#huksoptions) | 是   | 用于存放生成密钥所需的[属性标签枚举](capi-native-huks-type-h.md#枚举)。其中密钥使用的算法、密钥用途、密钥长度为必选参数。 |
 
 **返回值：**
 
 | 类型                | 说明                            |
 | ------------------- | ------------------------------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -65,7 +67,7 @@ generateKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions
 | 12000013 | queried credential does not exist. |
 | 12000014 | memory is insufficient. |
 | 12000015 | Failed to obtain the security information via UserIAM. |
-| 12000017 | The key with same alias is already exist. |
+| 12000017 | The key with the same alias already exists.<br>适用版本：20+ |
 
 **示例：**
 
@@ -74,8 +76,9 @@ generateKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions
   调用方必须是运行在User0~99（包含0和99）用户身份下的系统应用，同时需要申请ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS权限。允许应用安装到User0的配置指导，请参考[singleton|bool|false|是否允许应用安装到单用户下(U0)](../../../../zh-cn/device-dev/subsystems/subsys-app-privilege-config-guide.md#可由设备厂商配置的特权)
 
 ```ts
+/* 以生成AES密钥为例 */
 import { huks } from '@kit.UniversalKeystoreKit';
-import { BusinessError } from "@kit.BasicServicesKit"
+import { BusinessError } from '@kit.BasicServicesKit';
 
 const aesKeyAlias = 'test_aesKeyAlias';
 const userId = 100;
@@ -104,17 +107,17 @@ function GetAesGenerateProperties(): Array<huks.HuksParam> {
   }]
 }
 
+/* 生成密钥 */
 async function GenerateKey(keyAlias: string, genProperties: Array<huks.HuksParam>) {
   const options: huks.HuksOptions = {
     properties: genProperties
   }
   await huks.generateKeyItemAsUser(userId, keyAlias, options).then((data) => {
-    console.info("成功生成了一个别名为：" + keyAlias + " 的密钥")
+    console.info(`成功生成了一个别名为：${keyAlias} 的密钥`)
   }).catch((err: BusinessError) => {
-    console.error("密钥生成失败，错误码是： " + err.code + " 错误码信息： " + err.message)
+    console.error(`密钥生成失败，错误码是：${err.code} 错误码信息：${err.message}`)
   })
 }
-
 
 export default function HuksAsUserTest() {
   console.info('begin huks as user test')
@@ -126,27 +129,27 @@ export default function HuksAsUserTest() {
 
 deleteKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) : Promise\<void>
 
-指定用户身份删除密钥，使用Promise方式异步返回结果。
+指定用户身份删除密钥。使用Promise异步回调。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+**需要权限：** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
-**系统能力**：SystemCapability.Security.Huks.Extension
+**系统能力：** SystemCapability.Security.Huks.Extension
 
 **参数：**
 
 | 参数名   | 类型                        | 必填 | 说明                                |
 | -------- | --------------------------- | ---- | ----------------------------------- |
 | userId   | number                      | 是   | 用户ID。                 |
-| keyAlias | string                      | 是   | 密钥别名，应为生成key时传入的别名。 |
-| huksOptions  | [HuksOptions](js-apis-huks.md#huksoptions) | 是   | 用于删除时指定密钥的属性TAG，如使用[HuksAuthStorageLevel](js-apis-huks.md#huksauthstoragelevel11)指定需删除密钥的安全级别，<br>可传空，当API version ≥ 12时，传空默认为CE，当API version ＜ 12时，传空默认为DE。            |
+| keyAlias | string                      | 是   | 密钥别名，用于指定待删除的密钥。 |
+| huksOptions  | [HuksOptions](js-apis-huks.md#huksoptions) | 是   | 用于删除时指定密钥的属性TAG，如使用[HuksAuthStorageLevel](js-apis-huks.md#huksauthstoragelevel11)指定需删除密钥的安全级别，<br>可传空，传空默认为CE。 |
 
 **返回值：**
 
 | 类型                | 说明                            |
 | ------------------- | ------------------------------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -158,7 +161,7 @@ deleteKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) 
 | 202 | non-system applications are not allowed to use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | api is not supported. |
-| 12000001 | Feature is not supported. Possible causes: 1. The group key is not supported. 2. The crypto extension key is not supported. |
+| 12000001 | Feature is not supported. Possible causes: 1. The group key is not supported. 2. The crypto extension key is not supported.<br>适用版本：23+ |
 | 12000004 | operating file failed. |
 | 12000005 | IPC communication failed. |
 | 12000011 | queried entity does not exist. |
@@ -170,8 +173,9 @@ deleteKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) 
 - 以下代码示例接口调用的前置条件同上文[generateKeyItemAsUser](#huksgeneratekeyitemasuser)的前置条件
 
 ```ts
+/* 以删除AES密钥为例 */
 import { huks } from '@kit.UniversalKeystoreKit';
-import { BusinessError } from "@kit.BasicServicesKit"
+import { BusinessError } from '@kit.BasicServicesKit';
 
 const aesKeyAlias = 'test_aesKeyAlias';
 const userId = 100;
@@ -199,17 +203,17 @@ function GetAesGenerateProperties(): Array<huks.HuksParam> {
     value: userIdStorageLevel,
   }]
 }
-
+/* 1. 生成密钥 */
 async function GenerateKey(keyAlias: string, genProperties: Array<huks.HuksParam>) {
   const options: huks.HuksOptions = {
     properties: genProperties
   }
   await huks.generateKeyItemAsUser(userId, keyAlias, options).then((data) => {
   }).catch((err: BusinessError) => {
-    console.error("密钥生成失败，错误码是： " + err.code + " 错误码信息： " + err.message)
+    console.error(`密钥生成失败，错误码是：${err.code} 错误码信息：${err.message}`)
   })
 }
-
+/* 2. 删除密钥 */
 async function DeleteKey(keyAlias: string) {
   const options: huks.HuksOptions = {
     properties: [{
@@ -218,9 +222,9 @@ async function DeleteKey(keyAlias: string) {
     }]
   }
   await huks.deleteKeyItemAsUser(userId, keyAlias, options).then((data) => {
-    console.info("别名为: " + keyAlias + " 密钥删除成功！")
+    console.info(`别名为：${keyAlias} 密钥删除成功！`)
   }).catch((err: BusinessError) => {
-    console.error("密钥删除失败，错误码是： " + err.code + " 错误码信息： " + err.message)
+    console.error(`密钥删除失败，错误码是：${err.code} 错误码信息：${err.message}`)
   })
 }
 
@@ -239,27 +243,27 @@ export default function HuksAsUserTest() {
 
 importKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) : Promise\<void>
 
-指定用户身份导入明文密钥，使用Promise方式异步返回结果。
+指定用户身份导入明文密钥。使用Promise异步回调。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+**需要权限：** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
-**系统能力**：SystemCapability.Security.Huks.Extension
+**系统能力：** SystemCapability.Security.Huks.Extension
 
 **参数：**
 
 | 参数名   | 类型                        | 必填 | 说明                                |
 | -------- | --------------------------- | ---- | ----------------------------------- |
 | userId   | number                      | 是   | 用户ID。                 |
-| keyAlias | string                      | 是   | 密钥别名。密钥别名的最大长度为128字节，建议不包含个人信息等敏感词汇。                          |
+| keyAlias | string                      | 是   | 待导入密钥的别名。密钥别名的长度范围为1~128字节，建议不包含个人信息等敏感词汇。                          |
 | huksOptions  | [HuksOptions](js-apis-huks.md#huksoptions) | 是   | 用于导入时所需TAG和需要导入的密钥。其中密钥使用的算法、密钥用途、密钥长度为必选参数。 |
 
 **返回值：**
 
 | 类型                | 说明                            |
 | ------------------- | ------------------------------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -282,15 +286,16 @@ importKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) 
 | 12000013 | queried credential does not exist. |
 | 12000014 | memory is insufficient. |
 | 12000015 | Failed to obtain the security information via UserIAM. |
-| 12000017 | The key with same alias is already exist. |
+| 12000017 | The key with the same alias already exists.<br>适用版本：20+ |
 
 **示例：**
 
 - 以下代码示例接口调用的前置条件同上文[generateKeyItemAsUser](#huksgeneratekeyitemasuser)的前置条件
 
 ```ts
+/* 以导入AES密钥为例 */
 import { huks } from '@kit.UniversalKeystoreKit';
-import { BusinessError } from "@kit.BasicServicesKit"
+import { BusinessError } from '@kit.BasicServicesKit';
 
 const aesKeyAlias = 'test_aesKeyAlias';
 const userId = 100;
@@ -298,7 +303,6 @@ const userIdStorageLevel = huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_CE;
 const plainAesKey128 = new Uint8Array([
   0xfb, 0x8b, 0x9f, 0x12, 0xa0, 0x83, 0x19, 0xbe, 0x6a, 0x6f, 0x63, 0x2a, 0x7c, 0x86, 0xba, 0xca
 ]);
-
 function GetAesGenerateProperties(): Array<huks.HuksParam> {
   return [{
     tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
@@ -321,16 +325,16 @@ function GetAesGenerateProperties(): Array<huks.HuksParam> {
     value: userIdStorageLevel,
   }]
 }
-
+/* 导入密钥明文 */
 async function ImportPlainKey(keyAlias: string, importProperties: Array<huks.HuksParam>, plainKey: Uint8Array) {
   const options: huks.HuksOptions = {
     properties: importProperties,
     inData: plainKey
   }
   await huks.importKeyItemAsUser(userId, keyAlias, options).then((data) => {
-    console.info("成功导入了一个别名为：" + keyAlias + " 的密钥")
+    console.info(`成功导入了一个别名为：${keyAlias} 的密钥`)
   }).catch((err: BusinessError) => {
-    console.error("密钥导入失败，错误码是： " + err.code + " 错误码信息： " + err.message)
+    console.error(`密钥导入失败，错误码是：${err.code} 错误码信息：${err.message}`)
   })
 }
 
@@ -345,13 +349,13 @@ export default function HuksAsUserTest() {
 
 attestKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) : Promise\<HuksReturnResult>
 
-指定用户身份获取密钥证书，使用Promise方式异步返回结果。
+指定用户身份获取密钥证书。使用Promise异步回调。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ATTEST_KEY, ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS 必须同时拥有两个权限。
+**需要权限：** ohos.permission.ATTEST_KEY 和 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS。
 
-**系统能力**：SystemCapability.Security.Huks.Extension
+**系统能力：** SystemCapability.Security.Huks.Extension
 
 **参数：**
 
@@ -359,13 +363,13 @@ attestKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) 
 | -------- | --------------------------- | ---- | ------------------------------------ |
 | userId   | number                      | 是   | 用户ID。                 |
 | keyAlias | string                      | 是   | 密钥别名，存放待获取证书密钥的别名。 |
-| huksOptions  | [HuksOptions](js-apis-huks.md#huksoptions) | 是   | 用于获取证书时指定所需参数与数据。   |
+| huksOptions  | [HuksOptions](js-apis-huks.md#huksoptions) | 是   | 用于获取证书时指定所需参数与数据，如使用[HuksAuthStorageLevel](js-apis-huks.md#huksauthstoragelevel11)指定需要获取证书密钥的安全级别，<br>可传空，传空默认为CE。  |
 
 **返回值：**
 
 | 类型                                           | 说明                                          |
 | ---------------------------------------------- | --------------------------------------------- |
-| Promise<[HuksReturnResult](js-apis-huks.md#huksreturnresult9)> | Promise对象。当调用成功时，HuksReturnResult的certChains成员非空，为获取到的证书链，否则为失败。 |
+| Promise<[HuksReturnResult](js-apis-huks.md#huksreturnresult9)> | Promise对象，返回调用接口的结果。当调用成功时，HuksReturnResult的certChains成员非空，为获取到的证书链，否则为失败。 |
 
 **错误码：**
 
@@ -392,10 +396,11 @@ attestKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) 
 - 以下代码示例接口调用的前置条件同上文[generateKeyItemAsUser](#huksgeneratekeyitemasuser)的前置条件
 
 ```ts
+/* 以RSA密钥证明为例 */
 import { huks } from '@kit.UniversalKeystoreKit';
-import { BusinessError } from "@kit.BasicServicesKit"
+import { BusinessError } from '@kit.BasicServicesKit';
 
-function StringToUint8Array(str: string) {
+function stringToUint8Array(str: string) {
   let arr: number[] = [];
   for (let i = 0, j = str.length; i < j; ++i) {
     arr.push(str.charCodeAt(i));
@@ -407,9 +412,9 @@ const rsaKeyAlias = 'test_rsaKeyAlias';
 const userId = 100;
 const userIdStorageLevel = huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_CE;
 
-const securityLevel = StringToUint8Array('sec_level');
-const challenge = StringToUint8Array('challenge_data');
-const versionInfo = StringToUint8Array('version_info');
+const securityLevel = stringToUint8Array('sec_level');
+const challenge = stringToUint8Array('challenge_data');
+const versionInfo = stringToUint8Array('version_info');
 
 function GetRSA4096GenerateProperties(): Array<huks.HuksParam> {
   return [{
@@ -436,15 +441,15 @@ function GetRSA4096GenerateProperties(): Array<huks.HuksParam> {
     value: userIdStorageLevel,
   }]
 }
-
+/* 1. 生成密钥 */
 async function GenerateKey(keyAlias: string, genProperties: Array<huks.HuksParam>) {
   const options: huks.HuksOptions = {
     properties: genProperties
   }
   await huks.generateKeyItemAsUser(userId, keyAlias, options).then((data) => {
-    console.info("成功生成了一个别名为：" + keyAlias + " 的密钥")
+    console.info(`成功生成了一个别名为：${keyAlias} 的密钥`)
   }).catch((err: BusinessError) => {
-    console.error("密钥生成失败，错误码是： " + err.code + " 错误码信息： " + err.message)
+    console.error(`密钥生成失败，错误码是：${err.code} 错误码信息：${err.message}`)
   })
 }
 
@@ -460,13 +465,13 @@ function GetAttestKeyProperties(keyAlias: string): Array<huks.HuksParam> {
     value: versionInfo
   }, {
     tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_ALIAS,
-    value: StringToUint8Array(keyAlias)
+    value: stringToUint8Array(keyAlias)
   }, {
     tag: huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL,
     value: userIdStorageLevel,
   })
 }
-
+/* 2. 获取密钥证书 */
 async function LetKeyAttest(keyAlias: string, keyOptions: Array<huks.HuksParam>) {
   let attestOptions: huks.HuksOptions = {
     properties: keyOptions,
@@ -478,9 +483,9 @@ async function LetKeyAttest(keyAlias: string, keyOptions: Array<huks.HuksParam>)
     for (let i = 0; data?.certChains?.length && i < data?.certChains?.length; ++i) {
       console.debug(`证书${i}是${data.certChains[i]}`) // 这里是调试信息，实际业务功能开发无需打印证书链。
     }
-    console.info("attest 成功")
+    console.info('attest 成功')
   }).catch((err: BusinessError) => {
-    console.error("attest 失败，错误码是： " + err.code + " 错误码信息： " + err.message)
+    console.error(`attest 失败，错误码是：${err.code} 错误码信息：${err.message}`)
   })
 }
 
@@ -499,15 +504,15 @@ export default function HuksAsUserTest() {
 
 anonAttestKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) : Promise\<HuksReturnResult>
 
-指定用户身份获取匿名化密钥证书，使用Promise方式异步返回结果。
+指定用户身份获取匿名化密钥证书。使用Promise异步回调。
 
 该操作需要联网进行，且耗时较长。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+**需要权限：** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
-**系统能力**：SystemCapability.Security.Huks.Extension
+**系统能力：** SystemCapability.Security.Huks.Extension
 
 **参数：**
 
@@ -515,13 +520,13 @@ anonAttestKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptio
 | -------- | --------------------------- | ---- | ------------------------------------ |
 | userId   | number                      | 是   | 用户ID。                 |
 | keyAlias | string                      | 是   | 密钥别名，存放待获取证书密钥的别名。 |
-| huksOptions  | [HuksOptions](js-apis-huks.md#huksoptions) | 是   | 用于获取证书时指定所需参数与数据。   |
+| huksOptions  | [HuksOptions](js-apis-huks.md#huksoptions) | 是   | 用于获取证书时指定所需参数与数据，如使用[HuksAuthStorageLevel](js-apis-huks.md#huksauthstoragelevel11)指定需要获取证书密钥的安全级别，<br>可传空，传空默认为CE。   |
 
 **返回值：**
 
 | 类型                                           | 说明                                          |
 | ---------------------------------------------- | --------------------------------------------- |
-| Promise<[HuksReturnResult](js-apis-huks.md#huksreturnresult9)> | Promise对象。当调用成功时，HuksReturnResult的certChains成员非空，为获取到的证书链，否则为失败。 |
+| Promise<[HuksReturnResult](js-apis-huks.md#huksreturnresult9)> | Promise对象，返回调用接口的结果。当调用成功时，HuksReturnResult的certChains成员非空，为获取到的证书链，否则为失败。 |
 
 **错误码：**
 
@@ -548,10 +553,11 @@ anonAttestKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptio
 - 以下代码示例接口调用的前置条件同上文[generateKeyItemAsUser](#huksgeneratekeyitemasuser)的前置条件
 
 ```ts
+/* 以RSA匿名密钥证明为例 */
 import { huks } from '@kit.UniversalKeystoreKit';
-import { BusinessError } from "@kit.BasicServicesKit"
+import { BusinessError } from '@kit.BasicServicesKit';
 
-function StringToUint8Array(str: string) {
+function stringToUint8Array(str: string) {
   let arr: number[] = [];
   for (let i = 0, j = str.length; i < j; ++i) {
     arr.push(str.charCodeAt(i));
@@ -563,9 +569,9 @@ const rsaKeyAlias = 'test_rsaKeyAlias';
 const userId = 100;
 const userIdStorageLevel = huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_CE;
 
-const securityLevel = StringToUint8Array('sec_level');
-const challenge = StringToUint8Array('challenge_data');
-const versionInfo = StringToUint8Array('version_info');
+const securityLevel = stringToUint8Array('sec_level');
+const challenge = stringToUint8Array('challenge_data');
+const versionInfo = stringToUint8Array('version_info');
 
 function GetRSA4096GenerateProperties(): Array<huks.HuksParam> {
   return [{
@@ -592,15 +598,15 @@ function GetRSA4096GenerateProperties(): Array<huks.HuksParam> {
     value: userIdStorageLevel,
   }]
 }
-
+/* 1. 生成密钥 */
 async function GenerateKey(keyAlias: string, genProperties: Array<huks.HuksParam>) {
   const options: huks.HuksOptions = {
     properties: genProperties
   }
   await huks.generateKeyItemAsUser(userId, keyAlias, options).then((data) => {
-    console.info("成功生成了一个别名为：" + keyAlias + " 的密钥")
+    console.info(`成功生成了一个别名为：${keyAlias} 的密钥`)
   }).catch((err: BusinessError) => {
-    console.error("密钥生成失败，错误码是： " + err.code + " 错误码信息： " + err.message)
+    console.error(`密钥生成失败，错误码是：${err.code} 错误码信息：${err.message}`)
   })
 }
 
@@ -616,13 +622,13 @@ function GetAttestKeyProperties(keyAlias: string): Array<huks.HuksParam> {
     value: versionInfo
   }, {
     tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_ALIAS,
-    value: StringToUint8Array(keyAlias)
+    value: stringToUint8Array(keyAlias)
   }, {
     tag: huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL,
     value: userIdStorageLevel,
   })
 }
-
+/* 2. 获取匿名化密钥证书 */
 async function LetKeyAnonAttest(keyAlias: string, keyOptions: Array<huks.HuksParam>) {
   let attestOptions: huks.HuksOptions = {
     properties: keyOptions,
@@ -634,9 +640,9 @@ async function LetKeyAnonAttest(keyAlias: string, keyOptions: Array<huks.HuksPar
     for (let i = 0; data?.certChains?.length && i < data?.certChains?.length; ++i) {
       console.info(`证书${i}是${data.certChains[i]}`)
     }
-    console.info("匿名 attest 成功")
+    console.info('匿名 attest 成功')
   }).catch((err: BusinessError) => {
-    console.error("匿名 attest 失败，错误码是： " + err.code + " 错误码信息： " + err.message)
+    console.error(`匿名 attest 失败，错误码是：${err.code} 错误码信息：${err.message}`)
   })
 }
 
@@ -652,24 +658,171 @@ export default function HuksAsUserTest() {
 }
 ```
 
+## huks.anonAttestKeyItemOfflineAsUser
+
+anonAttestKeyItemOfflineAsUser(userId: number, keyAlias: string, params: HuksParam[]) : Promise\<HuksReturnResult>
+
+离线模式下，指定用户身份并获取匿名化密钥证书。使用Promise异步回调。
+
+> **说明：**
+>
+> - 离线密钥证明依赖网络，需要定期联网使用该接口以更新离线证书。
+> - 离线匿名密钥证明需保证本地时间是准确的，否则可能导致对端校验证书超期失败。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**起始版本：** 26.0.0
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+
+**系统能力：** SystemCapability.Security.Huks.Extension
+
+**参数：**
+
+| 参数名   | 类型                        | 必填 | 说明                                 |
+| -------- | --------------------------- | ---- | ------------------------------------ |
+| userId   | number                      | 是   | 用户ID。                 |
+| keyAlias | string                      | 是   | 密钥别名，存放待获取证书密钥的别名。 |
+| params | [HuksParam[]](js-apis-huks.md#huksparam) | 是   | 用于获取证书时指定所需参数与数据，如使用[HuksAuthStorageLevel](js-apis-huks.md#huksauthstoragelevel11)指定需要获取证书密钥的安全级别，<br>可传空，传空默认为CE。   |
+
+**返回值：**
+
+| 类型                                           | 说明                                          |
+| ---------------------------------------------- | --------------------------------------------- |
+| Promise<[HuksReturnResult](js-apis-huks.md#huksreturnresult9)> | Promise对象，返回调用接口的结果。当调用成功时，HuksReturnResult的certChains成员为获取到的证书链，失败时为空。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[HUKS错误码](errorcode-huks.md)。
+
+| 错误码ID | 错误信息      |
+| -------- | ------------- |
+| 201 | The app does not have sufficient permissions. Possible causes: The cross-account permission is not granted, the system is not unlocked by the user, or the user does not exist. |
+| 202 | Non-system apps use system APIs. |
+| 801 | The API is not supported. |
+| 12000001 | The function is not supported. Possible causes: <br>1. The algorithm mode is not supported. <br>2. The group key is not supported. <br>3. The extended encryption key is not supported. |
+| 12000002 | The algorithm parameter is missing. |
+| 12000003 | The algorithm parameter is invalid. |
+| 12000004 | The file operation failed. |
+| 12000005 | The IPC communication failed. |
+| 12000006 | The encryption engine is faulty. |
+| 12000011 | The queried entity does not exist. |
+| 12000012 | The device environment or input parameter is abnormal. |
+| 12000014 | The memory is insufficient. |
+| 12000018 | The parameter is incorrect. Possible causes: <br>1. A mandatory parameter is left empty. <br>2. The parameter type is incorrect. <br>3. The parameter verification failed. |
+| 12000024 | The operation times out. This may be caused by network jitter. You can try again later. |
+| 12000027 | The network is unavailable. Check network connections. |
+
+**示例：**
+
+- 以下代码示例接口调用的前置条件同上文[generateKeyItemAsUser](#huksgeneratekeyitemasuser)的前置条件
+
+```ts
+/* 以ECC离线匿名密钥证明为例 */
+import { huks } from '@kit.UniversalKeystoreKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function stringToUint8Array(str: string) {
+  let arr: number[] = [];
+  for (let i = 0, j = str.length; i < j; ++i) {
+    arr.push(str.charCodeAt(i));
+  }
+  return new Uint8Array(arr);
+}
+
+const userId = 100;
+const userIdStorageLevel = huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_CE;
+const keyAliasString = 'key anon local attest as user';
+
+const challenge = stringToUint8Array('challenge_data');
+
+/* 1. 生成密钥 */
+async function generateKey(alias: string) {
+  let properties: Array<huks.HuksParam> = [
+    {
+      tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+      value: huks.HuksKeyAlg.HUKS_ALG_ECC
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+      value: huks.HuksKeySize.HUKS_ECC_KEY_SIZE_256
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+      value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_DIGEST,
+      value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_PADDING,
+      value: huks.HuksKeyPadding.HUKS_PADDING_NONE
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL,
+      value: userIdStorageLevel,
+    }
+  ];
+  let options: huks.HuksOptions = {
+    properties: properties
+  };
+
+  await huks.generateKeyItemAsUser(userId, alias, options);
+}
+
+/* 2. 离线获取匿名化密钥证书 */
+async function anonAttestKeyItemOfflineAsUser() {
+  let aliasString = keyAliasString;
+  let aliasUint8 = stringToUint8Array(aliasString);
+  let properties: Array<huks.HuksParam> = [
+    {
+      tag: huks.HuksTag.HUKS_TAG_ATTESTATION_CHALLENGE,
+      value: challenge
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_ALIAS,
+      value: aliasUint8
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL,
+      value: userIdStorageLevel,
+    }
+  ];
+
+  await generateKey(aliasString);
+  await huks.anonAttestKeyItemOfflineAsUser(userId, aliasString, properties).then((data) => {
+    console.debug(`'CERT:${JSON.stringify(data)}`)
+    for (let i = 0; data?.certChains?.length && i < data?.certChains?.length; ++i) {
+      console.info(`CERT${i}是${data.certChains[i]}`)
+    }
+    console.info('离线匿名 attest 成功')
+  }).catch((err: BusinessError) => {
+    console.error(`离线匿名 attest 失败，错误码是：${err.code} 错误信息：${err.message}`)
+  })
+}
+```
+
 ## huks.importWrappedKeyItemAsUser
 
 importWrappedKeyItemAsUser(userId: number, keyAlias: string, wrappingKeyAlias: string, huksOptions: HuksOptions) : Promise\<void>
 
-指定用户身份导入加密密钥，使用Promise方式异步返回结果。
+指定用户身份安全导入密钥。使用Promise异步回调。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+**需要权限：** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
-**系统能力**：SystemCapability.Security.Huks.Extension
+**系统能力：** SystemCapability.Security.Huks.Extension
 
 **参数：**
 
 | 参数名           | 类型                        | 必填 | 说明                                          |
 | ---------------- | --------------------------- | ---- | --------------------------------------------- |
 | userId   | number                      | 是   | 用户ID。                 |
-| keyAlias         | string                      | 是   | 密钥别名，存放待导入密钥的别名。              |
+| keyAlias         | string                      | 是   | 密钥别名，存放待导入密钥的别名。密钥别名的长度范围为1~128字节，建议不包含个人信息等敏感词汇。  |
 | wrappingKeyAlias | string                      | 是   | 密钥别名，对应密钥用于解密加密的密钥数据。    |
 | huksOptions          | [HuksOptions](js-apis-huks.md#huksoptions) | 是   | 用于导入时所需TAG和需要导入的加密的密钥数据。其中密钥使用的算法、密钥用途、密钥长度为必选参数。 |
 
@@ -677,7 +830,7 @@ importWrappedKeyItemAsUser(userId: number, keyAlias: string, wrappingKeyAlias: s
 
 | 类型                | 说明                            |
 | ------------------- | ------------------------------- |
-| Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -700,7 +853,7 @@ importWrappedKeyItemAsUser(userId: number, keyAlias: string, wrappingKeyAlias: s
 | 12000013 | queried credential does not exist. |
 | 12000014 | memory is insufficient. |
 | 12000015 | Failed to obtain the security information via UserIAM. |
-| 12000017 | The key with same alias is already exist. |
+| 12000017 | The key with the same alias already exists.<br>适用版本：20+ |
 
 **示例：**
 
@@ -708,25 +861,26 @@ importWrappedKeyItemAsUser(userId: number, keyAlias: string, wrappingKeyAlias: s
 - 注意：下文密码学相关的变量（如initializationVector、associatedData、nonce）赋值，均为参考样例，不能直接适用于业务功能逻辑。开发者需要根据自身场景使用合适的初始值。
 
 ```ts
+/* 以ECDH协商安全导入AES密钥为例 */
 import { huks } from '@kit.UniversalKeystoreKit';
-import { BusinessError } from "@kit.BasicServicesKit"
+import { BusinessError } from '@kit.BasicServicesKit';
 
 const userIdStorageLevel = huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_CE;
 const initializationVector = '0000000000000000';
-const associatedData = "abababababababab";
-const nonce = "hahahahahaha";
+const associatedData = 'abababababababab';
+const nonce = 'hahahahahaha';
 const tagSize = 16;
 const unsignedInt32Bytes = 4;
-const importedAes192PlainKey = "The aes192 key to import";
-const callerAes256Kek = "This is kek to encrypt aes192 key";
-const callerKeyAlias = "test_caller_key_ecdh_aes192";
-const callerKekAliasAes256 = "test_caller_kek_ecdh_aes256";
-const callerAgreeKeyAliasAes256 = "test_caller_agree_key_ecdh_aes256";
-const importedKeyAliasAes192 = "test_import_key_ecdh_aes192";
+const importedAes192PlainKey = 'The aes192 key to import';
+const callerAes256Kek = 'This is kek to encrypt aes192 key';
+const callerKeyAlias = 'test_caller_key_ecdh_aes192';
+const callerKekAliasAes256 = 'test_caller_kek_ecdh_aes256';
+const callerAgreeKeyAliasAes256 = 'test_caller_agree_key_ecdh_aes256';
+const importedKeyAliasAes192 = 'test_import_key_ecdh_aes192';
 const mask = [0x000000FF, 0x0000FF00, 0x00FF0000, 0xFF000000];
 
 
-function StringToUint8Array(str: string) {
+function stringToUint8Array(str: string) {
   let arr: number[] = [];
   for (let i = 0, j = str.length; i < j; ++i) {
     arr.push(str.charCodeAt(i));
@@ -832,14 +986,14 @@ const importParamsCallerKek: huks.HuksOptions = {
     },
     {
       tag: huks.HuksTag.HUKS_TAG_IV,
-      value: StringToUint8Array(initializationVector)
+      value: stringToUint8Array(initializationVector)
     },
     {
       tag: huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL,
       value: userIdStorageLevel,
     }
   ],
-  inData: StringToUint8Array(callerAes256Kek)
+  inData: stringToUint8Array(callerAes256Kek)
 }
 
 const importParamsAgreeKey: huks.HuksOptions = {
@@ -870,7 +1024,7 @@ const importParamsAgreeKey: huks.HuksOptions = {
     },
     {
       tag: huks.HuksTag.HUKS_TAG_IV,
-      value: StringToUint8Array(initializationVector)
+      value: stringToUint8Array(initializationVector)
     },
     {
       tag: huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL,
@@ -924,11 +1078,11 @@ const encryptKeyCommonParams: huks.HuksOptions = {
     },
     {
       tag: huks.HuksTag.HUKS_TAG_NONCE,
-      value: StringToUint8Array(nonce)
+      value: stringToUint8Array(nonce)
     },
     {
       tag: huks.HuksTag.HUKS_TAG_ASSOCIATED_DATA,
-      value: StringToUint8Array(associatedData)
+      value: stringToUint8Array(associatedData)
     },
     {
       tag: huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL,
@@ -970,7 +1124,7 @@ const importWrappedAes192Params: huks.HuksOptions = {
     },
     {
       tag: huks.HuksTag.HUKS_TAG_IV,
-      value: StringToUint8Array(initializationVector)
+      value: stringToUint8Array(initializationVector)
     },
     {
       tag: huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL,
@@ -979,6 +1133,7 @@ const importWrappedAes192Params: huks.HuksOptions = {
   ]
 }
 
+/* 明文导入密钥 */
 async function PublicImportKeyItemFunc(
   userId: number,
   keyAlias: string, huksOptions: huks.HuksOptions) {
@@ -995,6 +1150,7 @@ async function PublicImportKeyItemFunc(
   }
 }
 
+/* 删除密钥 */
 async function PublicDeleteKeyItemFunc(
   userId: number,
   keyAlias: string, huksOptions: huks.HuksOptions) {
@@ -1012,25 +1168,26 @@ async function PublicDeleteKeyItemFunc(
   }
 }
 
+/* 安全导入密钥 */
 async function PublicImportWrappedKeyFunc(
   userId: number,
   keyAlias: string, wrappingKeyAlias: string, huksOptions: huks.HuksOptions) {
-  console.info(`enter callback importWrappedKeyItemAsUser`);
+  console.info(`enter promise importWrappedKeyItemAsUser`);
   console.info(`publicImportWrappedKeyFunc huksOptions = ${JSON.stringify(huksOptions)}`);
   try {
     await huks.importWrappedKeyItemAsUser(userId, keyAlias, wrappingKeyAlias, huksOptions)
       .then((data) => {
-        console.info(`callback: importWrappedKeyItemAsUser success, data = ${JSON.stringify(data)}`);
-        console.info(`importWrappedKeyItemAsUser 成功 data = ${JSON.stringify(data)}`)
+        console.info(`promise: importWrappedKeyItemAsUser success, data = ${JSON.stringify(data)}`);
       })
       .catch((err: BusinessError) => {
-        console.error(`callback: importWrappedKeyItemAsUser failed, code: ${err.code}, msg: ${err.message}`);
+        console.error(`promise: importWrappedKeyItemAsUser failed, code: ${err.code}, msg: ${err.message}`);
       });
   } catch (error) {
-    console.error(`callback: importWrappedKeyItemAsUser input arg invalid, code: ${error.code}, msg: ${error.message}`);
+    console.error(`promise: importWrappedKeyItemAsUser input arg invalid, code: ${error.code}, msg: ${error.message}`);
   }
 }
 
+/* 初始化密钥会话 */
 async function PublicInitFunc(
   userId: number,
   srcKeyAlias: string, huksOptions: huks.HuksOptions) {
@@ -1051,6 +1208,7 @@ async function PublicInitFunc(
   return handle;
 }
 
+/* 分段更新会话数据 */
 async function PublicUpdateSessionFunction(handle: number, huksOptions: huks.HuksOptions) {
   if (huksOptions?.inData?.length == undefined) {
     return [];
@@ -1101,6 +1259,7 @@ async function PublicUpdateSessionFunction(handle: number, huksOptions: huks.Huk
   return outData;
 }
 
+/* 结束密钥会话并进行相应的密钥操作 */
 async function PublicFinishSession(handle: number, huksOptions: huks.HuksOptions, inData: Array<number>) {
   let outData: Array<number> = [];
   console.info(`enter promise doFinish`);
@@ -1123,6 +1282,7 @@ async function PublicFinishSession(handle: number, huksOptions: huks.HuksOptions
   return new Uint8Array(outData);
 }
 
+/* 进行数据加密 */
 async function CipherFunction(
   userId: number,
   keyAlias: string, huksOptions: huks.HuksOptions) {
@@ -1132,6 +1292,7 @@ async function CipherFunction(
   return outData;
 }
 
+/* 进行ECDH协商 */
 async function AgreeFunction(
   userId: number,
   keyAlias: string, huksOptions: huks.HuksOptions, huksPublicKey: Uint8Array) {
@@ -1170,6 +1331,7 @@ async function AgreeFunction(
   return outSharedKey;
 }
 
+/* 导入KEK并协商共享密钥 */
 async function ImportKekAndAgreeSharedSecret(
   userId: number,
   callerKekAlias: string, importKekParams: huks.HuksOptions,
@@ -1181,6 +1343,7 @@ async function ImportKekAndAgreeSharedSecret(
   await PublicImportKeyItemFunc(userId, callerAgreeKeyAliasAes256, importParamsAgreeKey);
 }
 
+/* 生成密钥并导出公钥 */
 async function GenerateAndExportPublicKey(
   userId: number,
   keyAlias: string, huksOptions: huks.HuksOptions): Promise<Uint8Array> {
@@ -1190,10 +1353,10 @@ async function GenerateAndExportPublicKey(
         console.info(`promise: generateKeyItemAsUser success, data = ${JSON.stringify(data)}`);
       })
       .catch((err: BusinessError) => {
-        console.error(`callback: generateKeyItemAsUser failed, code: ${err.code}, msg: ${err.message}`);
+        console.error(`promise: generateKeyItemAsUser failed, code: ${err.code}, msg: ${err.message}`);
       })
   } catch (err) {
-    console.error(`callback: generateKeyItemAsUser invalid, code: ${err.code}, msg: ${err.message}`);
+    console.error(`promise: generateKeyItemAsUser invalid, code: ${err.code}, msg: ${err.message}`);
   }
 
 
@@ -1224,10 +1387,11 @@ interface KeyEncAndKekEnc {
   outAgreeKeyEncTag: Uint8Array,
 }
 
+/* 加密待导入密钥和KEK */
 async function EncryptImportedPlainKeyAndKek(
   userId: number,
   keyAlias: string): Promise<KeyEncAndKekEnc> {
-  encryptKeyCommonParams.inData = StringToUint8Array(keyAlias)
+  encryptKeyCommonParams.inData = stringToUint8Array(keyAlias)
   const plainKeyEncData = await CipherFunction(userId, callerKekAliasAes256, encryptKeyCommonParams);
   const result: KeyEncAndKekEnc = {
     outPlainKeyEncData: new Uint8Array([]),
@@ -1238,7 +1402,7 @@ async function EncryptImportedPlainKeyAndKek(
   result.outKekEncTag = SubUint8ArrayOf(plainKeyEncData, plainKeyEncData.length - tagSize, plainKeyEncData.length)
   result.outPlainKeyEncData = SubUint8ArrayOf(plainKeyEncData, 0, plainKeyEncData.length - tagSize)
 
-  encryptKeyCommonParams.inData = StringToUint8Array(callerAes256Kek)
+  encryptKeyCommonParams.inData = stringToUint8Array(callerAes256Kek)
   const kekEncData = await CipherFunction(userId, callerAgreeKeyAliasAes256, encryptKeyCommonParams)
   result.outAgreeKeyEncTag = SubUint8ArrayOf(kekEncData, kekEncData.length - tagSize, kekEncData.length)
   result.outKekEncData = SubUint8ArrayOf(kekEncData, 0, kekEncData.length - tagSize)
@@ -1246,6 +1410,7 @@ async function EncryptImportedPlainKeyAndKek(
   return result
 }
 
+/* 构建封装数据并安全导入密钥 */
 async function BuildWrappedDataAndImportWrappedKey(plainKey: string, huksPubKey: Uint8Array,
   callerSelfPublicKey: Uint8Array, encData: KeyEncAndKekEnc) {
   const plainKeySizeBuff = new Uint8Array(4);
@@ -1264,8 +1429,8 @@ async function BuildWrappedDataAndImportWrappedKey(plainKey: string, huksPubKey:
       unsignedInt32Bytes + encData.outPlainKeyEncData.length
   );
   let index = 0;
-  const associatedDataArray = StringToUint8Array(associatedData);
-  const nonceArray = StringToUint8Array(nonce);
+  const associatedDataArray = stringToUint8Array(associatedData);
+  const nonceArray = stringToUint8Array(nonce);
 
   index += AssignLength(callerSelfPublicKey.length, wrappedData, index); // 4
   index += AssignData(callerSelfPublicKey, wrappedData, index); // 91
@@ -1291,6 +1456,7 @@ async function BuildWrappedDataAndImportWrappedKey(plainKey: string, huksPubKey:
   return wrappedData;
 }
 
+/* 安全导入密钥整体流程 */
 export async function HuksSecurityImportTest(userId: number) {
   const srcKeyAliasWrap = 'HUKS_Basic_Capability_Import_0200';
   const huksPubKey: Uint8Array = await GenerateAndExportPublicKey(userId, srcKeyAliasWrap, genWrappingKeyParams);
@@ -1323,13 +1489,13 @@ export default function HuksAsUserTest() {
 
 exportKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) : Promise\<HuksReturnResult>
 
-指定用户身份导出密钥，使用Promise方式回调异步返回的结果。
+指定用户身份导出密钥。使用Promise异步回调。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+**需要权限：** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
-**系统能力**：SystemCapability.Security.Huks.Extension
+**系统能力：** SystemCapability.Security.Huks.Extension
 
 **参数：**
 
@@ -1337,13 +1503,13 @@ exportKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) 
 | -------- | --------------------------- | ---- | -------------------------------------------- |
 | userId   | number                      | 是   | 用户ID。                 |
 | keyAlias | string                      | 是   | 密钥别名，应与所用密钥生成时使用的别名相同。 |
-| huksOptions  | [HuksOptions](js-apis-huks.md#huksoptions) | 是   | 空对象（此处传空即可）。                     |
+| huksOptions  | [HuksOptions](js-apis-huks.md#huksoptions) | 是   | 用于导出时指定密钥的属性TAG，如使用[HuksAuthStorageLevel](js-apis-huks.md#huksauthstoragelevel11)指定需要导出密钥的安全级别，<br>可传空，传空默认为CE。  |
 
 **返回值：**
 
 | 类型                                           | 说明                                                         |
 | ---------------------------------------------- | ------------------------------------------------------------ |
-| Promise<[HuksReturnResult](js-apis-huks.md#huksreturnresult9)> | Promise对象。 当调用成功时，HuksReturnResult的outData成员非空，为从密钥中导出的公钥，否则为失败。 |
+| Promise<[HuksReturnResult](js-apis-huks.md#huksreturnresult9)> | Promise对象，返回调用接口的结果。当调用成功时，HuksReturnResult的outData成员非空，为从密钥中导出的公钥，否则为失败。 |
 
 **错误码：**
 
@@ -1370,8 +1536,9 @@ exportKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) 
 - 以下代码示例接口调用的前置条件同上文[generateKeyItemAsUser](#huksgeneratekeyitemasuser)的前置条件
 
 ```ts
+/* 以导出RSA公钥为例 */
 import { huks } from '@kit.UniversalKeystoreKit';
-import { BusinessError } from "@kit.BasicServicesKit"
+import { BusinessError } from '@kit.BasicServicesKit';
 
 const rsaKeyAlias = 'test_rsaKeyAlias';
 const userId = 100;
@@ -1403,17 +1570,19 @@ function GetRSA4096GenerateProperties(): Array<huks.HuksParam> {
   }]
 }
 
+/* 1. 生成密钥 */
 async function GenerateKey(keyAlias: string, genProperties: Array<huks.HuksParam>) {
   const options: huks.HuksOptions = {
     properties: genProperties
   }
   await huks.generateKeyItemAsUser(userId, keyAlias, options).then((data) => {
-    console.info("成功生成了一个别名为：" + keyAlias + " 的密钥")
+    console.info(`成功生成了一个别名为：${keyAlias} 的密钥`)
   }).catch((err: BusinessError) => {
-    console.error("密钥生成失败，错误码是： " + err.code + " 错误码信息： " + err.message)
+    console.error(`密钥生成失败，错误码是：${err.code} 错误码信息：${err.message}`)
   })
 }
 
+/* 2. 导出公钥 */
 async function ExportPublicKey(keyAlias: string) {
   const options: huks.HuksOptions = {
     properties: [{
@@ -1422,9 +1591,9 @@ async function ExportPublicKey(keyAlias: string) {
     }]
   }
   await huks.exportKeyItemAsUser(userId, keyAlias, options).then((data) => {
-    console.info("成功将别名为：" + keyAlias + " 的公钥导出, data 的长度为" + data?.outData?.length)
+    console.info(`成功将别名为：${keyAlias} 的公钥导出，data 的长度为${data?.outData?.length}`)
   }).catch((err: BusinessError) => {
-    console.error("密钥导出失败，错误码是： " + err.code + " 错误码信息： " + err.message)
+    console.error(`密钥导出失败，错误码是：${err.code} 错误码信息：${err.message}`)
   })
 }
 
@@ -1443,13 +1612,13 @@ export default function HuksAsUserTest() {
 
 getKeyItemPropertiesAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) : Promise\<HuksReturnResult>
 
-指定用户身份获取密钥属性，使用Promise回调异步返回结果。
+指定用户身份获取密钥属性。使用Promise异步回调。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+**需要权限：** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
-**系统能力**：SystemCapability.Security.Huks.Extension
+**系统能力：** SystemCapability.Security.Huks.Extension
 
 **参数：**
 
@@ -1457,13 +1626,13 @@ getKeyItemPropertiesAsUser(userId: number, keyAlias: string, huksOptions: HuksOp
 | -------- | --------------------------- | ---- | -------------------------------------------- |
 | userId   | number                      | 是   | 用户ID。                 |
 | keyAlias | string                      | 是   | 密钥别名，应与所用密钥生成时使用的别名相同。 |
-| huksOptions  | [HuksOptions](js-apis-huks.md#huksoptions) | 是   | 空对象（此处传空即可）。                     |
+| huksOptions  | [HuksOptions](js-apis-huks.md#huksoptions) | 是   | 用于获取密钥属性时指定密钥的属性TAG，如使用[HuksAuthStorageLevel](js-apis-huks.md#huksauthstoragelevel11)指定需要获取属性的密钥的安全级别，<br>可传空，传空默认为CE。 |
 
 **返回值：**
 
 | 类型                                            | 说明                                                         |
 | ----------------------------------------------- | ------------------------------------------------------------ |
-| Promise\<[HuksReturnResult](js-apis-huks.md#huksreturnresult9)> | Promise对象。当调用成功时，HuksReturnResult的properties成员非空，为生成密钥时所需参数。 |
+| Promise\<[HuksReturnResult](js-apis-huks.md#huksreturnresult9)> | Promise对象，返回调用接口的结果。当调用成功时，HuksReturnResult的properties成员非空，为生成密钥时所需参数。 |
 
 **错误码：**
 
@@ -1490,8 +1659,9 @@ getKeyItemPropertiesAsUser(userId: number, keyAlias: string, huksOptions: HuksOp
 - 以下代码示例接口调用的前置条件同上文[generateKeyItemAsUser](#huksgeneratekeyitemasuser)的前置条件
 
 ```ts
+/* 以查询AES密钥属性为例 */
 import { huks } from '@kit.UniversalKeystoreKit';
-import { BusinessError } from "@kit.BasicServicesKit"
+import { BusinessError } from '@kit.BasicServicesKit';
 
 const aesKeyAlias = 'test_aesKeyAlias';
 const userId = 100;
@@ -1520,17 +1690,19 @@ function GetAesGenerateProperties(): Array<huks.HuksParam> {
   }]
 }
 
+/* 1. 生成密钥 */
 async function GenerateKey(keyAlias: string, genProperties: Array<huks.HuksParam>) {
   const options: huks.HuksOptions = {
     properties: genProperties
   }
   await huks.generateKeyItemAsUser(userId, keyAlias, options).then((data) => {
-    console.info("成功生成了一个别名为：" + keyAlias + " 的密钥")
+    console.info(`成功生成了一个别名为：${keyAlias} 的密钥`)
   }).catch((err: BusinessError) => {
-    console.error("密钥生成失败，错误码是： " + err.code + " 错误码信息： " + err.message)
+    console.error(`密钥生成失败，错误码是：${err.code} 错误码信息：${err.message}`)
   })
 }
 
+/* 2. 查询密钥属性 */
 async function GetKeyProperties(keyAlias: string) {
   const options: huks.HuksOptions = {
     properties: [{
@@ -1539,9 +1711,9 @@ async function GetKeyProperties(keyAlias: string) {
     }]
   }
   await huks.getKeyItemPropertiesAsUser(userId, keyAlias, options).then((data) => {
-    console.info("获取密钥属性成功！属性为: " + JSON.stringify(data))
+    console.info(`获取密钥属性成功！属性为：${JSON.stringify(data)}`)
   }).catch((err: BusinessError) => {
-    console.error("获取密钥属性失败，错误码是： " + err.code + " 错误码信息： " + err.message)
+    console.error(`获取密钥属性失败，错误码是：${err.code} 错误码信息：${err.message}`)
   })
 }
 
@@ -1560,13 +1732,13 @@ export default function HuksAsUserTest() {
 
 hasKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) : Promise\<boolean>
 
-指定用户身份判断密钥是否存在，使用Promise回调异步返回结果。
+指定用户身份判断密钥是否存在。使用Promise异步回调。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+**需要权限：** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
-**系统能力**：SystemCapability.Security.Huks.Extension
+**系统能力：** SystemCapability.Security.Huks.Extension
 
 **参数：**
 
@@ -1574,13 +1746,13 @@ hasKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) : P
 | -------- | --------------------------- | ---- | ------------------------ |
 | userId   | number                      | 是   | 用户ID。                 |
 | keyAlias | string                      | 是   | 所需查找的密钥的别名。   |
-| huksOptions  | [HuksOptions](js-apis-huks.md#huksoptions) | 是   | 用于查询时指定密钥的属性TAG，如使用[HuksAuthStorageLevel](js-apis-huks.md#huksauthstoragelevel11)指定需查询密钥的安全级别，<br>可传空，当API version ≥ 12时，传空默认为CE，当API version ＜ 12时，传空默认为DE。     |
+| huksOptions  | [HuksOptions](js-apis-huks.md#huksoptions) | 是   | 用于查询时指定密钥的属性TAG，如使用[HuksAuthStorageLevel](js-apis-huks.md#huksauthstoragelevel11)指定需查询密钥的安全级别，<br>可传空，传空默认为CE。|
 
 **返回值：**
 
 | 类型              | 说明                                    |
 | ----------------- | --------------------------------------- |
-| Promise\<boolean> | Promise对象。若密钥存在，返回值为true，若密钥不存在，返回值为false。 |
+| Promise\<boolean> | Promise对象。返回值为true表示密钥存在，返回值为false表示密钥不存在。 |
 
 **错误码：**
 
@@ -1592,7 +1764,7 @@ hasKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) : P
 | 202 | non-system applications are not allowed to use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | api is not supported. |
-| 12000001 | Feature is not supported. Possible causes: 1. The group key is not supported. 2. The crypto extension key is not supported. |
+| 12000001 | Feature is not supported. Possible causes: 1. The group key is not supported. 2. The crypto extension key is not supported.<br>适用版本：23+ |
 | 12000002 | algorithm param is missing. |
 | 12000003 | algorithm param is invalid. |
 | 12000004 | operating file failed. |
@@ -1606,8 +1778,9 @@ hasKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) : P
 - 以下代码示例接口调用的前置条件同上文[generateKeyItemAsUser](#huksgeneratekeyitemasuser)的前置条件
 
 ```ts
+/* 以查询AES密钥是否存在为例 */
 import { huks } from '@kit.UniversalKeystoreKit';
-import { BusinessError } from "@kit.BasicServicesKit"
+import { BusinessError } from '@kit.BasicServicesKit';
 
 const aesKeyAlias = 'test_aesKeyAlias';
 const userId = 100;
@@ -1636,17 +1809,19 @@ function GetAesGenerateProperties(): Array<huks.HuksParam> {
   }]
 }
 
+/* 1. 生成密钥 */
 async function GenerateKey(keyAlias: string, genProperties: Array<huks.HuksParam>) {
   const options: huks.HuksOptions = {
     properties: genProperties
   }
   await huks.generateKeyItemAsUser(userId, keyAlias, options).then((data) => {
-    console.info("成功生成了一个别名为：" + keyAlias + " 的密钥")
+    console.info(`成功生成了一个别名为：${keyAlias} 的密钥`)
   }).catch((err: BusinessError) => {
-    console.error("密钥生成失败，错误码是： " + err.code + " 错误码信息： " + err.message)
+    console.error(`密钥生成失败，错误码是：${err.code} 错误码信息：${err.message}`)
   })
 }
 
+/* 2. 查询密钥是否存在 */
 async function HasKey(keyAlias: string) {
   const options: huks.HuksOptions = {
     properties: [{
@@ -1655,9 +1830,9 @@ async function HasKey(keyAlias: string) {
     }]
   }
   await huks.hasKeyItemAsUser(userId, keyAlias, options).then((data) => {
-    console.info("别名为: " + keyAlias + "的密钥查询存在结果" + JSON.stringify(data))
+    console.info(`别名为：${keyAlias}的密钥查询存在结果${JSON.stringify(data)}`)
   }).catch((err: BusinessError) => {
-    console.error("密钥查询失败，错误码是： " + err.code + " 错误码信息： " + err.message)
+    console.error(`密钥查询失败，错误码是：${err.code} 错误码信息：${err.message}`)
   })
 }
 
@@ -1676,13 +1851,13 @@ export default function HuksAsUserTest() {
 
 initSessionAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) : Promise\<HuksSessionHandle>
 
-指定用户身份操作密钥接口，使用Promise方式异步返回结果。huks.initSessionAsUser, huks.updateSession, huks.finishSession为三段式接口，需要一起使用。
+指定用户身份初始化密钥会话。使用Promise异步回调。huks.initSessionAsUser, huks.updateSession, huks.finishSession为三段式接口，需要一起使用。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+**需要权限：** ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
 
-**系统能力**：SystemCapability.Security.Huks.Extension
+**系统能力：** SystemCapability.Security.Huks.Extension
 
 **参数：**
 
@@ -1690,13 +1865,13 @@ initSessionAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) : 
 | -------- | ------------------------------------------------- | ---- | ------------------------------------------------ |
 | userId   | number                                            | 是   | 用户ID。                 |
 | keyAlias | string                                            | 是   | initSessionAsUser操作密钥的别名。                             |
-| huksOptions  | [HuksOptions](js-apis-huks.md#huksoptions)        | 是   | initSessionAsUser参数集合。                                   |
+| huksOptions  | [HuksOptions](js-apis-huks.md#huksoptions)        | 是   | 用于初始化密钥会话时所需的参数集合，包括密钥用途、密钥算法、密钥长度等必选参数。 |
 
-**返回值**：
+**返回值：**
 
 | 类型                                | 说明                                               |
 | ----------------------------------- | -------------------------------------------------- |
-| Promise\<[HuksSessionHandle](js-apis-huks.md#hukssessionhandle9)> | Promise对象。将initSessionAsUser操作返回的handle添加到密钥管理系统的回调。 |
+| Promise\<[HuksSessionHandle](js-apis-huks.md#hukssessionhandle9)> | Promise对象，返回HuksSessionHandle，其中handle成员为生成的会话句柄，用于后续[huks.updateSession](js-apis-huks.md#huksupdatesession9-2)、[huks.finishSession](js-apis-huks.md#huksfinishsession9-2)、[huks.abortSession](js-apis-huks.md#huksabortsession9-1)操作。 |
 
 **错误码：**
 
@@ -1725,16 +1900,17 @@ initSessionAsUser(userId: number, keyAlias: string, huksOptions: HuksOptions) : 
 - 注意：下文密码学相关的变量（如initializationVector）赋值，均为参考样例，不能直接适用于业务功能逻辑。开发者需要根据自身场景使用合适的初始值。
 
 ```ts
+/* 以AES密钥加解密为例 */
 import { huks } from '@kit.UniversalKeystoreKit';
-import { BusinessError } from "@kit.BasicServicesKit"
+import { BusinessError } from '@kit.BasicServicesKit';
 
 const aesKeyAlias = 'test_aesKeyAlias';
 const userId = 100;
 const userIdStorageLevel = huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_CE;
-const initializationVector = '001122334455';
+const initializationVector = '0011223344556677';
 const plainText = '123456789';
 
-function StringToUint8Array(str: string) {
+function stringToUint8Array(str: string) {
   let arr: number[] = [];
   for (let i = 0, j = str.length; i < j; ++i) {
     arr.push(str.charCodeAt(i));
@@ -1791,7 +1967,7 @@ function GetAesEncryptProperties(): Array<huks.HuksParam> {
     value: huks.HuksCipherMode.HUKS_MODE_CBC
   }, {
     tag: huks.HuksTag.HUKS_TAG_IV,
-    value: StringToUint8Array(initializationVector)
+    value: stringToUint8Array(initializationVector)
   }, {
     tag: huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL,
     value: userIdStorageLevel,
@@ -1816,48 +1992,51 @@ function GetAesDecryptProperties(): Array<huks.HuksParam> {
     value: huks.HuksCipherMode.HUKS_MODE_CBC
   }, {
     tag: huks.HuksTag.HUKS_TAG_IV,
-    value: StringToUint8Array(initializationVector)
+    value: stringToUint8Array(initializationVector)
   }, {
     tag: huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL,
     value: userIdStorageLevel,
   }]
 }
 
+/* 1. 生成密钥 */
 async function GenerateKey(keyAlias: string, genProperties: Array<huks.HuksParam>) {
   const options: huks.HuksOptions = {
     properties: genProperties
   }
   await huks.generateKeyItemAsUser(userId, keyAlias, options).then((data) => {
-    console.info("成功生成了一个别名为：" + keyAlias + " 的密钥")
+    console.info(`成功生成了一个别名为：${keyAlias} 的密钥`)
   }).catch((err: BusinessError) => {
-    console.error("密钥生成失败，错误码是： " + err.code + " 错误码信息： " + err.message)
+    console.error(`密钥生成失败，错误码是：${err.code} 错误码信息：${err.message}`)
   })
 }
 
+/* 2. 加密数据 */
 async function EncryptData(keyAlias: string, encryptProperties: Array<huks.HuksParam>): Promise<Uint8Array> {
   const options: huks.HuksOptions = {
     properties: encryptProperties,
-    inData: StringToUint8Array(plainText)
+    inData: stringToUint8Array(plainText)
   }
   let handle: number = 0;
   let cipherData: Uint8Array = new Uint8Array([]);
   await huks.initSessionAsUser(userId, keyAlias, options).then((data) => {
     handle = data.handle;
   }).catch((err: BusinessError) => {
-    console.error("密钥初始化失败，错误码是： " + err.code + " 错误码信息： " + err.message)
+    console.error(`密钥初始化失败，错误码是：${err.code} 错误码信息：${err.message}`)
   })
   await huks.finishSession(handle, options).then((data) => {
-    console.info("加密数据成功， 密文是： " + Uint8ArrayToString(data.outData))
+    console.info(`加密数据成功， 密文是：${Uint8ArrayToString(data.outData)}`)
     if (data.outData != undefined) {
       cipherData = data.outData
     }
-    console.info("running time result success!")
+    console.info('running time result success!')
   }).catch((err: BusinessError) => {
-    console.error("加密流程捕获了异常，错误码是： " + err.code + " 错误码信息： " + err.message)
+    console.error(`加密流程捕获了异常，错误码是：${err.code} 错误码信息：${err.message}`)
   })
   return cipherData
 }
 
+/* 3. 解密数据 */
 async function DecryptData(keyAlias: string, decryptProperties: Array<huks.HuksParam>, cipherData: Uint8Array) {
   const options: huks.HuksOptions = {
     properties: decryptProperties,
@@ -1867,12 +2046,12 @@ async function DecryptData(keyAlias: string, decryptProperties: Array<huks.HuksP
   await huks.initSessionAsUser(userId, keyAlias, options).then((data) => {
     handle = data.handle;
   }).catch((err: BusinessError) => {
-    console.error("密钥初始化失败，错误码是： " + err.code + " 错误码信息： " + err.message)
+    console.error(`密钥初始化失败，错误码是：${err.code} 错误码信息：${err.message}`)
   })
   await huks.finishSession(handle, options).then((data) => {
-    console.info("解密成功， 解密的明文是： " + Uint8ArrayToString(data.outData))
+    console.info(`解密成功， 解密的明文是：${Uint8ArrayToString(data.outData)}`)
   }).catch((err: BusinessError) => {
-    console.error("解密流程捕获了异常，错误码是： " + err.code + " 错误码信息： " + err.message)
+    console.error(`解密流程捕获了异常，错误码是：${err.code} 错误码信息：${err.message}`)
   })
 }
 

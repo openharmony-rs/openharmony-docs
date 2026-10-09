@@ -1,8 +1,8 @@
 # 属性修改器 (AttributeModifier)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @sunbees-->
+<!--Designer: @sunbees-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -65,13 +65,13 @@
 
 ## 使用说明
 
-- 组件通用方法`attributeModifier`支持传入一个实现`AttributeModifier<T>`接口的实例，`T`必须指定为组件对应的Attribute类型，或者是`CommonAttribute`。
+- 组件通用方法`attributeModifier`支持传入一个实现`AttributeModifier<T>`接口的实例，`T`必须指定为组件对应的Attribute类型，或者是[通用属性](../reference/apis-arkui/arkui-ts/ts-component-general-attributes.md)（CommonAttribute）。
 - 在组件首次初始化或者关联的状态变量发生变化时，如果传入的实例实现了对应接口，会触发`applyNormalAttribute`。
-- 回调`applyNormalAttribute`时，会传入组件属性对象，通过该对象可以设置当前组件的属性/事件。
+- 回调[applyNormalAttribute](../reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md#applynormalattribute)时，会传入组件属性对象，通过该对象可以设置当前组件的属性/事件。
 - 暂未支持的属性/事件，执行时会抛异常。
 - 属性变化触发`applyXxxAttribute`函数时，该组件之前已设置的属性，在本次变化后未设置的属性会恢复为属性的默认值。
-- 可以通过该接口使用多态样式的功能，例如如果需要在组件进入按压态时设置某些属性，就可以通过自定义实现`applyPressedAttribute`方法完成。
-- 一个组件上同时使用属性方法和`applyNormalAttribute`设置相同的属性，遵循属性覆盖原则，即后设置的属性生效。
+- 可以通过该接口使用多态样式的功能，例如如果需要在组件进入按压态时设置某些属性，就可以通过自定义实现[applyPressedAttribute](../reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md#applypressedattribute)方法完成。
+- 在attributeModifier中设置的属性尽量不要与其他方法设置的属性相同，避免在页面刷新时attributeModifier不生效。
 - 一个Modifier实例对象可以在多个组件上使用。
 - 一个组件上多次使用`applyNormalAttribute`设置不同的Modifier实例，每次状态变量刷新均会按顺序执行这些实例的方法属性设置，同样遵循属性覆盖原则。
 
@@ -138,7 +138,6 @@ AttributeModifier可以分离UI与样式，支持参数传递及业务逻辑编�
 
   ![AttributeModifier](figures/AttributeModifier01.gif)
 
-当一个组件上同时使用属性方法和`applyNormalAttribute`设置相同的属性时，遵循属性覆盖原则，即后设置的属性生效。
 
   <!-- @[Common_MyButtonModifier](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/Common/ButtonModifier01.ets) -->
   
@@ -271,6 +270,7 @@ AttributeModifier可以分离UI与样式，支持参数传递及业务逻辑编�
     }
   }
   ```
+
   ![AttributeModifier](figures/AttributeModifier04.gif) 
 
 ## 设置多态样式、事件
@@ -320,6 +320,7 @@ AttributeModifier可以分离UI与样式，支持参数传递及业务逻辑编�
     }
   }
   ```
+  
   ![AttributeModifier](figures/AttributeModifier02.gif) 
 
   ## 属性或事件对attributeModifier的支持情况
@@ -337,7 +338,6 @@ AttributeModifier可以分离UI与样式，支持参数传递及业务逻辑编�
   | CommonAttribute | [animation](../reference/apis-arkui/arkui-ts/ts-animatorproperty.md#animation)                | Method not implemented.   | 不支持animation相关属性。                 |
   | CommonAttribute | [attributeModifier](../reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md#attributemodifier)        | -                         | attributeModifier不支持嵌套使用，不生效。 |
   | CommonAttribute | [backgroundFilter](../reference/apis-arkui/arkui-ts/ts-universal-attributes-filter-effect.md#backgroundfilter)         | is not callable           | -                                         |
-  | CommonAttribute | [chainWeight](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#chainweight14)              | is not callable           | -                                         |
   | CommonAttribute | [compositingFilter](../reference/apis-arkui/arkui-ts/ts-universal-attributes-filter-effect.md#compositingfilter)        | is not callable           | -                                         |
   | CommonAttribute | [drawModifier](../reference/apis-arkui/arkui-ts/ts-universal-attributes-draw-modifier.md#drawmodifier)             | is not callable           | 不支持modifier相关的属性。                |
   | CommonAttribute | [foregroundFilter](../reference/apis-arkui/arkui-ts/ts-universal-attributes-filter-effect.md#foregroundfilter)         | is not callable           | -                                         |
@@ -462,6 +462,7 @@ AttributeModifier可以分离UI与样式，支持参数传递及业务逻辑编�
   | Navigation | [toolbarConfiguration](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#toolbarconfiguration10) | 10 | 20 |
   | Navigation | [customNavContentTransition](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#customnavcontenttransition11) | 11 | 20 |
   | Navigation | [systemBarStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#systembarstyle12) | 12 | 20 |
+  | Navigation | [enableVisibilityLifecycleWithContentCover](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#enablevisibilitylifecyclewithcontentcover21) | 21 | 23 |
   | PatternLock | [backgroundColor](../reference/apis-arkui/arkui-ts/ts-basic-components-patternlock.md#backgroundcolor) | 9 | 20 |
   | PatternLock | [onDotConnect](../reference/apis-arkui/arkui-ts/ts-basic-components-patternlock.md#ondotconnect11) | 11 | 20 |
   | Progress | [privacySensitive](../reference/apis-arkui/arkui-ts/ts-basic-components-progress.md#privacysensitive12) | 12 | 20 |

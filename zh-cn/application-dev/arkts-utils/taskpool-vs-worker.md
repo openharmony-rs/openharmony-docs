@@ -1,12 +1,13 @@
-# TaskPool和Worker的对比 (TaskPool和Worker)
+# TaskPool和Worker的对比
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
 <!--Owner: @wang_zhaoyong-->
-<!--Designer: @weng-changcheng-->
+<!--Designer: @huanghello-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @k1ngqaquuu-->
 
 
+<!--RP1-->
 TaskPool和Worker的作用是为应用程序提供多线程运行环境，用于处理耗时计算任务或其他密集型任务，避免任务阻塞宿主线程，提高系统性能和资源利用率。
 
 
@@ -25,7 +26,7 @@ TaskPool和Worker的作用是为应用程序提供多线程运行环境，用于
 | 方法调用 | 直接传入并调用\@Concurrent修饰的方法。 | 在Worker线程中解析消息并调用对应方法。 |
 | 返回值 | 异步调用后默认返回。 | 主动发送消息，需在onmessage中解析并赋值。 |
 | 生命周期 | TaskPool自动管理其生命周期，无需关注任务负载。 | 开发者需自行管理Worker的数量和生命周期。 |
-| 任务池个数上限 | 自动管理，无需配置。 | 同个进程下，最多支持同时开启64个Worker线程，实际数量由进程内存决定。 |
+| 任务池个数上限 | 自动管理，无需配置。 | 同一进程下，最多支持同时开启64个Worker线程，实际数量由进程内存决定。 |
 | 任务执行时长上限 | 3分钟（不包含Promise和async/await异步调用的耗时，例如网络下载、文件读写等I/O任务的耗时），长时任务无执行时长上限。 | 无限制。 |
 | 设置任务的优先级 | 支持配置任务优先级。 | 从API version 18开始，支持配置Worker线程优先级。 |
 | 执行任务的取消 | 支持取消已经发起的任务。 | 不支持。 |
@@ -83,3 +84,4 @@ Worker适用于需要长时间占据线程，并由开发者主动管理线程�
   例如大型应用中的多个模块包含多个耗时任务，不建议使用Worker进行负载管理，推荐使用TaskPool。
 
   场景示例可参考[批量数据写数据库场景](batch-database-operations-guide.md)。
+<!--RP1End-->

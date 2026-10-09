@@ -20,7 +20,7 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
    
    In addition to the example in this topic, [SM4](crypto-sym-key-generation-conversion-spec.md#sm4) and [Randomly Generating a Symmetric Key](crypto-generate-sym-key-randomly.md) may help you better understand how to generate an SM4 symmetric key. Note that the input parameters in the reference documents may be different from those in the example below.
 
-2. Call [OH_CryptoSymCipher_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_create) with the string parameter **'SM4_128|GCM|PKCS7'** to create a **Cipher** instance for encryption. The key type is **SM4_128**, block cipher mode is **GCM**, and the padding mode is **PKCS7**.
+2. Call [OH_CryptoSymCipher_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_create) with the string parameter **'SM4_128|GCM|PKCS7'** to create a **Cipher** instance for encryption. The symmetric key type is **SM4_128**, block cipher mode is **GCM**, and the padding mode is **PKCS7**.
 
 3. Call [OH_CryptoSymCipherParams_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipherparams_create) to create a parameter object and call [OH_CryptoSymCipherParams_SetParam](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipherparams_setparam) to set encryption parameters.
 
@@ -43,7 +43,7 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 **Decryption**
 
-1. Call [OH_CryptoSymCipher_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_create) with the string parameter **'SM4_128|GCM|PKCS7'** to create a **Cipher** instance for decryption. The key type is **SM4_128**, block cipher mode is **GCM**, and the padding mode is **PKCS7**.
+1. Call [OH_CryptoSymCipher_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_create) with the string parameter **'SM4_128|GCM|PKCS7'** to create a **Cipher** instance for decryption. The symmetric key type is **SM4_128**, block cipher mode is **GCM**, and the padding mode is **PKCS7**.
 
 2. Call [OH_CryptoSymCipher_Init](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_init) to initialize the **Cipher** instance. Specifically, set **mode** to **CRYPTO_DECRYPT_MODE**, and specify the decryption key (**OH_CryptoSymKey**) and the decryption parameter instance (**OH_CryptoSymCipherParams**) corresponding to the GCM mode.
 
@@ -51,12 +51,15 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 4. Call [OH_CryptoSymCipher_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_final) to obtain the decrypted data.
 
-```c++
+<!-- @[crypt_decrypt_sm4_gcm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceSM4/entry/src/main/cpp/types/project/sm4_gcm_encryption_decryption.cpp) -->
+
+``` C++
 #include "CryptoArchitectureKit/crypto_common.h"
 #include "CryptoArchitectureKit/crypto_sym_cipher.h"
-#include <string.h>
+#include <cstring>
+// ...
 
-static OH_Crypto_ErrCode doTestSm4Gcm()
+OH_Crypto_ErrCode doTestSm4Gcm()
 {
     OH_CryptoSymKeyGenerator *genCtx = nullptr;
     OH_CryptoSymCipher *encCtx = nullptr;
@@ -77,8 +80,7 @@ static OH_Crypto_ErrCode doTestSm4Gcm()
     char *plainText = const_cast<char *>("this is test!");
     Crypto_DataBlob msgBlob = {.data = (uint8_t *)(plainText), .len = strlen(plainText)};
     // Generate a symmetric key.
-    OH_Crypto_ErrCode ret;
-    ret = OH_CryptoSymKeyGenerator_Create("SM4_128", &genCtx);
+    OH_Crypto_ErrCode ret = OH_CryptoSymKeyGenerator_Create("SM4_128", &genCtx);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }
@@ -105,7 +107,7 @@ static OH_Crypto_ErrCode doTestSm4Gcm()
         goto end;
     }
 
-    // Encrypt the message.
+    // Encrypt data.
     ret = OH_CryptoSymCipher_Create("SM4_128|GCM|PKCS7", &encCtx);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
@@ -123,7 +125,7 @@ static OH_Crypto_ErrCode doTestSm4Gcm()
         goto end;
     }
 
-    // Decrypt the message.
+    // Decrypt data.
     ret = OH_CryptoSymCipher_Create("SM4_128|GCM|PKCS7", &decCtx);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
@@ -141,7 +143,7 @@ static OH_Crypto_ErrCode doTestSm4Gcm()
         goto end;
     }
 
-    // Release the resources.
+    // Release resources.
 end:
     OH_CryptoSymCipherParams_Destroy(params);
     OH_CryptoSymCipher_Destroy(encCtx);

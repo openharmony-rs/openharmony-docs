@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @linjunjie6-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 ## 影音垂域（MediaDomain）
 ### 播放视频  
@@ -52,7 +52,7 @@
 
 | 参数名 | 类型  | 必选 | 说明                                                                                                                                                                                                                                     | 数据样例 |
 | ------ | ---- | ---- |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-|
-| code  | number | 是   | 返回结果码：0表示成功，其他值表示失败。如下：<br>- 100060101：不支持播放会员歌曲、付费歌曲。<br>- 100060102：帐户已失效，且歌曲没有试听片段。<br>- 100060201：开启了儿童保护或登录儿童帐户场景、脏标的歌曲。<br>- 100060202：歌单已下架，无法播放。<br>- 100060203：歌曲在本平台版权到期，无法播放。<br>- 100060301：歌曲/歌手被加入了屏蔽名单，无法播放。<br>- 100060401：软件故障。 | 100060101 |
+| code  | number | 是   | 返回结果码：0表示成功，其他值表示失败。如下：<br>- 100060101：不支持播放会员歌曲、付费歌曲。<br>- 100060102：账户已失效，且歌曲没有试听片段。<br>- 100060201：开启了儿童保护或登录儿童账户场景、脏标的歌曲。<br>- 100060202：歌单已下架，无法播放。<br>- 100060203：歌曲在本平台版权到期，无法播放。<br>- 100060301：歌曲/歌手被加入了屏蔽名单，无法播放。<br>- 100060401：软件故障。 | 100060101 |
 | result | object | 是   | 返回结果对象。以键值对形式返回，字符数不超过8000字符。                                                                                                                                                                          | {"musicSize":"4M","dataReceiveTime":1704868765000} |
 
 ### 播放有声
@@ -115,7 +115,7 @@
 | entityId    | string | 否   | 意图实体ID，长度不超过64字符。                                                                  | "12949589" |
 | srcLocation | object | 否   | 出发地信息，包含字段：<br>- locationSystem：指定坐标系（默认使用GCJ-02坐标系）。<br>- poiId：poi的唯一标识。<br>- locationName：地点名称。<br>- longitude：经度。<br>- latitude：纬度。<br>- address：详细地址信息。      | {<br>  "locationSystem": "GCJ02",<br>  "poiId": "1236",<br>  "locationName": "北京站",<br>  "latitude": "39.902895",<br>  "longitude": "116.427915",<br>  "address": "北京市东城区北京站"<br>} |
 | dstLocation | object | 否   | 目的地的信息，包含字段：<br>- locationSystem：指定坐标系（默认使用GCJ-02坐标系）。<br>- poiId：poi的唯一标识。<br>- locationName：地点名称。<br>- longitude：经度。<br>- latitude：纬度。<br>- address：详细地址信息。     | {<br>  "locationSystem": "GCJ02",<br>  "poiId": "1248",<br>  "locationName": "北京西站",<br>  "latitude": "39.89534",<br>  "longitude": "116.32128",<br>  "address": "北京市丰台区北京西站"<br>} |
-| wayPoints   | array | 否   | 途经点Array：语音入口调用时必填Array\<PoiLocation>，途径点包含字段与srcLocation中的字段一致。                                      | [{<br>  "locationSystem": "GCJ02",<br>  "poiId": "1445",<br>  "locationName": "前门东大街社区",<br>  "latitude": "39.89995",<br>  "longitude": "116.35628",<br>  "address": "北京市东城区前门街道"<br>}] |
+| wayPoints   | array | 否   | 途经点Array：语音入口调用时必填Array\<PoiLocation>，途经点包含字段与srcLocation中的字段一致。                                      | [{<br>  "locationSystem": "GCJ02",<br>  "poiId": "1445",<br>  "locationName": "前门东大街社区",<br>  "latitude": "39.89995",<br>  "longitude": "116.35628",<br>  "address": "北京市东城区前门街道"<br>}] |
 | dstLocationType | string | 否   | 目的地类型，比如"家"、"公司"等。                                                               | "家" |
 | trafficType | string | 否   | 交通方式。<br>- Drive：驾车（默认值）。<br>- Walk：步行。<br>- Cycle：骑行。<br>- Bus：公交。<br>- Subway：地铁。 | "Cycle" |
 
@@ -138,7 +138,7 @@
 | 参数名 | 类型    | 必选 | 说明                                                                                                                                                   | 数据样例 |
 |-------------|---------|-------|----------------------------------------------------------------------------------------------|---------|
 | travelCardType | string | 否 | 交通类型，默认使用用户上次查看类型（由开发者自行实现）。<br>- Metro：地铁。<br>- Bus：公交。   | "Metro" |
-| adminCode    | number  | 否 | 用户所在城市的编码。默认为用户当前位置城市。采用中国城市编码，参考[城市码及区划代码表](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/map-citycode-V5)。 | 320500 |
+| adminCode    | number  | 否 | 用户所在城市的编码。默认为用户当前位置城市。采用中国城市编码，参考[城市码及区划代码表](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/map-citycode)。 | 320500 |
 
 **返回值**：
 
@@ -162,7 +162,7 @@
 | srcLocation | object | 否   | 出发地信息，包含以下字段：<br>- locationSystem：指定坐标系（默认使用GCJ-02）。<br>- poiId：poi的唯一标识。<br>- locationName：地点名称。<br>- longitude：经度。<br>- latitude：纬度。<br>- address：详细地址信息。 | {<br>  "locationSystem": "GCJ02",<br>  "poiId": "1245",<br>  "locationName": "北京站",<br>  "latitude": "39.902895",<br>  "longitude": "116.427915",<br>  "address": "北京市东城区北京站"<br>} |
 | dstLocation | object | 否    | 目的地信息，包含以下字段：<br>- locationSystem：指定坐标系（默认使用GCJ-02）。<br>- poiId：poi的唯一标识。<br>- locationName：地点名称。<br>- longitude：经度。<br>- latitude：纬度。<br>- address：详细地址信息。 | {<br>  "locationSystem": "GCJ02",<br>  "poiId": "1232",<br>  "locationName": "北京西站",<br>  "latitude": "39.89534",<br>  "longitude": "116.32128",<br>  "address": "北京市丰台区北京西站"<br>} |
 | dstLocationType | string | 否   | 目的地类型，比如"家"、"公司"。                                                              | "家" |
-| hwChannelId | string | 否   | 标识入口的渠道标识。<br>- "0x00000100"：小艺建议。<br>- "0x00000200"：小艺语音。<br>- "0x00000300"：拖拽入口。 | "0x00000100" |
+| hwChannelId | string | 否   | 标识入口的渠道标识。<br>- "0x00000100"：系统入口建议。<br>- "0x00000200"：系统入口语音。<br>- "0x00000300"：拖拽入口。 | "0x00000100" |
 | taxiType    | number | 否   | 车型，默认为0（默认车型）。<br>- 0：默认车型。<br>- 1：快车。<br>- 2：出租车。<br>- 3：拼车。<br>- 4：顺风车。<br>- 5：专车。   | 1 |
 
 **返回值**：
@@ -801,7 +801,7 @@
 | deviceName    | string | 是   | 设备的名称。             | "客厅的摄像头"     |
 | deviceType    | string | 是   | 设备的类型。              | "摄像头"        |
 | deviceLocation | string | 是   | 设备所在位置。              | "客厅"         |
-| logoURL        | string | 是   | 图标URL，用于小艺对话卡片图标的展示。              | -  |
+| logoURL        | string | 是   | 图标URL，用于系统入口对话卡片图标的展示。              | -  |
 
 ### 查看智能设备
 
@@ -1327,7 +1327,7 @@
 
 | 参数名 | 类型   | 必选 | 说明                                                                                                                                                                                                                                                                                                                                                                                                                               | 数据样例 |
 |----|--------|----|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------|
-|  scanFunction  | string | 否 | 扫描功能。<br>- General：通用扫描。<br>- "RecognizeText"：提取文字/识文。<br>- "RecognizeTranslation：识别翻译。<br>- "RecognizeObjects"：识物。<br>- "ScanCertificate"：扫描证件。<br>- "ScanIDCard"：扫描身份证。<br>- "ScanHouseholdRegistrationRecord"：扫描户口本。<br>- "ScanPassport"：扫描护照。<br>- "ScanDriverLicense"：扫描驾驶证。<br>- "ScanVehicleLicense"：扫描行驶证。<br>- "ScanBankCard"：扫描银行卡。<br>- "ScanHousePropertyCard"：扫描房产证。<br>- "ScanBusinessLicense"：扫描营业执照。<br>- "EraseHandwriting"：擦除手写/试卷还原。 | "General" |
+|  scanFunction  | string | 否 | 扫描功能。<br>- General：通用扫描。<br>- "RecognizeText"：提取文字/识文。<br>- "RecognizeTranslation"：识别翻译。<br>- "RecognizeObjects"：识物。<br>- "ScanCertificate"：扫描证件。<br>- "ScanIDCard"：扫描身份证。<br>- "ScanHouseholdRegistrationRecord"：扫描户口本。<br>- "ScanPassport"：扫描护照。<br>- "ScanDriverLicense"：扫描驾驶证。<br>- "ScanVehicleLicense"：扫描行驶证。<br>- "ScanBankCard"：扫描银行卡。<br>- "ScanHousePropertyCard"：扫描房产证。<br>- "ScanBusinessLicense"：扫描营业执照。<br>- "EraseHandwriting"：擦除手写/试卷还原。 | "General" |
 
 **返回值**：
 
@@ -2081,7 +2081,7 @@
 | 参数名 | 类型  | 必选 | 说明                                               | 数据样例                                                                                                                        |
 |-------------|--------|------|--------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
 | keywords    | string | 否   | 搜索关键词，如景点名称，多个搜索关键词用英文逗号分隔。                      | "故宫","江宁有什么好玩的"                                                                                                             |
-| location    | object | 否   | 位置的经纬度信息。纬度的取值范围：[-90, 90]，经度的取值范围：[-180, 180]。  | {"locationSystem":"GCJ02/BD09LL","locationName":  "xxxx","latitude"："120.785645"，"longitude"："33.039635"，"address":"xxx"} |
+| location    | object | 否   | 位置的经纬度信息。纬度的取值范围：[-90, 90]，经度的取值范围：[-180, 180]。  | {"locationSystem": "GCJ02/BD09LL", "locationName": "xxxx", "latitude": "120.785645", "longitude": "33.039635", "address": "xxx"} |
 | city    | string | 否   | 用于搜索景点名称等场景按城市筛选过滤非本城市记录。                        | "深圳市"                              |
 | travelGuidesType    | string | 否   | 攻略类型。<br>- Scenic：景点攻略。<br>- CitySelection：城市精选。 | "CitySelection"      |
 

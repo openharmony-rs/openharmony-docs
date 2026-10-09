@@ -216,7 +216,7 @@ To obfuscate string literal property names, you must use this option together wi
 -enable-string-property-obfuscation
 ```
 
-According to the preceding configuration, the obfuscation effect of **"fritstName"** and **"personAge"** is as follows:
+According to the preceding configuration, the obfuscation effect of **"firstName"** and **"personAge"** is as follows:
 
 <!-- @[optionExample_enableStringPropertyObfuscation1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->     
 

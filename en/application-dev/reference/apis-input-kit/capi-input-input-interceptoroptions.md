@@ -5,7 +5,8 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=574e1b97c419a831e3ff5b620b1254fe667a5306 translatedAt=2026-06-12T02:20:07.104Z pushedAt=2026-06-12T02:53:31.948Z -->
 
 ```c
 typedef struct Input_InterceptorOptions Input_InterceptorOptions
@@ -13,7 +14,7 @@ typedef struct Input_InterceptorOptions Input_InterceptorOptions
 
 ## **Overview**
 
-Defines event interception options.
+Event interceptor options, which are used to configure parameters and rules for input event interception. Interception control for key events, mouse events, touchscreen events, and axis events are supported.
 
 **Since**: 12
 

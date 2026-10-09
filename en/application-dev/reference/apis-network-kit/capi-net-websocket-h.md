@@ -6,6 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=108aa11c2ceb50c68f8417aa3c60f1dcb55dabdd translatedAt=2026-09-23T01:24:56.997Z pushedAt=2026-09-24T06:00:14.105Z -->
 
 ## Overview
 
@@ -32,7 +33,7 @@ Defines the WebSocket client module APIs.
 | [int OH_WebSocketClient_Connect(struct WebSocket *client, const char *url, struct WebSocket_RequestOptions options)](#oh_websocketclient_connect) | Connects the WebSocket client to the server.|
 | [int OH_WebSocketClient_Send(struct WebSocket *client, char *data, size_t length)](#oh_websocketclient_send) | Sends data from the WebSocket client to the server.|
 | [int OH_WebSocketClient_Close(struct WebSocket *client, struct WebSocket_CloseOption options)](#oh_websocketclient_close) | Closes the connection on the WebSocket client.|
-| [int OH_WebSocketClient_Destroy(struct WebSocket *client)](#oh_websocketclient_destroy) | Destorys the WebSocket client and releases the context and resources of the WebSocket connection.|
+| [int OH_WebSocketClient_Destroy(struct WebSocket *client)](#oh_websocketclient_destroy) | Releases the WebSocket connection context and resources. |
 
 ## Function Description
 
@@ -164,7 +165,7 @@ int OH_WebSocketClient_Close(struct WebSocket *client, struct WebSocket_CloseOpt
 
 **Description**
 
-Lets the WebSocket client proactively close the connection.
+Closes the connection on the WebSocket client.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -194,7 +195,14 @@ int OH_WebSocketClient_Destroy(struct WebSocket *client)
 
 **Description**
 
-Destorys the WebSocket client and releases the context and resources of the WebSocket connection.
+Releases the WebSocket connection context and resources. Usage:
+1. Call [WebSocket_OnCloseCallback](capi-net-websocket-type-h.md#websocket_onclosecallback) to subscribe to the WebSocket connection close event, and call the [OH_WebSocketClient_Destroy](#oh_websocketclient_destroy) method in the callback.
+
+2. Call [OH_WebSocketClient_Close](#oh_websocketclient_close) to close the WebSocket connection.
+
+>**NOTE**
+>
+>Ensure that this API is called after the [WebSocket_OnCloseCallback](capi-net-websocket-type-h.md#websocket_onclosecallback) callback is triggered. Otherwise, socket leaks may occur and the connection may not be closed after the system memory resources are released.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -214,3 +222,4 @@ Destorys the WebSocket client and releases the context and resources of the WebS
 | Type| Description|
 | -- | -- |
 | int | **0** if the operation is successful; a non-0 value otherwise. For details about the return values, see **OH_Websocket_ErrCode**.|
+

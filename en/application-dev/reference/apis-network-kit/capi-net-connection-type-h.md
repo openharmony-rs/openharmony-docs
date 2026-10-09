@@ -5,10 +5,11 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=108aa11c2ceb50c68f8417aa3c60f1dcb55dabdd translatedAt=2026-09-23T01:10:13.217Z pushedAt=2026-09-24T06:00:14.084Z -->
 
 ## Overview
 
-Provides the C APIs of the network connection module for network management.
+Defines the C API data structures of the data network connection module in network management.
 
 **File to include**: <network/netmanager/net_connection_type.h>
 
@@ -31,13 +32,13 @@ Provides the C APIs of the network connection module for network management.
 | [NetConn_NetAddr](capi-netconnection-netconn-netaddr.md) | NetConn_NetAddr | Network address.|
 | [NetConn_Route](capi-netconnection-netconn-route.md) | NetConn_Route | Route configuration.|
 | [NetConn_HttpProxy](capi-netconnection-netconn-httpproxy.md) | NetConn_HttpProxy | Proxy configuration.|
-| [NetConn_ConnectionProperties](capi-netconnection-netconn-connectionproperties.md) | NetConn_ConnectionProperties | Network connection information.|
+| [NetConn_ConnectionProperties](capi-netconnection-netconn-connectionproperties.md) | NetConn_ConnectionProperties | Network connection properties.|
 | [NetConn_NetHandleList](capi-netconnection-netconn-nethandlelist.md) | NetConn_NetHandleList | Network list.|
-| [NetConn_NetSpecifier](capi-netconnection-netconn-netspecifier.md) | NetConn_NetSpecifier | Defines network feature sets.|
+| [NetConn_NetSpecifier](capi-netconnection-netconn-netspecifier.md) | NetConn_NetSpecifier | Network feature sets.|
 | [NetConn_NetConnCallback](capi-netconnection-netconn-netconncallback.md) | NetConn_NetConnCallback | Network status callback.|
-| [NetConn_ProbeResultInfo](capi-netconnection-netconn-proberesultinfo.md) | NetConn_ProbeResultInfo | Defines the probe result.|
-| [NetConn_TraceRouteOption](capi-netconnection-netconn-tracerouteoption.md) | NetConn_TraceRouteOption | Defines the network trace route options.|
-| [NetConn_TraceRouteInfo](capi-netconnection-netconn-tracerouteinfo.md) | NetConn_TraceRouteInfo | Defines the trace route information.|
+| [NetConn_ProbeResultInfo](capi-netconnection-netconn-proberesultinfo.md) | NetConn_ProbeResultInfo | Probe result.|
+| [NetConn_TraceRouteOption](capi-netconnection-netconn-tracerouteoption.md) | NetConn_TraceRouteOption | Network trace route options.|
+| [NetConn_TraceRouteInfo](capi-netconnection-netconn-tracerouteinfo.md) | NetConn_TraceRouteInfo | Trace route information.|
 
 ### Enums
 
@@ -51,16 +52,16 @@ Provides the C APIs of the network connection module for network management.
 
 ### Macros
 
-| Name| Description| 
+| Name| Description|
 | -------- | -------- |
-| NETCONN_MAX_RTT_NUM   4  | Length of the **rtt** array of the [NetConn_ProbeResultInfo](capi-netconnection-netconn-proberesultinfo.md) member variable.| 
-| NETCONN_MAX_NET_SIZE   32     | Length of the **netHandles** array of the [NetConn_NetHandleList](capi-netconnection-netconn-nethandlelist.md) member variable.| 
-| NETCONN_MAX_BEARER_TYPE_SIZE   32    | Length of the **bearerTypes** array of the [NetConn_NetCapabilities](capi-netconnection-netconn-netcapabilities.md) member variable.| 
-| NETCONN_MAX_CAP_SIZE   32    | Length of the **netCaps** array of the [NetConn_NetCapabilities](capi-netconnection-netconn-netcapabilities.md) member variable.| 
-| NETCONN_MAX_ADDR_SIZE   32    | Length of the **netAddrList** and **dnsList** arrays of the [NetConn_ConnectionProperties](capi-netconnection-netconn-connectionproperties.md) member variable.| 
-| NETCONN_MAX_ROUTE_SIZE   64   | Length of **routeList** array of [NetConn_ConnectionProperties](capi-netconnection-netconn-connectionproperties.md) member variable.| 
-| NETCONN_MAX_EXCLUSION_SIZE   256   | Length of the **exclusionList** array of [NetConn_HttpProxy](capi-netconnection-netconn-httpproxy.md) member variable.| 
-| NETCONN_MAX_STR_LEN   256   | Length of the **host** array of [NetConn_HttpProxy](capi-netconnection-netconn-httpproxy.md) member variable.| 
+| NETCONN_MAX_NET_SIZE   32     | Length of the **netHandles** array of the [NetConn_NetHandleList](capi-netconnection-netconn-nethandlelist.md) member variable.<br>**Since**: 11|
+| NETCONN_MAX_BEARER_TYPE_SIZE   32    | Length of the **bearerTypes** array of the [NetConn_NetCapabilities](capi-netconnection-netconn-netcapabilities.md) member variable.<br>**Since**: 11|
+| NETCONN_MAX_CAP_SIZE   32    | Length of the **netCaps** array of the [NetConn_NetCapabilities](capi-netconnection-netconn-netcapabilities.md) member variable.<br>**Since**: 11|
+| NETCONN_MAX_ADDR_SIZE   32    | Length of the **netAddrList** and **dnsList** arrays of the [NetConn_ConnectionProperties](capi-netconnection-netconn-connectionproperties.md) member variable.<br>**Since**: 11|
+| NETCONN_MAX_ROUTE_SIZE   64   | Length of **routeList** array of [NetConn_ConnectionProperties](capi-netconnection-netconn-connectionproperties.md) member variable.<br>**Since**: 11|
+| NETCONN_MAX_EXCLUSION_SIZE   256   | Length of the **exclusionList** array of [NetConn_HttpProxy](capi-netconnection-netconn-httpproxy.md) member variable.<br>**Since**: 11|
+| NETCONN_MAX_STR_LEN   256   | Length of the **host** array of [NetConn_HttpProxy](capi-netconnection-netconn-httpproxy.md) member variable.<br>**Since**: 11|
+| NETCONN_MAX_RTT_NUM   4  | Length of the **rtt** array, which is a member variable of [NetConn_ProbeResultInfo](capi-netconnection-netconn-proberesultinfo.md).<br>**Since:** 20 |
 
 ### Functions
 
@@ -71,6 +72,7 @@ Provides the C APIs of the network connection module for network management.
 | [typedef void (\*OH_NetConn_NetworkAvailable)(NetConn_NetHandle *netHandle)](#oh_netconn_networkavailable) | OH_NetConn_NetworkAvailable | Callback invoked when the network is available.|
 | [typedef void (\*OH_NetConn_NetCapabilitiesChange)(NetConn_NetHandle *netHandle,NetConn_NetCapabilities *netCapabilities)](#oh_netconn_netcapabilitieschange) | OH_NetConn_NetCapabilitiesChange | Callback invoked when the network capabilities change.|
 | [typedef void (\*OH_NetConn_NetConnectionPropertiesChange)(NetConn_NetHandle *netHandle,NetConn_ConnectionProperties *connConnetionProperties)](#oh_netconn_netconnectionpropertieschange) | OH_NetConn_NetConnectionPropertiesChange | Callback invoked when network connection properties change.|
+| [typedef void (\*OH_NetConn_GlobalHttpProxyRefreshCallback)(int32_t result, const NetConn_HttpProxy *proxy, void *userContext)](#oh_netconn_globalhttpproxyrefreshcallback) | OH_NetConn_GlobalHttpProxyRefreshCallback | Callback invoked to return the result of global HTTP proxy re-authentication. |
 | [typedef void (\*OH_NetConn_NetLost)(NetConn_NetHandle *netHandle)](#oh_netconn_netlost) | OH_NetConn_NetLost | Callback invoked when the network is disconnected.|
 | [typedef void (\*OH_NetConn_NetUnavailable)(void)](#oh_netconn_netunavailable) | OH_NetConn_NetUnavailable | Callback invoked when the network is unavailable. This callback is triggered when the network is not activated within the specified timeout interval. If the timeout interval is not set, this callback is not triggered.|
 | [typedef void (\*OH_NetConn_NetBlockStatusChange)(NetConn_NetHandle *netHandle, bool blocked)](#oh_netconn_netblockstatuschange) | OH_NetConn_NetBlockStatusChange | Callback invoked when the network blocking status changes.|
@@ -85,7 +87,7 @@ enum NetConn_NetCap
 
 **Description**
 
-Defines the network capability set.
+Enumerates the network capabilities.
 
 **Since**: 11
 
@@ -107,14 +109,14 @@ enum NetConn_NetBearerType
 
 **Description**
 
-Network carrier type.
+Enumerates the network carrier types.
 
 **Since**: 11
 
 | Enum Item| Description|
 | -- | -- |
 | NETCONN_BEARER_CELLULAR = 0 | Cellular network.|
-| NETCONN_BEARER_WIFI = 1 | Wi-Fi.|
+| NETCONN_BEARER_WIFI = 1 | Wi-Fi |
 | NETCONN_BEARER_BLUETOOTH = 2 | Bluetooth.<br>**Since**: 12|
 | NETCONN_BEARER_ETHERNET = 3 | Ethernet.|
 | NETCONN_BEARER_VPN = 4 | VPN.<br>**Since**: 12|
@@ -137,7 +139,7 @@ Enumerates network connection error codes.
 | NETCONN_PERMISSION_DENIED = 201 | Missing permissions.|
 | NETCONN_PARAMETER_ERROR = 401 | Invalid parameter.|
 | NETCONN_OPERATION_FAILED = 2100002 | Service connection failure.|
-| NETCONN_INTERNAL_ERROR = 2100003 | Internal error.1. Memory-related error, for example, insufficient memory, memory data copy failure, or memory request failure.2. Null pointer, for example, access to a released memory pointer.|
+| NETCONN_INTERNAL_ERROR = 2100003 | Internal error. 1. Memory exception, for example, insufficient memory or memory copy failure. 2. Null pointer, for example, accessing a pointer to released memory. |
 
 ### NetConn_PacketsType
 
@@ -167,7 +169,7 @@ typedef int (*OH_NetConn_CustomDnsResolver)(const char *host, const char *serv,c
 
 **Description**
 
-Pointer to the custom DNS resolver.
+Defines the pointer to the custom DNS resolver.
 
 **Since**: 11
 
@@ -189,7 +191,7 @@ typedef void (*OH_NetConn_AppHttpProxyChange)(NetConn_HttpProxy *proxy)
 
 **Description**
 
-Callback invoked when the HTTP proxy information of the application changes.
+Defines the callback invoked when the HTTP proxy information of the application changes.
 
 **Since**: 12
 
@@ -198,7 +200,27 @@ Callback invoked when the HTTP proxy information of the application changes.
 
 | Name                         | Description|
 |------------------------------| -- |
-| [NetConn_HttpProxy](capi-netconnection-netconn-httpproxy.md) *proxy | Proxy configuration information (probably a null pointer).|
+| [NetConn_HttpProxy](capi-netconnection-netconn-httpproxy.md) *proxy | Changed proxy information, which may be a null pointer. |
+
+### OH_NetConn_GlobalHttpProxyRefreshCallback()
+
+```c
+typedef void (*OH_NetConn_GlobalHttpProxyRefreshCallback)(int32_t result, const NetConn_HttpProxy *proxy, void *userContext)
+```
+
+**Description**
+
+Triggered for the result of global HTTP proxy re-authentication.
+
+**Since:** 26.0.0
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| int32_t result | Re-authentication result. **0** indicates success, and other values indicate failure. |
+| [NetConn_HttpProxy](capi-netconnection-netconn-httpproxy.md) *proxy | When re-authentication succeeds (**result** is **0**), indicates the refreshed global HTTP proxy information. When re-authentication fails (**result** is not **0**), **proxy** is **NULL**. This **proxy** object is held by the system and is valid only within this callback function. The caller must not release or modify it. If the caller needs to continue using the proxy information after the callback returns, a deep copy must be made. |
+| void *userContext | User-defined data. The system does not access, copy, or release this data. |
 
 ### OH_NetConn_NetworkAvailable()
 
@@ -208,7 +230,7 @@ typedef void (*OH_NetConn_NetworkAvailable)(NetConn_NetHandle *netHandle)
 
 **Description**
 
-Callback invoked when the network is available.
+Defines the callback invoked when the network is available.
 
 **Since**: 12
 
@@ -227,7 +249,7 @@ typedef void (*OH_NetConn_NetCapabilitiesChange)(NetConn_NetHandle *netHandle,Ne
 
 **Description**
 
-Callback invoked when the network capabilities change.
+Defines the callback invoked when the network capabilities change.
 
 **Since**: 12
 
@@ -247,7 +269,7 @@ typedef void (*OH_NetConn_NetConnectionPropertiesChange)(NetConn_NetHandle *netH
 
 **Description**
 
-Callback invoked when network connection properties change.
+Defines the callback invoked when network connection properties change.
 
 **Since**: 12
 
@@ -267,7 +289,7 @@ typedef void (*OH_NetConn_NetLost)(NetConn_NetHandle *netHandle)
 
 **Description**
 
-Callback invoked when the network is disconnected.
+Defines the callback invoked when the network is disconnected.
 
 **Since**: 12
 
@@ -286,7 +308,7 @@ typedef void (*OH_NetConn_NetUnavailable)(void)
 
 **Description**
 
-Callback invoked when the network is unavailable. This callback is triggered when the network is not activated within the specified timeout interval. If the timeout interval is not set, this callback is not triggered.
+Defines the callback invoked when the network is unavailable. This callback is triggered when the network is not activated within the specified timeout interval. If the timeout interval is not set, this callback is not triggered.
 
 **Since**: 12
 
@@ -298,7 +320,7 @@ typedef void (*OH_NetConn_NetBlockStatusChange)(NetConn_NetHandle *netHandle, bo
 
 **Description**
 
-Callback invoked when the network blocking status changes.
+Defines the callback invoked when the network blocking status changes.
 
 **Since**: 12
 

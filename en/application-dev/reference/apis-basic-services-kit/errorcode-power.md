@@ -5,7 +5,7 @@
 <!--Owner: @zhang-yinglie; @volcano_wang-->
 <!--Designer: @wangyantian0-->
 <!--Tester: @alien0208-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @fang-jinxu-->
 
 > **NOTE**
 >
@@ -92,3 +92,57 @@ The power mode fails to be set due to the power mode control rules.
 **Procedure**
 
 The current power mode cannot be switched to the target power mode. You can call the [getPowerMode](js-apis-power.md#powergetpowermode9) API to query the current power mode.
+
+## 4900400 Incorrect Input Parameter
+
+**Error Message**
+
+The input parameter is invalid.
+
+**Description**
+
+The input parameter is incorrect.
+
+**Possible Causes**
+
+The parameter is a null pointer or the parameter value is out of range.
+
+**Procedure**
+
+The input parameter value does not meet the requirements. Check whether the input parameter value is correct.
+
+## 4900501 Failure to Read the Power Supply Configuration Node
+
+**Error Message**
+
+Failed to read the power configuration value.
+
+**Description**
+
+The read operation fails.
+
+**Possible Causes**
+
+The node does not exist.
+
+**Procedure**
+
+Check whether the input parameter node exists.
+
+## 4900601 Failure to Write the Power Supply Configuration Node
+
+**Error Message**
+
+Failed to write the power configuration value.
+
+**Description**
+
+The write operation fails.
+
+**Possible Causes**
+
+The node does not exist.
+
+**Procedure**
+
+Check whether the input parameter node exists.

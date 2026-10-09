@@ -14,7 +14,7 @@ As a bridge between the AI inference engine and acceleration chip, Neural Networ
 This topic uses the `Add` single-operator model shown in Figure 1 as an example to describe the NNRt development process. The `Add` operator involves two inputs, one parameter, and one output. Wherein, the `activation` parameter is used to specify the type of the activation function in the `Add` operator.
 
 **Figure 1** Add single-operator model<br>
-!["Single Add operator model"](figures/neural_network_runtime.png)
+!["Single Add operator model"](figures/neural-network-runtime.png)
 
 ## Preparing the Environment
 

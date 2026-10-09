@@ -1,8 +1,8 @@
 # Enums
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -101,8 +101,8 @@
 | HDMI<sup>19+</sup>        | 27 | HDMI设备（例如HDMI、ARC、eARC等）。           |
 | LINE_DIGITAL<sup>19+</sup>        | 28 | 有线数字设备（例如S/PDIF等）。           |
 | REMOTE_DAUDIO<sup>18+</sup>        | 29 | 分布式设备。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| HEARING_AID<sup>20+</sup>        | 30 | 助听器设备。 |
-| NEARLINK<sup>20+</sup>        | 31 | 星闪设备。 |
+| HEARING_AID<sup>20+</sup>        | 30 | 助听器设备。<br>该类型默认以`BLUETOOTH_SCO`作为匿名类型返回。从API版本26.0.0开始，如需获取真实设备类型，可先调用[declareDeviceTypesCompatibility](./arkts-apis-audio-AudioRoutingManager.md#declaredevicetypescompatibility)进行设备类型兼容声明。 |
+| NEARLINK<sup>20+</sup>        | 31 | 星闪设备。<br>该类型默认以`BLUETOOTH_SCO`作为匿名类型返回。从API版本26.0.0开始，如需获取真实设备类型，可先调用[declareDeviceTypesCompatibility](./arkts-apis-audio-AudioRoutingManager.md#declaredevicetypescompatibility)进行设备类型兼容声明。 |
 | SYSTEM_PRIVATE<sup>22+</sup> | 200 | 系统私有设备（由于该设备在系统中属于私有设备，因此应用程序可以忽略该设备）。 |
 | DEFAULT<sup>9+</sup> | 1000   | 默认设备类型。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 
@@ -118,6 +118,22 @@
 | PREFERRED_DEFAULT | 1      | 更偏好使用蓝牙或星闪录音，是否使用低延迟或高质量录音取决于系统。 |
 | PREFERRED_LOW_LATENCY  | 2      | 更偏好使用蓝牙或星闪低延迟模式进行录音。 |
 | PREFERRED_HIGH_QUALITY | 3      | 更偏好使用蓝牙或星闪高质量模式进行录音。 |
+
+## NoiseReductionMode
+
+表示录音降噪模式的枚举。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+| 名称 | 值 | 说明 |
+| :--- | :--- | :--- |
+| FIDELITY | 0 | 保真模式，不进行降噪。 |
+| PURE_VOCALS | 1 | 纯人声模式，强降噪。 |
+| STANDARD | 2 | 标准模式，弱降噪。 |
 
 ## CommunicationDeviceType<sup>9+</sup>
 
@@ -204,20 +220,21 @@
 
 | 名称              |  值    | 说明            |
 | ----------------- | ------ | --------------- |
-| SAMPLE_RATE_8000  | 8000   | 采样率为8000。  |
-| SAMPLE_RATE_11025 | 11025  | 采样率为11025。 |
-| SAMPLE_RATE_12000 | 12000  | 采样率为12000。 |
-| SAMPLE_RATE_16000 | 16000  | 采样率为16000。 |
-| SAMPLE_RATE_22050 | 22050  | 采样率为22050。 |
-| SAMPLE_RATE_24000 | 24000  | 采样率为24000。 |
-| SAMPLE_RATE_32000 | 32000  | 采样率为32000。 |
-| SAMPLE_RATE_44100 | 44100  | 采样率为44100。 |
-| SAMPLE_RATE_48000 | 48000  | 采样率为48000。 |
-| SAMPLE_RATE_64000 | 64000  | 采样率为64000。 |
-| SAMPLE_RATE_88200<sup>12+</sup> | 88200  | 采样率为88200。 |
-| SAMPLE_RATE_96000 | 96000  | 采样率为96000。 |
-| SAMPLE_RATE_176400<sup>12+</sup> | 176400  | 采样率为176400。 |
-| SAMPLE_RATE_192000<sup>12+</sup> | 192000  | 采样率为192000。 |
+| SAMPLE_RATE_8000  | 8000   | 采样率为8000。单位为赫兹（Hz）。  |
+| SAMPLE_RATE_11025 | 11025  | 采样率为11025。单位为赫兹（Hz）。 |
+| SAMPLE_RATE_12000 | 12000  | 采样率为12000。单位为赫兹（Hz）。 |
+| SAMPLE_RATE_16000 | 16000  | 采样率为16000。单位为赫兹（Hz）。 |
+| SAMPLE_RATE_22050 | 22050  | 采样率为22050。单位为赫兹（Hz）。 |
+| SAMPLE_RATE_24000 | 24000  | 采样率为24000。单位为赫兹（Hz）。 |
+| SAMPLE_RATE_32000 | 32000  | 采样率为32000。单位为赫兹（Hz）。 |
+| SAMPLE_RATE_44100 | 44100  | 采样率为44100。单位为赫兹（Hz）。 |
+| SAMPLE_RATE_48000 | 48000  | 采样率为48000。单位为赫兹（Hz）。 |
+| SAMPLE_RATE_64000 | 64000  | 采样率为64000。单位为赫兹（Hz）。 |
+| SAMPLE_RATE_88200<sup>12+</sup> | 88200  | 采样率为88200。单位为赫兹（Hz）。 |
+| SAMPLE_RATE_96000 | 96000  | 采样率为96000。单位为赫兹（Hz）。 |
+| SAMPLE_RATE_176400<sup>12+</sup> | 176400  | 采样率为176400。单位为赫兹（Hz）。 |
+| SAMPLE_RATE_192000<sup>12+</sup> | 192000  | 采样率为192000。单位为赫兹（Hz）。 |
+| SAMPLE_RATE_384000 | 384000  | 采样率为384000。单位为赫兹（Hz）<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## AudioEncodingType<sup>8+</sup>
 
@@ -389,7 +406,7 @@
 
 当用户监听到音频中断（即收到[InterruptEvent](arkts-apis-audio-i.md#interruptevent9)事件）时，获取此信息。
 
-此类型表示音频打断是否已由系统强制执行，具体操作信息（如音频暂停、停止等）可通过[InterruptHint](#interrupthint)获取。关于音频打断策略的详细说明可参考文档[音频焦点和音频会话介绍](../../media/audio/audio-playback-concurrency.md)。
+此类型表示音频打断是否已由系统强制执行，具体操作信息（如音频暂停、停止等）可通过[InterruptHint](#interrupthint)获取。关于音频打断策略的详细说明可参考文档[音频焦点介绍](../../media/audio/audio-playback-concurrency.md)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -408,7 +425,7 @@
 
 此类型表示根据焦点策略，对音频流执行的具体操作（如暂停、调整音量等）。
 
-可以结合InterruptEvent中的[InterruptForceType](#interruptforcetype9)信息，判断该操作是否已由系统强制执行。详情请参阅文档[音频焦点和音频会话介绍](../../media/audio/audio-playback-concurrency.md)。
+可以结合InterruptEvent中的[InterruptForceType](#interruptforcetype9)信息，判断该操作是否已由系统强制执行。详情请参阅文档[音频焦点介绍](../../media/audio/audio-playback-concurrency.md)。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
@@ -478,11 +495,13 @@
 
 表示输出设备变更后推荐操作的枚举。
 
+常见场景示例：耳机设备和外放设备之间进行切换。当佩戴耳机时，从外放设备切换到耳机设备，系统会推荐继续播放，提示应用无需停止当前播放。当摘下耳机设备切换到外放设备时，系统会推荐停止播放。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
 | 名称                                        |  值     | 说明              |
 |:------------------------------------------| :----- |:----------------|
-| DEVICE_CHANGE_RECOMMEND_TO_CONTINUE | 0 | 推荐继续播放。           |
+| DEVICE_CHANGE_RECOMMEND_TO_CONTINUE | 0 | 推荐继续播放（该事件作为播放维持提示，作用是告知应用本次设备变动音频无需停止播放，但‌不可将其作为启动音频播放的判断依据）。           |
 | DEVICE_CHANGE_RECOMMEND_TO_STOP | 1 | 推荐停止播放。         |
 
 ## DeviceChangeType
@@ -517,11 +536,43 @@
 | SOURCE_TYPE_MIC                              | 0      | Mic音频源。<br/>**系统能力：** SystemCapability.Multimedia.Audio.Core |
 | SOURCE_TYPE_VOICE_RECOGNITION<sup>9+</sup>   | 1      | 语音识别源。<br/>**系统能力：** SystemCapability.Multimedia.Audio.Core  |
 | SOURCE_TYPE_PLAYBACK_CAPTURE<sup>(deprecated)</sup>   | 2 | 播放音频流（内录）录制音频源。<br/>**系统能力：** SystemCapability.Multimedia.Audio.PlaybackCapture <br/> 从API version 10开始支持，从API version 12开始废弃，建议使用[录屏接口AVScreenCapture](../apis-media-kit/capi-avscreencapture.md)替代。  |
-| SOURCE_TYPE_VOICE_COMMUNICATION              | 7      | 语音通话场景的音频源（单独启动录制不会开启3A算法，需同时使用[STREAM_USAGE_VOICE_COMMUNICATION](#streamusage)或[STREAM_USAGE_VIDEO_COMMUNICATION](#streamusage)类型的AudioRender起播才会触发开启3A算法）。<br/>**系统能力：** SystemCapability.Multimedia.Audio.Core |
+| SOURCE_TYPE_VOICE_COMMUNICATION              | 7      | 语音通话场景的音频源。该流类型启动录音时，会触发开启3A算法。<br/>**系统能力：** SystemCapability.Multimedia.Audio.Core |
 | SOURCE_TYPE_VOICE_MESSAGE<sup>12+</sup>      | 10     | 短语音消息的音频源。<br/>**系统能力：** SystemCapability.Multimedia.Audio.Core |
 | SOURCE_TYPE_CAMCORDER<sup>13+</sup>          | 13     | 录像的音频源。<br/>**系统能力：** SystemCapability.Multimedia.Audio.Core |
 | SOURCE_TYPE_UNPROCESSED<sup>14+</sup>     | 14 |  麦克风纯净录音的音频源（系统不做任何算法处理）。<br/>**系统能力：** SystemCapability.Multimedia.Audio.Core |
 | SOURCE_TYPE_LIVE<sup>20+</sup>     | 17 |  直播场景的音频源，在支持的设备上会提供系统回声消除能力。<br/>**系统能力：** SystemCapability.Multimedia.Audio.Core |
+
+## AudioPlaybackCaptureMode
+
+表示内录（录制设备内部应用的声音）模式的枚举。不同模式决定可录制的目标播放流类型。支持通过按位或组合枚举值，当前仅支持MODE_DEFAULT（0x0）、MODE_MEDIA（0x1）、MODE_EXCLUDING_SELF（0x8000），以及MODE_MEDIA和MODE_EXCLUDING_SELF的按位或组合（0x8001）。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.PlaybackCapture
+
+| 名称 | 值 | 说明 |
+| :--- | :--- | :--- |
+| MODE_DEFAULT | 0x0 | 默认模式。录制大部分音频流，但不包括提示音流和隐私流。 |
+| MODE_MEDIA | 0x1 | 媒体模式。录制媒体、语音消息和未知类型的音频流。 |
+| MODE_EXCLUDING_SELF | 0x8000 | 排除自身模式。录制除应用自身播放的音频以外的音频流。 |
+
+## PlaybackCaptureStartState
+
+表示调用[requestPlaybackCaptureStart](arkts-apis-audio-AudioCapturer.md#requestplaybackcapturestart)后异步返回的内录启动状态的枚举。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.PlaybackCapture
+
+| 名称 | 值 | 说明 |
+| :--- | :--- | :--- |
+| STATE_SUCCESS | 0 | 启动内录成功。 |
+| STATE_FAILED | 1 | 启动内录失败。原因是音频打断请求被拒绝或发生系统内部错误。 |
+| STATE_NOT_AUTHORIZED | 2 | 用户未授权，启动内录失败。 |
 
 ## AudioScene<sup>8+</sup>
 
@@ -539,6 +590,8 @@
 ## AudioConcurrencyMode<sup>12+</sup>
 
 表示音频并发模式的枚举。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -580,7 +633,7 @@
 
 此类型表示根据焦点策略对音频会话执行的操作，包括暂停、调整音量等。
 
-详情请参阅文档[音频焦点和音频会话介绍](../../media/audio/audio-playback-concurrency.md)。
+详情请参阅文档[音频会话管理](../../media/audio/audio-session-management.md)。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -594,6 +647,8 @@
 | AUDIO_SESSION_STATE_CHANGE_HINT_UNDUCK | 5      | 提示音频会话躲避结束，恢复音量播放。<br/>如果已启用[enableMuteSuggestionWhenMixWithOthers](./arkts-apis-audio-AudioSessionManager.md#enablemutesuggestionwhenmixwithothers23)，此时可取消静音。 |
 | AUDIO_SESSION_STATE_CHANGE_HINT_MUTE_SUGGESTION<sup>23+</sup>    | 6      |  静音播放建议。<br/>当其他应用程序开始播放不可混音的音频时，应用程序可以自行决定是否静音。 <br/> **模型约束：** 此接口仅可在Stage模型下使用。|
 | AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE_SUGGESTION<sup>23+</sup>  | 7      | 取消静音播放建议。<br/>当其他应用程序不可混音的音频已结束，该应用程序可自行决定是否取消静音。 <br/> **模型约束：** 此接口仅可在Stage模型下使用。 |
+| AUDIO_SESSION_STATE_CHANGE_HINT_MUTE<sup>24+</sup>    | 8      |  提示音频会话静音。<br/>该提示仅在以下条件满足后才会收到：通过接口[setAudioSessionBehavior](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionbehavior24)设置参数[AudioSessionBehaviorFlags](#audiosessionbehaviorflags24).MUTE_WHEN_INTERRUPTED，并已调用[setAudioSessionScene](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20)，且音频会话已激活。<br/> **模型约束：** 此接口仅可在Stage模型下使用。 |
+| AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE<sup>24+</sup>  | 9      | 提示音频会话解除静音，恢复播放。<br/>该提示仅在以下条件满足后才会收到：通过接口[setAudioSessionBehavior](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionbehavior24)设置参数[AudioSessionBehaviorFlags](#audiosessionbehaviorflags24).MUTE_WHEN_INTERRUPTED，并已调用[setAudioSessionScene](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20)，且音频会话已激活。<br/> **模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## AudioDataCallbackResult<sup>12+</sup>
 
@@ -645,7 +700,7 @@
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，无替代接口。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[InterruptType](#interrupttype)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
@@ -672,7 +727,7 @@
 
 | 名称               | 值     | 说明             |
 | ------------------ | ------ | ---------------- |
-| UNAVAILABLE_DEVICE | -2     | 表示返听由于输入\输出设备而不可用（如出声设备变更）。    |
+| UNAVAILABLE_DEVICE | -2     | 表示返听由于输入/输出设备而不可用（如出声设备变更）。    |
 | UNAVAILABLE_SCENE  | -1     | 表示返听由于音频场景而不可用（如音频焦点、低时延管控）。 |
 | AVAILABLE_IDLE     |  0     | 表示返听可用。     |
 | AVAILABLE_RUNNING  |  1     | 表示返听运行中。   |
@@ -701,3 +756,17 @@
 | FLAT   | 1     | 保持原始声音，不进行均衡调节。|
 | FULL   | 2     | 使人声更饱满（默认的均衡器类型）。|
 | BRIGHT | 3     | 使人声更明亮。|
+
+## AudioSessionBehaviorFlags<sup>24+</sup>
+
+表示音频会话行为的枚举。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+| 名称                   | 值 | 说明      |
+| :--------------------- |:--|:--------|
+| DEFAULT_BEHAVIOR | 0x00000000 | 默认行为，用于清空音频会话行为设置。 |
+| MUTE_WHEN_INTERRUPTED | 0x00000002 | 当系统需要停止或暂停音频流时，执行强制静音替代。<br/>调用[setAudioSessionBehavior](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionbehavior24)接口配置该行为时，必须同步调用[setAudioSessionScene](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20)接口，否则配置将无法生效。<br/>在音频会话场景下，当音频流静音或恢复时，应用将分别收到[AudioSessionStateChangeHint](./arkts-apis-audio-e.md#audiosessionstatechangehint20).AUDIO_SESSION_STATE_CHANGE_HINT_MUTE与[AudioSessionStateChangeHint](./arkts-apis-audio-e.md#audiosessionstatechangehint20).AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE的通知。<br/>在AudioRenderer和AudioCapturer场景下，当音频流静音或恢复时，应用将分别收到[InterruptHint](#interrupthint).INTERRUPT_HINT_MUTE与[InterruptHint](#interrupthint).INTERRUPT_HINT_UNMUTE的通知。<br/>**注意：** 该标志不能与PAUSE_WHEN_INTERRUPTED共存，若同时设置，仅PAUSE_WHEN_INTERRUPTED生效。 |
+| PAUSE_WHEN_INTERRUPTED | 0x00000004 | 当系统需要停止音频流时，执行暂停替代。<br/>调用[setAudioSessionBehavior](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionbehavior24)接口配置该行为时，必须同步调用[setAudioSessionScene](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20)接口，否则配置将无法生效。<br/>在音频会话场景下，当音频流暂停或恢复时，应用将分别收到[AudioSessionStateChangeHint](./arkts-apis-audio-e.md#audiosessionstatechangehint20).AUDIO_SESSION_STATE_CHANGE_HINT_PAUSE与[AudioSessionStateChangeHint](./arkts-apis-audio-e.md#audiosessionstatechangehint20).AUDIO_SESSION_STATE_CHANGE_HINT_RESUME的通知。<br/>在AudioRenderer和AudioCapturer场景下，当音频流暂停或恢复时，应用将分别收到[InterruptHint](#interrupthint).INTERRUPT_HINT_PAUSE与[InterruptHint](#interrupthint).INTERRUPT_HINT_RESUME的通知。<br/>**注意：** 该标志不能与MUTE_WHEN_INTERRUPTED共存，若同时设置，仅该标志生效。<br/>**起始版本：** 26.0.0 |

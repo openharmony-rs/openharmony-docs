@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -18,7 +18,7 @@
 
 自定义组件中的变量，必须使用装饰器装饰，才能成为状态变量，状态变量的改变会引起UI的渲染刷新。如果不使用状态变量，UI只能在初始化时渲染，后续将不会再刷新。下图展示了State和View（UI）之间的关系。
 
-![zh-cn_image_0000001562352677](figures/zh-cn_image_0000001562352677.png)
+![zh-cn_image_0000001562352677](figures/State-UI-relationship.png)
 
 - View(UI)：UI渲染，指将build方法内的UI描述和\@Builder装饰的方法内的UI描述映射到界面。
 
@@ -53,7 +53,7 @@ ArkUI状态管理V1提供了多种装饰器，通过使用这些装饰器，状�
 
 图示如下，具体装饰器的介绍，可详见<!--RP1-->[管理组件拥有的状态](arkts-state.md)<!--RP1End-->和<!--RP2-->[管理应用拥有的状态](arkts-application-state-management-overview.md)<!--RP2End-->。开发者可以利用这些能力来实现数据和UI的联动。
 
-![zh-cn_image_0000001502704640](figures/zh-cn_image_0000001502704640.png)
+![zh-cn_image_0000001502704640](figures/V1-Decorators.png)
 
 上图中，Components部分的装饰器为组件级别的状态管理，Application部分为应用的状态管理。开发者可以通过[@StorageLink](arkts-appstorage.md#storagelink)/[@LocalStorageLink](arkts-localstorage.md#localstoragelink)实现应用和组件状态的双向同步，通过[@StorageProp](arkts-appstorage.md#storageprop)/[@LocalStorageProp](arkts-localstorage.md#localstorageprop)实现应用和组件状态的单向同步。
 
@@ -132,7 +132,7 @@ ArkUI状态管理V1提供了多种装饰器，通过使用这些装饰器，状�
 
 状态管理（V2）提供了一套全新的装饰器。
 
-- [\@ObservedV2](arkts-new-observedV2-and-trace.md)：\@ObservedV2装饰器装饰class，使得被装饰的class具有深度监听的能力。\@ObservedV2和\@Trace配合使用可以使class中的属性具有深度观测的能力。
+- [\@ObservedV2](arkts-new-observedV2-and-trace.md)：\@ObservedV2装饰器装饰class，表明当前class为可观察对象，本身无观察能力。\@ObservedV2和\@Trace配合使用可以使class中的属性具有深度观察的能力。
 
 - [\@Trace](arkts-new-observedV2-and-trace.md)：\@Trace装饰器装饰被\@ObservedV2装饰的class中的属性，被装饰的属性具有深度观测的能力。
 
@@ -159,7 +159,7 @@ ArkUI状态管理V1提供了多种装饰器，通过使用这些装饰器，状�
 | V1能力   | V2能力                                             | 说明                                                         |
 | ------------ | ------------------------------------------------------ | ------------------------------------------------------------ |
 | \@Observed   | \@ObservedV2                                           | 表明当前对象为可观察对象。但两者能力并不相同。<br/>\@Observed可观察第一层的属性，需要搭配\@ObjectLink使用才能生效。 <br/>\@ObservedV2本身无观察能力，仅代表当前class可被观察，如果要观察其属性，需要搭配\@Trace使用。 |
-| \@Track      | \@Trace                                                | V1装饰器\@Track为精确观察，可以不依赖@Observed单独使用。不使用则无法做到类属性的精准观察。<br/>V2\@Trace装饰的属性可以被精确跟踪观察。 |
+| \@Track      | \@Trace                                                | V1装饰器\@Track为精确观察，可以不依赖@Observed单独使用。不使用@Track则无法做到类属性的精准观察。<br/>V2\@Trace装饰的属性可以被精确跟踪观察。 |
 | \@Component  | \@ComponentV2                                          | \@Component为搭配V1状态变量使用的自定义组件装饰器。<br/>\@ComponentV2为搭配V2状态变量使用的自定义组件装饰器。 |
 | \@State      | 无外部初始化：\@Local<br/>外部初始化一次：\@Param\@Once | \@State和\@Local类似都是数据源的概念，区别是\@State可以外部传入初始化，而\@Local无法外部传入初始化。 |
 | \@Prop       | \@Param                                                | \@Prop和\@Param类似都是自定义组件参数的概念。当输入参数为复杂类型时，\@Prop为深拷贝，\@Param为引用。 |

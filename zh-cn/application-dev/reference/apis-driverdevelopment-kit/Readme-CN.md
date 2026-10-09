@@ -1,22 +1,22 @@
 # Driver Development Kit（驱动开发服务）
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
 
 - ArkTS API<!--driver-development-arkts-->
-  - [@ohos.app.ability.DriverExtensionAbility (驱动程序扩展能力)](js-apis-app-ability-driverExtensionAbility.md)
+  - [@ohos.app.ability.DriverExtensionAbility (驱动扩展能力)](js-apis-app-ability-driverExtensionAbility.md)
   - [@ohos.driver.deviceManager (外设管理)](js-apis-driver-deviceManager.md)
   <!--Del-->
   - [@ohos.driver.deviceManager (外设管理)(系统接口)](js-apis-driver-deviceManager-sys.md)
   <!--DelEnd-->
   - application<!--driver-development-arkts-application-->
-    - [DriverExtensionContext](js-apis-inner-application-driverExtensionContext.md)
+    - [DriverExtensionContext (定义驱动扩展的上下文)](js-apis-inner-application-driverExtensionContext.md)
 - C API<!--driver-development-c-->
   - 模块<!--driver-development-module-->
-    - [BaseDdk](capi-baseddk.md)
+    - [Ddk](capi-baseddk.md)
     - [HidDdk](capi-hidddk.md)
     - [ScsiPeripheralDDK](capi-scsiperipheralddk.md)
     - [UsbDdk](capi-usbddk.md)
@@ -69,6 +69,7 @@
     - [UsbRequestPipe](capi-usbddk-usbrequestpipe.md)
     - [UsbDeviceMemMap](capi-usbddk-usbdevicememmap.md)
     - [Usb_DeviceArray](capi-usbddk-usb-devicearray.md)
+    - [Usb_NonRootHubArray](capi-usbddk-usb-nonroothubarray.md)
     - [UsbSerial_Params](capi-serialddk-usbserial-params.md)
     - [UsbSerial_Device](capi-serialddk-usbserial-devicehandle.md)
 - 错误码<!--driver-development-errcode-->

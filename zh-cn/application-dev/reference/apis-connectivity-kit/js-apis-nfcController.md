@@ -2,7 +2,7 @@
 
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
-<!--Owner: @amunra03-->
+<!--Owner: @yh1719-->
 <!--Designer: @wenxiaolin-->
 <!--Tester: @zs_111-->
 <!--Adviser: @zhang_yixin13-->
@@ -41,7 +41,7 @@ isNfcAvailable(): boolean
 查询设备是否有NFC能力。
 
 > **说明：**
-> 从 API version 7 开始支持，从 API version 9 开始废弃，建议使用[canIUse("SystemCapability.Communication.NFC.Core")](../common/init.md#caniuse)替代。
+> 从API version 7开始支持，从API version 9开始废弃，API version 26前建议使用[canIUse("SystemCapability.Communication.NFC.Core")](../common/syscap-ndk-8h.md#caniuse) && nfcController.isNfcAvailable共同判断设备是否支持NFC，从API version 26开始，建议使用[canIUse("SystemCapability.Communication.NFC.Core")](../common/syscap-ndk-8h.md#caniuse) && [nfcController.isNfcSupported](#nfccontrollerisnfcsupported) 替代。
 
 **系统能力：** SystemCapability.Communication.NFC.Core
 
@@ -51,6 +51,23 @@ isNfcAvailable(): boolean
 | -------- | -------- |
 | boolean | true: 设备具备NFC能力，&nbsp;false: 设备不具备NFC能力。 |
 
+## nfcController.isNfcSupported
+
+isNfcSupported(): boolean
+
+查询设备是否有NFC能力。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Communication.NFC.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| **类型** | **说明** |
+| -------- | -------- |
+| boolean | true: 设备具备NFC能力，&nbsp;false: 设备不具备NFC能力。 |
 
 ## nfcController.openNfc<sup>(deprecated)</sup>
 
@@ -91,6 +108,9 @@ enableNfc(): void
 |801 | Capability not supported.          |
 | 3100101 | The NFC state is abnormal in the service. |
 
+**示例：**
+示例参见[off](#nfccontrolleroffnfcstatechange)接口。
+
 ## nfcController.closeNfc<sup>(deprecated)</sup>
 
 closeNfc(): boolean
@@ -130,6 +150,9 @@ disableNfc(): void
 |801 | Capability not supported.          |
 | 3100101 | The NFC state is abnormal in the service. |
 
+**示例：**
+示例参见[off](#nfccontrolleroffnfcstatechange)接口。
+
 ## nfcController.isNfcOpen
 
 isNfcOpen(): boolean
@@ -145,6 +168,9 @@ isNfcOpen(): boolean
 | **类型** | **说明**                            |
 | -------- | ----------------------------------- |
 | boolean  | true: NFC是打开的，&nbsp;false: NFC是关闭的。 |
+
+**示例：**
+示例参见[off](#nfccontrolleroffnfcstatechange)接口。
 
 ## nfcController.getNfcState
 
@@ -162,6 +188,16 @@ getNfcState(): [NfcState](#nfcstate)
 | -------- | ---------------------- |
 | [NfcState](#nfcstate) | NFC状态值，详细请见[NfcState](#nfcstate)枚举值。 |
 
+**示例：**
+
+```js
+import { nfcController } from '@kit.ConnectivityKit';
+
+// 查询nfc状态
+let nfcState: nfcController.NfcState = nfcController.getNfcState();
+console.info("nfcController on callback nfcstate: " + nfcState);
+```
+
 ## nfcController.on('nfcStateChange')
 
 on(type: 'nfcStateChange', callback: Callback&lt;[NfcState](#nfcstate)&gt;): void
@@ -172,12 +208,15 @@ on(type: 'nfcStateChange', callback: Callback&lt;[NfcState](#nfcstate)&gt;): voi
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**参数**
+**参数：**
  
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填"nfcStateChange"字符串。 |
 | callback | Callback&lt;[NfcState](#nfcstate)&gt; | 是 | 回调函数，返回NFC状态的枚举值。 |
+
+**示例：**
+示例参见[off](#nfccontrolleroffnfcstatechange)接口。
 
 ## nfcController.off('nfcStateChange')
 
@@ -189,26 +228,26 @@ off(type: 'nfcStateChange', callback?: Callback&lt;[NfcState](#nfcstate)&gt;): v
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
-**参数**
+**参数：**
 
 | **参数名** | **类型** | **必填** | **说明** |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 固定填"nfcStateChange"字符串。 |
 | callback | Callback&lt;[NfcState](#nfcstate)&gt; | 否 | NFC状态改变回调函数，可以空缺不填。如果callback不填，将取消注册该事件关联的所有回调函数。 |
   
-**示例**
+**示例：**
 
 ```js
 import { nfcController } from '@kit.ConnectivityKit';
 
 // 注册回调以接收nfc状态更改通知
-nfcController.on("nfcStateChange", (nfcState : number)=> {
+nfcController.on("nfcStateChange", (nfcState : number) => {
   console.info("nfcController on callback nfcState: " + nfcState);
 });
 
-// 打开nfc需要权限: ohos.permission.MANAGE_SECURE_SETTINGS（此权限仅系统应用可申请）
+// 打开nfc需要权限：ohos.permission.MANAGE_SECURE_SETTINGS（此权限仅系统应用可申请）
 if (!nfcController.isNfcOpen()) {
-  // 从api9开始,使用'enableNfc'打开nfc
+  // 从api9开始，使用'enableNfc'打开nfc
   try {
     nfcController.enableNfc();
     console.info("nfcController enableNfc success");
@@ -219,9 +258,9 @@ if (!nfcController.isNfcOpen()) {
   console.info("nfcController NFC has been opened");
 }
 
-// 关闭nfc需要权限: ohos.permission.MANAGE_SECURE_SETTINGS（此权限仅系统应用可申请）
+// 关闭nfc需要权限：ohos.permission.MANAGE_SECURE_SETTINGS（此权限仅系统应用可申请）
 if (nfcController.isNfcOpen()) {
-  // 从api9开始,使用'disableNfc'关闭nfc
+  // 从api9开始，使用'disableNfc'关闭nfc
   try {
     nfcController.disableNfc();
     console.info("nfcController disableNfc success");

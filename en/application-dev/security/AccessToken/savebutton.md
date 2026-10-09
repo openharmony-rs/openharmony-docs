@@ -25,14 +25,14 @@ The following figure shows the effect of the **SaveButton** component.
 
 - The SaveButton component can be used only in the [main window and subwindows of the application](../../reference/apis-arkui/arkts-apis-window-e.md#windowtype7) and cannot be used in [UIExtension](../../reference/apis-arkui/js-apis-arkui-uiExtension.md).
 
-- Each time the component is tapped, the application obtains only one-time perform for API calling.
+- One click of the control by the user grants only one authorized call.
 
 - The **SaveButton** component must be visible and legible to users. You need to properly configure the component attributes such as the size and color to prevent authorization failures. If the authorization fails due to invalid component style, check the device error logs.
 
 - Request the ohos.permission.CUSTOMIZE_SAVE_BUTTON permission from AppGallery Connect if you need to customize the icon and text of the **SaveButton** component.
 
   > **NOTE**
-  > The ohos.permission.CUSTOMIZE_SAVE_BUTTON permission is restricted and is available only when the default style cannot meet service requirements. For details about how to request this permission, see <!--RP1-->[Requesting Restricted Permissions](declare-permissions-in-acl.md)<!--RP1End-->.
+  > ohos.permission.CUSTOMIZE_SAVE_BUTTON is available only when the default style cannot meet service requirements. For details about how to apply for the permission, see [Requesting Restricted Permissions](declare-permissions-in-acl.md).
 
 ## How to Develop
 
@@ -47,7 +47,7 @@ For example, to save the image in the dialog box shown above, the application on
 
 2. Set the image asset and add the **SaveButton** component.
    
-   **SaveButton** is a button-like security component consisting of an icon, text, and background. The background is mandatory, and at least one of the icon and text must be selected. You can select icons and text from the existing options or customize them using [setIcon](../../reference/apis-arkui/arkui-ts/ts-security-components-savebutton.md) and [setText](../../reference/apis-arkui/arkui-ts/ts-security-components-savebutton.md). When declaring the API for creating a security component, you can determine whether to pass in parameters. If parameters are passed in, the component is created based on the specified parameters. If no parameter is passed in, a component with default icon, text, and background is created.
+   **SaveButton** is a button-like security component consisting of an icon, text, and background. The background is mandatory, and at least one of the icon and text must be selected. You can select icons and text from the existing options or customize them using [setIcon](../../reference/apis-arkui/arkui-ts/ts-security-components-savebutton.md#seticon20) and [setText](../../reference/apis-arkui/arkui-ts/ts-security-components-savebutton.md#settext20). When declaring the API for creating a security component, you can determine whether to pass in parameters. If no parameter is passed, a button containing the icon, text, and background is created by default. If parameters are passed, a button is created based on the parameters, excluding the unconfigured elements.
 
    The following example uses the default parameters. For details, see [SaveButton](../../reference/apis-arkui/arkui-ts/ts-security-components-savebutton.md). In addition, all security components inherit the [Security Component Universal Attributes](../../reference/apis-arkui/arkui-ts/ts-securitycomponent-attributes.md), which can be used to customize styles.
    
@@ -65,7 +65,7 @@ For example, to save the image in the dialog box shown above, the application on
    async function savePhotoToGallery(context: common.UIAbilityContext) {
      let helper = photoAccessHelper.getPhotoAccessHelper(context);
      try {
-       // Call createAsset() within 1 minute after onClick is triggered to create an image file. After 1 minute have elapsed, the permission for calling createAsset is revoked.
+       // Call createAsset() within 1 minute after onClick is triggered to create an image file. After 1 minute has elapsed, the permission for calling createAsset is revoked.
        let uri = await helper.createAsset(photoAccessHelper.PhotoType.IMAGE, 'jpg');
        // Open the file based on its URI. The write process is not time bound.
        let file = await fileIo.open(uri, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);

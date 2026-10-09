@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @mayaolll-->
-<!--Designer: @jiangdayuan-->
+<!--Designer: @fangzhiyuan1-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -105,7 +105,7 @@ The sequence of these lifecycle events is illustrated in the figure below.
 
 In addition, there are two special lifecycle callbacks:
 
-- **onResult**: invoked when you return from another **NavDestination** page by swiping left or right or by pressing the back button.
+- **onResult**: invoked when other **NavDestination** pages are popped, or when the user swipes left/right to return from another **NavDestination** page.
 - **onNewParam**: invoked when a **NavDestination** page that previously exists in the stack is moved to the top of the stack through [launchMode.MOVE_TO_TOP_SINGLETON](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#launchmode12) or [launchMode.POP_TO_SINGLETON](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#launchmode12).
 
 ## Page Listening and Query
@@ -146,5 +146,5 @@ To facilitate the decoupling of components from pages, custom components within 
   
   You can register a listener for **NavDestination** lifecycle changes using the [observer.on('navDestinationUpdate')](../reference/apis-arkui/js-apis-arkui-observer.md#uiobserveronnavdestinationupdate) API.
 
-  Alternatively, you can register a callback for page transition states through [observer.on('navDestinationSwitch')](../reference/apis-arkui/js-apis-arkui-observer.md#uiobserveronnavdestinationswitch12). This callback can be used to obtain page information during route changes using [NavDestinationSwitchInfo](../reference/apis-arkui/js-apis-arkui-observer.md#navdestinationswitchinfo12). This registration supports different scopes: [UIAbilityContext](../reference//apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) and [UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md).
+  Alternatively, you can register a callback for page transition states through [observer.on('navDestinationSwitch')](../reference/apis-arkui/js-apis-arkui-observer.md#uiobserveronnavdestinationswitch12). This callback can be used to obtain page information during route changes using [NavDestinationSwitchInfo](../reference/apis-arkui/js-apis-arkui-observer.md#navdestinationswitchinfo12). This registration supports different scopes: [UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) and [UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md).
   

@@ -4,11 +4,11 @@
 <!--Subsystem: Ability-->
 <!--Owner: @SKY2001-->
 <!--Designer: @yzkp-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 ```c
-typedef struct {...} NativeChildProcess_Options
+typedef struct NativeChildProcess_Options {...} NativeChildProcess_Options
 ```
 
 ## 概述

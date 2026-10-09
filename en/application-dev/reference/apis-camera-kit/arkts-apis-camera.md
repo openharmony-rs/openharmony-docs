@@ -16,6 +16,8 @@ This module contains the following classes:
 
 - [AutoDeviceSwitch](arkts-apis-camera-AutoDeviceSwitch.md) class, which provides the capabilities of checking the support for automatic camera switching and enabling or disabling automatic camera switching.
 - [AutoExposure](arkts-apis-camera-AutoExposure.md) class, which provides the capabilities related to the device's automatic exposure feature, including setting or querying the exposure value, metering point, and exposure compensation.
+- [Aperture](arkts-apis-camera-Aperture.md) class, which provides the capabilities related to the physical aperture.
+- [ApertureQuery](arkts-apis-camera-ApertureQuery.md) class, which provides the capabilities of querying the physical aperture.
 - [CameraInput](arkts-apis-camera-CameraInput.md) class, which provides the capabilities of enabling or disabling the camera switch and listening for input stream exceptions.
 - [CameraManager](arkts-apis-camera-CameraManager.md) class, which provides the capabilities of obtaining camera device objects, creating input/output streams and sessions, and registering or unregistering listeners for camera states.
 - [ColorManagement](arkts-apis-camera-ColorManagement.md) class, which provides the capabilities of checking the support for the color space and setting or querying color space parameters.
@@ -23,7 +25,15 @@ This module contains the following classes:
 - [Flash](arkts-apis-camera-Flash.md) class, which provides the capabilities of checking the support for flash functionality and manipulating the flash device.
 - [Focus](arkts-apis-camera-Focus.md) class, which provides the capabilities of checking the support for focus modes on the device and setting focus-related functionalities.
 - [Macro](arkts-apis-camera-Macro.md) class, which provides the capabilities of checking the support for macro photography and enabling macro photography.
+- [ManualExposure](arkts-apis-camera-ManualExposure.md) class, which provides the capabilities of manual exposure.
+- [ManualExposureQuery](arkts-apis-camera-ManualExposureQuery.md) class, which provides the capabilities of querying manual exposure.
+- [ManualFocusQuery](arkts-apis-camera-ManualFocusQuery.md) class, which provides the capabilities of querying manual focus.
+- [ManualFocus](arkts-apis-camera-ManualFocus.md) class, which provides the capabilities of manual focus.
+- [ManualIso](arkts-apis-camera-ManualIso.md) class, which provides the capabilities of manual ISO setting.
+- [ManualIsoQuery](arkts-apis-camera-ManualIsoQuery.md) class, which provides the capabilities of querying manual ISO setting.
 - [MetadataOutput](arkts-apis-camera-MetadataOutput.md) class, which provides the capabilities of registering or unregistering listeners for metadata and starting or stopping metadata streams.
+- [OIS](arkts-apis-camera-OIS.md) class, which provides the capabilities of optical image stabilization (OIS).
+- [OISQuery](arkts-apis-camera-OISQuery.md) class, which provides the capabilities of querying OIS.
 - [Photo](arkts-apis-camera-Photo.md) class, which is a full-quality image object containing complete information about a photo.
 - [PhotoOutput](arkts-apis-camera-PhotoOutput.md) class, which is used in photo sessions to provide photo-related capabilities, such as taking photos, enabling moving-photo capture, and obtaining photo rotation angles.
 - [PhotoSession](arkts-apis-camera-PhotoSession.md) class, which is a regular photo mode session class and provides the capabilities for pre-configuration and session state monitoring.

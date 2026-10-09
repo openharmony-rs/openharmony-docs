@@ -1,7 +1,7 @@
 # ArkWeb（方舟Web）
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @yp99ustc-->
+<!--Owner: @hwt00888022-->
 <!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
@@ -22,7 +22,11 @@
     - [Class (PrefetchOptions)](arkts-apis-webview-PrefetchOptions.md)
     - [Class (ProxyController)](arkts-apis-webview-ProxyController.md)
     - [Class (ProxyRule)](arkts-apis-webview-ProxyRule.md)
+    - [Class (SecurityParams)](arkts-apis-webview-SecurityParams.md)
     - [Class (WebviewController)](arkts-apis-webview-WebviewController.md)
+    - [AIPageCommand](arkts-apis-webview-AIPageCommand.md)
+    - [AIPageInteraction](arkts-apis-webview-AIPageInteraction.md)
+    - [AIPageResult](arkts-apis-webview-AIPageResult.md)
     - [Class (WebCookieManager)](arkts-apis-webview-WebCookieManager.md)
     - [Class (WebDataBase)](arkts-apis-webview-WebDataBase.md)
     - [Class (WebDownloadDelegate)](arkts-apis-webview-WebDownloadDelegate.md)
@@ -37,7 +41,6 @@
     - [Class (WebStorage)](arkts-apis-webview-WebStorage.md)  
     - [Class (UserAgentBrandVersion)](arkts-apis-webview-UserAgentBrandVersion.md)
     - [Class (UserAgentMetadata)](arkts-apis-webview-UserAgentMetadata.md)
-    - [Class (VerifyPinHandler)](arkts-basic-components-web-VerifyPinHandler.md)
     - [Interface (BackForwardList)](arkts-apis-webview-BackForwardList.md)
     - [Interface (NativeMediaPlayerBridge)](arkts-apis-webview-NativeMediaPlayerBridge.md)
     - [Interface (NativeMediaPlayerHandler)](arkts-apis-webview-NativeMediaPlayerHandler.md)
@@ -46,9 +49,9 @@
     - [Enums](arkts-apis-webview-e.md)
     - [Types](arkts-apis-webview-t.md)
   - [@ohos.web.netErrorList (ArkWeb网络协议栈错误列表)](arkts-apis-netErrorList.md)
-  - [@ohos.web.webNativeMessagingExtensionAbility](arkts-apis-web-webNativeMessagingExtensionAbility.md)
-  - [@ohos.web.webNativeMessagingExtensionContext](arkts-apis-web-webNativeMessagingExtensionContext.md)
-  - [@ohos.web.webNativeMessagingExtensionManager](arkts-apis-web-webNativeMessagingExtensionManager.md)
+  - [@ohos.web.WebNativeMessagingExtensionAbility (Web Native Messaging Extension Ability)](arkts-apis-web-webNativeMessagingExtensionAbility.md)
+  - [@ohos.web.WebNativeMessagingExtensionContext (Web Native Messaging Extension Context)](arkts-apis-web-webNativeMessagingExtensionContext.md)
+  - [@ohos.web.webNativeMessagingExtensionManager (Web Native Messaging Extension Manager)](arkts-apis-web-webNativeMessagingExtensionManager.md)
 - ArkTS 组件<!--arkweb-comp-->
   - Web<!--ts-basic-components-web-->
     - [组件描述](arkts-basic-components-web.md)
@@ -68,6 +71,7 @@
     - [Class (PermissionRequest)](arkts-basic-components-web-PermissionRequest.md)
     - [Class (ScreenCaptureHandler)](arkts-basic-components-web-ScreenCaptureHandler.md)
     - [Class (SslErrorHandler)](arkts-basic-components-web-SslErrorHandler.md)
+    - [Class (VerifyPinHandler)](arkts-basic-components-web-VerifyPinHandler.md)
     - [Class (WebContextMenuParam)](arkts-basic-components-web-WebContextMenuParam.md)
     - [Class (WebContextMenuResult)](arkts-basic-components-web-WebContextMenuResult.md)
     - [Class (WebCookie)](arkts-basic-components-web-WebCookie.md)
@@ -78,7 +82,7 @@
     - [Interfaces（其他）](arkts-basic-components-web-i.md)
     - [Enums](arkts-basic-components-web-e.md)
     - [Types](arkts-basic-components-web-t.md)
-    - [废弃的Class (WebController, deprecated)](arkts-basic-components-web-WebController.md)
+    - [Class (WebController)](arkts-basic-components-web-WebController.md)
 - C API<!--arkweb-c-->
   - 模块<!--arkweb-module-->
     - [Web](capi-web.md)
@@ -109,6 +113,7 @@
     - [ArkWeb_ProxyObjectWithResult](capi-web-arkweb-proxyobjectwithresult.md)
     - [ArkWeb_ControllerAPI](capi-web-arkweb-controllerapi.md)
     - [ArkWeb_ComponentAPI](capi-web-arkweb-componentapi.md)
+    - [ArkWeb_ErrorInfo_](capi-web-arkweb-errorinfo.md)
     - [ArkWeb_WebMessagePortAPI](capi-web-arkweb-webmessageportapi.md)
     - [ArkWeb_WebMessageAPI](capi-web-arkweb-webmessageapi.md)
     - [ArkWeb_CookieManagerAPI](capi-web-arkweb-cookiemanagerapi.md)

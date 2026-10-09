@@ -1,19 +1,18 @@
 # CanvasRenderingContext2D
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-
+<!-- md-trans-meta sourceCommit=276d60289816e1dd5baf9329b4a307375826cd4b translatedAt=2026-08-05T10:12:58.992Z pushedAt=2026-08-06T06:23:23.324Z -->
 
 Use **CanvasRenderingContext2D** to draw objects such as graphics, texts, line segments, and images on the **\<canvas>** component. For details, see [CanvasRenderingContext2D](../reference/apis-arkui/arkui-js/js-components-canvas-canvasrenderingcontext2d.md).
-
 
 ## Drawing Line Segments
 
 Use **moveTo** and **lineTo** to draw a line segment. Use the **closePath** method to end current path, obtaining a closed path. Set **quadraticCurveTo** (quadratic Bézier curve) or **bezierCurveTo** (cubic Bézier curve) to draw a graphic.
-
 
 ```html
 <!-- xxx.hml -->
@@ -28,7 +27,6 @@ Use **moveTo** and **lineTo** to draw a line segment. Use the **closePath** meth
   </select>
 </div>
 ```
-
 
 ```css
 /* xxx.css */
@@ -55,7 +53,6 @@ select {
     background-color: white;
 }
 ```
-
 
 ```js
 // xxx.js
@@ -186,7 +183,7 @@ export default {
             this.ctx.stroke();
             // Upper right
             this.ctx.beginPath();
-            // Distance between the internal angle and exterior angle at the intersection of lines
+            // Distance between the inner and outer corners at line intersections.
             this.ctx.lineJoin = 'miter';
             this.ctx.miterLimit = 3;
             this.ctx.moveTo(400, 100);
@@ -209,8 +206,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001223064173](figures/en-us_image_0000001223064173.gif)
-
+![Drawing-Line-Segments](figures/Drawing-Line-Segments.gif)
 
 ## Drawing Border
 
@@ -288,7 +284,7 @@ export default {
             this.ctx.setLineDash([0, 0]);
             // Draw a circle.
             this.ctx.arc(300, 250, 150, 0, 6.28);
-            // Draw borders.
+            // Draw the border.
             this.ctx.stroke();
         } else if (e.newValue == 'value3') {
             this.ctx.clearRect(0, 0, 600, 500);
@@ -305,14 +301,11 @@ export default {
 }
 ```
 
-
-![en-us_image_0000001177466006](figures/en-us_image_0000001177466006.gif)
-
+![Drawing-Border](figures/Drawing-Border.gif)
 
 ## Setting Gradient Fill Colors
 
-Add the [createLinearGradient](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#createlineargradient) and [createRadialGradient](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#createradialgradient) attributes to create a gradient container, use the **addColorStop** method to add multiple color blocks to form a gradient color, and set **fillStyle** as **gradient** to apply the gradient color to a rectangle. Then set the shadow blur level by using **shadowBlur**, the shadow color by using **shadowColor**, and the shadow offset by using **shadowOffset**.
-
+Use the [createLinearGradient](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#createlineargradient) and [createRadialGradient](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#createradialgradient) methods to create gradient containers, then call the `addColorStop` method to add multiple color stops to form a gradient. Set `fillStyle` to `gradient` to fill the rectangle with the gradient, and finally configure the shadow blur level (`shadowBlur`), shadow color (`shadowColor`), and shadow offset (`shadowOffset`).
 
 ```html
 <!-- xxx.hml -->
@@ -326,7 +319,6 @@ Add the [createLinearGradient](../reference/apis-arkui/arkui-ts/ts-canvasrenderi
   </select>
 </div>
 ```
-
 
 ```css
 /* xxx.css */
@@ -354,7 +346,6 @@ select {
     background-color: white;
 }
 ```
-
 
 ```js
 // xxx.js
@@ -435,13 +426,11 @@ export default {
 }
 ```
 
-![en-us_image_0000001222985801](figures/en-us_image_0000001222985801.gif)
-
+![Gradient-Fill-Colors](figures/Gradient-Fill-Colors.gif)
 
 ## Filling Text
 
-Create text content and use the [fillText](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#filltext) method to render it on the canvas. Use the [globalAlpha](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#globalalpha) attribute to adjust baseline transparency, preventing text from being obscured by the baseline. Then configure the [textAlign](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#textalign) and [textBaseline](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#textbaseline) attributes to position text relative to the baseline.
-
+First create the text, then use the [fillText](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#filltext) method to draw the text on the canvas. Adjust the baseline transparency through the [globalAlpha](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-property.md#globalalpha) property so that the baseline does not obscure the text, and then set the [textAlign](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-property.md#textalign) and [textBaseline](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-property.md#textbaseline) properties to determine the text position relative to the baseline.
 
 ```html
 <!-- xxx.hml -->
@@ -454,7 +443,6 @@ Create text content and use the [fillText](../reference/apis-arkui/arkui-ts/ts-c
   </select>
 </div>
 ```
-
 
 ```css
 /* xxx.css */
@@ -481,7 +469,6 @@ select {
     background-color: white;
 }
 ```
-
 
 ```js
 // xxx.js
@@ -569,17 +556,15 @@ export default {
 }
 ```
 
-![en-us_image_0000001223064401](figures/en-us_image_0000001223064401.gif)
+![Filling-Text](figures/Filling-Text.gif)
 
 > **NOTE**
 >
 > In the **ltr** layout mode, the value **start** equals **left**. In the **rtl** layout mode, the value **start** equals **right**.
 
-
 ## Adding Images
 
-After creating an image object, use the [drawImage](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#drawimage) attribute to draw the image and set animation styles such as scaling, translating, and rotating.
-
+After creating an image object, use the [drawImage](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#drawimage) method to draw the image, and apply animation styles such as scale, translate, or rotate to the image.
 
 ```html
 <!-- xxx.hml -->
@@ -601,7 +586,6 @@ After creating an image object, use the [drawImage](../reference/apis-arkui/arku
   </div>
 </div>
 ```
-
 
 ```css
 /* xxx.css */
@@ -640,7 +624,6 @@ text {
     margin-bottom: 30px;
 }
 ```
-
 
 ```js
 // xxx.js
@@ -749,7 +732,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001218279600](figures/en-us_image_0000001218279600.gif)
+![Adding-Images](figures/Adding-Images.gif)
 
 > **NOTE**
 > - Unlike the **transform()** function, the **setTransform()** function resets the existing transformation matrix and creates a transformation matrix even if it uses the same parameters.
@@ -759,11 +742,9 @@ export default {
 >
 >   y' = skewX \* x + scaleY \* y + translateY
 
-
 ## Adding Methods
 
 Use the **save** method to save the brush style, and use the **restore** method to restore the saved settings. In the following example, the brush color is first set to red. After the brush settings are saved, the canvas is cleared and the brush color is changed to blue. Drawing immediately at this point will produce a blue rectangle. However, if the brush settings are restored and then used for drawing, a red rectangle will be produced instead.
-
 
 ```html
 <!-- xxx.hml -->
@@ -778,7 +759,6 @@ Use the **save** method to save the brush style, and use the **restore** method 
   </div>
 </div>
 ```
-
 
 ```css
 /* xxx.css */
@@ -818,7 +798,6 @@ text {
 }
 ```
 
-
 ```js
 // xxx.js
 import promptAction from '@ohos.promptAction';
@@ -851,4 +830,6 @@ export default {
 }
 ```
 
-![en-us_image_0000001177624696](figures/en-us_image_0000001177624696.gif)
+![Adding-Methods](figures/Adding-Methods.gif)
+
+<!--no_check-->

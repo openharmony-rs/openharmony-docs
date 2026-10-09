@@ -14,7 +14,7 @@ typedef struct CloudDisk_PathInfo CloudDisk_SyncFolderPath
 
 ## 概述
 
-文件路径信息。
+文件路径信息，用于描述云盘管理接口中涉及的文件路径及其长度。
 
 **起始版本：** 21
 
@@ -28,7 +28,7 @@ typedef struct CloudDisk_PathInfo CloudDisk_SyncFolderPath
 
 | 名称 | 描述 |
 | -- | -- |
-| char *value | 文件的路径，以'\0'字符结尾。 |
+| char *value | 文件的路径字符串，以'\0'字符结尾。 |
 | size_t length | 文件路径的长度，不包括结尾的'\0'字符。 |
 
 

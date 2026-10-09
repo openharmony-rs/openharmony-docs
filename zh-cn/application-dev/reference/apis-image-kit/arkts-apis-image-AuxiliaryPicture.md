@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -41,7 +41,7 @@ writePixelsFromBuffer(data: ArrayBuffer): Promise\<void>
 
 | 类型           | 说明                                   |
 | -------------- | -------------------------------------- |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -51,7 +51,7 @@ writePixelsFromBuffer(data: ArrayBuffer): Promise\<void>
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 
-**示例:**
+**示例：**
 
 ```ts
 async function WritePixelsFromBuffer(context: Context) {
@@ -67,7 +67,7 @@ async function WritePixelsFromBuffer(context: Context) {
   if(auxPictureObj != null) {
     let auxBuffer: ArrayBuffer = await auxPictureObj.readPixelsToBuffer();
     await auxPictureObj.writePixelsFromBuffer(auxBuffer);
-    console.info('Write pixels from buffer success.');
+    console.info('Succeeded in writing pixels from buffer.');
   } else {
     console.error('AuxPictureObj is null.');
   }
@@ -105,9 +105,9 @@ async function ReadPixelsToBuffer(context: Context) {
   let auxPictureObj: image.AuxiliaryPicture | null = pictureObj.getAuxiliaryPicture(image.AuxiliaryPictureType.GAINMAP);
   if(auxPictureObj != null) {
     await auxPictureObj.readPixelsToBuffer().then((pixelsBuffer: ArrayBuffer) => {
-      console.info('Read pixels to buffer success.' );
+      console.info('Succeeded in reading pixels to buffer success.' );
     }).catch((error: BusinessError) => {
-      console.error(`Read pixels to buffer failed error.code: ${error.code}, error.message: ${error.message}`);
+      console.error(`Failed to read pixels to buffer. error.code: ${error.code}, error.message: ${error.message}`);
     });
   } else {
     console.error('AuxPictureObj is null.');
@@ -135,9 +135,9 @@ getType(): AuxiliaryPictureType
 async function GetAuxiliaryPictureType(auxPictureObj : image.AuxiliaryPicture) {
   if (auxPictureObj != null) {
     let type: image.AuxiliaryPictureType = auxPictureObj.getType();
-    console.info('Success get auxiliary picture type ' +  JSON.stringify(type));
+    console.info('Succeeded in getting auxiliary picture type ' +  JSON.stringify(type));
   } else {
-    console.error('Failed get auxiliary picture type ');
+    console.error('Failed to get auxiliary picture type.');
   }
 }
 ```
@@ -161,7 +161,7 @@ setMetadata(metadataType: MetadataType, metadata: Metadata): Promise\<void>
 
 | 类型           | 说明                                   |
 | -------------- | -------------------------------------- |
-| Promise\<void> | Promise对象，无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -187,18 +187,18 @@ async function SetAuxPictureObjMetadata(exifContext: Context, auxPictureObj: ima
   let exifCommodityPixelMap: image.PixelMap = await exifImageSource.createPixelMap();
   let exifPictureObj: image.Picture = image.createPicture(exifCommodityPixelMap);
   if (exifPictureObj != null) {
-    console.info('Create picture succeeded');
+    console.info('Succeeded in creating picture.');
   } else {
-    console.error('Create picture failed');
+    console.error('Failed to create picture.');
   }
 
   if (auxPictureObj != null) {
     let metadataType: image.MetadataType = image.MetadataType.EXIF_METADATA;
     let exifMetaData: image.Metadata = await exifPictureObj.getMetadata(metadataType);
     auxPictureObj.setMetadata(metadataType, exifMetaData).then(() => {
-      console.info('Set metadata success');
+      console.info('Succeeded in setting metadata.');
     }).catch((error: BusinessError) => {
-      console.error(`Set metadata failed.error.code: ${error.code}, error.message: ${error.message}`);
+      console.error(`Failed to set metadata. error.code: ${error.code}, error.message: ${error.message}`);
     });
   } else {
     console.error('AuxPictureObjMetaData is null');
@@ -243,9 +243,9 @@ async function GetAuxPictureObjMetadata(auxPictureObj: image.AuxiliaryPicture) {
     let metadataType: image.MetadataType = image.MetadataType.EXIF_METADATA;
     let auxPictureObjMetaData: image.Metadata | null = await auxPictureObj.getMetadata(metadataType);
     if (auxPictureObjMetaData != null) {
-      console.info('Get AuxPictureObj Metadata success' );
+      console.info('Succeeded in getting AuxPictureObj Metadata.' );
     } else {
-      console.error('Get AuxPictureObj Metadata failed');
+      console.error('Failed to get AuxPictureObj Metadata.');
     }
   } else {
     console.error('Get AuxPictureObj is null.');
@@ -253,7 +253,7 @@ async function GetAuxPictureObjMetadata(auxPictureObj: image.AuxiliaryPicture) {
 }
 ```
 
-## getAuxiliaryPictureinfo<sup>13+</sup>
+## getAuxiliaryPictureInfo<sup>13+</sup>
 
 getAuxiliaryPictureInfo(): AuxiliaryPictureInfo
 
@@ -278,12 +278,12 @@ async function GetAuxiliaryPictureInfo(auxPictureObj: image.AuxiliaryPicture) {
       ' rowStride: ' +  auxinfo.rowStride +  ' pixelFormat: ' + auxinfo.pixelFormat +
       ' colorSpace: ' +  auxinfo.colorSpace);
   } else {
-    console.error('Get auxiliary picture information failed');
+    console.error('Failed to get auxiliary picture information.');
   }
 }
 ```
 
-## setAuxiliaryPictureinfo<sup>13+</sup>
+## setAuxiliaryPictureInfo<sup>13+</sup>
 
 setAuxiliaryPictureInfo(info: AuxiliaryPictureInfo): void
 
@@ -321,6 +321,54 @@ async function SetAuxiliaryPictureInfo(auxPictureObj: image.AuxiliaryPicture) {
       colorSpace: colorSpaceManager.create(colorSpaceName),
     };
     auxPictureObj.setAuxiliaryPictureInfo(info);
+  }
+}
+```
+
+## acquirePixelmap
+
+acquirePixelmap(): PixelMap | null
+
+获取辅助图的像素图（PixelMap）。返回的PixelMap与该辅助图共享同一份底层内存，获取过程不发生像素拷贝。
+
+返回的PixelMap生命周期独立于该AuxiliaryPicture对象，使用完成后应调用PixelMap的release方法及时释放。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| [PixelMap](arkts-apis-image-PixelMap.md) \| null | 得到的PixelMap对象。当辅助图没有包含PixelMap数据时返回null。 |
+
+**示例：**
+
+```ts
+async function AcquirePixelmap(context: Context) {
+  const resourceMgr = context.resourceManager;
+  // 需要一张含增益图（gainmap）的HDR图片。
+  const rawFile = await resourceMgr.getRawFileContent("picture.jpg");
+  let imageSource: image.ImageSource = image.createImageSource(rawFile.buffer as ArrayBuffer);
+  // 使用createPicture解码。
+  let pictureObj: image.Picture = await imageSource.createPicture();
+  // 获取增益图辅助图。
+  let auxPictureObj: image.AuxiliaryPicture | null =
+    pictureObj.getAuxiliaryPicture(image.AuxiliaryPictureType.GAINMAP);
+  if (auxPictureObj != null) {
+    let auxPixelmap: image.PixelMap | null = auxPictureObj.acquirePixelmap();
+    if (auxPixelmap != null) {
+      console.info('Succeeded in acquiring pixelmap.');
+      // 使用完毕后单独释放PixelMap。
+      auxPixelmap.release();
+    } else {
+      console.error('Auxiliary picture contains no pixelmap.');
+    }
+  } else {
+    console.error('AuxPictureObj is null.');
   }
 }
 ```

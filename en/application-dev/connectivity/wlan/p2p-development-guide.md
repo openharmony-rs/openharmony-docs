@@ -6,6 +6,8 @@
 <!--Designer: @qq_43802146-->
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=dcae6f10c07044342acb5b2dc0416e100c5bcaa2 translatedAt=2026-06-17T06:38:55.718Z pushedAt=2026-06-22T07:28:22.372Z -->
+
 ## Introduction
 The peer-to-peer (P2P) mode provides a point-to-point connection between devices in a WLAN. It enables the direct establishment of a TCP/IP connection between two stations (STAs) without the involvement of an access point (AP).
 
@@ -41,15 +43,15 @@ The following table describes the APIs used in this topic.
 ### Creating or Removing a P2P Group
 1. Import the Wi-Fi module.
    <!-- @[wifiManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/Wlan/entry/src/main/ets/pages/P2pSetting.ets) -->
-   
+
    ``` TypeScript
    import { wifiManager } from '@kit.ConnectivityKit';
    ```
 2. Enable Wi-Fi on the device.
 3. Check that the device has the SystemCapability.Communication.WiFi.P2P capability.
 4. Create or remove a P2P group.
-   <!-- @[createGrop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/Wlan/entry/src/main/ets/pages/P2pSetting.ets) -->
-   
+   <!-- @[createGroup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/Wlan/entry/src/main/ets/pages/P2pSetting.ets) -->
+
    ``` TypeScript
    async createGroup() {
      try {
@@ -63,7 +65,10 @@ The following table describes the APIs used in this topic.
        }
        hilog.info(`deviceAddress: ${config.deviceAddress}, netId: ${config.netId}, pwd: ${config.passphrase}, gpname: ${config.groupName}, goBand: ${config.goBand}`);
        await wifiManager.createGroup(config);
-       promptAction.showToast({ message : 'createGroup success' });
+       this.promptAction.showToast({
+         message: 'createGroup success',
+         duration: 2000
+       });
      } catch (e) {
        hilog.info(TAG, `createGroup Error: ${JSON.stringify(e)}`);
      }
@@ -76,7 +81,7 @@ The following table describes the APIs used in this topic.
 
    // Create a P2P group. To use the current device as the group owner (GO), set:
    // netId: The value -1 means to create a temporary P2P group. When a device in the group is to be connected next time, GO negotiation and WPS key negotiation must be performed again.
-   // The value -2 means to create a persistent group. The device in the group can be reconnected without GO negotiation or WPS key negotiation.
+   // netId: The value -2 means to create a persistent group. The device in the group can be reconnected without GO negotiation or WPS key negotiation.
 
    let recvP2pPersistentGroupChangeFunc = () => {
      console.info("p2p persistent group change receive event");
@@ -112,7 +117,7 @@ The following table describes the APIs used in this topic.
 ### Setting Up a P2P Connection
 1. Import the Wi-Fi module.
    <!-- @[wifiManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/Wlan/entry/src/main/ets/pages/P2pSetting.ets) -->
-   
+
    ``` TypeScript
    import { wifiManager } from '@kit.ConnectivityKit';
    ```
@@ -120,13 +125,16 @@ The following table describes the APIs used in this topic.
 3. Check that the device has the SystemCapability.Communication.WiFi.P2P capability.
 4. Register a callback for **p2pPeerDeviceChange** and set up a P2P connection in the callback implementation.
    <!-- @[connectP2p](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/Wlan/entry/src/main/ets/pages/AvailableP2p.ets) -->
-   
+
    ``` TypeScript
-   connectP2p(p2pScanInfo: wifi.WifiP2pDevice) {
-     promptAction.showToast({ message : 'connect to device' });
+   connectP2p(p2pScanInfo: wifiManager.WifiP2pDevice) {
+     this.promptAction.showToast({
+       message: 'connect to device',
+       duration: 2000
+     });
      hilog.info(TAG , `connect deviceAddress=${ p2pScanInfo.deviceAddress }`);
      hilog.info(TAG , `p2pScanInfo:` + JSON.stringify(p2pScanInfo));
-     let config: wifi.WifiP2PConfig = {
+     let config: wifiManager.WifiP2PConfig = {
        deviceAddress : p2pScanInfo.deviceAddress,
        netId : - 2 ,
        deviceAddressType: 1,
@@ -134,27 +142,30 @@ The following table describes the APIs used in this topic.
        groupName : '' ,
        goBand : 0
      }
-     wifi.p2pConnect(config);
+     wifiManager.p2pConnect(config);
    }
    ```
 5. Start P2P device discovery.
    <!-- @[discover_p2p_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/Wlan/entry/src/main/ets/pages/AvailableP2p.ets) -->
-   
+
    ``` TypeScript
    aboutToAppear() {
      // If Wi-Fi is enabled, record the status. Then, scan for P2P devices and obtain the connection information.
-     if (!wifi.isWifiActive()) {
-       promptAction.showToast({ message : 'place active wifi' });
+     if (!wifiManager.isWifiActive()) {
+       this.promptAction.showToast({
+         message: 'please active wifi',
+         duration: 2000
+       });
        return;
      }
      this.isSwitchOn = true;
-     wifi.startDiscoverDevices();
+     wifiManager.startDiscoverDevices();
      this.addListener();
    }
    
    aboutToDisappear() {
-     wifi.off('p2pPeerDeviceChange');
-     wifi.off('p2pConnectionChange');
+     wifiManager.off('p2pPeerDeviceChange');
+     wifiManager.off('p2pConnectionChange');
    }
    ```
 6. Example:

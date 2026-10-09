@@ -1,10 +1,10 @@
 # Enums
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @chenkun613227-->
+<!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @zzs911-->
 
 > **NOTE**
 >
@@ -12,25 +12,23 @@
 
 ## AVErrorCode<sup>9+</sup>
 
-Enumerates the [media error codes](errorcode-media.md).
-
-**Atomic service API**: This API can be used in atomic services since API version 11.
+Enumerates the types of [Media error codes](errorcode-media.md).
 
 **System capability**: SystemCapability.Multimedia.Media.Core
 
 | Name                                 | Value     | Description                                |
 | :------------------------------------ | ------- | ------------------------------------ |
-| AVERR_OK                              | 0       | The operation is successful.                      |
-| AVERR_NO_PERMISSION                   | 201     | No permission to perform the operation.              |
-| AVERR_INVALID_PARAMETER               | 401     | Invalid input parameter.                  |
-| AVERR_UNSUPPORT_CAPABILITY            | 801     | Unsupported API.       |
-| AVERR_NO_MEMORY                       | 5400101 | The system memory is insufficient or the number of services reaches the upper limit.|
-| AVERR_OPERATE_NOT_PERMIT              | 5400102 | The operation is not allowed in the current state or you do not have the permission to perform the operation.|
-| AVERR_IO                              | 5400103 | The data stream is abnormal.                |
-| AVERR_TIMEOUT                         | 5400104 | The system or network response times out.            |
-| AVERR_SERVICE_DIED                    | 5400105 | The service process is dead.                  |
-| AVERR_UNSUPPORT_FORMAT                | 5400106 | The format of the media asset is not supported.      |
-| AVERR_AUDIO_INTERRUPTED<sup>11+</sup> | 5400107 | The audio focus is interrupted.                 |
+| AVERR_OK                              | 0       | The operation is successful.<br> **Atomic service API**: This API can be used in atomic services since API version 11.       |
+| AVERR_NO_PERMISSION                   | 201     | No permission to perform the operation.<br> **Atomic service API**: This API can be used in atomic services since API version 11.       |
+| AVERR_INVALID_PARAMETER               | 401     | Invalid input parameter.<br> **Atomic service API**: This API can be used in atomic services since API version 11.       |
+| AVERR_UNSUPPORT_CAPABILITY            | 801     | Unsupported API.<br> **Atomic service API**: This API can be used in atomic services since API version 11.       |
+| AVERR_NO_MEMORY                       | 5400101 | The system memory is insufficient or the number of services reaches the upper limit.<br> **Atomic service API**: This API can be used in atomic services since API version 11.       |
+| AVERR_OPERATE_NOT_PERMIT              | 5400102 | The operation is not allowed in the current state or you do not have the permission to perform the operation.<br> **Atomic service API**: This API can be used in atomic services since API version 11.       |
+| AVERR_IO                              | 5400103 | The data stream is abnormal.<br> **Atomic service API**: This API can be used in atomic services since API version 11.       |
+| AVERR_TIMEOUT                         | 5400104 | The system or network response times out.<br> **Atomic service API**: This API can be used in atomic services since API version 11.       |
+| AVERR_SERVICE_DIED                    | 5400105 | The service process is dead.<br> **Atomic service API**: This API can be used in atomic services since API version 11.       |
+| AVERR_UNSUPPORT_FORMAT                | 5400106 | The format of the media asset is not supported.<br> **Atomic service API**: This API can be used in atomic services since API version 11.       |
+| AVERR_AUDIO_INTERRUPTED<sup>11+</sup> | 5400107 | The audio focus is interrupted.<br> **Atomic service API**: This API can be used in atomic services since API version 11.       |
 | AVERR_IO_HOST_NOT_FOUND<sup>14+</sup> | 5411001 | Failed to parse the server address or connect to the server.<br> **Atomic service API**: This API can be used in atomic services since API version 14.       |
 | AVERR_IO_CONNECTION_TIMEOUT<sup>14+</sup> | 5411002 | Network connection times out.<br> **Atomic service API**: This API can be used in atomic services since API version 14.       |
 | AVERR_IO_NETWORK_ABNORMAL<sup>14+</sup> | 5411003 | Data or links are abnormal due to network exceptions.<br> **Atomic service API**: This API can be used in atomic services since API version 14.       |
@@ -74,14 +72,15 @@ Enumerates the codec MIME types.
 | Name        | Value                   | Description                    |
 | ------------ | --------------------- | ------------------------ |
 | VIDEO_H263   | 'video/h263'          | Video in H.263 format.     |
-| VIDEO_AVC    | 'video/avc'           | Video in AVC format.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
+| VIDEO_AVC    | 'video/avc'           | Video in H.264 format.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
 | VIDEO_MPEG2  | 'video/mpeg2'         | Video in MPEG-2 format.    |
 | VIDEO_MPEG4  | 'video/mp4v-es'         | Video in MPEG-4 format.    |
 | VIDEO_VP8    | 'video/x-vnd.on2.vp8' | Video in VP8 format.      |
 | VIDEO_HEVC<sup>11+</sup>   | 'video/hevc'          | Video in H.265 format.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
-| AUDIO_AAC    | 'audio/mp4a-latm'     | Audio in MP4A-LATM format.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
+| AUDIO_AAC    | 'audio/mp4a-latm'     | Audio in AAC format.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
 | AUDIO_VORBIS | 'audio/vorbis'        | Audio in Vorbis format.   |
 | AUDIO_FLAC   | 'audio/flac'          | Audio in FLAC format.     |
+| AUDIO_RAW    | 'audio/raw'           | Audio in RAW format.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
 | AUDIO_MP3<sup>12+</sup>   | 'audio/mpeg'          | Audio in MPEG format.     |
 | AUDIO_G711MU<sup>12+</sup>   | 'audio/g711mu'     | Audio in G.711 μ-law format.|
 | AUDIO_AMR_NB<sup>18+</sup>   | 'audio/3gpp'     | Audio in AMR-NB format.|
@@ -98,7 +97,7 @@ Enumerates the supported Advanced Audio Coding (AAC) formats.
 | Name        | Value                   | Description                       |
 | ------------ | --------------------- | --------------------------- |
 | AAC_LC       |     0                 | Standard AAC Low Complexity profile.       |
-| AAC_HE       |     1                 | AAC High Efficiency profile (also known as HE-AAC).       |
+| AAC_HE       |     1                 | Standard AAC High Efficiency profile.       |
 | AAC_HE_V2    |     2                 | AAC High Efficiency Version 2 profile (also known as HE-AAC v2).    |
 
 ## MediaDescriptionKey<sup>8+</sup>
@@ -132,7 +131,7 @@ Enumerates the media description keys.
 
 Enumerates the results of obtaining thumbnails in batches.
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -173,6 +172,8 @@ Enumerates the playback metric keys.
 | TOTAL_DOWNLOAD_SIZE                | 'total_loading_bytes'                | Total loading size, in bytes.<br> **Model restriction**: This API can be used only in the stage model.            |
 | STALLING_COUNT                     | 'stalling_count'                     | Total number of stalling times.                        |
 | TOTAL_STALLING_TIME                | 'total_stalling_time'                | Total stalling duration, in milliseconds.      |
+| LIP_ASYNC_COUNT                    | 'lip_async_count'                    | Total times when audio and video are out of sync.<br>**Since**: 26.0.0<br> **Model restriction**: This API can be used only in the stage model.      |
+| TOTAL_LIP_ASYNC_TIME               | 'total_lip_async_time'               | Total out-of-sync duration, in milliseconds.<br>**Since**: 26.0.0<br> **Model restriction**: This API can be used only in the stage model.      |
 
 ## BufferingInfoType<sup>8+</sup>
 
@@ -193,7 +194,7 @@ Enumerates the buffering event types.
 
 Enumerates the interruption modes of the audio files with the same ID in SoundPool.
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Multimedia.Media.SoundPool
 
@@ -226,11 +227,13 @@ Enumerates the video playback seek modes, which can be passed in the **seek** AP
 | SEEK_NEXT_SYNC | 0    | Seeks to the next key frame at the specified position. You are advised to use this value for the rewind operation.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | SEEK_PREV_SYNC | 1    | Seeks to the previous key frame at the specified position. You are advised to use this value for the fast-forward operation.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | SEEK_CLOSEST<sup>12+</sup> | 2    | Seeks to the frame closest to the specified position. You are advised to use this value for accurate seek.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| SEEK_CONTINUOUS<sup>18+</sup> | 3    | Offers a smooth and fluid visual experience for seeking. Applications can use a progress bar component to continuously invoke the **seek** method, and the AVPlayer will update the video frames smoothly in response to these calls.<br>Applications can call [isSeekContinuousSupported](arkts-apis-media-AVPlayer.md#isseekcontinuoussupported18) to check whether the video source supports this seeking mode.<br>If the video source does not support this mode, calling **seek** will result in an **AVERR_SEEK_CONTINUOUS_UNSUPPORTED** error (see [Media Error Codes](#averrorcode9)), and the smoothness of frame updates will be compromised.<br>This seeking mode does not trigger the [seekDone event](arkts-apis-media-AVPlayer.md#onseekdone9).<br>To exit this seeking mode, applications must call **seek(-1, SeekMode.SEEK_CONTINUOUS)** to end the seeking process.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| SEEK_CONTINUOUS<sup>18+</sup> | 3    | Offers a smooth and fluid visual experience for seeking. Applications can use a progress bar component to continuously invoke the **seek** method, and the AVPlayer will update the video frames smoothly in response to these calls.<br>Applications can call [isSeekContinuousSupported](arkts-apis-media-AVPlayer.md#isseekcontinuoussupported18) to check whether the video source supports this seeking mode.<br>If the video source does not support this mode, calling **seek** will result in an **AVERR_SEEK_CONTINUOUS_UNSUPPORTED** error (see [AVErrorCode](#averrorcode9)), and the smoothness of frame updates will be compromised.<br>This seek mode does not trigger the [on('seekDone')](arkts-apis-media-AVPlayer.md#onseekdone9) event.<br>To exit this seeking mode, applications must call **seek(-1, SeekMode.SEEK_CONTINUOUS)** to end the seeking process.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 
 ## SwitchMode<sup>12+</sup>
 
-Enumerates the track switching modes for video playback. The mode can be passed in to **selectTrack**. Currently, this enum is valid only for DASH video tracks.
+Enumerates the **selectTrack** modes for video playback.
+
+**SwitchMode** can be passed as a parameter through the **selectTrack** method. Currently, both DASH and HLS video tracks support this extended parameter. (HLS video tracks support this extended parameter since API version 26.0.0.)
 
 **System capability**: SystemCapability.Multimedia.Media.Core
 
@@ -325,7 +328,7 @@ Enumerates the modes for creating media files.
 | Name                         | Value  | Description                           |
 | ----------------------------- | ---- | ------------------------------- |
 | APP_CREATE  | 0    | The application creates a media file in the sandbox.|
-| AUTO_CREATE_CAMERA_SCENE  | 1    | The system creates a media file. Currently, this mode takes effect only in camera recording scenarios. The URL set by the application is ignored.|
+| AUTO_CREATE_CAMERA_SCENE  | 1    | The system creates a media file. The URL set by the application is ignored.|
 
 ## HdrType<sup>12+</sup>
 
@@ -413,6 +416,10 @@ Enumerates the screen capture states used in callbacks.
 | SCREENCAPTURE_STATE_ENTER_PRIVATE_SCENE  | 8    | The system enters a privacy page during screen capture.      |
 | SCREENCAPTURE_STATE_EXIT_PRIVATE_SCENE   | 9    | The system exits a privacy page during screen capture.      |
 | SCREENCAPTURE_STATE_STOPPED_BY_USER_SWITCHES   | 10    | Screen capture is interrupted by system user switchover.      |
+| SCREENCAPTURE_STATE_PAUSED_BY_USER       | 11   | Screen capture is paused by the user.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
+| SCREENCAPTURE_STATE_RESUMED_BY_USER      | 12   | Screen capture is resumed by the user.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
+| SCREENCAPTURE_STATE_PAUSED_BY_APP        | 13   | Screen capture is paused by the application.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
+| SCREENCAPTURE_STATE_RESUMED_BY_APP       | 14   | Screen capture is resumed by the application.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## AVScreenCaptureFillMode<sup>18+</sup>
 
@@ -436,6 +443,10 @@ Enumerates the display mode for the screen capture picker.
 | WINDOW_ONLY | 0    | Displays only a list of windows.|
 | SCREEN_ONLY | 1    | Displays only a list of screens.|
 | SCREEN_AND_WINDOW | 2    | Displays both screens and windows.|
+| APP_ONLY | 3    | Displays only a list of apps.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
+| WINDOW_AND_APP | 4    | Displays both windows and apps.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
+| SCREEN_AND_APP | 5    | Displays both screens and apps.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
+| SCREEN_WINDOW_AND_APP | 6    | Displays screens, windows, and apps.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
 
 ## AVMetricsEventType<sup>23+</sup>
 
@@ -446,6 +457,31 @@ Enumerates the metric events supported by the media service.
 | Name                      | Value  | Description                                  |
 | -------------------------- | ---- | -------------------------------------- |
 | AV_METRICS_EVENT_STALLING | 1    | Metric event indicating playback stalling.|
+| AV_METRICS_EVENT_LIP_ASYNC | 2    | Metric event indicating that audio and video are out of sync.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
+| AV_METRICS_EVENT_LOADINGRATE_CHANGE | 3    |Event indicating that the loading rate changes by more than 10%.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
+| AV_METRICS_EVENT_LOADING_ERROR | 4    |Event indicating that an error occurs in the data loading request.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
+| AV_METRICS_EVENT_CONTENT_CHANGED | 5    |Event indicating that the playback content is switched.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
+| AV_METRICS_EVENT_CONTENT_DISCONTINUITY | 6    |Event indicating that the playback content is discontinuous.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
+| AV_METRICS_EVENT_AUDIO_ABNORMAL | 7    |Event indicating that the audio status has changed.<br>**Since**: 26.0.0<br>**Model restriction**: This API can be used only in the stage model.|
+
+## PlaylistLoopMode
+
+Enumerates the loop modes of playlist playback.
+
+**Since**: 26.0.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.0.0.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Media.Core
+
+| Name                      | Value  | Description                                  |
+| -------------------------- | ---- | -------------------------------------- |
+| PLAYLIST_LOOP_MODE_ALL | 1    | Loop all.|
+| PLAYLIST_LOOP_MODE_ONE | 2    | Repeat one.|
+| PLAYLIST_LOOP_MODE_SHUFFLE | 3    | Shuffle.|
+| PLAYLIST_LOOP_MODE_NONE | 4    | Loop off.|
 
 ## AudioEncoder<sup>(deprecated)</sup>
 
@@ -486,7 +522,7 @@ Enumerates the audio output formats.
 Enumerates the media error codes.
 
 > **NOTE**
-> This enum is supported since API version 8 and deprecated since API version 11. You are advised to use [Media Error Codes](#averrorcode9) instead.
+> This API is supported since API version 8 and deprecated since API version 11. You are advised to use [AVErrorCode](#averrorcode9) instead.
 
 **System capability**: SystemCapability.Multimedia.Media.Core
 

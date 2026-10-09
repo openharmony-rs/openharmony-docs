@@ -1,9 +1,9 @@
 # Active Update of ArkTS Widgets
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 This section provides the development guidelines for active update. For details about the update process, see [Active Update](./arkts-ui-widget-interaction-overview.md#active-update).

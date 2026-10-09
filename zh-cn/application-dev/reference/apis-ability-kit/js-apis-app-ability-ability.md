@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @littlejerry1-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 Ability类是应用生命周期调度的基本单元，是[UIAbility](js-apis-app-ability-uiAbility.md)和[ExtensionAbility](js-apis-app-ability-extensionAbility.md)的基类，提供系统配置更新回调和系统内存级别变化回调能力。该基类不支持开发者直接继承，开发者应根据具体的业务场景选择使用[UIAbility](js-apis-app-ability-uiAbility.md)或[ExtensionAbility](js-apis-app-ability-extensionAbility.md)，相关指南参见[Ability Kit简介](../../application-models/abilitykit-overview.md)。
 
@@ -40,6 +40,8 @@ onConfigurationUpdate(newConfig: Configuration): void
 > **说明：**
 >
 > 该回调方法在实际触发时存在一定限制。例如如果开发者通过[setLanguage](../apis-ability-kit/js-apis-inner-application-applicationContext.md#applicationcontextsetlanguage11)接口设置应用的语言，即便系统语言发生变化，系统也不再触发onConfigurationUpdate回调。详见[使用场景](../../application-models/subscribe-system-environment-variable-changes.md#使用场景)。
+>
+> 如果需要在页面中监控Ability的环境变量，可以使用[ApplicationContext.on('environment')](./js-apis-inner-application-applicationContext.md#applicationcontextonenvironment)方法。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -49,7 +51,7 @@ onConfigurationUpdate(newConfig: Configuration): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| newConfig | [Configuration](js-apis-app-ability-configuration.md) | 是 | 表示更新后的配置信息。 |
+| newConfig | [Configuration](js-apis-app-ability-configuration.md) | 是 | 表示更新后的配置信息，包含语言、颜色模式等系统配置项。 |
 
 **示例：**
 
@@ -73,6 +75,8 @@ onMemoryLevel(level: AbilityConstant.MemoryLevel): void
 > **说明：**
 > 
 > onMemoryLevel回调运行在当前进程的主线程中，如果在该回调中做耗时的UI组件释放，会阻塞主线程任务，因此不建议在该回调中释放UI组件。
+>
+> 如果需要在页面中监控Ability的环境变量，可以使用[ApplicationContext.on('environment')](./js-apis-inner-application-applicationContext.md#applicationcontextonenvironment)方法。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -82,7 +86,7 @@ onMemoryLevel(level: AbilityConstant.MemoryLevel): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| level | [AbilityConstant.MemoryLevel](js-apis-app-ability-abilityConstant.md#memorylevel) | 是 | 整机可用内存变化到的级别。<br>**说明：**<br>不同产品的触发条件可能存在差异。以12G内存的标准设备为例：<br>- 当整机可用内存下降至1700MB~1800MB时，会触发MEMORY_LEVEL_MODERATE类型(整机可用内存适中)的onMemoryLevel回调。<br>- 当整机可用内存下降至1600MB~1700MB时，会触发MEMORY_LEVEL_LOW类型(整机可用内存低)的onMemoryLevel回调。<br>- 当整机可用内存下降至1600MB以下时，会触发MEMORY_LEVEL_CRITICAL类型(整机可用内存极低)的onMemoryLevel回调。|
+| level | [AbilityConstant.MemoryLevel](js-apis-app-ability-abilityConstant.md#memorylevel) | 是 | 整机可用内存级别，对应的触发场景详见[AbilityConstant.MemoryLevel](js-apis-app-ability-abilityConstant.md#memorylevel)。|
 
 **示例：**
 
@@ -91,6 +95,7 @@ onMemoryLevel(level: AbilityConstant.MemoryLevel): void
 import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
 
 class MyUIAbility extends UIAbility {
+  // 接收系统内存级别变化回调
   onMemoryLevel(level: AbilityConstant.MemoryLevel) {
     console.info(`onMemoryLevel, level: ${JSON.stringify(level)}`);
   }

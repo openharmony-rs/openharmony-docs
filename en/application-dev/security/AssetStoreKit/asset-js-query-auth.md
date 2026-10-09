@@ -2,8 +2,8 @@
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @JeremyXu-->
-<!--Designer: @skye_you-->
+<!--Owner: @yhf-->
+<!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
@@ -19,9 +19,9 @@ The following table describes the APIs used for querying an asset with user auth
 
 The following table describes the attributes of **AssetMap** used for querying an asset with user authentication.
 
->**NOTE**
+> **NOTE**
 >
->In the following table, the attributes **ALIAS** and those starting with **DATA_LABEL** are custom asset attributes reserved for services. These attributes are not encrypted. Therefore, do not put sensitive personal data in these attributes.
+> In the following table, the attributes **ALIAS** and those starting with **DATA_LABEL** are custom asset attributes reserved for services. These attributes are not encrypted. Therefore, do not put sensitive personal data in these attributes.
 
 - **preQuery()** parameters
 
@@ -56,7 +56,7 @@ The following table describes the attributes of **AssetMap** used for querying a
   | ALIAS                 | Type: Uint8Array<br>Length: 1-256 bytes                           | Yes    | Asset alias, which uniquely identifies an asset.      |
   | AUTH_CHALLENGE        | Type: Uint8Array<br>Length: 32 bytes                              | Yes    | Challenge for the user authentication.                             |
   | AUTH_TOKEN            | Type: Uint8Array<br>Length: 1-1024 bytes since API version 20<br>Length: 148 bytes for API versions 11-19      | Yes    | Authorization token obtained after the user authentication is successful.                        |
-  | RETURN_TYPE           | Type: number                          | Yes    | Type of the asset query result to return.                   |
+  | RETURN_TYPE           | Type: number<br>Value: asset.ReturnType.ALL                          | Yes    | Type of the asset query result to return.                   |
   | ACCESSIBILITY         | Type: number<br>Value range: see [Accessibility](../../reference/apis-asset-store-kit/js-apis-asset.md#accessibility)| No    | Access control based on the lock screen status.                                    |
   | REQUIRE_PASSWORD_SET  | Type: Boolean                                                  | No    | Whether the asset is accessible only when a lock screen password is set. The value **true** means the asset is accessible only when a lock screen password is set. The value **false** means that the asset can be accessed regardless of whether a lock screen password is set.    |
   | AUTH_TYPE             | Type: number<br>Value range: see [AuthType](../../reference/apis-asset-store-kit/js-apis-asset.md#authtype)| No    | Type of user authentication required for accessing the asset.                 |
@@ -88,11 +88,11 @@ The following table describes the attributes of **AssetMap** used for querying a
 
 > **NOTE**
 >
-> The **asset** module provides asynchronous and synchronous APIs. The following uses the asynchronous APIs as an example. For more information about the APIs, see [Asset Store Service](../../reference/apis-asset-store-kit/js-apis-asset.md).
+> The **asset** module provides asynchronous and synchronous APIs. The following uses the asynchronous APIs as an example. For more information about the APIs, see [@ohos.security.asset (Asset Store Service)](../../reference/apis-asset-store-kit/js-apis-asset.md).
 >
 > Before querying an asset, ensure that the asset that requires user authentication exists. For details about how to add an asset, see [Adding an Asset](asset-js-add.md). Otherwise, the **NOT_FOUND** error (24000002) is reported.
 
-Query asset **demo_alias** with user authentication. For details about **@ohos.userIAM.userAuth** used in the example, see [@ohos.userIAM.userAuth (User Authentication)](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#start10).
+Query asset **demo_alias** with user authentication. For details about **@ohos.userIAM.userAuth** used in the example, see [start](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#start10) in the userAuth documentation.
 
 1. Include the header file and define the tool function.
    <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_auth.ets) -->

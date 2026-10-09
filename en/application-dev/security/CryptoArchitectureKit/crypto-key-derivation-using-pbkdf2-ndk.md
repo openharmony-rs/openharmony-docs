@@ -6,28 +6,81 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=205f3acb276420a792c1ba70147af638f33c6902 translatedAt=2026-08-07T03:31:58.370Z pushedAt=2026-08-10T09:28:40.887Z -->
 
 For details about the corresponding algorithm specifications, see [PBKDF2](crypto-key-derivation-overview.md#pbkdf2).
 
 ## How to Develop
 
-1. Call [OH_CryptoKdfParams_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-kdf-h.md#oh_cryptokdfparams_create) and specify the string parameter **PBKDF2** to create a key derivation parameter object.
+1. Call [OH_CryptoKdfParams_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-kdf-h.md#oh_cryptokdfparams_create) with the string parameter **PBKDF2** to create a key derivation parameter object.
 
 2. Call [OH_CryptoKdfParams_SetParam](../../reference/apis-crypto-architecture-kit/capi-crypto-kdf-h.md#oh_cryptokdfparams_setparam) to set the parameters required by PBKDF2. Example:
+
    - **CRYPTO_KDF_KEY_DATABLOB**: original password used to generate the derived key.
+
    - **CRYPTO_KDF_SALT_DATABLOB**: salt value.
+
    - **CRYPTO_KDF_ITER_COUNT_INT**: number of iterations. The value must be a positive integer.
 
-3. Call [OH_CryptoKdf_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-kdf-h.md#oh_cryptokdf_create) and specify the string parameter **PBKDF2|SHA256** to create a key derivation function object.
+3. Call [OH_CryptoKdf_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-kdf-h.md#oh_cryptokdf_create) with the string parameter **PBKDF2|SHA256** to create a key derivation function object.
 
 4. Call [OH_CryptoKdf_Derive](../../reference/apis-crypto-architecture-kit/capi-crypto-kdf-h.md#oh_cryptokdf_derive) and specify the byte length of the target key.
 
-```C++
-#include "CryptoArchitectureKit/crypto_architecture_kit.h"
-#include <stdio.h>
-#include <string.h>
+<!-- @[pbkdf2_test_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/PBKDF2Derivation/entry/src/main/cpp/types/project/pbkdf2_test.cpp) -->
 
-static OH_Crypto_ErrCode doTestPbkdf2()
+``` C++
+#include "CryptoArchitectureKit/crypto_architecture_kit.h"
+#include <cstdio>
+#include <cstring>
+#include "file.h"
+
+static OH_Crypto_ErrCode setParams(OH_CryptoKdfParams **params)
+{
+    char password[] = "123456";
+    const char *salt = "saltstring";
+    int iterations = 10000;
+    // Set the password.
+    Crypto_DataBlob passwordBlob = {
+        .data = reinterpret_cast<uint8_t *>(const_cast<char *>(password)),
+        .len = strlen(password)
+    };
+    OH_Crypto_ErrCode ret = OH_CryptoKdfParams_SetParam(*params, CRYPTO_KDF_KEY_DATABLOB, &passwordBlob);
+    if (ret != CRYPTO_SUCCESS) {
+        (void)memset(password, 0, sizeof(password));
+        OH_CryptoKdfParams_Destroy(*params);
+        *params = nullptr;
+        return ret;
+    }
+
+    // Set the salt value.
+    Crypto_DataBlob saltBlob = {
+        .data = reinterpret_cast<uint8_t *>(const_cast<char *>(salt)),
+        .len = strlen(salt)
+    };
+    ret = OH_CryptoKdfParams_SetParam(*params, CRYPTO_KDF_SALT_DATABLOB, &saltBlob);
+    if (ret != CRYPTO_SUCCESS) {
+        (void)memset(password, 0, sizeof(password));
+        OH_CryptoKdfParams_Destroy(*params);
+        *params = nullptr;
+        return ret;
+    }
+
+    // Set the number of iterations.
+    Crypto_DataBlob iterationsBlob = {
+        .data = reinterpret_cast<uint8_t *>(&iterations),
+        .len = sizeof(int)
+    };
+    ret = OH_CryptoKdfParams_SetParam(*params, CRYPTO_KDF_ITER_COUNT_INT, &iterationsBlob);
+    if (ret != CRYPTO_SUCCESS) {
+        (void)memset(password, 0, sizeof(password));
+        OH_CryptoKdfParams_Destroy(*params);
+        *params = nullptr;
+        return ret;
+    }
+    return CRYPTO_SUCCESS;
+}
+
+OH_Crypto_ErrCode doTestPbkdf2()
 {
     // Create a PBKDF2 parameter object.
     OH_CryptoKdfParams *params = nullptr;
@@ -36,39 +89,8 @@ static OH_Crypto_ErrCode doTestPbkdf2()
         return ret;
     }
 
-    // Set the password.
-    const char *password = "123456";
-    Crypto_DataBlob passwordBlob = {
-        .data = reinterpret_cast<uint8_t *>(const_cast<char *>(password)),
-        .len = strlen(password)
-    };
-    ret = OH_CryptoKdfParams_SetParam(params, CRYPTO_KDF_KEY_DATABLOB, &passwordBlob);
+    ret = setParams(&params);
     if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoKdfParams_Destroy(params);
-        return ret;
-    }
-
-    // Set the salt value.
-    const char *salt = "saltstring";
-    Crypto_DataBlob saltBlob = {
-        .data = reinterpret_cast<uint8_t *>(const_cast<char *>(salt)),
-        .len = strlen(salt)
-    };
-    ret = OH_CryptoKdfParams_SetParam(params, CRYPTO_KDF_SALT_DATABLOB, &saltBlob);
-    if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoKdfParams_Destroy(params);
-        return ret;
-    }
-
-    // Set the number of iterations.
-    int iterations = 10000;
-    Crypto_DataBlob iterationsBlob = {
-        .data = reinterpret_cast<uint8_t *>(&iterations),
-        .len = sizeof(int)
-    };
-    ret = OH_CryptoKdfParams_SetParam(params, CRYPTO_KDF_ITER_COUNT_INT, &iterationsBlob);
-    if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoKdfParams_Destroy(params);
         return ret;
     }
 

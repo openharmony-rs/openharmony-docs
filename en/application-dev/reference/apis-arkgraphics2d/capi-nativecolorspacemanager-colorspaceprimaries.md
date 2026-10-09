@@ -1,18 +1,20 @@
 # ColorSpacePrimaries
+
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @xubo233-->
-<!--Designer: @dizuo1-->
+<!--Owner: @xiaojianfeng_jeffery-->
+<!--Designer: @njuptkid-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=9a673d444fec536578066af1baf013d52353a6c3 translatedAt=2026-08-24T09:14:42.213Z pushedAt=2026-08-25T07:18:01.333Z -->
 
-```
+```c
 typedef struct {...} ColorSpacePrimaries
 ```
 
 ## Overview
 
-Describes the color space primaries.
+Provides the declaration for the color primary structure, which is used to store the coordinates of the red, green, and blue primary colors and white point in the color space.
 
 **Since**: 13
 

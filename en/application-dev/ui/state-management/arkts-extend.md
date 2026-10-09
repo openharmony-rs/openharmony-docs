@@ -2,12 +2,12 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @BlYynNe-->
-<!--Designer: @lixingchi1-->
+<!--Designer: @BlYynNe-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=ed949516539584a147ef0ba761440b9d93794a55 translatedAt=2026-09-21T10:56:23.318Z pushedAt=2026-09-23T07:47:00.623Z -->
 
-Apart from [\@Styles](arkts-style.md) used to reuse styles, ArkUI also provides \@Extend for extending component styles.
-
+In the preceding example, you can use [\@Styles](arkts-style.md) to reuse styles. Building on \@Styles, ArkUI provides [\@Extend](../../reference/apis-arkui/arkui-ts/ts-custom-component-decorator-extend.md#extend) for extending component styles.
 
 > **NOTE**
 >
@@ -24,7 +24,7 @@ Apart from [\@Styles](arkts-style.md) used to reuse styles, ArkUI also provides 
 
 
 ```ts
-@Extend(UIComponentName) function functionName { ... }
+@Extend(UIComponentName) function functionName() { ... }
 ```
 
 
@@ -32,7 +32,7 @@ Apart from [\@Styles](arkts-style.md) used to reuse styles, ArkUI also provides 
 
 - Unlike \@Styles, \@Extend can encapsulate private attributes, private events, and globally defined methods of specific components.
   <!-- @[Extend_Global_Function_Extension_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/GlobalFunctionExtension.ets) -->
-  
+
   ``` TypeScript
   // @Extend(Text) supports the private attribute fontColor of the Text component.
   @Extend(Text)
@@ -63,9 +63,9 @@ Apart from [\@Styles](arkts-style.md) used to reuse styles, ArkUI also provides 
   }
   ```
 
-- Unlike \@Styles, \@Extend enables decorated methods to accept parameters. When calling these methods, you pass parameters following standard TypeScript parameter passing conventions.
+- Different from \@Styles decorated methods, the \@Extend decorated methods support passing parameters. The calling complies with the TS method calling convention.
   <!-- @[Extend_private_property_fancy_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendParameterUsage.ets) -->
-  
+
   ``` TypeScript
   // xxx.ets
   @Extend(Text)
@@ -89,9 +89,10 @@ Apart from [\@Styles](arkts-style.md) used to reuse styles, ArkUI also provides 
   ```
 
 - Parameters passed into \@Extend decorated methods can be functions serving as event handlers.
-  <!-- @[Extend_Function_handle_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendFunctionHandle.ets) -->
-  
+  <!-- @[Extend_Function_handle_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendFunctionHandle.ets) --> 
+
   ``` TypeScript
+  // Methods decorated with @Extend support function parameters.
   @Extend(Text)
   function makeMeClick(onClick: () => void) {
     .backgroundColor(Color.Blue)
@@ -119,9 +120,10 @@ Apart from [\@Styles](arkts-style.md) used to reuse styles, ArkUI also provides 
   ```
 
 - Parameters passed into \@Extend decorated methods can also be [state variables](arkts-state-management-overview.md). Changes to these state variables cause the UI to re-render.
-  <!-- @[Extend_Refresh_rendering_four](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendUIStateVariable.ets) -->
-  
+  <!-- @[Extend_Refresh_rendering_four](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendUIStateVariable.ets) --> 
+
   ``` TypeScript
+  // Use a state variable as the @Extend parameter so that state changes drive the Text style refresh.
   @Extend(Text)
   function fancy(fontSize: number) {
     .fontColor(Color.Blue)
@@ -145,64 +147,155 @@ Apart from [\@Styles](arkts-style.md) used to reuse styles, ArkUI also provides 
     }
   }
   ```
-![](figures/arkts-extend-1.gif)
+
+  ![](figures/arkts-extend-1.gif)
 
 ## Constraints
 
 - Unlike \@Styles, \@Extend must be defined globally, outside of any component declaration.
 
-> **NOTE**
->
-> Styles defined using \@Extend can be used only in the file where they are declared and cannot be exported to other files.
->
-> For styles requiring cross-file reuse, you are advised to use [AttributeModifier](../../ui/arkts-user-defined-extension-attributeModifier.md).
+  > **NOTE**
+  >
+  > @Extend can be used only in the current file and cannot be exported.
+  >
+  > To implement the export feature, you are advised to use [AttributeModifier](../arkts-user-defined-extension-attributeModifier.md).
 
-**Incorrect Usage**
+  **Incorrect Usage**
 
-```ts
-@Entry
-@Component
-struct FancyUse {
-  // Incorrect. @Extend must be defined globally, outside of any component declaration.
-  @Extend(Text) function fancy (fontSize: number) {
+  ```ts
+  @Entry
+  @Component
+  struct FancyUse {
+    // Incorrect usage. @Extend supports only global definition, not definition inside a component.
+    @Extend(Text) function fancy (fontSize: number) {
+      .fontSize(fontSize)
+    }
+
+    build() {
+      Row({ space: 10 }) {
+        Text('Fancy')
+          .fancy(16)
+      }
+    }
+  }
+  ```
+
+  **Correct Usage**
+  <!-- @[Extend_Positive_Example_five](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendPositiveExample.ets) --> 
+
+  ``` TypeScript
+  // Correct approach
+  @Extend(Text)
+  function fancy(fontSize: number) {
     .fontSize(fontSize)
   }
 
-  build() {
-    Row({ space: 10 }) {
-      Text('Fancy')
-        .fancy(16)
+  @Entry
+  @Component
+  struct FancyUse {
+    build() {
+      Row({ space: 10 }) {
+        Text('Fancy')
+          .fancy(16)
+      }
     }
   }
-}
-```
+  ```
 
-**Correct Usage**
-<!-- @[Extend_Positive_Example_five](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendPositiveExample.ets) -->
+- Functions decorated with @Extend can be used only in the current file and cannot be exported or called in other files.
 
-``` TypeScript
-// Correct usage.
-@Extend(Text)
-function fancy(fontSize: number) {
-  .fontSize(fontSize)
-}
+**Incorrect Usage**
 
-@Entry
-@Component
-struct FancyUse {
-  build() {
-    Row({ space: 10 }) {
-      Text('Fancy')
-        .fancy(16)
+  ``` TypeScript
+    // Incorrect usage: Do not use an @Extend function defined in another file (for example, pageOne) in pageTwo.
+    // pageOne.ets
+    @Extend(Button)
+    function ButtonUse() {
+      .width(100)
+      .buttonStyle(ButtonStyleMode.NORMAL)
     }
-  }
-}
-```
 
-## Use Cases
+    @Entry
+    @Component
+    struct extendUseOne {
+      build() {
+        Row() {
+          Button()
+            .ButtonUse()
+            .height(200)
+        }
+      }
+    }
+  ```
 
-The following example declares three Text components, each of which is set with the [fontStyle](../../../application-dev/reference/apis-arkui/arkui-ts/ts-appendix-enums.md#fontstyle), [fontWeight](../../../application-dev/reference/apis-arkui/arkui-ts/ts-appendix-enums.md#fontweight), and [backgroundColor](../../../application-dev/reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor) styles.
-<!-- @[Extend_Usage_Scenario_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendUsageScenario.ets) -->
+  ``` TypeScript
+    // pageTwo.ets
+    @Entry
+    @Component
+    struct TextUse {
+      build() {
+        Row() {
+          Text('this is TextUse')
+
+          Button()
+            .ButtonUse()  // A compilation warning is generated: Property 'ButtonUse' does not exist on type 'ButtonAttribute'.
+            .height(50)
+        }
+      }
+    }
+  ```
+
+  **Correct Usage**
+
+  ``` TypeScript
+    // Correct approach: In the pageTwo file, you can define an @Extend function with a different name from the @Extend function in the pageOne file.
+    // pageOne.ets
+    @Extend(Button)
+    function ButtonUse() {
+      .width(100)
+      .buttonStyle(ButtonStyleMode.NORMAL)
+    }
+
+    @Entry
+    @Component
+    struct extendUseOne {
+      build() {
+        Row() {
+          Button()
+            .ButtonUse()
+            .height(200)
+        }
+      }
+    }
+  ```
+
+  ``` TypeScript
+    // pageTwo.ets
+    @Extend(Button)
+    function ButtonUse2() {
+      .width(200)
+      .buttonStyle(ButtonStyleMode.EMPHASIZED)
+    }
+
+    @Entry
+    @Component
+    struct TextUse {
+      build() {
+        Row() {
+          Text('this is TextUse')
+
+          Button()
+            .ButtonUse2()
+            .height(50)
+        }
+      }
+    }
+  ```
+
+## When to Use
+
+The following example declares three **Text** components, each configured with [fontStyle](../../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#fontstyle), [fontWeight](../../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#fontweight), and [backgroundColor](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor) styles.
+<!-- @[Extend_Usage_Scenario_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendUsageScenario.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -212,6 +305,7 @@ struct FancyUse {
 
   build() {
     Row({ space: 10 }) {
+      // Repeatedly set styles for the Text component.
       Text(`${this.label}`)
         .fontStyle(FontStyle.Italic)
         .fontWeight(500)
@@ -231,9 +325,10 @@ struct FancyUse {
 ![](figures/arkts-extend-2.png)
 
 Using \@Extend for style composition and reuse:
-<!-- @[Extend_Usage_Scenario_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendUsageScenariotwo.ets) -->
+<!-- @[Extend_Usage_Scenario_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendUsageScenariotwo.ets) --> 
 
 ``` TypeScript
+// Use @Extend to encapsulate Text style combinations for easy reuse.
 @Extend(Text)
 function fancyText(weightValue: number, color: Color) {
   .fontStyle(FontStyle.Italic)
@@ -242,8 +337,8 @@ function fancyText(weightValue: number, color: Color) {
 }
 ```
 
-Simplified code with the use of \@Extend:
-<!-- @[Extend_Usage_Scenario_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendUsageScenariotwo.ets) -->
+After combining styles with \@Extend, the code becomes more concise and readable.
+<!-- @[Extend_Usage_Scenario_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/extend/ExtendUsageScenariotwo.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -253,6 +348,7 @@ struct FancyUse {
 
   build() {
     Row({ space: 10 }) {
+      // Call the fancyText reusable style encapsulated by @Extend.
       Text(`${this.label}`)
         .fancyText(100, Color.Blue)
       Text(`${this.label}`)

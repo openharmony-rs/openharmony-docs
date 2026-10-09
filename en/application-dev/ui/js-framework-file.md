@@ -16,7 +16,7 @@ The following figure shows the typical directory structure of the JavaScript mod
 
 **Figure 2** Directory structure for [multiple instances](../application-models/pageability-launch-type.md) resource sharing
 
-![en-us_image_0000001173164777](figures/en-us_image_0000001173164777.png)
+![en-us_image_0000001173164777](figures/Directory-Structure.png)
 
 Functions of the files are as follows:
 

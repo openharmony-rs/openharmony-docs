@@ -1,4 +1,5 @@
 # Unified Data Definition Overview
+
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @jcwen-->
@@ -22,8 +23,14 @@ A uniform data struct defines the data of a certain type (UTD). Uniform data str
 
 ### Multi-Entry Struct
 
-A single interaction between devices or applications may involve multiple records, each of which can have different representations. This leads to the multi-entry struct, which allows the same data to be presented in multiple formats in a unified data struct. During the interaction process, the data provider offers records in various formats, and the data consumer retrieves and uses data in a specific format based on service requirements.
+During interactions between devices and applications, a single interaction may contain multiple records, and each record may have different representations (entries). To address this scenario, the concept of multi-entry struct is introduced. During an interaction, the data provider supplies different data entries for a record. After obtaining the data, the data consumer can retrieve the required entry from the record based on service requirements.
 
 ![multi-entry-structure](figures/multi-entry-structrue.PNG)
 
 As shown in the preceding figure, **UnifiedRecord** identifies different records, which contain different data. In each **UnifiedRecord**, the same data is stored in different formats.
+
+## Samples
+
+For the development of unified data definitions, the following sample is available for reference:
+
+- [UTDType (ArkTS) (API11)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/DataManagement/UDMF/UniformTypeDescriptor/UTDType)

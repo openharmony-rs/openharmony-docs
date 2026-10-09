@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @linjunjie6-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 app.ability.WantAgent模块提供了创建WantAgent实例、获取实例的用户ID、获取want信息、比较WantAgent实例和获取bundle名称等能力。该模块将会取代[@ohos.wantAgent](js-apis-wantAgent.md)模块，建议优先使用本模块。
 
@@ -44,6 +44,7 @@ getWant(agent: WantAgent, callback: AsyncCallback\<Want\>): void
 
 | 错误码ID    | 错误信息            |
 |-----------|--------------------|
+| 202        | Not System App. Interface caller is not a system app. |
 | 401        | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 16000007   | Service busy. There are concurrent tasks. Try again later. |
 | 16000015   | Service timeout.|
@@ -55,7 +56,7 @@ getWant(agent: WantAgent, callback: AsyncCallback\<Want\>): void
 import { wantAgent, WantAgent as _WantAgent, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// wantAgent对象
+// 用于存储创建的WantAgent实例
 let wantAgentData: _WantAgent;
 // WantAgentInfo对象
 let wantAgentInfo: wantAgent.WantAgentInfo = {
@@ -85,22 +86,23 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
   wantAgentFlags:[wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
 };
 
-// getWantAgent回调
-function getWantAgentCallback(err: BusinessError, data: _WantAgent) {
+// 创建WantAgent实例的回调函数
+let getWantAgentCallback = (err: BusinessError, data: _WantAgent) => {
   if (err) {
     console.error(`getWantAgent failed, code: ${err.code}, message: ${err.message}`);
   } else {
     wantAgentData = data;
   }
-  // getWant回调
+  // 获取Want数据的回调函数
   let getWantCallback = (err: BusinessError, data: Want) => {
-    if(err.code) {
-      console.error(`getWant failed, code: ${err.code}, message: ${err.message}.`);
+    if (err.code) {
+      console.error(`Failed to getWant. Code: ${err.code}, message: ${err.message}`);
     } else {
       console.info(`getWant success, data: ${JSON.stringify(data)}.`);
     }
   }
   try {
+    // 获取WantAgent对象的Want数据
     wantAgent.getWant(wantAgentData, getWantCallback);
   } catch(err) {
     let code = (err as BusinessError).code;
@@ -110,6 +112,7 @@ function getWantAgentCallback(err: BusinessError, data: _WantAgent) {
 }
 
 try {
+  // 创建WantAgent实例
   wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
 } catch(err) {
   let code = (err as BusinessError).code;
@@ -148,12 +151,11 @@ getWant(agent: WantAgent): Promise\<Want\>
 
 | 错误码ID    | 错误信息            |
 |-----------|--------------------|
+| 202        | Not System App. Interface caller is not a system app. |
 | 401        | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 16000007   | Service busy. There are concurrent tasks. Try again later. |
 | 16000015   | Service timeout.|
 | 16000151   | Invalid wantAgent object.|
-
-错误码详细介绍请参考[元能力子系统错误码](errorcode-ability.md)
 
 **示例：**
 
@@ -161,7 +163,7 @@ getWant(agent: WantAgent): Promise\<Want\>
 import { wantAgent, WantAgent as _WantAgent, Want } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// wantAgent对象
+// 用于存储创建的WantAgent实例
 let wantAgentData: _WantAgent;
 // WantAgentInfo对象
 let wantAgentInfo: wantAgent.WantAgentInfo = {
@@ -191,14 +193,15 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
   wantAgentFlags:[wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
 };
 
-// getWantAgent回调
-function getWantAgentCallback(err: BusinessError, data: _WantAgent) {
+// 创建WantAgent实例的回调函数
+let getWantAgentCallback = (err: BusinessError, data: _WantAgent) => {
   if (err) {
     console.error(`getWantAgent failed, code: ${err.code}, message: ${err.message}`);
   } else {
     wantAgentData = data;
   }
   try {
+    // 获取WantAgent对象的Want数据
     wantAgent.getWant(wantAgentData).then((data)=>{
       console.info(`getWant success, data: ${JSON.stringify(data)}`);
     }).catch((err: BusinessError)=>{
@@ -212,6 +215,7 @@ function getWantAgentCallback(err: BusinessError, data: _WantAgent) {
 }
 
 try {
+  // 创建WantAgent实例
   wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
 } catch(err) {
   let code = (err as BusinessError).code;
@@ -234,7 +238,7 @@ setWantAgentMultithreading(isMultithreadingSupported: boolean) : void
 
 | 参数名     | 类型                  | 必填 | 说明                            |
 | ---------- | --------------------- | ---- | ------------------------------- |
-| isMultithreadingSupported    | boolean    | 是   |表示是否开启多线程传递功能。true表示开启，false表示关闭。   |
+| isMultithreadingSupported    | boolean    | 是   | 是否开启WantAgent多线程传递功能。true表示开启，false表示关闭。   |
 
 **错误码**：
 
@@ -242,7 +246,7 @@ setWantAgentMultithreading(isMultithreadingSupported: boolean) : void
 
 | 错误码ID    | 错误信息            |
 |-----------|--------------------|
-| 202       | Not system app. Interface caller is not a system app. |
+| 202       | Not System App. Interface caller is not a system app. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 
 **示例**：
@@ -282,7 +286,7 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
 };
 
 // 定义getWantAgent回调
-function getWantAgentCallback(err: BusinessError, data: _WantAgent) {
+let getWantAgentCallback = (err: BusinessError, data: _WantAgent) => {
   if (err) {
     console.error(`Failed to call getWantAgentCallback. Code is ${err.code}. Message is ${err.message}.`);
   } else {
@@ -290,16 +294,22 @@ function getWantAgentCallback(err: BusinessError, data: _WantAgent) {
   }
 
   try {
+    // 开启WantAgent多线程传递功能
     wantAgent.setWantAgentMultithreading(true);
   } catch (err) {
-    console.error(`Failed to set wantAgentMultithreading. Code is ${err.code}. Message is ${err.message}.`);
+    let code = (err as BusinessError).code;
+    let msg = (err as BusinessError).message;
+    console.error(`Failed to set wantAgentMultithreading. Code: ${code}, message: ${msg}`);
   }
 }
 
 try {
+  // 创建WantAgent实例
   wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
 } catch (err) {
-  console.error(`Failed to get wantAgent. Code is ${err.code}. Message is ${err.message}.`);
+  let code = (err as BusinessError).code;
+  let msg = (err as BusinessError).message;
+  console.error(`Failed to get wantAgent. Code: ${code}, message: ${msg}`);
 }
 ```
 
@@ -315,6 +325,8 @@ triggerAsync(agent: WantAgent, triggerInfo: TriggerInfo, context: Context): Prom
 
 **系统接口**：此接口为系统接口。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名        | 类型                          | 必填 | 说明                            |
@@ -327,7 +339,7 @@ triggerAsync(agent: WantAgent, triggerInfo: TriggerInfo, context: Context): Prom
 
 | 类型                                                        | 说明                                                         |
 | ----------------------------------------------------------- | ------------------------------------------------------------ |
-| Promise\<[CompleteData](js-apis-app-ability-wantAgent.md#completedata)\> | Promise对象，返回主动激发WantAgent获得的数据。 |
+| Promise\<[CompleteData](js-apis-app-ability-wantAgent.md#completedata)\> | Promise对象，返回主动触发WantAgent获得的数据。 |
 
 **错误码：**
 
@@ -391,7 +403,7 @@ class MyAbility extends UIAbility {
       // 创建wantAgent对象
       wantAgent.getWantAgent(wantAgentInfo, (err: BusinessError, data: WantAgent) => {
         if (err) {
-          console.info(`getWantAgent failed, code: ${err.code}, message: ${err.message}`);
+          console.error(`getWantAgent failed, code: ${err.code}, message: ${err.message}`);
         } else {
           wantAgentData = data;
         }
@@ -405,15 +417,15 @@ class MyAbility extends UIAbility {
           });
         } catch (err) {
           console.error(`triggerAsync failed! ${err.code} ${err.message}`);
-        }
-      });
-    } catch (err) {
-      let code = (err as BusinessError).code;
-      let msg = (err as BusinessError).message;
-      console.error(`getWantAgent failed, code: ${code}, message: ${msg}.`);
-    }
-  }
-}
+         }
+       });
+     } catch (err) {
+       let code = (err as BusinessError).code;
+       let msg = (err as BusinessError).message;
+       console.error(`getWantAgent failed, code: ${code}, message: ${msg}.`);
+     }
+   }
+ }
 ```
 
 ## wantAgent.createLocalWantAgent<sup>20+</sup>
@@ -424,7 +436,7 @@ createLocalWantAgent(info: LocalWantAgentInfo): WantAgent
 
 > **说明：**
 > 
-> - 本接口创建的本地WantAgent实例仅存储于WantAgent客户端，不受WantAgent服务端管理。使用该本地实例时，需要校验实例，以保证安全性。  
+> - 本接口创建的本地WantAgent实例仅存储于WantAgent客户端，不受WantAgent服务端管理。使用该本地实例时，需要校验实例的有效性和来源，以保证安全性。  
 >
 > - 本地WantAgent实例创建后，触发方法参见[wantAgent.triggerAsync](#wantagenttriggerasync20)接口说明。
 
@@ -531,7 +543,7 @@ isLocalWantAgent(agent: WantAgent): boolean
 **示例：**
 
 ```ts
-import { wantAgent } from '@kit.AbilityKit';
+import { wantAgent, Want } from '@kit.AbilityKit';
 import type { WantAgent } from '@kit.AbilityKit';
 
 // 声明wantAgent实例
@@ -566,6 +578,7 @@ let localWantAgentInfo: wantAgent.LocalWantAgentInfo = {
 // 创建WantAgent实例并获取是否为本地WantAgent实例
 try {
   wantAgentData = wantAgent.createLocalWantAgent(localWantAgentInfo);
+  // 判断WantAgent实例是否为本地实例
   let isLocal: boolean = wantAgent.isLocalWantAgent(wantAgentData);
 } catch (err) {
   console.error('call isLocalWantAgent failed');
@@ -580,4 +593,4 @@ try {
 
 | 名称                      | 值 | 说明                                            |
 |-------------------------|---|-----------------------------------------------|
-| START_SERVICE_EXTENSION<sup>12+</sup> | 6 | 开启一个ServiceExtension。<br/>**系统接口**：该接口为系统接口。 |
+| START_SERVICE_EXTENSION<sup>12+</sup> | 6 | 启动一个ServiceExtension。<br>**系统接口**：该接口为系统接口。 |

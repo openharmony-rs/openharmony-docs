@@ -1,9 +1,9 @@
 # 目标拍摄跟踪开发指南
 <!--Kit: Mechanic Kit-->
 <!--Subsystem: Mechanic-->
-<!--Owner: @hobbycao-->
-<!--Designer: @saga2025-->
-<!--Tester: @zhaodengqi-->
+<!--Owner: @qxqxqxqxqx-->
+<!--Designer: @peter_1024-->
+<!--Tester: @Aullar-->
 <!--Adviser: @hu-zhiqiong-->
 
 从API version 20开始，支持使用机械体设备控制器，提供更丰富的拍摄体验，如目标跟踪和自动构图等专业功能，支持第三方应用。
@@ -12,7 +12,7 @@
 
 ## 接口介绍
 
-机械体设备控制器API的接口使用指导请参见[MechanicManager API参考](../reference/apis-mechanic-kit/js-apis-mechanicManager.md)。
+机械体设备控制器API的接口使用指导请参见[@ohos.distributedHardware.mechanicManager (机械体控制模块)](../reference/apis-mechanic-kit/js-apis-mechanicManager.md)。
 
 | 接口名                                                               | 描述                       |
 | -------------------------------------------------------------------- | -------------------------- |
@@ -23,16 +23,13 @@
 |getCameraTrackingEnabled(): boolean | 检查是否启用了摄像头跟踪。<br>**说明**：从API version 20开始支持。|
 |on(type: 'trackingStateChange', callback: Callback\<TrackingEventInfo>): void | 注册trackingStateChange事件的回调监听。<br>**说明**：从API version 20开始支持。|
 |off(type: 'trackingStateChange', callback?: Callback\<TrackingEventInfo>): void | 取消注册trackingStateChange事件的回调监听。<br>**说明**：从API version 20开始支持。|
-|setCameraTrackingLayout(trackingLayout: CameraTrackingLayout): void | 设置摄像头跟踪布局。<br>**说明**：从API version 20开始支持。|
-|getCameraTrackingLayout(): CameraTrackingLayout | 获取此机械设备摄像头跟踪布局。<br>**说明**：从API version 20开始支持。|
-|on(type: 'rotationAxesStatusChange', callback: Callback\<RotationAxesStateChangeInfo>): void | 注册rotationAxesStatusChange事件的回调监听。<br>**说明**：从API version 20开始支持。|
-|off(type: 'rotationAxesStatusChange', callback?: Callback\<RotationAxesStateChangeInfo>): void | 取消注册rotationAxesStatusChange事件的回调监听。<br>**说明**：从API version 20开始支持。|
+|getCameraTrackingLayout(): CameraTrackingLayout | 获取此机械体设备摄像头跟踪布局。<br>**说明**：从API version 20开始支持。|
 
 ## 开发步骤
 
 ### 开发准备
 
-1. 支持Mechanic Kit协议的机械体设备。
+1. 支持Mechanic Kit协议的机械体设备，参考管理设备连接状态第2点。
 2. 若要验证目标跟踪功能，主设备的相机驱动必须支持人脸检测。
 3. 请将SDK更新到API 20或以上版本，具体操作参见[更新指南](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-software-install)。
 4. 请确保机械体设备已通过蓝牙与主设备连接。
@@ -48,7 +45,15 @@
     import { mechanicManager } from '@kit.MechanicKit';
     ```
 
-2. 获取已连接的机械体列表。
+2. 查询设备是否支持机械体设备控制能力。
+   <!-- @[is_control_supported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
+   
+   ``` TypeScript
+   let isSupported: boolean = mechanicManager.isControlSupported();
+   console.info(`'isSupported:' ${isSupported}`);
+   ```
+
+3. 获取已连接的机械体列表。
    <!-- @[get_mechDevices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
 
     ```ts
@@ -78,7 +83,7 @@
     }
     ```
 
-3. 监听设备的连接状态变化，以便及时响应。
+4. 监听设备的连接状态变化，以便及时响应。
    <!-- @[on_attachStateChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/AttachStateChangeCallbackRegister.ets) -->
 
     ```ts
@@ -98,7 +103,7 @@
     mechanicManager.on('attachStateChange', attachStateChangeCallback);
     ```
 
-4. 处理设备的连接与断开的事件。
+5. 处理设备的连接与断开的事件。
    <!-- @[handle_device_attached_detached](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/AttachStateChangeCallbackRegister.ets) -->
    
     ```ts
@@ -110,12 +115,12 @@
    
     function handleDeviceDetached(mechInfo: mechanicManager.MechInfo) {
     console.info(`Device disconnected: ${mechInfo.mechName} (ID: ${mechInfo.mechId})`);
-    savedMechanicIds.filter(id => id !== mechInfo.mechId);
+    savedMechanicIds = savedMechanicIds.filter(id => id !== mechInfo.mechId);
     // To do sth.
     }
     ```
    
-5. 取消连接状态的监听。
+6. 取消连接状态的监听。
    <!-- @[off_attachStateChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/AttachStateChangeCallbackRegister.ets) -->
    
     ```ts

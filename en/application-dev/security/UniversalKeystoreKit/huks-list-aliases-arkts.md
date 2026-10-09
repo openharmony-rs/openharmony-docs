@@ -17,7 +17,7 @@ The [Group Key](huks-group-key-overview.md) feature is supported since API versi
 
 ## How to Develop
 
-1. Initialize the key property set to query the tags of key aliases. The tags support only [HUKS_TAG_AUTH_STORAGE_LEVEL](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_authstoragelevel).
+1. Initialize the key property set to query the tags of key aliases. Only the tag [HUKS_TAG_AUTH_STORAGE_LEVEL](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag) is supported.
 
 2. Use [listAliases](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukslistaliases12) to query the key aliases.
 
@@ -51,4 +51,3 @@ async function testListAliases() {
   }
 }
 ```
-<!--no_check-->

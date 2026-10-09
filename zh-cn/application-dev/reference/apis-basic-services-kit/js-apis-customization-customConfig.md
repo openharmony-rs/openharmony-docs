@@ -5,7 +5,7 @@
 <!--Owner: @liule_123-->
 <!--Designer: @sunshine_1984-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @fang-jinxu-->
 
 本模块接口为应用提供定制配置的获取能力，如渠道号等。
 
@@ -27,7 +27,7 @@ getChannelId(): string
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
-**系统能力：**SystemCapability.Customization.CustomConfig
+**系统能力：** SystemCapability.Customization.CustomConfig
 
 **返回值：**
 

@@ -2,12 +2,13 @@
 
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: ResourceSchedule-->
-<!--Owner: @cheng-shichang-->
+<!--Owner: @xufu7-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=298e4d5de4139f6963e24584b03fa18002046fd4 translatedAt=2026-09-22T01:19:16.825Z pushedAt=2026-09-22T08:31:06.196Z -->
 
-The **WorkSchedulerExtensionAbility** module provides callbacks for deferred task scheduling. You can override the APIs provided by this module. When a deferred task is triggered, the system calls back the application through the APIs and processes the task logic in the callback.
+The **WorkSchedulerExtensionAbility** module provides callbacks for deferred task scheduling. You can override the APIs provided by this module. When a deferred task is triggered, the system calls back the application through the APIs allowing you to process the task logic in the callback.
 
 >  **NOTE**
 >
@@ -21,31 +22,48 @@ The **WorkSchedulerExtensionAbility** module provides callbacks for deferred tas
 import { WorkSchedulerExtensionAbility } from '@kit.BackgroundTasksKit';
 ```
 
+## Constraints
+To ensure system security and stability and prevent **WorkSchedulerExtensionAbility** from abusing system resources, the system imposes certain restrictions. Importing the following modules is not supported:
+
+  [@ohos.resourceschedule.backgroundTaskManager (Background Task Management)](./js-apis-resourceschedule-backgroundTaskManager.md)
+
+  [@ohos.backgroundTaskManager (Background Task Management)](./js-apis-backgroundTaskManager.md)
+
+  [@ohos.multimedia.camera (Camera Management)](../apis-camera-kit/arkts-apis-camera.md)
+
+  [@ohos.multimedia.audio (Audio Management)](../apis-audio-kit/arkts-apis-audio.md)
+
+  [@ohos.multimedia.media (Media)](../apis-media-kit/arkts-apis-media.md)
+
 ## WorkSchedulerExtensionContext<sup>10+</sup>
 
 type WorkSchedulerExtensionContext = _WorkSchedulerExtensionContext
+
+**WorkSchedulerExtensionContext** represents the context of **WorkSchedulerExtensionAbility** and inherits from [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md).
 
 **System capability**: SystemCapability.ResourceSchedule.WorkScheduler
 
 | Type| Description|
 | -------- |  -------- |
-| [_WorkSchedulerExtensionContext](js-apis-WorkSchedulerExtensionContext.md)|  Context of the WorkSchedulerExtensionAbility.|
+| [_WorkSchedulerExtensionContext](js-apis-WorkSchedulerExtensionContext.md)|  Context of the **WorkSchedulerExtension**.|
 
 ## WorkSchedulerExtensionAbility
 
-### Properties
+Delayed task callback. When the scheduling conditions are met or the scheduling ends, the system calls back the [onWorkStart()](#onworkstart) or [onWorkStop()](#onworkstop) method in the application's WorkSchedulerExtensionAbility.
+
+### Attributes
 
 **System capability**: SystemCapability.ResourceSchedule.WorkScheduler
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| context<sup>10+</sup> | [WorkSchedulerExtensionContext](js-apis-WorkSchedulerExtensionContext.md)  | No| No| Context of the WorkSchedulerExtensionAbility. This context inherits from **ExtensionContext**.|
+| context<sup>10+</sup> | [WorkSchedulerExtensionContext](js-apis-WorkSchedulerExtensionContext.md)  | No| No| Context of the **WorkSchedulerExtensionAbility**. This context inherits from **ExtensionContext**.|
 
 ### onWorkStart
 
 onWorkStart(work: workScheduler.WorkInfo): void
 
-Called when the system starts scheduling the deferred task.
+Called when the system starts scheduling the deferred task. This callback is triggered when the scheduling conditions are met.
 
 **System capability**: SystemCapability.ResourceSchedule.WorkScheduler
 
@@ -53,27 +71,26 @@ Called when the system starts scheduling the deferred task.
 
 | Name | Type                                      | Mandatory  | Description            |
 | ---- | ---------------------------------------- | ---- | -------------- |
-| work | [workScheduler.WorkInfo](js-apis-resourceschedule-workScheduler.md#workinfo) | Yes   | Deferred task that starts.|
+| work | [workScheduler.WorkInfo](js-apis-resourceschedule-workScheduler.md#workinfo) | Yes   | The task to be added to the execution queue.|
 
-**Example**
+**Example** 
 
-  ```ts
-  import { workScheduler } from '@kit.BackgroundTasksKit';
-  import { WorkSchedulerExtensionAbility } from '@kit.BackgroundTasksKit';
+```ts
+import { WorkSchedulerExtensionAbility, workScheduler } from '@kit.BackgroundTasksKit';
 
-  export default class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtensionAbility {
-    onWorkStart(workInfo: workScheduler.WorkInfo) {
-        console.info(`MyWorkSchedulerExtensionAbility onWorkStart, workId: ${workInfo.workId},
-            bundleName: ${workInfo.bundleName}, abilityName: ${workInfo.abilityName}.`);
-    }
+export default class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtensionAbility {
+  onWorkStart(work: workScheduler.WorkInfo) {
+    console.info(`MyWorkSchedulerExtensionAbility onWorkStart, workId: ${work.workId},
+      bundleName: ${work.bundleName}, abilityName: ${work.abilityName}.`);
   }
-  ```
+}
+```
 
 ### onWorkStop
 
 onWorkStop(work: workScheduler.WorkInfo): void
 
-Called when the system stops scheduling the deferred task. This callback is triggered when the deferred task times out for 2 minutes or the stopWork API is called to cancel the task.
+Called when the system stops scheduling the deferred task. This callback is triggered when the deferred task times out for 2 minutes or the [stopWork](js-apis-resourceschedule-workScheduler.md#workschedulerstopwork) API is called to cancel the task.
 
 **System capability**: SystemCapability.ResourceSchedule.WorkScheduler
 
@@ -81,19 +98,18 @@ Called when the system stops scheduling the deferred task. This callback is trig
 
 | Name | Type                                      | Mandatory  | Description            |
 | ---- | ---------------------------------------- | ---- | -------------- |
-| work | [workScheduler.WorkInfo](js-apis-resourceschedule-workScheduler.md#workinfo) | Yes   | Deferred task that stops.|
+| work | [workScheduler.WorkInfo](js-apis-resourceschedule-workScheduler.md#workinfo) | Yes   | Task in the execution queue for which the callback is to be ended.|
 
 
-**Example**
+**Example** 
 
-  ```ts
-  import { workScheduler } from '@kit.BackgroundTasksKit';
-  import { WorkSchedulerExtensionAbility } from '@kit.BackgroundTasksKit';
+```ts
+import { WorkSchedulerExtensionAbility, workScheduler } from '@kit.BackgroundTasksKit';
 
-  export default class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtensionAbility {
-    onWorkStop(workInfo: workScheduler.WorkInfo) {
-        console.info(`MyWorkSchedulerExtensionAbility onWorkStop, workId: ${workInfo.workId},
-            bundleName: ${workInfo.bundleName}, abilityName: ${workInfo.abilityName}.`);
-    }
+export default class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtensionAbility {
+  onWorkStop(work: workScheduler.WorkInfo) {
+    console.info(`MyWorkSchedulerExtensionAbility onWorkStop, workId: ${work.workId},
+      bundleName: ${work.bundleName}, abilityName: ${work.abilityName}.`);
   }
-  ```
+}
+```

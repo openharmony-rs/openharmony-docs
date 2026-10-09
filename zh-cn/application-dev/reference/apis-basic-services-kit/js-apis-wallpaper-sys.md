@@ -2,10 +2,10 @@
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @dreamsky8023-->
-<!--Designer: @dreamsky8023-->
+<!--Owner: @gcw_jQMboB9m-->
+<!--Designer: @gcw_jQMboB9m-->
 <!--Tester: @murphy84-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @fang-jinxu-->
 
 壁纸管理服务为OpenHarmony系统服务，提供壁纸切换功能。从API 9开始壁纸管理的接口调整为系统API，壁纸的切换只能通过系统应用来完成。壁纸管理提供壁纸切换通道，使用壁纸的应用（如：桌面）需订阅壁纸变化通知并刷新壁纸显示。
 
@@ -21,6 +21,7 @@
 ```ts
 import { wallpaper } from '@kit.BasicServicesKit';
 ```
+
 ## WallpaperResourceType<sup>10+</sup>
 
 定义壁纸资源的枚举类型。
@@ -30,11 +31,11 @@ import { wallpaper } from '@kit.BasicServicesKit';
 **系统接口**：此接口为系统接口。
 
 | 名称 | 值 |说明 |
-| -------- | -------- |-------- |
-| DEFAULT | 0 |默认为图片资源。 |
-| PICTURE | 1 |图片资源。 |
-| VIDEO | 2 |视频资源。 |
-| PACKAGE | 3 |包资源。 |
+| -------- | -------- | -------- |
+| DEFAULT | 0 | 默认为图片资源。 |
+| PICTURE | 1 | 图片资源。 |
+| VIDEO | 2 | 视频资源。 |
+| PACKAGE | 3 | 包资源。 |
 
 ## FoldState<sup>14+</sup>
 
@@ -45,10 +46,10 @@ import { wallpaper } from '@kit.BasicServicesKit';
 **系统接口**：此接口为系统接口。
 
 | 名称 | 值 |说明 |
-| -------- | -------- |-------- |
-| NORMAL | 0 |设备默认状态。 |
-| UNFOLD_ONCE_STATE | 1 |一次展开态。 |
-| UNFOLD_TWICE_STATE | 2 |二次展开态。 |
+| -------- | -------- | -------- |
+| NORMAL | 0 | 设备默认状态。 |
+| UNFOLD_ONCE_STATE | 1 | 一次展开态。 |
+| UNFOLD_TWICE_STATE | 2 | 二次展开态。 |
 
 ## RotateState<sup>14+</sup>
 
@@ -58,10 +59,10 @@ import { wallpaper } from '@kit.BasicServicesKit';
 
 **系统接口**：此接口为系统接口。
 
-| 名称 | 值 |说明 |
+| 名称 | 值 | 说明 |
 | -------- | -------- |-------- |
-| PORTRAIT | 0 |设备默认为竖屏状态。 |
-| LANDSCAPE | 1 |横屏状态。 |
+| PORTRAIT | 0 | 设备默认为竖屏状态。 |
+| LANDSCAPE | 1 | 横屏状态。 |
 
 ## WallpaperInfo<sup>14+</sup>
 
@@ -71,11 +72,11 @@ import { wallpaper } from '@kit.BasicServicesKit';
 
 **系统接口**：此接口为系统接口。
 
-| 名称 | 类型 | 只读 | 可选 |说明 |
-| -------- | -------- |  -------- |  -------- |  -------- |
-| foldState | [FoldState](#foldstate14) | 否 | 否 |表示设备的折展状态。 |
-| rotateState | [RotateState](#rotatestate14)| 否 | 否 |表示设备的横竖屏状态。 |
-| source | string | 否 | 否 |表示壁纸资源uri，只支持应用沙箱目录。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| foldState | [FoldState](#foldstate14) | 否 | 否 | 表示设备的折展状态。 |
+| rotateState | [RotateState](#rotatestate14) | 否 | 否 | 表示设备的横竖屏状态。 |
+| source | string | 否 | 否 | 表示壁纸资源Uri，只支持应用沙箱目录。 |
 
 ## wallpaper.setVideo<sup>10+</sup>
 
@@ -94,8 +95,8 @@ setVideo(source: string, wallpaperType: WallpaperType, callback: AsyncCallback&l
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | source | string | 是 | mp4文件的Uri路径。 |
-| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype7) | 是 | 壁纸类型。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，设置壁纸成功，error为undefined，否则返回error信息。 |
+| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype) | 是 | 壁纸类型。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当设置动态壁纸成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -112,17 +113,18 @@ setVideo(source: string, wallpaperType: WallpaperType, callback: AsyncCallback&l
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let wallpaperPath = "/data/storage/el2/base/haps/entry/files/test.mp4";
+let wallpaperPath = '/data/storage/el2/base/haps/entry/files/test.mp4';
 try {
     wallpaper.setVideo(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError) => {
         if (error) {
-            console.error(`failed to setVideo. Code: ${error.code}, Message: ${error.message}`);
+            console.error(`Failed to setVideo. Code: ${error.code}, message: ${error.message}`);
             return;
         }
         console.info(`success to setVideo.`);
     });
 } catch (error) {
-    console.error(`failed to setVideo. Code: ${error.code}, Message: ${error.message}`);
+    let err = error as BusinessError;
+    console.error(`Failed to setVideo. Code: ${err.code}, message: ${err.message}`);
 }
 
 ```
@@ -131,7 +133,7 @@ try {
 
 setVideo(source: string, wallpaperType: WallpaperType): Promise&lt;void&gt;
 
-将视频资源设置为桌面或锁屏的动态壁纸。使用promise异步回调。
+将视频资源设置为桌面或锁屏的动态壁纸。使用Promise异步回调。
 
 **需要权限**：ohos.permission.SET_WALLPAPER
 
@@ -144,7 +146,7 @@ setVideo(source: string, wallpaperType: WallpaperType): Promise&lt;void&gt;
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | source | string | 是 | mp4文件的Uri路径。 |
-| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype7) | 是 | 壁纸类型。 |
+| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype) | 是 | 壁纸类型。 |
 
 **错误码：**
 
@@ -160,22 +162,23 @@ setVideo(source: string, wallpaperType: WallpaperType): Promise&lt;void&gt;
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let wallpaperPath = "/data/storage/el2/base/haps/entry/files/test.mp4";
+let wallpaperPath = '/data/storage/el2/base/haps/entry/files/test.mp4';
 try {
     wallpaper.setVideo(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
         console.info(`success to setVideo.`);
     }).catch((error: BusinessError) => {
-        console.error(`failed to setVideo. Code: ${error.code}, Message: ${error.message}`);
+        console.error(`Failed to setVideo. Code: ${error.code}, Message: ${error.message}`);
     });
 } catch (error) {
-    console.error(`failed to setVideo. Code: ${error.code}, Message: ${error.message}`);
+    let err = error as BusinessError;
+    console.error(`Failed to setVideo. Code: ${err.code}, Message: ${err.message}`);
 }
 ```
 
@@ -195,9 +198,9 @@ setCustomWallpaper(source: string, wallpaperType: WallpaperType, callback: Async
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| source | string | 是 | 指定的zip资源包。 |
-| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype7) | 是 | 壁纸类型。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，设置壁纸成功，error为undefined，否则返回error信息。 |
+| source | string | 是 | 指定的zip资源路径。 |
+| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype) | 是 | 壁纸类型。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当设置壁纸资源成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -214,17 +217,18 @@ setCustomWallpaper(source: string, wallpaperType: WallpaperType, callback: Async
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let wallpaperPath = "/data/storage/el2/base/haps/entry/files/test.zip";
+let wallpaperPath = '/data/storage/el2/base/haps/entry/files/test.zip';
 try {
     wallpaper.setCustomWallpaper(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError) => {
         if (error) {
-            console.error(`failed to setCustomWallpaper. Code: ${error.code}, Message: ${error.message}`);
+            console.error(`Failed to setCustomWallpaper. Code: ${error.code}, message: ${error.message}`);
             return;
         }
         console.info(`success to setCustomWallpaper.`);
     });
 } catch (error) {
-    console.error(`failed to setCustomWallpaper. Code: ${error.code}, Message: ${error.message}`);
+    let err = error as BusinessError;
+    console.error(`Failed to setCustomWallpaper. Code: ${err.code}, message: ${err.message}`);
 }
 
 ```
@@ -245,14 +249,14 @@ setCustomWallpaper(source: string, wallpaperType: WallpaperType): Promise&lt;voi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| source | string | 是 | 指定的zip资源包。 |
-| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype7) | 是 | 壁纸类型。 |
+| source | string | 是 | 指定的zip资源路径。 |
+| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype) | 是 | 壁纸类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -274,10 +278,10 @@ try {
     wallpaper.setCustomWallpaper(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
         console.info(`success to setCustomWallpaper.`);
     }).catch((error: BusinessError) => {
-        console.error(`failed to setCustomWallpaper. Code: ${error.code}, Message: ${error.message}`);
+        console.error(`Failed to setCustomWallpaper. Code: ${error.code}, Message: ${error.message}`);
     });
 } catch (error) {
-    console.error(`failed to setCustomWallpaper. Code: ${error.code}, Message: ${error.message}`);
+    console.error(`Failed to setCustomWallpaper. Code: ${error.code}, Message: ${error.message}`);
 }
 ```
 
@@ -310,13 +314,16 @@ on(type: 'wallpaperChange', callback: (wallpaperType: WallpaperType, resourceTyp
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
     let listener = (wallpaperType: wallpaper.WallpaperType, resourceType: wallpaper.WallpaperResourceType): void => {
-        console.info(`wallpaper color changed.`);
+        console.info(`wallpaper changed.`);
     };
     wallpaper.on('wallpaperChange', listener);
 } catch (error) {
-    console.error(`failed to on. Code: ${error.code}, Message: ${error.message}`);
+    let err = error as BusinessError;
+    console.error(`Failed to on. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -349,35 +356,44 @@ off(type: 'wallpaperChange', callback?: (wallpaperType: WallpaperType, resourceT
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 let listener = (wallpaperType: wallpaper.WallpaperType, resourceType: wallpaper.WallpaperResourceType): void => {
-    console.info(`wallpaper color changed.`);
+    console.info(`wallpaper changed.`);
 };
 try {
     wallpaper.on('wallpaperChange', listener);
 } catch (error) {
-    console.error(`failed to on. Code: ${error.code}, Message: ${error.message}`);
+    let err = error as BusinessError;
+    console.error(`Failed to on. Code: ${err.code}, message: ${err.message}`);
 }
 
 try {
     // 取消订阅listener
     wallpaper.off('wallpaperChange', listener);
 } catch (error) {
-    console.error(`failed to off. Code: ${error.code}, Message: ${error.message}`);
+    let err = error as BusinessError;
+    console.error(`Failed to off. Code: ${err.code}, message: ${err.message}`);
 }
 
 try {
     // 取消所有'wallpaperChange'类型的订阅
     wallpaper.off('wallpaperChange');
 } catch (error) {
-    console.error(`failed to off. Code: ${error.code}, Message: ${error.message}`);
+    let err = error as BusinessError;
+    console.error(`Failed to off. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
-## wallpaper.getColorsSync<sup>9+</sup>
+## wallpaper.getColorsSync<sup>(deprecated)</sup>
 
 getColorsSync(wallpaperType: WallpaperType): Array&lt;RgbaColor&gt;
 
 获取指定类型壁纸的主要颜色信息。
+
+> **说明：**
+> 
+> 从 API version 9开始支持，从API version 23开始废弃。
 
 **系统能力**: SystemCapability.MiscServices.Wallpaper
 
@@ -387,9 +403,9 @@ getColorsSync(wallpaperType: WallpaperType): Array&lt;RgbaColor&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype7) | 是 | 壁纸类型。 |
+| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype) | 是 | 壁纸类型。 |
 
-**返回值**：
+**返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
@@ -404,14 +420,17 @@ getColorsSync(wallpaperType: WallpaperType): Array&lt;RgbaColor&gt;
 | 202          | permission verification failed, application which is not a system application uses system API.  |
 | 401          | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.  |
 
-**示例**：
+**示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
     let colors = wallpaper.getColorsSync(wallpaper.WallpaperType.WALLPAPER_SYSTEM);
     console.info(`success to getColorsSync: ${JSON.stringify(colors)}`);
 } catch (error) {
-    console.error(`failed to getColorsSync. Code: ${error.code}, Message: ${error.message}`);
+    let err = error as BusinessError;
+    console.error(`Failed to getColorsSync. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -442,11 +461,14 @@ getMinHeightSync(): number
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
-  let minHeight = wallpaper.getMinHeightSync();
-  console.info(`success to getMinHeightSync: ${JSON.stringify(minHeight)}`);
+    let minHeight = wallpaper.getMinHeightSync();
+    console.info(`success to getMinHeightSync: ${JSON.stringify(minHeight)}`);
 } catch (error) {
-  console.error(`failed to getMinHeightSync. Code: ${error.code}, Message: ${error.message}`);
+    let err = error as BusinessError;
+    console.error(`Failed to getMinHeightSync. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -477,11 +499,14 @@ getMinWidthSync(): number
 **示例：**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
-  let minWidth = wallpaper.getMinWidthSync();
-  console.info(`success to getMinWidthSync: ${JSON.stringify(minWidth)}`);
+    let minWidth = wallpaper.getMinWidthSync();
+    console.info(`success to getMinWidthSync: ${JSON.stringify(minWidth)}`);
 } catch (error) {
-  console.error(`failed to getMinWidthSync. Code: ${error.code}, Message: ${error.message}`);
+    let err = error as BusinessError;
+    console.error(`Failed to getMinWidthSync. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -501,8 +526,8 @@ restore(wallpaperType: WallpaperType, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype7) | 是 | 壁纸类型。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，移除壁纸成功，error为undefined，否则返回error信息。 |
+| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype) | 是 | 壁纸类型。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当移除壁纸成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -521,7 +546,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 wallpaper.restore(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError) => {
     if (error) {
-        console.error(`failed to restore. Code: ${error.code}, Message: ${error.message}`);
+        console.error(`Failed to restore. Code: ${error.code}, message: ${error.message}`);
         return;
     }
     console.info(`success to restore.`);
@@ -532,7 +557,7 @@ wallpaper.restore(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessErro
 
 restore(wallpaperType: WallpaperType): Promise&lt;void&gt;
 
-移除指定类型的壁纸，恢复为默认显示的壁纸。使用promise异步回调。
+移除指定类型的壁纸，恢复为默认显示的壁纸。使用Promise异步回调。
 
 **需要权限**：ohos.permission.SET_WALLPAPER
 
@@ -544,13 +569,13 @@ restore(wallpaperType: WallpaperType): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype7) | 是 | 壁纸类型。 |
+| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype) | 是 | 壁纸类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -570,7 +595,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 wallpaper.restore(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
     console.info(`success to restore.`);
   }).catch((error: BusinessError) => {
-    console.error(`failed to restore. Code: ${error.code}, Message: ${error.message}`);
+    console.error(`Failed to restore. Code: ${error.code}, Message: ${error.message}`);
 });
 ```
 
@@ -591,8 +616,8 @@ setImage(source: string | image.PixelMap, wallpaperType: WallpaperType, callback
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | source | string \| [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是 | JPEG或PNG文件的Uri路径，或者PNG格式文件的位图。 |
-| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype7) | 是 | 壁纸类型。 |
-| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数，设置壁纸成功，error为undefined，否则返回error信息。 |
+| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype) | 是 | 壁纸类型。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。当设置壁纸成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -611,17 +636,17 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 
 // source类型为string
-let wallpaperPath = "/data/storage/el2/base/haps/entry/files/js.jpeg";
+let wallpaperPath = '/data/storage/el2/base/haps/entry/files/js.jpeg';
 wallpaper.setImage(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError) => {
     if (error) {
-        console.error(`failed to setImage. Code: ${error.code}, Message: ${error.message}`);
+        console.error(`Failed to setImage. Code: ${error.code}, message: ${error.message}`);
         return;
-     }
+    }
     console.info(`success to setImage.`);
 });
-  
+
 // source类型为image.PixelMap
-let imageSource = image.createImageSource("file://" + wallpaperPath);
+let imageSource = image.createImageSource('file://' + wallpaperPath);
 let opts: image.DecodingOptions = {
     desiredSize: {
         height: 3648,
@@ -631,13 +656,13 @@ let opts: image.DecodingOptions = {
 imageSource.createPixelMap(opts).then((pixelMap: image.PixelMap) => {
     wallpaper.setImage(pixelMap, wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError) => {
         if (error) {
-            console.error(`failed to setImage. Code: ${error.code}, Message: ${error.message}`);
+            console.error(`Failed to setImage. Code: ${error.code}, Message: ${error.message}`);
             return;
         }
         console.info(`success to setImage.`);
     });
 }).catch((error: BusinessError) => {
-    console.error(`failed to createPixelMap. Code: ${error.code}, Message: ${error.message}`);
+    console.error(`Failed to createPixelMap. Code: ${error.code}, Message: ${error.message}`);
 });
 ```
 
@@ -645,7 +670,7 @@ imageSource.createPixelMap(opts).then((pixelMap: image.PixelMap) => {
 
 setImage(source: string | image.PixelMap, wallpaperType: WallpaperType): Promise&lt;void&gt;
 
-将指定资源设置为指定类型的壁纸。使用promise异步回调。
+将指定资源设置为指定类型的壁纸。使用Promise异步回调。
 
 **需要权限**：ohos.permission.SET_WALLPAPER
 
@@ -658,13 +683,13 @@ setImage(source: string | image.PixelMap, wallpaperType: WallpaperType): Promise
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | source | string \| [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是 | JPEG或PNG文件的Uri路径，或者PNG格式文件的位图。 |
-| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype7) | 是 | 壁纸类型。 |
+| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype) | 是 | 壁纸类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -683,15 +708,15 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 
 // source类型为string
-let wallpaperPath = "/data/storage/el2/base/haps/entry/files/js.jpeg";
+let wallpaperPath = '/data/storage/el2/base/haps/entry/files/js.jpeg';
 wallpaper.setImage(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
     console.info(`success to setImage.`);
 }).catch((error: BusinessError) => {
-    console.error(`failed to setImage. Code: ${error.code}, Message: ${error.message}`);
+    console.error(`Failed to setImage. Code: ${error.code}, Message: ${error.message}`);
 });
 
 // source类型为image.PixelMap
-let imageSource = image.createImageSource("file://" + wallpaperPath);
+let imageSource = image.createImageSource('file://' + wallpaperPath);
 let opts: image.DecodingOptions = {
     desiredSize: {
         height: 3648,
@@ -702,10 +727,10 @@ imageSource.createPixelMap(opts).then((pixelMap: image.PixelMap) => {
     wallpaper.setImage(pixelMap, wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
         console.info(`success to setImage.`);
     }).catch((error: BusinessError) => {
-        console.error(`failed to setImage. Code: ${error.code}, Message: ${error.message}`);
+        console.error(`Failed to setImage. Code: ${error.code}, Message: ${error.message}`);
     });
 }).catch((error: BusinessError) => {
-    console.error(`failed to createPixelMap. Code: ${error.code}, Message: ${error.message}`);
+    console.error(`Failed to createPixelMap. Code: ${error.code}, Message: ${error.message}`);
 });
 ```
 
@@ -725,8 +750,8 @@ getImage(wallpaperType: WallpaperType, callback: AsyncCallback&lt;image.PixelMap
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype7) | 是 | 壁纸类型。 |
-| callback | AsyncCallback&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | 是 | 回调函数，调用成功则返回壁纸图片的像素图对象，调用失败则返回error信息。 |
+| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype) | 是 | 壁纸类型。 |
+| callback | AsyncCallback&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | 是 | 回调函数。当获取壁纸图片的像素图对象成功，err为undefined，data为获取到的像素图对象；否则为错误对象。 |
 
 **错误码：**
 
@@ -746,7 +771,7 @@ import { image } from '@kit.ImageKit';
 
 wallpaper.getImage(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError, data: image.PixelMap) => {
   if (error) {
-    console.error(`failed to getImage. Code: ${error.code}, Message: ${error.message}`);
+    console.error(`Failed to getImage. Code: ${error.code}, message: ${error.message}`);
     return;
   }
   console.info(`success to getImage: ${JSON.stringify(data.getImageInfoSync())}`);
@@ -757,7 +782,7 @@ wallpaper.getImage(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessErr
 
 getImage(wallpaperType: WallpaperType): Promise&lt;image.PixelMap&gt;
 
-获取壁纸图片的像素图，且只能获取使用setImage设置的静态壁纸。使用promise异步回调。
+获取壁纸图片的像素图，且只能获取使用setImage设置的静态壁纸。使用Promise异步回调。
 
 **需要权限**：ohos.permission.GET_WALLPAPER
 
@@ -769,13 +794,13 @@ getImage(wallpaperType: WallpaperType): Promise&lt;image.PixelMap&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype7) | 是 | 壁纸类型。 |
+| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype) | 是 | 壁纸类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | 调用成功则返回壁纸图片的像素图对象，调用失败则返回error信息。 |
+| Promise&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Promise对象，返回壁纸图片的像素图对象。 |
 
 **错误码：**
 
@@ -796,14 +821,15 @@ import { image } from '@kit.ImageKit';
 wallpaper.getImage(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then((data: image.PixelMap) => {
   console.info(`success to getImage: ${JSON.stringify(data.getImageInfoSync())}`);
 }).catch((error: BusinessError) => {
-  console.error(`failed to getImage. Code: ${error.code}, Message: ${error.message}`);
+  console.error(`Failed to getImage. Code: ${error.code}, Message: ${error.message}`);
 });
 ```
+
 ## wallpaper.getWallpaperByState<sup>14+</sup>
 
-getWallpaperByState(wallpaperType:WallpaperType, foldState:FoldState, rotateState:RotateState): Promise&lt;image.PixelMap&gt;
+getWallpaperByState(wallpaperType: WallpaperType, foldState: FoldState, rotateState: RotateState): Promise&lt;image.PixelMap&gt;
 
-获取指定壁纸类型、折展态、横竖屏的壁纸图片的像素图，如果指定的壁纸不存在，会逐步降级匹配，unfolded-land -> unfolded-port ->normal-port。使用promise异步回调。
+获取指定壁纸类型、折展态、横竖屏的壁纸图片的像素图，如果指定的壁纸不存在，会逐步降级匹配，unfolded-land -> unfolded-port ->normal-port。使用Promise异步回调。
 
 **需要权限**：ohos.permission.GET_WALLPAPER
 
@@ -815,7 +841,7 @@ getWallpaperByState(wallpaperType:WallpaperType, foldState:FoldState, rotateStat
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype7) | 是 | 壁纸类型。 |
+| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype) | 是 | 壁纸类型。 |
 | foldState | [FoldState](#foldstate14) | 是 | 折展状态类型。 |
 | rotateState | [RotateState](#rotatestate14) | 是 | 横竖屏状态类型。 |
 
@@ -823,7 +849,7 @@ getWallpaperByState(wallpaperType:WallpaperType, foldState:FoldState, rotateStat
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | 调用成功则返回壁纸图片的像素图对象，调用失败则返回error信息。 |
+| Promise&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Promise对象，返回壁纸图片的像素图对象。 |
 
 **错误码：**
 
@@ -839,21 +865,20 @@ getWallpaperByState(wallpaperType:WallpaperType, foldState:FoldState, rotateStat
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { wallpaper } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 
 wallpaper.getWallpaperByState(wallpaper.WallpaperType.WALLPAPER_SYSTEM,wallpaper.FoldState.NORMAL,wallpaper.RotateState.PORTRAIT).then((data:image.PixelMap) => {
   console.info(`success to getWallpaperByState: ${JSON.stringify(data.getImageInfoSync())}`);
 }).catch((error: BusinessError) => {
-  console.error(`failed to getWallpaperByState. Code: ${error.code}, Message: ${error.message}`);
+  console.error(`Failed to getWallpaperByState. Code: ${error.code}, Message: ${error.message}`);
 });
 ```
 
 ## wallpaper.setAllWallpapers<sup>14+</sup>
 
-setAllWallpapers(wallpaperInfos: Array\<WallpaperInfo>\, wallpaperType: WallpaperType): Promise&lt;void&gt;
+setAllWallpapers(wallpaperInfos: Array&lt;WallpaperInfo&gt;, wallpaperType: WallpaperType): Promise&lt;void&gt;
 
-设置设备所有形态的壁纸。使用promise异步回调。（包括折展状态、横竖屏状态、资源路径，其中NORMAL-PORT为必选）
+设置设备所有形态的壁纸。使用Promise异步回调。（包括折展状态、横竖屏状态、资源路径，其中NORMAL-PORT为必选）
 
 **需要权限**：ohos.permission.SET_WALLPAPER
 
@@ -865,14 +890,14 @@ setAllWallpapers(wallpaperInfos: Array\<WallpaperInfo>\, wallpaperType: Wallpape
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| wallpaperInfos | Array\<[WallpaperInfo](#wallpaperinfo14)> | 是 | 所有壁纸的信息结构。 |
-| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype7) | 是 | 壁纸类型。 |
+| wallpaperInfos | Array&lt;[WallpaperInfo](#wallpaperinfo14)&gt; | 是 | 所有壁纸的信息结构。 |
+| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype) | 是 | 壁纸类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -888,9 +913,8 @@ setAllWallpapers(wallpaperInfos: Array\<WallpaperInfo>\, wallpaperType: Wallpape
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { wallpaper } from '@kit.BasicServicesKit';
 
-let wallpaperInfos: Array<wallpaper.WallpaperInfo>
+let wallpaperInfos: Array<wallpaper.WallpaperInfo>;
 wallpaperInfos = [
   {
     foldState: wallpaper.FoldState.NORMAL,
@@ -911,7 +935,7 @@ wallpaperInfos = [
 wallpaper.setAllWallpapers(wallpaperInfos, wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
   console.info(`success to setAllWallpapers.`);
 }).catch((error: BusinessError) => {
-  console.error(`failed to setAllWallpapers. Code: ${error.code}, Message: ${error.message}`);
+  console.error(`Failed to setAllWallpapers. Code: ${error.code}, Message: ${error.message}`);
 });
 ```
 
@@ -919,7 +943,7 @@ wallpaper.setAllWallpapers(wallpaperInfos, wallpaper.WallpaperType.WALLPAPER_SYS
 
 getPixelMap(wallpaperType: WallpaperType, callback: AsyncCallback&lt;image.PixelMap&gt;): void
 
-获取壁纸图片的像素图。
+获取壁纸图片的像素图。使用callback异步回调。
 
 > **说明：**
 >
@@ -935,8 +959,8 @@ getPixelMap(wallpaperType: WallpaperType, callback: AsyncCallback&lt;image.Pixel
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype7) | 是 | 壁纸类型。 |
-| callback | AsyncCallback&lt;image.PixelMap&gt; | 是 | 回调函数，调用成功则返回壁纸图片的像素图对象，调用失败则返回error信息。 |
+| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype) | 是 | 壁纸类型。 |
+| callback | AsyncCallback&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | 是 | 回调函数。当获取壁纸图片的像素图对象成功，err为undefined，data为获取到的像素图对象；否则为错误对象。 |
 
 **示例：**
 
@@ -946,10 +970,10 @@ import { image } from '@kit.ImageKit';
 
 wallpaper.getPixelMap(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError, data: image.PixelMap) => {
   if (error) {
-    console.error(`failed to getPixelMap. Code: ${error.code}, Message: ${error.message}`);
+    console.error(`Failed to getPixelMap. Code: ${error.code}, message: ${error.message}`);
     return;
   }
-  console.info(`success to getPixelMap : ${JSON.stringify(data.getImageInfoSync())}`);
+  console.info(`success to getPixelMap: ${JSON.stringify(data.getImageInfoSync())}`);
 });
 ```
 
@@ -957,7 +981,7 @@ wallpaper.getPixelMap(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: Business
 
 getPixelMap(wallpaperType: WallpaperType): Promise&lt;image.PixelMap&gt;
 
-获取壁纸图片的像素图。
+获取壁纸图片的像素图。使用Promise异步回调。
 
 > **说明：**
 >
@@ -973,13 +997,13 @@ getPixelMap(wallpaperType: WallpaperType): Promise&lt;image.PixelMap&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype7) | 是 | 壁纸类型。 |
+| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype) | 是 | 壁纸类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;image.PixelMap&gt; | 调用成功则返回壁纸图片的像素图对象，调用失败则返回error信息。 |
+| Promise&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Promise对象，返回壁纸图片的像素图对象。 |
 
 **示例：**
 
@@ -990,6 +1014,6 @@ import { image } from '@kit.ImageKit';
 wallpaper.getPixelMap(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then((data: image.PixelMap) => {
   console.info(`success to getPixelMap : ${JSON.stringify(data.getImageInfoSync())}`);
 }).catch((error: BusinessError) => {
-  console.error(`failed to getPixelMap. Code: ${error.code}, Message: ${error.message}`);
+  console.error(`Failed to getPixelMap. Code: ${error.code}, Message: ${error.message}`);
 });
 ```

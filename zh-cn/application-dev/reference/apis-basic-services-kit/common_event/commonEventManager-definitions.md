@@ -1,9 +1,8 @@
 # 系统定义的公共事件
-
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -17,12 +16,11 @@
 
 ## Ability Kit
 
-
 ### COMMON_EVENT_PACKAGE_RESTARTED
 
 表示用户重启应用包并终止其所有进程。
 
-在设备上指定用户重启应用包并终止其所有进程，将会触发事件通知服务发布该系统公共事件。
+在设备上指定用户重启应用包并终止其所有进程，将会触发事件通知服务发布该[系统公共事件](../../../basic-services/common-event/common-event-glossary.md#system-common-event系统公共事件)。
 
 > **说明：** 
 > 
@@ -35,7 +33,6 @@
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.PACKAGE_RESTARTED"
-
 
 
 ### COMMON_EVENT_PACKAGE_DATA_CLEARED
@@ -76,8 +73,7 @@
 **取值：** "usual.event.QUICK_FIX_APPLY_RESULT"
 
 
-
-### COMMON_EVENT_QUICK_FIX_REVOKE_RESULT<sup>10+<sup>
+### COMMON_EVENT_QUICK_FIX_REVOKE_RESULT<sup>10+</sup>
 
 表示撤销快速修复。
 
@@ -90,7 +86,6 @@
 **取值：** "usual.event.QUICK_FIX_REVOKE_RESULT"
 
 
-
 ### COMMON_EVENT_PACKAGE_ADDED
 
 表示设备上已安装新应用包的公共事件的动作。
@@ -101,7 +96,7 @@
 > 
 > <!--Del-->系统应用可以监听自身应用和其他应用的安装事件。<!--DelEnd-->
 > 
-> 三方应用只能监听自身应用的安装事件。
+> 三方应用默认只能监听自身应用的安装事件。若三方应用需要监听InHouse应用的安装事件，需要被监听的InHouse应用在app.json5的[allowListenBundleChangedEvent](../../../quick-start/app-configuration-file.md)中配置本应用的[appIdentifier](../../../quick-start/common-problem-of-application.md#什么是appidentifier)。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -120,7 +115,7 @@
 > 
 > <!--Del-->系统应用可以监听自身应用和其他应用的卸载事件。<!--DelEnd-->
 > 
-> 三方应用只能监听自身应用的卸载事件。
+> 三方应用默认只能监听自身应用的卸载事件。若三方应用需要监听InHouse应用的卸载事件，需要被监听的InHouse应用在app.json5的[allowListenBundleChangedEvent](../../../quick-start/app-configuration-file.md)中配置本应用的[appIdentifier](../../../quick-start/common-problem-of-application.md#什么是appidentifier)。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -131,7 +126,7 @@
 
 ### COMMON_EVENT_BUNDLE_REMOVED
 
-表示现有的应用程序包从设备中移除的事件。
+（预留事件，暂未支持）表示现有的应用程序包从设备中移除的事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -155,13 +150,13 @@
 
 表示应用包已更改的公共事件的动作（例如，包中的组件已启用或禁用）。
 
-在设备上安装的应用程序包更新或者包的组件被禁用使能，将会触发事件通知服务发布该系统公共事件。
+在设备上安装的应用程序包更新或者包的组件被启用/禁用，将会触发事件通知服务发布该系统公共事件。
 
 > **说明：** 
 > 
 > <!--Del-->系统应用可以监听自身应用和其他应用的更改事件。<!--DelEnd-->
 > 
-> 三方应用只能监听自身应用的更改事件。
+> 三方应用默认只能监听自身应用的更改事件。若三方应用需要监听InHouse应用的更新事件，需要被监听的InHouse应用在app.json5的[allowListenBundleChangedEvent](../../../quick-start/app-configuration-file.md)中配置本应用的[appIdentifier](../../../quick-start/common-problem-of-application.md#什么是appidentifier)。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -180,7 +175,7 @@
 > 
 > <!--Del-->系统应用可以监听自身应用和其他应用的缓存清理事件。<!--DelEnd-->
 > 
-> 三方应用只能监听自身应用的缓存清理事件。
+> 三方应用默认只能监听自身应用的缓存清理事件。若三方应用需要监听InHouse应用的缓存清理事件，需要被监听的InHouse应用在app.json5的[allowListenBundleChangedEvent](../../../quick-start/app-configuration-file.md)中配置本应用的[appIdentifier](../../../quick-start/common-problem-of-application.md#什么是appidentifier)。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -191,7 +186,7 @@
 
 ### COMMON_EVENT_PACKAGES_SUSPENDED
 
-表示包已经被挂起。
+（预留事件，暂未支持）表示包已经被挂起。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -200,10 +195,9 @@
 **取值：** "usual.event.PACKAGES_SUSPENDED"
 
 
-
 ### COMMON_EVENT_MY_PACKAGE_SUSPENDED
 
-发送到已被系统挂起的包。
+（预留事件，暂未支持）发送到已被系统挂起的包。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -214,16 +208,13 @@
 
 ### COMMON_EVENT_MY_PACKAGE_UNSUSPENDED
 
-发送到已被系统解除挂起的包。
+（预留事件，暂未支持）发送到已被系统解除挂起的包。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **订阅者所需权限：** 无
 
 **取值：** "usual.event.MY_PACKAGE_UNSUSPENDED"
-
-
-
 
 
 ### COMMON_EVENT_MANAGE_PACKAGE_STORAGE
@@ -236,15 +227,33 @@
 
 **取值：** "usual.event.MANAGE_PACKAGE_STORAGE"
 
+### COMMON_EVENT_SKILL_CHANGED
 
+表示设备上应用的skill发生变化的公共事件。
+
+在设备上指定用户下安装、更新、卸载了包含skill的应用程序，将会触发事件通知服务发布该系统公共事件。
+
+> **说明：** 
+> 
+> 应用默认只能接收自身应用的skill变化事件。
+> 
+> 申请ohos.permission.MANAGE_SKILL权限后能接收自身应用和其他应用的skill变化事件。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**订阅者所需权限：** 无
+
+**取值：** "usual.event.SKILL_CHANGED"
 
 ## Account Kit
 
-### COMMON_EVENT_MINORSMODE_ON<sup>12+<sup>
+### COMMON_EVENT_MINORSMODE_ON<sup>12+</sup>
 
 表示用户开启未成年人模式。
 
-在设备上开启未成年人模式，将会触发事件通知服务发布该系统公共事件。
+在设备上开启未成年人模式，将会触发事件通知服务发布该[系统公共事件](../../../basic-services/common-event/common-event-glossary.md#system-common-event系统公共事件)。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -256,7 +265,7 @@
 
 
 
-### COMMON_EVENT_MINORSMODE_OFF<sup>12+<sup>
+### COMMON_EVENT_MINORSMODE_OFF<sup>12+</sup>
 
 表示用户关闭未成年人模式。
 
@@ -278,11 +287,13 @@
 
 表示datashare服务可用。
 
-datashare服务启动完成后，将会触发事件通知服务发布该系统公共事件。
+datashare服务启动完成后，将会触发事件通知服务发布该[系统公共事件](../../../basic-services/common-event/common-event-glossary.md#system-common-event系统公共事件)。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **订阅者所需权限：** 无
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **取值：** "usual.event.DATA_SHARE_READY"
 
@@ -293,7 +304,7 @@ datashare服务启动完成后，将会触发事件通知服务发布该系统�
 
 表示分屏行为的公共事件。
 
-启动最近任务窗口、创建或销毁分屏条，都会触发通知服务发布这个系统公共事件。
+启动最近任务窗口、创建或销毁分屏条，都会触发通知服务发布这个[系统公共事件](../../../basic-services/common-event/common-event-glossary.md#system-common-event系统公共事件)。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -309,9 +320,9 @@ datashare服务启动完成后，将会触发事件通知服务发布该系统�
 
 ### COMMON_EVENT_SLOT_CHANGE
 
-  表示通知渠道或通知开关发生变化。
+  表示[通知渠道](../../../notification/notification-glossary.md#notification-slot通知渠道)或通知开关发生变化。
 
-  通知设置里修改应用的渠道参数、渠道开关，或者开启、关闭通知使能开关时，都会触发通知服务发布这个系统公共事件。
+  [通知设置](../../../notification/notification-glossary.md#notification-setting通知设置)里修改应用的渠道参数、渠道开关，或者开启、关闭通知使能开关时，都会触发通知服务发布这个[系统公共事件](../../../basic-services/common-event/common-event-glossary.md#system-common-event系统公共事件)。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -326,7 +337,7 @@ datashare服务启动完成后，将会触发事件通知服务发布该系统�
 ### COMMON_EVENT_DEVICE_IDLE_MODE_CHANGED
 表示设备上待机状态变化，触发公共事件发布动作。
 
-如果用户一段时间没有使用设备且屏幕已经关闭情况下，系统延迟后台应用程序CPU和网络访问，将会触发公共事件服务发布该系统公共事件。
+如果用户一段时间没有使用设备且屏幕已经关闭情况下，系统延迟后台应用程序CPU和网络访问，将会触发[公共事件服务](../../../basic-services/common-event/common-event-glossary.md#common-event-service-ces公共事件服务)发布该[系统公共事件](../../../basic-services/common-event/common-event-glossary.md#system-common-event系统公共事件)。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -341,7 +352,7 @@ datashare服务启动完成后，将会触发事件通知服务发布该系统�
 
 表示USB设备状态发生变化。
 
-当USB断开或者连接时状态发生变化，将会触发事件通知服务发布该系统公共事件。
+当USB断开或者连接时状态发生变化，将会触发事件通知服务发布该[系统公共事件](../../../basic-services/common-event/common-event-glossary.md#system-common-event系统公共事件)。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -437,7 +448,7 @@ datashare服务启动完成后，将会触发事件通知服务发布该系统�
 
 分布式账号信息变更、系统账号头像信息变更、系统账号名称变更将会触发事件通知服务发布该系统公共事件，事件携带系统账号ID。
 
-与这个公共事件相关的接口：setOsAccountName、setOsAccountProfilePhoto, 这些为系统API，setOsAccountDistributedInfo为公共API，具体参看[系统账号接口文档](../js-apis-osAccount.md)、[分布式账号接口文档](../js-apis-distributed-account.md)。
+与这个公共事件相关的接口：setOsAccountName、setOsAccountProfilePhoto，这些为系统API，setOsAccountDistributedInfo为公共API，具体参看[系统账号接口文档](../js-apis-osAccount.md)、[分布式账号接口文档](../js-apis-distributed-account.md)。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -463,7 +474,7 @@ datashare服务启动完成后，将会触发事件通知服务发布该系统�
 
 表示分布式账号登录成功的动作。
 
-分布式账号登录成功时会触发事件通知服务发布该系统公共事件，事件携带系统账号ID。
+分布式账号登录成功时会触发事件通知服务发布该系统公共事件，事件携带系统账号ID和子身份ID。
 
 与这个公共事件相关的接口：setOsAccountDistributedInfo、updateOsAccountDistributedInfo(已废弃)，这些为公共API，setOsAccountDistributedInfoByLocalId为系统API，具体参看[分布式账号接口文档](../js-apis-distributed-account.md)。
 
@@ -480,7 +491,7 @@ datashare服务启动完成后，将会触发事件通知服务发布该系统�
 
 表示分布式账号登出成功的动作。
 
-分布式账号登出时会触发事件通知服务发布该系统公共事件，事件携带系统账号ID。
+分布式账号登出时会触发事件通知服务发布该系统公共事件，事件携带系统账号ID和子身份ID。
 
 与这个公共事件相关的接口：setOsAccountDistributedInfo、updateOsAccountDistributedInfo(已废弃)，这些为公共API，setOsAccountDistributedInfoByLocalId为系统API，具体参看[分布式账号接口文档](../js-apis-distributed-account.md)。
 
@@ -497,7 +508,7 @@ datashare服务启动完成后，将会触发事件通知服务发布该系统�
 
 表示分布式账号token令牌无效的动作。
 
-分布式账号的token令牌无效时会触发事件通知服务发布该系统公共事件，事件携带系统账号ID。
+分布式账号的token令牌无效时会触发事件通知服务发布该系统公共事件，事件携带系统账号ID和子身份ID。
 
 与这个公共事件相关的接口：setOsAccountDistributedInfo、updateOsAccountDistributedInfo(已废弃)，这些为公共API，setOsAccountDistributedInfoByLocalId为系统API，具体参看[分布式账号接口文档](../js-apis-distributed-account.md)。
 
@@ -515,7 +526,7 @@ datashare服务启动完成后，将会触发事件通知服务发布该系统�
 
 表示分布式账号注销的动作。
 
-分布式账号注销成功会时触发事件通知服务发布该系统公共事件，事件携带系统账号ID。
+分布式账号注销成功会触发事件通知服务发布该系统公共事件，事件携带系统账号ID和子身份ID。
 
 与这个公共事件相关的接口：setOsAccountDistributedInfo、updateOsAccountDistributedInfo(已废弃)，这些为公共API，setOsAccountDistributedInfoByLocalId为系统API，具体参看[分布式账号接口文档](../js-apis-distributed-account.md)。
 
@@ -540,7 +551,7 @@ datashare服务启动完成后，将会触发事件通知服务发布该系统�
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**取值：** usual.event.SCREEN_LOCKED
+**取值：** "usual.event.SCREEN_LOCKED"
 
 
 
@@ -555,7 +566,7 @@ datashare服务启动完成后，将会触发事件通知服务发布该系统�
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**取值：** usual.event.SCREEN_UNLOCKED
+**取值：** "usual.event.SCREEN_UNLOCKED"
 
 
 ### COMMON_EVENT_USER_PRESENT<sup>(deprecated)</sup>
@@ -563,20 +574,20 @@ datashare服务启动完成后，将会触发事件通知服务发布该系统�
 
   > 说明：
   >
-  > 从API Version 10开始废弃，替代接口为[COMMON_EVENT_SCREEN_UNLOCKED](#common_event_screen_unlocked)。
+  > 从API version 9 开始支持，从API version 10 开始废弃，建议使用[COMMON_EVENT_SCREEN_UNLOCKED](#common_event_screen_unlocked)代替。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **订阅者所需权限：** 无
 
-**取值：** usual.event.USER_PRESENT
+**取值：** "usual.event.USER_PRESENT"
 
 
 ### COMMON_EVENT_BATTERY_CHANGED
 
 表示电池充电状态、电平和其他信息发生变化的公共事件的动作。
 
-当电池电量、电池电压、电池温度、电池健康状态、设备连接的充电器类型、充电器最大电流、充电器最大电压、电池充电状态、充电次数、电池的总容量、电池剩余容量、电池的技术型号、当前电池的电流、电池的充电类型变化时，将会触发事件通知服务发布该系统公共事件。
+当电池电量、电池温度、电池健康状态、设备连接的充电器类型、充电器最大电流、充电器最大电压、电池充电状态、充电次数、电池的总容量、电池剩余容量、电池的技术型号、电池的充电类型变化时，将会触发事件通知服务发布该系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -587,7 +598,7 @@ datashare服务启动完成后，将会触发事件通知服务发布该系统�
 
 ### COMMON_EVENT_BATTERY_LOW
 
-表示电池电量低的普通事件的动作。
+表示电池电量低的公共事件的动作。
 
 当电池电量低于设备设置的低电量百分比值时，将会触发事件通知服务发布该系统公共事件。<!--Del-->设备设置低电量百分比值请参考[电量等级定制开发指导](../../../../device-dev/subsystems/subsys-power-battery-level-customization.md)。<!--DelEnd-->
 
@@ -602,7 +613,7 @@ datashare服务启动完成后，将会触发事件通知服务发布该系统�
 
 表示电池退出低电量状态的公共事件的动作。
 
-当电池电量从低电量等级变化到电池电量高于低电量等级时，将会触发事件通知服务发布该系统公共事件。
+当电池电量从低电量等级上升到高于低电量等级时，将会触发事件通知服务发布该系统公共事件。
 
 
 **系统能力：** SystemCapability.Notification.CommonEvent
@@ -614,7 +625,7 @@ datashare服务启动完成后，将会触发事件通知服务发布该系统�
 
 ### COMMON_EVENT_POWER_CONNECTED
 
-设备连接到外部电源的公共事件的动作。
+表示设备连接到外部电源的公共事件的动作。
 
 当设备连接到外部可识别的充电器类型充电时，将会触发事件通知服务发布该系统公共事件。
 
@@ -627,7 +638,7 @@ datashare服务启动完成后，将会触发事件通知服务发布该系统�
 
 ### COMMON_EVENT_POWER_DISCONNECTED
 
-设备与外部电源断开的公共事件的动作。
+表示设备与外部电源断开的公共事件的动作。
 
 当设备与外部电源断开时，将会触发事件通知服务发布该系统公共事件。
 
@@ -665,7 +676,7 @@ datashare服务启动完成后，将会触发事件通知服务发布该系统�
 
 
 
-### COMMON_EVENT_CHARGE_IDLE_MODE_CHANGED<sup>10+<sup>
+### COMMON_EVENT_CHARGE_IDLE_MODE_CHANGED<sup>10+</sup>
 
 表示设备进入充电空闲模式的公共事件的动作。
 
@@ -743,7 +754,7 @@ datashare服务启动完成后，将会触发事件通知服务发布该系统�
 **取值：** "usual.event.THERMAL_LEVEL_CHANGED"
 
 
-### COMMON_EVENT_ENTER_FORCE_SLEEP<sup>12+<sup>
+### COMMON_EVENT_ENTER_FORCE_SLEEP<sup>12+</sup>
 
 表示设备即将进入强制睡眠模式的公共事件的动作。
 
@@ -756,7 +767,7 @@ datashare服务启动完成后，将会触发事件通知服务发布该系统�
 
 **取值：** "usual.event.ENTER_FORCE_SLEEP"
 
-### COMMON_EVENT_EXIT_FORCE_SLEEP<sup>12+<sup>
+### COMMON_EVENT_EXIT_FORCE_SLEEP<sup>12+</sup>
 
 表示设备退出强制睡眠模式的公共事件的动作。
 
@@ -769,7 +780,7 @@ datashare服务启动完成后，将会触发事件通知服务发布该系统�
 
 **取值：** "usual.event.EXIT_FORCE_SLEEP"
 
-### COMMON_EVENT_ENTER_HIBERNATE<sup>15+<sup>
+### COMMON_EVENT_ENTER_HIBERNATE<sup>15+</sup>
 
 表示设备即将进入休眠模式的公共事件的动作。
 
@@ -781,7 +792,7 @@ datashare服务启动完成后，将会触发事件通知服务发布该系统�
 
 **取值：** "usual.event.ENTER_HIBERNATE"
 
-### COMMON_EVENT_EXIT_HIBERNATE<sup>15+<sup>
+### COMMON_EVENT_EXIT_HIBERNATE<sup>15+</sup>
 
 表示设备退出休眠模式的公共事件的动作。
 
@@ -793,9 +804,47 @@ datashare服务启动完成后，将会触发事件通知服务发布该系统�
 
 **取值：** "usual.event.EXIT_HIBERNATE"
 
+### COMMON_EVENT_VOLUME_DECRYPTED
 
+表示设备上的特定卷已被解密。
 
+当设备上的特定卷被解密时，将会触发事件通知服务发布该系统公共事件。
 
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**订阅者所需权限：** 无
+
+**取值：** "usual.event.VOLUME_DECRYPTED"
+
+### COMMON_EVENT_VOLUME_ENCRYPTED
+
+表示设备上的特定卷已被加密。
+
+当设备上的特定卷被加密时，将会触发事件通知服务发布该系统公共事件。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**订阅者所需权限：** 无
+
+**取值：** "usual.event.VOLUME_ENCRYPTED"
+
+### COMMON_EVENT_VOLUME_ENCRYPTION_POLICY_SET
+
+表示设备上的特定卷已设置其加密策略。
+
+当设备上的特定卷设置其加密策略时，将会触发事件通知服务发布该系统公共事件。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**订阅者所需权限：** ohos.permission.QUERY_VOLUME_ENCRYPTION_STATUS
+
+**取值：** "usual.event.VOLUME_ENCRYPTION_POLICY_SET"
 
 
 ## Connectivity Kit
@@ -804,7 +853,7 @@ datashare服务启动完成后，将会触发事件通知服务发布该系统�
 
 表示蓝牙HFP AG连接状态变化的公共事件的操作。
 
-当蓝牙HFP AG连接状态变化时，将会触发事件通知服务发布该系统公共事件。
+当蓝牙HFP AG连接状态变化时，将会触发事件通知服务发布该[系统公共事件](../../../basic-services/common-event/common-event-glossary.md#system-common-event系统公共事件)。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -852,6 +901,32 @@ datashare服务启动完成后，将会触发事件通知服务发布该系统�
 **取值：** "usual.event.bluetooth.a2dpsource.CODEC_VALUE_CHANGE"
 
 
+### COMMON_EVENT_BLUETOOTH_A2DPSOURCE_PLAY_STATE_CHANGE<sup>24+</sup>
+
+表示蓝牙媒体A2DP播放状态变化的公共事件的操作。
+
+当蓝牙媒体A2DP播放状态变化时，将会触发事件通知服务发布该系统公共事件。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**订阅者所需权限：** ohos.permission.ACCESS_BLUETOOTH
+
+**取值：** "usual.event.bluetooth.a2dpsource.PLAY_STATE_CHANGE"
+
+
+### COMMON_EVENT_BLUETOOTH_SCO_CONNECT_STATE_CHANGE<sup>24+</sup>
+
+表示蓝牙SCO状态变化的公共事件的操作。
+
+当蓝牙SCO状态变化时，将会触发事件通知服务发布该系统公共事件。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**订阅者所需权限：** ohos.permission.ACCESS_BLUETOOTH
+
+**取值：** "usual.event.bluetooth.SCO_CONNECT_STATE_CHANGE"
+
+
 ### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_STATE_CHANGE<sup>20+</sup>
 
 表示蓝牙远程设备ACL连接状态变化的公共事件的操作。
@@ -893,9 +968,9 @@ datashare服务启动完成后，将会触发事件通知服务发布该系统�
 
 ### COMMON_EVENT_NFC_ACTION_ADAPTER_STATE_CHANGED
 
-指示设备NFC状态已更改的公共事件的操作。
+表示设备NFC状态已更改的公共事件的操作。
 
-指示设备NFC状态更改时，将会触发事件通知服务发布该系统公共事件。
+表示设备NFC状态更改时，将会触发事件通知服务发布该系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -956,20 +1031,6 @@ Wi-Fi状态变化。
 **订阅者所需权限：** ohos.permission.LOCATION
 
 **取值：** "usual.event.wifi.SCAN_FINISHED"
-
-
-### COMMON_EVENT_WIFI_SCAN_STATE
-
-表示Wi-Fi扫描接入点状态改变。
-
-当Wi-Fi扫描接入点状态发生变化，将会触发事件通知服务发布该系统公共事件。
-
-**系统能力：** SystemCapability.Notification.CommonEvent
-
-**订阅者所需权限：** ohos.permission.LOCATION
-
-**取值：** "usual.event.wifi.SCAN_STATE"
-
 
 
 ### COMMON_EVENT_WIFI_RSSI_VALUE
@@ -1051,7 +1112,7 @@ Wi-Fi状态变化。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**订阅者需要的权限：** 无
+**订阅者所需权限：** 无
 
 **取值：** "usual.event.wifi.mplink.STATE_CHANGE"
 
@@ -1136,6 +1197,67 @@ Wi-Fi状态变化。
 
 **取值：** "usual.event.wifi.p2p.GROUP_STATE_CHANGED"
 
+## Core File Kit
+
+### COMMON_EVENT_VOLUME_REMOVED
+
+表示外部存储设备正常移除的公共事件。
+
+当外部存储设备处于卸载状态，移除该设备时，会发送此公共事件。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**订阅者所需权限：** ohos.permission.STORAGE_MANAGER（该权限仅系统应用可申请）
+
+**取值：** "usual.event.data.VOLUME_REMOVED"
+
+### COMMON_EVENT_VOLUME_UNMOUNTED
+
+表示外部存储设备状态变更为卸载的公共事件。
+
+当外部存储设备处于挂载状态时，用户选择通过调用unmount接口或者直接移除设备的方法弹出该设备，并且已将外部存储设备卸载成功后，会发送此公共事件。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**订阅者所需权限：** ohos.permission.STORAGE_MANAGER（该权限仅系统应用可申请）
+
+**取值：** "usual.event.data.VOLUME_UNMOUNTED"
+
+### COMMON_EVENT_VOLUME_MOUNTED
+
+表示外部存储设备状态变更为挂载的公共事件。
+
+当用户插入外部存储设备自动挂载成功或者将处于卸载状态的外部存储设备调用mount接口进行挂载成功后，会发送此公共事件。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**订阅者所需权限：** ohos.permission.STORAGE_MANAGER（该权限仅系统应用可申请）
+
+**取值：** "usual.event.data.VOLUME_MOUNTED"
+
+### COMMON_EVENT_VOLUME_BAD_REMOVAL
+
+表示外部存储设备异常移除的公共事件。
+
+当外部存储设备处于挂载状态时，用户直接移除该外部存储设备，会发送此公共事件。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**订阅者所需权限：** ohos.permission.STORAGE_MANAGER（该权限仅系统应用可申请）
+
+**取值：** "usual.event.data.VOLUME_BAD_REMOVAL"
+
+### COMMON_EVENT_VOLUME_EJECT
+
+表示外部存储设备即将被弹出的公共事件。
+
+当外部存储设备处于挂载状态时，用户选择通过调用unmount接口或者直接移除设备的方法弹出该设备时，会发送此公共事件。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**订阅者所需权限：** ohos.permission.STORAGE_MANAGER（该权限仅系统应用可申请）
+
+**取值：** "usual.event.data.VOLUME_EJECT"
 
 ## MDM Kit
 
@@ -1143,7 +1265,7 @@ Wi-Fi状态变化。
 
 表示浏览器托管策略已更改。
 
-当浏览器托管策略发生变化，将会触发事件通知服务发布该系统公共事件。
+当浏览器托管策略发生变化，将会触发事件通知服务发布该[系统公共事件](../../../basic-services/common-event/common-event-glossary.md#system-common-event系统公共事件)。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1157,22 +1279,22 @@ Wi-Fi状态变化。
 ### COMMON_EVENT_LOCALE_CHANGED
 
 设置系统语言的公共事件的动作。
-当设置系统语言时，将会触发事件通知服务发布该系统公共事件。
+当设置系统语言时，将会触发事件通知服务发布该[系统公共事件](../../../basic-services/common-event/common-event-glossary.md#system-common-event系统公共事件)。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
 **订阅者所需权限：** 无
 
-**取值：** usual.event.LOCALE_CHANGED
+**取值：** "usual.event.LOCALE_CHANGED"
 
 
 ## Network Kit
 
-### COMMON_EVENT_CONNECTIVITY_CHANGE<sup>10+<sup>
+### COMMON_EVENT_CONNECTIVITY_CHANGE<sup>10+</sup>
 
-指示网络连接状态变化。
+表示网络连接状态变化。
 
-各类网络（以太网、Wi-Fi、蜂窝等）在发生连接状态状态变化时（断开、断开中、连接中、已连接等），将会触发事件通知服务发布该系统公共事件。
+各类网络（以太网、Wi-Fi、蜂窝等）在连接状态变化时（断开、断开中、连接中、已连接等），将会触发事件通知服务发布该[系统公共事件](../../../basic-services/common-event/common-event-glossary.md#system-common-event系统公共事件)。
 具体枚举值及其对应的连接状态如下表所示：
 
 | 枚举值  |  连接状态  |
@@ -1188,12 +1310,12 @@ Wi-Fi状态变化。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**取值：** usual.event.CONNECTIVITY_CHANGE
+**取值：** "usual.event.CONNECTIVITY_CHANGE"
 
 
-### COMMON_EVENT_AIRPLANE_MODE_CHANGED<sup>10+<sup>
+### COMMON_EVENT_AIRPLANE_MODE_CHANGED<sup>10+</sup>
 
-指示飞行模式状态变化。
+表示飞行模式状态变化。
 
 在开启或者关闭系统飞行模式状态后，将会触发事件通知服务发布该系统公共事件。
 
@@ -1201,12 +1323,12 @@ Wi-Fi状态变化。
 
 **订阅者所需权限：** 无
 
-**取值：** usual.event.AIRPLANE_MODE
+**取值：** "usual.event.AIRPLANE_MODE"
 
 
-### COMMON_EVENT_HTTP_PROXY_CHANGE<sup>10+<sup>
+### COMMON_EVENT_HTTP_PROXY_CHANGE<sup>10+</sup>
 
-指示网络Http代理配置信息更新。
+表示网络Http代理配置信息更新。
 
 在系统全局代理或者各类网络（以太网、Wi-Fi、蜂窝等）Http代理配置信息发生变化时，将会触发事件通知服务发布该系统公共事件。
 
@@ -1214,15 +1336,14 @@ Wi-Fi状态变化。
 
 **订阅者所需权限：** 无
 
-**取值：** usual.event.HTTP_PROXY_CHANGE
-
+**取值：** "usual.event.HTTP_PROXY_CHANGE"
 
 
 ## Telephony Kit
 
-电话服务子系统面向应用发布如下系统公共事件。
+电话服务子系统面向应用发布如下[系统公共事件](../../../basic-services/common-event/common-event-glossary.md#system-common-event系统公共事件)。
 
-### COMMON_EVENT_SIM_STATE_CHANGED<sup>10+<sup>
+### COMMON_EVENT_SIM_STATE_CHANGED<sup>10+</sup>
 
 提示SIM卡状态更新。
 
@@ -1232,11 +1353,10 @@ Wi-Fi状态变化。
 
 **订阅者所需权限：** 无
 
-**取值：** usual.event.SIM_STATE_CHANGED
+**取值：** "usual.event.SIM_STATE_CHANGED"
 
 
-
-### COMMON_EVENT_CALL_STATE_CHANGED<sup>10+<sup>
+### COMMON_EVENT_CALL_STATE_CHANGED<sup>10+</sup>
 
 提示呼叫状态更新。
 
@@ -1246,11 +1366,10 @@ Wi-Fi状态变化。
 
 **订阅者所需权限：** ohos.permission.GET_TELEPHONY_STATE（该权限仅系统应用可申请）
 
-**取值：** usual.event.CALL_STATE_CHANGED
+**取值：** "usual.event.CALL_STATE_CHANGED"
 
 
-
-### COMMON_EVENT_NETWORK_STATE_CHANGED<sup>10+<sup>
+### COMMON_EVENT_NETWORK_STATE_CHANGED<sup>10+</sup>
 
 提示网络状态更新。
 
@@ -1260,10 +1379,10 @@ Wi-Fi状态变化。
 
 **订阅者所需权限：** 无
 
-**取值：** usual.event.NETWORK_STATE_CHANGED
+**取值：** "usual.event.NETWORK_STATE_CHANGED"
 
 
-### COMMON_EVENT_SIGNAL_INFO_CHANGED<sup>10+<sup>
+### COMMON_EVENT_SIGNAL_INFO_CHANGED<sup>10+</sup>
 
 提示信号信息更新。
 
@@ -1273,16 +1392,17 @@ Wi-Fi状态变化。
 
 **订阅者所需权限：** 无
 
-**取值：** usual.event.SIGNAL_INFO_CHANGED
-
+**取值：** "usual.event.SIGNAL_INFO_CHANGED"
 
 
 ## AppGallery Kit
-AppGallery Kit面向应用发布如下系统公共事件。
+AppGallery Kit面向应用发布如下[系统公共事件](../../../basic-services/common-event/common-event-glossary.md#system-common-event系统公共事件)。
 
-### COMMON_EVENT_PRIVACY_STATE_CHANGED<sup>11+<sup>
+### COMMON_EVENT_PRIVACY_STATE_CHANGED<sup>11+</sup>
+
 表示隐私签署结果的公共事件。
-隐私弹框场景下，用户点击同意，会发送此事件。
+
+隐私弹框场景下，用户点击同意，将会触发事件通知服务发布该系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -1291,18 +1411,18 @@ AppGallery Kit面向应用发布如下系统公共事件。
 **取值：** "usual.event.PRIVACY_STATE_CHANGED"
 
 ## Multimodalinput Kit
-Multimodalinput Kit面向应用发布如下系统公共事件。
+Multimodalinput Kit面向应用发布如下[系统公共事件](../../../basic-services/common-event/common-event-glossary.md#system-common-event系统公共事件)。
 
-### COMMON_EVENT_TABLET_MODE_CHANGED<sup>23+<sup>
+### COMMON_EVENT_TABLET_MODE_CHANGED<sup>23+</sup>
 
 表示可感知支架开合的设备，例如具有支架的平板电脑，
 其支架开合状态变化时，将会触发事件通知服务发布该系统公共事件。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
-**取值：** "usual.event.TABLET_MODE_CHANGED "
+**取值：** "usual.event.TABLET_MODE_CHANGED"
 
-### COMMON_EVENT_LID_STATE_CHANGED<sup>23+<sup>
+### COMMON_EVENT_LID_STATE_CHANGED<sup>23+</sup>
 
 表示可感知开合盖子的设备，例如具有开合盖子的笔记本电脑，
 其开合盖状态变化时，将会触发事件通知服务发布该系统公共事件。
@@ -1314,6 +1434,16 @@ Multimodalinput Kit面向应用发布如下系统公共事件。
 ## 预留公共事件
 
 以下事件为预留公共事件，暂未支持。
+
+### COMMON_EVENT_LOCKED_BOOT_COMPLETED
+
+（预留事件，暂未支持）提示用户已完成引导，系统已加载，但屏幕仍锁定。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**订阅者所需权限：** 无
+
+**取值：** "usual.event.LOCKED_BOOT_COMPLETED"
 
 
 ### COMMON_EVENT_PACKAGE_FIRST_LAUNCH
@@ -1599,7 +1729,7 @@ Multimodalinput Kit面向应用发布如下系统公共事件。
 
 **订阅者所需权限：** 无
 
-**取值：** usual.event.DATE_CHANGED
+**取值：** "usual.event.DATE_CHANGED"
 
 ### COMMON_EVENT_USB_ACCESSORY_ATTACHED
 
@@ -1752,7 +1882,7 @@ Multimodalinput Kit面向应用发布如下系统公共事件。
 
 **订阅者所需权限：** 无
 
-**取值：** "usual.event.USER_FOREGROUND“
+**取值：** "usual.event.USER_FOREGROUND"
 
 
 
@@ -2116,7 +2246,7 @@ Multimodalinput Kit面向应用发布如下系统公共事件。
 
 
 ### COMMON_EVENT_BLUETOOTH_HOST_NAME_UPDATE<sup>(deprecated)</sup>
-指示设备蓝牙适配器名称已更改的公共事件的操作。
+表示设备蓝牙适配器名称已更改的公共事件的操作。
 
   > **说明：**
   >
@@ -2214,7 +2344,7 @@ Multimodalinput Kit面向应用发布如下系统公共事件。
 
 
 ### COMMON_EVENT_IVI_SLEEP
-（预留事件，暂未支持）表示表示车辆的车载信息娱乐（IVI）系统正在休眠的常见事件的动作。
+（预留事件，暂未支持）表示车辆的车载信息娱乐（IVI）系统正在休眠的公共事件的动作。
 
 **系统能力：** SystemCapability.Notification.CommonEvent
 
@@ -2288,7 +2418,7 @@ Multimodalinput Kit面向应用发布如下系统公共事件。
 
 
 ### COMMON_EVENT_IVI_TEMPERATURE_ABNORMAL
-（预留事件，暂未支持）表示车载系统具有极端温度的常见事件的动作。
+（预留事件，暂未支持）表示车载系统具有极端温度的公共事件的动作。
 
 
 **系统能力：** SystemCapability.Notification.CommonEvent

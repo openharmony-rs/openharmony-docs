@@ -1,11 +1,11 @@
-# AbilityForegroundStateObserver (系统接口)
+# AbilityForegroundStateObserver (前台状态监听器)(系统接口)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @zhu-feimo-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 定义应用前后台状态监听。
 
@@ -36,7 +36,7 @@ onAbilityStateChanged(abilityStateData: AbilityStateData): void
 
 | 参数名  | 类型  | 必填  | 说明  |
 | ------ | ----- | ----- | ----- |
-| abilityStateData   | [AbilityStateData](js-apis-inner-application-abilityStateData.md)   | 是 | Ability状态信息。 |
+| abilityStateData | [AbilityStateData](js-apis-inner-application-abilityStateData.md) | 是 | Ability状态信息。 |
 
 **示例：**
 ```ts

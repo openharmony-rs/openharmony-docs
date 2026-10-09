@@ -74,7 +74,7 @@ Describes the audio-haptic file descriptor.
 | Name    | Type          |Read-Only | Optional | Description                            |
 | --------- | -------------- | ---- | ---- | --------------------------------- |
 | fd        | number         | No  | No  | File descriptor of the audio-haptic file, which is generally greater than or equal to 0.|
-| offset    | number         | No  | Yes  | Offset in the file from which data will be read. By default, the offset is 0.|
+| offset    | number         | No  | Yes  | Offset for reading data from the file, in bytes. By default, the offset is 0.|
 | length    | number         | No  | Yes  | Number of bytes to read. By default, the length is the number of bytes remaining in the file from the offset position.|
 
 ## AudioHapticManager
@@ -98,8 +98,8 @@ Registers audio and haptic resources via URIs. This API uses a promise to return
 
 | Name  | Type                                     | Mandatory| Description                    |
 | -------- | ---------------------------------------- | ---- | ------------------------ |
-| audioUri  | string                                  | Yes  | URI of the audio source.<br>- For details about the supported audio resource formats and path formats in the normal latency mode, see [AVPlayer](../apis-media-kit/arkts-apis-media-AVPlayer.md).<br>- For details about the supported audio resource formats in the low-latency mode, see [SoundPool](../apis-media-kit/js-apis-inner-multimedia-soundPool.md#soundpool). The path format must meet the requirements described in [fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen).<br>- In both modes, you are advised to pass in the absolute path of the file.          |
-| hapticUri | string                                  | Yes  | URI of the haptic source.<br>For details about the supported vibration resource formats, see [HapticFileDescripto](../apis-sensor-service-kit/js-apis-vibrator.md#hapticfiledescriptor10). The path format must meet the requirements described in [fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen).<br>You are advised to pass in the absolute path of the file.        |
+| audioUri  | string                                  | Yes  | URI of the audio source.<br>- For details about the supported audio resource formats and path formats in the normal latency mode, see [AVPlayer](../apis-media-kit/arkts-apis-media-AVPlayer.md).<br>- For details about the supported audio resource formats in the low-latency mode, see [SoundPool](../apis-media-kit/js-apis-inner-multimedia-soundPool.md#soundpool). The path format must meet the requirements described in [fileIo.open](../apis-core-file-kit/js-apis-file-fs.md#fileioopen).<br>- In both modes, you are advised to pass in the absolute path of the file.          |
+| hapticUri | string                                  | Yes  | URI of the haptic source.<br>For details about the supported haptic resource formats, see [HapticFileDescriptor](../apis-sensor-service-kit/js-apis-vibrator.md#hapticfiledescriptor10). The path format must meet the requirements described in [fileIo.open](../apis-core-file-kit/js-apis-file-fs.md#fileioopen).<br>You are advised to pass in the absolute path of the file.        |
 
 **Return value**
 

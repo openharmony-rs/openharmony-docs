@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-该模块基于[Sendable](../../arkts-utils/arkts-sendable.md)对象，提供相册管理模块能力，包括创建相册以及访问、修改相册中的媒体数据信息等。
+该模块基于[Sendable](../../arkts-utils/arkts-sendable.md)对象，提供相册管理能力，包括创建相册以及访问、修改相册中的媒体数据信息等。
 
 > **说明：**
 >
@@ -50,15 +50,15 @@ getPhotoAccessHelper(context: Context, userId: number): PhotoAccessHelper
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 201 |  Permission denied.         |
-| 202 |  Called by non-system application.         |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 13900020 | Invalid argument.         |
 
 **示例：**
 
 ```ts
 // 此处获取的phAccessHelper实例为全局对象，后续使用到phAccessHelper的地方默认为使用此处获取的对象，如未添加此段代码报phAccessHelper未定义的错误请自行添加。
-// 请在组件内获取context，确保this.getUiContext().getHostContext()返回结果为UIAbilityContext
+// 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext。
 import { common } from '@kit.AbilityKit';
 
 @Entry
@@ -88,7 +88,7 @@ createAsset(displayName: string): Promise&lt;PhotoAsset&gt;
 待创建的文件名参数规格为：
 - 应包含有效文件主名和图片或视频扩展名。
 - 文件名字符串长度为1~255。
-- 文件主名中不允许出现的非法英文字符。<br>API18开始，非法字符包括：\ / : * ? " < > |<br>API10-17，非法字符包括：. .. \ / : * ? " ' ` < > | { } [ ]
+- 文件主名中不允许出现的非法英文字符。<br>API version 18开始，非法英文字符包括：\ / : * ? " < > |<br>API version 10-17，非法英文字符包括：. .. \ / : * ? " ' ` < > | { } [ ]
 
 **系统接口**：此接口为系统接口。
 
@@ -114,9 +114,11 @@ createAsset(displayName: string): Promise&lt;PhotoAsset&gt;
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 202      | Called by non-system application.                            |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 13900020 | Invalid argument.         |
+| 14000001 | Invalid display name.         |
 | 14000011 | Internal system error                                        |
 
 **示例：**
@@ -146,7 +148,7 @@ createAsset(displayName: string, options: photoAccessHelper.PhotoCreateOptions):
 待创建的文件名参数规格为：
 - 应包含有效文件主名和图片或视频扩展名。
 - 文件名字符串长度为1~255。
-- 文件主名中不允许出现的非法英文字符。<br>API18开始，非法字符包括：\ / : * ? " < > |<br>API10-17，非法字符包括：. .. \ / : * ? " ' ` < > | { } [ ]
+- 文件主名中不允许出现的非法英文字符。<br>API version 18开始，非法英文字符包括：\ / : * ? " < > |<br>API version 10-17，非法英文字符包括：. .. \ / : * ? " ' ` < > | { } [ ]
 
 **系统接口**：此接口为系统接口。
 
@@ -173,9 +175,11 @@ createAsset(displayName: string, options: photoAccessHelper.PhotoCreateOptions):
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 202      | Called by non-system application.                            |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 13900020 | Invalid argument.         |
+| 14000001 | Invalid display name.         |
 | 14000011 | Internal system error                                        |
 
 **示例：**
@@ -230,9 +234,9 @@ getHiddenAlbums(mode: HiddenPhotosDisplayMode, options?: FetchOptions): Promise&
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission verification failed, usually the result returned by VerifyAccessToken. |
-| 202      | Permission verification failed, application which is not a system application uses system API. |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | Internal system error.                                        |
 
 **示例：**
@@ -291,6 +295,68 @@ async function getHiddenAlbumsView(phAccessHelper: sendablePhotoAccessHelper.Pho
 }
 ```
 
+### getPhotoAssets<sup>24+</sup>
+
+getPhotoAssets(assetsData: photoAccessHelper.ValuesBucket[]): Promise&lt;PhotoAsset[]&gt;
+
+将ValuesBucket记录转换为PhotoAsset对象。
+
+​**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名  | 类型    | 必填 | 说明                       |
+| ------- | ------- | ---- | -------------------------- |
+| assetsData | [photoAccessHelper.ValuesBucket](js-apis-photoAccessHelper-sys.md#valuesbucket22)[] | 是   | 资产记录的数组。<br>数组中的每个元素包含资产的列名称及其对应的值。<br>数组的大小不能超过500个。<br>数组中的每个元素必须包含以下资产列信息：file_id、data、display_name、media_type、subtype。|
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise&lt;[PhotoAsset](#photoasset)[]&gt; | Promise对象，返回PhotoAsset对象的数组（数组可能为空）。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 23800151 | The scenario parameter verification fails. Possible causes: 1. Invalid value type in ValuesBucket; 2. Missing required column in ValuesBucket; 3. Array size exceeds 500.|
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[@ohos.file.sendablePhotoAccessHelper (基于Sendable对象的相册管理模块)](js-apis-sendablePhotoAccessHelper.md)的示例使用。
+
+```ts
+import { Context } from '@kit.AbilityKit';
+async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelper, context: Context) {
+  console.info('getPhotoAssets demo');
+  let valuesArr: photoAccessHelper.ValuesBucket[] = [];
+  let resultSet: photoAccessHelper.ResultSet | undefined = undefined;
+  let photoAssetArr: sendablePhotoAccessHelper.PhotoAsset[] = [];
+  let QUERY_SQL = 'SELECT file_id,data,display_name,media_type,subtype from Photos limit 100';
+  try {
+    resultSet = await photoAccessHelper.getPhotoAccessHelper(context).query(QUERY_SQL);
+    let index: number = 0;
+    while(resultSet && index < resultSet.rowCount){
+      resultSet.goToRow(index);
+      valuesArr.push(resultSet.getRow());
+      index++;
+    }
+    photoAssetArr = await phAccessHelper.getPhotoAssets(valuesArr);
+    console.info('getPhotoAssets successfully');
+  } catch (err) {
+    console.error(`valuesArr failed: ${err.code}, ${err.message}`);
+  }
+}
+```
+
 ## PhotoAsset
 
 提供封装文件属性的方法。
@@ -319,8 +385,8 @@ requestSource(): Promise&lt;number&gt;
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 202      | Called by non-system application.                            |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 14000011 | Internal system error                                        |
 
 **示例：**
@@ -361,9 +427,9 @@ getAnalysisData(analysisType: AnalysisType): Promise\<string>
 
 **系统接口**：此接口为系统接口。
 
-**需要权限**：ohos.permission.READ\_IMAGEVIDEO
+**需要权限**：ohos.permission.READ_IMAGEVIDEO
 
-从API version 22开始，当analysisType为[ANALYSIS\_DETAIL\_ADDRESS](js-apis-photoAccessHelper-sys.md#analysistype11)时，需要增加权限ohos.permission.MEDIA\_LOCATION，无权限则会抛出[权限校验失败错误码201](../errorcode-universal.md#201-权限校验失败)。
+从API version 22开始，当analysisType为[ANALYSIS\_DETAIL\_ADDRESS](js-apis-photoAccessHelper-sys.md#analysistype11)时，需要增加权限ohos.permission.MEDIA\_LOCATION，无权限则会抛出通用错误码[201 API权限校验失败](../errorcode-universal.md#201-api权限校验失败)。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -377,7 +443,7 @@ getAnalysisData(analysisType: AnalysisType): Promise\<string>
 
 | 类型                | 说明                                |
 | :------------------ | :---------------------------------- |
-| Promise&lt;string&gt; | Promise对象，返回指定分析数据结果。 |
+| Promise&lt;string&gt; | Promise对象，返回指定类型的智慧分析结果数据。 |
 
 **错误码：**
 
@@ -385,9 +451,9 @@ getAnalysisData(analysisType: AnalysisType): Promise\<string>
 
 | 错误码ID | 错误信息                                                     |
 | :------- | :----------------------------------------------------------- |
-| 201      | Permission denied.                                           |
-| 202      | Called by non-system application.                            |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | Internal system error                                        |
 
 **示例：**
@@ -448,8 +514,8 @@ getFaceId(): Promise\<string>
 
 | 错误码ID | 错误信息                                                     |
 | :------- | :----------------------------------------------------------- |
-| 201      | Permission denied.                                           |
-| 202      | Called by non-system application.                            |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 14000011 | Internal system error                                        |
 
 **示例：**
@@ -464,7 +530,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
   try {
     console.info('getFaceIdDemo');
     let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
-    predicates.equalTo("user_display_level", 1);
+    predicates.equalTo('user_display_level', 1);
     let fetchOptions: photoAccessHelper.FetchOptions = {
       fetchColumns: [],
       predicates: predicates

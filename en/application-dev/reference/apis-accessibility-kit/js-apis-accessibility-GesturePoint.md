@@ -6,8 +6,11 @@
 <!--Designer: @z7o-->
 <!--Tester: @A_qqq-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=16a51cad246d07c6caba5c76444e9d073c5d43d6 translatedAt=2026-08-03T09:33:41.469Z pushedAt=2026-08-03T12:35:30.436Z -->
 
-The **GesturePoint** module provides APIs for creating gesture touch point information required for an accessibility application to inject gestures.
+GesturePoint represents a gesture touch point and is the basic unit that constitutes a gesture path (GesturePath).
+
+This module is used to create touch point information for gesture paths, for use by accessibility applications to inject gestures.
 
 > **NOTE**
 >
@@ -21,35 +24,35 @@ import { GesturePoint } from '@kit.AccessibilityKit';
 
 ## GesturePoint
 
-Defines a gesture touch point.
+Represents a gesture touch point, which is the basic unit that constitutes a GesturePath node and is used to define the touch position in the gesture trajectory for accessibility gesture injection. For details about how to use it, see [GesturePath](js-apis-accessibility-GesturePath.md).
 
-**System capability**: SystemCapability.BarrierFree.Accessibility.Core
+**System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 ### Attributes
 
 | Name       | Type  | Read-Only  | Optional  | Description     |
 | --------- | ------ | ---- | ---- | ------- |
-| positionX | number | No   | No   | X coordinate of the touch point.|
-| positionY | number | No   | No   | Y coordinate of the touch point.|
+| positionX | number | No   | No   | X coordinate of the touch point, in pixels (px).|
+| positionY | number | No   | No   | Y coordinate of the touch point, in pixels (px).|
 
 ### constructor<sup>(deprecated)</sup>
 
-constructor(positionX: number, positionY: number);
+constructor(positionX: number, positionY: number)
 
-Defines a constructor used to create a **GesturePoint** instance.
+Creates a **GesturePoint** instance based on the given X and Y coordinates.
 
 > **NOTE**
 >
-> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12.
 
-**System capability**: SystemCapability.BarrierFree.Accessibility.Core
+**System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **Parameters**
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| positionX | number | Yes| X coordinate of the touch point.|
-| positionY | number | Yes | Y coordinate of the touch point.|
+| positionX | number | Yes| X coordinate of the touch point, in pixels (px).|
+| positionY | number | Yes | Y coordinate of the touch point, in pixels (px).|
 
 **Example**
 

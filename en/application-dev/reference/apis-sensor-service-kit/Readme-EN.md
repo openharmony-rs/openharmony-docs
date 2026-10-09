@@ -2,9 +2,10 @@
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @butterls-->
-<!--Tester: @murphy84-->
+<!--Designer: @andeszhang-->
+<!--Tester: @zhaofangyuan-->
 <!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=2cc3d788470dfc527ff67f0d956b9e3149129ee5 translatedAt=2026-09-02T07:41:55.833Z pushedAt=2026-09-06T06:30:34.836Z -->
 
 - ArkTS API<!--sensor-service-arkts-->
   - [@ohos.sensor (Sensor)](js-apis-sensor.md)
@@ -12,8 +13,8 @@
   <!--Del-->
   - [@ohos.sensor (Sensor) (System API)](js-apis-sensor-sys.md)
   <!--DelEnd-->
-  - [@ohos.sensor (Sensor) (Deprecated API)](js-apis-system-sensor.md)
-  - [@ohos.vibrator (Vibrator) (Deprecated API)](js-apis-system-vibrate.md)
+  - [@system.sensor (Sensor)](js-apis-system-sensor.md)
+  - [@system.vibrator (Vibrator)](js-apis-system-vibrate.md)
 - C API<!--sensor-service-c-->
   - Modules<!--sensor-service-module-->
     - [Sensor](capi-sensor.md)
@@ -30,7 +31,7 @@
     - [Sensor_SubscriptionAttribute](capi-sensor-sensor-subscriptionattribute.md)
     - [Sensor_Subscriber](capi-sensor-sensor-subscriber.md)
     - [Vibrator_Attribute](capi-vibrator-vibrator-attribute.md)
-    - [Vibrator_File_Description](capi-vibrator-vibrator-filedescription.md)
+    - [Vibrator_FileDescription](capi-vibrator-vibrator-filedescription.md)
 - Error Codes<!--sensor-service-arkts-errcode-->
   - [Sensor Error Codes](errorcode-sensor.md)
   - [Vibrator Error Codes](errorcode-vibrator.md)

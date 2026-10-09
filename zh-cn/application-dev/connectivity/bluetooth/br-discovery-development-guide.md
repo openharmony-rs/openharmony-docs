@@ -3,7 +3,7 @@
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @enjoy_sunshine-->
-<!--Designer: @chengguohong; @tangjia15-->
+<!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -118,7 +118,7 @@ try {
   // 获取已配对设备信息
   let devices = connection.getPairedDevices();
   console.info('pairedDevices: ' + JSON.stringify(devices));
-  // 若已知道设备地址，可主动查询该设备是否是已配对的
+  // 若已知设备地址，可主动查询该设备是否是已配对的
   if (devices.length > 0) {
     let pairState = connection.getPairState(devices[0]);
     console.info('device: '+ devices[0] + ' pairState is ' + pairState);
@@ -191,7 +191,7 @@ export class DiscoveryDeviceManager {
       // 获取已配对设备信息
       let devices = connection.getPairedDevices();
       console.info('pairedDevices: ' + JSON.stringify(devices));
-      // 若已知道设备地址，可主动查询该设备是否是已配对的
+      // 若已知设备地址，可主动查询该设备是否是已配对的
       if (devices.length > 0) {
         let pairState = connection.getPairState(devices[0]);
         console.info('device: '+ devices[0] + ' pairState is ' + pairState);

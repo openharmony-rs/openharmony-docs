@@ -3,7 +3,7 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @liujiaxing2024-->
-<!--Designer: @junjie_shi-->
+<!--Designer: @jiangwenhao-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
@@ -11,7 +11,7 @@ HiAppEvent提供了事件订阅接口，用于获取应用的事件。
 
 ## 接口说明
 
-API接口使用说明，包括参数使用限制和具体取值范围。请参考[@ohos.hiviewdfx.hiAppEvent (应用事件打点)ArkTS API文档](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md)。
+API接口使用说明，包括参数使用限制和具体取值范围。请参考[@ohos.hiviewdfx.hiAppEvent](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md)。
 
 **订阅接口功能介绍**：
 
@@ -57,8 +57,8 @@ API接口使用说明，包括参数使用限制和具体取值范围。请参�
 
    订阅崩溃事件，采用OnReceive类型观察者的订阅方式，观察者接收到事件后会立即触发OnReceive()回调。编辑“EntryAbility.ets”文件，定义OnReceive类型观察者相关方法：
 
-   <!-- @[AppEvent_Crash_ArkTS_Add_Watcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
-
+   <!-- @[AppEvent_Crash_ArkTS_Add_Watcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->    
+   
    ``` TypeScript
    hiAppEvent.addWatcher({
      // 开发者可以自定义观察者名称，系统会使用名称来标识不同的观察者
@@ -171,7 +171,7 @@ API接口使用说明，包括参数使用限制和具体取值范围。请参�
      .height('5%')
      .onClick(() => {
        // 在按钮点击函数中进行事件打点，以记录按钮点击事件
-       let eventParams: Record<string, number> = {'clickTime': 100};
+       let eventParams: Record<string, number> = { 'clickTime': 100 };
        let eventInfo: hiAppEvent.AppEventInfo = {
          // 事件领域定义
          domain: 'button',
@@ -185,7 +185,8 @@ API接口使用说明，包括参数使用限制和具体取值范围。请参�
        hiAppEvent.write(eventInfo).then(() => {
          hilog.info(0x0000, 'testTag', `AppEvents writeEvent ArkTS success`);
        }).catch((err: BusinessError) => {
-         hilog.error(0x0000, 'testTag', `AppEvents HiAppEvent err.code: ${err.code}, err.message: ${err.message}`);
+         hilog.error(0x0000, 'testTag',
+           `AppEvents HiAppEvent err.code: ${err.code}, err.message: ${err.message}`);
        });
      })
    ```

@@ -1,8 +1,8 @@
 # 在自绘编辑框中使用输入法开发指导 (C/C++)
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
-<!--Designer: @andeszhang-->
+<!--Owner: @codexu62-->
+<!--Designer: @zhaolinglan-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -20,6 +20,7 @@ CMakeLists.txt中添加以下lib。
 
 ```txt
 libohinputmethod.so
+libhilog_ndk.z.so
 ```
 
 ## 引用头文件
@@ -48,7 +49,7 @@ libohinputmethod.so
    <!-- @[input_case_input_attachOptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
-   // 创建InputMethod_AttachOptions实例，选项showKeyboard用于指定此次绑定成功后是否显示键盘，此处以目标显示键盘为例
+   // 创建InputMethod_AttachOptions实例，选项showKeyboard用于指定此次绑定成功后是否显示键盘，设置为true 表示绑定成功后自动显示键盘；false 表示不自动显示
    bool showKeyboard = true;
    attachOptions = OH_AttachOptions_Create(showKeyboard);
    ```
@@ -95,15 +96,15 @@ if (OH_InputMethodProxy_NotifyConfigurationChange(inputMethodProxy, InputMethod_
 
    ```c
    // 实现InputMethod_TextEditorProxy中的输入法应用事件响应函数
-   void GetTextConfig(InputMethod_TextEditorProxy *textEditorProxy, InputMethod_TextConfig *config)
+   void GetTextConfigFunc(InputMethod_TextEditorProxy *textEditorProxy, InputMethod_TextConfig *config)
    {
        // 处理输入法发送的获取输入框配置请求
    }
-   void InsertText(InputMethod_TextEditorProxy *textEditorProxy, const char16_t *text, size_t length)
+   void InsertTextFunc(InputMethod_TextEditorProxy *textEditorProxy, const char16_t *text, size_t length)
    {
        // 处理输入法发送的插入文本请求
    }
-   void DeleteForward(InputMethod_TextEditorProxy *textEditorProxy, int32_t length)
+   void DeleteForwardFunc(InputMethod_TextEditorProxy *textEditorProxy, int32_t length)
    {
        // 处理输入法发送的删除文本请求
    }
@@ -156,7 +157,7 @@ if (OH_InputMethodProxy_NotifyConfigurationChange(inputMethodProxy, InputMethod_
 
 > 说明：
 >
-> 需要在CMakeList.txt中添加libohinputmethod.so libhilog_ndk.z.so依赖。
+> 需要在CMakeLists.txt中添加libohinputmethod.so libhilog_ndk.z.so依赖。
 
    <!-- @[input_case_input_CPreview016](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/cpp/napi_init.cpp) -->
    
@@ -366,7 +367,7 @@ if (OH_InputMethodProxy_NotifyConfigurationChange(inputMethodProxy, InputMethod_
        // 将实现好的响应处理函数设置到InputMethod_TextEditorProxy中
        ConstructTextEditorProxy(textEditorProxy);
    
-       // 创建InputMethod_AttachOptions实例，选项showKeyboard用于指定此次绑定成功后是否显示键盘，此处以目标显示键盘为例
+       // 创建InputMethod_AttachOptions实例，选项showKeyboard用于指定此次绑定成功后是否显示键盘，设置为true 表示绑定成功后自动显示键盘；false 表示不自动显示
        bool showKeyboard = true;
        attachOptions = OH_AttachOptions_Create(showKeyboard);
        if (attachOptions == nullptr) {

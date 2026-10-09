@@ -4,7 +4,7 @@
 <!--Owner: @DaiHuina1997-->
 <!--Designer: @yao_dashuai-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @jinqiuheng-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 正则运算与预期输出结果不一致场景
 
@@ -12,14 +12,14 @@
 
 ### 正则运算对于\b处理与预期不一致
 
-<!-- @[test_wordBoundaryInArkRegex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->  
+<!-- @[test_wordBoundaryInArkRegex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->   
 
 ``` TypeScript
 let str = '\u2642';
 let res = str.replace(/\b/g, '/');
 console.info('res = ' + res);
-// 期望输出: res = ♂。
-// 实际输出: res = /♂/。
+// 期望输出: res = ♂
+// 实际输出: res = /♂/
 ```
 
 规避方案：暂无。
@@ -30,32 +30,32 @@ console.info('res = ' + res);
 
 ### 正则运算对于先行断言((?=pattern)或(?!pattern)) 嵌套在后行断言((?<=pattern)或(?<!pattern))内部的场景与预期不一致
 
-<!-- @[test_lookbehindWithNestedLookahead](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->   
+<!-- @[test_lookbehindWithNestedLookahead](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->    
 
 ``` TypeScript
 console.info(`res:${'abcdef'.match(/(?<=ab(?=c)cd)ef/)}`);
-// 期望输出: res:ef。
-// 实际输出: res:null。
+// 期望输出: res:ef
+// 实际输出: res:null
 ```
 
 规避方案：使用/(?<=abcd)ef/代替/(?<=ab(?=c)cd)ef/。
 
 ### 正则运算对于大小写的处理与预期不一致
 
-<!-- @[test_regexIgnoreCaseCaseFolding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->  
+<!-- @[test_regexIgnoreCaseCaseFolding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->   
 
 ``` TypeScript
 let res = /\u{10400}/ui.test('\u{10428}');
 console.info('res = ' + res);
-// 期望输出: res = true。
-// 实际输出: res = false。
+// 期望输出: res = true
+// 实际输出: res = false
 ```
 
 规避方案：暂无。
 
 ### 正则运算/()/ug匹配时lastIndex与预期不一致
 
-<!-- @[test_regexLastIndexWithEmptyGroupInGlobalUnicodeMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->  
+<!-- @[test_regexLastIndexWithEmptyGroupInGlobalUnicodeMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->   
 
 ``` TypeScript
 let L = '\ud800';
@@ -64,22 +64,22 @@ let u = /()/ug;
 u.lastIndex = 1;
 u.exec(L + T + L + T);
 console.info('u.lastIndex = ' + u.lastIndex);
-// 期望输出: u.lastIndex = 0。
-// 实际输出: u.lastIndex = 1。
+// 期望输出: u.lastIndex = 0
+// 实际输出: u.lastIndex = 1
 ```
 
 规避方案：暂无。
 
 ### 正则运算[]内部使用'-'与预期不一致
 
-<!-- @[test_beforeRegexHyphenInCharacterClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->  
+<!-- @[test_beforeRegexHyphenInCharacterClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->   
 
 ``` TypeScript
 let str = 'a-b';
 let reg = /[+-\s]/;
 console.info('reg.exec(str) = ' + reg.exec(str));
-// 期望输出: reg.exec(str) = -。
-// 实际输出: reg.exec(str) = null。
+// 期望输出: reg.exec(str) = -
+// 实际输出: reg.exec(str) = null
 ```
 
 规避方案：使用转义后的"-"。
@@ -94,14 +94,14 @@ console.info('reg.exec(str) = ' + reg.exec(str));
 
 ### 正则运算具名捕获组获取与预期不一致
 
-<!-- @[test_namedCaptureGroupAccess](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->  
+<!-- @[test_namedCaptureGroupAccess](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->   
 
 ``` TypeScript
 let reg = new RegExp('(a)(?<b>b)');
 let res = reg.exec('ab');
 console.info('JSON.stringify(res?.groups) = ' + JSON.stringify(res?.groups));
-// 期望输出: JSON.stringify(res?.groups) = {'b':'b'}。
-// 实际输出: JSON.stringify(res?.groups) = {'b':'a'}。
+// 期望输出: JSON.stringify(res?.groups) = {'b':'b'}
+// 实际输出: JSON.stringify(res?.groups) = {'b':'a'}
 ```
 
 
@@ -119,14 +119,14 @@ console.info('JSON.stringify(res?.groups) = {\'b\':' + JSON.stringify(res[2]) + 
 
 在使用正则匹配时，如果'|'前是一个空匹配，会导致'|'后的匹配不成功。
 
-<!-- @[test_beforeRegexAlternationOperator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->  
+<!-- @[test_beforeRegexAlternationOperator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->   
 
 ``` TypeScript
 let reg = /a(?:|x)$/;
 let res = reg.exec('ax');
 console.info('JSON.stringify(res) = ' + JSON.stringify(res));
-// 期望输出: JSON.stringify(res) = ['ax']。
-// 实际输出: JSON.stringify(res) = null。
+// 期望输出: JSON.stringify(res) = ['ax']
+// 实际输出: JSON.stringify(res) = null
 ```
 
 
@@ -208,25 +208,25 @@ console.info('res: ', result);
 
 ### Object.entries处理Uint8Array与Uint16Array数组结果与期望不一致
 
-<!-- @[testOne_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/test1.js) -->  
+<!-- @[test_rangeError](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/TestArray.js) -->  
 
 ``` JavaScript
-// test1.js
+// TestArray.js
 const typedArr = new Uint8Array([10, 20, 30]);
 try {
-   const result = Object.entries(typedArr);
-   console.info('no error throw');
-} catch (e) {
-   console.info(e);
+  const result = Object.entries(typedArr);
+  console.info('no error throw');
+} catch(e) {
+  console.info(e);
 }
 // 期望输出：no error throw
 // 实际输出: RangeError: object entries is not supported IsJSUint8Array or IsJSUint16Array
 ```
 
-<!-- @[testTwo_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/test2.js) -->  
+<!-- @[testTwo_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/TestArrayExt.js) -->  
 
 ``` JavaScript
-// test2.js
+// TestArrayExt.js
 const typedArr = new Uint16Array([10, 20, 30]);
 try {
    const result = Object.entries(typedArr);
@@ -240,17 +240,17 @@ try {
 
 规避方案：使用Array.from将TypedArray先转换为普通Array，再使用Object.entries。
 
-<!-- @[testOne_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/test1.js) -->  
+<!-- @[test_nothrow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/TestArray.js) -->   
 
 ``` JavaScript
-// test1.js
+// TestArray.js
 const typedArr = new Uint8Array([10, 20, 30]);
 try {
-    const normalArr1 = Array.from(typedArr);
-    const result = Object.entries(normalArr1);
-    console.info('no error throw');
-} catch (e) {
-    console.info(e);
+  const normalArr1 = Array.from(typedArr);
+  const result = Object.entries(normalArr1);
+  console.info('no error throw');
+} catch(e) {
+  console.info(e);
 }
 // 输出：no error throw
 ```
@@ -259,14 +259,14 @@ try {
 
 在使用字符串replace接口时，如果第一个参数是空字符串，则直接返回原始字符串。
 
-<!-- @[test_beforeStringReplaceWithEmptySearchValue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->   
+<!-- @[test_beforeStringReplaceWithEmptySearchValue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->    
 
 ``` TypeScript
 let str = 'dddd';
 let res = str.replace('', 'abc');
 console.info('res = ' + res);
-// 期望输出: res = abcdddd。
-// 实际输出: res = dddd。
+// 期望输出: res = abcdddd
+// 实际输出: res = dddd
 ```
 
 规避方案：使用正则表达式 `/^/` 表示字符串起始符，作为第一个参数。
@@ -286,14 +286,17 @@ let res = str.replace(/^/, 'abc');
 
 **Async函数内部异常的捕获方式**
 
-1. 使用[errorManager.on()](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronerror)捕获到Async函数产生的unhandledrejection事件，再通过编写errorManager.on()注册的回调函数，来进行异常处理操作。
+1. 使用[errorManager.on()](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronerror)捕获到Async函数产生的unhandledRejection事件，再通过编写errorManager.on()注册的回调函数，来进行异常处理操作。
 
-   ```ts
+   <!-- @[test_safeAsyncCall](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->   
+   
+   ``` TypeScript
    import { errorManager } from '@kit.AbilityKit';
-
-   errorManager.on("unhandledRejection", (a:ESObject, b:Promise<ESObject>) => {
-      console.info("Async test", a);
-   })
+     // ...
+     errorManager.on('unhandledRejection', (a:ESObject, b:Promise<ESObject>) => {
+       console.info('Async test', a);
+       // ...
+     })
    ```
 
 2. 在Async函数内部，针对可能发生异常的代码块添加try-catch逻辑，直接捕获可能出现的异常。
@@ -321,19 +324,21 @@ Array.flatMap()接口在处理包含Proxy的Array时，未正确展平嵌套的P
 
 ### ArkTS使用场景
 
-```ts
+<!-- @[test_arrayFlatMapCompliance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->   
+
+``` TypeScript
 let arr1 = [0, 1];
 let arr2 = [2, 3];
-const emptyHandler = new Object() as ProxyHandler<number[]>;
+const emptyHandler = {} as ProxyHandler<number[]>;
 let proxy1 = new Proxy(arr1, emptyHandler);
 let proxy2 = new Proxy(arr2, emptyHandler);
 let arr3 = [proxy1, proxy2];
 let res = arr3.flatMap(x => x);
 
-console.info("res length:", res.length.toString());
+console.info('res length:', res.length.toString());
 // 期望输出: res length: 4
 // 实际输出: res length: 2
-console.info("res[0] is: ", res[0].toString());
+console.info('res[0] is: ', res[0].toString());
 // 期望输出: res[0] is: 0
 // 实际输出: res[0] is: 0,1
 ```
@@ -344,24 +349,26 @@ ArkUI状态管理框架会为使用状态变量装饰器（如@State、@Trace、
 
 以状态管理V2为例：
 
-```ts
+<!-- @[test_componentV2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Local.ets) -->   
+
+``` TypeScript
 @Entry
 @ComponentV2
 struct Index {
-   @Local p: number[] = [0, 1];
-   @Local q: number[] = [2, 3];
-   c: number[][] = [this.p, this.q];
-   d: number[] = [];
+  @Local p: number[] = [0, 1];
+  @Local q: number[] = [2, 3];
+  c: number[][] = [this.p, this.q];
+  d: number[] = [];
 
-   aboutToAppear(): void {
-      this.d = this.c.flatMap(it => it);
-   }
+  aboutToAppear(): void {
+    this.d = this.c.flatMap(it => it);
+  }
 
-   build() {
-      Column() {
-         Text(`${this.d[0]}`); // 预期显示：0; 实际显示：0,1
-      }
-   }
+  build() {
+    Column() {
+      Text(`${this.d[0]}`); // 预期显示：0; 实际显示：0,1
+    }
+  }
 }
 ```
 
@@ -369,9 +376,12 @@ struct Index {
 
 避免使用Array.flatMap()接口，改为调用Array.map()接口后再调用深度为1的Array.flat()接口。以上文ArkTS使用场景为例：
 
-```ts
+<!-- @[test_afterArrayFlatMapCompliance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->   
+
+``` TypeScript
 // 使用规避方案前
 let res = arr3.flatMap(x => x);
+// ...
 // 使用规避方案后
 let res = arr3.map(x => x).flat();
 ```
@@ -380,28 +390,31 @@ let res = arr3.map(x => x).flat();
 
 在Proxy对象的handler函数中，对于数字类型的key，ArkTS当前实现是采用保持数字类型不变，但是按照EcmaScript规范，应当转为string类型。
 
-```ts
+<!-- @[testThree_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/TestArray.js) -->
+
+``` JavaScript
+// TestArray.js
 {
-  let handler:ESObject = {
-    get(target: ESObject, key: ESObject): ESObject {
-      console.info("get", key, typeof key);
+  let handler = {
+    get(target, key) {
+      console.info('get', key, typeof key);
       return Reflect.get(target, key);
     },
-    set(target: ESObject, key: ESObject, value: ESObject): ESObject {
-      console.info("set", key, typeof key);
+    set(target, key, value) {
+      console.info('set', key, typeof key);
       return Reflect.set(target, key, value);
     },
-    deleteProperty(target: ESObject, key: ESObject):ESObject {
-      console.info("delete", key, typeof key);
+    deleteProperty(target, key) {
+      console.info('delete', key, typeof key);
       return Reflect.deleteProperty(target, key);
     },
-    has(target: ESObject, key: ESObject):ESObject {
-      console.info("has", key, typeof key);
+    has(target, key) {
+      console.info('has', key, typeof key);
       return Reflect.has(target, key);
     }
   }
-  let obj: ESObject = {};
-  let px: ESObject = new Proxy(obj, handler);
+  let obj = {};
+  let px = new Proxy(obj, handler);
   px[1];
   // 实际输出：get 1 number
   px[2] = 2;
@@ -411,45 +424,46 @@ let res = arr3.map(x => x).flat();
   delete px[2];
   // 实际输出：delete 2 number
 }
-
 ```
 规避方案：若业务逻辑依赖于key必须为string类型，可在handler函数内部对数字类型的key进行显式转换。示例如下：
 
-```ts
-{
-  let handler:ESObject = {
-    get(target:ESObject,key:ESObject):ESObject {
-      if (typeof key === "number") {
-        key = String(key);
-      }
-      console.info("get",key,typeof key);
-      return Reflect.get(target,key);
+<!-- @[testThree_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/TestArray.js) -->
 
-    },
-    set(target:ESObject,key:ESObject,value:ESObject):ESObject {
-      if (typeof key === "number") {
+``` JavaScript
+// TestArray.js
+{
+  let handler = {
+    get(target, key) {
+      if (typeof key === 'number') {
         key = String(key);
       }
-      console.info("set",key,typeof key);
-      return Reflect.set(target,key,value);
+      console.info('get', key, typeof key);
+      return Reflect.get(target, key);
     },
-    deleteProperty(target:ESObject,key:ESObject):ESObject {
-      if (typeof key === "number") {
+    set(target, key, value) {
+      if (typeof key === 'number') {
         key = String(key);
       }
-      console.info("delete",key,typeof key);
-      return Reflect.deleteProperty(target,key);
+      console.info('set', key, typeof key);
+      return Reflect.set(target, key, value);
     },
-    has(target:ESObject,key:ESObject) {
-      if (typeof key === "number") {
+    deleteProperty(target, key) {
+      if (typeof key === 'number') {
         key = String(key);
       }
-      console.info("has",key,typeof key);
-      return Reflect.has(target,key);
+      console.info('delete', key, typeof key);
+      return Reflect.deleteProperty(target, key);
+    },
+    has(target, key) {
+      if (typeof key === 'number') {
+        key = String(key);
+      }
+      console.info('has', key, typeof key);
+      return Reflect.has(target, key);
     }
   }
-  let obj:ESObject = {};
-  let px:ESObject = new Proxy(obj,handler);
+  let obj = {};
+  let px = new Proxy(obj, handler);
   px[1];
   // 实际输出：get 1 string
   px[2] = 2;
@@ -469,12 +483,14 @@ let res = arr3.map(x => x).flat();
 
 JSON.stringify的replacer函数中，对于数组索引key的类型，ArkTS当前实现是采用保持数字类型不变，但是按照EcmaScript规范，应当转为string类型。
 
-```ts
-// test1.js
+<!-- @[testOne_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/TestArray.js) -->  
+
+``` JavaScript
+// TestArray.js
 {
   let arr = [10, 20, 30, 40];
   function replacer(key, value) {
-    if (key === "2") {
+    if (key === '2') {
         return value * 2;
     }
     return value;
@@ -486,15 +502,17 @@ JSON.stringify的replacer函数中，对于数组索引key的类型，ArkTS当�
 
 规避方案：若业务逻辑依赖于key必须为string类型，可在replacer函数内部对数字类型的key进行显式转换。示例如下：
 
-```ts
-// test1.js
+<!-- @[testOne_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/TestArray.js) -->  
+
+``` JavaScript
+// TestArray.js
 {
   let arr = [10, 20, 30, 40];
   function replacer(key, value) {
-    if (typeof key === "number") {
+    if (typeof key === 'number') {
       key = String(key);
     }
-    if (key === "2") {
+    if (key === '2') {
         return value * 2;
     }
     return value;

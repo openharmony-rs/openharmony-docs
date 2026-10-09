@@ -2,16 +2,18 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @piggyguy; @lushi871202; @CCFFWW-->
-<!--Designer: @piggyguy; @lushi871202; @CCFFWW-->
+<!--Owner: @piggyguy; @lushi871202; @hehongyang3-->
+<!--Designer: @piggyguy; @lushi871202; @hehongyang3-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
 
-提供UI组件行为变化的无感监听能力。推荐使用[UIObserver](./arkts-apis-uicontext-uiobserver.md)进行组件监听。
+本模块提供UI组件行为变化的无感监听能力，包括监听页面状态、滚动事件、页面路由、屏幕像素密度、布局和绘制、页面切换以及TabContent状态变化等。适用于需要在不侵入组件业务逻辑的情况下感知UI状态变化的场景。推荐使用[UIObserver](./arkts-apis-uicontext-uiobserver.md)进行组件监听。
 
 > **说明：**
 >
 > - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块接口仅可在Stage模型下使用。
 >
 > - UIObserver仅能监听到本进程内的相关信息，不支持获取<!--Del-->[UIExtensionComponent](../../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md)等<!--DelEnd-->跨进程场景的信息。
 
@@ -40,6 +42,8 @@ NavDestination组件状态。
 | ON_WILL_DISAPPEAR<sup>12+</sup>| 7   | NavDestination从组件树上卸载之前。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
 | ON_ACTIVE<sup>17+</sup> | 8 | NavDestination组件处于激活态。<br/>**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。|
 | ON_INACTIVE<sup>17+</sup> | 9 | NavDestination组件处于非激活态。<br/>**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。|
+| ABOUT_TO_APPEAR | 10 | NavDestination外层自定义组件即将出现。 <br/>**起始版本：** 26.2.0 <br/>**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| ABOUT_TO_DISAPPEAR | 11 | NavDestination外层自定义组件即将消失。 <br/>**起始版本：** 26.2.0 <br/>**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | ON_BACKPRESS<sup>12+</sup> | 100   | NavDestination组件返回。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 
 ## ScrollEventType<sup>12+</sup>
@@ -57,7 +61,7 @@ NavDestination组件状态。
 
 ## RouterPageState
 
-routerPage生命周期触发时对应的状态。RouterPageState用于[RouterPageInfo](#routerpageinfo)中，作为[routerPageUpdate](#uiobserveronrouterpageupdate11)无感监听的返回值。
+routerPage生命周期触发时对应的状态。RouterPageState用于[RouterPageInfo](#routerpageinfo)中，作为[routerPageUpdate](#uiobserveronrouterpageupdate)无感监听的返回值。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -149,7 +153,7 @@ RouterPageInfo包含的信息，由系统返回给开发者。
 
 | 名称                 | 类型                                                   | 只读   | 可选 | 说明                                           |
 | -------------------- | -------------------------------------------------------| ----- | ---- | ---------------------------------------------- |
-| context              | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) \| [UIContext](./arkts-apis-uicontext-uicontext.md) | 否 | 否   | 触发生命周期的routerPage页面对应的上下文信息。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) \| [UIContext](./arkts-apis-uicontext-uicontext.md) | 否 | 否 | 触发生命周期的routerPage页面对应的上下文信息。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | index                | number                                                  | 否   | 否   | 触发生命周期的routerPage在栈中的位置。<br/> 取值范围：[0, +∞)<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。         |
 | name                 | string                                                  | 否   | 否   | 触发生命周期的routerPage页面的名称。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。           |
 | path                 | string                                                  | 否   | 否   | 触发生命周期的routerPage页面的路径。<br/> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。           |
@@ -180,7 +184,7 @@ Navigation组件页面切换的信息。
 
 | 名称         | 类型                                         | 只读   | 可选 | 说明                                          |
 | ------------ | -------------------------------------------- | ------ | ---- | -------------------------------------------- |
-| context      | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) \| [UIContext](./arkts-apis-uicontext-uicontext.md) | 否 | 否   | 触发页面切换的Navigation对应的上下文信息。 |
+| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) \| [UIContext](./arkts-apis-uicontext-uicontext.md) | 否 | 否 | 触发页面切换的Navigation对应的上下文信息。 |
 | from         | [NavDestinationInfo](#navdestinationinfo) \| [NavBar](./arkui-ts/ts-basic-components-navigation.md#navbar12) | 否 | 否   | 页面切换的源页面。         |
 | to           | [NavDestinationInfo](#navdestinationinfo) \| [NavBar](./arkui-ts/ts-basic-components-navigation.md#navbar12) | 否 | 否   | 页面切换的目的页面。         |
 | operation    | [NavigationOperation](./arkui-ts/ts-basic-components-navigation.md#navigationoperation11枚举说明) | 否 | 否   | 页面切换操作类型。         |
@@ -224,7 +228,7 @@ TabContent页面的切换信息。
 | index        | number                                       | 否   | 否   | TabContent组件的下标索引。索引从0开始。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。       |
 | id           | string                                       | 否   | 否   | Tabs组件的id。       <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                         |
 | uniqueId     | number                                       | 否   | 否   | Tabs组件的uniqueId。    <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                      |
-| lastIndex<sup>22+</sup>    | number                                       | 否   | 是   | 最近一次聚焦的TabsContent组件的下标索引。索引从0开始。仅在[on('tabChange')](./arkts-apis-uicontext-uiobserver.md#ontabchange22)的回调函数中存在。  <br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。   |
+| lastIndex<sup>22+</sup>    | number                                       | 否   | 是   | 最近一次聚焦的TabContent组件的下标索引。索引从0开始。仅在[on('tabChange')](./arkts-apis-uicontext-uiobserver.md#ontabchange22)的回调函数中存在。  <br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。   |
 
 ## WindowSizeLayoutBreakpointInfo<sup>22+</sup>
 
@@ -537,7 +541,7 @@ struct Index {
                 .fontSize(16)
                 .textAlign(TextAlign.Center)
                 .margin({ top: 10 })
-            }, (item: string) => item)
+            }, (item: number) => item.toString())
           }.width('100%')
         }
         .id('testId')
@@ -580,7 +584,7 @@ struct Index {
 }
 ```
 
-## uiObserver.on('routerPageUpdate')<sup>11+</sup>
+## uiObserver.on('routerPageUpdate')
 
 on(type: 'routerPageUpdate', context: UIAbilityContext | UIContext, callback: Callback\<RouterPageInfo\>): void
 
@@ -595,7 +599,7 @@ on(type: 'routerPageUpdate', context: UIAbilityContext | UIContext, callback: Ca
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 监听事件，固定为'routerPageUpdate'，即router中page页面的状态变化。 |
-| context  | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)&nbsp;\|&nbsp;[UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 上下文信息，用以指定监听页面的范围。 |
+| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)&nbsp;\|&nbsp;[UIContext](./arkts-apis-uicontext-uicontext.md) | 是 | 上下文信息，用以指定监听页面的范围。 |
 | callback | Callback\<[RouterPageInfo](#routerpageinfo)\>        | 是   | 回调函数。携带pageInfo，返回当前的page页面状态。                 |
 
 **示例：**
@@ -634,7 +638,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## uiObserver.off('routerPageUpdate')<sup>11+</sup>
+## uiObserver.off('routerPageUpdate')
 
 off(type: 'routerPageUpdate', context: UIAbilityContext | UIContext, callback?: Callback\<RouterPageInfo\>): void
 
@@ -649,7 +653,7 @@ off(type: 'routerPageUpdate', context: UIAbilityContext | UIContext, callback?: 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 监听事件，固定为'routerPageUpdate'，即router中page页面的状态变化。 |
-| context  | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)&nbsp;\|&nbsp;[UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 上下文信息，用以指定监听页面的范围。 |
+| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)&nbsp;\|&nbsp;[UIContext](./arkts-apis-uicontext-uicontext.md) | 是 | 上下文信息，用以指定监听页面的范围。 |
 | callback | Callback\<[RouterPageInfo](#routerpageinfo)\>        | 否   | 需要被注销的回调函数。                 |
 
 **示例：**
@@ -747,7 +751,7 @@ off(type: 'densityUpdate', context: UIContext, callback?: Callback\<DensityInfo\
 | callback | Callback\<[DensityInfo](#densityinfo12)\> | 否   | 需要被注销的回调函数。若不指定具体的回调函数，则注销指定UIContext下所有densityUpdate事件监听。 |
 
 ```ts
-import { uiObserver, UIContext } from '@kit.ArkUI';
+import { uiObserver } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -964,7 +968,7 @@ on(type: 'navDestinationSwitch', context: UIAbilityContext | UIContext, callback
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 监听事件，固定为'navDestinationSwitch'，即Navigation的页面切换事件。 |
-| context  | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)&nbsp;\|&nbsp;[UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 上下文信息，用以指定监听页面切换事件的范围。 |
+| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)&nbsp;\|&nbsp;[UIContext](./arkts-apis-uicontext-uicontext.md) | 是 | 上下文信息，用以指定监听页面切换事件的范围。 |
 | callback | Callback\<[NavDestinationSwitchInfo](#navdestinationswitchinfo12)\>        | 是   | 回调函数。携带NavDestinationSwitchInfo，返回页面切换事件的信息。                 |
 
 **示例：**
@@ -1090,7 +1094,7 @@ off(type: 'navDestinationSwitch', context: UIAbilityContext | UIContext, callbac
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 监听事件，固定为'navDestinationSwitch'，即Navigation的页面切换事件。 |
-| context  | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)&nbsp;\|&nbsp;[UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 上下文信息，用以指定监听页面切换事件的范围。 |
+| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)&nbsp;\|&nbsp;[UIContext](./arkts-apis-uicontext-uicontext.md) | 是 | 上下文信息，用以指定监听页面切换事件的范围。 |
 | callback | Callback\<[NavDestinationSwitchInfo](#navdestinationswitchinfo12)\>        | 否   | 需要被注销的回调函数。                 |
 
 **示例：**
@@ -1112,7 +1116,7 @@ on(type: 'navDestinationSwitch', context: UIAbilityContext | UIContext, observer
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 监听事件，固定为'navDestinationSwitch'，即Navigation的页面切换事件。 |
-| context  | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)&nbsp;\|&nbsp;[UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 上下文信息，用以指定监听页面切换事件的范围。 |
+| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)&nbsp;\|&nbsp;[UIContext](./arkts-apis-uicontext-uicontext.md) | 是 | 上下文信息，用以指定监听页面切换事件的范围。 |
 | observerOptions | [NavDestinationSwitchObserverOptions](#navdestinationswitchobserveroptions12)        | 是   | 监听选项。   |
 | callback | Callback\<[NavDestinationSwitchInfo](#navdestinationswitchinfo12)\>        | 是   | 回调函数。携带NavDestinationSwitchInfo，返回页面切换事件的信息。                 |
 
@@ -1244,7 +1248,7 @@ off(type: 'navDestinationSwitch', context: UIAbilityContext | UIContext, observe
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 监听事件，固定为'navDestinationSwitch'，即Navigation的页面切换事件。 |
-| context  | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)&nbsp;\|&nbsp;[UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 上下文信息，用以指定监听页面切换事件的范围。 |
+| context | [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)&nbsp;\|&nbsp;[UIContext](./arkts-apis-uicontext-uicontext.md) | 是 | 上下文信息，用以指定监听页面切换事件的范围。 |
 | observerOptions | [NavDestinationSwitchObserverOptions](#navdestinationswitchobserveroptions12)        | 是   | 监听选项。   |
 | callback | Callback\<[NavDestinationSwitchInfo](#navdestinationswitchinfo12)\>        | 否   | 需要被注销的回调函数。                 |
 

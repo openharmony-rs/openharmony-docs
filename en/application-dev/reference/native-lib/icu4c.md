@@ -33,12 +33,12 @@ In today's software market, applications need to support multiple languages for 
 ## Introducing ICU4C Internationalization Capabilities
 
 If you need to use ICU4C internationalization capabilities, add the corresponding header file as required. Add the unicode directory prefix to the header file of this module. For example:
-```
+```c
 #include <unicode/uloc.h>
 ```
 
-Add the following dynamic library to CMakeList.txt:
-```
+Add the following dynamic library to CMakeLists.txt:
+```c
 libicu.so
 ```
 

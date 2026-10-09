@@ -1,7 +1,7 @@
 # OH_Drawing_FontFeature
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @oh_wangxk; @gmiao522; @Lem0nC-->
+<!--Owner: @gmiao522-->
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
@@ -25,6 +25,6 @@ typedef struct {...} OH_Drawing_FontFeature
 
 | 名称      | 描述             |
 | --------- | ---------------- |
-| char* tag | 字体特征的描述。 |
+| char* tag | 字体特征的标签。 |
 | int value | 字体特征的值。   |
 

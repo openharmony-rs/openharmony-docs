@@ -3,8 +3,8 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @memghaiyang-->
+<!--Adviser: @HelloCrease-->
 
 ## 概述
 
@@ -38,7 +38,7 @@ enum BundleManager_ErrorCode
 
 **描述**
 
-枚举错误码。
+枚举错误码，详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 **起始版本：** 21
 

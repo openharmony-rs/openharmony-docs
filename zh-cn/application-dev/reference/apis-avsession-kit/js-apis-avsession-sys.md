@@ -1,8 +1,8 @@
 # @ohos.multimedia.avsession (媒体会话管理)(系统接口)
 <!--Kit: AVSession Kit-->
-<!--Subsystem:Multimedia-->
-<!--Owner: @ccfriend; @liao_qian-->
-<!--Designer: @ccfriend-->
+<!--Subsystem: Multimedia-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester:@chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -43,7 +43,7 @@ getAllSessionDescriptors(callback: AsyncCallback\<Array\<Readonly\<AVSessionDesc
 
 | 参数名   | 类型                                                         | 必填 | 说明                                       | 
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------ | 
-| callback | AsyncCallback<Array<Readonly<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)\>\>\> | 是   | 回调函数。返回所有会话描述的只读对象。 | 
+| callback | AsyncCallback<Array<Readonly<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor23)\>\>\> | 是   | 回调函数。返回所有会话描述的只读对象。 | 
 
 **错误码：** 
 
@@ -58,8 +58,8 @@ getAllSessionDescriptors(callback: AsyncCallback\<Array\<Readonly\<AVSessionDesc
 **示例：** 
 
 ```ts 
-import { BusinessError } from '@kit.BasicServicesKit'; 
-import { avSession } from '@kit.AVSessionKit'; 
+import { avSession } from '@kit.AVSessionKit';
+
 @Entry 
 @Component 
 struct Index { 
@@ -69,17 +69,13 @@ struct Index {
     Column() { 
         Text(this.message) 
           .onClick(()=>{ 
-            avSession.getAllSessionDescriptors((err: BusinessError, descriptors: avSession.AVSessionDescriptor[]) => { 
-              if (err) { 
-                console.error(`GetAllSessionDescriptors BusinessError: code: ${err.code}, message: ${err.message}`); 
-              } else { 
-                console.info(`GetAllSessionDescriptors : SUCCESS : descriptors.length : ${descriptors.length}`); 
+            avSession.getAllSessionDescriptors((descriptors: avSession.AVSessionDescriptor[]) => { 
+                console.info(`Succeeded in getting all session descriptors, length: ${descriptors.length}`); 
                 if (descriptors.length > 0 ) { 
-                    console.info(`getAllSessionDescriptors : SUCCESS : descriptors[0].isActive : ${descriptors[0].isActive}`); 
-                    console.info(`getAllSessionDescriptors : SUCCESS : descriptors[0].type : ${descriptors[0].type}`); 
-                    console.info(`getAllSessionDescriptors : SUCCESS : descriptors[0].sessionTag : ${descriptors[0].sessionTag}`); 
+                    console.info(`Succeeded in getting session descriptor, isActive: ${descriptors[0].isActive}`); 
+                    console.info(`Succeeded in getting session descriptor, type: ${descriptors[0].type}`); 
+                    console.info(`Succeeded in getting session descriptor, sessionTag: ${descriptors[0].sessionTag}`); 
                 } 
-              } 
             }); 
           }) 
       } 
@@ -112,7 +108,7 @@ getSessionDescriptors(category: SessionCategory): Promise\<Array\<Readonly\<AVSe
 
 | 类型                                                                        | 说明                                   |
 | --------------------------------------------------------------------------- | -------------------------------------- |
-| Promise\<Array\<Readonly\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)\>\>\> | Promise对象。返回对应类别的会话描述的只读对象。 |
+| Promise\<Array\<Readonly\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor23)\>\>\> | Promise对象。返回对应类别的会话描述的只读对象。 |
 
 **错误码：**
 
@@ -127,17 +123,13 @@ getSessionDescriptors(category: SessionCategory): Promise\<Array\<Readonly\<AVSe
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 avSession.getSessionDescriptors(avSession.SessionCategory.CATEGORY_ALL).then((descriptors: avSession.AVSessionDescriptor[]) => {
-  console.info(`getSessionDescriptors : SUCCESS : descriptors.length : ${descriptors.length}`);
+  console.info(`Succeeded in getting session descriptors, length: ${descriptors.length}`);
   if (descriptors.length > 0) {
-    console.info(`getSessionDescriptors : SUCCESS : descriptors[0].isActive : ${descriptors[0].isActive}`);
-    console.info(`GetSessionDescriptors : SUCCESS : descriptors[0].type : ${descriptors[0].type}`);
-    console.info(`GetSessionDescriptors : SUCCESS : descriptors[0].sessionTag : ${descriptors[0].sessionTag}`);
+    console.info(`Succeeded in getting session descriptor, isActive: ${descriptors[0].isActive}`);
+    console.info(`Succeeded in getting session descriptor, type: ${descriptors[0].type}`);
+    console.info(`Succeeded in getting session descriptor, sessionTag: ${descriptors[0].sessionTag}`);
   }
-}).catch((err: BusinessError) => {
-  console.error(`GetSessionDescriptors BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -145,7 +137,7 @@ avSession.getSessionDescriptors(avSession.SessionCategory.CATEGORY_ALL).then((de
 
 getHistoricalSessionDescriptors(maxSize?: number): Promise\<Array\<Readonly\<AVSessionDescriptor>>>
 
-获取所有已被销毁的会话相关描述。结果通过Promise异步回调方式返回。
+获取所有已被销毁的会话相关描述。使用Promise异步回调。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 
@@ -163,7 +155,7 @@ getHistoricalSessionDescriptors(maxSize?: number): Promise\<Array\<Readonly\<AVS
 
 | 类型                                                                        | 说明                                   |
 | --------------------------------------------------------------------------- | -------------------------------------- |
-| Promise\<Array\<Readonly\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)\>\>\> | Promise对象。返回所有会话描述的只读对象。 |
+| Promise\<Array\<Readonly\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor23)\>\>\> | Promise对象。返回所有会话描述的只读对象。 |
 
 **错误码：**
 
@@ -179,19 +171,15 @@ getHistoricalSessionDescriptors(maxSize?: number): Promise\<Array\<Readonly\<AVS
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 avSession.getHistoricalSessionDescriptors().then((descriptors: avSession.AVSessionDescriptor[]) => {
-  console.info(`getHistoricalSessionDescriptors : SUCCESS : descriptors.length : ${descriptors.length}`);
+  console.info(`Succeeded in getting historical session descriptors, length: ${descriptors.length}`);
   if (descriptors.length > 0 && descriptors[0]) {
-    console.info(`getHistoricalSessionDescriptors : SUCCESS : descriptors[0].isActive : ${descriptors[0].isActive}`);
-    console.info(`getHistoricalSessionDescriptors : SUCCESS : descriptors[0].type : ${descriptors[0].type}`);
-    console.info(`getHistoricalSessionDescriptors : SUCCESS : descriptors[0].sessionTag : ${descriptors[0].sessionTag}`);
-    console.info(`getHistoricalSessionDescriptors : SUCCESS : descriptors[0].sessionId : ${descriptors[0].sessionId}`);
-    console.info(`getHistoricalSessionDescriptors : SUCCESS : descriptors[0].elementName.bundleName : ${descriptors[0].elementName.bundleName}`);
+    console.info(`Succeeded in getting historical session descriptor, isActive: ${descriptors[0].isActive}`);
+    console.info(`Succeeded in getting historical session descriptor, type: ${descriptors[0].type}`);
+    console.info(`Succeeded in getting historical session descriptor, sessionTag: ${descriptors[0].sessionTag}`);
+    console.info(`Succeeded in getting historical session descriptor, sessionId: ${descriptors[0].sessionId}`);
+    console.info(`Succeeded in getting historical session descriptor, bundleName: ${descriptors[0].elementName.bundleName}`);
   }
-}).catch((err: BusinessError) => {
-  console.error(`getHistoricalSessionDescriptors BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -199,7 +187,7 @@ avSession.getHistoricalSessionDescriptors().then((descriptors: avSession.AVSessi
 
 getHistoricalSessionDescriptors(maxSize: number, callback: AsyncCallback\<Array\<Readonly\<AVSessionDescriptor>>>): void
 
-获取所有已被销毁的会话相关描述。结果通过callback异步回调方式返回。
+获取所有已被销毁的会话相关描述。使用callback异步回调。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES。
 
@@ -212,7 +200,7 @@ getHistoricalSessionDescriptors(maxSize: number, callback: AsyncCallback\<Array\
 | 参数名   | 类型                                                                            | 必填 | 说明                                                             |
 | -------- | ------------------------------------------------------------------------------ | ---- |-----------------------------------------------------------------|
 | maxSize  | number                                                                         | 是  | 指定获取描述符数量的最大值，可选范围是0-10。|
-| callback | AsyncCallback<Array<Readonly<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)\>\>\> | 是   | 回调函数。返回所有会话描述的只读对象。                              |
+| callback | AsyncCallback<Array<Readonly<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor23)\>\>\> | 是   | 回调函数。返回所有会话描述的只读对象。                              |
 
 **错误码：**
 
@@ -228,29 +216,23 @@ getHistoricalSessionDescriptors(maxSize: number, callback: AsyncCallback\<Array\
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-avSession.getHistoricalSessionDescriptors(1, (err: BusinessError, descriptors: avSession.AVSessionDescriptor[]) => {
-  if (err) {
-    console.error(`getHistoricalSessionDescriptors BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info(`getHistoricalSessionDescriptors : SUCCESS : descriptors.length : ${descriptors.length}`);
-    if (descriptors.length > 0 ) {
-      console.info(`getHistoricalSessionDescriptors : SUCCESS : descriptors[0].isActive : ${descriptors[0].isActive}`);
-      console.info(`getHistoricalSessionDescriptors : SUCCESS : descriptors[0].type : ${descriptors[0].type}`);
-      console.info(`getHistoricalSessionDescriptors : SUCCESS : descriptors[0].sessionTag : ${descriptors[0].sessionTag}`);
-      console.info(`getHistoricalSessionDescriptors : SUCCESS : descriptors[0].sessionId : ${descriptors[0].sessionId}`);
-      console.info(`getHistoricalSessionDescriptors : SUCCESS : descriptors[0].elementName.bundleName : ${descriptors[0].elementName.bundleName}`);
-    }
-  }
+avSession.getHistoricalSessionDescriptors(1, (descriptors: avSession.AVSessionDescriptor[]) => { 
+    console.info(`Succeeded in getting historical session descriptors, length: ${descriptors.length}`); 
+    if (descriptors.length > 0 ) { 
+      console.info(`Succeeded in getting historical session descriptor, isActive: ${descriptors[0].isActive}`); 
+      console.info(`Succeeded in getting historical session descriptor, type: ${descriptors[0].type}`); 
+      console.info(`Succeeded in getting historical session descriptor, sessionTag: ${descriptors[0].sessionTag}`); 
+      console.info(`Succeeded in getting historical session descriptor, sessionId: ${descriptors[0].sessionId}`); 
+      console.info(`Succeeded in getting historical session descriptor, bundleName: ${descriptors[0].elementName.bundleName}`); 
+    } 
 });
 ```
 
 ## avSession.getHistoricalAVQueueInfos<sup>11+</sup>
 
-getHistoricalAVQueueInfos(maxSize: number, maxAppSize: number) : Promise\<Array\<Readonly\<AVQueueInfo>>>
+getHistoricalAVQueueInfos(maxSize: number, maxAppSize: number): Promise\<Array\<Readonly\<AVQueueInfo>>>
 
-获取全部的历史播放歌单。结果通过Promise异步回调方式返回。
+根据指定数量限制获取历史播放歌单。使用Promise异步回调。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 
@@ -262,8 +244,8 @@ getHistoricalAVQueueInfos(maxSize: number, maxAppSize: number) : Promise\<Array\
 
 | 参数名   | 类型    | 必填 | 说明                                                             |
 | -------- | ------ | ---- | ---------------------------------------------------------------|
-| maxSize  | number | 是   | 指定获取歌曲列表数量的最大值，暂与获取歌单数量无关。                     |
-| maxAppSize | number | 是   | 指定获取歌曲列表所属应用数量的最大值，暂与获取歌单数量无关。             |
+| maxSize  | number | 是   | 指定获取歌曲列表数量的最大值，与获取歌单数量无关。                     |
+| maxAppSize | number | 是   | 指定获取歌曲列表所属应用数量的最大值，与获取歌单数量无关。             |
 
 **返回值：**
 
@@ -283,12 +265,8 @@ getHistoricalAVQueueInfos(maxSize: number, maxAppSize: number) : Promise\<Array\
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 avSession.getHistoricalAVQueueInfos(3, 5).then((avQueueInfos: avSession.AVQueueInfo[]) => {
-  console.info(`getHistoricalAVQueueInfos : SUCCESS : avQueueInfos.length : ${avQueueInfos.length}`);
-}).catch((err: BusinessError) => {
-  console.error(`getHistoricalAVQueueInfos BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.info(`Succeeded in getting historical AV queue infos, length: ${avQueueInfos.length}`);
 });
 ```
 
@@ -296,7 +274,7 @@ avSession.getHistoricalAVQueueInfos(3, 5).then((avQueueInfos: avSession.AVQueueI
 
 getHistoricalAVQueueInfos(maxSize: number, maxAppSize: number, callback: AsyncCallback\<Array\<Readonly\<AVQueueInfo>>>): void;
 
-获取全部的历史播放歌单。结果通过callback异步回调方式返回。
+根据指定数量限制获取历史播放歌单。使用callback异步回调。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES。
 
@@ -308,8 +286,8 @@ getHistoricalAVQueueInfos(maxSize: number, maxAppSize: number, callback: AsyncCa
 
 | 参数名   | 类型                                                                            | 必填 | 说明                                                             |
 | -------- | ----------------------------------------------------------------------------- | ---- |---------------------------------------------------------------|
-| maxSize  | number                                                                        | 是   | 指定获取歌曲列表数量的最大值，暂与获取歌单数量无关。                      |
-| maxAppSize | number                                                                      | 是   | 指定获取歌曲列表所属应用数量的最大值，暂与获取歌单数量无关。               |
+| maxSize  | number                                                                        | 是   | 指定获取歌曲列表数量的最大值。                      |
+| maxAppSize | number                                                                      | 是   | 指定获取歌曲列表所属应用数量的最大值。               |
 | callback | AsyncCallback<Array<Readonly<[AVQueueInfo](#avqueueinfo11)\>\>\> | 是   | 回调函数。返回所有历史播放歌单的只读对象。                              |
 
 **错误码：**
@@ -326,14 +304,8 @@ getHistoricalAVQueueInfos(maxSize: number, maxAppSize: number, callback: AsyncCa
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-avSession.getHistoricalAVQueueInfos(3, 5, (err: BusinessError, avQueueInfos: avSession.AVQueueInfo[]) => {
-  if (err) {
-    console.error(`getHistoricalAVQueueInfos BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info(`getHistoricalAVQueueInfos : SUCCESS : avQueueInfos.length : ${avQueueInfos.length}`);
-  }
+avSession.getHistoricalAVQueueInfos(3, 5, (avQueueInfos: avSession.AVQueueInfo[]) => { 
+    console.info(`Succeeded in getting historical AV queue infos, length: ${avQueueInfos.length}`); 
 });
 ```
 
@@ -371,8 +343,8 @@ createController(sessionId: string, callback: AsyncCallback\<AVSessionController
 **示例：** 
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
+
 @Entry
 @Component
 struct Index {
@@ -383,18 +355,12 @@ struct Index {
         Text(this.message)
           .onClick(()=>{
             avSession.getAllSessionDescriptors().then((descriptors: avSession.AVSessionDescriptor[]) => {
-              console.info(`getAllSessionDescriptors : SUCCESS : descriptors.length : ${descriptors.length}`);
-              if (descriptors.length > 0 ) {
-                avSession.createController(descriptors[0]?.sessionId, (err: BusinessError, avcontroller: avSession.AVSessionController) => {
-                  if (err) {
-                    console.error(`CreateController BusinessError: code: ${err.code}, message: ${err.message}`);
-                  } else {
-                    console.info('CreateController : SUCCESS ');
-                  }
+              console.info(`Succeeded in getting all session descriptors, length: ${descriptors.length}`);
+              if (descriptors.length > 0) {
+                avSession.createController(descriptors[0]?.sessionId, (avcontroller: avSession.AVSessionController) => { 
+                  console.info('Succeeded in creating controller.'); 
                 });
               }
-            }).catch((err: BusinessError) => {
-              console.error(`GetAllSessionDescriptors BusinessError: code: ${err.code}, message: ${err.message}`);
             });
           })
       }
@@ -408,7 +374,7 @@ struct Index {
 
 castAudio(session: SessionToken | 'all', audioDevices: Array<audio.AudioDeviceDescriptor>): Promise\<void>
 
-投播会话到指定设备列表。结果通过Promise异步回调方式返回。
+投播会话到指定设备列表。使用Promise异步回调。
 
 调用此接口之前，需要导入`ohos.multimedia.audio`模块获取AudioDeviceDescriptor的相关描述。
 
@@ -422,7 +388,7 @@ castAudio(session: SessionToken | 'all', audioDevices: Array<audio.AudioDeviceDe
 
 | 参数名        | 类型           | 必填 | 说明 |
 | ------------ | -------------- |------|------|
-| session      | [SessionToken](#sessiontoken) &#124; 'all' | 是   | 会话令牌。SessionToken表示单个token；字符串`'all'`指所有token。 |
+| session      | [SessionToken](#sessiontoken) &#124; 'all' | 是   | 会话令牌。SessionToken表示单个token；字符串'all'指所有token。 |
 | audioDevices | Array\<[audio.AudioDeviceDescriptor](../apis-audio-kit/arkts-apis-audio-i.md#audiodevicedescriptor)\> | 是   | 媒体设备列表。  |
 
 **返回值：**
@@ -448,7 +414,6 @@ castAudio(session: SessionToken | 'all', audioDevices: Array<audio.AudioDeviceDe
 
 ```ts
 import { audio } from '@kit.AudioKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let audioManager = audio.getAudioManager();
 let audioRoutingManager = audioManager.getRoutingManager();
@@ -456,24 +421,19 @@ let audioDevices: audio.AudioDeviceDescriptors | undefined = undefined;
 audioRoutingManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG).then((data) => {
   audioDevices = data;
   console.info('Promise returned to indicate that the device list is obtained.');
-}).catch((err: BusinessError) => {
-  console.error(`GetDevices BusinessError: code: ${err.code}, message: ${err.message}`);
+  if (audioDevices !== undefined) {
+    avSession.castAudio('all', audioDevices as audio.AudioDeviceDescriptors).then(() => {
+      console.info('Succeeded in casting audio.');
+    });
+  }
 });
-
-if (audioDevices !== undefined) {
-  avSession.castAudio('all', audioDevices as audio.AudioDeviceDescriptors).then(() => {
-    console.info('CreateController : SUCCESS');
-  }).catch((err: BusinessError) => {
-    console.error(`CreateController BusinessError: code: ${err.code}, message: ${err.message}`);
-  });
-}
 ```
 
 ## avSession.castAudio
 
 castAudio(session: SessionToken | 'all', audioDevices: Array<audio.AudioDeviceDescriptor>, callback: AsyncCallback\<void>): void
 
-投播会话到指定设备列表。结果通过callback异步回调方式返回。
+投播会话到指定设备列表。使用callback异步回调。
 
 需要导入`ohos.multimedia.audio`模块获取AudioDeviceDescriptor的相关描述。
 
@@ -487,7 +447,7 @@ castAudio(session: SessionToken | 'all', audioDevices: Array<audio.AudioDeviceDe
 
 | 参数名       | 类型                                         | 必填 | 说明                                                         |
 | ------------ |--------------------------------------------| ---- | ------------------------------------------------------------ |
-| session      | [SessionToken](#sessiontoken) &#124; 'all' | 是   | 会话令牌。SessionToken表示单个token；字符串`'all'`指所有token。 |
+| session      | [SessionToken](#sessiontoken) &#124; 'all' | 是   | 会话令牌。SessionToken表示单个token；字符串'all'指所有token。 |
 | audioDevices | Array\<[audio.AudioDeviceDescriptor](../apis-audio-kit/arkts-apis-audio-i.md#audiodevicedescriptor)\>   | 是   | 媒体设备列表。 |
 | callback     | AsyncCallback\<void>     | 是   | 回调函数。当投播成功，err为undefined，否则返回错误对象。      |
 
@@ -508,7 +468,6 @@ castAudio(session: SessionToken | 'all', audioDevices: Array<audio.AudioDeviceDe
 
 ```ts
 import { audio } from '@kit.AudioKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let audioManager = audio.getAudioManager();
 let audioRoutingManager = audioManager.getRoutingManager();
@@ -517,16 +476,10 @@ audioRoutingManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG).then((data)
   audioDevices = data;
   console.info('Promise returned to indicate that the device list is obtained.');
   if (audioDevices !== undefined) {
-    avSession.castAudio('all', audioDevices as audio.AudioDeviceDescriptors, (err: BusinessError) => {
-      if (err) {
-        console.error(`CastAudio BusinessError: code: ${err.code}, message: ${err.message}`);
-      } else {
-        console.info('CastAudio : SUCCESS ');
-      }
+    avSession.castAudio('all', audioDevices as audio.AudioDeviceDescriptors, () => {
+        console.info('Succeeded in casting audio.');
     });
   }
-}).catch((err: BusinessError) => {
-  console.error(`GetDevices BusinessError: code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -534,7 +487,7 @@ audioRoutingManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG).then((data)
 
 startAVPlayback(bundleName: string, assetId: string): Promise\<void>
 
-启动媒体播放应用程序。结果通过Promise异步回调方式返回。
+启动媒体播放应用程序。使用Promise异步回调。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES，仅系统应用可用。
 
@@ -569,62 +522,10 @@ startAVPlayback(bundleName: string, assetId: string): Promise\<void>
 **示例：**
 
 ```ts
-import { audio } from '@kit.AudioKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { avSession } from '@kit.AVSessionKit';
 
 avSession.startAVPlayback("com.example.myapplication", "121278").then(() => {
-  console.info('startAVPlayback : SUCCESS');
-}).catch((err: BusinessError) => {
-  console.error(`startAVPlayback BusinessError: code: ${err.code}, message: ${err.message}`);
-});
-```
-
-## avSession.startAVPlayback<sup>22+</sup>
-
-startAVPlayback(bundleName: string, assetId: string, info: CommandInfo): Promise\<void>
-
-启动媒体播放应用程序。使用Promise异步回调。
-
-**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES，仅系统应用可用。
-
-**系统能力：** SystemCapability.Multimedia.AVSession.Manager
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名        | 类型                                                   | 必填 | 说明         |
-| ------------ |------------------------------------------------------|----|------------|
-| bundleName   | string                                               | 是  | 指定启动的应用包名。 |
-| assetId      | string                                               | 是  | 指定启动的媒体ID。 |
-| info      | [CommandInfo](arkts-apis-avsession-i.md#commandinfo22) | 是  | 指定相关的命令信息。 |
-
-**返回值：**
-
-| 类型           | 说明                          |
-| -------------- | ----------------------------- |
-| Promise\<void> | Promise对象，无返回结果。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | ---------------------------------------- |
-| 201 | permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
-| 6600101  | Session service exception. |
-
-**示例：**
-
-```ts
-import { audio } from '@kit.AudioKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-avSession.startAVPlayback("com.example.myapplication", "121278").then(() => {
-  console.info('startAVPlayback : SUCCESS');
-}).catch((err: BusinessError) => {
-  console.error(`startAVPlayback BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.info('Succeeded in starting AV playback.');
 });
 ```
 
@@ -632,7 +533,7 @@ avSession.startAVPlayback("com.example.myapplication", "121278").then(() => {
 
 getDistributedSessionController(distributedSessionType: DistributedSessionType): Promise<Array\<AVSessionController>>
 
-根据远端会话类型，获取远端分布式会话控制器。结果通过Promise异步回调方式返回。
+根据远端会话类型，获取远端分布式会话控制器。使用Promise异步回调。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
 
@@ -666,13 +567,10 @@ getDistributedSessionController(distributedSessionType: DistributedSessionType):
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
 
 avSession.getDistributedSessionController(avSession.DistributedSessionType.TYPE_SESSION_REMOTE).then((sessionControllers: Array<avSession.AVSessionController>) => {
-  console.info(`getDistributedSessionController : SUCCESS : sessionControllers.length : ${sessionControllers.length}`);
-}).catch((err: BusinessError) => {
-  console.error(`getDistributedSessionController BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.info(`Succeeded in getting distributed session controller, length: ${sessionControllers.length}`);
 });
 ```
 
@@ -708,7 +606,7 @@ on(type: 'sessionCreate', callback: (session: AVSessionDescriptor) => void): voi
 | 参数名    | 类型                   | 必填 | 说明                                                         |
 | -------- | ---------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                 | 是   | 事件回调类型，支持的事件是'sessionCreate'：会话创建事件，检测到会话创建时触发。|
-| callback | (session: [AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)) => void | 是   | 回调函数。参数为会话相关描述。 |
+| callback | (session: [AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor23)) => void | 是   | 回调函数。参数为会话相关描述。 |
 
 **错误码：** 
 
@@ -723,6 +621,7 @@ on(type: 'sessionCreate', callback: (session: AVSessionDescriptor) => void): voi
  **示例：** 
 ```ts
 import { avSession } from '@kit.AVSessionKit';
+
 @Entry
 @Component
 struct Index {
@@ -757,14 +656,14 @@ on(type: 'sessionDestroy', callback: (session: AVSessionDescriptor) => void): vo
 **系统接口：** 此接口为系统接口。 
 
 **参数：** 
-	 
+
 | 参数名   | 类型            | 必填 | 说明                                                         |
 | -------- | ---------------| ---- | ------------------------------------------------------------ |
-| type     | string         | 是   | 事件回调类型，支持的事件是`'sessionDestroy'`：会话销毁事件，检测到会话销毁时触发。|
-| callback | (session: [AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)) => void | 是   | 回调函数。参数为会话相关描述。 |
- 	 
+| type     | string         | 是   | 事件回调类型，支持的事件是'sessionDestroy'：会话销毁事件，检测到会话销毁时触发。|
+| callback | (session: [AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor23)) => void | 是   | 回调函数。参数为会话相关描述。 |
+
  **错误码：** 
- 
+
  以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。 
  
  | 错误码ID | 错误信息 | 
@@ -777,6 +676,7 @@ on(type: 'sessionDestroy', callback: (session: AVSessionDescriptor) => void): vo
 
 ```ts
 import { avSession } from '@kit.AVSessionKit';
+
 @Entry
 @Component
 struct Index {
@@ -811,8 +711,8 @@ on(type: 'topSessionChange', callback: (session: AVSessionDescriptor) => void): 
 
 | 参数名   | 类型                 | 必填 | 说明                                                         |
 | -------- | --------------------| ---- | ------------------------------------------------------------ |
-| type     | string      | 是   | 事件回调类型，支持的事件是 `'topSessionChange'`：最新播放会话的变化事件，检测到最新的会话改变时触发。|
-| callback | (session: [AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)) => void | 是   | 回调函数。参数为会话相关描述。 |
+| type     | string      | 是   | 事件回调类型，支持的事件是'topSessionChange'：最新播放会话的变化事件，检测到最新的会话改变时触发。|
+| callback | (session: [AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor23)) => void | 是   | 回调函数。参数为会话相关描述。 |
 
 **错误码：** 
 
@@ -828,6 +728,7 @@ on(type: 'topSessionChange', callback: (session: AVSessionDescriptor) => void): 
 
 ```ts
 import { avSession } from '@kit.AVSessionKit';
+
 @Entry
 @Component
 struct Index {
@@ -864,8 +765,8 @@ off(type: 'sessionCreate', callback?: (session: AVSessionDescriptor) => void): v
 
 | 参数名   | 类型       | 必填 | 说明       |
 | -------- | ----------| ---- | ----------|
-| type     | string    | 是   | 事件回调类型，支持的事件为：`'sessionCreate'`。|
-| callback | (session: [AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)) => void | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为会话相关描述，为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。                               |
+| type     | string    | 是   | 事件回调类型，支持的事件为：'sessionCreate'。|
+| callback | (session: [AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor23)) => void | 否   | 需要取消的回调函数，与on接口注册时的回调函数保持一致。如果不填写该参数，则取消所有已注册的回调。                               |
 
 **错误码：** 
 
@@ -881,6 +782,7 @@ off(type: 'sessionCreate', callback?: (session: AVSessionDescriptor) => void): v
 
 ```ts
 import { avSession } from '@kit.AVSessionKit';
+
 @Entry
 @Component
 struct Index {
@@ -915,8 +817,8 @@ off(type: 'sessionDestroy', callback?: (session: AVSessionDescriptor) => void): 
 
 | 参数名   | 类型        | 必填 | 说明                      |
 | -------- | -----------| ---- | -------------------------|
-| type     | string     | 是   | 事件回调类型，支持的事件为`'sessionDestroy'`。|
-| callback | (session: [AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)) => void | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为会话相关描述，为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。|
+| type     | string     | 是   | 事件回调类型，支持的事件为'sessionDestroy'。|
+| callback | (session: [AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor23)) => void | 否   | 需要取消的回调函数，与on接口注册时的回调函数保持一致。如果不填写该参数，则取消所有已注册的回调。|
 
 **错误码：** 
 
@@ -932,6 +834,7 @@ off(type: 'sessionDestroy', callback?: (session: AVSessionDescriptor) => void): 
 
 ```ts
 import { avSession } from '@kit.AVSessionKit';
+
 @Entry
 @Component
 struct Index {
@@ -966,8 +869,8 @@ off(type: 'topSessionChange', callback?: (session: AVSessionDescriptor) => void)
 
 | 参数名   | 类型              | 必填 | 说明                        |
 | -------- | -----------------| ---- | ---------------------------- |
-| type     | string           | 是   | 事件回调类型，支持的事件为`'topSessionChange'`。|
-| callback | (session: [AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)) => void | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为会话相关描述，为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| type     | string           | 是   | 事件回调类型，支持的事件为'topSessionChange'。|
+| callback | (session: [AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor23)) => void | 否   | 需要取消的回调函数，与on接口注册时的回调函数保持一致。如果不填写该参数，则取消所有已注册的回调。 |
 
 **错误码：** 
 
@@ -983,6 +886,7 @@ off(type: 'topSessionChange', callback?: (session: AVSessionDescriptor) => void)
 
 ```ts
 import { avSession } from '@kit.AVSessionKit';
+
 @Entry
 @Component
 struct Index {
@@ -1017,8 +921,8 @@ on(type: 'sessionServiceDie', callback: () => void): void
 
 | 参数名   | 类型                 | 必填 | 说明                                                         |
 | -------- | -------------------- | ---- | ------------------------------------------------------------ |
-| type     | string               | 是   | 事件回调类型，支持事件`'sessionServiceDie'`：会话服务死亡事件，检测到会话的服务死亡时触发。 |
-| callback | callback: () => void | 是   | 回调函数。当监听事件注册成功，err为undefined，否则返回错误对象。                                |
+| type     | string               | 是   | 事件回调类型，支持事件'sessionServiceDie'：会话服务死亡事件，检测到会话的服务死亡时触发。 |
+| callback | callback: () => void | 是   | 回调函数，当会话服务死亡时触发回调。                                |
 
 **错误码：**
 
@@ -1034,7 +938,7 @@ on(type: 'sessionServiceDie', callback: () => void): void
 
 ```ts
 avSession.on('sessionServiceDie', () => {
-  console.info('on sessionServiceDie  : session is  Died ');
+  console.info('on sessionServiceDie : session is dead ');
 });
 ```
 
@@ -1052,8 +956,8 @@ off(type: 'sessionServiceDie', callback?: () => void): void
 
 | 参数名    | 类型                    | 必填  |      说明                                               |
 | ------   | ---------------------- | ---- | ------------------------------------------------------- |
-| type     | string                 | 是    | 事件回调类型，支持事件`'sessionServiceDie'`：会话服务死亡事件。|
-| callback | callback: () => void   | 否    | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的服务死亡监听。            |
+| type     | string                 | 是    | 事件回调类型，支持事件'sessionServiceDie'：会话服务死亡事件。|
+| callback | callback: () => void   | 否    | 需要取消的回调函数，与on接口注册时的回调函数保持一致。如果不填写该参数，则取消所有已注册的回调。            |
 
 **错误码：**
 
@@ -1078,8 +982,6 @@ on(type: 'distributedSessionChange', distributedSessionType: DistributedSessionT
 
 最新分布式远端会话变更的监听事件。
 
-**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
-
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
 
 **系统接口：** 该接口为系统接口。
@@ -1088,7 +990,7 @@ on(type: 'distributedSessionChange', distributedSessionType: DistributedSessionT
 
 | 参数名   | 类型                                                                                  | 必填 | 说明                                                                       |
 | -------- |-------------------------------------------------------------------------------------| ---- |--------------------------------------------------------------------------|
-| type     | string                                                                              | 是   | 事件回调类型，支持的事件为 `'distributedSessionChange'`：最新远端分布式会话的变化事件，检测到最新的会话改变时触发。 |
+| type     | string                                                                              | 是   | 事件回调类型，支持的事件为'distributedSessionChange'：最新远端分布式会话的变化事件，检测到最新的会话改变时触发。 |
 | distributedSessionType     | [DistributedSessionType](#distributedsessiontype18)             | 是   | 远端会话类型。                                                                  |
 | callback | Callback<Array<[AVSessionController](arkts-apis-avsession-AVSessionController.md)\>> | 是   | 回调函数。参数为对应类型的会话控制器实例列表，可查看会话ID，并完成对会话发送命令及事件，获取元数据、播放状态信息等操作。            |
 
@@ -1116,8 +1018,6 @@ off(type: 'distributedSessionChange', distributedSessionType: DistributedSession
 
 取消最新分布式远端会话变更的监听事件，取消后，不再进行该事件的监听。
 
-**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
-
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
 
 **系统接口：** 该接口为系统接口。
@@ -1126,9 +1026,9 @@ off(type: 'distributedSessionChange', distributedSessionType: DistributedSession
 
 | 参数名   | 类型                                                                                  | 必填 | 说明                                                            |
 | -------- |-------------------------------------------------------------------------------------|----|---------------------------------------------------------------|
-| type     | string                                                                              | 是  | 事件回调类型，支持的事件为`'distributedSessionChange'`。                    |
+| type     | string                                                                              | 是  | 事件回调类型，支持的事件为'distributedSessionChange'。                    |
 | distributedSessionType     | [DistributedSessionType](#distributedsessiontype18)             | 是  | 远端会话类型。                                                       |
-| callback | Callback<Array<[AVSessionController](arkts-apis-avsession-AVSessionController.md)\>> | 否  | 回调函数。参数为对应类型的会话控制器实例列表，可查看会话ID，并完成对会话发送命令及事件，获取元数据、播放状态信息等操作。 |
+| callback | Callback<Array<[AVSessionController](arkts-apis-avsession-AVSessionController.md)\>> | 否  | 需要取消的回调函数，与on接口注册时的回调函数保持一致。如果不填写该参数，则取消所有已注册的回调。 |
 
 **错误码：**
 
@@ -1149,7 +1049,7 @@ avSession.off('distributedSessionChange', avSession.DistributedSessionType.TYPE_
 
 sendSystemAVKeyEvent(event: KeyEvent, callback: AsyncCallback\<void>): void
 
-发送按键事件给置顶会话。结果通过callback异步回调方式返回。
+发送按键事件给置顶会话。使用callback异步回调。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES，仅系统应用可用。
 
@@ -1180,17 +1080,12 @@ sendSystemAVKeyEvent(event: KeyEvent, callback: AsyncCallback\<void>): void
 
 ```ts
 import { KeyEvent } from '@kit.InputKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let keyItem: KeyEvent.Key = {code:0x49, pressedTime:2, deviceId:0};
 let event: KeyEvent.KeyEvent = {id:1, deviceId:0, actionTime:1, screenId:1, windowId:1, action:2, key:keyItem, unicodeChar:0, keys:[keyItem], ctrlKey:false, altKey:false, shiftKey:false, logoKey:false, fnKey:false, capsLock:false, numLock:false, scrollLock:false};
 
-avSession.sendSystemAVKeyEvent(event, (err: BusinessError) => {
-  if (err) {
-    console.error(`SendSystemAVKeyEvent BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('SendSystemAVKeyEvent : SUCCESS ');
-  }
+avSession.sendSystemAVKeyEvent(event, () => {
+    console.info('Succeeded in sending system AV key event.');
 });
 ```
 
@@ -1198,7 +1093,7 @@ avSession.sendSystemAVKeyEvent(event, (err: BusinessError) => {
 
 sendSystemAVKeyEvent(event: KeyEvent): Promise\<void>
 
-发送按键事件给置顶会话。结果通过Promise异步回调方式返回。
+发送按键事件给置顶会话。使用Promise异步回调。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES，仅系统应用可用。
 
@@ -1235,15 +1130,12 @@ sendSystemAVKeyEvent(event: KeyEvent): Promise\<void>
 
 ```ts
 import { KeyEvent } from '@kit.InputKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let keyItem: KeyEvent.Key = {code:0x49, pressedTime:2, deviceId:0};
 let event: KeyEvent.KeyEvent = {id:1, deviceId:0, actionTime:1, screenId:1, windowId:1, action:2, key:keyItem, unicodeChar:0, keys:[keyItem], ctrlKey:false, altKey:false, shiftKey:false, logoKey:false, fnKey:false, capsLock:false, numLock:false, scrollLock:false};
 
 avSession.sendSystemAVKeyEvent(event).then(() => {
-  console.info('SendSystemAVKeyEvent Successfully');
-}).catch((err: BusinessError) => {
-  console.error(`SendSystemAVKeyEvent BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.info('Succeeded in sending system AV key event.');
 });
 ```
 
@@ -1251,7 +1143,7 @@ avSession.sendSystemAVKeyEvent(event).then(() => {
 
 sendSystemControlCommand(command: AVControlCommand, callback: AsyncCallback\<void>): void
 
-发送控制命令给置顶会话。结果通过callback异步回调方式返回。
+发送控制命令给置顶会话。使用callback异步回调。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES，仅系统应用可用。
 
@@ -1290,7 +1182,7 @@ let cmd : avSession.AVControlCommandType = 'play';
 // let cmd : avSession.AVControlCommandType = 'fastForward';
 // let cmd : avSession.AVControlCommandType = 'rewind';
 let avcommand: avSession.AVControlCommand = {command:cmd};
-// let cmd : avSession.AVControlCommandType = 'seek';
+// let cmd: avSession.AVControlCommandType = 'seek';
 // let avcommand = {command:cmd, parameter:10};
 // let cmd : avSession.AVControlCommandType = 'setSpeed';
 // let avcommand = {command:cmd, parameter:2.6};
@@ -1298,12 +1190,8 @@ let avcommand: avSession.AVControlCommand = {command:cmd};
 // let avcommand = {command:cmd, parameter:avSession.LoopMode.LOOP_MODE_SINGLE};
 // let cmd : avSession.AVControlCommandType = 'toggleFavorite';
 // let avcommand = {command:cmd, parameter:"false"};
-avSession.sendSystemControlCommand(avcommand, (err) => {
-  if (err) {
-    console.error(`SendSystemControlCommand BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('sendSystemControlCommand successfully');
-  }
+avSession.sendSystemControlCommand(avcommand, () => {
+    console.info('Succeeded in sending system control command.');
 });
 ```
 
@@ -1311,7 +1199,7 @@ avSession.sendSystemControlCommand(avcommand, (err) => {
 
 sendSystemControlCommand(command: AVControlCommand): Promise\<void>
 
-发送控制命令给置顶会话。结果通过Promise异步回调方式返回。
+发送控制命令给置顶会话。使用Promise异步回调。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES，仅系统应用可用。
 
@@ -1347,7 +1235,6 @@ sendSystemControlCommand(command: AVControlCommand): Promise\<void>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let cmd : avSession.AVControlCommandType = 'play';
 // let cmd : avSession.AVControlCommandType = 'pause';
@@ -1366,9 +1253,7 @@ let avcommand: avSession.AVControlCommand = {command:cmd};
 // let cmd : avSession.AVControlCommandType = 'toggleFavorite';
 // let avcommand = {command:cmd, parameter:"false"};
 avSession.sendSystemControlCommand(avcommand).then(() => {
-  console.info('SendSystemControlCommand successfully');
-}).catch((err: BusinessError) => {
-  console.error(`SendSystemControlCommand BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.info('Succeeded in sending system control command.');
 });
 ```
 
@@ -1386,7 +1271,7 @@ avSession.sendSystemControlCommand(avcommand).then(() => {
 
 startCastDeviceDiscovery(callback: AsyncCallback\<void>): void
 
-开始设备搜索发现。结果通过callback异步回调方式返回。
+开始设备搜索发现。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -1409,14 +1294,9 @@ startCastDeviceDiscovery(callback: AsyncCallback\<void>): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
-avSession.startCastDeviceDiscovery((err: BusinessError) => {
-  if (err) {
-    console.error(`startCastDeviceDiscovery BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('startCastDeviceDiscovery successfully');
-  }
+avSession.startCastDeviceDiscovery(() => {
+    console.info('Succeeded in starting cast device discovery.');
 });
 ```
 
@@ -1438,7 +1318,7 @@ avSession.startCastDeviceDiscovery((err: BusinessError) => {
 
 startCastDeviceDiscovery(filter: number, callback: AsyncCallback\<void>): void
 
-指定过滤条件，开始设备搜索发现。结果通过callback异步回调方式返回。
+指定过滤条件，开始设备搜索发现。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -1448,7 +1328,7 @@ startCastDeviceDiscovery(filter: number, callback: AsyncCallback\<void>): void
 
 | 参数名   | 类型                                  | 必填 | 说明                                  |
 | -------- | ------------------------------------- | ---- | ------------------------------------- |
-| filter | number | 是 | 进行设备发现的过滤条件，由ProtocolType组合而成。 |
+| filter | number | 是 | 进行设备发现的过滤条件，由ProtocolType通过按位或运算组合而成。 |
 | callback | AsyncCallback\<void>                  | 是   | 回调函数。当命令发送成功并开始搜索，err为undefined，否则返回错误对象。 |
 
 **错误码：**
@@ -1463,15 +1343,10 @@ startCastDeviceDiscovery(filter: number, callback: AsyncCallback\<void>): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let filter = 2;
-avSession.startCastDeviceDiscovery(filter, (err: BusinessError) => {
-  if (err) {
-    console.error(`startCastDeviceDiscovery BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('startCastDeviceDiscovery successfully');
-  }
+avSession.startCastDeviceDiscovery(filter, () => {
+    console.info('Succeeded in starting cast device discovery.');
 });
 ```
 
@@ -1479,7 +1354,7 @@ avSession.startCastDeviceDiscovery(filter, (err: BusinessError) => {
 
 startCastDeviceDiscovery(filter?: number, drmSchemes?: Array\<string>): Promise\<void>
 
-开始设备搜索发现。结果通过Promise异步回调方式返回。
+开始设备搜索发现。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -1489,7 +1364,7 @@ startCastDeviceDiscovery(filter?: number, drmSchemes?: Array\<string>): Promise\
 
 | 参数名   | 类型                                  | 必填 | 说明                                  |
 | -------- | ------------------------------------- | ---- | ------------------------------------- |
-| filter | number | 否 | 进行设备发现的过滤条件，由ProtocolType组合而成。 |
+| filter | number | 否 | 进行设备发现的过滤条件，由ProtocolType通过按位或运算组合而成。 |
 | drmSchemes | Array\<string> | 否 | 进行支持DRM资源播放的设备发现的过滤条件，由DRM uuid组合而成。 <br/>从API version 12开始支持该可选参数。|
 
 **返回值：**
@@ -1510,14 +1385,11 @@ startCastDeviceDiscovery(filter?: number, drmSchemes?: Array\<string>): Promise\
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let filter = 2;
 let drmSchemes = ['3d5e6d35-9b9a-41e8-b843-dd3c6e72c42c'];
 avSession.startCastDeviceDiscovery(filter, drmSchemes).then(() => {
-  console.info('startCastDeviceDiscovery successfully');
-}).catch((err: BusinessError) => {
-  console.error(`startCastDeviceDiscovery BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.info('Succeeded in starting cast device discovery.');
 });
 ```
 
@@ -1525,7 +1397,7 @@ avSession.startCastDeviceDiscovery(filter, drmSchemes).then(() => {
 
 stopCastDeviceDiscovery(callback: AsyncCallback\<void>): void
 
-结束设备搜索发现。结果通过callback异步回调方式返回。
+结束设备搜索发现。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -1548,14 +1420,9 @@ stopCastDeviceDiscovery(callback: AsyncCallback\<void>): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
-avSession.stopCastDeviceDiscovery((err: BusinessError) => {
-  if (err) {
-    console.error(`stopCastDeviceDiscovery BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('stopCastDeviceDiscovery successfully');
-  }
+avSession.stopCastDeviceDiscovery(() => {
+    console.info('Succeeded in stopping cast device discovery.');
 });
 ```
 
@@ -1563,7 +1430,7 @@ avSession.stopCastDeviceDiscovery((err: BusinessError) => {
 
 stopCastDeviceDiscovery(): Promise\<void>
 
-结束设备搜索发现。结果通过Promise异步回调方式返回。
+结束设备搜索发现。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -1586,12 +1453,9 @@ stopCastDeviceDiscovery(): Promise\<void>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 avSession.stopCastDeviceDiscovery().then(() => {
-  console.info('stopCastDeviceDiscovery successfully');
-}).catch((err: BusinessError) => {
-  console.error(`stopCastDeviceDiscovery BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.info('Succeeded in stopping cast device discovery.');
 });
 ```
 
@@ -1599,7 +1463,7 @@ avSession.stopCastDeviceDiscovery().then(() => {
 
 setDiscoverable(enable: boolean, callback: AsyncCallback\<void>): void
 
-设置设备是否可被发现，用于投播接收端。结果通过callback异步回调方式返回。
+设置设备是否可被发现，用于投播接收端。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -1624,14 +1488,9 @@ setDiscoverable(enable: boolean, callback: AsyncCallback\<void>): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
-avSession.setDiscoverable(true, (err: BusinessError) => {
-  if (err) {
-    console.error(`setDiscoverable BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('setDiscoverable successfully');
-  }
+avSession.setDiscoverable(true, () => {
+    console.info('Succeeded in setting discoverable.');
 });
 ```
 
@@ -1639,7 +1498,7 @@ avSession.setDiscoverable(true, (err: BusinessError) => {
 
 setDiscoverable(enable: boolean): Promise\<void>
 
-设置设备是否可被发现，用于投播接收端。结果通过Promise异步回调方式返回。
+设置设备是否可被发现，用于投播接收端。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -1669,12 +1528,9 @@ setDiscoverable(enable: boolean): Promise\<void>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
 avSession.setDiscoverable(true).then(() => {
-  console.info('setDiscoverable successfully');
-}).catch((err: BusinessError) => {
-  console.error(`setDiscoverable BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.info('Succeeded in setting discoverable.');
 });
 ```
 
@@ -1692,8 +1548,8 @@ on(type: 'deviceAvailable', callback: (device: OutputDeviceInfo) => void): void
 
 | 参数名   | 类型                 | 必填 | 说明                                                         |
 | -------- | -------------------- | ---- | ------------------------------------------------------------ |
-| type     | string               | 是   | 事件回调类型，支持事件`'deviceAvailable'`，有设备被发现时触发回调。 |
-| callback | (device: [OutputDeviceInfo](arkts-apis-avsession-i.md#outputdeviceinfo10)) => void | 是   | 回调函数。当监听事件注册成功，err为undefined，否则返回错误对象。                                |
+| type     | string               | 是   | 事件回调类型，支持事件'deviceAvailable'，有设备被发现时触发回调。 |
+| callback | (device: [OutputDeviceInfo](arkts-apis-avsession-i.md#outputdeviceinfo10)) => void | 是   | 回调函数，参数device是可用设备信息。                                |
 
 **错误码：**
 
@@ -1728,8 +1584,8 @@ off(type: 'deviceAvailable', callback?: (device: OutputDeviceInfo) => void): voi
 
 | 参数名    | 类型                    | 必填  |      说明                                               |
 | ------   | ---------------------- | ---- | ------------------------------------------------------- |
-| type     | string                 | 是    | 事件回调类型，支持事件`'deviceAvailable'`：设备发现回调。|
-| callback     | (device: [OutputDeviceInfo](arkts-apis-avsession-i.md#outputdeviceinfo10)) => void                 | 否    | 用于返回设备信息。|
+| type     | string                 | 是    | 事件回调类型，支持事件'deviceAvailable'：设备发现回调。|
+| callback     | (device: [OutputDeviceInfo](arkts-apis-avsession-i.md#outputdeviceinfo10)) => void                 | 否    | 需要取消的回调函数，与on接口注册时的回调函数保持一致。如果不填写该参数，则取消所有已注册的回调。|
 
 **错误码：**
 
@@ -1760,8 +1616,8 @@ on(type: 'deviceOffline', callback: (deviceId: string) => void): void
 
 | 参数名   | 类型                 | 必填 | 说明                                                         |
 | -------- | -------------------- | ---- | ------------------------------------------------------------ |
-| type     | string               | 是   | 事件回调类型，支持事件`'deviceOffline'`，有设备下线时触发回调。 |
-| callback | (deviceId: string) => void | 是   | 回调函数，参数deviceId是设备的ID。当监听事件注册成功，err为undefined，否则返回错误对象。  |
+| type     | string               | 是   | 事件回调类型，支持事件'deviceOffline'，有设备下线时触发回调。 |
+| callback | (deviceId: string) => void | 是   | 回调函数，参数deviceId是设备的ID。  |
 
 **错误码：**
 
@@ -1788,8 +1644,6 @@ off(type: 'deviceOffline', callback?: (deviceId: string) => void): void
 
 取消设备下线回调的监听。
 
-**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES
-
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
 **系统接口：** 该接口为系统接口。
@@ -1798,8 +1652,8 @@ off(type: 'deviceOffline', callback?: (deviceId: string) => void): void
 
 | 参数名    | 类型                    | 必填  |      说明                                               |
 | ------   | ---------------------- | ---- | ------------------------------------------------------- |
-| type     | string                 | 是    | 事件回调类型，支持事件`'deviceOffline'`：设备下线回调。|
-| callback | (deviceId: string) => void | 否   | 回调函数，参数deviceId是设备的ID。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。|
+| type     | string                 | 是    | 事件回调类型，支持事件'deviceOffline'：设备下线回调。|
+| callback | (deviceId: string) => void | 否   | 需要取消的回调函数，与on接口注册时的回调函数保持一致。如果不填写该参数，则取消所有已注册的回调。其中参数deviceId是设备的ID。|
 
 **错误码：**
 
@@ -1820,7 +1674,7 @@ avSession.off('deviceOffline');
 
 getAVCastController(sessionId: string, callback: AsyncCallback\<AVCastController>): void
 
-设备建立连接后，获取投播控制器。结果通过callback异步回调方式返回。
+设备建立连接后，获取投播控制器。使用callback异步回调。
 
 此功能在本端和远端都可以使用，通过该接口可以获取一个相同的控制器，进行投播音频的播放控制。
 
@@ -1846,13 +1700,12 @@ getAVCastController(sessionId: string, callback: AsyncCallback\<AVCastController
 | 201 | permission denied. |
 | 202 | Not System App. |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
-| 6600101  | Session service exception |
-| 6600102  | session does not exist |
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
 
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
 
 @Entry
@@ -1863,20 +1716,20 @@ struct Index {
   build() {
     Column() {
       Text(this.message)
-        .onClick(() => {
-          let currentAVSession: avSession.AVSession | undefined = undefined;
-          let tag = "createNewSession";
-          let context = this.getUIContext().getHostContext() as Context;
-          let sessionId: string = ""; // 供后续函数入参使用。
+        .onClick(async () => {
+          // 获取当前系统中所有session的描述符。
+          let descriptors = await AVSessionManager.getAllSessionDescriptors();
+          if (descriptors.length === 0) {
+            console.error(`No session in system, can not create controller.`);
+            return;
+          }
+          // 取目标session的sessionId创建controller。
+          let sessionId = descriptors[0].sessionId;
 
-          let aVCastController: avSession.AVCastController;
-          avSession.getAVCastController(sessionId, (err: BusinessError, avcontroller: avSession.AVCastController) => {
-            if (err) {
-              console.error(`getAVCastController BusinessError: code: ${err.code}, message: ${err.message}`);
-            } else {
-              aVCastController = avcontroller;
-              console.info('getAVCastController : SUCCESS ');
-            }
+          let avCastController: avSession.AVCastController;
+          avSession.getAVCastController(sessionId, (avcontroller: avSession.AVCastController) => {
+            avCastController = avcontroller;
+            console.info('Succeeded in getting AV cast controller.');
           });
         })
     }
@@ -1921,13 +1774,12 @@ getAVCastController(sessionId: string): Promise\<AVCastController>
 | 201 | permission denied. |
 | 202 | Not System App. |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
-| 6600101  | server exception |
-| 6600102  | The session does not exist |
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
 
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
 
 @Entry
@@ -1938,18 +1790,20 @@ struct Index {
   build() {
     Column() {
       Text(this.message)
-        .onClick(() => {
-          let currentAVSession: avSession.AVSession | undefined = undefined;
-          let tag = "createNewSession";
-          let context = this.getUIContext().getHostContext() as Context;
-          let sessionId: string = ""; // 供后续函数入参使用。
+        .onClick(async () => {
+          // 获取当前系统中所有session的描述符。
+          let descriptors = await AVSessionManager.getAllSessionDescriptors();
+          if (descriptors.length === 0) {
+            console.error(`No session in system, can not create controller.`);
+            return;
+          }
+          // 取目标session的sessionId创建controller。
+          let sessionId = descriptors[0].sessionId;
 
-          let aVCastController: avSession.AVCastController;
+          let avCastController: avSession.AVCastController;
           avSession.getAVCastController(sessionId).then((avcontroller: avSession.AVCastController) => {
-            aVCastController = avcontroller;
-            console.info('getAVCastController : SUCCESS');
-          }).catch((err: BusinessError) => {
-            console.error(`getAVCastController BusinessError: code: ${err.code}, message: ${err.message}`);
+            avCastController = avcontroller;
+            console.info('Succeeded in getting AV cast controller.');
           });
         })
     }
@@ -1963,7 +1817,7 @@ struct Index {
 
 startCasting(session: SessionToken, device: OutputDeviceInfo, callback: AsyncCallback\<void>): void
 
-启动投播。结果通过callback异步回调方式返回。
+启动投播。使用callback异步回调。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES，仅系统应用可用。
 
@@ -1989,13 +1843,13 @@ startCasting(session: SessionToken, device: OutputDeviceInfo, callback: AsyncCal
 | 202 | Not System App. |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | 6600101  | Session service exception. |
-| 6600108 | Device connection failed.       |
+| 6600108 | Device connecting failed.       |
 
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
+let sessionId = 'xxx'; // sessionId需要通过avSession.createAVSession创建会话后获取。
 let myToken: avSession.SessionToken = {
   sessionId: sessionId,
 }
@@ -2004,12 +1858,8 @@ avSession.on('deviceAvailable', (device: avSession.OutputDeviceInfo) => {
   castDevice = device;
   console.info(`on deviceAvailable  : ${device} `);
   if (castDevice !== undefined) {
-    avSession.startCasting(myToken, castDevice, (err: BusinessError) => {
-      if (err) {
-        console.error(`startCasting BusinessError: code: ${err.code}, message: ${err.message}`);
-      } else {
-        console.info('startCasting successfully');
-      }
+    avSession.startCasting(myToken, castDevice, () => {
+        console.info('Succeeded in starting casting.');
     });
   }
 });
@@ -2020,7 +1870,7 @@ avSession.on('deviceAvailable', (device: avSession.OutputDeviceInfo) => {
 
 startCasting(session: SessionToken, device: OutputDeviceInfo): Promise\<void>
 
-启动投播。结果通过Promise异步回调方式返回。
+启动投播。使用Promise异步回调。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES，仅系统应用可用。
 
@@ -2051,13 +1901,13 @@ startCasting(session: SessionToken, device: OutputDeviceInfo): Promise\<void>
 | 202 | Not System App. |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | 6600101  | Session service exception. |
-| 6600108 | Device connection failed.       |
+| 6600108 | Device connecting failed.       |
 
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
+let sessionId = 'xxx'; // sessionId需要通过avSession.createAVSession创建会话后获取。
 let myToken: avSession.SessionToken = {
   sessionId: sessionId,
 }
@@ -2067,9 +1917,7 @@ avSession.on('deviceAvailable', (device: avSession.OutputDeviceInfo) => {
   console.info(`on deviceAvailable  : ${device} `);
   if (castDevice !== undefined) {
     avSession.startCasting(myToken, castDevice).then(() => {
-      console.info('startCasting successfully');
-    }).catch((err: BusinessError) => {
-      console.error(`startCasting BusinessError: code: ${err.code}, message: ${err.message}`);
+      console.info('Succeeded in starting casting.');
     });
   }
 });
@@ -2079,7 +1927,7 @@ avSession.on('deviceAvailable', (device: avSession.OutputDeviceInfo) => {
 
 stopCasting(session: SessionToken, callback: AsyncCallback\<void>): void
 
-结束投播。结果通过callback异步回调方式返回。
+结束投播。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -2105,17 +1953,13 @@ stopCasting(session: SessionToken, callback: AsyncCallback\<void>): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
+let sessionId = 'xxx'; // sessionId需要通过avSession.createAVSession创建会话后获取。
 let myToken: avSession.SessionToken = {
   sessionId: sessionId,
 }
-avSession.stopCasting(myToken, (err: BusinessError) => {
-  if (err) {
-    console.error(`stopCasting BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('stopCasting successfully');
-  }
+avSession.stopCasting(myToken, () => {
+    console.info('Succeeded in stopping casting.');
 });
 ```
 
@@ -2123,7 +1967,7 @@ avSession.stopCasting(myToken, (err: BusinessError) => {
 
 stopCasting(session: SessionToken): Promise\<void>
 
-结束投播。结果通过Promise异步回调方式返回。
+结束投播。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -2154,15 +1998,13 @@ stopCasting(session: SessionToken): Promise\<void>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 
+let sessionId = 'xxx'; // sessionId需要通过avSession.createAVSession创建会话后获取。
 let myToken: avSession.SessionToken = {
   sessionId: sessionId,
 }
 avSession.stopCasting(myToken).then(() => {
-  console.info('stopCasting successfully');
-}).catch((err: BusinessError) => {
-  console.error(`stopCasting BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.info('Succeeded in stopping casting.');
 });
 ```
 
@@ -2170,7 +2012,7 @@ avSession.stopCasting(myToken).then(() => {
 
 startDeviceLogging(url: string, maxSize?: number): Promise\<void>
 
-开始将设备日志写入文件。结果通过Promise异步回调方式返回。
+开始将设备日志写入文件。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -2181,7 +2023,7 @@ startDeviceLogging(url: string, maxSize?: number): Promise\<void>
 | 参数名   | 类型                                  | 必填 | 说明                                  |
 | -------- | ------------------------------------- | ---- | ------------------------------------- |
 | url | string                   | 是   | 目标文件描述符（打开文件的唯一标识）。 |
-| maxSize | number                   | 否   | 写入最大日志大小（以KB为单位）。 |
+| maxSize | number                   | 否   | 写入最大日志大小（以kB为单位）。 |
 
 **返回值：**
 
@@ -2203,23 +2045,22 @@ startDeviceLogging(url: string, maxSize?: number): Promise\<void>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo } from '@kit.CoreFileKit';
 
-let file = await fileIo.open("filePath");
-let url = file.fd.toString();
-avSession.startDeviceLogging(url, 2048).then(() => {
-  console.info('startDeviceLogging successfully');
-}).catch((err: BusinessError) => {
-  console.error(`startDeviceLogging BusinessError: code: ${err.code}, message: ${err.message}`);
-})
+async function startDeviceLogging() {
+  let file = await fileIo.open("filePath");
+  let url = file.fd.toString();
+  avSession.startDeviceLogging(url, 2048).then(() => {
+    console.info('Succeeded in starting device logging.');
+  });
+}
 ```
 
 ## avSession.stopDeviceLogging<sup>13+</sup>
 
 stopDeviceLogging(): Promise\<void>
 
-停止当前设备日志写入。结果通过Promise异步回调方式返回。
+停止当前设备日志写入。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -2244,12 +2085,8 @@ stopDeviceLogging(): Promise\<void>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 avSession.stopDeviceLogging().then(() => {
-  console.info('stopCasting successfully');
-}).catch((err: BusinessError) => {
-  console.error(`stopCasting BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.info('Succeeded in stopping device logging.');
 });
 ```
 
@@ -2267,7 +2104,7 @@ on(type: 'deviceLogEvent', callback: Callback\<DeviceLogEventCode>): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- |------------------------------------------------------------ |
-| type     | string                                                       | 是   | 事件回调类型，支持事件`'deviceLogEvent'`。 |
+| type     | string                                                       | 是   | 事件回调类型，支持事件'deviceLogEvent'。 |
 | callback | (callback: [DeviceLogEventCode](#devicelogeventcode13)) => void        | 是   | 回调函数，参数DeviceLogEventCode是当前设备日志返回值。                      |
 
 **错误码：**
@@ -2303,8 +2140,8 @@ off(type: 'deviceLogEvent', callback?: Callback\<DeviceLogEventCode>): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- |------------------------------------------------------------ |
-| type     | string                                                       | 是   | 取消对应的监听事件，支持事件`'deviceLogEvent'`。 |
-| callback | (callback: [DeviceLogEventCode](#devicelogeventcode13)) => void        | 否  | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。            |
+| type     | string                                                       | 是   | 需要取消的监听事件类型，当前支持的事件类型为'deviceLogEvent'。 |
+| callback | (callback: [DeviceLogEventCode](#devicelogeventcode13)) => void        | 否  | 需要取消的回调函数，与on接口注册时的回调函数保持一致。如果不填写该参数，则取消所有已注册的回调。            |
 
 **错误码：**
 
@@ -2354,7 +2191,7 @@ on(type: 'deviceStateChanged', callback: Callback\<DeviceState\>): void
 
 | 参数名   | 类型                                                          | 必填  | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- |------------------------------------------------------------ |
-| type     | string                                                       | 是   | 事件回调类型，支持事件`'deviceStateChanged'`，投播设备连接状态发生变化时触发回调。 |
+| type     | string                                                       | 是   | 事件回调类型，支持事件'deviceStateChanged'，投播设备连接状态发生变化时触发回调。 |
 | callback | (callback: [DeviceState](#devicestate20)) => void            | 是   | 回调函数，参数DeviceState包含投播设备ID、连接状态码、连接错误码和系统雷达错误码。|
 
 **错误码：**
@@ -2391,8 +2228,8 @@ off(type: 'deviceStateChanged', callback?: Callback\<DeviceState>): void
 
 | 参数名   | 类型                                                          | 必填  | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | 是   | 取消对应的监听事件，支持事件`'deviceStateChanged'`，投播设备连接状态变化的回调。 |
-| callback | (callback: [DeviceState](#devicestate20)) => void            | 否   | 回调函数，当监听事件取消成功时，err为undefined；否则返回错误对象。该参数为可选参数，若未填写，则取消所有相关会话的事件监听。 |
+| type     | string                                                       | 是   | 需要取消的监听事件类型，当前支持的事件类型为'deviceStateChanged'，投播设备连接状态变化的回调。 |
+| callback | (callback: [DeviceState](#devicestate20)) => void            | 否   | 需要取消的回调函数，与on接口注册时的回调函数保持一致。如果不填写该参数，则取消所有已注册的回调。 |
 
 **错误码：**
 
@@ -2411,13 +2248,13 @@ avSession.off('deviceStateChanged');
 
 ## AVCastController<sup>10+</sup>
 
-在投播建立后，调用[avSession.getAVCastController](arkts-apis-avsession-AVSession.md#getavcastcontroller10)后，返回会话控制器实例。控制器可查看会话ID，并可完成对会话发送命令及事件，获取会话元数据，播放状态信息等操作。
+投播建立后，调用[avSession.getAVCastController](arkts-apis-avsession-AVSession.md#getavcastcontroller10)可返回会话控制器实例。控制器可查看会话ID，并可完成对会话发送命令及事件，获取会话元数据，播放状态信息等操作。
 
 ### setDisplaySurface<sup>10+</sup>
 
 setDisplaySurface(surfaceId: string): Promise\<void>
 
-设置播放的surfaceId，在投播sink端使用。结果通过Promise异步回调方式返回。
+设置播放的surfaceId，在投播sink端使用。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -2449,19 +2286,17 @@ setDisplaySurface(surfaceId: string): Promise\<void>
 
 ```ts
 import { media } from '@kit.MediaKit';
+
 let surfaceID: string = '';
 media.createAVRecorder().then((avRecorder) => {
-  avRecorder.getInputSurface((err: BusinessError, surfaceId: string) => {
-    if (err == null) {
-      console.info('getInputSurface success');
-      surfaceID = surfaceId;
-      if (surfaceID) {
-        aVCastController.setDisplaySurface(surfaceID).then(() => {
-          console.info('setDisplaySurface : SUCCESS');
-        });
-      }
-    } else {
-      console.error('getInputSurface failed and error is ' + err.message);
+  avRecorder.getInputSurface((surfaceId: string) => {
+    console.info('Succeeded in getting input surface.');
+    surfaceID = surfaceId;
+    if (surfaceID) {
+      // 需先通过avSession.getAVCastController获取avCastController实例。
+      avCastController.setDisplaySurface(surfaceID).then(() => {
+        console.info('Succeeded in setting display surface.');
+      });
     }
   });
 })
@@ -2471,7 +2306,7 @@ media.createAVRecorder().then((avRecorder) => {
 
 setDisplaySurface(surfaceId: string, callback: AsyncCallback\<void>): void
 
-设置播放的surfaceId，在投播sink端使用。结果通过callback异步回调方式返回。
+设置播放的surfaceId，在投播sink端使用。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -2497,25 +2332,18 @@ setDisplaySurface(surfaceId: string, callback: AsyncCallback\<void>): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import { media } from '@kit.MediaKit';
+
 let surfaceID: string = '';
 media.createAVRecorder().then((avRecorder) => {
-  avRecorder.getInputSurface((err: BusinessError, surfaceId: string) => {
-    if (err == null) {
-      console.info('getInputSurface success');
-      surfaceID = surfaceId;
-      if (surfaceID) {
-        aVCastController.setDisplaySurface(surfaceID, (err: BusinessError) => {
-          if (err) {
-            console.error(`setDisplaySurface BusinessError: code: ${err.code}, message: ${err.message}`);
-          } else {
-            console.info('setDisplaySurface : SUCCESS');
-          }
-        });
-      }
-    } else {
-      console.error('getInputSurface failed and error is ' + err.message);
+  avRecorder.getInputSurface((surfaceId: string) => {
+    console.info('Succeeded in getting input surface.');
+    surfaceID = surfaceId;
+    if (surfaceID) {
+      // 需先通过avSession.getAVCastController获取avCastController实例。
+      avCastController.setDisplaySurface(surfaceID, () => {
+          console.info('Succeeded in setting display surface.');
+      });
     }
   });
 })
@@ -2535,7 +2363,7 @@ on(type: 'videoSizeChange', callback: (width:number, height:number) => void): vo
 
 | 参数名   | 类型         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- |---- |
-| type     | string      | 是   | 事件回调类型，支持事件`'videoSizeChange'`：当video尺寸更改时，触发该事件。 |
+| type     | string      | 是   | 事件回调类型，支持事件'videoSizeChange'：当video尺寸更改时，触发该事件。 |
 | callback | (width:number, height:number) => void    | 是   | 回调函数，返回video的宽度和高度。     |
 
 **错误码：**
@@ -2550,7 +2378,8 @@ on(type: 'videoSizeChange', callback: (width:number, height:number) => void): vo
 **示例：**
 
 ```ts
-aVCastController.on('videoSizeChange', (width: number, height: number) => {
+// 需先通过avSession.getAVCastController获取avCastController实例。
+avCastController.on('videoSizeChange', (width: number, height: number) => {
   console.info(`width ：${width} `);
   console.info(`height：${height} `);
 });
@@ -2570,7 +2399,7 @@ off(type: 'videoSizeChange'): void
 
 | 参数名   | 类型     | 必填 | 说明      |
 | -------- | ------------------------------------------------------------ | ---- |---- |
-| type     | string  | 是   | 取消对应的监听事件，支持事件`'videoSizeChange'`。    |
+| type     | string  | 是   | 需要取消的监听事件类型，当前支持的事件类型为'videoSizeChange'。    |
 
 **错误码：**
 
@@ -2584,7 +2413,7 @@ off(type: 'videoSizeChange'): void
 **示例：**
 
 ```ts
-aVCastController.off('videoSizeChange');
+avCastController.off('videoSizeChange');
 ```
 
 ## avSession.onActiveSessionChanged<sup>23+</sup>
@@ -2661,7 +2490,7 @@ function offActiveSessionChanged(callback?: Callback<Array\<AVSessionDescriptor>
 
 | 参数名   | 类型                 | 必填 | 说明                                                         |
 | -------- | --------------------| ---- | ------------------------------------------------------------ |
-| callback | Callback\<Array\<[AVSessionDescriptor](#avsessiondescriptor)\>\> | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为可选参数，若不填写该参数，则认为取消所有允许在系统控制入口显示的会话变更事件监听。  |
+| callback | Callback\<Array\<[AVSessionDescriptor](#avsessiondescriptor)\>\> | 否   | 回调函数，参数为允许在系统控制入口显示的会话信息列表。<br>该参数为可选参数，若不填写该参数，则认为取消所有允许在系统控制入口显示的会话变更事件监听。  |
 
 **错误码：**
 
@@ -2712,7 +2541,7 @@ struct Index {
 | avQueueName     | string                  | 否 | 否   | 歌单（歌曲列表）名称。                                                    |
 | avQueueId       | string                  | 否 | 否   | 歌单（歌曲列表）唯一标识Id。                                               |
 | avQueueImage    | image.PixelMap &#124; string |否 | 否   | 歌单（歌曲列表）封面图，图片的像素数据或者图片路径地址（本地路径或网络路径）。     |
-| lastPlayedTime  | number                  | 否 |是  | 歌单最后播放时间。                                                        |
+| lastPlayedTime  | number                  | 否 |是  | 歌单最后播放时间。单位为毫秒（ms）。参考基准：Unix时间戳。                                                        |
 
 ## DeviceInfo<sup>10+</sup>
 
@@ -2720,7 +2549,7 @@ struct Index {
 
 | 名称       | 类型           | 只读 | 可选 | 说明                   |
 | ---------- | -------------- | ---- | ----|------------------ |
-| ipAddress | string | 否 | 是  | 播放设备的ip地址。<br/>**系统接口：** 该接口为系统接口。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast     |
+| ipAddress | string | 否 | 是  | 播放设备的IP地址。<br/>**系统接口：** 该接口为系统接口。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast     |
 | providerId | number | 否    | 是 | 播放设备提供商。<br/>**系统接口：** 该接口为系统接口。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast    |
 | authenticationStatus<sup>11+</sup> | number | 否  | 是 | 播放设备是否可信。默认为0。0代表设备不可信，1代表设备可信。<br/>**系统接口：** 该接口为系统接口。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast    |
 | networkId<sup>13+</sup> | string | 否  |是 | 播放设备的网络ID。<br/>**系统接口：** 该接口为系统接口。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast|
@@ -2756,10 +2585,48 @@ struct Index {
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Manager
 
-**系统接口：** 此接口是系统接口。
+**系统接口：** 此接口为系统接口。
 
 | 名称                |  值  | 说明         |
 | --------------------| ---- | ----------- |
 | CATEGORY_ACTIVE     |  1   | 允许在系统控制入口显示的会话类别。 |
 | CATEGORY_NOT_ACTIVE |  2   | 禁止在系统控制入口显示的会话类别。 |
 | CATEGORY_ALL        |  3   | 所有会话类别。 |
+
+## ConnectionState
+
+表示连接状态的枚举，仅包含系统接口部分。完整枚举定义请参见[ConnectionState](arkts-apis-avsession-e.md#connectionstate10)。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+| 名称                        | 值   | 说明         |
+| --------------------------- | ---- | ----------- |
+| STATE_AUTHENTICATING      | 10    | 与远端设备连接认证中。 |
+| STATE_MIRROR_TO_STREAM      | 11    | 从镜像模式切换到音视频投播。 |
+| STATE_STREAM_TO_MIRROR      | 12    | 从音视频投播切换到镜像模式。 |
+
+## ExtraKey
+
+表示定义在不同场景中使用的额外键的枚举，仅包含系统接口部分。完整枚举定义请参见[ExtraKey](arkts-apis-avsession-e.md#extrakey)。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+| 名称                        | 值   | 说明         |
+| --------------------------- | ---- | ----------- |
+| LIVE_VIEW_HIDDEN_WHEN_KEYGUARD      | 'hw_live_view_hidden_when_keyguard'    | 作为[setExtras](arkts-apis-avsession-AVSession.md#setextras10)接口传入的键，值传入bool类型列表，用于通知系统在锁屏时是否隐藏实况窗卡片。 |

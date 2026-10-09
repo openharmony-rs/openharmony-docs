@@ -6,9 +6,9 @@
 <!--Designer: @qq_43802146-->
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
-The **wifiManagerExt** module provides WLAN extension APIs for non-universal products.
+This module provides Wi-Fi extension APIs for non-universal products.
 
-> **NOTE**<br>
+> **NOTE**
 > The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 The APIs described in this document are used only for non-universal products, such as routers.
 
@@ -23,9 +23,9 @@ import { wifiManagerExt } from '@kit.ConnectivityKit';
 
 enableHotspot(): void
 
-Enables the WLAN hotspot.
+Enables the Wi-Fi hotspot.
 
-> **NOTE**<br>
+> **NOTE**
 > This API is supported since API version 9 and deprecated since API version 10.
 
 **Required permissions**: ohos.permission.MANAGE_WIFI_HOTSPOT_EXT
@@ -49,7 +49,7 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
   try {
       wifiManagerExt.enableHotspot();
-  }catch(error){
+  } catch (error) {
       console.error("failed: " + JSON.stringify(error));
   }
 ```
@@ -58,9 +58,9 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 disableHotspot(): void
 
-Disables the WLAN hotspot.
+Disables the Wi-Fi hotspot.
 
-> **NOTE**<br>
+> **NOTE**
 > This API is supported since API version 9 and deprecated since API version 10.
 
 **Required permissions**: ohos.permission.MANAGE_WIFI_HOTSPOT_EXT
@@ -118,13 +118,13 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 Enumerates the power modes.
 
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+**System capability**: SystemCapability.Communication.WiFi.AP.Extension
 
 | Name| Value| Description|
 | -------- | -------- | -------- |
-| SLEEPING | 0 | Sleeping|
-| GENERAL | 1 | General|
-| THROUGH_WALL | 2 | Through_wall|
+| SLEEPING | 0 | Sleeping **System capability**: SystemCapability.Ability.AbilityRuntime.Core|
+| GENERAL | 1 | General **System capability**: SystemCapability.Ability.AbilityRuntime.Core|
+| THROUGH_WALL | 2 | Through_wall **System capability**: SystemCapability.Ability.AbilityRuntime.Core|
 
 
 ## wifiManagerExt.getSupportedPowerMode
@@ -173,9 +173,6 @@ getPowerMode(): Promise&lt;PowerMode&gt;
 
 Obtains the power mode. This API uses a promise to return the result.
 
-> **NOTE**<br>
-> This API is supported since API version 9 and deprecated since API version 10.
-
 **Required permissions**: ohos.permission.GET_WIFI_INFO
 
 **System capability**: SystemCapability.Communication.WiFi.AP.Extension
@@ -199,14 +196,19 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 **Example**
 
 ```ts
-  import { wifiManagerExt } from '@kit.ConnectivityKit';
+import { wifiManagerExt } from '@kit.ConnectivityKit';
 
+async function getWifiPowerMode() {
   try {
-      let model = wifiManagerExt.getPowerMode();
-      console.info("model info:" + model);
-  }catch(error){
-      console.error("failed: " + JSON.stringify(error));
+    // 1. Use the await keyword to wait for promise parsing to complete.
+    let model = await wifiManagerExt.getPowerMode();
+    
+    console.info("model info: " + model);
+  } catch (error) {
+    // 2. Capture the error when the promise is rejected.
+    console.error("failed: " + JSON.stringify(error));
   }
+}
 ```
 
 ## wifiManagerExt.getPowerMode
@@ -259,9 +261,9 @@ For details about the error codes, see [Wi-Fi Error Codes](errorcode-wifi.md).
 
 setPowerMode(mode: PowerMode) : void
 
- Sets the power mode.
+Sets the power mode.
 
-> **NOTE**<br>
+> **NOTE**
 > This API is supported since API version 9 and deprecated since API version 10.
 
 **Required permissions**: ohos.permission.MANAGE_WIFI_HOTSPOT_EXT

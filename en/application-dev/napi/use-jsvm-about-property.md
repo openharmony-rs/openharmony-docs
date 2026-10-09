@@ -76,7 +76,7 @@ static JSVM_PropertyDescriptor descriptor[] = {
 
 // Call the C++ code from JS.
 const char *srcCallNative = R"JS(
-    let obj = '{ data: 0, message: "hello world"}';
+    let obj = { data: 0, message: "hello world"};
     let script = getPropertyNames(obj);
 )JS";
 ```

@@ -1,14 +1,15 @@
-# Listening for Game Controller Online/Offline Events (C/C++)
+# Listening for Device Online/Offline Events (C/C++)
 <!--Kit: Game Controller Kit-->
 <!--Subsystem: Game-->
-<!--Owner: @zhaoshuhao123-->
+<!--Owner: @weixin_42784160-->
 <!--Designer: @wudejun2025-->
-<!--Tester: @csp1992-->
-<!--Adviser: @luwy2025-->
+<!--Tester: @fei_0805-->
+<!--Adviser: @yuwenliang0514-->
+<!-- md-trans-meta sourceCommit=0e9631a82844cd7c7c6929f54a07acb1f1b31933 translatedAt=2026-08-26T05:01:32.629Z pushedAt=2026-08-28T08:57:51.915Z -->
 
 ## When to Use
 
-Game Controller Kit allows you to monitor controller online/offline events and query information about online controllers. After registering a listener for these events, you can receive real-time callback notifications when controllers are plugged in or unplugged. It also supports querying specific information about all online devices.
+Game Controller Kit allows you to monitor game device online/offline events and query information about online devices. After registering a listener for these events, you can receive real-time callback notifications when devices are plugged in or unplugged. It also supports querying specific information about all online devices.
 
 
 ## Service Flow
@@ -17,30 +18,30 @@ Game Controller Kit allows you to monitor controller online/offline events and q
 
 1. A player starts a game.
 
-2. The game calls **OH_GameDevice_RegisterDeviceMonitor** to register a listener for controller status change events.
+2. The game calls the [OH_GameDevice_RegisterDeviceMonitor](../reference/apis-game-controller-kit/capi-game-device-h.md#oh_gamedevice_registerdevicemonitor) API to register a listener for device status change events.
 
-3. The player plugs in or unplugs a game controller.
+3. The player plugs in or unplugs a device.
 
-4. The device system notifies Game Controller Kit of the controller status change.
+4. The device system notifies Game Controller Kit of the device status change.
 
-5. Game Controller Kit feeds back the controller status change to the game.
+5. Game Controller Kit feeds back the device status change to the game.
 
-6. The game calls **OH_GameDevice_GetAllDeviceInfos** to query information about all online game controllers from Game Controller Kit.
+6. The game calls the [OH_GameDevice_GetAllDeviceInfos](../reference/apis-game-controller-kit/capi-game-device-h.md#oh_gamedevice_getalldeviceinfos) API to query Game Controller Kit for information about all online game devices.
 
-7. Game Controller Kit obtains information about all online game controllers from the device system.
+7. Game Controller Kit obtains information about all online devices from the device system.
 
-8. Unregister via **OH_GameDevice_UnregisterDeviceMonitor** if monitoring is no longer needed.
+8. If the subscription is no longer needed, the game can call the [OH_GameDevice_UnregisterDeviceMonitor](../reference/apis-game-controller-kit/capi-game-device-h.md#oh_gamedevice_unregisterdevicemonitor) API to cancel the listener for device status change events.
 
 
 ## Available APIs
 
-For details about the APIs, please refer to the [API reference](../reference/apis-game-controller-kit/capi-game-controller.md).
+For detailed API descriptions, see [GameController](../reference/apis-game-controller-kit/capi-gamecontroller.md).
 
-| API| Description| 
+| API| Description|
 | -------- | -------- |
-| GameController_ErrorCode OH_GameDevice_RegisterDeviceMonitor (GameDevice_DeviceMonitorCallback deviceMonitorCallback) | Registers the listening callback for controller status change events.| 
-| GameController_ErrorCode OH_GameDevice_UnregisterDeviceMonitor (void) | Unregisters the listening callback for controller status change events.| 
-| GameController_ErrorCode OH_GameDevice_GetAllDeviceInfos (GameDevice_AllDeviceInfos \*\*allDeviceInfos) | Obtains information about all online controllers.| 
+| GameController_ErrorCode [OH_GameDevice_RegisterDeviceMonitor](../reference/apis-game-controller-kit/capi-game-device-h.md#oh_gamedevice_registerdevicemonitor) (GameDevice_DeviceMonitorCallback deviceMonitorCallback) | Registers a listener for device status change events. |
+| GameController_ErrorCode [OH_GameDevice_UnregisterDeviceMonitor](../reference/apis-game-controller-kit/capi-game-device-h.md#oh_gamedevice_unregisterdevicemonitor) (void) | Unregisters the listener for device status change events. |
+| GameController_ErrorCode [OH_GameDevice_GetAllDeviceInfos](../reference/apis-game-controller-kit/capi-game-device-h.md#oh_gamedevice_getalldeviceinfos) (GameDevice_AllDeviceInfos \*\*allDeviceInfos) | Obtains information about all online devices. |
 
 
 ## How to Develop
@@ -60,9 +61,9 @@ target_link_libraries(entry PUBLIC libohgame_controller.z.so)
 ```
 
 
-### Registering a Listener for Controller Status Changes
+### Registering a Listener for Device Status Changes
 
-Call **OH_GameDevice_RegisterDeviceMonitor** to register a listener for controller status changes and receive callback notifications.
+Call the [OH_GameDevice_RegisterDeviceMonitor](../reference/apis-game-controller-kit/capi-game-device-h.md#oh_gamedevice_registerdevicemonitor) API to register a listener for device status changes and receive callback notifications for device connection and disconnection.
 
 ```c
 napi_value DeviceApi::RegisterDeviceMonitor(napi_env env, napi_callback_info info) {
@@ -91,9 +92,9 @@ void DeviceApi::OnDeviceChanged(const struct GameDevice_DeviceEvent *deviceEvent
 ```
 
 
-### Unregistering a Listener for Controller Status Changes
+### Unregistering a Listener for Device Status Changes
 
-If subscription is no longer needed, call **OH_GameDevice_UnregisterDeviceMonitor** to unregister the listener for controller status change events.
+If the subscription is no longer needed, call the [OH_GameDevice_UnregisterDeviceMonitor](../reference/apis-game-controller-kit/capi-game-device-h.md#oh_gamedevice_unregisterdevicemonitor) API to cancel the listener for device status change events.
 
 ```c
 napi_value DeviceApi::UnregisterDeviceMonitor(napi_env env, napi_callback_info info) {
@@ -111,9 +112,9 @@ napi_value DeviceApi::UnregisterDeviceMonitor(napi_env env, napi_callback_info i
 ```
 
 
-### Querying All Online Controllers
+### Querying All Online Devices
 
-Call **OH_GameDevice_GetAllDeviceInfos** to query information about all online game controllers.
+Call the [OH_GameDevice_GetAllDeviceInfos](../reference/apis-game-controller-kit/capi-game-device-h.md#oh_gamedevice_getalldeviceinfos) API to query information about all online game devices.
 
 ```c
 GameController_ErrorCode DeviceApi::DoQueryAllDeviceInfos() {

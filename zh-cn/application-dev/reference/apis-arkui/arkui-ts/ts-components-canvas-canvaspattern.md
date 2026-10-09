@@ -1,16 +1,16 @@
 # CanvasPattern
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
-<!--Designer: @sunbees-->
+<!--Owner: @camlostshi-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
-一个Object对象，使用[createPattern](ts-canvasrenderingcontext2d.md#createpattern)方法创建，通过指定图像和重复方式创建图片填充的模板。
+CanvasPattern对象，使用[createPattern](ts-components-canvas-common-method.md#createpattern)方法创建，通过指定图像和重复方式生成图片填充的模板，适用于需要在Canvas中实现图案填充或背景纹理的场景，可简化图案填充的实现并提高绘制效率。
 
 >  **说明：**
 >
->  从 API version 8 开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>  本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 方法
 
@@ -18,7 +18,7 @@
 
 setTransform(transform?: Matrix2D): void
 
-使用Matrix2D对象作为参数，对当前CanvasPattern进行矩阵变换。
+使用Matrix2D对象作为参数，对当前CanvasPattern进行矩阵变换。适用于需要对图案填充进行平移、缩放、旋转等几何变换的场景。不传参时，不对CanvasPattern做矩阵变换处理。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -26,15 +26,20 @@ setTransform(transform?: Matrix2D): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+
 **参数：**
 
 | 参数名      | 类型  | 必填 | 说明   |
 | --------- | -------------- | ------ | ---------- |
-| transform | [Matrix2D](ts-components-canvas-matrix2d.md) | 否  | 转换矩阵。<br>异常值undefined和null按无效值处理。<br>默认值：null |
+| transform | [Matrix2D](ts-components-canvas-matrix2d.md) | 否  | 转换矩阵，用于对CanvasPattern进行平移、缩放、旋转等几何变换。<br>说明：参数为undefined或null时不做矩阵变换处理。<br>默认值：null |
 
 ## 示例
 
-通过setTransform对当前CanvasPattern进行矩阵变换。
+通过createPattern创建CanvasPattern对象，在onReady回调和按钮点击时分别设置matrix参数，并调用setTransform方法进行矩阵变换。
+
+> **说明：**
+>
+> 此示例的资源不在src > main > resource目录下，从DevEco Studio 6.0.0 Beta2版本开始，新建工程或模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOption > resOptions > copyCodeResource > enable设置为true，详见resOptions中[copyCodeResource](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#section754823013348)相关介绍。
 
 ```ts
 // xxx.ets
@@ -44,12 +49,13 @@ struct CanvasPatternPage {
   private settings: RenderingContextSettings = new RenderingContextSettings(true);
   private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
   private matrix: Matrix2D = new Matrix2D();
-  private img: ImageBitmap = new ImageBitmap("common/pattern.jpg");
+  // "common/pattern.jpg"需要替换为开发者所需的图像资源文件
+  private img: ImageBitmap = new ImageBitmap('common/pattern.jpg');
   private pattern: CanvasPattern | null = null;
 
   build() {
       Column() {
-        Button("Click to set transform")
+        Button('Click to set transform')
           .onClick(() => {
             this.matrix.scaleY = 1
             this.matrix.scaleX = 1
@@ -60,8 +66,8 @@ struct CanvasPatternPage {
             }
             this.context.fillRect(0, 0, 480, 720)
           })
-          .width("45%")
-          .margin("5px")
+          .width('45%')
+          .margin('5px')
         Canvas(this.context)
           .width('100%')
           .height('80%')

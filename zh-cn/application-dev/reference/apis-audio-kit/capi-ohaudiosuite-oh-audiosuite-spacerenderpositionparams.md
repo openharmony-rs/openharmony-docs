@@ -1,13 +1,13 @@
 # OH_AudioSuite_SpaceRenderPositionParams
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @xxngwang-->
+<!--Designer: @jay-liusong-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
 ```c
-typedef struct {...} OH_AudioSuite_SpaceRenderPositionParams
+typedef struct OH_AudioSuite_SpaceRenderPositionParams {...} OH_AudioSuite_SpaceRenderPositionParams
 ```
 
 ## 概述

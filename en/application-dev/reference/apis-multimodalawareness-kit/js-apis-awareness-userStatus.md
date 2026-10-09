@@ -2,15 +2,16 @@
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: MultimodalAwareness-->
 <!--Owner: @dilligencer-->
-<!--Designer: @zou_ye-->
+<!--Designer: @saga2025-->
 <!--Tester: @judan-->
 <!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=06c751e035ad62c8d7f27ef01002e3d38739d6ba translatedAt=2026-09-14T02:28:22.172Z pushedAt=2026-09-14T10:03:33.585Z -->
 
 The **UserStatus** module, designed for user state awareness, empowers the system to perceive specific conditions of users, such as determining their age group.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 20. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 20. This API is deprecated since API version 24. No substitute API is provided.
 
 
 ## Modules to Import
@@ -19,7 +20,7 @@ The **UserStatus** module, designed for user state awareness, empowers the syste
 import { userStatus } from '@kit.MultimodalAwarenessKit';
 ```
 
-## UserAgeGroup
+## UserAgeGroup<sup>(deprecated)</sup>
 
 Enumerates the user age groups, for example, child or adult.
 
@@ -30,7 +31,7 @@ Enumerates the user age groups, for example, child or adult.
 | OTHERS  | 0    | Adult.|
 | CHILD  | 1    | Child.|
 
-## UserClassification
+## UserClassification<sup>(deprecated)</sup>
 
 Defines the user age group detection result.
 
@@ -38,11 +39,11 @@ Defines the user age group detection result.
 
 | Name               | Type  |Read-Only|Optional| Description                  |
 | ------------------- | ---- |----|----| ---------------------- |
-| ageGroup  | [UserAgeGroup](#useragegroup)   |No|Yes| User age group, for example, child or adult.|
+| ageGroup  | [UserAgeGroup](#useragegroupdeprecated)   |No|Yes| User age group, for example, child or adult.|
 | confidence  | float    |No|Yes| Confidence of the detection result. The value is a floating point number ranging from 0 to 1. A larger value indicates a higher confidence.|
 
 
-## userStatus.on('userAgeGroupDetected')
+## userStatus.on('userAgeGroupDetected')<sup>(deprecated)</sup>
 
  on(type: 'userAgeGroupDetected', callback: Callback&lt;UserClassification&gt;): void
 
@@ -63,7 +64,7 @@ When the function is enabled, the application can recommend content based on the
 | Name  | Type                            | Mandatory| Description                                                        |
 | -------- | -------------------------------- | ---- |------------------------------------------------------------ |
 | type     | string                           | Yes  | Event type. The value **userAgeGroupDetected** indicates the event of enabling age group detection.|
-| callback | Callback&lt;[UserClassification](#userclassification)&gt; | Yes  | Callback used to return the detection result.|
+| callback | Callback&lt;[UserClassification](#userclassificationdeprecated)&gt; | Yes  | Callback used to return the detection result.|
 
 **Error codes**
 
@@ -93,7 +94,7 @@ try {
 
 
 
-## userStatus.off('userAgeGroupDetected')
+## userStatus.off('userAgeGroupDetected')<sup>(deprecated)</sup>
 
 off(type: 'userAgeGroupDetected', callback?: Callback&lt;UserClassification&gt;): void
 
@@ -112,7 +113,7 @@ Disables the age group detection function.
 | Name  | Type                            | Mandatory| Description                                                        |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                           | Yes  | Event type. The value **userAgeGroupDetected** indicates the event of enabling age group detection.|
-| callback | Callback&lt;[UserClassification](#userclassification)&gt; | No  | Callback used to return the detection result.|
+| callback | Callback&lt;[UserClassification](#userclassificationdeprecated)&gt; | No  | Callback used to return the detection result. The callback to be unsubscribed must be the same as the one passed in during subscription. If not specified, all callbacks currently listening for this event will be unsubscribed. |
 
 **Error codes**
 

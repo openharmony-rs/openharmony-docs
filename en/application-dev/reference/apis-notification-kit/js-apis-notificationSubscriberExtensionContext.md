@@ -1,12 +1,13 @@
 # @ohos.application.NotificationSubscriberExtensionContext (ExtensionAbility Context for Notification Subscription)
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @cheerful_ricky-->
-<!--Designer: @dongqingran-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-10-08T02:34:11.551Z pushedAt=2026-10-08T10:04:11.688Z -->
 
-The **NotificationSubscriberExtensionContext** module provides the context for the **NotificationSubscriberExtensionAbility**.
+The **NotificationSubscriberExtensionContext** module provides the extension capability for [notification subscription](../../notification/notification-glossary.md#notification-subscription) subscribers.
 
 > **NOTE**
 > 

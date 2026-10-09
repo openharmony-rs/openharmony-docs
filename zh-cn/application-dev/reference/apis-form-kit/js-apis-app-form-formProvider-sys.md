@@ -1,9 +1,9 @@
 # @ohos.app.form.formProvider (formProvider)(系统接口)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 formProvider模块提供了获取卡片信息、更新卡片、设置卡片更新时间、请求发布卡片等能力。
@@ -20,7 +20,7 @@ import { formProvider } from '@kit.FormKit';
 ```
 
 
-## requestPublishForm
+## formProvider.requestPublishForm
 
 requestPublishForm(want: Want, formBindingData: formBindingData.FormBindingData, callback: AsyncCallback\<string>): void
 
@@ -49,6 +49,10 @@ requestPublishForm(want: Want, formBindingData: formBindingData.FormBindingData,
 | 16500050 | IPC connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
+| 16501002 | The number of forms exceeds the maximum allowed. <br/>**起始版本：** 26.0.1 |
+| 16501008 | Waiting for the form addition to the desktop timed out. <br/>**起始版本：** 26.0.1 |
+| 16501017 | There is no space to publish form. <br/>**起始版本：** 26.0.1 |
+| 16501018 | This form does not support publishing. <br/>**起始版本：** 26.0.1 |
 
 **示例：**
 
@@ -73,17 +77,17 @@ try {
   let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
   formProvider.requestPublishForm(want, obj, (error: BusinessError, data: string) => {
     if (error) {
-      console.error(`callback error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+      console.error(`callback error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
       return;
     }
     console.info(`formProvider requestPublishForm, form ID is: ${data}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
-## requestPublishForm
+## formProvider.requestPublishForm
 
 requestPublishForm(want: Want, callback: AsyncCallback&lt;string&gt;): void
 
@@ -111,6 +115,10 @@ requestPublishForm(want: Want, callback: AsyncCallback&lt;string&gt;): void
 | 16500050 | IPC connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
+| 16501002 | The number of forms exceeds the maximum allowed. <br/>**起始版本：** 26.0.1 |
+| 16501008 | Waiting for the form addition to the desktop timed out. <br/>**起始版本：** 26.0.1 |
+| 16501017 | There is no space to publish form. <br/>**起始版本：** 26.0.1 |
+| 16501018 | This form does not support publishing. <br/>**起始版本：** 26.0.1 |
 
 **示例：**
 
@@ -130,17 +138,17 @@ let want: Want = {
 try {
   formProvider.requestPublishForm(want, (error: BusinessError, data: string) => {
     if (error) {
-      console.error(`callback error, code: ${error.code}, message: ${error.message})`);
+      console.error(`callback error, code: ${error.code}, message: ${error.message}`);
       return;
     }
     console.info(`formProvider requestPublishForm, form ID is: ${data}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
-## requestPublishForm
+## formProvider.requestPublishForm
 
 requestPublishForm(want: Want, formBindingData?: formBindingData.FormBindingData): Promise&lt;string&gt;
 
@@ -174,6 +182,10 @@ requestPublishForm(want: Want, formBindingData?: formBindingData.FormBindingData
 | 16500050 | IPC connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
+| 16501002 | The number of forms exceeds the maximum allowed. <br/>**起始版本：** 26.0.1 |
+| 16501008 | Waiting for the form addition to the desktop timed out. <br/>**起始版本：** 26.0.1 |
+| 16501017 | There is no space to publish form. <br/>**起始版本：** 26.0.1 |
+| 16501018 | This form does not support publishing. <br/>**起始版本：** 26.0.1 |
 
 **示例：**
 
@@ -194,18 +206,18 @@ try {
   formProvider.requestPublishForm(want).then((data: string) => {
     console.info(`formProvider requestPublishForm success, form ID is : ${data}`);
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
-## isRequestPublishFormSupported
+## formProvider.isRequestPublishFormSupported
 
 isRequestPublishFormSupported(callback: AsyncCallback&lt;boolean&gt;): void
 
-查询是否可以添加卡片到卡片使用方，使用callback异步回调。
+查询是否可以发布卡片到卡片使用方，使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -215,7 +227,7 @@ isRequestPublishFormSupported(callback: AsyncCallback&lt;boolean&gt;): void
 
 | 参数名 | 类型    | 必填 | 说明    |
 | ------ | ------ | ---- | ------- |
-| callback | AsyncCallback&lt;boolean&gt; | 是 | 返回查询结果的回调函数。<br>true: 表示可以添加卡片到卡片使用方。<br>false: 表示不可以添加卡片到卡片使用方。|
+| callback | AsyncCallback&lt;boolean&gt; | 是 | 返回查询结果的回调函数。<br>true: 表示可以发布卡片到卡片使用方。<br>false: 表示不可以发布卡片到卡片使用方。|
 
 **错误码：**
 
@@ -238,7 +250,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   formProvider.isRequestPublishFormSupported((error: BusinessError, isSupported: boolean) => {
     if (error) {
-      console.error(`callback error, code: ${error.code}, message: ${error.message})`);
+      console.error(`callback error, code: ${error.code}, message: ${error.message}`);
     } else {
       if (isSupported) {
         let want: Want = {
@@ -252,27 +264,27 @@ try {
         try {
           formProvider.requestPublishForm(want, (error: BusinessError, data: string) => {
             if (error) {
-              console.error(`callback error, code: ${error.code}, message: ${error.message})`);
+              console.error(`callback error, code: ${error.code}, message: ${error.message}`);
               return;
             }
             console.info(`formProvider requestPublishForm, form ID is: ${data}`);
           });
         } catch (error) {
-          console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+          console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
         }
       }
     }
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
-## isRequestPublishFormSupported
+## formProvider.isRequestPublishFormSupported
 
 isRequestPublishFormSupported(): Promise&lt;boolean&gt;
 
-查询是否可以添加卡片到卡片使用方，使用Promise异步回调。
+查询是否可以发布卡片到卡片使用方，使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -282,7 +294,7 @@ isRequestPublishFormSupported(): Promise&lt;boolean&gt;
 
 | 类型          | 说明                                |
 | :------------ | :---------------------------------- |
-| Promise&lt;boolean&gt; | Promise对象。返回是否可以添加卡片到卡片使用方的结果。<br>true: 表示可以添加卡片到卡片使用方。<br>false: 表示不可以添加卡片到卡片使用方。|
+| Promise&lt;boolean&gt; | Promise对象。返回是否可以发布卡片到卡片使用方的结果。<br>true: 表示可以发布卡片到卡片使用方。<br>false: 表示不可以发布卡片到卡片使用方。|
 
 **错误码：**
 
@@ -316,21 +328,21 @@ try {
         formProvider.requestPublishForm(want).then((data: string) => {
           console.info(`formProvider requestPublishForm success, form ID is : ${data}`);
         }).catch((error: BusinessError) => {
-          console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+          console.error(`promise error, code: ${error.code}, message: ${error.message}`);
         });
       } catch (error) {
-        console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+        console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
       }
     }
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
-## activateSceneAnimation<sup>20+</sup>
+## formProvider.activateSceneAnimation<sup>20+</sup>
 
 activateSceneAnimation(formId: string): Promise&lt;void&gt;
 
@@ -338,13 +350,15 @@ activateSceneAnimation(formId: string): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Ability.Form
 
+**设备行为差异：** 该接口支持Phone中的部分机型，不支持的设备调用会返回[801](../errorcode-universal.md#801-api功能在部分设备不支持)错误码。
+
 **系统接口：** 此接口为系统接口。
 
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明    |
 | ------ | ------ | ---- |-------|
-| formId | string | 是 | 卡片id。 |
+| formId | string | 是 | 卡片标识。 |
 
 **返回值：**
 
@@ -380,14 +394,14 @@ try {
   formProvider.activateSceneAnimation(formId).then(() => {
     console.info('activateSceneAnimation succeed.');
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
-## deactivateSceneAnimation<sup>20+</sup>
+## formProvider.deactivateSceneAnimation<sup>20+</sup>
 
 deactivateSceneAnimation(formId: string): Promise&lt;void&gt;
 
@@ -395,13 +409,15 @@ deactivateSceneAnimation(formId: string): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Ability.Form
 
+**设备行为差异：** 该接口支持Phone中的部分机型，不支持的设备调用会返回[801](../errorcode-universal.md#801-api功能在部分设备不支持)错误码。
+
 **系统接口：** 此接口为系统接口。
 
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明    |
 | ------ | ------ | ---- |-------|
-| formId | string | 是 | 卡片id。|
+| formId | string | 是 | 卡片标识。|
 
 **返回值：**
 
@@ -437,14 +453,14 @@ try {
   formProvider.deactivateSceneAnimation(formId).then(() => {
     console.info('deactivateSceneAnimation succeed.');
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
-## updateTemplateFormDetailInfo<sup>23+</sup>
+## formProvider.updateTemplateFormDetailInfo<sup>23+</sup>
 
 updateTemplateFormDetailInfo(templateFormInfo: Array&lt;formInfo.TemplateFormDetailInfo&gt;): Promise&lt;void&gt;
 
@@ -460,7 +476,7 @@ updateTemplateFormDetailInfo(templateFormInfo: Array&lt;formInfo.TemplateFormDet
 
 | 参数名 | 类型    | 必填 | 说明    |
 | ------ | ------ | ---- |-------|
-| templateFormInfo | Array&lt;[formInfo.TemplateFormDetailInfo](js-apis-app-form-formInfo.md#forminfo)&gt; | 是 | 指定的模板卡片静态配置信息。|
+| templateFormInfo | Array&lt;[formInfo.TemplateFormDetailInfo](js-apis-app-form-formInfo-sys.md#templateformdetailinfo23)&gt; | 是 | 指定的模板卡片静态配置信息。|
 
 **返回值：**
 
@@ -498,18 +514,18 @@ try {
   formProvider.updateTemplateFormDetailInfo(templateFormInfo).then(() => {
     console.info('updateTemplateFormDetailInfo succeed.');
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
-## onPublishFormCrossBundleControl<sup>23+</sup>
+## formProvider.onPublishFormCrossBundleControl<sup>23+</sup>
 
 onPublishFormCrossBundleControl(callback: formInfo.PublishFormCrossBundleControlCallback): void
 
-订阅跨应用加桌管控，使用callback异步回调。
+订阅跨应用加桌管控。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -523,7 +539,7 @@ onPublishFormCrossBundleControl(callback: formInfo.PublishFormCrossBundleControl
 
 | 参数名 | 类型    | 必填 | 说明    |
 | ------ | ------ | ---- |-------|
-| callback | [formInfo.PublishFormCrossBundleControlCallback](js-apis-app-form-formInfo.md#forminfo) | 是 | 回调函数，返回跨应用加桌管控回调。|
+| callback | [formInfo.PublishFormCrossBundleControlCallback](js-apis-app-form-formInfo-sys.md#publishformcrossbundlecontrolcallback23) | 是 | 跨应用加桌管控的回调函数。|
 
 **错误码：**
 
@@ -547,16 +563,16 @@ try {
   });
   console.info(`onPublishFormCrossBundleControl success`);
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
 
-## offPublishFormCrossBundleControl<sup>23+</sup>
+## formProvider.offPublishFormCrossBundleControl<sup>23+</sup>
 
 offPublishFormCrossBundleControl(callback?: formInfo.PublishFormCrossBundleControlCallback): void
 
-取消订阅跨应用加桌管控，使用callback异步回调。
+取消订阅跨应用加桌管控。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -570,7 +586,7 @@ offPublishFormCrossBundleControl(callback?: formInfo.PublishFormCrossBundleContr
 
 | 参数名 | 类型    | 必填 | 说明    |
 | ------ | ------ | ---- |-------|
-| callback | [formInfo.PublishFormCrossBundleControlCallback](js-apis-app-form-formInfo.md#forminfo) | 否 | 回调函数，返回跨应用加桌管控回调。|
+| callback | [formInfo.PublishFormCrossBundleControlCallback](js-apis-app-form-formInfo-sys.md#publishformcrossbundlecontrolcallback23) | 否 | 跨应用加桌管控的回调函数，不传则取消所有已订阅的回调。|
 
 **错误码：**
 
@@ -592,6 +608,6 @@ try {
   formProvider.offPublishFormCrossBundleControl();
   console.info(`offPublishFormCrossBundleControl success`);
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```

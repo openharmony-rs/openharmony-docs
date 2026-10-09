@@ -1,18 +1,19 @@
 # 模块描述
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
 音频管理提供基础的音频控制能力，包括音量调节、设备管理、数据采集及渲染。
 
-该模块提供以下音频相关的常用功能：
+本模块提供以下音频相关的常用功能：
 
 - [AudioManager](arkts-apis-audio-AudioManager.md)：音频管理器。
-- [AudioRenderer](arkts-apis-audio-AudioRenderer.md)：音频渲染，用于播放PCM（Pulse Code Modulation）音频数据。
-- [AudioCapturer](arkts-apis-audio-AudioCapturer.md)：音频采集，用于录制PCM音频数据。
+- [AudioDeviceEnhanceManager](arkts-apis-audio-AudioDeviceEnhanceManager.md)：音频设备增强管理器。
+- [AudioRenderer](arkts-apis-audio-AudioRenderer.md)：音频渲染器，用于播放PCM（Pulse Code Modulation）音频数据。
+- [AudioCapturer](arkts-apis-audio-AudioCapturer.md)：音频采集器，用于录制PCM音频数据。
 
 > **说明：**
 >

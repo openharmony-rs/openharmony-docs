@@ -2,13 +2,13 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @yangxiaodong41-->
-<!--Designer: @guo867-->
+<!--Designer: @zhusiyuan2-->
 <!--Tester: @maxiaorong-->
 <!--Adviser: @fang-jinxu-->
 
 ## 概述
 
-声明剪贴板框架错误码信息。
+声明剪贴板框架错误码信息。剪贴板错误码用于标识剪贴板操作过程中的执行结果，开发者可通过错误码判断操作是否成功以及失败的具体原因。
 
 **引用文件：** <database/pasteboard/oh_pasteboard_err_code.h>
 
@@ -38,7 +38,7 @@ enum PASTEBOARD_ErrCode
 
 **描述：**
 
-错误码信息。
+剪贴板错误码枚举，用于标识剪贴板操作的执行结果，开发者可通过错误码判断操作是否成功以及失败的具体原因。
 
 **起始版本：** 13
 
@@ -50,9 +50,9 @@ enum PASTEBOARD_ErrCode
 | ERR_DEVICE_NOT_SUPPORTED = 801 | 设备能力不支持。 |
 | ERR_INNER_ERROR = 12900000 | 内部错误。 |
 | ERR_BUSY = 12900003 | 系统忙。 |
-| ERR_PASTEBOARD_COPY_FILE_ERROR = 12900007 | 文件拷贝失败。</br> 起始版本: 15 |
-| ERR_PASTEBOARD_PROGRESS_START_ERROR = 12900008 | 拉起进度显示失败。</br> 起始版本: 15 |
-| ERR_PASTEBOARD_PROGRESS_ABNORMAL = 12900009 | 进度显示异常。</br> 起始版本: 15 |
-| ERR_PASTEBOARD_GET_DATA_FAILED = 12900010 | 获取剪贴数据失败。</br> 起始版本: 15 |
+| ERR_PASTEBOARD_COPY_FILE_ERROR = 12900007 | 文件拷贝失败。</br> **起始版本：** 15 |
+| ERR_PASTEBOARD_PROGRESS_START_ERROR = 12900008 | 拉起进度显示失败。</br> **起始版本：** 15 |
+| ERR_PASTEBOARD_PROGRESS_ABNORMAL = 12900009 | 进度显示异常。</br> **起始版本：** 15 |
+| ERR_PASTEBOARD_GET_DATA_FAILED = 12900010 | 获取剪贴板数据失败。</br> **起始版本：** 15 |
 
 

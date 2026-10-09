@@ -2,8 +2,8 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zju_ljz-->
-<!--Designer: @lanshouren-->
+<!--Owner: @zhangwentao96-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -13,11 +13,11 @@ typedef struct ArkUI_GuidelineOption ArkUI_GuidelineOption
 
 ## 概述
 
-用于定义guideLine（RelativeContainer容器内的辅助线）的id、方向和位置。
+Guideline配置选项结构体，用于定义Guideline（RelativeContainer容器内的辅助线）的id、方向和位置。
 
 **起始版本：** 12
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**所在头文件：** [native_type.h](capi-native-type-h.md)
+**所在头文件：** [layout.h](capi-layout-h.md)
 

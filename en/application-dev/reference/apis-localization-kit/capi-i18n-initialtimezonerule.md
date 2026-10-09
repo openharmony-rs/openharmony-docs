@@ -27,5 +27,5 @@ Start time zone rule.
 
 | Name| Description|
 | -- | -- |
-| int32_t rawOffset | Original offset of the time zone.|
-| int32_t dstSavings | Offset of the daylight saving time.|
+| int32_t rawOffset | Raw offset of the time zone, in milliseconds.|
+| int32_t dstSavings | Daylight saving time offset, in milliseconds.|

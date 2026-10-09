@@ -6,29 +6,35 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=ee3aff3c192b61804c6eafd655527edff9eb980a translatedAt=2026-08-07T03:31:20.620Z pushedAt=2026-08-10T09:28:45.101Z -->
 
-From API version 22, the crypto algorithm library supports key derivation with X963KDF.
+Starting from API version 22, the algorithm library supports key derivation operations using this algorithm.
 
 For details about the corresponding algorithm specifications, see [X963KDF](crypto-key-derivation-overview.md#x963kdf).
 
 ## How to Develop
 
-1. Call [OH_CryptoKdfParams_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-kdf-h.md#oh_cryptokdfparams_create) and specify the string parameter **X963KDF** to create a key derivation parameter object.
+1. Call [OH_CryptoKdfParams_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-kdf-h.md#oh_cryptokdfparams_create) with the string parameter **X963KDF** to create a key derivation parameter object.
 
 2. Call [OH_CryptoKdfParams_SetParam](../../reference/apis-crypto-architecture-kit/capi-crypto-kdf-h.md#oh_cryptokdfparams_setparam) to set the parameters required by X963KDF. Example:
+
    - **CRYPTO_KDF_KEY_DATABLOB**: original key material used to generate a derived key.
+
    - **CRYPTO_KDF_INFO_DATABLOB**: (optional) application-specific information.
 
-3. Call [OH_CryptoKdf_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-kdf-h.md#oh_cryptokdf_create) and specify the string parameter **X963KDF|SHA256** to create a key derivation function object.
+3. Call [OH_CryptoKdf_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-kdf-h.md#oh_cryptokdf_create) with the string parameter **X963KDF|SHA256** to create a key derivation function object.
 
 4. Call [OH_CryptoKdf_Derive](../../reference/apis-crypto-architecture-kit/capi-crypto-kdf-h.md#oh_cryptokdf_derive) and specify the byte length of the target key.
 
-```C++
-#include "CryptoArchitectureKit/crypto_architecture_kit.h"
-#include <stdio.h>
-#include <string.h>
+<!-- @[x963kdf_test_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/X963KDFDerivation/entry/src/main/cpp/types/project/x963kdf_test.cpp) -->
 
-static OH_Crypto_ErrCode doTestX963Kdf()
+``` C++
+#include "CryptoArchitectureKit/crypto_architecture_kit.h"
+#include <cstdio>
+#include <cstring>
+#include "file.h"
+
+OH_Crypto_ErrCode doTestX963Kdf()
 {
     // Create a X963KDF parameter object.
     OH_CryptoKdfParams *params = nullptr;
@@ -48,7 +54,6 @@ static OH_Crypto_ErrCode doTestX963Kdf()
         OH_CryptoKdfParams_Destroy(params);
         return ret;
     }
-
 
     // Set application-specific information.
     const char *infoData = "infostring";

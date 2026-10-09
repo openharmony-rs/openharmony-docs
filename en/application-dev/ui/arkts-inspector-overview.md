@@ -1,16 +1,18 @@
 # Inspecting Page Layouts
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @pengzhiwen3-->
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=2127cc50993e6c62760e64970efb1d5e9c01f9c8 translatedAt=2026-08-01T00:27:53.615Z pushedAt=2026-08-01T05:56:49.342Z -->
 
 You can use the Inspector tool in DevEco Studio to inspect page layouts. Its bidirectional positioning feature enables quick component location, attribute modification, and component debugging, significantly improving development efficiency.
 
-ArkUI obtains comprehensive information about all components on the currently displayed page, including the component tree's parent-child hierarchy, size, position, styles, attributes, and states. After collecting this component tree data, the Inspector generates and displays it as a visual component tree. For details about how to use DevEco Studio, see [Inspector Debugging Capability](ui-inspector-profiler.md#inspector-debugging-capability).
+ArkUI obtains information about all components on the currently displayed page, including the parent-child structure, size, position, style, attributes, and state of the component tree. After the component tree information is obtained, it is generated and displayed as an inspector component tree. For details about using DevEco Studio, see [Inspector Debugging Capability](ui-inspector-profiler.md#inspector-debugging-capability).
 
-Inspector also provides C APIs for registering and unregistering listeners for UI component layout or drawing display events. For more details, see [Listening for Component Layout and Drawing Events](ndk-inspector-component-observer.md).
+Inspector also provides C APIs for registering and unregistering listeners for UI component layout or drawing display events. For more details, see [Adding an Event Listener](ndk-add-component-events.md).
 
 ## Constraints
 
@@ -22,7 +24,7 @@ Inspector also provides C APIs for registering and unregistering listeners for U
 
 ## Querying Component Tree and Component Information Using UIContext
 
-ArkUI provides the @ohos.arkui.UIContext (UIContext) extension capability. Use [getFilteredInspectorTree](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getfilteredinspectortree12) to obtain the component tree and component attributes, and [getFilteredInspectorTreeById](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getfilteredinspectortreebyid12) to obtain attributes of specified components and their child components. Querying with filter conditions is supported.
+ArkUI provides the @ohos.arkui.UIContext([UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)) extension capability. Use [getFilteredInspectorTree](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getfilteredinspectortree12) to obtain the component tree and component attributes, and [getFilteredInspectorTreeById](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getfilteredinspectortreebyid12) to obtain attributes of specified components and their child components. Querying with filter conditions is supported.
 
 The following example demonstrates the basic usage of **getFilteredInspectorTree** and **getFilteredInspectorTreeById**.
 
@@ -74,7 +76,7 @@ struct ComponentPage {
           hilog.info(0x0000,`result2: ${inspectorStr}`, 'result2');
           inspectorStr = uiContext.getFilteredInspectorTreeById('TEXT', 1, ['src']);
           inspectorStr = JSON.stringify(JSON.parse(inspectorStr)['$children'][0]);
-          hilog.info(0x0000,`result3: ${inspectorStr}`, 'result13');
+          hilog.info(0x0000,`result3: ${inspectorStr}`, 'result3');
         } catch (e) {
           hilog.error(0x0000, `getFilteredInspectorTreeById error: ${e}`, 'error');
         }
@@ -85,12 +87,11 @@ struct ComponentPage {
     .height('100%')
   }
 }
-
 ```
 
 ## Using Layout Callbacks
 
-The [@ohos.arkui.inspector (Layout Callback)](../reference/apis-arkui/js-apis-arkui-inspector.md) module provides APIs for registering the component layout and drawing completion callbacks.
+ArkUI provides the ability to register callbacks for component layout and drawing completion notifications via [@ohos.arkui.inspector (Layout Callback)](../reference/apis-arkui/js-apis-arkui-inspector.md).
 
 The following example demonstrates the basic usage of layout callbacks.
 
@@ -153,8 +154,11 @@ struct ImageExample {
 ## Using the Extended Capabilities for Component Identification Attributes
 
 The following APIs provide extended capabilities for component identification attributes:
+
 - [getInspectorByKey](../reference/apis-arkui/arkui-ts/ts-universal-attributes-component-id.md#getinspectorbykey9): obtains all attributes of the component with the specified ID.
+
 - [getInspectorTree](../reference/apis-arkui/arkui-ts/ts-universal-attributes-component-id.md#getinspectortree9): obtains the component tree with component attributes.
+
 - [sendEventByKey](../reference/apis-arkui/arkui-ts/ts-universal-attributes-component-id.md#sendeventbykey9): sends an event to the component with the specified ID.
 
 The following example demonstrates the basic usage of **getInspectorByKey**, **getInspectorTree**, and **sendEventByKey**.
@@ -162,6 +166,7 @@ The following example demonstrates the basic usage of **getInspectorByKey**, **g
 <!-- @[componentIdentifier_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/checkpage/entry/src/main/ets/pages/ComponentPage1.ets) --> 
 
 ``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
 @Entry
 @Component
 struct ComponentPage {
@@ -189,5 +194,4 @@ struct ComponentPage {
     .height('100%')
   }
 }
-
 ```

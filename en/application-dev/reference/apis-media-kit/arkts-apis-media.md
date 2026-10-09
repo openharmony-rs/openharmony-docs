@@ -1,10 +1,11 @@
 # Module Description
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @chenkun613227-->
+<!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @zzs911-->
+<!-- md-trans-meta sourceCommit=7cb32cf558e3c75482fc3404f1f7c011a4ecb00a translatedAt=2026-09-15T15:41:36.998Z pushedAt=2026-09-20T11:29:56.935Z -->
 
 The multimedia subsystem provides a set of simple and easy-to-use APIs for you to access the system and use media resources.
 
@@ -12,7 +13,7 @@ The multimedia subsystem provides a set of simple and easy-to-use APIs for you t
 >
 > The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
-This subsystem offers the following audio and video services:
+The media subsystem includes audio and video related media services and provides the following common functions:
 
 - Audio and video playback ([AVPlayer](arkts-apis-media-AVPlayer.md)<sup>9+</sup>)
 

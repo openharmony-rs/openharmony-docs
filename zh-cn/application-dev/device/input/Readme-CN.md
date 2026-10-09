@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 - [Input Kit简介](input-overview.md)
 - [输入设备开发指导](inputdevice-guidelines.md)
@@ -17,3 +17,4 @@
 - [系统预置全局快捷键开发指导（仅对系统应用开放）](shortkey-guidelines-sys.md)<!--DelEnd-->
 - [事件监听开发指导（C/C++）](monitor-guidelines.md)
 - [事件拦截开发指导（C/C++）](interceptor-guidelines.md)
+- [Input Kit术语](input-kit-glossary.md)

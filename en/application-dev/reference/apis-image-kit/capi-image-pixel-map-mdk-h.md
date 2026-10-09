@@ -8,7 +8,7 @@
 
 ## Overview
 
-The file declares the APIs used to lock, access, and unlock a PixelMap.
+The file declares the APIs used to lock, access, and unlock a PixelMap. You are advised to use [pixelmap_native.h](capi-pixelmap-native-h.md).
 
 **File to include**: <multimedia/image_framework/image_pixel_map_mdk.h>
 

@@ -4,10 +4,10 @@
 <!--Subsystem: Ability-->
 <!--Owner: @linjunjie6-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
-wantConstant模块提供want中操作want常数和解释Flags说明的能力。
+wantConstant模块提供Want常量的操作方法，并说明Flags标志位的含义。
 
 > **说明：**
 > 

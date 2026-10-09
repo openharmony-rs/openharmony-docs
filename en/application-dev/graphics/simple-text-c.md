@@ -1,7 +1,7 @@
 # Drawing and Displaying Simple Text (C/C++)
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @oh_wangxk; @gmiao522; @Lem0nC-->
+<!--Owner: @gmiao522-->
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
@@ -91,4 +91,4 @@ In a simple user interface, only a few lines of static text need to be displayed
 
 ## Effect
 
-![image_0000002211443916](figures/image_0000002211443916.png)
+![Simple-text-drawing](figures/Simple-text-drawing.png)

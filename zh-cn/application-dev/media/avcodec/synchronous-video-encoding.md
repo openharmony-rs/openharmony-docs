@@ -1,8 +1,8 @@
-# 视频编码同步模式
+# 同步模式视频编码
 
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zhanghongran-->
+<!--Owner: @rchdlee-->
 <!--Designer: @dpy2650--->
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
@@ -15,7 +15,7 @@
 
 当前支持的编码能力，请参考[AVCodec支持的格式](avcodec-support-formats.md#视频编码)。
 
-视频编码的限制约束、支持的能力、状态机调用关系请参考[视频编码](video-encoding.md)。
+视频编码的限制约束、支持的能力、状态机调用关系请参考[异步模式视频编码](video-encoding.md)。
 
 ## 适用场景
 
@@ -25,10 +25,6 @@
 ## 开发指导
 
 详细的API说明请参考[VideoEncoder](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md)。
-
-- 虚线表示可选。
-
-- 实线表示必选。
 
 ![Invoking relationship of video encode stream](figures/synchronous-video-encode.png)
 
@@ -65,7 +61,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    #include <shared_mutex>
    ```
    
-2. 全局变量（仅作参考，可以根据实际情况将其封装到对象中）。
+2. 定义全局变量（仅作示例，具体参数值，请据能力查询接口获取相应值范围来参考配置）。
 
    ```c++
    // 视频帧宽度。
@@ -86,7 +82,6 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    bool outputDone = false;
    // 编码输入。
    bool inputDone = false;
-   std::unique_ptr<std::ifstream> inFile_;
    ```
 
 ### Surface模式
@@ -149,7 +144,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
    示例中的变量说明如下：
 
-   nativeWindow：获取方式请参考[视频编码Surface模式](video-encoding.md#surface模式)的“步骤-6：设置surface”。
+   nativeWindow：获取方式请参考异步模式视频编码[Surface模式](video-encoding.md#surface模式)的“步骤-6：设置surface”。
 
    ```c++
    // 获取需要输入的surface，以进行编码。
@@ -173,7 +168,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 5. 调用OH_VideoEncoder_Start()启动编码器。
 
    ```c++
-   // 配置待编码文件路径。
+   // 配置待编码文件路径。可填写应用沙箱路径等可访问目录。
    std::string_view outputFilePath = "/*yourpath*.h264";
    std::unique_ptr<std::ofstream> outputFile = std::make_unique<std::ofstream>();
    if (outputFile != nullptr) {
@@ -427,7 +422,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     配置输入文件、输出文件。
 
     ```c++
-    // 配置待编码文件路径。
+    // 配置待编码文件路径。可填写应用沙箱路径等可访问目录。
     std::string_view inputFilePath = "/*yourpath*.yuv";
     std::string_view outputFilePath = "/*yourpath*.h264";
     std::unique_ptr<std::ifstream> inputFile = std::make_unique<std::ifstream>();
@@ -521,7 +516,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
                     // 异常处理。
                     return false;
                 }
-                if (inFile_->eof()) {
+                if (inputFile->eof()) {
                     inputDone = 1;
                 }
                 break;

@@ -31,7 +31,7 @@ Obtains the default slot of the SIM card used for mobile data. This API uses an 
 
 | Name  | Type                   | Mandatory| Description                                      |
 | -------- | ----------------------- | ---- | ------------------------------------------ |
-| callback | AsyncCallback\<number\> | Yes  | Callback used to return the result.<br>- **0**: card slot 1.<br>- **1**: card slot 2|
+| callback | AsyncCallback\<number\> | Yes  | Callback used to return the result.<br>- **0**: card slot 1.<br>- **1**: card slot 2<br>- **2**: slot ID of the mobile data in the eSIM and SkyTone scenarios.|
 
 **Example**
 
@@ -60,7 +60,7 @@ Obtains the default slot of the SIM card used for mobile data. This API uses a p
 
 | Type             | Description                                                        |
 | ----------------- | ------------------------------------------------------------ |
-| Promise\<number\> | Promise used to return the result.<br>- **0**: card slot 1.<br>- **1**: card slot 2|
+| Promise\<number\> | Promise used to return the result.<br>- **0**: card slot 1.<br>- **1**: card slot 2<br>- **2**: slot ID of the mobile data in the eSIM and SkyTone scenarios.|
 
 **Example**
 
@@ -79,7 +79,7 @@ data.getDefaultCellularDataSlotId().then((contextData: number) => {
 
 getDefaultCellularDataSlotIdSync(): number
 
-Card slot ID.
+Obtains the default SIM card used for mobile data synchronously.
 
 **System capability**: SystemCapability.Telephony.CellularData
 
@@ -87,7 +87,7 @@ Card slot ID.
 
 | Type             | Description                                                        |
 | ------ | -------------------------------------------------- |
-| number | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2|
+| number | Card slot ID.<br>- **0**: card slot 1.<br>- **1**: card slot 2<br>- **2**: slot ID of the mobile data in the eSIM and SkyTone scenarios.|
 
 **Example**
 
@@ -102,7 +102,7 @@ console.info("Result: "+ data.getDefaultCellularDataSlotIdSync())
 
 getCellularDataFlowType(callback: AsyncCallback\<DataFlowType\>): void
 
-Obtains the cellular data flow type, which can be uplink or downlink. This API uses an asynchronous callback to return the result.
+Obtains the data flow type of the cellular network (corresponding to the uplink and downlink arrows next to the signal bar). This API uses an asynchronous callback to return the result.
 
 **Required permission**: ohos.permission.GET_NETWORK_INFO
 
@@ -141,7 +141,7 @@ data.getCellularDataFlowType((err: BusinessError, contextData: data.DataFlowType
 
 getCellularDataFlowType(): Promise\<DataFlowType\>
 
-Obtains the cellular data flow type, which can be uplink or downlink. This API uses a promise to return the result.
+Obtains the data flow type of the cellular network (corresponding to the uplink and downlink arrows next to the signal bar). This API uses a promise to return the result.
 
 **Required permission**: ohos.permission.GET_NETWORK_INFO
 
@@ -151,7 +151,7 @@ Obtains the cellular data flow type, which can be uplink or downlink. This API u
 
 | Type                                    | Description                                           |
 | ---------------------------------------- | ----------------------------------------------- |
-| Promise\<[DataFlowType](#dataflowtype)\> | Promise used to return the result. |
+| Promise\<[DataFlowType](#dataflowtype)\> | Promise used to return the data flow type of the cellular network (corresponding to the uplink and downlink arrows next to the signal bar).|
 
 **Error codes**
 
@@ -531,7 +531,7 @@ Obtains the default ID of the SIM card used for mobile data.
 
 | Type             | Description                                                        |
 | ------ | -------------------------------------------------- |
-| number | Obtains the default ID of the SIM card used for mobile data.<br>The return value is bound to the SIM card and increases from 1.|
+| number | Obtains the default ID of the SIM card used for mobile data.<br>The return value is bound to the SIM card and increases from 1.<br>- **0**: no SIM card.<br>- **9999**: ID of the SIM card used for mobile data in the eSIM scenario.<br>- **99999**: ID of the SIM card used for mobile data in the SkyTone scenario. The default value is **99999**.|
 
 **Example**
 
@@ -547,7 +547,7 @@ queryAllApns(): Promise\<Array\<ApnInfo\>\>
 
 Obtains the access point name (APN) of the default SIM card used for mobile data. This API returns the result asynchronously.
 
-**Required permissions**: ohos.permission.MANAGE_APN_SETTING (Restricted permission used only to connect to the mobile data private network for office tasks. For details, see [Restricted Permissions](../../security/AccessToken/restricted-permissions.md#ohospermissionmanage_apn_setting).)
+**Required permissions**: **ohos.permission.MANAGE_APN_SETTING** (Restricted permission used only when you need to connect to the mobile data private network for office tasks. For details, see [Restricted Permissions](../../security/AccessToken/restricted-permissions.md#ohospermissionmanage_apn_setting).)
 
 **System capability**: SystemCapability.Telephony.CellularData
 

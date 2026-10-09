@@ -4,14 +4,14 @@
 <!--Owner: @qkfg-->
 <!--Designer: @qkfg-->
 <!--Tester: @caixincen-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @chen8281-->
 ## 功能介绍
 
 wukong是系统自带的一种命令行工具，支持Ability的随机事件注入、控件注入、异常捕获、报告生成和对Ability数据遍历截图等特性。通过模拟用户行为，对系统或应用进行稳定性压力测试。wukong分为随机测试、专项测试和专注测试。
 
 随机测试是指随机测试界面内容，支持的能力包括：shell启动、拉起整机应用、多种注入方式、设置随机种子、打印运行日志和生成报告。
 
-专项测试主要提供对指定应用控件进行测试，支持的能力包括：shell启动、顺序遍历及截图、测试休眠睡醒、录制回放、打印运行日志和生成报告。
+专项测试主要提供对指定应用控件进行测试，支持的能力包括：shell启动、顺序遍历及截图、测试休眠唤醒、录制回放、打印运行日志和生成报告。
 
 专注测试主要提供对指定控件的注入测试，支持的能力包括：shell启动、拉起整机应用、多种注入方式、设置随机种子、设置专注控件类型、设置注入控件次数、打印运行日志和生成报告。
 
@@ -148,7 +148,7 @@ wukong部件架构图以及部件内子模块职责如下所述。
     -k, --spec_insomnia        power on/off event
     -T, --time                 total time of test
     -C, --component            component event
-    -p, --screenshot           get screenshot(only in componment input)
+    -p, --screenshot           get screenshot(only in component input)
     -r, --record               record user operation
     -R, --replay               replay user operation
     -u, --uitest               uitest dumpLayout
@@ -196,11 +196,11 @@ wukong部件架构图以及部件内子模块职责如下所述。
 | -F, --float      | 设置应用分屏模式和悬浮窗模式的测试比例。 | 否 | 取值范围0到1，默认值为0。|
 | -W, --browser    | 设置浏览器操作测试比例。     | 否 | 取值范围0到1，默认值为0。|
 
-  >  **说明** 
-  >
-  > 上述参数的测试比例表示在当前测试中的操作，所有参数的测试比例之和需小于等于1。
-  >
-  > -K，-f，-P，-D，-o，-w，-g，-l，-j，-F，-W参数从API version 23开始支持。
+> **说明** 
+>
+> - 上述参数的测试比例表示在当前测试中的操作，所有参数的测试比例之和需小于等于1。
+>
+> - -K，-f，-P，-D，-o，-w，-g，-l，-j，-F，-W参数从API version 23开始支持。
 
 ### 使用示例
 
@@ -223,7 +223,7 @@ wukong部件架构图以及部件内子模块职责如下所述。
 - 指定页面压测
 
   ```bash
-  > 显示启动
+  > 显式启动
   > hdc_std shell
   $ wukong exec -b bundlename -e abilityname -U uri
 
@@ -351,6 +351,52 @@ C:\Users\xxx>hdc file recv /data/local/tmp/wukong/report/20170805_170053/wukong.
 [I][2024-01-03 20:08:02] HdcFile::TransferSummary success
 FileTransfer finish, Size:76492, File count = 1, time:16ms rate:4780.75kB/s
 ```
+
+### 测试报告解析
+
+包含基本信息、事件注入统计、Ability统计、故障统计。
+
+1. 基本信息（Base Info）
+
+    | 字段                      | 描述              |
+    | ------------------------ | ------------------|
+    | task status              | 任务状态。success表示成功，fail表示失败。|
+    | task time                | 任务执行时间。单位：秒。|
+    | seed                     | 随机种子。|
+    | task count               | 事件注入总次数。|
+
+2. 故障注入统计（Input Message Statistics）
+
+    | 类型                            | 描述                               |
+    | -------------------------------| ---------------------------------- |
+    | type                           | 事件或控件注入的类型，事件注入类型范围请参考[随机测试命令参数](#随机测试)，控件注入类型范围包括ArkUI（方舟UI框架）下的ArkTS组件和ArkWeb（方舟Web）下的ArkTS组件。|
+    | execTimes                      | 事件或者控件注入执行次数。|
+    | proportion                     | 当前事件操作在事件注入执行总次数里的占比。|
+    | inputedTimes                   | 遍历的控件类型个数。|
+    | expectInputTimes               | 应用控件类型总数。|
+    | coverage                       | 控件遍历覆盖率。|
+
+3. Ability统计（ability Statistics）
+
+    | 字段                     | 描述               |
+    | -----------------       | ------------------ |
+    | bundleName              | 应用的bundleName。|
+    | inputedAbilityCount     | 遍历的Ability数量。|
+    | abilitiesCount          | 应用的Ability总数。|
+    | coverage                | Ability遍历覆盖率。|
+
+4. 故障统计（Exception Message Statistics）
+
+    > **说明**
+    >
+    > 故障日志路径：/data/log/faultlog/faultlogger/
+
+    | 字段               | 描述               |
+    | ----------------- | ------------------ |
+    | type              | 故障类型，故障类型包含：CPP_CRASH、JS_CRASH、SYS_FREEZE、APP_FREEZE等。|
+    | times             | 故障次数。 |
+    | proportion        | 当前故障在故障总数里的占比。|
+
 
 ## 常见问题
 ### failed to connect to AAMS

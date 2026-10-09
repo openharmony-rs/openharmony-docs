@@ -3,11 +3,12 @@
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @enjoy_sunshine-->
-<!--Designer: @chengguohong; @tangjia15-->
+<!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
-本模块提供基于人机接口协议（Human Interface Device Profile，[HID](../../connectivity/terminology.md#hid)）技术的蓝牙人机交互能力，支持获取连接状态等方法。
+本模块提供基于人机接口协议（Human Interface Device Profile，[HID](../../connectivity/bluetooth/terminology.md#hid)）技术的蓝牙人机交互能力，支持获取连接状态等方法。
+
 当本端设备被注册为HID设备的角色时，可以使用[HidDeviceProfile](#hiddeviceprofile23)相关接口，且仅支持与传统蓝牙类型设备连接和交互。
 
 > **说明：**
@@ -50,7 +51,7 @@ type BluetoothAddress = common.BluetoothAddress
 
 createHidHostProfile(): HidHostProfile
 
-创建蓝牙[HID Host](../../connectivity/terminology.md#hid-host)实例。通过该实例可使用本端作为HID Host的接口，如：获取和其他设备间的蓝牙HID连接状态。
+创建蓝牙[HID Host](../../connectivity/bluetooth/terminology.md#hid-host)实例。通过该实例可使用本端作为HID Host的接口，如：获取和其他设备间的蓝牙HID连接状态。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -58,7 +59,7 @@ createHidHostProfile(): HidHostProfile
 
 | 类型                            | 说明         |
 | ----------------------------- | ---------- |
-| HidHostProfile | 返回HID Host实例。<br>- 该类继承于[BaseProfile](#baseprofile)，因此可以使用其父类中的方法。<br>- 和该实例角色相对应的是[HID Device](../../connectivity/terminology.md#hid-device)角色。 |
+| HidHostProfile | 返回HID Host实例。<br>- 该类继承于[BaseProfile](#baseprofile)，因此可以使用其父类中的方法。<br>- 和该实例角色相对应的是[HID Device](../../connectivity/bluetooth/terminology.md#hid-device)角色。 |
 
 **错误码**：
 
@@ -84,7 +85,7 @@ try {
 
 createHidDeviceProfile(): HidDeviceProfile
 
-创建蓝牙[HID Device](../../connectivity/terminology.md#hid-device)实例。通过该实例可使用本端作为HID Device的接口，如：获取和其他设备间的蓝牙HID连接状态。
+创建蓝牙[HID Device](../../connectivity/bluetooth/terminology.md#hid-device)实例。通过该实例可使用本端作为HID Device的接口，如：获取和其他设备间的蓝牙HID连接状态。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -94,7 +95,7 @@ createHidDeviceProfile(): HidDeviceProfile
 
 | 类型                            | 说明         |
 | ----------------------------- | ---------- |
-| [HidDeviceProfile](#hiddeviceprofile23) | 返回HID Device实例。<br>- 该类继承于[BaseProfile](#baseprofile)，因此可以使用其父类中的方法。<br>- 和该实例角色相对应的是[HID Host](../../connectivity/terminology.md#hid-host)角色。 |
+| [HidDeviceProfile](#hiddeviceprofile23) | 返回HID Device实例。<br>- 该类继承于[BaseProfile](#baseprofile)，因此可以使用其父类中的方法。<br>- 和该实例角色相对应的是[HID Host](../../connectivity/bluetooth/terminology.md#hid-host)角色。 |
 
 **错误码**：
 
@@ -117,18 +118,18 @@ try {
 
 ## HidDeviceProfile<sup>23+</sup>
 
-该实例表示蓝牙HID通信中的[HID Device](../../connectivity/terminology.md#hid-device)角色。
+该实例表示蓝牙HID通信中的[HID Device](../../connectivity/bluetooth/terminology.md#hid-device)角色。
 - 该类继承于[BaseProfile](#baseprofile)，因此可以使用其父类中的方法。
 - 使用该类的方法前，需通过[createHidDeviceProfile](#hidcreatehiddeviceprofile23)方法构造该类的实例。
-- 通过该实例可以操作设备端的行为，如注册HID设备([registerHidDevice](#registerhiddevice23))，发送报告([sendReport](#sendreport23))等。
-- 和该实例角色相对应的是[HID Host](../../connectivity/terminology.md#hid-host)。
+- 通过该实例可以操作设备端的行为，如注册HID设备（[registerHidDevice](#registerhiddevice23)），发送报告（[sendReport](#sendreport23)）等。
+- 和该实例角色相对应的是[HID Host](../../connectivity/bluetooth/terminology.md#hid-host)。
 
 
 ### registerHidDevice<sup>23+</sup>
 
 registerHidDevice(sdp: HidDeviceSdp, inQos: HidDeviceQos, outQos: HidDeviceQos, callback: Callback&lt;boolean&gt;): void
 
-应用注册HID设备能力，以便与HID主机(如电脑、手机)进行通信。使用callback异步回调。
+应用注册HID设备能力，以便与HID主机（如电脑、手机）进行通信。使用callback异步回调。
 - 当应用调用该接口并注册成功后，可以通过调用[connect](#connect23)接口连接HID主机。
 - 同一时间仅允许一个应用成功注册HID设备能力，同一应用重复注册将失败，注册成功后其他应用注册也将失败。
 - 当应用不再需要HID设备能力时，需要主动调用[unregisterHidDevice](#unregisterhiddevice23)接口解除注册HID设备能力。
@@ -171,17 +172,17 @@ let descriptors: Uint8Array = new Uint8Array([
     0x05, 0x01,        // 指定设备类别为通用桌面控制
     0x09, 0x06,        // 具体设备为键盘
     0xA1, 0x01,        // 应用集合开始
-    
+
     // 按键字段定义
-    0x05, 0x07,        //   切换到键盘/键区
-    0x19, 0x00,        //   定义最小按键码为0（无按键）
-    0x29, 0x01,        //   定义最大按键码为1（只支持2个值）
-    0x15, 0x00,        //   逻辑最小值0（数据范围下限）
-    0x25, 0x01,        //   逻辑最大值1（数据范围上限）
-    0x75, 0x08,        //   每个字段八位
-    0x95, 0x01,        //   只有一个字段
-    0x81, 0x00,        //   输入字段，类型为数据数据组
-    
+    0x05, 0x07,        // 切换到键盘/键区
+    0x19, 0x00,        // 定义最小按键码为0（无按键）
+    0x29, 0x01,        // 定义最大按键码为1（只支持2个值）
+    0x15, 0x00,        // 逻辑最小值0（数据范围下限）
+    0x25, 0x01,        // 逻辑最大值1（数据范围上限）
+    0x75, 0x08,        // 每个字段八位
+    0x95, 0x01,        // 只有一个字段
+    0x81, 0x00,        // 定义输入字段：数据字段，值为按键数组
+
     // 结束设备定义
     0xC0               // 应用集合结束
 ]);
@@ -257,7 +258,7 @@ connect(deviceId: BluetoothAddress): void
 
 - 调用该接口前需要先调用[registerHidDevice](#registerhiddevice23)完成HID设备能力注册。
 - 可通过订阅[on('connectionStateChange')](js-apis-bluetooth-baseProfile.md#baseprofileonconnectionstatechange)事件来感知连接是否成功。
-- 当不需要连接时需调用[disconnect](#disconnect23)断开连接。
+- 当不需要连接时需调用[disconnect](#disconnect23)断开连接。此外，调用[unregisterHidDevice](#unregisterhiddevice23)解除注册也会断开已有的HID主机连接。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -400,7 +401,7 @@ replyReport(type: ReportType, id: number, reportData: Uint8Array): void
 
 | 参数名   | 类型                            | 必填| 说明       |
 | ------- | ---------------------------     |-----| --------- |
-| type | [ReportType](#reporttype23) | 是    | 回复的报告类型。 |
+| type | [ReportType](#reporttype23) | 是    | 回复的报告类型，应与[onGetReport](#ongetreport23)回调中收到的type保持一致。 |
 | id | number | 是    | 对应HID设备注册时通过[HidDeviceSdp](#hiddevicesdp23)提供的描述符中定义的报告ID，用于标识报告类型，对于不带ID的简单设备，此参数应设置为0。对于定义了多个报告ID的设备，此处应传入对应的ID值，该ID值必须与描述符中定义的值保持一致。 |
 | reportData | Uint8Array | 是    | 报告数据。其内容长度和解析方式必须严格匹配描述符中为该报告ID定义的格式。 |
 
@@ -435,7 +436,7 @@ try {
 
 reportError(error: ErrorReason): void
 
-向已连接的HID主机报告特定的错误类型。
+向已连接的HID主机报告特定的错误类型。常用于在收到[onGetReport](#ongetreport23)或[onSetReport](#onsetreport23)回调后，当数据不符合预期时进行错误回复。
 
 - 调用该接口前必须已调用[registerHidDevice](#registerhiddevice23)完成注册，并通过[connect](#connect23)建立与HID主机的连接。
 
@@ -480,7 +481,7 @@ try {
 
 onGetReport(callback: Callback&lt;GetReportData&gt;): void
 
-订阅HID主机向HID设备发送的[GET_REPORT](../../connectivity/terminology.md#hid)传输请求事件，使用callback异步回调。收到回调后可以通过调用接口[replyReport](#replyreport23)进行回复。当收到的数据不符合预期时，可以通过调用接口[reportError](#reporterror23)进行回复。
+订阅HID主机向HID设备发送的[GET_REPORT](../../connectivity/bluetooth/terminology.md#hid)传输请求事件，使用callback异步回调。收到回调后可以通过调用接口[replyReport](#replyreport23)进行回复。当收到的数据不符合预期时，可以通过调用接口[reportError](#reporterror23)进行回复。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -521,7 +522,7 @@ try {
 
 offGetReport(callback?: Callback&lt;GetReportData&gt;): void
 
-取消订阅主机向HID设备发出的[GET_REPORT](../../connectivity/terminology.md#hid)传输请求事件的回调。使用callback异步回调。
+取消订阅主机向HID设备发出的[GET_REPORT](../../connectivity/bluetooth/terminology.md#hid)传输请求事件的回调。使用callback异步回调。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -563,7 +564,7 @@ try {
 
 onSetReport(callback: Callback&lt;SetReportData&gt;): void
 
-订阅HID主机向HID设备发送的[SET_REPORT](../../connectivity/terminology.md#hid)传输请求事件，使用callback异步回调。当收到的数据不符合预期时，可以通过调用接口[reportError](#reporterror23)进行回复。
+订阅HID主机向HID设备发送的[SET_REPORT](../../connectivity/bluetooth/terminology.md#hid)传输请求事件，使用callback异步回调。当收到的数据不符合预期时，可以通过调用接口[reportError](#reporterror23)进行回复。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -604,7 +605,7 @@ try {
 
 offSetReport(callback?: Callback&lt;SetReportData&gt;): void
 
-取消订阅主机向HID设备发出的SET_REPORT传输请求事件的回调。使用callback异步回调。
+取消订阅主机向HID设备发出的[SET_REPORT](../../connectivity/bluetooth/terminology.md#hid)传输请求事件的回调。使用callback异步回调。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -646,7 +647,7 @@ try {
 
 onInterruptDataReceived(callback: Callback&lt;InterruptData&gt;): void
 
-订阅HID主机通过中断传输通道发送数据的事件的回调，使用callback异步回调。
+订阅HID主机通过中断传输通道发送数据的事件的回调，使用callback异步回调。收到中断数据后，应用可根据报告ID解析并处理相应数据，例如处理主机下发的输出报告（如键盘LED状态指示等）。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -728,7 +729,7 @@ try {
 
 onSetProtocol(callback: Callback&lt;ProtocolData&gt;): void
 
-订阅HID主机向HID设备发送的[SET_PROTOCOL](../../connectivity/terminology.md#hid)请求事件，使用callback异步回调。
+订阅HID主机向HID设备发送的[SET_PROTOCOL](../../connectivity/bluetooth/terminology.md#hid)请求事件，使用callback异步回调。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -769,7 +770,7 @@ try {
 
 offSetProtocol(callback?: Callback&lt;ProtocolData&gt;): void
 
-取消订阅主机向HID设备发送的[SET_PROTOCOL](../../connectivity/terminology.md#hid)请求事件的回调。使用callback异步回调。
+取消订阅主机向HID设备发送的[SET_PROTOCOL](../../connectivity/bluetooth/terminology.md#hid)请求事件的回调。使用callback异步回调。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
@@ -891,7 +892,7 @@ try {
 
 ## HidDeviceSdp<sup>23+</sup>
 
-描述HID设备在服务发现协议([SDP](../../connectivity/terminology.md#sdp))中的服务注册配置。该结构定义了HID设备的身份标识、能力描述和协议特征，是HID主机发现、识别和连接HID设备的关键参数。
+描述HID设备在服务发现协议（[SDP](../../connectivity/bluetooth/terminology.md#sdp)）中的服务注册配置。该结构定义了HID设备的身份标识、能力描述和协议特征，是HID主机发现、识别和连接HID设备的关键参数。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -903,11 +904,11 @@ try {
 | description  | string | 否 | 否 | HID设备的描述信息，要求长度范围：[1, 50]，单位：Byte。  |
 | provider  | string | 否 | 否 | 描述HID设备的制造商信息，要求长度范围：[1, 50]，单位：Byte。  |
 | subclass  | [Subclass](#subclass23) | 否 | 否 | 表示HID设备具体类型。  |
-| descriptors  | Uint8Array | 否 | 否 | 标识与蓝牙HID设备功能定义描述符。描述符会为每个支持的报告分配一个唯一的ID， 并详细定义该ID下报告的长度、结构与各字段含义。填写时需要遵循[USB HID](https://www.usb.org/hid)规范。  |
+| descriptors  | Uint8Array | 否 | 否 | 用于标识蓝牙HID设备功能定义的描述符。描述符会为每个支持的报告分配一个唯一的ID， 并详细定义该ID下报告的长度、结构与各字段含义。填写时需要遵循[USB HID](https://www.usb.org/hid)规范。  |
 
 ## HidDeviceQos<sup>23+</sup>
 
-描述HID设备服务质量(Qos)参数。该结构定义了HID数据传输通道的流量控制、延迟保证和可靠性策略，用于优化蓝牙传输性能，确保设备的实时响应性。
+描述HID设备服务质量（Qos）参数。该结构定义了HID数据传输通道的流量控制、延迟保证和可靠性策略，用于优化蓝牙传输性能，确保设备的实时响应性。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -917,14 +918,14 @@ try {
 | --------- | ----------------------- | ---- | ---- | ------------------------------ |
 | serviceType  |  [ServiceType](#servicetype23)   | 否 | 是 | 服务类型，默认为SERVICE_BEST_EFFORT。    |
 | tokenRate  | number | 否 | 是 | 单位时间内允许传输的平均数据量，单位为Byte/s，默认为0，表示没有平均数据量限制。  |
-| tokenBucketSize  | number | 否 | 是 | 允许短时间内超过tokenRate的最大数据量，默认为0，表示没有最大数据量限制。  |
-| peakBandwidth  | number | 否 | 是 | 最大传输速率限制，单位为Byte/s，默认为0，表示没有传输速率限制。  |
+| tokenBucketSize  | number | 否 | 是 | 允许短时间内超过tokenRate的最大数据量，单位为Byte，默认为0，表示没有最大数据量限制。  |
+| peakBandwidth  | number | 否 | 是 | 最大传输速率限制，单位为Byte/s。默认为0，表示没有传输速率限制。  |
 | latency  | number | 否 | 是 | 最大允许延迟时间，单位为μs，默认为-1，表示没有延迟限制。  |
 | delayVariation  | number | 否 | 是 | 允许的延迟波动范围，单位为μs，默认为-1，表示没有延迟波动范围限制。  |
 
 ## GetReportData<sup>23+</sup>
 
-描述HID主机向HID设备发送的[GET_REPORT](../../connectivity/terminology.md#hid)传输请求事件的信息。
+描述HID主机向HID设备发送的[GET_REPORT](../../connectivity/bluetooth/terminology.md#hid)传输请求事件的信息。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -938,7 +939,7 @@ try {
 
 ## SetReportData<sup>23+</sup>
 
-描述HID主机向HID设备发送的[SET_REPORT](../../connectivity/terminology.md#hid)传输请求事件的信息。
+描述HID主机向HID设备发送的[SET_REPORT](../../connectivity/bluetooth/terminology.md#hid)传输请求事件的信息。
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -1007,7 +1008,7 @@ try {
 | 名称                | 值| 说明                    |
 | --------------------| --| -----------------------|
 | REPORT_TYPE_INPUT   | 1 | 输入报告，表示由本端向HID主机发送的数据。|
-| REPORT_TYPE_OUTPUT  | 2 | 输出报告，表示HID这几向本端发送的数据。  |
+| REPORT_TYPE_OUTPUT  | 2 | 输出报告，表示HID主机向本端发送的数据。  |
 | REPORT_TYPE_FEATURE | 3 | 特征报告，表示双向传输的配置数据。       |
 
 ## ServiceType<sup>23+</sup>
@@ -1039,7 +1040,7 @@ try {
 | RSP_NOT_READY          | 1 | 设备未准备好处理请求。建议主机稍后重试。  |
 | RSP_INVALID_REPORT_ID  | 2 | 无效的报告ID。建议主机确认当前支持的ID列表，并使用正确的ID重发消息。         |
 | RSP_UNSUPPORTED_REQ    | 3 | 当前请求不支持，建议主机检查当前请求类型或报告类型是否在当前协议模式下被本端支持。       |
-| RSP_INVALID_PARAM      | 4 | 无效参数。建议主机检查请求中的参数是否超出本端s声明的范围或不符合报告描述符的定义。             |
+| RSP_INVALID_PARAM      | 4 | 无效参数。建议主机检查请求中的参数是否超出本端声明的范围或不符合报告描述符的定义。             |
 | RSP_UNKNOWN            |14 | 未知错误原因。建议主机记录错误上下文并重试。         |
 
 ## ProtocolType<sup>23+</sup>

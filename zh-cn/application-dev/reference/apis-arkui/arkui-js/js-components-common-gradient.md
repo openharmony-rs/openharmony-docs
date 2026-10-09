@@ -1,18 +1,18 @@
 # 渐变样式
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
 >  **说明：**
 >  从API version 4开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
-组件普遍支持在style或css中设置可以平稳过渡两个或多个指定的颜色。
+组件普遍支持在style或css中设置可以平滑过渡两个或多个指定的颜色。
 
 
-开发框架支持线性渐变 (linear-gradient)和重复线性渐变 (repeating-linear-gradient)两种渐变效果。
+开发框架支持线性渐变（linear-gradient）和重复线性渐变（repeating-linear-gradient）两种渐变效果。
 
 
 ## 线性渐变/重复线性渐变
@@ -23,9 +23,9 @@
 ### 过渡方向
 
 通过direction或者angle指定过渡方向。
-- direction：进行方向渐变。
+- direction：指定方向进行渐变。
 
-- angle：进行角度渐变。
+- angle：指定角度进行渐变。
 
 ```js
 // xxx.js
@@ -43,7 +43,7 @@ background: repeating-linear-gradient(direction/angle, color, color, ...);
 | 名称        | 类型                                       | 默认值                          | 必填   | 描述                                       |
 | --------- | ---------------------------------------- | ---------------------------- | ---- | ---------------------------------------- |
 | direction | to&nbsp;&lt;side-or-corner&gt;&nbsp;&nbsp;&lt;side-or-corner&gt;&nbsp;=&nbsp;[left&nbsp;\|&nbsp;right]&nbsp;\|&nbsp;[top&nbsp;\|&nbsp;bottom] | to&nbsp;bottom&nbsp;(由上到下渐变) | 否    | 指定过渡方向，如：to&nbsp;left&nbsp;(从右向左渐变)&nbsp;&nbsp;；或者<br/>to&nbsp;bottom&nbsp;right&nbsp;(从左上角到右下角)。 |
-| angle     | &lt;deg&gt;                              | 180deg                       | 否    | 指定过渡方向，以元素几何中心为坐标原点，水平方向为X轴，angle指定了渐变线与Y轴的夹角(顺时针方向)。 |
+| angle     | &lt;deg&gt;                              | 180deg                       | 否    | 指定过渡方向，以元素几何中心为坐标原点，水平方向为X轴，angle指定了渐变线与Y轴的夹角（顺时针方向）。 |
 | color     | &lt;color&gt;&nbsp;[&lt;length&gt;\|&lt;percentage&gt;] | -                            | 是    | 定义使用渐变样式区域内颜色的渐变效果。                      |
 
 **示例：** 
@@ -59,7 +59,7 @@ background: repeating-linear-gradient(direction/angle, color, color, ...);
    ```
 
    
-   ![zh-cn_image_0000001190934502](figures/zh-cn_image_0000001190934502.png)
+   ![Transition-Color01](figures/Transition-Color01.png)
 
 2. 45度夹角渐变。
 
@@ -70,7 +70,7 @@ background: repeating-linear-gradient(direction/angle, color, color, ...);
 
    
 
-   ![zh-cn_image_0000001189854534](figures/zh-cn_image_0000001189854534.png)
+   ![Transition-Color](figures/Transition-Color.png)
 
 3. 设置方向从左向右渐变。
 
@@ -79,7 +79,7 @@ background: repeating-linear-gradient(direction/angle, color, color, ...);
    background: linear-gradient(to right, rgb(255,0,0) 90px, rgb(0, 255, 0) 60%);
    ```
 
-   ![zh-cn_image_0000001236694521](figures/zh-cn_image_0000001236694521.png)
+   ![linearGradientHorizontal](figures/linearGradientHorizontal.png)
 
 4. 重复渐变。
 
@@ -88,4 +88,4 @@ background: repeating-linear-gradient(direction/angle, color, color, ...);
    background: repeating-linear-gradient(to right, rgba(255, 255, 0, 1) 30px,rgba(0, 0, 255, .5) 60px);
    ```
 
-   ![zh-cn_image_0000001237134475](figures/zh-cn_image_0000001237134475.png)
+   ![gradient](figures/gradient.png)

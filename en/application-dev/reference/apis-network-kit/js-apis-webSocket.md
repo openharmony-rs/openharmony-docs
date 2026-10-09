@@ -1,4 +1,4 @@
-# # @ohos.net.webSocket (WebSocket Connection)
+# @ohos.net.webSocket (WebSocket Connection)
 
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
@@ -6,6 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=108aa11c2ceb50c68f8417aa3c60f1dcb55dabdd translatedAt=2026-09-23T02:46:14.007Z pushedAt=2026-09-24T06:00:14.230Z -->
 
 Provides WebSocket clients and servers for third-party applications to implement bidirectional connections between the client and server.
 
@@ -55,11 +56,10 @@ Defines a **WebSocket** object. Before invoking WebSocket APIs, you need to call
 
 connect(url: string, callback: AsyncCallback\<boolean\>): void
 
-Initiates a WebSocket request to establish a WebSocket connection to a given URL. This API uses an asynchronous callback to return the result.
+Establishes a WebSocket connection based on the URL. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
-> You can listen to **error** events to obtain the operation result. 
 >
 >The boolean value returned in the callback indicates only whether the connection request is created successfully. To detect whether the WebSocket connection is successful, you need to subscribe to the **open** event via [on('open')](#onopen) before calling this API.
 
@@ -71,14 +71,14 @@ Initiates a WebSocket request to establish a WebSocket connection to a given URL
 
 >**NOTE**
 >
->The URL cannot contain more than 1024 characters. Otherwise, the connection fails. Since API version 15, the maximum length of URLs is changed from 1024 characters to 2048 characters.
+>The URL cannot contain more than 1024 characters. Otherwise, the connection fails. Since API version 15, the maximum length of URLs is changed from 1024 characters to 2048 characters. Since API version 26, the maximum length of URLs is changed from 2048 characters to 8196 characters.
 
 **Parameters**
 
 | Name  | Type                    | Mandatory| Description                        |
 | -------- | ------------------------ | ---- | ---------------------------- |
 | url      | string                   | Yes  | URL for establishing a WebSocket connection.|
-| callback | AsyncCallback\<boolean\> | Yes  | Callback used to return the result. The value **true** indicates that the operation is successful, and the value **false** indicates the opposite.                  |
+| callback | AsyncCallback\<boolean\> | Yes | Callback function. The value **true** indicates that the connection request is created successfully, and the value **false** indicates that the connection request fails to be created. |
 
 **Error codes**
 
@@ -88,11 +88,11 @@ For details about the error codes, see [webSocket Error Codes](errorcode-net-web
 | --------------------- | ------------------------------------------ |
 | 401                   | Parameter error.                           |
 | 201                   | Permission denied.                         |
-| 2302001               | Websocket url error.                       |
-| 2302002               | Websocket certificate file does not exist. |
-| 2302003               | Websocket connection already exists.       |
-| 2302998               | It is not allowed to access this domain.   |
-| 2302999               | Internal error.             |
+| 2302001               | Websocket url error. <br>Applicable versions: 12+                       |
+| 2302002               | Websocket certificate file does not exist. <br>Applicable versions: 12+ |
+| 2302003               | Websocket connection already exists. <br>Applicable versions: 12+       |
+| 2302998               | It is not allowed to access this domain. <br>Applicable versions: 12+   |
+| 2302999               | Websocket other unknown error. <br>Applicable versions: 10+             |
 
 
 **Example**
@@ -116,11 +116,9 @@ ws.connect(url, (err: BusinessError, value: boolean) => {
 
 connect(url: string, options: WebSocketRequestOptions, callback: AsyncCallback\<boolean\>): void
 
-Initiates a WebSocket request to establish a WebSocket connection to a given URL. This API uses an asynchronous callback to return the result.
+Establishes a WebSocket connection based on the URL. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
-> You can listen to **error** events to obtain the operation result. If an error occurs, the error code 200 will be returned.
 >
 >The boolean value returned in the callback indicates only whether the connection request is created successfully. To detect whether the WebSocket connection is successful, you need to subscribe to the **open** event via [on('open')](#onopen) before calling this API.
 
@@ -132,7 +130,7 @@ Initiates a WebSocket request to establish a WebSocket connection to a given URL
 
 >**NOTE**
 >
->The URL cannot contain more than 1024 characters. Otherwise, the connection fails.
+>The URL cannot contain more than 1024 characters. Otherwise, the connection fails. Since API version 15, the maximum length of URLs is changed from 1024 characters to 2048 characters. Since API version 26, the maximum length of URLs is changed from 2048 characters to 8196 characters.
 
 **Parameters**
 
@@ -140,7 +138,7 @@ Initiates a WebSocket request to establish a WebSocket connection to a given URL
 | -------- | ------------------------ | ---- | ------------------------------------------------------- |
 | url      | string                   | Yes  | URL for establishing a WebSocket connection.                           |
 | options  | WebSocketRequestOptions  | Yes  | Request options. For details, see [WebSocketRequestOptions](#websocketrequestoptions).|
-| callback | AsyncCallback\<boolean\> | Yes  | Callback used to return the result. The value **true** indicates that the operation is successful, and the value **false** indicates the opposite.                                             |
+| callback | AsyncCallback\<boolean\> | Yes | Callback function. Returns true if the connection request is created successfully; returns false otherwise. |
 
 **Error codes**
 
@@ -150,11 +148,11 @@ For details about the error codes, see [webSocket Error Codes](errorcode-net-web
 | --------------------- | ------------------------------------------ |
 | 401                   | Parameter error.                           |
 | 201                   | Permission denied.                         |
-| 2302001               | Websocket url error.                       |
-| 2302002               | Websocket certificate file does not exist. |
-| 2302003               | Websocket connection already exists.       |
-| 2302998               | It is not allowed to access this domain.   |
-| 2302999               | Internal error.             |
+| 2302001               | Websocket url error. <br>Applicable versions: 12+                       |
+| 2302002               | Websocket certificate file does not exist. <br>Applicable versions: 12+ |
+| 2302003               | Websocket connection already exists. <br>Applicable versions: 12+       |
+| 2302998               | It is not allowed to access this domain. <br>Applicable versions: 12+   |
+| 2302999               | Websocket other unknown error. <br>Applicable versions: 10+             |
 
 **Example**
 
@@ -162,6 +160,7 @@ For details about the error codes, see [webSocket Error Codes](errorcode-net-web
 import { webSocket } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Example 1:
 let ws = webSocket.createWebSocket();
 let options: webSocket.WebSocketRequestOptions | undefined;
 if (options !=undefined) {
@@ -180,6 +179,21 @@ ws.connect(url, options, (err: BusinessError, value: Object) => {
     console.error(`connect fail. Code: ${err.code}, message: ${err.message}`)
   }
 });
+
+// Example 2:
+let url = "ws://"
+let ws = webSocket.createWebSocket();
+let options: webSocket.WebSocketRequestOptions = {
+  minSupportTlsProtocol: webSocket.TlsProtocol.TLS_V_1_1
+};
+ws.connect(url, options, (err: BusinessError, value: Object) => {
+  if (!err) {
+    console.info("connect success")
+  } else {
+    console.error(`connect fail. Code: ${err.code}, message: ${err.message}`)
+  }
+});
+
 ```
 
 ### connect
@@ -190,8 +204,6 @@ Establishes a WebSocket connection to a given URL. This API uses a promise to re
 
 > **NOTE**
 >
-> You can listen to **error** events to obtain the operation result. If an error occurs, the error code 200 will be returned.
->
 >The boolean value returned in the callback indicates only whether the connection request is created successfully. To detect whether the WebSocket connection is successful, you need to subscribe to the **open** event via [on('open')](#onopen) before calling this API.
 
 **Required permissions**: ohos.permission.INTERNET
@@ -200,9 +212,9 @@ Establishes a WebSocket connection to a given URL. This API uses a promise to re
 
 **System capability**: SystemCapability.Communication.NetStack
 
->**NOTE**
+> **NOTE**
 >
->The URL cannot contain more than 1024 characters. Otherwise, the connection fails.
+>The URL cannot contain more than 1024 characters. Otherwise, the connection fails. Since API version 15, the maximum length of URLs is changed from 1024 characters to 2048 characters. Since API version 26, the maximum length of URLs is changed from 2048 characters to 8196 characters.
 
 **Parameters**
 
@@ -215,7 +227,7 @@ Establishes a WebSocket connection to a given URL. This API uses a promise to re
 
 | Type              | Description                             |
 | :----------------- | :-------------------------------- |
-| Promise\<boolean\> | Callback used to return the result. The value **true** indicates that the operation is successful, and the value **false** indicates the opposite.|
+| Promise\<boolean\> | Promise object. The value true indicates that the connection request is created successfully; the value false indicates that the connection request fails to be created. |
 
 **Error codes**
 
@@ -225,11 +237,11 @@ For details about the error codes, see [webSocket Error Codes](errorcode-net-web
 | --------------------- | ------------------------------------------ |
 | 401                   | Parameter error.                           |
 | 201                   | Permission denied.                         |
-| 2302001               | Websocket url error.                       |
-| 2302002               | Websocket certificate file does not exist. |
-| 2302003               | Websocket connection already exists.       |
-| 2302998               | It is not allowed to access this domain.   |
-| 2302999               | Internal error.             |
+| 2302001               | Websocket url error. <br>Applicable versions: 12+                       |
+| 2302002               | Websocket certificate file does not exist. <br>Applicable versions: 12+ |
+| 2302003               | Websocket connection already exists. <br>Applicable versions: 12+       |
+| 2302998               | It is not allowed to access this domain. <br>Applicable versions: 12+   |
+| 2302999               | Websocket other unknown error. <br>Applicable versions: 10+             |
 
 **Example**
 
@@ -250,7 +262,7 @@ promise.then((value: boolean) => {
 
 send(data: string | ArrayBuffer, callback: AsyncCallback\<boolean\>): void
 
-Sends data through a WebSocket connection. This API uses an asynchronous callback to return the result.
+Sends data through the WebSocket connection. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.INTERNET
 
@@ -263,7 +275,7 @@ Sends data through a WebSocket connection. This API uses an asynchronous callbac
 | Name  | Type                    | Mandatory| Description        |
 | -------- | ------------------------ | ---- | ------------ |
 | data     | string \| ArrayBuffer | Yes  | Data to send.<br>Only the string type is supported for API version 6 or earlier. Both the string and ArrayBuffer types are supported for API version 8 or later. A maximum of 5,242,864 bytes (that is, 5 x 1024 x 1024 - 16) can be sent. If the data size exceeds the upper limit, error code 401 will be returned.|
-| callback | AsyncCallback\<boolean\> | Yes  | Callback used to return the result. The value **true** indicates that the operation is successful, and the value **false** indicates the opposite.  |
+| callback | AsyncCallback\<boolean\> | Yes | Callback function. Returns true if the request is created successfully; returns false if the request fails to be created. |
 
 **Error codes**
 
@@ -331,7 +343,7 @@ Sends data through the WebSocket connection. This API uses a promise to return t
 
 | Type              | Description                             |
 | :----------------- | :-------------------------------- |
-| Promise\<boolean\> | Promise used to return the result. The value **true** indicates that the operation is successful, and the value **false** indicates the opposite.|
+| Promise\<boolean\> | Promise object. Returns true if the send request is created successfully; returns false if the send request fails to be created. |
 
 **Error codes**
 
@@ -393,7 +405,7 @@ Closes the WebSocket connection. This API uses an asynchronous callback to retur
 
 | Name  | Type                    | Mandatory| Description      |
 | -------- | ------------------------ | ---- | ---------- |
-| callback | AsyncCallback\<boolean\> | Yes  | Callback used to return the result. The value **true** indicates that the operation is successful, and the value **false** indicates the opposite.|
+| callback | AsyncCallback\<boolean\> | Yes | Callback Function. Returns true if the close request is created successfully; returns false otherwise. |
 
 **Error codes**
 
@@ -437,7 +449,7 @@ Closes the WebSocket connection based on the options parameter. This API uses an
 | Name  | Type                    | Mandatory| Description                                                 |
 | -------- | ------------------------ | ---- | ----------------------------------------------------- |
 | options  | WebSocketCloseOptions    | Yes  | Request options. For details, see [WebSocketCloseOptions](#websocketcloseoptions).|
-| callback | AsyncCallback\<boolean\> | Yes  | Callback used to return the result. The value **true** indicates that the operation is successful, and the value **false** indicates the opposite.                                           |
+| callback | AsyncCallback\<boolean\> | Yes | Callback invoked to return the result of creating the close request. Returns true if the close request is created successfully; returns false otherwise. |
 
 **Error codes**
 
@@ -492,7 +504,7 @@ Closes a WebSocket connection based on the specified options. This API uses a pr
 
 | Type              | Description                             |
 | :----------------- | :-------------------------------- |
-| Promise\<boolean\> | Promise used to return the result. The value **true** indicates that the operation is successful, and the value **false** indicates the opposite.|
+| Promise\<boolean\> | Promise object. Returns true if the close request is created successfully; returns false otherwise. |
 
 **Error codes**
 
@@ -526,7 +538,7 @@ promise.then((value: boolean) => {
 
 on(type: 'open', callback: AsyncCallback\<Object\>): void
 
-Subscribes to WebSocket open events. This API uses an asynchronous callback to return the result. This event indicates whether the WebSocket connection is successful. This API must be called before [connect](#connect) is called to initiate a connection request.
+Subscribes to the open event of the WebSocket. This API uses an asynchronous callback to return the result. The event is used to indicate whether the WebSocket connection is successful. This API must be called before calling [connect](#connect) to initiate a connection request.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -559,7 +571,7 @@ ws.on('open', (err: BusinessError, value: Object) => {
 
 off(type: 'open', callback?: AsyncCallback\<Object\>): void
 
-Unsubscribes from WebSocket open events. This API uses an asynchronous callback to return the result.
+Unsubscribes from the open event of the WebSocket. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -595,11 +607,88 @@ ws.on('open', callback1);
 ws.off('open', callback1);
 ```
 
+### on('openInfo')
+
+on(type: 'openInfo', callback: AsyncCallback\<WebSocketOpenInfo\>): void
+
+Subscribes to the open information event of WebSocket. This API uses an asynchronous callback. This event is used to obtain the detailed information after the WebSocket connection is established. This API must be called before [connect](#connect) is called to initiate a connection request.
+
+**Since:** 26.0.0
+
+**System capability:** SystemCapability.Communication.NetStack
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Parameters**
+
+| Name     | Type                    | Mandatory | Description                          |
+| -------- | ----------------------- | ---- | ----------------------------- |
+| type     | string                  | Yes   | Type of the event to subscribe to. **'openInfo'**: WebSocket open information event. |
+| callback | AsyncCallback\<[WebSocketOpenInfo](#websocketopeninfo)\> | Yes   | Callback used to return the detailed information of the WebSocket connection. |
+
+**Example**
+
+```ts
+import { webSocket } from '@kit.NetworkKit';
+import { BusinessError, Callback } from '@kit.BasicServicesKit';
+
+let ws = webSocket.createWebSocket();
+ws.on('openInfo', (err: BusinessError, value: webSocket.WebSocketOpenInfo) => {
+  if (value?.protocol != undefined) {
+    console.info(`on openInfo exist protocol: status: ${value.status}, message: ${value.message}, protocol: ${value.protocol}`);
+  } else {
+    console.info(`on openInfo , status: ${value.status}, message: ${value.message}, protocol: ${value.protocol}`);
+  }
+});
+```
+
+### off('openInfo')
+
+off(type: 'openInfo', callback?: AsyncCallback\<WebSocketOpenInfo\>): void
+
+Unsubscribes from the open information event of WebSocket. This API uses an asynchronous callback.
+
+> **NOTE**
+>
+> You can pass the callback of the **on** function to cancel a specific subscription, or you can cancel all subscriptions by not specifying a callback.
+
+**Since:** 26.0.0
+
+**System capability:** SystemCapability.Communication.NetStack
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Parameters**
+
+| Name     | Type                    | Mandatory | Description                          |
+| -------- | ----------------------- | ---- | ----------------------------- |
+| type     | string                  | Yes   | Type of the event to unsubscribe from. **'openInfo'**: WebSocket open information event. |
+| callback | AsyncCallback\<[WebSocketOpenInfo](#websocketopeninfo)\> | No   | Callback used to return the result. |
+
+**Example**
+
+```ts
+import { webSocket } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let ws = webSocket.createWebSocket();
+let callback1 = (err: BusinessError, value: webSocket.WebSocketOpenInfo) => {
+  if (value?.protocol != undefined) {
+    console.info(`on openInfo exist protocol: status: ${value.status}, message: ${value.message}, protocol: ${value.protocol}`);
+  } else {
+    console.info(`on openInfo , status: ${value.status}, message: ${value.message}, protocol: ${value.protocol}`);
+  }
+}
+ws.on('openInfo', callback1);
+// You can pass the callback used in on to unsubscribe from a specific subscription, or omit the callback to clear all subscriptions.
+ws.off('openInfo', callback1);
+```
+
 ### on('message')
 
 on(type: 'message', callback: AsyncCallback\<string | ArrayBuffer\>): void
 
-Subscribes to WebSocket server message receiving events. This API uses an asynchronous callback to return the result.
+Subscribes to the event of receiving server messages over WebSocket. This API uses an asynchronous callback.
 
 > **NOTE**
 >
@@ -632,7 +721,7 @@ ws.on('message', (err: BusinessError<void>, value: string | ArrayBuffer) => {
 
 off(type: 'message', callback?: AsyncCallback\<string | ArrayBuffer\>): void
 
-Unsubscribes from WebSocket server message receiving events. This API uses an asynchronous callback to return the result.
+Unsubscribes from the event of receiving server messages over WebSocket. This API uses an asynchronous callback.
 
 > **NOTE**
 >
@@ -663,7 +752,7 @@ ws.off('message');
 
 on(type: 'close', callback: AsyncCallback\<CloseResult\>): void
 
-Subscribes to WebSocket close events. This API uses an asynchronous callback to return the result.
+Subscribes to the close event of WebSocket. This API uses an asynchronous callback.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -674,7 +763,7 @@ Subscribes to WebSocket close events. This API uses an asynchronous callback to 
 | Name  | Type                                           | Mandatory| Description                          |
 | -------- | ----------------------------------------------- | ---- | ------------------------------ |
 | type     | string                                          | Yes  | Event type.<br/> **close**: event indicating that a WebSocket connection has been closed.|
-| callback | AsyncCallback\<CloseResult\> | Yes  | Callback used to return the result.<br>**close** and **reason** indicate the error code and error cause for closing the connection, respectively.|
+| callback | AsyncCallback\<[CloseResult](#closeresult10)\> | Yes | Callback function.<br>**close**: close error code, **reason**: error code description |
 
 **Example**
 
@@ -692,7 +781,7 @@ ws.on('close', (err: BusinessError, value: webSocket.CloseResult) => {
 
 off(type: 'close', callback?: AsyncCallback\<CloseResult\>): void
 
-Unsubscribes from WebSocket close events. This API uses an asynchronous callback to return the result.
+Unsubscribes from the close event of WebSocket. This API uses an asynchronous callback.
 
 > **NOTE**
 >
@@ -707,7 +796,7 @@ Unsubscribes from WebSocket close events. This API uses an asynchronous callback
 | Name  | Type                                           | Mandatory| Description                          |
 | -------- | ----------------------------------------------- | ---- | ------------------------------ |
 | type     | string                                          | Yes  | Event type.<br /> **close**: event indicating that a WebSocket connection has been closed.|
-| callback | AsyncCallback\<CloseResult\> | No  | Callback used to return the result.<br>**close** and **reason** indicate the error code and error cause for closing the connection, respectively.|
+| callback | AsyncCallback\<[CloseResult](#closeresult10)\> | No | Callback function.<br>**close**: close error code, **reason**: error code description |
 
 **Example**
 
@@ -722,7 +811,9 @@ ws.off('close');
 
 on(type: 'error', callback: ErrorCallback): void
 
-Subscribes to WebSocket error events. This API uses an asynchronous callback to return the result.
+Subscribes to the error event of WebSocket. This API uses an asynchronous callback.
+
+The error code of the [error](#onerror) event callback is described as follows: WebSocket is essentially an HTTP protocol upgrade. If the server agrees to the upgrade, the server returns 101. The status code indicates that the protocol is switched from HTTP to WebSocket (the **open** callback is triggered). If the server rejects the upgrade or other exceptions occur, the server returns 200, indicating that the server only processes the request as a common HTTP request.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -733,7 +824,7 @@ Subscribes to WebSocket error events. This API uses an asynchronous callback to 
 | Name  | Type         | Mandatory| Description                           |
 | -------- | ------------- | ---- | ------------------------------- |
 | type     | string        | Yes  | Event type.<br/> **error**: event indicating the WebSocket connection has encountered an error.|
-| callback | ErrorCallback | Yes  | Callback used to return the result.|
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | Yes | Callback used to return the result. |
 
 **Example**
 
@@ -751,7 +842,7 @@ ws.on('error', (err: BusinessError) => {
 
 off(type: 'error', callback?: ErrorCallback): void
 
-Unsubscribes from WebSocket error events. This API uses an asynchronous callback to return the result.
+Unsubscribes from the error event of WebSocket. This API uses an asynchronous callback.
 
 > **NOTE**
 >
@@ -766,7 +857,7 @@ Unsubscribes from WebSocket error events. This API uses an asynchronous callback
 | Name  | Type         | Mandatory| Description                           |
 | -------- | ------------- | ---- | ------------------------------- |
 | type     | string        | Yes  | Event type.<br /> **error**: event indicating the WebSocket connection has encountered an error.|
-| callback | ErrorCallback | No  | Callback used to return the result.                     |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | No   | Callback used to return the result.                      |
 
 **Example**
 
@@ -781,7 +872,7 @@ ws.off('error');
 
 on(type: 'dataEnd', callback: Callback\<void\>): void
 
-Subscribes to the WebSocket data receiving end event. This API uses an asynchronous callback to return the result.
+Subscribes to the data reception end event of WebSocket. This API uses an asynchronous callback.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -807,7 +898,7 @@ ws.on('dataEnd', () => {
 
 off(type: 'dataEnd', callback?: Callback\<void\>): void
 
-Unsubscribes from WebSocket data receiving end events. This API uses an asynchronous callback to return the result.
+Unsubscribes from the data reception end event of WebSocket. This API uses an asynchronous callback.
 
 > **NOTE**
 >
@@ -835,7 +926,7 @@ ws.off('dataEnd');
 
 on(type: 'headerReceive', callback: Callback\<ResponseHeaders\>): void
 
-Subscribes to HTTP response header events. This API uses an asynchronous callback to return the result.
+Subscribes to the HTTP Response Header event. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -844,7 +935,7 @@ Subscribes to HTTP response header events. This API uses an asynchronous callbac
 | Name  |        Type      | Mandatory|                Description                   |
 | -------- | ---------------- | ---- | -------------------------------------- |
 | type     | string           | Yes  | Event type.<br/> Event type. The value is **headerReceive**.|
-| callback | Callback\<ResponseHeaders\> | Yes  | Callback used to return the result.                            |
+| callback | Callback\<[ResponseHeaders](#responseheaders12)\> | Yes | Callback invoked to return the subscribed event. |
 
 **Example**
 
@@ -861,7 +952,7 @@ ws.on('headerReceive', (data) => {
 
 off(type: 'headerReceive', callback?: Callback\<ResponseHeaders\>): void
 
-Unsubscribes from HTTP response header events. This API uses an asynchronous callback to return the result.
+Unsubscribes from the HTTP Response Header event. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -874,7 +965,7 @@ Unsubscribes from HTTP response header events. This API uses an asynchronous cal
 | Name  |        Type      | Mandatory|                Description                   |
 | -------- | ---------------- | ---- | -------------------------------------- |
 | type     | string           | Yes  | Event type.<br /> Event type. The value is **headerReceive**.|
-| callback | Callback\<ResponseHeaders\> | No  | Callback used to return the result.                          |
+| callback | Callback\<[ResponseHeaders](#responseheaders12)\> | No | Callback invoked to return the subscribed event. |
 
 **Example**
 
@@ -921,7 +1012,7 @@ Starts the WebSocketServer service based on the specified **config**. This API u
 
 > **NOTE**
 >
-> You can listen for the **error** events to obtain the execution result of this API. For details about the result codes, see [WebSocket Error Codes](errorcode-net-webSocket.md).
+> You are advised not to listen for the same port when calling this API multiple times.
 
 **Required permission**: ohos.permission.INTERNET
 
@@ -937,7 +1028,7 @@ Starts the WebSocketServer service based on the specified **config**. This API u
 
 | Type              | Description                             |
 | :----------------- | :-------------------------------- |
-| Promise\<boolean\> | Promise used to return the result. The value **true** indicates that the operation is successful, and the value **false** indicates the opposite.|
+| Promise\<boolean\> | Promise object. Returns **true** if the server is started successfully; returns **false** if the server fails to start. |
 
 **Error codes**
 
@@ -949,6 +1040,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 2302002   | Websocket certificate file does not exist. |
 | 2302004   | Can't listen on the given NIC.            |
 | 2302005   | Can't listen on the given Port.           |
+| 2302007   | Websocket port already occupied. <br>Applicable versions: 24+ |
 | 2302999   | Websocket other unknown error.             |
 
 **Example**
@@ -1001,7 +1093,7 @@ Sends data through the WebSocket connection. This API uses a promise to return t
 
 | Type              | Description                             |
 | :----------------- | :-------------------------------- |
-| Promise\<boolean\> | Promise used to return the result. The value **true** indicates that the operation is successful, and the value **false** indicates the opposite.|
+| Promise\<boolean\> | Promise object. The value **true** indicates that the send request is created successfully; the value **false** indicates that the send request fails to be created. |
 
 **Error codes**
 
@@ -1068,7 +1160,7 @@ Obtains information about all clients connected to the server.
 **Return value**
 | Type                                       | Description                        |
 | ------------------------------------------- | ---------------------------- |
-| [WebSocketConnection[]](#websocketconnection19) | Information about all clients connected to the server, which is of the string array type.|
+| [WebSocketConnection](#websocketconnection19)[] | Information of all clients in a string array.|
 
 **Error codes**
 
@@ -1132,13 +1224,13 @@ Closes a WebSocket connection. This API uses a promise to return the result.
 | Name | Type                   | Mandatory| Description                                                    |
 | ---------- | --------------------- | ---- | ----------------------------------------------------- |
 | connection | [WebSocketConnection](#websocketconnection19) | Yes | Client information, including the IP address and port number.                  |
-| options    | [webSocket.WebSocketCloseOptions](#websocketcloseoptions) | No | Defines the optional parameters carried in the request for closing a WebSocket connection.<br>By default, the error code is 200, and the cause is **Websocket connect failed**.|
+| options    | [webSocket.WebSocketCloseOptions](#websocketcloseoptions) | No | Optional parameters carried in the request for closing a WebSocket connection.<br>By default, the error code is 200, and the cause is **Websocket connect failed**.|
 
 **Return value**
 
 | Type              | Description                                                                      |
 | :----------------- | :------------------------------------------------------------------------- |
-| Promise\<boolean\> | Promise used to return the result. The value **true** indicates that the operation is successful, and the value **false** indicates the opposite.     |
+| Promise\<boolean\> | Promise object. **true** if the close request is created successfully; **false** otherwise. |
 
 **Error codes**
 
@@ -1199,7 +1291,7 @@ Stops the WebSocketServer service. This API uses a promise to return the result.
 
 | Type              | Description                                                                      |
 | :----------------- | :------------------------------------------------------------------------- |
-| Promise\<boolean\> | Promise used to return the result. The value **true** indicates that the operation is successful, and the value **false** indicates the opposite.|
+| Promise\<boolean\> | Promise object. **true** indicates that the request to stop the server service is created successfully; **false** indicates that the request to stop the server service fails to be created. |
 
 **Error codes**
 
@@ -1246,7 +1338,7 @@ localServer.stop().then((success: boolean) => {
 
 on(type: 'connect', callback: Callback\<WebSocketConnection\>): void
 
-Subscribes to the WebSocketServer connection event (the connection between the client and server is successfully established). This API uses an asynchronous callback to return the result.
+Subscribes to the connection event of WebSocketServer (when a client successfully establishes a connection with the server). This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -1255,7 +1347,7 @@ Subscribes to the WebSocketServer connection event (the connection between the c
 | Name | Type                   | Mandatory| Description                                                    |
 | -------- | ----------------------- | ---- | ------------------------------------------------------- |
 | type     | string                  | Yes | Event type, which has a fixed value of **connect**. Successful calling of **onconnect()** indicates that a connection is established between the client and server.|
-| callback | Callback\<[WebSocketConnection](#websocketconnection19)\> | Yes| Callback used to return the result. which is the information about connected clients.|
+| callback | Callback\<[WebSocketConnection](#websocketconnection19)\> | Yes| Callback used to return the information about connected clients.|
 
 **Example**
 
@@ -1273,7 +1365,7 @@ localServer.on('connect', (connection: webSocket.WebSocketConnection) => {
 
 off(type: 'connect', callback?: Callback\<WebSocketConnection\>): void
 
-Unsubscribes from WebSocketServer connection events (the connection between the client and server is successfully established). This API uses an asynchronous callback to return the result.
+Unsubscribes from the connection event of WebSocketServer (the client is successfully connected to the server). This API uses an asynchronous callback.
 
 > **NOTE**
 >
@@ -1286,7 +1378,7 @@ Unsubscribes from WebSocketServer connection events (the connection between the 
 | Name | Type                   | Mandatory| Description                                                    |
 | -------- | ----------------------- | ---- | ------------------------------------------- |
 | type     | string                  | Yes | Event type, which has a fixed value of **connect**. Successful calling of **offconnect()** indicates that listening for connection events is canceled successful.|
-| callback | Callback\<[WebSocketConnection](#websocketconnection19)\> | No | Callback used to return the result. which is the information about connected clients.|
+| callback | Callback\<[WebSocketConnection](#websocketconnection19)\> | No | Callback used to return the information about connected clients.|
 
 **Example**
 
@@ -1302,7 +1394,7 @@ localServer.off('connect');
 
 on(type: 'messageReceive', callback: Callback\<WebSocketMessage\>): void
 
-Subscribes to the WebSocketServer event of receiving client messages. This API uses an asynchronous callback to return the result.
+Subscribes to the event of WebSocketServer receiving messages from the client. This API uses an asynchronous callback.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -1329,7 +1421,7 @@ localServer.on('messageReceive', (message: webSocket.WebSocketMessage) => {
 
 off(type: 'messageReceive', callback?: Callback\<WebSocketMessage\>): void
 
-Unsubscribes from the WebSocketServer event of receiving client messages. This API uses an asynchronous callback to return the result.
+Unsubscribes from the event of WebSocketServer receiving messages from the client. This API uses an asynchronous callback.
 
 > **NOTE**
 >
@@ -1358,7 +1450,7 @@ localServer.off('messageReceive');
 
 on(type: 'close', callback: ClientConnectionCloseCallback): void
 
-Subscribes to WebSocketServer close events. This API uses an asynchronous callback to return the result.
+Subscribes to the close event of WebSocketServer. This API uses an asynchronous callback.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -1385,7 +1477,7 @@ localServer.on('close', (clientConnection: webSocket.WebSocketConnection, closeR
 
 off(type: 'close', callback?: ClientConnectionCloseCallback): void
 
-Unsubscribes from WebSocketServer close events. This API uses an asynchronous callback to return the result.
+Unsubscribes from the close event of WebSocketServer. This API uses an asynchronous callback.
 
 > **NOTE**
 >
@@ -1414,7 +1506,7 @@ localServer.off('close');
 
 on(type: 'error', callback: ErrorCallback): void
 
-Subscribes to WebSocketServer error events. This API uses an asynchronous callback to return the result.
+Subscribes to the error event of WebSocketServer. This API uses an asynchronous callback.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -1441,7 +1533,7 @@ wsServer.on('error', (err: BusinessError) => {
 
 off(type: 'error', callback?: ErrorCallback): void
 
-Unsubscribes from WebSocketServer error events. This API uses an asynchronous callback to return the result.
+Unsubscribes from the error event of WebSocketServer. This API uses an asynchronous callback.
 
 > **NOTE**
 >
@@ -1454,7 +1546,7 @@ Unsubscribes from WebSocketServer error events. This API uses an asynchronous ca
 | Name | Type                   | Mandatory| Description                          |
 | -------- | ------------- | ---- | --------------------------------- |
 | type     | string        | Yes|  Event type, which has a fixed value of **error**. Successful calling of **offerror()** indicates that listening for the **error** events is canceled successfully.|
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | No| Callback used to return the result. which is the error code (default value: **200**).                        |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | No| Callback used to return the error code (default value: **200**).                        |
 
 **Example**
 
@@ -1474,14 +1566,16 @@ Defines the optional parameters carried in the request for establishing a WebSoc
 
 | Name| Type|  Read Only | Optional| Description                                                        |
 | ------ | ------ |------ | ---- | ------------------------------------------------------------ |
-| header | Object |  No |  Yes  | Header carrying optional parameters in the request for establishing a WebSocket connection. You can customize the parameter or leave it unspecified.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| caPath<sup>11+</sup> | string |  No |  Yes | Path of CA certificates. If a path is set, the system uses the CA certificates in this path. If a path is not set, the system uses the preset CA certificate, namely, **/etc/ssl/certs/cacert.pem**. This path is the sandbox mapping path, which can be obtained by using **UIAbilityContext** APIs. Currently, only text certificates in PEM format are supported.|
+| header | Object |  No |  Yes  | Optional parameters for establishing a WebSocket connection, representing the HTTP header information carried when establishing the connection. You can customize the parameter or leave it unspecified.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| caPath<sup>11+</sup> | string |  No |  Yes | Path of the CA certificate. If a path is set, the system uses the CA certificate in this path. If a path is not set, the system uses the system-preset CA certificate, namely, **/etc/ssl/certs/cacert.pem**. This path is the sandbox mapping path, which can be obtained by using capabilities provided by **UIAbilityContext**. Currently, only text certificates in PEM format are supported.|
 | clientCert<sup>11+</sup> | [ClientCert](#clientcert11) |   No |  Yes  | Client certificate.|
 | proxy<sup>12+</sup> | [ProxyConfiguration](#proxyconfiguration12) |  No | Yes| Proxy configuration. By default, the system network proxy is used.|
-| protocol<sup>12+</sup> | string |  No | Yes| Custom **Sec-WebSocket-Protocol** field. The default value is "".             |
+| protocol<sup>12+</sup> | string |  No | Yes| Custom **Sec-WebSocket-Protocol** field. The default value is **""**.             |
 | skipServerCertVerification<sup>20+</sup> | boolean | No| Yes| Whether to skip server certificate verification. The value **true** means to skip server certificate verification, and the value **false** means the opposite. Default value: **false**.|
 | pingInterval<sup>21+</sup> | number | No| Yes| Custom [heartbeat detection interval](../../network/websocket-connection.md). The default value is 30s. Heartbeat detection is initiated at the specified interval. If the value is set to **0**, heartbeat detection is disabled. The maximum value is 30000s, and the minimum value is 0s.|
-| pongTimeout<sup>21+</sup> | number | No| Yes| Timeout interval for disconnecting a connection after heartbeat detection is initiated. The default value is 30s. If no response is received during the specified interval, the connection is disconnected. The maximum value is 30000s, and the minimum value is 0s. **pongTimeout** must be less than or equal to **pingInterval**.|
+| pongTimeout<sup>21+</sup> | number | No| Yes| Custom timeout interval for disconnecting a connection after heartbeat detection is initiated. The default value is 30s. If no response is received during the specified interval, the connection is disconnected. The maximum value is 30000s, and the minimum value is 0s. **pongTimeout** must be less than or equal to **pingInterval**.|
+| minSupportTlsProtocol | [TlsProtocol](#tlsprotocol) | No | Yes | Custom minimum supported TLS protocol version. For example, if this parameter is set to **TLS_V_1_1**, the client can support TLS protocol versions TLS1.1, TLS1.2, and TLS1.3.<br/>**Since:** 26.0.0 <br/>**Model restriction:** This API can be used only in the stage model.|
+| supportOriginPort | boolean | No | Yes | Origin is an HTTP request header field in the WebSocket handshake request, used to identify the request source, based on which the server can perform source verification. This parameter controls whether the Origin field carries a custom port number. The default value is **false**. When set to **true**:<br/>- After the [connect](#connect) API is called, if the protocol specified in the first parameter **url** is **ws** and the explicitly specified port number is not 80, the Origin field carries the corresponding port; otherwise, no port number is carried.<br/>- After the [connect](#connect) API is called, if the protocol specified in the first parameter **url** is **wss** and the explicitly specified port number is not 443, the Origin field carries the corresponding port number; otherwise, no port number is carried.<br/>When set to **false**, the Origin field does not carry a port number.<br/>**Since Version:** 26.0.0<br/>**Model restriction:** This API can be used only in the stage model. |
 
 ## ClientCert<sup>11+</sup>
 
@@ -1535,9 +1629,8 @@ Represents the result obtained from the **close** event reported when the WebSoc
 | reason | string | No  |No|Error cause for closing the connection.|
 
 ## ResponseHeaders<sup>12+</sup>
-type ResponseHeaders = {
-  [k: string]: string | string[] | undefined;
-}
+
+type ResponseHeaders = { [k: string]: string | string[] | undefined; }
 
 Enumerates the response headers sent by the server.
 
@@ -1549,7 +1642,7 @@ Enumerates the response headers sent by the server.
 
 ## Result Codes for Connection Closing
 
-The error code sent to the server must be a positive integer ranging from 1000 to 1015. You can define the error code as required. If no error code is specified or the input value is not within the preceding range, the error code is set to the default value **1000**. The following list is for reference.
+The error code sent to the server must be a positive integer in the range [1000, 1015]. You can define it as needed. If no error code is specified or the value passed in is outside the range, the error code is set to the default value **1000**. The following list is for reference only.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -1634,3 +1727,36 @@ Callback invoked when the WebSocketServer connection is closed.
 | ---------------- | -------------------  | ------ | --------------------------------------------- |
 | clientConnection | [WebSocketConnection](#websocketconnection19) | Yes| Client information, including the IP address and port number.            |
 | closeReason | [CloseResult](#closeresult10)  | Yes| Represents the result obtained from the **close** event reported when the WebSocket connection is closed.|
+
+## TlsProtocol
+
+Enumerates the TLS protocol types.
+
+**Since:** 26.0.0
+
+**System capability:** SystemCapability.Communication.NetStack
+
+**Model restriction:** This API can be used only in the stage model.
+
+|            Name        | Value  | Description       |
+| :----------------------- | :---- | :---------- |
+| TLS_V_1_0 | 0    | TLS version 1.0. |
+| TLS_V_1_1  | 1    | TLS version 1.1.|
+| TLS_V_1_2 | 2    | TLS version 1.2.|
+| TLS_V_1_3 | 3    | TLS version 1.3.|
+
+## WebSocketOpenInfo
+
+Detailed information after a WebSocket connection is successfully established.
+
+**Since:** 26.0.0
+
+**System capability:** SystemCapability.Communication.NetStack
+
+**Model restriction:** This API can be used only in the stage model.
+
+| Name | Type   | Read Only | Optional | Description                                                         |
+| ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
+| status | number | No | No | Status code returned by the server. For example, 101 indicates that the connection is successfully established and upgraded to the WebSocket protocol. |
+| message | string | No | No | Status information returned by the server. It corresponds to the **status** field. For example, when **status=101** is set, this field returns "Switching Protocols". |
+| protocol | string | No | Yes | Negotiated protocol returned by the server. |

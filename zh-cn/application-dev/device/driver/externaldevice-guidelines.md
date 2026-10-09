@@ -1,10 +1,10 @@
 # 开发带UI界面基础驱动
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
 
 ## 场景介绍
 
@@ -23,8 +23,8 @@
 | 接口名                                                       | 描述                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | queryDevices(busType?: number): Array&lt;Readonly&lt;Device&gt;&gt; | 查询扩展外设列表。                                           |
-| bindDriverWithDeviceId(deviceId: number, onDisconnect: AsyncCallback&lt;number&gt;): Promise&lt;RemoteDeviceDriver&gt;; | 绑定设备的Promise形式，API18开始支持。                       |
-| unbindDriverWithDeviceId(deviceId: number): Promise&lt;number&gt; | 解绑设备的Promise形式，API18开始支持。                       |
+| bindDriverWithDeviceId(deviceId: number, onDisconnect: AsyncCallback&lt;number&gt;): Promise&lt;RemoteDeviceDriver&gt; | 绑定设备的Promise形式，API version 19开始支持。                       |
+| unbindDriverWithDeviceId(deviceId: number): Promise&lt;number&gt; | 解绑设备的Promise形式，API version 19开始支持。                       |
 
 <!--Del-->
 扩展外设管理系统接口如下，具体请查阅[@ohos.driver.deviceManager](../../reference/apis-driverdevelopment-kit/js-apis-driver-deviceManager-sys.md)。
@@ -98,11 +98,11 @@
          hilog.info(DOMAIN, 'testTag', `usbDevice.productId = ${usbDevice.productId}, usbDevice.vendorId = ${usbDevice.vendorId}`);
          return usbDevice.productId === productId && usbDevice.vendorId === vendorId;
        });
-       hilog.info(DOMAIN, 'testTag', `queryTargetDeviceId index = ${index}, deviceId = ${devices[index].deviceId}`);
        if (index < 0) {
          hilog.error(DOMAIN, 'testTag', 'can not find device');
          return -1;
        }
+       hilog.info(DOMAIN, 'testTag', `queryTargetDeviceId index = ${index}, deviceId = ${devices[index].deviceId}`);
        return devices[index].deviceId;
      } catch (error) {
        hilog.error(DOMAIN, 'testTag', `queryDevice failed, err: ${JSON.stringify(error)}`);
@@ -111,14 +111,14 @@
    }
    ```
 
-5. 定义获取对应驱动远程对象的接口，通过bindDriverWithDeviceId获取远程对象。
+5. 定义获取对应驱动远程对象的接口，通过bindDeviceDriver获取远程对象。
 
    <!-- @[driver_ui_step5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    private async getDriverRemote(deviceId: number): Promise<rpc.IRemoteObject | null> {
      try {
-       let remoteDeviceDriver: deviceManager.RemoteDeviceDriver = await deviceManager.bindDeviceDriver(deviceId,
+       let remoteDeviceDriver: deviceManager.RemoteDeviceDriver = await deviceManager.bindDriverWithDeviceId(deviceId,
          (err: BusinessError, id: number) => {
            hilog.info(DOMAIN, 'testTag', `device[${id}] id disconnect, err: ${JSON.stringify(err)}`);
          });

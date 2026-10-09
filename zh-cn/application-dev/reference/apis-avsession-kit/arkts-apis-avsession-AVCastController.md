@@ -1,8 +1,8 @@
 # Interface (AVCastController)
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @liao_qian-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -17,13 +17,14 @@
 
 ```ts
 import { avSession } from '@kit.AVSessionKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
 ## getAVPlaybackState<sup>10+</sup>
 
 getAVPlaybackState(callback: AsyncCallback\<AVPlaybackState>): void
 
-获取当前的远端播放状态。结果通过callback异步回调方式返回。
+获取当前的远端播放状态。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -44,14 +45,12 @@ getAVPlaybackState(callback: AsyncCallback\<AVPlaybackState>): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-aVCastController.getAVPlaybackState((err: BusinessError, state: avSession.AVPlaybackState) => {
+avCastController.getAVPlaybackState((err: BusinessError, state: avSession.AVPlaybackState) => {
   if (err) {
-    console.error(`getAVPlaybackState BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('getAVPlaybackState : SUCCESS');
+    console.error(`Failed to get AV playback state, code: ${err.code}, message: ${err.message}`);
+    return;
   }
+  console.info('Succeeded in getting AV playback state.');
 });
 ```
 
@@ -59,7 +58,7 @@ aVCastController.getAVPlaybackState((err: BusinessError, state: avSession.AVPlay
 
 getAVPlaybackState(): Promise\<AVPlaybackState>
 
-获取当前的远端播放状态。结果通过Promise异步回调方式返回。
+获取当前的远端播放状态。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -82,12 +81,10 @@ getAVPlaybackState(): Promise\<AVPlaybackState>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-aVCastController.getAVPlaybackState().then((state: avSession.AVPlaybackState) => {
-  console.info('getAVPlaybackState : SUCCESS');
+avCastController.getAVPlaybackState().then((state: avSession.AVPlaybackState) => {
+  console.info('Succeeded in getting AV playback state.');
 }).catch((err: BusinessError) => {
-  console.error(`getAVPlaybackState BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get AV playback state, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -118,15 +115,13 @@ getSupportedDecoders(): Promise\<Array\<DecoderType>>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-aVCastController.getSupportedDecoders().then((decoderTypes: avSession.DecoderType[]) => {
-  console.info(`getSupportedDecoders : SUCCESS : decoderTypes.length : ${decoderTypes.length}`);
+avCastController.getSupportedDecoders().then((decoderTypes: avSession.DecoderType[]) => {
+  console.info(`Succeeded in getting supported decoders, length: ${decoderTypes.length}`);
   if (decoderTypes.length > 0 ) {
-    console.info(`getSupportedDecoders : SUCCESS : decoderTypes[0] : ${decoderTypes[0]}`);
+    console.info(`Succeeded in getting supported decoder: ${decoderTypes[0]}`);
   }
 }).catch((err: BusinessError) => {
-  console.error(`getSupportedDecoders BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get supported decoders, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -144,7 +139,7 @@ getRecommendedResolutionLevel(decoderType: DecoderType): Promise\<ResolutionLeve
 
 | 参数名   | 类型                                      | 必填 | 说明                       |
 | -------- | ----------------------------------------- | ---- | -------------------------- |
-| decoderType | [DecoderType](arkts-apis-avsession-e.md#decodertype19) | 是 | 设备所支持的解码格式。<br>设备所支持的解码格式包括：<br>'OH_AVCODEC_MIMETYPE_VIDEO_AVC'：VIDEO AVC，<br>'OH_AVCODEC_MIMETYPE_VIDEO_HEVC'：VIDEO HEVC，<br>'OH_AVCODEC_MIMETYPE_AUDIO_VIVID'：AUDIO AV3A。 |
+| decoderType | [DecoderType](arkts-apis-avsession-e.md#decodertype19) | 是 | 设备所支持的解码格式包括：<br>'OH_AVCODEC_MIMETYPE_VIDEO_AVC'：VIDEO AVC，<br>'OH_AVCODEC_MIMETYPE_VIDEO_HEVC'：VIDEO HEVC，<br>'OH_AVCODEC_MIMETYPE_AUDIO_VIVID'：AUDIO AV3A。 |
 
 **返回值：**
 
@@ -163,13 +158,11 @@ getRecommendedResolutionLevel(decoderType: DecoderType): Promise\<ResolutionLeve
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 let decoderType = avSession.DecoderType.OH_AVCODEC_MIMETYPE_VIDEO_AVC;
-aVCastController.getRecommendedResolutionLevel(decoderType).then((resolutionLevel: avSession.ResolutionLevel) => {
-  console.info('getRecommendedResolutionLevel successfully');
+avCastController.getRecommendedResolutionLevel(decoderType).then((resolutionLevel: avSession.ResolutionLevel) => {
+  console.info('Succeeded in getting recommended resolution level.');
 }).catch((err: BusinessError) => {
-  console.error(`getRecommendedResolutionLevel BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get recommended resolution level, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -200,16 +193,15 @@ getSupportedHdrCapabilities(): Promise\<Array\<hdrCapability.HDRFormat>>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-import type hdrCapability from './@ohos.graphics.hdrCapability';
+import { type hdrCapability } from '@kit.ArkGraphics2D';
 
-aVCastController.getSupportedHdrCapabilities().then((hdrFormats: hdrCapability.HDRFormat[]) => {
-  console.info(`getSupportedHdrCapabilities : SUCCESS : hdrFormats.length : ${hdrFormats.length}`);
+avCastController.getSupportedHdrCapabilities().then((hdrFormats: hdrCapability.HDRFormat[]) => {
+  console.info(`Succeeded in getting supported HDR capabilities, length: ${hdrFormats.length}`);
   if (hdrFormats.length > 0 ) {
-    console.info(`getSupportedHdrCapabilities : SUCCESS : descriptors[0] : ${hdrFormats[0]}`);
+    console.info(`Succeeded in getting supported HDR capability: ${hdrFormats[0]}`);
   }
 }).catch((err: BusinessError) => {
-  console.error(`getSupportedHdrCapabilities BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get supported HDR capabilities, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -217,7 +209,7 @@ aVCastController.getSupportedHdrCapabilities().then((hdrFormats: hdrCapability.H
 
 getSupportedPlaySpeeds(): Promise\<Array\<number>>
 
-获取当前的远端设备所支持倍速播放列表。使用Promise异步回调。
+获取当前的远端设备所支持倍速播放列表，仅支持使用cast+协议连接的设备。使用Promise异步回调。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -240,15 +232,13 @@ getSupportedPlaySpeeds(): Promise\<Array\<number>>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-aVCastController.getSupportedPlaySpeeds().then((nums: number[]) => {
-  console.info(`getSupportedPlaySpeeds : SUCCESS : hdrFormats.length : ${nums.length}`);
+avCastController.getSupportedPlaySpeeds().then((nums: number[]) => {
+  console.info(`Succeeded in getting supported play speeds, length: ${nums.length}`);
   if (nums.length > 0 ) {
-    console.info(`getSupportedPlaySpeeds : SUCCESS : descriptors[0] : ${nums[0]}`);
+    console.info(`Succeeded in getting supported play speed: ${nums[0]}`);
   }
 }).catch((err: BusinessError) => {
-  console.error(`getSupportedPlaySpeeds BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get supported play speeds, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -256,7 +246,7 @@ aVCastController.getSupportedPlaySpeeds().then((nums: number[]) => {
 
 sendControlCommand(command: AVCastControlCommand): Promise\<void>
 
-通过控制器发送命令到其对应的会话。结果通过Promise异步回调方式返回。
+通过控制器发送命令到其对应的会话。使用Promise异步回调。
 
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -281,7 +271,7 @@ sendControlCommand(command: AVCastControlCommand): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Parameter verification failed. |
 | 6600101  | Session service exception. |
 | 6600105  | Invalid session command. |
 | 6600109  | The remote connection is not established. |
@@ -289,13 +279,11 @@ sendControlCommand(command: AVCastControlCommand): Promise\<void>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let avCommand: avSession.AVCastControlCommand = {command:'play'};
-aVCastController.sendControlCommand(avCommand).then(() => {
-  console.info('SendControlCommand successfully');
+let avCommand: avSession.AVCastControlCommand = {command: 'play'};
+avCastController.sendControlCommand(avCommand).then(() => {
+  console.info('Succeeded in sending control command.');
 }).catch((err: BusinessError) => {
-  console.error(`SendControlCommand BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to send control command, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -303,7 +291,7 @@ aVCastController.sendControlCommand(avCommand).then(() => {
 
 sendControlCommand(command: AVCastControlCommand, callback: AsyncCallback\<void>): void
 
-通过会话控制器发送命令到其对应的会话。结果通过callback异步回调方式返回。
+通过会话控制器发送命令到其对应的会话。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -320,7 +308,7 @@ sendControlCommand(command: AVCastControlCommand, callback: AsyncCallback\<void>
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Parameter verification failed. |
 | 6600101  | Session service exception. |
 | 6600105  | Invalid session command. |
 | 6600109  | The remote connection is not established. |
@@ -328,15 +316,13 @@ sendControlCommand(command: AVCastControlCommand, callback: AsyncCallback\<void>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let avCommand: avSession.AVCastControlCommand = {command:'play'};
-aVCastController.sendControlCommand(avCommand, (err: BusinessError) => {
+let avCommand: avSession.AVCastControlCommand = {command: 'play'};
+avCastController.sendControlCommand(avCommand, (err: BusinessError) => {
   if (err) {
-    console.error(`SendControlCommand BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('SendControlCommand successfully');
+    console.error(`Failed to send control command, code: ${err.code}, message: ${err.message}`);
+    return;
   }
+  console.info('Succeeded in sending control command.');
 });
 ```
 
@@ -344,7 +330,7 @@ aVCastController.sendControlCommand(avCommand, (err: BusinessError) => {
 
 sendCustomData(data: Record\<string, Object>): Promise\<void>
 
-发送私有数据到远端设备。使用Promise异步回调。
+发送自定义数据到远端设备。使用Promise异步回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -368,21 +354,23 @@ sendCustomData(data: Record\<string, Object>): Promise\<void>
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 6600101  | Session service exception.You are advised to:1.Scheduled retry.2.Destroy the current session or session controller and re-create it. |
+| 6600101  | Session service exception. You are advised to: 1. Scheduled retry. 2. Destroy the current session or session controller and re-create it. |
 
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-aVCastController.sendCustomData({customData : "This is custom data"});
+avCastController.sendCustomData({customData: 'This is custom data'}).then(() => {
+  console.info('Succeeded in sending custom data.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to send custom data, code: ${err.code}, message: ${err.message}`);
+});
 ```
 
 ## prepare<sup>10+</sup>
 
 prepare(item: AVQueueItem, callback: AsyncCallback\<void>): void
 
-准备播放媒体资源，即进行播放资源的加载和缓冲。结果通过callback异步回调方式返回。
+准备播放媒体资源，即进行播放资源的加载和缓冲。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -399,15 +387,13 @@ prepare(item: AVQueueItem, callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Parameter verification failed. |
 | 6600101  | Session service exception. |
 | 6600109  | The remote connection is not established. |
 
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 // 设置播放参数，开始播放。
 let playItem: avSession.AVQueueItem = {
   itemId: 0,
@@ -420,18 +406,18 @@ let playItem: avSession.AVQueueItem = {
     duration: 0,
     artist: 'mysong',
     albumTitle: 'song1_title',
-    albumCoverUri: "http://resource1_album_address",
-    lyricUri: "http://resource1_lyric_address",
+    albumCoverUri: 'http://resource1_album_address',
+    lyricUri: 'http://resource1_lyric_address',
     appName: 'MyMusic'
   }
 };
 // 准备播放，这个不会触发真正的播放，会进行加载和缓冲。
-aVCastController.prepare(playItem, (err: BusinessError) => {
+avCastController.prepare(playItem, (err: BusinessError) => {
   if (err) {
-    console.error(`prepare BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('prepare successfully');
+    console.error(`Failed to prepare, code: ${err.code}, message: ${err.message}`);
+    return;
   }
+  console.info('Succeeded in preparing.');
 });
 ```
 
@@ -439,7 +425,7 @@ aVCastController.prepare(playItem, (err: BusinessError) => {
 
 prepare(item: AVQueueItem): Promise\<void>
 
-准备播放媒体资源，即进行播放资源的加载和缓冲。结果通过Promise异步回调方式返回。
+准备播放媒体资源，即进行播放资源的加载和缓冲。使用Promise异步回调。
 
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
@@ -464,15 +450,13 @@ prepare(item: AVQueueItem): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Parameter verification failed. |
 | 6600101  | Session service exception. |
 | 6600109  | The remote connection is not established. |
 
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 // 设置播放参数，开始播放。
 let playItem: avSession.AVQueueItem = {
   itemId: 0,
@@ -485,16 +469,16 @@ let playItem: avSession.AVQueueItem = {
     duration: 0,
     artist: 'mysong',
     albumTitle: 'song1_title',
-    albumCoverUri: "http://resource1_album_address",
-    lyricUri: "http://resource1_lyric_address",
+    albumCoverUri: 'http://resource1_album_address',
+    lyricUri: 'http://resource1_lyric_address',
     appName: 'MyMusic'
   }
 };
 // 准备播放，这个不会触发真正的播放，会进行加载和缓冲。
-aVCastController.prepare(playItem).then(() => {
-  console.info('prepare successfully');
+avCastController.prepare(playItem).then(() => {
+  console.info('Succeeded in preparing.');
 }).catch((err: BusinessError) => {
-  console.error(`prepare BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to prepare, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -502,7 +486,11 @@ aVCastController.prepare(playItem).then(() => {
 
 start(item: AVQueueItem, callback: AsyncCallback\<void>): void
 
-启动播放某个媒体资源。结果通过callback异步回调方式返回。
+启动播放某个媒体资源。使用callback异步回调。
+
+> **说明：**
+>
+> 在音视频投播场景下，当应用程序顺序调用[prepare](#prepare10)和start接口，且assetId不变时，如果prepare已经传入有效的mediaUri或fdSrc，则start接口将复用prepare阶段的完整的AVMediaDescription对象信息。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -519,15 +507,13 @@ start(item: AVQueueItem, callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Parameter verification failed. |
 | 6600101  | Session service exception. |
 | 6600109  | The remote connection is not established. |
 
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 // 设置播放参数，开始播放。
 let playItem: avSession.AVQueueItem = {
   itemId: 0,
@@ -540,19 +526,19 @@ let playItem: avSession.AVQueueItem = {
     duration: 0,
     artist: 'mysong',
     albumTitle: 'song1_title',
-    albumCoverUri: "http://resource1_album_address",
-    lyricUri: "http://resource1_lyric_address",
+    albumCoverUri: 'http://resource1_album_address',
+    lyricUri: 'http://resource1_lyric_address',
     appName: 'MyMusic'
   }
 };
 
 // 启动播放。
-aVCastController.start(playItem, (err: BusinessError) => {
+avCastController.start(playItem, (err: BusinessError) => {
   if (err) {
-    console.error(`start BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('start successfully');
+    console.error(`Failed to start, code: ${err.code}, message: ${err.message}`);
+    return;
   }
+  console.info('Succeeded in starting.');
 });
 ```
 
@@ -560,7 +546,11 @@ aVCastController.start(playItem, (err: BusinessError) => {
 
 start(item: AVQueueItem): Promise\<void>
 
-启动播放某个媒体资源。结果通过Promise异步回调方式返回。
+启动播放某个媒体资源。使用Promise异步回调。
+
+> **说明：**
+>
+> 在音视频投播场景下，当应用程序顺序调用[prepare](#prepare10)和start接口，且assetId不变时，如果prepare已经传入有效的mediaUri或fdSrc，则start接口将复用prepare阶段的完整的AVMediaDescription对象信息。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -584,15 +574,13 @@ start(item: AVQueueItem): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Parameter verification failed. |
 | 6600101  | Session service exception. |
 | 6600109  | The remote connection is not established. |
 
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
 // 设置播放参数，开始播放。
 let playItem: avSession.AVQueueItem = {
   itemId: 0,
@@ -605,16 +593,16 @@ let playItem: avSession.AVQueueItem = {
     duration: 0,
     artist: 'mysong',
     albumTitle: 'song1_title',
-    albumCoverUri: "http://resource1_album_address",
-    lyricUri: "http://resource1_lyric_address",
+    albumCoverUri: 'http://resource1_album_address',
+    lyricUri: 'http://resource1_lyric_address',
     appName: 'MyMusic'
   }
 };
 // 启动播放。
-aVCastController.start(playItem).then(() => {
-  console.info('start successfully');
+avCastController.start(playItem).then(() => {
+  console.info('Succeeded in starting.');
 }).catch((err: BusinessError) => {
-  console.error(`start BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to start, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -622,7 +610,7 @@ aVCastController.start(playItem).then(() => {
 
 getCurrentItem(callback: AsyncCallback\<AVQueueItem>): void
 
-获取当前投播的资源信息。结果通过callback异步回调方式返回。
+获取当前投播的资源信息。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -643,14 +631,12 @@ getCurrentItem(callback: AsyncCallback\<AVQueueItem>): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-aVCastController.getCurrentItem((err: BusinessError, value: avSession.AVQueueItem) => {
+avCastController.getCurrentItem((err: BusinessError, value: avSession.AVQueueItem) => {
   if (err) {
-    console.error(`getCurrentItem BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('getCurrentItem successfully');
+    console.error(`Failed to get current item, code: ${err.code}, message: ${err.message}`);
+    return;
   }
+  console.info('Succeeded in getting current item.');
 });
 ```
 
@@ -658,7 +644,7 @@ aVCastController.getCurrentItem((err: BusinessError, value: avSession.AVQueueIte
 
 getCurrentItem(): Promise\<AVQueueItem>
 
-获取当前投播的资源信息。结果通过Promise异步回调方式返回。
+获取当前投播的资源信息。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -681,12 +667,10 @@ getCurrentItem(): Promise\<AVQueueItem>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-aVCastController.getCurrentItem().then((value: avSession.AVQueueItem) => {
-  console.info('getCurrentItem successfully');
+avCastController.getCurrentItem().then((value: avSession.AVQueueItem) => {
+  console.info('Succeeded in getting current item.');
 }).catch((err: BusinessError) => {
-  console.error(`getCurrentItem BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get current item, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -694,7 +678,7 @@ aVCastController.getCurrentItem().then((value: avSession.AVQueueItem) => {
 
 getValidCommands(callback: AsyncCallback<Array\<AVCastControlCommandType>>): void
 
-获取当前支持的命令。结果通过callback异步回调方式返回。
+获取当前支持的命令。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -715,14 +699,12 @@ getValidCommands(callback: AsyncCallback<Array\<AVCastControlCommandType>>): voi
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-aVCastController.getValidCommands((err: BusinessError, state: avSession.AVCastControlCommandType[]) => {
+avCastController.getValidCommands((err: BusinessError, state: avSession.AVCastControlCommandType[]) => {
   if (err) {
-    console.error(`getValidCommands BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('getValidCommands successfully');
+    console.error(`Failed to get valid commands, code: ${err.code}, message: ${err.message}`);
+    return;
   }
+  console.info('Succeeded in getting valid commands.');
 });
 ```
 
@@ -730,7 +712,7 @@ aVCastController.getValidCommands((err: BusinessError, state: avSession.AVCastCo
 
 getValidCommands(): Promise<Array\<AVCastControlCommandType>>
 
-获取当前支持的命令。结果通过Promise异步回调方式返回。
+获取当前支持的命令。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -751,12 +733,10 @@ getValidCommands(): Promise<Array\<AVCastControlCommandType>>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-aVCastController.getValidCommands().then((state: avSession.AVCastControlCommandType[]) => {
-  console.info('getValidCommands successfully');
+avCastController.getValidCommands().then((state: avSession.AVCastControlCommandType[]) => {
+  console.info('Succeeded in getting valid commands.');
 }).catch((err: BusinessError) => {
-  console.error(`getValidCommands BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get valid commands, code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -764,7 +744,7 @@ aVCastController.getValidCommands().then((state: avSession.AVCastControlCommandT
 
 processMediaKeyResponse(assetId: string, response: Uint8Array): Promise\<void>
 
-在线DRM资源投播时，处理许可证响应。结果通过Promise异步回调方式返回。
+在线DRM资源投播时，处理许可证响应。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -789,7 +769,7 @@ processMediaKeyResponse(assetId: string, response: Uint8Array): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Parameter verification failed. |
 | 6600101  | Session service exception. |
 
 **示例：**
@@ -801,7 +781,11 @@ let keyRequestCallback: avSession.KeyRequestCallback = async(assetId: string, re
   // 从服务器获取许可证，需要开发者根据实际情况进行赋值。
   let licenseResponseData: Uint8Array = new Uint8Array();
   console.info(`Succeeded in get license by ${drmUrl}.`);
-  aVCastController.processMediaKeyResponse(assetId, licenseResponseData);
+  avCastController.processMediaKeyResponse(assetId, licenseResponseData).then(() => {
+    console.info('Succeeded in processing media key response.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to process media key response, code: ${err.code}, message: ${err.message}`);
+  });
 }
 ```
 
@@ -809,7 +793,7 @@ let keyRequestCallback: avSession.KeyRequestCallback = async(assetId: string, re
 
 release(callback: AsyncCallback\<void>): void
 
-销毁当前controller，结果通过callback异步回调方式返回。
+销毁当前controller，使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -830,14 +814,12 @@ release(callback: AsyncCallback\<void>): void
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-aVCastController.release((err: BusinessError) => {
+avCastController.release((err: BusinessError) => {
   if (err) {
-    console.error(`release BusinessError: code: ${err.code}, message: ${err.message}`);
-  } else {
-    console.info('release successfully');
+    console.error(`Failed to release, code: ${err.code}, message: ${err.message}`);
+    return;
   }
+  console.info('Succeeded in releasing.');
 });
 ```
 
@@ -845,7 +827,7 @@ aVCastController.release((err: BusinessError) => {
 
 release(): Promise\<void>
 
-销毁当前controller。结果通过Promise异步回调方式返回。
+销毁当前controller。使用Promise异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -868,12 +850,10 @@ release(): Promise\<void>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-aVCastController.release().then(() => {
-  console.info('release successfully');
+avCastController.release().then(() => {
+  console.info('Succeeded in releasing.');
 }).catch((err: BusinessError) => {
-  console.error(`release BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to release, code: ${err.code}, message: ${err.message}`);
 });
 
 ```
@@ -894,8 +874,8 @@ on(type: 'playbackStateChange', filter: Array\<keyof AVPlaybackState> | 'all', c
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | 是   | 事件回调类型，支持事件`'playbackStateChange'`：当播放状态变化时，触发该事件。 |
-| filter   |  Array\<keyof AVPlaybackState>\|'all'| 是   | 'all' 表示关注播放状态所有字段变化；Array\<keyof AVPlaybackstate> 表示关注Array中的字段变化。|
+| type     | string                                                       | 是   | 事件回调类型，支持事件'playbackStateChange'：当播放状态变化时，触发该事件。 |
+| filter   |  Array\<keyof AVPlaybackState>\|'all'| 是   | Array\<keyof AVPlaybackState>表示关注Array中的字段变化。<br>'all'表示关注播放状态所有字段变化。|
 | callback | (state: [AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)) => void         | 是   | 回调函数，参数state是变化后的播放状态。 |
 
 **错误码：**
@@ -904,18 +884,18 @@ on(type: 'playbackStateChange', filter: Array\<keyof AVPlaybackState> | 'all', c
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **示例：**
 
 ```ts
-aVCastController.on('playbackStateChange', 'all', (playbackState: avSession.AVPlaybackState) => {
+avCastController.on('playbackStateChange', 'all', (playbackState: avSession.AVPlaybackState) => {
   console.info(`on playbackStateChange state : ${playbackState.state}`);
 });
 
 let playbackFilter: Array<keyof avSession.AVPlaybackState> = ['state', 'speed', 'loopMode'];
-aVCastController.on('playbackStateChange', playbackFilter, (playbackState: avSession.AVPlaybackState) => {
+avCastController.on('playbackStateChange', playbackFilter, (playbackState: avSession.AVPlaybackState) => {
   console.info(`on playbackStateChange state : ${playbackState.state}`);
 });
 ```
@@ -934,7 +914,7 @@ off(type: 'playbackStateChange', callback?: (state: AVPlaybackState) => void): v
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                     |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------- |
-| type     | string                                                       | 是   | 取消对应的监听事件，支持事件`'playbackStateChange'`。    |
+| type     | string                                                       | 是   | 需要取消的监听事件类型，当前支持的事件类型为'playbackStateChange'。    |
 | callback | (state: [AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)) => void         | 否   | 回调函数，参数state是变化后的播放状态。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。                      |
 
 **错误码：**
@@ -943,13 +923,13 @@ off(type: 'playbackStateChange', callback?: (state: AVPlaybackState) => void): v
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **示例：**
 
 ```ts
-aVCastController.off('playbackStateChange');
+avCastController.off('playbackStateChange');
 ```
 
 ## on('mediaItemChange')<sup>10+</sup>
@@ -968,7 +948,7 @@ on(type: 'mediaItemChange', callback: Callback\<AVQueueItem>): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | 是   | 事件回调类型，支持事件`'mediaItemChange'`：当播放的媒体内容变化时，触发该事件。 |
+| type     | string                                                       | 是   | 事件回调类型，支持事件'mediaItemChange'：当播放的媒体内容变化时，触发该事件。 |
 | callback | Callback<[AVQueueItem](arkts-apis-avsession-i.md#avqueueitem10)>         | 是   | 回调函数，参数AVQueueItem是当前正在播放的媒体内容。                      |
 
 **错误码：**
@@ -977,13 +957,13 @@ on(type: 'mediaItemChange', callback: Callback\<AVQueueItem>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **示例：**
 
 ```ts
-aVCastController.on('mediaItemChange', (item: avSession.AVQueueItem) => {
+avCastController.on('mediaItemChange', (item: avSession.AVQueueItem) => {
   console.info(`on mediaItemChange state : ${item.itemId}`);
 });
 ```
@@ -992,7 +972,7 @@ aVCastController.on('mediaItemChange', (item: avSession.AVQueueItem) => {
 
 off(type: 'mediaItemChange'): void
 
-取消设置投播当前播放媒体内容事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+取消设置投播当前播放媒体内容事件监听。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1002,7 +982,7 @@ off(type: 'mediaItemChange'): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                     |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------- |
-| type     | string                                                       | 是   | 取消对应的监听事件，支持事件`'mediaItemChange'`。    |
+| type     | string                                                       | 是   |需要取消的监听事件类型，当前支持的事件类型为'mediaItemChange'。    |
 
 **错误码：**
 
@@ -1010,13 +990,13 @@ off(type: 'mediaItemChange'): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **示例：**
 
 ```ts
-aVCastController.off('mediaItemChange');
+avCastController.off('mediaItemChange');
 ```
 
 ## on('playNext')<sup>10+</sup>
@@ -1035,7 +1015,7 @@ on(type: 'playNext', callback: Callback\<void>): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | 是   | 事件回调类型，支持事件`'playNext'`：当播放下一首状态变化时，触发该事件。 |
+| type     | string                                                       | 是   | 事件回调类型，支持事件'playNext'：当播放下一首状态变化时，触发该事件。 |
 | callback | Callback\<void\>         | 是   | 回调函数。                      |
 
 **错误码：**
@@ -1044,13 +1024,13 @@ on(type: 'playNext', callback: Callback\<void>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **示例：**
 
 ```ts
-aVCastController.on('playNext', () => {
+avCastController.on('playNext', () => {
   console.info('on playNext');
 });
 ```
@@ -1059,7 +1039,7 @@ aVCastController.on('playNext', () => {
 
 off(type: 'playNext'): void
 
-取消设置播放下一首资源事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+取消设置播放下一首资源事件监听。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1069,7 +1049,7 @@ off(type: 'playNext'): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                     |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------- |
-| type     | string                                                       | 是   | 取消对应的监听事件，支持事件`'playNext'`。    |
+| type     | string                                                       | 是   | 需要取消的监听事件类型，当前支持的事件类型为'playNext'。    |
 
 **错误码：**
 
@@ -1077,13 +1057,13 @@ off(type: 'playNext'): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **示例：**
 
 ```ts
-aVCastController.off('playNext');
+avCastController.off('playNext');
 ```
 
 ## on('playPrevious')<sup>10+</sup>
@@ -1102,7 +1082,7 @@ on(type: 'playPrevious', callback: Callback\<void>): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | 是   | 事件回调类型，支持事件`'playPrevious'`：当播放上一首状态变化时，触发该事件。 |
+| type     | string                                                       | 是   | 事件回调类型，支持事件'playPrevious'：当播放上一首状态变化时，触发该事件。 |
 | callback | Callback\<void\>         | 是   | 回调函数。                      |
 
 **错误码：**
@@ -1111,13 +1091,13 @@ on(type: 'playPrevious', callback: Callback\<void>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **示例：**
 
 ```ts
-aVCastController.on('playPrevious', () => {
+avCastController.on('playPrevious', () => {
   console.info('on playPrevious');
 });
 ```
@@ -1126,7 +1106,7 @@ aVCastController.on('playPrevious', () => {
 
 off(type: 'playPrevious'): void
 
-取消设置播放上一首资源事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+取消设置播放上一首资源事件监听。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1136,7 +1116,7 @@ off(type: 'playPrevious'): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                     |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------- |
-| type     | string                                                       | 是   | 取消对应的监听事件，支持事件`'playPrevious'`。    |
+| type     | string                                                       | 是   | 需要取消的监听事件类型，当前支持的事件类型为'playPrevious'。    |
 
 **错误码：**
 
@@ -1144,13 +1124,13 @@ off(type: 'playPrevious'): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **示例：**
 
 ```ts
-aVCastController.off('playPrevious');
+avCastController.off('playPrevious');
 ```
 
 ## on('requestPlay')<sup>11+</sup>
@@ -1167,8 +1147,8 @@ on(type: 'requestPlay', callback: Callback\<AVQueueItem>): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | 是   | 事件回调类型，支持事件`'requestPlay'`：当请求播放状态变化时，触发该事件。 |
-| callback | Callback\<[AVQueueItem](arkts-apis-avsession-i.md#avqueueitem10)>                | 是   | 回调函数，参数AVQueueItem是当前正在播放的媒体内容。当监听事件注册成功，err为undefined，否则返回错误对象。  | 
+| type     | string                                                       | 是   | 事件回调类型，支持事件'requestPlay'：当请求播放状态变化时，触发该事件。 |
+| callback | Callback\<[AVQueueItem](arkts-apis-avsession-i.md#avqueueitem10)>                | 是   | 回调函数，参数AVQueueItem是当前正在播放的媒体内容。  | 
 
 **错误码：**
 
@@ -1176,13 +1156,13 @@ on(type: 'requestPlay', callback: Callback\<AVQueueItem>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **示例：**
 
 ```ts
-aVCastController.on('requestPlay', (item: avSession.AVQueueItem) => {
+avCastController.on('requestPlay', (item: avSession.AVQueueItem) => {
   console.info(`on requestPlay state : ${item.itemId}`);
 });
 ```
@@ -1199,8 +1179,8 @@ off(type: 'requestPlay', callback?: Callback\<AVQueueItem>): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                     |
 | -------- | ------------------------------------------------------------| ---- | ----------------------------------------------------- |
-| type     | string                                                      | 是   | 取消对应的监听事件，支持事件`'requestPlay'`。    |
-| callback | Callback\<[AVQueueItem](arkts-apis-avsession-i.md#avqueueitem10)>             | 否   | 回调函数，参数AVQueueItem是当前正在播放的媒体内容。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。|
+| type     | string                                                      | 是   | 需要取消的监听事件类型，当前支持的事件类型为'requestPlay'。    |
+| callback | Callback\<[AVQueueItem](arkts-apis-avsession-i.md#avqueueitem10)>             | 否   | 回调函数，参数AVQueueItem是当前正在播放的媒体内容。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。|
 
 **错误码：**
 
@@ -1208,13 +1188,13 @@ off(type: 'requestPlay', callback?: Callback\<AVQueueItem>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **示例：**
 
 ```ts
-aVCastController.off('requestPlay');
+avCastController.off('requestPlay');
 ```
 
 ## on('endOfStream')<sup>11+</sup>
@@ -1231,8 +1211,8 @@ on(type: 'endOfStream', callback: Callback\<void>): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------| ---- | ------------------------------------------------------------ |
-| type     | string                                                      | 是   | 事件回调类型，支持事件`'endOfStream'`：当资源播放结束时，触发该事件。 |
-| callback | Callback\<void\>                                            | 是   | 回调函数。当监听事件注册成功，err为undefined，否则返回错误对象。      |
+| type     | string                                                      | 是   | 事件回调类型，支持事件'endOfStream'：当资源播放结束时，触发该事件。 |
+| callback | Callback\<void\>                                            | 是   | 回调函数，当资源播放结束时触发回调。      |
 
 **错误码：**
 
@@ -1240,13 +1220,13 @@ on(type: 'endOfStream', callback: Callback\<void>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **示例：**
 
 ```ts
-aVCastController.on('endOfStream', () => {
+avCastController.on('endOfStream', () => {
   console.info('on endOfStream');
 });
 ```
@@ -1263,8 +1243,8 @@ off(type: 'endOfStream', callback?: Callback\<void>): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                     |
 | -------- | ------------------------------------------------------------| ---- | ----------------------------------------------------- |
-| type     | string                                                      | 是   | 取消对应的监听事件，支持事件`'endOfStream'`。    |
-| callback | Callback\<void\>                                            | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。   |
+| type     | string                                                      | 是   | 需要取消的监听事件类型，当前支持的事件类型为'endOfStream'。    |
+| callback | Callback\<void\>                                            | 否   | 回调函数。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。   |
 
 **错误码：**
 
@@ -1272,13 +1252,13 @@ off(type: 'endOfStream', callback?: Callback\<void>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **示例：**
 
 ```ts
-aVCastController.off('endOfStream');
+avCastController.off('endOfStream');
 ```
 
 ## on('seekDone')<sup>10+</sup>
@@ -1297,7 +1277,7 @@ on(type: 'seekDone', callback: Callback\<number>): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | 是   | 事件回调类型，支持事件`'seekDone'`：当seek结束时，触发该事件。 |
+| type     | string                                                       | 是   | 事件回调类型，支持事件'seekDone'：当seek结束时，触发该事件。 |
 | callback | Callback\<number\>         | 是   | 回调函数，返回seek后播放的位置。                      |
 
 **错误码：**
@@ -1306,13 +1286,13 @@ on(type: 'seekDone', callback: Callback\<number>): void
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **示例：**
 
 ```ts
-aVCastController.on('seekDone', (pos: number) => {
+avCastController.on('seekDone', (pos: number) => {
   console.info(`on seekDone pos：${pos} `);
 });
 ```
@@ -1321,7 +1301,7 @@ aVCastController.on('seekDone', (pos: number) => {
 
 off(type: 'seekDone'): void
 
-取消设置seek结束事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+取消设置seek结束事件监听。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1331,7 +1311,7 @@ off(type: 'seekDone'): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                     |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------- |
-| type     | string                                                       | 是   | 取消对应的监听事件，支持事件`'seekDone'`。    |
+| type     | string                                                       | 是   | 需要取消的监听事件类型，当前支持的事件类型为'seekDone'。    |
 
 **错误码：**
 
@@ -1339,13 +1319,13 @@ off(type: 'seekDone'): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **示例：**
 
 ```ts
-aVCastController.off('seekDone');
+avCastController.off('seekDone');
 ```
 
 ## on('validCommandChange')<sup>11+</sup>
@@ -1362,7 +1342,7 @@ on(type: 'validCommandChange', callback: Callback\<Array\<AVCastControlCommandTy
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | 是   | 事件回调类型，支持事件`'validCommandChange'`：当检测到会话的合法命令发生改变时，触发该事件。 |
+| type     | string                                                       | 是   | 事件回调类型，支持事件'validCommandChange'：当检测到会话的合法命令发生改变时，触发该事件。 |
 | callback | Callback<Array<[AVCastControlCommandType](arkts-apis-avsession-t.md#avcastcontrolcommandtype10)\>\>   | 是   | 回调函数。参数commands是有效命令的集合。                     |
 
 **错误码：**
@@ -1371,16 +1351,16 @@ on(type: 'validCommandChange', callback: Callback\<Array\<AVCastControlCommandTy
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified.2.Incorrect parameter types.|
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **示例：**
 
 ```ts
-aVCastController.on('validCommandChange', (validCommands: avSession.AVCastControlCommandType[]) => {
-  console.info(`validCommandChange : SUCCESS : size : ${validCommands.length}`);
-  console.info(`validCommandChange : SUCCESS : validCommands : ${validCommands.values()}`);
+avCastController.on('validCommandChange', (validCommands: avSession.AVCastControlCommandType[]) => {
+  console.info(`Succeeded in valid command change, size: ${validCommands.length}`);
+  console.info(`Succeeded in valid command change, validCommands: ${validCommands.values()}`);
 });
 ```
 
@@ -1396,7 +1376,7 @@ off(type: 'validCommandChange', callback?: Callback\<Array\<AVCastControlCommand
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                        |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------------------------- |
-| type     | string                                                       | 是   | 取消对应的监听事件，支持事件`'validCommandChange'`。         |
+| type     | string                                                       | 是   | 需要取消的监听事件类型，当前支持的事件类型为'validCommandChange'。         |
 | callback | Callback<Array<[AVCastControlCommandType](arkts-apis-avsession-t.md#avcastcontrolcommandtype10)\>\> | 否   | 回调函数。参数commands是有效命令的集合。<br>该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。          |
 
 **错误码：**
@@ -1405,30 +1385,30 @@ off(type: 'validCommandChange', callback?: Callback\<Array\<AVCastControlCommand
 
 | 错误码ID | 错误信息           |
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified.2.Incorrect parameter types.|
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
 **示例：**
 
 ```ts
-aVCastController.off('validCommandChange');
+avCastController.off('validCommandChange');
 ```
 
 ## on('videoSizeChange')<sup>12+</sup>
 on(type: 'videoSizeChange', callback: (width: number, height: number) => void): void
 
-媒体控制器监听视频尺寸变化变化的事件。
+媒体控制器监听视频尺寸变化的事件。
 
 每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
 
-系统能力： SystemCapability.Multimedia.AVSession.AVCast
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | 是   | 事件回调类型，支持事件`'videoSizeChange'`：当检测到会话的合法命令发生改变时，触发该事件。 |
+| type     | string                                                       | 是   | 事件回调类型，支持事件'videoSizeChange'。当视频尺寸变化时，触发该事件。 |
 | callback | (width: number, height: number) => void   | 是   | 回调函数。                    |
 
 **错误码：**
@@ -1437,14 +1417,14 @@ on(type: 'videoSizeChange', callback: (width: number, height: number) => void): 
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **示例：**
 
 ```ts
-aVCastController.on('videoSizeChange', (width: number, height: number) => {
-  console.info(`videoSizeChange : SUCCESS : size : ${width}, ${height}`);
+avCastController.on('videoSizeChange', (width: number, height: number) => {
+  console.info(`Succeeded in video size change, size: ${width}, ${height}`);
 });
 ```
 
@@ -1452,15 +1432,15 @@ aVCastController.on('videoSizeChange', (width: number, height: number) => {
 
 off(type: 'videoSizeChange'): void
 
-取消视频尺寸事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+取消视频尺寸事件监听。
 
-系统能力： SystemCapability.Multimedia.AVSession.AVCast
+**系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | 是   | 事件回调类型，支持事件`'videoSizeChange'`：当检测到会话的合法命令发生改变时，触发该事件。 |
+| type     | string                                                       | 是   | 需要取消的监听事件类型，当前支持的事件类型为'videoSizeChange'。 |
 
 **错误码：**
 
@@ -1468,13 +1448,13 @@ off(type: 'videoSizeChange'): void
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **示例：**
 
 ```ts
-aVCastController.off('videoSizeChange');
+avCastController.off('videoSizeChange');
 ```
 
 ## on('error')<sup>10+</sup>
@@ -1502,13 +1482,13 @@ on(type: 'error', callback: ErrorCallback): void
 
 | 错误码ID | 错误信息              |
 | -------- | --------------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 5400101  | No memory.            |
 | 5400102  | Operation not allowed.   |
 | 5400103  | I/O error.             |
 | 5400104  | Time out.      |
 | 5400105  | Service died.         |
-| 5400106  | Unsupport format.     |
+| 5400106  | Unsupported format.     |
 | 6600101  | Session service exception. |
 
 **示例：**
@@ -1516,8 +1496,8 @@ on(type: 'error', callback: ErrorCallback): void
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-aVCastController.on('error', (error: BusinessError) => {
-  console.info(`error happened, error code: ${error.code}, error message : ${error.message}.`)
+avCastController.on('error', (error: BusinessError) => {
+  console.error(`error happened, error code: ${error.code}, error message : ${error.message}.`)
 })
 ```
 
@@ -1525,7 +1505,7 @@ aVCastController.on('error', (error: BusinessError) => {
 
 off(type: 'error'): void
 
-取消播放的错误事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+取消播放的错误事件监听。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1543,19 +1523,19 @@ off(type: 'error'): void
 
 | 错误码ID | 错误信息              |
 | -------- | --------------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 5400101  | No memory.            |
 | 5400102  | Operation not allowed.   |
 | 5400103  | I/O error.             |
 | 5400104  | Time out.      |
 | 5400105  | Service died.         |
-| 5400106  | Unsupport format.     |
+| 5400106  | Unsupported format.     |
 | 6600101  | Session service exception. |
 
 **示例：**
 
 ```ts
-aVCastController.off('error')
+avCastController.off('error')
 ```
 
 ## on('keyRequest')<sup>12+</sup>
@@ -1574,7 +1554,7 @@ on(type: 'keyRequest', callback: KeyRequestCallback): void
 
 | 参数名 | 类型   | 必填 | 说明                                      |
 | ------ | ------ | ---- | ----------------------------------------- |
-| type     | string  | 是   | 事件回调类型，支持事件`'keyRequest'`：当DRM资源播放需要许可证时，触发该事件。 |
+| type     | string  | 是   | 事件回调类型，支持事件'keyRequest'：当DRM资源播放需要许可证时，触发该事件。 |
 | callback | [KeyRequestCallback](arkts-apis-avsession-t.md#keyrequestcallback12)  | 是   | 回调函数，媒体资源及许可证请求数据。|
 
 
@@ -1584,7 +1564,7 @@ on(type: 'keyRequest', callback: KeyRequestCallback): void
 
 | 错误码ID | 错误信息           |
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **示例：**
@@ -1593,7 +1573,7 @@ on(type: 'keyRequest', callback: KeyRequestCallback): void
 let keyRequestCallback: avSession.KeyRequestCallback = async(assetId: string, requestData: Uint8Array) => {
   console.info(`Succeeded in keyRequestCallback. assetId: ${assetId}, requestData: ${requestData}`);
 }
-aVCastController.on('keyRequest', keyRequestCallback);
+avCastController.on('keyRequest', keyRequestCallback);
 ```
 
 ## off('keyRequest')<sup>12+</sup>
@@ -1610,8 +1590,8 @@ off(type: 'keyRequest', callback?: KeyRequestCallback): void
 
 | 参数名 | 类型   | 必填 | 说明                                      |
 | ------ | ------ | ---- | ----------------------------------------- |
-| type     | string                                                       | 是   | 取消对应的监听事件，支持的事件是`'keyRequest'`。 |
-| callback |  [KeyRequestCallback](arkts-apis-avsession-t.md#keyrequestcallback12)  | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。                            |
+| type     | string                                                       | 是   | 需要取消的监听事件类型，当前支持的事件类型为'keyRequest'。 |
+| callback |  [KeyRequestCallback](arkts-apis-avsession-t.md#keyrequestcallback12)  | 否   | 回调函数。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。                            |
 
 **错误码：**
 
@@ -1619,13 +1599,13 @@ off(type: 'keyRequest', callback?: KeyRequestCallback): void
 
 | 错误码ID | 错误信息           |
 | -------- | ---------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 |  parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **示例：**
 
 ```ts
-aVCastController.off('keyRequest');
+avCastController.off('keyRequest');
 ```
 
 ## on('castControlGenericError')<sup>13+</sup>
@@ -1672,8 +1652,10 @@ on(type: 'castControlGenericError', callback: ErrorCallback): void
 **示例：**
 
 ```ts
-aVCastController.on('castControlGenericError', (error: BusinessError) => {
-  console.info(`castControlGenericError happened, error code: ${error.code}, error message : ${error.message}.`)
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avCastController.on('castControlGenericError', (error: BusinessError) => {
+  console.error(`castControlGenericError happened, error code: ${error.code}, error message : ${error.message}.`)
 })
 ```
 
@@ -1691,12 +1673,12 @@ off(type: 'castControlGenericError', callback?: ErrorCallback): void
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| type     | string   | 是   |  取消对应的监听事件，支持的事件是'castControlGenericError'。 |
-| callback | ErrorCallback | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| type     | string   | 是   |  需要取消的监听事件类型，当前支持的事件类型为'castControlGenericError'。 |
+| callback | ErrorCallback | 否   | 回调函数。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息              |
 | -------- | --------------------- |
@@ -1705,7 +1687,7 @@ off(type: 'castControlGenericError', callback?: ErrorCallback): void
 **示例：**
 
 ```ts
-aVCastController.off('castControlGenericError');
+avCastController.off('castControlGenericError');
 ```
 
 ## on('castControlIoError')<sup>13+</sup>
@@ -1755,8 +1737,10 @@ on(type: 'castControlIoError', callback: ErrorCallback): void
 **示例：**
 
 ```ts
-aVCastController.on('castControlIoError', (error: BusinessError) => {
-  console.info(`castControlIoError happened, error code: ${error.code}, error message : ${error.message}.`)
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avCastController.on('castControlIoError', (error: BusinessError) => {
+  console.error(`castControlIoError happened, error code: ${error.code}, error message : ${error.message}.`)
 })
 ```
 
@@ -1774,12 +1758,12 @@ off(type: 'castControlIoError', callback?: ErrorCallback): void
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| type     | string   | 是   | 取消对应的监听事件，支持的事件是'castControlIoError'。 |
-| callback | ErrorCallback | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| type     | string   | 是   | 需要取消的监听事件类型，当前支持的事件类型为'castControlIoError'。 |
+| callback | ErrorCallback | 否   | 回调函数。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息              |
 | -------- | --------------------- |
@@ -1788,7 +1772,7 @@ off(type: 'castControlIoError', callback?: ErrorCallback): void
 **示例：**
 
 ```ts
-aVCastController.off('castControlIoError');
+avCastController.off('castControlIoError');
 ```
 
 ## on('castControlParsingError')<sup>13+</sup>
@@ -1826,8 +1810,10 @@ on(type: 'castControlParsingError', callback: ErrorCallback): void
 **示例：**
 
 ```ts
-aVCastController.on('castControlParsingError', (error: BusinessError) => {
-  console.info(`castControlParsingError happened, error code: ${error.code}, error message : ${error.message}.`)
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avCastController.on('castControlParsingError', (error: BusinessError) => {
+  console.error(`castControlParsingError happened, error code: ${error.code}, error message : ${error.message}.`)
 })
 ```
 
@@ -1845,12 +1831,12 @@ off(type: 'castControlParsingError', callback?: ErrorCallback): void
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| type     | string   | 是   |  取消对应的监听事件，支持的事件是'castControlParsingError'。 |
-| callback | ErrorCallback | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| type     | string   | 是   |  需要取消的监听事件类型，当前支持的事件类型为'castControlParsingError'。 |
+| callback | ErrorCallback | 否   | 回调函数。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息              |
 | -------- | --------------------- |
@@ -1859,7 +1845,7 @@ off(type: 'castControlParsingError', callback?: ErrorCallback): void
 **示例：**
 
 ```ts
-aVCastController.off('castControlParsingError');
+avCastController.off('castControlParsingError');
 ```
 
 ## on('castControlDecodingError')<sup>13+</sup>
@@ -1898,8 +1884,10 @@ on(type: 'castControlDecodingError', callback: ErrorCallback): void
 **示例：**
 
 ```ts
-aVCastController.on('castControlDecodingError', (error: BusinessError) => {
-  console.info(`castControlDecodingError happened, error code: ${error.code}, error message : ${error.message}.`)
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avCastController.on('castControlDecodingError', (error: BusinessError) => {
+  console.error(`castControlDecodingError happened, error code: ${error.code}, error message : ${error.message}.`)
 })
 ```
 
@@ -1917,12 +1905,12 @@ off(type: 'castControlDecodingError', callback?: ErrorCallback): void
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| type     | string   | 是   |  取消对应的监听事件，支持的事件是'castControlDecodingError'。 |
-| callback | ErrorCallback | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| type     | string   | 是   |  需要取消的监听事件类型，当前支持的事件类型为'castControlDecodingError'。 |
+| callback | ErrorCallback | 否   | 回调函数。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息              |
 | -------- | --------------------- |
@@ -1931,7 +1919,7 @@ off(type: 'castControlDecodingError', callback?: ErrorCallback): void
 **示例：**
 
 ```ts
-aVCastController.off('castControlDecodingError');
+avCastController.off('castControlDecodingError');
 ```
 
 ## on('castControlAudioRendererError')<sup>13+</sup>
@@ -1967,8 +1955,10 @@ on(type: 'castControlAudioRendererError', callback: ErrorCallback): void
 **示例：**
 
 ```ts
-aVCastController.on('castControlAudioRendererError', (error: BusinessError) => {
-  console.info(`castControlAudioRendererError happened, error code: ${error.code}, error message : ${error.message}.`)
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avCastController.on('castControlAudioRendererError', (error: BusinessError) => {
+  console.error(`castControlAudioRendererError happened, error code: ${error.code}, error message : ${error.message}.`)
 })
 ```
 
@@ -1986,12 +1976,12 @@ off(type: 'castControlAudioRendererError', callback?: ErrorCallback): void
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| type     | string   | 是   | 取消对应的监听事件，支持的事件是'castControlAudioRendererError'。 |
-| callback | ErrorCallback | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| type     | string   | 是   | 需要取消的监听事件类型，当前支持的事件类型为'castControlAudioRendererError'。 |
+| callback | ErrorCallback | 否   | 回调函数。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息              |
 | -------- | --------------------- |
@@ -2000,14 +1990,14 @@ off(type: 'castControlAudioRendererError', callback?: ErrorCallback): void
 **示例：**
 
 ```ts
-aVCastController.off('castControlAudioRendererError');
+avCastController.off('castControlAudioRendererError');
 ```
 
 ## on('castControlDrmError')<sup>13+</sup>
 
 on(type: 'castControlDrmError', callback: ErrorCallback): void
 
-监听投播drm的错误事件。
+监听投播DRM的错误事件。
 
 每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
 
@@ -2020,7 +2010,7 @@ on(type: 'castControlDrmError', callback: ErrorCallback): void
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | 错误事件回调类型，支持的事件：'castControlDrmError'。 |
-| callback | ErrorCallback | 是   | 投播drm的错误事件回调方法。 |
+| callback | ErrorCallback | 是   | 投播DRM的错误事件回调方法。 |
 
 **错误码：**
 
@@ -2043,8 +2033,10 @@ on(type: 'castControlDrmError', callback: ErrorCallback): void
 **示例：**
 
 ```ts
-aVCastController.on('castControlDrmError', (error: BusinessError) => {
-  console.info(`castControlDrmError happened, error code: ${error.code}, error message : ${error.message}.`)
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avCastController.on('castControlDrmError', (error: BusinessError) => {
+  console.error(`castControlDrmError happened, error code: ${error.code}, error message : ${error.message}.`)
 })
 ```
 
@@ -2052,7 +2044,7 @@ aVCastController.on('castControlDrmError', (error: BusinessError) => {
 
 off(type: 'castControlDrmError', callback?: ErrorCallback): void
 
-取消投播drm的错误事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
+取消投播DRM的错误事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
@@ -2062,12 +2054,12 @@ off(type: 'castControlDrmError', callback?: ErrorCallback): void
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| type     | string   | 是   | 取消对应的监听事件，支持的事件是'castControlDrmError'。 |
-| callback | ErrorCallback | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| type     | string   | 是   | 需要取消的监听事件类型，当前支持的事件类型为'castControlDrmError'。 |
+| callback | ErrorCallback | 否   | 回调函数。该参数为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息              |
 | -------- | --------------------- |
@@ -2076,7 +2068,7 @@ off(type: 'castControlDrmError', callback?: ErrorCallback): void
 **示例：**
 
 ```ts
-aVCastController.off('castControlDrmError');
+avCastController.off('castControlDrmError');
 ```
 
 ## on('customDataChange')<sup>20+</sup>
@@ -2084,6 +2076,8 @@ aVCastController.off('castControlDrmError');
 on(type: 'customDataChange', callback: Callback\<Record\<string, Object>>): void
 
 注册从远端设备发送的自定义数据的监听器。
+
+每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -2107,8 +2101,8 @@ on(type: 'customDataChange', callback: Callback\<Record\<string, Object>>): void
 **示例：**
 
 ```ts
-aVCastController.on('customDataChange', (callback) => {
-    console.info(`Caught customDataChange event,the new callback is: ${JSON.stringify(callback)}`);
+avCastController.on('customDataChange', (data: Record<string, Object>) => {
+    console.info(`Caught customDataChange event, the new data is: ${JSON.stringify(data)}`);
 });
 ```
 
@@ -2126,7 +2120,7 @@ off(type: 'customDataChange', callback?: Callback\<Record\<string, Object>>): vo
 
 | 参数名   | 类型                             | 必填 | 说明                                                         |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                           | 是   | 取消对应的监听事件，支持的事件是'customDataChange'。         |
+| type     | string                           | 是   | 需要取消的监听事件类型，当前支持的事件类型为'customDataChange'。         |
 | callback | Callback\<Record\<string, Object>> | 否   | 注册监听事件时的回调函数。该参数为可选参数，若不填写该参数，则认为取消会话所有与此事件相关的监听。 |
 
 **错误码：**
@@ -2140,5 +2134,5 @@ off(type: 'customDataChange', callback?: Callback\<Record\<string, Object>>): vo
 **示例：**
 
 ```ts
-aVCastController.off('customDataChange');
+avCastController.off('customDataChange');
 ```

@@ -256,7 +256,7 @@ The permission is denied.
 
 1. Check the UGO permission of the file.
 
-2. Check the kernel log for [AVC log information](https://gitcode.com/openharmony/docs/blob/master/en/device-dev/subsystems/subsys-security-selinux-develop-intro.md). If yes,<!--RP1--> see [SELinux Development](../../../device-dev/subsystems/subsys-security-selinux-develop-intro.md).<!--RP1End-->
+2. Check the kernel log for [AVC log information](https://gitcode.com/openharmony/docs/blob/master/en/device-dev/subsystems/subsys-security-selinux-develop-intro.md). If yes, <!--RP1-->see [SELinux Development](../../../device-dev/subsystems/subsys-security-selinux-develop-intro.md).<!--RP1End-->
 
 3. Check whether the file path is a sandbox path. The file management system does not allow operations on files outside the sandbox directory. For details, see [Application Sandbox Directory and Application Sandbox Path](../../file-management/app-sandbox-directory.md#application-sandbox-directory-and-application-sandbox-path).
 
@@ -1223,6 +1223,61 @@ The underlying file system is abnormal.
 **Solution**
 
 Restart the device and try again.
+
+### 13600016 Failed to Obtain the Number of Inodes in the File System
+ 	 
+**Error Message**
+
+Failed to query the inode information of the data partition.
+
+**Description**
+
+Failed to obtain the inode information of the data partition.
+
+**Possible Causes**
+
+The underlying file system is abnormal.
+
+**Solution**
+
+Restart the device and try again.
+
+### 13600017 Failed to Obtain the Inode Usage of the Current Application
+
+**Error Message**
+
+Failed to query the inode information of the application.
+
+**Description**
+
+Failed to obtain the inode usage of the current application.
+
+**Possible Causes**
+
+The underlying file system is abnormal.
+
+**Solution**
+
+Restart the device and try again.
+
+### 13600018 Failed to Query the System Data Size
+
+**Error Message**
+
+Failed to query the system data size.
+
+**Description**
+
+Failed to query the system data size.
+
+**Possible Causes**
+
+The underlying file system is abnormal.
+
+**Solution**
+
+Restart the device and try again.
+
 ## User File Access Error Codes
 
 ### 14300001 IPC Failed

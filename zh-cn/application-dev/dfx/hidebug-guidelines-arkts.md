@@ -1,13 +1,13 @@
-# HiDebug接口使用示例(ArkTS)
+# HiDebug接口使用示例（ArkTS）
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @hello_harmony; @leiguangyu-->
-<!--Designer: @kutcherzhou1-->
+<!--Owner: @leiguangyu-->
+<!--Designer: @mgce1-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
-HiDebug ArkTS接口功能独立，需要获取调试信息时直接调用。具体调用方式请参考[API参考文档](../reference/apis-performance-analysis-kit/js-apis-hidebug.md)中的示例。
+HiDebug ArkTS接口功能独立，需要获取调试信息时直接调用。具体调用方式请参考[@ohos.hidebug](../reference/apis-performance-analysis-kit/js-apis-hidebug.md)中的示例。
 
 ## 开发示例
 
@@ -32,7 +32,7 @@ HiDebug ArkTS接口功能独立，需要获取调试信息时直接调用。具�
      try {
        hilog.info(0x0000, 'testTag', `getSystemCpuUsage: ${hidebug.getSystemCpuUsage()}`);
      } catch (error) {
-       hilog.info(0x0000, 'testTag', `error code: ${(error as BusinessError).code},
+       hilog.error(0x0000, 'testTag', `error code: ${(error as BusinessError).code},
          error msg: ${(error as BusinessError).message}`);
      }
    }

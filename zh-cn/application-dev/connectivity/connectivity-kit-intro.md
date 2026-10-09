@@ -3,7 +3,7 @@
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @enjoy_sunshine-->
-<!--Designer: @chengguohong; @tangjia15-->
+<!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -57,25 +57,62 @@
 WLAN系统为用户提供接入WLAN网络功能（STA模式）、点对点的数据传输功能（P2P模式）和热点分享功能（AP模式），让应用可以通过WLAN和其他设备互联互通。
 
 - **STA模式**<br/>
-  STA模式即工作站模式，可以理解为某网络中的一个工作站即客户端。当某设备具备该功能时，它可以连到另外的一个路由网络中，如家用路由器，通常用于提供网络的数据上行服务。详情请参考[@ohos.wifiManager API参考](../reference/apis-connectivity-kit/js-apis-wifiManager.md)。
+  STA模式即工作站模式，可以理解为某网络中的一个工作站即客户端。当某设备具备该功能时，它可以连到另外的一个路由网络中，如家用路由器，通常用于提供网络的数据上行服务。详情请参考[@ohos.wifiManager (WLAN)](../reference/apis-connectivity-kit/js-apis-wifiManager.md)文档。
 
 - **P2P模式**<br/>
-  P2P模式也是Wi-Fi Direct；Wi-Fi Direct是一种点对点连接技术，它可以在两台STA之间直接建立TCP/IP链接，并不需要AP的参与；其中一台STA会起到传统意义上的AP的作用，称为Group Owner(GO),另外一台station则称为Group Client(GC)，像连接AP一样连接到GO。详情请参考[@ohos.wifiManager API参考](../reference/apis-connectivity-kit/js-apis-wifiManager.md)。
+  P2P模式也是Wi-Fi Direct；Wi-Fi Direct是一种点对点连接技术，它可以在两台STA之间直接建立TCP/IP链接，并不需要AP的参与；其中一台STA会起到传统意义上的AP的作用，称为Group Owner(GO),另外一台station则称为Group Client(GC)，像连接AP一样连接到GO。详情请参考[@ohos.wifiManager (WLAN)](../reference/apis-connectivity-kit/js-apis-wifiManager.md)文档。
 
 - **AP模式**<br/>
-  AP模式为加入无线局域网的成员设备（即客户端）提供下行数据业务，它提供以无线方式组建无线局域网WLAN，相当于WLAN的中心设备。详情请参考[@ohos.wifiManager API参考](../reference/apis-connectivity-kit/js-apis-wifiManager.md)。
+  AP模式为加入无线局域网的成员设备（即客户端）提供下行数据业务，它提供以无线方式组建无线局域网WLAN，相当于WLAN的中心设备。详情请参考[@ohos.wifiManager (WLAN)](../reference/apis-connectivity-kit/js-apis-wifiManager.md)文档。
 
 ### NFC简介
 NFC英文全称Near Field Communication，近距离无线通信。NFC服务提供NFC开关控制、NFC标签读写、NFC卡模拟等业务功能。
 
-- **NFC开关**<br/>
-  NFC开关模块，提供了打开NFC和关闭NFC功能。打开或关闭NFC的应用程序，需要声明权限"ohos.permission.MANAGE_SECURE_SETTINGS"，该权限只有系统应用才能声明。因此，只有系统应用才能打开或关闭NFC。详情请参考[@ohos.nfc.controller API参考](../reference/apis-connectivity-kit/js-apis-nfcController.md)。
+- **NFC开关控制**<br/>
+  NFC开关模块，提供了打开NFC和关闭NFC功能。打开或关闭NFC的应用程序，需要声明权限"ohos.permission.MANAGE_SECURE_SETTINGS"，该权限只有系统应用才能声明。因此，只有系统应用才能打开或关闭NFC。详情请参考[@ohos.nfc.controller (标准NFC)](../reference/apis-connectivity-kit/js-apis-nfcController.md)文档。
 
 - **NFC标签读写**<br/>
-  NFC标签读写模块，提供了NFC标签的发现和分发给应用程序，以及应用程序通过NFC标签读写接口访问NFC标签的能力。应用程序需要按照规定的格式来声明NFC标签读写能力，只有声明后应用程序才能收到NFC标签的分发。详情请参考[@ohos.nfc.tag API参考](../reference/apis-connectivity-kit/js-apis-nfcTag.md)。
+  NFC标签读写模块，提供了NFC标签的发现和分发给应用程序，以及应用程序通过NFC标签读写接口访问NFC标签的能力。应用程序需要按照规定的格式来声明NFC标签读写能力，只有声明后应用程序才能收到NFC标签的分发。详情请参考[@ohos.nfc.tag (标准NFC-Tag)](../reference/apis-connectivity-kit/js-apis-nfcTag.md)文档。
 
 - **NFC卡模拟**<br/>
-  NFC卡模拟模块，提供了NFC的刷卡业务，电子设备和读卡器触碰完成刷卡。应用程序需要按照规定的格式来声明NFC卡模拟能力，只有声明后应用程序才能够具备刷卡能力。详情请参考[@ohos.nfc.cardEmulation API参考](../reference/apis-connectivity-kit/js-apis-cardEmulation.md)。
+  NFC卡模拟模块，提供了NFC的刷卡业务，电子设备和读卡器触碰完成刷卡。应用程序需要按照规定的格式来声明NFC卡模拟能力，只有声明后应用程序才能够具备刷卡能力。详情请参考[@ohos.nfc.cardEmulation (标准NFC-cardEmulation)](../reference/apis-connectivity-kit/js-apis-cardEmulation.md)文档。
+
+### 融合短距简介
+
+融合短距服务是OpenHarmony系统中统一管理短距离通信技术的服务。
+
+- **PartnerAgent服务模块**<br/>
+  提供了伙伴设备与OpenHarmony设备互通服务，在模块内可以实现互通业务比如媒体控制，电话反控，健康检测等。详情请参考[@ohos.FusionConnectivity.partnerAgent](../reference/apis-connectivity-kit/js-apis-fusionConnectivity-partnerAgent.md)文档。
+
+- **融合测距模块**<br/>
+  融合测距模块，提供了星闪[HADM](fusion-connectivity/fusion-connectivity-terminology.md#hadm)测距服务，在模块内可以使用星闪HADM测距的能力。详情请参考[@ohos.FusionConnectivity.ranging](../reference/apis-connectivity-kit/js-apis-fusionConnectivity-ranging.md)文档。
+
+### 星闪简介
+
+星闪（NearLink）提供一种低功耗、高速率的短距离通信服务，支持星闪设备之间的连接、数据交互。
+
+星闪提供了多种API，适用于设备发现、连接和数据传输等不同场景，助力开发者完成星闪相关开发。
+
+- **manager模块**<br/>
+  提供星闪开关状态查询、设备信息查询、配对设备管理等能力。详情请参考API [@ohos.nearlink.manager (星闪基础管理能力)](../reference/apis-connectivity-kit/js-apis-nearlink-manager.md)。
+
+- **advertising模块**<br/>
+  提供发送星闪广播、停止广播和订阅广播状态变化等能力。详情请参考API [@ohos.nearlink.advertising (星闪广播能力)](../reference/apis-connectivity-kit/js-apis-nearlink-advertising.md)。
+
+- **scan模块**<br/>
+  提供发起星闪扫描、停止扫描、订阅扫描结果和查询扫描设备信息等能力。详情请参考API [@ohos.nearlink.scan (星闪扫描能力)](../reference/apis-connectivity-kit/js-apis-nearlink-scan.md)。
+
+- **remoteDevice模块**<br/>
+  提供创建远端设备实例、发起配对、查询远端设备信息和订阅设备状态变化等能力。详情请参考API [@ohos.nearlink.remoteDevice (星闪远端设备连接能力)](../reference/apis-connectivity-kit/js-apis-nearlink-remote-device.md)。
+
+- **ssap模块**<br/>
+  提供SSAP服务端/客户端连接建立、属性读写与通知等能力。详情请参考API [@ohos.nearlink.ssap (星闪SSAP连接能力)](../reference/apis-connectivity-kit/js-apis-nearlink-ssap.md)。
+
+- **dataTransfer模块**<br/>
+  提供基于端口通道的数据传输能力。详情请参考API [@ohos.nearlink.dataTransfer (星闪数传能力)](../reference/apis-connectivity-kit/js-apis-nearlink-data-transfer-api.md)。
+
+- **cdsm模块**<br/>
+  提供合作设备集合成员设备信息的查询与订阅等能力。详情请参考API [@ohos.nearlink.cdsm (星闪合作设备集合管理能力)](../reference/apis-connectivity-kit/js-apis-nearlink-cdsm.md)。
 
 ### 运作机制
 

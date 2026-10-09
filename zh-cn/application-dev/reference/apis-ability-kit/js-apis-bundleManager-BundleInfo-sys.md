@@ -3,14 +3,14 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @memghaiyang-->
+<!--Adviser: @HelloCrease-->
 
 应用包信息，应用可以通过[bundleManager.getBundleInfo](js-apis-bundleManager.md#bundlemanagergetbundleinfo14)获取指定包名的应用包信息，其中入参[bundleFlags](js-apis-bundleManager.md#bundleflag)指定所返回的[BundleInfo](js-apis-bundleManager-bundleInfo.md)中所包含的信息。
 
 > **说明：**
 >
-> 本模块首批接口从API version 20 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 当前页面仅包含本模块的系统接口，其他公开接口参见（[BundleInfo](js-apis-bundleManager-bundleInfo.md)）。
 
@@ -19,6 +19,25 @@
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 ```
+
+## BundleInfo
+
+应用包信息。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Table: 20%; 20%; 8%; 8%; 44%-->
+| 名称                               | 类型                                                         | 只读 | 可选 | 说明                                                         |
+| --------------------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
+| sandboxCreatorBundleName          | string                                                       | 是   | 是   | 沙箱分身的创建方包名。 |
+| deviceModeDistributionPolicy          | [bundleManager.DeviceModeDistributionPolicy](js-apis-bundleManager-sys.md#devicemodedistributionpolicy)                                                       | 是   | 是   | 设备模式分发策略，用于指定应用程序如何分发到设备上。<br>**起始版本：** 26.0.1 |
+| appSandboxPolicy          | [bundleManager.AppSandboxPolicy](js-apis-bundleManager-sys.md#appsandboxpolicy)                                                       | 是   | 是   | 双模式（2in1/平板）场景下的应用沙箱策略。<br>**起始版本：** 26.0.1 |
 
 ## DynamicIconInfo
 
@@ -48,6 +67,58 @@ import { bundleManager } from '@kit.AbilityKit';
 | --------- | -------------- | ---- | ---- | ------------------- |
 | userId | number         | 否   | 是   | 用户ID。默认为当前调用方所在的用户。             |
 | appIndex | number         | 否   | 是   | 应用分身ID。默认为0，表示主应用。    |
-| bundleName<sup>23+</sup> | string         | 否   | 是   | 应用包名。默认值为空字符串。    |
-| moduleName<sup>23+</sup> | string         | 否   | 是   | Ability所属的模块名称。默认值为空字符串。    |
-| abilityName<sup>23+</sup> | string         | 否   | 是   | Ability名称。默认值为空字符串。    |
+| bundleName<sup>23+</sup> | string         | 否   | 是   | 应用包名。默认值为空字符串。<br/>**模型约束：** 此接口仅可在Stage模型下使用。    |
+| moduleName<sup>23+</sup> | string         | 否   | 是   | Ability所属的模块名称。默认值为空字符串。<br/>**模型约束：** 此接口仅可在Stage模型下使用。    |
+| abilityName<sup>23+</sup> | string         | 否   | 是   | Ability名称。默认值为空字符串。<br/>**模型约束：** 此接口仅可在Stage模型下使用。    |
+
+
+## AppClonePreference
+
+应用分身偏好设置，用于配置应用启动时主应用和分身应用的选择策略。
+
+**起始版本：** 26.0.0
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称      | 类型           | 只读 | 可选 | 说明                        |
+| --------- | -------------- | ---- | ---- | --------------------------- |
+| mode | [AppClonePreferenceMode](js-apis-bundleManager-sys.md#appclonepreferencemode)         | 否   | 否   | 表示应用分身偏好设置的模式。 |
+| appIndex | number         | 否   | 是   | 表示应用分身索引。<br>当mode取值为AppClonePreferenceMode.CLONE_APP时为必填参数，用于指定具体的分身应用，取值范围为1~5的整数（系统最多支持5个分身）。   |
+
+## SignatureInfo
+
+描述应用包的签名信息，可标识应用来源、确保应用完整性，并用于应用安全校验与识别。
+
+**起始版本：** 26.0.1
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+| 名称      | 类型           | 只读 | 可选 | 说明                        |
+| --------- | -------------- | ---- | ---- | --------------------------- |
+|validity| [Validity](js-apis-bundleManager-AppProvisionInfo-sys.md#validity) | 是   | 是   | 签名证书文件的有效期。<br/>**模型约束：** 此接口仅可在Stage模型下使用。            |
+
+
+## BundleExtensionPolicyInfo
+
+应用包扩展策略信息。
+
+**起始版本：** 26.0.1
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称      | 类型           | 只读 | 可选 | 说明                        |
+| --------- | -------------- | ---- | ---- | --------------------------- |
+| bundleName | string         | 是   | 否   | 应用的包名。 |
+| appIndex | number         | 是   | 否   | 应用分身索引。<br>该值应为整数。 |
+| deviceModeDistributionPolicy | [bundleManager.DeviceModeDistributionPolicy](js-apis-bundleManager-sys.md#devicemodedistributionpolicy) | 是 | 否 | 应用的设备模式分发策略。 |
+| appSandboxPolicy | [bundleManager.AppSandboxPolicy](js-apis-bundleManager-sys.md#appsandboxpolicy) | 是 | 否 | 应用的沙箱策略。 |

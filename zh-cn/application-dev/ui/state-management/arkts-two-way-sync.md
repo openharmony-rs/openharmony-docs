@@ -2,7 +2,7 @@
 <!--Kit: ArkUI--> 
 <!--Subsystem: ArkUI--> 
 <!--Owner: @Cuecuexiaoyu--> 
-<!--Designer: @lixingchi1--> 
+<!--Designer: @VictorS67--> 
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -16,7 +16,7 @@
 
 - 当前`$$`支持基础类型变量，当该变量使用[\@State](arkts-state.md)、[\@Link](arkts-link.md)、[\@Prop](arkts-prop.md)、[\@Provide](arkts-provide-and-consume.md)等状态管理V1装饰器装饰，或者[\@Local](arkts-new-local.md)等状态管理V2装饰器装饰时，变量值的变化会触发UI刷新。
 
-- 当前`$$`支持的组件：
+- 当前`$$`支持的组件和通用属性：
 
   | 组件                                                         | 支持的参数/属性 | 起始API版本 |
   | ------------------------------------------------------------ | --------------- | ----------- |
@@ -49,11 +49,10 @@
 
 ## 使用示例
 
-以[TextInput](../../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md)方法的text参数为例：
+以[TextInput](../../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md)组件的text参数为例：
 <!-- @[sync_state_manager_$$](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/syncStateManager/SyncUsageExample.ets) -->
 
 ``` TypeScript
-// xxx.ets
 @Entry
 @Component
 struct TextInputExample {
@@ -63,6 +62,9 @@ struct TextInputExample {
   build() {
     Column({ space: 20 }) {
       Text(this.text)
+        .fontSize(20)
+        .margin(10)
+      // $$运算符为系统组件提供TS变量的引用，使得TS变量和系统组件的内部状态保持同步
       TextInput({ text: $$this.text, placeholder: 'input your word...', controller: this.controller })
         .placeholderColor(Color.Grey)
         .placeholderFont({ size: 14, weight: 400 })

@@ -4,10 +4,10 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
-EmbeddableUIAbilityContext是[EmbeddableUIAbility](js-apis-app-ability-embeddableUIAbility.md)组件的上下文，继承自[UIAbilityContext](js-apis-inner-application-uiAbilityContext.md)。
+EmbeddableUIAbilityContext是[EmbeddableUIAbility](js-apis-app-ability-embeddableUIAbility.md)组件的上下文，继承自[UIAbilityContext (UIAbility上下文)](js-apis-inner-application-uiAbilityContext.md)。
 
 每个EmbeddableUIAbility组件实例化时，系统都会自动创建对应的EmbeddableUIAbilityContext。
 

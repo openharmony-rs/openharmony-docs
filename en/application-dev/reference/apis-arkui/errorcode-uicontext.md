@@ -1,10 +1,11 @@
 # UI Context Error Codes
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=e4d16999d09eea9a3f8985f83bc1ce7747d6f85e translatedAt=2026-08-29T09:27:12.871Z pushedAt=2026-08-31T07:41:48.881Z -->
 
 > **NOTE**
 >
@@ -44,7 +45,7 @@ The type of callback function is incorrect.
 
 **Solution**
 
-Pass a callback function of the correct type.
+Pass a non-empty callback function that conforms to the requirements of the API signature.
 
 ## 100101 Invalid Negative Parameter Value
 
@@ -62,7 +63,7 @@ An invalid negative parameter value is provided.
 
 **Solution**
 
-Ensure all parameter values meet minimum value requirements.
+Pass a parameter value greater than or equal to 0.
 
 ## 100102 Incorrect Parameter Type
 
@@ -94,8 +95,26 @@ This error code is reported when the function is incorrectly called from a non-m
 
 **Possible Causes**
 
-The function must be called from the main thread.
+The function is called from the non-main thread.
 
 **Solution**
 
 Call the function from the main thread.
+
+## 120007 Instance Not Exist
+
+**Error Message**
+
+The UIContext is not available.
+
+**Description**
+
+This error code is reported when the UIContext is unavailable.
+
+**Possible Causes**
+
+The passed instance is invalid, or the corresponding instance has been destroyed.
+
+**Solution**
+
+Provide a valid UIContext object.

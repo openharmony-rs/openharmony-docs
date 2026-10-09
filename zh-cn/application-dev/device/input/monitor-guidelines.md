@@ -5,7 +5,7 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
 
 ## 功能介绍
 
@@ -13,26 +13,26 @@
 
 ## 接口说明
 
-创建和删除事件监听相关接口如下表所示，接口详细介绍请参考[Input文档](../../reference/apis-input-kit/capi-input.md)。
+创建和删除事件监听相关接口如下表所示，接口详细介绍请参考[oh_input_manager.h](../../reference/apis-input-kit/capi-oh-input-manager-h.md)。
 
-| 接口名称  | 描述 |
+| 接口名称 | 描述 |
 | ------------------------------------------------------------ | -------------------------- |
-| Input_Result OH_Input_AddKeyEventMonitor(Input_KeyEventCallback callback) |创建按键事件监听。  |
-| Input_Result OH_Input_AddMouseEventMonitor(Input_MouseEventCallback callback) |创建鼠标事件监听。  |
-| Input_Result OH_Input_AddTouchEventMonitor(Input_TouchEventCallback callback) |创建触摸事件监听。  |
-| Input_Result OH_Input_AddAxisEventMonitorForAll(Input_AxisEventCallback callback) |创建所有类型轴事件监听。  |
-| Input_Result OH_Input_AddAxisEventMonitor(InputEvent_AxisEventType axisEventType, Input_AxisEventCallback callback) |创建指定类型轴事件监听。  |
-| Input_Result OH_Input_RemoveKeyEventMonitor(Input_KeyEventCallback callback) |删除按键事件监听。  |
-| Input_Result OH_Input_RemoveMouseEventMonitor(Input_MouseEventCallback callback) |删除鼠标事件监听。  |
-| Input_Result OH_Input_RemoveTouchEventMonitor(Input_TouchEventCallback callback) |删除触摸事件监听。  |
-| Input_Result OH_Input_RemoveAxisEventMonitorForAll(Input_AxisEventCallback callback) |删除所有类型轴事件监听。  |
-| Input_Result OH_Input_RemoveAxisEventMonitor(InputEvent_AxisEventType axisEventType, Input_AxisEventCallback callback) |删除指定类型轴事件监听。  |
+| Input_Result OH_Input_AddKeyEventMonitor(Input_KeyEventCallback callback) | 创建按键事件监听。 |
+| Input_Result OH_Input_AddMouseEventMonitor(Input_MouseEventCallback callback) | 创建鼠标事件监听。 |
+| Input_Result OH_Input_AddTouchEventMonitor(Input_TouchEventCallback callback) | 创建触摸事件监听。 |
+| Input_Result OH_Input_AddAxisEventMonitorForAll(Input_AxisEventCallback callback) | 创建所有类型轴事件监听。 |
+| Input_Result OH_Input_AddAxisEventMonitor(InputEvent_AxisEventType axisEventType, Input_AxisEventCallback callback) | 创建指定类型轴事件监听。 |
+| Input_Result OH_Input_RemoveKeyEventMonitor(Input_KeyEventCallback callback) | 删除按键事件监听。 |
+| Input_Result OH_Input_RemoveMouseEventMonitor(Input_MouseEventCallback callback) | 删除鼠标事件监听。 |
+| Input_Result OH_Input_RemoveTouchEventMonitor(Input_TouchEventCallback callback) | 删除触摸事件监听。 |
+| Input_Result OH_Input_RemoveAxisEventMonitorForAll(Input_AxisEventCallback callback) | 删除所有类型轴事件监听。 |
+| Input_Result OH_Input_RemoveAxisEventMonitor(InputEvent_AxisEventType axisEventType, Input_AxisEventCallback callback) | 删除指定类型轴事件监听。 |
 
 ## 开发步骤
 
 ### 链接动态库
 
-调用创建和删除事件监听前，需链接相关动态库。链接动态库的方法是，在CMakeList.txt文件中新增如下配置：
+调用创建和删除事件监听前，需链接相关动态库。链接动态库的方法是，在CMakeLists.txt文件中新增如下配置：
 
 ```txt
 target_link_libraries(entry PUBLIC libohinput.so)
@@ -63,11 +63,11 @@ struct KeyEvent {
     int64_t actionTime { -1 };
 };
 
-//定义按键事件回调函数
+// 定义按键事件回调函数
 void OnKeyEventCallback(const Input_KeyEvent* keyEvent)
 {
     KeyEvent event;
-    //Input_KeyEvent的生命周期仅限于回调函数内，回调函数执行完毕后会被自动销毁
+    // Input_KeyEvent的生命周期仅限于回调函数内，回调函数执行完毕后会被自动销毁
     event.action = OH_Input_GetKeyEventAction(keyEvent);
     event.keyCode = OH_Input_GetKeyEventKeyCode(keyEvent);
     event.actionTime = OH_Input_GetKeyEventActionTime(keyEvent);
@@ -103,11 +103,11 @@ struct MouseEvent {
     int64_t actionTime { -1 };
 };
 
-//定义鼠标事件回调函数
+// 定义鼠标事件回调函数
 void OnMouseEventCallback(const Input_MouseEvent* mouseEvent)
 {
     MouseEvent event;
-    //Input_MouseEvent的生命周期仅限于回调函数内，回调函数执行完毕后会被自动销毁
+    // Input_MouseEvent的生命周期仅限于回调函数内，回调函数执行完毕后会被自动销毁
     event.action = OH_Input_GetMouseEventAction(mouseEvent);
     event.displayX = OH_Input_GetMouseEventDisplayX(mouseEvent);
     event.displayY = OH_Input_GetMouseEventDisplayY(mouseEvent);
@@ -148,7 +148,7 @@ struct TouchEvent {
 void OnTouchEventCallback(const Input_TouchEvent* touchEvent)
 {
     TouchEvent event;
-    //Input_TouchEvent的生命周期仅限于回调函数内，回调函数执行完毕后会被自动销毁
+    // Input_TouchEvent的生命周期仅限于回调函数内，回调函数执行完毕后会被自动销毁
     event.action = OH_Input_GetTouchEventAction(touchEvent);
     event.id = OH_Input_GetTouchEventFingerId(touchEvent);
     event.displayX = OH_Input_GetTouchEventDisplayX(touchEvent);
@@ -173,7 +173,7 @@ static napi_value RemoveTouchEventMonitor(napi_env env, napi_callback_info info)
 
 - **轴事件**
 
-<!-- @[axis_event_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputKit/NDKInputEventMonitor/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[axis_event_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputKit/NDKInputEventMonitor/entry/src/main/cpp/napi_init.cpp) --> 
 
 ``` C++
 struct AxisEvent {
@@ -189,7 +189,7 @@ struct AxisEvent {
 void OnAllAxisEventCallback(const Input_AxisEvent* axisEvent)
 {
     AxisEvent event;
-    //Input_AxisEvent的生命周期仅限于回调函数内，回调函数执行完毕后会被自动销毁
+    // Input_AxisEvent的生命周期仅限于回调函数内，回调函数执行完毕后会被自动销毁
     InputEvent_AxisAction action = static_cast<InputEvent_AxisAction>(0);
     Input_Result ret = OH_Input_GetAxisEventAction(axisEvent, &action);
     event.axisAction = action;
@@ -218,11 +218,11 @@ void OnAllAxisEventCallback(const Input_AxisEvent* axisEvent)
     // ...
 }
 
-//定义捏合类型轴事件回调函数
+// 定义捏合类型轴事件回调函数
 void OnPinchAxisEventCallback(const Input_AxisEvent* axisEvent)
 {
     AxisEvent event;
-    //Input_AxisEvent的生命周期仅限于回调函数内，回调函数执行完毕后会被自动销毁
+    // Input_AxisEvent的生命周期仅限于回调函数内，回调函数执行完毕后会被自动销毁
     InputEvent_AxisAction action = static_cast<InputEvent_AxisAction>(0);
     Input_Result ret = OH_Input_GetAxisEventAction(axisEvent, &action);
     event.axisAction = action;
@@ -246,7 +246,7 @@ void OnPinchAxisEventCallback(const Input_AxisEvent* axisEvent)
 void OnScrollAxisEventCallback(const Input_AxisEvent* axisEvent)
 {
     AxisEvent event;
-    //Input_AxisEvent的生命周期仅限于回调函数内，回调函数执行完毕后会被自动销毁
+    // Input_AxisEvent的生命周期仅限于回调函数内，回调函数执行完毕后会被自动销毁
     InputEvent_AxisAction action = static_cast<InputEvent_AxisAction>(0);
     Input_Result ret = OH_Input_GetAxisEventAction(axisEvent, &action);
     event.axisAction = action;

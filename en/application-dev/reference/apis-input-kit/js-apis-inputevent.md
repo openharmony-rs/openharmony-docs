@@ -5,9 +5,10 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=6ff193a1258b05452b4935e34a160adf6db64d7a translatedAt=2026-09-11T00:59:34.294Z pushedAt=2026-09-11T02:40:08.602Z -->
 
-The **inputEvent** module provides the basic events reported by the device.
+The **inputEvent** module provides the basic events reported by a device.
 
 > **NOTE**
 >
@@ -19,7 +20,7 @@ The **inputEvent** module provides the basic events reported by the device.
 import { InputEvent } from '@kit.InputKit';
 ```
 
-## InputEvent 
+## InputEvent
 
 Represents an input event.
 
@@ -31,6 +32,6 @@ Represents an input event.
 | ---------- | ------ | ---- | ---- | -------------- |
 | id         | number | No   | No   | Event ID.|
 | deviceId   | number | No   | No   | Unique ID of the input device. If a physical device is repeatedly reinstalled or restarted, its ID may change.   |
-| actionTime | number | No   | No   | Time when the input event is reported.     |
+| actionTime | number | No    | No    | Time when an input event is reported, in microseconds (μs) since the system starts.    |
 | screenId   | number | No   | No   | Target screen ID.        |
 | windowId   | number | No   | No   | Target window ID.        |

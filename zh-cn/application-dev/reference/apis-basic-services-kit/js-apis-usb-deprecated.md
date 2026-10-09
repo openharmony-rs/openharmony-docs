@@ -1,11 +1,11 @@
-# @ohos.usb (USB管理)(已停止维护)
+# @ohos.usb (USB管理)
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: USB-->
 <!--Owner: @hwymlgitcode-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @fang-jinxu-->
 
 本模块主要提供管理USB设备的相关功能，包括查询USB设备列表、批量数据传输、控制命令传输、权限控制等。
 
@@ -196,7 +196,7 @@ claimInterface(pipe: USBDevicePipe, iface: USBInterface, force ?: boolean): numb
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线号和设备地址。 |
 | iface | [USBInterface](#usbinterface) | 是 | 用于确定需要获取接口的索引。 |
-| force | boolean | 否 | 可选参数，是否强制获取。默认值为false&nbsp;，表示不强制获取。 |
+| force | boolean | 否 | 可选参数，是否强制获取。默认值为false，表示不强制获取，如果无内核驱动占用该接口，则获取成功，否则获取失败；设置为true时，将强制释放内核驱动对该接口的控制权并交由用户空间程序控制。|
 
 **返回值：**
 
@@ -507,8 +507,8 @@ USB配置，一个[USBDevice](#usbdevice)中可以含有多个配置。
 | attributes     | number                                           | 是   |配置的属性。          |
 | maxPower       | number                                           | 是   |最大功耗，以毫安为单位。    |
 | name           | string                                           | 是   |配置的名称，可以为空。     |
-| isRemoteWakeup | boolean                                          | 是   |检查当前配置是否支持远程唤醒。 |
-| isSelfPowered  | boolean                                          | 是   |检查当前配置是否支持独立电源。 |
+| isRemoteWakeup | boolean                                          | 是   |检查当前配置是否支持远程唤醒。true表示支持，false表示不支持。 |
+| isSelfPowered  | boolean                                          | 是   |检查当前配置是否支持独立电源。true表示支持，false表示不支持。 |
 | interfaces     | Array&nbsp;&lt;[USBInterface](#usbinterface)&gt; | 是   |配置支持的接口属性。      |
 
 ## USBDevice
@@ -523,7 +523,7 @@ USB设备信息。
 | devAddress       | number                               | 是   |设备地址。      |
 | serial           | string                               | 是   |序列号。       |
 | name             | string                               | 是   |设备名字。      |
-| manufacturerName | string                               | 是   |产商信息。      |
+| manufacturerName | string                               | 是   |厂商信息。      |
 | productName      | string                               | 是   |产品信息。      |
 | version          | string                               | 是   |版本。        |
 | vendorId         | number                               | 是   |厂商ID。      |

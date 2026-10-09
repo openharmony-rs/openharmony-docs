@@ -2,7 +2,7 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @xuxinao-->
+<!--Owner: @Chenyufan466765692-->
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
@@ -77,7 +77,7 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
       编辑"napi_init.cpp"文件，定义onReceive类型观察者相关方法，并且新增Native内存泄漏方法：
 
       ```c++
-      // 定义一变量，用来缓存创建的观察者的指针。
+      // 定义一个变量，用来缓存创建的观察者的指针。
       static HiAppEvent_Watcher *systemEventWatcher; 
       
       static void OnReceive(const char *domain, const struct HiAppEvent_AppEventGroup *appEventGroups, uint32_t groupLen) {
@@ -98,11 +98,27 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
                           auto time = params["time"].asInt64();
                           auto reason = params["reason"].asString();
                           auto foreground = params["foreground"].asString();
+                          auto callingPid = params["calling_pid"].asString();
+                          auto callingProcessName = params["calling_process_name"].asString();
+                          auto appRunningUniqueId = params["app_running_unique_id"].asString();
+                          auto bundleVersion = params["bundle_version"].asString();
+                          auto lastExitDetailInfo = writer.write(params["last_exit_detail_info"]);
                           OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.time=%{public}lld", time);
                           OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.reason=%{public}s",
                                       reason.c_str());
                           OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.foreground=%{public}s",
                                       foreground.c_str());
+                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.calling_pid=%{public}s",
+                                      callingPid.c_str()); 
+                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.calling_process_name=%{public}s",
+                                      callingProcessName.c_str()); 
+                                                                        
+                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.app_running_unique_id=%{public}s",
+                                      appRunningUniqueId.c_str());
+                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.bundle_version=%{public}s",
+                                      bundleVersion.c_str());
+                          OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.last_exit_detail_info=%{public}s",
+                                      lastExitDetailInfo.c_str());
                       }
                   }
               }
@@ -117,7 +133,7 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
           const char *names[] = {EVENT_APP_KILLED};
           // 开发者订阅感兴趣的事件，此处订阅了系统事件。
           OH_HiAppEvent_SetAppEventFilter(systemEventWatcher, DOMAIN_OS, 0, names, 1);
-          // 开发者设置已实现的回调函数，观察者接收到事件后回立即触发OnReceive回调。
+          // 开发者设置已实现的回调函数，观察者接收到事件后会立即触发OnReceive回调。
           OH_HiAppEvent_SetWatcherOnReceive(systemEventWatcher, OnReceive);
           // 使观察者开始监听订阅的事件。
           OH_HiAppEvent_AddWatcher(systemEventWatcher);
@@ -194,6 +210,11 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
       HiAppEvent eventInfo.params.time=1717597063727
       HiAppEvent eventInfo.params.reason="RssThresholdKiller"
       HiAppEvent eventInfo.params.foreground=true
+      HiAppEvent eventInfo.params.calling_pid="638"
+      HiAppEvent eventInfo.params.calling_process_name="appspawn"
+      HiAppEvent eventInfo.params.app_running_unique_id=207544
+      HiAppEvent eventInfo.params.bundle_version=1000000
+      HiAppEvent eventInfo.params.last_exit_detail_info={"exit_msg":"THREAD_BLOCK_6S","kill_reason":"ThreadBlock6S","pid":"52036","process_name":"com.example.apphicollietest0108","process_state":"2","pss":"0","rss":"0","timestamp":"1785753171368","uid":"20020205"}
     ```
 
     > **说明：**
@@ -215,7 +236,9 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
      ```c++
      static napi_value DestroyWatcher(napi_env env, napi_callback_info info) {
          // 销毁创建的观察者，并置systemEventWatcher为nullptr。
-         OH_HiAppEvent_DestroyWatcher(systemEventWatcher);
+         if (systemEventWatcher != nullptr) {
+            OH_HiAppEvent_DestroyWatcher(systemEventWatcher);
+         }
          systemEventWatcher = nullptr;
          return {};
      }

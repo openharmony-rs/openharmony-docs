@@ -5,12 +5,15 @@
 <!--Designer: @liyi0309; @weixin_52725220-->
 <!--Tester: @lxl007; @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=2e4d13ff9e1ae9bb430b232821e0c1f92e4b358a translatedAt=2026-09-01T12:19:34.846Z -->
 
 You can apply a content modifier to a component to customize its content area using a style builder.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
+> - This feature is supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
+>
+> - The APIs of this module can be used only in the stage model.
 
 ## ContentModifier\<T>
 
@@ -38,7 +41,7 @@ ButtonConfiguration, CheckBoxConfiguration, DataPanelConfiguration, TextClockCon
 
 **Supported attributes**
 
-The universal attribute **enabled** and **contentModifier** are supported.
+The universal attributes **enabled** and **contentModifier** are supported.
 ## CommonConfiguration\<T>
 
 You need a custom class to implement the **ContentModifier** API.
@@ -55,7 +58,7 @@ You need a custom class to implement the **ContentModifier** API.
 
 ## Example
 
-This example demonstrates how to create a custom check box using **ContentModifier**. This check box comes in the custom pentagon style instead of the original check box style. When selected, the check box shows a red triangle pattern inside, and the title displays the word "Selected;" when deselected, the check box hides the red triangle pattern inside, and the title displays the word "Unselected."
+This example demonstrates how to create a custom check box using **ContentModifier**. This check box comes in the custom pentagon style instead of the original check box style. When selected, the check box shows a red triangle pattern inside, and the title displays the word "selected"; when deselected, the check box hides the red triangle pattern inside, and the title displays the word "unselected."
 
 ```ts
 // xxx.ets

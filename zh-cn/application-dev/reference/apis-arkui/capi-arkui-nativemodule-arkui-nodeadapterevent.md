@@ -1,8 +1,8 @@
 # ArkUI_NodeAdapterEvent
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -12,7 +12,7 @@ typedef struct ArkUI_NodeAdapterEvent ArkUI_NodeAdapterEvent
 
 ## 概述
 
-定义适配器事件对象。
+定义组件适配器事件对象，用于在节点适配器的事件回调中传递事件类型、宿主节点和数据项索引等信息。
 
 **起始版本：** 12
 

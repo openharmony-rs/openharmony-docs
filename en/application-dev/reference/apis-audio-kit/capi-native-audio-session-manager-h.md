@@ -1,10 +1,12 @@
 # native_audio_session_manager.h
+
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @funny_sunix-->
+<!--Designer: @hao-liangfei-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=29c534c06e8886c79e4893a68977c0d74e48120b translatedAt=2026-08-10T01:23:52.167Z pushedAt=2026-08-10T03:30:15.512Z -->
 
 ## Overview
 
@@ -26,7 +28,6 @@ The file declares the functions related to an audio session manager.<br> You can
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [OH_AudioSession_Strategy](capi-ohaudio-oh-audiosession-strategy.md) | OH_AudioSession_Strategy | Describes the audio session strategy.|
 | [OH_AudioSession_DeactivatedEvent](capi-ohaudio-oh-audiosession-deactivatedevent.md) | OH_AudioSession_DeactivatedEvent | Describes the event indicating that an audio session is deactivated.|
 | [OH_AudioSession_StateChangedEvent](capi-ohaudio-oh-audiosession-statechangedevent.md) | OH_AudioSession_StateChangedEvent | Describes the event indicating that the audio session state changes.|
 | [OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md) | OH_AudioSessionManager | Describes an audio session manager, which is used to manage audio sessions.|
@@ -35,12 +36,11 @@ The file declares the functions related to an audio session manager.<br> You can
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [OH_AudioSession_ConcurrencyMode](#oh_audiosession_concurrencymode) | OH_AudioSession_ConcurrencyMode | Enumerates the audio concurrency modes.|
 | [OH_AudioSession_Scene](#oh_audiosession_scene) | OH_AudioSession_Scene | Enumerates the audio session scenes.|
 | [OH_AudioSession_StateChangeHint](#oh_audiosession_statechangehint) | OH_AudioSession_StateChangeHint | Enumerates the hints for audio session state changes.|
 | [OH_AudioSession_OutputDeviceChangeRecommendedAction](#oh_audiosession_outputdevicechangerecommendedaction) | OH_AudioSession_OutputDeviceChangeRecommendedAction | Enumerates the recommended actions to take after an output device changes.|
 | [OH_AudioSession_DeactivatedReason](#oh_audiosession_deactivatedreason) | OH_AudioSession_DeactivatedReason | Enumerates the reasons for deactivating an audio session.|
-| [OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory](#oh_audiosession_bluetoothandnearlinkpreferredrecordcategory) | OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory | Enumerates the device preference categories available for recording with Bluetooth or NearLink.|
+| [OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory](#oh_audiosession_bluetoothandnearlinkpreferredrecordcategory) | OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory | Enumerates the preferred device categories available for recording with Bluetooth or NearLink.|
 
 ### Functions
 
@@ -75,29 +75,12 @@ The file declares the functions related to an audio session manager.<br> You can
 | [OH_AudioCommon_Result OH_AudioSessionManager_RegisterCurrentInputDeviceChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_CurrentInputDeviceChangedCallback callback)](#oh_audiosessionmanager_registercurrentinputdevicechangecallback) | - | Registers a callback to listen for input device changes of an audio session manager.|
 | [OH_AudioCommon_Result OH_AudioSessionManager_UnregisterCurrentInputDeviceChangeCallback(OH_AudioSessionManager *audioSessionManager, OH_AudioSession_CurrentInputDeviceChangedCallback callback)](#oh_audiosessionmanager_unregistercurrentinputdevicechangecallback) | - | Unregisters the callback used to listen for input device changes of an audio session manager.|
 | [OH_AudioCommon_Result OH_AudioSessionManager_ReleaseDevice(OH_AudioSessionManager *audioSessionManager, OH_AudioDeviceDescriptor *audioDeviceDescriptor)](#oh_audiosessionmanager_releasedevice) | - | Releases an audio device for an audio session manager.|
-| [OH_AudioCommon_Result OH_AudioSessionManager_EnableMuteSuggestionWhenMixWithOthers(OH_AudioSessionManager *audioSessionManager, bool enable)](#oh_audiosessionmanager_enablemutesuggestionwhenmixwithothers) | - | Enables the notification function for receiving mute suggestions for mixed playback.|
+| [OH_AudioCommon_Result OH_AudioSessionManager_EnableMuteSuggestionWhenMixWithOthers(OH_AudioSessionManager *audioSessionManager, bool enable)](#oh_audiosessionmanager_enablemutesuggestionwhenmixwithothers) | - | Enables the function of receiving mute playback suggestion notifications during mixed playback.|
+| [OH_AudioCommon_Result OH_AudioSessionManager_SetCaptureMuteHint(OH_AudioSessionManager *audioSessionManager, bool mute)](#oh_audiosessionmanager_setcapturemutehint) | - | Reports the mute state of recording streams in the current audio session to the system audio module. This API is used to report the mute state of recording streams in the current audio session to the system audio module, without changing the actual mute state of the recording streams. Currently, only on some PC/2-in-1 devices, the system audio module adjusts policies based on the set state to reduce power consumption. This API can only be called when there is an active recording stream in the current audio session; otherwise, it returns error code AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE. If a recording stream calls both the stream-level API and this API, the stream-level API setting takes higher priority, and the stream-level API setting value prevails. |
 | [bool OH_AudioSessionManager_IsOtherMediaPlaying(OH_AudioSessionManager *audioSessionManager)](#oh_audiosessionmanager_isothermediaplaying) | - | Checks whether audio of the MUSIC, MOVIE, AUDIOBOOK, and GAME media types is being played by other applications. Activated audio sessions of the media types are also checked.|
+| [OH_AudioCommon_Result OH_AudioSessionManager_SetBehavior(OH_AudioSessionManager *audioSessionManager, uint32_t behavior)](#oh_audiosessionmanager_setbehavior) | - | Sets audio session behavior parameters. (Multiple flags can be combined.) If this API is called while an audio session is active, you must call the [OH_AudioSessionManager_ActivateAudioSession](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_activateaudiosession) API again for the settings to take effect.|
 
 ## Enum Description
-
-### OH_AudioSession_ConcurrencyMode
-
-```c
-enum OH_AudioSession_ConcurrencyMode
-```
-
-**Description**
-
-Enumerates the audio concurrency modes.
-
-**Since**: 12
-
-| Enum Item| Description|
-| -- | -- |
-| CONCURRENCY_DEFAULT = 0 | Uses the system strategy by default.|
-| CONCURRENCY_MIX_WITH_OTHERS = 1 | Mixes audio with other applications that are playing audio.|
-| CONCURRENCY_DUCK_OTHERS = 2 | Lowers the volume of the application that is currently playing the audio.|
-| CONCURRENCY_PAUSE_OTHERS = 3 | Pauses the application that is currently playing the audio.|
 
 ### OH_AudioSession_Scene
 
@@ -139,6 +122,8 @@ Enumerates the hints for audio session state changes.
 | AUDIO_SESSION_STATE_CHANGE_HINT_UNDUCK = 5 | A hint is displayed, indicating that audio ducking ends and the audio is played at the normal volume. If [OH_AudioSessionManager_EnableMuteSuggestionWhenMixWithOthers](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_enablemutesuggestionwhenmixwithothers) is enabled, you can unmute the audio.|
 | AUDIO_SESSION_STATE_CHANGE_HINT_MUTE_SUGGESTION = 6 | Mute suggestion. When another application starts playing non-mixable audio, the application can determine whether to mute the audio.<br>**Since**: 23|
 | AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE_SUGGESTION = 7 | Unmute suggestion. When the non-mixable audio of another application has finished playing, the application can decide whether to unmute the audio.<br>**Since**: 23|
+| AUDIO_SESSION_STATE_CHANGE_HINT_MUTE = 8 | A hint is displayed, indicating that the audio session is muted. This hint is received only when the following conditions are met: The [OH_AudioSessionManager_SetBehavior](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setbehavior) API is called to set [OH_AudioSession_BehaviorFlags](capi-native-audio-session-base-h.md#oh_audiosession_behaviorflags).MUTE_WHEN_INTERRUPTED, the [OH_AudioSessionManager_SetScene](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setscene) API is called, and the audio session is activated.<br>**Since**: 24|
+| AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE = 9 | A hint is displayed, indicating that the audio session is unmuted. This hint is received only when the following conditions are met: The [OH_AudioSessionManager_SetBehavior](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setbehavior) API is called to set [OH_AudioSession_BehaviorFlags](capi-native-audio-session-base-h.md#oh_audiosession_behaviorflags).MUTE_WHEN_INTERRUPTED, the [OH_AudioSessionManager_SetScene](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_setscene) API is called, and the audio session is activated.<br>**Since**: 24|
 
 ### OH_AudioSession_OutputDeviceChangeRecommendedAction
 
@@ -150,11 +135,13 @@ enum OH_AudioSession_OutputDeviceChangeRecommendedAction
 
 Enumerates the recommended actions to take after an output device changes.
 
+Common scenario example: switching between a headset and a loudspeaker device. Upon switching from the loudspeaker device to the headset upon wearing, the system suggests continuing playback and prompts that the application does not need to pause. Upon transitioning from the headset to the loudspeaker device upon removal, the system suggests suspending playback.
+
 **Since**: 20
 
 | Enum Item| Description|
 | -- | -- |
-| DEVICE_CHANGE_RECOMMEND_TO_CONTINUE = 0 | Suggests continuing playback.|
+| DEVICE_CHANGE_RECOMMEND_TO_CONTINUE = 0 | Suggests continuing playback. (This event serves as a playback maintenance indication, informing the app that audio playback does not need to stop during this device change. However, it must not be used as a criterion for triggering audio playback.) |
 | DEVICE_CHANGE_RECOMMEND_TO_STOP = 1 | Suggests stopping playback.|
 
 ### OH_AudioSession_DeactivatedReason
@@ -193,7 +180,6 @@ Enumerates the preferred device categories available for recording with Bluetoot
 | PREFERRED_LOW_LATENCY = 2 | Prefers using Bluetooth or NearLink devices in low-latency mode for recording.|
 | PREFERRED_HIGH_QUALITY = 3 | Prefers using Bluetooth or NearLink devices in high-quality mode for recording.|
 
-
 ## Function Description
 
 ### OH_AudioSession_StateChangedCallback()
@@ -204,7 +190,7 @@ typedef void (*OH_AudioSession_StateChangedCallback)(OH_AudioSession_StateChange
 
 **Description**
 
-Defines a function pointer to the callback used to listen for audio session state change events.
+Points to the callback function used to listen for audio session state change events.
 
 **Since**: 20
 
@@ -212,7 +198,7 @@ Defines a function pointer to the callback used to listen for audio session stat
 
 | Name| Description|
 | -- | -- |
-| [OH_AudioSession_StateChangedEvent](capi-ohaudio-oh-audiosession-statechangedevent.md) event | Pointer to the event indicating that the audio session state changes.|
+| [OH_AudioSession_StateChangedEvent](capi-ohaudio-oh-audiosession-statechangedevent.md) event | Event indicating that the audio session state changes.|
 
 ### OH_AudioSession_AvailableDeviceChangedCallback()
 
@@ -288,7 +274,7 @@ Defines a function pointer to the callback used to listen for audio session deac
 
 | Name| Description|
 | -- | -- |
-| [OH_AudioSession_DeactivatedEvent](capi-ohaudio-oh-audiosession-deactivatedevent.md) event | Pointer to the event indicating that an audio session is deactivated.|
+| [OH_AudioSession_DeactivatedEvent](capi-ohaudio-oh-audiosession-deactivatedevent.md) event | Event indicating that an audio session is deactivated.|
 
 ### OH_AudioManager_GetAudioSessionManager()
 
@@ -522,11 +508,11 @@ OH_AudioCommon_Result OH_AudioSessionManager_SetDefaultOutputDevice(OH_AudioSess
 
 Sets the default audio output device.
 
->**NOTE**
-> - This API is applicable to the following scenarios: If [OH_AudioSession_Scene](capi-native-audio-session-manager-h.md#oh_audiosession_scene) is set to VoIP, this API takes effect immediately after the audio session is activated. If [OH_AudioSession_Scene](capi-native-audio-session-manager-h.md#oh_audiosession_scene) is set to non-VoIP, this API does not take effect when the audio session is activated. It takes effect only when [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage) of the started playback is a voice message, VoIP voice call, or VoIP video call. Supported devices include the earpiece, speaker, and system default device.
-> - This API can be called at any time after an [OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md) instance is created. The system records the device set by the application. However, the setting takes effect only after the AudioSession is activated. When the application starts playback, if an external device such as a Bluetooth or wired headset is connected, the system preferentially uses the external device to play sound. Otherwise, the system uses this default device to play sound.
+ >**NOTE** 
+ > - This API is applicable to the following scenarios: If [OH_AudioSession_Scene](capi-native-audio-session-manager-h.md#oh_audiosession_scene) is set to VoIP, this API takes effect immediately after the audio session is activated. If [OH_AudioSession_Scene](capi-native-audio-session-manager-h.md#oh_audiosession_scene) is set to non-VoIP, this API does not take effect when the audio session is activated. It takes effect only when [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage) of the started playback is a voice message, VoIP voice call, or VoIP video call. Supported devices include the earpiece, speaker, and system default device.
+ > - This API can be called at any time after an [OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md) instance is created. The system records the device set by the application. However, the setting takes effect only after the AudioSession is activated. When the application starts playback, if an external device such as a Bluetooth or wired headset is connected, the system preferentially uses the external device to play sound. Otherwise, the system uses this default device to play sound.
 
-**Device behavior difference**: If the default audio output device is set to earpiece on a device without a earpiece, the speaker will still be used for audio output.
+ **Device behavior difference**: If the default audio output device is set to earpiece on a device without an earpiece, the speaker will still be used for audio output.
 
 **Since**: 20
 
@@ -778,7 +764,7 @@ OH_AudioCommon_Result OH_AudioSessionManager_SetBluetoothAndNearlinkPreferredRec
 
 **Description**
 
-Sets the preferred device category for recording with Bluetooth or NearLink. Applications can set this category before connecting to Bluetooth or NearLink devices, and the system prioritizes using the device for recording when the device is connected.<br> When there is a concurrent recording stream with higher priority, the actual input device used by the application may differ from the set preferred device.<br> The application can use [OH_AudioSessionManager_RegisterCurrentInputDeviceChangeCallback](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_registercurrentinputdevicechangecallback) to register a callback to listen to the actual input device.
+Sets the preferred device category for recording with Bluetooth or NearLink. Applications can set this category before connecting to Bluetooth or NearLink devices, and the system prioritizes using the device for recording when the device is connected.<br> When there is a concurrent recording stream with higher priority, the actual input device used by the application may differ from the set preferred device.<br> The application can use [OH_AudioSessionManager_RegisterCurrentInputDeviceChangeCallback](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_registercurrentinputdevicechangecallback) to register a callback to listen for the actual input device.
 
 **Since**: 21
 
@@ -787,7 +773,7 @@ Sets the preferred device category for recording with Bluetooth or NearLink. App
 | Name| Description|
 | -- | -- |
 | [OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md) *audioSessionManager | Pointer to the audio session management instance created by [OH_AudioManager_GetAudioSessionManager](capi-native-audio-session-manager-h.md#oh_audiomanager_getaudiosessionmanager).|
-| [OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory](capi-native-audio-session-manager-h.md#oh_audiosession_bluetoothandnearlinkpreferredrecordcategory) category | Enumerates the preferred device categories available for recording with Bluetooth or NearLink.|
+| [OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory](capi-native-audio-session-manager-h.md#oh_audiosession_bluetoothandnearlinkpreferredrecordcategory) category | Preferred device category available for recording with Bluetooth or NearLink.|
 
 **Returns**
 
@@ -812,7 +798,7 @@ Obtains the preferred device category for recording with Bluetooth or NearLink.
 | Name| Description|
 | -- | -- |
 | [OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md) *audioSessionManager | Pointer to the audio session management instance created by [OH_AudioManager_GetAudioSessionManager](capi-native-audio-session-manager-h.md#oh_audiomanager_getaudiosessionmanager).|
-| [OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory](capi-native-audio-session-manager-h.md#oh_audiosession_bluetoothandnearlinkpreferredrecordcategory) *category | Enumerates the preferred device categories available for recording with Bluetooth or NearLink.|
+| [OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory](capi-native-audio-session-manager-h.md#oh_audiosession_bluetoothandnearlinkpreferredrecordcategory) *category | Preferred device category available for recording with Bluetooth or NearLink.|
 
 **Returns**
 
@@ -903,7 +889,7 @@ OH_AudioCommon_Result OH_AudioSessionManager_EnableMuteSuggestionWhenMixWithOthe
 
 **Description**
 
-Enables the notification function for muting suggestions received during mixed playback. Generally, in the audio mixing mode, if the audio of another application is played at the same time, the two pieces of audio are played in mixed mode. In certain scenarios (such as games or broadcasts), applications can enable mute suggestion notifications to enhance user experience. If this function is enabled, mute suggestion and unmute suggestion notifications are sent through the [OH_AudioSession_StateChangedCallback](capi-native-audio-session-manager-h.md#oh_audiosession_statechangedcallback) callback after the audio session state change event is subscribed to. The callback is registered by [OH_AudioSessionManager_RegisterStateChangeCallback](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_registerstatechangecallback).<br> Receiving the muted suggestion indicates that another application starts to play audio, and the played audio and the audio of this application cannot be mixed. This function can be used only by audio sessions for which [OH_AudioSession_Scene](capi-native-audio-session-manager-h.md#oh_audiosession_scene) has been set and the mode [OH_AudioSession_ConcurrencyMode](capi-native-audio-session-manager-h.md#oh_audiosession_concurrencymode).CONCURRENCY_MIX_WITH_OTHERS is activated.<br> This function takes effect only once when the audio session is activated. You need to enable the function again before each activation of the audio session.
+Enables the function of receiving mute playback suggestion notifications during mix playback. Generally, when the mixed mode is used, if audio from other apps plays simultaneously, the two will be mixed for playback. In certain scenarios (such as games or broadcasting), an app can provide a better user experience by enabling mute suggestion notifications. If this function is enabled, after subscribing to audio session state change events, mute suggestions and unmute suggestions will be sent through the [OH_AudioSession_StateChangedCallback](capi-native-audio-session-manager-h.md#oh_audiosession_statechangedcallback) callback, which is registered by [OH_AudioSessionManager_RegisterStateChangeCallback](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_registerstatechangecallback).<br> Receiving a mute suggestion indicates that another app has started playing audio, and the audio being played cannot be mixed with the audio of this app. This function is only supported for audio sessions that have set [OH_AudioSession_Scene](capi-native-audio-session-manager-h.md#oh_audiosession_scene) and activated with the mode [OH_AudioSession_ConcurrencyMode](capi-native-audio-session-base-h.md#oh_audiosession_concurrencymode).CONCURRENCY_MIX_WITH_OTHERS.<br> This API takes effect only once during the activation of the audio session, and must be re-enabled before each activation of the audio session.
 
 **Since**: 23
 
@@ -919,6 +905,31 @@ Enables the notification function for muting suggestions received during mixed p
 | Type| Description|
 | -- | -- |
 | [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | **AUDIOCOMMON_RESULT_SUCCESS**: The function is executed successfully.<br>         **AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM**: The **audioSessionManager** parameter is nullptr.<br>         AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE:<br>                                                 1. Audio session scene not set.<br>                                                 2. Call this function after the audio session is activated.<br>         **AUDIOCOMMON_RESULT_ERROR_SYSTEM**: A system error occurs, such as an abnormal exit of a system service.|
+
+### OH_AudioSessionManager_SetCaptureMuteHint()
+
+```c
+OH_AudioCommon_Result OH_AudioSessionManager_SetCaptureMuteHint(OH_AudioSessionManager *audioSessionManager, bool mute)
+```
+
+**Description**
+
+Passes the self-mute state of the recording streams within the current audio session from the app to the system audio module. This API is used to report the mute state of the recording streams within the current audio session to the system audio module, without changing the actual mute state of the recording streams. Currently, only on certain PC/2-in-1 devices, the system audio module adjusts policies based on the set state to reduce power consumption. This API can only be called when there is a running recording stream in the current audio session; otherwise, the error code AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE is returned. If a recording stream calls both the stream-level API and this API, the stream-level API setting takes higher priority, and the value set by the stream-level API prevails.
+
+**Since**: 24
+
+**Parameters**
+
+| Name | Description |
+| -- | -- |
+| [OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md) *audioSessionManager | Pointer to the audio session management instance returned by [OH_AudioManager_GetAudioSessionManager](capi-native-audio-session-manager-h.md#oh_audiomanager_getaudiosessionmanager). |
+| bool mute | Whether the app has muted the recording stream. The value **true** indicates that the recording stream under the current app is marked as muted, and **false** indicates that it is unmuted. |
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| OH_AudioCommon_Result | Result code.<br>         **AUDIOCOMMON_RESULT_SUCCESS**: The function is executed successfully.<br>         **AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM**: **audioSessionManager** is **nullptr**.<br>         **AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE**: The operation status is abnormal. No running recording stream exists in the current process.<br>         **AUDIOCOMMON_RESULT_ERROR_SYSTEM**: System exception, such as unexpected exit of the system service. |
 
 ### OH_AudioSessionManager_IsOtherMediaPlaying()
 
@@ -943,3 +954,28 @@ Checks whether audio of the MUSIC, MOVIE, AUDIOBOOK, and GAME media types is bei
 | Type| Description|
 | -- | -- |
 | bool | Whether another application is playing media audio. **true** means yes; **false** otherwise.|
+
+### OH_AudioSessionManager_SetBehavior()
+
+```c
+OH_AudioCommon_Result OH_AudioSessionManager_SetBehavior(OH_AudioSessionManager *audioSessionManager, uint32_t behavior)
+```
+
+**Description**
+
+Configures audio session behavior parameters. (Multiple flags can be combined.) If this API is called while an audio session is active, you must call the [OH_AudioSessionManager_ActivateAudioSession](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_activateaudiosession) API again for the settings to take effect.
+
+**Since**: 24
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md) *audioSessionManager | Pointer to the audio session management instance created by [OH_AudioManager_GetAudioSessionManager](capi-native-audio-session-manager-h.md#oh_audiomanager_getaudiosessionmanager).|
+| uint32_t behavior | Audio session behavior flag. This can be a single flag or a bitwise OR combination of multiple flags. For details about the supported audio session behaviors, see [OH_AudioSession_BehaviorFlags](capi-native-audio-session-base-h.md#oh_audiosession_behaviorflags).|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [OH_AudioCommon_Result](capi-native-audio-common-h.md#oh_audiocommon_result) | **AUDIOCOMMON_RESULT_SUCCESS**: The function is executed successfully.<br>         **AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM**: The parameter value is a null pointer or out of range.<br>         **AUDIOCOMMON_RESULT_ERROR_ILLEGAL_STATE**: Invalid state.|

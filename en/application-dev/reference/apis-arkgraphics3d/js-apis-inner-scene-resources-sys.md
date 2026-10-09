@@ -1,23 +1,28 @@
-# SceneResource (System API)
+# SceneResources (System API)
+
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @zzhao0-->
+<!--Owner: @jason_stark-->
 <!--Designer: @zdustc-->
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=9bb5a62ecd61b6f45356eb97818a280b50c70dac translatedAt=2026-08-20T12:25:55.043Z pushedAt=2026-08-20T12:33:19.579Z -->
 
-The module provides basic resource types in 3D graphics.
+This module provides the common basic resource types in ArkGraphics 3D.
 
 > **NOTE**
+>
 > - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - This topic describes only system APIs provided by the module. For details about its public APIs, see [SceneResources](js-apis-inner-scene-resources.md).
 
 ## Modules to Import
+
 ```ts
 import { MaterialType, UnlitShadowAlphaMaterial } from '@kit.ArkGraphics3D';
 ```
 
 ## MaterialType
+
 Enumerates the material types in a scene. The material type defines how materials in a scene are rendered.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D

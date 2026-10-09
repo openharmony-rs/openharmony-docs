@@ -3,14 +3,14 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @memghaiyang-->
+<!--Adviser: @HelloCrease-->
 
 应用包信息，通过接口[freeInstall.getBundlePackInfo](js-apis-freeInstall-sys.md#getbundlepackinfo)获取。
 
 > **说明：**
 >
-> 本模块首批接口从API version 9 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > 本模块为系统接口。
 
@@ -129,8 +129,8 @@ import { freeInstall } from '@kit.AbilityKit';
 | name                | string         | 是   | 否   | 表示forms的名称。                                            |
 | type                | string         | 是   | 否   | 表示forms的类型。                                            |
 | updateEnabled       | boolean        | 是   | 否   | 表示该卡片是否支持定时刷新，true表示卡片支持定时刷新，false表示不支持。 |
-| scheduledUpdateTime | string         | 是   | 否   | 表示卡片定点刷新的时间，采用24小时计数，精确到分钟。         |
-| updateDuration      | number         | 是   | 否   | 表示卡片定时刷新的更新频率，单位为30分钟，取值为30的倍数值。卡片的最高频率为每30分钟刷新一次，和定点刷新二选一，二者都配置的情况下，定时优先。 |
+| scheduledUpdateTime | string         | 是   | 否   | 表示卡片定点刷新的时间，采用24小时计数，精确到分钟，和定时刷新二选一，二者都配置的情况下，定时优先。         |
+| updateDuration      | number         | 是   | 否   | 表示卡片定时刷新的更新频率，单位：分钟，取值为30的倍数值。卡片的最高频率为每30分钟刷新一次，和定点刷新二选一，二者都配置的情况下，定时优先。 |
 | supportDimensions   | Array\<string> | 是   | 否   | 表示卡片外观规格，取值为“1\*2”，“2\*2”，“2\*4”，“4\*4”，定义卡片时至少要指定一个卡片规格。 |
 | defaultDimension    | string         | 是   | 否   | 表示卡片默认外观规格，取值必须在supportDimensions配置的列表中。 |
 
@@ -143,7 +143,7 @@ import { freeInstall } from '@kit.AbilityKit';
 | 名称        | 类型   | 只读 | 可选 | 说明                 |
 | ----------- | ------ | ---- | ---- | -------------------- |
 | releaseType | string | 是   | 否   | 版本的名称。         |
-| compatible  | number | 是   | 否   | 版本的最小兼容代码。 |
+| compatible  | number | 是   | 否   | 最小兼容版本号。 |
 | target      | number | 是   | 否   | 目标版本号。         |
 
 ## Version

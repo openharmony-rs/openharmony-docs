@@ -1,11 +1,11 @@
 # Notification Kit (User Notification Service)<!--notification-kit-->
-
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=3fa841f3ce49ec23efb5ea5b364ee13bf2e45234 translatedAt=2026-09-29T11:13:59.451Z pushedAt=2026-09-30T09:44:40.055Z -->
 
 - [About This Kit](notification-overview.md)
 - [Requesting Notification Authorization](notification-enable.md)
@@ -14,6 +14,7 @@
 - Publishing a Notification<!--publish-notification-->
   - [Publishing a Text Notification](text-notification.md)
   - [Publishing a Progress Notification](progress-bar-notification.md)
+  - [Adding a Custom Ringtone to a Notification](notification-customized-ringtone.md)
   <!--Del-->
   - [Publishing a Live View Notification (for System Applications Only)](live-view-notification-sys.md)
   <!--DelEnd-->
@@ -30,7 +31,9 @@
   <!--DelEnd-->
   - [Clearing Repeated Notifications Across Devices](notification-distributed-messageid.md)
 - ExtensionAbility for Notification Subscription<!--notification-subscriber-extension-->
-  - [ExtensionAbility Overview for Notification Subscription](notification-subscriber-extension-ability.md)
+  - [Introduction to NotificationSubscriberExtensionAbility](notification-subscriber-extension-ability.md)
   - [Developing the ExtensionAbility for Notification Subscription](notification-subscriber-extension-ability-development-steps.md)
+- [Glossary](notification-glossary.md)
 <!--RP1--><!--RP1End-->
 <!--RP2--><!--RP2End-->
+<!--RP3--><!--RP3End-->

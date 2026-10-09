@@ -1,9 +1,9 @@
 # @ohos.file.storageStatistics (Application Storage Statistics)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wang_zhangjun; @gzhuangzhuang-->
-<!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @gzhuangzhuang-->
+<!--Designer: @renguang1116; @wang_zhangjun-->
+<!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
 
 The **storageStatistics** module provides APIs for obtaining storage space information, including the space of built-in and plug-in memory cards, space occupied by different types of data, and space of application data.
@@ -316,3 +316,115 @@ try {
 | appSize   | number  | No| No| Size of the application installation files, in bytes.   |
 | cacheSize | number  | No| No | Size of the application cache files, in bytes.  |
 | dataSize  | number  | No| No | Size of application files (excluding application installation files), in bytes.|
+
+## storageStatistics.getTotalInodes<sup>24+</sup>
+
+getTotalInodes(): Promise&lt;number&gt;
+
+Obtains the total number of inodes in the file system. Only the system data partition can be queried. This API uses a promise to return the result.
+
+**System capability**: SystemCapability.FileManagement.StorageService.SpatialStatistics
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Return value**
+
+| Type                 | Description                                                 |
+| --------------------- | ----------------------------------------------------- |
+| Promise&lt;number&gt; | Promise used to return the total number of inodes in the file system.               |
+
+**Error codes**
+
+For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+
+| ID| Error Message                                                     |
+| -------- | ------------------------------------------------------------ |
+| 13600001 | IPC error.                                                   |
+| 13600016 | Failed to query the inode information of the data partition. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+storageStatistics.getTotalInodes().then((totalInodes: number) => {
+  console.info("getTotalInodes successfully: " + totalInodes);
+}).catch((err: BusinessError) => {
+  console.error(`getTotalInodes failed. Code: ${err.code}, Message: ${err.message}`);
+});
+```
+
+## storageStatistics.getFreeInodes<sup>24+</sup>
+
+getFreeInodes(): Promise&lt;number&gt;
+
+Obtains the remaining number of inodes in the file system. Only the system data partition can be queried. This API uses a promise to return the result.
+
+**System capability**: SystemCapability.FileManagement.StorageService.SpatialStatistics
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Return value**
+
+| Type                 | Description                                                 |
+| --------------------- | ----------------------------------------------------- |
+| Promise&lt;number&gt; | Promise used to return the remaining number of inodes in the file system.              |
+
+**Error codes**
+
+For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+
+| ID| Error Message                                                     |
+| -------- | ------------------------------------------------------------ |
+| 13600001 | IPC error.                                                   |
+| 13600016 | Failed to query the inode information of the data partition. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+storageStatistics.getFreeInodes().then((freeInodes: number) => {
+  console.info("getFreeInodes successfully: " + freeInodes);
+}).catch((err: BusinessError) => {
+  console.error(`getFreeInodes failed. Code: ${err.code}, Message: ${err.message}`);
+});
+```
+
+## storageStatistics.getCurrentBundleInodes<sup>24+</sup>
+
+getCurrentBundleInodes(): Promise&lt;number&gt;
+
+Obtains the inode usage of the current application. This API uses a promise to return the result.
+
+**System capability**: SystemCapability.FileManagement.StorageService.SpatialStatistics
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Return value**
+
+| Type                 | Description                                                 |
+| --------------------- | ----------------------------------------------------- |
+| Promise&lt;number&gt; | Promise used to return the inode usage of the current application.              |
+
+**Error codes**
+
+For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md).
+
+| ID| Error Message                                                     |
+| -------- | ------------------------------------------------------------ |
+| 13600001 | IPC error.                                                   |
+| 13600002 | File system not supported.                                   |
+| 13600017 | Failed to query the inode information of the application.    |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+storageStatistics.getCurrentBundleInodes().then((curInodes: number) => {
+  console.info("getCurrentBundleInodes successfully: " + curInodes);
+}).catch((err: BusinessError) => {
+  console.error(`getCurrentBundleInodes failed. Code: ${err.code}, Message: ${err.message}`);
+});
+```

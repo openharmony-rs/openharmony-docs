@@ -3,10 +3,10 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @memghaiyang-->
+<!--Adviser: @HelloCrease-->
 
-本模块支持launcher应用（桌面有图标的应用）所需的查询能力，支持[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)、[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)信息的查询。
+本模块支持launcher应用（桌面有图标的应用）所需的查询能力，支持[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)、[ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md)信息的查询。
 
 > **说明：**
 >
@@ -38,12 +38,12 @@ getLauncherAbilityInfo(bundleName: string, userId: number, callback: AsyncCallba
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
 | bundleName | string | 是   | 应用Bundle名称。 |
-| userId     | number | 是   | 被查询的用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。|
-| callback | AsyncCallback\<Array\<[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)\>\> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)。当函数调用成功，err为null，data为bundle包含的[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)信息。否则为错误对象。 |
+| userId     | number | 是   | 被查询的用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。|
+| callback | AsyncCallback\<Array\<[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)\>\> | 是 | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)。当函数调用成功，err为undefined，data为bundle包含的[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)信息。否则为错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -93,7 +93,7 @@ getLauncherAbilityInfo(bundleName: string, userId: number) : Promise\<Array\<Lau
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
 | bundleName | string | 是   | 应用Bundle名称。 |
-| userId     | number | 是   | 被查询的用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。 |
+| userId     | number | 是   | 被查询的用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。 |
 
 **返回值：**
 
@@ -103,7 +103,7 @@ getLauncherAbilityInfo(bundleName: string, userId: number) : Promise\<Array\<Lau
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -150,12 +150,12 @@ getAllLauncherAbilityInfo(userId: number, callback: AsyncCallback\<Array\<Launch
 
 | 参数名 | 类型   | 必填 | 说明         |
 | ------ | ------ | ---- | -------------- |
-| userId | number | 是   | 被查询的用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。 |
-| callback | AsyncCallback\<Array\<[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)\>\> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)。当函数调用成功，err为null，data为指定用户下所有应用的[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)信息。否则为错误对象。 |
+| userId | number | 是   | 被查询的用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。 |
+| callback | AsyncCallback\<Array\<[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)\>\> | 是 | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)。当函数调用成功，err为undefined，data为指定用户下所有应用的[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)信息。否则为错误对象。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | ---------------------------------------- |
@@ -165,7 +165,7 @@ getAllLauncherAbilityInfo(userId: number, callback: AsyncCallback\<Array\<Launch
 | 801 | Capability not support. |
 | 17700004 | The specified user ID is not found.      |
 
-示例：
+**示例：**
 
 ```ts
 import { launcherBundleManager } from '@kit.AbilityKit';
@@ -202,7 +202,7 @@ getAllLauncherAbilityInfo(userId: number) : Promise\<Array\<LauncherAbilityInfo\
 
 | 参数名 | 类型   | 必填 | 说明         |
 | ------ | ------ | ---- | -------------- |
-| userId | number | 是   | 被查询的用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。 |
+| userId | number | 是   | 被查询的用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。 |
 
 **返回值：**
 
@@ -212,7 +212,7 @@ getAllLauncherAbilityInfo(userId: number) : Promise\<Array\<LauncherAbilityInfo\
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | ---------------------------------------- |
@@ -246,7 +246,7 @@ try {
 
 getShortcutInfo(bundleName :string, callback: AsyncCallback\<Array\<ShortcutInfo\>\>) : void
 
-查询当前用户下指定应用的快捷方式信息[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)，只支持查询主应用的ShortcutInfo，查询分身应用请使用[getShortcutInfoByAppIndex](#launcherbundlemanagergetshortcutinfobyappindex20)。使用callback异步回调。
+查询当前用户下指定应用的快捷方式信息[ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md)，只支持查询主应用的ShortcutInfo，查询分身应用请使用[getShortcutInfoByAppIndex](#launcherbundlemanagergetshortcutinfobyappindex20)。使用callback异步回调。
 
 获取调用方自身的信息时不需要权限。
 
@@ -261,11 +261,11 @@ getShortcutInfo(bundleName :string, callback: AsyncCallback\<Array\<ShortcutInfo
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
 | bundleName | string | 是   | 应用Bundle名称。 |
-| callback | AsyncCallback\<Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)\>\> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)。当函数调用成功，err为null，data为当前用户下指定应用的[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)信息。否则为错误对象。|
+| callback | AsyncCallback\<Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md)\>\> | 是 | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)。当函数调用成功，err为undefined，data为当前用户下指定应用的[ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md)信息。否则为错误对象。|
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | ---------------------------------------- |
@@ -302,7 +302,7 @@ try {
 
 getShortcutInfo(bundleName : string) : Promise\<Array\<ShortcutInfo\>\>
 
-查询当前用户下指定应用的快捷方式信息[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)，只支持查询主应用的ShortcutInfo，查询分身应用请使用[getShortcutInfoByAppIndex](#launcherbundlemanagergetshortcutinfobyappindex20)。使用Promise异步回调。
+查询当前用户下指定应用的快捷方式信息[ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md)，只支持查询主应用的ShortcutInfo，查询分身应用请使用[getShortcutInfoByAppIndex](#launcherbundlemanagergetshortcutinfobyappindex20)。使用Promise异步回调。
 
 获取调用方自身的信息时不需要权限。
 
@@ -322,11 +322,11 @@ getShortcutInfo(bundleName : string) : Promise\<Array\<ShortcutInfo\>\>
 
 | 类型                   | 说明                                            |
 | ---------------------- | ----------------------------------------------- |
-| Promise\<Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)\>\> | Promise对象。返回当前用户下指定应用的[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)。 |
+| Promise\<Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md)\>\> | Promise对象。返回当前用户下指定应用的[ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md)。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | ---------------------------------------- |
@@ -361,7 +361,7 @@ try {
 
 getShortcutInfoSync(bundleName : string) : Array\<ShortcutInfo\>
 
-查询当前用户下指定应用的快捷方式信息[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)，只支持查询主应用的ShortcutInfo，查询分身应用请使用[getShortcutInfoByAppIndex](#launcherbundlemanagergetshortcutinfobyappindex20)。
+查询当前用户下指定应用的快捷方式信息[ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md)，只支持查询主应用的ShortcutInfo，查询分身应用请使用[getShortcutInfoByAppIndex](#launcherbundlemanagergetshortcutinfobyappindex20)。
 
 获取调用方自身的信息时不需要权限。
 
@@ -381,11 +381,11 @@ getShortcutInfoSync(bundleName : string) : Array\<ShortcutInfo\>
 
 | 类型                   | 说明                                            |
 | ---------------------- | ----------------------------------------------- |
-| Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)\> | Array形式返回当前用户下指定应用的[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)。 |
+| Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md)\> | Array形式返回当前用户下指定应用的[ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md)。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | ---------------------------------------- |
@@ -416,7 +416,7 @@ try {
 
 getShortcutInfoSync(bundleName: string, userId: number) : Array\<ShortcutInfo\>
 
-查询指定用户下指定应用的快捷方式信息[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)，只支持查询主应用的ShortcutInfo，查询分身应用请使用[getShortcutInfoByAppIndex](#launcherbundlemanagergetshortcutinfobyappindex20)。
+查询指定用户下指定应用的快捷方式信息[ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md)，只支持查询主应用的ShortcutInfo，查询分身应用请使用[getShortcutInfoByAppIndex](#launcherbundlemanagergetshortcutinfobyappindex20)。
 
 获取调用方自身的信息时不需要权限。
 
@@ -431,17 +431,17 @@ getShortcutInfoSync(bundleName: string, userId: number) : Array\<ShortcutInfo\>
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
 | bundleName | string | 是   | 应用Bundle名称。 |
-| userId     | number | 是   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。  |
+| userId     | number | 是   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。  |
 
 **返回值：**
 
 | 类型                   | 说明                                            |
 | ---------------------- | ----------------------------------------------- |
-| Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)\> | Array形式返回指定用户下指定应用的[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)。 |
+| Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md)\> | Array形式返回指定用户下指定应用的[ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md)。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | ---------------------------------------- |
@@ -473,7 +473,7 @@ try {
 
 startShortcut(shortcutInfo: ShortcutInfo, options?: StartOptions): Promise\<void\>
 
-拉起指定[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)中的ability。使用Promise异步回调。
+拉起指定[ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md)中的ability。使用Promise异步回调。
 
 **需要权限：** ohos.permission.START_SHORTCUT
 
@@ -485,18 +485,18 @@ startShortcut(shortcutInfo: ShortcutInfo, options?: StartOptions): Promise\<void
 
 | 参数名        | 类型   | 必填 | 说明         |
 | ------------ | ------ | ---- | -------------- |
-| shortcutInfo | [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md) | 是   | 应用的快捷方式信息。 |
+| shortcutInfo | [ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md) | 是   | 应用的快捷方式信息。 |
 | options      | [StartOptions](js-apis-app-ability-startOptions-sys.md)   | 否   | 启动参数选项，用于指定任务切到前台时的窗口模式，设备ID等。 |
 
 **返回值：**
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | ---------------------------------------- |
@@ -555,19 +555,19 @@ startShortcutWithReason(shortcutInfo: ShortcutInfo, startReason: string, options
 
 | 参数名        | 类型   | 必填 | 说明         |
 | ------------ | ------ | ---- | -------------- |
-| shortcutInfo | [ShortcutInfo](js-apis-bundle-ShortcutInfo.md) | 是   | 应用的快捷方式信息。 |
-| startReason  | string   | 是   | 快捷方式的启动原因，取值包括：[AbilityConstant.REASON_MESSAGE_DESKTOP_SHORTCUT](js-apis-app-ability-abilityConstant.md#常量)，表示桌面快捷方式启动。 |
+| shortcutInfo | [ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md) | 是   | 应用的快捷方式信息。 |
+| startReason  | string   | 是   | 快捷方式的启动原因，取值范围：[AbilityConstant.REASON_MESSAGE_DESKTOP_SHORTCUT](js-apis-app-ability-abilityConstant.md#常量)，表示桌面快捷方式启动。 |
 | options      | [StartOptions](js-apis-app-ability-startOptions-sys.md)   | 否   | 启动Ability所携带的参数，用于指定目标Ability的窗口模式。 |
 
 **返回值：**
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | ---------------------------------------- |
@@ -613,7 +613,7 @@ try {
 
 getShortcutInfoByAppIndex(bundleName: string, appIndex: number): Array\<ShortcutInfo\>
 
-查询当前用户下指定分身应用的快捷方式信息[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)。
+查询当前用户下指定分身应用的快捷方式信息[ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md)。
 
 调用方获取自己的信息时不需要权限。
 
@@ -634,11 +634,11 @@ getShortcutInfoByAppIndex(bundleName: string, appIndex: number): Array\<Shortcut
 
 | 类型                   | 说明                                            |
 | ---------------------- | ----------------------------------------------- |
-| Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)\> | Array形式返回当前用户下指定分身应用的[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)。 |
+| Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md)\> | Array形式返回当前用户下指定分身应用的[ShortcutInfo](js-apis-bundleManager-shortcutInfo-sys.md)。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | ---------------------------------------- |

@@ -12,9 +12,9 @@ The system provides two solutions for video playback development:
 
 - **Video** component: encapsulates basic video playback capabilities. It can be used to play video files after the data source and basic information are set. However, its scalability is poor. This component is provided by ArkUI. For details about how to use this component for video playback development, see [Video Component](../../ui/arkts-common-components-video-player.md).
 
-In this topic, you will learn how to use the AVPlayer to develop a video playback service that plays a complete video file.
+This section describes how to use AVPlayer to implement video playback. It uses a complete video playback workflow as an example to demonstrate end-to-end playback of media resources.
 
-The full playback process includes creating an AVPlayer instance, setting the media asset to play and the window to display the video, setting playback parameters (volume, speed, and scale type), controlling playback (play, pause, seek, and stop), resetting the playback configuration, and releasing the instance. During application development, you can use the **state** property of the AVPlayer to obtain the AVPlayer state or call **on('stateChange')** to listen for state changes. If the application performs an operation when the AVPlayer is not in the given state, the system may throw an exception or generate other undefined behavior.
+The full playback process includes creating an AVPlayer instance, setting the media asset to play and the window to display the video, setting playback parameters (volume, speed, and scale type), controlling playback (play, pause, seek, and stop), resetting the playback configuration, and releasing the instance. During application development, you can use the **state** property of AVPlayer to obtain its state or call **on('stateChange')** to listen for state changes. If the application performs an operation when the AVPlayer is not in the given state, the system may throw an exception or generate other undefined behavior.
 
 **Figure 1** Playback state transition 
 
@@ -28,12 +28,12 @@ This topic describes only how to implement the playback of a media asset. In pra
 
 - If you want the application to continue playing the media asset in the background or when the screen is off, use the [AVSession](../avsession/avsession-access-scene.md) and [continuous task](../../task-management/continuous-task.md) to prevent the playback from being forcibly interrupted by the system.
 - If the media asset being played involves audio, the playback may be interrupted by other applications based on the system audio management policy. (For details, see [Processing Audio Interruption Events](../audio/audio-playback-concurrency.md).) It is recommended that the player application proactively listen for audio interruption events and handle the events accordingly to avoid the inconsistency between the application status and the expected effect.
-- When a device is connected to multiple audio output devices, the application can listen for audio output device changes through [on('audioOutputDeviceChangeWithInfo')](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#onaudiooutputdevicechangewithinfo11) and perform the processing accordingly.
+- When a device is connected to multiple audio output devices, the application can listen for audio output device changes through [on('audioOutputDeviceChangeWithInfo')](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#onaudiooutputdevicechangewithinfo11) and handle them accordingly.
 - To access online media resources, you must request the ohos.permission.INTERNET permission.
 
 ## How to Develop
 
-Read [AVPlayer](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md) for the API reference.
+For details about the APIs, see [AVPlayer](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md).
 
 1. Call **createAVPlayer()** to create an AVPlayer instance. The AVPlayer is the idle state.
 
@@ -116,7 +116,7 @@ Read [AVPlayer](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md) for
    > 
    > - If a network playback path is used, you must [declare the ohos.permission.INTERNET permission](../../security/AccessToken/declare-permissions.md).
    > 
-   > - You can also use **ResourceManager.getRawFd** to obtain the FD of a file packed in the HAP file. For details, see [ResourceManager API Reference](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfd9).
+   > - You can use ResourceManager.[getRawFd](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfd9) to open the HAP resource file descriptor.
    > 
    > - The [playback formats and protocols](media-kit-intro.md#supported-formats-and-protocols) in use must be those supported by the system.
 
@@ -129,6 +129,7 @@ Read [AVPlayer](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md) for
     ```
 
 4. Obtain and set the surface ID of the window to display the video.
+
    The application obtains the surface ID from the **XComponent**. For details about the process, see [getXComponentSurfaceId](../../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#getxcomponentsurfaceid9).
 
     ```ts
@@ -227,7 +228,7 @@ Read [AVPlayer](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md) for
 ## Running the Sample Project
 
 1. Create a project, download the [sample project](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSVideo), and copy its resources to the corresponding directories.
-    ```
+    ```text
     AVPlayerArkTSVideo
     entry/src/main/ets/
     └── pages
@@ -245,3 +246,11 @@ Read [AVPlayer](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md) for
         └── test1.mp4 (video resource)
     ```
 2. Compile and run the project.
+
+## Samples
+
+The following samples are provided to help you better understand how to develop video playback:
+
+- [Video Playback (ArkTS, API version 9)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/VideoPlay)
+
+- [Video Player (ArkTS, API version 9)](https://gitcode.com/openharmony/codelabs/tree/master/Media/VideoPlayer)

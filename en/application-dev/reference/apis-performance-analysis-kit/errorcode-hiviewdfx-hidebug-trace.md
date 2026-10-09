@@ -2,10 +2,11 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @hello_harmony; @leiguangyu-->
-<!--Designer: @kutcherzhou1-->
+<!--Owner: @leiguangyu-->
+<!--Designer: @mgce1-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=f723d457b4c69fd7c9854a237d35cae9f2a87b83 translatedAt=2026-09-16T11:05:32.375Z pushedAt=2026-09-20T09:01:52.267Z -->
 
 > **NOTE**
 >
@@ -27,7 +28,7 @@ The trace capture is in progress.
 
 **Solution**
 
-Wait until the trace capture is complete or call **hidebug.stopAppTraceCapture** to stop the trace capture.
+Wait for the trace capture to finish, or call the **hidebug.stopAppTraceCapture** API to stop the running trace capture, to resolve the duplicate capture issue.
 
 ## 11400103 Permission Verification Failed
 
@@ -45,7 +46,7 @@ The directory does not exist or is deleted by mistake.
 
 **Solution**
 
-Run the trace capture again to generate a correct trace file in the current directory.
+Run the capture API again to regenerate the correct directory file, to resolve the permission verification failure issue.
 
 ## 11400104 Internal Error
 
@@ -67,7 +68,7 @@ The system kernel crashes or the application process does not respond.
 
 **Solution**
 
-Restart the application or device.
+Restart the application or device to resolve the issue of an abnormal internal state of trace capture.
 
 ## 11400105 Trace Capture Disabled
 
@@ -85,7 +86,7 @@ Trace capture is not enabled.
 
 **Solution**
 
-Enable trace capture and then stop it.
+Ensure that trace capture has been successfully started before calling the API to stop trace capture.
 
 ## 11400106 API Call Quota Exceeded
 
@@ -99,10 +100,50 @@ The API call quota is exceeded.
 
 **Possible Causes**
 
-1. This API is called by a process more than once per day.
+1. The API is called by a process more than the quota (once per day).
 
-2. This API is called by the system more than five times per week.
+2. The API is called by the device more than the quota (five times per week).
 
 **Solution**
 
-Wait for the update of the API call quota.
+Wait for the call quota of the process or device to be refreshed, to resolve the issue that the API call quota has been exceeded.
+
+## 11400120 Trace File Storage Limit Reached
+
+**Error Message**
+
+Trace storage limit reached.
+
+**Description**
+
+The number of .sys files returned by the trace capture in the directory exceeds the upper limit.
+
+**Possible Causes**
+
+The number of .sys files returned by the trace capture in the directory is greater than or equal to 3.
+
+**Solution**
+
+Clean up the files in the trace directory to resolve the issue that the trace file storage limit has been reached.
+
+## 11400302 Trace Collection Exceeds the Resource Quota
+
+**Error Message**
+
+Resource unavailable.
+
+**Description**
+
+The number of times the application calls trace capture exceeds the system resource quota.
+
+> **NOTE**
+>
+> In developer mode, the [applications of the debug version](../../dfx/performance-analysis-kit-terminology.md#applications-of-the-debug-version) is not controlled.
+
+**Possible Causes**
+
+The number of times the application calls trace capture exceeds the daily quota of system resources.
+
+**Solution**
+
+Wait for the system resource quota to be refreshed on the next day, to resolve the issue that trace capture exceeds the resource quota.

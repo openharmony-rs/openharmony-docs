@@ -1,8 +1,8 @@
 # @ohos.application.DataShareExtensionAbility (数据共享扩展能力)(系统接口)
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @woodenarow-->
-<!--Designer: @woodenarow; @xuelei3-->
+<!--Owner: @lvcong_oh-->
+<!--Designer: @lvcong_oh-->
 <!--Tester: @chenwan188; @logic42-->
 <!--Adviser: @ge-yafang-->
 
@@ -31,7 +31,7 @@ import { DataShareExtensionAbility } from '@kit.ArkData';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| context<sup>10+</sup> | [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)  | 是 | 否 |表示数据共享扩展能力上下文。 |
+| context<sup>10+</sup> | [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)  | 否 | 否 | 表示数据共享扩展能力上下文。 |
 
 ### onCreate
 
@@ -70,7 +70,7 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
       console.info(`getRdbStore done, data : ${data}`);
       rdbStore = data;
       rdbStore.executeSql(DDL_TBL_CREATE, [], (err) => {
-        console.error(`executeSql done, error message : ${err}`);
+        console.error(`Failed to executeSql. Code: ${err.code}, message: ${err.message}`);
       });
       if (callback) {
         callback();
@@ -94,9 +94,9 @@ insert?(uri: string, valueBucket: ValuesBucket, callback: AsyncCallback&lt;numbe
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ----- | ------ | ------ | ------ |
-| uri |string | 是  | 指示要插入的数据的路径。 |
-| valueBucket |[ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket) | 是 | 指示要插入的数据。 |
-| callback |AsyncCallback&lt;number&gt; | 是 | 回调函数。返回插入数据记录的索引。 |
+| uri | string | 是  | 指示要插入的数据的路径。 |
+| valueBucket | [ValuesBucket](js-apis-data-valuesBucket.md#valuesbucket) | 是 | 指示要插入的数据。 |
+| callback | AsyncCallback&lt;number&gt; | 是 | 回调函数。返回插入数据记录的索引。 |
 
 **示例：**
 
@@ -109,7 +109,7 @@ let rdbStore: relationalStore.RdbStore;
 export default class DataShareExtAbility extends DataShareExtensionAbility {
   insert(uri: string, valueBucket: ValuesBucket, callback: Function) {
     if (valueBucket === null) {
-      console.error('invalid valueBuckets');
+      console.info('invalid valueBucket');
       return;
     }
     rdbStore.insert(TBL_NAME, valueBucket, (err, ret) => {
@@ -186,22 +186,22 @@ let TBL_NAME = 'TBL00';
 let rdbStore: relationalStore.RdbStore;
 
 export default class DataShareExtAbility extends DataShareExtensionAbility {
-  batchUpdate(operations:Record<string, Array<dataShare.UpdateOperation>>, callback:Function) {
+  batchUpdate(operations: Record<string, Array<dataShare.UpdateOperation>>, callback: Function) {
     let recordOps : Record<string, Array<dataShare.UpdateOperation>> = operations;
     let results : Record<string, Array<number>> = {};
-    let a = Object.entries(recordOps);
-    for (let i = 0; i < a.length; i++) {
-      let key = a[i][0];
-      let values = a[i][1];
+    let entries = Object.entries(recordOps);
+    for (let i = 0; i < entries.length; i++) {
+      let key = entries[i][0];
+      let values = entries[i][1];
       let result : number[] = [];
       for (const value of values) {
         rdbStore.update(TBL_NAME, value.values, value.predicates).then(async (rows) => {
           console.info('Update row count is ' + rows);
           result.push(rows);
         }).catch((err:BusinessError) => {
-          console.info('Update failed, err is ' + JSON.stringify(err));
+          console.error(`Failed to Update. Code: ${err.code}, message: ${err.message}`);
           result.push(-1)
-        })
+        });
       }
       results[key] = result;
     }
@@ -317,7 +317,7 @@ let rdbStore: relationalStore.RdbStore;
 export default class DataShareExtAbility extends DataShareExtensionAbility {
   batchInsert(uri: string, valueBuckets: Array<ValuesBucket>, callback: Function) {
     if (valueBuckets === null || valueBuckets.length <= 0) {
-      console.error('invalid valueBuckets');
+      console.info('invalid valueBucket');
       return;
     }
     rdbStore.batchInsert(TBL_NAME, valueBuckets, (err, ret) => {
@@ -395,12 +395,14 @@ export default class DataShareExtAbility extends DataShareExtensionAbility {
       name: key,
       message: key
     };
-      let ret = `denormalize ${uri}`;
-      callback(err, ret);
+    let ret = `denormalize ${uri}`;
+    callback(err, ret);
   }
 };
 ```
 ## UpdateOperation<sup>12+</sup>
+
+type UpdateOperation = dataShare.UpdateOperation
 
 批量更新操作的参数结构。
 

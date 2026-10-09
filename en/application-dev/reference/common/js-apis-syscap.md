@@ -1,4 +1,10 @@
 # SysCap
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Startup-->
+<!--Owner: @chenjinxiang3-->
+<!--Designer: @liveery-->
+<!--Tester: @liuhaonan2-->
+<!--Adviser: @fang-jinxu-->
 
 SystemCapability (SysCap) refers to a standalone feature in the operating system. Different devices support different SysCap sets. Each SysCap corresponds to one or more APIs. You can determine whether an API can be used by checking SysCap support.
 
@@ -12,13 +18,15 @@ canIUse(syscap: string): boolean
 
 Checks whether a SysCap is supported.
 
+**Atomic service API**: This API can be used in atomic services since API version 11.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| syscap | string | Yes| Name of the SysCap to check.Null and undefined inputs are not supported.|
+| syscap | string | Yes| Name of the SysCap to check. **null** and **undefined** are not supported.|
 
 **Return value**
 
@@ -28,7 +36,7 @@ Checks whether a SysCap is supported.
 
 **Example**
 
-  ```js
+```js
 import { geoLocationManager } from '@kit.LocationKit'
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -39,10 +47,10 @@ if (isLocationAvailable) {
             console.error('err=' + JSON.stringify(err));
         }
         if (location) {
-            console.log('location=' + JSON.stringify(location));
+            console.info('location=' + JSON.stringify(location));
         }
     });
 } else {
-    console.log('Location not by this device.');
+    console.info('Location not by this device.');
 }
-  ```
+```

@@ -2,10 +2,11 @@
 
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
-<!--Owner: @amunra03-->
+<!--Owner: @yh1719-->
 <!--Designer: @wenxiaolin-->
 <!--Tester: @zs_111-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=37e87e28b1f57566fffb557016c871f107cbe03a translatedAt=2026-09-08T07:26:48.679Z pushedAt=2026-09-08T11:25:00.920Z -->
 
 The **secureElement** module provides APIs for managing secure elements (SEs). SEs include the Embedded SE (eSE) and SIM on a device. The SE service mentioned in this topic is an **SEService** instance. For details, see [createService](#omapicreateservice12).
 
@@ -42,7 +43,7 @@ Enumerates the SE service states.
 
 newSEService(type: 'serviceState', callback: Callback\<ServiceState>): SEService
 
-Creates an **SEService** instance for connecting to all available SEs in the system. The connection is time-consuming. Therefore, this API supports only the asynchronous mode. This API uses an asynchronous callback to return the result.
+Creates an **SEService** instance for connecting to all available SEs in the system. The connection is time-consuming. Therefore, only asynchronous APIs are provided. This API uses an asynchronous callback to return the result.
 
 The returned **SEService** instance is available only when **true** is returned by the specified callback or [isConnected](#seserviceisconnected).
 
@@ -66,7 +67,7 @@ The returned **SEService** instance is available only when **true** is returned 
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message|
 | ------- | -------|
@@ -85,7 +86,7 @@ function secureElementDemo() {
     // Obtain the service.
     try {
         seService = omapi.newSEService("serviceState", (state) => {
-        hilog.info(0x0000, 'testTag', 'se service state = %{public}s', JSON.stringify(state));
+            hilog.info(0x0000, 'testTag', 'se service state = %{public}s', JSON.stringify(state));
         });
     } catch (error) {
         hilog.error(0x0000, 'testTag', 'newSEService error %{public}s', JSON.stringify(error));
@@ -99,11 +100,11 @@ function secureElementDemo() {
 
 ## omapi.createService<sup>12+</sup>
 
-createService(): Promise\<SEService>;
+createService(): Promise\<SEService>
 
 Creates an **SEService** instance for connecting to all available SEs in the system. The connection is time-consuming. Therefore, only asynchronous APIs are provided. This API uses a promise to return the result.
 
-The **SEService** object is available only when [isConnected](#seserviceisconnected) returns **true**.
+The returned **SEService** instance is available only when **true** is returned by [isConnected](#seserviceisconnected).
 
 **System capability**: SystemCapability.Communication.SecureElement
 
@@ -115,7 +116,7 @@ The **SEService** object is available only when [isConnected](#seserviceisconnec
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
@@ -138,15 +139,15 @@ function secureElementDemo() {
             return;
         }
         hilog.info(0x0000, 'testTag', 'seservice state connected');
-    }).catch((error : BusinessError)=> {
+    }).catch((error : BusinessError) => {
         hilog.error(0x0000, 'testTag', 'createService error %{public}s', JSON.stringify(error));
     });
 }
 ```
 
-## omapi.on<sup>18+</sup>
+## omapi.on('stateChanged')<sup>18+</sup>
 
-on(type: 'stateChanged', callback: Callback\<ServiceState>): void;
+on(type: 'stateChanged', callback: Callback\<ServiceState>): void
 
 Enables listening for service status change events.
 
@@ -163,7 +164,7 @@ Call this API to register a callback after you use [omapi.newSEService](#omapine
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
@@ -171,11 +172,11 @@ For details about error codes, see [SE Error Codes](errorcode-se.md).
 
 **Example**
 
-See the sample code in [off](#omapioff18).
+See the example of [omapi.off](#omapioffstatechanged18).
 
-## omapi.off<sup>18+</sup>
+## omapi.off('stateChanged')<sup>18+</sup>
 
-off(type: 'stateChanged', callback?: Callback\<ServiceState>): void;
+off(type: 'stateChanged', callback?: Callback\<ServiceState>): void
 
 Disables listening for service status change events.
 
@@ -186,11 +187,11 @@ Disables listening for service status change events.
 | **Name**| **Type**                                            | **Mandatory**| **Description**            |
 | ---------- | ---------------------------------------------------- | ------ | -------------------- |
 | type       | string                                               | Yes     | Event type. It has a fixed value of **stateChanged**.     |
-| callback   | Callback<[ServiceState](#servicestate)> | No     | Callback used to return the SE service state.|
+| callback   | Callback<[ServiceState](#servicestate)> | No     | Callback invoked to return the SE service status. If this parameter is left empty, all callbacks corresponding to the type will be unsubscribed.|
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
@@ -214,7 +215,7 @@ function seStateOffCb(data: omapi.ServiceState) {
 }
 
 function secureElementDemo() {
-    try{
+    try {
         omapi.createService().then((data) => {
             seService = data;
             if (seService == undefined || !seService.isConnected()) {
@@ -222,7 +223,7 @@ function secureElementDemo() {
                 return;
             }
             hilog.info(0x0000, 'testTag', 'seservice state connected');
-        }).catch((error : BusinessError)=> {
+        }).catch((error : BusinessError) => {
             hilog.error(0x0000, 'testTag', 'createService error %{public}s', JSON.stringify(error));
         });
         omapi.on('stateChanged', seStateOnCb);
@@ -231,7 +232,7 @@ function secureElementDemo() {
             hilog.error(0x0000, 'testTag', 'omapi on error %{public}s', JSON.stringify(error));
         }
     }
-    try{
+    try {
         omapi.off('stateChanged', seStateOffCb);
     } catch (error) {
         if (error as BusinessError) {
@@ -261,7 +262,7 @@ Obtains available SE readers, which include all the SEs on the device.
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
@@ -310,7 +311,7 @@ Checks whether this SE service is connected.
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
@@ -334,7 +335,7 @@ function secureElementDemo() {
             return;
         }
         hilog.info(0x0000, 'testTag', 'seservice state connected');
-    }).catch((error : BusinessError)=> {
+    }).catch((error : BusinessError) => {
         hilog.error(0x0000, 'testTag', 'createService error %{public}s', JSON.stringify(error));
     });
 }
@@ -350,7 +351,7 @@ Releases all SE resources allocated to this SE service. After that, [isConnected
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
@@ -391,7 +392,7 @@ Obtains the version of the Open Mobile API (OMAPI) specification used.
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
@@ -478,7 +479,7 @@ Checks whether the SE corresponding to this reader is available.
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
@@ -521,7 +522,7 @@ Opens a session to connect to an SE in this reader. Multiple sessions can be ope
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
@@ -564,7 +565,7 @@ Closes all sessions opened on this reader. All channels opened by these sessions
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
@@ -624,7 +625,7 @@ Obtains the reader that provides this session.
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
@@ -677,7 +678,7 @@ Obtains the Answer to Reset (ATR) of this SE. If the ATR of this SE is not avail
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
@@ -713,7 +714,7 @@ Closes the session with the SE. All channels opened by this session will be clos
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
@@ -738,7 +739,7 @@ try {
 }
 ```
 
-### Session. isClosed
+### Session.isClosed
 
 isClosed(): boolean
 
@@ -754,7 +755,7 @@ Checks whether this session is closed.
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
@@ -789,7 +790,7 @@ Closes all channels opened on this session.
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
@@ -836,7 +837,7 @@ Opens a basic channel, as defined in ISO/IEC 7816-4. If the SE cannot provide th
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
@@ -864,7 +865,7 @@ function secureElementDemo() {
         // Set the AID of the application selected on the channel.
         seSession.openBasicChannel(aidArray).then((data) => {
             seChannel = data;
-        }).catch((error : BusinessError)=> {
+        }).catch((error : BusinessError) => {
             hilog.error(0x0000, 'testTag', 'openBasicChannel error %{public}s', JSON.stringify(error));
         });
     } catch (exception) {
@@ -894,7 +895,7 @@ Opens a basic channel, as defined in ISO/IEC 7816-4. If the SE cannot provide th
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
@@ -960,7 +961,7 @@ Opens a basic channel, as defined in ISO/IEC 7816-4. If the SE cannot provide th
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
@@ -989,7 +990,7 @@ function secureElementDemo() {
         // Set the AID of the application selected on the channel.
         seSession.openBasicChannel(aidArray, p2).then((data) => {
             seChannel = data;
-        }).catch((error : BusinessError)=> {
+        }).catch((error : BusinessError) => {
             hilog.error(0x0000, 'testTag', 'openBasicChannel error %{public}s', JSON.stringify(error));
         });
     } catch (exception) {
@@ -1020,7 +1021,7 @@ Opens a basic channel, as defined in ISO/IEC 7816-4. If the SE cannot provide th
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
@@ -1086,7 +1087,7 @@ Opens a logical channel, as defined in ISO/IEC 7816-4. If the SE cannot provide 
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
@@ -1114,7 +1115,7 @@ function secureElementDemo() {
         // Set the AID of the application selected on the channel.
         seSession.openLogicalChannel(aidArray).then((data) => {
             seChannel = data;
-        }).catch((error : BusinessError)=> {
+        }).catch((error : BusinessError) => {
             hilog.error(0x0000, 'testTag', 'openLogicalChannel error %{public}s', JSON.stringify(error));
         });
     } catch (exception) {
@@ -1144,7 +1145,7 @@ Opens a logical channel, as defined in ISO/IEC 7816-4. If the SE cannot provide 
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
@@ -1210,7 +1211,7 @@ Opens a logical channel, as defined in ISO/IEC 7816-4. If the SE cannot provide 
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
@@ -1239,7 +1240,7 @@ function secureElementDemo() {
         // Set the AID of the application selected on the channel.
         seSession.openLogicalChannel(aidArray, p2).then((data) => {
             seChannel = data;
-        }).catch((error : BusinessError)=> {
+        }).catch((error : BusinessError) => {
             hilog.error(0x0000, 'testTag', 'openLogicalChannel error %{public}s', JSON.stringify(error));
         });
     } catch (exception) {
@@ -1270,7 +1271,7 @@ Opens a logical channel, as defined in ISO/IEC 7816-4. If the SE cannot provide 
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
@@ -1296,7 +1297,7 @@ let p2 : number = 0x00;
 // Initialize seSession before using it.
 function secureElementDemo() {
     try {
-    // Set the AID of the application selected on the channel.
+        // Change to the AID of the App selected on this channel.
         seSession.openLogicalChannel(aidArray, p2, (error, data) => {
             if (error) {
                 hilog.error(0x0000, 'testTag', 'openLogicalChannel error %{public}s', JSON.stringify(error));
@@ -1333,7 +1334,7 @@ Obtains the session used to open this channel.
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
@@ -1368,7 +1369,7 @@ Closes this channel.
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
@@ -1403,11 +1404,11 @@ Checks whether this channel is a basic channel.
 
 | **Type**| **Description**                                                    |
 | -------- | ------------------------------------------------------------ |
-| boolean  | **true** if the channel is a basic channel; **false** otherwise.|
+| boolean  | Checks whether this channel is a basic channel. **true** if the channel is a basic channel; **false** otherwise. |
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
@@ -1447,7 +1448,7 @@ Checks whether this channel is closed.
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
@@ -1487,7 +1488,7 @@ Obtains the response data including the status word of **SELECT Applet**.
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
@@ -1529,11 +1530,11 @@ Transmits APDU data (as per ISO/IEC 7816) to the SE. This API uses a promise to 
 
 | **Type**| **Description**      |
 | -------- | -------------- |
-| Promise\<number[]> | Promise used to return the response received, in a number array.|
+| Promise\<number[]> | Promise used to return the response received, in a number array. If the chip captures an exception, an all zero value is returned.|
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
@@ -1556,6 +1557,7 @@ let seChannel : omapi.Channel;
 let cmdData = [0x01, 0x02, 0x03, 0x04]; // Set command data correctly.
 try {
     seChannel.transmit(cmdData).then((response) => {
+        // If the chip captures an exception, an all zero value is returned for response.
         hilog.info(0x0000, 'testTag', 'transmit response = %{public}s.', JSON.stringify(response));
     }).catch((error : BusinessError) => {
         hilog.error(0x0000, 'testTag', 'transmit error = %{public}s.', JSON.stringify(error));
@@ -1578,11 +1580,11 @@ Transmits APDU data (as per ISO/IEC 7816) to the SE. This API uses an asynchrono
 | **Name**| **Type**               | **Mandatory**| **Description**                             |
 | ---------- | ----------------------- | ------ | ------------------------------------- |
 | command    | number[]                | Yes     | APDU data to send.|
-| callback   | AsyncCallback\<number[]> | Yes     | Callback used to return the response received, in a number array. |
+| callback   | AsyncCallback\<number[]> | Yes     | Callback used to return the response received, in a number array. If the chip captures an exception, an all zero value is returned.|
 
 **Error codes**
 
-For details about error codes, see [SE Error Codes](errorcode-se.md).
+For details about error codes, see [SecureElement Error Codes](errorcode-se.md).
 
 | ID| Error Message                        |
 | -------- | -------------------------------- |
@@ -1605,11 +1607,12 @@ let seChannel : omapi.Channel;
 let cmdData = [0x01, 0x02, 0x03, 0x04]; // Set command data correctly.
 try {
     seChannel.transmit(cmdData, (error, response) => {
-    if (error) {
-        hilog.error(0x0000, 'testTag', 'transmit error %{public}s', JSON.stringify(error));
-    } else {
-        hilog.info(0x0000, 'testTag', 'transmit response = %{public}s.', JSON.stringify(response));
-    }
+        if (error) {
+            hilog.error(0x0000, 'testTag', 'transmit error %{public}s', JSON.stringify(error));
+        } else {
+            // If the chip captures an exception, an all zero value is returned for response.
+            hilog.info(0x0000, 'testTag', 'transmit response = %{public}s.', JSON.stringify(response));
+        }
     });
 } catch (exception) {
     hilog.error(0x0000, 'testTag', 'transmit exception %{public}s', JSON.stringify(exception));

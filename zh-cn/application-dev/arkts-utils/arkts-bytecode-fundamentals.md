@@ -2,10 +2,10 @@
 
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @huyunhui1; @oh-rgx1; @zmw1-->
-<!--Designer: @ctw-ian; @hufeng20-->
+<!--Owner: @jokerxd-liu; @zmw1-->
+<!--Designer: @huyunhui1; @oatuwwutao-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @jinqiuheng-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 总体设计
 ### 概述
@@ -34,7 +34,7 @@
 
 **约束**
 
-* 本文中所有采用代码形式描述的内容均遵循[ArkTS语言规范](../quick-start/introduction-to-arkts.md)。
+* 本文中所有采用代码形式描述的内容均遵循[ArkTS语法](../quick-start/arkts-language-guide-basics.md)。
 * 本文仅适用于版本号为12.0.6.0的方舟字节码（版本号为方舟编译器内部保留字段，开发者无需关注）。
 
 ### 字节码构成
@@ -42,7 +42,7 @@
 **操作码与前缀**
 
 方舟字节码中的操作码通常被编码为一个8位的值，因此至多只能有256个操作码。随着方舟编译器运行时功能的演进，字节码的数量也在逐步增加，已经超过了256个。因此，方舟字节码引入了前缀（prefix），将操作码最大宽度从8位扩展到16位。8位操作码（无前缀的）用于表示频繁出现的指令，16位操作码（有前缀的）用于表示出现频率不高的指令。<br>
-带前缀的操作码为小端法存储的16位值，由8位操作码和8位前缀组成，编码规则为：操作码左移8位，再与前缀相或。
+带前缀的操作码为小端法存储的16位值，由8位操作码和8位前缀组成，编码规则为：16位操作码的高8位为具体操作码，低8位为前缀值。
 |     前缀操作码      |      助记符        |      描述        |
 |     ----------  |    ----------   |    ----------   |
 |  0xfe   |  throw  |  有条件/无条件的throw指令。 |
@@ -50,7 +50,7 @@
 |  0xfc   |  deprecated  |  方舟编译器不再会产生的指令，仅用于维护运行时兼容性；<br>本文后续章节中将省略对这些指令的说明。 |
 |  0xfb   |  callruntime |  调用运行时方法的指令。  |
 
-前缀操作码的助记符的形式为**前缀助记符.操作码助记符**，例如，wide.stlexvar。stlexvar指令的操作码是0x0d，前缀wide是0xfd，则此带前缀的指令（wide.stlexvar）的操作码是0x0dfd。
+前缀操作码的助记符的形式为**前缀助记符.操作码助记符**，例如，wide.stlexvar。stlexvar指令的操作码是0x0d，前缀wide是0xfd，则此带前缀的指令（wide.stlexvar）的操作码是0x0dfd，按小端字节序存储为字节序列`fd 0d`。
 
 
 **寄存器与累加器**
@@ -59,7 +59,7 @@
 方舟字节码中，存在一个名为累加器（accumulator，也简称作acc）的不可见寄存器。acc是许多指令的默认目标寄存器，也是许多指令的默认参数。acc不占用编码宽度，有助于产生更为紧凑的字节码。<br>
 
 示例代码：
-<!-- @[registers_accumulator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/Index.ets) -->  
+<!-- @[registers_accumulator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 function foo0(): number {
@@ -93,7 +93,7 @@ function foo0(): number {
 在[Script](https://262.ecma-international.org/12.0/#sec-ecmascript-language-scripts-and-modules)编译模式下，全局变量是一个存储在全局唯一的映射中的变量，其键值为全局变量的名称，值为全局变量的值。全局变量可通过全局（global）相关的指令进行访问。<br>
 
 示例代码：
-<!-- @[global_variables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/Index.ets) -->  
+<!-- @[global_variables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 let a = 1;
@@ -139,25 +139,27 @@ function foo1(): void {
 > 模块相关的逻辑是编译器的内部实现，随着方舟编译器的后续演进，可能会出现新的涉及模块指令的场景；另一方面，现有的模块命名空间和模块变量指令的相关场景，也可能会随着需求演进和代码重构，不再涉及产生模块相关指令。<br>
 
 示例代码：
-<!-- @[namespaces_Variables_foo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/module_foo.ts) -->  
+<!-- @[namespaces_Variables_foo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/ModuleFoo.ts) -->
 
 ``` TypeScript
-//module_foo.ts
+// ModuleFoo.ts
 export let a: number = 1;
 export let b: number = 2;
 ```
-<!-- @[namespaces_Variables_bar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/module_bar.ts) -->  
+
+<!-- @[namespaces_Variables_bar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/ModuleBar.ts) -->
 
 ``` TypeScript
-//module_bar.ts
+// ModuleBar.ts
 export let c: number = 4;
 ```
-<!-- @[namespaces_Variables_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/module_index.ts) -->  
+
+<!-- @[namespaces_Variables_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/ModuleIndex.ts) -->
 
 ``` TypeScript
-//module_index.ts
-import { a, b } from "./module_foo"
-import * as c from "./module_bar"
+// ModuleIndex.ts
+import { a, b } from "./ModuleFoo";
+import * as c from "./ModuleBar";
 
 export let d: number = 3;
 
@@ -210,10 +212,10 @@ c;
 > lexical相关的逻辑是编译器的内部实现。随着方舟编译器的演进，可能会出现新的涉及lexical指令的场景。现有的lexical指令场景也可能会因需求演进和代码重构而不再涉及lexical的相关指令。
 
 示例代码：
-<!-- @[lexical_environments_variables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/index.ts) -->  
+<!-- @[lexical_environments_variables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/Index.ts) --> 
 
 ``` TypeScript
-// index.ts
+// Index.ts
 function foo(): void {
   let a: number = 1;
   function bar(): number {
@@ -250,7 +252,7 @@ function foo(): void {
 共享词法环境是一类特殊的词法环境。与一般词法环境的区别在于，共享词法环境中的每个词法变量都是[sendable对象](arkts-sendable.md)。方舟编译器通过共享词法环境实现词法变量在多线程中共享。
 
 示例代码：
-<!-- @[shared_Lexical](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/Index.ets) -->  
+<!-- @[shared_Lexical](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 @Sendable
@@ -258,7 +260,7 @@ class A { }
 
 @Sendable
 class B {
-  u: A = new A()
+  u: A = new A();
 }
 ```
 字节码中的相关指令：
@@ -294,13 +296,13 @@ label_2:
 方舟编译器支持补丁模式的编译，当源文件发生修改时，经过补丁模式编译，生成一个补丁字节码，配合原字节码，完成功能的更新。方舟编译器在补丁模式下编译时，产生的补丁变量会被存放在一个特殊的补丁词法环境中。方舟字节码中使用补丁词法环境上的槽位编号来引用补丁变量。例如，指令*ldpatchvar 0x1*加载的是槽位号为1的补丁变量。<br>
 
 示例代码：
-<!-- @[patch_variables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/Index.ets) -->  
+<!-- @[patch_variables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-function bar(): void {} // 新增语句，编译补丁。
+function bar(): void {} // 新增语句，编译补丁
 
 function foo2(): void {
-  bar(); // 新增语句，编译补丁。
+  bar(); // 新增语句，编译补丁
 }
 ```
 字节码中的相关指令：
@@ -328,7 +330,7 @@ function foo2(): void {
 对于一个包含了N个形参的方法，该方法所使用的寄存器中的最后N+3个会被用于传递参数。其中，前三个寄存器固定表示函数本身（FunctionObject）、[new.target](https://262.ecma-international.org/12.0/#sec-function-environment-records)（NewTarget）和函数所在的词法环境中的```this```（this），后续的N个寄存器依次对应这N个形参。<br>
 
 示例代码：
-<!-- @[function_call_specifications](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/Index.ets) -->  
+<!-- @[function_call_specifications](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkBytecode/FundamentalsAndNamingConventions/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 function foo3(a: number, b: number): void {}
@@ -402,6 +404,8 @@ function foo3(a: number, b: number): void {}
 * *+CCCC*：16位立即数。
 * *vDD*：8位寄存器索引。
 
+> **说明：**<br>下表中部分指令标注为"预留指令"，这些指令为字节码优化预留，当前版本功能未使能，暂不可用。
+
 |    操作码   |   格式    |  助记符/语法   |     参数       |      说明     |
 |   -------   |  -------  |  ----------  |   ----------   |   --------   |
 |  0x00 |  NONE |  ldundefined  | - |   将**undefined**加载进acc。   |
@@ -456,7 +460,7 @@ function foo3(a: number, b: number): void {}
 |  0x31 |  IMM8_IMM8_V8 |  callthisrange RR, +AA, vBB   |  默认入参：acc：函数对象<br>R：方舟运行时内部使用的8位保留数字<br>A：参数数量<br>B：对象<br>B + 1, ..., B + A：参数   |  将`this`的值设置为B，以B + 1，...，B + A作为参数，调用acc中存放的函数对象，并将计算结果存放到acc中。   |
 |  0x32 |  IMM8_IMM8_V8 |  supercallthisrange RR, +AA, vBB  |  R：方舟运行时内部使用的8位保留数字<br>A：参数数量<br>B, ..., B + A - 1：参数 |  以B, ..., B + A - 1作为参数, 调用`super`函数，并将结果存放到acc中。<br>当A的值是0时，B是**undefined**。<br>此指令仅出现在非箭头函数中。   |
 |  0x33 |  IMM8_ID16_IMM8   |  definefunc RR, @AAAA, +BB    |  R：方舟运行时内部使用的8位保留数字<br>A：method id<br>B：方法A的形参数量 | 创建方法A的函数对象，并将其存放到acc中。   |
-|  0x34 |  IMM8_ID16_IMM8   |  definemethod RR, @AAAA, +BB  |  默认入参：acc：类对象或类对象的对象原型，方法为静态方法时，acc中是类对象<br>R：方舟运行时内部使用的8位保留数字<br>A：method id<br>B：方法A的形参数量     |  创建方法A的函数对象，将acc中的对象设置为该函数对象的[HomeObject](https://262.ecma-international.org/12.0/#sec-ecmascript-function-objects)属性，并将该函数对象存放到acc中。   |
+|  0x34 |  IMM8_ID16_IMM8   |  definemethod RR, @AAAA, +BB  |  默认入参：acc：类对象或类对象的对象原型，方法为静态方法时，acc中是类对象<br>R：方舟运行时内部使用的8位保留数字<br>A：method id<br>B：方法A的形参数量     |  创建方法A的函数对象，将acc中的对象设置为该函数对象的[\[\[HomeObject\]\]](https://262.ecma-international.org/12.0/#sec-ecmascript-function-objects)属性，并将该函数对象存放到acc中。   |
 |  0x35 |  IMM8_ID16_ID16_IMM16_V8  |  defineclasswithbuffer RR, @AAAA, @BBBB, +CCCC, vDD   |  R：方舟运行时内部使用的8位保留数字<br>A：类的构造函数的method id<br>B：literal id<br>C：方法A的形参数量<br>D：父类   |  使用索引B对应的字面量数组和父类D，创建A的类对象，并将其存放到acc中。   |
 |  0x36 |  V8   |  getnextpropname vAA  | A：迭代器 |  执行[for-in迭代器](https://262.ecma-international.org/12.0/#sec-createiterresultobject)A的[next](https://262.ecma-international.org/12.0/#sec-%25foriniteratorprototype%25.next)方法，并将结果存放到acc中。   |
 |  0x37 |  IMM8_V8  |  ldobjbyvalue RR, vAA |  默认入参：acc：属性键值<br>R：方舟运行时内部使用的8位保留数字<br>A：对象 |  加载A对象的键值为acc的属性，并将结果存放到acc中。|
@@ -467,7 +471,7 @@ function foo3(a: number, b: number): void {}
 |  0x3c |  IMM4_IMM4    |  ldlexvar +A, +B  |  A：词法环境层级<br>B：槽位号 |  将A个层次外的词法环境的B号槽位上的值存放到acc中。   |
 |  0x3d |  IMM4_IMM4    |  stlexvar +A, +B  |  默认入参：acc：值<br>A：词法环境层级<br>B：槽位号    |  将acc中的值存放到A个层次外的词法环境的B号槽位上。   |
 |  0x3e |  ID16 |  lda.str @AAAA    |  A：string id |  将索引A对应的字符串存放到acc中。   |
-|  0x3f |  IMM8_ID16    |  tryldglobalbyname RR, @AAAA  |  R：方舟运行时内部使用的8位保留数字<br>A：string id   |  将名称为索引A对应的字符串的全局变量存放进acc中，不存在名称为A的全局变量时，抛出异常。   |
+|  0x3f |  IMM8_ID16    |  tryldglobalbyname RR, @AAAA  |  R：方舟运行时内部使用的8位保留数字<br>A：string id   |  将名称为索引A对应的字符串的全局变量存放进acc中，不存在名称为索引A对应的字符串的全局变量时，抛出异常。   |
 |  0x40 |  IMM8_ID16    |  trystglobalbyname RR, @AAAA  |  默认入参：acc：值<br>R：方舟运行时内部使用的8位保留数字<br>A：string id  |  将acc中的值存放到名称为索引A对应的字符串的全局变量上，不存在名称为A的全局变量时，抛出异常。   |
 |  0x41 |  IMM16_ID16   |  ldglobalvar RRRR, @AAAA  |  R：方舟运行时内部使用的16位保留数字<br>A：string id  |  将名称为索引A对应的字符串的全局变量的值存放到acc中，该变量一定存在。   |
 |  0x42 |  IMM8_ID16    |  ldobjbyname RR, @AAAA    |  默认入参：acc：对象<br>R：方舟运行时内部使用的8位保留数字<br>A：string id    |  加载acc中所存对象的键值为索引A对应的字符串的属性，并将其存放到acc中。   |
@@ -486,20 +490,20 @@ function foo3(a: number, b: number): void {}
 |  0x4f |  IMM8 |  jeqz +AA |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算`acc == 0`，如果为真，则跳转到分支A。   |
 |  0x50 |  IMM16    |  jeqz +AAAA   |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算`acc == 0`，如果为真，则跳转到分支A。   |
 |  0x51 |  IMM8 |  jnez +AA |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算`acc != 0`，如果为真，则跳转到分支A。   |
-|  0x52 |  IMM8 |  jstricteqz +AA   |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算`acc === 0`，如果为真，则跳转到分支A。<br>指令功能未使能，暂不可用。   |
-|  0x53 |  IMM8 |  jnstricteqz +AA  |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算`acc !== 0`，如果为真，则跳转到分支A。<br>指令功能未使能，暂不可用。   |
-|  0x54 |  IMM8 |  jeqnull +AA  |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算`acc == null`，如果为真，则跳转到分支A。<br>指令功能未使能，暂不可用。   |
-|  0x55 |  IMM8 |  jnenull +AA  |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算`acc != null`，如果为真，则跳转到分支A。<br>指令功能未使能，暂不可用。   |
-|  0x56 |  IMM8 |  jstricteqnull +AA    |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算`acc === null`，如果为真，则跳转到分支A。<br>指令功能未使能，暂不可用。   |
-|  0x57 |  IMM8 |  jnstricteqnull +AA   |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算`acc !== null`，如果为真，则跳转到分支A。<br>指令功能未使能，暂不可用。   |
-|  0x58 |  IMM8 |  jequndefined +AA |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算`acc == undefined`，如果为真，则跳转到分支A。<br>指令功能未使能，暂不可用。   |
-|  0x59 |  IMM8 |  jneundefined +AA |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算`acc != undefined`，如果为真，则跳转到分支A。<br>指令功能未使能，暂不可用。   |
-|  0x5a |  IMM8 |  jstrictequndefined +AA   |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算`acc === undefined`，如果为真，则跳转到分支A。<br>指令功能未使能，暂不可用。   |
-|  0x5b |  IMM8 |  jnstrictequndefined +AA  |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算`acc !== undefined`，如果为真，则跳转到分支A。<br>指令功能未使能，暂不可用。   |
-|  0x5c |  V8_IMM8  |  jeq vAA, +BB |  默认入参：acc：值<br>A：值<br>B：有符号的分支偏移量  |  计算`acc == A`，如果为真，则跳转到分支B。<br>指令功能未使能，暂不可用。   |
-|  0x5d |  V8_IMM8  |  jne vAA, +BB |  默认入参：acc：值<br>A：值<br>B：有符号的分支偏移量  |  计算`acc != A`，如果为真，则跳转到分支B。<br>指令功能未使能，暂不可用。   |
-|  0x5e |  V8_IMM8  |  jstricteq vAA, +BB   |  默认入参：acc：对象<br>A：对象<br>B：有符号的分支偏移量  |  计算`acc === A`，如果为真，则跳转到分支B。<br>指令功能未使能，暂不可用。   |
-|  0x5f |  V8_IMM8  |  jnstricteq vAA, +BB  |  默认入参：acc：对象<br>A：对象<br>B：有符号的分支偏移量  |  计算`acc !== A`，如果为真，则跳转到分支B。<br>指令功能未使能，暂不可用。   |
+|  0x52 |  IMM8 |  jstricteqz +AA   |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算`acc === 0`，如果为真，则跳转到分支A。（预留指令）   |
+|  0x53 |  IMM8 |  jnstricteqz +AA  |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算`acc !== 0`，如果为真，则跳转到分支A。（预留指令）   |
+|  0x54 |  IMM8 |  jeqnull +AA  |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算`acc == null`，如果为真，则跳转到分支A。（预留指令）   |
+|  0x55 |  IMM8 |  jnenull +AA  |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算`acc != null`，如果为真，则跳转到分支A。（预留指令）   |
+|  0x56 |  IMM8 |  jstricteqnull +AA    |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算`acc === null`，如果为真，则跳转到分支A。（预留指令）   |
+|  0x57 |  IMM8 |  jnstricteqnull +AA   |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算`acc !== null`，如果为真，则跳转到分支A。（预留指令）   |
+|  0x58 |  IMM8 |  jequndefined +AA |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算`acc == undefined`，如果为真，则跳转到分支A。（预留指令）   |
+|  0x59 |  IMM8 |  jneundefined +AA |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算`acc != undefined`，如果为真，则跳转到分支A。（预留指令）   |
+|  0x5a |  IMM8 |  jstrictequndefined +AA   |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算`acc === undefined`，如果为真，则跳转到分支A。（预留指令）   |
+|  0x5b |  IMM8 |  jnstrictequndefined +AA  |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算`acc !== undefined`，如果为真，则跳转到分支A。（预留指令）   |
+|  0x5c |  V8_IMM8  |  jeq vAA, +BB |  默认入参：acc：值<br>A：值<br>B：有符号的分支偏移量  |  计算`acc == A`，如果为真，则跳转到分支B。（预留指令）   |
+|  0x5d |  V8_IMM8  |  jne vAA, +BB |  默认入参：acc：值<br>A：值<br>B：有符号的分支偏移量  |  计算`acc != A`，如果为真，则跳转到分支B。（预留指令）   |
+|  0x5e |  V8_IMM8  |  jstricteq vAA, +BB   |  默认入参：acc：对象<br>A：对象<br>B：有符号的分支偏移量  |  计算`acc === A`，如果为真，则跳转到分支B。（预留指令）   |
+|  0x5f |  V8_IMM8  |  jnstricteq vAA, +BB  |  默认入参：acc：对象<br>A：对象<br>B：有符号的分支偏移量  |  计算`acc !== A`，如果为真，则跳转到分支B。（预留指令）   |
 |  0x60 |  V8   |  lda vAA  |  A：寄存器索引    |  将寄存器A中的内容存放到acc中。   |
 |  0x61 |  V8   |  sta vAA  |  默认入参：acc<br>A：寄存器索引   |  将acc中的内容存放到寄存器A中。   |
 |  0x62 |  IMM32    |  ldai +AAAAAAAA   |  A：常量字面量    |  将整型字面量A存放到acc中。   |
@@ -514,7 +518,7 @@ function foo3(a: number, b: number): void {}
 |  0x6b |  NONE |  ldinfinity   | - |  将**infinity**存放到acc中。   |
 |  0x6c |  NONE |  getunmappedargs   | - |  将当前函数的**arguments**存放到acc中。   |
 |  0x6d |  NONE |  ldglobal  | - |  将**global**对象存放到acc中。 |
-|  0x6e |  NONE |  ldnewtarget   | - |  将当前函数的隐式参数NewTarget存放到acc中。<br>指令功能未使能，暂不可用。   |
+|  0x6e |  NONE |  ldnewtarget   | - |  将当前函数的隐式参数NewTarget存放到acc中。（预留指令）   |
 |  0x6f |  NONE |  ldthis   | - |  将`this`存放到acc中。   |
 |  0x70 |  NONE |  ldhole    | - |  将**hole**存放到acc中。   |
 |  0x71 |  IMM8_ID16_IMM8   |  createregexpwithliteral RR, @AAAA, +BB   |  R：方舟运行时内部使用的8位保留数字<br>A：string id<br>B：指代正则表达式修饰符    |  使用索引A对应的字符串和B指代的修饰符，创建一个正则表达式，并存放到acc中。<br>B和所指代的修饰符的对应关系为：0（默认值，无修饰符），1（g），2（i），4（m），8（s），16（u），32（y）；B也可以指代符合语法规范的修饰符的组合，例如3，指代的修饰符是gi。  |
@@ -544,7 +548,7 @@ function foo3(a: number, b: number): void {}
 |  0x89 |  IMM16_V8_IMM16   |  stobjbyindex RRRR, vAA, +BBBB    |  默认入参：acc：值<br>R：方舟运行时内部使用的16位保留数字<br>A：对象<br>B：属性键值   |  将acc中的值存放到对象A的键值为B的属性上。   |
 |  0x8a |  IMM8_IMM8    |  ldlexvar +AA, +BB    |  A：词法环境层级<br>B：槽位号 |  将A个层次外的词法环境的B号槽位上的值存放到acc中。   |
 |  0x8b |  IMM8_IMM8    |  stlexvar +AA, +BB    |  默认入参：acc：值<br>A：词法环境层级<br>B：槽位号    |  将acc中的值存放到A个层次外的词法环境的B号槽位上。   |
-|  0x8c |  IMM16_ID16   |  tryldglobalbyname RRRR, @AAAA    |  R：方舟运行时内部使用的16位保留数字<br>A：string id  |  将名称为索引A对应的字符串的全局变量存放进acc中，不存在名称为A的全局变量时，抛出异常。   |
+|  0x8c |  IMM16_ID16   |  tryldglobalbyname RRRR, @AAAA    |  R：方舟运行时内部使用的16位保留数字<br>A：string id  |  将名称为索引A对应的字符串的全局变量存放进acc中，不存在名称为索引A对应的字符串的全局变量时，抛出异常。   |
 |  0x8d |  IMM16_ID16   |  trystglobalbyname RRRR, @AAAA    |  默认入参：acc：值<br>R：方舟运行时内部使用的16位保留数字<br>A：string id |  将acc中的值存放到名称为索引A对应的字符串的全局变量上，不存在名称为A的全局变量时，抛出异常。   |
 |  0x8e |  IMM8_ID16_V8 |  stownbynamewithnameset RR, @AAAA, vBB    |  默认入参：acc：函数对象<br>R：方舟运行时内部使用的8位保留数字<br>A：string id<br>B：对象 |  将acc中的函数对象存放到对象B的键值为索引A对应的字符串的属性上，并将函数的名称设置为索引A对应的字符串。   |
 |  0x8f |  V16_V16  |  mov vAAAA, vBBBB |  A, B：寄存器索引 |  将寄存器B中的内容复制到寄存器A中。   |
@@ -561,20 +565,20 @@ function foo3(a: number, b: number): void {}
 |  0x9a |  IMM32    |  jeqz +AAAAAAAA   |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算`acc == 0`，如果为真，则跳转到分支A。   |
 |  0x9b |  IMM16    |  jnez +AAAA   |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算`acc != 0`，如果为真，则跳转到分支A。   |
 |  0x9c |  IMM32    |  jnez +AAAAAAAA   |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算`acc != 0`，如果为真，则跳转到分支A。   |
-|  0x9d |  IMM16    |  jstricteqz +AAAA |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算`acc === 0`，如果为真，则跳转到分支A。<br>指令功能未使能，暂不可用。   |
-|  0x9e |  IMM16    |  jnstricteqz +AAAA    |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算`acc !== 0`，如果为真，则跳转到分支A。<br>指令功能未使能，暂不可用。   |
-|  0x9f |  IMM16    |  jeqnull +AAAA    |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算`acc == null`，如果为真，则跳转到分支A。<br>指令功能未使能，暂不可用。   |
-|  0xa0 |  IMM16    |  jnenull +AAAA    |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算`acc != null`，如果为真，则跳转到分支A。<br>指令功能未使能，暂不可用。   |
-|  0xa1 |  IMM16    |  jstricteqnull +AAAA  |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算`acc === null`，如果为真，则跳转到分支A。<br>指令功能未使能，暂不可用。   |
-|  0xa2 |  IMM16    |  jnstricteqnull +AAAA |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算`acc !== null`，如果为真，则跳转到分支A。<br>指令功能未使能，暂不可用。   |
-|  0xa3 |  IMM16    |  jequndefined +AAAA   |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算`acc == undefined`，如果为真，则跳转到分支A。<br>指令功能未使能，暂不可用。   |
-|  0xa4 |  IMM16    |  jneundefined +AAAA   |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算`acc != undefined`，如果为真，则跳转到分支A。<br>指令功能未使能，暂不可用。   |
-|  0xa5 |  IMM16    |  jstrictequndefined +AAAA |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算a`cc === undefined`，如果为真，则跳转到分支A。<br>指令功能未使能，暂不可用。   |
-|  0xa6 |  IMM16    |  jnstrictequndefined +AAAA    |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算`acc !== undefined`，如果为真，则跳转到分支A。<br>指令功能未使能，暂不可用。   |
-|  0xa7 |  V8_IMM16 |  jeq vAA, +BBBB   |  默认入参：acc：值<br>A：值<br>B：有符号的分支偏移量  |  计算`acc == A`，如果为真，则跳转到分支B。<br>指令功能未使能，暂不可用。   |
-|  0xa8 |  V8_IMM16 |  jne vAA, +BBBB   |  默认入参：acc：值<br>A：值<br>B：有符号的分支偏移量  |  计算`acc != A`，如果为真，则跳转到分支B。<br>指令功能未使能，暂不可用。   |
-|  0xa9 |  V8_IMM16 |  jstricteq vAA, +BBBB |  默认入参：acc：值<br>A：值<br>B：有符号的分支偏移量  |  计算`acc === A`，如果为真，则跳转到分支B。<br>指令功能未使能，暂不可用。   |
-|  0xaa |  V8_IMM16 |  jnstricteq vAA, +BBBB    |  默认入参：acc：值<br>A：值<br>B：有符号的分支偏移量  |  计算`acc !== A`，如果为真，则跳转到分支B。<br>指令功能未使能，暂不可用。   |
+|  0x9d |  IMM16    |  jstricteqz +AAAA |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算`acc === 0`，如果为真，则跳转到分支A。（预留指令）   |
+|  0x9e |  IMM16    |  jnstricteqz +AAAA    |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算`acc !== 0`，如果为真，则跳转到分支A。（预留指令）   |
+|  0x9f |  IMM16    |  jeqnull +AAAA    |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算`acc == null`，如果为真，则跳转到分支A。（预留指令）   |
+|  0xa0 |  IMM16    |  jnenull +AAAA    |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算`acc != null`，如果为真，则跳转到分支A。（预留指令）   |
+|  0xa1 |  IMM16    |  jstricteqnull +AAAA  |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算`acc === null`，如果为真，则跳转到分支A。（预留指令）   |
+|  0xa2 |  IMM16    |  jnstricteqnull +AAAA |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算`acc !== null`，如果为真，则跳转到分支A。（预留指令）   |
+|  0xa3 |  IMM16    |  jequndefined +AAAA   |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算`acc == undefined`，如果为真，则跳转到分支A。（预留指令）   |
+|  0xa4 |  IMM16    |  jneundefined +AAAA   |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算`acc != undefined`，如果为真，则跳转到分支A。（预留指令）   |
+|  0xa5 |  IMM16    |  jstrictequndefined +AAAA |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算`acc === undefined`，如果为真，则跳转到分支A。（预留指令）   |
+|  0xa6 |  IMM16    |  jnstrictequndefined +AAAA    |  默认入参：acc：值<br>A：有符号的分支偏移量   |  计算`acc !== undefined`，如果为真，则跳转到分支A。（预留指令）   |
+|  0xa7 |  V8_IMM16 |  jeq vAA, +BBBB   |  默认入参：acc：值<br>A：值<br>B：有符号的分支偏移量  |  计算`acc == A`，如果为真，则跳转到分支B。（预留指令）   |
+|  0xa8 |  V8_IMM16 |  jne vAA, +BBBB   |  默认入参：acc：值<br>A：值<br>B：有符号的分支偏移量  |  计算`acc != A`，如果为真，则跳转到分支B。（预留指令）   |
+|  0xa9 |  V8_IMM16 |  jstricteq vAA, +BBBB |  默认入参：acc：值<br>A：值<br>B：有符号的分支偏移量  |  计算`acc === A`，如果为真，则跳转到分支B。（预留指令）   |
+|  0xaa |  V8_IMM16 |  jnstricteq vAA, +BBBB    |  默认入参：acc：值<br>A：值<br>B：有符号的分支偏移量  |  计算`acc !== A`，如果为真，则跳转到分支B。（预留指令）   |
 |  0xab |  IMM16    |  getiterator RRRR |  默认入参：acc：对象<br>R：方舟运行时内部使用的16位保留数字   |  执行[GetIterator](https://262.ecma-international.org/12.0/#sec-getiterator)(acc, sync)方法，并将结果存放到acc中。   |
 |  0xac |  IMM16_V8 |  closeiterator RRRR, vAA  |  R：方舟运行时内部使用的16位保留数字<br>A：对象   |  以类型为[iteratorRecord](https://262.ecma-international.org/12.0/#sec-iterator-records)的A作为参数，执行[IteratorClose](https://262.ecma-international.org/12.0/#sec-iteratorclose)，并将结果存放到acc中。   |
 |  0xad |  NONE |  ldsymbol  | - |  加载**Symbol**对象到acc中。   |
@@ -594,7 +598,7 @@ function foo3(a: number, b: number): void {}
 |  0xbb |  IMM8_IMM8_V8 |  supercallarrowrange RR, +AA, vBB |  默认入参：acc：类对象<br>R：方舟运行时内部使用的8位保留数字<br>A：参数数量<br>B, ..., B + A - 1：参数    |  以B, ..., B + A - 1作为参数，调用acc中所存类的父类的构造函数，并将结果存放到acc中。<br>如果A的值为0，则B为**undefined**。<br>此指令仅出现在箭头函数中。   |
 |  0xbc |  V8_V8_V8_V8  |  definegettersetterbyvalue vAA, vBB, vCC, vDD |  默认入参：acc：是否需要为访问器设置名称，是一个布尔值<br>A：对象<br>B：属性键值<br>C：getter函数对象<br>D：setter函数对象    |  以getter方法 C和setter方法 D作为参数，定义对象A的键值为B的属性的访问器，并将结果对象存放到acc中。<br>如果C是**undefined**，则不会设置getter，如果D是**undefined**，则不会设置setter。   |
 |  0xbd |  NONE |  dynamicimport    |  默认入参：acc：值    |  使用acc中的值作为参数，执行[ImportCalls](https://262.ecma-international.org/12.0/#sec-import-calls)，并把结果存放到acc中。   |
-|  0xbe |  IMM16_ID16_IMM8  |  definemethod RRRR, @AAAA, +BB    |  默认入参：acc：类对象或类对象的对象原型，方法为静态方法时，acc中是类对象<br>R：方舟运行时内部使用的16位保留数字<br>A：method id<br>B：方法A的形参数量    |  创建方法A的函数对象，将acc中的对象设置为该函数对象的[[[HomeObject]]](https://262.ecma-international.org/12.0/#sec-ecmascript-function-objects)属性，并将该函数对象存放到acc中。   |
+|  0xbe |  IMM16_ID16_IMM8  |  definemethod RRRR, @AAAA, +BB    |  默认入参：acc：类对象或类对象的对象原型，方法为静态方法时，acc中是类对象<br>R：方舟运行时内部使用的16位保留数字<br>A：method id<br>B：方法A的形参数量    |  创建方法A的函数对象，将acc中的对象设置为该函数对象的[\[\[HomeObject\]\]](https://262.ecma-international.org/12.0/#sec-ecmascript-function-objects)属性，并将该函数对象存放到acc中。   |
 |  0xbf |  NONE |  resumegenerator  |  默认入参：acc：生成器    |  基于acc中存放的generator，执行[GeneratorResume](https://262.ecma-international.org/12.0/#sec-generatorresume)，并将结果存放到acc中。   |
 |  0xc0 |  NONE |  getresumemode    |  默认入参：acc：生成器    |  获取acc中所存放的generator的执行完成后恢复值的类型，并将其存放到acc中。   |
 |  0xc1 |  IMM16    |  gettemplateobject RRRR   |  默认入参：acc：对象<br>R：方舟运行时内部使用的16位保留数字   |  执行[GetTemplateObject](https://262.ecma-international.org/12.0/#sec-gettemplateobject)(acc)，并将结果存放到acc中。   |
@@ -614,7 +618,7 @@ function foo3(a: number, b: number): void {}
 |  0xcf |  IMM8 |  copyrestargs +AA |  A：形参列表中[剩余参数](https://262.ecma-international.org/12.0/#prod-FunctionRestParameter)所在的位次   |  复制剩余参数，并将复制出的参数数组副本存放到acc中。   |
 |  0xd0 |  IMM8_ID16_V8 |  stsuperbyname RR, @AAAA, vBB |  默认入参：acc：值<br>R：方舟运行时内部使用的8位保留数字<br>A：string id<br>B：对象   |  在当前函数中，将acc中的值存放到`super`的键值为索引A对应的字符串的属性上。<br>若该属性为访问器属性，则将B中的对象作为调用该属性setter函数时的`this`参数。   |
 |  0xd1 |  IMM16_ID16_V8    |  stsuperbyname RRRR, @AAAA, vBB   |  默认入参：acc：值<br>R：方舟运行时内部使用的16位保留数字<br>A：string id<br>B：对象  |  在当前函数中，将acc中的值存放到`super`的键值为索引A对应的字符串的属性上。<br>若该属性为访问器属性，则将B中的对象作为调用该属性setter函数时的`this`参数。   |
-|  0xd2 |  IMM16_V8_V8  |  stownbyvaluewithnameset RRRR, vAA, vBB   |  默认入参：acc：函数对象<br>R：方舟运行时内部使用的8位保留数字<br>A：对象<br>B：属性键值  |  将acc中的值存放到对象A的键值为B的属性上，并将函数的名称设置为B。   |
+|  0xd2 |  IMM16_V8_V8  |  stownbyvaluewithnameset RRRR, vAA, vBB   |  默认入参：acc：函数对象<br>R：方舟运行时内部使用的16位保留数字<br>A：对象<br>B：属性键值  |  将acc中的值存放到对象A的键值为B的属性上，并将函数的名称设置为B。   |
 |  0xd3 |  ID16 |  ldbigint @AAAA   |  A：string id |  基于索引A对应的字符串，创建**BigInt**类型的值，并将其存放到acc中。   |
 |  0xd4 |  IMM16_ID16_V8    |  stownbynamewithnameset RRRR, @AAAA, vBB  |  默认入参：acc：函数对象<br>R：方舟运行时内部使用的16位保留数字<br>A：string id<br>B：对象    |  将acc中的函数对象存放到对象B的键值为索引A对应的字符串的属性上，并将函数的名称设置为索引A对应的字符串。   |
 |  0xd5 |  NONE |  nop  | - |  无操作。   |
@@ -627,7 +631,7 @@ function foo3(a: number, b: number): void {}
 |  0xdc |  IMM8_ID16_V8 |  definepropertybyname RR, @AAAA, vBB  |  默认入参：acc：值<br>A：string id<br>B：对象 |  为对象B定义一个键值为A的属性，并将acc中的值存放到其中。   |
 |  0xfb |  PREF_NONE    |  callruntime.notifyconcurrentresult   |  默认入参：acc：并发函数的返回值  |  将并发函数的返回值通知运行时。<br>此指令仅出现在并发函数中。   |
 |  0xfc |  (deprecated)  | - | - | （弃用的操作码） |
-|  0xfd |  PREF_IMM16_V8_V8 |  wide.createobjectwithexcludedkeys +AAAA, vBB, vCC    |  A：范围寄存器数量<br>B：对象<br>C, ..., C + A：属性键值  |  基于对象B，创建一个排除了键值C, ..., C + A的对象，并将其存放到acc中。<br>这个指令用例支持使用析构和扩展语法创建对象。   |
+|  0xfd |  PREF_IMM16_V8_V8 |  wide.createobjectwithexcludedkeys +AAAA, vBB, vCC    |  A：范围寄存器数量<br>B：对象<br>C, ..., C + A：属性键值  |  基于对象B，创建一个排除了键值C, ..., C + A的对象，并将其存放到acc中。<br>这个指令用于支持使用析构和扩展语法创建对象。   |
 |  0xfe |  PREF_NONE    |  throw    |  默认入参：acc：异常  |  抛出acc中存放的异常。   |
 |  0x01fb   |  PREF_IMM8_V8_V8  |  callruntime.definefieldbyvalue RR, vAA, vBB  |  默认入参：acc：值<br>A：属性键值<br>B：对象  |  为对象B定义一个键值为A的属性，并将acc中的值存放到其中。   |
 |  0x01fc   |  (deprecated)  | - | - | （弃用的操作码） |
@@ -671,13 +675,13 @@ function foo3(a: number, b: number): void {}
 |  0x0bfb   |  PREF_IMM8    |  callruntime.newsendableenv +AA   |  A：共享词法环境中的槽位数目  |  创建一个槽位数为A的共享词法环境，并进入该词法环境。   |
 |  0x0bfc   |  (deprecated)  | - | - | （弃用的操作码） |
 |  0x0bfd   |  PREF_IMM16   |  wide.copyrestargs +AAAA  |  A：形参列表中剩余参数起始的位次  |  复制剩余参数，并将复制出的参数数组副本存放到acc中。   |
-|  0x0cfb   |  PREF_IMM16   |  callruntime.widenewsendableenv +AAAA |  A：共享词法环境中的槽位数目  | 创建一个槽位数为A的共享词法环境，并进入该词法环境 。   |
+|  0x0cfb   |  PREF_IMM16   |  callruntime.widenewsendableenv +AAAA |  A：共享词法环境中的槽位数目  | 创建一个槽位数为A的共享词法环境，并进入该词法环境。   |
 |  0x0cfc   |  (deprecated)  | - | - | （弃用的操作码） |
 |  0x0cfd   |  PREF_IMM16_IMM16 |  wide.ldlexvar +AAAA, +BBBB   |  A：词法环境层级<br>B：槽位号 |  将A个层次外的词法环境的B号槽位上的值存放到acc中。   |
 |  0x0dfb   |  PREF_IMM4_IMM4   |  callruntime.stsendablevar +A +B  |   默认入参：acc：值<br>A：共享词法环境层级<br>B：槽位号 |  将acc中的值存放到A个层次外的共享词法环境的B号槽位上。   |
 |  0x0dfc   |  (deprecated)  | - | - | （弃用的操作码） |
 |  0x0dfd   |  PREF_IMM16_IMM16 |  wide.stlexvar +AAAA, +BBBB   |  默认入参：acc：值<br>A：词法环境层级<br>B：槽位号    |  将acc中的值存放到A个层次外的词法环境的B号槽位上。   |
-|  0x0efb   |  PREF_IMM8_IMM8   |  callruntime.stsendablevar +AA +BB    | 默认入参：acc：值<br>A：共享词法环境层级<br>B：槽位号   | 将acc中的值存放到A个层次外的共享词法环境的B号槽位上 。   |
+|  0x0efb   |  PREF_IMM8_IMM8   |  callruntime.stsendablevar +AA +BB    | 默认入参：acc：值<br>A：共享词法环境层级<br>B：槽位号   | 将acc中的值存放到A个层次外的共享词法环境的B号槽位上。   |
 |  0x0efc   |  (deprecated)  | - | - | （弃用的操作码） |
 |  0x0efd   |  PREF_IMM16   |  wide.getmodulenamespace +AAAA    |  A：模块索引  |  对第A个模块，执行[GetModuleNamespace](https://262.ecma-international.org/12.0/#sec-getmodulenamespace)，并将结果存放到acc中。   |
 |  0x0ffb   |  PREF_IMM16_IMM16 |  callruntime.widestsendablevar +AAAA +BBBB    |  默认入参：acc：值<br>A：共享词法环境层级<br>B：槽位号 |  将acc中的值存放到A个层次外的共享词法环境的B号槽位上。   |

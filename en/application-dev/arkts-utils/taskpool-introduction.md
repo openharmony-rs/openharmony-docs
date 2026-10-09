@@ -12,7 +12,7 @@ TaskPool is designed to provide a multithreaded runtime environment for applicat
 
 The figure below illustrates the operating mechanism of TaskPool.
 
-![image_0000001964858368](figures/image_0000001964858368.png)
+![TaskPool-Operating-Mechanism](figures/TaskPool-Operating-Mechanism.png)
 
 With TaskPool, you can submit tasks in the host thread to the task queue. The system selects appropriate worker threads to execute the tasks, and then returns the result to the host thread. TaskPool provides APIs to execute and cancel tasks, and set the task priority. It minimizes system resource usage through unified thread management, dynamic scheduling, and load balancing. By default, the system starts a worker thread and increases the thread quantity as the number of tasks increases. The maximum number of worker threads that can be created depends on the number of physical cores of the device. The actual number is managed internally to ensure optimal scheduling and execution efficiency. If no task is distributed for an extended period, the system reduces the number of worker threads. For details, see [TaskPool Scaling Mechanism](taskpool-introduction.md#taskpool-scaling-mechanism).
 

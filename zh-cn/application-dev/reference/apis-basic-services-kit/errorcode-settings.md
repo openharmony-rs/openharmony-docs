@@ -5,7 +5,7 @@
 <!--Owner: @YingCong-->
 <!--Designer: @Kun_Wu-->
 <!--Tester: @dyx118186878-->
-<!--Adviser: @zhang_yixin13-->
+<!--Adviser: @fang-jinxu-->
 
 > **说明：**
 >
@@ -70,3 +70,21 @@ Parameter error.
 **处理步骤**
 
 请检查必选参数是否传入。如果参数校验失败，请阅读参数规格约束，并根据可能原因进行排查。
+
+## 16900020 打开设置页面失败
+
+**错误信息**
+
+Failed to open the settings page via redirection.
+
+**错误描述**
+
+打开设置页面失败。
+
+**可能原因**
+
+系统内部异常。
+
+**处理步骤**
+
+重启应用或者设备，再次尝试。

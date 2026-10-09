@@ -1,9 +1,9 @@
 # 用户文件概述
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wang_zhangjun; @gzhuangzhuang-->
-<!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @yangwei_814916-->
+<!--Designer: @hwzhangchuang; @Dyylll-->
+<!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
 
 用户文件：登录到该终端设备的用户所拥有的文件，包括用户私有的[图片、视频](../media/medialibrary/photoAccessHelper-overview.md)、音频、文档等。
@@ -29,7 +29,7 @@
   
   - 音频类媒体文件
 
-    所具有的特征包括所属专辑、音频创作者、持续时间等信息，以媒体文件的形式存储在系统中，通常会以所有文件、专辑、作家等形式对外部呈现，不会展示其在系统中存储的具体位置。
+    所具有的特征包括所属专辑、音频创作者、持续时间等信息，以媒体文件的形式存储在系统中，通常会以所有文件、专辑、作家等形式对外呈现，不会展示其在系统中存储的具体位置。
   
   - 其他文件（统称为文档类文件）
 
@@ -38,7 +38,7 @@
 
 ### 外置存储
 
-外置存储，是指用户文件存储在外置可插拔设备上（如SD卡、U盘等）。外置存储设备上的文件，和内置存储设备共享区文件一样，可以被所有登录到系统中的用户看到。
+外置存储，是指用户文件存储在外置可插拔设备上（如SD卡、U盘等）。外置存储设备上的文件，可以被所有登录到系统中的用户看到。
 
 外置存储设备具备可插拔属性，因此系统提供了设备插拔事件的监听及挂载功能，用于管理外置存储设备，<!--RP1-->具体可参考[管理外置存储设备（仅对系统应用开放）](manage-external-storage-sys.md)<!--RP1End-->。
 

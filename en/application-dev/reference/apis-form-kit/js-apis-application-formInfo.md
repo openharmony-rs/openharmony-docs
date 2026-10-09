@@ -1,10 +1,12 @@
 # @ohos.application.formInfo (formInfo)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=e1aa1fed9cf466d6f95c795389a2d1b5930826f0 translatedAt=2026-09-15T01:54:21.326Z pushedAt=2026-09-15T07:31:51.347Z -->
+
 The **formInfo** module provides types and enums related to the widget information and state.
 
 > **NOTE**
@@ -38,12 +40,12 @@ Widget information.
 | updateEnabled  | boolean               | No   | No     | Whether the widget is updatable.<br>- **true**: The widget can be updated periodically.<br>- **false**: The widget cannot be updated periodically.|
 | formVisibleNotify  | boolean               | No   | No     | Whether to send a notification when the widget is visible.<br>- **true**: The widget provider is notified of the status change.<br>- **false**: The widget provider is not notified of the status change.|
 | relatedBundleName | string               | No   | No     | Name of the associated bundle to which the widget belongs.          |
-| scheduledUpdateTime        | string               | No   | No     | Time when the widget was updated.    |
+| scheduledUpdateTime        | string               | No    | No      | Scheduled update time of the widget.     |
 | formConfigAbility | string               | No   | No     | Configuration ability of the widget.  |
 | updateDuration        | number             | No   | No     | Update period of the widget.|
-| defaultDimension  | number | No   | No     | Default dimension of the widget.                                      |
-| supportDimensions    | Array&lt;number&gt;      | No   | No     | Dimensions supported by the widget.                |
-| customizeData    | {[key: string]: [value: string]}      | No   | No     | Custom data of the widget.        |
+| defaultDimension  | number | No    | No      | Default widget dimensions.                                       |
+| supportDimensions    | Array&lt;number&gt;      | No    | No      | Dimensions supported by the widget.                 |
+| customizeData    | {[key: string]: [value: string]}      | No    | No      | Custom data of the widget.         |
 
 ## FormType
 
@@ -76,7 +78,7 @@ Describes the widget state information.
 | Name       | Type                | Read-Only   | Optional    | Description                                                        |
 | ----------- | -------- |-------- | -------------------- | ------------------------------------------------------------ |
 | formState  | [FormState](#formstate)               | No   | No     | Widget state.                         |
-| want  | [Want](../apis-ability-kit/js-apis-app-ability-want.md)               | No   | No     | Want text.   |
+| want  | [Want](../apis-ability-kit/js-apis-app-ability-want.md)               | No    | No      | Want information of the widget.  |
 
 ##  FormState
 
@@ -104,3 +106,4 @@ Enumerates the widget parameters.
 | WIDTH_KEY        | 'ohos.extra.param.key.form_width'   | Widget width.  |
 | HEIGHT_KEY         | 'ohos.extra.param.key.form_height'   | Widget height.  |
 | TEMPORARY_KEY          | 'ohos.extra.param.key.form_temporary'   | Temporary widget.  |
+

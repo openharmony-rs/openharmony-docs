@@ -45,7 +45,42 @@ Obtains the geographic location.
 | -------- | -------- | -------- | -------- |
 | options | [GetLocationOption](#getlocationoptiondeprecated) | No| Options of a single location request.|
 
-**Example**
+**JS example**
+
+```xml
+<div class="container">
+  <text class="title" style="font-size: {{fontSize}}; color: {{fontColor}};">
+    getLocation
+  </text>
+  <input type="button" value="Obtain Device Geographic Location" style="width: 240px; height: 50px;" onclick="getLocation"></input>
+</div>
+```
+
+```css
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  left: 0px;
+  top: 0px;
+  width: 454px;
+  height: 454px;
+}
+
+.title {
+  font-size: 100px;
+  text-align: center;
+  width: 200px;
+  height: 100px;
+}
+
+.button {
+  font-size: 30px;
+  text-align: center;
+  width: 200px;
+  height: 100px;
+}
+```
 
 ```js
 export default {    
@@ -58,7 +93,7 @@ export default {
         console.info('fail to get location. code:' + code + ', data:' + data);            
       }
     });    
-  }
+  },
 }
 ```
 
@@ -80,7 +115,42 @@ Obtains the supported location types.
 | -------- | -------- | -------- | -------- |
 | options | [GetLocationTypeOption](#getlocationtypeoptiondeprecated) | No| Callback used to return the result.|
 
-**Example**
+**JS example**
+
+```xml
+<div class="container">
+  <text class="title" style="font-size: {{fontSize}}; color: {{fontColor}};">
+    getLocationType
+  </text>
+  <input type="button" value="Obtain Location Types Supported by Current Device" style="width: 240px; height: 50px;" onclick="getLocationType"></input>
+</div>
+```
+
+```css
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  left: 0px;
+  top: 0px;
+  width: 454px;
+  height: 454px;
+}
+
+.title {
+  font-size: 100px;
+  text-align: center;
+  width: 200px;
+  height: 100px;
+}
+
+.button {
+  font-size: 30px;
+  text-align: center;
+  width: 200px;
+  height: 100px;
+}
+```
 
 ```js
 export default {    
@@ -117,7 +187,42 @@ Listens to the geographic location. If this API is called multiple times, the la
 | -------- | -------- | -------- | -------- |
 | options | [SubscribeLocationOption](#subscribelocationoptiondeprecated) | Yes| Options for continuous location.|
 
-**Example**
+**JS example**
+
+```xml
+<div class="container">
+  <text class="title" style="font-size: {{fontSize}}; color: {{fontColor}};">
+    subscribe
+  </text>
+  <input type="button" value="Subscribe to Device Geographic Location Information" style="width: 240px; height: 50px;" onclick="subscribe"></input>
+</div>
+```
+
+```css
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  left: 0px;
+  top: 0px;
+  width: 454px;
+  height: 454px;
+}
+
+.title {
+  font-size: 100px;
+  text-align: center;
+  width: 200px;
+  height: 100px;
+}
+
+.button {
+  font-size: 30px;
+  text-align: center;
+  width: 200px;
+  height: 100px;
+}
+```
 
 ```js
 export default {    
@@ -148,13 +253,48 @@ Cancels listening to the geographic location.
 
 **System capability**: SystemCapability.Location.Location.Lite
 
-**Example**
+**JS example**
+
+```xml
+<div class="container">
+  <text class="title" style="font-size: {{fontSize}}; color: {{fontColor}};">
+    unsubscribe
+  </text>
+  <input type="button" value="Unsubscribe from Device Geographic Location Information" style="width: 240px; height: 50px;" onclick="unsubscribe"></input>
+</div>
+```
+
+```css
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  left: 0px;
+  top: 0px;
+  width: 454px;
+  height: 454px;
+}
+
+.title {
+  font-size: 100px;
+  text-align: center;
+  width: 200px;
+  height: 100px;
+}
+
+.button {
+  font-size: 30px;
+  text-align: center;
+  width: 200px;
+  height: 100px;
+}
+```
 
 ```js
 export default {    
   unsubscribe() {        
     geolocation.unsubscribe();    
-  }
+  },
 }
 ```
 
@@ -176,12 +316,48 @@ Obtains coordinate system types supported by the device.
 | -------- | -------- | -------- |
 | Array&lt;string&gt; | Yes| Coordinate system types, for example, **[wgs84, gcj02]**.|
 
-**Example**
+**JS example**
+
+```xml
+<div class="container">
+  <text class="title" style="font-size: {{fontSize}}; color: {{fontColor}};">
+    getSupportedCoordTypes
+  </text>
+  <input type="button" value="Obtain Coordinate System Types Supported by Device" style="width: 240px; height: 50px;" onclick="getSupportedCoordTypes"></input>
+</div>
+```
+
+```css
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  left: 0px;
+  top: 0px;
+  width: 454px;
+  height: 454px;
+}
+
+.title {
+  font-size: 100px;
+  text-align: center;
+  width: 200px;
+  height: 100px;
+}
+
+.button {
+  font-size: 30px;
+  text-align: center;
+  width: 200px;
+  height: 100px;
+}
+```
 
 ```js
 export default {    
   getSupportedCoordTypes() {       
-    var types = geolocation.getSupportedCoordTypes();   
+    var types = geolocation.getSupportedCoordTypes();
+    console.info('getSupportedCoordTypes:' types); 
   },
 }
 ```
@@ -229,7 +405,7 @@ Defines the location information, including the longitude, latitude, and locatio
 | longitude | number | No| No| Longitude.|
 | latitude | number | No| No| Latitude.|
 | altitude | number | No| No| Altitude.|
-| accuracy | number | No| No| Location accuracy.|
+| accuracy | number | No| No| Location accuracy. <!--RP1--> (This field is provided by the GNSS positioning chip or network location service. If this function is not supported, the default value **0** is returned.)<!--RP1End--> |
 | time | number | No| No| Time when the location is obtained.|
 
 ## GetLocationTypeOption<sup>(deprecated)</sup>

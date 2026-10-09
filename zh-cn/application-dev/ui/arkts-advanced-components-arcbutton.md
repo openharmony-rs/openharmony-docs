@@ -1,4 +1,4 @@
-# 弧形按钮 (ArcButton)
+# 弧形按钮 (ArcButton)(圆形屏幕推荐使用)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liyi0309-->
@@ -25,13 +25,13 @@ ArcButton({
   })
 })
 ```
-  其中，[label](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions)设置按钮文字，[position](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions)设置按钮类型，[styleMode](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions)设置按钮样式。
+  其中，[label](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions)设置按钮文字，[position](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions)设置按钮位置，[styleMode](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions)设置按钮样式。
 
   ![top](figures/ArcButtonTop.png)
 
 ## 设置按钮类型
 
-ArcButton有上弧形按钮和下弧形按钮两种类型。使用[position](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions)设置按钮类型。
+ArcButton有上弧形按钮和下弧形按钮两种类型。使用[position](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ArcButton.md#arcbuttonoptions)设置按钮位置。
 
 - 下弧形按钮（默认类型）。
 
@@ -156,15 +156,16 @@ ArcButton有上弧形按钮和下弧形按钮两种类型。使用[position](../
 在亮度设置界面，进度条显示当前亮度为30%。点击重置后，亮度值将被重置为默认的50%。
 
 运行该示例推荐在Wearable设备上以获得最佳显示效果，同时支持在其他设备上运行。若要在Wearable设备上运行，在src/main目录下的工程配置文件[module.json5](../quick-start/module-configuration-file.md)中[deviceTypes标签](../quick-start/module-configuration-file.md#devicetypes标签)内配置wearable。
-<!-- @[module_json_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonComponent/entry/src/main/module.json5) -->
+<!-- @[module_json_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonComponent/entry/src/main/module.json5) --> 
 
 ``` JSON5
 "module": {
-  // ···
+  // ...
   "deviceTypes": [
+    "default",
     "wearable"
   ],
-  // ···
+  // ...
 }
 ```
 

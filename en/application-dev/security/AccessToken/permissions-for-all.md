@@ -1,8 +1,8 @@
 # Open system_grant Permissions
 
-<!--Kit: ArkUI-->
+<!--Kit: Ability Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @harylee-->
+<!--Owner: @xia-bubai-->
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
@@ -13,7 +13,7 @@ After an application requests this type of permissions, the system automatically
 
 <!--Del-->
 > **NOTE**
-> "Enable via ACL" is not involved for permissions of the normal level.
+> **Certificate-based authorization** is not required for normal-level permissions.
 <!--DelEnd-->
 
 ## Request Mode
@@ -62,6 +62,8 @@ Allows an application to obtain the print framework capability.
 
 **Authorization mode**: system_grant
 
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs
+
 **Valid since**: 10
 
 ## ohos.permission.DISCOVER_BLUETOOTH
@@ -78,13 +80,15 @@ Allows an application to configure Bluetooth on a device, initiate or cancel a s
 
 ## ohos.permission.ACCELEROMETER
 
-Allows an application to read data from an acceleration sensor, uncalibrated acceleration sensor, or linear acceleration sensor.
+Allows an application to read data from an acceleration sensor.
 
-
+Acceleration sensors include normal, uncalibrated, and linear acceleration sensors.
 
 **Permission level**: normal
 
 **Authorization mode**: system_grant
+
+**Supported devices**: phone | PCs/2-in-1 devices | tablets | TV | wearable
 
 **Valid since**: 7
 
@@ -144,23 +148,31 @@ With this permission, the application can obtain Wi-Fi information, including th
 
 **Authorization mode**: system_grant
 
+**Supported devices**: phone | PCs/2-in-1 devices | tablets | TV | wearable | car
+
 **Valid since**: 8
+
+**Changelog**: From API version 22, the support for the P2P capability is added to this permission.
 
 ## ohos.permission.GYROSCOPE
 
-Allows an application to read data from a gyroscope sensor or uncalibrated gyroscope sensor.
+Allows an application to read data from a gyroscope sensor.
 
-
+Gyroscope sensors include normal and uncalibrated gyroscope sensors.
 
 **Permission level**: normal
 
 **Authorization mode**: system_grant
+
+**Supported devices**: phone | PCs/2-in-1 devices | tablets | TV | wearable
 
 **Valid since**: 7
 
 ## ohos.permission.INTERNET
 
 Allows an application to access the Internet.
+
+With this permission, an application can obtain IP addresses, perform DNS resolution, or customize DNS rules.
 
 **Permission level**: normal
 
@@ -210,6 +222,8 @@ Allows an application to set screens that cannot be captured or recorded.
 
 **Authorization mode**: system_grant
 
+**Supported devices**: phone | PCs/2-in-1 devices | tablets | TV | wearable | car
+
 **Valid since**: 9
 
 **Changelog**: The permission level is system_basic in API versions 9 to 10 and changed to normal since API version 11.
@@ -234,17 +248,21 @@ including scanning, enabling/disabling, connecting, and disabling Wi-Fi, modifyi
 
 **Authorization mode**: system_grant
 
+**Supported devices**: phone | PCs/2-in-1 devices | tablets | TV | wearable | car
+
 **Valid since**: 8
 
 ## ohos.permission.VIBRATE
 
-Allows an application to control vibration,
+Allows an application to control vibration.
 
-including one-time vibration, preset vibration, or custom vibration.
+Vibration includes one-time vibration, preset vibration, or custom vibration.
 
 **Permission level**: normal
 
 **Authorization mode**: system_grant
+
+**Supported devices**: phone | PCs/2-in-1 devices | tablets | TV | wearable
 
 **Valid since**: 7
 
@@ -271,6 +289,18 @@ With this permission, the application can publish sticky common events, so that 
 **Authorization mode**: system_grant
 
 **Valid since**: 7
+
+## ohos.permission.RUNNING_LOCK
+
+Allows an application to obtain a running lock to keep running in the background.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices | tablets | car | phone | TV | wearable
+
+**Since**: 7
 
 ## ohos.permission.ACCESS_CERT_MANAGER
 
@@ -301,6 +331,8 @@ Allows an application that has accessed the cloud to obtain its device-cloud syn
 **Permission level**: normal
 
 **Authorization mode**: system_grant
+
+**Supported devices**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars | lite wearables | smart locks
 
 **Valid since**: 11
 
@@ -338,9 +370,13 @@ Allows an application to read the login status of user accounts.
 
 Allows an application to access the navigation service.
 
+With this permission, the application can set navigation information and process navigation instructions sent from other applications
+
 **Permission level**: normal
 
 **Authorization mode**: system_grant
+
+**Supported devices**: phones | tablets | cars
 
 **Valid since**: 12
 
@@ -366,6 +402,8 @@ With this permission, the application can obtain the connection information betw
 
 **Authorization mode**: system_grant
 
+**Supported devices**: phones | tablets | cars
+
 **Valid since**: 12
 
 ## ohos.permission.WINDOW_TOPMOST
@@ -382,7 +420,7 @@ Allows an application to set pinned windows.
 
 ## ohos.permission.MANAGE_INPUT_INFRARED_EMITTER
 
-Allows a system application to use infrared interfaces.
+Allows an application to use infrared interfaces.
 
 With this permission, the application can obtain the maximum frequency supported by the infrared module and send infrared signals at a specific frequency.
 
@@ -422,11 +460,13 @@ The configured icon and label information can be displayed in **Task Center** an
 
 Allows an application to start its UIAbility by using C APIs.
 
-Currently, this permission is available only to 2-in-1 device applications.
+This permission allows starting a UIAbility within the same application from the native layer, suitable for scenarios where C/C++ APIs are called to launch a UIAbility.
 
 **Permission level**: normal
 
 **Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices | tablets | Phones
 
 **Valid since**: 15
 
@@ -519,7 +559,7 @@ This permission can be requested when the application meets the following condit
 
 Allows an application to set the main window container to be transparent and remove the shadow of the outer border of the main window.
 
-With this permission, the application can set the background color the shadow visibility of the main window.
+With this permission, the application can set the background color and the shadow visibility of the main window.
 
 **Permission level**: normal
 
@@ -563,7 +603,7 @@ This permission applies only to independent binary programs, not to HAPs.
 
 Allows an application to turn off the screen but keep it unlocked after a timeout.
 
-With this permission, the application prevents the device from locking by default when the screen turns off after a timeout.
+The device locks by default when the screen turns off after a timeout. With this permission, the application does not enter the lock screen when the screen turns off after a timeout.
 
 **Permission level**: normal
 
@@ -653,6 +693,188 @@ With this permission, the application allows the system to dump application memo
 
 **Authorization mode**: system_grant
 
-**Supported devices**: 2in1
+**Supported devices**: 2-in-1 devices
 
 **Since**: 23
+
+## ohos.permission.HDR_BRIGHTNESS
+
+Allows an application to use the HDR brightening capability.
+
+With this permission, the application can apply HDR brightening effects to component content.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: general devices
+
+**Since**: 24
+
+## ohos.permission.CONNECT_OBJECTEDITOR_EXTENSION
+
+Allows an application to query information about and launch **ObjectEditorExtensionAbility** components.
+
+With this permission, the application can query available types of pluggable embedded content and edit the corresponding content.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices | phones | tablets
+
+**Since**: 24
+
+## ohos.permission.QUERY_VOLUME_ENCRYPTION_STATUS
+
+Allows an application to query the encryption and decryption status of a volume.
+
+With this permission, the application can obtain the encryption and decryption status of a volume and subscribe to system public events related to changes in the encryption and decryption status of a volume.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.0.0
+
+## ohos.permission.STYLUS_FRAME_BOOST
+
+Allows an application to use stylus responsiveness enhancement APIs.
+
+With this permission, the application can improve handwriting performance, ensuring a more responsive stylus experience while writing.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 26.0.0
+
+## ohos.permission.GET_ENTERPRISE_CONFIG
+
+Allows an application to obtain custom enterprise device management (EDM) configuration files.
+
+With this permission, the application can obtain custom EDM configuration files, including those for wallpapers and browser policies.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 20
+
+## ohos.permission.ACCESS_CAR_AUDIO
+
+Allows an application to access and manage in-vehicle audio.
+
+With this permission, the application can set audio sound effects and manage audio zones.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: cars
+
+**Since**: 26.0.0
+
+## ohos.permission.vehicle.ACCESS_CAR_SECURITY_PRIVACY
+
+Allows an application to access vehicle security and privacy service APIs.
+
+With this permission, the application can query vehicle privacy agreements or policies, driver-seat privacy mode, and trace removal status.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.DCAS_RUN_MODEL
+
+Allows an application to access device-side model runtime management.
+
+With this permission, the application can access device-side model runtime management capabilities to complete model loading and inference.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 26.0.0
+
+## ohos.permission.UPDATE_SCOPE_FONT
+
+Allows an application to manage application-level and session-level fonts.
+
+With this permission, the application can use font management APIs to install, uninstall, and query application-level and session-level fonts, and register font service status listener.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 26.0.1
+
+## ohos.permission.REQUEST_LOCAL_ACCOUNT_AUTHORIZATION
+
+Allows an application to obtain authorization from the local account.
+
+With this permission, an application can call APIs to request local account authorization. A system authorization dialog will then prompt the user to complete local identity authentication. Upon successful authentication, the specified privileges will be granted, enabling the application to perform corresponding sensitive operations (such as network packet capture).
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | cars | TVs | wearables
+
+**Since**: 26.0.1
+
+## ohos.permission.kernel.USB_CAPTURE
+
+Allows an application to capture USB data packets.
+
+With this permission, the application can capture USB packets only after being authenticated by the user.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.0.1
+
+## ohos.permission.ACCESS_USER_PASSIVE_RECOGNITION
+
+Allows an application to identify whether the current user is the device owner.
+
+With this permission, the application can use the user passive recognition capability to identify whether the current user is the device owner and obtain information such as the user ID and authentication trust level.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | cars
+
+**Valid since**: 26.0.1
+
+## ohos.permission.GET_STORAGE_VOLUME_INFO
+
+Allows an application to query basic storage device properties.
+
+With this permission, an application can query physical disk information (such as disk ID, device type, vendor ID, and product ID) and volume information (such as volume ID, mount status, capacity, mount path, and file system type) of external storage devices. It also allows querying hardware information (such as physical path, model, brand, media type, operational status, and capacity) of local system and data disks.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | cars | TVs
+
+**Valid since**: 26.0.1

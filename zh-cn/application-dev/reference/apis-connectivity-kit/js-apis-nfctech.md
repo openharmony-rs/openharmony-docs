@@ -2,7 +2,7 @@
 
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
-<!--Owner: @amunra03-->
+<!--Owner: @yh1719-->
 <!--Designer: @wenxiaolin-->
 <!--Tester: @zs_111-->
 <!--Adviser: @zhang_yixin13-->
@@ -15,7 +15,7 @@
 
 > **注意：**
 >
-> 导入tag模块编辑器报错，在某个具体设备型号上能力可能超出工程默认设备定义的能力集范围，如需要使用此部分能力需额外配置自定义syscap，参考[syscap开发指南](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/syscap#syscap开发指导)。
+> 导入tag模块编辑器报错，在某个具体设备型号上能力可能超出工程默认设备定义的能力集范围，如需要使用此部分能力需额外配置自定义syscap，参考[syscap开发指南](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/syscap)。
 
 ## 导入模块
 
@@ -25,7 +25,7 @@ import { tag } from '@kit.ConnectivityKit';
 
 ## NfcATag
 
-NfcATag 提供 NFC-A(ISO 14443-3A)技术的属性和I/O操作的访问，继承自[TagSession](js-apis-tagSession.md)。
+NfcATag提供对NFC-A(ISO 14443-3A)技术的属性和I/O操作的访问，继承自[TagSession](js-apis-tagSession.md)。
 
 TagSession是所有NFC Tag技术类型的基类， 提供建立连接和发送数据等共同接口。具体请参见[TagSession](js-apis-tagSession.md)。
 
@@ -219,7 +219,7 @@ NfcVTag获取方式请参考[nfc-tag开发指南](../../connectivity/nfc/nfc-tag
 
 以下是NfcVTag的独有接口。
 
-### NfcvTag.getResponseFlags
+### NfcVTag.getResponseFlags
 
 getResponseFlags(): number
 
@@ -245,7 +245,7 @@ let responseFlags : number = nfcV.getResponseFlags();
 console.info("nfcV responseFlags: " + responseFlags);
 ```
 
-### NfcvTag.getDsfId
+### NfcVTag.getDsfId
 
 getDsfId(): number
 
@@ -484,7 +484,7 @@ console.info("ndef ndefRecords number: " + ndefRecords.length);
 
 ## NdefTag<sup>9+</sup>
 
-提供对已格式化为NDEF的NFC标签的数据和操作的访问，继承自TagSession。
+NdefTag提供对已格式化为NDEF的NFC标签的数据和操作的访问，继承自[TagSession](js-apis-tagSession.md)。
 
 TagSession是所有NFC Tag技术类型的基类，提供建立连接和发送数据等共同接口。具体请参见[TagSession](js-apis-tagSession.md)。
 
@@ -618,7 +618,7 @@ function nfcTechDemo(){
         ndefTag.readNdef().then((ndefmessage : tag.NdefMessage) => {
             console.info("ndef readNdef Promise ndefmessage: " + ndefmessage);
         }).catch((err : BusinessError)=> {
-            console.error("ndef readNdef Promise err Code: ${err.code}, message: ${err.message}");
+            console.error(`ndef readNdef Promise err Code: ${err.code}, message: ${err.message}`);
         });
     } catch (businessError) {
         console.error(`ndef readNdef Promise catch businessError Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
@@ -1087,7 +1087,7 @@ function nfcTechDemo() {
 
     try {
         let sectorIndex = 1; // 将其更改为正确的 index
-        let key = [0x01, 0x02, 0x03, 0x04, 0x05, 0x06]  //必须是6个字节，将其更改为正确的key
+        let key = [0x01, 0x02, 0x03, 0x04, 0x05, 0x06];  // 必须是6个字节，将其更改为正确的key
         mifareClassic.authenticateSector(sectorIndex, key, true).then(() => {
             console.info("mifareClassic authenticateSector Promise success.");
         }).catch((err : BusinessError)=> {
@@ -1149,7 +1149,7 @@ function nfcTechDemo() {
 
     try {
         let sectorIndex = 1; // 将其更改为正确的 index
-        let key = [0x01, 0x02, 0x03, 0x04, 0x05, 0x06]  // 必须是6个字节，将其更改为正确的key
+        let key = [0x01, 0x02, 0x03, 0x04, 0x05, 0x06];  // 必须是6个字节，将其更改为正确的key
         mifareClassic.authenticateSector(sectorIndex, key, true, (err : BusinessError)=> {
             if (err) {
                 console.error(`mifareClassic authenticateSector AsyncCallback errCode: ${err.code}, message: ${err.message}`);
@@ -1409,7 +1409,7 @@ function nfcTechDemo() {
     try {
         let blockIndex = 1; // 将其更改为正确的 index
         let rawData = [0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A,
-            0x0B, 0x0C, 0x0D, 0x0E, 0x0F, 0x10]; //必须是16个字节，将其更改为正确的data
+            0x0B, 0x0C, 0x0D, 0x0E, 0x0F, 0x10]; // 必须是16个字节，将其更改为正确的data
         mifareClassic.writeSingleBlock(blockIndex, rawData, (err : BusinessError)=> {
             if (err) {
                 console.error(`mifareClassic writeSingleBlock AsyncCallback err Code: ${err.code}, message: ${err.message}`);
@@ -1690,7 +1690,7 @@ function nfcTechDemo() {
 
 transferToBlock(blockIndex: number): Promise\<void>
 
-将临时寄存器的值转移到指定的块。使用Promise异步异步回调。
+将临时寄存器的值转移到指定的块。使用Promise异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -1746,7 +1746,7 @@ function nfcTechDemo() {
             console.error(`mifareClassic transferToBlock Promise err Code: ${err.code}, message: ${err.message}`);
         });
     } catch (businessError) {
-        console.error(`mifareClassic transferToBlock Promise catch Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}");
+        console.error(`mifareClassic transferToBlock Promise catch Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 ```
@@ -2202,7 +2202,7 @@ MifareUltralightTag获取方式请参考[nfc-tag开发指南](../../connectivity
 
 readMultiplePages(pageIndex: number): Promise\<number[]>
 
-读取标签的4页数据，共16字节的数据。每个页面数据大小为4字节。使用Promise异步回调
+读取标签的4页数据，共16字节的数据。每个页面数据大小为4字节。使用Promise异步回调。
 
 **需要权限：** ohos.permission.NFC_TAG
 
@@ -2381,7 +2381,7 @@ function nfcTechDemo() {
 
     try {
         let pageIndex = 1; // 将其更改为正确的 index
-        let rawData = [0x01, 0x02, 0x03, 0x04]; //必须是4个字节，将其更改为正确的data
+        let rawData = [0x01, 0x02, 0x03, 0x04]; // 必须是4个字节，将其更改为正确的data
         mifareUltralight.writeSinglePage(pageIndex, rawData).then(() => {
             console.info("mifareUltralight writeSinglePage Promise success.");
         }).catch((err : BusinessError)=> {
@@ -2443,7 +2443,7 @@ function nfcTechDemo() {
 
     try {
         let pageIndex = 1; // 将其更改为正确的 index
-        let rawData = [0x01, 0x02, 0x03, 0x04];  //必须是4个字节，将其更改为正确的data
+        let rawData = [0x01, 0x02, 0x03, 0x04];  // 必须是4个字节，将其更改为正确的data
         mifareUltralight.writeSinglePage(pageIndex, rawData, (err : BusinessError)=> {
         if (err) {
                 console.error(`mifareUltralight writeSinglePage AsyncCallback Code: ${err.code}, message: ${err.message}`);
@@ -2479,7 +2479,7 @@ getType(): [tag.MifareUltralightType](js-apis-nfcTag.md#mifareultralighttype9)
 import { tag } from '@kit.ConnectivityKit';
 
 // 参考 @ohos.nfc.tag（标准NFC-Tag）中 tag.TagInfo 接口，获取正确的 mifareUltralight
-let getType : tag.MifareUltralightType = mifareClassic.getType();
+let getType : tag.MifareUltralightType = mifareUltralight.getType();
 console.info("mifareUltralight getType: " + getType);
 ```
 
@@ -2546,10 +2546,10 @@ function nfcTechDemo() {
     }
 
     try {
-        //从原始数据创建的ndefMessage，例如：
+        // 从原始数据创建的ndefMessage，例如：
         let ndefMessage = tag.ndef.createNdefMessage([0xD1, 0x01, 0x03, 0x54, 0x4E, 0x46, 0x43]);  
         // 必须是可以被解析的NDEF记录
-        //或从 tag.ndef.createNdefMessage(ndefRecords:NdefRecord[]) 创建 ndefMessage
+        // 或从 tag.ndef.createNdefMessage(ndefRecords:NdefRecord[]) 创建 ndefMessage
 
         ndefFormatable.format(ndefMessage).then(() => {
             console.info("ndefFormatable format Promise success.");
@@ -2610,9 +2610,9 @@ function nfcTechDemo() {
     }
 
     try {
-        //从原始数据创建的ndefMessage，例如：
+        // 从原始数据创建的ndefMessage，例如：
         let ndefMessage = tag.ndef.createNdefMessage([0xD1, 0x01, 0x03, 0x54, 0x4E, 0x46, 0x43]);  // 必须是可以被解析的NDEF记录
-        //或从 tag.ndef.createNdefMessage(ndefRecords:NdefRecord[]) 创建 ndefMessage
+        // 或从 tag.ndef.createNdefMessage(ndefRecords:NdefRecord[]) 创建 ndefMessage
 
         ndefFormatable.format(ndefMessage, (err : BusinessError)=> {
             if (err) {
@@ -2680,10 +2680,10 @@ function nfcTechDemo() {
     }
 
     try {
-        //从原始数据创建的ndefMessage，例如：
+        // 从原始数据创建的ndefMessage，例如：
         let ndefMessage = tag.ndef.createNdefMessage([0xD1, 0x01, 0x03, 0x54, 0x4E, 0x46, 0x43]);
         // 必须是可以被解析的NDEF记录
-        //或从 tag.ndef.createNdefMessage(ndefRecords:NdefRecord[]) 创建 ndefMessage
+        // 或从 tag.ndef.createNdefMessage(ndefRecords:NdefRecord[]) 创建 ndefMessage
 
         ndefFormatable.formatReadOnly(ndefMessage).then(() => {
             console.info("ndefFormatable formatReadOnly Promise success.");
@@ -2744,10 +2744,10 @@ function nfcTechDemo() {
     }
 
     try {
-        //从原始数据创建的ndefMessage，例如：
+        // 从原始数据创建的ndefMessage，例如：
         let ndefMessage = tag.ndef.createNdefMessage([0xD1, 0x01, 0x03, 0x54, 0x4E, 0x46, 0x43]);
-        //必须是可以被解析的NDEF记录
-        //或从 tag.ndef.createNdefMessage(ndefRecords:NdefRecord[]) 创建 ndefMessage
+        // 必须是可以被解析的NDEF记录
+        // 或从 tag.ndef.createNdefMessage(ndefRecords:NdefRecord[]) 创建 ndefMessage
 
         ndefFormatable.formatReadOnly(ndefMessage, (err : BusinessError)=> {
             if (err) {

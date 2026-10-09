@@ -3,8 +3,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @xialiangwei-->
 <!--Designer: @jsjzju-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=a25f23f63f302873dc43f20e41915285e52f064b translatedAt=2026-09-03T11:29:39.786Z pushedAt=2026-09-05T10:47:30.632Z -->
 
 The module defines the operation result on DataAbilities. When you call [executeBatch](js-apis-inner-ability-dataAbilityHelper.md#dataabilityhelperexecutebatch) to operate the database, the operation result is returned through the DataAbilityResult object.
 

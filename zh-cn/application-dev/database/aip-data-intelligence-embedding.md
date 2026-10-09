@@ -32,13 +32,20 @@
 应用可借助智慧数据平台能力，实现智慧化数据的构建，将应用数据转化为可计算的向量，相关能力均运行在应用进程内，数据不出应用，保证隐私安全。
 
 ## 运作机制
+
 应用数据向量化，将应用原数据向量化并存储在向量数据库中。
 
 ## 约束限制
-- 考虑到数据向量化处理的计算量和资源占用较大，当前仅支持在2in1设备上使用。
+
+- 文本向量化模型：
+  - API版本26.0.0之前，支持在PC/2in1设备上使用文本向量化模型。
+  - 从API版本26.0.0开始，支持在PC/2in1、Phone和Tablet设备上使用文本向量化模型。
+  - 其中，针对Phone和Tablet设备，仅支持在Kirin 9010s及以上版本的设备上使用文本向量化模型。
+- 图像向量化模型：仅支持在PC/2in1设备上使用。
 - 嵌入模型的推理过程可使用NPU加速。与NPU计算相比，纯CPU的计算在时延和功耗上都有较大差距，建议采用NPU加速。
 - 模型推理单次可处理的文本长度上限为512个字符，支持中英文。
 - 模型推理单次可处理的图像大小小于20MB。
+- 生成的向量仅在本设备有效，不可用于跨设备检索。
 
 ## 接口说明
 
@@ -47,6 +54,7 @@
 | 接口名称 | 描述 | 
 | -------- | -------- |
 | getTextEmbeddingModel(config: ModelConfig): Promise&lt;TextEmbedding&gt; | 获取文本嵌入模型。 | 
+| getSupportedCloudModel(): Promise&lt;Array&lt;CloudModelInfo&gt;&gt; | 获取当前设备支持的云侧嵌入模型。 | 
 | loadModel(): Promise&lt;void&gt; | 加载文本嵌入模型。 | 
 | splitText(text: string, config: SplitConfig): Promise&lt;Array&lt;string&gt;&gt; | 获取文本的分块。 | 
 | getEmbedding(text: string): Promise&lt;Array&lt;number&gt;&gt; | 获取给定文本的嵌入向量。 | 
@@ -61,7 +69,7 @@
 
 1. 导入模块。
 
-   <!-- @[import_the_aip_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[import_the_aip_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    import { intelligence } from '@kit.ArkData';
@@ -70,38 +78,73 @@
 
 2. 获取文本嵌入模型。
 
-   调用getTextEmbeddingModel方法，获取文本嵌入模型。示例代码如下所示：
+   - 针对PC/2in1设备：使用端侧嵌入模型，需配置模型版本、是否使用NPU加速及模型缓存路径。示例代码如下所示：
 
-   <!-- @[aip_getTextEmbeddingModel_operating_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
-   
-   ``` TypeScript
-   let textConfig:intelligence.ModelConfig = {
-     version:intelligence.ModelVersion.BASIC_MODEL,
-     isNpuAvailable:false,
-     cachePath:"/data"
-   }
-   let textEmbedding:intelligence.TextEmbedding;
-   ```
-   <!-- @[aip_loadTextModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
-   
-   ``` TypeScript
-   intelligence.getTextEmbeddingModel(textConfig)
-     .then((data:intelligence.TextEmbedding) => {
-       console.info('Succeeded in getting TextModel');
-       textEmbedding = data;
-       // ...
-     })
-     .catch((err:BusinessError) => {
-       console.error('Failed to get TextModel and code is ' + err.code);
-       // ...
-     })
-   ```
+     <!-- @[aip_getTextEmbeddingModel_operating_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
+
+     ``` TypeScript
+     let textConfig: intelligence.ModelConfig = {
+       version: intelligence.ModelVersion.BASIC_MODEL,
+       isNpuAvailable: false,
+       cachePath: "/data"
+     }
+     let textEmbedding: intelligence.TextEmbedding;
+     let modelInfo:  intelligence.CloudModelInfo;
+     ```
+
+     <!-- @[aip_getTextEmbeddingModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
+
+     ``` TypeScript
+     intelligence.getTextEmbeddingModel(textConfig)
+       .then((data: intelligence.TextEmbedding) => {
+         console.info('Succeeded in getting TextModel');
+         textEmbedding = data;
+         // ...
+       })
+       .catch((err: BusinessError) => {
+         console.error('Failed to get TextModel and code is ' + err.code);
+         // ...
+       })
+     ```
+
+   - 针对Phone/Tablet设备：使用云侧嵌入模型，需调用getSupportedCloudModel方法获取云侧模型信息并配置下载模型使用的网络策略。示例代码如下所示：
+
+     <!-- @[aip_getSupportedCloudModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
+
+     ``` TypeScript
+     intelligence.getSupportedCloudModel()
+       .then((info: Array<intelligence.CloudModelInfo>) => {
+         console.info('Succeeded in getting supported model');
+         if (info.length > 0) {
+           modelInfo = info[0];
+         }
+       })
+     ```
+
+     <!-- @[aip_getCloudTextEmbeddingModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
+
+     ``` TypeScript
+     if (modelInfo !== undefined) {
+       textConfig.modelInfo = modelInfo;
+       textConfig.networkPolicy = intelligence.NetworkPolicy.WIFI_ONLY;
+     }
+     intelligence.getTextEmbeddingModel(textConfig)
+       .then((data: intelligence.TextEmbedding) => {
+         console.info('Succeeded in getting TextModel');
+         textEmbedding = data;
+         // ...
+       })
+       .catch((err: BusinessError) => {
+         console.error('Failed to get TextModel and code is ' + err.code);
+         // ...
+       })
+     ```
 
 3. 加载文本嵌入模型。
 
    调用loadModel方法，加载文本嵌入模型。示例代码如下所示：
 
-   <!-- @[aip_splitText_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[aip_loadTextModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    textEmbedding.loadModel()
@@ -109,7 +152,7 @@
        console.info('Succeeded in loading Model');
        // ...
      })
-     .catch((err:BusinessError) => {
+     .catch((err: BusinessError) => {
        console.error('Failed to load Model and code is ' + err.code);
        // ...
      })
@@ -119,21 +162,21 @@
 
    调用splitText方法，获取文本的分块结果。示例代码如下所示：
 
-   <!-- @[aip_getTextEmbedding_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[aip_splitText_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    let splitConfig:intelligence.SplitConfig = {
-     size:10,
-     overlapRatio:0.1
+     size: 10,
+     overlapRatio: 0.1
    }
    let splitText = 'text';
    
    intelligence.splitText(splitText, splitConfig)
-     .then((data:Array<string>) => {
+     .then((data: Array<string>) => {
        console.info('Succeeded in splitting Text');
        // ...
      })
-     .catch((err:BusinessError) => {
+     .catch((err: BusinessError) => {
        console.error('Failed to split Text and code is ' + err.code);
        // ...
      })
@@ -143,27 +186,27 @@
 
    调用getEmbedding方法，获取给定单个文本或文本集合的嵌入向量。示例代码如下所示：
 
-   <!-- @[aip_releaseTextModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[aip_getTextEmbedding_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    let text = 'text';
    textEmbedding.getEmbedding(text)
-     .then((data:Array<number>) => {
+     .then((data: Array<number>) => {
        console.info('Succeeded in getting Embedding');
        // ...
      })
-     .catch((err:BusinessError) => {
+     .catch((err: BusinessError) => {
        console.error('Failed to get Embedding and code is ' + err.code);
        // ...
      })
    
    let batchTexts = ['text1','text2'];
    textEmbedding.getEmbedding(batchTexts)
-     .then((data:Array<Array<number>>) => {
+     .then((data: Array<Array<number>>) => {
        console.info('Succeeded in getting Embedding');
        // ...
      })
-     .catch((err:BusinessError) => {
+     .catch((err: BusinessError) => {
        console.error('Failed to get Embedding and code is ' + err.code);
        // ...
      })
@@ -173,7 +216,7 @@
 
    调用releaseModel方法，释放文本嵌入模型。示例代码如下所示：
 
-   <!-- @[aip_releaseTextModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[aip_releaseTextModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    textEmbedding.releaseModel()
@@ -181,7 +224,7 @@
        console.info('Succeeded in releasing Model');
        // ...
      })
-     .catch((err:BusinessError) => {
+     .catch((err: BusinessError) => {
        console.error('Failed to release Model and code is ' + err.code);
        // ...
      })
@@ -191,7 +234,7 @@
 
 1. 导入模块。
 
-   <!-- @[import_the_aip_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[import_the_aip_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    import { intelligence } from '@kit.ArkData';
@@ -202,26 +245,27 @@
 
    调用getImageEmbeddingModel方法，获取图像嵌入模型。示例代码如下所示：
 
-   <!-- @[aip_getImageEmbeddingModel_operating_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[aip_getImageEmbeddingModel_operating_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
-   let imageConfig:intelligence.ModelConfig = {
-     version:intelligence.ModelVersion.BASIC_MODEL,
-     isNpuAvailable:false,
-     cachePath:"/data"
+   let imageConfig: intelligence.ModelConfig = {
+     version: intelligence.ModelVersion.BASIC_MODEL,
+     isNpuAvailable: false,
+     cachePath: "/data"
    }
-   let imageEmbedding:intelligence.ImageEmbedding;
+   let imageEmbedding: intelligence.ImageEmbedding;
    ```
-   <!-- @[aip_getImageEmbeddingModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+
+   <!-- @[aip_getImageEmbeddingModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    intelligence.getImageEmbeddingModel(imageConfig)
-     .then((data:intelligence.ImageEmbedding) => {
+     .then((data: intelligence.ImageEmbedding) => {
        console.info('Succeeded in getting ImageModel');
        imageEmbedding = data;
        // ...
      })
-     .catch((err:BusinessError) => {
+     .catch((err: BusinessError) => {
        console.error('Failed to get ImageModel and code is ' + err.code);
        // ...
      })
@@ -231,44 +275,44 @@
 
    调用loadModel方法，加载图像嵌入模型。示例代码如下所示：
 
-    <!-- @[aip_loadImageModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
-   
-   ``` TypeScript
-   imageEmbedding.loadModel()
-     .then(() => {
-       console.info('Succeeded in loading Model');
-       // ...
-     })
-     .catch((err:BusinessError) => {
-       console.error('Failed to load Model and code is ' + err.code);
-       // ...
-     })
-   ```
+    <!-- @[aip_loadImageModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
+    
+    ``` TypeScript
+    imageEmbedding.loadModel()
+      .then(() => {
+        console.info('Succeeded in loading Model');
+        // ...
+      })
+      .catch((err: BusinessError) => {
+        console.error('Failed to load Model and code is ' + err.code);
+        // ...
+      })
+    ```
 
 4. 获取给定图像的嵌入向量。
 
    调用getEmbedding方法，获取给定图像的嵌入向量。示例代码如下所示：
 
-    <!-- @[aip_getImageEmbedding_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
-   
-   ``` TypeScript
-   let image = 'file://<packageName>/data/storage/el2/base/haps/entry/files/xxx.jpg';
-   imageEmbedding.getEmbedding(image)
-     .then((data:Array<number>) => {
-       console.info('Succeeded in getting Embedding');
-       // ...
-     })
-     .catch((err:BusinessError) => {
-       console.error('Failed to get Embedding and code is ' + err.code);
-       // ...
-     })
-   ```
+    <!-- @[aip_getImageEmbedding_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
+    
+    ``` TypeScript
+    let image = 'file://<packageName>/data/storage/el2/base/haps/entry/files/xxx.jpg';
+    imageEmbedding.getEmbedding(image)
+      .then((data: Array<number>) => {
+        console.info('Succeeded in getting Embedding');
+        // ...
+      })
+      .catch((err: BusinessError) => {
+        console.error('Failed to get Embedding and code is ' + err.code);
+        // ...
+      })
+    ```
 
 5. 释放图像嵌入模型。
 
    调用releaseModel方法，释放图像嵌入模型。示例代码如下所示：
 
-   <!-- @[aip_releaseImageModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[aip_releaseImageModel_operating](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Aip/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    imageEmbedding.releaseModel()
@@ -276,7 +320,7 @@
        console.info('Succeeded in releasing Model');
        // ...
      })
-     .catch((err:BusinessError) => {
+     .catch((err: BusinessError) => {
        console.error('Failed to release Model and code is ' + err.code);
        // ...
      })

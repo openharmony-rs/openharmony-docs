@@ -6,7 +6,7 @@
 <!--Designer: @qq_43802146-->
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
-该模块主要提供WLAN扩展接口，供非通用类型产品使用。
+该模块主要提供Wi-Fi扩展接口，供非通用类型产品使用。
 
 > **说明：**
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -23,7 +23,7 @@ import { wifiManagerExt } from '@kit.ConnectivityKit';
 
 enableHotspot(): void
 
-使能WLAN热点。
+启用Wi-Fi热点。
 
 > **说明：**
 > 从API version 9开始支持，从API version 10开始废弃。
@@ -34,7 +34,7 @@ enableHotspot(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)。
 
 | **错误码ID** | **错误信息** |
 | -------- | -------- |
@@ -49,7 +49,7 @@ enableHotspot(): void
 
   try {
       wifiManagerExt.enableHotspot();
-  }catch(error){
+  } catch (error) {
       console.error("failed: " + JSON.stringify(error));
   }
 ```
@@ -58,7 +58,7 @@ enableHotspot(): void
 
 disableHotspot(): void
 
-去使能WLAN热点。
+禁用Wi-Fi热点。
 
 > **说明：**
 > 从API version 9开始支持，从API version 10开始废弃。
@@ -69,7 +69,7 @@ disableHotspot(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)。
 
 | **错误码ID** | **错误信息** |
 | -------- | -------- |
@@ -107,7 +107,7 @@ getSupportedPowerMode(): Promise&lt;Array&lt;PowerMode&gt;&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)。
 
 | **错误码ID** | **错误信息** |
 | -------- | -------- |
@@ -118,13 +118,13 @@ getSupportedPowerMode(): Promise&lt;Array&lt;PowerMode&gt;&gt;
 
 表示功率模式的枚举。
 
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+**系统能力：** SystemCapability.Communication.WiFi.AP.Extension
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| SLEEPING | 0 | 睡眠模式。 |
-| GENERAL | 1 | 常规模式。 |
-| THROUGH_WALL | 2 | 穿墙模式。 |
+| SLEEPING | 0 | 睡眠模式。 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core|
+| GENERAL | 1 | 常规模式。 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core|
+| THROUGH_WALL | 2 | 穿墙模式。 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core|
 
 
 ## wifiManagerExt.getSupportedPowerMode
@@ -141,11 +141,11 @@ getSupportedPowerMode(callback: AsyncCallback&lt;Array&lt;PowerMode&gt;&gt;): vo
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;Array&lt;[PowerMode](#powermode)&gt;&gt; | 是 | 回调函数。当操作成功时，err为0，data表示支持的功率模式。如果err为非0，表示处理出现错误。 |
+  | callback | AsyncCallback&lt;Array&lt;[PowerMode](#powermode)&gt;&gt; | 是 | 回调函数。当操作成功时，err为0，data表示支持的功率模式。如果err为非0，表示获取支持的功率模式操作出现错误。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)。
 
 | **错误码ID** | **错误信息** |
 | -------- | -------- |
@@ -173,9 +173,6 @@ getPowerMode(): Promise&lt;PowerMode&gt;
 
 获取功率模式，使用Promise异步回调。
 
-> **说明：**
-> 从API version 9开始支持，从API version 10开始废弃。
-
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.AP.Extension
@@ -188,7 +185,7 @@ getPowerMode(): Promise&lt;PowerMode&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)。
 
 | **错误码ID** | **错误信息** |
 | -------- | -------- |
@@ -199,14 +196,19 @@ getPowerMode(): Promise&lt;PowerMode&gt;
 **示例：**
 
 ```ts
-  import { wifiManagerExt } from '@kit.ConnectivityKit';
+import { wifiManagerExt } from '@kit.ConnectivityKit';
 
+async function getWifiPowerMode() {
   try {
-      let model = wifiManagerExt.getPowerMode();
-      console.info("model info:" + model);
-  }catch(error){
-      console.error("failed: " + JSON.stringify(error));
+    // 1. 使用 await 等待 Promise 解析完成
+    let model = await wifiManagerExt.getPowerMode();
+    
+    console.info("model info: " + model);
+  } catch (error) {
+    // 2. 捕获 Promise 拒绝时的错误
+    console.error("failed: " + JSON.stringify(error));
   }
+}
 ```
 
 ## wifiManagerExt.getPowerMode
@@ -223,11 +225,11 @@ getPowerMode(callback: AsyncCallback&lt;PowerMode&gt;): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback&lt;[PowerMode](#powermode)&gt; | 是 | 回调函数。当操作成功时，err为0，data表示功率模式。如果err为非0，表示处理出现错误。 |
+  | callback | AsyncCallback&lt;[PowerMode](#powermode)&gt; | 是 | 回调函数。当操作成功时，err为0，data表示功率模式。如果err为非0，表示获取功率模式操作出现错误。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)。
 
 | **错误码ID** | **错误信息** |
 | -------- | -------- |
@@ -259,7 +261,7 @@ getPowerMode(callback: AsyncCallback&lt;PowerMode&gt;): void
 
 setPowerMode(mode: PowerMode) : void
 
- 设置功率模式。
+设置功率模式。
 
 > **说明：**
 > 从API version 9开始支持，从API version 10开始废弃。
@@ -276,7 +278,7 @@ setPowerMode(mode: PowerMode) : void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
+以下错误码的详细介绍请参见[Wi-Fi错误码](errorcode-wifi.md)。
 
 | **错误码ID** | **错误信息** |
 | -------- | -------- |

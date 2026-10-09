@@ -1,10 +1,10 @@
 # @ohos.multimedia.media (媒体服务)(系统接口)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zzs_911-->
-<!--Designer: @stupig001-->
+<!--Owner: @chenkun613227-->
+<!--Designer: @yxc2-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @zzs911-->
 
 媒体子系统为开发者提供一套简单且易于理解的接口，使得开发者能够方便接入系统并使用系统的媒体资源。
 
@@ -21,7 +21,7 @@ import { media } from '@kit.MediaKit';
 
 ## AVErrorCode<sup>9+</sup>
 
-[媒体错误码](errorcode-media.md)类型枚举。
+[Media错误码](errorcode-media.md)类型枚举。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -50,11 +50,11 @@ createVideoRecorder(callback: AsyncCallback\<VideoRecorder>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
-| 202      | Not system App.                |
+| 202      | Not System App. <br>适用版本：12+               |
 | 5400101  | No memory. Return by callback. |
 
 **示例：**
@@ -91,11 +91,11 @@ createVideoRecorder(): Promise\<VideoRecorder>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                      |
 | -------- | ----------------------------- |
-| 202      | Not system App.               |
+| 202      | Not System App. <br>适用版本：12+              |
 | 5400101  | No memory. Return by promise. |
 
 **示例：**
@@ -205,7 +205,7 @@ getAVScreenCaptureConfigurableParameters(sessionId: number): Promise\<string>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
 | 202      | Called from Non-System applications. Return by promise.               |
@@ -244,7 +244,7 @@ getScreenCaptureMonitor(): Promise\<ScreenCaptureMonitor>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                      |
 | -------- | ----------------------------- |
@@ -287,7 +287,7 @@ createParallelSoundPool(maxStreams: number, audioRenderInfo: audio.AudioRenderer
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                      |
 | -------- | ----------------------------- |
@@ -326,7 +326,7 @@ media.createParallelSoundPool(5, audioRendererInfo).then((soundpool_: media.Soun
 
 | 名称     | 类型   |  只读   |   可选    |  说明                   |
 | -------- | ------ |   ------| ------ | ---------------------- |
-| colorFormat  | [PixelFormat](#pixelformat11) |  否   |  是   | 输出的缩略图颜色格式。<br>**系统接口：** 该接口为系统接口。      |
+| colorFormat  | [PixelFormat](#pixelformat11) |  否   |  是   | 输出的缩略图颜色格式。<br/>**系统接口：** 此接口为系统接口。      |
 
 ## PixelFormat<sup>11+</sup>
 
@@ -371,7 +371,7 @@ getTimeByFrameIndex(index: number): Promise\<number>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                       |
 | -------- | ---------------------------------------------- |
@@ -416,7 +416,7 @@ getFrameIndexByTime(timeUs: number): Promise\<number>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                       |
 | -------- | ---------------------------------------------- |
@@ -451,7 +451,7 @@ isWatermarkSupported(): Promise\<boolean>
 
 检查当前设备录制是否支持硬件数字水印能力。使用Promise异步回调。
 
-可在[prepare()](arkts-apis-media-AVRecorder.md#prepare9-1)、[start()](arkts-apis-media-AVRecorder.md#start9)、[paused()](arkts-apis-media-AVRecorder.md#pause9)事件成功触发后调用。
+可在[prepare()](arkts-apis-media-AVRecorder.md#prepare9-1)、[start()](arkts-apis-media-AVRecorder.md#start9)、[pause()](arkts-apis-media-AVRecorder.md#pause9)事件成功触发后调用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
@@ -491,7 +491,7 @@ setWatermark(watermark: image.PixelMap, config: WatermarkConfig): Promise\<void>
 
 | 参数名   | 类型                  | 必填 | 说明                         |
 | -------- | -------------------- | ---- | --------------------------- |
-| watermark | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)      | 是   | 图像PixelMap数据。<br>当前支持规格:<br>-当前仅支持pixelformat为RGBA8888。<br>-原图像为8K时->水印图像限制范围3072x288,原图像为4K时->水印图像限制范围1536x144。 |
+| watermark | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)      | 是   | 图像PixelMap数据。<br/>当前支持规格:<br/>- 当前仅支持pixelformat为RGBA8888。<br/>- 原图像为8K时->水印图像限制范围3072x288，原图像为4K时->水印图像限制范围1536x144。 |
 | config    | [WatermarkConfig](#watermarkconfig13)   | 是   | 水印的相关配置参数。 |
 
 **返回值：**
@@ -524,60 +524,6 @@ avRecorder.setWatermark(watermark, watermarkConfig).then(() => {
   console.error(`Failed to setWatermark and catch error is ${error.message}`);
 });
 ```
-
-### setMetadata<sup>19+</sup>
-setMetadata(metadata: Record\<string, string\>): void
-
-给AVRecorder的录制文件中设置自定义meta数据。
-
-只有当[prepare()](arkts-apis-media-AVRecorder.md#prepare9-1)事件成功触发后，并在调用[stop()](arkts-apis-media-AVRecorder.md#stop9)方法之前，才能调用setMetadata方法。
-
-**系统能力：** SystemCapability.Multimedia.Media.AVRecorder
-
-**系统接口：** 该接口为系统接口。
-
-**参数：**
-
-| 参数名   | 类型                  | 必填 | 说明                                                                |
-| -------- | -------------------- | ---- | -------------------------------------------------------------------|
-| metadata | [Record<string, string>]  | 是   | 以键值对形式设置meta数据的tag和value。<br>- 第一个string为meta tag。<br>- 第二个string为meta value。 |
-
-**返回值：**
-
-| 类型            | 说明        |
-| --------------- |-----------|
-| void | 无返回结果。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息            |
-|-------|-----------------|
-| 202   | Not System App. |
-
-**示例：**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let meta : Record<string, string> = {
-   'com.openharmony.userdefine':'10',
-   'com.openharmony.userdefine2':'20'
-};
-
-avRecorder.setMetadata(meta);
-```
-
-## AVRecorderProfile<sup>9+</sup>
-
-音视频录制的配置文件。
-
-**系统能力：** SystemCapability.Multimedia.Media.AVRecorder
-
-| 名称             | 类型                                         | 只读 | 可选 | 说明                                                         |
-| ---------------- | -------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| enableStableQualityMode<sup>18+</sup>            | boolean                        | 否   | 是   | 视频录制是否选择稳定质量模式，选择视频录制时选填，enableStableQualityMode默认为false。设置为true时，启用视频编码策略以实现质量稳定的编码。<br>**系统接口：** 该接口为系统接口。|
 
 ## VideoRecorder<sup>9+</sup>
 
@@ -617,12 +563,12 @@ prepare(config: VideoRecorderConfig, callback: AsyncCallback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                   |
 | -------- | ------------------------------------------ |
 | 201      | Permission denied. Return by callback.     |
-| 202      | Not system App.                            |
+| 202      | Not System App. <br>适用版本：12+           |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.       |
 | 5400102  | Operation not allowed. Return by callback. |
 | 5400105  | Service died. Return by callback.          |
@@ -691,12 +637,12 @@ prepare(config: VideoRecorderConfig): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
 | 201      | Permission denied. Return by promise.     |
-| 202      | Not system App.                           |
+| 202      | Not System App. <br>适用版本：12+          |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.       |
 | 5400102  | Operation not allowed. Return by promise. |
 | 5400105  | Service died. Return by promise.          |
@@ -761,11 +707,11 @@ getInputSurface(callback: AsyncCallback\<string>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                   |
 | -------- | ------------------------------------------ |
-| 202      | Not system App.                            |
+| 202      | Not System App. <br>适用版本：12+           |
 | 5400102  | Operation not allowed. Return by callback. |
 | 5400103  | I/O error. Return by callback.             |
 | 5400105  | Service died. Return by callback.          |
@@ -811,11 +757,11 @@ getInputSurface(): Promise\<string>;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 202      | Not system App.                           |
+| 202      | Not System App. <br>适用版本：12+          |
 | 5400102  | Operation not allowed. Return by promise. |
 | 5400103  | I/O error. Return by promise.             |
 | 5400105  | Service died. Return by promise.          |
@@ -855,11 +801,11 @@ start(callback: AsyncCallback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                   |
 | -------- | ------------------------------------------ |
-| 202      | Not system App.                            |
+| 202      | Not System App. <br>适用版本：12+           |
 | 5400102  | Operation not allowed. Return by callback. |
 | 5400103  | I/O error. Return by callback.             |
 | 5400105  | Service died. Return by callback.          |
@@ -899,11 +845,11 @@ start(): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 202      | Not system App.                           |
+| 202      | Not System App. <br>适用版本：12+          |
 | 5400102  | Operation not allowed. Return by promise. |
 | 5400103  | I/O error. Return by promise.             |
 | 5400105  | Service died. Return by promise.          |
@@ -941,11 +887,11 @@ pause(callback: AsyncCallback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                   |
 | -------- | ------------------------------------------ |
-| 202      | Not system App.                            |
+| 202      | Not System App. <br>适用版本：12+           |
 | 5400102  | Operation not allowed. Return by callback. |
 | 5400103  | I/O error. Return by callback.             |
 | 5400105  | Service died. Return by callback.          |
@@ -985,11 +931,11 @@ pause(): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 202      | Not system App.                           |
+| 202      | Not System App. <br>适用版本：12+          |
 | 5400102  | Operation not allowed. Return by promise. |
 | 5400103  | I/O error. Return by promise.             |
 | 5400105  | Service died. Return by promise.          |
@@ -1025,11 +971,11 @@ resume(callback: AsyncCallback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                   |
 | -------- | ------------------------------------------ |
-| 202      | Not system App.                            |
+| 202      | Not System App. <br>适用版本：12+           |
 | 5400102  | Operation not allowed. Return by callback. |
 | 5400103  | I/O error. Return by callback.             |
 | 5400105  | Service died. Return by callback.          |
@@ -1067,11 +1013,11 @@ resume(): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 202      | Not system App.                           |
+| 202      | Not System App. <br>适用版本：12+          |
 | 5400102  | Operation not allowed. Return by promise. |
 | 5400103  | I/O error. Return by promise.             |
 | 5400105  | Service died. Return by promise.          |
@@ -1109,11 +1055,11 @@ stop(callback: AsyncCallback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                   |
 | -------- | ------------------------------------------ |
-| 202      | Not system App.                            |
+| 202      | Not System App. <br>适用版本：12+           |
 | 5400102  | Operation not allowed. Return by callback. |
 | 5400103  | I/O error. Return by callback.             |
 | 5400105  | Service died. Return by callback.          |
@@ -1153,11 +1099,11 @@ stop(): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 202      | Not system App.                           |
+| 202      | Not System App. <br>适用版本：12+          |
 | 5400102  | Operation not allowed. Return by promise. |
 | 5400103  | I/O error. Return by promise.             |
 | 5400105  | Service died. Return by promise.          |
@@ -1193,11 +1139,11 @@ release(callback: AsyncCallback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                          |
 | -------- | --------------------------------- |
-| 202      | Not system App.                   |
+| 202      | Not System App. <br>适用版本：12+  |
 | 5400105  | Service died. Return by callback. |
 
 **示例：**
@@ -1233,12 +1179,12 @@ release(): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                          |
 | -------- | --------------------------------- |
-| 202      | Not system App.                   |
-| 5400105  | Service died. Return by callback. |
+| 202      | Not System App. <br>适用版本：12+  |
+| 5400105  | Service died. Return by promise. |
 
 **示例：**
 
@@ -1273,11 +1219,11 @@ reset(callback: AsyncCallback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                          |
 | -------- | --------------------------------- |
-| 202      | Not system App.                   |
+| 202      | Not System App. <br>适用版本：12+  |
 | 5400103  | I/O error. Return by callback.    |
 | 5400105  | Service died. Return by callback. |
 
@@ -1316,11 +1262,11 @@ reset(): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 202      | Not system App.                  |
+| 202      | Not System App. <br>适用版本：12+ |
 | 5400103  | I/O error. Return by promise.    |
 | 5400105  | Service died. Return by promise. |
 
@@ -1356,12 +1302,12 @@ on(type: 'error', callback: ErrorCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                          |
 | -------- | --------------------------------- |
-| 201      | permission denied.                |
-| 202      | Not system App.                   |
+| 201      | permission denied. <br>适用版本：12+  |
+| 202      | Not System App. <br>适用版本：12+  |
 | 5400103  | I/O error. Return by callback.    |
 | 5400105  | Service died. Return by callback. |
 
@@ -1377,6 +1323,8 @@ videoRecorder.on('error', (error: BusinessError) => { // 设置'error'事件回�
 ```
 
 ## VideoRecordState<sup>9+</sup>
+
+type VideoRecordState = 'idle' | 'prepared' | 'playing' | 'paused' | 'stopped' | 'error'
 
 视频录制的状态机。可通过state属性获取当前状态。
 
@@ -1408,9 +1356,9 @@ videoRecorder.on('error', (error: BusinessError) => { // 设置'error'事件回�
 | audioSourceType | [AudioSourceType](arkts-apis-media-e.md#audiosourcetype9)           | 否   | 是   | 视频录制的音频源类型，选择音频录制时必填。                      |
 | videoSourceType | [VideoSourceType](arkts-apis-media-e.md#videosourcetype9)           | 否   | 否   | 视频录制的视频源类型。                                       |
 | profile         | [VideoRecorderProfile](#videorecorderprofile9) | 否   | 否   | 视频录制的profile。                                          |
-| rotation        | number                                         | 否   | 是   | 录制的视频旋转角度，仅支持0，90，180，270，默认值为0。       |
+| rotation        | number                                         | 否   | 是   | 录制的视频旋转角度，单位为度（°）。仅支持0°、90°、180°和270°，默认值为0°。       |
 | location        | [Location](arkts-apis-media-i.md#location)                          | 否   | 是   | 录制视频的地理位置，默认不记录地理位置信息。                 |
-| url             | string                                         | 否   | 否   | 视频输出URL：fd://xx&nbsp;(fd&nbsp;number)<br/>![](figures/zh-cn_image_url.png) |
+| url             | string                                         | 否   | 否   | 视频输出URL：fd://xx&nbsp;(fd&nbsp;number)<br/>![](figures/image-url.png) |
 
 ## VideoRecorderProfile<sup>9+</sup>
 
@@ -1539,6 +1487,7 @@ screenCaptureMonitor.off('systemScreenRecorder');
 | ------------------------ | --------------- | ------------------------------------------------------------ |
 | SCREENCAPTURE_STARTED       | 0   | 表示系统录屏应用开始录屏。                       |
 | SCREENCAPTURE_STOPPED        | 1    | 表示系统录屏应用停止录屏。 |
+| SCREENCAPTURE_DIED<sup>23+</sup>           | 2    | 表示录屏框架服务死亡。 |
 
 ## enableDeviceLevelCapture<sup>20+</sup>
 
@@ -1553,3 +1502,111 @@ enableDeviceLevelCapture是AVScreenCaptureStrategy接口中的一个可选参数
 | 名称                      | 类型    | 必填 | 说明 |
 | ------------------------ | ------- | ---- | ---- |
 | enableDeviceLevelCapture | boolean | 否   | true表示折叠屏PC在折叠状态下录制整块屏幕，false表示折叠屏PC在折叠状态下录制半块屏幕。 |
+
+## AVPlayer<sup>9+</sup>
+
+播放管理类，用于管理和播放媒体资源。在调用AVPlayer的方法前，需要先通过[createAVPlayer()](arkts-apis-media-f.md#mediacreateavplayer9)构建一个AVPlayer实例。
+
+在使用AVPlayer实例的方法时，建议开发者注册相关回调，主动获取当前状态变化。[on('stateChange')](arkts-apis-media-AVPlayer.md#onstatechange9)：监听播放状态机AVPlayerState切换。[on('error')](arkts-apis-media-AVPlayer.md#onerror9)：监听错误事件。
+
+应用需要按照实际业务需求合理使用AVPlayer对象，按需创建并及时释放，避免持有过多AVPlayer实例导致内存消耗过大，否则在一定情况下可能导致系统终止应用。
+
+Audio/Video播放示例可参考：[使用AVPlayer播放音频(ArkTS)](../../media/media/using-avplayer-for-playback.md)和[使用AVPlayer播放视频(ArkTS)](../../media/media/video-playback.md)。
+
+### 属性
+
+**系统能力：**  SystemCapability.Multimedia.Media.AVPlayer
+
+**系统接口：** 此接口为系统接口。
+
+| 名称               | 类型                                   | 只读 | 可选 | 说明             |
+| ------------------ | -------------------------------------- | ---- | ---- | ---------------- |
+| enableStartFrameRateOpt | boolean | 否   | 是   |是否采用较慢的同步策略，减少帧不足导致的主观画面抖动。<br/>true表示采用，false表示不采用，默认值为false。<br/>**起始版本：** 26.0.0<br/>**模型约束：** 此接口仅可在Stage模型下使用。|
+
+### forceLoadVideo
+
+forceLoadVideo(force: boolean): Promise\<void>
+
+是否强制加载视频。使用Promise异步回调。
+
+只有当AVPlayer处于prepared、playing或者paused状态时，才能调用此接口。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                                                         |
+| -------- | -------- | ---- | ------------------------------------------------------------ |
+| force | boolean | 是 | 是否强制加载视频。<br>true表示强制加载视频，false表示不强制加载视频。 |
+
+**返回值：**
+
+| 类型           | 说明                                       |
+| -------------- | ------------------------------------------ |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 202  | Called from Non-System applications. Return by promise.|
+
+**示例：**
+
+```ts
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至prepared/playing/paused状态后才能调用。
+  avPlayer.forceLoadVideo(true);
+}
+```
+
+### enableCameraPostprocessing
+
+enableCameraPostprocessing(): Promise\<void>
+
+开启后处理功能，在视频播放时做效果处理。使用Promise异步回调。
+
+只有当AVPlayer处于initialized状态时，才能调用此接口。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**返回值：**
+
+| 类型           | 说明                                       |
+| -------------- | ------------------------------------------ |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 202  | Called from Non-System applications. Return by promise.|
+| 5400102  | Operation not allowed. Return by promise.|
+| 5400105  | Service died.|
+
+**示例：**
+
+```ts
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  // 此处仅为示意，实际开发中需要在stateChange事件成功触发至initialized状态后才能调用。
+  avPlayer.enableCameraPostprocessing();
+}
+```

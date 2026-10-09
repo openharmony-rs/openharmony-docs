@@ -16,7 +16,7 @@
     - [HML](js-lite-framework-syntax-hml.md)
     - [CSS](js-lite-framework-syntax-css.md)
     - [JavaScript](js-lite-framework-syntax-js.md)
-- Universal Components<!--js-lite-universal-comp-infor-->
+- Universal Components<!--js-lite-universal-comp-inform-->
   - [Universal Events](js-lite-common-events.md)
   - [Universal Attributes](js-lite-common-attributes.md)
   - [Universal Styles](js-lite-common-styles.md)
@@ -43,3 +43,4 @@
 - Canvas Components<!--js-lite-canvas-comp-->
   - [canvas](js-lite-components-canvas-canvas.md)
   - [CanvasRenderingContext2D](js-lite-components-canvas-canvasrenderingcontext2d.md)
+  - [Monitoring Rotating Crown Events](js-lite-common-monitorcrownevents.md)

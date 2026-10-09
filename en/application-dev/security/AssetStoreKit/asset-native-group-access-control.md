@@ -2,8 +2,8 @@
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @JeremyXu-->
-<!--Designer: @skye_you-->
+<!--Owner: @yhf-->
+<!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
@@ -153,7 +153,7 @@ static napi_value QueryGroupAssetPlaintext(napi_env env, napi_callback_info info
     Asset_Blob alias = { (uint32_t)(strlen(aliasStr)), (uint8_t *)aliasStr };
     Asset_Blob group_id = { (uint32_t)(strlen(groupIdStr)), (uint8_t *)groupIdStr };
     Asset_Attr attr[] = {
-        {.tag = ASSET_TAG_ALIAS, .value.blob = alias}, // Specify the alias of the asset to query.
+        {.tag = ASSET_TAG_ALIAS, .value.blob = alias}, // Specify the alias of the asset to query. At most one asset will meet the condition.
         {.tag = ASSET_TAG_RETURN_TYPE, .value.u32 = ASSET_RETURN_ALL}, // Return all asset information, including the attributes and asset plaintext, in the group.
         {.tag = ASSET_TAG_GROUP_ID, .value.blob = group_id},
     };
@@ -191,7 +191,7 @@ static napi_value QueryGroupAssetAttribute(napi_env env, napi_callback_info info
     Asset_Blob alias = {(uint32_t)(strlen(aliasStr)), (uint8_t *)aliasStr};
     Asset_Blob group_id = {(uint32_t)(strlen(groupIdStr)), (uint8_t *)groupIdStr};
     Asset_Attr attr[] = {
-        {.tag = ASSET_TAG_ALIAS, .value.blob = alias}, // Specify the alias of the asset to query.
+        {.tag = ASSET_TAG_ALIAS, .value.blob = alias}, // Specify the alias of the asset to query. At most one asset will meet the condition.
         {.tag = ASSET_TAG_RETURN_TYPE, .value.u32 = ASSET_RETURN_ATTRIBUTES}, // Return only the asset attributes of the asset in the group, that is, the result does not include the asset plaintext.
         {.tag = ASSET_TAG_GROUP_ID, .value.blob = group_id},
     };

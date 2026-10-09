@@ -1,14 +1,16 @@
 # camera.h
+
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=dca2324ae631933114982a39fd134872979315e6 translatedAt=2026-08-21T07:27:09.198Z pushedAt=2026-08-21T07:42:52.074Z -->
 
 ## Overview
 
-The file declares the basic concepts of the camera.
+Defines the basic APIs of the camera.
 
 **File to include**: <ohcamera/camera.h>
 
@@ -39,7 +41,7 @@ The file declares the basic concepts of the camera.
 | [Camera_PhotoCaptureSetting](capi-oh-camera-camera-photocapturesetting.md) | Camera_PhotoCaptureSetting | Describes the parameters related to photo capture.|
 | [Camera_FrameShutterInfo](capi-oh-camera-camera-frameshutterinfo.md) | Camera_FrameShutterInfo | Describes the frame shutter information.|
 | [Camera_CaptureEndInfo](capi-oh-camera-camera-captureendinfo.md) | Camera_CaptureEndInfo | Describes the capture end information.|
-| [Camera_Rect](capi-oh-camera-camera-rect.md) | Camera_Rect | Defines the rectangle.<br> The detection point must be in the coordinate system (0-1), where the top-left corner is (0, 0) and the bottom-right corner is (1, 1).<br> The coordinate system is based on the horizontal device direction with the device's charging port on the right.<br> If the layout of the preview screen of an application is based on the vertical direction with the charging port on the lower side, the layout width and height are {w, h}, and the returned point is {x, y}, then the coordinate point after conversion is (1-y, x).|
+| [Camera_Rect](capi-oh-camera-camera-rect.md) | Camera_Rect | Defines a camera rectangle. This method is used to draw rectangles for various detection objects.<br> The coordinate system for detection points is based on the landscape device orientation, with the charging port on the right.<br> The origin of the coordinate system is (0, 0) at the upper left corner, and the coordinates at the lower right corner are the resolution of the camera preview stream.<br> All parameters are integer pixel values. **topLeftX** and **topLeftY** indicate the coordinates of the upper left corner of the rectangle, and **width** and **height** indicate the width and height of the rectangle. |
 | [Camera_MetadataObject](capi-oh-camera-camera-metadataobject.md) | Camera_MetadataObject | Describes the camera metadata.|
 | [Camera_TorchStatusInfo](capi-oh-camera-camera-torchstatusinfo.md) | Camera_TorchStatusInfo | Describes the flashlight status information.|
 | [Camera_SmoothZoomInfo](capi-oh-camera-camera-smoothzoominfo.md) | Camera_SmoothZoomInfo | Describes the smooth zoom information.|
@@ -50,6 +52,10 @@ The file declares the basic concepts of the camera.
 | [Camera_ConcurrentInfo](capi-oh-camera-camera-concurrentinfo.md) | Camera_ConcurrentInfo | Describes the camera's concurrency information.|
 | [Camera_ControlCenterStatusInfo](capi-oh-camera-camera-controlcenterstatusinfo.md) | Camera_ControlCenterStatusInfo | Describes the effect status information of a camera controller.|
 | [Camera_OcclusionDetectionResult](capi-oh-camera-camera-occlusiondetectionresult.md) | Camera_OcclusionDetectionResult | Describes the check result for whether a camera lens is blocked or dirty.|
+| [OH_Camera_ZoomRange](capi-oh-camera-oh-camera-zoomrange.md) | OH_Camera_ZoomRange | Describes the zoom range.|
+| [OH_Camera_PhysicalAperture](capi-oh-camera-oh-camera-physicalaperture.md) | OH_Camera_PhysicalAperture | Describes the physical aperture configuration.|
+| [OH_Camera_ZoomPointInfo](capi-oh-camera-oh-camera-zoompointinfo.md) | OH_Camera_ZoomPointInfo | Focus change information.|
+| [OH_Camera_Rect_Ext](capi-oh-camera-oh-camera-rect-ext.md) | OH_Camera_Rect_Ext | Defines the rectangle.<br> The detection point must be in the coordinate system (0-1), where the top-left corner is (0, 0) and the bottom-right corner is (1, 1).<br> The coordinate system is based on the horizontal device direction with the device's charging port on the right.<br> If the layout of the preview screen of an application is based on the vertical direction with the charging port on the lower side, the layout width and height are {w, h}, and the returned point is {x, y}, then the coordinate point after conversion is (1-y, x).|
 | [Camera_Manager](capi-oh-camera-camera-manager.md) | Camera_Manager | Describes the camera manager.<br> You can call [OH_Camera_GetCameraManager](#oh_camera_getcameramanager) to create such an object.|
 
 ### Enums
@@ -62,9 +68,12 @@ The file declares the basic concepts of the camera.
 | [Camera_Position](#camera_position) | Camera_Position | Enumerates the camera positions.|
 | [Camera_Type](#camera_type) | Camera_Type | Enumerates the camera types.|
 | [Camera_Connection](#camera_connection) | Camera_Connection | Enumerates the camera connection types.|
+| [OH_Camera_SensorColorFilterArrangement](#oh_camera_sensorcolorfilterarrangement) | OH_Camera_SensorColorFilterArrangement | Enumerates the arrangement modes of the color filter array of a sensor.|
 | [Camera_Format](#camera_format) | Camera_Format | Enumerates the camera output formats.|
 | [Camera_FlashMode](#camera_flashmode) | Camera_FlashMode | Enumerates the flash modes.|
+| [OH_Camera_FlashState](#oh_camera_flashstate) | OH_Camera_FlashState | Enumerates the flash states.|
 | [Camera_ExposureMode](#camera_exposuremode) | Camera_ExposureMode | Enumerates the exposure modes.|
+| [OH_Camera_ExposureMeteringMode](#oh_camera_exposuremeteringmode) | OH_Camera_ExposureMeteringMode | Enumerates the exposure metering modes.|
 | [Camera_FocusMode](#camera_focusmode) | Camera_FocusMode | Enumerates the focus modes.|
 | [Camera_FocusState](#camera_focusstate) | Camera_FocusState | Enumerates the focus states.|
 | [Camera_VideoStabilizationMode](#camera_videostabilizationmode) | Camera_VideoStabilizationMode | Enumerates the video stabilization modes.|
@@ -83,6 +92,11 @@ The file declares the basic concepts of the camera.
 | [Camera_WhiteBalanceMode](#camera_whitebalancemode) | Camera_WhiteBalanceMode | Enumerates the white balance modes.|
 | [Camera_ControlCenterEffectType](#camera_controlcentereffecttype) | Camera_ControlCenterEffectType | Enumerates the effect types of a camera controller.|
 | [Camera_PhotoQualityPrioritization](#camera_photoqualityprioritization) | Camera_PhotoQualityPrioritization | Enumerates the photo quality prioritization strategies.|
+| [OH_Camera_OISMode](#oh_camera_oismode) | OH_Camera_OISMode | Enumerates the optical image stabilization (OIS) modes.|
+| [OH_Camera_OISAxes](#oh_camera_oisaxes) | OH_Camera_OISAxes | Enumerates the OIS axes.|
+| [OH_Camera_ExposureState](#oh_camera_exposurestate) | OH_Camera_ExposureState | Enumerates the exposure states of the camera.|
+| [OH_Camera_MetadataObjectEmotion](#oh_camera_metadataobjectemotion) | OH_Camera_MetadataObjectEmotion | Enumerates the metadata object emotion types.|
+| [OH_Camera_AutomotiveCameraPosition](#oh_camera_automotivecameraposition) | OH_Camera_AutomotiveCameraPosition | Enumerates the camera positions on a car. |
 
 ### Functions
 
@@ -118,7 +132,9 @@ Enumerates the camera error codes.
 | CAMERA_DEVICE_DISABLED = 7400108 | The camera is disabled for security reasons.|
 | CAMERA_DEVICE_PREEMPTED = 7400109 | The camera is preempted.|
 | CAMERA_UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS = 7400110 | The configuration conflicts with the current configuration.<br>**Since**: 12|
-| CAMERA_SERVICE_FATAL_ERROR = 7400201 | The camera service is abnormal, for example, no camera permission, camera service restart, or abnormal cross-process invocation.|
+| CAMERA_ERROR_OPTIONAL_PROPERTY_NOT_EXIST = 7400113 | The optional attribute does not exist.<br>**Since:** 26.0.0 |
+| CAMERA_SERVICE_FATAL_ERROR = 7400201 | The camera service is abnormal,<br> for example, no camera permission, camera service restart, or abnormal cross-process invocation.|
+| CAMERA_ERROR_CAPABILITY_NOT_SUPPORTED = 7400114 | The device currently does not support this capability.<br>**Since:** 26.0.0 |
 
 ### Camera_Status
 
@@ -213,6 +229,25 @@ Enumerates the camera connection types.
 | CAMERA_CONNECTION_USB_PLUGIN = 1 | Camera connected using USB.|
 | CAMERA_CONNECTION_REMOTE = 2 | Remote camera.|
 
+### OH_Camera_SensorColorFilterArrangement
+
+```c
+enum OH_Camera_SensorColorFilterArrangement
+```
+
+**Description**
+
+Enumerates the arrangement modes of the color filter array of a sensor.
+
+**Since**: 24
+
+| Enum Item| Description|
+| -- | -- |
+| OH_CAMERA_SENSOR_CFA_BGGR = 0 | Blue-green-green-red (BGGR) color filter array arrangement.<br>**Since**: 24|
+| OH_CAMERA_SENSOR_CFA_GBRG = 1 | Green-blue-red-green (GBRG) color filter array arrangement.<br>**Since**: 24|
+| OH_CAMERA_SENSOR_CFA_GRBG = 2 | Green-red-blue-green (GRBG) color filter array arrangement.<br>**Since**: 24|
+| OH_CAMERA_SENSOR_CFA_RGGB = 3 | Red-green-green-blue (RGGB) color filter array arrangement.<br>**Since**: 24|
+
 ### Camera_Format
 
 ```c
@@ -228,11 +263,13 @@ Enumerates the camera output formats.
 | Enum Item| Description|
 | -- | -- |
 | CAMERA_FORMAT_RGBA_8888 = 3 | RGBA 8888.|
+| CAMERA_FORMAT_DNG = 4 | DNG format.<br>**Since**: 24|
+| CAMERA_FORMAT_DNG_XDRAW = 5 | Enhanced DNG format.<br>**Since**: 26.0.0|
 | CAMERA_FORMAT_YUV_420_SP = 1003 | YUV 420 SP.|
 | CAMERA_FORMAT_JPEG = 2000 | JPEG.|
 | CAMERA_FORMAT_YCBCR_P010 = 2001 | YCBCR P010.<br>**Since**: 12|
 | CAMERA_FORMAT_YCRCB_P010 = 2002 | YCRCB P010.<br>**Since**: 12|
-| CAMERA_FORMAT_HEIC = 2003 | HEIC.<br>**Since**: 23|
+| CAMERA_FORMAT_HEIC = 2003 | HEIC.<br>**Since:** 23 |
 
 ### Camera_FlashMode
 
@@ -250,8 +287,26 @@ Enumerates the flash modes.
 | -- | -- |
 | FLASH_MODE_CLOSE = 0 | The flash is off.|
 | FLASH_MODE_OPEN = 1 | The flash is on.|
-| FLASH_MODE_AUTO = 2 | The flash is auto.|
+| FLASH_MODE_AUTO = 2 | Auto mode.|
 | FLASH_MODE_ALWAYS_OPEN = 3 | The flash is steady on.|
+
+### OH_Camera_FlashState
+
+```c
+enum OH_Camera_FlashState
+```
+
+**Description**
+
+Enumerates the flash states.
+
+**Since**: 24
+
+| Enum Item| Description|
+| -- | -- |
+| OH_CAMERA_FLASH_STATE_UNAVAILABLE = 0 | The flash is unavailable. This is the default value.<br>**Since**: 24|
+| OH_CAMERA_FLASH_STATE_READY = 1 | The flash is available.<br>**Since**: 24|
+| OH_CAMERA_FLASH_STATE_FLASHING = 2 | The flash is turned on.<br>**Since**: 24|
 
 ### Camera_ExposureMode
 
@@ -267,10 +322,29 @@ Enumerates the exposure modes.
 
 | Enum Item| Description|
 | -- | -- |
+| EXPOSURE_MODE_UNSPECIFIED = -1 | Unspecified exposure.<br>**Since**: 24|
 | EXPOSURE_MODE_LOCKED = 0 | Exposure locked. The metering point cannot be set.<br>After this mode is used, the exposure will be locked by default for each photo capture.|
 | EXPOSURE_MODE_AUTO = 1 | Auto exposure. The metering point can be set by calling [OH_CaptureSession_SetMeteringPoint](capi-capture-session-h.md#oh_capturesession_setmeteringpoint).<br>After this mode is used, it takes effect only for the first photo capture.|
 | EXPOSURE_MODE_CONTINUOUS_AUTO = 2 | Continuous auto exposure.<br>After this mode is used, the camera system automatically adjusts the exposure based on the environment changes each time.|
+| EXPOSURE_MODE_MANUAL = 3 | Manual exposure mode You can use the [OH_CaptureSession_SetExposureDuration](capi-capture-session-h.md#oh_capturesession_setexposureduration) API to set the exposure duration.<br>**Since**: 24|
 
+### OH_Camera_ExposureMeteringMode
+
+```c
+enum OH_Camera_ExposureMeteringMode
+```
+
+**Description**
+
+Enumerates the exposure metering modes.
+
+**Since**: 24
+
+| Enum Item| Description|
+| -- | -- |
+| OH_CAMERA_EXPOSURE_METERING_MODE_MATRIX = 0 | Matrix metering mode. Light is measured across the entire frame in this mode, which is ideal for shooting natural landscapes.<br>**Since**: 24|
+| OH_CAMERA_EXPOSURE_METERING_MODE_CENTER = 1 | Center-weighted metering mode. The light near the center of the screen is concentrated on in this mode, which is ideal for shooting portraits.<br>**Since**: 24|
+| OH_CAMERA_EXPOSURE_METERING_MODE_SPOT = 2 | Spot metering mode. The light in a specified small area is concentrated on in this mode, which is ideal for shooting details of the subject (such as eyes).<br>**Since**: 24|
 
 ### Camera_FocusMode
 
@@ -288,7 +362,7 @@ Enumerates the focus modes.
 | -- | -- |
 | FOCUS_MODE_MANUAL = 0 | Manual focus.|
 | FOCUS_MODE_CONTINUOUS_AUTO = 1 | Continuous auto focus.|
-| FOCUS_MODE_AUTO = 2 | Auto focus.|
+| FOCUS_MODE_AUTO = 2 | Auto mode.|
 | FOCUS_MODE_LOCKED = 3 | Focus locked.|
 
 ### Camera_FocusState
@@ -387,6 +461,13 @@ Enumerates the metadata object types.
 | FACE_DETECTION = 0 | Metadata object used for face detection.<br> Since API version 23, you are advised to use the new enum value [CAMERA_METADATA_OBJECT_TYPE_FACE_DETECTION](capi-camera-h.md#camera_metadataobjecttype) instead.|
 | CAMERA_METADATA_OBJECT_TYPE_FACE_DETECTION = 0 | Metadata object used for face detection.<br>**Since**: 23|
 | CAMERA_METADATA_OBJECT_TYPE_HUMAN_BODY = 1 | Metadata object used for body detection.<br>**Since**: 23|
+| CAMERA_METADATA_OBJECT_TYPE_CAT_FACE = 2 | Metadata object used for cat face detection.<br>**Since:** 26.0.0 |
+| CAMERA_METADATA_OBJECT_TYPE_CAT_BODY = 3 | Metadata object used for cat body detection.<br>**Since:** 26.0.0 |
+| CAMERA_METADATA_OBJECT_TYPE_DOG_FACE = 4 | Metadata object used for dog face detection.<br>**Since:** 26.0.0 |
+| CAMERA_METADATA_OBJECT_TYPE_DOG_BODY = 5 | Metadata object used for dog body detection.<br>**Since:** 26.0.0 |
+| CAMERA_METADATA_OBJECT_TYPE_SALIENT_DETECTION = 6 | Metadata object used for salient object detection.<br>**Since:** 26.0.0 |
+| CAMERA_METADATA_OBJECT_TYPE_BAR_CODE_DETECTION = 7 | Metadata object used for QR code detection.<br>**Since:** 26.0.0 |
+| CAMERA_METADATA_OBJECT_TYPE_BASIC_FACE_DETECTION = 8 | Metadata object used for basic face detection.<br>**Since:** 26.0.0 |
 
 ### Camera_TorchMode
 
@@ -464,7 +545,7 @@ Enumerates the preconfigured photo resolution types.
 | PRECONFIG_1080P = 1 | 1080p resolution.|
 | PRECONFIG_4K = 2 | 4K resolution.|
 | PRECONFIG_HIGH_QUALITY = 3 | High-quality photos.|
-| PRECONFIG_HIGH_QUALITY_PHOTOSESSION_BT2020 = 4 | Resolution that supports HDR preview and GIF photography.<br> **Since**: 23|
+| PRECONFIG_HIGH_QUALITY_PHOTOSESSION_BT2020 = 4 | Resolution that supports HDR preview and GIF photography.<br>**Since**: 23|
 
 ### Camera_PreconfigRatio
 
@@ -595,6 +676,8 @@ Enumerates the effect types of a camera controller.
 | -- | -- |
 | CONTROL_CENTER_EFFECT_TYPE_BEAUTY = 0 | Beauty effect.|
 | CONTROL_CENTER_EFFECT_TYPE_PORTRAIT = 1 | Portrait blur effect.|
+| CONTROL_CENTER_EFFECT_TYPE_AUTO_FRAMING = 2 | Auto focus effect.<br>**Since**: 24|
+| CONTROL_CENTER_EFFECT_TYPE_COLOR_EFFECT = 3 | Effect types of a camera controller, which is the XMAGE style.<br>**Since**: 26.0.0|
 
 ### Camera_PhotoQualityPrioritization
 
@@ -613,6 +696,106 @@ Enumerates the photo quality prioritization strategies.
 | CAMERA_PHOTO_QUALITY_PRIORITIZATION_HIGH_QUALITY = 0 | Focuses on image quality, which may increase the time required for capturing photos to ensure high-quality output.|
 | CAMERA_PHOTO_QUALITY_PRIORITIZATION_SPEED = 1 | Focuses on performance, trading off image quality for faster capture times.|
 
+### OH_Camera_OISMode
+
+```c
+enum OH_Camera_OISMode
+```
+
+**Description**
+
+Enumerates the optical image stabilization (OIS) modes.
+
+**Since**: 24
+
+| Enum Item| Description|
+| -- | -- |
+| OH_CAMERA_OIS_MODE_OFF = 0 | OIS mode disabled.|
+| OH_CAMERA_OIS_MODE_AUTO = 1 | Auto OIS mode.|
+| OH_CAMERA_OIS_MODE_CUSTOM = 2 | Manual OIS mode.|
+
+### OH_Camera_OISAxes
+
+```c
+enum OH_Camera_OISAxes
+```
+
+**Description**
+
+Enumerates the OIS axes.
+
+**Since**: 24
+
+| Enum Item| Description|
+| -- | -- |
+| OH_CAMERA_OIS_AXES_PITCH = 0 | Pitch axis: controls the up-down rotation of the camera body, that is, the camera body rotates around the axis horizontal to the lens.|
+| OH_CAMERA_OIS_AXES_YAW = 1 | Yaw axis: controls the left-right rotation of the camera body, that is, the camera body rotates around the axis perpendicular to the lens.|
+
+### OH_Camera_ExposureState
+
+```c
+enum OH_Camera_ExposureState
+```
+
+**Description**
+
+Enumerates the exposure states of the camera.
+
+**Since**: 26.0.0
+
+| Enum Item| Description|
+| -- | -- |
+| OH_CAMERA_EXPOSURE_STATE_SCAN = 0 | Focusing.<br>**Since**: 26.0.0|
+| OH_CAMERA_EXPOSURE_STATE_CONVERGED = 1 | Exposure converged.<br>**Since**: 26.0.0|
+
+### OH_Camera_MetadataObjectEmotion
+
+```c
+enum OH_Camera_MetadataObjectEmotion
+```
+
+**Description**
+
+Enumerates the metadata object emotion types.
+
+**Since**: 26.0.0
+
+| Enum Item| Description|
+| -- | -- |
+| OH_CAMERA_METADATA_OBJECT_EMOTION_NEUTRAL = 0 | Neutral.<br>**Since**: 26.0.0|
+| OH_CAMERA_METADATA_OBJECT_EMOTION_SADNESS = 1 | Sad.<br>**Since**: 26.0.0|
+| OH_CAMERA_METADATA_OBJECT_EMOTION_SMILE = 2 | Smile.<br>**Since**: 26.0.0|
+| OH_CAMERA_METADATA_OBJECT_EMOTION_SURPRISE = 3 | Surprise.<br>**Since**: 26.0.0|
+
+### OH_Camera_AutomotiveCameraPosition
+
+```c
+enum OH_Camera_AutomotiveCameraPosition
+```
+
+**Description**
+
+Enumerates the camera positions on a car.
+
+**Since**: 26.0.0
+
+| Value | Description |
+| -- | -- |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_OTHER = 0 | Camera at another position outside the car.<br>**Since:** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_FRONT = 1 | Front camera outside the car.<br>**Since:** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_REAR = 2 | Rear camera outside the car.<br>**Since:** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_LEFT = 3 | Left camera outside the car.<br>**Since:** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_EXTERIOR_RIGHT = 4 | Right camera outside the car.<br>**Since:** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_OTHER = 5 | Camera at another position inside the car.<br>**Since:** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_1_LEFT = 6 | Left camera in the first row inside the car.<br>**Since:** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_1_CENTER = 7 | Central camera in the first row inside the car.<br>**Since:** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_1_RIGHT = 8 | Right camera in the first row inside the car.<br>**Since:** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_2_LEFT = 9 | Left camera in the second row inside the car.<br>**Since:** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_2_CENTER = 10 | Central camera in the second row inside the car.<br>**Since:** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_2_RIGHT = 11 | Right camera in the second row inside the car.<br>**Since:** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_3_LEFT = 12 | Left camera in the third row inside the car.<br>**Since:** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_3_CENTER = 13 | Central camera in the third row inside the car.<br>**Since:** 26.0.0 |
+| OH_CAMERA_AUTOMOTIVE_CAMERA_POSITION_INTERIOR_ROW_3_RIGHT = 14 | Right camera in the third row inside the car.<br>**Since:** 26.0.0 |
 
 ## Function Description
 

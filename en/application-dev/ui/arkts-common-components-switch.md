@@ -1,14 +1,14 @@
 # Toggle
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @houguobiao-->
 <!--Designer: @houguobiao-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-
+<!-- md-trans-meta sourceCommit=6448b6b0bfc045f8772649c8e0d84d7c698cb3d1 translatedAt=2026-07-29T12:45:58.636Z pushedAt=2026-07-30T03:04:23.280Z -->
 
 The **Toggle** component provides a clickable element in the check box, button, or switch type, typically used to switch between two states. For details, see [Toggle](../reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md).
-
 
 ## Creating a Toggle
 
@@ -18,41 +18,40 @@ A toggle is created using [ToggleOptions](../reference/apis-arkui/arkui-ts/ts-ba
 Toggle(options: { type: ToggleType, isOn?: boolean })
 ```
 
-In this API, **ToggleType** indicates the toggle type, which can be **Button**, **Checkbox**, or **Switch**, and **isOn** specifies whether the toggle is turned on.
+In the preceding syntax, `ToggleType` indicates the toggle type, which can be `Button`, `Checkbox`, or `Switch`, and `isOn` indicates the state of the toggle.
 
 Since API version 11, the default style of the **Checkbox** component is changed from rounded square to circle.
 
 The API can be called in either of the following ways:
 
-
 - Create a toggle that does not contain child components.
 
   This can be achieved by calling the API with **ToggleType** set to **Checkbox** or **Switch**.
-  
+
   <!-- @[create_toggle_with_checkbox](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/toggle/CreateToggle.ets) -->
-  
+
   ``` TypeScript
   Toggle({ type: ToggleType.Checkbox, isOn: false }).id('toggle1') // Replace the value of id with the actual ID.
   Toggle({ type: ToggleType.Checkbox, isOn: true }).id('toggle2') // Replace the value of id with the actual ID.
   ```
 
-  ![en-us_image_0000001562940485](figures/en-us_image_0000001562940485.png)
-  
+  ![switch-checkbox-default](figures/switch-checkbox-default.png)
+
   <!-- @[create_toggle_with_switch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/toggle/CreateToggle.ets) -->
-  
+
   ``` TypeScript
   Toggle({ type: ToggleType.Switch, isOn: false }).id('toggle3') // Replace the value of id with the actual ID.
   Toggle({ type: ToggleType.Switch, isOn: true }).id('toggle4') // Replace the value of id with the actual ID.
   ```
-  
-    ![en-us_image_0000001511421228](figures/en-us_image_0000001511421228.png)
-  
+
+    ![switch-create](figures/switch-create.png)
+
 - Create a toggle that contains a child component.
 
   When **ToggleType** is set to **Button**, only one child component is allowed. If the child component has text set, the text content is displayed on the button.
 
   <!-- @[create_a_toggle_that_contains_subcomponents](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/toggle/CreateToggle.ets) -->
-  
+
   ``` TypeScript
   Toggle({ type: ToggleType.Button, isOn: false }) {
     Text('status button')
@@ -67,15 +66,14 @@ The API can be called in either of the following ways:
   }.width(100).id('toggle6') // Replace the value of id with the actual ID.
   ```
 
-    ![en-us_image_0000001511900404](figures/en-us_image_0000001511900404.png)
-
+    ![switch-checkbox](figures/switch-checkbox.png)
 
 ## Setting Styles
 
 - Use the **selectedColor** attribute to set the background color of the toggle for when it is turned on.
 
   <!-- @[custom_toggle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/toggle/ToggleCustomStyle.ets) -->
-  
+
   ``` TypeScript
     Toggle({ type: ToggleType.Button, isOn: true }) {
       Text('status button')
@@ -93,12 +91,12 @@ The API can be called in either of the following ways:
       // ···
   ```
 
-  ![en-us_image_0000001563060657](figures/en-us_image_0000001563060657.png)
+  ![switch-style](figures/switch-style.png)
 
 - Use the **switchPointColor** attribute to set the color of the circular slider. This attribute is valid only when **type** of the toggle is set to **ToggleType.Switch**.
 
   <!-- @[custom_switch_point_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/toggle/ToggleCustomStyle.ets) -->  
-  
+
   ``` TypeScript
   Toggle({ type: ToggleType.Switch, isOn: false })
     .switchPointColor(Color.Pink)
@@ -108,13 +106,11 @@ The API can be called in either of the following ways:
     // ···
   ```
 
-  ![en-us_image_0000001511421232](figures/en-us_image_0000001511421232.png)
-
+  ![switch-custom](figures/switch-custom.png)
 
 ## Adding Events
 
 The **Toggle** component supports the [universal events](../reference/apis-arkui/arkui-ts/ts-component-general-events.md). In addition, it can be bound to the **onChange** event so that it responds with custom behavior after being turned on or off.
-
 
 <!-- @[create_toggle_with_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/toggle/CreateToggle.ets) -->  
 
@@ -127,7 +123,6 @@ Toggle({ type: ToggleType.Switch, isOn: false })
     }
   })
 ```
-
 
 ## Example Scenario
 
@@ -184,6 +179,4 @@ export struct ToggleSample {
 }
 ```
 
-
-![en-us_image_0000001511740448](figures/en-us_image_0000001511740448.gif)
-  
+![switch-example](figures/switch-example.gif)

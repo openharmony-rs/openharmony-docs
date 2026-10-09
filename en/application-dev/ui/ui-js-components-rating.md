@@ -39,7 +39,7 @@ Create a **\<rating>** component in the .hml file under **pages/index**.
 }
 ```
 
-![en-us_image_0000001227701031](figures/en-us_image_0000001227701031.gif)
+![rating-Component](figures/rating-Component.gif)
 
 
 ## Setting the Rating Level
@@ -72,7 +72,7 @@ Use the **\<rating>** component to set the number of stars in a rating bar and t
 }
 ```
 
-![en-us_image_0000001227422709](figures/en-us_image_0000001227422709.gif)
+![Rating-Level](figures/Rating-Level.gif)
 
 
 ## Setting the Rating Style
@@ -120,7 +120,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001178685854](figures/en-us_image_0000001178685854.gif)
+![Rating-Style](figures/Rating-Style.gif)
 
 > **NOTE**
 > - You must set **star-background**, **star-secondary**, and **star-foreground**. If they are not set, gray rating stars will be displayed, indicating an incorrect image source configuration
@@ -160,17 +160,16 @@ Add the **change** event to the **\<rating>** component to display the current r
 
 ```js
 // xxx.js
-import promptAction from '@ohos.promptAction';
 export default {
   showrating(e) {
-    promptAction.showToast({
+    this.getUIContext().getPromptAction().showToast({
       message:'Rating' + e.rating
     })
   }
 }
 ```
 
-![en-us_image_0000001181823160](figures/en-us_image_0000001181823160.gif)
+![Binding-Events-2](figures/Binding-Events-2.gif)
 
 
 ## Example
@@ -219,7 +218,6 @@ Change the switch status to toggle between the star background images and drag t
 
 ```js
 // xxx.js
-import promptAction from '@ohos.promptAction';
 export default {
     data: {
         backstar: '',
@@ -235,7 +233,7 @@ export default {
     },
     setstar(e) {
         if (e.checked == true) {
-            this.backstar = '/common/love.png'
+            this.backstar = 'common/love.png'
             this.secstar = 'common/love.png'
             this.forestar = 'common/love1.png'
         } else {
@@ -248,19 +246,22 @@ export default {
         this.stars = e.progress
         this.ratewidth = 60 * parseInt(this.stars) + 'px'
     },
-    setstep(e) {
-        this.step = e.progress
-    },
     setrating(e){
         this.rate = e.progress
     },
     showrating(e) {
         this.rate = e.rating
-        promptAction.showToast({
+        this.getUIContext().getPromptAction().showToast({
             message:'Rating' + e.rating
         })
     }
 }
 ```
 
-![en-us_image_0000001224086459](figures/en-us_image_0000001224086459.gif)
+![rating-Development](figures/rating-Development.gif)
+
+## Samples
+
+The following sample is provided to help you better understand how to develop the **rating** component:
+
+- [Using Rating Components (JS, API version 9)](https://gitcode.com/openharmony/codelabs/tree/master/JSUI/RatingApplication)

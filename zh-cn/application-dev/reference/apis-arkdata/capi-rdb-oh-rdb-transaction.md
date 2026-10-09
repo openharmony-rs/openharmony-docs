@@ -2,8 +2,8 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
 ```c
@@ -12,7 +12,7 @@ typedef struct OH_Rdb_Transaction OH_Rdb_Transaction
 
 ## 概述
 
-定义[OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md)结构类型。
+表示事务类型。
 
 **起始版本：** 18
 

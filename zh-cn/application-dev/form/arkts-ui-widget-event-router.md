@@ -1,9 +1,9 @@
 # 卡片跳转到应用页面（router事件）
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 在动态卡片中使用[postCardAction](../reference/apis-arkui/js-apis-postCardAction.md#postcardaction-1)接口的router能力，能够快速拉起动态卡片提供方应用的指定UIAbility(页面)，因此UIAbility较多的应用往往会通过卡片提供不同的跳转按钮，实现一键直达的效果。例如相机卡片，卡片上提供拍照、录像等按钮，点击不同按钮将拉起相机应用的不同UIAbility，从而提升用户的体验。
@@ -89,7 +89,7 @@
 
 3. 处理router事件，在UIAbility中接收router事件并获取参数，根据传递的params不同，选择拉起不同的页面。
   
-   <!-- @[entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryability/EntryAbility.ts) -->
+   <!-- @[entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryability/EntryAbility.ts) --> 
    
    ``` TypeScript
    // src/main/ets/entryability/EntryAbility.ts
@@ -106,7 +106,7 @@
    
      onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
        // 获取router事件中传递的targetPage参数
-       hilog.info(DOMAIN_NUMBER, TAG, `Ability onCreate, ${JSON.stringify(want)}`);
+       hilog.info(DOMAIN_NUMBER, TAG, `Ability onCreate, Want params: ${(want?.parameters?.params as string)}`);
        if (want?.parameters?.params) {
          // want.parameters.params 对应 postCardAction() 中 params 内容
          let params: Record<string, Object> = JSON.parse(want.parameters.params as string);
@@ -117,7 +117,7 @@
    
      // 如果UIAbility已在后台运行，在收到Router事件后会触发onNewWant生命周期回调
      onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-       hilog.info(DOMAIN_NUMBER, TAG, `onNewWant Want: ${JSON.stringify(want)}`);
+       hilog.info(DOMAIN_NUMBER, TAG, `Ability onNewWant, Want params: ${(want?.parameters?.params as string)}`);
        if (want?.parameters?.params) {
          // want.parameters.params 对应 postCardAction() 中 params 内容
          let params: Record<string, Object> = JSON.parse(want.parameters.params as string);
@@ -146,16 +146,17 @@
        if (this.currentWindowStage === null) {
          this.currentWindowStage = windowStage;
        }
-       windowStage.loadContent(targetPage, (err, data) => {
+       windowStage.loadContent(targetPage, (err) => {
          if (err.code) {
-           hilog.error(DOMAIN_NUMBER, TAG, 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
+           hilog.error(DOMAIN_NUMBER, TAG, `Failed to load the content. error code: ${err.code}, error message: ${err.message}`);
            return;
          }
-         hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
+         hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in loading the content.');
        });
      }
    }
    ```
+   
 
 4. 创建跳转后的UIAbility页面，新建FunA.ets和FunB.ets，构建页面布局。
 
@@ -273,7 +274,7 @@
    }
    ```
 6. 资源文件如下，请开发者替换为实际使用的资源。
-   ```json
+   ```json5
    // src/main/resources/zh_CN/element/string.json
    {
      "string": [

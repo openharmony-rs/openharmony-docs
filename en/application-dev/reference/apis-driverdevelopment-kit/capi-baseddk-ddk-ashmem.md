@@ -1,10 +1,11 @@
 # DDK_Ashmem
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=a30d46aa87725f954a8669c5a6106a0f5fa2de6d translatedAt=2026-06-22T10:47:36.924Z pushedAt=2026-06-22T11:21:11.369Z -->
 
 ```c
 typedef struct DDK_Ashmem {...} DDK_Ashmem
@@ -31,4 +32,4 @@ Device memory map created by calling **OH_DDK_CreateAshmem**. A buffer using the
 | const uint32_t size | Buffer size.|
 | uint32_t offset | Offset of the used buffer. The default value is **0**, indicating that there is no offset and the buffer starts from the specified address.|
 | uint32_t bufferLength | Length of the buffer. By default, the value is equal to that of **size**, indicating that the entire buffer is used.|
-| uint32_t transferredLength | Length of the data to be transferred.|
+| uint32_t transferredLength | Length of the transferred data.|

@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-ControlCenter inherits from [ControlCenterQuery](arkts-apis-camera-ControlCenterQuery.md).
+**ControlCenter** inherits from [ControlCenterQuery](arkts-apis-camera-ControlCenterQuery.md).
 
 It is used to enable the camera controller.
 

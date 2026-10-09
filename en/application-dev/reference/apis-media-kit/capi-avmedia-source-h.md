@@ -1,7 +1,7 @@
 # avmedia_source.h
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @xushubo; @chennotfound-->
+<!--Owner: @chennotfound-->
 <!--Designer: @dongyu_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
@@ -18,7 +18,7 @@ Defines the struct and enum of **AVMediaSource**.
 
 **Since**: 23
 
-**Related module**: [avmedia_source](capi-avmedia-source.md)
+**Related module**: [AVMediaSource](capi-avmedia-source.md)
 
 ## Total
 
@@ -329,7 +329,7 @@ Sets the MIME type to process extended media sources.
 | Name| Description|
 | -- | -- |
 | [OH_AVMediaSource](capi-avmedia-source-oh-avmediasource.md) *source | Pointer to the **OH_AVMediaSource** instance.|
-| const char *mimetype | Pointer to the MIME type ([AV_MimeTypes](arkts-apis-media-e.md#avmimetypes12)) of the media source.|
+| const char *mimetype | Pointer to the MIME type ([AVMimeTypes](arkts-apis-media-e.md#avmimetypes12)) of the media source.|
 
 **Returns**
 

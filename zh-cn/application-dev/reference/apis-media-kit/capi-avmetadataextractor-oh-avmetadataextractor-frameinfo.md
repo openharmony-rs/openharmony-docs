@@ -1,13 +1,13 @@
 # OH_AVMetadataExtractor_FrameInfo
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @hanzhengshi-->
+<!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
 ```c
-typedef struct {...} OH_AVMetadataExtractor_FrameInfo
+typedef struct OH_AVMetadataExtractor_FrameInfo {...} OH_AVMetadataExtractor_FrameInfo
 ```
 
 ## 概述

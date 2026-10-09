@@ -1,12 +1,12 @@
 # @ohos.app.ability.ServiceExtensionAbility (ServiceExtensionAbility)(系统接口)
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @yewei0794-->
+<!--Owner: @xialiangwei-->
 <!--Designer: @jsjzju-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
-ServiceExtensionAbility模块提供后台服务相关扩展能力，提供后台服务创建、销毁、连接、断开等生命周期回调。
+ServiceExtensionAbility模块提供后台服务相关扩展能力，提供后台服务创建、销毁、连接、断开等生命周期回调；适用于需要在后台运行服务、处理长时间任务的场景，如文件下载、后台计算等。
 
 > **说明：**
 >
@@ -15,6 +15,8 @@ ServiceExtensionAbility模块提供后台服务相关扩展能力，提供后台
 > 本模块接口仅可在Stage模型下使用。
 >
 > 本模块为系统接口。
+>
+> 本模块接口不支持在分身应用中实现和使用。
 
 ## 导入模块
 
@@ -95,7 +97,7 @@ class ServiceExt extends ServiceExtensionAbility {
 
 onRequest(want: Want, startId: number): void
 
-Extension生命周期回调，如果是startAbility或者startServiceExtensionAbility拉起的服务，会在onCreate之后回调。每次拉起服务都会回调，startId会递增。
+Extension生命周期回调，如果是[startServiceExtensionAbility](js-apis-inner-application-uiAbilityContext-sys.md#startserviceextensionability)或者[requestDialogService](js-apis-inner-application-uiAbilityContext.md#requestdialogservice)拉起的服务，会在[onCreate](#oncreate)之后回调。每次拉起服务都会回调，startId会递增。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -106,7 +108,7 @@ Extension生命周期回调，如果是startAbility或者startServiceExtensionAb
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | want |  [Want](js-apis-app-ability-want.md) | 是 | 当前Extension相关的Want类型信息，包括ability名称、bundle名称等。 |
-| startId | number | 是 | 返回拉起次数。首次拉起初始值返回1，多次之后自动递增。 |
+| startId | number | 是 | 表示拉起次数。首次拉起初始值返回1，多次之后自动递增。 |
 
 **示例：**
 
@@ -115,7 +117,7 @@ import { ServiceExtensionAbility, Want } from '@kit.AbilityKit';
 
 class ServiceExt extends ServiceExtensionAbility {
   onRequest(want: Want, startId: number) {
-    console.info('onRequest, want: ${want.abilityName}');
+    console.info(`onRequest, want: ${want.abilityName}`);
   }
 }
 ```
@@ -125,7 +127,7 @@ class ServiceExt extends ServiceExtensionAbility {
 
 onConnect(want: Want): rpc.RemoteObject | Promise<rpc.RemoteObject>
 
-Extension生命周期回调，如果是connectAbility拉起的服务，会在onCreate之后回调。返回一个RemoteObject对象，用于客户端和服务端进行通信。
+Extension生命周期回调，如果通过connectAbility连接服务，会在onCreate之后回调。返回一个RemoteObject对象，用于客户端和服务端进行通信。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -158,7 +160,7 @@ class StubTest extends rpc.RemoteObject{
 }
 class ServiceExt extends ServiceExtensionAbility {
   onConnect(want: Want) {
-    console.info('onConnect , want: ${want.abilityName}');
+    console.info(`onConnect, want: ${want.abilityName}`);
     return new StubTest('test');
   }
 }
@@ -194,7 +196,7 @@ class ServiceExt extends ServiceExtensionAbility {
 
 onDisconnect(want: Want): void | Promise\<void>
 
-Extension的生命周期回调，客户端执行断开连接服务时回调。
+Extension的生命周期回调，客户端断开服务连接时回调。
 
 使用同步回调或Promise异步回调。
 
@@ -218,7 +220,7 @@ Extension的生命周期回调，客户端执行断开连接服务时回调。
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| void \| Promise\<void> | 无返回结果或者无返回结果的Promise对象。 |
 
 **示例：**
 
@@ -270,7 +272,7 @@ import { ServiceExtensionAbility, Want } from '@kit.AbilityKit';
 
 class ServiceExt extends ServiceExtensionAbility {
   onReconnect(want: Want) {
-    console.info('onReconnect, want: ${want.abilityName}');
+    console.info(`onReconnect, want: ${want.abilityName}`);
   }
 }
 ```
@@ -317,13 +319,13 @@ onDump(params: Array\<string>): Array\<string>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| params | Array\<string> | 是 | 表示命令形式的参数。|
+| params | Array\<string> | 是 | 表示命令行方式传入的参数数组。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Array\<string> | 表示转存客户端信息数组。 |
+| Array\<string> | 表示转储客户端信息数组。 |
 
 **示例：**
     

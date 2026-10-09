@@ -33,9 +33,9 @@ ArkTS提供了渲染控制能力。条件渲染可根据应用状态，使用if�
 
 2. 移除此前构建的所有子组件。
 
-3. 执行新分支的构造函数，将生成的子组件添加到if父容器中。如果缺少适用的else分支，则不创建任何内容。
+3. 执行新分支的构建函数，将生成的子组件添加到if父容器中。如果缺少适用的else分支，则不创建任何内容。
 
-条件可以包含Typescript表达式。构造函数中的表达式不得更改应用程序状态。
+条件可以包含Typescript表达式。构建函数中的表达式不得更改应用程序状态。
 
 ## 使用场景
 
@@ -71,6 +71,7 @@ struct IfExample {
   }
 }
 ```
+![](figures/render_if.gif)
 
 if语句的每个分支都包含一个构建函数。此类构建函数必须创建一个或多个子组件。在初始渲染时，if语句会执行构建函数，并将生成的子组件添加到其父组件中。
 
@@ -78,9 +79,9 @@ if语句的每个分支都包含一个构建函数。此类构建函数必须创
 
 1. 移除所有以前渲染的（早期分支的）组件。
 
-2. 执行新分支的构造函数，将生成的子组件添加到其父组件中。
+2. 执行新分支的构建函数，将生成的子组件添加到其父组件中。
 
-在以上示例中，当count从0增至1时，if (this.count > 0)更新为true，执行该分支的构造函数，创建一个Text组件并添加到父组件Column中。如果后续count更改为0，则Text组件将从Column组件中删除。由于没有else分支，因此不会执行新的构造函数。
+在以上示例中，当count从0增至1时，if (this.count > 0)更新为true，执行该分支的构建函数，创建一个[Text](../../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)组件并添加到父组件Column中。如果后续count更改为0，则Text组件将从[Column](../../reference/apis-arkui/arkui-ts/ts-container-column.md)组件中删除。由于没有else分支，因此不会执行新的构建函数。
 
 ### if ... else ...语句和子组件状态
 
@@ -130,6 +131,7 @@ struct MainView {
   }
 }
 ```
+![](figures/render_if_else.gif)
 
 **初次渲染**：创建CounterView子组件（label为 'CounterView \#positive'），其状态变量counter初始值为0。
 
@@ -191,6 +193,7 @@ struct KeepMainView {
   }
 }
 ```
+![](figures/render_keep_counter.gif)
 
 此处，\@State counter变量归父组件所有。因此，当KeepCounterView组件实例被删除时，该变量不会被销毁。KeepCounterView组件通过[\@Link](../state-management/arkts-link.md)装饰器引用状态。状态必须从子级移动到其父级（或父级的父级），以避免在条件内容或重复内容被销毁时丢失状态。
 
@@ -249,4 +252,4 @@ struct NestedIf {
   }
 }
 ```
-
+![](figures/render_nested_if.gif)

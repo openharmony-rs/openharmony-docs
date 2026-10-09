@@ -2,10 +2,11 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @hello_harmony; @leiguangyu-->
-<!--Designer: @kutcherzhou1-->
+<!--Owner: @leiguangyu-->
+<!--Designer: @mgce1-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=f723d457b4c69fd7c9854a237d35cae9f2a87b83 translatedAt=2026-09-16T11:06:55.624Z pushedAt=2026-09-20T09:01:52.269Z -->
 
 > **NOTE**
 >
@@ -50,6 +51,26 @@ The remote service process crashes.
 **Solution**
 
 Restart the device and try again. If the fault persists, [export logs](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-setup-hilog#section2114542680)<!--RP1--> and send feedback to the official website.<!--RP1End-->
+
+## 11400106 Quota Exceeded
+
+**Error Message**
+
+The number of available invocations for the interface is insufficient. Please wait until the number of available invocations for the interface is reset.
+
+**Description**
+
+The API call quota has been exceeded and the operation cannot be performed.
+
+**Possible Causes**
+
+1. This API is called by a process more than once per day.
+
+2. This API is called by the system more than five times per week.
+
+**Solution**
+
+Wait for the update of the API call quota of the process or the system, or call the API in developer mode.
 
 ## 11400107 Failed to Fork the Child Dump Process
 

@@ -2,10 +2,11 @@
 
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
-<!--Owner: @amunra03-->
+<!--Owner: @yh1719-->
 <!--Designer: @wenxiaolin-->
 <!--Tester: @zs_111-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=37e87e28b1f57566fffb557016c871f107cbe03a translatedAt=2026-09-08T07:25:41.835Z pushedAt=2026-09-08T11:18:44.973Z -->
 
 The **nfctech** module provides APIs for reading and writing tags that use different Near-Field Communication (NFC) technologies.
 
@@ -15,7 +16,7 @@ The **nfctech** module provides APIs for reading and writing tags that use diffe
 
 > **NOTE**
 >
-> If an error is reported while importing the tag module editor, the capabilities of a specific device model may exceed the capability set defined for the default device. To use these capabilities, configure a custom SysCap by following instructions in [SystemCapability Development](https://developer.huawei.com/consumer/en/doc/harmonyos-references/syscap).
+> If an error is reported while importing the tag module editor, the capabilities of a specific device model may exceed the capability set defined for the default device. To use these capabilities, configure a custom SysCap by following instructions in [SystemCapability](https://developer.huawei.com/consumer/en/doc/harmonyos-references/syscap).
 
 ## Modules to Import
 
@@ -25,7 +26,7 @@ import { tag } from '@kit.ConnectivityKit';
 
 ## NfcATag
 
-Provides APIs to access NFC-A (ISO 14443-3A) properties and perform I/O operations on a tag. This class inherits from **[TagSession](js-apis-tagSession.md)**.
+The **NfcATag** module provides APIs to access NFC-A (ISO 14443-3A) properties and perform I/O operations on a tag. This class inherits from [TagSession](js-apis-tagSession.md).
 
 **TagSession** is the base class of all NFC tag technologies. It provides common interfaces for establishing connections and transferring data. For more details, see [TagSession](js-apis-tagSession.md).
 
@@ -219,7 +220,7 @@ For details about how to obtain an **NfcVTag** object, see [NFC Tag Read/Write D
 
 The following describes the unique APIs of **NfcVTag**.
 
-### NfcvTag.getResponseFlags
+### NfcVTag.getResponseFlags
 
 getResponseFlags(): number
 
@@ -245,7 +246,7 @@ let responseFlags : number = nfcV.getResponseFlags();
 console.info("nfcV responseFlags: " + responseFlags);
 ```
 
-### NfcvTag.getDsfId
+### NfcVTag.getDsfId
 
 getDsfId(): number
 
@@ -271,7 +272,7 @@ let dsfId : number = nfcV.getDsfId();
 console.info("nfcV dsfId: " + dsfId);
 ```
 
-## IsoDepTag<sup>9+</sup> 
+## IsoDepTag<sup>9+</sup>
 
 Provides APIs to access ISO-DEP (ISO 14443-4) properties and I/O operations on a tag. This class inherits from **TagSession**.
 
@@ -484,7 +485,7 @@ console.info("ndef ndefRecords number: " + ndefRecords.length);
 
 ## NdefTag<sup>9+</sup>
 
-Provides APIs to access the tags in the NFC Data Exchange Format (NDEF). This class inherits from **TagSession**.
+The **NdefTag** module provides APIs to access the tags in the NFC Data Exchange Format (NDEF). This class inherits from [TagSession](js-apis-tagSession.md).
 
 **TagSession** is the base class of all NFC tag technologies. It provides common interfaces for establishing connections and transferring data. For more details, see [TagSession](js-apis-tagSession.md).
 
@@ -618,7 +619,7 @@ function nfcTechDemo(){
         ndefTag.readNdef().then((ndefmessage : tag.NdefMessage) => {
             console.info("ndef readNdef Promise ndefmessage: " + ndefmessage);
         }).catch((err : BusinessError)=> {
-            console.error("ndef readNdef Promise err Code: ${err.code}, message: ${err.message}");
+            console.error(`ndef readNdef Promise err Code: ${err.code}, message: ${err.message}`);
         });
     } catch (businessError) {
         console.error(`ndef readNdef Promise catch businessError Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
@@ -1087,7 +1088,7 @@ function nfcTechDemo() {
 
     try {
         let sectorIndex = 1; // Set a correct index.
-        let key = [0x01, 0x02, 0x03, 0x04, 0x05, 0x06] // Set a correct key. The value must contain six bytes. 
+        let key = [0x01, 0x02, 0x03, 0x04, 0x05, 0x06];  // Set a correct key. The value must contain six bytes. 
         mifareClassic.authenticateSector(sectorIndex, key, true).then(() => {
             console.info("mifareClassic authenticateSector Promise success.");
         }).catch((err : BusinessError)=> {
@@ -1149,7 +1150,7 @@ function nfcTechDemo() {
 
     try {
         let sectorIndex = 1; // Set a correct index.
-        let key = [0x01, 0x02, 0x03, 0x04, 0x05, 0x06]  // Set a correct key. The value must contain six bytes. 
+        let key = [0x01, 0x02, 0x03, 0x04, 0x05, 0x06];  // Set a correct key. The value must contain six bytes. 
         mifareClassic.authenticateSector(sectorIndex, key, true, (err : BusinessError)=> {
             if (err) {
                 console.error(`mifareClassic authenticateSector AsyncCallback errCode: ${err.code}, message: ${err.message}`);
@@ -1746,7 +1747,7 @@ function nfcTechDemo() {
             console.error(`mifareClassic transferToBlock Promise err Code: ${err.code}, message: ${err.message}`);
         });
     } catch (businessError) {
-        console.error(`mifareClassic transferToBlock Promise catch Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}");
+        console.error(`mifareClassic transferToBlock Promise catch Code: ${(businessError as BusinessError).code}, message: ${(businessError as BusinessError).message}`);
     }
 }
 ```
@@ -2381,7 +2382,7 @@ function nfcTechDemo() {
 
     try {
         let pageIndex = 1; // Set a correct index.
-        let rawData = [0x01, 0x02, 0x03, 0x04]; // Set the correct data. The value must contain 4 bytes. 
+        let rawData = [0x01, 0x02, 0x03, 0x04]; // Set the correct data. The value must contain 4 bytes.
         mifareUltralight.writeSinglePage(pageIndex, rawData).then(() => {
             console.info("mifareUltralight writeSinglePage Promise success.");
         }).catch((err : BusinessError)=> {
@@ -2443,7 +2444,7 @@ function nfcTechDemo() {
 
     try {
         let pageIndex = 1; // Set a correct index.
-        let rawData = [0x01, 0x02, 0x03, 0x04];  // Set the correct data. The value must contain 4 bytes. 
+        let rawData = [0x01, 0x02, 0x03, 0x04];  // Set the correct data. The value must contain 4 bytes.
         mifareUltralight.writeSinglePage(pageIndex, rawData, (err : BusinessError)=> {
         if (err) {
                 console.error(`mifareUltralight writeSinglePage AsyncCallback Code: ${err.code}, message: ${err.message}`);
@@ -2479,7 +2480,7 @@ Obtains the type of this MIFARE Ultralight tag.
 import { tag } from '@kit.ConnectivityKit';
 
 // Obtain the correct MIFARE Ultralight tag by using the tag.TagInfo API in @ohos.nfc.tag.
-let getType : tag.MifareUltralightType = mifareClassic.getType();
+let getType : tag.MifareUltralightType = mifareUltralight.getType();
 console.info("mifareUltralight getType: " + getType);
 ```
 

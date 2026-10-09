@@ -1,14 +1,14 @@
 # Animation Effect
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-
+<!-- md-trans-meta sourceCommit=5c418d4bf2581cd8ca625b8865e73773ebc27789 translatedAt=2026-08-05T10:12:06.326Z pushedAt=2026-08-06T03:47:53.929Z -->
 
 You can set the interpolator to implement the animation effect.
-
 
 ## Creating an Animation Object
 
@@ -65,8 +65,8 @@ export default {
       iterations: 2,
       begin: 0,
       end: 180
-    };// Set parameters.
-    this.animation = this.getUIContext().createAnimator(options);// Create an animation.
+    }; // Set parameters.
+    this.animation = this.getUIContext().createAnimator(options); // Create an animation.
   },
   playAnimation() {
     var _this = this;
@@ -78,16 +78,16 @@ export default {
 }
 ```
 
-![en-us_image_0000001267887885](figures/en-us_image_0000001267887885.gif)
+![animation2](figures/animation2.gif)
 
 > **NOTE**
->
 > - When you use **createAnimator** to create an animation object, you must pass the **options** parameter.
 >
 > - **begin** indicates the start point of the animation interpolation. If it is not set, the default value **0** is used.
 >
 > - **end** indicates the end point of the animation interpolation. If it is not set, the default value **1** is used.
-
+>
+> - The sample code cannot run on the emulator.
 
 ## Adding Animation Events and Calling Methods
 
@@ -193,10 +193,10 @@ export default {
     var _this= this;
     // Add the frame-by-frame interpolation callback event for the animation.
     this.animation.onframe = function(value) {
-      _this.scaleVal= value/150,
-      _this.DivWidth = value,
-      _this.DivHeight = value,
-      _this.translateVal = value-180
+      _this.scaleVal = value/150;
+      _this.DivWidth = value;
+      _this.DivHeight = value;
+      _this.translateVal = value-180;
     };
     this.animation.play();
   },
@@ -215,7 +215,7 @@ export default {
   },
   finishAnimation() {
     var _this= this;
-   // Add an animation completion event.
+    // Add an animation completion event.
     this.animation.onfinish = function() {
       this.getUIContext().getPromptAction().showToast({
         message: 'finish'
@@ -232,7 +232,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001223287724](figures/en-us_image_0000001223287724.gif)
+![reverseAnimation](figures/reverseAnimation.gif)
 
 > **NOTE**
 >

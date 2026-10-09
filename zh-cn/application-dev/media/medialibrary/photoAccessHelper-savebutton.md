@@ -19,7 +19,7 @@
 
 调用[phAccessHelper.getSupportedPhotoFormats](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getsupportedphotoformats18)接口获取支持保存的图片类型资源格式。
 
-<!-- @[Supported_Resource_Formats](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/SaveButtonSample/entry/src/main/ets/pages/Scene1.ets) -->
+<!-- @[Supported_Resource_Formats](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/SaveButtonSample/entry/src/main/ets/pages/Scene1.ets) --> 
 
 ``` TypeScript
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
@@ -58,7 +58,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper): Pro
   try {
     let outputText = 'Supported formats:\n';
     // The value 1 means the supported image formats, and 2 means the supported video formats.
-    let imageFormat = await phAccessHelper.getSupportedPhotoFormats(1);
+    let imageFormat = await phAccessHelper.getSupportedPhotoFormats(photoAccessHelper.PhotoType.IMAGE);
     let result = '';
     for (let i = 0; i < imageFormat.length; i++) {
       result += imageFormat[i];
@@ -78,7 +78,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper): Pro
 
 ## 使用安全控件保存媒体库资源
 
-安全控件的介绍可参考API[SaveButton](../../reference/apis-arkui/arkui-ts/ts-security-components-savebutton.md)。保存前可以通过调用[registerChange](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#registerchange)接口注册对默认URI（[DEFAULT_PHOTO_URI](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-e.md#defaultchangeuri)）的监听。资源保存成功后，根据接收到该资源的[NOTIFY_ADD](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-e.md#notifytype)通知完成后续业务。
+安全控件的介绍可参考[SaveButton](../../reference/apis-arkui/arkui-ts/ts-security-components-savebutton.md)。保存前可以通过调用[registerChange](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#registerchange)接口注册对默认URI（[DEFAULT_PHOTO_URI](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-e.md#defaultchangeuri)）的监听。资源保存成功后，根据接收到该资源的[NOTIFY_ADD](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-e.md#notifytype)通知完成后续业务。
 
 下面以使用安全控件创建一张图片资源为例。
 
@@ -197,9 +197,9 @@ export struct Scene2 {
 3. 调用[showAssetsCreationDialog](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#showassetscreationdialog12)，基于弹窗授权的方式获取的目标[媒体文件](../../file-management/user-file-uri-intro.md#媒体文件uri)uri。
 
    弹框需要显示应用名称，无法直接获取应用名称，依赖于配置项的label和icon，因此调用此接口时请确保module.json5文件中的abilities标签中配置了label和icon项。当传入uri为沙箱路径时，可正常保存图片/视频，但无界面预览。
-4. 将应用沙箱的照片内容写入媒体库的目标uri。
+4. 将应用沙箱的照片内容写入媒体库的目标URI。
 
-<!-- @[Saving_MediaAsset_Using_Authorization_Popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/SaveButtonSample/entry/src/main/ets/pages/Scene3.ets) -->
+<!-- @[Saving_MediaAsset_Using_Authorization_Popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MediaLibraryKit/SaveButtonSample/entry/src/main/ets/pages/Scene3.ets) --> 
 
 ``` TypeScript
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
@@ -212,13 +212,15 @@ async function example(
   phAccessHelper: photoAccessHelper.PhotoAccessHelper,
   context: common.UIAbilityContext
 ): Promise<string> {
+  let desFile: fileIo.File | null = null;
+  let srcFile: fileIo.File | null = null;
   try {
-    // Specify the URI of the image in the application sandbox directory to be saved.
+    // 指定要保存到应用程序沙盒目录中的图片的URI。
     let srcFileUri = context.filesDir + '/test.jpg';
     let srcFileUris: string[] = [
       srcFileUri
     ];
-    //Set parameters for the image to save: file extension, image type, title and subtype (both optional)
+    // 设置要保存的图片的参数：文件扩展名、图片类型、标题和子类型（后两者为可选）。
     let photoCreationConfigs: photoAccessHelper.PhotoCreationConfig[] = [
       {
         title: 'test', // This parameter is optional.
@@ -229,21 +231,26 @@ async function example(
     ];
 
     console.info('Source URI: ' + srcFileUri);
-    // Obtain the target URI in the media library based on pop-up authorization.
+    // 基于弹窗授权获取媒体库中的目标URI。
     let desFileUris: string[] = 
       await phAccessHelper.showAssetsCreationDialog(srcFileUris, photoCreationConfigs);
     console.info('Destination URIs: ' + JSON.stringify(desFileUris));
-    // Write image from sandbox directory to target URI in media library.
-    let desFile: fileIo.File = await fileIo.open(desFileUris[0], fileIo.OpenMode.WRITE_ONLY);
-    let srcFile: fileIo.File = await fileIo.open(srcFileUri, fileIo.OpenMode.READ_ONLY);
+    // 将图片从沙盒目录写入媒体库中的目标URI。
+    desFile = await fileIo.open(desFileUris[0], fileIo.OpenMode.WRITE_ONLY);
+    srcFile = await fileIo.open(srcFileUri, fileIo.OpenMode.READ_ONLY);
     await fileIo.copyFile(srcFile.fd, desFile.fd);
-    fileIo.closeSync(srcFile);
-    fileIo.closeSync(desFile);
     console.info('create asset by dialog successfully');
     return 'create asset by dialog successfully';
   } catch (err) {
     console.error(`failed to create asset by dialog successfully errCode is: ${err.code}, ${err.message}`);
     return `failed to create asset by dialog successfully errCode is: ${err.code}, ${err.message}`;
+  } finally {
+    if (srcFile) {
+      fileIo.closeSync(srcFile);
+    }
+    if (desFile) {
+      fileIo.closeSync(desFile);
+    }
   }
 }
 ```

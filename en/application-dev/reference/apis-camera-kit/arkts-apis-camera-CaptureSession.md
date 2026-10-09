@@ -1,10 +1,12 @@
 # Deprecated Interface (CaptureSession, deprecated)
+
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=5b3ab60fe000eb4bad70440a3e7f30019a2671f9 translatedAt=2026-08-20T09:33:51.492Z pushedAt=2026-08-21T02:05:11.618Z -->
 
 **CaptureSession** implements a capture session, which saves all [CameraInput](arkts-apis-camera-CameraInput.md) and [CameraOutput](arkts-apis-camera-CameraOutput.md) instances required to run the camera and requests the camera to complete shooting or video recording.
 
@@ -647,6 +649,7 @@ Sets a flash mode.
 Before the setting, do the following checks:
 
 1. Use [hasFlash](#hasflashdeprecated) to check whether the camera device has flash.
+
 2. Use [isFlashModeSupported](#isflashmodesupporteddeprecated) to check whether the camera device supports the flash mode.
 
 > **NOTE**
@@ -1618,7 +1621,6 @@ on(type: 'focusStateChange', callback: AsyncCallback\<FocusState\>): void
 Subscribes to focus state change events. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 10 and deprecated since API version 11. You are advised to use [VideoSession.on('focusStateChange')](arkts-apis-camera-VideoSession.md#onfocusstatechange11) instead.
 >
 > Currently, you cannot use **off()** to unregister the callback in the callback method of **on()**.
@@ -1629,7 +1631,7 @@ Subscribes to focus state change events. This API uses an asynchronous callback 
 
 | Name    | Type                                     | Mandatory| Description                      |
 | -------- | ----------------------------------------- | ---- | ------------------------ |
-| type     | string                                    | Yes  | Event type. The value is fixed at **'focusStateChange'**. The event can be listened for when a session is created. This event is triggered only when the camera focus state changes in auto focus mode.|
+| type     | string                                    | Yes   | Event type. The value is fixed at **'focusStateChange'**. The event can be listened for when a session is created. This event is triggered only when the camera focus state changes in auto focus mode. |
 | callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | Yes  | Callback used to return the focus state change. |
 
 **Example**
@@ -1683,9 +1685,8 @@ Subscribes to CaptureSession error events. This API uses an asynchronous callbac
 > **NOTE**
 >
 > Currently, you cannot use **off()** to unregister the callback in the callback method of **on()**.
-
-> **NOTE**
->This API is supported since API version 10 and deprecated since API version 11. You are advised to use [VideoSession.on('error')](arkts-apis-camera-VideoSession.md#onerror11) instead.
+>
+> This API is supported since API version 10 and deprecated since API version 11. You are advised to use [VideoSession.on('error')](arkts-apis-camera-VideoSession.md#onerror11) instead.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 

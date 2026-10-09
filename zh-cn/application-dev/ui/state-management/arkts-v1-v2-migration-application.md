@@ -2,7 +2,7 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiyujia926-->
-<!--Designer: @s10021109-->
+<!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -13,7 +13,7 @@
 | -------- | -------- |
 | [LocalStorage](./arkts-localstorage.md) | [@ObservedV2](./arkts-new-observedV2-and-trace.md) [@Trace](./arkts-new-observedV2-and-trace.md) |
 | [AppStorage](./arkts-appstorage.md) | [AppStorageV2](./arkts-new-appstoragev2.md) |
-| [Environment](./arkts-environment.md) | 通过[UIAbilityContext](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#uiabilitycontext-1)的config属性获取系统环境变量 |
+| [Environment](./arkts-environment.md) | 通过[UIAbilityContext](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#uiabilitycontext)的config属性获取系统环境变量 |
 | [PersistentStorage](./arkts-persiststorage.md) | [PersistenceV2](./arkts-new-persistencev2.md) |
 | 存量迁移场景 | \@ObservedV2、\@Trace、[@Monitor](./arkts-new-monitor.md) |
 
@@ -89,7 +89,7 @@ export function Page2Builder() {
   Page2()
 }
 
-// Page2组件获得了父亲Page1组件的LocalStorage实例
+// Page2组件获得了父组件Page1的LocalStorage实例
 @Component
 struct Page2 {
   @LocalStorageLink('count') count: number = 0;
@@ -142,9 +142,10 @@ V2:
 - 声明\@ObservedV2装饰的MyStorage类，并import到需要使用的页面中。
 - 声明被\@Trace的属性作为页面间共享的可观察的数据。
 
-<!-- @[Internal_@ObservedV2_@Trace_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@ObservedV2@TraceV2/storage.ets) -->
+<!-- @[Internal_@ObservedV2_@Trace_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/Internal@ObservedV2@TraceV2/storage.ets) --> 
 
 ``` TypeScript
+// 声明@ObservedV2装饰的MyStorage类
 @ObservedV2
 export class MyStorage {
   public static singleton_: MyStorage;
@@ -292,7 +293,7 @@ export function Page2Builder() {
   Page2()
 }
 
-// Page2组件获得了父亲Page1组件的LocalStorage实例
+// Page2组件获得了父组件Page1的LocalStorage实例
 @Component
 struct Page2 {
   @LocalStorageProp('count') count: number = 0;
@@ -577,9 +578,10 @@ V2：
 
 声明\@ObservedV2装饰的class代替LocalStorage。其中LocalStorage的key可以用\@Trace装饰的属性代替。
 
-<!-- @[Internal_Trace_customize_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalTraceCustomize/storage.ets) -->
+<!-- @[Internal_Trace_customize_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalTraceCustomize/storage.ets) --> 
 
 ``` TypeScript
+// @ObservedV2装饰的class代替LocalStorage
 @ObservedV2
 export class MyStorageA {
   @Trace public propA: string = 'Hello';
@@ -766,13 +768,14 @@ struct NavigationContentMsgStack {
 
 ### 多实例场景LocalStorage的迁移
 
-为了解决不同Ability之间数据的共享，LocalStorage支持跨Ability存取数据。
-
-对于该场景，V2可结合\@ObservedV2+\@Trace创建可观测的全局单例对象，定义Map类型存储不同Ability页面的数据，从而实现不同Ability之间数据共享。
+LocalStorage支持单个UIAbility内的页面间状态共享。对于该场景，V2可结合@ObservedV2与@Trace创建可观测的全局单例对象，定义Map类型存储不同Ability页面的数据，通过不同的key值访问对应数据，从而实现UIAbility内的数据共享。启动Ability可以参考[specified启动模式](../../application-models/uiability-launch-type.md#specified启动模式)。
 
 **主页面**
 
+<!-- @[Internal_localStorage_multi_instance_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/LocalStorageMultiInstance/Index.ets) -->
+
 ``` TypeScript
+// Index.ets
 import { common, Want } from '@kit.AbilityKit';
 
 @Entry
@@ -782,33 +785,29 @@ struct Index {
 
   build() {
     Column() {
-      Text("使用文件管理器，使用本应用打开多个PDF")
+      Text('使用文件管理器，使用本应用打开多个PDF')
         .fontSize($r('app.float.page_text_font_size'))
         .fontWeight(FontWeight.Bold)
-        .alignRules({
-          center: { anchor: '__container__', align: VerticalAlign.Center },
-          middle: { anchor: '__container__', align: HorizontalAlign.Center }
-        })
-      Button('Jump to PDFA').onClick(() => {
+      Button('Jump to PDF_A').onClick(() => {
         let wantInfo: Want = {
-          bundleName: 'com.ex.pdf',
-          abilityName: 'PDFAbility',
-          uri: 'PDFA',
+          bundleName: 'com.samples.paradigmstatemanagement',
+          abilityName: 'PdfEntryAbility',
+          uri: 'PDF_A',
           parameters: {
-            key: 'PDFA',
-            value: "PDFA-1111111111",
+            key: 'PDF_A',
+            value: 'PDF_A-1111111111',
           }
         };
         this.context.startAbility(wantInfo);
       })
-      Button('Jump to PDFB').onClick(() => {
+      Button('Jump to PDF_B').onClick(() => {
         let wantInfo: Want = {
-          bundleName: 'com.ex.pdf',
-          abilityName: 'PDFAbility',
-          uri: 'PDFB',
+          bundleName: 'com.samples.paradigmstatemanagement',
+          abilityName: 'PdfEntryAbility',
+          uri: 'PDF_B',
           parameters: {
-            key: 'PDFB',
-            value: "PDFB-22222222222",
+            key: 'PDF_B',
+            value: 'PDF_B-22222222222',
           }
         };
         this.context.startAbility(wantInfo);
@@ -824,13 +823,16 @@ V2:
 
 使用\@ObservedV2+\@Trace定义全局可观测单例，通过全局的map对象进行数据关联，这种方式需要开发者自行建立唯一的key和value关系。注意单例单独封装存放。
 
+<!-- @[Internal_localStorage_multi_instance_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/LocalStorageMultiInstance/model/PDFData.ets) -->
+
 ``` TypeScript
+// model/PDFData.ets
 @ObservedV2
 export default class PDFData {
   // 单例实例
   private static instance_: PDFData | null = null;
-  @Trace data: Map<string, string> = new Map();
-  @Trace flag: string = '';
+  @Trace private data: Map<string, string> = new Map();
+  @Trace private flag: string = '';
 
   private constructor() {
   }
@@ -847,37 +849,44 @@ export default class PDFData {
   }
 
   getData() {
-    return this.data
+    return this.data;
   }
 
-  setFlage(value: string) {
-    this.flag = value
+  setFlag(value: string) {
+    this.flag = value;
   }
 
   getFlag() {
-    return this.flag
+    return this.flag;
   }
 }
 ```
 
+
+<!-- @[Internal_localStorage_multi_instance_3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/LocalStorageMultiInstance/PdfEntryAbility.ets) -->
+
 ``` TypeScript
-import { UIAbility, Want } from "@kit.AbilityKit";
-import { window } from "@kit.ArkUI";
-import PDFData from '../model/PDFData';
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import PDFData from './model/PDFData';
 
 export default class PDFAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage): void {
     // 用单例存储数据
     const data = this.launchWant.parameters as Record<string, string>;
     PDFData.getInstance().setData(data.key, data.value);
-    PDFData.getInstance().setFlage(this.launchWant.uri || '');
-    windowStage.loadContent('pages/PDF').catch();
+    PDFData.getInstance().setFlag(this.launchWant.uri || '');
+    windowStage.loadContent('pages/internalmigrate/LocalStorageMultiInstance/PDF').catch();
   }
 }
 ```
 
+
+<!-- @[Internal_localStorage_multi_instance_4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/LocalStorageMultiInstance/PDF.ets) -->
+
 ``` TypeScript
-import PDFData from '../model/PDFData';
+// PDF.ets
+import PDFData from './model/PDFData';
 
 @Entry
 @ComponentV2
@@ -907,7 +916,7 @@ struct PDF {
 
 ## AppStorage->AppStorageV2
 
-上一小节中，对于创建全局\@ObserveV2和\@Trace装饰实例的改造不适用于跨Ability的数据共享，可以使用AppStorageV2替代。
+上一小节中，虽然可以通过创建全局@ObservedV2和@Trace装饰的单例对象实现跨Ability的数据共享，但AppStorageV2提供了更标准、便捷的跨Ability共享方案，推荐使用AppStorageV2替代。
 
 V1:
 
@@ -1002,7 +1011,7 @@ struct Index {
 
   build() {
     Column() {
-      Text(`EntryAbility1 count: ${this.storage.count}`)
+      Text(`EntryAbility count: ${this.storage.count}`)
         .fontSize(50)
         .onClick(() => {
           this.storage.count++;
@@ -1156,13 +1165,13 @@ struct Index {
 
   @Monitor('storage.count')
   onCountChange(mon: IMonitor) {
-    hilog.info(DOMAIN, 'testTag', '%{public}s', `Index1 ${mon.value()?.before} to ${mon.value()?.now}`);
+    hilog.info(DOMAIN, 'testTag', '%{public}s', `Index ${mon.value()?.before} to ${mon.value()?.now}`);
     this.count = this.storage.count;
   }
 
   build() {
     Column() {
-      Text(`EntryAbility1 count: ${this.count}`)
+      Text(`EntryAbility count: ${this.count}`)
         .fontSize(25)
         .onClick(() => {
           this.count++;
@@ -1238,7 +1247,7 @@ struct Index1 {
 
 V1中，开发者可以通过Environment来获取环境变量，但Environment获取的结果无法直接使用，需要配合AppStorage才能得到对应环境变量的值。
 
-在切换V2的过程中，开发者无需再通过Environment来获取环境变量，可以直接通过[UIAbilityContext的config属性](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#uiabilitycontext-1)获取系统环境变量。
+在切换V2的过程中，开发者无需再通过Environment来获取环境变量，可以直接通过[UIAbilityContext的config属性](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#uiabilitycontext)获取系统环境变量。
 
 V1:
 
@@ -1290,7 +1299,7 @@ export let env: Env = new Env();
 
 在`onCreate`里获取需要的系统环境变量。
 
-<!-- @[Internal_Environment_V2_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalEnvironmentV2/EntryAbility.ets) -->
+<!-- @[Internal_Environment_V2_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalEnvironmentV2/EntryAbility.ets) --> 
 
 ``` TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -1298,6 +1307,7 @@ import { window } from '@kit.ArkUI';
 import { env } from '../pages/Env';
 
 export default class EntryAbility extends UIAbility {
+  // 在onCreate里获取需要的系统环境变量
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     env.language = this.context.config.language;
     env.colorMode = this.context.config.colorMode;
@@ -1431,9 +1441,9 @@ class V2Data {
 
 @ObservedV2
 export class Sample {
+  @Trace public num: number = 1;
   // 对于复杂对象需要@Type修饰，确保序列化成功
   @Type(V2Data)
-  @Trace public num: number = 1;
   @Trace public V2: V2Data = new V2Data();
 }
 

@@ -1,18 +1,20 @@
 # WhitePointArray
+
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @xubo233-->
-<!--Designer: @dizuo1-->
+<!--Owner: @xiaojianfeng_jeffery-->
+<!--Designer: @njuptkid-->
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=f01e45cc0386b26a6c11761fb4ec5eb22e27e5df translatedAt=2026-08-24T09:15:16.451Z pushedAt=2026-08-25T07:18:26.701Z -->
 
-```
-struct WhitePointArray {...}
+```c
+typedef struct {...} WhitePointArray
 ```
 
 ## Overview
 
-This struct describes a white point array. Each white point indicates the coordinates of white in the active color space.
+Provides a white point array structure. The white point is the coordinate that represents white in the current color space.
 
 **Since**: 13
 
@@ -26,4 +28,4 @@ This struct describes a white point array. Each white point indicates the coordi
 
 | Name        | Description              |
 | ------------ | ------------------ |
-| float arr[2] | White point array.|
+| float arr[2] | White point coordinate array. arr[0] indicates the x-coordinate, and arr[1] indicates the y-coordinate. They are used to accurately define the white reference point in the color space, which affects the display effect and color accuracy of the color space.|

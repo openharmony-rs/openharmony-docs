@@ -1,7 +1,7 @@
 # 自定义字体的注册和使用（ArkTS）
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @oh_wangxk; @gmiao522; @Lem0nC-->
+<!--Owner: @gmiao522-->
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
@@ -34,8 +34,7 @@
    <!-- @[arkts_custom_font_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/CustomFont/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-   import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI'
-   import { UIContext } from '@kit.ArkUI'
+   import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
    import { text } from '@kit.ArkGraphics2D'
    ```
 
@@ -100,7 +99,7 @@
    let paragraph = paragraphBuilder.build();
    ```
 
-6. 如果需要释放自定义字体，可以使用unloadFontSync接口。
+6. 如果需要注销自定义字体，可以使用unloadFontSync接口。
 
    <!-- @[arkts_custom_font_step6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/CustomFont/entry/src/main/ets/pages/Index.ets) -->
    
@@ -113,5 +112,6 @@
 
 ## 效果展示
 
-![zh-cn_image_load](figures/zh-cn_image_load.png)
-![zh-cn_image_unload](figures/zh-cn_image_unload.png)
+![image-load](figures/image-load.png)
+
+![image-unload](figures/image-unload.png)

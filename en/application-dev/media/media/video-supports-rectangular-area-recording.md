@@ -10,7 +10,9 @@
 ## Basic Concepts
 
 Starting from API version 20, you can capture a specified rectangular area of the screen during recording. This feature enhances the existing screen capture capability by allowing you to select a specific area to record. You can define this area by providing a screen capture ID (**displayId**) and the target capture area (**area**).
+
 Before implementing this feature, familiarize yourself with the following concepts:
+
 - Screen capture ID (**displayId**): ID of the screen where rectangular area capture will be performed.
 - Target capture area (**area**): coordinates and dimensions of the region to be captured, including the starting point (x, y) and the width and height of the rectangular area.
 
@@ -30,7 +32,7 @@ target_link_libraries(sample PUBLIC libnative_avscreen_capture.so)
 
 > **NOTE**
 >
-> The word **sample** in the preceding code snippet is only an example. Use the actual project directory name.
+> Replace **'sample'** with your actual project name.
 >
 
 **Adding Header Files**
@@ -61,11 +63,8 @@ In the code snippet below, the following variables are used:
 > **Capture area restrictions**:
 > - Security layers cannot be captured.
 > - Capturing across multiple screens is not supported.
-> 
 > **Changing the capture area**: The capture area can be updated while recording is in progress.
-> 
 > **Error handling**: If setting a new area fails, the system continues using the previous valid area. Implement proper error handling to ensure the expected area is used.
-> 
 > **Parameter requirements**: Coordinates, width, and height must be non-negative integers, and the capture area must remain within a single screen.
 
 ```c++

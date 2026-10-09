@@ -500,6 +500,6 @@ If the semantics are violated in strict mode (default), an error will be thrown.
 
 [How do I directly call ArkTS APIs in a C++ subthread on the native side without triggering callbacks on the ArkTS side?](https://developer.huawei.com/consumer/en/doc/harmonyos-faqs-V5/faqs-ndk-8-V5)
 
-[Are napi_env and napi_value instances shared across worker threads?] (https://developer.huawei.com/consumer/en/doc/harmonyos-faqs-V5/faqs-ndk-55-V5)
+[Are napi_env and napi_value instances shared across worker threads?](https://developer.huawei.com/consumer/en/doc/harmonyos-faqs-V5/faqs-ndk-55-V5)
 
 [How do I create a subthread on the native side? What are the restrictions? How does the native subthread communicate with the main thread?](https://developer.huawei.com/consumer/en/doc/harmonyos-faqs-V5/faqs-ndk-68-V5)

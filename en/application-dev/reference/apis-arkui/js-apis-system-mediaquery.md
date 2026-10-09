@@ -1,10 +1,11 @@
 # @system.mediaquery (Media Query)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @zju_ljz-->
-<!--Designer: @lanshouren-->
+<!--Owner: @song-song-song-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=75a7d62c0702c21a06ca0119552a942305a023cc translatedAt=2026-09-01T03:31:32.770Z pushedAt=2026-09-02T03:54:14.267Z -->
 
 The **mediaquery** module provides different styles for different media types.
 
@@ -50,7 +51,7 @@ Creates a **MediaQueryList** object based on the query condition.
 
 | Type          | Description                                      |
 | -------------- | ---------------------------------------- |
-| [MediaQueryList](./js-apis-system-mediaquery.md#mediaquerylist) | Attributes of the **MediaQueryList** object created. For details, see the descriptions below.|
+| [MediaQueryList](./js-apis-system-mediaquery.md#mediaquerylist) | Created **MediaQueryList** object. For details, see the following description.|
 
 **Example**
 
@@ -66,9 +67,9 @@ Defines a media query event.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name     | Type   | Read-Only| Optional  | Description   |
-| ------- | ------- | ---- | ---- | ----- |
-| matches | boolean | No|No   | Matching result. The value **true** means that the query condition is met, and **false** means the opposite.|
+| Name     | Type   | Optional  | Description   |
+| ------- | ------- | ---- | ----- |
+| matches | boolean | No   | Matching result. The value **true** means that the query condition is met, and **false** means the opposite.|
 
 ## MediaQueryList
 
@@ -82,9 +83,9 @@ Represents media query list information.
 
 | Name     | Type   | Read-Only| Optional  | Description               |
 | ------- | ------- | ---- |---- | ----------------- |
-| media   | string  | No|  Yes   | Serialized media query condition. This parameter is read-only.|
-| matches | boolean | No|  Yes    | Matching result. The value **true** means that the query condition is met, and **false** means the opposite.           |
-| onchange | (matches: boolean) => void | No|  Yes    | Callback invoked when the match result changes. **matches** indicates whether the media query condition is met. The value **true** means that the query condition is met, and **false** means the opposite.|
+| media   | string  | Yes|  Yes   | Serialized media query condition.|
+| matches | boolean | Yes|  Yes    | Matching result. The value **true** means that the query condition is met, and **false** means the opposite.           |
+| onchange | (matches: boolean) => void | Yes|  Yes    | Callback invoked when the match result changes. **matches** indicates whether the media query condition is met. The value **true** means that the query condition is met, and **false** means the opposite.|
 
 
 ### MediaQueryList.addListener

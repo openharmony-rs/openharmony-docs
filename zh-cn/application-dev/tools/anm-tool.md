@@ -75,7 +75,7 @@ Advanced Notification Manager（通知管理工具，简称anm）是实现通知
   **示例**：
 
   ```bash
-  # 设置保存在内存中的最近通知的最大数为100个
+  # 设置保存在内存中的最近通知的最大数量为100个
   anm setting -c 100
 
   # 设置通知跨设备协同至wearable类型设备的开关为打开状态

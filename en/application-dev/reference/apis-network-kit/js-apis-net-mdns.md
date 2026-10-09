@@ -6,6 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=2c14f23cc27db79d98c822393a7cc28cffcc08a6 translatedAt=2026-09-23T02:07:50.019Z pushedAt=2026-09-24T06:00:14.199Z -->
 
 Multicast DNS (MDNS) provides functions such as adding, removing, discovering, and resolving local services on a LAN.
 
@@ -33,8 +34,8 @@ Adds an MDNS service. This API uses an asynchronous callback to return the resul
 | Name       | Type                            | Mandatory| Description                                    |
 |-------------|----------------------------------|-----------|-------------------------------------------------|
 | context     | Context                          | Yes      | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
-| serviceInfo | [LocalServiceInfo](#localserviceinfo)                 | Yes       |   MDNS service information.     |
-| callback | AsyncCallback\<[LocalServiceInfo](#localserviceinfo)> | Yes       |   Callback used to return the result. If the operation is successful, **error** is **undefined** and **data** is the MDNS service information.     |
+| serviceInfo | [LocalServiceInfo](#localserviceinfo)                 | Yes        |   MDNS service information.      |
+| callback | AsyncCallback\<[LocalServiceInfo](#localserviceinfo)> | Yes        |   Callback function. If the service is added successfully, **error** is **undefined** and **data** is the MDNS service information added locally; otherwise, **error** is an error object.      |
 
 **Error codes**
 
@@ -51,9 +52,9 @@ For details about the error codes, see [MDNS Error Codes](errorcode-net-mdns.md)
 
 **Example**
 
->**NOTE**
+> **NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+>In the examples in this document, **this.context** is used to obtain the **UIAbilityContext**, where **this** represents the **UIAbility** instance inherited from **UIAbility**. To use the capabilities provided by **UIAbilityContext** on a page, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 Stage model:
 
@@ -103,7 +104,7 @@ Adds an MDNS service. This API uses a promise to return the result.
 
 | Type                             | Description                                 |
 | --------------------------------- | ------------------------------------- |
-| Promise\<[LocalServiceInfo](#localserviceinfo)> | Promise used to return the result.|
+| Promise\<[LocalServiceInfo](#localserviceinfo)> | Promise object that returns the added MDNS service information. |
 
 **Error codes**
 
@@ -121,9 +122,9 @@ For details about the error codes, see [MDNS Error Codes](errorcode-net-mdns.md)
 
 **Example**
 
->**NOTE**
+> **NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+>In the examples in this document, **this.context** is used to obtain the **UIAbilityContext**, where **this** represents the **UIAbility** instance inherited from **UIAbility**. To use the capabilities provided by **UIAbilityContext** on a page, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 Stage model:
 
@@ -167,7 +168,7 @@ Removes an MDNS service. This API uses an asynchronous callback to return the re
 |-------------|----------------------------------|-----------|-------------------------------------------------|
 | context     | Context                          | Yes      | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
 | serviceInfo | [LocalServiceInfo](#localserviceinfo)                 | Yes       |   MDNS service information.     |
-| callback | AsyncCallback\<[LocalServiceInfo](#localserviceinfo)> | Yes       |   Callback used to return the result. If the operation is successful, **error** is **undefined** and **data** is the MDNS service information.     |
+| callback | AsyncCallback\<[LocalServiceInfo](#localserviceinfo)> | Yes | Callback function. If the removal is successful, **error** is **undefined** and data is the removed local MDNS service information; otherwise, it is an error object. |
 
 **Error codes**
 
@@ -185,9 +186,9 @@ For details about the error codes, see [MDNS Error Codes](errorcode-net-mdns.md)
 
 **Example**
 
->**NOTE**
+> **NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+>In the examples in this document, **this.context** is used to obtain the **UIAbilityContext**, where **this** represents the **UIAbility** instance inherited from **UIAbility**. To use the capabilities provided by **UIAbilityContext** on a page, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 Stage model:
 
@@ -237,7 +238,7 @@ Removes an MDNS service. This API uses a promise to return the result.
 
 | Type                             | Description                                 |
 | --------------------------------- | ------------------------------------- |
-| Promise\<[LocalServiceInfo](#localserviceinfo)> | Promise used to return the result.|
+| Promise\<[LocalServiceInfo](#localserviceinfo)> | Promise used to return the removed MDNS service information. |
 
 **Error codes**
 
@@ -254,9 +255,9 @@ For details about the error codes, see [MDNS Error Codes](errorcode-net-mdns.md)
 
 **Example**
 
->**NOTE**
+> **NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+>In the examples in this document, **this.context** is used to obtain the UIAbilityContext, where **this** represents the UIAbility instance inherited from UIAbility. To use the capabilities provided by UIAbilityContext on a page, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 Stage model:
 
@@ -304,7 +305,7 @@ Creates a **DiscoveryService** object, which is used to discover MDNS services o
 
 | Type                        | Description                    |
 | ----------------------------- |---------------------------------|
-| DiscoveryService | **DiscoveryService** object obtained based on the specified **serviceType** and **context**.|
+| [DiscoveryService](#discoveryservice) | Discovery service object based on the specified service type (**serviceType**) and **Context**. |
 
 **Error codes**
 
@@ -316,9 +317,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 
->**NOTE**
+> **NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+>In the examples in this document, **this.context** is used to obtain the UIAbilityContext, where **this** represents the UIAbility instance inherited from UIAbility. To use the capabilities provided by UIAbilityContext on a page, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 Stage model:
 
@@ -343,7 +344,7 @@ Resolves an MDNS service. This API uses an asynchronous callback to return the r
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
-**System capability**: SystemCapability.Communication.NetManager.MDNS
+**System capability:** SystemCapability.Communication.NetManager.MDNS
 
 **Parameters**
 
@@ -351,7 +352,7 @@ Resolves an MDNS service. This API uses an asynchronous callback to return the r
 |-------------|----------------------------------|-----------|-------------------------------------------------------------|
 | context     | Context                          | Yes      | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
 | serviceInfo | [LocalServiceInfo](#localserviceinfo)                 | Yes       |   MDNS service information.     |
-| callback | AsyncCallback\<[LocalServiceInfo](#localserviceinfo)> | Yes       |   Callback used to return the result. If the operation is successful, **error** is **undefined** and **data** is the MDNS service information.     |
+| callback | AsyncCallback\<[LocalServiceInfo](#localserviceinfo)> | Yes | Callback invoked to return the result. If the removal is successful, **error** is **undefined** and **data** is the parsed MDNS service information; otherwise, **error** is an error object. |
 
 **Error codes**
 
@@ -369,9 +370,9 @@ For details about the error codes, see [MDNS Error Codes](errorcode-net-mdns.md)
 
 **Example**
 
->**NOTE**
+> **NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+>In the examples in this document, **this.context** is used to obtain the UIAbilityContext, where **this** represents the UIAbility instance inherited from UIAbility. To use the capabilities provided by UIAbilityContext on a page, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 Stage model:
 
@@ -408,20 +409,20 @@ Resolves an MDNS service. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
-**System capability**: SystemCapability.Communication.NetManager.MDNS
+**System capability:** SystemCapability.Communication.NetManager.MDNS
 
 **Parameters**
 
 | Name       | Type                            | Mandatory| Description                                    |
 |-------------|--------------|-----------|-----------------------------------------------------|
 | context     | Context                          | Yes      | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
-| serviceInfo | [LocalServiceInfo](#localserviceinfo)                 | Yes       |   MDNS service information.     |
+| serviceInfo | [LocalServiceInfo](#localserviceinfo)                 | Yes        |   MDNS service information.      |
 
 **Return value**
 
 | Type                             | Description                                 |
 |----------------------------| ------------------------------------- |
-| Promise\<[LocalServiceInfo](#localserviceinfo)> | Promise used to return the result.|
+| Promise\<[LocalServiceInfo](#localserviceinfo)> | Promise object used to return the resolved MDNS service information.|
 
 **Error codes**
 
@@ -438,9 +439,9 @@ For details about the error codes, see [MDNS Error Codes](errorcode-net-mdns.md)
 
 **Example**
 
->**NOTE**
+> **NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+>In the examples in this document, **this.context** is used to obtain the UIAbilityContext, where **this** represents the UIAbility instance inherited from UIAbility. To use the capabilities provided by UIAbilityContext on a page, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 Stage model:
 
@@ -483,9 +484,9 @@ Searches for MDNS services on the LAN.
 
 **Example**
 
->**NOTE**
+> **NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+>In the examples in this document, **this.context** is used to obtain the UIAbilityContext, where **this** represents the UIAbility instance inherited from UIAbility. To use the capabilities provided by UIAbilityContext on a page, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 Stage model:
 
@@ -514,9 +515,9 @@ Stops searching for MDNS services on the LAN.
 
 **Example**
 
->**NOTE**
+> **NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+> In the examples in this document, **this.context** is used to obtain the **UIAbilityContext**, where **this** represents a **UIAbility** instance inherited from **UIAbility**. To use the capabilities provided by **UIAbilityContext** in a page, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 Stage model:
 
@@ -537,7 +538,7 @@ discoveryService.stopSearchingMDNS();
 
 on(type: 'discoveryStart', callback: Callback\<DiscoveryEventInfo\>): void
 
-Enables listening for **discoveryStart** events.
+Subscribes to the notification for starting to listen for MDNS services.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -552,9 +553,9 @@ Enables listening for **discoveryStart** events.
 
 **Example**
 
->**NOTE**
+> **NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+> In the examples in this document, **this.context** is used to obtain the **UIAbilityContext**, where **this** represents a **UIAbility** instance inherited from **UIAbility**. To use the capabilities provided by **UIAbilityContext** in a page, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 <!--code_no_check-->
 ```ts
@@ -594,9 +595,9 @@ Disables listening for **discoveryStart** events.
 
 **Example**
 
->**NOTE**
+> **NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+> In the examples in this document, **this.context** is used to obtain the **UIAbilityContext**, where **this** represents a **UIAbility** instance inherited from **UIAbility**. To use the capabilities provided by **UIAbilityContext** in a page, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 <!--code_no_check-->
 ```ts
@@ -640,9 +641,9 @@ Enables listening for **discoveryStop** events.
 
 **Example**
 
->**NOTE**
+> **NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+> In the examples in this document, **this.context** is used to obtain the **UIAbilityContext**, where **this** represents a **UIAbility** instance inherited from **UIAbility**. To use the capabilities provided by **UIAbilityContext** in a page, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 <!--code_no_check-->
 ```ts
@@ -665,7 +666,7 @@ discoveryService.stopSearchingMDNS();
 
 ### off('discoveryStop')
 
-off(type: 'discoveryStop', callback?: Callback\<[DiscoveryEventInfo](#discoveryeventinfo11)\>): void
+off(type: 'discoveryStop', callback?: Callback\<DiscoveryEventInfo\>): void
 
 Disables listening for **discoveryStop** events.
 
@@ -677,14 +678,14 @@ Disables listening for **discoveryStop** events.
 
 | Name       | Type                            | Mandatory| Description                                    |
 |-------------|--------------|-----------|-----------------------------------------------------|
-| type     | string                          | Yes      |Event type. This field has a fixed value of **discoveryStop**.<br>**discoveryStop**: event of stopping discovery of MDNS services on the LAN.|
+| type     | string                          | Yes       | Event to unsubscribe from, which is fixed to **'discoveryStop'**.<br>**discoveryStop**: event of stopping discovery of MDNS services on the local area network. |
 | callback | Callback\<[DiscoveryEventInfo](#discoveryeventinfo11)\>  | No      |Callback used to return the MDNS service and error information. You can pass the callback of the **on** function if you want to cancel listening for a certain type of events. If you do not pass the callback, you will cancel listening for all events.     |
 
 **Example**
 
->**NOTE**
+> **NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+> In the examples in this document, **this.context** is used to obtain the **UIAbilityContext**, where **this** represents a **UIAbility** instance inherited from **UIAbility**. To use the capabilities provided by **UIAbilityContext** in a page, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 <!--code_no_check-->
 ```ts
@@ -728,9 +729,9 @@ Enables listening for **serviceFound** events.
 
 **Example**
 
->**NOTE**
+> **NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+> In the examples in this document, **this.context** is used to obtain the **UIAbilityContext**, where **this** represents a **UIAbility** instance inherited from **UIAbility**. To use the capabilities provided by **UIAbilityContext** in a page, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 <!--code_no_check-->
 ```ts
@@ -773,9 +774,9 @@ Disables listening for **serviceFound** events.
 
 **Example**
 
->**NOTE**
+> **NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+> In the examples in this document, **this.context** is used to obtain the **UIAbilityContext**, where **this** represents a **UIAbility** instance inherited from **UIAbility**. To use the capabilities provided by **UIAbilityContext** in a page, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 <!--code_no_check-->
 ```ts
@@ -822,9 +823,9 @@ Enables listening for **serviceLost** events.
 
 **Example**
 
->**NOTE**
+> **NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+> In the examples in this document, **this.context** is used to obtain the **UIAbilityContext**, where **this** represents a **UIAbility** instance inherited from **UIAbility**. To use the capabilities provided by **UIAbilityContext** in a page, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 <!--code_no_check-->
 ```ts
@@ -864,9 +865,9 @@ Disables listening for **serviceLost** events.
 
 **Example**
 
->**NOTE**
+> **NOTE**
 >
->In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
+> In the examples in this document, **this.context** is used to obtain the **UIAbilityContext**, where **this** represents a **UIAbility** instance inherited from **UIAbility**. To use the capabilities provided by **UIAbilityContext** in a page, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 <!--code_no_check-->
 ```ts
@@ -903,7 +904,7 @@ MDNS service information.
 | -------- | ---------------------------------------------- | ---- | --- | ---------------------- |
 | serviceType   | string                             |  No  | No| MDNS service type. The value is in the format of **\_\<name>.<_tcp/_udp>**, where **name** contains a maximum of 63 characters excluding periods (.).|
 | serviceName | string                             |  No  | No| MDNS service name.                                                |
-| port            | number           |  No  | Yes| Service port number. The value range is [0, 65535].                                 |
+| port            | number           |  No   | Yes | Port number of the MDNS service. The value ranges from 0 to 65535.                                  |
 | host           |  [NetAddress](js-apis-net-connection.md#netaddress) |  No  | Yes| IP address of the device that provides the MDNS service. The IP address is not effective when an MDNS service is added or removed.                     |
 | serviceAttribute     | Array\<[ServiceAttribute](#serviceattribute)> |  No  | Yes| MDNS service attribute information.                                               |
 
@@ -930,8 +931,8 @@ Defines the MDNS service event information.
 
 | Name  | Type                                          | Read-Only| Optional|Description                   |
 | -------- | ---------------------------------------------- | ---- | --- | ---------------------- |
-| serviceInfo | LocalServiceInfo                    |  No  | No|  MDNS service information.       |
-| errorCode   | MdnsError                           |  No  | Yes|  MDNS error information.       |
+| serviceInfo | [LocalServiceInfo](#localserviceinfo)         |  No   | No |  MDNS service information.        |
+| errorCode   | [MdnsError](#mdnserror)                       |  No   | Yes |  MDNS error information.        |
 
 ## MdnsError
 

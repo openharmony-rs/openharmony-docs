@@ -39,7 +39,7 @@ rating是评分组件，用于展示用户对某项内容的评价等级。具�
 }
 ```
 
-![zh-cn_image_0000001227701031](figures/zh-cn_image_0000001227701031.gif)
+![rating-Component](figures/rating-Component.gif)
 
 
 ## 设置评分星级
@@ -72,7 +72,7 @@ rating组件通过设置numstars和rating属性设置评分条的星级总数和
 }
 ```
 
-![zh-cn_image_0000001227422709](figures/zh-cn_image_0000001227422709.gif)
+![Rating-Level](figures/Rating-Level.gif)
 
 
 ## 设置评分样式
@@ -120,7 +120,7 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001178685854](figures/zh-cn_image_0000001178685854.gif)
+![Rating-Style](figures/Rating-Style.gif)
 
 > **说明：**
 > - star-background、star-secondary、star-foreground属性的星级图源必须全部设置，否则默认的星级颜色为灰色，提示图源设置错误。
@@ -160,17 +160,16 @@ export default {
 
 ```js
 // xxx.js
-import promptAction from '@ohos.promptAction';
 export default {
   showrating(e) {
-    promptAction.showToast({
+    this.getUIContext().getPromptAction().showToast({
       message: '当前评分' + e.rating
     })
   }
 }
 ```
 
-![zh-cn_image_0000001181823160](figures/zh-cn_image_0000001181823160.gif)
+![Binding-Events-2](figures/Binding-Events-2.gif)
 
 
 ## 场景示例
@@ -219,7 +218,6 @@ export default {
 
 ```js
 // xxx.js
-import promptAction from '@ohos.promptAction';
 export default {
     data: {
         backstar: '',
@@ -235,7 +233,7 @@ export default {
     },
     setstar(e) {
         if (e.checked == true) {
-            this.backstar = '/common/love.png'
+            this.backstar = 'common/love.png'
             this.secstar = 'common/love.png'
             this.forestar = 'common/love1.png'
         } else {
@@ -248,22 +246,19 @@ export default {
         this.stars = e.progress
         this.ratewidth = 60 * parseInt(this.stars) + 'px'
     },
-    setstep(e) {
-        this.step = e.progress
-    },
     setrating(e){
         this.rate = e.progress
     },
     showrating(e) {
         this.rate = e.rating
-        promptAction.showToast({
+        this.getUIContext().getPromptAction().showToast({
             message: '当前评分' + e.rating
         })
     }
 }
 ```
 
-![zh-cn_image_0000001224086459](figures/zh-cn_image_0000001224086459.gif)
+![rating-Development](figures/rating-Development.gif)
 
 ## 相关实例
 

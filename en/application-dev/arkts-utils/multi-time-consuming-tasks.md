@@ -1,4 +1,4 @@
-# Using TaskPool for Multiple Time-Consuming Tasks
+# Using TaskPool for Multiple Time-consuming Tasks
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->
 <!--Owner: @lijiamin2025-->

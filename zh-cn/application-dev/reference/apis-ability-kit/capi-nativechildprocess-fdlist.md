@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @SKY2001-->
 <!--Designer: @yzkp-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 ```c
 typedef struct NativeChildProcess_FdList {...} NativeChildProcess_FdList
@@ -13,7 +13,7 @@ typedef struct NativeChildProcess_FdList {...} NativeChildProcess_FdList
 
 ## 概述
 
-传递给子进程的文件描述符信息列表，文件描述符记录个数不能超过16个。
+传递给子进程的文件描述符信息列表，文件描述符记录个数不能超过16个，超过限制将导致创建子进程失败。
 
 **起始版本：** 13
 

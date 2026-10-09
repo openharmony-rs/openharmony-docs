@@ -1,13 +1,13 @@
 # @system.notification (通知消息)
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @michael_woo888-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
 > **说明：**
-> - 从API Version 7 开始，该接口不再维护，推荐使用新接口[`@ohos.notification`](js-apis-notification.md)。
+> - 从API Version 7 开始，该接口不再维护，推荐使用新接口[@ohos.notification (Notification模块)](js-apis-notification.md)。
 > 
 > - 本模块首批接口从API version 3开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
@@ -37,7 +37,7 @@ import notification from '@system.notification';
 | 名称          | 类型                                           | 必填 | 说明                        |
 | ------------- | ---------------------------------------------- | ---- | ------------------------- |
 | contentTitle  | string                                          | 否   | 通知标题。                  |
-| contentText   | string                                          | 否   | 通知内容。                  |
+| contentText   | string                                          | 否   | [通知内容](../../notification/notification-glossary.md#notification-content通知内容)。                  |
 | clickAction<sup>(deprecated)</sup>   | [ActionResult](#actionresult)                                    | 否   | 通知被点击后触发的行为。<br>从API version 7开始不再维护。     |
 
 
@@ -53,7 +53,7 @@ show(options?: ShowNotificationOptions): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options | ShowNotificationOptions | 否 | 通知标题。 |
+| options | [ShowNotificationOptions](#shownotificationoptions) | 否 | 通知展示的相关参数选项，可设置通知标题、通知内容以及通知被点击后触发的行为。 |
 
 **示例：**
 ```ts

@@ -1,10 +1,11 @@
 # oh_display_info.h
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @oh_wangxk; @logn-->
-<!--Designer: @hejunfei1991-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @logn; @wulong158-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=3f18eb013c4d80b07cbba5e8314109f4d86922d6 translatedAt=2026-08-27T08:42:01.944Z pushedAt=2026-08-28T01:08:48.825Z -->
 
 ## Overview
 
@@ -28,7 +29,7 @@ The file declares the common enums and definitions of the display.
 | -- | -- | -- |
 | [NativeDisplayManager_Rect](capi-nativedisplaymanager-rect.md) | NativeDisplayManager_Rect | Describes a rectangle.|
 | [NativeDisplayManager_WaterfallDisplayAreaRects](capi-nativedisplaymanager-waterfalldisplayarearects.md) | NativeDisplayManager_WaterfallDisplayAreaRects | Describes the curved area on a waterfall display.|
-| [NativeDisplayManager_CutoutInfo](capi-nativedisplaymanager-cutoutinfo.md) | NativeDisplayManager_CutoutInfo | Describes the unusable area of a display, including punch hole, notch, and curved area of a waterfall display.|
+| [NativeDisplayManager_CutoutInfo](capi-nativedisplaymanager-cutoutinfo.md) | NativeDisplayManager_CutoutInfo | Describes the unusable area of a display, including a punch hole, a notch, and the curved area of a waterfall display.|
 | [NativeDisplayManager_DisplayHdrFormat](capi-nativedisplaymanager-displayhdrformat.md) | NativeDisplayManager_DisplayHdrFormat | Describes all the HDR formats supported by a display.|
 | [NativeDisplayManager_DisplayColorSpace](capi-nativedisplaymanager-displaycolorspace.md) | NativeDisplayManager_DisplayColorSpace | Describes all the color spaces supported by a display.|
 | [NativeDisplayManager_DisplayInfo](capi-nativedisplaymanager-displayinfo.md) | NativeDisplayManager_DisplayInfo | Describes the information about a display.|
@@ -38,7 +39,7 @@ The file declares the common enums and definitions of the display.
 
 | Name | Description  |
 |--------------|-----------|
-| [OH_DISPLAY_NAME_LENGTH](#oh_display_name_length)  32 | Maximum length of a display name.|
+| OH_DISPLAY_NAME_LENGTH 32| Maximum length of a display name.<br>**Since**: 14|
 
 ### Enums
 
@@ -50,20 +51,6 @@ The file declares the common enums and definitions of the display.
 | [NativeDisplayManager_FoldDisplayMode](#nativedisplaymanager_folddisplaymode) | NativeDisplayManager_FoldDisplayMode | Enumerates the display modes of a foldable device.|
 | [NativeDisplayManager_DisplayState](#nativedisplaymanager_displaystate) | NativeDisplayManager_DisplayState | Enumerates the states of a display.|
 | [NativeDisplayManager_SourceMode](#nativedisplaymanager_sourcemode) | NativeDisplayManager_SourceMode | Enumerates the source modes of a device.|
-
-## Macro Description
-
-### OH_DISPLAY_NAME_LENGTH
-
-```c
-#define OH_DISPLAY_NAME_LENGTH 32
-```
-
-**Description**
-
-Maximum length of a display name.
-
-**Since**: 14
 
 ## Enum Description
 
@@ -81,10 +68,10 @@ Enumerates the clockwise rotation angles of a display.
 
 | Enum Item| Description|
 | -- | -- |
-| DISPLAY_MANAGER_ROTATION_0 = 0 | The display is rotated clockwise by 0 degrees.|
-| DISPLAY_MANAGER_ROTATION_90 = 1 | The display is rotated clockwise by 90 degrees.|
-| DISPLAY_MANAGER_ROTATION_180 = 2 | The display is rotated clockwise by 180 degrees.|
-| DISPLAY_MANAGER_ROTATION_270 = 3 | The display is rotated clockwise by 270 degrees.|
+| DISPLAY_MANAGER_ROTATION_0 = 0 | The display is rotated clockwise by 0 degrees. |
+| DISPLAY_MANAGER_ROTATION_90 = 1 | The display is rotated clockwise by 90 degrees. |
+| DISPLAY_MANAGER_ROTATION_180 = 2 | The display is rotated clockwise by 180 degrees. |
+| DISPLAY_MANAGER_ROTATION_270 = 3 | The display is rotated clockwise by 270 degrees. |
 
 ### NativeDisplayManager_Orientation
 
@@ -104,7 +91,7 @@ Enumerates the orientations of a display.
 | DISPLAY_MANAGER_LANDSCAPE = 1 | The display is in landscape mode.|
 | DISPLAY_MANAGER_PORTRAIT_INVERTED = 2 | The display is in reverse portrait mode.|
 | DISPLAY_MANAGER_LANDSCAPE_INVERTED = 3 | The display is in reverse landscape mode.|
-| DISPLAY_MANAGER_UNKNOWN | The screen orientation is unknown.|
+| DISPLAY_MANAGER_UNKNOWN | The display orientation is unknown. |
 
 ### NativeDisplayManager_ErrorCode
 
@@ -128,7 +115,7 @@ Enumerates the status codes returned by the display manager interface.
 | DISPLAY_MANAGER_ERROR_INVALID_SCREEN = 1400001 | The display is invalid.|
 | DISPLAY_MANAGER_ERROR_INVALID_CALL = 1400002 | The current operation object does not have the operation permission.|
 | DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL = 1400003 | The system service is abnormal.|
-| DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM = 1400004 |  Invalid parameter.<br>**Since**: 20|
+| DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM = 1400004 | Invalid parameter.<br>**Since**: 20|
 
 ### NativeDisplayManager_FoldDisplayMode
 
@@ -191,3 +178,4 @@ Enumerates the source modes of a device.
 | DISPLAY_SOURCE_MODE_MIRROR = 2 | The device is currently in mirror display mode.|
 | DISPLAY_SOURCE_MODE_EXTEND = 3 | The device is currently in extended display mode.|
 | DISPLAY_SOURCE_MODE_ALONE = 4 | The device is currently in independent display mode.|
+

@@ -1,10 +1,12 @@
 # Image_NativeModule
+
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=9329f19aa2995f079ff9cf109a20aad0033a91a3 translatedAt=2026-08-03T04:02:53.266Z pushedAt=2026-08-04T03:00:11.344Z -->
 
 ## Overview
 
@@ -15,10 +17,15 @@ The APIs of this module do not need to be imported through the JS interface. You
 You can refer to the corresponding development guide and samples based on your development requirements.
 
 - [Using Image_NativeModule to Decode Images](../../media/image/image-source-c.md)
+
 - [Using Image_NativeModule to Decode Pictures](../../media/image/image-source-picture-c.md)
+
 - [Using Image_NativeModule to Receive Images](../../media/image/image-receiver-c.md)
+
 - [Using Image_NativeModule for PixelMap Operations](../../media/image/pixelmap-c.md)
+
 - [Using Image_NativeModule to Encode Images](../../media/image/image-packer-c.md)
+
 - [Using Image_NativeModule to Encode Pictures](../../media/image/image-packer-picture-c.md)
 
 **Since**: 12
@@ -28,7 +35,7 @@ You can refer to the corresponding development guide and samples based on your d
 | Name| Description|
 | -- | -- |
 | [image_common.h](capi-image-common-h.md) | Declares the common enums and structs used by the image interface.|
-| [image_native.h](capi-image-native-h.md) | Declares the cropping rectangle, size, and component data of an image.|
+| [image_native.h](capi-image-native-h.md) | Declares the APIs for cropping rectangle, size, and component data of an image.|
 | [image_packer_native.h](capi-image-packer-native-h.md) | Declares the APIs for image encoding.|
 | [image_receiver_native.h](capi-image-receiver-native-h.md) | Declares the APIs used to obtain image data from the native layer.|
 | [image_source_native.h](capi-image-source-native-h.md) | Declares the APIs for image decoding.|

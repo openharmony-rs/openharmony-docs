@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -111,10 +111,10 @@ C接口统一通过[Image错误码](../../../reference/apis-image-kit/errorcode-
        OH_Pixelmap_ImageInfo *imageInfo;
        Image_ErrorCode errCode = OH_PixelmapImageInfo_Create(&imageInfo);
        if (errCode != IMAGE_SUCCESS) {
-           OH_LOG_ERROR(LOG_APP, "OH_PixelmapNative_Create failed, errCode: %{public}d.", errCode);
+           OH_LOG_ERROR(LOG_APP, "OH_PixelmapImageInfo_Create failed, errCode: %{public}d.", errCode);
            return;
        }
-       OH_PixelmapNative_GetImageInfo(pixelmap, imageInfo);
+       errCode = OH_PixelmapNative_GetImageInfo(pixelmap, imageInfo);
        if (errCode != IMAGE_SUCCESS) {
            OH_LOG_ERROR(LOG_APP, "OH_PixelmapNative_GetImageInfo failed, errCode: %{public}d.", errCode);
            return;

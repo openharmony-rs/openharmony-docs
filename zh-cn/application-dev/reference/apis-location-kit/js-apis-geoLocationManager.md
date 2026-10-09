@@ -55,10 +55,10 @@ import { geoLocationManager } from '@kit.LocationKit';
 | country<sup>12+</sup> | string | 否 | 是 | 限制查询结果在指定的国家内，采用ISO 3166-1 alpha-2 。“CN”代表中国。默认值从设置中的“语言和地区”获取。 |
 | description | string | 否 | 否 | 表示位置信息描述，如“上海市浦东新区xx路xx号”，字符串长度不超过100。 |
 | maxItems | number | 否 | 是 | 表示返回位置信息的最大个数。取值范围为大于等于0，推荐该值小于10。默认值是1。 |
-| minLatitude | number | 否 | 是 | 表示最小纬度信息，与下面三个参数一起，表示一个经纬度范围。取值范围为-90到90。仅支持WGS84坐标系。如果该参数有值时，下面三个参数必填。 |
-| minLongitude | number | 否 | 是 | 表示最小经度信息。取值范围为-180到180。仅支持WGS84坐标系。 |
-| maxLatitude | number | 否 | 是 | 表示最大纬度信息。取值范围为-90到90。仅支持WGS84坐标系。 |
-| maxLongitude | number | 否 | 是 | 表示最大经度信息。取值范围为-180到180。仅支持WGS84坐标系。 |
+| minLatitude | number | 否 | 是 | 表示最小纬度信息，与下面三个参数一起，表示一个经纬度范围。取值范围为-90到90。仅支持WGS84坐标系。默认值是0。如果该参数有值时，下面三个参数必填。 |
+| minLongitude | number | 否 | 是 | 表示最小经度信息。取值范围为-180到180。仅支持WGS84坐标系。默认值是0。 |
+| maxLatitude | number | 否 | 是 | 表示最大纬度信息。取值范围为-90到90。仅支持WGS84坐标系。默认值是0。|
+| maxLongitude | number | 否 | 是 | 表示最大经度信息。取值范围为-180到180。仅支持WGS84坐标系。默认值是0。|
 
 
 ## GeoAddress
@@ -84,7 +84,7 @@ import { geoLocationManager } from '@kit.LocationKit';
 | premises | string | 否 | 是 | 表示门牌号信息。 |
 | postalCode | string | 否 | 是 | 表示邮政编码信息。 |
 | phoneNumber | string | 否 | 是 | 表示联系方式信息。 |
-| addressUrl | string | 否 | 是 | 表示位置信息附件的网址信息。 |
+| addressUrl | string | 否 | 是 | 表示位置信息附近的网址信息。 |
 | descriptions | Array&lt;string&gt; | 否 | 是 | 表示附加的描述信息。目前包含城市编码cityCode（Array下标为0）和区划编码adminCode（Array下标为1），例如["025","320114001"]。 |
 | descriptionsSize | number | 否 | 是 | 表示附加的描述信息数量。取值范围为大于等于0，推荐该值小于10。 |
 
@@ -119,22 +119,21 @@ import { geoLocationManager } from '@kit.LocationKit';
 | priority | [LocationRequestPriority](#locationrequestpriority) | 否 | 是 | 表示优先级信息。当scenario取值为UNSET时，priority参数生效，否则priority参数不生效；当scenario和priority均取值为UNSET时，无法发起定位请求。取值范围见[LocationRequestPriority](#locationrequestpriority)的定义。默认值为FIRST_FIX。|
 | scenario | [LocationRequestScenario](#locationrequestscenario) | 否 | 是 | 表示场景信息。当scenario取值为UNSET时，priority参数生效，否则priority参数不生效；当scenario和priority均取值为UNSET时，无法发起定位请求。取值范围见[LocationRequestScenario](#locationrequestscenario)的定义。默认值为UNSET。 |
 | maxAccuracy | number | 否 | 是|  应用向系统请求位置信息时要求的精度值，单位为米。该参数仅在精确位置功能场景（即同时授权了ohos.permission.APPROXIMATELY_LOCATION和ohos.permission.LOCATION 权限）下有效，模糊位置功能生效场景（即仅授权了ohos.permission.APPROXIMATELY_LOCATION 权限）下该字段无意义。<br/>该参数生效的情况下，系统会对比GNSS或网络定位服务上报的位置信息与应用的位置信息申请。当位置信息[Location](#location)中的精度值（accuracy）小于等于应用要求的精度值（maxAccuracy）时，位置信息会返回给应用；否则系统将丢弃本次收到的位置信息。<br/>默认值为0，表示不限制位置信息的精度，取值范围为大于等于0。<br/>当scenario为NAVIGATION/TRAJECTORY_TRACKING/CAR_HAILING或者priority为ACCURACY时建议设置maxAccuracy为大于10的值。<br/>当scenario为DAILY_LIFE_SERVICE/NO_POWER或者priority为LOW_POWER/FIRST_FIX时建议设置maxAccuracy为大于100的值。 |
-| timeoutMs | number | 否 | 是 | 表示超时时间，单位是毫秒，最小为1000毫秒。取值范围为大于等于1000。 |
+| timeoutMs | number | 否 | 是 | 表示超时时间，单位是毫秒，最小为1000毫秒。默认值是5000。取值范围为大于等于1000。 |
 
 
 ## ContinuousLocationRequest<sup>12+</sup>
 
 持续定位的请求参数。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力**：SystemCapability.Location.Location.Core
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| interval | number | 否 | 否 | 表示上报位置信息的时间间隔，单位是秒。默认值为1，取值范围为大于等于0。等于0时对位置上报时间间隔无限制。|
-| locationScenario | [UserActivityScenario](#useractivityscenario12) &#124; [PowerConsumptionScenario](#powerconsumptionscenario12) | 否 | 否 | 表示定位的场景信息。取值范围见[UserActivityScenario](#useractivityscenario12)和[PowerConsumptionScenario](#powerconsumptionscenario12)的定义。 |
-| needPoi<sup>19+ | boolean | 否 | 是 | 表示是否需要获取当前位置附近的POI信息。false代表不需要获取当前位置附近的POI信息，true代表需要获取当前位置附近的POI信息。不设置时，默认值为false。<br/>该参数仅在精确位置功能场景（即同时授权了ohos.permission.APPROXIMATELY_LOCATION和ohos.permission.LOCATION 权限）下有效，模糊位置功能生效场景（即仅授权了ohos.permission.APPROXIMATELY_LOCATION 权限）下不返回POI信息。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。|
+| interval | number | 否 | 否 | 表示上报位置信息的时间间隔，单位是秒。默认值为1，取值范围为大于等于0。等于0时对位置上报时间间隔无限制。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| locationScenario | [UserActivityScenario](#useractivityscenario12) &#124; [PowerConsumptionScenario](#powerconsumptionscenario12) | 否 | 否 | 表示定位的场景信息。取值范围见[UserActivityScenario](#useractivityscenario12)和[PowerConsumptionScenario](#powerconsumptionscenario12)的定义。 <br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| sportsType | [SportsType](#sportstype18) | 否 | 是 | 表示运动模式。取值范围见[SportsType](#sportstype18)定义。此参数仅在locationScenario设置为UserActivityScenario.SPORT时有效。默认值为0，表示该参数不生效。<br/>**起始版本：** 26.0.0 <br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。|
+| needPoi<sup>19+ | boolean | 否 | 是 | 表示是否需要获取当前位置附近的POI信息。false代表不需要获取当前位置附近的POI信息，true代表需要获取当前位置附近的POI信息。不设置时，默认值为false。当前仅支持在中国境内（香港特别行政区、澳门特别行政区、中国台湾除外）获取POI信息。<br/>该参数仅在精确位置功能场景（即同时授权了ohos.permission.APPROXIMATELY_LOCATION和ohos.permission.LOCATION 权限）下有效，模糊位置功能生效场景（即仅授权了ohos.permission.APPROXIMATELY_LOCATION 权限）下不返回POI信息。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。|
 
 
 ## SingleLocationRequest<sup>12+</sup>
@@ -149,7 +148,7 @@ import { geoLocationManager } from '@kit.LocationKit';
 | -------- | -------- | -------- | -------- | -------- |
 | locatingPriority | [LocatingPriority](#locatingpriority12) | 否 | 否 | 表示优先级信息。取值范围见[LocatingPriority](#locatingpriority12)的定义。|
 | locatingTimeoutMs | number | 否 | 否 | 表示超时时间，单位是毫秒，最小为1000毫秒。取值范围为大于等于1000。 |
-| needPoi<sup>19+ | boolean | 否 | 是 | 表示是否需要获取当前位置附近的POI信息。false代表不需要获取当前位置附近的POI信息，true代表需要获取当前位置附近的POI信息。不设置时，默认值为false。<br/>该参数仅在精确位置功能场景（即同时授权了ohos.permission.APPROXIMATELY_LOCATION和ohos.permission.LOCATION 权限）下有效，模糊位置功能生效场景（即仅授权了ohos.permission.APPROXIMATELY_LOCATION 权限）下不返回POI信息。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。|
+| needPoi<sup>19+ | boolean | 否 | 是 | 表示是否需要获取当前位置附近的POI信息。false代表不需要获取当前位置附近的POI信息，true代表需要获取当前位置附近的POI信息。不设置时，默认值为false。当前仅支持在中国境内（香港特别行政区、澳门特别行政区、中国台湾除外）获取POI信息。<br/>该参数仅在精确位置功能场景（即同时授权了ohos.permission.APPROXIMATELY_LOCATION和ohos.permission.LOCATION 权限）下有效，模糊位置功能生效场景（即仅授权了ohos.permission.APPROXIMATELY_LOCATION 权限）下不返回POI信息。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。|
 
 
 ## SatelliteStatusInfo
@@ -234,7 +233,7 @@ GNSS围栏的配置参数。目前只支持圆形围栏。
 | altitude | number | 否 | 否 | 表示高度信息，单位米。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | accuracy | number | 否 | 否 | 表示精度信息，单位米。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | speed | number | 否 | 否 |表示速度信息，单位米每秒。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| timeStamp | number | 否 | 否 | 表示位置时间戳，UTC格式。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| timeStamp | number | 否 | 否 | 表示位置时间戳，UTC格式，单位毫秒。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | direction | number | 否 | 否 | 表示航向信息。单位是“度”，取值范围为0到360。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | timeSinceBoot | number | 否 | 否 | 表示获取位置成功的时间戳，值表示从本次开机到获取位置成功所经过的时间，单位为纳秒。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | additions | Array&lt;string&gt;| 否 | 是 | 附加信息。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
@@ -243,9 +242,10 @@ GNSS围栏的配置参数。目前只支持圆形围栏。
 | altitudeAccuracy<sup>12+</sup> |number | 否 | 是 | 表示高度信息的精度，单位米。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | speedAccuracy<sup>12+</sup> | number| 否 | 是 | 表示速度信息的精度，单位米每秒。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | directionAccuracy<sup>12+</sup> | number| 否 | 是 | 表示航向信息的精度。单位是“度”，取值范围为0到360。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| uncertaintyOfTimeSinceBoot<sup>12+</sup> | number| 否 | 是 | 表示位置时间戳的不确定度。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| uncertaintyOfTimeSinceBoot<sup>12+</sup> | number| 否 | 是 | 表示从开机到获取位置所经过的时间的不确定度。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | sourceType<sup>12+</sup> | [LocationSourceType](#locationsourcetype12) | 否 | 是 | 表示定位结果的来源。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | poi<sup>19+</PoiInfo> | [PoiInfo](#poiinfo19) | 否 | 是 | 表示当前位置附近的POI信息。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
+| isFromMock | boolean | 否 | 是 | true：位置信息来自于位置模拟功能。<br/>false：位置信息不是来自于位置模拟功能。<br />**起始版本：** 26.0.0 <br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。 |
 
 
 ## GeofenceTransition<sup>12+</sup>
@@ -490,7 +490,7 @@ GNSS地理围栏请求参数。
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | deviceId | string | 否 | 否 | 表示扫描到的设备地址。例如："XX:XX:XX:XX:XX:XX"。 |
-| rssi | number | 否 | 否 | 表示扫描到的设备的rssi值。 |
+| rssi | number | 否 | 否 | 表示扫描到的设备的rssi值，单位dBm。 |
 | data | ArrayBuffer | 否 | 是 | 表示扫描到的设备发送的广播包。 |
 | deviceName | string | 否 | 否 | 表示扫描到的设备名称。 |
 | connectable | boolean | 否 | 否 | 表示扫描到的设备是否可连接。true表示可连接，false表示不可连接。 |
@@ -516,6 +516,7 @@ POI(Point of Interest, 兴趣点)信息。
 | locality | string | 否 | 否 | 表示POI所在的城市信息，一般是市。 |
 | subLocality | string | 否 | 否 | 表示POI所在的子城市信息，一般是区/县。 |
 | address | string | 否 | 否 | 表示POI的详细地址。 |
+| additionalInfo | string | 否 | 是 | 表示POI附加信息，本字符串为JSON格式。<br />**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束**：此接口仅可在Stage模型下使用。 |
 
 ## PoiInfo<sup>19+</sup>
 
@@ -544,6 +545,7 @@ POI信息结构体。
 | RUNNING   | 1 |  表示跑步。 |
 | WALKING    | 2 | 表示步行。 |
 | CYCLING     | 3 | 表示骑行。 |
+| SKIING     | 4 | 表示滑雪。<br/>**起始版本：** 26.0.0  <br/>**模型约束**：此接口仅可在Stage模型下使用。 |
 
 
 ## BeaconFenceInfoType<sup>20+</sup>
@@ -599,8 +601,100 @@ beacon围栏请求参数。transitionCallback与fenceExtensionAbilityName任选�
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | beacon | [BeaconFence](#beaconfence20) | 否 | 否 | beacon围栏的参数配置。 |
-| transitionCallback | Callback&lt;[GeofenceTransition](#geofencetransition12)&gt; | 否 | 是 | beacon围栏事件信息。仅支持前台回调。 |
-| fenceExtensionAbilityName | string | 否 | 是 | [FenceExtensionAbility](js-apis-app-ability-FenceExtensionAbility.md)名称。 |
+| transitionCallback | Callback&lt;[GeofenceTransition](#geofencetransition12)&gt; | 否 | 是 | beacon围栏事件信息。默认值为undefined。仅支持前台回调。 |
+| fenceExtensionAbilityName | string | 否 | 是 | [FenceExtensionAbility](js-apis-app-ability-FenceExtensionAbility.md)名称。默认值为空字符串。 |
+
+
+## MatchingWlanInfo
+
+匹配的WLAN信息结构体。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Location.Location.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| index | number | 否 | 否 | 表示匹配的WLAN在wlanBssidArray中的索引。 |
+| ssid | string | 否 | 否 | 表示匹配的WLAN的SSID。 |
+ 
+ 
+## DistrictRequestParams
+
+表示获取区县信息的请求参数。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Location.Location.Geocoder
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| locale | string | 否 | 是 | 表示位置描述信息的语言，“zh”代表中文，“en”代表英文。默认值从设置中的“语言和地区”获取。 |
+| timeoutMs | number | 否 | 是 | 表示超时时间，单位是毫秒。默认值是5000毫秒。 |
+
+
+## DistrictInfo
+
+表示区域信息。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Location.Location.Geocoder
+  
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| locale | string | 否 | 是  | 表示位置描述信息的语言，“zh”代表中文，“en”代表英文。 |
+| countryCode | string | 否 | 是  | 表示国家码信息。 |
+| countryName | string | 否 | 是 | 表示国家信息。 |
+| administrativeArea | string | 否 | 是 | 表示国家以下的一级行政区，一般是省/州。 |
+| subAdministrativeArea | string | 否 | 是 | 表示国家以下的二级行政区，一般是市。 |
+| locality | string | 否 | 是 | 表示城市信息，一般是市。 |
+| subLocality | string | 否 | 是 | 表示子城市信息，一般是区/县。 |
+
+## BluetoothSearchRequestParams
+
+蓝牙扫描请求参数。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Location.Location.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| deviceIdArray | Array&lt;string&gt; | 否 | 否 | 表示蓝牙设备的地址列表，用于过滤扫描结果。单个字符串的长度不超过64，数组的长度不超过1000。仅当扫描到的蓝牙设备的地址与该数组中的一个元素相同时才通过callback返回该蓝牙设备信息。当传入空数组（数组长度为0）时，不会返回蓝牙扫描结果。数组中每个元素的格式如下："XX:XX:XX:XX:XX:XX"。 |
+| rssiThreshold | number | 否 | 是 | 表示RSSI阈值，只扫描RSSI大于此阈值的设备。取值范围为-128至127。 |
+  
+ ## Point
+
+表示一个位置点。
+
+**起始版本：** 26.0.0
+
+**系统能力**：SystemCapability.Location.Location.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| latitude | number | 否 | 否 | 表示纬度信息，正值表示北纬，负值表示南纬。取值范围为-90到90。仅支持WGS84坐标系。 |
+| longitude | number | 否 | 否 | 表示经度信息，正值表示东经，负值表示西经。取值范围为-180到180。仅支持WGS84坐标系。 |
 
 
 ## geoLocationManager.on('locationChange')
@@ -625,7 +719,7 @@ on(type: 'locationChange', request: LocationRequest | ContinuousLocationRequest,
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -634,6 +728,7 @@ on(type: 'locationChange', request: LocationRequest | ContinuousLocationRequest,
 |801 | Capability not supported. Failed to call ${geoLocationManager.on('locationChange')} due to limited device capabilities.          |
 |3301000 | The location service is unavailable.                                           |
 |3301100 | The location switch is off.                                                 |
+|3301200 | Failed to obtain the geographical location. <br/> 适用版本：9-17 |
 
 **示例**
 
@@ -672,6 +767,73 @@ on(type: 'locationChange', request: LocationRequest | ContinuousLocationRequest,
   }
   ```
 
+## geoLocationManager.onLocationChange
+
+onLocationChange(request: LocationRequest | ContinuousLocationRequest, callback: Callback\<Location\>): void
+
+开启位置变化订阅，并发起定位请求。使用callback异步回调。
+
+**起始版本：** 26.0.0
+
+**需要权限**：ohos.permission.APPROXIMATELY_LOCATION
+
+**系统能力**：SystemCapability.Location.Location.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| request | [LocationRequest](#locationrequest) &#124; [ContinuousLocationRequest](#continuouslocationrequest12) | 是 | 设置位置请求参数。 |
+| callback | Callback&lt;[Location](#location)&gt; | 是 | 回调函数，返回位置信息。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801 | Capability not supported. Failed to call ${geoLocationManager.onLocationChange} due to limited device capabilities. |
+| 3301000 | The location service is unavailable. |
+| 3301100 | The location switch is off. |
+
+**示例**
+
+```ts
+import { geoLocationManager } from '@kit.LocationKit';
+
+// 方式一：使用LocationRequest作为入参
+let requestInfo: geoLocationManager.LocationRequest = {
+  'priority': geoLocationManager.LocationRequestPriority.FIRST_FIX,
+  'scenario': geoLocationManager.LocationRequestScenario.UNSET,
+  'timeInterval': 1,
+  'distanceInterval': 0,
+  'maxAccuracy': 0
+};
+let locationChange = (location: geoLocationManager.Location): void => {
+  console.info('locationChange: data: ' + JSON.stringify(location));
+};
+try {
+  geoLocationManager.onLocationChange(requestInfo, locationChange);
+} catch (err) {
+  console.error("errCode:" + err.code + ", message:" + err.message);
+}
+
+// 方式二：使用ContinuousLocationRequest作为入参
+let request: geoLocationManager.ContinuousLocationRequest = {
+  'interval': 1,
+  'locationScenario': geoLocationManager.UserActivityScenario.NAVIGATION
+};
+let locationCallback = (location: geoLocationManager.Location): void => {
+  console.info('locationCallback: data: ' + JSON.stringify(location));
+};
+try {
+  geoLocationManager.onLocationChange(request, locationCallback);
+} catch (err) {
+  console.error("errCode:" + err.code + ", message:" + err.message);
+}
+```
 
 ## geoLocationManager.off('locationChange')
 
@@ -681,7 +843,9 @@ off(type: 'locationChange', callback?: Callback&lt;Location&gt;): void
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**需要权限**：ohos.permission.APPROXIMATELY_LOCATION
+**需要权限**
+
+- API版本9-24：ohos.permission.APPROXIMATELY_LOCATION
 
 **系统能力**：SystemCapability.Location.Location.Core
 
@@ -690,18 +854,20 @@ off(type: 'locationChange', callback?: Callback&lt;Location&gt;): void
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | type | string | 是 | 设置事件类型。type为“locationChange”，表示位置变化。 |
-  | callback | Callback&lt;[Location](#location)&gt; | 否 | 需要取消订阅的回调函数。该回调函数需要与on接口传入的回调函数保持一致。若无此参数，则取消当前类型的所有订阅。 |
+  | callback | Callback&lt;[Location](#location)&gt; | 否 | 需要取消订阅的回调函数。该回调函数需要与on接口传入的回调函数保持一致，否则会取消订阅失败且不会返回任何错误码。若无此参数，则取消当前类型的所有订阅。 |
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-|201 | Permission verification failed. The application does not have the permission required to call the API.                 |
+|201 | Permission verification failed. The application does not have the permission required to call the API.  <br/> 适用版本：9-24|
 |401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.                 |
 |801 | Capability not supported. Failed to call ${geoLocationManager.off('locationChange')} due to limited device capabilities.          |
 |3301000 | The location service is unavailable.                                           |
+|3301100 | The location switch is off. <br/> 适用版本：9-17                                                |
+|3301200 | Failed to obtain the geographical location. <br/> 适用版本：9-17 |
 
 **示例**
 
@@ -726,6 +892,57 @@ off(type: 'locationChange', callback?: Callback&lt;Location&gt;): void
   }
   ```
 
+## geoLocationManager.offLocationChange
+
+offLocationChange(callback?: Callback\<Location\>): void
+
+关闭位置变化订阅，并删除对应的定位请求。
+
+当传入的callback与onLocationChange接口传入的callback不一致时会抛出401错误码。
+
+
+**起始版本：** 26.0.0
+
+**系统能力**：SystemCapability.Location.Location.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | Callback&lt;[Location](#location)&gt; | 否 | 需要取消订阅的回调函数。该回调函数需要与onLocationChange接口传入的回调函数保持一致，否则将抛出401错误码。若无此参数，则取消所有订阅。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 801 | Capability not supported. Failed to call ${geoLocationManager.offLocationChange} due to limited device capabilities. |
+| 3301000 | The location service is unavailable. |
+
+**示例**
+
+```ts
+import { geoLocationManager } from '@kit.LocationKit';
+
+let requestInfo: geoLocationManager.LocationRequest = {
+  'priority': geoLocationManager.LocationRequestPriority.FIRST_FIX,
+  'scenario': geoLocationManager.LocationRequestScenario.UNSET,
+  'timeInterval': 1,
+  'distanceInterval': 0,
+  'maxAccuracy': 0
+};
+let locationChange = (location: geoLocationManager.Location): void => {
+  console.info('locationChange: data: ' + JSON.stringify(location));
+};
+try {
+  geoLocationManager.onLocationChange(requestInfo, locationChange);
+  geoLocationManager.offLocationChange(locationChange);
+} catch (err) {
+  console.error("errCode:" + err.code + ", message:" + err.message);
+}
+```
 
 ## geoLocationManager.on('locationError')<sup>12+</sup>
 
@@ -748,7 +965,7 @@ on(type: 'locationError', callback: Callback&lt;LocationError&gt;): void
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -779,7 +996,7 @@ on(type: 'locationError', callback: Callback&lt;LocationError&gt;): void
   }
 
   let locationErrorChange = (errcode: geoLocationManager.LocationError): void => {
-    console.info('locationErrorChange: data: ' + JSON.stringify(errcode));
+    console.error('locationErrorChange: data: ' + JSON.stringify(errcode));
   };
   try {
     geoLocationManager.on('locationError', locationErrorChange);
@@ -810,7 +1027,7 @@ off(type: 'locationError', callback?: Callback&lt;LocationError&gt;): void
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -825,7 +1042,7 @@ off(type: 'locationError', callback?: Callback&lt;LocationError&gt;): void
   import { geoLocationManager } from '@kit.LocationKit';
 
   let locationErrorChange = (errcode: geoLocationManager.LocationError): void => {
-    console.info('locationErrorChange: data: ' + JSON.stringify(errcode));
+    console.error('locationErrorChange: data: ' + JSON.stringify(errcode));
   };
   try {
     geoLocationManager.on('locationError', locationErrorChange);
@@ -853,7 +1070,7 @@ on(type: 'locationEnabledChange', callback: Callback&lt;boolean&gt;): void
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -894,7 +1111,7 @@ off(type: 'locationEnabledChange', callback?: Callback&lt;boolean&gt;): void
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -923,7 +1140,7 @@ off(type: 'locationEnabledChange', callback?: Callback&lt;boolean&gt;): void
 
 on(type: 'cachedGnssLocationsChange', request: CachedGnssLocationsRequest, callback: Callback&lt;Array&lt;Location&gt;&gt;): void
 
-订阅缓存GNSS定位结果上报事件。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。使用callback异步回调。
+订阅缓存GNSS定位结果上报事件。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。使用callback异步回调。调用该接口前建议先通过[geoLocationManager.isCachedGnssServiceSupported](#geolocationmanageriscachedgnssservicesupported)接口判断对应能力是否支持。
 
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
@@ -939,15 +1156,16 @@ on(type: 'cachedGnssLocationsChange', request: CachedGnssLocationsRequest, callb
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-|201 | Permission verification failed. The application does not have the permission required to call the API.                 |
+|201 | Permission verification failed. The application does not have the permission required to call the API.                    |
 |401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.                 |
 |801 | Capability not supported. Failed to call ${geoLocationManager.on('cachedGnssLocationsChange')} due to limited device capabilities.          |
 |3301000 | The location service is unavailable.                                           |
 |3301100 | The location switch is off.                                                 |
+|3301200 | Failed to obtain the geographical location. <br/> 适用版本：9-17 |
 
 **示例**
 
@@ -962,7 +1180,9 @@ on(type: 'cachedGnssLocationsChange', request: CachedGnssLocationsRequest, callb
     'wakeUpCacheQueueFull': true
   };
   try {
-    geoLocationManager.on('cachedGnssLocationsChange', requestInfo, cachedLocationsCb);
+    if (geoLocationManager.isCachedGnssServiceSupported()) {
+      geoLocationManager.on('cachedGnssLocationsChange', requestInfo, cachedLocationsCb);
+    }
   } catch (err) {
     console.error("errCode:" + err.code + ", message:" + err.message);
   }
@@ -973,7 +1193,7 @@ on(type: 'cachedGnssLocationsChange', request: CachedGnssLocationsRequest, callb
 
 off(type: 'cachedGnssLocationsChange', callback?: Callback&lt;Array&lt;Location&gt;&gt;): void
 
-取消订阅缓存GNSS定位结果上报事件。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。
+取消订阅缓存GNSS定位结果上报事件。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。调用该接口前建议先通过[geoLocationManager.isCachedGnssServiceSupported](#geolocationmanageriscachedgnssservicesupported)接口判断对应能力是否支持。
 
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
@@ -988,7 +1208,7 @@ off(type: 'cachedGnssLocationsChange', callback?: Callback&lt;Array&lt;Location&
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -997,6 +1217,7 @@ off(type: 'cachedGnssLocationsChange', callback?: Callback&lt;Array&lt;Location&
 |801 | Capability not supported. Failed to call ${geoLocationManager.off('cachedGnssLocationsChange')} due to limited device capabilities.          |
 |3301000 | The location service is unavailable.                                           |
 |3301100 | The location switch is off.                                                 |
+|3301200 | Failed to obtain the geographical location. <br/> 适用版本：9-17 |
 
 **示例**
 
@@ -1011,8 +1232,10 @@ off(type: 'cachedGnssLocationsChange', callback?: Callback&lt;Array&lt;Location&
     'wakeUpCacheQueueFull': true
   };
   try {
-    geoLocationManager.on('cachedGnssLocationsChange', requestInfo, cachedLocationsCb);
-    geoLocationManager.off('cachedGnssLocationsChange');
+    if (geoLocationManager.isCachedGnssServiceSupported()) {
+      geoLocationManager.on('cachedGnssLocationsChange', requestInfo, cachedLocationsCb);
+      geoLocationManager.off('cachedGnssLocationsChange');
+    }
   } catch (err) {
     console.error("errCode:" + err.code + ", message:" + err.message);
   }
@@ -1023,7 +1246,7 @@ off(type: 'cachedGnssLocationsChange', callback?: Callback&lt;Array&lt;Location&
 
 on(type: 'satelliteStatusChange', callback: Callback&lt;SatelliteStatusInfo&gt;): void
 
-订阅GNSS卫星状态信息上报事件。使用callback异步回调。
+订阅GNSS卫星状态信息上报事件。使用callback异步回调。调用该接口前建议先通过[geoLocationManager.isGnssServiceSupported](#geolocationmanagerisgnssservicesupported)接口判断对应能力是否支持。
 
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
@@ -1038,7 +1261,7 @@ on(type: 'satelliteStatusChange', callback: Callback&lt;SatelliteStatusInfo&gt;)
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1087,7 +1310,9 @@ on(type: 'satelliteStatusChange', callback: Callback&lt;SatelliteStatusInfo&gt;)
   }
 
   try {
-    geoLocationManager.on('satelliteStatusChange', gnssStatusCb);
+    if (geoLocationManager.isGnssServiceSupported()) {
+      geoLocationManager.on('satelliteStatusChange', gnssStatusCb);
+    }
   } catch (err) {
     console.error("errCode:" + err.code + ", message:" + err.message);
   }
@@ -1098,7 +1323,7 @@ on(type: 'satelliteStatusChange', callback: Callback&lt;SatelliteStatusInfo&gt;)
 
 off(type: 'satelliteStatusChange', callback?: Callback&lt;SatelliteStatusInfo&gt;): void
 
-取消订阅GNSS卫星状态信息上报事件。
+取消订阅GNSS卫星状态信息上报事件。调用该接口前建议先通过[geoLocationManager.isGnssServiceSupported](#geolocationmanagerisgnssservicesupported)接口判断对应能力是否支持。
 
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
@@ -1113,7 +1338,7 @@ off(type: 'satelliteStatusChange', callback?: Callback&lt;SatelliteStatusInfo&gt
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1133,8 +1358,10 @@ off(type: 'satelliteStatusChange', callback?: Callback&lt;SatelliteStatusInfo&gt
     console.info('satelliteStatusChange: ' + JSON.stringify(satelliteStatusInfo));
   }
   try {
-    geoLocationManager.on('satelliteStatusChange', gnssStatusCb);
-    geoLocationManager.off('satelliteStatusChange', gnssStatusCb);
+    if (geoLocationManager.isGnssServiceSupported()) {
+      geoLocationManager.on('satelliteStatusChange', gnssStatusCb);
+      geoLocationManager.off('satelliteStatusChange', gnssStatusCb);
+    }
   } catch (err) {
     console.error("errCode:" + err.code + ", message:" + err.message);
   }
@@ -1145,7 +1372,7 @@ off(type: 'satelliteStatusChange', callback?: Callback&lt;SatelliteStatusInfo&gt
 
 on(type: 'nmeaMessage', callback: Callback&lt;string&gt;): void
 
-订阅GNSS NMEA信息上报事件。使用callback异步回调。
+订阅GNSS NMEA信息上报事件。使用callback异步回调。调用该接口前建议先通过[geoLocationManager.isGnssServiceSupported](#geolocationmanagerisgnssservicesupported)接口判断对应能力是否支持。
 
 **需要权限**：ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
 
@@ -1160,7 +1387,7 @@ on(type: 'nmeaMessage', callback: Callback&lt;string&gt;): void
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1181,7 +1408,9 @@ on(type: 'nmeaMessage', callback: Callback&lt;string&gt;): void
   }
 
   try {
-    geoLocationManager.on('nmeaMessage', nmeaCb);
+    if (geoLocationManager.isGnssServiceSupported()) {
+      geoLocationManager.on('nmeaMessage', nmeaCb);
+    }
   } catch (err) {
     console.error("errCode:" + err.code + ", message:" + err.message);
   }
@@ -1192,7 +1421,7 @@ on(type: 'nmeaMessage', callback: Callback&lt;string&gt;): void
 
 off(type: 'nmeaMessage', callback?: Callback&lt;string&gt;): void
 
-取消订阅GNSS NMEA信息上报事件。
+取消订阅GNSS NMEA信息上报事件。调用该接口前建议先通过[geoLocationManager.isGnssServiceSupported](#geolocationmanagerisgnssservicesupported)接口判断对应能力是否支持。
 
 **需要权限**：ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
 
@@ -1207,7 +1436,7 @@ off(type: 'nmeaMessage', callback?: Callback&lt;string&gt;): void
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1228,8 +1457,10 @@ off(type: 'nmeaMessage', callback?: Callback&lt;string&gt;): void
   }
 
   try {
-    geoLocationManager.on('nmeaMessage', nmeaCb);
-    geoLocationManager.off('nmeaMessage', nmeaCb);
+    if (geoLocationManager.isGnssServiceSupported()) {
+      geoLocationManager.on('nmeaMessage', nmeaCb);
+      geoLocationManager.off('nmeaMessage', nmeaCb);
+    }
   } catch (err) {
     console.error("errCode:" + err.code + ", message:" + err.message);
   }
@@ -1240,7 +1471,9 @@ off(type: 'nmeaMessage', callback?: Callback&lt;string&gt;): void
 
 on(type: 'gnssFenceStatusChange', request: GeofenceRequest, want: WantAgent): void
 
-添加一个围栏，并订阅地理围栏事件。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。
+添加一个围栏，并订阅地理围栏事件。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。调用该接口前建议先通过[geoLocationManager.isGnssFenceServiceSupported](#geolocationmanagerisgnssfenceservicesupported)接口判断对应能力是否支持。
+
+单应用添加地理围栏上限为100，超过上限将移除剩余地理围栏中存活时间最短的围栏。
 
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
@@ -1256,11 +1489,11 @@ on(type: 'gnssFenceStatusChange', request: GeofenceRequest, want: WantAgent): vo
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-|201 | Permission verification failed. The application does not have the permission required to call the API.                 |
+|201 | Permission verification failed. The application does not have the permission required to call the API.    |
 |401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.                 |
 |801 | Capability not supported. Failed to call ${geoLocationManager.on('gnssFenceStatusChange')} due to limited device capabilities.          |
 |3301000 | The location service is unavailable.                                           |
@@ -1293,7 +1526,9 @@ on(type: 'gnssFenceStatusChange', request: GeofenceRequest, want: WantAgent): vo
       "geofence": { "latitude": 31.12, "longitude": 121.11, "radius": 100, "expiration": 10000 }
     };
     try {
-      geoLocationManager.on('gnssFenceStatusChange', requestInfo, wantAgentObj);
+      if (geoLocationManager.isGnssFenceServiceSupported()) {
+        geoLocationManager.on('gnssFenceStatusChange', requestInfo, wantAgentObj);
+      }
     } catch (err) {
       console.error("errCode:" + err.code + ", message:" + err.message);
     }
@@ -1305,9 +1540,11 @@ on(type: 'gnssFenceStatusChange', request: GeofenceRequest, want: WantAgent): vo
 
 off(type: 'gnssFenceStatusChange', request: GeofenceRequest, want: WantAgent): void
 
-删除一个围栏，并取消订阅该围栏事件。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。
+删除一个围栏，并取消订阅该围栏事件。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。调用该接口前建议先通过[geoLocationManager.isGnssFenceServiceSupported](#geolocationmanagerisgnssfenceservicesupported)接口判断对应能力是否支持。
 
-**需要权限**：ohos.permission.APPROXIMATELY_LOCATION
+**需要权限**
+
+- API版本9-24：ohos.permission.APPROXIMATELY_LOCATION
 
 **系统能力**：SystemCapability.Location.Location.Geofence
 
@@ -1321,11 +1558,11 @@ off(type: 'gnssFenceStatusChange', request: GeofenceRequest, want: WantAgent): v
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-|201 | Permission verification failed. The application does not have the permission required to call the API.                 |
+|201 | Permission verification failed. The application does not have the permission required to call the API. <br/> 适用版本：9-24              |
 |401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.                 |
 |801 | Capability not supported. Failed to call ${geoLocationManager.off('gnssFenceStatusChange')} due to limited device capabilities.          |
 |3301000 | The location service is unavailable.                                           |
@@ -1358,8 +1595,10 @@ off(type: 'gnssFenceStatusChange', request: GeofenceRequest, want: WantAgent): v
       "geofence": { "latitude": 31.12, "longitude": 121.11, "radius": 100, "expiration": 10000 }
     };
     try {
-      geoLocationManager.on('gnssFenceStatusChange', requestInfo, wantAgentObj);
-      geoLocationManager.off('gnssFenceStatusChange', requestInfo, wantAgentObj);
+      if (geoLocationManager.isGnssFenceServiceSupported()) {
+        geoLocationManager.on('gnssFenceStatusChange', requestInfo, wantAgentObj);
+        geoLocationManager.off('gnssFenceStatusChange', requestInfo, wantAgentObj);
+      }
     } catch (err) {
       console.error("errCode:" + err.code + ", message:" + err.message);
     }
@@ -1384,7 +1623,7 @@ on(type: 'countryCodeChange', callback: Callback&lt;CountryCode&gt;): void
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1428,7 +1667,7 @@ off(type: 'countryCodeChange', callback?: Callback&lt;CountryCode&gt;): void
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1476,7 +1715,7 @@ getCurrentLocation(request: CurrentLocationRequest | SingleLocationRequest, call
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1485,7 +1724,7 @@ getCurrentLocation(request: CurrentLocationRequest | SingleLocationRequest, call
 |801 | Capability not supported. Failed to call ${geoLocationManager.getCurrentLocation} due to limited device capabilities.          |
 |3301000 | The location service is unavailable.                                           |
 |3301100 | The location switch is off.                                                 |
-|3301200 | Failed to obtain the geographical location.  |
+|3301200 | Failed to obtain the geographical location.   |
 
 **示例**
 
@@ -1554,7 +1793,7 @@ getCurrentLocation(callback: AsyncCallback&lt;Location&gt;): void
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1603,7 +1842,7 @@ getCurrentLocation(request?: CurrentLocationRequest | SingleLocationRequest): Pr
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | request | [CurrentLocationRequest](#currentlocationrequest) &#124; [SingleLocationRequest](#singlelocationrequest12) | 否 | 设置位置请求参数。<br/>SingleLocationRequest为API12新增参数。 |
+  | request | [CurrentLocationRequest](#currentlocationrequest) &#124; [SingleLocationRequest](#singlelocationrequest12) | 否 | 设置位置请求参数。<br/>SingleLocationRequest为API12新增参数。若无此参数设置，则使用CurrentLocationRequest为默认值。 |
 
 **返回值**：
 
@@ -1613,7 +1852,7 @@ getCurrentLocation(request?: CurrentLocationRequest | SingleLocationRequest): Pr
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1685,7 +1924,7 @@ getLastLocation(): Location
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1726,7 +1965,7 @@ isLocationEnabled(): boolean
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1763,7 +2002,7 @@ getAddressesFromLocation(request: ReverseGeoCodeRequest, callback: AsyncCallback
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1819,7 +2058,7 @@ getAddressesFromLocation(request: ReverseGeoCodeRequest): Promise&lt;Array&lt;Ge
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1869,7 +2108,7 @@ getAddressesFromLocationName(request: GeoCodeRequest, callback: AsyncCallback&lt
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1921,7 +2160,7 @@ getAddressesFromLocationName(request: GeoCodeRequest): Promise&lt;Array&lt;GeoAd
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1965,7 +2204,7 @@ isGeocoderAvailable(): boolean
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1989,7 +2228,7 @@ isGeocoderAvailable(): boolean
 
 getCachedGnssLocationsSize(callback: AsyncCallback&lt;number&gt;): void
 
-获取GNSS芯片缓存位置的个数。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。使用callback异步回调。
+获取GNSS芯片缓存位置的个数。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。使用callback异步回调。调用该接口前建议先通过[geoLocationManager.isCachedGnssServiceSupported](#geolocationmanageriscachedgnssservicesupported)接口判断对应能力是否支持。
 
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
@@ -2003,7 +2242,7 @@ getCachedGnssLocationsSize(callback: AsyncCallback&lt;number&gt;): void
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -2019,14 +2258,16 @@ getCachedGnssLocationsSize(callback: AsyncCallback&lt;number&gt;): void
   import { geoLocationManager } from '@kit.LocationKit';
 
   try {
-    geoLocationManager.getCachedGnssLocationsSize((err, size) => {
-      if (err) {
-        console.error('getCachedGnssLocationsSize: err=' + JSON.stringify(err));
-      }
-      if (size) {
-        console.info('getCachedGnssLocationsSize: size=' + JSON.stringify(size));
-      }
-    });
+    if (geoLocationManager.isCachedGnssServiceSupported()) {
+      geoLocationManager.getCachedGnssLocationsSize((err, size) => {
+        if (err) {
+          console.error('getCachedGnssLocationsSize: err=' + JSON.stringify(err));
+        }
+        if (size) {
+          console.info('getCachedGnssLocationsSize: size=' + JSON.stringify(size));
+        }
+      });
+    }
   } catch (err) {
     console.error("errCode:" + err.code + ", message:" + err.message);
   }
@@ -2037,7 +2278,7 @@ getCachedGnssLocationsSize(callback: AsyncCallback&lt;number&gt;): void
 
 getCachedGnssLocationsSize(): Promise&lt;number&gt;
 
-获取GNSS芯片缓存位置的个数。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。使用Promise异步回调。
+获取GNSS芯片缓存位置的个数。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。使用Promise异步回调。调用该接口前建议先通过[geoLocationManager.isCachedGnssServiceSupported](#geolocationmanageriscachedgnssservicesupported)接口判断对应能力是否支持。
 
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
@@ -2051,7 +2292,7 @@ getCachedGnssLocationsSize(): Promise&lt;number&gt;
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -2067,12 +2308,14 @@ getCachedGnssLocationsSize(): Promise&lt;number&gt;
   import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
-    geoLocationManager.getCachedGnssLocationsSize().then((result) => {
-      console.info('promise, getCachedGnssLocationsSize: ' + JSON.stringify(result));
-    })
-      .catch((error: BusinessError) => {
-        console.error('promise, getCachedGnssLocationsSize: error=' + JSON.stringify(error));
-      });
+    if (geoLocationManager.isCachedGnssServiceSupported()) {
+      geoLocationManager.getCachedGnssLocationsSize().then((result) => {
+        console.info('promise, getCachedGnssLocationsSize: ' + JSON.stringify(result));
+      })
+        .catch((error: BusinessError) => {
+          console.error('promise, getCachedGnssLocationsSize: error=' + JSON.stringify(error));
+        });
+    }
   } catch (err) {
     console.error("errCode:" + err.code + ", message:" + err.message);
   }
@@ -2083,7 +2326,7 @@ getCachedGnssLocationsSize(): Promise&lt;number&gt;
 
 flushCachedGnssLocations(callback: AsyncCallback&lt;void&gt;): void
 
-读取并清空GNSS芯片所有缓存位置。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。使用callback异步回调。
+读取并清空GNSS芯片所有缓存位置。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。使用callback异步回调。调用该接口前建议先通过[geoLocationManager.isCachedGnssServiceSupported](#geolocationmanageriscachedgnssservicesupported)接口判断对应能力是否支持。
 
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
@@ -2097,7 +2340,7 @@ flushCachedGnssLocations(callback: AsyncCallback&lt;void&gt;): void
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -2114,11 +2357,13 @@ flushCachedGnssLocations(callback: AsyncCallback&lt;void&gt;): void
   import { geoLocationManager } from '@kit.LocationKit';
 
   try {
-    geoLocationManager.flushCachedGnssLocations((err) => {
-      if (err) {
-        console.error('flushCachedGnssLocations: err=' + JSON.stringify(err));
-      }
-    });
+    if (geoLocationManager.isCachedGnssServiceSupported()) {
+      geoLocationManager.flushCachedGnssLocations((err) => {
+        if (err) {
+          console.error('flushCachedGnssLocations: err=' + JSON.stringify(err));
+        }
+      });
+    }
   } catch (err) {
     console.error("errCode:" + err.code + ", message:" + err.message);
   }
@@ -2129,7 +2374,7 @@ flushCachedGnssLocations(callback: AsyncCallback&lt;void&gt;): void
 
 flushCachedGnssLocations(): Promise&lt;void&gt;
 
-读取并清空GNSS芯片所有缓存位置。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。使用Promise异步回调。
+读取并清空GNSS芯片所有缓存位置。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。使用Promise异步回调。调用该接口前建议先通过[geoLocationManager.isCachedGnssServiceSupported](#geolocationmanageriscachedgnssservicesupported)接口判断对应能力是否支持。
 
 **需要权限**：ohos.permission.APPROXIMATELY_LOCATION
 
@@ -2143,7 +2388,7 @@ flushCachedGnssLocations(): Promise&lt;void&gt;
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -2160,12 +2405,14 @@ flushCachedGnssLocations(): Promise&lt;void&gt;
   import { BusinessError } from '@kit.BasicServicesKit';
 
   try {
-    geoLocationManager.flushCachedGnssLocations().then(() => {
-      console.info('promise, flushCachedGnssLocations success');
-    })
-      .catch((error: BusinessError) => {
-        console.error('promise, flushCachedGnssLocations: error=' + JSON.stringify(error));
-      });
+    if (geoLocationManager.isCachedGnssServiceSupported()) {
+      geoLocationManager.flushCachedGnssLocations().then(() => {
+        console.info('promise, flushCachedGnssLocations success');
+      })
+        .catch((error: BusinessError) => {
+          console.error('promise, flushCachedGnssLocations: error=' + JSON.stringify(error));
+        });
+    }
   } catch (err) {
     console.error("errCode:" + err.code + ", message:" + err.message);
   }
@@ -2189,7 +2436,7 @@ sendCommand(command: LocationCommand, callback: AsyncCallback&lt;void&gt;): void
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -2237,7 +2484,7 @@ sendCommand(command: LocationCommand): Promise&lt;void&gt;
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -2281,7 +2528,7 @@ getCountryCode(callback: AsyncCallback&lt;CountryCode&gt;): void
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -2326,7 +2573,7 @@ getCountryCode(): Promise&lt;CountryCode&gt;
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -2357,11 +2604,13 @@ getCountryCode(): Promise&lt;CountryCode&gt;
 
 addGnssGeofence(fenceRequest: GnssGeofenceRequest): Promise&lt;number&gt;
 
-添加一个GNSS地理围栏，并订阅地理围栏事件。使用Promise异步回调。
+添加一个GNSS地理围栏，并订阅地理围栏事件。使用Promise异步回调。调用该接口前建议先通过[geoLocationManager.isGnssFenceServiceSupported](#geolocationmanagerisgnssfenceservicesupported)接口判断对应能力是否支持。
 
 APP可以在入参[GnssGeofenceRequest](#gnssgeofencerequest12)中传入回调函数用于接收地理围栏事件；也可以传入通知对象[NotificationRequest](../apis-notification-kit/js-apis-notification.md#notificationrequest)，在系统识别到地理围栏事件发生时会弹出APP创建的通知。
 
 GNSS地理围栏功能依赖GNSS定位芯片（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。
+
+单应用添加地理围栏上限为100，超过上限将移除剩余地理围栏中存活时间最短的围栏。
 
 **需要权限**：ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
 
@@ -2381,7 +2630,7 @@ GNSS地理围栏功能依赖GNSS定位芯片（仅部分型号支持），如果
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -2457,15 +2706,17 @@ GNSS地理围栏功能依赖GNSS定位芯片（仅部分型号支持），如果
     }
   }
   try {
-    // 添加围栏
-    geoLocationManager.addGnssGeofence(gnssGeofenceRequest).then((id) => {
-      // 围栏添加成功后返回围栏ID
-      console.info("addGnssGeofence success, fence id: " + id);
-      let fenceId = id;
-    }).catch((err: BusinessError) => {
-      console.error("addGnssGeofence failed, promise errCode:" + (err as BusinessError).code +
-      ",errMessage:" + (err as BusinessError).message);
-    });
+    if (geoLocationManager.isGnssFenceServiceSupported()) {
+      // 添加围栏
+      geoLocationManager.addGnssGeofence(gnssGeofenceRequest).then((id) => {
+        // 围栏添加成功后返回围栏ID
+        console.info("addGnssGeofence success, fence id: " + id);
+        let fenceId = id;
+      }).catch((err: BusinessError) => {
+        console.error("addGnssGeofence failed, promise errCode:" + (err as BusinessError).code +
+        ",errMessage:" + (err as BusinessError).message);
+      });
+    }
   } catch (error) {
     console.error("addGnssGeofence failed, err:" + JSON.stringify(error));
   }
@@ -2478,11 +2729,13 @@ removeGnssGeofence(geofenceId: number): Promise&lt;void&gt;
 
 删除一个GNSS地理围栏，并取消订阅该地理围栏事件。使用Promise异步回调。
 
-GNSS地理围栏功能依赖GNSS定位芯片（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。
-
-**需要权限**：ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
+GNSS地理围栏功能依赖GNSS定位芯片（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。调用该接口前建议先通过[geoLocationManager.isGnssFenceServiceSupported](#geolocationmanagerisgnssfenceservicesupported)接口判断对应能力是否支持。
 
 **系统能力**：SystemCapability.Location.Location.Geofence
+  
+**需要权限**
+
+- API版本9-24：ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
 
 **参数**：
 
@@ -2498,11 +2751,11 @@ GNSS地理围栏功能依赖GNSS定位芯片（仅部分型号支持），如果
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-|201 | Permission verification failed. The application does not have the permission required to call the API.                 |
+|201 | Permission verification failed. The application does not have the permission required to call the API. <br/> 适用版本：12-24              |
 |401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.                 |
 |801 | Capability not supported. Failed to call ${geoLocationManager.removeGnssGeofence} due to limited device capabilities.          |
 |3301000 | The location service is unavailable. |
@@ -2516,11 +2769,13 @@ GNSS地理围栏功能依赖GNSS定位芯片（仅部分型号支持），如果
   // fenceId是在geoLocationManager.addGnssGeofence执行成功后获取的
   let fenceId = 1;
   try {
-    geoLocationManager.removeGnssGeofence(fenceId).then(() => {
-      console.info("removeGnssGeofence success fenceId:" + fenceId);
-    }).catch((error: BusinessError) => {
-      console.error("removeGnssGeofence: error=" + JSON.stringify(error));
-    });
+    if (geoLocationManager.isGnssFenceServiceSupported()) {
+      geoLocationManager.removeGnssGeofence(fenceId).then(() => {
+        console.info("removeGnssGeofence success fenceId:" + fenceId);
+      }).catch((error: BusinessError) => {
+        console.error("removeGnssGeofence: error=" + JSON.stringify(error));
+      });
+    }
   } catch (error) {
     console.error("removeGnssGeofence: error=" + JSON.stringify(error));
   }
@@ -2531,7 +2786,7 @@ GNSS地理围栏功能依赖GNSS定位芯片（仅部分型号支持），如果
 
 getGeofenceSupportedCoordTypes(): Array&lt;CoordinateSystemType&gt;
 
-获取地理围栏功能支持的坐标系列表。
+获取地理围栏功能支持的坐标系列表。调用该接口前建议先通过[geoLocationManager.isGnssFenceServiceSupported](#geolocationmanagerisgnssfenceservicesupported)接口判断对应能力是否支持。
 
 **系统能力**：SystemCapability.Location.Location.Geofence
 
@@ -2543,7 +2798,7 @@ getGeofenceSupportedCoordTypes(): Array&lt;CoordinateSystemType&gt;
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -2556,8 +2811,10 @@ getGeofenceSupportedCoordTypes(): Array&lt;CoordinateSystemType&gt;
   import { geoLocationManager } from '@kit.LocationKit';
 
   try {
-    let supportedCoordTypes: Array<geoLocationManager.CoordinateSystemType> = geoLocationManager.getGeofenceSupportedCoordTypes();
-    console.info("getGeofenceSupportedCoordTypes return:" + JSON.stringify(supportedCoordTypes));
+    if (geoLocationManager.isGnssFenceServiceSupported()) {
+      let supportedCoordTypes: Array<geoLocationManager.CoordinateSystemType> = geoLocationManager.getGeofenceSupportedCoordTypes();
+      console.info("getGeofenceSupportedCoordTypes return:" + JSON.stringify(supportedCoordTypes));
+    }
   } catch (error) {
     console.error("getGeofenceSupportedCoordTypes: error=" + JSON.stringify(error));
   }
@@ -2582,7 +2839,7 @@ getCurrentWifiBssidForLocating(): string
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -2631,7 +2888,7 @@ on(type: 'bluetoothScanResultChange', callback: Callback&lt;BluetoothScanResult&
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -2678,7 +2935,7 @@ off(type: 'bluetoothScanResultChange', callback?: Callback&lt;BluetoothScanResul
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -2736,7 +2993,7 @@ isPoiServiceSupported(): boolean
 
 getPoiInfo(): Promise&lt;PoiInfo&gt;
 
-获取当前位置附近的POI信息。使用Promise异步回调。
+获取当前位置附近的POI信息。使用Promise异步回调。当前该接口仅支持在中国境内（香港特别行政区、澳门特别行政区、中国台湾除外）使用。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -2752,7 +3009,7 @@ getPoiInfo(): Promise&lt;PoiInfo&gt;
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -2823,8 +3080,8 @@ getDistanceBetweenLocations(location1: Location, location2: Location): number
       "additionSize": 0
     }
     let location2: geoLocationManager.Location = {
-      "latitude": 30.12,
-      "longitude": 120.11,
+      "latitude": 31.12,
+      "longitude": 121.11,
       "altitude": 0,
       "accuracy": 0,
       "speed": 0,
@@ -2851,6 +3108,8 @@ beacon围栏是指通过蓝牙beacon设备和手机应用配合，实现“虚�
 
 应用可以在入参[BeaconFenceRequest](#beaconfencerequest20)中传入回调函数用于接收围栏事件；也可以传入[FenceExtensionAbility](js-apis-app-ability-FenceExtensionAbility.md)名称，在系统识别到围栏事件发生时通知应用。
 
+单应用添加beacon围栏上限为10，超过上限会导致添加beacon围栏失败，并抛出3501601错误码。
+
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **需要权限**：ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
@@ -2871,7 +3130,7 @@ beacon围栏是指通过蓝牙beacon设备和手机应用配合，实现“虚�
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -2879,7 +3138,7 @@ beacon围栏是指通过蓝牙beacon设备和手机应用配合，实现“虚�
 |801 | Capability not supported. Failed to call ${geoLocationManager.addBeaconFence} due to limited device capabilities.          |
 |3501100 | Failed to add a beacon fence because the location switch is off.                                           |
 |3501101 | Failed to add a beacon fence because the bluetooth switch is off.                                                 |
-|3501601 | The number of beacon fence exceeds the maximum. |
+|3501601 | The number of beacon fences exceeds the maximum. |
 |3501603 | Duplicate beacon fence information. |
 
 **示例**
@@ -2941,7 +3200,9 @@ removeBeaconFence(beaconFence?: BeaconFence): Promise&lt;void&gt;
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
-**需要权限**：ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
+**需要权限**：
+
+- API版本20-24：ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
 
 **系统能力**：SystemCapability.Location.Location.Geofence
 
@@ -2960,11 +3221,11 @@ removeBeaconFence(beaconFence?: BeaconFence): Promise&lt;void&gt;
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-|201 | Permission verification failed. The application does not have the permission required to call the API.                 |
+|201 | Permission verification failed. The application does not have the permission required to call the API.  <br/> 适用版本：20-24 |
 |801 | Capability not supported. Failed to call ${geoLocationManager.removeBeaconFence} due to limited device capabilities.          |
 |3501602 | Failed to delete the fence due to incorrect beacon fence information. |
 
@@ -3004,7 +3265,7 @@ removeBeaconFence(beaconFence?: BeaconFence): Promise&lt;void&gt;
   ```
 ## geoLocationManager.isBeaconFenceSupported<sup>20+</sup>
 
-isBeaconFenceSupported(): boolean;
+isBeaconFenceSupported(): boolean
 
 判断当前设备是否支持beacon围栏。
 
@@ -3058,7 +3319,7 @@ isWlanBssidMatched(wlanBssidArray: Array&lt;string&gt;, rssiThreshold: number, n
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -3084,11 +3345,128 @@ isWlanBssidMatched(wlanBssidArray: Array&lt;string&gt;, rssiThreshold: number, n
   }
   ```
 
+## geoLocationManager.isGnssServiceSupported
+
+isGnssServiceSupported(): boolean
+
+判断是否支持GNSS功能。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Location.Location.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**返回值**：
+
+  | 类型 | 说明 |
+  | -------- | -------- |
+  | boolean | true：支持GNSS功能。<br/>false：不支持GNSS功能。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+|3301000 | The location service is unavailable. |
+
+**示例**
+
+  ```ts
+  import { geoLocationManager } from '@kit.LocationKit';
+  try {
+      let gnssServiceSupported = geoLocationManager.isGnssServiceSupported();
+  } catch (err) {
+      console.error("errCode:" + err.code + ", message:"  + err.message);
+  }
+  ```
+
+## geoLocationManager.isGnssFenceServiceSupported
+
+isGnssFenceServiceSupported(): boolean
+
+判断是否支持围栏功能。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Location.Location.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**返回值**：
+
+  | 类型 | 说明 |
+  | -------- | -------- |
+  | boolean | true：支持围栏功能。<br/>false：不支持围栏功能。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+|3301000 | The location service is unavailable. |
+
+**示例**
+
+  ```ts
+  import { geoLocationManager } from '@kit.LocationKit';
+  try {
+      let gnssFenceServiceSupported = geoLocationManager.isGnssFenceServiceSupported();
+  } catch (err) {
+      console.error("errCode:" + err.code + ", message:"  + err.message);
+  }
+  ```
+
+## geoLocationManager.isCachedGnssServiceSupported
+
+isCachedGnssServiceSupported(): boolean
+
+判断是否支持GNSS batching功能。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.Location.Location.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**返回值**：
+
+  | 类型 | 说明 |
+  | -------- | -------- |
+  | boolean | true：支持GNSS batching功能。<br/>false：不支持GNSS batching功能。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+|3301000 | The location service is unavailable. |
+
+**示例**
+
+  ```ts
+  import { geoLocationManager } from '@kit.LocationKit';
+  try {
+      let cachedGnssServiceSupported = geoLocationManager.isCachedGnssServiceSupported();
+  } catch (err) {
+      console.error("errCode:" + err.code + ", message:"  + err.message);
+  }
+  ```
+
 ## geoLocationManager.getActiveGeoFences<sup>23+</sup>
 
-getActiveGeoFences(): Promise&lt;Map&lt;int, Geofence&gt;&gt;
+getActiveGeoFences(): Promise&lt;Map&lt;number, Geofence&gt;&gt;
 
-查询当前有效的围栏信息。使用Promise异步回调。
+查询当前有效的围栏信息。使用Promise异步回调。调用该接口前建议先通过[geoLocationManager.isGnssFenceServiceSupported](#geolocationmanagerisgnssfenceservicesupported)接口判断对应能力是否支持。
 
 **需要权限**：ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
 
@@ -3098,11 +3476,11 @@ getActiveGeoFences(): Promise&lt;Map&lt;int, Geofence&gt;&gt;
 
   | 类型 | 说明 |
   | -------- | -------- |
-  | Promise&lt;Map&lt;int, [Geofence](#geofence)&gt;&gt; | Promise对象，返回有效的围栏信息。Map中的key值为fenceId，value值为对应围栏的具体信息。 |
+  | Promise&lt;Map&lt;number, [Geofence](#geofence)&gt;&gt; | Promise对象，返回有效的围栏信息。Map中的key值为fenceId，value值为对应围栏的具体信息。 |
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -3115,18 +3493,353 @@ getActiveGeoFences(): Promise&lt;Map&lt;int, Geofence&gt;&gt;
   import { geoLocationManager } from '@kit.LocationKit';
 
   try {
-    geoLocationManager.getActiveGeoFences().then((res) => {
-      if (res) {
-        console.info("fence num:" + res.size);
-        for (const item of res) {
-          console.info("data=" + JSON.stringify(item));
+    if (geoLocationManager.isGnssFenceServiceSupported()) {
+      geoLocationManager.getActiveGeoFences().then((res) => {
+        if (res) {
+          console.info("fence num:" + res.size);
+          for (const item of res) {
+            console.info("data=" + JSON.stringify(item));
+          }
         }
-      }
-    })
-      .catch((error: BusinessError) => {
-        console.error('promise, getActiveGeoFences: error=' + JSON.stringify(error));
-      });
+      })
+        .catch((error: BusinessError) => {
+          console.error('promise, getActiveGeoFences: error=' + JSON.stringify(error));
+        });
+    }
   } catch (error) {
     console.error("getActiveGeoFences: errCode" + error.code + ", errMessage" + error.message);
+  }
+  ```
+
+## geoLocationManager.findMatchingWlan
+
+findMatchingWlan(wlanBssidArray: Array&lt;string&gt;, rssiThreshold: number, needStartScan: boolean):Promise&lt;Array&lt;MatchingWlanInfo&gt;&gt;
+
+使用WLAN扫描结果与输入的WLAN BSSID列表进行匹配，匹配成功时返回对应的WLAN设备信息，匹配失败时返回空数组(数组长度为0)。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**需要权限**：ohos.permission.LOCATION 和 ohos.permission.APPROXIMATELY_LOCATION
+
+**系统能力**：SystemCapability.Location.Location.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数**：
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | wlanBssidArray | Array&lt;string&gt; | 是 | 请求匹配的BSSID列表。单个字符串的长度不超过64，数组的长度不超过1000。 |
+  | rssiThreshold | number | 是 | RSSI阈值。只匹配RSSI大于此阈值的BSSID，取值范围为-10000至10000（单位：dBm）。 |
+  | needStartScan | boolean | 是 | 是否需要发起WLAN扫描。需要发起WLAN扫描设置为true。不需要发起WLAN扫描，使用最近一次WLAN扫描结果进行匹配设置为false。 |
+
+**返回值**：
+
+  | 类型 | 说明 |
+  | -------- | -------- |
+  | Promise<Array<[MatchingWlanInfo](#matchingwlaninfo)>> | Promise对象，匹配成功时返回对应的WLAN设备信息，匹配失败时返回空数组(数组长度为0)。仅返回rssi最强的3个设备信息。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+|201 | Permission verification failed. The application does not have the permission required to call the API.                 |
+|801 | Capability not supported. Failed to call ${geoLocationManager.findMatchingWlan} due to limited device capabilities.          |
+|3301100 | The location switch is off.                                           |
+|3301800 | Failed to start WLAN scanning.                                        |
+
+**示例**
+
+  ```ts
+  import { geoLocationManager } from '@kit.LocationKit';
+
+  try {
+    let wlanBssidArray: Array<string> = ["02:1b:32:23:ea:91", "02:1b:32:23:ea:93"];
+    let rssiThreshold: number = -70;
+    let needStartScan: boolean = true;
+    geoLocationManager.findMatchingWlan(wlanBssidArray, rssiThreshold, needStartScan).then((res) => {
+      console.info("WLAN BSSID Matched Result: " + JSON.stringify(res));
+    })
+  } catch (error) {
+    console.error("findMatchingWlan: errCode " + error.code + ", errMessage " + error.message);
+  }
+   ```
+
+## geoLocationManager.getCurrentDistrict
+
+getCurrentDistrict(params?: DistrictRequestParams): Promise&lt;DistrictInfo&gt;
+
+获取当前设备所在区域的信息。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+  
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**需要权限**：ohos.permission.APPROXIMATELY_LOCATION
+
+**系统能力**：SystemCapability.Location.Location.Geocoder
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数**：
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | params | [DistrictRequestParams](#districtrequestparams) | 否 | 设置区域信息请求参数。 |
+
+**返回值**：
+
+  | 类型 | 说明 |
+  | -------- | -------- |
+  | Promise&lt;[DistrictInfo](#districtinfo)&gt; | Promise对象，当前设备所在区域的信息。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+|201 | Permission verification failed. The application does not have the permission required to call the API.                 |
+|401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.                 |
+|801 | Capability not supported. Failed to call ${geoLocationManager.getCurrentDistrict} due to limited device capabilities.          |
+|3301000 | The location service is unavailable.                                           |
+|3301100 | The location switch is off.  |
+|3301500 | Failed to query the area information because the reverse geocoding server returns an error.  |
+
+**示例**
+
+  ```ts
+  import { geoLocationManager } from '@kit.LocationKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+  // 参数配置一：指定语言/国家/超时时间
+  try {
+    let params: geoLocationManager.DistrictRequestParams = {
+      locale: "en",
+      timeoutMs: 5000
+    }
+    geoLocationManager.getCurrentDistrict(params).then((res) => {
+      if (res) {
+        console.info("getCurrentDistrict result:" + res);
+      }
+    })
+    .catch((error: BusinessError) => {
+      console.error('promise, getCurrentDistrict: error=' + JSON.stringify(error));
+    });
+  } catch (error) {
+    console.error("getCurrentDistrict: errCode" + error.code + ", errMessage" + error.message);
+  }
+  // 参数配置二：使用默认值
+  try {
+    geoLocationManager.getCurrentDistrict().then((res) => {
+      if (res) {
+        console.info("getCurrentDistrict result:" + res);
+      }
+    })
+    .catch((error: BusinessError) => {
+      console.error('promise, getCurrentDistrict: error=' + JSON.stringify(error));
+    });
+  } catch (error) {
+    console.error("getCurrentDistrict: errCode" + error.code + ", errMessage" + error.message);
+  }
+  ```
+
+## geoLocationManager.getPostProcessingTrack
+
+getPostProcessingTrack(sportsType: SportsType): Promise&lt;Array&lt;Location&gt;&gt;
+
+根据传入的[sportsType](#sportstype18)获取特定运动模式下的后处理轨迹。在调用此接口之前，需要先调用[geoLocationManager.on('locationChange')](#geolocationmanageronlocationchange)，并在[ContinuousLocationRequest](#continuouslocationrequest12)入参中的[SportsType](#sportstype18)配置正确的运动模式。当前仅支持滑雪模式。记录的运动轨迹会在24小时之后清除。
+
+**起始版本：** 26.0.0
+  
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**需要权限**：ohos.permission.LOCATION
+
+**系统能力**：SystemCapability.Location.Location.Gnss
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数**：
+
+  | 参数名 | 类型 | 必填 | 说明 |
+  | -------- | -------- | -------- | -------- |
+  | sportsType | [SportsType](#sportstype18) | 是 | 设置要获取后处理轨迹的运动模式。当前仅支持滑雪模式。 |
+
+**返回值**：
+
+  | 类型 | 说明 |
+  | -------- | -------- |
+  | Promise&lt;Array&lt;[Location](#location)&gt;&gt; | Promise对象，用于返回后处理运动轨迹。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+|201 | Permission verification failed. The application does not have the permission required to call the API.                 |
+|401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.                 |
+|801 | Capability not supported. Failed to call ${geoLocationManager.getPostProcessingTrack} due to limited device capabilities.          |
+|3301000 | The location service is unavailable.                                           |
+|3301100 | The location switch is off.  |
+|3301200 | Failed to obtain the post processing track because sports type is not supported.  |
+
+**示例**
+
+  ```ts
+  import { geoLocationManager } from '@kit.LocationKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  let request: geoLocationManager.ContinuousLocationRequest = {
+    'interval': 1,
+    'locationScenario': geoLocationManager.UserActivityScenario.SPORT,
+    // 设置运动类型为滑雪
+    'sportsType': geoLocationManager.SportsType.SKIING,
+  };
+
+  let locationCallback = (location: geoLocationManager.Location): void => {
+    console.info('locationCallback: data: ' + JSON.stringify(location));
+  };
+
+  let processTrackTask = (): void => {
+    // 先移除定位请求
+    geoLocationManager.off('locationChange', locationCallback);
+    // 获取后处理轨迹
+    geoLocationManager.getPostProcessingTrack(geoLocationManager.SportsType.SKIING)
+      .then((res) => {
+        console.info('getPostProcessingTrack len: ' + JSON.stringify(res.length));
+      }).catch((err: BusinessError) => {
+        console.error('getPostProcessingTrack err: ' + JSON.stringify(err));
+      })
+  }
+
+  try {
+    // 发起滑雪模式定位请求
+    geoLocationManager.on('locationChange', request, locationCallback);
+    // 满足轨迹采集条件后，移除定位请求并获取后处理轨迹，这里设定30分钟后满足轨迹采集要求。
+    let delayTaskTime = 30 * 60 * 1000;
+    setTimeout(processTrackTask, delayTaskTime);
+  } catch (err) {
+    console.error("errCode:" + err.code + ", message:" + err.message);
+  }
+  ```
+   
+## geoLocationManager.startBluetoothSearch
+
+startBluetoothSearch(request: BluetoothSearchRequestParams, callback: Callback&lt;BluetoothScanResult&gt;): void
+
+启动蓝牙扫描并查找指定的蓝牙设备，仅当扫描到的蓝牙设备满足入参BluetoothSearchRequestParams指定的条件时，才通过callback异步返回该蓝牙设备信息。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**需要权限**：ohos.permission.APPROXIMATELY_LOCATION
+
+**系统能力**：SystemCapability.Location.Location.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+
+**参数**：
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| request | [BluetoothSearchRequestParams](#bluetoothsearchrequestparams) | 是 | 设置蓝牙扫描请求参数。 |
+| callback | Callback&lt;[BluetoothScanResult](#bluetoothscanresult16)&gt; | 是 | 回调函数，用于返回蓝牙扫描结果。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+|201 | Permission verification failed. The application does not have the permission required to call the API.              | 
+|401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.                 | 
+|801 | Capability not supported. Failed to call ${geoLocationManager.startBluetoothSearch} due to limited device capabilities.          |
+|3301000 | The location service is unavailable.                                           |
+|3301800 | Failed to start Bluetooth scanning.                                        |
+
+**示例**
+
+  ```ts
+  import { geoLocationManager } from '@kit.LocationKit';
+  
+  let callback = (bluetoothScanResult: geoLocationManager.BluetoothScanResult) => {
+    if (bluetoothScanResult) {
+      console.info('bluetoothScanResult: deviceId=' + bluetoothScanResult.deviceId);
+        try {
+           // 开发者需要考虑在合适的时机调用stopBluetoothSearch停止蓝牙扫描以节省功耗，本代码仅作为参考
+           geoLocationManager.stopBluetoothSearch(callback);
+        } catch (err) {
+           console.error("errCode:" + err.code + ", message:" + err.message);
+        }
+    }
+  };
+  let request: geoLocationManager.BluetoothSearchRequestParams = {
+    'rssiThreshold': -100,
+    'deviceIdArray': ['98:56:07:E6:AA:46','4E:E6:D2:02:27:F9']
+  };
+   
+  try {
+    geoLocationManager.startBluetoothSearch(request, callback);
+  } catch (err) {
+    console.error("errCode:" + err.code + ", message:" + err.message);
+  }
+  ```
+   
+## geoLocationManager.stopBluetoothSearch
+   
+stopBluetoothSearch(callback?: Callback&lt;BluetoothScanResult&gt;): void
+   
+停止蓝牙扫描，该回调函数需要与startBluetoothSearch接口传入的回调函数保持一致。若无此参数，则取消当前类型的所有订阅。
+   
+**起始版本：** 26.0.0
+   
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+   
+**系统能力**：SystemCapability.Location.Location.Core
+   
+**模型约束**：此接口仅可在Stage模型下使用。
+   
+**参数**：
+   
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | Callback&lt;[BluetoothScanResult](#bluetoothscanresult16)&gt; | 否 | 取消订阅的回调函数。该回调函数需要与on接口传入的回调函数保持一致。若无此参数，则取消当前类型的所有订阅。 |
+   
+**错误码**：
+   
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
+   
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+|401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.                               | 
+|801 | Capability not supported. Failed to call ${geoLocationManager.stopBluetoothSearch} due to limited device capabilities.          |
+|3301000 | The location service is unavailable.                                           |
+   
+**示例**
+   
+  ```ts
+  import { geoLocationManager } from '@kit.LocationKit';
+   
+  let request: geoLocationManager.BluetoothSearchRequestParams = {
+    'rssiThreshold': -100,
+    'deviceIdArray': ['98:56:07:E6:AA:46','4E:E6:D2:02:27:F9']
+  };
+  let callback = (bluetoothScanResult: geoLocationManager.BluetoothScanResult) => {
+    if (bluetoothScanResult) {
+      console.info('bluetoothScanResult: deviceId=' + bluetoothScanResult.deviceId);
+    }
+  };
+  try {
+    geoLocationManager.startBluetoothSearch(request, callback);
+    geoLocationManager.stopBluetoothSearch(callback);
+  } catch (err) {
+    console.error("errCode:" + err.code + ", message:" + err.message);
   }
   ```

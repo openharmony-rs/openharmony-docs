@@ -37,6 +37,14 @@ Checks whether the device supports automatic camera switch.
 | ----------------------------------------------- |-------------|
 | boolean               | Check result for the support of automatic camera switch. **true** if supported, **false** otherwise.|
 
+**Error codes**
+
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+
+| ID  | Error Message                                                                                                                                      |
+|---------|------------------------------------------------------------------------------------------------------------------------------------------------|
+| 7400103 | Session not config, only throw in session usage.<br>Applicable versions: 13-17|
+
 **Example**
 
 ```ts

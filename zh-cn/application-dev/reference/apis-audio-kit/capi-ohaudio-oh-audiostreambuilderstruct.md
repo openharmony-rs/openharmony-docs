@@ -1,18 +1,18 @@
 # OH_AudioStreamBuilderStruct
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
 ```c
-typedef struct OH_AudioStreamBuilderStruct OH_AudioStreamBuilder
+typedef struct OH_AudioStreamBuilderStruct OH_AudioStreamBuilder;
 ```
 
 ## 概述
 
-声明音频流的构造器。构造器实例通常被用来设置音频流属性和创建音频流。
+声明音频流的构造器。构造器实例用于设置音频流属性和创建音频流。
 
 **起始版本：** 10
 

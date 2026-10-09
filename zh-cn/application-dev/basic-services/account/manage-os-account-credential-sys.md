@@ -45,20 +45,15 @@
 
 2. 导入系统账号模块。
 
-   <!-- @[import_system_account_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManageSystemAccountCredentials/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-import { osAccount } from '@kit.BasicServicesKit';
-```
-
+   ```ts
+   import { osAccount } from '@kit.BasicServicesKit';
+   ```
 
 3. 创建凭据管理对象。
 
-   <!-- @[create_credential_management_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManageSystemAccountCredentials/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-      let userIDM: osAccount.UserIdentityManager = new osAccount.UserIdentityManager();
-```
+   ```ts
+   let userIDM: osAccount.UserIdentityManager = new osAccount.UserIdentityManager();
+   ```
 
 
 ## 注册PIN码输入器
@@ -69,28 +64,23 @@ import { osAccount } from '@kit.BasicServicesKit';
 
 1. 定义PIN码输入器，并获取PIN码。
 
-   <!-- @[define_pin_inputer_pinData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManageSystemAccountCredentials/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-      let pinData: Uint8Array = new Uint8Array([31, 32, 33, 34, 35, 36]);
-	// ···
-      let inputer: osAccount.IInputer = {
-        onGetData: (authSubType: osAccount.AuthSubType, callback: osAccount.IInputData) => {
-          callback.onSetData(authSubType, pinData);
-        }
-      }
-```
-
+   ```ts
+    let pinData: Uint8Array = new Uint8Array([31, 32, 33, 34, 35, 36]); // 示例值
+    // ···
+    let inputer: osAccount.IInputer = {
+       onGetData: (authSubType: osAccount.AuthSubType, callback: osAccount.IInputData) => {
+         callback.onSetData(authSubType, pinData);
+       }
+    }
+   ```
 
 2. 调用[registerInputer](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#registerinputer8)注册PIN码输入器。
 
-   <!-- @[call_the_api_to_register_the_inputer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManageSystemAccountCredentials/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-      let PINAuth: osAccount.PINAuth = new osAccount.PINAuth();
-	// ···
-      PINAuth.registerInputer(inputer);
-```
+   ```ts
+    let PINAuth: osAccount.PINAuth = new osAccount.PINAuth();
+    // ···
+    PINAuth.registerInputer(inputer);
+   ```
 
 
 ## 打开会话
@@ -99,7 +89,7 @@ import { osAccount } from '@kit.BasicServicesKit';
 
 具体开发实例如下：
 
-调用[openSession](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#opensession8)接口一个新的凭据管理会话。
+调用[openSession](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#opensession8)接口打开一个新的凭据管理会话。
 
    ```ts
    let session: Uint8Array = await userIDM.openSession();
@@ -113,30 +103,25 @@ import { osAccount } from '@kit.BasicServicesKit';
 
 1. 定义PIN码凭据信息。
 
-   <!-- @[define_pin_credential_information](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManageSystemAccountCredentials/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-      let credentialInfo :osAccount.CredentialInfo = {
-		// ···
-        credType:osAccount.AuthType.PIN,
-        credSubType:osAccount.AuthSubType.PIN_SIX,
-        token:new Uint8Array([0])
-      };
-```
-
+   ```ts
+   let credentialInfo :osAccount.CredentialInfo = {
+    // ···
+     credType:osAccount.AuthType.PIN,
+     credSubType:osAccount.AuthSubType.PIN_SIX,
+     token:new Uint8Array([0])
+   };
+   ```
 
 2. 调用[addCredential](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#addcredential8)接口添加指定的凭据信息，执行结果通过回调获取。
 
-   <!-- @[call_the_api_to_add_the_specified_credentials](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManageSystemAccountCredentials/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-        userIDM.addCredential(credentialInfo,{
-          onResult: (err, extraInfo)=>{
-            console.info('addCredential result: ' + JSON.stringify(err));
-            console.info('edential info: ' + JSON.stringify(extraInfo));
-			// ···
-          }})
-```
+   ```ts
+   userIDM.addCredential(credentialInfo,{
+    onResult: (err, extraInfo)=>{
+      console.info('addCredential result: ' + JSON.stringify(err));
+      console.info('addCredential info: ' + JSON.stringify(extraInfo));
+    // ···
+   }})
+   ```
 
 
 ## 认证PIN码
@@ -150,34 +135,29 @@ import { osAccount } from '@kit.BasicServicesKit';
    **定义挑战值：**
 
    ```ts
-   let challenge: Uint8Array = new Uint8Array([1, 2, 3, 4, 5]);
+   let challenge: Uint8Array = new Uint8Array([1, 2, 3, 4, 5]); // 示例值
    ```
 
    **定义认证类型、认证可信等级：**
 
-   <!-- @[define_parameters_pin_type_and_level_to_auth](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManageSystemAccountCredentials/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-        let authType: osAccount.AuthType = osAccount.AuthType.PIN;
-        let authTrustLevel: osAccount.AuthTrustLevel = osAccount.AuthTrustLevel.ATL1;
-```
-
+   ```ts
+   let authType: osAccount.AuthType = osAccount.AuthType.PIN;
+   let authTrustLevel: osAccount.AuthTrustLevel = osAccount.AuthTrustLevel.ATL1;
+   ```
 
 2. 调用[auth](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#auth8)接口进行认证。
 
-   <!-- @[call_the_auth_operation_for_authentication](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManageSystemAccountCredentials/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-        let userAuth: osAccount.UserAuth = new osAccount.UserAuth();
-        userAuth.auth(challenge, authType, authTrustLevel, {
-          onResult: (result: number, extraInfo: osAccount.AuthResult) => {
-            console.info('pin auth result = ' + result);
-            console.info('pin auth extraInfo = ' + JSON.stringify(extraInfo));
-            let authToken = extraInfo.token;
-			// ···
-          }
-        });
-```
+   ```ts
+   let userAuth: osAccount.UserAuth = new osAccount.UserAuth();
+      userAuth.auth(challenge, authType, authTrustLevel, {
+      onResult: (result: number, extraInfo: osAccount.AuthResult) => {
+         console.info('pin auth result = ' + result);
+         console.info('pin auth extraInfo = ' + JSON.stringify(extraInfo));
+         let authToken = extraInfo.token;
+        // ···
+      }
+   });
+   ```
 
 
 ## 录入生物识别凭据
@@ -190,58 +170,47 @@ PIN码认证成功后，可以录入人脸/指纹，操作流程与录入PIN码�
 
 2. 定义人脸凭据信息（以2D人脸为例）。
 
-   <!-- @[define_facial_credential_information](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManageSystemAccountCredentials/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
+   ```ts
     let faceCredInfo: osAccount.CredentialInfo = {
       credType: osAccount.AuthType.FACE,
       credSubType: osAccount.AuthSubType.FACE_2D,
-      token: new Uint8Array([1, 2, 3, 4, 5])
+      token: new Uint8Array([1, 2, 3, 4, 5]) // 示例值
     }
-```
-
+   ```
 
 3. 调用[addCredential](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#addcredential8)录入人脸凭据。
 
-   <!-- @[input_facial_credential_information](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManageSystemAccountCredentials/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-            userIDM.addCredential(faceCredInfo, {
-              onResult: (code: number, result: osAccount.RequestResult) => {
-                console.info('add face credential, resultCode: ' + code);
-                console.info('add face credential, request result: ' + result);
-				// ···
-              }
-            });
-```
-
+   ```ts
+   userIDM.addCredential(faceCredInfo, {
+      onResult: (code: number, result: osAccount.RequestResult) => {
+         console.info('add face credential, resultCode: ' + code);
+         console.info('add face credential, request result: ' + result);
+        // ···
+      }
+   });
+   ```
 
 4. 定义指纹凭据信息。
 
-   <!-- @[define_fingerprint_credential_information](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManageSystemAccountCredentials/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-    let fingerprintCredInfo: osAccount.CredentialInfo = {
+   ```ts
+   let fingerprintCredInfo: osAccount.CredentialInfo = {
       credType: osAccount.AuthType.FINGERPRINT,
       credSubType: osAccount.AuthSubType.FINGERPRINT_CAPACITIVE,
-      token: new Uint8Array([1, 2, 3, 4, 5])
-    }
-```
-
+      token: new Uint8Array([1, 2, 3, 4, 5]) // 示例值
+   }
+   ```
 
 5. 调用[addCredential](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#addcredential8)录入指纹凭据。
 
-   <!-- @[enter_the_fingerprint_credentials](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManageSystemAccountCredentials/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-            userIDM.addCredential(fingerprintCredInfo, {
-              onResult: (code: number, result: osAccount.RequestResult) => {
-                console.info('add fingerprint credential, resultCode: ' + code);
-                console.info('add fingerprint credential, request result: ' + result);
-				// ···
-              }
-            });
-```
+   ```ts
+   userIDM.addCredential(fingerprintCredInfo, {
+      onResult: (code: number, result: osAccount.RequestResult) => {
+         console.info('add fingerprint credential, resultCode: ' + code);
+         console.info('add fingerprint credential, request result: ' + result);
+        // ···
+      }
+   });
+   ```
 
 
 ## 认证生物识别凭据
@@ -255,34 +224,28 @@ PIN码认证成功后，可以录入人脸/指纹，操作流程与录入PIN码�
    **定义挑战值：**
 
    ```ts
-   let challenge: Uint8Array = new Uint8Array([1, 2, 3, 4, 5]);
+   let challenge: Uint8Array = new Uint8Array([1, 2, 3, 4, 5]); // 示例值
    ```
 
    **定义认证类型、认证可信等级：**
 
-   <!-- @[define_parameters_face_type_and_level_to_auth](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManageSystemAccountCredentials/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-        let authType: osAccount.AuthType = osAccount.AuthType.FACE;
-        let authTrustLevel: osAccount.AuthTrustLevel = osAccount.AuthTrustLevel.ATL1;
-```
-
+   ```ts
+   let authType: osAccount.AuthType = osAccount.AuthType.FACE;
+   let authTrustLevel: osAccount.AuthTrustLevel = osAccount.AuthTrustLevel.ATL1;
+   ```
 
 2. 调用auth接口进行认证。
 
-   <!-- @[call_the_auth_operation_for_face_authentication](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManageSystemAccountCredentials/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-        let userAuth: osAccount.UserAuth = new osAccount.UserAuth();
-        userAuth.auth(challenge, authType, authTrustLevel, {
-          onResult: (result: number, extraInfo: osAccount.AuthResult) => {
-            console.info('face auth result = ' + result);
-            console.info('face auth extraInfo = ' + JSON.stringify(extraInfo));
-			// ···
-          }
-        });
-```
-
+   ```ts
+   let userAuth: osAccount.UserAuth = new osAccount.UserAuth();
+      userAuth.auth(challenge, authType, authTrustLevel, {
+         onResult: (result: number, extraInfo: osAccount.AuthResult) => {
+         console.info('face auth result = ' + result);
+         console.info('face auth extraInfo = ' + JSON.stringify(extraInfo));
+        // ···
+      }
+   });
+   ```
 
 
 ## 更新凭据
@@ -295,32 +258,26 @@ PIN码认证成功后，可以录入人脸/指纹，操作流程与录入PIN码�
 
 2. 定义待更新凭据信息。
 
-   <!-- @[define_the_credential_information_to_be_updated](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManageSystemAccountCredentials/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-    let credentialInfo :osAccount.CredentialInfo = {
-	// ···
+   ```ts
+   let credentialInfo :osAccount.CredentialInfo = {
+    // ···
       credType:osAccount.AuthType.PIN,
       credSubType:osAccount.AuthSubType.PIN_SIX,
-      token:new Uint8Array([1, 2, 3, 4, 5])
-    };
-```
-
-
+      token:new Uint8Array([1, 2, 3, 4, 5]) // 示例值
+   };
+   ```
 
 3. 调用[updateCredential](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#updatecredential8)更新凭据。
 
-   <!-- @[update_your_credentials](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManageSystemAccountCredentials/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-          userIDM.updateCredential(credentialInfo, {
-            onResult:(result: number, extraInfo: osAccount.RequestResult)=>{
-              console.info('updateCredential result: ' + JSON.stringify(result));
-              console.info('updateCredential extraInfo: ' + JSON.stringify(extraInfo));
-			// ···
-            }
-          })
-```
+   ```ts
+   userIDM.updateCredential(credentialInfo, {
+      onResult:(result: number, extraInfo: osAccount.RequestResult)=>{
+         console.info('updateCredential result: ' + JSON.stringify(result));
+         console.info('updateCredential extraInfo: ' + JSON.stringify(extraInfo));
+        // ···
+      }
+   })
+   ```
 
 
 ## 查询凭据信息
@@ -335,14 +292,12 @@ PIN码认证成功后，可以录入人脸/指纹，操作流程与录入PIN码�
    let enrolledCredInfoList: osAccount.EnrolledCredInfo[] = await userIDM.getAuthInfo();
    ```
 
-2. 调用[getAuthInfo](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#getauthinfo8)接口，获取指定类型的凭据信息（以指纹凭据为例）。
+2. 调用[getAuthInfo](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#getauthinfo8)接口，获取指定类型的凭据信息（以PIN码凭据为例）。
 
-   <!-- @[obtain_credential_information_of_the_specified_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManageSystemAccountCredentials/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-      let enrolledFingerCredInfoList: osAccount.EnrolledCredInfo[] =
+   ```ts
+      let enrolledPinCredInfoList: osAccount.EnrolledCredInfo[] =
         await userIDM.getAuthInfo(osAccount.AuthType.PIN);
-```
+   ```
 
 
 ## 删除凭据
@@ -353,35 +308,29 @@ PIN码认证成功后，可以录入人脸/指纹，操作流程与录入PIN码�
 
 1. 获取指纹类型的凭据信息。
 
-   <!-- @[obtain_the_credential_information_of_the_fingerprint_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManageSystemAccountCredentials/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-    let credentialId: Uint8Array = new Uint8Array([1, 2, 3, 4, 5]);
-    let token: Uint8Array = new Uint8Array([1, 2, 3, 4, 5]);
+   ```ts
+    let credentialId: Uint8Array = new Uint8Array([1, 2, 3, 4, 5]); // 示例值
+    let token: Uint8Array = new Uint8Array([1, 2, 3, 4, 5]); // 示例值
     let credInfoList: osAccount.EnrolledCredInfo[] = 
       await userIDM.getAuthInfo(osAccount.AuthType.FINGERPRINT);
     if (credInfoList.length != 0) {
       credentialId = credInfoList[0].credentialId;
     }
-```
-
-
+   ```
 
 2. [认证PIN码](#认证pin码)，获取授权令牌。
 
 3. 调用[delCred](../../reference/apis-basic-services-kit/js-apis-osAccount-sys.md#delcred8)接口，删除指定凭据。
 
-   <!-- @[delete_specified_credentials](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManageSystemAccountCredentials/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-            userIDM.delCred(credentialId, authResult.token, {
-              onResult: (result: number, extraInfo: osAccount.RequestResult) => {
-                console.info('delCred result = ' + result);
-                console.info('delCred extraInfo = ' + JSON.stringify(extraInfo));
-				// ···
-              }
-            });
-```
+   ```ts
+   userIDM.delCred(credentialId, authResult.token, {
+      onResult: (result: number, extraInfo: osAccount.RequestResult) => {
+      console.info('delCred result = ' + result);
+      console.info('delCred extraInfo = ' + JSON.stringify(extraInfo));
+        // ···
+      }
+   });
+   ```
 
 
 ## 注销PIN码输入器
@@ -390,11 +339,9 @@ PIN码认证成功后，可以录入人脸/指纹，操作流程与录入PIN码�
 
 具体开发实例如下：
 
-<!-- @[deactivate_pin_input_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManageSystemAccountCredentials/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-          PINAuth.unregisterInputer();
-```
+   ```ts
+   PINAuth.unregisterInputer();
+   ```
 
 
 ## 关闭会话
@@ -403,9 +350,9 @@ PIN码认证成功后，可以录入人脸/指纹，操作流程与录入PIN码�
 
 具体开发实例如下：
 
-<!-- @[close_the_session_and_end_credential_management](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Account/ManageSystemAccountCredentials/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-          userIDM.closeSession(this.cid);
-```
+   ```ts
+   let userIDM = new osAccount.UserIdentityManager();
+   let accountId = 100; // 示例值
+   userIDM.closeSession(accountId);
+   ```
 

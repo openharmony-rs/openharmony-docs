@@ -11,7 +11,7 @@
 
 ## 接口说明
 
-具体参数、返回值、错误码等描述，请参考对应的[API文档](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#userauthgetauthlockstate22)。
+具体参数、返回值、错误码等描述，请参考对应的[userAuth.getAuthLockState](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#userauthgetauthlockstate22)。
 
 | 接口名称 | 功能描述 |
 | -------- | -------- |
@@ -25,21 +25,21 @@
 
 以查询PIN认证类型的认证冻结状态为例：
 
-<!-- @[obtain_auth_lock_state_capabilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[obtain_auth_lock_state_capabilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 async obtainingAuthLockState() : Promise<string> {
   try {
     Logger.info(`get auth lock state start`);
     const authLockState : userAuth.AuthLockState = await userAuth.getAuthLockState(userAuth.UserAuthType.PIN);
-    if (authLockState.lockoutDuration === userAuth.PERMANENT_LOCKOUT_DURATION) {
-      Logger.info('the authentication of given authType is permanent locked');
+    if (authLockState.isLocked && authLockState.lockoutDuration === userAuth.PERMANENT_LOCKOUT_DURATION) {
+      Logger.info('the authentication of given authType is permanent locked.');
     }
     const authLockStateContent : string = JSON.stringify(authLockState);
-    Logger.info(`get auth lock state success, authLockState is: ${authLockStateContent}`);
+    Logger.info('get auth lock state successfully.');
     return authLockStateContent;
   } catch (error) {
-    const errorMessage : string = `get auth lock state failed， err code is : ${error?.code}, err message is : ${error?.message}`;
+    const errorMessage : string = `get auth lock state failed, err code is : ${error?.code}, err message is : ${error?.message}`;
     Logger.error(errorMessage);
     return errorMessage;
   }
@@ -48,4 +48,4 @@ async obtainingAuthLockState() : Promise<string> {
 
 ## 示例代码
 
-  - [查询指定认证类型的认证冻结状态](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication)
+  - [查询指定认证类型的认证冻结状态](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication)

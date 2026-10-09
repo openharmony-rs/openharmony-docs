@@ -1,8 +1,8 @@
 # Using AVMetadataExtractor to Extract Audio and Video Metadata (ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @hanzhengshi-->
+<!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -12,9 +12,9 @@ The full process of obtaining the metadata of a media asset includes creating an
 
 ## How to Develop
 
-Read [AVMetadataExtractor](../../reference/apis-media-kit/arkts-apis-media-AVMetadataExtractor.md) for the API reference.
+For details about the APIs, see [AVMetadataExtractor](../../reference/apis-media-kit/arkts-apis-media-AVMetadataExtractor.md).
 
-1. Call **createAVMetadataExtractor()** to create an AVMetadataExtractor instance.
+1. Use [createAVMetadataExtractor()](../../reference/apis-media-kit/arkts-apis-media-f.md#mediacreateavmetadataextractor11-1) to create an instance.
    ```ts
    import { media } from '@kit.MediaKit';
    // Create an AVMetadataExtractor instance.
@@ -26,87 +26,87 @@ Read [AVMetadataExtractor](../../reference/apis-media-kit/arkts-apis-media-AVMet
    You need to check the resource validity and set either property based on the actual situation.
    
    - To set **fdSrc**, use **ResourceManager.getRawFd** to obtain the file descriptor of the resource file packed in the HAP. For details, see [ResourceManager API Reference](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfd9). You can also access the resource through the application sandbox path (ensure that the resource is available). For details, see [Obtaining Application File Paths](../../application-models/application-context-stage.md#obtaining-application-file-paths). For details about the application sandbox and how to push files to the application sandbox directory, see [File Management](../../file-management/app-sandbox-directory.md).
-      ```ts
-      import { common } from '@kit.AbilityKit';
-      import { media } from '@kit.MediaKit';
+     ```ts
+     import { common } from '@kit.AbilityKit';
+     import { media } from '@kit.MediaKit';
 
-      // Create an AVMetadataExtractor instance.
-      let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
-      // Obtain the file descriptor of the resource file in the rawfile directory and set the fdSrc property.
-      // Obtain the context of the ability to which the current component belongs and obtain the application file path through the context.
-      let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-      // Set fdSrc. test.mp3 is a preset resource in the rawfile directory. Replace it with the actual one.
-      avMetadataExtractor.fdSrc = await context.resourceManager.getRawFd('test.mp3');
-      ```
+     // Create an AVMetadataExtractor instance.
+     let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
+     // Obtain the file descriptor of the resource file in the rawfile directory and set the fdSrc property.
+     // Obtain the context of the ability to which the current component belongs and obtain the application file path through the context.
+     let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+     // Set fdSrc. test.mp3 is a preset resource in the rawfile directory. Replace it with the actual one.
+     avMetadataExtractor.fdSrc = await context.resourceManager.getRawFd('test.mp3');
+     ```
 
    - To set **dataSrc**, set **callback** in **dataSrc** to ensure that the corresponding resource can be correctly read when the callback is invoked, and use the application sandbox directory to access the resource. For details, see [Obtaining Application File Paths](../../application-models/application-context-stage.md#obtaining-application-file-paths). For details about the application sandbox and how to push files to the application sandbox directory, see [File Management](../../file-management/app-sandbox-directory.md).
-      ```ts
-      import { fileIo as fs, ReadOptions } from '@kit.CoreFileKit';
-      import { common } from '@kit.AbilityKit';
-      import { media } from '@kit.MediaKit';
-      const TAG = 'MetadataDemo';
+     ```ts
+     import { fileIo, ReadOptions } from '@kit.CoreFileKit';
+     import { common } from '@kit.AbilityKit';
+     import { media } from '@kit.MediaKit';
+     const TAG = 'MetadataDemo';
 
-      // Create an AVMetadataExtractor instance.
-      let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
-      let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-      let rootPath: string = context.filesDir; // Application file directory.
-      let testFilename: string = '/test.mp3'; // test.mp3 is a preset resource in the application file directory. Replace it with the actual one.
-      // Use the file system to open the sandbox address to obtain the media file address and set the dataSrc property.
-      // Obtain the sandbox address filesDir through UIAbilityContext. The stage model is used as an example.
-      let fd: number = fs.openSync(rootPath + testFilename).fd;
-      let fileSize: number = fs.statSync(rootPath + testFilename).size;
-      // Set the dataSrc descriptor, obtain resources from the file through a callback, and write the resources to the buffer.
-      let dataSrc: media.AVDataSrcDescriptor = {
-        fileSize: fileSize,
-        callback: (buffer, len, pos) => {
-          if (buffer == undefined || len == undefined || pos == undefined) {
-            console.error(TAG, `dataSrc callback param invalid`);
-            return -1;
-          }
-          let options: ReadOptions = {
-            offset: pos,
-            length: len
-          };
-          let num = fs.readSync(fd, buffer, options);
-          console.info(TAG, 'readAt end, num: ' + num);
-          if (num > 0 && fileSize >= pos) {
-            return num;
-          }
-          return -1;
-        }
-      };
-      // Set the dataSrc property.
-      avMetadataExtractor.dataSrc = dataSrc;
-      ```
+     // Create an AVMetadataExtractor instance.
+     let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
+     let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+     let rootPath: string = context.filesDir; // Application file directory.
+     let testFilename: string = '/test.mp3'; // test.mp3 is a preset resource in the application file directory. Replace it with the actual one.
+     // Use the fileIo system to open the sandbox address to obtain the media file address and set the dataSrc property.
+     // Obtain the sandbox address filesDir through UIAbilityContext. The stage model is used as an example.
+     let fd: number = fileIo.openSync(rootPath + testFilename).fd;
+     let fileSize: number = fileIo.statSync(rootPath + testFilename).size;
+     // Set the dataSrc descriptor, obtain resources from the file through a callback, and write the resources to the buffer.
+     let dataSrc: media.AVDataSrcDescriptor = {
+       fileSize: fileSize,
+       callback: (buffer, len, pos) => {
+         if (buffer == undefined || len == undefined || pos == undefined) {
+           console.error(TAG, `dataSrc callback param invalid`);
+           return -1;
+         }
+         let options: ReadOptions = {
+           offset: pos,
+           length: len
+         };
+         let num = fileIo.readSync(fd, buffer, options);
+         console.info(TAG, 'readAt end, num: ' + num);
+         if (num > 0 && fileSize >= pos) {
+           return num;
+         }
+         return -1;
+       }
+     };
+     // Set the dataSrc property.
+     avMetadataExtractor.dataSrc = dataSrc;
+     ```
 
    - If [setUrlSource](../../reference/apis-media-kit/arkts-apis-media-AVMetadataExtractor.md#seturlsource20) is used, fill in both the **url** and **headers** properties correctly to ensure that the URL is accessible.
-      ```ts
-      import { media } from '@kit.MediaKit';
+     ```ts
+     import { media } from '@kit.MediaKit';
 
-      // Create an AVMetadataExtractor instance.
-      let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
-      // Call setUrlSource to set the URL of the online on-demand media resource, so as to obtain online audio and video metadata and online video thumbnails.
-      let url: string = 'http://xx.mp4';
-      let headers: Record<string, string> = {
-        "User-Agent" : "User-Agent-Value"
-      };
-      avMetadataExtractor.setUrlSource(url, headers);
-      ```
+     // Create an AVMetadataExtractor instance.
+     let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
+     // Call setUrlSource to set the URL of the online on-demand media resource, so as to obtain online audio and video metadata and online video thumbnails.
+     let url: string = 'http://xx.mp4';
+     let headers: Record<string, string> = {
+       "User-Agent" : "User-Agent-Value"
+     };
+     avMetadataExtractor.setUrlSource(url, headers);
+     ```
 
    - If different AVMetadataExtractor or [AVImageGenerator](../../reference/apis-media-kit/arkts-apis-media-AVImageGenerator.md) instances need to operate the same resource, the file descriptor needs to be opened for multiple times. Therefore, do not share a file descriptor.
-      ```ts
-      import { common } from '@kit.AbilityKit';
-      import { fileIo as fs } from '@kit.CoreFileKit';
-      import { media } from '@kit.MediaKit';
+     ```ts
+     import { common } from '@kit.AbilityKit';
+     import { fileIo } from '@kit.CoreFileKit';
+     import { media } from '@kit.MediaKit';
 
-      // Create an AVMetadataExtractor instance.
-      let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
-      // Use the file system to open the sandbox address to obtain the media file address and set the fdSrc property.
-      let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-      let rootPath: string = context.filesDir; // Application file directory.
-      let testFilename: string = '/test.mp3'; // test.mp3 is a preset resource in the application file directory. Replace it with the actual one.
-      avMetadataExtractor.fdSrc = fs.openSync(rootPath + testFilename); // Set the fdSrc property.
-      ```
+     // Create an AVMetadataExtractor instance.
+     let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
+     // Use the fileIo system to open the sandbox address to obtain the media file address and set the fdSrc property.
+     let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+     let rootPath: string = context.filesDir; // Application file directory.
+     let testFilename: string = '/test.mp3'; // test.mp3 is a preset resource in the application file directory. Replace it with the actual one.
+     avMetadataExtractor.fdSrc = fileIo.openSync(rootPath + testFilename); // Set the fdSrc property.
+     ```
 
 3. Obtain metadata. Specifically, call **fetchMetadata()** to obtain an [AVMetadata](../../reference/apis-media-kit/arkts-apis-media-i.md#avmetadata11) object. You can access its properties to obtain the metadata.
    ```ts
@@ -163,8 +163,36 @@ Read [AVMetadataExtractor](../../reference/apis-media-kit/arkts-apis-media-AVMet
    // Obtain the video thumbnail (promise mode).
    this.pixelMap = await avMetadataExtractor.fetchFrameByTime(timeUs, queryOption, param);
    ```
-   
-7. Call **release()** to release the AVMetadataExtractor instance.
+
+7. (Optional) Call **fetchFramesByTimes** to obtain video thumbnails in batches.
+   ```ts
+   import { image } from '@kit.ImageKit';
+   // Declare a pixelMap object, which is used for image display.
+   @State pixelMap: image.PixelMap | undefined = undefined;
+   // Declare the input parameters of the API.
+   let timesUs: number[] = [0];
+   let queryOption: media.AVImageQueryOptions = media.AVImageQueryOptions.AV_IMAGE_QUERY_PREVIOUS_SYNC;
+   let param: media.PixelMapParams = {
+     width : 300,
+     height : 300
+   }
+   // Obtain the video thumbnail (callback mode).
+   avMetadataExtractor.fetchFramesByTimes(timesUs, queryOption, param, async (frameInfo: media.FrameInfo, err: BusinessError) => {
+     if (err) {
+       console.error(`fetch failed, error = ${JSON.stringify(err)}`);
+       return;
+     }
+     console.info(`fetch success.`);
+     if (frameInfo !== undefined && frameInfo.image !== undefined) {
+       this.pixelMap = frameInfo.image;
+     }
+   })
+
+   // Batch thumbnail extraction may take a long time. You can call cancelAllFetchFrames to stop all thumbnail extraction tasks on the current extractor (effective only for batch extraction APIs).
+   avMetadataExtractor.cancelAllFetchFrames();
+   ```
+
+8. Call **release()** to release the instance.
    ```ts
    // Release the instance (callback mode).
    avMetadataExtractor.release((error) => {
@@ -184,7 +212,7 @@ Read [AVMetadataExtractor](../../reference/apis-media-kit/arkts-apis-media-AVMet
 Refer to the sample project to obtain audio metadata and album cover.
 
 1. Create a project, download the [sample project](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS), and copy its resources to the corresponding directories.
-    ```
+   ```txt
     AVMetadataExtractorArkTS
     entry/src/main/ets/
     └── pages
@@ -199,5 +227,5 @@ Refer to the sample project to obtain audio metadata and album cover.
     │
     └── rawfile
         └── test.mp3 (audio resource)
-    ```
+   ```
 2. Compile and run the project.

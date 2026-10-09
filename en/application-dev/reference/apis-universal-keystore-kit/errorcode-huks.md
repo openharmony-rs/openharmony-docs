@@ -122,7 +122,7 @@ Locate and rectify the IPC failure.
 
 **Error Message**
 
-Crypto engine error or Ukey driver error.
+Crypto engine error or UKey driver error.
 
 **Description**
 
@@ -193,7 +193,7 @@ The token of the current user has timed out.
 
 **Possible Causes**
 
-The authentication failed because the authentication token timed out.
+The user authentication access control attribute is set for the key, and the authentication timeout interval (**timeout**) is specified. However, the user authentication is not completed within the **timeout** period after the key **init** operation. As a result, the authentication token expires, and the current key session becomes invalid.
 
 **Solution**
 
@@ -249,11 +249,17 @@ The device environment or input parameters are abnormal.
 
 **Possible Causes**
 
-An external error, such as a hardware fault or file error, occurs.
+<!--RP1-->
+The external hardware, file, or input parameter is abnormal.
+ <!--RP1End-->
 
 **Solution**
 
-Provide the error code and log information to the related party.
+<!--RP2-->
+1. Check whether the input parameters are valid and whether the parameter types and value ranges meet the requirements.
+2. Check whether the device environment is normal and whether the hardware and system status are normal.
+3. If no error is found, submit the error code and logs to the community for help.
+<!--RP2End-->
 
 ## 12000013 The Credential Does Not Exist
 
@@ -370,7 +376,7 @@ The provider to be registered already exists.
 
 **Possible Causes**
 
-The provider to be registered already exists.
+The provider with the same name is registered repeatedly, or the previously registered provider is not unregistered.
 
 **Solution**
 
@@ -398,7 +404,7 @@ Check the cause of the error reported by the downstream module based on the erro
 
 **Error Message**
 
-The Ukey PIN is locked.
+The UKey PIN is locked.
 
 **Description**
 
@@ -416,7 +422,7 @@ Contact the bank to unlock the UKey.
 
 **Error Message**
 
-The Ukey PIN is incorrect.
+The UKey PIN is incorrect.
 
 **Description**
 
@@ -434,7 +440,7 @@ Enter the correct PIN.
 
 **Error Message**
 
-The Ukey PIN is not authenticated.
+The UKey PIN is not authenticated.
 
 **Description**
 
@@ -446,13 +452,13 @@ PIN authentication is required for the operation, but the PIN has not been authe
 
 **Solution**
 
-PIN authentication is required for the operation, but the PIN has not been authenticated.
+Authenticate the UKey PIN and then perform the operation that requires authentication.
 
 ## 12000024 Device or Resource Busy
 
 **Error Message**
 
-The provider or Ukey is busy.
+The provider or UKey is busy.
 
 **Description**
 
@@ -483,3 +489,22 @@ The resource limit is exceeded.
 **Solution**
 
 Check whether there are unreleased resources. If yes, release the resources and try again.
+
+## 12000026 Secure Element Fault
+
+**Error Message**
+
+the secure element is not available.
+
+**Description**
+
+The secure element is faulty.
+
+**Possible Causes**
+
+The secure element is faulty.
+
+**Solution**
+
+1. Try again later or restart the device and try again.
+2. If the fault persists, submit the error code and logs to the community.

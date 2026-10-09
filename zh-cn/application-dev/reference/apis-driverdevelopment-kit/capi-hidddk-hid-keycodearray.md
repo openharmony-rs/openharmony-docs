@@ -1,10 +1,10 @@
 # Hid_KeyCodeArray
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
 
 ```c
 typedef struct Hid_KeyCodeArray {...} Hid_KeyCodeArray
@@ -12,7 +12,7 @@ typedef struct Hid_KeyCodeArray {...} Hid_KeyCodeArray
 
 ## 概述
 
-键值属性数组。
+键值属性编码数组，用于存储HID设备支持的键值编码信息。
 
 **起始版本：** 11
 
@@ -26,7 +26,7 @@ typedef struct Hid_KeyCodeArray {...} Hid_KeyCodeArray
 
 | 名称 | 描述 |
 | -- | -- |
-| Hid_KeyCode* hidKeyCode | 键值编码 |
-| uint16_t length | 数组长度 |
+| [Hid_KeyCode](capi-hid-ddk-types-h.md#hid_keycode)* hidKeyCode | 键值属性编码数组的指针，指向调用方预先分配的数组（不允许为空指针），数组大小不小于length。 |
+| uint16_t length | 数组的有效长度，不超过hidKeyCode数组的实际长度。 |
 
 

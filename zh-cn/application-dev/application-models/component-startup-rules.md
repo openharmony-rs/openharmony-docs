@@ -1,16 +1,16 @@
-# 组件启动规则（Stage模型）
+# 组件启动规则
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @littlejerry1-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 启动组件是指一切启动或连接应用组件的行为：
 
 
-- 启动[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)、ServiceExtensionAbility、DataShareExtensionAbility，如使用[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)、startServiceExtensionAbility()、[startAbilityByCall()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall)、[openLink()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#openlink12)等相关接口。
+- 启动[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)、<!--Del-->ServiceExtensionAbility、<!--DelEnd-->DataShareExtensionAbility，如使用[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)、<!--Del-->startServiceExtensionAbility()、<!--DelEnd-->[startAbilityByCall()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall)、[openLink()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#openlink12)等相关接口。
 
 - 连接ServiceExtensionAbility、DataShareExtensionAbility，如使用[connectServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability)、createDataShareHelper()等相关接口。
 
@@ -21,7 +21,7 @@
 
 - 后台应用任意弹框，如各种广告弹窗，影响用户使用。
 
-- 后台应用相互唤醒，不合理的占用系统资源，导致系统功耗增加或系统卡顿。
+- 后台应用相互唤醒，不合理地占用系统资源，导致系统功耗增加或系统卡顿。
 
 - 前台应用任意跳转至其他应用，如随意跳转到其他应用的支付页面，存在安全风险。
 
@@ -55,7 +55,7 @@
 
 - 启动ServiceExtensionAbility、DataShareExtensionAbility。
 
-- 通过[startAbilityByCall](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall)接口启动UIAbility。
+- 通过[startAbilityByCall()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall)接口启动UIAbility。
 
 > **说明：**
 > 
@@ -72,7 +72,7 @@
 
 - 启动ServiceExtensionAbility、DataShareExtensionAbility。
 
-- 通过[startAbilityByCall](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall)接口启动UIAbility。
+- 通过[startAbilityByCall()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall)接口启动UIAbility。
 
 > **说明：**
 > 

@@ -1,7 +1,7 @@
 # 使用AVPlayer添加视频外挂字幕(ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @xushubo; @chennotfound-->
+<!--Owner: @chennotfound-->
 <!--Designer: @dongyu_dy-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
@@ -31,7 +31,7 @@
 
     // 设定字幕。
     let fileDescriptorSub = await this.context?.resourceManager.getRawFd('xxx.srt');
-    this.avPlayer.addSubtitleFromFd(fileDescriptorSub.fd, fileDescriptorSub.offset, fileDescriptorSub.length);
+    this.avPlayer.addSubtitleFromFd(fileDescriptorSub?.fd, fileDescriptorSub?.offset, fileDescriptorSub?.length);
    ```
 
 2. 调用[on('subtitleUpdate')](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#onsubtitleupdate12)接口，注册字幕回调函数。
@@ -59,7 +59,7 @@
     });
    ```
 
-3. (可选)当需要不显示字幕的时候，使用视频播放的AVPlayer实例注销字幕回调函数。
+3. （可选）当需要不显示字幕的时候，使用视频播放的AVPlayer实例注销字幕回调函数。
 
    ```ts
     import { media } from '@kit.MediaKit';
@@ -74,7 +74,7 @@
 ## 运行完整示例
 
 1. 新建工程，下载[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSSubtitle)，并将示例工程的以下资源复制到对应目录。
-    ```
+   ```text
     AVPlayerArkTSSubtitle
     entry/src/main/ets/
     └── pages
@@ -91,6 +91,6 @@
     └── rawfile
         ├── test1.mp4 （视频资源）
         └── test1.srt （字幕资源）
-    ```
+   ```
 
 2. 编译新建工程并运行。

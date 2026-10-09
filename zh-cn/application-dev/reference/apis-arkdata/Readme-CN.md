@@ -50,9 +50,9 @@
     - [@ohos.data.distributedData (分布式数据管理)](js-apis-distributed-data.md)
     - [@ohos.data.rdb (关系型数据库)](js-apis-data-rdb.md)
     - [@ohos.data.storage (轻量级存储)](js-apis-data-storage.md)
-    - [@system.storage数据存储](js-apis-system-storage.md)
+    - [@system.storage (数据存储)](js-apis-system-storage.md)
     - data/rdb<!--data-rdb-->
-      - [resultSet结果集](js-apis-data-resultset.md)
+      - [resultSet (结果集)](js-apis-data-resultset.md)
 - ArkTS 组件<!--arkdata-comp-->
   - [@ohos.data.UdmfComponents (内容卡片)](js-apis-data-UdmfComponents.md)
 - C API<!--arkdata-c-->
@@ -122,6 +122,7 @@
     - [OH_UdmfOptions](capi-udmf-oh-udmfoptions.md)
     - [OH_UdmfDataLoadParams](capi-udmf-oh-udmfdataloadparams.md)
     - [OH_UdmfDataLoadInfo](capi-udmf-oh-udmfdataloadinfo.md)
+    - [OH_UDMF_Summary](capi-udmf-oh-udmf-summary.md)
     - [OH_UdsPlainText](capi-udmf-oh-udsplaintext.md)
     - [OH_UdsHyperlink](capi-udmf-oh-udshyperlink.md)
     - [OH_UdsHtml](capi-udmf-oh-udshtml.md)

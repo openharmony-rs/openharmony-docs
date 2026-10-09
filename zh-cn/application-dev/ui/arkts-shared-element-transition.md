@@ -1,10 +1,10 @@
 # 共享元素转场 (一镜到底)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
-<!--Adviser: @ge-yafang-->
+<!--Adviser: @ge-yafang; @Brilliantry_Rui-->
 
 共享元素转场是一种界面切换时对相同或者相似的两个元素做的一种位置和大小匹配的过渡动画效果，也称一镜到底动效。
 
@@ -12,7 +12,7 @@
 
 | 一帧切换效果 | 一镜到底效果 |
 | ------ | ---- |
-| ![zh-cn_image_0000001599644876](figures/zh-cn_image_0000001599644876.gif)|![zh-cn_image_0000001599644877](figures/zh-cn_image_0000001599644877.gif) |
+| ![Frame-transition-effect](figures/Frame-transition-effect.gif)|![one-shot-style](figures/one-shot-style.gif) |
 
 一镜到底的动效有多种实现方式，在实际开发过程中，应根据具体场景选择合适的方法进行实现。
 
@@ -21,8 +21,8 @@
 | 一镜到底实现方式 | 特点 | 适用场景 |
 | ------ | ---- | ---- |
 | 不新建容器直接变化原容器 | 不发生路由跳转，需要在一个组件中实现展开及关闭两种状态的布局，展开后组件层级不变。| 适用于转场开销小的简单场景，如点开页面无需加载大量数据及组件。 |
-| 新建容器并跨容器迁移组件 | 通过使用NodeController，将组件从一个容器迁移到另一个容器，在开始迁移时，需要根据前后两个布局的位置大小等信息对组件添加位移及缩放，确保迁移开始时组件能够对齐初始布局，避免出现视觉上的跳变现象。之后再添加动画将位移及缩放等属性复位，实现组件从初始布局到目标布局的一镜到底过渡效果。 | 适用于新建对象开销大的场景，如视频直播组件点击转为全屏等。 |
-| 使用geometryTransition共享元素转场 | 利用系统能力，转场前后两个组件调用geometryTransition接口绑定同一id，同时将转场逻辑置于animateTo动画闭包内，这样系统侧会自动为二者添加一镜到底的过渡效果。 | 系统将调整绑定的两个组件的宽高及位置至相同值，并切换二者的透明度，以实现一镜到底过渡效果。因此，为了实现流畅的动画效果，需要确保对绑定geometryTransition的节点添加宽高动画不会有跳变。此方式适用于创建新节点开销小的场景。 |
+| 新建容器并跨容器迁移组件 | 通过使用[NodeController](../reference/apis-arkui/js-apis-arkui-nodeController.md)，将组件从一个容器迁移到另一个容器，在开始迁移时，需要根据前后两个布局的位置大小等信息对组件添加位移及缩放，确保迁移开始时组件能够对齐初始布局，避免出现视觉上的跳变现象。之后再添加动画将位移及缩放等属性复位，实现组件从初始布局到目标布局的一镜到底过渡效果。 | 适用于新建对象开销大的场景，如视频直播组件点击转为全屏等。 |
+| 使用geometryTransition共享元素转场 | 利用系统能力，转场前后两个组件调用[geometryTransition](../reference/apis-arkui/arkui-ts/ts-transition-animation-geometrytransition.md)接口绑定同一id，同时将转场逻辑置于[animateTo](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md)动画闭包内，这样系统侧会自动为二者添加一镜到底的过渡效果。 | 系统将调整绑定的两个组件的宽高及位置至相同值，并切换二者的透明度，以实现一镜到底过渡效果。因此，为了实现流畅的动画效果，需要确保对绑定geometryTransition的节点添加宽高动画不会有跳变。此方式适用于创建新节点开销小的场景。 |
 
 ## 不新建容器并直接变化原容器
 
@@ -193,7 +193,7 @@ export default struct Post {
 }
 ```
 
-![zh-cn_image_0000001600653160](figures/zh-cn_image_0000001600653160.gif)
+![one-shot-style-container](figures/one-shot-style-container.gif)
 
 ## 新建容器并跨容器迁移组件
 
@@ -581,7 +581,7 @@ export const deleteNode = (id: string) => {
 }
 ```
 
-![zh_cn_image_sharedElementsNodeTransfer](figures/zh-cn_image_sharedElementsNodeTransfer.gif)
+![sharedElementsNodeTransfer](figures/sharedElementsNodeTransfer.gif)
 
 ### 结合Navigation使用
 
@@ -1372,7 +1372,7 @@ export const getMyNode = (): MyNodeController | undefined => {
 }
 ```
 
-![zh-cn_image_NavigationNodeTransfer](figures/zh-cn_image_NavigationNodeTransfer.gif)
+![NavigationNodeTransfer](figures/NavigationNodeTransfer.gif)
 
 ### 结合BindSheet使用
 
@@ -1405,7 +1405,7 @@ export const getMyNode = (): MyNodeController | undefined => {
 ```
 
 ```ts
-// index.ets
+// Index.ets
 import { MyNodeController, createMyNode, getMyNode } from '../NodeContainer/CustomComponent';
 import { ComponentAttrUtils, RectInfoInPx } from '../utils/ComponentAttrUtils';
 import { WindowUtils } from '../utils/WindowUtils';
@@ -1473,8 +1473,8 @@ struct Index {
           this.clipHeight = this.targetInfo.clipHeight;
           // 修正因半模态高度和缩放导致的高度差
           this.translateY = this.targetInfo.translateY +
-            (this.getUIContext().px2vp(WindowUtils.windowHeight_px) - this.bindSheetHeight
-              - this.getUIContext().px2vp(WindowUtils.navigationIndicatorHeight_px) - this.getUIContext().px2vp(WindowUtils.topAvoidAreaHeight_px));
+            (this.getUIContext().px2vp(WindowUtils.windowHeightPx) - this.bindSheetHeight
+              - this.getUIContext().px2vp(WindowUtils.navigationIndicatorHeightPx) - this.getUIContext().px2vp(WindowUtils.topAvoidAreaHeightPx));
           // 修正因缩放导致的圆角差异
           this.radius = this.sheetRadius / this.scaleValue
         })
@@ -1496,8 +1496,8 @@ struct Index {
     let itemInfo: RectInfoInPx =
       ComponentAttrUtils.getRectInfoById(WindowUtils.window.getUIContext(), id);
     // 首先计算图片的宽高与窗口宽高的比例
-    let widthScaleRatio = itemInfo.width / WindowUtils.windowWidth_px;
-    let heightScaleRatio = itemInfo.height / WindowUtils.windowHeight_px;
+    let widthScaleRatio = itemInfo.width / WindowUtils.windowWidthPx;
+    let heightScaleRatio = itemInfo.height / WindowUtils.windowHeightPx;
     let isUseWidthScale = widthScaleRatio > heightScaleRatio;
     let itemScale: number = isUseWidthScale ? widthScaleRatio : heightScaleRatio;
     let itemTranslateX: number = 0;
@@ -1506,15 +1506,15 @@ struct Index {
     let itemTranslateY: number = 0;
 
     if (isUseWidthScale) {
-      itemTranslateX = this.getUIContext().px2vp(itemInfo.left - (WindowUtils.windowWidth_px - itemInfo.width) / 2);
+      itemTranslateX = this.getUIContext().px2vp(itemInfo.left - (WindowUtils.windowWidthPx - itemInfo.width) / 2);
       itemClipWidth = '100%';
       itemClipHeight = this.getUIContext().px2vp((itemInfo.height) / itemScale);
       itemTranslateY = this.getUIContext().px2vp(itemInfo.top - ((this.getUIContext().vp2px(itemClipHeight) - this.getUIContext().vp2px(itemClipHeight) * itemScale) / 2));
     } else {
-      itemTranslateY = this.getUIContext().px2vp(itemInfo.top - (WindowUtils.windowHeight_px - itemInfo.height) / 2);
+      itemTranslateY = this.getUIContext().px2vp(itemInfo.top - (WindowUtils.windowHeightPx - itemInfo.height) / 2);
       itemClipHeight = '100%';
       itemClipWidth = this.getUIContext().px2vp((itemInfo.width) / itemScale);
-      itemTranslateX = this.getUIContext().px2vp(itemInfo.left - (WindowUtils.windowWidth_px / 2 - itemInfo.width / 2));
+      itemTranslateX = this.getUIContext().px2vp(itemInfo.left - (WindowUtils.windowWidthPx / 2 - itemInfo.width / 2));
     }
 
     return {
@@ -1926,7 +1926,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-![zh-cn_image_BindSheetNodeTransfer](figures/zh-cn_image_BindSheetNodeTransfer.gif)
+![BindSheetNodeTransfer](figures/BindSheetNodeTransfer.gif)
 
 ## 使用geometryTransition共享元素转场
 
@@ -1936,11 +1936,17 @@ geometryTransition的使用方式为对需要添加一镜到底动效的两个�
 
 geometryTransition绑定两个对象的实现方式使得geometryTransition区别于其他方法，最适合用于两个不同对象之间完成一镜到底。
 
+> **说明：**
+>
+> 1. 使用geometryTransition接口绑定同一id的组件不能相互嵌套，即一个绑定了该id的组件内部不能再嵌套另一个绑定了相同id的组件，否则会导致转场动画异常。
+>
+> 2. 建议在动画结束回调（[onFinish](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md#animateparam对象说明)）中将绑定的id置空，防止在非预期场景（如页面快速连续点击、状态变量变化等）下误触发共享元素转场。下次触发转场前再将id设置回所需值。
+
 ### geometryTransition的简单使用
 
 对于同一个页面中的两个元素的一镜到底效果，geometryTransition接口的简单使用示例如下：
 
-<!-- @[geometry_transition_simple](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/shareTransition/template6/IfElseGeometryTransition.ets) -->
+<!-- @[geometry_transition_simple](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/shareTransition/template6/IfElseGeometryTransition.ets) --> 
 
 ``` TypeScript
 import { curves } from '@kit.ArkUI';
@@ -1949,6 +1955,8 @@ import { curves } from '@kit.ArkUI';
 @Component
 struct IfElseGeometryTransition {
   @State isShow: boolean = false;
+  // 使用状态变量管理geometryTransition的id，动画结束后置空防止误触发
+  @State geometryId: string = 'picture';
 
   build() {
     Stack({ alignContent: Alignment.Center }) {
@@ -1960,7 +1968,7 @@ struct IfElseGeometryTransition {
           .width(200)
           .height(200)
           .borderRadius(100)
-          .geometryTransition('picture')
+          .geometryTransition(this.geometryId)
           .transition(TransitionEffect.OPACITY)
           // 在打断场景下，即动画过程中点击页面触发下一次转场，如果不加id，则会出现重影
           // 加了id之后，新建的spring图片会复用之前的spring图片节点，不会重新创建节点，也就不会有重影问题
@@ -1983,7 +1991,7 @@ struct IfElseGeometryTransition {
         // 则对容器本身有圆角同步而不会操作容器内部子组件的borderRadius
         .borderRadius(50)
         .clip(true)
-        .geometryTransition('picture')
+        .geometryTransition(this.geometryId)
         // transition保证节点离场不被立即析构，设置通用转场效果
         .transition(TransitionEffect.OPACITY)
         .position({ x: 40, y: 40 })
@@ -1991,8 +1999,14 @@ struct IfElseGeometryTransition {
       }
     }
     .onClick(() => {
+      // 动画开始前确保id已设置
+      this.geometryId = 'picture';
       this.getUIContext()?.animateTo({
-        curve: curves.springMotion()
+        curve: curves.springMotion(),
+        onFinish: () => {
+          // 动画结束后置空id，防止误触发
+          this.geometryId = '';
+        }
       }, () => {
         this.isShow = !this.isShow;
       })
@@ -2002,7 +2016,7 @@ struct IfElseGeometryTransition {
 }
 ```
 
-![zh-cn_image_0000001599644878](figures/zh-cn_image_0000001599644878.gif)
+![one-shot-style-page](figures/one-shot-style-page.gif)
 
 ### geometryTransition结合模态转场使用
 
@@ -2027,6 +2041,8 @@ struct Index {
   @State isPersonalPageShow: boolean = false;
   @State selectedIndex: number = 0;
   @State alphaValue: number = 1;
+  // 使用状态变量管理geometryTransition的id，动画结束后置空防止误触发
+  @State geometryId: string = '';
   private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
   // 数组中图片均使用Resource资源，需用户自定义
@@ -2064,9 +2080,15 @@ struct Index {
 
   private onAvatarClicked(index: number): void {
     this.selectedIndex = index;
+    // 动画开始前设置共享元素转场id
+    this.geometryId = index.toString();
     this.getUIContext()?.animateTo({
       duration: 350,
-      curve: Curve.Friction
+      curve: Curve.Friction,
+      onFinish: () => {
+        // 动画结束后置空id，防止误触发
+        this.geometryId = '';
+      }
     }, () => {
       this.isPersonalPageShow = !this.isPersonalPageShow;
       this.alphaValue = 0;
@@ -2074,9 +2096,15 @@ struct Index {
   }
 
   private onPersonalPageBack(index: number): void {
+    // 动画开始前设置共享元素转场id
+    this.geometryId = index.toString();
     this.getUIContext()?.animateTo({
       duration: 350,
-      curve: Curve.Friction
+      curve: Curve.Friction,
+      onFinish: () => {
+        // 动画结束后置空id，防止误触发
+        this.geometryId = '';
+      }
     }, () => {
       this.isPersonalPageShow = !this.isPersonalPageShow;
       this.alphaValue = 1;
@@ -2090,7 +2118,7 @@ struct Index {
         .size({ width: 200, height: 200 })
         .borderRadius(100)
         // 头像配置共享元素效果，与点击的头像的id匹配
-        .geometryTransition(index.toString())
+        .geometryTransition(this.geometryId)
         .clip(true)
         .transition(TransitionEffect.opacity(0.99))
 
@@ -2129,7 +2157,11 @@ struct Index {
       ForEach(this.allPostData, (postData: PostData, index: number) => {
         Column() {
           Post({
-            data: postData, index: index, onAvatarClicked: (index: number) => {
+            data: postData,
+            index: index,
+            geometryId: this.geometryId,
+            selectedIndex: this.selectedIndex,
+            onAvatarClicked: (index: number) => {
               this.onAvatarClicked(index);
             }
           })
@@ -2149,6 +2181,8 @@ struct Index {
 export default struct Post {
   @Prop data: PostData;
   @Prop index: number;
+  @Prop geometryId: string = '';
+  @Prop selectedIndex: number = -1;
   @State expandImageSize: number = 100;
   @State avatarSize: number = 50;
   private onAvatarClicked: (index: number) => void = (index: number) => { };
@@ -2164,7 +2198,10 @@ export default struct Post {
             this.onAvatarClicked(this.index);
           })
           // 对头像绑定共享元素转场的id
-          .geometryTransition(this.index.toString(), { follow: true })
+          .geometryTransition(
+            (this.index === this.selectedIndex && this.geometryId !== '') ? this.geometryId : '',
+            { follow: true }
+          )
           .transition(TransitionEffect.OPACITY.animation({ duration: 350, curve: Curve.Friction }))
 
         Text(this.data.name)
@@ -2190,6 +2227,6 @@ export default struct Post {
 
 效果为点击主页的头像后，弹出模态页面显示个人信息，并且两个页面之间的头像做一镜到底动效：
 
-![zh-cn_image_0000001597320327](figures/zh-cn_image_0000001597320327.gif)
+![one-shot-style-avatar](figures/one-shot-style-avatar.gif)
 
-<!--RP1--><!--RP1End-->
+<!--RP2--><!--RP2End-->

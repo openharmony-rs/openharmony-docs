@@ -5,7 +5,8 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=6ff193a1258b05452b4935e34a160adf6db64d7a translatedAt=2026-09-11T00:08:17.145Z pushedAt=2026-09-11T02:25:29.853Z -->
 
 ```c
 typedef struct Input_CursorInfo Input_CursorInfo
@@ -13,7 +14,7 @@ typedef struct Input_CursorInfo Input_CursorInfo
 
 ## Overview
 
-Defines the mouse pointer information, including the pointer visible status, pointer style, pointer size level, and pointer color.
+Defines the mouse cursor information, which is used to describe the display behavior and appearance attributes of the mouse cursor in the input system, including the cursor display state, cursor style, cursor size level, and cursor color.
 
 **Since**: 22
 
@@ -25,5 +26,5 @@ Defines the mouse pointer information, including the pointer visible status, poi
 
 | Name| Description|
 | -- | -- |
-| [OH_Input_CursorInfo_Create](capi-oh-input-manager-h.md#oh_input_cursorinfo_create) | Creates a mouse pointer information object.|
-| [OH_Input_CursorInfo_Destroy](capi-oh-input-manager-h.md#oh_input_cursorinfo_destroy) | Destroys the mouse pointer information object.|
+| [OH_Input_CursorInfo_Create](capi-oh-input-manager-h.md#oh_input_cursorinfo_create) | Creates a mouse cursor information object. You can call [OH_Input_CursorInfo_Destroy](capi-oh-input-manager-h.md#oh_input_cursorinfo_destroy) to destroy a mouse cursor information object.|
+| [OH_Input_CursorInfo_Destroy](capi-oh-input-manager-h.md#oh_input_cursorinfo_destroy) | Destroys the mouse cursor information object.|

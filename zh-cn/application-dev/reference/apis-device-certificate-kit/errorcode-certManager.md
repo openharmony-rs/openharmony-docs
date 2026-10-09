@@ -17,6 +17,10 @@
 
 Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error.
 
+**错误描述**
+
+内部错误。可能原因：1. IPC通信失败；2. 内存操作错误；3. 文件操作错误。
+
 **可能原因**
 
 调用API时发生内部错误。
@@ -30,6 +34,10 @@ Internal error. Possible causes: 1. IPC communication failed; 2. Memory operatio
 **错误信息**
 
 The certificate does not exist.
+
+**错误描述**
+
+证书不存在。
 
 **可能原因**
 
@@ -45,6 +53,10 @@ The certificate does not exist.
 
 The keystore is in an invalid format or the keystore password is incorrect.
 
+**错误描述**
+
+密钥库格式无效或密钥库密码错误。
+
 **可能原因**
 
 输入不是有效的证书或凭据。
@@ -58,6 +70,10 @@ The keystore is in an invalid format or the keystore password is incorrect.
 **错误信息**
 
 The number of certificates or credentials reaches the maximum allowed.
+
+**错误描述**
+
+证书或凭据的数量已达到允许的最大值。
 
 **可能原因**
 
@@ -73,6 +89,10 @@ The number of certificates or credentials reaches the maximum allowed.
 
 The application is not authorized by the user.
 
+**错误描述**
+
+应用未经过用户授权。
+
 **可能原因**
 
 用户没有将输入的凭据授权给当前应用使用。
@@ -87,6 +107,10 @@ The application is not authorized by the user.
 
 The device enters advanced security mode.
 
+**错误描述**
+
+设备进入坚盾守护模式。
+
 **可能原因**
 
 用户已开启坚盾守护模式。
@@ -95,11 +119,35 @@ The device enters advanced security mode.
 
 需要在应用界面提醒用户关闭坚盾守护模式。
 
+<!--Del-->
+## 17500008 密码错误
+
+**错误信息**
+
+The input password is error.
+
+**错误描述**
+
+输入的密码错误。
+
+**可能原因**
+
+输入的密码错误。
+
+**处理步骤**
+
+检查密码是否正确，使用正确的密码再次尝试。
+<!--DelEnd-->
+
 ## 17500009 不支持指定的证书存储路径
 
 **错误信息**
 
 The device does not support the specified certificate store path.
+
+**错误描述**
+
+设备不支持指定的证书存储路径。
 
 **可能原因**
 
@@ -115,6 +163,10 @@ The device does not support the specified certificate store path.
 
 The USB key service access failed.
 
+**错误描述**
+
+USB Key服务访问失败。
+
 **可能原因**
 
 USB硬件驱动服务发生异常。
@@ -128,6 +180,10 @@ USB硬件驱动服务发生异常。
 **错误信息**
 
 The input parameters validation failed.
+
+**错误描述**
+
+入参校验失败。
 
 **可能原因**
 

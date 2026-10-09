@@ -1,14 +1,15 @@
 # oh_display_manager.h
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
-<!--Owner: @oh_wangxk; @logn-->
-<!--Designer: @hejunfei1991-->
+<!--Owner: @oh_wangxk-->
+<!--Designer: @logn; @wulong158-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=2c124bd0b2ec980b0ce8b960a5620bdca08e9d12 translatedAt=2026-08-27T08:42:55.589Z pushedAt=2026-08-28T02:09:14.932Z -->
 
 ## Overview
 
-The file declares the functions for basic display management. You can call the functions to obtain various information about the default display and listen for display status changes, such as rotation, folding, and unfolding.
+Provides basic display management capabilities, including obtaining information about the default display device (such as the width, height, rotation angle, refresh rate, and pixel density) and listening for status changes of the display device, such as rotation, folding, and unfolding. This file is applicable to adapting different display forms, responding to display status changes, and obtaining display attribute details.
 
 **File to include**: <window_manager/oh_display_manager.h>
 
@@ -35,33 +36,33 @@ The file declares the functions for basic display management. You can call the f
 | [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayRefreshRate(uint32_t *refreshRate)](#oh_nativedisplaymanager_getdefaultdisplayrefreshrate) | - | Obtains the refresh rate of the default display.|
 | [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayDensityDpi(int32_t *densityDpi)](#oh_nativedisplaymanager_getdefaultdisplaydensitydpi) | - | Obtains the physical pixel density of the default display.|
 | [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayDensityPixels(float *densityPixels)](#oh_nativedisplaymanager_getdefaultdisplaydensitypixels) | - | Obtains the logical pixel density of the default display.|
-| [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayScaledDensity(float *scaledDensity)](#oh_nativedisplaymanager_getdefaultdisplayscaleddensity) | - | Obtains the scale factor of fonts displayed on the default display.|
+| [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayScaledDensity(float *scaledDensity)](#oh_nativedisplaymanager_getdefaultdisplayscaleddensity) | - | Obtains the font scale factor of the default display.|
 | [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayDensityXdpi(float *xDpi)](#oh_nativedisplaymanager_getdefaultdisplaydensityxdpi) | - | Obtains the number of physical pixels per inch on the default display in the X dimension.|
 | [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayDensityYdpi(float *yDpi)](#oh_nativedisplaymanager_getdefaultdisplaydensityydpi) | - | Obtains the number of physical pixels per inch on the default display in the Y dimension.|
-| [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CreateDefaultDisplayCutoutInfo(NativeDisplayManager_CutoutInfo **cutoutInfo)](#oh_nativedisplaymanager_createdefaultdisplaycutoutinfo) | - | Obtains the unusable area of the default display, including punch hole, notch, and curved area of a waterfall display.|
-| [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_DestroyDefaultDisplayCutoutInfo(NativeDisplayManager_CutoutInfo *cutoutInfo)](#oh_nativedisplaymanager_destroydefaultdisplaycutoutinfo) | - | Destroys the unusable area of the default display, including punch hole, notch, and curved area of a waterfall display.|
+| [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CreateDefaultDisplayCutoutInfo(NativeDisplayManager_CutoutInfo **cutoutInfo)](#oh_nativedisplaymanager_createdefaultdisplaycutoutinfo) | - | Obtains the information about the unusable area of the default display, including a punch hole, a notch, and the curved area of a waterfall display.|
+| [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_DestroyDefaultDisplayCutoutInfo(NativeDisplayManager_CutoutInfo *cutoutInfo)](#oh_nativedisplaymanager_destroydefaultdisplaycutoutinfo) | - | Destroys the information about the unusable area of the default display, including a punch hole, a notch, and the curved area of a waterfall display.|
 | [bool OH_NativeDisplayManager_IsFoldable()](#oh_nativedisplaymanager_isfoldable) | - | Checks whether the current device is foldable.|
 | [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetFoldDisplayMode(NativeDisplayManager_FoldDisplayMode *displayMode)](#oh_nativedisplaymanager_getfolddisplaymode) | - | Obtains the display mode of the foldable device.|
-| [typedef void (\*OH_NativeDisplayManager_DisplayChangeCallback)(uint64_t displayId)](#oh_nativedisplaymanager_displaychangecallback) | OH_NativeDisplayManager_DisplayChangeCallback | Defines a callback function to listen for display status changes.|
+| [typedef void (\*OH_NativeDisplayManager_DisplayChangeCallback)(uint64_t displayId)](#oh_nativedisplaymanager_displaychangecallback) | OH_NativeDisplayManager_DisplayChangeCallback | Called when the display status changes.|
 | [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_RegisterDisplayChangeListener(OH_NativeDisplayManager_DisplayChangeCallback displayChangeCallback, uint32_t *listenerIndex)](#oh_nativedisplaymanager_registerdisplaychangelistener) | - | Registers a listener for display status changes (such as rotation, refresh rate, DPI, and resolution changes).|
 | [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_UnregisterDisplayChangeListener(uint32_t listenerIndex)](#oh_nativedisplaymanager_unregisterdisplaychangelistener) | - | Unregisters a listener for display status changes.|
-| [typedef void (\*OH_NativeDisplayManager_FoldDisplayModeChangeCallback)(NativeDisplayManager_FoldDisplayMode displayMode)](#oh_nativedisplaymanager_folddisplaymodechangecallback) | OH_NativeDisplayManager_FoldDisplayModeChangeCallback | Defines a callback function to listen for folded/unfolded state changes of the display.|
+| [typedef void (\*OH_NativeDisplayManager_FoldDisplayModeChangeCallback)(NativeDisplayManager_FoldDisplayMode displayMode)](#oh_nativedisplaymanager_folddisplaymodechangecallback) | OH_NativeDisplayManager_FoldDisplayModeChangeCallback | Called when the folded/unfolded state of the display changes.|
 | [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_RegisterFoldDisplayModeChangeListener(OH_NativeDisplayManager_FoldDisplayModeChangeCallback displayModeChangeCallback, uint32_t *listenerIndex)](#oh_nativedisplaymanager_registerfolddisplaymodechangelistener) | - | Registers a listener for folded/unfolded state changes of the display.|
 | [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_UnregisterFoldDisplayModeChangeListener(uint32_t listenerIndex)](#oh_nativedisplaymanager_unregisterfolddisplaymodechangelistener) | - | Unregisters a listener for folded/unfolded state changes of the display.|
 | [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CreateAllDisplays(NativeDisplayManager_DisplaysInfo **allDisplays)](#oh_nativedisplaymanager_createalldisplays) | - | Obtains the object that contains the information about all displays.|
 | [void OH_NativeDisplayManager_DestroyAllDisplays(NativeDisplayManager_DisplaysInfo *allDisplays)](#oh_nativedisplaymanager_destroyalldisplays) | - | Destroys the object that contains the information about all displays.|
 | [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CreateDisplayById(uint32_t displayId,NativeDisplayManager_DisplayInfo **displayInfo)](#oh_nativedisplaymanager_createdisplaybyid) | - | Obtains the object that contains the information about a display.|
 | [void OH_NativeDisplayManager_DestroyDisplay(NativeDisplayManager_DisplayInfo *displayInfo)](#oh_nativedisplaymanager_destroydisplay) | - | Destroys the object that contains the information about a display.|
-| [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CreatePrimaryDisplay(NativeDisplayManager_DisplayInfo **displayInfo)](#oh_nativedisplaymanager_createprimarydisplay) | - | Obtains the object that contains the information about the primary display. For devices other than 2-in-1 devices, the displayInfo object obtained contains information about the built-in screen. For 2-in-1 devices with an external screen, the displayInfo object obtained contains information about the current primary screen. For 2-in-1 devices without an external screen, the displayInfo object obtained contains information about the built-in screen.|
-| [typedef void (\*OH_NativeDisplayManager_AvailableAreaChangeCallback)(uint64_t displayId)](#oh_nativedisplaymanager_availableareachangecallback) | OH_NativeDisplayManager_AvailableAreaChangeCallback | Defines a callback function to listen for available area changes of a display.|
+| [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CreatePrimaryDisplay(NativeDisplayManager_DisplayInfo **displayInfo)](#oh_nativedisplaymanager_createprimarydisplay) | - | Obtains the object that contains the information about the primary display. For devices other than PCs/2-in-1 devices, the **displayInfo** object obtained contains information about the built-in screen. For PCs/2-in-1 devices with an external screen, the **displayInfo** object obtained contains information about the current primary screen. For PCs/2-in-1 devices without an external screen, the **displayInfo** object obtained contains information about the built-in screen.|
+| [typedef void (\*OH_NativeDisplayManager_AvailableAreaChangeCallback)(uint64_t displayId)](#oh_nativedisplaymanager_availableareachangecallback) | OH_NativeDisplayManager_AvailableAreaChangeCallback | Called when the available area of the display changes.|
 | [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_RegisterAvailableAreaChangeListener(OH_NativeDisplayManager_AvailableAreaChangeCallback availableAreaChangeCallback, uint32_t *listenerIndex)](#oh_nativedisplaymanager_registeravailableareachangelistener) | - | Registers a listener for available area changes of the display.|
 | [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_UnregisterAvailableAreaChangeListener(uint32_t listenerIndex)](#oh_nativedisplaymanager_unregisteravailableareachangelistener) | - | Unregisters a listener for available area changes of the display.|
 | [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CreateAvailableArea(uint64_t displayId, NativeDisplayManager_Rect **availableArea)](#oh_nativedisplaymanager_createavailablearea) | - | Obtains the available area of a display.|
 | [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_DestroyAvailableArea(NativeDisplayManager_Rect *availableArea)](#oh_nativedisplaymanager_destroyavailablearea) | - | Destroys the available area of a display.|
-| [typedef void (\*OH_NativeDisplayManager_DisplayAddCallback)(uint64_t displayId)](#oh_nativedisplaymanager_displayaddcallback) | OH_NativeDisplayManager_DisplayAddCallback | Defines a callback function to listen for display addition events.|
+| [typedef void (\*OH_NativeDisplayManager_DisplayAddCallback)(uint64_t displayId)](#oh_nativedisplaymanager_displayaddcallback) | OH_NativeDisplayManager_DisplayAddCallback | Called when the display is added.|
 | [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_RegisterDisplayAddListener(OH_NativeDisplayManager_DisplayAddCallback displayAddCallback, uint32_t *listenerIndex)](#oh_nativedisplaymanager_registerdisplayaddlistener) | - | Registers a listener for display addition events (for example, monitor inserted).|
 | [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_UnregisterDisplayAddListener(uint32_t listenerIndex)](#oh_nativedisplaymanager_unregisterdisplayaddlistener) | - | Unregisters a listener for display addition events.|
-| [typedef void (\*OH_NativeDisplayManager_DisplayRemoveCallback)(uint64_t displayId)](#oh_nativedisplaymanager_displayremovecallback) | OH_NativeDisplayManager_DisplayRemoveCallback | Defines a callback function to listen for display removal events.|
+| [typedef void (\*OH_NativeDisplayManager_DisplayRemoveCallback)(uint64_t displayId)](#oh_nativedisplaymanager_displayremovecallback) | OH_NativeDisplayManager_DisplayRemoveCallback | Called when a display is removed.|
 | [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_RegisterDisplayRemoveListener(OH_NativeDisplayManager_DisplayRemoveCallback displayRemoveCallback, uint32_t *listenerIndex)](#oh_nativedisplaymanager_registerdisplayremovelistener) | - | Registers a listener for display removal events (for example, monitor removed).|
 | [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_UnregisterDisplayRemoveListener(uint32_t listenerIndex)](#oh_nativedisplaymanager_unregisterdisplayremovelistener) | - | Unregisters the listener for display removal events.|
 | [NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDisplaySourceMode(uint64_t displayId, NativeDisplayManager_SourceMode *sourceMode)](#oh_nativedisplaymanager_getdisplaysourcemode) | - | Obtains the source mode of a display.|
@@ -86,13 +87,13 @@ Obtains the ID of the default display.
 
 | Parameter| Description|
 | -- | -- |
-| uint64_t *displayId | Pointer to the display ID. The value is a non-negative integer.|
+| uint64_t *displayId | Pointer to the ID of the default display. The value is a non-negative integer. It is used as an output parameter.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | Status code defined in [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode).|
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | **DISPLAY_MANAGER_OK**: The operation is successful.<br>**DISPLAY_MANAGER_ERROR_INVALID_PARAM**: The parameter check fails.<br>**DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL**: The system service is abnormal.|
 
 ### OH_NativeDisplayManager_GetDefaultDisplayWidth()
 
@@ -111,13 +112,13 @@ Obtains the width of the default display.
 
 | Parameter| Description|
 | -- | -- |
-| int32_t *displayWidth | Pointer to the width, in px. The value is an integer.|
+| int32_t *displayWidth | Pointer to the width, in px. The value is an integer. It is used as an output parameter.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | Status code defined in [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode).|
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | **DISPLAY_MANAGER_OK**: The operation is successful.<br>**DISPLAY_MANAGER_ERROR_INVALID_PARAM**: The parameter check fails.<br>**DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL**: The system service is abnormal.|
 
 ### OH_NativeDisplayManager_GetDefaultDisplayHeight()
 
@@ -136,13 +137,13 @@ Obtains the height of the default display.
 
 | Parameter| Description|
 | -- | -- |
-| int32_t *displayHeight | Pointer to the height, in px. The value is an integer.|
+| int32_t *displayHeight | Pointer to the height, in px. The value is an integer. It is used as an output parameter.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | Status code defined in [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode).|
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | **DISPLAY_MANAGER_OK**: The operation is successful.<br>**DISPLAY_MANAGER_ERROR_INVALID_PARAM**: The parameter check fails.<br>**DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL**: The system service is abnormal.|
 
 ### OH_NativeDisplayManager_GetDefaultDisplayRotation()
 
@@ -161,13 +162,13 @@ Obtains the clockwise rotation angle of the default display.
 
 | Parameter| Description|
 | -- | -- |
-| [NativeDisplayManager_Rotation](capi-oh-display-info-h.md#nativedisplaymanager_rotation) *displayRotation | Pointer to the clockwise rotation angle. For details about the available options, see [NativeDisplayManager_Rotation](capi-oh-display-info-h.md#nativedisplaymanager_rotation).|
+| [NativeDisplayManager_Rotation](capi-oh-display-info-h.md#nativedisplaymanager_rotation) *displayRotation | Pointer to the clockwise rotation angle. For details about the available options, see [NativeDisplayManager_Rotation](capi-oh-display-info-h.md#nativedisplaymanager_rotation). It is used as an output parameter.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | Status code defined in [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode).|
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | **DISPLAY_MANAGER_OK**: The operation is successful.<br>**DISPLAY_MANAGER_ERROR_INVALID_PARAM**: The parameter check fails.<br>**DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL**: The system service is abnormal.|
 
 ### OH_NativeDisplayManager_GetDefaultDisplayOrientation()
 
@@ -186,13 +187,13 @@ Obtains the orientation of the default display.
 
 | Parameter| Description|
 | -- | -- |
-| [NativeDisplayManager_Orientation](capi-oh-display-info-h.md#nativedisplaymanager_orientation) *displayOrientation | Pointer to the orientation. For details about the available options, see [NativeDisplayManager_Orientation](capi-oh-display-info-h.md#nativedisplaymanager_orientation).|
+| [NativeDisplayManager_Orientation](capi-oh-display-info-h.md#nativedisplaymanager_orientation) *displayOrientation | Pointer to the orientation. For details about the available options, see [NativeDisplayManager_Orientation](capi-oh-display-info-h.md#nativedisplaymanager_orientation). It is used as an output parameter.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | Status code defined in [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode).|
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | **DISPLAY_MANAGER_OK**: The operation is successful.<br>**DISPLAY_MANAGER_ERROR_INVALID_PARAM**: The parameter check fails.<br>**DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL**: The system service is abnormal.|
 
 ### OH_NativeDisplayManager_GetDefaultDisplayVirtualPixelRatio()
 
@@ -217,7 +218,7 @@ Obtains the virtual pixel ratio of the default display.
 
 | Type| Description|
 | -- | -- |
-| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | Status code defined in [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode).|
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | **DISPLAY_MANAGER_OK**: The operation is successful.<br>**DISPLAY_MANAGER_ERROR_INVALID_PARAM**: The parameter check fails.<br>**DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL**: The system service is abnormal. It is used as an output parameter.|
 
 ### OH_NativeDisplayManager_GetDefaultDisplayRefreshRate()
 
@@ -236,13 +237,13 @@ Obtains the refresh rate of the default display.
 
 | Parameter| Description|
 | -- | -- |
-| uint32_t *refreshRate | Pointer to the refresh rate. The value is an integer, in Hz.|
+| uint32_t *refreshRate | Pointer to the refresh rate. The value is an integer, in Hz. It is used as an output parameter.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | Status code defined in [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode).|
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | **DISPLAY_MANAGER_OK**: The operation is successful.<br>**DISPLAY_MANAGER_ERROR_INVALID_PARAM**: The parameter check fails.<br>**DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL**: The system service is abnormal.|
 
 ### OH_NativeDisplayManager_GetDefaultDisplayDensityDpi()
 
@@ -261,13 +262,13 @@ Obtains the physical pixel density of the default display.
 
 | Parameter| Description|
 | -- | -- |
-| int32_t *densityDpi | Pointer to the physical pixel density, that is, the number of pixels per inch. The value is an integer, in px. The actual value depends on the options provided in device settings.  |
+| int32_t *densityDpi | Physical pixel density of the display, indicating the number of pixels per inch. The value is an integer, and the actual value depends on the options provided in the settings of different devices. It is returned as an output parameter. |
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | Status code defined in [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode).|
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | **DISPLAY_MANAGER_OK**: The operation is successful.<br>**DISPLAY_MANAGER_ERROR_INVALID_PARAM**: The parameter check fails.<br>**DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL**: The system service is abnormal.|
 
 ### OH_NativeDisplayManager_GetDefaultDisplayDensityPixels()
 
@@ -286,13 +287,13 @@ Obtains the logical pixel density of the default display.
 
 | Parameter| Description|
 | -- | -- |
-| float *densityPixels | Pointer to the logical pixel density, which indicates the scaling coefficient of the physical pixels and logical pixels. The value is a floating-point number in the range [0.5, 4.0]. Generally, the value is **1.0** or **3.0**. The actual value depends on the density DPI provided by the device in use.  |
+| float *densityPixels | Pointer to the logical pixel density, which indicates the scaling coefficient of the physical pixels and logical pixels. The value is a floating-point number, limited by the **densityDPI** range, in the range [0.5, 4.0]. Generally, the value is **1.0** or **3.0**. The actual value depends on the density DPI provided by the device in use. It is used as an output parameter.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | Status code defined in [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode).|
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | **DISPLAY_MANAGER_OK**: The operation is successful.<br>**DISPLAY_MANAGER_ERROR_INVALID_PARAM**: The parameter check fails.<br>**DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL**: The system service is abnormal.|
 
 ### OH_NativeDisplayManager_GetDefaultDisplayScaledDensity()
 
@@ -302,7 +303,7 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDefaultDisplayScaledDe
 
 **Description**
 
-Obtains the scale factor of fonts displayed on the default display.
+Obtains the font scale factor of the default display.
 
 **Since**: 12
 
@@ -311,13 +312,13 @@ Obtains the scale factor of fonts displayed on the default display.
 
 | Parameter| Description|
 | -- | -- |
-| float *scaledDensity | Pointer to the scale factor. The value is a floating-point number, and it is usually the same as that of **densityPixels**.|
+| float *scaledDensity | Pointer to the scale factor. The value is a floating-point number, and it is usually the same as that of **densityPixels**. It is returned as an output parameter.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | Status code defined in [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode).|
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | **DISPLAY_MANAGER_OK**: The operation is successful.<br>**DISPLAY_MANAGER_ERROR_INVALID_PARAM**: The parameter check fails.<br>**DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL**: The system service is abnormal.|
 
 ### OH_NativeDisplayManager_GetDefaultDisplayDensityXdpi()
 
@@ -336,13 +337,13 @@ Obtains the number of physical pixels per inch on the default display in the X d
 
 | Parameter| Description|
 | -- | -- |
-| float *xDpi | Pointer to the number of physical pixels per inch in the X dimension. The value is a floating-point number.|
+| float *xDpi | Pointer to the number of physical pixels per inch in the X dimension. The value is a floating-point number. It is returned as an output parameter.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | Status code defined in [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode).|
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | **DISPLAY_MANAGER_OK**: The operation is successful.<br>**DISPLAY_MANAGER_ERROR_INVALID_PARAM**: The parameter check fails.<br>**DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL**: The system service is abnormal.|
 
 ### OH_NativeDisplayManager_GetDefaultDisplayDensityYdpi()
 
@@ -361,13 +362,13 @@ Obtains the number of physical pixels per inch on the default display in the Y d
 
 | Parameter| Description|
 | -- | -- |
-| float *yDpi | Pointer to the number of physical pixels per inch in the Y dimension. The value is a floating-point number.|
+| float *yDpi | Pointer to the number of physical pixels per inch in the Y dimension. The value is a floating-point number. It is returned as an output parameter.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | Status code defined in [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode).|
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | **DISPLAY_MANAGER_OK**: The operation is successful.<br>**DISPLAY_MANAGER_ERROR_INVALID_PARAM**: The parameter check fails.<br>**DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL**: The system service is abnormal.|
 
 ### OH_NativeDisplayManager_CreateDefaultDisplayCutoutInfo()
 
@@ -377,7 +378,7 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CreateDefaultDisplayCutou
 
 **Description**
 
-Obtains the unusable area of the default display, including punch hole, notch, and curved area of a waterfall display.
+Obtains the information about the unusable area of the default display, including a punch hole, a notch, and the curved area of a waterfall display.
 
 **Since**: 12
 
@@ -386,13 +387,13 @@ Obtains the unusable area of the default display, including punch hole, notch, a
 
 | Parameter| Description|
 | -- | -- |
-| [NativeDisplayManager_CutoutInfo](capi-nativedisplaymanager-cutoutinfo.md) **cutoutInfo | Double pointer to the unusable area information, which is encapsulated in [NativeDisplayManager_CutoutInfo](capi-nativedisplaymanager-cutoutinfo.md).|
+| [NativeDisplayManager_CutoutInfo](capi-nativedisplaymanager-cutoutinfo.md) **cutoutInfo | Pointer to the information about the unusable area of the default display, including a punch hole, a notch, and the curved area of a waterfall display. For details, see [NativeDisplayManager_CutoutInfo](capi-nativedisplaymanager-cutoutinfo.md). It is returned as an output parameter. After use, call [OH_NativeDisplayManager_DestroyDefaultDisplayCutoutInfo](#oh_nativedisplaymanager_destroydefaultdisplaycutoutinfo) to release the resources. |
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | Status code defined in [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode).|
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | **DISPLAY_MANAGER_OK**: The operation is successful.<br>**DISPLAY_MANAGER_ERROR_INVALID_PARAM**: The parameter check fails.<br>**DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL**: The system service is abnormal.|
 
 ### OH_NativeDisplayManager_DestroyDefaultDisplayCutoutInfo()
 
@@ -402,7 +403,7 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_DestroyDefaultDisplayCuto
 
 **Description**
 
-Destroys the unusable area of the default display, including punch hole, notch, and curved area of a waterfall display.
+Destroys the information about the unusable area of the default display, including a punch hole, a notch, and the curved area of a waterfall display.
 
 **Since**: 12
 
@@ -411,13 +412,13 @@ Destroys the unusable area of the default display, including punch hole, notch, 
 
 | Parameter| Description|
 | -- | -- |
-| [NativeDisplayManager_CutoutInfo](capi-nativedisplaymanager-cutoutinfo.md) *cutoutInfo | Pointer to the unusable area information object, which is obtained by calling [OH_NativeDisplayManager_CreateDefaultDisplayCutoutInfo](capi-oh-display-manager-h.md#oh_nativedisplaymanager_createdefaultdisplaycutoutinfo). For details, see [NativeDisplayManager_CutoutInfo](capi-nativedisplaymanager-cutoutinfo.md).|
+| [NativeDisplayManager_CutoutInfo](capi-nativedisplaymanager-cutoutinfo.md) *cutoutInfo | Pointer to the unusable area information object, including a punch hole, a notch, and the curved area of a waterfall display, which is obtained by calling [OH_NativeDisplayManager_CreateDefaultDisplayCutoutInfo](#oh_nativedisplaymanager_createdefaultdisplaycutoutinfo). For details, see [NativeDisplayManager_CutoutInfo](capi-nativedisplaymanager-cutoutinfo.md).|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | Status code defined in [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode).|
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | **DISPLAY_MANAGER_OK**: The operation is successful.<br>**DISPLAY_MANAGER_ERROR_INVALID_PARAM**: The parameter check fails.|
 
 ### OH_NativeDisplayManager_IsFoldable()
 
@@ -449,20 +450,20 @@ Obtains the display mode of the foldable device.
 
 **Since**: 12
 
-**Device behavior differences**: This API returns **0** for 2-in-1 devices and non-foldable devices. For other devices, this API can be called properly.
+**Device behavior differences**: This API returns **NativeDisplayManager_FoldDisplayMode.DISPLAY_MANAGER_FOLD_DISPLAY_MODE_UNKNOWN** on PCs/2-in-1 devices and non-foldable devices, and can be properly called on other devices.
 
 
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
-| [NativeDisplayManager_FoldDisplayMode](capi-oh-display-info-h.md#nativedisplaymanager_folddisplaymode) *displayMode | Pointer to the display mode. For details about the available options, see [NativeDisplayManager_FoldDisplayMode](capi-oh-display-info-h.md#nativedisplaymanager_folddisplaymode).|
+| [NativeDisplayManager_FoldDisplayMode](capi-oh-display-info-h.md#nativedisplaymanager_folddisplaymode) *displayMode | Pointer to the display mode. For details about the available options, see [NativeDisplayManager_FoldDisplayMode](capi-oh-display-info-h.md#nativedisplaymanager_folddisplaymode). It is used as an output parameter.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | Status code defined in [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode).|
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | **DISPLAY_MANAGER_OK**: The operation is successful.<br>**DISPLAY_MANAGER_ERROR_INVALID_PARAM**: The parameter check fails.<br>**DISPLAY_MANAGER_ERROR_DEVICE_NOT_SUPPORTED**: The device does not support this API.|
 
 ### OH_NativeDisplayManager_DisplayChangeCallback()
 
@@ -472,7 +473,7 @@ typedef void (*OH_NativeDisplayManager_DisplayChangeCallback)(uint64_t displayId
 
 **Description**
 
-Defines a callback function to listen for display status changes.
+Called when the display status changes.
 
 **Since**: 12
 
@@ -481,7 +482,7 @@ Defines a callback function to listen for display status changes.
 
 | Parameter| Description|
 | -- | -- |
-| uint64_t displayId | ID of the display.|
+| uint64_t displayId | ID of the display whose status changes.|
 
 ### OH_NativeDisplayManager_RegisterDisplayChangeListener()
 
@@ -500,14 +501,14 @@ Registers a listener for display status changes (such as rotation, refresh rate,
 
 | Parameter| Description|
 | -- | -- |
-| [OH_NativeDisplayManager_DisplayChangeCallback](capi-oh-display-manager-h.md#oh_nativedisplaymanager_displaychangecallback) displayChangeCallback | Callback function triggered when the display status is changed. For details, see [OH_NativeDisplayManager_DisplayChangeCallback](capi-oh-display-manager-h.md#oh_nativedisplaymanager_displaychangecallback).|
-| uint32_t *listenerIndex | Pointer to the index of the listener registered. It can be used as an input parameter of [OH_NativeDisplayManager_UnregisterDisplayChangeListener](capi-oh-display-manager-h.md#oh_nativedisplaymanager_unregisterdisplaychangelistener).|
+| [OH_NativeDisplayManager_DisplayChangeCallback](#oh_nativedisplaymanager_displaychangecallback) displayChangeCallback | Callback function triggered when the display status is changed. For details, see [OH_NativeDisplayManager_DisplayChangeCallback](#oh_nativedisplaymanager_displaychangecallback).|
+| uint32_t *listenerIndex | Pointer to the index of the listener registered. It can be used as an input parameter of [OH_NativeDisplayManager_UnregisterDisplayChangeListener](#oh_nativedisplaymanager_unregisterdisplaychangelistener). It is used as an output parameter.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | Status code defined in [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode).|
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | **DISPLAY_MANAGER_OK**: The operation is successful.<br>**DISPLAY_MANAGER_ERROR_INVALID_PARAM**: The parameter check fails.<br>**DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL**: The system service is abnormal.|
 
 ### OH_NativeDisplayManager_UnregisterDisplayChangeListener()
 
@@ -526,13 +527,13 @@ Unregisters a listener for display status changes.
 
 | Parameter| Description|
 | -- | -- |
-| uint32_t listenerIndex | Index of the listener returned when [OH_NativeDisplayManager_RegisterDisplayChangeListener](capi-oh-display-manager-h.md#oh_nativedisplaymanager_registerdisplaychangelistener) is called.|
+| uint32_t listenerIndex | Index of the listener returned when [OH_NativeDisplayManager_RegisterDisplayChangeListener](#oh_nativedisplaymanager_registerdisplaychangelistener) is called.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | Status code defined in [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode).|
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | **DISPLAY_MANAGER_OK**: The operation is successful.<br>**DISPLAY_MANAGER_ERROR_INVALID_PARAM**: The parameter check fails.<br>**DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL**: The system service is abnormal.|
 
 ### OH_NativeDisplayManager_FoldDisplayModeChangeCallback()
 
@@ -542,7 +543,7 @@ typedef void (*OH_NativeDisplayManager_FoldDisplayModeChangeCallback)(NativeDisp
 
 **Description**
 
-Defines a callback function to listen for folded/unfolded state changes of the display.
+Called when the folded/unfolded state of the display changes.
 
 **Since**: 12
 
@@ -570,14 +571,14 @@ Registers a listener for folded/unfolded state changes of the display.
 
 | Parameter| Description|
 | -- | -- |
-| [OH_NativeDisplayManager_FoldDisplayModeChangeCallback](capi-oh-display-manager-h.md#oh_nativedisplaymanager_folddisplaymodechangecallback) displayModeChangeCallback | Callback function triggered when the folded/unfolded state of the display is changed. For details, see [OH_NativeDisplayManager_FoldDisplayModeChangeCallback](capi-oh-display-manager-h.md#oh_nativedisplaymanager_folddisplaymodechangecallback).|
-| uint32_t *listenerIndex | Pointer to the index of the listener registered. It can be used as an input parameter of [OH_NativeDisplayManager_UnregisterFoldDisplayModeChangeListener](capi-oh-display-manager-h.md#oh_nativedisplaymanager_unregisterfolddisplaymodechangelistener).|
+| [OH_NativeDisplayManager_FoldDisplayModeChangeCallback](#oh_nativedisplaymanager_folddisplaymodechangecallback) displayModeChangeCallback | Callback function triggered when the folded/unfolded state of the display is changed. For details, see [OH_NativeDisplayManager_FoldDisplayModeChangeCallback](#oh_nativedisplaymanager_folddisplaymodechangecallback).|
+| uint32_t *listenerIndex | Pointer to the index of the listener registered. It can be used as an input parameter of [OH_NativeDisplayManager_UnregisterFoldDisplayModeChangeListener](#oh_nativedisplaymanager_unregisterfolddisplaymodechangelistener). It is used as an output parameter.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | Status code defined in [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode).|
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | **DISPLAY_MANAGER_OK**: The operation is successful.<br>**DISPLAY_MANAGER_ERROR_INVALID_PARAM**: The parameter check fails.<br>**DISPLAY_MANAGER_ERROR_DEVICE_NOT_SUPPORTED**: The device does not support this API.<br>**DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL**: The system service is abnormal.|
 
 ### OH_NativeDisplayManager_UnregisterFoldDisplayModeChangeListener()
 
@@ -596,13 +597,13 @@ Unregisters a listener for folded/unfolded state changes of the display.
 
 | Parameter| Description|
 | -- | -- |
-| uint32_t listenerIndex | Index of the listener returned when [OH_NativeDisplayManager_RegisterFoldDisplayModeChangeListener](capi-oh-display-manager-h.md#oh_nativedisplaymanager_registerfolddisplaymodechangelistener) is called.|
+| uint32_t listenerIndex | Index of the listener returned when [OH_NativeDisplayManager_RegisterFoldDisplayModeChangeListener](#oh_nativedisplaymanager_registerfolddisplaymodechangelistener) is called.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | Status code defined in [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode).|
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | **DISPLAY_MANAGER_OK**: The operation is successful.<br>**DISPLAY_MANAGER_ERROR_INVALID_PARAM**: The parameter check fails.<br>**DISPLAY_MANAGER_ERROR_DEVICE_NOT_SUPPORTED**: The device does not support this API.<br>**DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL**: The system service is abnormal.|
 
 ### OH_NativeDisplayManager_CreateAllDisplays()
 
@@ -621,13 +622,13 @@ Obtains the object that contains the information about all displays.
 
 | Parameter| Description|
 | -- | -- |
-| [NativeDisplayManager_DisplaysInfo](capi-nativedisplaymanager-displaysinfo.md) **allDisplays | Double pointer to the display information, which is encapsulated in [NativeDisplayManager_DisplaysInfo](capi-nativedisplaymanager-displaysinfo.md).|
+| [NativeDisplayManager_DisplaysInfo](capi-nativedisplaymanager-displaysinfo.md) **allDisplays | Pointer to the information about all displays. For details, see [NativeDisplayManager_DisplaysInfo](capi-nativedisplaymanager-displaysinfo.md). It is returned as an output parameter. After use, call [OH_NativeDisplayManager_DestroyAllDisplays](#oh_nativedisplaymanager_destroyalldisplays) to release the resources. |
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | Status code defined in [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode).|
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | **DISPLAY_MANAGER_OK**: The operation is successful.<br>**DISPLAY_MANAGER_ERROR_INVALID_PARAM**: The parameter check fails.<br>**DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL**: The system service is abnormal.|
 
 ### OH_NativeDisplayManager_DestroyAllDisplays()
 
@@ -646,12 +647,12 @@ Destroys the object that contains the information about all displays.
 
 | Parameter| Description|
 | -- | -- |
-| [NativeDisplayManager_DisplaysInfo](capi-nativedisplaymanager-displaysinfo.md) *allDisplays | Pointer to the display information object, which is obtained by calling [OH_NativeDisplayManager_CreateAllDisplays](capi-oh-display-manager-h.md#oh_nativedisplaymanager_createalldisplays). For details, see [NativeDisplayManager_DisplaysInfo](capi-nativedisplaymanager-displaysinfo.md).|
+| [NativeDisplayManager_DisplaysInfo](capi-nativedisplaymanager-displaysinfo.md) *allDisplays | Pointer to all display information obtained by calling [OH_NativeDisplayManager_CreateAllDisplays](#oh_nativedisplaymanager_createalldisplays). For details, see [NativeDisplayManager_DisplaysInfo](capi-nativedisplaymanager-displaysinfo.md).|
 
 ### OH_NativeDisplayManager_CreateDisplayById()
 
 ```c
-NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CreateDisplayById(uint32_t displayId,NativeDisplayManager_DisplayInfo **displayInfo)
+NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CreateDisplayById(uint32_t displayId, NativeDisplayManager_DisplayInfo **displayInfo)
 ```
 
 **Description**
@@ -665,14 +666,14 @@ Obtains the object that contains the information about a display.
 
 | Parameter| Description|
 | -- | -- |
-| uint32_t displayId | ID of the display. The value must be a non-negative integer.|
-| [NativeDisplayManager_DisplayInfo](capi-nativedisplaymanager-displayinfo.md) **displayInfo | Double pointer to the display information, which is encapsulated in [NativeDisplayManager_DisplayInfo](capi-nativedisplaymanager-displayinfo.md).|
+| uint32_t displayId | ID of the display, which is a non-negative integer.|
+| [NativeDisplayManager_DisplayInfo](capi-nativedisplaymanager-displayinfo.md) **displayInfo | Pointer to the information about a display. For details, see [NativeDisplayManager_DisplayInfo](capi-nativedisplaymanager-displayinfo.md). It is returned as an output parameter. After use, call [OH_NativeDisplayManager_DestroyDisplay](#oh_nativedisplaymanager_destroydisplay) to release the resources. |
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | Status code defined in [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode).|
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | **DISPLAY_MANAGER_OK**: The operation is successful.<br>**DISPLAY_MANAGER_ERROR_INVALID_PARAM**: The parameter check fails.<br>**DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL**: The system service is abnormal.|
 
 ### OH_NativeDisplayManager_DestroyDisplay()
 
@@ -691,7 +692,7 @@ Destroys the object that contains the information about a display.
 
 | Parameter| Description|
 | -- | -- |
-| [NativeDisplayManager_DisplayInfo](capi-nativedisplaymanager-displayinfo.md) *displayInfo | Pointer to the display information object, which is obtained by calling [OH_NativeDisplayManager_CreateDisplayById](capi-oh-display-manager-h.md#oh_nativedisplaymanager_createdisplaybyid) or [OH_NativeDisplayManager_CreatePrimaryDisplay](capi-oh-display-manager-h.md#oh_nativedisplaymanager_createprimarydisplay). For details, see [NativeDisplayManager_DisplayInfo](capi-nativedisplaymanager-displayinfo.md).|
+| [NativeDisplayManager_DisplayInfo](capi-nativedisplaymanager-displayinfo.md) *displayInfo | Pointer to the display information obtained by calling [OH_NativeDisplayManager_CreateDisplayById](#oh_nativedisplaymanager_createdisplaybyid) or [OH_NativeDisplayManager_CreatePrimaryDisplay](#oh_nativedisplaymanager_createprimarydisplay). For details, see [NativeDisplayManager_DisplayInfo](capi-nativedisplaymanager-displayinfo.md).|
 
 ### OH_NativeDisplayManager_CreatePrimaryDisplay()
 
@@ -701,7 +702,7 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CreatePrimaryDisplay(Nati
 
 **Description**
 
-Obtains the object that contains the information about the primary display. For devices other than 2-in-1 devices, the displayInfo object obtained contains information about the built-in screen. For 2-in-1 devices with an external screen, the displayInfo object obtained contains information about the current primary screen. For 2-in-1 devices without an external screen, the displayInfo object obtained contains information about the built-in screen.
+Obtains the object that contains the information about the primary display. For devices other than PCs/2-in-1 devices, the **displayInfo** object obtained contains information about the built-in screen. For PCs/2-in-1 devices with an external screen, the **displayInfo** object obtained contains information about the current primary screen. For PCs/2-in-1 devices without an external screen, the **displayInfo** object obtained contains information about the built-in screen.
 
 **Since**: 14
 
@@ -710,13 +711,13 @@ Obtains the object that contains the information about the primary display. For 
 
 | Parameter| Description|
 | -- | -- |
-| [NativeDisplayManager_DisplayInfo](capi-nativedisplaymanager-displayinfo.md) **displayInfo | Double pointer to the display information, which is encapsulated in [NativeDisplayManager_DisplayInfo](capi-nativedisplaymanager-displayinfo.md).|
+| [NativeDisplayManager_DisplayInfo](capi-nativedisplaymanager-displayinfo.md) **displayInfo | Double pointer to the primary display information, which is encapsulated in [NativeDisplayManager_DisplayInfo](capi-nativedisplaymanager-displayinfo.md). It is used as an output parameter.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | Status code defined in [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode).|
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | **DISPLAY_MANAGER_OK**: The operation is successful.<br>**DISPLAY_MANAGER_ERROR_INVALID_PARAM**: The parameter check fails.<br>**DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL**: The system service is abnormal.|
 
 ### OH_NativeDisplayManager_AvailableAreaChangeCallback()
 
@@ -726,7 +727,7 @@ typedef void (*OH_NativeDisplayManager_AvailableAreaChangeCallback)(uint64_t dis
 
 **Description**
 
-Defines a callback function to listen for available area changes of a display.
+Called when the available area of the display changes.
 
 **Since**: 20
 
@@ -735,7 +736,7 @@ Defines a callback function to listen for available area changes of a display.
 
 | Parameter| Description|
 | -- | -- |
-| uint64_t displayId | Display ID, which is a non-negative integer.|
+| uint64_t displayId | ID of the display, which is a non-negative integer.|
 
 ### OH_NativeDisplayManager_RegisterAvailableAreaChangeListener()
 
@@ -749,19 +750,24 @@ Registers a listener for available area changes of the display.
 
 **Since**: 20
 
+**Device behavior differences**:
+
+- This API can be properly called on devices running OpenHarmony 7.0.0 or later.
+
+- For devices running versions earlier than OpenHarmony 7.0.0, this API can be properly called on PCs/2-in-1 devices and tablets, but does not work or report an error on other devices.
 
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
-| [OH_NativeDisplayManager_AvailableAreaChangeCallback](capi-oh-display-manager-h.md#oh_nativedisplaymanager_availableareachangecallback) availableAreaChangeCallback | Callback function triggered when the available area of the display changes.<br>For details, see [OH_NativeDisplayManager_AvailableAreaChangeCallback](capi-oh-display-manager-h.md#oh_nativedisplaymanager_availableareachangecallback).|
-| uint32_t *listenerIndex | Pointer to the index of the listener registered.<br>It can be used as an input parameter of [OH_NativeDisplayManager_UnregisterAvailableAreaChangeListener](capi-oh-display-manager-h.md#oh_nativedisplaymanager_unregisteravailableareachangelistener).|
+| [OH_NativeDisplayManager_AvailableAreaChangeCallback](#oh_nativedisplaymanager_availableareachangecallback) availableAreaChangeCallback | Callback function triggered when the available area of the display changes.<br>For details, see [OH_NativeDisplayManager_AvailableAreaChangeCallback](#oh_nativedisplaymanager_availableareachangecallback).|
+| uint32_t *listenerIndex | Pointer to the index of the listener registered.<br>It can be used as an input parameter of [OH_NativeDisplayManager_UnregisterAvailableAreaChangeListener](#oh_nativedisplaymanager_unregisteravailableareachangelistener). It is used as an output parameter.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | Status code defined in [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode).|
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | **DISPLAY_MANAGER_OK**: The operation is successful.<br>**DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM**: Invalid parameter.<br>**DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL**: The system service is abnormal.|
 
 ### OH_NativeDisplayManager_UnregisterAvailableAreaChangeListener()
 
@@ -775,18 +781,23 @@ Unregisters a listener for available area changes of the display.
 
 **Since**: 20
 
+**Device behavior differences**:
+
+- This API can be properly called on devices running OpenHarmony 7.0.0 or later.
+
+- For devices running versions earlier than OpenHarmony 7.0.0, this API can be properly called on PCs/2-in-1 devices and tablets, but does not work or report an error on other devices.
 
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
-| uint32_t listenerIndex | Index of the listener returned<br>when [OH_NativeDisplayManager_RegisterAvailableAreaChangeListener](capi-oh-display-manager-h.md#oh_nativedisplaymanager_registeravailableareachangelistener) is called.|
+| uint32_t listenerIndex | Index of the listener returned when [OH_NativeDisplayManager_RegisterAvailableAreaChangeListener](#oh_nativedisplaymanager_registeravailableareachangelistener) is called.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | Status code defined in [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode).|
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | **DISPLAY_MANAGER_OK**: The operation is successful.<br>**DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM**: Invalid parameter.<br>**DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL**: The system service is abnormal.|
 
 ### OH_NativeDisplayManager_CreateAvailableArea()
 
@@ -798,23 +809,29 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CreateAvailableArea(uint6
 
 Obtains the available area of a display.
 
+The available area is the area that applications can freely use after the system UI (such as the status bar and Dock bar) is excluded.
+
 **Since**: 20
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices and tablets. It does not work for other device types. To obtain the available screen area on the current device, call [OH_NativeDisplayManager_GetDefaultDisplayWidth()](#oh_nativedisplaymanager_getdefaultdisplaywidth) and [OH_NativeDisplayManager_GetDefaultDisplayHeight()](#oh_nativedisplaymanager_getdefaultdisplayheight).
+**Device behavior differences**:
+
+- This API can be properly called on devices running OpenHarmony 7.0.0 or later.
+
+- For devices running versions earlier than OpenHarmony 7.0.0, this API can be properly called on PCs/2-in-1 devices and tablets, and is unavailable on other devices. To obtain the available area of the current display, use [OH_NativeDisplayManager_GetDefaultDisplayWidth()](#oh_nativedisplaymanager_getdefaultdisplaywidth) and [OH_NativeDisplayManager_GetDefaultDisplayHeight()](#oh_nativedisplaymanager_getdefaultdisplayheight).
 
 
 **Parameters**
 
 | Parameter| Description|
 | -- | -- |
-| uint64_t displayId | Display ID, which is a non-negative integer.|
-| [NativeDisplayManager_Rect](capi-nativedisplaymanager-rect.md) **availableArea | Double pointer to the available area of the display. For details, see [NativeDisplayManager_Rect](capi-nativedisplaymanager-rect.md).|
+| uint64_t displayId | ID of the display, which is a non-negative integer.|
+| [NativeDisplayManager_Rect](capi-nativedisplaymanager-rect.md) **availableArea | Pointer to the available area of the display. For details, see [NativeDisplayManager_Rect](capi-nativedisplaymanager-rect.md). It is returned as an output parameter. After use, call [OH_NativeDisplayManager_DestroyAvailableArea](#oh_nativedisplaymanager_destroyavailablearea) to release the resources. |
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | Status code defined in [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode).|
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | **DISPLAY_MANAGER_OK**: The operation is successful.<br>**DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM**: Invalid parameter.<br>**DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL**: The system service is abnormal.|
 
 ### OH_NativeDisplayManager_DestroyAvailableArea()
 
@@ -833,13 +850,13 @@ Destroys the available area of a display.
 
 | Parameter| Description|
 | -- | -- |
-| [NativeDisplayManager_Rect](capi-nativedisplaymanager-rect.md) *availableArea | Pointer to the available area, which is obtained by calling [OH_NativeDisplayManager_CreateAvailableArea](capi-oh-display-manager-h.md#oh_nativedisplaymanager_createavailablearea).<br>For details about the available area, see [NativeDisplayManager_Rect](capi-nativedisplaymanager-rect.md).|
+| [NativeDisplayManager_Rect](capi-nativedisplaymanager-rect.md) *availableArea | Pointer to the available area of the display obtained by calling [OH_NativeDisplayManager_CreateAvailableArea](#oh_nativedisplaymanager_createavailablearea).<br>For details about the available area, see [NativeDisplayManager_Rect](capi-nativedisplaymanager-rect.md).|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | Status code defined in [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode).|
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | **DISPLAY_MANAGER_OK**: The operation is successful.<br>**DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM**: Invalid parameter.|
 
 ### OH_NativeDisplayManager_DisplayAddCallback()
 
@@ -849,7 +866,7 @@ typedef void (*OH_NativeDisplayManager_DisplayAddCallback)(uint64_t displayId)
 
 **Description**
 
-Defines a callback function to listen for display addition events.
+Called when the display is added.
 
 **Since**: 20
 
@@ -858,7 +875,7 @@ Defines a callback function to listen for display addition events.
 
 | Parameter| Description|
 | -- | -- |
-| uint64_t displayId | Display ID, which is a non-negative integer.|
+| uint64_t displayId | ID of the added display, which is a non-negative integer.|
 
 ### OH_NativeDisplayManager_RegisterDisplayAddListener()
 
@@ -877,14 +894,14 @@ Registers a listener for display addition events (for example, monitor inserted)
 
 | Parameter| Description|
 | -- | -- |
-| [OH_NativeDisplayManager_DisplayAddCallback](capi-oh-display-manager-h.md#oh_nativedisplaymanager_displayaddcallback) displayAddCallback | Callback function triggered when a display is added. For details, see [OH_NativeDisplayManager_DisplayAddCallback](capi-oh-display-manager-h.md#oh_nativedisplaymanager_displayaddcallback).|
-| uint32_t *listenerIndex | Pointer to the index of the listener registered.<br>It can be used as an input parameter of [OH_NativeDisplayManager_UnregisterDisplayAddListener](capi-oh-display-manager-h.md#oh_nativedisplaymanager_unregisterdisplayaddlistener).|
+| [OH_NativeDisplayManager_DisplayAddCallback](#oh_nativedisplaymanager_displayaddcallback) displayAddCallback | Callback function triggered when a display is added. For details, see [OH_NativeDisplayManager_DisplayAddCallback](#oh_nativedisplaymanager_displayaddcallback).|
+| uint32_t *listenerIndex | Pointer to the index of the listener registered.<br>It can be used as an input parameter of [OH_NativeDisplayManager_UnregisterDisplayAddListener](#oh_nativedisplaymanager_unregisterdisplayaddlistener). It is used as an output parameter.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | Status code defined in [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode).|
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | **DISPLAY_MANAGER_OK**: The operation is successful.<br>**DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM**: Invalid parameter.<br>**DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL**: The system service is abnormal.|
 
 ### OH_NativeDisplayManager_UnregisterDisplayAddListener()
 
@@ -903,13 +920,13 @@ Unregisters a listener for display addition events.
 
 | Parameter| Description|
 | -- | -- |
-| uint32_t listenerIndex | Index of the listener returned when [OH_NativeDisplayManager_RegisterDisplayAddListener](capi-oh-display-manager-h.md#oh_nativedisplaymanager_registerdisplayaddlistener) is called.|
+| uint32_t listenerIndex | Index of the listener returned when [OH_NativeDisplayManager_RegisterDisplayAddListener](#oh_nativedisplaymanager_registerdisplayaddlistener) is called.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | Status code defined in [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode).|
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | **DISPLAY_MANAGER_OK**: The operation is successful.<br>**DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM**: Invalid parameter.<br>**DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL**: The system service is abnormal.|
 
 ### OH_NativeDisplayManager_DisplayRemoveCallback()
 
@@ -919,7 +936,7 @@ typedef void (*OH_NativeDisplayManager_DisplayRemoveCallback)(uint64_t displayId
 
 **Description**
 
-Defines a callback function to listen for display removal events.
+Called when a display is removed.
 
 **Since**: 20
 
@@ -928,7 +945,7 @@ Defines a callback function to listen for display removal events.
 
 | Parameter| Description|
 | -- | -- |
-| uint64_t displayId | Display ID, which is a non-negative integer.|
+| uint64_t displayId | ID of the display to be removed, which is a non-negative integer.|
 
 ### OH_NativeDisplayManager_RegisterDisplayRemoveListener()
 
@@ -938,7 +955,7 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_RegisterDisplayRemoveList
 
 **Description**
 
-Registers a listener for display removal events (for example, monitor removed).
+Registers a listener for display removal events (for example, display removed).
 
 **Since**: 20
 
@@ -947,14 +964,14 @@ Registers a listener for display removal events (for example, monitor removed).
 
 | Parameter| Description|
 | -- | -- |
-| [OH_NativeDisplayManager_DisplayRemoveCallback](capi-oh-display-manager-h.md#oh_nativedisplaymanager_displayremovecallback) displayRemoveCallback | Callback function triggered when a display is removed. For details, see [OH_NativeDisplayManager_DisplayRemoveCallback](capi-oh-display-manager-h.md#oh_nativedisplaymanager_displayremovecallback).|
-| uint32_t *listenerIndex | Pointer to the index of the listener registered.<br>It can be used as an input parameter of [OH_NativeDisplayManager_UnregisterDisplayRemoveListener](capi-oh-display-manager-h.md#oh_nativedisplaymanager_unregisterdisplayremovelistener).|
+| [OH_NativeDisplayManager_DisplayRemoveCallback](#oh_nativedisplaymanager_displayremovecallback) displayRemoveCallback | Callback function triggered when a display is removed. For details, see [OH_NativeDisplayManager_DisplayRemoveCallback](#oh_nativedisplaymanager_displayremovecallback).|
+| uint32_t *listenerIndex | Pointer to the index of the listener registered.<br>It can be used as an input parameter of [OH_NativeDisplayManager_UnregisterDisplayRemoveListener](#oh_nativedisplaymanager_unregisterdisplayremovelistener). It is used as an output parameter.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | Status code defined in [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode).|
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | **DISPLAY_MANAGER_OK**: The operation is successful.<br>**DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM**: Invalid parameter.<br>**DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL**: The system service is abnormal.|
 
 ### OH_NativeDisplayManager_UnregisterDisplayRemoveListener()
 
@@ -973,13 +990,13 @@ Unregisters the listener for display removal events.
 
 | Parameter| Description|
 | -- | -- |
-| uint32_t listenerIndex | Index of the listener returned when [OH_NativeDisplayManager_RegisterDisplayRemoveListener](capi-oh-display-manager-h.md#oh_nativedisplaymanager_registerdisplayremovelistener) is called.|
+| uint32_t listenerIndex | Index of the listener returned when [OH_NativeDisplayManager_RegisterDisplayRemoveListener](#oh_nativedisplaymanager_registerdisplayremovelistener) is called.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | Status code defined in [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode).|
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | **DISPLAY_MANAGER_OK**: The operation is successful.<br>**DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM**: Invalid parameter.<br>**DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL**: The system service is abnormal.|
 
 ### OH_NativeDisplayManager_GetDisplaySourceMode()
 
@@ -989,7 +1006,7 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDisplaySourceMode(uint
 
 **Description**
 
-Obtains the source mode of a display.
+Obtains the display source mode. The default value is **DISPLAY_SOURCE_MODE_NONE**.
 
 **Since**: 20
 
@@ -998,14 +1015,14 @@ Obtains the source mode of a display.
 
 | Parameter| Description|
 | -- | -- |
-| uint64_t displayId | Display ID, which is a non-negative integer.|
-| [NativeDisplayManager_SourceMode](capi-oh-display-info-h.md#nativedisplaymanager_sourcemode) *sourceMode | Pointer to the source mode. For details about the available options, see [NativeDisplayManager_SourceMode](capi-oh-display-info-h.md#nativedisplaymanager_sourcemode).|
+| uint64_t displayId | ID of the display, which is a non-negative integer.|
+| [NativeDisplayManager_SourceMode](capi-oh-display-info-h.md#nativedisplaymanager_sourcemode) *sourceMode | Pointer to the source mode. For details about the available options, see [NativeDisplayManager_SourceMode](capi-oh-display-info-h.md#nativedisplaymanager_sourcemode). It is used as an output parameter.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | Status code defined in [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode).|
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | **DISPLAY_MANAGER_OK**: The operation is successful.<br>**DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM**: The parameter is invalid. For example, **sourceMode** is a null pointer or **displayId** is invalid.<br>**DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL**: The system service is abnormal.|
 
 ### OH_NativeDisplayManager_GetDisplayPosition()
 
@@ -1015,7 +1032,11 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_GetDisplayPosition(uint64
 
 **Description**
 
-Obtains the position of a display.
+Obtains the display position, that is, the x-coordinate and y-coordinate relative to the original point (the upper left corner of the main screen).
+
+The actual value is returned only when the current display source mode is **DISPLAY_SOURCE_MODE_MAIN** or **DISPLAY_SOURCE_MODE_EXTEND**.
+
+You can obtain the display source mode by calling [OH_NativeDisplayManager_GetDisplaySourceMode()](#oh_nativedisplaymanager_getdisplaysourcemode).
 
 **Since**: 20
 
@@ -1024,12 +1045,13 @@ Obtains the position of a display.
 
 | Parameter| Description|
 | -- | -- |
-| uint64_t displayId | Display ID, which is a non-negative integer.|
-| int32_t *x | Pointer to the X coordinate of the top-left corner of the primary screen.|
-| int32_t *y | Pointer to the Y coordinate of the top-left corner of the primary screen.|
+| uint64_t displayId | ID of the display whose position is to be queried. The value must be a non-negative integer.|
+| int32_t *x | Pointer to the x-coordinate relative to the upper left corner of the main screen, in px. The value must be an integer and is returned as an output parameter.|
+| int32_t *y | Pointer to the y-coordinate relative to the upper left corner of the main screen, in px. The value must be an integer and is returned as an output parameter.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | Status code defined in [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode).<br>Currently, only the primary screen and extended screen support position information query. Queries for other screens return **DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM**.|
+| [NativeDisplayManager_ErrorCode](capi-oh-display-info-h.md#nativedisplaymanager_errorcode) | **DISPLAY_MANAGER_OK**: The operation is successful.<br>**DISPLAY_MANAGER_ERROR_ILLEGAL_PARAM**: The parameter is invalid. For example, **x** or **y** is a null pointer, **displayId** is invalid, or the screen display mode is not the main screen or extend mode.<br>**DISPLAY_MANAGER_ERROR_SYSTEM_ABNORMAL**: The system service is abnormal.|
+

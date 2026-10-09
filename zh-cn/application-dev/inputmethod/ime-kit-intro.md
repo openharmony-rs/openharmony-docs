@@ -1,15 +1,15 @@
 # IME Kit简介
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
-<!--Designer: @andeszhang-->
+<!--Owner: @codexu62-->
+<!--Designer: @zhaolinglan-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 IME Kit 负责建立编辑框所在应用与输入法应用之间的通信通道，确保两者可以共同协作提供文本输入功能，也为系统应用提供管理输入法应用的能力。
 
 
-## Kit使用场景
+## 使用场景
 
 IME Kit提供输入法框架和输入法服务两类API。用于实现输入法应用，也可以用于实现自绘编辑框以及实现对输入法应用的控制。
 
@@ -47,6 +47,7 @@ ArkUI: IME Kit在输入法软键盘和自绘编辑框时使用ArkUI提供的部�
 
 针对切换输入法应用的系统API，需要申请系统权限，部分API仅支持当前输入法应用调用。
 
+<!--RP1--><!--RP1End-->
 
 ## IME Kit API参考
 

@@ -3,8 +3,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @xialiangwei-->
 <!--Designer: @jsjzju-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 
 1. 创建ServiceAbility。

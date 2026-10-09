@@ -1,8 +1,8 @@
 # ArkUI_NumberValue
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -12,7 +12,7 @@ typedef union {...} ArkUI_NumberValue
 
 ## 概述
 
-ArkUI在Native侧的数字类型定义。
+ArkUI 在 Native 侧使用的数字类型，用于通过统一类型承载浮点、有符号整型和无符号整型数值。
 
 **起始版本：** 12
 

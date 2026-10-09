@@ -2,10 +2,11 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yylong-->
+<!--Owner: @yylong; @rongShao-Z; @wind_-->
 <!--Designer: @yylong-->
-<!--Tester: @liuzhenshuo-->
+<!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=93458ca6cb2d2618da5fc6bdfa2819210775aa38 translatedAt=2026-06-23T07:34:13.786Z pushedAt=2026-06-23T09:23:31.764Z -->
 
 >  **NOTE**
 >
@@ -184,4 +185,4 @@ export default {
 
 ```
 
-![list6](figures/list6.gif)
+![list-item-group](figures/list-item-group.gif)

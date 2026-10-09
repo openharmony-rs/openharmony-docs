@@ -60,21 +60,21 @@ System internal error.
 
 **可能原因**
 
-1.内存异常。
+1. 内存异常。
 
-2.空指针。
+2. 空指针。
 
 **处理步骤**
 
-1.检查内存空间是否充足，清理内存后重试。
+1. 检查内存空间是否充足，清理内存后重试。
 
-2.系统异常，请稍后重试或重启设备。
+2. 系统异常，请稍后重试或重启设备。
 
 ## 2201005 设备信息不存在
 
 **错误信息**
 
-The device information does not exist.
+Device information does not exist.
 
 **错误描述**
 
@@ -86,8 +86,8 @@ The device information does not exist.
 
 **处理步骤**
 
-```
-> hdc shell ifconfig
+``` shell
+hdc shell ifconfig
 ```
 查看是否有对应的设备，比如eth0，eth1。
 
@@ -95,7 +95,7 @@ The device information does not exist.
 
 **错误信息**
 
-Device disconnected.
+Ethernet device not connected.
 
 **错误描述**
 
@@ -113,7 +113,7 @@ Device disconnected.
 
 **错误信息**
 
-Failed to write the user configuration.
+Ethernet failed to write user configuration information.
 
 **错误描述**
 

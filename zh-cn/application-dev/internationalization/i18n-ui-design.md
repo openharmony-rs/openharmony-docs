@@ -3,9 +3,9 @@
 <!--Kit: Localization Kit-->
 <!--Subsystem: Global-->
 <!--Owner: @yliupy-->
-<!--Designer: @sunyaozu-->
+<!--Designer: @zw_feifei-->
 <!--Tester: @lpw_work-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @ningningW-->
 
 一套有效的国际化界面布局设计规则，既可以树立产品在国际化设计中产品调性，还可以保证操作的一致性，遵循以下设计规则可有效提升应用全球化质量。
 
@@ -18,10 +18,10 @@
 | 英文字符数量（个） | 预留的空间比率 | 
 | -------- | -------- |
 | 小于等于10 | 100%～200% | 
-| 大于等于11，小于等于20 | 80%~100% | 
-| 大于等于21，小于等于30 | 60%~80% | 
-| 大于等于31，小于等于50 | 40%~60% | 
-| 大于等于51，小于等于70 | 30%~40% | 
+| 大于等于11，小于等于20 | 80%～100% | 
+| 大于等于21，小于等于30 | 60%～80% | 
+| 大于等于31，小于等于50 | 40%～60% | 
+| 大于等于51，小于等于70 | 30%～40% | 
 | 大于等于71 | 30% | 
 
 ## 界面镜像
@@ -38,20 +38,20 @@
 
 **图1** 一般布局示例（英文）
 
-![zh-cn_image_0000001784343297](figures/zh-cn_image_0000001784343297.png)
+![edit-phone-contact](figures/edit-phone-contact.png)
 
 **图2** 镜像布局示例（阿拉伯文）
 
-![zh-cn_image_0000001784263053](figures/zh-cn_image_0000001784263053.png)
+![edit-phone-contact-01](figures/edit-phone-contact-01.png)
 
 **图3** 一般图标资源
 
-![zh-cn_image_0000001737423164](figures/zh-cn_image_0000001737423164.png)
+![phone-volume-right](figures/phone-volume-right.png)
 
 **图4** RTL语言系统下提供的图标资源
 
-![zh-cn_image_0000001737264020](figures/zh-cn_image_0000001737264020.png)
+![phone-volume-left](figures/phone-volume-left.png)
 
 **图5** RTL语言下提供的镜像控件
 
-![zh-cn_image_0000001784343305](figures/zh-cn_image_0000001784343305.png)
+![internationalization-phone-calendar](figures/internationalization-phone-calendar.png)

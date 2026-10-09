@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @littlejerry1-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 AbilityConstant提供Ability相关的枚举，包括应用启动原因[LaunchReason](#launchreason)、上次退出原因[LastExitReason](#lastexitreason)、迁移结果[OnContinueResult](#oncontinueresult)等。
 
@@ -51,6 +51,12 @@ import { AbilityConstant } from '@kit.AbilityKit';
 
 Ability启动原因，该类型为枚举，可配合UIAbility的[onCreate(want, launchParam)](js-apis-app-ability-uiAbility.md#oncreate)方法根据launchParam.launchReason的不同类型执行相应操作。
 
+> **说明：**
+>
+> - 如果应用在Ability创建之前退出，则无法获取记录信息。
+>
+> - 获取应用异常退出信息的方式可参见[App Killed](../../dfx/appkilled-guidelines.md)。
+
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 | 名称                          | 值   | 说明                                                         |
@@ -89,13 +95,13 @@ Ability上次退出原因，该类型为枚举，可配合UIAbility的[onCreate(
 | 名称                          | 值   | 说明                                                         |
 | ----------------------------- | ---- | ------------------------------------------------------------ |
 | UNKNOWN          | 0    | 未知原因。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
-| ABILITY_NOT_RESPONDING<sup>(deprecated)</sup> | 1    | Ability组件未响应。<br>**说明:** 从API version 9开始支持，从API version 10开始废弃，请使用APP_FREEZE替代。|
+| ABILITY_NOT_RESPONDING<sup>(deprecated)</sup> | 1    | Ability组件未响应。<br>**说明**： 从API version 9开始支持，从API version 10开始废弃，请使用APP_FREEZE替代。|
 | NORMAL | 2    | 用户主动关闭应用，应用程序正常退出。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br>**说明**：当开发者直接调用[process.exit()](../apis-arkts/js-apis-process.md#processexitdeprecated)、内核kill命令等非Ability Kit提供的能力强制退出应用进程时，也会返回NORMAL。 |
 | CPP_CRASH<sup>10+</sup>  | 3    | [进程崩溃](../../dfx/cppcrash-guidelines.md)导致的应用程序退出。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
 | JS_ERROR<sup>10+</sup>  | 4    | 当应用存在JS语法错误并未被开发者捕获时，触发JS_ERROR故障，导致应用程序退出。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
 | APP_FREEZE<sup>10+</sup>  | 5    | [应用冻屏](../../dfx/appfreeze-guidelines.md)导致的应用程序退出。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
 | PERFORMANCE_CONTROL<sup>10+</sup>  | 6    | 因系统性能问题（如设备内存不足）导致的应用程序退出。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br>**说明**：该接口即将废弃，建议使用RESOURCE_CONTROL替代。 |
-| RESOURCE_CONTROL<sup>10+</sup>  | 7    | 系统资源使用不当导致的应用程序退出。具体错误原因可以通过[LaunchParam.lastExitMessage](#launchparam)获取，可能原因如下: <br> - CPU Highload，CPU高负载。<br> - CPU_EXT Highload，快速CPU负载检测。<br> - IO Manage Control，I/O管控。<br> - App Memory Deterioration，应用内存超限劣化。<br> - Temperature Control，温度管控。<br> - Memory Pressure，整机低内存触发按优先级由低到高终止进程。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。|
+| RESOURCE_CONTROL<sup>10+</sup>  | 7    | 系统资源使用不当导致的应用程序退出。具体错误原因可以通过[LaunchParam.lastExitMessage](#launchparam)获取，可能原因如下： <br> - CPU Highload，CPU高负载。<br> - CPU_EXT Highload，快速CPU负载检测。<br> - IO Manage Control，I/O管控。<br> - App Memory Deterioration，应用内存超限劣化。<br> - Temperature Control，温度管控。<br> - Memory Pressure，整机低内存触发按优先级由低到高终止进程。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。|
 | UPGRADE<sup>10+</sup>  | 8    | 应用升级导致的应用程序退出。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
 | USER_REQUEST<sup>18+</sup>  | 9    | 应用程序因多任务中心请求而退出。<br>**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。 |
 | SIGNAL<sup>18+</sup>  | 10    | 应用程序因收到系统kill指令信号而退出。<br>**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。 |
@@ -108,10 +114,10 @@ import { UIAbility, Want, AbilityConstant } from '@kit.AbilityKit';
 export default class MyAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     if (launchParam.lastExitReason === AbilityConstant.LastExitReason.APP_FREEZE) {
-      console.info('The ability has exit last because the ability was not responding.');
+      console.info('The ability has exited last because the ability was not responding.');
     }
     if (launchParam.lastExitReason === AbilityConstant.LastExitReason.RESOURCE_CONTROL) {
-      console.info(`The ability has exit last because the rss control，the lastExitReason is ${launchParam.lastExitReason}, the lastExitMessage is ${launchParam.lastExitMessage}.`);
+      console.info(`The ability has exited last because the rss control, the lastExitReason is ${launchParam.lastExitReason}, the lastExitMessage is ${launchParam.lastExitMessage}.`);
     }
   }
 }
@@ -134,6 +140,47 @@ export default class MyAbility extends UIAbility {
 | pss | number | 否 | 否 | Ability上次退出时所在进程实际使用的物理内存大小，单位KB。 <br/>**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。|
 | timestamp | number | 否 | 否 | Ability上次退出时的时间戳。 <br/>**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。|
 | processState<sup>20+</sup> | [appManager.ProcessState](js-apis-app-ability-appManager.md#processstate10) | 否 | 是 | Ability上次退出时的进程状态。<br/>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。 |
+| killReason<sup>24+</sup> | string | 否 | 是 | Ability上次退出时的原因，取值详见[应用终止事件reason字段说明](../../dfx/hiappevent-watcher-app-killed-events.md#reason字段说明)。<br/>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。 |
+
+> **说明：**
+>
+> 建议通过[App Killed](../../dfx/appkilled-guidelines.md)检测来获取应用异常退出的信息，不再建议使用exitSubReason获取。
+>
+> exitSubReason取值的含义如下：
+>
+> - [LastExitReason](#lastexitreason)为NORMAL时：
+>   - 9：内核强制终止，终止信号SIGKILL。
+>   - 15：内核强制终止，终止信号SIGTERM。
+>
+> - [LastExitReason](#lastexitreason)为PERFORMANCE_CONTROL时：
+>   - 100：进入户外模式查杀。
+>   - 101：退出户外模式查杀。
+>   - 102：户外模式中查杀。
+>   - 3000：冻结异常管控，后台存在不合理订阅导致的回调唤醒。
+>   - 3001：冻结异常管控，后台存在不合理订阅导致应用处理回调卡死。
+>   - 3002：GNSS工作异常清理。
+>   - 3003：蓝牙工作异常清理。
+>   - 3004：RunningLock持锁异常清理。
+>   - 3005：Kernel锁异常清理。
+>   - 3006：省电模式清理。
+>   - 3007：模块高耗电异常清理。
+>   - 3042：应急模式或超级省电模式清理，具体错误原因可通过[LaunchParam.lastExitMessage](#launchparam)区分。
+>
+> - [LastExitReason](#lastexitreason)为RESOURCE_CONTROL时：
+>   - 101：未申请合理的后台任务，但是后台有大量音频播放。
+>   - 102：应用未申请合理的后台任务，但是后台有录音。
+>   - 103：应用后台CPU高负载。
+>   - 105：应用IO超限。
+>   - 106：ION内存泄漏管控或恶意使用后台任务查杀，具体错误原因可通过[LaunchParam.lastExitMessage](#launchparam)区分。
+>   - 107：后台应用内存占用超过检测阈值两倍，其中PSS内存占比最高。
+>   - 108：后台应用内存占用超过特定阈值，其中PSS内存占比最高。
+>   - 110：GPU内存泄漏管控。
+>   - 111：VMA内存泄漏管控。
+>   - 112：句柄泄漏管控。
+>   - 113：线程泄漏管控。
+>   - 114：ASHMEM内存泄漏管控。
+>   - 117：页表泄漏管控。
+>   - 301：GPU内存超限或热清理，具体错误原因可通过[LaunchParam.lastExitMessage](#launchparam)区分。
 
 **示例**:
 
@@ -151,7 +198,8 @@ export default class MyAbility extends UIAbility {
       \n rss: ${launchParam.lastExitDetailInfo.rss}
       \n pss: ${launchParam.lastExitDetailInfo.pss}
       \n timestamp: ${launchParam.lastExitDetailInfo.timestamp}
-      \n processState: ${launchParam.lastExitDetailInfo.processState}.`
+      \n processState: ${launchParam.lastExitDetailInfo.processState}
+      \n killReason: ${launchParam.lastExitDetailInfo?.killReason}.`
       );
     }
   }
@@ -194,7 +242,11 @@ export default class MyAbility extends UIAbility {
 | ---                         | --- | ---           |
 | MEMORY_LEVEL_MODERATE       | 0   | 表示整机可用内存适中。由于整机内存水线的不同，在不同产品上的表现可能存在差异，参见下方说明。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。| 
 | MEMORY_LEVEL_LOW            | 1   | 表示整机可用内存低。由于整机内存水线的不同，在不同产品上的表现可能存在差异，参见下方说明。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。| 
-| MEMORY_LEVEL_CRITICAL       | 2   | 表示整机可用内极低。由于整机内存水线的不同，在不同产品上的表现可能存在差异，参见下方说明。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。|
+| MEMORY_LEVEL_CRITICAL       | 2   | 表示整机可用内存极低。由于整机内存水线的不同，在不同产品上的表现可能存在差异，参见下方说明。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。|
+| MEMORY_LEVEL_UI_HIDDEN<sup>24+</sup>      | 3   | 表示应用程序的所有UI界面已不可见，此时应该释放一些资源。该枚举仅对从前台切换到后台的应用生效。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。<br>**约束**：实际场景中仅在Phone设备上会触发该内存级别，但使用[send-memory-level](../../tools/aa-tool.md#onmemorylevel回调命令send-memory-level)调试命令在所有设备上都可以触发该内存级别。|
+| MEMORY_LEVEL_BACKGROUND_MODERATE<sup>24+</sup>     | 4   | 表示应用刚被使用过，即处于应用使用排序链表（LRU）的头部，暂时不会被系统清理。该枚举仅对后台应用生效。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。<br>**约束**：实际场景中仅在Phone设备上会触发该内存级别，但使用[send-memory-level](../../tools/aa-tool.md#onmemorylevel回调命令send-memory-level)调试命令在所有设备上都可以触发该内存级别。|
+| MEMORY_LEVEL_BACKGROUND_LOW<sup>24+</sup>    | 5   | 表示应用已被用户使用完一段时间，即处于应用使用排序链表（LRU）的中部，存在被系统清理的风险。该枚举仅对后台应用生效。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。<br>**约束**：实际场景中仅在Phone设备上会触发该内存级别，但使用[send-memory-level](../../tools/aa-tool.md#onmemorylevel回调命令send-memory-level)调试命令在所有设备上都可以触发该内存级别。|
+| MEMORY_LEVEL_BACKGROUND_CRITICAL<sup>24+</sup>    | 6   | 表示应用长期未被使用，即处于应用使用排序链表（LRU）的尾部，会被系统优先清理。该枚举仅对后台应用生效。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。<br>**约束**：实际场景中仅在Phone设备上会触发该内存级别，但使用[send-memory-level](../../tools/aa-tool.md#onmemorylevel回调命令send-memory-level)调试命令在所有设备上都可以触发该内存级别。|
 
 > **说明：**
 > 
@@ -202,6 +254,9 @@ export default class MyAbility extends UIAbility {
 >   - 当整机可用内存下降至1700MB~1800MB时，会触发取值为0的onMemoryLevel回调，表示当前整机可用内存适中。
 >   - 当整机可用内存下降至1600MB~1700MB时，会触发取值为1的onMemoryLevel回调，表示当前整机可用内存偏低。
 >   - 当整机可用内存下降至1600MB以下时，会触发取值为2的onMemoryLevel回调，表示当前整机可用内存很低。
+>
+> - LRU：表示按应用最近使用顺序排序的链表。通常将最近使用的应用放在链表头部（位置靠前），将最不常用的应用放在链表尾部（位置靠后）。当内存不足时，位置靠后的应用将优先被清理。
+> - 当LRU发生变化时，后台应用会根据处于应用使用排序链表（LRU）的位置，触发对应MemoryLevel级别(MEMORY_LEVEL_BACKGROUND_MODERATE、MEMORY_LEVEL_BACKGROUND_LOW、MEMORY_LEVEL_BACKGROUND_CRITICAL)的onMemoryLevel回调。如果应用被冻结，则会在应用唤醒时收到对应的onMemoryLevel回调，因此不建议在此回调接口中做耗时操作。
 
 **示例：**
 
@@ -226,8 +281,9 @@ export default class MyAbility extends UIAbility {
 | 名称                        | 值 | 说明                 |
 | ---                         | --- | ---                  |
 | WINDOW_MODE_FULLSCREEN      | 1   | 全屏模式。仅在2in1和Tablet设备上生效。  |
-| WINDOW_MODE_SPLIT_PRIMARY   | 100 | 支持应用内拉起Ability时设置为分屏，左侧分屏。仅在折叠屏和Tablet设备上生效。   |
-| WINDOW_MODE_SPLIT_SECONDARY | 101 | 支持应用内拉起Ability时设置为分屏，右侧分屏。仅在折叠屏和Tablet设备上生效。   |
+| WINDOW_MODE_SPLIT_PRIMARY   | 100 | 支持应用内拉起Ability时设置为分屏，左侧分屏。仅在Tablet设备、PC/2in1设备，以及支持横屏桌面且处于展开状态的折叠屏设备上生效。   |
+| WINDOW_MODE_SPLIT_SECONDARY | 101 | 支持应用内拉起Ability时设置为分屏，右侧分屏。仅在Tablet设备、PC/2in1设备，以及支持横屏桌面且处于展开状态的折叠屏设备上生效。   |
+| WINDOW_MODE_SPLIT | 105 | 支持应用内拉起Ability时设置为分屏，新增窗口默认显示在焦点窗口右侧。仅在折叠屏和Tablet设备上生效。<br>**起始版本：** 26.0.0   |
 
 **示例：**
 
@@ -235,7 +291,7 @@ export default class MyAbility extends UIAbility {
 import { UIAbility, StartOptions, Want, AbilityConstant } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let want: Want = {
+let targetWant: Want = {
   bundleName: 'com.example.myapplication',
   abilityName: 'EntryAbility'
 };
@@ -246,7 +302,7 @@ let option: StartOptions = {
 // 确保从上下文获取到context
 export default class MyAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-    this.context.startAbility(want, option).then(() => {
+    this.context.startAbility(targetWant, option).then(() => {
       console.info('Succeed to start ability.');
     }).catch((error: BusinessError) => {
       console.error(`Failed to start ability with error: ${JSON.stringify(error)}`);
@@ -305,7 +361,7 @@ import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
 export default class MyAbility extends UIAbility {
   onSaveState(reason: AbilityConstant.StateType, wantParam: Record<string, Object>) {
     if (reason === AbilityConstant.StateType.CONTINUATION) {
-      console.info('Save the ability data when the ability continuation.');
+      console.info('Save the ability data when the ability is continuing.');
     }
     return AbilityConstant.OnSaveResult.ALL_AGREE;
   }
@@ -314,11 +370,13 @@ export default class MyAbility extends UIAbility {
 
 ## ContinueState<sup>10+</sup>
 
-流转状态枚举值。用于表示当前应用任务流转的状态。可配合[UIAbilityContext](js-apis-inner-application-uiAbilityContext.md)的[setMissionContinueState](js-apis-inner-application-uiAbilityContext.md#setmissioncontinuestate10)方法进行设置。
+流转状态枚举值。用于表示当前应用任务流转的状态。可配合[UIAbilityContext (UIAbility上下文)](js-apis-inner-application-uiAbilityContext.md)的[setMissionContinueState](js-apis-inner-application-uiAbilityContext.md#setmissioncontinuestate10)方法进行设置。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**设备行为差异：** 该接口在不支持分布式业务的Wearable设备不生效。
 
 | 名称           | 值       | 说明                                                         |
 | ------------- | --------- | ------------------------------------------------------------ |
@@ -373,7 +431,7 @@ export default class MyAbility extends UIAbility {
 
 | 名称 | 值 | 说明 |
 | ------------- | --------- | ----------- |
-| TERMINATE_IMMEDIATELY | 0 | 表示立即执行结束动作，默认值。|
+| TERMINATE_IMMEDIATELY | 0 | 表示立即执行结束动作。|
 | CANCEL | 1 | 表示取消结束动作。|
 
 **示例：**

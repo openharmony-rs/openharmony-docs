@@ -2,8 +2,8 @@
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
 <!--Owner: @lvzhenjie-->
-<!--Designer: @wang_zhangjun; @chenxi0605-->
-<!--Tester: @liuhonggang123-->
+<!--Designer: @chenxi0605-->
+<!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
 
 The **BackupExtensionAbility** module provides extended backup and restore capabilities for applications.
@@ -101,7 +101,7 @@ class BackupExt extends BackupExtensionAbility {
   onBackupEx(backupInfo: string): string {
     try {
       if (backupInfo == "") {
-        // When backupInfo is empty, you need to handle this based on the service logic of the application.
+        // If backupInfo is empty, the application processes the data based on the service.
         console.info("backupInfo is empty");
       }
       console.info(`onBackupEx ok`);
@@ -134,11 +134,11 @@ interface ErrorInfo {
   errorInfo: string
 }
 class BackupExt extends BackupExtensionAbility {
-  // Asynchronous implementation.
+  // Asynchronous implementation
   async onBackupEx(backupInfo: string): Promise<string> {
     try {
       if (backupInfo == "") {
-        // When backupInfo is empty, you need to handle this based on the service logic of the application.
+        // If backupInfo is empty, the application processes the data based on the service.
         console.info("backupInfo is empty");
       }
       console.info(`onBackupEx ok`);
@@ -224,7 +224,7 @@ class BackupExt extends BackupExtensionAbility {
   async onRestoreEx(bundleVersion : BundleVersion, restoreInfo: string): Promise<string> {
     try {
       if (restoreInfo == "") {
-        // When restoreInfo is empty, you need to handle this based on the service logic of the application.
+        // If restoreInfo is empty, the application processes the data based on the service.
         console.info("restoreInfo is empty");
       }
       console.info(`onRestoreEx ok ${JSON.stringify(bundleVersion)}`);
@@ -261,7 +261,7 @@ class BackupExt extends BackupExtensionAbility {
   onRestoreEx(bundleVersion : BundleVersion, restoreInfo: string): string {
     try {
       if (restoreInfo == "") {
-        // When restoreInfo is empty, you need to handle this based on the service logic of the application.
+        // If restoreInfo is empty, the application processes the data based on the service.
         console.info("restoreInfo is empty");
       }
       console.info(`onRestoreEx ok ${JSON.stringify(bundleVersion)}`);
@@ -297,6 +297,7 @@ Called to return the progress information. This callback is executed synchronous
 > **NOTE**
 >
 > - The system provides the default processing mechanism if **onProcess** is not implemented. If **onProcess** is used, the return value must strictly comply with that in the sample code.
+> - The execution of **onProcess** cannot exceed 1 second. The system calls **onProcess** every 5 seconds. If the execution times out for three consecutive times, the current backup or restoration task of the application is terminated.
 > - If **onProcess** is used, **onBackup/onBackupEx** and **onRestore/onRestoreEx** must be asynchronously executed in a dedicated thread. Otherwise, **onProcess** cannot run properly. For details, see the sample code.
 > - The following example shows the recommended use of **onProcess()**.
 

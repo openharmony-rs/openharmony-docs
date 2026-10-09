@@ -41,7 +41,7 @@ Sets the ID of the slot in which the primary card is located. This API uses an a
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -96,7 +96,7 @@ Sets the ID of the slot in which the primary card is located. This API uses a pr
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -142,7 +142,7 @@ Obtains the IMEI of the primary SIM card of the device. This API uses an asynchr
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -190,7 +190,7 @@ Obtains the IMEI of the SIM card in the specified slot. This API uses an asynchr
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -244,7 +244,7 @@ Obtains the IMEI of the SIM card in the specified slot. This API uses a promise 
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -289,7 +289,7 @@ Obtains the MEID of the SIM card. This API uses an asynchronous callback to retu
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -337,7 +337,7 @@ Obtains the MEID of the SIM card in the specified slot. This API uses an asynchr
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -391,7 +391,7 @@ Obtains the MEID of the SIM card in the specified slot. This API uses a promise 
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -438,7 +438,7 @@ If the device registers with a 3GPP network, an IMEI is returned. If the device 
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -488,7 +488,7 @@ If the device registers with a 3GPP network, an IMEI is returned. If the device 
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -544,7 +544,7 @@ If the device registers with a 3GPP network, an IMEI is returned. If the device 
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -589,7 +589,7 @@ Sends a cell location update request. This API uses an asynchronous callback to 
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -636,7 +636,7 @@ Sends a cell location update request for the SIM card in the specified slot. Thi
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -689,7 +689,7 @@ Sends a cell location update request for the SIM card in the specified slot. Thi
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -734,7 +734,7 @@ Obtains cell information. This API uses an asynchronous callback to return the r
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -782,7 +782,7 @@ Obtains cell information of the SIM card in the specified slot. This API uses an
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -836,7 +836,7 @@ Obtains cell information of the SIM card in the specified slot. This API uses a 
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -882,7 +882,7 @@ Sets the network selection mode. This API uses an asynchronous callback to retur
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -946,7 +946,7 @@ Sets the network selection mode. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -1003,7 +1003,7 @@ Obtains network search information of the SIM card in the specified slot. This A
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -1055,7 +1055,7 @@ Obtains network search information of the SIM card in the specified slot. This A
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -1101,7 +1101,7 @@ Obtains the NR option mode of the SIM card. This API uses an asynchronous callba
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -1150,7 +1150,7 @@ Obtains the NR option mode of the SIM card in the specified slot. This API uses 
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -1205,7 +1205,7 @@ Obtains the NR option mode of the SIM card in the specified slot. This API uses 
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -1249,7 +1249,7 @@ Turns on the radio function. This API uses an asynchronous callback to return th
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -1297,7 +1297,7 @@ Enables the radio service for the SIM card in the specified slot. This API uses 
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -1351,7 +1351,7 @@ Turns on the radio function for the SIM card in the specified slot. This API use
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -1396,7 +1396,7 @@ Turns off the radio function. This API uses an asynchronous callback to return t
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -1444,7 +1444,7 @@ Disables the radio service for the SIM card in the specified slot. This API uses
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -1498,7 +1498,7 @@ Turns off the radio function for the SIM card in the specified slot. This API us
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -1545,7 +1545,7 @@ Sets the preferred network of the SIM card in the specified slot. This API uses 
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -1600,7 +1600,7 @@ Sets the preferred network of the SIM card in the specified slot. This API uses 
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                    |
 | -------- | -------------------------------------------- |
@@ -1647,7 +1647,7 @@ Obtains the preferred network of the SIM card in the specified slot. This API us
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -1700,7 +1700,7 @@ Obtains the preferred network of the SIM card in the specified slot. This API us
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -1747,7 +1747,7 @@ Obtains the IMS registration status of the specified IMS service type for the SI
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -1802,7 +1802,7 @@ Obtains the IMS registration status of the specified IMS service type for the SI
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -1851,7 +1851,7 @@ Enables listening for **imsRegStateChange** events of the SIM card in the specif
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -1896,7 +1896,7 @@ Disables listening for **imsRegStateChange** events of the SIM card in the speci
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -1940,7 +1940,7 @@ Obtains the device baseband version of the SIM card in the specified slot. This 
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                    |
 | -------- | -------------------------------------------- |
@@ -1994,7 +1994,7 @@ Obtains the device baseband version of the SIM card in the specified slot. This 
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                    |
 | -------- | -------------------------------------------- |
@@ -2042,7 +2042,7 @@ Sets the NR mode of the SIM card in the specified slot. This API uses an asynchr
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                    |
 | -------- | -------------------------------------------- |
@@ -2098,7 +2098,7 @@ Sets the NR mode of the SIM card in the specified slot. This API uses a promise 
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                     |
 | -------- | -------------------------------------------- |
@@ -2144,7 +2144,7 @@ Obtains the NR option mode of the SIM card in the specified slot. This API uses 
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                    |
 | -------- | -------------------------------------------- |
@@ -2194,7 +2194,7 @@ Obtains the NR option mode of the SIM card in the specified slot. This API uses 
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
@@ -2241,7 +2241,7 @@ Obtains the network capability of the SIM card in the specified slot. This API u
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -2297,7 +2297,7 @@ Obtains the network capability of the SIM card in the specified slot. This API u
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -2326,8 +2326,7 @@ radio.getNetworkCapability(slotId, type).then((data: radio.NetworkCapabilityStat
 
 ## radio.setNetworkCapability<sup>10+</sup>
 
-setNetworkCapability\(slotId: number, type: NetworkCapabilityType, state: NetworkCapabilityState,
-      callback: AsyncCallback\<void\>\): void
+setNetworkCapability\(slotId: number, type: NetworkCapabilityType, state: NetworkCapabilityState, callback: AsyncCallback\<void\>\): void
 
 Sets the network capability of the SIM card in the specified slot. This API uses an asynchronous callback to return the result.
 
@@ -2348,7 +2347,7 @@ Sets the network capability of the SIM card in the specified slot. This API uses
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -2406,7 +2405,7 @@ Sets the network capability of the SIM card in the specified slot. This API uses
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -2459,7 +2458,7 @@ Restores the radio service to factory settings. This API uses a promise to retur
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -2505,7 +2504,7 @@ Obtains the software version of the SIM card in the specified slot.
 
 **Error codes**
 
-For details about the error codes, see[ohos.telephony (Telephony) Error Codes](errorcode-telephony.md).
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
 
 | ID|                  Error Message                   |
 | -------- | -------------------------------------------- |
@@ -2523,6 +2522,147 @@ For details about the error codes, see[ohos.telephony (Telephony) Error Codes](e
 let slotId: number = 0;
 let data: string = radio.getIMEISV(slotId);
 console.info(`IMEISV is:` + data);
+```
+
+## radio.isManualNetworkScanning<sup>23+</sup>
+
+isManualNetworkScanning\(slotId: number\): Promise\<boolean\>
+
+Obtains the manual network scanning status. This API uses a promise to return the result.
+
+**System API**: This is a system API.
+
+**Required permission**: ohos.permission.GET_TELEPHONY_STATE
+
+**System capability**: SystemCapability.Telephony.CoreService
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description                                  |
+| ------ | ------ | ---- | -------------------------------------- |
+| slotId | number | Yes  | Card slot ID.<br>- **0**: card slot 1<br>- **1**: card slot 2|
+
+**Return value**
+
+| Type              | Description                                     |
+| ------------------ | ---------------------------------------- |
+| Promise\<boolean\> | Promise used to return the result. The value **true** indicates that manual network scanning is in progress, and **false** indicates that manual network scanning is complete.|
+
+**Error codes**
+
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
+
+| ID|                  Error Message                   |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Service connection failed.                   |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error.                               |
+
+**Example**
+
+```ts
+radio.isManualNetworkScanning(0).then((state: boolean) => {
+    console.info(`isManualNetworkScanning success, state->${JSON.stringify(state)}`);
+}).catch((err: BusinessError) => {
+    console.error(`isManualNetworkScanning failed, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+## radio.startManualNetworkScan<sup>23+</sup>
+
+startManualNetworkScan\(slotId: number, callback: AsyncCallback\<NetworkSearchRealTimeResult\>\): void
+
+Starts manual network scanning. This API uses an asynchronous callback to return the result.
+
+**System API**: This is a system API.
+
+**Required permission**: ohos.permission.GET_TELEPHONY_STATE
+
+**System capability**: SystemCapability.Telephony.CoreService
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description                                  |
+| ------ | ------ | ---- | -------------------------------------- |
+| slotId | number | Yes  | Card slot ID.<br>- **0**: card slot 1<br>- **1**: card slot 2|
+| callback | AsyncCallback\<[NetworkSearchRealTimeResult](#networksearchrealtimeresult23)\> | Yes  | Callback used to return the network scanning result.    |
+
+**Error codes**
+
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
+
+| ID|                  Error Message                   |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Service connection failed.                   |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error.                               |
+
+**Example**
+
+```ts
+radio.startManualNetworkScan(0, (err: BusinessError, data: radio.NetworkSearchRealTimeResult) => {
+    if (err) {
+        console.error(`startManualNetworkScan failed, callback: err->${JSON.stringify(err)}`);
+        return;
+    }
+    console.info(`startManualNetworkScan success, callback: data->${JSON.stringify(data)}`);
+});
+```
+
+## radio.stopManualNetworkScan<sup>23+</sup>
+
+stopManualNetworkScan\(slotId: number\): Promise\<void\>
+
+Stops manual network scanning. This API uses a promise to return the result.
+
+**System API**: This is a system API.
+
+**Required permission**: ohos.permission.SET_TELEPHONY_STATE
+
+**System capability**: SystemCapability.Telephony.CoreService
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description                                  |
+| ------ | ------ | ---- | -------------------------------------- |
+| slotId | number | Yes  | Card slot ID.<br>- **0**: card slot 1<br>- **1**: card slot 2|
+
+**Return value**
+
+| Type           | Description                   |
+| --------------- | ----------------------- |
+| Promise\<void\> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md).
+
+| ID|                  Error Message                   |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Service connection failed.                   |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error.                               |
+
+**Example**
+
+```ts
+radio.startManualNetworkScan(0, (err: BusinessError, data: radio.NetworkSearchRealTimeResult) => {
+    if (err) {
+        console.error(`startManualNetworkScan failed, callback: err->${JSON.stringify(err)}`);
+        return;
+    }
+    console.info(`startManualNetworkScan success, callback: data->${JSON.stringify(data)}`);
+    radio.stopManualNetworkScan(0);
+});
 ```
 
 ## PreferredNetworkMode<sup>8+</sup>
@@ -2580,7 +2720,7 @@ Defines the cell information.
 | ----------------- | --------------------------------------- | ----|---- | ------------------------------------------------------------ |                           
 | isCamped          | boolean                                 |  No |No| Cell status.<br>**System API**: This is a system API.<br>The value **true** indicates a camped cell, and the value **false** indicates a non-camped cell.         |
 | timeStamp         | number                                  |  No | No|Timestamp when cell information is obtained.<br>**System API**: This is a system API.   |                              
-| data              | [CdmaCellInformation](#cdmacellinformation8) \| [GsmCellInformation](#gsmcellinformation8) \| [LteCellInformation](#ltecellinformation8) \| [NrCellInformation](#nrcellinformation8) \| [TdscdmaCellInformation](#tdscdmacellinformation8)\|[WcdmaCellInformation](#wcdmacellinformation8) |  No|No | CDMA cell information\|GSM cell information\|LTE cell information\|NR cell information\|TD-SCDMA cell information\|WCDMA.<br>**System API**: This is a system API.|
+| data              | [CdmaCellInformation](#cdmacellinformation8) \| [GsmCellInformation](#gsmcellinformation8) \| [LteCellInformation](#ltecellinformation8) \| [NrCellInformation](#nrcellinformation8) \| [TdscdmaCellInformation](#tdscdmacellinformation8)\|[WcdmaCellInformation](#wcdmacellinformation8) |  No|No | CDMA cell information\|GSM cell information\|LTE cell information\|NR cell information\|TD-SCDMA cell information\|WCDMA cell information.<br>**System API**: This is a system API.|
 
 ## CdmaCellInformation<sup>8+</sup>
 
@@ -2627,7 +2767,7 @@ LTE cell information.
 | ------------- | ------- | ---- | ---- | ----------------------- |
 | cgi           | number  |  No | No|Cell global identification.         |
 | pci           | number  |  No | No|Physical cell ID.         |
-| tac           | number |  No | No|Tracking area code.         |
+| tac           | number  |  No | No|Tracking area code.         |
 | earfcn        | number  |  No | No| Absolute radio frequency channel number.   |
 | bandwidth     | number   |  No | No| Bandwidth.                 |
 | mcc           | string   |  No | No| Mobile country code.           |
@@ -2858,3 +2998,16 @@ Defines the network capability switch status.
 | -----------------------| ---- | ---------- |
 | SERVICE_CAPABILITY_OFF | 0    | The network capability is disabled.|
 | SERVICE_CAPABILITY_ON  | 1    | The network capability is enabled.|
+
+## NetworkSearchRealTimeResult<sup>23+</sup>
+
+Returns the result of manual network scanning.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Telephony.CoreService
+
+| Name              |                    Type                      | Mandatory|                 Description                  |
+| ------------------ | --------------------------------------------- | ---- | -------------------------------------- |
+| networkInfos    | Array<[NetworkInformation](#networkinformation)\> |  Yes | List of scanning results containing available network information.|
+| isFinish        | boolean     |  Yes | Whether network scanning has finished.<br>**true**: yes; **false**: no.                |

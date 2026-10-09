@@ -1,5 +1,6 @@
 # MDNS Error Codes
 
+<!-- md-trans-meta sourceCommit=7b8b9d8ce742c4a1126ab4e1f2ad4f9170b54175 translatedAt=2026-09-23T01:46:46.489Z pushedAt=2026-09-24T06:00:14.171Z -->
 
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
@@ -26,9 +27,9 @@ This error code is reported if a service connection failure occurs.
 
 The service is abnormal.
 
-**Procedure**
+**Solution**
 
-Check whether system services are running properly.
+Check the system service running status and try again. If the problem persists, collect complete logs and contact technical support for assistance.
 
 ## 2100003 System Internal Error
 
@@ -46,11 +47,29 @@ This error code is reported if a system internal error occurs.
 
 2. A null pointer is present.
 
-**Procedure**
+**Solution**
 
 1. Check whether the memory space is sufficient. If not, clear the memory and try again.
 
-2. Check whether the system is normal. If not, try again later or restart the device.
+2. The system is abnormal. Try again later or restart the device. If the problem persists, collect complete logs and contact technical support for assistance.
+
+## 2204002 Target Service Not Found
+
+**Error Message**
+
+Callback not found.
+
+**Description**
+
+The target service is not found.
+
+**Possible Causes**
+
+An unregistered mDNS service is being unregistered, or the search for an mDNS service not being searched is being cancelled.
+
+**Solution**
+
+Check whether the input parameters for the APIs to unregister mDNS and cancel mDNS search are correct.
 
 ## 2204003 Repeated Registration
 
@@ -66,7 +85,7 @@ This error code is reported if a callback already exists.
 
 An MDNS service with the same name and type is repeatedly registered.
 
-**Procedure**
+**Solution**
 
 Check whether the MDNS service to be registered already exists.
 
@@ -84,7 +103,7 @@ This error code is reported if an MDNS service already exists.
 
 The previously registered MDNS service is still running.
 
-**Procedure**
+**Solution**
 
 Check whether the MDNS service already exists.
 
@@ -102,7 +121,7 @@ This error code is reported if the MDNS service to be removed does not exist.
 
 The service has been deleted.
 
-**Procedure**
+**Solution**
 
 Check whether the MDNS service to be registered already exists.
 
@@ -120,7 +139,7 @@ Data packets fail to be sent.
 
 No network is available.
 
-**Procedure**
+**Solution**
 
 Check whether the device is connected to an available network.
 
@@ -132,13 +151,13 @@ Failed to send the message.
 
 **Description**
 
-This error code is reported if messages fail to be sent through an MDNS service.
+Failed to send the message.
 
 **Possible Causes**
 
 The MDNS service does not exist on the LAN.
 
-**Procedure**
+**Solution**
 
 Check whether the target MDNS service exists on the LAN.
 
@@ -156,6 +175,6 @@ This error code is reported if MDNS services of the specified type fail to be re
 
 MDNS services of the specified type do not exist on the LAN.
 
-**Procedure**
+**Solution**
 
 Check whether MDNS services of the specified type exist on the LAN.

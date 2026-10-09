@@ -53,4 +53,4 @@ export default {
 }
 ```
 
- ![en-us_image_0000001118642600](figures/en-us_image_0000001118642600.PNG) 
+ ![Adding-Title](figures/Adding-Title.PNG) 

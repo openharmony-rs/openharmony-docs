@@ -1,10 +1,10 @@
-# @ohos.screenLock (锁屏管理)（系统接口）
+# @ohos.screenLock (锁屏管理)(系统接口)
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @jiayunpeng2-->
 <!--Designer: @starrylight; @jiayunpeng2-->
 <!--Tester: @yaoruijiang-->
-<!--Adviser: @zhangaof-->
+<!--Adviser: @fang-jinxu-->
 
 锁屏管理服务是OpenHarmony中的系统服务，为锁屏应用提供注册亮屏、灭屏、开启屏幕、结束休眠、退出动画、请求解锁结果监听，并提供回调结果给锁屏应用。锁屏管理服务向三方应用提供请求解锁、查询锁屏状态、查询是否设置锁屏密码的能力。
 
@@ -112,14 +112,14 @@ unlock(callback: AsyncCallback&lt;boolean&gt;): void
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和见[锁屏服务错误码](errorcode-screenlock.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[锁屏服务错误码](errorcode-screenlock.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 401  | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 202  | permission verification failed, application which is not a system application uses system API.         |
 | 13200002  | the screenlock management service is abnormal.         |
-| 13200003  | illegal use.         |
+| 13200003  | Invalid use.         |
 
 **示例：** 
 
@@ -137,7 +137,7 @@ unlock(callback: AsyncCallback&lt;boolean&gt;): void
 
 > **说明：**
 >
-> 在 api11 中 增加错误码`13200003 illegal use` 。
+> 在 api11 中 增加错误码`13200003 Invalid use` 。
 
 ## screenLock.unlock<sup>9+</sup>
 
@@ -157,13 +157,13 @@ unlock(): Promise&lt;boolean&gt;
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和见[锁屏服务错误码](errorcode-screenlock.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[锁屏服务错误码](errorcode-screenlock.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 202  | permission verification failed, application which is not a system application uses system API.         |
 | 13200002  | the screenlock management service is abnormal.         |
-| 13200003  | illegal use.         |
+| 13200003  | Invalid use.       |
 
 **示例：** 
 
@@ -179,7 +179,7 @@ unlock(): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 在 api11 中 增加错误码`13200003 illegal use` 。
+> 在 api11 中 增加错误码`13200003 Invalid use` 。
 
 ## screenLock.lock<sup>9+</sup>
 
@@ -201,7 +201,7 @@ lock(callback: AsyncCallback&lt;boolean&gt;): void
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和见[锁屏服务错误码](errorcode-screenlock.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[锁屏服务错误码](errorcode-screenlock.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -244,7 +244,7 @@ lock(): Promise&lt;boolean&gt;
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和见[锁屏服务错误码](errorcode-screenlock.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[锁屏服务错误码](errorcode-screenlock.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -290,7 +290,7 @@ onSystemEvent(callback: Callback&lt;SystemEvent&gt;): boolean
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和见[锁屏服务错误码](errorcode-screenlock.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[锁屏服务错误码](errorcode-screenlock.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -336,7 +336,7 @@ sendScreenLockEvent(event: String, parameter: number, callback: AsyncCallback&lt
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和见[锁屏服务错误码](errorcode-screenlock.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[锁屏服务错误码](errorcode-screenlock.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -386,7 +386,7 @@ sendScreenLockEvent(event: String, parameter: number): Promise&lt;boolean&gt;
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和见[锁屏服务错误码](errorcode-screenlock.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[锁屏服务错误码](errorcode-screenlock.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |

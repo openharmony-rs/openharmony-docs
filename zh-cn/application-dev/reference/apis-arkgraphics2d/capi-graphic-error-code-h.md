@@ -1,14 +1,14 @@
 # graphic_error_code.h
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @Flix-fangyang; @BruceXu; @ding-panyun-->
+<!--Owner: @Felix-fangyang-->
 <!--Designer: @conan13234-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
 ## 概述
 
-定义错误码。
+定义错误码，用于标识接口调用过程中可能出现的各类错误情况，包括内存操作错误、参数无效、权限不足、缓冲区状态异常、设备不支持等，帮助开发者快速定位和排查接口调用失败的原因。
 
 **引用文件：** <native_window/graphic_error_code.h>
 
@@ -49,6 +49,7 @@ enum OHNativeErrorCode
 | NATIVE_ERROR_INVALID_ARGUMENTS = 40001000 | 入参无效。 |
 | NATIVE_ERROR_NO_PERMISSION = 40301000 | 无权限操作。 |
 | NATIVE_ERROR_NO_BUFFER = 40601000 | 无空闲可用的buffer。 |
+| NATIVE_ERROR_INVALID_OPERATION = 41201000 | 无效操作。<br/>**起始版本：** 26.0.0 |
 | NATIVE_ERROR_NO_CONSUMER = 41202000 | 消费端不存在。 |
 | NATIVE_ERROR_NOT_INIT = 41203000 | 未初始化。 |
 | NATIVE_ERROR_CONSUMER_CONNECTED = 41206000 | 消费端已经被连接。 |
@@ -62,7 +63,7 @@ enum OHNativeErrorCode
 | NATIVE_ERROR_UNKNOWN = 50002000 | 未知错误，请查看日志。 |
 | NATIVE_ERROR_HDI_ERROR = 50007000 | HDI接口调用失败。 |
 | NATIVE_ERROR_BINDER_ERROR = 50401000 | 跨进程通信失败。 |
-| NATIVE_ERROR_EGL_STATE_UNKNOWN = 60001000 | egl环境状态异常。 |
-| NATIVE_ERROR_EGL_API_FAILED = 60002000 | egl接口调用失败。 |
+| NATIVE_ERROR_EGL_STATE_UNKNOWN = 60001000 | EGL环境状态异常。 |
+| NATIVE_ERROR_EGL_API_FAILED = 60002000 | EGL接口调用失败。 |
 
 

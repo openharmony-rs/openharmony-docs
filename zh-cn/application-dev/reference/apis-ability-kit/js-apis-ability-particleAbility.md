@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @xialiangwei-->
 <!--Designer: @jsjzju-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 particleAbility模块提供了操作Data和Service类型的Ability的能力，包括启动、停止指定的particleAbility，获取dataAbilityHelper，连接、断连指定的ServiceAbility等。
 
@@ -196,7 +196,7 @@ acquireDataAbilityHelper(uri: string): DataAbilityHelper
 
 | 参数名 | 类型   | 必填 | 说明                     |
 | :--- | ------ | ---- | ------------------------ |
-| uri  | string | 是   | 表示要打开的文件的路径。 |
+| uri  | string | 是   | 表示要访问的DataAbility的URI。 |
 
 **返回值：**
 

@@ -2,8 +2,8 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
 ## 概述
@@ -38,9 +38,9 @@
 
 | 名称                                                         | 描述                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [int OH_Predicates_NotLike(OH_Predicates *predicates, const char *field, const char *pattern)](#oh_predicates_notlike) | 设置OH_Predicates以匹配数据类型为字符串且值不类似于指定值的字段。<br>此方法类似于SQL语句中的“Not like”。 |
-| [int OH_Predicates_Glob(OH_Predicates *predicates, const char *field, const char *pattern)](#oh_predicates_glob) | 设置OH_Predicates以匹配指定字段（数据类型为字符串）且值包含通配符的字段。<br>与like方法不同，此方法的输入参数区分大小写。 |
-| [int OH_Predicates_NotGlob(OH_Predicates *predicates, const char *field, const char *pattern)](#oh_predicates_notglob) | 设置OH_Predicates以不匹配指定字段（数据类型为字符串）且值包含通配符的字段。<br>与Not Like方法不同，此方法的输入参数区分大小写。 |
+| [int OH_Predicates_NotLike(OH_Predicates *predicates, const char *field, const char *pattern)](#oh_predicates_notlike) | 设置OH_Predicates以匹配数据类型为字符串且值不类似于指定值的字段。<br>此方法类似于SQL语句中的“Not Like”。 |
+| [int OH_Predicates_Glob(OH_Predicates *predicates, const char *field, const char *pattern)](#oh_predicates_glob) | 设置OH_Predicates以匹配指定字段（数据类型为字符串）且值包含通配符的字段。<br>与“Like”方法不同，此方法的输入参数区分大小写。 |
+| [int OH_Predicates_NotGlob(OH_Predicates *predicates, const char *field, const char *pattern)](#oh_predicates_notglob) | 设置OH_Predicates以不匹配指定字段（数据类型为字符串）且值包含通配符的字段。<br>与“Not Like”方法不同，此方法的输入参数区分大小写。 |
 | [int OH_Predicates_Having(OH_Predicates *predicates, const char *conditions, const OH_Data_Values *values)](#oh_predicates_having) | 设置OH_Predicates以指定条件来过滤分组结果，这些结果将出现在最终结果中。 |
 
 ## 枚举类型说明
@@ -73,7 +73,7 @@ int OH_Predicates_NotLike(OH_Predicates *predicates, const char *field, const ch
 
 **描述**
 
-设置OH_Predicates以匹配数据类型为字符串且值不类似于指定值的字段。<br>此方法类似于SQL语句中的“Not like”。
+设置OH_Predicates以匹配数据类型为字符串且值不类似于指定值的字段。<br>此方法类似于SQL语句中的“Not Like”。
 
 **起始版本：** 20
 
@@ -82,15 +82,15 @@ int OH_Predicates_NotLike(OH_Predicates *predicates, const char *field, const ch
 
 | 参数项                                             | 描述                                                       |
 | -------------------------------------------------- | ---------------------------------------------------------- |
-| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | 表示指向[OH_Predicates](capi-rdb-oh-predicates.md)实例的指针。 |
-| const char *field                                  | 表示数据库表中的列名。                                     |
-| const char *pattern                                | 表示谓词不匹配的模式。                                     |
+| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | 表示指向[OH_Predicates](capi-rdb-oh-predicates.md)实例的指针，不能为空。 |
+| const char *field                                  | 表示数据库表中的列名，不能为空。                                     |
+| const char *pattern                                | 表示要比较的指定值，不能为空。                                     |
 
 **返回：**
 
 | 类型 | 说明                                                         |
 | ---- | ------------------------------------------------------------ |
-| int  | 返回执行结果。<br>如果执行成功，返回RDB_OK。<br>如果输入参数无效，返回RDB_E_INVALID_ARGS。 |
+| int  | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 ### OH_Predicates_Glob()
 
@@ -100,7 +100,7 @@ int OH_Predicates_Glob(OH_Predicates *predicates, const char *field, const char 
 
 **描述**
 
-设置OH_Predicates以匹配指定字段（数据类型为字符串）且值包含通配符的字段。<br>与like方法不同，此方法的输入参数区分大小写。
+设置OH_Predicates以匹配指定字段（数据类型为字符串）且值包含通配符的字段。<br>与“Like”方法不同，此方法的输入参数区分大小写。
 
 **起始版本：** 20
 
@@ -109,15 +109,15 @@ int OH_Predicates_Glob(OH_Predicates *predicates, const char *field, const char 
 
 | 参数项                                             | 描述                                                       |
 | -------------------------------------------------- | ---------------------------------------------------------- |
-| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | 表示指向[OH_Predicates](capi-rdb-oh-predicates.md)实例的指针。 |
-| const char *field                                  | 表示数据库表中的列名。                                     |
-| const char *pattern                                | 表示谓词匹配的样式。                                       |
+| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | 表示指向[OH_Predicates](capi-rdb-oh-predicates.md)实例的指针，不能为空。 |
+| const char *field                                  | 表示数据库表中的列名，不能为空。                                     |
+| const char *pattern                                | 表示与谓词匹配的值，不能为空。                                       |
 
 **返回：**
 
 | 类型 | 说明                                                         |
 | ---- | ------------------------------------------------------------ |
-| int  | 返回执行结果。<br>如果执行成功，返回RDB_OK。<br>如果输入参数无效，返回RDB_E_INVALID_ARGS。 |
+| int  | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 ### OH_Predicates_NotGlob()
 
@@ -127,7 +127,7 @@ int OH_Predicates_NotGlob(OH_Predicates *predicates, const char *field, const ch
 
 **描述**
 
-设置OH_Predicates以不匹配指定字段（数据类型为字符串）且值包含通配符的字段。<br>与Not Like方法不同，此方法的输入参数区分大小写。
+设置OH_Predicates以不匹配指定字段（数据类型为字符串）且值包含通配符的字段。<br>与“Not Like”方法不同，此方法的输入参数区分大小写。
 
 **起始版本：** 20
 
@@ -136,15 +136,15 @@ int OH_Predicates_NotGlob(OH_Predicates *predicates, const char *field, const ch
 
 | 参数项                                             | 描述                                                       |
 | -------------------------------------------------- | ---------------------------------------------------------- |
-| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | 表示指向[OH_Predicates](capi-rdb-oh-predicates.md)实例的指针。 |
-| const char *field                                  | 表示数据库表中的列名。                                     |
-| const char *pattern                                | 表示谓词不匹配的样式。                                     |
+| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | 表示指向[OH_Predicates](capi-rdb-oh-predicates.md)实例的指针，不能为空。 |
+| const char *field                                  | 表示数据库表中的列名，不能为空。                                     |
+| const char *pattern                                | 表示要比较的指定值，不能为空。                                     |
 
 **返回：**
 
 | 类型 | 说明                                                         |
 | ---- | ------------------------------------------------------------ |
-| int  | 返回执行结果。<br>如果执行成功，返回RDB_OK。<br>如果输入参数无效，返回RDB_E_INVALID_ARGS。 |
+| int  | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 
 ### OH_Predicates_Having()
 
@@ -163,13 +163,13 @@ int OH_Predicates_Having(OH_Predicates *predicates, const char *conditions, cons
 
 | 参数项                                                 | 描述                                                         |
 | ------------------------------------------------------ | ------------------------------------------------------------ |
-| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates     | 表示指向[OH_Predicates](capi-rdb-oh-predicates.md)实例的指针。   |
-| const char *conditions                                 | 表示having子句中的过滤条件。                                 |
-| const [OH_Data_Values](capi-rdb-oh-data-values.md) *values | 表示指向[OH_Data_Values](capi-rdb-oh-data-values.md)实例的指针。 |
+| [OH_Predicates](capi-rdb-oh-predicates.md) *predicates     | 表示指向[OH_Predicates](capi-rdb-oh-predicates.md)实例的指针，不能为空。   |
+| const char *conditions                                 | 表示having子句中的过滤条件，不能为空且不能为空字符串。                                 |
+| const [OH_Data_Values](capi-rdb-oh-data-values.md) *values | 表示指向[OH_Data_Values](capi-rdb-oh-data-values.md)实例的指针，不能为空。 |
 
 **返回：**
 
 | 类型 | 说明                                                         |
 | ---- | ------------------------------------------------------------ |
-| int  | 返回错误码。<br>如果执行成功，返回RDB_OK。<br>如果输入参数无效，返回RDB_E_INVALID_ARGS。 |
+| int  | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
 

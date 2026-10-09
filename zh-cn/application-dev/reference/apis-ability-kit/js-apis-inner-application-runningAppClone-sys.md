@@ -1,13 +1,13 @@
-# RunningAppClone (系统接口)
+# RunningAppClone (分身应用运行信息)(系统接口)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @wendel-->
 <!--Designer: @wendel-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
-定义分身应用在运行态的结构信息。
+定义分身应用在运行态的结构信息，被[RunningMultiAppInfo (多开应用运行信息)](js-apis-inner-application-runningMultiAppInfo-sys.md)所包含。通过该结构可以获取分身应用的索引、UID和进程ID等信息，适用于需要区分和管理分身应用的场景，便于系统级应用进行应用隔离和资源管理。
 
 > **说明：**
 > 
@@ -26,9 +26,9 @@
 
 | 名称                      | 类型   | 只读  | 可选  | 说明       |
 | ------------------------- | ------ | ---- |  ---- | --------- |
-| appCloneIndex | number | 否  | 否  | 分身应用的索引。 |
-| uid | number | 否  | 否  | 表示应用程序的UID。 |
-| pids | Array\<number> | 否  | 否  | 应用的进程ID集合。 |
+| appCloneIndex | number | 否  | 否  | 分身应用的索引，用于标识不同的分身实例。索引从0开始，按分身创建顺序递增，0表示主应用实例，1及以上表示分身实例。 |
+| uid | number | 否  | 否  | 表示应用的UID。 |
+| pids | Array\<number> | 否  | 否  | 应用的进程ID集合，包含应用所有运行的进程ID。一个应用可能运行多个进程，因此返回数组。 |
 
 **示例：**
 
@@ -45,6 +45,8 @@ try {
       hilog.error(0x0000, 'testTag', `getRunningMultiAppInfo error, code: ${err.code}, msg:${err.message}`);
     })
 } catch (err) {
-  hilog.error(0x0000, 'testTag', `getRunningMultiAppInfo error, code: ${err.code}, msg:${err.message}`);
+  let code = (err as BusinessError).code;
+  let msg = (err as BusinessError).message;
+  console.error(`getRunningMultiAppInfo error, code: ${code}, message: ${msg}`);
 }
 ```

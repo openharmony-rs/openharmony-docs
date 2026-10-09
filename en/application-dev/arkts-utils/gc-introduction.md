@@ -308,7 +308,7 @@ Note: The shared heap is designed for objects shared across threads to improve e
 
 In performance-sensitive scenarios, the GC trigger threshold of the thread is temporarily adjusted to the maximum heap size (448 MB for the main thread by default), minimizing GC-triggered frame drops. (Smart GC does not take effect for the Worker thread and TaskPool thread.) However, if a performance-sensitive scenario persists too long and object allocation reaches the maximum heap size, GC is triggered, potentially resulting in longer GC times due to accumulated objects.
 
-**Performance-Sensitive Scenarios**
+**Performance-sensitive Scenarios**
 
 - Application cold start
 - Application scrolling

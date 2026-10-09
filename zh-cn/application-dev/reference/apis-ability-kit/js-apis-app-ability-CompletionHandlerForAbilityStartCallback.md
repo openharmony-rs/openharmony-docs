@@ -3,8 +3,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @zexin_c-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 CompletionHandlerForAbilityStartCallback作为[AbilityStartCallback](js-apis-inner-application-abilityStartCallback.md)的可选参数，用于返回垂域面板拉起指定类型的Ability组件的回调结果。
 
@@ -95,7 +95,7 @@ struct Index {
   };
   abilityStartCallback: common.AbilityStartCallback = {
     onError: (code: number, name: string, message: string) => {
-      console.info(`testTag code:` + code + `name:` + name + `message:` + message);
+      console.error(`testTag code:` + code + `name:` + name + `message:` + message);
     },
     onResult: (abilityResult: common.AbilityResult) => {
       console.info(`testTag resultCode:` + abilityResult.resultCode + `bundleName:` + abilityResult.want?.bundleName);
@@ -118,7 +118,7 @@ struct Index {
           this.context.startAbilityByType("share", wantParam, this.abilityStartCallback).then(() => {
             console.info(`startAbilityByType success`);
           }).catch((err: BusinessError) => {
-            console.error(`startAbilityByType fail, err: ${JSON.stringify(err)}`);
+            console.error(`Failed startAbilityByType. Code: ${JSON.stringify(err.code)}, message: ${JSON.stringify(err.message)}`);
           });
         })
     }

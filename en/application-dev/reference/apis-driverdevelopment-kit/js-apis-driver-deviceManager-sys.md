@@ -1,10 +1,11 @@
 # @ohos.driver.deviceManager (Peripheral Management) (System API)
 <!--Kit: Driver Development Kit-->
 <!--Subsystem: Driver-->
-<!--Owner: @lixinsheng2-->
+<!--Owner: @zgene94-->
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=a30d46aa87725f954a8669c5a6106a0f5fa2de6d translatedAt=2026-06-22T10:50:14.376Z pushedAt=2026-06-22T11:21:11.449Z -->
 
 The **deviceManager** module provides the functions of managing peripheral devices, including querying information about peripherals and their drivers.
 

@@ -6,10 +6,69 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=9149ee785adbed9063bcb1e1620f73d7c39f5d49 translatedAt=2026-09-23T01:51:45.439Z pushedAt=2026-09-24T06:00:14.180Z -->
 
 > **NOTE**
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+## 2200001 Invalid Parameter Value
+
+**Error Information**
+
+Invalid parameter value.
+
+**Description**
+
+Invalid parameter value.
+
+**Possible Causes**
+
+The input parameter value is not within the valid value range.
+
+**Solution**
+
+Check whether the input parameter value is within the valid value range.
+
+## 2200002 Service Connection Failure
+
+**Error Information**
+
+Operation failed. Cannot connect to service.
+
+**Description**
+
+This error code is reported if a service connection failure occurs.
+
+**Possible Causes**
+
+A service exception occurred. This includes but is not limited to: database service connection exception and application state management service connection exception.
+
+**Solution**
+
+Check the running status of system services and try again. If the problem persists, collect complete logs and contact technical support for assistance.
+
+## 2200003 System Internal Error
+
+**Error Information**
+
+System internal error.
+
+**Description**
+
+This error code is reported if a system internal error occurs.
+
+**Possible Causes**
+
+1. The memory is abnormal.
+
+2. A null pointer is present.
+
+**Solution**
+
+1. Check whether the memory space is sufficient. If not, clear the memory and try again.
+
+2. System exception. Please try again later or restart the device. If the problem persists, collect complete logs and contact technical support for assistance.
 
 ## 2203001 Failed to Create a VPN
 
@@ -19,7 +78,7 @@ VPN creation denied, please check the user type.
 
 **Description**
 
-This error code is reported if a VPN fails to be created.
+Refuses to create a VPN. Check the type of the current user.
 
 **Possible Causes**
 
@@ -101,4 +160,6 @@ An internal error is probably due to a null pointer, memory allocation error, or
 
 **Solution**
 
-Check whether the VPN service is normal.
+1. Check whether the memory space is sufficient. If not, clear the memory and try again.
+
+2. Check whether the VPN system service is normal. If the problem persists, submit the issue via [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#/).

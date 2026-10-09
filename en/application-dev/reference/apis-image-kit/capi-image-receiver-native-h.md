@@ -1,10 +1,12 @@
 # image_receiver_native.h
+
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=1ac76e4bcc0baa77f2de408485e684e0024a2a1d translatedAt=2026-08-03T04:06:12.181Z pushedAt=2026-08-04T02:22:12.931Z -->
 
 ## Overview
 
@@ -37,14 +39,14 @@ The file declares the APIs used to obtain image data from the native layer.
 | [typedef void (\*OH_ImageReceiver_ImageArriveCallback)(OH_ImageReceiverNative *receiver, void *userData)](#oh_imagereceiver_imagearrivecallback) | OH_ImageReceiver_ImageArriveCallback | Defines the callback for the ImageArrive event.|
 | [Image_ErrorCode OH_ImageReceiverOptions_Create(OH_ImageReceiverOptions **options)](#oh_imagereceiveroptions_create) | - | Creates an OH_ImageReceiverOptions object at the application layer.|
 | [Image_ErrorCode OH_ImageReceiverOptions_GetSize(OH_ImageReceiverOptions* options, Image_Size* size)](#oh_imagereceiveroptions_getsize) | - | Obtains the image size of an OH_ImageReceiverOptions object.|
-| [Image_ErrorCode OH_ImageReceiverOptions_SetSize(OH_ImageReceiverOptions* options, Image_Size size)](#oh_imagereceiveroptions_setsize) | - | Sets the image size for an OH_ImageReceiverOptions object.|
-| [Image_ErrorCode OH_ImageReceiverOptions_GetCapacity(OH_ImageReceiverOptions* options, int32_t* capacity)](#oh_imagereceiveroptions_getcapacity) | - | Obtains the capacity of an OH_ImageReceiverOptions object.|
-| [Image_ErrorCode OH_ImageReceiverOptions_SetCapacity(OH_ImageReceiverOptions* options, int32_t capacity)](#oh_imagereceiveroptions_setcapacity) | - | Sets the capacity for an OH_ImageReceiverOptions object.|
+| [Image_ErrorCode OH_ImageReceiverOptions_SetSize(OH_ImageReceiverOptions* options, Image_Size size)](#oh_imagereceiveroptions_setsize) | - | Sets the image size of an OH_ImageReceiverOptions object.|
+| [Image_ErrorCode OH_ImageReceiverOptions_GetCapacity(OH_ImageReceiverOptions* options, int32_t* capacity)](#oh_imagereceiveroptions_getcapacity) | - | Obtains the image cache capacity of an OH_ImageReceiverOptions object.|
+| [Image_ErrorCode OH_ImageReceiverOptions_SetCapacity(OH_ImageReceiverOptions* options, int32_t capacity)](#oh_imagereceiveroptions_setcapacity) | - | Sets the image cache capacity of an OH_ImageReceiverOptions object.|
 | [Image_ErrorCode OH_ImageReceiverOptions_Release(OH_ImageReceiverOptions* options)](#oh_imagereceiveroptions_release) | - | Releases an OH_ImageReceiverOptions object.|
 | [Image_ErrorCode OH_ImageReceiverNative_Create(OH_ImageReceiverOptions* options, OH_ImageReceiverNative** receiver)](#oh_imagereceivernative_create) | - | Creates an OH_ImageReceiverNative object at the application layer.|
 | [Image_ErrorCode OH_ImageReceiverNative_GetReceivingSurfaceId(OH_ImageReceiverNative* receiver, uint64_t* surfaceId)](#oh_imagereceivernative_getreceivingsurfaceid) | - | Obtains the surface ID through an OH_ImageReceiverNative object. |
-| [Image_ErrorCode OH_ImageReceiverNative_ReadLatestImage(OH_ImageReceiverNative* receiver, OH_ImageNative** image)](#oh_imagereceivernative_readlatestimage) | - | Obtains the latest image through an OH_ImageReceiverNative object.<br>This function can be called to receive data only after the [OH_ImageReceiver_OnCallback](#oh_imagereceiver_oncallback) callback is triggered. When the OH_ImageNative object returned by this function is no longer needed, call [OH_ImageNative_Release](capi-image-native-h.md#oh_imagenative_release) to release the object. New data can be received only after the release.|
-| [Image_ErrorCode OH_ImageReceiverNative_ReadNextImage(OH_ImageReceiverNative* receiver, OH_ImageNative** image)](#oh_imagereceivernative_readnextimage) | - | Obtains the next image through an OH_ImageReceiverNative object.<br>This function can be called to receive data only after the [OH_ImageReceiver_OnCallback](#oh_imagereceiver_oncallback) callback is triggered. When the OH_ImageNative object returned by this function is no longer needed, call [OH_ImageNative_Release](capi-image-native-h.md#oh_imagenative_release) to release the object. New data can be received only after the release.|
+| [Image_ErrorCode OH_ImageReceiverNative_ReadLatestImage(OH_ImageReceiverNative* receiver, OH_ImageNative** image)](#oh_imagereceivernative_readlatestimage) | - | Obtains the latest image through an OH_ImageReceiverNative object.|
+| [Image_ErrorCode OH_ImageReceiverNative_ReadNextImage(OH_ImageReceiverNative* receiver, OH_ImageNative** image)](#oh_imagereceivernative_readnextimage) | - | Obtains the next image through an OH_ImageReceiverNative object.|
 | [Image_ErrorCode OH_ImageReceiverNative_On(OH_ImageReceiverNative* receiver, OH_ImageReceiver_OnCallback callback)](#oh_imagereceivernative_on) | - | Registers the [OH_ImageReceiver_OnCallback](#oh_imagereceiver_oncallback) callback.<br>This callback is triggered whenever a new image is received.|
 | [Image_ErrorCode OH_ImageReceiverNative_Off(OH_ImageReceiverNative* receiver)](#oh_imagereceivernative_off) | - | Unregisters the [OH_ImageReceiver_OnCallback](#oh_imagereceiver_oncallback) callback.<br>The callback is registered by calling [OH_ImageReceiverNative_On](#oh_imagereceivernative_on).|
 | [Image_ErrorCode OH_ImageReceiverNative_GetSize(OH_ImageReceiverNative* receiver, Image_Size* size)](#oh_imagereceivernative_getsize) | - | Obtains the size of an **OH_ImageReceiverNative**.|
@@ -91,7 +93,6 @@ Creates an OH_ImageReceiverOptions object at the application layer.
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
@@ -116,7 +117,6 @@ Obtains the image size of an OH_ImageReceiverOptions object.
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
@@ -138,17 +138,16 @@ Image_ErrorCode OH_ImageReceiverOptions_SetSize(OH_ImageReceiverOptions* options
 
 **Description**
 
-Sets the image size for an OH_ImageReceiverOptions object.
+Sets the image size of an OH_ImageReceiverOptions object.
 
 **Since**: 12
-
 
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_ImageReceiverOptions](capi-image-nativemodule-oh-imagereceiveroptions.md)* options| Pointer to an OH_ImageReceiverOptions object.|
-| [Image_Size](capi-image-nativemodule-image-size.md) size | Image_Size object.|
+| [Image_Size](capi-image-nativemodule-image-size.md) size | Image_Size object to be set. |
 
 **Returns**
 
@@ -164,10 +163,9 @@ Image_ErrorCode OH_ImageReceiverOptions_GetCapacity(OH_ImageReceiverOptions* opt
 
 **Description**
 
-Obtains the capacity of an OH_ImageReceiverOptions object.
+Obtains the image cache capacity of an OH_ImageReceiverOptions object.
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -190,17 +188,16 @@ Image_ErrorCode OH_ImageReceiverOptions_SetCapacity(OH_ImageReceiverOptions* opt
 
 **Description**
 
-Sets the capacity for an OH_ImageReceiverOptions object.
+Sets the image cache capacity of an OH_ImageReceiverOptions object.
 
 **Since**: 12
-
 
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_ImageReceiverOptions](capi-image-nativemodule-oh-imagereceiveroptions.md)* options| Pointer to an OH_ImageReceiverOptions object.|
-| int32_t capacity | Capacity.|
+| int32_t capacity | Image cache capacity.|
 
 **Returns**
 
@@ -219,7 +216,6 @@ Image_ErrorCode OH_ImageReceiverOptions_Release(OH_ImageReceiverOptions* options
 Releases an OH_ImageReceiverOptions object.
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -244,7 +240,6 @@ Image_ErrorCode OH_ImageReceiverNative_Create(OH_ImageReceiverOptions* options, 
 Creates an OH_ImageReceiverNative object at the application layer.
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -271,7 +266,6 @@ Obtains the surface ID through an OH_ImageReceiverNative object.
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
@@ -295,10 +289,13 @@ Image_ErrorCode OH_ImageReceiverNative_ReadLatestImage(OH_ImageReceiverNative* r
 
 Obtains the latest image through an OH_ImageReceiverNative object.
 
-This function can be called to receive data only after the [OH_ImageReceiver_OnCallback](#oh_imagereceiver_oncallback) callback is triggered. When the OH_ImageNative object returned by this function is no longer needed, call [OH_ImageNative_Release](capi-image-native-h.md#oh_imagenative_release) to release the object. New data can be received only after the release.
+> **NOTE**
+>
+> - Call this API after the [OH_ImageReceiver_OnCallback](#oh_imagereceiver_oncallback) callback is triggered to ensure that it can receive data properly.
+> - When **OH_ImageNative** returned by this API is no longer needed, call [OH_ImageNative_Release](capi-image-native-h.md#oh_imagenative_release) to release it. Then new data can be received properly.
+> - This API requires a lock to ensure that the **OH_ImageReceiverNative** object is not released during use. For details, see [Using Image_NativeModule to Receive Images](../../media/image/image-receiver-c.md).
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -323,10 +320,13 @@ Image_ErrorCode OH_ImageReceiverNative_ReadNextImage(OH_ImageReceiverNative* rec
 
 Obtains the next image through an OH_ImageReceiverNative object.
 
-This function can be called to receive data only after the [OH_ImageReceiver_OnCallback](#oh_imagereceiver_oncallback) callback is triggered. When the OH_ImageNative object returned by this function is no longer needed, call [OH_ImageNative_Release](capi-image-native-h.md#oh_imagenative_release) to release the object. New data can be received only after the release.
+> **NOTE**
+>
+> - Call this API after the [OH_ImageReceiver_OnCallback](#oh_imagereceiver_oncallback) callback is triggered to ensure that it can receive data properly.
+> - When **OH_ImageNative** returned by this API is no longer needed, call [OH_ImageNative_Release](capi-image-native-h.md#oh_imagenative_release) to release it. Then new data can be received properly.
+> - This API requires a lock to ensure that the **OH_ImageReceiverNative** object is not released during use. For details, see [Using Image_NativeModule to Receive Images](../../media/image/image-receiver-c.md).
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -355,7 +355,6 @@ This callback is triggered whenever a new image is received.
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
@@ -383,7 +382,6 @@ The callback is registered by calling [OH_ImageReceiverNative_On](#oh_imagerecei
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
@@ -404,10 +402,9 @@ Image_ErrorCode OH_ImageReceiverNative_GetSize(OH_ImageReceiverNative* receiver,
 
 **Description**
 
-Obtains the size of an **OH_ImageReceiverNative**.
+Obtains the size of an **ImageReceiver** using **OH_ImageReceiverNative**.
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -434,7 +431,6 @@ Obtains the capacity of an **OH_ImageReceiverNative**.
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
@@ -458,8 +454,11 @@ Image_ErrorCode OH_ImageReceiverNative_Release(OH_ImageReceiverNative* receiver)
 
 Releases an OH_ImageReceiverNative object.
 
-**Since**: 12
+> **NOTE**
+>
+> This API requires a lock to ensure that the released **OH_ImageReceiverNative** object will not be used by other APIs. For details, see [Using Image_NativeModule to Receive Images](../../media/image/image-receiver-c.md).
 
+**Since**: 12
 
 **Parameters**
 
@@ -484,7 +483,6 @@ Image_ErrorCode OH_ImageReceiverNative_OnImageArrive(OH_ImageReceiverNative *rec
 Registers the [OH_ImageReceiver_ImageArriveCallback](#oh_imagereceiver_imagearrivecallback) callback.
 
 **Since**: 20
-
 
 **Parameters**
 
@@ -511,7 +509,6 @@ Image_ErrorCode OH_ImageReceiverNative_OffImageArrive(OH_ImageReceiverNative *re
 Unregisters the [OH_ImageReceiver_ImageArriveCallback](#oh_imagereceiver_imagearrivecallback) callback.
 
 **Since**: 20
-
 
 **Parameters**
 

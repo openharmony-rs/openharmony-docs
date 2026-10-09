@@ -6,6 +6,7 @@
 <!--Designer: @buda_wy-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @Brilliantry_Rui-->
+<!--deprecated_code_no_check-->
 
 ## How do I read an XML file in rawfile and convert the data in it to the string type? (API 9)
 
@@ -18,7 +19,7 @@ Call **getRawFileContent** of the **ResourceManager** module to obtain the data 
 ```js
 resourceManager.getRawFileContent('test.xml', (error, value) => {
   if (error != null) {
-    console.log("error is " + error);
+    console.error("error is " + error);
   } else {
     let rawFile = value;
     let xml = String.fromCharCode.apply(null, rawFile)
@@ -139,19 +140,19 @@ In the form_config.json file, `$` cannot be used to reference constants.
        onCreate() {
            resourceManager.getResourceManager((error, res) => {
                if (error != null) {
-                   console.log("error is " + error);
+                   console.error("error is " + error);
                    return
                }
                res.getRawFileContent("test.xml", (error, value) => {
                    if (error != null) {
-                       console.log("error is " + error);
+                       console.error("error is " + error);
                        return
                    }
                    let arrayBuffer = value.buffer; // unit8Array
                    var xmpParser = new xml.XmlPullParser(arrayBuffer);
                    var tagName = ""
-                   //do something
-                   console.log("parse xml finished");
+                   // do something
+                   console.info("parse xml finished");
                })
            })
        }

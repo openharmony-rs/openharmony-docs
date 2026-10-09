@@ -1,8 +1,8 @@
 # inputmethod_private_command_capi.h
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @illybyy-->
-<!--Designer: @andeszhang-->
+<!--Owner: @codexu62-->
+<!--Designer: @zhaolinglan-->
 <!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
@@ -64,7 +64,7 @@ Creates an [InputMethod_PrivateCommand](capi-inputmethod-inputmethod-privatecomm
 | Name| Description|
 | -- | -- |
 | char key[] | Key value of the private data.|
-| size_t keyLength | Key length.|
+| size_t keyLength | Key length. The total size of all private data and keys in a single operation cannot exceed 32 KB.|
 
 **Returns**
 

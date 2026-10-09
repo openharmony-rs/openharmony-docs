@@ -3,8 +3,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @hanchen45; @liusu23-->
 <!--Designer: @ccllee1; @xukeke-->
-<!--Tester: @lixueqing513; @lusq-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang; @lusq-->
+<!--Adviser: @HelloCrease-->
 
 ## uris标签说明
 当在[module.json5](../quick-start/module-configuration-file.md)文件的[skills字段](../quick-start/module-configuration-file.md#skills标签)中声明uris时，主要包含如下字段。
@@ -39,7 +39,7 @@
 
 > **说明：**
 > - 三方应用组件配置的scheme不能与系统应用重复，否则会导致无法通过该uri拉起三方应用组件。 
-> - 如果多个应用的URL配置相同，应用跳转时匹配到同多个应用，则会拉起应用选择框。为了更好的用户体验，开发者可以通过链接的path字段去区分同一域名下的不同应用，如链接`https://www.example.com/path1`拉起目标应用1，链接`https://www.example.com/path2`拉起目标应用2。
+> - 如果多个应用的URL配置相同，应用跳转时匹配到多个应用，则会拉起应用选择框。为了更好的用户体验，开发者可以通过链接的path字段去区分同一域名下的不同应用，如链接`https://www.example.com/path1`拉起目标应用1，链接`https://www.example.com/path2`拉起目标应用2。
 
 
 ### linkFeature标签说明
@@ -49,7 +49,7 @@
 > 同一Bundle中声明的linkFeature数量不能超过150个。 
 
 
-目标应用在linkFeature字段中声明功能类型，并通过应用市场上架审核后，可以提升应用跳转体验。主要用于以下两种场景：
+目标应用在linkFeature字段中声明功能类型，并通过<!--RP3--><!--RP3End-->上架审核后，可以提升应用跳转体验。主要用于以下两种场景：
 
 1. 支持系统识别同类应用：当调用方拉起垂类应用（例如导航类应用）时，系统会根据linkFeature字段识别到匹配的应用，并在应用面板中展现。
 
@@ -60,14 +60,15 @@
     |Navigation|指示导航功能。使用场景详见[拉起导航类应用](./start-navigation-apps.md)。|
     |RoutePlan|指示路线规划功能。使用场景详见[拉起导航类应用](./start-navigation-apps.md)。|
     |PlaceSearch|指示地点搜索功能。使用场景详见[拉起导航类应用](./start-navigation-apps.md)。|
+    |DetailLocation|指示地点详情功能。使用场景详见[拉起导航类应用](./start-navigation-apps.md)。|
     |Transfer|指示转账汇款功能。使用场景详见[拉起金融类应用](./start-finance-apps.md)。|
     |CreditCardRepayment|指示信用卡还款功能。使用场景详见[拉起金融类应用](./start-finance-apps.md)。|
     |ComposeMail|指示撰写邮件功能。使用场景详见[拉起邮件类应用](./start-email-apps.md)。|
     |QueryByFlightNo|指示按航班号查询航班功能。使用场景详见[拉起航班类应用](./start-flight-apps.md)。|
     |QueryByLocation|指示按起降地查询航班功能。使用场景详见[拉起航班类应用](./start-flight-apps.md)。|
-    |QueryExpress|指示快递查询功能。使用场景详见[拉起类应用](./start-express-apps.md)。|    
-    |AppNotificationMgmt|指示应用内通知设置的功能。|
-
+    |QueryExpress|指示快递查询功能。使用场景详见[拉起快递类应用](./start-express-apps.md)。|    
+    |AppNotificationMgmt|指示应用内通知设置的功能。<!--RP1--><!--RP1End-->|
+    |PrimaryContactMgmt|从API version 23开始，新增支持该字段。指示社交通讯类应用“重要联系人列表”的设置功能。<!--RP2--><!--RP2End-->|
 2. 指定类型的应用被拉起时免跳转弹框：正常情况下，拉起指定类型的应用时，都会弹出确认是否打开应用的弹窗。如果您的应用有向其他应用提供登录/分享/支付的功能，可以在应用中声明对应的LinkFeature（取值参见下表）。应用通过上架审核后，当其他应用拉起您的应用时将不再弹窗提示。
 
     ![exempted-dialog-between-apps](figures/exempted-dialog-between-apps.png)

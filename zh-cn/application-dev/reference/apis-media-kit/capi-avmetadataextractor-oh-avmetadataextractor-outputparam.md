@@ -1,8 +1,8 @@
 # OH_AVMetadataExtractor_OutputParam
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @xushubo; @chennotfound-->
-<!--Designer: @dongyu_dy-->
+<!--Owner: @hanzhengshi-->
+<!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -12,7 +12,7 @@ typedef struct OH_AVMetadataExtractor_OutputParam OH_AVMetadataExtractor_OutputP
 
 ## 概述
 
-定义由AVMetadataExtractor提取的帧的输出参数。
+定义由AVMetadataExtractor提取的元数据的输出参数。
 
 **起始版本：** 23
 

@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -31,7 +31,7 @@ The file declares the common enums and structs used by the image interface.
 | [Image_PositionArea](capi-image-nativemodule-image-positionarea.md) | Image_PositionArea | Describes the area of image pixels to be read from or written to.|
 | [Image_Scale](capi-image-nativemodule-image-scale.md) | Image_Scale | Describes the image scaling factor.|
 | [Image_String](capi-image-nativemodule-image-string.md) | Image_String/Image_MimeType | Describes an image string.|
-| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) | - | Describes the picture metadata.|
+| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) | OH_PictureMetadata | Describes the picture metadata.|
 
 ### Enums
 
@@ -46,10 +46,15 @@ The file declares the common enums and structs used by the image interface.
 | Name| Description|
 | -- | -- |
 | [Image_ErrorCode OH_PictureMetadata_Create(Image_MetadataType metadataType, OH_PictureMetadata **metadata)](#oh_picturemetadata_create) | Creates the pointer to an OH_PictureMetadata struct.|
-| [Image_ErrorCode OH_PictureMetadata_GetProperty(OH_PictureMetadata *metadata, Image_String *key, Image_String *value)](#oh_picturemetadata_getproperty) | Obtains a property of metadata based on the key.|
+| [Image_ErrorCode OH_PictureMetadata_GetProperty(OH_PictureMetadata *metadata, Image_String *key, Image_String *value)](#oh_picturemetadata_getproperty) | Obtains a property of metadata based on the key. **value.data** obtained through this API lacks the string terminator **\0**. Please use it with caution.|
 | [Image_ErrorCode OH_PictureMetadata_SetProperty(OH_PictureMetadata *metadata, Image_String *key, Image_String *value)](#oh_picturemetadata_setproperty) | Sets a property of metadata based on the key.|
-| [Image_ErrorCode OH_PictureMetadata_GetPropertyWithNull(OH_PictureMetadata *metadata, Image_String *key, Image_String *value)](#oh_picturemetadata_getpropertywithnull) | Obtains the metadata value of an OH_PictureMetadata instance. The output **value.data** is terminated with a string terminator.|
+| [Image_ErrorCode OH_PictureMetadata_SetBlobData(OH_PictureMetadata *metadata, uint8_t *blob, uint32_t blobSize)](#oh_picturemetadata_setblobdata) | Replaces the current metadata with binary data.|
+| [Image_ErrorCode OH_PictureMetadata_GetBlobDataSize(OH_PictureMetadata *metadata, uint32_t *blobSize)](#oh_picturemetadata_getblobdatasize) | Obtains the size of the BLOB data in metadata.|
+| [Image_ErrorCode OH_PictureMetadata_GetBlobData(OH_PictureMetadata *metadata, uint8_t *blob, uint32_t blobSize)](#oh_picturemetadata_getblobdata) | Obtains the metadata in binary format.|
+| [Image_ErrorCode OH_PictureMetadata_GetPropertyWithNull(OH_PictureMetadata *metadata, Image_String *key, Image_String *value)](#oh_picturemetadata_getpropertywithnull) | Obtains the metadata value of an OH_PictureMetadata instance. The output **value.data** ends with the string terminator **\0**.|
 | [Image_ErrorCode OH_PictureMetadata_Release(OH_PictureMetadata *metadata)](#oh_picturemetadata_release) | Releases the pointer to an OH_PictureMetadata struct.|
+| <!--DelRow--> [Image_ErrorCode OH_PictureMetadata_GetMetadataByType(OH_PictureMetadata **metadatas, uint32_t metadataCount, int32_t type, OH_PictureMetadata *metadata)](#oh_picturemetadata_getmetadatabytype) | Obtains the PictureMetadata object that matches the specified type from the OH_PictureMetadata array.|
+| <!--DelRow--> [Image_ErrorCode OH_PictureMetadatas_Release(OH_PictureMetadata **metadatas, uint32_t metadatasCount)](#oh_picturemetadatas_release) | Releases an OH_PictureMetadata object array.|
 | [Image_ErrorCode OH_PictureMetadata_Clone(OH_PictureMetadata *oldMetadata, OH_PictureMetadata **newMetadata)](#oh_picturemetadata_clone) | Clones metadata.|
 
 ### Variables
@@ -175,7 +180,7 @@ The file declares the common enums and structs used by the image interface.
 | static const char * OHOS_IMAGE_PROPERTY_LENS_MODEL = "LensModel" | Model of the lens.<br>**Since**: 12|
 | static const char * OHOS_IMAGE_PROPERTY_LENS_SERIAL_NUMBER = "LensSerialNumber" | Serial number of the lens.<br>**Since**: 12|
 | static const char * OHOS_IMAGE_PROPERTY_LENS_SPECIFICATION = "LensSpecification" | Specifications of the lens.<br>**Since**: 12|
-| static const char * OHOS_IMAGE_PROPERTY_NEW_SUBFILE_TYPE = "NewSubfileType" | Data type of a subfile, such as a full-resolution image, a thumbnail, or a part of a multi-frame image. The value is a bit mask. The value 0 indicates a full-resolution image, **1** indicates a thumbnail, and **2** indicates a part of a multi-frame image.<br>**Since**: 12|
+| static const char * OHOS_IMAGE_PROPERTY_NEW_SUBFILE_TYPE = "NewSubfileType" | In the Exif, the **NewSubfileType** field is used to identify the data type of a subfile, for example, full-resolution image, thumbnail, or part of a multi-frame image. The value is a bit mask. The value 0 indicates a full-resolution image, **1** indicates a thumbnail, and **2** indicates a part of a multi-frame image.<br>**Since**: 12|
 | static const char * OHOS_IMAGE_PROPERTY_OFFSET_TIME = "OffsetTime" | Time with an offset from UTC when the image was captured, in the format of ±HH:MM.<br>**Since**: 12|
 | static const char * OHOS_IMAGE_PROPERTY_OFFSET_TIME_DIGITIZED = "OffsetTimeDigitized" | Time with an offset from UTC when the image was digitized. It helps to accurately adjust the timestamp.<br>**Since**: 12|
 | static const char * OHOS_IMAGE_PROPERTY_OFFSET_TIME_ORIGINAL = "OffsetTimeOriginal" | Time with an offset from UTC when the original image was created. It is critical for time-sensitive applications.<br>**Since**: 12|
@@ -211,6 +216,95 @@ The file declares the common enums and structs used by the image interface.
 | static const char * OHOS_IMAGE_PROPERTY_FRAGMENT_HEIGHT = "FragmentImageHeight" | Height of the fragment map.<br>**Since**: 13|
 | static const char * IMAGE_PROPERTY_GIF_DELAY_TIME = "GifDelayTime" | Duration for playing each frame of a GIF image, in milliseconds.<br>**Since**: 20|
 | static const char * IMAGE_PROPERTY_GIF_DISPOSAL_TYPE = "GifDisposalType" | Disposal type of each frame in a GIF image.<br>**Since**: 20|
+| static const char * OHOS_DNG_PROPERTY_DNG_VERSION = "DNGVersion" | DNG version number. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyIntArray](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyintarray) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_DNG_BACKWARD_VERSION = "DNGBackwardVersion" | DNG backward-compatible version number. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyIntArray](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyintarray) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_UNIQUE_CAMERA_MODEL = "UniqueCameraModel" | Unique camera model ID. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyString](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertystring) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_LOCALIZED_CAMERA_MODEL = "LocalizedCameraModel" | Localized camera model. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyString](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertystring) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_CFA_PLANE_COLOR = "CFAPlaneColor" | CFA plan color. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyIntArray](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyintarray) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_CFA_LAYOUT = "CFALayout" | CFA layout. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyShort](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyshort) and [OH_ImageSourceNative_GetImagePropertyLong](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertylong) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_LINEARIZATION_TABLE = "LinearizationTable" | Linearization table. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyIntArray](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyintarray) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_BLACK_LEVEL_REPEAT_DIM = "BlackLevelRepeatDim" | Black level repetition dimension. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyIntArray](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyintarray) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_BLACK_LEVEL = "BlackLevel" | Black level at zero illumination. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyDoubleArray](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertydoublearray) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_BLACK_LEVEL_DELTA_H = "BlackLevelDeltaH" | Horizontal black level correction increment. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyDoubleArray](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertydoublearray) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_BLACK_LEVEL_DELTA_V = "BlackLevelDeltaV" | Vertical black level correction increment. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyDoubleArray](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertydoublearray) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_WHITE_LEVEL = "WhiteLevel" | White level. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyDoubleArray](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertydoublearray) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_DEFAULT_SCALE = "DefaultScale" | Default scaling ratio. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyDoubleArray](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertydoublearray) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_DEFAULT_CROP_ORIGIN = "DefaultCropOrigin" | Default crop origin. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyDoubleArray](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertydoublearray) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_DEFAULT_CROP_SIZE = "DefaultCropSize" | Default crop dimensions. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyIntArray](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyintarray) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_COLOR_MATRIX1 = "ColorMatrix1" | Transformation matrix under the first calibration illuminant. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyDoubleArray](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertydoublearray) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_COLOR_MATRIX2 = "ColorMatrix2" | Transformation matrix under the second calibration illuminant. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyDoubleArray](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertydoublearray) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_CAMERA_CALIBRATION1 = "CameraCalibration1" | Calibration matrix under the first calibration illuminant. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyDoubleArray](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertydoublearray) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_CAMERA_CALIBRATION2 = "CameraCalibration2" | Calibration matrix under the second calibration illuminant. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyDoubleArray](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertydoublearray) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_REDUCTION_MATRIX1 = "ReductionMatrix1" | Dimension reduction matrix under the first calibration illuminant. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyDoubleArray](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertydoublearray) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_REDUCTION_MATRIX2 = "ReductionMatrix2" | Dimension reduction matrix under the second calibration illuminant. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyDoubleArray](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertydoublearray) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_ANALOG_BALANCE = "AnalogBalance" | Analog balance. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyDoubleArray](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertydoublearray) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_AS_SHOT_NEUTRAL = "AsShotNeutral" | Neutral color at capture. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyDoubleArray](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertydoublearray) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_AS_SHOT_WHITEXY = "AsShotWhiteXY" | CIE (1931 color space) x-y chromaticity coordinates of the white point at capture. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyDoubleArray](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertydoublearray) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_BASELINE_EXPOSURE = "BaselineExposure" | Baseline exposure. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyDouble](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertydouble).<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_BASELINE_NOISE = "BaselineNoise" | Baseline noise. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyDouble](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertydouble).<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_BASELINE_SHARPNESS = "BaselineSharpness" | Baseline sharpness. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyDouble](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertydouble).<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_BAYER_GREEN_SPLIT = "BayerGreenSplit" | Separation degree of the two green channels in a Bayer image. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyShort](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyshort).<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_LINEAR_RESPONSE_LIMIT = "LinearResponseLimit" | Linear response limit. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyDouble](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertydouble).<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_CAMERA_SERIAL_NUMBER = "CameraSerialNumber" | Camera serial number. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyString](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertystring) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_LENS_INFO = "LensInfo" | Lens information. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyDoubleArray](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertydoublearray) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_CHROMA_BLUR_RADIUS = "ChromaBlurRadius" | Chrominance blur radius, in pixels. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyDouble](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertydouble).<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_ANTI_ALIAS_STRENGTH = "AntiAliasStrength" | Anti-aliasing strength. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyDouble](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertydouble).<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_SHADOW_SCALE = "ShadowScale" | Shadow scaling. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyDouble](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertydouble).<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_DNG_PRIVATE_DATA = "DNGPrivateData" | Private data. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyBlob](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyblob) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_MAKER_NOTE_SAFETY = "MakerNoteSafety" | Whether the EXIF MakerNote tag is secure. The value **1** indicates yes, and the value **0** indicates no. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyShort](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyshort) and [OH_ImageSourceNative_GetImagePropertyLong](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertylong) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_CALIBRATION_ILLUMINANT1 = "CalibrationIlluminant1" | First calibration illuminant. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyShort](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyshort) and [OH_ImageSourceNative_GetImagePropertyLong](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertylong) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_CALIBRATION_ILLUMINANT2 = "CalibrationIlluminant2" | Second calibration illuminant. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyShort](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyshort) and [OH_ImageSourceNative_GetImagePropertyLong](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertylong) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_BEST_QUALITY_SCALE = "BestQualityScale" | Scaling for the optimal quality. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyDouble](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertydouble).<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_RAW_DATA_UNIQUE_ID = "RawDataUniqueID" | Unique ID of the raw image data. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyString](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertystring) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_ORIGINAL_RAW_FILE_NAME = "OriginalRawFileName" | Original raw file name. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyString](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertystring) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_ORIGINAL_RAW_FILE_DATA = "OriginalRawFileData" | Original raw file data. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyBlob](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyblob) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_ACTIVE_AREA = "ActiveArea" | Active area. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyIntArray](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyintarray) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_MASKED_AREAS = "MaskedAreas" | Masked area. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyIntArray](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyintarray) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_AS_SHOT_ICC_PROFILE = "AsShotICCProfile" | ICC profile. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyBlob](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyblob) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_AS_SHOT_PRE_PROFILE_MATRIX = "AsShotPreProfileMatrix" | Pre-profile matrix at capture. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyDoubleArray](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertydoublearray) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_CURRENT_ICC_PROFILE = "CurrentICCProfile" | Current ICC profile. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyBlob](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyblob) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_CURRENT_PRE_PROFILE_MATRIX = "CurrentPreProfileMatrix" | Current pre-profile matrix. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyDoubleArray](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertydoublearray) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_COLORIMETRIC_REFERENCE = "ColorimetricReference" | Chromaticity reference. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyShort](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyshort) and [OH_ImageSourceNative_GetImagePropertyLong](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertylong) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_CAMERA_CALIBRATION_SIGNATURE = "CameraCalibrationSignature" | Camera calibration signature. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyString](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertystring) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_PROFILE_CALIBRATION_SIGNATURE = "ProfileCalibrationSignature" | Profile calibration signature. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyString](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertystring) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_EXTRA_CAMERA_PROFILES = "ExtraCameraProfiles" | Additional camera profile. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyIntArray](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyintarray) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_AS_SHOT_PROFILE_NAME = "AsShotProfileName" | Name of the profile used at capture. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyString](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertystring) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_NOISE_REDUCTION_APPLIED = "NoiseReductionApplied" | Amount of noise reduction applied. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyDouble](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertydouble).<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_PROFILE_NAME = "ProfileName" | Profile name. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyString](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertystring) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_PROFILE_HUE_SAT_MAP_DIMS = "ProfileHueSatMapDims" | Hue/Saturation mapping dimensions in the profile. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyIntArray](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyintarray) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_PROFILE_HUE_SAT_MAP_DATA1 = "ProfileHueSatMapData1" | First set of hue/saturation mapping table data. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyDoubleArray](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertydoublearray) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_PROFILE_HUE_SAT_MAP_DATA2 = "ProfileHueSatMapData2" | Second set of hue/saturation mapping table data. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyDoubleArray](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertydoublearray) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_PROFILE_TONE_CURVE = "ProfileToneCurve" | Tone curve of the profile. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyDoubleArray](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertydoublearray) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_PROFILE_EMBED_POLICY = "ProfileEmbedPolicy" | Profile embedding policy. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyShort](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyshort).<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_PROFILE_COPYRIGHT = "ProfileCopyright" | Profile copyright. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyString](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertystring) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_FORWARD_MATRIX1 = "ForwardMatrix1" | First forward matrix. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyDoubleArray](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertydoublearray) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_FORWARD_MATRIX2 = "ForwardMatrix2" | Second forward matrix. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyDoubleArray](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertydoublearray) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_PREVIEW_APPLICATION_NAME = "PreviewApplicationName" | Name of the preview application. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyString](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertystring) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_PREVIEW_APPLICATION_VERSION = "PreviewApplicationVersion" | Version of the preview application. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyString](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertystring) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_PREVIEW_SETTINGS_NAME = "PreviewSettingsName" | Name of the preview configuration. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyString](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertystring) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_PREVIEW_SETTINGS_DIGEST = "PreviewSettingsDigest" | Digest of the preview configuration. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyString](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertystring) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_PREVIEW_COLOR_SPACE = "PreviewColorSpace" | Color space of the preview. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyShort](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyshort).<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_PREVIEW_DATE_TIME = "PreviewDateTime" | Data and time of the preview. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyString](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertystring) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_RAW_IMAGE_DIGEST = "RawImageDigest" | MD5 digest of the raw image data. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyString](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertystring) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_ORIGINAL_RAW_FILE_DIGEST = "OriginalRawFileDigest" | MD5 digest of the data stored in **OriginalRawFileData**. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyString](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertystring) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_SUB_TILE_BLOCK_SIZE = "SubTileBlockSize" | Sub-tile size. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyIntArray](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyintarray) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_ROW_INTERLEAVE_FACTOR = "RowInterleaveFactor" | Row interleaving factor. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyShort](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyshort) and [OH_ImageSourceNative_GetImagePropertyLong](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertylong) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_PROFILE_LOOK_TABLE_DIMS = "ProfileLookTableDims" | Profile lookup table dimensions. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyIntArray](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyintarray) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_PROFILE_LOOK_TABLE_DATA = "ProfileLookTableData" | Profile lookup table data. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyDoubleArray](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertydoublearray) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_OPCODE_LIST1 = "OpcodeList1" | First operation code list. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyBlob](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyblob) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_OPCODE_LIST2 = "OpcodeList2" | Second operation code list. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyBlob](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyblob) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_OPCODE_LIST3 = "OpcodeList3" | Third operation code list. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyBlob](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyblob) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_NOISE_PROFILE = "NoiseProfile" | Noise profile. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyDoubleArray](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertydoublearray) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_ORIGINAL_DEFAULT_FINAL_SIZE = "OriginalDefaultFinalSize" | Original default final dimensions. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyIntArray](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyintarray) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_ORIGINAL_BEST_QUALITY_FINAL_SIZE = "OriginalBestQualityFinalSize" | Original final dimensions for optimal quality. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyIntArray](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyintarray) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_ORIGINAL_DEFAULT_CROP_SIZE = "OriginalDefaultCropSize" | Original default crop dimensions. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyDoubleArray](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertydoublearray) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_PROFILE_HUE_SAT_MAP_ENCODING = "ProfileHueSatMapEncoding" | Hue/Saturation mapping encoding in the profile. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyShort](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyshort).<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_PROFILE_LOOK_TABLE_ENCODING = "ProfileLookTableEncoding" | Profile lookup table encoding. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyShort](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyshort).<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_BASELINE_EXPOSURE_OFFSET = "BaselineExposureOffset" | Baseline exposure offset. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyDouble](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertydouble).<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_DEFAULT_BLACK_RENDER = "DefaultBlackRender" | Default black rendering. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyShort](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyshort).<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_NEW_RAW_IMAGE_DIGEST = "NewRawImageDigest" | MD5 digest of the update raw image data. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyString](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertystring) together.<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_RAW_TO_PREVIEW_GAIN = "RawToPreviewGain" | Gain between the main raw Image File Directory (IFD) and the preview IFD. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyDouble](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertydouble).<br>**Since**: 24|
+| static const char * OHOS_DNG_PROPERTY_DEFAULT_USER_CROP = "DefaultUserCrop" | Default user crop. The value can be obtained via [OH_ImageSourceNative_GetImagePropertyArraySize](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyarraysize) and [OH_ImageSourceNative_GetImagePropertyIntArray](capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertyintarray) together.<br>**Since**: 24|
 
 ## Enum Description
 
@@ -233,6 +327,8 @@ Enumerates the error codes.
 | IMAGE_UNSUPPORTED_MIME_TYPE = 7600101 | Unsupported MIME type.|
 | IMAGE_UNKNOWN_MIME_TYPE = 7600102 | Unknown MIME type.|
 | IMAGE_TOO_LARGE = 7600103 | The data or image is too large.|
+| IMAGE_GET_IMAGE_DATA_FAILED = 7600104 |  Failed to obtain image data.<br>**Since**: 23|
+| IMAGE_PIXELMAP_RELEASED = 7600105 |  The PixelMap object has been released.<br>**Since:** 26.0.0|
 | IMAGE_DMA_NOT_EXIST = 7600173 | The memory is not the DMA memory.|
 | IMAGE_DMA_OPERATION_FAILED = 7600174 | The operation on the DMA memory fails.|
 | IMAGE_UNSUPPORTED_OPERATION = 7600201 | Unsupported operation.|
@@ -240,18 +336,21 @@ Enumerates the error codes.
 | IMAGE_UNSUPPORTED_CONVERSION = 7600203 | Unsupported conversion.|
 | IMAGE_INVALID_REGION = 7600204 | Invalid region.|
 | IMAGE_UNSUPPORTED_MEMORY_FORMAT = 7600205 |  The memory format is not supported.<br>**Since**: 13|
+| IMAGE_INVALID_PARAMETER = 7600206 |  Invalid parameter.<br>**Since**: 19|
 | IMAGE_UNSUPPORTED_DATA_FORMAT = 7600207 |  Unsupported data format.<br>**Since**: 22|
 | IMAGE_ALLOC_FAILED = 7600301 | Failed to allocate the memory.|
 | IMAGE_COPY_FAILED = 7600302 | Failed to copy the memory.|
 | IMAGE_LOCK_UNLOCK_FAILED = 7600303 |  Failed to lock or unlock the memory.<br>**Since**: 15|
 | IMAGE_INIT_FAILED = 7600304 |  Initialization failed.<br>**Since**: 22|
 | IMAGE_CREATE_PIXELMAP_FAILED = 7600305 |  Failed to create the PixelMap.<br>**Since**: 22|
+| IMAGE_DATA_CONVERSION_FAILED = 7600306 |  Data conversion failed.<br>**Since:** 26.0.0|
 | IMAGE_ALLOCATOR_MODE_UNSUPPORTED = 7600501 |  The memory allocator type is not supported, for example, creating HDR images using shared memory.<br> DMA memory supports HDR metadata.<br>**Since**: 20|
 | IMAGE_UNKNOWN_ERROR = 7600901 | Unknown error.|
 | IMAGE_BAD_SOURCE = 7700101 | Abnormal data source.|
 | IMAGE_SOURCE_UNSUPPORTED_MIME_TYPE = 7700102 |  Unsupported MIME type during image decoding.<br>**Since**: 15|
 | IMAGE_SOURCE_TOO_LARGE = 7700103 |  The image is too large.<br>**Since**: 15|
 | IMAGE_SOURCE_UNSUPPORTED_ALLOCATOR_TYPE = 7700201 |  The allocator type is not supported. For example, decoding HDR images using shared memory is unsupported because only DMA supports HDR metadata.<br>**Since**: 15|
+| IMAGE_SOURCE_UNSUPPORTED_METADATA = 7700202 |  Unsupported metadata type. For example, the property name is not supported or the property value is invalid.<br>**Since**: 23|
 | IMAGE_SOURCE_UNSUPPORTED_OPTIONS = 7700203 |  Unsupported options. For example, an image cannot be converted into the required pixel format.<br>**Since**: 15|
 | IMAGE_SOURCE_INVALID_PARAMETER = 7700204 |  Invalid **ImageSource** parameter.<br>**Since**: 19|
 | IMAGE_DECODE_FAILED = 7700301 | Decoding failed.|
@@ -294,7 +393,7 @@ Enumerates the types of memory allocation for a PixelMap.
 | -- | -- |
 | IMAGE_ALLOCATOR_MODE_AUTO = 0 | The system determines the type of memory to allocate when creating a PixelMap.|
 | IMAGE_ALLOCATOR_MODE_DMA = 1 | Allocates a DMA-type memory buffer.|
-| IMAGE_ALLOCATOR_MODE_DMA = 2 | Uses shared memory to create a PixelMap.|
+| IMAGE_ALLOCATOR_MODE_SHARED_MEMORY = 2 | Uses shared memory to create a PixelMap.|
 
 
 ## Function Description
@@ -309,20 +408,24 @@ Image_ErrorCode OH_PictureMetadata_Create(Image_MetadataType metadataType, OH_Pi
 
 Creates the pointer to an OH_PictureMetadata struct.
 
+Restrictions: **metadata** cannot be a null pointer. If the API returns a failure, the output parameter content should not be used.
+
+Resource management: The OH_PictureMetadata object returned by the API is managed by the caller and must be released using [OH_PictureMetadata_Release](#oh_picturemetadata_release) after use.
+
 **Since**: 13
 
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| [Image_MetadataType](#image_metadatatype) metadataType | Metadata type.|
-| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) **metadata | Double pointer to the OH_PictureMetadata struct created.|
+| [Image_MetadataType](capi-image-common-h.md#image_metadatatype) metadataType | Metadata type.|
+| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) **metadata | Pointer to the OH_PictureMetadata object.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [Image_ErrorCode](#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
 
 ### OH_PictureMetadata_GetProperty()
 
@@ -332,7 +435,11 @@ Image_ErrorCode OH_PictureMetadata_GetProperty(OH_PictureMetadata *metadata, Ima
 
 **Description**
 
-Obtains a property of metadata based on the key.
+Obtains a property of metadata based on the key. **value.data** obtained through this API lacks the string terminator **\0**. Please use it with caution.
+
+Restrictions: **metadata**, **key**, **key->data**, and **value** cannot be null pointers, and **key->size** must be greater than 0. If the API returns a failure, **value.data** should not be read.
+
+Resource management: After the API is successfully executed, **value.data** is allocated by the API. The caller needs to use **delete[]** to release it after use. **value.data** returned by this API is not null-terminated with the string terminator '\0'. If it needs to be handled as a C string, you are advised to use [OH_PictureMetadata_GetPropertyWithNull](#oh_picturemetadata_getpropertywithnull).
 
 **Since**: 13
 
@@ -340,7 +447,7 @@ Obtains a property of metadata based on the key.
 
 | Name| Description|
 | -- | -- |
-| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) *metadata | Pointer to an OH_PictureMetadata struct.|
+| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) *metadata | Pointer to the OH_PictureMetadata object.|
 | [Image_String](capi-image-nativemodule-image-string.md) *key | Pointer to the key of the property.|
 | [Image_String](capi-image-nativemodule-image-string.md) *value | Pointer to the value of the property.|
 
@@ -348,7 +455,7 @@ Obtains a property of metadata based on the key.
 
 | Type| Description|
 | -- | -- |
-| [Image_ErrorCode](#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.<br>         **IMAGE_UNSUPPORTED_METADATA**: The metadata type is not supported, or the metadata type and the auxiliary picture type do not match.|
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.<br>         **IMAGE_UNSUPPORTED_METADATA**: The metadata type is not supported, or the metadata type and the auxiliary picture type do not match.|
 
 ### OH_PictureMetadata_SetProperty()
 
@@ -360,13 +467,17 @@ Image_ErrorCode OH_PictureMetadata_SetProperty(OH_PictureMetadata *metadata, Ima
 
 Sets a property of metadata based on the key.
 
+Restrictions: **metadata**, **key**, **key->data**, **value**, and **value->data** cannot be null pointers. The values of **key->size** and **value->size** must be greater than 0.
+
+Resource management: The API reads the input **key** and **value** and does not hold the **Image_String** pointer passed by the caller. After the API returns, the caller still needs to manage the lifecycle of **key** and **value**.
+
 **Since**: 13
 
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) *metadata | Pointer to an OH_PictureMetadata struct.|
+| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) *metadata | Pointer to the OH_PictureMetadata object.|
 | [Image_String](capi-image-nativemodule-image-string.md) *key | Pointer to the key of the property.|
 | [Image_String](capi-image-nativemodule-image-string.md) *value | Pointer to the value of the property.|
 
@@ -374,7 +485,84 @@ Sets a property of metadata based on the key.
 
 | Type| Description|
 | -- | -- |
-| [Image_ErrorCode](#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.<br>         **IMAGE_UNSUPPORTED_METADATA**: The metadata type is not supported, or the metadata type and the auxiliary picture type do not match.|
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.<br>         **IMAGE_UNSUPPORTED_METADATA**: The metadata type is not supported, or the metadata type and the auxiliary picture type do not match.|
+
+### OH_PictureMetadata_SetBlobData()
+
+```c
+Image_ErrorCode OH_PictureMetadata_SetBlobData(OH_PictureMetadata *metadata, uint8_t *blob, uint32_t blobSize)
+```
+
+**Description**
+
+Replaces the current metadata with binary data.
+
+**Since:** 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) *metadata | Pointer to the OH_PictureMetadata object.|
+| uint8_t *blob | Pointer to the binary data.|
+| uint32_t blobSize | Size of the binary data.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul><br>         <li>**IMAGE_SUCCESS**: The operation is successful.</li><br>         <li>**IMAGE_INVALID_PARAMETER**: **metadata** or **blob** is a null pointer, or **blobSize** is **0**.</li><br>         <li>**IMAGE_UNSUPPORTED_METADATA**: Unsupported metadata type.</li><br>         <li>**IMAGE_UNSUPPORTED_OPERATION**: The binary data is not set.</li><br>         </ul> |
+
+### OH_PictureMetadata_GetBlobDataSize()
+
+```c
+Image_ErrorCode OH_PictureMetadata_GetBlobDataSize(OH_PictureMetadata *metadata, uint32_t *blobSize)
+```
+
+**Description**
+
+Obtains the size of the BLOB data in metadata.
+
+**Since:** 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) *metadata | Pointer to the OH_PictureMetadata object.|
+| uint32_t *blobSize | Pointer to the size of the binary data.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul><br>         <li>**IMAGE_SUCCESS**: The operation is successful.</li><br>         <li>**IMAGE_INVALID_PARAMETER**: **metadata** or **blobSize** is a null pointer.</li><br>         <li>**IMAGE_UNSUPPORTED_METADATA**: Unsupported metadata type.</li><br>         </ul> |
+
+### OH_PictureMetadata_GetBlobData()
+
+```c
+Image_ErrorCode OH_PictureMetadata_GetBlobData(OH_PictureMetadata *metadata, uint8_t *blob, uint32_t blobSize)
+```
+
+**Description**
+
+Obtains the metadata in binary format.
+
+**Since:** 26.0.0
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) *metadata | Pointer to the OH_PictureMetadata object.|
+| uint8_t *blob | Pointer to the binary data obtained.|
+| uint32_t blobSize | Size of the binary data. The value must be greater than or equal to the value obtained by the **OH_PictureMetadata_GetBlobDataSize** method.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul><br>         <li>**IMAGE_SUCCESS**: The operation is successful.</li><br>         <li>**IMAGE_INVALID_PARAMETER**: **metadata** or **blob** is a null pointer, or **blobSize** is **0** or less than the value required.</li><br>         <li>**IMAGE_UNSUPPORTED_METADATA**: Unsupported metadata type.</li><br>         <li> **IMAGE_UNSUPPORTED_OPERATION**: Binary data cannot be obtained.</li><br>         </ul> |
 
 ### OH_PictureMetadata_GetPropertyWithNull()
 
@@ -384,7 +572,13 @@ Image_ErrorCode OH_PictureMetadata_GetPropertyWithNull(OH_PictureMetadata *metad
 
 **Description**
 
-Obtains the metadata value of an OH_PictureMetadata instance. The output **value.data** is terminated with a string terminator.
+Obtains the metadata value of an OH_PictureMetadata instance. The output **value.data** ends with the string terminator **\0**.
+
+Usage scenario: This API is suitable for reading metadata attribute values in string format. Different from [OH_PictureMetadata_GetProperty](#oh_picturemetadata_getproperty), this API returns **value.data** that ends with **\0**, making it more suitable for direct handling as a C string.
+
+Restrictions: **metadata**, **key**, **key->data**, and **value** cannot be null pointers. The value of **key->size** must be greater than 0. If the API returns a failure, **value.data** should not be read.
+
+Resource management: After the API is successfully executed, **value.data** is allocated by the API. The caller needs to use **delete[]** to release it after use.
 
 **Since**: 19
 
@@ -400,7 +594,7 @@ Obtains the metadata value of an OH_PictureMetadata instance. The output **value
 
 | Type| Description|
 | -- | -- |
-| [Image_ErrorCode](#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_INVALID_PARAMETER**: The **metadata**, **key**, or **value** parameter is a null pointer.<br>         **IMAGE_UNSUPPORTED_METADATA**: The metadata type is not supported, or the metadata type and the auxiliary picture type do not match.|
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_INVALID_PARAMETER**: The **metadata**, **key**, or **value** parameter is a null pointer.<br>         **IMAGE_UNSUPPORTED_METADATA**: The metadata type is not supported, or the metadata type and the auxiliary picture type do not match.|
 
 ### OH_PictureMetadata_Release()
 
@@ -411,6 +605,10 @@ Image_ErrorCode OH_PictureMetadata_Release(OH_PictureMetadata *metadata)
 **Description**
 
 Releases the pointer to an OH_PictureMetadata struct.
+
+Restrictions: **metadata** cannot be a null pointer.
+
+Resource management: After this API is called, the OH_PictureMetadata object pointed to by **metadata** is released and should not be used any more.
 
 **Since**: 13
 
@@ -424,7 +622,64 @@ Releases the pointer to an OH_PictureMetadata struct.
 
 | Type| Description|
 | -- | -- |
-| [Image_ErrorCode](#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
+<!--Del-->
+### OH_PictureMetadata_GetMetadataByType()
+
+```c
+Image_ErrorCode OH_PictureMetadata_GetMetadataByType(OH_PictureMetadata **metadatas, uint32_t metadataCount, int32_t type, OH_PictureMetadata *metadata)
+```
+
+**Description**
+
+Obtains the PictureMetadata object that matches the specified type from the OH_PictureMetadata array.
+
+**Since:** 26.0.0
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) **metadatas | Double pointer to the **OH_PictureMetadata** array.|
+| uint32_t metadataCount | Length of the **OH_PictureMetadata** array.|
+| int32_t type | Target metadata type to be matched.|
+| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) *metadata | Pointer to the OH_PictureMetadata output object, which is used to store the matched content.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul><br>         <li>**IMAGE_SUCCESS**: The operation is successful.</li><br>         <li>**202**: This API is called by a non-system application.</li><br>         <li>**IMAGE_INVALID_PARAMETER**: **metadatas** or **metadata** is a null pointer, or the array length is 0.</li><br>         </ul> |
+
+### OH_PictureMetadatas_Release()
+
+```c
+Image_ErrorCode OH_PictureMetadatas_Release(OH_PictureMetadata **metadatas, uint32_t metadatasCount)
+```
+
+**Description**
+
+Releases an OH_PictureMetadata object array.
+
+**Since:** 26.0.0
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) **metadatas | Double pointer to the **OH_PictureMetadata** array.|
+| uint32_t metadatasCount | Length of the **OH_PictureMetadata** array.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | <ul><br>         <li>**IMAGE_SUCCESS**: The operation is successful.</li><br>         <li>**202**: This API is called by a non-system application.</li><br>         <li>**IMAGE_INVALID_PARAMETER**: **metadatas** is a null pointer, or the array length is 0.</li><br>         </ul> |
+<!--DelEnd-->
 
 ### OH_PictureMetadata_Clone()
 
@@ -435,6 +690,10 @@ Image_ErrorCode OH_PictureMetadata_Clone(OH_PictureMetadata *oldMetadata, OH_Pic
 **Description**
 
 Clones metadata.
+
+Restrictions: **oldMetadata** and **newMetadata** cannot be null pointers. If the API returns a failure, the output parameter content should not be used.
+
+Resource management: **newMetadata** returned by the API is managed by the caller and must be released using [OH_PictureMetadata_Release](#oh_picturemetadata_release) after use.
 
 **Since**: 13
 
@@ -449,4 +708,4 @@ Clones metadata.
 
 | Type| Description|
 | -- | -- |
-| [Image_ErrorCode](#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.<br>         **IMAGE_ALLOC_FAILED**: The memory allocation fails.<br>         **IMAGE_COPY_FAILED**: The memory copy fails.|
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.<br>         **IMAGE_ALLOC_FAILED**: The memory allocation fails.<br>         **IMAGE_COPY_FAILED**: The memory copy fails.|

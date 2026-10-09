@@ -5,7 +5,8 @@
 <!--Owner: @zhaoxueyuan-->
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=deff468b8adbfa4199da5cbe7b6cbc33f2bddb1e translatedAt=2026-06-24T07:41:07.597Z pushedAt=2026-06-25T06:58:22.916Z -->
 
 ## When to Use
 
@@ -19,7 +20,7 @@ import { pointer } from '@kit.InputKit';
 
 ## Available APIs
 
-The following table lists the common APIs for mouse pointer management. For details about the APIs, see [ohos.multimodalInput.pointer](../../reference/apis-input-kit/js-apis-pointer.md).
+The following table lists common APIs for mouse pointer management. For details, see [@ohos.multimodalInput.pointer (Mouse Pointer)](../../reference/apis-input-kit/js-apis-pointer.md).
 
 | API                                                      | Description                                                        |
 | ------------------------------------------ | ------------------------------------------------------- |
@@ -86,7 +87,7 @@ Text("Click to display pointer")
 
 ## Setting the Mouse Pointer Style
 
-When designing a color picker, you can have the mouse pointer switched to the color picker style during color pickup and then switched to the default style on completion of color pickup. This setting takes effect for the pointer style of a specified window in the current application. A total of 43 pointer styles can be set. For details, see [Pointer Style](../../reference/apis-input-kit/js-apis-pointer.md#pointerstyle).
+When you design the color picker feature, you can switch the mouse cursor style to the color picker style, and set the mouse cursor style back to the default after color selection is complete.This API sets and queries the cursor style of a specified window within the current application. A total of 49 cursor styles are available. For details, see [PointerStyle](../../reference/apis-input-kit/js-apis-pointer.md#pointerstyle).
 
 ### How to Develop
 

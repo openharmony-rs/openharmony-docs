@@ -3,13 +3,15 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @liujiaxing2024-->
-<!--Designer: @junjie_shi-->
+<!--Designer: @jiangwenhao-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
 ## 概述
 
 HiAppEvent模块提供应用事件打点功能。记录应用运行过程中上报的故障事件、统计事件、安全事件和用户行为事件。基于事件信息，开发者可以分析应用的运行状态。
+
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
 **起始版本：** 8
 ## 文件汇总

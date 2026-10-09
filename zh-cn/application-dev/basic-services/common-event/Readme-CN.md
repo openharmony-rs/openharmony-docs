@@ -1,9 +1,9 @@
 # 进程线程通信<!--app-events-->
-<!--Kit: Common-->
-<!--Subsystem: Common-->
-<!--Owner: @fang-jinxu-->
-<!--Designer: @lingminghw-->
-<!--Tester: @RayShih-->
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @wangsen1994-->
+<!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
 - 使用公共事件进行进程间通信<!--common-event-communication-->
@@ -20,4 +20,5 @@
     - [订阅公共事件（C/C++）](native-common-event-subscription.md)
     - [取消订阅公共事件（C/C++）](native-common-event-unsubscription.md)
     - [发布公共事件（C/C++）](native-common-event-publish.md)
+    - [Common Event Service术语](common-event-glossary.md)
 - [使用Emitter进行线程间通信](itc-with-emitter.md)

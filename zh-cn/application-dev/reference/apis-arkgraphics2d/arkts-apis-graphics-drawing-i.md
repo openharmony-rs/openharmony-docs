@@ -2,10 +2,12 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+
+提供图形绘制相关的其他接口。
 
 > **说明：**
 >
@@ -23,9 +25,9 @@
 
 | 名称      | 类型   | 只读 | 可选 | 说明                      |
 | --------- | ------ | ---- | ---- | ------------------------- |
-| glyph     | number | 否   | 否   | 存储文字的索引，该参数为整数，传入浮点类型时向下取整。 |
-| positionX | number | 否   | 否   | 文本的起点x轴坐标，该参数为浮点数。 |
-| positionY | number | 否   | 否   | 文本的起点y轴坐标，该参数为浮点数。 |
+| glyph     | number | 否   | 否   | 存储字形的索引，该参数为整数，传入浮点类型时向下取整。|
+| positionX | number | 否   | 否   | 文本的起点x轴坐标，该参数为浮点数。单位为物理像素px。 |
+| positionY | number | 否   | 否   | 文本的起点y轴坐标，该参数为浮点数。单位为物理像素px。 |
 
 ## FontMetrics
 
@@ -38,21 +40,21 @@
 | 名称    | 类型   | 只读 | 可选 | 说明                                                         |
 | ------- | ------ | ---- | ---- | ------------------------------------------------------------ |
 | flags<sup>12+</sup>   | [FontMetricsFlags](arkts-apis-graphics-drawing-e.md#fontmetricsflags12) | 否   | 是   | 表明哪些字体度量标志有效。        |
-| top     | number | 否   | 否   | 文字最高处到基线之间的最大距离，浮点数。                         |
-| ascent  | number | 否   | 否   | 文字最高处到基线之间的距离，浮点数。                             |
-| descent | number | 否   | 否   | 基线到文字最低处之间的距离，浮点数。                             |
-| bottom  | number | 否   | 否   | 基线到文字最低处之间的最大距离，浮点数。                         |
-| leading | number | 否   | 否   | 行间距，从上一行文字descent到下一行文字ascent之间的距离，浮点数。 |
-| avgCharWidth<sup>12+</sup> | number | 否   | 是   | 平均字符宽度。                             |
-| maxCharWidth<sup>12+</sup> | number | 否   | 是   | 最大字符宽度。                             |
-| xMin<sup>12+</sup> | number | 否    | 是   | 字体中任意字形边界框最左边沿到原点的水平距离，这个值往往小于零，意味着字形在水平方向上的最小边界。                |
-| xMax<sup>12+</sup> | number | 否   | 是   | 字体中任意字形边界框最右边沿到原点的水平距离，此值多为正数，指示了字形在水平方向上的最大延伸范围。        |
-| xHeight<sup>12+</sup> | number | 否   | 是   | 小写字母x的高度，通常为负值。                     |
-| capHeight<sup>12+</sup> | number | 否   | 是   | 大写字母的高度，通常为负值。                      |
-| underlineThickness<sup>12+</sup> | number | 否   | 是   | 下划线的厚度。                                          |
-| underlinePosition<sup>12+</sup>  | number | 否   | 是   | 文本基线到下划线顶部的垂直距离，通常是正数。             |
-| strikethroughThickness<sup>12+</sup>  | number | 否   | 是   | 文本删除线的厚度，即贯穿文本字符的水平线的宽度。    |
-| strikethroughPosition<sup>12+</sup>  | number | 否   | 是   | 文本基线到底部删除线的垂直距离，通常为负值。         |
+| top     | number | 否   | 否   | 字体中任意字形边界框超出基线上方的最大距离，浮点数。单位为物理像素px。 |
+| ascent  | number | 否   | 否   | 文字最高处到基线之间的距离，浮点数。单位为物理像素px。                             |
+| descent | number | 否   | 否   | 基线到文字最低处之间的距离，浮点数。单位为物理像素px。                             |
+| bottom  | number | 否   | 否   | 字体中任意字形边界框超出基线下方的最大距离，浮点数。单位为物理像素px。|
+| leading | number | 否   | 否   | 行间距，从上一行文字descent到下一行文字ascent之间的距离，浮点数。单位为物理像素px。 |
+| avgCharWidth<sup>12+</sup> | number | 否 | 是 | 平均字符宽度，浮点数。单位为物理像素px。 |
+| maxCharWidth<sup>12+</sup> | number | 否 | 是 | 最大字符宽度，浮点数。单位为物理像素px。 |
+| xMin<sup>12+</sup> | number | 否   | 是   | 字体中任意字形边界框最左边沿到原点的水平距离，这个值往往小于零，意味着字形在水平方向上的最小边界。单位为物理像素px。                |
+| xMax<sup>12+</sup> | number | 否   | 是   | 字体中任意字形边界框最右边沿到原点的水平距离，浮点数，此值多为正数，指示了字形在水平方向上的最大延伸范围。单位为物理像素px。        |
+| xHeight<sup>12+</sup> | number | 否   | 是   | 小写字母x顶部相对于基线的垂直偏移量，浮点数，通常为负值。单位为物理像素px。 |
+| capHeight<sup>12+</sup> | number | 否   | 是   | 大写字母顶部相对于基线的垂直偏移量，浮点数，通常为负值。单位为物理像素px。 |
+| underlineThickness<sup>12+</sup> | number | 否   | 是   | 下划线的厚度，浮点数。单位为物理像素px。                                          |
+| underlinePosition<sup>12+</sup>  | number | 否   | 是   | 文本基线到下划线顶部的垂直距离，浮点数，通常是正数。单位为物理像素px。             |
+| strikethroughThickness<sup>12+</sup>  | number | 否   | 是   | 文本删除线的厚度，即贯穿文本字符的水平线的宽度，浮点数。单位为物理像素px。    |
+| strikethroughPosition<sup>12+</sup>  | number | 否 | 是 | 文本基线到删除线的垂直距离，浮点数，通常为负值。单位为物理像素px。 |
 
 ## FontFeature<sup>20+</sup>
 
@@ -64,5 +66,28 @@
 
 | 名称    | 类型   | 只读 | 可选 | 说明   |
 | ------- | ------ | ---- | ---- | ------------------ |
-| name   | string | 否   | 否   | 字体特征的名称。常见的字体特征名称包含liga、frac、case等，需要对应的ttf文件支持才能生效。|
-| value | number | 否 | 否 | 字体特征的数值，浮点数。建议通过字体查看工具或查阅字体文档，确定具体的有效取值范围。|
+| name   | string | 否   | 否   | 字体特征的名称。通常为4个ASCII字符组成的标签（如liga、frac、case等），需对应的ttf文件支持才能生效。建议通过字体查看工具或查阅字体文档，确定有效名称。|
+| value | number | 否 | 否 | 字体特征的数值，浮点数。需要对应的ttf文件支持才能生效。建议通过字体查看工具或查阅字体文档，确定具体的有效取值范围。|
+
+## RecordCmd
+
+描述一组已录制的绘制指令。该对象为不可变对象，由[RecordCmdUtils.finishRecording](arkts-apis-graphics-drawing-RecordCmdUtils.md#finishrecording)创建，可传递给[Canvas.drawRecordCmd](arkts-apis-graphics-drawing-Canvas.md#drawrecordcmd)进行指令回放，从而复现已录制的绘制操作。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**起始版本：** 26.0.1
+
+## TypefaceFallbackInfo
+
+定义字体回退信息的结构体，表示一组使用相同回退字体的字形片段。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**起始版本：** 26.0.1
+
+| 名称    | 类型   | 只读 | 可选 | 说明   |
+| ------- | ------ | ---- | ---- | ------------------ |
+| glyphIds   | Array\<number> | 否   | 否   | 该字形片段的字形ID数组。 |
+| typeface | [Typeface](arkts-apis-graphics-drawing-Typeface.md) | 否 | 否 | 该字形片段匹配到的字体对象。 |

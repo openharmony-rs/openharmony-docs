@@ -2,11 +2,11 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-ImageCreator类，用于请求图像数据区域，并开放给应用编译图像数据的能力。
+ImageCreator类，作为图片的生产者，用于将图片写入到Surface中。
 
 在调用以下方法前需要先通过[image.createImageCreator](arkts-apis-image-f.md#imagecreateimagecreator11)创建ImageCreator实例，ImageCreator不支持多线程。
 
@@ -151,7 +151,7 @@ queueImage(image: Image): Promise\<void>
 
 | 类型            | 说明           |
 | -------------- | ------------- |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -223,7 +223,7 @@ off(type: 'imageRelease', callback?: AsyncCallback\<void>): void
 | 参数名        | 类型                     | 必填 | 说明                                         |
 | ------------- | -------------------------|----|--------------------------------------------|
 | type          | string                   | 是  | 监听事件类型，如'imageRelease'。                    |
-| callback      | AsyncCallback\<void>     | 否  | 回调函数。当移除注册成功时，err返回null，否则为错误对象。 |
+| callback      | AsyncCallback\<void>     | 否  | 回调函数。当移除注册成功时，err为undefined，否则为错误对象。 |
 
 **示例：**
 
@@ -287,7 +287,7 @@ release(): Promise\<void>
 
 | 类型            | 说明           |
 | -------------- | ------------- |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **示例：**
 

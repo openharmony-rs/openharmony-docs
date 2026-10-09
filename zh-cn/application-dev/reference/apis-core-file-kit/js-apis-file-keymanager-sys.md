@@ -1,12 +1,12 @@
 # @ohos.file.keyManager (用户密钥管理)(系统接口)
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wang_zhangjun; @gzhuangzhuang-->
-<!--Designer: @wang_zhangjun; @gzhuangzhuang; @renguang1116-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @gzhuangzhuang-->
+<!--Designer: @renguang1116; @wang_zhangjun-->
+<!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
 
-该模块提供用户密钥管理相关的常用功能：包括用户密钥卸载等。
+该模块提供用户密钥管理功能，当前支持在用户锁屏时同步卸载指定用户的密钥，满足锁屏应用在设备锁屏时保护用户数据安全的需求。用户密钥与用户数据的加密保护相关，在用户锁屏等场景下需要对密钥进行卸载以管理数据的加密状态。
 
 > **说明：**
 >
@@ -16,14 +16,18 @@
 ## 导入模块
 
 ```ts
-import { keyManager } from "@kit.CoreFileKit";
+import { keyManager } from '@kit.CoreFileKit';
 ```
 
 ## keyManager.deactivateUserKey
 
 deactivateUserKey(userId: number):void
 
-用户锁屏时，同步卸载指定用户对应密钥。**（该接口目前仅开放给锁屏应用）**
+用户锁屏时，同步卸载指定用户对应的密钥。卸载后，该用户对应的加密数据将无法被解密访问，从而保护用户数据安全。
+
+> **说明**：
+>
+> 该接口目前仅开放给锁屏应用。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER_CRYPT
 
@@ -35,7 +39,7 @@ deactivateUserKey(userId: number):void
 
   | 参数名     | 类型   | 必填 | 说明 |
   | ---------- | ------ | ---- | ---- |
-  | userId | number | 是   | 用户id。锁屏应用感知设备当前登录的用户，指定为该用户。|
+  | userId | number | 是   | 用户ID。取值范围[100, 10738]。锁屏应用获取设备当前登录的用户，将userId指定为该用户的ID。|
 
 **错误码：**
 
@@ -47,20 +51,20 @@ deactivateUserKey(userId: number):void
 | 202 | The caller is not a system application. |
 | 401 | The input parameter is invalid. Possible causes: Mandatory parameters are left unspecified; Or input parameter has type different from the type the interface requires. |
 | 13600001 | IPC error. |
-| 13600008 | No such object. Possible causes: Cannot find user key for the specified user. |
+| 13600008 | No such object. Possible causes: Cannot find userkey for the specified user. |
 | 13600009 | User ID out of range. Possible causes: input parameter userId < 100 or userId > 10736. |
 
 **示例：**
 
   ```ts
-  import { keyManager } from "@kit.CoreFileKit";
+  import { keyManager } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   let userId: number = 100;
   try {
     keyManager.deactivateUserKey(userId);
-    console.info("deactivateUserKey success");
+    console.info('deactivateUserKey success');
   } catch (err) {
     let error: BusinessError = err as BusinessError;
-    console.error("deactivateUserKey failed with error:" + JSON.stringify(error));
+    console.error(`deactivateUserKey failed with error. Code: ${error.code}, message: ${error.message}`);
   }
   ```

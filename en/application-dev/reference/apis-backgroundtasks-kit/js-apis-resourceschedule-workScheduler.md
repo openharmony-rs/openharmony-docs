@@ -2,18 +2,18 @@
 
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: ResourceSchedule-->
-<!--Owner: @cheng-shichang-->
+<!--Owner: @xufu7-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
 The **workScheduler** module provides the APIs for registering, canceling, and querying deferred tasks. You can use the APIs to register tasks that do not have high requirements on real-time performance as deferred tasks. The system schedules and executes the deferred tasks at an appropriate time, subject to the storage space, power consumption, and more. For details, see [Deferred Task Scheduling](../../task-management/work-scheduler.md).
 
 >  **NOTE**
 >
->  - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>  The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
->  - The APIs of this module can be used only in the stage model.
+>  The APIs of this module can be used only in the stage model.
 
 ## Modules to Import
 
@@ -50,36 +50,36 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { workScheduler } from '@kit.BackgroundTasksKit';
-  
-  let workInfo: workScheduler.WorkInfo = {
-      workId: 1,
-      batteryStatus:workScheduler.BatteryStatus.BATTERY_STATUS_LOW,
-      isRepeat: false,
-      isPersisted: true,
-      bundleName: "com.example.myapplication",
-      abilityName: "MyExtension",
-      parameters: {
-          mykey0: 1,
-          mykey1: "string value",
-          mykey2: true,
-          mykey3: 1.5
-      }
+import { BusinessError } from '@kit.BasicServicesKit';
+import { workScheduler } from '@kit.BackgroundTasksKit';
+
+let workInfo: workScheduler.WorkInfo = {
+  workId: 1,
+  batteryStatus: workScheduler.BatteryStatus.BATTERY_STATUS_LOW,
+  isRepeat: false,
+  isPersisted: true,
+  bundleName: 'com.example.myapplication',
+  abilityName: 'MyExtension',
+  parameters: {
+    intValue: 1,
+    stringValue: 'string value',
+    booleanValue: true,
+    floatValue: 1.5
   }
-  try{
-    workScheduler.startWork(workInfo);
-    console.info('workschedulerLog startWork success');
-  } catch (error) {
-    console.error(`workschedulerLog startwork failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
-  }
+}
+try {
+  workScheduler.startWork(workInfo);
+  console.info('workschedulerLog startWork success');
+} catch (error) {
+  console.error(`workschedulerLog startwork failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+}
 ```
 
 ## workScheduler.stopWork
 
 stopWork(work: WorkInfo, needCancel?: boolean): void
 
-Stops a deferred task.
+Stops a currently running deferred task or removes a periodic deferred task so that it will not be executed again.
 
 **System capability**: SystemCapability.ResourceSchedule.WorkScheduler
 
@@ -88,7 +88,7 @@ Stops a deferred task.
 | Name       | Type                   | Mandatory  | Description        |
 | ---------- | --------------------- | ---- | ---------- |
 | work       | [WorkInfo](#workinfo) | Yes   | Deferred task to stop.|
-| needCancel | boolean               | No   | Whether to clear the task while stopping it.<br>The value **true** means to clear the task while stopping it, and **false** means to stop the task only. The default value is **false**.|
+| needCancel | boolean               | No   | Whether to clear the task while stopping it.<br>The value **true** means to clear the task while stopping it, and **false** means to stop the task only. The default value is **false**.<br>If the task is no longer needed, you are advised to set this parameter to **true** to release system resources. If the task may need to be triggered again, you are advised to set this parameter to **false**.|
 
 **Error codes**
 
@@ -105,29 +105,30 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { workScheduler } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { workScheduler } from '@kit.BackgroundTasksKit';
 
-  let workInfo: workScheduler.WorkInfo = {
-      workId: 1,
-      batteryStatus:workScheduler.BatteryStatus.BATTERY_STATUS_LOW,
-      isRepeat: false,
-      isPersisted: true,
-      bundleName: "com.example.myapplication",
-      abilityName: "MyExtension",
-      parameters: {
-          mykey0: 1,
-          mykey1: "string value",
-          mykey2: true,
-          mykey3: 1.5
-      }
-     }
-  try{
-    workScheduler.stopWork(workInfo, false);
-    console.info('workschedulerLog stopWork success');
-  } catch (error) {
-    console.error(`workschedulerLog stopWork failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+let workInfo: workScheduler.WorkInfo = {
+  workId: 1,
+  batteryStatus: workScheduler.BatteryStatus.BATTERY_STATUS_LOW,
+  isRepeat: false,
+  isPersisted: true,
+  bundleName: 'com.example.myapplication',
+  abilityName: 'MyExtension',
+  parameters: {
+    intValue: 1,
+    stringValue: 'string value',
+    booleanValue: true,
+    floatValue: 1.5
   }
+}
+try {
+  // Stop the deferred task. The value false indicates that the task is stopped but not removed.
+  workScheduler.stopWork(workInfo, false);
+  console.info('workschedulerLog stopWork success');
+} catch (error) {
+  console.error(`workschedulerLog stopWork failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+}
 ```
 
 ## workScheduler.getWorkStatus
@@ -142,7 +143,7 @@ Obtains the information a deferred task. This API uses an asynchronous callback 
 
 | Name     | Type                                   | Mandatory  | Description                                      |
 | -------- | ------------------------------------- | ---- | ---------------------------------------- |
-| workId   | number                                | Yes   | ID of the deferred task.                                |
+| workId   | number                                | Yes   | ID of the deferred task. This parameter specifies a unique ID of the deferred task, which is used to query the status of the specified deferred task. |
 | callback | AsyncCallback\<[WorkInfo](#workinfo)> | Yes   | Callback used to return the result. If **workId** is valid, the task information obtained from WorkSchedulerService is returned. Otherwise, an exception is thrown.|
 
 **Error codes**
@@ -160,16 +161,16 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { workScheduler } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { workScheduler } from '@kit.BackgroundTasksKit';
 
-  workScheduler.getWorkStatus(50, (error: BusinessError, res: workScheduler.WorkInfo) => {
-    if (error) {
-      console.error(`workschedulerLog getWorkStatus failed. code is ${error.code} message is ${error.message}`);
-    } else {
-      console.info(`workschedulerLog getWorkStatus success, ${JSON.stringify(res)}`);
-    }
-  });
+workScheduler.getWorkStatus(50, (error: BusinessError, res: workScheduler.WorkInfo) => {
+  if (error) {
+    console.error(`workschedulerLog getWorkStatus failed. code is ${error.code} message is ${error.message}`);
+  } else {
+    console.info(`workschedulerLog getWorkStatus success, ${JSON.stringify(res)}`);
+  }
+});
 ```
 
 ## workScheduler.getWorkStatus
@@ -184,7 +185,7 @@ Obtains the information a deferred task. This API uses a promise to return the r
 
 | Name   | Type    | Mandatory  | Description      |
 | ------ | ------ | ---- | -------- |
-| workId | number | Yes   | ID of the deferred task.|
+| workId | number | Yes   | ID of the deferred task. This parameter specifies a unique ID of the deferred task, which is used to query the status of the specified deferred task.|
 
 **Return value**
 
@@ -207,19 +208,19 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { workScheduler } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { workScheduler } from '@kit.BackgroundTasksKit';
 
-  workScheduler.getWorkStatus(50).then((res: workScheduler.WorkInfo) => {
-    console.info(`workschedulerLog getWorkStatus success, ${JSON.stringify(res)}`);
-  }).catch((error: BusinessError) => {
-    console.error(`workschedulerLog getWorkStatus failed. code is ${error.code} message is ${error.message}`);
-  })
+workScheduler.getWorkStatus(50).then((res: workScheduler.WorkInfo) => {
+  console.info(`workschedulerLog getWorkStatus success, ${JSON.stringify(res)}`);
+}).catch((error: BusinessError) => {
+  console.error(`workschedulerLog getWorkStatus failed. code is ${error.code} message is ${error.message}`);
+})
 ```
 
-## workScheduler.obtainAllWorks<sup>(deprecated)<sup>
+## workScheduler.obtainAllWorks<sup>(deprecated)</sup>
 
-obtainAllWorks(callback : AsyncCallback\<void>) : Array\<WorkInfo>
+obtainAllWorks(callback: AsyncCallback\<void>) : Array\<WorkInfo>
 
 Obtains all the deferred tasks. This API uses an asynchronous callback to return the result.
 
@@ -252,9 +253,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 9700002 | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
 | 9700003 | System service operation failed. |
 
-## workScheduler.obtainAllWorks<sup>10+<sup>
+## workScheduler.obtainAllWorks<sup>10+</sup>
 
-obtainAllWorks(callback : AsyncCallback&lt;Array&lt;WorkInfo&gt;&gt;): void
+obtainAllWorks(callback: AsyncCallback&lt;Array&lt;WorkInfo&gt;&gt;): void
 
 Obtains all the deferred tasks. This API uses an asynchronous callback to return the result.
 
@@ -264,7 +265,7 @@ Obtains all the deferred tasks. This API uses an asynchronous callback to return
 
 | Name     | Type                  | Mandatory  | Description                             |
 | -------- | -------------------- | ---- | ------------------------------- |
-| callback |  AsyncCallback&lt;Array&lt;WorkInfo&gt;&gt; | Yes   | Callback used to return the result. If all the deferred tasks are obtained, **err** is **undefined**. Otherwise, **err** is an error object.|
+| callback |  AsyncCallback&lt;Array&lt;WorkInfo&gt;&gt; | Yes   | Callback used to return the result. If the deferred tasks are obtained successfully, **error** is **undefined** and **res** indicates all deferred tasks in the current app. Otherwise, **error** is an error object.|
 
 **Error codes**
 
@@ -280,16 +281,16 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { workScheduler } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { workScheduler } from '@kit.BackgroundTasksKit';
 
-  workScheduler.obtainAllWorks((error: BusinessError, res: Array<workScheduler.WorkInfo>) =>{
-    if (error) {
-      console.error(`workschedulerLog obtainAllWorks failed. code is ${error.code} message is ${error.message}`);
-    } else {
-      console.info(`workschedulerLog obtainAllWorks success, data is: ${JSON.stringify(res)}`);
-    }
-  });
+workScheduler.obtainAllWorks((error: BusinessError, res: Array<workScheduler.WorkInfo>) => {
+  if (error) {
+    console.error(`workschedulerLog obtainAllWorks failed. code is ${error.code} message is ${error.message}`);
+  } else {
+    console.info(`workschedulerLog obtainAllWorks success, data is: ${JSON.stringify(res)}`);
+  }
+});
 ```
 
 ## workScheduler.obtainAllWorks
@@ -320,21 +321,21 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { workScheduler } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { workScheduler } from '@kit.BackgroundTasksKit';
 
-  workScheduler.obtainAllWorks().then((res: Array<workScheduler.WorkInfo>) => {
-    console.info(`workschedulerLog obtainAllWorks success, data is: ${JSON.stringify(res)}`);
-  }).catch((error: BusinessError) => {
-    console.error(`workschedulerLog obtainAllWorks failed. code is ${error.code} message is ${error.message}`);
-  })
+workScheduler.obtainAllWorks().then((res: Array<workScheduler.WorkInfo>) => {
+  console.info(`workschedulerLog obtainAllWorks success, data is: ${JSON.stringify(res)}`);
+}).catch((error: BusinessError) => {
+  console.error(`workschedulerLog obtainAllWorks failed. code is ${error.code} message is ${error.message}`);
+})
 ```
 
 ## workScheduler.stopAndClearWorks
 
 stopAndClearWorks(): void
 
-Stops and clears all the deferred tasks.
+Stops and clears all the deferred tasks. This method can be used all deferred tasks need to be cleared when an app exits or is uninstalled.
 
 **System capability**: SystemCapability.ResourceSchedule.WorkScheduler
 
@@ -352,18 +353,18 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { workScheduler } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { workScheduler } from '@kit.BackgroundTasksKit';
 
-  try{
-    workScheduler.stopAndClearWorks();
-    console.info(`workschedulerLog stopAndClearWorks success`);
-  } catch (error) {
-    console.error(`workschedulerLog stopAndClearWorks failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
-  }
+try {
+  workScheduler.stopAndClearWorks();
+  console.info(`workschedulerLog stopAndClearWorks success`);
+} catch (error) {
+  console.error(`workschedulerLog stopAndClearWorks failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+}
 ```
 
-## workScheduler.isLastWorkTimeOut<sup>(deprecated)<sup>
+## workScheduler.isLastWorkTimeOut<sup>(deprecated)</sup>
 
 isLastWorkTimeOut(workId: number, callback : AsyncCallback\<void>): boolean
 
@@ -377,8 +378,8 @@ Checks whether the last execution of a task timed out. This API uses an asynchro
 
 | Name     | Type                  | Mandatory  | Description                                      |
 | -------- | -------------------- | ---- | ---------------------------------------- |
-| workId   | number               | Yes   | ID of the deferred task.                                |
-| callback | AsyncCallback\<void> | Yes   | Callback used to return the result.|
+| workId   | number               | Yes   | ID of the deferred task. Unique ID of the deferred task, which is used to check whether the last execution of the deferred task times out.|
+| callback | AsyncCallback\<void> | Yes   | Callback used to return the result. If the last execution of the deferred task is successfully checked, **error** is **undefined**. Otherwise, **error** is an error object.|
 
 **Return value**
 
@@ -398,9 +399,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 9700003 | System service operation failed. |
 | 9700004 | Check on workInfo failed. |
 
-## workScheduler.isLastWorkTimeOut<sup>10+<sup>
+## workScheduler.isLastWorkTimeOut<sup>10+</sup>
 
-isLastWorkTimeOut(workId: number, callback : AsyncCallback\<boolean>): void
+isLastWorkTimeOut(workId: number, callback: AsyncCallback\<boolean>): void
 
 Checks whether the last execution of a task timed out. This API uses an asynchronous callback to return the result.
 
@@ -410,8 +411,8 @@ Checks whether the last execution of a task timed out. This API uses an asynchro
 
 | Name     | Type                  | Mandatory  | Description                                      |
 | -------- | -------------------- | ---- | ---------------------------------------- |
-| workId   | number               | Yes   | ID of the deferred task.                                |
-| callback | AsyncCallback\<boolean> | Yes   | Callback used to return the result.|
+| workId   | number               | Yes   | ID of the deferred task. Unique ID of the deferred task, which is used to check whether the last execution of the deferred task times out.|
+| callback | AsyncCallback\<boolean> | Yes   | Callback used to return the result. The value **true** means that the last execution of the specified task times out, and **false** means the opposite.|
 
 **Error codes**
 
@@ -428,16 +429,16 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { workScheduler } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { workScheduler } from '@kit.BackgroundTasksKit';
 
-  workScheduler.isLastWorkTimeOut(500, (error: BusinessError, res: boolean) =>{
-    if (error) {
-      console.error(`workschedulerLog isLastWorkTimeOut failed. code is ${error.code} message is ${error.message}`);
-    } else {
-      console.info(`workschedulerLog isLastWorkTimeOut success, data is: ${res}`);
-    }
-  });
+workScheduler.isLastWorkTimeOut(500, (error: BusinessError, res: boolean) => {
+  if (error) {
+    console.error(`workschedulerLog isLastWorkTimeOut failed. code is ${error.code} message is ${error.message}`);
+  } else {
+    console.info(`workschedulerLog isLastWorkTimeOut success, data is: ${res}`);
+  }
+});
 ```
 
 ## workScheduler.isLastWorkTimeOut
@@ -452,7 +453,7 @@ Checks whether the last execution of a task timed out. This API uses a promise t
 
 | Name   | Type    | Mandatory  | Description      |
 | ------ | ------ | ---- | -------- |
-| workId | number | Yes   | ID of the deferred task.|
+| workId | number | Yes   | ID of the deferred task. Unique ID of the deferred task, which is used to check whether the last execution of the deferred task times out.|
 
 **Return value**
 
@@ -475,16 +476,16 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-  import { BusinessError } from '@kit.BasicServicesKit';
-  import { workScheduler } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { workScheduler } from '@kit.BackgroundTasksKit';
 
-  workScheduler.isLastWorkTimeOut(500)
-    .then((res: boolean) => {
-      console.info(`workschedulerLog isLastWorkTimeOut success, data is: ${res}`);
-    })
-    .catch((error: BusinessError) =>  {
-      console.error(`workschedulerLog isLastWorkTimeOut failed. code is ${error.code} message is ${error.message}`);
-    });
+workScheduler.isLastWorkTimeOut(500)
+  .then((res: boolean) => {
+    console.info(`workschedulerLog isLastWorkTimeOut success, data is: ${res}`);
+  })
+  .catch((error: BusinessError) => {
+    console.error(`workschedulerLog isLastWorkTimeOut failed. code is ${error.code} message is ${error.message}`);
+  });
 ```
 
 ## WorkInfo
@@ -495,11 +496,11 @@ Represents the deferred task information, which is used to set the trigger condi
 >
 >  The following rules apply when setting WorkInfo parameters:
 >
->  - **workId**, **bundleName**, and **abilityName** are mandatory. **bundleName** must be set to the bundle name of the current application.
->  - The carried parameters can be of the number, string, or boolean type.
->  - At least one triggering condition must be set, including the network type, charging type, storage status, and battery status.
->  - For a cyclic task, the task execution interval must be at least 2 hours. When **repeatCycleTime** is set, you must set **isRepeat** or **repeatCount**.
->  - For optional parameters, if left default (not configured), it indicates that the triggering of the delayed task does not depend on the parameter's corresponding condition.
+>  1. **workId**, **bundleName**, and **abilityName** are mandatory. **bundleName** must be set to the bundle name of the current application.
+>  2. The carried parameters can be of the number, string, or boolean type.
+>  3. At least one triggering condition must be set, including the network type, charging type, storage status, and battery status.
+>  4. For a cyclic task, the task execution interval must be at least 2 hours. When **repeatCycleTime** is set, you must set **isRepeat** or **repeatCount**.
+>  5. For optional parameters, if left default (not configured), it indicates that the triggering of the delayed task does not depend on the parameter's corresponding condition.
 
 **System capability**: SystemCapability.ResourceSchedule.WorkScheduler
 
@@ -509,19 +510,19 @@ Represents the deferred task information, which is used to set the trigger condi
 | bundleName      | string                            | No   | No   |Bundle name of the application where the deferred task is located.          |
 | abilityName     | string                            | No   | No   |Ability name in the bundle.|
 | networkType     | [NetworkType](#networktype)       | No   | Yes   |Network type.            |
-| isCharging      | boolean                           | No   | Yes   |Whether the device needs to enter the charging state.<br>- **true**: The device needs to enter the charging state to trigger deferred task scheduling.<br>- **false**: The device does not need to enter the charging state to trigger deferred task scheduling.|
-| chargerType     | [ChargingType](#chargingtype)     | No   | Yes   |Charging type.            |
-| batteryLevel    | number                            | No   | Yes   |Battery level.             |
+| isCharging      | boolean                           | No   | Yes   |Whether the device needs to enter the charging state. The default value is **false**.<br>- **true**: The device needs to enter the charging state to trigger deferred task scheduling.<br>- **false**: The device does not need to enter the charging state to trigger deferred task scheduling.|
+| chargerType     | [ChargingType](#chargingtype)     | No   | Yes   |Charging type. This parameter must be used together with the **isCharging** parameter. When **isCharging** is set to **true**, you can specify the type of the charger that triggers the deferred task.           |
+| batteryLevel    | number                            | No   | Yes   |Battery level. When the battery level of the device is greater than or equal to the value of this parameter, the deferred task callback is triggered.<br>Value range: [0, 100]       |
 | batteryStatus   | [BatteryStatus](#batterystatus)   | No   | Yes   |Battery status.            |
 | storageRequest  | [StorageRequest](#storagerequest) | No   | Yes   |Storage status.            |
-| isRepeat        | boolean                           | No   | Yes   |Whether the task is repeated.<br>- **true**: The task is repeated.<br>- **false** (default): The task is not repeated.|
+| isRepeat        | boolean                           | No   | Yes   |Whether the task is repeated. The default value is **false**.<br>- **true**: The task is repeated.<br>- **false**: The task is not repeated.|
 | repeatCycleTime | number                            | No   | Yes   |Repeat interval, in milliseconds.            |
-| repeatCount     | number                            | No   | Yes   |Number of repeat times.            |
-| isPersisted     | boolean                           | No   | Yes   |Whether the registered deferred task can be saved in the system.<br>- **true**: The task can be saved. That is, the task can be restored after the system restarts.<br>- **false** (default): The task cannot be saved.|
-| isDeepIdle      | boolean                           | No   | Yes   |Whether the device needs to enter the idle state to trigger deferred task scheduling.<br>- **true**: The device needs to enter the idle state to trigger deferred task scheduling.<br>- **false** (default): The device does not need to enter the idle state to trigger deferred task scheduling.  |
-| idleWaitTime    | number                            | No   | Yes   |Time to wait in the idle state before triggering deferred task scheduling, in milliseconds.          |
+| repeatCount     | number                            | No   | Yes   |Number of repeat times. The value must be a positive integer greater than 0.            |
+| isPersisted     | boolean                           | No   | Yes   |Whether the registered deferred task can be saved in the system. The default value is **false**.<br>- **true**: The task can be saved. That is, the task can be restored after the system restarts.<br>- **false**: The task cannot be saved.|
+| isDeepIdle      | boolean                           | No   | Yes   |Whether the device needs to enter the idle state to trigger deferred task scheduling. The default value is **false**.<br>- **true**: The device needs to enter the idle state to trigger deferred task scheduling.<br>- **false**: The device does not need to enter the idle state to trigger deferred task scheduling.  |
+| idleWaitTime    | number                            | No   | Yes   |Idle wait time, in milliseconds.          |
 | parameters      | Record<string, number \| string \| boolean>  | No   | Yes   |Carried parameters.|
-| earliestStartTime<sup>22+</sup> | number | No   | Yes   |Interval between the earliest task execution time and the task request time, in milliseconds. The default value is **0**, and the value must be greater than or equal to 0.|
+| earliestStartTime<sup>22+</sup> | number | No   | Yes   |Interval between the initial execution time and the request time for a task, in milliseconds. The default value is **0**, and the value must be greater than or equal to 0.|
 
 ## NetworkType
 

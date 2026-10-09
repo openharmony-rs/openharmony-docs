@@ -1,8 +1,8 @@
 # OH_Drawing_Image
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
@@ -12,7 +12,7 @@ typedef struct OH_Drawing_Image OH_Drawing_Image
 
 ## 概述
 
-定义一个用于描述绘制二维像素数组的图片。
+定义一个表示二维像素数组的图片，用于绘制操作。
 
 **起始版本：** 12
 

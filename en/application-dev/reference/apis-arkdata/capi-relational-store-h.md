@@ -2,8 +2,8 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
 
 ## Overview
@@ -26,8 +26,8 @@ Provides APIs for managing data in an RDB store. The APIs not marked as supporti
 
 | Name                                                     | typedef Keyword| Description                                                                     |
 |---------------------------------------------------------| -- |-------------------------------------------------------------------------|
-| [OH_Rdb_Config](capi-rdb-oh-rdb-config.md)              | OH_Rdb_Config | Defines the configuration of an RDB store.                                                             |
-| [OH_Rdb_Store](capi-rdb-oh-rdb-store.md)                | OH_Rdb_Store | Defines the RDB store type.                                                               |
+| [OH_Rdb_Config](capi-rdb-oh-rdb-config.md)              | OH_Rdb_Config | Defines a struct for the configuration of an RDB store.                                                             |
+| [OH_Rdb_Store](capi-rdb-oh-rdb-store.md)                | OH_Rdb_Store | Defines a struct for the RDB store instance.                                                               |
 | [Rdb_DistributedConfig](capi-rdb-rdb-distributedconfig.md) | Rdb_DistributedConfig | Defines a struct for distributed configuration of a table.                                                           |
 | [Rdb_KeyInfo](capi-rdb-rdb-keyinfo.md)                      | Rdb_KeyInfo | Defines a struct for the primary key or number of the row that changes.                                                       |
 | [Rdb_KeyData](capi-rdb-rdb-keydata.md)                      | - | Stores the changed data.                                                             |
@@ -91,17 +91,17 @@ Provides APIs for managing data in an RDB store. The APIs not marked as supporti
 | [int OH_Rdb_Update(OH_Rdb_Store *store, OH_VBucket *valuesBucket, OH_Predicates *predicates)](#oh_rdb_update) | - | Updates data in an RDB store based on specified conditions.|
 | [int OH_Rdb_UpdateWithConflictResolution(OH_Rdb_Store *store, OH_VBucket *row, OH_Predicates *predicates,Rdb_ConflictResolution resolution, int64_t *changes)](#oh_rdb_updatewithconflictresolution) | - | Updates data in the database based on specified conditions and supports conflict resolution.|
 | [int OH_Rdb_Delete(OH_Rdb_Store *store, OH_Predicates *predicates)](#oh_rdb_delete) | - | Deletes data from an RDB store based on specified conditions.|
-| [OH_Cursor *OH_Rdb_Query(OH_Rdb_Store *store, OH_Predicates *predicates, const char *const *columnNames, int length)](#oh_rdb_query) | - | Queries data in an RDB store based on specified conditions.|
+| [OH_Cursor *OH_Rdb_Query(OH_Rdb_Store *store, OH_Predicates *predicates, const char *const *columnNames, int length)](#oh_rdb_query) | - | Queries data in an RDB store.|
 | [int OH_Rdb_Execute(OH_Rdb_Store *store, const char *sql)](#oh_rdb_execute) | - | Executes an SQL statement that returns no value.|
 | [int OH_Rdb_ExecuteV2(OH_Rdb_Store *store, const char *sql, const OH_Data_Values *args, OH_Data_Value **result)](#oh_rdb_executev2) | - | Executes an SQL statement with a return value. This API supports vector stores.|
 | [int OH_Rdb_ExecuteByTrxId(OH_Rdb_Store *store, int64_t trxId, const char *sql)](#oh_rdb_executebytrxid) | - | Executes an SQL statement that returns no value based on the specified transaction ID. This API supports only vector stores.|
 | [OH_Cursor *OH_Rdb_ExecuteQuery(OH_Rdb_Store *store, const char *sql)](#oh_rdb_executequery) | - | Queries data in the database using the specified SQL statement. This API supports vector stores.|
-| [OH_Cursor *OH_Rdb_ExecuteQueryV2(OH_Rdb_Store *store, const char *sql, const OH_Data_Values *args)](#oh_rdb_executequeryv2) | - | Queries data in the database using the specified SQL statement. This API supports vector stores.|
+| [OH_Cursor *OH_Rdb_ExecuteQueryV2(OH_Rdb_Store *store, const char *sql, const OH_Data_Values *args)](#oh_rdb_executequeryv2) | - | Queries data in the database using the specified SQL statement. This API supports SQL parameter binding and vector stores.|
 | [int OH_Rdb_BeginTransaction(OH_Rdb_Store *store)](#oh_rdb_begintransaction) | - | Begins the transaction before executing SQL statements.|
-| [int OH_Rdb_RollBack(OH_Rdb_Store *store)](#oh_rdb_rollback) | - | Rolls back the SQL statements executed.|
-| [int OH_Rdb_Commit(OH_Rdb_Store *store)](#oh_rdb_commit) | - | Commits the executed SQL statement.|
+| [int OH_Rdb_RollBack(OH_Rdb_Store *store)](#oh_rdb_rollback) | - | Rolls back the SQL statements executed. Before using this function, call [OH_Rdb_BeginTransaction](#oh_rdb_begintransaction) to start a transaction.|
+| [int OH_Rdb_Commit(OH_Rdb_Store *store)](#oh_rdb_commit) | - | Commits the executed SQL statements. Before using this function, call [OH_Rdb_BeginTransaction](#oh_rdb_begintransaction) to start a transaction.|
 | [int OH_Rdb_BeginTransWithTrxId(OH_Rdb_Store *store, int64_t *trxId)](#oh_rdb_begintranswithtrxid) | - | Begins a transaction. This API returns a transaction ID API and supports only vector stores.|
-| [int OH_Rdb_RollBackByTrxId(OH_Rdb_Store *store, int64_t trxId)](#oh_rdb_rollbackbytrxid) | - | Rolls back the executed SQL statements based on the specified transaction ID. This API supports only vector stores.|
+| [int OH_Rdb_RollBackByTrxId(OH_Rdb_Store *store, int64_t trxId)](#oh_rdb_rollbackbytrxid) | - | Rolls back the executed SQL statements based on the specified transaction ID. This function supports only vector stores.|
 | [int OH_Rdb_CommitByTrxId(OH_Rdb_Store *store, int64_t trxId)](#oh_rdb_commitbytrxid) | - | Commits the executed SQL statements based on the specified transaction ID. This API supports only vector stores.|
 | [int OH_Rdb_Backup(OH_Rdb_Store *store, const char *databasePath)](#oh_rdb_backup) | - | Backs up an RDB store using the backup file of the specified path. This API supports vector stores.|
 | [int OH_Rdb_Restore(OH_Rdb_Store *store, const char *databasePath)](#oh_rdb_restore) | - | Restores a database from a specified database backup file. This API supports vector stores.|
@@ -130,7 +130,7 @@ Provides APIs for managing data in an RDB store. The APIs not marked as supporti
 | [int OH_Rdb_RekeyEx(OH_Rdb_Store *store, OH_Rdb_CryptoParam *param)](#oh_rdb_rekeyex) | - | Changes the key used to encrypt the database.<br>Key update is not supported for databases in non-WAL mode.<br>Manual update requires exclusive access to the database. If any result set, transaction, or database opened by another process is not released, the update will fail.<br>Parameter update for an encrypted database and conversion between an encrypted database and a non-encrypted database are supported.<br>The larger the database, the longer the update takes.<br>Exercise caution when changing the encryption parameters. The correct encryption parameters must be passed when **OH_Rdb_CreateOrOpen** is called. Otherwise, the database may fail to be opened.|
 | [typedef void (\*Rdb_CorruptedHandler)(void *context, OH_Rdb_ConfigV2 *config, OH_Rdb_Store *store)](#rdb_corruptedhandler) | Rdb_CorruptedHandler | Defines a handler for processing database exceptions.|
 | [int OH_Rdb_RegisterCorruptedHandler(const OH_Rdb_ConfigV2 *config, void *context, const Rdb_CorruptedHandler handler)](#oh_rdb_registercorruptedhandler) | - | Registers a handler for processing database exceptions. When a database exception occurs, this handler is called.<br>The exception handling logic is user-defined. You should ensure the service quality each time the callback is triggered.<br>Only one handler can be registered for each path.|
-| [int OH_Rdb_UnregisterCorruptedHandler(const OH_Rdb_ConfigV2 *config, void *context, const Rdb_CorruptedHandler handler)](#oh_rdb_unregistercorruptedhandler) | - | Unregisters the handler for processing database exceptions.<br>The handler and context must be the same as those during subscription. Otherwise, the operation fails.|
+| [int OH_Rdb_UnregisterCorruptedHandler(const OH_Rdb_ConfigV2 *config, void *context, const Rdb_CorruptedHandler handler)](#oh_rdb_unregistercorruptedhandler) | - | Unregisters the handler for processing database exceptions.<br>The handler and context must be the same as those during registration. Otherwise, the operation fails.|
 | [OH_Cursor *OH_Rdb_QueryWithoutRowCount(OH_Rdb_Store *store, OH_Predicates *predicates, const char * const columns[], int length)](#oh_rdb_querywithoutrowcount) | - | Queries data from the database based on specified conditions without calculating the row count.|
 | [OH_Cursor *OH_Rdb_QuerySqlWithoutRowCount(OH_Rdb_Store *store, const char *sql, const OH_Data_Values *args)](#oh_rdb_querysqlwithoutrowcount) | - | Executes an SQL statement with a return value. This function does not calculate the row count, and supports vector stores.|
 | [int OH_Rdb_BatchInsertWithReturning(OH_Rdb_Store *store, const char *table, const OH_Data_VBuckets *rows, Rdb_ConflictResolution resolution, OH_RDB_ReturningContext *context)](#oh_rdb_batchinsertwithreturning) | - | Inserts batch data into the target table and outputs the change information to the context.|
@@ -357,7 +357,7 @@ Sets whether to enable knowledge processing based on semantic indexes.
 
 | Type| Description|
 | -- | -- |
-| int | Returns an error code. For details about the error codes, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).|
 
 ### OH_Rdb_CreateConfig()
 
@@ -375,7 +375,7 @@ Creates an [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) instance.
 
 | Type| Description|
 | -- | -- |
-| [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) | Pointer to the [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) instance.<br>After use, release the memory by calling the [OH_Rdb_DestroyConfig](#oh_rdb_destroyconfig) API.|
+| [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) * | Pointer to the [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) instance.<br>After use, release the memory by calling the [OH_Rdb_DestroyConfig](#oh_rdb_destroyconfig) API.|
 
 **See**
 
@@ -404,7 +404,7 @@ Destroys an [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) instance created by [
 
 | Type| Description|
 | -- | -- |
-| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).|
 
 ### OH_Rdb_SetDatabaseDir()
 
@@ -424,13 +424,13 @@ Sets the database file path for an [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md
 | Parameter| Description|
 | -- | -- |
 | [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) *config | Pointer to the [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) instance, which is the configuration of the RDB store.|
-| const char *dataBaseDir |  Pointer to the database file path to set. The full path, including the RDB store name, cannot exceed a maximum of 1024 characters.|
+| const char *databaseDir |  Path of the RDB store file. The value cannot be empty and can contain a maximum of 1024 characters, including the RDB store name.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).|
 
 ### OH_Rdb_SetStoreName()
 
@@ -450,13 +450,13 @@ Sets the database name for an [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) ins
 | Parameter| Description|
 | -- | -- |
 | [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) *config | Pointer to the [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) instance, which is the configuration of the RDB store.|
-| const char *storeName | Pointer to the RDB store name to set.|
+| const char *storeName | RDB store name, which cannot be empty or contain path separators (/).|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).|
 
 ### OH_Rdb_SetBundleName()
 
@@ -476,13 +476,13 @@ Sets the bundle name for an [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) insta
 | Parameter| Description|
 | -- | -- |
 | [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) *config | Pointer to the [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) instance, which is the configuration of the RDB store.|
-| const char *bundleName | Pointer to the application bundle name to set.|
+| const char *bundleName | Pointer to the application bundle name of the RDB store, which cannot be empty.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).|
 
 ### OH_Rdb_SetModuleName()
 
@@ -502,13 +502,13 @@ Sets the module name for an [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) insta
 | Parameter| Description|
 | -- | -- |
 | [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) *config | Pointer to the [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) instance, which is the configuration of the RDB store.|
-| const char *moduleName | Pointer to the module name to set.|
+| const char *moduleName | Pointer to the application module name of the RDB store, which cannot be empty.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).|
 
 ### OH_Rdb_SetEncrypted()
 
@@ -528,13 +528,13 @@ Sets whether to encrypt the database for an [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-co
 | Parameter| Description|
 | -- | -- |
 | [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) *config | Pointer to the [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) instance, which is the configuration of the RDB store.|
-| bool isEncrypted | Whether to encrypt the RDB store. The value **true** means to encrypt the database; the value **false** means the opposite.|
+| bool isEncrypted | Whether to encrypt the RDB store. The value **true** means to encrypt the database; the value **false** means the opposite. After the database is created, this parameter cannot be modified directly. To change the database encryption status, call the [OH_Rdb_RekeyEx](capi-relational-store-h.md#oh_rdb_rekeyex) API.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).|
 
 ### OH_Rdb_SetSecurityLevel()
 
@@ -562,7 +562,7 @@ This method must be called during database creation. Otherwise, the database fil
 
 | Type| Description|
 | -- | -- |
-| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).|
 
 ### OH_Rdb_SetArea()
 
@@ -590,7 +590,7 @@ This method must be called during database creation. Otherwise, the database fil
 
 | Type| Description|
 | -- | -- |
-| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).|
 
 ### OH_Rdb_SetDbType()
 
@@ -610,13 +610,13 @@ Sets the database type ([Rdb_DBType](capi-relational-store-h.md#rdb_dbtype)) for
 | Parameter| Description|
 | -- | -- |
 | [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) *config | Pointer to the [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) instance, which is the configuration of the RDB store.|
-| int dbType | Database type ([Rdb_DBType](capi-relational-store-h.md#rdb_dbtype)).|
+| int dbType | Database kernel type ([Rdb_DBType](capi-relational-store-h.md#rdb_dbtype)).|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.<br>**RDB_E_NOT_SUPPORTED** indicates that the current operation is not supported.|
+| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.<br>**RDB_E_NOT_SUPPORTED** indicates that the current operation is not supported. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).|
 
 ### OH_Rdb_SetCustomDir()
 
@@ -642,7 +642,7 @@ Sets the custom directory of the database.
 
 | Type| Description|
 | -- | -- |
-| int | Returns the operation result.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).|
 
 ### OH_Rdb_SetReadOnly()
 
@@ -668,7 +668,7 @@ Sets whether the RDB store is in read-only mode.
 
 | Type| Description|
 | -- | -- |
-| int | Returns the operation result.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).|
 
 ### OH_Rdb_SetPlugins()
 
@@ -695,7 +695,7 @@ Sets the dynamic library with specific capabilities (such as full-text search).
 
 | Type| Description|
 | -- | -- |
-| int | Returns the operation result.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).|
 
 ### OH_Rdb_SetCryptoParam()
 
@@ -721,7 +721,7 @@ Sets custom encryption parameters.
 
 | Type| Description|
 | -- | -- |
-| int | Returns the operation result.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).|
 
 ### OH_Rdb_IsTokenizerSupported()
 
@@ -747,7 +747,7 @@ Checks whether the specified tokenizer is supported.
 
 | Type| Description|
 | -- | -- |
-| int | Returns operation status code.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).|
 
 ### OH_Rdb_SetTokenizer()
 
@@ -773,7 +773,7 @@ Sets the tokenizer type.
 
 | Type| Description|
 | -- | -- |
-| int | Returns operation status code.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.<br>**RDB_E_NOT_SUPPORTED** indicates that the current operation is not supported.|
+| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.<br>**RDB_E_NOT_SUPPORTED** indicates that the current operation is not supported. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).|
 
 ### OH_Rdb_SetPersistent()
 
@@ -792,14 +792,14 @@ Sets whether to persist an RDB store.
 
 | Parameter| Description|
 | -- | -- |
-| [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) *config | Pointer to the [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) instance, which specifies the database configuration.|
-| bool isPersistent | Whether to persist the database data.|
+| [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) *config | Pointer to the [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) instance,<br>which specifies the database configuration.|
+| bool isPersistent | Whether to persist an RDB store. The value **true** indicates that persistence is required, and the value **false** indicates that persistence is not required, that is, the in-memory database.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int | Returns operation status code.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).|
 
 ### OH_Rdb_GetSupportedDbType()
 
@@ -824,7 +824,7 @@ Obtains the supported database type ([Rdb_DBType](capi-relational-store-h.md#rdb
 
 | Type        | Description|
 |------------| -- |
-| const int * | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| const int * | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).|
 
 ### OH_Rdb_CreateValueObject()
 
@@ -842,7 +842,7 @@ Creates an [OH_VObject](capi-rdb-oh-vobject.md) instance.
 
 | Type| Description|
 | -- | -- |
-| [OH_VObject](capi-rdb-oh-vobject.md) | Returns the pointer to the [OH_VObject](capi-rdb-oh-vobject.md) instance created if the operation is successful; returns NULL otherwise.|
+| [OH_VObject](capi-rdb-oh-vobject.md) * | Returns the pointer to the [OH_VObject](capi-rdb-oh-vobject.md) instance created if the operation is successful; returns NULL otherwise.|
 
 **See**
 
@@ -864,7 +864,7 @@ Creates an [OH_VBucket](capi-rdb-oh-vbucket.md) instance.
 
 | Type| Description|
 | -- | -- |
-| [OH_VBucket](capi-rdb-oh-vbucket.md) | Returns the pointer to the [OH_VBucket](capi-rdb-oh-vbucket.md) instance created if the operation is successful; returns NULL otherwise.|
+| [OH_VBucket](capi-rdb-oh-vbucket.md) * | Returns the pointer to the [OH_VBucket](capi-rdb-oh-vbucket.md) instance created if the operation is successful; returns NULL otherwise.|
 
 **See**
 
@@ -893,7 +893,7 @@ Creates an [OH_Predicates](capi-rdb-oh-predicates.md) instance.
 
 | Type| Description|
 | -- | -- |
-| [OH_Predicates](capi-rdb-oh-predicates.md) | Returns the pointer to the [OH_Predicates](capi-rdb-oh-predicates.md) instance created if the operation is successful; returns NULL otherwise.|
+| [OH_Predicates](capi-rdb-oh-predicates.md) * | Returns the pointer to the [OH_Predicates](capi-rdb-oh-predicates.md) instance created if the operation is successful; returns NULL otherwise.|
 
 **See**
 
@@ -923,7 +923,7 @@ Obtains a related [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) instance to operate t
 
 | Type| Description|
 | -- | -- |
-| [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) | Returns the pointer to the [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) instance created if the operation is successful; returns NULL otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) * | Returns the pointer to the [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) instance created if the operation is successful; returns NULL otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
 
 ### OH_Rdb_CreateOrOpen()
 
@@ -949,7 +949,7 @@ Creates or opens an [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) instance based on t
 
 | Type| Description|
 | -- | -- |
-| [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) | Returns the pointer to the [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) instance created if the operation is successful; returns NULL otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) * | Returns the pointer to the [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) instance created if the operation is successful; returns NULL otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
 
 ### OH_Rdb_CloseStore()
 
@@ -974,7 +974,7 @@ Closes an [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) object and reclaims the memor
 
 | Type| Description|
 | -- | -- |
-| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).|
 
 ### OH_Rdb_DeleteStore()
 
@@ -999,7 +999,7 @@ Deletes an RDB store with the specified configuration.
 
 | Type| Description|
 | -- | -- |
-| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).|
 
 ### OH_Rdb_DeleteStoreV2()
 
@@ -1024,7 +1024,7 @@ Deletes an RDB store based on the given [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-config
 
 | Type| Description|
 | -- | -- |
-| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).|
 
 ### OH_Rdb_Insert()
 
@@ -1085,7 +1085,7 @@ Inserts a row of data into the target table and supports conflict resolution.
 ### OH_Rdb_BatchInsert()
 
 ```c
-int OH_Rdb_BatchInsert(OH_Rdb_Store *store, const char *table,const OH_Data_VBuckets *rows, Rdb_ConflictResolution resolution, int64_t *changes)
+int OH_Rdb_BatchInsert(OH_Rdb_Store *store, const char *table, const OH_Data_VBuckets *rows, Rdb_ConflictResolution resolution, int64_t *changes)
 ```
 
 **Description**
@@ -1106,8 +1106,8 @@ Ensure that you comply with this constraint when calling this API to avoid error
 | Parameter                                                                               | Description|
 |------------------------------------------------------------------------------------| -- |
 | [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) *store                                        | Pointer to the [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) instance.|
-| const char *tables                                                                 |  Pointer to the names of the distributed tables to set.|
-| const [OH_Data_VBuckets *rows](capi-rdb-oh-data-vbuckets.md)                           | An array of data to insert.|
+| const char *table                                                                 |  Pointer to the name of the target table to which data is to be inserted.|
+| const [OH_Data_VBuckets](capi-rdb-oh-data-vbuckets.md) *rows                        | An array of data to insert.|
 | [Rdb_ConflictResolution](capi-oh-rdb-types-h.md#rdb_conflictresolution) resolution | Policy used to resolve file conflicts.|
 | int64_t *changes                                                                   | Pointer to the number of successful insertions.|
 
@@ -1251,7 +1251,7 @@ Executes an SQL statement that returns no value.
 
 | Type| Description|
 | -- | -- |
-| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).|
 
 **See**
 
@@ -1278,7 +1278,7 @@ Statements starting with comments are not supported.
 |------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
 | [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) *store          | Pointer to the [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) instance.                                                                                         |
 | const char *sql                                      | SQL statement to execute.                                                                                                                           |
-| const [OH_Data_Values](capi-rdb-oh-data-values.md) *args | (Optional) Pointer to the [OH_Data_Values](capi-rdb-oh-data-values.md) instance.                                                                                                  |
+| const [OH_Data_Values](capi-rdb-oh-data-values.md) *args | Pointer to the **OH_Data_Values** instance, indicating the value of the parameter in the SQL statement. If the SQL statement is complete, **args** can be set to **nullptr**.                                                                                                  |
 | [OH_Data_Value](capi-rdb-oh-data-value.md) **result                           | Pointer to the [OH_Data_Value](capi-rdb-oh-data-value.md) instance when the execution is successful. Use [OH_Value_Destroy](capi-oh-data-value-h.md#oh_value_destroy) to release the memory in time.|
 
 **Returns**
@@ -1348,7 +1348,7 @@ Queries data in the database using the specified SQL statement. This API support
 
 | Type| Description|
 | -- | -- |
-| [OH_Cursor](capi-rdb-oh-cursor.md) | Returns the pointer to the [OH_Cursor](capi-rdb-oh-cursor.md) instance if the operation is successful; returns NULL otherwise.|
+| [OH_Cursor](capi-rdb-oh-cursor.md) * | Returns the pointer to the [OH_Cursor](capi-rdb-oh-cursor.md) instance if the operation is successful; returns NULL otherwise.|
 
 **See**
 
@@ -1362,7 +1362,7 @@ OH_Cursor *OH_Rdb_ExecuteQueryV2(OH_Rdb_Store *store, const char *sql, const OH_
 
 **Description**
 
-Queries data in the database using the specified SQL statement. This API supports vector stores.
+Queries data in the database using the specified SQL statement. This API supports SQL parameter binding and vector stores.
 
 **Since**: 18
 
@@ -1373,7 +1373,7 @@ Queries data in the database using the specified SQL statement. This API support
 | -- | -- |
 | [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) *store | Pointer to the [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) instance.|
 | const char *sql | SQL statement to execute.|
-| const OH_Data_Values *args | (Optional) Pointer to the [OH_Data_Values](capi-rdb-oh-data-values.md) instance.|
+| const [OH_Data_Values](capi-rdb-oh-data-values.md) *args | Pointer to the **OH_Data_Values** instance, indicating the value of the parameter in the SQL statement. If the SQL statement is complete, **args** can be set to **nullptr**.|
 
 **Returns**
 
@@ -1408,7 +1408,7 @@ Begins the transaction before executing SQL statements.
 
 | Type| Description|
 | -- | -- |
-| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).|
 
 ### OH_Rdb_RollBack()
 
@@ -1433,7 +1433,7 @@ Rolls back the SQL statements executed.
 
 | Type| Description|
 | -- | -- |
-| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).|
 
 ### OH_Rdb_Commit()
 
@@ -1443,7 +1443,7 @@ int OH_Rdb_Commit(OH_Rdb_Store *store)
 
 **Description**
 
-Commits the executed SQL statement.
+Commits the executed SQL statements.
 
 **Since**: 10
 
@@ -1458,7 +1458,7 @@ Commits the executed SQL statement.
 
 | Type| Description|
 | -- | -- |
-| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).|
 
 ### OH_Rdb_BeginTransWithTrxId()
 
@@ -1484,7 +1484,7 @@ Begins a transaction. This API returns a transaction ID and supports only vector
 
 | Type| Description|
 | -- | -- |
-| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.<br>**RDB_E_NOT_SUPPORTED** indicates that the current operation is not supported.|
+| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.<br>**RDB_E_NOT_SUPPORTED** indicates that the current operation is not supported. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).|
 
 ### OH_Rdb_RollBackByTrxId()
 
@@ -1566,7 +1566,7 @@ Backs up an RDB store using the backup file of the specified path. This API supp
 
 | Type| Description|
 | -- | -- |
-| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).|
 
 **See**
 
@@ -1596,7 +1596,7 @@ Restores a database from a specified database backup file. This API supports vec
 
 | Type| Description|
 | -- | -- |
-| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).|
 
 ### OH_Rdb_GetVersion()
 
@@ -1622,7 +1622,7 @@ Obtains the RDB store version.
 
 | Type| Description|
 | -- | -- |
-| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).|
 
 ### OH_Rdb_SetVersion()
 
@@ -1648,7 +1648,7 @@ Sets the RDB store version.
 
 | Type| Description|
 | -- | -- |
-| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).|
 
 **See**
 
@@ -1681,7 +1681,7 @@ Sets distributed database tables.
 
 | Type| Description|
 | -- | -- |
-| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).|
 
 **See**
 
@@ -1713,7 +1713,7 @@ Obtains the last modification time of a table in an RDB store.
 
 | Type| Description|
 | -- | -- |
-| [OH_Cursor](capi-rdb-oh-cursor.md) | Returns the pointer to the [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) instance created if the operation is successful; returns NULL otherwise.|
+| [OH_Cursor](capi-rdb-oh-cursor.md) * | Returns the pointer to the [OH_Cursor](capi-rdb-oh-cursor.md) instance if the operation is successful; returns NULL otherwise.|
 
 ### Rdb_BriefObserver()
 
@@ -1782,7 +1782,7 @@ Registers an observer for an RDB store. The registered callback will be invoked 
 
 | Type| Description|
 | -- | -- |
-| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).|
 
 ### OH_Rdb_Unsubscribe()
 
@@ -1809,7 +1809,7 @@ Unregisters the observer of the specified type.
 
 | Type| Description|
 | -- | -- |
-| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).|
 
 ### OH_Rdb_GetTableDetails()
 
@@ -1907,7 +1907,7 @@ Performs device-cloud sync.
 
 | Type| Description|
 | -- | -- |
-| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).|
 
 ### OH_Rdb_SubscribeAutoSyncProgress()
 
@@ -1933,7 +1933,7 @@ Subscribes to the auto sync progress of an RDB store.<br>The registered callback
 
 | Type| Description|
 | -- | -- |
-| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).|
 
 ### OH_Rdb_UnsubscribeAutoSyncProgress()
 
@@ -1959,7 +1959,7 @@ Unsubscribes from the auto sync process of an RDB store.
 
 | Type| Description|
 | -- | -- |
-| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).|
 
 ### OH_Rdb_LockRow()
 
@@ -1985,7 +1985,7 @@ Locks data in an RDB store based on specified conditions. The locked data will b
 
 | Type| Description|
 | -- | -- |
-| int | Returns the operation result.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).|
 
 ### OH_Rdb_UnlockRow()
 
@@ -2011,7 +2011,7 @@ Unlocks data in an RDB store based on specified conditions.
 
 | Type| Description|
 | -- | -- |
-| int | Returns the operation result.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).|
 
 ### OH_Rdb_QueryLockedRow()
 
@@ -2039,7 +2039,7 @@ Queries the locked data in an RDB store.
 
 | Type| Description|
 | -- | -- |
-| [OH_Cursor](capi-rdb-oh-cursor.md) | Returns the pointer to the [OH_Cursor](capi-rdb-oh-cursor.md) instance if the operation is successful; returns NULL otherwise.|
+| [OH_Cursor](capi-rdb-oh-cursor.md) * | Returns the pointer to the [OH_Cursor](capi-rdb-oh-cursor.md) instance if the operation is successful; returns NULL otherwise.|
 
 ### OH_Rdb_CreateTransaction()
 
@@ -2228,13 +2228,13 @@ Only one handler can be registered for each path.
 | -- | -- |
 | [const OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) *config | Pointer to the [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) instance, which is the configuration of the RDB store.|
 | void *context | Pointer to the context of the handler.|
-| [const Rdb_CorruptedHandler](capi-relational-store-h.md#rdb_corruptedhandler) handler | Handler for processing database exceptions.|
+| const [Rdb_CorruptedHandler](capi-relational-store-h.md#rdb_corruptedhandler) handler | Handler for processing database exceptions.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int | Returns the operation result.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.<br>**RDB_E_SUB_LIMIT_REACHED** indicates that the number of registration exceeds the upper limit.|
+| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.<br>**RDB_E_SUB_LIMIT_REACHED** indicates that the number of registration exceeds the upper limit. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).|
 
 ### OH_Rdb_UnregisterCorruptedHandler()
 
@@ -2246,7 +2246,7 @@ int OH_Rdb_UnregisterCorruptedHandler(const OH_Rdb_ConfigV2 *config, void *conte
 
 Unregisters the handler for processing database exceptions.
 
-The handler and context must be the same as those during subscription. Otherwise, the operation fails.
+The handler and context must be the same as those during registration. Otherwise, the operation fails.
 
 **Since**: 22
 
@@ -2256,13 +2256,13 @@ The handler and context must be the same as those during subscription. Otherwise
 | -- | -- |
 | [const OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) *config | Pointer to the [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) instance, which is the configuration of the RDB store.|
 | void *context | Pointer to the context of the handler.|
-| [const Rdb_CorruptedHandler](capi-relational-store-h.md#rdb_corruptedhandler) handler | Handler for processing database exceptions.|
+| const [Rdb_CorruptedHandler](capi-relational-store-h.md#rdb_corruptedhandler) handler | Handler for processing database exceptions.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int | Returns the operation result.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).|
 
 ### OH_Rdb_QueryWithoutRowCount()
 
@@ -2289,7 +2289,7 @@ Queries data from the database based on specified conditions without calculating
 
 | Type| Description|
 | -- | -- |
-| [OH_Cursor *](capi-rdb-oh-cursor.md) | Returns a pointer to the [OH_Cursor](capi-rdb-oh-cursor.md) instance if the operation is successful; returns **nullptr** if the **store** acquisition fails or the result set is empty.|
+| [OH_Cursor](capi-rdb-oh-cursor.md) * | Returns a pointer to the [OH_Cursor](capi-rdb-oh-cursor.md) instance if the operation is successful; returns **nullptr** if the **store** acquisition fails or the result set is empty.|
 
 
 ### OH_Rdb_QuerySqlWithoutRowCount()
@@ -2310,13 +2310,13 @@ Executes an SQL statement with a return value. This function does not calculate 
 | -- | -- |
 | [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) *store | Pointer to the [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) instance.|
 | const char *sql | SQL statement to execute.|
-| [const OH_Data_Values](capi-rdb-oh-data-values.md) *args | Pointer to the [OH_Data_Values](capi-rdb-oh-data-values.md) instance. If the SQL statement is complete, **args** can be set to **nullptr**.|
+| const [OH_Data_Values](capi-rdb-oh-data-values.md) *args | Pointer to the **OH_Data_Values** instance, indicating the value of the parameter in the SQL statement. If the SQL statement is complete, **args** can be set to **nullptr**.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [OH_Cursor *](capi-rdb-oh-cursor.md) | Returns a pointer to the [OH_Cursor](capi-rdb-oh-cursor.md) instance if the operation is successful; returns **nullptr** if the SQL statement is invalid or the memory allocation fails.|
+| [OH_Cursor](capi-rdb-oh-cursor.md) * | Returns a pointer to the [OH_Cursor](capi-rdb-oh-cursor.md) instance if the operation is successful; returns **nullptr** if the SQL statement is invalid or the memory allocation fails.|
 
 ### OH_Rdb_BatchInsertWithReturning()
 
@@ -2345,14 +2345,14 @@ Ensure that you comply with this constraint when calling this API to avoid error
 | [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) *store | Pointer to the [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) instance.|
 | const char *table | Name of the target table for data insertion.|
 | [const OH_Data_VBuckets](capi-rdb-oh-data-vbuckets.md) *rows | Row of data to insert.|
-| [Rdb_ConflictResolution](capi-oh-rdb-types-h.md#rdb_conflictresolution) resolution | **Rdb_ConflictResolution** policy used to resolve file conflicts. **RDB_CONFLICT_FAIL** is not recommended, as an exception will be thrown upon failure and the actual change data cannot be obtained properly.|
+| [Rdb_ConflictResolution](capi-oh-rdb-types-h.md#rdb_conflictresolution) resolution | **Rdb_ConflictResolution** policy used to resolve file conflicts. **RDB_CONFLICT_FAIL** is not recommended, as an exception will be thrown upon failure<br>and the actual change data cannot be obtained properly.|
 | [OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md) *context | Pointer to the [OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md) instance.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int | Returns the operation result.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.<br>**RDB_E_WAL_SIZE_OVER_LIMIT** indicates that the size of the WAL log file exceeds the default value.<br>**RDB_E_NOT_SUPPORTED** indicates that the operation is not supported.<br>**RDB_E_DATABASE_BUSY** indicates that the database is busy.<br>**RDB_E_SQLITE_FULL** indicates an SQLite error: the database is full.<br>**RDB_E_SQLITE_CORRUPT** indicates that the database is corrupted.<br>**RDB_E_SQLITE_BUSY** indicates an SQLite error: database file locked.<br>**RDB_E_SQLITE_LOCKED** indicates an SQLite error: database table locked.<br>**RDB_E_SQLITE_READONLY** indicates an SQLite error: attempt to write a read-only database.<br>**RDB_E_SQLITE_IOERR** indicates an SQLite error: disk I/O error occurs.<br>**RDB_E_SQLITE_TOO_BIG** indicates an SQLite error: TEXT or BLOB exceeds the limit.<br>**RDB_E_SQLITE_MISMATCH** indicates an SQLite error: data types mismatch.<br>**RDB_E_SQLITE_CONSTRAINT** indicates an SQLite error: aborted due to constraint violation.<br>**RDB_E_SQLITE_ERROR** indicates an SQLite error. Possible causes include syntax errors. For example, the specified table or column does not exist.<br>For details about the error codes, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).|
+| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.<br>**RDB_E_WAL_SIZE_OVER_LIMIT** indicates that the size of the WAL log file exceeds the default value.<br>**RDB_E_NOT_SUPPORTED** indicates that the operation is not supported.<br>**RDB_E_DATABASE_BUSY** indicates that the database is busy.<br>**RDB_E_SQLITE_FULL** indicates an SQLite error: the database is full.<br>**RDB_E_SQLITE_CORRUPT** indicates that the database is corrupted.<br>**RDB_E_SQLITE_BUSY** indicates an SQLite error: database file locked.<br>**RDB_E_SQLITE_LOCKED** indicates an SQLite error: database table locked.<br>**RDB_E_SQLITE_READONLY** indicates an SQLite error: attempt to write a read-only database.<br>**RDB_E_SQLITE_IOERR** indicates an SQLite error: disk I/O error occurs.<br>**RDB_E_SQLITE_TOO_BIG** indicates an SQLite error: TEXT or BLOB exceeds the limit.<br>**RDB_E_SQLITE_MISMATCH** indicates an SQLite error: data types mismatch.<br>**RDB_E_SQLITE_CONSTRAINT** indicates an SQLite error: aborted due to constraint violation.<br>**RDB_E_SQLITE_ERROR** indicates an SQLite error. Possible causes include syntax errors. For example, the specified table or column does not exist. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).|
 
 
 ### OH_Rdb_UpdateWithReturning()
@@ -2374,14 +2374,14 @@ Updates data in the database based on specified conditions and outputs the chang
 | [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) *store | Pointer to the [OH_Rdb_Store](capi-rdb-oh-rdb-store.md) instance.|
 | [OH_VBucket](capi-rdb-oh-vbucket.md) *row | Row of data to update.|
 | [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Pointer to the [OH_Predicates](capi-rdb-oh-predicates.md) instance.|
-| [Rdb_ConflictResolution](capi-oh-rdb-types-h.md#rdb_conflictresolution) resolution | **Rdb_ConflictResolution** policy used to resolve file conflicts. **RDB_CONFLICT_FAIL** is not recommended, as an exception will be thrown upon failure and the actual change data cannot be obtained properly.|
+| [Rdb_ConflictResolution](capi-oh-rdb-types-h.md#rdb_conflictresolution) resolution | **Rdb_ConflictResolution** policy used to resolve file conflicts. **RDB_CONFLICT_FAIL** is not recommended, as an exception will be thrown upon failure<br>and the actual change data cannot be obtained properly.|
 | [OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md) *context | Pointer to the [OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md) instance.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int | Returns the operation result.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.<br>**RDB_E_WAL_SIZE_OVER_LIMIT** indicates that the size of the WAL log file exceeds the default value.<br>**RDB_E_NOT_SUPPORTED** indicates that the operation is not supported.<br>**RDB_E_EMPTY_VALUES_BUCKET** indicates that the value bucket is empty.<br>**RDB_E_DATABASE_BUSY** indicates that the database is busy.<br>**RDB_E_SQLITE_FULL** indicates an SQLite error: the database is full.<br>**RDB_E_SQLITE_CORRUPT** indicates that the database is corrupted.<br>**RDB_E_SQLITE_BUSY** indicates an SQLite error: database file locked.<br>**RDB_E_SQLITE_LOCKED** indicates an SQLite error: database table locked.<br>**RDB_E_SQLITE_READONLY** indicates an SQLite error: attempt to write a read-only database.<br>**RDB_E_SQLITE_IOERR** indicates an SQLite error: disk I/O error occurs.<br>**RDB_E_SQLITE_TOO_BIG** indicates an SQLite error: TEXT or BLOB exceeds the limit.<br>**RDB_E_SQLITE_MISMATCH** indicates an SQLite error: data types mismatch.<br>**RDB_E_SQLITE_CONSTRAINT** indicates an SQLite error: aborted due to constraint violation.<br>**RDB_E_SQLITE_ERROR** indicates an SQLite error. Possible causes include syntax errors. For example, the specified table or column does not exist.<br>For details about the error codes, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).|
+| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.<br>**RDB_E_WAL_SIZE_OVER_LIMIT** indicates that the size of the WAL log file exceeds the default value.<br>**RDB_E_NOT_SUPPORTED** indicates that the operation is not supported.<br>**RDB_E_EMPTY_VALUES_BUCKET** indicates that the value bucket is empty.<br>**RDB_E_DATABASE_BUSY** indicates that the database is busy.<br>**RDB_E_SQLITE_FULL** indicates an SQLite error: the database is full.<br>**RDB_E_SQLITE_CORRUPT** indicates that the database is corrupted.<br>**RDB_E_SQLITE_BUSY** indicates an SQLite error: database file locked.<br>**RDB_E_SQLITE_LOCKED** indicates an SQLite error: database table locked.<br>**RDB_E_SQLITE_READONLY** indicates an SQLite error: attempt to write a read-only database.<br>**RDB_E_SQLITE_IOERR** indicates an SQLite error: disk I/O error occurs.<br>**RDB_E_SQLITE_TOO_BIG** indicates an SQLite error: TEXT or BLOB exceeds the limit.<br>**RDB_E_SQLITE_MISMATCH** indicates an SQLite error: data types mismatch.<br>**RDB_E_SQLITE_CONSTRAINT** indicates an SQLite error: aborted due to constraint violation.<br>**RDB_E_SQLITE_ERROR** indicates an SQLite error. Possible causes include syntax errors. For example, the specified table or column does not exist. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).|
 
 ### OH_Rdb_DeleteWithReturning()
 
@@ -2407,4 +2407,4 @@ Deletes data from the database based on specified conditions and outputs the cha
 
 | Type| Description|
 | -- | -- |
-| int | Returns the operation result.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.<br>**RDB_E_WAL_SIZE_OVER_LIMIT** indicates that the size of the WAL log file exceeds the default value.<br>**RDB_E_NOT_SUPPORTED** indicates that the operation is not supported.<br>**RDB_E_DATABASE_BUSY** indicates that the database is busy.<br>**RDB_E_SQLITE_FULL** indicates an SQLite error: the database is full.<br>**RDB_E_SQLITE_CORRUPT** indicates that the database is corrupted.<br>**RDB_E_SQLITE_BUSY** indicates an SQLite error: database file locked.<br>**RDB_E_SQLITE_LOCKED** indicates an SQLite error: database table locked.<br>**RDB_E_SQLITE_READONLY** indicates an SQLite error: attempt to write a read-only database.<br>**RDB_E_SQLITE_IOERR** indicates an SQLite error: disk I/O error occurs.<br>**RDB_E_SQLITE_TOO_BIG** indicates an SQLite error: TEXT or BLOB exceeds the limit.<br>**RDB_E_SQLITE_MISMATCH** indicates an SQLite error: data types mismatch.<br>**RDB_E_SQLITE_ERROR** indicates an SQLite error. Possible causes include syntax errors. For example, the specified table or column does not exist.<br>For details about the error codes, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).|
+| int | Returns **RDB_OK** if the operation is successful; returns an error code otherwise.<br>**RDB_OK** indicates that the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.<br>**RDB_E_WAL_SIZE_OVER_LIMIT** indicates that the size of the WAL log file exceeds the default value.<br>**RDB_E_NOT_SUPPORTED** indicates that the operation is not supported.<br>**RDB_E_DATABASE_BUSY** indicates that the database is busy.<br>**RDB_E_SQLITE_FULL** indicates an SQLite error: the database is full.<br>**RDB_E_SQLITE_CORRUPT** indicates that the database is corrupted.<br>**RDB_E_SQLITE_BUSY** indicates an SQLite error: database file locked.<br>**RDB_E_SQLITE_LOCKED** indicates an SQLite error: database table locked.<br>**RDB_E_SQLITE_READONLY** indicates an SQLite error: attempt to write a read-only database.<br>**RDB_E_SQLITE_IOERR** indicates an SQLite error: disk I/O error occurs.<br>**RDB_E_SQLITE_TOO_BIG** indicates an SQLite error: TEXT or BLOB exceeds the limit.<br>**RDB_E_SQLITE_MISMATCH** indicates an SQLite error: data types mismatch.<br>**RDB_E_SQLITE_ERROR** indicates an SQLite error. Possible causes include syntax errors. For example, the specified table or column does not exist. For details, see [OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode).|

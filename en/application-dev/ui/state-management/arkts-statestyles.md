@@ -5,17 +5,18 @@
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=3477505f92eade71c49719bd32fb8ac4fd5eef96 translatedAt=2026-09-21T11:42:02.793Z pushedAt=2026-09-23T09:30:40.339Z -->
 
 
-Unlike \@Styles, which are used to reuse styles only on static pages, stateStyles enables you to set dynamic, state-specific styles. This topic explores the implementation of polymorphic styles through stateStyles.
+\@Styles is only used for style reuse on static pages, whereas **stateStyles** can quickly set different styles based on a component's internal state. This is what this chapter introduces: **stateStyles** (also known as polymorphic styles).
 
 > **NOTE**
 >
-> Polymorphic styles support only universal attributes. If a polymorphic style does not take effect, the attribute may be a private, component-specific attribute, for example, [fontColor](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-text-style.md) or [backgroundColor](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md) of the [TextInput](../../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md) component. In this case, you can use [attributeModifier](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md#attributemodifier) to dynamically set component attributes to enable the polymorphic style.
+> Polymorphic styles support only universal attributes. If a polymorphic style does not take effect, the attribute may be a private attribute of the component, such as [fontColor](../../reference/apis-arkui/arkui-ts/ts-basic-components-button.md#fontcolor) and the [backgroundColor](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor) attribute of the [TextInput](../../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md) component. In such cases, you can use [attributeModifier](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md#attributemodifier) to dynamically set component attributes as a workaround.
 
 ## Overview
 
-stateStyles is an attribute method that sets the style based on the internal state of a component. It is similar to a CSS pseudo-class, with different syntax. ArkUI provides the following states:
+**stateStyles** is an attribute method that sets styles based on the internal state of the UI, similar to CSS pseudo-classes but with different syntax. ArkUI provides the following seven states:
 
 - focused
 
@@ -29,6 +30,8 @@ stateStyles is an attribute method that sets the style based on the internal sta
 
 - selected<sup>10+</sup>
 
+- hovered: hovered state. **Since:** 26.0.0
+
 > **NOTE**
 >
 > Currently, the focused state can be triggered only by pressing the **Tab** or arrow keys on an external keyboard. Triggering through key presses in nested scrollable components is not supported.
@@ -39,7 +42,7 @@ stateStyles is an attribute method that sets the style based on the internal sta
 
 ### Common Scenarios
 
-This example shows the most basic application scenario of stateStyles. **Button1** is the first component and **Button2** the second component. When either of these components is pressed, the black style specified for **pressed** takes effect. When the **Tab** key is pressed for sequential navigation, **Button1** obtains focus and is displayed in the pink style specified for **focused**. When **Button 2** is focused, it is displayed in the pink style specified for **focused**, and **Button1** changes to the blue style specified for **normal**.
+The following example demonstrates the most basic usage of **stateStyles**. **Button1** is the first component, and **Button2** is the second. When pressed, a button is displayed in the gray color specified for the pressed state. When the **Tab** key is used to navigate focus, **Button1** gains focus and is displayed in the pink color specified for the **focused** state. When **Button2** gains focus, it is displayed in the pink color specified for the **focused** state, while **Button1** loses focus and is displayed in the blue color specified for the **normal** state.
 
 <!-- @[state_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateStyle/entry/src/main/ets/pages/StateStyle/StateStylesSample.ets) -->
 

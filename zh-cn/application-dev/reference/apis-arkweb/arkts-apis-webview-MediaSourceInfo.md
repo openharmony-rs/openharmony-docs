@@ -2,11 +2,11 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @zhangyao75477-->
-<!--Designer: @qiu-gongkai-->
+<!--Designer: @gzweioh-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-表示媒体源的信息。
+MediaSourceInfo 是表示媒体源信息的数据类。在 Web 媒体播放场景中，MediaSourceInfo 类封装了媒体源的基本信息，帮助应用了解媒体源的类型、地址和格式，应用根据这些信息创建自定义播放器并开始播放。
 
 > **说明：**
 >
@@ -24,4 +24,17 @@
 |------|------|------|------|------|
 | type<sup>12+</sup> | [SourceType](./arkts-apis-webview-e.md#sourcetype12) | 否 | 否 | 媒体源的类型。 |
 | source<sup>12+</sup> | string | 否 | 否 | 媒体源地址。 |
-| format<sup>12+</sup> | string | 否 | 否 | 媒体源格式， 可能为空， 需要使用者自己去判断格式。 |
+| format<sup>12+</sup> | string | 否 | 否 | 媒体源格式，可能为空，需要开发者自行判断格式。 |
+
+**示例：**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+const mediaInfo: webview.MediaSourceInfo = {
+  type: webview.SourceType.URL,
+  source: 'https://example.com/video.mp4',
+  format: 'mp4'
+};
+```

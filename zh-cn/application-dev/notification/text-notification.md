@@ -1,9 +1,8 @@
 # 发布文本类型通知
-
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -18,7 +17,7 @@
 
 ## 接口说明
 
-通知发布接口说明详见下表，通知发布的详情可通过入参[NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1)来进行指定，可以包括通知内容、通知ID、通知的通道类型和通知发布时间等信息。
+通知发布接口说明详见下表，通知发布的详情可通过入参[NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1)来进行指定，可以包括[通知内容](notification-glossary.md#notification-content通知内容)、通知ID、通知的通道类型和通知发布时间等信息。
 
 | **接口名** | **描述** |
 | -------- | -------- |

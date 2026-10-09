@@ -12,7 +12,7 @@ The SDK provides various tools for application development, including log viewin
 
 ## Obtaining Command Line Tools
 
-- You can obtain the tool through the SDK, which is embedded in [DevEco Studio](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-software-install). The SDK is stored in the **sdk** directory in the DevEco Studio installation directory.
+- You can obtain the tool through the SDK, which is embedded in [DevEco Studio](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-software-install). No additional configuration is required. The SDK is stored in the **sdk** directory in the DevEco Studio installation directory.
 
 - You can also obtain the tool from the **sdk** folder in [Command Line Tools](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-commandline-get).
 

@@ -1,10 +1,11 @@
 # Widget Error Codes
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=cb95b4618a1090cfc2abd873d8686044194f5272 translatedAt=2026-09-15T01:33:49.625Z pushedAt=2026-09-15T06:12:20.844Z -->
 
 > **NOTE**
 >
@@ -230,7 +231,7 @@ The interactive widget animation is requested by a common widget, or the current
 
 **Solution**
 
-Check whether the configured [sceneAnimationParams](../../form/arkts-ui-widget-configuration.md#sceneanimationparams-field) of the current widget is correct.
+Ensure that the configured [sceneAnimationParams](../../form/arkts-ui-widget-configuration.md#sceneanimationparams-field) of the current widget is correct.
 
 ## 16501012 Incorrect Widget Dimension
 
@@ -268,6 +269,152 @@ Failed to register the callback for listening for template widget information.
 
 Restart the device to allow the system to re-register the callback for listening for template widget information.
 
+## 16501014 Semi-modal Widget Editing Page Not in Foreground
+
+**Error Message**
+
+The form edit page is not in the foreground. The current operation is not supported.
+
+**Description**
+
+The semi-modal widget editing page is not in the foreground. The current operation is not supported.
+
+**Possible Causes**
+
+The semi-modal widget editing page is not opened.
+
+**Solution**
+
+Ensure that the [semi-modal widget editing page](../../form/arkts-ui-widget-event-formeditextensionability.md#semi-modal-widget-editing) is open.
+
+## 16501015 Failed to Close Semi-Modal Widget Editing Page of Another Application
+
+**Error Message**
+
+Cannot close the widget editing page opened by other apps.
+
+**Description**
+
+The semi-modal widget editing page of another application cannot be closed.
+
+**Possible Causes**
+
+The opened semi-modal widget editing page does not belong to the application that requests to close the page.
+
+**Solution**
+
+Ensure that the opened semi-modal widget editing page belongs to the application that requests to close the page.
+
+## 16501016 Invalid Widget Location Information
+
+**Error Message**
+
+The location of the widget is invalid.
+
+**Description**
+
+The widget location information is invalid.
+
+**Possible Causes**
+
+The specified widget location information is out of the system-defined range.
+
+**Solution**
+
+Ensure that the input widget location is in the [FormLocation](js-apis-app-form-formInfo.md#formlocation20) list.
+
+## 16501017 No Space to Publish the Widget
+
+**Error Message**
+
+There is no space to publish the form.
+
+**Description**
+
+There is no space on the home screen to accommodate the new widget during widget publishing. 
+
+**Possible Causes**
+
+1. The current home screen and the next screen have insufficient space, and the total number of home screens has reached its limit.
+2. The number of widgets on the home screens has reached the upper limit, and no more widgets can be added.
+
+**Solution**
+
+Delete unnecessary widgets and try again.
+
+## 16501018 Widget Not Supported for Publishing
+
+**Error Message**
+
+This form does not support publishing.
+
+**Description**
+
+The home screen does not allow the widget to be published.
+
+**Possible Causes**
+
+The widget cannot be published on the home screen.
+
+**Solution**
+
+Ensure that the widget configuration meets the current scenario. For details, see the **renderingMode** field description in the [configuration file](../../form/arkts-ui-widget-configuration.md#fields-in-configuration-file) and the [supportDimensions Field and Device Support Relationship Table](../../form/arkts-ui-widget-configuration.md#supportdimensions-field-and-device-support-relationship-table).
+
+## 16501019 Unable to Unregister the Widget Service Not Registered by the Current Application
+
+**Error Message**
+
+A form service not owned by you cannot be unregistered.
+
+**Description**
+
+During widget service unregistration, the widget service being operated is not registered by the current application.
+
+**Possible Causes**
+
+The current application attempts to unregister a widget service registered by another application.
+
+**Solution**
+
+Unregister only the widget service registered by the current application itself.
+
+## 16501020 Remote Widget Service Unavailable
+
+**Error Message**
+
+Remote form service is unavailable.
+
+**Description**
+
+The remote widget service is unavailable during widget publishing across devices.
+
+**Possible Causes**
+
+The remote device has not started the widget service, or the widget service is abnormal.
+
+**Solution**
+
+Check the widget service status on the remote device, and re-initiate the cross-device widget publishing request when the remote widget service is available.
+
+## 16501021 Remote Widget Application Not Installed or Version Too Low
+
+**Error Message**
+
+The peer form application is not installed or the version is too old.
+
+**Description**
+
+During widget publishing across devices, the target widget application on the remote device is not installed or its version is too low.
+
+**Possible Causes**
+
+1. The target widget application is not installed on the remote device.
+2. The version of the target widget application on the remote device is too low to support cross-device widget publishing.
+
+**Solution**
+
+Confirm that the target widget application is installed on the remote device and that the application version supports cross-device publishing, and then re-initiate the cross-device widget publishing request.
+
 ## 2293761 Internal Service Error
 
 **Error Message**
@@ -281,12 +428,12 @@ An internal error occurs when the system executes the current request.
 **Possible Causes**
 
 1. The system is busy.
-2. The internal data of the system is abnormal.
+2. The internal data of the system is abnormal currently.
 
 **Solution**
 
 1. Restart the system and try again.
-2. If the restart still fails, submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#) to obtain help.
+2. If the restart still fails, submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback) to obtain help.
 
 ## 2293766 Requested Bundle Name Not Exist
 
@@ -296,16 +443,17 @@ The requested bundle name does not exist.
 
 **Description**
 
-The requested bundle name does not exist. This is an internal error.
+The application package name obtained by the system during execution does not exist. This error is an internal error.
 
 **Possible Causes**
 
-An error occurs when the bundle management module obtains the bundle name of the requester. This is an internal service execution exception.
+An error occurred when the package manager attempted to request the requester's bundleName. This is an internal execution exception of the system service.
+
 
 **Solution**
 
 1. Restart the system and try again.
-2. If the restart still fails, submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#) to obtain help.
+2. If the restart still fails, submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback) to obtain help.
 
 ## 2293767 Invalid Parameter
 
@@ -322,7 +470,7 @@ Invalid input parameters are passed when the API is called.
 1. Mandatory parameters are not transferred.
 2. The parameter type is incorrect.
 3. The number of parameters is incorrect.
-4. The input parameter is empty, for example, an empty string ('').
+4. The parameter value is empty. For example, an empty string ('') is passed.
 5. Incorrect parameter format.
 6. Invalid parameter value. The input parameters must be the same as those in [app.json5](../../quick-start/app-configuration-file.md) and [Configuring ArkTS Widget Configuration Files](../../form/arkts-ui-widget-configuration.md).
 
@@ -347,7 +495,7 @@ An internal service execution exception occurs.
 **Solution**
 
 1. Restart the system and try again.
-2. If the restart still fails, submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#) to obtain help.
+2. If the restart still fails, submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback) to obtain help.
 
 ## 2293798 Failed to Obtain the Widget Manager Service
 
@@ -366,7 +514,7 @@ An internal service execution exception occurs.
 **Solution**
 
 1. Restart the system and try again.
-2. If the restart still fails, submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#) to obtain help.
+2. If the restart still fails, submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback) to obtain help.
 
 ## 2293802 Failed to Obtain the System Manager Service
 
@@ -385,4 +533,4 @@ An internal service execution exception occurs.
 **Solution**
 
 1. Restart the system and try again.
-2. If the restart still fails, submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback/#) to obtain help.
+2. If the restart still fails, submit an [online ticket](https://developer.huawei.com/consumer/en/support/feedback) to obtain help.

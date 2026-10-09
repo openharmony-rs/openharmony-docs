@@ -1,10 +1,12 @@
 # ContentSlot: Enabling Hybrid Development
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @sd-wu-->
 <!--Designer: @sunbees-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=033859cddd4818ba4c62bad26b6ee850b2b31a63 translatedAt=2026-08-14T10:11:15.090Z pushedAt=2026-08-16T01:50:37.023Z -->
 
 The **ContentSlot** component enables rendering and management of components created using C APIs on the native layer.
 
@@ -22,7 +24,7 @@ With support for development in [blend mode](../../graphics/complex-drawing-effe
 
 | Name | Description|
 | ------- | -------- |
-| ContentSlot(content: Content) | Container component for hybrid development. The **Content** object acts as the manager for **ContentSlot**, providing native-side APIs to register tree attachment and detachment callbacks and manage child components.|
+| ContentSlot(content: Content) | Container component for hybrid development. The **Content** object acts as the manager for **ContentSlot**, providing native-side APIs to register  attachment and detachment callbacks and manage child components.|
 
 ```ts
 abstract class Content {
@@ -42,7 +44,7 @@ abstract class Content {
 |[OH_ArkUI_NodeContentEvent_GetNodeContentHandle(ArkUI_NodeContentEvent* event)](../../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodecontentevent_getnodecontenthandle)|Obtains the **Content** object that triggers the attach and detach events.|
 |[OH_ArkUI_NodeContent_SetUserData(ArkUI_NodeContentHandle content, void* userData)](../../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodecontent_setuserdata)|Sets the custom attributes on **Content**.|
 |[OH_ArkUI_NodeContent_GetUserData(ArkUI_NodeContentHandle content)](../../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodecontent_getuserdata)|Obtains the custom attributes from **Content**.|
-|typedef enum {<br>   NODE_CONTENT_EVENT_ON_ATTACH_TO_WINDOW = 0,<br>   NODE_CONTENT_EVENT_ON_DETACH_FROM_WINDOW = 1,<br>} [ArkUI_NodeContentEventType](../../reference/apis-arkui/capi-native-node-h.md#arkui_nodecontenteventtype)|Enumerates the event types on **Content**.|
+|typedef enum {<br>   NODE_CONTENT_EVENT_ON_ATTACH_TO_WINDOW = 0,<br>   NODE_CONTENT_EVENT_ON_DETACH_FROM_WINDOW = 1,<br>} [ArkUI_NodeContentEventType](../../reference/apis-arkui/capi-native-node-h.md#arkui_nodecontenteventtype)|Enumerates the attach and detach event types on **Content**.|
 
 ## Development and Implementation
 
@@ -77,6 +79,7 @@ struct Parent {
 ```
 
 ### Native-side Implementation
+
 For details about the basic development knowledge of Node-API, see [Getting Started with the NDK](../../napi/ndk-development-overview.md).
 
 This topic only describes how to implement the logic code related to **ContentSlot**. For details about how to create a component on the C side, see [NDK API Overview](../ndk-build-ui-overview.md).
@@ -148,7 +151,7 @@ napi_value NodeManager::CreateNativeNode(napi_env env, napi_callback_info info)
 
 ### Native-side API Usage
 
-- **Registering Tree Events and Obtaining the Corresponding Content Object**
+- **Registering Attach and Detach Events and Obtaining the Corresponding Content Object**
 
   <!-- @[contentslot_register_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControlContentslotNDK/entry/src/main/cpp/manager.cpp) -->
 
@@ -162,7 +165,7 @@ napi_value NodeManager::CreateNativeNode(napi_env env, napi_callback_info info)
       } else if (OH_ArkUI_NodeContentEvent_GetEventType(event) == NODE_CONTENT_EVENT_ON_DETACH_FROM_WINDOW) {
           // Logic to be triggered when a detach event occurs on ContentSlot.
           // ···
-      };
+      }
   };
   // Register an event with nodeContent.
   OH_ArkUI_NodeContent_RegisterCallback(nodeContentHandle_, nodeContentEvent);
@@ -185,7 +188,7 @@ napi_value NodeManager::CreateNativeNode(napi_env env, napi_callback_info info)
   <!-- @[contentslot_insert](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControlContentslotNDK/entry/src/main/cpp/manager.cpp) -->
 
   ``` C++
-  size_t position = 0;
+  int32_t position = 0;
   ArkUI_NodeHandle component1 = CreateNodeHandle();
   // Insert a component into the specified position of the nodeContent manager.
   OH_ArkUI_NodeContent_InsertNode(nodeContentHandle_, component1, position);
@@ -218,17 +221,17 @@ napi_value NodeManager::CreateNativeNode(napi_env env, napi_callback_info info)
   void *userData = OH_ArkUI_NodeContent_GetUserData(nodeContentHandle_);
   ```
 
-## Bind Rule Description
+## Binding Rules
 
 A **Content** object can only be bound to one **ContentSlot** component at a time. If the same **Content** object is bound to multiple **ContentSlot** components, only the last binding takes effect and displays the content.
 
 **Reason**
 
-**Content** and **ContentSlot** nodes maintain a strict one-to-one binding relationship. A **Content** node cannot be simultaneously associated with multiple **ContentSlot** nodes. When attempts are made to bind the same **Content** node to multiple **ContentSlot** nodes only the final binding remains active. Previous **ContentSlot** nodes lose their association with the **Content** node, resulting in missing component content.
+**Content** and **ContentSlot** nodes maintain a strict one-to-one binding relationship. A **Content** node cannot be simultaneously associated with multiple **ContentSlot** nodes. When attempts are made to bind the same **Content** node to multiple **ContentSlot** nodes, only the final binding remains active. Previous **ContentSlot** nodes lose their association with the **Content** node, resulting in missing component content.
 
 To display the same content in multiple **ContentSlot** nodes, create separate **Content** node instances for each slot. The following is an example:
 
-<!-- @[contentslot_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControlContentslotNDK/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[contentslot_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControlContentslotNDK/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 import nativeNode from 'libentry.so'; // Developer-implemented .so file.
@@ -237,12 +240,12 @@ import { NodeContent } from '@kit.ArkUI';
 @Entry
 @Component
 struct Parent {
-  // ···
+  // ...
   private nodeContent_1: Content = new NodeContent();
   private nodeContent_2: Content = new NodeContent();
 
   aboutToAppear() {
-    // ···
+    // ...
     // Create a node through the C API and add it to nodeContent_1 and nodeContent_2.
     nativeNode.createNativeNode(this.nodeContent_1);
     nativeNode.createNativeNode(this.nodeContent_2);
@@ -250,8 +253,8 @@ struct Parent {
 
   build() {
     Column() {
-      // ···
-      ContentSlot(this.nodeContent_1);// nodeContent_1 will be mounted to the next Contentslot node and cannot be displayed here.
+      // ...
+      ContentSlot(this.nodeContent_1);// nodeContent_1 will be mounted to the next ContentSlot node and cannot be displayed here.
       ContentSlot(this.nodeContent_1); // Content is displayed properly.
       ContentSlot(this.nodeContent_2); // Content is displayed properly.
     }

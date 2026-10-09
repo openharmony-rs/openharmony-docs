@@ -5,10 +5,11 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=f40d976a55afa9474832553b7faba446f7655708 translatedAt=2026-09-21T11:54:31.514Z pushedAt=2026-09-23T09:58:54.529Z -->
 
-  When multiple global \@Builder functions are used within a single struct to implement different UI effects, code maintenance becomes challenging and the page structure appears cluttered. In this case, you can use [wrapBuilder](../../reference/apis-arkui/arkui-ts/ts-universal-wrapBuilder.md) to encapsulate the global \@Builder.
+When multiple global \@Builder functions are used within a single struct to implement different UI effects, code maintenance becomes challenging and the page structure appears cluttered. In this case, you can use [wrapBuilder](../../reference/apis-arkui/arkui-ts/ts-universal-wrapBuilder.md) to encapsulate the global \@Builder.
 
-  Before reading this topic, you are advised to read [\@Builder](./arkts-builder.md).
+ Before reading this topic, you are advised to read [\@Builder](./arkts-builder.md).
 
 > **NOTE**
 >
@@ -27,6 +28,7 @@ function builderElement() {}
 let builderArr: Function[] = [builderElement];
 @Builder
 function testBuilder() {
+  // After builderElement is assigned to a variable or array, it cannot be used in UI methods.
   ForEach(builderArr, (item: Function) => {
     item();
   })
@@ -35,7 +37,7 @@ function testBuilder() {
 
 In the preceding code, **builderArr** is an array of \@Builder methods. When you obtain each \@Builder method in the ForEach loop, an issue arises where the \@Builder method cannot be used in the UI method.
 
-To address this issue, **wrapBuilder** is introduced as a global \@Builder encapsulation function. wrapBuilder returns a WrappedBuilder object, which is used to assign and transfer the [global \@Builder decorated function](arkts-builder.md#global-custom-builder-function).
+To address this issue, **wrapBuilder** is introduced as a global \@Builder encapsulation function. wrapBuilder returns a **WrappedBuilder** object, which is used to assign and transfer the [global \@Builder decorated function](arkts-builder.md#global-custom-builder-function).
 
 ## Available APIs
 
@@ -59,34 +61,36 @@ declare class WrappedBuilder<Args extends Object[]> {
 >
 > The template parameter **Args extends Object[]** needs to match the type of the \@Builder function parameter.
 
-Example
+How to use:
 
 ```ts
 let builderVar: WrappedBuilder<[string, number]> = wrapBuilder(MyBuilder);
-let builderArr: WrappedBuilder<[string, number]>[] = [wrapBuilder(MyBuilder)]; // Can be placed in arrays.
+let builderArr: WrappedBuilder<[string, number]>[] = [wrapBuilder(MyBuilder)]; // Can be placed in an array.
 ```
 
 
 
 ## Constraints
 
-1. **wrapBuilder** only accepts a [global \@Builder decorated function](arkts-builder.md#global-custom-builder-function) as its argument.
+1. **wrapBuilder** only accepts a [global \@Builder decorated function](arkts-builder.md#global-custom-builder-function) as its parameter.
 
-2. The builder attribute of the WrappedBuilder object can be used only in the struct.
+2. The **builder** property of the **WrappedBuilder** object can be used only in the struct.
 
 ## Assigning a Value to a Variable Using the @Builder Method
 
-Use the myBuilder method decorated with the \@Builder decorator as the parameter of wrapBuilder, and assign the return value of wrapBuilder to the globalBuilder variable. In this way, the \@Builder method can be used after being assigned to a variable.
+Use the **myBuilder** method decorated with the \@Builder decorator as the parameter of **wrapBuilder**, and assign the return value of **wrapBuilder** to the **globalBuilder** variable. In this way, the \@Builder method can be used after being assigned to a variable.
 
- <!-- @[wrapbuilder_page_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageTwo.ets) -->
- 
+ <!-- @[wrapbuilder_page_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageTwo.ets) -->  
+
  ``` TypeScript
  @Builder
  function myBuilder(value: string, size: number) {
    Text(value)
      .fontSize(size)
+     .margin(10)
  }
  
+ // Use wrapBuilder to wrap myBuilder and assign it to the globalBuilder variable.
  let globalBuilder: WrappedBuilder<[string, number]> = wrapBuilder(myBuilder);
  
  @Entry
@@ -97,7 +101,7 @@ Use the myBuilder method decorated with the \@Builder decorator as the parameter
    build() {
      Row() {
        Column() {
-         globalBuilder.builder(this.message, 50)
+         globalBuilder.builder(this.message, 50);
        }
        .width('100%')
      }
@@ -106,11 +110,13 @@ Use the myBuilder method decorated with the \@Builder decorator as the parameter
  }
  ```
 
+![arkts-wrapBuilder-0](./figures/arkts-wrapBuilder-0.png)
+
 ## Assigning a Value to a Variable by the @Builder Method to Use the Variable in UI Syntax
 
 The custom component IndexItem uses ForEach to render different \@Builder functions. You can use the wrapBuilder array declared by builderArr to implement different \@Builder functions. This results in cleaner and more organized code.
 
-<!-- @[wrapbuilder_page_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageThree.ets) --> 
+<!-- @[wrapbuilder_page_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageThree.ets) -->   
 
 ``` TypeScript
 @Builder
@@ -118,6 +124,7 @@ function myBuilder0(value: string, size: number) {
   Text(value)
     .fontSize(size)
     .fontColor(Color.Blue)
+    .margin(10)
 }
 
 @Builder
@@ -125,6 +132,7 @@ function yourBuilder(value: string, size: number) {
   Text(value)
     .fontSize(size)
     .fontColor(Color.Pink)
+    .margin(10)
 }
 
 const builderArr: WrappedBuilder<[string, number]>[] = [wrapBuilder(myBuilder0), wrapBuilder(yourBuilder)];
@@ -134,6 +142,7 @@ const builderArr: WrappedBuilder<[string, number]>[] = [wrapBuilder(myBuilder0),
 struct IndexItem {
   @Builder
   IndexItem() {
+    // IndexItem uses ForEach to render different @Builder functions
     ForEach(builderArr, (item: WrappedBuilder<[string, number]>) => {
       item.builder('Hello World', 30);
     })
@@ -151,16 +160,20 @@ struct IndexItem {
 }
 ```
 
+![arkts-wrapBuilder-1](./figures/arkts-wrapBuilder-1.png)
 
 ## Assigning a Value to a Class or API Attribute Using the @Builder Method
 
-Use the MyBuilder method decorated by the \@Builder decorator as the parameter of wrapBuilder, and assign the return value of wrapBuilder to the attribute in the ChildOptions interface. The attribute can be transferred to other subcomponents in the form of data.
+Use the \@Builder-decorated method `myBuilder` as the parameter of **wrapBuilder**, and assign the return value of **wrapBuilder** to the property in the `ChildOptions` API. The property can be transferred to other child components in the form of data.
 
-```ts
+<!-- @[wrapbuilder_as_field](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/WrapBuilderAsField.ets) --> 
+
+``` TypeScript
 @Builder
-function MyBuilder(value: string, size: number) {
+function myBuilder(value: string, size: number) {
   Text(value)
     .fontSize(size)
+    .margin(10)
 }
 
 interface ChildOptions {
@@ -171,7 +184,7 @@ interface ChildOptions {
 @Component
 struct Index {
   childOptions: ChildOptions = {
-    wrappedBuilder: wrapBuilder(MyBuilder)
+    wrappedBuilder: wrapBuilder(myBuilder)
   };
 
   build() {
@@ -194,11 +207,13 @@ struct Child {
 }
 ```
 
+![arkts-wrapBuilder-2](./figures/arkts-wrapBuilder-2.png)
+
 ## Passing Parameters by Reference
 
-When parameters are transferred by reference, the change of the status variable causes the UI in the \@Builder method to be refreshed.
+When parameters are transferred by reference, the change of the state variable causes the UI in the \@Builder method to be refreshed.
 
-<!-- @[wrapbuilder_page_four](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageFour.ets) -->
+<!-- @[wrapbuilder_page_four](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageFour.ets) -->  
 
 ``` TypeScript
 class Tmp {
@@ -208,8 +223,11 @@ class Tmp {
 @Builder
 function overBuilder(param: Tmp) {
   Column() {
-    Text(`wrapBuildervalue:${param.paramA2}`)
+    Text(`wrapBuilder value: ${param.paramA2}`)
+      .fontSize(20)
+      .margin(10)
   }
+  .width('100%')
 }
 
 const wBuilder: WrappedBuilder<[Tmp]> = wrapBuilder(overBuilder);
@@ -221,34 +239,43 @@ struct Parent {
 
   build() {
     Column() {
-      wBuilder.builder({ paramA2: this.label.paramA2 })
-      Button('Click me').onClick(() => {
-        this.label.paramA2 = 'ArkUI';
-      })
+      // Pass parameters by reference. Changes to label.paramA2 will trigger a UI refresh inside overBuilder.
+      wBuilder.builder({ paramA2: this.label.paramA2 });
+      Button('Click me')
+        .width(300)
+        .margin(10)
+        .onClick(() => {
+          this.label.paramA2 = 'ArkUI';
+        })
     }
+    .width('100%')
   }
 }
 ```
+
+![arkts-wrapBuilder-3](./figures/arkts-wrapBuilder-3.gif)
 
 ## FAQs
 
 ### Failure of Duplicate wrapBuilder Initialization
 
-In the same custom component, the same **wrapBuilder** can be initialized only once. For example, after **builderObj** is initialized through **wrapBuilder (MyBuilderFirst)**, the **wrapBuilder(MyBuilderSecond)** value assigned to **builderObj** does not take effect.
+Within the same custom component, the same **wrapBuilder** can be initialized only once. For example, after `builderObj` is initialized with `wrapBuilder(myBuilderFirst)`, assigning `wrapBuilder(myBuilderSecond)` to `builderObj` again will not take effect.
 
-<!-- @[wrapbuilder_page_five](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageFive.ets) -->
+<!-- @[wrapbuilder_page_five](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageFive.ets) --> 
 
 ``` TypeScript
 @Builder
 function myBuilderFirst(value: string, size: number) {
   Text('MyBuilderFirst: ' + value)
     .fontSize(size)
+    .margin(10)
 }
 
 @Builder
 function myBuilderSecond(value: string, size: number) {
   Text('MyBuilderSecond: ' + value)
     .fontSize(size)
+    .margin(10)
 }
 
 interface BuilderModel {
@@ -271,7 +298,7 @@ struct TestBuilderIndex {
   build() {
     Row() {
       Column() {
-        this.builderObj.globalBuilder.builder(this.message, 20)
+        this.builderObj.globalBuilder.builder(this.message, 20);
       }
       .width('100%')
     }
@@ -279,3 +306,5 @@ struct TestBuilderIndex {
   }
 }
 ```
+
+![arkts-wrapBuilder-4](./figures/arkts-wrapBuilder-4.png)

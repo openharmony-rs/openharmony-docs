@@ -36,7 +36,7 @@ Create a **&lt;slider&gt;** component in the .hml file under **pages/index**.
 ```
 
 
-![en-us_image_0000001232162312](figures/en-us_image_0000001232162312.gif)
+![slider-Component](figures/slider-Component.gif)
 
 
 ## Setting Styles and Attributes
@@ -69,7 +69,7 @@ Use the **&lt;slider&gt;** component to set the background color, selected color
 }
 ```
 
-![en-us_image_0000001232003000](figures/en-us_image_0000001232003000.gif)
+![Styles-and-Attributes](figures/Styles-and-Attributes.gif)
 
 Add the **min**, **max**, **value**, **step**, and **mode** attributes to set the minimum value, maximum value, initial value, step, and style of the slider.
 
@@ -94,13 +94,13 @@ Add the **min**, **max**, **value**, **step**, and **mode** attributes to set th
 }
 ```
 
-![en-us_image_0000001276003517](figures/en-us_image_0000001276003517.gif)
+![Styles-and-Attributes-1](figures/Styles-and-Attributes-1.gif)
 
 > **NOTE**
 >
 > The **mode** attribute indicates the slider style. The options are as follows:
 >
-> - **outset**: The slider is on the sliding bar.
+> - **outset**: The slider is on the slider bar.
 >
 > - **inset**: The slider is inside the sliding bar.
 
@@ -158,7 +158,7 @@ export default {
 }
 ```
 
-![en-us_image_0000001275803169](figures/en-us_image_0000001275803169.gif)
+![Binding-Events-4](figures/Binding-Events-4.gif)
 
 
 ## Example Scenario
@@ -170,7 +170,7 @@ Adjust the value of the slider to change the image size and dynamically print th
 <!-- xxx.hml -->
 <div class="container">
   <image src="common/landscape3.jpg" style=" width: {{WidthVal}}px;height:{{HeightVal}}px;margin-top: -150px;"></image>
-  <div class="txt">
+  <div class="text">
     <slider min="0" max="100" value="{{value}}" onchange="setValue"></slider>
     <text>The width of this picture is {{WidthVal}}</text>
     <text>The height of this picture is {{HeightVal}}</text>
@@ -212,9 +212,18 @@ export default{
   },
   setValue(e) {
     this.WidthVal = 200 + e.value;
-    this.HeightVal = 200 + e.value
+    this.HeightVal = 200 + e.value;
   }
 }
 ```
 
-![en-us_image_0000001275922997](figures/en-us_image_0000001275922997.gif)
+![Example-Scenario-15](figures/Example-Scenario-15.gif)
+
+
+## Samples
+
+The following samples are provided to help you better understand how to develop **slider**:
+
+- [Using slider Components (JS, API version 9)](https://gitcode.com/openharmony/codelabs/tree/master/JSUI/SliderApplication)
+
+- [Simple Video Player (ArkTS, API version 9)](https://gitcode.com/openharmony/codelabs/tree/master/Media/VideoOpenHarmony)

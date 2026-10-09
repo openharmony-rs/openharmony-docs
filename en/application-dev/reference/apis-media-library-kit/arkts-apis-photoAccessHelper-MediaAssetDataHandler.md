@@ -25,7 +25,7 @@ onDataPrepared(data: T, map?: Map<string, string>): void
 
 Called when the requested media asset is ready. If an error occurs, **data** returned by the callback is **undefined**. Each media asset request corresponds to a callback.
 
-T supports the following data types: ArrayBuffer, [ImageSource](../apis-image-kit/arkts-apis-image-ImageSource.md), [MovingPhoto](arkts-apis-photoAccessHelper-MovingPhoto.md), and boolean. ArrayBuffer indicates the image or video asset data, [ImageSource](../apis-image-kit/arkts-apis-image-ImageSource.md) indicates the image source, [MovingPhoto](arkts-apis-photoAccessHelper-MovingPhoto.md) indicates a moving photo object, and boolean indicates whether the image or video is successfully written to the application sandbox directory.
+**T** supports the following data types: ArrayBuffer, [ImageSource](../apis-image-kit/arkts-apis-image-ImageSource.md), [MovingPhoto](arkts-apis-photoAccessHelper-MovingPhoto.md), and boolean. ArrayBuffer indicates the image or video asset data, [ImageSource](../apis-image-kit/arkts-apis-image-ImageSource.md) indicates the image source, [MovingPhoto](arkts-apis-photoAccessHelper-MovingPhoto.md) indicates a moving photo object, and boolean indicates whether the image or video is successfully written to the application sandbox directory. The value **true** indicates success, and the value **false** indicates failure.
 
 Information returned by **map**:
 

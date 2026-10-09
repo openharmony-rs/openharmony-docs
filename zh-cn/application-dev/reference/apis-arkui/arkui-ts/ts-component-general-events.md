@@ -1,4 +1,5 @@
 # 通用事件
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @yihao-lin-->
@@ -6,6 +7,9 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 <!--Del-->
+
+通用事件提供点击、触摸、拖拽、按键、焦点、鼠标等组件事件能力，用于响应用户交互、组件状态变化和自定义事件处理，帮助开发者实现组件交互逻辑。
+
 - [点击事件](ts-universal-events-click.md)
 - [触摸事件](ts-universal-events-touch.md)
 - [挂载卸载事件](ts-universal-events-show-hide.md)
@@ -22,6 +26,6 @@
 - [组件快捷键事件](ts-universal-events-keyboardshortcut.md)
 - [自定义事件分发](ts-universal-attributes-on-child-touch-test.md)
 - [自定义事件拦截](ts-universal-attributes-on-touch-intercept.md)
-- [焦点轴事件](ts-universal-events-focus_axis.md)
+- [焦点轴事件](ts-universal-events-focus-axis.md)
 - [轴事件](ts-universal-events-axis.md)
 <!--DelEnd-->

@@ -10,11 +10,11 @@
 
 ## 开发步骤
 
-详细的API说明请参考[Camera API参考](../../reference/apis-camera-kit/capi-oh-camera.md)。
+详细的API说明请参考[OH_Camera](../../reference/apis-camera-kit/capi-oh-camera.md)。
 
 1. 导入NDK接口，接口中提供了相机相关的属性和方法，导入方法如下。
 
-   <!-- @[import_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.h) -->
+   <!-- @[import_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.h) -->    
    
    ``` C
    #include <cstdint>
@@ -25,7 +25,6 @@
    #include <cstdio>
    #include <fcntl.h>
    #include <map>
-   #include <string>
    #include <vector>
    #include <native_buffer/native_buffer.h>
    #include "iostream"
@@ -87,14 +86,14 @@
            return CAMERA_INVALID_ARGUMENT;
        }
        ret_ = OH_CameraManager_CreatePreviewOutput(cameraManager_, previewProfile_, previewSurfaceId_, &previewOutput_);
-       OH_LOG_ERROR(LOG_APP, "create preview width: %{public}d, height: %{public}d, format: %{public}d",
+       OH_LOG_INFO(LOG_APP, "create preview width: %{public}d, height: %{public}d, format: %{public}d",
            previewProfile_->size.width, previewProfile_->size.height, previewProfile_->format);
        if (previewSurfaceId_ == nullptr || previewOutput_ == nullptr || ret_ != CAMERA_OK) {
            OH_LOG_ERROR(LOG_APP, "CreatePreviewOutput failed.");
            return CAMERA_INVALID_ARGUMENT;
        }
-       return ret_;
        PreviewOutputRegisterCallback();
+       return ret_;
    }
    ```
 

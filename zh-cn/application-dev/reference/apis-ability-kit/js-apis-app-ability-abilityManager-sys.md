@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @dsz2025; @Luobniz21-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 AbilityManager模块提供获取、新增、修改Ability相关信息和运行状态信息的能力。
 
@@ -23,6 +23,8 @@ import { abilityManager } from '@kit.AbilityKit';
 ## UserStatus<sup>12+</sup>
 
 用户操作的断言调试结果，该类型为枚举。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统接口**：该接口为系统接口。
 
@@ -173,7 +175,7 @@ getAbilityRunningInfos(callback: AsyncCallback\<Array\<AbilityRunningInfo>>): vo
 
 | 参数名        | 类型                                       | 必填   | 说明             |
 | --------- | ---------------------------------------- | ---- | -------------- |
-| callback  | AsyncCallback\<Array\<[AbilityRunningInfo](js-apis-inner-application-abilityRunningInfo.md)>>  | 是    | 回调函数。当获取UIAbility运行相关信息成功，err为undefined，data为获取到的UIAbility运行相关信息；否则为错误对象。可进行错误处理或其他自定义处理。      |
+| callback | AsyncCallback\<Array\<[AbilityRunningInfo](js-apis-inner-application-abilityRunningInfo.md)>> | 是 | 回调函数。当获取UIAbility运行相关信息成功，err为undefined，data为获取到的UIAbility运行相关信息；否则为错误对象。可进行错误处理或其他自定义处理。 |
 
 **错误码**：
 
@@ -214,7 +216,7 @@ try {
 
 getExtensionRunningInfos(upperLimit: number, callback: AsyncCallback\<Array\<ExtensionRunningInfo>>): void
 
-获取关于运行扩展能力的信息。使用callback异步回调。
+获取运行扩展能力的信息。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -245,6 +247,7 @@ getExtensionRunningInfos(upperLimit: number, callback: AsyncCallback\<Array\<Ext
 import { abilityManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// 设置获取消息数量的最大限制
 let upperLimit = 10;
 
 try {
@@ -321,7 +324,7 @@ try {
 
 getTopAbility(callback: AsyncCallback\<ElementName>): void
 
-获取窗口焦点所在的Ability。使用callback异步回调。
+获取当前拥有窗口焦点的UIAbility信息。使用callback异步回调。
 
 **系统接口**：此接口为系统接口。
 
@@ -331,7 +334,7 @@ getTopAbility(callback: AsyncCallback\<ElementName>): void
 
 | 参数名        | 类型                                       | 必填   | 说明             |
 | --------- | ---------------------------------------- | ---- | -------------- |
-| callback  | AsyncCallback\<[ElementName](js-apis-bundleManager-elementName.md)>  | 是    | 回调函数。当获取窗口焦点所在的Ability成功，err为undefined，data为获取到的应用名；否则为错误对象。可进行错误处理或其他自定义处理。      |
+| callback  | AsyncCallback\<[ElementName](js-apis-bundleManager-elementName.md)>  | 是    | 回调函数。当获取窗口焦点所在的Ability成功，err为undefined，data为获取到的ElementName对象；否则为错误对象。可进行错误处理或其他自定义处理。      |
 
 **错误码**：
 
@@ -372,7 +375,7 @@ getTopAbility(): Promise\<ElementName>
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-| Promise\<[ElementName](js-apis-bundleManager-elementName.md)>| Promise对象，返回接口运行结果及应用名。开发者可在此进行错误处理或其他自定义处理。 |
+| Promise\<[ElementName](js-apis-bundleManager-elementName.md)>| Promise对象，返回接口运行结果及ElementName对象。开发者可在此进行错误处理或其他自定义处理。 |
 
 **错误码**：
 
@@ -540,6 +543,7 @@ let want: Want = {
   bundleName: 'com.example.myapplication',
   abilityName: 'EntryAbility'
 };
+// 设置操作结果码
 let resultCode = 100;
 // 返回给另存为行为发起方AbilityResult信息
 let abilityResult: common.AbilityResult = {
@@ -760,7 +764,7 @@ getForegroundUIAbilities(callback: AsyncCallback\<Array\<AbilityStateData>>): vo
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | callback | AsyncCallback\<Array\<[AbilityStateData](js-apis-inner-application-abilityStateData.md)>>  | 是 |以回调方式返回接口运行结果及有关前台Ability的信息，可进行错误处理或其他自定义处理。 |
+  | callback | AsyncCallback\<Array\<[AbilityStateData](js-apis-inner-application-abilityStateData.md)>> | 是 | 以回调方式返回接口运行结果及有关前台Ability的信息，可进行错误处理或其他自定义处理。 |
 
 **错误码**：
 
@@ -804,7 +808,7 @@ getForegroundUIAbilities(): Promise\<Array\<AbilityStateData>>
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise\<Array\<[AbilityStateData](js-apis-inner-application-abilityStateData.md)>> | 以Promise方式返回接口运行结果及有关前台Ability的信息，可进行错误处理或其他自定义处理。|
+| Promise\<Array\<[AbilityStateData](js-apis-inner-application-abilityStateData.md)>> | 以Promise方式返回接口运行结果及有关前台Ability的信息，可进行错误处理或其他自定义处理。 |
 
 **错误码**：
 
@@ -833,7 +837,9 @@ abilityManager.getForegroundUIAbilities().then((data: Array<abilityManager.Abili
 
 notifyDebugAssertResult(sessionId: string, status: UserStatus): Promise\<void>
 
-将断言调试结果通知应用程序。使用Promise异步回调。
+将断言调试结果通知应用程序。使用Promise异步回调。调试工具或应用需要在断言调试场景中处理用户操作结果时使用。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统接口**：此接口为系统接口。
 
@@ -877,6 +883,7 @@ export default class UiExtAbility extends UIExtensionAbility {
     if (want.parameters) {
       sessionId = want.parameters[wantConstant.Params.ASSERT_FAULT_SESSION_ID] as string;
     }
+    // 设置用户操作状态为终止
     let status = abilityManager.UserStatus.ASSERT_TERMINATE;
     abilityManager.notifyDebugAssertResult(sessionId, status).then(() => {
       console.info('notifyDebugAssertResult success.');
@@ -892,6 +899,8 @@ export default class UiExtAbility extends UIExtensionAbility {
 isEmbeddedOpenAllowed(context: Context, appId: string): Promise\<boolean>
 
 判断是否允许嵌入式拉起[EmbeddableUIAbility](js-apis-app-ability-embeddableUIAbility.md)。使用Promise异步回调。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统接口**：此接口为系统接口。
 
@@ -927,6 +936,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onForeground() {
+    // 应用的唯一标识
     let appId: string = '6918661953712445909';
     try {
       abilityManager.isEmbeddedOpenAllowed(this.context, appId).then((data) => {
@@ -946,7 +956,11 @@ export default class EntryAbility extends UIAbility {
 
 setResidentProcessEnabled(bundleName: string, enable: boolean): Promise\<void>
 
-常驻进程支持按需启停。
+设置或移除指定包名的主应用进程的常驻保活状态。根据enable参数启用或禁用进程的常驻保活机制。
+
+> **说明：**
+>
+> 该接口不支持设置或移除分身应用（指定包名）的进程保活状态。
 
 **系统接口**：此接口为系统接口。
 
@@ -983,6 +997,7 @@ import { abilityManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  // 设置常驻进程的包名
   let residentProcessBundleName: string = 'com.xxx.xxxxxx';
   let enable: boolean = false;
   abilityManager.setResidentProcessEnabled(residentProcessBundleName, enable)
@@ -1003,7 +1018,9 @@ try {
 
 preloadUIExtensionAbility(want: Want): Promise\<number>
 
-预加载指定的[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)并返回预加载UIExtensionAbility实例的ID。使用Promise异步回调。
+预加载指定的[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)并返回预加载UIExtensionAbility实例的ID。使用Promise异步回调。应用需要提前加载UIExtensionAbility以提升启动性能时使用。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统接口**：此接口为系统接口。
 
@@ -1072,6 +1089,8 @@ clearPreloadedUIExtensionAbility(preloadId: number): Promise\<void>
 
 清除指定的[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)实例。使用Promise异步回调。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统接口**：此接口为系统接口。
 
 **需要权限**：ohos.permission.PRELOAD_UI_EXTENSION_ABILITY
@@ -1130,6 +1149,8 @@ clearPreloadedUIExtensionAbilities(): Promise\<void>
 
 清除当前进程中所有已经预加载的[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)实例。使用Promise异步回调。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统接口**：此接口为系统接口。
 
 **需要权限**：ohos.permission.PRELOAD_UI_EXTENSION_ABILITY
@@ -1179,6 +1200,8 @@ onPreloadedUIExtensionAbilityLoaded(callback: PreloadedUIExtensionAbilityLoadedF
 
 监听当前进程中预加载的[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)实例的加载事件。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统接口**：此接口为系统接口。
 
 **需要权限**：ohos.permission.PRELOAD_UI_EXTENSION_ABILITY
@@ -1226,6 +1249,8 @@ try {
 offPreloadedUIExtensionAbilityLoaded(callback?: PreloadedUIExtensionAbilityLoadedFn): void
 
 注销当前进程中预加载的[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)实例的加载监听。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统接口**：此接口为系统接口。
 
@@ -1275,6 +1300,8 @@ onPreloadedUIExtensionAbilityDestroyed(callback: PreloadedUIExtensionAbilityDest
 
 监听当前进程中预加载的[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)实例的销毁事件。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统接口**：此接口为系统接口。
 
 **需要权限**：ohos.permission.PRELOAD_UI_EXTENSION_ABILITY
@@ -1323,6 +1350,8 @@ offPreloadedUIExtensionAbilityDestroyed(callback?: PreloadedUIExtensionAbilityDe
 
 注销当前进程中预加载的[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)实例的销毁监听。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统接口**：此接口为系统接口。
 
 **需要权限**：ohos.permission.PRELOAD_UI_EXTENSION_ABILITY
@@ -1369,6 +1398,8 @@ try {
 
 嵌入式拉起原子化服务的规则。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统接口**：该接口为系统接口。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
@@ -1384,6 +1415,8 @@ queryAtomicServiceStartupRule(context: Context, appId: string): Promise\<AtomicS
 
 查询嵌入式拉起[EmbeddableUIAbility](js-apis-app-ability-embeddableUIAbility.md)的规则。使用Promise异步回调。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
@@ -1394,7 +1427,7 @@ queryAtomicServiceStartupRule(context: Context, appId: string): Promise\<AtomicS
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------- | -------- | -------- | -------- |
-| context | [Context](js-apis-inner-application-context.md) | 是 | 嵌入式拉起EmbeddableUIAbility的调用方Context。<br>**说明**：目前仅支持[UIAbilityContext](js-apis-inner-application-uiAbilityContext.md)。 |
+| context | [Context](js-apis-inner-application-context.md) | 是 | 嵌入式拉起EmbeddableUIAbility的调用方Context。<br>**说明**：目前仅支持[UIAbilityContext (UIAbility上下文)](js-apis-inner-application-uiAbilityContext.md)。 |
 | appId | string | 是 | 应用的唯一标识，由云端统一分配。 |
 
 **返回值：**
@@ -1421,6 +1454,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 export default class EntryAbility extends UIAbility {
   onForeground() {
+    // 应用的唯一标识
     let appId: string = '6918661953712445909';
     try {
       abilityManager.queryAtomicServiceStartupRule(this.context, appId).then((data: abilityManager.AtomicServiceStartupRule) => {
@@ -1462,7 +1496,7 @@ AbilityForegroundStateObserver二级模块。
 
 | 类型 | 说明 |
 | --- | --- |
-| [_AbilityForegroundStateObserver.default](js-apis-inner-application-abilityForegroundStateObserver-sys.md) | AbilityForegroundStateObserver二级模块，用于定义应用前后台状态监听。 |
+| [_AbilityForegroundStateObserver](js-apis-inner-application-abilityForegroundStateObserver-sys.md).default | AbilityForegroundStateObserver二级模块，用于定义应用前后台状态监听。 |
 
 ## PreloadedUIExtensionAbilityDestroyedFn<sup>23+</sup>
 
@@ -1470,9 +1504,11 @@ type PreloadedUIExtensionAbilityDestroyedFn = (preloadId: number) => void
 
 预加载[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)被销毁时的回调函数类型。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统接口**：此接口为系统接口。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 | 参数名    | 类型            | 必填 | 说明 |
 |--------|---------------|---| -------- |
@@ -1484,9 +1520,11 @@ type PreloadedUIExtensionAbilityLoadedFn = (preloadId: number) => void
 
 预加载[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)被加载时的回调函数类型。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统接口**：此接口为系统接口。
 
-**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+**系统能力**：SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 | 参数名    | 类型            | 必填 | 说明 |
 |--------|---------------|---| -------- |

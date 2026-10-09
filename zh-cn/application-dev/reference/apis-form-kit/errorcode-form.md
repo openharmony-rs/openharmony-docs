@@ -1,9 +1,9 @@
 # 卡片错误码
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 > **说明：**
@@ -18,7 +18,7 @@ IPC connection error.
 
 **错误描述**
 
-系统内为执行当前请求进行必要进程间通信时出错，系统会报此错误码。
+系统内为执行当前请求时进行必要的进程间通信出错，系统会报此错误码。
 
 **可能原因**
 
@@ -230,7 +230,7 @@ The form can not support this operation.
 
 **处理步骤**
 
-检查当前卡片对应[互动卡片配置项sceneAnimationParams](../../form/arkts-ui-widget-configuration.md#sceneanimationparams标签)是否正确。
+检查当前卡片对应互动卡片配置项[sceneAnimationParams](../../form/arkts-ui-widget-configuration.md#sceneanimationparams标签)是否正确。
 
 ## 16501012 卡片尺寸错误
 
@@ -268,6 +268,152 @@ The system does not support the current operation.
 
 重启设备，系统重新注册监听模板卡片信息的回调。
 
+## 16501014 半模态卡片编辑页不在前台
+
+**错误信息**
+
+The form edit page is not in the foreground. The current operation is not supported.
+
+**错误描述**
+
+半模态卡片编辑页不在前台，当前操作不支持。
+
+**可能原因**
+
+半模态卡片编辑页未打开。
+
+**处理步骤**
+
+检查[半模态卡片编辑页](../../form/arkts-ui-widget-event-formeditextensionability.md#半模态卡片编辑)是否已打开。
+
+## 16501015 不能关闭其他应用的半模态卡片编辑页
+
+**错误信息**
+
+Cannot close the widget editing page opened by other apps.
+
+**错误描述**
+
+不能关闭其他应用的半模态卡片编辑页。
+
+**可能原因**
+
+当前打开的半模态卡片编辑页不属于请求关闭的应用。
+
+**处理步骤**
+
+确认打开的半模态编辑页是否属于请求关闭的应用。
+
+## 16501016 卡片位置信息无效
+
+**错误信息**
+
+The location of the widget is invalid.
+
+**错误描述**
+
+卡片位置信息是无效的。
+
+**可能原因**
+
+指定卡片位置信息不在系统定义范围内。
+
+**处理步骤**
+
+检查入参卡片位置是否在[FormLocation](js-apis-app-form-formInfo.md#formlocation20)配置列表。
+
+## 16501017 无空间发布卡片
+
+**错误信息**
+
+There is no space to publish the form.
+
+**错误描述**
+
+发布卡片时，桌面无空间容纳新卡片。
+
+**可能原因**
+
+1. 桌面当前页与下一页空间不足且桌面总页数已满。
+2. 桌面卡片数量已达上限，无法添加更多卡片。
+
+**处理步骤**
+
+删除不必要的卡片后重试发布。
+
+## 16501018 卡片不支持发布
+
+**错误信息**
+
+This form does not support publishing.
+
+**错误描述**
+
+发布卡片时，桌面不允许该卡片发布。
+
+**可能原因**
+
+卡片不支持在桌面上发布。
+
+**处理步骤**
+
+检查卡片配置是否符合当前场景，详细参考[配置文件](../../form/arkts-ui-widget-configuration.md#配置文件字段说明)renderingMode字段说明和[supportdimensions字段与设备支持关系表](../../form/arkts-ui-widget-configuration.md#supportdimensions字段与设备支持关系表)。
+
+## 16501019 无法注销非本应用注册的卡片服务
+ 
+**错误信息**
+ 
+A form service not owned by you cannot be unregistered.
+ 
+**错误描述**
+ 
+注销卡片使用方服务时，所操作的卡片服务并非由当前应用注册。
+ 
+**可能原因**
+ 
+当前应用尝试注销非自身注册的卡片使用方服务。
+ 
+**处理步骤**
+ 
+仅注销当前应用自身注册的卡片使用方服务。
+ 
+## 16501020 远端卡片服务不可用
+ 
+**错误信息**
+ 
+Remote form service is unavailable.
+ 
+**错误描述**
+ 
+跨设备发布卡片时，远端卡片服务不可用。
+ 
+**可能原因**
+ 
+远端设备未启动卡片服务，或卡片服务异常。
+ 
+**处理步骤**
+ 
+检查远端设备卡片服务状态，确认远端卡片服务可用后重新发起跨设备发布卡片请求。
+ 
+## 16501021 远端卡片应用未安装或版本过低
+ 
+**错误信息**
+ 
+The peer form application is not installed or the version is too old.
+ 
+**错误描述**
+ 
+跨设备发布卡片时，远端设备上的目标卡片应用未安装或版本过低。
+ 
+**可能原因**
+ 
+1. 远端设备未安装目标卡片应用。
+2. 远端设备的目标卡片应用版本过低，不支持跨设备发布卡片。
+ 
+**处理步骤**
+ 
+确认远端设备已安装目标卡片应用，且应用版本支持跨设备发布后，重新发起跨设备发布卡片请求。
+
 ## 2293761 内部服务错误
 
 **错误信息**
@@ -281,7 +427,7 @@ Some internal server error occurs.
 **可能原因**
 
 1. 当前系统繁忙。
-2. 当前系统数据内部数据异常。
+2. 当前系统内部数据异常。
 
 **处理步骤**
 

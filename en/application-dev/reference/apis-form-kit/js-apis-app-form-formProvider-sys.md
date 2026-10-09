@@ -1,17 +1,18 @@
 # @ohos.app.form.formProvider (formProvider) (System API)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=340d103cc1b7ad3604f8dd89e08d1aa4f2f4d7e8 translatedAt=2026-09-15T01:48:45.688Z pushedAt=2026-09-15T07:41:53.138Z -->
 
 The **formProvider** module provides APIs to obtain widget information, update widgets, set the update time, and request a widget release.
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> - This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.app.form.formProvider (formProvider)](./js-apis-app-form-formProvider.md).
+> The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.app.form.formProvider (formProvider)](./js-apis-app-form-formProvider.md).
 
 ## Modules to Import
 
@@ -20,7 +21,7 @@ import { formProvider } from '@kit.FormKit';
 ```
 
 
-## requestPublishForm
+## formProvider.requestPublishForm
 
 requestPublishForm(want: Want, formBindingData: formBindingData.FormBindingData, callback: AsyncCallback\<string>): void
 
@@ -40,7 +41,7 @@ Requests to publish a widget to the widget host (usually the home screen). This 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -49,6 +50,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16500050 | IPC connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
+| 16501002 | The number of forms exceeds the maximum allowed. <br/>**Since:** 26.0.1 |
+| 16501008 | Waiting for the form addition to the desktop timed out. <br/>**Since:** 26.0.1 |
+| 16501017 | There is no space to publish form. <br/>**Since:** 26.0.1 |
+| 16501018 | This form does not support publishing. <br/>**Since:** 26.0.1 |
 
 **Example**
 
@@ -73,17 +78,17 @@ try {
   let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
   formProvider.requestPublishForm(want, obj, (error: BusinessError, data: string) => {
     if (error) {
-      console.error(`callback error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+      console.error(`callback error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
       return;
     }
     console.info(`formProvider requestPublishForm, form ID is: ${data}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
-## requestPublishForm
+## formProvider.requestPublishForm
 
 requestPublishForm(want: Want, callback: AsyncCallback&lt;string&gt;): void
 
@@ -102,7 +107,7 @@ Requests to publish a widget to the widget host (usually the home screen). This 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -111,6 +116,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16500050 | IPC connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
+| 16501002 | The number of forms exceeds the maximum allowed. <br/>**Since:** 26.0.1 |
+| 16501008 | Waiting for the form addition to the desktop timed out. <br/>**Since:** 26.0.1 |
+| 16501017 | There is no space to publish form. <br/>**Since:** 26.0.1 |
+| 16501018 | This form does not support publishing. <br/>**Since:** 26.0.1 |
 
 **Example**
 
@@ -130,17 +139,17 @@ let want: Want = {
 try {
   formProvider.requestPublishForm(want, (error: BusinessError, data: string) => {
     if (error) {
-      console.error(`callback error, code: ${error.code}, message: ${error.message})`);
+      console.error(`callback error, code: ${error.code}, message: ${error.message}`);
       return;
     }
     console.info(`formProvider requestPublishForm, form ID is: ${data}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
-## requestPublishForm
+## formProvider.requestPublishForm
 
 requestPublishForm(want: Want, formBindingData?: formBindingData.FormBindingData): Promise&lt;string&gt;
 
@@ -165,7 +174,7 @@ Requests to publish a widget to the widget host (usually the home screen). This 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -174,6 +183,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16500050 | IPC connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
+| 16501002 | The number of forms exceeds the maximum allowed. <br/>**Since:** 26.0.1 |
+| 16501008 | Waiting for the form addition to the desktop timed out. <br/>**Since:** 26.0.1 |
+| 16501017 | There is no space to publish form. <br/>**Since:** 26.0.1 |
+| 16501018 | This form does not support publishing. <br/>**Since:** 26.0.1 |
 
 **Example**
 
@@ -194,18 +207,18 @@ try {
   formProvider.requestPublishForm(want).then((data: string) => {
     console.info(`formProvider requestPublishForm success, form ID is : ${data}`);
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
-## isRequestPublishFormSupported
+## formProvider.isRequestPublishFormSupported
 
 isRequestPublishFormSupported(callback: AsyncCallback&lt;boolean&gt;): void
 
-Checks whether a widget can be added to the widget host. This API uses an asynchronous callback to return the result.
+Checks whether a widget can be published to a widget host. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -215,11 +228,11 @@ Checks whether a widget can be added to the widget host. This API uses an asynch
 
 | Name| Type   | Mandatory| Description   |
 | ------ | ------ | ---- | ------- |
-| callback | AsyncCallback&lt;boolean&gt; | Yes| Callback function that returns the query result.<br>**true**: The widget can be added to the widget host.<br>**false**: The widget cannot be added to the widget host.|
+| callback | AsyncCallback&lt;boolean&gt; | Yes | Callback used to return the result.<br> The value **true** indicates that the widget can be published to the widget host; **false** indicates the opposite.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -238,7 +251,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   formProvider.isRequestPublishFormSupported((error: BusinessError, isSupported: boolean) => {
     if (error) {
-      console.error(`callback error, code: ${error.code}, message: ${error.message})`);
+      console.error(`callback error, code: ${error.code}, message: ${error.message}`);
     } else {
       if (isSupported) {
         let want: Want = {
@@ -252,27 +265,27 @@ try {
         try {
           formProvider.requestPublishForm(want, (error: BusinessError, data: string) => {
             if (error) {
-              console.error(`callback error, code: ${error.code}, message: ${error.message})`);
+              console.error(`callback error, code: ${error.code}, message: ${error.message}`);
               return;
             }
             console.info(`formProvider requestPublishForm, form ID is: ${data}`);
           });
         } catch (error) {
-          console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+          console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
         }
       }
     }
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
-## isRequestPublishFormSupported
+## formProvider.isRequestPublishFormSupported
 
 isRequestPublishFormSupported(): Promise&lt;boolean&gt;
 
-Checks whether a widget can be added to the widget host. This API uses a promise to return the result.
+Checks whether a widget can be published to the widget host. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -282,11 +295,11 @@ Checks whether a widget can be added to the widget host. This API uses a promise
 
 | Type         | Description                               |
 | :------------ | :---------------------------------- |
-| Promise&lt;boolean&gt; | Promise that returns whether a widget can be added to the widget host.<br>**true**: The widget can be added to the widget host.<br>**false**: The widget cannot be added to the widget host.|
+| Promise&lt;boolean&gt; | Promise used to return the result. <br>The value **true** indicates that the widget can be published to the widget host; **false** indicates the opposite.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -316,21 +329,21 @@ try {
         formProvider.requestPublishForm(want).then((data: string) => {
           console.info(`formProvider requestPublishForm success, form ID is : ${data}`);
         }).catch((error: BusinessError) => {
-          console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+          console.error(`promise error, code: ${error.code}, message: ${error.message}`);
         });
       } catch (error) {
-        console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+        console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
       }
     }
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
-## activateSceneAnimation<sup>20+</sup>
+## formProvider.activateSceneAnimation<sup>20+</sup>
 
 activateSceneAnimation(formId: string): Promise&lt;void&gt;
 
@@ -338,13 +351,15 @@ Requests to activate a widget. This API takes effect only for [scene-based widge
 
 **System capability**: SystemCapability.Ability.Form
 
+**Device behavior differences:** This API is supported on certain phone models. On unsupported devices, it returns error code [801](../errorcode-universal.md#801-api-not-supported).
+
 **System API**: This is a system API.
 
 **Parameters**
 
 | Name| Type   | Mandatory| Description   |
 | ------ | ------ | ---- |-------|
-| formId | string | Yes| Widget ID.|
+| formId | string | Yes | Widget ID. |
 
 **Return value**
 
@@ -354,7 +369,7 @@ Requests to activate a widget. This API takes effect only for [scene-based widge
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -380,14 +395,14 @@ try {
   formProvider.activateSceneAnimation(formId).then(() => {
     console.info('activateSceneAnimation succeed.');
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
-## deactivateSceneAnimation<sup>20+</sup>
+## formProvider.deactivateSceneAnimation<sup>20+</sup>
 
 deactivateSceneAnimation(formId: string): Promise&lt;void&gt;
 
@@ -395,13 +410,15 @@ Requests to deactivate a widget. This API takes effect only for [scene-based wid
 
 **System capability**: SystemCapability.Ability.Form
 
+**Device behavior differences:** This API is supported on certain phone models. On unsupported devices, it returns error code [801](../errorcode-universal.md#801-api-not-supported).
+
 **System API**: This is a system API.
 
 **Parameters**
 
 | Name| Type   | Mandatory| Description   |
 | ------ | ------ | ---- |-------|
-| formId | string | Yes| Widget ID.|
+| formId | string | Yes | Widget ID. |
 
 **Return value**
 
@@ -411,7 +428,7 @@ Requests to deactivate a widget. This API takes effect only for [scene-based wid
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -437,14 +454,14 @@ try {
   formProvider.deactivateSceneAnimation(formId).then(() => {
     console.info('deactivateSceneAnimation succeed.');
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
-## updateTemplateFormDetailInfo<sup>23+</sup>
+## formProvider.updateTemplateFormDetailInfo<sup>23+</sup>
 
 updateTemplateFormDetailInfo(templateFormInfo: Array&lt;formInfo.TemplateFormDetailInfo&gt;): Promise&lt;void&gt;
 
@@ -460,7 +477,7 @@ Updates the static configuration information of a specified template widget on t
 
 | Name| Type   | Mandatory| Description   |
 | ------ | ------ | ---- |-------|
-| templateFormInfo | Array&lt;[formInfo.TemplateFormDetailInfo](js-apis-app-form-formInfo.md#forminfo)&gt; | Yes| Static configuration information of a specified template widget.|
+| templateFormInfo | Array&lt;[formInfo.TemplateFormDetailInfo](js-apis-app-form-formInfo-sys.md#templateformdetailinfo23)&gt; | Yes| Static configuration information of a specified template widget.|
 
 **Return value**
 
@@ -470,7 +487,7 @@ Updates the static configuration information of a specified template widget on t
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -498,18 +515,18 @@ try {
   formProvider.updateTemplateFormDetailInfo(templateFormInfo).then(() => {
     console.info('updateTemplateFormDetailInfo succeed.');
   }).catch((error: BusinessError) => {
-    console.error(`promise error, code: ${error.code}, message: ${error.message})`);
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
   });
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
-## onPublishFormCrossBundleControl<sup>23+</sup>
+## formProvider.onPublishFormCrossBundleControl<sup>23+</sup>
 
 onPublishFormCrossBundleControl(callback: formInfo.PublishFormCrossBundleControlCallback): void
 
-Subscribes to controls on cross-bundle widget addition to the home screen. This API uses an asynchronous callback to return the result.
+Subscribes to cross-app publish-to-home-screen control.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -523,11 +540,11 @@ Subscribes to controls on cross-bundle widget addition to the home screen. This 
 
 | Name| Type   | Mandatory| Description   |
 | ------ | ------ | ---- |-------|
-| callback | [formInfo.PublishFormCrossBundleControlCallback](js-apis-app-form-formInfo.md#forminfo) | Yes| Callback function used to return the control result on cross-bundle widget addition to the home screen.|
+| callback | [formInfo.PublishFormCrossBundleControlCallback](js-apis-app-form-formInfo-sys.md#publishformcrossbundlecontrolcallback23) | Yes | Callback for cross-app publish-to-home-screen control. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -547,16 +564,16 @@ try {
   });
   console.info(`onPublishFormCrossBundleControl success`);
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
 
 
-## offPublishFormCrossBundleControl<sup>23+</sup>
+## formProvider.offPublishFormCrossBundleControl<sup>23+</sup>
 
 offPublishFormCrossBundleControl(callback?: formInfo.PublishFormCrossBundleControlCallback): void
 
-Unsubscribes from controls on cross-bundle widget addition to the home screen. This API uses an asynchronous callback to return the result.
+Unsubscribes from cross-app publish-to-home-screen control.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -570,11 +587,11 @@ Unsubscribes from controls on cross-bundle widget addition to the home screen. T
 
 | Name| Type   | Mandatory| Description   |
 | ------ | ------ | ---- |-------|
-| callback | [formInfo.PublishFormCrossBundleControlCallback](js-apis-app-form-formInfo.md#forminfo) | No| Callback function used to return the control result on cross-bundle widget addition to the home screen.|
+| callback | [formInfo.PublishFormCrossBundleControlCallback](js-apis-app-form-formInfo-sys.md#publishformcrossbundlecontrolcallback23) | No | Callback for cross-app publish-to-home-screen control. If this parameter is not passed, all subscribed callbacks are canceled.|
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Widget Error Codes](errorcode-form.md).
 
 | Error Code ID| Error Message|
 | -------- | -------- |
@@ -592,6 +609,6 @@ try {
   formProvider.offPublishFormCrossBundleControl();
   console.info(`offPublishFormCrossBundleControl success`);
 } catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```

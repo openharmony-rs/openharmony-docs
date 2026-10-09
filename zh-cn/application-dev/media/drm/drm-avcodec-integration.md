@@ -1,10 +1,12 @@
 # 基于AVCodec播放DRM节目(C/C++)
+
 <!--Kit: Drm Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @qin_wei_jie-->
+<!--Owner: @hanzhengshi-->
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @qin_wei_jie-->
+
 ## 功能介绍
 
 开发者可以调用DRM Kit的Native API，完成DRM节目播放。
@@ -27,7 +29,7 @@
 
 ## 开发指导
 
-详细的API说明请参考[DRM API](../../reference/apis-drm-kit/capi-drm.md)。
+详细的API说明请参考[Drm](../../reference/apis-drm-kit/capi-drm.md)。
 
 参考以下示例代码，完成DRM的全流程，包括：获取设备支持的DRM解决方案的名称和唯一标识的列表、创建MediaKeySystem、创建MediaKeySession、生成媒体密钥请求、处理媒体密钥响应、获取是否需要安全视频解码以及销毁资源。
 
@@ -58,6 +60,7 @@ target_link_libraries(sample PUBLIC libnative_drm.so)
 2. 获取设备支持的DRM解决方案名称和唯一标识的列表。
 
     ```c++
+    #include <cstring>
     uint32_t count = 3; // count是当前设备实际支持的DRM插件的个数，用户根据实际情况设置。
     DRM_MediaKeySystemDescription descriptions[3];
     memset(descriptions, 0, sizeof(descriptions));
@@ -67,7 +70,7 @@ target_link_libraries(sample PUBLIC libnative_drm.so)
     }
     ```
 
-    获取到设备支持的DRM解决方案的名称和唯一标识的列表后，同DRM信息做匹配，创建对应的DRM解决方案。DRM信息可通过[媒体数据解析](../avcodec/audio-video-demuxer.md#开发步骤)开发步骤第4步获取，
+    获取到设备支持的DRM解决方案的名称和唯一标识的列表后，与DRM信息做匹配，创建对应的DRM解决方案。DRM信息可通过[媒体数据解析](../avcodec/audio-video-demuxer.md#开发步骤)开发步骤第4步获取，
 
     或者直接解析媒体协议或媒体数据得到DRM解决方案唯一标识及pssh数据以生成DRM信息。
 
@@ -132,9 +135,9 @@ target_link_libraries(sample PUBLIC libnative_drm.so)
         printf("OH_MediaKeySession_GenerateMediaKeyRequest failed.");
     }
     /*
-      应用通过网络请求DRM服务，获取媒体密钥响应mediaKeyResponse，将响应传到OH_MediaKeySession_ProcessMediaKeyResponse，
-      若是离线媒体密钥响应处理，则返回离线媒体密钥标识mediaKeyId，请根据实际的数据和长度传入。
-    */
+     应用通过网络请求DRM服务，获取媒体密钥响应mediaKeyResponse，将响应传到OH_MediaKeySession_ProcessMediaKeyResponse，
+     若是离线媒体密钥响应处理，则返回离线媒体密钥标识mediaKeyId，请根据实际的数据和长度传入。
+     */
     unsigned char mediaKeyId[128] = {0x00};
     int32_t mediaKeyIdLen = 128;
     // 媒体密钥响应长度最大为MAX_DRM_MEDIA_KEY_RESPONSE_BUF_SIZE，请按实际数据输入。

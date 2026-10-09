@@ -1,7 +1,7 @@
 # Obtaining and Using System Fonts (ArkTS)
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @oh_wangxk; @gmiao522; @Lem0nC-->
+<!--Owner: @gmiao522-->
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
@@ -63,7 +63,7 @@ The following describes the common APIs and structs related to system fonts. The
 
   The following figure shows some system font configuration information of the application device system. The configuration information varies according to devices.
 
-  ![image_0000002211603664](figures/image_0000002211603664.png)
+  ![Obtaining-System-Font](figures/Obtaining-System-Font.png)
 
 ## Using or Switching System Fonts
 
@@ -137,4 +137,4 @@ If no font is specified, the default system font "HarmonyOS Sans" is used to dis
 
 The following figure shows the effect.
 
-![image_0000002246563829](figures/image_0000002246563829.png)
+![Using-or-Switching-System](figures/Using-or-Switching-System.png)

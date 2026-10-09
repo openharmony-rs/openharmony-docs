@@ -84,8 +84,10 @@ struct Type2 {
 
 ### 图片背景通铺
 这种方案可以实现图片背景的通铺，同时又能避免状态栏和导航栏的内容跟应用内容相互遮挡，导致显示效果异常。
-为了能让应用的有效显示范围避开系统的状态栏和导航栏，以免内容重叠，我们可以通过windowClass.on(type: ‘avoidAreaChange’, callback: Callback<{AvoidAreaType, AvoidArea}>) 获取系统规避区域的大小，并对这一块区域做出相应的规避。
-其中回调参数AvoidArea是规避区域，可以通过其获取规避区域的具体范围；AvoidAreaType是规避区域的类型其取值如下，示例中需要规避的状态栏和导航栏属于TYPE_SYSTEM类型。
+
+为了能让应用的有效显示范围避开系统的状态栏和导航栏，以免内容重叠，我们可以通过windowClass.on(type: ‘avoidAreaChange’, callback: Callback<{AvoidAreaType, AvoidArea}>) 获取系统避让区域的大小，并对这一块区域做出相应的避让。
+
+其中回调参数AvoidArea是避让区域，可以通过其获取避让区域的具体范围；AvoidAreaType是避让区域的类型其取值如下，示例中需要规避的状态栏和导航栏属于TYPE_SYSTEM类型。
 
 | 名称                  | 值   | 说明               |
 | -------------------- | ---- | ----------------- |
@@ -174,7 +176,7 @@ export default class MainAbility extends Ability {
   ...
 }
 ```
-类似的，若需获取刘海屏遮挡区域，需要将上述代码中注册的监听类型从TYPE_SYSTEM替换为TYPE_CUTOUT，并解析返回的[AvoidArea](../application-dev/reference/apis-arkui/js-apis-window.md#avoidarea7)来进行窗口内容避让。
+类似的，若需获取刘海屏遮挡区域，需要将上述代码中注册的监听类型从TYPE_SYSTEM替换为TYPE_CUTOUT，并解析返回的[AvoidArea](../application-dev/reference/apis-arkui/arkts-apis-window-i.md#avoidarea7)来进行窗口内容避让。
 
 ### 隐藏状态栏、导航栏
 隐藏状态栏、导航栏可以达到完全沉浸的效果，使用setWindowSystemBarEnable接口即可实现。
@@ -192,7 +194,7 @@ struct Type3 {
   context: common.UIAbilityContext = getContext(this) as common.UIAbilityContext
   async setSystemBar() {
 	let windowClass = await window.getLastWindow(context)
-	//设置导航栏，状态栏不可见
+	// 设置导航栏，状态栏不可见
 	await windowClass.setWindowSystemBarEnable([])
   }
 
@@ -216,4 +218,4 @@ struct Type3 {
 ```
 
 ## 参考
-[窗口](../application-dev/reference/apis-arkui/js-apis-window.md)
+[窗口](../application-dev/reference/apis-arkui/arkts-apis-window-Window.md)

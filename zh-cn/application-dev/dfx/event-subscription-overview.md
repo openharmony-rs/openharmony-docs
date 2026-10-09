@@ -3,7 +3,7 @@
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
 <!--Owner: @liujiaxing2024-->
-<!--Designer: @junjie_shi-->
+<!--Designer: @jiangwenhao-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
@@ -24,6 +24,8 @@ HiAppEvent能够订阅应用事件和系统事件。
 [崩溃事件介绍](hiappevent-watcher-crash-events.md)
 
 [应用冻屏事件介绍](hiappevent-watcher-freeze-events.md)
+
+[应用冻屏告警事件介绍](hiappevent-watcher-appfreezewarning-events.md)
 
 [资源泄漏事件介绍](hiappevent-watcher-resourceleak-events.md)
 

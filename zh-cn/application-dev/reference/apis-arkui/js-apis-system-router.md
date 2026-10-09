@@ -1,8 +1,8 @@
 # @system.router (页面路由)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @mayaolll-->
-<!--Designer: @jiangdayuan-->
+<!--Owner: @huangxiaolinabc-->
+<!--Designer: @fangzhiyuan1-->
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -10,7 +10,7 @@
 
 > **说明：**
 >
-> - 从API version 8 开始，该接口不再维护，推荐使用新接口[`@ohos.router`](js-apis-router.md)。
+> - 从API version 8 开始，该接口不再维护，推荐使用新接口[@ohos.router](js-apis-router.md)。
 >
 >
 > - 本模块首批接口从API version 3开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -380,7 +380,7 @@ export default new Z()
 | 名称   | 类型 | 必填 | 说明                                                         |
 | ------ | -------- | ---- | ------------------------------------------------------------ |
 | uri<sup>7+</sup> | string   | 否   | 返回到指定uri的界面，如果页面栈上没有uri页面，则不响应该情况。如果uri未设置，则返回上一页。 <br>**系统能力：** SystemCapability.ArkUI.ArkUI.Full |
-| params<sup>7+</sup> | object   | 否   | 跳转时要同时传递到目标页面的数据。 <br>**系统能力：** SystemCapability.ArkUI.ArkUI.Lite |
+| params<sup>7+</sup> | Object   | 否   | 返回时要同时传递到目标页面的数据。 <br>**系统能力：** SystemCapability.ArkUI.ArkUI.Lite |
 
 ## RouterState
 
@@ -415,8 +415,8 @@ export default new Z()
 
 | 名称     | 类型                 | 必填 | 说明                                               |
 | -------- | ------------------------ | ---- | -------------------------------------------------- |
-| success  | (errMsg: string) => void | 否   | 关闭询问对话框能力成功时触发，errMsg表示返回信息。 |
-| cancel   | (errMsg: string) => void | 否   | 关闭询问对话框能力失败时触发，errMsg表示返回信息。 |
+| success  | (errMsg: string) => void | 否   | 关闭询问对话框成功时触发，errMsg表示返回信息。 |
+| cancel   | (errMsg: string) => void | 否   | 关闭询问对话框失败时触发，errMsg表示返回信息。 |
 | complete | () => void               | 否   | 当对话框关闭时触发该回调。                           |
 
 ## ParamsInterface
@@ -424,3 +424,179 @@ export default new Z()
 | 名称          | 参数类型 | 说明           |
 | ------------- | -------- | -------------- |
 | [key: string] | object   | 路由参数列表。 |
+
+## 示例
+
+该示例展示了类Web范式下router.[replace](#routerreplace)接口的跳转功能。
+
+示例树状结构如下：
+```text
+pages
+├─ index
+│  ├─ index.css
+│  ├─ index.hml
+│  └─ index.js
+└─ routerPages
+   ├─ routerPage.css
+   ├─ routerPage.hml
+   └─ routerPage.js
+```
+```css
+/* index.css */
+.page {
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #050816;
+}
+
+.page-name {
+  width: 78%;
+  margin-top: 10px;
+  font-size: 14px;
+  text-align: center;
+  color: #f8fafc;
+}
+
+.tips {
+  width: 82%;
+  margin-top: 12px;
+  font-size: 12px;
+  text-align: center;
+  color: #cbd5e1;
+}
+
+.status {
+  width: 82%;
+  margin-top: 8px;
+  font-size: 12px;
+  text-align: center;
+  color: #94a3b8;
+}
+
+.action-button {
+  width: 190px;
+  height: 42px;
+  margin-top: 22px;
+  border-radius: 21px;
+  background-color: #2563eb;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+}
+```
+```hml
+<!--index.hml-->
+<div class="page">
+    <text class="page-name">{{ pageName }}</text>
+    <text class="tips">{{ tips }}</text>
+    <text class="status">{{ statusText }}</text>
+    <input class="action-button" type="button" value="Replace to routerPage" onclick="replaceToRouterPage"></input>
+</div>
+```
+```js
+// index.js
+import router from '@system.router';
+
+export default {
+    data: {
+        pageName: 'Index Page',
+        tips: 'Tap the button to replace this page.',
+        statusText: 'Current page: index'
+    },
+    replaceToRouterPage: function() {
+        router.replace({
+            uri: 'pages/routerPages/routerPage',
+            params: {
+                data1: 'This page was opened by router.replace().'
+            }
+        });
+    }
+}
+```
+```css
+/* routerPage.css */
+.page {
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #050816;
+}
+
+.page-name {
+  width: 78%;
+  margin-top: 10px;
+  font-size: 14px;
+  text-align: center;
+  color: #f8fafc;
+}
+
+.tips {
+  width: 82%;
+  margin-top: 12px;
+  font-size: 12px;
+  text-align: center;
+  color: #cbd5e1;
+}
+
+.status {
+  width: 82%;
+  margin-top: 8px;
+  font-size: 12px;
+  text-align: center;
+  color: #94a3b8;
+}
+
+.action-button {
+  width: 190px;
+  height: 42px;
+  margin-top: 22px;
+  border-radius: 21px;
+  background-color: #16a34a;
+  color: #ffffff;
+  font-size: 14px;
+  text-align: center;
+}
+```
+```hml
+<!--routerPage.hml-->
+<div class="page">
+    <text class="page-name">{{ pageName }}</text>
+    <text class="tips">{{ tips }}</text>
+    <text class="status">{{ statusText }}</text>
+    <input class="action-button" type="button" value="Replace to index" onclick="replaceToIndex"></input>
+</div>
+```
+```js
+// routerPage.js
+import router from '@system.router';
+
+export default {
+    data: {
+        pageName: 'Router Page',
+        tips: 'Tap the button to replace this page and return home.',
+        statusText: 'Current page: routerPage',
+        data1: 'Waiting for router.replace params.'
+    },
+    onInit: function() {
+        if (this.data1) {
+            this.statusText = this.data1;
+        }
+    },
+    replaceToIndex: function() {
+        router.replace({
+            uri: 'pages/index/index'
+        });
+    }
+}
+```
+
+![system_router_web_like.gif](figures/systemRouterWebLikeDemo.gif)

@@ -1,4 +1,4 @@
-# webSocket错误码
+# WebSocket错误码
 
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
@@ -19,17 +19,27 @@ Websocket connect failed.
 
 **错误描述**
 
-Websocket连接失败。
+WebSocket连接失败。
 
 **可能原因**
 
-1. 服务器拒绝客户端连接、协议出现问题导致握手失败或证书验证失败。
+1. 连接建立失败：可能是服务器拒绝客户端连接、协议出现问题导致握手失败或证书验证失败。
 
-2. 客户端或服务端断开连接时无状态码。
+2. 链路异常断开：客户端或服务端断开连接时无正常状态码。
+
+3. 握手阶段消息头处理异常：在添加header过程中发生错误。
+
+4. 系统内部异常。
 
 **处理步骤**
 
-检查协议是否有效、证书校验是否通过，重新连接。
+1. 检查协议是否有效、证书校验是否通过，重新连接。
+
+2. 检查网络是否异常，或切换网络重新连接。
+
+3. 检查添加header是否正确。
+
+4. 如果问题仍然存在，收集完整日志后联系技术支持获取帮助。
 
 ## 2302001 Websocket URL错误
 
@@ -39,7 +49,7 @@ Websocket url error.
 
 **错误描述**
 
-Websocket URL错误。
+WebSocket URL错误。
 
 **可能原因**
 
@@ -47,9 +57,9 @@ Websocket URL错误。
 
 **处理步骤**
 
-1.检查URL是否为空或者未包含正确的协议（ws://或wss://)。
+1. 检查URL是否为空或者未包含正确的协议（ws://或wss://）。
 
-2.检查URL长度是否超过2048个字符。
+2. 检查URL长度是否超过2048个字符。
 
 ## 2302002 Websocket 证书不存在
 
@@ -59,7 +69,7 @@ Websocket certificate file does not exist.
 
 **错误描述**
 
-Websocket 证书不存在。
+WebSocket 证书不存在。
 
 **可能原因**
 
@@ -67,9 +77,9 @@ Websocket 证书不存在。
 
 **处理步骤**
 
-1.检查CA证书路径是否有效。
+1. 检查CA证书路径是否有效。
 
-2.如指定了WebSocketRequestOptions.clientCert，请检查证书路径与私钥路径是否有效。
+2. 如指定了[WebSocketRequestOptions](./js-apis-webSocket.md#websocketrequestoptions).clientCert，请检查证书路径与私钥路径是否有效。
 
 
 ## 2302003 Websocket 连接已经存在
@@ -80,11 +90,11 @@ Websocket connection already exists.
 
 **错误描述**
 
-Websocket 连接已经存在。
+WebSocket 连接已经存在。
 
 **可能原因**
 
-Websocket 连接已经建立。
+WebSocket 连接已经建立。
 
 **处理步骤**
 
@@ -94,37 +104,73 @@ Websocket 连接已经建立。
 
 **错误信息**
 
-Can't listen to the given NIC.
+Can't listen on the given NIC.
 
 **错误描述**
 
-WebsocketServer无法在指定的NIC上进行网络监听。
+WebSocketServer无法在指定的NIC上进行网络监听。
 
 **可能原因**
 
-WebsocketServer服务器配置文件中的ip地址无效。
+WebSocketServer服务器配置文件中的IP地址无效。
 
 **处理步骤**
 
-检查网络连接是否正常，检查ip地址有效性。
+检查网络连接是否正常，检查IP地址有效性。
 
 ## 2302005 WebsocketServer 无法在指定的端口上进行网络监听
 
 **错误信息**
 
-Can't listen to the given Port.
+Can't listen on the given Port.
 
 **错误描述**
 
-WebsocketServer无法在指定的端口上进行网络监听。
+WebSocketServer无法在指定的端口上进行网络监听。
 
 **可能原因**
 
-WebsocketServer服务器配置文件中的端口号无效。
+WebSocketServer服务器配置文件中的端口号无效。
 
 **处理步骤**
 
 检查端口号的有效性。
+
+## 2302006 WebSocketServer连接不存在
+
+**错误信息**
+
+websocket connection does not exist.
+
+**错误描述**
+
+WebSocketServer连接不存在。
+
+**可能原因**
+
+被操作（关闭连接或发送消息）的WebSocketServer连接已被断开或不存在。
+
+**处理步骤**
+
+检查该连接是否仍然有效，必要时重新建立连接后再操作。
+
+## 2302007 WebsocketServer当前监听的端口已被占用
+
+**错误信息**
+
+Websocket port already occupied.
+
+**错误描述**
+
+WebsocketServer当前监听的端口已经被占用。
+
+**可能原因**
+
+指定的监听端口已被其他进程占用。
+
+**处理步骤**
+
+更换一个未被占用的端口。
 
 ## 2302998 不允许访问域名
 

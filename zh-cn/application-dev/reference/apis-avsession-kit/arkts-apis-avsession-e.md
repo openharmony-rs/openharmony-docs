@@ -1,8 +1,8 @@
 # Enums
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @liao_qian-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -18,8 +18,8 @@
 
 | 名称                        | 值   | 说明         |
 | --------------------------- | ---- | ----------- |
-| TYPE_LOCAL<sup>11+</sup>      | 0    | 本地设备，包括设备本身的内置扬声器或音频插孔、A2DP 设备。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| TYPE_CAST_PLUS_STREAM<sup>11+</sup>      | 2    | Cast+的Stream模式。表示媒体正在其他设备上展示。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| TYPE_LOCAL     | 0    | 本地设备，包括设备本身的内置扬声器或音频插孔、A2DP 设备。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| TYPE_CAST_PLUS_STREAM      | 2    | Cast+的Stream模式。表示媒体正在其他设备上展示。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | TYPE_DLNA<sup>12+</sup>      | 4    | DLNA协议。表示媒体正在其他设备上展示。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | TYPE_CAST_PLUS_AUDIO<sup>20+</sup>      | 8    | PCM模式。表示媒体正在其他设备上展示。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 
@@ -44,10 +44,10 @@
 
 | 名称             | 值           | 说明                                   |
 |----------------|-------------|--------------------------------------|
-| TYPE_CAST      | "cast"      | 调用方来自投播。                             |
-| TYPE_BLUETOOTH | "bluetooth" | 调用方来自蓝牙。                                |
-| TYPE_APP       | "app"       | 调用方来自应用。                                |
-| TYPE_NEARLINK  | "nearlink"  | 调用方来自星闪。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| TYPE_CAST      | 'cast'      | 调用方来自投播。                             |
+| TYPE_BLUETOOTH | 'bluetooth' | 调用方来自蓝牙。                                |
+| TYPE_APP       | 'app'       | 调用方来自应用。                                |
+| TYPE_NEARLINK  | 'nearlink'  | 调用方来自星闪。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## ConnectionState<sup>10+</sup>
 
@@ -76,7 +76,7 @@
 | CALL_STATE_IDLE             | 0    | 空闲状态。   |
 | CALL_STATE_INCOMING         | 1    | 来电。     |
 | CALL_STATE_ACTIVE           | 2    | 接通。     |
-| CALL_STATE_DIALING          | 3    | 响铃。     |
+| CALL_STATE_DIALING          | 3    | 拨号中。     |
 | CALL_STATE_WAITING          | 4    | 等待接通。  |
 | CALL_STATE_HOLDING          | 5    | 保持。     |
 | CALL_STATE_DISCONNECTING    | 6    | 挂断。     |
@@ -89,7 +89,7 @@
 
 | 名称                        | 值   | 说明           |
 | --------------------------  | ---- | ------------ |
-| TAG_AUDIO_VIVID             | 1    | AUDIO VIVID  |
+| TAG_AUDIO_VIVID             | 1    | 标识当前媒体资源的AUDIO VIVID属性。  |
 
 ## DecoderType<sup>19+</sup>
 
@@ -101,9 +101,9 @@
 
 | 名称                        | 值   | 说明           |
 | --------------------------  | ---- | ------------ |
-| OH_AVCODEC_MIMETYPE_VIDEO_AVC      | "video/avc"  | VIDEO AVC  |
-| OH_AVCODEC_MIMETYPE_VIDEO_HEVC     | "video/hevc" | VIDEO HEVC  |
-| OH_AVCODEC_MIMETYPE_AUDIO_VIVID    | "audio/av3a" | AUDIO AV3A  |
+| OH_AVCODEC_MIMETYPE_VIDEO_AVC      | 'video/avc'  | VIDEO AVC格式。  |
+| OH_AVCODEC_MIMETYPE_VIDEO_HEVC     | 'video/hevc' | VIDEO HEVC格式。  |
+| OH_AVCODEC_MIMETYPE_AUDIO_VIVID    | 'audio/av3a' | AUDIO AV3A格式。  |
 
 ## ResolutionLevel<sup>19+</sup>
 
@@ -115,11 +115,11 @@
 
 | 名称                        | 值   | 说明           |
 | --------------------------  | ---- | ------------ |
-| RESOLUTION_480P             | 0    | 分辨率为480P(640*480 dpi)。     |
-| RESOLUTION_720P             | 1    | 分辨率为720P(1280*720 dpi)。    |
-| RESOLUTION_1080P            | 2    | 分辨率为1080P(1920*1080 dpi)。   |
-| RESOLUTION_2K               | 3    | 分辨率为2k(2560*1440 dpi)。   |
-| RESOLUTION_4K               | 4    | 分辨率为4k(4096*3840 dpi)。   |
+| RESOLUTION_480P             | 0    | 分辨率为480P（640×480 px）。     |
+| RESOLUTION_720P             | 1    | 分辨率为720P（1280×720 px）。    |
+| RESOLUTION_1080P            | 2    | 分辨率为1080P（1920×1080 px）。   |
+| RESOLUTION_2K               | 3    | 分辨率为2K（2560×1440 px）。   |
+| RESOLUTION_4K               | 4    | 分辨率为4K（3840×2160 px）。   |
 
 ## AVCastCategory<sup>10+</sup>
 
@@ -132,7 +132,7 @@
 | 名称                        | 值   | 说明         |
 | --------------------------- | ---- | ----------- |
 | CATEGORY_LOCAL      | 0    | 本地播放，默认播放设备，声音从本机或者连接的蓝牙耳机设备出声。     |
-| CATEGORY_REMOTE      | 1    | 远端播放，远端播放设备，声音从其他设备发出声音或者画面。  |
+| CATEGORY_REMOTE      | 1    | 远端播放，声音从其他设备发出或画面在其他设备上显示。  |
 
 ## DeviceType<sup>10+</sup>
 
@@ -142,10 +142,15 @@
 
 | 名称                        | 值   | 说明         |
 | --------------------------- | ---- | ----------- |
-| DEVICE_TYPE_LOCAL      | 0    | 本地播放类型。 <br> **系统能力：** SystemCapability.Multimedia.AVSession.Core|
-| DEVICE_TYPE_BLUETOOTH      | 10   | 蓝牙设备。 <br> **系统能力：** SystemCapability.Multimedia.AVSession.Core |
-| DEVICE_TYPE_TV      | 2    | 电视。 <br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast |
-| DEVICE_TYPE_SMART_SPEAKER      | 3   | 音箱设备。 <br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast |
+| DEVICE_TYPE_LOCAL      | 0    | 本地播放类型设备。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Multimedia.AVSession.Core|
+| DEVICE_TYPE_TV      | 2    | 电视设备。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast |
+| DEVICE_TYPE_SMART_SPEAKER      | 3   | 音箱设备。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast |
+| DEVICE_TYPE_CAR      | 4    | 车载设备。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast |
+| DEVICE_TYPE_PAD      | 6    | 平板设备。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast |
+| DEVICE_TYPE_DEFAULT_CAST_PLUS_STREAM      | 7    | 支持Cast+协议的默认设备。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast |
+| DEVICE_TYPE_2IN1      | 8    | PC/2in1设备。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast |
+| DEVICE_TYPE_BLUETOOTH      | 10   | 蓝牙设备。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Multimedia.AVSession.Core |
+| DEVICE_TYPE_HIPLAY      | 15    | HiPlay设备。<br>**起始版本：** 26.0.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br> **系统能力：** SystemCapability.Multimedia.AVSession.AVCast |
 
 ## LoopMode<sup>10+</sup>
 
@@ -159,7 +164,7 @@
 | ------------------ | ---- | -------- |
 | LOOP_MODE_SEQUENCE | 0    | 顺序播放。 |
 | LOOP_MODE_SINGLE   | 1    | 单曲循环。 |
-| LOOP_MODE_LIST     | 2    | 表单循环。 |
+| LOOP_MODE_LIST     | 2    | 列表循环。 |
 | LOOP_MODE_SHUFFLE  | 3    | 随机播放。 |
 | LOOP_MODE_CUSTOM<sup>11+</sup>   | 4    | 自定义播放。  |
 
@@ -225,7 +230,7 @@
 | ERR_CODE_CAST_CONTROL_IO_FILE_NOT_FOUND<sup>13+</sup>   | 6612005 | 文件不存在。 <br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast|
 | ERR_CODE_CAST_CONTROL_IO_NO_PERMISSION<sup>13+</sup>    | 6612006 | 不允许执行输入/输出的IO操作。 <br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast|
 | ERR_CODE_CAST_CONTROL_IO_CLEARTEXT_NOT_PERMITTED<sup>13+</sup>    | 6612007 | 应用的网络安全配置不允许访问明文HTTP流量。 <br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast|
-| ERR_CODE_CAST_CONTROL_IO_READ_POSITION_OUT_OF_RANGE<sup>13+</sup>        | 6612008 | 从数据绑定中读取数据。 <br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast|
+| ERR_CODE_CAST_CONTROL_IO_READ_POSITION_OUT_OF_RANGE<sup>13+</sup>        | 6612008 | 读取位置超出范围。 <br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast |
 | ERR_CODE_CAST_CONTROL_IO_NO_CONTENTS<sup>13+</sup>     | 6612100 | 媒体中没有可播放的内容。 <br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast|
 | ERR_CODE_CAST_CONTROL_IO_READ_ERROR<sup>13+</sup>        | 6612101 | 媒体无法读取。 <br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast|
 | ERR_CODE_CAST_CONTROL_IO_CONTENT_BUSY<sup>13+</sup>         | 6612102 | 该资源正在使用中。 <br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast|
@@ -238,12 +243,12 @@
 | ERR_CODE_CAST_CONTROL_PARSING_CONTAINER_MALFORMED<sup>13+</sup>    | 6613001 | 媒体容器比特流的格式解析错误。 <br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast|
 | ERR_CODE_CAST_CONTROL_PARSING_MANIFEST_MALFORMED<sup>13+</sup>     | 6613002 | 媒体清单解析错误。 <br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast|
 | ERR_CODE_CAST_CONTROL_PARSING_CONTAINER_UNSUPPORTED<sup>13+</sup>   | 6613003 | 文件的媒体容器格式/媒体容器特性不被支持。 <br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast|
-| ERR_CODE_CAST_CONTROL_PARSING_MANIFEST_UNSUPPORTED<sup>13+</sup>      | 6613004 | 媒体清单中不支持的特性。 <br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast|
+| ERR_CODE_CAST_CONTROL_PARSING_MANIFEST_UNSUPPORTED<sup>13+</sup>      | 6613004 | 媒体清单中不支持此功能。 <br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast|
 | ERR_CODE_CAST_CONTROL_DECODING_UNSPECIFIED<sup>13+</sup>     | 6614000 | 未指定的解码错误。 <br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast|
 | ERR_CODE_CAST_CONTROL_DECODING_INIT_FAILED<sup>13+</sup>   | 6614001 | 解码器初始化失败。 <br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast|
 | ERR_CODE_CAST_CONTROL_DECODING_QUERY_FAILED<sup>13+</sup>     | 6614002 | 解码器查询失败。 <br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast|
 | ERR_CODE_CAST_CONTROL_DECODING_FAILED<sup>13+</sup>     | 6614003 | 媒体样本解码失败。 <br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast|
-| ERR_CODE_CAST_CONTROL_DECODING_FORMAT_EXCEEDS_CAPABILITIES<sup>13+</sup>    | 6614004 | 设备的能力无法解码当前格式。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast|
+| ERR_CODE_CAST_CONTROL_DECODING_FORMAT_EXCEEDS_CAPABILITIES<sup>13+</sup>    | 6614004 | 所需解码的内容格式超出设备能力导致失败。<br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast|
 | ERR_CODE_CAST_CONTROL_DECODING_FORMAT_UNSUPPORTED<sup>13+</sup>    | 6614005 | 不支持的解码格式。 <br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast|
 | ERR_CODE_CAST_CONTROL_AUDIO_RENDERER_UNSPECIFIED<sup>13+</sup>       | 6615000 | 未指定的音频渲染器错误。 <br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast|
 | ERR_CODE_CAST_CONTROL_AUDIO_RENDERER_INIT_FAILED <sup>13+</sup>     | 6615001 | 音频渲染器初始化失败。 <br>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast|
@@ -267,6 +272,36 @@
 
 | 名称                   | 值 | 说明                     |
 | ---------------------- | -- | ----------------------- |
-| SECONDS_10             | 10 | 时间为10秒。             |
-| SECONDS_15             | 15 | 时间为15秒。             |
-| SECONDS_30             | 30 | 时间为30秒。             |
+| SECONDS_10             | 10 | 时间间隔为10s。             |
+| SECONDS_15             | 15 | 时间间隔为15s。             |
+| SECONDS_30             | 30 | 时间间隔为30s。             |
+
+## BackgroundPlayMode<sup>24+</sup>
+
+表示session支持的后台播放模式的枚举。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+| 名称                      | 值 | 说明                    |
+| ------------------------- | - | ----------------------- |
+| ENABLE_BACKGROUND_PLAY    | 0 | 支持后台播放。            |
+| DISABLE_BACKGROUND_PLAY   | 1 | 不支持后台播放。          |
+
+## ExtraKey
+
+表示定义在不同场景中使用的额外键的枚举。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+| 名称                        | 值   | 说明         |
+| --------------------------- | ---- | ----------- |
+| REQUIRE_ABILITY_LIST      | 'requireAbilityList'    | 作为[setExtras](arkts-apis-avsession-AVSession.md#setextras10)接口传入的键，用于向系统设置应用所需的能力列表。<br>**系统能力：** SystemCapability.Multimedia.AVSession.Core |
+| SUPPORT_URL_CASTING      | 'url-cast'    | 作为[setExtras](arkts-apis-avsession-AVSession.md#setextras10)接口，给REQUIRE_ABILITY_LIST键传入能力列表的值，用于通知系统当前应用支持URL投播功能。<br>[setExtras](arkts-apis-avsession-AVSession.md#setextras10)接口传入入参`{[avSession.ExtraKey.REQUIRE_ABILITY_LIST]: [avSession.ExtraKey.SUPPORT_URL_CASTING]}`表示当前应用支持投播功能。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast |
+| DLNA_CURRENT_URI_METADATA      | 'CurrentURIMetadata'    | [AVMediaDescription](arkts-apis-avsession-i.md#avmediadescription10)中extras属性可传入的键，值传入string类型。<br>用于DLNA投播场景下，在发送给对端的报文中，为CurrentURIMetaData标签添加内容。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast |
+| DLNA_DIDL_LITE      | 'DIDL-Lite'    | [AVMediaDescription](arkts-apis-avsession-i.md#avmediadescription10)中extras属性可传入的键，值传入string类型。<br>用于DLNA投播场景下，在发送给对端的报文中，为DIDL-Lite标签添加内容。<br>**系统能力：** SystemCapability.Multimedia.AVSession.AVCast |

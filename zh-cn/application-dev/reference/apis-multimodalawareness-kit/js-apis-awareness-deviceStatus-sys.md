@@ -1,12 +1,12 @@
-# @ohos.multimodalAwareness.deviceStatus（设备状态感知）（系统接口）
+# @ohos.multimodalAwareness.deviceStatus (设备状态感知)(系统接口)
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: MultimodalAwareness-->
 <!--Owner: @dilligencer-->
-<!--Designer: @zou_ye-->
+<!--Designer: @saga2025-->
 <!--Tester: @judan-->
 <!--Adviser: @hu-zhiqiong-->
 
-本模块提供对设备状态的感知能力。
+本模块提供对设备状态的感知能力。该模块通过监听设备传感器数据，为应用提供设备姿态等感知能力。
 
 > **说明：**
 >
@@ -19,6 +19,20 @@
    import { deviceStatus } from '@kit.MultimodalAwarenessKit';
    ```
 
+## DeviceRotationRadian
+
+设备三维旋转状态信息。
+
+**系统能力**：SystemCapability.MultimodalAwareness.DeviceStatus
+
+**系统接口**：此接口为系统接口。
+
+| 名称 | 类型   | 只读 | 可选 | 说明             |
+| ------ | ------- | ------- | ----- | -------------- |
+|  x  | number |  否  |  否  | 设备在 X 轴方向的旋转弧度。 |
+|  y  | number |  否  |  否  | 设备在 Y 轴方向的旋转弧度。 |
+|  z  | number |  否  |  否  | 设备在 Z 轴方向的旋转弧度。 |
+
 ## deviceStatus.getDeviceRotationRadian()
 
 getDeviceRotationRadian(): Promise&lt;DeviceRotationRadian&gt;
@@ -29,7 +43,13 @@ getDeviceRotationRadian(): Promise&lt;DeviceRotationRadian&gt;
 
 **系统能力**：SystemCapability.MultimodalAwareness.DeviceStatus
 
-**系统API**：此接口为系统接口
+**系统接口**：此接口为系统接口。
+
+**返回值**：
+
+| 类型                                | 说明               |
+| ----------------------------------- | ------------------ |
+| Promise&lt;DeviceRotationRadian&gt; | 设备三维旋转状态信息。 |
 
 **错误码**：
 
@@ -51,9 +71,9 @@ getDeviceRotationRadian(): Promise&lt;DeviceRotationRadian&gt;
       deviceStatus.getDeviceRotationRadian().then((radian: deviceStatus.DeviceRotationRadian) => {
          console.info('x:' + radian.x + ' y:' + radian.y + ' z:' + radian.z);
       }).catch((err: BusinessError) => {
-         console.error('get device rotation radian failed, errmsg:' + err);
-      })
+         console.error(`Failed to get device rotation radians. Code: ${err.code}, message: ${err.message}`);
+      });
    } catch (err) {
-      console.error('invoke failed, errmsg:' + err)
+      console.error(`Failed to invoke. Code: ${err.code}, message: ${err.message}`);
    }
    ```

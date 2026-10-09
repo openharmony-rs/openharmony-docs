@@ -29,7 +29,7 @@
 
 | 名称        | 类型   | 必填 | 描述                                                         |
 | ----------- | ------ | ---- | ------------------------------------------------------------ |
-| font-family | string | 否   | 字体样式列表，用逗号分隔。列表中第一个系统中存在的字体样式或者通过[自定义字体](./js-components-common-customizing-font.md)指定的字体样式，会被选中作为当前文本的字体样式。<br/>默认值：sans-serif |
+| font-family | string | 否   | 字体系列列表，用逗号分隔。列表中第一个系统中存在的字体样式或者通过[自定义字体](./js-components-common-customizing-font.md)指定的字体样式，会被选中作为当前文本的字体样式。<br/>默认值：sans-serif |
 
 
 ## 事件
@@ -96,4 +96,4 @@ export default {
 }
 ```
 
-![zh-cn_image_0000001152588538](figures/zh-cn_image_0000001152588538.png)
+![select](figures/select.png)

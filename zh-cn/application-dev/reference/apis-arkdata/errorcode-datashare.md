@@ -1,8 +1,8 @@
 # 数据共享错误码
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @woodenarow-->
-<!--Designer: @woodenarow; @xuelei3-->
+<!--Owner: @lvcong_oh-->
+<!--Designer: @lvcong_oh-->
 <!--Tester: @chenwan188; @logic42-->
 <!--Adviser: @ge-yafang-->
 
@@ -10,7 +10,7 @@
 >
 > 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
 
-##  15700000 内部错误
+## 15700000 内部错误
 
 **错误信息**
 
@@ -35,6 +35,7 @@ Inner error.
 3. 开发者排查权限配置是否正确。
 4. 尝试重试，如果依然无法解决，可以提示用户重启应用、升级应用或升级设备版本。
 
+<!--Del-->
 ## 15700010 创建DataShareHelper异常
 
 **错误信息**
@@ -47,19 +48,20 @@ The DataShareHelper fails to be initialized.
 
 **可能原因**
 
-1. 创建DataShareHelper时，接口createDataHelper的入参uri不正确。
-2. 创建DataShareHelper时，接口createDataHelper的入参context不正确。
+1. 创建DataShareHelper时，接口createDataShareHelper的入参uri不正确。
+2. 创建DataShareHelper时，接口createDataShareHelper的入参context不正确。
 3. 创建DataShareHelper时，客户端从后台拉起DataShareExtension时，未配置后台拉起权限。
 
 **处理步骤**
 
 1. 咨询DataShare服务端提供者，获取正确的uri路径。
 2. DataShare仅支持Stage模型，检查context是否为Stage模型的context。
-3. 检查客户端是否有数据的读或者写权限，具体步骤如下：<br/>
-    (1) 找到数据提供者包名，在uri的path里面找，例如：uri = "datashareproxy://com.acts.ohos.data.datasharetest/test"。<br/>
-    (2) 根据包名找到配置，例如：bm dump --bundle-name com.acts.ohos.data.datasharetest，在里面找到DataShareExtension的配置，确认数据访问者是否有readPermission或writePermission中配置的权限。
+3. 检查客户端是否有数据的读或者写权限，具体步骤如下：<br>
+    （1） 找到数据提供者包名，在uri的path里面找，例如：uri = "datashareproxy://com.acts.ohos.data.datasharetest/test"。<br>
+    （2） 根据包名找到配置，例如：bm dump --bundle-name com.acts.ohos.data.datasharetest，在里面找到DataShareExtension的配置，确认数据访问者是否有readPermission或writePermission中配置的权限。
+<!--DelEnd-->
 
-## 15700011 uri不存在
+## 15700011 URI不存在
 
 **错误信息**
 
@@ -78,6 +80,7 @@ The URI does not exist.
 
 咨询DataShare服务端提供者，获取正确的uri路径。
 
+<!--Del-->
 ## 15700012 数据区不存在
 
 **错误信息**
@@ -113,6 +116,7 @@ DataShareHelper实例被关闭后，继续使用该实例会产生此错误码�
 **处理步骤**
 
 重新创建DataShareHelper实例，再进行使用。
+<!--DelEnd-->
 
 ## 15700014 配置共享参数错误
 
@@ -130,7 +134,7 @@ The parameter format is incorrect or the value range is invalid.
 
 1. URI长度超过256字节。
 
-2. proxyData的value长度超过4096字节。
+2. proxyData（代理数据配置项）的value长度超过4096字节。
 
 3. 接口传入的URI数组长度超过32。
 
@@ -148,5 +152,23 @@ The parameter format is incorrect or the value range is invalid.
 
 4. 检查接口传入的proxyData数组的长度是否超过32。
 
-5. 检查接口传入的URI数组或者proxyData数组中的URI是否满足格式校验：<br/>
-    URI的固定格式为`"datashareproxy://{bundleName}/{path}"`，其中bundleName为配置发布方应用的bundleName，path可随意填写。
+5. 检查接口传入的URI数组或者proxyData数组中的URI是否满足格式校验：<br>
+    uri的固定格式为`"datashareproxy://{bundleName}/{path}"`，其中bundleName为配置发布方应用的bundleName，path可随意填写。
+
+## 15700015 访问URI权限错误
+
+**错误信息**
+
+No permission to access the data specified by the URI.
+
+**错误描述**
+
+没有权限访问URI所指定的数据。
+
+**可能原因**
+
+未申请访问指定数据所需的权限。
+
+**处理步骤**
+
+咨询数据提供方访问指定数据所需的权限。

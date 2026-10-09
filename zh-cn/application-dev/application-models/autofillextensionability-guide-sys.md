@@ -4,8 +4,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @hanchen45; @Luobniz21-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 ## 概述
 
@@ -20,7 +20,7 @@
 
 ## 接口说明
 
-自动填充功能主要接口如下。其他接口介绍详情参见[AutoFillRequest](../reference/apis-ability-kit/js-apis-inner-application-autoFillRequest-sys.md)、[AutoFillExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-autoFillExtensionAbility-sys.md)。
+自动填充功能主要接口如下。其他接口介绍详情参见[AutoFillRequest (自动填充请求)](../reference/apis-ability-kit/js-apis-inner-application-autoFillRequest-sys.md)、[AutoFillExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-autoFillExtensionAbility-sys.md)。
 
 | 接口名称                                                     | 说明                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -304,7 +304,7 @@
 
 ### 实现情景化自动填充功能
 
-情景化自动填充的具体类型可参考[自动填充类型的定义](../reference/apis-ability-kit/js-apis-inner-application-autoFillType-sys.md)。
+情景化自动填充的具体类型可参考[AutoFillType (自动填充类型)](../reference/apis-ability-kit/js-apis-inner-application-autoFillType-sys.md)。
 
 开发者在实现情景化自动填充服务时，需要在DevEco Studio工程中手动新建一个SmartAutoFillExtensionAbility，具体步骤如下。
 

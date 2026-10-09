@@ -1,4 +1,4 @@
-# 添加图像效果（C/C++）
+# 添加图像效果 (C/C++)
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Multimedia-->
@@ -46,9 +46,9 @@
 
 3. 创建OH_PixelmapNative像素图对象。
 
-   创建滤镜需要一个图像框架定义的像素图对象（OH_PixelmapNative）。可以通过OH_PixelmapNative_CreatePixelMap()创建一个自定义的像素图，也可以通过OH_PixelmapNative_ConvertPixelmapNativeFromNapi()从外部引入像素图。
+   创建滤镜需要一个图像框架定义的像素图对象（OH_PixelmapNative）。可以通过OH_PixelmapNative_CreatePixelmap()创建一个自定义的像素图，也可以通过OH_PixelmapNative_ConvertPixelmapNativeFromNapi()从外部引入像素图。
    
-   本文以OH_PixelmapNative_CreatePixelMap()为例创建OH_PixelmapNative。该函数接受4个参数，第一个参数为图像像素数据的缓冲区，用于初始化PixelMap的像素。第二个参数是缓冲区长度。第三个参数是位图格式（包括长、宽、颜色类型、透明度类型等）。第四个参数即OH_PixelmapNative对象，作为出参使用。
+   本文以OH_PixelmapNative_CreatePixelmap()为例创建OH_PixelmapNative。该函数接受4个参数，第一个参数为图像像素数据的缓冲区，用于初始化Pixelmap的像素。第二个参数是缓冲区长度。第三个参数是位图格式（包括长、宽、颜色类型、透明度类型等）。第四个参数即OH_PixelmapNative对象，作为出参使用。
 
    ``` C++
    // 图片宽高分别为 600 * 400
@@ -85,9 +85,13 @@
    // 创建OH_PixelmapNative对象
    OH_PixelmapNative *pixelMapNative = nullptr;
    OH_PixelmapNative_CreatePixelmap(pixels, bufferSize, createOps, &pixelMapNative);
+   // 像素数据已拷贝至像素图中，创建完成后释放像素数据缓冲区
+   delete[] pixels;
+   // 释放初始化选项对象
+   OH_PixelmapInitializationOptions_Release(createOps);
    ```
 
-4. 基于上文生成的OH_PixelmapNative像素图对象，使用OH_Filter_CreateEffect()接口初始化OH_Filter对象。
+4. 基于上文生成的OH_PixelmapNative像素图对象，使用OH_Filter_CreateEffect()接口创建OH_Filter对象。
 
    ``` C++
    OH_Filter *filter = nullptr;
@@ -128,10 +132,14 @@
    EffectErrorCode errCodeResult = OH_Filter_GetEffectPixelMap(filter, &filterResult);
    ```
 
-7. 当不再需要滤镜生成图像效果后，请及时使用OH_Filter_Release()销毁OH_Filter对象。
+7. 当不再需要滤镜生成图像效果后，请及时使用OH_Filter_Release()释放OH_Filter对象。同样，当不再需要原图及滤镜处理后生成的像素图时，请使用OH_PixelmapNative_Release()及时释放。
 
    ``` C++
    EffectErrorCode errCodeRelease = OH_Filter_Release(filter);
+   // 释放滤镜处理后生成的像素图对象
+   OH_PixelmapNative_Release(filterResult);
+   // 释放原图像素图对象
+   OH_PixelmapNative_Release(pixelMapNative);
    ```
 
    绘制效果如下：

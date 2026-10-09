@@ -1,17 +1,18 @@
 # 自定义组件内置方法
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
-自定义组件内置方法是由ArkUI开发框架提供给应用开发者的，定义在自定义组件基类上的API。应用开发者可以在自定义组件的实例上调用对应的API以获取当前自定义组件实例相关的信息。例如，查询当前自定义组件上下文的UIContext信息。
+自定义组件内置方法由ArkUI开发框架提供，定义在自定义组件基类上。开发者可以在自定义组件的实例上调用对应的API，以获取当前自定义组件实例的相关信息，包括组件所属的UIContext、组件唯一标识、组件关联的NavDestination、Navigation和路由页面信息，以及自定义弹窗控制器。
 
 > **说明：**
 >
-> 本模块首批接口从API version 11开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 11开始支持，后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
+> - 本模块接口仅可在Stage模型下使用。
 
 ## getUIContext
 
@@ -20,6 +21,8 @@ getUIContext(): UIContext
 获取UIContext对象。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -31,7 +34,7 @@ getUIContext(): UIContext
 
 ## UIContext
 
-type UIContext = UIContext
+type UIContext = import('../api/@ohos.arkui.UIContext').UIContext
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -39,7 +42,7 @@ type UIContext = UIContext
 
 | 类型                                                      | 说明                    |
 | --------------------------------------------------------- | ----------------------- |
-| [UIContext](../arkts-apis-uicontext-uicontext.md) | 返回UIContext实例对象。 |
+| import('../api/@ohos.arkui.UIContext').[UIContext](../arkts-apis-uicontext-uicontext.md) | 返回UIContext实例对象。 |
 
 **示例：**
 
@@ -63,9 +66,11 @@ struct MyComponent {
 
 getUniqueId(): number
 
-获取当前组件的UniqueId。UniqueId为系统为每个组件分配的Id，可保证当前应用中的唯一性。若在组件对应的节点未创建或已销毁时获取，返回无效UniqueId：-1。
+获取当前组件的UniqueId。UniqueId由系统为每个组件分配，可保证在当前应用中唯一。若在组件对应的节点未创建或已销毁时获取，返回无效UniqueId：-1。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -95,7 +100,7 @@ struct MyComponent {
 
 queryNavDestinationInfo(): NavDestinationInfo | undefined;
 
-查询自定义组件所属的NavDestination信息，仅当自定义组件在NavDestination的内部时才生效。
+查询自定义组件所属的[NavDestination](ts-basic-components-navdestination.md)信息，仅当自定义组件在NavDestination的内部时才生效。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -152,7 +157,7 @@ queryNavDestinationInfo(isInner: Optional\<boolean>): NavDestinationInfo | undef
 
 | 参数名 | 类型                                          | 必填 | 说明                                          |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| isInner  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | true：向内查询最近的，且在栈内的NavDestinationInfo的详细信息。<br/>false：向外查询最近的，且在栈内的NavDestinationInfo的详细信息。|
+| isInner  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | 是   | true：向内查询最近的，且在栈内的NavDestinationInfo的详细信息。<br/>false：向外查询最近的，且在栈内的NavDestinationInfo的详细信息。|
 
 **返回值：**
 
@@ -249,7 +254,7 @@ struct MyComponent {
 ```
 
 ```ts
-//route_map.json
+// route_map.json
 {
   "routerMap": [
     {
@@ -266,7 +271,7 @@ struct MyComponent {
 
 ## NavDestinationInfo
 
-type NavDestinationInfo = NavDestinationInfo
+type NavDestinationInfo = import('../api/@ohos.arkui.observer').default.NavDestinationInfo
 
 NavDestinationInfo实例对象。
 
@@ -276,14 +281,14 @@ NavDestinationInfo实例对象。
 
 | 类型     | 说明       |
 | ------ | ---------- |
-| [NavDestinationInfo](../js-apis-arkui-observer.md#navdestinationinfo) | 返回NavDestinationInfo实例对象。 |
+| import('../api/@ohos.arkui.observer').default.[NavDestinationInfo](../js-apis-arkui-observer.md#navdestinationinfo) | 返回NavDestinationInfo实例对象。 |
 
 
 ## queryNavigationInfo<sup>12+</sup>
 
 queryNavigationInfo(): NavigationInfo | undefined
 
-查询自定义组件所属的Navigation信息。
+查询自定义组件所属的[Navigation](ts-basic-components-navigation.md)信息。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -337,7 +342,7 @@ export struct PageOne {
 
 ## NavigationInfo<sup>12+</sup>
 
-type NavigationInfo = NavigationInfo
+type NavigationInfo = import('../api/@ohos.arkui.observer').default.NavigationInfo
 
 NavigationInfo实例对象。
 
@@ -347,7 +352,7 @@ NavigationInfo实例对象。
 
 | 类型     | 说明       |
 | ------ | ---------- |
-| [NavigationInfo](../js-apis-arkui-observer.md#navigationinfo12) | 返回NavigationInfo实例对象。 |
+| import('../api/@ohos.arkui.observer').default.[NavigationInfo](../js-apis-arkui-observer.md#navigationinfo12) | 返回NavigationInfo实例对象。 |
 
 ## queryRouterPageInfo<sup>12+</sup>
 
@@ -385,7 +390,7 @@ struct MyComponent {
 
 ## RouterPageInfo<sup>12+</sup>
 
-type RouterPageInfo = RouterPageInfo
+type RouterPageInfo = import('../api/@ohos.arkui.observer').default.RouterPageInfo
 
 RouterPageInfo实例对象。
 
@@ -395,7 +400,7 @@ RouterPageInfo实例对象。
 
 | 类型     | 说明       |
 | ------ | ---------- |
-| [RouterPageInfo](../js-apis-arkui-observer.md#routerpageinfo) | 返回RouterPageInfo实例对象。 |
+| import('../api/@ohos.arkui.observer').default.[RouterPageInfo](../js-apis-arkui-observer.md#routerpageinfo) | 返回RouterPageInfo实例对象。 |
 
 ## getDialogController<sup>18+</sup>
 
@@ -432,7 +437,7 @@ struct MyComponent {
     Column() {
       Button('Close Dialog')
         .onClick(() => {
-          let ctrl: PromptActionDialogController = this.getDialogController();
+          let ctrl: PromptActionDialogController | undefined = this.getDialogController();
           if (ctrl != undefined) {
             ctrl.close();
           }
@@ -481,7 +486,7 @@ struct Index {
 
 ## PromptActionDialogController<sup>18+</sup>
 
-type PromptActionDialogController = promptAction.DialogController
+type PromptActionDialogController = import('../api/@ohos.promptAction').promptAction.DialogController
 
 自定义弹窗控制器，可以控制当前自定义弹窗，具体控制能力包括关闭弹窗等，详见[promptAction.DialogController](../js-apis-promptAction.md#dialogcontroller18)。
 
@@ -491,4 +496,4 @@ type PromptActionDialogController = promptAction.DialogController
 
 | 类型                                                         | 说明                         |
 | ------------------------------------------------------------ | ---------------------------- |
-| [promptAction.DialogController](../js-apis-promptAction.md#dialogcontroller18) | 表示对象类型为promptAction.DialogController实例对象。 |
+| import('../api/@ohos.promptAction').[promptAction.DialogController](../js-apis-promptAction.md#dialogcontroller18) | 表示对象类型为promptAction.DialogController实例对象。 |

@@ -6,14 +6,15 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=7bf845a7c8933b8c5015a7da3dfa1923d0e9dc57 translatedAt=2026-08-07T03:27:31.704Z pushedAt=2026-08-10T08:23:07.988Z -->
 
 For details about the algorithm specifications, see [ECDSA](crypto-sign-sig-verify-overview.md#ecdsa).
 
 **Signing**
 
 1. Call [cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator) and [AsyKeyGenerator.generateKeyPair](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypair-1) to generate a 256-bit key pair (**KeyPair**) using ECC.
-   
-   In addition to the example in this topic, [ECC](crypto-asym-key-generation-conversion-spec.md#ecc) and [Randomly Generating an Asymmetric Key Pair](crypto-generate-asym-key-pair-randomly.md) may help you better understand how to generate an ECC asymmetric key pair. Note that the input parameters in the reference documents may be different from those in the example below.
+
+   To generate an ECC asymmetric key, you can refer to the example below and read it together with [Asymmetric Key Generation and Conversion Specifications: ECC](crypto-key-generation-conversion.md#ecc) and [Randomly Generating an Asymmetric Key Pair](crypto-generate-asym-key-pair-randomly.md). The referenced documents may differ from the current example in input parameters. Pay attention to the differences when reading.
 
 2. Call [cryptoFramework.createSign](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesign) with the string parameter **'ECC256|SHA256'** to create a **Sign** instance. The key type is **ECC256**, and the MD algorithm is **SHA256**.
 
@@ -35,86 +36,93 @@ For details about the algorithm specifications, see [ECDSA](crypto-sign-sig-veri
 
 - Example (using asynchronous APIs):
 
-  ```ts
+  <!-- @[signature_verification_with_ecdsa_key_pair_ark_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/ecdsa_signature_verification/ecdsa_signature_verification_asynchronous.ets) -->
+
+  ``` TypeScript
+  
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-
-  // The plaintext is split into input1 and input2.
-  let input1: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("This is Sign test plan1", 'utf-8').buffer) };
-  let input2: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("This is Sign test plan2", 'utf-8').buffer) };
-
+  
+  // The complete plaintext is split into input1 and input2.
+  let input1: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from('This is Sign test plan1', 'utf-8').buffer) };
+  let input2: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from('This is Sign test plan2', 'utf-8').buffer) };
+  
   async function signMessagePromise(priKey: cryptoFramework.PriKey) {
-    let signAlg = "ECC256|SHA256";
+    let signAlg = 'ECC256|SHA256';
     let signer = cryptoFramework.createSign(signAlg);
     await signer.init(priKey);
     await signer.update(input1); // If the plaintext is short, you can use sign() to pass in the full data at a time.
     let signData = await signer.sign(input2);
     return signData;
   }
-
+  
   async function verifyMessagePromise(signMessageBlob: cryptoFramework.DataBlob, pubKey: cryptoFramework.PubKey) {
-    let verifyAlg = "ECC256|SHA256";
+    let verifyAlg = 'ECC256|SHA256';
     let verifier = cryptoFramework.createVerify(verifyAlg);
     await verifier.init(pubKey);
     await verifier.update(input1); // If the plaintext is short, you can use verify() to pass in the full data at a time.
     let res = await verifier.verify(input2, signMessageBlob);
-    console.info("verify result is " + res);
+    console.info('verify result: ' + res);
     return res;
   }
-
+  
   async function main() {
-    let keyGenAlg = "ECC256";
+    let keyGenAlg = 'ECC256';
     let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
     let keyPair = await generator.generateKeyPair();
     let signData = await signMessagePromise(keyPair.priKey);
     let verifyResult = await verifyMessagePromise(signData, keyPair.pubKey);
     if (verifyResult === true) {
-      console.info('verify success');
+      console.info('verify result: success.');
     } else {
-      console.error('verify failed');
+      console.error('verify result: failed.');
     }
   }
   ```
 
 - Example (using synchronous APIs):
 
-  ```ts
+  <!-- @[signature_verification_with_ecdsa_key_pair_ark_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/ecdsa_signature_verification/ecdsa_signature_verification_synchronous.ets) -->
+
+  ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-
-  // The plaintext is split into input1 and input2.
-  let input1: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("This is Sign test plan1", 'utf-8').buffer) };
-  let input2: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from("This is Sign test plan2", 'utf-8').buffer) };
-
-  function signMessagePromise(priKey: cryptoFramework.PriKey) {
-    let signAlg = "ECC256|SHA256";
+  
+  // The complete plaintext is split into input1 and input2.
+  let input1: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from('This is Sign test plan1', 'utf-8').buffer) };
+  let input2: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from('This is Sign test plan2', 'utf-8').buffer) };
+  
+  function signMessageSync(priKey: cryptoFramework.PriKey) {
+    let signAlg = 'ECC256|SHA256';
     let signer = cryptoFramework.createSign(signAlg);
     signer.initSync(priKey);
     signer.updateSync(input1); // If the plaintext is short, you can use sign() to pass in the full data at a time.
     let signData = signer.signSync(input2);
     return signData;
   }
-
-  function verifyMessagePromise(signMessageBlob: cryptoFramework.DataBlob, pubKey: cryptoFramework.PubKey) {
-    let verifyAlg = "ECC256|SHA256";
+  
+  function verifyMessageSync(signMessageBlob: cryptoFramework.DataBlob, pubKey: cryptoFramework.PubKey) {
+    let verifyAlg = 'ECC256|SHA256';
     let verifier = cryptoFramework.createVerify(verifyAlg);
     verifier.initSync(pubKey);
     verifier.updateSync(input1); // If the plaintext is short, you can use verify() to pass in the full data at a time.
     let res = verifier.verifySync(input2, signMessageBlob);
-    console.info("verify result is " + res);
+    console.info('verify result: ' + res);
     return res;
   }
-
+  
   function main() {
-    let keyGenAlg = "ECC256";
+    let keyGenAlg = 'ECC256';
     let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
     let keyPair = generator.generateKeyPairSync();
-    let signData = signMessagePromise(keyPair.priKey);
-    let verifyResult = verifyMessagePromise(signData, keyPair.pubKey);
+    let signData = signMessageSync(keyPair.priKey);
+    let verifyResult = verifyMessageSync(signData, keyPair.pubKey);
     if (verifyResult === true) {
-      console.info('verify success');
+      console.info('verify result: success.');
     } else {
-      console.error('verify failed');
+      console.error('verify result: failed.');
     }
   }
   ```
+
+  <!--no_check-->

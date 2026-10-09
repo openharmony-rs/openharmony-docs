@@ -60,6 +60,8 @@ Neural Network Runtime Kit<br>
 Standard Libraries<br>
 Kernel Enhance Kit<br>
 Game Controller Kit<br>
+Content Embed Kit<br>
+Automatic Scene Configuration Kit<br>
 
 ## Subsystem
 Location<br>
@@ -80,6 +82,7 @@ Advertising<br>
 WindowManager<br>
 ResourceSchedule<br>
 USB<br>
+BusManager<br>
 DistributedDataManager<br>
 Common<br>
 Window<br>
@@ -123,3 +126,4 @@ Kernel<br>
 DistributedAbilityManager<br>
 commonlibrary<br>
 Game<br>
+officeservice<br>

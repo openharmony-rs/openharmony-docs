@@ -1,12 +1,12 @@
 # @ohos.application.NotificationSubscriberExtensionContext (通知订阅扩展上下文)
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @cheerful_ricky-->
-<!--Designer: @dongqingran-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-NotificationSubscriberExtensionContext模块提供通知订阅者扩展能力。
+NotificationSubscriberExtensionContext模块提供[通知订阅](../../notification/notification-glossary.md#notification-subscription通知订阅)者扩展能力。
 
 > **说明**
 > 

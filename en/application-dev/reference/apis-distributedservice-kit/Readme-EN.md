@@ -6,7 +6,7 @@
 <!--Tester: @hanjiawei;@Ytt-test-->
 <!--Adviser: @w_Machine_cc-->
 
-- ArkTS API<!--distributed-service-arkts-->
+- ArkTS APIs<!--distributed-service-arkts-->
   
   - [@ohos.distributedDeviceManager (Device Management)](js-apis-distributedDeviceManager.md)
   - [@ohos.distributedsched.abilityConnectionManager (Cross-Device Connection Management)](js-apis-distributed-abilityConnectionManager.md)
@@ -20,25 +20,23 @@
   - [@ohos.distributedDeviceManager (Device Management) (System API)](js-apis-distributedDeviceManager-sys.md)
   - [@ohos.distributedsched.abilityConnectionManager (Cross-Device Connection Management) (System API)](js-apis-distributed-abilityConnectionManager-sys.md)
   - [@ohos.cooperate (Screen Hopping) (system API)](js-apis-devicestatus-cooperate-sys.md)
+  - [@ohos.distributedSoftBus.conversation (Cross-Device Wakeup and Message Transfer) (System API)](js-apis-conversation-sys.md)
   - APIs No Longer Maintained<!--distributed-service-dep-->
-    - [@ohos.distributedHardware.deviceManager (Device Management) (System API) (To be Deleted)](js-apis-device-manager-sys.md)
+    - [@ohos.distributedHardware.deviceManager (Device Management) (System API)](js-apis-device-manager-sys.md)
   
   <!--DelEnd-->
-- Error Codes<!--distributed-service-arkts-errcode-->
-  
-  - [Device Management Error Codes](errorcode-device-manager.md)
-  
-  <!--Del-->
-  
-  - [Screen Hopping Error Codes](errorcode-devicestatus.md)
-  
-  <!--DelEnd-->
-  - [Enhanced Connection Error Codes](errorcode-link-enhance.md)
-  - [Proxy Channel Management Error Codes](errorcode-proxyChannelManager.md)
-- C API<!--distributed-service-c-->
+- C APIs<!--distributed-service-c-->
   - Modules<!--distributed-service-module-->
     - [DeviceManager](capi-devicemanager.md)
   - Header Files<!-- distributed-service-headerfile -->
     - [oh_device_manager.h](capi-oh-device-manager-h.md)
     - [oh_device_manager_err_code.h](capi-oh-device-manager-err-code-h.md)
+- Error Codes<!--distributed-service-arkts-errcode-->
+  - [Device Management Error Codes](errorcode-device-manager.md)
+  <!--Del-->
+  - [Screen Hopping Error Codes](errorcode-devicestatus.md)
+  - [Cross-Device Wakeup and Message Transfer Error Codes](errorcode-conversation.md)
+  <!--DelEnd-->
+  - [Enhanced Connection Error Codes](errorcode-link-enhance.md)
+  - [Proxy Channel Management Error Codes](errorcode-proxyChannelManager.md)
     

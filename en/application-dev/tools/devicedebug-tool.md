@@ -1,5 +1,10 @@
 # devicedebug
-
+<!--Kit: Core File Kit-->
+<!--Subsystem: FileManagement-->
+<!--Owner: @wangfenging -->
+<!--Designer: @zl_startup-->
+<!--Tester: @liuhaonan2-->
+<!--Adviser: @jinqiuheng-->
 
 devicedebug provides the capability of sending signals to applications for debugging purposes. Currently, signals can be sent only to processes of debuggable applications managed by AMS to terminate these processes.
 
@@ -39,7 +44,7 @@ devicedebug help
 ```bash
 devicedebug kill
 ```
-Sends the signal (1-64) to a process of the debuggable application. After receiving the signal, the application terminates the corresponding process.
+Sends the signal (1-64) to a debug-type application process. After receiving the signal, the application terminates the corresponding process.
 
 **Table 3** Kill command parameters
   | Command| Description|
@@ -49,7 +54,7 @@ Sends the signal (1-64) to a process of the debuggable application. After receiv
 
   **Return value**
 
-  If the process corresponding to the PID is a non-application process, "devicedebug: kill: {pid}: No such app process" is displayed. If the corresponding process is not a debuggable application process, "devicedebug: kill: process: {pid} is not debuggable app" is displayed.
+  If the process corresponding to the PID is a non-application process, "devicedebug: kill: {pid}: No such app process" is returned. If the corresponding process is not a debuggable application process, "devicedebug: kill: process: {pid} is not debuggable app" is returned.
 
 Example:
   ```bash

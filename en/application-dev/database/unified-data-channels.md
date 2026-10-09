@@ -1,23 +1,24 @@
 # Sharing Data via Unified Data Channels (ArkTS)
+
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @jcwen-->
 <!--Designer: @junathuawei1; @zph000-->
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
-
+<!-- md-trans-meta sourceCommit=15496fed0cae2d3de7549779264807cf5940b7af translatedAt=2026-08-20T06:22:48.878Z pushedAt=2026-08-20T12:07:08.269Z -->
 
 ## When to Use
 
-In many-to-many data sharing across applications, a data channel needs to be provided to write data of different applications and share the data with other applications.
+In many-to-many cross-application data sharing, a data channel needs to be provided to write data of different apps and share the data with other apps for querying.
 
-The Unified Data Management Framework (UDMF) provides unified data channels and standard data access interfaces for different service scenarios of many-to-many cross-application data sharing.
+The Unified Data Management Framework (UDMF) provides standardized data channels and standard data write and query interfaces for different service scenarios of many-to-many cross-application data sharing.
 
 ## Definition and Implementation of Unified Data Channels
 
-The unified data channel provides cross-application data access for various service scenarios. It can temporarily store the unified data objects to be shared by an application, and manage the data modification and deletion permissions and lifecycle of the data according to certain policies.
+The standardized data channel provides cross-application data write and query channels for various service scenarios. It can temporarily store the unified data objects that conform to the standardized data definition and are to be shared by an app, provide them to other apps for access, and manage the modification and deletion permissions and lifecycle of the temporarily stored data according to certain policies.
 
-The unified data channel is implemented by the system ability provided by UDMF. When an application (data provider) needs to share data, it calls the **insertData()** method provided by UDMF to write the data to the UDMF data channel, and calls UDMF **updateData()** or **deleteData()** to update or delete the data saved by the application. The target application (data consumer) can access the data by the APIs provided by UDMF.
+The standardized data channel is implemented by the system service provided by UDMF. When an app (data provider) needs to share public data, it can call the **insertData()** API provided by UDMF to write the data to the UDMF data channel, and call the **updateData()** or **deleteData()** API provided by UDMF to update or delete the data already stored by the app. The target app (data accessor) can access the data through the **queryData()** API provided by UDMF.
 
 Avoid using **unifiedDataChannel** APIs in multi-threaded calls.
 
@@ -33,11 +34,11 @@ The unified data object (**UnifiedData**) is uniquely identified by a URI in the
 
 Currently, UDMF provides the public data channel for cross-application data sharing.
 
-The public data channel allows all applications to write data into it. When data is written, a unique identifier is generated. Then, the unique identifier can be used to update, delete, query, and retrieve the specified data, and perform a full query. To read all data in the public data channel, set **Intention** to **DATA_HUB**. The public data channel is used only to transmit process data between applications and cannot be used to transmit permission-controlled data, such as files in sandbox directories. UDMF manages the data lifecycle in a unified manner and deletes the data that has been stored for more than one hour every hour.
+**Public data channel**: a public data sharing channel for apps. All apps can write data to the channel. The writer can use the unique data identifier generated when writing data to update, delete, query by the specified data identifier, and perform a full query. The data accessor can query the specified data by the unique identifier, or set the Intention enumeration to DATA_HUB to query all data in the current data channel. The public data channel is usually used only to transmit process data between apps, and cannot be used to transmit permission-controlled data such as files in sandbox directories. UDMF manages the data lifecycle in a unified manner and periodically cleans up data that has been stored for more than one hour every hour.
 
 ## Available APIs
 
-The following table lists the UDMF APIs. All of them are executed asynchronously in callback or promise mode. The following table uses the callback mode as an example. For details about more APIs and their usage, see [Unified Data Channel](../reference/apis-arkdata/js-apis-data-unifiedDataChannel.md) and [Standard Data Definition and Description](../reference/apis-arkdata/js-apis-data-uniformTypeDescriptor.md).
+The following are APIs related to UDMF unified data channels. For more APIs and their usage, see [@ohos.data.unifiedDataChannel (Unified Data Channel)](../reference/apis-arkdata/js-apis-data-unifiedDataChannel.md) and [@ohos.data.uniformTypeDescriptor (Uniform Data Definition and Description)](../reference/apis-arkdata/js-apis-data-uniformTypeDescriptor.md).
 
 | API                                                                                   | Description                                         | 
 |-----------------------------------------------------------------------------------------|---------------------------------------------|
@@ -45,7 +46,6 @@ The following table lists the UDMF APIs. All of them are executed asynchronously
 | updateData(options: Options, data: UnifiedData, callback: AsyncCallback\<void>): void   | Updates the data in the UDMF public data channel. This API uses an asynchronous callback to return the result.          | 
 | queryData(options: Options, callback: AsyncCallback\<Array\<UnifiedData>>): void        | Queries data in the UDMF public data channel. This API uses an asynchronous callback to return the result.              | 
 | deleteData(options: Options, callback: AsyncCallback\<Array\<UnifiedData>>): void       | Deletes data from the UDMF public data channel. This API uses an asynchronous callback to return the deleted data set.|
-
 
 ## How to Develop
 
@@ -56,13 +56,14 @@ The following example walks you through on how to implement many-to-many sharing
 1. Import the **unifiedDataChannel**, **uniformTypeDescriptor**, and **uniformDataStruct** modules.
 
     <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels/entry/src/main/ets/pages/UdmfInterface.ets) -->
-    
+
     ``` TypeScript
     import { unifiedDataChannel, uniformTypeDescriptor, uniformDataStruct } from '@kit.ArkData';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     ```
 
 2. Create a **UnifiedData** object and insert it to the UDMF public data channel.
+
    1. Import the corresponding data object modules.
 
       <!-- @[import_unifiedData_object_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels/entry/src/main/ets/pages/UdmfInterface.ets) -->
@@ -72,7 +73,7 @@ The following example walks you through on how to implement many-to-many sharing
       import { image } from '@kit.ImageKit';
       ```
 
-   2. Create and inset data.
+   2. Create and insert data.
 
       <!-- @[unified_data_channels_insert_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels/entry/src/main/ets/pages/UdmfInterface.ets) -->
 
@@ -118,13 +119,13 @@ The following example walks you through on how to implement many-to-many sharing
           if (err === undefined) {
             hilog.info(0xFF00, '[Sample_Udmf]', `Succeeded in inserting data. key = ${key}`);
           } else {
-            hilog.error(0xFF00, '[Sample_Udmf]', `Succeeded in inserting data. key = ${key})`);
+            hilog.error(0xFF00, '[Sample_Udmf]', `Failed to insert data. code is ${err.code}, message is ${err.message}`);
           }
         });
       } catch (e) {
         let error: BusinessError = e as BusinessError;
         hilog.error(0xFF00, '[Sample_Udmf]',
-          `Insert data throws an exception. code is ${error.code},message is ${error.message}`);
+          `Insert data throws an exception. code is ${error.code}, message is ${error.message}`);
       }
       ```
 
@@ -159,13 +160,13 @@ The following example walks you through on how to implement many-to-many sharing
         if (err === undefined) {
           hilog.info(0xFF00, '[Sample_Udmf]', `Succeeded in updating data.`);
         } else {
-          hilog.error(0xFF00, '[Sample_Udmf]', `Failed to update data. code is ${err.code},message is ${err.message}`);
+          hilog.error(0xFF00, '[Sample_Udmf]', `Failed to update data. code is ${err.code}, message is ${err.message}`);
         }
       });
     } catch (e) {
       let error: BusinessError = e as BusinessError;
       hilog.error(0xFF00, '[Sample_Udmf]',
-        `Update data throws an exception. code is ${error.code},message is ${error.message}`);
+        `Update data throws an exception. code is ${error.code}, message is ${error.message}`);
     }
     ```
 
@@ -201,13 +202,13 @@ The following example walks you through on how to implement many-to-many sharing
             }
           }
         } else {
-          hilog.error(0xFF00, '[Sample_Udmf]', `Failed to delete data. code is ${err.code},message is ${err.message}`);
+          hilog.error(0xFF00, '[Sample_Udmf]', `Failed to delete data. code is ${err.code}, message is ${err.message}`);
         }
       });
     } catch (e) {
       let error: BusinessError = e as BusinessError;
       hilog.error(0xFF00, '[Sample_Udmf]',
-        `Delete data throws an exception. code is ${error.code},message is ${error.message}`);
+        `Delete data throws an exception. code is ${error.code}, message is ${error.message}`);
     }
     ```
 
@@ -216,7 +217,7 @@ The following example walks you through on how to implement many-to-many sharing
 1. Import the **unifiedDataChannel**, **uniformTypeDescriptor**, and **uniformDataStruct** modules.
 
     <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels/entry/src/main/ets/pages/UdmfInterface.ets) -->
-    
+
     ``` TypeScript
     import { unifiedDataChannel, uniformTypeDescriptor, uniformDataStruct } from '@kit.ArkData';
     import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -254,12 +255,12 @@ The following example walks you through on how to implement many-to-many sharing
             }
           }
         } else {
-          hilog.error(0xFF00, '[Sample_Udmf]', `Failed to query data. code is ${err.code},message is ${err.message}`);
+          hilog.error(0xFF00, '[Sample_Udmf]', `Failed to query data. code is ${err.code}, message is ${err.message}`);
         }
       });
     } catch (e) {
       let error: BusinessError = e as BusinessError;
       hilog.error(0xFF00, '[Sample_Udmf]',
-        `Query data throws an exception. code is ${error.code},message is ${error.message}`);
+        `Query data throws an exception. code is ${error.code}, message is ${error.message}`);
     }
     ```

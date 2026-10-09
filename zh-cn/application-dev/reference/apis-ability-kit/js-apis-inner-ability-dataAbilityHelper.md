@@ -3,8 +3,8 @@
 <!--Subsystem: Ability-->
 <!--Owner: @xialiangwei-->
 <!--Designer: @jsjzju-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 
 可以通过[acquireDataAbilityHelper](js-apis-ability-featureAbility.md#featureabilityacquiredataabilityhelper7)接口获取DataAbilityHelper对象。
 
@@ -85,7 +85,7 @@ openFile(uri: string, mode: string): Promise\<number>
 
 | 类型             | 说明             |
 | ---------------- | ---------------- |
-| Promise\<number> | Promise对象，返回文件说明符。 |
+| Promise\<number> | Promise对象，返回文件描述符。 |
 
 **示例：**
 
@@ -454,7 +454,7 @@ denormalizeUri(uri: string): Promise\<string>
 
 | 参数名 | 类型   | 必填 | 说明                    |
 | ---- | ------ | ---- | ----------------------- |
-| uri  | string | 是   | 表示要规范化的uri对象。 |
+| uri  | string | 是   | 表示要反规范化的uri对象。 |
 
 **返回值：**
 
@@ -1249,9 +1249,9 @@ let dataAbilityHelper: ability.DataAbilityHelper = featureAbility.acquireDataAbi
 );
 dataAbilityHelper.call('dataability:///com.example.jsapidemo.UserDataAbility',
     'method', 'arg', {'key1':'value1'}).then((data) => {
-    console.info('call success, data: ${data}');
+    console.info(`call success, data: ${data}`);
 }).catch((error: BusinessError) => {
-    console.error('call failed, error: ${error}');
+    console.error(`call failed, error: ${error}`);
 });
 ```
 
@@ -1331,9 +1331,9 @@ let dataAbilityHelper: ability.DataAbilityHelper = featureAbility.acquireDataAbi
     'dataability:///com.example.jsapidemo.UserDataAbility'
 );
 dataAbilityHelper.executeBatch('dataability:///com.example.jsapidemo.UserDataAbility', op).then((data) => {
-    console.info('executeBatch success, data: ${data}');
+    console.info(`executeBatch success, data: ${data}`);
 }).catch((error: BusinessError) => {
-    console.error('executeBatch failed, error: ${error}');
+    console.error(`executeBatch failed, error: ${error}`);
 });
 
 ```
@@ -1343,6 +1343,9 @@ dataAbilityHelper.executeBatch('dataability:///com.example.jsapidemo.UserDataAbi
 用于存储数据的PacMap类型。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.FAModel
+
+**模型约束**：
+API版本11+：此接口可在Stage模型和FA模型下使用。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ----- | ---- | ---- | ---- | ---- |

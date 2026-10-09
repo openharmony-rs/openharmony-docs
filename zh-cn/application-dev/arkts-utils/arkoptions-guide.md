@@ -1,14 +1,14 @@
 # 在build-profile.json5中配置arkOptions
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @zju-wyx-->
-<!--Designer: @xiao-peiyang; @liyancheng-->
+<!--Owner: @jokerxd-liu-->
+<!--Designer: @huyunhui1; @liyancheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @jinqiuheng-->
+<!--Adviser: @k1ngqaquuu-->
 
 ## 概述
 
-arkOptions主要提供ArkTS编译相关配置，当前文档介绍arkOptions中types配置类型、maxFlowDepth配置控制流分析最大栈深度等，arkOptions中的其他配置项请参考[build-profile.json5](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-configuration-file-overview)。
+arkOptions主要提供ArkTS编译相关配置，当前文档介绍arkOptions中types配置类型、maxFlowDepth配置控制流分析最大深度等，arkOptions中的其他配置项请参考[build-profile.json5](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-configuration-file-overview)。
 
 ## types
 
@@ -29,26 +29,26 @@ arkOptions中types字段示例：
 <!-- @[add_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkoptionsGuide/entry/build-profile.json5) --> 
 
 ``` JSON5
-// 在/entry/build-profile.json5。
+// 在/entry/build-profile.json5
 "arkOptions": {
-  "types": [
-    "../node_modules/@types/chai/index", "../node_modules/@types/mocha/index", "./src/main/ets/pages/global"
-  ]
-},
+  "types": ["pako", "./oh_modules/@types/mime", "./src/main/ets/pages/global"]
+}
 ```
 
-types字段支持填写包名、包所在位置的相对路径以及声明文件所在相对路径，仅支持当前模块内的查找，若目录下存在同名文件（后缀不同），默认加载顺序.d.ets > .d.ts。<br />
-（1）填写包名方式：通过包名到oh_modules/@types/目录查找包名中定义的声明文件，如"node"。<br />
-（2）填写包所在相对路径方式：支持在基于build-profile.json5的相对路径中查找定义的声明文件，如"./oh_modules/@types/node"。<br />
-（3）填写声明文件所在相对路径方式：支持查找相对路径下的声明文件，如"./src/main/ets/pages/global"。
+types字段支持填写包名、包所在位置的相对路径，以及声明文件所在位置的相对路径。类型的查找范围仅限于当前模块内，若目录下存在同名文件（后缀不同），默认加载顺序为 .d.ets > .d.ts，即优先加载 .d.ets 后缀的文件。
+1. 填写包名方式：通过包名到oh_modules/@types/目录查找包名中定义的声明文件，如"pako"。<br />
+2. 填写包所在相对路径方式：支持在基于build-profile.json5的相对路径中查找定义的声明文件，如"./oh_modules/@types/mime"。<br />
+3. 填写声明文件所在相对路径方式：支持查找相对路径下的声明文件，如"./src/main/ets/pages/global"。
 
 ### 注意事项
 
-如果在types字段中填写包名或者包所在位置的相对路径，需要在工程文件/entry/oh-package.json5中dependencies作如下配置：
-```json
+如果在types字段中填写包名或者包所在位置的相对路径，需要在entry模块下oh-package.json5文件的dependencies字段中作如下配置：
+<!-- @[dependencies](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkoptionsGuide/entry/oh-package.json5) -->
+
+``` JSON5
 "dependencies": {
-  "@types/chai": "latest",
-  "@types/mocha": "latest"
+  "@types/pako": "latest",
+  "@types/mime": "latest"
 }
 ```
 
@@ -62,13 +62,13 @@ declare namespace Global {
 ```
 
 通过types全局引入后，对全局类型的使用示例如下：
-<!-- @[call_global](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkoptionsGuide/entry/src/main/ets/pages/Index.ets) --> 
+<!-- @[test_party](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkoptionsGuide/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 // 在entry/src/main/ets/pages/Index.ets
-let a: Chai.Message;
-let b: Mocha.HookFunction;
-let c: Global.ObjectType;
+let testPako: pako.constants = 0;
+let testMime: mime.TypeMap = {};
+let testGlobal: Global.ObjectType = 'test';
 ```
 
 ## maxFlowDepth
@@ -79,7 +79,7 @@ arkOptions下tscConfig中maxFlowDepth字段配置文件标签说明：
 
 | 属性名称 | 含义 | 配置范围 | 数据类型 | 是否可缺省 |
 | -------- | -------- | -------- | -------- | -------- |
-| maxFlowDepth | 开发者通过maxFlowDepth字段自定义配置tsc编译过程中的tsc控制流分析最大栈，避免固定最大栈导致编译报栈问题。该配置项可配置的最小值为2000，可配置最大值为65535。 | 工程级 | 数字型 | 该标签可缺省，缺省值时使用tsc控制流分析最大栈默认值2000。 |
+| maxFlowDepth | 开发者通过maxFlowDepth字段自定义配置tsc编译过程中的tsc控制流分析最大深度，避免固定最大深度导致编译报错问题。该配置项可配置的最小值为2000，可配置最大值为65535。 | 工程级 | 数字型 | 该标签可缺省，缺省值时使用tsc控制流分析最大深度默认值2000。 |
 
 ### arkOptions下的tscConfig中maxFlowDepth字段配置说明
 
@@ -101,7 +101,7 @@ arkOptions/tscConfig中maxFlowDepth字段展示。
 ### 注意事项
 
 - 仅可在工程级目录下build-profile.json5文件中配置maxFlowDepth字段。
-- 若开发者未对maxFlowDepth字段进行配置时，则该字段默认为2000；若开发者对maxFlowDepth字段配置的值超过可配置范围，则会出现编译构建相关报错。
+- 若开发者对maxFlowDepth字段配置的值超过可配置范围，则会出现编译构建相关报错。
 
   ```txt
    hvigor ERROR: Schema validate failed.
@@ -115,7 +115,7 @@ arkOptions/tscConfig中maxFlowDepth字段展示。
       }
   ```
 
-- 如果代码中函数或者模块过长导致控制流分析深度大于或者等于该字段所配置/默认的值，则会终止控制流分析并且报错：The containing function or module body is too large for control flow analysis.
+- 如果代码中函数或者模块过长导致控制流分析深度大于该字段所配置/默认的值，则会终止控制流分析并且报错：The containing function or module body is too large for control flow analysis.
 
 ## transformLib
 
@@ -133,7 +133,6 @@ arkOptions中transformLib字段示例：
 
 在模块build-profile.json5配置文件buildOption标签的arkOptions属性中添加transformLib字段。
 ```json
-// 在/entry/build-profile.json5
 {
   "buildOption": {
     "arkOptions": {
@@ -141,7 +140,6 @@ arkOptions中transformLib字段示例：
     }
   }
 }
-
 ```
 修改方舟字节码能力可参考[编译期自定义修改方舟字节码](customize-bytecode-during-compilation.md)。
 

@@ -1,5 +1,6 @@
 # Network Sharing Error Codes
 
+<!-- md-trans-meta sourceCommit=7b8b9d8ce742c4a1126ab4e1f2ad4f9170b54175 translatedAt=2026-09-23T01:49:32.580Z pushedAt=2026-09-24T06:00:14.177Z -->
 
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
@@ -142,11 +143,11 @@ This error code is reported if an error occurs while enabling forwarding for net
 
 **Cause**
 
-The Iptables rule setting fails and therefore an error occurs while combining Iptables commands fails.
+The iptables rule setting fails and therefore an error occurs while combining Iptables commands fails.
 
 **Procedure**
 
-Enable the debug log function, and check whether Iptables commands are correctly combined.
+Enable the debug log function, and check whether iptables commands are correctly combined.
 
 ## 2202011 Failed to Obtain the Network Sharing Configuration
 

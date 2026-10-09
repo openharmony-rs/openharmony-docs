@@ -1,14 +1,14 @@
 # native_xcomponent_key_event.h
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @sd-wu-->
+<!--Owner: @pengzhiwen3-->
 <!--Designer: @dutie123-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ## Overview
 
-Declares the enums used to access native XComponent key events.
+Declares the enumerations used to access native XComponent key events.
 
 **File to include**: <ace/xcomponent/native_xcomponent_key_event.h>
 
@@ -64,8 +64,8 @@ Enumerates the key codes for key events.
 | KEY_CAMERA = 19 | Camera key|
 | KEY_VOLUME_MUTE = 22 | Speaker Mute key|
 | KEY_MUTE = 23 | Mute key|
-| KEY_BRIGHTNESS_UP = 40 | Brightness Up key.|
-| KEY_BRIGHTNESS_DOWN = 41 | Brightness Down key.|
+| KEY_BRIGHTNESS_UP = 40 | Brightness Up key|
+| KEY_BRIGHTNESS_DOWN = 41 | Brightness Down key|
 | KEY_0 = 2000 | Key 0|
 | KEY_1 = 2001 | Key 1|
 | KEY_2 = 2002 | Key 2|
@@ -192,7 +192,7 @@ Enumerates the key codes for key events.
 | KEY_VIRTUAL_MULTITASK = 2210 | Multi-task key|
 | KEY_SLEEP = 2600 | Sleep key|
 | KEY_ZENKAKU_HANKAKU = 2601 | Zenkaku/Hankaku key|
-| KEY_102ND = 2602 | 102nd key|
+| KEY_102ND = 2602 | Additional key on non-US keyboard layouts (102-key) usually located to the right of the left Shift key (corresponding to the '<', '>', or '\|', '\' characters).|
 | KEY_RO = 2603 | Ro key|
 | KEY_KATAKANA = 2604 | Katakana key|
 | KEY_HIRAGANA = 2605 | Hiragana key|
@@ -201,9 +201,9 @@ Enumerates the key codes for key events.
 | KEY_MUHENKAN = 2608 | Muhenkan key|
 | KEY_LINEFEED = 2609 | Linefeed key|
 | KEY_MACRO = 2610 | Macro key|
-| KEY_NUMPAD_PLUSMINUS = 2611 | Plus/Minus key on the numeric keypad|
+| KEY_NUMPAD_PLUSMINUS = 2611 | Plus/Minus key on numeric keypad|
 | KEY_SCALE = 2612 | Scale key|
-| KEY_HANGUEL = 2613 | Hanguel key|
+| KEY_HANGUEL = 2613 | Hangul key|
 | KEY_HANJA = 2614 | Hanja key|
 | KEY_YEN = 2615 | Yen key|
 | KEY_STOP = 2616 | Stop key|
@@ -239,8 +239,8 @@ Enumerates the key codes for key events.
 | KEY_FINANCE = 2647 | Finance key|
 | KEY_CANCEL = 2648 | Cancel key|
 | KEY_KBDILLUM_TOGGLE = 2649 | Keyboard Illumination Toggle key|
-| KEY_KBDILLUM_DOWN = 2650 | Keyboard Illumination Up key|
-| KEY_KBDILLUM_UP = 2651 | Keyboard Illumination Down key|
+| KEY_KBDILLUM_DOWN = 2650 | Keyboard Illumination Down key|
+| KEY_KBDILLUM_UP = 2651 | Keyboard Illumination Up key|
 | KEY_SEND = 2652 | Send key|
 | KEY_REPLY = 2653 | Reply key|
 | KEY_FORWARDMAIL = 2654 | Forward Mail key|
@@ -258,14 +258,14 @@ Enumerates the key codes for key events.
 | KEY_PVR = 2666 | PVR key|
 | KEY_SUBTITLE = 2667 | Subtitle key|
 | KEY_FULL_SCREEN = 2668 | Full Screen key|
-| KEY_KEYBOARD = 2669 | Keyboard.|
+| KEY_KEYBOARD = 2669 | Keyboard key, which is used to invoke or switch keyboard function keys.|
 | KEY_ASPECT_RATIO = 2670 | Aspect Ratio key|
 | KEY_PC = 2671 | Port Control key|
 | KEY_TV = 2672 | TV key|
 | KEY_TV2 = 2673 | TV key 2|
 | KEY_VCR = 2674 | VCR key|
 | KEY_VCR2 = 2675 | VCR key 2|
-| KEY_SAT = 2676 | SAT key|
+| KEY_SAT = 2676 | Satellite key|
 | KEY_CD = 2677 | CD key|
 | KEY_TAPE = 2678 | Tape key|
 | KEY_TUNER = 2679 | Tuner key|
@@ -275,10 +275,10 @@ Enumerates the key codes for key events.
 | KEY_VIDEO = 2683 | Video key|
 | KEY_MEMO = 2684 | Memo key|
 | KEY_CALENDAR = 2685 | Calendar key|
-| KEY_RED = 2686 | Red indicator.|
-| KEY_GREEN = 2687 | Green indicator.|
-| KEY_YELLOW = 2688 | Yellow indicator.|
-| KEY_BLUE = 2689 | Blue indicator.|
+| KEY_RED = 2686 | Red|
+| KEY_GREEN = 2687 | Green|
+| KEY_YELLOW = 2688 | Yellow|
+| KEY_BLUE = 2689 | Blue|
 | KEY_CHANNELUP = 2690 | Channel Up key|
 | KEY_CHANNELDOWN = 2691 | Channel Down key|
 | KEY_LAST = 2692 | Last key|
@@ -315,12 +315,12 @@ Enumerates the key codes for key events.
 | KEY_KBD_LAYOUT_NEXT = 2723 | Next Keyboard Layout key|
 | KEY_BRIGHTNESS_MIN = 2724 | Min Brightness key|
 | KEY_BRIGHTNESS_MAX = 2725 | Max Brightness key|
-| KEY_KBDINPUTASSIST_PREV = 2726 | Keyboard Input-assisted Previous key|
-| KEY_KBDINPUTASSIST_NEXT = 2727 | Keyboard Input-assisted Next key|
-| KEY_KBDINPUTASSIST_PREVGROUP = 2728 | Keyboard Input-assisted Previous key|
-| KEY_KBDINPUTASSIST_NEXTGROUP = 2729 | Keyboard Input-assisted Next key|
-| KEY_KBDINPUTASSIST_ACCEPT = 2730 | Keyboard Input-assisted Accept key|
-| KEY_KBDINPUTASSIST_CANCEL = 2731 | Keyboard Input-assisted Cancel key|
+| KEY_KBDINPUTASSIST_PREV = 2726 | Keyboard Input Assist Previous key|
+| KEY_KBDINPUTASSIST_NEXT = 2727 | Keyboard Input Assist Next key|
+| KEY_KBDINPUTASSIST_PREVGROUP = 2728 | Keyboard Input Assist Previous Group key|
+| KEY_KBDINPUTASSIST_NEXTGROUP = 2729 | Keyboard Input Assist Next Group key|
+| KEY_KBDINPUTASSIST_ACCEPT = 2730 | Keyboard Input Assist Accept key|
+| KEY_KBDINPUTASSIST_CANCEL = 2731 | Keyboard Input Assist Cancel key|
 | KEY_FRONT = 2800 | Front key, which is used to launch the windshield defogger|
 | KEY_SETUP = 2801 | Setup key|
 | KEY_WAKEUP = 2802 | Wakeup key|
@@ -333,9 +333,9 @@ Enumerates the key codes for key events.
 | KEY_SCREENLOCK = 2809 | Screen Lock key|
 | KEY_DIRECTION_ROTATE_DISPLAY = 2810 | Directional Rotation Display key|
 | KEY_CYCLEWINDOWS = 2811 | Windows Cycle key|
-| KEY_COMPUTER = 2812 | Key|
+| KEY_COMPUTER = 2812 | Computer key|
 | KEY_EJECTCLOSECD = 2813 | Eject CD key|
-| KEY_ISO = 2814 | ISO key|
+| KEY_ISO = 2814 | Special function key defined by the criterion of the ISO keyboard layout.|
 | KEY_MOVE = 2815 | Move key|
 | KEY_F13 = 2816 | F13 key|
 | KEY_F14 = 2817 | F14 key|
@@ -351,7 +351,7 @@ Enumerates the key codes for key events.
 | KEY_F24 = 2827 | F24 key|
 | KEY_PROG3 = 2828 | Program key 3|
 | KEY_PROG4 = 2829 | Program key 4|
-| KEY_DASHBOARD = 2830 | Dashboard key|
+| KEY_DASHBOARD = 2830 | Dashboard key, used to open or switch to the dashboard screen.|
 | KEY_SUSPEND = 2831 | Suspend key|
 | KEY_HP = 2832 | HP key|
 | KEY_SOUND = 2833 | Sound key|
@@ -359,14 +359,14 @@ Enumerates the key codes for key events.
 | KEY_CONNECT = 2836 | Connect key|
 | KEY_SPORT = 2837 | Sport key|
 | KEY_SHOP = 2838 | Shop key|
-| KEY_ALTERASE = 2839 | Alternate key|
+| KEY_ALTERASE = 2839 | Alternate erase key|
 | KEY_SWITCHVIDEOMODE = 2841 | Switch Video Mode key (monitor, LCD, and TV, etc.)|
 | KEY_BATTERY = 2842 | Battery key|
 | KEY_BLUETOOTH = 2843 | Bluetooth key|
 | KEY_WLAN = 2844 | WLAN key|
 | KEY_UWB = 2845 | Ultra-wideband key|
 | KEY_WWAN_WIMAX = 2846 | WWAN WiMAX key|
-| KEY_RFKILL = 2847 | RF Kill key|
+| KEY_RFKILL = 2847 | Radio disabling key|
 | KEY_CHANNEL = 3001 | Channel key|
 | KEY_BTN_0 = 3100 | Button 0|
 | KEY_BTN_1 = 3101 | Button 1|

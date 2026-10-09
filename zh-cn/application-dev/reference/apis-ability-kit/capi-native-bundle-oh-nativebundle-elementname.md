@@ -3,11 +3,11 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @memghaiyang-->
+<!--Adviser: @HelloCrease-->
 
 ```c
-typedef struct {...} OH_NativeBundle_ElementName
+typedef struct OH_NativeBundle_ElementName {...} OH_NativeBundle_ElementName
 ```
 
 ## 概述
@@ -28,4 +28,4 @@ elementName信息。
 | -- | -- |
 | char* bundleName | 应用包名。 |
 | char* moduleName | 模块名称。 |
-| char* abilityName | 组件名。 |
+| char* abilityName | Ability名称。 |

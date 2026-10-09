@@ -1,24 +1,29 @@
-# SceneResource
+# SceneResources
+
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @zzhao0-->
+<!--Owner: @jason_stark-->
 <!--Designer: @zdustc-->
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=4d7e02a7df2a06122e229dcfa39cff42326177c0 translatedAt=2026-08-20T12:29:14.890Z pushedAt=2026-08-21T09:04:46.987Z -->
 
-The SceneResource module provides basic resource types in 3D graphics.
+This module provides the basic resource types commonly used in ArkGraphics 3D, including shaders, materials, meshes, animations, environments, and images, which are used to build 3D scenes.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Modules to Import
+
 ```ts
-import { SceneResourceType, SceneResource, Shader, MaterialType, CullMode, Blend, RenderSort, Material,
-  MaterialProperty, MetallicRoughnessMaterial, ShaderMaterial, SamplerFilter, SamplerAddressMode, Sampler,
-  SubMesh, Morpher, Mesh, MeshResource, Animation, EnvironmentBackgroundType, Environment, Image } from '@kit.ArkGraphics3D';
+import { SceneResourceType, SceneResource, Shader, MaterialType, CullMode, Blend, RenderSort, PolygonMode, Material, MaterialProperty,
+  MetallicRoughnessMaterial, ShaderMaterial, UnlitMaterial, OcclusionMaterial, SamplerFilter, SamplerAddressMode, Sampler, SubMesh,
+  Morpher, Mesh, MeshResource, Animation, EnvironmentBackgroundType, Environment, Image, ImageStream, Effect } from '@kit.ArkGraphics3D';
 ```
+
 ## SceneResourceType
+
 Enumerates the scene resource types, which are used to classify resources in a scene.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
@@ -26,9 +31,9 @@ Enumerates the scene resource types, which are used to classify resources in a s
 | Name| Value| Description|
 | ---- | ---- | ---- |
 | UNKNOWN | 0 | Unknown.|
-| NODE | 1 | Node resource.|
+| NODE | 1 | Node type.|
 | ENVIRONMENT | 2 | Environment resource.|
-| MATERIAL | 3 | Material resource.|
+| MATERIAL | 3 | Material type.|
 | MESH | 4 | Mesh resource.|
 | ANIMATION | 5 | Animation resource.|
 | SHADER | 6 | Shader resource.|
@@ -37,6 +42,7 @@ Enumerates the scene resource types, which are used to classify resources in a s
 | EFFECT<sup>21+</sup> | 9 | Post-processing effect resource.|
 
 ## SceneResource
+
 Describes a resource in a scene.
 
 ### Properties
@@ -50,6 +56,7 @@ Describes a resource in a scene.
 | uri | [ResourceStr](../apis-arkui/arkui-ts/ts-types.md#resourcestr) | Yes| Yes| Resource to load. The default value is undefined.|
 
 ### destroy
+
 destroy(): void
 
 Destroys the scene resource and releases all associated resources or references. Once released, the resource can no longer be used or accessed.
@@ -57,6 +64,7 @@ Destroys the scene resource and releases all associated resources or references.
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 **Example**
+
 ```ts
 import { Shader, SceneResourceParameters, SceneResourceFactory, Scene } from '@kit.ArkGraphics3D';
 
@@ -80,7 +88,8 @@ function destroy(): void {
 ```
 
 ## Shader
-Shader resource, which inherits from [SceneResource](#sceneresource-1).
+
+Shader, inherited from [SceneResource](#sceneresource).
 
 ### Properties
 
@@ -88,7 +97,7 @@ Shader resource, which inherits from [SceneResource](#sceneresource-1).
 
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| inputs | Record<string, number \| [Vec2](js-apis-inner-scene-types.md#vec2) \| [Vec3](js-apis-inner-scene-types.md#vec3) \| [Vec4](js-apis-inner-scene-types.md#vec4) \| Image> | Yes| No| Inputs of the shader.|
+| inputs | Record<string, number \| [Vec2](js-apis-inner-scene-types.md#vec2) \| [Vec3](js-apis-inner-scene-types.md#vec3) \| [Vec4](js-apis-inner-scene-types.md#vec4) \| [Image](js-apis-inner-scene-resources.md#image)> | Yes | No | Shader input. |
 
 ### setShaderInputs<sup>23+</sup>
 
@@ -96,16 +105,18 @@ setShaderInputs(inputs: Record<string, number \| Vec2 \| Vec3 \| Vec4 \| Image>)
 
 Sets the inputs for the shader. This API delivers better performance than directly setting the **inputs** property.
 
-**Model restriction**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 **Parameters**
+
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
-| inputs | Record<string, number \| [Vec2](js-apis-inner-scene-types.md#vec2) \| [Vec3](js-apis-inner-scene-types.md#vec3) \| [Vec4](js-apis-inner-scene-types.md#vec4) \| Image> | Yes| A mapping of strings to values for setting shader inputs.|
+| inputs | Record<string, number \| [Vec2](js-apis-inner-scene-types.md#vec2) \| [Vec3](js-apis-inner-scene-types.md#vec3) \| [Vec4](js-apis-inner-scene-types.md#vec4) \| Image> | Yes | A mapping from strings to values, used to set shader inputs. |
 
 **Example**
+
 ```ts
 import { Image, MaterialType, Scene, SceneResourceFactory, Shader, ShaderMaterial } from '@kit.ArkGraphics3D';
 
@@ -130,20 +141,21 @@ function setinputs(): void {
       if (!image) {
         return;
       }
-      // Bind the shader to the texture.
+      // Set the shader of the material.
       material.colorShader = shader;
       // Set the shader inputs.
       material.colorShader.setShaderInputs({
         "uTime": 1.0,
         "uVelocity": {x: 1.0, y: 1.0, z:-1.0, w:-1.0},
         "uTexture": image
-      })
+      });
     }
   });
 }
 ```
 
 ## MaterialType
+
 Enumerates the material types in a scene. The material type defines how materials in a scene are rendered.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
@@ -153,8 +165,10 @@ Enumerates the material types in a scene. The material type defines how material
 | SHADER | 1 | Shader-defined.|
 | METALLIC_ROUGHNESS<sup>20+</sup> | 2 | Metallic-Roughness model based on Physically Based Rendering (PBR), simulating realistic material lighting effects through metallicity and roughness parameters.|
 | UNLIT<sup>23+</sup> | 3 | Material that is not affected by lighting.|
+| OCCLUSION<sup>23+</sup> | 4 | Occlusion material: occludes other objects in the scene but does not occlude the environment.|
 
 ## CullMode<sup>20+</sup>
+
 Enumerates the culling modes of PBR materials. You can improve rendering performance and visual quality by determining whether the front or back faces of objects are culled.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
@@ -166,6 +180,7 @@ Enumerates the culling modes of PBR materials. You can improve rendering perform
 | BACK | 2 | Culls the back faces of geometric objects.|
 
 ## Blend<sup>20+</sup>
+
 Controls the transparency of materials.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
@@ -175,6 +190,7 @@ Controls the transparency of materials.
 | enabled | boolean | No| No| Whether the transparency of the material is enabled. **true** if enabled, **false** otherwise.|
 
 ## RenderSort<sup>20+</sup>
+
 Describes the order in which materials are rendered, controlling the sequence of drawing in the rendering pipeline.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
@@ -185,6 +201,7 @@ Describes the order in which materials are rendered, controlling the sequence of
 | renderSortLayerOrder | number | No| Yes| Rendering order of different objects within the same rendering layer. A smaller value indicates an earlier rendering order. The value range is [0, 255]. The default value is **0**.|
 
 ## PolygonMode<sup>23+</sup>
+
 Enumerates the polygon drawing mode.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
@@ -196,20 +213,23 @@ Enumerates the polygon drawing mode.
 | POINT | 2 | Draws only the vertices of the polygon.|
 
 ## Material
-Material resource, which inherits from [SceneResource](#sceneresource-1).
+
+Material type, inherited from [SceneResource](#sceneresource).
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| materialType | [MaterialType](#materialtype) | Yes| No| Type of the material.|
+| materialType | [MaterialType](#materialtype) | Yes| No| Material type.|
 | shadowReceiver<sup>20+</sup> | boolean | No| Yes| Whether the material receives shadows. **true** if the material receives shadows, **false** otherwise. The default is **false**.|
 | cullMode<sup>20+</sup> | [CullMode](#cullmode20) | No| Yes| Culling mode of the material, which can be used to determine whether to cull front or back faces. The default value is **BACK**.|
-| blend<sup>20+</sup> | [Blend](#blend20) | No| Yes| Whether the material is transparent. The default value is **false**.|
+| blend<sup>20+</sup> | [Blend](#blend20) | No | Yes | Transparency effect setting of the material. Defaults to undefined, which means the transparency property of the material is disabled. |
 | alphaCutoff<sup>20+</sup> | number | No| Yes| Threshold of the alpha channel. If the alpha of a pixel is greater than or equal to this threshold, the pixel is rendered; otherwise, the pixel is not rendered. Setting a value less than **1** enables this mode. The value range is [0, 1]. The default value is **1**.|
 | renderSort<sup>20+</sup> | [RenderSort](#rendersort20) | No| Yes| Rendering order, which determines the rendering sequence of materials in the rendering pipeline. The default layer ID is 32, and the default order within the layer is 0.|
 | polygonMode<sup>23+</sup> | [PolygonMode](#polygonmode23) | No| Yes| Polygon drawing mode of the model. The default value is **FILL**.|
+
 ## MaterialProperty<sup>20+</sup>
+
 Defines the textures, property factors, and texture samplers used by a material.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
@@ -221,6 +241,7 @@ Defines the textures, property factors, and texture samplers used by a material.
 | sampler | [Sampler](#sampler20) | No| Yes| Texture sampler, with the default value set to **LINEAR** for magnification, minification, and mipmaps, and to **REPEAT** for U, V, and W directions.|
 
 ## MetallicRoughnessMaterial<sup>20+</sup>
+
 Material resource for creating realistic appearances, using the Metallic-Roughness model based on PBR. It simulates the surface lighting and reflection effects of different materials like metal and plastic by adjusting metallicity and roughness parameters. It inherits from [Material](#material).
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
@@ -232,13 +253,14 @@ Material resource for creating realistic appearances, using the Metallic-Roughne
 | material | [MaterialProperty](#materialproperty20) | No| No| Metal material parameters.<br>**Roughness**: strength of reflection caused by the fine surface structure details of the material.<br>**Metallic**: metallic properties of the material.<br>**Reflectance**: reflectivity of the material.|
 | ambientOcclusion | [MaterialProperty](#materialproperty20) | No| No| Ambient occlusion map, which is used to simulate the occlusion of ambient light in recesses or detailed parts of an object to enhance local shadows and improve detail realism.|
 | emissive | [MaterialProperty](#materialproperty20) | No| No| Emissive color, which is the color of the material as a light source.|
-| clearCoat | [MaterialProperty](#materialproperty20) | No| No| Clear coat, similar to car paint, carbon fiber, or a wet surface, which requires an additional transparent layer with reflective properties.|
+| clearCoat | [MaterialProperty](#materialproperty20) | No | No | Transparent layer used to overlay a reflective transparent layer on the material surface, simulating the gloss of materials such as car paint, carbon fiber, and wet surfaces. |
 | clearCoatRoughness | [MaterialProperty](#materialproperty20) | No| No| Roughness of the clear coat.|
 | clearCoatNormal | [MaterialProperty](#materialproperty20) | No| No| Normal map of the clear coat.|
 | sheen | [MaterialProperty](#materialproperty20) | No| No| Gentle, widespread shine of microfiber materials, ideal for representing fabrics and textiles.|
 | specular | [MaterialProperty](#materialproperty20) | No| No| Specular reflection of non-metallic materials, showing the intensity of traditional mirror-like reflections.|
 
 ## ShaderMaterial
+
 Shader material, which inherits from [Material](#material).
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
@@ -257,7 +279,14 @@ Material that is not affected by lighting. The shading value of the material is 
 | ---- | ---- | ---- | ---- | ---- |
 | baseColor | [MaterialProperty](#materialproperty20) | No| No| Base color property, which defines the base color information of the material.|
 
+## OcclusionMaterial<sup>23+</sup>
+
+Occlusion material: occludes other objects in the scene but does not occlude the environment. It is inherited from [Material](#material).
+
+**System capability**: SystemCapability.ArkUi.Graphics3D
+
 ## SamplerFilter<sup>20+</sup>
+
 Enumerates the filtering modes of a sampler. The filtering mode determines the interpolation method used when sampling textures, controlling how final pixel colors are calculated during texture scaling or deformation.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
@@ -267,8 +296,8 @@ Enumerates the filtering modes of a sampler. The filtering mode determines the i
 | NEAREST | 0 | Uses nearest-neighbor interpolation, which is fast but can result in jagged edges.|
 | LINEAR | 1 | Uses linear interpolation, providing a smoother appearance but with a slight performance cost.|
 
-
 ## SamplerAddressMode<sup>20+</sup>
+
 Enumerates the sampler addressing modes, which are used to control how texture coordinates are handled when they go beyond the [0, 1] range.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
@@ -280,6 +309,7 @@ Enumerates the sampler addressing modes, which are used to control how texture c
 | CLAMP_TO_EDGE | 2 | The edge pixels of the texture are stretched when the coordinates exceed the range.|
 
 ## Sampler<sup>20+</sup>
+
 Describes the sampling modes used during texture sampling.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
@@ -293,6 +323,7 @@ Describes the sampling modes used during texture sampling.
 | addressModeV | [SamplerAddressMode](#sampleraddressmode20) | No| Yes| Sampling mode of the texture in the V (vertical) direction. The default value is **REPEAT**.|
 
 ## SubMesh
+
 Sub-mesh resource.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
@@ -301,9 +332,10 @@ Sub-mesh resource.
 | ---- | ---- | ---- | ---- | ---- |
 | name | string | No| No| Name. There is no special format requirement.|
 | material | [Material](#material) | No| No| Material.|
-| aabb | [Aabb](js-apis-inner-scene-types.md#aabb) | Yes| No| Axis aligned bounding box.|
+| aabb | [Aabb](js-apis-inner-scene-types.md#aabb) | Yes | No | Axis-Aligned Bounding Box. |
 
 ## Morpher<sup>20+</sup>
+
 Defines the deformation of 3D models by adjusting the weights of different deformation targets to create dynamic effects.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
@@ -313,7 +345,8 @@ Defines the deformation of 3D models by adjusting the weights of different defor
 | targets | Record<string, number> | Yes| No| Used to store the names and weights of deformation targets. The weight value is usually within the range of [0.0, 1.0].|
 
 ## Mesh
-Mesh resource, which inherits from [SceneResource](#sceneresource-1).
+
+Mesh type, inherited from [SceneResource](#sceneresource).
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
@@ -324,12 +357,14 @@ Mesh resource, which inherits from [SceneResource](#sceneresource-1).
 | materialOverride | [Material](#material) | No| Yes| Material. The default value is undefined.|
 
 ## MeshResource<sup>18+</sup>
-Mesh resource, which inherits from [SceneResource](#sceneresource-1).
+
+Mesh resource, inherited from [SceneResource](#sceneresource).
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 ## Animation
-Animation resource, which inherits from [SceneResource](#sceneresource-1).
+
+Animation type, inherited from [SceneResource](#sceneresource).
 
 ### Properties
 
@@ -337,13 +372,14 @@ Animation resource, which inherits from [SceneResource](#sceneresource-1).
 
 | Name| Type| Read Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| enabled | boolean | No| No| Whether the animation is enabled. **true** if enabled, **false** otherwise.|
+| enabled | boolean | No | No | Whether the animation is enabled. The value **true** indicates that the animation can be played, and **false** indicates that it cannot. |
 | speed<sup>20+</sup> | number | No| Yes| Playback speed factor of the animation. The default value is **1.0**, indicating that the animation is played at normal speed. If the value is negative, the animation plays in reverse.|
 | duration | number | Yes| No| Animation duration, in seconds. The value must be greater than or equal to 0.|
 | running | boolean | Yes| No| Whether the animation is running. **true** if running, **false** otherwise.|
 | progress | number | Yes| No| Playing progress of the animation. The value range is [0, 1].|
 
 ### onFinished
+
 onFinished(callback: Callback\<void>): void
 
 Called when the animation playback is complete or the **finish** API is called.
@@ -351,11 +387,13 @@ Called when the animation playback is complete or the **finish** API is called.
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 **Parameters**
+
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
 | callback | Callback\<void> | Yes| Callback function. The return value is null.|
 
 **Example**
+
 ```ts
 import { Animation, Scene } from '@kit.ArkGraphics3D';
 
@@ -375,20 +413,21 @@ function onFinished(): void {
 ```
 
 ### onStarted
+
 onStarted(callback: Callback\<void>): void
 
 Called when the animation starts to play. The start operation is triggered by calling **start** or **restart**.
 
 **Parameters**
+
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
 | callback | Callback\<void> | Yes| Callback function. The return value is null.|
 
- 
-
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 **Example**
+
 ```ts
 import { Animation, Scene } from '@kit.ArkGraphics3D';
 
@@ -408,6 +447,7 @@ function onStarted(): void {
 ```
 
 ### pause
+
 pause(): void
 
 Pauses the animation. The animation remains in the current playing progress.
@@ -415,6 +455,7 @@ Pauses the animation. The animation remains in the current playing progress.
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 **Example**
+
 ```ts
 import { Animation, Scene } from '@kit.ArkGraphics3D';
 
@@ -432,6 +473,7 @@ function pause(): void {
 ```
 
 ### restart
+
 restart(): void
 
 Plays the animation from the beginning.
@@ -439,6 +481,7 @@ Plays the animation from the beginning.
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 **Example**
+
 ```ts
 import { Animation, Scene } from '@kit.ArkGraphics3D';
 
@@ -456,18 +499,21 @@ function restart(): void {
 ```
 
 ### seek
+
 seek(position: number): void
 
-Plays the animation from the specified position.
+Jumps the animation progress to the specified position without changing the playback state of the animation (if playing, it continues playing; if paused, it remains paused).
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 **Parameters**
+
 | Name| Type| Mandatory| Description|
 | ---- | ---- | ---- | ---- |
 | position | number | Yes| Position from which the animation playback starts. The value range is [0, 1].|
 
 **Example**
+
 ```ts
 import { Animation, Scene } from '@kit.ArkGraphics3D';
 
@@ -485,6 +531,7 @@ function seek(): void {
 ```
 
 ### start
+
 start(): void
 
 Plays the animation based on the current progress.
@@ -492,6 +539,7 @@ Plays the animation based on the current progress.
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 **Example**
+
 ```ts
 import { Animation, Scene } from '@kit.ArkGraphics3D';
 
@@ -509,13 +557,15 @@ function start(): void {
 ```
 
 ### stop
+
 stop(): void
 
-Stops playing the animation and sets its progress to **0** (not started).
+Stops playing an animation and sets the animation progress to 0.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
 **Example**
+
 ```ts
 import { Animation, Scene } from '@kit.ArkGraphics3D';
 
@@ -525,7 +575,7 @@ function stop(): void {
   scene.then(async (result: Scene) => {
     if (result && result.animations && result.animations[0]) {
       let anim: Animation = result.animations[0];
-      // Stop playing the animation and set its progress to 0 (not started).
+      // Stop playing the animation and set the animation progress to 0.
       anim.stop();
     }
   });
@@ -533,11 +583,14 @@ function stop(): void {
 ```
 
 ### finish
+
 finish(): void
 
-Finishes the playing of the animation and sets its progress of **1** (finished).
+Jumps directly to the end of the animation and sets the animation progress to 1.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
+
+**Example**
 
 ```ts
 import { Animation, Scene } from '@kit.ArkGraphics3D';
@@ -548,7 +601,7 @@ function finish(): void {
   scene.then(async (result: Scene) => {
     if (result && result.animations && result.animations[0]) {
       let anim: Animation = result.animations[0];
-      // Finish the playing of the animation and set its progress of **1** (finished).
+      // Jump directly to the end of the animation and set the animation progress to 1.
       anim.finish();
     }
   });
@@ -556,6 +609,7 @@ function finish(): void {
 ```
 
 ## EnvironmentBackgroundType
+
 Enumerates the environment background types, which are used to define how the background of a scene is presented.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
@@ -565,10 +619,11 @@ Enumerates the environment background types, which are used to define how the ba
 | BACKGROUND_NONE | 0 | No background.|
 | BACKGROUND_IMAGE | 1 | Image background.|
 | BACKGROUND_CUBEMAP | 2 | Cubemap background.|
-| BACKGROUND_EQUIRECTANGULAR | 3 | Equirectangular background.|
+| BACKGROUND_EQUIRECTANGULAR | 3 | Equirectangular projection background.|
 
 ## Environment
-Environment resource, which inherits from [SceneResource](#sceneresource-1).
+
+Environment type, inherited from [SceneResource](#sceneresource).
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
@@ -581,10 +636,11 @@ Environment resource, which inherits from [SceneResource](#sceneresource-1).
 | environmentImage | [Image](#image) \| null | No| Yes| Environment image. The default value is undefined.|
 | radianceImage | [Image](#image) \| null | No| Yes| Radiance image. The default value is undefined.|
 | irradianceCoefficients | [Vec3](js-apis-inner-scene-types.md#vec3)[] | No| Yes| Irradiance coefficients. The default value is undefined.|
-| environmentRotation<sup>23+</sup> | [Quaternion](js-apis-inner-scene-types.md#quaternion) | No| Yes| Rotation of the ambient light. The default value is undefined. The parameter must be a normalized quaternion.|
+| environmentRotation<sup>23+</sup> | [Quaternion](js-apis-inner-scene-types.md#quaternion) | No | Yes | Rotation of the ambient light. Defaults to undefined. The input parameter must be a normalized quaternion.<br>**Model restriction:** This API can be used only in the stage model.|
 
 ## Image
-Image resource, which inherits from [SceneResource](#sceneresource-1).
+
+Image type, inherited from [SceneResource](#sceneresource).
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
@@ -593,9 +649,25 @@ Image resource, which inherits from [SceneResource](#sceneresource-1).
 | width | number | Yes| No| Image width, in px. The value must be greater than 0.|
 | height | number | Yes| No| Image height, in px. The value must be greater than 0.|
 
+## ImageStream
+
+Image stream type, which inherits from [Image](#image).
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUi.Graphics3D
+
+| Name | Type | Read Only | Optional | Description |
+| ---- | ---- | ---- | ---- | ---- |
+| surfaceId | string | Yes | No | Stream ID, which consists of numeric characters. The value must be an integer greater than 0. |
+
 ## Effect<sup>21+</sup>
 
-Effect resource, which inherits from [SceneResource](#sceneresource-1).
+Effect resource, which inherits from [SceneResource](#sceneresource). It is obtained from the [createEffect](js-apis-inner-scene.md#createeffect21) API.
+
+### Properties
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
 
@@ -603,3 +675,88 @@ Effect resource, which inherits from [SceneResource](#sceneresource-1).
 | ---- | ---- | ---- | ---- | ---- |
 | enabled | boolean | No| No| Enabled status of the effect. **true** if enabled, **false** otherwise.|
 | effectId | string  | Yes| No| Effect ID, which is in the format of 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX', for example, **'e68a7f45-2d21-4a0d-9aef-7d9c825d3f12'**. It is used to create an effect.|
+
+### getPropertyValue<sup>23+</sup>
+
+getPropertyValue(propertyName: string): Object | null | undefined
+
+Obtains the value of the specified effect property.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUi.Graphics3D
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| ---- | ---- | ---- | ---- |
+| propertyName | string | Yes| Name of a specified effect property. Currently, the following strings are supported:<br>-'exposure': exposure level of an image.<br>-'vibrance': natural saturation of an image.|
+
+**Return value**
+
+| Type| Description|
+| ---- | ---- |
+| Object \| null \| undefined | Effect property value. If the value fails to be obtained, **null** is returned.|
+
+**Example**
+
+``` ts
+import { SceneResourceFactory, Scene, Effect, EffectParameters } from '@kit.ArkGraphics3D';
+
+function getEffectProperty() {
+  let scene: Promise<Scene> = Scene.load();
+  scene.then(async (result: Scene | undefined) => {
+    if (!result) {
+      return;
+    }
+    let sceneFactory: SceneResourceFactory = result.getResourceFactory();
+    // Effect ID, which is in the format of 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX', for example, 'e68a7f45-2d21-4a0d-9aef-7d9c825d3f12'.
+    let params: EffectParameters = {effectId: "e68a7f45-2d21-4a0d-9aef-7d9c825d3f12"};
+    let effect: Effect = await sceneFactory.createEffect(params);
+    effect.getPropertyValue('exposure');
+  });
+}
+```
+
+### setPropertyValue<sup>23+</sup>
+
+setPropertyValue(propertyName: string, value: Object | undefined): boolean
+
+Sets the value of a specified effect property.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ArkUi.Graphics3D
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| ---- | ---- | ---- | ---- |
+| propertyName | string | Yes| Name of a specified effect property. Currently, the following strings are supported:<br>-'exposure': exposure level of an image.<br>-'vibrance': natural saturation of an image.|
+| value | Object \| undefined | Yes| Value of the effect property to set.<br>-'exposure': The value is of the number type. The recommended value range is [-5, 5]. A larger value indicates a brighter image.<br>-'vibrance': The value is of the number type. The recommended value range is [-1, 1]. A larger value indicates more vivid image colors.|
+
+**Return value**
+
+| Type| Description|
+| ---- | ---- |
+| boolean | Whether the operation of setting the effect property value is successful. **true** indicates that the setting is successful, and **false** indicates that the setting fails.|
+
+**Example**
+
+``` ts
+import { SceneResourceFactory, Scene, Effect, EffectParameters } from '@kit.ArkGraphics3D';
+
+function setEffectProperty() {
+  let scene: Promise<Scene> = Scene.load();
+  scene.then(async (result: Scene | undefined) => {
+    if (!result) {
+      return;
+    }
+    let sceneFactory: SceneResourceFactory = result.getResourceFactory();
+    // Effect ID, which is in the format of 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX', for example, 'e68a7f45-2d21-4a0d-9aef-7d9c825d3f12'.
+    let params: EffectParameters = {effectId: "e68a7f45-2d21-4a0d-9aef-7d9c825d3f12"};
+    let effect: Effect = await sceneFactory.createEffect(params);
+    effect.setPropertyValue('exposure', 1);
+  });
+}
+```

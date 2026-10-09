@@ -188,7 +188,7 @@ Common APIs for adding, removing, modifying, and accessing elements in LightWeig
 
 ## PlainArray
 
-[PlainArray](../reference/apis-arkts/js-apis-plainarray.md) is used to store a collection of KV pairs with unique keys, where keys are of the number type. Each key corresponds to a value. Defined by generics, PlainArray uses a more lightweight structure, with key lookup relying on binary search algorithms and mapping to **value** values in other arrays.
+[PlainArray](../reference/apis-arkts/js-apis-plainarray.md) is used to store a collection of KV pairs with unique keys, where keys are of the number type. Each key corresponds to a value. Defined by generics, PlainArray uses a more lightweight structure, with key lookup relying on binary search algorithms and mapping to values in other arrays.
 
 The default initial capacity is 16, and it supports dynamic resizing, doubling its size each time.
 

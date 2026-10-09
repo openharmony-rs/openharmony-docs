@@ -2,10 +2,10 @@
 
 <!--Kit: Drm Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @qin_wei_jie-->
+<!--Owner: @hanzhengshi-->
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @qin_wei_jie-->
 
 ## 概述
 
@@ -36,8 +36,8 @@
 | [DRM_PsshInfo](capi-drm-drm-psshinfo.md) | DRM_PsshInfo | DRM内容保护系统专用头（Protection System Specific Header）信息。 |
 | [DRM_MediaKeySystemInfo](capi-drm-drm-mediakeysysteminfo.md) | DRM_MediaKeySystemInfo | 加密媒体内容的DRM信息。 |
 | [DRM_MediaKeySystemDescription](capi-drm-drm-mediakeysystemdescription.md) | DRM_MediaKeySystemDescription | DRM解决方案名称及其UUID的列表。|
-| [MediaKeySystem](capi-drm-mediakeysystem.md) | MediaKeySystem | MediaKeySystem结构。 |
-| [MediaKeySession](capi-drm-mediakeysession.md) | MediaKeySession | MediaKeySession结构。  |
+| [MediaKeySystem](capi-drm-mediakeysystem.md) | MediaKeySystem | MediaKeySystem结构，用于表示一个媒体密钥系统实例。MediaKeySystem提供数字版权保护能力，负责DRM插件配置管理、设备证书管理、统计信息获取、内容保护级别查询以及创建MediaKeySession等功能。通过OH_MediaKeySystem_Create接口创建实例，通过OH_MediaKeySystem_Destroy接口销毁实例。 |
+| [MediaKeySession](capi-drm-mediakeysession.md) | MediaKeySession | MediaKeySession结构，用于表示一个媒体密钥会话实例。MediaKeySession是DRM解密流程的核心组件，负责生成许可证请求、处理许可证响应、管理密钥状态等功能。每个MediaKeySession实例对应一个播放会话的密钥解密过程。通过OH_MediaKeySystem_CreateMediaKeySession接口创建实例，通过OH_MediaKeySession_Destroy接口销毁实例。每个MediaKeySystem可创建多个MediaKeySession实例，用于处理不同的播放会话。  |
 
 ### 枚举
 
@@ -54,7 +54,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [typedef void (\*DRM_MediaKeySystemInfoCallback)(DRM_MediaKeySystemInfo *mediaKeySystemInfo)](#drm_mediakeysysteminfocallback) | DRM_MediaKeySystemInfoCallback | 应用为从媒体源获取DRM信息而设置的回调。 |
+| [typedef void (\*DRM_MediaKeySystemInfoCallback)(DRM_MediaKeySystemInfo *mediaKeySystemInfo)](#drm_mediakeysysteminfocallback) | DRM_MediaKeySystemInfoCallback | 应用为从媒体源获取DRM信息而设置的回调函数。 |
 
 ### 宏定义
 
@@ -79,8 +79,8 @@
 | MAX_MEDIA_KEY_STATUS_NAME_LEN 64 | 媒体密钥状态名称的最大长度。<br>**起始版本：** 11 |
 | MAX_MEDIA_KEY_STATUS_VALUE_LEN 256 | 媒体密钥状态值的最大长度。<br>**起始版本：** 11 |
 | DRM_UUID_LEN 16 | DRM解决方案的UUID长度。<br>**起始版本：** 11 |
-| MAX_PSSH_DATA_LEN 2048 | PSSH（Protected System Specific Header）信息的最大长度。<br>**起始版本：** 11 |
-| MAX_PSSH_INFO_COUNT 8 | PSSH（Protected System Specific Header）信息的最大数量。<br>**起始版本：** 11 |
+| MAX_PSSH_DATA_LEN 2048 | PSSH（Protection System Specific Header）信息的最大长度。<br>**起始版本：** 11 |
+| MAX_PSSH_INFO_COUNT 8 | PSSH（Protection System Specific Header）信息的最大数量。<br>**起始版本：** 11 |
 | MAX_MEDIA_KEY_SYSTEM_NAME_LEN 128 | MediaKeySystem名称的最大长度。<br>**起始版本：** 12 |
 | MAX_MEDIA_KEY_SYSTEM_NUM 8 | MediaKeySystem的最大数量。<br>**起始版本：** 12 |
 
@@ -226,7 +226,7 @@ typedef void (*DRM_MediaKeySystemInfoCallback)(DRM_MediaKeySystemInfo *mediaKeyS
 
 **描述**
 
-应用为从媒体源获取DRM信息而设置的回调。
+应用为从媒体源获取DRM信息而设置的回调函数。
 
 **起始版本：** 11
 
@@ -235,6 +235,6 @@ typedef void (*DRM_MediaKeySystemInfoCallback)(DRM_MediaKeySystemInfo *mediaKeyS
 
 | 参数项 | 描述 |
 | -- | -- |
-| [DRM_MediaKeySystemInfo](capi-drm-drm-mediakeysysteminfo.md) *mediaKeySystemInfo | 从媒体源获取的DRM信息。 |
+| [DRM_MediaKeySystemInfo](capi-drm-drm-mediakeysysteminfo.md) *mediaKeySystemInfo | 输出参数，从媒体源获取的DRM信息，包含DRM内容保护系统的唯一标识和PSSH数据。 |
 
 

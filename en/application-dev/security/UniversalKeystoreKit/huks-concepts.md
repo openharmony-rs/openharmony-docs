@@ -6,13 +6,13 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=3780eaa820092ee975c32f64eb288f44d3471751 translatedAt=2026-08-13T08:20:25.871Z pushedAt=2026-08-13T10:20:24.674Z -->
 
 Familiarity with the following concepts is helpful because they are used throughout your development process.
 
 ## TEE
 
 Trusted Execution Environment (TEE) is a secure area of a main processor of a smartphone, tablet, or a mobile device. Any data in the TEE cannot be read or tampered with by any code outside it. The TEE provides a secure execution environment for trusted applications (TAs) to ensure end-to-end security by features, such as isolated execution, integrity of applications, confidentiality of their assets, and data access permissions.
-
 
 ## Key Material Format
 
@@ -24,13 +24,13 @@ Key pair material = Key pair material header + Key pair material content
 
 For example, an application needs an RSA key in Uint8Array format, the variables are assigned with values based on the structure of the RSA key pair material in the memory.
 
-The following figure illustrates the structure of the RSA key material. For details about the key material formats of other algorithms, see the tables below.
+The following figure uses the RSA key material memory structure as an example. For the formats of other algorithms, see the table below the sample.
 
 ![keyt](figures/keyt.png)
 
 The key algorithm is a value of [HuksKeyAlg](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukskeyalg).
 
-```
+```ts
 let rsa2048KeyPairMaterial = new Uint8Array([
     0x01, 0x00, 0x00, 0x00, // Key algorithm: huks.HuksKeyAlg.HUKS_ALG_RSA = 1
     0x00, 0x08, 0x00, 0x00, // Key size (bit): 2048
@@ -77,29 +77,44 @@ let rsa2048KeyPairMaterial = new Uint8Array([
 ```
 
 - RSA key pair material format
+
   | Key<br>Algorithm| Key<br>Size| Modulus n<br>Length L<sub>n</sub>| Public Key Exponent e<br>Length L<sub>e</sub>| Private Key Exponent d<br>Length L<sub>d</sub>| n | e | d |
   | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- |
   | 4 bytes| 4 bytes| 4 bytes| 4 bytes| 4 bytes| L<sub>n</sub> bytes| L<sub>e</sub> bytes| L<sub>d</sub> bytes|
 
 - ECC key pair material format
+
   | Key<br>Algorithm| Key<br>Size| X Coordinate<br>Length L<sub>x</sub>| Y Coordinate<br>Length L<sub>y</sub>| Z Coordinate<br>Length L<sub>z</sub>| x | y | z |
   | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- |
   | 4 bytes| 4 bytes| 4 bytes| 4 bytes| 4 bytes| L<sub>x</sub> bytes| L<sub>y</sub> bytes| L<sub>z</sub> bytes|
 
+<!--Del-->
+
 - DSA key pair material format
+
   | Key<br>Algorithm| Key<br>Size| Private Key x<br>Length L<sub>x</sub>| Public Key y<br>Length L<sub>y</sub>| Prime Number p<br>Length L<sub>p</sub>| Prime Factor q<br>Length L<sub>q</sub>| g length (L<sub>g</sub>)| x | y | p | q | g |
   | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- |
   | 4 bytes| 4 bytes| 4 bytes| 4 bytes| 4 bytes| 4 bytes| 4 bytes| L<sub>x</sub> bytes| L<sub>y</sub> bytes| L<sub>p</sub> bytes| L<sub>q</sub> bytes| L<sub>g</sub> bytes|
 
+<!--DelEnd-->
+
 - DH key pair material format
+
   | Key<br>Algorithm| Key<br>Size| Public Key (pk)<br>Length L<sub>pk</sub>| Private Key (sk)<br>Length L<sub>sk</sub>| Reserved<br>Field| pk | sk |
   | -------- | -------- | -------- | -------- | -------- | -------- | -------- |
   | 4 bytes| 4 bytes| 4 bytes| 4 bytes| 4 bytes| L<sub>pk</sub> bytes| L<sub>sk</sub> bytes|
 
 - Curve25519 key pair material format
+
   | Key<br>Algorithm| Key<br>Size| Public Key (pk)<br>Length L<sub>pk</sub>| Private Key (sk)<br>Length L<sub>sk</sub>| Reserved<br>Field| pk | sk |
   | -------- | -------- | -------- | -------- | -------- | -------- | -------- |
   | 4 bytes| 4 bytes| 4 bytes| 4 bytes| 4 bytes| L<sub>pk</sub> bytes| L<sub>sk</sub> bytes|
+
+- ML-DSA key pair material format:
+
+  | Key<br>Algorithm | Security<br>Parameter Set | Public Key (pk)<br>Length L<sub>pk</sub> | Private Key (sk)<br>Length L<sub>sk</sub> | Reserved<br>Field | pk | sk |
+  | -------- | -------- | -------- | -------- | -------- | -------- | -------- |
+  | 4 bytes | 4 bytes | 4 bytes | 4 bytes | 4 bytes | L<sub>pk</sub> bytes | L<sub>sk</sub> bytes |
 
 ### Public Key Material Format
 
@@ -107,7 +122,7 @@ When a public key is exported or imported, the key material is encapsulated in t
 
 The following is ECC public key in DER format:
 
-```
+```ts
 let eccP256PubKey = new Uint8Array([
     0x30, 0x59, 0x30, 0x13, 0x06, 0x07, 0x2a, 0x86, 0x48, 0xce, 0x3d, 0x02, 0x01, 0x06, 0x08, 0x2a,
     0x86, 0x48, 0xce, 0x3d, 0x03, 0x01, 0x07, 0x03, 0x42, 0x00, 0x04, 0xc0, 0xfe, 0x1c, 0x67, 0xde,
@@ -128,7 +143,7 @@ The following is an example of the RSA private key material.
 
 ![priKey](figures/priKey.png)
 
-```
+```ts
 let rsa2048PrivateKeyMaterial = new Uint8Array([
     0x01, 0x00, 0x00, 0x00, // Key algorithm: huks.HuksKeyAlg.HUKS_ALG_RSA = 1
     0x00, 0x08, 0x00, 0x00, // Key size (bit): 2048

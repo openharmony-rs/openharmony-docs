@@ -3,11 +3,12 @@
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @enjoy_sunshine-->
-<!--Designer: @chengguohong; @tangjia15-->
+<!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=4f824c67b9f4e04b01e793c0dcb9c04799653b39 translatedAt=2026-09-15T02:39:19.012Z pushedAt=2026-09-16T02:10:49.530Z -->
 
-The **constant** module provides definitions of the constants used in Bluetooth.
+The **constant** module provides the definitions of Bluetooth constants, including enumeration constants such as access permission. These constants are used to identify and distinguish different states and types during Bluetooth communication. This module is applicable to scenarios such as Bluetooth connection management.
 
 > **NOTE**
 >
@@ -22,7 +23,7 @@ import { constant } from '@kit.ConnectivityKit';
 
 ## AccessAuthorization<sup>11+</sup>
 
-Enumerates the access permissions.
+Enumerates the Bluetooth access authorization states. This method can be used to indicate the authorization state for a peer Bluetooth device to access the local Bluetooth profile (such as contacts and messages), which can be used in Bluetooth data access authorization scenarios.
 
 **System API**: This is a system API.
 

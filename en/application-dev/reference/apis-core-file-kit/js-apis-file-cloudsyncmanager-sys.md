@@ -3,10 +3,10 @@
 <!--Subsystem: FileManagement-->
 <!--Owner: @Hermits; @reminder2352-->
 <!--Designer: @oh_create_jiawei-->
-<!--Tester: @liuhonggang123-->
+<!--Tester: @zsyztt-->
 <!--Adviser: @jinqiuheng-->
 
-The **cloudSyncManager** module provides APIs for managing device-cloud synergy for applications. You can use the APIs to enable or disable device-cloud synergy, change the device-cloud sync switch for an application, notify cloud data changes, and clear or retain cloud files when a cloud account exits.
+The **cloudSyncManager** module provides APIs for managing device-cloud sync for applications. You can use the APIs to enable or disable device-cloud sync, change the device-cloud sync switch for an application, notify cloud data changes, clear or retain cloud files when a cloud account exits, and perform full download.
 
 > **NOTE**
 >
@@ -41,7 +41,7 @@ Changes the device-cloud file sync switch for an application. This API uses a pr
 
 | Type                 | Description            |
 | --------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -84,7 +84,7 @@ Changes the device-cloud file sync switch for an application. This API uses an a
 | accountId | string | Yes  | Account ID.|
 | bundleName | string | Yes  | Bundle name of the application.|
 | status | boolean | Yes  | State of the cloud-device file sync switch to set. The value **true** means to enable this function; the value **false** means the opposite.|
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.|
+| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result of changing the device-cloud file sync switch for an application.|
 
 **Error codes**
 
@@ -133,7 +133,7 @@ Notifies the device-cloud service that the cloud data of a specific application 
 
 | Type                 | Description            |
 | --------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise used to return the application data change in the cloud.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -239,7 +239,7 @@ Notifies the device-cloud service of the cloud data change information of a spec
 
 | Type                 | Description            |
 | --------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise used to return the application data change in the cloud.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -317,7 +317,7 @@ cloudSyncManager.notifyDataChange(userId, extraData, (err: BusinessError) => {
 
 enableCloud(accountId: string, switches: Record<string, boolean>): Promise&lt;void&gt;
 
-Enables device-cloud synergy. This API uses a promise to return the result.
+Enables device-cloud sync. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -330,13 +330,13 @@ Enables device-cloud synergy. This API uses a promise to return the result.
 | Name    | Type  | Mandatory| Description|
 | ---------- | ------ | ---- | ---- |
 | accountId | string | Yes  | Account ID.|
-| switches | Record<string, boolean> | Yes  | Whether to enable the device-cloud synergy feature. The application bundle name is a string. The switch status is a Boolean value. The value **true** means to enable this function; the value **false** means the opposite.|
+| switches | Record<string, boolean> | Yes  | Whether to enable the device-cloud sync feature. The application bundle name is a string. The switch status is a Boolean value. The value **true** means to enable this function; the value **false** means the opposite.|
 
 **Return value**
 
 | Type                 | Description            |
 | --------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -359,9 +359,9 @@ let switches: Record<string, boolean> = {
   'com.example.bundleName2': false
 }
 cloudSyncManager.enableCloud(accountId, switches).then(() => {
-  console.error("enableCloud successfully");
+  console.info("enableCloud successfully.");
 }).catch((err: BusinessError) => {
-  console.info("enableCloud failed with error message: " + err.message + ", error code: " + err.code);
+  console.error("enableCloud failed with error message: " + err.message + ", error code: " + err.code);
 });
 ```
 
@@ -369,7 +369,7 @@ cloudSyncManager.enableCloud(accountId, switches).then(() => {
 
 enableCloud(accountId: string, switches: Record<string, boolean>, callback: AsyncCallback&lt;void&gt;): void
 
-Enables device-cloud synergy. This API uses an asynchronous callback to return the result.
+Enables device-cloud sync. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -382,8 +382,8 @@ Enables device-cloud synergy. This API uses an asynchronous callback to return t
 | Name    | Type  | Mandatory| Description|
 | ---------- | ------ | ---- | ---- |
 | accountId | string | Yes  | Account ID.|
-| switches | Record<string, boolean> | Yes  | Whether to enable the device-cloud synergy feature. The application bundle name is a string. The switch status is a Boolean value. The value **true** means to enable this function; the value **false** means the opposite.|
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.|
+| switches | Record<string, boolean> | Yes  | Whether to enable the device-cloud sync feature. The application bundle name is a string. The switch status is a Boolean value. The value **true** means to enable this function; the value **false** means the opposite.|
+| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result of enabling device-cloud sync.|
 
 **Error codes**
 
@@ -418,7 +418,7 @@ cloudSyncManager.enableCloud(accountId, switches, (err: BusinessError) => {
 
 disableCloud(accountId: string): Promise&lt;void&gt;
 
-Disables device-cloud synergy. This API uses a promise to return the result.
+Disables device-cloud sync. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -436,7 +436,7 @@ Disables device-cloud synergy. This API uses a promise to return the result.
 
 | Type                 | Description            |
 | --------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -465,7 +465,7 @@ cloudSyncManager.disableCloud(accountId).then(() => {
 
 disableCloud(accountId: string, callback: AsyncCallback&lt;void&gt;): void
 
-Disables device-cloud synergy. This API uses an asynchronous callback to return the result.
+Disables device-cloud sync. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -478,7 +478,7 @@ Disables device-cloud synergy. This API uses an asynchronous callback to return 
 | Name    | Type  | Mandatory| Description|
 | ---------- | ------ | ---- | ---- |
 | accountId | string | Yes  | Account ID.|
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.|
+| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result of disabling device-cloud sync.|
 
 **Error codes**
 
@@ -541,7 +541,7 @@ Callback used to clear the cloud data locally. This API uses a promise to return
 
 | Type                 | Description            |
 | --------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -621,9 +621,9 @@ cloudSyncManager.clean(accountId, appActions, (err: BusinessError) => {
 
 ## DowngradeDownload<sup>20+</sup>
 
-Represents the downgrade download for cloud data to prevent data loss when Cloud Premium expires.
+Full download: provides the capability of downloading cloud data for applications.
 
-It supports the download of cloud application files.
+It supports the full download of cloud application files.
 
 **System API**: This is a system API.
 
@@ -633,7 +633,7 @@ It supports the download of cloud application files.
 
 constructor(bundleName: string)
 
-A constructor used to create a **DowngradeDownload** instance with a specified bundle name.
+A constructor used to create an instance of the **DowngradeDownload** class with a specified bundle name.
 
 **System API**: This is a system API.
 
@@ -676,7 +676,7 @@ try {
 
 getCloudFileInfo(): Promise&lt;CloudFileInfo&gt;
 
-Obtains the size and count of files for applications requiring downgrade download, including those stored only locally, only in the cloud, or both locally and in the cloud. This API uses a promise to return the result.
+Obtains the size and count of files for applications requiring full download, including those stored only locally, only in the cloud, or both locally and in the cloud. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -720,9 +720,9 @@ downgradeMgr.getCloudFileInfo().then((fileInfo: cloudSyncManager.CloudFileInfo) 
 
 startDownload(callback: Callback&lt;DownloadProgress&gt;): Promise&lt;void&gt;
 
-Starts the downgrade download for the specified application's cloud files. This API uses a promise to return the result.
+Starts the full download for the specified application's cloud files. This API uses a promise to return the result. This API uses an asynchronous callback to return the result.
 
-Repeated triggering of a downgrade download task will throw an error (22400006).
+Repeated triggering of a full download task will throw an error (22400006).
 
 **System API**: This is a system API.
 
@@ -782,7 +782,7 @@ downgradeMgr.startDownload(callback).then(() => {
 
 stopDownload(): Promise&lt;void&gt;
 
-Stops the downgrade download task triggered by [startDownload](#startdownload20). This API uses a promise to return the result.
+Stops the full download task triggered by [startDownload](#startdownload20). This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -868,7 +868,7 @@ if (needStop) {
 
   | Type| Description|
   | ---- | ---- |
-  | Promise&lt;Array&lt;[LocalFilePresentStatus](#localfilepresentstatus23)&gt;&gt; | Promise object, which returns an array of objects. Each object in the array contains the bundle name of the application to be checked and the local file existence status.|
+  | Promise&lt;Array&lt;[LocalFilePresentStatus](#localfilepresentstatus23)&gt;&gt; | Promise used to return an array of objects. Each object in the array contains the bundle name of the application to be checked and the local file existence status.|
 
   **Error codes**
 

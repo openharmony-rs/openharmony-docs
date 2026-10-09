@@ -1,17 +1,17 @@
 # @ohos.app.form.formInfo (formInfo) (System API)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
-<!--Owner: @cx983299475-->
-<!--Designer: @xueyulong-->
-<!--Tester: @yangyuecheng-->
+<!--Owner: @Qian-Win-->
+<!--Designer: @cx983299475-->
+<!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
 The **formInfo** module provides types and enums related to the widget information and state.
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> - This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.app.form.formInfo (formInfo)](./js-apis-app-form-formInfo.md).
+> The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.app.form.formInfo (formInfo)](./js-apis-app-form-formInfo.md).
 
 ## Modules to Import
 
@@ -27,15 +27,18 @@ Defines the widget information.
 
 | Name       | Type                | Read-Only   | Optional   | Description                                                        |
 | ----------- | -------- | -------- | -------------------- | ------------------------------------------------------------ |
-| previewImages<sup>18+</sup> | Array&lt;number&gt; | Yes| Yes| Resource IDs of the preview images of the widget.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| previewImages<sup>18+</sup> | Array&lt;number&gt; | Yes| Yes| Resource IDs of the preview images of the widget.<br>**Atomic service API**: This API can be used in atomic services since API version 18.<br>**Note:** The value is an array of positive integers.|
 | enableBlurBackground<sup>18+</sup>  | boolean               | Yes   | Yes    | Whether the widget uses a blur background.<br>- **true**: A blur background is enabled.<br>- **false**: A blur background is disabled.|
 | renderingMode<sup>18+</sup>|[RenderingMode](./js-apis-app-form-formInfo-sys.md#renderingmode18)|Yes|Yes|Widget rendering mode.|
 | resizable<sup>20+</sup> | boolean  | Yes   | Yes    | Whether the widget can be resized by dragging. The value must be in the **supportDimensions** configuration list of the widget or the widget with the same **groupId**.<br>- **true**: The widget can be resized.<br>- **false**: The widget cannot be resized.|
 | groupId<sup>20+</sup> | string     | Yes   | Yes    | Common ID of a group of widgets. If the values of **groupId** of multiple widgets are the same and the value of **resizable** is **true**, the **supportDimensions** configuration of multiple widgets is shared. For example, if the **groupId** values of widgets A and B are the same and the **resizable** values are **true**, widget A can be adjusted to any size specified by **supportDimensions**.<br>It is recommended that this field be set when multiple widgets with the same functionality need to be resized.|
+| funInteractionParams<sup>20+</sup> | [FunInteractionParams](#funinteractionparams20)     | Yes   | Yes    | Parameters for a fun-based widget, such as the widget active duration.|
+| sceneAnimationParams<sup>20+</sup> | [SceneAnimationParams](#sceneanimationparams20)     | Yes   | Yes    | Parameters for a scene-based widget, such as the widget triggering mode and disabled gestures.|
 | isTemplateForm<sup>23+</sup> | boolean  | Yes   | Yes    | Whether a widget is a template widget.<br>- **true**: The widget is a template widget.<br>- **false**: The widget is not a template widget.|
-| isStandbySupported<sup>23+</sup> | boolean  | Yes   | Yes    | Whether a widget can be displayed in landscape standby mode.<br>- **true**: The widget can be displayed in landscape standby mode.<br>- **false**: The widget cannot be displayed in landscape standby mode.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
-| isStandbyAdapted<sup>23+</sup> | boolean  | Yes   | Yes    | Whether a widget has been adapted to the landscape standby mode.<br>- **true**: The widget has been adapted to the landscape standby mode.<br>- **false**: The widget has not been adapted to the landscape standby mode.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
-| isPrivacySensitive<sup>23+</sup> | boolean  | Yes   | Yes    | Whether a widget is privacy-sensitive.<br>- **true**: The widget is privacy-sensitive.<br>- **false**: The widget is not privacy-sensitive.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| isStandbySupported<sup>23+</sup> | boolean  | Yes   | Yes    | Whether a widget can be displayed in landscape standby mode.<br>- **true**: The widget can be displayed in landscape standby mode.<br>- **false**: The widget cannot be displayed in landscape standby mode.<br>**Model restriction**: This API can be used only in the stage model.|
+| isStandbyAdapted<sup>23+</sup> | boolean  | Yes   | Yes    | Whether a widget has been adapted to the landscape standby mode.<br>- **true**: The widget has been adapted to the landscape standby mode.<br>- **false**: The widget has not been adapted to the landscape standby mode.<br>**Model restriction**: This API can be used only in the stage model.|
+| isPrivacySensitive<sup>23+</sup> | boolean  | Yes   | Yes    | Whether a widget is privacy-sensitive.<br>- **true**: The widget is privacy-sensitive.<br>- **false**: The widget is not privacy-sensitive.<br>**Model restriction**: This API can be used only in the stage model.|
+| isFontScaleFollowSystem | boolean  | No   | Yes    | Whether the widget font scales with the system settings. The default value is **true**.<br>-&nbsp;**true**: yes<br>-&nbsp;**false**: no<br>**Model restriction**: This API can be used only in the stage model.<br>**Since**: 26.0.0|
 
 ##  FormParam
 
@@ -46,12 +49,14 @@ Enumerates widget parameters.
 | Name       | Value  | Description        |
 | ----------- | ---- | ------------ |
 | DEVICE_ID_KEY    | 'ohos.extra.param.key.device_id'   | Device ID.<br>**System API**: This is a system API. |
-| THEME_KEY    | 'ohos.extra.param.key.form_is_theme'   | Theme ID.<br>**System API**: This is a system API. |
+| THEME_KEY<sup>12+</sup>    | 'ohos.extra.param.key.form_is_theme'   | Theme ID.<br>**System API**: This is a system API. |
 | FORM_MANAGER_SHOW_SINGLE_FORM <sup>23+</sup>   | 'ohos.extra.param.key.form_manager_show_single_form'   | Whether to display only a specified widget on the widget management page.<br>- **true**: Only one specified widget is displayed.<br>- **false**: All widgets are displayed.<br>**System API**: This is a system API. |
 | TEMPLATE_FORM_DETAIL_ID<sup>23+</sup>    | 'ohos.extra.param.key.template_form_detail_id'   | Template widget ID.<br>**System API**: This is a system API. |
 | TEMPLATE_FORM_DATA<sup>23+</sup>   | 'ohos.extra.param.key.template_form_data'   | Template widget data.<br>**System API**: This is a system API. |
 | TEMPLATE_FORM_DISPLAY_NAME<sup>23+</sup>    | 'ohos.extra.param.key.template_form_display_name'   | Display name of a template widget.<br>**System API**: This is a system API. |
 | TEMPLATE_FORM_DESCRIPTION<sup>23+</sup>    | 'ohos.extra.param.key.template_form_description'   | Template widget description.<br>**System API**: This is a system API. |
+| FORM_FONT_SIZE_SCALE_KEY    | 'ohos.extra.param.key.form_font_size_scale'   | Widget font size scaling key.<br>**System API**: This is a system API.<br>**Model restriction**: This API can be used only in the stage model.<br>**Since**: 26.0.0 |
+| FORM_FONT_WEIGHT_SCALE_KEY    | 'ohos.extra.param.key.form_font_weight_scale'   | Widget font weight scaling key.<br>**System API**: This is a system API.<br>**Model restriction**: This API can be used only in the stage model.<br>**Since**: 26.0.0 |
 
 ## FormUsageState<sup>11+</sup>
 
@@ -82,7 +87,7 @@ Defines the information about an added widget, which can be either in use or not
 | formDescription<sup>11+</sup> | string         | Yes   | No    | Description in the widget configuration file of the provider.  |
 | extraData<sup>12+</sup> | Record<string, Object> | Yes   | Yes    | Extra widget data.  |
 
-## formProviderFilter<sup>10+</sup>
+## FormProviderFilter<sup>10+</sup>
 
 Defines the information about the widget provider.
 
@@ -109,11 +114,11 @@ Defines the widget information filter. Only the widget information that meets th
 
 **System capability**: SystemCapability.Ability.Form
 
-| Name       | Type  | Mandatory        |Description        |
-| ----------- | ---- | ------------ |------------ |
-| bundleName<sup>12+</sup>    | string    |No   | Only the widget information in which **bundleName** is the same as the provided value is returned. If this parameter is left unspecified, the widget information is not filtered by **bundleName**.<br>**System API**: This is a system API. |
-| supportedDimensions<sup>12+</sup> | Array\<number\> |No   | Only the widget information in which **supportedDimensions** is the same as the provided value is returned. If this parameter is left unspecified, the widget information is not filtered by **supportedDimensions**.<br>**System API**: This is a system API. |
-| supportedShapes<sup>12+</sup>  | Array\<number\> |No   | Only the widget information in which **supportedShapes** is the same as the provided value is returned. If this parameter is left unspecified, the widget information is not filtered by **supportedShapes**.<br>**System API**: This is a system API.  |
+| Name       | Type                | Read-Only   | Optional   | Description                                                        |
+| ----------- | ------------------- | ------- | ------ | ------------------------------------------------------------ |
+| bundleName<sup>12+</sup>    | string    | No   |Yes   | Only the widget information in which **bundleName** is the same as the provided value is returned. If this parameter is left unspecified, the widget information is not filtered by **bundleName**.<br>**System API**: This is a system API. |
+| supportedDimensions<sup>12+</sup> | Array&lt;number&gt; | No   |Yes   | Only the widget information in which **supportedDimensions** is the same as the provided value is returned. If this parameter is left unspecified, the widget information is not filtered by **supportedDimensions**.<br>**System API**: This is a system API.<br>**Note:** The value is an array containing a maximum of 9 integers. The value of each array element ranges from [1, 9], where the value **5** is supported since API version 9 and deprecated since API version 20.<br>For details, see [formInfo.FormDimension](js-apis-app-form-formInfo.md#formdimension). |
+| supportedShapes<sup>12+</sup>  | Array&lt;number&gt; | No   |Yes   | Only the widget information in which **supportedShapes** is the same as the provided value is returned. If this parameter is left unspecified, the widget information is not filtered by **supportedShapes**.<br>**System API**: This is a system API.<br>**Note:** Only values **1** and **2** are available. The value **1** indicates a square, and the value **2** indicates a circle.  |
 
 ## FormLocation<sup>12+</sup>
 
@@ -161,6 +166,8 @@ Enumerates the result codes that may be used for the operation of adding a widge
 | NO_SPACE       | 1    | There is no space for adding widgets.          |
 | PARAM_ERROR    | 2    | Parameter check fails.              |
 | INTERNAL_ERROR | 3    | An internal error occurs during widget processing.|
+| NOT_SUPPORT    | 4    | The widget cannot be published.<br>**Since:** 26.0.1|
+| HOST_FORM_LIMIT | 5   | The number of widgets added to the host exceeds the upper limit.<br>**Since:** 26.0.1|
 
 ## RenderingMode<sup>18+</sup>
 
@@ -212,9 +219,9 @@ Defines the parameters for a fun-based widget.
 | Name| Type| Read-Only| Optional| Description                                                                                                                                  |
 |-----|-----|----|-----|--------------------------------------------------------------------------------------------------------------------------------------|
 | abilityName | string | No | Yes  | ExtensionAbility name of the interaction scenario. This parameter is left empty by default.|
-| targetBundleName  | string | No | No  | Bundle name.       |
-| subBundleName  | string | No | No  | Sub-bundle name.|
-| keepStateDuration  | number | No | Yes  | Duration of the activated state when there is no interaction. The default value is **10000**, in ms. The value should be an integer within the range [0, 10000]. If the value exceeds this range, it defaults to 10000 milliseconds.|
+| targetBundleName  | string | No | No  | [Main package name](https://developer.huawei.com/consumer/en/doc/quickApp-Guides/quickgame-independent-subpackage-0000002076341729).       |
+| subBundleName  | string | No | No  | [Independent subpackage name](https://developer.huawei.com/consumer/en/doc/quickApp-Guides/quickgame-independent-subpackage-0000002076341729).|
+| keepStateDuration  | number | No | Yes  | Duration of the activated state when there is no interaction. The default value is **10000**, in ms. The value must be an integer within the range (0,60000]. If the value exceeds this range, it defaults to 60000.<br>**Note:** In versions earlier than API 26.0.0, the value must be an integer within the range (0,10000]. If the value exceeds this range, it defaults to 10000.|
 
 ## SceneAnimationParams<sup>20+</sup>
 
@@ -227,11 +234,12 @@ Defines the parameters for a scene-based widget.
 | Name| Type| Read-Only| Optional| Description                                                                                                                                             |
 |-----|-----|------|----|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | abilityName | string | No| No | ExtensionAbility name, for example, LiveFormExtensionAbility name of the widget provider.                                    |
-| disabledDesktopBehaviors | string | No| Yes | The options are **SWIPE_DESKTOP**, **PULL_DOWN_SEARCH**, **LONG_CLICK**, and **DRAG**. You can select one or more options. Use a vertical bar (\|) in between to concatenate two different operations, for example, SWIPE_DESKTOP\|PULL_DOWN_SEARCH. By default, no operation is disabled.|
+| disabledDesktopBehaviors | string | No| Yes | The options are **SWIPE_DESKTOP**, **PULL_DOWN_SEARCH**, **LONG_CLICK**, and **DRAG**. If multiple options are used, use vertical bars (\|) to separate them. For example, **SWIPE_DESKTOP\|PULL_DOWN_SEARCH**. By default, no operation is disabled.|
+| triggerTypes    | Array&lt;[SceneAnimationTriggerType](#sceneanimationtriggertype)&gt;      | No   | Yes    | Trigger type of the scene-based widget.<br>**Model restriction**: This API can be used only in the stage model.<br>**Since**: 26.0.0 |
 
 ## GetFormRectInfoCallback<sup>20+</sup>
 
-### (formId: string): Promise&lt;formInfo.Rect&gt;
+type GetFormRectInfoCallback = (formId: string) => Promise&lt;formInfo.Rect&gt;
 
 Callback for querying the widget position and dimension. It uses a promise to return the result.
 
@@ -249,7 +257,7 @@ Callback for querying the widget position and dimension. It uses a promise to re
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;[formInfo.Rect](js-apis-app-form-formInfo.md#rect20)&gt; | Promise used to return the position and dimension of the widget relative to the upper left corner of the screen, in vp.|
+| Promise&lt;[formInfo.Rect](js-apis-app-form-formInfo.md#rect20)&gt; | Promise used to return the widget position relative to the upper-left corner of the screen and the widget dimensions.|
 
 **Error codes**
 
@@ -267,7 +275,7 @@ import { formInfo } from '@kit.FormKit';
 // The widget host needs to process the request, and calculate and return the widget dimension and position information.
 let getFormRectInfoCallback: formInfo.GetFormRectInfoCallback =
   (formId: string): Promise<formInfo.Rect> => {
-    return new Promise<formInfo.Rect>((resolve: Function) => {
+    return new Promise<formInfo.Rect>((resolve: (value: formInfo.Rect) => void) => {
       console.info(`formId is ${formId}`);
       let formRect: formInfo.Rect = {
         left: 0,
@@ -296,7 +304,7 @@ Describes the actual template widget information.
 | moduleName | string | No| No | Name of the module to which the widget belongs.|
 | abilityName | string | No| No | Name of the ability to which the widget belongs.|
 | formName | string | No| No | Widget name.|
-| dimension | string | No| No | Widget dimension.|
+| dimension | [formInfo.FormDimension](js-apis-app-form-formInfo.md#formdimension) | No| No | Widget dimensions.|
 | detailId | string | No| No | Widget information ID.|
 | displayName | string | No| No | Widget display name.|
 | description | string | No| No | Widget description.|
@@ -340,7 +348,7 @@ let templateFormDetailInfoCallback: formInfo.TemplateFormDetailInfoCallback =
 
 ## PublishFormCrossBundleInfo<sup>23+</sup>
 
-Describes the control information about cross-bundle widget addition.
+Describes the control information for cross-bundle widget addition.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -389,3 +397,205 @@ let publishFormCrossBundleControlCallback: formInfo.PublishFormCrossBundleContro
     return true;
   };
 ```
+
+## SceneAnimationTriggerType
+
+Enumerates trigger types of the scene-based widget.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Ability.Form
+
+**System API**: This is a system API.
+
+| Name       |  Value  | Description        |
+| ----------- | ---- | ------------ |
+| SHAKE | 1   | Shake.|
+
+## GetWantParamsCallback
+
+type GetWantParamsCallback = (formInfo: Array&lt;formInfo.FormInfo&gt;) => Array&lt;Record&lt;string, Object&gt;&gt;
+
+Callback for obtaining widget parameters.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Ability.Form
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+|------|------|----|------|
+| formInfo | Array&lt;[FormInfo](#forminfo)&gt; | Yes| Widget information list.|
+
+**Returns**
+
+| Type| Description|
+| ---- | ---- |
+| Array&lt;Record&lt;string, Object&gt;&gt; | List of widget parameters, corresponding one-to-one with the input widget information list.|
+
+**Example**
+
+```ts
+import { formInfo } from '@kit.FormKit';
+
+let getWantParamsCallback: formInfo.GetWantParamsCallback =
+  (formInfo: Array<formInfo.FormInfo>): Array<Record<string, Object>> => {
+    console.info('get want params callback, form count: ' + formInfo.length);
+    let wantParamsList: Array<Record<string, Object>> = [];
+    for (let i = 0; i < formInfo.length; i++) {
+      let params: Record<string, Object> = {
+        'key': 'value'
+      };
+      wantParamsList.push(params);
+    }
+    return wantParamsList;
+  };
+```
+
+## FormCustomConfig
+
+Custom configurations of a widget.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Ability.Form
+
+**System API**: This is a system API.
+
+| Name| Type| Read-Only| Optional| Description|
+|-----|-----|------|----|------|
+| bundleName | string | No| No| Name of the bundle to which the widget belongs.|
+| moduleName | string | No| No| Name of the module to which the widget belongs.|
+| abilityName | string | No| No| Name of the ability to which the widget belongs.|
+| formName | string | No| No| Widget name.|
+| isShowInFormCenter | boolean | No| No| Whether to display the widget in the widget center.<br>-&nbsp;**true**: yes<br>-&nbsp;**false**: no|
+| relatedBundleName | string | No| No| Name of the associated bundle.|
+| isRepeatAdditionSupported | boolean | No| No| Whether the widget can be added repeatedly.<br>-&nbsp;**true**: yes<br>-&nbsp;**false**: no|
+
+## UpdateFormsConfigCallback
+
+type UpdateFormsConfigCallback = (configInfo: Array&lt;FormCustomConfig&gt;) => void
+
+Callback for widget configuration updates.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Ability.Form
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+|------|------|----|------|
+| configInfo | Array&lt;[FormCustomConfig](#formcustomconfig)&gt; | Yes| Widget configuration information list.|
+
+**Example**
+
+```ts
+import { formInfo } from '@kit.FormKit';
+
+let updateFormsConfigCallback: formInfo.UpdateFormsConfigCallback =
+  (configInfo: Array<formInfo.FormCustomConfig>): void => {
+    console.info('update forms config callback, config count: ' + configInfo.length);
+  };
+```
+
+## DeleteFormsCallback
+
+type DeleteFormsCallback = (formIds: Array&lt;string&gt;) => void
+
+Callback for widget deletion.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Ability.Form
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+|------|------|----|------|
+| formIds | Array&lt;string&gt; | Yes| ID list of deleted widgets.|
+
+**Example**
+
+```ts
+import { formInfo } from '@kit.FormKit';
+
+let deleteFormsCallback: formInfo.DeleteFormsCallback =
+  (formIds: Array<string>): void => {
+    console.info('delete forms callback, form count: ' + formIds.length);
+  };
+```
+
+## FormHostServiceInfo
+
+Service information of the widget host.
+
+**Since**: 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Ability.Form
+
+**System API**: This is a system API.
+
+| Name| Type| Read-Only| Optional| Description|
+|-----|-----|------|----|------|
+| serviceName | string | No| No| Service name.|
+| serviceDisplayName | string | No| No| Service display name.|
+| displayId | string | No| No| Display ID.|
+| customData | Record&lt;string, string&gt; | No| Yes| Custom data.|
+
+## PeerFormHostServiceInfo
+
+Service information of the remote widget host.
+
+**Since**: 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Ability.Form
+
+**System API**: This is a system API.
+
+| Name| Type| Read-Only| Optional| Description|
+|-----|-----|------|----|------|
+| serviceName | string | No| No| Name of the remote widget host service.|
+| serviceDisplayName | string | No| No| Display name of the remote widget host service.|
+| displayId | string | No| No| Display ID of the remote widget host service.|
+| customData | Record&lt;string, string&gt; | No| Yes| Custom data of the remote widget host service.|
+| deviceId | string | No| No| Device ID of the remote widget host service.|
+| networkId | string | No| No| Network ID of the remote widget host service.|
+| serviceId | string | No| No| Remote widget host service ID.|
+
+## PublishFormCrossDeviceResult
+
+Result of cross-device widget publishing.
+
+**Since**: 26.0.1
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Ability.Form
+
+**System API**: This is a system API.
+
+| Name| Type| Read-Only| Optional| Description|
+|-----|-----|------|----|------|
+| formId | string | No| No| ID of the widget published to the remote widget host service.|

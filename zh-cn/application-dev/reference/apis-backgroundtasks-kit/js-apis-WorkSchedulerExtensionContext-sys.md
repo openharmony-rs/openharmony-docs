@@ -1,23 +1,31 @@
-# WorkSchedulerExtensionContext (系统接口)
+# WorkSchedulerExtensionContext (延迟任务调度回调上下文)(系统接口)
 
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: ResourceSchedule-->
-<!--Owner: @cheng-shichang-->
+<!--Owner: @xufu7-->
 <!--Designer: @zhouben25-->
 <!--Tester: @leetestnady-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @HelloCrease-->
 
-WorkSchedulerExtensionContext是WorkSchedulerExtensionAbility的上下文环境，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。
+WorkSchedulerExtensionContext是WorkSchedulerExtensionAbility的上下文环境，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。为延迟任务调度提供专用的上下文环境，支持在任务启动/停止时拉起或停止ServiceExtensionAbility。
 
 WorkSchedulerExtensionContext可直接作为WorkSchedulerExtension的上下文环境，提供允许访问特定于WorkSchedulerExtensionAbility的资源的能力。
 
 > **说明：**
 > 
-> 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 10开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 本模块接口仅可在Stage模型下使用。
+> - 本模块接口仅可在Stage模型下使用。
 >
-> 本模块为系统接口。
+> - 本模块为系统接口。
+>
+> - 当前页面仅包含本模块的系统接口，其他公开接口请参见[WorkSchedulerExtensionContext (延迟任务调度回调上下文)(系统接口)](js-apis-WorkSchedulerExtensionContext.md)。
+
+## 导入模块
+
+```ts
+import { WorkSchedulerExtensionAbility } from '@kit.BackgroundTasksKit';  
+```
 
 ## 使用说明
 
@@ -27,9 +35,9 @@ WorkSchedulerExtensionContext可直接作为WorkSchedulerExtension的上下文�
 import { WorkSchedulerExtensionAbility, workScheduler } from '@kit.BackgroundTasksKit';
 
 class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtensionAbility {
-    onWorkStart(workInfo: workScheduler.WorkInfo) {
-        let WorkSchedulerExtensionContext = this.context; // 获取WorkSchedulerExtensionContext
-    }
+  onWorkStart(workInfo: workScheduler.WorkInfo) {
+    let workSchedulerExtensionContext = this.context; // 获取WorkSchedulerExtensionContext
+  }
 }
 ```
 
@@ -37,7 +45,7 @@ class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtensionAbility {
 
 startServiceExtensionAbility(want: Want): Promise\<void>
 
-启动ServiceExtensionAbility，使用Promise异步回调。
+启动ServiceExtensionAbility，用于在后台任务执行时需要启动关联的Service能力，使用Promise异步回调。
 
 **系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
 
@@ -45,13 +53,13 @@ startServiceExtensionAbility(want: Want): Promise\<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是 | 启动Ability的want信息。 |
+| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是 | 启动Ability的want信息，需包含bundleName和abilityName等必要字段。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | 无返回结果的Promise对象。|
+| Promise&lt;void&gt; | Promise对象，无返回结果。|
 
 **错误码：**
 
@@ -59,19 +67,18 @@ startServiceExtensionAbility(want: Want): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | The application does not have permission to call the interface. |
-| 202 | The application is not system-app, can not use system-api. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | [Async] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
 | 16000004 | Cannot start an invisible component. |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
 | 16000008 | The crowdtesting application expires. |
-| 16000011 | The context does not exist.        |
-| 16000012 | The application is controlled.        |
-| 16000013 | The application is controlled by EDM.       |
-| 16000019 | Can not match any component. |
+| 16000011 | The context does not exist. |
+| 16000012 | The application is controlled. |
+| 16000013 | The application is controlled by EDM. |
 | 16000050 | Internal error. |
 | 16200001 | The caller has been released. |
 
@@ -93,8 +100,8 @@ export default class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtens
       // 拉起对应的service
       this.context.startServiceExtensionAbility(want).then(() => {
         console.info('succeeded in starting ServiceExtensionAbility.');
-      }).catch ((err: BusinessError) => {
-        console.error('failed to start ServiceExtensionAbility.');
+      }).catch((err: BusinessError) => {
+        console.error(`failed to start ServiceExtensionAbility. Code: ${err.code}, message: ${err.message}`);
       });
   }
 
@@ -108,7 +115,7 @@ export default class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtens
 
 stopServiceExtensionAbility(want: Want): Promise\<void>
 
-停止ServiceExtensionAbility，使用Promise异步回调。
+停止ServiceExtensionAbility，用于在后台任务结束或不再需要关联的Service能力，使用Promise异步回调。
 
 **系统能力**：SystemCapability.ResourceSchedule.WorkScheduler
 
@@ -116,7 +123,7 @@ stopServiceExtensionAbility(want: Want): Promise\<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是 | 停止Ability的want信息。 |
+| want | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是 | 停止Ability的want信息，需包含bundleName和abilityName等必要字段。 |
 
 **返回值：**
 
@@ -130,15 +137,15 @@ stopServiceExtensionAbility(want: Want): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | ------- | -------- |
-| 201 | The application does not have permission to call the interface. |
-| 202 | The application is not system-app, can not use system-api. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 401 | [Async] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
 | 16000004 | Cannot start an invisible component. |
 | 16000005 | The specified process does not have the permission. |
 | 16000006 | Cross-user operations are not allowed. |
-| 16000011 | The context does not exist.        |
+| 16000011 | The context does not exist. |
 | 16000050 | Internal error. |
 | 16200001 | The caller has been released. |
 
@@ -164,8 +171,8 @@ export default class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtens
       // 停止对应的service
       this.context.stopServiceExtensionAbility(want).then(() => {
         console.info('succeeded in stopping ServiceExtensionAbility.');
-      }).catch ((err: BusinessError) => {
-        console.error('failed to stop ServiceExtensionAbility.');
+      }).catch((err: BusinessError) => {
+        console.error(`failed to stop ServiceExtensionAbility. Code: ${err.code}, message: ${err.message}`);
       });
   }
 }

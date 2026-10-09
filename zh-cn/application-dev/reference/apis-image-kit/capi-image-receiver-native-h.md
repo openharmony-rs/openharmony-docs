@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -43,8 +43,8 @@
 | [Image_ErrorCode OH_ImageReceiverOptions_Release(OH_ImageReceiverOptions* options)](#oh_imagereceiveroptions_release) | - | 释放OH_ImageReceiverOptions对象。 |
 | [Image_ErrorCode OH_ImageReceiverNative_Create(OH_ImageReceiverOptions* options, OH_ImageReceiverNative** receiver)](#oh_imagereceivernative_create) | - | 创建应用层OH_ImageReceiverNative对象。 |
 | [Image_ErrorCode OH_ImageReceiverNative_GetReceivingSurfaceId(OH_ImageReceiverNative* receiver, uint64_t* surfaceId)](#oh_imagereceivernative_getreceivingsurfaceid) | - | 通过OH_ImageReceiverNative获取SurfaceId。 |
-| [Image_ErrorCode OH_ImageReceiverNative_ReadLatestImage(OH_ImageReceiverNative* receiver, OH_ImageNative** image)](#oh_imagereceivernative_readlatestimage) | - | 通过OH_ImageReceiverNative获取最新的一张图片。<br>注意，此接口需要在[OH_ImageReceiver_OnCallback](#oh_imagereceiver_oncallback)回调后调用，才能正常的接收到数据。并且此接口返回的OH_ImageNative使用完毕后需要调用[OH_ImageNative_Release](capi-image-native-h.md#oh_imagenative_release)方法释放，释放后才可以继续接收新的数据。 |
-| [Image_ErrorCode OH_ImageReceiverNative_ReadNextImage(OH_ImageReceiverNative* receiver, OH_ImageNative** image)](#oh_imagereceivernative_readnextimage) | - | 通过OH_ImageReceiverNative获取下一张图片。<br>注意，此接口需要在[OH_ImageReceiver_OnCallback](#oh_imagereceiver_oncallback)回调后调用，才能正常的接收到数据。并且此接口返回的OH_ImageNative使用完毕后需要调用[OH_ImageNative_Release](capi-image-native-h.md#oh_imagenative_release)方法释放，释放后才可以继续接收新的数据。 |
+| [Image_ErrorCode OH_ImageReceiverNative_ReadLatestImage(OH_ImageReceiverNative* receiver, OH_ImageNative** image)](#oh_imagereceivernative_readlatestimage) | - | 通过OH_ImageReceiverNative获取最新的一张图片。 |
+| [Image_ErrorCode OH_ImageReceiverNative_ReadNextImage(OH_ImageReceiverNative* receiver, OH_ImageNative** image)](#oh_imagereceivernative_readnextimage) | - | 通过OH_ImageReceiverNative获取下一张图片。 |
 | [Image_ErrorCode OH_ImageReceiverNative_On(OH_ImageReceiverNative* receiver, OH_ImageReceiver_OnCallback callback)](#oh_imagereceivernative_on) | - | 注册一个[OH_ImageReceiver_OnCallback](#oh_imagereceiver_oncallback)回调事件。<br>每当接收到新的图片，该回调事件就会响应。 |
 | [Image_ErrorCode OH_ImageReceiverNative_Off(OH_ImageReceiverNative* receiver)](#oh_imagereceivernative_off) | - | 关闭[OH_ImageReceiver_OnCallback](#oh_imagereceiver_oncallback)回调事件。<br>关闭被[OH_ImageReceiverNative_On](#oh_imagereceivernative_on)开启的回调事件。 |
 | [Image_ErrorCode OH_ImageReceiverNative_GetSize(OH_ImageReceiverNative* receiver, Image_Size* size)](#oh_imagereceivernative_getsize) | - | 通过OH_ImageReceiverNative获取ImageReceiver的大小。 |
@@ -52,6 +52,7 @@
 | [Image_ErrorCode OH_ImageReceiverNative_Release(OH_ImageReceiverNative* receiver)](#oh_imagereceivernative_release) | - | 释放Native OH_ImageReceiverNative对象。 |
 | [Image_ErrorCode OH_ImageReceiverNative_OnImageArrive(OH_ImageReceiverNative *receiver, OH_ImageReceiver_ImageArriveCallback callback, void *userData)](#oh_imagereceivernative_onimagearrive) | - | 注册[OH_ImageReceiver_ImageArriveCallback](#oh_imagereceiver_imagearrivecallback)回调。 |
 | [Image_ErrorCode OH_ImageReceiverNative_OffImageArrive(OH_ImageReceiverNative *receiver, OH_ImageReceiver_ImageArriveCallback callback)](#oh_imagereceivernative_offimagearrive) | - | 注销[OH_ImageReceiver_ImageArriveCallback](#oh_imagereceiver_imagearrivecallback)回调。 |
+| [Image_ErrorCode OH_ImageReceiverNative_SetMemoryName(const OH_ImageReceiverNative* receiver, const char *name, uint32_t size)](#oh_imagereceivernative_setmemoryname) | - | 设置OH_ImageReceiverNative对象的内存名称。仅支持ASCII可见字符，空格、换行、制表符及其他控制字符将被过滤掉。如果过滤后的结果完全由数字组成，将自动添加前缀"ImageReceiver:"。过滤后的名称长度（包括结束符'\0'）不得超过256字节。 |
 
 ## 函数说明
 
@@ -148,7 +149,7 @@ Image_ErrorCode OH_ImageReceiverOptions_SetSize(OH_ImageReceiverOptions* options
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ImageReceiverOptions](capi-image-nativemodule-oh-imagereceiveroptions.md)* options| 表示OH_ImageReceiverOptions对象的指针。 |
-| [Image_Size](capi-image-nativemodule-image-size.md) size | 表示Image_Size对象的指针。 |
+| [Image_Size](capi-image-nativemodule-image-size.md) size | 表示将设置的Image_Size对象。 |
 
 **返回：**
 
@@ -200,7 +201,7 @@ Image_ErrorCode OH_ImageReceiverOptions_SetCapacity(OH_ImageReceiverOptions* opt
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ImageReceiverOptions](capi-image-nativemodule-oh-imagereceiveroptions.md)* options| 表示OH_ImageReceiverOptions对象的指针。 |
-| int32_t capacity | 表示图片缓存容量对象的指针。 |
+| int32_t capacity | 表示图片缓存容量值。 |
 
 **返回：**
 
@@ -295,7 +296,11 @@ Image_ErrorCode OH_ImageReceiverNative_ReadLatestImage(OH_ImageReceiverNative* r
 
 通过OH_ImageReceiverNative获取最新的一张图片。
 
-注意，此接口需要在[OH_ImageReceiver_OnCallback](#oh_imagereceiver_oncallback)回调后调用，才能正常的接收到数据。并且此接口返回的OH_ImageNative使用完毕后需要调用[OH_ImageNative_Release](capi-image-native-h.md#oh_imagenative_release)方法释放，释放后才可以继续接收新的数据。
+> **说明：**
+>
+> - 此接口需要在[OH_ImageReceiver_OnCallback](#oh_imagereceiver_oncallback)回调后调用，才能正常的接收到数据。
+> - 此接口返回的OH_ImageNative使用完毕后需要调用[OH_ImageNative_Release](capi-image-native-h.md#oh_imagenative_release)方法释放，释放后才可以继续接收新的数据。
+> - 此接口需加锁保证使用过程中OH_ImageReceiverNative对象未被释放，具体使用方法可参考开发指南[使用imagereceiver完成图片接收](../../media/image/image-receiver-c.md)。
 
 **起始版本：** 12
 
@@ -323,7 +328,12 @@ Image_ErrorCode OH_ImageReceiverNative_ReadNextImage(OH_ImageReceiverNative* rec
 
 通过OH_ImageReceiverNative获取下一张图片。
 
-注意，此接口需要在[OH_ImageReceiver_OnCallback](#oh_imagereceiver_oncallback)回调后调用，才能正常的接收到数据。并且此接口返回的OH_ImageNative使用完毕后需要调用[OH_ImageNative_Release](capi-image-native-h.md#oh_imagenative_release)方法释放，释放后才可以继续接收新的数据。
+> **说明：**
+>
+> - 此接口需要在[OH_ImageReceiver_OnCallback](#oh_imagereceiver_oncallback)回调后调用，才能正常的接收到数据。
+> - 此接口返回的OH_ImageNative使用完毕后需要调用[OH_ImageNative_Release](capi-image-native-h.md#oh_imagenative_release)方法释放，释放后才可以继续接收新的数据。
+> - 此接口需加锁保证使用过程中OH_ImageReceiverNative对象未被释放，具体使用方法可参考开发指南[使用imagereceiver完成图片接收](../../media/image/image-receiver-c.md)。
+
 
 **起始版本：** 12
 
@@ -458,6 +468,10 @@ Image_ErrorCode OH_ImageReceiverNative_Release(OH_ImageReceiverNative* receiver)
 
 释放Native OH_ImageReceiverNative对象。
 
+> **说明：**
+>
+> 此接口需加锁保证释放后OH_ImageReceiverNative对象不被其他接口使用，具体使用方法可参考开发指南[使用imagereceiver完成图片接收](../../media/image/image-receiver-c.md)。
+
 **起始版本：** 12
 
 
@@ -518,7 +532,7 @@ Image_ErrorCode OH_ImageReceiverNative_OffImageArrive(OH_ImageReceiverNative *re
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ImageReceiverNative](capi-image-nativemodule-oh-imagereceivernative.md) *receiver | 处理回调的OH_ImageReceiverNative对象。 |
-| [OH_ImageReceiver_ImageArriveCallback](#oh_imagereceiver_imagearrivecallback) callback | 要注册的OH_ImageReceiver_ImageArriveCallback回调。 |
+| [OH_ImageReceiver_ImageArriveCallback](#oh_imagereceiver_imagearrivecallback) callback | 要注销的OH_ImageReceiver_ImageArriveCallback回调。 |
 
 **返回：**
 
@@ -526,4 +540,28 @@ Image_ErrorCode OH_ImageReceiverNative_OffImageArrive(OH_ImageReceiverNative *re
 | -- | -- |
 | [Image_ErrorCode](capi-image-common-h.md#image_errorcode) |IMAGE_SUCCESS：操作成功。<br>         IMAGE_RECEIVER_INVALID_PARAMETER：参数错误，receiver或callback未注册。 |
 
+### OH_ImageReceiverNative_SetMemoryName()
 
+```c
+Image_ErrorCode OH_ImageReceiverNative_SetMemoryName(const OH_ImageReceiverNative* receiver, const char *name, uint32_t size)
+```
+
+**描述**
+
+设置OH_ImageReceiverNative对象的内存名称。仅支持ASCII可见字符，空格、换行、制表符及其他控制字符将被过滤掉。如果过滤后的结果完全由数字组成，将自动添加前缀"ImageReceiver:"。过滤后的名称长度（包括结束符'\0'）不得超过256字节。
+
+**起始版本：** 26.0.1
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const [OH_ImageReceiverNative](capi-image-nativemodule-oh-imagereceivernative.md)* receiver | 指向OH_ImageReceiverNative对象的指针，不能为NULL。 |
+| const char *name | 指向要设置的内存名称字符串的指针，不能为NULL。字符串必须以'\0'结尾。 |
+| uint32_t size | 名称字符串的字节大小，包括结束符'\0'。必须大于0。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | IMAGE_SUCCESS：操作成功。<br>IMAGE_RECEIVER_INVALID_PARAMETER：receiver/name为NULL、size为0、name过滤后无可视字符或过滤后大小超过256字节。 |

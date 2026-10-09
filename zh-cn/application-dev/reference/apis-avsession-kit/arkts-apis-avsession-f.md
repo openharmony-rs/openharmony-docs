@@ -1,8 +1,8 @@
 # Functions
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @liao_qian-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -20,7 +20,11 @@ import { avSession } from '@kit.AVSessionKit';
 
 createAVSession(context: Context, tag: string, type: AVSessionType): Promise\<AVSession>
 
-创建会话对象，一个应用进程仅允许存在一个会话，重复创建会失败，结果通过Promise异步回调方式返回。
+创建会话对象，一个应用进程仅允许存在一个会话，重复创建会失败，使用Promise异步回调。
+
+> **说明：**
+> 
+> 在业务执行阶段需要保持AVSession对象存活，避免后台管控静音、设备选择异常、通知/锁屏/胶囊播控卡片显示异常等情况。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -38,11 +42,11 @@ createAVSession(context: Context, tag: string, type: AVSessionType): Promise\<AV
 
 | 类型                              | 说明                                                         |
 | --------------------------------- | ------------------------------------------------------------ |
-| Promise<[AVSession](arkts-apis-avsession-AVSession.md)\> | Promise对象。回调返回会话实例对象，可用于获取会话ID，以及设置元数据、播放状态，发送按键事件等操作。|
+| Promise<[AVSession](arkts-apis-avsession-AVSession.md)\> | Promise对象。返回会话实例对象，可用于获取会话ID，以及设置元数据、播放状态，发送按键事件等操作。|
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -52,8 +56,8 @@ createAVSession(context: Context, tag: string, type: AVSessionType): Promise\<AV
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
+
 @Entry
 @Component
 struct Index {
@@ -71,9 +75,7 @@ struct Index {
             avSession.createAVSession(context, tag, "audio").then(async (data: avSession.AVSession) => {
             currentAVSession = data;
             sessionId = currentAVSession.sessionId;
-            console.info(`CreateAVSession : SUCCESS : sessionId = ${sessionId}`);
-            }).catch((err: BusinessError) => {
-            console.error(`CreateAVSession BusinessError: code: ${err.code}, message: ${err.message}`);
+            console.info(`Succeeded in creating AV session, sessionId: ${sessionId}`);
             });
           })
       }
@@ -87,7 +89,11 @@ struct Index {
 
 createAVSession(context: Context, tag: string, type: AVSessionType, callback: AsyncCallback\<AVSession>): void
 
-创建会话对象，一个应用程序仅允许存在一个会话，重复创建会失败，结果通过callback异步回调方式返回。
+创建会话对象，一个应用进程仅允许存在一个会话，重复创建会失败，使用callback异步回调。
+
+> **说明：**
+> 
+> 在业务执行阶段需要保持AVSession对象存活，避免后台管控静音、设备选择异常、通知/锁屏/胶囊播控卡片显示异常等情况。
 
 **系统能力：** SystemCapability.Multimedia.AVSession.Core
 
@@ -102,7 +108,7 @@ createAVSession(context: Context, tag: string, type: AVSessionType, callback: As
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -112,8 +118,9 @@ createAVSession(context: Context, tag: string, type: AVSessionType, callback: As
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 @Entry
 @Component
 struct Index {
@@ -128,15 +135,15 @@ struct Index {
           let context: Context = this.getUIContext().getHostContext() as Context;
           let sessionId: string;  // 供后续函数入参使用。
 
-          avSession.createAVSession(context, tag, "audio", async (err: BusinessError, data: avSession.AVSession) => {
-            if (err) {
-              console.error(`CreateAVSession BusinessError: code: ${err.code}, message: ${err.message}`);
-            } else {
+          avSession.createAVSession(context, tag, "audio", async (err:BusinessError, data: avSession.AVSession) => {
+              if (err) {
+                console.error(`Failed to create AV session, error code: ${err.code}, error message: ${err.message}`);
+                return;
+              }
               currentAVSession = data;
               sessionId = currentAVSession.sessionId;
-              console.info(`CreateAVSession : SUCCESS : sessionId = ${sessionId}`);
-            }
-          });
+              console.info(`Succeeded in creating AV session, sessionId: ${sessionId}`);
+            });
         })
     }
     .width('100%')
@@ -151,7 +158,7 @@ getAVSession(context: Context): Promise\<AVSession>
 
 获取会话对象。使用Promise异步回调。
 
-该接口可将当前进程已创建过的会话对象返回，如果没有创建过会话对象，当前接口会调用失败抛出异常。
+该接口可将当前进程已创建过的会话对象返回，如果没有创建过会话对象，该接口调用会失败并抛出异常。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -167,7 +174,7 @@ getAVSession(context: Context): Promise\<AVSession>
 
 | 类型                              | 说明                                                         |
 | --------------------------------- | ------------------------------------------------------------ |
-| Promise<[AVSession](arkts-apis-avsession-AVSession.md)\> | Promise对象。回调返回会话实例对象，可用于获取会话ID、设置元数据及播放状态、发送按键事件等操作。|
+| Promise<[AVSession](arkts-apis-avsession-AVSession.md)\> | Promise对象。返回会话实例对象，可用于获取会话ID、设置元数据及播放状态、发送按键事件等操作。|
 
 **错误码：**
 
@@ -181,8 +188,8 @@ getAVSession(context: Context): Promise\<AVSession>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
+
 @Entry
 @Component
 struct Index {
@@ -201,9 +208,7 @@ struct Index {
               currentAVSession = data;
               sessionId = currentAVSession.sessionId;
               sessionTag = currentAVSession.sessionTag;
-              console.info(`GetAVSession : SUCCESS : sessionId=${sessionId}, sessionTag=${sessionTag}`);
-            }).catch((err: BusinessError) => {
-              console.error(`GetAVSession BusinessError: code: ${err.code}, message: ${err.message}`);
+              console.info(`Succeeded in getting AV session, sessionId: ${sessionId}, sessionTag: ${sessionTag}`);
             });
           })
       }
@@ -217,7 +222,7 @@ struct Index {
 
 getAllSessionDescriptors(): Promise\<Array\<Readonly\<AVSessionDescriptor>>>
 
-获取所有设置过媒体信息且注册过控制回调的会话的描述符信息。结果通过Promise异步回调方式返回。
+获取所有设置过媒体信息且注册过控制回调的会话的描述符信息。使用Promise异步回调。
 
 **需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES 或 ohos.permission.MANAGE_MEDIA_RESOURCES_FOR_PUBLIC
 系统应用可以从ohos.permission.MANAGE_MEDIA_RESOURCES或ohos.permission.MANAGE_MEDIA_RESOURCES_FOR_PUBLIC两个权限中选择一个进行申请，普通应用仅允许申请ohos.permission.MANAGE_MEDIA_RESOURCES_FOR_PUBLIC受限权限。
@@ -228,7 +233,7 @@ getAllSessionDescriptors(): Promise\<Array\<Readonly\<AVSessionDescriptor>>>
 
 | 类型                                                         | 说明                                          |
 | ------------------------------------------------------------ | --------------------------------------------- |
-| Promise\<Array\<Readonly\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)\>\>\> | Promise对象。返回所有会话描述的只读对象。 |
+| Promise\<Array\<Readonly\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor23)\>\>\> | Promise对象。返回所有会话描述的只读对象。 |
 
 **错误码：**
 
@@ -242,7 +247,6 @@ getAllSessionDescriptors(): Promise\<Array\<Readonly\<AVSessionDescriptor>>>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
 @Entry
 @Component
@@ -254,14 +258,12 @@ struct Index {
         Text(this.message)
           .onClick(()=>{
             avSession.getAllSessionDescriptors().then((descriptors: avSession.AVSessionDescriptor[]) => {
-              console.info(`getAllSessionDescriptors : SUCCESS : descriptors.length : ${descriptors.length}`);
+              console.info(`Succeeded in getting all session descriptors, length: ${descriptors.length}`);
               if (descriptors.length > 0 ) {
-                console.info(`getAllSessionDescriptors : SUCCESS : descriptors[0].isActive : ${descriptors[0].isActive}`);
-                console.info(`GetAllSessionDescriptors : SUCCESS : descriptors[0].type : ${descriptors[0].type}`);
-                console.info(`GetAllSessionDescriptors : SUCCESS : descriptors[0].sessionTag : ${descriptors[0].sessionTag}`);
+                console.info(`Succeeded in getting session descriptor, isActive: ${descriptors[0].isActive}`);
+                console.info(`Succeeded in getting session descriptor, type: ${descriptors[0].type}`);
+                console.info(`Succeeded in getting session descriptor, sessionTag: ${descriptors[0].sessionTag}`);
               }
-            }).catch((err: BusinessError) => {
-              console.error(`GetAllSessionDescriptors BusinessError: code: ${err.code}, message: ${err.message}`);
             });
           })
       }
@@ -308,8 +310,8 @@ createController(sessionId: string): Promise\<AVSessionController>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
+
 @Entry
 @Component
 struct Index {
@@ -320,16 +322,12 @@ struct Index {
         Text(this.message)
           .onClick(()=>{
             avSession.getAllSessionDescriptors().then((descriptors: avSession.AVSessionDescriptor[]) => {
-              console.info(`getAllSessionDescriptors : SUCCESS : descriptors.length : ${descriptors.length}`);
+              console.info(`Succeeded in getting all session descriptors, length: ${descriptors.length}`);
               if (descriptors.length > 0 ) {
                 avSession.createController(descriptors[0]?.sessionId).then((avcontroller: avSession.AVSessionController) => {
-                  console.info('CreateController : SUCCESS ');
-                }).catch((err: BusinessError) => {
-                  console.error(`CreateController BusinessError: code: ${err.code}, message: ${err.message}`);
+                  console.info('Succeeded in creating controller.');
                 });
               }
-            }).catch((err: BusinessError) => {
-              console.error(`GetAllSessionDescriptors BusinessError: code: ${err.code}, message: ${err.message}`);
             });
           })
       }
@@ -353,7 +351,7 @@ onSessionCreate(callback: Callback\<AVSessionDescriptor>): void
 
 | 参数名    | 类型                   | 必填 | 说明                                                         |
 | -------- | ---------------------- | ---- | ------------------------------------------------------------ |
-| callback | Callback\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)\> | 是   | 回调函数。参数为会话相关描述。 |
+| callback | Callback\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor23)\> | 是   | 回调函数。参数为会话相关描述。 |
 
 **错误码：**
 
@@ -368,6 +366,7 @@ onSessionCreate(callback: Callback\<AVSessionDescriptor>): void
 
 ```ts
 import { avSession } from '@kit.AVSessionKit';
+
 @Entry
 @Component
 struct Index {
@@ -405,7 +404,7 @@ onSessionDestroy(callback: Callback\<AVSessionDescriptor>): void
 
 | 参数名   | 类型            | 必填 | 说明                                                         |
 | -------- | ---------------| ---- | ------------------------------------------------------------ |
-| callback | Callback\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)\> | 是   | 回调函数。参数为会话相关描述。 |
+| callback | Callback\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor23)\> | 是   | 回调函数。参数为会话相关描述。 |
 
 **错误码：**
 
@@ -454,7 +453,7 @@ onTopSessionChange(callback: Callback\<AVSessionDescriptor>): void
 
 | 参数名   | 类型                 | 必填 | 说明                                                         |
 | -------- | --------------------| ---- | ------------------------------------------------------------ |
-| callback | Callback\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)\> | 是   | 回调函数。参数为会话相关描述。 |
+| callback | Callback\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor23)\> | 是   | 回调函数。参数为会话相关描述。 |
 
 **错误码：**
 
@@ -505,7 +504,7 @@ offSessionCreate(callback?: Callback\<AVSessionDescriptor>): void
 
 | 参数名   | 类型       | 必填 | 说明       |
 | -------- | ----------| ---- | ----------|
-| callback | Callback\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)\> | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为会话相关描述，为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。                               |
+| callback | Callback\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor23)\> | 否   | 需要取消的回调函数，与on接口注册时的回调函数保持一致。如果不填写该参数，则取消所有已注册的回调。                               |
 
 **错误码：**
 
@@ -554,7 +553,7 @@ offSessionDestroy(callback?: Callback\<AVSessionDescriptor>): void
 
 | 参数名   | 类型        | 必填 | 说明                      |
 | -------- | -----------| ---- | -------------------------|
-| callback | Callback\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)\> | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为会话相关描述，为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。|
+| callback | Callback\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor23)\> | 否   | 需要取消的回调函数，与on接口注册时的回调函数保持一致。如果不填写该参数，则取消所有已注册的回调。|
 
 **错误码：**
 
@@ -603,7 +602,7 @@ offTopSessionChange(callback?: Callback\<AVSessionDescriptor>): void
 
 | 参数名   | 类型              | 必填 | 说明                        |
 | -------- | -----------------| ---- | ---------------------------- |
-| callback | Callback\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)\> | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为会话相关描述，为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+| callback | Callback\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor23)\> | 否   | 需要取消的回调函数，与on接口注册时的回调函数保持一致。如果不填写该参数，则取消所有已注册的回调。 |
 
 **错误码：**
 
@@ -665,12 +664,9 @@ isDesktopLyricSupported(): Promise\<boolean>
 **示例：**
 
 ```ts
-import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
 
 avSession.isDesktopLyricSupported().then((isSupported: boolean) => {
-  console.info(`isDesktopLyricSupported : SUCCESS : isSupported : ${isSupported}`);
-}).catch((err: BusinessError) => {
-  console.error(`isDesktopLyricSupported BusinessError: code: ${err.code}, message: ${err.message}`);
+  console.info(`Succeeded in checking desktop lyric supported: ${isSupported}`);
 });
 ```

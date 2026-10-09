@@ -2,7 +2,7 @@
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
-<!--Designer: @liyang_bryan-->
+<!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -11,23 +11,24 @@
 >
 > 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
 
-## 501 无法调用接口
+## 501 资源被其他线程占用，访问被拒绝
 
 **错误信息**
 
-Resource unavailable.
+The resource is unavailable as it is occupied by another thread.
 
 **错误描述**
 
-无法调用接口。
+资源已被其他线程占用锁定，本次访问请求被拒绝。
 
 **可能原因**
 
-图片被跨线程传递，原对象无法调用接口。
+1. 组件的服务资源正忙，无法使用。
+2. 当前资源正在被其他线程使用，无法完成操作。
 
 **处理步骤**
 
-请检查图片并按指示操作重新解码。
+确保同一组件/资源只在一个线程中使用。
 
 ## 62980096 操作失败
 
@@ -51,7 +52,7 @@ The operation failed. Possible cause: 1.Image upload exception. 2. Decoding proc
 
 请检查图片并按指示操作重新解码。
 
-## 62980097 pixelmap序列化传输失败
+## 62980097 PixelMap序列化传输失败
 
 **错误信息**
 
@@ -59,7 +60,7 @@ IPC error. Possible cause: 1.IPC communication failed. 2. Image upload exception
 
 **错误描述**
 
-pixelmap序列化传输失败。
+PixelMap序列化传输失败。
 
 **可能原因**
 
@@ -193,7 +194,7 @@ The image data is not supported.
 
 **错误信息**
 
-Image initialization abnormal. This status code is thrown when an error occurs during the process of creating empty pixelmap.
+Image initialization abnormal. This status code is thrown when an error occurs during the process of creating empty PixelMap.
 
 **错误描述**
 
@@ -492,7 +493,7 @@ Failed to encode the image.
 
 **错误信息**
 
-Add pixelmap out of range.
+Add PixelMap out of range.
 
 **错误描述**
 
@@ -949,7 +950,7 @@ PixelMap设置内存标识符失败。
 
 **处理步骤**
 
-检查是否已释放pixelmap实例。检查内存类型是否匹配。
+检查是否已释放PixelMap实例。检查内存类型是否匹配。
 
 ## 62980302 内存拷贝失败
 
@@ -971,11 +972,69 @@ Memory copy failed.
 
 检查是否已释放要拷贝的实例。检查内存类型是否匹配。
 
+## 7600101 不支持的MIME类型
+
+**错误信息**
+
+Unsupported mime type.
+
+**错误描述**
+
+不支持的MIME类型。
+
+**可能原因**
+
+设备不支持该MIME类型。
+
+**处理步骤**
+
+检查图片数据或更换图片，可使用相关接口查询编解码能力范围。
+
+## 7600102 未知MIME类型
+
+**错误信息**
+
+Unknown mime type.
+
+**错误描述**
+
+未知的MIME类型。
+
+**可能原因**
+
+设备不支持该图像类型或图片损坏。
+
+**处理步骤**
+
+检查图片数据或更换图片。
+
+## 7600103 数据或图片太大
+
+**错误信息**
+
+Too large data or image.
+
+**错误描述**
+
+数据或图片太大。
+
+**可能原因**
+
+图片尺寸太大。
+
+**处理步骤**
+
+更换较小的图片。
+
 ## 7600104 获取图像数据失败
 
 **错误信息**
 
 Failed to get the data from Surface.
+
+**错误描述**
+
+获取图像数据失败。
 
 **可能原因**
 
@@ -985,6 +1044,83 @@ Failed to get the data from Surface.
 **处理步骤**
 
 检查图像数据来源或使用新的图像数据。
+
+## 7600105 PixelMap已被释放
+
+**错误信息**
+
+PixelMap has been released.
+
+**错误描述**
+
+PixelMap已被释放。
+
+**可能原因**
+
+PixelMap对象已被释放，其关联的native对象已不存在。
+
+**处理步骤**
+
+检查该PixelMap对象是否存在被提前释放的风险（例如，在异步任务或另一个线程中意外释放），需确保该对象在使用结束前及所有异步方法执行完成前不被释放。
+
+## 7600106 PixelMap已被传递至另一个线程
+
+**错误信息**
+
+PixelMap has been passed to another thread.
+
+**错误描述**
+
+PixelMap已被传递至另一个线程且被该线程占用，本次访问请求被拒绝。
+
+**可能原因**
+
+PixelMap对象被传递至另一个线程后，其使用权转移至该线程，原线程无法继续对该对象进行操作。
+
+**处理步骤**
+
+不要在PixelMap对象被传递到另一个线程后仍在原线程调用该对象的接口。
+
+## 7600173 DMA内存不存在
+
+**错误信息**
+
+DMA memory does not exist.
+
+**错误描述**
+
+DMA内存不存在。
+
+**可能原因**
+
+当前操作要求PixelMap使用DMA内存，但传入的PixelMap未使用DMA内存。例如，对共享内存的PixelMap读写HDR元数据，或获取其底层NativeBuffer。
+
+**处理步骤**
+
+重新创建使用DMA内存的PixelMap，并使用新对象调用原接口。根据输入数据选择创建方式：
+
+- 解码图片：从API版本15开始，可调用[createPixelMapUsingAllocator](arkts-apis-image-ImageSource.md#createpixelmapusingallocator15)，将allocatorType设置为image.AllocatorType.DMA；C接口调用[OH_ImageSourceNative_CreatePixelmapUsingAllocator()](capi-image-source-native-h.md#oh_imagesourcenative_createpixelmapusingallocator)，将allocator设置为IMAGE_ALLOCATOR_TYPE_DMA。
+- 从像素数据创建：从API版本20开始，可调用[image.createPixelMapUsingAllocator](arkts-apis-image-f.md#imagecreatepixelmapusingallocator20)，将allocatorType设置为image.AllocatorType.DMA；C接口调用[OH_PixelmapNative_CreatePixelmapUsingAllocator()](capi-pixelmap-native-h.md#oh_pixelmapnative_createpixelmapusingallocator)，将allocator设置为IMAGE_ALLOCATOR_MODE_DMA。
+
+关于DMA内存的更多说明，请参见[图片解码内存优化(ArkTS)](../../media/image/image-allocator-type.md)和[图片解码内存优化(C/C++)](../../media/image/image-allocator-type-c.md)。
+
+## 7600174 DMA操作失败
+
+**错误信息**
+
+DMA operation failed.
+
+**错误描述**
+
+DMA内存操作失败。
+
+**可能原因**
+
+读写DMA内存时没有正确地进行同步操作。
+
+**处理步骤**
+
+使用正确的方式读写DMA内存。
 
 ## 7600201 不支持的操作
 
@@ -1021,6 +1157,24 @@ Unsupported metadata. Possible causes: Unsupported metadata type.
 **处理步骤**
 
 重新确定辅助图类型和元数据类型是否对应，再进行读写操作。
+
+## 7600203 不支持的转换
+
+**错误信息**
+
+Unsupported conversion.
+
+**错误描述**
+
+不支持的转换。
+
+**可能原因**
+
+PixelMap的格式不支持转换。
+
+**处理步骤**
+
+检查并更换格式匹配的PixelMap数据。
 
 ## 7600204 无效的区域
 
@@ -1064,6 +1218,10 @@ Unsupported memory format or pixel format.
 
 Invalid parameter.
 
+**错误描述**
+
+非法参数。
+
 **可能原因**
 
 输入的参数无效。
@@ -1071,6 +1229,44 @@ Invalid parameter.
 **处理步骤**
 
 检查并重新输入正确的参数。
+
+## 7600207 不支持的数据格式
+
+**错误信息**
+
+Unsupported data format.
+
+**错误描述**
+
+不支持的数据格式。
+
+**可能原因**
+
+1. 接口不支持传入的像素数据格式。
+2. 对象中的数据格式不支持特定的操作。
+
+**处理步骤**
+
+查看接口文档并使用接口支持的数据格式。
+
+## 7600208 HDR图片分解失败
+
+**错误信息**
+
+HDR image decomposition failed. Possible causes: 1. Decomposition processing is not supported. 2. Processing error occurs.
+
+**错误描述**
+
+HDR图片分解失败。
+
+**可能原因**
+
+1. 分解处理不被支持。
+2. HDR图片处理过程中发生错误。
+
+**处理步骤**
+
+检查HDR PixelMap的像素格式是否支持分解，或更换图片后重试。
 
 ## 7600301 申请内存失败
 
@@ -1108,11 +1304,33 @@ Memory copy failed.
 
 检查要拷贝的内存是否存在，清理内存后重试。
 
+## 7600303 内存锁定或解锁失败
+
+**错误信息**
+
+Memory lock or unlock failed.
+
+**错误描述**
+
+内存锁定或解锁失败。
+
+**可能原因**
+
+PixelMap或内存地址无效。
+
+**处理步骤**
+
+检查PixelMap或内存地址是否有效。
+
 ## 7600305 创建PixelMap失败
 
 **错误信息**
 
 Failed to create the PixelMap.
+
+**错误描述**
+
+创建PixelMap失败。
 
 **可能原因**
 
@@ -1122,6 +1340,44 @@ Failed to create the PixelMap.
 **处理步骤**
 
 检查函数入参或检查是否提前释放了实例。
+
+## 7600306 数据转换失败
+
+**错误信息**
+
+Data conversion failed.
+
+**错误描述**
+
+数据转换失败。
+
+**可能原因**
+
+1. 传入的像素数据缓冲区的大小不符合预期。
+2. PixelMap内部的像素数据损坏。
+
+**处理步骤**
+
+1. 如果传入了一个缓冲区，检查缓冲区的大小是否符合预期。
+2. 检查PixelMap的像素数据和元数据是否正常。
+
+## 7600501 不支持的分配器模式
+
+**错误信息**
+
+Unsupported allocator mode, e.g., use share memory to create a HDR image as only DMA supported hdr metadata.
+
+**错误描述**
+
+不支持的分配器模式。
+
+**可能原因**
+
+没有指定内存分配类型，或指定了错误的内存分配类型。例如：使用共享内存方式解码HDR图片就会出错，因为只有DMA方式才支持HDR元数据。
+
+**处理步骤**
+
+使用正确的内存分配类型。
 
 ## 7600901 未知错误
 
@@ -1238,7 +1494,7 @@ Unsupported metadata.
 
 **错误信息**
 
-Unsupported options, e.g, cannot convert image into desired pixel format.
+Unsupported options, e.g., cannot convert image into desired pixel format.
 
 **错误描述**
 
@@ -1256,7 +1512,11 @@ Unsupported options, e.g, cannot convert image into desired pixel format.
 
 **错误信息**
 
-Invalid parameter. Possible causes: 1. The index is negative. 2. The index is greater than or equal to the number of frames in the image.
+Invalid parameter.
+
+**错误描述**
+
+非法参数。
 
 **可能原因**
 
@@ -1305,6 +1565,44 @@ Memory allocation failed.
 
 检查设备内存或检查传入数据。
 
+## 7700303 图片不包含缩略图数据
+
+**错误信息**
+
+Image does not carry thumbnail data.
+
+**错误描述**
+
+图片不包含缩略图数据。
+
+**可能原因**
+
+图片文件中不包含缩略图数据，且未开启缩略图生成功能。
+
+**处理步骤**
+
+检查图片文件是否包含缩略图数据，或开启缩略图生成功能后重试。
+
+## 7700305 缩略图生成失败
+
+**错误信息**
+
+Thumbnail generation failed.
+
+**错误描述**
+
+缩略图生成失败。
+
+**可能原因**
+
+1. 输入图片数据异常。
+2. 缩略图生成参数不合理。
+3. 设备资源不足。
+
+**处理步骤**
+
+检查输入图片数据和缩略图生成参数，必要时释放系统资源后重试。
+
 ## 7700304 图片信息写入文件失败
 
 **错误信息**
@@ -1342,6 +1640,24 @@ Unsupported options.
 
 检查选项参数配置。
 
+## 7800202 ImagePacker无效参数
+
+**错误信息**
+
+Invalid parameter for ImagePacker.
+
+**错误描述**
+
+编码参数无效。
+
+**可能原因**
+
+编码参数为空或无效。
+
+**处理步骤**
+
+检查编码选项参数配置。
+
 ## 7800301 编码失败
 
 **错误信息**
@@ -1366,6 +1682,10 @@ Encode failed.
 **错误信息**
 
 Invalid parameter.
+
+**错误描述**
+
+非法参数。
 
 **可能原因**
 

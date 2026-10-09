@@ -2,8 +2,8 @@
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @JeremyXu-->
-<!--Designer: @skye_you-->
+<!--Owner: @HarMonkey-->
+<!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
 
@@ -26,7 +26,7 @@ addAsUser(userId: number, attributes: AssetMap): Promise\<void>
 
 在指定用户空间中新增一条关键资产。使用Promise异步回调。
 
-设置[IS_PERSISTENT](js-apis-asset.md#tag)属性，需申请ohos.permission.STORE_PERSISTENT_DATA权限。
+设置[Tag.IS_PERSISTENT](js-apis-asset.md#tag)属性，需申请ohos.permission.STORE_PERSISTENT_DATA权限，申请方式请参考[声明权限](../../security/AccessToken/declare-permissions.md)。
 
 **系统接口：** 此接口为系统接口。
 
@@ -49,12 +49,12 @@ addAsUser(userId: number, attributes: AssetMap): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关键资产存储服务错误码](errorcode-asset.md)
 
 | 错误码ID | 错误信息                                                   |
 | -------- | ---------------------------------------------------------- |
-| 201      | The caller doesn't have the permission.                    |
-| 202      | Non-system applications use system APIs.                   |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                    |
+| 202      | Permission verification failed. A non-system application calls a system API.                   |
 | 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. <br> 3. Parameter verification failed.           |
 | 24000001 | The ASSET service is unavailable.                          |
 | 24000003 | The asset already exists.                                  |
@@ -119,13 +119,13 @@ removeAsUser(userId: number, query: AssetMap): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关键资产存储服务错误码](errorcode-asset.md)
 
 | 错误码ID | 错误信息                                                   |
 | -------- | ---------------------------------------------------------- |
-| 201      | The caller doesn't have the permission.                    |
-| 202      | Non-system applications use system APIs.                   |
-| 401      | Parameter error. Possible causes: <br> 1. Incorrect parameter types.  <br> 2. Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                    |
+| 202      | Permission verification failed. A non-system application calls a system API.                   |
+| 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. <br> 3. Parameter verification failed. |
 | 24000001 | The ASSET service is unavailable.                          |
 | 24000002 | The asset is not found.                        |
 | 24000006 | Insufficient memory.                                       |
@@ -184,12 +184,12 @@ updateAsUser(userId: number, query: AssetMap, attributesToUpdate: AssetMap): Pro
 
 **错误码：**
 
-以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关键资产存储服务错误码](errorcode-asset.md)
 
 | 错误码ID | 错误信息                                                   |
 | -------- | ---------------------------------------------------------- |
-| 201      | The caller doesn't have the permission.                    |
-| 202      | Non-system applications use system APIs.                   |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                    |
+| 202      | Permission verification failed. A non-system application calls a system API.                   |
 | 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. <br> 3. Parameter verification failed.           |
 | 24000001 | The ASSET service is unavailable.                          |
 | 24000002 | The asset is not found.                        |
@@ -252,13 +252,13 @@ preQueryAsUser(userId: number, query: AssetMap): Promise\<Uint8Array>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关键资产存储服务错误码](errorcode-asset.md)
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | The caller doesn't have the permission.                      |
-| 202      | Non-system applications use system APIs.                     |
-| 401      | Parameter error. Possible causes: <br> 1. Incorrect parameter types.  <br> 2. Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                      |
+| 202      | Permission verification failed. A non-system application calls a system API.                     |
+| 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. <br> 3. Parameter verification failed. |
 | 24000001 | The ASSET service is unavailable.                            |
 | 24000002 | The asset is not found.                          |
 | 24000005 | The screen lock status does not match.                           |
@@ -319,13 +319,13 @@ queryAsUser(userId: number, query: AssetMap): Promise\<Array\<AssetMap>>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关键资产存储服务错误码](errorcode-asset.md)
 
 | 错误码ID | 错误信息                                                   |
 | -------- | ---------------------------------------------------------- |
-| 201      | The caller doesn't have the permission.                    |
-| 202      | Non-system applications use system APIs.                   |
-| 401      | Parameter error. Possible causes: <br> 1. Incorrect parameter types.  <br> 2. Parameter verification failed. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                    |
+| 202      | Permission verification failed. A non-system application calls a system API.                   |
+| 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. <br> 3. Parameter verification failed. |
 | 24000001 | The ASSET service is unavailable.                          |
 | 24000002 | The asset is not found.                        |
 | 24000004 | Access denied.                             |
@@ -391,12 +391,12 @@ postQueryAsUser(userId: number, handle: AssetMap): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关键资产存储服务错误码](errorcode-asset.md)
 
 | 错误码ID | 错误信息                                                   |
 | -------- | ---------------------------------------------------------- |
-| 201      | The caller doesn't have the permission.                    |
-| 202      | Non-system applications use system APIs.                   |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                    |
+| 202      | Permission verification failed. A non-system application calls a system API.                   |
 | 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. <br> 3. Parameter verification failed.           |
 | 24000001 | The ASSET service is unavailable.                          |
 | 24000006 | Insufficient memory.                                       |
