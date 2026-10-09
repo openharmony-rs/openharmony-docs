@@ -92,7 +92,7 @@ The UUID is not registered.
 
 **错误信息**
 
-Write data congestion.
+Data transmission congested.
 
 **错误描述**
 

@@ -438,7 +438,7 @@ writeData(params: DataParams): Promise&lt;void&gt;
 | 201 | Permission denied. |
 | 801 | Capability not supported because the chip does not support it. |
 | 36100003 | NearLink disabled. |
-| 36100023 | Write data congestion. |
+| 36100023 | Data transmission congested. |
 | 36100041 | Invalid address. |
 | 36100043 | Invalid UUID. |
 | 36100044 | NearLink standard UUID not allowed. |
