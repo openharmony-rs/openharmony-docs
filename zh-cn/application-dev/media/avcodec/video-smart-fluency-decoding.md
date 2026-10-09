@@ -60,8 +60,6 @@
 - **初始化配置**：以正常倍速起播时，在视频起播前配置为全量直通（`FULL`）模式，无需设置解码倍速参数。
 - **动态切换**：在播放过程中，当目标倍速大于1.0x时，通过`OH_VideoDecoder_SetParameter`在同一个`OH_AVFormat`中下发`ADAPTIVE`模式与当前倍速；当恢复至1.0x及以下倍速时，切回`FULL`模式，恢复全量帧解码输出。
 
-示例在`video_decoder.cpp`中将本能力的初始化配置、倍速切换和温控降载逻辑分别封装为独立函数，并通过代码标签引用，避免其他特性的配置变更影响本指南的示例。
-
 ### 初始化阶段配置
 
 以下示例以正常倍速起播，配置`FULL`模式。`SetOptionalFormatFeatures`在完成同步模式配置后，当`sampleInfo.codec.isSmartFluencySupported`为`true`时调用`ConfigureSmartFluency(format)`并检查返回值。随后由`VideoDecoder::Configure`调用`OH_VideoDecoder_Configure`完成配置；该辅助函数仅设置本能力的参数，不负责创建或销毁`OH_AVFormat`。
