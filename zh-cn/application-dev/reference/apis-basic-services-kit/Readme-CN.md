@@ -20,6 +20,7 @@
     - [系统账号特权列表](appendix-osAccount-authorization-privileges.md)
   - 设备管理<!--device-management-arkts-->
     - [@ohos.batteryInfo (电量信息)](js-apis-battery-info.md)
+    - [@ohos.boardInfo (板级硬件信息)](js-apis-board-info.md)
     - [@ohos.busManager.serial (串口通信管理)](js-apis-busmanager-serial.md)
     - [@ohos.deviceInfo (设备信息)](js-apis-device-info.md)
     - [@ohos.power (系统电源管理)](js-apis-power.md)
@@ -27,7 +28,6 @@
     - [@ohos.thermal (热管理)](js-apis-thermal.md)
     - [@ohos.usbManager (USB管理)](js-apis-usbManager.md)
     - [@ohos.usbManager.serial (串口管理)](js-apis-serialManager.md)
-    - [@ohos.boardInfo (板级硬件信息)](js-apis-board-info.md)
     <!--Del-->
     - [@ohos.batteryInfo (电量信息)(系统接口)](js-apis-battery-info-sys.md)
     - [@ohos.batteryStatistics (耗电统计)(系统接口)](js-apis-batteryStatistics-sys.md)
