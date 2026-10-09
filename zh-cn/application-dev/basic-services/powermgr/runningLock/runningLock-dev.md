@@ -139,7 +139,7 @@
    }
    ```
 
-   <!-- @[common_event_utility_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/powermgr/runningLock/entry/src/main/ets/pages/RunningLockUtil.ets) -->
+   <!-- @[running_lock_utility_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/powermgr/runningLock/entry/src/main/ets/pages/RunningLockUtil.ets) -->
    
    ``` TypeScript
    // RunningLockUtil.ets
@@ -206,7 +206,7 @@
 
 4. 实现业务需要完成的后台系统闲时任务。
 
-   <!-- @[common_event_utility_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/powermgr/runningLock/entry/src/main/ets/pages/UserIdleTask.ets) -->
+   <!-- @[Implement_Background_Idle_Tasks](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/powermgr/runningLock/entry/src/main/ets/pages/UserIdleTask.ets) -->
 
    ``` TypeScript
    // UserIdleTask.ets
