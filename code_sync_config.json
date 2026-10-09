@@ -3658,7 +3658,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/KvStore/ECStoreSamples/entry/src/main/ets/entryability/EntryAbility.ets",
 				"functions":[
 					{
-						"end_line":145,
+						"end_line":144,
 						"name":"EntryAbility",
 						"start_line":16
 					}
@@ -56602,7 +56602,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/KvStore/ECStoreSamples/entry/src/main/ets/entryability/EntryAbility.ets",
 				"functions":[
 					{
-						"end_line":145,
+						"end_line":144,
 						"name":"EntryAbility",
 						"start_line":16
 					}
