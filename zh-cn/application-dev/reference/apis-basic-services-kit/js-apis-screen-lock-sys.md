@@ -50,7 +50,7 @@ strongAuthChanged | screenLockDisabledChanged | unlockPolicyChanged
 | serviceRestart     | 表示锁屏服务进行重启。   |
 | strongAuthChanged  | 表示锁屏增强认证状态变化时候的事件类型。       |
 | screenLockDisabledChanged     | 表示锁屏被禁用、启用状态变化时候的事件类型。   |
-| unlockPolicyChanged     | 表示锁屏解锁策略变化时候的事件类型。<br> 起始版本： 26.0.0   |
+| unlockPolicyChanged     | 表示锁屏解锁策略变化时候的事件类型。<br> **起始版本：** 26.0.0   |
 
 ## SystemEvent<sup>9+</sup>
 
