@@ -50,7 +50,7 @@ strongAuthChanged | screenLockDisabledChanged | unlockPolicyChanged
 | serviceRestart     | 表示锁屏服务进行重启。   |
 | strongAuthChanged  | 表示锁屏增强认证状态变化时候的事件类型。       |
 | screenLockDisabledChanged     | 表示锁屏被禁用、启用状态变化时候的事件类型。   |
-| unlockPolicyChanged<sup>26.0.0+</sup>     | 表示锁屏解锁策略变化时候的事件类型。   |
+| unlockPolicyChanged     | 表示锁屏解锁策略变化时候的事件类型。<br> 起始版本： 26.0.0   |
 
 ## SystemEvent<sup>9+</sup>
 
@@ -77,11 +77,11 @@ enum StrongAuthReasonFlags
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| NONE | 0x00000000 | 表示无强认证原因标志。 |
-| AFTER_BOOT | 0x00000001 | 表示开机后请求的强认证原因。 |
-| AFTER_TIMEOUT | 0x00000002 | 表示超时后请求的强认证原因。 |
-| ACTIVE_REQUEST | 0x00000004 | 表示主动请求的强认证原因。 |
-| POLICY_RESTRICTION | 0x00000008 | 表示策略限制请求的强认证原因。 |
+| NONE | 0x00000000 | 表示无强认证。 |
+| AFTER_BOOT | 0x00000001 | 表示开机后强认证。 |
+| AFTER_TIMEOUT | 0x00000002 | 表示超时强认证。 |
+| ACTIVE_REQUEST | 0x00000004 | 表示主动请求强认证。 |
+| POLICY_RESTRICTION | 0x00000008 | 表示策略限制请求强认证。 |
 
 ## AuthState<sup>12+</sup>
 
@@ -103,11 +103,13 @@ enum AuthState
 | AUTHED_BY_FINGERPRINT | 5 | 表示锁屏通过指纹认证。 |
 | AUTHED_BY_FACE | 6 | 表示锁屏通过人脸认证。 |
 
-## UnlockPolicy<sup>26.0.0+</sup>
+## UnlockPolicy
 
 enum UnlockPolicy
 
 表示解锁屏幕所使用的锁屏认证策略。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.MiscServices.ScreenLock
 
@@ -775,11 +777,13 @@ let isDeviceLocked = screenLock.isDeviceLocked(100);
 console.info(`Device locked: ${isDeviceLocked}`);
 ```
 
-## screenLock.getUnlockPolicy<sup>26.0.0+</sup>
+## screenLock.getUnlockPolicy
 
 getUnlockPolicy(userId: int): UnlockPolicy
 
 获取解锁屏幕所使用的认证策略。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.MiscServices.ScreenLock
 
@@ -799,7 +803,7 @@ getUnlockPolicy(userId: int): UnlockPolicy
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [UnlockPolicy](#unlockpolicy2600) | 解锁策略。 |
+| [UnlockPolicy](#unlockpolicy) | 解锁策略。 |
 
 **错误码：**
 
