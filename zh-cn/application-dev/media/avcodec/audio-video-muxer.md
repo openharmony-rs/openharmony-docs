@@ -42,6 +42,8 @@ target_link_libraries(sample PUBLIC libnative_media_avmuxer.so)
 target_link_libraries(sample PUBLIC libnative_media_core.so)
 ```
 
+示例代码引用了示例工程中自定义的工具宏与数据结构（如CHECK_AND_RETURN_RET_LOG、AVCODEC_SAMPLE_ERR_*、AVCODEC_SAMPLE_LOG*、SampleInfo等），不属于SDK的接口，完整定义请参见示例工程，移植时需自行实现或替换。
+
 ### mp4格式封装开发步骤
 
 参考以下示例代码，完成音视频封装mp4的全流程。
@@ -367,8 +369,29 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
     <!-- @[Recorder::AudioEncOutputThread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/sample/recorder/Recorder.cpp) -->
 
     ```cpp
-    muxer_->WriteSample(muxer_->GetAudioTrackId(), bufferInfo->buffer,
-                        bufferInfo->attr);
+    void Recorder::AudioEncOutputThread()
+    {
+        while (true) {
+            CHECK_AND_BREAK_LOG(!isEos_, "Work done, thread out");
+            CHECK_AND_BREAK_LOG(isStarted_, "Work done, thread out");
+
+            std::shared_ptr<CodecBufferInfo> bufferInfo = audioEncContext_->outputBufferQueue.Dequeue();
+            std::shared_lock<std::shared_mutex> codecLock(audioEncContext_->codecMutex);
+            CHECK_AND_BREAK_LOG(isStarted_, "Work done, thread out");
+            CHECK_AND_CONTINUE_LOG(bufferInfo != nullptr && bufferInfo->isValid,
+                                   "Buffer queue is empty or invalid, continue");
+
+            audioEncContext_->outputFrameCount++;
+            AVCODEC_SAMPLE_LOGW(
+                "Audio Out buffer count: %{public}u, size: %{public}d, flag: %{public}u, pts: %{public}" PRId64,
+                audioEncContext_->outputFrameCount, bufferInfo->attr.size, bufferInfo->attr.flags, bufferInfo->attr.pts);
+            muxer_->WriteSample(muxer_->GetAudioTrackId(), bufferInfo->buffer,
+                                bufferInfo->attr);
+            int32_t ret = audioEncoder_->FreeOutputData(bufferInfo->bufferIndex);
+            CHECK_AND_BREAK_LOG(ret == AVCODEC_SAMPLE_ERR_OK, "Encoder output thread out");
+        }
+        AVCODEC_SAMPLE_LOGI("Exit, frame count: %{public}u", audioEncContext_->inputFrameCount);
+    }
     ```
 
 11. 调用OH_AVMuxer_Stop()，停止封装。
@@ -427,19 +450,7 @@ flv格式封装需要配置的key请参考AVCodec支持的格式中的[媒体数
 
 2. 调用OH_AVMuxer_Create()创建封装器实例对象。
 
-   示例中以读写方式打开fd，并设置封装格式为flv（AV_OUTPUT_FORMAT_FLV）：
-
-   <!-- @[Muxer::Create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp) -->
-
-   ```cpp
-   int32_t Muxer::Create(int32_t fd, int32_t outputFormat)
-   {
-       outputFormat_ = outputFormat;
-       muxer_ = OH_AVMuxer_Create(fd, static_cast<OH_AVOutputFormat>(outputFormat));
-       CHECK_AND_RETURN_RET_LOG(muxer_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Muxer create failed, fd: %{public}d", fd);
-       return AVCODEC_SAMPLE_ERR_OK;
-   }
-   ```
+   示例中以读写方式打开fd，并设置封装格式为flv（AV_OUTPUT_FORMAT_FLV）。调用OH_AVMuxer_Create()创建封装器的实现与[mp4格式封装开发步骤](#mp4格式封装开发步骤)中步骤2一致。
 
 3. flv格式不支持调用OH_AVMuxer_SetRotation()设置旋转角度，调用将返回错误。
 
@@ -492,28 +503,7 @@ flv格式封装需要配置的key请参考AVCodec支持的格式中的[媒体数
    }
    ```
 
-   示例中添加音频轨的实现如下：
-
-   <!-- @[Muxer::AddAudioTrack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp) -->
-
-   ```cpp
-   int32_t Muxer::AddAudioTrack(SampleInfo &sampleInfo)
-   {
-       CHECK_AND_RETURN_RET_LOG(muxer_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Muxer is null");
-
-       // 添加音频轨：用OH_AVFormat_CreateAudioFormat创建format，这里以封装AAC音频为例。
-       OH_AVFormat *formatAudio = OH_AVFormat_CreateAudioFormat(sampleInfo.audio.audioCodecMime.data(),
-           sampleInfo.audio.audioSampleRate, sampleInfo.audio.audioChannelCount);
-       CHECK_AND_RETURN_RET_LOG(formatAudio != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Create audio format failed");
-       // 设置音频profile，选填。
-       OH_AVFormat_SetIntValue(formatAudio, OH_MD_KEY_PROFILE, AAC_PROFILE_LC);
-       int32_t ret = OH_AVMuxer_AddTrack(muxer_, &audioTrackId_, formatAudio);
-       OH_AVFormat_Destroy(formatAudio);
-       CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK && audioTrackId_ >= 0, AVCODEC_SAMPLE_ERR_ERROR,
-           "Add audio track failed, ret: %{public}d", ret);
-       return AVCODEC_SAMPLE_ERR_OK;
-   }
-   ```
+   示例中添加音频轨的实现与[mp4格式封装开发步骤](#mp4格式封装开发步骤)中步骤5的方法二一致。
 
    <!--RP3--><!--RP3End-->
 
@@ -523,38 +513,7 @@ flv格式封装需要配置的key请参考AVCodec支持的格式中的[媒体数
    >
    > 当开发者需要设置色彩信息时，必须保证OH_MD_KEY_COLOR_PRIMARIES、OH_MD_KEY_TRANSFER_CHARACTERISTICS、OH_MD_KEY_MATRIX_COEFFICIENTS三个key设置的值都在其各自的参数范围内，系统才会识别这是有效色彩信息数据。参数设置范围可参考[OH_ColorPrimary](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_colorprimary)、[OH_TransferCharacteristic](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_transfercharacteristic)和[OH_MatrixCoefficient](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_matrixcoefficient)。
 
-   示例中添加视频轨的实现如下（HDR Vivid视频需额外设置色彩信息相关key，选填）：
-
-   <!-- @[Muxer::AddVideoTrack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp) -->
-
-   ```cpp
-   int32_t Muxer::AddVideoTrack(SampleInfo &sampleInfo)
-   {
-       CHECK_AND_RETURN_RET_LOG(muxer_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Muxer is null");
-
-       // 添加视频轨：用OH_AVFormat_CreateVideoFormat创建format。
-       OH_AVFormat *formatVideo = OH_AVFormat_CreateVideoFormat(sampleInfo.video.videoCodecMime.data(),
-           sampleInfo.video.videoWidth, sampleInfo.video.videoHeight);
-
-       OH_AVFormat_SetDoubleValue(formatVideo, OH_MD_KEY_FRAME_RATE, sampleInfo.video.frameRate);
-       OH_AVFormat_SetIntValue(formatVideo, OH_MD_KEY_WIDTH, sampleInfo.video.videoWidth);
-       OH_AVFormat_SetIntValue(formatVideo, OH_MD_KEY_HEIGHT, sampleInfo.video.videoHeight);
-       OH_AVFormat_SetStringValue(formatVideo, OH_MD_KEY_CODEC_MIME, sampleInfo.video.videoCodecMime.data());
-       // HDR Vivid视频需要设置色彩信息相关key，选填。
-       if (sampleInfo.video.isHDRVivid) {
-           OH_AVFormat_SetIntValue(formatVideo, OH_MD_KEY_VIDEO_IS_HDR_VIVID, 1);
-           OH_AVFormat_SetIntValue(formatVideo, OH_MD_KEY_RANGE_FLAG, sampleInfo.video.rangFlag);
-           OH_AVFormat_SetIntValue(formatVideo, OH_MD_KEY_COLOR_PRIMARIES, sampleInfo.video.primary);
-           OH_AVFormat_SetIntValue(formatVideo, OH_MD_KEY_TRANSFER_CHARACTERISTICS, sampleInfo.video.transfer);
-           OH_AVFormat_SetIntValue(formatVideo, OH_MD_KEY_MATRIX_COEFFICIENTS, sampleInfo.video.matrix);
-       }
-
-       int32_t ret = OH_AVMuxer_AddTrack(muxer_, &videoTrackId_, formatVideo);
-       OH_AVFormat_Destroy(formatVideo);
-       CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK && videoTrackId_ >= 0, AVCODEC_SAMPLE_ERR_ERROR, "AddTrack failed");
-       return AVCODEC_SAMPLE_ERR_OK;
-   }
-   ```
+   示例中添加视频轨的实现（HDR Vivid视频需额外设置色彩信息相关key，选填）与[mp4格式封装开发步骤](#mp4格式封装开发步骤)中步骤6的方法二一致。
 
    当视频轨需要设置色彩信息时，在使用OH_AVMuxer_AddTrack()之前先设置色彩信息相关key。
 
@@ -567,18 +526,7 @@ flv格式封装需要配置的key请参考AVCodec支持的格式中的[媒体数
 
 7. 调用OH_AVMuxer_Start()开始封装。
 
-   <!-- @[Muxer::Start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp) -->
-
-   ```cpp
-   int32_t Muxer::Start()
-   {
-       CHECK_AND_RETURN_RET_LOG(muxer_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Muxer is null");
-
-       int ret = OH_AVMuxer_Start(muxer_);
-       CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR, "Start failed, ret: %{public}d", ret);
-       return AVCODEC_SAMPLE_ERR_OK;
-   }
-   ```
+   调用OH_AVMuxer_Start()的实现与[mp4格式封装开发步骤](#mp4格式封装开发步骤)中步骤9一致。
 
    调用start写封装文件头。start后，不能设置媒体参数、不能添加音视频轨。
 
@@ -586,48 +534,11 @@ flv格式封装需要配置的key请参考AVCodec支持的格式中的[媒体数
 
    封装数据包括视频、音频数据。写入前通过OH_AVBuffer_SetBufferAttr()设置当前数据的属性，其中attr.pts为当前数据的开始播放的时间，单位微秒，相对时间，首帧为0，后续按“采样点数*1000000/采样率”递增。
 
-   <!-- @[Muxer::WriteSample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp) -->
-
-   ```cpp
-   int32_t Muxer::WriteSample(int32_t trackId, OH_AVBuffer *buffer, OH_AVCodecBufferAttr &attr)
-   {
-       std::lock_guard<std::mutex> lock(writeMutex_);
-
-       CHECK_AND_RETURN_RET_LOG(muxer_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Muxer is null");
-       CHECK_AND_RETURN_RET_LOG(buffer != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Get a empty buffer");
-       
-       int32_t ret = OH_AVBuffer_SetBufferAttr(buffer, &attr);
-       CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR, "SetBufferAttr failed");
-
-       ret = OH_AVMuxer_WriteSampleBuffer(muxer_, trackId, buffer);
-       CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR, "Write sample failed");
-       return AVCODEC_SAMPLE_ERR_OK;
-   }
-   ```
-
-   示例中buffer来自编码器输出的AVBuffer，通过GetAudioTrackId()/GetVideoTrackId()选择写的音视频轨：
-
-   <!-- @[Recorder::AudioEncOutputThread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/sample/recorder/Recorder.cpp) -->
-
-   ```cpp
-   muxer_->WriteSample(muxer_->GetAudioTrackId(), bufferInfo->buffer,
-                       bufferInfo->attr);
-   ```
+   调用OH_AVMuxer_WriteSampleBuffer()写入封装数据的实现与[mp4格式封装开发步骤](#mp4格式封装开发步骤)中步骤10一致，写入时通过GetAudioTrackId()/GetVideoTrackId()选择写的音视频轨。
 
 9. 调用OH_AVMuxer_Stop()，停止封装。
 
-   <!-- @[Muxer::Stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp) -->
-
-   ```cpp
-   int32_t Muxer::Stop()
-   {
-       CHECK_AND_RETURN_RET_LOG(muxer_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Muxer is null");
-
-       int32_t ret = OH_AVMuxer_Stop(muxer_);
-       CHECK_AND_RETURN_RET_LOG(ret == AV_ERR_OK, AVCODEC_SAMPLE_ERR_ERROR, "Muxer stop failed");
-       return AVCODEC_SAMPLE_ERR_OK;
-   }
-   ```
+   调用OH_AVMuxer_Stop()的实现与[mp4格式封装开发步骤](#mp4格式封装开发步骤)中步骤11一致。
 
    调用stop，写封装文件尾。stop后不能写入媒体数据。
 
@@ -635,17 +546,6 @@ flv格式封装需要配置的key请参考AVCodec支持的格式中的[媒体数
 
     注意不能重复销毁，否则将会导致程序崩溃。
 
-    <!-- @[Muxer::Release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp) -->
-
-    ```cpp
-    int32_t Muxer::Release()
-    {
-        if (muxer_ != nullptr) {
-            OH_AVMuxer_Destroy(muxer_);
-            muxer_ = nullptr;
-        }
-        return AVCODEC_SAMPLE_ERR_OK;
-    }
-    ```
+    调用OH_AVMuxer_Destroy()销毁实例的实现与[mp4格式封装开发步骤](#mp4格式封装开发步骤)中步骤12一致。
 
     示例中封装完成关闭文件时，还需调用close(fd)关闭文件描述符。

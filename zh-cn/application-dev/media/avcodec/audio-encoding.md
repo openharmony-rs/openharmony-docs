@@ -31,6 +31,8 @@
 
 参考以下示例代码，完成音频编码的全流程，包括：创建编码器、设置编码参数（采样率/码率/声道数等）、开始、刷新、重置、销毁资源。
 
+示例代码引用了示例工程中自定义的工具宏与数据结构（如CHECK_AND_RETURN_RET_LOG、AVCODEC_SAMPLE_ERR_*、AVCODEC_SAMPLE_LOG*、CodecUserData、CodecBufferInfo、SampleInfo等），不属于SDK的接口，完整定义请参见示例工程，移植时需自行实现或替换。
+
 在应用开发过程中，开发者应按一定顺序调用方法，执行对应操作，否则系统可能会抛出异常或生成其他未定义的行为。具体顺序可参考下列开发步骤及对应说明。
 
 如下为音频编码调用关系图：
@@ -78,7 +80,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    {
        // 设置判定是否为编码。true表示当前是编码。
        constexpr bool isEncoder = true;
-       // 通过 mime type 创建编码器。此处传入的 mime type 以实际编码格式为准。
+       // 通过mime type创建编码器。此处传入的mime type以实际编码格式为准。
        encoder_ = OH_AudioCodec_CreateByMime(codecMime.c_str(), isEncoder);
        CHECK_AND_RETURN_RET_LOG(encoder_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Create failed");
        return AVCODEC_SAMPLE_ERR_OK;
@@ -92,7 +94,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    ```cpp
    int32_t AudioEncoder::CreateByName(const std::string &codecMime)
    {
-       // 通过 codec name 创建编码器。
+       // 通过codec name创建编码器。
        OH_AVCapability *capability = OH_AVCodec_GetCapability(codecMime.c_str(), true);
        CHECK_AND_RETURN_RET_LOG(capability != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "GetCapability failed");
        const char *name = OH_AVCapability_GetName(capability);
@@ -148,6 +150,10 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    }
    ```
 
+   > **说明：**
+   >
+   > OnNeedInputBuffer()中的UpdateEncoderFirstInputDescription()为视频编码首帧的信息获取逻辑（内部调用OH_VideoEncoder_GetInputDescription()），音频编码场景不会生效，可忽略。
+
    <!-- @[SampleCallback::OnNewOutputBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/common/sample_callback.cpp) -->
 
    ```cpp
@@ -177,7 +183,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    > **说明：**
    >
-   > 示例中isDecFirstFrame分支与时域层级信息的获取为视频场景的扩展逻辑，音频编码场景不会生效，可忽略。
+   > 示例中isDecFirstFrame分支（内部调用OH_VideoDecoder_GetOutputDescription()，该接口声明于native_avcodec_videodecoder.h，属于视频解码库）与时域层级信息的获取（GetTemporalLayerID()）为视频场景的扩展逻辑，音频编码场景不会生效，可忽略。
 
    配置回调：
 
@@ -273,6 +279,8 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    ```
 
 5. 调用OH_AudioCodec_Prepare()，编码器就绪。
+
+   示例工程将OH_AudioCodec_Prepare()封装在Config()函数中调用，该函数先完成Configure()配置与回调注册，以下为其中Prepare部分的代码：
 
    <!-- @[AudioEncoder::Config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/audio_encoder.cpp) -->
 
@@ -405,7 +413,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    {
        CHECK_AND_RETURN_RET_LOG(encoder_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Encoder is null");
 
-       // 获取输入 buffer 并发送 EOS
+       // 获取输入buffer并发送EOS
        CodecBufferInfo bufferInfo(nullptr);
        auto buffer = GetInputBuffer(bufferInfo, TIMEOUT_US);
        if (buffer == nullptr) {
@@ -413,7 +421,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
            return AVCODEC_SAMPLE_ERR_ERROR;
        }
 
-       // 设置 EOS 标志
+       // 设置EOS标志
        bufferInfo.attr.size = 0;
        bufferInfo.attr.flags = AVCODEC_BUFFER_FLAGS_EOS;
        int32_t ret = OH_AVBuffer_SetBufferAttr(buffer, &bufferInfo.attr);
@@ -430,11 +438,11 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    }
    ```
 
-   | 枚举值 | 描述 | 
+   | 枚举值 | 描述 |
    | -------- | -------- |
-   | AVCODEC_BUFFER_FLAGS_NONE | 表示为普通帧。 | 
-   | AVCODEC_BUFFER_FLAGS_EOS | 表示缓冲区是流结束帧。 | 
-   | AVCODEC_BUFFER_FLAGS_CODEC_DATA | 表示缓冲区包含编解码特定数据。 | 
+   | AVCODEC_BUFFER_FLAGS_NONE | 表示为普通帧。 |
+   | AVCODEC_BUFFER_FLAGS_EOS | 表示缓冲区是流结束帧。 |
+   | AVCODEC_BUFFER_FLAGS_CODEC_DATA | 表示缓冲区包含编解码特定数据。 |
 
 8. 调用OH_AudioCodec_FreeOutputBuffer()，释放编码后的数据。
 
