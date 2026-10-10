@@ -2389,6 +2389,115 @@ onContextMenuHide(callback: OnContextMenuHideCallback)
   }
   ```
 
+## onContextMenuUpdate
+
+onContextMenuUpdate(callback: OnContextMenuUpdateCallback)
+
+注册回调，在内核异步更新上下文菜单项状态时调用。内核完成异步处理后触发该回调，通知应用更新菜单项的显示状态。
+
+[shouldOfferLinkToText](./arkts-basic-components-web-WebContextMenuParam.md#shouldofferlinktotext)方法返回的是同步初始值，而此回调提供的是异步最终值，两者互为补充。
+
+在单次上下文菜单会话期间，此回调可能被多次调用，每个被内核异步更新状态的菜单项各触发一次。回调绑定于Web组件生命周期，组件销毁时自动释放。
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名    | 类型   | 必填   | 说明                  |
+| ------ | ------ | ---- | --------------------- |
+| callback  | [OnContextMenuUpdateCallback](./arkts-basic-components-web-t.md#oncontextmenuupdatecallback) | 是 | 上下文菜单项状态更新时触发的回调函数，接收菜单项ID和选项信息。     |
+
+**示例：**
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+ 
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+    private result: WebContextMenuResult | undefined = undefined;
+    private param: WebContextMenuParam | undefined = undefined;
+    @State offsetX: number = 0;
+    @State offsetY: number = 0;
+    @State showMenu: boolean = false;
+ 
+    @Builder
+    // 构建自定义菜单及触发功能接口
+    MenuBuilder() {
+    // 以垂直列表形式显示的菜单。
+        Menu() {
+          // 展示菜单Menu中具体的item菜单项。
+          MenuItem({
+            content: 'copyLink',
+          })
+          .width(100)
+          .height(50)
+          .onClick(() => {
+            this.result?.copyLinkToTextMenu();
+            console.info("isOverTextFragment=" + this.param?.isOverTextFragment());
+            console.info("getTextFragmentGeneratedLink=" + this.param?.getTextFragmentGeneratedLink());
+            this.showMenu = false;
+          })
+ 
+          MenuItem({
+            content: 'removeLink',
+          })
+          .width(100)
+          .height(50)
+          .onClick(() => {
+              this.result?.removeFragments();
+              console.info("shouldOfferLinkToText=" + this.param?.shouldOfferLinkToText());
+              this.showMenu = false;
+            })
+      }
+      .width(150)
+      .height(450)
+    }
+ 
+    build() {
+      Column() {
+        Web({ src: 'https://www.baidu.com', controller: this.controller })
+        // 触发自定义弹窗
+          .onContextMenuShow((event) => {
+            if (event) {
+              this.result = event.result
+              this.param = event.param;
+            }
+            this.showMenu = true;
+            this.offsetX = 0;
+            this.offsetY = Math.max(px2vp(event?.param.y() ?? 0) - 0, 0);
+            return true;
+          })
+          .onContextMenuUpdate((menuItemId, options) => {
+            if (menuItemId === WebContextMenuItemId.MENU_COPY_LINK) {
+              console.info("onContextMenuUpdate enable = " + options?.enable);
+            }
+          })
+          .bindPopup(this.showMenu,
+            {
+              builder: this.MenuBuilder(),
+              enableArrow: false,
+              placement: Placement.LeftTop,
+              mask: false,
+              onStateChange: (e) => {
+                if (!e.isVisible) {
+                  this.showMenu = false;
+                  this.result!.closeContextMenu();
+                }
+              }
+            })
+          .height("70%")
+      }
+    }
+  }
+  ```
+
 ## onScroll<sup>9+</sup>
 
 onScroll(callback: Callback\<OnScrollEvent\>)
