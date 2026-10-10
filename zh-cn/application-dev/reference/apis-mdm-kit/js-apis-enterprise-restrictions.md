@@ -1277,7 +1277,6 @@ try {
 | PACKET_FILTERING   | 3   | 网络报文过滤管控策略，即按预设规则决定网络数据包的放行或丢弃，详见[net_trafficfilter.h](../apis-network-kit/capi-net-trafficfilter-h.md)。禁用后，通过[OH_TrafficFilter_AddPacketRule](../apis-network-kit/capi-net-trafficfilter-h.md#oh_trafficfilter_addpacketrule)接口添加的报文过滤规则仍可添加成功，但不再生效。取消禁用之后可恢复使用。当前仅支持PC/2in1设备使用。<br>**起始版本：** 26.0.1 |
 | SUDO   | 4   | 设备级SUDO管控策略。当前仅支持PC/2in1设备使用。禁用后，无法使用sudo命令。当已经通过[setDisallowedPolicyForAccount](#restrictionssetdisallowedpolicyforaccount)设置了某用户禁用sudo能力时，再启用sudo能力，会报策略冲突。<br>**起始版本：** 26.0.1 |
 | TRAFFIC_REDIRECTION   | 5   | 网络流量重定向管控策略，即按预设规则将匹配的TCP流量转发到其它端口，详见[net_trafficfilter.h](../apis-network-kit/capi-net-trafficfilter-h.md)。禁用后，通过[OH_TrafficFilter_AddRedirectRule](../apis-network-kit/capi-net-trafficfilter-h.md#oh_trafficfilter_addredirectrule)接口添加的重定向规则仍可添加成功，但不再生效。取消禁用之后可恢复使用。当前仅支持PC/2in1设备使用。<br>**起始版本：** 26.0.0 |
-
 | CORE_DUMP   | 6   | 创建文件转储。禁用后，无法通过任务管理器创建文件转储。当前仅支持PC/2in1设备使用。<br>**起始版本：** 26.0.0 |
 | RS232   | 7   | RS-232串口管控策略。禁用后，无法通过RS-232串口传输数据。当前仅支持PC/2in1设备使用（部分设备不支持RS-232串口）。<br>**起始版本：** 26.0.0 |
 | DISK_ERASURE   | 8   | 磁盘擦除能力。禁用后，"磁盘擦除"入口将被置灰。当前仅支持PC/2in1设备使用。<br>**起始版本：** 26.0.0 |
