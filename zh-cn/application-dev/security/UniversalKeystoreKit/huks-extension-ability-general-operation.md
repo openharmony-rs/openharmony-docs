@@ -218,6 +218,7 @@ static napi_value CloseResource(napi_env env, napi_callback_info info)
 ```ts
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { util } from '@kit.ArkTS';
 
 let providerName: string = 'testProviderName';
 let abilityName: string = 'CryptoExtensionAbility1';
@@ -501,6 +502,7 @@ getErrorInfo接口返回值类型为[HuksExternalErrorInfo](../../reference/apis
 
 ```ts
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
+import { util } from '@kit.ArkTS';
 
 function stringToUint8Array(str: string): Uint8Array {
   return new util.TextEncoder().encodeInto(str);
