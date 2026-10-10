@@ -78,7 +78,7 @@ import { relationalStore } from '@kit.ArkData';
 
 ## Asset<sup>10+</sup>
 
-记录资产附件（文件、图片、视频等类型文件）的相关信息。当前页面仅包含本接口的系统接口字段，其他公开字段参见[Asset](arkts-apis-data-relationalStore-i.md#asset10)。
+记录资产附件（文件、图片、视频等类型文件）的相关信息。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
