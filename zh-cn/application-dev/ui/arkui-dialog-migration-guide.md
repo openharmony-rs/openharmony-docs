@@ -8,7 +8,7 @@
 
 ## 概述
 
-本文档帮助开发者了解 `@ohos.arkui.dialog` 新接口与老接口（[CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller)、[AlertDialog.show](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#showdeprecated)、[ActionSheet.show](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#showdeprecated)、[promptAction.showDialog](../reference/apis-arkui/js-apis-promptAction.md#promptactionshowdialogdeprecated)、[promptAction.showActionMenu](../reference/apis-arkui/js-apis-promptAction.md#promptactionshowactionmenudeprecated)、[promptAction.openCustomDialog](../reference/apis-arkui/js-apis-promptAction.md#promptactionopencustomdialogdeprecated)、[promptAction.openCustomDialogWithController](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18)、[promptAction.presentCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18)）的能力差异，并按弹窗类别提供从老接口到新接口的迁移映射。
+本文档帮助开发者了解 `@ohos.arkui.dialog` 新接口与老接口（[CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller)、[showAlertDialog](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showalertdialog)、[showActionSheet](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showactionsheet)、[promptAction.showDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog)、[promptAction.showActionMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showactionmenu)、[promptAction.openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog)、[promptAction.openCustomDialogWithController](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18)、[promptAction.presentCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18)）的能力差异，并按弹窗类别提供从老接口到新接口的迁移映射。
 
 > **适用版本：** 从 API 版本 26.1.0 开始，`@ohos.arkui.dialog` 提供 Unified Dialog API。版本状态以 [`@ohos.arkui.dialog.d.ts`](../reference/apis-arkui/js-apis-dialog.md) 实际 `@since` 标注为准。
 
@@ -209,6 +209,68 @@
 | 打开动画回调 | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear`（API 20+） | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` |
 | 悬浮模式 | 无 | `enableHoverMode` + `hoverModeArea` |
 | 层级模式 | `levelMode`（API 15+） + `levelUniqueId`（API 15+） + `immersiveMode`（API 15+） | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` |
+| 系统材质 | `systemMaterial: SystemUiMaterial`（API 26+） | `systemMaterial: SystemUiMaterial` |
+
+#### 6. promptAction.presentCustomDialog（自定义弹窗）
+
+| 属性 | 老接口（promptAction.presentCustomDialog） | 新接口（DialogPresenter.present + DialogCustomOptions） |
+|------|------|------|
+| 编程模型 | `promptAction.presentCustomDialog(builder, controller?, options?): Promise<number>` | `presenter.present(content, options?: DialogCustomOptions): Promise<DialogResult>` |
+| 内容构建 | `CustomBuilder` / `CustomBuilderWithId` | `CustomBuilder` / `CustomBuilderWithId` / `ComponentContent<Object>` |
+| 控制器 | `promptAction.DialogController`（API 18+） | `DialogBaseController` |
+| 选项类型 | `DialogOptions`（继承 `BaseDialogOptions`） | `DialogCustomOptions`（继承 `DialogBaseOptions`） |
+| 样式控制 | 无 `customStyle` 属性（内容样式完全由 builder 决定） | `customStyle: boolean` |
+| 对齐 | `alignment: DialogAlignment` | `alignment: DialogBaseAlignment` |
+| 偏移 | `offset: Offset` | `offset: Offset` |
+| 自动取消 | `autoCancel: boolean`（API 12+） | `autoCancel: boolean` |
+| 蒙层颜色 | `maskColor: ResourceColor`（API 12+） | `maskColor: ResourceColor` |
+| 蒙层区域 | `maskRect: Rectangle` | `maskRect: Rectangle` |
+| 模态 | `isModal: boolean` | `isModal: boolean` |
+| 子窗口 | `showInSubWindow: boolean` | `showInSubWindow: boolean` |
+| 背景色 | `backgroundColor`（`DialogOptions`） | `backgroundColor` |
+| 背景模糊 | `backgroundBlurStyle`（`DialogOptions`） + `backgroundBlurStyleOptions`（API 19+） + `backgroundEffect`（API 19+） | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` |
+| 边框 | `cornerRadius` / `borderWidth` / `borderColor` / `borderStyle`（`DialogOptions`） | `borderRadius` / `borderWidth` / `borderColor` / `borderStyle`（`cornerRadius` 更名为 `borderRadius`） |
+| 阴影 | `shadow`（`DialogOptions`） | `shadow: ShadowOptions \| ShadowStyle` |
+| 尺寸 | `width` / `height`（`DialogOptions`） | `width` / `height` |
+| 过渡动画 | `transition: TransitionEffect`（API 12+） / `dialogTransition`（API 19+） | `dialogTransition: TransitionEffect` |
+| 蒙层动画 | `maskTransition: TransitionEffect`（API 19+） | `maskTransition: TransitionEffect` |
+| 焦点 | `focusable: boolean`（API 19+） | `focusable: boolean` |
+| 打开动画回调 | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear`（API 12+） | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` |
+| 取消回调 | `onWillDismiss: Callback<DismissDialogAction>`（API 12+） | `onWillDismiss: Callback<DialogDismissal>` |
+| 键盘避让 | `keyboardAvoidMode`（API 12+） + `keyboardAvoidDistance`（API 15+） | `keyboardAvoidMode` + `keyboardAvoidDistance` |
+| 悬浮模式 | `enableHoverMode`（API 14+） + `hoverModeArea`（API 14+） | `enableHoverMode` + `hoverModeArea` |
+| 层级模式 | `levelMode`（API 15+） + `levelUniqueId`（API 15+） + `immersiveMode`（API 15+） + `levelOrder`（API 18+） | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` |
+| 系统材质 | `systemMaterial: SystemUiMaterial`（API 26+） | `systemMaterial: SystemUiMaterial` |
+
+#### 7. promptAction.openCustomDialogWithController（带控制器的自定义弹窗）
+
+| 属性 | 老接口（promptAction.openCustomDialogWithController） | 新接口（DialogPresenter.present + DialogCustomOptions） |
+|------|------|------|
+| 编程模型 | `promptAction.openCustomDialogWithController(content, controller, options?): Promise<void>` | `presenter.present(content, options?: DialogCustomOptions): Promise<DialogResult>` |
+| 内容构建 | `ComponentContent<Object>` | `CustomBuilder` / `CustomBuilderWithId` / `ComponentContent<Object>` |
+| 控制器 | `promptAction.DialogController`（API 18+） | `DialogBaseController` |
+| 选项类型 | `BaseDialogOptions`（API 11+） | `DialogCustomOptions`（继承 `DialogBaseOptions`） |
+| 样式控制 | 无 `customStyle` 属性（内容样式完全由 ComponentContent 决定） | `customStyle: boolean` |
+| 对齐 | `alignment: DialogAlignment` | `alignment: DialogBaseAlignment` |
+| 偏移 | `offset: Offset` | `offset: Offset` |
+| 自动取消 | `autoCancel: boolean`（API 12+） | `autoCancel: boolean` |
+| 蒙层颜色 | `maskColor: ResourceColor`（API 12+） | `maskColor: ResourceColor` |
+| 蒙层区域 | `maskRect: Rectangle` | `maskRect: Rectangle` |
+| 模态 | `isModal: boolean` | `isModal: boolean` |
+| 子窗口 | `showInSubWindow: boolean` | `showInSubWindow: boolean` |
+| 背景色 | 无（`BaseDialogOptions` 不含 `backgroundColor`） | `backgroundColor` |
+| 背景模糊 | `backgroundBlurStyleOptions`（API 19+） + `backgroundEffect`（API 19+） | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` |
+| 边框 | 无（`BaseDialogOptions` 不含边框属性） | `borderRadius` / `borderWidth` / `borderColor` / `borderStyle` |
+| 阴影 | 无（`BaseDialogOptions` 不含 `shadow`） | `shadow: ShadowOptions \| ShadowStyle` |
+| 尺寸 | 无（`BaseDialogOptions` 不含 `width` / `height`） | `width` / `height` |
+| 过渡动画 | `transition: TransitionEffect`（API 12+） / `dialogTransition`（API 19+） | `dialogTransition: TransitionEffect` |
+| 蒙层动画 | `maskTransition: TransitionEffect`（API 19+） | `maskTransition: TransitionEffect` |
+| 焦点 | `focusable: boolean`（API 19+） | `focusable: boolean` |
+| 打开动画回调 | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear`（API 12+） | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` |
+| 取消回调 | `onWillDismiss: Callback<DismissDialogAction>`（API 12+） | `onWillDismiss: Callback<DialogDismissal>` |
+| 键盘避让 | `keyboardAvoidMode`（API 12+） + `keyboardAvoidDistance`（API 15+） | `keyboardAvoidMode` + `keyboardAvoidDistance` |
+| 悬浮模式 | `enableHoverMode`（API 14+） + `hoverModeArea`（API 14+） | `enableHoverMode` + `hoverModeArea` |
+| 层级模式 | `levelMode`（API 15+） + `levelUniqueId`（API 15+） + `immersiveMode`（API 15+） + `levelOrder`（API 18+） | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` |
 | 系统材质 | `systemMaterial: SystemUiMaterial`（API 26+） | `systemMaterial: SystemUiMaterial` |
 
 #### 高级动画参数差异
