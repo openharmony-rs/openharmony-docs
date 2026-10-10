@@ -155,7 +155,7 @@ libnative_rdb_ndk.z.so
 
    > **说明：**
    >
-   > 当应用完成查询数据操作，不再使用结果集（OH_Cursor）时，请及时调用destroy接口关闭结果集，释放系统为其分配的内存。
+   > 当应用完成查询数据操作，不再使用结果集（OH_Cursor）时，请及时调用[destroy()](../reference/apis-arkdata/capi-rdb-oh-cursor.md#destroy)接口关闭结果集，释放系统为其分配的内存。
 
    示例代码如下：
 
