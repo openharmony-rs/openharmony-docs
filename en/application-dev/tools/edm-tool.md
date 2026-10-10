@@ -5,6 +5,7 @@
 <!--Designer: @liuzuming-->
 <!--Tester: @lpw_work-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=c8bac8c763f0ad2ea3bd60dab61b9ad50c9d01cc translatedAt=2026-10-10T03:56:38.250Z pushedAt=2026-10-10T07:26:05.778Z -->
 
 Enterprise Device Manager (edm) provides debugging and testing capabilities for device management applications. For example, it can be used to enable or disable extended enterprise device management capabilities.
 
@@ -175,7 +176,7 @@ Add **-a \<ability-name\>** to the command.
 
 **Symptom**
 
-The input value of **bundleName** or **abilityName** is incorrect, or the component is not an EnterpriseAdminExtensionAbility. 
+The input value of **bundleName** or **abilityName** is incorrect, or the component is not an EnterpriseAdminExtensionAbility.
 
 **Possible Causes**
 
@@ -217,11 +218,11 @@ The component fails to be disabled.
 
 **Possible Causes**
 
-1. The component is not activated.
+1. This component is not activated.
 
-2. The component is not activated by running the hdc command.
+2. This component was not activated via the hdc command.
 
-3. The deactivation fails.
+3. Deactivation failed.
 
 **Solution**
 
