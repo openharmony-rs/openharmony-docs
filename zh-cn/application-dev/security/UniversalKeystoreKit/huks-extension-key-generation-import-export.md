@@ -40,7 +40,7 @@ import { huks, huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { util } from '@kit.ArkTS';
 
-function StringToUint8Array(str: string): Uint8Array {
+function stringToUint8Array(str: string): Uint8Array {
   const encoder = new util.TextEncoder();
   return encoder.encodeInto(str);
 }
@@ -81,15 +81,15 @@ async function extensionKeyGeneration(): Promise<void> {
     const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
       {
         tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_ABILITY_NAME,
-        value: StringToUint8Array("CryptoExtensionAbility1"),
+        value: stringToUint8Array("CryptoExtensionAbility1"),
       },
       {
         tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_BUNDLE_NAME,
-        value: StringToUint8Array("com.example.cryptoapplication"),
+        value: stringToUint8Array("com.example.cryptoapplication"),
       },
       {
         tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO,
-        value: StringToUint8Array("vendor_defined_resource_info"),
+        value: stringToUint8Array("vendor_defined_resource_info"),
       },
     ];
     const providerName = 'VendorA_ProductX'; // 为注册时传入的ProviderName
@@ -283,15 +283,15 @@ async function extensionKeyExport(): Promise<Uint8Array> {
     const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
       {
         tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_ABILITY_NAME,
-        value: StringToUint8Array("CryptoExtensionAbility1"),
+        value: stringToUint8Array("CryptoExtensionAbility1"),
       },
       {
         tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_BUNDLE_NAME,
-        value: StringToUint8Array("com.example.cryptoapplication"),
+        value: stringToUint8Array("com.example.cryptoapplication"),
       },
       {
         tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO,
-        value: StringToUint8Array("vendor_defined_resource_info"),
+        value: stringToUint8Array("vendor_defined_resource_info"),
       },
     ];
     const providerName = 'VendorA_ProductX'; // 为注册时传入的ProviderName
