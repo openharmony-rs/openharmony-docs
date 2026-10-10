@@ -10,7 +10,7 @@
   - Account Management<!--account-management-arkts-->
     - [@ohos.account.appAccount (Application Account Management)](js-apis-appAccount.md)
     - [@ohos.account.distributedAccount (Distributed Account Management)](js-apis-distributed-account.md)
-    - [@ohos.account.osAccount (System Account Management)](js-apis-osAccount.md)
+    - [@ohos.account.osAccount (OS Account Management)](js-apis-osAccount.md)
     <!--Del-->
     - [@ohos.account.distributedAccount (Distributed Account Management) (System API)](js-apis-distributed-account-sys.md)
     - [@ohos.account.osAccount (System Account Management) (System API)](js-apis-osAccount-sys.md)
@@ -35,12 +35,12 @@
     - [@ohos.systemCapability (SystemCapability) (System API)](js-apis-system-capability-sys.md)
     - [@ohos.systemParameterEnhance (System Parameter) (System API)](js-apis-system-parameterEnhance-sys.md)
     - [@ohos.screenLock (Screen Lock) (System API)](js-apis-screen-lock-sys.md)
-    - [@ohos.usbManager (USB Management) (System API)](js-apis-usbManager-sys.md)
-    - [@ohos.usbManager.serial (Serial Port Management) (system API)](js-apis-serialManager-sys.md)
+    - [@ohos.usbManager (USB Manager) (System API)](js-apis-usbManager-sys.md)
+    - [@ohos.usbManager.serial (Serial Port Management) (System API)](js-apis-serialManager-sys.md)
     - [@ohos.update (Update) (System API)](js-apis-update-sys.md)
     <!--DelEnd-->
   - Data File Processing<!--data-file-processing-arkts-->
-    - [@ohos.app.ability.PrintExtensionAbility (Print Extension Ability)](js-apis-app-ability-PrintExtensionAbility.md)
+    - [@ohos.app.ability.PrintExtensionAbility (PrintExtensionAbility)](js-apis-app-ability-PrintExtensionAbility.md)
     - [PrintExtensionContext](js-apis-PrintExtensionContext.md)
     - [@ohos.pasteboard (Pasteboard)](js-apis-pasteboard.md)
     - [@ohos.print (Print)](js-apis-print.md)
@@ -94,13 +94,13 @@
     - [@ohos.systemDateTime (System Time and Time Zone) (System API)](js-apis-system-date-time-sys.md)<!--DelEnd-->
      <!--Del-->
     - [@ohos.wallpaper (Wallpaper) (System API)](js-apis-wallpaper-sys.md)
-    - [@ohos.WallpaperExtensionAbility (WallpaperExtensionAbility) (System API)](js-apis-WallpaperExtensionAbility-sys.md)
+    - [@ohos.WallpaperExtensionAbility (WallpaperExtensionAbility) (System APIs)](js-apis-WallpaperExtensionAbility-sys.md)
     - [@ohos.systemTimer (System Timer) (System API)](js-apis-system-timer-sys.md)
     <!--DelEnd-->
   - APIs No Longer Maintained<!--basic-services-arkts-dep-->
     - [System Common Events](common_event/commonEvent-definitions.md)
     - [@ohos.commonEvent (Common Event)](js-apis-commonEvent.md)
-    - [@ohos.usb (USB)](js-apis-usb-deprecated.md)
+    - [@ohos.usb (USB Manager) (No Longer Maintained)](js-apis-usb-deprecated.md)
     - [@system.brightness (Screen Brightness)](js-apis-system-brightness.md)
     - [@system.battery (Battery Information)](js-apis-system-battery.md)
     - [@system.device (Device Information)](js-apis-system-device.md)
@@ -108,7 +108,7 @@
     - [@ohos.screenLock (Screen Lock)](js-apis-screen-lock.md)
     <!--Del-->
     - [@ohos.commonEvent (Common Event) (System API)](js-apis-commonEvent-sys.md)
-    - [@ohos.usb (USB) (System API)](js-apis-usb-deprecated-sys.md)
+    - [@ohos.usb (USB Manager) (System API)](js-apis-usb-deprecated-sys.md)
     - [@ohos.systemParameter (System Parameter) (System API)](js-apis-system-parameter-sys.md)
     <!--DelEnd-->
     - [@ohos.systemTime (System Time and Time Zone)](js-apis-system-time.md)
@@ -185,7 +185,7 @@
   <!--DelEnd-->
   - [Print Service Error Codes](errorcode-print.md)
   - [Settings Error Codes](errorcode-settings.md)
-  - [Word Selection Service Error Codes](errorcode-selection.md)
+  - [Word Selection Error Codes](errorcode-selection.md)
   - [Intelligent Scene Error Codes](errorcode-intelligentScene.md)
   <!--Del-->
   - [Screen Lock Management Error Codes](errorcode-screenlock.md)

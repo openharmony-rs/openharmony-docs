@@ -1,4 +1,4 @@
-# @ohos.usb (USB Management)
+# @ohos.usb (USB Manager) (No Longer Maintained)
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: USB-->

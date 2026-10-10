@@ -1,4 +1,4 @@
-# @ohos.nfc.tag (standard NFC Tags) (System API)
+# @ohos.nfc.tag (Standard NFC Tags) (System API)
 
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->

@@ -1,4 +1,4 @@
-# @ohos.bluetooth.constant (Bluetooth constant Module) (System API)
+# @ohos.bluetooth.constant (Bluetooth Constant Module) (System API)
 
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->

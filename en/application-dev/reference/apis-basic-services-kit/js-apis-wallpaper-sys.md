@@ -1018,3 +1018,4 @@ wallpaper.getPixelMap(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then((data: imag
   console.error(`Failed to getPixelMap. Code: ${error.code}, Message: ${error.message}`);
 });
 ```
+<!--no_check-->
