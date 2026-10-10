@@ -146,8 +146,6 @@ try {
 
 **系统能力**：SystemCapability.FileManagement.CloudDiskManager
 
-**模型约束**：此接口仅可在Stage模型下使用。
-
 ### constructor
 
 constructor()
@@ -199,7 +197,7 @@ onHydrateProgress(callback: Callback&lt;HydrateProgress&gt;): void
 >
 > - 回调按发起操作的实例路由，与目标文件无关；同一实例可同时发起多个水合任务，通过[HydrateProgress](#hydrateprogress)中的filePath字段区分不同文件。
 > - 同一实例同一时间仅可注册一个回调；携带有效参数重复订阅时保留已有回调，不报告重复注册错误。
-> - 任务发起后订阅，或调用[offHydrateProgress](#offhydrateprogress)取消订阅后再次订阅，仅可接收路由到本实例的后续事件，此前的进度事件不会重放。
+> - 任务发起后订阅，或调用[offHydrateProgress](#offhydrateprogress)()取消订阅后再次订阅，仅可接收路由到本实例的后续事件，此前的进度事件不会重放。
 
 **起始版本**： 26.0.1
 
