@@ -128,7 +128,7 @@ onBackPress(): boolean | void {
     this.changeOrientation(false);
     return true;
   } else {
-    router.back();
+    router.back(); 
     return true;
   }
 }
@@ -139,7 +139,7 @@ onBackPress(): boolean | void {
 <!-- @[switch between portrait and landscape](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebFullScreen/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-import { webview } from '@kit.ArkWeb';
+import { webview } from '@kit.ArkWeb'; 
 import { window, router } from '@kit.ArkUI';
 import { common } from '@kit.AbilityKit';
 
