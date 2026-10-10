@@ -34,7 +34,7 @@
 1. **OH_MD_KEY_VIDEO_DECODER_FRAME_RETENTION_MODE（模式配置）**
    - 类型：`int32_t`
    - 取值范围：参考[OH_FrameRetentionMode](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_frameretentionmode)。
-   - 描述：能力的总开关与模式选择，可通过`OH_VideoDecoder_Configure`在初始化阶段配置，也可通过`OH_VideoDecoder_SetParameter`在运行态切换。正常倍速起播时，建议初始化为`FULL`模式。
+   - 描述：能力的总开关与模式选择，可通过OH_VideoDecoder_Configure在初始化阶段配置，也可通过OH_VideoDecoder_SetParameter在运行态切换。正常倍速起播时，建议初始化为全量直通模式。
 
 2. **OH_MD_KEY_VIDEO_DECODER_SPEED（解码倍速）**
    - 类型：`double`
