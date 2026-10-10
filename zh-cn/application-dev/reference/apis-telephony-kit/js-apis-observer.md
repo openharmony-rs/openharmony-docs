@@ -1487,11 +1487,11 @@ VoIP呼叫类型
 | INCOMING       | 1    | VoIP通话来电。           |
 | OUTGOING       | 2    | VoIP通话去电。       |
 | DIALING        | 3    | VoIP通话呼叫。       |
-| ANSWERED       | 4    | VoIP通话已接通。       |
-| ACTIVE         | 5    | 正在进行VoIP通话。       |
+| ANSWERED       | 4    | VoIP来电用户点击接听。       |
+| ACTIVE         | 5    | VoIP通话已接通。       |
 | HOLDING        | 6    | VoIP通话保持。       |
-| DISCONNECTING  | 7    | 正在断开VoIP通话。       |
-| DISCONNECTED   | 8    | VoIP通话已断开。       |
+| DISCONNECTING  | 7    | 正在结束VoIP通话。       |
+| DISCONNECTED   | 8    | VoIP通话已结束。       |
 
 ## LockReason<sup>8+</sup>
 
