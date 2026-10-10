@@ -279,7 +279,7 @@ subscribe(featureId: UserStatusFeature, callback: Callback&lt;UserStatusData&gt;
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 33900001 | Service exception. Possible causes: <br>1. System error, such as a null pointer and container-related exception. <br>2. Node-API invocation exception, such as invalid Node-API status. |
 | 33900002 | Subscription failed. Possible causes: <br>1. Callback registration failed. <br>2. Failed to bind the native object to the JS wrapper. <br>3. Node-API invocation exception, such as invalid Node-API status. <br>4. IPC request exception. |
 
@@ -334,7 +334,7 @@ unsubscribe(featureId: UserStatusFeature, callback?: Callback&lt;UserStatusData&
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 801 | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 33900001 | Service exception. Possible causes: <br>1. System error, such as a null pointer and container-related exception. <br>2. Node-API invocation exception, such as invalid Node-API status. |
 | 33900003 | Unsubscription failed. Possible causes: <br>1. Callback failure. <br>2. Node-API invocation exception, such as invalid Node-API status. <br>3. IPC request exception. |
 
