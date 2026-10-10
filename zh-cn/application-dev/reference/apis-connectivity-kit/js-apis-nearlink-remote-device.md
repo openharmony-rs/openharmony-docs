@@ -121,7 +121,7 @@ createRemoteDevice(address: string): RemoteDevice
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 801 | Capability not supported because the chip does not support it. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100041 | Invalid address. |
 
 **示例：** 
@@ -165,7 +165,7 @@ onPairingStateChange(callback: Callback&lt;PairingStateParam&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 801 | Capability not supported because the chip does not support it. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100099 | Operation failed. |
 
 **示例：** 
@@ -207,7 +207,7 @@ offPairingStateChange(callback?: Callback&lt;PairingStateParam&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 801 | Capability not supported because the chip does not support it. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100099 | Operation failed. |
 
 **示例：** 
@@ -248,7 +248,7 @@ onConnectionStateChange(callback: Callback&lt;ConnectionStateParam&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 801 | Capability not supported because the chip does not support it. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100099 | Operation failed. |
 
 **示例：** 
@@ -290,7 +290,7 @@ offConnectionStateChange(callback?: Callback&lt;ConnectionStateParam&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 801 | Capability not supported because the chip does not support it. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100099 | Operation failed. |
 
 **示例：** 
@@ -331,7 +331,7 @@ onAcbStateChange(callback: Callback&lt;AcbStateParam&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 801 | Capability not supported because the chip does not support it. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100099 | Operation failed. |
 
 **示例：** 
@@ -373,7 +373,7 @@ offAcbStateChange(callback?: Callback&lt;AcbStateParam&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 801 | Capability not supported because the chip does not support it. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100099 | Operation failed. |
 
 **示例：** 
@@ -426,7 +426,7 @@ startPairing(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
@@ -476,7 +476,7 @@ getPairingState(): PairingState
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
@@ -523,7 +523,7 @@ getDeviceName(): string
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
@@ -570,7 +570,7 @@ getDeviceClass(): DeviceClass
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
@@ -617,7 +617,7 @@ getConnectionState(): ConnectionState
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
@@ -664,7 +664,7 @@ getAcbState(): AcbState
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
@@ -711,7 +711,7 @@ getDeviceInformation(): DeviceInformation
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
