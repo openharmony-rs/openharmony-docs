@@ -42,6 +42,8 @@ Declares the APIs for querying device information.
 | [const char *OH_GetOsReleaseType(void)](#oh_getosreleasetype) | Obtains the OS release type.|
 | [const char *OH_GetOSFullName(void)](#oh_getosfullname) | Obtains the OS full name.|
 | [int OH_GetSdkApiVersion(void)](#oh_getsdkapiversion) | Obtains the SDK API version.|
+| [int OH_GetSdkMinorApiVersion(void)](#oh_getsdkminorapiversion) | Obtains the SDK minor API version. Starting from API version 26.0.0, the minor version is introduced as part of semantic versioning. It is the middle field in the semantic version and is an integer. The complete API version is represented by sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion.  |
+| [int OH_GetSdkPatchApiVersion(void)](#oh_getsdkpatchapiversion) | Obtains the SDK patch API version. Starting from API version 26.0.0, the patch version is introduced as part of semantic versioning. It is the third field in the semantic version and is an integer. The complete API version is represented by sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion. |
 | [int OH_GetFirstApiVersion(void)](#oh_getfirstapiversion) | Obtains the first API version.|
 | [const char *OH_GetVersionId(void)](#oh_getversionid) | Obtains the version ID.|
 | [const char *OH_GetBuildType(void)](#oh_getbuildtype) | Obtains the build type.|
@@ -343,6 +345,42 @@ Obtains the SDK API version.
 | Type| Description|
 | -- | -- |
 | int | Returns an SDK API version.|
+
+### OH_GetSdkMinorApiVersion()
+
+```c
+int OH_GetSdkMinorApiVersion(void)
+```
+
+**Description**
+
+Obtains the SDK minor API version. Starting from API version 26.0.0, the minor version is introduced as part of semantic versioning. It is the middle field in the semantic version and is an integer. The complete API version is represented by sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion.
+
+**Since**: 26.0.1
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| int | 0 ~ 99 - the sdk minor api version, the value is an integer.<br>-1 - not found the sdk minor api version number, or failed to invoke the internal interface.<br>If the API version of the system software is 26.0.1, sdkMinorApiVersion is 0. If the API version of the system software is 26.1.0, sdkMinorApiVersion is 1. |
+
+### OH_GetSdkPatchApiVersion()
+
+```c
+int OH_GetSdkPatchApiVersion(void)
+```
+
+**Description**
+
+Obtains the SDK patch API version. Starting from API version 26.0.0, the patch version is introduced as part of semantic versioning. It is the third field in the semantic version and is an integer. The complete API version is represented by sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion.
+
+**Since**: 26.0.1
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| int | 0 ~ 99 - the sdk patch api version, the value is an integer.<br>-1 - not found the sdk patch api version number, or failed to invoke the internal interface.<br>the sdk patch api version. The value is an integer. If the API version of the system software is 26.0.1, sdkPatchApiVersion is 1. If the API version of the system software is 26.1.0, sdkPatchApiVersion is 0. |
 
 ### OH_GetFirstApiVersion()
 

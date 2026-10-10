@@ -354,7 +354,7 @@ int32_t OH_NativeBuffer_SetDmaBufferName(OH_NativeBuffer *buffer, const char *na
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) *buffer | 一个指向OH_NativeBuffer的结构体实例的指针。 |
-| const char *name | 传入的DMA buffer的名称字符串，必须以字母开头，仅包含字母与数字，且长度不超过64字节。 |
+| const char *name | 传入的DMA buffer的名称字符串，必须以字母开头，仅包含字母与数字，且长度不超过64字节，<!--RP1-->开发板<!--RP1End-->最大支持31字节。 |
 
 **返回：**
 

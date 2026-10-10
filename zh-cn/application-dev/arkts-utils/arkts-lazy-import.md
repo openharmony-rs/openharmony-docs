@@ -39,7 +39,7 @@ import { c } from "./mod2";         // "mod2" 执行
 // ...
 
 console.info("main executed");
-while (false) {
+function useModules(): void{
     let xx = a;
     let yy = c;
 }
@@ -75,7 +75,7 @@ import { b } from './mod1'; // 'mod1' 执行
 
 ``` TypeScript
 console.info('main executed');
-while (false) {
+function useModules(): void{
   let xx = a;
   let yy = c;
   let zz = b;

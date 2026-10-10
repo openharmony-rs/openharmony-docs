@@ -68,6 +68,7 @@ ArkTS-Sta: fetchFrameByTime(timeUs: long, options: AVImageQueryOptions, param: P
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 import { media } from '@kit.MediaKit';
+import { common } from '@kit.AbilityKit';
 
 let avImageGenerator: media.AVImageGenerator | undefined = undefined;
 let pixel_map: image.PixelMap | undefined = undefined;
@@ -145,6 +146,7 @@ ArkTS-Sta: fetchFrameByTime(timeUs: long, options: AVImageQueryOptions, param: P
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 import { media } from '@kit.MediaKit';
+import { common } from '@kit.AbilityKit';
 
 let avImageGenerator: media.AVImageGenerator | undefined = undefined;
 let pixel_map: image.PixelMap | undefined = undefined;
@@ -220,6 +222,7 @@ ArkTS-Sta: fetchScaledFrameByTime(timeUs: long, queryMode: AVImageQueryOptions, 
 import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 import { media } from '@kit.MediaKit';
+import { common } from '@kit.AbilityKit';
 
 let avImageGenerator: media.AVImageGenerator | undefined = undefined;
 let pixel_map: image.PixelMap | undefined = undefined;

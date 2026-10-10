@@ -50,6 +50,7 @@
 3. cpp侧导入NDK接口，并根据传入的SurfaceId进行拍照。
     ```c++
     #include "hilog/log.h"
+    #include "ndk_camera.h"
 
     void CaptureSessionOnFocusStateChange(Camera_CaptureSession* session, Camera_FocusState focusState)
     {
@@ -267,7 +268,7 @@
         // 根据所需从cameraOutputCapability->photoProfiles中选择合适的拍照分辨率
         photoProfile = cameraOutputCapability->photoProfiles[0];
 
-        // 创建预览输出流,其中参数 previewSurfaceId 参考上文 XComponent 组件，预览流为XComponent组件提供的surface。
+        // 创建预览输出流，其中参数 previewSurfaceId 参考上文 XComponent 组件，预览流为XComponent组件提供的surface。
         ret = OH_CameraManager_CreatePreviewOutput(cameraManager, previewProfile, previewSurfaceId, &previewOutput);
         if (previewProfile == nullptr || previewOutput == nullptr || ret != CAMERA_OK) {
             OH_LOG_ERROR(LOG_APP, "OH_CameraManager_CreatePreviewOutput failed.");

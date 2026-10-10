@@ -1174,7 +1174,7 @@ isFocusModeSupported(afMode: FocusMode): boolean
 
 | 参数名      | 类型                     | 必填 | 说明                              |
 | -------- | ----------------------- | ---- | -------------------------------- |
-| afMode   | [FocusMode](arkts-apis-camera-e.md#focusmode) | 是   | 指定的焦距模式。                    |
+| afMode   | [FocusMode](arkts-apis-camera-e.md#focusmode) | 是   | 指定的对焦模式。                    |
 
 **返回值：**
 
@@ -1214,7 +1214,7 @@ setFocusMode(afMode: FocusMode): void
 
 设置对焦模式。
 
-进行设置之前，需要先检查设备是否支持指定的焦距模式，可使用方法[isFocusModeSupported](#isfocusmodesupporteddeprecated)。
+进行设置之前，需要先检查设备是否支持指定的对焦模式，可使用方法[isFocusModeSupported](#isfocusmodesupporteddeprecated)。
 
 > **说明：**
 >
@@ -1228,7 +1228,7 @@ setFocusMode(afMode: FocusMode): void
 
 | 参数名      | 类型                     | 必填 | 说明                 |
 | -------- | ----------------------- | ---- | ------------------- |
-| afMode   | [FocusMode](arkts-apis-camera-e.md#focusmode) | 是   | 指定的焦距模式。       |
+| afMode   | [FocusMode](arkts-apis-camera-e.md#focusmode) | 是   | 指定的对焦模式。       |
 
 **错误码：**
 
@@ -1272,7 +1272,7 @@ getFocusMode(): FocusMode
 
 | 类型        | 说明                          |
 | ---------- | ----------------------------- |
-| [FocusMode](arkts-apis-camera-e.md#focusmode)   | 获取当前设备的焦距模式。接口调用失败会返回相应错误码，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。 |
+| [FocusMode](arkts-apis-camera-e.md#focusmode)   | 获取当前设备的对焦模式。接口调用失败会返回相应错误码，错误码类型[CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode)。 |
 
 **错误码：**
 

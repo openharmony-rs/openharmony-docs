@@ -6,7 +6,9 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-从API version 23开始，支持使用ImageSource获取GIF、HEIFS、DNG、WebP、PNG、JFIF、TIFF、AVIS多种图像格式的专有元数据。
+从API version 23开始，ImageSource陆续支持获取GIF、HEIFS、DNG、WebP、PNG、JFIF、TIFF、AVIS多种图像格式的专有元数据。
+
+各格式支持的起始API版本如下表所示：
 
 ## 支持的元数据类别
 
@@ -70,10 +72,10 @@
        if (imageMetadata.gifMetadata != undefined) {
          console.info(`GIF_DELAY_TIME: ${JSON.stringify(imageMetadata.gifMetadata?.delayTime)}`);
        }
-       return imageMetadata
+       return imageMetadata;
      } catch (error) {
        console.error(`ReadImageMetadata failed, error.code: ${error.code},
-                  error.message: ${error.message}`)
+                  error.message: ${error.message}`);
        return undefined;
      }
    }
@@ -99,7 +101,7 @@
        return imageMetadata;
      } catch (error) {
        console.error(`ReadImageMetadataByType failed, error.code: ${error.code},
-                  error.message: ${error.message}`)
+                  error.message: ${error.message}`);
        return undefined;
      }
    }
@@ -109,18 +111,10 @@
 
    确认imageSource的异步方法已经执行完成，不再使用该变量后，可按需手动调用下面方法释放。
 
-   <!-- @[release_pixelMapDecoder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/DecodingPixelMap.ets) -->   
+   <!-- @[release_imageSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/DecodingPixelMap.ets) -->   
    
    ``` TypeScript
-   async release() {
-     try {
-       await this.pixelMap?.release();
-     } catch (error) {
-       console.error(`Failed to release PixelMap: ${error}.`);
-     } finally {
-       this.pixelMap = undefined;
-     }
-   
+   async release_imageSource() {
      try {
        await this.imageSource?.release();
      } catch (error) {

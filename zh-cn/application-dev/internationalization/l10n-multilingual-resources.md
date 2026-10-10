@@ -21,44 +21,56 @@
 
   为了确保接口返回值与用户设置保持一致，通常需要在[@ohos.i18n (国际化-I18n)](../reference/apis-localization-kit/js-apis-i18n.md)和[@ohos.intl (国际化-Intl)](../reference/apis-localization-kit/js-apis-intl.md)接口中传入系统区域ID或系统区域对象。系统区域ID和系统区域对象传入的示例如下：
 
-  ``` TypeScript
-  import { i18n } from '@kit.LocalizationKit';
+   <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/NameLocalization.ets) --> 
+   
+   ``` TypeScript
+   import { i18n } from '@kit.LocalizationKit';
+   ```
 
-  // 获取系统区域对象
-  let locale = i18n.System.getSystemLocaleInstance();
-
-  // 如果接口入参是区域ID（string类型），则通过toString()获取系统区域ID
-  let dateTimeFormat = new Intl.DateTimeFormat(locale.toString());
-
-  // 如果接口入参是区域对象（Intl.Locale类型），则直接使用系统区域对象
-  let simpleDateTimeFormat = i18n.getSimpleDateTimeFormatBySkeleton('yMd', locale);
-  ```
+   <!-- @[system_locale_datetimeformat](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/NameLocalization.ets) --> 
+   
+   ``` TypeScript
+   // 获取系统区域对象
+   let locale = i18n.System.getSystemLocaleInstance();
+   
+   // 如果接口入参是区域ID（string类型），则通过toString()获取系统区域ID
+   let dateTimeFormat = new Intl.DateTimeFormat(locale.toString());
+   
+   // 如果接口入参是区域对象（Intl.Locale类型），则直接使用系统区域对象
+   let simpleDateTimeFormat = i18n.getSimpleDateTimeFormatBySkeleton('yMd', locale);
+   ```
 
 - 识别系统语言
 
   应用如果需要识别语言，应避免通过硬编码的方式直接比较语言码。推荐使用如下方式：
 
-  ``` TypeScript
-  import { i18n } from '@kit.LocalizationKit';
+   <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/NameLocalization.ets) --> 
+   
+   ``` TypeScript
+   import { i18n } from '@kit.LocalizationKit';
+   ```
 
-  let systemLanguage = i18n.System.getSimplifiedLanguage();
-  // languagesList根据应用实际需要进行配置。例如，当应用不需要区分不同的繁体中文时，可将'zh-Hant-HK'和'zh-Hant-TW'合并成'zh-Hant'
-  let languagesList = ['zh-Hans', 'zh-Hant-HK', 'zh-Hant-TW'];
-  let matchedLanguage = i18n.I18NUtil.getBestMatchLocale(systemLanguage, languagesList);
-  switch (matchedLanguage) {
-    case 'zh-Hans':
-      // 系统语言为简体中文
-      break;
-    case 'zh-Hant-HK':
-      // 系统语言为繁体中文（香港）
-      break;
-    case 'zh-Hant-TW':
-      // 系统语言为繁体中文（台湾）
-      break;
-    default:
-      // 系统语言不属于languagesList中的任何一种
-  }
-  ```
+   <!-- @[best_match_locale](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/NameLocalization.ets) --> 
+   
+   ``` TypeScript
+   let systemLanguage = i18n.System.getSimplifiedLanguage();
+   // languagesList根据应用实际需要进行配置。例如，当应用不需要区分不同的繁体中文时，可将'zh-Hant-HK'和'zh-Hant-TW'合并成'zh-Hant'
+   let languagesList = ['zh-Hans', 'zh-Hant-HK', 'zh-Hant-TW'];
+   let matchedLanguage = i18n.I18NUtil.getBestMatchLocale(systemLanguage, languagesList);
+   switch (matchedLanguage) {
+     case 'zh-Hans':
+       // 系统语言为简体中文
+       break;
+     case 'zh-Hant-HK':
+       // 系统语言为繁体中文（香港）
+       break;
+     case 'zh-Hant-TW':
+       // 系统语言为繁体中文（台湾）
+       break;
+     default:
+       // 系统语言不属于languageList中的任何一种
+   }
+   ```
 
 ## 多语言资源配置
 

@@ -153,7 +153,7 @@ onMission(listener: MissionListener): long
 
 | 参数名   | 类型                                                         | 必填 | 说明             |
 | -------- | ------------------------------------------------------------ | ---- | ---------------- |
-| listener | [MissionListener](js-apis-inner-application-missionListener-sys.md) | 是   | 系统任务监听器。 |
+| listener | [MissionListener](js-apis-inner-application-missionListener-sys.md) | 是 | 系统任务监听器。 |
 
 **错误码：**
 

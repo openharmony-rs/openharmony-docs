@@ -5,7 +5,7 @@
 <!--Owner: @inter515-->
 <!--Designer: @inter515-->
 <!--Tester: @laonie666-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @chen8281-->
 
 - ArkTS API<!--test-arkts-->
   - [@ohos.app.ability.abilityDelegatorRegistry (AbilityDelegatorRegistry)](js-apis-app-ability-abilityDelegatorRegistry.md)

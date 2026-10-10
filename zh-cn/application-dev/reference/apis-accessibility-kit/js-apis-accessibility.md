@@ -128,7 +128,7 @@ type Action = 'accessibilityFocus' | 'clearAccessibilityFocus' | 'focus' | 'clea
 | 'notificationCenter'<sup>12+</sup>      | 表示打开通知栏操作。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23  |
 | 'controlCenter'<sup>12+</sup>       | 表示打开控制中心操作。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23  |
 | 'setCursorPosition'<sup>12+</sup>     | 表示设置光标位置操作，需配置参数offset，参数值为光标的字符偏移量。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23  |
-| 'injectAction'    | 表示注入动作，需配置参数injectActionType，参数值为注入动作类型。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0  |
+| 'injectAction'    | 表示注入动作，需配置参数injectActionType，参数值为注入动作类型。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0  |
 | 'executeCustomAction'     | 表示执行自定义操作，需配置参数customAction，参数值为自定义操作的名称。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0  |
 
 ## Capability

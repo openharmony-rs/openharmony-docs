@@ -142,6 +142,25 @@ import { bundleManager } from '@kit.AbilityKit';
 | MAIN_APP          | 1   | 默认使用主应用。 |
 | CLONE_APP         | 2   | 默认使用分身应用。 |
 
+## ApplicationReservedFlag
+ 
+应用保留标志位枚举，每一位标识相关的应用信息。
+ 
+**系统接口：** 此接口为系统接口。
+ 
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+ 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
+
+| 名称 | 值 | 说明 |
+| --------------- | --- | --- |
+| ENCRYPTED_APPLICATION | 0x00000001 | 表示该应用为加密应用。 |
+| ENCRYPTED_KEY_EXISTED | 0x00000002 | 表示该应用的加密密钥存在。 |
+
 ## DeviceModeDistributionPolicy
 
 设备模式分发策略枚举，用于指定应用程序如何分发到设备上。
@@ -167,6 +186,25 @@ import { bundleManager } from '@kit.AbilityKit';
 | PARTIAL_COMPATIBLE_DIFFERENT_PACKAGE | 6 | 应用程序在不同模式之间部分兼容，具有不同的包体。 |
 | FULL_COMPATIBLE_IDENTICAL_PACKAGE | 7 | 应用程序在不同模式之间完全兼容，具有相同的包体。 |
 | FULL_COMPATIBLE_DIFFERENT_PACKAGE | 8 | 应用程序在不同模式之间完全兼容，具有不同的包体。 |
+
+## AppSandboxPolicy
+ 
+双模式（2in1/平板）场景下的应用沙箱策略。
+ 
+**系统接口：** 此接口为系统接口。
+ 
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+ 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
+
+| 名称 | 值 | 说明 |
+| --------------- | --- | --- |
+| SHARED_SANDBOX | 0 | 应用在不同模式中共享沙箱（默认）。 |
+| ISOLATED_SANDBOX | 1 | 应用在不同模式中隔离沙箱，各自有独立的沙箱。 |
 
 ## bundleManager.getApplicationInfo
 
@@ -5130,6 +5168,99 @@ try {
 }
 ```
 
+## bundleManager.getAppProvisionInfoInDevice
+
+ArkTS-Dyn: getAppProvisionInfoInDevice(bundleName: string, userId: number): Promise\<Array\<AppProvisionInfo\>\>
+
+ArkTS-Sta: getAppProvisionInfoInDevice(bundleName: string, userId: int): Promise\<Array\<AppProvisionInfo\>\>
+ 
+根据bundleName和userId获取应用的[Provision](js-apis-bundleManager-AppProvisionInfo-sys.md)配置文件信息。使用Promise异步回调。
+ 
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
+ 
+**系统接口：** 此接口为系统接口。
+ 
+**模型约束：** 此接口仅可在Stage模型下使用。
+ 
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED 或 (ohos.permission.GET_BUNDLE_INFO_PRIVILEGED 和 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS)。
+ 
+ - 获取当前用户下应用的provision配置文件信息时，需要申请权限ohos.permission.GET_BUNDLE_INFO_PRIVILEGED。
+ 
+ - 获取其他用户下应用的provision配置文件信息时，需要申请权限ohos.permission.GET_BUNDLE_INFO_PRIVILEGED和ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS。
+ 
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+ 
+**参数：**
+ 
+| 参数名   | 类型         | 必填 | 说明          |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| bundleName | string | 是 | 指定的bundleName。 |
+| userId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。<br>取值范围：大于等于0。 |
+ 
+ 
+**返回值：**
+ 
+| 类型                                                         | 说明                                |
+| ------------------------------------------------------------ | ----------------------------------- |
+| Promise\<Array\<[AppProvisionInfo](js-apis-bundleManager-AppProvisionInfo-sys.md#appprovisioninfo)\>\> | Promise对象，返回应用的provision配置文件信息。 |
+ 
+**错误码：**
+ 
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
+ 
+| 错误码ID | 错误信息                               |
+| -------- | -------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Permission denied, non-system app called system api. |
+| 17700001 | The specified bundleName is not found. |
+| 17700004 | The specified user ID is not found. |
+ 
+**示例：**
+
+ArkTS-Dyn示例:
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+ 
+let bundleName = "com.ohos.myapplication";
+let userId = 100;
+ 
+try {
+  bundleManager.getAppProvisionInfoInDevice(bundleName, userId).then((data) => {
+    hilog.info(0x0000, 'testTag', 'getAppProvisionInfoInDevice successfully. Data: %{public}s', JSON.stringify(data));
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'testTag', 'getAppProvisionInfoInDevice failed. Cause: %{public}s', err.message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getAppProvisionInfoInDevice failed. Cause: %{public}s', message);
+}
+```
+
+ArkTS-Sta示例:
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+ 
+let bundleName = "com.example.myapplication";
+let userId = 100;
+
+try {
+  bundleManager.getAppProvisionInfoInDevice(bundleName, userId).then((data) => {
+    hilog.info(0x0000, 'testTag', 'getAppProvisionInfoInDevice successfully. Data: %{public}s', JSON.stringify(data));
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'getAppProvisionInfoInDevice failed. Cause: %{public}s', err.message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getAppProvisionInfoInDevice failed. Cause: %{public}s', message);
+}
+```
+
 ## bundleManager.getAllAppProvisionInfo<sup>23+</sup>
 
 ArkTS-Dyn: getAllAppProvisionInfo(userId?: number): Promise\<Array\<AppProvisionInfo\>\>
@@ -5234,6 +5365,94 @@ try {
 } catch (err) {
   let message = (err as BusinessError).message;
   hilog.error(0x0000, 'testTag', 'getAllAppProvisionInfo failed. Cause: %{public}s', message);
+}
+```
+
+## bundleManager.getAllAppProvisionInfoInDevice
+
+ArkTS-Dyn: getAllAppProvisionInfoInDevice(userId: number): Promise\<Array\<AppProvisionInfo\>\>
+
+ArkTS-Sta: getAllAppProvisionInfoInDevice(userId: int): Promise\<Array\<AppProvisionInfo\>\>
+ 
+根据userId获取指定用户下所有应用的[Provision](js-apis-bundleManager-AppProvisionInfo-sys.md)配置文件信息。使用Promise异步回调。
+ 
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
+ 
+**系统接口：** 此接口为系统接口。
+ 
+**模型约束：** 此接口仅可在Stage模型下使用。
+ 
+**需要权限：** ohos.permission.GET_INSTALLED_BUNDLE_LIST 或 (ohos.permission.GET_INSTALLED_BUNDLE_LIST 和 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS)
+ 
+ - 获取当前用户下所有应用的provision配置文件信息时，需要申请权限ohos.permission.GET_INSTALLED_BUNDLE_LIST。
+ 
+ - 获取其他用户下所有应用的provision配置文件信息时，需要申请权限ohos.permission.GET_INSTALLED_BUNDLE_LIST和ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS。
+ 
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+ 
+**参数：**
+ 
+| 参数名   | 类型         | 必填 | 说明          |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| userId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。<br>取值范围：大于等于0。 |
+ 
+ 
+**返回值：**
+ 
+| 类型                                                         | 说明                                |
+| ------------------------------------------------------------ | ----------------------------------- |
+| Promise\<Array\<[AppProvisionInfo](js-apis-bundleManager-AppProvisionInfo-sys.md#appprovisioninfo)\>\> | Promise对象，返回应用的provision配置文件信息。 |
+ 
+**错误码：**
+ 
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
+ 
+| 错误码ID | 错误信息                               |
+| -------- | -------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Permission denied. A non-system application is not allowed to call a system API. |
+| 17700004 | The specified user ID is not found. |
+ 
+**示例：**
+
+ArkTS-Dyn示例: 
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+ 
+let userId = 100;
+ 
+try {
+  bundleManager.getAllAppProvisionInfoInDevice(userId).then((data) => {
+    hilog.info(0x0000, 'testTag', 'getAllAppProvisionInfoInDevice successfully. Data: %{public}s', JSON.stringify(data));
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'testTag', 'getAllAppProvisionInfoInDevice failed. Cause: %{public}s', err.message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getAllAppProvisionInfoInDevice failed. Cause: %{public}s', message);
+}
+```
+ArkTS-Sta示例:
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+ 
+let userId = 100;
+
+try {
+  bundleManager.getAllAppProvisionInfoInDevice(userId).then((data) => {
+    hilog.info(0x0000, 'testTag', 'getAllAppProvisionInfoInDevice successfully. Data: %{public}s', JSON.stringify(data));
+  }).catch((err: Error) => {
+    hilog.error(0x0000, 'testTag', 'getAllAppProvisionInfoInDevice failed. Cause: %{public}s', err.message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getAllAppProvisionInfoInDevice failed. Cause: %{public}s', message);
 }
 ```
 
@@ -5737,7 +5956,7 @@ try {
 
 setAdditionalInfo(bundleName: string, additionalInfo: string): void
 
-设置指定应用的额外信息。此接口仅供应用市场调用。
+设置指定应用的自定义扩展管理信息。该接口仅供应用市场调用，用于写入其业务运营所需的专有管理字段（如内部版本号等）。
 
 **系统接口：** 此接口为系统接口。
 
@@ -5754,7 +5973,7 @@ setAdditionalInfo(bundleName: string, additionalInfo: string): void
 | 参数名                | 类型                             | 必填 | 说明                                               |
 | --------------------- | ------------------------------- | ---- | -------------------------------------------------- |
 | bundleName            | string                          | 是   | 指定应用的包名。                                    |
-| additionalInfo        | string                          | 是   | 需要设置的应用的额外信息。                           |
+| additionalInfo        | string                          | 是   | 需要设置的应用的自定义扩展管理信息。                           |
 
 **错误码：**
 
@@ -5784,6 +6003,86 @@ try {
 } catch (err) {
   let message = (err as BusinessError).message;
   hilog.error(0x0000, 'testTag', 'setAdditionalInfo failed. Cause: %{public}s', message);
+}
+```
+
+## bundleManager.setAdditionalInfoByIndex
+
+ArkTS-Dyn: setAdditionalInfoByIndex(bundleName: string, additionalInfo: string, appIndex: number): void
+
+ArkTS-Sta: setAdditionalInfoByIndex(bundleName: string, additionalInfo: string, appIndex: int): void
+ 
+设置指定应用的自定义扩展管理信息。该接口仅供应用市场调用，用于写入其业务运营所需的专有管理字段（如内部版本号等）。
+ 
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
+ 
+**系统接口：** 此接口为系统接口。
+ 
+**模型约束：** 此接口仅可在Stage模型下使用。
+ 
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+ 
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+ 
+**参数：**
+ 
+| 参数名                | 类型                             | 必填 | 说明                                               |
+| --------------------- | ------------------------------- | ---- | -------------------------------------------------- |
+| bundleName            | string                          | 是   | 指定应用的包名。                                    |
+| additionalInfo        | string                          | 是   | 需要设置的应用的自定义扩展管理信息。                           |
+| appIndex              | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是   | 指定的应用分身索引。取值范围：0或10000。                  |
+ 
+**错误码：**
+ 
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
+ 
+| 错误码ID | 错误信息                                                    |
+| -------- | ---------------------------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Permission denied, non-system app called system api. |
+| 17700001 | The specified bundleName is not found.                     |
+| 17700053 | The caller is not AppGallery.                                     |
+| 17700061 | AppIndex not in valid range.                                     |
+ 
+**示例：**
+
+ArkTS-Dyn示例:  
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+ 
+let bundleName = "com.example.myapplication";
+let additionalInfo = "xxxxxxxxx,formUpdateLevel:4";
+let appIndex = 0;
+ 
+try {
+  bundleManager.setAdditionalInfoByIndex(bundleName, additionalInfo, appIndex);
+  hilog.info(0x0000, 'testTag', 'setAdditionalInfoByIndex successfully.');
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'setAdditionalInfoByIndex failed. Cause: %{public}s', message);
+}
+```
+
+ArkTS-Sta示例:
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+ 
+let bundleName = "com.example.myapplication";
+let additionalInfo = "xxxxxxxxx,formUpdateLevel:4";
+let appIndex = 0;
+
+try {
+  bundleManager.setAdditionalInfoByIndex(bundleName, additionalInfo, appIndex);
+  hilog.info(0x0000, 'testTag', 'setAdditionalInfoByIndex successfully.');
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'setAdditionalInfoByIndex failed. Cause: %{public}s', message);
 }
 ```
 
@@ -8412,6 +8711,90 @@ try {
 }
 ```
 
+## bundleManager.getBundleExtensionPolicyInfo
+ 
+getBundleExtensionPolicyInfo(bundleName: string, userId: number): BundleExtensionPolicyInfo
+ 
+获取指定应用的包扩展策略信息。
+ 
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
+ 
+**系统接口：** 此接口为系统接口。
+ 
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED，查询当前用户包扩展策略信息。 或 (ohos.permission.GET_BUNDLE_INFO_PRIVILEGED 和 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS，可以查跨用户包扩展策略信息。)
+ 
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+ 
+**模型约束：** 此接口仅可在Stage模型下使用。
+ 
+**参数：**
+ 
+| 参数名     | 类型   | 必填 | 说明                       |
+| ---------- | ------ | ---- | ---------------------------|
+| bundleName | string | 是   | 表示要查询的应用Bundle名称。 |
+| userId | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。<br>ArkTS-Dyn: 该值应为整数。当传参为null、undefined，此时默认为当前用户。<br>ArkTS-Sta: 该值应为整数。 |
+ 
+**返回值：**
+ 
+| 类型                                                        | 说明                        |
+| ----------------------------------------------------------- | --------------------------- |
+| [BundleExtensionPolicyInfo](#bundleextensionpolicyinfo) | 应用的包扩展策略信息。 |
+ 
+**错误码：**
+ 
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
+ 
+| 错误码ID | 错误信息                            |
+| -------- | --------------------------------------|
+| 201 | Permission denied. |
+| 202 | Permission denied. Non-system APP calling system API. |
+| 17700001 | The specified bundleName is not found. |
+| 17700004 | The specified user ID is not found. |
+ 
+**示例：**
+
+ArkTS-Dyn示例:
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+ 
+// 请开发者替换为实际的包名、用户ID
+let bundleName = 'com.example.myapplication';
+let userId = 100;
+ 
+try {
+  let info: bundleManager.BundleExtensionPolicyInfo = bundleManager.getBundleExtensionPolicyInfo(bundleName, userId);
+  hilog.info(0x0000, 'testTag', 'getBundleExtensionPolicyInfo successfully: %{public}s', JSON.stringify(info));
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getBundleExtensionPolicyInfo failed: %{public}s', message);
+}
+```
+
+ArkTS-Sta示例:
+```ts
+'use static'
+
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+// 请开发者替换为实际的包名、用户ID
+let bundleName: string = 'com.example.myapplication';
+let userId: int = 100;
+
+try {
+  let info: bundleManager.BundleExtensionPolicyInfo = bundleManager.getBundleExtensionPolicyInfo(bundleName, userId);
+  hilog.info(0x0000, 'testTag', 'getBundleExtensionPolicyInfo successfully: %{public}s', JSON.stringify(info));
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getBundleExtensionPolicyInfo failed: %{public}s', message);
+}
+```
+
 ## PermissionDef
 
 type PermissionDef = _PermissionDef
@@ -8620,3 +9003,24 @@ ArkTS-Sta: type AppClonePreference = _AppClonePreference
 | 类型                                                         | 说明           |
 | ------------------------------------------------------------ | -------------- |
 |  ArkTS-Dyn: [_BundleInfo.AppClonePreference](js-apis-bundleManager-BundleInfo-sys.md#appclonepreference)<br>ArkTS-Sta: [_AppClonePreference](js-apis-bundleManager-BundleInfo-sys.md#appclonepreference) |应用分身偏好设置，用于配置应用启动时主应用和分身应用的选择策略。通过[bundleManager.getAppClonePreference](#bundlemanagergetappclonepreference)查询当前偏好设置，通过[bundleManager.setAppClonePreference](#bundlemanagersetappclonepreference)设置新的偏好。其mode字段决定启动时的选择行为，appIndex字段在mode取值为CLONE_APP时用于指定具体的分身索引。|
+
+
+## BundleExtensionPolicyInfo
+
+ArkTS-Dyn: type BundleExtensionPolicyInfo = _BundleInfo.BundleExtensionPolicyInfo
+
+ArkTS-Sta: type BundleExtensionPolicyInfo = _BundleExtensionPolicyInfo 
+
+应用包扩展策略信息。
+ 
+**起始版本：** 26.0.1
+ 
+**系统接口：** 此接口为系统接口。
+ 
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+ 
+**模型约束：** 此接口仅可在Stage模型下使用。
+ 
+| 类型                                                         | 说明           |
+| ------------------------------------------------------------ | -------------- |
+| ArkTS-Dyn: [_BundleInfo.BundleExtensionPolicyInfo](js-apis-bundleManager-BundleInfo-sys.md#bundleextensionpolicyinfo)<br> ArkTS-Sta: [_BundleExtensionPolicyInfo](js-apis-bundleManager-BundleInfo-sys.md#bundleextensionpolicyinfo)|应用包扩展策略信息，包含应用包名、应用分身索引、设备模式分发策略和应用沙箱策略。通过[bundleManager.getBundleExtensionPolicyInfo](#bundlemanagergetbundleextensionpolicyinfo)获取。|

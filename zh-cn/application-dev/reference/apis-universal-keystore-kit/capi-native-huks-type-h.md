@@ -679,6 +679,7 @@ enum OH_Huks_Tag
 | OH_HUKS_TAG_KEY_OVERRIDE = OH_HUKS_TAG_TYPE_BOOL \| 520 | 是否覆写同名密钥。<br>**起始版本：** 20 |
 | OH_HUKS_TAG_AE_TAG_LEN = OH_HUKS_TAG_TYPE_UINT \| 521 | CCM模式下指定的AEAD长度，单位：Byte。<br>**起始版本：** 22 |
 | OH_HUKS_TAG_KEY_CLASS = OH_HUKS_TAG_TYPE_UINT \| 522 | 密钥类别，用于区分设备本地由HUKS管理的密钥或者外部装置中存储的密钥。<br>**起始版本：** 22 |
+| OH_HUKS_TAG_TIMEOUT = OH_HUKS_TAG_TYPE_UINT \| 529 | 表示异步超时时间，单位为秒，可由业务逻辑自定义。<br>**起始版本：** 26.0.1 |
 | OH_HUKS_TAG_KEY_ACCESS_GROUP = OH_HUKS_TAG_TYPE_BYTES \| 523 | 表示群组标识，在同一开发者ID下归属于相同的群组可共享该群组下的密钥。<br>**起始版本：** 23 |
 | OH_HUKS_TAG_IS_KEY_ALIAS = OH_HUKS_TAG_TYPE_BOOL \| 1001 | 是否是密钥别名。 |
 | OH_HUKS_TAG_KEY_STORAGE_FLAG = OH_HUKS_TAG_TYPE_UINT \| 1002 | 密钥存储方式的标签，类型可在枚举 [OH_Huks_KeyStorageType](capi-native-huks-type-h.md#oh_huks_keystoragetype)选择。 |

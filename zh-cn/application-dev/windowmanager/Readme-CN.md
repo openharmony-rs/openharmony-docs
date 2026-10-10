@@ -4,7 +4,7 @@
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
 <!--Designer: @gcw_sPCsris4-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
 
 - [窗口开发概述](window-overview.md)
@@ -44,3 +44,4 @@
 - [窗口开发术语](window-terminology.md)
 - [窗口开发常见问题](window-faqs.md)
 - [窗口开发常见日志问题与定位](window-log-faqs.md)
+- [ohos-window CLI工具](window-cli.md)

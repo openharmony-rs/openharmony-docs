@@ -30,7 +30,7 @@ OE客户端应用指嵌入其他文档的应用，通过调用OE框架层[conten
 | 接口名称 | 功能描述 |
 | ------- | ---- |
 | OH_ContentEmbed_CreateDocumentByFile | 通过被嵌入文档路径创建[OE文档](content-embed-kit-terminology.md#oe文档)。|
-| OH_ContentEmbed_CreateDocumentByOEId | 通过[OEID](content-embed-kit-terminology.md#oeid)创建OE文档。|
+| OH_ContentEmbed_CreateDocumentByOEid | 通过[OEID](content-embed-kit-terminology.md#oeid)创建OE文档。|
 | OH_ContentEmbed_LoadDocumentFromFile | 通过已存在的[OE格式文件](content-embed-kit-terminology.md#oe格式文件)加载OE文档。|
 | OH_ContentEmbed_CreateExtensionProxy | 创建[客户端OE对象](content-embed-kit-terminology.md#客户端oe对象)。|
 | OH_ContentEmbed_DestroyExtensionProxy | 销毁客户端OE对象，释放相关资源。|
@@ -273,7 +273,7 @@ void ClientCallBack_OnUpdateFunc(ContentEmbed_ExtensionProxy *proxy)
 
 void ClientCallBack_OnErrorFunc(ContentEmbed_ExtensionProxy *proxy, ContentEmbed_ErrorCode error)
 {
-    OH_LOG_INFO(LOG_APP, "Enter ClientCallBack_OnErrorFunc, error: %{public}d", error);
+    OH_LOG_ERROR(LOG_APP, "Enter ClientCallBack_OnErrorFunc, error: %{public}d", error);
 }
 
 void ClientCallBack_OnEditingFinishedFunc(ContentEmbed_ExtensionProxy *proxy, bool dataModified)

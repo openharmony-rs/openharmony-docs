@@ -59,7 +59,7 @@ ArkTS-Sta: overlay(value: string | CustomBuilder | ComponentContent\<Object> | u
 
 >  **说明：**
 >
->  为规范匿名对象的定义，API 12版本修改了此处的元素定义。其中，保留了历史匿名对象的起始版本信息，会出现外层元素@since版本号高于内层元素版本号的情况，但这不影响接口的使用。
+>  为规范匿名对象的定义，API version 12修改了此处的元素定义。其中，保留了历史匿名对象的起始版本信息，会出现外层元素@since版本号高于内层元素版本号的情况，但这不影响接口的使用。
 
 **卡片能力（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -145,7 +145,7 @@ struct OverlayExample {
           // $r('app.media.img')需要替换为开发者所需的图像资源文件
           Image($r('app.media.img'))
             .width(240).height(240)
-            .overlay("Winter is a beautiful season, especially when it snows.", {
+            .overlay('Winter is a beautiful season, especially when it snows.', {
               align: Alignment.Bottom,
               offset: { x: 0, y: -15 }
             })
@@ -168,11 +168,11 @@ struct OverlayExample {
 @Component
 struct OverlayExample {
   @Builder
-  OverlayNode() {
+  overlayNode() {
     Column() {
       // $r('app.media.img1')需要替换为开发者所需的图像资源文件
       Image($r('app.media.img1'))
-      Text("This is overlayNode").fontSize(20).fontColor(Color.White)
+      Text('This is overlayNode').fontSize(20).fontColor(Color.White)
     }
     .width(180)
     .height(180)
@@ -184,7 +184,7 @@ struct OverlayExample {
     Column() {
       // $r('app.media.img2')需要替换为开发者所需的图像资源文件
       Image($r('app.media.img2'))
-        .overlay(this.OverlayNode(), { align: Alignment.Center })
+        .overlay(this.overlayNode(), { align: Alignment.Center })
         .objectFit(ImageFit.Contain)
     }.width('100%')
     .border({ color: Color.Black, width: 2 }).padding(20)
@@ -195,14 +195,14 @@ struct OverlayExample {
 
 ### 示例3（通过ComponentContent设置浮层）
 
-该示例通过overlay传入了ComponentContent使backgroundColor不断发生变化。
+该示例通过overlay传入ComponentContent，并通过update方法更新ComponentContent参数，使backgroundColor不断发生变化。
 
 ```ts
 // xxx.ets
 import { ComponentContent } from '@kit.ArkUI';
 
 class Params {
-  backgroundColor: string | Resource = ""
+  backgroundColor: string | Resource = '';
 
   constructor(backgroundColor: string | Resource) {
     this.backgroundColor = backgroundColor;
@@ -217,23 +217,23 @@ function overlayBuilder(params: Params) {
 
 @Entry
 @Component
-struct Page_4040 {
+struct OverlayContentPage {
   @State overlayColor: string = 'rgba(0, 0, 0, 0.6)';
   private uiContext: UIContext = this.getUIContext();
   private overlayNode: ComponentContent<Params> =
-    new ComponentContent(this.uiContext, wrapBuilder(overlayBuilder), new Params(this.overlayColor))
+    new ComponentContent(this.uiContext, wrapBuilder(overlayBuilder), new Params(this.overlayColor));
   private timer: number = -1;
 
   aboutToAppear(): void {
     this.timer = setInterval(() => {
       if (this.overlayColor.includes('0.6')) {
-        this.overlayColor = 'rgba(0, 0, 0, 0.1)'
+        this.overlayColor = 'rgba(0, 0, 0, 0.1)';
         this.overlayNode.update(new Params(this.overlayColor));
       } else {
-        this.overlayColor = 'rgba(0, 0, 0, 0.6)'
+        this.overlayColor = 'rgba(0, 0, 0, 0.6)';
         this.overlayNode.update(new Params(this.overlayColor));
       }
-    }, 1000)
+    }, 1000);
   }
   aboutToDisappear(): void {
     clearInterval(this.timer);

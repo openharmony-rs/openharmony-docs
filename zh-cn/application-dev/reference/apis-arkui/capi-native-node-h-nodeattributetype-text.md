@@ -1365,6 +1365,77 @@ NODE_TEXT_TAIL_INDENTS = 1056
 | .value[i].f32 | 第i个尾部缩进值，单位为vp。 |
 | .size | 表示有效缩进值的数量，即.value数组中实际使用的元素个数。 |
 
+## NODE_TEXT_STROKE_WIDTH
+
+```c
+NODE_TEXT_STROKE_WIDTH = 1057
+```
+
+设置文本描边宽度，支持属性设置、属性重置和属性获取接口。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.2.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].f32 | 文本描边宽度，单位为vp。默认值：0，表示无描边效果。小于0时显示实心字，大于0时显示空心字。不支持百分比。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].f32 | 文本描边宽度值，单位为vp。 |
+
+## NODE_TEXT_STROKE_COLOR
+
+```c
+NODE_TEXT_STROKE_COLOR = 1058
+```
+
+设置文本描边颜色，支持属性设置、属性重置和属性获取接口。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.2.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].u32 | 文本描边颜色，0xARGB格式。默认值为字体颜色，设置异常值时取默认值。形如0xFFFF0000表示红色。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].u32 | 文本描边颜色，0xARGB格式。 |
+
+## NODE_TEXT_STROKE_JOIN_STYLE
+
+```c
+NODE_TEXT_STROKE_JOIN_STYLE = 1059
+```
+
+设置文本描边拐角样式，支持属性设置、属性重置和属性获取接口。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.2.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].i32 | 文本描边拐角样式，参数类型为[OH_ArkUI_StrokeJoinStyle](capi-text-common-h.md#oh_arkui_strokejoinstyle)。默认值为OH_ARKUI_STROKE_JOIN_STYLE_MITER_JOIN，表示尖角样式。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].i32 | 文本描边拐角样式[OH_ArkUI_StrokeJoinStyle](capi-text-common-h.md#oh_arkui_strokejoinstyle)。 |
 
 ## NODE_SPAN_CONTENT
 

@@ -42,6 +42,6 @@ typedef struct {...} Print_PrintJob
 | [Print_OrientationMode](capi-ohprint-h.md#print_orientationmode) orientationMode | 方向模式。 |
 | [Print_Quality](capi-ohprint-h.md#print_quality) printQuality | 打印质量。 |
 | [Print_DocumentFormat](capi-ohprint-h.md#print_documentformat) documentFormat | 文档格式。 |
-| char *advancedOptions | JSON 格式的高级选项。<br>支持的键包括：<br>- **isReverse**：布尔类型，表示是否逆序打印。<br>- **isCollate**：布尔类型，表示是否逐份打印。 |
+| char *advancedOptions | JSON 格式的高级选项。<br>支持的键包括：<br>- **isReverse**：布尔类型，表示是否逆序打印。<br>- **isCollate**：布尔类型，表示是否逐份打印。<br>- **printPages**：整数类型，表示实际打印的页数。取值必须大于等于 1，默认值为 1。 |
 
 
