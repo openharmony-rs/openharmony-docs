@@ -95,7 +95,7 @@
             return false;
         }
 
-        // // Load base function pointers
+        // Load base function pointers
         vkEnumerateInstanceExtensionProperties = reinterpret_cast<PFN_vkEnumerateInstanceExtensionProperties>(
             dlsym(g_libVulkan, "vkEnumerateInstanceExtensionProperties"));
         vkEnumerateInstanceLayerProperties = reinterpret_cast<PFN_vkEnumerateInstanceLayerProperties>(
@@ -113,7 +113,7 @@
     bool VulkanRenderThread::CreateNativeImage() {
         nativeImage_ = OH_ConsumerSurface_Create();
         if (nativeImage_ == nullptr) {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "RenderThread", "OH_NativeImage_Create failed.");
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "RenderThread", "OH_ConsumerSurface_Create failed.");
             return false;
         }
         int ret = 0;
@@ -189,7 +189,7 @@
         VkSurfaceCreateInfoOHOS surfaceCreateInfo{};
         surfaceCreateInfo.sType = VK_STRUCTURE_TYPE_SURFACE_CREATE_INFO_OHOS;
         if (nativeWindow_ == nullptr) {
-            OH_LOG_INFO(LOG_APP, "nativeWindow_ is nullptr.Failed to create surface !");
+            OH_LOG_ERROR(LOG_APP, "nativeWindow_ is nullptr.Failed to create surface !");
             return false;
         }
         surfaceCreateInfo.window = nativeWindow_;
@@ -278,7 +278,7 @@
         while (true) {
             if (!isStarted_) {
                 OH_LOG_ERROR(LOG_APP, "Decoder input thread out");
-                break;;
+                break;
             }
             
             std::unique_lock<std::mutex> lock(videoDecContext_->inputMutex);
