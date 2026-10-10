@@ -1,12 +1,13 @@
 # OH_Drawing_RectStyle_Info
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=3b75f30d038321e59d140485862ef0f48205e17e translatedAt=2026-10-09T12:35:28.092Z pushedAt=2026-10-10T10:04:47.221Z -->
 
-```
+```c
 typedef struct {...} OH_Drawing_RectStyle_Info
 ```
 
@@ -31,3 +32,4 @@ This struct describes the style of a rectangle.
 | double rightTopRadius    | Right top radius of the rectangle.|
 | double rightBottomRadius | Right bottom radius of the rectangle.|
 | double leftBottomRadius  | Left bottom radius of the rectangle.|
+

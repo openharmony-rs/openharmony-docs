@@ -1,5 +1,13 @@
 # Universal Error Codes
 
+<!--Kit: Common-->
+<!--Subsystem: Common-->
+<!--Owner: @zengyawen-->
+<!--Designer: @lingminghw-->
+<!--Tester: @RayShih-->
+<!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=70ed46b6d67fd3910db66bb45994b5722bbff087 translatedAt=2026-10-09T12:53:17.744Z pushedAt=2026-10-10T10:14:32.384Z -->
+
 ## 201 Permission Denied
 
 **Error Message**
@@ -52,7 +60,7 @@ You attempted to operate a system function that has been disabled by the device 
 
 **Solution**
 
-Use [getDisallowedPolicy](./apis-mdm-kit/js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicydeprecated) to check whether the system function is disabled, and use [setDisallowedPolicy](./apis-mdm-kit/js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated) to enable the system function.
+Use [getDisallowedPolicy](./apis-mdm-kit/js-apis-enterprise-restrictions.md#restrictionsgetdisallowedpolicydeprecated) to check whether the system function is disabled, and use [setDisallowedPolicy](./apis-mdm-kit/js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicydeprecated) to remove the disabled state.
 
 <!--Del-->
 ## 204 Access Denied by User Access Control Policy
