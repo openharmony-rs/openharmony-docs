@@ -60,17 +60,15 @@ Game Controller Kit支持的手柄键位参考图如下：
 
 <!-- @[link_game_controller_libs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/GameControllerKit/NdkGameControllerDemo/entry/src/main/cpp/CMakeLists.txt) -->
 
-```c
+``` Text
 target_link_libraries(entry PUBLIC libohgame_controller.z.so)
 ```
 
 
 ### 导入模块
 
-<!-- @[header_include_game_pad](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/GameControllerKit/NdkGameControllerDemo/entry/src/main/cpp/game_pad_api.cpp) -->
-
-```c
-#include "GameControllerKit/game_pad.h"
+```  c++
+#include <GameControllerKit/game_pad.h>
 ```
 
 
@@ -92,7 +90,7 @@ target_link_libraries(entry PUBLIC libohgame_controller.z.so)
 
 <!-- @[button_input_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/GameControllerKit/NdkGameControllerDemo/entry/src/main/cpp/game_pad_api.cpp) -->
 
-```c
+``` c++
 int32_t GamePad::LeftShoulderRegisterButtonInputMonitor()
 {
     GameController_ErrorCode errorCode =
@@ -200,7 +198,7 @@ void GamePad::OnButtonEvent(const struct GamePad_ButtonEvent *buttonEvent, const
 
 <!-- @[axis_input_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/GameControllerKit/NdkGameControllerDemo/entry/src/main/cpp/game_pad_api.cpp) -->
 
-```c
+``` c++
 int32_t GamePad::LeftThumbstickRegisterAxisInputMonitor()
 {
     GameController_ErrorCode errorCode =
