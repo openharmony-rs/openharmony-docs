@@ -530,7 +530,7 @@ async function testExtensionError(): Promise<void> {
   
   /* 3.验证PIN码失败后获取错误信息 */
   try {
-    await huksExternalCrypto.authUkeyPin(testResourceId, params);
+    await huksExternalCrypto.getUkeyPinAuthState(testResourceId, params);
   } catch (error) {
     const errorInfo = huksExternalCrypto.getErrorInfo();
     if (errorInfo.errno !== 0) {
