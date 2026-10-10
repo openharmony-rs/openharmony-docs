@@ -6,6 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=e75dab7e271311a5103ef7c57cad620c8a400383 translatedAt=2026-09-28T01:17:33.015Z pushedAt=2026-10-09T02:18:01.353Z -->
 
 > **NOTE**
 >
@@ -128,7 +129,7 @@
 | 117 | EUCLEAN | Structure needs cleaning |
 | 118 | ENOTNAM | Not a XENIX named type file |
 | 119 | ENAVAIL | No XENIX semaphores available |
-| 120 | EREMOTEIO | Is a named type file |
+| 120 | EISNAM | Is a named type file |
 | 121 | EREMOTEIO | Remote I/O error |
 | 122 | EDQUOT | Quota exceeded |
 | 123 | ENOMEDIUM | No medium found |

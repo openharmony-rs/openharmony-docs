@@ -9,7 +9,7 @@
 
 ## Overview
 
-Provides APIs for message authentication code (MAC) algorithms.
+Describes the message authentication code (MAC) APIs provided by OpenHarmony.
 
 **Since**: 20
 
@@ -17,4 +17,4 @@ Provides APIs for message authentication code (MAC) algorithms.
 
 | Name| Description|
 | -- | -- |
-| [crypto_mac.h](capi-crypto-mac-h.md) | Define MAC APIs.|
+| [crypto_mac.h](capi-crypto-mac-h.md) | Define the message authentication code (MAC) APIs.|

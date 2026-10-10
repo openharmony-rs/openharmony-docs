@@ -4,11 +4,11 @@
 <!--Owner: @gcw_dyOv3Sds-->
 <!--Designer: @chris2981-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @w_Machine_cc-->
+<!--Adviser: @zzs911-->
 
 ## Overview
 
-The module provides the APIs for requesting the recording capability.
+AVRecorder enables media recording and supports configuration of recording parameters and real-time status callback. It is suitable for scenarios where audio and video need to be recorded and saved as files, such as video call recording and voice notes.
 
 You can refer to the corresponding development guide and samples based on your development requirements.
 
@@ -23,5 +23,5 @@ You can refer to the corresponding development guide and samples based on your d
 
 | Name| Description|
 | -- | -- |
-| [avrecorder.h](capi-avrecorder-h.md) | Declares the AVRecorder APIs. Applications can use the APIs to record media data.|
-| [avrecorder_base.h](capi-avrecorder-base-h.md) | Declares the struct and enums used by the AVRecorder.|
+| [avrecorder.h](capi-avrecorder-h.md) | Declares the AVRecorder APIs. AVRecorder enables media recording and supports audio and video data collection and recording, complete status management and callback listening, flexible encoder selection, and parameter configuration. It is suitable for scenarios where audio and video need to be recorded and saved as files.|
+| [avrecorder_base.h](capi-avrecorder-base-h.md) | Defines the struct, enums, and callbacks used by AVRecorder.|

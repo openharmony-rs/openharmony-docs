@@ -1,18 +1,19 @@
 # Class (AVCastPickerHelper)
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @devil_red-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
-AVCastPickerHelper implements a semi-modal object used for casting. It displays a semi-modal window for users to select a target cast device. Before using the APIs of this class, you need to create an AVCastPickerHelper instance.
+Creates an **AVCastPickerHelper** object, which is displayed in semi-modal style but is actually bound to a full-modal page. It can be used to select local and projection devices. Before using the APIs of this class, you need to create an **AVCastPickerHelper** instance.
 
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The initial APIs of this class are supported since API version 14.
-> - The AVCastPickerHelper is displayed in semi-modal mode, and is actually bound to the [full-modal page (bindContentCover)](../apis-arkui/arkui-ts/ts-universal-attributes-modal-transition.md#bindcontentcover).
+> - The **AVCastPickerHelper** is displayed in semi-modal mode, and is actually bound to the [full-modal page (bindContentCover)](../apis-arkui/arkui-ts/ts-universal-attributes-modal-transition.md#bindcontentcover).
+> - This module is available to wearables since API version 26.0.0.
 
 ## Modules to Import
 
@@ -24,7 +25,7 @@ import { avSession } from '@kit.AVSessionKit';
 
 constructor(context: Context)
 
-Creates an AVCastPickerHelper instance. For details about how to obtain the context, see [getHostContext](../apis-arkui/arkts-apis-uicontext-uicontext.md#gethostcontext12).
+Creates an **AVCastPickerHelper** instance. For details about how to obtain the context, see [getHostContext](../apis-arkui/arkts-apis-uicontext-uicontext.md#gethostcontext12).
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -42,7 +43,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **Example**
@@ -77,7 +78,7 @@ struct Index {
 
 select(options?: AVCastPickerOptions): Promise\<void>
 
-Starts the AVCastPicker dialog box, where users can select the target cast device. This API uses a promise to return the result. You can pass in **AVCastPickerOptions** to specify the properties for selection.
+Starts the **AVCastPicker** dialog box, where users can select the target cast device. This API uses a promise to return the result. You can pass in **AVCastPickerOptions** to specify the properties for selection.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -101,7 +102,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
 **Example**
 
@@ -183,7 +184,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **Example**
@@ -215,8 +216,8 @@ Unsubscribes from semi-modal window change events. If a callback is specified, t
 
 | Name  | Type                                              | Mandatory| Description                                                   |
 | -------- | ------------------------------------------------ | ---- | ------------------------------------------------------ |
-| type     | string                                           | Yes  | Event type, which is **'pickerStateChange'** in this case.        |
-| callback | Callback\<[AVCastPickerState](js-apis-avCastPickerParam.md#avcastpickerstate)> | No  | Callback function, where the **state** parameter indicates the new state of the semi-modal window.<br>If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object.<br>The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.                          |
+| type     | string                                           | Yes  | Type of the event to be unsubscribed from. Currently, only the **'pickerStateChange'** event is supported.        |
+| callback | Callback\<[AVCastPickerState](js-apis-avCastPickerParam.md#avcastpickerstate)> | No  | Callback to be canceled, which must be the same as that registered using the **on** API. If this parameter is not specified, all registered callbacks are canceled.                          |
 
 **Error codes**
 
@@ -224,7 +225,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
+| 401 | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | 6600101  | Session service exception. |
 
 **Example**

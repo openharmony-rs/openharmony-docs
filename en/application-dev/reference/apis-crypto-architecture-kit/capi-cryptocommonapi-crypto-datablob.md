@@ -27,5 +27,5 @@ Defines the data used for encryption and decryption.
 
 | Name| Description|
 | -- | -- |
-| uint8_t* data | Pointer to the data.|
-| size_t len | Length of the data.|
+| uint8_t *data | Data buffer.|
+| size_t len | Data length.|

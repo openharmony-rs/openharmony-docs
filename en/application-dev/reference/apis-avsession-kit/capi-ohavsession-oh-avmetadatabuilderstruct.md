@@ -1,8 +1,8 @@
 # OH_AVMetadataBuilderStruct
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @devil_red-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -12,7 +12,7 @@ typedef struct OH_AVMetadataBuilderStruct OH_AVMetadataBuilder
 
 ## Overview
 
-The struct describes the session metadata builder, which is used to construct session metadata.
+The struct describes the session metadata builder. The builder is used to construct session metadata.
 
 **Since**: 13
 

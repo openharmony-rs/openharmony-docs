@@ -32,11 +32,11 @@ Defines audio and video metadata keys.
 | const char * OH_AVMETA_KEY_DURATION | Media duration, in microseconds. The value type is int64_t.<br>**Since**: 23|
 | const char * OH_AVMETA_KEY_BITRATE | Bit rate, in bit/s. The value type is int64_t.<br>**Since**: 23|
 | const char * OH_AVMETA_KEY_FRAME_RATE | Video frame rate (number of frames per 100 seconds). The value type is double.<br>**Since**: 23|
-| const char * OH_AVMETA_KEY_WIDTH | Video width. The value type is int32_t.<br>**Since**: 23|
-| const char * OH_AVMETA_KEY_HEIGHT | Video height. The value type is int32_t.<br>**Since**: 23|
+| const char * OH_AVMETA_KEY_WIDTH | Video width, in pixels. The value type is int32_t.<br>**Since**: 23|
+| const char * OH_AVMETA_KEY_HEIGHT | Video height, in pixels. The value type is int32_t.<br>**Since**: 23|
 | const char * OH_AVMETA_KEY_CHANNEL_COUNT | Number of audio channels. The value type is int32_t.<br>**Since**: 23|
-| const char * OH_AVMETA_KEY_SAMPLE_RATE | Audio sampling rate (Hz). The value type is int32_t.<br>**Since**: 23|
-| const char * OH_AVMETA_KEY_SAMPLE_DEPTH | Audio sampling bit depth. The value type is int32_t.<br>**Since**: 23|
+| const char * OH_AVMETA_KEY_SAMPLE_RATE | Audio sampling rate, in Hz. The value type is int32_t.<br>**Since**: 23|
+| const char * OH_AVMETA_KEY_SAMPLE_DEPTH | Audio sampling depth, in bits. The value type is int32_t.<br>**Since**: 23|
 | const char * OH_AVMETA_KEY_LANGUAGE | Language ID. The value type is string.<br>**Since**: 23|
 | const char * OH_AVMETA_KEY_TRACK_NAME | Track name. The value type is string.<br>**Since**: 23|
 | const char * OH_AVMETA_KEY_HDR_TYPE | HDR type. The value type is int32_t.<br>**Since**: 23|

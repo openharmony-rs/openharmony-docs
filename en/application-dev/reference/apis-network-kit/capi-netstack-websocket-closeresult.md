@@ -6,7 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=66333f405b8ba85b102d9221d24e54901f6cfbf8 translatedAt=2026-06-25T01:49:35.650Z pushedAt=2026-06-26T03:00:41.277Z -->
+<!-- md-trans-meta sourceCommit=742fd8e7f742ee980eb300ddfd075065ca362dff translatedAt=2026-09-28T01:14:32.068Z pushedAt=2026-10-09T01:44:57.871Z -->
 
 ```c
 struct WebSocket_CloseResult {...}
@@ -14,7 +14,7 @@ struct WebSocket_CloseResult {...}
 
 ## Overview
 
-Defines a struct for parameters received by the WebSocket client when the server closes the connection.
+Defines the parameters received by the WebSocket client when the server closes the connection.
 
 **Since**: 11
 
@@ -30,3 +30,5 @@ Defines a struct for parameters received by the WebSocket client when the server
 | -- | -- |
 | uint32_t code | Error code.|
 | const char *reason | Error cause.|
+
+

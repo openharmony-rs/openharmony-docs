@@ -1,15 +1,13 @@
 # Developing the ExtensionAbility for Notification Subscription
-
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=b0e965054b682272b6c9e3890a6020b1129a6551 translatedAt=2026-08-22T02:19:35.818Z pushedAt=2026-08-22T07:15:54.480Z -->
+<!-- md-trans-meta sourceCommit=4faed534b39ef26ef8f9b647802a53e9f8d2b792 translatedAt=2026-10-08T03:49:23.729Z pushedAt=2026-10-08T06:50:02.465Z -->
 
 ## Available APIs
-
 | API                             | Description               |
 | ---------------------------------- | --------------------|
 | [onDestroy(): void](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md#ondestroy)                  | Callback invoked when the [notification subscription](notification-glossary.md#notification-subscription) extension is destroyed. |
@@ -17,7 +15,6 @@
 | [onCancelMessages(hashCodes: Array\<string>): void](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md#oncancelmessages) | Callback to be invoked when notifications are canceled.|
 
 ## Prerequisites
-
 You have requested the [ohos.permission.SUBSCRIBE_NOTIFICATION](../security/AccessToken/restricted-permissions.md#ohospermissionsubscribe_notification) permission.
 
 ## How to Develop
@@ -27,9 +24,8 @@ To implement a provider for [NotificationSubscriberExtensionAbility](../referenc
 1. Create the **entry/src/main/ets/extensionability** directory.
 
 2. Create the **NotificationSubscriberExtAbility.ets** file in the **entry/src/main/ets/extensionability** directory. The file content is as follows:
-
    <!--@[callback_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/ThirdpartyWearableDemo/entry/src/main/ets/extensionability/NotificationSubscriberExtAbility.ets)-->   
-
+   
    ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';
    import { notificationExtensionSubscription, NotificationSubscriberExtensionAbility } from '@kit.NotificationKit';
@@ -56,15 +52,13 @@ To implement a provider for [NotificationSubscriberExtensionAbility](../referenc
      // ...
    }
    ```
-
 3. Use the [Bluetooth module](../connectivity/connectivity-kit-intro.md#bluetooth) API to pair with the wearable (with Bluetooth in pairing state) and obtain the device address. Then, subscribe to or unsubscribe from notifications through the [subscribe](../reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md#notificationextensionsubscriptionsubscribe)/[unsubscribe](../reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md#notificationextensionsubscriptionunsubscribe) APIs.
 
 4. After implementing [NotificationSubscriberExtensionAbility](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md), call the [openSubscriptionSettingsWithResult](../reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md#notificationextensionsubscriptionopensubscriptionsettingswithresult) API at an appropriate time to open the notification subscription settings screen and guide the user to grant the permission for obtaining notifications from the device. This screen is displayed as a semi-modal dialog box, and the authorization result is returned when the dialog box is closed. It is recommended that you provide a [notification authorization](notification-glossary.md#notification-authorization) button on the device management screen. When the user taps the button, the [openSubscriptionSettingsWithResult](../reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md#notificationextensionsubscriptionopensubscriptionsettingswithresult) API is called.
 
 5. Configure **ExtensionAbilities** in the **module.json5** file of the application.
-
    <!--@[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/ThirdpartyWearableDemo/entry/src/main/module.json5)-->
-
+   
    ``` JSON5
    {
      "name": "NotificationSubscriberExtAbility",
@@ -76,7 +70,6 @@ To implement a provider for [NotificationSubscriberExtensionAbility](../referenc
      "exported": true
    }
    ```
-
 6. Add the following content to the **string.json** file of the application:
 
     ```json
@@ -101,9 +94,8 @@ To implement a provider for [NotificationSubscriberExtensionAbility](../referenc
 10. If message transmission fails over this Bluetooth connection, the application re-establishes the connection and sends the message once the connection is successfully established.
 
 11. Apply for the [ohos.permission.ACCESS_BLUETOOTH](../security/AccessToken/permissions-for-all-user.md#ohospermissionaccess_bluetooth) permission. For details about how to configure and apply for permissions, see [Declaring Permissions](../security/AccessToken/declare-permissions.md) and [Requesting User Authorization](../security/AccessToken/request-user-authorization.md).
-
     <!--@[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/ThirdpartyWearableDemo/entry/src/main/ets/extensionability/NotificationSubscriberExtAbility.ets)-->    
-
+    
     ``` TypeScript
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { notificationExtensionSubscription, NotificationSubscriberExtensionAbility } from '@kit.NotificationKit';

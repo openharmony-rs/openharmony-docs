@@ -29,7 +29,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 | ------------------------------------- | -------- | ---------------------------- |
 | INVALID_PARAMS                        | 401      | Invalid parameter.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br> **Model restriction**:<br>API version 12+: This API can be used in both the stage and FA models.<br>API versions 9 to 11: This API can be used only in the stage model.               |
 | NOT_SUPPORT                           | 801      | Unsupported operation.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **Model restriction**:<br>API version 12+: This API can be used in both the stage and FA models.<br>API versions 9 to 11: This API can be used only in the stage model.                |
-| ERR_OUT_OF_MEMORY                     | 17620001 | Memory operation failed.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br> **Model restriction**:<br>API version 12+: This API can be used in both the stage and FA models.<br>API versions 9 to 11: This API can be used only in the stage model.                  |
+| ERR_OUT_OF_MEMORY                     | 17620001 | Memory operation fails.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br> **Model restriction**:<br>API version 12+: This API can be used in both the stage and FA models.<br>API versions 9 to 11: This API can be used only in the stage model.                  |
 | ERR_RUNTIME_ERROR                     | 17620002 | The **Native** object fails to be obtained or the parameter conversion fails.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **Model restriction**:<br>API version 12+: This API can be used in both the stage and FA models.<br>API versions 9 to 11: This API can be used only in the stage model.         |
 | ERR_PARAMETER_CHECK_FAILED<sup>20+</sup>            | 17620003 | The parameter check failed.<br>**Atomic service API**: This API can be used in atomic services since API version 20.<br>**Model restriction**: This API can be used only in the stage model.           |
 | ERR_INVALID_CALL          | 17620004 | Invalid function call.<br>**Since**: 26.0.0<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.<br>**Model restriction**: This API can be used only in the stage model.         |
@@ -148,7 +148,7 @@ Encapsulates the parameters for encryption or decryption using the CCM AEAD mode
 
 Encapsulates the parameters for encryption or decryption using the ChaCha20-Poly1305 AEAD mode that requires **Nonce**, **AAD**, and the authentication label. It is a child class of [ParamsSpec](#paramsspec) and used as a parameter in [init()](#init-1) for symmetric encryption or decryption.
 
-Applicable to the Poly1305 mode of [ChaCha20](../../security/CryptoArchitectureKit/crypto-sym-encrypt-decrypt-spec.md#chacha20).
+Applicable to the Poly1305 mode of [ChaCha20](../../security/CryptoArchitectureKit/crypto-encryption-decryption.md#chacha20).
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -170,7 +170,7 @@ Applicable to the Poly1305 mode of [ChaCha20](../../security/CryptoArchitectureK
 
 Describes parameters in [init()](#init-1) for symmetric encryption and decryption using authenticated encryption with association data (AEAD). It Inherits from [ParamsSpec](#paramsspec).
 
-It is applicable to [AES](../../security/CryptoArchitectureKit/crypto-sym-encrypt-decrypt-spec.md#aes) in CCM and GCM modes, SM4 in GCM mode, and ChaCha20 in Poly1305 mode.
+It is applicable to [AES](../../security/CryptoArchitectureKit/crypto-encryption-decryption.md#aes) in CCM and GCM modes, SM4 in GCM mode, and ChaCha20 in Poly1305 mode.
 
 > **NOTE**
 >
@@ -296,7 +296,7 @@ Enumerates the key parameter types.
 
 Enumerates encryption and decryption parameters, which can be set by using [setCipherSpec](#setcipherspec10) and obtained by using [getCipherSpec](#getcipherspec10).
 
-Currently, only RSA and SM2 are supported. For details, see [Asymmetric Key Encryption and Decryption Algorithm Specifications](../../security/CryptoArchitectureKit/crypto-asym-encrypt-decrypt-spec.md).
+Currently, only RSA and SM2 are supported. For details, see [Asymmetric Key Encryption and Decryption Algorithm Specifications](../../security/CryptoArchitectureKit/crypto-encryption-decryption.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1140,7 +1140,7 @@ function genEccCommonSpec(): cryptoFramework.ECCCommonParamsSpec {
   return eccCommonSpec;
 }
 
-async function testgetAsyKeySpec() {
+async function testGetAsyKeySpec() {
   let commKeySpec = genEccCommonSpec(); // Construct the EccCommonSpec object.
   let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(commKeySpec); // Create an AsyKeyGenerator instance based on the EccCommonSpec object.
   let keyPair = await generatorBySpec.generateKeyPair();
@@ -1249,12 +1249,12 @@ let publicPkcs1Str1024: string =
     + 'SHy2gC+bvEpuIuRe64yXGuM/aP+ZvmIj9QBIVI9mJD8jLEOvQBBpAgMBAAE=\n'
     + '-----END RSA PUBLIC KEY-----\n';
 
-function TestPubKeyPkcs1ToX509BySync1024() {
+function testPubKeyPkcs1ToX509BySync1024() {
   let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   let keyPair = rsaGenerator.convertPemKeySync(publicPkcs1Str1024, null);
   let pubPemKey = keyPair.pubKey;
   let pubString = pubPemKey.getEncodedPem('X509');
-  console.info('[sync]TestPubKeyPkcs1ToX509BySync1024 pubString output = ' + pubString);
+  console.info('[sync]testPubKeyPkcs1ToX509BySync1024 pubString output = ' + pubString);
 }
 ```
 
@@ -1456,12 +1456,12 @@ function genEccCommonSpec(): cryptoFramework.ECCCommonParamsSpec {
   return eccCommonSpec;
 }
 
-async function testgetAsyKeySpec() {
+async function testGetAsyKeySpec() {
   let commKeySpec = genEccCommonSpec(); // Construct the EccCommonSpec object.
   let generatorBySpec = cryptoFramework.createAsyKeyGeneratorBySpec(commKeySpec); // Create an AsyKeyGenerator instance based on the EccCommonSpec object.
   let keyPair = await generatorBySpec.generateKeyPair();
-  let pirKey = keyPair.priKey;
-  let eccPrimeP = pirKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_FP_P_BN);
+  let priKey = keyPair.priKey;
+  let eccPrimeP = priKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_FP_P_BN);
   console.info('ecc item --- p: ' + eccPrimeP.toString(16));
 }
 ```
@@ -1575,12 +1575,12 @@ let priKeyPkcs1Str1024: string =
     + 'akNwQ6NeGtXSsuGCcyyfpacHp9xy8qXQNKSkw03/5vDO\n'
     + '-----END RSA PRIVATE KEY-----\n';
 
-function TestPriKeyPkcs1ToPkcs8BySync1024() {
+function testPriKeyPkcs1ToPkcs8BySync1024() {
   let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   let keyPair = rsaGenerator.convertPemKeySync(null, priKeyPkcs1Str1024);
   let priPemKey = keyPair.priKey;
   let priString = priPemKey.getEncodedPem('PKCS8');
-  console.info('[sync]TestPriKeyPkcs1ToPkcs8BySync1024 priString output = ' + priString);
+  console.info('[sync]testPriKeyPkcs1ToPkcs8BySync1024 priString output = ' + priString);
 }
 ```
 
@@ -1640,7 +1640,7 @@ let priKeyPkcs1Str1024: string =
     + 'akNwQ6NeGtXSsuGCcyyfpacHp9xy8qXQNKSkw03/5vDO\n'
     + '-----END RSA PRIVATE KEY-----\n';
 
-function TestPriKeyPkcs1Encoded() {
+function testPriKeyPkcs1Encoded() {
   let rsaGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   let keyPair = rsaGenerator.convertPemKeySync(null, priKeyPkcs1Str1024);
   let options: cryptoFramework.KeyEncodingConfig = {
@@ -1649,7 +1649,7 @@ function TestPriKeyPkcs1Encoded() {
   }
   let priPemKey = keyPair.priKey;
   let priString = priPemKey.getEncodedPem('PKCS1', options);
-  console.info('[sync]TestPriKeyPkcs1Encoded priString output = ' + priString);
+  console.info('[sync]testPriKeyPkcs1Encoded priString output = ' + priString);
 }
 ```
 
@@ -1849,7 +1849,7 @@ function generateAsyKey() {
 
 getKeyData(itemType: AsyKeyDataItem): Promise\<Uint8Array>
 
-Defines the key data type, which is used to obtain public key data of the corresponding type. This API uses a promise to return the result.
+Defines the key data type, which is used to obtain private key data of the corresponding type. This API uses a promise to return the result.
 
 **Since**: 26.0.0
 
@@ -1976,7 +1976,7 @@ createSymKeyGenerator(algName: string): SymKeyGenerator
 
 Creates a **SymKeyGenerator** instance for the specified algorithm.
 
-For details about the supported specifications, see [Symmetric Key Generation and Conversion Specifications](../../security/CryptoArchitectureKit/crypto-sym-key-generation-conversion-spec.md).
+For details about the supported specifications, see [Symmetric Key Generation and Conversion Specifications](../../security/CryptoArchitectureKit/crypto-key-generation-conversion.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1988,7 +1988,7 @@ For details about the supported specifications, see [Symmetric Key Generation an
 
 | Name | Type  | Mandatory| Description                                                        |
 | ------- | ------ | ---- | ------------------------------------------------------------ |
-| algName | string | Yes  | Algorithm to be used by the **symKeyGenerator** instance.<br>For details, see **String Parameter** in [Symmetric Key Generation and Conversion Specifications](../../security/CryptoArchitectureKit/crypto-sym-key-generation-conversion-spec.md).|
+| algName | string | Yes  | Algorithm to be used by the **symKeyGenerator** instance.<br>For details, see **String Parameter** in [Symmetric Key Generation and Conversion Specifications](../../security/CryptoArchitectureKit/crypto-key-generation-conversion.md).|
 
 **Return value**
 
@@ -2340,7 +2340,7 @@ createAsyKeyGenerator(algName: string): AsyKeyGenerator
 
 Creates an **AsyKeyGenerator** instance for the specified algorithm.
 
-For details about the supported specifications, see [Asymmetric Key Generation and Conversion Specifications](../../security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md).
+For details about the supported specifications, see [Asymmetric Key Generation and Conversion Specifications](../../security/CryptoArchitectureKit/crypto-key-generation-conversion.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2352,7 +2352,7 @@ For details about the supported specifications, see [Asymmetric Key Generation a
 
 | Name | Type  | Mandatory| Description                            |
 | ------- | ------ | ---- | -------------------------------- |
-| algName | string | Yes  | Algorithm used by the asymmetric keys. For details, see the string parameters in [Asymmetric Key Generation and Conversion Specifications](../../security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md).|
+| algName | string | Yes  | Algorithm used by the asymmetric keys. For details, see the string parameters in [Asymmetric Key Generation and Conversion Specifications](../../security/CryptoArchitectureKit/crypto-key-generation-conversion.md).|
 
 **Return value**
 
@@ -2838,7 +2838,7 @@ let publicPkcs1Str1024: string =
     + 'SHy2gC+bvEpuIuRe64yXGuM/aP+ZvmIj9QBIVI9mJD8jLEOvQBBpAgMBAAE=\n'
     + '-----END RSA PUBLIC KEY-----\n';
 
-async function TestConvertPemKeyByPromise() {
+async function testConvertPemKeyByPromise() {
   let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   asyKeyGenerator.convertPemKey(publicPkcs1Str1024, priKeyPkcs1Str1024)
     .then(keyPair => {
@@ -2914,7 +2914,7 @@ let priKeyPkcs1EncodingStr: string =
     + 'OA55lAeXMbyjFaYCr54HWrpt4NwNBX1efMUURc+1LcHpzFrBTTLbfjIyq6as49pH\n'
     + '-----END RSA PRIVATE KEY-----\n'
 
-async function TestConvertPemKeyByPromise() {
+async function testConvertPemKeyByPromise() {
   let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   asyKeyGenerator.convertPemKey(null, priKeyPkcs1EncodingStr, '123456')
     .then(keyPair => {
@@ -2990,7 +2990,7 @@ let publicPkcs1Str1024: string =
     + 'SHy2gC+bvEpuIuRe64yXGuM/aP+ZvmIj9QBIVI9mJD8jLEOvQBBpAgMBAAE=\n'
     + '-----END RSA PUBLIC KEY-----\n';
 
-function TestConvertPemKeyBySync() {
+function testConvertPemKeyBySync() {
   let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   try {
     let keyPairData = asyKeyGenerator.convertPemKeySync(publicPkcs1Str1024, priKeyPkcs1Str1024);
@@ -3066,7 +3066,7 @@ let priKeyPkcs1EncodingStr: string =
     + 'OA55lAeXMbyjFaYCr54HWrpt4NwNBX1efMUURc+1LcHpzFrBTTLbfjIyq6as49pH\n'
     + '-----END RSA PRIVATE KEY-----\n'
 
-function TestConvertPemKeyBySync() {
+function testConvertPemKeyBySync() {
   let asyKeyGenerator = cryptoFramework.createAsyKeyGenerator('RSA1024');
   try {
     let keyPairData = asyKeyGenerator.convertPemKeySync(null, priKeyPkcs1EncodingStr, '123456');
@@ -3097,7 +3097,7 @@ Creates an **AsyKeyGenerator** instance with specified key specifications.
 
 | Name | Type  | Mandatory| Description                            |
 | ------- | ------ | ---- | -------------------------------- |
-| asyKeySpec | [AsyKeySpec](#asykeyspec10) | Yes  | Key parameters. The **AsyKeyGenerator** generates the public/private key based on the specified parameters.<br>For details about the supported specifications, see [Asymmetric Key Generation and Conversion Specifications](../../security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md).|
+| asyKeySpec | [AsyKeySpec](#asykeyspec10) | Yes  | Key parameters. The **AsyKeyGenerator** generates the public/private key based on the specified parameters.<br>For details about the supported specifications, see [Asymmetric Key Generation and Conversion Specifications](../../security/CryptoArchitectureKit/crypto-key-generation-conversion.md).|
 
 **Return value**
 
@@ -3835,7 +3835,7 @@ Provides tools for generating ECC key parameters and converting points based on 
 
 static genECCCommonParamsSpec(curveName: string): ECCCommonParamsSpec
 
-Generates common parameters for an asymmetric key pair based on the specified name identifier (NID) of an elliptic curve. For details, see [ECC](../../security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md#ecc) and [SM2](../../security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md#sm2).
+Generates common parameters for an asymmetric key pair based on the specified name identifier (NID) of an elliptic curve. For details, see [ECC](../../security/CryptoArchitectureKit/crypto-key-generation-conversion.md#ecc) and [SM2](../../security/CryptoArchitectureKit/crypto-key-generation-conversion.md#sm2).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -3996,7 +3996,7 @@ Generates common parameters for a DH key based on the prime **p** length and the
 
 static genDHCommonParamsSpec(pLen: number, skLen?: number): DHCommonParamsSpec
 
-Generates common parameters for a DH key based on the prime **p** length and the private key length. For details, see [DH](../../security/CryptoArchitectureKit/crypto-asym-key-generation-conversion-spec.md#dh).
+Generates common parameters for a DH key based on the prime **p** length and the private key length. For details, see [DH](../../security/CryptoArchitectureKit/crypto-key-generation-conversion.md#dh).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -4170,7 +4170,7 @@ Create a **Cipher** instance.
 
 | Name        | Type  | Mandatory| Description                                                        |
 | -------------- | ------ | ---- | ------------------------------------------------------------ |
-| transformation | string | Yes  | Combination of the algorithm name (including the key length), encryption mode, and padding algorithm of the **Cipher** instance to create.<br>For details about the supported specifications, see [Symmetric Key Encryption and Decryption Algorithm Specifications](../../security/CryptoArchitectureKit/crypto-sym-encrypt-decrypt-spec.md) and [Asymmetric Key Encryption and Decryption Algorithm Specifications](../../security/CryptoArchitectureKit/crypto-asym-encrypt-decrypt-spec.md).|
+| transformation | string | Yes  | Combination of the algorithm name (including the key length), encryption mode, and padding algorithm of the **Cipher** instance to create.<br>For details about the supported specifications, see [Symmetric Key Encryption and Decryption Algorithm Specifications](../../security/CryptoArchitectureKit/crypto-encryption-decryption.md) and [Asymmetric Key Encryption and Decryption Algorithm Specifications](../../security/CryptoArchitectureKit/crypto-encryption-decryption.md).|
 
 > **NOTE**
 >
@@ -4213,7 +4213,7 @@ try {
 
 Provides an encryption and decryption API, which defines symmetric and asymmetric encryption and decryption methods. Before calling this API, you must use the [createCipher(transformation: string): Cipher](#cryptoframeworkcreatecipher) method to create a **Cipher** instance. The [init()](#init-1), [update()](#update), and [doFinal()](#dofinal) methods in the **Cipher** instance are called in sequence to implement symmetric encryption or decryption and asymmetric encryption or decryption.
 
-For details about the complete encryption and decryption process, see [Encryption and Decryption Overview](../../security/CryptoArchitectureKit/crypto-encryption-decryption-overview.md).
+For details about the complete encryption and decryption process, see [Encryption and Decryption Overview](../../security/CryptoArchitectureKit/crypto-encryption-decryption.md).
 
 A complete symmetric encryption/decryption process is slightly different from the asymmetric encryption/decryption process.
 
@@ -4438,7 +4438,7 @@ This API can be called only after the [Cipher](#cipher) instance is initialized 
 >
 >    The amount of the data to be passed in by **update()** (one-time or accumulative) is not limited. If there is a large amount of data, you are advised to pass data in multiple **update()** calls rather than processing it all at once.
 >
->    For details about the sample code for passing data in multiple **update()** calls, see [Encryption and Decryption by Segment with an AES Symmetric Key (GCM Mode)](../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-gcm-by-segment.md).
+>    For details about the sample code for passing data in multiple **update()** calls, see [Using an AES Symmetric Key (GCM Mode) for Segmented Encryption and Decryption](../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt.md#using-an-aes-symmetric-key-gcm-mode-for-segmented-encryption-and-decryption).
 > 3. RSA or SM2 asymmetric encryption and decryption do not support **update()**.
 > 4. If CCM is used in symmetric encryption or decryption, **update()** can be called only once. In the encryption process, you can either use **update()** to encrypt data and use **doFinal()** to obtain **authTag** or use **doFinal()** without using **update()**. In the decryption process, you can either use **update()** or **doFinal()** once to decrypt data and verify the tag.
 
@@ -4481,7 +4481,7 @@ This API can be called only after the [Cipher](#cipher) instance is initialized 
 > <br>For example, in ECB and CBC modes, encryption and decryption are performed by block regardless of whether the data input by **update()** is an integer multiple of the block size, and **update()** returns the newly processed block data.<br>That is, data is returned as long as the data passed in by **update()** reaches the size of a block. Otherwise, **null** is returned and the data will be retained until a block is formed in the next **update()** or **doFinal()**.<br>In the final **doFinal()** operation, the remaining unprocessed data is padded based on the padding mode set in [createCipher](#cryptoframeworkcreatecipher) to the integer multiple of the block size to produce the final encrypted or decrypted data.<br>For block cipher modes that can be converted to stream mode, the ciphertext length may be the same as the plaintext length.
 > 2. You can call **update()** multiple times or skip calling **update()** (call **doFinal()** directly after **init()**), depending on the data volume.<br>
 >    The amount of the data to be passed in by **update()** (one-time or accumulative) is not limited. If there is a large amount of data, you are advised to pass data in multiple **update()** calls rather than processing it all at once.<br>
->    For details about the sample code for passing data in multiple **update()** calls, see [Encryption and Decryption by Segment with an AES Symmetric Key (GCM Mode)](../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-gcm-by-segment.md).
+>    For details about the sample code for passing data in multiple **update()** calls, see [Using an AES Symmetric Key (GCM Mode) for Segmented Encryption and Decryption](../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt.md#using-an-aes-symmetric-key-gcm-mode-for-segmented-encryption-and-decryption).
 > 3. RSA or SM2 asymmetric encryption and decryption do not support **update()**.
 > 4. If CCM is used in symmetric encryption or decryption, **update()** can be called only once. In the encryption process, you can either use **update()** to encrypt data and use **doFinal()** to obtain **authTag** or use **doFinal()** without using **update()**. In the decryption process, you can either use **update()** or **doFinal()** once to decrypt data and verify the tag.
 
@@ -4603,7 +4603,7 @@ doFinal(data: DataBlob | null, callback: AsyncCallback\<DataBlob>): void
 >  3. The result of **doFinal()** may be **null**. To avoid exceptions, determine whether the result is **null** before using the **.data** field to access the **doFinal()** result.<br>
 >    For encryption in CFB, OFB, or CTR mode, if **doFinal()** passes in **null**, the returned result is **null**.<br>
 >    For decryption in GCM, CCM, CFB, OFB, or CTR mode, if **doFinal()** passes in **null**, the returned result is **null**. For decryption in other modes, if **update** is called to pass in all the plaintext, which is an integer multiple of the encryption block size, and **doFinal()** is called to pass in **null**, the returned result is **null**.<br>
->  4. For details about the sample code for calling **doFinal** multiple times in asymmetric encryption and decryption, see [Encryption and Decryption by Segment with an RSA Asymmetric Key Pair](../../security/CryptoArchitectureKit/crypto-rsa-asym-encrypt-decrypt-by-segment.md). The operations are similar for SM2 and RSA.
+>  4. For details about the sample code for calling **doFinal** multiple times in asymmetric encryption and decryption, see [Using an RSA Asymmetric Key for Segmented Encryption and Decryption](../../security/CryptoArchitectureKit/crypto-rsa-asym-encrypt-decrypt.md#using-an-rsa-asymmetric-key-for-segmented-encryption-and-decryption). The operations are similar for SM2 and RSA.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -4631,7 +4631,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 **Example**
 
-For more encryption and decryption examples, see [Encryption and Decryption with an AES Symmetric Key (GCM Mode)](../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-gcm.md).
+For more encryption and decryption examples, see [Using an AES Symmetric Key (GCM Mode) for Encryption and Decryption)](../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt.md#using-an-aes-symmetric-key-gcm-mode-for-encryption-and-decryption).
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -4739,7 +4739,7 @@ doFinal(data: DataBlob | null): Promise\<DataBlob>
 >     For encryption in CFB, OFB, or CTR mode, if **doFinal()** passes in **null**, the returned result is **null**.
 >
 >     For decryption in GCM, CCM, CFB, OFB, or CTR mode, if **doFinal()** passes in **null**, the returned result is **null**. For decryption in other modes, if **update** is called to pass in all the plaintext, which is an integer multiple of the encryption block size, and **doFinal()** is called to pass in **null**, the returned result is **null**.
->  4. For details about the sample code for calling **doFinal** multiple times in asymmetric encryption and decryption, see [Encryption and Decryption by Segment with an RSA Asymmetric Key Pair](../../security/CryptoArchitectureKit/crypto-rsa-asym-encrypt-decrypt-by-segment.md). The operations are similar for SM2 and RSA.
+>  4. For details about the sample code for calling **doFinal** multiple times in asymmetric encryption and decryption, see [Using an RSA Asymmetric Key for Segmented Encryption and Decryption](../../security/CryptoArchitectureKit/crypto-rsa-asym-encrypt-decrypt.md#using-an-rsa-asymmetric-key-for-segmented-encryption-and-decryption). The operations are similar for SM2 and RSA.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -4772,7 +4772,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 **Example**
 
-For more encryption and decryption examples, see [Encryption and Decryption with an AES Symmetric Key (GCM Mode)](../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-gcm.md).
+In addition, for more encryption and decryption examples, see [Using an AES Symmetric Key (GCM Mode) for Encryption and Decryption](../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt.md#using-an-aes-symmetric-key-gcm-mode-for-encryption-and-decryption).
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -4865,7 +4865,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 **Example**
 
-For more encryption and decryption examples, see [Encryption and Decryption with an AES Symmetric Key (GCM Mode)](../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt-gcm.md).
+In addition, for more encryption and decryption examples, see [Using an AES Symmetric Key (GCM Mode) for Encryption and Decryption](../../security/CryptoArchitectureKit/crypto-aes-sym-encrypt-decrypt.md#using-an-aes-symmetric-key-gcm-mode-for-encryption-and-decryption).
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -4946,7 +4946,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 
-function testsetCipherSpec() {
+function testSetCipherSpec() {
   let cipher = cryptoFramework.createCipher('RSA2048|PKCS1_OAEP|SHA256|MGF1_SHA1');
   let pSource = new Uint8Array([1, 2, 3, 4]);
   cipher.setCipherSpec(cryptoFramework.CipherSpecItem.OAEP_MGF1_PSRC_UINT8ARR, pSource);
@@ -5052,7 +5052,7 @@ let signer5 = cryptoFramework.createSign('RSA1024|PKCS1|SHA256|OnlySign');
 
 ## Sign
 
-Provides a signing API for signing data based on a private key. Before calling this API, you need to construct this instance using [createSign(algName: string): Sign](#cryptoframeworkcreatesign). Invoke **init()**, **update()**, and **sign()** in this class in sequence to complete the signing operation. For details about the sample code, see [Signing and Signature Verification with an RSA Key Pair (PKCS1 Mode)](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md).
+Provides a signing API for signing data based on a private key. Before calling this API, you need to construct this instance using [createSign(algName: string): Sign](#cryptoframeworkcreatesign). Invoke **init()**, **update()**, and **sign()** in this class in sequence to complete the signing operation. For details about the sample code, see [Signing and Signature Verification with an RSA Key Pair (PKCS1 Mode)](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md).
 
 The **Sign** instance does not support repeated initialization. When a new key is used for signing, you must create a new **Sign** instance and call **init()** for initialization.
 
@@ -5191,7 +5191,7 @@ This API can be called only after the [Sign](#sign) instance is initialized by u
 >
 > You can call **update** multiple times or do not use **update** (call [sign](#sign-1) after [init](#init-2)), depending on the data volume.<br>
 > The amount of the data to be passed in by **update()** (one-time or accumulative) is not limited. If there is a large amount of data, you are advised to call **update()** multiple times to pass in the data by segment. This prevents too much memory from being requested at a time.<br>
-> For details about the sample code for calling **update()** multiple times in signing, see [Signing and Signature Verification by Segment with an RSA Key Pair (PKCS1 Mode)](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1-by-segment.md). The operations of other algorithms are similar.<br>
+> For details about the sample code for calling **update()** multiple times in signing, see [Signing and Signature Verification by Segment with an RSA Key Pair (PKCS1 Mode)](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md#signing-and-signature-verification-with-an-rsa-key-pair-pkcs1-mode-in-segments). The operations of other algorithms are similar.<br>
 > **OnlySign** cannot be used with **update()**. If **OnlySign** is specified, use **sign()** to pass in data.<br>
 > If the DSA algorithm is used for signing and the digest algorithm is **NoHash**, **update()** is not supported. If **update()** is called in this case, **ERR_CRYPTO_OPERATION** will be returned.
 
@@ -5232,7 +5232,7 @@ Before using this API, you must use [init()](#init-3) to initialize the [Sign](#
 >
 > You can call **update** multiple times or do not use **update** (call [sign](#sign-2) after [init](#init-3)), depending on the data volume.<br>
 > The amount of the data to be passed in by **update()** (one-time or accumulative) is not limited. If there is a large amount of data, you are advised to call **update()** multiple times to pass in the data by segment. This prevents too much memory from being requested at a time.
-> For details about the sample code for calling **update()** multiple times in signing, see [Signing and Signature Verification by Segment with an RSA Key Pair (PKCS1 Mode)](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1-by-segment.md). The operations of other algorithms are similar.<br>
+> For details about the sample code for calling **update()** multiple times in signing, see [Signing and Signature Verification by Segment with an RSA Key Pair (PKCS1 Mode)](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md#signing-and-signature-verification-with-an-rsa-key-pair-pkcs1-mode-in-segments). The operations of other algorithms are similar.<br>
 > **OnlySign** cannot be used with **update()**. If **OnlySign** is specified, use **sign()** to pass in data.<br>
 > If the DSA algorithm is used for signing and the digest algorithm is **NoHash**, **update()** is not supported. If **update()** is called in this case, **ERR_CRYPTO_OPERATION** will be returned.
 
@@ -5278,7 +5278,7 @@ This API can be called only after the [Sign](#sign) instance is initialized by u
 >
 > You can call **updateSync** multiple times or do not use **updateSync** (call [signSync](#signsync12) after [initSync](#initsync12-1)), depending on the data volume.<br>
 > The amount of the data to be passed in by **updateSync** (one-time or accumulative) is not limited. If there is a large amount of data, you are advised to call **updateSync** multiple times to pass in the data by segment. This prevents too much memory from being requested at a time.<br>
-> For details about the sample code for calling **updateSync** multiple times in signing, see [Signing and Signature Verification by Segment with an RSA Key Pair (PKCS1 Mode)](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1-by-segment.md). The operations of other algorithms are similar.<br>
+> For details about the sample code for calling **updateSync** multiple times in signing, see [Signing and Signature Verification by Segment with an RSA Key Pair (PKCS1 Mode)](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md#signing-and-signature-verification-with-an-rsa-key-pair-pkcs1-mode-in-segments). The operations of other algorithms are similar.<br>
 > **OnlySign** cannot be used with **updateSync**. If **OnlySign** is specified, use **signSync** to pass in data.<br>
 > If the DSA algorithm is used for signing and the digest algorithm is **NoHash**, **updateSync** is not supported. If **updateSync** is called in this case, **ERR_CRYPTO_OPERATION** will be returned.
 
@@ -5474,7 +5474,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 **Example**
 
-For more examples of signing and signature verification, see [Signing and Signature Verification with an RSA Key Pair (PKCS1 Mode)](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md).
+For more examples of signing and signature verification, see [Signing and Signature Verification with an RSA Key Pair (PKCS1 Mode)](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md).
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -5538,7 +5538,7 @@ function signByCallback() {
 
 **Example**
 
-For more examples of signing and signature verification, see [Signing and Signature Verification with an RSA Key Pair (PKCS1 Mode)](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md).
+For more examples of signing and signature verification, see [Signing and Signature Verification with an RSA Key Pair (PKCS1 Mode)](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md).
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -5604,7 +5604,7 @@ async function signByPromise() {
 
 **Example**
 
-For more examples of signing and signature verification, see [Signing and Signature Verification with an RSA Key Pair (PKCS1 Mode)](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md).
+For more examples of signing and signature verification, see [Signing and Signature Verification with an RSA Key Pair (PKCS1 Mode)](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md).
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -5890,7 +5890,7 @@ let verifier3 = cryptoFramework.createVerify('RSA1024|PKCS1|SHA256|Recover');
 
 ## Verify
 
-Provides a signature verification API for verifying signature data based on the public key. Before calling this API, you need to construct this instance using [createVerify(algName: string): Verify](#cryptoframeworkcreateverify). Invoke **init()**, **update()**, and **verify()** in this class in sequence to complete the signature verification. For details about the sample code, see [Signing and Signature Verification with an RSA Key Pair (PKCS1 Mode)](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md).
+Provides a signature verification API for verifying signature data based on the public key. Before calling this API, you need to construct this instance using [createVerify(algName: string): Verify](#cryptoframeworkcreateverify). Invoke **init()**, **update()**, and **verify()** in this class in sequence to complete the signature verification. For details about the sample code, see [Signing and Signature Verification with an RSA Key Pair (PKCS1 Mode)](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md).
 
 The **Verify** instance does not support repeated initialization. When a new key is used for signature verification, you must create a new **Verify** instance and call **init()** for initialization.
 
@@ -6021,7 +6021,7 @@ This API can be called only after the [Verify](#verify) instance is initialized 
 >
 > You can call **update** multiple times or do not use **update** (call [verify](#verify-1) after [init](#init-4)), depending on the data volume.<br>
 > The amount of the data to be passed in by **update()** (one-time or accumulative) is not limited. If there is a large amount of data, you are advised to call **update()** multiple times to pass in the data by segment. This prevents too much memory from being requested at a time.<br>
-> For details about the sample code for calling **update()** multiple times in signature verification, see [Signing and Signature Verification by Segment with an RSA Key Pair (PKCS1 Mode)](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1-by-segment.md). The operations of other algorithms are similar.<br>
+> For details about the sample code for calling **update()** multiple times in signature verification, see [Signing and Signature Verification by Segment with an RSA Key Pair (PKCS1 Mode)](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md#signing-and-signature-verification-with-an-rsa-key-pair-pkcs1-mode-in-segments). The operations of other algorithms are similar.<br>
 > **OnlyVerify** cannot be used with **update()**. If **OnlyVerify** is specified, use **verify()** to pass in data.<br>
 > If the DSA algorithm is used for signature verification and the digest algorithm is **NoHash**, **update()** is not supported. If **update()** is called in this case, **ERR_CRYPTO_OPERATION** will be returned.
 
@@ -6062,7 +6062,7 @@ This API can be called only after the [Verify](#verify) instance is initialized 
 >
 > You can call **update** multiple times or do not use **update** (call [verify](#verify-2) after [init](#init-5)), depending on the data volume.<br>
 > The amount of the data to be passed in by **update()** (one-time or accumulative) is not limited. If there is a large amount of data, you are advised to call **update()** multiple times to pass in the data by segment. This prevents too much memory from being requested at a time.<br>
-> For details about the sample code for calling **update()** multiple times in signature verification, see [Signing and Signature Verification by Segment with an RSA Key Pair (PKCS1 Mode)](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1-by-segment.md). The operations of other algorithms are similar.<br>
+> For details about the sample code for calling **update()** multiple times in signature verification, see [Signing and Signature Verification by Segment with an RSA Key Pair (PKCS1 Mode)](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md#signing-and-signature-verification-with-an-rsa-key-pair-pkcs1-mode-in-segments). The operations of other algorithms are similar.<br>
 > **OnlyVerify** cannot be used with **update()**. If **OnlyVerify** is specified, use **verify()** to pass in data.<br>
 > If the DSA algorithm is used for signature verification and the digest algorithm is **NoHash**, **update()** is not supported. If **update()** is called in this case, **ERR_CRYPTO_OPERATION** will be returned.
 
@@ -6108,7 +6108,7 @@ This API can be called only after the [Verify](#verify) instance is initialized 
 >
 > You can call **updateSync** multiple times or do not use **updateSync** (call [verifySync](#verifysync12) after [initSync](#initsync12-2)), depending on the data volume.<br>
 > The amount of the data to be passed in by **updateSync** (one-time or accumulative) is not limited. If there is a large amount of data, you are advised to call **updateSync** multiple times to pass in the data by segment. This prevents too much memory from being requested at a time.<br>
-> For details about the sample code for calling **updateSync** multiple times in signature verification, see [Signing and Signature Verification by Segment with an RSA Key Pair (PKCS1 Mode)](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1-by-segment.md). The operations of other algorithms are similar.<br>
+> For details about the sample code for calling **updateSync** multiple times in signature verification, see [Signing and Signature Verification by Segment with an RSA Key Pair (PKCS1 Mode)](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md#signing-and-signature-verification-with-an-rsa-key-pair-pkcs1-mode-in-segments). The operations of other algorithms are similar.<br>
 > **OnlyVerify** cannot be used with **updateSync**. If **OnlyVerify** is specified, use **verifySync()** to pass in data.<br>
 > If the DSA algorithm is used for signature verification and the digest algorithm is **NoHash**, **updateSync** is not supported. If **updateSync** is called in this case, **ERR_CRYPTO_OPERATION** will be returned.
 
@@ -6309,7 +6309,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 
 **Example**
 
-For more examples of signing and signature verification, see [Signing and Signature Verification with an RSA Key Pair (PKCS1 Mode)](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md).
+For more examples of signing and signature verification, see [Signing and Signature Verification with an RSA Key Pair (PKCS1 Mode)](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md).
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -6383,7 +6383,7 @@ function verifyByCallback() {
 
 **Example**
 
-For more examples, see [Signing and Signature Verification with an RSA Key Pair](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md).
+For more examples, see [Signing and Signature Verification with an RSA Key Pair](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md).
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -6459,7 +6459,7 @@ async function verifyByPromise() {
 
 **Example**
 
-For more examples of signing and signature verification, see [Signing and Signature Verification with an RSA Key Pair (PKCS1 Mode)](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1.md).
+For more examples of signing and signature verification, see [Signing and Signature Verification with an RSA Key Pair (PKCS1 Mode)](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify.md).
 
 ```ts
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -7724,7 +7724,7 @@ Initializes the MAC computation using a symmetric key. This API uses an asynchro
 
   > **NOTE**
   >
-  > You are advised to create a symmetric key generator based on the [HMAC key generation specifications](../../security/CryptoArchitectureKit/crypto-sym-key-generation-conversion-spec.md#hmac) and use [generateSymKey](#generatesymkey) to randomly generate a symmetric key or use [convertKey](#convertkey) to convert the binary data (whose length is the same as the key specifications) into a key.<br>If **HMAC** is specified to generate the symmetric key generator, only [convertKey](#convertkey) can be called to pass in a binary key of 1 to 4,096 bytes.
+  > You are advised to create a symmetric key generator based on the [HMAC key generation specifications](../../security/CryptoArchitectureKit/crypto-key-generation-conversion.md#hmac) and use [generateSymKey](#generatesymkey) to randomly generate a symmetric key or use [convertKey](#convertkey) to convert the binary data (whose length is the same as the key specifications) into a key.<br>If **HMAC** is specified to generate the symmetric key generator, only [convertKey](#convertkey) can be called to pass in a binary key of 1 to 4,096 bytes.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
