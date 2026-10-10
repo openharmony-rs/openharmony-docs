@@ -34,7 +34,7 @@
 1. **OH_MD_KEY_VIDEO_DECODER_FRAME_RETENTION_MODE（模式配置）**
    - 类型：`int32_t`
    - 取值范围：参考[OH_FrameRetentionMode](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_frameretentionmode)。
-   - 描述：能力的总开关与模式选择，可通过[OH_VideoDecoder_Configure](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_configure)在初始化阶段配置，也可通过[OH_VideoDecoder_SetParameter](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_setparameter)在运行态切换。正常倍速起播时，建议初始化为全量直通模式。
+   - 描述：能力的总开关与模式选择，可通过[OH_VideoDecoder_Configure()](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_configure)在初始化阶段配置，也可通过[OH_VideoDecoder_SetParameter()](../../reference/apis-avcodec-kit/capi-native-avcodec-videodecoder-h.md#oh_videodecoder_setparameter)在运行态切换。正常倍速起播时，建议初始化为全量直通模式。
 
 2. **OH_MD_KEY_VIDEO_DECODER_SPEED（解码倍速）**
    - 类型：`double`
@@ -58,11 +58,11 @@
 对于常规视频播放业务，建议采用**初始化阶段配置与动态切换结合**的策略。
 
 - **初始化配置**：以正常倍速起播时，在视频起播前配置为全量直通模式，无需设置解码倍速参数。
-- **动态切换**：在播放过程中，当目标倍速大于1.0x时，通过`OH_VideoDecoder_SetParameter`在同一个`OH_AVFormat`中下发感知自适应模式与当前倍速；当恢复至1.0x及以下倍速时，切回全量直通模式，恢复全量帧解码输出。
+- **动态切换**：在播放过程中，当目标倍速大于1.0x时，通过OH_VideoDecoder_SetParameter()在同一个OH_AVFormat中下发感知自适应模式与当前倍速；当恢复至1.0x及以下倍速时，切回全量直通模式，恢复全量帧解码输出。
 
 ### 初始化阶段配置
 
-以下示例以正常倍速起播，配置全量直通模式。SetOptionalFormatFeatures在完成同步模式配置后，当sampleInfo.codec.isSmartFluencySupported为true时调用ConfigureSmartFluency(format)并检查返回值。随后由`VideoDecoder::Configure`调用OH_VideoDecoder_Configure完成配置。该辅助函数仅设置本能力的参数，不负责创建或销毁OH_AVFormat。
+以下示例以正常倍速起播，配置全量直通模式。SetOptionalFormatFeatures在完成同步模式配置后，当sampleInfo.codec.isSmartFluencySupported为true时调用ConfigureSmartFluency(format)并检查返回值。随后由`VideoDecoder::Configure`调用OH_VideoDecoder_Configure()完成配置。该辅助函数仅设置本能力的参数，不负责创建或销毁OH_AVFormat。
 
 如果业务直接以高倍速起播，也可在初始化阶段配置感知自适应模式，建议同时显式设置OH_MD_KEY_VIDEO_DECODER_SPEED为实际起播倍速。
 
@@ -80,7 +80,7 @@ bool ConfigureSmartFluency(OH_AVFormat *format)
 
 ### 运行态按需切换
 
-系统支持在运行态下动态切换帧保留模式。开发者可通过调用`OH_VideoDecoder_SetParameter`实时下发配置，参数的生效时机与该接口的标准行为一致。
+系统支持在运行态下动态切换帧保留模式。开发者可通过调用OH_VideoDecoder_SetParameter()实时下发配置，参数的生效时机与该接口的标准行为一致。
 
 <!-- @[onUserSpeedChanged](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/video_decoder.cpp) -->
 
