@@ -8,22 +8,13 @@
 
 ## 概述
 
-本文档帮助开发者了解 `@ohos.arkui.dialog` 新接口与老接口（[CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller)、[AlertDialog.show](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#showdeprecated)、[ActionSheet.show](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#showdeprecated)、[promptAction.showDialog](../reference/apis-arkui/js-apis-promptAction.md#promptactionshowdialogdeprecated)、[promptAction.showActionMenu](../reference/apis-arkui/js-apis-promptAction.md#promptactionshowactionmenudeprecated)、[promptAction.openCustomDialog](../reference/apis-arkui/js-apis-promptAction.md#promptactionopencustomdialogdeprecated)、[promptAction.openCustomDialogWithController](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18)、[promptAction.presentCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18)）的能力差异，并按弹窗类别提供从老接口到新接口的迁移映射和示例。
+本文档帮助开发者了解 `@ohos.arkui.dialog` 新接口与老接口（[CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller)、[AlertDialog.show](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#showdeprecated)、[ActionSheet.show](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#showdeprecated)、[promptAction.showDialog](../reference/apis-arkui/js-apis-promptAction.md#promptactionshowdialogdeprecated)、[promptAction.showActionMenu](../reference/apis-arkui/js-apis-promptAction.md#promptactionshowactionmenudeprecated)、[promptAction.openCustomDialog](../reference/apis-arkui/js-apis-promptAction.md#promptactionopencustomdialogdeprecated)、[promptAction.openCustomDialogWithController](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18)、[promptAction.presentCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18)）的能力差异，并按弹窗类别提供从老接口到新接口的迁移映射。
 
 > **适用版本：** 从 API 版本 26.1.0 开始，`@ohos.arkui.dialog` 提供 Unified Dialog API。版本状态以 [`@ohos.arkui.dialog.d.ts`](../reference/apis-arkui/js-apis-dialog.md) 实际 `@since` 标注为准。
 
 ## 能力介绍
 
-`@ohos.arkui.dialog.d.ts` 包含 13 个声明单元，均标注 `@since 26.1.0 dynamic`、`@stagemodelonly`、`@crossplatform`、`@atomicservice`。各单元按"选项类型 / 控制器与结果 / 枚举"逻辑分组，类型继承关系如下：
-
-```
-DialogBaseOptions（基类）
-  ├── DialogStyleOptions（固定样式）
-  └── DialogCustomOptions（自定义样式）
-
-DialogTextStyleOptions
-  └── DialogMessage（extends DialogTextStyleOptions）
-```
+`@ohos.arkui.dialog` 新接口在完全兼容老接口能力的基础上，新增支持返回错误码的能力。
 
 ### 接口说明
 
@@ -54,7 +45,6 @@ DialogTextStyleOptions
 | 差异类型 | 对比维度 | 老接口 | 新接口（`@ohos.arkui.dialog`） |
 |---------|---------|---------|----------------------------|
 | 属性差异 | 高级动画 | `customStyle` + `openAnimation`/`closeAnimation`（`AnimateParam`） | `dialogTransition` + `maskTransition`（`TransitionEffect`） |
-| 使用差异 | 编程模型 | 装饰器 + Controller / 命令式调用 | `UIContext.getDialogPresenter()` + Promise |
 | 使用差异 | 取消回调 | `cancel` / `onWillDismiss` | `onWillDismiss: Callback<DialogDismissal>` |
 
 ### 属性差异
@@ -227,51 +217,198 @@ DialogTextStyleOptions
 
 ### 使用差异
 
-#### 编程模型差异
+老接口[openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12)，不支持系统材质，不支持弹出后动态修改弹窗位置。
 
-老接口使用 `@CustomDialog` 装饰器 + `CustomDialogController` 或命令式调用（`AlertDialog.show()`、`ActionSheet.show()` 等）。新接口统一为 `UIContext.getDialogPresenter()` 获取 `DialogPresenter` 实例，通过 `present()` 弹出，返回 `Promise<DialogResult>`。
+```ts
+import { ComponentContent } from '@kit.ArkUI';
+import { AbilityConstant, Configuration, EnvironmentCallback, ConfigurationConstant } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { resourceManager } from '@kit.LocalizationKit';
 
-**迁移范式：**
+class Params {
+  text: string = "";
+  colorMode: resourceManager.ColorMode = resourceManager.ColorMode.LIGHT
 
-```typescript
-// 老接口（CustomDialog）
-@CustomDialog
-struct MyDialog {
-  controller: CustomDialogController
-  build() { /* ... */ }
+  constructor(text: string, colorMode: resourceManager.ColorMode) {
+    this.text = text
+    this.colorMode = colorMode
+  }
 }
-// 使用
-let controller = new CustomDialogController({ builder: MyDialog() })
-controller.open()
 
-// 新接口（DialogPresenter）
-let presenter = this.getUIContext().getDialogPresenter()
-presenter.present(() => { /* CustomBuilder 内容 */ }, { customStyle: false })
+@Builder
+function BuilderDialog(params: Params) {
+  Column() {
+    Text(params.text)
+      .fontSize(50)
+      .fontWeight(FontWeight.Bold)
+      .margin({ bottom: 36 })
+  }.backgroundColor(params.colorMode == resourceManager.ColorMode.LIGHT ? "#D5D5D5" : "#004AAF")
+}
+
+@Entry
+@Component
+struct Index {
+  @State message: string = "hello";
+  contentNode: ComponentContent<Params> | null = null;
+  callbackId: number | undefined = 0;
+
+  aboutToAppear(): void {
+    let environmentCallback: EnvironmentCallback = {
+      onMemoryLevel: (level: AbilityConstant.MemoryLevel): void => {
+      },
+      onConfigurationUpdated: (config: Configuration): void => {
+        console.info(`onConfigurationUpdated ${config}`);
+        this.getUIContext().getHostContext()?.getApplicationContext().resourceManager.getConfiguration((err,
+          config) => {
+          // 调用ComponentContent的update更新colorMode信息
+          this.contentNode?.update(new Params(this.message, config.colorMode))
+          setTimeout(() => {
+            // 调用ComponentContent的updateConfiguration，触发节点的全量更新
+            this.contentNode?.updateConfiguration()
+          })
+        })
+      }
+    }
+    // 注册监听系统环境变化监听器
+    this.callbackId =
+      this.getUIContext().getHostContext()?.getApplicationContext().on('environment', environmentCallback)
+    // 设置应用深浅色跟随系统
+    this.getUIContext()
+      .getHostContext()?.getApplicationContext().setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_NOT_SET)
+  }
+
+  aboutToDisappear() {
+    // 解注册监听系统环境变化的回调
+    this.getUIContext().getHostContext()?.getApplicationContext().off('environment', this.callbackId)
+    this.contentNode?.dispose()
+  }
+
+  build() {
+    Row() {
+      Column() {
+        Button("click me")
+          .onClick(() => {
+            let uiContext = this.getUIContext();
+            let promptAction = uiContext.getPromptAction();
+            if (this.contentNode == null && uiContext.getHostContext() != undefined) {
+              this.contentNode = new ComponentContent(uiContext, wrapBuilder(BuilderDialog), new Params(this.message,
+                uiContext.getHostContext()!!.getApplicationContext().resourceManager.getConfigurationSync().colorMode))
+            }
+            if (this.contentNode == null) {
+              return
+            }
+            promptAction.closeCustomDialog(this.contentNode)
+            // 先关闭已存在的弹窗，再重新打开
+            promptAction.openCustomDialog(this.contentNode).then(() => {
+              console.info("succeeded")
+            }).catch((error: BusinessError) => {
+              console.error(`OpenCustomDialog args error code is ${error.code}, message is ${error.message}`);
+            })
+          })
+      }
+      .width('100%')
+      .height('100%')
+    }
+    .height('100%')
+  }
+}
 ```
 
-#### 取消回调差异
+新接口dialog支持componentContent与系统材质属性一起使用，支持弹出后动态修改弹窗位置。
 
-老接口使用 `cancel: () => void` 直接回调。新接口使用 `onWillDismiss: Callback<DialogDismissal>`，回调参数 `DialogDismissal` 包含 `dismiss: VoidCallback`（调用以确认关闭）和 `reason: DismissReason`（关闭原因）。新接口注册 `onWillDismiss` 后，弹窗不会立即关闭，需在回调中决定是否调用 `dismiss()`。
+```
+import {
+  ComponentContent,
+  DialogPresenter,
+  DialogResult,
+  DialogBaseAlignment,
+  LevelMode,
+  ImmersiveMode,
+  uiMaterial
+} from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-**等价实现样例：**
+// 定义参数类，用于向自定义弹出框内容传递数据
+class Params {
+  text: string = '';
 
-```typescript
-// 老接口
-this.getUIContext().showAlertDialog({
-  message: '确认删除？',
-  cancel: () => { console.info('用户取消') }
-})
-
-// 新接口
-this.getUIContext().getDialogPresenter().present({
-  message: { content: '确认删除？' },
-  onWillDismiss: (dismissal: dialog.DialogDismissal) => {
-    if (dismissal.reason === DismissReason.PRESS_BACK) {
-      console.info('用户取消')
-    }
-    dismissal.dismiss() // 确认关闭
+  constructor(text: string) {
+    this.text = text;
   }
-})
+}
+
+// 自定义弹出框内容的构建器函数
+@Builder
+function buildText(params: Params) {
+  Column({ space: 20 }) {
+    Text(params.text)
+      .fontSize(30)
+      .fontWeight(FontWeight.Bold)
+      .margin({ bottom: 36 })
+    // 更新弹出框样式按钮，动态修改蒙层颜色、对齐方式和偏移量
+    Button('Update dialog')
+      .onClick(() => {
+        dialogPresenter?.update(contentNode, {
+          offset: { dx: 0, dy: 30 }
+        })
+          .then(() => {
+            console.info('update success');
+          })
+          .catch((error: BusinessError) => {
+            console.error(`update error code is ${error.code}, message is ${error.message}`);
+          })
+      })
+    // 关闭弹出框按钮，通过ComponentContent引用关闭弹出框
+    Button('Dismiss dialog')
+      .onClick(() => {
+        dialogPresenter?.dismiss(contentNode)
+          .then(() => {
+            console.info('dismiss success');
+          })
+          .catch((error: BusinessError) => {
+            console.error(`dismiss error code is ${error.code}, message is ${error.message}`);
+          })
+      })
+  }
+}
+
+// 全局变量，保存DialogPresenter实例
+let dialogPresenter: DialogPresenter | null = null;
+// 全局变量，保存自定义弹出框的ComponentContent实例
+let contentNode: ComponentContent<Object> | null = null;
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'custom dialog';
+
+  aboutToAppear(): void {
+    // 获取DialogPresenter实例
+    dialogPresenter = this.getUIContext().getDialogPresenter();
+    // 创建ComponentContent，绑定自定义构建器函数和参数
+    contentNode = new ComponentContent(this.getUIContext(), wrapBuilder(buildText), new Params(this.message));
+  }
+
+  build() {
+    Column({ space: 10 }) {
+      Button('Present custom dialog')
+        .id("PresentDialog")
+        .onClick(() => {
+          // 弹出自定义样式弹出框，传入ComponentContent和配置选项
+          dialogPresenter?.present(contentNode, {
+            systemMaterial: new uiMaterial.ImmersiveMaterial({ style: uiMaterial.ImmersiveStyle.REGULAR })
+          })
+          // 弹出成功，获取弹出框ID
+            .then((result: DialogResult) => {
+              console.info('present success, dialogId: ' + result.dialogId);
+            })
+            .catch((error: BusinessError) => {
+              console.error(`present error code is ${error.code}, message is ${error.message}`);
+            })
+        })
+    }.width('100%').height('100%').justifyContent(FlexAlign.Center)
+  }
+}
 ```
 
 ## 适配指导
