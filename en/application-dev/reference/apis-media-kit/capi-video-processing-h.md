@@ -1,8 +1,8 @@
 # video_processing.h
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @liziliang-->
+<!--Designer: @dev_ZUT-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -28,7 +28,7 @@ It provides video processing capabilities, including color space conversion, met
 
 | Name| Description|
 | -- | -- |
-| [VideoProcessing_ErrorCode OH_VideoProcessing_InitializeEnvironment(void)](#oh_videoprocessing_initializeenvironment) | Initializes the global video processing environment.<br>This function is optional.<br>It is called only once when the main process is started to initialize the global video processing environment. This reduces the duration for running [OH_VideoProcessing_Create](#oh_videoprocessing_create).|
+| [VideoProcessing_ErrorCode OH_VideoProcessing_InitializeEnvironment(void)](#oh_videoprocessing_initializeenvironment) | Initializes the global video processing environment.<br> This function is optional.<br> It is called only once when the main process is started. This reduces the duration for running [OH_VideoProcessing_Create](#oh_videoprocessing_create).|
 | [VideoProcessing_ErrorCode OH_VideoProcessing_DeinitializeEnvironment(void)](#oh_videoprocessing_deinitializeenvironment) | Releases the global video processing environment.<br>Before calling this API, you must call [OH_VideoProcessing_InitializeEnvironment](#oh_videoprocessing_initializeenvironment) to initialize the environment.<br>Generally, this function is called when the main process is about to exit.<br>Do not call this function when a video processing instance is running.|
 | [bool OH_VideoProcessing_IsColorSpaceConversionSupported(const VideoProcessing_ColorSpaceInfo* sourceVideoInfo, const VideoProcessing_ColorSpaceInfo* destinationVideoInfo)](#oh_videoprocessing_iscolorspaceconversionsupported) | Checks whether color space conversion is supported during video processing.|
 | [bool OH_VideoProcessing_IsMetadataGenerationSupported(const VideoProcessing_ColorSpaceInfo* sourceVideoInfo)](#oh_videoprocessing_ismetadatagenerationsupported) | Checks whether metadata generation is supported during video processing.|
@@ -44,9 +44,9 @@ It provides video processing capabilities, including color space conversion, met
 | [VideoProcessing_ErrorCode OH_VideoProcessing_RenderOutputBuffer(OH_VideoProcessing* videoProcessor, uint32_t index)](#oh_videoprocessing_renderoutputbuffer) | Renders and processes the buffer, and then outputs it.<br>If the callback function [OH_VideoProcessingCallback_OnNewOutputBuffer](capi-video-processing-types-h.md#oh_videoprocessingcallback_onnewoutputbuffer) is set, the buffer index is returned through the callback function after the output buffer is ready.|
 | [VideoProcessing_ErrorCode OH_VideoProcessingCallback_Create(VideoProcessing_Callback** callback)](#oh_videoprocessingcallback_create) | Creates a video processing callback object.|
 | [VideoProcessing_ErrorCode OH_VideoProcessingCallback_Destroy(VideoProcessing_Callback* callback)](#oh_videoprocessingcallback_destroy) | Destroys a video processing callback object. The video processing callback object can be destroyed after the callback function is registered.|
-| [VideoProcessing_ErrorCode OH_VideoProcessingCallback_BindOnError(VideoProcessing_Callback* callback,OH_VideoProcessingCallback_OnError onError)](#oh_videoprocessingcallback_bindonerror) | Binds the callback function [OH_VideoProcessingCallback_OnError](capi-video-processing-types-h.md#oh_videoprocessingcallback_onerror) to a video processing callback object.|
-| [VideoProcessing_ErrorCode OH_VideoProcessingCallback_BindOnState(VideoProcessing_Callback* callback,OH_VideoProcessingCallback_OnState onState)](#oh_videoprocessingcallback_bindonstate) | Binds the callback function [OH_VideoProcessingCallback_OnState](capi-video-processing-types-h.md#oh_videoprocessingcallback_onstate) to a video processing callback object.|
-| [VideoProcessing_ErrorCode OH_VideoProcessingCallback_BindOnNewOutputBuffer(VideoProcessing_Callback* callback,OH_VideoProcessingCallback_OnNewOutputBuffer onNewOutputBuffer)](#oh_videoprocessingcallback_bindonnewoutputbuffer) | Binds the callback function [OH_VideoProcessingCallback_OnNewOutputBuffer](capi-video-processing-types-h.md#oh_videoprocessingcallback_onnewoutputbuffer) to a video processing callback object.|
+| [VideoProcessing_ErrorCode OH_VideoProcessingCallback_BindOnError(VideoProcessing_Callback* callback,OH_VideoProcessingCallback_OnError onError)](#oh_videoprocessingcallback_bindonerror) | Binds the callback function [OH_VideoProcessingCallback_OnError](capi-video-processing-types-h.md#oh_videoprocessingcallback_onerror) to a video processing callback object. After the binding is complete, call [OH_VideoProcessing_RegisterCallback](capi-video-processing-h.md#oh_videoprocessing_registercallback) to register the callback object with the video processing instance for the callback to take effect.|
+| [VideoProcessing_ErrorCode OH_VideoProcessingCallback_BindOnState(VideoProcessing_Callback* callback,OH_VideoProcessingCallback_OnState onState)](#oh_videoprocessingcallback_bindonstate) | Binds the callback function [OH_VideoProcessingCallback_OnState](capi-video-processing-types-h.md#oh_videoprocessingcallback_onstate) to a video processing callback object. After the binding is complete, call [OH_VideoProcessing_RegisterCallback](capi-video-processing-h.md#oh_videoprocessing_registercallback) to register the callback object with the video processing instance for the callback to take effect.|
+| [VideoProcessing_ErrorCode OH_VideoProcessingCallback_BindOnNewOutputBuffer(VideoProcessing_Callback* callback,OH_VideoProcessingCallback_OnNewOutputBuffer onNewOutputBuffer)](#oh_videoprocessingcallback_bindonnewoutputbuffer) | Binds the callback function [OH_VideoProcessingCallback_OnNewOutputBuffer](capi-video-processing-types-h.md#oh_videoprocessingcallback_onnewoutputbuffer) to a video processing callback object. After the binding is complete, call [OH_VideoProcessing_RegisterCallback](capi-video-processing-h.md#oh_videoprocessing_registercallback) to register the callback object with the video processing instance for the callback to take effect.|
 
 ## Function Description
 
@@ -169,7 +169,7 @@ Creates a video processing instance.
 | Parameter| Description|
 | -- | -- |
 | [OH_VideoProcessing](capi-videoprocessing-oh-videoprocessing.md)** videoProcessor |  Double pointer to the video processing instance created. Before any input, **\*videoProcessor** must be nullptr.|
-| int type | Video processing type. The processing type of an instance cannot be changed.|
+| int type | Video processing type specified by the video processing instance constant. The processing type of an instance cannot be changed.|
 
 **Returns**
 
@@ -225,7 +225,7 @@ The callback function should be registered before video processing starts. Durin
 | -- | -- |
 | [OH_VideoProcessing](capi-videoprocessing-oh-videoprocessing.md)* videoProcessor | Pointer to the video processing instance.|
 | const [VideoProcessing_Callback](capi-videoprocessing-videoprocessing-callback.md)* callback | Pointer to the callback function.|
-| void* userData | Pointer to user-defined data.|
+| void* userData | Pointer to user-defined data, such as **this** pointer.|
 
 **Returns**
 
@@ -287,7 +287,7 @@ An input surface must be created before video processing starts, and it must be 
 
 | Type| Description|
 | -- | -- |
-| [VideoProcessing_ErrorCode](capi-video-processing-types-h.md#videoprocessing_errorcode) | **VIDEO_PROCESSING_SUCCESS**: The processing is successful.<br> **VIDEO_PROCESSING_ERROR_INVALID_INSTANCE**: The instance is null or is not a video processing instance.<br> **VIDEO_PROCESSING_ERROR_INVALID_PARAMETER**: The window is nullptr or the pointer to the window is not null.<br> **VIDEO_PROCESSING_ERROR_OPERATION_NOT_PERMITTED**: The surface fails to be created, an input surface has been created, or the video processing instance is running.|
+| [VideoProcessing_ErrorCode](capi-video-processing-types-h.md#videoprocessing_errorcode) | **VIDEO_PROCESSING_SUCCESS**: The processing is successful.<br> **VIDEO_PROCESSING_ERROR_INVALID_INSTANCE**: The instance is null or is not a video processing instance.<br> **VIDEO_PROCESSING_ERROR_INVALID_PARAMETER**: The window is nullptr or the pointer to the window is null.<br> **VIDEO_PROCESSING_ERROR_OPERATION_NOT_PERMITTED**: The surface fails to be created, an input surface has been created, or the video processing instance is running.|
 
 ### OH_VideoProcessing_SetParameter()
 
@@ -307,7 +307,7 @@ Sets video processing parameters.
 | Parameter| Description|
 | -- | -- |
 | [OH_VideoProcessing](capi-videoprocessing-oh-videoprocessing.md)* videoProcessor | Pointer to the video processing instance.|
-| const [OH_AVFormat](capi-videoprocessing-oh-avformat.md)* parameter | Pointer to the video processing parameter instance.|
+| const [OH_AVFormat](capi-videoprocessing-oh-avformat.md)* parameter | Pointer to the video processing parameter instance, which is used to pass the video processing parameters to be set, such as the video width, height, pixel format, and codec format.|
 
 **Returns**
 
@@ -333,7 +333,7 @@ Obtains video processing parameters.
 | Parameter| Description|
 | -- | -- |
 | [OH_VideoProcessing](capi-videoprocessing-oh-videoprocessing.md)* videoProcessor | Pointer to the video processing instance.|
-| [OH_AVFormat](capi-videoprocessing-oh-avformat.md)* parameter | Pointer to the video processing parameter instance.|
+| [OH_AVFormat](capi-videoprocessing-oh-avformat.md)* parameter | Pointer to the video processing parameter instance, which is used to obtain the current video processing parameters, such as the video width, height, pixel format, and codec format.|
 
 **Returns**
 
@@ -446,7 +446,7 @@ Creates a video processing callback object.
 
 | Type| Description|
 | -- | -- |
-| [VideoProcessing_ErrorCode](capi-video-processing-types-h.md#videoprocessing_errorcode) | **VIDEO_PROCESSING_SUCCESS**: The callback object is created.<br> **VIDEO_PROCESSING_ERROR_INVALID_PARAMETER**: **callback** is null or **callback** is not null.<br> **VIDEO_PROCESSING_ERROR_NO_MEMORY**: The memory is insufficient.|
+| [VideoProcessing_ErrorCode](capi-video-processing-types-h.md#videoprocessing_errorcode) | **VIDEO_PROCESSING_SUCCESS**: The callback object is created.<br> **VIDEO_PROCESSING_ERROR_INVALID_PARAMETER**: **callback** is null.<br> **VIDEO_PROCESSING_ERROR_NO_MEMORY**: The memory is insufficient.|
 
 ### OH_VideoProcessingCallback_Destroy()
 
@@ -481,7 +481,7 @@ VideoProcessing_ErrorCode OH_VideoProcessingCallback_BindOnError(VideoProcessing
 
 **Description**
 
-Binds the callback function [OH_VideoProcessingCallback_OnError](capi-video-processing-types-h.md#oh_videoprocessingcallback_onerror) to a video processing callback object.
+Binds the callback function [OH_VideoProcessingCallback_OnError](capi-video-processing-types-h.md#oh_videoprocessingcallback_onerror) to a video processing callback object. After the binding is complete, call [OH_VideoProcessing_RegisterCallback](capi-video-processing-h.md#oh_videoprocessing_registercallback) to register the callback object with the video processing instance for the callback to take effect.
 
 **Since**: 12
 
@@ -507,7 +507,7 @@ VideoProcessing_ErrorCode OH_VideoProcessingCallback_BindOnState(VideoProcessing
 
 **Description**
 
-Binds the callback function [OH_VideoProcessingCallback_OnState](capi-video-processing-types-h.md#oh_videoprocessingcallback_onstate) to a video processing callback object.
+Binds the callback function [OH_VideoProcessingCallback_OnState](capi-video-processing-types-h.md#oh_videoprocessingcallback_onstate) to a video processing callback object. After the binding is complete, call [OH_VideoProcessing_RegisterCallback](capi-video-processing-h.md#oh_videoprocessing_registercallback) to register the callback object with the video processing instance for the callback to take effect.
 
 **Since**: 12
 
@@ -533,7 +533,7 @@ VideoProcessing_ErrorCode OH_VideoProcessingCallback_BindOnNewOutputBuffer(Video
 
 **Description**
 
-Binds the callback function [OH_VideoProcessingCallback_OnNewOutputBuffer](capi-video-processing-types-h.md#oh_videoprocessingcallback_onnewoutputbuffer) to a video processing callback object.
+Binds the callback function [OH_VideoProcessingCallback_OnNewOutputBuffer](capi-video-processing-types-h.md#oh_videoprocessingcallback_onnewoutputbuffer) to a video processing callback object. After the binding is complete, call [OH_VideoProcessing_RegisterCallback](capi-video-processing-h.md#oh_videoprocessing_registercallback) to register the callback object with the video processing instance for the callback to take effect.
 
 **Since**: 12
 

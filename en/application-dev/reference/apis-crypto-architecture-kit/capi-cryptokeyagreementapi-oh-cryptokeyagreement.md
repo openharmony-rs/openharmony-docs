@@ -13,7 +13,7 @@ typedef struct OH_CryptoKeyAgreement OH_CryptoKeyAgreement
 
 ## Overview
 
-Defines a struct for key agreement.
+Defines a struct for key agreement, which indicates the key agreement context.
 
 **Since**: 20
 

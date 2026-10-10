@@ -13,7 +13,7 @@ typedef struct OH_CryptoSymCipherParams OH_CryptoSymCipherParams
 
 ## Overview
 
-Defines symmetric encryption and decryption parameters.
+Defines a symmetric cipher parameter struct, indicating the symmetric cipher parameters.
 
 **Since**: 12
 

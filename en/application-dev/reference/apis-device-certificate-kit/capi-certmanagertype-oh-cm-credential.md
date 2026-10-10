@@ -27,7 +27,7 @@ Defines a struct for the certificate credential details.
 
 | Name| Description|
 | -- | -- |
-| uint32_t isExist | Whether a certificate data exists.|
+| uint32_t isExist | Whether a certificate data exists. **0**: no; **1**: yes.|
 | char type[OH_CM_MAX_LEN_TYPE_NAME] | Type of a credential. The value contains up to 8 bytes, including the terminator **'\0'**.|
 | char alias[OH_CM_MAX_LEN_CERT_ALIAS] | Alias of a credential. The value contains up to 128 bytes, including the terminator **'\0'**.|
 | char keyUri[OH_CM_MAX_LEN_URI] | URI of a credential. The value contains up to 256 bytes, including the terminator **'\0'**.|
