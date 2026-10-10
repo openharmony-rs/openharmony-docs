@@ -6,7 +6,12 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=64044667f2ece520228c37a4e282d90b2e014ba4 translatedAt=2026-09-03T11:13:07.879Z pushedAt=2026-09-03T11:28:25.099Z -->
+<!-- md-trans-meta sourceCommit=777c15c9d8c75a1677c1c6408af774652fa3dc6e translatedAt=2026-10-09T01:58:37.456Z pushedAt=2026-10-10T02:42:07.529Z -->
+
+## Adding the Dynamic Library in the CMake Script
+```txt
+target_link_libraries(entry PUBLIC libohcrypto.so)
+```
 
 For the corresponding algorithm specifications, see [Asymmetric Key Encryption and Decryption Algorithm Specifications: RSA](crypto-encryption-decryption.md#rsa).
 

@@ -6,8 +6,14 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=777c15c9d8c75a1677c1c6408af774652fa3dc6e translatedAt=2026-10-09T01:36:45.380Z pushedAt=2026-10-10T01:49:06.799Z -->
 
 A block cipher (such as AES) and a key are used to generate an authentication code, which verifies that a message has not been alerted during transmission.
+
+## Adding the Dynamic Library in the CMake Script
+```txt
+target_link_libraries(entry PUBLIC libohcrypto.so)
+```
 
 ## How to Develop
 
@@ -303,3 +309,4 @@ cleanup:
     return ret;
 }
 ```
+

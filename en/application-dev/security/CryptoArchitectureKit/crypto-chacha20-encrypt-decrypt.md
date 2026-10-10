@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=64044667f2ece520228c37a4e282d90b2e014ba4 translatedAt=2026-09-09T07:16:41.944Z pushedAt=2026-09-09T07:25:43.725Z -->
+<!-- md-trans-meta sourceCommit=1b9dc846389405d57ea9496c8b5a7a7ff4d36877 translatedAt=2026-10-09T01:36:40.411Z pushedAt=2026-10-10T01:48:15.237Z -->
 
 Starting from API version 22, the algorithm library supports this algorithm.
 
@@ -16,7 +16,7 @@ Starting from API version 22, the algorithm library supports this algorithm.
 
 **Creating an Object**
 
-Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) and [SymKeyGenerator.generateSymKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatesymkey-1) to generate a symmetric key (**SymKey**) using ChaCha20.
+Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) and [SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-1) to generate a symmetric key (**SymKey**) using ChaCha20.
 
    For details about how to generate a ChaCha20 symmetric key, refer to the example below, together with <!--Del-->[ChaCha20](crypto-key-generation-conversion.md#chacha20) and <!--DelEnd-->[Randomly Generating a Symmetric Key](crypto-generate-sym-key-randomly.md). Note that the reference documents and the example may differ in input parameters. Pay attention to the differences.
 
@@ -192,7 +192,7 @@ Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-archite
 
 **Creating an Object**
 
-Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) and [SymKeyGenerator.generateSymKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatesymkey-1) to generate a symmetric key (**SymKey**) using ChaCha20.
+Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) and [SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-1) to generate a symmetric key (**SymKey**) using ChaCha20.
 
    For details about how to generate a ChaCha20 symmetric key, refer to the example below, together with <!--Del-->[ChaCha20](crypto-key-generation-conversion.md#chacha20) and <!--DelEnd-->[Randomly Generating a Symmetric Key](crypto-generate-sym-key-randomly.md). Note that the reference documents and the example may differ in input parameters. Pay attention to the differences.
 

@@ -1,4 +1,4 @@
-# Introduction to Encryption and Decryption
+# Encryption and Decryption
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->
@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=9fdfc79fd811dbd3830944fd4ada4372911e5c41 translatedAt=2026-09-03T08:55:48.846Z pushedAt=2026-09-03T10:00:16.956Z -->
+<!-- md-trans-meta sourceCommit=93fabc8c17767c2f12d40761db89b34b086858e3 translatedAt=2026-10-09T01:45:07.733Z pushedAt=2026-10-10T02:17:16.876Z -->
 
 In data storage or transmission scenarios, encryption and decryption operations can be used to ensure data confidentiality and prevent sensitive data leakage.
 
@@ -485,7 +485,7 @@ Asymmetric encryption and decryption does not support the update operation. You 
 
 Segmented encryption with an asymmetric key means that when the plaintext is larger than the data length supported by a single encryption operation (for the specific length, see [Asymmetric Key Encryption and Decryption Algorithm Specifications](crypto-encryption-decryption.md)), you need to split the data to be encrypted into data segments of appropriate length and perform the encryption operation on each data segment. That is, create a Cipher, and then call the [Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1) and [Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1) APIs.
 
-Strictly speaking, this is split encryption and decryption of data. In this case, the length of the data passed in a single operation is related to the length specified by the key specification.
+Strictly speaking, this is segmented encryption and decryption of data. In this case, the length of the data passed in a single operation is related to the length specified by the key specification.
 
 - RSA: Different padding modes have different rules for the input data. Determine the length of the data passed in a single operation based on the [RSA Algorithm Specifications](crypto-encryption-decryption.md#rsa).
 
