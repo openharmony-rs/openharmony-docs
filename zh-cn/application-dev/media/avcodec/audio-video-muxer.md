@@ -78,7 +78,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 
 3. （可选）调用OH_AVMuxer_SetRotation()设置旋转角度。
 
-   视频画面需要旋转的时候设置，示例中对mp4格式设置旋转角度，flv格式不支持旋转元数据：
+   视频画面需要旋转的时候设置，示例中对mp4格式设置旋转角度，flv格式不支持旋转元数据。
 
    <!-- @[Muxer::SetRotation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capabilities/muxer.cpp) -->
 
@@ -87,11 +87,11 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    {
        CHECK_AND_RETURN_RET_LOG(muxer_ != nullptr, AVCODEC_SAMPLE_ERR_ERROR, "Muxer is null");
 
-       // FLV不支持旋转元数据。
+       // flv不支持旋转元数据。
        if (outputFormat_ == AV_OUTPUT_FORMAT_FLV) {
            return AVCODEC_SAMPLE_ERR_OK;
        }
-       // 由于相机只有1920×1080的profile，没有1080×1920的profile，所以得往文件里封装一个90度的角度信息，后续播放才会是竖屏显示。
+       // 由于相机的profile只有1920×1080，没有1080×1920，所以得往文件中封装一个90度的角度信息，后续播放才会是竖屏显示。
        int32_t ret = OH_AVMuxer_SetRotation(muxer_, VERTICAL_ANGLE);
        if (ret != AV_ERR_OK) {
            AVCODEC_SAMPLE_LOGW("Set rotation failed, ret: %{public}d", ret);
@@ -339,7 +339,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    }
    ```
 
-   调用start写封装文件头。start后，不能设置媒体参数、不能添加音视频轨。
+   调用start写封装文件头后，不能设置媒体参数、不能添加音视频轨。
 
 10. 调用OH_AVMuxer_WriteSampleBuffer()，写入封装数据。
 
@@ -409,7 +409,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
     }
     ```
 
-    调用stop，写封装文件尾。stop后不能写入媒体数据。
+    调用stop写封装文件尾后，不能写入媒体数据。
 
 12. 调用OH_AVMuxer_Destroy()销毁实例，释放资源。
 
@@ -528,11 +528,11 @@ flv格式封装需要配置的key请参考AVCodec支持的格式中的[媒体数
 
    调用OH_AVMuxer_Start()的实现与[mp4格式封装开发步骤](#mp4格式封装开发步骤)中步骤9一致。
 
-   调用start写封装文件头。start后，不能设置媒体参数、不能添加音视频轨。
+   调用start写封装文件头后，不能设置媒体参数、不能添加音视频轨。
 
 8. 调用OH_AVMuxer_WriteSampleBuffer()，写入封装数据。
 
-   封装数据包括视频、音频数据。写入前通过OH_AVBuffer_SetBufferAttr()设置当前数据的属性，其中attr.pts为当前数据的开始播放的时间，单位微秒，相对时间，首帧为0，后续按“采样点数*1000000/采样率”递增。
+   封装数据包括视频、音频数据。写入前通过OH_AVBuffer_SetBufferAttr()设置当前数据的属性，其中attr.pts为当前数据的开始播放的时间，单位微秒（us），相对时间，首帧为0，后续按“采样点数*1000000/采样率”递增。
 
    调用OH_AVMuxer_WriteSampleBuffer()写入封装数据的实现与[mp4格式封装开发步骤](#mp4格式封装开发步骤)中步骤10一致，写入时通过GetAudioTrackId()/GetVideoTrackId()选择写的音视频轨。
 
@@ -540,7 +540,7 @@ flv格式封装需要配置的key请参考AVCodec支持的格式中的[媒体数
 
    调用OH_AVMuxer_Stop()的实现与[mp4格式封装开发步骤](#mp4格式封装开发步骤)中步骤11一致。
 
-   调用stop，写封装文件尾。stop后不能写入媒体数据。
+   调用stop写封装文件尾后，不能写入媒体数据。
 
 10. 调用OH_AVMuxer_Destroy()销毁实例，释放资源。
 
