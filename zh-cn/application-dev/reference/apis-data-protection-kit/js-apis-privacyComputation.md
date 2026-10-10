@@ -147,7 +147,7 @@ import { privacyComputation } from '@kit.DataProtectionKit';
 
 ## privacyComputation.genPrivacyTarget
 
-genPrivacyTarget(targetElement: [TargetElement](#targetelement), privacyProtocol: [PrivacyProtocol](#privacyprotocol)): Promise&lt;Uint8Array&gt;
+genPrivacyTarget(targetElement: TargetElement, privacyProtocol: PrivacyProtocol): Promise&lt;Uint8Array&gt;
 
 为给定元素生成隐私目标。隐私目标是搜索元素的加密表示，可用于隐私保护搜索而不泄露原始数据。使用Promise异步回调。
 
