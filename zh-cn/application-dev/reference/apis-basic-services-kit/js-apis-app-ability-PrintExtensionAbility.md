@@ -181,7 +181,7 @@ ArkTS-Sta: onDisconnectPrinter(printerId: int): void
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| printerId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 表示打印机ID，应为已连接的打印机，取值于打印机发现流程上报的有效打印机标识。 |
+| printerId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 表示打印机ID，取值于打印机发现流程上报的有效打印机标识。 |
 
 **示例：**
 
@@ -321,7 +321,7 @@ ArkTS-Sta: onRequestPrinterCapability(printerId: int): print.PrinterCapability
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| printerId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 表示打印机ID，应为已连接的打印机，取值于打印机发现流程上报的有效打印机标识。 |
+| printerId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 表示打印机ID，取值于打印机发现流程上报的有效打印机标识。 |
 
 **返回值：**
 | **类型** | **说明** |

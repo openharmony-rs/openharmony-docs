@@ -171,7 +171,7 @@ import { scan } from '@kit.BasicServicesKit';
 | optionType | [OptionValueType](#optionvaluetype) | 否 | 否 | 选项值类型。 |
 | optionUnit | [PhysicalUnit](#physicalunit) | 否 | 否 | 选项物理单位。 |
 | optionConstraintType | [ConstraintType](#constrainttype) | 否 | 否 | 选项约束类型，决定有效的约束字段。当类型为SCAN_CONSTRAINT_NONE时无约束。 |
-| optionConstraintString | string[] | 否 | 是 | 选项字符串约束，仅在optionConstraintType为SCAN_CONSTRAINT_STRING_LIST时有效。 |
+| optionConstraintString | string[] | 否 | 是 | 选项字符串约束，仅在optionConstraintType为SCAN_CONSTRAINT_STRING_LIST时有效。默认为空数组。 |
 | optionConstraintInt | ArkTS-Dyn: number[]<br>ArkTS-Sta: int[] | 否 | 是 | 选项整数约束，仅在optionConstraintType为SCAN_CONSTRAINT_WORD_LIST时有效。 |
 | optionConstraintRange | [Range](#range) | 否 | 是 | 选项范围约束，仅在optionConstraintType为SCAN_CONSTRAINT_RANGE时有效。 |
 
@@ -526,7 +526,7 @@ ArkTS-Dyn: setScannerParameter(scannerId: string, optionIndex: number, value: Sc
 
 ArkTS-Sta: setScannerParameter(scannerId: string, optionIndex: int, value: ScannerOptionValue): Promise&lt;void&gt;
 
-设置扫描仪参数。使用Promise异步回调。
+设置扫描仪参数。使用Promise异步回调。必须在调用openScanner()打开扫描仪之后才能调用此方法。
 
 **需要权限：** ohos.permission.PRINT
 
@@ -635,7 +635,7 @@ ArkTS-Dyn: getScannerCurrentSetting(scannerId: string, optionIndex: number): Pro
 
 ArkTS-Sta: getScannerCurrentSetting(scannerId: string, optionIndex: int): Promise&lt;ScannerOptionValue&gt;
 
-获取扫描仪当前设置。使用Promise异步回调。必须在调用openScanner()打开扫描仪之后才能调用此方法。
+获取当前扫描仪设置。使用Promise异步回调。必须在调用openScanner()打开扫描仪之后才能调用此方法。
 
 **需要权限：** ohos.permission.PRINT
 

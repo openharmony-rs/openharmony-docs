@@ -9,7 +9,7 @@
 
 PrintExtensionContext是PrintExtensionAbility的上下文环境，继承自[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。
 
-PrintExtensionContext可直接作为PrintExtensionAbility的上下文环境，在打印扩展能力中进行获取和管理打印资源、生成打印任务等相关操作。PrintExtensionContext的能力逻辑可参考资源管理，参见[PrintExtensionAbility](js-apis-app-ability-PrintExtensionAbility.md)、[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。
+PrintExtensionContext可直接作为PrintExtensionAbility的上下文环境，用于在打印扩展开发场景中获取和管理打印相关资源，以完成打印任务相关操作。关于PrintExtensionContext的设计逻辑与可访问资源，请参见[PrintExtensionAbility](js-apis-app-ability-PrintExtensionAbility.md)与[ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md)。
 
 > **说明：**
 >

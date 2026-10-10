@@ -33,9 +33,9 @@ typedef struct {...} Print_PrintAttributes
 | uint32_t [duplexMode](#duplexmode) | 双面模式。有效取值参见[Print_DuplexMode](capi-ohprint-h.md#print_duplexmode)枚举定义。 | 
 | uint32_t [colorMode](#colormode) | 色彩模式。有效取值参见[Print_ColorMode](capi-ohprint-h.md#print_colormode)枚举定义。 | 
 | bool [isSequential](#issequential) | 顺序打印。<br>true表示顺序打印，false表示逆序打印。 | 
-| bool [isLandscape](#islandscape) | 打印方向（是否横向）。<br>true表示打印方式为横向，false表示打印方向为竖向。 | 
+| bool [isLandscape](#islandscape) | 打印方向（是否横向）。<br>true表示打印方向为横向，false表示打印方向为纵向。 | 
 | bool [hasOption](#hasoption) | 打印选项标志。<br>true表示有打印选项（options字段有效），false表示没有打印选项（options字段无效）。 | 
-| char [options](#options) [256] | 打印选项，用于传递定制的打印参数。仅当hasOption为true时有效。最大长度255个字符。 | 
+| char [options](#options) [256] | 打印选项，用于传递额外的打印配置参数。仅在hasOption为true时生效。最大长度255个字符。 | 
 
 
 ## 结构体成员变量说明

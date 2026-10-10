@@ -8,7 +8,7 @@
 
 ## 概述
 
-提供打印模块的C接口，模块功能及调用逻辑详见API参考说明，参见[ohprint.h](capi-ohprint-h.md)。
+提供打印模块的C接口，模块整体设计逻辑及各API的详细说明请参见[ohprint.h](capi-ohprint-h.md)。
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
