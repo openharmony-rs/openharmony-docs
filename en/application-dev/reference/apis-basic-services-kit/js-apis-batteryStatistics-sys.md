@@ -6,6 +6,7 @@
 <!--Designer: @wangyantian0-->
 <!--Tester: @alien0208-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=e2475039bb66e4fde1ddccbdb393211d6375897b translatedAt=2026-10-09T12:11:04.575Z pushedAt=2026-10-10T06:00:18.107Z -->
 
 The **batteryStatistics** module provides APIs for querying software and hardware power consumption statistics.
 
@@ -159,7 +160,7 @@ Obtains the proportion of the power consumption of an application.
 
 | Type  | Description                     |
 | ------ | ------------------------- |
-| number | Proportion of the power consumption for an application with this UID. The value ranges from 0.00 to 1.00.|
+| number | Proportion of the power consumption for an application with this UID. The value range is [0.00, 1.00]. |
 
 **Error codes**
 
@@ -245,7 +246,7 @@ Obtains the proportion of the power consumption of a hardware unit according to 
 
 | Type  | Description                              |
 | ------ | ---------------------------------- |
-| number | Proportion of the power consumption for the hardware unit corresponding to the power consumption type. The value ranges from 0.00 to 1.00.|
+| number | Proportion of the power consumption for the hardware unit corresponding to the power consumption type. The value range is [0.00, 1.00]. |
 
 **Error codes**
 

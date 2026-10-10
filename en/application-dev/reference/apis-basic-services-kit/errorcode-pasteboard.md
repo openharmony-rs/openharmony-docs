@@ -2,9 +2,10 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @yangxiaodong41-->
-<!--Designer: @guo867-->
+<!--Designer: @zhusiyuan2-->
 <!--Tester: @maxiaorong-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=36c9032d2786280542e988f656807dc4c8ad97f6 translatedAt=2026-10-09T12:00:26.588Z pushedAt=2026-10-10T05:51:04.131Z -->
 
 ## Overview
 

@@ -5,6 +5,7 @@
 <!--Designer: @hu-kai45-->
 <!--Tester: @liuhaonan2-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=b22c269a73334d4f1d73741019c0e34b725ae3b6 translatedAt=2026-10-09T12:10:19.142Z pushedAt=2026-10-10T02:11:15.476Z -->
 
 The **system.request** module provides applications with basic upload and download capabilities.
 
@@ -170,7 +171,7 @@ Downloads a file. This API returns no value.
   try {
     Request.download(downloadRequestOptions);
     console.info('Start download');
-  } catch(err) {
+  } catch (err) {
     console.error('Failed to download, err:' + err);
   }
   ```

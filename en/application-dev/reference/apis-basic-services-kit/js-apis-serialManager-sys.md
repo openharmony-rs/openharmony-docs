@@ -6,7 +6,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=7d78cf8ce5ef00398ca468a04e8c8fa29c1ec233 translatedAt=2026-08-04T10:29:36.893Z pushedAt=2026-08-05T12:15:47.683Z -->
+<!-- md-trans-meta sourceCommit=feaaacdac079d264228b6dc8fe98b7de6cf247a2 translatedAt=2026-10-09T13:17:14.106Z pushedAt=2026-10-10T06:33:54.149Z -->
 
 The serial port management module uses a system-level permission control mechanism. The system manages and verifies the access permissions of serial port devices in a centralized manner. Apps can read data from and write data to serial port devices only after obtaining the access permissions through system APIs. This ensures secure access control and device isolation.
 
@@ -26,12 +26,10 @@ import { serialManager } from '@kit.BasicServicesKit';
 
 addSerialRight(tokenId: number, portId: number): void
 
-Adds the permission to an application for accessing the serial port device. Before using this method, you need to call [getPortList](js-apis-serialManager.md#serialmanagergetportlist) to obtain the serial port list and obtain a valid port ID from the list. If the call is successful, the app obtains the permission to access the specified serial port device and can perform operations such as opening, reading data, and writing data. If the call fails, an error code is returned, and the app cannot access the serial port device.
+Adds the permission to an app for accessing the serial port device. Before using this method, you need to call [getPortList](js-apis-serialManager.md#serialmanagergetportlist) to obtain the serial port list and obtain a valid port ID from the list. If the call is successful, the app obtains the permission to access the specified serial port device and can perform operations such as opening, reading data, and writing data. If the call fails, an error code is returned, and the app cannot access the serial port device.
 
 **Use scenarios**
-
-- This method is used by system apps when silent authorization is required while user confirmation is not needed. Silent authorization enables system apps to directly obtain the permission to access serial port devices through system APIs without requiring user interaction. This is applicable to scenarios such as communication between internal components of the system and automatic connection between the background server and the serial port device.
-
+- This method is used by system apps when silent authorization is required while user confirmation is not needed. Silent authorization enables system apps to directly obtain the permission to access serial port devices through system APIs without requiring user interaction. This is applicable to scenarios such as communication between internal components of the system and automatic connection between the background server and the serial port device. The system checks whether silent authorization is allowed based on **ohos.permission.MANAGE_USB_CONFIG** and grants the permission without requiring user confirmation.
 - Unlike requestSerialRight, [serialManager.requestSerialRight](js-apis-serialManager.md#serialmanagerrequestserialright) triggers a dialog box to request user authorization, which is applicable when explicit user authorization is required. addSerialRight does not trigger a dialog box but directly adds the permission for the app to access the device, which is applicable to automatic management of system apps. After the application exits, the system automatically removes the access permission on the serial port device. After the application is restarted, the application needs to request the permission again.
 
 **System API:** This is a system API.
@@ -67,11 +65,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 31400003 | PortId does not exist. |
 
 **Example**
-
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { JSON } from '@kit.ArkTS';
 import { serialManager } from '@kit.BasicServicesKit';
 
 
@@ -85,7 +81,7 @@ function addSerialRight() {
   }
 
   let portId: number = portList[0].portId;
-  let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_DEFAULT;
+  let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION;
 
   bundleManager.getBundleInfoForSelf(bundleFlags).then((bundleInfo) => {
     console.info('getBundleInfoForSelf successfully. Data: %{public}s', JSON.stringify(bundleInfo));

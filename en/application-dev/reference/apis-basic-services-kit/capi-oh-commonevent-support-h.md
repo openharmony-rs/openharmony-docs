@@ -2,9 +2,10 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=4faed534b39ef26ef8f9b647802a53e9f8d2b792 translatedAt=2026-10-09T11:32:01.791Z pushedAt=2026-10-10T03:39:33.842Z -->
 
 ## Overview
 
@@ -26,7 +27,7 @@ Provides common event constants defined by the system.
 
 | Name| Description|
 | -- | -- |
-| static const char * const COMMON_EVENT_SHUTDOWN = "usual.event.SHUTDOWN" | Indicates the common event that the device is being shut down and the final shutdown will proceed.<br>**Since**: 12<br>**System capability**: SystemCapability.Notification.CommonEvent|
+| static const char * const COMMON_EVENT_SHUTDOWN = "usual.event.SHUTDOWN" | Indicates the common event that the device is being shut down and the final shutdown will proceed.<br>**Since**: 12 |
 | static const char * const COMMON_EVENT_BATTERY_CHANGED = "usual.event.BATTERY_CHANGED" | Indicates the common event that the charging state, level, and other information about the battery have changed.<br>**Since**: 12|
 | static const char * const COMMON_EVENT_BATTERY_LOW = "usual.event.BATTERY_LOW" | Indicates the common event that the battery level is low.<br>**Since**: 12|
 | static const char * const COMMON_EVENT_BATTERY_OKAY = "usual.event.BATTERY_OKAY" | Indicates the common event that the battery exits the low state.<br>**Since**: 12|
@@ -45,7 +46,7 @@ Provides common event constants defined by the system.
 | static const char * const COMMON_EVENT_BUNDLE_REMOVED = "usual.event.BUNDLE_REMOVED" | Indicates the common event that an installed bundle has been uninstalled from the device with the application data retained.<br>**Since**: 12|
 | static const char * const COMMON_EVENT_PACKAGE_FULLY_REMOVED = "usual.event.PACKAGE_FULLY_REMOVED" | Indicates the common event that an installed application, including both the application data and code, has been completely uninstalled from the device.<br>**Since**: 12|
 | static const char * const COMMON_EVENT_PACKAGE_CHANGED = "usual.event.PACKAGE_CHANGED" | Indicates the common event that an application package has been changed (for example, a component in the package has been enabled or disabled).<br>**Since**: 12|
-| static const char * const COMMON_EVENT_PACKAGE_RESTARTED = "usual.event.PACKAGE_RESTARTED" | Indicates the common event that the user has restarted the application package and killed all its processes.<br>**Since**: 12|
+| static const char * const COMMON_EVENT_PACKAGE_RESTARTED = "usual.event.PACKAGE_RESTARTED" | Indicates the common event that the user has restarted the application package and killed all its processes.<br>**Since**: 12 |
 | static const char * const COMMON_EVENT_PACKAGE_DATA_CLEARED = "usual.event.PACKAGE_DATA_CLEARED" | Indicates the common event that the user cleared the application package data.<br>**Since**: 12|
 | static const char * const COMMON_EVENT_PACKAGE_CACHE_CLEARED = "usual.event.PACKAGE_CACHE_CLEARED" | Indicates the common event that the user has cleared the application package data cache.<br>**Since**: 12|
 | static const char * const COMMON_EVENT_PACKAGES_SUSPENDED = "usual.event.PACKAGES_SUSPENDED" | Indicates the common event that application packages have been suspended.<br>**Since**: 12|
