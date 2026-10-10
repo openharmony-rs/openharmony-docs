@@ -25,6 +25,8 @@ startScan(filters: ScanFilters[] | null, options?: ScanOptions): Promise&lt;void
 
 发起星闪扫描。使用Promise异步回调。需先调用[scan.onDeviceFound](#scanondevicefound)订阅扫描结果回调，本接口发起扫描后，扫描到的设备信息通过[scan.onDeviceFound](#scanondevicefound)回调上报。扫描完成后可调用[scan.stopScan](#scanstopscan)停止扫描。
 
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -99,6 +101,8 @@ stopScan(): Promise&lt;void&gt;
 
 停止星闪扫描。使用Promise异步回调。
 
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -149,6 +153,8 @@ onDeviceFound(callback: Callback\<ScanResults[]\>): void
 
 应用需具备ohos.permission.ACCESS_NEARLINK权限，方可接收此事件上报。
 
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -190,6 +196,8 @@ try {
 offDeviceFound(callback?: Callback\<ScanResults[]\>): void
 
 取消订阅星闪扫描结果。使用callback异步回调。
+
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
 
 **起始版本：** 26.0.0
 

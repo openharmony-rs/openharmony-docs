@@ -43,6 +43,8 @@ createClient(address: string): Client
 
 创建SSAP客户端实例。
 
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -96,6 +98,8 @@ try {
 createServer(): Server
 
 创建SSAP服务端实例。
+
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
 
 **起始版本：** 26.0.0
 

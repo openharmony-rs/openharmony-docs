@@ -97,6 +97,8 @@ createRemoteDevice(address: string): RemoteDevice
 
 创建远端设备实例。
 
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -147,6 +149,8 @@ onPairingStateChange(callback: Callback&lt;PairingStateParam&gt;): void
 
 应用需具备ohos.permission.ACCESS_NEARLINK权限，方可接收此事件上报。
 
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -189,6 +193,8 @@ offPairingStateChange(callback?: Callback&lt;PairingStateParam&gt;): void
 
 取消订阅配对状态变化事件。使用callback异步回调。
 
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -229,6 +235,8 @@ onConnectionStateChange(callback: Callback&lt;ConnectionStateParam&gt;): void
 订阅连接状态变化事件。使用callback异步回调。与[remoteDevice.onAcbStateChange](#remotedeviceonacbstatechange)监听逻辑链路层级连接状态不同，本接口监听设备层级的连接状态变化。
 
 应用需具备ohos.permission.ACCESS_NEARLINK权限，方可接收此事件上报。
+
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
 
 **起始版本：** 26.0.0
 
@@ -272,6 +280,8 @@ offConnectionStateChange(callback?: Callback&lt;ConnectionStateParam&gt;): void
 
 取消订阅连接状态变化事件。使用callback异步回调。
 
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -312,6 +322,8 @@ onAcbStateChange(callback: Callback&lt;AcbStateParam&gt;): void
 订阅逻辑链路连接状态变化事件。使用callback异步回调。适用于需要在逻辑链路建立或断开时触发相应处理的场景，如数据传输前的链路就绪检查或断连后的资源清理。与[remoteDevice.onConnectionStateChange](#remotedeviceonconnectionstatechange)监听设备层级连接状态不同，本接口监听逻辑链路层级的连接状态。
 
 应用需具备ohos.permission.ACCESS_NEARLINK权限，方可接收此事件上报。
+
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
 
 **起始版本：** 26.0.0
 
@@ -354,6 +366,8 @@ try {
 offAcbStateChange(callback?: Callback&lt;AcbStateParam&gt;): void
 
 取消订阅逻辑链路连接状态变化事件。使用callback异步回调。
+
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
 
 **起始版本：** 26.0.0
 
