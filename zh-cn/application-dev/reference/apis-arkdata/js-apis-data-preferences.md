@@ -281,7 +281,7 @@ getPreferences(context: Context, options: Options, callback: AsyncCallback&lt;Pr
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 801      | Capability not supported.     |
+| 801      | Capability not supported. Possible causes:1. The hardware does not support the capability; 2. The chip does not support the capability;3. A dependent service feature is not supported.     |
 | 15500000 | Inner error. <br>适用版本：11+                  |
 | 15501001 | The operations is supported in stage mode only. |
 | 15501002 | Invalid dataGroupId.     |
@@ -396,7 +396,7 @@ getPreferences(context: Context, options: Options): Promise&lt;Preferences&gt;
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 801      | Capability not supported.     |
+| 801      | Capability not supported. Possible causes:1. The hardware does not support the capability; 2. The chip does not support the capability;3. A dependent service feature is not supported.     |
 | 15500000 | Inner error. <br>适用版本：11+                   |
 | 15501001 | The operations is supported in stage mode only. |
 | 15501002 | Invalid dataGroupId.     |
@@ -508,7 +508,7 @@ getPreferencesSync(context: Context, options: Options): Preferences
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 801      | Capability not supported.     |
+| 801      | Capability not supported. Possible causes:1. The hardware does not support the capability; 2. The chip does not support the capability;3. A dependent service feature is not supported.     |
 | 15500000 | Inner error. <br>适用版本：11+                   |
 | 15501001 | The operations is supported in stage mode only.   |
 | 15501002 | Invalid dataGroupId. |
@@ -777,7 +777,7 @@ deletePreferences(context: Context, options: Options, callback: AsyncCallback&lt
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 801      | Capability not supported.     |
+| 801      | Capability not supported. Possible causes:1. The hardware does not support the capability; 2. The chip does not support the capability;3. A dependent service feature is not supported.     |
 | 15500000 | Inner error. <br>适用版本：11+                   |
 | 15500010 | Failed to delete the user preferences persistence file. |
 | 15501001 | The operations is supported in stage mode only. |
@@ -887,7 +887,7 @@ deletePreferences(context: Context, options: Options): Promise&lt;void&gt;
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 801      | Capability not supported.     |
+| 801      | Capability not supported. Possible causes:1. The hardware does not support the capability; 2. The chip does not support the capability;3. A dependent service feature is not supported.     |
 | 15500000 | Inner error. <br>适用版本：11+                   |
 | 15500010 | Failed to delete the user preferences persistence file. |
 | 15501001 | The operations is supported in stage mode only. |
@@ -1250,7 +1250,7 @@ removePreferencesFromCache(context: Context, options: Options, callback: AsyncCa
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 801      | Capability not supported.     |
+| 801      | Capability not supported. Possible causes:1. The hardware does not support the capability; 2. The chip does not support the capability;3. A dependent service feature is not supported.     |
 | 15500000 | Inner error. <br>适用版本：11+                   |
 | 15501001 | The operations is supported in stage mode only. |
 | 15501002 | Invalid dataGroupId.     |
@@ -1359,7 +1359,7 @@ removePreferencesFromCache(context: Context, options: Options): Promise&lt;void&
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 801      | Capability not supported.     |
+| 801      | Capability not supported. Possible causes:1. The hardware does not support the capability; 2. The chip does not support the capability;3. A dependent service feature is not supported.     |
 | 15500000 | Inner error. <br>适用版本：11+                   |
 | 15501001 | The operations is supported in stage mode only. |
 | 15501002 | Invalid dataGroupId.     |
@@ -1458,7 +1458,7 @@ removePreferencesFromCacheSync(context: Context, options: Options):void
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 801      | Capability not supported.     |
+| 801      | Capability not supported. Possible causes:1. The hardware does not support the capability; 2. The chip does not support the capability;3. A dependent service feature is not supported.     |
 | 15500000 | Inner error. <br>适用版本：11+                   |
 | 15501001 | The operations is supported in stage mode only.   |
 | 15501002 | Invalid dataGroupId. |
@@ -1545,7 +1545,7 @@ isStorageTypeSupported(type: StorageType): boolean
 
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------ |
-| 401      | Parameter error. Possible causes: Incorrect parameter types. |
+| 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed. |
 
 
 **示例：**
@@ -1778,7 +1778,7 @@ getAll(callback: AsyncCallback&lt;Object&gt;): void
 
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.                       |
+| 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
 | 15500000 | Inner error. <br>适用版本：11+                   |
 
 **示例：**
@@ -2525,7 +2525,7 @@ flush(callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------ |
-| 401      | Parameter error. Mandatory parameters are left unspecified.                       |
+| 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
 | 15500000 | Inner error. <br>适用版本：11+                   |
 
 **示例：**
@@ -2684,7 +2684,7 @@ clear(callback: AsyncCallback&lt;void&gt;): void
 
 | 错误码ID | 错误信息                        |
 | -------- | ------------------------------ |
-| 401      | Parameter error. Mandatory parameters are left unspecified.                       |
+| 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
 | 15500000 | Inner error. <br>适用版本：11+                   |
 
 **示例：**
