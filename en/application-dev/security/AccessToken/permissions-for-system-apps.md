@@ -9506,3 +9506,115 @@ Allows an application to modify the device security level (DSL) configuration.
 **Supported devices**: PCs/2-in-1 devices | tablets
 
 **Valid since**: 26.2.0
+
+## ohos.permission.vehicle.INNER_NETWORK
+
+Allows an application to access the vehicle's internal networks.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Valid since**: 26.2.0
+
+## ohos.permission.vehicle.LOGIN_TSP
+
+Allows an application to call the login and logout APIs of the automotive cloud mobile service.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.vehicle.GET_TSP_ACCOUNT_INFO
+
+Allows an application to obtain Telematics Service Provider account information.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.vehicle.GET_TSP_SERVICE_TOKEN
+
+Allows an application to obtain the account service token issued by the Telematics Service Provider.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.vehicle.GET_TSP_VEHICLE_APP_TOKEN
+
+Allows an application to obtain the vehicle application token issued by the Telematics Service Provider.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.vehicle.GET_TSP_ACCOUNT_ROLE
+
+Allows an application to obtain the Telematics Service Provider account role.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.vehicle.PUBLISH_ACMSCORE_EVENT
+
+Allows an application to publish automotive cloud mobile service events.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.1
+
+## ohos.permission.vehicle.SUBSCRIBE_ACMSCORE_EVENT
+
+Allows an application to subscribe to automotive cloud mobile service events.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: cars
+
+**Since**: 26.0.1

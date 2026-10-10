@@ -3,8 +3,8 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
-<!--Designer: @gcw_sPCsris4; @qinliwen0417-->
-<!--Tester: @qinliwen0417-->
+<!--Designer: @gcw_sPCsris4; @jingbotao-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
 
 窗口分为系统窗口、应用窗口两种类型。
