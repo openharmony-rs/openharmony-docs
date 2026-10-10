@@ -6,6 +6,7 @@
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=2aafef934a70b882517720adce7aba9e47e6d0b4 translatedAt=2026-10-09T01:08:32.055Z pushedAt=2026-10-09T03:12:37.946Z -->
 
 ## Usage Guidelines
 
@@ -15,8 +16,8 @@
 
   The following uses the Location and Camera permission groups as an example.
 
-  - When an application requests only the ohos.permission.APPROXIMATELY_LOCATION permission (belonging to the Location permission group), a dialog box containing only the requested permission will be displayed to request user authorization.
-  - When an application requests the ohos.permission.APPROXIMATELY_LOCATION and ohos.permission.LOCATION permissions (belonging to the Location permission group), a dialog box containing only the requested permissions will be displayed to request user authorization.
+  - When an application requests only the ohos.permission.APPROXIMATELY_LOCATION permission (belonging to the Location permission group), a dialog containing only the requested permission will be displayed to request user authorization.
+  - When an application requests the ohos.permission.APPROXIMATELY_LOCATION and ohos.permission.LOCATION permissions (belonging to the Location permission group), a dialog containing only the requested permissions will be displayed to request user authorization.
   - When an application requests ohos.permission.APPROXIMATELY_LOCATION (belonging to the Location permission group) and ohos.permission.CAMERA (belonging to the Camera permission group), two dialog boxes will be displayed to request the location and camera permissions, respectively.
 
 - The following lists the permission groups supported by the system. For details about the meaning of each permission, see [the permission list](permissions-for-all-user.md).
@@ -46,9 +47,9 @@
 ## Calendar
 
 - [ohos.permission.READ_CALENDAR](permissions-for-all-user.md#ohospermissionread_calendar)
- 
+
 - [ohos.permission.WRITE_CALENDAR](permissions-for-all-user.md#ohospermissionwrite_calendar)
- 
+
 - [ohos.permission.READ_WHOLE_CALENDAR](restricted-permissions.md#ohospermissionread_whole_calendar)
 
 - [ohos.permission.WRITE_WHOLE_CALENDAR](restricted-permissions.md#ohospermissionwrite_whole_calendar)
@@ -133,7 +134,7 @@
 - [ohos.permission.SEND_MESSAGES](permissions-for-system-apps-user.md#ohospermissionsend_messages)
 <!--DelEnd-->
 
-## Pasteboard
+## Clipboard
 
 - [ohos.permission.READ_PASTEBOARD](restricted-permissions.md#ohospermissionread_pasteboard)
 
@@ -179,3 +180,4 @@
 - Read files in the file manager.
 
   Use the file Picker to read documents in **Files**. For details, see [Selecting Documents](../../file-management/select-user-file.md#selecting-documents) and [Saving Documents](../../file-management/save-user-file.md#saving-documents).
+

@@ -6,6 +6,7 @@
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=44cc3978a01b17856a98c72090b06049c02dfb64 translatedAt=2026-10-09T01:10:24.226Z pushedAt=2026-10-09T08:12:38.611Z -->
 
 If an application [requests user authorization](request-user-authorization.md) via a dialog box using [requestPermissionsFromUser()](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#requestpermissionsfromuser9) and the user denies it, the application cannot show the same dialog box again with this API. The user needs to manually grant the permission in **Settings**.
 
@@ -19,7 +20,7 @@ Alternatively, start the permission settings dialog box by using [requestPermiss
 **Figure 1** Requesting user authorization for the second time
 
 <!--RP2-->
-![en_image_location](figures/en_image_location_second.png)
+![image-location](figures/image-location-second.png)
 <!--RP2End-->
 
 The following sample code shows how to open the dialog box again to request ohos.permission.APPROXIMATELY_LOCATION.
@@ -39,3 +40,4 @@ import { BusinessError } from '@kit.BasicServicesKit';
             console.error(`requestPermissionOnSetting fail, code: ${err.code}, message: ${err.message}`);
           });
 ```
+

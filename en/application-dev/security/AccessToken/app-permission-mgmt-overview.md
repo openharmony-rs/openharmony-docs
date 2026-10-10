@@ -6,6 +6,7 @@
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=f3e805112f53573838759a039214125d6e449162 translatedAt=2026-10-09T01:08:44.066Z pushedAt=2026-10-09T03:15:48.761Z -->
 
 ## Introduction
 
@@ -30,6 +31,8 @@ Determine the permissions required by your application based on the use cases of
 - Sensitive permissions must be dynamically requested before the related service feature is provided.
 
 - If a user refuses to grant a permission, other service features irrelevant to this permission can be used normally.
+
+- When a user proactively revokes a permission, if the permission status changes from "granted" to "denied", the system usually terminates the corresponding application process. In scenarios where the system proactively reclaims a permission (for example, the one-time authorization of a security control, which is automatically reclaimed by the system after the authorization period ends), the permission status also changes, but the application process is not terminated as a result.
 
 ## Authorization Mode
 
@@ -71,13 +74,13 @@ The relationship between a permission group and its permissions is not fixed. Fo
 
   In addition, the system supports the multi-user feature and the App Twin feature. Different sub-users and twin applications of the same application have their own AT information with different token IDs.
 
-- APL
+- **APL**
 
   To prevent applications from excessively requesting and abusing permissions, the system configures different permission scopes based on the APLs.
 
   The APL defines the priority of an application's permission request. Applications at different APLs can request different permissions.
 
-- Application APL
+- **Application APL**
 
   Application APLs are classified into three levels in ascending order of seniority.
 
@@ -87,9 +90,9 @@ The relationship between a permission group and its permissions is not fixed. Fo
   | system_basic | Application that provides basic system services.|
   | system_core | Application that provides OS core abilities. <br>The APL of an application cannot be system_core.|
 
-- Permission APL
+- **Permission APL**
 
-  Permissions are granted to applications based on the application APL. The permission APLs are also classified into three levels in ascending order of seniority. 
+  Permissions are granted to applications based on the application APL. The permission APLs are also classified into three levels in ascending order of seniority.
 
   | APL| Description| Available To|
   | -------- | -------- | -------- |
@@ -97,15 +100,15 @@ The relationship between a permission group and its permissions is not fixed. Fo
   | system_basic | Allows an application to access resources related to basic OS services (basic functions provided or preset by the system), such as system settings and identity authentication.<br>Access to these resources imposes high risks to user privacy and other applications.| - Applications with the system_basic or system_core APL.<br>- [Restricted permissions](restricted-permissions.md), which are some system_basic permissions that can be granted to normal applications via ACL.|
   | system_core | Allows an application to access OS core resources. These resources are underlying core services of the system. If these resources are corrupted, the OS cannot run properly.| - Applications with the system_core APL.<br>- System applications only.|
 
-- ACL
+- **ACL**
 
   Permission APLs and application APLs are in one-to-one correspondence. In principle, an application with a lower APL cannot apply for higher-level permissions by default. However, you can use the Access Control List (ACL) to enable an application to have permissions beyond its APL.
 
-  The **Certificate-based authorization** field is defined for all system permissions. When this field is set to **TRUE**, applications can request permissions across levels in ACL mode. For details about the definition of a permission, see [Restricted Permissions](restricted-permissions.md)<!--Del-->, [system_grant Permissions Available for System Applications via ACL](permissions-for-system-apps.md), and [user_grant Permissions for System Applications](permissions-for-system-apps-user.md)<!--DelEnd-->.
+  The **Enable via ACL** field is defined for all system permissions. When this field is set to **TRUE**, applications can request permissions across levels in ACL mode. For the specific permission definitions, see [Restricted Open Permissions](restricted-permissions.md)<!--Del-->, [Permissions Available to System Applications (System Authorization)](permissions-for-system-apps.md), and [Permissions Available to System Applications (User Authorization)](permissions-for-system-apps-user.md)<!--DelEnd-->.
 
-  For example, to implement a special feature, application A with the normal APL requires permission P, whose APL is system_basic. If **Certificate-based authorization** is **TRUE** for permission P, application A can request permission P via the ACL.
+  Example: You are developing application A with the normal APL level. Due to a functional requirement, application A needs to request permission P, whose APL level is system_basic, across levels. When **Enable via ACL** is **TRUE** for permission P, application A can request permission P across levels in ACL mode.
 
-- Permission type with data
+- **Permission type with data**
 
   In the traditional permission model, permissions are either allowed or denied — with limited information. This model cannot meet the increasing requirements for refined permission control.
 

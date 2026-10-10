@@ -2,10 +2,11 @@
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @JeremyXu-->
-<!--Designer: @skye_you-->
+<!--Owner: @HarMonkey-->
+<!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=f6bd4cda9a38e5190b437c0d7175b66df5093495 translatedAt=2026-10-09T01:25:58.433Z pushedAt=2026-10-09T11:43:18.442Z -->
 
 ## Adding Dependencies
 
@@ -69,8 +70,8 @@ The following table describes the attributes for querying an asset.
 
 | Attribute Name (Asset_Tag)           | Attribute Content (Asset_Value)                                      | Mandatory or Not| Description                                                        |
 | ------------------------------- | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ |
-| ASSET_TAG_REQUIRE_ATTR_ENCRYPTED<sup>14+</sup> | Type: bool| Yes| Whether to query the sync result of the asset whose custom additional information is encrypted. The value **true** means to query the sync result; the value **false** means the opposite. The default value is **false**.|
-| ASSET_TAG_GROUP_ID<sup>18+</sup> | Type: Uint8[]<br>Length: 7-127 bytes| Yes| Group to which the asset to be queried belongs. By default, this parameter is not specified.|
+| ASSET_TAG_REQUIRE_ATTR_ENCRYPTED<sup>14+</sup> | Type: bool. | Optional | Whether to query the asset synchronization result for assets whose service-defined additional information is encrypted. **true** indicates to query the synchronization result of assets for which the service-defined additional information is stored in encrypted form. **false** indicates to query the synchronization result of assets for which the service-defined additional information is stored in unencrypted form. The default value is **false**. |
+| ASSET_TAG_GROUP_ID<sup>18+</sup> | Type: uint8[], with a length of 7 to 127 bytes. | Optional | Group to which the assets to be queried belong. By default, the synchronization result of assets that do not belong to any group is queried. |
 
 
 ### Sample Code
@@ -94,7 +95,7 @@ static napi_value QuerySyncResult(napi_env env, napi_callback_info info)
 For a successful sync between trusted devices, the assets of both old and new devices must be accessible. Otherwise, the sync might fail.
 
 - For assets that are accessible only when a password is set, the sync will fail if no lock screen password is set on either the old or new device.
-  
+
 - For assets that are accessible only when the screen is unlocked, the sync will fail if the screen of either the old or new device is locked.
 
 - For assets that are accessible only after user authentication, the sync will fail if no lock screen password is set on the old device.

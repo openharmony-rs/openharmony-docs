@@ -6,12 +6,13 @@
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=44cc3978a01b17856a98c72090b06049c02dfb64 translatedAt=2026-10-09T01:10:43.169Z pushedAt=2026-10-09T08:13:59.225Z -->
 
 User authorization is required when an application needs to access user privacy information (such as Location or Calendar information) or using system abilities (such as the camera ability to take photos or record videos). The permissions that must be authorized by users are user_grant permissions.
 
 The procedure for requesting user_grant permissions is as follows:
 
-1. Declare the permissions required by your application in the configuration file. 
+1. Declare the permissions required by your application in the configuration file.
 
 2. Associate each object that requires a user_grant permission with the related permission. This lets the user know what operations need user authorization.
 
@@ -32,11 +33,11 @@ This topic elaborates steps 3 and 4.
 - The system permission pop-up window cannot be obscured.
 
   The system permission pop-up window cannot be obscured by other components. The information in the pop-up window must be completely displayed so that the user can identify and complete authorization.
-  
+
   If the system permission pop-up window is displayed in the same position as another component, the system permission pop-up window takes precedence over the other component by default.
 
 - A check for the required permission is mandatory each time before the operation that requires the permission is performed.
-  
+
   You can use [checkAccessToken()](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#checkaccesstoken9) to check whether the user has granted specific permissions to your application. This API returns [PERMISSION_GRANTED](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#grantstatus) or [PERMISSION_DENIED](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#grantstatus). For details, see the example given below.
 
 - Before each access to an API protected by the target permission, use [requestPermissionsFromUser()](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#requestpermissionsfromuser9) to request the corresponding permission.
@@ -53,7 +54,7 @@ The following example steps walk you through on how to request the location perm
 **Figure 1** Requesting the location permissions
 
 <!--RP4-->
-![en_image_location](figures/en_image_location.png)
+![image-location](figures/image-location.png)
 <!--RP4End-->
 
 1. Request the ohos.permission.LOCATION and ohos.permission.APPROXIMATELY_LOCATION permissions. For details, see [Declaring Permissions](declare-permissions.md).
@@ -63,7 +64,7 @@ The following example steps walk you through on how to request the location perm
    Call [checkAccessToken()](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#checkaccesstoken9) to check whether the user has already granted the permissions that your application requires. If yes, the application can perform subsequent operations. Otherwise, user authorization is required.
 
    <!-- @[check_permission_func](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/RequestUserAuthorization/entry/src/main/ets/utils/PermissionUtil.ets) -->    
-   
+
    ``` TypeScript
    import { abilityAccessCtrl, bundleManager, Permissions } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -126,7 +127,7 @@ The following example steps walk you through on how to request the location perm
    - Sample code for requesting user authorization using UIAbility
 
    <!-- @[request_permission_in_UIAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/RequestUserAuthorization/entry/src/main/ets/secondability/SecondAbility.ets) -->    
-   
+
    ``` TypeScript
    import { abilityAccessCtrl, common, Permissions, UIAbility } from '@kit.AbilityKit';
    import { window } from '@kit.ArkUI';
@@ -172,7 +173,7 @@ The following example steps walk you through on how to request the location perm
    - Sample code for requesting user authorization on the UI
 
    <!-- @[request_permission_in_UI](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/RequestUserAuthorization/entry/src/main/ets/reqpermissioninui/pages/Index.ets) -->    
-   
+
    ``` TypeScript
    import { abilityAccessCtrl, common, Permissions } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -218,9 +219,9 @@ The following example steps walk you through on how to request the location perm
 4. Perform subsequent operations based on the authorization result.
 
    After [requestPermissionsFromUser()](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#requestpermissionsfromuser9) is called, the application waits for the user authorization result.
-   
+
    If the user grants the permission, the application can perform the subsequent operation.
-   
+
    If the user denies the permission, the application shall notify the user that they must grant the permission to access the features on the current page and guide them to grant the corresponding permission in **Settings**. Alternatively, it shall call [requestPermissionOnSetting()](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#requestpermissiononsetting12) to display the permission setting dialog box.<!--RP3-->
 
 
