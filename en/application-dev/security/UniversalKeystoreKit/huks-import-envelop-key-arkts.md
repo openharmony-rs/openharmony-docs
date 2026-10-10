@@ -312,7 +312,7 @@ async function EnvelopAesTest()
     .then((data) => {
       handle = data.handle;
     }).catch((error: BusinessError) => {
-      console.error('decrypt init fail')
+      console.error('encrypt init fail')
     });
   await huks.finishSession(handle, enOption)
     .then((data) => {
