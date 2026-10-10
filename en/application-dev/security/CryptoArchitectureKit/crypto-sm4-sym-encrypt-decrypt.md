@@ -44,7 +44,7 @@ For the corresponding algorithm specifications, see [Symmetric Encryption and De
 
 4. Call [Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1) to obtain the decrypted data.
 
-If SM4 (CBC mode) decryption fails with error code 17630001, see [Failed to Call doFinal During Decryption Using SM4-ECB/CBC](../../reference/apis-crypto-architecture-kit/errorcode-crypto-framework.md#failed-to-call-dofinal-during-decryption-using-sm4-ecbcbc).
+If SM4 (CBC mode) decryption fails with error code 17630001, see [Failed to Call doFinal During Decryption Using SM4-ECB or SM4-CBC](../../reference/apis-crypto-architecture-kit/errorcode-crypto-framework.md#failed-to-call-dofinal-during-decryption-using-sm4-ecb-or-sm4-cbc).
 
 - Example (using asynchronous APIs):
 
@@ -174,7 +174,7 @@ If SM4 (CBC mode) decryption fails with error code 17630001, see [Failed to Call
 
 4. Call [Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1) to obtain the decrypted data.
 
-If SM4 (CBC mode) decryption fails with error code 17630001, see [Failed to Call doFinal During Decryption Using SM4-ECB/CBC](../../reference/apis-crypto-architecture-kit/errorcode-crypto-framework.md#failed-to-call-dofinal-during-decryption-using-sm4-ecbcbc).
+If SM4 (CBC mode) decryption fails with error code 17630001, see [Failed to Call doFinal During Decryption Using SM4-ECB or SM4-CBC](../../reference/apis-crypto-architecture-kit/errorcode-crypto-framework.md#failed-to-call-dofinal-during-decryption-using-sm4-ecb-or-sm4-cbc).
 
 - Example (using asynchronous APIs):
 

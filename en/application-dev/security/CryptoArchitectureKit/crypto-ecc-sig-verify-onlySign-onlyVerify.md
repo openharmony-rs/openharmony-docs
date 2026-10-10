@@ -1,4 +1,4 @@
-# Signing and Verification with the ECC Key Pair (ArkTS)
+# Signing and Signature Verification with an ECC Key Pair (ArkTS)
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->

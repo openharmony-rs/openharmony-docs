@@ -1,4 +1,4 @@
-# SM4 Symmetric Key Encryption and Decryption (C/C++)
+# Encryption and Decryption with an SM4 Symmetric Key (C/C++)
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->

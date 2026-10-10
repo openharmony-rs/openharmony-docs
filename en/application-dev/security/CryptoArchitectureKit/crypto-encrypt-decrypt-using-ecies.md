@@ -1,4 +1,4 @@
-# Encryption and Decryption Using ECIES (ArkTS)
+# Encryption and Decryption with ECIES (ArkTS)
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->

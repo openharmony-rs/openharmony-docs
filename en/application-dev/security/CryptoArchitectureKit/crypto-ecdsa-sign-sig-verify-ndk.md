@@ -1,4 +1,4 @@
-# Signing and Signature Verification Using an ECDSA Key Pair (C/C++)
+# Signing and Signature Verification with an ECDSA Key Pair (C/C++)
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->

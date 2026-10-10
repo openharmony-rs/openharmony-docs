@@ -1,4 +1,4 @@
-# Converting Binary Data into a Symmetric Key Pair (C/C++)
+# Converting Binary Data into a Symmetric Key (C/C++)
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->

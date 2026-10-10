@@ -1,4 +1,4 @@
-# Non-anonymous Key Attestation (Open Only to System Applications) (ArkTS)
+# Non-anonymous Key Attestation (for System Applications Only) (ArkTS)
 
 <!--Kit: Universal Keystore Kit-->
 <!--Subsystem: Security-->

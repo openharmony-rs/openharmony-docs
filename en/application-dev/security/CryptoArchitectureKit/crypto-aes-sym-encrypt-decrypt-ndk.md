@@ -1,4 +1,4 @@
-# AES Symmetric Key Encryption and Decryption (C/C++)
+# Encryption and Decryption with an AES Symmetric Key (C/C++)
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->
