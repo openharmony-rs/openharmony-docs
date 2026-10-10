@@ -3,7 +3,7 @@
 <!--Subsystem: Window-->
 <!--Owner: @JUGaaab-->
 <!--Designer: @ki_ja-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
 
 ## 如何在应用A启动过程中拉起另一个应用B
