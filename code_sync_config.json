@@ -47020,5 +47020,20 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/database/data-persistence-by-kv-store.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets",
+				"functions":[
+					{
+						"end_line":55,
+						"name":"CreateKvManager",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
