@@ -74,8 +74,8 @@ setPropertyIndication(property: Property, enable: boolean): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Non-system applications are not allowed to use system APIs. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 36100003 | NearLink disabled. |
 | 36100030 | The connection is not established. |
 | 36100043 | Invalid UUID in property. |
@@ -143,8 +143,8 @@ callMethod(method: Method): Promise&lt;Method&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Non-system applications are not allowed to use system APIs. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 36100003 | NearLink disabled. |
 | 36100043 | Invalid UUID. |
 | 36100044 | NearLink standard UUID not allowed. |
@@ -218,8 +218,8 @@ readDescriptor(descriptor: PropertyDescriptor): Promise&lt;PropertyDescriptor&gt
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Non-system applications are not allowed to use system APIs. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 36100003 | NearLink disabled. |
 | 36100043 | Invalid UUID in descriptor. |
 | 36100044 | NearLink standard UUID not allowed. |
@@ -299,8 +299,8 @@ writeDescriptor(descriptor: PropertyDescriptor): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Non-system applications are not allowed to use system APIs. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 36100003 | NearLink disabled. |
 | 36100043 | Invalid UUID in descriptor. |
 | 36100044 | NearLink standard UUID not allowed. |
