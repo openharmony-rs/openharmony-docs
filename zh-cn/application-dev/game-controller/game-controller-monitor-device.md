@@ -57,6 +57,8 @@ target_link_libraries(entry PUBLIC libohgame_controller.z.so)
 
 ### 导入模块
 
+<!-- @[header_include_game_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/GameControllerKit/NdkGameControllerDemo/entry/src/main/cpp/device_api.cpp) -->
+
 ``` C++
 #include <GameControllerKit/game_device.h>
 ```
