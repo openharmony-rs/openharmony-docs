@@ -73,8 +73,8 @@ Calendar Kit为用户提供了一系列接口来获取日历账户，并使用�
 ## 支持的设备
 | 能力                                       | 支持的设备类型                          |
 |--------------------------------------------------------|----------------------------------|
-| 日历账户管理               | Phone、Tablet、PC/2in1、Wearable、TV、Car |
-| 日程管理                 | Phone、Tablet、PC/2in1、Wearable、TV、Car |
+| 日历账户管理               | Phone、Tablet、PC/2in1、Wearable、TV |
+| 日程管理                 | Phone、Tablet、PC/2in1、Wearable、TV |
 <!--RP2-->
 <!--RP2End-->
 
