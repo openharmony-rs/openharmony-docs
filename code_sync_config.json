@@ -13900,14 +13900,14 @@
 						"start_line":263
 					},
 					{
-						"end_line":327,
+						"end_line":407,
 						"name":"stop_AudioCapturer",
-						"start_line":297
+						"start_line":377
 					},
 					{
-						"end_line":365,
+						"end_line":445,
 						"name":"release_AudioCapturer",
-						"start_line":330
+						"start_line":410
 					},
 					{
 						"end_line":482,
