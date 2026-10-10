@@ -147,7 +147,7 @@ import { privacyComputation } from '@kit.DataProtectionKit';
 
 ## privacyComputation.genPrivacyTarget
 
-genPrivacyTarget(targetElement: TargetElement, privacyProtocol: PrivacyProtocol): Promise&lt;Uint8Array&gt;
+genPrivacyTarget(targetElement: [TargetElement](#targetelement), privacyProtocol: [PrivacyProtocol](#privacyprotocol)): Promise&lt;Uint8Array&gt;
 
 为给定元素生成隐私目标。隐私目标是搜索元素的加密表示，可用于隐私保护搜索而不泄露原始数据。使用Promise异步回调。
 
@@ -204,7 +204,7 @@ async function genTarget() {
 
 ## privacyComputation.privacySearch
 
-privacySearch(privacyTarget: Uint8Array, elements: Element[], privacyProtocol: PrivacyProtocol): Promise&lt;PrivacySearchResult&gt;
+privacySearch(privacyTarget: Uint8Array, elements: [Element](#element)[], privacyProtocol: [PrivacyProtocol](#privacyprotocol)): Promise&lt;[PrivacySearchResult](#privacysearchresult)&gt;
 
 执行隐私保护搜索。根据加密的隐私目标搜索给定的数据集元素，不向对方透露目标或数据集内容。使用Promise异步回调。
 
@@ -219,7 +219,7 @@ privacySearch(privacyTarget: Uint8Array, elements: Element[], privacyProtocol: P
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | privacyTarget | Uint8Array | 是 | 由[genPrivacyTarget](#privacycomputationgenprivacytarget)生成的加密隐私目标。 |
-| elements | Element[]| 是 | 要搜索的数据集元素。 |
+| elements | [Element](#element)[] | 是 | 要搜索的数据集元素。 |
 | privacyProtocol | [PrivacyProtocol](#privacyprotocol) | 是 | 隐私协议配置，需与生成隐私目标时一致。 |
 
 **返回值**：
@@ -270,7 +270,7 @@ async function search(privacyTarget: Uint8Array) {
 
 ## privacyComputation.getSearchResult
 
-getSearchResult(privacySearchResult: PrivacySearchResult, privacyProtocol: PrivacyProtocol): Promise&lt;SearchResult&gt;
+getSearchResult(privacySearchResult: [PrivacySearchResult](#privacysearchresult), privacyProtocol: [PrivacyProtocol](#privacyprotocol)): Promise&lt;[SearchResult](#searchresult)&gt;
 
 获取隐私搜索结果与最终搜索结果。解密[privacySearch](#privacycomputationprivacysearch)返回的结果密文，获取最终匹配结果与可选的附加值。使用Promise异步回调。
 
