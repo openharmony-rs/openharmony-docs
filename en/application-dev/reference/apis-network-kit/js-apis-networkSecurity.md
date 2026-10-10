@@ -263,7 +263,7 @@ Passes in an array of certificates, verifies the certificate chain, and builds a
 
 | Type            | Description                                                         |
 | --------------- | ------------------------------------------------------------ |
-| Promise\<[CertBlob](#certblob)\[\]\> | Promise object that returns the sorted certificate chain array, in the order from the leaf node to the root node. |
+| Promise\<[CertBlob](#certblob)\[\]\> | Promise used to return the sorted certificate chain array, in the order from the leaf node to the root node. |
 
 **Error codes**
 
