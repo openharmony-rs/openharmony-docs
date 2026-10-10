@@ -704,3 +704,220 @@ struct AlertDialogMigrationPage {
   }
 }
 ```
+
+### ActionSheet → DialogPresenter.present（列表选择弹窗）
+
+| 老接口签名 | 新接口签名 | 说明 |
+|-----------|-----------|------|
+| `this.getUIContext().showActionSheet({ title, message, sheets, confirm, cancel, alignment, ... })` | `presenter.present(options?: DialogStyleOptions)` | 命令式调用改 Presenter + Promise |
+| `sheets: Array<SheetInfo>` | `sheets: Array<DialogSheet>` | 选项结构扩展 |
+| `confirm.action: VoidCallback` | `DialogButton.action` + Promise 结果 | 确认回调改 Promise |
+| `cancel: () => void` | `onWillDismiss: Callback<DialogDismissal>` | 取消回调改版 |
+
+**迁移前示例（老接口）：**
+
+```typescript
+this.getUIContext().showActionSheet({
+  title: '选择操作',
+  message: '请选择一个操作',
+  sheets: [
+    { title: '复制', action: () => console.info('复制') },
+    { title: '删除', action: () => console.info('删除') }
+  ],
+  cancel: () => console.info('取消')
+})
+```
+
+**迁移后示例（新接口）：**
+
+```typescript
+import { dialog } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+this.getUIContext().getDialogPresenter().present({
+  title: '选择操作',
+  message: { content: '请选择一个操作' },
+  sheets: [
+    { title: '复制', action: () => console.info('复制') },
+    { title: '删除', action: () => console.info('删除') }
+  ],
+  onWillDismiss: (dismissal: dialog.DialogDismissal) => {
+    console.info('取消');
+    dismissal.dismiss();
+  }
+}).then((result: dialog.DialogResult) => {
+  console.info('present success, dialogId: ' + result.dialogId);
+}).catch((error: BusinessError) => {
+  console.error(`present error: ${error.code}`);
+});
+```
+
+### promptAction.showDialog → DialogPresenter.present（对话框）
+
+| 老接口签名 | 新接口签名 | 说明 |
+|-----------|-----------|------|
+| `this.getUIContext().getPromptAction().showDialog({ title, message, buttons, ... })` | `presenter.present(options?: DialogStyleOptions)` | 命令式调用改 Presenter + Promise |
+| `buttons: Array<Button>`（仅 text + color） | `buttons: Array<DialogButton>`（含 value/fontColor/backgroundColor/enabled/primary/style/action） | 按钮属性扩展 |
+| 返回 `Promise<ShowDialogSuccessResponse>`（仅 index） | 返回 `Promise<DialogResult>`（含 dialogId） | 返回值扩展 |
+
+**迁移前示例（老接口）：**
+
+```typescript
+this.getUIContext().getPromptAction().showDialog({
+  title: '提示',
+  message: '确认删除？',
+  buttons: [
+    { text: '取消', color: '#666666' },
+    { text: '确认', color: '#0000FF' }
+  ]
+}).then(data => {
+  console.info('click button: ' + data.index);
+})
+```
+
+**迁移后示例（新接口）：**
+
+```typescript
+import { dialog } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+this.getUIContext().getDialogPresenter().present({
+  title: '提示',
+  message: { content: '确认删除？' },
+  buttons: [
+    { value: '取消', action: () => console.info('取消') },
+    { value: '确认', action: () => console.info('确认') }
+  ]
+}).then((result: dialog.DialogResult) => {
+  console.info('present success, dialogId: ' + result.dialogId);
+}).catch((error: BusinessError) => {
+  console.error(`present error: ${error.code}`);
+});
+```
+
+### promptAction.showActionMenu → DialogPresenter.present（操作菜单）
+
+| 老接口签名 | 新接口签名 | 说明 |
+|-----------|-----------|------|
+| `this.getUIContext().getPromptAction().showActionMenu({ title, buttons, ... })` | `presenter.present(options?: DialogStyleOptions)` | 命令式调用改 Presenter + Promise |
+| `buttons: [Button, ...]`（1-6 个，仅 text + color） | `buttons: Array<DialogButton>`（无数量限制，含 value/fontColor/backgroundColor/enabled/primary/style/action） | 按钮属性扩展 |
+| 返回 `Promise<ActionMenuSuccessResponse>`（仅 index） | 返回 `Promise<DialogResult>`（含 dialogId） | 返回值扩展 |
+
+**迁移前示例（老接口）：**
+
+```typescript
+this.getUIContext().getPromptAction().showActionMenu({
+  title: '选择操作',
+  buttons: [
+    { text: '保存', color: '#0000FF' },
+    { text: '分享', color: '#0000FF' },
+    { text: '删除', color: '#FF0000' }
+  ]
+}).then(data => {
+  console.info('click button: ' + data.index);
+})
+```
+
+**迁移后示例（新接口）：**
+
+```typescript
+import { dialog } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+this.getUIContext().getDialogPresenter().present({
+  title: '选择操作',
+  buttons: [
+    { value: '保存', action: () => console.info('保存') },
+    { value: '分享', action: () => console.info('分享') },
+    { value: '删除', action: () => console.info('删除') }
+  ]
+}).then((result: dialog.DialogResult) => {
+  console.info('present success, dialogId: ' + result.dialogId);
+}).catch((error: BusinessError) => {
+  console.error(`present error: ${error.code}`);
+});
+```
+
+### promptAction.presentCustomDialog → DialogPresenter.present（自定义弹窗）
+
+| 老接口签名 | 新接口签名 | 说明 |
+|-----------|-----------|------|
+| `this.getUIContext().getPromptAction().presentCustomDialog(builder, controller?, options?)` | `presenter.present(content, options?: DialogCustomOptions)` | 编程模型从 PromptAction 改为 DialogPresenter |
+| `promptAction.DialogController` | `dialog.DialogBaseController` | 控制器类型变更 |
+| `options: DialogOptions`（继承 `BaseDialogOptions`） | `options: DialogCustomOptions`（继承 `DialogBaseOptions`） | 选项类型变更 |
+| 返回 `Promise<number>`（dialogId） | 返回 `Promise<DialogResult>`（含 dialogId） | 返回值扩展 |
+
+**迁移前示例（老接口）：**
+
+```typescript
+import { promptAction } from '@kit.ArkUI';
+
+let controller = new promptAction.DialogController();
+this.getUIContext().getPromptAction().presentCustomDialog(() => {
+  Column() {
+    Text('自定义弹窗内容')
+    Button('关闭').onClick(() => controller.close())
+  }.padding(20)
+}, controller, { autoCancel: true })
+  .then(dialogId => console.info('dialogId: ' + dialogId))
+```
+
+**迁移后示例（新接口）：**
+
+```typescript
+import { dialog } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let controller = new dialog.DialogBaseController();
+this.getUIContext().getDialogPresenter().present(() => {
+  Column() {
+    Text('自定义弹窗内容')
+    Button('关闭').onClick(() => controller.close())
+  }.padding(20)
+}, { controller: controller, autoCancel: true })
+  .then((result: dialog.DialogResult) => {
+    console.info('dialogId: ' + result.dialogId);
+  }).catch((error: BusinessError) => {
+    console.error(`present error: ${error.code}`);
+  });
+```
+
+### promptAction.openCustomDialogWithController → DialogPresenter.present（带控制器的自定义弹窗）
+
+| 老接口签名 | 新接口签名 | 说明 |
+|-----------|-----------|------|
+| `this.getUIContext().getPromptAction().openCustomDialogWithController(content, controller, options?)` | `presenter.present(content, options?: DialogCustomOptions)` | 编程模型从 PromptAction 改为 DialogPresenter |
+| `promptAction.DialogController` | `dialog.DialogBaseController` | 控制器类型变更 |
+| `options: BaseDialogOptions` | `options: DialogCustomOptions`（继承 `DialogBaseOptions`） | 选项类型变更，新增 backgroundColor/borderRadius/borderWidth/shadow/width/height 等属性 |
+| 返回 `Promise<void>` | 返回 `Promise<DialogResult>`（含 dialogId） | 返回值扩展 |
+
+**迁移前示例（老接口）：**
+
+```typescript
+import { ComponentContent, promptAction } from '@kit.ArkUI';
+
+let controller = new promptAction.DialogController();
+let contentNode = new ComponentContent(this.getUIContext(), wrapBuilder(buildText), new Params('内容'));
+this.getUIContext().getPromptAction().openCustomDialogWithController(contentNode, controller, { autoCancel: true })
+  .then(() => console.info('opened'))
+```
+
+**迁移后示例（新接口）：**
+
+```typescript
+import { dialog } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let controller = new dialog.DialogBaseController();
+this.getUIContext().getDialogPresenter().present(() => {
+  Column() {
+    Text('自定义弹窗内容')
+    Button('关闭').onClick(() => controller.close())
+  }.padding(20)
+}, { controller: controller, autoCancel: true })
+  .then((result: dialog.DialogResult) => {
+    console.info('dialogId: ' + result.dialogId);
+  }).catch((error: BusinessError) => {
+    console.error(`present error: ${error.code}`);
+  });
+```
