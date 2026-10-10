@@ -57,7 +57,7 @@ target_link_libraries(entry PUBLIC libohgame_controller.z.so)
 
 ### 导入模块
 
-```  c++
+``` C++
 #include <GameControllerKit/game_device.h>
 ```
 
@@ -68,7 +68,7 @@ target_link_libraries(entry PUBLIC libohgame_controller.z.so)
 
 <!-- @[register_device_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/GameControllerKit/NdkGameControllerDemo/entry/src/main/cpp/device_api.cpp) -->
 
-``` c++
+``` C++
 int32_t DeviceApi::RegisterDeviceMonitor()
 {
     GameController_ErrorCode errorCode = OH_GameDevice_RegisterDeviceMonitor(DeviceApi::OnDeviceChanged);
@@ -100,7 +100,7 @@ void DeviceApi::OnDeviceChanged(const struct GameDevice_DeviceEvent *deviceEvent
 
 <!-- @[unregister_device_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/GameControllerKit/NdkGameControllerDemo/entry/src/main/cpp/device_api.cpp) -->
 
-``` c++
+``` C++
 int32_t DeviceApi::UnregisterDeviceMonitor()
 {
     GameController_ErrorCode errorCode = OH_GameDevice_UnregisterDeviceMonitor();
@@ -120,7 +120,7 @@ int32_t DeviceApi::UnregisterDeviceMonitor()
 
 <!-- @[query_all_device_infos](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/GameControllerKit/NdkGameControllerDemo/entry/src/main/cpp/device_api.cpp) -->
 
-``` c++
+``` C++
 GameController_ErrorCode DeviceApi::DoQueryAllDeviceInfos()
 {
     GameDevice_AllDeviceInfos *gameDeviceAllDeviceInfos;
