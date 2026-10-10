@@ -372,11 +372,14 @@ struct Index {
       }
       .width('100%')
       .height('100%')
+      .justifyContent(FlexAlign.Center)
     }
     .height('100%')
   }
 }
 ```
+
+![老接口示例图](figures/CustomDialogOldInterface.gif)
 
 新接口dialog支持componentContent与系统材质属性一起使用，支持弹出后动态修改弹窗位置。
 
@@ -476,6 +479,8 @@ struct Index {
   }
 }
 ```
+
+![新接口示例图](figures/CustomDialogNewInterface.gif)
 
 ## 适配指导
 
