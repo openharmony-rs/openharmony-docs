@@ -1729,17 +1729,3 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 **支持设备**：PC/2in1 | Tablet
 
 **起始版本**：26.0.1
-
-## ohos.permission.GET_AUDIO_ADAPTER_INFO
-
-允许企业类应用获取音频声卡信息。
-
-<!--RP116--><!--RP116End-->
-
-**权限级别**：system_basic
-
-**授权方式**：系统授权（system_grant）
-
-**支持设备**：PC/2in1
-
-**起始版本**：26.2.0

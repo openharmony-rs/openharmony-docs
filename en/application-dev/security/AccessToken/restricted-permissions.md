@@ -1735,17 +1735,3 @@ With this permission, the application can add sync root folders to the sidebar o
 **Supported devices**: PCs/2-in-1 devices | tablets
 
 **Since**: 26.0.1
-
-## ohos.permission.GET_AUDIO_ADAPTER_INFO
-
-Allows an enterprise application to obtain audio sound card information.
-
-<!--RP116--><!--RP116End-->
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Supported devices**: PC/2in1
-
-**Since**: 26.2.0
