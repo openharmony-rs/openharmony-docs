@@ -53,7 +53,7 @@ action参数说明：
 >
 >"action"为"call"&nbsp;类型时，"params"需填入参数'method'，且类型需为string类型，用于触发UIAbility中对应的方法。
 ><!--Del-->
->"action"为"insightIntent"&nbsp;类型时，"intentName"类型需为string类型，用于指定要执行的意图名称；"params"中可填入参数'intentParams'和'executeMode'：'intentParams'类型为object，用于承载意图执行所需的业务参数，参数值仅支持string、number和boolean类型；'executeMode'类型为number，用于指定意图的执行模式，取值参考[ExecuteMode](../apis-ability-kit/js-apis-app-ability-insightIntent.md#executemode)，缺省为0。使用insightIntent类型时，提供方应用需申请[ohos.permission.EXECUTE_INSIGHT_INTENT](../../security/AccessToken/permissions-for-system-apps.md#ohospermissionexecute_insight_intent)权限。
+>"action"为"insightIntent"&nbsp;类型时，"intentName"类型需为string类型，用于指定要执行的意图名称；"params"中可填入参数'intentParams'和'executeMode'：'intentParams'类型为object，用于承载意图执行所需的业务参数，参数值仅支持string、number和boolean类型；'executeMode'类型为number，用于指定意图的执行模式，取值参考[ExecuteMode](../apis-ability-kit/js-apis-app-ability-insightIntent.md#executemode)，缺省为0，当前仅支持取值为0（UI_ABILITY_FOREGROUND），即前台拉起；意图执行场景不支持隐式uri类型，跳转目标仅支持通过bundleName、moduleName、abilityName显式指定。使用insightIntent类型时，提供方应用需申请[ohos.permission.EXECUTE_INSIGHT_INTENT](../../security/AccessToken/permissions-for-system-apps.md#ohospermissionexecute_insight_intent)权限。
 ><!--DelEnd-->
 
 **示例：** 
