@@ -2,14 +2,15 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphic-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=357665bbb6caa6d8123e7eb4a2cbf8a969d1a249 translatedAt=2026-10-09T12:21:39.904Z pushedAt=2026-10-10T09:56:56.774Z -->
 
 ## Overview
 
-This file declares the functions related to the color filter in the drawing module.
+Declares functions related to the color filter object in the drawing module.<br>This module adopts a single-thread model policy, and the caller must manage thread safety and context state switching.
 
 **File to include**: <native_drawing/drawing_color_filter.h>
 
@@ -217,7 +218,7 @@ void OH_Drawing_ColorFilterDestroy(OH_Drawing_ColorFilter* colorFilter)
 
 **Description**
 
-Destroys an **OH_Drawing_ColorFilter** object and reclaims the memory occupied by the object.
+Destroys a color filter object and reclaims the memory occupied by the object.
 
 **System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -229,3 +230,5 @@ Destroys an **OH_Drawing_ColorFilter** object and reclaims the memory occupied b
 | Name| Description|
 | -- | -- |
 | [OH_Drawing_ColorFilter](capi-drawing-oh-drawing-colorfilter.md)* colorFilter | Pointer to an **OH_Drawing_ColorFilter** object.|
+
+

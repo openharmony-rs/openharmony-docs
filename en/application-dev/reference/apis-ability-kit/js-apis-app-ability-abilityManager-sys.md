@@ -4,14 +4,15 @@
 <!--Subsystem: Ability-->
 <!--Owner: @dsz2025; @Luobniz21-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=74f3464c7ef1e27ca2f01f452c50ecb77790f261 translatedAt=2026-10-09T10:41:49.793Z pushedAt=2026-10-10T09:26:20.513Z -->
 
 The AbilityManager module provides APIs for obtaining, adding, and updating ability information and running status information.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version. 
+> The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.  
 > The APIs of this module are system APIs and cannot be called by third-party applications.
 
 ## Modules to Import
@@ -23,6 +24,8 @@ import { abilityManager } from '@kit.AbilityKit';
 ## UserStatus<sup>12+</sup>
 
 Enumerates the assertion result for different user operations.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System API**: This is a system API.
 
@@ -45,7 +48,7 @@ Updates the configuration. This API uses an asynchronous callback to return the 
 **Permission required**: ohos.permission.UPDATE_CONFIGURATION
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
- 
+
 **Parameters**
 
 | Name       | Type                                      | Mandatory  | Description            |
@@ -495,11 +498,15 @@ try {
 }
 ```
 
-## notifySaveAsResult<sup>10+</sup>
+## notifySaveAsResult<sup>(deprecated)</sup>
 
 notifySaveAsResult(parameter: AbilityResult, requestCode: number, callback: AsyncCallback\<void>): void
 
 Used by the [Data Loss Prevention (DLP)](../apis-data-protection-kit/js-apis-dlppermission.md) management application to notify a sandbox application of the data saving result. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> This API is supported since API version 10 and deprecated since API version 24.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -558,11 +565,15 @@ try {
 }
 ```
 
-## notifySaveAsResult<sup>10+</sup>
+## notifySaveAsResult<sup>(deprecated)</sup>
 
 notifySaveAsResult(parameter: AbilityResult, requestCode: number): Promise\<void>
 
 Used by the [Data Loss Prevention (DLP)](../apis-data-protection-kit/js-apis-dlppermission.md) management application to notify a sandbox application of the data saving result. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> This API is supported since API version 10 and deprecated since API version 24.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -827,6 +838,8 @@ notifyDebugAssertResult(sessionId: string, status: UserStatus): Promise\<void>
 
 Notifies the application of the assertion result. This API uses a promise to return the result.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System API**: This is a system API.
 
 **Required permissions**: ohos.permission.NOTIFY_DEBUG_ASSERT_RESULT
@@ -884,6 +897,8 @@ export default class UiExtAbility extends UIExtensionAbility {
 isEmbeddedOpenAllowed(context: Context, appId: string): Promise\<boolean>
 
 Checks whether the [EmbeddableUIAbility](js-apis-app-ability-embeddableUIAbility.md) can be started in embedded mode. This API uses a promise to return the result.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System API**: This is a system API.
 
@@ -997,6 +1012,8 @@ preloadUIExtensionAbility(want: Want): Promise\<number>
 
 Preloads a [UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md) instance and returns the instance ID. This API uses a promise to return the result.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System API**: This is a system API.
 
 **Required permissions**: ohos.permission.PRELOAD_UI_EXTENSION_ABILITY
@@ -1064,6 +1081,8 @@ clearPreloadedUIExtensionAbility(preloadId: number): Promise\<void>
 
 Clears a [UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md) instance. This API uses a promise to return the result.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System API**: This is a system API.
 
 **Required permissions**: ohos.permission.PRELOAD_UI_EXTENSION_ABILITY
@@ -1122,6 +1141,8 @@ clearPreloadedUIExtensionAbilities(): Promise\<void>
 
 Clears all preloaded [UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md) instances in the current process. This API uses a promise to return the result.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System API**: This is a system API.
 
 **Required permissions**: ohos.permission.PRELOAD_UI_EXTENSION_ABILITY
@@ -1171,6 +1192,8 @@ onPreloadedUIExtensionAbilityLoaded(callback: PreloadedUIExtensionAbilityLoadedF
 
 Subscribes to loaded events of a preloaded [UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md) instance in the current process.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System API**: This is a system API.
 
 **Required permissions**: ohos.permission.PRELOAD_UI_EXTENSION_ABILITY
@@ -1218,6 +1241,8 @@ try {
 offPreloadedUIExtensionAbilityLoaded(callback?: PreloadedUIExtensionAbilityLoadedFn): void
 
 Unsubscribes from loaded events of a preloaded [UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md) instance in the current process.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System API**: This is a system API.
 
@@ -1267,6 +1292,8 @@ onPreloadedUIExtensionAbilityDestroyed(callback: PreloadedUIExtensionAbilityDest
 
 Subscribes to destroyed events of a preloaded [UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md) instance in the current process.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System API**: This is a system API.
 
 **Required permissions**: ohos.permission.PRELOAD_UI_EXTENSION_ABILITY
@@ -1315,6 +1342,8 @@ offPreloadedUIExtensionAbilityDestroyed(callback?: PreloadedUIExtensionAbilityDe
 
 Unsubscribes from loaded events of a preloaded [UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md) instance in the current process.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System API**: This is a system API.
 
 **Required permissions**: ohos.permission.PRELOAD_UI_EXTENSION_ABILITY
@@ -1361,6 +1390,8 @@ try {
 
 Describes the rule for launching an embedded atomic service.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
@@ -1375,6 +1406,8 @@ Describes the rule for launching an embedded atomic service.
 queryAtomicServiceStartupRule(context: Context, appId: string): Promise\<AtomicServiceStartupRule>
 
 Obtains the rule for launching an [EmbeddableUIAbility](js-apis-app-ability-embeddableUIAbility.md) in embedded mode. This API uses a promise to return the result.
+
+**Model restriction:** This API can be used only in the stage model.
 
 **System API**: This is a system API.
 
@@ -1454,7 +1487,7 @@ Defines the level-2 module AbilityForegroundStateObserver.
 
 | Type| Description|
 | --- | --- |
-| [_AbilityForegroundStateObserver.default](js-apis-inner-application-abilityForegroundStateObserver-sys.md) | AbilityForegroundStateObserver, a level-2 module that defines a listener to observe application foreground and background state changes.|
+| [_AbilityForegroundStateObserver](js-apis-inner-application-abilityForegroundStateObserver-sys.md).default | Secondary module of AbilityForegroundStateObserver, which defines the foreground/background state listener of an application. |
 
 ## PreloadedUIExtensionAbilityDestroyedFn<sup>23+</sup>
 
@@ -1462,9 +1495,11 @@ type PreloadedUIExtensionAbilityDestroyedFn = (preloadId: number) => void
 
 Defines the callback function when the preloaded [UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md) instance is destroyed.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System API**: This is a system API.
 
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+**System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 | Name   | Type           | Mandatory| Description|
 |--------|---------------|---| -------- |
@@ -1476,9 +1511,11 @@ type PreloadedUIExtensionAbilityLoadedFn = (preloadId: number) => void
 
 Defines the callback function when the preloaded [UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md) instance is loaded.
 
+**Model restriction:** This API can be used only in the stage model.
+
 **System API**: This is a system API.
 
-**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+**System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 | Name   | Type           | Mandatory| Description|
 |--------|---------------|---| -------- |
