@@ -8,7 +8,7 @@
 
 ## 场景介绍
 
-PIR协议（隐私信息检索，Private Information Retrieval）用于检索与数据集中匹配的键，而不显示键或检索到的值。适用于在不暴露查询条件的前提下从对方数据集中获取匹配项附加值的场景，例如根据标识查询配置信息、根据凭证查询权益信息等。
+PIR协议（隐私信息检索，Private Information Retrieval）适用于在不暴露查询条件的前提下从对方数据集中获取匹配项附加值的场景，例如根据标识查询配置信息、根据凭证查询权益信息等。
 
 通过PIR协议进行隐私信息检索，包含[生成隐私目标](../../reference/apis-data-protection-kit/js-apis-privacyComputation.md#privacycomputationgenprivacytarget)、[隐私搜索](../../reference/apis-data-protection-kit/js-apis-privacyComputation.md#privacycomputationprivacysearch)、[获取搜索结果](../../reference/apis-data-protection-kit/js-apis-privacyComputation.md#privacycomputationgetsearchresult)三个步骤。PIR协议在命中时返回匹配元素的附加值。
 
@@ -18,7 +18,6 @@ PIR协议（隐私信息检索，Private Information Retrieval）用于检索与
 
    ```TypeScript
    import { privacyComputation } from '@kit.DataProtectionKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
 2. 发起端生成隐私目标。
@@ -50,7 +49,8 @@ PIR协议（隐私信息检索，Private Information Retrieval）用于检索与
      },
      {
        elemKey: new Uint8Array([0x07, 0x08, 0x09]),
-       hashAlg: privacyComputation.HashAlg.SHA256
+       hashAlg: privacyComputation.HashAlg.SHA256,
+       elemValue: new Uint8Array([0xB1, 0xB2])
      }
    ];
    const searchResult: privacyComputation.PrivacySearchResult =

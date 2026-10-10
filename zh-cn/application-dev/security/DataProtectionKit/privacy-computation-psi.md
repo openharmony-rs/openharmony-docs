@@ -8,7 +8,7 @@
 
 ## 场景介绍
 
-PSI协议（隐私集合求交，Private Set Intersection）用于判断目标元素是否存在于对方数据集中，而不显示元素或数据集内容。适用于两方在不交换明文集合的情况下判断是否存在相同元素的场景，例如联系人匹配、好友推荐等。
+PSI协议（隐私集合求交，Private Set Intersection）用于在不显示元素或数据集内容的前提下，判断目标元素是否存在于对方数据集中。适用于两方不可 交换明文集合的情况，例如联系人匹配、好友推荐等。
 
 通过PSI协议进行隐私集合求交，包含[生成隐私目标](../../reference/apis-data-protection-kit/js-apis-privacyComputation.md#privacycomputationgenprivacytarget)、[隐私搜索](../../reference/apis-data-protection-kit/js-apis-privacyComputation.md#privacycomputationprivacysearch)、[获取搜索结果](../../reference/apis-data-protection-kit/js-apis-privacyComputation.md#privacycomputationgetsearchresult)三个步骤。PSI协议仅返回是否命中，不返回附加值；如需检索匹配项的附加值，请使用[PIR协议](privacy-computation-pir.md)。
 
@@ -18,7 +18,6 @@ PSI协议（隐私集合求交，Private Set Intersection）用于判断目标�
 
    ```TypeScript
    import { privacyComputation } from '@kit.DataProtectionKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
 2. 发起端生成隐私目标。
