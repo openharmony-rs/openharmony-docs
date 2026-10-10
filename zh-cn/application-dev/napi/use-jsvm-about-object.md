@@ -216,29 +216,29 @@ static JSVM_Value ObjectSeal(JSVM_Env env, JSVM_CallbackInfo info)
     size_t argc = 1;
     JSVM_Value argv[1] = {nullptr};
     OH_JSVM_GetCbInfo(env, info, &argc, argv, nullptr, nullptr);
-    // 调用接口OH_JSVM_ObjectSeal将传入的object封闭，使其无法添加新的属性
+    // 调用接口OH_JSVM_ObjectSeal将传入的object密封，使其无法添加新的属性
     JSVM_Status status = OH_JSVM_ObjectSeal(env, argv[0]);
     if (status == JSVM_OK) {
         OH_LOG_INFO(LOG_APP, "Test JSVM OH_JSVM_ObjectSeal success");
     }
-    // 检查封闭后的对象中属性能否修改、删除、新增
-    // 封闭后对象修改
+    // 检查密封后的对象中属性能否修改、删除、新增
+    // 密封后对象修改
     JSVM_Value changeValue = nullptr;
     OH_JSVM_CreateInt32(env, TEST_VALUE, &changeValue);
     OH_JSVM_SetNamedProperty(env, argv[0], "data", changeValue);
-    // 封闭后对象删除
+    // 密封后对象删除
     JSVM_Value deleteProperty = nullptr;
     OH_JSVM_CreateStringUtf8(env, "message", JSVM_AUTO_LENGTH, &deleteProperty);
     bool result = false;
     OH_JSVM_DeleteProperty(env, argv[0], deleteProperty, &result);
     if (result) {
-        OH_LOG_INFO(LOG_APP, "Test JSVM OH_JSVM_ObjectSeal failed");
+        OH_LOG_ERROR(LOG_APP, "Test JSVM OH_JSVM_ObjectSeal failed");
     }
-    // 封闭后对象新增
+    // 密封后对象新增
     JSVM_Value addValue = nullptr;
     OH_JSVM_CreateStringUtf8(env, "addValue", JSVM_AUTO_LENGTH, &addValue);
     OH_JSVM_SetNamedProperty(env, argv[0], "newProperty", addValue);
-    // 将封闭后改动过的对象返回JavaScript侧
+    // 将密封后改动过的对象返回JavaScript侧
     return argv[0];
 }
 // ObjectSeal注册回调
@@ -653,7 +653,7 @@ static JSVM_Value CreateSymbol(JSVM_Env env, JSVM_CallbackInfo info)
     if (valuetypeSymbol == JSVM_SYMBOL) {
         OH_LOG_INFO(LOG_APP, "JSVM CreateSymbol Success");
     } else {
-        OH_LOG_INFO(LOG_APP, "JSVM CreateSymbol fail");
+        OH_LOG_ERROR(LOG_APP, "JSVM CreateSymbol fail");
     }
     return returnSymbol;
 }

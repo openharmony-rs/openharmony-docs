@@ -69,7 +69,7 @@ static JSVM_CallbackStruct param[] = {
 
 static JSVM_CallbackStruct *method = param;
 
-// wrapperObject方法别名，供JS调用
+// testExternalString方法别名，供JS调用
 static JSVM_PropertyDescriptor descriptor[] = {
     {"testExternalString", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
