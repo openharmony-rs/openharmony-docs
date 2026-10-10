@@ -72,13 +72,13 @@ ArkTS-Dyn示例：
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
   import { abilityAccessCtrl } from '@kit.AbilityKit';
-  
+
   @Entry
   @Component
   struct WebComponent {
     controller: webview.WebviewController = new webview.WebviewController();
     uiContext: UIContext = this.getUIContext();
-  
+
     aboutToAppear() {
       // 配置Web开启调试模式
       webview.WebviewController.setWebDebuggingAccess(true);
@@ -93,7 +93,7 @@ ArkTS-Dyn示例：
         console.error(`Failed to request permissions from user. Code is ${error.code}, message is ${error.message}`);
       })
     }
-  
+
     build() {
       Column() {
         Web({ src: $rawfile('index.html'), controller: this.controller })
