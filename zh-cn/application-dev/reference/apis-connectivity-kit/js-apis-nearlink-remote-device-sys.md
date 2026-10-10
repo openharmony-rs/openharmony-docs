@@ -68,6 +68,8 @@ onPairingRequest(callback: Callback&lt;PairingRequestParam&gt;): void
 
 事件默认返回随机地址；应用若具备系统权限ohos.permission.GET_NEARLINK_PEER_MAC，则返回设备真实地址。
 
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -112,6 +114,8 @@ try {
 offPairingRequest(callback?: Callback&lt;PairingRequestParam&gt;): void
 
 取消订阅配对请求事件。使用callback异步回调。
+
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
 
 **起始版本：** 26.0.0
 

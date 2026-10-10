@@ -26,6 +26,8 @@ getState(): NearlinkState
 
 查询星闪开关状态。
 
+调用此接口前，您可以调用[isNearLinkSupported](#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -102,6 +104,8 @@ getLocalName(): string
 
 查询本机星闪名称。
 
+调用此接口前，您可以调用[isNearLinkSupported](#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -146,6 +150,8 @@ try {
 getPairedDevices(): string[]
 
 获取与当前设备配对的设备列表。
+
+调用此接口前，您可以调用[isNearLinkSupported](#managerisnearlinksupported)查询设备是否支持星闪。
 
 **起始版本：** 26.0.0
 
@@ -195,6 +201,8 @@ try {
 onStateChange(callback: Callback&lt;NearlinkState&gt;): void
 
 订阅星闪开关状态变化事件。使用callback异步回调。
+
+调用此接口前，您可以调用[isNearLinkSupported](#managerisnearlinksupported)查询设备是否支持星闪。
 
 **起始版本：** 26.0.0
 
@@ -246,6 +254,8 @@ try {
 offStateChange(callback?: Callback&lt;NearlinkState&gt;): void
 
 取消订阅星闪开关状态变化事件。使用callback异步回调。
+
+调用此接口前，您可以调用[isNearLinkSupported](#managerisnearlinksupported)查询设备是否支持星闪。
 
 **起始版本：** 26.0.0
 

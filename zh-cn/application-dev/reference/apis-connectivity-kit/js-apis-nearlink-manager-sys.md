@@ -30,6 +30,8 @@ enable(): void
 
 打开星闪。
 
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -70,6 +72,8 @@ disable(): void
 
 关闭星闪。
 
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -108,6 +112,8 @@ try {
 getLocalAddress(): string
 
 查询本机MAC地址。
+
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
 
 **起始版本：** 26.0.0
 
@@ -155,6 +161,8 @@ try {
 factoryReset(): Promise&lt;void&gt;
 
 恢复出厂设置。使用Promise异步回调。
+
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
 
 **起始版本：** 26.0.0
 
@@ -221,6 +229,8 @@ try {
 setConnectionMode(mode: ConnectionMode, duration: number): Promise&lt;void&gt;
 
 设置连接模式。使用Promise异步回调。
+
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
 
 **起始版本：** 26.0.0
 
