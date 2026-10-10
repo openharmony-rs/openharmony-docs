@@ -86,7 +86,7 @@ static JSVM_CallbackStruct param[] = {
 
 static JSVM_CallbackStruct *method = param;
 
-// wrapperObject方法别名，供JS调用
+// privateTest方法别名，供JS调用
 static JSVM_PropertyDescriptor descriptor[] = {
     {"privateTest", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
