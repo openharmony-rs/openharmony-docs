@@ -1,8 +1,8 @@
 # ArkTS运行时常见问题
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @DaiHuina1997-->
-<!--Designer: @yao_dashuai-->
+<!--Owner: @xiongluo96-->
+<!--Designer: @xiongluo96-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
@@ -140,7 +140,7 @@ let reg2 = /a(?:x)?$/;
 let reg3 = /a(?:x){0,1}$/;
 ```
 
-### TypedArray.prototype.map触发内联缓存优化后，在回调中将数值number转为浮点数number与期望不一致
+### TypedArray.prototype.map()接口触发内联缓存优化后，在回调中将数值number转为浮点数number与期望不一致
 
 <!-- @[test_int32ArrayMapIssue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Additional.ets) -->   
 
@@ -158,7 +158,7 @@ console.info('result[0]:', result[0]);
 // 实际输出: result[0]:104
 ```
 
-规避方案：使用Array.from将TypedArray先转换为普通Array，再处理number。
+规避方案：使用Array.from()接口将TypedArray先转换为普通Array，再处理number。
 
 <!-- @[test_int32ArrayMapWorkaround](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Additional.ets) -->  
 
@@ -175,9 +175,9 @@ console.info('result[0]:', result[0]);
 // 输出: result[0]:100
 ```
 
-### Number.parseFloat解析浮点数number类型非规格化数值与期望不一致
+### Number.parseFloat()接口解析浮点数number类型非规格化数值与期望不一致
 
-parseFloat接口不支持对非规格化数进行解析。当输入字符串表示一个浮点数number类型的非规格化数，一律输出0。
+parseFloat()接口不支持对非规格化数进行解析。当输入字符串表示一个浮点数number类型的非规格化数，一律输出0。
 
 <!-- @[test_parseFloatTinyNumber](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Additional.ets) -->  
 
@@ -188,9 +188,9 @@ console.info('testcase: ', result);
 // 实际输出: testcase: 0
 ```
 
-规避方案：暂无，开发者应避免使用parseFloat接口对非规格化数进行解析。
+规避方案：暂无，开发者应避免使用parseFloat()接口对非规格化数进行解析。
 
-### Set constructor入参为多维数组的解析与期望不一致
+### Set构造函数入参为多维数组的解析与期望不一致
 
 <!-- @[test_setArrayFrom](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Additional.ets) -->  
 
@@ -204,9 +204,9 @@ console.info('res: ', result);
 // 实际输出: res: [2,4]
 ```
 
-规避方案：暂无，开发者应避免构造set时入参为多维数组。
+规避方案：暂无，开发者应避免构造Set对象时入参为多维数组。
 
-### Object.entries处理Uint8Array与Uint16Array数组结果与期望不一致
+### Object.entries()接口处理Uint8Array与Uint16Array数组结果与期望不一致
 
 <!-- @[test_rangeError](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/TestArray.js) -->  
 
@@ -217,7 +217,7 @@ try {
   const result = Object.entries(typedArr);
   console.info('no error throw');
 } catch(e) {
-  console.info(e);
+  console.error(e);
 }
 // 期望输出：no error throw
 // 实际输出: RangeError: object entries is not supported IsJSUint8Array or IsJSUint16Array
@@ -232,13 +232,13 @@ try {
    const result = Object.entries(typedArr);
    console.info('no error throw');
 } catch (e) {
-   console.info(e);
+   console.error(e);
 }
 // 期望输出：no error throw
 // 实际输出: RangeError: object entries is not supported IsJSUint8Array or IsJSUint16Array
 ```
 
-规避方案：使用Array.from将TypedArray先转换为普通Array，再使用Object.entries。
+规避方案：使用Array.from()接口将TypedArray先转换为普通Array，再使用Object.entries()接口。
 
 <!-- @[test_nothrow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/TestArray.js) -->   
 
@@ -250,14 +250,14 @@ try {
   const result = Object.entries(normalArr1);
   console.info('no error throw');
 } catch(e) {
-  console.info(e);
+  console.error(e);
 }
 // 输出：no error throw
 ```
 
-### 字符串 `replace` 接口对于第一个参数为空字符串的场景与预期不一致
+### 字符串 `replace()` 接口对于第一个参数为空字符串的场景与预期不一致
 
-在使用字符串replace接口时，如果第一个参数是空字符串，则直接返回原始字符串。
+在使用字符串replace()接口时，如果第一个参数是空字符串，则直接返回原始字符串。
 
 <!-- @[test_beforeStringReplaceWithEmptySearchValue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/Scene.ets) -->    
 
@@ -345,7 +345,7 @@ console.info('res[0] is: ', res[0].toString());
 
 ### ArkUI使用场景
 
-ArkUI状态管理框架会为使用状态变量装饰器（如@State、@Trace、@Local）装饰的Array添加一层代理，用于观测API调用产生的变化。如果状态装饰器与Array组合，并且调用Array.flatMap，会出现如下问题。
+ArkUI状态管理框架会为使用状态变量装饰器（如@State、@Trace、@Local）装饰的Array添加一层代理，用于观测API调用产生的变化。如果状态装饰器与Array组合，并且调用Array.flatMap()接口，会出现如下问题。
 
 以状态管理V2为例：
 
@@ -372,7 +372,7 @@ struct Index {
 }
 ```
 
-### Array.flatMap规避方案
+### Array.flatMap()接口规避方案
 
 避免使用Array.flatMap()接口，改为调用Array.map()接口后再调用深度为1的Array.flat()接口。以上文ArkTS使用场景为例：
 
@@ -386,9 +386,9 @@ let res = arr3.flatMap(x => x);
 let res = arr3.map(x => x).flat();
 ```
 
-### Proxy的handler对象中key类型与EcmaScript规范定义不一致
+### Proxy的handler对象中key类型与ECMAScript规范定义不一致
 
-在Proxy对象的handler函数中，对于数字类型的key，ArkTS当前实现是采用保持数字类型不变，但是按照EcmaScript规范，应当转为string类型。
+在Proxy对象的handler函数中，对于数字类型的key，ArkTS当前实现是采用保持数字类型不变，但是按照ECMAScript规范，应当转为string类型。
 
 <!-- @[testThree_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/TestArray.js) -->
 
@@ -479,9 +479,9 @@ let res = arr3.map(x => x).flat();
 >
 > 上述demo中部分语法，如 "3 in px", "delete px[2]", "Reflect.deleteProperty"，在ets文件中不可用。
 
-### JSON.stringify的replacer函数中数组索引的key类型与EcmaScript规范定义不一致
+### JSON.stringify()接口的replacer函数中数组索引的key类型与ECMAScript规范定义不一致
 
-JSON.stringify的replacer函数中，对于数组索引key的类型，ArkTS当前实现是采用保持数字类型不变，但是按照EcmaScript规范，应当转为string类型。
+JSON.stringify()接口的replacer函数中，对于数组索引key的类型，ArkTS当前实现是采用保持数字类型不变，但是按照ECMAScript规范，应当转为string类型。
 
 <!-- @[testOne_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/TestArray.js) -->  
 
