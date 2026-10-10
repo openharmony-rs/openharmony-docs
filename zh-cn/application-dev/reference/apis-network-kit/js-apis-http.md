@@ -206,7 +206,7 @@ request(url: string, callback: AsyncCallback\<HttpResponse\>): void
 
 | 参数名   | 类型                                           | 必填 | 说明                    |
 | -------- | ---------------------------------------------- | ---- | ---------------------- |
-| url      | string                                         | 是   | 发起网络请求的URL地址。示例：https://www.test.com |
+| url      | string                                         | 是   | 发起网络请求的URL地址。示例：`https://www.test.com` |
 | callback | AsyncCallback\<[HttpResponse](#httpresponse)\> | 是   | 回调函数。    |
 
 **错误码：**
