@@ -56,19 +56,39 @@
    <!-- @[event_subscriber_create_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_subscribe.cpp) -->
    
    ``` C++
+   static bool CheckRetAndDestroySub(CommonEvent_SubscribeInfo *info, int32_t ret, const char *apiName)
+   {
+       if (ret != COMMONEVENT_ERR_OK) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, 1, "CES_TEST", "%{public}s failed, ret <%{public}d>.", apiName, ret);
+           OH_CommonEvent_DestroySubscribeInfo(info);
+           return true;
+       }
+       return false;
+   }
+   
    CommonEvent_SubscribeInfo *CreateSubscribeInfo(const char *events[], int32_t eventsNum, const char *permission,
                                                   const char *bundleName)
    {
        int32_t ret = -1;
        // 创建订阅者信息
        CommonEvent_SubscribeInfo *info = OH_CommonEvent_CreateSubscribeInfo(events, eventsNum);
+       if (info == nullptr) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, 1, "CES_TEST", "OH_CommonEvent_CreateSubscribeInfo failed, info is null.");
+           return nullptr;
+       }
    
        // 设置发布者权限
        ret = OH_CommonEvent_SetPublisherPermission(info, permission);
+       if (CheckRetAndDestroySub(info, ret, "OH_CommonEvent_SetPublisherPermission")) {
+           return nullptr;
+       }
        OH_LOG_Print(LOG_APP, LOG_INFO, 1, "CES_TEST", "OH_CommonEvent_SetPublisherPermission ret <%{public}d>.", ret);
    
        // 设置发布者包名称
        ret = OH_CommonEvent_SetPublisherBundleName(info, bundleName);
+       if (CheckRetAndDestroySub(info, ret, "OH_CommonEvent_SetPublisherBundleName")) {
+           return nullptr;
+       }
        OH_LOG_Print(LOG_APP, LOG_INFO, 1, "CES_TEST", "OH_CommonEvent_SetPublisherBundleName ret <%{public}d>.", ret);
        return info;
    }
@@ -129,11 +149,11 @@
    
        // 补充说明：除int类型外，还支持获取以下多种类型的公共事件附加信息，调用对应鸿蒙API即可：
        // - 基础数据类型：bool（OH_CommonEvent_GetBoolFromParameters）、long（OH_CommonEvent_GetLongFromParameters）、
-       // double（OH_CommonEvent_GetDoubleFromParameters）、char（OH_CommonEvent_GetCharFromParameters）
+       //   double（OH_CommonEvent_GetDoubleFromParameters）、char（OH_CommonEvent_GetCharFromParameters）
        // -
        // 数组数据类型：int数组（OH_CommonEvent_GetIntArrayFromParameters）、long数组（OH_CommonEvent_GetLongArrayFromParameters）、
-       // double数组（OH_CommonEvent_GetDoubleArrayFromParameters）、char数组（OH_CommonEvent_GetCharArrayFromParameters）、
-       // bool数组（OH_CommonEvent_GetBoolArrayFromParameters）
+       //   double数组（OH_CommonEvent_GetDoubleArrayFromParameters）、char数组（OH_CommonEvent_GetCharArrayFromParameters）、
+       //   bool数组（OH_CommonEvent_GetBoolArrayFromParameters）
        // 所有类型均支持通过OH_CommonEvent_HasKeyInParameters先校验键是否存在，避免获取失败
    }
    ```

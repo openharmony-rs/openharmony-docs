@@ -5,7 +5,7 @@
 <!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-09-29T09:44:18.873Z pushedAt=2026-10-08T02:39:02.495Z -->
+<!-- md-trans-meta sourceCommit=54656b3da3e41e2ba7f2b57573523f0dbf41c1e3 translatedAt=2026-10-08T09:13:11.319Z pushedAt=2026-10-09T03:03:08.712Z -->
 
 This module encapsulates the data and attributes carried when a common event is published, including the event data (code/data), subscriber permissions, subscriber bundle name, whether the event is ordered or sticky, and additional parameters. It allows the publisher to precisely control the common event recipients, event delivery sequence, and sticky feature. This module is applicable to scenarios where the recipients need to be specified, custom event data needs to be transferred, and ordered/[sticky common events](../../basic-services/common-event/common-event-glossary.md#sticky-common-event) need to be implemented.
 
@@ -21,7 +21,7 @@ This module encapsulates the data and attributes carried when a common event is 
 
 | Name                 | Type                | Read-Only| Optional| Description                        |
 | --------------------- | -------------------- | ---- | ---- | ---------------------------- |
-| bundleName            | string               | No  | Yes  | Bundle name of the subscriber, which is used to specify the subscriber to whom the common event is published. This parameter is left empty by default. If this parameter is left empty, the bundle name of the subscriber is not specified, and all subscribers can receive the common event.<br>**Atomic service API:** This API can be used in atomic services since API version 11. |
+| bundleName            | string               | No  | Yes  | Bundle name of the subscriber, which is used to specify the subscriber to whom the common event is published. This parameter is left empty by default. If this parameter is left empty, the bundle name of the subscriber is not specified, and all subscribers can receive the common event. The value can contain a maximum of 254 bytes. Excess content will be truncated.<br>**Atomic service API:** This API can be used in atomic services since API version 11. |
 | code                  | number               | No  | Yes  | Common event data transferred by the publisher. The default value is **0**.<br>**Atomic service API:** This API can be used in atomic services since API version 11.       |
 | data                  | string               | No  | Yes  | Common event data transferred by the publisher. The data size cannot exceed 64 KB. If the size exceeds 64 KB, the event fails to be published. This parameter is left empty by default.<br>**Atomic service API:** This API can be used in atomic services since API version 11. |
 | subscriberPermissions | Array\<string>       | No  | Yes  | Subscriber permissions. Only subscribers with the specified permissions can receive the common event. This parameter is left empty by default. If this parameter is left empty, the permissions of the subscriber are not specified, and all subscribers can receive the common event.<br>**Atomic service API:** This API can be used in atomic services since API version 11.             |

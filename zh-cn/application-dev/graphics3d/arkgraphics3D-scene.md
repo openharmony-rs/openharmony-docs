@@ -47,8 +47,8 @@ glTF模型中引用的纹理图片支持以下格式：
    
    ``` TypeScript
    if (this.scene == null) {
-     // Load the model and place the gltf file in the related path. Use the actual path during loading.
-     // Switched from .gltf to .glb; same content, different format
+     // 加载模型，并将 gltf 文件放在相关路径下。加载时使用实际路径。
+     // 从 .gltf 切换为 .glb；内容相同，格式不同
      Scene.load($rawfile('gltf/DamagedHelmet/glTF/DamagedHelmet.glb'))
        .then(async (result: Scene) => {
          this.scene = result;
@@ -68,9 +68,9 @@ glTF模型中引用的纹理图片支持以下格式：
    <!-- @[camera_scene_params](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/scene/init.ets) -->
    
    ``` TypeScript
-   // Create a Camera.
+   // 创建一个相机。
    this.cam = await rf.createCamera({ name: 'Camera' });
-   // Set proper camera parameters.
+   // 设置合适的相机参数。
    this.cam.enabled = true;
    this.cam.position.z = 5;
    
@@ -85,7 +85,7 @@ glTF模型中引用的纹理图片支持以下格式：
    
    ``` TypeScript
    if (this.sceneOpt) {
-     // Use Component3D to display the 3D scenario.
+     // 使用 Component3D 显示 3D 场景。
      Component3D(this.sceneOpt);
    } else {
      Text('Loading···');
@@ -136,16 +136,16 @@ ArkGraphics 3D提供了灵活的相机接口，开发者可根据需要动态创
    ``` TypeScript
    let camera: Promise<Camera> = sceneFactory.createCamera(sceneCameraParameter);
    camera.then(async (cameraEntity: Camera) => {
-     // Enable the camera node.
+     // 启用相机节点。
      cameraEntity.enabled = true;
    
-     // Set the camera position.
+     // 设置相机位置。
      cameraEntity.position.z = 5;
    
-     // Set the FoV.
+     // 设置视场角（FoV）。
      cameraEntity.fov = 60 * Math.PI / 180;
    
-     // Set other camera parameters.
+     // 设置其他相机参数。
      // ...
      // ...
    }).catch((error: string) => {
@@ -244,10 +244,10 @@ ArkGraphics 3D提供创建光源及修改光源参数的功能，支持开发者
    ``` TypeScript
    let light: Promise<Light> = sceneFactory.createLight(lightParameter, LightType.DIRECTIONAL);
    light.then(async (lightEntity: Light) => {
-     // Set the color of the directional light.
+     // 设置平行光的颜色。
      lightEntity.color = { r: 0.8, g: 0.1, b: 0.2, a: 1.0 };
    
-     // Set other light parameters.
+     // 设置其他光照参数。
      // ...
      // ...
    }).catch((err: string) => {
@@ -271,7 +271,7 @@ ArkGraphics 3D提供创建光源及修改光源参数的功能，支持开发者
      this.cam = await this.rf.createCamera({ name: 'Camera1' });
      this.cam.enabled = true;
      this.cam.position.z = 5;
-     // Initialize color value
+     // 初始化颜色值
      this.red = this.light.color.r;
      this.green = this.light.color.g;
      this.blue = this.light.color.b;

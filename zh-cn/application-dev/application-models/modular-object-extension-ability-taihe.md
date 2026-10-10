@@ -7,7 +7,7 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-从API版本26.0.0开始，通过[Taihe](ability-terminology.md#taihe)可自动生成ModularObjectExtensionAbility（相关C API定义见[modular_object_extension_ability.h](../reference/apis-ability-kit/capi-modular-object-extension-ability-h.md)）所需的Proxy/Stub代码及类型库文件，屏蔽IPC通信底层细节（如参数序列化/反序列化、消息码分发等），使开发者专注于接口设计与业务逻辑，大幅简化ModularObjectExtensionAbility的开发流程。
+从API版本26.0.0开始，通过[Taihe](ability-terminology.md#taihe)可自动生成ModularObjectExtensionAbility（相关C API定义见[modular_object_extension_ability.h](../reference/apis-ability-kit/capi-modular-object-extension-ability-h.md)）所需的Proxy/Stub代码及类型库文件，屏蔽IPC通信底层细节（如参数序列化/反序列化、消息码分发等），使开发者专注于接口设计与业务逻辑，大幅简化ModularObjectExtensionAbility的开发流程。taihec工具的获取方式与使用说明请参见[命令行使用](#命令行使用)。
 
 ## 命令行使用
 
@@ -15,7 +15,7 @@ Taihe提供了核心编译器工具[taihec](ability-terminology.md#taihec)，用
 
 **taihec工具获取：**
 
-taihec工具随SDK发布，位于DevEco Studio/sdk/default/openharmony/toolchains/taihe/bin目录下。
+taihec工具随SDK内置于API版本26.0.0及以上的[DevEco Studio](https://developer.huawei.com/consumer/cn/download/deveco-studio)中，无需额外下载；其默认位于DevEco Studio/sdk/default/openharmony/toolchains/taihe/bin目录下（macOS系统则位于DevEco Studio/Contents对应的SDK路径下）。
 
 **命令基本格式：**
 

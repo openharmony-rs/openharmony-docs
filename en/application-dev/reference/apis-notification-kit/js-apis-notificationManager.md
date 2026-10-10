@@ -2,12 +2,12 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=4bb0b56d7d67b2ab3ff0955bce487aba3399fade translatedAt=2026-09-22T02:28:48.131Z pushedAt=2026-09-22T08:29:58.380Z -->
+<!-- md-trans-meta sourceCommit=d92fd96c7713dc18450281df98f1c9ed5f77b2c9 translatedAt=2026-10-08T02:29:53.617Z pushedAt=2026-10-08T10:04:03.447Z -->
 
-This module provides notification management capabilities. Applications can use this module to implement the complete lifecycle management of notifications, including publishing, updating, and canceling notifications; creating and querying [notification slots](../../notification/notification-glossary.md#notification-slot); querying and requesting the authorization status of the notification capability; setting app badges; and querying existing notifications in the [notification center](../../notification/notification-glossary.md#notification-center-notification-center).
+This module provides notification management capabilities. Applications can use this module to implement the complete lifecycle management of notifications, including publishing, updating, and canceling notifications; creating and querying [notification slots](../../notification/notification-glossary.md#notification-slot); querying and requesting the authorization status of the notification capability; setting app badges; and querying existing notifications in the [notification center](../../notification/notification-glossary.md#notification-center).
 
 **APIs used in combination**:
 
@@ -23,7 +23,7 @@ The APIs of this module follow the following workflow of notifications: Authoriz
 
 5. **Badge management process**: Set the badge number through **setBadgeNumber**, or when publishing a notification through the **publish** API, carry the number of badges to be incremented in the **badgeNumber** field of [NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1).
 
-6. **Stored notification query process**: Obtain the number of stored notifications for this application in the notification center through **getActiveNotificationCount**, and obtain the details of stored notifications for this application in the notification center through **getActiveNotifications**.
+6. **Existing notification query process**: Obtain the number of existing notifications for this application in the notification center through **getActiveNotificationCount**, and obtain the details of existing notifications for this application in the notification center through **getActiveNotifications**.
 
 
 > **NOTE**
@@ -401,7 +401,7 @@ addSlot(type: SlotType, callback: AsyncCallback\<void\>): void
 
 Creates a [notification slot](../../notification/notification-glossary.md#notification-slot) of the specified type. This API uses an asynchronous callback.
 
-The notification slot [NotificationSlot](js-apis-inner-notification-notificationSlot.md#notificationslot-1) defines the reminder type (such as alert sound, vibration, and banner) and level of a notification. Before publishing a notification, the application needs to create a corresponding type of notification slot first, or the system will automatically create a corresponding type of notification slot when the notification is published. Only one notification slot of the same type can be created.
+The notification slot [NotificationSlot](js-apis-inner-notification-notificationSlot.md#notificationslot-1) defines the reminder mode (such as alert sound, vibration, and banner) and level of a notification. Before publishing a notification, the application needs to create a corresponding type of notification slot first, or the system will automatically create a corresponding type of notification slot when the notification is published. Only one notification slot of the same type can be created.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -409,7 +409,7 @@ The notification slot [NotificationSlot](js-apis-inner-notification-notification
 
 | Name    | Type                 | Mandatory| Description                  |
 | -------- | --------------------- | ---- | ---------------------- |
-| type     | [SlotType](#slottype) | Yes   | Notification slot type to create. Different slot types correspond to different default [SlotLevel](#slotlevel) values, which affect the notification alert method. For example, **SOCIAL_COMMUNICATION** corresponds to **LEVEL_HIGH** (status bar icon + banner + sound), and **CONTENT_INFORMATION** corresponds to **LEVEL_MIN** (no status bar icon + no banner + no sound). |
+| type     | [SlotType](#slottype) | Yes   | Notification slot type to create. Different slot types correspond to different default [SlotLevel](#slotlevel) values, which affect the notification reminder mode. For example, **SOCIAL_COMMUNICATION** corresponds to **LEVEL_HIGH** (status bar icon + banner + sound), and **CONTENT_INFORMATION** corresponds to **LEVEL_MIN** (no status bar icon + no banner + no sound). |
 | callback | AsyncCallback\<void\> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.  |
 
 **Error codes**
@@ -430,14 +430,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // addSlot callback
-let addSlotCallBack = (err: BusinessError): void => {
+let addSlotCallback = (err: BusinessError): void => {
   if (err) {
     console.error(`Failed to add slot. Code is ${err.code}, message is ${err.message}`);
   } else {
     console.info(`Succeeded in adding slot.`);
   }
 }
-notificationManager.addSlot(notificationManager.SlotType.SOCIAL_COMMUNICATION, addSlotCallBack);
+notificationManager.addSlot(notificationManager.SlotType.SOCIAL_COMMUNICATION, addSlotCallback);
 ```
 
 ## notificationManager.addSlot
@@ -446,7 +446,7 @@ addSlot(type: SlotType): Promise\<void\>
 
 Creates a [notification slot](../../notification/notification-glossary.md#notification-slot) of a specified type. This API uses a promise to return the result.
 
-The notification slot [NotificationSlot](js-apis-inner-notification-notificationSlot.md#notificationslot-1) defines the reminder type (such as alert sound, vibration, and banner) and level of a notification. Before publishing a notification, the application needs to create a corresponding type of notification slot first, or the system will automatically create a corresponding type of notification slot when the notification is published. Only one notification slot of the same type can be created.
+The notification slot [NotificationSlot](js-apis-inner-notification-notificationSlot.md#notificationslot-1) defines the reminder mode (such as alert sound, vibration, and banner) and level of a notification. Before publishing a notification, the application needs to create a corresponding type of notification slot first, or the system will automatically create a corresponding type of notification slot when the notification is published. Only one notification slot of the same type can be created.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -454,7 +454,7 @@ The notification slot [NotificationSlot](js-apis-inner-notification-notification
 
 | Name| Type    | Mandatory| Description                  |
 | ---- | -------- | ---- | ---------------------- |
-| type | [SlotType](#slottype) | Yes | Notification slot type to create. Different slot types correspond to different default [SlotLevel](#slotlevel) values, which affect the notification alert method. For example, **SOCIAL_COMMUNICATION** corresponds to **LEVEL_HIGH** (status bar icon + banner + sound), and **CONTENT_INFORMATION** corresponds to **LEVEL_MIN** (no status bar icon + no banner + no sound). |
+| type | [SlotType](#slottype) | Yes | Notification slot type to create. Different slot types correspond to different default [SlotLevel](#slotlevel) values, which affect the notification reminder mode. For example, **SOCIAL_COMMUNICATION** corresponds to **LEVEL_HIGH** (status bar icon + banner + sound), and **CONTENT_INFORMATION** corresponds to **LEVEL_MIN** (no status bar icon + no banner + no sound). |
 
 **Return value**
 
@@ -492,7 +492,7 @@ getSlot(slotType: SlotType, callback: AsyncCallback\<NotificationSlot\>): void
 
 Obtains a [notification slot](../../notification/notification-glossary.md#notification-slot) of a specified type. This API uses an asynchronous callback to return the result.
 
-This API is used to query the detailed configuration information of a created notification slot, including settings such as reminder method, level, and lock screen display. A corresponding type of notification slot must be created first through [addSlot](#notificationmanageraddslot), otherwise the obtained result will be empty.
+This API is used to query the detailed configuration information of a created notification slot, including settings such as reminder mode, level, and lock screen display. A corresponding type of notification slot must be created first through [addSlot](#notificationmanageraddslot), otherwise the obtained result will be empty.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -537,7 +537,7 @@ getSlot(slotType: SlotType): Promise\<NotificationSlot\>
 
 Obtains a [notification slot](../../notification/notification-glossary.md#notification-slot) of a specified type. This API uses a promise to return the result.
 
-This API is used to query the detailed configuration information of a created notification slot, including settings such as reminder method, level, and lock screen display. A corresponding type of notification slot must be created first through [addSlot](#notificationmanageraddslot), otherwise the obtained result will be empty.
+This API is used to query the detailed configuration information of a created notification slot, including settings such as reminder mode, level, and lock screen display. A corresponding type of notification slot must be created first through [addSlot](#notificationmanageraddslot), otherwise the obtained result will be empty.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -583,7 +583,7 @@ getSlots(callback: AsyncCallback\<Array\<NotificationSlot>>): void
 
 Obtains all [notification slots](../../notification/notification-glossary.md#notification-slot) of the current application. This API uses an asynchronous callback to return the result.
 
-This API is used to batch query the configuration information of all notification slots created by the current application, including settings such as the type, reminder method, and level of each slot. This is suitable for scenarios where all slot configurations need to be viewed. The corresponding notification slots must be created through [addSlot](#notificationmanageraddslot) first; otherwise, the obtained result will be empty.
+This API is used to batch query the configuration information of all notification slots created by the current application, including settings such as the type, reminder mode, and level of each slot. This is suitable for scenarios where all slot configurations need to be viewed. The corresponding notification slots must be created through [addSlot](#notificationmanageraddslot) first; otherwise, the obtained result will be empty.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -627,7 +627,7 @@ getSlots(): Promise\<Array\<NotificationSlot>>
 
 Obtains all [notification slots](../../notification/notification-glossary.md#notification-slot) of the current application. This API uses a promise to return the result.
 
-This API is used to batch query the configuration information of all notification slots created by the current application, including settings such as the type, reminder method, and level of each slot. This is suitable for scenarios where all slot configurations need to be viewed. The corresponding notification slots must be created through [addSlot](#notificationmanageraddslot) first; otherwise, the obtained result will be empty.
+This API is used to batch query the configuration information of all notification slots created by the current application, including settings such as the type, reminder mode, and level of each slot. This is suitable for scenarios where all slot configurations need to be viewed. The corresponding notification slots must be created through [addSlot](#notificationmanageraddslot) first; otherwise, the obtained result will be empty.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -635,7 +635,7 @@ This API is used to batch query the configuration information of all notificatio
 
 | Type                                                       | Description                                                        |
 | ----------------------------------------------------------- | ------------------------------------------------------------ |
-| Promise\<Array\<[NotificationSlot](js-apis-inner-notification-notificationSlot.md)\>\> | Promise used to return the result.|
+| Promise\<Array\<[NotificationSlot](js-apis-inner-notification-notificationSlot.md)\>\> | Promise used to return the notification slot object array. |
 
 **Error codes**
 
@@ -921,7 +921,7 @@ isNotificationEnabledSync(): boolean
 
 Synchronously checks the [notification authorization](../../notification/notification-glossary.md#notification-authorization) status of the current application.
 
-This API is used to quickly check whether the current application is allowed to send notifications before publishing. It is synchronous and returns the result immediately after being called, suitable for scenarios where the enabled status needs to be obtained in a synchronous code flow.
+This API is used to quickly check whether the current application is allowed to send notifications before publishing. It is synchronous and returns the result immediately after being called, suitable for scenarios where the notification authorization status needs to be obtained in a synchronous code flow.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -929,7 +929,7 @@ This API is used to quickly check whether the current application is allowed to 
 
 | Type                                                       | Description                                                    |
 | ----------------------------------------------------------- |--------------------------------------------------------- |
-| boolean | Result of the notification enabling status. The value **true** means that the notification is enabled, and **false** means the opposite.|
+| boolean | Result of the notification authorization status. The value **true** means that publishing notifications is allowed, and **false** means that publishing notifications is prohibited. |
 
 **Error codes**
 
@@ -954,7 +954,7 @@ setBadgeNumber(badgeNumber: number): Promise\<void\>
 
 Sets the notification badge number. This API uses a promise to return the result.
 
-A badge is a numeric identifier displayed in the upper right corner of an application's desktop icon, used to prompt the user about the number of unprocessed notifications. After setting, the desktop icon will display the corresponding badge number. This is suitable for scenarios where the number of pending messages needs to be prompted on the desktop icon, such as the number of unread messages and to-do items.
+A badge is a numeric identifier displayed in the upper right corner of an application's home-screen icon, used to prompt the user about the number of unprocessed notifications. After setting, the home-screen icon will display the corresponding badge number. This is suitable for scenarios where the number of pending messages needs to be prompted on the home-screen icon, such as the number of unread messages and to-do items.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -1004,7 +1004,7 @@ setBadgeNumber(badgeNumber: number, callback: AsyncCallback\<void\>): void
 
 Sets the notification badge number. This API uses an asynchronous callback to return the result.
 
-A badge is a numeric identifier displayed in the upper right corner of an application's desktop icon, used to prompt the user about the number of unprocessed notifications. After setting, the desktop icon will display the corresponding badge number. This is suitable for scenarios where the number of pending messages needs to be prompted on the desktop icon, such as the number of unread messages and to-do items.
+A badge is a numeric identifier displayed in the upper right corner of an application's home-screen icon, used to prompt the user about the number of unprocessed notifications. After setting, the home-screen icon will display the corresponding badge number. This is suitable for scenarios where the number of pending messages needs to be prompted on the home-screen icon, such as the number of unread messages and to-do items.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -1052,7 +1052,7 @@ getBadgeNumber(): Promise\<number\>
 
 Obtains the badge number of this application. This API uses a promise to return the result.
 
-This API is used to query the badge number displayed on the current application's desktop icon.
+This API is used to query the badge number displayed on the current application's home-screen icon.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -1060,7 +1060,7 @@ This API is used to query the badge number displayed on the current application'
 
 | Type             | Description                                       |
 | ----------------- | ------------------------------------------- |
-| Promise\<number\> | Promise used to return the badge number. (The value is irrelevant to whether notifications and home-screen badges of this application are enabled.)|
+| Promise\<number\> | Promise used to return the badge number. (The value is irrelevant to whether notifications and home-screen icons of this application are enabled.)|
 
 **Error codes**
 
@@ -1141,7 +1141,7 @@ This API is used to query the number of existing notifications published by the 
 
 | Type             | Description                                       |
 | ----------------- | ------------------------------------------- |
-| Promise\<number\> | Promise used to return the result.|
+| Promise\<number\> | Promise used to return the number of existing notifications of the current application in the notification center. |
 
 **Error codes**
 
@@ -1221,7 +1221,7 @@ This API is used to query the detailed information list of all existing notifica
 
 | Type                                                        | Description                                   |
 | ------------------------------------------------------------ | --------------------------------------- |
-| Promise\<Array\<[NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1)\>\> | Promise used to return the result.|
+| Promise\<Array\<[NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1)\>\> | Promise used to return the list of undeleted notifications of the current application, including detailed information of each notification. |
 
 **Error codes**
 
@@ -1307,7 +1307,7 @@ The notification group `groupName` is the group identifier specified by the `gro
 
 | Name     | Type                 | Mandatory| Description                        |
 | --------- | --------------------- | ---- | ---------------------------- |
-| groupName | string                | Yes  | Name of the notification group, which is specified through [NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1) when the notification is published.|
+| groupName | string                | Yes   | Name of the notification group, which is specified through [NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1) when the notification is published.<br>The size cannot exceed 202 bytes, and the excess part will be truncated. |
 | callback  | AsyncCallback\<void\> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
@@ -1351,7 +1351,7 @@ The notification group `groupName` is the group identifier specified by the `gro
 
 | Name     | Type  | Mandatory| Description          |
 | --------- | ------ | ---- | -------------- |
-| groupName | string | Yes  | Name of the notification group, which is specified through [NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1) when the notification is published.|
+| groupName | string | Yes  | Name of the notification group, which is specified through [NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1) when the notification is published.<br>The size cannot exceed 202 bytes, and the excess part will be truncated. |
 
 **Return value**
 
@@ -1429,7 +1429,7 @@ notificationManager.isSupportTemplate(templateName, isSupportTemplateCallback);
 
 isSupportTemplate(templateName: string): Promise\<boolean\>
 
-Checks whether a specified template is supported before using [NotificationTemplate](./js-apis-inner-notification-notificationTemplate.md) to publish a notification. This API uses a promise to return the result.
+Checks whether a specified template is supported before using [NotificationTemplate](js-apis-inner-notification-notificationTemplate.md) to publish a notification. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -1605,7 +1605,7 @@ class MyAbility extends UIAbility {
 
 requestEnableNotification(callback: AsyncCallback\<void\>): void
 
-Requests notification to be enabled for this application. This API uses an asynchronous callback to return the result.
+Requests notification authorization for this application. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -1617,7 +1617,7 @@ Requests notification to be enabled for this application. This API uses an async
 
 | Name  | Type                    | Mandatory| Description                      |
 | -------- | ------------------------ | ---- | -------------------------- |
-| callback | AsyncCallback\<void\> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback | AsyncCallback\<void\> | Yes  | Callback function. If the application successfully requests notification authorization, **err** is **undefined**; otherwise, **err** is an error object. |
 
 **Error codes**
 
@@ -1651,7 +1651,7 @@ notificationManager.requestEnableNotification(requestEnableNotificationCallback)
 
 requestEnableNotification(): Promise\<void\>
 
-Requests notification to be enabled for this application. This API uses a promise to return the result.
+Requests notification authorization for this application. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -1783,7 +1783,7 @@ openNotificationSettings(context: UIAbilityContext): Promise\<void\>
 
 Brings up the [notification setting](../../notification/notification-glossary.md#notification-setting) page of the application. The page is presented in semi-modal form and can be used to set the notification switch, [notification reminder mode](../../notification/notification-glossary.md#notification-reminder-mode), and so on. This API uses a promise to return the result.
 
-This is suitable for scenarios where users need to manually modify notification settings, such as a secondary request after a user denies authorization, or when the notification reminder method (vibration, ringtone, etc.) needs to be modified. When the [requestEnableNotification](#notificationmanagerrequestenablenotification10) dialog box is denied by the user, you can call this API to guide the user to the notification settings page to manually enable it.
+This is suitable for scenarios where users need to manually modify notification settings, such as a secondary request after a user denies authorization, or when the notification reminder mode (vibration, ringtone, etc.) needs to be modified. When the [requestEnableNotification](#notificationmanagerrequestenablenotification10) dialog box is denied by the user, you can call this API to guide the user to the notification settings page to manually enable notifications.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -2006,10 +2006,10 @@ This API is used to define the notification reminder behavior level of [Notifica
 | Name                             | Value         | Description              |
 | --------------------------------- | ----------- | ------------------ |
 | LEVEL_NONE                        | 0           | Notification is disabled.    |
-| LEVEL_MIN                         | 1           | Notification is enabled, but the notification icon is not displayed in the status bar, with no alert tone and banner.|
-| LEVEL_LOW                         | 2           | Notification is enabled, and the notification icon is displayed in the status bar, with no alert tone and banner.|
-| LEVEL_DEFAULT                     | 3           | Notification is enabled, and the notification icon is displayed in the status bar, with an alert tone but no banner.|
-| LEVEL_HIGH                        | 4           | Notification is enabled, and the notification icon is displayed in the status bar, with an alert tone and banner.|
+| LEVEL_MIN                         | 1           | Notification is enabled, but the notification icon is not displayed in the status bar, with no alert sound and banner.|
+| LEVEL_LOW                         | 2           | Notification is enabled, and the notification icon is displayed in the status bar, with no alert sound and banner.|
+| LEVEL_DEFAULT                     | 3           | Notification is enabled, and the notification icon is displayed in the status bar, with an alert sound but no banner.|
+| LEVEL_HIGH                        | 4           | Notification is enabled, and the notification icon is displayed in the status bar, with an alert sound and banner.|
 
 
 ## SlotType
@@ -2028,7 +2028,7 @@ Different types correspond to different [SlotLevel](#slotlevel) values, determin
 | SOCIAL_COMMUNICATION | 1 | Social communication. This type corresponds to the [SlotLevel](#slotlevel) of **LEVEL_HIGH**. |
 | SERVICE_INFORMATION  | 2 | Service information. This type corresponds to the [SlotLevel](#slotlevel) of **LEVEL_HIGH**.|
 | CONTENT_INFORMATION  | 3 | Content information. This type corresponds to the [SlotLevel](#slotlevel) of **LEVEL_MIN**.|
-| LIVE_VIEW<sup>11+</sup>            | 4 | Live view. A third-party application cannot directly create a notification of this type. Instead, after the system proxy creates a notification, the third-party application can release the notification with the same ID to update the specified content<!--RP1--><!--RP1End-->. This type corresponds to the [SlotLevel](#slotlevel) of **LEVEL_DEFAULT**.|
+| LIVE_VIEW<sup>11+</sup>            | 4 | Live view. A third-party application cannot directly create a notification of this type. Instead, after the system agent creates a notification, the third-party application can release the notification with the same ID to update the specified content<!--RP1--><!--RP1End-->. This type corresponds to the [SlotLevel](#slotlevel) of **LEVEL_DEFAULT**.|
 | CUSTOMER_SERVICE<sup>11+</sup>     | 5 | Customer service message. This type is used for messages between users and customer service providers. The messages must be initiated by users. This type corresponds to the [SlotLevel](#slotlevel) of **LEVEL_DEFAULT**. |
 | OTHER_TYPES          | 0xFFFF | Other types. This type corresponds to the [SlotLevel](#slotlevel) of **LEVEL_MIN**.|
 
@@ -2041,11 +2041,11 @@ Defines the setting status of the [notification reminder mode](../../notificatio
 | Name            | Type    | Read-Only| Optional| Description                                        |
 | ---------------- | ------- | ---- | ---- | ------------------------------------------- |
 | vibrationEnabled | boolean | No  |  No | Whether to enable vibration.<br> - **true**: enable.<br> - **false**: disable.|
-| soundEnabled     | boolean | No  |  No | Whether to enable the ringtone.<br> - **true**: enable.<br> - **false**: disable.|
+| soundEnabled     | boolean | No   |  No  | Whether to enable the sound.<br> - **true**: enable.<br> - **false**: disable. |
 | lockScreenEnabled     | boolean | No  |  Yes | Whether to enable the lock screen notification.<br>**Model restriction**: This API can be used only in the stage model.<br>**Since**: 26.0.0<br> - **true**: enable.<br> - **false**: disable.|
 | bannerEnabled     | boolean | No  |  Yes | Whether to enable the banner notification.<br>**Model restriction**: This API can be used only in the stage model.<br>**Since**: 26.0.0<br> - **true**: enable.<br> - **false**: disable.|
 | badgeNumberEnabled     | boolean | No   |  Yes  | Whether to enable the numeric display of the [notification badge](../../notification/notification-glossary.md#notification-badge).<br/>**Model restriction:** This API can be used only in the stage model.<br/>**Since:** 26.0.0<br/> - **true**: enabled.<br/> - **false**: disabled. |
-| notificationEnabled     | boolean | No  |  Yes | Whether to enable the application notification.<br>**Model restriction**: This API can be used only in the stage model.<br>**Since**: 26.0.0<br> - **true**: enable.<br> - **false**: disable.|
+| notificationEnabled     | boolean | No   |  Yes  | Whether to enable the application notification.<br>**Model restriction**: This API can be used only in the stage model.<br>**Since**: 26.0.0<br> - **true**: enable.<br> - **false**: disable. |
 
 ## PriorityNotificationType<sup>23+</sup>
 
@@ -2278,4 +2278,3 @@ Defines the [notification progress](../../notification/notification-glossary.md#
 | Type| Description|
 | --- | --- |
 | [_NotificationProgress](js-apis-inner-notification-notificationContent.md#notificationprogress11) | Notification progress.|
-<!--no_check-->

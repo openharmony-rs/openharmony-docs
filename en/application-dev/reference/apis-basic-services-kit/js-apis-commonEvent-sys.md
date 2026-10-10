@@ -5,7 +5,7 @@
 <!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-09-29T09:42:19.413Z pushedAt=2026-10-08T02:39:02.485Z -->
+<!-- md-trans-meta sourceCommit=54656b3da3e41e2ba7f2b57573523f0dbf41c1e3 translatedAt=2026-10-08T09:10:25.292Z pushedAt=2026-10-09T03:03:08.704Z -->
 
 This module provides APIs to publish, subscribe to, and unsubscribe from common events, as well as obtain and modify the common event result code and result data. It is applicable to scenarios where system services or apps communicate with each other through common events. This module helps you publish and subscribe to events across apps, improving collaboration efficiency between apps.
 
@@ -45,9 +45,9 @@ Publishes a common event to a specific user. This API uses an asynchronous callb
 
 | Name    | Type                | Mandatory| Description                              |
 | -------- | -------------------- | ---- | ---------------------------------- |
-| event    | string               | Yes  | Name of the common event to publish.            |
+| event    | string               | Yes   | Common event to publish. The value can contain a maximum of 254 bytes. Excess content will be truncated. |
 | userId   | number               | Yes  | ID of the user to whom the common event is published.|
-| callback | AsyncCallback\<void> | Yes  | Callback used to return the common event publication result.            |
+| callback | AsyncCallback\<void> | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object. |
 
 **Example**
 
@@ -88,10 +88,10 @@ Publishes a common event with given properties to a specific user. This API uses
 
 | Name    | Type                  | Mandatory| Description                  |
 | -------- | ---------------------- | ---- | ---------------------- |
-| event    | string                 | Yes  | Name of the common event to publish. |
+| event    | string                 | Yes   | Common event to publish. The value can contain a maximum of 254 bytes. Excess content will be truncated. |
 | userId   | number | Yes| ID of the user to whom the common event is published.|
 | options  | [CommonEventPublishData](./js-apis-inner-commonEvent-commonEventPublishData.md) | Yes  | Properties of the common event to publish.|
-| callback | AsyncCallback\<void>   | Yes  | Callback used to return the common event publication result. |
+| callback | AsyncCallback\<void>   | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object. |
 
 **Example**
 

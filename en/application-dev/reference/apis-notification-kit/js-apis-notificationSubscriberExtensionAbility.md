@@ -2,10 +2,10 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=4bb0b56d7d67b2ab3ff0955bce487aba3399fade translatedAt=2026-09-22T02:35:30.806Z pushedAt=2026-09-22T08:29:58.387Z -->
+<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-10-08T02:33:08.041Z pushedAt=2026-10-08T10:04:08.571Z -->
 
 NotificationSubscriberExtensionAbility is the base class of the [notification subscription](../../notification/notification-glossary.md#notification-subscription) extension ability, providing notification subscription related capabilities. Third-party wearable applications (such as companion applications for watches) implement callback logic by inheriting from this class, receive notification information when a notification is published on the local device and forward it to the wearable device over Bluetooth. When a local notification is canceled, they receive the cancellation callback and forward it to the wearable device to delete the corresponding notification.
 
@@ -26,6 +26,9 @@ import { notificationExtensionSubscription, NotificationSubscriberExtensionAbili
 
 **System capability**: SystemCapability.Notification.Notification
 
+### Attributes
+
+**System capability**: SystemCapability.Notification.Notification
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
@@ -64,7 +67,7 @@ Called when a notification is received.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| notificationInfo | [NotificationInfo](../apis-notification-kit/js-apis-inner-notification-notificationInfo.md) | Yes | Callback information about the notification received in the notification subscription extension capability. |
+| notificationInfo | [NotificationInfo](../apis-notification-kit/js-apis-inner-notification-notificationInfo.md) | Yes | Callback information about the notification received in the notification subscription extension ability. |
 
 **Example**:
 
@@ -103,4 +106,3 @@ export default class NotificationSubscriberExtAbility extends NotificationSubscr
   }
 }
 ```
-<!--no_check-->

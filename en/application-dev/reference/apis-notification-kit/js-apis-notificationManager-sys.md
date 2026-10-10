@@ -2,18 +2,18 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=4bb0b56d7d67b2ab3ff0955bce487aba3399fade translatedAt=2026-09-22T02:27:50.648Z pushedAt=2026-09-22T08:29:58.383Z -->
+<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-10-08T02:35:30.892Z pushedAt=2026-10-08T09:54:47.154Z -->
 
 This module provides system APIs for notification management, including publishing notifications to specified users, publishing [proxy notification](../../notification/notification-glossary.md#notification-proxy), canceling proxy notifications, creating, obtaining, and removing [notification slot](../../notification/notification-glossary.md#notification-slot), setting and querying the notification enabled status, badge enabled status, and slot enabled status, setting and querying the Do Not Disturb time and Do Not Disturb mode configuration, managing [distributed notification](../../notification/notification-glossary.md#distributed-notification) collaboration, managing notification publish permission control, obtaining active notification information, setting the [notification reminder mode](../../notification/notification-glossary.md#notification-reminder-mode), subscribing to [system live view](../../notification/notification-glossary.md#system-live-view), registering [notification check](../../notification/notification-glossary.md#notification-check) callbacks, managing notification priority policies, and setting advanced features such as [geofence](../../notification/notification-glossary.md#geofence), ringtone information, and [silent reminder](../../notification/notification-glossary.md#silent-reminder).
 
-> **NOTE**<br>
+> **NOTE**
 >
 > The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> This topic describes only system APIs provided by the module. For details about its public APIs, see [NotificationManager](./js-apis-notificationManager.md).
+> This topic describes only system APIs provided by the module. For details about its public APIs, see [NotificationManager](js-apis-notificationManager.md).
 
 ## Modules to Import
 
@@ -220,7 +220,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // addSlot callback
-let addSlotCallBack = (err: BusinessError): void => {
+let addSlotCallback = (err: BusinessError): void => {
     if (err) {
         console.error(`addSlot failed, code is ${err.code}, message is ${err.message}`);
     } else {
@@ -231,7 +231,7 @@ let addSlotCallBack = (err: BusinessError): void => {
 let notificationSlot: notificationManager.NotificationSlot = {
     notificationType: notificationManager.SlotType.SOCIAL_COMMUNICATION
 };
-notificationManager.addSlot(notificationSlot, addSlotCallBack);
+notificationManager.addSlot(notificationSlot, addSlotCallback);
 ```
 
 ## notificationManager.addSlot
@@ -327,7 +327,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // addSlots callback
-let addSlotsCallBack = (err: BusinessError): void => {
+let addSlotsCallback = (err: BusinessError): void => {
     if (err) {
         console.error(`addSlots failed, code is ${err.code}, message is ${err.message}`);
     } else {
@@ -342,7 +342,7 @@ let notificationSlot: notificationManager.NotificationSlot = {
 let notificationSlotArray: notificationManager.NotificationSlot[] = new Array();
 notificationSlotArray[0] = notificationSlot;
 
-notificationManager.addSlots(notificationSlotArray, addSlotsCallBack);
+notificationManager.addSlots(notificationSlotArray, addSlotsCallback);
 ```
 
 ## notificationManager.addSlots
@@ -420,8 +420,8 @@ Sets whether to enable notification for a specified application. This API uses a
 
 | Name    | Type                 | Mandatory| Description                |
 | -------- | --------------------- | ---- | -------------------- |
-| bundle   | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)   | Yes  | Bundle information of the application.       |
-| enable   | boolean               | Yes  | Whether to enable the notification slot type. The value **true** means to enable the notification slot type, and **false** means the opposite.            |
+| bundle   | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)   | Yes   | Bundle information of the application.        |
+| enable   | boolean               | Yes  | Whether to enable the notification. The value **true** means to enable the notification, and **false** means the opposite.            |
 | callback | AsyncCallback\<void\> | Yes  | Callback used to return the result.|
 
 **Error codes**
@@ -472,7 +472,7 @@ Sets whether to enable notification for a specified application. This API uses a
 
 | Name  | Type        | Mandatory| Description      |
 | ------ | ------------ | ---- | ---------- |
-| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes  | Bundle information of the application.|
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes | Bundle information of the application. |
 | enable | boolean      | Yes  | Whether to enable the notification slot type. The value **true** means to enable the notification slot type, and **false** means the opposite.  |
 
 **Return value**
@@ -627,7 +627,7 @@ Checks whether notification is enabled for the specified application. This API u
 
 | Name    | Type                 | Mandatory| Description                    |
 | -------- | --------------------- | ---- | ------------------------ |
-| bundle   | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)          | Yes  | Bundle information of the application.           |
+| bundle   | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)          | Yes   | Bundle information of the application.            |
 | callback | AsyncCallback\<boolean\> | Yes  | Callback used to return the result. The value **true** means that the notification is enabled, and **false** means the opposite.|
 
 **Error codes**
@@ -680,7 +680,7 @@ Checks whether notification is enabled for the specified application. This API u
 
 | Name  | Type        | Mandatory| Description      |
 | ------ | ------------ | ---- | ---------- |
-| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes  | Bundle information of the application.|
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes | Bundle information of the application. |
 
 **Return value**
 
@@ -840,8 +840,8 @@ Sets whether to enable the notification badge for a specified application. This 
 
 | Name    | Type                 | Mandatory| Description                |
 | -------- | --------------------- | ---- | -------------------- |
-| bundle   | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)          | Yes  | Bundle information of the application.          |
-| enable   | boolean               | Yes  | Whether to enable the notification slot type. The value **true** means to enable the notification slot type, and **false** means the opposite.            |
+| bundle   | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)          | Yes   | Bundle information of the application.           |
+| enable   | boolean               | Yes  | Whether to enable the notification badge. The value **true** means to enable the notification badge, and **false** means the opposite.            |
 | callback | AsyncCallback\<void\> | Yes  | Callback used to return the result.|
 
 **Error codes**
@@ -895,8 +895,8 @@ Sets whether to enable the notification badge for a specified application. This 
 
 | Name  | Type        | Mandatory| Description      |
 | ------ | ------------ | ---- | ---------- |
-| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes  | Bundle information of the application.|
-| enable | boolean      | Yes  | Whether to enable the notification slot type. The value **true** means to enable the notification slot type, and **false** means the opposite.  |
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes | Bundle information of the application. |
+| enable | boolean      | Yes  | Whether to enable the notification badge. The value **true** means to enable the notification badge, and **false** means the opposite.  |
 
 **Return value**
 
@@ -952,7 +952,7 @@ Checks whether the notification badge is enabled for a specified application. Th
 
 | Name    | Type                 | Mandatory| Description                    |
 | -------- | --------------------- | ---- | ------------------------ |
-| bundle   | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)          | Yes  | Bundle information of the application.              |
+| bundle   | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)          | Yes   | Bundle information of the application.               |
 | callback | AsyncCallback\<boolean\> | Yes  | Callback used to return the result. The value **true** means that the badge is enabled, and **false** means the opposite.|
 
 **Error codes**
@@ -1006,7 +1006,7 @@ Checks whether the notification badge is enabled for a specified application. Th
 
 | Name  | Type        | Mandatory| Description      |
 | ------ | ------------ | ---- | ---------- |
-| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes  | Bundle information of the application.|
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes | Bundle information of the application. |
 
 **Return value**
 
@@ -1063,7 +1063,7 @@ Sets the [notification reminder mode](../../notification/notification-glossary.m
 
 | Name  | Type        | Mandatory| Description      |
 | ------ | ------------ | ---- | ---------- |
-| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes  | Bundle information of the application.|
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes | Bundle information of the application. |
 | slotFlags   | number | Yes  | Notification slot flags.<br>- Bit 0: sound alert. The value **0** means to disable the feature, and **1** means the opposite.<br>- Bit 1: locking the screen. The value **0** means to disable the feature, and **1** means the opposite.<br>- Bit 2: banner. The value **0** means to disable the feature, and **1** means the opposite.<br>- Bit 3: turning on the screen. The value **0** means to disable the feature, and **1** means the opposite.<br>- Bit 4: vibration. The value **0** means to disable the feature, and **1** means the opposite.<br>- Bit 5: notification icon in the status bar. The value **0** means to disable the feature, and **1** means the opposite.|
 
 **Return value**
@@ -1125,7 +1125,7 @@ Before setting a notification slot, create a slot through [addSlot](#notificatio
 
 | Name    | Type                 | Mandatory| Description                |
 | -------- | --------------------- | ---- | -------------------- |
-| bundle   | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)          | Yes  | Bundle information of the application.          |
+| bundle   | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)          | Yes   | Bundle information of the application.           |
 | slot     | [NotificationSlot](js-apis-inner-notification-notificationSlot-sys.md)      | Yes  | Notification slot.            |
 | callback | AsyncCallback\<void\> | Yes  | Callback used to return the result.|
 
@@ -1185,7 +1185,7 @@ Before setting a notification slot, create a slot through [addSlot](#notificatio
 
 | Name  | Type        | Mandatory| Description      |
 | ------ | ------------ | ---- | ---------- |
-| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes  | Bundle information of the application.|
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes | Bundle information of the application. |
 | slot   | [NotificationSlot](js-apis-inner-notification-notificationSlot-sys.md) | Yes  | Notification slot.|
 
 **Return value**
@@ -1247,7 +1247,7 @@ Obtains the [notification slot](../../notification/notification-glossary.md#noti
 
 | Name  | Type        | Mandatory| Description      |
 | ------ | ------------ | ---- | ---------- |
-| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes  | Bundle information of the application.|
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes | Bundle information of the application. |
 
 **Return value**
 
@@ -1303,7 +1303,7 @@ Obtains all [notification slots](../../notification/notification-glossary.md#not
 
 | Name    | Type                                    | Mandatory| Description                |
 | -------- | ---------------------------------------- | ---- | -------------------- |
-| bundle   | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)                             | Yes  | Bundle information of the application.          |
+| bundle   | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)                             | Yes   | Bundle information of the application.           |
 | callback | AsyncCallback\<Array\<[NotificationSlot](js-apis-inner-notification-notificationSlot-sys.md)>> | Yes  | Callback used to return the result.|
 
 **Error codes**
@@ -1357,7 +1357,7 @@ Obtains all [notification slots](../../notification/notification-glossary.md#not
 
 | Name  | Type        | Mandatory| Description      |
 | ------ | ------------ | ---- | ---------- |
-| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes  | Bundle information of the application.|
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes   | Bundle information of the application. |
 
 **Return value**
 
@@ -1414,7 +1414,7 @@ Obtains the number of [notification slots](../../notification/notification-gloss
 
 | Name    | Type                     | Mandatory| Description                  |
 | -------- | ------------------------- | ---- | ---------------------- |
-| bundle   | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)              | Yes  | Bundle information of the application.            |
+| bundle   | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)              | Yes   | Bundle information of the application.             |
 | callback | AsyncCallback\<number\> | Yes  | Callback used to return the result.|
 
 **Error codes**
@@ -1470,7 +1470,7 @@ Obtains the number of [notification slots](../../notification/notification-gloss
 
 | Name  | Type        | Mandatory| Description      |
 | ------ | ------------ | ---- | ---------- |
-| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes  | Bundle information of the application.|
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes | Bundle information of the application. |
 
 **Return value**
 
@@ -1733,8 +1733,8 @@ Removes notifications under a notification group of the specified application. T
 
 | Name     | Type                 | Mandatory| Description                        |
 | --------- | --------------------- | ---- | ---------------------------- |
-| bundle    | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)          | Yes  | Bundle information of the application.                  |
-| groupName | string                | Yes  | Name of the notification group.              |
+| bundle    | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)          | Yes   | Bundle information of the application.                   |
+| groupName | string                | Yes   | Name of the notification group. This name must be specified through the [NotificationRequest](js-apis-inner-notification-notificationRequest-sys.md#notificationrequest) object when publishing a notification.<br>The size cannot exceed 202 bytes. The excess part will be truncated. |
 | callback  | AsyncCallback\<void\> | Yes  | Callback used to return the result.|
 
 **Error codes**
@@ -1786,8 +1786,8 @@ Removes notifications under a notification group of the specified application. T
 
 | Name     | Type        | Mandatory| Description          |
 | --------- | ------------ | ---- | -------------- |
-| bundle    | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes  | Bundle information of the application.    |
-| groupName | string       | Yes  | Name of the notification group.|
+| bundle    | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes   | Bundle information of the application.     |
+| groupName | string       | Yes   | Name of the notification group. This name must be specified through the [NotificationRequest](js-apis-inner-notification-notificationRequest-sys.md#notificationrequest) object when publishing a notification.<br>The size cannot exceed 202 bytes. The excess part will be truncated. |
 
 **Return value**
 
@@ -2383,11 +2383,9 @@ setDistributedEnable(enable: boolean, callback: AsyncCallback\<void\>): void
 
 Sets whether to enable [distributed notification](../../notification/notification-glossary.md#distributed-notification) on this device. This API uses an asynchronous callback to return the result.
 
-**Since**: 9
-
-**Deprecated since**: 26.0.0
-
-**Substitute:** [setDistributedEnabled](#notificationmanagersetdistributedenabled20)
+> **NOTE**
+>
+> This API is supported since API version 9 and deprecated since API version 26.0.0. You are advised to use [setDistributedEnabled](#notificationmanagersetdistributedenabled20) instead.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -2439,11 +2437,9 @@ setDistributedEnable(enable: boolean): Promise\<void>
 
 Sets whether to enable [distributed notification](../../notification/notification-glossary.md#distributed-notification) on this device. This API uses a promise to return the result.
 
-**Since**: 9
-
-**Deprecated since**: 26.0.0
-
-**Substitute:** [setDistributedEnabled](#notificationmanagersetdistributedenabled20)
+> **NOTE**
+>
+> This API is supported since API version 9 and deprecated since API version 26.0.0. You are advised to use [setDistributedEnabled](#notificationmanagersetdistributedenabled20) instead.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -2497,11 +2493,9 @@ setDistributedEnableByBundle(bundle: BundleOption, enable: boolean, callback: As
 
 Sets whether to enable [distributed notification](../../notification/notification-glossary.md#distributed-notification) for a specified application. This API uses an asynchronous callback to return the result.
 
-**Since**: 9
-
-**Deprecated since**: 26.0.0
-
-**Substitutes**: [setDistributedEnabledByBundle](#notificationmanagersetdistributedenabledbybundle12)
+> **NOTE**
+>
+> This API is supported since API version 9 and deprecated since API version 26.0.0. You are advised to use [setDistributedEnabledByBundle](#notificationmanagersetdistributedenabledbybundle12) instead.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -2513,9 +2507,9 @@ Sets whether to enable [distributed notification](../../notification/notificatio
 
 | Name  | Type                    | Mandatory| Description                      |
 | -------- | ------------------------ | ---- | -------------------------- |
-| bundle   | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)             | Yes  | Bundle information of the application.                  |
+| bundle   | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)             | Yes   | Bundle information of the application.                   |
 | enable   | boolean                  | Yes  | Whether to enable distributed notification. The value **true** means to enable distributed notification, and **false** means the opposite.|
-| callback | AsyncCallback\<void\> | Yes | Callback used to return whether the application supports distributed notifications. |
+| callback | AsyncCallback\<void\> | Yes | Callback used to return whether the application supports distributed notification. |
 
 **Error codes**
 
@@ -2560,11 +2554,9 @@ setDistributedEnableByBundle(bundle: BundleOption, enable: boolean): Promise\<vo
 
 Sets whether to enable [distributed notification](../../notification/notification-glossary.md#distributed-notification) for a specified application. This API uses a promise to return the result.
 
-**Since**: 9
-
-**Deprecated since**: 26.0.0
-
-**Substitutes**: [setDistributedEnabledByBundle](#notificationmanagersetdistributedenabledbybundle12)
+> **NOTE**
+>
+> This API is supported since API version 9 and deprecated since API version 26.0.0. You are advised to use [setDistributedEnabledByBundle](#notificationmanagersetdistributedenabledbybundle12) instead.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -2576,7 +2568,7 @@ Sets whether to enable [distributed notification](../../notification/notificatio
 
 | Name  | Type                    | Mandatory| Description                      |
 | -------- | ------------------------ | ---- | -------------------------- |
-| bundle   | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)             | Yes  | Bundle of the application.               |
+| bundle   | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)             | Yes   | Bundle of the application.                |
 | enable   | boolean                  | Yes  | Whether to enable distributed notification. The value **true** means to enable distributed notification, and **false** means the opposite.                 |
 
 **Return value**
@@ -2623,11 +2615,9 @@ isDistributedEnabledByBundle(bundle: BundleOption, callback: AsyncCallback\<bool
 
 Obtains whether an application supports [distributed notification](../../notification/notification-glossary.md#distributed-notification) based on the application bundle. This API uses an asynchronous callback to return the result.
 
-**Since**: 9
-
-**Deprecated since**: 26.0.0
-
-**Substitutes**: [isDistributedEnabledByBundle](#notificationmanagerisdistributedenabledbybundle12)
+> **NOTE**
+>
+> This API is supported since API version 9 and deprecated since API version 26.0.0. You are advised to use [isDistributedEnabledByBundle](#notificationmanagerisdistributedenabledbybundle12) instead.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -2639,7 +2629,7 @@ Obtains whether an application supports [distributed notification](../../notific
 
 | Name  | Type                    | Mandatory| Description                      |
 | -------- | ------------------------ | ---- | -------------------------- |
-| bundle   | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)             | Yes  | Bundle of the application.                    |
+| bundle   | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)             | Yes   | Bundle of the application.                     |
 | callback | AsyncCallback\<boolean\> | Yes  | Callback used to return the result. The value **true** means that distributed notification is enabled, and **false** means the opposite.|
 
 **Error codes**
@@ -2682,11 +2672,9 @@ isDistributedEnabledByBundle(bundle: BundleOption): Promise\<boolean>
 
 Queries whether a specified application supports [distributed notification](../../notification/notification-glossary.md#distributed-notification). This API uses a promise to return the result.
 
-**Since**: 9
-
-**Deprecated since**: 26.0.0
-
-**Substitutes**: [isDistributedEnabledByBundle](#notificationmanagerisdistributedenabledbybundle12)
+> **NOTE**
+>
+> This API is supported since API version 9 and deprecated since API version 26.0.0. You are advised to use [isDistributedEnabledByBundle](#notificationmanagerisdistributedenabledbybundle12) instead.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -2698,7 +2686,7 @@ Queries whether a specified application supports [distributed notification](../.
 
 | Name  | Type                    | Mandatory| Description                      |
 | -------- | ------------------------ | ---- | -------------------------- |
-| bundle   | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)             | Yes  | Bundle of the application.               |
+| bundle   | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)             | Yes   | Bundle of the application.                |
 
 **Return value**
 
@@ -2744,9 +2732,9 @@ getDeviceRemindType(callback: AsyncCallback\<DeviceRemindType\>): void
 
 Obtains the notification reminder type. This API uses an asynchronous callback to return the result.
 
-**Since**: 9
-
-**Deprecated since**: 26.0.0
+> **NOTE**
+>
+> This API is supported since API version 9 and deprecated since API version 26.0.0.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -2795,9 +2783,9 @@ getDeviceRemindType(): Promise\<DeviceRemindType\>
 
 Obtains the notification reminder type. This API uses a promise to return the result.
 
-**Since**: 9
-
-**Deprecated since**: 26.0.0
+> **NOTE**
+>
+> This API is supported since API version 9 and deprecated since API version 26.0.0.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -2844,6 +2832,8 @@ publishAsBundle(request: NotificationRequest, representativeBundle: string, user
 Publishes a [proxy notification](../../notification/notification-glossary.md#notification-proxy). This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: When the **request** parameter carries the **trigger** parameter and **LiveViewStatus** is **LIVE_VIEW_PENDING_CREATE** or **LIVE_VIEW_PENDING_END**, non-phone devices return error code 801. In other scenarios, the API functions normally.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER and ohos.permission.NOTIFICATION_AGENT_CONTROLLER
 
@@ -2926,6 +2916,8 @@ publishAsBundle(request: NotificationRequest, representativeBundle: string, user
 Publishes a [proxy notification](../../notification/notification-glossary.md#notification-proxy). This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
+
+**Device behavior differences**: When the **request** parameter carries the **trigger** parameter and **LiveViewStatus** is **LIVE_VIEW_PENDING_CREATE** or **LIVE_VIEW_PENDING_END**, non-phone devices return error code 801. In other scenarios, the API functions normally.
 
 **Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER and ohos.permission.NOTIFICATION_AGENT_CONTROLLER
 
@@ -3020,7 +3012,7 @@ Publishes a [proxy notification](../../notification/notification-glossary.md#not
 
 | Name              | Type                                       | Mandatory| Description                                         |
 |----------------------|--------------------------------------------|------|-----------------------------------------------|
-| representativeBundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)  | Yes  | Bundle information of the application whose notification function is taken over by the reminder agent.                           |
+| representativeBundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)  | Yes  | Bundle information of the application whose notification function is taken over by the reminder agent.                            |
 | request              | [NotificationRequest](js-apis-inner-notification-notificationRequest-sys.md#notificationrequest) | Yes  | Content and related configuration of the notification to publish.|
 
 **Return value**
@@ -3219,7 +3211,7 @@ Cancels a [proxy notification](../../notification/notification-glossary.md#notif
 
 | Name              | Type                                       | Mandatory| Description                                         |
 | -------------------- | ------------------------------------------- | ---- | --------------------------------------------- |
-| representativeBundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)  |Yes  | Bundle information of the application whose notification function is taken over by the reminder agent.|
+| representativeBundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)  |Yes   | Bundle information of the application whose notification function is taken over by the reminder agent. |
 | id                   | number                                     | Yes  | Notification ID.          |
 
 **Return value**
@@ -3276,7 +3268,7 @@ The current application must have a proxy relationship with another application,
 
 | Name              | Type  | Mandatory| Description              |
 | -------------------- | ------ | ---- | ------------------ |
-| representativeBundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes  | Bundle information of the application.          |
+| representativeBundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes   | Bundle information of the application.           |
 |       id             | number | Yes  | Notification ID.|
 
 **Return value**
@@ -3334,8 +3326,8 @@ Sets the enabled status of a slot type for the specified application. This API u
 
 | Name  | Type                         | Mandatory| Description                  |
 | -------- | ----------------------------- | ---- | ---------------------- |
-| bundle   | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes  | Bundle information of the application.          |
-| type     | [SlotType](./js-apis-notificationManager.md#slottype)         | Yes  | Notification slot type.        |
+| bundle   | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes   | Bundle information of the application.           |
+| type     | [SlotType](js-apis-notificationManager.md#slottype)         | Yes   | Notification slot type.         |
 | enable   | boolean                       | Yes  | Whether to enable the notification slot type. The value **true** means to enable the notification slot type, and **false** means the opposite.            |
 | callback | AsyncCallback\<void\>         | Yes  | Callback used to return the result.|
 
@@ -3393,10 +3385,10 @@ Sets the enabled status of a slot type for the specified application. This API u
 
 | Name  | Type                         | Mandatory| Description                    |
 | -------- | ----------------------------- | ---- | ----------------------- |
-| bundle   | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes  | Bundle information of the application.|
-| type     | [SlotType](./js-apis-notificationManager.md#slottype)         | Yes  | Notification slot type.          |
+| bundle   | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes   | Bundle information of the application.|
+| type     | [SlotType](js-apis-notificationManager.md#slottype)         | Yes   | Notification slot type.           |
 | enable   | boolean                       | Yes  | Whether to enable the notification slot type. The value **true** means to enable the notification slot type, and **false** means the opposite.              |
-| isForceControl<sup>11+</sup> | boolean                 | Yes   | Whether the slot switch is affected by the [notification authorization](../../notification/notification-glossary.md#notification-authorization) switch (false: affected, true: not affected). |
+| isForceControl<sup>11+</sup> | boolean                 | Yes   | Whether the slot switch is affected by the [notification authorization](../../notification/notification-glossary.md#notification-authorization) switch (**false**: affected, **true**: not affected). |
 | callback | AsyncCallback\<void\>         | Yes  | Callback used to return the result.   |
 
 **Error codes**
@@ -3454,8 +3446,8 @@ Sets the enabled status of the specified notification slot type for the specifie
 
 | Name| Type                         | Mandatory| Description          |
 | ------ | ----------------------------- | ---- | -------------- |
-| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes  | Bundle information of the application.  |
-| type   | [SlotType](./js-apis-notificationManager.md#slottype)         | Yes  | Notification slot type.|
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes | Bundle information of the application. |
+| type | [SlotType](js-apis-notificationManager.md#slottype) | Yes | Notification slot type. |
 | enable | boolean                       | Yes  | Whether to enable the notification slot type. The value **true** means to enable the notification slot type, and **false** means the opposite.    |
 | isForceControl<sup>11+</sup> | boolean               | No  | Whether the enabled status of the notification slot is subject to the enabled status of notification. The value **false** means that the enabled status of the notification slot is subject to the enabled status of notification, and **true** means the opposite. Default value: **false**    |
 
@@ -3515,8 +3507,8 @@ Checks whether a notification slot type is enabled for the specified application
 
 | Name  | Type                         | Mandatory| Description                  |
 | -------- | ----------------------------- | ---- | ---------------------- |
-| bundle   | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes  | Bundle information of the application.          |
-| type     | [SlotType](./js-apis-notificationManager.md#slottype)         | Yes  | Notification slot type.        |
+| bundle   | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes   | Bundle information of the application.           |
+| type     | [SlotType](js-apis-notificationManager.md#slottype)         | Yes   | Notification slot type.         |
 | callback | AsyncCallback\<boolean\>         | Yes  | Callback used to return the result. The value **true** means that the notification slot type is enabled, and **false** means the opposite.|
 
 **Error codes**
@@ -3558,7 +3550,7 @@ notificationManager.isNotificationSlotEnabled(
 
 isNotificationSlotEnabled(bundle: BundleOption, type: SlotType): Promise\<boolean\>  
 
-Checks whether a notification slot type is enabled for the specified application. This API uses a promise to return the result.
+Obtains whether a notification slot type is enabled for the specified application. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -3572,8 +3564,8 @@ Checks whether a notification slot type is enabled for the specified application
 
 | Name| Type                         | Mandatory| Description          |
 | ------ | ----------------------------- | ---- | -------------- |
-| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes  | Bundle information of the application.  |
-| type   | [SlotType](./js-apis-notificationManager.md#slottype)         | Yes  | Notification slot type.|
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes | Bundle information of the application. |
+| type | [SlotType](js-apis-notificationManager.md#slottype) | Yes | Notification slot type. |
 
 **Return value**
 
@@ -3618,7 +3610,7 @@ Obtains the enabled state of a specified slot type for multiple applications in 
 
 **System capability:** SystemCapability.Notification.Notification
 
-**Device behavior difference:** This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
+**Device behavior differences:** This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
 
 **Required permissions:** ohos.permission.NOTIFICATION_CONTROLLER
 
@@ -3630,14 +3622,14 @@ Obtains the enabled state of a specified slot type for multiple applications in 
 
 | Name | Type | Mandatory | Description |
 | ------ | ---- | ---- | ---- |
-| bundles | Array\<[BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)\> | Yes | Array of application bundle information. The maximum length is 1000 and cannot be empty. |
-| type | [SlotType](./js-apis-notificationManager.md#slottype) | Yes | Slot type. All applications share the same slot type. |
+| bundles | Array\<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)\> | Yes | Array of application bundle information. The maximum length is 1000 and cannot be empty. |
+| type | [SlotType](js-apis-notificationManager.md#slottype) | Yes | Slot type. All applications share the same slot type. |
 
 **Return value**
 
 | Type | Description |
 | ---- | ---- |
-| Promise\<Map\<[BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption), boolean\>\> | Promise used to return the batch query result. The key is the application bundle information, and the value is the slot enabled state (**true**: enabled; **false**: disabled). Applications for which no slot has been created will not be returned. |
+| Promise\<Map\<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption), boolean\>\> | Promise used to return the batch query result. The key is the application bundle information, and the value is the slot enabled state (**true**: enabled; **false**: disabled). Applications for which no slot has been created will not be returned. |
 
 **Error codes**
 
@@ -3679,9 +3671,9 @@ setSyncNotificationEnabledWithoutApp(userId: number, enable: boolean, callback: 
 
 Sets whether to enable the notification sync feature for devices where the application is not installed. This API uses an asynchronous callback to return the result.
 
-**Since**: 9
-
-**Deprecated since**: 26.0.0
+> **NOTE**
+>
+> This API is supported since API version 9 and deprecated since API version 26.0.0.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -3689,7 +3681,7 @@ Sets whether to enable the notification sync feature for devices where the appli
 
 **System API**: This is a system API.
 
-**Parameters**
+**Parameters** 
 
 | Name| Type                         | Mandatory| Description          |
 | ------ | ----------------------------- | ---- | -------------- |
@@ -3737,9 +3729,9 @@ setSyncNotificationEnabledWithoutApp(userId: number, enable: boolean): Promise\<
 
 Sets whether to enable the notification sync feature for devices where the application is not installed. This API uses a promise to return the result.
 
-**Since**: 9
-
-**Deprecated since**: 26.0.0
+> **NOTE**
+>
+> This API is supported since API version 9 and deprecated since API version 26.0.0.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -3797,9 +3789,9 @@ getSyncNotificationEnabledWithoutApp(userId: number, callback: AsyncCallback\<bo
 
 Obtains whether the notification sync feature is enabled for devices where the application is not installed. This API uses an asynchronous callback to return the result.
 
-**Since**: 9
-
-**Deprecated since**: 26.0.0
+> **NOTE**
+>
+> This API is supported since API version 9 and deprecated since API version 26.0.0.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -3853,9 +3845,9 @@ getSyncNotificationEnabledWithoutApp(userId: number): Promise\<boolean>
 
 Obtains whether the notification sync feature is enabled for devices where the application is not installed. This API uses a promise to return the result.
 
-**Since**: 9
-
-**Deprecated since**: 26.0.0
+> **NOTE**
+>
+> This API is supported since API version 9 and deprecated since API version 26.0.0.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -3924,7 +3916,7 @@ Each [SlotType](./js-apis-notificationManager.md#slottype) in the system can hav
 
 | Name| Type                                                                                                                     | Mandatory| Description          |
 | ------ |-------------------------------------------------------------------------------------------------------------------------| ---- | -------------- |
-| type | string                                                                                                                  | Yes  | Event type. The value is fixed to **'checkNotification'**.|
+| type | string                                                                                                                  | Yes  | Callback type. The value is fixed to **'checkNotification'**.|
 | callback | (checkInfo: [NotificationCheckInfo](#notificationcheckinfo10)) =>  [NotificationCheckResult](#notificationcheckresult10) | Yes  | Pointer to the notification verification function.|
 
 **Error codes**
@@ -3935,6 +3927,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ----------------------------------- |
 | 202      | Not system application to call the interface.                                      |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801      | Capability not supported.<br> Applicable versions: 18+ |
 | 1600001  | Internal error.                     |
 
 **Example**
@@ -3992,6 +3985,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201      | Permission denied.     |
 | 202      | Not system application to call the interface.                                      |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801      | Capability not supported.<br> Applicable versions: 18+ |
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error.      |
 | 1600003  | Failed to connect to the service.               |
@@ -4033,7 +4027,7 @@ Unsubscribes from notification events.
 
 | Name| Type                                                                                                                     | Mandatory| Description          |
 | ------ |-------------------------------------------------------------------------------------------------------------------------| ---- | -------------- |
-| type | string                                                                                                                  | Yes  | Event type. The value is fixed to **'checkNotification'**.|
+| type | string                                                                                                                  | Yes  | Callback type. The value is fixed to **'checkNotification'**.|
 | callback | (checkInfo: [NotificationCheckInfo](#notificationcheckinfo10)) =>  [NotificationCheckResult](#notificationcheckresult10) | No  | Pointer to the notification verification function.|
 
 **Error codes**
@@ -4044,6 +4038,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ----------------------------------- |
 | 202      | Not system application to call the interface.                                      |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.      |
+| 801      | Capability not supported.<br> Applicable versions: 18+ |
 | 1600001  | Internal error.                     |
 
 **Example**
@@ -4068,7 +4063,7 @@ Triggers a [system live view](../../notification/notification-glossary.md#system
 
 **Device behavior differences**: This API can be properly called on devices other than wearables. If it is called on wearables, error code 801 is returned.
 
-**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER
+**Required permissions**: ohos.permission.NOTIFICATION_CONTROLLER 
 
 **System API**: This is a system API.
 
@@ -4076,7 +4071,7 @@ Triggers a [system live view](../../notification/notification-glossary.md#system
 
 | Name| Type                  | Mandatory| Description          |
 | -------------- | ------------- | ---- | -------------- |
-| bundle         | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)  | Yes  |Bundle information of the application.|
+| bundle         | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)  | Yes   |Bundle information of the application. |
 | notificationId | number        | Yes  | Notification ID.|
 | buttonOptions  | [ButtonOptions](#buttonoptions11) | Yes  | Button information.|
 
@@ -4199,8 +4194,8 @@ Sets whether a specified application supports [cross-device collaboration](../..
 
 | Name  | Type                    | Mandatory| Description                      |
 | -------- | ------------------------ | ---- | -------------------------- |
-| bundle   | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)             | Yes  | Bundle information of the application.                  |
-| deviceType | string | Yes  | Device type.|
+| bundle   | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)             | Yes   | Bundle information of the application.                   |
+| deviceType | string | Yes   | Device type.<br>Since API version 18, the following device types are supported:<br>- **headset**: wearable audio device<br>- **liteWearable**: lite wearable<br>- **wearable**: wearable<br>Since API version 20, the following device types are supported:<br>- **headset**: wearable audio device<br>- **liteWearable**: lite wearable<br>- **wearable**: wearable<br>- **current**: current device<br>- **2in1**: PC<br>- **tablet**: tablet |
 | enable   | boolean                  | Yes  | Whether a specified application enables cross-device collaboration. The value **true** indicates that the cross-device collaboration is enabled, and the value **false** indicates the opposite.|
 
 **Return value**
@@ -4236,7 +4231,7 @@ let bundle: notificationManager.BundleOption = {
     uid: 1
 };
 let enable: boolean = true;
-let deviceType: string = 'phone';
+let deviceType: string = 'wearable';
 notificationManager.setDistributedEnabledByBundle(bundle, deviceType, enable).then(() => {
     console.info('setDistributedEnabledByBundle success');
 }).catch((err: BusinessError) => {
@@ -4263,14 +4258,14 @@ Sets whether applications support [cross-device collaboration](../../notificatio
 | Name  | Type                    | Mandatory| Description                      |
 | -------- | ------------------------ | ---- | -------------------------- |
 | bundleEnableInfos   | Array\<[DistributedBundleEnableInfo](#distributedbundleenableinfo20)\>             | Yes  | Applications to set.                  |
-| deviceType | string | Yes  | Device type.|
+| deviceType | string | Yes | Device type.<br>Since API version 18, the following device types are supported:<br>- **headset**: wearable audio device<br>- **liteWearable**: lite wearable<br>- **wearable**: wearable<br>Since API version 20, the following device types are supported:<br>- **headset**: wearable audio device<br>- **liteWearable**: lite wearable<br>- **wearable**: wearable<br>- **current**: current device<br>- **2in1**: PC<br>- **tablet**: tablet |
 
 
 **Return value**
 
 | Type| Description|
 | ---- | ----|
-| Promise\<void\> | Promise that returns no result.|
+| Promise\<void\> | Promise that returns no value.|
 
 **Error codes**
 
@@ -4332,8 +4327,8 @@ Obtains whether a specified application supports [cross-device collaboration](..
 
 | Name  | Type                    | Mandatory| Description                      |
 | -------- | ------------------------ | ---- | -------------------------- |
-| bundle   | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)             | Yes  | Bundle information of the application.                  |
-| deviceType | string | Yes  | Device type.|
+| bundle   | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)             | Yes   | Bundle information of the application.                   |
+| deviceType | string | Yes   | Device type.<br>Since API version 18, the following device types are supported:<br>- **headset**: wearable audio device<br>- **liteWearable**: lite wearable<br>- **wearable**: wearable<br>Since API version 20, the following device types are supported:<br>- **headset**: wearable audio device<br>- **liteWearable**: lite wearable<br>- **wearable**: wearable<br>- **current**: current device<br>- **2in1**: PC<br>- **tablet**: tablet |
 
 **Return value**
 
@@ -4367,7 +4362,7 @@ let bundle: notificationManager.BundleOption = {
     bundle: 'bundleName1',
     uid: 1
 };
-let deviceType: string = 'phone';
+let deviceType: string = 'wearable';
 notificationManager.isDistributedEnabledByBundle(bundle, deviceType).then((data: boolean) => {
     console.info(`isDistributedEnabledByBundle success, data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
@@ -4393,8 +4388,8 @@ Sets a smart reminder for cross-device collaboration. This API uses a promise to
 
 | Name  | Type                    | Mandatory| Description                      |
 | -------- | ------------------------ | ---- | -------------------------- |
-| deviceType | string | Yes  | Device type.|
-| enable   | boolean                  | Yes  | Indicates whether the specified application supports a smart reminder for cross-device collaboration (**true**: enabled; **false**: disabled).|
+| deviceType | string | Yes | Device type.<br>Since API version 18, the following device types are supported:<br>- **headset**: wearable audio device<br>- **liteWearable**: lite wearable<br>- **wearable**: wearable<br>Since API version 20, the following device types are supported:<br>- **headset**: wearable audio device<br>- **liteWearable**: lite wearable<br>- **wearable**: wearable<br>- **current**: current device<br>- **2in1**: PC<br>- **tablet**: tablet |
+| enable | boolean | Yes | Whether the application supports setting a smart reminder through cross-device collaboration (**true**: supported; **false**: not supported). |
 
 **Return value**
 
@@ -4424,7 +4419,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let deviceType: string = 'phone';
+let deviceType: string = 'wearable';
 let enable: boolean = true;
 notificationManager.setSmartReminderEnabled(deviceType, enable).then(() => {
     console.info('setSmartReminderEnabled success');
@@ -4451,7 +4446,7 @@ Obtains a smart reminder for cross-device collaboration. This API uses a promise
 
 | Name  | Type                    | Mandatory| Description                      |
 | -------- | ------------------------ | ---- | -------------------------- |
-| deviceType | string | Yes  | Device type.|
+| deviceType | string | Yes | Device type.<br>Since API version 18, the following device types are supported:<br>- **headset**: wearable audio device<br>- **liteWearable**: lite wearable<br>- **wearable**: wearable<br>Since API version 20, the following device types are supported:<br>- **headset**: wearable audio device<br>- **liteWearable**: lite wearable<br>- **wearable**: wearable<br>- **current**: current device<br>- **2in1**: PC<br>- **tablet**: tablet |
 
 **Return value**
 
@@ -4481,7 +4476,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let deviceType: string = 'phone';
+let deviceType: string = 'wearable';
 notificationManager.isSmartReminderEnabled(deviceType).then((data: boolean) => {
     console.info(`isSmartReminderEnabled success, data:${data}`);
 }).catch((err: BusinessError) => {
@@ -4569,8 +4564,8 @@ Before obtaining the notification slot, create a slot through [addSlot](#notific
 
 | Name  | Type        | Mandatory| Description      |
 | ------ | ------------ | ---- | ---------- |
-| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes  | Bundle information of the application.|
-| slotType | [SlotType](././js-apis-notificationManager.md#slottype) | Yes  | Notification slot type.|
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes | Bundle information of the application. |
+| slotType | [SlotType](js-apis-notificationManager.md#slottype) | Yes | Notification slot type. |
 
 **Return value**
 
@@ -4710,7 +4705,7 @@ Adds the Do Not Disturb profile for a specified user. This API uses a promise to
 
 | Type     | Description       |
 |---------|-----------|
-| Promise\<void\> | Promise that returns no result.|
+| Promise\<void\> | Promise that returns no value.|
 
 **Error codes**
 
@@ -4845,7 +4840,7 @@ Deletes the Do Not Disturb profile of a specified user. This API uses a promise 
 
 | Type     | Description       |
 |---------|-----------|
-| Promise\<void\> | Promise that returns no result.|
+| Promise\<void\> | Promise that returns no value.|
 
 **Error codes**
 
@@ -5332,7 +5327,7 @@ Sets the switch status of [silent reminder](../../notification/notification-glos
 
 | Name  | Type                                                        | Mandatory| Description                    |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes  | Bundle information of the application.|
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes | Bundle information of the application. |
 | enabled | boolean | Yes  | Whether to enable the silent reminder. The value **true** means to enable the silent reminder, and **false** means the opposite.|
 
 **Return value**
@@ -5387,7 +5382,7 @@ Queries the switch status of [silent reminder](../../notification/notification-g
 
 | Name  | Type                                                        | Mandatory| Description                    |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes  | Bundle information of the application.|
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes   | Bundle information of the application. |
 
 **Return value**
 
@@ -5565,7 +5560,7 @@ Queries whether the device supports [cross-device collaboration](../../notificat
 
 | Type           | Description                    |
 |-----------------|-------------------------|
-| Promise\<boolean\> | Promise used to return the result. The value **true** indicates that the cross-device notification is enabled, and the value **false** indicates the opposite.  |
+| Promise\<boolean\> | Promise used to return whether the device supports cross-device collaboration notifications. The value **true** indicates that it is supported, and **false** indicates that it is not supported. |
 
 **Error codes**
 
@@ -5617,14 +5612,14 @@ Sets whether the device supports [cross-device collaboration](../../notification
 
 | Name  | Type                                                        | Mandatory| Description                    |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| enable   | boolean | Yes  | Whether the device of a specified type enables cross-device notification. The value **true** indicates that the cross-device notification is enabled, and the value **false** indicates the opposite.|
+| enable   | boolean | Yes  | Whether the device of a specified type enables cross-device collaboration notification. The value **true** indicates that the cross-device collaboration notification is enabled, and the value **false** indicates the opposite.|
 | deviceType | string | Yes  | Device type. The options are as follows:<br>- **headset**: wearable audio device<br>- **liteWearable**: lite wearable<br>- **wearable**: wearable<br>- **current**: current device<br>- **2in1**: PC<br>- **tablet**: tablet|
 
 **Return value**
 
 | Type           | Description                    |
 |-----------------|-------------------------|
-| Promise\<void\> | Promise that returns no result.  |
+| Promise\<void\> | Promise that returns no value. |
 
 **Error codes**
 
@@ -5677,7 +5672,7 @@ Queries the device types that support [cross-device collaboration](../../notific
 
 | Type           | Description                    |
 |-----------------|-------------------------|
-| Promise\<Array\<string\>\> | Promise used to return the result.  |
+| Promise\<Array\<string\>\> | Promise used to return the list of device types that support cross-device collaboration notifications. |
 
 **Error codes**
 
@@ -5728,7 +5723,7 @@ Sets the [customized ringtone](../../notification/notification-glossary.md#custo
 
 | Name  | Type                                                        | Mandatory| Description                    |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes  | Bundle information of the application.|
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes | Bundle information of the application. |
 | ringtoneInfo | [RingtoneInfo](#ringtoneinfo21) | Yes  | Custom ringtone information.|
 
 **Return value**
@@ -5798,7 +5793,7 @@ Obtains the [customized ringtone](../../notification/notification-glossary.md#cu
 
 | Name  | Type                                                        | Mandatory| Description                    |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes  | Bundle information of the application.|
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes | Bundle information of the application. |
 
 **Return value**
 
@@ -5918,13 +5913,13 @@ Obtains the display statuses of application badges in batches. This API uses a p
 
 | Name  | Type                                                        | Mandatory| Description                    |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| bundles   | Array<[BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)> | Yes  | Bundles whose badge display statuses are to be obtained.|
+| bundles   | Array<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)> | Yes   | Bundles whose badge display statuses are to be obtained. |
 
 **Return value**
 
 | Type           | Description                    |
 |-----------------|-------------------------|
-| Promise\<Map\<[BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption), boolean>> | Promise used to return the bundles and the badge display statuses obtained.|
+| Promise\<Map\<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption), boolean>> | Promise used to return the bundles and the badge display statuses obtained. |
 
 **Error codes**
 
@@ -6036,7 +6031,7 @@ Batch obtains reminders of specified applications. This API uses a promise to re
 
 | Name  | Type                                                        | Mandatory| Description                    |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| bundles   | Array<[BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)> | Yes | Bundles whose reminders are to be obtained.|
+| bundles   | Array<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)> | Yes  | Bundles whose reminders are to be obtained. |
 
 **Return value**
 
@@ -6184,7 +6179,7 @@ Checks whether the priority notification for a specified application is enabled.
 
 | Name  | Type                                                        | Mandatory| Description                    |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes| Bundle information of the application.|
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes | Bundle information of the application. |
 
 **Return value**
 
@@ -6235,7 +6230,7 @@ Sets the enabling status of the priority notification for an application.
 
 | Name  | Type                                                        | Mandatory| Description                    |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes| Bundle information of the application.|
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes | Bundle information of the application. |
 | enableStatus | [PriorityEnableStatus](#priorityenablestatus23) | Yes | Priority switch status of application notifications.<br> - **DISABLE**: The notification cannot be set as a [priority notification](../../notification/notification-glossary.md#priority-notification).<br> - **ENABLE_BY_INTELLIGENT**: The notification can be set as a priority notification through intelligent recognition, user keyword matching, application rule matching, and other methods.<br> - **ENABLE**: All application notifications are set as priority notifications. |
 
 **Return value**
@@ -6275,7 +6270,7 @@ notificationManager.setPriorityEnabledByBundle(bundleOption, notificationManager
 
 getBundlePriorityConfig(bundle: BundleOption): Promise\<string\>
 
-Obtains the priority configuration of an application.
+Obtains the priority configuration of an application, including the keyword-based priority notification recognition rules. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -6287,7 +6282,7 @@ Obtains the priority configuration of an application.
 
 | Name  | Type                                                        | Mandatory| Description                    |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes| Bundle information of the application.|
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes | Bundle information of the application. |
 
 **Return value**
 
@@ -6326,7 +6321,7 @@ notificationManager.getBundlePriorityConfig(bundleOption).then((value: string) =
 
 setBundlePriorityConfig(bundle: BundleOption, value: string): Promise\<void\>
 
-Sets the priority configuration of an application.
+Sets the priority configuration of an application, including the keyword-based priority notification recognition rules. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -6338,8 +6333,8 @@ Sets the priority configuration of an application.
 
 | Name  | Type                                                        | Mandatory| Description                    |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes| Bundle information of the application.|
-| value | string | Yes| Priority configuration of an application.|
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | Yes | Bundle information of the application. |
+| value | string | Yes | Priority function configuration of the application. The string length cannot exceed 3074 bytes. If the limit is exceeded, error code 401 is returned. |
 
 **Return value**
 
@@ -6378,7 +6373,7 @@ notificationManager.setBundlePriorityConfig(bundleOption, 'keyword\nkeyword1').t
 
 isPriorityIntelligentEnabled(): Promise\<boolean\>
 
-Obtains the enabled status of the intelligent service for [priority notifications](../../notification/notification-glossary.md#priority-notification). This API uses a promise to return the result.
+Obtains the enabled status of the intelligent [priority notification](../../notification/notification-glossary.md#priority-notification) service. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -6474,7 +6469,7 @@ notificationManager.setPriorityIntelligentEnabled(false).then(() => {
 
 getPriorityEnabledByBundles(bundles: Array\<BundleOption\>): Promise\<Map\<BundleOption, boolean\>\>
 
-Obtains whether priority notifications are enabled for applications in batches. This API uses a promise to return the result.
+Obtains whether notification priority is enabled for applications in batches. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -6531,7 +6526,7 @@ notificationManager.getPriorityEnabledByBundles(bundles).then((switches: Map<not
 
 setPriorityEnabledByBundles(switches: Map\<BundleOption, boolean\>): Promise\<void\>
 
-Sets whether priority notifications are enabled for applications in batches. This API uses a promise to return the result.
+Sets whether notification priority is enabled for applications in batches. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -6585,7 +6580,7 @@ notificationManager.setPriorityEnabledByBundles(switches).then(() => {
 
 getPriorityStrategyByBundles(bundles: Array\<BundleOption\>): Promise\<Map\<BundleOption, number\>\>
 
-Obtains the application priority notification strategies in batches. This API uses a promise to return the result.
+Obtains the application notification priority strategies in batches. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -6641,7 +6636,7 @@ notificationManager.getPriorityStrategyByBundles(bundles).then((strategies: Map<
 
 setPriorityStrategyByBundles(strategies: Map\<BundleOption, number\>): Promise\<void\>
 
-Sets the application priority notification strategies in batches. This API uses a promise to return the result.
+Sets the application notification priority strategies in batches. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -6791,7 +6786,7 @@ Sets the enabled status of the [geofence](../../notification/notification-glossa
 
 | Type           | Description                                  |
 | --------------- | -------------------------------------- |
-| Promise\<void\> | Promise that returns no result.|
+| Promise\<void\> | Promise that returns no value.|
 
 **Error codes**
 
@@ -6958,9 +6953,9 @@ Defines the DND time type.
 | Name        | Value              | Description                                      |
 | ------------ | ---------------- | ------------------------------------------ |
 | TYPE_NONE    | 0 | Non-DND.                          |
-| TYPE_ONCE    | 1 | One-shot DND at the specified time segment (only considering the hour and minute).|
-| TYPE_DAILY   | 2 | Daily DND at the specified time segment (only considering the hour and minute).|
-| TYPE_CLEARLY | 3 | DND at the specified time segment (with the hour, day, and month specified).    |
+| TYPE_ONCE    | 1 | One-shot DND at the specified time segment (only considering the hour and minute). |
+| TYPE_DAILY   | 2 | Daily DND at the specified time segment (only considering the hour and minute). |
+| TYPE_CLEARLY | 3 | DND at the specified time segment (accurate to month, day, and hour).     |
 
 
 ## DeviceRemindType
@@ -7008,9 +7003,9 @@ Defines the [notification check](../../notification/notification-glossary.md#not
 | bundleName                   | string                       |  No | No  | Bundle name.   |
 | notificationId               | number                       |  No | No  | Notification ID.       |
 | label<sup>11+</sup>          | string                       |  No | Yes  | Notification label.     |
-| contentType                  | [ContentType](./js-apis-notificationManager.md#contenttype)  |  No | No  | Notification type.     |
+| contentType                  | [ContentType](js-apis-notificationManager.md#contenttype)  |  No  | No   | Notification type.      |
 | creatorUserId<sup>11+</sup>  | number                       |  No | No  | User ID of the notification.|
-| slotType<sup>11+</sup>       | [SlotType](./js-apis-notificationManager.md#slottype)        |  No | No  | Notification slot type.     |
+| slotType<sup>11+</sup>       | [SlotType](js-apis-notificationManager.md#slottype)        |  No  | No   | Notification slot type.      |
 | extraInfos<sup>11+</sup>     | Record<string, Object>       |  No  | Yes   | Additional information of the [live view notification](../../notification/notification-glossary.md#live-view-notification). |
 
 ## NotificationCheckResult<sup>10+</sup>
@@ -7097,15 +7092,15 @@ Defines the configuration information of the Do Not Disturb mode.
 
 | Name     | Type   | Read-Only| Optional| Description          |
 | --------- | ------ | ---- | ---- | ------------- |
-| id        | number | No  |  No | ID of the Do Not Disturb profile.|
-| name      | string | No  |  No | Name of the Do Not Disturb profile.|
-| trustlist | Array\<[BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)> | No| Yes| Trustlist in Do Not Disturb profile.|
+| id        | number | No  |  No | ID of the Do Not Disturb mode.|
+| name      | string | No   |  No  | Name of the Do Not Disturb mode. The string length cannot exceed 202 bytes, and the excess part will be truncated. |
+| trustlist | Array\<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)> | No | Yes | Trustlist of Do Not Disturb mode. |
 
 ## NotificationLiveViewContent<sup>11+</sup>
 
 type NotificationLiveViewContent = _NotificationLiveViewContent 
 
-Describes the [normal live view](../../notification/notification-glossary.md#normal-live-view).
+Describes the [normal live view notification](../../notification/notification-glossary.md#normal-live-view).
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -7113,7 +7108,7 @@ Describes the [normal live view](../../notification/notification-glossary.md#nor
 
 | Type| Description|
 | --- | --- |
-| [_NotificationLiveViewContent](js-apis-inner-notification-notificationContent-sys.md#notificationliveviewcontent11) | Common live view.|
+| [_NotificationLiveViewContent](js-apis-inner-notification-notificationContent-sys.md#notificationliveviewcontent11) | Normal live view notification.|
 
 ## SwitchState<sup>20+</sup>
 
@@ -7170,9 +7165,9 @@ Describes the [customized ringtone](../../notification/notification-glossary.md#
 | Name   | Type    | Read-Only| Optional| Description                    |
 | ------- | ------- | ---- | ---- | ----------------------- |
 | ringtoneType | [RingtoneType](#ringtonetype21)  |  No | No  | Type of the ringtone.|
-| ringtoneTitle | string  |  No | Yes  | Title of the ringtone. |
-| ringtoneFileName | string  |  No | Yes  | File name of the ringtone. |
-| ringtoneUri | string  |  No | Yes  | URI of the ringtone. |
+| ringtoneTitle | string  |  No  | Yes   | Title of the ringtone.<br>The size cannot exceed 202 bytes; otherwise, error code 401 is returned. The default value is empty.  |
+| ringtoneFileName | string  |  No  | Yes   | File name of the ringtone.<br>The size cannot exceed 202 bytes; otherwise, error code 401 is returned. The default value is empty.  |
+| ringtoneUri | string  |  No  | Yes   | URI of the ringtone. For supported resources, see [media.AVPlayer](../apis-media-kit/arkts-apis-media-AVPlayer.md).<br>The size cannot exceed 202 bytes; otherwise, error code 401 is returned. The default value is empty.  |
 
 ## NotificationReminderInfo<sup>21+</sup>
 
@@ -7184,7 +7179,7 @@ Describes the information about the application reminder.
 
 | Name     | Type   | Read-Only| Optional| Description          |
 | --------- | ------ | ---- | ---- | ------------- |
-| bundle | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption) | No| No| Bundle information of the application.|
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | No | No | Bundle information of the application.|
 | reminderFlags | number | No | No | Flag bits of the [notification reminder mode](../../notification/notification-glossary.md#notification-reminder-mode).<br>- **bit0**: ringtone. **0** indicates disabled, and **1** indicates enabled. <br>- **bit1**: lock screen. **0** indicates disabled, and **1** indicates enabled. <br>- **bit2**: banner. **0** indicates disabled, and **1** indicates enabled. <br>- **bit3**: screen on. **0** indicates disabled, and **1** indicates enabled. <br>- **bit4**: vibration. **0** indicates disabled, and **1** indicates enabled. <br>- **bit5**: status bar notification icon. **0** indicates disabled, and **1** indicates enabled. |
 | silentReminderEnabled | boolean | No | No | Whether the [silent reminder](../../notification/notification-glossary.md#silent-reminder) switch is enabled (**true**: enabled, **false**: disabled). |
 
@@ -7371,4 +7366,3 @@ Defines the custom [group notification](../../notification/notification-glossary
 | Type| Description|
 | --- | --- |
 | [_GroupInfo](js-apis-inner-notification-notificationRequest-sys.md#groupinfo) | Type of the custom group notification information.|
-<!--no_check-->
