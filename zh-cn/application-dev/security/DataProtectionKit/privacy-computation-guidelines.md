@@ -8,7 +8,7 @@
 
 ## 介绍
 
-隐私计算提供隐私保护的数据比对与检索能力，包括隐私目标生成、隐私搜索、搜索结果检索。在不向对方透露原始数据与数据集内容的前提下，判断目标元素是否存在于对方数据集中，或检索匹配项的附加值。
+从API版本26.0.1开始，提供隐私保护的数据比对与检索能力，包括隐私目标生成、隐私搜索、搜索结果检索。在不向对方透露原始数据与数据集内容的前提下，判断目标元素是否存在于对方数据集中，或检索匹配项的附加值。
 
 隐私计算支持两类协议：
 
@@ -43,11 +43,13 @@
 
   单个结果密文可以包含的比较次数，结果密文总数由elements.size/dataSetSize决定。根据隐私搜索中元素的数量与每个结果密文可接受的大小选择合适的取值。
 
-## 约束与限制
-
-- 本模块接口从API version 26.0.1开始支持。
-- 本模块接口为原子化服务API，从API version 26.0.1开始支持在原子化服务中使用。
-- 本模块接口可在FA模型和Stage模型下使用。
+## 环境要求
+ 
+在使用隐私计算能力前，请确保满足以下环境要求：
+ 
+- 设备：支持OpenHarmony API version 26.0.1及以上版本的设备。
+- 开发工具：DevEco Studio，并配置对应版本的OpenHarmony SDK。
+- 系统能力：设备需支持SystemCapability.Security.Asset。
 
 ## 接口说明
 
@@ -60,3 +62,24 @@
 | genPrivacyTarget(targetElement: TargetElement, privacyProtocol: PrivacyProtocol): Promise&lt;Uint8Array&gt; | 为给定元素生成隐私目标。 |
 | privacySearch(privacyTarget: Uint8Array, elements: Element[], privacyProtocol: PrivacyProtocol): Promise&lt;PrivacySearchResult&gt; | 执行隐私保护搜索。 |
 | getSearchResult(privacySearchResult: PrivacySearchResult, privacyProtocol: PrivacyProtocol): Promise&lt;SearchResult&gt; | 获取隐私搜索结果和最终搜索结果。 |
+
+## 支持的协议与数据集大小
+ 
+在调用接口前，需根据业务场景选择合适的隐私协议与数据集大小。
+ 
+**表1** 隐私协议类型
+ 
+| 协议类型 | 说明 |
+| -------- | -------- |
+| PSI_PROTOCOL | 隐私集合求交（PSI）协议，判断目标元素是否存在于数据集中。 |
+| PIR_PROTOCOL | 隐私信息检索（PIR）协议，检索匹配项的附加值。 |
+ 
+**表2** 数据集大小
+ 
+| 数据集大小 | 说明 |
+| -------- | -------- |
+| SIZE_128 | 单个结果密文可以包含128次比较。 |
+| SIZE_256 | 单个结果密文可以包含256次比较。 |
+| SIZE_512 | 单个结果密文可以包含512次比较。 |
+ 
+数据集大小决定单个结果密文可以包含的比较次数，结果密文总数由elements.size/dataSetSize决定。请根据隐私搜索中元素的数量与每个结果密文可接受的大小选择合适的取值。

@@ -98,7 +98,7 @@ import { privacyComputation } from '@kit.DataProtectionKit';
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | elemData | Uint8Array | 否 | 否 | 要搜索的目标元素的原始数据。 |
-| hashAlg | [HashAlg](#hashalg) | 否 | 是 | 用于对目标元素计算的哈希算法。 |
+| hashAlg | [HashAlg](#hashalg) | 否 | 是 | 用于对目标元素计算的哈希算法。未显式指定哈希算法时，默认为NONE。 |
 ## Element
 
 定义隐私搜索使用的数据集元素。每个元素包含一个用于匹配的键、可选的哈希算法，以及用于PIR协议检索的可选附加值。
@@ -112,7 +112,7 @@ import { privacyComputation } from '@kit.DataProtectionKit';
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | elemKey | Uint8Array | 否 | 否 | 数据集元素的键，用于与隐私目标进行匹配。 |
-| hashAlg | [HashAlg](#hashalg) | 否 | 是 | 用于对元素键计算的哈希算法。 |
+| hashAlg | [HashAlg](#hashalg) | 否 | 是 | 用于对元素键计算的哈希算法。未显式指定哈希算法时，默认为NONE。 |
 | elemValue | Uint8Array | 否 | 是 | 与元素键关联的附加值。<br>**说明：** <br>仅在PIR协议中使用，当找到匹配项时检索该附加值。<br>未指定时元素只支持键匹配，不支持值检索。 |
 
 ## PrivacySearchResult
@@ -204,7 +204,7 @@ async function genTarget() {
 
 ## privacyComputation.privacySearch
 
-privacySearch(privacyTarget: Uint8Array, elements: [Element](#element)[], privacyProtocol: [PrivacyProtocol](#privacyprotocol)): Promise&lt;[PrivacySearchResult](#privacysearchresult)&gt;
+privacySearch(privacyTarget: Uint8Array, elements: Element[], privacyProtocol: PrivacyProtocol): Promise&lt;PrivacySearchResult&gt;
 
 执行隐私保护搜索。根据加密的隐私目标搜索给定的数据集元素，不向对方透露目标或数据集内容。使用Promise异步回调。
 
@@ -270,7 +270,7 @@ async function search(privacyTarget: Uint8Array) {
 
 ## privacyComputation.getSearchResult
 
-getSearchResult(privacySearchResult: [PrivacySearchResult](#privacysearchresult), privacyProtocol: [PrivacyProtocol](#privacyprotocol)): Promise&lt;[SearchResult](#searchresult)&gt;
+getSearchResult(privacySearchResult: PrivacySearchResult, privacyProtocol: PrivacyProtocol): Promise&lt;SearchResult&gt;
 
 获取隐私搜索结果与最终搜索结果。解密[privacySearch](#privacycomputationprivacysearch)返回的结果密文，获取最终匹配结果与可选的附加值。使用Promise异步回调。
 

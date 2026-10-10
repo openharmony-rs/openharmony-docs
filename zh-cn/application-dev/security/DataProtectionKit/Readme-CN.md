@@ -19,7 +19,6 @@
   - [识别敏感内容](sensitive-file-identification.md)
 - 隐私计算<!--privacy-computation-->
   - [隐私计算简介](privacy-computation-guidelines.md)
-  - [开发准备（隐私计算）](privacy-computation-development-preparation.md)
   - [使用PSI协议进行隐私集合求交](privacy-computation-psi.md)
   - [使用PIR协议进行隐私信息检索](privacy-computation-pir.md)
 - [Data Protection Kit术语](dlp-glossary.md)
