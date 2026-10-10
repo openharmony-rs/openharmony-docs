@@ -1,4 +1,4 @@
-# Asset Store Kit Glossary
+# Glossary
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->

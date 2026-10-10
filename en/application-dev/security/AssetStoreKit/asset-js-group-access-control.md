@@ -2,10 +2,11 @@
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @yhf-->
+<!--Owner: @HarMonkey-->
 <!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=d910972754a03f29eabea013ac43af463c14ec75 translatedAt=2026-10-09T01:16:38.711Z pushedAt=2026-10-09T09:11:59.568Z -->
 
 Before managing assets in a group, ensure that you are familiar with the following operations:
 
@@ -33,7 +34,7 @@ Before managing assets in a group, ensure that you are familiar with the followi
 
 2. Include the header file and define the tool function.
    <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_group_plaintext.ets) -->
-   
+
    ``` TypeScript
    import { asset } from '@kit.AssetStoreKit';
    import { util } from '@kit.ArkTS';
@@ -87,7 +88,7 @@ Remove asset **demo_alias** from group **demo_group_id**.
 
 ``` TypeScript
 let query: asset.AssetMap = new Map();
-query.set(asset.Tag.ALIAS, stringToArray('demo_alias')); // Specify the alias to delete a single asset from the group. You can also delete multiple assets without specifying the alias.
+query.set(asset.Tag.ALIAS, stringToArray('demo_alias')); // Specify the alias to remove a single asset from the group. You can also remove multiple assets without specifying the alias.
 query.set(asset.Tag.GROUP_ID, stringToArray('demo_group_id'));
 try {
   asset.remove(query).then(() => {

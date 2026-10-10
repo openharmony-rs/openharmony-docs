@@ -70,7 +70,7 @@ Allows an application to obtain the print framework capability.
 
 Allows an application to configure Bluetooth on a device, initiate or cancel a scan for Bluetooth devices, and pair with Bluetooth devices.
 
-
+This permission allows the app to configure local Bluetooth (such as setting the Bluetooth name, turning Bluetooth on/off, etc.), initiate or cancel device scanning, and initiate Bluetooth pairing and connect to devices.
 
 **Permission level**: normal
 

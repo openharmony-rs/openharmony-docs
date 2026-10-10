@@ -6,6 +6,7 @@
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=8aa79cb65a7095bb971dc0b556db7006504fdaf2 translatedAt=2026-10-09T01:08:27.485Z pushedAt=2026-10-09T03:19:50.707Z -->
 
 You need to determine whether your application needs related permissions before accessing data or performing an operation. If permissions are required, request the permissions in the application installation package.
 
@@ -40,7 +41,7 @@ You can request a permission based on its level and authorization mode by referr
 | system_core | system_grant | true | [Request restricted permission](declare-permissions-in-acl.md) &gt; [Declare permission](declare-permissions.md) > Access API| 
 | system_core | user_grant | true | [Request restricted permission](declare-permissions-in-acl.md) &gt; [Declare permission](declare-permissions.md) > [Request user authorization](request-user-authorization.md) > Access API| 
 
-To change the application APL to system_basic or system_core, modify the HarmonyAppProvision file (**Toolchains / _{Version} _/ lib / UnsignedReleasedProfileTemplate.json** file in the SDK directory) of the application when developing the application installation package, and sign the application again.
+If an application needs to declare its APL as system_basic or higher, when developing the application installation package, you need to modify the application's HarmonyAppProvision configuration file, that is, the "`Toolchains / _{Version} _/ lib / UnsgnedReleasedProfileTemplate.json`" file in the SDK directory, and re-sign the application.
 
 **Example**
 

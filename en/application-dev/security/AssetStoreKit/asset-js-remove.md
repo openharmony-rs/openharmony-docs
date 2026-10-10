@@ -6,6 +6,7 @@
 <!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=4406a1fcebfd3a8963726b8dfa66bed58dd98b9c translatedAt=2026-10-09T01:19:10.238Z pushedAt=2026-10-09T11:22:02.478Z -->
 
 ## Available APIs
 
@@ -21,22 +22,22 @@ The following table describes the attributes of **AssetMap** for removing an ass
 | --------------------- | ------------------------------------------------------------ | -------- | ------------------------------------------------ |
 | ALIAS                 | Type: Uint8Array<br>Length: 1-256 bytes                           | No    | Asset alias, which uniquely identifies an asset.           |
 | ACCESSIBILITY         | Type: number<br>Value range: see [Accessibility](../../reference/apis-asset-store-kit/js-apis-asset.md#accessibility)| No    | Access control based on the lock screen status.                                    |
-| REQUIRE_PASSWORD_SET  | Type: Boolean                                                  | No    | Whether the asset is accessible only when a lock screen password is set. The value **true** means the asset is accessible only when a lock screen password is set. The value **false** means that the asset can be accessed regardless of whether a lock screen password is set.    |
+| REQUIRE_PASSWORD_SET  | Type: Boolean                                                  | No    | Whether the asset is accessible only when a lock screen password is set. The value **true** means to delete the asset accessible only when a lock screen password is set. The value **false** means to delete the asset that can be accessed regardless of whether a lock screen password is set.    |
 | AUTH_TYPE             | Type: number<br>Value range: see [AuthType](../../reference/apis-asset-store-kit/js-apis-asset.md#authtype)| No    | Type of user authentication required for accessing the asset.                  |
 | SYNC_TYPE             | Type: number<br>Value range: see [SyncType](../../reference/apis-asset-store-kit/js-apis-asset.md#synctype)| No    | Type of sync supported by the asset.                          |
 | IS_PERSISTENT         | Type: Boolean                                                  | No    | Whether to retain the asset when the application is uninstalled. The value **true** means to retain the asset even after the application is uninstalled. The value **false** means the opposite.              |
-| DATA_LABEL_CRITICAL_1 | Type: Uint8Array<br>Length: 1-2048 bytes                       | No    | Asset attribute information customized by the service with integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
-| DATA_LABEL_CRITICAL_2 | Type: Uint8Array<br>Length: 1-2048 bytes                       | No    | Asset attribute information customized by the service with integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
-| DATA_LABEL_CRITICAL_3 | Type: Uint8Array<br>Length: 1-2048 bytes                       | No    | Asset attribute information customized by the service with integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
-| DATA_LABEL_CRITICAL_4 | Type: Uint8Array<br>Length: 1-2048 bytes                       | No    | Asset attribute information customized by the service with integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
-| DATA_LABEL_NORMAL_1   | Type: Uint8Array<br>Length: 1-2048 bytes                       | No    | Asset attribute information customized by the service without integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
-| DATA_LABEL_NORMAL_2   | Type: Uint8Array<br>Length: 1-2048 bytes                       | No    | Asset attribute information customized by the service without integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
-| DATA_LABEL_NORMAL_3   | Type: Uint8Array<br>Length: 1-2048 bytes                       | No    | Asset attribute information customized by the service without integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
-| DATA_LABEL_NORMAL_4   | Type: Uint8Array<br>Length: 1-2048 bytes                       | No    | Asset attribute information customized by the service without integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
-| DATA_LABEL_NORMAL_LOCAL_1<sup>12+</sup> | Type: Uint8Array<br>Length: 1-2048 bytes| No| Local attribute information about the asset. The value is assigned by the service without integrity protection and will not be synced.|
-| DATA_LABEL_NORMAL_LOCAL_2<sup>12+</sup> | Type: Uint8Array<br>Length: 1-2048 bytes| No| Local attribute information about the asset. The value is assigned by the service without integrity protection and will not be synced.|
-| DATA_LABEL_NORMAL_LOCAL_3<sup>12+</sup> | Type: Uint8Array<br>Length: 1-2048 bytes| No| Local attribute information about the asset. The value is assigned by the service without integrity protection and will not be synced.|
-| DATA_LABEL_NORMAL_LOCAL_4<sup>12+</sup> | Type: Uint8Array<br>Length: 1-2048 bytes| No| Local attribute information about the asset. The value is assigned by the service without integrity protection and will not be synced.|
+| DATA_LABEL_CRITICAL_1 | Type: Uint8Array, length: 1-2048 bytes. | Optional | Key Asset attached information, content customized by the service and with integrity protection.<br/>**Note:** In API version 12 and earlier versions, the length is 1-512 bytes. |
+| DATA_LABEL_CRITICAL_2 | Type: Uint8Array, length: 1-2048 bytes. | Optional | Key Asset attached information, content customized by the service and with integrity protection.<br/>**Note:** In API version 12 and earlier versions, the length is 1-512 bytes. |
+| DATA_LABEL_CRITICAL_3 | Type: Uint8Array, length: 1-2048 bytes. | Optional | Key Asset attached information, content customized by the service and with integrity protection.<br/>**Note:** In API version 12 and earlier versions, the length is 1-512 bytes. |
+| DATA_LABEL_CRITICAL_4 | Type: Uint8Array, length: 1-2048 bytes. | Optional | Key Asset attached information, content customized by the service and with integrity protection.<br/>**Note:** In API version 12 and earlier versions, the length is 1-512 bytes. |
+| DATA_LABEL_NORMAL_1 | Type: Uint8Array, length: 1-2048 bytes. | Optional | Key Asset attached information, content customized by the service and without integrity protection.<br/>**Note:** In API version 12 and earlier versions, the length is 1-512 bytes. |
+| DATA_LABEL_NORMAL_2 | Type: Uint8Array, length: 1-2048 bytes. | Optional | Key Asset attached information, content customized by the service and without integrity protection.<br/>**Note:** In API version 12 and earlier versions, the length is 1-512 bytes. |
+| DATA_LABEL_NORMAL_3 | Type: Uint8Array, length: 1-2048 bytes. | Optional | Key Asset attached information, content customized by the service and without integrity protection.<br/>**Note:** In API version 12 and earlier versions, the length is 1-512 bytes. |
+| DATA_LABEL_NORMAL_4 | Type: Uint8Array, length: 1-2048 bytes. | Optional | Key Asset attached information, content customized by the service and without integrity protection.<br/>**Note:** In API version 12 and earlier versions, the length is 1-512 bytes. |
+| DATA_LABEL_NORMAL_LOCAL_1<sup>12+</sup> | Type: Uint8Array<br>Length: 1-2048 bytes| No| Local attribute information about the asset. The value is defined by the service without integrity protection and will not be synced.|
+| DATA_LABEL_NORMAL_LOCAL_2<sup>12+</sup> | Type: Uint8Array<br>Length: 1-2048 bytes| No| Local attribute information about the asset. The value is defined by the service without integrity protection and will not be synced.|
+| DATA_LABEL_NORMAL_LOCAL_3<sup>12+</sup> | Type: Uint8Array<br>Length: 1-2048 bytes| No| Local attribute information about the asset. The value is defined by the service without integrity protection and will not be synced.|
+| DATA_LABEL_NORMAL_LOCAL_4<sup>12+</sup> | Type: Uint8Array<br>Length: 1-2048 bytes| No| Local attribute information about the asset. The value is defined by the service without integrity protection and will not be synced.|
 | REQUIRE_ATTR_ENCRYPTED<sup>14+</sup> | Type: Boolean| No| Whether to delete the encrypted data of service customized supplementary information. The value **true** means to delete the encrypted data of service customized supplementary information; the value **false** means to delete the non-encrypted data of service customized supplementary information. The default value is **false**.|
 | GROUP_ID<sup>18+</sup> | Type: Uint8Array<br>Length: 7-127 bytes| No| Group to which the asset to be removed belongs. By default, this parameter is not specified.|
 
@@ -54,7 +55,7 @@ Remove asset **demo_alias**.
 
 1. Include the header file and define the tool function.
    <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/remove.ets) -->
-   
+
    ``` TypeScript
    import { asset } from '@kit.AssetStoreKit';
    import { util } from '@kit.ArkTS';
@@ -68,7 +69,7 @@ Remove asset **demo_alias**.
 
 2. Develop the desired feature.
    <!-- @[remove_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/remove.ets) -->
-   
+
    ``` TypeScript
    let query: asset.AssetMap = new Map();
    query.set(asset.Tag.ALIAS, stringToArray('demo_alias')); // Specify the asset alias to remove a single asset. To remove all assets, leave the alias unspecified.
@@ -86,3 +87,4 @@ Remove asset **demo_alias**.
      // ...
    }
    ```
+
