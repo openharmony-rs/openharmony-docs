@@ -1341,9 +1341,9 @@ observer.onCommunicationStateChange(callback, options);
 observer.offCommunicationStateChange(callback, options);
 ```
 
-## observer.on('VoipStateChange')
+## observer.onVoIPStateChange
 
-on\(type: \'VoipStateChange\', callback: Callback\<VoIPCallStateInfo\>\): void
+onVoIPStateChange\( callback: Callback\<VoIPCallStateInfo\>\): void
 
 订阅VoIP通话状态变化事件，使用callback方式作为异步方法。
 
@@ -1357,7 +1357,6 @@ on\(type: \'VoipStateChange\', callback: Callback\<VoIPCallStateInfo\>\): void
 
 |  参数名  |                              类型                         | 必填 |                            说明                                   |
 | -------- | --------------------------------------------------------- | ---- | ---------------------------------------------------------------- |
-| type     | string                                                    | 是   | VoIP通话状态变化事件，参数固定为'VoipStateChange'。                 |
 | callback | Callback\<[VoIPCallStateInfo](#voipcallstateinfo)\> | 是   | 回调函数，返回VoIP通话状态信息。 |
 
 **错误码：**
@@ -1367,23 +1366,33 @@ on\(type: \'VoipStateChange\', callback: Callback\<VoIPCallStateInfo\>\): void
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
 | 201      | Permission denied.                           |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                             |
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Service connection failed.                   |
 | 8300003  | System internal error.                       |
-| 8300999  | Unknown error code.                               |
 
 **示例：**
 
 ```ts
-observer.on('voipStateChange', (data: observer.VoIPCallStateInfo) => {
-    console.info("on voipStateChage, data:" + JSON.stringify(data));
-});
+import { observer } from '@kit.TelephonyKit';
+
+let callback: (data: observer.VoIPCallStateInfo) => void = (data: observer.VoIPCallStateInfo) => {
+    console.info(`onVoIPStateChange, appName: ${data.appName}, contactName: ${data.contactName}, ` +
+        `callType: ${data.callType}, callState: ${data.callState} ` +
+        `isVoiceAnswerSupported: ${data.isVoiceAnswerSupported}`;
+    );
+}
+
+//订阅三方VoIP通话状态变化
+try {
+    observer.onVoIPStateChanage(callback);
+} catch (err) {
+    console.error(`observer.onVoIPStateChanage failed: ${JSON.stringify(err)}`);
+}
 ```
 
-## observer.off('VoipStateChange')
+## observer.offVoIPStateChange
 
-off\(type: \'VoipStateChange\', callback?: Callback\<VoIPCallStateInfo\>\): void
+offVoIPStateChange\(callback?: Callback\<VoIPCallStateInfo\>\): void
 
 取消订阅VoIP通话状态变化事件，使用callback方式作为异步方法。
 
@@ -1397,7 +1406,6 @@ off\(type: \'VoipStateChange\', callback?: Callback\<VoIPCallStateInfo\>\): void
 
 |  参数名  |                              类型                         | 必填 |                            说明                                   |
 | -------- | --------------------------------------------------------- | ---- | ---------------------------------------------------------------- |
-| type     | string                                                    | 是   | VoIP通话状态变化事件，参数固定为'VoipStateChange'。                 |
 | callback | Callback\<[VoIPCallStateInfo](#voipcallstateinfo)\> | 否   | 回调函数，返回VoIP通话状态信息。 |
 
 **错误码：**
@@ -1407,22 +1415,35 @@ off\(type: \'VoipStateChange\', callback?: Callback\<VoIPCallStateInfo\>\): void
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
 | 201      | Permission denied.                           |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.                             |
 | 8300001  | Invalid parameter value.                     |
 | 8300002  | Service connection failed.                   |
 | 8300003  | System internal error.                       |
-| 8300999  | Unknown error code.                               |
 
 **示例：**
 
 ```ts
-let callback: (data: observer.VoIPCallStateInfo) => void = (data: observice.VoIPCallStateInfo) => {
-    console.info("on voipStateChange, data:" + JSON.stringfy(data));
+import { observer } from '@kit.TelephonyKit';
+
+let callback: (data: observer.VoIPCallStateInfo) => void = (data: observer.VoIPCallStateInfo) => {
+    console.info(`onVoIPStateChange, appName: ${data.appName}, contactName: ${data.contactName}, ` +
+        `callType: ${data.callType}, callState: ${data.callState} ` +
+        `isVoiceAnswerSupported: ${data.isVoiceAnswerSupported}`;
+    );
 }
-observer.on('voipStateChange', callback);
-// 可以指定传入on中的callbacke取消一个订阅，也可以不指定callback清空所有订阅。
-observer.off('voipStateChange', callback);
-observer.off('voipStateChange');
+
+//取消订阅：指定回调取消单条订阅
+try {
+    observer.offVoIPStateChanage(callback);
+} catch (err) {
+    console.error(`observer.offVoIPStateChanage failed: ${JSON.stringify(err)}`);
+}
+
+//取消订阅：不带参数取消全部订阅
+try {
+    observer.offVoIPStateChanage();
+} catch (err) {
+    console.error(`observer.offVoIPStateChanage failed: ${JSON.stringify(err)}`);
+}
 ```
 
 ## VoIPCallStateInfo
@@ -1451,10 +1472,8 @@ VoIP呼叫类型
 
 | 名称        | 值   | 说明              |
 | ----------- | ---- | ----------------- |
-| VOICE_ONE_TO_ONE    | 0    | 语音一对一通话。            |
-| VIDEO_ONE_TO_ONE     | 1    | 视频一对一通话。           |
-| VOICE_CONFERENCE  | 2    | 语音会议通话。       |
-| VIDEO_CONFERENCE  | 3    | 视频会议通话。       |
+| VOICE   | 0    | 语音通话。            |
+| VIDEO     | 1    | 视频通话。           |
 
 ## VoIPCallState
 
