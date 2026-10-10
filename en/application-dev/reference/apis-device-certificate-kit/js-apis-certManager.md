@@ -6,7 +6,6 @@
 <!--Designer: @chande-->
 <!--Tester: @zhangzhi1995-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=ddf95ebd1b2cb04cfa7b81e15141b6dd7549bdfa translatedAt=2026-09-08T12:29:43.789Z pushedAt=2026-09-09T02:28:49.988Z -->
 
 The **certManager** module provides system-level certificate management capabilities to implement management and secure use of certificates throughout their lifecycle (installation, storage, use, and destruction).
 
@@ -151,7 +150,7 @@ Represents the result returned.
 | uri         | string    | No | Yes  | Unique identifier of a certificate or credential. The value contains up to 256 bytes.|
 | outData         | Uint8Array    | No | Yes  | Signature generated.|
 | credentialDetailList<sup>22+</sup>         | Array<[Credential](#credential)>    | No | Yes  | Represents detailed information about a credential.|
-| uriList         | Array\<string>    | No  | Yes   | Certificate URI list.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model. |
+| uriList         | Array\<string>    | No | Yes  | Certificate URI list.<br>**Since**: 26.0.0<br>**Model restriction:** This API can be used only in the stage model.|
 
 ## CMHandle
 
@@ -171,11 +170,11 @@ Certificate file data.
 
 **System capability**: SystemCapability.Security.CertificateManager
 
-**Model restriction**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 | Name       | Type                               | Read-Only| Optional| Description |
 | ----------- | ----------------------------------- | ---- | ---- | ---- |
-| certData    | Uint8Array                           | No   | No  | Certificate file data. If **certFormat** is set to **PEM_DER**, the maximum length of this parameter is 8 KB. If **certFormat** is set to **P7B**, the maximum length of this parameter is 300 KB. |
+| certData    | Uint8Array                           | No  | No | Certificate file data. If **certFormat** is set to **PEM_DER**, the maximum length of this parameter is 8 KB. If **certFormat** is set to **P7B**, the maximum length of this parameter is 300 KB.|
 | certFormat  | [CertFileFormat](#certfileformat)   | No  | Yes | Certificate file format. The default value is **PEM_DER**.|
 | certScope   | [CertScope](#certscope18)         | No  | Yes | Scope of the CA certificate. The default value is **CURRENT_USER**.|
 
@@ -194,7 +193,7 @@ Enumerates the error codes used in the certificate management APIs.
 | CM_ERROR_INCORRECT_FORMAT  | 17500003      | The certificate or credential is in invalid format.|
 | CM_ERROR_MAX_CERT_COUNT_REACHED<sup>12+</sup>  | 17500004      | The number of certificates or credentials has reached the limit.|
 | CM_ERROR_NO_AUTHORIZATION<sup>12+</sup>  | 17500005      | The application has not obtained user authorization.|
-| CM_ERROR_DEVICE_ENTER_ADVSECMODE<sup>18+</sup> | 17500007 | The device enters the advanced security mode. In this mode, installation of the CA certificate is restricted. |
+| CM_ERROR_DEVICE_ENTER_ADVSECMODE<sup>18+</sup> | 17500007 | The device enters the advanced security mode. In this mode, installation of the CA certificate is restricted.|
 | CM_ERROR_STORE_PATH_NOT_SUPPORTED<sup>20+</sup> | 17500009 | The device does not support the specified certificate storage path.  |
 | CM_ERROR_ACCESS_UKEY_SERVICE_FAILED<sup>22+</sup> | 17500010 | The USB key service fails to be accessed.  |
 | CM_ERROR_PARAMETER_VALIDATION_FAILED<sup>22+</sup> | 17500011 | The input parameter validation fails.<br>For example, the parameter format is incorrect or the parameter range is invalid.  |
@@ -287,7 +286,7 @@ Represents the certificate file format.
 
 **System capability**: SystemCapability.Security.CertificateManager
 
-**Model restriction**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 | Name      | Value| Description     |
 | ---------- | ------ | --------- |
@@ -310,7 +309,7 @@ Installs a private credential. This API returns the result asynchronously throug
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
 | keystore | Uint8Array                   | Yes  | Keystore file with a key pair and certificate. The value contains up to 20480 bytes.|
 | keystorePwd | string | Yes  | Password of the keystore file. The password cannot exceed 32 bytes.|
-| certAlias | string | Yes | Credential alias. Currently, the alias can contain only digits, letters, and underscores (_) and should not exceed 32 bytes. |
+| certAlias | string | Yes  | Credential alias. Currently, the alias can contain only digits, letters, and underscores (_) and should not exceed 32 bytes.|
 | callback | AsyncCallback\<[CMResult](#cmresult)> | Yes  | Callback used to return the result. If the operation is successful, **err** is **null** and **data** is **uri** in the [CMResult](#cmresult) object. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -364,7 +363,7 @@ Installs a private credential. This API uses a promise to return the result.
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
 | keystore | Uint8Array                   | Yes  | Keystore file with a key pair and certificate. The value contains up to 20480 bytes.|
 | keystorePwd | string | Yes  | Password of the keystore file. The password cannot exceed 32 bytes.|
-| certAlias | string | Yes   | Credential alias. Currently, the alias can contain only digits, letters, and underscores (_) and should not exceed 32 bytes. |
+| certAlias | string | Yes  | Credential alias. Currently, the alias can contain only digits, letters, and underscores (_) and should not exceed 32 bytes.|
 
 **Return value**
 
@@ -424,7 +423,7 @@ Installs a private credential and specifies its storage level. This API uses a p
 | ----------- | ---------- | ---- | ------------------------------------------------------------ |
 | keystore    | Uint8Array | Yes  | Keystore file with a key pair and certificate. The value contains up to 20480 bytes.                          |
 | keystorePwd | string     | Yes  | Password of the keystore file.<br>The value contains up to 32 bytes.                  |
-| certAlias   | string     | Yes   | Credential alias. Currently, the alias can contain only digits, letters, and underscores (_) and should not exceed 32 bytes. |
+| certAlias   | string     | Yes  | Credential alias. Currently, the alias can contain only digits, letters, and underscores (_) and should not exceed 32 bytes.|
 | level   | [AuthStorageLevel](#authstoragelevel18)   | Yes  | Credential storage level.|
 
 **Return value**
@@ -687,7 +686,7 @@ Installs a user CA certificate. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Security.CertificateManager
 
-**Model restriction**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 **Parameters**
 
@@ -833,7 +832,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { certificateManager } from '@kit.DeviceCertificateKit';
 
-let certUri: string = 'test'; /* The service needs to use the certificate identifier to delete the certificate, which is not elaborated here */
+let certUri: string = 'test'; /* The service needs to use the certificate identifier to delete the certificate, which is not elaborated here. */
 try {
   certificateManager.uninstallUserTrustedCertificateSync(certUri);
 } catch (error) {
@@ -1118,7 +1117,7 @@ try {
 
 finish(handle: Uint8Array, signature: Uint8Array, callback: AsyncCallback\<CMResult>): void
 
-Finishes the signature verification operation, which is the last step in the signature verification process. You need to call the **init** and **update** APIs before using this API. This API uses an asynchronous callback to return the result.
+Finishes the signature verification operation, which is the last step in the signature verification process. You need to call the **init** and **update** APIs before using this API. This API returns the result asynchronously through a callback.
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1130,7 +1129,7 @@ Finishes the signature verification operation, which is the last step in the sig
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
 | handle | Uint8Array                   | Yes  | Operation handle, which needs to be obtained by calling [init](#certificatemanagerinit).|
 | signature | Uint8Array                   | Yes  | Data to sign or verify.|
-| callback | AsyncCallback\<[CMResult](#cmresult)> | Yes | Callback used to return the result. If the signature verification is successful, **err** is **null** and **data** is the **outData** attribute in the [CMResult](#cmresult) object. The **outData** attribute is **null** during signature verification. Otherwise, **err** is an error object |
+| callback | AsyncCallback\<[CMResult](#cmresult)> | Yes  | Callback used to return the result. If the signature verification is successful, **err** is **null** and **data** is the **outData** attribute in the [CMResult](#cmresult) object. The **outData** attribute is **null** during signature verification. Otherwise, **err** is an error object|
 
 **Error codes**
 
@@ -1242,7 +1241,7 @@ try {
 
 abort(handle: Uint8Array, callback: AsyncCallback\<void>): void
 
-Aborts the signing or signature verification operation. This API is mutually exclusive with the **finish** API. In a signing or signature verification process, you can call only one of them. This API uses an asynchronous callback to return the result.
+Aborts the signing or signature verification operation. This method is mutually exclusive with the **finish** method. Only one of them can be called in a signature verification process. This API returns the result asynchronously through a callback.
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1290,7 +1289,7 @@ try {
 
 abort(handle: Uint8Array): Promise\<void>
 
-Aborts the signing or signature verification operation. This API is mutually exclusive with the **finish** API. In a signing or signature verification process, you can call only one of them. This API uses a promise to return the result.
+Aborts the signing or signature verification operation. This method is mutually exclusive with the **finish** method. Only one of them can be called in a signature verification process. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
@@ -1812,7 +1811,7 @@ Obtains a USB Key certificate credential list. This API uses a promise to return
 
 **Device behavior differences**: This API is supported on phones, PCs/2-in-1 devices, and tablets. On other devices, it returns error code 801.
 
-**Model restriction**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 **Parameters**
 
@@ -1876,15 +1875,15 @@ Imports a certificate to the USB key. This API uses a promise to return the resu
 
 **Device behavior differences**: This API is supported on phones, PCs/2-in-1 devices, and tablets. On other devices, it returns error code 801.
 
-**Model restriction**: This API can be used only in the stage model.
+**Model restriction:** This API can be used only in the stage model.
 
 **Parameters**
 
 | Name| Type| Mandatory| Description|
 | -------- | ------ | ---- | ---- |
-| keyUri | string | Yes | URI of the USB key certificate credential.<br>The **keyUri** parameter is used to identify a certificate entity. It can be obtained by calling [getUkeyCertificateList](#certificatemanagergetukeycertificatelist). The maximum length is 256 bytes. |
-| cert | Uint8Array | Yes | Certificate data to be imported. The maximum length is 10 KB.<br>The certificate data format follows the SKF (Smart Key Framework) specification. |
-| ukeyInfo | [UkeyInfo](#ukeyinfo22) | Yes | Attributes of the USB Key certificate credential.<br>The value of **UkeyInfo.CertificatePurpose** can only be **PURPOSE_SIGN**, **PURPOSE_ENCRYPT**, or **PURPOSE_DEFAULT**. |
+| keyUri | string | Yes| URI of the USB key certificate credential.<br>The **keyUri** parameter is used to identify a certificate entity. It can be obtained by calling [getUkeyCertificateList](#certificatemanagergetukeycertificatelist). The maximum length is 256 bytes.|
+| cert | Uint8Array | Yes| Certificate data to be imported. The maximum length is 10 KB.<br>The certificate data format complies with the SKF specifications.|
+| ukeyInfo | [UkeyInfo](#ukeyinfo22) | Yes| Attributes of the USB Key certificate credential.<br>The value of **UkeyInfo.CertificatePurpose** can only be **PURPOSE_SIGN**, **PURPOSE_ENCRYPT**, or **PURPOSE_DEFAULT**.|
 
 **Return value**
 
@@ -1912,7 +1911,7 @@ import { certificateManager } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 /* keyUri and cert must be assigned based on the service. The data in this example is for reference only. */
-let keyUri: string = 'test'; /* URI of the USB Key certificate, which can be obtained through getUkeyCertificateList. */
+let keyUri: string = 'test'; /* URI of the USB key certificate, which can be obtained through the getUkeyCertificateList API. */
 let certData: Uint8Array = new Uint8Array([
   0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01
 ]);

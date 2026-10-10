@@ -43,10 +43,10 @@ OpenHarmony为开发者提供了用于创建VPN的API解决方案。当前提供
 ``` JSON5
 // 举例：在应用的module.json5中定义MyVpnExtAbility。
 "extensionAbilities": [
-// ···
+  // ...
   {
     "name": "MyVpnExtAbility",
-    "srcEntry": "./ets/vpnability/VPNExtentionAbility.ets",
+    "srcEntry": "./ets/vpnability/VPNExtensionAbility.ets",
     "type": "vpn"
   }
 ],

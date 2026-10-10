@@ -6,6 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=742fd8e7f742ee980eb300ddfd075065ca362dff translatedAt=2026-09-28T01:16:08.009Z pushedAt=2026-10-09T01:46:44.139Z -->
 
 ```c
 struct WebSocket_OpenResult {...}

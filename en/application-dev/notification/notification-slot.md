@@ -1,23 +1,21 @@
 # Managing Notification Slots
-
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=b0e965054b682272b6c9e3890a6020b1129a6551 translatedAt=2026-08-22T02:19:44.838Z pushedAt=2026-08-22T07:15:14.428Z -->
+<!-- md-trans-meta sourceCommit=4faed534b39ef26ef8f9b647802a53e9f8d2b792 translatedAt=2026-10-08T03:49:22.591Z pushedAt=2026-10-08T06:49:56.899Z -->
 
-The system supports multiple [notification channels](notification-glossary.md#notification-slot). Different notification channels correspond to different [notification reminder modes](notification-glossary.md#notification-reminder-mode). You can select an appropriate notification channel based on the actual application scenario and manage notification channels (including creating, querying, and deleting them).
+The system supports multiple [notification slots](notification-glossary.md#notification-slot). Different notification slots correspond to different [notification reminder modes](notification-glossary.md#notification-reminder-mode). You can select an appropriate notification channel based on the actual application scenario and manage notification slots (including creating, querying, and deleting them).
 
 ## Notification Slots
 
-Different types of [notification channels](notification-glossary.md#notification-slot) correspond to different [notification reminder modes](notification-glossary.md#notification-reminder-mode), as shown in the following table. In the table, Y indicates supported and N indicates not supported.
+Different types of [notification slots](notification-glossary.md#notification-slot) correspond to different [notification reminder modes](notification-glossary.md#notification-reminder-mode), as shown in the following table. In the table, Y indicates supported and N indicates not supported.
 
 <!--RP1-->
 <!--RP1End-->
 <!--RP2-->
-
 | SlotType             | Value   | Classification     | [Notification Center](notification-glossary.md#notification-center) | Banner | Lock Screen | Sound/Vibration | Status Bar Icon | Screen Wake |
 | -------------------- | ------ | --------| ------- |------|------|----------|-----------|---------|
 | SOCIAL_COMMUNICATION | 1      | Social Communication | Y | Y | Y | Y | Y | Y |
@@ -26,12 +24,11 @@ Different types of [notification channels](notification-glossary.md#notification
 | CONTENT_INFORMATION  | 3      | Content Information | Y | N | N | N | N | N |
 | UNKNOWN_TYPE         | 0      | Unknown Type | Y | N | N | N | N | N |
 | OTHER_TYPES          | 0xFFFF | Other     | Y | N | N | N | N | N |
-
 <!--RP2End-->
 
 ## Available APIs
 
-The main APIs of [notification channels](notification-glossary.md#notification-slot) are as follows. For details about other APIs, see [@ohos.notificationManager (NotificationManager Module)](../reference/apis-notification-kit/js-apis-notificationManager.md).
+The main APIs of [notification slots](notification-glossary.md#notification-slot) are as follows. For details about other APIs, see [@ohos.notificationManager (NotificationManager Module)](../reference/apis-notification-kit/js-apis-notificationManager.md).
 
 | **API**| **Description**|
 | ---------- | -------- |
@@ -46,7 +43,7 @@ In addition to using **addSlot()**, you can also create a notification slot by p
 1. Import the **notificationManager** module.
 
    <!-- @[manage_notification_ways_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationWays.ets) -->
-
+   
    ``` TypeScript
    import { notificationManager } from '@kit.NotificationKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -56,10 +53,10 @@ In addition to using **addSlot()**, you can also create a notification slot by p
    const DOMAIN_NUMBER: number = 0xFF00;
    ```
 
-2. Create a [notification channel](notification-glossary.md#notification-slot) of the specified type.
+2. Create a [notification slot](notification-glossary.md#notification-slot) of the specified type.
 
    <!-- @[create_type_channel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationWays.ets) -->
-
+   
    ``` TypeScript
    // addSlot callback
    let addSlotCallBack = (err: BusinessError): void => {
@@ -74,10 +71,10 @@ In addition to using **addSlot()**, you can also create a notification slot by p
 
 3. Obtain a notification slot.
 
-   Obtain whether the corresponding channel has been created and the [notification reminder modes](notification-glossary.md#notification-reminder-mode) supported by the channel, such as whether a ringtone is available, whether vibration is available, and whether the notification is visible on the lock screen.
+   Obtain whether the corresponding slot has been created and the [notification reminder modes](notification-glossary.md#notification-reminder-mode) supported by the slot, such as whether a ringtone is available, whether vibration is available, and whether the notification is visible on the lock screen.
 
    <!-- @[get_type_channel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationWays.ets) -->
-
+   
    ``` TypeScript
    // getSlot callback
    let getSlotCallback = (err: BusinessError, data: notificationManager.NotificationSlot): void => {
@@ -99,7 +96,7 @@ In addition to using **addSlot()**, you can also create a notification slot by p
 4. Remove a notification slot.
 
    <!-- @[delete_type_channel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationWays.ets) -->
-
+   
    ``` TypeScript
    // removeSlot callback
    let removeSlotCallback = (err: BusinessError): void => {

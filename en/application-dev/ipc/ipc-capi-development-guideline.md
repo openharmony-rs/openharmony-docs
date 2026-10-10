@@ -1,16 +1,15 @@
 # IPC and RPC Development (C/C++)
-
 <!--Kit: IPC Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @xdx19211@luodonghui0157-->
 <!--Designer: @zhaopeng_gitee-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=2f4b89223ea807a0581c60a9a81b8de70ba28fa9 translatedAt=2026-08-18T11:02:12.038Z pushedAt=2026-08-18T11:36:51.984Z -->
+<!-- md-trans-meta sourceCommit=a704237ba3685960634fbb9ca6a5838bc3856bae translatedAt=2026-10-08T03:45:01.029Z pushedAt=2026-10-08T06:25:02.805Z -->
 
 ## When to Use
 
-Inter-process communication (IPC) allows the proxy and stub running in different processes to communicate with each other using C APIs.  
+Inter-process communication (IPC) allows the proxy and stub running in different processes to communicate with each other using C APIs.
 
 The IPC C APIs do not provide the capability of obtaining the communication proxy object. This feature depends on [Ability Kit](../application-models/abilitykit-overview.md).
 
@@ -43,11 +42,10 @@ When reading the following examples, follow this sequence: the child process cre
 
 Add the following libraries to **CMakeLists.txt**.
 
-```txt
-# ipc capi
-libipc_capi.so
-# Ability C/C++ APIs
-libchild_process.so
+<!-- @[child_process_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessIpc/entry/src/main/cpp/CMakeLists.txt) -->
+
+``` Text
+target_link_libraries(childprocesssample libipc_capi.so libchild_process.so)
 ```
 
 **Including Header Files**

@@ -9,7 +9,7 @@
 
 ## Overview
 
-Provides APIs for message digest (MD) algorithms.
+Describes the APIs provided by OpenHarmony for message digest (MD) algorithms.
 
 **Since**: 12
 

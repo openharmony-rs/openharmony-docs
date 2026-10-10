@@ -9,7 +9,7 @@
 
 ## Overview
 
-Provides APIs for encrypting and decrypting symmetric keys.
+Describes the APIs provided by OpenHarmony for encrypting and decrypting symmetric keys.
 
 **Since**: 12
 
@@ -17,4 +17,4 @@ Provides APIs for encrypting and decrypting symmetric keys.
 
 | Name| Description|
 | -- | -- |
-| [crypto_sym_cipher.h](capi-crypto-sym-cipher-h.md) | Defines APIs for encrypting and decrypting symmetric keys.|
+| [crypto_sym_cipher.h](capi-crypto-sym-cipher-h.md) | Defines APIs for symmetric encryption and decryption.|

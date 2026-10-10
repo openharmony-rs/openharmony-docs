@@ -2,21 +2,22 @@
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @chennotfound-->
-<!--Designer: @dongyu_dy-->
+<!--Designer: @chennotfound-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=4b1a2f751fcd33c52248528ed8c23a9b2935126b translatedAt=2026-06-23T01:05:05.408Z pushedAt=2026-06-23T06:12:23.687Z -->
 
 ## Overview
 
-The module provides the APIs for media playback.
+The module provides the APIs for media playback. AVPlayer is designed based on a state machine and supports audio and video playback, playback control, playback rate adjustment, and volume adjustment.
 
 You can refer to the corresponding development guide and samples based on your development requirements.
 
 - [Using AVPlayer to Play Audio](../../media/media/using-ndk-avplayer-for-playback.md)
 - [Using AVPlayer to Play Videos](../../media/media/using-ndk-avplayer-for-video-playback.md)
 
-**Since**: 11
+**Since:** 11
+
+**System capability:** SystemCapability.Multimedia.Media.AVPlayer
 
 ## File Summary
 
