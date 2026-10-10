@@ -68,7 +68,7 @@ static void GetLastErrorAndClean(JSVM_Env env)
     char codeStr[maxCodeLength];
     OH_JSVM_GetValueStringUtf8(env, message, messageStr, maxMessageLength, nullptr);
     OH_JSVM_GetValueStringUtf8(env, errorCode, codeStr, maxCodeLength, nullptr);
-    OH_LOG_INFO(LOG_APP, "JSVM error message: %{public}s, error code: %{public}s", messageStr, codeStr);
+    OH_LOG_ERROR(LOG_APP, "JSVM error message: %{public}s, error code: %{public}s", messageStr, codeStr);
 }
 
 // OH_JSVM_CreateError的样例方法
@@ -326,7 +326,7 @@ static JSVM_Value JsVmIsError(JSVM_Env env, JSVM_CallbackInfo info)
     if (status == JSVM_OK) {
         OH_LOG_INFO(LOG_APP, "JSVM API call OH_JSVM_IsError success, result is %{public}d", result);
     } else {
-        OH_LOG_INFO(LOG_APP, "JSVM API call OH_JSVM_IsError failed");
+        OH_LOG_ERROR(LOG_APP, "JSVM API call OH_JSVM_IsError failed");
     }
     // 取出result通过OH_JSVM_GetBoolean接口将取出的bool值转换为JSVM_Value类型的值返回出去
     JSVM_Value returnValue = nullptr;
@@ -374,7 +374,7 @@ static JSVM_Value JsVmCreateTypeError(JSVM_Env env, JSVM_CallbackInfo info)
     if (status == JSVM_OK) {
         OH_LOG_INFO(LOG_APP, "JSVM API Create TypeError SUCCESS");
     } else {
-        OH_LOG_INFO(LOG_APP, "JSVM API Create TypeError FAILED");
+        OH_LOG_ERROR(LOG_APP, "JSVM API Create TypeError FAILED");
     }
     return result;
 }
@@ -419,7 +419,7 @@ static JSVM_Value JsVmCreateRangeError(JSVM_Env env, JSVM_CallbackInfo info)
     if (status == JSVM_OK) {
         OH_LOG_INFO(LOG_APP, "JSVM API CreateRangeError SUCCESS");
     } else {
-        OH_LOG_INFO(LOG_APP, "JSVM API CreateRangeError FAILED");
+        OH_LOG_ERROR(LOG_APP, "JSVM API CreateRangeError FAILED");
     }
     return result;
 }
@@ -463,7 +463,7 @@ static JSVM_Value JsVmCreateSyntaxError(JSVM_Env env, JSVM_CallbackInfo info)
     if (status == JSVM_OK) {
         OH_LOG_INFO(LOG_APP, "JSVM API CreateSyntaxError SUCCESS");
     } else {
-        OH_LOG_INFO(LOG_APP, "JSVM API CreateSyntaxError FAILED");
+        OH_LOG_ERROR(LOG_APP, "JSVM API CreateSyntaxError FAILED");
     }
     return result;
 }
@@ -503,7 +503,7 @@ static JSVM_Value JsVmGetAndClearLastException(JSVM_Env env, JSVM_CallbackInfo i
     JSVM_Value result = nullptr;
     JSVM_Status status = OH_JSVM_GetAndClearLastException(env, &result);
     if (status != JSVM_OK) {
-        OH_LOG_INFO(LOG_APP, "JSVM API OH_JSVM_GetAndClearLastException FAILED");
+        OH_LOG_ERROR(LOG_APP, "JSVM API OH_JSVM_GetAndClearLastException FAILED");
     } else {
         OH_LOG_INFO(LOG_APP, "JSVM API OH_JSVM_GetAndClearLastException SUCCESS");
     }
@@ -559,7 +559,7 @@ static JSVM_Value JsVmIsExceptionPending(JSVM_Env env, JSVM_CallbackInfo info)
         // 将处理的异常返回出去
         return result;
     } else {
-        OH_LOG_INFO(LOG_APP, "JSVM API OH_JSVM_IsExceptionPending: FAILED");
+        OH_LOG_ERROR(LOG_APP, "JSVM API OH_JSVM_IsExceptionPending: FAILED");
     }
     return nullptr;
 }
