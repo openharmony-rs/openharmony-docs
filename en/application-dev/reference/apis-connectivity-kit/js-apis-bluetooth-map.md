@@ -6,9 +6,9 @@
 <!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=14ca614ebb030bf413b2d8393352ad7521a1d1b9 translatedAt=2026-08-19T10:00:42.655Z pushedAt=2026-08-20T01:26:55.572Z -->
+<!-- md-trans-meta sourceCommit=ca9cb26047d0b3f89295b759af81b72a379c30be translatedAt=2026-10-09T13:09:01.075Z pushedAt=2026-10-10T07:09:18.681Z -->
 
-The map module provides Bluetooth message access capability based on [Message Access Profile (MAP)](../../connectivity/bluetooth/terminology.md#map), and supports functions such as obtaining the connection status.
+This module provides Bluetooth message access capability based on [Message Access Profile (MAP)](../../connectivity/bluetooth/terminology.md#map), and supports functions such as creating MSE instances and obtaining and subscribing to the Bluetooth message service connection status between devices. This module is applicable to scenarios where the Bluetooth protocol is used for message access and connection management.
 
 > **NOTE**
 >
@@ -36,7 +36,7 @@ type BaseProfile = baseProfile.BaseProfile
 
 createMapMseProfile(): MapMseProfile
 
-Creates a [Message Server Equipment (MSE)](../../connectivity/bluetooth/terminology.md#mse) instance. Through this instance, you can use the local device as the MSE and implement functions such as obtaining the Bluetooth message service connection status of the local device.
+Creates a [Message Server Equipment (MSE)](../../connectivity/bluetooth/terminology.md#mse) instance. Through this instance, you can use API provided when the local device is used as the MSE and implement functions such as obtaining the Bluetooth message service connection status of the local device. This API is applicable to scenarios such as Bluetooth message synchronization and viewing messages of the Bluetooth car kit.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
@@ -44,7 +44,7 @@ Creates a [Message Server Equipment (MSE)](../../connectivity/bluetooth/terminol
 
 | Type                           | Description        |
 | ----------------------------- | ---------- |
-| MapMseProfile | **MapMseProfile** instance created.|
+| [MapMseProfile](#mapmseprofile) | **MapMseProfile** instance. This instance can be used by the local device as an MSE to access Bluetooth messages. |
 
 **Error codes**
 
@@ -71,9 +71,6 @@ try {
 ## MapMseProfile
 
 Represents the [MSE](../../connectivity/bluetooth/terminology.md#mse) role in MAP.
-
 - The **MapMseProfile** class is inherited from [BaseProfile](#baseprofile). Therefore, you can use the APIs in its parent class.
-
 - Before using the APIs of this class, you need to construct an MSE instance by calling [createMapMseProfile](#mapcreatemapmseprofile).
-
 - The counterpart of the MSE role is the [MCE](../../connectivity/bluetooth/terminology.md#mce) role.

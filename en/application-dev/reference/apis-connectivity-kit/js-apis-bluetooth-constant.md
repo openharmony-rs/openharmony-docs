@@ -1,4 +1,4 @@
-# @ohos.bluetooth.constant (Bluetooth constant Module)
+# @ohos.bluetooth.constant (Bluetooth Constant Module)
 
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
@@ -6,9 +6,9 @@
 <!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=14ca614ebb030bf413b2d8393352ad7521a1d1b9 translatedAt=2026-08-19T10:00:04.009Z pushedAt=2026-08-19T12:08:52.260Z -->
+<!-- md-trans-meta sourceCommit=ab463549ba53ac7ad9c9f586570526c5d592d467 translatedAt=2026-10-09T12:56:22.671Z pushedAt=2026-10-10T07:08:21.606Z -->
 
-The **constant** module provides constant definitions related to Bluetooth [profiles](../../connectivity/bluetooth/terminology.md#profile) and device types.
+This module provides constant definitions related to Bluetooth [profiles](../../connectivity/bluetooth/terminology.md#profile) and device types. You can use these constants to determine the Bluetooth profile connection status and identify device types. This module is applicable to scenarios such as Bluetooth device pairing, connection management, and device classification and filtering. By using the constant values of standard protocols and device types, you can improve code readability and maintainability.
 
 > **NOTE**
 >
@@ -22,7 +22,7 @@ import { constant } from '@kit.ConnectivityKit';
 
 ## ProfileId
 
-Enumerates the Bluetooth [profile](../../connectivity/bluetooth/terminology.md#profile) IDs.
+Enumerates the Bluetooth profile IDs.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
@@ -99,7 +99,7 @@ Enumerates the Bluetooth device child classes, which are further subdivided base
 | NETWORK_83_TO_99_UTILIZED                | 0x03C0 | Network device with a network load of 83% to 99%. |
 | NETWORK_NO_SERVICE                       | 0x03E0 | Network device with a network load of 100%.    |
 | AUDIO_VIDEO_UNCATEGORIZED                | 0x0400 | Unclassified audio or video device.   |
-| AUDIO_VIDEO_WEARABLE_HEADSET             | 0x0404 | Wearable audio or video headset.  |
+| AUDIO_VIDEO_WEARABLE_HEADSET             | 0x0404 | Wearable audio or video headset.   |
 | AUDIO_VIDEO_HANDSFREE                    | 0x0408 | Hands-free audio or video device.    |
 | AUDIO_VIDEO_MICROPHONE                   | 0x0410 | Audio or video microphone.   |
 | AUDIO_VIDEO_LOUDSPEAKER                  | 0x0414 | Audio or video loudspeaker.   |
@@ -109,24 +109,24 @@ Enumerates the Bluetooth device child classes, which are further subdivided base
 | AUDIO_VIDEO_SET_TOP_BOX                  | 0x0424 | Audio or video STB device.   |
 | AUDIO_VIDEO_HIFI_AUDIO                   | 0x0428 | High-fidelity audio or video device.     |
 | AUDIO_VIDEO_VCR                          | 0x042C | Video cassette recording (VCR) device.   |
-| AUDIO_VIDEO_VIDEO_CAMERA                 | 0x0430 | Video camera.   |
+| AUDIO_VIDEO_VIDEO_CAMERA                 | 0x0430 | Video camera.    |
 | AUDIO_VIDEO_CAMCORDER                    | 0x0434 | Camcorder.   |
 | AUDIO_VIDEO_VIDEO_MONITOR                | 0x0438 | Video monitor.   |
 | AUDIO_VIDEO_VIDEO_DISPLAY_AND_LOUDSPEAKER | 0x043C | Video device with a display and speaker. |
 | AUDIO_VIDEO_VIDEO_CONFERENCING           | 0x0440 | Video conference device.    |
 | AUDIO_VIDEO_VIDEO_GAMING_TOY             | 0x0448 | Video gaming toy.  |
 | PERIPHERAL_NON_KEYBOARD_NON_POINTING     | 0x0500 | Non-keyboard or non-pointing peripheral device.  |
-| PERIPHERAL_KEYBOARD                      | 0x0540 | Keyboard device.      |
+| PERIPHERAL_KEYBOARD                      | 0x0540 | Peripheral keyboard.       |
 | PERIPHERAL_POINTING_DEVICE               | 0x0580 | Pointing peripheral device.    |
 | PERIPHERAL_KEYBOARD_POINTING             | 0x05C0 | Keyboard pointing device.    |
 | PERIPHERAL_UNCATEGORIZED                 | 0x0500 | Unclassified peripheral device.     |
-| PERIPHERAL_JOYSTICK                      | 0x0504 | Peripheral joystick.     |
-| PERIPHERAL_GAMEPAD                       | 0x0508 | Peripheral game pad     |
+| PERIPHERAL_JOYSTICK                      | 0x0504 | Peripheral joystick.      |
+| PERIPHERAL_GAMEPAD                       | 0x0508 | Peripheral game pad.      |
 | PERIPHERAL_REMOTE_CONTROL                | 0x05C0 | Peripheral remote control device    |
-| PERIPHERAL_SENSING_DEVICE                | 0x0510 | Peripheral sensing device.    |
+| PERIPHERAL_SENSING_DEVICE                | 0x0510 | Peripheral sensing device.     |
 | PERIPHERAL_DIGITIZER_TABLET              | 0x0514 | Peripheral digitizer tablet.|
 | PERIPHERAL_CARD_READER                   | 0x0518 | Peripheral card reader.     |
-| PERIPHERAL_DIGITAL_PEN                   | 0x051C | Peripheral digital pen.     |
+| PERIPHERAL_DIGITAL_PEN                   | 0x051C | Peripheral digital pen.      |
 | PERIPHERAL_SCANNER_RFID                  | 0x0520 | Peripheral RFID scanner. |
 | PERIPHERAL_GESTURAL_INPUT                | 0x0522 | Gesture input device.    |
 | IMAGING_UNCATEGORIZED                    | 0x0600 | Unclassified imaging device.    |
@@ -154,14 +154,15 @@ Enumerates the Bluetooth device child classes, which are further subdivided base
 | HEALTH_PULSE_OXIMETER                    | 0x0914 | Pulse oximeter.   |
 | HEALTH_PULSE_RATE                        | 0x0918 | Heart rate monitor.     |
 | HEALTH_DATA_DISPLAY                      | 0x091C | Health data display.    |
-| HEALTH_STEP_COUNTER                      | 0x0920 | Step counter.   |
+| HEALTH_STEP_COUNTER                      | 0x0920 | Step counter.    |
 | HEALTH_BODY_COMPOSITION_ANALYZER         | 0x0924 | Body composition analyzer. |
-| HEALTH_PEAK_FLOW_MONITOR                  | 0x0928 | Hygrometer.     |
+| HEALTH_PEAK_FLOW_MONITOR                  | 0x0928 | Peak flow monitor.      |
 | HEALTH_MEDICATION_MONITOR                | 0x092C | Medication monitor.   |
 | HEALTH_KNEE_PROSTHESIS                   | 0x0930 | Prosthetic knee.    |
 | HEALTH_ANKLE_PROSTHESIS                  | 0x0934 | Prosthetic ankle.    |
 | HEALTH_GENERIC_HEALTH_MANAGER            | 0x0938 | Generic health management device.    |
 | HEALTH_PERSONAL_MOBILITY_DEVICE          | 0x093C | Personal mobility device.    |
+
 
 ## ProfileUuids<sup>12+</sup>
 

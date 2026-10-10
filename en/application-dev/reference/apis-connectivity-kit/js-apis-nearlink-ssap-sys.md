@@ -1,14 +1,15 @@
 # @ohos.nearlink.ssap (NearLink SSAP Connection Capability) (System API)
-
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @CCCZKing-->
 <!--Designer: @lilong32; @CCCZKing-->
 <!--Tester: @zhangjiaji111-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=1ea30971dd72430fd05350c54203dfeca06c3f03 translatedAt=2026-08-17T08:48:26.851Z pushedAt=2026-08-18T03:20:16.514Z -->
+<!-- md-trans-meta sourceCommit=304517cf5105092ff7ebb1be0da01c6a3f1d16fb translatedAt=2026-10-09T13:28:46.037Z pushedAt=2026-10-10T07:16:32.167Z -->
+
 
 This module provides the SparkLink Service Access Protocol (SSAP) connection capability, including creating and connecting to a client, calling server methods, reading and writing descriptors, and subscribing to event notifications.
+
 
 **Since**: 26.0.0
 
@@ -16,11 +17,13 @@ This module provides the SparkLink Service Access Protocol (SSAP) connection cap
 >
 > The APIs provided by this module are system APIs.
 
+
 ## Modules to Import
 
 ```typescript
 import { ssap } from '@kit.ConnectivityKit';
 ```
+
 
 ## Client
 
@@ -35,6 +38,7 @@ An app only needs to create one [Client](#client) instance for a remote device. 
 **Model restriction**: This API can be used only in the stage model.
 
 **System capability:** SystemCapability.Communication.NearLink.Base
+
 
 ### setPropertyIndication
 
@@ -80,7 +84,6 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 | 36100099 | Operation failed. |
 
 **Example** 
-
 ```typescript
 import { ssap } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -88,13 +91,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let addr: string = '00:11:22:33:AA:FF'; // Remote device address obtained through scanning
 let client: ssap.Client;
 try {
-  let arrayBufferProperty = new ArrayBuffer(1);
-  let propertyValue = new Uint8Array(arrayBufferProperty);
+  let valueBuffer = new ArrayBuffer(1);
+  let propertyValue = new Uint8Array(valueBuffer);
   propertyValue[0] = 1;
   let property: ssap.Property = {
     serviceUuid: 'FFFFFFFF-1234-5678-ABCD-000000004386',
     propertyUuid: 'FFFFFFFF-1234-5678-ABCD-000000001234',
-    value: arrayBufferProperty
+    value: valueBuffer
   };
   client = ssap.createClient(addr); // An app only needs to create one instance for a remote device.
   client.setPropertyIndication(property, true).then(() => {
@@ -149,7 +152,6 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 | 36100099 | Operation failed. |
 
 **Example** 
-
 ```typescript
 import { ssap } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -181,6 +183,7 @@ try {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ### readDescriptor
 
@@ -224,7 +227,6 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 | 36100099 | Operation failed. |
 
 **Example** 
-
 ```typescript
 import { ssap } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -258,6 +260,7 @@ try {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ### writeDescriptor
 
@@ -305,7 +308,6 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 | 36100099 | Operation failed. |
 
 **Example** 
-
 ```typescript
 import { ssap } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -340,6 +342,7 @@ try {
 }
 ```
 
+
 ### onEventNotify
 
 onEventNotify(callback: Callback&lt;Event&gt;): void
@@ -363,7 +366,6 @@ The app must have the **ohos.permission.ACCESS_NEARLINK** permission to receive 
 | callback | Callback&lt;[Event](#event)&gt; | Yes | Callback used to return the **Event** object of the service. |
 
 **Example**
-
 ```typescript
 import { ssap } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -380,6 +382,7 @@ try {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ### offEventNotify
 
@@ -402,7 +405,6 @@ Unsubscribes from event notification events. This API uses an asynchronous callb
 | callback | Callback&lt;[Event](#event)&gt; | No | Callback used to return the **Event** object of the service.<br>If this parameter is specified, the current callback is unregistered. If this parameter is not set, all callbacks corresponding to the type are unsubscribed. |
 
 **Example**
-
 ```typescript
 import { ssap } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -421,6 +423,7 @@ try {
 }
 ```
 
+
 ## Service
 
 Represents the NearLink service.
@@ -437,6 +440,7 @@ Represents the NearLink service.
 | properties | [Property](js-apis-nearlink-ssap.md#property)[] | No | No | Properties of a service. |
 | methods | [Method](#method)[] | No | Yes | Methods of a service. If this field is not specified, the service does not provide any method. |
 | events | [Event](#event)[] | No | Yes | Events of a service. If this field is not specified, the service does not provide any event. |
+
 
 ## Method
 
@@ -456,6 +460,7 @@ Represents a method of the service.
 | methodUuid | string | No | No | Method UUID. The data format is the same as that of **serviceUuid**. |
 | parameter | ArrayBuffer | No | Yes | Method parameters. The data format is defined by the specific service. By default, this field is not used if not set. |
 | result | ArrayBuffer | No | Yes | Return value of the method. The data format is defined by the specific service. By default, this field is not used if not set. |
+
 
 ## Event
 

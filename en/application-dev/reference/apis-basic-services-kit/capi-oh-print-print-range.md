@@ -1,18 +1,19 @@
 # Print_Range
- <!--Kit: Basic Services Kit-->   
- <!--Subsystem: Print-->  
- <!--Owner: @guoshengbang-->  
- <!--Designer: @Q-haosu-->    
- <!--Tester: @Q-haosu-->  
+ <!--Kit: Basic Services Kit-->
+ <!--Subsystem: Print-->
+ <!--Owner: @guoshengbang-->
+ <!--Designer: @baozewei-->
+ <!--Tester: @baozewei-->
  <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=bf611caa56efccbf7609e58b71abec1b4e33c1b6 translatedAt=2026-10-09T11:45:19.774Z pushedAt=2026-10-10T03:46:34.953Z -->
 
-```c
+```cpp
 typedef struct {...} Print_Range
 ```
 
 ## Overview
 
-Defines a struct for the page range to print.
+Represents the print range, which is used to specify the page range in a print task. You can use **startPage** and **endPage** to specify consecutive pages, or use **pagesArray** and **pagesArrayLen** to specify an array of non-consecutive pages to be printed.
 
 **Since**: 13
 
@@ -26,7 +27,8 @@ Defines a struct for the page range to print.
 
 | Name                  | Description            |
 | ---------------------- | ---------------- |
-| uint32_t startPage     | Start page.    |
-| uint32_t endPage       | End page.    |
-| uint32_t pagesArrayLen | Length of the page array.|
-| uint32_t* pagesArray   | Page array.    |
+| uint32_t startPage     | Start page number for printing. The page number starts from 1. The value must be a valid page number in the document and must be less than or equal to the value of **endPage**.     |
+| uint32_t endPage       | End page number for printing. The page number starts from 1. The value must be a valid page number in the document and must be greater than or equal to the value of **startPage**.     |
+| uint32_t pagesArrayLen | Length of the page array. The value must be the same as the actual number of elements in the **pagesArray** array. This parameter is valid only when **pagesArray** is not **NULL**. |
+| uint32_t* pagesArray   | Page array. Each element in the array indicates a page to be printed. The page number starts from 1. The value must be a valid page number in the document. The array length is determined by **pagesArrayLen**. |
+

@@ -6,6 +6,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=640457ab3cca777710d0dbd64dbec0d05195a9c4 translatedAt=2026-10-09T12:14:35.256Z pushedAt=2026-10-10T02:17:21.256Z -->
 
 The **usb** module provides USB device management functions, including USB device list query, bulk data transfer, control transfer, and permission control.
 
@@ -44,7 +45,7 @@ Converts the USB function list in the string format to a numeric mask in Device 
 
 | Type  | Description              |
 | ------ | ------------------ |
-| number | Numeric mask of the function list.|
+| number | Numeric mask of the function list after conversion. |
 
 **Example**
 
@@ -314,3 +315,4 @@ Enumerates data role types.
 | NONE   | 0    | None        |
 | HOST   | 1    | USB host.|
 | DEVICE | 2    | USB device.|
+

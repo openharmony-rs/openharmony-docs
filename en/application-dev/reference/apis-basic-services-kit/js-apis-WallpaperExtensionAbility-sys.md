@@ -6,6 +6,7 @@
 <!--Designer: @gcw_jQMboB9m-->
 <!--Tester: @murphy84-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=160bcce02a8336e616455e4c83415c518cd56ead translatedAt=2026-10-09T12:30:14.361Z pushedAt=2026-10-10T03:12:21.420Z -->
 
 The **WallpaperExtensionAbility** module provides lifecycle callbacks for wallpaper extension abilities and APIs for listening for wallpaper changes.
 

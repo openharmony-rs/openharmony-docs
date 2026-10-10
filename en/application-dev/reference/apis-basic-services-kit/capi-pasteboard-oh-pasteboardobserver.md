@@ -2,9 +2,10 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @yangxiaodong41-->
-<!--Designer: @guo867-->
+<!--Designer: @zhusiyuan2-->
 <!--Tester: @maxiaorong-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=36c9032d2786280542e988f656807dc4c8ad97f6 translatedAt=2026-10-09T11:50:57.807Z pushedAt=2026-10-10T05:46:41.704Z -->
 
 ```c
 typedef struct OH_PasteboardObserver OH_PasteboardObserver
@@ -19,3 +20,4 @@ Defines a pasteboard observer to listen for pasteboard data change events. When 
 **Related module:** [Pasteboard](capi-pasteboard.md)
 
 **Header file:** [oh_pasteboard.h](capi-oh-pasteboard-h.md)
+

@@ -3,11 +3,11 @@
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @enjoy_sunshine-->
-<!--Designer: @chengguohong; @tangjia15-->
+<!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
 
-The connection module provides capabilities for pairing with, connecting to, and querying the status of Bluetooth devices.
+The **connection** module provides capabilities such as Bluetooth device pairing, connection, status query, device scanning and discovery, scanning mode setting, battery level information obtaining, and event subscription. It is applicable to scenarios where Bluetooth device discovery, pairing, connection, and information query need to be implemented in an app.
 
 > **NOTE**
 >
@@ -30,6 +30,8 @@ Defines the connection status of the Bluetooth profile. Supported Bluetooth prof
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction**: This API can be used only in the stage model.
+
 | Type                 | Description                 |
 | ------------------- | ------------------- |
 | [constant.ProfileConnectionState](js-apis-bluetooth-constant.md#profileconnectionstate) | Connection status of the Bluetooth profile.|
@@ -42,6 +44,8 @@ type ProfileId = constant.ProfileId
 Enumerates Bluetooth profiles.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model restriction**: This API can be used only in the stage model.
 
 | Type                 | Description                 |
 | ------------------- | ------------------- |
@@ -56,6 +60,8 @@ Defines the UUID of the Bluetooth profile.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction**: This API can be used only in the stage model.
+
 | Type                 | Description                 |
 | ------------------- | ------------------- |
 | [constant.ProfileUuids](js-apis-bluetooth-constant.md#profileuuids12) | Defines the UUID of the Bluetooth profile.|
@@ -68,6 +74,8 @@ type MajorClass = constant.MajorClass
 Defines the Bluetooth device major class. This is a standard field in the Bluetooth protocol.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model restriction**: This API can be used only in the stage model.
 
 | Type                 | Description                 |
 | ------------------- | ------------------- |
@@ -82,6 +90,8 @@ Defines the Bluetooth device subclass, which is further classified based on [Maj
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction**: This API can be used only in the stage model.
+
 | Type                 | Description                 |
 | ------------------- | ------------------- |
 | [constant.MajorMinorClass](js-apis-bluetooth-constant.md#majorminorclass) | Bluetooth device subclass.|
@@ -94,6 +104,8 @@ type BluetoothAddress = common.BluetoothAddress
 Defines the address information of a Bluetooth device, including the address and address type.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model restriction**: This API can be used only in the stage model.
 
 | Type                 | Description                 |
 | ------------------- | ------------------- |
@@ -114,6 +126,8 @@ Initiates pairing with the peer Bluetooth device. This API uses an asynchronous 
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name     | Type    | Mandatory  | Description                                 |
@@ -125,7 +139,7 @@ Initiates pairing with the peer Bluetooth device. This API uses an asynchronous 
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -164,6 +178,8 @@ Initiates pairing with the peer Bluetooth device. This API uses a promise to ret
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name     | Type    | Mandatory  | Description                                 |
@@ -180,7 +196,7 @@ Initiates pairing with the peer Bluetooth device. This API uses a promise to ret
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -219,6 +235,8 @@ Initiates pairing with the peer Bluetooth device. This API uses a promise to ret
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name     | Type    | Mandatory  | Description                                 |
@@ -235,7 +253,7 @@ Initiates pairing with the peer Bluetooth device. This API uses a promise to ret
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -279,6 +297,8 @@ Obtains the name of the peer Bluetooth device.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name     | Type    | Mandatory  | Description                               |
@@ -295,7 +315,7 @@ Obtains the name of the peer Bluetooth device.
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -330,6 +350,8 @@ Obtains the name of the peer device. The **alias** parameter is optional.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name     | Type    | Mandatory  | Description                               |
@@ -347,7 +369,7 @@ Obtains the name of the peer device. The **alias** parameter is optional.
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -379,6 +401,8 @@ Obtains the class of the peer Bluetooth device.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name     | Type    | Mandatory  | Description                               |
@@ -395,9 +419,10 @@ Obtains the class of the peer Bluetooth device.
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
+|201 |Permission denied.<br>Applicable versions: 10–17|
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
@@ -424,6 +449,8 @@ Obtains the transport type of the peer Bluetooth device.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name     | Type    | Mandatory  | Description                               |
@@ -440,7 +467,7 @@ Obtains the transport type of the peer Bluetooth device.
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
@@ -470,6 +497,8 @@ Obtains the profile of the peer Bluetooth device based on the specified UUID. Th
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name     | Type    | Mandatory  | Description                                 |
@@ -481,7 +510,7 @@ Obtains the profile of the peer Bluetooth device based on the specified UUID. Th
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter.    |
@@ -517,6 +546,8 @@ Obtains the profile of the peer Bluetooth device based on the specified UUID. Th
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name     | Type    | Mandatory  | Description                                 |
@@ -533,7 +564,7 @@ Obtains the profile of the peer Bluetooth device based on the specified UUID. Th
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter.    |
@@ -568,6 +599,8 @@ Obtains the name of the local Bluetooth device.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Return value**
 
 | Type    | Description       |
@@ -578,7 +611,7 @@ Obtains the name of the local Bluetooth device.
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -603,11 +636,15 @@ getPairedDevices(): Array&lt;string&gt;
 
 Obtains the addresses of paired Bluetooth devices.
 
-**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+**Required permissions**:
+- API versions 26.0.0+: ohos.permission.ACCESS_BLUETOOTH or (ohos.permission.ACCESS_BLUETOOTH and ohos.permission.GET_BLUETOOTH_PEERS_MAC)
+- API versions 10 to 24: ohos.permission.ACCESS_BLUETOOTH
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Return value**
 
@@ -619,7 +656,7 @@ Obtains the addresses of paired Bluetooth devices.
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -653,6 +690,8 @@ Obtains the pairing status of the peer Bluetooth device.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name     | Type    | Mandatory  | Description                               |
@@ -669,7 +708,7 @@ Obtains the pairing status of the peer Bluetooth device.
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -701,6 +740,8 @@ Obtains the connection status of a Bluetooth profile. The **ProfileId** paramete
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 <!--Table: 10%; 10%; 10%; 70%-->
@@ -718,7 +759,7 @@ Obtains the connection status of a Bluetooth profile. The **ProfileId** paramete
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Incorrect parameter types.        |
@@ -752,6 +793,8 @@ Confirms the pairing request from the peer Bluetooth device.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name   | Type     | Mandatory  | Description                              |
@@ -763,7 +806,7 @@ Confirms the pairing request from the peer Bluetooth device.
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -799,6 +842,8 @@ Sets the PIN used to complete Bluetooth pairing. This API uses an asynchronous c
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name   | Type     | Mandatory  | Description                              |
@@ -811,7 +856,7 @@ Sets the PIN used to complete Bluetooth pairing. This API uses an asynchronous c
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -845,6 +890,8 @@ Sets the PIN used to complete Bluetooth pairing. This API uses a promise to retu
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name   | Type     | Mandatory  | Description                              |
@@ -862,7 +909,7 @@ Sets the PIN used to complete Bluetooth pairing. This API uses a promise to retu
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -896,11 +943,13 @@ setLocalName(name: string): void
 Sets the name of the local Bluetooth device. The value cannot be an empty string. If the value is an empty string, the operation will fail.
 
 > **NOTE**<br>
-> This API is supported since API version 10 and deprecated since API version 12. No substitute is provided.
+> This API is supported since API version 10 and deprecated since API version 12 for security and sensitive information concerns. No substitute is provided. To change the Bluetooth device name of the local device, you can do so in the system settings.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -912,7 +961,7 @@ Sets the name of the local Bluetooth device. The value cannot be an empty string
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -943,6 +992,8 @@ Sets the Bluetooth scan mode, which determines whether the local device can be c
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name     | Type                   | Mandatory  | Description                          |
@@ -954,7 +1005,7 @@ Sets the Bluetooth scan mode, which determines whether the local device can be c
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -986,6 +1037,8 @@ Obtains the Bluetooth scan mode. This API is used together with the [onScanModeC
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Return value**
 
 | Type                   | Description     |
@@ -996,7 +1049,7 @@ Obtains the Bluetooth scan mode. This API is used together with the [onScanModeC
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -1032,11 +1085,13 @@ Starts a Bluetooth scan for device discovery.<br>
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Error codes**
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -1075,11 +1130,13 @@ Stops the Bluetooth scan.<br>
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Error codes**
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -1109,6 +1166,8 @@ Checks whether the local Bluetooth device is in the device scanning state.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Return value**
 
 | Type                 | Description           |
@@ -1119,7 +1178,7 @@ Checks whether the local Bluetooth device is in the device scanning state.
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -1153,6 +1212,8 @@ Sets the name of the peer Bluetooth device. The value cannot be an empty string.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name     | Type                                 | Mandatory  | Description                                    |
@@ -1170,7 +1231,7 @@ Sets the name of the peer Bluetooth device. The value cannot be an empty string.
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.            |
@@ -1206,6 +1267,8 @@ Obtains the battery level of the peer Bluetooth device. This API uses a promise 
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name   | Type     | Mandatory  | Description                              |
@@ -1222,7 +1285,7 @@ Obtains the battery level of the peer Bluetooth device. This API uses a promise 
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.            |
@@ -1254,6 +1317,8 @@ Subscribes to battery change events of the peer device. This API uses an asynchr
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name     | Type                                 | Mandatory  | Description                                    |
@@ -1265,7 +1330,7 @@ Subscribes to battery change events of the peer device. This API uses an asynchr
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |2900099 | Operation failed.                        |
@@ -1295,6 +1360,8 @@ Unsubscribes from battery change events of the peer device.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name     | Type                                 | Mandatory  | Description                                      |
@@ -1306,7 +1373,7 @@ Unsubscribes from battery change events of the peer device.
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |2900099 | Operation failed.                        |
@@ -1336,11 +1403,15 @@ Subscribes to scan result reporting events of Bluetooth devices. This API uses a
 - This API provides only the device address.<br>
 - You are advised to use [connection.on('discoveryResult')](#connectionondiscoveryresult18) (supported since API version 18), which can obtain more detailed device information, including the device address, signal strength, name, and type.
 
-**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+**Required permissions**:
+- API versions 26.0.0+: ohos.permission.ACCESS_BLUETOOTH or (ohos.permission.ACCESS_BLUETOOTH and ohos.permission.GET_BLUETOOTH_PEERS_MAC)
+- API versions 10 to 24: ohos.permission.ACCESS_BLUETOOTH
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -1353,10 +1424,10 @@ Subscribes to scan result reporting events of Bluetooth devices. This API uses a
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.<br>Applicable versions: 10-24                |
 |801 | Capability not supported.          |
 |2900099 | Operation failed.                        |
 
@@ -1387,6 +1458,8 @@ Unsubscribes from Bluetooth scan result reporting events.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name     | Type                                 | Mandatory  | Description                                      |
@@ -1398,7 +1471,7 @@ Unsubscribes from Bluetooth scan result reporting events.
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -1426,9 +1499,13 @@ on(type: 'bondStateChange', callback: Callback&lt;BondStateParam&gt;): void
 
 Subscribes to Bluetooth pairing status change events. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+**Required permissions**:
+- API versions 26.0.0+: ohos.permission.ACCESS_BLUETOOTH or (ohos.permission.ACCESS_BLUETOOTH and ohos.permission.GET_BLUETOOTH_PEERS_MAC)
+- API versions 10 to 24: ohos.permission.ACCESS_BLUETOOTH
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -1441,10 +1518,10 @@ Subscribes to Bluetooth pairing status change events. This API uses an asynchron
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.<br>Applicable versions: 10-24                |
 |801 | Capability not supported.          |
 |2900099 | Operation failed.                        |
 
@@ -1473,6 +1550,8 @@ Unsubscribes from Bluetooth pairing status change events.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name     | Type                                      | Mandatory  | Description                                      |
@@ -1484,7 +1563,7 @@ Unsubscribes from Bluetooth pairing status change events.
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -1513,25 +1592,29 @@ on(type: 'pinRequired', callback: Callback&lt;PinRequiredParam&gt;): void
 
 Subscribes to pairing request events. This API uses an asynchronous callback to return the result.
 
-**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+**Required permissions**:
+- API versions 26.0.0+: ohos.permission.ACCESS_BLUETOOTH or (ohos.permission.ACCESS_BLUETOOTH and ohos.permission.GET_BLUETOOTH_PEERS_MAC)
+- API versions 10 to 24: ohos.permission.ACCESS_BLUETOOTH
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
 | Name     | Type                                      | Mandatory  | Description                              |
 | -------- | ---------------------------------------- | ---- | -------------------------------- |
-| type     | string                                   | Yes   | Event type. The value **pinRequired** indicates a pairing request event.<br>This event is triggered when [connection.pairDevice](#connectionpairdevice) is called to initiate pairing or the local device receives a pairing request from another device.    |
+| type     | string                                   | Yes   | Event type. The value **pinRequired** indicates a pairing request event. This event is triggered when [connection.pairDevice](#connectionpairdevice) is called to initiate pairing or the local device receives a pairing request from another device. After receiving a pairing request, you can call [connection.setDevicePairingConfirmation](#connectionsetdevicepairingconfirmation) to accept or reject the request.    |
 | callback | Callback&lt;[PinRequiredParam](#pinrequiredparam)&gt; | Yes   | Callback used to return the pairing request.|
 
 **Error codes**
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.<br>Applicable versions: 10-24                |
 |801 | Capability not supported.          |
 |2900099 | Operation failed.                        |
 
@@ -1560,6 +1643,8 @@ Unsubscribes from pairing request events.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name     | Type                                      | Mandatory  | Description                                      |
@@ -1571,7 +1656,7 @@ Unsubscribes from pairing request events.
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
@@ -1602,9 +1687,13 @@ Subscribes to scan result reporting events of Bluetooth devices. This API uses a
 - This API applies to both classic Bluetooth devices and BLE devices.<br>
 - The reported information includes the device address, signal strength, name, and type.
 
-**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+**Required permissions**:
+- API versions 26.0.0+: ohos.permission.ACCESS_BLUETOOTH or (ohos.permission.ACCESS_BLUETOOTH and ohos.permission.GET_BLUETOOTH_PEERS_MAC)
+- API versions 18 to 24: ohos.permission.ACCESS_BLUETOOTH
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -1617,10 +1706,10 @@ Subscribes to scan result reporting events of Bluetooth devices. This API uses a
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
+|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.<br>Applicable versions: 18–24                |
 |801 | Capability not supported.          |
 |2900099 | Operation failed.                        |
 
@@ -1643,11 +1732,13 @@ try {
 
 off(type: 'discoveryResult', callback?: Callback&lt;Array&lt;DiscoveryResult&gt;&gt;): void
 
-Unsubscribes from the Bluetooth device discovered.
+Unsubscribes from Bluetooth scan result reporting events.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -1660,7 +1751,7 @@ Unsubscribes from the Bluetooth device discovered.
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -1692,6 +1783,8 @@ Subscribes to Bluetooth scan mode change events. This API uses an asynchronous c
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name     | Type                                      | Mandatory  | Description                              |
@@ -1702,7 +1795,7 @@ Subscribes to Bluetooth scan mode change events. This API uses an asynchronous c
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -1732,6 +1825,8 @@ Unsubscribes from Bluetooth scan mode change events.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name     | Type                                      | Mandatory  | Description                                      |
@@ -1742,7 +1837,7 @@ Unsubscribes from Bluetooth scan mode change events.
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.          |
@@ -1772,6 +1867,8 @@ Obtains the latest connection time of the peer Bluetooth device. This API uses a
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction**: This API can be used only in the stage model.
+
 **Parameters**
 
 | Name   | Type     | Mandatory  | Description                              |
@@ -1788,9 +1885,9 @@ Obtains the latest connection time of the peer Bluetooth device. This API uses a
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
-|401 | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
+|401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                 |
 |801 | Capability not supported.          |
 |2900001 | Service stopped.                         |
 |2900003 | Bluetooth disabled.                 |
@@ -1814,9 +1911,9 @@ try {
 
 connectAllowedProfiles(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 
-Obtains the profiles supported by the peer device. Supported profiles include A2DP, HFP, and HID. This API uses an asynchronous callback to return the result.
-- In versions earlier than API version 26.0.0, call [connection.pairDevice](#connectionpairdevice) to initiate pairing first. This API can be called only once within 30 seconds after each pairing is initiated.
-- In API version 26.0.0 and later, there is no time limit for calling this API for A2DP and HFP. You can call this API at any time after calling [connection.pairDevice](#connectionpairdevice) to initiate pairing.
+Connects to the profiles (including A2DP, HFP, HID, and PAN) supported by the peer device. The Bluetooth subsystem identifies the profile types supported by the peer device. This API uses an asynchronous callback to return the result.
+- For versions earlier than API version 26.0.0, call [connection.pairDevice](#connectionpairdevice) to initiate pairing first. This API can be called only once within 30 seconds after each pairing is initiated.
+- Starting from API version 26.0.0, there is no time limit for calling this API for A2DP and HFP. You can call this API at any time after calling [connection.pairDevice](#connectionpairdevice) to initiate pairing. For HID, this API still needs to be called within 30 seconds after each pairing is initiated.
 - Upon successful pairing, you are advised to call [getRemoteProfileUuids](#connectiongetremoteprofileuuids12) to query the profiles supported by the target device. This API is called only if the target device supports the profile required by the application.
 - This API must be used in pair with [connection.disconnectAllowedProfiles](#connectiondisconnectallowedprofiles).
 - Starting from API version 21, this API can be used to perform profile connection using the actual MAC address of the peer device.
@@ -1838,7 +1935,7 @@ Obtains the profiles supported by the peer device. Supported profiles include A2
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201     | Permission denied.                       |
 |401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                       |
@@ -1869,9 +1966,9 @@ try {
 
 connectAllowedProfiles(deviceId: string): Promise&lt;void&gt;
 
-Obtains the profiles supported by the peer device. Supported profiles include A2DP, HFP, and HID. This API uses a promise to return the result.
-- In versions earlier than API version 26.0.0, call [connection.pairDevice](#connectionpairdevice) to initiate pairing first. This API can be called only once within 30 seconds after each pairing is initiated.
-- In API version 26.0.0 and later, there is no time limit for calling this API for A2DP and HFP. You can call this API at any time after calling [connection.pairDevice](#connectionpairdevice) to initiate pairing.
+Connects to the profiles (including A2DP, HFP, HID, and PAN) supported by the peer device. The Bluetooth subsystem identifies the profile types supported by the peer device. This API uses a promise to return the result.
+- For versions earlier than API version 26.0.0, call [connection.pairDevice](#connectionpairdevice) to initiate pairing first. This API can be called only once within 30 seconds after each pairing is initiated.
+- Starting from API version 26.0.0, there is no time limit for calling this API for A2DP and HFP. You can call this API at any time after calling [connection.pairDevice](#connectionpairdevice) to initiate pairing. For HID, this API still needs to be called within 30 seconds after each pairing is initiated.
 - Upon successful pairing, you are advised to call [getRemoteProfileUuids](#connectiongetremoteprofileuuids12) to query the profiles supported by the target device. This API is called only if the target device supports the profile required by the application.
 - This API must be used in pair with [connection.disconnectAllowedProfiles](#connectiondisconnectallowedprofiles).
 - Starting from API version 21, this API can be used to perform profile connection using the actual MAC address of the peer device.
@@ -1898,7 +1995,7 @@ Obtains the profiles supported by the peer device. Supported profiles include A2
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201     | Permission denied.                       |
 |401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.                       |
@@ -1926,8 +2023,9 @@ try {
 
 disconnectAllowedProfiles(deviceId: string): Promise&lt;void&gt;
 
-Obtains the profiles supported by the disconnected peer device. Supported profiles include A2DP and HFP.
-- This API must be used in pair with [connection.connectAllowedProfiles](#connectionconnectallowedprofiles16).
+Disconnects from the profiles supported by the peer device. This API uses a promise to return the result.
+- For non-system apps, this API must be used together with [connection.connectAllowedProfiles](#connectionconnectallowedprofiles16). If this API is directly called, error code 2900099 will be returned. For non-system apps, this API can only be used to disconnect from the A2DP and HFP profiles. Other profiles involve system app functions and can only be operated by system apps.
+- System apps can directly call this API to disconnect from all connected profiles, including A2DP, HFP, HID, and PAN.
 
 **Since:** 26.0.0
 
@@ -1953,7 +2051,7 @@ Obtains the profiles supported by the disconnected peer device. Supported profil
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201     | Permission denied.                       |
 |801     | Capability not supported. Failed to call the API when the short-range chip is not inserted on 2in1 device.               |
@@ -1981,9 +2079,9 @@ When [HashAlgorithmType](#hashalgorithmtype24) is set to **HASH_ALGORITHM_SHA256
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
-**Model restriction**: This API can be used only in the stage model.
-
 **System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -2002,7 +2100,7 @@ When [HashAlgorithmType](#hashalgorithmtype24) is set to **HASH_ALGORITHM_SHA256
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201     | Permission denied.                       |
 |801     | Capability not supported. Failed to call the API when the short-range chip is not inserted on 2in1 device.               |
@@ -2043,13 +2141,13 @@ Subscribes to the Bluetooth ACL link connection status change event. If this eve
 
 | Name     | Type                                      | Mandatory  | Description                              |
 | -------- | ---------------------------------------- | ---- | -------------------------------- |
-| callback | Callback&lt;[AclStateResult](#aclstateresult)&gt; | Yes   | Callback used to return the Bluetooth peripheral connection status.|
+| callback | Callback&lt;[AclStateResult](#aclstateresult)&gt; | Yes   | Callback used to return the Bluetooth ACL link connection status.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.<br>Failed to call the API when the short-range chip is not inserted on 2in1 device.       |
@@ -2074,7 +2172,7 @@ offAclStateChange(callback?: Callback&lt;AclStateResult&gt;): void
 
 Unsubscribes from the Bluetooth ACL link connection status change event.
 
-**Since**: 26.0.0
+**Since:** 26.0.0
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH or (ohos.permission.ACCESS_BLUETOOTH and ohos.permission.GET_BLUETOOTH_PEERS_MAC)
 
@@ -2092,7 +2190,7 @@ Unsubscribes from the Bluetooth ACL link connection status change event.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Bluetooth Error Codes](errorcode-bluetoothManager.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------- |
 |201 | Permission denied.                 |
 |801 | Capability not supported.<br>Failed to call the API when the short-range chip is not inserted on 2in1 device.|
@@ -2117,11 +2215,14 @@ Defines the parameters for the pairing status.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction**: This API can be used only in the stage model.
+
 | Name      | Type  | Read-Only| Optional  | Description         |
 | -------- | ------ | ---- | ---- | ----------- |
 | deviceId | string      | No   | No   | Address of the peer device.|
 | state    | [BondState](#bondstate)   | No   | No   | Pairing status.|
 | cause<sup>12+</sup>| [UnbondCause](#unbondcause12) | No| No| Reason why the pairing fails.|
+| causeMessage | string | No| Yes| Specific reason why the pairing fails. For example, when the local service proactively deletes the pairing, **USER_REMOVED** is returned.<br> **Since:** 26.0.0 |
 
 
 ## PinRequiredParam
@@ -2129,6 +2230,8 @@ Defines the parameters for the pairing status.
 Defines the parameters of a pairing request.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model restriction**: This API can be used only in the stage model.
 
 | Name      | Type  | Read-Only  | Optional  | Description         |
 | -------- | ------ | ---- | ---- | ----------- |
@@ -2143,6 +2246,8 @@ Represents the class of a Bluetooth device.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction**: This API can be used only in the stage model.
+
 | Name             | Type                               | Read-Only  | Optional  | Description              |
 | --------------- | ----------------------------------- | ---- | ---- | ---------------- |
 | majorClass      | [MajorClass](js-apis-bluetooth-constant.md#majorclass)           | No   | No   | Main class. This is a standard field in the Bluetooth protocol.  |
@@ -2152,18 +2257,20 @@ Represents the class of a Bluetooth device.
 
 ## BatteryInfo<sup>12+</sup>
 
-Describes the battery level of a device.<br>Only devices that support the **Attention** (AT) command (including +XEVENT and IPHONEACCEV) defined by the Bluetooth protocol can report valid battery level information.
+Describes the battery level of a device.<br>Only devices that support the specific **Attention** (AT) command (including +XEVENT and IPHONEACCEV) can report valid battery level information.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction**: This API can be used only in the stage model.
+
 | Name      | Type  | Read-Only  | Optional  | Description         |
 | -------- | ------ | ---- | ---- | ----------- |
-| batteryLevel  | number | No   | No   | Battery level.<br>If the value is **-1**, no battery level information is available.  |
-| leftEarBatteryLevel  | number | No   | No   | Battery level of the left earbud if the device is a Bluetooth earphone.<br>If the value is **-1**, no battery level information is available.  |
+| batteryLevel  | number | No   | No   | Battery level of the device. The value range is [0, 100], in percentage (%). If the value is **-1**, no battery level is available.  |
+| leftEarBatteryLevel  | number | No   | No   | Battery level of the left earbud if the device is a Bluetooth earbud. The value range is [0, 100], in percentage (%). If the value is **-1**, no battery level is available.  |
 | leftEarChargeState  | [DeviceChargeState](#devicechargestate12) | No   | No   | Charging status of the left earbud if the device is a Bluetooth earbud.  |
-| rightEarBatteryLevel  | number | No   | No   | Battery level of the right earbud if the device is a Bluetooth earphone.<br>If the value is **-1**, no battery level information is available.  |
+| rightEarBatteryLevel  | number | No   | No   | Battery level of the right earbud if the device is a Bluetooth earbud. The value range is [0, 100], in percentage (%). If the value is **-1**, no battery level is available.  |
 | rightEarChargeState  | [DeviceChargeState](#devicechargestate12) | No   | No   | Charging status of the right earbud if the device is a Bluetooth earbud.  |
-| boxBatteryLevel  | number | No   | No   | Battery level of the earbud compartment if the device is a Bluetooth earphone.<br>If the value is **-1**, no battery level information is available.  |
+| boxBatteryLevel  | number | No   | No   | Battery level of the earbud compartments if the device is a Bluetooth earbud. The value range is [0, 100], in percentage (%). If the value is **-1**, no battery level is available.  |
 | boxChargeState  | [DeviceChargeState](#devicechargestate12) | No   | No   | Charging status of the earbud compartment if the device is a Bluetooth earbud.  |
 
 
@@ -2172,6 +2279,8 @@ Describes the battery level of a device.<br>Only devices that support the **Atte
 Enumerates the device transmission modes.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model restriction**: This API can be used only in the stage model.
 
 | Name                              | Value   | Description             |
 | -------------------------------- | ------ | --------------- |
@@ -2186,6 +2295,8 @@ Enumerates the device transmission modes.
 Enumerates the scan modes. The scan mode determines whether the device is discoverable or connectable.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model restriction**: This API can be used only in the stage model.
 
 | Name                                      | Value | Description             |
 | ---------------------------------------- | ---- | --------------- |
@@ -2205,6 +2316,8 @@ Enumerates the device pairing states.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction**: This API can be used only in the stage model.
+
 | Name                | Value | Description    |
 | ------------------ | ---- | ------ |
 | BOND_STATE_INVALID | 0    | Unpaired state.|
@@ -2217,6 +2330,8 @@ Enumerates the device pairing states.
 Enumerates the possible causes of a pairing failure.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model restriction**: This API can be used only in the stage model.
 
 | Name                | Value | Description    |
 | ------------------ | ---- | ------ |
@@ -2233,6 +2348,8 @@ Enumerates the device charging states.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
+**Model restriction**: This API can be used only in the stage model.
+
 | Name                | Value | Description    |
 | ------------------ | ---- | ------ |
 | DEVICE_NORMAL_CHARGE_NOT_CHARGED        | 0    | A device that does not support super-fast charging is currently not charging.|
@@ -2245,6 +2362,8 @@ Enumerates the device charging states.
 Defines the device discovery result.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model restriction**: This API can be used only in the stage model.
 
 <!--Table: 15%; 15%; 10%; 10%; 50%-->
 | Name      | Type  | Read-Only  | Optional  | Description         |
@@ -2260,9 +2379,9 @@ Enumerates the hash algorithm types.
 
 The hash algorithm is a mathematical function that performs complex calculations on input data to generate a unique and fixed-length string (hash value). It is commonly used in scenarios such as data integrity verification and digital signatures.
 
-**Model restriction**: This API can be used only in the stage model.
-
 **System capability**: SystemCapability.Communication.Bluetooth.Core
+
+**Model restriction**: This API can be used only in the stage model.
 
 | Name                | Value | Description    |
 | ------------------ | ---- | ------ |
@@ -2273,7 +2392,7 @@ The hash algorithm is a mathematical function that performs complex calculations
 
 Defines the parameters for the ACL connection status.
 
-**Since**: 26.0.0
+**Since:** 26.0.0
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
@@ -2289,7 +2408,7 @@ Defines the parameters for the ACL connection status.
 
 Enumerates the ACL connection statuses.
 
-**Since**: 26.0.0
+**Since:** 26.0.0
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 

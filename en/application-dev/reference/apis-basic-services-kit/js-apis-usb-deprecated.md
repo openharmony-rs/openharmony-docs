@@ -6,6 +6,7 @@
 <!--Designer: @w00373942-->
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=0d195fb5653baa3b61b9b3436733f67b33a5d055 translatedAt=2026-10-09T12:16:38.457Z pushedAt=2026-10-10T02:18:06.970Z -->
 
 The **usb** module provides USB device management functions, including USB device list query, bulk data transfer, control transfer, and permission control.
 
@@ -507,8 +508,8 @@ Represents the USB configuration. One [USBDevice](#usbdevice) can contain multip
 | attributes     | number                                           | Yes  |Configuration attributes.         |
 | maxPower       | number                                           | Yes  |Maximum power consumption, in mA.   |
 | name           | string                                           | Yes  |Configuration name, which can be left empty.    |
-| isRemoteWakeup | boolean                                          | Yes  |Support for remote wakeup.|
-| isSelfPowered  | boolean                                          | Yes  |Support for independent power supplies.|
+| isRemoteWakeup | boolean                                          | Yes   | Whether remote wakeup is supported. **true** if supported, and **false** otherwise. |
+| isSelfPowered  | boolean                                          | Yes   | Whether an independent power supply is supported. **true** if supported, and **false** otherwise. |
 | interfaces     | Array&nbsp;&lt;[USBInterface](#usbinterface)&gt; | Yes  |Supported interface attributes.     |
 
 ## USBDevice
@@ -523,7 +524,7 @@ Represents the USB device information.
 | devAddress       | number                               | Yes  |Device address.     |
 | serial           | string                               | Yes  |Sequence number.      |
 | name             | string                               | Yes  |Device name.     |
-| manufacturerName | string                               | Yes  |Device manufacturer.     |
+| manufacturerName | string                               | Yes   |Manufacturer information.      |
 | productName      | string                               | Yes  |Product name.     |
 | version          | string                               | Yes  |Version.       |
 | vendorId         | number                               | Yes  |Vendor ID.     |
@@ -595,3 +596,4 @@ Enumerates request directions.
 | --------------------------- | ---- | ------------------------ |
 | USB_REQUEST_DIR_TO_DEVICE   | 0    | Request for writing data from the host to the device.|
 | USB_REQUEST_DIR_FROM_DEVICE | 0x80 | Request for reading data from the device to the host.|
+
