@@ -527,24 +527,70 @@ struct Index {
     maskColor: 0x33000000
   })
   build() {
-    Button('打开弹窗').onClick(() => { this.dialogController.open() })
+    Column() {
+      Button('打开弹窗').onClick(() => { this.dialogController.open() })
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
   }
 }
 ```
 
+![迁移前示例图](figures/CustomDialogBeforeMigrate.png)
+
 **迁移后示例（新接口）：**
 
-<!-- @[dialog_migration_custom](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/CustomDialogMigrationPage.ets) -->
-
 ```typescript
-import { dialog } from '@kit.ArkUI';
+import { DialogPresenter, DialogBaseAlignment, DialogResult, ComponentContent } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
+
+// 定义参数类，用于向自定义弹出框内容传递数据
+class Params {
+  text: string = '';
+
+  constructor(text: string) {
+    this.text = text;
+  }
+}
+
+// 自定义弹出框内容的构建器函数
+@Builder
+function buildText(params: Params) {
+  Column({ space: 20 }) {
+    Text(params.text)
+      .fontSize(30)
+      .fontWeight(FontWeight.Bold)
+      .margin({ bottom: 36 })
+    // 关闭弹出框按钮，通过ComponentContent引用关闭弹出框
+    Button('关闭弹窗')
+      .onClick(() => {
+        dialogPresenter?.dismiss(contentNode)
+          .then(() => {
+            console.info('dismiss success');
+          })
+          .catch((error: BusinessError) => {
+            console.error(`dismiss error code is ${error.code}, message is ${error.message}`);
+          })
+      })
+  }
+}
+
+let contentNode: ComponentContent<Object> | null = null;
+// 全局变量，保存DialogPresenter实例
+let dialogPresenter: DialogPresenter | null = null;
 
 @Entry
 @Component
 struct CustomDialogMigrationPage {
-  private presenter: dialog.DialogPresenter = this.getUIContext().getDialogPresenter();
   @State result: string = '';
+
+  aboutToAppear(): void {
+    // 获取DialogPresenter实例
+    dialogPresenter = this.getUIContext().getDialogPresenter();
+    // 创建ComponentContent，绑定自定义构建器函数和参数
+    contentNode = new ComponentContent(this.getUIContext(), wrapBuilder(buildText), new Params("自定义弹窗内容"));
+  }
 
   build() {
     Row() {
@@ -584,22 +630,11 @@ struct CustomDialogMigrationPage {
   }
 
   private showNewCustomDialog(): void {
-    this.presenter.present(() => {
-      Column() {
-        Text('自定义弹窗内容')
-          .fontSize(16)
-          .margin({ bottom: 10 })
-        Button('关闭弹窗')
-          .onClick(() => {
-            this.presenter.dismiss(0);
-          })
-      }
-      .padding(20)
-    }, {
-      alignment: dialog.DialogBaseAlignment.CENTER,
+    dialogPresenter?.present(contentNode, {
+      alignment: DialogBaseAlignment.CENTER,
       autoCancel: true,
       maskColor: 0x33000000
-    }).then((result: dialog.DialogResult) => {
+    }).then((result: DialogResult) => {
       this.result = 'present success, dialogId: ' + result.dialogId;
     }).catch((error: BusinessError) => {
       this.result = `present error: ${error.code}`;
@@ -607,6 +642,8 @@ struct CustomDialogMigrationPage {
   }
 }
 ```
+
+![迁移后示例图](figures/CustomDialogAfterMigrate.png)
 
 ### AlertDialog → DialogPresenter.present（固定样式弹窗）
 
