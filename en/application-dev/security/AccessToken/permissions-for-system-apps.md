@@ -5740,7 +5740,7 @@ Allows an application to switch the list of displayable applications on multi‑
 
 **Supported devices**: tablets | PCs/2-in-1 devices
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.CAMERA_SHARED
 

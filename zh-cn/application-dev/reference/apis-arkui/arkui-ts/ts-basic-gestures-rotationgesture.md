@@ -59,7 +59,7 @@ RotationGesture(options?: RotationGestureHandlerOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| options | [RotationGestureHandlerOptions](./ts-gesturehandler.md#rotationgesturehandleroptions) | 否 |旋转手势处理器配置参数。 |
+| options | [RotationGestureHandlerOptions](./ts-gesturehandler.md#rotationgesturehandleroptions) | 否 | 旋转手势处理器配置参数。 |
 
 
 ## 事件
@@ -74,7 +74,7 @@ ArkTS-Dyn: onActionStart(event: (event: GestureEvent) => void)
 
 ArkTS-Sta: onActionStart(event: Callback\<GestureEvent>)
 
-Rotation手势识别成功后触发的回调。
+旋转手势识别成功后触发的回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -118,7 +118,7 @@ ArkTS-Dyn: onActionEnd(event: (event: GestureEvent) => void)
 
 ArkTS-Sta: onActionEnd(event: Callback\<GestureEvent>)
 
-Rotation手势识别成功，当抬起最后一根满足手势触发条件的手指后触发的回调。
+旋转手势识别成功，当抬起最后一根满足手势触发条件的手指后触发的回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -138,7 +138,7 @@ Rotation手势识别成功，当抬起最后一根满足手势触发条件的手
 
 onActionCancel(event: () => void)
 
-Rotation手势识别成功，接收到触摸取消事件触发的回调。该回调不返回手势事件信息。
+旋转手势识别成功，接收到触摸取消事件时触发的回调。该回调不返回手势事件信息。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -154,13 +154,13 @@ Rotation手势识别成功，接收到触摸取消事件触发的回调。该回
 
 | 参数名 | 类型                                       | 必填 | 说明                         |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| event  |  () => void | 是   | 手势事件回调函数。 |
+| event  |  () => void | 是   | 手势事件回调函数，用于处理旋转手势取消事件；该回调不接收参数，不返回手势事件信息。 |
 
 ### onActionCancel<sup>18+</sup>
 
 onActionCancel(event: Callback\<GestureEvent\>)
 
-Rotation手势识别成功，接收到触摸取消事件触发的回调。与[onActionCancel](#onactioncancel)相比，该回调返回手势事件信息。
+旋转手势识别成功，接收到触摸取消事件时触发的回调。与[onActionCancel](#onactioncancel)相比，该回调返回手势事件信息。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -176,7 +176,7 @@ Rotation手势识别成功，接收到触摸取消事件触发的回调。与[on
 
 | 参数名 | 类型                                       | 必填 | 说明                         |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| event  |  Callback\<[GestureEvent](ts-gesture-common.md#gestureevent对象说明)> | 是   | 手势事件回调函数。 |
+| event  |  Callback\<[GestureEvent](ts-gesture-common.md#gestureevent对象说明)> | 是   | 手势事件回调函数，用于接收旋转手势取消时的手势事件信息，回调参数为GestureEvent对象。 |
 
 ## 示例
 
@@ -204,17 +204,19 @@ struct RotationGestureExample {
       // 双指旋转触发该手势事件
       .gesture(
       RotationGesture()
-        .onActionStart((event: GestureEvent) => {
-          console.info('Rotation start')
+        .onActionStart(() => {
+          console.info('Rotation start');
         })
         .onActionUpdate((event: GestureEvent) => {
           if (event) {
-            this.angle = this.rotateValue + event.angle
+            // 根据本次手势变化角度和已保存旋转角度，更新组件当前旋转角度。
+            this.angle = this.rotateValue + event.angle;
           }
         })
-        .onActionEnd((event: GestureEvent) => {
-          this.rotateValue = this.angle
-          console.info('Rotation end')
+        .onActionEnd(() => {
+          // 手势结束时保存当前旋转角度，作为下一次旋转计算的初始值。
+          this.rotateValue = this.angle;
+          console.info('Rotation end');
         })
       )
     }.width('100%')

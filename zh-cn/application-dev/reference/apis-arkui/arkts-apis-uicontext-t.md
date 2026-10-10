@@ -1,10 +1,13 @@
 # Types
+
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
+
+本文件介绍ArkUI UIContext相关类型，包括自定义组件构建、UIObserver事件监听回调、节点标识、光标样式和上下文等类型。
 
 > **说明：**
 >
@@ -57,13 +60,13 @@ ClickEvent事件监听函数类型。
 | 参数名  | 类型   | 必填 | 说明                          |
 | ------- | ------ | ---- | --------------------------- |
 | event | [ClickEvent](../apis-arkui/arkui-ts/ts-universal-events-click.md#clickevent) | 是 | 触发事件监听的点击事件的相关信息。 |
-| node | [FrameNode](js-apis-arkui-frameNode.md) | 否 | 触发事件监听的点击事件所绑定的组件。 |
+| node | [FrameNode](js-apis-arkui-frameNode.md) | 否 | 触发事件监听的点击事件所绑定的组件。当没有返回组件时，node值为null。 |
 
 ## PanListenerCallback<sup>19+</sup>
 
 type PanListenerCallback = (event: GestureEvent, current: GestureRecognizer, node?: FrameNode) => void
 
-Pan手势事件监听函数类型。
+Pan手势事件监听函数类型，可用于需要监听组件拖拽、平移等Pan手势交互的场景。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -81,7 +84,7 @@ Pan手势事件监听函数类型。
 | ------- | ----------------- | ---- | --------------------------------- |
 | event   | [GestureEvent](../apis-arkui/arkui-ts/ts-gesture-common.md#gestureevent对象说明)      | 是   | 触发事件监听的手势事件的相关信息。   |
 | current | [GestureRecognizer](arkui-ts/ts-gesture-common.md#gesturerecognizer12) | 是   | 触发事件监听的手势识别器的相关信息。  |
-| node    | [FrameNode](js-apis-arkui-frameNode.md)         | 否   | 触发事件监听的手势事件所绑定的组件。 |
+| node | [FrameNode](js-apis-arkui-frameNode.md) | 否 | 触发事件监听的手势事件所绑定的组件。当没有返回组件时，node值为null。 |
 
 ## GestureEventListenerCallback
 
@@ -149,8 +152,8 @@ type NodeRenderStateChangeCallback = (state: NodeRenderState, node?: FrameNode) 
 
 | 参数名  | 类型              | 必填 | 说明                                |
 | ------- | ----------------- | ---- | --------------------------------- |
-| state   | [NodeRenderState](arkts-apis-uicontext-e.md#noderenderstate20)     | 是   | 触发事件监听的手势事件的相关信息。   |
-| node    | [FrameNode](js-apis-arkui-frameNode.md)         | 否   | 触发事件监听的手势事件所绑定的组件，如果组件被释放将返回null。 |
+| state | [NodeRenderState](arkts-apis-uicontext-e.md#noderenderstate20) | 是 | 节点当前的渲染状态，用于表示被监控节点是否处于可渲染状态。 |
+| node | [FrameNode](js-apis-arkui-frameNode.md) | 否 | 触发渲染状态变化监听的组件。当需要获取发生渲染状态变化的组件节点信息时，可通过该参数获取；如果组件被释放将返回null。 |
 
 ## GestureListenerCallback<sup>20+</sup>
 
@@ -196,7 +199,7 @@ type PointerStyle = pointer.PointerStyle
 
 type Context = common.Context
 
-当前组件所在Ability的上下文。
+当前组件所在Ability（应用组件）的上下文。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 

@@ -151,11 +151,11 @@ AlertDialogV2({primaryTitle?: ResourceStr, secondaryTitle?: ResourceStr, content
 
 | 名称              | 类型                                                | 必填 | 装饰器类型                | 说明                   |
 | --------------- | ------------------------------------------------- | -- | :------------------- | -------------------- |
-| primaryTitle    | [ResourceStr](ts-types.md#resourcestr)            | 否  | @Param               | 确认弹出框一级标题。<br />默认不显示。<br/>**说明：** 标题超过两行会显示“...”。  |
-| secondaryTitle  | [ResourceStr](ts-types.md#resourcestr)            | 否  | @Param               | 确认弹出框二级标题。<br />默认不显示。<br/>**说明：** 标题超过两行会显示“...”。       |
-| content         | [ResourceStr](ts-types.md#resourcestr)            | 是  | @Param<br />@Require | 确认弹出框内容。<br />       |
-| primaryButton   | [AdvancedDialogV2Button](#advanceddialogv2button) | 否  | @Param               | 确认弹出框左侧按钮。<br />默认不显示。 |
-| secondaryButton | [AdvancedDialogV2Button](#advanceddialogv2button) | 否  | @Param               | 确认弹出框右侧按钮。<br />默认不显示。 |
+| primaryTitle    | [ResourceStr](ts-types.md#resourcestr)            | 否  | @Param               | 警告弹出框一级标题。<br />默认不显示。<br/>**说明：** 标题超过两行会显示“...”。  |
+| secondaryTitle  | [ResourceStr](ts-types.md#resourcestr)            | 否  | @Param               | 警告弹出框二级标题。<br />默认不显示。<br/>**说明：** 标题超过两行会显示“...”。       |
+| content         | [ResourceStr](ts-types.md#resourcestr)            | 是  | @Param<br />@Require | 警告弹出框内容。<br />       |
+| primaryButton   | [AdvancedDialogV2Button](#advanceddialogv2button) | 否  | @Param               | 警告弹出框左侧按钮。<br />默认不显示。 |
+| secondaryButton | [AdvancedDialogV2Button](#advanceddialogv2button) | 否  | @Param               | 警告弹出框右侧按钮。<br />默认不显示。 |
 
 ## LoadingDialogV2
 

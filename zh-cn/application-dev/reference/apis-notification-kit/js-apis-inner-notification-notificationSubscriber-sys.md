@@ -2,7 +2,7 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -757,7 +757,7 @@ onEnabledPriorityChanged?: (callbackData: EnabledPriorityNotificationCallbackDat
 
 | 参数名   | 类型                                                         | 必填 | 说明                       |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------- |
-| onEnabledPriorityChanged | (callbackData: [EnabledPriorityNotificationCallbackData](#enabledprioritynotificationcallbackdata23)>) => void | 否   | 返回通知优先级总开关状态。 |
+| onEnabledPriorityChanged | (callbackData: [EnabledPriorityNotificationCallbackData](#enabledprioritynotificationcallbackdata23)) => void | 否   | 返回通知优先级总开关状态。 |
 
 **示例：**
 
@@ -812,7 +812,7 @@ onEnabledPriorityByBundleChanged?: (callbackData: EnabledPriorityNotificationByB
 
 | 参数名   | 类型                                                         | 必填 | 说明                       |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------- |
-| onEnabledPriorityByBundleChanged | (callbackData: [EnabledPriorityNotificationByBundleCallbackData](#enabledprioritynotificationbybundlecallbackdata23)>) => void | 否   | 返回应用通知优先级开关状态。 |
+| onEnabledPriorityByBundleChanged | (callbackData: [EnabledPriorityNotificationByBundleCallbackData](#enabledprioritynotificationbybundlecallbackdata23)) => void | 否   | 返回应用通知优先级开关状态。 |
 
 **示例：**
 
@@ -890,7 +890,7 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 
 ## EnabledNotificationCallbackData<sup>8+</sup>
 
-应用角标使能状态变化的回调函数类型。
+应用角标使能状态变化的回调数据。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -904,7 +904,7 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 
 ## EnabledSilentReminderCallbackData<sup>24+</sup>
 
-应用通知[静默提醒](../../notification/notification-glossary.md#silent-reminder静默提醒)开关状态的回调函数类型。
+应用通知[静默提醒](../../notification/notification-glossary.md#silent-reminder静默提醒)开关状态变化的回调数据。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -924,7 +924,7 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 
 ## BadgeNumberCallbackData<sup>10+</sup>
 
-应用角标数量变化的回调函数类型。
+应用角标数量变化的回调数据。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -941,7 +941,7 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 
 ## EnabledPriorityNotificationCallbackData<sup>23+</sup>
 
-通知优先级总开关状态。
+通知优先级总开关状态变化的回调数据。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -953,7 +953,7 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 
 ## EnabledPriorityNotificationByBundleCallbackData<sup>23+</sup>
 
-通知通知优先级开关状态。
+应用通知优先级开关状态变化的回调数据。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -971,7 +971,7 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 
 ## NotificationSwitchChangedCallbackData
 
-通知开关状态变化的回调函数类型。
+通知开关状态变化的回调数据。
 
 **系统能力**：SystemCapability.Notification.Notification
 

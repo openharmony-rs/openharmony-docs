@@ -63,7 +63,7 @@ console.info(`bundleName: ${context.abilityInfo.bundleName}`)
 
 **参考链接**
 
-[UIAbilityContext](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)、[AbilityInfo](../reference/apis-ability-kit/js-apis-bundleManager-abilityInfo.md)
+[UIAbilityContext (UIAbility上下文)](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)、[AbilityInfo](../reference/apis-ability-kit/js-apis-bundleManager-abilityInfo.md)
 
 
 ## 如何获取App版本号，版本名，屏幕分辨率等信息(API 9)
