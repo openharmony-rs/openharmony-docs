@@ -215,7 +215,7 @@ ArkWeb Native侧需先获取API结构体，才能调用结构体里的Native API
     }
   
     aboutToDisappear() {
-      console.error('aboutToDisappear');
+      console.info('aboutToDisappear');
     }
   
     build() {
