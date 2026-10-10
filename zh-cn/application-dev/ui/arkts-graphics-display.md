@@ -763,10 +763,10 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
             .width('40%')
             // 通过colorFilter调整图片的像素颜色，为图片添加滤镜
             .colorFilter(
-               [1, 1, 0, 0, 0,
-                0, 1, 0, 0, 0,
-                0, 0, 1, 0, 0,
-                0, 0, 0, 1, 0])
+              [1, 1, 0, 0, 0,
+               0, 1, 0, 0, 0,
+               0, 0, 1, 0, 0,
+               0, 0, 0, 1, 0])
             .margin(10)
         }.width('100%')
         .justifyContent(FlexAlign.Center)
