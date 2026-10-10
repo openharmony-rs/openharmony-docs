@@ -210,9 +210,7 @@ OH_AudioStreamBuilder_SetLatencyMode(builder, latencyMode);
 <!-- @[SetCapturerLoopbackEffectEnabled](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
 
 ``` C++
-OH_AudioStream_Result result = OH_AudioStreamBuilder_SetCapturerLoopbackEffectEnabled != nullptr ?
-    OH_AudioStreamBuilder_SetCapturerLoopbackEffectEnabled(builder, true) :
-    AUDIOSTREAM_ERROR_ILLEGAL_STATE;
+OH_AudioStream_Result result = OH_AudioStreamBuilder_SetCapturerLoopbackEffectEnabled(builder, true);
 ```
 
 ### 设置静音打断模式
