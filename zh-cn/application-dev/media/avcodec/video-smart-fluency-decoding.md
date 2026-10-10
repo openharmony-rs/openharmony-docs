@@ -62,7 +62,7 @@
 
 ### 初始化阶段配置
 
-以下示例以正常倍速起播，配置`FULL`模式。`SetOptionalFormatFeatures`在完成同步模式配置后，当`sampleInfo.codec.isSmartFluencySupported`为`true`时调用`ConfigureSmartFluency(format)`并检查返回值。随后由`VideoDecoder::Configure`调用`OH_VideoDecoder_Configure`完成配置；该辅助函数仅设置本能力的参数，不负责创建或销毁`OH_AVFormat`。
+以下示例以正常倍速起播，配置全量直通模式。SetOptionalFormatFeatures在完成同步模式配置后，当sampleInfo.codec.isSmartFluencySupported为true时调用ConfigureSmartFluency(format)并检查返回值。随后由`VideoDecoder::Configure`调用OH_VideoDecoder_Configure完成配置。该辅助函数仅设置本能力的参数，不负责创建或销毁OH_AVFormat。
 
 如果业务直接以高倍速起播，也可在初始化阶段配置感知自适应模式，建议同时显式设置OH_MD_KEY_VIDEO_DECODER_SPEED为实际起播倍速。
 
