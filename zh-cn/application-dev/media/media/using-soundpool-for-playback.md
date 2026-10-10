@@ -83,7 +83,7 @@ SoundPool当前支持播放解码后1MB以下的音频资源，解码后大小�
 
 5. 调用load方法进行音频资源加载。
 
-    可以传入uri或fd加载资源，此处使用传入fd的方式为例，更多方法请参考[load](../../reference/apis-media-kit/js-apis-inner-multimedia-soundPool.md#load)。
+    可以传入URI或fd加载资源，此处使用传入fd的方式为例，更多方法请参考[load](../../reference/apis-media-kit/js-apis-inner-multimedia-soundPool.md#load)。
 
     当系统加载完毕音频资源文件的时候，会通过loadComplete回调，通知用户资源加载完成，请在收到回调之后，再进行后续的play操作。
 
