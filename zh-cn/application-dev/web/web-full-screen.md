@@ -246,7 +246,7 @@ onBackPress(): boolean | void {
     this.changeOrientation(false);
     return true;
   } else {
-    router.back();
+    this.getUIContext().getRouter().back();
     return true;
   }
 }
@@ -265,7 +265,7 @@ onBackPress(): boolean {
     this.changeOrientation(false);
     return true;
   } else {
-    router.back();
+    this.getUIContext().getRouter().back();
     return true;
   }
 }
@@ -278,7 +278,7 @@ ArkTS-Dyn示例：
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
-import { window, router } from '@kit.ArkUI';
+import { window } from '@kit.ArkUI';
 import { common } from '@kit.AbilityKit';
 
 @Entry
@@ -305,7 +305,7 @@ struct WebVideo {
       this.changeOrientation(false);
       return true;
     } else {
-      router.back();
+      this.getUIContext().getRouter().back();
       return true;
     }
   }
@@ -372,7 +372,7 @@ struct WebVideo {
       this.changeOrientation(false);
       return true;
     } else {
-      router.back();
+      this.getUIContext().getRouter().back();
       return true;
     }
   }
