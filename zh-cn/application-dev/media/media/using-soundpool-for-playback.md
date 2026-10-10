@@ -1,8 +1,8 @@
 # 使用SoundPool播放短音频(ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @wang-haizhou6-->
-<!--Designer: @HmQQQ-->
+<!--Owner: @hanzhengshi-->
+<!--Designer: @chris2981-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -14,7 +14,9 @@ SoundPool当前支持播放解码后1MB以下的音频资源，解码后大小�
 
 本开发指导将以SoundPool进行一次低时延播放音频的过程为例，向开发者讲解如何使用SoundPool。详细的API声明请参考[SoundPool (音频池)](../../reference/apis-media-kit/js-apis-inner-multimedia-soundPool.md)。
 
-过程包括：创建SoundPool实例，加载音频资源（包括资源的解封装与解码：解码格式参考[音频解码支持](../avcodec/audio-decoding.md)），设置播放参数（循环模式/播放优先级等），播放控制（播放/停止），释放资源。
+过程包括：创建SoundPool实例，加载音频资源（包括资源的解封装与解码），设置播放参数（循环模式/播放优先级等），播放控制（播放/停止），释放资源。
+
+其中，加载阶段解封装支持的音频容器格式请参考[媒体数据解封装](../avcodec/avcodec-support-formats.md#媒体数据解封装)，从API版本26.0.1开始，支持对mp4格式音频进行解封装。支持的解码格式请参考[异步模式音频解码](../avcodec/audio-decoding.md)。
 
 在应用开发过程中，开发者应通过监听方法检查当前播放状态并按照一定顺序调用接口，执行对应操作，否则系统可能会抛出异常或生成其他未定义的行为。具体顺序可参考下列开发步骤及对应说明。
 
