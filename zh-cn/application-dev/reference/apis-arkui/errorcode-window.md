@@ -323,6 +323,79 @@ onPageHide() {
 }
 ```
 
+### 当前存在模态UIExtension，不允许创建非安全窗口
+**可能原因**<br>
+应用内已拉起了模态UIExtension的应用，开发者在创建子窗口、全局悬浮窗、Dialog窗口等非安全窗口时，由于模态UIExtension不允许非安全窗口遮挡，导致窗口创建失败。
+
+**典型日志信息**<br>
+```text
+Error Name: Error
+Error Message: [window][createSubWindowWithOptions]It is not allowed to create non-secure window when secure extension exists. Maybe blocked by:
+Error code: 1300002
+```
+
+关键信息：
+- 错误码：1300002
+- 模态UIExtension信息：Error Message后
+
+**处理步骤**<br>
+- 确保将模态UIExtension关闭后，再创建子窗
+
+**正反案例**<br>
+错误示例
+略
+
+正确示例
+略
+
+### 创建子窗口的进程和其父窗的进程不相同
+**可能原因**<br>
+创建子窗口请求的进程pid和该子窗口父窗的进程pid不相同，导致创建子窗口失败。
+
+**典型日志信息**<br>
+```text
+Error Name: Error
+Error Message: [window][createSubWindowWithOptions]The parent window and the subwindow are not created by the same process
+Error code: 1300002
+```
+
+关键信息：
+- 错误码：1300002
+
+**处理步骤**<br>
+- 请确保创建子窗口的进程跟创建其父窗的进程是同一进程
+
+**正反案例**<br>
+错误示例
+略
+
+正确示例
+略
+
+### 超出子窗最大允许嵌套层数
+**可能原因**<br>
+子窗口内创建子窗口做子窗口嵌套时，子窗嵌套子窗的层数受最大允许嵌套层数限制，开发者在子窗口内创建子窗口时，刚好超出了最大允许嵌套层数，导致创建子窗口失败。
+
+**典型日志信息**<br>
+```text
+Error Name: Error
+Error Message: [window][createSubWindowWithOptions]Subwindow level exceeds the maximum limit
+Error code: 1300002
+```
+
+关键信息：
+- 错误码：1300002
+
+**处理步骤**<br>
+- 当前子窗口已达最大嵌套层数，不允许继续创建子窗口。
+
+**正反案例**<br>
+错误示例
+略
+
+正确示例
+略
+
 ## 1300003 系统服务工作异常
 **错误信息**<br>
 This window manager service works abnormally.
