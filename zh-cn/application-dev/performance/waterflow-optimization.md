@@ -22,7 +22,7 @@
         LazyForEach(this.dataSource, (item: number) => {
           FlowItem() {
             Column() {
-              Text("N" + item).fontSize(12).height('16')
+              Text("N" + item).fontSize(12).height(16)
               Image('res/waterFlowTest (' + item % 5 + ').jpg')
                 .objectFit(ImageFit.Fill)
                 .width('100%')
@@ -62,7 +62,7 @@
         LazyForEach(this.dataSource, (item: number) => {
           FlowItem() {
             Column() {
-              Text("N" + item).fontSize(12).height('16')
+              Text("N" + item).fontSize(12).height(16)
               Image('res/waterFlowTest (' + item % 5 + ').jpg')
                 .objectFit(ImageFit.Fill)
                 .width('100%')
@@ -197,7 +197,7 @@ struct ReusableFlowItem {
 
   build() {
     Column() {
-      Text("N" + this.item).fontSize(12).height('16')
+      Text("N" + this.item).fontSize(12).height(16)
       Image('res/waterFlowTest (' + this.item % 5 + ').jpg')
         .objectFit(ImageFit.Fill)
         .width('100%')
