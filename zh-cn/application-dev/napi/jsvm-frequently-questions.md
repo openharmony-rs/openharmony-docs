@@ -136,3 +136,7 @@
 3. Q：JS执行时无法找到`OH_JSVM_DefineClass`定义的类。
 
    A：检查是否将定义的类绑定到上下文中，见[上下文绑定对象](jsvm-guidelines.md#上下文绑定对象)。
+
+4. Q：`OH_JSVM_CompileScript()`调用失败，返回值为`JSVM_GENERIC_FAILURE`。
+
+   A：见[程序崩溃类](#程序崩溃类)第6点。

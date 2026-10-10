@@ -151,39 +151,9 @@ import { huks, huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { util } from '@kit.ArkTS';
 
-function StringToUint8Array(str: string): Uint8Array {
+function stringToUint8Array(str: string): Uint8Array {
   const encoder = new util.TextEncoder();
   return encoder.encodeInto(str);
-}
-
-async function openResource(resourceId: string): Promise<void> {
-  try {
-    await huksExternalCrypto.openResource(resourceId);
-    console.info('promise: openResource success.');
-  } catch (error) {
-    const e = error as BusinessError;
-    console.error(`promise: openResource failed, errCode: ${e.code}, errMsg: ${e.message}`);
-  }
-}
-
-async function importWrappedKeyItem(keyAlias: string, wrappingKeyAlias: string, huksOptions: huks.HuksOptions): Promise<void> {
-  try {
-    await huks.importWrappedKeyItem(keyAlias, wrappingKeyAlias, huksOptions);
-    console.info('promise: importWrappedKeyItem success.');
-  } catch (error) {
-    const e = error as BusinessError;
-    console.error(`promise: importWrappedKeyItem failed, errCode: ${e.code}, errMsg: ${e.message}`);
-  }
-}
-
-async function closeResource(resourceId: string): Promise<void> {
-  try {
-    await huksExternalCrypto.closeResource(resourceId);
-    console.info('promise: closeResource success.');
-  } catch (error) {
-    const e = error as BusinessError;
-    console.error(`promise: closeResource failed, errCode: ${e.code}, errMsg: ${e.message}`);
-  }
 }
 
 async function extensionKeyImport(): Promise<void> {
@@ -192,24 +162,25 @@ async function extensionKeyImport(): Promise<void> {
     const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
       {
         tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_ABILITY_NAME,
-        value: StringToUint8Array("CryptoExtensionAbility1"),
+        value: stringToUint8Array("CryptoExtensionAbility1"),
       },
       {
         tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_BUNDLE_NAME,
-        value: StringToUint8Array("com.example.cryptoapplication"),
+        value: stringToUint8Array("com.example.cryptoapplication"),
       },
       {
         tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO,
-        value: StringToUint8Array("vendor_defined_resource_info"),
+        value: stringToUint8Array("vendor_defined_resource_info"),
       },
     ];
+    const providerName = 'VendorA_ProductX'; // 为注册时传入的ProviderName
     const resourceId: string = await huksExternalCrypto.getResourceId(providerName, extProperties);
     const keyAlias = resourceId;
     const wrappingKeyAlias = resourceId;
 
     // 2. 构造密钥参数
     const properties: Array<huks.HuksParam> = [
-      { tag: huks.HuksTag.HUKS_TAG_KEY_CLASS, value: huks.HuksKeyClass.HUKS_KEY_CLASS_EXTENSION },
+      { tag: huks.HuksTag.HUKS_TAG_KEY_CLASS, value: huks.HuksKeyClassType.HUKS_KEY_CLASS_EXTENSION },
       { tag: huks.HuksTag.HUKS_TAG_ALGORITHM, value: huks.HuksKeyAlg.HUKS_ALG_RSA },
       { tag: huks.HuksTag.HUKS_TAG_KEY_SIZE, value: huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048 },
       { tag: huks.HuksTag.HUKS_TAG_PURPOSE, value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT }
@@ -259,6 +230,11 @@ import { huks, huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { util } from '@kit.ArkTS';
 
+function stringToUint8Array(str: string): Uint8Array {
+  const encoder = new util.TextEncoder();
+  return encoder.encodeInto(str);
+}
+
 async function openResource(resourceId: string): Promise<void> {
   try {
     await huksExternalCrypto.openResource(resourceId);
@@ -275,7 +251,7 @@ async function exportPublicKey(keyAlias: string): Promise<Uint8Array> {
     const exportProperties: Array<huks.HuksParam> = [
       {
         tag: huks.HuksTag.HUKS_TAG_KEY_CLASS,
-        value: huks.HuksKeyClass.HUKS_KEY_CLASS_EXTENSION
+        value: huks.HuksKeyClassType.HUKS_KEY_CLASS_EXTENSION
       }
     ];
     const exportOptions: huks.HuksOptions = {
@@ -318,11 +294,12 @@ async function extensionKeyExport(): Promise<Uint8Array> {
         value: StringToUint8Array("vendor_defined_resource_info"),
       },
     ];
+    const providerName = 'VendorA_ProductX'; // 为注册时传入的ProviderName
     const resourceId: string = await huksExternalCrypto.getResourceId(providerName, extProperties);
     const keyAlias = resourceId;  // keyAlias即为resourceId
 
     // 2. 打开资源
-    await openResource(resourceId, []);
+    await openResource(resourceId);
 
     // 3. 导出公钥
     const publicKey = await exportPublicKey(keyAlias);

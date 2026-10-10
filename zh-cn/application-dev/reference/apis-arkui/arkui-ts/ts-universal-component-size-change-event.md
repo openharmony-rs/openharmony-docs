@@ -24,7 +24,7 @@ ArkTS-Dyn: onSizeChange(event: SizeChangeCallback): T
 
 ArkTS-Sta: onSizeChange(event: SizeChangeCallback | undefined): this
 
-组件尺寸变化时触发该回调。仅会响应由布局变化所导致的组件尺寸发生变化时的回调。
+组件尺寸变化时触发该回调。该回调仅在布局变化导致组件尺寸发生变化时触发。
 
 >**说明：**
 >

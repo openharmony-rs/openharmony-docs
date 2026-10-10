@@ -34,8 +34,10 @@ import { carAwareness } from '@kit.MultimodalAwarenessKit';
 | REALTIME_WEATHER | 'RealTimeWeather' | 实时天气感知能力，支持识别车辆当前所处环境的天气状态。 |
 | REFUELING | 'Refueling' | 补能识别能力，支持识别车辆加油的开始与结束状态。 |
 | CAR_STATUS | 'CarStatus' | 车辆状态感知能力，支持获取车辆相关状态信息。<br>**系统接口：** 此枚举成员为系统接口。 |
-| CAR_CFG | 'CarCfg' | 车辆配置感知能力，支持获取车辆配置相关信息。<br>**系统接口：** 此枚举成员为系统接口。 |
 | HABIT_RECOMMENDATION | 'HabitRecommendation' | 习惯推荐感知能力，支持基于用户习惯生成推荐。<br>**系统接口：** 此枚举成员为系统接口。 |
+| SPATIAL_DRAW | 'SpatialDraw' | 空间绘画能力，支持识别用户隔空画画的动作。<br>**系统接口：** 此枚举成员为系统接口。 |
+| GESTURE_CLOSEDOOR | 'GestureCloseDoor' | 挥手关门识别能力，支持识别用户手部关门动作。<br>**系统接口：** 此枚举成员为系统接口。 |
+| OCCUPANT_SENSE | 'OccupantSense' | 乘员感知能力，支持识别车内乘员布局和分类。<br>**系统接口：** 此枚举成员为系统接口。 |
 
 ## SpatialMotionInfo
 
@@ -49,16 +51,16 @@ import { carAwareness } from '@kit.MultimodalAwarenessKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| timestamp | number | 是 | 否 | 识别结果的时间戳。<br>单位：毫秒。 |
-| pointX | number | 是 | 否 | 手部在屏幕上的 X 轴坐标。 |
-| pointY | number | 是 | 否 | 手部在屏幕上的 Y 轴坐标。 |
-| event | number | 是 | 否 | 手势事件类型。<br>-1：无效<br>0：准备就绪<br>1：移动<br>2：点击 |
+| timestamp | number | 否 | 否 | 识别结果的时间戳。<br>单位：ms。 |
+| pointX | number | 否 | 否 | 手部在屏幕上的 X 轴坐标。 |
+| pointY | number | 否 | 否 | 手部在屏幕上的 Y 轴坐标。 |
+| event | number | 否 | 否 | 手势事件类型。<br>-1：无效<br>0：准备就绪<br>1：移动<br>2：点击 |
 
 ## carAwareness.onSpatialMotion
 
 onSpatialMotion(callback: Callback\<SpatialMotionInfo\>): void
 
-开启隔空手势感知，订阅隔空手势感知结果；设备不支持该能力时抛出34000002错误码，可调用 getAllCapabilityList查询设备可用能力，通过callback异步返回数据。
+订阅隔空手势感知结果。设备不支持该能力时抛出34000002错误码，可调用getAllCapabilityList查询设备可用能力。通过callback异步返回数据。
 
 **起始版本：** 26.0.1
 
@@ -109,7 +111,7 @@ try {
 
 offSpatialMotion(callback?: Callback\<SpatialMotionInfo\>): void
 
-关闭隔空手势感知，取消订阅隔空手势结果。
+取消订阅隔空手势结果。
 
 **起始版本：** 26.0.1
 
@@ -145,7 +147,7 @@ const DOMAIN = 0x0000;
 const TAG = 'CarAwareness';
 
 // 注销指定监听
-let motionCallback = (data) => {
+let motionCallback = (motionInfo : carAwareness.SpatialMotionInfo) => {
   hilog.info(DOMAIN, TAG, 'Spatial motion data received');
 };
 
@@ -178,14 +180,14 @@ try {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| timestamp | number | 是 | 否 | 识别结果的时间戳。<br>单位：毫秒。 |
-| weather | number | 是 | 否 | 天气状态。<br>-1：无效<br>0：晴/多云<br>1：薄雾<br>2：浓雾<br>3：小雪<br>4：大雪<br>5：小雨<br>6：大雨 |
+| timestamp | number | 否 | 否 | 识别结果的时间戳。<br>单位：ms。 |
+| weather | number | 否 | 否 | 天气状态。<br>-1：无效<br>0：其他<br>1：雾<br>2：浓雾<br>3：雪<br>4：大雪<br>5：雨<br>6：大雨 |
 
 ## carAwareness.onRealTimeWeather
 
 onRealTimeWeather(callback: Callback\<RealTimeWeatherInfo\>): void
 
-开启实时天气感知，订阅实时天气感知结果；设备不支持该能力时抛出34000002错误码，可调用getAllCapabilityList查询设备可用能力，通过callback异步返回数据。
+订阅实时天气感知结果。设备不支持该能力时抛出34000002错误码，可调用getAllCapabilityList查询设备可用能力。通过callback异步返回数据。
 
 **起始版本：** 26.0.1
 
@@ -235,7 +237,7 @@ try {
 
 offRealTimeWeather(callback?: Callback\<RealTimeWeatherInfo\>): void
 
-关闭实时天气感知，取消订阅实时天气结果。
+取消订阅实时天气结果。
 
 **起始版本：** 26.0.1
 
@@ -293,14 +295,14 @@ try {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| timestamp | number | 是 | 否 | 识别结果的时间戳。<br>单位：毫秒。 |
-| status | number | 是 | 否 | 加油状态。<br>-1：无效<br>0：空闲（未开始加油）<br>1：开始加油<br>2：加油结束 |
+| timestamp | number | 否 | 否 | 识别结果的时间戳。<br>单位：ms。 |
+| status | number | 否 | 否 | 加油状态。<br>-1：无效<br>0：空闲（未开始加油）<br>1：开始加油<br>2：加油结束 |
 
 ## carAwareness.onRefueling
 
 onRefueling(callback: Callback\<RefuelingInfo\>): void
 
-开启补能感知，订阅补能状态感知结果；设备不支持该能力时抛出34000002错误码，可调用 getAllCapabilityList查询设备可用能力，通过callback异步返回数据。
+订阅补能状态感知结果。设备不支持该能力时抛出34000002错误码，可调用 getAllCapabilityList查询设备可用能力。通过callback异步返回数据。
 
 **起始版本：** 26.0.1
 
@@ -352,7 +354,7 @@ try {
 
 offRefueling(callback?: Callback\<RefuelingInfo\>): void
 
-关闭补能识别感知，取消订阅加油状态结果。
+取消订阅加油状态结果。
 
 **起始版本：** 26.0.1
 

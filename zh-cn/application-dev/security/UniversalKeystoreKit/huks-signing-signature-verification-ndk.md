@@ -492,7 +492,7 @@ static OH_Huks_Result SignDataSM2NoDigest(const struct OH_Huks_Blob *keyAlias,
     return ohResult;
 }
 
-/* 3. 验签  */
+/* 3. 验签 */
 static OH_Huks_Result VerifySignatureSM2NoDigest(const struct OH_Huks_Blob *keyAlias,
                                                  const struct OH_Huks_ParamSet *verifyParamSet,
                                                  const struct OH_Huks_Blob *inData,
@@ -814,7 +814,7 @@ static OH_Huks_Result GenerateKey(const struct OH_Huks_Blob *keyAlias, const str
     return OH_Huks_GenerateKeyItem(keyAlias, genParamSet, nullptr);
 }
 
-/* 2. 验签 */
+/* 2. 签名 */
 static OH_Huks_Result SignData(const struct OH_Huks_Blob *keyAlias,
                                const struct OH_Huks_ParamSet *signParamSet,
                                const struct OH_Huks_Blob *inData,
@@ -1012,7 +1012,7 @@ static OH_Huks_Result SignDataRSA(const struct OH_Huks_Blob *keyAlias,
     return ohResult;
 }
 
-/* 3. 验签  */
+/* 3. 验签 */
 static OH_Huks_Result VerifySignatureRSA(const struct OH_Huks_Blob *keyAlias,
                                          const struct OH_Huks_ParamSet *verifyParamSet,
                                          const struct OH_Huks_Blob *inData,

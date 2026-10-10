@@ -6,7 +6,7 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-用于设置组件绑定的手势。可以通过[UIGestureEvent](./ts-uigestureevent.md#uigestureevent)对象调用其接口添加或删除手势。
+用于设置组件绑定的手势。支持点击、长按、滑动、快滑、捏合、旋转及手势组等手势处理器，适用于需要为组件动态添加、删除或配置交互手势的场景，可帮助开发者统一管理组件手势交互。可以通过[UIGestureEvent](./ts-uigestureevent.md#uigestureevent)对象调用其接口添加或删除手势。
 
 >**说明：**
 >
@@ -18,13 +18,13 @@
 
 ## GestureHandler\<T>
 
-手势处理器的基础类型。
+手势处理器的基础类型，用于承载具体手势处理器的通用配置能力，例如设置手势标志和限定支持的事件输入源。
 
 ### tag
 
 tag(tag: string): T
 
-设置手势处理器的标志。
+设置手势处理器的标志，适用于需要区分或管理多个手势处理器的场景。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -52,7 +52,7 @@ tag(tag: string): T
 
 allowedTypes(types: Array\<SourceTool>): T
 
-设置手势处理器所支持的事件输入源。
+设置手势处理器所支持的事件输入源，适用于需要限定手势仅响应触控、鼠标或手写笔等特定输入源的场景。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -150,7 +150,7 @@ allowedTypes(types: Array\<SourceTool>): this
 
 ## TapGestureHandler
 
-点击手势处理器对象类型。
+点击手势处理器对象类型，用于识别组件上的点击交互，适用于单击、多击或多指点击等触控场景，并支持配置点击次数、触发手指数等识别条件。
 
 ### constructor
 
@@ -170,7 +170,7 @@ constructor(options?: TapGestureHandlerOptions)
 
 | 参数名  | 类型                                                         | 必填 | 说明               |
 | ------- | ------------------------------------------------------------ | ---- | ------------------ |
-| options | [TapGestureHandlerOptions](#tapgesturehandleroptions) | 否   | 点击手势处理器配置参数。 |
+| options | [TapGestureHandlerOptions](#tapgesturehandleroptions) | 否 | 点击手势处理器配置参数。当需要自定义连续点击次数、触发点击的手指数、手指数量校验或点击手势移动阈值时传入；不传入时使用点击手势处理器默认配置，如连续点击次数为1、触发手指数为1、默认不检查触摸屏幕的手指数量。 |
 
 ### onAction
 
@@ -188,11 +188,11 @@ ArkTS-Sta: onAction(event: Callback\<GestureEvent>): this
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                              | 必填 | 说明                 |
 | ------ | --------------------------------- | ---- | -------------------- |
-| event  | [Callback](./ts-types.md#callback12)<[GestureEvent](ts-gesture-common.md#gestureevent对象说明)> | 是 | 点击手势处理器识别成功回调。 |
+| event  | [Callback](./ts-types.md#callback12)<[GestureEvent](ts-gesture-common.md#gestureevent对象说明)> | 是 | 点击手势处理器识别成功回调，回调参数为GestureEvent对象，用于获取点击手势事件信息。 |
 
 **返回值：**
 
@@ -236,7 +236,7 @@ constructor(options?: LongPressGestureHandlerOptions)
 
 | 参数名  | 类型                                                         | 必填 | 说明               |
 | ------- | ------------------------------------------------------------ | ---- | ------------------ |
-| options | [LongPressGestureHandlerOptions](#longpressgesturehandleroptions) | 否   | 长按手势处理器配置参数。 |
+| options | [LongPressGestureHandlerOptions](#longpressgesturehandleroptions) | 否 | 长按手势处理器配置参数。当需要自定义触发长按的最少手指数、是否连续触发、最短触发时间、手指数量校验或最大移动距离时传入；不传入时使用长按手势处理器默认配置，如触发手指数为1、repeat为false、触发长按的最短时间为500ms、最大移动距离为15px。 |
 
 ### onAction
 
@@ -254,11 +254,11 @@ ArkTS-Sta: onAction(event: Callback\<GestureEvent>): this
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                              | 必填 | 说明                 |
 | ------ | --------------------------------- | ---- | -------------------- |
-| event  | [Callback](./ts-types.md#callback12)<[GestureEvent](ts-gesture-common.md#gestureevent对象说明)> | 是 | 长按手势处理器识别成功回调。 |
+| event  | [Callback](./ts-types.md#callback12)<[GestureEvent](ts-gesture-common.md#gestureevent对象说明)> | 是 | 长按手势处理器识别成功回调，回调参数为GestureEvent对象，用于获取长按手势事件信息。 |
 
 **返回值：**
 
@@ -282,11 +282,11 @@ ArkTS-Sta: onActionEnd(event: Callback\<GestureEvent>): this
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                              | 必填 | 说明                 |
 | ------ | --------------------------------- | ---- | -------------------- |
-| event  | [Callback](./ts-types.md#callback12)<[GestureEvent](ts-gesture-common.md#gestureevent对象说明)> | 是 | 长按手势处理器结束回调。 |
+| event  | [Callback](./ts-types.md#callback12)<[GestureEvent](ts-gesture-common.md#gestureevent对象说明)> | 是 | 长按手势处理器结束回调，回调参数为GestureEvent对象，用于获取长按结束时的手势事件信息。 |
 
 **返回值：**
 
@@ -310,11 +310,11 @@ onActionCancel(event: Callback\<void>): LongPressGestureHandler
 
 **ArkTS-Dyn起始版本：** 12
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                              | 必填 | 说明                 |
 | ------ | --------------------------------- | ---- | -------------------- |
-| event  | [Callback](./ts-types.md#callback12)\<void> | 是 | 长按手势处理器取消回调。 |
+| event  | [Callback](./ts-types.md#callback12)\<void> | 是 | 长按手势处理器取消回调，该回调无入参，不返回手势事件信息。 |
 
 **返回值：**
 
@@ -338,7 +338,7 @@ ArkTS-Sta: onActionCancel(event: Callback\<GestureEvent>): this
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                              | 必填 | 说明                 |
 | ------ | --------------------------------- | ---- | -------------------- |
@@ -387,7 +387,7 @@ constructor(options?: PanGestureHandlerOptions)
 
 | 参数名  | 类型                                                         | 必填 | 说明               |
 | ------- | ------------------------------------------------------------ | ---- | ------------------ |
-| options | [PanGestureHandlerOptions](#pangesturehandleroptions) | 否   | 滑动手势处理器配置参数。 |
+| options | [PanGestureHandlerOptions](#pangesturehandleroptions) | 否 | 滑动手势处理器配置参数。当需要自定义触发拖动的最少手指数、触发方向、最小拖动距离、不同输入源的最小拖动距离或手指数量校验时传入；不传入时使用滑动手势处理器默认配置，如触发手指数为1、方向为PanDirection.All，最小拖动距离按输入源使用默认值，默认不检查触摸屏幕的手指数量。 |
 
 ### onActionStart
 
@@ -405,11 +405,11 @@ ArkTS-Sta: onActionStart(event: Callback\<GestureEvent>): this
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                              | 必填 | 说明                 |
 | ------ | --------------------------------- | ---- | -------------------- |
-| event  | [Callback](./ts-types.md#callback12)<[GestureEvent](ts-gesture-common.md#gestureevent对象说明)> | 是 | 滑动手势处理器识别成功回调。 |
+| event  | [Callback](./ts-types.md#callback12)<[GestureEvent](ts-gesture-common.md#gestureevent对象说明)> | 是 | 滑动手势处理器识别成功回调，回调参数为GestureEvent对象，用于获取滑动开始时的手势事件信息。 |
 
 **返回值：**
 
@@ -433,11 +433,11 @@ ArkTS-Sta: onActionUpdate(event: Callback\<GestureEvent>): this
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                              | 必填 | 说明                 |
 | ------ | --------------------------------- | ---- | -------------------- |
-| event  | [Callback](./ts-types.md#callback12)<[GestureEvent](ts-gesture-common.md#gestureevent对象说明)> | 是 | 滑动手势处理器更新回调。<br/>fingerList为多根手指时，该回调监听每次只会更新一根手指的位置信息。 |
+| event  | [Callback](./ts-types.md#callback12)<[GestureEvent](ts-gesture-common.md#gestureevent对象说明)> | 是 | 滑动手势处理器更新回调。<br>fingerList为多根手指时，每次触发该回调只更新一根手指的位置信息。 |
 
 **返回值：**
 
@@ -461,11 +461,11 @@ ArkTS-Sta: onActionEnd(event: Callback\<GestureEvent>): this
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                              | 必填 | 说明                 |
 | ------ | --------------------------------- | ---- | -------------------- |
-| event  | [Callback](./ts-types.md#callback12)<[GestureEvent](ts-gesture-common.md#gestureevent对象说明)> | 是 | 滑动手势处理器结束回调。 |
+| event  | [Callback](./ts-types.md#callback12)<[GestureEvent](ts-gesture-common.md#gestureevent对象说明)> | 是 | 滑动手势处理器结束回调，回调参数为GestureEvent对象，用于获取滑动结束时的手势事件信息。 |
 
 **返回值：**
 
@@ -489,11 +489,11 @@ onActionCancel(event: Callback\<void>): PanGestureHandler
 
 **ArkTS-Dyn起始版本：** 12
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                              | 必填 | 说明                 |
 | ------ | --------------------------------- | ---- | -------------------- |
-| event  | [Callback](./ts-types.md#callback12)\<void> | 是 | 滑动手势处理器取消回调。 |
+| event  | [Callback](./ts-types.md#callback12)\<void> | 是 | 滑动手势处理器取消回调，该回调无入参，不返回手势事件信息。 |
 
 **返回值：**
 
@@ -517,7 +517,7 @@ ArkTS-Sta: onActionCancel(event: Callback\<GestureEvent>): this
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                              | 必填 | 说明                 |
 | ------ | --------------------------------- | ---- | -------------------- |
@@ -564,7 +564,7 @@ constructor(options?: SwipeGestureHandlerOptions)
 
 | 参数名  | 类型                                                         | 必填 | 说明               |
 | ------- | ------------------------------------------------------------ | ---- | ------------------ |
-| options | [SwipeGestureHandlerOptions](#swipegesturehandleroptions) | 否   | 快滑手势处理器配置参数。 |
+| options | [SwipeGestureHandlerOptions](#swipegesturehandleroptions) | 否 | 快滑手势处理器配置参数。当需要自定义触发快滑的最少手指数、滑动方向、最小识别速度或手指数量校验时传入；不传入时使用快滑手势处理器默认配置，如触发手指数为1、方向为SwipeDirection.All、最小速度为100vp/s、默认不检查触摸屏幕的手指数量。 |
 
 ### onAction
 
@@ -582,11 +582,11 @@ ArkTS-Sta: onAction(event: Callback\<GestureEvent>): this
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                              | 必填 | 说明                 |
 | ------ | --------------------------------- | ---- | -------------------- |
-| event  | [Callback](./ts-types.md#callback12)<[GestureEvent](ts-gesture-common.md#gestureevent对象说明)> | 是 | 快滑手势处理器识别成功回调。 |
+| event  | [Callback](./ts-types.md#callback12)<[GestureEvent](ts-gesture-common.md#gestureevent对象说明)> | 是 | 快滑手势处理器识别成功回调，回调参数为GestureEvent对象，用于获取快滑手势事件信息。 |
 
 **返回值：**
 
@@ -636,7 +636,7 @@ constructor(options?: PinchGestureHandlerOptions)
 
 | 参数名  | 类型                                                         | 必填 | 说明               |
 | ------- | ------------------------------------------------------------ | ---- | ------------------ |
-| options | [PinchGestureHandlerOptions](#pinchgesturehandleroptions) | 否   | 捏合手势处理器配置参数。 |
+| options | [PinchGestureHandlerOptions](#pinchgesturehandleroptions) | 否 | 捏合手势处理器配置参数。当需要自定义触发捏合的最少手指数、最小识别距离或手指数量校验时传入；不传入时使用捏合手势处理器默认配置，如触发手指数为2、最小识别距离为5vp、默认不检查触摸屏幕的手指数量。 |
 
 ### onActionStart
 
@@ -654,11 +654,11 @@ ArkTS-Sta: onActionStart(event: Callback\<GestureEvent>): this
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                              | 必填 | 说明                 |
 | ------ | --------------------------------- | ---- | -------------------- |
-| event  | [Callback](./ts-types.md#callback12)<[GestureEvent](ts-gesture-common.md#gestureevent对象说明)> | 是 | 捏合手势处理器识别成功回调。 |
+| event  | [Callback](./ts-types.md#callback12)<[GestureEvent](ts-gesture-common.md#gestureevent对象说明)> | 是 | 捏合手势处理器识别成功回调，回调参数为GestureEvent对象，用于获取捏合开始时的手势事件信息。 |
 
 **返回值：**
 
@@ -682,11 +682,11 @@ ArkTS-Sta: onActionUpdate(event: Callback\<GestureEvent>): this
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                              | 必填 | 说明                 |
 | ------ | --------------------------------- | ---- | -------------------- |
-| event  | [Callback](./ts-types.md#callback12)<[GestureEvent](ts-gesture-common.md#gestureevent对象说明)> | 是 | 捏合手势处理器更新回调。 |
+| event  | [Callback](./ts-types.md#callback12)<[GestureEvent](ts-gesture-common.md#gestureevent对象说明)> | 是 | 捏合手势处理器更新回调，回调参数为GestureEvent对象，用于获取捏合更新过程中的手势事件信息。 |
 
 **返回值：**
 
@@ -710,11 +710,11 @@ ArkTS-Sta: onActionEnd(event: Callback\<GestureEvent>): this
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                              | 必填 | 说明                 |
 | ------ | --------------------------------- | ---- | -------------------- |
-| event  | [Callback](./ts-types.md#callback12)<[GestureEvent](ts-gesture-common.md#gestureevent对象说明)> | 是 | 捏合手势处理器结束回调。 |
+| event  | [Callback](./ts-types.md#callback12)<[GestureEvent](ts-gesture-common.md#gestureevent对象说明)> | 是 | 捏合手势处理器结束回调，回调参数为GestureEvent对象，用于获取捏合结束时的手势事件信息。 |
 
 **返回值：**
 
@@ -738,7 +738,7 @@ onActionCancel(event: Callback\<void>): PinchGestureHandler
 
 **ArkTS-Dyn起始版本：** 12
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                              | 必填 | 说明                 |
 | ------ | --------------------------------- | ---- | -------------------- |
@@ -766,7 +766,7 @@ ArkTS-Sta: onActionCancel(event: Callback\<GestureEvent>): this
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                              | 必填 | 说明                 |
 | ------ | --------------------------------- | ---- | -------------------- |
@@ -813,7 +813,7 @@ constructor(options?: RotationGestureHandlerOptions)
 
 | 参数名  | 类型                                                         | 必填 | 说明               |
 | ------- | ------------------------------------------------------------ | ---- | ------------------ |
-| options | [RotationGestureHandlerOptions](#rotationgesturehandleroptions) | 否   | 旋转手势处理器配置参数。 |
+| options | [RotationGestureHandlerOptions](#rotationgesturehandleroptions) | 否 | 旋转手势处理器配置参数。当需要自定义触发旋转的最少手指数、触发旋转手势的最小改变度数或手指数量校验时传入；不传入时使用旋转手势处理器默认配置，如触发手指数为2、最小改变度数为1deg、默认不检查触摸屏幕的手指数量。 |
 
 ### onActionStart
 
@@ -831,11 +831,11 @@ ArkTS-Sta: onActionStart(event: Callback\<GestureEvent>): this
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                              | 必填 | 说明                 |
 | ------ | --------------------------------- | ---- | -------------------- |
-| event  | [Callback](./ts-types.md#callback12)<[GestureEvent](ts-gesture-common.md#gestureevent对象说明)> | 是 | 旋转手势处理器识别成功回调。 |
+| event  | [Callback](./ts-types.md#callback12)<[GestureEvent](ts-gesture-common.md#gestureevent对象说明)> | 是 | 旋转手势处理器识别成功回调，回调参数为GestureEvent对象，用于获取旋转开始时的手势事件信息。 |
 
 **返回值：**
 
@@ -859,11 +859,11 @@ ArkTS-Sta: onActionUpdate(event: Callback\<GestureEvent>): this
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                              | 必填 | 说明                 |
 | ------ | --------------------------------- | ---- | -------------------- |
-| event  | [Callback](./ts-types.md#callback12)<[GestureEvent](ts-gesture-common.md#gestureevent对象说明)> | 是 | 旋转手势处理器更新回调。 |
+| event  | [Callback](./ts-types.md#callback12)<[GestureEvent](ts-gesture-common.md#gestureevent对象说明)> | 是 | 旋转手势处理器更新回调，回调参数为GestureEvent对象，用于获取旋转更新过程中的手势事件信息。 |
 
 **返回值：**
 
@@ -887,11 +887,11 @@ ArkTS-Sta: onActionEnd(event: Callback\<GestureEvent>): this
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                              | 必填 | 说明                 |
 | ------ | --------------------------------- | ---- | -------------------- |
-| event  | [Callback](./ts-types.md#callback12)<[GestureEvent](ts-gesture-common.md#gestureevent对象说明)> | 是 | 旋转手势处理器结束回调。 |
+| event  | [Callback](./ts-types.md#callback12)<[GestureEvent](ts-gesture-common.md#gestureevent对象说明)> | 是 | 旋转手势处理器结束回调，回调参数为GestureEvent对象，用于获取旋转结束时的手势事件信息。 |
 
 **返回值：**
 
@@ -915,7 +915,7 @@ onActionCancel(event: Callback\<void>): RotationGestureHandler
 
 **ArkTS-Dyn起始版本：** 12
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                              | 必填 | 说明                 |
 | ------ | --------------------------------- | ---- | -------------------- |
@@ -943,7 +943,7 @@ ArkTS-Sta: onActionCancel(event: Callback\<GestureEvent>): this
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                              | 必填 | 说明                 |
 | ------ | --------------------------------- | ---- | -------------------- |
@@ -991,7 +991,7 @@ constructor(options?: GestureGroupGestureHandlerOptions)
 
 | 参数名  | 类型                                                         | 必填 | 说明               |
 | ------- | ------------------------------------------------------------ | ---- | ------------------ |
-| options | [GestureGroupGestureHandlerOptions](#gesturegroupgesturehandleroptions) | 否   | 手势组处理器配置参数。 |
+| options | [GestureGroupGestureHandlerOptions](#gesturegroupgesturehandleroptions) | 否 | 手势组处理器配置参数。当需要设置组合手势识别模式和手势集合时传入；不传入时使用手势组处理器默认配置，组合手势识别模式默认为GestureMode.Sequence，且不会配置手势集合。 |
 
 ### onCancel
 

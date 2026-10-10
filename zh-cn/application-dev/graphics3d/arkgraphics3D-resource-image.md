@@ -37,10 +37,10 @@ ArkGraphics 3D提供基于JPEG、PNG和KTX格式创建Image资源的能力，支
    
    ``` TypeScript
    if (this.scene === null) {
-     // Switched from .gltf to .glb; same content, different format
+     // 从 .gltf 切换为 .glb；内容相同，格式不同
      Scene.load($rawfile('gltf/CubeWithFloor/glTF/AnimatedCube.glb'))
        .then(async (result: Scene) => {
-         // Assign loaded scene to globalScene for unified resource creation
+         // 将加载的场景赋值给globalScene，以便统一创建资源
          globalScene = result;
          this.scene = result;
          this.sceneOpt = { scene: this.scene, modelType: ModelType.SURFACE } as SceneOptions;
@@ -106,7 +106,7 @@ ArkGraphics 3D提供基于JPEG、PNG和KTX格式创建Image资源的能力，支
    ``` TypeScript
    this.geom = this.scene.getNodeByPath('rootNode_/Unnamed Node 1/AnimatedCube') as Geometry;
    
-   // record original material
+   // 记录原始材质
    this.originalMat = this.geom.mesh.subMeshes[0].material;
    ```
 
@@ -130,7 +130,7 @@ ArkGraphics 3D提供基于JPEG、PNG和KTX格式创建Image资源的能力，支
    ``` TypeScript
    function createImagePromise(): Promise<Image> {
      return new Promise((resolve, reject) => {
-       // Ensure the scene is loaded before accessing sceneFactory
+       // 确保在访问sceneFactory之前场景已加载
        if (globalScene) {
          let sceneFactory: SceneResourceFactory = globalScene.getResourceFactory();
    
@@ -190,16 +190,16 @@ ArkGraphics 3D提供基于JPEG、PNG和KTX格式创建Image资源的能力，支
          return;
        }
    
-       // create shader
+       // 创建着色器
        this.shader = await this.rf.createShader({
          name: 'shaderResource',
          uri: $rawfile('shaders/custom_shader/custom_material_sample.shader')
        });
    
-       // create imageMat
+       // 创建图像材质
        this.imageMat = await this.rf.createMaterial({ name: 'imageMat' }, MaterialType.SHADER) as ShaderMaterial;
    
-       // bind between shader and imageMat
+       // 在着色器和图像材质之间进行绑定
        this.imageMat.colorShader = this.shader;
        let createdImage =  await createImagePromise();
        if (createdImage) {
