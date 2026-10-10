@@ -1,12 +1,12 @@
 # @ohos.nearlink.ssap (NearLink SSAP Connection Capability)
-
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @CCCZKing-->
 <!--Designer: @lilong32; @CCCZKing-->
 <!--Tester: @zhangjiaji111-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=4a43d865f6fb58df26898b1b598954a98775ae97 translatedAt=2026-08-17T08:53:43.106Z pushedAt=2026-08-19T02:03:57.907Z -->
+<!-- md-trans-meta sourceCommit=304517cf5105092ff7ebb1be0da01c6a3f1d16fb translatedAt=2026-10-09T13:29:24.398Z pushedAt=2026-10-10T07:16:45.834Z -->
+
 
 This module provides the SSAP (SparkLink Service Access Protocol) connection capability, including creating a connection between the client and service, connection management, service discovery, property reading and writing, notifications, and MTU negotiation.
 
@@ -17,6 +17,7 @@ This module provides the SSAP (SparkLink Service Access Protocol) connection cap
 ```typescript
 import { ssap } from '@kit.ConnectivityKit';
 ```
+
 
 ## ConnectionState
 
@@ -33,6 +34,7 @@ Enumerates the connection states with a remote device.
 | Type | Description |
 | -------- | -------- |
 | [nearlinkConstant.ConnectionState](js-apis-nearlink-constant.md#connectionstate) | Connection status with a remote device. |
+
 
 ## ssap.createClient
 
@@ -73,7 +75,6 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 | 36100099 | Operation failed. |
 
 **Example** 
-
 ```typescript
 import { ssap } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -87,6 +88,7 @@ try {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ## ssap.createServer
 
@@ -120,7 +122,6 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 | 36100099 | Operation failed. |
 
 **Example** 
-
 ```typescript
 import { ssap } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -133,6 +134,7 @@ try {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ## Client
 
@@ -147,6 +149,8 @@ An app only needs to create one [Client](#client) instance for a remote device. 
 **Model restriction**: This API can be used only in the stage model.
 
 **System capability:** SystemCapability.Communication.NearLink.Base
+
+
 
 ### connect
 
@@ -179,7 +183,6 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 | 36100099 | Operation failed. |
 
 **Example** 
-
 ```typescript
 import { ssap } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -197,6 +200,7 @@ try {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ### disconnect
 
@@ -229,7 +233,6 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 | 36100099 | Operation failed. |
 
 **Example** 
-
 ```typescript
 import { ssap } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -252,6 +255,7 @@ try {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ### close
 
@@ -278,7 +282,6 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 | 36100099 | Operation failed. |
 
 **Example** 
-
 ```typescript
 import { ssap } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -292,6 +295,7 @@ try {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ### getServices
 
@@ -324,7 +328,6 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 | 36100099 | Operation failed. |
 
 **Example** 
-
 ```typescript
 import { ssap } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -350,6 +353,7 @@ try {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ### readProperty
 
@@ -390,7 +394,6 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 | 36100099 | Operation failed. |
 
 **Example** 
-
 ```typescript
 import { ssap } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -409,7 +412,7 @@ try {
   let propertyValue = new Uint8Array(valueBuffer);
   propertyValue[0] = 1;
   let property: ssap.Property = {
-    serviceUuid:'FFFFFFFF-1234-5678-ABCD-000000004386',
+    serviceUuid: 'FFFFFFFF-1234-5678-ABCD-000000004386',
     propertyUuid: 'FFFFFFFF-1234-5678-ABCD-000000001234',
     value: valueBuffer
   };
@@ -425,6 +428,7 @@ try {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ### writeProperty
 
@@ -466,7 +470,6 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 | 36100099 | Operation failed. |
 
 **Example** 
-
 ```typescript
 import { ssap } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -486,7 +489,7 @@ try {
   let propertyValue = new Uint8Array(valueBuffer);
   propertyValue[0] = 1;
   let property: ssap.Property = {
-    serviceUuid:'FFFFFFFF-1234-5678-ABCD-000000004386',
+    serviceUuid: 'FFFFFFFF-1234-5678-ABCD-000000004386',
     propertyUuid: 'FFFFFFFF-1234-5678-ABCD-000000001234',
     value: valueBuffer
   };
@@ -502,6 +505,7 @@ try {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ### setPropertyNotification
 
@@ -543,7 +547,6 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 | 36100099 | Operation failed. |
 
 **Example** 
-
 ```typescript
 import { ssap } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -562,7 +565,7 @@ try {
   let propertyValue = new Uint8Array(valueBuffer);
   propertyValue[0] = 1;
   let property: ssap.Property = {
-    serviceUuid:'FFFFFFFF-1234-5678-ABCD-000000004386',
+    serviceUuid: 'FFFFFFFF-1234-5678-ABCD-000000004386',
     propertyUuid: 'FFFFFFFF-1234-5678-ABCD-000000001234',
     value: valueBuffer
   };
@@ -578,6 +581,7 @@ try {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ### requestMtuSize
 
@@ -616,7 +620,6 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 | 36100099 | Operation failed. |
 
 **Example** 
-
 ```typescript
 import { ssap } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -641,6 +644,7 @@ try {
 }
 ```
 
+
 ### onPropertyChange
 
 onPropertyChange(callback: Callback&lt;Property&gt;): void
@@ -662,7 +666,6 @@ The app must have the **ohos.permission.ACCESS_NEARLINK** permission to receive 
 | callback | Callback&lt;[Property](#property)&gt; | Yes | Callback used to return the Property of the service. |
 
 **Example** 
-
 ```typescript
 import { ssap } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -679,6 +682,7 @@ try {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ### offPropertyChange
 
@@ -699,7 +703,6 @@ Unsubscribes from the property change event. This API uses an asynchronous callb
 | callback | Callback&lt;[Property](#property)&gt; | No | Callback used to return the property from the server.<br>If this parameter is specified, the current callback is unregistered. If this parameter is not specified, all callbacks corresponding to the event are unregistered. |
 
 **Example** 
-
 ```typescript
 import { ssap } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -716,6 +719,7 @@ try {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ### onConnectionStateChange
 
@@ -738,7 +742,6 @@ The app must have the **ohos.permission.ACCESS_NEARLINK** permission to receive 
 | callback | Callback&lt;[ConnectionChangeState](#connectionchangestate)&gt; | Yes | Callback used to return the connection status reporting parameters. |
 
 **Example** 
-
 ```typescript
 import { ssap } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -755,6 +758,7 @@ try {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ### offConnectionStateChange
 
@@ -775,7 +779,6 @@ Unsubscribes from the connection status change event. This API uses an asynchron
 | callback | Callback&lt;[ConnectionChangeState](#connectionchangestate)&gt; | No | Callback used to return the connection status reporting parameters.<br>If this parameter is specified, the current callback is unregistered. If this parameter is not specified, all callbacks corresponding to the event are unregistered. |
 
 **Example** 
-
 ```typescript
 import { ssap } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -792,6 +795,7 @@ try {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ### onMtuChange
 
@@ -814,7 +818,6 @@ The app must have the **ohos.permission.ACCESS_NEARLINK** permission to receive 
 | callback | Callback&lt;number&gt; | Yes | Callback used to return the MTU after negotiation. |
 
 **Example** 
-
 ```typescript
 import { ssap } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -831,6 +834,7 @@ try {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ### offMtuChange
 
@@ -851,7 +855,6 @@ Unsubscribes from the MTU change event. This API uses an asynchronous callback t
 | callback | Callback&lt;number&gt; | No | Callback used to return the MTU after negotiation.<br>If this parameter is specified, the current callback is unregistered. If this parameter is not specified, all callbacks corresponding to the event are unregistered. |
 
 **Example** 
-
 ```typescript
 import { ssap } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -869,6 +872,7 @@ try {
 }
 ```
 
+
 ## Server
 
 Represents a SSAP server class, which provides APIs for connecting to and exchanging data with the client.
@@ -882,6 +886,8 @@ An app only needs to create one [Server](#server) instance. Repeated creation wi
 **Model restriction**: This API can be used only in the stage model.
 
 **System capability:** SystemCapability.Communication.NearLink.Base
+
+
 
 ### addService
 
@@ -916,49 +922,55 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 | 36100099 | Operation failed. |
 
 **Example** 
-
 ```typescript
 import { ssap } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// Construct a descriptor.
-let descriptorsArray: ssap.PropertyDescriptor[] = [];
-let arrayBuffer = new ArrayBuffer(8);
-let descValue = new Uint8Array(arrayBuffer);
-descValue[0] = 11;
-descValue[1] = 22;
-let descriptor: ssap.PropertyDescriptor = {
-  serviceUuid:'FFFFFFFF-1234-5678-ABCD-000000004386',
+// Construct the descriptor of attribute 1.
+let descriptorsArray1: ssap.PropertyDescriptor[] = [];
+let descriptor1: ssap.PropertyDescriptor = {
+  serviceUuid: 'FFFFFFFF-1234-5678-ABCD-000000004386',
   propertyUuid: 'FFFFFFFF-1234-5678-ABCD-000000001234',
-  value: arrayBuffer,
-  descriptorType: ssap.PropertyDescriptorType.PROPERTY,
+  value: new ArrayBuffer(2),
+  descriptorType: ssap.PropertyDescriptorType.CLIENT_PROPERTY_CONFIG,
   isWriteable: true
 };
-descriptorsArray[0] = descriptor;
+descriptorsArray1[0] = descriptor1;
+// Construct the descriptor of attribute 2.
+let descriptorsArray2: ssap.PropertyDescriptor[] = [];
+let descriptor2: ssap.PropertyDescriptor = {
+  serviceUuid: 'FFFFFFFF-1234-5678-ABCD-000000004386',
+  propertyUuid: 'FFFFFFFF-1234-5678-ABCD-000000003421',
+  value: new ArrayBuffer(2),
+  descriptorType: ssap.PropertyDescriptorType.CLIENT_PROPERTY_CONFIG,
+  isWriteable: true
+};
+descriptorsArray2[0] = descriptor2;
 // Construct properties.
 let propertiesArray: ssap.Property[] = [];
-let arrayBufferProperty = new ArrayBuffer(8);
-let propertyValue = new Uint8Array(arrayBufferProperty);
+let valueBuffer = new ArrayBuffer(8);
+let propertyValue = new Uint8Array(valueBuffer);
 propertyValue[0] = 1;
 let property1: ssap.Property = {
-  serviceUuid:'FFFFFFFF-1234-5678-ABCD-000000004386',
+  serviceUuid: 'FFFFFFFF-1234-5678-ABCD-000000004386',
   propertyUuid: 'FFFFFFFF-1234-5678-ABCD-000000001234',
-  value: arrayBufferProperty,
-  descriptors:descriptorsArray
+  value: valueBuffer,
+  descriptors: descriptorsArray1,
+  operation: ssap.Operation.READABLE | ssap.Operation.WRITE_NO_RESPONSE | ssap.Operation.NOTIFY
 };
 let property2: ssap.Property = {
-  serviceUuid:'FFFFFFFF-1234-5678-ABCD-000000004386',
+  serviceUuid: 'FFFFFFFF-1234-5678-ABCD-000000004386',
   propertyUuid: 'FFFFFFFF-1234-5678-ABCD-000000003421',
-  value: arrayBufferProperty,
-  descriptors:descriptorsArray,
-  operation:12
+  value: valueBuffer,
+  descriptors: descriptorsArray2,
+  operation: ssap.Operation.WRITE_WITH_RESPONSE | ssap.Operation.NOTIFY
 };
 propertiesArray[0] = property1;
 propertiesArray[1] = property2;
 // Construct a service.
 let service: ssap.Service = {
-  serviceUuid:'FFFFFFFF-1234-5678-ABCD-000000004386',
-  properties:propertiesArray
+  serviceUuid: 'FFFFFFFF-1234-5678-ABCD-000000004386',
+  properties: propertiesArray
 };
 let server: ssap.Server;
 try {
@@ -968,6 +980,7 @@ try {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ### removeService
 
@@ -1002,7 +1015,6 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 | 36100099 | Operation failed. |
 
 **Example** 
-
 ```typescript
 import { ssap } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1017,6 +1029,7 @@ try {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ### close
 
@@ -1043,7 +1056,6 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 | 36100099 | Operation failed. |
 
 **Example** 
-
 ```typescript
 import { ssap } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1056,6 +1068,7 @@ try {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ### notifyPropertyChanged
 
@@ -1098,34 +1111,29 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 | 36100099 | Operation failed. |
 
 **Example** 
-
 ```typescript
 import { ssap } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // Construct a descriptor.
 let descriptorsArray: ssap.PropertyDescriptor[] = [];
-let arrayBuffer = new ArrayBuffer(8);
-let descValue = new Uint8Array(arrayBuffer);
-descValue[0] = 11;
-descValue[1] = 22;
 let descriptor: ssap.PropertyDescriptor = {
-  serviceUuid:'FFFFFFFF-1234-5678-ABCD-000000004386',
+  serviceUuid: 'FFFFFFFF-1234-5678-ABCD-000000004386',
   propertyUuid: 'FFFFFFFF-1234-5678-ABCD-000000001234',
-  value: arrayBuffer,
-  descriptorType:ssap.PropertyDescriptorType.PROPERTY,
-  isWriteable:true
+  value: new ArrayBuffer(2),
+  descriptorType: ssap.PropertyDescriptorType.CLIENT_PROPERTY_CONFIG,
+  isWriteable: true
 };
 descriptorsArray[0] = descriptor;
 // Construct properties.
-let arrayBufferProperty = new ArrayBuffer(8);
-let propertyValue = new Uint8Array(arrayBufferProperty);
+let valueBuffer = new ArrayBuffer(8);
+let propertyValue = new Uint8Array(valueBuffer);
 propertyValue[0] = 123; // Value after the update
 let property: ssap.Property = {
-  serviceUuid:'FFFFFFFF-1234-5678-ABCD-000000004386',
+  serviceUuid: 'FFFFFFFF-1234-5678-ABCD-000000004386',
   propertyUuid: 'FFFFFFFF-1234-5678-ABCD-000000001234',
-  value: arrayBufferProperty,
-  descriptors:descriptorsArray
+  value: valueBuffer,
+  descriptors: descriptorsArray
 };
 let server: ssap.Server;
 try {
@@ -1140,6 +1148,7 @@ try {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ### sendResponse
 
@@ -1173,20 +1182,19 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 | 36100099 | Operation failed. |
 
 **Example** 
-
 ```typescript
 import { ssap } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // After receiving a read or write request, use this API to respond to the request.
-let arrayBuffer = new ArrayBuffer(8);
-let descValue = new Uint8Array(arrayBuffer);
+let valueBuffer = new ArrayBuffer(8);
+let descValue = new Uint8Array(valueBuffer);
 descValue[0] = 11;
 descValue[1] = 22;
 let resp: ssap.ServerResponse = {
   address: '00:11:22:33:AA:FF', // Address of a requester client.
   requestId: 1, // Request ID.
-  value: arrayBuffer // Response data.
+  value: valueBuffer // Reply data.
 };
 let server: ssap.Server;
 try {
@@ -1197,6 +1205,7 @@ try {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ### onConnectionStateChange
 
@@ -1219,7 +1228,6 @@ The app must have the **ohos.permission.ACCESS_NEARLINK** permission to receive 
 | callback | Callback&lt;[ConnectionChangeState](#connectionchangestate)&gt; | Yes | Callback used to return the connection status reporting parameters. |
 
 **Example** 
-
 ```typescript
 import { ssap } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1235,6 +1243,7 @@ try {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ### offConnectionStateChange
 
@@ -1255,7 +1264,6 @@ Unsubscribes from the connection status change event. This API uses an asynchron
 | callback | Callback&lt;[ConnectionChangeState](#connectionchangestate)&gt; | No | Callback used to return the connection status reporting parameters.<br>If this parameter is specified, the current callback is unregistered. If this parameter is not specified, all callbacks corresponding to the event are unregistered. |
 
 **Example** 
-
 ```typescript
 import { ssap } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1271,6 +1279,7 @@ try {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ### onPropertyRead
 
@@ -1293,7 +1302,6 @@ The app must have the **ohos.permission.ACCESS_NEARLINK** permission to receive 
 | callback | Callback&lt;[PropertyReadRequest](#propertyreadrequest)&gt; | Yes | Callback used to return the property read request parameters of the client. |
 
 **Example** 
-
 ```typescript
 import { ssap } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1309,6 +1317,7 @@ try {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ### offPropertyRead
 
@@ -1329,7 +1338,6 @@ Unsubscribes from the client property read request event. This API uses an async
 | callback | Callback&lt;[PropertyReadRequest](#propertyreadrequest)&gt; | No | Callback used to return the property read request parameters of the client.<br>If this parameter is specified, the current callback is unregistered. If this parameter is not specified, all callbacks corresponding to the event are unregistered. |
 
 **Example** 
-
 ```typescript
 import { ssap } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1345,6 +1353,7 @@ try {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ### onPropertyWrite
 
@@ -1367,7 +1376,6 @@ The app must have the **ohos.permission.ACCESS_NEARLINK** permission to receive 
 | callback | Callback&lt;[PropertyWriteRequest](#propertywriterequest)&gt; | Yes | Callback used to return the property write request parameters of the client. |
 
 **Example** 
-
 ```typescript
 import { ssap } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1383,6 +1391,7 @@ try {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ### offPropertyWrite
 
@@ -1403,7 +1412,6 @@ Unsubscribes from the client property write request event. This API uses an asyn
 | callback | Callback&lt;[PropertyWriteRequest](#propertywriterequest)&gt; | No | Callback used to return the property write request parameters of the client. If this parameter is specified, the current callback is unsubscribed. If this parameter is not specified, all callbacks corresponding to the event are unsubscribed. |
 
 **Example** 
-
 ```typescript
 import { ssap } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1419,6 +1427,7 @@ try {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ### onMtuChange
 
@@ -1441,7 +1450,6 @@ The app must have the **ohos.permission.ACCESS_NEARLINK** permission to receive 
 | callback | Callback&lt;number&gt; | Yes | Callback used to return the MTU after negotiation. |
 
 **Example** 
-
 ```typescript
 import { ssap } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1457,6 +1465,7 @@ try {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ### offMtuChange
 
@@ -1477,7 +1486,6 @@ Unsubscribes from the MTU change event. This API uses an asynchronous callback t
 | callback | Callback&lt;number&gt; | No | Callback used to return the MTU after negotiation.<br>If this parameter is specified, the current callback is unregistered. If this parameter is not specified, all callbacks corresponding to the event are unregistered. |
 
 **Example** 
-
 ```typescript
 import { ssap } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1494,6 +1502,7 @@ try {
 }
 ```
 
+
 ## Service
 
 Represents the NearLink service.
@@ -1508,6 +1517,7 @@ Represents the NearLink service.
 | -------- | -------- | -------- | -------- | -------- |
 | serviceUuid | string | No | No | NearLink service UUID, which is a string of 36 characters. The value consists of 32 hexadecimal digits and four hyphens (-), for example, **FFFFFFFF-1234-5678-ABCD-000000001234**, which indicates a 128-bit identifier. The value cannot be set to a standard NearLink UUID. |
 | properties | [Property](#property)[] | No | No | Properties of a service. |
+
 
 ## Property
 
@@ -1527,6 +1537,7 @@ Represents a service Property.
 | descriptors | [PropertyDescriptor](#propertydescriptor)[] | No | Yes | Descriptors of the current property. By default, this field is not used if not set. |
 | operation | number | No | Yes | Operation modes supported by the property. The default value is **READABLE\|WRITE_NO_RESPONSE**, indicating that the property is readable and writable and no response is required. To enable a property to support an operation, you need to assign a value to this field, for example, **READABLE \| WRITE_NO_RESPONSE \| NOTIFY**. The value range is [0, 15]. For details about the operation corresponding to each bit, see [Operation](#operation). |
 
+
 ## PropertyDescriptor
 
 Defines the descriptor of a property.
@@ -1545,6 +1556,7 @@ Defines the descriptor of a property.
 | descriptorType | [PropertyDescriptorType](#propertydescriptortype) | No | No | Descriptor type of a property. |
 | isWriteable | boolean | No | Yes | Whether a descriptor is writable. The value **true** indicates the descriptor is writable, and the value **false** indicates the opposite. The default value is **true**. |
 
+
 ## PropertyReadRequest
 
 Represents the Property read request parameter of the client.
@@ -1561,6 +1573,7 @@ Represents the Property read request parameter of the client.
 | serviceUuid | string | No | No | NearLink service UUID, which is a string of 36 characters. The value consists of 32 hexadecimal digits and four hyphens (-), for example, **FFFFFFFF-1234-5678-ABCD-000000001234**, which indicates a 128-bit ID. The value cannot be set to a standard NearLink UUID. |
 | propertyUuid | string | No | No | Property UUID, in the same format as **serviceUuid**. |
 | requestId | number | No | No | Request ID. The value range is [0, 65535]. The response sent by the server must carry this ID so that the client can associate the request with the response. |
+
 
 ## PropertyWriteRequest
 
@@ -1581,6 +1594,7 @@ Define a client property write request.
 | requestId | number | No | No | Write request ID of the client. This ID must be carried in the response returned by the server. The value range is [0, 65535]. |
 | writeType | [PropertyWriteType](#propertywritetype) | No | No | Property write type of the client. |
 
+
 ## ServerResponse
 
 Defines a response to a client request.
@@ -1597,6 +1611,7 @@ Defines a response to a client request.
 | requestId | number | No | No | Request ID. The value range is [0, 65535]. The ID must be the same as the value of **requestId** in the received [PropertyReadRequest](#propertyreadrequest) or [PropertyWriteRequest](#propertywriterequest), which is used to associate the request with the response.|
 | value | ArrayBuffer | No | No | Data value of the response. |
 
+
 ## ConnectionChangeState
 
 Defines the connection status reporting parameters.
@@ -1611,6 +1626,7 @@ Defines the connection status reporting parameters.
 | -------- | -------- | -------- | -------- | -------- |
 | address | string | No | No | Remote device address. The address format is **11:22:33:AA:BB:FF**. |
 | state | [ConnectionState](js-apis-nearlink-constant.md#connectionstate) | No | No | Connection status with a remote device. |
+
 
 ## PropertyDescriptorType
 
@@ -1630,6 +1646,7 @@ Enumerates the property descriptor types.
 | PROPERTY_FORMAT | 4 | Property format. |
 | TYPE_VENDOR | 255 | Vendor-defined field. |
 
+
 ## Operation
 
 Enumerates the operation types supported by a property.
@@ -1646,6 +1663,7 @@ Enumerates the operation types supported by a property.
 | WRITE_NO_RESPONSE | 0x02 | Write requests without responses are supported. |
 | WRITE_WITH_RESPONSE | 0x04 | Write requests with responses are supported. |
 | NOTIFY | 0x08 | Notifications are supported. |
+
 
 ## PropertyWriteType
 

@@ -1,22 +1,25 @@
 # @ohos.nearlink.dataTransfer (NearLink Data Transfer Capability)
-
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @CCCZKing-->
 <!--Designer: @lilong32; @CCCZKing-->
 <!--Tester: @zhangjiaji111-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=aa9545020692baaf11004432a3eb3c2a031071bf translatedAt=2026-08-17T08:51:26.076Z pushedAt=2026-08-18T11:58:05.422Z -->
+<!-- md-trans-meta sourceCommit=304517cf5105092ff7ebb1be0da01c6a3f1d16fb translatedAt=2026-10-09T13:25:45.070Z pushedAt=2026-10-10T07:13:32.054Z -->
+
 
 This module provides the NearLink data transfer capability, including port channel management, connection management, data sending and receiving, and connection status query and subscription.
 
+
 **Since**: 26.0.0
+
 
 ## Modules to Import
 
 ```typescript
 import { dataTransfer } from '@kit.ConnectivityKit';
 ```
+
 
 ## ConnectionState
 
@@ -33,6 +36,7 @@ Enumerates the connection states with a remote device.
 | Type | Description |
 | -------- | -------- |
 | [nearlinkConstant.ConnectionState](js-apis-nearlink-constant.md#connectionstate) | Connection state with a remote device. |
+
 
 ## dataTransfer.createPort
 
@@ -70,7 +74,6 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 | 36100099 | Operation failed. |
 
 **Example** 
-
 ```typescript
 import { dataTransfer } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -83,6 +86,7 @@ try {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ## dataTransfer.destroyPort
 
@@ -119,7 +123,6 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 | 36100099 | Operation failed. |
 
 **Example** 
-
 ```typescript
 import { dataTransfer } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -132,6 +135,7 @@ try {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ## dataTransfer.connect
 
@@ -174,7 +178,6 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 | 36100099 | Operation failed. |
 
 **Example** 
-
 ```typescript
 import { dataTransfer } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -194,6 +197,7 @@ try {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ## dataTransfer.disconnect
 
@@ -236,7 +240,6 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 | 36100099 | Operation failed. |
 
 **Example** 
-
 ```typescript
 import { dataTransfer } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -256,6 +259,7 @@ try {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ## dataTransfer.onConnectionStateChanged
 
@@ -287,7 +291,6 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 | 36100099 | Operation failed. |
 
 **Example** 
-
 ```typescript
 import { dataTransfer } from '@kit.ConnectivityKit';
 import { BusinessError, Callback } from '@kit.BasicServicesKit';
@@ -301,6 +304,7 @@ try {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ## dataTransfer.offConnectionStateChanged
 
@@ -330,7 +334,6 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 | 36100099 | Operation failed. |
 
 **Example** 
-
 ```typescript
 import { dataTransfer } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -341,6 +344,7 @@ try {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ## dataTransfer.getConnectionState
 
@@ -383,7 +387,6 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 | 36100099 | Operation failed. |
 
 **Example** 
-
 ```typescript
 import { dataTransfer } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -399,6 +402,7 @@ try {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ## dataTransfer.writeData
 
@@ -442,7 +446,6 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 | 36100099 | Operation failed. |
 
 **Example** 
-
 ```typescript
 import { dataTransfer } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -468,6 +471,7 @@ try {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ## dataTransfer.onReadData
 
@@ -499,7 +503,6 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 | 36100099 | Operation failed. |
 
 **Example** 
-
 ```typescript
 import { dataTransfer } from '@kit.ConnectivityKit';
 import { BusinessError, Callback } from '@kit.BasicServicesKit';
@@ -513,6 +516,7 @@ try {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ## dataTransfer.offReadData
 
@@ -542,7 +546,6 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 | 36100099 | Operation failed. |
 
 **Example** 
-
 ```typescript
 import { dataTransfer } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -553,6 +556,7 @@ try {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ## ConnectionParams
 
@@ -570,6 +574,7 @@ Defines the parameters for initiating a port connection.
 | uuid | string | No | No | NearLink service UUID, which is a string of 36 characters. The value consists of 32 hexadecimal digits and four hyphens (-), for example, **FFFFFFFF-1234-5678-ABCD-000000001234**, which indicates a 128-bit ID. The value cannot be set to a standard NearLink UUID. |
 | transferMode | [TransferMode](#transfermode) | No | Yes | Data transfer mode with a remote device. The default value is **BASIC**. |
 
+
 ## DataParams
 
 Defines the parameters for port data sending and receiving.
@@ -585,6 +590,7 @@ Defines the parameters for port data sending and receiving.
 | address | string | No | No | NearLink address of a remote device. The address format is **11:22:33:AA:BB:FF**. |
 | uuid | string | No | No | NearLink service UUID, which is a string of 36 characters. The value consists of 32 hexadecimal digits and four hyphens (-), for example, **FFFFFFFF-1234-5678-ABCD-000000001234**, which indicates a 128-bit ID. The value cannot be set to a standard NearLink UUID. |
 | data | ArrayBuffer | No | No | Data packet. When this parameter is used in [dataTransfer.writeData](#datatransferwritedata), it indicates the data to be sent. When the parameter is used in [dataTransfer.onReadData](#datatransferonreaddata), it indicates the received data. |
+
 
 ## ConnectionResult
 
@@ -603,6 +609,7 @@ Represents the result of port connection parameter negotiation with a remote dev
 | mtu | number | No | No | Negotiated packet size of data to be sent and received, in bytes. The value range is [0, 65535]. |
 | state | [ConnectionState](js-apis-nearlink-constant.md#connectionstate) | No | No | Connection state with a remote device. |
 
+
 ## ConnectionStateParams
 
 Defines the parameters for obtaining the port channel connection state.
@@ -617,6 +624,7 @@ Defines the parameters for obtaining the port channel connection state.
 | -------- | -------- | -------- | -------- | -------- |
 | address | string | No | No | NearLink address of a remote device. The address format is **11:22:33:AA:BB:FF**. |
 | uuid | string | No | No | NearLink service UUID, which is a string of 36 characters. The value consists of 32 hexadecimal digits and four hyphens (-), for example, **FFFFFFFF-1234-5678-ABCD-000000001234**, which indicates a 128-bit ID. The value cannot be set to a standard NearLink UUID. |
+
 
 ## TransferMode
 
