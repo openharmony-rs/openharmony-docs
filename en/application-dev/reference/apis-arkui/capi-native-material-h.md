@@ -6,13 +6,13 @@
 <!--Designer: @zhanghaibo0-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=39ca26def5c22dc659f3dc0b76ef62a29421e77a translatedAt=2026-08-21T12:12:21.688Z pushedAt=2026-08-25T02:06:57.753Z -->
+<!-- md-trans-meta sourceCommit=4383f98ec81f42258fabd52047d88567e29a9467 translatedAt=2026-09-23T09:56:38.313Z pushedAt=2026-10-10T07:19:25.324Z -->
 
 ## Overview
 
 Provides immersive material types and API declarations for ArkUI on the native side, to implement immersive UI effects such as the blurred background in semi-transparent mode and light sensing interaction feedback.
 
-**File to include**: `<arkui/native_material.h>`
+**File to include**: <arkui/native_material.h>
 
 **Library**: libace_ndk.z.so
 
