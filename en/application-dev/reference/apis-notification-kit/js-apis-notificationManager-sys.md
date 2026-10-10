@@ -6088,7 +6088,7 @@ Checks whether the priority notification is enabled.
 
 | Type           | Description                    |
 |-----------------|-------------------------|
-| Promise\<boolean\> | Promise object that returns the enabled status of the notification priority master switch.<br> - **true**: allowed to be set as [priority notification](../../notification/notification-glossary.md#priority-notification).<br> - **false**: prohibited from being set as priority notification. |
+| Promise\<boolean\> | Promise used to return the enabled status of the notification priority master switch.<br> - **true**: allowed to be set as [priority notification](../../notification/notification-glossary.md#priority-notification).<br> - **false**: prohibited from being set as priority notification. |
 
 **Error codes**
 

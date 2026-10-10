@@ -464,7 +464,7 @@ Obtains firewall rules by user ID. You need to specify the pagination query para
 
 | Type                                           | Description                                    |
 | ----------------------------------------------- | ---------------------------------------- |
-| Promise\<[FirewallRulePage](#firewallrulepage)> | Promise object that returns the paginated firewall rule list.    |
+| Promise\<[FirewallRulePage](#firewallrulepage)> | Promise used to return the paginated firewall rule list.    |
 
 **Error codes**
 
