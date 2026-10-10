@@ -671,8 +671,8 @@ struct Index {
             message: '确认删除？',
             autoCancel: true,
             buttons: [
-              { text: '取消', action: () => { this.result = '取消'; } },
-              { text: '确认', action: () => { this.result = '确认'; } }
+              { value: '取消', action: () => { this.result = '取消'; } },
+              { value: '确认', action: () => { this.result = '确认'; } }
             ],
             cancel: () => { this.result = 'cancel'; }
           });
@@ -691,16 +691,18 @@ struct Index {
 }
 ```
 
+![迁移前示例图](figures/AlertDialogBeforeMigrate.png)
+
 **迁移后示例（新接口）：**
 
 ```typescript
-import { dialog } from '@kit.ArkUI';
+import { DialogBaseAlignment, DialogDismissal, DialogPresenter, DialogResult } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
 struct AlertDialogMigrationPage {
-  private presenter: dialog.DialogPresenter = this.getUIContext().getDialogPresenter();
+  private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
   @State result: string = '';
 
   build() {
@@ -741,15 +743,23 @@ struct AlertDialogMigrationPage {
       title: '提示',
       message: { content: '确认删除？' },
       buttons: [
-        { value: '取消', action: () => { this.result = '用户点击取消'; } },
-        { value: '确认', action: () => { this.result = '用户点击确认'; } }
+        {
+          value: '取消', action: () => {
+          this.result = '用户点击取消';
+        }
+        },
+        {
+          value: '确认', action: () => {
+          this.result = '用户点击确认';
+        }
+        }
       ],
-      alignment: dialog.DialogBaseAlignment.BOTTOM,
-      onWillDismiss: (dismissal: dialog.DialogDismissal) => {
+      alignment: DialogBaseAlignment.BOTTOM,
+      onWillDismiss: (dismissal: DialogDismissal) => {
         this.result = 'onWillDismiss, reason: ' + dismissal.reason;
         dismissal.dismiss();
       }
-    }).then((result: dialog.DialogResult) => {
+    }).then((result: DialogResult) => {
       this.result = 'present success, dialogId: ' + result.dialogId;
     }).catch((error: BusinessError) => {
       this.result = `present error: ${error.code}`;
@@ -757,6 +767,8 @@ struct AlertDialogMigrationPage {
   }
 }
 ```
+
+![迁移后示例图](figures/AlertDialogAfterMigrate.png)
 
 ### ActionSheet → DialogPresenter.present（列表选择弹窗）
 
@@ -804,16 +816,18 @@ struct Index {
 }
 ```
 
+![迁移前示例图](figures/ActionSheetBeforeMigrate.png)
+
 **迁移后示例（新接口）：**
 
 ```typescript
-import { dialog } from '@kit.ArkUI';
+import { DialogDismissal, DialogPresenter, DialogResult } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
 struct ActionSheetMigrationPage {
-  private presenter: dialog.DialogPresenter = this.getUIContext().getDialogPresenter();
+  private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
   @State result: string = '';
 
   build() {
@@ -858,11 +872,11 @@ struct ActionSheetMigrationPage {
         { title: '复制', action: () => { this.result = '复制'; } },
         { title: '删除', action: () => { this.result = '删除'; } }
       ],
-      onWillDismiss: (dismissal: dialog.DialogDismissal) => {
+      onWillDismiss: (dismissal: DialogDismissal) => {
         this.result = '取消';
         dismissal.dismiss();
       }
-    }).then((result: dialog.DialogResult) => {
+    }).then((result: DialogResult) => {
       this.result = 'present success, dialogId: ' + result.dialogId;
     }).catch((error: BusinessError) => {
       this.result = `present error: ${error.code}`;
@@ -870,6 +884,8 @@ struct ActionSheetMigrationPage {
   }
 }
 ```
+
+![迁移后示例图](figures/ActionSheetAfterMigrate.png)
 
 ### promptAction.showDialog → DialogPresenter.present（对话框）
 
@@ -920,16 +936,18 @@ struct Index {
 }
 ```
 
+![迁移前示例图](figures/ShowDialogBeforeMigrate.png)
+
 **迁移后示例（新接口）：**
 
 ```typescript
-import { dialog } from '@kit.ArkUI';
+import { DialogPresenter, DialogResult } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
 struct ShowDialogMigrationPage {
-  private presenter: dialog.DialogPresenter = this.getUIContext().getDialogPresenter();
+  private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
   @State result: string = '';
 
   build() {
@@ -973,7 +991,7 @@ struct ShowDialogMigrationPage {
         { value: '取消', action: () => { this.result = '取消'; } },
         { value: '确认', action: () => { this.result = '确认'; } }
       ]
-    }).then((result: dialog.DialogResult) => {
+    }).then((result: DialogResult) => {
       this.result = 'present success, dialogId: ' + result.dialogId;
     }).catch((error: BusinessError) => {
       this.result = `present error: ${error.code}`;
@@ -981,6 +999,8 @@ struct ShowDialogMigrationPage {
   }
 }
 ```
+
+![迁移后示例图](figures/ShowDialogAfterMigrate.png)
 
 ### promptAction.showActionMenu → DialogPresenter.present（操作菜单）
 
@@ -1031,16 +1051,18 @@ struct Index {
 }
 ```
 
+![迁移前示例图](figures/ActionMenuBeforeMigrate.png)
+
 **迁移后示例（新接口）：**
 
 ```typescript
-import { dialog } from '@kit.ArkUI';
+import { DialogPresenter, DialogResult } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
 struct ShowActionMenuMigrationPage {
-  private presenter: dialog.DialogPresenter = this.getUIContext().getDialogPresenter();
+  private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
   @State result: string = '';
 
   build() {
@@ -1084,7 +1106,7 @@ struct ShowActionMenuMigrationPage {
         { value: '分享', action: () => { this.result = '分享'; } },
         { value: '删除', action: () => { this.result = '删除'; } }
       ]
-    }).then((result: dialog.DialogResult) => {
+    }).then((result: DialogResult) => {
       this.result = 'present success, dialogId: ' + result.dialogId;
     }).catch((error: BusinessError) => {
       this.result = `present error: ${error.code}`;
@@ -1092,6 +1114,8 @@ struct ShowActionMenuMigrationPage {
   }
 }
 ```
+
+![迁移后示例图](figures/ActionMenuAfterMigrate.png)
 
 ### promptAction.presentCustomDialog → DialogPresenter.present（自定义弹窗）
 
@@ -1114,21 +1138,25 @@ struct Index {
   private dialogController: promptAction.DialogController = new promptAction.DialogController();
   @State result: string = '';
 
+  @Builder customDialogComponent() {
+    Column() {
+      Text('自定义弹窗内容')
+        .fontSize(16)
+        .margin({ bottom: 10 })
+      Button('关闭弹窗')
+        .onClick(() => {
+          this.dialogController.close();
+        })
+    }
+    .padding(20)
+  }
+
   build() {
     Column() {
       Button('打开 presentCustomDialog')
         .onClick(() => {
           this.getUIContext().getPromptAction().presentCustomDialog(() => {
-            Column() {
-              Text('自定义弹窗内容')
-                .fontSize(16)
-                .margin({ bottom: 10 })
-              Button('关闭弹窗')
-                .onClick(() => {
-                  this.dialogController.close();
-                })
-            }
-            .padding(20)
+            this.customDialogComponent()
           }, this.dialogController, { autoCancel: true })
             .then((dialogId: number) => {
               this.result = 'present success, dialogId: ' + dialogId;
@@ -1151,17 +1179,19 @@ struct Index {
 }
 ```
 
+![迁移前示例图](figures/PresentCustomDialogBeforeMigrate.png)
+
 **迁移后示例（新接口）：**
 
 ```typescript
-import { dialog } from '@kit.ArkUI';
+import { DialogBaseController, DialogPresenter, DialogResult } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
 struct PresentCustomDialogMigrationPage {
-  private presenter: dialog.DialogPresenter = this.getUIContext().getDialogPresenter();
-  private controller: dialog.DialogBaseController = new dialog.DialogBaseController();
+  private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
+  private controller: DialogBaseController = new DialogBaseController();
   @State result: string = '';
 
   build() {
@@ -1197,22 +1227,27 @@ struct PresentCustomDialogMigrationPage {
     .height('100%')
   }
 
+  @Builder
+  CustomComponentContent() {
+    Column() {
+      Text('自定义弹窗内容')
+        .fontSize(16)
+        .margin({ bottom: 10 })
+      Button('关闭弹窗')
+        .onClick(() => {
+          this.controller.close();
+        })
+    }
+    .padding(20)
+  }
+
   private showNewCustomDialog(): void {
     this.presenter.present(() => {
-      Column() {
-        Text('自定义弹窗内容')
-          .fontSize(16)
-          .margin({ bottom: 10 })
-        Button('关闭弹窗')
-          .onClick(() => {
-            this.controller.close();
-          })
-      }
-      .padding(20)
+      this.CustomComponentContent()
     }, {
       controller: this.controller,
       autoCancel: true
-    }).then((result: dialog.DialogResult) => {
+    }).then((result: DialogResult) => {
       this.result = 'present success, dialogId: ' + result.dialogId;
     }).catch((error: BusinessError) => {
       this.result = `present error: ${error.code}`;
@@ -1220,6 +1255,8 @@ struct PresentCustomDialogMigrationPage {
   }
 }
 ```
+
+![迁移后示例图](figures/PresentCustomDialogAfterMigrate.png)
 
 ### promptAction.openCustomDialogWithController → DialogPresenter.present（带控制器的自定义弹窗）
 
@@ -1292,17 +1329,19 @@ struct Index {
 }
 ```
 
+![迁移前示例图](figures/OpenCustomDialogWithControllerBeforeMigrate.png)
+
 **迁移后示例（新接口）：**
 
 ```typescript
-import { dialog } from '@kit.ArkUI';
+import { DialogBaseAlignment, DialogBaseController, DialogPresenter, DialogResult } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
 struct OpenCustomDialogWithControllerMigrationPage {
-  private presenter: dialog.DialogPresenter = this.getUIContext().getDialogPresenter();
-  private controller: dialog.DialogBaseController = new dialog.DialogBaseController();
+  private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
+  private controller: DialogBaseController = new DialogBaseController();
   @State result: string = '';
 
   build() {
@@ -1338,23 +1377,28 @@ struct OpenCustomDialogWithControllerMigrationPage {
     .height('100%')
   }
 
+  @Builder
+  CustomContent() {
+    Column() {
+      Text('自定义弹窗内容')
+        .fontSize(16)
+        .margin({ bottom: 10 })
+      Button('关闭弹窗')
+        .onClick(() => {
+          this.controller.close();
+        })
+    }
+    .padding(20)
+  }
+
   private showNewCustomDialog(): void {
     this.presenter.present(() => {
-      Column() {
-        Text('自定义弹窗内容')
-          .fontSize(16)
-          .margin({ bottom: 10 })
-        Button('关闭弹窗')
-          .onClick(() => {
-            this.controller.close();
-          })
-      }
-      .padding(20)
+      this.CustomContent()
     }, {
       controller: this.controller,
       autoCancel: true,
-      alignment: dialog.DialogBaseAlignment.CENTER
-    }).then((result: dialog.DialogResult) => {
+      alignment: DialogBaseAlignment.CENTER
+    }).then((result: DialogResult) => {
       this.result = 'present success, dialogId: ' + result.dialogId;
     }).catch((error: BusinessError) => {
       this.result = `present error: ${error.code}`;
@@ -1362,3 +1406,5 @@ struct OpenCustomDialogWithControllerMigrationPage {
   }
 }
 ```
+
+![迁移后示例图](figures/OpenCustomDialogWithControllerAfterMigrate.png)
