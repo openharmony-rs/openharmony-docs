@@ -2,8 +2,8 @@
 
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphic-->
-<!--Owner: @andrew1993-->
-<!--Designer: @ext4FAT1-->
+<!--Owner: @GaoPan_t-->
+<!--Designer: @vvan9cha0-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
