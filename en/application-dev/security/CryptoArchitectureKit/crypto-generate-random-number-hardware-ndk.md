@@ -6,8 +6,9 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=777c15c9d8c75a1677c1c6408af774652fa3dc6e translatedAt=2026-10-09T01:49:51.201Z pushedAt=2026-10-10T02:36:15.757Z -->
 
-From API version 21, you can generate secure random number with hardware entropy sources.
+Starting from API version 21, a hardware entropy source can be used to generate secure random numbers.
 
 Random numbers are used to generate temporary session keys and asymmetric encryption algorithm keys. In encryption and decryption, a secure random number generator must feature randomness, unrepeatability, and unpredictability.
 
@@ -43,6 +44,11 @@ After the hardware entropy source is set, use the **RAND_priv_bytes** API of Ope
 | Algorithm| Length (Byte)|
 | -------- | -------- |
 | CTR_DRBG | [1, INT_MAX] |
+
+## Adding the Dynamic Library in the CMake Script
+```txt
+target_link_libraries(entry PUBLIC libohcrypto.so)
+```
 
 ## How to Develop
 
@@ -93,7 +99,7 @@ OH_Crypto_ErrCode doTestHardwareRandomNumber()
 
     // Generate a random number of the given length.
     Crypto_DataBlob out = {0};
-    uint32_t randomLength = 24; // Generate a 24-byte random number.
+    int randomLength = 24; // Generate a 24-byte random number.
     ret = OH_CryptoRand_GenerateRandom(rand, randomLength, &out);
     if (ret != CRYPTO_SUCCESS) {
         OH_CryptoRand_Destroy(rand);

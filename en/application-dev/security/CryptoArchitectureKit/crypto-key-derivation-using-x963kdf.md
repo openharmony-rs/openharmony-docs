@@ -6,8 +6,9 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=64044667f2ece520228c37a4e282d90b2e014ba4 translatedAt=2026-10-09T01:56:58.311Z pushedAt=2026-10-10T02:40:29.483Z -->
 
-From API version 22, the crypto algorithm library supports key derivation with X963KDF.
+Starting from API version 22, the algorithm library supports key derivation operations using this algorithm.
 
 For details about the corresponding algorithm specifications, see [X963KDF](crypto-key-derivation-overview.md#x963kdf).
 
@@ -21,7 +22,7 @@ For details about the corresponding algorithm specifications, see [X963KDF](cryp
    - **key**: original key material.
 
       If the string type is used, pass in the data used for key derivation instead of the string type such as HexString or base64. In addition, ensure that the string is encoded in UTF-8 format. Otherwise, the derived key may be different from what you expected.
-   - **info**: optional context and application information used to extend the short key. This parameter can be empty.
+   - **info**: optional context and app-related information, which can be empty and is used to expand short keys.
    - **keySize**: length of the key to derive, in bytes. The value must be a positive integer.
 
 2. Call [cryptoFramework.createKdf](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatekdf11) with the string parameter **'X963KDF|SHA256'** to create a **Kdf** object. The key derivation algorithm is **X963KDF**, and HMAC algorithm is **SHA256**.
@@ -39,7 +40,7 @@ For details about the corresponding algorithm specifications, see [X963KDF](cryp
 - Return the result using **await**:
 
   <!-- @[use_x963kdf_for_key_derivation_await](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/X963KDFDerivation/entry/src/main/ets/pages/Await.ets) -->
-  
+
   ``` TypeScript
   
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -64,7 +65,7 @@ For details about the corresponding algorithm specifications, see [X963KDF](cryp
 - Return the result using a promise:
 
   <!-- @[use_x963kdf_for_key_derivation_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/X963KDFDerivation/entry/src/main/ets/pages/Promise.ets) -->
-  
+
   ``` TypeScript
   
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -93,7 +94,7 @@ For details about the corresponding algorithm specifications, see [X963KDF](cryp
 
 - Return the result synchronously:
   <!-- @[use_x963kdf_for_key_derivation_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyDerivation/X963KDFDerivation/entry/src/main/ets/pages/Sync.ets) -->
-  
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
@@ -112,3 +113,4 @@ For details about the corresponding algorithm specifications, see [X963KDF](cryp
     console.info('[Sync]key derivation output: ' + secret.data);
   }
   ```
+

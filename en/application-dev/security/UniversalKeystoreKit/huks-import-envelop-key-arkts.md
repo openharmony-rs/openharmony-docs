@@ -6,7 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=13bb74d44fd56945b2b502ec07cedd46734751f0 translatedAt=2026-08-13T08:22:38.868Z pushedAt=2026-08-13T10:20:24.685Z -->
+<!-- md-trans-meta sourceCommit=ffc5e2859dca1ab6a17f6a8a1c145390f67cf1d5 translatedAt=2026-10-10T03:28:19.760Z pushedAt=2026-10-10T03:30:37.055Z -->
 
 The [digital envelope](huks-key-import-overview.md#digital-envelope-import) feature is supported since API version 23.
 
@@ -17,17 +17,11 @@ To import keys using digital envelope, you need to use the [HUKS_TAG_UNWRAP_ALGO
 When importing a key pair of an asymmetric key using digital envelope, you need to add the [HUKS_TAG_ASYMMETRIC_PUBLIC_KEY_DATA](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag) tag and encapsulate the public key in X.509 DER format into the tag. Only key pairs can be imported for asymmetric keys.
 
 ## How to Develop
-
 1. Device A (service side) generates an SM4 key (**cipherSm4**).
-
 2. Device A uses the generated SM4 key to encrypt the key to be imported (**importKey**) in ECB/NoPadding mode, obtaining the encrypted key **enImportKey** = Encrypt(**cipherSm4**, **importKey**).
-
 3. Device B (key importer) exports the SM2 public key. Device A receives the key.
-
 4. Device A uses the received SM2 public key to encrypt the generated SM4 key (**enSm4** is set to **Encrypt(Sm2, cipherSm4)**).
-
 5. Device A sends the digital envelope data to device B.
-
 6. Device B uses [importWrappedKeyItem](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksimportwrappedkeyitem9) to import the digital envelope key. If the key to be imported is a symmetric key, you only need to encrypt the raw key in this step. If the key pair of an asymmetric key is imported, encapsulate the public key in DER format and place it in [HUKS_TAG_ASYMMETRIC_PUBLIC_KEY_DATA](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag).
 
 > **NOTE**
@@ -39,7 +33,6 @@ When importing a key pair of an asymmetric key using digital envelope, you need 
 > - The SM2 encryption result uses the ASN.1 format, where bigint is stored in big-endian order.
 
 ### RSA
-
 ```ts
 import { BusinessError } from "@kit.BasicServicesKit";
 import { huks } from "@kit.UniversalKeystoreKit";
@@ -133,7 +126,7 @@ async function EnvelopRsaTest()
     .then((data) => {
       handle = data.handle;
     }).catch((error: BusinessError) => {
-      console.error('decrypt init fail, errorCode: ${error.code}')
+      console.error(`decrypt init fail, errorCode: ${error.code}`)
     })
   await huks.finishSession(handle, enOption)
     .then((data) => {
@@ -235,7 +228,6 @@ async function EnvelopRsaTest()
 ```
 
 ### AES
-
 ```ts
 import { BusinessError } from "@kit.BasicServicesKit";
 import { huks } from "@kit.UniversalKeystoreKit";
@@ -329,7 +321,7 @@ async function EnvelopAesTest()
     .then((data) => {
       handle = data.handle;
     }).catch((error: BusinessError) => {
-      console.error('decrypt init fail')
+      console.error(`encrypt init fail`)
     });
   await huks.finishSession(handle, enOption)
     .then((data) => {

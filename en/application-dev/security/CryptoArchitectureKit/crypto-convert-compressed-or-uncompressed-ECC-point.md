@@ -6,10 +6,11 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
- 
+<!-- md-trans-meta sourceCommit=64044667f2ece520228c37a4e282d90b2e014ba4 translatedAt=2026-10-09T01:40:57.307Z pushedAt=2026-10-10T02:10:40.764Z -->
+
 You can convert compressed or uncompressed point data into a **Point** object for generating a key object, or convert a **Point** object into compressed or uncompressed point data.
 
-For details about the ECC algorithm specifications, see [ECC](crypto-asym-key-generation-conversion-spec.md#ecc). 
+For details about the ECC algorithm specifications, see [Asymmetric Key Generation and Conversion Specifications: ECC](crypto-key-generation-conversion.md#ecc).  
 
 You can pass in the string parameter **format** to specify the format of the point data to obtain. To obtain compressed point data, set **format** to **COMPRESSED**. To obtain uncompressed point data, set **format** to **UNCOMPRESSED**.
 

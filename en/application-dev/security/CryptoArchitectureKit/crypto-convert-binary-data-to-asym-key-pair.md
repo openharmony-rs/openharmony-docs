@@ -6,12 +6,13 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=e614d89ea989f36e0b13aa6a29dc8dc8d371310c translatedAt=2026-10-09T01:39:31.353Z pushedAt=2026-10-10T02:10:15.264Z -->
 
 This topic uses RSA, ECC, and SM2 as an example to describe how to convert binary data into an asymmetric key pair (**KeyPair**). That is, convert a piece of external or internal binary data into a **KeyPair** object for subsequent operations, such as encryption and decryption.
 
 > **NOTE**
 >
-> The asymmetric key conversion must comply with the following requirements: 
+> The asymmetric key conversion must comply with the following requirements:
 >
 > - The public key must use the ASN.1 syntax and DER encoding format and comply with X.509 specifications.
 >
@@ -19,7 +20,7 @@ This topic uses RSA, ECC, and SM2 as an example to describe how to convert binar
 
 ## Converting Binary Data into an RSA Key Pair
 
-For details about the algorithm specifications, see [RSA](crypto-asym-key-generation-conversion-spec.md#rsa).
+For details about the algorithm specifications, see [Asymmetric Key Generation and Conversion Specifications: RSA](crypto-key-generation-conversion.md#rsa).
 
 1. Obtain the binary data of the RSA public or private key and encapsulate the data into a [DataBlob](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#datablob) object.
 
@@ -34,7 +35,7 @@ For details about the algorithm specifications, see [RSA](crypto-asym-key-genera
 - Example: Convert binary data into an RSA key pair (using callback-based APIs).
 
   <!-- @[bin_convert_rsa_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/BinaryDataConvertAsymmetricKeyPairArkTS/entry/src/main/ets/pages/rsa/Callback.ets) -->
-  
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   
@@ -63,7 +64,7 @@ For details about the algorithm specifications, see [RSA](crypto-asym-key-genera
 - Example: Convert binary data into a key pair (using the synchronous API [convertKeySync](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkeysync12)).
 
   <!-- @[bin_convert_rsa_keypair_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/BinaryDataConvertAsymmetricKeyPairArkTS/entry/src/main/ets/pages/rsa/Sync.ets) -->
-  
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   
@@ -92,7 +93,7 @@ For details about the algorithm specifications, see [RSA](crypto-asym-key-genera
 
 ## Converting Binary Data into an ECC Key Pair
 
-For details, see the ECC section of [Asymmetric Key Generation and Conversion Specifications](crypto-asym-key-generation-conversion-spec.md).
+See [Asymmetric Key Generation and Conversion Specifications: ECC](crypto-key-generation-conversion.md#ecc).
 
 1. Obtain the binary data of the ECC public or private key and encapsulate the data into a [DataBlob](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#datablob) object.
 
@@ -105,7 +106,7 @@ For details, see the ECC section of [Asymmetric Key Generation and Conversion Sp
 - Generate an ECC key pair (using callback-based APIs).
 
   <!-- @[bin_convert_ecc_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/BinaryDataConvertAsymmetricKeyPairArkTS/entry/src/main/ets/pages/ecc/Callback.ets) -->
-  
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   
@@ -121,7 +122,7 @@ For details, see the ECC section of [Asymmetric Key Generation and Conversion Sp
     let pubKeyBlob: cryptoFramework.DataBlob = { data: pubKeyArray };
     let priKeyBlob: cryptoFramework.DataBlob = { data: priKeyArray };
     let generator = cryptoFramework.createAsyKeyGenerator('ECC256');
-    generator.convertKey(pubKeyBlob, priKeyBlob, (error, data) => {
+    generator.convertKey(pubKeyBlob, priKeyBlob, (error, keyPair) => {
       if (error) {
         console.error(`convertKey failed: errCode: ${error.code}, message: ${error.message}`);
         return;
@@ -135,11 +136,11 @@ For details, see the ECC section of [Asymmetric Key Generation and Conversion Sp
 - Example: Convert binary data into an ECC key pair (using the synchronous API [convertKeySync](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkeysync12)).
 
   <!-- @[bin_convert_ecc_keypair_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/BinaryDataConvertAsymmetricKeyPairArkTS/entry/src/main/ets/pages/ecc/Sync.ets) --> 
-  
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   
-  function convertECCAsyKeySync() {
+  function convertEccAsyKeySync() {
     let pubKeyArray =
       new Uint8Array([48, 89, 48, 19, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7, 3, 66, 0, 4,
         83, 96, 142, 9, 86, 214, 126, 106, 247, 233, 92, 125, 4, 128, 138, 105, 246, 162, 215, 71, 81, 58, 202, 121, 26,
@@ -165,7 +166,7 @@ For details, see the ECC section of [Asymmetric Key Generation and Conversion Sp
 
 ## Converting PKCS#8 Binary Data into an ECC Private Key
 
-For details, see the ECC section of [Asymmetric Key Generation and Conversion Specifications](crypto-asym-key-generation-conversion-spec.md).
+See [Asymmetric Key Generation and Conversion Specifications: ECC](crypto-key-generation-conversion.md#ecc).
 
 Obtain the binary data of the ECC public or private key, encapsulate the data into a [DataBlob](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#datablob) object, and convert it into the ECC key format. The following is an example:
 
@@ -184,29 +185,32 @@ async function main() {
   // Create an AsyKeyGenerator instance.
   let eccGenerator = cryptoFramework.createAsyKeyGenerator('ECC256');
   // Use AsyKeyGenerator to randomly generate an asymmetric key pair.
-  let keyGenPromise = eccGenerator.generateKeyPair();
-  keyGenPromise.then(keyPair => {
+  try {
+    let keyPair = await eccGenerator.generateKeyPair();
     let pubKey = keyPair.pubKey;
     let priKey = keyPair.priKey;
     // Obtain the binary data of the ECC asymmetric key pair.
     let pubBlob = pubKey.getEncoded();
     let skBlob = priKey.getEncodedDer('PKCS8');
     let generator = cryptoFramework.createAsyKeyGenerator('ECC256');
-    generator.convertKey(pubBlob, skBlob, (error, data) => {
+    generator.convertKey(pubBlob, skBlob, (error, _keyPair) => {
       if (error) {
         console.error(`convertKey failed: errCode: ${error.code}, message: ${error.message}`);
         return;
       }
       console.info('convertKey result: success.');
     });
-  });
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error(`generateKeyPair failed: errCode: ${e.code}, errMsg: ${e.message}`);
+  }
 }
 ```
 
 
 ## Converting Binary Data into an SM2 Key Pair
 
-For details, see the SM2 section of [Asymmetric Key Generation and Conversion Specifications](crypto-asym-key-generation-conversion-spec.md#sm2).
+See [Asymmetric Key Generation and Conversion Specifications: SM2](crypto-key-generation-conversion.md#sm2).
 
 1. Obtain the binary data of the SM2 public or private key and encapsulate the data into a [DataBlob](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#datablob) object.
 
@@ -219,7 +223,7 @@ For details, see the SM2 section of [Asymmetric Key Generation and Conversion Sp
 - Example: Convert binary data into an SM2 key pair (using callback-based APIs).
 
   <!-- @[bin_convert_sm2_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/BinaryDataConvertAsymmetricKeyPairArkTS/entry/src/main/ets/pages/sm2/Callback.ets) -->
-  
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   
@@ -236,7 +240,7 @@ For details, see the SM2 section of [Asymmetric Key Generation and Conversion Sp
     let pubKeyBlob: cryptoFramework.DataBlob = { data: pubKeyArray };
     let priKeyBlob: cryptoFramework.DataBlob = { data: priKeyArray };
     let generator = cryptoFramework.createAsyKeyGenerator('SM2_256');
-    generator.convertKey(pubKeyBlob, priKeyBlob, (error, data) => {
+    generator.convertKey(pubKeyBlob, priKeyBlob, (error, keyPair) => {
       if (error) {
         console.error(`convertKey failed: errCode: ${error.code}, message: ${error.message}`);
         return;
@@ -250,7 +254,7 @@ For details, see the SM2 section of [Asymmetric Key Generation and Conversion Sp
 - Example: Convert binary data into a key pair (using the synchronous API [convertKeySync](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkeysync12)).
 
   <!-- @[bin_convert_sm2_keypair_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/BinaryDataConvertAsymmetricKeyPairArkTS/entry/src/main/ets/pages/sm2/Sync.ets) -->
-  
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   
@@ -277,3 +281,4 @@ For details, see the SM2 section of [Asymmetric Key Generation and Conversion Sp
     }
   }
   ```
+

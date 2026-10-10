@@ -1,4 +1,4 @@
-# Signing and Signature Verification with an ECC Key Pair (OnlySign and OnlyVerify Modes) (ArkTS)
+# Signing and Signature Verification with an ECC Key Pair (ArkTS)
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->
@@ -6,6 +6,9 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=e80025ed82ed281bac11c255d720292d542f564f translatedAt=2026-10-09T01:43:25.727Z pushedAt=2026-10-10T02:14:29.700Z -->
+
+## OnlySign and OnlyVerify Modes
 
 Signature verification supports the **OnlySign** and **OnlyVerify** mode since API version 26.0.0. For details about the algorithm specifications, see [ECDSA](crypto-sign-sig-verify-overview.md#ecdsa).
 
@@ -19,7 +22,7 @@ Signature verification supports the **OnlySign** and **OnlyVerify** mode since A
 
 4. Call [cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator) and [AsyKeyGenerator.generateKeyPair](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypair-1) to generate an asymmetric key object (KeyPair), which includes a public key (**PubKey**) and a private key (**PriKey**). The key algorithm is **ECC** and curve type is **ECC224**.
 
-   In addition to the example in this topic, [ECC](crypto-asym-key-generation-conversion-spec.md#ecc) and [Randomly Generating an Asymmetric Key Pair](crypto-generate-asym-key-pair-randomly.md) may help you better understand how to generate an ECC asymmetric key pair. Note that the input parameters in the reference documents may be different from those in the example below.
+   To generate an ECC asymmetric key, you can refer to the example below and read it together with [Asymmetric Key Generation and Conversion Specifications: ECC](crypto-key-generation-conversion.md#ecc) and [Randomly Generating an Asymmetric Key Pair](crypto-generate-asym-key-pair-randomly.md). The referenced documents may differ from the current example in input parameters. Pay attention to the differences when reading.
 
 5. Call [cryptoFramework.createSign](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesign) with the string parameter **'ECC|SHA1|OnlySign'** to create a **Sign** instance. The asymmetric key type is **ECC**, digest algorithm is **SHA1**, and signature mode is **OnlySign**.
 
@@ -38,7 +41,7 @@ Signature verification supports the **OnlySign** and **OnlyVerify** mode since A
 - Example (using asynchronous APIs):
 
   <!-- @[ecc_onlysign_onlyverify_signature_verification_asynchronous](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/onlysign_onlyverify_signature_validator/ecc_onlysign_onlyverify_signature_verification_asynchronous.ets) -->
-  
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
@@ -64,7 +67,7 @@ Signature verification supports the **OnlySign** and **OnlyVerify** mode since A
   async function main() {
     let messageData: cryptoFramework.DataBlob =
       { data: new Uint8Array(buffer.from('This is ecc onlySign test', 'utf-8').buffer) };
-    // Use MD to calculate the SHA-256 digest (32 bytes) first.
+    // First use Md to calculate the SHA1 digest (20 bytes).
     let md = cryptoFramework.createMd('SHA1');
     await md.update(messageData);
     let digestBlob = await md.digest();
@@ -85,12 +88,12 @@ Signature verification supports the **OnlySign** and **OnlyVerify** mode since A
 - Example (using synchronous APIs):
 
   <!-- @[ecc_onlysign_onlyverify_signature_verification_synchronous](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/onlysign_onlyverify_signature_validator/ecc_onlysign_onlyverify_signature_verification_synchronous.ets) -->
-  
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
   
-  function signMessagePromise(priKey: cryptoFramework.PriKey, digestBlob: cryptoFramework.DataBlob) {
+  function signMessageSync(priKey: cryptoFramework.PriKey, digestBlob: cryptoFramework.DataBlob) {
     let signAlg = 'ECC|SHA1|OnlySign';
     let signer = cryptoFramework.createSign(signAlg);
     signer.initSync(priKey);
@@ -98,7 +101,7 @@ Signature verification supports the **OnlySign** and **OnlyVerify** mode since A
     return signData;
   }
   
-  function verifyMessagePromise(digestBlob: cryptoFramework.DataBlob, signMessageBlob: cryptoFramework.DataBlob,
+  function verifyMessageSync(digestBlob: cryptoFramework.DataBlob, signMessageBlob: cryptoFramework.DataBlob,
     pubKey: cryptoFramework.PubKey) {
     let verifyAlg = 'ECC|SHA1|OnlyVerify';
     let verifier = cryptoFramework.createVerify(verifyAlg);
@@ -117,8 +120,8 @@ Signature verification supports the **OnlySign** and **OnlyVerify** mode since A
     let keyGenAlg = 'ECC224';
     let generator = cryptoFramework.createAsyKeyGenerator(keyGenAlg);
     let keyPair = generator.generateKeyPairSync();
-    let signData = signMessagePromise(keyPair.priKey, digestBlob);
-    let verifyResult = verifyMessagePromise(digestBlob, signData, keyPair.pubKey);
+    let signData = signMessageSync(keyPair.priKey, digestBlob);
+    let verifyResult = verifyMessageSync(digestBlob, signData, keyPair.pubKey);
     if (verifyResult === true) {
       console.info('verify result: success.');
     } else {

@@ -6,10 +6,16 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=777c15c9d8c75a1677c1c6408af774652fa3dc6e translatedAt=2026-10-09T01:56:23.977Z pushedAt=2026-10-10T02:40:23.279Z -->
 
-From API version 22, the crypto algorithm library supports key derivation with X963KDF.
+Starting from API version 22, the algorithm library supports key derivation operations using this algorithm.
 
 For details about the corresponding algorithm specifications, see [X963KDF](crypto-key-derivation-overview.md#x963kdf).
+
+## Adding the Dynamic Library in the CMake Script
+```txt
+target_link_libraries(entry PUBLIC libohcrypto.so)
+```
 
 ## How to Develop
 
