@@ -37089,9 +37089,9 @@
 						"start_line":57
 					},
 					{
-						"end_line":425,
+						"end_line":515,
 						"name":"SetRendererCallback",
-						"start_line":101
+						"start_line":193
 					},
 					{
 						"end_line":181,
@@ -37144,9 +37144,9 @@
 						"start_line":285
 					},
 					{
-						"end_line":378,
+						"end_line":468,
 						"name":"SetCapturerReadDataCallback",
-						"start_line":55
+						"start_line":147
 					}
 				]
 			}
@@ -37951,9 +37951,9 @@
 						"start_line":54
 					},
 					{
-						"end_line":340,
+						"end_line":430,
 						"name":"SetCapturerLoopbackEffectEnabled",
-						"start_line":336
+						"start_line":428
 					},
 					{
 						"end_line":492,
