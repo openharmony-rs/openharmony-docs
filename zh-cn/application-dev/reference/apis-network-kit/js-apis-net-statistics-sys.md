@@ -620,7 +620,7 @@ statistics.setCalibrationTraffic(simId, remainData, totalData).then(() => {
 
 | 名称        | 类型                                            | 只读 |可选| 说明           |
 |-----------|-----------------------------------------------|----|---|--------------|
-| [uid: number] | [NetStatsInfo](#netstatsinfo) | 否  |否 |所有应用的历史流量信息。 |
+| [uid: number] | [NetStatsInfo](js-apis-net-statistics.md#netstatsinfo22) | 否  |否 |所有应用的历史流量信息。 |
 
 ## NetStatsInfoSequence<sup>12+</sup>
 
