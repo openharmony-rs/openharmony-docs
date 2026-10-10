@@ -6,6 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=ffc5e2859dca1ab6a17f6a8a1c145390f67cf1d5 translatedAt=2026-10-10T03:29:45.866Z pushedAt=2026-10-10T03:39:19.759Z -->
 
 The caller must have the [ohos.permission.ATTEST_KEY](../AccessToken/permissions-for-system-apps.md#ohospermissionattest_key) permission. You need to request the permission based on the APL of your permission. For details, see [Workflow for Using Permissions](../AccessToken/determine-application-mode.md).
 
@@ -18,13 +19,13 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 
 1. Specify the key alias. For details about the naming rules, see [Key Generation Overview and Algorithm Specifications](huks-key-generation-overview.md).
 
-2. Initialize the parameter set: Construct **paramSet** via [OH_Huks_InitParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_initparamset), [OH_Huks_AddParams](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_addparams), and [OH_Huks_BuildParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_buildparamset), and specify the algorithm, key size, and key usage attributes via [OH_HUKS_TAG_ALGORITHM](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_keyalg), [OH_HUKS_TAG_KEY_SIZE](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_keysize), and [OH_HUKS_TAG_PURPOSE](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_keypurpose).
+2. Initialize parameter set: Use [OH_Huks_InitParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_initparamset), [OH_Huks_AddParams](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_addparams), and [OH_Huks_BuildParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_buildparamset)to construct a paramSet. The paramSet must contain the [OH_Huks_KeyAlg](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_keyalg), [OH_Huks_KeySize](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_keysize), and [OH_Huks_KeyPurpose](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_keypurpose) attributes.
 
 3. Generate an asymmetric key. For details, see [Key Generation](huks-key-generation-ndk.md).
 
 4. Use [OH_Huks_AttestKeyItem](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_attestkeyitem) with the key alias and parameter set to perform key attestation.
 
-## How to Develop
+## Development Cases
 <!-- @[non_anonymized_key_proof_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/NonanonymousKeyProof/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++

@@ -6,6 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=ffc5e2859dca1ab6a17f6a8a1c145390f67cf1d5 translatedAt=2026-10-10T03:30:20.723Z pushedAt=2026-10-10T03:40:36.298Z -->
 
 For details about scenarios and related concepts, see [HUKS Access Control Overview](huks-identity-authentication-overview.md).
 
@@ -13,9 +14,7 @@ For details about scenarios and related concepts, see [HUKS Access Control Overv
 
 ### Generating a Key
 
-Specify the fingerprint access control type and related properties.
-
-When a key is generated or imported, set [HuksUserAuthType](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksuserauthtype9), [HuksAuthAccessType](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksauthaccesstype9), and [HuksChallengeType](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukschallengetype9).
+Specify the user identity authentication access control type and related attributes. Specifically, when generating or importing a key, specify three parameters in the key property set: the user authentication type [HuksUserAuthType](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksuserauthtype9), the authorized access type [HuksAuthAccessType](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksauthaccesstype9), and the challenge type [HuksChallengeType](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukschallengetype9).
 
 <!-- @[user_authentication_key_generation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/AccessControl/entry/src/main/ets/pages/UserIdentityAuthentication.ets) -->
 
