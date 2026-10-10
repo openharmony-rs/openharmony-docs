@@ -463,7 +463,7 @@ Node-API接口在Node.js提供的原生模块基础上扩展，目前支持部�
 | napi_throw_range_error | 抛出一个带文本信息的ArkTS RangeError。 |
 | napi_is_error | 判断napi_value是否表示为一个error对象。 |
 | napi_create_error | 创建并获取一个带文本信息的ArkTS Error。 |
-| napi_create_type_error | 创建并获取一个带文本信息的ArkTS TypeError对象 |
+| napi_create_type_error | 创建并获取一个带文本信息的ArkTS TypeError对象。 |
 | napi_create_range_error | 创建并获取一个带文本信息的ArkTS RangeError对象。 |
 | napi_get_and_clear_last_exception | 获取并清除最近一次出现的异常。 |
 | napi_is_exception_pending | 判断是否出现了异常。 |
