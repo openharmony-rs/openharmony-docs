@@ -38,7 +38,7 @@ import softbusBase from '@ohos.distributed.softbusBase';
 
 ## PerceptionCycle
 
-感知扫描保活周期档位枚举。档位越高，保活周期越短。
+感知扫描保活周期档位枚举。保活周期指扫描端在指定时长内未收到某设备的广播，则将该设备从已发现设备列表中移除。档位越高，保活周期越短。
 
 **起始版本：** 26.0.1
 
@@ -50,9 +50,9 @@ import softbusBase from '@ohos.distributed.softbusBase';
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| PERCEPTION_CYCLE_LOW | 0 | 低档位。保活周期最长。 |
-| PERCEPTION_CYCLE_MEDIUM | 1 | 中档位。保活周期中等。 |
-| PERCEPTION_CYCLE_HIGH | 2 | 高档位。保活周期最短。 |
+| PERCEPTION_CYCLE_LOW | 0 | 低档位。保活周期为150秒，即150秒内未收到某设备的广播则将该设备从已发现设备列表中移除。 |
+| PERCEPTION_CYCLE_MEDIUM | 1 | 中档位。保活周期为75秒，即75秒内未收到某设备的广播则将该设备从已发现设备列表中移除。 |
+| PERCEPTION_CYCLE_HIGH | 2 | 高档位。保活周期为30秒，即30秒内未收到某设备的广播则将该设备从已发现设备列表中移除。 |
 
 ## PerceptionDeviceInfo
 
@@ -68,7 +68,7 @@ import softbusBase from '@ohos.distributed.softbusBase';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | ---- | ---- | -------- |
-| deviceType | number | 否 | 否 | 设备类型，取值为整数，具体取值及含义请参考系统设备类型相关定义。 |
+| deviceType | number | 否 | 否 | 设备类型标识符，表示设备的类别，取值为整数，例如：0x0E-手机、0x11-平板、0x9C-电视、0x0C-PC等（具体数值以系统定义为准）。 |
 | deviceId | ArrayBuffer | 否 | 否 | 设备ID，为二进制数据，网络字节序（大端），最大长度6字节。 |
 | customData | ArrayBuffer | 否 | 否 | 广播携带的自定义数据，长度与被发现设备广播携带的自定义数据长度一致，最大长度5字节。 |
 
@@ -87,6 +87,8 @@ startPerceptionAdv(type:&nbsp;[PerceptionType](#perceptiontype), customData?:&nb
 **需要权限**：ohos.permission.ACCESS_SOFTBUS_SYS_HAP 和 ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.Communication.SoftBus.Core
+
+**设备行为差异**：该接口在不支持分布式业务的Wearable/2in1设备中会返回错误码801，其他设备可正常调用。
 
 **参数：**
 
@@ -155,6 +157,8 @@ setPerceptionAdvHighFreq(type:&nbsp;[PerceptionType](#perceptiontype), customDat
 
 **系统能力**：SystemCapability.Communication.SoftBus.Core
 
+**设备行为差异**：该接口在不支持分布式业务的Wearable/2in1设备中会返回错误码801，其他设备可正常调用。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -219,6 +223,8 @@ stopPerceptionAdv(type:&nbsp;[PerceptionType](#perceptiontype)):&nbsp;Promise&lt
 
 **系统能力**：SystemCapability.Communication.SoftBus.Core
 
+**设备行为差异**：该接口在不支持分布式业务的Wearable/2in1设备中会返回错误码801，其他设备可正常调用。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -280,12 +286,14 @@ startPerceptionScan(type:&nbsp;[PerceptionType](#perceptiontype), cycle:&nbsp;[P
 
 **系统能力**：SystemCapability.Communication.SoftBus.Core
 
+**设备行为差异**：该接口在硬件支持sensorhub的Phone/Tablet/部分2in1设备中可正常调用，其他设备调用会返回错误码801。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | ---- | -------- |
 | type | [PerceptionType](#perceptiontype) | 是 | 感知服务类型。 |
-| cycle | [PerceptionCycle](#perceptioncycle) | 是 | 保活周期档位，档位越高保活周期越短。 |
+| cycle | [PerceptionCycle](#perceptioncycle) | 是 | 保活周期档位，即未收到设备广播后多久将其从设备列表移除的超时时长档位。档位越高，保活周期越短。 |
 
 **返回值：**
 
@@ -343,6 +351,8 @@ stopPerceptionScan(type:&nbsp;[PerceptionType](#perceptiontype)):&nbsp;Promise&l
 **需要权限**：ohos.permission.ACCESS_SOFTBUS_SYS_HAP 和 ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.Communication.SoftBus.Core
+
+**设备行为差异**：该接口在硬件支持sensorhub的Phone/Tablet/部分2in1设备中可正常调用，其他设备调用会返回错误码801。
 
 **参数：**
 
@@ -404,6 +414,8 @@ getPerceptionDeviceList(type:&nbsp;[PerceptionType](#perceptiontype)):&nbsp;Prom
 **需要权限**：ohos.permission.ACCESS_SOFTBUS_SYS_HAP 和 ohos.permission.DISTRIBUTED_DATASYNC
 
 **系统能力**：SystemCapability.Communication.SoftBus.Core
+
+**设备行为差异**：该接口在硬件支持sensorhub的Phone/Tablet/部分2in1设备中可正常调用，其他设备调用会返回错误码801。
 
 **参数：**
 
