@@ -27611,7 +27611,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/specifiedability/ColdStartAbility.ets",
 				"functions":[
 					{
-						"end_line":61,
+						"end_line":60,
 						"name":"ColdAbility",
 						"start_line":16
 					}
