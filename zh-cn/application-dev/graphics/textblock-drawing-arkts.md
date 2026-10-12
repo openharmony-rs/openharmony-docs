@@ -395,6 +395,137 @@ for (let s of text) {
 >
 > 如果 `drawSingleCharacterWithFeatures` 与 `measureSingleCharacter` 混合使用，或者 `drawSingleCharacter` 与 `measureSingleCharacterWithFeatures` 混合使用，字体绘制可能会重叠。
 
+## 字体回退
+
+在字块绘制和文本测量场景中，当开发者指定的字体不支持某些字符时，常规接口会直接显示空白。字体回退（Font Fallback）能力可以自动从系统字体中查找支持该字符的回退字体，如果未找到回退字体，则仍使用开发者指定的字体进行显示（如`.notdef`占位符）。
+
+详细的API介绍请参考[TextBlob](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-TextBlob.md)和[Font](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Font.md)。
+
+### 字块绘制支持字体回退
+
+通过`TextBlob.makeFromStringWithFallback`和`TextBlob.makeFromPosTextWithFallback`接口创建字块时，接口会自动进行字体回退查找。当指定的字体不支持某些字符时，自动从系统查找回退typeface。每个使用相同typeface的连续字符run会创建一个独立的TextBlob对象，接口返回`Array<TextBlob>`。所有TextBlob共享整个字符串的坐标系，每个TextBlob应绘制在相同的原点位置。
+
+- `makeFromStringWithFallback(text: string, font: Font)`：从字符串创建支持字体回退的字块数组，接受2个参数，分别为需要显示的字符串text和font字型对象。
+
+- `makeFromPosTextWithFallback(text: string, len: number, points: common2D.Point[], font: Font)`：从文本和坐标点数组创建支持字体回退的字块数组，接受4个参数，分别为需要显示的字符串text、glyph数量len、坐标点数组points和font字型对象。其中len为通过[Font.countText](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Font.md#counttext)获取的整数值，points数组的长度必须与len一致。
+
+使用`makeFromStringWithFallback`接口从字符串创建支持字体回退的字块数组并绘制的示例代码如下：
+
+<!-- @[arkts_graphics_draw_textblob_string_fallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/TextBlockDrawing.ets) -->
+
+``` TypeScript
+// 创建字型对象
+const font = new drawing.Font();
+// 创建字体对象
+const myTypeface = drawing.Typeface.makeFromFile('/system/fonts/NotoSansArmenian[wdth,wght].ttf');
+// 为字型设置字体
+font.setTypeface(myTypeface);
+// 设置字体大小
+font.setSize(VALUE_100);
+// 创建支持字体回退的字块数组
+const textBlobs = drawing.TextBlob.makeFromStringWithFallback('Hello世界', font);
+// 遍历字块数组并绘制，每个TextBlob绘制在相同原点
+for (let textBlob of textBlobs) {
+  canvas.drawTextBlob(textBlob, VALUE_200, VALUE_300);
+}
+```
+
+使用`makeFromPosTextWithFallback`接口从文本和坐标点数组创建支持字体回退的字块数组并绘制的示例代码如下：
+
+<!-- @[arkts_graphics_draw_textblob_postext_fallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/TextBlockDrawing.ets) -->
+
+``` TypeScript
+// 创建字型对象
+const font = new drawing.Font();
+// 创建字体对象
+const myTypeface = drawing.Typeface.makeFromFile('/system/fonts/NotoSansArmenian[wdth,wght].ttf');
+// 为字型设置字体
+font.setTypeface(myTypeface);
+// 设置字体大小
+font.setSize(VALUE_100);
+// 需要绘制的文本
+const text = 'Hello世界';
+// 获取glyph数量
+const glyphCount = font.countText(text);
+// 为每个字符指定坐标位置
+let points: common2D.Point[] = [];
+let xOffset = 0;
+for (let i = 0; i < glyphCount; i++) {
+  points.push({ x: VALUE_200 + xOffset, y: VALUE_300 });
+  xOffset += 60;
+}
+// 创建支持字体回退的字块数组
+const textBlobs = drawing.TextBlob.makeFromPosTextWithFallback(text, glyphCount, points, font);
+// 遍历字块数组并绘制
+for (let textBlob of textBlobs) {
+  canvas.drawTextBlob(textBlob, 0, 0);
+}
+```
+
+### 字形转换与文本测量支持字体回退
+
+除了字块创建接口外，Font也提供了支持字体回退的字形转换和文本测量接口。
+
+- `textToGlyphsWithFallback(text: string, glyphCount?: number)`：将文本转换为glyph索引，支持字体回退。返回`Array<TypefaceFallbackInfo>`，每个元素包含匹配的typeface和对应的glyph ID数组。其中glyphCount为可选参数，需与[Font.countText](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Font.md#counttext)获取的值一致。
+
+- `measureTextWithFallback(text: string, encoding: TextEncoding)`：测量文本宽度，支持字体回退。返回包含回退字体的文本宽度，为浮点数。
+
+使用`textToGlyphsWithFallback`接口获取字形映射信息，并通过`drawGlyphs`绘制字形数组的示例代码如下：
+
+<!-- @[arkts_graphics_draw_font_texttoglyphs_fallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/TextBlockDrawing.ets) -->
+
+``` TypeScript
+// 创建字型对象
+const font = new drawing.Font();
+// 创建字体对象
+const myTypeface = drawing.Typeface.makeFromFile('/system/fonts/NotoSansArmenian[wdth,wght].ttf');
+// 为字型设置字体
+font.setTypeface(myTypeface);
+// 设置字体大小
+font.setSize(VALUE_100);
+// 需要转换的文本
+const text = 'Hello世界';
+// 获取glyph数量
+const glyphCount = font.countText(text);
+// 将文本转换为glyph索引，支持字体回退
+const fallbackInfos = font.textToGlyphsWithFallback(text, glyphCount);
+// 使用drawGlyphs按回退字体分组绘制字形
+let xOffset = 0;
+// 遍历回退信息，每个元素包含相同typeface的glyph ID数组
+for (let info of fallbackInfos) {
+  // info.typeface为匹配的字体
+  // info.glyphIds为该字体对应的glyph ID数组
+  font.setTypeface(info.typeface);
+  let positions: common2D.Point[] = [];
+  let glyphWidths = font.getWidths(info.glyphIds);
+  for (let j = 0; j < info.glyphIds.length; j++) {
+    positions.push({ x: VALUE_200 + xOffset, y: VALUE_300 });
+    xOffset += glyphWidths[j];
+  }
+  canvas.drawGlyphs(info.glyphIds, 0, positions, 0, info.glyphIds.length, font);
+}
+```
+
+使用`measureTextWithFallback`接口测量文本宽度的示例代码如下：
+
+<!-- @[arkts_graphics_draw_font_measure_fallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/TextBlockDrawing.ets) -->
+
+``` TypeScript
+// 创建字型对象
+const font = new drawing.Font();
+// 创建字体对象
+const myTypeface = drawing.Typeface.makeFromFile('/system/fonts/NotoSansArmenian[wdth,wght].ttf');
+// 为字型设置字体
+font.setTypeface(myTypeface);
+// 设置字体大小
+font.setSize(VALUE_100);
+// 需要测量的文本
+const text = 'Hello世界';
+// 测量文本宽度，支持字体回退
+const textWidth = font.measureTextWithFallback(text, drawing.TextEncoding.TEXT_ENCODING_UTF8);
+console.info('textWidth: ' + textWidth);
+```
+
 <!--RP1-->
 ## 相关实例
 
