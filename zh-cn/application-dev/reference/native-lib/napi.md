@@ -52,8 +52,8 @@ OpenHarmony的Node-API组件对Node-API的接口进行了重新实现，底层�
 |FUNC|napi_get_and_clear_last_exception|获取并清除最近一次出现的异常。|10|
 |FUNC|napi_is_exception_pending|判断是否出现了异常。|10|
 |FUNC|napi_fatal_error|引发致命错误以立即终止进程。|10|
-|FUNC|napi_open_handle_scope|创建一个上下文环境使用。|10|
-|FUNC|napi_close_handle_scope|关闭传入的上下文环境，关闭后，所有在其中声明的引用都将被关闭。|10|
+|FUNC|napi_open_handle_scope|创建一个napi_handle_scope，用于管理napi_value的生命周期。|10|
+|FUNC|napi_close_handle_scope|关闭传入的napi_handle_scope，关闭后所有在其中创建的napi_value都将被释放。|10|
 |FUNC|napi_open_escapable_handle_scope|创建出一个可逃逸的handle scope，可将范围内声明的值返回到父作用域。|10|
 |FUNC|napi_close_escapable_handle_scope|关闭传入的可逃逸的handle scope。|10|
 |FUNC|napi_escape_handle|提升传入的js object的生命周期到其父作用域。|10|
@@ -119,7 +119,7 @@ OpenHarmony的Node-API组件对Node-API的接口进行了重新实现，底层�
 |FUNC|napi_has_named_property|判断给定`Object`中是否有给定名称的属性。|10|
 |FUNC|napi_set_element|在给定`Object`的指定索引处，设置元素。|10|
 |FUNC|napi_get_element|获取给定`Object`指定索引处的元素。|10|
-|FUNC|napi_has_element|若给定`Object`的指定索引处拥有属性，获取该元素。|10|
+|FUNC|napi_has_element|判断给定Object的指定索引处是否存在元素。|10|
 |FUNC|napi_delete_element|尝试删除给定`Object`的指定索引处的元素。|10|
 |FUNC|napi_define_properties|批量的向给定`Object`中定义属性。|10|
 |FUNC|napi_type_tag_object|将tag指针的值与`Object`关联。|10|
@@ -1074,7 +1074,7 @@ napi_status napi_create_ark_runtime(napi_env *env)
 
 **参数：**
 
-- [in] env: Node-API的环境对象，表示当前的执行环境。
+- [out] env: 接收新创建的运行时环境对象的指针。
 
 **返回：**
 
@@ -1826,7 +1826,7 @@ napi_status napi_create_strong_reference(napi_env env, napi_value value, napi_st
 ### napi_delete_strong_reference
 
 ```cpp
-napi_status napi_delete_strong_reference(napi_env env, napi_value value, napi_strong_ref ref);
+napi_status napi_delete_strong_reference(napi_env env, napi_strong_ref ref);
 ```
 
 **描述：**
@@ -1839,8 +1839,6 @@ napi_status napi_delete_strong_reference(napi_env env, napi_value value, napi_st
 **参数：**
 
 - [in] env：Node-API的环境对象，表示当前的执行环境。
-
-- [in] value：ArkTS对象。
 
 - [in] ref：要删除的强引用。
 
