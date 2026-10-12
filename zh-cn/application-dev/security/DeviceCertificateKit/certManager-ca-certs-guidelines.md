@@ -11,15 +11,15 @@
 
 场景1：通过网络通信服务进行HTTPS连接。
 
-您的应用可以参考Network Kit配置证书校验内容，利用Device Certificate Kit的系统CA证书、用户CA证书，对HTTPS证书链进行校验。
+您的应用可以参考[Network Kit配置证书校验](../../network/http-request.md#配置证书校验)内容，利用Device Certificate Kit的系统CA证书、用户CA证书，对HTTPS证书链进行校验。
 
-
+![](figures/certificate-manager-ca-cert-case1.PNG)
 
 场景2：采用底层或自定义的安全协议进行通信。
 
 如果您的应用需要采用底层或自定义的安全协议与应用服务器进行通信，则您的应用可能需要从Device Certificate Kit读取系统CA证书和用户CA证书对服务器的证书链进行校验。
 
-
+![](figures/certificate-manager-ca-cert-case2.PNG)
 
 Device Certificate Kit的CA证书管理功能包含如下能力：
 - 系统CA证书管理：由操作系统预安装的CA证书，包括国密算法（SM算法）和国际算法（RSA和ECC算法）的CA证书。<!--RP1--><!--RP1End-->
@@ -51,7 +51,7 @@ Device Certificate Kit的CA证书管理功能包含如下能力：
 
 - 商业CA证书：由正规的第三方商业数字证书认证机构（CA）颁发和运营的商用CA证书，具备公开权威公信力。
 - 自建CA证书：企业/组织自行搭建部署的私有数字证书颁发机构（CA）颁发的CA证书，一般用于企业/组织内网服务、测试环境等。
-- MDM（Mobile Device Management）应用：也称企业设备管理应用，指集成了MDM功能的应用，能够集中管理、监控和保护企业内的移动设备（如智能手机、平板电脑、笔记本电脑等）。它允许IT管理员远程配置设备、强制执行安全策略、部署应用程序，并确保企业数据的安全。具体请参考MDM Kit相关资料。
+- MDM（Mobile Device Management）应用：也称企业设备管理应用，指集成了MDM功能的应用，能够集中管理、监控和保护企业内的移动设备（如智能手机、平板电脑、笔记本电脑等）。它允许IT管理员远程配置设备、强制执行安全策略、部署应用程序，并确保企业数据的安全。具体请参考[MDM Kit](../../mdm/mdm-kit-intro.md)相关资料。
 - 企业设备：由企业MDM应用管理和控制的设备，该设备一般由企业进行采购并发放给企业员工进行日常办公。
 - BYOD（Bring Your Own Device）：自带设备办公，指一些企业允许员工携带自己平板或智能手机到公司，并使用这些设备接入办公环境。例如用户企业办公或者外来访客携带设备访问工厂、实验室等场景。
 
@@ -63,7 +63,7 @@ Device Certificate Kit的CA证书管理功能包含如下能力：
 
    调用其他接口需要申请权限：ohos.permission.ACCESS_CERT_MANAGER
 
-   声明权限请参考：声明权限
+   声明权限请参考：[声明权限](../AccessToken/declare-permissions.md)
 
 2. 导入相关模块。
 
@@ -102,7 +102,7 @@ Device Certificate Kit的CA证书管理功能包含如下能力：
 
 ## 样例代码
 
-<!-- @certificate_management_user_ca  -->
+<!-- @[certificate_management_user_ca](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerUserCASample.ets)  -->
 
 ``` TypeScript
 import { certificateManager, certificateManagerDialog } from '@kit.DeviceCertificateKit';

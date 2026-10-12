@@ -1,4 +1,4 @@
-# 加解密介绍
+# 加解密
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->
@@ -25,9 +25,9 @@
 
 ### AES
 
-算法库当前提供了AES加解密常用的7种加密模式：ECB、CBC、OFB、CFB、CTR、GCM和CCM。不同的加密模式适用的加解密参数不同，具体请参考ParamsSpec。
+算法库当前提供了[AES](crypto-key-generation-conversion.md#aes)加解密常用的7种加密模式：ECB、CBC、OFB、CFB、CTR、GCM和CCM。不同的加密模式适用的加解密参数不同，具体请参考[ParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#paramsspec)。
 
-由于AES为分组加密算法，分组长度为16字节。在实际应用中，最后一组明文可能不足16字节，此时可以通过不同的填充模式进行数据填充。
+由于AES为分组加密算法，分组长度为16字节。在实际应用中，最后一组明文可能不足16字节，此时可以通过不同的[填充模式](#填充模式)进行数据填充。
 
 由于需要填充至分组大小，所以实际算法库中的PKCS5和PKCS7都是以分组大小作为填充长度的，即AES加密填充至16字节。
 
@@ -62,9 +62,9 @@
 
 ### DES
 
-DES算法的加密过程包含16轮相同的加密函数，每轮都使用不同的子密钥。子密钥是通过对原始密钥进行一系列的置换和移位操作生成的。在每一轮中，明文块被分为左右两部分，然后通过一系列的置换、替换和异或操作进行加密。
+[DES](crypto-key-generation-conversion.md#des)算法的加密过程包含16轮相同的加密函数，每轮都使用不同的子密钥。子密钥是通过对原始密钥进行一系列的置换和移位操作生成的。在每一轮中，明文块被分为左右两部分，然后通过一系列的置换、替换和异或操作进行加密。
 
-算法库当前提供了DES加解密常用的4种加密模式：ECB、CBC、OFB和CFB。不同的加密模式适用的加解密参数不同，具体请参考ParamsSpec。
+算法库当前提供了DES加解密常用的4种加密模式：ECB、CBC、OFB和CFB。不同的加密模式适用的加解密参数不同，具体请参考[ParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#paramsspec)。
 
 > **说明：**
 >
@@ -92,11 +92,11 @@ DES算法的加密过程包含16轮相同的加密函数，每轮都使用不同
 
 ### 3DES
 
-3DES算法的加解密过程分别是对明文/密文数据进行三次DES加密或解密，得到相应的密文或明文。
+[3DES](crypto-key-generation-conversion.md#3des)算法的加解密过程分别是对明文/密文数据进行三次DES加密或解密，得到相应的密文或明文。
 
-算法库当前提供了3DES加解密常用的4种加密模式：ECB、CBC、OFB和CFB。不同的加密模式适用的加解密参数不同，具体请参考ParamsSpec。
+算法库当前提供了3DES加解密常用的4种加密模式：ECB、CBC、OFB和CFB。不同的加密模式适用的加解密参数不同，具体请参考[ParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#paramsspec)。
 
-由于DES为分组加密算法，分组长度为8字节。在实际应用中，最后一组明文可能不足8字节，此时可以通过不同的填充模式进行数据填充。
+由于DES为分组加密算法，分组长度为8字节。在实际应用中，最后一组明文可能不足8字节，此时可以通过不同的[填充模式](#填充模式)进行数据填充。
 
 由于需要填充至分组大小，所以实际算法库中的PKCS5和PKCS7都是以分组大小作为填充长度的，即3DES加密填充至8字节。
 
@@ -126,9 +126,9 @@ DES算法的加密过程包含16轮相同的加密函数，每轮都使用不同
 
 ### SM4
 
-算法库当前提供了SM4加解密常用的7种加密模式：ECB、CBC、CTR、OFB、CFB、CFB128和GCM。不同的加密模式适用的加解密参数不同，具体请参考ParamsSpec。
+算法库当前提供了[SM4](crypto-key-generation-conversion.md#sm4)加解密常用的7种加密模式：ECB、CBC、CTR、OFB、CFB、CFB128和GCM。不同的加密模式适用的加解密参数不同，具体请参考[ParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#paramsspec)。
 
-由于SM4为分组加密算法，分组长度为16字节。在实际应用中，最后一组明文可能不足16字节，此时可以通过不同的填充模式进行数据填充。
+由于SM4为分组加密算法，分组长度为16字节。在实际应用中，最后一组明文可能不足16字节，此时可以通过不同的[填充模式](#填充模式)进行数据填充。
 
 由于需要填充至分组大小，所以实际算法库中的PKCS5和PKCS7都是以分组大小作为填充长度的，即SM4加密填充至16字节。
 
@@ -159,7 +159,7 @@ DES算法的加密过程包含16轮相同的加密函数，每轮都使用不同
 
 ### AES-WRAP
 
-算法库提供AES-WRAP算法，该算法是一种基于AES的加密算法，用于安全地存储或传输对称密钥。它的主要目的是通过加密保护密钥，防止密钥在存储或传输过程中被泄露或篡改。
+算法库提供AES-WRAP算法，该算法是一种基于[AES](crypto-key-generation-conversion.md#aes)的加密算法，用于安全地存储或传输对称密钥。它的主要目的是通过加密保护密钥，防止密钥在存储或传输过程中被泄露或篡改。
 
 | 算法名称 | 字符串参数 | API版本 | 
 | -------- | -------- | -------- |
@@ -183,9 +183,9 @@ DES算法的加密过程包含16轮相同的加密函数，每轮都使用不同
 
 从API版本22开始，算法库支持该算法。
 
-算法库当前提供了ChaCha20加解密，默认的ChaCha20加解密时需要传入IV。默认ChaCha20需要的加解密参数为IvParamsSpec。
+算法库当前提供了[ChaCha20](crypto-key-generation-conversion.md#chacha20)加解密，默认的ChaCha20加解密时需要传入IV。默认ChaCha20需要的加解密参数为[IvParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#ivparamsspec)。
 
-常用的加密模式：Poly1305。Poly1305模式适用的加解密参数为Poly1305ParamsSpec。
+常用的加密模式：Poly1305。Poly1305模式适用的加解密参数为[Poly1305ParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#poly1305paramsspec22)。
 
 由于ChaCha20是流算法，无需填充算法。
 
@@ -200,9 +200,9 @@ DES算法的加密过程包含16轮相同的加密函数，每轮都使用不同
 
 ### RC2
 
-从API版本26.0.0开始，支持分组密码算法RC2，分组长度为8字节，密钥长度支持8位～1024位，且该值须为8的倍数。
+从API版本26.0.0开始，支持分组密码算法[RC2](crypto-key-generation-conversion.md#rc2)，分组长度为8字节，密钥长度支持8位～1024位，且该值须为8的倍数。
 
-算法库当前提供了RC2加解密常用的分组模式：ECB、CBC、OFB、CFB。不同的加密模式适用的加解密参数不同，具体请参考ParamsSpec。
+算法库当前提供了RC2加解密常用的分组模式：ECB、CBC、OFB、CFB。不同的加密模式适用的加解密参数不同，具体请参考[ParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#paramsspec)。
 
 > **说明：**
 >
@@ -210,7 +210,7 @@ DES算法的加密过程包含16轮相同的加密函数，每轮都使用不同
 
 当前支持以字符串参数完成RC2加解密，具体的“字符串参数”由“对称密钥类型”、“分组模式”和“填充模式”使用符号“|”拼接而成。字符串参数为RC2。
 
-CBC、OFB、CFB模式需传入IV，IV长度为8字节，对应IvParamsSpec。
+CBC、OFB、CFB模式需传入IV，IV长度为8字节，对应[IvParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#ivparamsspec)。
 
 | 分组模式 | 字符串参数 | 填充模式 | API版本 | 
 | -------- | -------- | -------- | -------- |
@@ -221,7 +221,7 @@ CBC、OFB、CFB模式需传入IV，IV长度为8字节，对应IvParamsSpec。
 
 ### RC4
 
-从API版本26.0.0开始，支持流密码算法RC4，无需分组与填充。密钥长度支持8位～4096位，且该值须为8的倍数。
+从API版本26.0.0开始，支持流密码算法[RC4](crypto-key-generation-conversion.md#rc4)，无需分组与填充。密钥长度支持8位～4096位，且该值须为8的倍数。
 
 算法库当前提供RC4加解密，RC4为流密码模式，无需分组模式和填充模式。
 
@@ -233,13 +233,13 @@ CBC、OFB、CFB模式需传入IV，IV长度为8字节，对应IvParamsSpec。
 
 ### Blowfish（BF）
 
-从API版本26.0.0开始，支持密码算法Blowfish，是一种分组密码算法，分组长度为8字节，密钥长度支持32位～448位，且该值须为8的倍数。
+从API版本26.0.0开始，支持密码算法[Blowfish](crypto-key-generation-conversion.md#blowfishbf)，是一种分组密码算法，分组长度为8字节，密钥长度支持32位～448位，且该值须为8的倍数。
 
 > **说明：**
 >
 > ECB、CBC加密模式，明文长度不是8字节整数倍，必须使用填充方法补足。
 
-CBC、OFB、CFB模式需传入IV，IV长度为8字节，对应IvParamsSpec。
+CBC、OFB、CFB模式需传入IV，IV长度为8字节，对应[IvParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#ivparamsspec)。
 
 当前支持以字符串参数完成Blowfish加解密，字符串参数为Blowfish：
 
@@ -252,11 +252,11 @@ CBC、OFB、CFB模式需传入IV，IV长度为8字节，对应IvParamsSpec。
 
 ### CAST
 
-从API版本26.0.0开始，支持分组密码算法CAST，分组长度为8字节，密钥长度支持40位～128位，且该值须为8的倍数。
+从API版本26.0.0开始，支持分组密码算法[CAST](crypto-key-generation-conversion.md#cast)，分组长度为8字节，密钥长度支持40位～128位，且该值须为8的倍数。
 
-CAST为分组密码算法，分组长度为8字节，密钥长度支持40位～128位，且该值须为8的倍数。
+[CAST](crypto-key-generation-conversion.md#cast)为分组密码算法，分组长度为8字节，密钥长度支持40位～128位，且该值须为8的倍数。
 
-算法库当前提供了CAST加解密常用的分组模式：ECB、CBC、OFB、CFB。不同的加密模式适用的加解密参数不同，具体请参考ParamsSpec。
+算法库当前提供了CAST加解密常用的分组模式：ECB、CBC、OFB、CFB。不同的加密模式适用的加解密参数不同，具体请参考[ParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#paramsspec)。
 
 > **说明：**
 >
@@ -264,7 +264,7 @@ CAST为分组密码算法，分组长度为8字节，密钥长度支持40位～1
 
 当前支持以字符串参数完成CAST加解密，字符串参数为CAST：
 
-CBC、OFB、CFB模式需传入IV，IV长度为8字节，对应IvParamsSpec。
+CBC、OFB、CFB模式需传入IV，IV长度为8字节，对应[IvParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#ivparamsspec)。
  
 | 分组模式 | 字符串参数 | 填充模式 | API版本 | 
 | -------- | -------- | -------- | -------- |
@@ -281,7 +281,7 @@ CBC、OFB、CFB模式需传入IV，IV长度为8字节，对应IvParamsSpec。
 
 ### RSA
 
-RSA为非对称加密算法，加密数据长度需满足固定长度要求，在实际应用中，如果数据量无法达到固定的长度要求，可以通过不同的填充模式进行数据填充。
+[RSA](crypto-key-generation-conversion.md#rsa)为非对称加密算法，加密数据长度需满足固定长度要求，在实际应用中，如果数据量无法达到固定的长度要求，可以通过不同的填充模式进行数据填充。
 
 算法库目前提供了RSA加解密常用的三种模式。
 
@@ -315,7 +315,7 @@ RSA为非对称加密算法，加密数据长度需满足固定长度要求，�
 >
 > 使用同步接口生成RSA2048、RSA3072、RSA4096、RSA8192非对称密钥或明文长度超过2048均会增加耗时。
 >
-> 系统对主线程有时间限制，耗时较长会导致失败。建议生成大位数密钥时，使用异步接口或使用多线程并发能力。
+> 系统对主线程有时间限制，耗时较长会导致失败。建议生成大位数密钥时，使用异步接口或[使用多线程并发能力](../../arkts-utils/multi-thread-concurrency-overview.md)。
 
 **填充模式为NoPadding**
 
@@ -414,7 +414,7 @@ RSA为非对称加密算法，加密数据长度需满足固定长度要求，�
 
 ### SM2
 
-SM2为非对称加密算法，加密数据长度需满足固定长度要求。算法库目前支持以GM/T 0009-2012定义的格式加密或解密数据。
+[SM2](crypto-key-generation-conversion.md#sm2)为非对称加密算法，加密数据长度需满足固定长度要求。算法库目前支持以GM/T 0009-2012定义的格式加密或解密数据。
 
 SM2非对称加密的结果由C1、C2、C3三部分组成。其中C1是根据生成的随机数计算出的椭圆曲线点，C2是密文数据，C3是通过指定的摘要算法计算的值。
 
@@ -466,7 +466,7 @@ SM2密文参数，包括：
 
 ### 对称加解密
 
-对称密钥的分段加解密，通过调用Cipher.update实现。
+对称密钥的分段加解密，通过调用[Cipher.update](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#update-1)实现。
 
 开发者可自定义单次传入的数据量（示例中的updateLength），多次调用update传入数据。
 
@@ -474,23 +474,23 @@ SM2密文参数，包括：
 
 **开发者应当对每次update和doFinal的结果都判断是否为null，并在结果不为null时取出其中的数据进行拼接，形成完整的密文/明文。**
 
-**开发示例：** 使用aes对称密钥gcm模式分段加解密
+**开发示例：** [使用aes对称密钥gcm模式分段加解密](crypto-aes-sym-encrypt-decrypt.md#使用aes对称密钥gcm模式分段加解密)
 
-**开发示例：** 使用sm4对称密钥gcm模式分段加解密
+**开发示例：** [使用sm4对称密钥gcm模式分段加解密](crypto-sm4-sym-encrypt-decrypt.md#使用sm4对称密钥gcm模式分段加解密)
 
 ### 非对称加解密
 
-非对称加解密，不支持update操作，仅需要调用Cipher.init和Cipher.doFinal完成加解密。
+非对称加解密，不支持update操作，仅需要调用[Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1)和[Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1)完成加解密。
 
-非对称密钥的分段加密是指当明文大于单次加密支持的数据长度时（具体长度请查非对称密钥加解密算法规格），需要将待加密数据分为合适长度的数据段，并对每个数据段执行加密操作，即创建Cipher，然后调用Cipher.init和Cipher.doFinal接口。
+非对称密钥的分段加密是指当明文大于单次加密支持的数据长度时（具体长度请查[非对称密钥加解密算法规格](crypto-encryption-decryption.md)），需要将待加密数据分为合适长度的数据段，并对每个数据段执行加密操作，即创建Cipher，然后调用[Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1)和[Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1)接口。
 
 严格意义上说，是数据的拆分加解密，此时单次传入的数据量长度与密钥规格的长度相关。
 
-- RSA：填充模式不同，输入的数据的规则不同。请根据RSA算法规格确认单次传入的数据量长度。
+- RSA：填充模式不同，输入的数据的规则不同。请根据[RSA算法规格](crypto-encryption-decryption.md#rsa)确认单次传入的数据量长度。
 
 **开发者应当对每次doFinal的结果都判断是否为null，并在结果不为null时取出其中的数据进行拼接，形成完整的密文/明文。**
 
-**开发示例：** 使用RSA非对称密钥分段加解密
+**开发示例：** [使用RSA非对称密钥分段加解密](crypto-rsa-asym-encrypt-decrypt.md#使用rsa非对称密钥分段加解密)
 
 ### 常见问题
 
@@ -498,4 +498,4 @@ SM2密文参数，包括：
 
    每次更新的数据量，由开发者自定义，与加密模式无关。
 
-   不同的加密模式，仅对加解密参数产生影响，不同的加密模式使用的加解密参数不同，具体请参考ParamsSpec。
+   不同的加密模式，仅对加解密参数产生影响，不同的加密模式使用的加解密参数不同，具体请参考[ParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#paramsspec)。

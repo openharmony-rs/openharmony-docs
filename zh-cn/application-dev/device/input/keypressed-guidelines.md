@@ -18,22 +18,22 @@
 
 ## 接口说明
 
-按键按下事件常用接口如下表所示，接口详细介绍请参考@ohos.multimodalInput.inputConsumer (全局快捷键)。
+按键按下事件常用接口如下表所示，接口详细介绍请参考[@ohos.multimodalInput.inputConsumer (全局快捷键)](../../reference/apis-input-kit/js-apis-inputconsumer.md)。
 
-| 接口名称  | 描述 |
+| 接口名称 | 描述 |
 | ------------------------------------------------------------ | -------------------------- |
-| on(type: "keyPressed", options: KeyPressedConfig, callback: Callback\<KeyEvent>): void |订阅指定按键按下事件，拦截系统默认响应。  |
-| off(type: "keyPressed", callback?: Callback\<KeyEvent>): void |取消按键事件订阅，恢复系统默认响应。  |
+| on(type: 'keyPressed', options: KeyPressedConfig, callback: Callback\<KeyEvent>): void | 订阅按键按下事件。 |
+| off(type: 'keyPressed', callback?: Callback\<KeyEvent>): void | 取消对'keyPressed'事件的订阅。 |
 
 ## 开发步骤
 
-应用开启时调用on方法订阅按键按下事件，应用关闭时再用off方法取消订阅按键按下事件。
+应用开启时调用[on](../../reference/apis-input-kit/js-apis-inputconsumer.md#inputconsumeronkeypressed16)方法订阅按键按下事件，应用关闭时再用[off](../../reference/apis-input-kit/js-apis-inputconsumer.md#inputconsumeroffkeypressed16)方法取消订阅按键按下事件。
 
 ### 应用内优先响应系统功能键
 
 在电子书或新闻阅读应用中，用户希望通过音量键或智控键滑动控制翻页（例如：音量加键向上翻页、音量减键向下翻页、智控键上滑向上翻页、智控键下滑向下翻页），需注意智控键上滑及下滑非设备通用键值，使用前请判断当前设备是否支持相关按键事件上报；在相机或扫码类应用中，用户按音量键可直接拍照，而不跳转系统相机应用。
 
-<!-- @input_monitor --> 
+<!-- @[input_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputKit/ArkTSInputConsumer/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 import { inputConsumer, KeyEvent, inputDevice, KeyCode } from '@kit.InputKit';
@@ -150,7 +150,7 @@ struct TestDemo14 {
                 .showToast({ message: 'Successfully added monitoring for Volume Up key!' })
               this.text = "Monitoring for Volume Up key has been added."
             } catch (error) {
-              hilog.error(DOMAIN, 'InputConsumer', `Unsubscribe execute failed, error: %{public}s`,
+              hilog.error(DOMAIN, 'InputConsumer', `Subscribe execute failed, error: %{public}s`,
                 JSON.stringify(error, ["code", "message"]));
               this.getUIContext()
                 .getPromptAction()
@@ -196,7 +196,7 @@ struct TestDemo14 {
                 .showToast({ message: 'Successfully added monitoring for Volume Down key!' })
               this.text = "Monitoring for Volume Down key has been added."
             } catch (error) {
-              hilog.error(DOMAIN, 'InputConsumer', `Unsubscribe execute failed, error: %{public}s`,
+              hilog.error(DOMAIN, 'InputConsumer', `Subscribe execute failed, error: %{public}s`,
                 JSON.stringify(error, ["code", "message"]));
               this.getUIContext()
                 .getPromptAction()
@@ -246,7 +246,7 @@ struct TestDemo14 {
                   .showToast({ message: 'Successfully added monitoring for Slide Up key!' })
                 this.text = "Monitoring for Slide Up key has been added."
               } catch (error) {
-                hilog.error(DOMAIN, 'InputConsumer', `Unsubscribe execute failed, error: %{public}s`,
+                hilog.error(DOMAIN, 'InputConsumer', `Subscribe execute failed, error: %{public}s`,
                   JSON.stringify(error, ["code", "message"]));
                 this.getUIContext()
                   .getPromptAction()
@@ -293,7 +293,7 @@ struct TestDemo14 {
                   .showToast({ message: 'Successfully added monitoring for Slide Down key!' })
                 this.text = "Monitoring for Slide Down key has been added."
               } catch (error) {
-                hilog.error(DOMAIN, 'InputConsumer', `Unsubscribe execute failed, error: %{public}s`,
+                hilog.error(DOMAIN, 'InputConsumer', `Subscribe execute failed, error: %{public}s`,
                   JSON.stringify(error, ["code", "message"]));
                 this.getUIContext()
                   .getPromptAction()

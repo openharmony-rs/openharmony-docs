@@ -6,9 +6,9 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-为了动态添加或删除状态管理V2的状态变量的监听函数，开发者可以使用addMonitor或clearMonitor。
+为了动态添加或删除状态管理V2的状态变量的监听函数，开发者可以使用[addMonitor](../../reference/apis-arkui/js-apis-stateManagement.md#addmonitor20)或[clearMonitor](../../reference/apis-arkui/js-apis-stateManagement.md#clearmonitor20)。
 
-在阅读本文档前，建议提前阅读：\@ObservedV2/\@Trace、\@Monitor。
+在阅读本文档前，建议提前阅读：[\@ObservedV2/\@Trace](./arkts-new-observedV2-and-trace.md)、[\@Monitor](./arkts-new-monitor.md)。
 
 >**说明：**
 >
@@ -16,9 +16,9 @@
 
 
 ## 概述
-装饰器\@Monitor如果声明在\@ObservedV2和\@ComponentV2中，会使得开发者构造出的所有的\@ObservedV2和\@ComponentV2的实例，都默认有同样的\@Monitor的监听回调，且无法取消或删除对应的监听回调。
+装饰器[\@Monitor](./arkts-new-monitor.md)如果声明在[\@ObservedV2](./arkts-new-observedV2-and-trace.md)和[\@ComponentV2](./arkts-create-custom-components.md#componentv2)中，会使得开发者构造出的所有的\@ObservedV2和\@ComponentV2的实例，都默认有同样的\@Monitor的监听回调，且无法取消或删除对应的监听回调。
 
-如果开发者希望动态给\@ObservedV2和\@ComponentV2实例添加或者删除监听函数，则可以使用addMonitor和clearMonitor接口。
+如果开发者希望动态给\@ObservedV2和\@ComponentV2实例添加或者删除监听函数，则可以使用[addMonitor](../../reference/apis-arkui/js-apis-stateManagement.md#addmonitor20)和[clearMonitor](../../reference/apis-arkui/js-apis-stateManagement.md#clearmonitor20)接口。
 
 - 使用addMonitor/clearMonitor接口需要导入UIUtils工具。
 
@@ -32,7 +32,7 @@
 ## 使用规则
 - addMonitor/clearMonitor可以传入数组一次性给多个状态变量添加或删除回调函数。
 
-<!-- @AddMonitorArray -->
+<!-- @[AddMonitorArray](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AddMonitorClearMonitorSample/entry/src/main/ets/pages/AddMonitorArray.ets) -->
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
@@ -84,7 +84,7 @@ struct Page {
 ```
 - addMonitor可以给path对应的状态变量添加多个监听函数，但是需要注意，如果开发者添加同名的监听函数，则会添加失败，打印错误日志。
 
-<!-- @AddMonitorDuplicateFunc -->
+<!-- @[AddMonitorDuplicateFunc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AddMonitorClearMonitorSample/entry/src/main/ets/pages/AddMonitorDuplicateFunc.ets) -->
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
@@ -143,9 +143,9 @@ struct Page {
   }
 }
 ```
-- addMonitor设置isSynchronous仅第一次有效，即其不能被更改，如果开发者更改`isSynchronous`，则会打印错误日志。
+- addMonitor设置[isSynchronous](../../reference/apis-arkui/js-apis-stateManagement.md#monitoroptions20)仅第一次有效，即其不能被更改，如果开发者更改`isSynchronous`，则会打印错误日志。
 
-<!-- @AddMonitorIsSynchronous -->
+<!-- @[AddMonitorIsSynchronous](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AddMonitorClearMonitorSample/entry/src/main/ets/pages/AddMonitorIsSynchronous.ets) -->
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
@@ -191,11 +191,11 @@ struct Page {
 ```
 - clearMonitor可以删除path对应的状态变量的监听函数，开发者可以通过传入监听回调函数来指定删除具体的监听函数，也可以不指定具体的监听函数，删除当前path对应状态变量的所有监听回调函数。
 
-  需要注意：当调用clearMonitor时，如果发现当前回调函数没有在path对应的状态变量上注册过，或者当前状态变量没有任何监听函数，都会打印告警日志提示开发者删除失败。
+  需要注意：当调用clearMonitor时，如果发现当前回调函数没有在path对应的状态变量上注册过，或者当前状态变量没有任何监听函数，都会打印错误日志提示开发者删除失败。
 
   监听函数被删除后，状态变量的改变不会再回调对应的监听函数。
 
-<!-- @ClearMonitorUsage -->
+<!-- @[ClearMonitorUsage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AddMonitorClearMonitorSample/entry/src/main/ets/pages/ClearMonitorUsage.ets) -->
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
@@ -412,20 +412,20 @@ struct Page {
   ```
 
 ## addMonitor监听变化的规则
-addMonitor和装饰器\@Monitor监听变化的主要规则大体保持一致，对比如下表：
+addMonitor和装饰器[\@Monitor](./arkts-new-monitor.md)监听变化的主要规则大体保持一致，对比如下表：
 
 |  场景 | addMonitor| @Monitor  |
 |------|----|------|
-| 监听\@ObservedV2类中@Trace修饰属性的变化   | 支持 | 支持 |
-| 监听\@ComponentV2组件中状态变量的变化 | 支持 | 支持 |
-| 监听数组类型状态变量的下标和length的变化  | 支持 | 支持 |
-| 监听内置类型状态变量API调用 | 默认不支持，从API版本26.0.0开始，可通过配置项支持 | 默认不支持，从API版本26.0.0开始，可通过配置项支持 |
-| 独立监听path变化 | 支持 | 默认不支持，从API版本26.0.0开始，可通过配置项支持 |
-| 监听变量从可访问到不可访问和从不可访问到可访问  | 支持 | 默认不支持，从API版本26.0.0开始，可通过配置项支持 |
-| 配置同步监听函数  | 支持 | 不支持 |
-| 监听构造函数中同步修改的状态变量的变化  | 支持 | 不支持 |
-| 动态取消@ObservedV2/@ComponentV2实例的监听  | 支持 | 不支持 |
-| 使用包含通配符的路径 | 默认不支持，从API版本26.0.0开始，可通过配置项支持 | 默认不支持，从API版本26.0.0开始，可通过配置项支持 |
+| [监听\@ObservedV2类中@Trace修饰属性的变化](#监听observedv2类中trace修饰属性和componentv2组件中状态变量的变化)   | 支持 | 支持 |
+| [监听\@ComponentV2组件中状态变量的变化](#监听observedv2类中trace修饰属性和componentv2组件中状态变量的变化) | 支持 | 支持 |
+| [监听数组类型状态变量的下标和length的变化](#监听数组类型状态变量的下标和length的变化)  | 支持 | 支持 |
+| [监听内置类型状态变量API调用](#监听内置类型状态变量api调用) | 默认不支持，从API版本26.0.0开始，可通过配置项支持 | 默认不支持，从API版本26.0.0开始，可通过配置项支持 |
+| [独立监听path变化](#独立监听path) | 支持 | 默认不支持，从API版本26.0.0开始，可通过配置项支持 |
+| [监听变量从可访问到不可访问和从不可访问到可访问](#监听变量从可访问到不可访问和从不可访问到可访问)  | 支持 | 默认不支持，从API版本26.0.0开始，可通过配置项支持 |
+| [配置同步监听函数](#配置同步监听函数)  | 支持 | 不支持 |
+| [监听构造函数中同步修改的状态变量的变化](#监听构造函数中同步修改的状态变量的变化)  | 支持 | 不支持 |
+| [动态取消@ObservedV2/@ComponentV2实例的监听](#动态取消observedv2componentv2实例的监听)  | 支持 | 不支持 |
+| [使用包含通配符的路径](#使用包含通配符的路径) | 默认不支持，从API版本26.0.0开始，可通过配置项支持 | 默认不支持，从API版本26.0.0开始，可通过配置项支持 |
 
 ## 使用场景
 ### 监听\@ObservedV2类中@Trace修饰属性和\@ComponentV2组件中状态变量的变化
@@ -436,7 +436,7 @@ addMonitor和装饰器\@Monitor监听变化的主要规则大体保持一致，�
 - 点击```Text(`User name ${this.user.name}`)```，改变`name`的值，触发`onChange`方法。
 - 点击```Text(`User age ${this.user.age}`)```，改变`age`的值，触发`onChange`方法。
 - 点击```Text(`reset User`)```，对`user`整体赋值，触发`onChangeInView`方法。
-<!-- @MonitorObservedV2ComponentV2 -->
+<!-- @[MonitorObservedV2ComponentV2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AddMonitorClearMonitorSample/entry/src/main/ets/pages/MonitorObservedV2ComponentV2.ets) -->
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
@@ -501,7 +501,7 @@ struct Page {
 
 下面的例子展示了对Array数组下标和length的监听。
 
-<!-- @MonitorArrayIndexLength -->
+<!-- @[MonitorArrayIndexLength](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AddMonitorClearMonitorSample/entry/src/main/ets/pages/MonitorArrayIndexLength.ets) -->
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
@@ -565,14 +565,14 @@ struct Page {
 ```
 
 ### 独立监听Path
-\@Monitor没有对path独立监听，所以需要依赖开发者正确传入\@Monitor入参，传入非状态变量时会造成被连带监听的情况。
+\@Monitor没有对path独立监听，所以需要依赖开发者正确传入\@Monitor入参，[传入非状态变量时会造成被连带监听的情况](./arkts-new-monitor.md#正确设置monitor入参)。
 
 对于addMonitor，对不同path采取了独立监听的机制，如下面的例子，点击`Button('change age&name')`，会输出以下日志：
 ``` ts
 property path:age change from 24 to 25
 ```
 
-<!-- @MonitorIndependentPath -->
+<!-- @[MonitorIndependentPath](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AddMonitorClearMonitorSample/entry/src/main/ets/pages/MonitorIndependentPath.ets) -->
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
@@ -610,11 +610,11 @@ struct Index {
 ```
 
 ### 监听变量从可访问到不可访问和从不可访问到可访问
-\@Monitor不会记录状态变量不可访问时的状态，所以其无法监听变量从可访问到不可访问和从不可访问到可访问。
+[\@Monitor不会记录状态变量不可访问时的状态](./arkts-new-monitor.md#无法监听变量从可访问变为不可访问和从不可访问变为可访问)，所以其无法监听变量从可访问到不可访问和从不可访问到可访问。
 
 addMonitor会记录变量不可访问的状态，所以可以监听变量从可访问到不可访问和从不可访问到可访问。例子如下。
 
-<!-- @MonitorAccessibleChange -->
+<!-- @[MonitorAccessibleChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AddMonitorClearMonitorSample/entry/src/main/ets/pages/MonitorAccessibleChange.ets) -->
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
@@ -668,7 +668,7 @@ onChange: User property user.age change from 10 to 11
 onChange: User property user.age change from 11 to 12
 ```
 
-<!-- @AddMonitorSynchronous -->
+<!-- @[AddMonitorSynchronous](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AddMonitorClearMonitorSample/entry/src/main/ets/pages/AddMonitorSynchronous.ets) -->
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
@@ -709,7 +709,7 @@ struct Page {
 onChange: User property user.age change from 10 to 12
 ```
 
-<!-- @MonitorAsyncOnly -->
+<!-- @[MonitorAsyncOnly](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AddMonitorClearMonitorSample/entry/src/main/ets/pages/MonitorAsyncOnly.ets) -->
 
 ``` TypeScript
 @ObservedV2
@@ -742,7 +742,7 @@ struct Page {
 ```
 
 ### 监听构造函数中同步修改的状态变量的变化
-和\@Monitor异步构造不同，addMonitor是同步构造的，所以在开发者调用完`UIUtils.addMonitor(this, 'message', this.onMessageChange);`后就完成了对`message`添加监听函数`this.onMessageChange`。在下面的例子中：
+和[\@Monitor异步构造](./arkts-new-monitor.md#类中monitor对变量监听的生效及失效时间)不同，addMonitor是同步构造的，所以在开发者调用完`UIUtils.addMonitor(this, 'message', this.onMessageChange);`后就完成了对`message`添加监听函数`this.onMessageChange`。在下面的例子中：
 - 拉起页面，构造`Info`的实例，回调`onMessageChange`监听函数。
 - 点击```Button('change message')```，回调`onMessageChange`监听函数。
 
@@ -753,7 +753,7 @@ message change from initialized to Index aboutToAppear
 message change from Index aboutToAppear to Index click to change message
 ```
 
-<!-- @MonitorConstructorSync -->
+<!-- @[MonitorConstructorSync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AddMonitorClearMonitorSample/entry/src/main/ets/pages/MonitorConstructorSync.ets) -->
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
@@ -796,7 +796,7 @@ struct Page {
 
 和@Monitor不同，addMonitor/clearMonitor可以对不同的\@ObservedV2/\@ComponentV2实例动态添加监听函数。例子如下。
 
-<!-- @DynamicCancelMonitor -->
+<!-- @[DynamicCancelMonitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AddMonitorClearMonitorSample/entry/src/main/ets/pages/DynamicCancelMonitor.ets) -->
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
@@ -893,11 +893,11 @@ UIUtils.addMonitor(this, 'obj.*', this.onChange, { enableWildcard: true });
 UIUtils.addMonitor(this, 'obj.*', this.onChange);
 ```
 
-通配符路径的使用规则可以参考@Monitor文档中对监听包含通配符的路径的说明。
+通配符路径的使用规则可以参考@Monitor文档中对[监听包含通配符的路径](arkts-new-monitor.md#监听包含通配符的路径)的说明。
 
 addMonitor使用通配符观察对象属性变化的用例如下。
 
-<!-- @MonitorWildcardObject -->
+<!-- @[MonitorWildcardObject](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AddMonitorClearMonitorSample/entry/src/main/ets/pages/MonitorWildcardObject.ets) -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -957,7 +957,7 @@ struct MonitorWildcardObject {
 
 使能通配符的addMonitor可以监听到数组的API调用。任意数组的方法被调用时，addMonitor注册的回调都会被执行，即使数组为空或并未实际修改数组的内容。API包括`push`、`pop`、`shift`、`splice`、`unshift`、`copyWithin`、`fill`、`reverse`、`sort`。
 
-<!-- @MonitorWildcardArray -->
+<!-- @[MonitorWildcardArray](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AddMonitorClearMonitorSample/entry/src/main/ets/pages/MonitorWildcardArray.ets) -->
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
@@ -1102,7 +1102,7 @@ addMonitor注册的监听会在以下情况回调：
 
 使用通配符监听Date对象的示例如下。
 
-<!-- @MonitorWildcardDate -->
+<!-- @[MonitorWildcardDate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AddMonitorClearMonitorSample/entry/src/main/ets/pages/MonitorWildcardDate.ets) -->
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
@@ -1171,7 +1171,7 @@ addMonitor注册的监听会在以下情况回调：
 
 使用通配符监听Map对象的示例如下。
 
-<!-- @MonitorWildcardMap -->
+<!-- @[MonitorWildcardMap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AddMonitorClearMonitorSample/entry/src/main/ets/pages/MonitorWildcardMap.ets) -->
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
@@ -1280,7 +1280,7 @@ addMonitor注册的监听会在以下情况回调：
 
 使用通配符监听Set对象的示例如下。
 
-<!-- @MonitorWildcardSet -->
+<!-- @[MonitorWildcardSet](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AddMonitorClearMonitorSample/entry/src/main/ets/pages/MonitorWildcardSet.ets) -->
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';

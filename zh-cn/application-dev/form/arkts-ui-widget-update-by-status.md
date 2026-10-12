@@ -38,7 +38,7 @@
 
 - 卡片页面：卡片具备不同的状态选择，在不同的状态下需要刷新不同的内容，因此在状态发生变化时通过postCardAction通知UpdateByStatusFormAbility。
 
-    <!-- @widget_update_by_status_card --> 
+    <!-- @[widget_update_by_status_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetupdatebystatus/pages/WidgetUpdateByStatusCard.ets) --> 
     
     ``` TypeScript
     // entry/src/main/ets/widgetupdatebystatus/pages/WidgetUpdateByStatusCard.ets
@@ -155,7 +155,7 @@
 
 - UpdateByStatusFormAbility：将卡片的状态存储在本地数据库中，在刷新事件回调触发时，通过formId获取当前卡片的状态，然后根据卡片的状态选择不同的刷新内容。
 
-    <!-- @update_by_status_form_ability -->
+    <!-- @[update_by_status_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/updatebystatusformability/UpdateByStatusFormAbility.ts) -->
     
     ``` TypeScript
     // entry/src/main/ets/updatebystatusformability/UpdateByStatusFormAbility.ts
@@ -257,4 +257,4 @@
 
 > **说明：**
 >
-> 通过本地数据库进行卡片信息的持久化时，建议先在**onAddForm**生命周期进行卡片信息持久化；同时需要在卡片销毁(**onRemoveForm**)时删除当前卡片存储的持久化信息，避免反复添加删除卡片导致数据库文件持续变大。
+> 通过本地数据库进行卡片信息的持久化时，建议先在[**onAddForm**](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonaddform)生命周期进行卡片信息持久化；同时需要在卡片销毁(**[onRemoveForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonremoveform)**)时删除当前卡片存储的持久化信息，避免反复添加删除卡片导致数据库文件持续变大。

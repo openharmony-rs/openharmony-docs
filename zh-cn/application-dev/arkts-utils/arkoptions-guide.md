@@ -8,7 +8,7 @@
 
 ## 概述
 
-arkOptions主要提供ArkTS编译相关配置，当前文档介绍arkOptions中types配置类型、maxFlowDepth配置控制流分析最大深度等，arkOptions中的其他配置项请参考build-profile.json5。
+arkOptions主要提供ArkTS编译相关配置，当前文档介绍arkOptions中types配置类型、maxFlowDepth配置控制流分析最大深度等，arkOptions中的其他配置项请参考[build-profile.json5](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-configuration-file-overview)。
 
 ## types
 
@@ -26,7 +26,7 @@ arkOptions中types字段示例：
 
 在模块build-profile.json5配置文件buildOption标签的arkOptions属性中添加types字段。
 
-<!-- @add_types --> 
+<!-- @[add_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkoptionsGuide/entry/build-profile.json5) --> 
 
 ``` JSON5
 // 在/entry/build-profile.json5
@@ -43,7 +43,7 @@ types字段支持填写包名、包所在位置的相对路径，以及声明文
 ### 注意事项
 
 如果在types字段中填写包名或者包所在位置的相对路径，需要在entry模块下oh-package.json5文件的dependencies字段中作如下配置：
-<!-- @dependencies -->
+<!-- @[dependencies](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkoptionsGuide/entry/oh-package.json5) -->
 
 ``` JSON5
 "dependencies": {
@@ -53,7 +53,7 @@ types字段支持填写包名、包所在位置的相对路径，以及声明文
 ```
 
 如果在types字段中填写声明文件所在相对路径，前提是在模块下存在相应的声明文件，比如模块下存在src/main/ets/pages/global.d.ts声明文件，声明文件内容如下所示：
-<!-- @declare_global --> 
+<!-- @[declare_global](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkoptionsGuide/entry/src/main/ets/pages/global.d.ts) --> 
 
 ``` TypeScript
 declare namespace Global {
@@ -62,7 +62,7 @@ declare namespace Global {
 ```
 
 通过types全局引入后，对全局类型的使用示例如下：
-<!-- @test_party --> 
+<!-- @[test_party](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkoptionsGuide/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 // 在entry/src/main/ets/pages/Index.ets
@@ -87,7 +87,7 @@ arkOptions/tscConfig中maxFlowDepth字段展示。
 
 在工程级目录下的build-profile.json5配置文件buildOption标签的arkOptions/tscConfig属性中添加maxFlowDepth字段。
 
-<!-- @add_tscConfig --> 
+<!-- @[add_tscConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkoptionsGuide/build-profile.json5) --> 
 
 ``` JSON5
 // 在工程名/build-profile.json5文件中。
@@ -141,7 +141,7 @@ arkOptions中transformLib字段示例：
   }
 }
 ```
-修改方舟字节码能力可参考编译期自定义修改方舟字节码。
+修改方舟字节码能力可参考[编译期自定义修改方舟字节码](customize-bytecode-during-compilation.md)。
 
 ### 注意事项
 

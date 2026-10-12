@@ -14,7 +14,7 @@
 - DNS策略的配置能力，包括配置禁止/允许解析的域名、解析使用的DNS服务器（主选/备选）（应用级）。
 
 > **说明：**
-> 为了保证应用的运行效率，所有API调用都是异步的，对于异步调用的API均提供了Promise的方式，以下示例均采用Promise方式，更多方式可以查阅@ohos.net.netFirewall (网络防火墙)。
+> 为了保证应用的运行效率，所有API调用都是异步的，对于异步调用的API均提供了Promise的方式，以下示例均采用Promise方式，更多方式可以查阅[@ohos.net.netFirewall (网络防火墙)](../reference/apis-network-kit/js-apis-net-netfirewall.md)。
 
 ## 场景介绍
 
@@ -41,7 +41,7 @@
 1. 设备通过硬件接口，插入网线。
 2. 从@kit.NetworkKit中导入netfirewall命名空间。
 
-   <!-- @net_firewall_case_import_module -->
+   <!-- @[net_firewall_case_import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetFireWall_case/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    // 从@kit.NetworkKit中导入netFirewall命名空间。
@@ -51,7 +51,7 @@
    ```
 3. 用户调用setNetFirewallPolicy方法，打开防火墙。
 
-   <!-- @net_firewall_set_net_firewall_policy -->
+   <!-- @[net_firewall_set_net_firewall_policy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetFireWall_case/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    // IP类型
@@ -85,7 +85,7 @@
    ```
 4. 用户通过addNetFirewallRule方法，添加防火墙规则。
 
-   <!-- @net_firewall_add_net_firewall_rule -->
+   <!-- @[net_firewall_add_net_firewall_rule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetFireWall_case/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    // 初始化具体的防火墙ip类型规则。
@@ -152,7 +152,7 @@
 1. 设备通过硬件接口，插入网线。
 2. 从@kit.NetworkKit中导入netFirewall命名空间。
 
-   <!-- @net_firewall_case_import_module -->
+   <!-- @[net_firewall_case_import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetFireWall_case/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    // 从@kit.NetworkKit中导入netFirewall命名空间。
@@ -162,7 +162,7 @@
    ```
 3. 调用setNetFirewallPolicy方法，打开防火墙。
 
-   <!-- @net_firewall_set_net_firewall_policy_domain_names -->
+   <!-- @[net_firewall_set_net_firewall_policy_domain_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetFireWall_case/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    interface domain{
@@ -186,7 +186,7 @@
    ```
 4. 通过addNetFirewallRule方法，添加防火墙规则。
 
-   <!-- @net_firewall_add_net_firewall_rule_domain_names -->
+   <!-- @[net_firewall_add_net_firewall_rule_domain_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetFireWall_case/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    // 初始化具体的防火墙域名类型规则。

@@ -9,7 +9,7 @@
 
 ## 接口介绍
 
-从版本26.0.0开始，系统提供异步接口batchRemove以便开发者批量删除关键资产。
+从版本26.0.0开始，系统提供异步接口[batchRemove](../../reference/apis-asset-store-kit/js-apis-asset.md#assetbatchremove)以便开发者批量删除关键资产。
 
 在批量删除关键资产时，关键资产属性的内容（AssetMap）参数如下表所示：
 
@@ -25,7 +25,7 @@
 
 ## 约束和限制
 
-批量删除的关键资产必须具有相同的GROUP_ID和REQUIRE_ATTR_ENCRYPTED属性。
+批量删除的关键资产必须具有相同的[GROUP_ID](../../reference/apis-asset-store-kit/js-apis-asset.md#tag)和[REQUIRE_ATTR_ENCRYPTED](../../reference/apis-asset-store-kit/js-apis-asset.md#tag)属性。
 
 批量删除的关键资产数量最大值为100。
 
@@ -35,12 +35,12 @@
 >
 > 以下为批量删除接口的使用示例。
 >
-> 在删除前，需确保已有关键资产，可参考指南文档新增关键资产，否则将抛出NOT_FOUND错误（错误码24000002）。
+> 在删除前，需确保已有关键资产，可参考[指南文档](asset-js-add.md)新增关键资产，否则将抛出NOT_FOUND错误（错误码24000002）。
 
 批量删除两条别名分别为demo_alias1和demo_alias2的关键资产。
 
 1. 引用头文件，定义工具函数。
-   <!-- @import -->
+   <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/batch_operation.ets) -->
    
    ``` TypeScript
    import { asset } from '@kit.AssetStoreKit';
@@ -54,7 +54,7 @@
    ```
 
 2. 参考如下示例代码，进行业务功能开发。
-   <!-- @batch_remove -->
+   <!-- @[batch_remove](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/batch_operation.ets) -->
    
    ``` TypeScript
    let assetsToBeRemoved: asset.AssetMap[] = [];

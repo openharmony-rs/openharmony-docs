@@ -25,7 +25,7 @@
 
 ## 需要权限
 
-使用加速度、陀螺仪及设备运动事件接口时，需在配置文件module.json5中声明相应的传感器权限。具体配置方法请参考在配置文件中声明权限。
+使用加速度、陀螺仪及设备运动事件接口时，需在配置文件module.json5中声明相应的传感器权限。具体配置方法请参考[在配置文件中声明权限](../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
 
 
 ``` JSON5
@@ -39,11 +39,11 @@
     ]
 ```
 
-Web组件在对接运动和方向传感器时，需配置onPermissionRequest接口，通过该接口接收权限请求通知。
+Web组件在对接运动和方向传感器时，需配置[onPermissionRequest](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpermissionrequest9)接口，通过该接口接收权限请求通知。
 
 ## 开发步骤
 
-1. 应用侧代码中，Web组件配置onPermissionRequest接口，可通过PermissionRequest的getAccessibleResource接口获取请求权限的资源类型，当资源类型为TYPE_SENSOR时，进行传感器授权处理。
+1. 应用侧代码中，Web组件配置[onPermissionRequest](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpermissionrequest9)接口，可通过[PermissionRequest](../reference/apis-arkweb/arkts-basic-components-web-PermissionRequest.md)的[getAccessibleResource](../reference/apis-arkweb/arkts-basic-components-web-PermissionRequest.md#getaccessibleresource9)接口获取请求权限的资源类型，当资源类型为TYPE_SENSOR时，进行传感器授权处理。
 
    ```ts
    import { UIContext } from '@kit.ArkUI';

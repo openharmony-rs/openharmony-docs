@@ -10,9 +10,9 @@
 
 ## 使用Span和ImageSpan实现图文混排
 
-通过设置Text组件textVerticalAlign属性和设置ImageSpan组件verticalAlign为ImageSpanAlignment.FOLLOW_PARAGRAPH，实现商品价格优惠信息展示的应用场景。
+通过设置[Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)组件[textVerticalAlign](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textverticalalign20)属性和设置[ImageSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-imagespan.md)组件[verticalAlign](../reference/apis-arkui/arkui-ts/ts-basic-components-imagespan.md#verticalalign)为ImageSpanAlignment.FOLLOW_PARAGRAPH，实现商品价格优惠信息展示的应用场景。
 
-<!-- @textImage_component -->
+<!-- @[textImage_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textImageMixedLayout/TextImageComponent.ets) -->
 
 ``` TypeScript
 Text() {
@@ -37,13 +37,13 @@ Text() {
 ```
 
 
-span_imagespan_composition
+![span_imagespan_composition](figures/span_imagespan_composition.png)
 
 ## 使用属性字符串实现图文混排
 
-通过ImageAttachment添加图片，TextStyle设置多种文本样式，实现商品详情信息展示的应用场景。
+通过[ImageAttachment](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#imageattachment)添加图片，[TextStyle](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle)设置多种文本样式，实现商品详情信息展示的应用场景。
 
-<!-- @textImage_attribute -->
+<!-- @[textImage_attribute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textImageMixedLayout/TextImageAttribute.ets) -->
 
 ``` TypeScript
 // resourceGetString封装工具，从资源中获取字符串
@@ -71,8 +71,8 @@ struct styled_string_demo {
 
   private async getPixmapFromMedia(resource: Resource) {
     try {
-      let unit8Array = await this.getUIContext().getHostContext()?.resourceManager?.getMediaContent(resource.id);
-      let imageSource = image.createImageSource(unit8Array?.buffer?.slice(0, unit8Array?.buffer?.byteLength));
+      let uint8Array = await this.getUIContext().getHostContext()?.resourceManager?.getMediaContent(resource.id);
+      let imageSource = image.createImageSource(uint8Array?.buffer?.slice(0, uint8Array?.buffer?.byteLength));
       let createPixelMap: image.PixelMap = await imageSource.createPixelMap({
         desiredPixelFormat: image.PixelMapFormat.RGBA_8888
       });
@@ -227,4 +227,4 @@ struct styled_string_demo {
 }
 ```
 
-styledstring_composition
+![styledstring_composition](./figures/styledstring_composition.png)

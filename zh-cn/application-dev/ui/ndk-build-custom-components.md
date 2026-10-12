@@ -6,20 +6,20 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
-ArkUI开发框架在NDK接口提供了自定义UI组件的能力，这些能力包括自定义测算，自定义布局和自定义绘制。开发者通过注册相关自定义回调事件接入ArkUI开发框架的布局渲染流程，这些事件需要使用registerNodeCustomEvent来进行声明，并通过addNodeCustomEventReceiver函数添加组件自定义事件的监听器，在该监听器的回调函数中处理相关自定义测算，自定义布局和自定义绘制逻辑。
+ArkUI开发框架在NDK接口提供了自定义UI组件的能力，这些能力包括自定义测算，自定义布局和自定义绘制。开发者通过注册相关自定义回调事件接入ArkUI开发框架的布局渲染流程，这些事件需要使用[registerNodeCustomEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodecustomevent)来进行声明，并通过[addNodeCustomEventReceiver](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addnodecustomeventreceiver)函数添加组件自定义事件的监听器，在该监听器的回调函数中处理相关自定义测算，自定义布局和自定义绘制逻辑。
 
 
 > **说明：**
 >
-> - 自定义组件事件注册需要addNodeCustomEventReceiver声明监听器注册和registerNodeCustomEvent声明需要的自定义事件类型，监听器只能监听已声明的事件。
+> - 自定义组件事件注册需要[addNodeCustomEventReceiver](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addnodecustomeventreceiver)声明监听器注册和[registerNodeCustomEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodecustomevent)声明需要的自定义事件类型，监听器只能监听已声明的事件。
 > 
-> - 需要关注事件的反注册逻辑，如在组件销毁前调用removeNodeCustomEventReceiver移除事件监听器，unregisterNodeCustomEvent通知ArkUI框架已监听的自定义组件事件不再需要监听。
+> - 需要关注事件的反注册逻辑，如在组件销毁前调用[removeNodeCustomEventReceiver](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#removenodecustomeventreceiver)移除事件监听器，[unregisterNodeCustomEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#unregisternodecustomevent)通知ArkUI框架已监听的自定义组件事件不再需要监听。
 > 
-> - addNodeCustomEventReceiver可以添加多个函数指针，每个函数指针都会在对应事件触发时触发，对应的removeNodeCustomEventReceiver需要传递对应的函数指针用于移除监听。
+> - [addNodeCustomEventReceiver](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addnodecustomeventreceiver)可以添加多个函数指针，每个函数指针都会在对应事件触发时触发，对应的[removeNodeCustomEventReceiver](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#removenodecustomeventreceiver)需要传递对应的函数指针用于移除监听。
 > 
-> - registerNodeCustomEventReceiver是全局监听函数，不同于addNodeCustomEventReceiver，registerNodeCustomEventReceiver能够监听所有Native组件的自定义事件触发，但只能传递一个函数指针，多次调用使用最后一次的函数指针进行回调，释放时使用unregisterNodeCustomEventReceiver进行反注册。
+> - [registerNodeCustomEventReceiver](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodecustomeventreceiver)是全局监听函数，不同于[addNodeCustomEventReceiver](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addnodecustomeventreceiver)，[registerNodeCustomEventReceiver](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodecustomeventreceiver)能够监听所有Native组件的自定义事件触发，但只能传递一个函数指针，多次调用使用最后一次的函数指针进行回调，释放时使用unregisterNodeCustomEventReceiver进行反注册。
 > 
-> - 自定义组件相关接口（measureNode、layoutNode、setMeasuredSize、setLayoutPosition）仅允许在对应的自定义事件（ARKUI_NODE_CUSTOM_EVENT_ON_MEASURE、ARKUI_NODE_CUSTOM_EVENT_ON_LAYOUT，见ArkUI_NodeCustomEventType）回调中使用。
+> - 自定义组件相关接口（[measureNode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#measurenode)、[layoutNode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#layoutnode)、[setMeasuredSize](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setmeasuredsize)、[setLayoutPosition](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setlayoutposition)）仅允许在对应的自定义事件（ARKUI_NODE_CUSTOM_EVENT_ON_MEASURE、ARKUI_NODE_CUSTOM_EVENT_ON_LAYOUT，见[ArkUI_NodeCustomEventType](../reference/apis-arkui/capi-native-node-node-attributes-custom-attributes-h.md#arkui_nodecustomeventtype)）回调中使用。
 
 
 ## 自定义布局容器
@@ -28,12 +28,12 @@ ArkUI开发框架在NDK接口提供了自定义UI组件的能力，这些能力�
 
 **图1** 自定义容器组件
 
-customContainer
+![customContainer](figures/customContainer.png)
 
-1. 按照接入ArkTS页面创建前置工程。
+1. 按照[接入ArkTS页面](ndk-access-the-arkts-page.md)创建前置工程。
 
 2. 创建自定义容器组件封装对象。
-   <!-- @custom-components -->
+   <!-- @[custom-components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomContainerSample/entry/src/main/cpp/ArkUICustomContainerNode.h) -->
 
    ``` C
    // ArkUICustomContainerNode.h
@@ -157,7 +157,7 @@ customContainer
    ```
 
 3. 使用自定义容器创建带文本的示例界面。
-   <!-- @entrance --> 
+   <!-- @[entrance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomContainerSample/entry/src/main/cpp/NativeEntry.cpp) --> 
    
    ``` C++
    #include "NativeEntry.h"
@@ -274,12 +274,12 @@ customContainer
 
 **图2** 自定义绘制组件
  
-customNode
+![customNode](figures/customNode.png)
 
-1. 按照自定义布局容器章节准备前置工程。
+1. 按照[自定义布局容器](#自定义布局容器)章节准备前置工程。
 
 2. 创建自定义绘制组件封装对象。
-   <!-- @custom-draw -->
+   <!-- @[custom-draw](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomDrawSample/entry/src/main/cpp/ArkUICustomNode.h) -->
    
    ``` C
    // ArkUICustomNode.h
@@ -396,7 +396,7 @@ customNode
    ```
 
 3. 使用自定义绘制组件和自定义容器创建示例界面。
-   <!-- @entrance --> 
+   <!-- @[entrance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomDrawSample/entry/src/main/cpp/NativeEntry.cpp) --> 
    
    ``` C++
    
@@ -511,16 +511,16 @@ customNode
 
 ## 不规则网格布局示例
 
-以下示例创建了一个不规则网格布局容器，支持不同大小的网格单元，实现类似瀑布流的布局效果。完整示例请参考<!--RP1-->CustomDrawIrregularSample<!--RP1End-->。
+以下示例创建了一个不规则网格布局容器，支持不同大小的网格单元，实现类似瀑布流的布局效果。完整示例请参考<!--RP1-->[CustomDrawIrregularSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeType/CustomDrawIrregularSample)<!--RP1End-->。
 
 **图3** 不规则网格布局效果
 
-irregularGrid
+![irregularGrid](figures/irregularGrid.jpg)
 
-1. 按照自定义布局容器章节准备前置工程。
+1. 按照[自定义布局容器](#自定义布局容器)章节准备前置工程。
 
 2. 创建不规则网格布局容器组件封装对象。
-   <!-- @irregular-grid -->
+   <!-- @[irregular-grid](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomDrawIrregularSample/entry/src/main/cpp/ArkUIIrregularGridNode.h) -->
    
    ``` C
     // ArkUIIrregularGridNode.h
@@ -738,7 +738,7 @@ irregularGrid
 
 
 3. 使用不规则网格布局容器创建示例界面。
-   <!-- @irregular-grid-entrance -->
+   <!-- @[irregular-grid-entrance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomDrawIrregularSample/entry/src/main/cpp/NativeEntry.cpp) -->
    
    ``` C++
     #include "NativeEntry.h"

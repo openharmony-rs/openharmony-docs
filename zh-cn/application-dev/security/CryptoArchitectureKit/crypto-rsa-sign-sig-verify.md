@@ -7,47 +7,47 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
-对应的算法规格请查看签名验签算法规格：RSA。
+对应的算法规格请查看[签名验签算法规格：RSA](crypto-sign-sig-verify-overview.md#rsa)。
 
 ## 使用RSA密钥对（PKCS1模式）签名验签
 
 **签名**
 
-1. 调用cryptoFramework.createAsyKeyGenerator、AsyKeyGenerator.generateKeyPair，生成密钥算法为RSA、密钥长度为1024位、素数个数为2的非对称密钥对象（KeyPair），包括公钥（PubKey）和私钥（PriKey）。
+1. 调用[cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator)、[AsyKeyGenerator.generateKeyPair](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypair-1)，生成密钥算法为RSA、密钥长度为1024位、素数个数为2的非对称密钥对象（KeyPair），包括公钥（PubKey）和私钥（PriKey）。
    
-   如何生成RSA非对称密钥，开发者可参考下文示例，并结合非对称密钥生成和转换规格：RSA和随机生成非对称密钥对理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。
+   如何生成RSA非对称密钥，开发者可参考下文示例，并结合[非对称密钥生成和转换规格：RSA](crypto-key-generation-conversion.md#rsa)和[随机生成非对称密钥对](crypto-generate-asym-key-pair-randomly.md)理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。
 
-2. 调用cryptoFramework.createSign，指定字符串参数'RSA1024|PKCS1|SHA256'，创建非对称密钥类型为RSA1024、填充模式为PKCS1、摘要算法为SHA256的Sign实例，用于完成签名操作。
+2. 调用[cryptoFramework.createSign](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesign)，指定字符串参数'RSA1024|PKCS1|SHA256'，创建非对称密钥类型为RSA1024、填充模式为PKCS1、摘要算法为SHA256的Sign实例，用于完成签名操作。
 
-3. 调用Sign.init，使用私钥（PriKey）初始化Sign实例。
+3. 调用[Sign.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-3)，使用私钥（PriKey）初始化Sign实例。
 
-4. 调用Sign.update，传入待签名的数据。
+4. 调用[Sign.update](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#update-3)，传入待签名的数据。
    
    当前单次update长度没有限制，开发者可以根据数据量判断如何调用update。
 
    - 当待签名的数据较短时，可以在init完成后直接调用sign。
-   - 当数据量较大时，可以多次调用update，即分段签名验签。
+   - 当数据量较大时，可以多次调用update，即[分段签名验签](crypto-rsa-sign-sig-verify.md#使用rsa密钥对pkcs1模式分段签名验签)。
 
-5. 调用Sign.sign，生成数据签名。
+5. 调用[Sign.sign](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#sign-1)，生成数据签名。
 
 **验签**
 
-1. 调用cryptoFramework.createVerify，指定字符串参数'RSA1024|PKCS1|SHA256'，与签名的Sign实例保持一致。创建Verify实例，用于完成验签操作。
+1. 调用[cryptoFramework.createVerify](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateverify)，指定字符串参数'RSA1024|PKCS1|SHA256'，与签名的Sign实例保持一致。创建Verify实例，用于完成验签操作。
 
-2. 调用Verify.init，使用公钥（PubKey）初始化Verify实例。
+2. 调用[Verify.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-5)，使用公钥（PubKey）初始化Verify实例。
 
-3. 调用Verify.update，传入待验证的数据。
+3. 调用[Verify.update](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#update-5)，传入待验证的数据。
 
    当前单次update长度没有限制，开发者可以根据数据量判断如何调用update。
 
    - 当待签名的数据较短时，可以在init完成后直接调用verify。
-   - 当数据量较大时，可以多次调用update，即分段签名验签。
+   - 当数据量较大时，可以多次调用update，即[分段签名验签](crypto-rsa-sign-sig-verify.md#使用rsa密钥对pkcs1模式分段签名验签)。
 
-4. 调用Verify.verify，对数据进行验签。
+4. 调用[Verify.verify](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#verify-1)，对数据进行验签。
 
 - 异步方法示例：
 
-  <!-- @pkcs1_verify_rsa_keypair_sign_async -->
+  <!-- @[pkcs1_verify_rsa_keypair_sign_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/rsa_pkcs1_signature_validator/rsa_pkcs1_signature_validator_asynchronous.ets) -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -92,7 +92,7 @@
 
 - 同步方法示例：
 
-  <!-- @pkcs1_verify_rsa_keypair_sign_sync -->
+  <!-- @[pkcs1_verify_rsa_keypair_sign_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/rsa_pkcs1_signature_validator/rsa_pkcs1_signature_validator_synchronous.ets) -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -141,33 +141,33 @@
 
 **签名**
 
-1. 调用cryptoFramework.createMd，指定摘要算法SHA256，生成摘要实例（Md）。
+1. 调用[cryptoFramework.createMd](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatemd)，指定摘要算法SHA256，生成摘要实例（Md）。
 
-2. 调用Md.update，传入自定义消息，进行摘要更新计算。单次update长度没有限制。
+2. 调用[Md.update](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#update-6)，传入自定义消息，进行摘要更新计算。单次update长度没有限制。
 
-3. 调用Md.digest，获取摘要计算结果。
+3. 调用[Md.digest](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#digest)，获取摘要计算结果。
 
-4. 调用cryptoFramework.createAsyKeyGenerator、AsyKeyGenerator.generateKeyPair，生成密钥算法为RSA、密钥长度为1024位、素数个数为2的非对称密钥对象（KeyPair），包括公钥（PubKey）和私钥（PriKey）。
+4. 调用[cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator)、[AsyKeyGenerator.generateKeyPair](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypair-1)，生成密钥算法为RSA、密钥长度为1024位、素数个数为2的非对称密钥对象（KeyPair），包括公钥（PubKey）和私钥（PriKey）。
 
-   如何生成RSA非对称密钥，开发者可参考下文示例，并结合非对称密钥生成和转换规格：RSA和随机生成非对称密钥对理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。
+   如何生成RSA非对称密钥，开发者可参考下文示例，并结合[非对称密钥生成和转换规格：RSA](crypto-key-generation-conversion.md#rsa)和[随机生成非对称密钥对](crypto-generate-asym-key-pair-randomly.md)理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。
 
-5. 调用cryptoFramework.createSign，指定字符串参数'RSA1024|PKCS1|SHA256|OnlySign'，创建非对称密钥类型为RSA1024、填充模式为PKCS1、摘要算法为SHA256的Sign实例，用于完成签名操作。
+5. 调用[cryptoFramework.createSign](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesign)，指定字符串参数'RSA1024|PKCS1|SHA256|OnlySign'，创建非对称密钥类型为RSA1024、填充模式为PKCS1、摘要算法为SHA256的Sign实例，用于完成签名操作。
 
-6. 调用Sign.init，使用私钥（PriKey）初始化Sign实例。
+6. 调用[Sign.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-3)，使用私钥（PriKey）初始化Sign实例。
 
-7. 调用Sign.sign，生成摘要数据签名。
+7. 调用[Sign.sign](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#sign-1)，生成摘要数据签名。
 
 **验签**
 
-1. 调用cryptoFramework.createVerify，指定字符串参数'RSA1024|PKCS1|SHA256|OnlyVerify'，与签名的Sign实例保持一致。创建Verify实例，用于完成验签操作。
+1. 调用[cryptoFramework.createVerify](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateverify)，指定字符串参数'RSA1024|PKCS1|SHA256|OnlyVerify'，与签名的Sign实例保持一致。创建Verify实例，用于完成验签操作。
 
-2. 调用Verify.init，使用公钥（PubKey）初始化Verify实例。
+2. 调用[Verify.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-5)，使用公钥（PubKey）初始化Verify实例。
 
-3. 调用Verify.verify，对摘要数据进行验签。
+3. 调用[Verify.verify](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#verify-1)，对摘要数据进行验签。
 
 - 异步方法示例：
 
-  <!-- @rsa_pkcs1_onlysign_onlyverify_signature_validator_asynchronous -->
+  <!-- @[rsa_pkcs1_onlysign_onlyverify_signature_validator_asynchronous](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/onlysign_onlyverify_signature_validator/rsa_pkcs1_onlysign_onlyverify_signature_validator_asynchronous.ets) -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -213,7 +213,7 @@
 
 - 同步方法示例：
 
-  <!-- @rsa_pkcs1_onlysign_onlyverify_signature_validator_synchronous -->
+  <!-- @[rsa_pkcs1_onlysign_onlyverify_signature_validator_synchronous](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/onlysign_onlyverify_signature_validator/rsa_pkcs1_onlysign_onlyverify_signature_validator_synchronous.ets) -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -261,27 +261,27 @@
 
 **签名**
 
-1. 调用cryptoFramework.createAsyKeyGenerator、AsyKeyGenerator.generateKeyPair，生成密钥算法为RSA、密钥长度为1024位、素数个数为2的非对称密钥对象（KeyPair），包括公钥（PubKey）和私钥（PriKey）。
+1. 调用[cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator)、[AsyKeyGenerator.generateKeyPair](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypair-1)，生成密钥算法为RSA、密钥长度为1024位、素数个数为2的非对称密钥对象（KeyPair），包括公钥（PubKey）和私钥（PriKey）。
    
-   如何生成RSA非对称密钥，开发者可参考下文示例，并结合非对称密钥生成和转换规格：RSA和随机生成非对称密钥对理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。
+   如何生成RSA非对称密钥，开发者可参考下文示例，并结合[非对称密钥生成和转换规格：RSA](crypto-key-generation-conversion.md#rsa)和[随机生成非对称密钥对](crypto-generate-asym-key-pair-randomly.md)理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。
 
-2. 调用cryptoFramework.createSign，指定字符串参数'RSA1024|PKCS1|NoHash|OnlySign'，创建非对称密钥类型为RSA1024、填充模式为PKCS1、签名模式为OnlySign的Sign实例，用于完成仅签名操作。
+2. 调用[cryptoFramework.createSign](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesign)，指定字符串参数'RSA1024|PKCS1|NoHash|OnlySign'，创建非对称密钥类型为RSA1024、填充模式为PKCS1、签名模式为OnlySign的Sign实例，用于完成仅签名操作。
 
-3. 调用Sign.init，使用私钥（PriKey）初始化Sign实例。
+3. 调用[Sign.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-3)，使用私钥（PriKey）初始化Sign实例。
 
-4. 调用Sign.sign，生成数据签名。
+4. 调用[Sign.sign](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#sign-1)，生成数据签名。
 
 **验签**
 
-1. 调用cryptoFramework.createVerify，指定字符串参数'RSA1024|PKCS1|NoHash|Recover'，与签名的Sign实例保持一致。创建Verify实例，用于完成验签操作。
+1. 调用[cryptoFramework.createVerify](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateverify)，指定字符串参数'RSA1024|PKCS1|NoHash|Recover'，与签名的Sign实例保持一致。创建Verify实例，用于完成验签操作。
 
-2. 调用Verify.init，使用公钥（PubKey）初始化Verify实例。
+2. 调用[Verify.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-5)，使用公钥（PubKey）初始化Verify实例。
 
-3. 调用Verify.recover，对数据进行签名恢复。
+3. 调用[Verify.recover](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#recover12)，对数据进行签名恢复。
 
 - 异步方法示例：
 
-  <!-- @pkcs1_recover_rsa_keypair_sign_async -->
+  <!-- @[pkcs1_recover_rsa_keypair_sign_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/rsa_pkcs1_signature_restoration/rsa_pkcs1_signature_restoration_asynchronous.ets) -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -322,7 +322,7 @@
 
 - 同步方法示例：
 
-  <!-- @pkcs1_recover_rsa_keypair_sign_sync -->
+  <!-- @[pkcs1_recover_rsa_keypair_sign_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/rsa_pkcs1_signature_restoration/rsa_pkcs1_signature_restoration_synchronous.ets) -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -365,31 +365,31 @@
 
 **签名**
 
-1. 调用cryptoFramework.createAsyKeyGenerator、AsyKeyGenerator.generateKeyPair，生成密钥算法为RSA、密钥长度为1024位、素数个数为2的非对称密钥对象（KeyPair），包括公钥（PubKey）和私钥（PriKey）。
+1. 调用[cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator)、[AsyKeyGenerator.generateKeyPair](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypair-1)，生成密钥算法为RSA、密钥长度为1024位、素数个数为2的非对称密钥对象（KeyPair），包括公钥（PubKey）和私钥（PriKey）。
    
-   如何生成RSA非对称密钥，开发者可参考下文示例，并结合非对称密钥生成和转换规格：RSA和随机生成非对称密钥对理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。
+   如何生成RSA非对称密钥，开发者可参考下文示例，并结合[非对称密钥生成和转换规格：RSA](crypto-key-generation-conversion.md#rsa)和[随机生成非对称密钥对](crypto-generate-asym-key-pair-randomly.md)理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。
 
-2. 调用cryptoFramework.createSign，指定字符串参数'RSA1024|PKCS1|SHA256'，创建非对称密钥类型为RSA1024、填充模式为PKCS1、摘要算法为SHA256的Sign实例，用于完成签名操作。
+2. 调用[cryptoFramework.createSign](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesign)，指定字符串参数'RSA1024|PKCS1|SHA256'，创建非对称密钥类型为RSA1024、填充模式为PKCS1、摘要算法为SHA256的Sign实例，用于完成签名操作。
 
-3. 调用Sign.init，使用私钥（PriKey）初始化Sign实例。
+3. 调用[Sign.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-3)，使用私钥（PriKey）初始化Sign实例。
 
-4. 将一次传入数据量设置为64字节，多次调用Sign.update，传入待签名的数据。当前单次update长度没有限制，开发者可以根据数据量判断如何调用update。
+4. 将一次传入数据量设置为64字节，多次调用[Sign.update](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#update-3)，传入待签名的数据。当前单次update长度没有限制，开发者可以根据数据量判断如何调用update。
 
-5. 调用Sign.sign，生成数据签名。
+5. 调用[Sign.sign](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#sign-1)，生成数据签名。
 
 **验签**
 
-1. 调用cryptoFramework.createVerify，指定字符串参数'RSA1024|PKCS1|SHA256'，与签名的Sign实例保持一致。创建Verify实例，用于完成验签操作。
+1. 调用[cryptoFramework.createVerify](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateverify)，指定字符串参数'RSA1024|PKCS1|SHA256'，与签名的Sign实例保持一致。创建Verify实例，用于完成验签操作。
 
-2. 调用Verify.init，使用公钥（PubKey）初始化Verify实例。
+2. 调用[Verify.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-5)，使用公钥（PubKey）初始化Verify实例。
 
-3. 调用Verify.update，传入待验证的数据。当前单次update长度没有限制，开发者可以根据数据量判断如何调用update。
+3. 调用[Verify.update](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#update-5)，传入待验证的数据。当前单次update长度没有限制，开发者可以根据数据量判断如何调用update。
 
-4. 调用Verify.verify，对数据进行验签。
+4. 调用[Verify.verify](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#verify-1)，对数据进行验签。
 
 - 异步方法示例：
 
-  <!-- @pkcs1_seg_verify_rsa_keypair_sign_async -->
+  <!-- @[pkcs1_seg_verify_rsa_keypair_sign_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/rsa_pkcs1_segment_signature/rsa_pkcs1_segment_signature_asynchronous.ets) -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -454,7 +454,7 @@
 
 - 同步方法示例：
 
-  <!-- @pkcs1_seg_verify_rsa_keypair_sign_sync -->
+  <!-- @[pkcs1_seg_verify_rsa_keypair_sign_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/rsa_pkcs1_segment_signature/rsa_pkcs1_segment_signature_synchronous.ets) -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -521,37 +521,37 @@
 
 **签名**
 
-1. 调用cryptoFramework.createAsyKeyGeneratorBySpec、AsyKeyGeneratorBySpec.generateKeyPair，指定密钥参数，生成RSA非对称密钥对（KeyPair）。
+1. 调用[cryptoFramework.createAsyKeyGeneratorBySpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygeneratorbyspec10)、[AsyKeyGeneratorBySpec.generateKeyPair](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypair10)，指定密钥参数，生成RSA非对称密钥对（KeyPair）。
 
-   如何生成RSA非对称密钥，开发者可参考下文示例，并结合非对称密钥生成和转换规格：RSA和指定密钥参数生成非对称密钥对理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。
+   如何生成RSA非对称密钥，开发者可参考下文示例，并结合[非对称密钥生成和转换规格：RSA](crypto-key-generation-conversion.md#rsa)和[指定密钥参数生成非对称密钥对](crypto-generate-asym-key-pair-from-key-spec.md)理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。
 
-2. 调用cryptoFramework.createSign，指定字符串参数'RSA|PSS|SHA256|MGF1_SHA256'，创建非对称密钥类型为不带长度的RSA、填充模式为PSS、摘要算法为SHA256、掩码算法为MGF1_SHA256的Sign实例，用于完成签名操作。
+2. 调用[cryptoFramework.createSign](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesign)，指定字符串参数'RSA|PSS|SHA256|MGF1_SHA256'，创建非对称密钥类型为不带长度的RSA、填充模式为PSS、摘要算法为SHA256、掩码算法为MGF1_SHA256的Sign实例，用于完成签名操作。
 
-3. 调用Sign.init，使用私钥（PriKey）初始化Sign实例。
+3. 调用[Sign.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-3)，使用私钥（PriKey）初始化Sign实例。
 
-4. 调用Sign.setSignSpec，设置签名参数。此处设置盐值的长度（SignSpecItem.PSS_SALT_LEN_NUM）为32字节。在验签时将校验此数据。
+4. 调用[Sign.setSignSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#setsignspec10)，设置签名参数。此处设置盐值的长度（SignSpecItem.PSS_SALT_LEN_NUM）为32字节。在验签时将校验此数据。
 
-5. 调用Sign.getSignSpec，获取其他签名参数。
+5. 调用[Sign.getSignSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getsignspec10)，获取其他签名参数。
 
-6. 调用Sign.update，传入待签名的数据。当前单次update长度没有限制，开发者可以根据数据量判断如何调用update。
+6. 调用[Sign.update](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#update-3)，传入待签名的数据。当前单次update长度没有限制，开发者可以根据数据量判断如何调用update。
 
-7. 调用Sign.sign，生成数据签名。
+7. 调用[Sign.sign](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#sign-1)，生成数据签名。
 
 **验签**
 
-1. 调用cryptoFramework.createVerify，指定字符串参数'RSA2048|PSS|SHA256|MGF1_SHA256'，创建非对称密钥类型为RSA2048、填充模式为PSS、摘要算法为SHA256、掩码算法为MGF1_SHA256的Verify实例，用于完成验签操作。
+1. 调用[cryptoFramework.createVerify](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateverify)，指定字符串参数'RSA2048|PSS|SHA256|MGF1_SHA256'，创建非对称密钥类型为RSA2048、填充模式为PSS、摘要算法为SHA256、掩码算法为MGF1_SHA256的Verify实例，用于完成验签操作。
 
-2. 调用Verify.setVerifySpec，设置签名参数。需要与签名时设置的保持一致。
+2. 调用[Verify.setVerifySpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#setverifyspec10)，设置签名参数。需要与签名时设置的保持一致。
 
-3. 调用Verify.init，使用公钥（PubKey）初始化Verify实例。
+3. 调用[Verify.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-5)，使用公钥（PubKey）初始化Verify实例。
 
-4. 调用Verify.update，传入待验证的数据。当前单次update长度没有限制，开发者可以根据数据量判断如何调用update。
+4. 调用[Verify.update](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#update-5)，传入待验证的数据。当前单次update长度没有限制，开发者可以根据数据量判断如何调用update。
 
-5. 调用Verify.verify，对数据进行验签。
+5. 调用[Verify.verify](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#verify-1)，对数据进行验签。
 
 - 异步方法示例：
 
-  <!-- @pss_verify_rsa_keypair_sign_async -->
+  <!-- @[pss_verify_rsa_keypair_sign_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/rsa_pss_signature_verification/rsa_pss_signature_verification_asynchronous.ets) -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -646,7 +646,7 @@
 
 - 同步方法示例：
 
-  <!-- @pss_verify_rsa_keypair_sign_sync -->
+  <!-- @[pss_verify_rsa_keypair_sign_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/rsa_pss_signature_verification/rsa_pss_signature_verification_synchronous.ets) -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -745,33 +745,33 @@
 
 **签名**
 
-1. 调用cryptoFramework.createMd，指定摘要算法SHA256，生成摘要实例（Md）。
+1. 调用[cryptoFramework.createMd](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatemd)，指定摘要算法SHA256，生成摘要实例（Md）。
 
-2. 调用Md.update，传入自定义消息，进行摘要更新计算。单次update长度没有限制。
+2. 调用[Md.update](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#update-6)，传入自定义消息，进行摘要更新计算。单次update长度没有限制。
 
-3. 调用Md.digest，获取摘要计算结果。
+3. 调用[Md.digest](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#digest)，获取摘要计算结果。
 
-4. 调用cryptoFramework.createAsyKeyGenerator、AsyKeyGenerator.generateKeyPair，生成密钥算法为RSA、密钥长度为1024位、素数个数为2的非对称密钥对象（KeyPair），包括公钥（PubKey）和私钥（PriKey）。
+4. 调用[cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator)、[AsyKeyGenerator.generateKeyPair](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypair-1)，生成密钥算法为RSA、密钥长度为1024位、素数个数为2的非对称密钥对象（KeyPair），包括公钥（PubKey）和私钥（PriKey）。
 
-   如何生成RSA非对称密钥，开发者可参考下文示例，并结合非对称密钥生成和转换规格：RSA和随机生成非对称密钥对理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。
+   如何生成RSA非对称密钥，开发者可参考下文示例，并结合[非对称密钥生成和转换规格：RSA](crypto-key-generation-conversion.md#rsa)和[随机生成非对称密钥对](crypto-generate-asym-key-pair-randomly.md)理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。
 
-5. 调用cryptoFramework.createSign，指定字符串参数'RSA|PSS|SHA256|MGF1_SHA256|OnlySign'，创建非对称密钥类型为不带长度的RSA、填充模式为PSS、摘要算法为SHA256、掩码算法为MGF1_SHA256，签名模式为OnlySign的Sign实例，用于完成签名操作。
+5. 调用[cryptoFramework.createSign](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesign)，指定字符串参数'RSA|PSS|SHA256|MGF1_SHA256|OnlySign'，创建非对称密钥类型为不带长度的RSA、填充模式为PSS、摘要算法为SHA256、掩码算法为MGF1_SHA256，签名模式为OnlySign的Sign实例，用于完成签名操作。
 
-6. 调用Sign.init，使用私钥（PriKey）初始化Sign实例。
+6. 调用[Sign.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-3)，使用私钥（PriKey）初始化Sign实例。
 
-7. 调用Sign.sign，生成摘要数据签名。
+7. 调用[Sign.sign](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#sign-1)，生成摘要数据签名。
 
 **验签**
 
-1. 调用cryptoFramework.createVerify，指定字符串参数'RSA|PSS|SHA256|MGF1_SHA256|OnlyVerify'，创建非对称密钥类型为RSA、填充模式为PSS、摘要算法为SHA256、掩码算法为MGF1_SHA256，验签模式为OnlyVerify的Verify实例，用于完成验签操作。
+1. 调用[cryptoFramework.createVerify](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateverify)，指定字符串参数'RSA|PSS|SHA256|MGF1_SHA256|OnlyVerify'，创建非对称密钥类型为RSA、填充模式为PSS、摘要算法为SHA256、掩码算法为MGF1_SHA256，验签模式为OnlyVerify的Verify实例，用于完成验签操作。
 
-2. 调用Verify.init，使用公钥（PubKey）初始化Verify实例。
+2. 调用[Verify.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-5)，使用公钥（PubKey）初始化Verify实例。
 
-3. 调用Verify.verify，对摘要数据进行验签。
+3. 调用[Verify.verify](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#verify-1)，对摘要数据进行验签。
 
 - 异步方法示例：
 
-  <!-- @rsa_pss_onlysign_onlyverify_signature_verification_asynchronous -->
+  <!-- @[rsa_pss_onlysign_onlyverify_signature_verification_asynchronous](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/onlysign_onlyverify_signature_validator/rsa_pss_onlysign_onlyverify_signature_verification_asynchronous.ets) -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -817,7 +817,7 @@
 
 - 同步方法示例：
 
-  <!-- @rsa_pss_onlysign_onlyverify_signature_verification_synchronous -->
+  <!-- @[rsa_pss_onlysign_onlyverify_signature_verification_synchronous](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SignatureVerification/SigningSignatureVerificationArkTs/entry/src/main/ets/pages/onlysign_onlyverify_signature_validator/rsa_pss_onlysign_onlyverify_signature_verification_synchronous.ets) -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';

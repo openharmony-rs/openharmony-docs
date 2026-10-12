@@ -7,11 +7,11 @@
 <!--Tester: @zhaimengchao-->
 <!--Adviser: @zengyawen-->
 
-OEM厂商可以通过@ohos.account.distributedAccount将自有账号与本地系统账号建立关联关系。
+OEM厂商可以通过[@ohos.account.distributedAccount](../../reference/apis-basic-services-kit/js-apis-distributed-account.md)将自有账号与本地系统账号建立关联关系。
 
 ## 开发准备
 
-1. 申请权限：ohos.permission.MANAGE_DISTRIBUTED_ACCOUNTS。申请流程请参考：申请应用权限。
+1. 申请权限：ohos.permission.MANAGE_DISTRIBUTED_ACCOUNTS。申请流程请参考：[申请应用权限](../../security/AccessToken/determine-application-mode.md#system_basic等级应用申请权限的方式)。
 
 2. 导入分布式账号模块。
 
@@ -41,7 +41,7 @@ OEM厂商可以通过@ohos.account.distributedAccount将自有账号与本地系
     };
    ```
 
-2. 调用setOsAccountDistributedInfo接口，将当前系统账号与指定分布式账号绑定到一起。
+2. 调用[setOsAccountDistributedInfo](../../reference/apis-basic-services-kit/js-apis-distributed-account.md#setosaccountdistributedinfo9)接口，将当前系统账号与指定分布式账号绑定到一起。
 
    ```ts
     await distributedAccountAbility.setOsAccountDistributedInfo(distributedInfo).then(() => {
@@ -52,7 +52,7 @@ OEM厂商可以通过@ohos.account.distributedAccount将自有账号与本地系
     });
    ```
 
-3. 在账号绑定之后，可以调用getOsAccountDistributedInfo接口查看分布式账号的登录信息。
+3. 在账号绑定之后，可以调用[getOsAccountDistributedInfo](../../reference/apis-basic-services-kit/js-apis-distributed-account.md#getosaccountdistributedinfo9)接口查看分布式账号的登录信息。
 
    ```ts
     distributedAccountAbility.getOsAccountDistributedInfo().then((data: distributedAccount.DistributedInfo) => {
@@ -79,7 +79,7 @@ OEM厂商可以通过@ohos.account.distributedAccount将自有账号与本地系
     };
    ```
 
-2. 调用setOsAccountDistributedInfo接口，将指定的分布式账号与当前系统账号解绑。
+2. 调用[setOsAccountDistributedInfo](../../reference/apis-basic-services-kit/js-apis-distributed-account.md#setosaccountdistributedinfo9)接口，将指定的分布式账号与当前系统账号解绑。
 
    ```ts
     distributedAccountAbility.setOsAccountDistributedInfo(distributedInfo).then(() => {
@@ -107,7 +107,7 @@ OEM厂商可以通过@ohos.account.distributedAccount将自有账号与本地系
     };
    ```
 
-2. 调用setOsAccountDistributedInfoByLocalId接口，将指定分布式账号与当前系统账号绑定。
+2. 调用[setOsAccountDistributedInfoByLocalId](../../reference/apis-basic-services-kit/js-apis-distributed-account-sys.md#setosaccountdistributedinfobylocalid10)接口，将指定分布式账号与当前系统账号绑定。
 
    ```ts
     await distributedAccountAbility.setOsAccountDistributedInfoByLocalId(localId, distributedInfo).then(() => {
@@ -118,7 +118,7 @@ OEM厂商可以通过@ohos.account.distributedAccount将自有账号与本地系
     });
    ```
 
-3. 在账号绑定之后，可以调用getOsAccountDistributedInfoByLocalId接口查看分布式账号的登录信息。
+3. 在账号绑定之后，可以调用[getOsAccountDistributedInfoByLocalId](../../reference/apis-basic-services-kit/js-apis-distributed-account-sys.md#getosaccountdistributedinfobylocalid10)接口查看分布式账号的登录信息。
 
    ```ts
     distributedAccountAbility.getOsAccountDistributedInfoByLocalId(localId)
@@ -147,7 +147,7 @@ OEM厂商可以通过@ohos.account.distributedAccount将自有账号与本地系
     };
    ```
 
-2. 调用setOsAccountDistributedInfoByLocalId接口，将指定的分布式账号与目标系统账号解绑。
+2. 调用[setOsAccountDistributedInfoByLocalId](../../reference/apis-basic-services-kit/js-apis-distributed-account-sys.md#setosaccountdistributedinfobylocalid10)接口，将指定的分布式账号与目标系统账号解绑。
 
    ```ts
     distributedAccountAbility.setOsAccountDistributedInfoByLocalId(localId, distributedInfo).then(() => {

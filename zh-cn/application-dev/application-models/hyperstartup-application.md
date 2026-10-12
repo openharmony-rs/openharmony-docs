@@ -43,9 +43,9 @@
 
 快启技术会提前完成启动流程中可复用部分的初始化工作。应用启动时，可复用相关初始化结果，从而跳过这部分启动流程，达到启动加速的目标。如下图所示，快启相较于普通启动可跳过启动过程中的部分阶段，从而减少启动时延：
 
-image
+![image](./figures/hyperstartup-application-process.png)
 
-**包含在快启点内的流程有**：AbilityStage模块加载、AbilityStage.onCreate和UIAbility模块加载。其中，在模块加载过程中将执行部分代码，包括顶层代码（top level）、so的constructor和类静态变量初始化等。
+**包含在快启点内的流程有**：AbilityStage模块加载、[AbilityStage.onCreate](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#oncreate)和UIAbility模块加载。其中，在[模块加载](../arkts-utils/arkts-module-side-effects.md)过程中将执行部分代码，包括顶层代码（top level）、so的constructor和类静态变量初始化等。
 
 ## 快启适配
 
@@ -79,7 +79,7 @@ image
 
 ### 将快启风险操作后置到快启点之外
 
-系统为开发者提供了新的回调接口onAboutToCreateAbility()。该接口在AbilityStage.onCreate()执行完毕后触发，但不参与快启初始化过程。无论是否开启应用快启功能，该回调均会被调用。
+系统为开发者提供了新的回调接口[onAboutToCreateAbility()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onabouttocreateability24)。该接口在AbilityStage.onCreate()执行完毕后触发，但不参与快启初始化过程。无论是否开启应用快启功能，该回调均会被调用。
 
 **示例1：** AbilityStage.onCreate中存在快启风险操作。
 
@@ -108,7 +108,7 @@ export class AppAbilityStage extends AbilityStage {
 
 2. 调整业务逻辑时，需要考虑时序依赖，保障业务逻辑正确性。
 
-3. AbilityStage.onCreate()是首个包含较多业务逻辑的生命周期回调。若该回调中的业务不易拆分，建议开发者在首次适配时，将AbilityStage.onCreate()的内容整体移至onAboutToCreateAbility()。后续可通过业务前移扩大收益。
+3. AbilityStage.onCreate()是首个包含较多业务逻辑的生命周期回调。若该回调中的业务不易拆分，建议开发者在首次适配时，将AbilityStage.onCreate()的内容整体移至[onAboutToCreateAbility()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onabouttocreateability24)。后续可通过业务前移扩大收益。
 
 **示例2：** 顶层代码中存在快启风险操作。
 
@@ -187,7 +187,7 @@ export class AppAbilityStage extends AbilityStage {
 
 ### 在更新回调接口中更新数据
 
-考虑到实际调整业务逻辑的困难，部分对外数据交互难以剥离。快启机制为开发者提供新的回调接口onLaunchFromHyperSnap()，该回调接口仅在快启流程（而不是快启初始化流程）中执行，正常冷启动不执行该回调。开发者可以在该回调接口中重新请求外部数据进行同步，保证数据一致性。
+考虑到实际调整业务逻辑的困难，部分对外数据交互难以剥离。快启机制为开发者提供新的回调接口[onLaunchFromHyperSnap()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onlaunchfromhypersnap24)，该回调接口仅在快启流程（而不是快启初始化流程）中执行，正常冷启动不执行该回调。开发者可以在该回调接口中重新请求外部数据进行同步，保证数据一致性。
 
 ```TypeScript
 export class AppAbilityStage extends AbilityStage {
@@ -218,7 +218,7 @@ export class AppAbilityStage extends AbilityStage {
 
 云推开关是一种通过云端在线配置、动态开启或关闭应用特定功能的机制。
 
-借助setHyperSnapEnabled()，应用可以根据需要关闭快启功能，直至云推开关重新开启。
+借助[setHyperSnapEnabled()](../reference/apis-ability-kit/js-apis-app-ability-hyperSnapManager.md#hypersnapmanagersethypersnapenabled)，应用可以根据需要关闭快启功能，直至云推开关重新开启。
 
 云推开关的基本规格：
 
@@ -270,7 +270,7 @@ export class AppAbilityStage extends AbilityStage {
 
 ## 通过应用主动重置快启初始化结果
 
-系统对外提供了requestRebuildHyperSnap()接口，该接口支持应用在自己的业务逻辑中主动调用，清理当前快启初始化结果，在满足条件时重新进行快启初始化。
+系统对外提供了[requestRebuildHyperSnap()](../reference/apis-ability-kit/js-apis-app-ability-hyperSnapManager.md#hypersnapmanagerrequestrebuildhypersnap)接口，该接口支持应用在自己的业务逻辑中主动调用，清理当前快启初始化结果，在满足条件时重新进行快启初始化。
 
 ```TypeScript
 export class LauncherAbility extends UIAbility {
@@ -289,7 +289,7 @@ export class LauncherAbility extends UIAbility {
 
 ## 通过调整业务逻辑提升快启加速收益
 
-纳入快启点的启动逻辑越多，快启收益通常越明显。开发者可以对整个启动流程进行梳理和分析，将适合纳入快启点的启动逻辑（即不含快启风险操作），在保障业务逻辑正确性的条件下前置到快启点内，扩大应用快启技术提升启动性能的收益。
+纳入快启点的启动逻辑越多，快启收益通常越明显。开发者可以对整个启动流程进行梳理和分析，将适合纳入快启点的启动逻辑（即不含[快启风险操作](#快启风险操作)），在保障业务逻辑正确性的条件下前置到快启点内，扩大应用快启技术提升启动性能的收益。
 
 * **将启动过程中的时序无关且无快启风险操作的逻辑前置到快启点内**
 
@@ -297,7 +297,7 @@ export class LauncherAbility extends UIAbility {
 
 * **将启动过程中的加载依赖库逻辑前置到快启点内**
 
-  import动作前置存在适用范围，系统建议将冷启动过程中的import动作尽可能放到快启初始化流程内，以扩大收益。通过DevEco Profiler调优工具扫描关键词“Evaluate”，获取启动过程中的import动作。
+  import动作前置存在适用范围，系统建议将冷启动过程中的import动作尽可能放到快启初始化流程内，以扩大收益。通过[DevEco Profiler调优工具](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-profiler)扫描关键词“Evaluate”，获取启动过程中的import动作。
 
   不建议将启动后的import动作前置到启动流程甚至快启初始化流程中，否则可能导致以下问题。
 

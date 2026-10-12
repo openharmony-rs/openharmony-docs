@@ -7,11 +7,11 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-从API版本26.0.0开始，支持后量子封装解封装算法。以ML-KEM-768和ML-KEM-1024为例，在密钥由HUKS管理的情况下，完成密钥封装和解封装。具体的场景介绍及支持的算法规格，请参考密钥封装支持的算法。
+从API版本26.0.0开始，支持后量子封装解封装算法。以ML-KEM-768和ML-KEM-1024为例，在密钥由HUKS管理的情况下，完成密钥封装和解封装。具体的场景介绍及支持的算法规格，请参考[密钥封装支持的算法](huks-kem-overview.md#支持的算法)。
 
 ## 接口介绍
 
-开发者可以查阅API文档，获取密钥封装接口的详细说明：huks.encapsulate、huks.decapsulate。
+开发者可以查阅API文档，获取密钥封装接口的详细说明：[huks.encapsulate](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksencapsulate)、[huks.decapsulate](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksdecapsulate)。
 
 ### 封装接口参数
 
@@ -22,29 +22,29 @@
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | keyAlias | string | 是 | ML-KEM公钥密钥别名，密钥需预先通过generateKeyItem生成并存储在HUKS。 |
-| params | HuksParam[] | 是 | 密钥封装操作参数集，详见下方params参数集。 |
+| params | [HuksParam[]](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksparam) | 是 | 密钥封装操作参数集，详见下方params参数集。 |
 | sharedKeyAlias | string | 否 | 共享密钥存储别名。为空表示不存储，共享密钥返回给调用方；非空表示存储到HUKS。 |
-| sharedKeyParams | HuksParam[] | 否（sharedKeyAlias非空时必填） | 共享密钥的属性参数集，详见下方sharedKeyParams参数集。 |
+| sharedKeyParams | [HuksParam[]](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksparam) | 否（sharedKeyAlias非空时必填） | 共享密钥的属性参数集，详见下方sharedKeyParams参数集。 |
 
 **params参数集：**
 
 | 属性名称（Tag） | 属性内容（Value） | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| HUKS_TAG_ALGORITHM | 枚举值HuksKeyAlg中的HUKS_ALG_ML_KEM。 | 是 | 密钥封装算法。 |
-| HUKS_TAG_AUTH_STORAGE_LEVEL | 枚举值HuksAuthStorageLevel，取值为HUKS_AUTH_STORAGE_LEVEL_DE（开机后可访问）、HUKS_AUTH_STORAGE_LEVEL_CE（首次解锁后可访问）、HUKS_AUTH_STORAGE_LEVEL_ECE（解锁状态时可访问）。 | 否 | 密钥安全等级。 |
+| HUKS_TAG_ALGORITHM | 枚举值[HuksKeyAlg](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukskeyalg)中的HUKS_ALG_ML_KEM。 | 是 | 密钥封装算法。 |
+| HUKS_TAG_AUTH_STORAGE_LEVEL | 枚举值[HuksAuthStorageLevel](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksauthstoragelevel11)，取值为HUKS_AUTH_STORAGE_LEVEL_DE（开机后可访问）、HUKS_AUTH_STORAGE_LEVEL_CE（首次解锁后可访问）、HUKS_AUTH_STORAGE_LEVEL_ECE（解锁状态时可访问）。 | 否 | 密钥安全等级。 |
 
 **sharedKeyParams参数集（sharedKeyAlias非空时必选）：**
 
 | 属性名称（Tag） | 属性内容（Value） | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| HUKS_TAG_ALGORITHM | 枚举值HuksKeyAlg，如HUKS_ALG_AES等。 | 是 | 共享密钥算法。 |
-| HUKS_TAG_KEY_SIZE | 枚举值HuksKeySize，如HUKS_AES_KEY_SIZE_256等。 | 是 | 共享密钥大小。 |
-| HUKS_TAG_PURPOSE | 枚举值HuksKeyPurpose，如HUKS_KEY_PURPOSE_ENCRYPT \| HUKS_KEY_PURPOSE_DECRYPT等。 | 是 | 共享密钥用途。 |
+| HUKS_TAG_ALGORITHM | 枚举值[HuksKeyAlg](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukskeyalg)，如HUKS_ALG_AES等。 | 是 | 共享密钥算法。 |
+| HUKS_TAG_KEY_SIZE | 枚举值[HuksKeySize](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukskeysize)，如HUKS_AES_KEY_SIZE_256等。 | 是 | 共享密钥大小。 |
+| HUKS_TAG_PURPOSE | 枚举值[HuksKeyPurpose](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukskeypurpose)，如HUKS_KEY_PURPOSE_ENCRYPT \| HUKS_KEY_PURPOSE_DECRYPT等。 | 是 | 共享密钥用途。 |
 | HUKS_TAG_KEY_OVERRIDE | 类型为boolean。 | 否 | 是否覆写同名密钥，默认值为false。 |
 | HUKS_TAG_IS_DEVICE_PASSWORD_SET | 类型为boolean。 | 否 | 是否仅在设置了锁屏密码的情况下，共享密钥才允许被访问。为true时，表示仅在用户设置了锁屏密码的情况下，共享密钥才允许被访问；为false时，表示无论用户是否设置锁屏密码，共享密钥均允许被访问。默认值为false。 |
-| HUKS_TAG_USER_AUTH_TYPE | 枚举值HuksUserAuthType，取值为HUKS_USER_AUTH_TYPE_FINGERPRINT、HUKS_USER_AUTH_TYPE_FACE、HUKS_USER_AUTH_TYPE_PIN等，支持多选。 | 否 | 共享密钥的用户认证类型。 |
-| HUKS_TAG_KEY_AUTH_ACCESS_TYPE | 枚举值HuksAuthAccessType，取值为HUKS_AUTH_ACCESS_INVALID_CLEAR_PASSWORD、HUKS_AUTH_ACCESS_INVALID_NEW_BIO_ENROLL、HUKS_AUTH_ACCESS_ALWAYS_VALID等。 | 否 | 共享密钥的认证访问类型。 |
-| HUKS_TAG_CHALLENGE_TYPE | 枚举值HuksChallengeType，取值为HUKS_CHALLENGE_TYPE_NORMAL、HUKS_CHALLENGE_TYPE_CUSTOM、HUKS_CHALLENGE_TYPE_NONE。 | 否 | challenge类型。 |
+| HUKS_TAG_USER_AUTH_TYPE | 枚举值[HuksUserAuthType](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksuserauthtype9)，取值为HUKS_USER_AUTH_TYPE_FINGERPRINT、HUKS_USER_AUTH_TYPE_FACE、HUKS_USER_AUTH_TYPE_PIN等，支持多选。 | 否 | 共享密钥的用户认证类型。 |
+| HUKS_TAG_KEY_AUTH_ACCESS_TYPE | 枚举值[HuksAuthAccessType](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksauthaccesstype9)，取值为HUKS_AUTH_ACCESS_INVALID_CLEAR_PASSWORD、HUKS_AUTH_ACCESS_INVALID_NEW_BIO_ENROLL、HUKS_AUTH_ACCESS_ALWAYS_VALID等。 | 否 | 共享密钥的认证访问类型。 |
+| HUKS_TAG_CHALLENGE_TYPE | 枚举值[HuksChallengeType](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukschallengetype9)，取值为HUKS_CHALLENGE_TYPE_NORMAL、HUKS_CHALLENGE_TYPE_CUSTOM、HUKS_CHALLENGE_TYPE_NONE。 | 否 | challenge类型。 |
 | HUKS_TAG_AUTH_TIMEOUT | 类型为number，单位为秒。 | 否 | auth token单次有效期。 |
 
 ### 解封装接口参数
@@ -56,21 +56,21 @@
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | keyAlias | string | 是 | ML-KEM私钥密钥别名，密钥需预先通过generateKeyItem生成并存储在HUKS。 |
-| params | HuksParam[] | 是 | 密钥解封装操作参数集，详见下方params参数集。 |
-| encapData | Uint8Array | 是 | 封装密文数据，由封装接口的返回结果HuksReturnResult中的outData字段提供。 |
+| params | [HuksParam[]](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksparam) | 是 | 密钥解封装操作参数集，详见下方params参数集。 |
+| encapData | Uint8Array | 是 | 封装密文数据，由封装接口的返回结果[HuksReturnResult](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksreturnresult9)中的outData字段提供。 |
 | sharedKeyAlias | string | 否 | 共享密钥存储别名。为空表示不存储，共享密钥返回给调用方；非空表示存储到HUKS。 |
-| sharedKeyParams | HuksParam[] | 否（sharedKeyAlias非空时必填） | 共享密钥的属性参数集，参数同封装接口的sharedKeyParams参数集。 |
+| sharedKeyParams | [HuksParam[]](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksparam) | 否（sharedKeyAlias非空时必填） | 共享密钥的属性参数集，参数同封装接口的sharedKeyParams参数集。 |
 
 **params参数集：**
 
 | 属性名称（Tag） | 属性内容（Value） | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| HUKS_TAG_ALGORITHM | 枚举值HuksKeyAlg中的HUKS_ALG_ML_KEM。 | 是 | 密钥解封装算法。 |
-| HUKS_TAG_AUTH_STORAGE_LEVEL | 枚举值HuksAuthStorageLevel，取值为HUKS_AUTH_STORAGE_LEVEL_DE（开机后可访问）、HUKS_AUTH_STORAGE_LEVEL_CE（首次解锁后可访问）、HUKS_AUTH_STORAGE_LEVEL_ECE（解锁状态时可访问）。 | 否 | 密钥安全等级。 |
+| HUKS_TAG_ALGORITHM | 枚举值[HuksKeyAlg](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukskeyalg)中的HUKS_ALG_ML_KEM。 | 是 | 密钥解封装算法。 |
+| HUKS_TAG_AUTH_STORAGE_LEVEL | 枚举值[HuksAuthStorageLevel](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksauthstoragelevel11)，取值为HUKS_AUTH_STORAGE_LEVEL_DE（开机后可访问）、HUKS_AUTH_STORAGE_LEVEL_CE（首次解锁后可访问）、HUKS_AUTH_STORAGE_LEVEL_ECE（解锁状态时可访问）。 | 否 | 密钥安全等级。 |
 
 ### 封装返回结果
 
-封装接口返回HuksReturnResult，其字段如下表所示。
+封装接口返回[HuksReturnResult](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksreturnresult9)，其字段如下表所示。
 
 | 字段名 | 类型 | 说明 |
 | -------- | -------- | -------- |
@@ -79,7 +79,7 @@
 
 ## 约束和限制
 
-- 密钥封装和解封装使用的密钥用途必须为HUKS_KEY_PURPOSE_WRAP（封装，公钥操作）和HUKS_KEY_PURPOSE_UNWRAP（解封装，私钥操作）。
+- 密钥封装和解封装使用的密钥用途必须为[HUKS_KEY_PURPOSE_WRAP](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukskeypurpose)（封装，公钥操作）和[HUKS_KEY_PURPOSE_UNWRAP](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukskeypurpose)（解封装，私钥操作）。
 - ML-KEM生成的共享密钥长度固定为32字节。
 - sharedKeyAlias非空时，sharedKeyParams必须提供且包含共享密钥的必要属性（算法、密钥大小、用途）。
 - sharedKeyAlias非空时，若同名密钥已存在且未设置HUKS_TAG_KEY_OVERRIDE为true，将返回错误。
@@ -89,13 +89,13 @@
 
 **生成密钥**
 
-设备A、设备B各自生成一个ML-KEM密钥，具体请参考密钥生成或密钥导入。
+设备A、设备B各自生成一个ML-KEM密钥，具体请参考[密钥生成](huks-key-generation-arkts.md)或[密钥导入](huks-key-import-overview.md)。
 
 密钥生成时，密钥用途需设置为HUKS_KEY_PURPOSE_WRAP | HUKS_KEY_PURPOSE_UNWRAP，算法设置为HUKS_ALG_ML_KEM，密钥大小设置为768或1024。
 
 **导出公钥**
 
-设备B导出ML-KEM密钥的公钥，具体请参考密钥导出。导出的公钥为X.509 DER格式。
+设备B导出ML-KEM密钥的公钥，具体请参考[密钥导出](huks-export-key-arkts.md)。导出的公钥为X.509 DER格式。
 
 **密钥封装**
 
@@ -107,11 +107,11 @@
 
 **删除密钥**
 
-当密钥废弃不用时，设备A、B均需要删除密钥，具体请参考密钥删除。
+当密钥废弃不用时，设备A、B均需要删除密钥，具体请参考[密钥删除](huks-delete-key-arkts.md)。
 
 ## 代码示例
 
-在进行密钥封装前，需确保已有ML-KEM密钥，可参考密钥生成生成密钥，参考密钥导出导出公钥，参考明文导入密钥导入对端公钥。
+在进行密钥封装前，需确保已有ML-KEM密钥，可参考[密钥生成](huks-key-generation-arkts.md)生成密钥，参考[密钥导出](huks-export-key-arkts.md)导出公钥，参考[明文导入密钥](huks-import-key-in-plaintext-arkts.md)导入对端公钥。
 
 ### 共享密钥不托管到HUKS的示例
 

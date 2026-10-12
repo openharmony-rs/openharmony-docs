@@ -11,13 +11,13 @@
 
 <!--RP1-->
 
-以下权限的开放范围为普通应用，但需要通过访问控制列表（ACL）的方式跨级别申请。
+以下权限的开放范围为普通应用，但需要通过[访问控制列表（ACL）](app-permission-mgmt-overview.md#权限机制中的基本概念)的方式跨级别申请。
 
 normal等级的应用需要将自身的APL等级声明为system_basic及以上，在开发应用安装包时，需要修改应用的HarmonyAppProvision配置文件即SDK目录下的“`Toolchains / _{Version} _/ lib / UnsgnedReleasedProfileTemplate.json`”文件，并重新进行应用签名。
 
 **修改方式：**
 
-HarmonyAppProvision配置文件示例如下所示，修改"bundle-info"&gt; "apl" 字段。
+HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "apl" 字段。
 
 ```json5
 "bundle-info" : {
@@ -133,7 +133,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info"&gt; "apl
 
 **替代方案**：
 
-请参考文件权限组废弃替代方案。
+请参考[文件权限组废弃替代方案](app-permission-group-list.md#文件deprecated)。
 
 ## ohos.permission.READ_DOCUMENT
 
@@ -149,7 +149,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info"&gt; "apl
 
 **替代方案**：
 
-请参考文件权限组废弃替代方案。
+请参考[文件权限组废弃替代方案](app-permission-group-list.md#文件deprecated)。
 <!--DelEnd-->
 
 ## ohos.permission.READ_WRITE_DESKTOP_DIRECTORY
@@ -212,10 +212,10 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info"&gt; "apl
 >
 > 在API版本12，该权限等级变更为normal。
 > - 如果应用仅在本地调试：
->   - 适配API版本12之前的版本，仍需按受限权限申请方式使用该权限。
->   - 仅适配API版本12及之后的版本，可直接声明使用。
+>   - 适配API版本12之前的版本，仍需按[受限权限申请方式](declare-permissions-in-acl.md)使用该权限。
+>   - 仅适配API版本12及之后的版本，可直接[声明使用](declare-permissions.md)。
 > - 如果应用需要上架应用市场：
->   仍需按受限权限申请方式使用该权限。
+>   仍需按[受限权限申请方式](declare-permissions-in-acl.md)使用该权限。
 
 <!--RP18--><!--RP18End-->
 
@@ -345,15 +345,17 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info"&gt; "apl
 
 ## ohos.permission.kernel.ALLOW_WRITABLE_CODE_MEMORY
 
-允许应用申请可写可执行匿名内存。
-
-<!--RP10-->
-针对使用跨平台框架开发的应用，用于应用申请可写可执行的匿名内存。当前仅平板、2in1设备应用可申请此权限。
-<!--RP10End-->
+允许应用申请可写可执行匿名内存，该能力主要用于为应用自带引擎（如 JS 引擎、游戏脚本引擎等）提供即时编译（JIT）能力，提升代码执行效率。
+ 
+<!--RP10--><!--RP10End-->
 
 **权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1 | Tablet
+ 
+<!--RP108--><!--RP108End-->
 
 **起始版本**：14
 
@@ -495,7 +497,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info"&gt; "apl
 
 允许应用固化对端蓝牙设备MAC对应的虚拟地址。
 
-通过BLE扫描、BR扫描或连接监听获取到对端蓝牙设备MAC对应的虚拟地址，申请该权限且调用access.addPersistentDeviceId方法后，可保持该虚拟地址长时间存储，即使是开/关/重启蓝牙也不发生变化。
+通过BLE扫描、BR扫描或连接监听获取到对端蓝牙设备MAC对应的虚拟地址，申请该权限且调用[access.addPersistentDeviceId](../../reference/apis-connectivity-kit/js-apis-bluetooth-access.md#accessaddpersistentdeviceid16)方法后，可保持该虚拟地址长时间存储，即使是开/关/重启蓝牙也不发生变化。
 
 <!--RP36--><!--RP36End-->
 
@@ -610,7 +612,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info"&gt; "apl
 
 **授权方式**：系统授权（system_grant）
 
-**携带额外数据**：是，配置方法请见Driver Development Kit开发指导。
+**携带额外数据**：是，配置方法请见[Driver Development Kit开发指导](../../device/driver/externaldevice-guidelines.md#应用签名)。
 
 **起始版本**：18
 
@@ -768,7 +770,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 允许应用使用闪控球的自动恢复到应用主窗口的能力。
 
-**申请条件**：需要与闪控球权限ohos.permission.USE_FLOAT_BALL一起，才可申请此权限。
+**申请条件**：需要与闪控球权限[ohos.permission.USE_FLOAT_BALL](#ohospermissionuse_float_ball)一起，才可申请此权限。
 
 <!--RP69--><!--RP69End-->
 
@@ -898,7 +900,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.STEERINGWHEEL_INFO
 
@@ -914,7 +916,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.INTERIOR_LIGHT_INFO
 
@@ -930,7 +932,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.CONTROL_INTERIOR_LIGHT
 
@@ -946,7 +948,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.DRIVE_INFORMATION_INFO
 
@@ -962,7 +964,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.ACCELERATOR_PEDAL_INFO
 
@@ -978,7 +980,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.BRAKE_PEDAL_INFO
 
@@ -994,7 +996,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.SET_SYSTEMSHARE_APPLAUNCHTRUSTLIST
 
@@ -1452,9 +1454,11 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **授权方式**：系统授权（system_grant）
 
-**支持设备**：Phone
+**支持设备**：Phone | PC/2in1 | Tablet | TV
 
 **起始版本**：26.0.0
+
+**变更信息：** 从API版本26.0.0开始，增加支持在平板、PC/2in1、TV上申请。
 
 ## ohos.permission.KNOCK_COLLABORATION
 
@@ -1610,7 +1614,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **支持设备**：Phone | Wearable | TV | PC/2in1 | Tablet | Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.MMA_ENERGYREFILL
 
@@ -1624,7 +1628,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.MMA_WEATHER
 
@@ -1638,7 +1642,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 ## ohos.permission.vehicle.MMA_SPATIALACTION
 
@@ -1652,4 +1656,76 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 **支持设备**：Car
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
+
+## ohos.permission.LOCAL_DEBUG_OTHER_APPS
+
+允许应用在开发者模式下且本地调试时使用aa工具以调试应用。
+
+<!--RP107--><!--RP107End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1 | Tablet
+
+**起始版本**：26.0.1
+
+## ohos.permission.kernel.ALLOW_PTRACE_READ
+
+允许应用通过PTRACE读能力获取应用内进程的寄存器及内存信息。
+
+<!--RP110--><!--RP110End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1
+ 
+**起始版本**：26.0.1
+
+## ohos.permission.GET_ALL_BUNDLE_INFO
+ 
+允许应用获取设备已安装的应用列表。
+ 
+<!--RP111--><!--RP111End-->
+ 
+**权限级别**：system_basic
+ 
+**授权方式**：用户授权（user_grant）
+ 
+**支持设备**：PC/2in1
+ 
+**起始版本**：26.0.1
+
+## ohos.permission.ASSESSMENT_CONFIGURATION
+
+允许应用进入考试场景，系统服务将弹窗提醒用户进入考试模式后会限制系统能力，防止用户考试作弊或泄密，在保障考试公平的同时保护用户权益。
+
+<!--RP112--><!--RP112End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.1
+
+## ohos.permission.SYNC_ROOT_MANAGER
+
+允许应用管理云盘同步文件夹。
+
+获取该权限后，应用可以将同步根文件夹添加到文件管理器侧边栏，以及自定义同步根文件夹图标。
+
+<!--RP115--><!--RP115End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：PC/2in1 | Tablet
+
+**起始版本**：26.0.1

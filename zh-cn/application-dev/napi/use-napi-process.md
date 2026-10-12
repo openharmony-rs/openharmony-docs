@@ -20,9 +20,9 @@
 
 ## 创建Native C++工程
 
-- 在DevEco Studio中**New&gt; Create Project**，选择**Native C++**模板，点击**Next**，选择API版本，设置好工程名称，点击**Finish**，创建得到新工程。
+- 在DevEco Studio中**New &gt; Create Project**，选择**Native C++**模板，点击**Next**，选择API版本，设置好工程名称，点击**Finish**，创建得到新工程。
 
-- 创建工程后工程结构可以分两部分，cpp部分和ets部分，工程结构具体介绍可见<!--RP1-->C++工程目录结构<!--RP1End-->。
+- 创建工程后工程结构可以分两部分，cpp部分和ets部分，工程结构具体介绍可见<!--RP1-->[C++工程目录结构](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/ide-project-structure-V5)<!--RP1End-->。
 
 
 ## Native侧方法的实现
@@ -229,10 +229,10 @@ struct Index {
 
 ### 代码调试设备选择
 
-建议开发者优先使用真机进行代码调试，若无真机或者真机无权限则可使用模拟器进行调试，模拟器调试中遇到的问题详见bm工具
+建议开发者优先使用真机进行代码调试，若无真机或者真机无权限则可使用模拟器进行调试，模拟器调试中遇到的问题详见[bm工具](../tools/bm-tool.md#bm工具错误码)
 
 开发者不要使用预览器进行功能调试，预览器的主要功能是调试界面组件，若用于功能调试可能会出现如下报错：
 
 - TypeError: undefined is not callable
 
-部分常见错误用法已增加维测手段覆盖，详见使用Node-API接口产生的异常日志/崩溃分析。
+部分常见错误用法已增加维测手段覆盖，详见[使用Node-API接口产生的异常日志/崩溃分析](use-napi-about-crash.md)。

@@ -24,21 +24,21 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 ## 指定二进制数据转换RSA密钥对
 
-对应的算法规格请查看非对称密钥生成和转换规格：RSA。
+对应的算法规格请查看[非对称密钥生成和转换规格：RSA](crypto-key-generation-conversion.md#rsa)。
 
-1. 获取RSA公钥或私钥二进制数据，封装成Crypto_DataBlob。
+1. 获取RSA公钥或私钥二进制数据，封装成[Crypto_DataBlob](../../reference/apis-crypto-architecture-kit/capi-cryptocommonapi-crypto-datablob.md)。
 
    公钥和私钥可单独传入，此处示例传入公钥。
 
-2. 调用OH_CryptoAsymKeyGenerator_Create，指定字符串参数'RSA1024'，创建密钥算法为RSA1024、素数个数为2的非对称密钥生成器（OH_CryptoAsymKeyGenerator）。
+2. 调用[OH_CryptoAsymKeyGenerator_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoasymkeygenerator_create)，指定字符串参数'RSA1024'，创建密钥算法为RSA1024、素数个数为2的非对称密钥生成器（OH_CryptoAsymKeyGenerator）。
 
-   生成RSA非对称密钥时，默认素数为2，此处省略了参数PRIMES_2。
+   生成RSA非对称密钥时，默认素数为2。
 
-3. 调用OH_CryptoAsymKeyGenerator_Convert，传入二进制密钥数据，生成非对称密钥对象（OH_CryptoKeyPair）。
+3. 调用[OH_CryptoAsymKeyGenerator_Convert](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoasymkeygenerator_convert)，传入二进制密钥数据，生成非对称密钥对象（OH_CryptoKeyPair）。
 
 - 以下以生成RSA密钥对为例：
 
-  <!-- @convert_rsa_keypair -->
+  <!-- @[convert_rsa_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/BinaryDataConvertAsymmetricKeyPair/entry/src/main/cpp/types/project/rsa.cpp) -->
   
   ``` C++
   #include "CryptoArchitectureKit/crypto_common.h"
@@ -82,19 +82,19 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 ## 指定二进制数据转换ECC密钥对
 
-对应的算法规格请查看非对称密钥生成和转换规格：ECC。
+对应的算法规格请查看[非对称密钥生成和转换规格：ECC](crypto-key-generation-conversion.md#ecc)。
 
-1. 获取ECC公钥或私钥二进制数据，封装成Crypto_DataBlob。
+1. 获取ECC公钥或私钥二进制数据，封装成[Crypto_DataBlob](../../reference/apis-crypto-architecture-kit/capi-cryptocommonapi-crypto-datablob.md)。
 
    公钥和私钥可单独传入，此处示例传入公钥和私钥。
 
-2. 调用OH_CryptoAsymKeyGenerator_Create，指定字符串参数'ECC256'，创建密钥算法为ECC、密钥长度为256位的非对称密钥生成器（OH_CryptoAsymKeyGenerator）。
+2. 调用[OH_CryptoAsymKeyGenerator_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoasymkeygenerator_create)，指定字符串参数'ECC256'，创建密钥算法为ECC、密钥长度为256位的非对称密钥生成器（OH_CryptoAsymKeyGenerator）。
 
-3. 调用OH_CryptoAsymKeyGenerator_Convert，传入公钥二进制和私钥二进制，生成非对称密钥对象（OH_CryptoKeyPair）。
+3. 调用[OH_CryptoAsymKeyGenerator_Convert](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoasymkeygenerator_convert)，传入公钥二进制和私钥二进制，生成非对称密钥对象（OH_CryptoKeyPair）。
 
 - 以下以生成ECC密钥对为例：
 
-  <!-- @convert_ecc_keypair -->
+  <!-- @[convert_ecc_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/BinaryDataConvertAsymmetricKeyPair/entry/src/main/cpp/types/project/ecc.cpp) -->
   
   ``` C++
   #include "CryptoArchitectureKit/crypto_common.h"
@@ -139,19 +139,19 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 ## 指定二进制数据转换SM2密钥对
 
-对应的算法规格请查看非对称密钥生成和转换规格：SM2。
+对应的算法规格请查看[非对称密钥生成和转换规格：SM2](crypto-key-generation-conversion.md#sm2)。
 
-1. 获取SM2公钥或私钥二进制数据，封装成Crypto_DataBlob。
+1. 获取SM2公钥或私钥二进制数据，封装成[Crypto_DataBlob](../../reference/apis-crypto-architecture-kit/capi-cryptocommonapi-crypto-datablob.md)。
 
    公钥和私钥可单独传入，此处示例传入公钥和私钥。
 
-2. 调用OH_CryptoAsymKeyGenerator_Create，指定字符串参数'SM2_256'，创建密钥算法为SM2、密钥长度为256位的非对称密钥生成器（OH_CryptoAsymKeyGenerator）。
+2. 调用[OH_CryptoAsymKeyGenerator_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoasymkeygenerator_create)，指定字符串参数'SM2_256'，创建密钥算法为SM2、密钥长度为256位的非对称密钥生成器（OH_CryptoAsymKeyGenerator）。
 
-3. 调用OH_CryptoAsymKeyGenerator_Convert，传入公钥二进制和私钥二进制，生成非对称密钥对象（OH_CryptoKeyPair）。
+3. 调用[OH_CryptoAsymKeyGenerator_Convert](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoasymkeygenerator_convert)，传入公钥二进制和私钥二进制，生成非对称密钥对象（OH_CryptoKeyPair）。
 
 - 以生成SM2密钥对为例：
 
-  <!-- @convert_sm2_keypair -->
+  <!-- @[convert_sm2_keypair](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/BinaryDataConvertAsymmetricKeyPair/entry/src/main/cpp/types/project/sm2.cpp) -->
   
   ``` C++
   #include "CryptoArchitectureKit/crypto_common.h"

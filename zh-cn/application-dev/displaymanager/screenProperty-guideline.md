@@ -3,22 +3,22 @@
 <!--Subsystem: Window-->
 <!--Owner: @oh_wangxk-->
 <!--Designer: @wulong158-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
 
 ## 场景介绍
 
-Display屏幕属性提供管理设备屏幕的一些基础能力，例如获取默认显示设备的相关信息、获取全部显示设备的信息，此外还能对显示设备的插拔行为进行监听。应用可以根据对应的屏幕信息、屏幕状态变化、屏幕折叠状态等适配不同的UI界面显示。
+[Display](../reference/apis-arkui/js-apis-display.md)屏幕属性提供管理设备屏幕的一些基础能力，例如获取默认显示设备的相关信息、获取全部显示设备的信息，此外还能对显示设备的插拔行为进行监听。应用可以根据对应的屏幕信息、屏幕状态变化、屏幕折叠状态等适配不同的UI界面显示。
 
 屏幕属性的常见使用场景有以下几种：
 
-- 查询屏幕信息：包括屏幕的分辨率、物理像素密度、逻辑像素密度、刷新率、屏幕尺寸、屏幕旋转方向、屏幕旋转角度等，具体可见Display属性。
+- 查询屏幕信息：包括屏幕的分辨率、物理像素密度、逻辑像素密度、刷新率、屏幕尺寸、屏幕旋转方向、屏幕旋转角度等，具体可见[Display属性](../reference/apis-arkui/js-apis-display.md#属性)。
 - 监听屏幕状态变化，包括屏幕旋转变化，屏幕分辨率变化、屏幕刷新率变化等。
 - 查询当前设备是否为可折叠设备，同时支持折叠状态（展开/折叠）变化的监听。
 
 ## 接口说明
 
-屏幕属性的常用接口如下表所示，更多功能及接口说明和使用请见@ohos.display (屏幕属性)。
+屏幕属性的常用接口如下表所示，更多功能及接口说明和使用请见[@ohos.display (屏幕属性)](../reference/apis-arkui/js-apis-display.md)。
 
 | 接口                                                         | 描述                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -45,7 +45,7 @@ Display对象，即屏幕实例，提供屏幕相关属性及监听变化的接�
 
 此处，以使用getDefaultDisplaySync()获取当前默认Display对象为例，示例如下：
 
-<!-- @get_display_class -->
+<!-- @[get_display_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 let displayClass: display.Display | null = null;
@@ -60,9 +60,9 @@ try {
 
 ## 获取屏幕相关属性
 
-1. 确保获取到Display对象之后（具体可见获取Display对象），可以通过相关属性查询屏幕的一些基础信息。
+1. 确保获取到Display对象之后（具体可见[获取Display对象](#获取display对象)），可以通过相关属性查询屏幕的一些基础信息。
 
-    <!-- @get_display_info -->
+    <!-- @[get_display_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     let displayClass: display.Display | null = null;
@@ -85,7 +85,7 @@ try {
 
 2. 还可以通过getCutoutInfo()获取挖孔屏、刘海屏、瀑布屏等不可用的屏幕区域信息，以在UI布局时更好地规避该区域。也可以通过getAvailableArea()获取当前设备屏幕的可用区域。
 
-    <!-- @get_cutoutInfo -->
+    <!-- @[get_cutoutInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     let displayClass: display.Display | null = null;
@@ -113,7 +113,7 @@ try {
 
 3. 此外，还可以通过display.isCaptured()判断当前设备是否正在截屏、投屏或录屏。
 
-    <!-- @get_display_captured -->
+    <!-- @[get_display_captured](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     try {
@@ -128,7 +128,7 @@ try {
 
 1. 可以通过display.on('add'|'remove'|'change')监听设备屏幕变化，支持监听屏幕设备的增加、移除和改变等，可以通过display.off('add'|'remove'|'change')关闭对应的监听。
 
-    <!-- @add_listen_callback -->
+    <!-- @[add_listen_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     /**
@@ -157,7 +157,7 @@ try {
 
 2. 可以通过display.on('captureStatusChange')开启屏幕截屏、投屏或录屏状态变化的监听；可以通过display.off('captureStatusChange')关闭对应的监听。
 
-    <!-- @capture_listen_callback -->
+    <!-- @[capture_listen_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     let callback2: Callback<boolean> = (captureStatus: boolean) => {
@@ -180,7 +180,7 @@ try {
 
 3. 此外，还可以通过on('availableAreaChange')监听当前屏幕对象（Display对象）的可用区域变化；可通过off('availableAreaChange')关闭对应的监听。
 
-    <!-- @available_listen_callback -->
+    <!-- @[available_listen_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     /**
@@ -209,7 +209,7 @@ try {
 
 1. 可以通过display.isFoldable()接口查询当前设备是不是折叠设备。
 
-    <!-- @get_fold_device -->
+    <!-- @[get_fold_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     let isFoldableDevice: boolean = false;
@@ -225,7 +225,7 @@ try {
 
 2. 若当前设备为折叠设备，可以通过display.on('foldStatusChange')开启折叠设备折叠状态变化的监听；可通过display.off('foldStatusChange')关闭对应的监听。
 
-    <!-- @fold_device_listen -->
+    <!-- @[fold_device_listen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DisplayBasicSample/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     /**

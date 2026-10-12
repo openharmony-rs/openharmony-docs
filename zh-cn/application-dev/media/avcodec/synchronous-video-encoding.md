@@ -11,11 +11,11 @@
 
 开发者可以调用本模块的Native API接口，完成同步模式的视频编码。
 
-具体实现可参考示例工程。
+具体实现可参考[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/AVCodec)。
 
-当前支持的编码能力，请参考AVCodec支持的格式。
+当前支持的编码能力，请参考[AVCodec支持的格式](avcodec-support-formats.md#视频编码)。
 
-视频编码的限制约束、支持的能力、状态机调用关系请参考异步模式视频编码。
+视频编码的限制约束、支持的能力、状态机调用关系请参考[异步模式视频编码](video-encoding.md)。
 
 ## 适用场景
 
@@ -24,9 +24,9 @@
 
 ## 开发指导
 
-详细的API说明请参考VideoEncoder。
+详细的API说明请参考[VideoEncoder](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md)。
 
-Invoking relationship of video encode stream
+![Invoking relationship of video encode stream](figures/synchronous-video-encode.png)
 
 ### 在CMake脚本中链接动态库
 
@@ -82,7 +82,6 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    bool outputDone = false;
    // 编码输入。
    bool inputDone = false;
-   std::unique_ptr<std::ifstream> inFile_;
    ```
 
 ### Surface模式
@@ -96,7 +95,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
    - videoEnc：视频编码器实例的指针。
    - capability：编码器能力查询实例的指针。
-   - OH_AVCODEC_MIMETYPE_VIDEO_AVC：AVC格式视频编解码器。
+   - [OH_AVCODEC_MIMETYPE_VIDEO_AVC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量)：AVC格式视频编解码器。
 
    ```c++
    // 创建硬件编码器实例。
@@ -111,9 +110,9 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
 2. 调用OH_VideoEncoder_Configure()配置编码器。
 
-   - 详细可配置选项的说明请参考媒体数据键值对。
-   - 参数校验规则请参考OH_VideoEncoder_Configure()。
-   - 参数取值范围可以通过能力查询接口获取，具体示例请参考获取支持的编解码能力。
+   - 详细可配置选项的说明请参考[媒体数据键值对](../../reference/apis-avcodec-kit/capi-codecbase.md#媒体数据键值对)。
+   - 参数校验规则请参考[OH_VideoEncoder_Configure()](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_configure)。
+   - 参数取值范围可以通过能力查询接口获取，具体示例请参考[获取支持的编解码能力](obtain-supported-codecs.md)。
 
    目前支持的所有格式都必须配置以下选项：视频帧宽度、视频帧高度、视频像素格式。
 
@@ -145,7 +144,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
    示例中的变量说明如下：
 
-   nativeWindow：获取方式请参考异步模式视频编码Surface模式的“步骤-6：设置surface”。
+   nativeWindow：获取方式请参考异步模式视频编码[Surface模式](video-encoding.md#surface模式)的“步骤-6：设置surface”。
 
    ```c++
    // 获取需要输入的surface，以进行编码。
@@ -184,9 +183,9 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
 6. 获取可用buffer并释放编码帧。
 
-   - 调用OH_VideoEncoder_QueryOutputBuffer接口获取下一个可用的输出缓冲区（buffer）的索引（index）。
-   - 根据获取的索引（index），调用OH_VideoEncoder_GetOutputBuffer接口获取对应的缓冲区（buffer）实例。
-   - 调用OH_VideoEncoder_FreeOutputBuffer接口释放编码帧。
+   - 调用[OH_VideoEncoder_QueryOutputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_queryoutputbuffer)接口获取下一个可用的输出缓冲区（buffer）的索引（index）。
+   - 根据获取的索引（index），调用[OH_VideoEncoder_GetOutputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_getoutputbuffer)接口获取对应的缓冲区（buffer）实例。
+   - 调用[OH_VideoEncoder_FreeOutputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_freeoutputbuffer)接口释放编码帧。
 
    ```c++
    bool EncoderOutput(OH_AVCodec *videoEnc, int64_t timeoutUs)
@@ -301,7 +300,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
 10. （可选）调用OH_VideoEncoder_Reset()重置编码器。
 
-    调用OH_VideoEncoder_Reset接口后，编码器回到初始化的状态，需要调用接口OH_VideoEncoder_Configure和OH_VideoEncoder_Prepare重新配置。
+    调用OH_VideoEncoder_Reset接口后，编码器回到初始化的状态，需要调用接口[OH_VideoEncoder_Configure](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_configure)和[OH_VideoEncoder_Prepare](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_prepare)重新配置。
 
     ```c++
     // 重置编码器videoEnc。
@@ -443,9 +442,9 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
 5. 获取可用buffer并写入码流至编码器
 
-    - 调用OH_VideoEncoder_QueryInputBuffer接口获取下一个可用的输入缓冲区（buffer）的索引（index）。
-    - 根据获取的索引（index），调用OH_VideoEncoder_GetInputBuffer接口获取对应的缓冲区（buffer）实例。
-    - 将需要编码的数据写入该缓冲区（buffer）后，调用OH_VideoEncoder_PushInputBuffer接口将其送入编码输入队列进行编码。当最后一帧数据被送入编码输入队列时，需要将flag标识成AVCODEC_BUFFER_FLAGS_EOS，通知编码器输入结束。
+    - 调用[OH_VideoEncoder_QueryInputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_queryinputbuffer)接口获取下一个可用的输入缓冲区（buffer）的索引（index）。
+    - 根据获取的索引（index），调用[OH_VideoEncoder_GetInputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_getinputbuffer)接口获取对应的缓冲区（buffer）实例。
+    - 将需要编码的数据写入该缓冲区（buffer）后，调用[OH_VideoEncoder_PushInputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_pushinputbuffer)接口将其送入编码输入队列进行编码。当最后一帧数据被送入编码输入队列时，需要将flag标识成[AVCODEC_BUFFER_FLAGS_EOS](../../reference/apis-avcodec-kit/capi-native-avbuffer-info-h.md#oh_avcodecbufferflags)，通知编码器输入结束。
 
 
     示例中的变量size、offset、pts、frameData、flags说明与Surface模式相同，此处不再赘述。
@@ -517,7 +516,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
                     // 异常处理。
                     return false;
                 }
-                if (inFile_->eof()) {
+                if (inputFile->eof()) {
                     inputDone = 1;
                 }
                 break;
@@ -537,9 +536,9 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
 
 6. 获取可用buffer并释放编码帧。
 
-   - 调用OH_VideoEncoder_QueryOutputBuffer接口获取下一个可用的输出缓冲区（buffer）的索引（index）。
-   - 根据获取的索引（index），调用OH_VideoEncoder_GetOutputBuffer接口获取对应的缓冲区（buffer）实例。
-   - 调用OH_VideoEncoder_FreeOutputBuffer接口释放编码帧。
+   - 调用[OH_VideoEncoder_QueryOutputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_queryoutputbuffer)接口获取下一个可用的输出缓冲区（buffer）的索引（index）。
+   - 根据获取的索引（index），调用[OH_VideoEncoder_GetOutputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_getoutputbuffer)接口获取对应的缓冲区（buffer）实例。
+   - 调用[OH_VideoEncoder_FreeOutputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_freeoutputbuffer)接口释放编码帧。
   
 
     ```c++
@@ -615,4 +614,4 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     }
     ```
 
-后续流程（包括刷新、重置、停止和销毁编码器）与Surface模式基本一致，请参考Surface模式的步骤9-12。
+后续流程（包括刷新、重置、停止和销毁编码器）与Surface模式基本一致，请参考[Surface模式](#surface模式)的步骤9-12。

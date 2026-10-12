@@ -3,7 +3,7 @@
 <!--Subsystem: Window-->
 <!--Owner: @oh_wangxk-->
 <!--Designer: @wulong158-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
 
 <!--RP1-->
@@ -13,7 +13,7 @@
 
 **问题现象**
 
-获取虚拟屏的Display对象后，orientation属性值为4，未在Orientation枚举范围中。
+获取虚拟屏的Display对象后，orientation属性值为4，未在[Orientation](../reference/apis-arkui/js-apis-display.md#orientation10)枚举范围中。
 
 **产生原因**
 

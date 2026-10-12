@@ -74,7 +74,7 @@
 
 3. Q：`OH_JSVM_ReferenceRef`、`OH_JSVM_ReferenceUnRef`、`OH_JSVM_CreateReference`、`OH_JSVM_DeleteReference`时程序崩溃。
 
-   A：检查是否同时有多个线程持有和释放`JSVM_Ref`，见多线程共享引擎实例。
+   A：检查是否同时有多个线程持有和释放`JSVM_Ref`，见[多线程共享引擎实例](jsvm-guidelines.md#多线程共享引擎实例)。
 
 4. Q：在虚拟机引擎实例中创建JS类型实例崩溃（如`OH_JSVM_CreateDouble`），调用栈如下：
 
@@ -84,11 +84,11 @@
    #02 pc 00000000015c99b8/system/lib64/ndk/libjsvm.so(v8::internal::HandleScope::Extend(v8::internal::Isolate*)+200)
    ```
 
-   A：检查HandleScope的使用是否正确，参考生命周期管理。
+   A：检查HandleScope的使用是否正确，参考[生命周期管理](jsvm-guidelines.md#生命周期管理)。
 
 5. Q：调用JSVM-API时出现 `JSVM Fatal Error Message:(openHandleScopes)==(openHandleScopesBefore)` 错误。
    
-   A：调用JSVM-API时未遵循其使用规范正确管理HandleScopes生命周期，导致HandleScopes层数发生变化，调用结束后无法通过JSVM系统层检查，则返回该报错。修改请参考JSVM-API使用规范，优先排查注入回调函数中的JSVM-API调用点。
+   A：调用JSVM-API时未遵循其使用规范正确管理HandleScopes生命周期，导致HandleScopes层数发生变化，调用结束后无法通过JSVM系统层检查，则返回该报错。修改请参考[JSVM-API使用规范](jsvm-guidelines.md)，优先排查注入回调函数中的JSVM-API调用点。
 
 6. Q：在调用JSVM-API时出现如下两种报错：
    ```txt
@@ -113,7 +113,7 @@
    #07 pc 0000000008269a8/system/lib64/libv8_shared.so
    ```
 
-   A：这两种报错可能指向同一问题，即应用侧执行OH_JSVM_DestroyEnv()(释放JSVM环境)后，仍在执行业务逻辑，尝试调用JSVM-API，触发报错。该报错可能由三种情况产生：
+   A：这两种报错可能指向同一问题，即应用侧执行[OH_JSVM_DestroyEnv()](../reference/common/capi-jsvm-h.md#oh_jsvm_destroyenv)(释放JSVM环境)后，仍在执行业务逻辑，尝试调用JSVM-API，触发报错。该报错可能由三种情况产生：
 
       a) 回调函数中含有对JSVM-API的调用，在被触发时应用侧已经执行完OH_JSVM_DestroyEnv()，此时直接在回调函数内尝试调用JSVM-API，则可能会导致该错误。开发者应当保证所有JSVM-C-API在同一个js线程上调用，并在此线程上为每个JSVM实例添加对应标记(thread_local_flag)，在执行OH_JSVM_DestroyEnv()后将对应thread_local_flag置为true。回调函数中调用JSVM-API时，应当先判断当前是否在上述js线程上，若是，则直接根据thread_local_flag判断是否能够调用API，若不是，则把该任务抛到上述js线程上再进行判断和执行。
 
@@ -121,13 +121,13 @@
 
       c) 若使用任务队列来进行js任务执行，出现了先抛出destroy env的任务，后抛出普通js任务的情况，此时也可能导致该报错。针对这个情况，可以参考a情况做法，为JSVM实例添加thread_local_flag，若任务取出时thread_local_flag为true，则队列中剩余的任务需要全部跳过。
       
-   如需获取更详细信息，请参考使用JSVM-API实现JS与C/C++语言交互开发流程。
+   如需获取更详细信息，请参考[使用JSVM-API实现JS与C/C++语言交互开发流程](use-jsvm-process.md)。
 
 ## JSVM-API执行失败类
 
 1. Q：`OH_JSVM_GetCbInfo`无法获取JS函数参数。
 
-   A：检查函数传递的参数是否正确，见获取JS传入参数及其数量。
+   A：检查函数传递的参数是否正确，见[获取JS传入参数及其数量](jsvm-guidelines.md#获取js传入参数及其数量)。
 
 2. Q：`OH_JSVM_CreateFunction`等函数调用失败，返回值为`JSVM_PENDING_EXCEPTION`。
 
@@ -135,4 +135,8 @@
 
 3. Q：JS执行时无法找到`OH_JSVM_DefineClass`定义的类。
 
-   A：检查是否将定义的类绑定到上下文中，见上下文绑定对象。
+   A：检查是否将定义的类绑定到上下文中，见[上下文绑定对象](jsvm-guidelines.md#上下文绑定对象)。
+
+4. Q：`OH_JSVM_CompileScript()`调用失败，返回值为`JSVM_GENERIC_FAILURE`。
+
+   A：见[程序崩溃类](#程序崩溃类)第6点。

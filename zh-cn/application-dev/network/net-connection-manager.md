@@ -12,7 +12,7 @@
 
 > **说明：**
 >
-> 为了保证应用的运行效率，大部分API调用都是异步的，对于异步调用的API，均提供了callback和Promise两种方式，以下示例均采用promise函数，更多方式可以查阅@ohos.net.connection (网络连接管理)。
+> 为了保证应用的运行效率，大部分API调用都是异步的，对于异步调用的API，均提供了callback和Promise两种方式，以下示例均采用promise函数，更多方式可以查阅[@ohos.net.connection (网络连接管理)](../reference/apis-network-kit/js-apis-net-connection.md)。
 
 ## 基本概念
 
@@ -38,11 +38,11 @@
 
 1. 声明接口调用所需要的权限：ohos.permission.GET_NETWORK_INFO。
 
-   此权限级别为normal，在申请权限前，请保证符合权限使用的基本原则。然后参考访问控制-声明权限声明对应权限。
+   此权限级别为normal，在申请权限前，请保证符合[权限使用的基本原则](../security/AccessToken/app-permission-mgmt-overview.md#权限使用的基本原则)。然后参考[访问控制-声明权限](../security/AccessToken/declare-permissions.md)声明对应权限。
 
 2. 从@kit.NetworkKit中导入connection命名空间。
 
-   <!-- @NetConnection_manage_case_module_import -->
+   <!-- @[NetConnection_manage_case_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/ConnectNetworkBtn.ets) -->
    
    ``` TypeScript
    // 引入包名。
@@ -50,9 +50,9 @@
    import { BusinessError } from '@kit.BasicServicesKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
    ```
-3. 调用createNetConnection方法，指定网络能力、网络类型和超时时间(可选，如不传入代表默认网络；创建不同于默认网络时可通过指定这些参数完成)，创建一个NetConnection对象。
+3. 调用[createNetConnection](../reference/apis-network-kit/js-apis-net-connection.md#connectioncreatenetconnection)方法，指定网络能力、网络类型和超时时间(可选，如不传入代表默认网络；创建不同于默认网络时可通过指定这些参数完成)，创建一个NetConnection对象。
 
-   <!-- @notification_network_create_NetConnection -->
+   <!-- @[notification_network_create_NetConnection](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/ConnectNetworkBtn.ets) -->
    
    ``` TypeScript
    let netSpecifier: connection.NetSpecifier = {
@@ -71,9 +71,9 @@
    let conn = connection.createNetConnection(netSpecifier, TIMEOUT);
    ```
 
-4. 调用该对象的on()方法，传入type和callback，订阅关心的事件。
+4. 调用该对象的[on()](../reference/apis-network-kit/js-apis-net-connection.md#onnetavailable)方法，传入type和callback，订阅关心的事件。
 
-   <!-- @notification_network_netAvailable_netUnavailable -->
+   <!-- @[notification_network_netAvailable_netUnavailable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/ConnectNetworkBtn.ets) -->
    
    ``` TypeScript
    // 订阅事件，如果当前指定网络可用，通过on_netAvailable通知用户
@@ -106,9 +106,9 @@
    });
    ```
 
-5. 调用该对象的register()方法，订阅指定网络状态变化的通知。当网络可用时，会触发netAvailable事件的回调；当网络从连接到断开时，会触发netLost事件的回调；当网络连接信息变化时（例如linkAddresses增加V6地址），会触发netConnectionPropertiesChange事件回调；当网络能力发生变化时（例如网络的连通性发生变化），会触发netCapabilitiesChange回调。
+5. 调用该对象的[register()](../reference/apis-network-kit/js-apis-net-connection.md#register)方法，订阅指定网络状态变化的通知。当网络可用时，会触发netAvailable事件的回调；当网络从连接到断开时，会触发netLost事件的回调；当网络连接信息变化时（例如linkAddresses增加V6地址），会触发netConnectionPropertiesChange事件回调；当网络能力发生变化时（例如网络的连通性发生变化），会触发netCapabilitiesChange回调。
 
-   <!-- @notification_network_register -->
+   <!-- @[notification_network_register](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/ConnectNetworkBtn.ets) -->
    
    ``` TypeScript
    // 订阅连接状态变化
@@ -119,9 +119,9 @@
    });
    ```
 
-6. 当不使用该网络时，可以调用该对象的unregister()方法，取消订阅。
+6. 当不使用该网络时，可以调用该对象的[unregister()](../reference/apis-network-kit/js-apis-net-connection.md#unregister)方法，取消订阅。
 
-   <!-- @notification_network_unregister -->
+   <!-- @[notification_network_unregister](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/ConnectNetworkBtn.ets) -->
    
    ``` TypeScript
    // 当不使用该网络时，可以调用该对象的unregister()方法，取消订阅。
@@ -148,7 +148,7 @@
 本节旨在介绍监控默认网络的变化后，应用报文能够快速迁移到新默认网络上，具体做法如下。
 ### 导入connection命名空间
 
-<!-- @net_Connection_create_connection_import -->
+<!-- @[net_Connection_create_connection_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 import { connection, socket } from '@kit.NetworkKit';
@@ -157,7 +157,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 ```
 ### 监控默认网络变化
 
-<!-- @monitor_default_network_change -->
+<!-- @[monitor_default_network_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 const netConnection = connection.createNetConnection();
@@ -174,7 +174,7 @@ netConnection.on('netAvailable', (data: connection.NetHandle) => {
 
 **原网络连接使用Socket模块建立连接**
 
-<!-- @original_network_connection_uses_socket -->
+<!-- @[original_network_connection_uses_socket](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 // 创建socket对象。
@@ -251,11 +251,11 @@ function socketTest() {
 
 1. 声明接口调用所需要的权限：ohos.permission.GET_NETWORK_INFO。
 
-   此权限级别为normal，在申请权限前，请保证符合权限使用的基本原则。然后参考访问控制-声明权限声明对应权限。
+   此权限级别为normal，在申请权限前，请保证符合[权限使用的基本原则](../security/AccessToken/app-permission-mgmt-overview.md#权限使用的基本原则)。然后参考[访问控制-声明权限](../security/AccessToken/declare-permissions.md)声明对应权限。
 
 2. 示例代码
 
-   <!-- @get_all_registered_networks -->
+   <!-- @[get_all_registered_networks](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/GetAllNets.ets) -->
    
    ``` TypeScript
    // 从@kit.NetworkKit中导入connection命名空间。
@@ -276,28 +276,28 @@ function socketTest() {
 
 1. 声明接口调用所需要的权限：ohos.permission.GET_NETWORK_INFO。
 
-   此权限级别为normal，在申请权限前，请保证符合权限使用的基本原则。然后参考访问控制-声明权限声明对应权限。
+   此权限级别为normal，在申请权限前，请保证符合[权限使用的基本原则](../security/AccessToken/app-permission-mgmt-overview.md#权限使用的基本原则)。然后参考[访问控制-声明权限](../security/AccessToken/declare-permissions.md)声明对应权限。
 2. 查询默认网络或指定网络连接信息代码示例
    
-   通过调用getDefaultNet方法，获取默认的数据网络(NetHandle)；调用getNetCapabilities方法，获取该NetHandle对应网络的能力信息。能力信息包含了网络类型(蜂窝网络、Wi-Fi网络、以太网网络等)、网络具体能力等网络信息。也可以调用getConnectionProperties方法，获取该NetHandle对应网络的连接信息。
+   通过调用[getDefaultNet](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetdefaultnet)方法，获取默认的数据网络(NetHandle)；调用[getNetCapabilities](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetnetcapabilities)方法，获取该NetHandle对应网络的能力信息。能力信息包含了网络类型(蜂窝网络、Wi-Fi网络、以太网网络等)、网络具体能力等网络信息。也可以调用[getConnectionProperties](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetconnectionproperties)方法，获取该NetHandle对应网络的连接信息。
 
-    <!-- @get_default_network_methods -->
+    <!-- @[get_default_network_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/DefaultNetworkBtn.ets) -->
     
     ``` TypeScript
     // 从@kit.NetworkKit中导入connection命名空间。
     import { connection } from '@kit.NetworkKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
-    // ···
+    // ...
         let netHandleInfo:connection.NetHandle|null = null;
         // 调用getDefaultNet方法，获取默认的数据网络(NetHandle)
         connection.getDefaultNet().then((data: connection.NetHandle) => {
           if (data.netId == 0) {
-            hilog.info(0x0000, 'testTag', `don't have defaultNet`);
+            hilog.error(0x0000, 'testTag', `don't have defaultNet`);
             // 当前无默认网络时，获取的netHandler的netid为0,属于异常情况，需要额外处理
             return;
           }
           if (data) {
-            // ···
+            // ...
             hilog.info(0x0000, 'testTag', 'getDefaultNet get data: ' + JSON.stringify(data));
             // 获取netHandle对应网络的能力信息。能力信息包含了网络类型、网络具体能力等网络信息
             netHandleInfo = data;
@@ -349,14 +349,14 @@ function socketTest() {
         connection.getConnectionProperties(netHandleInfo).then((data: connection.ConnectionProperties) => {
           hilog.info(0x0000, 'testTag', 'getConnectionProperties get data: ' + JSON.stringify(data));
         })
-    // ···
+      // ...
     ```
     
 3. 查询所有网络连接信息代码示例
    
-   通过调用getAllNets方法，获取所有处于连接状态的网络列表(Array\<NetHandle>)。然后遍历获取到的NetHandle数组，分别调用getNetCapabilities方法，获取该NetHandle对应网络的能力信息，能力信息包含了网络类型(蜂窝网络、Wi-Fi网络、以太网网络等)、网络具体能力等网络信息。也可以调用getConnectionProperties方法，获取该NetHandle对应网络的连接信息。
+   通过调用[getAllNets](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetallnets)方法，获取所有处于连接状态的网络列表(Array\<NetHandle>)。然后遍历获取到的NetHandle数组，分别调用[getNetCapabilities](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetnetcapabilities)方法，获取该NetHandle对应网络的能力信息，能力信息包含了网络类型(蜂窝网络、Wi-Fi网络、以太网网络等)、网络具体能力等网络信息。也可以调用[getConnectionProperties](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetconnectionproperties)方法，获取该NetHandle对应网络的连接信息。
 
-    <!-- @get_net_capabilities_and_get_connection_properties -->
+    <!-- @[get_net_capabilities_and_get_connection_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/AllNetworksBtn.ets) -->
     
     ``` TypeScript
     // 从@kit.NetworkKit中导入connection命名空间。
@@ -393,15 +393,15 @@ function socketTest() {
 
 1. 声明接口调用所需要的权限：ohos.permission.GET_NETWORK_INFO
 
-   此权限级别为normal，在申请权限前，请保证符合权限使用的基本原则。然后参考访问控制-声明权限声明对应权限。
+   此权限级别为normal，在申请权限前，请保证符合[权限使用的基本原则](../security/AccessToken/app-permission-mgmt-overview.md#权限使用的基本原则)。然后参考[访问控制-声明权限](../security/AccessToken/declare-permissions.md)声明对应权限。
 
 2. 代码示例
    
-   调用getDefaultNetSync方法，获取当前默认网络的netHandle，netHandle有效的情况下，调用getNetCapabilitiesSync方法，获取NetHandle对应网络的能力信息，根据获取到的能力信息，判断networkCap数组中的值判断网络是否可用。
+   调用[getDefaultNetSync](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetdefaultnetsync9)方法，获取当前默认网络的netHandle，netHandle有效的情况下，调用[getNetCapabilitiesSync](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetnetcapabilitiessync10)方法，获取NetHandle对应网络的能力信息，根据获取到的能力信息，判断networkCap数组中的值判断网络是否可用。
    
    NET_CAPABILITY_CHECKING_CONNECTIVITY表示在进行连通性判断的过程中，当不处于连通性判断过程中，且networkCap数组中包含NET_CAPABILITY_VALIDATED表示网络连通性校验通过，可以访问互联网。
 
-    <!-- @NetConnection_manage_case_default_net_sync -->
+    <!-- @[NetConnection_manage_case_default_net_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/DefaultNetSyncBtn.ets) -->
     
     ``` TypeScript
     // 从@kit.NetworkKit中导入connection命名空间。
@@ -441,13 +441,13 @@ function socketTest() {
 
 1. 声明接口调用所需要的权限：ohos.permission.GET_NETWORK_INFO
 
-   此权限级别为normal，在申请权限前，请保证符合权限使用的基本原则。然后参考访问控制-声明权限声明对应权限。
+   此权限级别为normal，在申请权限前，请保证符合[权限使用的基本原则](../security/AccessToken/app-permission-mgmt-overview.md#权限使用的基本原则)。然后参考[访问控制-声明权限](../security/AccessToken/declare-permissions.md)声明对应权限。
 
 2. 代码示例
    
-   调用getAddressesByName方法，使用默认网络解析主机名以获取所有IP地址。
+   调用[getAddressesByName](../reference/apis-network-kit/js-apis-net-connection.md#connectiongetaddressesbyname)方法，使用默认网络解析主机名以获取所有IP地址。
 
-    <!-- @resolve_the_domain_name_and_get_all_ips -->
+    <!-- @[resolve_the_domain_name_and_get_all_ips](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/DefaultNetworkIPBtn.ets) -->
     
     ``` TypeScript
     // 从@kit.NetworkKit中导入connection命名空间。
@@ -466,4 +466,4 @@ function socketTest() {
 
 针对网络连接的开发，有以下相关实例可供参考：
 
-- NetConnection_Manage_case(网络连接管理)
+- [NetConnection_Manage_case(网络连接管理)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case)

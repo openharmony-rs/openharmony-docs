@@ -7,15 +7,15 @@
 <!--Adviser: @zhang_yixin13-->
 
 
-LocalStorage是页面级的UI状态存储，通过\@Entry装饰器接收的参数可以在页面内共享同一个LocalStorage实例。LocalStorage支持UIAbility实例内多个页面间状态共享。
+LocalStorage是页面级的UI状态存储，通过\@Entry装饰器接收的参数可以在页面内共享同一个LocalStorage实例。LocalStorage支持[UIAbility](../../application-models/uiability-overview.md)实例内多个页面间状态共享。
 
 
-本文仅介绍LocalStorage使用场景和相关的装饰器：\@LocalStorageProp和\@LocalStorageLink。
+本文仅介绍LocalStorage使用场景和相关的装饰器：[\@LocalStorageProp](../../reference/apis-arkui/arkui-ts/ts-state-management-localstorageprop.md#localstorageprop)和[\@LocalStorageLink](../../reference/apis-arkui/arkui-ts/ts-state-management-localstoragelink.md#localstoragelink)。
 
 
-在阅读本文档前，需要开发者对状态管理框架有基本的了解。建议提前阅读：状态管理概述。
+在阅读本文档前，需要开发者对状态管理框架有基本的了解。建议提前阅读：[状态管理概述](./arkts-state-management-overview.md)。
 
-LocalStorage还提供了API接口，可以让开发者通过接口在自定义组件外手动触发Storage对应key的增删改查，建议配合LocalStorage API文档阅读。最佳实践请参考状态管理最佳实践。
+LocalStorage还提供了API接口，可以让开发者通过接口在自定义组件外手动触发Storage对应key的增删改查，建议配合[LocalStorage API文档](../../reference/apis-arkui/arkui-ts/ts-state-management.md#localstorage9)阅读。最佳实践请参考[状态管理最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-status-management)。
 
 > **说明：**
 >
@@ -26,11 +26,11 @@ LocalStorage还提供了API接口，可以让开发者通过接口在自定义�
 
 LocalStorage是ArkTS为构建页面级别状态变量提供存储的内存内的“数据库”。
 
-- 应用程序可以创建多个LocalStorage实例，LocalStorage实例可以在页面内共享，也可以通过getSharedLocalStorage接口，实现UIAbility内跨页面共享。跨UIAbility共享数据推荐使用AppStorage。
+- 应用程序可以创建多个LocalStorage实例，LocalStorage实例可以在页面内共享，也可以通过[getSharedLocalStorage](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getsharedlocalstorage12)接口，实现UIAbility内跨页面共享。跨UIAbility共享数据推荐使用[AppStorage](./arkts-appstorage.md)。
 
-- 组件树的根节点，即被\@Entry装饰的\@Component，可以被分配一个LocalStorage实例，此组件的所有子组件实例将自动获得对该LocalStorage实例的访问权限。
+- 组件树的根节点，即被[\@Entry](../../reference/apis-arkui/arkui-ts/ts-universal-entry.md#entry)装饰的[\@Component](./arkts-create-custom-components.md#component)，可以被分配一个LocalStorage实例，此组件的所有子组件实例将自动获得对该LocalStorage实例的访问权限。
 
-- \@Component装饰的组件既可以自动继承来自父组件的LocalStorage实例，也可以传入指定的LocalStorage的实例，详见：自定义组件接收LocalStorage实例。
+- \@Component装饰的组件既可以自动继承来自父组件的LocalStorage实例，也可以传入指定的LocalStorage的实例，详见：[自定义组件接收LocalStorage实例](#自定义组件接收localstorage实例)。
 
 - LocalStorage中的所有属性都是可变的。
 
@@ -38,9 +38,9 @@ LocalStorage是ArkTS为构建页面级别状态变量提供存储的内存内的
 
 LocalStorage根据与\@Component装饰的组件的同步类型不同，提供了两个装饰器：
 
-- @LocalStorageProp：\@LocalStorageProp装饰的变量与LocalStorage中给定属性建立单向同步关系。
+- [@LocalStorageProp](#localstorageprop)：\@LocalStorageProp装饰的变量与LocalStorage中给定属性建立单向同步关系。
 
-- @LocalStorageLink：\@LocalStorageLink装饰的变量与LocalStorage中给定属性建立双向同步关系。
+- [@LocalStorageLink](#localstoragelink)：\@LocalStorageLink装饰的变量与LocalStorage中给定属性建立双向同步关系。
 
 
 ## \@LocalStorageProp
@@ -65,7 +65,7 @@ LocalStorage根据与\@Component装饰的组件的同步类型不同，提供了
 | \@LocalStorageProp变量装饰器 | 说明                                                         |
 | ---------------------------- | ------------------------------------------------------------ |
 | 装饰器参数                   | key：常量字符串，必填（字符串需要有引号）。                  |
-| 允许装饰的变量类型           | Object、class、string、number、boolean、enum类型，以及这些类型的数组。<br/>API version 12及以上支持Map、Set、Date、undefined和null类型以及这些类型的联合类型，示例见LocalStorage支持联合类型。<br/>嵌套类型的场景请参考观察变化和行为表现。 <br/>**说明：**<br/>变量类型必须被指定，建议和LocalStorage中对应属性类型相同，否则会发生类型隐式转换，从而导致应用行为异常。|
+| 允许装饰的变量类型           | Object、class、string、number、boolean、enum类型，以及这些类型的数组。<br/>API version 12及以上支持[Map](#装饰map类型变量)、[Set](#装饰set类型变量)、[Date](#装饰date类型变量)、undefined和null类型以及这些类型的联合类型，示例见[LocalStorage支持联合类型](#localstorage支持联合类型)。<br/>嵌套类型的场景请参考[观察变化和行为表现](#观察变化和行为表现)。 <br/>**说明：**<br/>变量类型必须被指定，建议和LocalStorage中对应属性类型相同，否则会发生类型隐式转换，从而导致应用行为异常。|
 | 同步类型                     | 单向同步：从LocalStorage的对应属性到组件的状态变量。组件本地的修改是允许的，但是LocalStorage中给定的属性一旦发生变化，将覆盖本地的修改。 |
 | 被装饰变量的初始值           | 必须指定，如果LocalStorage实例中不存在属性，则用该初始值初始化该属性，并存入LocalStorage中。 |
 
@@ -75,11 +75,11 @@ LocalStorage根据与\@Component装饰的组件的同步类型不同，提供了
 | 传递/访问规则    | 说明                                                                                  |
 | ---------- |-------------------------------------------------------------------------------------|
 | 从父节点初始化和更新 | 禁止，\@LocalStorageProp不支持从父节点初始化，只能从LocalStorage中key对应的属性初始化，如果没有对应的key，将使用本地默认值初始化。 |
-| 初始化子节点     | 支持，可用于初始化\@State、\@Link、\@Prop、\@Provide。                                           |
+| 初始化子节点     | 支持，可用于初始化[\@State](./arkts-state.md)、[\@Link](./arkts-link.md)、[\@Prop](./arkts-prop.md)、[\@Provide](./arkts-provide-and-consume.md)。                                           |
 | 是否支持组件外访问  | 否。                                                                                  |
 
 
-localstorageprop-initialization
+![localstorageprop-initialization](figures/localstorageprop-initialization.png)
 
   **图1** \@LocalStorageProp初始化规则图示
 
@@ -90,15 +90,15 @@ localstorageprop-initialization
 
 - 当装饰的数据类型为boolean、string、number类型时，可以观察到数值的变化。
 
-- 当装饰的数据类型为class或者Object时，可以观察到对象整体赋值和对象属性变化（详见从UI内部使用LocalStorage）。
+- 当装饰的数据类型为class或者Object时，可以观察到对象整体赋值和对象属性变化（详见[从UI内部使用LocalStorage](#从ui内部使用localstorage)）。
 
 - 当装饰的对象是数组时，可以观察到数组添加、删除、更新数组单元的变化。
 
-- 当装饰的对象是Date时，可以观察到Date整体的赋值，同时可通过调用Date的接口`setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, `setUTCMilliseconds` 更新Date的属性。详见装饰Date类型变量。
+- 当装饰的对象是Date时，可以观察到Date整体的赋值，同时可通过调用Date的接口`setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, `setUTCMilliseconds` 更新Date的属性。详见[装饰Date类型变量](#装饰date类型变量)。
 
-- 当装饰的变量是Map时，可以观察到Map整体的赋值，同时可通过调用Map的接口`set`, `clear`, `delete` 更新Map的值。详见装饰Map类型变量。
+- 当装饰的变量是Map时，可以观察到Map整体的赋值，同时可通过调用Map的接口`set`, `clear`, `delete` 更新Map的值。详见[装饰Map类型变量](#装饰map类型变量)。
 
-- 当装饰的变量是Set时，可以观察到Set整体的赋值，同时可通过调用Set的接口`add`, `clear`, `delete` 更新Set的值。详见装饰Set类型变量。
+- 当装饰的变量是Set时，可以观察到Set整体的赋值，同时可通过调用Set的接口`add`, `clear`, `delete` 更新Set的值。详见[装饰Set类型变量](#装饰set类型变量)。
 
 
 **框架行为**
@@ -110,7 +110,7 @@ localstorageprop-initialization
 
 **LocalStorage与\@LocalStorageProp数据同步如下图所示**
 
-LocalStorageProp_framework_behavior
+![LocalStorageProp_framework_behavior](figures/LocalStorageProp_framework_behavior.png)
 
   **图2** LocalStorage与\@LocalStorageProp数据同步图示
 
@@ -133,7 +133,7 @@ LocalStorageProp_framework_behavior
 | \@LocalStorageLink变量装饰器 | 说明                                                         |
 | ---------------------------- | ------------------------------------------------------------ |
 | 装饰器参数                   | key：常量字符串，必填（字符串需要有引号）。                  |
-| 允许装饰的变量类型           | Object、class、string、number、boolean、enum类型，以及这些类型的数组。<br/>API version 12及以上支持Map、Set、Date、undefined和null类型以及这些类型的联合类型。示例见LocalStorage支持联合类型。<br/>嵌套类型的场景请参考观察变化和行为表现。<br/>**说明：**<br/>变量类型必须被指定，建议和LocalStorage中对应属性类型相同，否则会发生类型隐式转换，从而导致应用行为异常。|
+| 允许装饰的变量类型           | Object、class、string、number、boolean、enum类型，以及这些类型的数组。<br/>API version 12及以上支持Map、Set、Date、undefined和null类型以及这些类型的联合类型。示例见[LocalStorage支持联合类型](#localstorage支持联合类型)。<br/>嵌套类型的场景请参考[观察变化和行为表现](#观察变化和行为表现-1)。<br/>**说明：**<br/>变量类型必须被指定，建议和LocalStorage中对应属性类型相同，否则会发生类型隐式转换，从而导致应用行为异常。|
 | 同步类型                     | 双向同步：从LocalStorage的对应属性到自定义组件，从自定义组件到LocalStorage对应属性。 |
 | 被装饰变量的初始值           | 必须指定，如果LocalStorage实例中不存在属性，则用该初始值初始化该属性，并存入LocalStorage中。 |
 
@@ -147,7 +147,7 @@ LocalStorageProp_framework_behavior
 | 是否支持组件外访问  | 否。                                                                                  |
 
 
-localstoragelink-initialization
+![localstoragelink-initialization](figures/localstoragelink-initialization.png)
 
   **图3** \@LocalStorageLink初始化规则图示
 
@@ -158,15 +158,15 @@ localstoragelink-initialization
 
 - 当装饰的数据类型为boolean、string、number类型时，可以观察到数值的变化。
 
-- 当装饰的数据类型为class或者Object时，可以观察到对象整体赋值和对象属性变化（详见从UI内部使用LocalStorage）。
+- 当装饰的数据类型为class或者Object时，可以观察到对象整体赋值和对象属性变化（详见[从UI内部使用LocalStorage](#从ui内部使用localstorage)）。
 
-- 当装饰的对象是数组时，可以观察到数组添加、删除、更新数组单元的变化。详见装饰Array类型变量。
+- 当装饰的对象是数组时，可以观察到数组添加、删除、更新数组单元的变化。详见[装饰Array类型变量](#装饰array类型变量)。
 
-- 当装饰的对象是Date时，可以观察到Date整体的赋值，同时可通过调用Date的接口`setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, `setUTCMilliseconds` 更新Date的属性。详见装饰Date类型变量。
+- 当装饰的对象是Date时，可以观察到Date整体的赋值，同时可通过调用Date的接口`setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, `setUTCMilliseconds` 更新Date的属性。详见[装饰Date类型变量](#装饰date类型变量)。
 
-- 当装饰的变量是Map时，可以观察到Map整体的赋值，同时可通过调用Map的接口`set`, `clear`, `delete` 更新Map的值。详见装饰Map类型变量。
+- 当装饰的变量是Map时，可以观察到Map整体的赋值，同时可通过调用Map的接口`set`, `clear`, `delete` 更新Map的值。详见[装饰Map类型变量](#装饰map类型变量)。
 
-- 当装饰的变量是Set时，可以观察到Set整体的赋值，同时可通过调用Set的接口`add`, `clear`, `delete` 更新Set的值。详见装饰Set类型变量。
+- 当装饰的变量是Set时，可以观察到Set整体的赋值，同时可通过调用Set的接口`add`, `clear`, `delete` 更新Set的值。详见[装饰Set类型变量](#装饰set类型变量)。
 
 
 **框架行为**
@@ -178,7 +178,7 @@ localstoragelink-initialization
 
 **LocalStorage与\@LocalStorageLink数据同步如下图所示**
 
-LocalStorageLink_framework_behavior
+![LocalStorageLink_framework_behavior](figures/LocalStorageLink_framework_behavior.png)
 
   **图4** LocalStorage与\@LocalStorageLink数据同步图示
 
@@ -205,7 +205,7 @@ LocalStorageLink_framework_behavior
 
 3. LocalStorage创建后，命名属性的类型不可更改。后续调用Set时必须使用相同类型的值。
 
-4. LocalStorage是页面级存储，getSharedLocalStorage接口仅能获取当前Stage通过windowStage.loadContent传入的LocalStorage实例，否则返回undefined。例子可见将LocalStorage实例从UIAbility共享到一个或多个页面。
+4. LocalStorage是页面级存储，[getSharedLocalStorage](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getsharedlocalstorage12)接口仅能获取当前Stage通过[windowStage.loadContent](../../reference/apis-arkui/arkts-apis-window-Window.md#loadcontent9)传入的LocalStorage实例，否则返回undefined。例子可见[将LocalStorage实例从UIAbility共享到一个或多个页面](#将localstorage实例从uiability共享到一个或多个页面)。
 
 
 ## 使用场景
@@ -238,7 +238,7 @@ link1.set(49); // 双向同步: link1.get() == link2.get() == prop.get() == 49
 
 - \@LocalStorageLink绑定LocalStorage对给定的属性，建立双向数据同步。
 
-<!-- @localStorage_page_one_double_syn --> 
+<!-- @[localStorage_page_one_double_syn](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageOneDoubleSYN.ets) --> 
 
 ``` TypeScript
 class Data {
@@ -315,7 +315,7 @@ struct Parent {
 }
 ```
 
-localstorage-syn-0
+![localstorage-syn-0](figures/localstorage-syn-0.gif)
 
 ### \@LocalStorageProp和LocalStorage单向同步的简单场景
 
@@ -325,7 +325,7 @@ localstorage-syn-0
 
 - ChildOne组件中，Text绑定的storagePropTwo 依旧显示47。
 
-<!-- @localStorage_page_two_single_syn --> 
+<!-- @[localStorage_page_two_single_syn](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageTwoSingleSYN.ets) --> 
 
 ``` TypeScript
 // 创建新实例并使用给定对象初始化
@@ -371,13 +371,13 @@ struct ChildOne {
 }
 ```
 
-localstorage-syn-1
+![localstorage-syn-1](figures/localstorage-syn-1.gif)
 
 ### \@LocalStorageLink和LocalStorage双向同步的简单场景
 
 下面的示例展示了\@LocalStorageLink装饰的数据和LocalStorage双向同步的场景：
 
-<!-- @localStorage_page_two_way_syn --> 
+<!-- @[localStorage_page_two_way_syn](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageTwoWaySYN.ets) --> 
 
 ``` TypeScript
 // 构造LocalStorage实例
@@ -389,7 +389,7 @@ let linkToPropA: SubscribedAbstractProperty<number> = storageOne.link('PropA');
 @Entry(storageOne)
 @Component
 struct ParentTwo {
-  // @LocalStorageLink('PropA')在Parent自定义组件中创建'PropA'的双向同步数据，初始值为47，因为在构造LocalStorage已经给“PropA”设置47
+  // @LocalStorageLink('PropA')在ParentTwo自定义组件中创建'PropA'的双向同步数据，初始值为47，因为在构造LocalStorage已经给"PropA"设置47
   @LocalStorageLink('PropA') storageLink: number = 1;
 
   build() {
@@ -412,7 +412,7 @@ struct ParentTwo {
 }
 ```
 
-localstorage-syn-2
+![localstorage-syn-2](figures/localstorage-syn-2.gif)
 
 ### 兄弟组件之间同步状态变量
 
@@ -430,7 +430,7 @@ ChildFour自定义组件中的变化：
 
 playCountLink的刷新会同步回LocalStorage，并且引起兄弟组件和父组件相应的刷新。
 
-<!-- @localStorage_page_four_state_variable_syn --> 
+<!-- @[localStorage_page_four_state_variable_syn](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageFourStateVariableSYN.ets) --> 
 
 ``` TypeScript
 let count: Record<string, number> = { 'countStorage': 1 };
@@ -521,13 +521,13 @@ struct ParentFour {
 }
 ```
 
-localstorage-syn-3
+![localstorage-syn-3](figures/localstorage-syn-3.gif)
 
 ### 将LocalStorage实例从UIAbility共享到一个或多个页面
 
-上面的实例中，LocalStorage的实例仅仅在一个\@Entry装饰的组件和其所属的子组件（一个页面）中共享，如果希望其在多个页面中共享，可以在所属UIAbility中创建LocalStorage实例，并调用windowStage.loadContent。
+上面的实例中，LocalStorage的实例仅仅在一个\@Entry装饰的组件和其所属的子组件（一个页面）中共享，如果希望其在多个页面中共享，可以在所属UIAbility中创建LocalStorage实例，并调用windowStage.[loadContent](../../reference/apis-arkui/arkts-apis-window-Window.md#loadcontent9)。
 
-<!-- @localstorage_export_one -->  
+<!-- @[localstorage_export_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
 // EntryAbility.ets
@@ -561,7 +561,7 @@ export default class EntryAbility extends UIAbility {
 
 在下面的用例中，PageFiveShare页面中的propA通过使用共享的LocalStorage实例。点击Button跳转到PageFiveShareChange页面，点击Change propA改变propA的值，back回PageFiveShare页面后，页面中propA的值也同步修改。
 
-<!-- @localStorage_page_five_share --> 
+<!-- @[localStorage_page_five_share](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageFiveShare.ets) --> 
 
 ``` TypeScript
 // PageFiveShare.ets
@@ -597,7 +597,7 @@ struct PageFiveShare {
 ```
 
 
-<!-- @localStorage_page_five_share2 --> 
+<!-- @[localStorage_page_five_share2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageFiveShareChange.ets) --> 
 
 ``` TypeScript
 
@@ -661,7 +661,7 @@ struct PageFiveShareChange {
 }
 ```
 
-localstorage-syn-4
+![localstorage-syn-4](figures/localstorage-syn-4.gif)
 
 > **说明：**
 >
@@ -686,7 +686,7 @@ localstorage-syn-4
 > 如果定义的属性不需要从父组件初始化变量，则第一个参数需要传{}。
 > 作为构造参数传给子组件的LocalStorage实例在初始化时就会被决定，可以通过@LocalStorageLink或者LocalStorage的API修改LocalStorage实例中保存的属性值，但LocalStorage实例自身不能被动态修改。
 
-<!-- @localStorage_page_six_local_storage -->  
+<!-- @[localStorage_page_six_local_storage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageSixLocalStorage.ets) -->  
 
 ``` TypeScript
 let localStorageOne: LocalStorage = new LocalStorage();
@@ -734,11 +734,11 @@ struct ChildSix {
 }
 ```
 
-localstorage-syn-5
+![localstorage-syn-5](figures/localstorage-syn-5.png)
 
 1. 当自定义组件没有定义属性时，可以只传入一个LocalStorage实例作为入参。
 
-   <!-- @localStorage_page_six_local_storageA -->  
+   <!-- @[localStorage_page_six_local_storageA](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageSixLocalStorageA.ets) -->  
    
    ``` TypeScript
    let localStorageInstance: LocalStorage = new LocalStorage();
@@ -779,11 +779,11 @@ localstorage-syn-5
    }
    ```
 
-   localstorage-syn-6
+   ![localstorage-syn-6](figures/localstorage-syn-6.png)
 
 2. 当定义的属性不需要从父组件初始化变量时，第一个参数需要传{}。
 
-   <!-- @localStorage_page_six_local_storageB -->  
+   <!-- @[localStorage_page_six_local_storageB](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageSixLocalStorageB.ets) -->  
    
    ``` TypeScript
    let localStorageBOne: LocalStorage = new LocalStorage();
@@ -828,11 +828,11 @@ localstorage-syn-5
    }
    ```
 
-   localstorage-syn-7
+   ![localstorage-syn-7](figures/localstorage-syn-7.png)
 
 ### Navigation组件和LocalStorage联合使用
 
-可以通过传递不同的LocalStorage实例给自定义组件，从而实现在Navigation跳转到不同的页面时，绑定不同的LocalStorage实例，显示对应绑定的值。
+可以通过传递不同的LocalStorage实例给自定义组件，从而实现在[Navigation](../../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)跳转到不同的页面时，绑定不同的LocalStorage实例，显示对应绑定的值。
 
 本示例以\@LocalStorageLink为例，展示了：
 
@@ -846,7 +846,7 @@ localstorage-syn-5
 
 - NavigationContentMsgStack自定义组件中的Text组件，共享对应自定义组件树上LocalStorage实例localStorageA中'PropA'对应的值。
 
-<!-- @localStorage_page_my_navigation -->  
+<!-- @[localStorage_page_my_navigation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageMyNavigation.ets) -->  
 
 ``` TypeScript
 let localStorageA: LocalStorage = new LocalStorage();
@@ -1001,13 +1001,13 @@ struct NavigationContentMsgStack {
 }
 ```
 
-localstorage-syn-8
+![localstorage-syn-8](figures/localstorage-syn-8.gif)
 
 ### LocalStorage支持联合类型
 
 在下面的示例中，变量linkA的类型为number | null，变量linkB的类型为number | undefined。Text组件初始化分别显示为null和undefined，点击切换为数字，再次点击切换回null和undefined。
 
-<!-- @localStorage_page_local_storage_link -->  
+<!-- @[localStorage_page_local_storage_link](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/PageLocalStorageLink.ets) -->  
 
 ``` TypeScript
 @Component
@@ -1086,13 +1086,13 @@ struct LinkIndex {
 }
 ```
 
-localstorage-syn-9
+![localstorage-syn-9](figures/localstorage-syn-9.gif)
 
 ### 装饰Array类型变量
 
 在下面的示例中，\@LocalStorageLink装饰的message类型为`number[]`，点击Button改变message的值，UI会随之刷新。
 
-<!-- @localStorage_local_array_sample --> 
+<!-- @[localStorage_local_array_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/LocalArraySample.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -1141,7 +1141,7 @@ struct Index {
 }
 ```
 
-localstorage-syn-10
+![localstorage-syn-10](figures/localstorage-syn-10.gif)
 
 ### 装饰Date类型变量
 
@@ -1151,7 +1151,7 @@ localstorage-syn-10
 
 在下面的示例中，\@LocalStorageLink装饰的selectedDate类型为Date，点击Button改变selectedDate的值，UI会随之刷新。
 
-<!-- @localStorage_local_date_sample -->  
+<!-- @[localStorage_local_date_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/LocalDateSample.ets) -->  
 
 ``` TypeScript
 @Entry
@@ -1196,7 +1196,7 @@ struct LocalDateSample {
 }
 ```
 
-localstorage-syn-11
+![localstorage-syn-11](figures/localstorage-syn-11.gif)
 
 ### 装饰Map类型变量
 
@@ -1206,7 +1206,7 @@ localstorage-syn-11
 
 在下面的示例中，\@LocalStorageLink装饰的message类型为Map\<number, string\>，点击Button改变message的值，UI会随之刷新。
 
-<!-- @localStorage_local_map_sample -->  
+<!-- @[localStorage_local_map_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/LocalMapSample.ets) -->  
 
 ``` TypeScript
 @Entry
@@ -1265,7 +1265,7 @@ struct LocalMapSample {
 }
 ```
 
-localstorage-syn-12
+![localstorage-syn-12](figures/localstorage-syn-12.gif)
 
 ### 装饰Set类型变量
 
@@ -1275,7 +1275,7 @@ localstorage-syn-12
 
 在下面的示例中，\@LocalStorageLink装饰的memberSet类型为Set\<number\>，点击Button改变memberSet的值，UI会随之刷新。
 
-<!-- @localStorage_local_set_sample -->  
+<!-- @[localStorage_local_set_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/LocalSetSample.ets) -->  
 
 ``` TypeScript
 @Entry
@@ -1325,11 +1325,11 @@ struct LocalSetSample {
 }
 ```
 
-localstorage-syn-13
+![localstorage-syn-13](figures/localstorage-syn-13.gif)
 
 ### 自定义组件外改变状态变量
 
-<!-- @localStorage_change_local_set_sample -->  
+<!-- @[localStorage_change_local_set_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/LocalStorage/entry/src/main/ets/pages/ChangeLocalSetSample.ets) -->  
 
 ``` TypeScript
 let storageChange = new LocalStorage();
@@ -1368,6 +1368,6 @@ struct Test {
 }
 ```
 
-localstorage-syn-14
+![localstorage-syn-14](figures/localstorage-syn-14.gif)
 
 <!--no_check-->

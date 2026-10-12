@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-提供菜单组件，作为临时性弹出窗口，用于展示用户可执行的操作，具体用法请参考menu。
+提供菜单组件，作为临时性弹出窗口，用于展示用户可执行的操作，具体用法请参考[menu](../reference/apis-arkui/arkui-js/js-components-basic-menu.md)。
 
 
 ## 创建menu组件
@@ -44,10 +44,10 @@
 }
 ```
 
-menu-Component
+![menu-Component](figures/menu-Component.png)
 
 > **说明：**
-> - menu仅支持option子组件。
+> - menu仅支持[option](../reference/apis-arkui/arkui-js/js-components-basic-option.md)子组件。
 >
 > - menu组件不支持focusable、disabled属性。
 
@@ -101,7 +101,7 @@ option{
 }
 ```
 
-Setting-Styles-1
+![Setting-Styles-1](figures/Setting-Styles-1.png)
 
 
 ## 绑定事件
@@ -168,4 +168,4 @@ export default {
 }
 ```
 
-Binding-Events
+![Binding-Events](figures/Binding-Events.gif)

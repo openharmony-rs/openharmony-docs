@@ -14,16 +14,16 @@
 
 ## 约束与限制
 
-- **申请时机：** 应用需要在前台或onBackground回调内，申请短时任务，否则会申请失败。
+- **申请时机：** 应用需要在前台或[onBackground](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onbackground)回调内，申请短时任务，否则会申请失败。
 
 - **数量限制：** 一个应用同一时刻最多申请运行3个短时任务。以图1为例，在①②③时间段内的任意时刻，应用申请运行了2个短时任务；在④时间段内的任意时刻，应用申请运行了1个短时任务。
 
-- **配额机制：** 一个应用会有一定的短时任务配额（根据系统状态和用户习惯调整），单日（24小时内）配额默认为10分钟，单次配额最大为3分钟，低电量（BatteryCapacityLevel为LEVEL_LOW）时单次配额默认为1分钟，配额消耗完后不允许再申请短时任务。同时，系统提供获取对应短时任务剩余时间的查询接口backgroundTaskManager.getRemainingDelayTime，用以查询本次短时任务剩余时间，以确认是否继续运行其他业务。
+- **配额机制：** 一个应用会有一定的短时任务配额（根据系统状态和用户习惯调整），单日（24小时内）配额默认为10分钟，单次配额最大为3分钟，低电量（[BatteryCapacityLevel](../reference/apis-basic-services-kit/js-apis-battery-info.md#batterycapacitylevel9)为LEVEL_LOW）时单次配额默认为1分钟，配额消耗完后不允许再申请短时任务。同时，系统提供获取对应短时任务剩余时间的查询接口[backgroundTaskManager.getRemainingDelayTime](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagergetremainingdelaytime-1)，用以查询本次短时任务剩余时间，以确认是否继续运行其他业务。
 
 - **配额计算：** 仅当应用在后台时，对应用下的短时任务计时；同一个应用下的同一个时间段的短时任务，不重复计时。以下图为例：应用有两个短时任务A和B，在前台时申请短时任务A，应用退至后台后开始计时为①，应用进入前台②后不计时，再次进入后台③后开始计时，短时任务A结束后，由于阶段④仍然有短时任务B，所以该阶段继续计时。因此，在这个过程中，该应用短时任务总耗时为①+③+④。  
   
   **图1** 短时任务配额计算原理图      
-  transient-task
+  ![transient-task](figures/transient-task.png)
     
   > **说明：**
   >
@@ -35,20 +35,20 @@
 
 **表1** 主要接口
 
-以下是短时任务开发使用的主要接口，更多接口及使用方式请见后台任务管理。
+以下是短时任务开发使用的主要接口，更多接口及使用方式请见[后台任务管理](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md)。
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| requestSuspendDelay(reason: string, callback: Callback&lt;void&gt;): DelaySuspendInfo | 申请短时任务，DelaySuspendInfo返回requestId和actualDelayTime。|
-| getRemainingDelayTime(requestId: number): Promise&lt;number&gt; | 获取对应短时任务的剩余时间。 |
-| cancelSuspendDelay(requestId: number): void | 取消短时任务。 |
+| [requestSuspendDelay(reason: string, callback: Callback&lt;void&gt;): DelaySuspendInfo](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerrequestsuspenddelay) | 申请短时任务，[DelaySuspendInfo](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#delaysuspendinfo)返回requestId和actualDelayTime。|
+| [getRemainingDelayTime(requestId: number): Promise&lt;number&gt;](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagergetremainingdelaytime-1) | 获取对应短时任务的剩余时间。 |
+| [cancelSuspendDelay(requestId: number): void](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagercancelsuspenddelay) | 取消短时任务。 |
 
 
 ## 开发步骤
 
 1. 导入模块，无需配置权限。
 
-   <!-- @include -->
+   <!-- @[include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/TransientTask/entry/src/main/ets/pages/TransientTaskDialog.ets) -->
    
    ``` TypeScript
    import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
@@ -57,7 +57,7 @@
 
 2. 申请短时任务并实现回调。此处回调在短时任务即将结束时触发，与应用的业务功能不耦合，短时任务申请成功后，正常执行应用本身的任务。
    
-   <!-- @request_suspend_delay -->  
+   <!-- @[request_suspend_delay](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/TransientTask/entry/src/main/ets/pages/TransientTaskDialog.ets) -->  
    
    ``` TypeScript
    let id: number = -1;         // 申请短时任务ID
@@ -87,7 +87,7 @@
 
 3. 获取短时任务剩余时间。查询本次短时任务的剩余时间，用以判断是否继续运行其他业务，例如应用有两个小任务，在执行完第一个小任务后，可以判断本次短时任务是否还有剩余时间从而决定是否执行第二个小任务。
 
-   <!-- @get_time -->
+   <!-- @[get_time](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/TransientTask/entry/src/main/ets/pages/TransientTaskDialog.ets) -->
 
    ``` TypeScript
    async function getRemainingDelayTime() {
@@ -101,7 +101,7 @@
 
 4. 取消短时任务。
    
-   <!-- @cancel_suspend_delay -->
+   <!-- @[cancel_suspend_delay](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/TransientTask/entry/src/main/ets/pages/TransientTaskDialog.ets) -->
 
    ``` TypeScript
    function cancelSuspendDelay() {
@@ -118,4 +118,4 @@
 
 针对短时任务开发，有以下相关实例可供参考：
 
-- 短时任务（ArkTS）（Full SDK）（API9）
+- [短时任务（ArkTS）（Full SDK）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/BackGroundTasksKit/TransientTask)

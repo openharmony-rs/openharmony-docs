@@ -38,20 +38,20 @@
 
 **图1** 一般布局示例（英文）
 
-edit-phone-contact
+![edit-phone-contact](figures/edit-phone-contact.png)
 
 **图2** 镜像布局示例（阿拉伯文）
 
-edit-phone-contact-01
+![edit-phone-contact-01](figures/edit-phone-contact-01.png)
 
 **图3** 一般图标资源
 
-phone-volume-right
+![phone-volume-right](figures/phone-volume-right.png)
 
 **图4** RTL语言系统下提供的图标资源
 
-phone-volume-left
+![phone-volume-left](figures/phone-volume-left.png)
 
 **图5** RTL语言下提供的镜像控件
 
-internationalization-phone-calendar
+![internationalization-phone-calendar](figures/internationalization-phone-calendar.png)

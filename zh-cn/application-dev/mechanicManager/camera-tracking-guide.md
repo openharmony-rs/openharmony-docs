@@ -12,7 +12,7 @@
 
 ## 接口介绍
 
-机械体设备控制器API的接口使用指导请参见@ohos.distributedHardware.mechanicManager (机械体控制模块)。
+机械体设备控制器API的接口使用指导请参见[@ohos.distributedHardware.mechanicManager (机械体控制模块)](../reference/apis-mechanic-kit/js-apis-mechanicManager.md)。
 
 | 接口名                                                               | 描述                       |
 | -------------------------------------------------------------------- | -------------------------- |
@@ -29,9 +29,9 @@
 
 ### 开发准备
 
-1. 支持Mechanic Kit协议的机械体设备。
+1. 支持Mechanic Kit协议的机械体设备，参考管理设备连接状态第2点。
 2. 若要验证目标跟踪功能，主设备的相机驱动必须支持人脸检测。
-3. 请将SDK更新到API 20或以上版本，具体操作参见更新指南。
+3. 请将SDK更新到API 20或以上版本，具体操作参见[更新指南](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-software-install)。
 4. 请确保机械体设备已通过蓝牙与主设备连接。
 
 ### 管理设备连接状态
@@ -39,14 +39,22 @@
 确保机械体设备连接或断开时，应用能及时响应，支持设备连接状态的动态管理。
 
 1. 导入机械体设备管理模块。
-   <!-- @import_mechanicManager -->
+   <!-- @[import_mechanicManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
 
     ```ts
     import { mechanicManager } from '@kit.MechanicKit';
     ```
 
-2. 获取已连接的机械体列表。
-   <!-- @get_mechDevices -->
+2. 查询设备是否支持机械体设备控制能力。
+   <!-- @[is_control_supported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
+   
+   ``` TypeScript
+   let isSupported: boolean = mechanicManager.isControlSupported();
+   console.info(`'isSupported:' ${isSupported}`);
+   ```
+
+3. 获取已连接的机械体列表。
+   <!-- @[get_mechDevices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
 
     ```ts
     let savedMechanicIds: number[] = [];
@@ -75,8 +83,8 @@
     }
     ```
 
-3. 监听设备的连接状态变化，以便及时响应。
-   <!-- @on_attachStateChange -->
+4. 监听设备的连接状态变化，以便及时响应。
+   <!-- @[on_attachStateChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/AttachStateChangeCallbackRegister.ets) -->
 
     ```ts
     const attachStateChangeCallback = (info: mechanicManager.AttachStateChangeInfo) => {
@@ -95,8 +103,8 @@
     mechanicManager.on('attachStateChange', attachStateChangeCallback);
     ```
 
-4. 处理设备的连接与断开的事件。
-   <!-- @handle_device_attached_detached -->
+5. 处理设备的连接与断开的事件。
+   <!-- @[handle_device_attached_detached](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/AttachStateChangeCallbackRegister.ets) -->
    
     ```ts
     function handleDeviceAttached(mechInfo: mechanicManager.MechInfo) {
@@ -112,8 +120,8 @@
     }
     ```
    
-5. 取消连接状态的监听。
-   <!-- @off_attachStateChange -->
+6. 取消连接状态的监听。
+   <!-- @[off_attachStateChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/AttachStateChangeCallbackRegister.ets) -->
    
     ```ts
     // 取消连接状态的监听
@@ -125,7 +133,7 @@
 启用目标拍摄功能后，设备将自动识别人脸并进行跟踪拍摄。
 
 1. 启用摄像头的目标拍摄功能。
-   <!-- @set_cameraTracking_enabled -->
+   <!-- @[set_cameraTracking_enabled](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
    
     ```ts
     try {
@@ -146,7 +154,7 @@
     ```
    
 2. 监听相机跟踪状态的变化。
-   <!-- @on_trackingStateChange -->
+   <!-- @[on_trackingStateChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
    
     ```ts
     const trackingStateCallback = (eventInfo : mechanicManager.TrackingEventInfo) => {
@@ -171,7 +179,7 @@
     ```
    
 3. 处理跟踪状态变化事件。
-   <!-- @handle_tracking_event -->
+   <!-- @[handle_tracking_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
    
     ```ts
     function handleTrackingEnabled() {
@@ -211,7 +219,7 @@
     ```
    
 4. 取消跟踪状态变化的监听。
-   <!-- @off_trackingStateChange -->
+   <!-- @[off_trackingStateChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MechanicKit/MechanicManagerSample/entry/src/main/ets/pages/ApiTestPage.ets) -->
     ```ts
     // 取消跟踪状态监听
     mechanicManager.off('trackingStateChange', trackingStateCallback);

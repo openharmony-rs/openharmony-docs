@@ -6,7 +6,7 @@
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
-svg组件主要作为svg画布的根节点使用，也可以在svg中嵌套使用。具体用法请参考svg。
+svg组件主要作为svg画布的根节点使用，也可以在svg中嵌套使用。具体用法请参考[svg](../reference/apis-arkui/arkui-js/js-components-svg.md)。
 
 
 > **说明：** 
@@ -42,7 +42,7 @@ svg{
 }
 ```
 
-svg-Component
+![svg-Component](figures/svg-Component.png)
 
 
 ## 设置属性
@@ -79,7 +79,7 @@ svg{
 }
 ```
 
-Setting-Attributes
+![Setting-Attributes](figures/Setting-Attributes.png)
 
 > **说明：**
 > - x和y设置的是当前svg的x轴和y轴坐标，如果当前svg为根节点，x轴和y轴属性无效。

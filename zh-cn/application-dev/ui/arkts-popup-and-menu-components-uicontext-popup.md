@@ -6,13 +6,13 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-气泡提示（Popup）在使用时依赖绑定UI组件，否则无法使用。从API version 18开始，可以通过使用全局接口openPopup的方式，在无UI组件的场景下直接或封装使用，例如在事件回调中使用或封装后对外提供能力。
+[气泡提示（Popup）](arkts-popup-and-menu-components-popup.md)在使用时依赖绑定UI组件，否则无法使用。从API version 18开始，可以通过使用全局接口[openPopup](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#openpopup18)的方式，在无UI组件的场景下直接或封装使用，例如在事件回调中使用或封装后对外提供能力。
 
 ## 弹出气泡
 
-通过openPopup可以弹出气泡。
+通过[openPopup](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#openpopup18)可以弹出气泡。
    
- <!-- @open_popup -->
+ <!-- @[open_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/PopupBuildText.ets) -->
  
  ``` TypeScript
  this.promptAction.openPopup(this.contentNode, { id: targetId }, {
@@ -28,18 +28,18 @@
 
 ### 创建ComponentContent
    
-   通过调用openPopup接口弹出气泡，需要定义ComponentContent，以提供自定义弹出框的内容。详细规格可参考ComponentContent说明。
+   通过调用openPopup接口弹出气泡，需要定义ComponentContent，以提供自定义弹出框的内容。详细规格可参考[ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md)说明。
    
-  <!-- @content_node --> 
+  <!-- @[content_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/OpenPopup.ets) --> 
   
   ``` TypeScript
   private contentNode: ComponentContent<Object> =
     new ComponentContent(this.uiContext, wrapBuilder(buildText), new Params(this.message, this.promptActionClass));
   ```
    
-   如果在wrapBuilder中包含其他组件（例如：Popup、Chip组件），则应在创建ComponentContent时设置nestingBuilderSupported属性为true。
+   如果在wrapBuilder中包含其他组件（例如：[Popup](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Popup.md)、[Chip](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Chip.md)组件），则应在创建ComponentContent时设置[nestingBuilderSupported](../reference/apis-arkui/js-apis-arkui-builderNode.md#buildoptions12)属性为true。
    
-  <!-- @build_text -->
+  <!-- @[build_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/PopupBuildText.ets) -->
   
   ``` TypeScript
   @Builder
@@ -94,22 +94,22 @@
 
 ### 绑定组件信息
    
-   通过调用openPopup接口弹出气泡，需要提供绑定组件的信息TargetInfo。若未传入有效的target，气泡将无法弹出。
+   通过调用openPopup接口弹出气泡，需要提供绑定组件的信息[TargetInfo](../reference/apis-arkui/arkts-apis-uicontext-i.md#targetinfo18)。若未传入有效的target，气泡将无法弹出。
    
    目前有两种设置target的方式。
    
 - target的id属性设置为number类型，此时需要将id设置为对应组件的UniqueID，组件的UniqueID由系统保证唯一性。
    
-   <!-- @frame_node -->
+   <!-- @[frame_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/OpenPopup.ets) -->
    
    ``` TypeScript
    let frameNode: FrameNode | null = this.uiContext.getFrameNodeByUniqueId(this.getUniqueId());
    let targetId = frameNode?.getChild(0)?.getUniqueId();
    ```
    
-- target的id属性设置为string类型，此时需要将id设置为对应组件的通用属性id值。当无法保证id的唯一性时，如多团队开发或者复用自定义组件，可以通过设置componentId属性明确指定此id的范围来精确指定target，此时componentId属性可以设置为对应组件的父组件或者所在自定义组件的UniqueID。
+- target的id属性设置为string类型，此时需要将id设置为对应组件的通用属性[id](../reference/apis-arkui/arkui-ts/ts-universal-attributes-component-id.md#id)值。当无法保证id的唯一性时，如多团队开发或者复用自定义组件，可以通过设置componentId属性明确指定此id的范围来精确指定target，此时componentId属性可以设置为对应组件的父组件或者所在自定义组件的UniqueID。
    
-   <!-- @openPopupWithTargetIdString -->
+   <!-- @[openPopupWithTargetIdString](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/OpenPopupWithTargetIdString.ets) -->
    
    ``` TypeScript
    build() {
@@ -149,9 +149,9 @@
 
 ### 设置弹出气泡样式
    
-   通过调用openPopup接口弹出气泡，可以设置PopupCommonOptions属性调整气泡样式。
+   通过调用openPopup接口弹出气泡，可以设置[PopupCommonOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupcommonoptions18类型说明)属性调整气泡样式。
    
-  <!-- @private_options -->
+  <!-- @[private_options](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/OpenPopup.ets) -->
   
   ``` TypeScript
   private options: PopupCommonOptions = { enableArrow: true };
@@ -159,9 +159,9 @@
 
 ## 更新气泡样式
 
-从API version 18开始，通过updatePopup可以更新气泡的样式。支持全量更新和增量更新其气泡样式，不支持更新PopupCommonOptions中的showInSubWindow、focusable、onStateChange、onWillDismiss和transition属性。
+从API version 18开始，通过[updatePopup](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatepopup18)可以更新气泡的样式。支持全量更新和增量更新其气泡样式，不支持更新[PopupCommonOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#popupcommonoptions18类型说明)中的showInSubWindow、focusable、onStateChange、onWillDismiss和transition属性。
    
-  <!-- @update_popup -->
+  <!-- @[update_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/PopupBuildText.ets) -->
   
   ``` TypeScript
   this.promptAction.updatePopup(this.contentNode, {
@@ -178,9 +178,9 @@
 
 ## 关闭气泡
 
-从API version 18开始，通过调用closePopup可以关闭气泡。
+从API version 18开始，通过调用[closePopup](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#closepopup18)可以关闭气泡。
    
-  <!-- @close_popup -->
+  <!-- @[close_popup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/PopupBuildText.ets) -->
   
   ``` TypeScript
   this.promptAction.closePopup(this.contentNode)
@@ -195,14 +195,14 @@
 
 > **说明：**
 >
-> 由于updatePopup和closePopup依赖content来更新或者关闭指定的气泡，开发者需自行维护传入的content。
+> 由于[updatePopup](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatepopup18)和[closePopup](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#closepopup18)依赖content来更新或者关闭指定的气泡，开发者需自行维护传入的content。
 
 
 ## 在HAR包中使用全局气泡提示
 
-以下示例通过HAR包封装一个Popup，从而对外提供气泡的弹出、更新和关闭能力。
+以下示例通过[HAR](../quick-start/har-package.md)包封装一个Popup，从而对外提供气泡的弹出、更新和关闭能力。
 
-  <!-- @main_page -->
+  <!-- @[main_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/PopupMainPage.ets) -->
   
   ``` TypeScript
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -275,7 +275,7 @@
   ```
   
 
-  <!-- @open_popup_main --> 
+  <!-- @[open_popup_main](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/popup/globalpopupsindependentofuicomponents/OpenPopup.ets) --> 
   
   ``` TypeScript
   import { PromptActionClass } from './PopupMainPage';
@@ -356,4 +356,4 @@
   ```
   
 
-image
+![image](figures/UIopenPopup.gif)

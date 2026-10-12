@@ -31,7 +31,7 @@
 - 对于V1，具有一层观察能力，可观察第一层对象属性的变化、第一层数据项的变化；
 - 对于V2，具有深度观察能力，能观察到嵌套对象属性或数组项变化；
 
-下面举例说明状态变量在@Component或@ComponentV2中的修改，触发UI刷新时，V1和V2的差异。
+下面举例说明状态变量在[@Component](./arkts-create-custom-components.md#component)或[@ComponentV2](./arkts-create-custom-components.md#componentv2)中的修改，触发UI刷新时，V1和V2的差异。
 
 ```typescript
 // 如下示例代码以@ObservedV2为例，如果是V1，则对应的是@Observed和@Track。
@@ -99,7 +99,7 @@ Button('Change state variable')
 
 ## V1的@Watch和V2的@Monitor差异
 
-V1的@Watch和V2的@Monitor详细差异参考\@Watch与\@Monitor的对比。下面通过例子介绍两者差异。
+V1的@Watch和V2的@Monitor详细差异参考[\@Watch与\@Monitor的对比](./arkts-new-monitor.md#monitor与watch对比)。下面通过例子介绍两者差异。
 
 ### @Watch同步执行
 V1装饰变量赋值，对象属性或数组（Map、Set）项变化，会触发@Watch的同步执行。如果状态变量被修改多次，则@Watch函数会同步执行多次。
@@ -144,7 +144,7 @@ Button('Change state variable')
 
 如下图所示，展示V1和V2组件状态变量更新差异的流程图，相比V1状态管理，V2状态管理在状态变量变化时，会异步标脏组件。
 
-v1v2updatedifference
+![v1v2updatedifference](figures/v1v2update.PNG)
 
 ### V1组件的更新
 
@@ -162,7 +162,7 @@ v1v2updatedifference
 
 V2状态管理相比V1状态管理，新增异步执行@Computed，@Monitor和节点标脏步骤：
 
-步骤1：事件触发修改V2状态变量， 抛Promise异步任务；
+步骤1：事件触发修改V2状态变量， 抛[Promise](../../arkts-utils/async-concurrency-overview.md#promise)异步任务；
 
 步骤2：执行事件中其他剩余逻辑，如修改其他变量。等待事件逻辑执行完成后（如onClick事件），执行Promise回调；
 

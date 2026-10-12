@@ -11,7 +11,7 @@
 
 ## 相关属性
 
-此场景示例，涉及到的文本样式属性如下，具体及更多文本样式可参考TextStyle。
+此场景示例，涉及到的文本样式属性如下，具体及更多文本样式可参考[TextStyle](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#textstyle)。
 
 - color：字体颜色，默认为白色。请注意与画布颜色进行区分，以保证文本的正常显示。
 
@@ -22,7 +22,7 @@
 
 1. 通过context获取到Canvas画布对象。
 
-   <!-- @arkts_drawing_simple_text_create_canvas -->
+   <!-- @[arkts_drawing_simple_text_create_canvas](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/SimpleTextDrawing/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    let canvas = context.canvas;
@@ -31,7 +31,7 @@
 
 2. 初始化文本样式，此处设置字体颜色为红色，字体大小为100px。
 
-   <!-- @arkts_drawing_simple_text_create_text_style -->
+   <!-- @[arkts_drawing_simple_text_create_text_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/SimpleTextDrawing/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    // 初始化文本样式
@@ -51,7 +51,7 @@
 
 3. 初始化段落样式。
 
-   <!-- @arkts_drawing_simple_text_create_paragraph_style -->
+   <!-- @[arkts_drawing_simple_text_create_paragraph_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/SimpleTextDrawing/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    let myParagraphStyle: text.ParagraphStyle = {
@@ -62,7 +62,7 @@
 
 4. 初始化段落对象，并添加文本。
 
-   <!-- @arkts_drawing_simple_text_builder_add_text -->
+   <!-- @[arkts_drawing_simple_text_builder_add_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/SimpleTextDrawing/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    let fontCollection = text.FontCollection.getGlobalInstance();
@@ -76,7 +76,7 @@
 
 5. 排版段落并进行文本绘制。
 
-   <!-- @arkts_drawing_simple_text_layout_paint -->
+   <!-- @[arkts_drawing_simple_text_layout_paint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/SimpleTextDrawing/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    // 生成段落
@@ -89,4 +89,4 @@
 
 ## 效果展示
 
-zh-cn_image_0000002246603717
+![zh-cn_image_0000002246603717](figures/simpleText.PNG)

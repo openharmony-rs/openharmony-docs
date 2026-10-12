@@ -2,7 +2,7 @@
 
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
+<!--Owner: @hwt00888022-->
 <!--Designer: @kurli1-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
@@ -17,7 +17,7 @@
 
 对javaScriptProxy和runJavaScript封装，实现JSBridge通信方案。适用于H5调用原生侧函数。使用Web组件javaScriptProxy将原生侧接口注入到H5的window对象上，通过runJavaScript接口执行JS脚本到H5中，并在回调中获取脚本执行结果。具体调用流程如下图所示：
 
-image5
+![image5](figures/image5.png)
 
 - 首先通过Web组件的javaScriptProxy属性，将JSBridgeHandle对象注册到H5的window上，作为H5调用原生的通道。当H5开始加载时，在onPageBegin生命周期中调用initJSBridge()方法初始化JSBridge。
   ```ts
@@ -113,7 +113,7 @@ Web组件的onUrlLoadIntercept的不同返回结果对应不同的操作：
 
 **参考链接**
 
-onUrlLoadIntercept
+[onUrlLoadIntercept](../reference/apis-arkweb/arkts-basic-components-web-events.md#onurlloadinterceptdeprecated)
 
 
 ## 为什么Web组件的onKeyEvent键盘事件不生效(API 9)
@@ -128,7 +128,7 @@ onKeyEvent为通用事件，当前Web组件不支持通用事件。Web组件监�
 
 **参考链接**
 
-onInterceptKeyEvent
+[onInterceptKeyEvent](../reference/apis-arkweb/arkts-basic-components-web-events.md#oninterceptkeyevent9)
 
 
 ## onInterceptRequest拦截URL并自定义HTML文件，页面加载失败(API 9)
@@ -165,7 +165,7 @@ Web({ src: 'www.example.com', controller: this.controller })
 
 **参考链接**
 
-WebResourceResponse
+[WebResourceResponse](../reference/apis-arkweb/arkts-basic-components-web-WebResourceResponse.md)
 
 
 ## 如何在ArkTS代码中执行HTML内的JS函数(API 9)
@@ -179,20 +179,20 @@ WebResourceResponse
 
 **参考链接**
 
-runJavaScript
+[runJavaScript](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#runjavascript)
 
 
 ## 使用Web组件加载本地网页时，如何在本地网页中调用ArkTS中的函数(API 9)
 
 **解决措施**
 
-在ArkTS中使用JavaScriptProxy方法将ArkTS里的对象注册到H5的window对象中，然后在h5中使用window对象调用该方法。比如下面例子，在ArkTS中将testObj这个对象以别名testObjName注册到h5的window对象上，在上面的h5中就可以使用window.testObjName去访问这个对象。
+在ArkTS中使用JavaScriptProxy方法将ArkTS里的对象注册到H5的window对象中，然后在H5中使用window对象调用该方法。比如下面例子，在ArkTS中将testObj这个对象以别名testObjName注册到H5的window对象上，在上面的H5中就可以使用window.testObjName去访问这个对象。
 
-示例参考：前端页面调用应用侧函数
+示例参考：[前端页面调用应用侧函数](../web/web-in-page-app-function-invoking.md#如何建立应用侧与h5侧的交互通道)
 
 **参考链接**
 
-javaScriptProxy
+[javaScriptProxy](../reference/apis-arkweb/arkts-basic-components-web-i.md#javascriptproxy12)
 
 
 ## Web组件domStorageAccess属性设置(API 9)
@@ -203,7 +203,7 @@ javaScriptProxy
 
 **参考链接**
 
-domStorageAccess
+[domStorageAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#domstorageaccess)
 
 
 ## 如何解决Web组件加载的HTML页面内检测网络状态失败(API 9)
@@ -218,7 +218,7 @@ domStorageAccess
 
 **参考链接**
 
-GET\_NETWORK\_INFO
+[GET\_NETWORK\_INFO](../security/AccessToken/permissions-for-all.md#ohospermissionget_network_info)
 
 
 ## 如何自定义拼接设置User-Agent参数
@@ -261,7 +261,7 @@ struct WebComponent {
 
 **参考链接**
 
-User-Agent开发指导（自定义user-agent结构）
+[User-Agent开发指导（自定义user-agent结构）](../web/web-default-userAgent.md#自定义user-agent结构)
 ## WebView支持同层渲染吗(API 10)
 
 **解决措施**
@@ -278,7 +278,7 @@ setWebDebuggingAccess()接口开启Web组件前端页面调试能力，利用Dev
 
 **参考链接**
 
-使用Devtools工具调试前端页面（开发指南）
+[使用Devtools工具调试前端页面（开发指南）](../web/web-debugging-with-devtools.md)
 
 
 ## WebView如何实现网络请求拦截功能(API 10)
@@ -289,7 +289,7 @@ setWebDebuggingAccess()接口开启Web组件前端页面调试能力，利用Dev
 
 **参考链接**
 
-自定义页面请求响应（开发指南）
+[自定义页面请求响应（开发指南）](../web/web-resource-interception-request-mgmt.md)
 
 
 ## WebView和原生进行通信的方式有哪些，如何实现(API 10)
@@ -302,7 +302,7 @@ setWebDebuggingAccess()接口开启Web组件前端页面调试能力，利用Dev
 
 **参考链接**
 
-runJavaScript、registerJavaScriptProxy、javaScriptProxy、onInterceptRequest
+[runJavaScript](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#runjavascriptext10)、[registerJavaScriptProxy](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#registerjavascriptproxy)、[javaScriptProxy](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#javascriptproxy)、[onInterceptRequest](../reference/apis-arkweb/arkts-basic-components-web-events.md#oninterceptrequest9)
 
 
 ## WebView进程模型和渲染机制是什么(API 11)
@@ -313,12 +313,12 @@ runJavaScript、registerJavaScriptProxy、javaScriptProxy、onInterceptRequest
 2. 渲染机制：web自渲染。
 
 
-## 系统目前是否支持Webrtc的功能？规格是什么？
+## 系统目前是否支持WebRTC的功能？规格是什么？
 
 **解决措施**
 
-1. WebView支持Webrtc的P-P功能以及音视频流功能。
-2. 非WebView场景，系统不直接提供Webrtc，但会提供技术支持，比如支持三方gn+ninja交叉编译方式适配Webrtc（RR-30030985），包含以下两点：
+1. WebView支持WebRTC的P-P功能以及音视频流功能。
+2. 非WebView场景，系统不直接提供WebRTC，但会提供技术支持，比如支持三方gn+ninja交叉编译方式适配WebRTC，包含以下两点：
    * sdk支持gn+ninja交叉编译方式
    * 提供编译样例指导
 
@@ -331,7 +331,7 @@ WebView提供mixedMode(mixedMode: MixedMode)接口，设置是否允许加载超
 
 **参考链接**
 
-mixedmode
+[mixedmode](../reference/apis-arkweb/arkts-basic-components-web-e.md#mixedmode)
 
 
 ## WebView除了设置缓存，还有什么方式可以提升渲染速度吗？
@@ -342,7 +342,7 @@ mixedmode
 
 **参考链接**
 
-prepareforpageload
+[prepareforpageload](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#prepareforpageload10)
 
 
 ## 如何预创建Web组件？如何回收Web组件复用？
@@ -353,7 +353,7 @@ prepareforpageload
 
 **参考链接**
 
-动态创建Web组件
+[动态创建Web组件](../web/web-page-loading-with-web-components.md)
 
 
 ## 目前OpenHarmony是否有提供类似其他系统的JavaScript引擎能力?
@@ -364,7 +364,7 @@ prepareforpageload
 
 **参考链接**
 
-JSVM
+[JSVM](../reference/common/capi-jsvm.md)
 
 ## 无法使用`requestPointerLock`鼠标锁定功能
 
@@ -375,4 +375,4 @@ JSVM
 
 **解决措施**
 
-从API version 22开始，ArkWeb支持完整的鼠标锁定功能，该功能需要应用权限ohos.permission.LOCK_WINDOW_CURSOR。
+从API version 22开始，ArkWeb支持完整的鼠标锁定功能，该功能需要应用权限[ohos.permission.LOCK_WINDOW_CURSOR](../security/AccessToken/permissions-for-all.md#ohospermissionlock_window_cursor)。

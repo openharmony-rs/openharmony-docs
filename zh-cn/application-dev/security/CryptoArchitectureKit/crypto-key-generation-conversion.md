@@ -240,7 +240,7 @@ RSA（Rivest–Shamir–Adleman），当前支持使用字符串参数和密钥�
 >
 > 使用同步接口生成RSA2048、RSA3072、RSA4096和RSA8192非对称密钥会增加耗时。
 >
-> 系统对主线程有时间限制，耗时较长会导致失败。建议生成大位数密钥时，使用异步接口或使用多线程并发能力。
+> 系统对主线程有时间限制，耗时较长会导致失败。建议生成大位数密钥时，使用异步接口或[使用多线程并发能力](../../arkts-utils/multi-thread-concurrency-overview.md)。
 >
 > 创建RSA非对称密钥生成器时，若用于随机生成密钥，生成的RSA密钥规格与创建时指定的密钥规格一致；若用于密钥转换，生成的RSA密钥规格与转换时指定的密钥数据规格一致。
 
@@ -351,9 +351,9 @@ Fp域下的ECC密钥参数包括：
 
 > **说明：**
 >
-> - 当前ECC只支持Fp域，因此fieldType固定为"Fp"。fieldType和p构成了属性field，当前field只支持ECFieldFp。
+> - 当前ECC只支持Fp域，因此fieldType固定为"Fp"。fieldType和p构成了属性field，当前field只支持[ECFieldFp](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#ecfieldfp10)。
 > 
-> - g和pk为ECC曲线上的点，属于Point类型，需要指定具体的X和Y坐标。
+> - g和pk为ECC曲线上的点，属于[Point](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#point10)类型，需要指定具体的X和Y坐标。
 
 **使用曲线名生成密钥参数**
 
@@ -375,7 +375,7 @@ DSA（Digital Signature Algorithm），是一种基于模运算和整数有限�
 
 使用同步接口生成DSA2048或DSA3072非对称密钥，或者处理明文长度超过2048位，会导致耗时增加。
 
-系统对主线程有时间限制，耗时较长会导致失败。建议生成大位数密钥时，使用异步接口或使用多线程并发能力。
+系统对主线程有时间限制，耗时较长会导致失败。建议生成大位数密钥时，使用异步接口或[使用多线程并发能力](../../arkts-utils/multi-thread-concurrency-overview.md)。
 
 **使用字符串参数生成**
 
@@ -391,7 +391,7 @@ DSA（Digital Signature Algorithm），是一种基于模运算和整数有限�
 >
 > 使用同步接口生成DSA2048、DSA3072非对称密钥或明文长度超过2048位会导致耗时增加。
 >
-> 系统对主线程有时间限制，耗时较长会导致失败。建议生成大位数密钥时，使用异步接口或使用多线程并发能力。
+> 系统对主线程有时间限制，耗时较长会导致失败。建议生成大位数密钥时，使用异步接口或[使用多线程并发能力](../../arkts-utils/multi-thread-concurrency-overview.md)。
 >
 > 创建的DSA非对称密钥生成器用于随机生成密钥时，生成的密钥规格与创建时指定的密钥规格一致。用于密钥转换时，生成的密钥规格与转换时指定的密钥数据规格一致。
 
@@ -483,9 +483,9 @@ Fp域下的SM2密钥参数包括：
 
 > **说明：**
 >
-> - 当前SM2只支持Fp域，因此fieldType固定为"Fp"。fieldType和p构成了属性field，当前field只支持ECFieldFp。
+> - 当前SM2只支持Fp域，因此fieldType固定为"Fp"。fieldType和p构成了属性field，当前field只支持[ECFieldFp](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#ecfieldfp10)。
 > 
-> - g和pk为SM2曲线上的点，属于Point类型，需要指定具体X，Y坐标。
+> - g和pk为SM2曲线上的点，属于[Point](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#point10)类型，需要指定具体X，Y坐标。
 
 **使用曲线名生成密钥参数**
 

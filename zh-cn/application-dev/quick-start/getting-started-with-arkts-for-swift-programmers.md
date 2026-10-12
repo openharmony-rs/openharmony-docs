@@ -9,7 +9,7 @@
 
 对于熟悉Swift的开发者而言，ArkTS作为新的开发语言，带来了全新的开发体验与机遇。ArkTS在语法和编程范式上不仅继承了现代语言的特性，还针对生态进行了深度优化。理解Swift与ArkTS的差异和共性，能够帮助开发者快速上手应用开发，避开常见的编程误区。
 
-本文档基于Swift语言对ArkTS语言进行对比和介绍。如需更详细的了解，可参考ArkTS语法。
+本文档基于Swift语言对ArkTS语言进行对比和介绍。如需更详细的了解，可参考[ArkTS语法](./arkts-language-guide-basics.md)。
 
 ## 探索Swift与ArkTS的差异
 
@@ -21,7 +21,7 @@
 
 **ArkTS示例：**
 
-<!-- @swift_type_annotation -->
+<!-- @[swift_type_annotation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromSwiftToArkTS/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 // 类型注解（类似Swift）
@@ -63,7 +63,7 @@ Swift和ArkTS在函数方面语法趋同，细节上有差别。
 
 **ArkTS示例：** 函数定义
 
-<!-- @swift_function_definition -->
+<!-- @[swift_function_definition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromSwiftToArkTS/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 // 常规函数定义，与Swift类似
@@ -81,7 +81,7 @@ function add(x: number, y: number): number {
 
    **ArkTS示例：** ArkTS函数重载
 
-   <!-- @function_overload_demo -->    
+   <!-- @[function_overload_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromSwiftToArkTS/entry/src/main/ets/pages/Index.ets) -->    
 
    ``` TypeScript
    function foo(x: number): void;            /* 第一个函数定义 */
@@ -95,7 +95,7 @@ function add(x: number, y: number): number {
 
 2. ArkTS可选参数使用`?`，如`function foo(name?: string)`，而非Swift的默认值语法。
 
-   <!-- @optional_parameter -->    
+   <!-- @[optional_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromSwiftToArkTS/entry/src/main/ets/pages/Index.ets) -->    
 
    ``` TypeScript
    function foo2(name?: string) {}  /* name为可选参数 */
@@ -122,7 +122,7 @@ ArkTS也有自己的模块和包管理机制，同样通过import语句引入其
 
 **ArkTS示例：**
 
-<!-- @import_collections -->
+<!-- @[import_collections](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromSwiftToArkTS/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 // 引入ArkTS标准库中的ArkTS容器集
@@ -148,7 +148,7 @@ ArkTS支持显式命名空间（namespace）和模块化组织。
 
 **ArkTS示例：**
 
-<!-- @namespace_demo -->
+<!-- @[namespace_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromSwiftToArkTS/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 namespace Models {
@@ -197,7 +197,7 @@ ArkTS的`this`指向取决于函数调用时的上下文。
 
 **ArkTS示例：**
 
-<!-- @this_context -->
+<!-- @[this_context](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromSwiftToArkTS/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 class A {
@@ -240,13 +240,13 @@ ArkTS具有强大的类型推断能力，编译器能够根据上下文自动推
 
 **ArkTS示例：**
 
-<!-- @auto_type_inference -->
+<!-- @[auto_type_inference](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromSwiftToArkTS/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 let num = 10; // 编译器自动推断num为number类型
 ```
 
-<!-- @optional_property -->
+<!-- @[optional_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromSwiftToArkTS/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 interface Person {
@@ -267,7 +267,7 @@ ArkTS支持联合类型（`|`）。联合类型表示一个值可以是多种类
 
 **ArkTS示例：**
 
-<!-- @union_type_demo -->
+<!-- @[union_type_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromSwiftToArkTS/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 // 联合类型示例

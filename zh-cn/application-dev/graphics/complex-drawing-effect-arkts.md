@@ -23,18 +23,18 @@
 
 混合模式可以用于画笔或画刷，它定义了如何将源像素（要绘制的内容）与目标像素（已存在于画布上的内容）进行组合。
 
-可以使用setBlendMode()接口将混合模式应用于画刷或画笔中，该接口需要接受一个参数BlendMode，即混合模式的类型，具体可参考BlendMode。
+可以使用setBlendMode()接口将混合模式应用于画刷或画笔中，该接口需要接受一个参数BlendMode，即混合模式的类型，具体可参考[BlendMode](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode)。
 
 关键示例和效果示意图如下所示：
 
-<!-- @arkts_graphics_draw_import_ui_and_graphics2d -->
+<!-- @[arkts_graphics_draw_import_ui_and_graphics2d](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
 
 ``` TypeScript
 import { DrawContext, FrameNode, NodeController, RenderNode, UIContext } from '@kit.ArkUI';
 import { common2D, drawing } from '@kit.ArkGraphics2D';
 ```
 
-<!-- @arkts_graphics_draw_render_node -->
+<!-- @[arkts_graphics_draw_render_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
 
 ``` TypeScript
 function drawRenderNode(canvas: drawing.Canvas) {
@@ -61,7 +61,7 @@ function drawRenderNode(canvas: drawing.Canvas) {
 }
 ```
 
-BlendMode-SrcIn.png
+![BlendMode-SrcIn.png](figures/BlendMode-SrcIn.png)
 
 
 ## 路径效果
@@ -76,7 +76,7 @@ BlendMode-SrcIn.png
 
 此处以绘制矩形虚线路径效果为例，关键示例和效果示意图如下所示：
 
-<!-- @arkts_graphics_draw_path_effect -->
+<!-- @[arkts_graphics_draw_path_effect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
 
 ``` TypeScript
 // 创建画笔
@@ -107,7 +107,7 @@ canvas.detachPen();
 
 | 原始图 | 设置虚线效果后的效果图 |
 | -------- | -------- |
-| Screenshot_20241130160231398 | Screenshot_20241130160433593 |
+| ![Screenshot_20241130160231398](figures/Screenshot_20241130160231398.jpg) | ![Screenshot_20241130160433593](figures/Screenshot_20241130160433593.jpg) |
 
 
 ## 着色器效果
@@ -115,7 +115,7 @@ canvas.detachPen();
 着色器效果基于画刷或画笔实现，可使用setShaderEffect()接口设置画刷或画笔的着色器效果。当前支持不同的着色器效果，如线性渐变着色器效果、径向渐变着色器效果、扇形渐变着色器效果。
 
 
-着色器相关接口和具体参数的说明请见ShaderEffect。
+着色器相关接口和具体参数的说明请见[ShaderEffect](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-ShaderEffect.md)。
 
 
 ### 线性渐变着色器效果
@@ -138,7 +138,7 @@ canvas.detachPen();
 
 此处以绘制矩形并使用画刷设置线性渐变着色器效果为例，关键示例和效果示意图如下所示：
 
-<!-- @arkts_graphics_draw_linear_gradient -->
+<!-- @[arkts_graphics_draw_linear_gradient](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
 
 ``` TypeScript
 let startPt: common2D.Point = { x: VALUE_100, y: VALUE_100 };
@@ -164,7 +164,7 @@ canvas.drawRect(rect);
 canvas.detachBrush();
 ```
 
-Gradient-Shader-Effect
+![Gradient-Shader-Effect](figures/Gradient-Shader-Effect.png)
 
 
 ### 径向渐变着色器效果
@@ -175,7 +175,7 @@ Gradient-Shader-Effect
 
 此处以绘制矩形并使用画刷设置径向渐变着色器效果为例，关键示例和效果示意图如下所示：
 
-<!-- @arkts_graphics_draw_path_gradient -->
+<!-- @[arkts_graphics_draw_path_gradient](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
 
 ``` TypeScript
 let centerPt: common2D.Point = { x: VALUE_500, y: VALUE_500 };
@@ -200,7 +200,7 @@ canvas.drawRect(rect);
 canvas.detachBrush();
 ```
 
-Screenshot_20241130164939281
+![Screenshot_20241130164939281](figures/Screenshot_20241130164939281.jpg)
 
 
 ### 扇形渐变着色器效果
@@ -211,7 +211,7 @@ Screenshot_20241130164939281
 
 此处以绘制矩形并使用画刷设置扇形渐变着色器效果为例，关键示例和效果示意图如下所示：
 
-<!-- @arkts_graphics_draw_sector_gradient -->
+<!-- @[arkts_graphics_draw_sector_gradient](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
 
 ``` TypeScript
 let centerPt: common2D.Point = { x: VALUE_500, y: VALUE_500 };
@@ -236,19 +236,19 @@ canvas.drawRect(rect);
 canvas.detachBrush();
 ```
 
-Screenshot_20241130165741720
+![Screenshot_20241130165741720](figures/Screenshot_20241130165741720.jpg)
 
 
 ## 滤波器效果
 
 滤波器效果可基于画刷或画笔实现。当前支持不同的滤波器效果，比如图像滤波器、颜色滤波器、蒙版滤波器。
 
-滤波器相关接口和具体参数的说明请见ImageFilter。
+滤波器相关接口和具体参数的说明请见[ImageFilter](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-ImageFilter.md)。
 
 
 ### 颜色滤波器效果
 
-颜色滤波器可基于画笔或画刷实现，颜色滤波器的相关接口和具体参数的说明请见ColorFilter。
+颜色滤波器可基于画笔或画刷实现，颜色滤波器的相关接口和具体参数的说明请见[ColorFilter](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-ColorFilter.md)。
 
 目前可实现多种颜色滤波器，包括如下：
 
@@ -288,7 +288,7 @@ A' = d0\*R + d1\*G + d2\*B + d3\*A + d4
 
 此处以绘制矩形并使用画刷设置具有5x4颜色矩阵的颜色滤波器效果为例，关键示例和效果示意图如下所示：
 
-<!-- @arkts_graphics_draw_color_filter -->
+<!-- @[arkts_graphics_draw_color_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
 
 ``` TypeScript
 // 创建画刷
@@ -322,12 +322,12 @@ canvas.detachBrush();
 
 | 原始图 | 设置5x4颜色矩阵的颜色滤波器后的效果图 |
 | -------- | -------- |
-| Screenshot_20241130173415925 | Screenshot_20241130173354704 |
+| ![Screenshot_20241130173415925](figures/Screenshot_20241130173415925.jpg) | ![Screenshot_20241130173354704](figures/Screenshot_20241130173354704.jpg) |
 
 
 ### 图像滤波器效果
 
-图像滤波器可基于画笔或画刷来实现，图像滤波器的相关接口和具体参数的说明请见ImageFilter。
+图像滤波器可基于画笔或画刷来实现，图像滤波器的相关接口和具体参数的说明请见[ImageFilter](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-ImageFilter.md)。
 
 目前只支持两种图像滤波器：
 
@@ -343,7 +343,7 @@ canvas.detachBrush();
 
 此处以绘制矩形并使用画笔添加模糊效果的图像滤波器效果为例，关键示例和效果示意图如下所示：
 
-<!-- @arkts_graphics_draw_image_filter -->
+<!-- @[arkts_graphics_draw_image_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
 
 ``` TypeScript
 // 设置画笔
@@ -372,24 +372,24 @@ canvas.detachPen();
 
 | 原始图 | 设置模糊效果后的效果图 |
 | -------- | -------- |
-| Screenshot_20241130170911500 | Screenshot_20241130170826458 |
+| ![Screenshot_20241130170911500](figures/Screenshot_20241130170911500.jpg) | ![Screenshot_20241130170826458](figures/Screenshot_20241130170826458.jpg) |
 
 
 ### 蒙版滤波器效果
 
 蒙版滤波器的模糊效果仅对透明度和形状边缘进行模糊处理，相对于图像滤波器的模糊效果来说计算成本更低。
 
-蒙版滤波器可基于画笔或画刷实现，蒙版滤波器的相关接口和具体参数的说明请见MaskFilter。
+蒙版滤波器可基于画笔或画刷实现，蒙版滤波器的相关接口和具体参数的说明请见[MaskFilter](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-MaskFilter.md)。
 
 可使用createBlurMaskFilter()接口创建想要设置具有模糊效果的蒙版滤波器。接口接受2个参数，分别为：
 
-- blurType：用于指定要应用的模糊类型，详细分类请参考BlurType。
+- blurType：用于指定要应用的模糊类型，详细分类请参考[BlurType](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blurtype12)。
 
 - sigma：用于指定要应用的高斯模糊的标准差，标准差必须大于0。
 
 此处以绘制矩形并使用画笔设置蒙版滤波器效果为例，关键示例和效果示意图如下所示：
 
-<!-- @arkts_graphics_draw_mask_filter -->
+<!-- @[arkts_graphics_draw_mask_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ComplexEffect.ets) -->
 
 ``` TypeScript
 // 创建画笔
@@ -418,12 +418,12 @@ canvas.detachPen();
 
 | 原始图 | 设置模糊效果后的效果图 |
 | -------- | -------- |
-| Screenshot_20241130170911500 | Screenshot_20241130170826458 |
+| ![Screenshot_20241130170911500](figures/Screenshot_20241130170911500.jpg) | ![Screenshot_20241130170826458](figures/Screenshot_20241130170826458.jpg) |
 
 <!--RP1-->
 ## 相关实例
 
 针对Drawing(ArkTS)的开发，有以下相关实例可供参考：
 
-- ArkTSGraphicsDraw (API20)
+- [ArkTSGraphicsDraw (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw)
 <!--RP1End-->

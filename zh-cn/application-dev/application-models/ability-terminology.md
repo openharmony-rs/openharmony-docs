@@ -11,7 +11,7 @@
 
 ### AbilityStage
 
-AbilityStage是一个Module级别的组件管理器。
+[AbilityStage](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md)是一个[Module](../quick-start/application-package-overview.md#应用的多module设计机制)级别的组件管理器。
 
 ### App Linking
 
@@ -20,6 +20,10 @@ App Linking是一种实现应用间跳转的技术，通过系统传入的uri信
 ### Application Continuation
 
 应用接续（Application Continuation），也称为"跨端迁移"，指当用户在一个设备上操作某个应用时，可以在另一个设备的同一个应用中快速切换，无缝衔接上一个设备的应用体验。具体是指在用户使用过程中，当使用情景发生变化：之前使用的设备不再适合继续当前任务，或者周围有更合适的设备时，用户可以选择使用新的设备来继续当前的任务。接续完成后，之前设备的应用可退出或保留，用户可以将注意力集中在被启动的设备上，继续执行任务。
+
+### ArkAF
+
+[ArkAF](./arkaf-overview.md)（Ark Agentic Framework，方舟智能开发框架）是面向智能体时代的应用能力开发框架，提供意图框架、Skill框架和端侧A2A框架三种能力开放机制，帮助开发者将应用能力外化给系统智能体调用，实现应用与智能体的无缝协同。
 
 ### ArkTS子进程
 
@@ -64,7 +68,7 @@ FA模型是早期的应用模型，为应用程序提供必备的组件与运行
 
 ### InsightIntentProvider (意图提供方管理能力)
 
-意图提供方管理能力指通过声明标准意图或自定义意图，将业务功能接入意图框架的应用主体。
+[意图提供方管理能力](../reference/apis-ability-kit/js-apis-app-ability-insightIntentProvider.md)指通过声明标准意图或自定义意图，将业务功能接入意图框架的应用主体。
 
 
 ## K
@@ -80,7 +84,7 @@ FA模型是早期的应用模型，为应用程序提供必备的组件与运行
 
 当应用存在多个进程时，如果开发者需要将不同的Ability实例动态分配给指定进程，系统会在应用启动时自动指定一个进程来负责总体的协调分配工作，该进程即为主控进程。默认情况下，系统指定应用启动的第一个进程为主控进程。
 
-开发者可以设置onNewProcessRequest的返回值，让主控进程通过接收该接口的回调信息，决定新的Ability实例运行在哪个进程中。
+开发者可以设置[onNewProcessRequest](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onnewprocessrequest11)的返回值，让主控进程通过接收该接口的回调信息，决定新的Ability实例运行在哪个进程中。
 
 
 ## N
@@ -133,14 +137,14 @@ UIAbility生命周期是指一个UIAbility组件从创建到销毁的完整过�
 
 ### UIAbility热启动
 
-UIAbility热启动发生在实例已启动并切换至后台后再次被启动时。由于实例无需完全重建，系统可快速恢复其原有状态，其生命周期会跳过初始创建阶段，直接触发onNewWant回调，随后UIAbility进入前台状态并触发onForeground回调。
+UIAbility热启动发生在实例已启动并切换至后台后再次被启动时。由于实例无需完全重建，系统可快速恢复其原有状态，其生命周期会跳过初始创建阶段，直接触发onNewWant()回调，随后UIAbility进入前台状态并触发onForeground()回调。
 
 
 ## X
 
 ### 显式Want启动
 
-显式Want启动是指在启动目标应用组件时，调用方传入的want参数中指定了abilityName和bundleName，称为显式Want启动。
+显式Want启动是指在启动目标应用组件时，调用方传入的[want](../reference/apis-ability-kit/js-apis-app-ability-want.md)参数中指定了abilityName和bundleName，称为显式Want启动。
 
 当有明确处理请求的对象时，显式Want启动是一种简单有效的启动目标应用组件的方式。
 
@@ -153,10 +157,10 @@ UIAbility热启动发生在实例已启动并切换至后台后再次被启动�
 
 ### 隐式Want启动
 
-隐式Want启动是指在启动目标应用组件时，调用方传入的want参数中未指定abilityName，称为隐式Want启动。
+隐式Want启动是指在启动目标应用组件时，调用方传入的[want](../reference/apis-ability-kit/js-apis-app-ability-want.md)参数中未指定abilityName，称为隐式Want启动。
 
 当目标处理对象不明确时，可以使用隐式Want启动。它允许当前应用直接调用其他应用提供的某项能力，而无需关心该能力由哪个具体应用提供。
 
 ### 应用级so
 
-应用开发者通过Node-API方式自行开发的so，属于应用的一部分，随应用发布。
+应用开发者通过[Node-API](../napi/use-napi-process.md)方式自行开发的so，属于应用的一部分，随应用发布。

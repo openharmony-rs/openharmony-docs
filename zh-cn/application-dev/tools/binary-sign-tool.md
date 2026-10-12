@@ -10,11 +10,11 @@ Binary Sign Tool（二进制签名工具），用于对二进制文件进行代�
 
 ## 命令行工具获取
 
-- 支持运行在Linux平台的工具：下载最新的Command Line Tools，可以在SDK库openHarmony/toolchains/lib中找到，文件名为binary-sign-tool。
+- 支持运行在Linux平台的工具：下载最新的[Command Line Tools](command-line-tools-overview.md)，可以在SDK库openHarmony/toolchains/lib中找到，文件名为binary-sign-tool。
 
 - 支持运行在OpenHarmony PC/2in1平台的工具：从应用商店下载安装DevBox软件，无需额外配置，即可在终端窗口中执行binary-sign-tool命令。
 
-- 支持运行在Java平台的工具：下载API 24及以上版本的Command Line Tools，可以在SDK库openHarmony/toolchains/lib中找到，文件名为binary-sign-tool.jar。此工具运行要求JDK 8及以上版本。
+- 支持运行在Java平台的工具：下载API 24及以上版本的[Command Line Tools](command-line-tools-overview.md)，可以在SDK库openHarmony/toolchains/lib中找到，文件名为binary-sign-tool.jar。此工具运行要求JDK 8及以上版本。
 
 ## 二进制签名工具命令列表
 

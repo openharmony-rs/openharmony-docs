@@ -16,7 +16,7 @@ ArkTS在类型系统中通过以下机制处理类型：类型守卫（typeof、
 
 类型转换将值从一种类型转换为另一种类型，在ArkTS中主要用于类型收窄（将联合类型缩小到具体类型）、类型断言（告知编译器值的具体类型）和类型推断辅助。
 
-<!-- @ts_type_conversion_purpose -->
+<!-- @[ts_type_conversion_purpose](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/TypeConversion.ts) -->
 
 ``` TypeScript
 function getTcpValue(): string | number {
@@ -39,7 +39,7 @@ if (typeof tcpValue === 'string') {
 
 类型转换按方向分为向上转型（子类到父类，隐式安全）和向下转型（父类到子类，需显式断言和类型检查）。
 
-<!-- @class_upcast_downcast_example -->
+<!-- @[class_upcast_downcast_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/TypeConversion.ets) -->
 
 ``` TypeScript
 class Animal {
@@ -83,7 +83,7 @@ if (pet instanceof Dog) {
 
 类型转换应优先使用明确联合类型配合类型守卫，避免对宽泛类型（如Object）直接断言，以保证运行时类型安全。
 
-<!-- @union_type_guard_vs_assertion -->
+<!-- @[union_type_guard_vs_assertion](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/TypeConversion.ets) -->
 
 ``` TypeScript
 // 反例：使用宽泛类型后直接断言
@@ -112,7 +112,7 @@ if (typeof unionTypeValue === 'string') {
 
 **TypeScript对照**
 
-<!-- @ts_typescript_angle_bracket_assertion_not_used -->
+<!-- @[ts_typescript_angle_bracket_assertion_not_used](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/TypeConversion.ts) -->
 
 ``` TypeScript
 // TypeScript对照写法，ArkTS不使用：
@@ -124,7 +124,7 @@ let length: number = (<string>value).length;
 
 `as`关键字（`value as Type`）进行类型断言，告知编译器将值视为指定类型。
 
-<!-- @as_keyword_type_assertion -->
+<!-- @[as_keyword_type_assertion](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/TypeConversion.ets) -->
 
 ``` TypeScript
 let assertValueObj: Object = 'Hello, ArkTS';
@@ -160,7 +160,7 @@ console.info(`${assertUser.name}`); // Alice
 
 类型断言仅在编译时生效，不改变运行时类型；不能在不相关的类型间直接断言，需要先经过unknown或运行时转换。
 
-<!-- @ts_assertion_runtime_type -->
+<!-- @[ts_assertion_runtime_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/TypeConversion.ts) -->
 
 ``` TypeScript
 let runtimeTypeValue: Object = 123;
@@ -174,7 +174,7 @@ assertedString.toUpperCase(); // 运行时错误：toUpperCase is not a function
 
 类型断言在不相关类型间无法直接使用，需区分合理与不合理的断言场景：
 
-<!-- @ts_reasonable_vs_unreasonable_assertion -->
+<!-- @[ts_reasonable_vs_unreasonable_assertion](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/TypeConversion.ts) -->
 
 ``` TypeScript
 // 不合理：将string断言为number
@@ -191,7 +191,7 @@ let unreasonableUnsafeNum: number = unreasonableValue as unknown as number;
 
 类型断言与类型转换有本质区别：断言仅作用于编译期，转换则在运行时执行。注意以下示例中`as number`仅告知编译器类型，运行时`assertedNum`仍为string，若直接当number使用会产生运行时错误：
 
-<!-- @type_assertion_vs_type_conversion -->
+<!-- @[type_assertion_vs_type_conversion](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/TypeConversion.ets) -->
 
 ``` TypeScript
 // 类型断言：仅编译时生效
@@ -209,7 +209,7 @@ console.info(`${typeof convertedNum}`); // "number"（运行时类型已改变�
 
 类型断言适用于类型检查后的安全收窄、外部数据结构的断言（如DOM元素、API响应解析）等需要告知编译器具体类型的场景。注意：在`typeof`等类型守卫已收窄类型后，`as`断言是多余的，可省略。
 
-<!-- @type_assertion_with_type_check -->
+<!-- @[type_assertion_with_type_check](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/TypeConversion.ets) -->
 
 ``` TypeScript
 function processValue(value: string | number | boolean): void {
@@ -226,7 +226,7 @@ function processValue(value: string | number | boolean): void {
 
 对DOM元素等外部对象，可在类型检查后用`as`断言为具体结构。
 
-<!-- @ts_dom_element_type_assertion -->
+<!-- @[ts_dom_element_type_assertion](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/TypeConversion.ts) -->
 
 ``` TypeScript
 // 获取DOM元素（浏览器环境）
@@ -256,7 +256,7 @@ if (element) {
 
 解析API响应JSON时，可用`as`将解析结果断言为预定义的响应接口类型。
 
-<!-- @ts_api_response_type_assertion -->
+<!-- @[ts_api_response_type_assertion](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/TypeConversion.ts) -->
 
 ``` TypeScript
 interface ApiResponse {
@@ -289,7 +289,7 @@ typeof类型守卫使用`typeof`运算符检查基础类型，是最常用的类
 
 用于判断基础类型：`string`、`number`、`boolean`、`symbol`、`undefined`、`function`、`object`。
 
-<!-- @typeof_type_guard -->
+<!-- @[typeof_type_guard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/TypeConversion.ets) -->
 
 ``` TypeScript
 function typeGuardProcessValue(value: string | number | boolean): void {
@@ -316,7 +316,7 @@ typeGuardProcessValue(true);     // 布尔值: 真
 
 `instanceof`检查对象是否是某个类的实例（沿原型链逐级匹配），在`if`分支中实现类型收窄——TypeScript在该分支内将对象类型缩小到目标类类型，从而安全访问该类特有的成员。
 
-<!-- @instanceof_type_guard -->
+<!-- @[instanceof_type_guard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/TypeConversion.ets) -->
 
 ``` TypeScript
 class TypeGuardDog {
@@ -364,11 +364,11 @@ makeSound(myCat); // Pet name: Whiskers, Whiskers meows: Meow!
 
 ### in类型守卫
 
-TypeScript支持通过`'prop' in obj`判断对象是否包含指定属性并完成类型收窄。ArkTS不支持`in`操作符进行类型收窄（`arkts-no-in`），详见从TypeScript到ArkTS的适配规则，推荐为联合类型添加稳定的判别字段。
+TypeScript支持通过`'prop' in obj`判断对象是否包含指定属性并完成类型收窄。ArkTS不支持`in`操作符进行类型收窄（`arkts-no-in`），详见[从TypeScript到ArkTS的适配规则](typescript-to-arkts-migration-guide.md#不支持in运算符)，推荐为联合类型添加稳定的判别字段。
 
 **TypeScript对照**
 
-<!-- @ts_discriminated_union_instead_of_in_operator -->
+<!-- @[ts_discriminated_union_instead_of_in_operator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/TypeConversion.ts) -->
 
 ``` TypeScript
 interface Bird {
@@ -430,7 +430,7 @@ move(fish); // Swimming deep, Laying eggs in water
 
 其过程是：先定义联合类型或宽泛类型，再用类型守卫检查类型，在守卫分支内即可访问类型特定成员，编译器会自动收窄类型范围。
 
-<!-- @type_narrowing_concept -->
+<!-- @[type_narrowing_concept](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/TypeConversion.ets) -->
 
 ``` TypeScript
 type StringOrNumber = string | number;
@@ -449,7 +449,7 @@ function narrowProcessValue(value: StringOrNumber): string {
 
 TypeScript可使用`value is Type`格式声明类型谓词。ArkTS不使用`is`类型谓词；需要封装判断逻辑时，辅助函数返回`boolean`，类型专有成员访问仍通过类型判别条件所在分支完成。
 
-<!-- @discriminated_union_vehicle_example -->
+<!-- @[discriminated_union_vehicle_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/TypeConversion.ets) -->
 
 ``` TypeScript
 interface Car {
@@ -510,7 +510,7 @@ console.info(`${isPlaneKind(plane)}`);
 
 同样的判别联合模式也适用于用户角色等业务领域模型的类型区分：
 
-<!-- @discriminated_union_user_role -->
+<!-- @[discriminated_union_user_role](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/TypeConversion.ets) -->
 
 ``` TypeScript
 interface RegularUser {
@@ -575,7 +575,7 @@ processUser(adminUser);
 
 在条件表达式中，假值（`0`、`NaN`、`""`、`null`、`undefined`）会被排除，变量收窄为非假值类型。
 
-<!-- @truthiness_narrowing -->
+<!-- @[truthiness_narrowing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/TypeConversion.ets) -->
 
 ``` TypeScript
 function processTruthyValue(value: string | null | undefined): void {
@@ -596,7 +596,7 @@ processTruthyValue(null);
 
 使用`===`或`!==`比较后，编译器在对应分支中收窄类型。`== null`可同时排除`null`和`undefined`。
 
-<!-- @equality_narrowing -->
+<!-- @[equality_narrowing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/TypeConversion.ets) -->
 
 ``` TypeScript
 function compareNarrowing(value: string | number | null | undefined): void {
@@ -624,7 +624,7 @@ function checkNull(value: string | null | undefined): void {
 
 变量赋值后，编译器根据右侧值的类型收窄左侧变量的类型。收窄基于声明类型，不会扩展到更宽的类型。
 
-<!-- @assignment_narrowing -->
+<!-- @[assignment_narrowing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/TypeConversion.ets) -->
 
 ``` TypeScript
 let anAssignedValue: string | number = 'hello';
@@ -637,7 +637,7 @@ console.info(`${anAssignedValue}`); // 编译器知道此时为number
 
 编译器沿`if`/`else`、`switch`、循环、三元表达式等控制流追踪类型变化。不可达分支的类型被排除，分支合并后取联合类型。
 
-<!-- @control_flow_analysis -->
+<!-- @[control_flow_analysis](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/TypeConversion.ets) -->
 
 ``` TypeScript
 function flowAnalysis(value: string | number): void {
@@ -651,7 +651,7 @@ function flowAnalysis(value: string | number): void {
 
 在循环和条件赋值中，控制流分析也能正确追踪类型变化：
 
-<!-- @type_inference_union -->
+<!-- @[type_inference_union](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/TypeConversion.ets) -->
 
 ``` TypeScript
 let tiuResult: string | number;
@@ -667,7 +667,7 @@ console.info(`${tiuResult}`); // string | number
 
 TypeScript支持`parameterName is Type`语法声明类型谓词函数，在`if`分支中自动收窄类型。**ArkTS不支持`is`类型谓词语法**。
 
-<!-- @ts_type_predicate -->
+<!-- @[ts_type_predicate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/TypeConversion.ts) -->
 
 ``` TypeScript
 // TypeScript写法，ArkTS不支持is类型谓词
@@ -683,7 +683,7 @@ if (isString(tsVal)) {
 
 ArkTS替代方式：使用`typeof`或`instanceof`在调用处直接收窄，或使用判别联合。
 
-<!-- @typeof_narrowing_process -->
+<!-- @[typeof_narrowing_process](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/TypeConversion.ets) -->
 
 ``` TypeScript
 function processWithTypeof(value: string | number): void {
@@ -703,7 +703,7 @@ function processWithTypeof(value: string | number): void {
 
 子类实例可以直接赋值给父类类型变量（隐式向上转型），转型后只能调用父类定义的成员，不能访问子类特有成员。
 
-<!-- @ts_upcast_subclass_to_parent -->
+<!-- @[ts_upcast_subclass_to_parent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/TypeConversion.ts) -->
 
 ``` TypeScript
 class Animal {
@@ -759,7 +759,7 @@ animal.bark(); // 编译错误
 
 接口实现类实例可以赋值给接口类型变量（隐式向上转型），转型后只能调用接口定义的成员，不能访问实现类特有方法。
 
-<!-- @ts_upcast_to_interface -->
+<!-- @[ts_upcast_to_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/TypeConversion.ts) -->
 
 ``` TypeScript
 interface IShape {
@@ -826,7 +826,7 @@ shape.getDiagonal(); // 编译错误
 
 子类转换为父类类型时自动完成且类型安全，子类对象包含父类的所有成员。
 
-<!-- @upcast_automatic_implicit_safe -->
+<!-- @[upcast_automatic_implicit_safe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/TypeConversion.ets) -->
 
 ``` TypeScript
 class SafeVehicle {
@@ -876,7 +876,7 @@ startVehicle(myCar); // 自动向上转型
 
 向上转型后，父类类型变量只能调用父类中声明的成员，子类特有成员需向下转型后方可访问。
 
-<!-- @ts_upcast_access_parent_members_only -->
+<!-- @[ts_upcast_access_parent_members_only](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/TypeConversion.ts) -->
 
 ``` TypeScript
 class Parent {
@@ -913,7 +913,7 @@ if (parent instanceof Child) {
 
 父类类型变量转换为子类类型需要使用as显式断言，应先用instanceof检查实际类型，避免运行时转换失败。
 
-<!-- @downcast_with_instanceof_check -->
+<!-- @[downcast_with_instanceof_check](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/TypeConversion.ets) -->
 
 ``` TypeScript
 class Animal2 {
@@ -980,7 +980,7 @@ if (catAnimal instanceof Dog2) {
 
 先用`instanceof`判断对象实际类型，在守卫分支内赋值给子类变量，避免运行时转换失败。
 
-<!-- @safe_downcast_with_type_guard -->
+<!-- @[safe_downcast_with_type_guard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/TypeConversion.ets) -->
 
 ``` TypeScript
 interface CastShape {
@@ -1056,7 +1056,7 @@ processShape(circle);
 
 向下转型可能失败：使用`as`断言时，编译通过但运行时类型不匹配不会抛异常，而是产生不安全的行为；使用`instanceof`检查后再`as`转换，可在`else`分支中优雅处理转型失败的情况。推荐始终用`instanceof`守卫后再转型。
 
-<!-- @safe_downcast_function -->
+<!-- @[safe_downcast_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/TypeConversion.ets) -->
 
 ``` TypeScript
 class Base {
@@ -1092,7 +1092,7 @@ safeDowncast(derived); // Derived method
 
 通过typeof类型守卫将联合类型收窄为具体子类型。
 
-<!-- @typeof_type_guard_narrowing -->
+<!-- @[typeof_type_guard_narrowing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/TypeConversion.ets) -->
 
 ``` TypeScript
 type StringOrNumberNarrow = string | number;
@@ -1124,7 +1124,7 @@ typeGuardProcessValue2(42);      // Number value: 42, Fixed: 42.00, Square: 1764
 
 通过判别属性将联合类型收窄为具体成员类型。
 
-<!-- @discriminated_union_animal_speed -->
+<!-- @[discriminated_union_animal_speed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/TypeConversion.ets) -->
 
 ``` TypeScript
 interface Bird {
@@ -1173,7 +1173,7 @@ console.info(`${getAnimalSpeedV2(horse)}`); // 50
 
 通过switch语句匹配联合类型的判别属性（如`kind`），在每个分支中编译器自动将类型收窄为对应的成员类型，安全访问其专有属性。
 
-<!-- @discriminated_union_shape_area -->
+<!-- @[discriminated_union_shape_area](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/TypeConversion.ets) -->
 
 ``` TypeScript
 interface SwitchCircle {
@@ -1222,7 +1222,7 @@ console.info(`area：${getArea(areaRectangle)}`);  // area：18
 
 可选类型（T | undefined）通过条件判断、可选链（?.）或空值合并（??）收窄为具体类型，避免直接访问undefined值。
 
-<!-- @optional_property_type_guard -->
+<!-- @[optional_property_type_guard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/TypeConversion.ets) -->
 
 ``` TypeScript
 interface OptUser {
@@ -1275,7 +1275,7 @@ processUserEmail(optUser2);
 
 结合判别联合、类型守卫和switch语句，综合演示API响应处理中类型收窄和安全访问数据的完整流程。
 
-<!-- @union_type_api_response_handling -->
+<!-- @[union_type_api_response_handling](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/TypeConversion.ets) -->
 
 ``` TypeScript
 // 定义联合类型
@@ -1363,7 +1363,7 @@ processApiResponse(apiError);   // Error 404: Not found
 
 穷尽性检查确保联合类型或枚举的所有可能值都被处理。利用`never`类型，在`switch`的`default`分支中检测遗漏的情况。
 
-<!-- @exhaustiveness_check -->
+<!-- @[exhaustiveness_check](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/TypeConversion.ets) -->
 
 ``` TypeScript
 interface EcCircle {
@@ -1402,7 +1402,7 @@ console.info(`${getEcArea(ecSquare).toString()}`);
 
 `never`类型表示永不存在的值。在类型收窄中，当所有可能都被排除后，剩余类型变为`never`。
 
-<!-- @never_narrowing -->
+<!-- @[never_narrowing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/TypeConversion.ets) -->
 
 ``` TypeScript
 function processNvValue(value: string | number): void {
@@ -1429,7 +1429,7 @@ processNvValue(42);       // 42.00
 
 两个类型只要结构（属性和方法）兼容，即可互相赋值，无需显式继承关系。**ArkTS不支持结构类型（鸭子类型）**，类型兼容基于显式继承和`implements`关系。
 
-<!-- @ts_structural_typing -->
+<!-- @[ts_structural_typing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/TypeConversion.ts) -->
 
 ``` TypeScript
 // TypeScript结构类型，ArkTS不支持
@@ -1449,7 +1449,7 @@ console.info(`${tsNamedItem.name}`);
 
 ArkTS中需要显式`implements`才能实现接口兼容：
 
-<!-- @structural_typing_explicit -->
+<!-- @[structural_typing_explicit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/TypeConversion.ets) -->
 
 ``` TypeScript
 interface StNamed {
@@ -1474,7 +1474,7 @@ console.info(`${stNamedItem.name}`); // Alice
 
 函数兼容性检查参数数量和类型、返回值类型。目标函数参数数量≤源函数参数数量（可少不可多），参数类型需兼容，返回值类型需兼容（协变）。
 
-<!-- @function_compatibility -->
+<!-- @[function_compatibility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/TypeConversion.ets) -->
 
 ``` TypeScript
 // 少参数函数可赋给多参数函数类型
@@ -1491,7 +1491,7 @@ let fcUnary: FcBinaryOp = (a: number): number => a * 2; // 少一个参数，兼
 
 **TypeScript对照**
 
-<!-- @ts_enum_compatibility -->
+<!-- @[ts_enum_compatibility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/TypeConversion.ts) -->
 
 ``` TypeScript
 // 不同枚举之间互不兼容
@@ -1509,7 +1509,7 @@ console.info(`${ecN}`); // 0
 
 类之间的兼容性基于实例成员结构比较，忽略`static`成员。`private`和`protected`成员需来自同一声明。**ArkTS不支持结构类型比较**，不同类之间必须有显式继承关系才能互相赋值。
 
-<!-- @ts_class_compatibility -->
+<!-- @[ts_class_compatibility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/tsPages/TypeConversion.ts) -->
 
 ``` TypeScript
 // TypeScript类兼容性（结构比较），ArkTS不支持
@@ -1530,7 +1530,7 @@ console.info(`${tsA.name}`);
 
 泛型类型参数仅在参与成员结构时影响兼容性。如果泛型参数未在成员中使用，则不影响兼容性。
 
-<!-- @generic_type_compatibility -->
+<!-- @[generic_type_compatibility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/ArkTSFullLanguageGuide/entry/src/main/ets/pages/TypeConversion.ets) -->
 
 ``` TypeScript
 interface Empty<T> {

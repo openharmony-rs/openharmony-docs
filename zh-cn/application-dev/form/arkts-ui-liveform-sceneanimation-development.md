@@ -13,40 +13,40 @@
 
 **非激活态**：在此状态下，卡片与普通卡片行为无异，遵循既有的卡片开发规范，卡片UI由卡片提供方widgetCard.ets中的内容所呈现。
 
-**激活态**： 表示互动卡片动效渲染状态，在此状态下，卡片UI由卡片提供方所开发的LiveFormExtensionAbility对应page页面完成渲染。
+**激活态**： 表示互动卡片动效渲染状态，在此状态下，卡片UI由卡片提供方所开发的[LiveFormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md)对应page页面完成渲染。
 
 **图1** 互动卡片状态切换说明
 
-live-form-status-change.png
+![live-form-status-change.png](figures/live-form-status-change.png)
 
 **图2** 互动卡片动效触发流程
 
-live-form-judge.PNG
+![live-form-judge.PNG](figures/live-form-judge.PNG)
 
 ## 实现原理
 
-开发者可以通过formProvider.requestOverflow接口触发互动卡片动效，例如在用户点击时触发，典型时序图如下。
+开发者可以通过[formProvider.requestOverflow](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderrequestoverflow20)接口触发互动卡片动效，例如在用户点击时触发，典型时序图如下。
 
 **图3** 点击触发互动卡片动效时序图
 
-live-form-click-timeline.png
+![live-form-click-timeline.png](figures/live-form-click-timeline.png)
 
 **图4** 定时定点触发互动卡片动效时序图
 
-live-form-update-timeline.png
+![live-form-update-timeline.png](figures/live-form-update-timeline.png)
 
 **图5** 摇一摇触发互动卡片动效时序图
 
-live-form-shake-timeline.png
+![live-form-shake-timeline.png](figures/live-form-shake-timeline.png)
 
 ## 约束和限制
 
 ### 支持的场景
-1. 当前互动卡片动效只有在FormLocation为“DESKTOP”的单张卡片上面才能生效。
-2. 由于性能功耗影响只支持部分机型，在不支持的机型会报801错误码。
+1. 当前互动卡片动效只有在[FormLocation](../reference/apis-form-kit/js-apis-app-form-formInfo.md#formlocation20)为“DESKTOP”的单张卡片上面才能生效。
+2. 由于性能功耗影响只支持部分机型，在不支持的机型会报[801](../reference/errorcode-universal.md#801-api功能在部分设备不支持)错误码。
 
 ### 请求参数约束
-1. 互动卡片申请动效的最大合法动效时长：3500ms，倒计时结束时，卡片将切换回非激活态。<!--Del-->系统应用额外支持长时激活卡片，其动效时长不受限制，可参考场景动效类型互动卡片开发指导（仅对系统应用开放）。<!--DelEnd-->
+1. 互动卡片申请动效的最大合法动效时长：3500ms，倒计时结束时，卡片将切换回非激活态。<!--Del-->系统应用额外支持长时激活卡片，其动效时长不受限制，可参考[场景动效类型互动卡片开发指导（仅对系统应用开放）](arkts-ui-liveform-sceneanimation-development-sys.md)。<!--DelEnd-->
 2. 由卡片定时定点刷新触发的互动卡片动效，一天内单张卡片最多触发50次。
 3. 最大可申请动效区域：如下图，矩形ABCD表示卡片自身渲染区域，矩形IJKL表示卡片最大可申请动效区域。两个矩形中心对齐。尺寸满足以下表格描述。
 
@@ -60,7 +60,7 @@ live-form-shake-timeline.png
 
 **图6** 互动卡片动效区域申请规则说明
 
-live-form-overflow-rule.png
+![live-form-overflow-rule.png](figures/live-form-overflow-rule.png)
 
 例如：某设备上一个2*2卡片宽度为158vp，高度为158vp。对应上图则有：
 
@@ -70,23 +70,23 @@ live-form-overflow-rule.png
 
 因此，以A点为原点，向右为X轴正方向，向下为Y轴正方向，图5中E点的合法坐标可以是（-20，-20），EF边长合法值可以是200vp，EH边长合法值可以是200vp。
 
-互动卡片可以通过调用formProvider.getFormRect接口获取卡片在窗口中的尺寸及相对坐标位置信息。卡片提供方以此计算动效申请范围，坐标计算时，以上图A点为（0，0）点，计算矩形EFGH对应参数，单位为vp。
+互动卡片可以通过调用[formProvider.getFormRect](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidergetformrect20)接口获取卡片在窗口中的尺寸及相对坐标位置信息。卡片提供方以此计算动效申请范围，坐标计算时，以上图A点为（0，0）点，计算矩形EFGH对应参数，单位为vp。
 
-调用formProvider.requestOverflow接口时，overflowInfo中描述的互动卡片动效渲染区域（矩形EFGH）需要满足：
+调用[formProvider.requestOverflow](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderrequestoverflow20)接口时，[overflowInfo](../reference/apis-form-kit/js-apis-app-form-formInfo.md#overflowinfo20)中描述的互动卡片动效渲染区域（矩形EFGH）需要满足：
 1. 包含了卡片（矩形ABCD）的全部区域。
 2. 不超过矩形IJKL（矩形IJKL完整包含矩形EFGH）。<!--Del-->仅三方应用生效，系统应用不作限制。<!--DelEnd-->
 
 ### 功耗约束
 1. 设备进入省电模式时，互动卡片不响应动效请求。
-2. 当设备热档位进入HOT时，不再响应非点击触发的动效请求；当热档位进入OVERHEATED时，不再响应所有动效请求。具体可参考热档位信息。
+2. 当设备热档位进入HOT时，不再响应非点击触发的动效请求；当热档位进入OVERHEATED时，不再响应所有动效请求。具体可参考[热档位信息](../reference/apis-basic-services-kit/js-apis-thermal.md#thermallevel)。
 
 ### 动效请求约束
 1. 同一时刻，全局只有一个卡片执行互动卡片动效。
 2. 当用户通过点击等方式主动触发互动卡片动效时，优先响应此次请求。此时，当前卡片切换到激活态，执行动效，其他卡片切换到非激活态。
 3. 其他触发方式，例如通过卡片定时定点数据刷新机制触发动效，遵循先到先得原则。系统只处理第一个合法动效请求。其他请求返回失败，同时不做缓存。
-4. 用户在桌面的其他有效操作（点击应用、卡片等，滑动翻页，下拉进入全搜、双中心、拖动卡片、长按卡片等）均会打断当前动效，卡片重新变成非激活态。<!--Del-->系统应用可以通过禁用手势配置项方式禁用用户在桌面的某些操作，可参考场景动效类型互动卡片开发指导（系统应用）。<!--DelEnd-->
+4. 用户在桌面的其他有效操作（点击应用、卡片等，滑动翻页，下拉进入全搜、双中心、拖动卡片、长按卡片等）均会打断当前动效，卡片重新变成非激活态。<!--Del-->系统应用可以通过禁用手势配置项方式禁用用户在桌面的某些操作，可参考[场景动效类型互动卡片开发指导（系统应用）](arkts-ui-liveform-sceneanimation-development-sys.md)。<!--DelEnd-->
 5. 互动卡片执行动效期间，超过卡片自身渲染范围（对应图6中的矩形ABCD）的交互事件，互动卡片不做响应。
-6. 更多场景动效类型互动卡片激活态能力约束，可参考LiveFormExtensionAbility中说明。
+6. 更多场景动效类型互动卡片激活态能力约束，可参考[LiveFormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md)中说明。
 
 ## 接口说明
 
@@ -96,13 +96,13 @@ live-form-overflow-rule.png
 
 | 接口名                                                                                                                                                                                                 | 描述                 |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
-| onLiveFormCreate(liveFormInfo: LiveFormInfo, session: UIExtensionContentSession): void                  | 互动卡片界面对象创建的回调函数。   |
-| onLiveFormDestroy(liveFormInfo: LiveFormInfo): void                                                    | 互动卡片界面对象销毁、资源清理的回调函数。  |
-| LiveFormExtensionContext                  | LiveFormExtensionAbility的上下文，继承自ExtensionContext。 |
-| startAbilityByLiveForm(want: Want): Promise&lt;void&gt;| 拉起互动卡片提供方（应用）的页面。 |
-| formProvider.requestOverflow(formId: string, overflowInfo: formInfo.OverflowInfo): Promise&lt;void&gt; | 卡片提供方发起互动卡片动效请求。   |
-| formProvider.cancelOverflow(formId: string): Promise&lt;void&gt;                                        | 卡片提供方发起取消互动卡片动效请求。 |
-| formProvider.getFormRect(formId: string): Promise&lt;formInfo.Rect&gt;                                        | 卡片提供方查询卡片位置、尺寸。 |
+| [onLiveFormCreate(liveFormInfo: LiveFormInfo, session: UIExtensionContentSession): void](../reference/apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md#onliveformcreate)                  | 互动卡片界面对象创建的回调函数。   |
+| [onLiveFormDestroy(liveFormInfo: LiveFormInfo): void](../reference/apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md#onliveformdestroy)                                                    | 互动卡片界面对象销毁、资源清理的回调函数。  |
+| [LiveFormExtensionContext](../reference/apis-form-kit/js-apis-application-LiveFormExtensionContext.md)                  | LiveFormExtensionAbility的上下文，继承自ExtensionContext。 |
+| [startAbilityByLiveForm(want: Want): Promise&lt;void&gt;](../reference/apis-form-kit/js-apis-application-LiveFormExtensionContext.md#startabilitybyliveform)| 拉起互动卡片提供方（应用）的页面。 |
+| [formProvider.requestOverflow(formId: string, overflowInfo: formInfo.OverflowInfo): Promise&lt;void&gt;](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderrequestoverflow20) | 卡片提供方发起互动卡片动效请求。   |
+| [formProvider.cancelOverflow(formId: string): Promise&lt;void&gt;](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidercanceloverflow20)                                        | 卡片提供方发起取消互动卡片动效请求。 |
+| [formProvider.getFormRect(formId: string): Promise&lt;formInfo.Rect&gt;](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidergetformrect20)                                        | 卡片提供方查询卡片位置、尺寸。 |
 
 ## 开发流程
 
@@ -110,9 +110,9 @@ live-form-overflow-rule.png
 
 1. 创建互动卡片
 
-    通过LiveFormExtensionAbility创建互动卡片，创建时加载互动卡片页面。
+    通过[LiveFormExtensionAbility](../reference/apis-form-kit/js-apis-app-form-LiveFormExtensionAbility.md)创建互动卡片，创建时加载互动卡片页面。
 
-    <!-- @liveform_LiveFormExtensionAbility -->
+    <!-- @[liveform_LiveFormExtensionAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/myliveformextensionability/MyLiveFormExtensionAbility.ets) -->
     
     ``` TypeScript
     // entry/src/main/ets/myliveformextensionability/MyLiveFormExtensionAbility.ets
@@ -153,7 +153,7 @@ live-form-overflow-rule.png
 
 2. 实现互动卡片页面
 
-   <!-- @liveform_MyLiveFormPage --> 
+   <!-- @[liveform_MyLiveFormPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/myliveformextensionability/pages/MyLiveFormPage.ets) --> 
    
    ``` TypeScript
    // entry/src/main/ets/myliveformextensionability/pages/MyLiveFormPage.ets
@@ -293,9 +293,9 @@ live-form-overflow-rule.png
 
 3. 互动卡片LiveFormExtensionAbility配置
 
-    在module.json5配置文件中extensionAbilities标签下配置LiveFormExtensionAbility。
+    在module.json5配置文件中[extensionAbilities标签](../quick-start/module-configuration-file.md#extensionabilities标签)下配置LiveFormExtensionAbility。
 
-    <!-- @liveform_modulejson5 -->
+    <!-- @[liveform_modulejson5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/module.json5) -->
     
     ``` JSON5
     // entry/src/main/module.json5
@@ -328,9 +328,9 @@ live-form-overflow-rule.png
 
 1. 非激活态卡片页面实现
 
-    非激活态卡片页面开发同普通卡片开发流程完全一致，在widgetCard.ets中完成。widgetCard.ets文件在卡片创建时自动生成，卡片创建流程可以参考创建ArkTS卡片。在非激活态卡片页面实现点击卡片时，发起卡片动效请求。
+    非激活态卡片页面开发同普通卡片开发流程完全一致，在widgetCard.ets中完成。widgetCard.ets文件在卡片创建时自动生成，卡片创建流程可以参考[创建ArkTS卡片](arkts-ui-widget-creation.md)。在非激活态卡片页面实现点击卡片时，发起卡片动效请求。
 
-    <!-- @liveform_WidgetCard --> 
+    <!-- @[liveform_WidgetCard](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/widget/pages/WidgetCard.ets) --> 
     
     ``` TypeScript
     // entry/src/main/ets/widget/pages/WidgetCard.ets
@@ -410,9 +410,9 @@ live-form-overflow-rule.png
 
 1. 触发互动卡片动效
 
-    互动卡片通过调用formProvider.requestOverflow接口触发动效，调用时需要明确：（1）动效申请范围。（2）动效持续时间。（3）是否使用系统提供的默认切换动效。具体可参考formInfo.OverflowInfo。其中，互动卡片可以通过调用formProvider.getFormRect接口获取卡片尺寸和在窗口内的位置信息。卡片提供方以此计算动效申请范围，单位为vp。计算规则具体请参考互动卡片请求参数约束。
+    互动卡片通过调用[formProvider.requestOverflow](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderrequestoverflow20)接口触发动效，调用时需要明确：（1）动效申请范围。（2）动效持续时间。（3）是否使用系统提供的默认切换动效。具体可参考[formInfo.OverflowInfo](../reference/apis-form-kit/js-apis-app-form-formInfo.md#overflowinfo20)。其中，互动卡片可以通过调用[formProvider.getFormRect](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidergetformrect20)接口获取卡片尺寸和在窗口内的位置信息。卡片提供方以此计算动效申请范围，单位为vp。计算规则具体请参考[互动卡片请求参数约束](#请求参数约束)。
 
-    <!-- @liveform_EntryFormAbility -->
+    <!-- @[liveform_EntryFormAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/entryformability/EntryFormAbility.ets) -->
     
     ``` TypeScript
     // entry/src/main/ets/entryformability/EntryFormAbility.ets
@@ -481,7 +481,7 @@ live-form-overflow-rule.png
 
 2. 互动卡片动效工具函数实现
 
-   <!-- @liveform_Constants --> 
+   <!-- @[liveform_Constants](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormLiveDemo/entry/src/main/ets/common/Constants.ets) --> 
    
    ``` TypeScript
    // entry/src/main/ets/common/Constants.ets
@@ -520,6 +520,6 @@ live-form-overflow-rule.png
     ```
 
 ## 实现效果
-以下是按照本文档代码示例开发而成的效果demo，demo执行动效时，点击按钮，将调用 formProvider.cancelOverflow 接口，打断当前破框动效，卡片切换为非激活态。
+以下是按照本文档代码示例开发而成的效果demo，demo执行动效时，点击按钮，将调用 [formProvider.cancelOverflow](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidercanceloverflow20) 接口，打断当前破框动效，卡片切换为非激活态。
 
-live-form-base-demo.gif
+![live-form-base-demo.gif](figures/live-form-base-demo.gif)

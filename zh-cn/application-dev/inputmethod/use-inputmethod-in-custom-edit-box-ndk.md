@@ -12,7 +12,7 @@ IME Kit支持开发者在自绘编辑框中使用输入法，与输入法应用�
 
 ## 接口说明
 
-详细接口说明请参考InputMethod接口文档。
+详细接口说明请参考[InputMethod接口文档](../reference/apis-ime-kit/capi-inputmethod.md)。
 
 ## 添加动态链接库
 
@@ -20,6 +20,7 @@ CMakeLists.txt中添加以下lib。
 
 ```txt
 libohinputmethod.so
+libhilog_ndk.z.so
 ```
 
 ## 引用头文件
@@ -31,11 +32,11 @@ libohinputmethod.so
 
 ## 绑定输入法
 
-开发者需要在输入框获焦时，通过调用接口OH_InputMethodController_Attach绑定输入法，绑定成功后用户可以通过输入法输入文字。
+开发者需要在输入框获焦时，通过调用接口[OH_InputMethodController_Attach](../reference/apis-ime-kit/capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)绑定输入法，绑定成功后用户可以通过输入法输入文字。
 
 1. 创建InputMethod_TextEditorProxy实例，示例代码如下所示：
 
-   <!-- @input_case_input_TextEditorProxy -->
+   <!-- @[input_case_input_TextEditorProxy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
    // 创建InputMethod_TextEditorProxy实例
@@ -45,7 +46,7 @@ libohinputmethod.so
    
 2. 创建InputMethod_AttachOptions实例，设置绑定输入法时的选项。示例代码如下所示：
 
-   <!-- @input_case_input_attachOptions -->
+   <!-- @[input_case_input_attachOptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
    // 创建InputMethod_AttachOptions实例，选项showKeyboard用于指定此次绑定成功后是否显示键盘，设置为true 表示绑定成功后自动显示键盘；false 表示不自动显示
@@ -56,7 +57,7 @@ libohinputmethod.so
 
 3. 调用OH_InputMethodController_Attach发起绑定输入法服务，调用成功后，可以获取到用于和输入法交互的InputMethod_InputMethodProxy。示例代码如下所示：
 
-   <!-- @input_case_input_OH_InputMethodController_Attach -->
+   <!-- @[input_case_input_OH_InputMethodController_Attach](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
    // 发起绑定请求
@@ -72,7 +73,7 @@ libohinputmethod.so
 
 ## 显示/隐藏面板功能
 
-绑定成功后，可以使用获取到的InputMethod_InputMethodProxy对象向输入法发送消息。示例代码如下所示：
+绑定成功后，可以使用获取到的[InputMethod_InputMethodProxy](../reference/apis-ime-kit/capi-inputmethod-inputmethod-inputmethodproxy.md)对象向输入法发送消息。示例代码如下所示：
 
 ```c
 // 显示键盘
@@ -110,9 +111,9 @@ if (OH_InputMethodProxy_NotifyConfigurationChange(inputMethodProxy, InputMethod_
    // ......
    ```
 
-2. 将实现后的响应函数，设置到InputMethod_TextEditorProxy中，再通过绑定输入法时调用的OH_InputMethodController_Attach将其设置到输入法框架中，完成监听注册。示例代码如下所示：
+2. 将实现后的响应函数，设置到[InputMethod_TextEditorProxy](../reference/apis-ime-kit/capi-inputmethod-inputmethod-texteditorproxy.md)中，再通过绑定输入法时调用的[OH_InputMethodController_Attach](../reference/apis-ime-kit/capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_attach)将其设置到输入法框架中，完成监听注册。示例代码如下所示：
 
-   <!-- @input_case_input_ConstructTextEditorProxy -->
+   <!-- @[input_case_input_ConstructTextEditorProxy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
    OH_TextEditorProxy_SetGetTextConfigFunc(textEditorProxy, GetTextConfigFunc);
@@ -135,10 +136,10 @@ if (OH_InputMethodProxy_NotifyConfigurationChange(inputMethodProxy, InputMethod_
 
 ## 解绑输入法
 
-当编辑框失焦，需要结束使用输入法，通过接口OH_InputMethodController_Detach与输入法框架解绑。
+当编辑框失焦，需要结束使用输入法，通过接口[OH_InputMethodController_Detach](../reference/apis-ime-kit/capi-inputmethod-controller-capi-h.md#oh_inputmethodcontroller_detach)与输入法框架解绑。
 
 
-   <!-- @input_case_input_OH_InputMethodController_Detach -->
+   <!-- @[input_case_input_OH_InputMethodController_Detach](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
    // 发起解绑请求
@@ -158,7 +159,7 @@ if (OH_InputMethodProxy_NotifyConfigurationChange(inputMethodProxy, InputMethod_
 >
 > 需要在CMakeLists.txt中添加libohinputmethod.so libhilog_ndk.z.so依赖。
 
-   <!-- @input_case_input_CPreview016 -->
+   <!-- @[input_case_input_CPreview016](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
    #include "napi/native_api.h"
@@ -351,7 +352,7 @@ if (OH_InputMethodProxy_NotifyConfigurationChange(inputMethodProxy, InputMethod_
    ```
 
 
-   <!-- @input_case_input_CPreview208 -->
+   <!-- @[input_case_input_CPreview208](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
    void InputMethodNdkDemo()

@@ -7,11 +7,11 @@
 <!--Adviser: @zhang_yixin13-->
 
 
-\@Styles仅应用于静态页面的样式复用，stateStyles可以依据组件的内部状态的不同，快速设置不同样式。这就是我们本章要介绍的内容stateStyles（又称为：多态样式）。
+\@Styles仅应用于静态页面的样式复用，stateStyles可以依据组件的内部状态的不同，快速设置不同样式。这就是本章要介绍的内容stateStyles（又称为：多态样式）。
 
 > **说明**：
 >
-> 多态样式仅支持通用属性。如果多态样式不生效，则该属性可能为组件的私有属性，例如：fontColor、TextInput组件的backgroundColor等。此时，可以通过attributeModifier动态设置组件属性来解决此问题。
+> 多态样式仅支持通用属性。如果多态样式不生效，则该属性可能为组件的私有属性，例如：[fontColor](../../reference/apis-arkui/arkui-ts/ts-basic-components-button.md#fontcolor)、[TextInput](../../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md)组件的[backgroundColor](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)等。此时，可以通过[attributeModifier](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置组件属性来解决此问题。
 
 ## 概述
 
@@ -43,7 +43,7 @@ stateStyles是属性方法，可以根据UI内部状态来设置样式，类似�
 
 下面的示例展示了stateStyles最基本的使用场景。Button1处于第一个组件，Button2处于第二个组件。按压时显示为pressed态指定的灰色。使用Tab键走焦，Button1获焦并显示为focused态指定的粉色。当Button2获焦的时候，Button2显示为focused态指定的粉色，Button1失焦显示normal态指定的蓝色。
 
-<!-- @state_style -->
+<!-- @[state_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateStyle/entry/src/main/ets/pages/StateStyle/StateStylesSample.ets) -->
 
 ``` TypeScript
 @Entry
@@ -85,7 +85,7 @@ struct StateStylesSample {
 
   **图1** 获焦态和按压态  
 
-Video_2023-03-17_120758
+![Video_2023-03-17_120758](figures/Video_2023-03-17_120758.gif)
 
 
 ### \@Styles和stateStyles联合使用
@@ -93,7 +93,7 @@ Video_2023-03-17_120758
 以下示例通过\@Styles指定stateStyles的不同状态。
 
 
-<!-- @normal_style -->
+<!-- @[normal_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateStyle/entry/src/main/ets/pages/NormalStyle/MyComponent.ets) -->
 
 ``` TypeScript
 @Entry
@@ -122,14 +122,14 @@ struct MyComponent {
 
   **图2** 正常态和按压态  
 
-Video_2023-03-17_144824
+![Video_2023-03-17_144824](figures/Video_2023-03-17_144824.gif)
 
 
 ### 在stateStyles里使用常规变量和状态变量
 
 stateStyles可以通过this绑定组件内的常规变量和状态变量。
 
-<!-- @focus_style -->
+<!-- @[focus_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateStyle/entry/src/main/ets/pages/FocusStyle/CompWithInlineStateStyles.ets) -->
 
 ``` TypeScript
 @Entry
@@ -164,4 +164,4 @@ Button默认normal态显示蓝色，第一次按下Tab键让Button获焦显示�
 
   **图3** 点击改变获焦态样式  
 
-focus-stateStyles
+![focus-stateStyles](figures/focus-stateStyles.gif)

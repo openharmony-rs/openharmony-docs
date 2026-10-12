@@ -13,14 +13,14 @@
 
 ## 接口说明
 
-创建和删除事件拦截相关接口如下表所示，接口详细介绍请参考input。
+创建和删除事件拦截相关接口如下表所示，接口详细介绍请参考[oh_input_manager.h](../../reference/apis-input-kit/capi-oh-input-manager-h.md)。
 
-| 接口名称  | 描述 |
-| ------------------------------------------------------------ | -------------------------- |
-| Input_Result OH_Input_AddKeyEventInterceptor(Input_KeyEventCallback callback, Input_InterceptorOptions *option) |创建按键事件拦截。  |
-| Input_Result OH_Input_AddInputEventInterceptor(Input_InterceptorEventCallback *callback, Input_InterceptorOptions *option) |创建输入事件拦截，包含鼠标、触摸和轴事件。  |
-| Input_Result OH_Input_RemoveKeyEventInterceptor() |删除按键事件拦截。  |
-| Input_Result OH_Input_RemoveInputEventInterceptor() |删除输入事件拦截，包含鼠标、触摸和轴事件。  |
+| 接口名称 | 描述 |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Input_Result OH_Input_AddKeyEventInterceptor(Input_KeyEventCallback callback, Input_InterceptorOptions *option) | 添加按键事件的拦截。 |
+| Input_Result OH_Input_AddInputEventInterceptor(Input_InterceptorEventCallback *callback, Input_InterceptorOptions *option) | 添加输入事件拦截，包括鼠标、触屏和轴事件。 |
+| Input_Result OH_Input_RemoveKeyEventInterceptor(void) | 移除按键事件拦截。 |
+| Input_Result OH_Input_RemoveInputEventInterceptor(void) | 移除输入事件拦截，包括鼠标、触屏和轴事件。 |
 
 ## 开发步骤
 
@@ -34,7 +34,7 @@ target_link_libraries(entry PUBLIC libohinput.so)
 
 ### 申请所需权限
 
-应用需要在module.json5中添加下面权限的配置，详细的配置方法参考声明权限文档。
+应用需要在module.json5中添加下面权限的配置，详细的配置方法参考[声明权限文档](../../security/AccessToken/declare-permissions.md)。
 
 ```json
 "requestPermissions": [
@@ -48,7 +48,7 @@ target_link_libraries(entry PUBLIC libohinput.so)
 
 - **按键事件**
 
-<!-- @key_event_interceptor --> 
+<!-- @[key_event_interceptor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputKit/NDKInputEventInterceptor/entry/src/main/cpp/napi_init.cpp) --> 
 
 ``` C++
 struct KeyEvent {
@@ -84,7 +84,7 @@ static napi_value RemoveKeyEventInterceptor(napi_env env, napi_callback_info inf
 
 - **输入拦截（鼠标、触摸和轴事件）**
 
-<!-- @input_event_interceptor -->
+<!-- @[input_event_interceptor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputKit/NDKInputEventInterceptor/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 struct MouseEvent {
@@ -201,4 +201,4 @@ static napi_value RemoveEventInterceptor(napi_env env, napi_callback_info info)
 
 ## 完整示例
 
-- 输入事件拦截（C/C++）
+- [输入事件拦截（C/C++）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/InputKit/NDKInputEventInterceptor)

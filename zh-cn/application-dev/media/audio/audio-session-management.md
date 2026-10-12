@@ -6,13 +6,13 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
-对于涉及多个音频流并发的场景，系统已预设了默认的音频焦点策略，该策略将对所有音频流（包括播放和录制）实施统一的焦点管理。
+对于涉及多个音频流并发的场景，系统已预设了默认的[音频焦点策略](audio-playback-concurrency.md#音频焦点策略)，该策略将对所有音频流（包括播放和录制）实施统一的焦点管理。
 
-当系统提供的默认焦点策略不能满足应用需求时，应用可利用音频会话管理提供的接口，管理应用内音频流的焦点，自定义音频流的焦点策略，调整音频流释放焦点的时机，以满足特定需求。本文档的示例代码均为ArkTS，如果需要使用OHAudio开发请参考使用OHAudio开发音频会话功能(C/C++)。
+当系统提供的默认焦点策略不能满足应用需求时，应用可利用音频会话管理提供的接口，管理应用内音频流的焦点，自定义音频流的焦点策略，调整音频流释放焦点的时机，以满足特定需求。本文档的示例代码均为ArkTS，如果需要使用OHAudio开发请参考[使用OHAudio开发音频会话功能(C/C++)](using-ohaudio-for-session.md)。
 
-音频会话管理提供了两种焦点管理方式：音频流独立持有焦点和音频会话统一持有焦点，应用可根据自身业务需求选择合适的焦点管理方式。
+音频会话管理提供了两种焦点管理方式：[音频流独立持有焦点](#音频流独立持有焦点)和[音频会话统一持有焦点](#音频会话统一持有焦点)，应用可根据自身业务需求选择合适的焦点管理方式。
 
-两种方式设置的音频会话策略对所有流均生效，激活与释放时机相同，即音频流播放前激活，停止后释放。
+两种方式设置的[音频会话策略](#音频会话策略)对所有流均生效，激活与释放时机相同，即音频流播放前激活，停止后释放。
 
 | 对比项 | 音频流独立持有焦点 | 音频会话统一持有焦点 |
 |:---|:---|:---|
@@ -21,11 +21,11 @@
 
 使用音频会话相关接口，可以实现以下功能：
 
-- 音频流独立持有焦点：系统默认焦点策略不能满足应用当前需求，仅需调整音频流的焦点策略。
+- [音频流独立持有焦点](#音频流独立持有焦点)：系统默认焦点策略不能满足应用当前需求，仅需调整音频流的焦点策略。
 
   **典型场景：** 应用播放短视频时，会打断后台音乐，应用希望自身的音频流停止后，后台的音乐可以自动恢复。该场景需要应用在音频流启动前激活音频会话，音频流停止后停用音频会话。
 
-- 音频会话统一持有焦点：需要启动多个音频流并保证播放流程的连续性，避免音频流切换时因焦点释放导致其他应用音频恢复。
+- [音频会话统一持有焦点](#音频会话统一持有焦点)：需要启动多个音频流并保证播放流程的连续性，避免音频流切换时因焦点释放导致其他应用音频恢复。
 
   **典型场景：** 应用连续播放多个音频时，在多个音频衔接的间隙，不希望后台被影响的其他音频自动恢复，希望整个播放过程保持音频焦点的连贯性。该场景需要应用在整个播放过程开始前激活音频会话，整个播放过程结束后停用音频会话。
 
@@ -36,11 +36,11 @@
 
 ## 获取音频会话管理器
 
-在使用AudioSessionManager的API前，需要先通过getSessionManager获取一个单例AudioSessionManager对象。
+在使用AudioSessionManager的API前，需要先通过[getSessionManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioManager.md#getsessionmanager12)获取一个单例AudioSessionManager对象。
 
-使用OHAudio开发请参考：获取音频会话管理器。
+使用OHAudio开发请参考：[获取音频会话管理器](using-ohaudio-for-session.md#获取音频会话管理器)。
 
-<!-- @get_session_manager --> 
+<!-- @[get_session_manager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
@@ -53,13 +53,13 @@ let audioSessionManager: audio.AudioSessionManager = audioManager.getSessionMana
 
 ## 音频会话策略
 
-应用在激活AudioSession时，需先指定音频会话策略（AudioSessionStrategy）。可通过设置音频并发模式（AudioConcurrencyMode）来指定不同的音频会话策略。
+应用在激活AudioSession时，需先指定音频会话策略（[AudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiosessionstrategy12)）。可通过设置音频并发模式（[AudioConcurrencyMode](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioconcurrencymode12)）来指定不同的音频会话策略。
 
-使用OHAudio开发请参考：音频会话策略（OH_AudioSession_Strategy）。
+使用OHAudio开发请参考：音频会话策略（[OH_AudioSession_Strategy](../../reference/apis-audio-kit/capi-ohaudio-oh-audiosession-strategy.md)）。
 
 系统预设的音频并发模式如下所示：
 
-- 默认模式（CONCURRENCY_DEFAULT）：即系统默认的音频焦点策略。
+- 默认模式（CONCURRENCY_DEFAULT）：即系统默认的[音频焦点策略](audio-playback-concurrency.md#音频焦点策略)。
 
 - 并发模式（CONCURRENCY_MIX_WITH_OTHERS）：和其他音频流并发。
 
@@ -83,11 +83,11 @@ let audioSessionManager: audio.AudioSessionManager = audioManager.getSessionMana
 
 ## 音频流独立持有焦点
 
-系统默认焦点策略不能满足应用当前需求时，应用可通过指定音频会话策略后激活AudioSession来完成焦点策略修改。
+系统默认焦点策略不能满足应用当前需求时，应用可通过指定[音频会话策略](#音频会话策略)后激活AudioSession来完成焦点策略修改。
 
 AudioSession激活成功后，应用新起的音频流将会按照修改后的焦点策略起流。
 
-使用OHAudio开发请参考：使用OHAudio开发音频会话功能(C/C++)。
+使用OHAudio开发请参考：[使用OHAudio开发音频会话功能(C/C++)](using-ohaudio-for-session.md)。
 
 > **注意：**
 > 
@@ -107,11 +107,11 @@ AudioSession激活成功后，应用新起的音频流将会按照修改后的�
 
 1. 指定音频会话策略（AudioSessionStrategy）并激活音频会话。
 
-   应用可以通过activateAudioSession接口激活当前应用的音频会话。
+   应用可以通过[activateAudioSession](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#activateaudiosession12)接口激活当前应用的音频会话。
 
-   应用在激活AudioSession时，需指定音频会话策略。策略中包含参数concurrencyMode，其类型为AudioConcurrencyMode，用于声明音频并发策略。
+   应用在激活AudioSession时，需指定[音频会话策略](#音频会话策略)。策略中包含参数concurrencyMode，其类型为[AudioConcurrencyMode](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioconcurrencymode12)，用于声明音频并发策略。
 
-   <!-- @activate_audio_session_v1 -->
+   <!-- @[activate_audio_session_v1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    import { audio } from '@kit.AudioKit';
@@ -135,9 +135,9 @@ AudioSession激活成功后，应用新起的音频流将会按照修改后的�
 
 2. 查询音频会话是否已激活（可选）。
 
-   应用可以通过isAudioSessionActivated接口检查当前应用的音频会话是否已激活。
+   应用可以通过[isAudioSessionActivated](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#isaudiosessionactivated12)接口检查当前应用的音频会话是否已激活。
 
-   <!-- @is_audio_session_activated -->
+   <!-- @[is_audio_session_activated](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    // 查询音频会话是否已激活。
@@ -146,15 +146,15 @@ AudioSession激活成功后，应用新起的音频流将会按照修改后的�
 
 3. 监听音频会话停用事件（可选）。
 
-   应用可以通过on('audioSessionDeactivated')接口监听音频会话停用事件（AudioSessionDeactivatedEvent）。
+   应用可以通过[on('audioSessionDeactivated')](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#onaudiosessiondeactivated12)接口监听音频会话停用事件（[AudioSessionDeactivatedEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiosessiondeactivatedevent12)）。
 
-   当AudioSession被停用（非主动停用）时，应用会收到音频会话停用事件（AudioSessionDeactivatedEvent），其中包含音频会话停用原因（AudioSessionDeactivatedReason）。
+   当AudioSession被停用（非主动停用）时，应用会收到音频会话停用事件（[AudioSessionDeactivatedEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiosessiondeactivatedevent12)），其中包含音频会话停用原因（[AudioSessionDeactivatedReason](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiosessiondeactivatedreason12)）。
 
    在收到AudioSessionDeactivatedEvent时，应用可根据自身业务需求，做相应的处理，例如释放相应资源、重新激活AudioSession等。
 
-   应用可以通过off('audioSessionDeactivated')接口取消监听音频会话停用事件。
+   应用可以通过[off('audioSessionDeactivated')](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#offaudiosessiondeactivated12)接口取消监听音频会话停用事件。
 
-   <!-- @on_audio_session_deactivated -->
+   <!-- @[on_audio_session_deactivated](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    import { audio } from '@kit.AudioKit';
@@ -169,13 +169,13 @@ AudioSession激活成功后，应用新起的音频流将会按照修改后的�
 
 4. 停用音频会话。
 
-   应用可以通过deactivateAudioSession接口停用当前应用的音频会话。
+   应用可以通过[deactivateAudioSession](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#deactivateaudiosession12)接口停用当前应用的音频会话。
 
    > **说明：**
    >
    > AudioSession停用后，应用新起的音频流将会按照默认焦点策略起流。
 
-   <!-- @deactivate_audio_session_v1 -->
+   <!-- @[deactivate_audio_session_v1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -196,7 +196,7 @@ AudioSession激活成功后，应用新起的音频流将会按照修改后的�
 
 下面展示了音频流独立持有焦点的示例代码。
 
-<!-- @audio_session_v1 -->
+<!-- @[audio_session_v1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
@@ -254,9 +254,9 @@ let audioSessionManager: audio.AudioSessionManager = audioManager.getSessionMana
 
 当应用需要启动多个音频流并保证流程连续性时，可通过AudioSession申请焦点，确保多音频流播放的连续性。
 
-激活AudioSession时系统会根据应用选择的音频会话场景申请对应的音频焦点并由AudioSession持有该焦点，后续应用通过AudioRenderer启动的播放流将不再申请音频焦点。
+激活AudioSession时系统会根据应用选择的[音频会话场景](#音频会话场景)申请对应的音频焦点并由AudioSession持有该焦点，后续应用通过AudioRenderer启动的播放流将不再申请音频焦点。
 
-使用OHAudio开发请参考：使用OHAudio开发音频会话功能(C/C++)。
+使用OHAudio开发请参考：[使用OHAudio开发音频会话功能(C/C++)](using-ohaudio-for-session.md)。
 
 典型使用场景如下：
 - 在多个小视频滑动播放时，多个音频流频繁申请和释放焦点可能导致漏音。使用AudioSession申请一次焦点，可以避免中间多个音频流播放时频繁申请和释放焦点，从而防止漏音。
@@ -272,43 +272,47 @@ let audioSessionManager: audio.AudioSessionManager = audioManager.getSessionMana
 
 ### 音频会话场景
 
-音频会话统一持有焦点时，系统提供了三种音频会话场景。激活AudioSession前需要先通过setAudioSessionScene设置对应的音频会话场景，后续激活时系统会根据应用选择的音频会话场景申请对应的音频焦点。
+音频会话统一持有焦点时，系统提供了三种音频会话场景。激活AudioSession前需要先通过[setAudioSessionScene](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20)设置对应的音频会话场景，后续激活时系统会根据应用选择的音频会话场景申请对应的音频焦点。
 
-| 名称                   | 值 | 说明      |
-| :--------------------- |:--|:--------|
-| AUDIO_SESSION_SCENE_MEDIA | 0 | 媒体音频会话场景。     |
-| AUDIO_SESSION_SCENE_GAME | 1 | 游戏音频会话场景。     |
-| AUDIO_SESSION_SCENE_VOICE_COMMUNICATION  | 2 | VoIP语音通话音频会话场景。 |
+| 名称                   | 值 | 匹配的StreamUsage | 说明 | 适用的场景      |
+| :--------------------- |:--|:---------------|:--------|:----------|
+| AUDIO_SESSION_SCENE_MEDIA | 0 | STREAM_USAGE_MUSIC、STREAM_USAGE_MOVIE、STREAM_USAGE_AUDIOBOOK | 媒体音频会话场景。     | 频繁申请和释放焦点的场景（如多个小视频滑动播放），不持有AudioRenderer对象但需监听焦点变化等媒体播放场景。 |
+| AUDIO_SESSION_SCENE_GAME | 1 | STREAM_USAGE_GAME | 游戏音频会话场景。     | 游戏内配乐、配音等游戏音频场景。 |
+| AUDIO_SESSION_SCENE_VOICE_COMMUNICATION  | 2 | STREAM_USAGE_RINGTONE、STREAM_USAGE_VOICE_COMMUNICATION、STREAM_USAGE_VIDEO_COMMUNICATION | VoIP语音通话音频会话场景。 | VoIP通话场景下需同时启动铃声流等通话场景。 |
+
+> **注意：**
+>
+> 如果没有使用与音频流类型（StreamUsage）匹配的音频会话场景（AudioSessionScene），音频流的行为可能与预期不一致，导致焦点策略失效或播放异常。
 
 ### 监听AudioSession焦点和状态变化事件
 
 AudioSession申请的焦点和AudioRenderer申请的焦点是同等地位。
 
-应用可以通过on('audioSessionStateChanged')来监听AudioSession的焦点和状态变化。为了维持应用和系统的状态一致性，确保良好的用户体验，应用应监听AudioSession焦点状态事件，并在焦点变化时做出必要响应。
+应用可以通过[on('audioSessionStateChanged')](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#onaudiosessionstatechanged20)来监听AudioSession的焦点和状态变化。为了维持应用和系统的状态一致性，确保良好的用户体验，应用应监听AudioSession焦点状态事件，并在焦点变化时做出必要响应。
 
-on('audioSessionStateChanged')包含了AudioSession停用事件的信息，当使用音频会话统一持有焦点的方式时无需再额外监听音频会话停用事件（AudioSessionDeactivatedEvent）。
+[on('audioSessionStateChanged')](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#onaudiosessionstatechanged20)包含了[AudioSession停用事件](#audiosession停用事件)的信息，当使用[音频会话统一持有焦点](#音频会话统一持有焦点)的方式时无需再额外监听音频会话停用事件（AudioSessionDeactivatedEvent）。
 
 > **说明：**
 >
 > 如果应用同时注册了AudioRenderer的焦点事件监听，需要注意以下两点：
-> - 应用会收到AudioSession焦点状态变化和AudioRenderer焦点变化的回调（InterruptEvent），根据需要处理这些回调即可。
+> - 应用会收到AudioSession焦点状态变化和AudioRenderer焦点变化的回调（[InterruptEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)），根据需要处理这些回调即可。
 > - 当AudioSession的焦点由暂停转为恢复时，系统仅向AudioSession发送焦点恢复事件，不会同步向AudioRenderer发送该事件。此时应用如需恢复播放，必须按以下顺序操作：
->    1. 调用setAudioSessionScene设置对应的音频会话场景。
->    2. 调用activateAudioSession激活AudioSession。
->    3. 调用start恢复播放。
+>    1. 调用[setAudioSessionScene](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20)设置对应的音频会话场景。
+>    2. 调用[activateAudioSession](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#activateaudiosession12)激活AudioSession。
+>    3. 调用[start](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#start8)恢复播放。
 
 ### 开发步骤
 
 1. 指定音频会话场景（AudioSessionScene）和策略（AudioSessionStrategy）并激活音频会话。
 
-   应用通过AudioSession申请焦点。首先要调用接口setAudioSessionScene设置场景参数，然后调用activateAudioSession接口激活AudioSession。激活AudioSession时系统会根据应用选择的音频会话场景申请对应的音频焦点。
+   应用通过AudioSession申请焦点。首先要调用接口[setAudioSessionScene](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20)设置场景参数，然后调用[activateAudioSession](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#activateaudiosession12)接口激活AudioSession。激活AudioSession时系统会根据应用选择的音频会话场景申请对应的音频焦点。
 
    > **说明：**
    >
    > - 激活AudioSession时系统会根据应用选择的音频会话场景申请对应的音频焦点，后续应用通过AudioRenderer启动的播放流不再申请音频焦点。
    > - 如果激活AudioSession时应用已存在启动的音频播放流，系统会释放该音频播放流持有的焦点，并由AudioSession统一管理。
 
-   <!-- @activate_audio_session_v2 -->
+   <!-- @[activate_audio_session_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    import { audio } from '@kit.AudioKit';
@@ -336,9 +340,9 @@ on('audioSessionStateChanged')包含了AudioSession停用事件的信息，当�
 
 2. 查询音频会话是否已激活（可选）。
 
-   应用可以通过isAudioSessionActivated接口检查当前应用的音频会话是否已激活。
+   应用可以通过[isAudioSessionActivated](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#isaudiosessionactivated12)接口检查当前应用的音频会话是否已激活。
 
-   <!-- @is_audio_session_activated -->
+   <!-- @[is_audio_session_activated](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    // 查询音频会话是否已激活。
@@ -347,9 +351,9 @@ on('audioSessionStateChanged')包含了AudioSession停用事件的信息，当�
 
 3. 监听AudioSession焦点状态变化事件。
 
-   应用可以通过on('audioSessionStateChanged')来监听AudioSession的焦点和状态变化。
+   应用可以通过[on('audioSessionStateChanged')](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#onaudiosessionstatechanged20)来监听AudioSession的焦点和状态变化。
 
-   <!-- @on_audio_session_state_changed --> 
+   <!-- @[on_audio_session_state_changed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    import { audio } from '@kit.AudioKit';
@@ -404,13 +408,13 @@ on('audioSessionStateChanged')包含了AudioSession停用事件的信息，当�
 
 4. 停用音频会话。
 
-   应用可以通过deactivateAudioSession接口停用当前应用的音频会话。
+   应用可以通过[deactivateAudioSession](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#deactivateaudiosession12)接口停用当前应用的音频会话。
 
    > **说明：**
    >
    > 停用AudioSession时系统会释放AudioSession申请的焦点，并停用该应用正在播放的所有音频流。
 
-   <!-- @deactivate_audio_session_v2 -->
+   <!-- @[deactivate_audio_session_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -430,7 +434,7 @@ on('audioSessionStateChanged')包含了AudioSession停用事件的信息，当�
 
 下面展示了音频会话统一持有焦点的示例代码。
 
-<!-- @audio_session_v2 --> 
+<!-- @[audio_session_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
@@ -526,11 +530,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 ## 设置会话级录音流静音提示
 
-从API version 24开始，当应用已在业务侧将当前音频会话内的录音流静音时，可以调用setCapturerMuteHint接口将该状态上报给系统音频模块，系统音频模块会基于上报的状态调整策略以降低功耗。注意，此功能当前仅在部分PC/2in1设备上生效。该接口不会实际触发静音，也不会对录音数据做静音处理。它只是告知系统音频模块，应用已将当前音频会话内的录音流静音。应用仍需自行处理录音数据，例如不发送采集数据或发送静音数据。
+从API version 24开始，当应用已在业务侧将当前音频会话内的录音流静音时，可以调用[setCapturerMuteHint](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setcapturermutehint24)接口将该状态上报给系统音频模块，系统音频模块会基于上报的状态调整策略以降低功耗。注意，此功能当前仅在部分PC/2in1设备上生效。该接口不会实际触发静音，也不会对录音数据做静音处理。它只是告知系统音频模块，应用已将当前音频会话内的录音流静音。应用仍需自行处理录音数据，例如不发送采集数据或发送静音数据。
 
-该接口仅允许在当前音频会话存在运行中的录音流时调用，否则会返回错误码`6800103`。若某条录音流同时调用了流级静音提示接口AudioCapturer.setMuteHint和会话级静音提示接口，流级设置优先级更高，以流级设置值为准。因此，当应用内多条录音流的静音状态一致时，可以使用会话级接口统一上报；当不同录音流静音状态不一致时，建议对具体录音流使用流级接口。若为了调用会话级接口而创建Mic音频源录音流，需要申请麦克风权限`ohos.permission.MICROPHONE`。当前未提供系统查询接口，如需在界面展示静音提示状态，应用需要自行维护最近一次设置成功的状态。以下示例中，`muteHint`为`true`表示上报静音提示，`false`表示解除静音提示。
+该接口仅允许在当前音频会话存在运行中的录音流时调用，否则会返回错误码`6800103`。若某条录音流同时调用了流级静音提示接口[AudioCapturer.setMuteHint](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setmutehint24)和会话级静音提示接口，流级设置优先级更高，以流级设置值为准。因此，当应用内多条录音流的静音状态一致时，可以使用会话级接口统一上报；当不同录音流静音状态不一致时，建议对具体录音流使用流级接口。若为了调用会话级接口而创建Mic音频源录音流，需要申请麦克风权限`ohos.permission.MICROPHONE`。当前未提供系统查询接口，如需在界面展示静音提示状态，应用需要自行维护最近一次设置成功的状态。以下示例中，`muteHint`为`true`表示上报静音提示，`false`表示解除静音提示。
 
-<!-- @set_capturer_mute_hint -->
+<!-- @[set_capturer_mute_hint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 try {
@@ -550,9 +554,9 @@ try {
 
 启用静音建议通知后，本应用播放音频的同时，其他应用播放了不可与本应用并发播放的音频，本应用会收到静音建议通知，此时本应用可以选择不做处理，让本应用和其他应用进行并发播放；也可以选择将自身静音播放，让其他应用单独播放音频。
 
-启用混音播放下静音建议通知，需要先调用接口setAudioSessionScene设置场景参数，并调用enableMuteSuggestionWhenMixWithOthers开启静音建议通知功能，同时订阅音频会话状态更改事件AudioSessionStateChangedEvent，最后调用activateAudioSession接口激活AudioSession。启用静音建议通知的前提是AudioConcurrencyMode模式必须为CONCURRENCY_MIX_WITH_OTHERS。
+启用混音播放下静音建议通知，需要先调用接口[setAudioSessionScene](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20)设置场景参数，并调用[enableMuteSuggestionWhenMixWithOthers](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#enablemutesuggestionwhenmixwithothers23)开启静音建议通知功能，同时订阅音频会话状态更改事件[AudioSessionStateChangedEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiosessionstatechangedevent20)，最后调用[activateAudioSession](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#activateaudiosession12)接口激活AudioSession。启用静音建议通知的前提是[AudioConcurrencyMode](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioconcurrencymode12)模式必须为CONCURRENCY_MIX_WITH_OTHERS。
 
-<!-- @enable_mute_suggestion -->
+<!-- @[enable_mute_suggestion](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
@@ -582,13 +586,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 ## 设置音频会话行为
 
-从API version 24开始，应用可以通过setAudioSessionBehavior接口设置音频会话行为参数，在特定场景下获得更优的音频焦点体验。
+从API version 24开始，应用可以通过[setAudioSessionBehavior](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setaudiosessionbehavior24)接口设置音频会话行为参数，在特定场景下获得更优的音频焦点体验。
 
-在用户观看直播的场景中，当其他应用启动音频流（如使用键盘录音转文字）打断直播时，会导致直播的音频和画面暂停，影响用户的观看体验。直播应用可以通过设置AudioSessionBehaviorFlags.MUTE_WHEN_INTERRUPTED会话行为，使直播在被打断时保持静音播放而非暂停，避免画面中断。
+在用户观看直播的场景中，当其他应用启动音频流（如使用键盘录音转文字）打断直播时，会导致直播的音频和画面暂停，影响用户的观看体验。直播应用可以通过设置[AudioSessionBehaviorFlags](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiosessionbehaviorflags24).MUTE_WHEN_INTERRUPTED会话行为，使直播在被打断时保持静音播放而非暂停，避免画面中断。
 
-如果本应用未使用音频会话管理，也可以针对单条音频流设置独立的音频会话行为。对于播放流，详情请参考setIndependentAudioSessionStrategy。对于录音流，详情请参考setIndependentAudioSessionStrategy。
+如果本应用未使用音频会话管理，也可以针对单条音频流设置独立的音频会话行为。对于播放流，详情请参考[setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setindependentaudiosessionstrategy24)。对于录音流，详情请参考[setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setindependentaudiosessionstrategy24)。
 
-<!-- @set_session_behavior -->
+<!-- @[set_session_behavior](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';

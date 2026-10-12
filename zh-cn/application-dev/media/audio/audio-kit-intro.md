@@ -36,7 +36,7 @@ Audio Kit（音频服务）旨在提供场景化的音频播放和录制接口�
 
 开发者可以利用Audio Kit的接口，使用音频系统提供的播放、录音及音频策略管理能力，进而访问相应的音频硬件。音频架构定义了系统如何封装和管理音频硬件能力。音频架构图如下：
 
-Audio Architecture
+![Audio Architecture](figures/audio-architecture.png)
 
 **Application**
 
@@ -70,7 +70,7 @@ HAL通过统一的HDI接口对外提供服务，不同的音频硬件开发人�
 
 在开发音频功能之前，尤其是要实现处理音频数据的功能前，建议开发者先了解声学相关的知识，帮助理解操作系统提供的API是如何控制音频系统，从而开发出更易用、体验更好的音视频类应用。建议了解的相关概念包括但不限于：
 
-- 音频量化的过程：采样&gt; 量化&gt; 编码。
+- 音频量化的过程：采样 &gt; 量化 &gt; 编码。
 
 - 音频量化过程的相关概念：模拟信号和数字信号、采样率、声道、采样格式、位宽、码率、常见编码格式（如AAC、MP3、PCM、WMA等）、常见封装格式（如WAV、MPA、FLAC、AAC、OGG等）。
 
@@ -80,7 +80,7 @@ HAL通过统一的HDI接口对外提供服务，不同的音频硬件开发人�
 
 音频流是指音频系统中一个具备音频格式和音频使用场景信息的独立音频数据处理单元。可以表示播放，也可以表示录制，并且具备独立音量调节和音频设备路由切换能力。
 
-音频流基础信息通过AudioStreamInfo表示，包括采样率、声道、位宽、编码信息，是创建音频播放或录制流的必要参数，描述了音频数据的基本属性。在配置时开发者需要保证基础信息与传输的音频数据相匹配，音频系统才能正确处理数据。
+音频流基础信息通过[AudioStreamInfo](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiostreaminfo8)表示，包括采样率、声道、位宽、编码信息，是创建音频播放或录制流的必要参数，描述了音频数据的基本属性。在配置时开发者需要保证基础信息与传输的音频数据相匹配，音频系统才能正确处理数据。
 
 ### 音频流使用场景信息
 
@@ -88,19 +88,19 @@ HAL通过统一的HDI接口对外提供服务，不同的音频硬件开发人�
 
 - 播放场景
 
-  音频播放场景的信息，通过StreamUsage进行描述。
+  音频播放场景的信息，通过[StreamUsage](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)进行描述。
 
   StreamUsage指音频流本身的用途类型，包括媒体、语音通信、语音播报、通知、铃声等。
 
-  播放流类型的设置请参考选择合适的播放流类型。
+  播放流类型的设置请参考[选择合适的播放流类型](using-right-streamusage-for-playback.md)。
 
 - 录制场景
 
-  音频流录制场景的信息，通过SourceType进行描述。
+  音频流录制场景的信息，通过[SourceType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8)进行描述。
 
   SourceType指音频流中录音源的类型，包括麦克风音频源、语音识别音频源、语音通话音频源等。
 
-  录制流类型的设置请参考选择合适的录制流类型。
+  录制流类型的设置请参考[选择合适的录制流类型](using-right-sourcetype-for-recording.md)。
 
 ## 支持的音频格式
 
@@ -108,13 +108,13 @@ audio模块下的接口支持PCM编码，包括AudioRenderer、AudioCapturer、T
 
 音频格式说明：
 
-- 支持的音频采样率（Hz）：8000、11025、12000、16000、22050、24000、32000、44100、48000、64000、88200<sup>12+</sup>、96000，176400<sup>12+</sup>、192000<sup>12+</sup>具体参考枚举AudioSamplingRate。
+- 支持的音频采样率（Hz）：8000、11025、12000、16000、22050、24000、32000、44100、48000、64000、88200<sup>12+</sup>、96000、176400<sup>12+</sup>、192000<sup>12+</sup>具体参考枚举[AudioSamplingRate](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiosamplingrate8)。
 
   不同设备支持的采样率规格会存在差异。
 
-- 支持单声道、双声道，具体参考AudioChannel。
+- 支持单声道、双声道，具体参考[AudioChannel](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiochannel8)。
 
-- 支持的采样格式：U8（无符号8位整数）、S16LE（带符号的16位整数，小尾数）、S24LE（带符号的24位整数，小尾数）、S32LE（带符号的32位整数，小尾数）、F32LE（带符号的32位浮点数，小尾数），具体参考AudioSampleFormat。
+- 支持的采样格式：U8（无符号8位整数）、S16LE（带符号的16位整数，小尾数）、S24LE（带符号的24位整数，小尾数）、S32LE（带符号的32位整数，小尾数）、F32LE（带符号的32位浮点数，小尾数），具体参考[AudioSampleFormat](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiosampleformat8)。
 
   由于系统限制，S24LE、S32LE、F32LE仅部分设备支持，请根据实际情况使用。
 
@@ -124,6 +124,6 @@ audio模块下的接口支持PCM编码，包括AudioRenderer、AudioCapturer、T
 
 针对Audio Kit开发，有以下相关实例可供参考：
 
-- 音频管理（ArkTS）（API10）
+- [音频管理（ArkTS）（API10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/Audio)
 
 <!--RP1--><!--RP1End-->

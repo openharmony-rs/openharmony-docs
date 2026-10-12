@@ -18,8 +18,8 @@ ML-KEM（Module-Lattice-Based Key-Encapsulation Mechanism）是NIST FIPS 203标�
 
 密钥封装生成的共享密钥有两种处理方式：
 
-- **存储到HUKS：** 封装或解封装时指定sharedKeyAlias和sharedKeyParams，共享密钥以指定别名存储到HUKS中，后续可通过该别名直接使用共享密钥进行加解密等操作。此方式下，封装和解封装返回结果中的sharedSecret字段为空。具体开发步骤请参考密钥封装(ArkTS)中共享密钥托管到HUKS的示例。
-- **导出到应用：** 封装或解封装时不指定sharedKeyAlias和sharedKeyParams，共享密钥通过封装和解封装返回结果中的sharedSecret字段导出给应用，由应用自行管理共享密钥的存储和使用。此方式下，应用需自行管理密钥。具体开发步骤请参考密钥封装(ArkTS)中共享密钥不托管到HUKS的示例。
+- **存储到HUKS：** 封装或解封装时指定sharedKeyAlias和sharedKeyParams，共享密钥以指定别名存储到HUKS中，后续可通过该别名直接使用共享密钥进行加解密等操作。此方式下，封装和解封装返回结果中的sharedSecret字段为空。具体开发步骤请参考[密钥封装(ArkTS)](./huks-kem-arkts.md)中共享密钥托管到HUKS的示例。
+- **导出到应用：** 封装或解封装时不指定sharedKeyAlias和sharedKeyParams，共享密钥通过封装和解封装返回结果中的sharedSecret字段导出给应用，由应用自行管理共享密钥的存储和使用。此方式下，应用需自行管理密钥。具体开发步骤请参考[密钥封装(ArkTS)](./huks-kem-arkts.md)中共享密钥不托管到HUKS的示例。
 
 > **说明：**
 >
@@ -36,5 +36,5 @@ ML-KEM（Module-Lattice-Based Key-Encapsulation Mechanism）是NIST FIPS 203标�
 
 | 算法 | 备注 | 公钥长度（字节） | 密文长度（字节） | 共享密钥长度（字节） | API级别 | <!--DelCol7-->是否必选规格 |
 | -------- | -------- | -------- | -------- | -------- | -------- | -------- |
-| ML-KEM-768 | 密钥封装类型为ML-KEM，密钥用途为HUKS_KEY_PURPOSE_WRAP和HUKS_KEY_PURPOSE_UNWRAP。 | 1184 | 784 | 32 | 26.0.0+ | 是 |
-| ML-KEM-1024 | 密钥封装类型为ML-KEM，密钥用途为HUKS_KEY_PURPOSE_WRAP和HUKS_KEY_PURPOSE_UNWRAP。 | 1568 | 912 | 32 | 26.0.0+ | 否 |
+| ML-KEM-768 | 密钥封装类型为ML-KEM，密钥用途为[HUKS_KEY_PURPOSE_WRAP](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukskeypurpose)和[HUKS_KEY_PURPOSE_UNWRAP](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukskeypurpose)。 | 1184 | 784 | 32 | 26.0.0+ | 是 |
+| ML-KEM-1024 | 密钥封装类型为ML-KEM，密钥用途为[HUKS_KEY_PURPOSE_WRAP](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukskeypurpose)和[HUKS_KEY_PURPOSE_UNWRAP](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukskeypurpose)。 | 1568 | 912 | 32 | 26.0.0+ | 否 |

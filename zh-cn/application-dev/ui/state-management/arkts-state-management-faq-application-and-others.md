@@ -12,11 +12,11 @@
 
 ### 懒加载包含装饰器的文件
 
-状态管理装饰器仅限于在UI线程使用，不允许在未加载ArkUI框架的并发线程中使用。由于并发线程未加载完整的ArkUI框架逻辑，因此框架中定义的状态管理装饰器也不会被加载到并发线程中。若在并发线程中使用状态管理装饰器，将出现`ReferenceError: xxx is not defined`。在如下示例中，尽管并发线程并未实际使用\@Observed装饰的类，但仍会打印`ReferenceError: Observed is not defined`的报错信息。这是因为并发线程在逐层解析文件依赖时，最终会加载到使用\@Observed装饰器的`Observed.ets`文件，从而触发该错误。
+状态管理装饰器仅限于在UI线程使用，不允许在未加载ArkUI框架的[并发线程](../../arkts-utils/multi-thread-concurrency-overview.md)中使用。由于并发线程未加载完整的ArkUI框架逻辑，因此框架中定义的状态管理装饰器也不会被加载到并发线程中。若在并发线程中使用状态管理装饰器，将出现`ReferenceError: xxx is not defined`。在如下示例中，尽管并发线程并未实际使用[\@Observed](./arkts-observed-and-objectlink.md)装饰的类，但仍会打印`ReferenceError: Observed is not defined`的报错信息。这是因为并发线程在逐层解析文件依赖时，最终会加载到使用\@Observed装饰器的`LazyImportObservedNeg.ets`文件，从而触发该错误。
 
 【反例】
 
-<!-- @lazy_import_negative -->
+<!-- @[lazy_import_negative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/pages/LazyImportNeg.ets) -->
 
 ``` TypeScript
 // src/main/ets/pages/LazyImportNeg.ets
@@ -60,7 +60,7 @@ struct Index {
 }
 ```
 
-<!-- @lazy_import_worker_negative --> 
+<!-- @[lazy_import_worker_negative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/workers/LazyImportWorkerNeg.ets) --> 
 
 ``` TypeScript
 // src/main/ets/workers/LazyImportWorkerNeg.ets
@@ -91,7 +91,7 @@ workerPort.onerror = (err: ErrorEvent) => {
 };
 ```
 
-<!-- @lazy_import_function_negative --> 
+<!-- @[lazy_import_function_negative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/pages/LazyImportFuncNeg.ets) --> 
 
 ``` TypeScript
 // src/main/ets/pages/LazyImportFuncNeg.ets
@@ -107,7 +107,7 @@ export function testWithoutObserved(): void {
 }
 ```
 
-<!-- @lazy_import_observed_negative --> 
+<!-- @[lazy_import_observed_negative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/pages/LazyImportObservedNeg.ets) --> 
 
 ``` TypeScript
 // src/main/ets/pages/LazyImportObservedNeg.ets
@@ -127,11 +127,11 @@ export class Person {
 }
 ```
 
-可以使用lazy import懒加载包含装饰器的文件，子线程则不会加载到对应文件。
+可以使用[lazy import](../../arkts-utils/arkts-lazy-import.md)懒加载包含装饰器的文件，子线程则不会加载到对应文件。
 
 【正例】
 
-<!-- @lazy_import_positive --> 
+<!-- @[lazy_import_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/pages/LazyImportPos.ets) --> 
 
 ``` TypeScript
 // src/main/ets/pages/LazyImportPos.ets
@@ -175,7 +175,7 @@ struct Index {
 }
 ```
 
-<!-- @lazy_import_worker_positive -->
+<!-- @[lazy_import_worker_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/workers/LazyImportWorkerPos.ets) -->
 
 ``` TypeScript
 // src/main/ets/workers/LazyImportWorkerPos.ets
@@ -206,7 +206,7 @@ workerPort.onerror = (err: ErrorEvent) => {
 };
 ```
 
-<!-- @lazy_import_function_positive -->
+<!-- @[lazy_import_function_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/pages/LazyImportFuncPos.ets) -->
 
 ``` TypeScript
 // src/main/ets/pages/LazyImportFuncPos.ets
@@ -223,7 +223,7 @@ export function testWithoutObserved(): void {
 }
 ```
 
-<!-- @lazy_import_observed_positive -->
+<!-- @[lazy_import_observed_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/pages/LazyImportObservedPos.ets) -->
 
 ``` TypeScript
 // src/main/ets/pages/LazyImportObservedPos.ets
@@ -249,7 +249,7 @@ export class Person {
 
 【反例】
 
-<!-- @decorator_use_isolation_negative -->
+<!-- @[decorator_use_isolation_negative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/pages/DecUseIsolationNeg.ets) -->
 
 ``` TypeScript
 // src/main/ets/pages/DecUseIsolationNeg.ets
@@ -293,7 +293,7 @@ struct Index {
 }
 ```
 
-<!-- @use_isolation_worker_negative -->
+<!-- @[use_isolation_worker_negative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/workers/UseIsolationWorkerNeg.ets) -->
 
 ``` TypeScript
 // src/main/ets/workers/UseIsolationWorkerNeg.ets
@@ -324,7 +324,7 @@ workerPort.onerror = (err: ErrorEvent) => {
 };
 ```
 
-<!-- @use_isolation_function_negative -->
+<!-- @[use_isolation_function_negative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/pages/UseIsolationFuncNeg.ets) -->
 
 ``` TypeScript
 // src/main/ets/pages/UseIsolationFuncNeg.ets
@@ -340,7 +340,7 @@ export function testWithoutObserved(): void {
 }
 ```
 
-<!-- @use_isolation_observed_negative -->
+<!-- @[use_isolation_observed_negative](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/pages/UseIsolationObservedNeg.ets) -->
 
 ``` TypeScript
 // src/main/ets/pages/UseIsolationObservedNeg.ets
@@ -362,7 +362,7 @@ export class Person {
 
 【正例】
 
-<!-- @decorator_use_isolation_positive -->
+<!-- @[decorator_use_isolation_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/pages/DecUseIsolationPos.ets) -->
 
 ``` TypeScript
 // src/main/ets/pages/DecUseIsolationPos.ets
@@ -406,7 +406,7 @@ struct Index {
 }
 ```
 
-<!-- @use_isolation_worker_positive -->
+<!-- @[use_isolation_worker_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/workers/UseIsolationWorkerPos.ets) -->
 
 ``` TypeScript
 // src/main/ets/workers/UseIsolationWorkerPos.ets
@@ -437,7 +437,7 @@ workerPort.onerror = (err: ErrorEvent) => {
 };
 ```
 
-<!-- @use_isolation_function_positive -->
+<!-- @[use_isolation_function_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/pages/UseIsolationFuncPos.ets) -->
 
 ``` TypeScript
 // src/main/ets/pages/UseIsolationFuncPos.ets
@@ -453,7 +453,7 @@ export function testWithoutObserved(): void {
 }
 ```
 
-<!-- @use_isolation_addition_positive -->
+<!-- @[use_isolation_addition_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/pages/UseIsolationAdditionPos.ets) -->
 
 ``` TypeScript
 // src/main/ets/pages/UseIsolationAdditionPos.ets
@@ -463,7 +463,7 @@ export function innerTest(): void {
 }
 ```
 
-<!-- @use_isolation_observed_positive -->
+<!-- @[use_isolation_observed_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagementFAQApplication/entry/src/main/ets/pages/UseIsolationObservedPos.ets) -->
 
 ``` TypeScript
 // src/main/ets/pages/UseIsolationObservedPos.ets

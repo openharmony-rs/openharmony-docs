@@ -1,9 +1,9 @@
 # 通过DataShareExtensionAbility实现数据共享 (ArkTS)(仅对系统应用开放)
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @woodenarow-->
-<!--Designer: @woodenarow; @xuelei3-->
-<!--Tester: @chenwan188; @logic42-->
+<!--Owner: @lvcong_oh-->
+<!--Designer: @lvcong_oh-->
+<!--Tester: @hanjiawei; @logic42-->
 <!--Adviser: @ge-yafang-->
 
 
@@ -18,12 +18,12 @@
 
 数据共享可分为数据的提供方和访问方两部分。
 
-- 数据提供方：DataShareExtensionAbility，可以选择性实现数据的增、删、改、查，以及文件打开等功能，并对外共享这些数据。
+- 数据提供方：[DataShareExtensionAbility](../reference/apis-arkdata/js-apis-application-dataShareExtensionAbility-sys.md)，可以选择性实现数据的增、删、改、查，以及文件打开等功能，并对外共享这些数据。
 
-- 数据访问方：由createDataShareHelper()方法所创建的工具类，利用工具类便可以访问提供方提供的这些数据。
+- 数据访问方：由[createDataShareHelper()](../reference/apis-arkdata/js-apis-data-dataShare-sys.md#datasharecreatedatasharehelper)方法所创建的工具类，利用工具类便可以访问提供方提供的这些数据。
 
 **图1** 数据共享运作机制  
-dataShare
+![dataShare](figures/dataShare.jpg)
 
 - DataShareExtensionAbility模块为数据提供方，实现跨应用数据共享的相关业务。
 
@@ -36,7 +36,7 @@ dataShare
 ## 约束与限制
 
 - 数据共享结果集的上限取决于数据提供方的限制（如最多事实上只允许同时使用32个），推荐数据提供方明确此数值上限，控制资源占用。超出数据提供方限制数量的查询请求需要重试处理。
-- 对于查询完成后返回的数据共享结果集，在使用完成后应调用close接口及时释放。
+- 对于查询完成后返回的数据共享结果集，在使用完成后应调用[close](../reference/apis-arkdata/js-apis-data-DataShareResultSet-sys.md#close)接口及时释放。
 
 
 ## 实现说明
@@ -44,7 +44,7 @@ dataShare
 
 ### 数据提供方应用的开发（仅限系统应用）
 
-DataShareExtensionAbility提供以下API，根据需要重写对应回调方法。
+[DataShareExtensionAbility](../reference/apis-arkdata/js-apis-application-dataShareExtensionAbility-sys.md)提供以下API，根据需要重写对应回调方法。
 
 | 接口名称                                     | 描述                   |
 | ---------------------------------------- | -------------------- |
@@ -60,11 +60,11 @@ DataShareExtensionAbility提供以下API，根据需要重写对应回调方法�
 
 开发者在实现一个数据共享服务时，需要在DevEco Studio工程中手动新建一个DataShareExtensionAbility，具体步骤如下。
 
-1. 在工程Module对应的ets目录下，右键选择“New&gt; Directory”，新建一个目录并命名为DataShareExtAbility。
+1. 在工程Module对应的ets目录下，右键选择“New &gt; Directory”，新建一个目录并命名为DataShareExtAbility。
 
-2. 在DataShareExtAbility目录，右键选择“New&gt; ArkTS File”，新建一个文件并命名为DataShareExtAbility.ets。
+2. 在DataShareExtAbility目录，右键选择“New &gt; ArkTS File”，新建一个文件并命名为DataShareExtAbility.ets。
 
-3. 在DataShareExtAbility.ets文件中，导入DataShareExtensionAbility模块，开发者可根据应用需求选择性重写其业务实现。例如数据提供方只提供插入、删除和查询服务，则可只重写这些接口，并导入对应的基础依赖模块；如果需要增加权限校验，可以在重写的回调方法中使用IPC提供的getCallingPid、getCallingUid、getCallingTokenId方法获取访问者信息来进行权限校验。
+3. 在DataShareExtAbility.ets文件中，导入DataShareExtensionAbility模块，开发者可根据应用需求选择性重写其业务实现。例如数据提供方只提供插入、删除和查询服务，则可只重写这些接口，并导入对应的基础依赖模块；如果需要增加权限校验，可以在重写的回调方法中使用IPC提供的[getCallingPid](../reference/apis-ipc-kit/js-apis-rpc.md#getcallingpid)、[getCallingUid](../reference/apis-ipc-kit/js-apis-rpc.md#getcallinguid)、[getCallingTokenId](../reference/apis-ipc-kit/js-apis-rpc.md#getcallingtokenid8)方法获取访问者信息来进行权限校验。
    
    ```ts
    import { DataShareExtensionAbility, dataShare, dataSharePredicates, relationalStore, DataShareResultSet, ValuesBucket } from '@kit.ArkData';
@@ -197,9 +197,9 @@ DataShareExtensionAbility提供以下API，根据需要重写对应回调方法�
    | type | Ability类型，DataShare对应的Ability类型为“dataShare”，表示基于datashare模板开发的。 | 是 |
    | uri | 通信使用的URI，是客户端连接服务端的唯一标识。 | 是 |
    | exported | 对其他应用是否可见，设置为true时，才能与其他应用进行通信传输数据。 | 是 |
-   | readPermission | 访问数据时需要的权限，不配置默认不进行读权限校验。<br>注意：当前DataShareExtensionAbility的权限约束方式与静默访问的权限约束方式不同，请注意区分，切勿混淆，具体可参考静默访问章节。 | 否 |
-   | writePermission | 修改数据时需要的权限，不配置默认不进行写权限校验。<br>注意：当前DataShareExtensionAbility的权限约束方式与静默访问的权限约束方式不同，请注意区分，切勿混淆，具体可参考静默访问章节。 | 否 |
-   | metadata   | 增加静默访问所需的额外配置项，包含name和resource字段。<br /> name类型固定为"ohos.extension.dataShare"，是配置的唯一标识。 <br /> resource类型固定为"$profile:data_share_config"，表示配置文件的名称为data_share_config.json。 | 若Ability启动模式为"singleton"，则metadata必填，Ability启动模式可见abilities对象的内部结构-launchType；其他情况下无需填写。 |
+   | readPermission | 访问数据时需要的权限，不配置默认不进行读权限校验。<br>注意：当前DataShareExtensionAbility的权限约束方式与静默访问的权限约束方式不同，请注意区分，切勿混淆，具体可参考[静默访问章节](share-data-by-silent-access-sys.md)。 | 否 |
+   | writePermission | 修改数据时需要的权限，不配置默认不进行写权限校验。<br>注意：当前DataShareExtensionAbility的权限约束方式与静默访问的权限约束方式不同，请注意区分，切勿混淆，具体可参考[静默访问章节](share-data-by-silent-access-sys.md)。 | 否 |
+   | metadata   | 增加静默访问所需的额外配置项，包含name和resource字段。<br /> name类型固定为"ohos.extension.dataShare"，是配置的唯一标识。 <br /> resource类型固定为"$profile:data_share_config"，表示配置文件的名称为data_share_config.json。 | 若Ability启动模式为"singleton"，则metadata必填，Ability启动模式可见[abilities对象的内部结构-launchType](../quick-start/module-structure.md#abilities对象的内部结构)；其他情况下无需填写。 |
 
 **module.json5配置样例：**
     
@@ -270,7 +270,7 @@ DataShareExtensionAbility提供以下API，根据需要重写对应回调方法�
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
-2. 定义与数据提供方通信的URI字符串。<br/> URI即为上文数据提供方在配置文件中配置的标识。URI支持添加后缀参数来设置具体的访问对象，URI添加后缀参数需在URI结尾以"?"符号开始参数。<br/> - 当前仅支持设置"user"参数。<br/> - "user"仅支持设置为整型，表示数据提供方的用户ID。不填写时，默认为数据访问方所在的用户ID。user的定义及获取参照getActivatedOsAccountLocalIds。<br/> - 目前跨用户访问需要数据访问方配有跨用户访问权限ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS才可成功访问。目前跨用户访问功能仅支持增删改查功能，订阅通知功能不支持跨用户。
+2. 定义与数据提供方通信的URI字符串。<br/> URI即为上文数据提供方在配置文件中配置的标识。URI支持添加后缀参数来设置具体的访问对象，URI添加后缀参数需在URI结尾以"?"符号开始参数。<br/> - 当前仅支持设置"user"参数。<br/> - "user"仅支持设置为整型，表示数据提供方的用户ID。不填写时，默认为数据访问方所在的用户ID。user的定义及获取参照[getActivatedOsAccountLocalIds](../reference/apis-basic-services-kit/js-apis-osAccount.md#getactivatedosaccountlocalids9)。<br/> - 目前跨用户访问需要数据访问方配有跨用户访问权限ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS才可成功访问。目前跨用户访问功能仅支持增删改查功能，订阅通知功能不支持跨用户。
    
    ```ts
    // 作为参数传递的URI，与module.json5中定义的URI的区别是多了一个"/"，是因为作为参数传递的URI中，在第二个与第三个"/"中间，存在一个DeviceID的参数
@@ -368,4 +368,4 @@ DataShareExtensionAbility提供以下API，根据需要重写对应回调方法�
 
 针对数据共享开发，有以下相关实例可供参考：
 
-- 系统应用跨应用数据共享（ArkTS）（Full SDK）（API9）
+- [系统应用跨应用数据共享（ArkTS）（Full SDK）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/DataManagement/CrossAppDataShare)

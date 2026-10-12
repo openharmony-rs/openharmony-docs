@@ -6,11 +6,11 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-\@Provider和\@Consumer用于跨组件层级数据双向同步，可以使得开发者不用拘泥于组件层级。
+[\@Provider](../../reference/apis-arkui/arkui-ts/ts-state-management-provider.md#provider)和[\@Consumer](../../reference/apis-arkui/arkui-ts/ts-state-management-consumer.md#consumer)用于跨组件层级数据双向同步，可以使得开发者不用拘泥于组件层级。
 
-\@Provider和\@Consumer属于状态管理V2装饰器，所以只能在\@ComponentV2中才能使用，在\@Component中使用会编译报错。
+\@Provider和\@Consumer属于状态管理V2装饰器，所以只能在[\@ComponentV2](./arkts-create-custom-components.md#componentv2)中才能使用，在[\@Component](./arkts-create-custom-components.md)中使用会编译报错。
 
-\@Provider和\@Consumer提供了跨组件层级数据双向同步的能力。在阅读本文档前，建议提前阅读：\@ComponentV2。常见问题请参考组件内状态变量常见问题。
+\@Provider和\@Consumer提供了跨组件层级数据双向同步的能力。在阅读本文档前，建议提前阅读：[\@ComponentV2](./arkts-create-custom-components.md#componentv2)。常见问题请参考[组件内状态变量常见问题](./arkts-state-management-faq-inner-component.md)。
 
 >**说明：**
 >
@@ -18,7 +18,7 @@
 >
 > 从API version 12开始，\@Provider和\@Consumer装饰器支持在原子化服务中使用。
 >
-> 从API version 23开始，通过配置BuilderNode的BuildOptions参数`enableProvideConsumeCrossing`为true，使得\@Provider和\@Consumer支持跨BuilderNode双向同步。在BuilderNode挂载到自定义组件节点树之后，\@Consumer会重新获取最近的\@Provider数据，与之建立双向同步关系。具体可见\@Consumer在跨BuilderNode场景下和\@Provider建立双向同步。
+> 从API version 23开始，通过配置[BuilderNode](../../reference/apis-arkui/js-apis-arkui-builderNode.md)的[BuildOptions](../../reference/apis-arkui/js-apis-arkui-builderNode.md#buildoptions12)参数`enableProvideConsumeCrossing`为true，使得\@Provider和\@Consumer支持跨[BuilderNode](../../reference/apis-arkui/js-apis-arkui-builderNode.md)双向同步。在BuilderNode挂载到自定义组件节点树之后，\@Consumer会重新获取最近的\@Provider数据，与之建立双向同步关系。具体可见[\@Consumer在跨BuilderNode场景下和\@Provider建立双向同步](#consumer在跨buildernode场景下和provider建立双向同步过程)。
 >
 > 从API version 23开始，\@Provider和\@Consumer装饰器支持在ArkTS卡片中使用。
 
@@ -28,7 +28,7 @@
 
 \@Consumer，即数据消费方，可以通过绑定同样的key获取其最近父节点的\@Provider的数据，当查找不到\@Provider的数据时，使用本地默认值。图示如下。
 
-ProviderConsumer_1
+![ProviderConsumer_1](./figures/Provider_Consumer_1.png)
 
 \@Provider和\@Consumer装饰的数据类型需要一致。
 
@@ -37,7 +37,7 @@ ProviderConsumer_1
 - \@Provider和\@Consumer相当于把组件粘合在一起了，从组件独立角度考虑，应减少使用\@Provider和\@Consumer。
 
 ## \@Provider和\@Consumer vs \@Provide和\@Consume能力对比
-在状态管理V1版本中，提供跨组件层级双向的装饰器为\@Provide和\@Consume，当前文档介绍的是状态管理V2装饰器\@Provider和\@Consumer。虽然两者名字和功能类似，但在特性上还存在一些差异。
+在状态管理V1版本中，提供跨组件层级双向的装饰器为[\@Provide和\@Consume](./arkts-provide-and-consume.md)，当前文档介绍的是状态管理V2装饰器\@Provider和\@Consumer。虽然两者名字和功能类似，但在特性上还存在一些差异。
 
 如果开发者不了解状态管理V1中的\@Provide和\@Consume，可以直接跳过本节。
 
@@ -45,8 +45,8 @@ ProviderConsumer_1
 | ------------------ | ----------------------------------------------------- |----------------------------------------------------- |
 | \@Consume(r)         |必须本地初始化，当找不到\@Provider时使用本地默认值。| API version 20以前，@Consume禁止本地初始化，当找不到对应\@Provide的时候，会抛出异常；从API version 20开始，@Consume支持设置默认值，如果没有设置默认值，且找不到对应\@Provide时，会抛出异常。 |
 | 支持类型           | 支持function。 | 不支持function。 |
-| 观察能力           | 仅能观察数据本身的变化，如果要观察嵌套场景，配合\@Trace一起使用。 | 观察第一层变化，如果要观察嵌套场景，配合\@Observed和\@ObjectLink一起使用。 |
-| alias和属性名         | alias是唯一匹配的key，缺省时默认属性名为alias。 | alias和属性名都为key，优先匹配alias，匹配不到可以匹配属性名。|
+| 观察能力           | 仅能观察数据本身的变化，如果要观察嵌套场景，配合[\@Trace](arkts-new-observedV2-and-trace.md)一起使用。 | 观察第一层变化，如果要观察嵌套场景，配合[\@Observed和\@ObjectLink](arkts-observed-and-objectlink.md)一起使用。 |
+| alias和属性名         | alias是唯一匹配的key，缺省时默认alias为属性名。 | alias和属性名都为key，优先匹配alias，匹配不到可以匹配属性名。|
 | \@Provide(r) 从父组件初始化      | 不允许。 | 允许。|
 | \@Provide(r)支持重载  | 默认开启，即\@Provider可以重名，\@Consumer向上查找最近的\@Provider。 | 默认关闭，即在组件树上不允许有同名\@Provide。如果需要重载，则需要配置allowOverride。|
 
@@ -60,7 +60,7 @@ ProviderConsumer_1
 | \@Provider属性装饰器 | 说明                                                  |
 | ------------------ | ----------------------------------------------------- |
 | 装饰器参数         | `aliasName?: string`，别名，缺省时默认为属性名。|
-| 支持类型           | 自定义组件中成员变量。属性的类型可以为number、string、boolean、class、Array、Date、Map、Set等类型。支持装饰箭头函数。 |
+| 支持类型           | 自定义组件中成员变量。属性的类型可以为number、string、boolean、class、[Array](#装饰array类型变量)、[Date](#装饰date类型变量)、[Map](#装饰map类型变量)、[Set](#装饰set类型变量)等类型。支持装饰[箭头函数](#provider和consumer装饰回调事件用于组件之间完成行为抽象)。 |
 | 从父组件初始化      | 禁止。 |
 | 本地初始化         | 必须本地初始化。 |
 | 观察能力         | 能力等同于\@Trace。变化会同步给对应的\@Consumer。 |
@@ -136,7 +136,7 @@ struct Child {
 | 传递规则       | 说明                                                         |
 | -------------- | ------------------------------------------------------------ |
 | 从父组件初始化 | \@Provider和\@Consumer装饰的变量仅允许本地初始化，不允许从外部传入初始化。 |
-| 初始化子组件   | \@Provider和\@Consumer装饰的变量可以初始化子组件中\@Param装饰的变量。 |
+| 初始化子组件   | \@Provider和\@Consumer装饰的变量可以初始化子组件中[\@Param](./arkts-new-param.md)装饰的变量。 |
 
 ## 使用限制
 
@@ -157,7 +157,7 @@ struct Child {
 2. 点击Parent中的按钮，改变\@Provider装饰的str，通知其对应的\@Consumer，对应UI刷新。
 3. 点击Child中的按钮，改变\@Consumer装饰的str，通知其对应的\@Provider，对应UI刷新。
 
-<!-- @Twoway_Binding --> 
+<!-- @[Twoway_Binding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/TwowayBinding.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -198,7 +198,7 @@ struct Child {
 }
 ```
 
-provider-sync-0
+![provider-sync-0](figures/provider-sync-0.gif)
 
 **未建立双向绑定**
 
@@ -210,7 +210,7 @@ provider-sync-0
 2. 点击Parent中的按钮，改变\@Provider装饰的str1，仅刷新\@Provider关联的Button组件。
 3. 点击Child中的按钮，改变\@Consumer装饰的str，仅刷新\@Consumer关联的Button组件。
 
-<!-- @No_Twoway_Binding --> 
+<!-- @[No_Twoway_Binding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/NoTwowayBinding.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -251,13 +251,13 @@ struct Child {
 }
 ```
 
-provider-sync-1
+![provider-sync-1](figures/provider-sync-1.gif)
 
 ### 装饰Array类型变量
 
 当装饰的对象是Array时，可以观察到Array整体的赋值，同时可以通过调用Array的接口`push`, `pop`, `shift`, `unshift`, `splice`, `copyWithin`, `fill`, `reverse`, `sort`更新Array中的数据。
 
-<!-- @Decorative_Array -->  
+<!-- @[Decorative_Array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeArray.ets) -->  
 
 ``` TypeScript
 @Entry
@@ -338,13 +338,13 @@ struct Child {
 }
 ```
 
-provider-sync-2
+![provider-sync-2](figures/provider-sync-2.gif)
 
 ### 装饰Date类型变量
 
 当装饰Date类型变量时，可以观察到数据源对Date整体的赋值，以及调用Date的接口`setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, `setUTCMilliseconds`带来的变化。
 
-<!-- @Decorative_Date -->  
+<!-- @[Decorative_Date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeDate.ets) -->  
 
 ``` TypeScript
 @Entry
@@ -428,13 +428,13 @@ struct Child {
 }
 ```
 
-provider-sync-3
+![provider-sync-3](figures/provider-sync-3.gif)
 
 ### 装饰Map类型变量
 
 当装饰Map类型变量时，可以观察到数据源对Map整体的赋值，以及调用Map的接口`set`, `clear`, `delete`带来的变化。
 
-<!-- @Decorative_Map -->  
+<!-- @[Decorative_Map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeMap.ets) -->  
 
 ``` TypeScript
 @Entry
@@ -544,13 +544,13 @@ struct Child {
 }
 ```
 
-provider-sync-4
+![provider-sync-4](figures/provider-sync-4.gif)
 
 ### 装饰Set类型变量
 
 当装饰Set类型变量时，可以观察到数据源对Set整体的赋值，以及调用Set的接口 `add`, `clear`, `delete`带来的变化。
 
-<!-- @Decorative_Set -->  
+<!-- @[Decorative_Set](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeSet.ets) -->  
 
 ``` TypeScript
 @Entry
@@ -646,7 +646,7 @@ struct Child {
 }
 ```
 
-provider-sync-5
+![provider-sync-5](figures/provider-sync-5.gif)
 
 ### \@Provider和\@Consumer装饰回调事件用于组件之间完成行为抽象
 
@@ -654,7 +654,7 @@ provider-sync-5
 
 在拖拽场景中，若需将子组件的拖拽起始位置信息同步给父组件，可参考以下示例。
 
-<!-- @Drag_Drop --> 
+<!-- @[Drag_Drop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DragDrop.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -696,14 +696,14 @@ struct Child {
 }
 ```
 
-provider-sync-6
+![provider-sync-6](figures/provider-sync-6.gif)
 
 ### \@Provider和\@Consumer装饰复杂类型，配合\@Trace一起使用
 
-1. \@Provider和\@Consumer只能观察到数据本身的变化。如果需要观察其装饰的复杂数据类型的属性变化，可以配合\@Trace一起使用，也可以使用makeObserved将非可观察数据变为可观察数据。
-2. 装饰内置类型：Array、Map、Set、Date时，可以观察到某些API的变化，观察能力同\@Trace。
+1. \@Provider和\@Consumer只能观察到数据本身的变化。如果需要观察其装饰的复杂数据类型的属性变化，可以配合\@Trace一起使用，也可以使用[makeObserved](./arkts-new-makeObserved.md)将非可观察数据变为可观察数据。
+2. 装饰内置类型：Array、Map、Set、Date时，可以观察到某些API的变化，观察能力同[\@Trace](./arkts-new-observedV2-and-trace.md#观察变化)。
 
-<!-- @Decorative_Complex -->  
+<!-- @[Decorative_Complex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeComplex.ets) -->  
 
 ``` TypeScript
 @ObservedV2
@@ -773,13 +773,13 @@ struct Child {
 }
 ```
 
-provider-sync-7
+![provider-sync-7](figures/provider-sync-7.gif)
 
 ### \@Provider重名时，\@Consumer向上查找其最近的\@Provider
 
 \@Provider可以在组件树上重名，\@Consumer会向上查找其最近父节点的\@Provider的数据。
 
-<!-- @Provider_Same --> 
+<!-- @[Provider_Same](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/ProviderSame.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -826,7 +826,7 @@ struct Child {
 }
 ```
 
-provider-sync-8
+![provider-sync-8](figures/provider-sync-8.png)
 
 上面的例子中：
 
@@ -837,7 +837,7 @@ provider-sync-8
 
 \@Provider和\@Consumer装饰的变量可以初始化子组件中\@Param装饰的变量。
 
-<!-- @Decorative_Initialized -->  
+<!-- @[Decorative_Initialized](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/DecorativeInitialized.ets) -->  
 
 ``` TypeScript
 @Entry
@@ -901,7 +901,7 @@ struct Child {
 }
 ```
 
-provider-sync-9
+![provider-sync-9](figures/provider-sync-9.gif)
 
 上面的例子中：
 
@@ -916,13 +916,13 @@ provider-sync-9
 > 从API version 23开始，支持跨BuilderNode配对\@Provider和\@Consumer。
 
 下面给出一个示例，实现如下功能：
-1. BuilderNode通过全局自定义构建函数构建组件树，组件树的根FrameNode节点可通过getFrameNode获取，该节点可直接由NodeController返回并挂载于NodeContainer节点下。
+1. BuilderNode通过[全局自定义构建函数](arkts-builder.md#全局自定义构建函数)构建组件树，组件树的根[FrameNode](../../reference/apis-arkui/js-apis-arkui-frameNode.md)节点可通过[getFrameNode](../../reference/apis-arkui/js-apis-arkui-builderNode.md#getframenode)获取，该节点可直接由[NodeController](../../reference/apis-arkui/js-apis-arkui-nodeController.md)返回并挂载于[NodeContainer](../../reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md)节点下。
 2. 挂载到自定义组件节点树时，BuilderNode会通过addBuilderNode方法挂载在自定义组件下，此时BuilderNode节点下的\@Consumer会向上查找\@Provider，根据key的匹配规则找到最近的\@Provider后，会和\@Provider建立双向同步关系。如果找不到配对的\@Provider，则\@Consumer仍使用默认值。
-3. 建立双向同步的关系后，如果\@Provider装饰变量的值和\@Consumer的默认值不同，则会回调\@Consumer的\@Monitor方法，以及与\@Consumer有同步关系的变量的\@Monitor方法，例如：\@Consumer通知其子组件中的\@Param触发\@Monitor方法。
+3. 建立双向同步的关系后，如果\@Provider装饰变量的值和\@Consumer的默认值不同，则会回调\@Consumer的\@Monitor方法，以及与\@Consumer有同步关系的变量的[\@Monitor](./arkts-new-monitor.md)方法，例如：\@Consumer通知其子组件中的\@Param触发\@Monitor方法。
 4. BuilderNode从组件树卸载后，\@Consumer会再次试图查找对应的\@Provider，如果发现从组件树卸载后无法再找到之前配对的\@Provider，则断开和\@Provider的双向同步关系，\@Consumer装饰的变量恢复成默认值。
 5. \@Consumer断开和\@Provider的连接，恢复成默认值时，会判断\@Consumer装饰变量的值相对于从\@Provider变为\@Consumer的默认值是否有变化，如果有变化，则会回调\@Consumer的\@Monitor方法以及与该\@Consumer存在同步关系的变量的\@Monitor方法。
 
-<!-- @Builder_Node --> 
+<!-- @[Builder_Node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ProviderConsumer/entry/src/main/ets/homePage/BuilderNode.ets) --> 
 
 ``` TypeScript
 import { BuilderNode, FrameNode, NodeController } from '@kit.ArkUI';
@@ -1059,7 +1059,7 @@ struct TestRemove {
 }
 ```
 
-provider-sync-10
+![provider-sync-10](figures/provider-sync-10.gif)
 
 上面的例子中：
 

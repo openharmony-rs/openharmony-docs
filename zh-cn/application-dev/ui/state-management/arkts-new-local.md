@@ -6,9 +6,9 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-为了实现对\@ComponentV2装饰的自定义组件中变量变化的观测，开发者可以使用\@Local装饰器装饰变量。
+为了实现对\@ComponentV2装饰的自定义组件中变量变化的观测，开发者可以使用[\@Local](../../reference/apis-arkui/arkui-ts/ts-state-management-local.md#local)装饰器装饰变量。
 
-在阅读本文档前，建议提前阅读：\@ComponentV2。常见问题请参考组件内状态变量常见问题。
+在阅读本文档前，建议提前阅读：[\@ComponentV2](./arkts-create-custom-components.md#componentv2)。常见问题请参考[组件内状态变量常见问题](./arkts-state-management-faq-inner-component.md)。
 
 >**说明：**
 >
@@ -26,17 +26,17 @@
 
 - 当被\@Local装饰的变量变化时，会刷新使用该变量的组件。
 
-- \@Local支持观测number、boolean、string、Object、class等基本类型以及Array、Set、Map、Date等内置类型。
+- \@Local支持观测number、boolean、string、Object、class等基本类型以及[Array](#装饰array类型变量)、[Set](#装饰set类型变量)、[Map](#装饰map类型变量)、[Date](#装饰date类型变量)等内置类型。
 
-- \@Local的观测能力仅限于被装饰的变量本身。当装饰简单类型时，能够观测到对变量的赋值；当装饰对象类型时，仅能观测到对对象整体的赋值；当装饰数组类型时，能观测到数组整体以及数组元素项的变化；当装饰Array、Set、Map、Date等内置类型时，可以观测到通过API调用带来的变化。详见观察变化。
+- \@Local的观测能力仅限于被装饰的变量本身。当装饰简单类型时，能够观测到对变量的赋值；当装饰对象类型时，仅能观测到对对象整体的赋值；当装饰数组类型时，能观测到数组整体以及数组元素项的变化；当装饰Array、Set、Map、Date等内置类型时，可以观测到通过API调用带来的变化。详见[观察变化](#观察变化)。
 
-- \@Local支持null、undefined以及联合类型。
+- \@Local支持null、undefined以及[联合类型](#联合类型)。
 
 ## 状态管理V1版本\@State装饰器的局限性
 
-状态管理V1使用\@State装饰器定义组件中的基础状态变量，该状态变量常用来作为组件内部状态，在组件内使用。但由于\@State装饰器又能够从外部初始化，因此无法确保\@State装饰变量的初始值一定为组件内部定义的值。
+状态管理V1使用[\@State装饰器](arkts-state.md)定义组件中的基础状态变量，该状态变量常用来作为组件内部状态，在组件内使用。但由于\@State装饰器又能够从外部初始化，因此无法确保\@State装饰变量的初始值一定为组件内部定义的值。
 
-<!-- @Local_V1_State_Decorator -->
+<!-- @[Local_V1_State_Decorator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalV1StateDecorator.ets) -->
 
 ``` TypeScript
 class ComponentInfo {
@@ -88,7 +88,7 @@ struct Index {
 | 传递规则       | 说明                                                         |
 | -------------- | ------------------------------------------------------------ |
 | 从父组件初始化 | \@Local装饰的变量仅允许本地初始化，无法从外部传入初始化。    |
-| 初始化子组件   | \@Local装饰的变量可以初始化子组件中\@Param装饰的变量。 |
+| 初始化子组件   | \@Local装饰的变量可以初始化子组件中[\@Param](arkts-new-param.md)装饰的变量。 |
 
 ## 观察变化
 
@@ -96,7 +96,7 @@ struct Index {
 
 - 当装饰的变量类型为boolean、string、number时，可以观察到对变量赋值的变化。
 
-  <!-- @Local_Observe_Changes_Type -->
+  <!-- @[Local_Observe_Changes_Type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalObserveChangesType.ets) -->
   
   ``` TypeScript
   @Entry
@@ -124,9 +124,9 @@ struct Index {
   }
   ```
 
-- 当装饰的变量类型为类对象时，仅可以观察到对类对象整体赋值的变化，无法直接观察到对类成员属性赋值的变化，对类成员属性的观察依赖\@ObservedV2和\@Trace装饰器，也可以使用makeObserved将该对象变为可观察对象。注意，API version 19之前，\@Local无法和\@Observed装饰的类实例对象混用。API version 19及以后，支持部分状态管理V1V2混用能力，允许\@Local和\@Observed同时使用，详情见状态管理V1和V2混用指导（API version 19及之后）。
+- 当装饰的变量类型为类对象时，仅可以观察到对类对象整体赋值的变化，无法直接观察到对类成员属性赋值的变化，对类成员属性的观察依赖[\@ObservedV2](arkts-new-observedV2-and-trace.md)和[\@Trace](arkts-new-observedV2-and-trace.md)装饰器，也可以使用[makeObserved](./arkts-new-makeObserved.md)将该对象变为可观察对象。注意，API version 19之前，\@Local无法和[\@Observed](./arkts-observed-and-objectlink.md)装饰的类实例对象混用。API version 19及以后，支持部分状态管理V1V2混用能力，允许\@Local和\@Observed同时使用，详情见[状态管理V1和V2混用指导（API version 19及之后）](../../ui/state-management/arkts-v1-v2-mixusage.md)。
 
-    <!-- @Local_Observe_Changes_Decorator -->
+    <!-- @[Local_Observe_Changes_Decorator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalObserveChangesDecorator.ets) -->
     
     ``` TypeScript
     class RawObject {
@@ -176,7 +176,7 @@ struct Index {
 
 - 当装饰简单类型数组时，可以观察到数组整体或数组项的变化。
 
-    <!-- @Local_Observe_Changes_Array -->
+    <!-- @[Local_Observe_Changes_Array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalObserveChangesArray.ets) -->
     
     ``` TypeScript
     @Entry
@@ -211,7 +211,7 @@ struct Index {
   
 - 当装饰的变量是嵌套类或对象数组时，\@Local无法观察深层对象属性的变化。对深层对象属性的观测依赖\@ObservedV2与\@Trace装饰器。
 
-  <!-- @Local_Observe_Changes_DeepObject -->
+  <!-- @[Local_Observe_Changes_DeepObject](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalObserveChangesDeepObject.ets) -->
   
   ``` TypeScript
   @ObservedV2
@@ -289,7 +289,7 @@ struct Index {
 
 \@Local装饰器存在以下使用限制：
 
-- \@Local装饰器只能在\@ComponentV2装饰的自定义组件中使用。
+- \@Local装饰器只能在[\@ComponentV2](./arkts-create-custom-components.md#componentv2)装饰的自定义组件中使用。
 
   ```ts
   @ComponentV2
@@ -340,7 +340,7 @@ struct Index {
 
 被\@ObservedV2与\@Trace装饰的类对象实例，具有深度观测对象属性的能力。但当对对象整体赋值时，UI却无法刷新。使用\@Local装饰对象，可以达到观测对象本身变化的效果。
 
-<!-- @Local_Use_Case_Object -->
+<!-- @[Local_Use_Case_Object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalUseCaseObject.ets) -->
 
 ``` TypeScript
 @ObservedV2
@@ -380,13 +380,13 @@ struct Index {
   }
 }
 ```
-local-object
+![local-object](figures/local-object.gif)
 
 ### 装饰Array类型变量
 
 当装饰的对象是Array时，可以观察到Array整体的赋值，同时可以通过调用Array的接口`push`, `pop`, `shift`, `unshift`, `splice`, `copyWithin`, `fill`, `reverse`, `sort`更新Array中的数据。
 
-<!-- @Local_Use_Case_Array -->
+<!-- @[Local_Use_Case_Array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalUseCaseArray.ets) -->
 
 ``` TypeScript
 class Fruit {
@@ -446,13 +446,13 @@ struct Index {
 }
 ```
 
-local-array
+![local-array](figures/local-array.gif)
 
 ### 装饰Date类型变量
 
 当装饰的对象是Date时，可以观察到Date整体的赋值，同时可通过调用Date的接口`setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, `setUTCMilliseconds`更新Date中的数据。
 
-<!-- @Local_Use_Case_Data -->
+<!-- @[Local_Use_Case_Data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalUseCaseDate.ets) -->
 
 ``` TypeScript
 @Entry
@@ -504,13 +504,13 @@ struct DatePickerExample {
 }
 ```
 
-local-date
+![local-date](figures/local-date.gif)
 
 ### 装饰Map类型变量
 
 当装饰的对象是Map时，可以观察到对Map整体的赋值，同时可以通过调用Map的接口`set`, `clear`, `delete`更新Map中的数据。
 
-<!-- @Local_Use_Case_Map -->
+<!-- @[Local_Use_Case_Map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalUseCaseMap.ets) -->
 
 ``` TypeScript
 @Entry
@@ -568,13 +568,13 @@ struct MapSample {
   }
 }
 ```
-local-map
+![local-map](figures/local-map.gif)
 
 ### 装饰Set类型变量
 
 当装饰的对象是Set时，可以观察到对Set整体的赋值，同时可以通过调用Set的接口`add`, `clear`, `delete`更新Set中的数据。
 
-<!-- @Local_Use_Case_Set -->
+<!-- @[Local_Use_Case_Set](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalUseCaseSet.ets) -->
 
 ``` TypeScript
 @Entry
@@ -625,13 +625,13 @@ struct SetSample {
   }
 }
 ```
-local-set
+![local-set](figures/local-set.gif)
 
 ### 联合类型
 
 \@Local支持null、undefined以及联合类型。在下面的示例中，count类型为number | undefined，点击改变count的类型，UI会随之刷新。
 
-<!-- @Local_Use_Case_Join -->
+<!-- @[Local_Use_Case_Join](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalUseCaseJoin.ets) -->
 
 ``` TypeScript
 @Entry
@@ -664,15 +664,15 @@ struct Index {
   }
 }
 ```
-local-union
+![local-union](figures/local-union.gif)
 
 ## 常见问题
 
 ### 在状态管理V2中使用animateTo动画效果异常
 
-在下面的场景中，animateTo暂不支持直接在状态管理V2中使用。
+在下面的场景中，[animateTo](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto)暂不支持直接在状态管理V2中使用。
 
-<!-- @Local_AnimateTo_V2_Problem -->
+<!-- @[Local_AnimateTo_V2_Problem](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalAnimateToV2Problem.ets) -->
 
 ``` TypeScript
 @Entry
@@ -712,11 +712,11 @@ struct Index {
 
 上述代码中，开发者预期的动画效果是：绿色矩形从长宽100变为200，字符串从`Hello World`变为`Hello ArkUI`。但由于当前animateTo与V2的刷新机制不兼容，执行动画前的额外修改未生效，实际显示的动画效果是：绿色矩形从长宽50变为200，字符串从`Hello`变为`Hello ArkUI`。
 
-arkts-new-local-animateTo-1
+![arkts-new-local-animateTo-1](figures/arkts-new-local-animateTo-1.gif)
 
-从API version 22开始，可以使用applySync接口实现预期的显示效果。
+从API version 22开始，可以使用[applySync接口](./arkts-new-applySync-flushUpdates-flushUIUpdates.md)实现预期的显示效果。
 
-<!-- @Local_ApplySync_Effect -->
+<!-- @[Local_ApplySync_Effect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalApplySyncEffect.ets) -->
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
@@ -760,4 +760,4 @@ struct Index {
 
 原理为使用applySync接口同步刷新闭包函数内的状态变量变化，再执行原来的动画达成预期的效果。
 
-arkts-new-local-animateTo-2
+![arkts-new-local-animateTo-2](figures/arkts-new-local-animateTo-2.gif)

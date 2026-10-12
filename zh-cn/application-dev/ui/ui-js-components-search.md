@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-提供搜索框组件，用于提供用户搜索内容的输入区域，具体用法请参考search。
+提供搜索框组件，用于提供用户搜索内容的输入区域，具体用法请参考[search](../reference/apis-arkui/arkui-js/js-components-basic-search.md)。
 
 
 ## 创建search组件
@@ -35,7 +35,7 @@
 }
 ```
 
-search-Component
+![search-Component](figures/search-Component.png)
 
 
 ## 设置属性
@@ -63,7 +63,7 @@ search-Component
 }
 ```
 
-Setting-Attributes-1
+![Setting-Attributes-1](figures/Setting-Attributes-1.png)
 
 
 ## 添加样式
@@ -96,7 +96,7 @@ search{
 }
 ```
 
-Adding-Styles
+![Adding-Styles](figures/Adding-Styles.gif)
 
 
 ## 绑定事件
@@ -173,7 +173,7 @@ export default {
 }
 ```
 
-Binding-Events-3
+![Binding-Events-3](figures/Binding-Events-3.gif)
 
 
 ## 场景示例
@@ -263,4 +263,4 @@ export default {
 }
 ```
 
-Example-Scenario-11
+![Example-Scenario-11](figures/Example-Scenario-11.gif)

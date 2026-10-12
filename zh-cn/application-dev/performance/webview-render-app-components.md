@@ -30,16 +30,16 @@
 - 同层渲染：通过同层渲染的方式直接渲染到H5页面Embed标签区域上。此方式实现相对复杂，用于原生组件大小位置需要跟随Web页面变化场景。
 
 **图一：同层渲染和非同层渲染区别**  
-Webview
+![Webview](./figures/webview-render-app-components_1.png)
 
-同层渲染的大致开发流程可以参考同层渲染绘制。
+同层渲染的大致开发流程可以参考[同层渲染绘制](../web/web-same-layer.md)。
 
 ## 场景示例
 
 以下分别采用纯H5、非同层渲染和同层渲染的三种方式，加载相同的商城组件到相同的H5页面上，并抓取trace对比三者之间的区别，其中商城页面大致如图二所示：
 
 **图二：商城页面场景**  
-Webview
+![Webview](./figures/webview-render-app-components_2.jpeg)
 
 场景实例源码的核心部分如下：
 
@@ -299,7 +299,7 @@ export struct SearchComponent {
 在上述的方案中，实现方法非常简单。但是这只是限于底层H5网页比较简单，不会滚动的情况。如果H5页面可以上下滑动或者放大缩小比较复杂，此方案就会出现问题，就会发现原生组件是很难去定位，很难跟随H5页面一起滚动。而且在性能上，Web是整体渲染的，即使被原生组件遮住的部分也会消耗性能。于是我们可以通过同层渲染来完美解决这个问题，方案如下：  
 
 ### 同层渲染实现  
-同层渲染简单来说就是，底层使用空白的H5页面，用**Embed标签**进行占位，原生使用**NodeContainer**来占位，最后将Web侧的surfaceId和原生组件绑定，渲染在**NodeContainer**上。详细的步骤可以参考前面什么是同层渲染中的链接，这里给出一些大致步骤。
+同层渲染简单来说就是，底层使用空白的H5页面，用**Embed标签**进行占位，原生使用**NodeContainer**来占位，最后将Web侧的surfaceId和原生组件绑定，渲染在**NodeContainer**上。详细的步骤可以参考前面[什么是同层渲染](#什么是同层渲染)中的链接，这里给出一些大致步骤。
 
 1. 用Stack组件层叠NodeContainer和Web组件，并开启enableNativeEmbedMode模式。
     ```typescript
@@ -413,7 +413,7 @@ export struct SearchComponent {
 
 **图三：H5的Trace图**
 
-alt text  
+![alt text](./figures/webview-render-app-components_5.png)  
 
 H5的分析：
 - 在应用侧，情况比较特殊，因为H5页面是在web侧渲染，所以app侧只有开始加载web之前的js处理阶段，在PageEnd后应用侧没有什么处理。
@@ -423,7 +423,7 @@ H5的分析：
 
 **图四：非同层渲染的Trace图**  
 
-alt text  
+![alt text](./figures/webview-render-app-components_4.png)  
 
 非同层渲染的分析：
 - 在应用侧，红蓝线之间为测量和计算布局，图片加载被延后到了蓝线之外。  
@@ -432,7 +432,7 @@ alt text
 
 **图五：非同层渲染情况下的单帧放大图**  
 
-alt text  
+![alt text](./figures/webview-render-app-components_6.png)  
 
 从图五可以明显的看到，其中的RSUniRender::Process耗时比起其他帧大幅增加，说明是应用侧组件层叠导致render_service侧的绘制任务过重。 
 
@@ -440,7 +440,7 @@ alt text
 
 **图六：同层渲染的Trace图**  
 
-alt text  
+![alt text](./figures/webview-render-app-components_3.png)  
 
 同层渲染的分析：
 - 在应用侧，红蓝线之间由于NodeContainer的原因，组件布局的测量和绘制划分成了两部分，同时将图片加载提前到了红蓝线之间。
@@ -470,13 +470,13 @@ alt text
 ### 使用非同层渲染
 
   **图七：非同层渲染滑动时单帧图**  
-  alt text
+  ![alt text](./figures/webview-render-app-components_8.png)
 
 ### 使用同层渲染
 
   **图八：同层渲染滑动时单帧图**  
 
-  alt text
+  ![alt text](./figures/webview-render-app-components_7.png)
 
   上述两张图经过对比也可以发现，render_service每一帧的耗时大幅增加，其中的RSUniRender::Process耗时也大幅增加，结论和上述保持一致，再次验证了同样的结果。
 
@@ -494,4 +494,4 @@ alt text
 
 ## 示例代码
 
-基于ArkWeb实现系统原生组件渲染至H5页面上
+[基于ArkWeb实现系统原生组件渲染至H5页面上](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Performance/ArkWebSameLevelRendering)

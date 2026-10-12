@@ -9,7 +9,7 @@
 
 ## 简介
 
-本文介绍如何使用HiAppEvent提供的ArkTS接口订阅ArkWeb抛滑丢帧事件。接口的详细使用说明（参数限制、取值范围等）请参考@ohos.hiviewdfx.hiAppEvent。
+本文介绍如何使用HiAppEvent提供的ArkTS接口订阅ArkWeb抛滑丢帧事件。接口的详细使用说明（参数限制、取值范围等）请参考[@ohos.hiviewdfx.hiAppEvent](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md)。
 
 ## 接口说明
 
@@ -23,7 +23,7 @@
 
 1. 在DevEco Studio中新建工程，选择“Empty Ability”，编辑工程中的“entry > src > main > ets > entryability > EntryAbility.ets”文件，导入依赖模块：
 
-   <!-- @ArkWeb_Fling_Jank_ArkTS_Add_Watcher_Header -->
+   <!-- @[ArkWeb_Fling_Jank_ArkTS_Add_Watcher_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
    
    ``` TypeScript
    // 该变量在/pages/ArkWebPage.ets文件中进行定义，用于实现webId到网页url的映射
@@ -32,7 +32,7 @@
 
 2. 编辑工程中的“entry > src > main > ets > entryability > EntryAbility.ets”文件，在onCreate函数中添加系统事件的订阅，示例代码如下：
 
-   <!-- @ArkWeb_Fling_Jank_ArkTS_Add_Watcher -->
+   <!-- @[ArkWeb_Fling_Jank_ArkTS_Add_Watcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
    
    ``` TypeScript
    // 添加ArkWeb抛滑丢帧事件观察者
@@ -77,7 +77,7 @@
 
 3. 在工程中的“entry > src > main > ets  > pages”目录下，新增ArkWebPage.ets文件，在build下加载web网页，并定期下发耗时任务阻塞应用主线程触发丢帧，示例代码如下：
 
-   <!-- @ArkWeb_Fling_Jank_Page -->
+   <!-- @[ArkWeb_Fling_Jank_Page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/ArkWebPage.ets) -->
    
    ``` TypeScript
    import web_webview from '@ohos.web.webview';
@@ -128,7 +128,7 @@
 
 4. 编辑工程中的“entry > src > main > ets > pages > Index.ets”文件，添加导航路由栈 navPathStack 和页面路由映射 PageMap，用于管理页面跳转并声明目标 Web 页面（ArkWebPage）。示例代码如下：
 
-   <!-- @ArkWeb_Fling_Jank_Nav -->
+   <!-- @[ArkWeb_Fling_Jank_Nav](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    @Provide('navPathStack') navPathStack: NavPathStack = new NavPathStack();
@@ -142,7 +142,7 @@
 
    添加按钮并在其onClick函数中跳转到Web页面。示例代码如下：
  
-   <!-- @ArkWeb_Fling_Jank_ArkTs_Button -->
+   <!-- @[ArkWeb_Fling_Jank_ArkTs_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    // 按钮跳转到易出现滑动丢帧的web场景，触发ArkWeb抛滑丢帧事件。
@@ -161,7 +161,7 @@
 
 5. 编辑工程中的“entry > src > main > module.json5”文件，添加网络访问权限。
 
-   <!-- @ArkWeb_Fling_Jank_NetWork -->
+   <!-- @[ArkWeb_Fling_Jank_NetWork](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/module.json5) -->
    
    ``` JSON5
    "requestPermissions": [
@@ -173,7 +173,7 @@
 
    > **说明**
    >
-   > Web组件详细的使用方式请参考ArkWeb简介文档
+   > Web组件详细的使用方式请参考[ArkWeb简介](../web/web-component-overview.md)文档
 
 6. 点击DevEco Studio界面中的运行按钮，运行应用工程。然后在应用界面中点击按钮“ArkWebFlingJank ArkTs”，跳转到网页，等待页面加载完成，滑动页面，当系统检测到故障时触发ArkWeb抛滑丢帧事件。
 

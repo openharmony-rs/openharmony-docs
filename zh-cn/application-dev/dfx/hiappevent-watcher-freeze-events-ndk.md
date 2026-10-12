@@ -9,7 +9,7 @@
 
 ## 简介
 
-本文介绍如何使用HiAppEvent提供的C/C++接口订阅应用冻屏事件。接口的详细使用说明（参数限制、取值范围等）请参考hiappevent.h。
+本文介绍如何使用HiAppEvent提供的C/C++接口订阅应用冻屏事件。接口的详细使用说明（参数限制、取值范围等）请参考[hiappevent.h](../reference/apis-performance-analysis-kit/capi-hiappevent-h.md)。
 
 ## 接口说明
 
@@ -24,7 +24,7 @@
 
 以订阅应用冻屏事件为例，说明开发步骤。
 
-1. 获取该示例工程依赖的jsoncpp文件，从三方开源库jsoncpp代码仓下载源码的压缩包，并按照README的**Amalgamated source**中介绍的操作步骤得到jsoncpp.cpp、json.h和json-forwards.h三个文件。
+1. 获取该示例工程依赖的jsoncpp文件，从[三方开源库jsoncpp代码仓](https://github.com/open-source-parsers/jsoncpp)下载源码的压缩包，并按照README的**Amalgamated source**中介绍的操作步骤得到jsoncpp.cpp、json.h和json-forwards.h三个文件。
 
 2. 在DevEco Studio中，新建Native C++工程，并将jsoncpp导入到新建工程内，目录结构如下。
 
@@ -333,7 +333,7 @@
    HiAppEvent eventInfo.params.application_io_info={"cancelled_write_bytes":4096,"rchar":14557921,"read_bytes":0,"syscr":6934,"syscw":118,"wchar":909,"write_bytes":"4096"}
    ```
 
-2. 若应用无法启动或长时间未启动，开发者可以参考使用FaultLogExtensionAbility订阅事件回调重写的函数，进行延迟上报。
+2. 若应用无法启动或长时间未启动，开发者可以参考[使用FaultLogExtensionAbility订阅事件](./fault-log-extension-app-events-arkts.md)回调重写的函数，进行延迟上报。
 
 ### 移除并销毁事件观察者
 

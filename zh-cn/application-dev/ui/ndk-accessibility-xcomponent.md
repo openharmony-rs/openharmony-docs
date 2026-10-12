@@ -6,38 +6,38 @@
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
 
-通过自定义绘制接入的第三方框架平台，NDK提供了对接无障碍服务的接口函数，使三方框架组件能够支持ArkUI中的基本无障碍功能，包括焦点获取、获取无障碍节点和操作响应。
+对于通过[自定义绘制](./arkts-user-defined-draw.md)接入的三方框架，NDK提供了对接无障碍服务的接口函数，使三方框架组件能够支持ArkUI中的基本无障碍功能，包括焦点获取、获取无障碍节点和操作响应。
 
 从API version 13开始，支持基于XComponent的自绘制方式接入。
 
 从API version 23开始，支持基于CustomNode构建渲染节点树的自绘制方式接入。
 
-三方框架从绘制容器组件获取到ArkUI_AccessibilityProvider，通过实现其中对接无障碍的回调函数，来适配无障碍系统发出的操作Action，并针对组件交互行为发送无障碍事件Event到无障碍子系统，实现无障碍辅助应用的交互体验。
+三方框架从绘制容器组件获取到[ArkUI_AccessibilityProvider](../reference/apis-arkui/capi-arkui-accessibility-arkui-accessibilityprovider.md)，通过实现其中对接无障碍的回调函数，来适配无障碍系统发出的操作[Action](../reference/apis-arkui/capi-native-interface-accessibility-h.md#arkui_accessibility_actiontype)，并针对组件交互行为发送无障碍事件[Event](../reference/apis-arkui/capi-native-interface-accessibility-h.md#arkui_accessibilityeventtype)到无障碍系统，实现无障碍辅助应用的交互体验。
 
-基于XComponent的自绘制接入方式通过OH_NativeXComponent_GetNativeAccessibilityProvider获得无障碍接入ArkUI_AccessibilityProvider。
+基于XComponent的自绘制接入方式通过[OH_NativeXComponent_GetNativeAccessibilityProvider](../reference/apis-arkui/capi-native-interface-xcomponent-h.md#oh_nativexcomponent_getnativeaccessibilityprovider)获得无障碍接入[ArkUI_AccessibilityProvider](../reference/apis-arkui/capi-arkui-accessibility-arkui-accessibilityprovider.md)。
 
-基于CustomNode构建渲染节点树的自绘制接入方式通过OH_ArkUI_NativeModule_GetNativeAccessibilityProvider获得无障碍接入ArkUI_AccessibilityProvider。
+基于CustomNode构建渲染节点树的自绘制接入方式通过[OH_ArkUI_NativeModule_GetNativeAccessibilityProvider](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_nativemodule_getnativeaccessibilityprovider)获得无障碍接入[ArkUI_AccessibilityProvider](../reference/apis-arkui/capi-arkui-accessibility-arkui-accessibilityprovider.md)。
 
-如果需要支持单实例，通过OH_ArkUI_AccessibilityProviderRegisterCallback注册接入无障碍所需的回调函数ArkUI_AccessibilityProviderCallbacks。
+如果需要支持单实例，通过[OH_ArkUI_AccessibilityProviderRegisterCallback](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallback)注册接入无障碍所需的回调函数[ArkUI_AccessibilityProviderCallbacks](../reference/apis-arkui/capi-arkui-accessibility-arkui-accessibilityprovidercallbacks.md)。
 
-如果需要支持多实例，则通过OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance注册接入无障碍所需的回调函数ArkUI_AccessibilityProviderCallbacksWithInstance。
+如果需要支持多实例，则通过[OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallbackwithinstance)注册接入无障碍所需的回调函数[ArkUI_AccessibilityProviderCallbacksWithInstance](../reference/apis-arkui/capi-arkui-accessibility-arkui-accessibilityprovidercallbackswithinstance.md)。
 
 
 > **说明：**
 >
 > - 无障碍能力：指开发者能够创建可访问的应用界面，满足视觉、听觉、运动和认知障碍等用户需求的能力。
-> - 实现OH_ArkUI_AccessibilityProviderRegisterCallback或者OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance回调查询接口时，查询到的每个无障碍节点信息通过OH_ArkUI_AddAndGetAccessibilityElementInfo创建分配element内存，并将其加入到指定的elementList中。
-> - 使用OH_ArkUI_SendAccessibilityAsyncEvent发送事件时，需要使用OH_ArkUI_CreateAccessibilityEventInfo创建ArkUI_AccessibilityEventInfo，使用OH_ArkUI_CreateAccessibilityElementInfo创建ArkUI_AccessibilityElementInfo，使用结束后，需要调用OH_ArkUI_DestoryAccessibilityEventInfo以及OH_ArkUI_DestoryAccessibilityElementInfo销毁函数释放内存。
+> - 实现[OH_ArkUI_AccessibilityProviderRegisterCallback](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallback)或者[OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallbackwithinstance)注册的查询回调时，需要通过[OH_ArkUI_AddAndGetAccessibilityElementInfo](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_addandgetaccessibilityelementinfo)为每个查询到的无障碍节点创建element并分配内存，并将其加入到指定的elementList中。
+> - 使用[OH_ArkUI_SendAccessibilityAsyncEvent](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_sendaccessibilityasyncevent)发送事件时，需要使用[OH_ArkUI_CreateAccessibilityEventInfo](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_createaccessibilityeventinfo)创建[ArkUI_AccessibilityEventInfo](../reference/apis-arkui/capi-arkui-accessibility-arkui-accessibilityeventinfo.md)，使用[OH_ArkUI_CreateAccessibilityElementInfo](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_createaccessibilityelementinfo)创建[ArkUI_AccessibilityElementInfo](../reference/apis-arkui/capi-arkui-accessibility-arkui-accessibilityelementinfo.md)，使用结束后，需要调用[OH_ArkUI_DestoryAccessibilityEventInfo](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_destoryaccessibilityeventinfo)以及[OH_ArkUI_DestoryAccessibilityElementInfo](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_destoryaccessibilityelementinfo)销毁函数释放内存。
 > - 回调函数打印日志时，携带输入的requestId，用于关联一次交互过程相关的日志，便于索引查询整个流程，协助问题定位。
 
 ## 基于XComponent的自绘制接入方式
-以下示例提供了对接无障碍能力的实现方法，仅包含主要步骤，完整示例请参考AccessibilityCapiSample。对接完成后，在开启无障碍功能时，可使XComponent中的三方框架绘制组件接入，实现无障碍交互。
+以下示例提供了对接无障碍能力的实现方法，仅包含主要步骤，完整示例请参考[AccessibilityCapiSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/AccessibilityCapi)。对接完成后，在开启无障碍功能时，XComponent中的三方框架绘制组件即可接入无障碍服务，实现无障碍交互。
 
-1. 按照自定义渲染（XComponent）的使用OH_ArkUI_SurfaceHolder管理Surface生命周期场景创建前置工程。
+1. 按照自定义渲染（XComponent）的[使用OH_ArkUI_SurfaceHolder管理Surface生命周期](napi-xcomponent-guidelines.md#管理xcomponent持有surface的生命周期)场景创建前置工程。
 
 2. 获得无障碍接入Provider并注册回调函数（以多实例场景为例）。
 
-   <!-- @abilitycap_one_start -->
+   <!-- @[abilitycap_one_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
    
    ``` C++
    #include <arkui/native_interface_accessibility.h>
@@ -97,11 +97,11 @@
   >
   > - 当无障碍系统传入的elementId为-1时，代表其约定的“根节点标识”。三方框架需将该外部标识，映射为自身内部节点树中唯一根节点的ID，以便无障碍系统正确定位到框架的根节点。
   > - 三方框架需要提供一个且仅包含一个根节点。
-  > - 根节点的属性中的parentId须设置为特殊值`-2100000`。在无障碍树中，根节点是最顶层节点，没有父节点。这个特殊值`-2100000`是ArkUI无障碍框架的硬编码约定，用于明确标识“此节点为根节点，无父节点”。使用一个特殊值而非0或-1，是为了防止与三方框架内部的有效ID产生冲突，确保系统能准确识别根节点。
-  > - 根节点的属性中的enabled须设置为true。如果设置为false，根节点被禁用，无障碍系统会认为整个控件树都不可交互，从而忽略所有子节点的查询和操作。根节点作为整个控件树的入口，必须处于可用状态，才能保证无障碍服务正常工作。
-  > - 根节点的属性中的visible须设置为true。无障碍系统只对可见的节点进行遍历和交互。如果设置为false，根节点不可见，整个控件树都会被无障碍服务忽略，导致三方框架的无障碍能力完全失效。确保用户在使用无障碍功能时，能感知到三方框架渲染的所有界面元素。
+  > - 根节点的属性中的[parentId](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityelementinfosetparentid)须设置为特殊值`-2100000`。在无障碍树中，根节点是最顶层节点，没有父节点。这个特殊值`-2100000`是ArkUI无障碍框架的硬编码约定，用于明确标识“此节点为根节点，无父节点”。使用一个特殊值而非0或-1，是为了防止与三方框架内部的有效ID产生冲突，确保系统能准确识别根节点。
+  > - 根节点的属性中的[enabled](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityelementinfosetenabled)须设置为true。如果设置为false，根节点被禁用，无障碍系统会认为整个控件树都不可交互，从而忽略所有子节点的查询和操作。根节点作为整个控件树的入口，必须处于可用状态，才能保证无障碍服务正常工作。
+  > - 根节点的属性中的[visible](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityelementinfosetvisible)须设置为true。无障碍系统只对可见的节点进行遍历和交互。如果设置为false，根节点不可见，整个控件树都会被无障碍服务忽略，导致三方框架的无障碍能力完全失效。确保用户在使用无障碍功能时，能感知到三方框架渲染的所有界面元素。
 
-   <!-- @abilitycap_two_start -->
+   <!-- @[abilitycap_two_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
    
    ``` C++
    int32_t AccessibilityManager::FindAccessibilityNodeInfosById(const char* instanceId, int64_t elementId,
@@ -245,7 +245,7 @@
 
 - 基于指定的节点，查询下一个可聚焦的无障碍节点
 
-   <!-- @abilitycap_three_start -->
+   <!-- @[abilitycap_three_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
    
    ``` C++
    int32_t AccessibilityManager::FindNextFocusAccessibilityNode(const char* instanceId, int64_t elementId,
@@ -307,7 +307,7 @@
 
 - 基于指定的节点，查询满足指定组件文本内容的节点信息
 
-   <!-- @abilitycap_four_start -->
+   <!-- @[abilitycap_four_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
    
    ``` C++
    int32_t AccessibilityManager::FindAccessibilityNodeInfosByText(const char* instanceId, int64_t elementId,
@@ -324,7 +324,7 @@
 
 - 基于指定的节点，查询已经聚焦的节点信息
 
-   <!-- @abilitycap_five_start -->
+   <!-- @[abilitycap_five_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
    
    ``` C++
    int32_t AccessibilityManager::FindFocusedAccessibilityNode(const char* instanceId, int64_t elementId,
@@ -341,7 +341,7 @@
 
 - 基于指定的节点，执行指定的操作
 
-   <!-- @abilitycap_six_start -->
+   <!-- @[abilitycap_six_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
    
    ``` C++
    void FillEvent(ArkUI_AccessibilityEventInfo *eventInfo, ArkUI_AccessibilityElementInfo *elementInfo,
@@ -444,7 +444,7 @@
 
 - 清除当前获焦的节点
 
-   <!-- @abilitycap_seven_start -->
+   <!-- @[abilitycap_seven_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
    
    ``` C++
    int32_t AccessibilityManager::ClearFocusedFocusAccessibilityNode(const char* instanceId)
@@ -458,7 +458,7 @@
 
 - 基于指定的节点，获取当前文本组件的光标位置
 
-   <!-- @abilitycap_eight_start -->
+   <!-- @[abilitycap_eight_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCapi/entry/src/main/cpp/manager/AccessibilityManager.cpp) -->
    
    ``` C++
    int32_t AccessibilityManager::GetAccessibilityNodeCursorPosition(const char* instanceId, int64_t elementId,
@@ -473,21 +473,21 @@
    }
    ```
 
-provider通过回调函数OH_ArkUI_AccessibilityProviderRegisterCallback或者OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance对接成功后，可开启无障碍功能。
+三方框架通过[OH_ArkUI_AccessibilityProviderRegisterCallback](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallback)或者[OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance](../reference/apis-arkui/capi-native-interface-accessibility-h.md#oh_arkui_accessibilityproviderregistercallbackwithinstance)注册回调函数对接成功后，可开启无障碍功能。
 
 ## 基于CustomNode的自绘制接入方式
 
 > **说明：**
 >
-> - 基于CustomNode的自定义绘制容器组件，仅支持类型为ARKUI_NODE_CUSTOM且无其他子节点的ArkUI_Node。绘制容器组件的宽和高不能为0，避免被无障碍辅助应用忽略或错误处理子节点树。
+> - 基于CustomNode的自定义绘制容器组件，仅支持类型为[ARKUI_NODE_CUSTOM](../reference/apis-arkui/capi-native-node-h.md#arkui_nodetype)且无其他子节点的[ArkUI_Node](../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md)。绘制容器组件的宽和高不能为0，避免被无障碍辅助应用忽略或错误处理子节点树。
 
-以下示例提供了对接无障碍能力的实现方法，仅包含主要步骤，完整示例请参考AccessibilityCustomCapi。回调函数实现请参考基于XComponent的自绘制接入方式。完成回调函数实现后，开启无障碍功能，基于CustomNode构建渲染节点树的三方框架即可接入无障碍服务，实现控件树的无障碍交互与信息查询。
+以下示例提供了对接无障碍能力的实现方法，仅包含主要步骤，完整示例请参考[AccessibilityCustomCapi](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/AccessibilityCustomCapi)。回调函数实现请参考[基于XComponent的自绘制接入方式](#基于xcomponent的自绘制接入方式)。完成回调函数实现后，开启无障碍功能，基于CustomNode构建渲染节点树的三方框架即可接入无障碍服务，实现控件树的无障碍交互与信息查询。
 
-1. 按照基于CustomNode构建渲染节点树场景创建前置工程。
+1. 按照[基于CustomNode构建渲染节点树](ndk-embed-render-components.md)场景创建前置工程。
 
 2. 获取无障碍接入Provider实例，将回调函数与Provider实例绑定并完成注册。
 
-    <!-- @abilitycap_nine_start -->
+    <!-- @[abilitycap_nine_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AccessibilityCustomCapi/entry/src/main/cpp/AccessibilityMaker.cpp) -->
     
     ``` C++
     int32_t AccessibilityMaker::GetAccessibilityProvider(ArkUI_NodeHandle* customNode, const char* id)
@@ -523,4 +523,4 @@ provider通过回调函数OH_ArkUI_AccessibilityProviderRegisterCallback或者OH
     }
     ```
 
-3. 三方框架需要实现回调函数。请参考前文的基于XComponent的自绘制接入方式。
+3. 三方框架需要实现回调函数。请参考前文的[基于XComponent的自绘制接入方式](#基于xcomponent的自绘制接入方式)。

@@ -17,7 +17,7 @@
 
 ## 接口说明
 
-以下是系统字体相关的常用接口和结构体，详细接口说明请参考Drawing。
+以下是系统字体相关的常用接口和结构体，详细接口说明请参考[Drawing](../reference/apis-arkgraphics2d/capi-drawing.md)。
 
 | 接口名 | 描述 | 
 | -------- | -------- |
@@ -51,9 +51,9 @@
    #include <hilog/log.h>
    ```
 
-3. 获取系统字体的配置信息，可以通过返回的状态码确定获取信息是否成功，状态码包含的具体情况和对应含义可见OH_Drawing_FontConfigInfoErrorCode。
+3. 获取系统字体的配置信息，可以通过返回的状态码确定获取信息是否成功，状态码包含的具体情况和对应含义可见[OH_Drawing_FontConfigInfoErrorCode](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_fontconfiginfoerrorcode)。
 
-   <!-- @custom_font_c_print_system_font_metrics_step1 -->
+   <!-- @[custom_font_c_print_system_font_metrics_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
    
    ``` C++
    OH_Drawing_FontConfigInfoErrorCode fontConfigInfoErrorCode;  // 用于接收错误代码
@@ -63,7 +63,7 @@
    }
    ```
 
-4. 系统字体的配置信息OH_Drawing_FontConfigInfo包含以下几类信息：
+4. 系统字体的配置信息[OH_Drawing_FontConfigInfo](../reference/apis-arkgraphics2d/capi-drawing-oh-drawing-fontconfiginfo.md)包含以下几类信息：
 
    - 系统字体文件路径数量。
 
@@ -73,13 +73,13 @@
 
    - 系统字体文件路径列表。
 
-   - 通用字体集列表，具体信息可见OH_Drawing_FontGenericInfo结构体。
+   - 通用字体集列表，具体信息可见[OH_Drawing_FontGenericInfo](../reference/apis-arkgraphics2d/capi-drawing-oh-drawing-fontgenericinfo.md)结构体。
 
-   - 备用字体集列表，具体信息可见OH_Drawing_FontFallbackGroup结构体。
+   - 备用字体集列表，具体信息可见[OH_Drawing_FontFallbackGroup](../reference/apis-arkgraphics2d/capi-drawing-oh-drawing-fontfallbackgroup.md)结构体。
 
    以下示例展示系统字体的一些具体配置信息的获取：
 
-   <!-- @custom_font_c_print_system_font_metrics_step2 -->
+   <!-- @[custom_font_c_print_system_font_metrics_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
    
    ``` C++
    // 获取系统字体配置信息示例
@@ -106,7 +106,7 @@
 
    以下打印的示例为应用设备系统对应的部分系统字体配置信息情况，不同设备系统配置信息可能不同，此处仅示意。
 
-   System-Font-Information
+   ![System-Font-Information](figures/System-Font-Information.png)
 
 5. 如若后续不再需要系统字体的系统配置信息时，则释放其占用的内存。
 
@@ -141,7 +141,7 @@
    >
    > 使用OH_Drawing_CreateFontCollection和OH_Drawing_CreateSharedFontCollection均可创建字体集OH_Drawing_FontCollection对象，但前者创建的字体集指针对象只能被一个段落生成器OH_Drawing_TypographyCreate对象使用，无法被多个段落生成器OH_Drawing_TypographyCreate对象共享使用。如需在多个段落生成器OH_Drawing_TypographyCreate对象间共享使用，请使用后者创建可共享的字体集对象。
 
-   <!-- @custom_font_c_create_shared_font_collection -->
+   <!-- @[custom_font_c_create_shared_font_collection](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
    
    ``` C++
    OH_Drawing_FontCollection *fontCollection = OH_Drawing_CreateSharedFontCollection();
@@ -149,14 +149,14 @@
 
 4. 创建一个文本样式对象，即OH_Drawing_TextStyle对象，用于设置文本样式。
 
-   <!-- @custom_font_c_create_text_style -->
+   <!-- @[custom_font_c_create_text_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
    
    ``` C++
    OH_Drawing_TextStyle *textStyle = OH_Drawing_CreateTextStyle();
    ```
 
-5. 获取系统字体信息，获取系统字体的字体家族名，并在文本样式中设置为该系统字体。
-   <!-- @custom_font_c_print_system_font_metrics_step3 -->
+5. [获取系统字体信息](#获取系统字体信息)，获取系统字体的字体家族名，并在文本样式中设置为该系统字体。
+   <!-- @[custom_font_c_print_system_font_metrics_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
    
    ``` C++
    // 情况一：设置系统字体为"HarmonyOS Sans Condensed"
@@ -170,7 +170,7 @@
 
 6. 生成最终段落文本，以便实现最终的文本绘制和显示。
 
-   <!-- @custom_font_c_print_system_font_metrics_step4 -->
+   <!-- @[custom_font_c_print_system_font_metrics_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
    
    ``` C++
    // 设置其他文本样式
@@ -206,7 +206,7 @@
 >
 > 禁用系统字体后，请确保注册使用自定义字体，否则文本将无法正常显示。
 
-1. 确保已成功注册自定义字体，用于保证禁用系统字体后文本的正常显示，具体可见自定义字体的注册和使用。
+1. 确保已成功注册自定义字体，用于保证禁用系统字体后文本的正常显示，具体可见[自定义字体的注册和使用](custom-font-c.md)。
 
 2. 在工程的`src/main/cpp/CMakeLists.txt`文件中添加以下lib。
    ```c++
@@ -224,7 +224,7 @@
 
 4. 创建字体集对象，建议优先使用OH_Drawing_CreateSharedFontCollection创建可共享的字体集对象。
 
-   <!-- @custom_font_c_disable_system_font_text_step_create -->
+   <!-- @[custom_font_c_disable_system_font_text_step_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
    
    ``` C++
    OH_Drawing_FontCollection *fontCollection = OH_Drawing_CreateSharedFontCollection();
@@ -232,7 +232,7 @@
 
 5. 禁用系统字体。
 
-   <!-- @custom_font_c_disable_system_font_text -->
+   <!-- @[custom_font_c_disable_system_font_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
    
    ``` C++
    OH_Drawing_DisableFontCollectionSystemFont(fontCollection);
@@ -244,7 +244,7 @@
    >
    > 若不设置字体，文本会默认使用系统字体，而系统字体禁用后若不设置使用自定义字体，文本将无法正常显示。
 
-   <!-- @custom_font_c_disable_system_font_text_step1 -->
+   <!-- @[custom_font_c_disable_system_font_text_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
    
    ``` C++
    OH_Drawing_TextStyle *textStyle = OH_Drawing_CreateTextStyle();
@@ -264,7 +264,7 @@
 
 7. 生成最终的段落文本，以便实现最终的文本绘制和显示。
 
-   <!-- @custom_font_c_disable_system_font_text_step2 -->
+   <!-- @[custom_font_c_disable_system_font_text_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) -->
    
    ``` C++
    // 设置其他文本样式

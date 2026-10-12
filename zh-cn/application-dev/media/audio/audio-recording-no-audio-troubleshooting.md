@@ -21,7 +21,7 @@
 
 **1. 启动前提不满足**
 
-   录音启动前需要先完成权限申请、参数配置和录音实例创建。如果权限未授权、参数不符合业务场景，或实例创建失败，后续启动录音或接收数据回调都会受到影响。基础录音流程可参考使用AudioCapturer开发音频录制功能(ArkTS)。
+   录音启动前需要先完成权限申请、参数配置和录音实例创建。如果权限未授权、参数不符合业务场景，或实例创建失败，后续启动录音或接收数据回调都会受到影响。基础录音流程可参考[使用AudioCapturer开发音频录制功能(ArkTS)](using-audiocapturer-for-recording.md)。
 
 **2. 录音已经启动，但内容被静音或路由影响**
 
@@ -29,7 +29,7 @@
 
 **3. 录音参数与业务场景不匹配**
 
-   `SourceType`会影响录音通路、算法处理、并发打断策略以及输入设备选择。错误的`SourceType`可能导致“有数据但近似无声”的现象，或者录到的数据和业务预期完全不一致。比如普通麦克风录音误用了`SOURCE_TYPE_VOICE_COMMUNICATION`，或者原始采集场景没有按业务选对音源类型。相关说明可参考选择合适的录制流类型。
+   `SourceType`会影响录音通路、算法处理、并发打断策略以及输入设备选择。错误的`SourceType`可能导致“有数据但近似无声”的现象，或者录到的数据和业务预期完全不一致。比如普通麦克风录音误用了`SOURCE_TYPE_VOICE_COMMUNICATION`，或者原始采集场景没有按业务选对音源类型。相关说明可参考[选择合适的录制流类型](using-right-sourcetype-for-recording.md)。
 
 **4. 运行状态和回调未按预期变化**
 
@@ -45,7 +45,7 @@
 
    检查项如下：
 
-   - 权限：确认应用已声明并申请`ohos.permission.MICROPHONE`权限。权限声明可参考声明权限，动态授权可参考向用户申请授权。
+   - 权限：确认应用已声明并申请`ohos.permission.MICROPHONE`权限。权限声明可参考[声明权限](../../security/AccessToken/declare-permissions.md)，动态授权可参考[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
    - 参数配置：确认采样率、声道数、采样格式、编码格式和`SourceType`符合业务场景。
    - 创建结果：确认`createAudioCapturer`已成功返回录音实例。如果创建失败，先根据错误码和日志排查权限、参数配置和并发场景。
 
@@ -70,7 +70,7 @@
 
    创建流程可参考AudioCaptureSampleJS页面代码中的`create_AudioCapturer`。
 
-   <!-- @create_AudioCapturer -->  
+   <!-- @[create_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->  
    
    ``` TypeScript
    import { audio } from '@kit.AudioKit';
@@ -116,11 +116,11 @@
    - 当前状态：读取`audioCapturer.state`，或注册`stateChange`事件确认状态变化。
    - 状态变化：如果状态没有进入`STATE_RUNNING`，打印当前状态，并检查`start`前实例状态是否为`STATE_PREPARED`、`STATE_PAUSED`或`STATE_STOPPED`。
    - 提前释放：确认没有其他业务提前调用`stop`、`pause`或`release`。
-   - OHAudio回调：使用OHAudio开发录音功能时，确认已按C/C++接口要求注册状态回调，并确认启动后状态进入运行态。相关接口可参考使用OHAudio开发音频录制功能(C/C++)。
+   - OHAudio回调：使用OHAudio开发录音功能时，确认已按C/C++接口要求注册状态回调，并确认启动后状态进入运行态。相关接口可参考[使用OHAudio开发音频录制功能(C/C++)](using-ohaudio-for-recording.md)。
 
    状态查询和状态监听可参考AudioCaptureSampleJS页面代码中的`view_AudioCapturerState`和`listen_AudioCapturerState`。
 
-   <!-- @view_AudioCapturerState -->  
+   <!-- @[view_AudioCapturerState](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->  
    
    ``` TypeScript
    let audioCapturerState: audio.AudioState = audioCapturer.state;
@@ -137,11 +137,11 @@
    - 运行状态：确认录音实例已进入`STATE_RUNNING`。
    - 对象生命周期：如果回调已经注册但仍无数据，确认录音对象没有被页面生命周期、路由切换或业务清理逻辑提前释放。
    - 回调耗时：确认没有在`readData`回调中执行上传、转码、大文件写入合并等耗时任务，避免阻塞读数据线程。
-   - OHAudio回调：使用OHAudio开发录音功能时，确认已按C/C++接口要求设置音频数据读取回调。具体流程可参考使用OHAudio开发音频录制功能(C/C++)。
+   - OHAudio回调：使用OHAudio开发录音功能时，确认已按C/C++接口要求设置音频数据读取回调。具体流程可参考[使用OHAudio开发音频录制功能(C/C++)](using-ohaudio-for-recording.md)。
 
    回调注册可参考AudioCaptureSampleJS页面代码中的`listen_AudioCapturer`。
 
-   <!-- @listen_AudioCapturer -->   
+   <!-- @[listen_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->   
    
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -209,7 +209,7 @@
 
    检查项如下：
 
-   - `SourceType`：确认`SourceType`与业务场景匹配。普通录音通常使用`SOURCE_TYPE_MIC`，VoIP通话场景使用`SOURCE_TYPE_VOICE_COMMUNICATION`，直播场景使用`SOURCE_TYPE_LIVE`，原始数据采集场景使用`SOURCE_TYPE_UNPROCESSED`。更多说明可参考选择合适的录制流类型。
+   - `SourceType`：确认`SourceType`与业务场景匹配。普通录音通常使用`SOURCE_TYPE_MIC`，VoIP通话场景使用`SOURCE_TYPE_VOICE_COMMUNICATION`，直播场景使用`SOURCE_TYPE_LIVE`，原始数据采集场景使用`SOURCE_TYPE_UNPROCESSED`。更多说明可参考[选择合适的录制流类型](using-right-sourcetype-for-recording.md)。
    - 静音打断策略：确认应用是否调用了`setWillMuteWhenInterrupted`。
    - 音频会话策略：确认是否配置了音频会话策略并将行为设置为`MUTE_WHEN_INTERRUPTED`。
    - 并发时间点：确认无声开始时间点是否与来电、VoIP、语音播报或其他录音任务启动重合；如果怀疑录音流被静音或被并发策略影响，可通过录音流变化信息确认当前录音流和输入设备。
@@ -221,14 +221,14 @@
    检查项如下：
 
    - 当前输入设备：确认当前活跃输入设备是否为预期设备。
-   - 设备切换：确认录音开始前后是否发生蓝牙耳机、有线耳机或USB声卡等输入设备切换。输入设备查询和监听可参考查询和监听音频输入设备。
-   - 路由切换：如果应用需要指定输入设备或处理设备切换，可参考实现音频输入设备路由切换。
-   - 其他录音流：确认当前设备上是否存在其他录音任务。可参考查询和监听其他应用录制状态确认是否存在其他录音流。
-   - 并发策略：如果业务与VoIP通话、系统来电、语音识别、转写、耳返、直播等场景并发，可参考录音并发策略说明确认系统策略。
+   - 设备切换：确认录音开始前后是否发生蓝牙耳机、有线耳机或USB声卡等输入设备切换。输入设备查询和监听可参考[查询和监听音频输入设备](audio-input-device-management.md)。
+   - 路由切换：如果应用需要指定输入设备或处理设备切换，可参考[实现音频输入设备路由切换](audio-input-device-switcher.md)。
+   - 其他录音流：确认当前设备上是否存在其他录音任务。可参考[查询和监听其他应用录制状态](audio-recording-stream-management.md)确认是否存在其他录音流。
+   - 并发策略：如果业务与VoIP通话、系统来电、语音识别、转写、耳返、直播等场景并发，可参考[录音并发策略说明](audio-recording-concurrency.md)确认系统策略。
 
    如果无声与通话、其他录音任务、蓝牙耳机、有线耳机或USB声卡有关，可通过录音流变化和输入设备信息确认当前录音流、`SourceType`和输入设备是否符合预期。
 
-   <!-- @audioStreamManager_on -->  
+   <!-- @[audioStreamManager_on](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioStreamManager.ets) -->  
    
    ``` TypeScript
    audioStreamManager.on('audioCapturerChange', (audioCapturerChangeInfoArray: audio.AudioCapturerChangeInfoArray) =>  {
@@ -261,6 +261,6 @@
 
 ## 相关文档参考
 
-- 如果问题与普通录音、VoIP、直播或原始数据采集场景有关，优先参考选择合适的录制流类型。
-- 如果问题与其他录音任务、通话或音频会话策略并发有关，优先参考录音并发策略说明和查询和监听其他应用录制状态。
-- 如果问题与蓝牙耳机、有线耳机、USB声卡等输入设备切换有关，优先参考查询和监听音频输入设备和实现音频输入设备路由切换。
+- 如果问题与普通录音、VoIP、直播或原始数据采集场景有关，优先参考[选择合适的录制流类型](using-right-sourcetype-for-recording.md)。
+- 如果问题与其他录音任务、通话或音频会话策略并发有关，优先参考[录音并发策略说明](audio-recording-concurrency.md)和[查询和监听其他应用录制状态](audio-recording-stream-management.md)。
+- 如果问题与蓝牙耳机、有线耳机、USB声卡等输入设备切换有关，优先参考[查询和监听音频输入设备](audio-input-device-management.md)和[实现音频输入设备路由切换](audio-input-device-switcher.md)。

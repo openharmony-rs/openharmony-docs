@@ -28,11 +28,11 @@ debug选项皆为JSVM_DebugOption类型。
  
 ## 使用示例
 
-JSVM-API接口开发流程参考使用JSVM-API实现JS与C/C++语言交互开发流程，本文仅对接口对应C++相关代码进行展示。
+JSVM-API接口开发流程参考[使用JSVM-API实现JS与C/C++语言交互开发流程](use-jsvm-process.md)，本文仅对接口对应C++相关代码进行展示。
 
 ### JSVM_DebugOption
 
-仅需替换使用JSVM-API实现JS与C/C++语言交互开发流程示例代码中的“TestJSVM()”函数即可运行。
+仅需替换[使用JSVM-API实现JS与C/C++语言交互开发流程](use-jsvm-process.md)示例代码中的“TestJSVM()”函数即可运行。
 
 - 在正确的HandleScope内调用JSVM_Value类型变量。
 ```cpp

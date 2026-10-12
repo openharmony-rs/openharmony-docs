@@ -27,9 +27,9 @@ Reason:Signal:SIGSEGV(SEGV_ACCERR)@0x0000005c5f09a280
 
 **可能原因**
 
-应用通过OH_NativeXComponent_RegisterCallback接口注册的OH_NativeXComponent_Callback回调函数对象以裸指针形式保存在`XComponentPattern`对象中。这些回调的生命周期由应用控制。如果应用提前销毁了`OH_NativeXComponent_Callback`回调函数对象，将导致裸指针指向非法内存，引发Use-After-Free问题。
+应用通过[OH_NativeXComponent_RegisterCallback](../reference/apis-arkui/capi-native-interface-xcomponent-h.md#oh_nativexcomponent_registercallback)接口注册的[OH_NativeXComponent_Callback](../reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-callback.md)回调函数对象以裸指针形式保存在`XComponentPattern`对象中。这些回调的生命周期由应用控制。如果应用提前销毁了`OH_NativeXComponent_Callback`回调函数对象，将导致裸指针指向非法内存，引发Use-After-Free问题。
 
-OH_NativeXComponent_Callback
+![OH_NativeXComponent_Callback](figures/OH_NativeXComponent_Callback.png)
 
 **解决措施**
 
@@ -37,7 +37,7 @@ OH_NativeXComponent_Callback
 
 **参考链接**
 
-相关接口详见OH_NativeXComponent Native XComponent。
+相关接口详见[OH_NativeXComponent Native XComponent](../reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent.md)。
 
 
 ## OH_NativeXComponent对象被提前释放
@@ -64,7 +64,7 @@ OH_NativeXComponent_Callback
 
 **参考链接**
 
-相关接口详见OH_NativeXComponent Native XComponent。
+相关接口详见[OH_NativeXComponent Native XComponent](../reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent.md)。
 
 
 ## @Consume缺少匹配的@Provide
@@ -73,13 +73,13 @@ OH_NativeXComponent_Callback
 
 应用闪退并生成如下jscrash崩溃栈：
 
-initializeConsumeMissingCrashLog
+![initializeConsumeMissingCrashLog](figures/initializeConsumeMissingCrashLog.png)
 
 **可能原因**
 
 报错发生在`@Consume`初始化阶段，原因是`@Consume`初始化时仅通过key匹配对应的`@Provide`变量。如果未找到对应的`@Provide`，就会出现报错（missing @Provide）。
 
-initializeConsumeMissingCause
+![initializeConsumeMissingCause](figures/initializeConsumeMissingCause.png)
 
 **解决措施**
 
@@ -87,7 +87,7 @@ initializeConsumeMissingCause
 
 **参考链接**
 
-跨组件层级双向同步。
+[跨组件层级双向同步](state-management/arkts-new-provider-and-consumer.md)。
 
 
 ## @Link数据源类型错误
@@ -96,17 +96,17 @@ initializeConsumeMissingCause
 
 应用闪退并生成如下jscrash崩溃栈：
 
-SynchedPropertyTwoWayPUCrashLog
+![SynchedPropertyTwoWayPUCrashLog](figures/SynchedPropertyTwoWayPUCrashLog.png)
 
 从API version 23开始，添加对`@Link`数据源错误的校验，运行时错误变为编译期报错：
 
-LinkSourceDataError
+![LinkSourceDataError](figures/LinkSourceDataError.png)
 
 **可能原因**
 
 报错发生在`@Link`初始化阶段，原因是`@Link`初始化时会注册到父组件并调用父组件的`addSubscriber`方法。如果此时数据源的类型与`@Link`不完全一致，或者使用常量初始化`@Link`，会导致该方法无法调用，从而引发“is not callable”错误。
 
-SynchedPropertyTwoWayPUCause
+![SynchedPropertyTwoWayPUCause](figures/SynchedPropertyTwoWayPUCause.png)
 
 **解决措施**
 
@@ -114,7 +114,7 @@ SynchedPropertyTwoWayPUCause
 
 **参考链接**
 
-父子双向同步。
+[父子双向同步](state-management/arkts-link.md)。
 
 
 ## @Provide缺少重写声明
@@ -123,13 +123,13 @@ SynchedPropertyTwoWayPUCause
 
 应用闪退并生成如下jscrash崩溃栈：
 
-addProvidedVarDuplicateCrashLog
+![addProvidedVarDuplicateCrashLog](figures/addProvidedVarDuplicateCrashLog.png)
 
 **可能原因**
 
 报错发生在`@Provide`初始化阶段，原因是`@Provide`重写需要声明`allowOverride`。声明后，别名和属性名都可以被覆盖。如果未声明且存在重复的别名或属性名，将导致错误（duplicate @Provide property with name xxxxx）。
 
-addProvidedVarDuplicateCause
+![addProvidedVarDuplicateCause](figures/addProvidedVarDuplicateCause.png)
 
 **解决措施**
 
@@ -137,4 +137,4 @@ addProvidedVarDuplicateCause
 
 **参考链接**
 
-跨组件层级双向同步。
+[跨组件层级双向同步](state-management/arkts-new-provider-and-consumer.md)。

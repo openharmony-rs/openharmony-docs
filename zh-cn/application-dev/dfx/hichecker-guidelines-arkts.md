@@ -29,7 +29,7 @@ HiChecker可以作为应用开发阶段使用的检测能力，用于检测代�
 
 ## 接口说明
 
-检测模式接口由HiChecker模块提供，详细API请参考@ohos.hichecker。
+检测模式接口由HiChecker模块提供，详细API请参考[@ohos.hichecker](../reference/apis-performance-analysis-kit/js-apis-hichecker.md)。
 
 | 接口名 | 描述 |
 | -------- | -------- |
@@ -45,7 +45,7 @@ HiChecker可以作为应用开发阶段使用的检测能力，用于检测代�
 开发者如果期望检测耗时函数调用，并期望检测到时通过打印日志来记录，可参考如下步骤进行开发。
 
 1. 新建一个ArkTS应用工程，在“Project”窗口点击“entry > src > main > ets > entryability ”，打开工程中的“EntryAbility.ets”文件；在页面执行加载后，在自己的业务中调用HiChecker的接口，添加检测规则， 示例代码如下：
-   <!-- @HiChecker -->
+   <!-- @[HiChecker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/PerformanceAnalysisTool/entry/src/main/ets/entryability/EntryAbility.ets) -->
    
    ``` TypeScript
    import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -55,7 +55,7 @@ HiChecker可以作为应用开发阶段使用的检测能力，用于检测代�
    
    export default class EntryAbility extends UIAbility {
      onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        // 添加检测规则，规则意义见检测模式API参考
+       // 添加检测规则，规则意义见检测模式API参考
        hichecker.addCheckRule(hichecker.RULE_CAUTION_PRINT_LOG|hichecker.RULE_THREAD_CHECK_SLOW_PROCESS);
        let filePath: string = this.context.filesDir + '/test.JPG';
        const imageSourceObj: image.ImageSource = image.createImageSource(filePath);

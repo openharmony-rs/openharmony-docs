@@ -11,15 +11,15 @@
 
 ## 注册CryptoExtensionAbility
 
-密钥管理扩展应用检测到密钥管理设备或服务可用时，向系统注册CryptoExtensionAbility。具体的可用性检测方式因接入的设备/服务形态而异，例如UKey物理设备监听USB插拔事件。详细规格见接入能力。
+密钥管理扩展应用检测到密钥管理设备或服务可用时，向系统注册CryptoExtensionAbility。具体的可用性检测方式因接入的设备/服务形态而异，例如UKey物理设备监听USB插拔事件。详细规格见[接入能力](huks-extension-ability-support-overview.md#接入能力)。
 
 ### 开发步骤
 
 **ArkTS接口**
 
-1. 构造注册参数，包含HUKS_EXT_CRYPTO_TAG_ABILITY_NAME字段，值为Ability名称的UTF-8字节流，长度为1-128字节。
+1. 构造注册参数，包含[HUKS_EXT_CRYPTO_TAG_ABILITY_NAME](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)字段，值为Ability名称的UTF-8字节流，长度为1-128字节。
 
-2. 调用registerProvider接口，需捕获BusinessError处理失败。
+2. 调用[registerProvider](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptoregisterprovider)接口，需捕获BusinessError处理失败。
 
 **C++接口**
 
@@ -29,9 +29,9 @@
    target_link_libraries(entry PUBLIC libhuks_ndk.z.so libhuks_external_crypto.z.so)
    ```
 
-2. 构造注册参数，需要传入OH_HUKS_EXT_CRYPTO_TAG_ABILITY_NAME。
+2. 构造注册参数，需要传入[OH_HUKS_EXT_CRYPTO_TAG_ABILITY_NAME](../../reference/apis-universal-keystore-kit/capi-native-huks-external-crypto-type-h.md#oh_huks_externalcryptotag)。
 
-3. 调用注册接口OH_Huks_RegisterProvider。
+3. 调用注册接口[OH_Huks_RegisterProvider](../../reference/apis-universal-keystore-kit/capi-native-huks-external-crypto-api-h.md#oh_huks_registerprovider)。
 
 ### 开发示例
 
@@ -149,15 +149,15 @@ static napi_value RegisterProvider(napi_env env, napi_callback_info info)
 
 ## 注册CryptoExtensionAbility及UIExtensionAbility
 
-从API版本26.0.0开始，支持同步注册UIExtensionAbility到系统中，仅在ArkTS接口下支持。详细规格见接入能力。
+从API版本26.0.0开始，支持同步注册UIExtensionAbility到系统中，仅在ArkTS接口下支持。详细规格见[接入能力](huks-extension-ability-support-overview.md#接入能力)。
 
 ### 开发步骤
 
-1. 构造注册参数，包含HUKS_EXT_CRYPTO_TAG_ABILITY_NAME字段，值为Ability名称的UTF-8字节流。
+1. 构造注册参数，包含[HUKS_EXT_CRYPTO_TAG_ABILITY_NAME](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)字段，值为Ability名称的UTF-8字节流。
 
-2. 构造UIExtensionAbility注册参数，包含HUKS_EXT_CRYPTO_TAG_ABILITY_INFO字段。
+2. 构造UIExtensionAbility注册参数，包含[HUKS_EXT_CRYPTO_TAG_ABILITY_INFO](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)字段。
 
-3. 调用registerProvider接口，需捕获BusinessError处理失败。
+3. 调用[registerProvider](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptoregisterprovider)接口，需捕获BusinessError处理失败。
 
 ### 开发示例
 
@@ -172,45 +172,33 @@ function stringToUint8Array(str: string): Uint8Array {
 }
 
 // 自定义PIN弹窗UIExtensionAbility列表
-const abilityInfoList: Array<{ abilityName: string; index: string }> = [
+interface AbilityInfo {
+  abilityName: string;
+  index: string;
+}
+
+const abilityInfoList: AbilityInfo[] = [
   { abilityName: 'UiAbility1', index: '' },
   { abilityName: 'UiAbility2', index: 'string2' },
 ];
 
 // 注册Provider并注册自定义PIN弹窗UIExtensionAbility
 async function registerProvider(): Promise<void> {
-  try {
-    /* 1.构造注册参数ability name */
-    const providerName = "testProvider";
-    /* 2.构造ability info */
-    const abilityInfo = '[' +
-       '{"abilityName":"UiAbility1","index":""},' +
-       '{"abilityName":"UiAbility2","index":"string2"}]';
-    const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
-      {
-        tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_ABILITY_NAME,
-        value: StringToUint8Array("CryptoExtension")
-      }, {
-        tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_ABILITY_INFO,
-        value: StringToUint8Array(abilityInfo)
-      }
-    ];
-
+  const providerName = "testProvider";
   const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
     {
       tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_ABILITY_NAME,
-      value: stringToUint8Array(abilityName),
-    },
+      value: stringToUint8Array("CryptoExtension")
+    }
   ];
 
   // API版本26.0.0开始，支持自定义PIN弹窗注册
   if (deviceInfo.sdkApiVersion >= 26) {
     extProperties.push({
-       tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_ABILITY_INFO,
-       value: stringToUint8Array(JSON.stringify(abilityInfoList)),
+      tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_ABILITY_INFO,
+      value: stringToUint8Array(JSON.stringify(abilityInfoList)),
     });
   }
-
   try {
     await huksExternalCrypto.registerProvider(providerName, extProperties);
     console.info('promise: registerProvider success.');
@@ -227,15 +215,15 @@ async function testRegisterProvider(): Promise<void> {
 
 ## 注销CryptoExtensionAbility
 
-密钥管理扩展应用检测到密钥管理设备或服务不可用时，从系统注销CryptoExtensionAbility。具体的可用性检测方式因接入的设备/服务形态而异，例如UKey物理设备监听USB插拔事件、数字盾（虚拟智能卡）在应用退出时检测。详细规格见接入能力。
+密钥管理扩展应用检测到密钥管理设备或服务不可用时，从系统注销CryptoExtensionAbility。具体的可用性检测方式因接入的设备/服务形态而异，例如UKey物理设备监听USB插拔事件、数字盾（虚拟智能卡）在应用退出时检测。详细规格见[接入能力](huks-extension-ability-support-overview.md#接入能力)。
 
 ### 开发步骤
 
 **ArkTS接口**
 
-1. 构造注销参数，注销单个ability需要传入HUKS_EXT_CRYPTO_TAG_ABILITY_NAME参数。批量注销不需要传入HUKS_EXT_CRYPTO_TAG_ABILITY_NAME参数。
+1. 构造注销参数，注销单个ability需要传入[HUKS_EXT_CRYPTO_TAG_ABILITY_NAME](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)参数。批量注销不需要传入[HUKS_EXT_CRYPTO_TAG_ABILITY_NAME](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptotag)参数。
 
-2. 调用注销接口unregisterProvider。
+2. 调用注销接口[unregisterProvider](../../reference/apis-universal-keystore-kit/js-apis-huksExternalCrypto.md#huksexternalcryptounregisterprovider)。
 
 **C++接口**
 
@@ -244,9 +232,9 @@ async function testRegisterProvider(): Promise<void> {
    target_link_libraries(entry PUBLIC libhuks_ndk.z.so libhuks_external_crypto.z.so)
    ```
 
-2. 构造注销参数，注销单个ability需要传入OH_HUKS_EXT_CRYPTO_TAG_ABILITY_NAME。批量注销不需要传入OH_HUKS_EXT_CRYPTO_TAG_ABILITY_NAME。
+2. 构造注销参数，注销单个ability需要传入[OH_HUKS_EXT_CRYPTO_TAG_ABILITY_NAME](../../reference/apis-universal-keystore-kit/capi-native-huks-external-crypto-type-h.md#oh_huks_externalcryptotag)。批量注销不需要传入[OH_HUKS_EXT_CRYPTO_TAG_ABILITY_NAME](../../reference/apis-universal-keystore-kit/capi-native-huks-external-crypto-type-h.md#oh_huks_externalcryptotag)。
 
-3. 调用注销接口OH_Huks_UnregisterProvider。
+3. 调用注销接口[OH_Huks_UnregisterProvider](../../reference/apis-universal-keystore-kit/capi-native-huks-external-crypto-api-h.md#oh_huks_unregisterprovider)。
 
 ### 开发示例
 
@@ -295,12 +283,6 @@ async function testUnregisterProvider(): Promise<void> {
 ```ts
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { util } from '@kit.ArkTS';
-
-// 字符串 → UTF-8字节流
-function stringToUint8Array(str: string): Uint8Array {
-  return new util.TextEncoder().encodeInto(str);
-}
 
 // 批量注销：注销providerName下的所有CryptoExtensionAbility
 async function unregisterProvider(): Promise<void> {

@@ -6,17 +6,17 @@
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @w_Machine_cc-->
 
-图片处理指对PixelMap进行相关的操作，如获取图片信息、裁剪、缩放、偏移、旋转、翻转、设置透明度、读写像素数据等。图片处理主要包括图像变换、位图操作，本文介绍图像变换。
+图片处理指对PixelMap进行相关的操作，如获取图片信息、裁剪、缩放、偏移、旋转、翻转、设置透明度、读写像素数据等。图片处理主要包括图像变换、[位图操作](image-pixelmap-operation.md)，本文介绍图像变换。
 
 ## 开发步骤
 
-图像变换相关API的详细介绍请参见Interface (PixelMap)。
+图像变换相关API的详细介绍请参见[Interface (PixelMap)](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)。
 
-1. 完成图片解码，获取PixelMap对象。
+1. 完成[图片解码](image-decoding.md)，获取PixelMap对象。
 
 2. 获取图片信息。
 
-   <!-- @pixelmap_get_image_info -->
+   <!-- @[pixelmap_get_image_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/PixelMap/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    // 获取图片大小。
@@ -33,11 +33,11 @@
 
    原图：
 
-   Original drawing
+   ![Original drawing](figures/original-drawing.jpeg)
 
    - 裁剪
 
-     <!-- @pixelmap_crop_image -->
+     <!-- @[pixelmap_crop_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/PixelMap/entry/src/main/ets/pages/Index.ets) -->
      
      ``` TypeScript
      const imageInfo = this.pixelMap.getImageInfoSync();
@@ -52,11 +52,11 @@
      });
      ```
 
-     cropping
+     ![cropping](figures/cropping.jpeg)
 
    - 缩放
 
-     <!-- @pixelmap_scale_image -->
+     <!-- @[pixelmap_scale_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/PixelMap/entry/src/main/ets/pages/Index.ets) -->
      
      ``` TypeScript
      // 宽为原来的0.5倍。
@@ -66,11 +66,11 @@
      });
      ```
 
-     zoom
+     ![zoom](figures/zoom.jpeg)
 
    - 平移
 
-     <!-- @pixelmap_translate_image -->
+     <!-- @[pixelmap_translate_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/PixelMap/entry/src/main/ets/pages/Index.ets) -->
      
      ``` TypeScript
      // 向下平移100。
@@ -80,11 +80,11 @@
      });
      ```
 
-     offsets
+     ![offsets](figures/offsets.jpeg)
 
    - 旋转
 
-     <!-- @pixelmap_rotate_image -->
+     <!-- @[pixelmap_rotate_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/PixelMap/entry/src/main/ets/pages/Index.ets) -->
      
      ``` TypeScript
      // 顺时针旋转90°。
@@ -93,11 +93,11 @@
      });
      ```
 
-     rotate
+     ![rotate](figures/rotate.jpeg)
 
    - 翻转
 
-     <!-- @pixelmap_vertical_flip_image -->
+     <!-- @[pixelmap_vertical_flip_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/PixelMap/entry/src/main/ets/pages/Index.ets) -->
      
      ``` TypeScript
      // 垂直翻转。
@@ -106,9 +106,9 @@
      });
      ```
 
-     Vertical Flip
+     ![Vertical Flip](figures/vertical-flip.jpeg)
 
-     <!-- @pixelmap_horizontal_flip_image -->
+     <!-- @[pixelmap_horizontal_flip_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/PixelMap/entry/src/main/ets/pages/Index.ets) -->
      
      ``` TypeScript
      // 水平翻转。
@@ -117,11 +117,11 @@
      });
      ```
 
-     Horizontal Flip
+     ![Horizontal Flip](figures/horizontal-flip.jpeg)
 
    - 透明度
 
-     <!-- @pixelmap_change_opacity_image -->
+     <!-- @[pixelmap_change_opacity_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/PixelMap/entry/src/main/ets/pages/Index.ets) -->
      
      ``` TypeScript
      // 将所有像素的透明度改为0.5。
@@ -130,7 +130,7 @@
      });
      ```
 
-     Transparency
+     ![Transparency](figures/transparency.png)
 
 <!--RP1-->
 <!--RP1End-->

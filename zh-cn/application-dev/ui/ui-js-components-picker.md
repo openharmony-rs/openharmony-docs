@@ -6,7 +6,7 @@
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
-picker是滑动选择器组件，类型支持普通选择器、日期选择器、时间选择器、时间日期选择器和多列文本选择器。具体用法请参考picker。
+picker是滑动选择器组件，类型支持普通选择器、日期选择器、时间选择器、时间日期选择器和多列文本选择器。具体用法请参考[picker](../reference/apis-arkui/arkui-js/js-components-basic-picker.md)。
 
 
 ## 创建picker组件
@@ -32,7 +32,7 @@ picker是滑动选择器组件，类型支持普通选择器、日期选择器�
 }
 ```
 
-picker-Component
+![picker-Component](figures/picker-Component.gif)
 
 
 ## 设置picker类型
@@ -73,7 +73,7 @@ export default {
 }
 ```
 
-picker
+![picker](figures/picker.gif)
 
 > **说明：**
 >
@@ -109,7 +109,7 @@ picker组件的hours属性用于设置时间显示格式，支持12小时制和2
 }
 ```
 
-Time-Display-Format
+![Time-Display-Format](figures/Time-Display-Format.gif)
 
 > **说明：**
 > - hours属性为12：按照12小时制显示，用上午和下午进行区分。
@@ -167,7 +167,7 @@ export default {
 }
 ```
 
-Response-Events-1
+![Response-Events-1](figures/Response-Events-1.gif)
 
 
 ## 场景示例
@@ -300,4 +300,4 @@ export default {
 ```
 
 
-picker-1
+![picker-1](figures/picker-1.gif)

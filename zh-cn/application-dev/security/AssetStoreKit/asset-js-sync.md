@@ -12,7 +12,7 @@
 新增密码demo_pwd（别名demo_alias），附属信息为demo_label，支持同步的关键资产。
 
 1. 引用头文件，定义工具函数。
-   <!-- @import -->
+   <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/add_sync.ets) -->
    
    ``` TypeScript
    import { asset } from '@kit.AssetStoreKit';
@@ -26,7 +26,7 @@
    ```
 
 2. 参考如下示例代码，进行业务功能开发。
-   <!-- @add_sync_asset -->
+   <!-- @[add_sync_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/add_sync.ets) -->
    
    ``` TypeScript
    let attr: asset.AssetMap = new Map();
@@ -52,13 +52,13 @@
 
 ## 接入备份恢复扩展能力
 
-为触发应用数据备份恢复，需要应用接入数据备份恢复。
+为触发应用数据备份恢复，需要[应用接入数据备份恢复](../../file-management/app-file-backup-extension.md)。
 
 ## 查询关键资产同步结果
 
 ### 接口介绍
 
-通过API文档查看查询关键资产同步结果接口asset.querySyncResult。
+通过API文档查看查询关键资产同步结果接口[asset.querySyncResult](../../reference/apis-asset-store-kit/js-apis-asset.md#assetquerysyncresult20)。
 
 在查询关键资产同步结果时，关键资产属性的内容（AssetMap）参数如下表所示。
 
@@ -70,7 +70,7 @@
 ### 代码示例
 
 1. 引用头文件，定义工具函数。
-   <!-- @import -->
+   <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_sync_result.ets) -->
    
    ``` TypeScript
    import { asset } from '@kit.AssetStoreKit';
@@ -78,7 +78,7 @@
    ```
 
 2. 参考如下示例代码，进行业务功能开发。
-   <!-- @query_sync_result -->
+   <!-- @[query_sync_result](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_sync_result.ets) -->
    
    ``` TypeScript
    let query: asset.AssetMap = new Map();

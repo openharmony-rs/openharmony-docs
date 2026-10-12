@@ -25,23 +25,23 @@ ArkWeb拖拽不同于ArkUI的组件级拖拽，主要针对网页内容的拖拽
 
 | 监听方法    | 说明                                                  |
 | ----------- | ----------------------------------------------------- |
-| onDragStart  | 不建议使用此方法，否则会影响Web组件的拖拽行为，造成拖拽逻辑不符合预期，如无法触发H5拖拽事件监听，预览图无法创建或预览图错误，拖拽数据无法预置等。|
-|  onDragEnter | 拖拽的元素进入Web区域。 |
-| onDragMove  | 拖拽的元素在Web区域移动。  |
-| onDragLeave | 拖拽的元素离开Web区域。          |
-| onDrop | 拖拽的元素落入Web区域。        |
-| onDragEnd | 由Web发起的拖拽元素结束拖拽。         |
+| [onDragStart](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragstart)  | 不建议使用此方法，否则会影响Web组件的拖拽行为，造成拖拽逻辑不符合预期，如无法触发H5拖拽事件监听，预览图无法创建或预览图错误，拖拽数据无法预置等。|
+|  [onDragEnter](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragenter) | 拖拽的元素进入Web区域。 |
+| [onDragMove](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragmove)  | 拖拽的元素在Web区域移动。  |
+| [onDragLeave](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragleave) | 拖拽的元素离开Web区域。          |
+| [onDrop](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondrop15) | 拖拽的元素落入Web区域。        |
+| [onDragEnd](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragend10) | 由Web发起的拖拽元素结束拖拽。         |
 
 ## 在ArkTS侧实现拖拽相关逻辑
 
 在多数情况下，应用在H5端实现的拖拽功能能够满足需求。如有需要，请参考以下案例，实现在ArkTS端进行拖拽数据读取等操作。
-1. 建立应用侧与前端页面数据通道。
+1. [建立应用侧与前端页面数据通道](web-app-page-data-channel.md)。
 2. 在onDrop方法中，做简单逻辑，例如暂存一些关键数据。
 3. 在ArkTS侧接收消息的方法中，添加应用处理逻辑，可以进行耗时任务。
 
 由于ArkTS侧的onDrop方法会早于H5中放置事件的处理方法（H5示例中的droppable.addEventListener('drop')）执行，若在onDrop方法中进行页面跳转等操作，将导致H5中的drop方法无法正确执行，产生不符合预期的结果。因此，应建立双向通信机制，在H5中的drop方法执行完毕后，通知ArkTS侧执行相应的业务逻辑，以确保业务逻辑的预期执行。
 
-<!-- @DragArkTSPage --> 
+<!-- @[DragArkTSPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebDragInteraction/entry/src/main/ets/pages/DragArkTSPage.ets) --> 
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb'
@@ -205,18 +205,18 @@ H5示例:
 </body>
 </html>
 ```
-web-drag-drop
+![web-drag-drop](figures/web-dragdrop.gif)
 
 日志打印：
 
-web-drag-log
+![web-drag-log](figures/web-drag-log.png)
 
 ## 常见问题
 
 ### 为什么H5设置的拖拽事件没有触发？
 请检查相关CSS资源是否正常设置，因为有些网页UA做了判断，针对特定设备的UA才会进行CSS样式设置。可以考虑在Web组件设置自定义UA解决这种问题，例如：
 
-<!-- @SetUAPage -->
+<!-- @[SetUAPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebDragInteraction/entry/src/main/ets/pages/SetUAPage.ets) -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb'
@@ -312,7 +312,7 @@ H5示例1:
 </html>
 ```
 
-w3c-forbid-drag
+![w3c-forbid-drag](figures/w3c-forbid-drag.gif)
 
 html示例2:
 
@@ -349,11 +349,11 @@ html示例2:
 </html>
 ```
 
-runJs-forbid-drag
+![runJs-forbid-drag](figures/runJs-forbid-drag.gif)
 
 ArkTS示例:
 
-<!-- @ForbidDragPage -->
+<!-- @[ForbidDragPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebDragInteraction/entry/src/main/ets/pages/ForbidDragPage.ets) -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';

@@ -27,7 +27,7 @@ JSVM-API提供创建private key的能力，并支持在对象上使用该key进�
 
 ## 使用示例
 
-JSVM-API接口开发流程参考使用JSVM-API实现JS与C/C++语言交互开发流程，本文仅对接口对应C++相关代码进行展示。
+JSVM-API接口开发流程参考[使用JSVM-API实现JS与C/C++语言交互开发流程](use-jsvm-process.md)，本文仅对接口对应C++相关代码进行展示。
 
 ### 使用接口创建 private key 并添加对应 private property，随后删除
 

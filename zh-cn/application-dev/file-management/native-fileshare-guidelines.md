@@ -8,11 +8,11 @@
 
 ## 场景介绍
 
-应用通过Picker获取临时授权，临时授权在应用退出后或者设备重启后会清除。如果应用重启或者设备重启后需要直接访问之前已访问过的文件，则对文件进行持久化授权。FileShare提供了支持基于uri的文件及目录授予持久化权限、权限激活、权限查询等方法。
+应用通过Picker获取临时授权，临时授权在应用退出后或者设备重启后会清除。如果应用重启或者设备重启后需要直接访问之前已访问过的文件，则对文件进行[持久化授权](file-persistPermission.md#场景介绍)。FileShare提供了支持基于uri的文件及目录授予持久化权限、权限激活、权限查询等方法。
 
 ## 接口说明
 
-接口的详细介绍请参见oh_file_uri.h。
+接口的详细介绍请参见[oh_file_uri.h](../reference/apis-core-file-kit/capi-oh-file-share-h.md)。
 
 | 接口名称 | 描述 |
 | -------- | -------- |
@@ -27,7 +27,7 @@
 
 - 使用文件分享的相关接口，需确认设备具有以下系统能力：SystemCapability.FileManagement.AppFileService.FolderAuthorization。
 
-- 在调用文件分享的相关接口前，需要申请权限："ohos.permission.FILE_ACCESS_PERSIST"，申请方式请参考选择申请权限的方式。
+- 在调用文件分享的相关接口前，需要申请权限："[ohos.permission.FILE_ACCESS_PERSIST](../security/AccessToken/restricted-permissions.md#ohospermissionfile_access_persist)"，申请方式请参考[选择申请权限的方式](../security/AccessToken/determine-application-mode.md)。
 
 ## 开发步骤
 
@@ -48,7 +48,7 @@ target_link_libraries(sample PUBLIC libohfileshare.so)
 #include <iostream>
 ```
 1. 创建FileShare_PolicyInfo实例，调用OH_FileShare_PersistPermission接口，设置uri的持久化授权，接口入参policyNum最大上限为500。
-   <!-- @persist_permission_example -->    
+   <!-- @[persist_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileShareDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->    
    
    ``` C++
    static const uint32_t policyNum = 2;
@@ -76,7 +76,7 @@ target_link_libraries(sample PUBLIC libohfileshare.so)
    ```
 
 2. 调用OH_FileShare_ActivatePermission接口，激活已授权过的uri，接口入参policyNum最大上限为500。
-   <!-- @activate_permission_example -->    
+   <!-- @[activate_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileShareDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->    
    
    ``` C++
    auto ret = OH_FileShare_ActivatePermission(policy, policyNum, &result, &resultNum);
@@ -94,7 +94,7 @@ target_link_libraries(sample PUBLIC libohfileshare.so)
    ```
 
 3. 调用OH_FileShare_DeactivatePermission接口，停止已启用授权过uri的访问权限，接口入参policyNum最大上限为500。
-   <!-- @deactivate_permission_example -->    
+   <!-- @[deactivate_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileShareDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->    
    
    ``` C++
    auto ret = OH_FileShare_DeactivatePermission(policy, policyNum, &result, &resultNum);
@@ -112,7 +112,7 @@ target_link_libraries(sample PUBLIC libohfileshare.so)
    ```
 
 4. 调用OH_FileShare_RevokePermission接口，撤销已经授权的uri持久化权限，接口入参policyNum最大上限为500。
-   <!-- @revoke_permission_example -->    
+   <!-- @[revoke_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileShareDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->    
    
    ``` C++
    auto ret = OH_FileShare_RevokePermission(policy, policyNum, &result, &resultNum);
@@ -130,7 +130,7 @@ target_link_libraries(sample PUBLIC libohfileshare.so)
    ```
 
 5. 调用OH_FileShare_CheckPersistentPermission接口，检查uri持久化权限，接口入参policyNum最大上限为500。
-   <!-- @check_persistent_permission_example -->    
+   <!-- @[check_persistent_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileShareDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->    
    
    ``` C++
    bool *result = nullptr;

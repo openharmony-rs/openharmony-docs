@@ -8,7 +8,7 @@
 
 ArkGuard在编译时读取模块的build-profile.json5配置文件，解析并合并当前模块与依赖模块的混淆规则，然后对中间文件进行混淆处理，最终将结果输出至build目录。
 
-开发者可参考ArkGuard混淆开启指南，了解如何开启混淆并自定义混淆规则。
+开发者可参考[ArkGuard混淆开启指南](./source-obfuscation-guide.md)，了解如何开启混淆并自定义混淆规则。
 
 ## 能力范围
 
@@ -32,7 +32,7 @@ ArkGuard仅支持对ArkTS、TypeScript和JavaScript代码进行混淆，不适�
 
 因此，ArkGuard不支持针对特定类型的精确保留配置。
 
-<!-- @example_limitation -->   
+<!-- @[example_limitation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->   
 
 ``` TypeScript
 // 混淆前：
@@ -80,19 +80,19 @@ test(a2);
 
 与其他源码混淆工具类似，混淆只能在一定程度上增加逆向工程的难度，并不能完全阻止逆向工程。
 
-并且，由于ArkGuard混淆工具仅支持基础混淆功能，开发者不应只依赖ArkGuard来保证应用的安全性，对于源码安全有高要求的开发者，应考虑使用应用加密、安全加固等安全措施来保护代码。
+并且，由于ArkGuard混淆工具仅支持基础混淆功能，开发者不应只依赖ArkGuard来保证应用的安全性，对于源码安全有高要求的开发者，应考虑使用[应用加密](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/code-protect)、安全加固等安全措施来保护代码。
 
 ## 混淆机制及流程
 
 下图为应用编译的简要流程图：
 
-compilation-process
+![compilation-process](figures/compilation-process.png)
 
-开发者可以在模块的build-profile.json5配置文件中开启混淆功能，详细参考ArkGuard混淆开启指南，从而在编译打包的过程中自动对源码进行混淆处理。
+开发者可以在模块的build-profile.json5配置文件中开启混淆功能，详细参考[ArkGuard混淆开启指南](./source-obfuscation-guide.md)，从而在编译打包的过程中自动对源码进行混淆处理。
 
-混淆过程中，首先读取混淆开关。在开关开启的情况下，解析混淆配置文件，并依据混淆规则合并策略合并混淆规则。然后按照混淆规则对经过语法转换的中间文件进行混淆，最后将混淆后的中间文件落盘至build目录。开发者可以通过build目录中混淆后的产物，确认混淆效果。
+混淆过程中，首先读取混淆开关。在开关开启的情况下，解析混淆配置文件，并依据[混淆规则合并策略](#混淆规则合并策略)合并混淆规则。然后按照混淆规则对经过语法转换的中间文件进行混淆，最后将混淆后的中间文件落盘至build目录。开发者可以通过build目录中混淆后的产物，确认混淆效果。
 
-在使用混淆功能前，建议开发者先通过文档了解混淆选项的能力与混淆选项所需要保留白名单的场景，再根据开发需求选择对应的混淆功能。
+在使用混淆功能前，建议开发者先通过文档了解[混淆选项的能力](./source-obfuscation-rule-options.md)与[混淆选项所需要保留白名单的场景](./source-obfuscation-keep-options.md)，再根据开发需求选择对应的混淆功能。
 
 ## 混淆规则合并策略
 
@@ -134,7 +134,7 @@ compilation-process
 
 保留选项：合并时，对于白名单选项，其内容取并集。
 
-- **如果当前编译模块混淆配置未包含`-enable-lib-obfuscation-options`选项**：合并对象为当前模块的所有混淆规则与依赖模块混淆规则中的保留选项。
+- **如果当前编译模块混淆配置未包含`-enable-lib-obfuscation-options`选项**：合并对象为当前模块的所有混淆规则与依赖模块混淆规则中的[保留选项](./source-obfuscation-keep-options.md)。
 
 - **如果当前编译模块混淆配置包含`-enable-lib-obfuscation-options`选项**：合并对象为当前模块的所有混淆规则与依赖模块的所有混淆规则。
 

@@ -11,16 +11,16 @@
 
 ## 约束限制
 
-仅UIAbility和UIExtensionAbility支持获取上次的退出原因。
+仅[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)和[UIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)支持获取上次的退出原因。
 
 ## 接口说明
 
-接口详情参见API参考。
+接口详情参见[API参考](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#launchparam)。
 
 | **接口名**  | **描述** |
 | -------- | -------- |
-| LaunchParam       | 启动参数。此接口的lastExitReason、lastExitMessage、lastExitDetailInfo成员记录Ability上次异常退出的信息。  |
-| LastExitDetailInfo       | 从API version 18开始，记录Ability所在进程上次退出时的关键运行信息。 |
+| [LaunchParam](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#launchparam)       | 启动参数。此接口的lastExitReason、lastExitMessage、lastExitDetailInfo成员记录Ability上次异常退出的信息。  |
+| [LastExitDetailInfo](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#lastexitdetailinfo18)       | 从API version 18开始，记录Ability所在进程上次退出时的关键运行信息。 |
 
 ## 开发步骤
 
@@ -28,7 +28,7 @@
 
     在UIAbility类的onCreate成员函数的launchParam参数中读取Ability上次退出的信息。
 
-    <!-- @unexp_exit -->
+    <!-- @[unexp_exit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UnexpExit/entry/src/main/ets/exitability/ExitAbility.ets) -->
     
     ``` TypeScript
     import { UIAbility, Want, AbilityConstant } from '@kit.AbilityKit';
@@ -78,7 +78,7 @@
 
     - 对于不同的退出原因，开发者可以增加不同的处理逻辑，例如：
 
-    <!-- @unexp_freeze -->
+    <!-- @[unexp_freeze](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UnexpExit/entry/src/main/ets/exitability/ExitAbility.ets) -->
     
     ``` TypeScript
     if (reason === AbilityConstant.LastExitReason.APP_FREEZE) {
@@ -95,7 +95,7 @@
 
     - 根据进程信息感知应用内存占用异常，例如：
 
-    <!-- @unexp_rss -->
+    <!-- @[unexp_rss](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UnexpExit/entry/src/main/ets/exitability/ExitAbility.ets) -->
     
     ``` TypeScript
     if (rss > MAX_RSS_THRESHOLD || pss > MAX_PSS_THRESHOLD) {
@@ -107,7 +107,7 @@
 
     - 根据异常退出时刻的时间戳，明确异常发生的时刻，便于问题定位。
     
-    <!-- @unexp_uid -->
+    <!-- @[unexp_uid](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UnexpExit/entry/src/main/ets/exitability/ExitAbility.ets) -->
     
     ``` TypeScript
     hilog.info(DOMAIN_NUMBER, TAG, `App ${uid} terminated at ${timestamp}.`);

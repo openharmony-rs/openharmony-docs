@@ -16,7 +16,7 @@
 
 ## 通过状态管理V2版本实现ViewModel
 
-在MVVM模式中，ViewModel负责管理数据状态，并在数据变化时自动更新视图。ArkUI的状态管理V2版本提供了丰富的装饰器和工具，帮助开发者在自定义组件之间共享数据，确保数据变化自动同步到UI。常用的状态管理装饰器包括\@Local、\@Param、\@Event、\@ObservedV2、\@Trace等等。此外，V2还提供了AppStorageV2和PersistenceV2作为全局状态存储工具，用于应用内的状态共享和持久化存储。
+在MVVM模式中，ViewModel负责管理数据状态，并在数据变化时自动更新视图。ArkUI的状态管理V2版本提供了丰富的装饰器和工具，帮助开发者在自定义组件之间共享数据，确保数据变化自动同步到UI。常用的状态管理装饰器包括[\@Local](./arkts-new-local.md)、[\@Param](./arkts-new-param.md)、[\@Event](./arkts-new-event.md)、[\@ObservedV2、\@Trace](./arkts-new-observedV2-and-trace.md)等等。此外，V2还提供了[AppStorageV2](./arkts-new-appstoragev2.md)和[PersistenceV2](./arkts-new-persistencev2.md)作为全局状态存储工具，用于应用内的状态共享和持久化存储。
 
 本节将通过一个简单的todolist示例，逐步引入和使用状态管理V2的装饰器及工具，从基础的静态任务列表开始，逐步扩展功能。每个步骤都基于上一步扩展，帮助开发者循序渐进地理解并掌握各个装饰器的使用方法。
 
@@ -26,7 +26,7 @@
 
 **示例1**
 
-<!-- @Main_Basic -->
+<!-- @[Main_Basic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/BasicPage.ets) -->
 
 ``` TypeScript
 // src/main/ets/pages/BasicPage.ets
@@ -54,7 +54,7 @@ struct TodoList {
 
 **示例2**
 
-<!-- @Main_Local -->
+<!-- @[Main_Local](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/LocalPage.ets) -->
 
 ``` TypeScript
 // src/main/ets/pages/LocalPage.ets
@@ -83,13 +83,13 @@ struct TodoList {
 ```
 
 ### 添加\@Param，实现组件接收外部输入
-实现任务本地状态切换后，为增强待办事项列表的灵活性，需要能够动态设置每个任务的名称，而不是固定在代码中。引入\@Param装饰器后，子组件被装饰的变量可以接收父组件传入的值，实现单向数据同步。\@Param默认只读，使用\@Param \@Once可在子组件中对传入的值进行本地更新。
+实现任务本地状态切换后，为增强待办事项列表的灵活性，需要能够动态设置每个任务的名称，而不是固定在代码中。引入\@Param装饰器后，子组件被装饰的变量可以接收父组件传入的值，实现单向数据同步。\@Param默认只读，使用\@Param [\@Once](./arkts-new-once.md)可在子组件中对传入的值进行本地更新。
 
 在示例3中，每个待办事项抽象为TaskItem组件。\@Param修饰的taskName属性从父组件TodoList传入任务名称，使TaskItem组件灵活且可复用，能够接收并渲染不同的任务名称。\@Param \@Once装饰的isFinish属性接收初始值后，可在子组件内更新。
 
 **示例3**
 
-<!-- @Main_Param -->
+<!-- @[Main_Param](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/ParamPage.ets) -->
 
 ``` TypeScript
 // src/main/ets/pages/ParamPage.ets
@@ -135,7 +135,7 @@ struct TodoList {
 
 **示例4**
 
-<!-- @Main_Event -->
+<!-- @[Main_Event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/EventPage.ets) -->
 
 ``` TypeScript
 // src/main/ets/pages/EventPage.ets
@@ -203,17 +203,17 @@ struct TodoList {
 
 ### 添加Repeat，实现子组件复用
 
-添加任务增删功能后，任务列表项增加，需要高效渲染多个结构相同的子组件，提高界面性能。引入Repeat组件，优化任务列表渲染。
+添加任务增删功能后，任务列表项增加，需要高效渲染多个结构相同的子组件，提高界面性能。引入[Repeat](../rendering-control/arkts-new-rendering-control-repeat.md)组件，优化任务列表渲染。
 
 Repeat支持两种场景：懒加载场景和非懒加载场景。
 - 懒加载场景适用于大量数据的场景，在滚动类容器中按需加载组件，极大节省内存和提升渲染效率。
 - 非懒加载场景适用于数据量较小的场景，一次性渲染所有组件，并在数据变化时仅更新需要变化的部分，避免整体重新渲染。
 
-在示例5中，由于任务量较少，使用Repeat非懒加载场景。新建任务数组tasks，并使用Repeat方法迭代数组中的每一项，动态生成并复用TaskItem组件。任务增删时，这种方式能高效复用已有组件，避免重复渲染，提高界面响应速度和性能。这种机制有效地提高了代码的复用性和渲染效率。
+在示例5中，由于任务量较少，使用Repeat非懒加载场景。新建任务数组tasks，并使用Repeat组件迭代数组中的每一项，动态生成并复用TaskItem组件。任务增删时，这种方式能高效复用已有组件，避免重复渲染，提高界面响应速度和性能。这种机制有效地提高了代码的复用性和渲染效率。
 
 **示例5**
 
-<!-- @Main_Repeat -->  
+<!-- @[Main_Repeat](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/RepeatPage.ets) -->  
 
 ``` TypeScript
 // src/main/ets/pages/RepeatPage.ets
@@ -288,7 +288,7 @@ struct TodoList {
 
 **示例6**
 
-<!-- @Main_ObservedV2Trace --> 
+<!-- @[Main_ObservedV2Trace](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/ObservedV2TracePage.ets) --> 
 
 ``` TypeScript
 // src/main/ets/pages/ObservedV2TracePage.ets
@@ -386,13 +386,13 @@ struct TodoList {
 
 ### 添加\@Monitor，\@Computed，实现监听状态变量和计算属性
 
-在当前任务列表功能基础上，为了提升体验，可以增加一些额外的功能，如任务状态变化的监听和未完成任务数量的动态计算。为此，引入\@Monitor和\@Computed装饰器。\@Monitor用于深度监听状态变量，在属性变化时触发自定义回调方法。\@Computed用于装饰getter方法，检测被计算的属性变化。被计算的值变化时，仅计算一次，减少重复计算开销。
+在当前任务列表功能基础上，为了提升体验，可以增加一些额外的功能，如任务状态变化的监听和未完成任务数量的动态计算。为此，引入[\@Monitor](./arkts-new-monitor.md)和[\@Computed](./arkts-new-computed.md)装饰器。\@Monitor用于深度监听状态变量，在属性变化时触发自定义回调方法。\@Computed用于装饰getter方法，检测被计算的属性变化。被计算的值变化时，仅计算一次，减少重复计算开销。
 
 在示例7中，使用\@Monitor装饰器深度监听TaskItem中task的isFinish属性。当任务完成状态变化时，触发onTaskFinished回调，记录任务完成状态的变化。同时，新增对todolist中未完成任务数量的记录。使用\@Computed装饰器定义tasksUnfinished，每当任务状态变化时自动重新计算。通过这两个装饰器，实现了状态变量的深度监听和高效的计算属性。
 
 **示例7**
 
-<!-- @Main_MonitorComputed --> 
+<!-- @[Main_MonitorComputed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/MonitorComputedPage.ets) --> 
 
 ``` TypeScript
 // src/main/ets/pages/MonitorComputedPage.ets
@@ -509,7 +509,7 @@ struct TodoList {
 
 **示例8**
 
-<!-- @Main_AppStorageV2 --> 
+<!-- @[Main_AppStorageV2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/AppStorageV2Page.ets) --> 
 
 ``` TypeScript
 // src/main/ets/pages/AppStorageV2Page.ets
@@ -631,7 +631,7 @@ struct TodoList {
   }
 }
 ```
-<!-- @Main_SettingPage --> 
+<!-- @[Main_SettingPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/SettingPage.ets) --> 
 
 ``` TypeScript
 // src/main/ets/pages/SettingPage.ets
@@ -680,7 +680,7 @@ struct SettingPage {
 
 **示例9**
 
-<!-- @Main_PersistenceV2 --> 
+<!-- @[Main_PersistenceV2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/PersistenceV2Page.ets) --> 
 
 ``` TypeScript
 // src/main/ets/pages/PersistenceV2Page.ets
@@ -848,7 +848,7 @@ JSON文件存放在src/main/resources/rawfile/defaultTasks.json路径下。
 
 **示例10**
 
-<!-- @Main_Builder --> 
+<!-- @[Main_Builder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/BuilderPage.ets) --> 
 
 ``` TypeScript
 // src/main/ets/pages/BuilderPage.ets
@@ -1013,7 +1013,7 @@ struct TodoList {
 ```
 
 ### 效果图展示
-todolist
+![todolist](./figures/MVVMV2-todolist.gif)
 
 ## 重构代码以符合MVVM架构
 
@@ -1049,7 +1049,7 @@ Model层负责管理应用的数据及其业务逻辑，通常与后端或数据
 
 - TaskModel：单个任务的基本数据结构，包含任务名称和完成状态。
 
-  <!-- @Model_TaskModel -->
+  <!-- @[Model_TaskModel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/model/TaskModel.ets) -->
   
   ``` TypeScript
   export default class TaskModel {
@@ -1060,7 +1060,7 @@ Model层负责管理应用的数据及其业务逻辑，通常与后端或数据
   
 - TaskListModel：任务的集合，提供从本地加载任务数据的功能。
 
-  <!-- @Model_TaskListModel -->      
+  <!-- @[Model_TaskListModel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/model/TaskListModel.ets) -->      
   
   ``` TypeScript
   import { common } from '@kit.AbilityKit';
@@ -1103,7 +1103,7 @@ ViewModel层管理UI状态和业务逻辑，连接Model和View。通过监控Mod
 
 - TaskViewModel：封装单个任务的数据和状态变更逻辑，通过状态装饰器监控数据的变化。
 
-  <!-- @ViewModel_TaskViewModel -->
+  <!-- @[ViewModel_TaskViewModel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/viewmodel/TaskViewModel.ets) -->
   
   ``` TypeScript
   // src/main/ets/viewmodel/TaskViewModel.ets
@@ -1127,7 +1127,7 @@ ViewModel层管理UI状态和业务逻辑，连接Model和View。通过监控Mod
   
 - TaskListViewModel：封装了任务列表以及管理功能，包括加载任务、批量更新任务状态，以及添加和删除任务。
 
-  <!-- @ViewModel_TaskListViewModel --> 
+  <!-- @[ViewModel_TaskListViewModel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/viewmodel/TaskListViewModel.ets) --> 
   
   ``` TypeScript
   // src/main/ets/viewmodel/TaskListViewModel.ets
@@ -1173,7 +1173,7 @@ View层负责应用程序的UI展示和与用户的交互。它只关注如何�
 
 - TitleView：负责展示应用的标题和未完成任务的统计信息。
 
-  <!-- @View_TitleView -->
+  <!-- @[View_TitleView](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/view/TitleView.ets) -->
   
   ``` TypeScript
   // src/main/ets/view/TitleView.ets
@@ -1195,7 +1195,7 @@ View层负责应用程序的UI展示和与用户的交互。它只关注如何�
 
 - ListView：负责展示任务列表，并根据Setting中的设置筛选是否显示已完成的任务。它依赖于TaskListViewModel来获取任务数据，并通过TaskItem组件进行渲染，包括任务的名称、完成状态以及删除按钮。通过TaskViewModel和TaskListViewModel实现用户的交互，如切换任务完成状态和删除任务。
 
-  <!-- @View_ListView -->  
+  <!-- @[View_ListView](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/view/ListView.ets) -->  
   
   ``` TypeScript
   // src/main/ets/view/ListView.ets
@@ -1254,7 +1254,7 @@ View层负责应用程序的UI展示和与用户的交互。它只关注如何�
   
 - BottomView：负责提供与任务操作相关的按钮和输入框，如"全部完成"、"全部未完成"，"设置"三个按钮，以及添加新任务的输入框。点击"全部完成"和"全部未完成"时，通过TaskListViewModel更改所有任务的状态。点击"设置"按钮时，会导航到SettingAbility的设置页面。添加新任务时，通过TaskListViewModel新增任务到任务列表中。
 
-  <!-- @View_BottomView --> 
+  <!-- @[View_BottomView](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/view/BottomView.ets) --> 
   
   ``` TypeScript
   // src/main/ets/view/BottomView.ets
@@ -1318,7 +1318,7 @@ View层负责应用程序的UI展示和与用户的交互。它只关注如何�
 
 - TodoListPage：todolist的主页面，包含以上的三个View组件（TitleView、ListView、BottomView），用于统一展示待办事项的各个部分，管理任务列表和用户设置。TodoListPage负责从ViewModel中获取数据，并将数据传递给各个子View组件进行渲染，通过PersistenceV2持久化任务数据，确保数据在应用重启后仍能保持一致。
 
-  <!-- @Main_TodoListPage -->
+  <!-- @[Main_TodoListPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/TodoListPage.ets) -->
   
   ``` TypeScript
   // src/main/ets/pages/TodoListPage.ets
@@ -1364,7 +1364,7 @@ View层负责应用程序的UI展示和与用户的交互。它只关注如何�
   
 - SettingPage：设置页面，负责管理是否显示已完成任务的设置。通过AppStorageV2应用全局存储用户的设置，用户通过Toggle开关切换showCompletedTask状态。
 
-  <!-- @Main_SettingPage --> 
+  <!-- @[Main_SettingPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM/entry/src/main/ets/pages/SettingPage.ets) --> 
   
   ``` TypeScript
   // src/main/ets/pages/SettingPage.ets
@@ -1411,5 +1411,5 @@ View层负责应用程序的UI展示和与用户的交互。它只关注如何�
 
 ## 代码示例
 <!--RP1-->
-完整源码
+[完整源码](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/StateMgmtV2MVVM)
 <!--RP1End-->

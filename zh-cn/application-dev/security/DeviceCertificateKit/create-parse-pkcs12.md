@@ -15,18 +15,18 @@ PKCS #12是一种用于存储和传输用户私钥、证书及其相关证书链
 
 ## 开发步骤
 
-1. 导入证书模块。
+1. 导入[证书模块](../../reference/apis-device-certificate-kit/js-apis-cert.md)。
 
    ```ts
    import { cert } from '@kit.DeviceCertificateKit';
    ```
-2. 调用cert.createPkcs12创建PKCS12文件。
+2. 调用[cert.createPkcs12](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatepkcs1221)创建PKCS12文件。
 
-3. 调用cert.parsePkcs12解析PKCS12文件。
+3. 调用[cert.parsePkcs12](../../reference/apis-device-certificate-kit/js-apis-cert.md#certparsepkcs1218)解析PKCS12文件。
 
 - 异步方法示例：
 
-<!-- @create-parse-pkcs12-async -->
+<!-- @[create-parse-pkcs12-async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/CreateParsePkcs12Async.ets) -->
 
 ``` TypeScript
 
@@ -190,7 +190,7 @@ async function doTestCreatePkcs12() {
 
 - 同步方法示例：
 
-<!-- @create-parse-pkcs12-sync -->
+<!-- @[create-parse-pkcs12-sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/CreateParsePkcs12Sync.ets) -->
 
 ``` TypeScript
 
@@ -217,7 +217,7 @@ async function createX509Cert(certData: string): Promise<cert.X509Cert> {
   try {
     x509Cert = await cert.createX509Cert(encodingBlob);
   } catch (err) {
-    console.error(`doTestCreatePkcs12 failed: errCode: ${err.code}, message: ${err.message}`);
+    console.error(`createX509Cert failed: errCode: ${err.code}, message: ${err.message}`);
   }
   return x509Cert;
 }

@@ -8,7 +8,7 @@
 
 为提升组件回收与复用的性能和内存效率，全局复用池功能允许开发者在任意自定义组件上配置针对指定@Reusable/@ReusableV2复用组件的复用池，该全局复用池优先级高于与父组件绑定的默认复用池。
 
-全局复用池提供了在不同父组件间共享回收组件实例、控制缓存生命周期和大小、以及首次使用前预渲染组件的能力。在阅读本文档之前，建议先阅读@ComponentV2、@Component、@Reusable和@ReusableV2。
+全局复用池提供了在不同父组件间共享回收组件实例、控制缓存生命周期和大小、以及首次使用前预渲染组件的能力。在阅读本文档之前，建议先阅读[@ComponentV2](./arkts-create-custom-components.md#componentv2)、[@Component](./arkts-create-custom-components.md#component)、[@Reusable](./arkts-reusable.md)和[@ReusableV2](./arkts-new-reusableV2.md)。
 
 >**说明：**
 >
@@ -23,14 +23,14 @@
 全局复用池通过允许开发者在组件树的上级节点（标注为@Component或@ComponentV2的组件）处配置复用池来解决上述复用效率问题。全局复用池启用后，当复用组件创建或销毁时，框架会向上遍历组件树，为回收和复用操作查找接受指定可复用组件类型的全局复用池，从而支持跨父组件的复用场景，增加复用率，提升复用组件切换的性能。全局复用池的能力：
 
 - 单个复用池可以为多个子组件提供服务，减少复用池的数量并提高复用率。
-- 开发者可以选择组件类的所有实例共享单个复用池（shared）还是每个实例拥有自己的池（perInstance）。
-- IReusableInfo接口允许应用程序查询和限制缓存组件的数量，包括`reuseId`等信息。
-- preRender接口允许提前创建可复用组件并将其放入复用池，加快初始渲染速度。
+- 开发者可以选择组件类的所有实例共享单个复用池（[shared](#复用池所有权模式)）还是每个实例拥有自己的池（[perInstance](#复用池所有权模式)）。
+- [IReusableInfo](../../reference/apis-arkui/js-apis-stateManagement.md#ireusableinfo)接口允许应用程序查询和限制缓存组件的数量，包括`reuseId`等信息。
+- [preRender](../../reference/apis-arkui/js-apis-stateManagement.md#prerender)接口允许提前创建可复用组件并将其放入复用池，加快初始渲染速度。
 - 复用组件在被回收或创建时，如果通过遍历父组件未找到匹配的全局复用池，则该组件会使用父组件中的默认复用池进行回收和复用。
 
 ## 基本概念
 
-**默认复用池**：使用@Reusable或@ReusableV2声明的复用组件，创建时会从父组件的复用池中取出实例，销毁时会被父组件的复用池回收。这个是在未配置全局复用池时复用组件的默认行为，父组件中的复用池被称作默认复用池。
+**默认复用池**：使用[@Reusable](./arkts-create-custom-components.md#reusable)或[@ReusableV2](./arkts-create-custom-components.md#reusablev2)声明的复用组件，创建时会从父组件的复用池中取出实例，销毁时会被父组件的复用池回收。这个是在未配置全局复用池时复用组件的默认行为，父组件中的复用池被称作默认复用池。
 
 **全局复用池**：全局复用池是在任意自定义组件中声明的独立的复用池，该复用池能接纳所有该组件下的复用组件，不依赖父子组件关系，接纳复用组件类型需要单独配置。该新增复用池能力比默认复用池接纳组件的范围更广，不只局限于父子组件才能复用，所以命名为全局复用池。
 
@@ -44,7 +44,7 @@
 | 预渲染 | 不支持 | `preRender`在首次使用前创建组件。 |
 | 内存管理 | 池生命周期与父实例绑定 | `shared`池持续存在直到所有拥有实例被销毁；`perInstance`池与单个实例绑定。 |
 | V1 与 V2 混合 | 不支持 | `poolAccepts`可同时包含@Reusable复用组件和@ReusableV2复用组件。 |
-| 读取复用池状态 | 不支持 | getReusableInfo可获取当前自定义组件的全局复用池的信息。 |
+| 读取复用池状态 | 不支持 | [getReusableInfo](../../reference/apis-arkui/js-apis-stateManagement.md#getreusableinfo)可获取当前自定义组件的全局复用池的信息。 |
 
 ### @Reusable/@ReusableV2默认复用池的局限性
 
@@ -54,11 +54,11 @@
 
 新增全局复用能力后，在最上层组件`Index`上声明全局复用池，可以提升子组件的复用效率。在if切换组件时，`ChildComponentA`下的复用组件`ReusableComponent`能存入`Index`上的全局复用池，然后在`ChildComponentB`中的`ReusableComponent`创建时从全局复用池中取出并复用，避免重复创建复用组件。
 
-
+![](./figures/arkts-global-reuse-reusable-diff.png)
 
 默认复用池实例代码：
 
-<!-- @GlobalReuseDefault -->
+<!-- @[GlobalReuseDefault](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GlobalReuse/entry/src/main/ets/pages/GlobalReuseDefault.ets) -->
 
 ``` TypeScript
 @Entry
@@ -114,7 +114,7 @@ struct ReusableComponent { // 复用组件
 
 适配全局复用能力的示例如下：
 
-<!-- @GlobalReusePool -->
+<!-- @[GlobalReusePool](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePool.ets) -->
 
 ``` TypeScript
 @ReusableV2
@@ -179,9 +179,9 @@ struct ChildComponentB {
 
 | 参数      | 类型 | 必填 | 说明 |
 | --------- | --- | ---  | --- |
-| `reusePool` | `ReusePoolOwnership` | 否 | 如果使用全局复用功能，该参数的值必须为`"shared"`或`"perInstance"`。决定此组件类的所有实例是共享单个复用池还是每个实例拥有自己的池。|
+| `reusePool` | [`ReusePoolOwnership`](#复用池所有权模式) | 否 | 如果使用全局复用功能，该参数的值必须为`"shared"`或`"perInstance"`。决定此组件类的所有实例是共享单个复用池还是每个实例拥有自己的池。|
 | `poolAccepts` | Function[] | 否 | 全局复用池接纳的可复用组件的数组，可以同时包含@Reusable和@ReusableV2装饰的自定义组件。|
-| `freezeWhenInactive` | boolean | 是 | 配置自定义组件支持组件冻结。true：开启组件冻结，false：不开启组件冻结。<br>从API version 11开始，支持通过此参数配置@Component组件冻结。例子可见自定义组件冻结。<br>从API version 12开始，支持通过此参数配置@ComponentV2组件冻结。例子可见自定义组件冻结。|
+| `freezeWhenInactive` | boolean | 是 | 配置自定义组件支持组件冻结。true：开启组件冻结，false：不开启组件冻结。<br>从API version 11开始，支持通过此参数配置@Component组件冻结。例子可见[自定义组件冻结](../../ui/state-management/arkts-custom-components-freeze.md)。<br>从API version 12开始，支持通过此参数配置@ComponentV2组件冻结。例子可见[自定义组件冻结](../../ui/state-management/arkts-custom-components-freezeV2.md)。|
 
 ### 复用池所有权模式
 
@@ -189,7 +189,7 @@ struct ChildComponentB {
 
 **`"shared"`**：拥有@Component/@ComponentV2类的所有实例共享单个复用池实例。
 
-
+![](./figures/arkts-global-reuse-reusable-shared.png)
 
 `shared`复用池的生命周期：
 
@@ -199,7 +199,7 @@ struct ChildComponentB {
 4. 当第二个（最后一个）实例被销毁时，复用池也被销毁。其中的所有回收组件被删除。
 5. 如果稍后创建拥有组件的新实例，则会创建新的复用池。
 
-具体`shared`复用池示例代码，参考使用场景：多个父组件间共享复用池。
+具体`shared`复用池示例代码，参考使用场景：[多个父组件间共享复用池](#多个父组件间共享复用池)。
 
 > **说明：**
 >
@@ -207,36 +207,36 @@ struct ChildComponentB {
 
 **`"perInstance"`**：拥有@Component/@ComponentV2的每个实例都有自己的复用池实例。复用池的生命周期与其拥有组件实例的生命周期相同。当拥有组件被销毁时，其复用池和其中的所有回收组件也被销毁。
 
+![](./figures/arkts-global-reuse-reusable-perinstance.png)
 
-
-具体`perInstance`复用池示例代码，参考使用场景：使用@Provider/@Consumer的独立复用池。
+具体`perInstance`复用池示例代码，参考使用场景：[使用@Provider/@Consumer的独立复用池](#使用providerconsumer的独立复用池)。
 
 建议开发者配置`shared`所有权。这样可以获得更好的复用率和更低的内存占用。
 
 ## 接口说明
 
-有关包括类型定义、参数表、返回值和示例在内的完整API参考，请参阅@ohos.arkui.StateManagement (状态管理)。
+有关包括类型定义、参数表、返回值和示例在内的完整API参考，请参阅[@ohos.arkui.StateManagement (状态管理)](../../reference/apis-arkui/js-apis-stateManagement.md)。
 
 以下接口可用于全局复用池：
 
 | 接口 | 说明 |
 | --- | ----------- |
-| UIUtils.getCustomComponentContext(this).getReusePool() | 获取当前组件的IReusePool。如果该组件或其上层组件未配置全局复用池，则返回`undefined`。 |
-| IReusePool.getReusableInfo(reusableComp, reuseId?) | 检索池中给定可复用组件类型的回收实例信息。支持按reuseId查询。 |
-| IReusePool.preRender(builder, n) | 调度空闲任务以预创建可复用组件并在首次使用前将其放入复用池。 |
-| IReusableInfo.count | 池中当前回收的组件数（只读）。 |
-| IReusableInfo.maxCount | 允许的最大回收组件数。设置此项可控制缓存大小。 |
-| IReusableInfo.reuseId | 全局复用池基于reuseId分区存放复用组件，该分区对应的reuseId（只读）。 |
+| [UIUtils.getCustomComponentContext(this).getReusePool()](../../reference/apis-arkui/js-apis-stateManagement.md#getreusepool) | 获取当前组件的[IReusePool](../../reference/apis-arkui/js-apis-stateManagement.md#ireusepool)。如果该组件或其上层组件未配置全局复用池，则返回`undefined`。 |
+| [IReusePool.getReusableInfo(reusableComp, reuseId?)](../../reference/apis-arkui/js-apis-stateManagement.md#getreusableinfo) | 检索池中给定可复用组件类型的回收实例信息。支持按reuseId查询。 |
+| [IReusePool.preRender(builder, n)](../../reference/apis-arkui/js-apis-stateManagement.md#prerender) | 调度空闲任务以预创建可复用组件并在首次使用前将其放入复用池。 |
+| [IReusableInfo](../../reference/apis-arkui/js-apis-stateManagement.md#ireusableinfo).count | 池中当前回收的组件数（只读）。 |
+| [IReusableInfo](../../reference/apis-arkui/js-apis-stateManagement.md#ireusableinfo).maxCount | 允许的最大回收组件数。设置此项可控制缓存大小。 |
+| [IReusableInfo](../../reference/apis-arkui/js-apis-stateManagement.md#ireusableinfo).reuseId | 全局复用池基于reuseId分区存放复用组件，该分区对应的reuseId（只读）。 |
 
 ## 使用限制
 
 - `reusePool`和`poolAccepts`参数必须同时提供。仅指定其中一个会导致编译错误。
 
-- `poolAccepts`必须是非空数组，否则会导致编译报错。`poolAccepts`的成员必须是@Reusable或@ReusableV2装饰的自定义组件，使用普通（不可复用）组件、@Builder函数或非组件类会导致编译错误。
+- `poolAccepts`必须是非空数组，否则会导致编译报错。`poolAccepts`的成员必须是@Reusable或@ReusableV2装饰的自定义组件，使用普通（不可复用）组件、[@Builder](./arkts-builder.md)函数或非组件类会导致编译错误。
 
-- `reusePool`和`poolAccepts`配置仅在@Component和@ComponentV2上支持。在@CustomDialog上不受支持。
+- `reusePool`和`poolAccepts`配置仅在@Component和@ComponentV2上支持。在[@CustomDialog](../arkts-common-components-custom-dialog.md)上不受支持。
 
-- @Component和@ComponentV2在配置`reusePool`和`poolAccepts`启用全局复用的同时，需要额外配置`freezeWhenInactive`参数，`freezeWhenInactive`参数的取值请参考自定义组件冻结（V1）或自定义组件冻结（V2）。
+- @Component和@ComponentV2在配置`reusePool`和`poolAccepts`启用全局复用的同时，需要额外配置`freezeWhenInactive`参数，`freezeWhenInactive`参数的取值请参考[自定义组件冻结（V1）](./arkts-custom-components-freeze.md)或[自定义组件冻结（V2）](./arkts-custom-components-freezeV2.md)。
 
 - `getReusableInfo`和`preRender`仅在全局复用池实例上可用。它们不能在默认复用池的自定义组件上使用。
 
@@ -246,7 +246,7 @@ struct ChildComponentB {
 
 - 使用`"shared"`所有权时，只要拥有组件类的任何实例存在，池就会持续存在。如果拥有组件在应用程序的多个部分中使用，回收的组件可能会累积。使用`maxCount`来控制内存使用。
 
-- 建议不要在aboutToRecycle中修改会触发重新渲染的状态变量，因为组件此时正从UI树中移除。
+- 建议不要在[aboutToRecycle](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttorecycle10)中修改会触发重新渲染的状态变量，因为组件此时正从UI树中移除。
 
 - 由于ArkTS语法限制，`poolAccepts`参数配置的自定义组件，必须在`poolAccepts`上方的代码中有定义或者从其他文件导入。如果在poolAccepts传入的组件在下方定义，则会编译报错，报错消息是“Class '...' used before its declaration.”。
 
@@ -256,7 +256,7 @@ struct ChildComponentB {
 
 在此示例中，多个`CompA`实例为`ReusableCompA`子组件创建了共享类型的全局复用池。当删除`CompA`实例时，`ReusableCompA`子组件被回收到全局复用池中。当添加新的`CompA`实例时，它从全局复用池中复用组件，避免创建新组件。
 
-<!-- @GlobalReusePoolShared -->
+<!-- @[GlobalReusePoolShared](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolShared.ets) -->
 
 ``` TypeScript
 @Entry
@@ -346,7 +346,7 @@ struct CompA {
 }
 ```
 
-arkts-global-reuse-shared.gif
+![arkts-global-reuse-shared.gif](./figures/arkts-global-reuse-shared.gif)
 
 **启动** — 6个ReusableCompA子组件被创建：
 ```plaintext
@@ -374,9 +374,9 @@ ReusableCompA aboutToDisappear (×6, 所有缓存实例被永久销毁)
 
 ### 使用@Provider/@Consumer的独立复用池
 
-此示例演示与特定父实例绑定的`perInstance`池。它还展示了@Consumer在复用周期后如何重连到@Provider。
+此示例演示与特定父实例绑定的`perInstance`池。它还展示了[@Consumer](./arkts-new-provider-and-consumer.md)在复用周期后如何重连到[@Provider](./arkts-new-provider-and-consumer.md)。
 
-<!-- @GlobalReusePoolPerInstance -->
+<!-- @[GlobalReusePoolPerInstance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolPerInstance.ets) -->
 
 ``` TypeScript
 @ReusableV2
@@ -487,7 +487,7 @@ struct Child {
 }
 ```
 
-arkts-global-reuse-per-instance.gif
+![arkts-global-reuse-per-instance.gif](./figures/arkts-global-reuse-per-instance.gif)
 
 **从ReusableChild切换到Child**：
 ```plaintext
@@ -505,13 +505,13 @@ ReusableChild aboutToReuse     // 从池中检索，@Consumer重连
 SubChild aboutToReuse          // 子树级联
 ```
 
-复用后，`aboutToReuse`回调设置`this.provide = 150`。@Consumer重连到Parent组件的@Provider。后续@Provider更新正确传播到复用的组件。
+复用后，`aboutToReuse`回调设置`this.provide = 150`。[@Consumer](./arkts-new-provider-and-consumer.md)重连到Parent组件的[@Provider](./arkts-new-provider-and-consumer.md)。后续@Provider更新正确传播到复用的组件。
 
 ### 使用`getReusableInfo`检查和控制池
 
 此示例演示如何使用`getReusableInfo`接口在运行时检查池状态和控制缓存大小。
 
-<!-- @GlobalReusePoolGet -->
+<!-- @[GlobalReusePoolGet](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolGet.ets) -->
 
 ``` TypeScript
 import { UIUtils, IReusableInfo } from '@kit.ArkUI';
@@ -682,7 +682,7 @@ struct Index {
 }
 ```
 
-arkts-global-reuse-getreusableinfo.gif
+![arkts-global-reuse-getreusableinfo.gif](./figures/arkts-global-reuse-getreusableinfo.gif)
 
 **启动**（GlobalChild可见）：
 
@@ -743,7 +743,7 @@ getReusableInfo(LegacyComp): count=0, maxCount=0
 
 当使用不同的`reuseId`值回收组件时，相同reuseId的复用组件在全局复用池中分区存放，可以通过`getReusableInfo`接口返回每个reuseId分区的信息。
 
-<!-- @GlobalReusePoolReuseID -->
+<!-- @[GlobalReusePoolReuseID](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolReuseID.ets) -->
 
 ``` TypeScript
 import { UIUtils, IReusableInfo } from '@kit.ArkUI';
@@ -841,7 +841,7 @@ struct PoolOwner {
 }
 ```
 
-arkts-global-reuse-reuseid.gif
+![arkts-global-reuse-reuseid.gif](./figures/arkts-global-reuse-reuseid.gif)
 
 当所有3个都被关闭时，`getReusableInfo(TestChild)`（不带reuseId）返回一个数组：
 ```typescript
@@ -869,7 +869,7 @@ arkts-global-reuse-reuseid.gif
 
 当在组件树的不同级别存在多个复用池配置时，每个可复用组件路由到接受它的最近的祖先池。
 
-<!-- @GlobalReusePoolMultiLevel -->
+<!-- @[GlobalReusePoolMultiLevel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolMultiLevel.ets) -->
 
 ``` TypeScript
 @ReusableV2
@@ -973,7 +973,7 @@ struct ParentA {
 }
 ```
 
-arkts-global-reuse-multi-level.gif
+![arkts-global-reuse-multi-level.gif](./figures/arkts-global-reuse-multi-level.gif)
 
 - `ChildA`使用`EntryComp`上声明的全局复用池，因为`EntryComp`复用池配置`poolAccepts`接受`ChildA`。
 - `ReusableLeaf`和它的父组件`ChildA`一起进入`EntryComp`的复用池中，不会进入`ParentA`上配置的全局复用池。因为父组件和子组件被一起回收时，父子组件都会进入接纳父组件的复用池，子组件不会脱离父组件存入全局复用池中。
@@ -998,7 +998,7 @@ ReusableLeaf aboutToReuse       // 从EntryComp的复用池中取出
 
 `preRender`用于提前创建可复用组件实例并将其放入复用池，后续创建时可直接复用。
 
-<!-- @GlobalReusePoolPrerender -->
+<!-- @[GlobalReusePoolPrerender](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GlobalReuse/entry/src/main/ets/pages/GlobalReusePoolPrerender.ets) -->
 
 ``` TypeScript
 import { UIUtils, IReusableInfo } from '@kit.ArkUI';
@@ -1080,7 +1080,7 @@ struct CompA {
 }
 ```
 
-arkts-global-reuse-prerender.gif
+![arkts-global-reuse-prerender.gif](./figures/arkts-global-reuse-prerender.gif)
 
 执行序列：
 

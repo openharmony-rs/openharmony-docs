@@ -18,7 +18,7 @@
 
 注解的声明使用`@interface`关键字，使用时以`@`为前缀。
 
-<!-- @annotation_statement -->
+<!-- @[annotation_statement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Annotation.ets) -->
 
 ``` TypeScript
 // 注解的声明：
@@ -50,7 +50,7 @@ ClassAuthor({authorName: "Bob"}) // 编译错误：注解需要'@'为前缀
 
 多个注解可以应用于同一个声明（注解间的先后顺序不影响使用）。
 
-<!-- @annotation_statement_multiple -->
+<!-- @[annotation_statement_multiple](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Annotation.ets) -->
 
 ``` TypeScript
 @MyAnno()
@@ -62,11 +62,11 @@ class MyClass1 {
 
 > **注意**
 >
-> 应用开发中，在release模式下构建源码HAR，并同时开启混淆时，由于编译产物为JS文件，而在JS中没有注解的实现机制，因此会在编译过程中被移除，导致无法通过注解实现AOP插桩。
+> 应用开发中，在[release模式下构建](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-har#section19788284410)源码HAR，并同时[开启混淆](../../application-dev/arkts-utils/source-obfuscation.md)时，由于编译产物为JS文件，而在JS中没有注解的实现机制，因此会在编译过程中被移除，导致无法通过注解实现AOP插桩。
 >
-> 为避免因此引起的功能异常，禁止在JS HAR(编译产物中存在JS的HAR包)中使用注解。
+> 为避免因此引起的功能异常，禁止在JS HAR（编译产物中存在JS的HAR包）中使用注解。
 >
-> 如果需要在release模式并且开启混淆的情况下构建含有注解的HAR包，可以构建字节码HAR。
+> 如果需要在release模式并且开启混淆的情况下构建含有注解的HAR包，可以构建[字节码HAR](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-har#section16598338112415)。
 
 ## 用户自定义注解
 
@@ -179,7 +179,7 @@ class MyClass {
 
 当前仅允许对`class declarations`和`method declarations`使用注解，对类和方法可以同时使用同一个注解。
 
-<!-- @annotation_usages_example -->
+<!-- @[annotation_usages_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Annotation.ets) -->
 
 ``` TypeScript
 @ClassPreamble({authorName: "John", revision: 2})
@@ -204,7 +204,7 @@ class C3 {
 
 注解声明示例如下：
 
-<!-- @annotation_statement_example -->
+<!-- @[annotation_statement_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Annotation.ets) -->
 
 ``` TypeScript
 @interface ClassPreamble {
@@ -216,7 +216,7 @@ class C3 {
 
 注解中的字段顺序不影响使用。
 
-<!-- @annotation_field_order -->
+<!-- @[annotation_field_order](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Annotation.ets) -->
 
 ``` TypeScript
 @ClassPreamble1({authorName: "John", revision: 2})
@@ -240,7 +240,7 @@ class C1 {
 
 如果注解中定义了数组类型的字段，则使用数组字面量来设置该字段的值。
 
-<!-- @annotation_array -->
+<!-- @[annotation_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Annotation.ets) -->
 
 ``` TypeScript
 @interface ClassPreamble2 {
@@ -262,7 +262,7 @@ class C0 {
 
 如果不需要定义注解字段，可以省略注解名称后的括号。
 
-<!-- @annotation_omit -->
+<!-- @[annotation_omit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Annotation.ets) -->
 
 ``` TypeScript
 @MyAnno
@@ -275,7 +275,7 @@ class C4 {
 
 注解也可以被导入导出。针对导出，当前仅支持在定义时的导出，即`export @interface`的形式。
 
-<!-- @annotation_export -->
+<!-- @[annotation_export](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Annotation.ets) -->
 
 ``` TypeScript
 export @interface MyAnno1 {}
@@ -283,7 +283,7 @@ export @interface MyAnno1 {}
 
 针对导入，当前仅支持`import {}`和`import * as`两种方式。
 
-<!-- @annotation_export_example -->
+<!-- @[annotation_export_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/MyAnno.ets) -->
 
 ``` TypeScript
 // MyAnno.ets
@@ -291,7 +291,7 @@ export @interface MyAnno2 {}
 export @interface ClassAuthor2 {}
 ```
 
-<!-- @annotation_export_example_import -->
+<!-- @[annotation_export_example_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Annotation.ets) -->
 
 ``` TypeScript
 // Annotation.ets
@@ -321,7 +321,7 @@ import type { MyAnno } from './a'; // 编译错误：注解不允许使用'type'
 
 - 如果仅从模块导入注解，则不会触发模块的副作用。
 
-<!-- @annotation_import -->
+<!-- @[annotation_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/MyAnno.ets) -->
 
 ``` TypeScript
 // MyAnno.ets
@@ -332,7 +332,7 @@ export @interface ClassAuthor1 {}
 console.info('hello');
 ```
 
-<!-- @annotation_import_example -->
+<!-- @[annotation_import_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/Annotation.ets) -->
 
 ``` TypeScript
 // Annotation.ets
@@ -354,7 +354,7 @@ ambientAnnotationDeclaration:
   ;
 ```
 
-<!-- @annotation_export_dts -->
+<!-- @[annotation_export_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/NameAnno.d.ets) -->
 
 ``` TypeScript
 // NameAnno.d.ets
@@ -366,14 +366,14 @@ export declare @interface ClassAuthor3 {}
 - 注解需定义在其他源代码文件中。
 - 注解的环境声明和实现需要完全一致，包括字段的类型和默认值。
 
-<!-- @annotation_name -->
+<!-- @[annotation_name](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/NameAnno.d.ets) -->
 
 ``` TypeScript
 // NameAnno.d.ets
 export declare @interface NameAnno{name: string = ""}
 ```
 
-<!-- @annotation_interface -->
+<!-- @[annotation_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/MyAnno.ets) -->
 
 ``` TypeScript
 // MyAnno.ets
@@ -382,14 +382,14 @@ export @interface NameAnno{name: string = ""} // ok
 
 环境声明的注解和class类似，也可以被import使用。
 
-<!-- @annotation_anno -->
+<!-- @[annotation_anno](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/NameAnno.d.ets) -->
 
 ``` TypeScript
 // NameAnno.d.ets
 export declare @interface MyAnno {}
 ```
 
-<!-- @annotation_class -->
+<!-- @[annotation_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/ImportMyAnno.ets) -->
 
 ``` TypeScript
 // ImportMyAnno.ets
@@ -407,7 +407,7 @@ class C {
 
 1. 当注解定义被导出时，源代码中的注解定义会在.d.ets文件中保留。
 
-   <!-- @annotation_autoGenerate_dts -->
+   <!-- @[annotation_autoGenerate_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/MyAnno.ets) -->
 
    ``` TypeScript
    // MyAnno.ets
@@ -418,7 +418,7 @@ class C {
    }
    ```
 
-   <!-- @annotation_export_dts -->
+   <!-- @[annotation_export_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/NameAnno.d.ets) -->
 
    ``` TypeScript
    // NameAnno.d.ets
@@ -431,7 +431,7 @@ class C {
   - 2.2 如果实体是类，则类被导出。
   - 2.3 如果实体是方法，则类被导出，并且方法不是私有方法。
 
-   <!-- @annotation_export_autoGenerate_dts -->
+   <!-- @[annotation_export_autoGenerate_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/MyAnno.ets) -->
 
    ``` TypeScript
    // MyAnno.ets
@@ -451,7 +451,7 @@ class C {
    }
    ```
 
-   <!-- @annotation_export_autoGenerate_dts -->
+   <!-- @[annotation_export_autoGenerate_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/NameAnno.d.ets) -->
 
    ``` TypeScript
    // NameAnno.d.ets 编译器生成的声明文件
@@ -474,7 +474,7 @@ class C {
 
 开发者生成的.d.ets文件中的注解信息不会自动应用到实现的源代码中。
 
-<!-- @annotation_developerGenerate_dts -->
+<!-- @[annotation_developerGenerate_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/NameAnno.d.ets) -->
 
 ``` TypeScript
 // NameAnno.d.ets 开发者生成的声明文件
@@ -486,7 +486,7 @@ class C {
 }
 ```
 
-<!-- @annotation_developerGenerate_dts -->
+<!-- @[annotation_developerGenerate_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/MyAnno.ets) -->
 
 ``` TypeScript
 // MyAnno.ets 开发者对声明文件实现的源代码
@@ -532,7 +532,7 @@ abstract class C {
 
 源码态注解为一类特殊形式的注解。源码态注解的生命周期只在编译期，不会影响编译产物。
 
-开发者可以通过使用ArkTS提供的Retention接口来构造自定义源码态注解。源码态注解有更广的使用范围，支持在以下声明上使用：
+开发者可以通过使用ArkTS提供的[Retention](../reference/apis-arkts/js-apis-arkts-lang.md#retention24)接口来构造自定义源码态注解。源码态注解有更广的使用范围，支持在以下声明上使用：
 
 - 类
 - 类成员（除构造函数外）
@@ -547,7 +547,7 @@ abstract class C {
 
 源码态注解的声明和使用示例如下所示：
 
-<!-- @annotation_source_retention_annotation -->
+<!-- @[annotation_source_retention_annotation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/IntroductionToArkTS/entry/src/main/ets/pages/SourceRetentionAnnotation.ets) -->
 
 ``` TypeScript
 import { Retention, RetentionPolicy } from '@kit.ArkTS';

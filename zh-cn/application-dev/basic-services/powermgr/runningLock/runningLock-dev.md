@@ -17,7 +17,7 @@
 
 - 开发工具及配置：
 
-  DevEco Studio是OpenHarmony应用开发的推荐IDE工具。开发者可以使用该工具进行开发、调试、打包等操作。请下载安装该工具，并参考DevEco Studio使用指南中的创建工程及运行进行基本的操作验证，保证在DevEco Studio可正常运行。
+  [DevEco Studio](https://developer.huawei.com/consumer/cn/download/)是OpenHarmony应用开发的推荐IDE工具。开发者可以使用该工具进行开发、调试、打包等操作。请下载安装该工具，并参考[DevEco Studio使用指南](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-tools-overview)中的[创建工程及运行](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-create-new-project)进行基本的操作验证，保证在DevEco Studio可正常运行。
 
 
 - SDK版本配置：
@@ -27,11 +27,11 @@
 
 - HDC配置：
 
-  HDC（HarmonyOS Device Connector）是为开发人员提供的用于调试的命令行工具，通过该工具可以在Windows/Linux/Mac系统上与真实设备或者模拟器进行交互，详细参考HDC配置。
+  HDC（HarmonyOS Device Connector）是为开发人员提供的用于调试的命令行工具，通过该工具可以在Windows/Linux/Mac系统上与真实设备或者模拟器进行交互，详细参考[HDC配置](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/hdc)。
 
 ### 搭建环境
 
-- 在PC上安装DevEco Studio，要求版本在4.1及以上。
+- 在PC上安装[DevEco Studio](https://developer.huawei.com/consumer/cn/download/deveco-studio)，要求版本在4.1及以上。
 - 将public-SDK更新到API版本23及以上。
 - PC安装HDC工具，通过该工具可以在Windows/Linux/Mac系统上与真实设备或者模拟器进行交互。
 - 用USB线缆将搭载OpenHarmony的设备连接到PC。
@@ -58,7 +58,7 @@
 
    （1）PC设备创建该类型的运行锁无系统应用权限管控，系统应用和非系统应用均可创建以及使用；非PC设备创建和使用该类型的运行锁要求是系统应用，非PC设备且非系统应用使用该类型锁**功能不生效**，开发时应考虑此约束。
 
-   （2）BACKGROUND_USER_IDLE用户闲时任务锁可以阻止系统自动睡眠，但不能阻止系统强制睡眠。因此使用该接口的应用必须监听进入强制睡眠的公共事件common_event_enter_force_sleep，在接收到该公共事件后1s内主动释放掉该锁；是否监听退出强制睡眠的公共事件common_event_exit_force_sleep并重新持有锁，由应用根据具体场景自行决策。
+   （2）BACKGROUND_USER_IDLE用户闲时任务锁可以阻止系统自动睡眠，但不能阻止系统强制睡眠。因此使用该接口的应用必须监听进入强制睡眠的公共事件[common_event_enter_force_sleep](../../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_enter_force_sleep12)，在接收到该公共事件后1s内主动释放掉该锁；是否监听退出强制睡眠的公共事件[common_event_exit_force_sleep](../../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_exit_force_sleep12)并重新持有锁，由应用根据具体场景自行决策。
    > **注意**：
    > 
    > 触发强制睡眠后，系统会做兜底来强制释放该锁，确保系统能正常进入睡眠。应用需要监听强制睡眠公共事件来处理相应业务，如有必要，在监听到退出强制睡眠后重新申请相应运行锁。
@@ -68,7 +68,7 @@
 
 使用RunningLockType.BACKGROUND_USER_IDLE运行锁，开发示例如下：
 
-1. 申请使用运行锁所需的权限：`ohos.permission.RUNNING_LOCK`。申请流程请参考：申请应用权限。
+1. 申请使用运行锁所需的权限：`ohos.permission.RUNNING_LOCK`。申请流程请参考：[申请应用权限](../../../security/AccessToken/determine-application-mode.md)。
 
 2. 导入模块。
 

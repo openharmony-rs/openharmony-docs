@@ -4,7 +4,7 @@
 
 当前开发者在应用开发过程中涉及到多线程并发场景时，会高频使用Taskpool/Worker并发能力，其中对象/方法在跨线程传递时均会涉及到其序列化和反序列化的过程。当对象本身较大且结构复杂时，序列化/反序列化的耗时就会增加，从而影响应用运行的整体性能。开发者在分析性能问题时，无法感知系统侧是否触发序列化或者反序列化，也无法确认其具体是否执行了耗时操作。
 
-为了帮助开发者更好地识别其代码中潜在的涉及主线程序列化/反序列化的耗时点，以及推动开发者在跨线程传递对象时改用Sendable对象的方式，方舟调优和DevEco Studio联合开发并上线了应用主线程序列化/反序列化超时检测工具。该工具集成在DevEco Profiler中，并可在开发者进行应用调优录制时同步开启。开发者可以在录制结果中的Anomaly泳道内查看到主线程序列化/反序列化超时的Tag点和相关超时信息，并通过与ArkTS Callstack泳道中当前调用栈的时间对齐，定位到序列化/反序列化耗时较长的代码，然后通过Sendable改造或者通信数据改造的方式（例如文件buffer改为文件path+偏移）进行优化，提升应用性能。
+为了帮助开发者更好地识别其代码中潜在的涉及主线程序列化/反序列化的耗时点，以及推动开发者在跨线程传递对象时改用[Sendable](../arkts-utils/arkts-sendable.md)对象的方式，方舟调优和DevEco Studio联合开发并上线了应用主线程序列化/反序列化超时检测工具。该工具集成在DevEco Profiler中，并可在开发者进行应用调优录制时同步开启。开发者可以在录制结果中的Anomaly泳道内查看到主线程序列化/反序列化超时的Tag点和相关超时信息，并通过与ArkTS Callstack泳道中当前调用栈的时间对齐，定位到序列化/反序列化耗时较长的代码，然后通过Sendable改造或者通信数据改造的方式（例如文件buffer改为文件path+偏移）进行优化，提升应用性能。
 
 ## 工具介绍
 
@@ -24,7 +24,7 @@ DevEco Studio新增主线程序列化和反序列化检测能力，同时支持�
 
 **图1 主线程序列化/反序列化开销检测流程图**
 
-
+![](./figures/cross-thread-serialization-time-consumption-analysis-1.png)
 
 其中超时检测部分的使能和关闭是通过方舟Profiler提供的一组CDP协议来控制（默认处于关闭状态，在使用DevEco Profiler进行录制时开启）：
 
@@ -54,19 +54,19 @@ DevEco Studio新增主线程序列化和反序列化检测能力，同时支持�
    
    **图2 录制Frame insight场景数据**
 
-   
+   ![](./figures/cross-thread-serialization-time-consumption-analysis-2.png)
 
 3. 停止录制，待录制结果显示后，如有检测到主线程序列化/反序列化超时的情况，Anomaly泳道会显示序列化/反序列化耗时打点检测结果，提示信息包含线程id、startTime、duration、操作类型等。
 
    **图3 主线程序列化/反序列化超时情况**
 
-   
+   ![](./figures/cross-thread-serialization-time-consumption-analysis-3.png)
 
 4. 框选这段序列化/反序列化超时时间段，点击ArkTS Callstack，会显示这段时间内的调用栈信息，通过查看其中的Symbol Name信息可以定位到当前耗时的调用栈，双击对应调用栈即可跳转到对应源码。
 
    **图4 序列化/反序列化耗时阶段调用栈**
 
-   
+   ![](./figures/cross-thread-serialization-time-consumption-analysis-4.png)
 
 5. 开发者通过上述第4步的方式可以更快地定位到序列化/反序列化耗时长的源代码，并且可以参照Sendable改造或者通信数据改造的方式进行优化，进一步优化和提升应用性能。
 
@@ -78,7 +78,7 @@ DevEco Studio新增主线程序列化和反序列化检测能力，同时支持�
 
    **图5 序列化、反序列化阈值配置**
 
-   
+   ![](./figures/cross-thread-serialization-time-consumption-analysis-5.png)
 
 3. 参照上述序列化/反序列化性能检测步骤开始录制，此时新设置的超时阈值已经被成功设置和使用。
 
@@ -148,21 +148,21 @@ function doDBOperations(info: BookDBInfo) {
 
 **图6 未使用Sendable时序列化耗时结果**
 
-
+![](./figures/cross-thread-serialization-time-consumption-analysis-6.png)
 
 通过点击下方ArkTS Callstack泳道，选取这个序列化超时发生的时间段后，可以通过下方的Callstack信息定位到此时正在执行Index.ts文件中的prepareBooksInfo方法，由上方伪代码可知该方法内调用了taskpool.execute方法，向子线程中传递对象dbInfo，触发了主线程序列化过程。
 
 **图7 未使用Sendable时序列化超时阶段ArkTS Callstack调用栈**
 
+![](./figures/cross-thread-serialization-time-consumption-analysis-7.png)
 
-
-为了解决该场景的序列化超时问题，将上述示例中dbInfo相关的class进行Sendable改造，将单个书本信息的类型定义为Sendable类型，并改造内部成员属性类型为Sendable类型。
+为了解决该场景的序列化超时问题，将上述示例中dbInfo相关的class进行[Sendable改造](../arkts-utils/arkts-sendable.md)，将单个书本信息的类型定义为Sendable类型，并改造内部成员属性类型为Sendable类型。
 
 优化后再次通过序列化超时检测工具检测录制，发现该场景下序列化耗时已小于默认阈值（8ms），在Anomaly泳道中已经没有对应超时的Trace点。
 
 **图8 使用Sendable方式优化后序列化耗时**
 
-
+![](./figures/cross-thread-serialization-time-consumption-analysis-8.png)
 
 **表1 序列化耗时对比**
 

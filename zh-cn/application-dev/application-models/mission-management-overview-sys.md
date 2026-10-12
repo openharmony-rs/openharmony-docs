@@ -19,7 +19,7 @@
 - MissionListManager：系统任务管理模块，内部维护了当前所有的任务链，与最近任务列表保持一致。
   
   **图1** 任务管理示意图  
-  mission-list-manager
+  ![mission-list-manager](figures/mission-list-manager.png)
 
 
 任务的管理由系统应用（如桌面应用）负责，三方应用无法管理任务。用户通过最近任务列表进行任务的相关交互。当创建任务后，用户可以对最近任务列表进行如下操作：
@@ -34,9 +34,9 @@
 - 将一个指定的任务切换到前台。
 
 
-一个UIAbility实例对应一个单独的任务，因此应用调用startAbility()方法启动一个UIAbility时，就是创建了一个任务。
+一个UIAbility实例对应一个单独的任务，因此应用调用[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)方法启动一个UIAbility时，就是创建了一个任务。
 
-1. 桌面应用调用missionManager的接口管理任务，需要申请`ohos.permission.MANAGE_MISSIONS`权限，配置方式请参见申请应用权限。
+1. 桌面应用调用[missionManager](../reference/apis-ability-kit/js-apis-app-ability-missionManager-sys.md)的接口管理任务，需要申请`ohos.permission.MANAGE_MISSIONS`权限，配置方式请参见[申请应用权限](../security/AccessToken/determine-application-mode.md#system_basic等级应用申请权限的方式)。
 
 2. 利用missionManager进行任务管理（监听任务变化、获取任务信息、获取任务快照、清理任务、任务加锁/解锁等）。
 
@@ -217,4 +217,4 @@
 
 针对任务管理开发，有以下相关实例可供参考：
 
-- 任务管理（ArkTS）（Full SDK）（API9）
+- [任务管理（ArkTS）（Full SDK）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/ApplicationModels/MissionManager)

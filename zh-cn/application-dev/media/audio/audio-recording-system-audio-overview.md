@@ -33,13 +33,13 @@
 
 ## 播放端隐私保护
 
-播放端可以通过配置自身音频流的隐私属性，控制是否允许其他应用录制。标记为隐私保护的播放流不会被内录采集，例如包含通话内容、账号信息或其他隐私内容的音频流可通过该配置避免被录制。具体配置方法请参考配置目标播放流的内录策略。
+播放端可以通过配置自身音频流的隐私属性，控制是否允许其他应用录制。标记为隐私保护的播放流不会被内录采集，例如包含通话内容、账号信息或其他隐私内容的音频流可通过该配置避免被录制。具体配置方法请参考[配置目标播放流的内录策略](implement-system-audio-recording.md#配置目标播放流的内录策略)。
 
 ## 如何选择内录接口
 
-如果仅需要获取系统播放音频的PCM数据，或需要将音频数据接入自定义编码、算法和传输链路，使用AudioCapturer（ArkTS API）或native_audiocapturer.h（C API）。如果需要同时录制屏幕画面和系统音频，使用AVScreenCapture录屏基础流程。
+如果仅需要获取系统播放音频的PCM数据，或需要将音频数据接入自定义编码、算法和传输链路，使用[AudioCapturer](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md)（ArkTS API）或[native_audiocapturer.h](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md)（C API）。如果需要同时录制屏幕画面和系统音频，使用[AVScreenCapture录屏基础流程](../media/avscreencapture-c-basic-process.md)。
 
 | 接口类型 | 开放版本 | 适用场景 | 开发指导 |
 | -------- | ------------ | -------- | -------- |
-| AudioCapturer或native_audiocapturer.h | API版本26.0.0 | 仅需要录制系统音频，或需要将PCM数据接入自定义编码、算法和传输链路，例如直播推流、在线会议、听歌识曲和音频分析。 | 实现录制系统音频 |
-| AVScreenCapture录屏基础流程 | API版本10 | 需要同时录制屏幕视频和系统音频，例如屏幕录制、制作教学视频和游戏录像。 | AVScreenCapture录屏基础流程 |
+| AudioCapturer或native_audiocapturer.h | API版本26.0.0 | 仅需要录制系统音频，或需要将PCM数据接入自定义编码、算法和传输链路，例如直播推流、在线会议、听歌识曲和音频分析。 | [实现录制系统音频](implement-system-audio-recording.md) |
+| AVScreenCapture录屏基础流程 | API版本10 | 需要同时录制屏幕视频和系统音频，例如屏幕录制、制作教学视频和游戏录像。 | [AVScreenCapture录屏基础流程](../media/avscreencapture-c-basic-process.md) |

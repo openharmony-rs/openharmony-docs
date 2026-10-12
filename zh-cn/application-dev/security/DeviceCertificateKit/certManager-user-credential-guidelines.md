@@ -9,9 +9,9 @@
 
 如果您的应用在访问应用服务器时，应用服务器要求使用设备用户的证书凭据对用户进行身份认证，则您的应用可以使用本功能进行用户证书凭据的安装和使用，如您的应用通过双向HTTPS登录企业内部的应用服务器。
 
-用户证书凭据功能提供了用户级别的证书凭据（包含证书链和私钥）的安全存储、授权管理和签名能力。用户证书凭据的公私钥对存储在Universal Keystore Kit。
+用户证书凭据功能提供了用户级别的证书凭据（包含证书链和私钥）的安全存储、授权管理和签名能力。用户证书凭据的公私钥对存储在[Universal Keystore Kit](../UniversalKeystoreKit/huks-overview.md)。
 
-
+![](figures/certificate-manager-user-credential-arch.png)
 
 用户证书凭据归属于设备的用户，可以由设备的用户通过系统设置应用进行安装和管理，应用也可以通过API拉起证书管理服务的对话框，引导用户完成安装。
 
@@ -23,11 +23,11 @@
 >
 > 本开发指导需使用API版本23及以上版本SDK。
 >
-> 用户证书凭据在用户授权后，可以被其他应用访问和使用，如您的应用安装的证书凭据不希望其他应用访问，请使用“应用证书凭据”功能。
+> 用户证书凭据在用户授权后，可以被其他应用访问和使用，如您的应用安装的证书凭据不希望其他应用访问，请使用“[应用证书凭据](./certManager-private-credential-guidelines.md)”功能。
 
 ## 约束与限制
 
-用户证书凭据的安装和签名、验签操作，依赖密钥管理服务（HUKS）能力。
+用户证书凭据的安装和签名、验签操作，依赖[密钥管理服务](../UniversalKeystoreKit/huks-overview.md)（HUKS）能力。
 
 ## 开发步骤
 
@@ -35,7 +35,7 @@
 
    需要申请的权限：ohos.permission.ACCESS_CERT_MANAGER
 
-   声明权限请参考：声明权限
+   声明权限请参考：[声明权限](../AccessToken/declare-permissions.md)
 
 2. 导入相关模块。
 
@@ -86,11 +86,11 @@
 
   > **说明：**
   >
-  > 签名、验签操作支持的参数组合，详见HUKS声明的签名/验签介绍及算法规格中RSA、ECC及SM2的描述。
+  > 签名、验签操作支持的参数组合，详见HUKS声明的[签名/验签介绍及算法规格](../UniversalKeystoreKit/huks-signing-signature-verification-overview.md)中RSA、ECC及SM2的描述。
 
 ## 样例代码
 
-<!-- @certificate_management_user_cred_guidance -->
+<!-- @[certificate_management_user_cred_guidance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerUserCredSample.ets) -->
 
 ``` TypeScript
 import { certificateManager } from '@kit.DeviceCertificateKit';

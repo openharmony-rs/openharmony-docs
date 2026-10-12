@@ -37,7 +37,7 @@ target_link_libraries(sample PUBLIC libnative_avscreen_capture.so libnative_disp
 
 **添加头文件**
 
-<!-- @screenCapture_import --> 
+<!-- @[screenCapture_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/main.h) --> 
 
 ``` C
 #include "hilog/log.h"
@@ -53,11 +53,11 @@ target_link_libraries(sample PUBLIC libnative_avscreen_capture.so libnative_disp
 #include <string>
 ```
 
-调用OH_AVScreenCapture_SetCaptureArea()接口传入希望录制的矩形区域。
+调用[OH_AVScreenCapture_SetCaptureArea()](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_setcapturearea)接口传入希望录制的矩形区域。
 
 示例中的变量说明如下：
 
-- g_avCapture：指向OH_AVScreenCapture实例的指针。
+- g_avCapture：指向[OH_AVScreenCapture](../../reference/apis-media-kit/capi-avscreencapture-oh-avscreencapture.md)实例的指针。
 - regionDisplayId：需要捕获区域所在的屏幕ID。
 - region：需要捕获区域的坐标和宽高。类型为OH_Rect，包括成员变量x、y、width、height。
   - x、y分别为矩形区域起点的横坐标、纵坐标位置。
@@ -74,7 +74,7 @@ target_link_libraries(sample PUBLIC libnative_avscreen_capture.so libnative_disp
 > **设置失败的处理**：如果区域位置设置失败，系统将按照上一次的区域进行捕获。建议开发者在设置区域时进行错误检查和处理，以确保捕获区域的准确性。
 > **参数设置非负**：该接口设置的坐标和宽高不能为负数。
 
-<!-- @screenCapture_startScreenCapture_rectangular --> 
+<!-- @[screenCapture_startScreenCapture_rectangular](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) --> 
 
 ``` C++
 g_avCapture = OH_AVScreenCapture_Create();

@@ -19,20 +19,20 @@
 
 ## 混淆开启
 
-从API version 10开始，支持源码混淆功能。开启混淆需要满足以下条件：工程为Stage模型、在Release编译模式下、在模块的`build-profile.json5`文件中开启混淆配置。详细的开启步骤和配置方法请参考ArkGuard混淆开启指南。
+从API version 10开始，支持源码混淆功能。开启混淆需要满足以下条件：工程为Stage模型、在Release编译模式下、在模块的`build-profile.json5`文件中开启混淆配置。详细的开启步骤和配置方法请参考[ArkGuard混淆开启指南](source-obfuscation-guide.md)。
 
 > **注意：**  
 > `enable`默认为false，默认不开启源码混淆功能（在DevEco Studio 5.0.3.600之前，新建工程默认开启源码混淆）。
 
 如果工程或模块是Static Library，则该工程或模块是一个HAR。
 
-构建字节码HAR时的混淆行为如下：
+构建[字节码HAR](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-har#section16598338112415)时的混淆行为如下：
 
 1.  以Debug模式构建HAR，会直接打包源码，不进行源码混淆。
 2.  以Release模式构建HAR，会编译、混淆并压缩代码。
 3.  构建字节码格式的HAR。开启混淆时，编译器会先对源码中间文件进行混淆，再生成abc字节码。
 
-针对不同包类型的混淆建议，请参考不同包类型的源码混淆建议。
+针对不同包类型的混淆建议，请参考[不同包类型的源码混淆建议](source-obfuscation-practice.md)。
 
 ### 编译操作步骤
 
@@ -41,11 +41,11 @@
 使用Release模式构建HAR的步骤如下：  
 **图 1**  DevEco Studio选择release编译模式  
 
-
+![](figures/DevEco-Studio选择release编译模式.png)
 
 **图 2**  DevEco Studio指定模块编译  
 
-
+![](figures/DevEco-Studio指定模块编译.png)
 
 ## 混淆配置能力
 
@@ -61,13 +61,13 @@
 
 **图 3**  编译配置文件  
 
-
+![](figures/编译配置文件.png "编译配置文件")
 
 新建工程时，每个模块下都有`obfuscation-rules.txt`文件，用于配置混淆。
 
 **图 4**  混淆配置文件  
 
-
+![](figures/混淆配置文件.png "混淆配置文件")
 
 在上图中，`obfuscation-rules.txt`文件中添加了`-enable-property-obfuscation`和`-enable-toplevel-obfuscation`开关，表示已启用属性混淆和顶层作用域名称混淆。
 
@@ -111,9 +111,9 @@ DevEco Studio混淆选项及功能描述如下：
 | -keep-uncompact | 在代码压缩时排除指定路径的文件 |
 
 > **说明：**
-> 名称类和路径类的保留选项支持通配符，详细用法请参考保留选项支持的通配符。
+> 名称类和路径类的保留选项支持通配符，详细用法请参考[保留选项支持的通配符](source-obfuscation-keep-options.md#保留选项支持的通配符)。
 
-混淆选项的详细用法及代码示例可以参考混淆配置选项和混淆保留选项。
+混淆选项的详细用法及代码示例可以参考[混淆配置选项](source-obfuscation-rule-options.md)和[混淆保留选项](source-obfuscation-keep-options.md)。
 
 **混淆优化建议**
 
@@ -124,7 +124,7 @@ DevEco Studio混淆选项及功能描述如下：
 
 ### 混淆规则合并策略
 
-在编译一个模块时，生效的混淆规则是当前编译模块混淆规则和依赖模块混淆规则的合并结果。具体规则请参考：混淆规则合并策略。
+在编译一个模块时，生效的混淆规则是当前编译模块混淆规则和依赖模块混淆规则的合并结果。具体规则请参考：[混淆规则合并策略](source-obfuscation.md#混淆规则合并策略)。
 
 ## 查看混淆结果
 
@@ -137,7 +137,7 @@ DevEco Studio混淆选项及功能描述如下：
   * 系统API白名单文件：`systemApiCache.json`，记录SDK接口与属性名称。
 
     **图 5**  DevEco Studio编译产物与缓存文件  
-    
+    ![](figures/DevEco-Studio编译产物与缓存文件.png "DevEco-Studio编译产物与缓存文件")
 
 ## 调试
 
@@ -145,15 +145,15 @@ DevEco Studio混淆选项及功能描述如下：
 
 ### 函数调用栈还原
 
-经过混淆的应用程序中代码名称会发生更改，因此报错栈与源码不完全一致，crash时打印的报错栈会难以理解，如何处理请参考报错栈还原。
+经过混淆的应用程序中代码名称会发生更改，因此报错栈与源码不完全一致，crash时打印的报错栈会难以理解，如何处理请参考[报错栈还原](source-obfuscation-guide.md#报错栈还原)。
 
 ### 反混淆工具hstack
 
-hstack需要将Node.js配置到环境变量中，详细使用说明请参考堆栈解析工具（hstack）。
+hstack需要将Node.js配置到环境变量中，详细使用说明请参考[堆栈解析工具（hstack）](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-command-line-hstack)。
 
 ### 常见报错案例
 
-请参考ArkGuard混淆常见问题。
+请参考[ArkGuard混淆常见问题](source-obfuscation-questions.md)。
 
 ## 使用第三方加固
 
@@ -175,5 +175,5 @@ hstack需要将Node.js配置到环境变量中，详细使用说明请参考堆�
 
 ## 示例代码
 
--   应用安全示例代码
+-   [应用安全示例代码](https://gitcode.com/HarmonyOS_Samples/BestPracticeSnippets/tree/master/Privacy)
 

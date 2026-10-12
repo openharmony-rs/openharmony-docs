@@ -5,7 +5,7 @@
 <!--Owner: @inter515-->
 <!--Designer: @inter515-->
 <!--Tester: @laonie666-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @chen8281-->
 
 ## 概述
 
@@ -17,7 +17,7 @@
 
 testhelper功能架构设计图如下所示：
 
-testhelper
+![testhelper](figures/testhelper.png)
 
 testhelper分为命令行工具层和核心能力层两部分，依赖底层系统服务提供功能支持。
 
@@ -147,7 +147,7 @@ hdc shell testhelper get-timezone
 
 | 参数 | 必填 | 说明 |
 |-----|------|------|
-| timezone | 是 | 时区标识符，如`Asia/Shanghai`。取值参考<!--RP1-->支持的系统时区<!--RP1End-->。|
+| timezone | 是 | 时区标识符，如`Asia/Shanghai`。取值参考<!--RP1-->[支持的系统时区](../reference/apis-basic-services-kit/js-apis-date-time.md#支持的系统时区)<!--RP1End-->。|
 
 **使用示例：**
 
@@ -313,7 +313,7 @@ hdc shell testhelper install-font /data/local/tmp/myfont.ttf
 
 | 参数 | 必填 | 说明 |
 |-----|------|------|
-| font-name | 是 | 字体名称。可通过testhelper get-fontname命令获取已安装字体文件对应的字体名称。 |
+| font-name | 是 | 字体名称。可通过[testhelper get-fontname](#testhelper-get-fontname)命令获取已安装字体文件对应的字体名称。 |
 
 **使用示例：**
 
@@ -361,7 +361,7 @@ hdc shell testhelper set-viewmode dark
 
 ### testhelper enable-location-mock
 
-启用位置模拟功能。启用后支持使用testhelper set-mocked-locations命令设置模拟位置信息。
+启用位置模拟功能。启用后支持使用[testhelper set-mocked-locations](#testhelper-set-mocked-locations)命令设置模拟位置信息。
 
 **使用示例：**
 

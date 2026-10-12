@@ -16,12 +16,12 @@
 
 ## 约束限制
 
-- 压缩解压缩接口的输入输出路径均为沙箱路径，具体请参考应用沙箱目录。
+- 压缩解压缩接口的输入输出路径均为沙箱路径，具体请参考[应用沙箱目录](app-sandbox-directory.md)。
 - 当前仅支持ZIP格式的归档文件。
 
 ## 接口说明
 
-接口的详细说明，请参考oh_archive.h。
+接口的详细说明，请参考[oh_archive.h](../reference/apis-core-file-kit/capi-oh-archive-h.md)。
 
 ### 归档文件压缩接口
 
@@ -65,7 +65,7 @@ target_link_libraries(sample PUBLIC liboharchive.so)
 4. 调用OH_Archive_Writer_Add向归档中添加文件或目录，支持同时添加多个文件或目录。
 5. 调用OH_Archive_Writer_Close完成归档写入并释放资源。压缩完成后必须调用此接口释放资源。
 
-<!--@zip_file_compress_example-->
+<!--@[zip_file_compress_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKCompressSample/entry/src/main/cpp/napi_init.cpp)-->
 
 ``` C++
 static napi_value ZipFileCompress(napi_env env, napi_callback_info info)
@@ -119,7 +119,7 @@ static napi_value ZipFileCompress(napi_env env, napi_callback_info info)
 3. 调用OH_Archive_Reader_ExtractAllFile将归档文件解压缩到指定目录。解压缩后的文件将保持原有的目录结构。
 4. 调用OH_Archive_Reader_Close关闭归档读取器。解压缩完成后必须调用此接口释放资源。
 
-<!--@zip_file_decompress_example-->
+<!--@[zip_file_decompress_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKCompressSample/entry/src/main/cpp/napi_init.cpp)-->
 
 ``` C++
 static napi_value ZipFileDecompress(napi_env env, napi_callback_info info)

@@ -14,27 +14,27 @@ HEIF图片（High Efficiency Image File Format，HEIF，也称高效图像文件
 
 系统从API12开始支持HEIF图片的编解码与显示，如果应用基于系统Image Kit、ArkUI Image组件、ArkWeb等模块实现图片处理功能，则可以像处理JPEG、PNG等格式的图片一样，处理HEIF图片。
 
-HEIF图片解码可参考：图片解码指南（ArkTS）和图片解码指南（C/C++）。
+HEIF图片解码可参考：[图片解码指南（ArkTS）](../image-decoding.md)和[图片解码指南（C/C++）](../image-source-c.md)。
 
-HEIF图片显示可参考：ArkUI Image组件图片显示。
+HEIF图片显示可参考：[ArkUI Image组件图片显示](../../../ui/arkts-graphics-display.md)。
 
-HEIF图片编码可参考：图片编码指南（ArkTS）和图片编码指南（C/C++）。
+HEIF图片编码可参考：[图片编码指南（ArkTS）](../image-encoding.md)和[图片编码指南（C/C++）](../image-packer-c.md)。
 
-ArkWeb图片上传可参考：使用Web组件上传文件。
+ArkWeb图片上传可参考：[使用Web组件上传文件](../../../web/web-file-upload.md)。
 
 ## 常见问题
 
 ### 上传HEIF图片时提示：“不支持的格式”
 
-可以使用ImageSource属性中的supportedFormats和ImagePacker属性中的supportedFormats，来查看系统支持编解码的图片格式。只要查询到的结果中包含"image/heic"，即代表该设备支持HEIF图片编解码。
+可以使用ImageSource[属性](../../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#属性)中的supportedFormats和ImagePacker[属性](../../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#属性)中的supportedFormats，来查看系统支持编解码的图片格式。只要查询到的结果中包含"image/heic"，即代表该设备支持HEIF图片编解码。
 
 系统侧不会拦截HEIF图片上传，若HEIF图片上传不成功，可能的原因是：应用对后缀名为.heic、.heif、.HEIC、.HEIF的图片文件做了过滤限制。
 
 对于使用系统图片处理能力的应用，只需要解除过滤限制，即可正常上传、显示HEIF图片。
 
-如果应用不希望使用HEIF图片，可以借助Image Kit提供的图片编解码能力，自行将HEIF图片转码为JPEG或PNG格式的图片。
+如果应用不希望使用HEIF图片，可以借助[Image Kit](../image-overview.md)提供的图片编解码能力，自行[将HEIF图片转码为JPEG或PNG格式的图片](#担心使用heif格式图片存在兼容性问题需使用jpeg或png格式的图片如何操作)。
 
-当应用没有使用系统提供的图片处理能力，且自身无法处理HEIF图片时，还可以选择使用Media Library Kit提供的媒体资源访问能力，这时系统会主动将HEIF图片转码为JPEG图片。
+当应用没有使用系统提供的图片处理能力，且自身无法处理HEIF图片时，还可以选择使用[Media Library Kit](../../medialibrary/photoAccessHelper-overview.md)提供的媒体资源访问能力，这时系统会主动将HEIF图片转码为JPEG图片。
 
  ### 为什么通过PhotoViewPicker或URI获取HEIF图片时得到JPEG图片？
 
@@ -44,7 +44,7 @@ ArkWeb图片上传可参考：使用Web组件上传文件。
 
 **解决措施**
 
-如果应用需要获取HEIF原图，应显式声明应用支持HEIF图片。通过PhotoViewPicker获取图片时，可在PhotoSelectOptions中配置`assetCompatibleCapability`，并通过`preferredCompatibleMode`指定首选兼容模式。
+如果应用需要获取HEIF原图，应显式声明应用支持HEIF图片。通过[PhotoViewPicker](../../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoViewPicker.md)获取图片时，可在[PhotoSelectOptions](../../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-class.md#photoselectoptions)中配置`assetCompatibleCapability`，并通过`preferredCompatibleMode`指定首选兼容模式。
 
 - `assetCompatibleCapability.supportedHighResolution`是`AssetCompatibleCapability`的必填字段，表示应用支持高分辨率资产。
 - `assetCompatibleCapability.supportedMimeType`用于声明应用支持的MIME类型（从API版本26.0.0开始支持），配置`image/heic`表示应用支持HEIF图片。
@@ -81,9 +81,9 @@ async function selectHeifOriginalWithPhotoViewPicker(): Promise<photoAccessHelpe
 }
 ```
 
-获取到photoAccessHelper.PhotoSelectResult结果后，应用可使用`photoSelectResult.photoUris`读取返回URI。
+获取到[photoAccessHelper.PhotoSelectResult](../../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-class.md#photoselectresult)结果后，应用可使用`photoSelectResult.photoUris`读取返回URI。
 
-如果应用不通过PhotoViewPicker选择图片，而是通过PhotoAccessHelper查询、打开或批量处理媒体资产。例如网盘、备份、内容归档等应用场景，可使用setAssetCompatibleCapability接口配置AssetCompatibleCapability，声明应用支持`image/heic`。配置后再通过`getAssets`等接口访问资产。
+如果应用不通过PhotoViewPicker选择图片，而是通过[PhotoAccessHelper](../../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md)查询、打开或批量处理媒体资产。例如网盘、备份、内容归档等应用场景，可使用[setAssetCompatibleCapability](../../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#setassetcompatiblecapability24)接口配置[AssetCompatibleCapability](../../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-i.md#assetcompatiblecapability24)，声明应用支持`image/heic`。配置后再通过`getAssets`等接口访问资产。
 
 以打开结果集中的第一条资产为例，实际业务可通过`predicates`添加筛选条件定位目标资产。
 
@@ -134,9 +134,9 @@ async function openFirstPhotoAssetFd(
 
 **可能原因**
 
-应用根据URI后缀、文件后缀名或媒体库PhotoKeys记录的`MEDIA_SUFFIX`作为图片文件格式的依据。文件真实格式应以其二进制数据内容为准。
+应用根据URI后缀、文件后缀名或媒体库[PhotoKeys](../../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-e.md#photokeys)记录的`MEDIA_SUFFIX`作为图片文件格式的依据。文件真实格式应以其二进制数据内容为准。
 
-应用根据媒体库PhotoKeys记录的SIZE作为文件大小，但最终获取到的图片文件由于经过兼容性转换，导致文件体积发生了变化。如果此时直接按照原图大小使用该图片文件，由于HEIF图片通常比JPG图片体积更小，仅读取JPG文件的一部分就认为文件结束，会导致图片显示不完整。
+应用根据媒体库[PhotoKeys](../../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-e.md#photokeys)记录的SIZE作为文件大小，但最终获取到的图片文件由于经过兼容性转换，导致文件体积发生了变化。如果此时直接按照原图大小使用该图片文件，由于HEIF图片通常比JPG图片体积更小，仅读取JPG文件的一部分就认为文件结束，会导致图片显示不完整。
 
 **解决措施**
 
@@ -180,7 +180,7 @@ async function getImageInfoByFd(fd: number): Promise<image.ImageInfo | undefined
 }
 ```
 
-C/C++应用可参考使用Image_NativeModule完成图片解码，通过ImageSource读取图片真实格式、宽高等信息。
+C/C++应用可参考[使用Image_NativeModule完成图片解码](../image-source-c.md)，通过ImageSource读取图片真实格式、宽高等信息。
 
 对最终打开的文件描述符fd使用fstat，可获取其准确的文件大小。示例代码如下：
 ```c
@@ -222,7 +222,7 @@ static int64_t GetFinalFileSizeByFd(int32_t fd)
 
 示例代码如下：
 
-<!-- @transcoding_example -->         
+<!-- @[transcoding_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/TranscodingUtility.ets) -->         
 
 ``` TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -263,4 +263,4 @@ export async function reEncoding(context : Context, fd : number | undefined) {
 }
 ```
 
-如需使用CAPI进行图片转码，应首先创建ImageSource和ImagePacker实例，然后指定编码参数，调用图片编码接口完成转码。详细示例代码可参考使用Image_NativeModule完成图片编码。
+如需使用CAPI进行图片转码，应首先创建ImageSource和ImagePacker实例，然后指定编码参数，调用图片编码接口完成转码。详细示例代码可参考[使用Image_NativeModule完成图片编码](../image-packer-c.md)。

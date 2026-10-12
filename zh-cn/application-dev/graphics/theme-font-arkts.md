@@ -13,14 +13,14 @@
 
 **图1** 主题字体的切换和使用
 
-themeText_native
+![themeText_native](figures/themeText_native.jpg)
 
 针对主题字的切换使用，应用方应确保订阅主题字体变更事件，当接收到字体变更事件后，由应用方主动调用页面刷新才能实现主题字的切换，否则主题字只能在重启应用后才生效。
 
 
 ## 接口说明
 
-注册使用主题字体的常用接口如下表所示，详细接口说明请见@ohos.graphics.text (文本模块)。
+注册使用主题字体的常用接口如下表所示，详细接口说明请见[@ohos.graphics.text (文本模块)](../reference/apis-arkgraphics2d/js-apis-graphics-text.md)。
 
 | 接口 | 描述 | 
 | -------- | -------- |
@@ -33,7 +33,7 @@ themeText_native
 
 2. 导入依赖的相关模块。
 
-   <!-- @arkts_theme_font_import -->
+   <!-- @[arkts_theme_font_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ThemeFont/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    import { text } from '@kit.ArkGraphics2D';
@@ -41,7 +41,7 @@ themeText_native
 
 3. 使用getGlobalInstance()接口获取全局字体集对象，系统框架在注册主题字体过程中仅会将主题字体信息传入全局字体集对象中。
 
-   <!-- @arkts_theme_font_font_collection -->
+   <!-- @[arkts_theme_font_font_collection](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ThemeFont/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    // 获取字体管理器全局FontCollection实例
@@ -55,7 +55,7 @@ themeText_native
    > 
    > 若未在系统**主题应用**中设置一项主题字体，则将使用系统默认字体进行绘制。
 
-   <!-- @arkts_theme_font_text_style -->
+   <!-- @[arkts_theme_font_text_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ThemeFont/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    // 设置文本样式
@@ -75,7 +75,7 @@ themeText_native
 
 5. 设置文本样式，添加文本内容，并生成段落文本用于后续文本的绘制显示。
 
-   <!-- @arkts_theme_font_build -->
+   <!-- @[arkts_theme_font_build](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ThemeFont/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    // 在段落生成器中设置文本样式
@@ -88,7 +88,7 @@ themeText_native
 
 6. 创建渲染节点，并保存到数组。（此处示例代码为简化逻辑，采用数组作为容器，实际开发中应结合应用情况选择更恰当的容器来保证节点的添加与删除对应。）
 
-   <!-- @arkts_theme_font_create_render_node -->
+   <!-- @[arkts_theme_font_create_render_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ThemeFont/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    // 创建渲染节点数组
@@ -135,7 +135,7 @@ themeText_native
 
 7. 创建渲染节点更新函数，并导出函数，供其他文件（如：EntryAbility.ets）使用；重绘制节点目的为更新排版中字体信息，若不更新字体信息，使用之前残留结果，可能造成文字乱码。
 
-   <!-- @arkts_theme_font_export_update -->
+   <!-- @[arkts_theme_font_export_update](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ThemeFont/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    // 导出渲染节点更新函数
@@ -149,7 +149,7 @@ themeText_native
 
 8. 在EntryAbility.ets中接收主题字变更事件，并调用渲染节点更新函数。
 
-   <!-- @arkts_theme_font_entry_ability -->
+   <!-- @[arkts_theme_font_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/ThemeFont/entry/src/main/ets/entryability/EntryAbility.ets) -->
    
    ``` TypeScript
    import { AbilityConstant, Configuration, UIAbility, Want } from '@kit.AbilityKit';
@@ -183,8 +183,8 @@ themeText_native
 
 **图2** 主题字体1的效果 
 
-themeFont_ts_01
+![themeFont_ts_01](figures/themeFont.PNG)
 
 **图3** 主题字体2的效果
 
-themeFont_ts_02
+![themeFont_ts_02](figures/themeFont_ts_02.png)

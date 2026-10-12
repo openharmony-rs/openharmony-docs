@@ -8,7 +8,7 @@
 
 星闪设备发现包括广播与扫描两个环节：外围设备通过发送星闪广播宣告自身，中心设备通过发起星闪扫描发现正在广播的外围设备。广播与扫描可独立使用，也可配合实现设备间的发现与连接。
 
-开发前需按开发准备完成权限声明与运行时申请，并确保设备已开启星闪（参见开发准备 > 查询星闪开关状态）。
+开发前需按[开发准备](nearlink-preparations-guide.md)完成权限声明与运行时申请，并确保设备已开启星闪（参见[开发准备 > 查询星闪开关状态](nearlink-preparations-guide.md#查询星闪开关状态)）。
 
 ## 发起星闪广播
 
@@ -16,20 +16,20 @@
 
 ### 接口说明
 
-发送星闪广播，完整的API说明以及示例代码请参考：@ohos.nearlink.advertising (星闪广播能力)。
+发送星闪广播，完整的API说明以及示例代码请参考：[@ohos.nearlink.advertising (星闪广播能力)](../../reference/apis-connectivity-kit/js-apis-nearlink-advertising.md)。
 
 | 接口名 | 描述 |
 | -------- | -------- |
 | startAdvertising(advertisingParams: AdvertisingParams): Promise&lt;number&gt; | 启动星闪广播。使用Promise异步回调。 |
 | stopAdvertising(advertisingId: number): Promise&lt;void&gt; | 停止星闪广播。使用Promise异步回调。 |
 | onAdvertisingStateChange(callback: Callback&lt;AdvertisingStateChangeInfo&gt;): void | 订阅星闪广播状态变化事件。使用callback异步回调。 |
-| offAdvertisingStateChange(callback?: Callback&lt;AdvertisingStateChangeInfo&gt;): void | 取消订阅星闪广播状态变化事件。 |
+| offAdvertisingStateChange(callback?: Callback&lt;AdvertisingStateChangeInfo&gt;): void | 取消订阅星闪广播状态变化事件。使用callback异步回调。 |
 
 ### 开发步骤
 
 1. 导入相关模块。
 
-    <!-- @advertising_module_import -->
+    <!-- @[advertising_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/AdvertisingPage.ets) -->
     
     ``` TypeScript
     import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -39,7 +39,7 @@
 
 2. 订阅星闪广播状态变化事件。
 
-    <!-- @advertising_on_state_change -->
+    <!-- @[advertising_on_state_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/AdvertisingPage.ets) -->
     
     ``` TypeScript
     try {
@@ -54,9 +54,9 @@
     }
     ```
 
-3. 构造用户需要的广播参数及数据。广播中携带的服务UUID必须为自定义UUID，参见星闪常见问题 > 标准UUID与自定义UUID有什么区别。
+3. 构造用户需要的广播参数及数据。广播中携带的服务UUID必须为自定义UUID，参见[星闪常见问题 > 标准UUID与自定义UUID有什么区别](nearlink-faq-guide.md#标准uuid与自定义uuid有什么区别)。
 
-    <!-- @advertising_build_params -->
+    <!-- @[advertising_build_params](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/AdvertisingPage.ets) -->
     
     ``` TypeScript
     let manufacturerData = new Uint8Array([0x01, 0x02, 0x03, 0x04]);
@@ -96,9 +96,9 @@
     };
     ```
 
-4. 开启星闪广播，返回advertisingId表示当前广播索引。其中advertisingParams为第3步构造的广播参数。
+4. 启动星闪广播，返回advId表示本次广播的ID。其中advertisingParams为第3步构造的广播参数。
 
-    <!-- @advertising_start -->
+    <!-- @[advertising_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/AdvertisingPage.ets) -->
     
     ``` TypeScript
     try {
@@ -110,9 +110,9 @@
     }
     ```
 
-5. 停止星闪广播。其中advId为第4步开启广播时返回的广播索引。
+5. 停止星闪广播。其中advId为第4步启动广播时返回的广播ID。
 
-    <!-- @advertising_stop -->
+    <!-- @[advertising_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/AdvertisingPage.ets) -->
     
     ``` TypeScript
     try {
@@ -127,7 +127,7 @@
 
 6. 取消订阅星闪广播状态变化事件。
 
-    <!-- @advertising_off_state_change -->
+    <!-- @[advertising_off_state_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/AdvertisingPage.ets) -->
     
     ``` TypeScript
     try {
@@ -144,20 +144,20 @@
 
 ### 接口说明
 
-发起星闪扫描，完整的API说明以及示例代码请参考：@ohos.nearlink.scan (星闪扫描能力)。
+发起星闪扫描，完整的API说明以及示例代码请参考：[@ohos.nearlink.scan (星闪扫描能力)](../../reference/apis-connectivity-kit/js-apis-nearlink-scan.md)。
 
 | 接口名 | 描述 |
 | -------- | -------- |
 | startScan(filters: Array&lt;ScanFilters&gt; \| null, options?: ScanOptions): Promise&lt;void&gt; | 启动星闪扫描。使用Promise异步回调。 |
-| stopScan(): Promise&lt;void&gt; | 停止星闪扫描。 |
-| onDeviceFound(callback: Callback&lt;Array&lt;ScanResults&gt;&gt;): void | 订阅扫描结果。使用callback异步回调。 |
-| offDeviceFound(callback?: Callback&lt;Array&lt;ScanResults&gt;&gt;): void | 取消订阅扫描结果。 |
+| stopScan(): Promise&lt;void&gt; | 停止星闪扫描。使用Promise异步回调。 |
+| onDeviceFound(callback: Callback&lt;Array&lt;ScanResults&gt;&gt;): void | 订阅星闪扫描结果。使用callback异步回调。 |
+| offDeviceFound(callback?: Callback&lt;Array&lt;ScanResults&gt;&gt;): void | 取消订阅星闪扫描结果。使用callback异步回调。 |
 
 ### 开发步骤
 
 1. 导入相关模块。
 
-    <!-- @scan_module_import -->
+    <!-- @[scan_module_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/ScanConfigPage.ets) -->
     
     ``` TypeScript
     import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -166,9 +166,9 @@
     import { util } from '@kit.ArkTS';
     ```
 
-2. 订阅扫描结果。为避免重复订阅，先调用offDeviceFound()取消已有订阅，再调用onDeviceFound()订阅扫描结果，当扫描到设备时将触发回调。回调中调用的parseScanResult解析方法在步骤3中定义。
+2. 订阅扫描结果。为避免重复订阅，先调用[offDeviceFound()](../../reference/apis-connectivity-kit/js-apis-nearlink-scan.md#scanoffdevicefound)取消已有订阅，再调用[onDeviceFound()](../../reference/apis-connectivity-kit/js-apis-nearlink-scan.md#scanondevicefound)订阅扫描结果，当扫描到设备时将触发回调。回调中调用的parseScanResult解析方法在步骤3中定义。
 
-    <!-- @scan_on_device_found -->
+    <!-- @[scan_on_device_found](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/ScanConfigPage.ets) -->
     
     ``` TypeScript
     try {
@@ -187,9 +187,9 @@
     }
     ```
 
-3. 解析扫描结果（广播数据）。扫描结果中的data字段为广播报文原始数据，采用TLV（类型-长度-值）格式组织，各数据类型定义参见星闪标准《星闪无线通信系统 基础服务层 设备发现与服务管理》中设备公开信息的数据类型。通过解析可获取发现等级、服务数据、服务UUID列表、本地名称与厂商数据等信息：
+3. 解析扫描结果（广播数据）。扫描结果中的data字段为广播报文原始数据，采用TLV（类型-长度-值）格式组织，各数据类型定义参见[星闪标准](https://www.isla.org.cn/trial)《星闪无线通信系统 基础服务层 设备发现与服务管理》中设备公开信息的数据类型。通过解析可获取发现等级、服务数据、服务UUID列表、本地名称与厂商数据等信息：
 
-    <!-- @scan_parse_result -->
+    <!-- @[scan_parse_result](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/ScanConfigPage.ets) -->
     
     ``` TypeScript
     const ADV_DATA_TYPE_DISCOVERY_LEVEL = 0x01; // 发现等级
@@ -220,7 +220,7 @@
     }
     ```
 
-    <!-- @scan_parse_result_methods -->
+    <!-- @[scan_parse_result_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/ScanConfigPage.ets) -->
     
     ``` TypeScript
     parseScanResult(data: ArrayBuffer): ScanResultData {
@@ -327,9 +327,9 @@
     }
     ```
 
-4. 配置扫描参数，扫描过滤器配置期望的设备名称、地址等信息。过滤器至少携带一个过滤条件，可配置多组，组之间的条件为或的关系，一组过滤器内的条件为与的关系；filters传null表示不过滤，传空数组或所有字段均为空的过滤器数组时，将返回36100042 数组为空错误。
+4. 配置扫描过滤器，设置期望的设备名称、地址等信息。过滤器至少携带一个过滤条件，可配置多个，多个过滤器之间的条件为或的关系，单个过滤器内的条件为与的关系。filters传null表示不过滤，传空数组或所有字段均为空的过滤器数组时，将返回[36100042 数组为空](../../reference/apis-connectivity-kit/errorcode-nearlink-service.md#36100042-数组为空)错误。
 
-    <!-- @scan_config_filter -->
+    <!-- @[scan_config_filter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/ScanConfigPage.ets) -->
     
     ``` TypeScript
     let deviceNameFilter: string = 'deviceName1';
@@ -344,9 +344,9 @@
     }
     ```
 
-5. 开启星闪扫描。其中filters为第4步配置的扫描过滤器，scanOptions为扫描参数。
+5. 启动星闪扫描。其中filters为第4步配置的扫描过滤器，scanOptions为扫描参数。
 
-    <!-- @scan_start -->
+    <!-- @[scan_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/ScanConfigPage.ets) -->
     
     ``` TypeScript
     try {
@@ -363,7 +363,7 @@
 
 6. 停止星闪扫描。
 
-    <!-- @scan_stop -->
+    <!-- @[scan_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/ScanConfigPage.ets) -->
     
     ``` TypeScript
     try {
@@ -378,7 +378,7 @@
 
 7. 取消订阅扫描结果。
 
-    <!-- @scan_off_device_found -->
+    <!-- @[scan_off_device_found](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/ScanConfigPage.ets) -->
     
     ``` TypeScript
     try {

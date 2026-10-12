@@ -18,13 +18,13 @@
 
 ## 接口说明
 
-以下是基于ArkTS脚本开发应用Skill使用的主要接口，更多接口及使用方式请见@ohos.app.ability.scriptManager。
+以下是基于ArkTS脚本开发应用Skill使用的主要接口，更多接口及使用方式请见[@ohos.app.ability.scriptManager](../reference/apis-ability-kit/js-apis-app-ability-scriptManager.md)。
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| ExecuteResult | ArkTS脚本执行结果。 |
-| ArkTSScriptInfo | 应用的ArkTS脚本入口函数的第一个参数，用于接收系统传递的脚本上下文信息。 |
-| completeArkTSScriptInApp(context: Context, requestCode: string, result: ExecuteResult): Promise\<void> | 完成应用的ArkTS脚本执行，上报执行结果。使用Promise异步回调。 |
+| [ExecuteResult](../reference/apis-ability-kit/js-apis-app-ability-scriptManager.md#executeresult) | ArkTS脚本执行结果。 |
+| [ArkTSScriptInfo](../reference/apis-ability-kit/js-apis-app-ability-scriptManager.md#arktsscriptinfo) | 应用的ArkTS脚本入口函数的第一个参数，用于接收系统传递的脚本上下文信息。 |
+| [completeArkTSScriptInApp(context: Context, requestCode: string, result: ExecuteResult): Promise\<void>](../reference/apis-ability-kit/js-apis-app-ability-scriptManager.md#scriptmanagercompletearktsscriptinapp) | 完成应用的ArkTS脚本执行，上报执行结果。使用Promise异步回调。 |
 
 ## 开发步骤
 
@@ -58,11 +58,11 @@
 
 2. 配置module.json5文件。
 
-   在`entry/src/main/module.json5`的`module`标签下新增skillProfiles标签，将Skill注册到模块。
+   在`entry/src/main/module.json5`的`module`标签下新增[skillProfiles标签](../quick-start/module-configuration-file.md#skillprofiles标签)，将Skill注册到模块。
 
    示例Skill运行时需要添加网络权限访问云端音乐列表，在`module`标签下的requestPermissions标签配置。
 
-   <!-- @module_skill -->
+   <!-- @[module_skill](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide/entry/src/main/module.json5) -->
    
    ``` JSON5
    {
@@ -95,7 +95,7 @@
 
    入口脚本需要从`@kit.AbilityKit`引入`scriptManager`，同时引入待桥接的应用内业务模块。
 
-   <!-- @music_skill_import -->
+   <!-- @[music_skill_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide/entry/skills/example-org-music-assistant/scripts/MusicSkill.ets) -->
    
    ``` TypeScript
    
@@ -110,9 +110,9 @@
    入口脚本以`export default`方式导出一个类，类内每个`public async`方法对应SKILL.md声明的一项能力，须满足以下约定：
 
    - **方法名约定**：必须与SKILL.md中的`functionName`严格一致（本例为`playMusicByName`、`controlPlayback`）。
-   - **方法签名约定**：第一个参数类型固定为ArkTSScriptInfo。
+   - **方法签名约定**：第一个参数类型固定为[ArkTSScriptInfo](../reference/apis-ability-kit/js-apis-app-ability-scriptManager.md#arktsscriptinfo)。
 
-   <!-- @music_skill -->
+   <!-- @[music_skill](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide/entry/skills/example-org-music-assistant/scripts/MusicSkill.ets) -->
    
    ``` TypeScript
    export default class MusicSkill {
@@ -136,7 +136,7 @@
 
    每个能力方法的第一项任务是从`argv`中按位置获取参数，对照SKILL.md的`args` Schema完成前置校验。
 
-   <!-- @music_skill_verify -->
+   <!-- @[music_skill_verify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide/entry/skills/example-org-music-assistant/scripts/MusicSkill.ets) -->
    
    ``` TypeScript
    // 例1：playMusicByName 的两个可选参数，至少一个非空
@@ -164,7 +164,7 @@
    校验通过后，调用既有业务接口完成实际任务。入口脚本不承载业务逻辑，仅充当“参数适配器”，读取业务返回值与运行时异常，分别映射到SKILL.md声明的不同结果分支。
 
 
-   <!-- @music_skill_try  -->
+   <!-- @[music_skill_try](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide/entry/skills/example-org-music-assistant/scripts/MusicSkill.ets)  -->
    
    ``` TypeScript
    
@@ -182,9 +182,9 @@
 
    3.5 按契约构造ExecuteResult并回传。
 
-   业务执行完成后，需将结果封装为ExecuteResult，并通过调用completeArkTSScriptInApp回传给系统智能体，回包内容应与SKILL.md中“执行返回值”声明的分支保持一致。
+   业务执行完成后，需将结果封装为[ExecuteResult](../reference/apis-ability-kit/js-apis-app-ability-scriptManager.md#executeresult)，并通过调用[completeArkTSScriptInApp](../reference/apis-ability-kit/js-apis-app-ability-scriptManager.md#scriptmanagercompletearktsscriptinapp)回传给系统智能体，回包内容应与SKILL.md中“执行返回值”声明的分支保持一致。
 
-   <!-- @music_skill_branch -->
+   <!-- @[music_skill_branch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide/entry/skills/example-org-music-assistant/scripts/MusicSkill.ets) -->
    
    ``` TypeScript
    // 成功分支示例
@@ -392,4 +392,4 @@
 
 针对应用Skill开发，可参考以下相关实例：
 
-- 音乐助手Skill示例工程（example-org-music-assistant）
+- [音乐助手Skill示例工程（example-org-music-assistant）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/bmsSample/ArktsSkillDevelopmentGuide)

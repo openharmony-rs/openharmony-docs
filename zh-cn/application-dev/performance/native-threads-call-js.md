@@ -14,7 +14,7 @@
 
 ## 注意事项
 
-以下将详细阐述如何运用native方式创建子线程以执行耗时任务，并确保与JavaScript的无缝交互。为此，开发者可以利用arkui_napi仓库提供的NAPI（Node-API）接口来实现跨语言调用的桥梁。该NAPI的设计严格遵循Node.js的NAPI规范，以便开发者能够更轻松地理解和使用。  
+以下将详细阐述如何运用native方式创建子线程以执行耗时任务，并确保与JavaScript的无缝交互。为此，开发者可以利用[arkui_napi](https://gitcode.com/openharmony/arkui_napi)仓库提供的[NAPI（Node-API）](../reference/native-lib/napi.md)接口来实现跨语言调用的桥梁。该NAPI的设计严格遵循[Node.js](https://nodejs.org/api/n-api.html)的NAPI规范，以便开发者能够更轻松地理解和使用。  
 特别强调的是，JavaScript函数通常只能在主线程里调用。如果native侧通过std::thread或pthread创建了子线程，那么napi_env、napi_value以及napi_ref是不能直接在子线程上下文中使用的。为确保正确性，当native端在子线程完成其计算或处理后，若需要回调JavaScript函数，必须先通过线程同步机制将结果传递回主线程，然后才能安全地在主线程环境中调用JavaScript函数。  
 为解决这一问题，以下将提出两种有效的解决方案。
 
@@ -35,11 +35,11 @@ napi_threadsafe_function 提供了接口来创建一个可以在多线程间共�
 ### 延长生命周期
 在JavaScript层面传递给native层的函数引用，其生命周期仅限于它所在的作用域内。若要确保在超出该作用域后仍能继续使用这个函数引用，需要采取适当的方法来延长其生命周期。  
 可以通过调用napi_create_reference为JavaScript对象创建一个引用（reference）。这样可以避免对象因垃圾回收机制而被提前释放，从而有效地延长它的生命周期。然而，在创建引用之后，务必牢记要在不再需要该引用时，调用napi_delete_reference来释放引用，以防止内存泄漏问题的发生。  
-深入理解并妥善管理JavaScript与native接口之间对象的生命周期，对于编写高效且无内存泄漏隐患的代码至关重要。建议开发者进一步研究生命周期管理相关文档和最佳实践，以便更好地掌握。
+深入理解并妥善管理JavaScript与native接口之间对象的生命周期，对于编写高效且无内存泄漏隐患的代码至关重要。建议开发者进一步研究[生命周期管理](./develop-Native-modules-using-NAPI-safely-and-efficiently.md)相关文档和最佳实践，以便更好地掌握。
 
 ### libuv
 
-libuv是一个基于事件驱动的异步I/O库，对于耗时操作，如果直接在libuv的主循环（event loop）中处理，会阻塞后续任务的执行。为解决这个问题，libuv内部维护了一个线程池，用于执行一些耗时操作，并在这些操作完成后，将回调函数添加回主线程的event loop中等待执行。  
+[libuv](../reference/native-lib/libuv.md)是一个基于事件驱动的异步I/O库，对于耗时操作，如果直接在libuv的主循环（event loop）中处理，会阻塞后续任务的执行。为解决这个问题，libuv内部维护了一个线程池，用于执行一些耗时操作，并在这些操作完成后，将回调函数添加回主线程的event loop中等待执行。  
 默认情况下，libuv提供的线程池包含4个线程作为基本工作单元，但最大线程数可以扩展到128个。通过预先设置环境变量 UV_THREADPOOL_SIZE 的值，可以自定义线程池中的线程数量。当线程池初始化时，会创建相应数量的工作线程，并在每个线程内部运行一个   uv_queue_work 函数。  
 值得注意的是，libuv 中的线程池是全局共享资源，不论应用中有多少个独立的事件循环实例，它们都共用同一个线程池。这样的设计旨在有效利用系统资源，同时避免因频繁创建和销毁线程带来的开销。
 
@@ -60,7 +60,7 @@ libuv是一个基于事件驱动的异步I/O库，对于耗时操作，如果直
 需要注意的是，尽管uv_queue_work方法本身不直接涉及NAPI（Node-API）接口，但当涉及到与JavaScript线程交互时，特别是从native层向JavaScript层传递数据并触发回调时，需要正确地管理napi_value对象的生命周期。这需要合理使用napi_handle_scope和相关接口，来确保在JavaScript回调方法创建的napi_value对象，在整个执行过程中保持有效，并在适当的时候释放资源，以避免内存泄漏问题。  
 
 ## 示例代码
-下面的示例分别用线程安全函数和libuv实现了native的跨线程调用。该示例在ArkTS端传入的JavaScript回调函数中对变量value进行加10运算，在native侧开启了3个子线程执行业务逻辑，子线程业务逻辑完成之后回到主线程执行ArkTS端传入的JavaScript回调函数，从而完成了对ArkTS端变量value的加30操作。完整的示例代码如下：
+下面的示例分别用线程安全函数和libuv实现了native的跨线程调用。该示例在ArkTS端传入的JavaScript回调函数中对变量value进行加10运算，在native侧开启了3个子线程执行业务逻辑，子线程业务逻辑完成之后回到主线程执行ArkTS端传入的JavaScript回调函数，从而完成了对ArkTS端变量value的加30操作。[完整的示例代码](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Performance/PerformanceLibrary/feature/nativeThreadsCallJS)如下：
 ### 1.使用线程安全函数
 **ArkTS实现一个JavaScript回调函数。**  
 参数为param，函数体中对参数param加10后绑定变量value，并返回最新的param值。将回调函数作为参数调用native侧的ThreadSafeTest接口。  
@@ -361,4 +361,4 @@ work_cb位于子线程中，执行实际的业务逻辑；after_work_cb位于主
 
 ## 示例代码
 
-NativeThreadsCallJS
+[NativeThreadsCallJS](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Performance/PerformanceLibrary/feature/nativeThreadsCallJS)

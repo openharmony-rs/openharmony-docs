@@ -23,7 +23,7 @@
 >
 >  - IPC典型使用场景是后台服务，后台服务通过IPC机制提供单设备跨进程接口调用与数据传递能力。
 >
->  - RPC典型使用场景是<!--Del--><!--DelEnd-->多端协同<!--Del--><!--DelEnd-->，多端协同通过RPC机制提供跨设备远端接口调用与数据传递能力。
+>  - RPC典型使用场景是<!--Del-->[<!--DelEnd-->多端协同<!--Del-->](../application-models/hop-multi-device-collaboration.md)<!--DelEnd-->，多端协同通过RPC机制提供跨设备远端接口调用与数据传递能力。
 
 
 ## 实现原理
@@ -34,9 +34,9 @@ IPC和RPC采用客户端-服务端（Client-Server）模型。在使用时，Cli
 
 ## 约束与限制
 
-- 单个设备上跨进程通信时，传输的数据量最大为200KB。超过200KB的数据量传输可以使用匿名共享内存。
+- 单个设备上跨进程通信时，传输的数据量最大为200KB。超过200KB的数据量传输可以使用[匿名共享内存](../reference/apis-ipc-kit/js-apis-rpc.md#ashmem8)。
 
-- 不支持在RPC中订阅匿名Stub对象（没有向SAMgr注册的Stub对象）的死亡通知。
+- 不支持在RPC中订阅匿名Stub对象（没有向SAMgr注册的Stub对象）的[死亡通知](subscribe-remote-state.md)。
 
 - 不支持把跨设备的Proxy对象回传到该Proxy对象指向的Stub对象所在的设备。
 

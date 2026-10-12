@@ -6,20 +6,20 @@
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
-属性字符串StyledString/MutableStyledString（其中MutableStyledString继承自StyledString，下文统称为StyledString），可用于在字符或段落级别上设置文本样式。将StyledString应用到文本组件上，可以采用多种方式修改文本，包括调整字号、添加字体颜色、使文本具备可点击性，以及通过自定义方式绘制文本等。具体使用方法请参考属性字符串的API文档。
+属性字符串StyledString/MutableStyledString（其中MutableStyledString继承自StyledString，下文统称为StyledString），可用于在字符或段落级别上设置文本样式。将StyledString应用到文本组件上，可以采用多种方式修改文本，包括调整字号、添加字体颜色、使文本具备可点击性，以及通过自定义方式绘制文本等。具体使用方法请参考[属性字符串](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md)的API文档。
 
-属性字符串提供多种类型样式对象，涵盖各种常见的文本样式格式，例如文本装饰线样式、文本行高样式、文本阴影样式等。也可以自行创建CustomSpan，以应用自定义样式。 
+属性字符串提供多种类型样式对象，涵盖各种常见的文本样式格式，例如文本装饰线样式、文本行高样式、文本阴影样式等。也可以自行创建[CustomSpan](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#customspan)，以应用自定义样式。 
 
 ## 创建并应用StyledString和MutableStyledString
 
-  可以通过TextController提供的setStyledString方法，将属性字符串附加到文本组件，并推荐在onPageShow或者文本组件的onAppear回调中触发绑定。
+  可以通过[TextController](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textcontroller11)提供的[setStyledString](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#setstyledstring12)方法，将属性字符串附加到文本组件，并推荐在[onPageShow](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onpageshow)或者文本组件的[onAppear](../reference/apis-arkui/arkui-ts/ts-universal-events-show-hide.md#onappear)回调中触发绑定。
   > **说明：**
   >
-  > 在aboutToAppear中调用setStyledString方法时，由于该方法运行阶段组件尚未完成创建并成功挂载节点树，因此无法在页面初始化时显示属性字符串。
+  > 在[aboutToAppear](../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#abouttoappear)中调用setStyledString方法时，由于该方法运行阶段组件尚未完成创建并成功挂载节点树，因此无法在页面初始化时显示属性字符串。
   >
   > 从API version 15开始，在aboutToAppear中调用setStyledString方法，页面初始化时可以显示属性字符串。
 
-  <!-- @createStyledString_start -->
+  <!-- @[createStyledString_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/CreateApply.ets) -->
   
   ``` TypeScript
   @Entry
@@ -28,9 +28,9 @@
     // 请将$r('app.string.CreateApply_Text_Forty_Five')替换为实际资源文件，在本示例中该资源文件的value值为"运动45分钟"
     styledString1: StyledString = new StyledString( this.getUIContext()
       .getHostContext()!.resourceManager.getStringSync($r('app.string.CreateApply_Text_Forty_Five').id));
-    // 请将$r('app.string.CreateApply_Text_Third_Five')替换为实际资源文件，在本示例中该资源文件的value值为"运动35分钟"
+    // 请将$r('app.string.CreateApply_Text_Thirty_Five')替换为实际资源文件，在本示例中该资源文件的value值为"运动35分钟"
     mutableStyledString1: MutableStyledString = new MutableStyledString( this.getUIContext()
-      .getHostContext()!.resourceManager.getStringSync($r('app.string.CreateApply_Text_Third_Five').id));
+      .getHostContext()!.resourceManager.getStringSync($r('app.string.CreateApply_Text_Thirty_Five').id));
     controller1: TextController = new TextController();
     controller2: TextController = new TextController();
   
@@ -54,15 +54,15 @@
   }
   ```
 
-  StyledString_Init
+  ![StyledString_Init](figures/span_string_init.png)
 
 ## 设置文本样式
 
-属性字符串目前提供了多种Style对象，包括TextStyle、TextShadowStyle、DecorationStyle、BaselineOffsetStyle、LineHeightStyle、LetterSpacingStyle，用于设置文本的各类样式。
+属性字符串目前提供了多种Style对象，包括[TextStyle](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle)、[TextShadowStyle](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#textshadowstyle)、[DecorationStyle](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#decorationstyle)、[BaselineOffsetStyle](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#baselineoffsetstyle)、[LineHeightStyle](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#lineheightstyle)、[LetterSpacingStyle](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#letterspacingstyle)，用于设置文本的各类样式。
 
 - 创建及应用文本字体样式对象（TextStyle）
 
-  <!-- @styledStringTextStyle_start -->
+  <!-- @[styledStringTextStyle_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringTextStyle.ets) -->
   
   ``` TypeScript
   import { LengthMetrics } from '@kit.ArkUI';
@@ -114,11 +114,11 @@
   }
   ```
 
-  StyledString_TextStyle
+  ![StyledString_TextStyle](figures/StyledString_TextStyle.png)
 
 - 创建及应用文本阴影对象（TextShadowStyle）
 
-  <!-- @styledStringTextShadowStyle_start -->
+  <!-- @[styledStringTextShadowStyle_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringTextShadowStyle.ets) -->
   
   ``` TypeScript
   // xxx.ets
@@ -126,7 +126,7 @@
   @Component
   struct styled_string_demo3 {
     @State str: string =
-      this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('CreateApply_Text_Third_Five') as string;
+      this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('CreateApply_Text_Thirty_Five') as string;
     mutableStyledString: MutableStyledString = new MutableStyledString(this.str, [
       {
         start: 0,
@@ -157,11 +157,11 @@
   }
   ```
 
-  StyledString_TextShadow
+  ![StyledString_TextShadow](figures/styled_string_text_shadow.png)
 
 - 创建及应用文本装饰线对象（DecorationStyle）
 
-  <!-- @styledStringDecorationStyle_start -->
+  <!-- @[styledStringDecorationStyle_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringDecorationStyle.ets) -->
   
   ``` TypeScript
   // xxx.ets
@@ -170,7 +170,7 @@
   struct styled_string_demo4 {
     @State str: string =
       this.getUIContext()
-        .getHostContext()?.resourceManager.getStringByNameSync('CreateApply_Text_Third_Five') as string;
+        .getHostContext()?.resourceManager.getStringByNameSync('CreateApply_Text_Thirty_Five') as string;
     mutableStyledString: MutableStyledString = new MutableStyledString(this.str, [
       {
         start: 0,
@@ -223,11 +223,11 @@
   }
   ```
 
-  StyledString_Decoration
+  ![StyledString_Decoration](figures/styled_string_decoration.jpg)
 
 - 创建及应用文本基线偏移量对象（BaselineOffsetStyle）
 
-  <!-- @styledStringBaselineOffsetStyle_start -->
+  <!-- @[styledStringBaselineOffsetStyle_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringBaselineOffsetStyle.ets) -->
   
   ``` TypeScript
   import { LengthMetrics } from '@kit.ArkUI';
@@ -237,7 +237,7 @@
   @Component
   struct styled_string_demo5 {
     @State str: string =
-      this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('CreateApply_Text_Third_Five') as string;
+      this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('CreateApply_Text_Thirty_Five') as string;
   
     mutableStyledString: MutableStyledString = new MutableStyledString(this.str, [
       {
@@ -263,11 +263,11 @@
   }
   ```
 
-  StyledString_Baseline
+  ![StyledString_Baseline](figures/styled_string_baselineoffset.png)
 
 - 创建及应用文本行高对象（LineHeightStyle）
 
-  <!-- @styledStringLineHeightStyle_start -->
+  <!-- @[styledStringLineHeightStyle_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringLineHeightStyle.ets) -->
   
   ``` TypeScript
   import { LengthMetrics } from '@kit.ArkUI';
@@ -304,11 +304,11 @@
   }
   ```
 
-  StyledString_lineHeight
+  ![StyledString_lineHeight](figures/styled_string_lineHeight.png)
 
 - 创建及应用文本字符间距对象（LetterSpacingStyle）
 
-  <!-- @styledStringLetterSpacingStyle_start -->
+  <!-- @[styledStringLetterSpacingStyle_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringLetterSpacingStyle.ets) -->
   
   ``` TypeScript
   import { LengthMetrics, LengthUnit } from '@kit.ArkUI';
@@ -318,7 +318,7 @@
   @Component
   struct styled_string_demo7 {
     @State str: string =
-      this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('CreateApply_Text_Third_Five') as string;
+      this.getUIContext().getHostContext()?.resourceManager.getStringByNameSync('CreateApply_Text_Thirty_Five') as string;
     mutableStyledString: MutableStyledString = new MutableStyledString(this.str, [
       {
         start: 0,
@@ -343,17 +343,17 @@
   }
   ```
 
-  StyledString_letterSpacing
+  ![StyledString_letterSpacing](figures/styled_string_letterspacing.png)
 
 ## 设置段落样式
 
-可通过ParagraphStyle设置段落样式布局。下图显示了如何分割文本中的段落，段落以换行符 \n 结尾。
+可通过[ParagraphStyle](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#paragraphstyle)设置段落样式布局。下图显示了如何分割文本中的段落，段落之间以换行符`\n`分隔。
 
-paragraphs
+![paragraphs](figures/styledstringParagraphs.png)
 
 以下代码示例展示了如何创建ParagraphStyle并应用。如果将ParagraphStyle附加到段落开头、末尾或之间的任何位置，均会应用样式，非段落区间内则不会应用样式。
 
-  <!-- @styledStringParagraphStyleOne_start -->
+  <!-- @[styledStringParagraphStyleOne_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringParagraphStyleOne.ets) -->
   
   ``` TypeScript
   import { LengthMetrics} from '@kit.ArkUI';
@@ -419,11 +419,11 @@ paragraphs
   }
   ```
 
-  styled_string_paragraph1
+  ![styled_string_paragraph1](figures/styled_string_paragraph1.png)
   
-  除了可以在创建属性字符串时就预设样式，也可以后续通过replaceStyle清空原样式替换新样式，同时需要在附加的文本组件controller上主动触发更新绑定的属性字符串。
+  除了可以在创建属性字符串时就预设样式，也可以后续通过[replaceStyle](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#replacestyle)清空原样式替换新样式，同时需要在附加的文本组件controller上主动触发更新绑定的属性字符串。
 
-  <!-- @styledStringReplaceParagraphStyle_start -->
+  <!-- @[styledStringReplaceParagraphStyle_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringReplaceParagraphStyle.ets) -->
   
   ``` TypeScript
   import { LengthMetrics } from '@kit.ArkUI';
@@ -509,15 +509,15 @@ paragraphs
   }
   ```
 
-  styled_string_paragraph2
+  ![styled_string_paragraph2](figures/styled_string_paragraph2.gif)
 
 ## 支持将属性字符串转换成Paragraph
 
-可通过getParagraphs将属性字符串根据文本布局选项转换成对应的Paragraph数组。
+可通过[getParagraphs](../reference/apis-arkui/arkts-apis-uicontext-measureutils.md#getparagraphs20)将属性字符串根据文本布局选项转换成对应的[Paragraph](../reference/apis-arkgraphics2d/js-apis-graphics-text.md#paragraph)数组。
 
-- 以下示例展示了通过MeasureUtils的getParagraphs方法测算文本，当内容超出最大显示行数的时候，截断文本显示并展示“...全文”的效果。
+- 以下示例展示了通过getParagraphs方法将属性字符串转换为Paragraph对象，进而通过Paragraph对象实现文本测算功能。当内容超出最大显示行数的时候，截断文本显示并展示“...全文”的效果。
 
-  <!-- @styledStringConvertedToParagraph_start -->
+  <!-- @[styledStringConvertedToParagraph_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringConvertedToParagraph.ets) -->
   
   ``` TypeScript
   import { LengthMetrics } from '@kit.ArkUI';
@@ -727,20 +727,20 @@ paragraphs
   }
   ```
 
-  StyledString_GetParagraphs
+  ![StyledString_GetParagraphs](figures/StyledString_GetParagraphs.png)
 
 
 ## 使用图片
 
-可通过ImageAttachment来添加图片。
+可通过[ImageAttachment](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#imageattachment)来添加图片。
 
-以下示例展示了如何将图片和文本附加到同一个MutableStyledString对象上，并实现图文混排。
+以下示例展示了如何将图片和文本附加到同一个[MutableStyledString](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#mutablestyledstring)对象上，并实现图文混排。
 
 > **说明：**
 >
-> 属性字符串的构造函数constructor中，当入参value的类型为ImageAttachment或CustomSpan时，styles参数不生效。需要设置styles时，通过setStyle、insertStyledString等方法实现。
+> 属性字符串的构造函数[constructor](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#constructor)中，当入参value的类型为ImageAttachment或CustomSpan时，styles参数不生效。需要设置styles时，通过[setStyle](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#setstyle)、[insertStyledString](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#insertstyledstring)等方法实现。
 
-  <!-- @styledStringImageAttachment_start -->
+  <!-- @[styledStringImageAttachment_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringImageAttachment.ets) -->
   
   ``` TypeScript
   // xxx.ets
@@ -776,8 +776,8 @@ paragraphs
   
     private async getPixmapFromMedia(resource: Resource) {
       try {
-        let unit8Array = await this.getUIContext().getHostContext()?.resourceManager?.getMediaContent(resource.id);
-        let imageSource = image.createImageSource(unit8Array?.buffer?.slice(0, unit8Array?.buffer?.byteLength));
+        let uint8Array = await this.getUIContext().getHostContext()?.resourceManager?.getMediaContent(resource.id);
+        let imageSource = image.createImageSource(uint8Array?.buffer?.slice(0, uint8Array?.buffer?.byteLength));
         let createPixelMap: image.PixelMap = await imageSource.createPixelMap({
           desiredPixelFormat: image.PixelMapFormat.RGBA_8888
         });
@@ -916,15 +916,15 @@ paragraphs
   }
   ```
 
-  StyledString_ImageAttachment
+  ![StyledString_ImageAttachment](figures/StyledStringImageAttachment.png)
 
 ## 设置事件
 
-可通过GestureStyle设置onClick、onLongPress事件来使文本响应点击、长按事件。
+可通过[GestureStyle](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#gesturestyle)设置onClick、onLongPress事件来使文本响应点击、长按事件。
 
-除了初始化属性字符串对象即初始样式对象，亦可通过setStyle接口再叠加新样式或更新已有样式，同时需要在附加的文本组件controller上主动触发更新绑定的属性字符串。
+除了初始化属性字符串对象即初始样式对象，亦可通过[setStyle](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#setstyle)接口再叠加新样式或更新已有样式，同时需要在附加的文本组件controller上主动触发更新绑定的属性字符串。
 
-  <!-- @styledStringGestureStyle_start -->
+  <!-- @[styledStringGestureStyle_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringGestureStyle.ets) -->
   
   ``` TypeScript
   import { drawing } from '@kit.ArkGraphics2D';
@@ -1077,15 +1077,15 @@ paragraphs
   }
   ```
 
-  styled_string_event
+  ![styled_string_event](figures/styled_string_event.gif)
 
 ## 格式转换
 
-可以通过toHtml、fromHtml接口实现属性字符串与HTML格式字符串的相关转换，支持转换的HTML标签部分范围：\<p>、\<span>、\、\<br>、\<strong>、\<b>、\<a>、\<i>、\<em>、\<s>、\<u>、\<del>、\<sup>、\<sub>，完整范围参见fromHtml的接口说明。
+可以通过[toHtml](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#tohtml14)、[fromHtml](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#fromhtml)接口实现属性字符串与HTML格式字符串的相关转换，支持转换的HTML标签部分范围：\<p>、\<span>、\<img>、\<br>、\<strong>、\<b>、\<a>、\<i>、\<em>、\<s>、\<u>、\<del>、\<sup>、\<sub>，完整范围参见[fromHtml](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#fromhtml)的接口说明。
 
 - 以下示例展示了如何将属性字符串转换成HTML格式，并展示了如何从HTML格式转换回属性字符串。
 
-<!-- @styledStringHtml_start -->
+<!-- @[styledStringHtml_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringHtml.ets) -->
 
 ``` TypeScript
 // xxx.ets
@@ -1110,8 +1110,8 @@ struct StyledStringHtml {
 
   private async getPixmapFromMedia(resource: Resource) {
     try {
-      let unit8Array = await this.uiContext.getHostContext()?.resourceManager?.getMediaContent(resource.id);
-      let imageSource = image.createImageSource(unit8Array?.buffer?.slice(0, unit8Array?.buffer?.byteLength));
+      let uint8Array = await this.uiContext.getHostContext()?.resourceManager?.getMediaContent(resource.id);
+      let imageSource = image.createImageSource(uint8Array?.buffer?.slice(0, uint8Array?.buffer?.byteLength));
       let createPixelMap: image.PixelMap = await imageSource.createPixelMap({
         desiredPixelFormat: image.PixelMapFormat.RGBA_8888
       });
@@ -1175,11 +1175,11 @@ struct StyledStringHtml {
 }
 ```
 
-
+![](figures/styled_string_html.gif)
 
 - 将HTML中\<strong>、\<b>、\<a>、\<i>、\<em>、\<s>、\<u>、\<del>、\<sup>、\<sub>标签及其style属性中的background-color转换为属性字符串并转回HTML。
  
-  <!-- @styledStringHtmlOne_start -->
+  <!-- @[styledStringHtmlOne_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringHtmlOne.ets) -->
   
   ``` TypeScript
   // xxx.ets
@@ -1250,13 +1250,13 @@ struct StyledStringHtml {
   }
   ```
 
-  styled_string_html_2
+  ![styled_string_html_2](figures/styled_string_html_2.gif)
 
 ## 场景示例
 
-该示例通过ParagraphStyle、LineHeightStyle、TextStyle对象展示了会员过期提示的效果。
+该示例通过[ParagraphStyle](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#paragraphstyle)、[LineHeightStyle](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#lineheightstyle)、[TextStyle](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#textstyle)对象展示了会员过期提示的效果。
 
-<!-- @styledStringSceneExample_start -->
+<!-- @[styledStringSceneExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/propertyString/StyledStringSceneExample.ets) -->
 
 ``` TypeScript
 import { LengthMetrics } from '@kit.ArkUI';
@@ -1421,4 +1421,4 @@ struct StyledStringSceneExample {
 }
 ```
 
-StyledString_SceneDemo
+![StyledString_SceneDemo](figures/styledString_sceneDemo.png)

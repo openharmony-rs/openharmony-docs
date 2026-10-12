@@ -25,15 +25,15 @@
 
 | 事件类型 | 说明 | 所属故障类型 |
 | -------- | -------- | -------- |
-| THREAD_BLOCK_3S | 应用冻屏告警事件，应用主线程执行任务超过3s时触发。<br>**说明**：从API版本26.0.0开始，支持该类型。 | THREAD_BLOCK_6S应用主线程卡死超时 |
-| THREAD_BLOCK_6S | 应用冻屏事件，应用主线程执行任务超过6s时触发。 | THREAD_BLOCK_6S应用主线程卡死超时 |
-| APP_INPUT_BLOCK | 应用冻屏事件，用户输入响应超时。 | APP_INPUT_BLOCK用户输入响应超时 |
-| LIFECYCLE_HALF_TIMEOUT | 应用冻屏告警事件， UIAbility生命周期切换过程中，超过半生命周期阈值时触发。<br>**说明**：从API版本26.0.0开始，支持该类型。 | LIFECYCLE_TIMEOUT生命周期切换超时 |
-| LIFECYCLE_TIMEOUT | 应用冻屏事件，UIAbility生命周期切换超时。<br>**说明**：从API版本26.0.0开始，支持该类型。 | LIFECYCLE_TIMEOUT生命周期切换超时 |
+| THREAD_BLOCK_3S | 应用冻屏告警事件，应用主线程执行任务超过3s时触发。<br>**说明**：从API版本26.0.0开始，支持该类型。 | [THREAD_BLOCK_6S应用主线程卡死超时](#thread_block_6s应用主线程卡死超时) |
+| THREAD_BLOCK_6S | 应用冻屏事件，应用主线程执行任务超过6s时触发。 | [THREAD_BLOCK_6S应用主线程卡死超时](#thread_block_6s应用主线程卡死超时) |
+| APP_INPUT_BLOCK | 应用冻屏事件，用户输入响应超时。 | [APP_INPUT_BLOCK用户输入响应超时](#app_input_block用户输入响应超时) |
+| LIFECYCLE_HALF_TIMEOUT | 应用冻屏告警事件， UIAbility生命周期切换过程中，超过半生命周期阈值时触发。<br>**说明**：从API版本26.0.0开始，支持该类型。 | [LIFECYCLE_TIMEOUT生命周期切换超时](#lifecycle_timeout生命周期切换超时) |
+| LIFECYCLE_TIMEOUT | 应用冻屏事件，UIAbility生命周期切换超时。<br>**说明**：从API版本26.0.0开始，支持该类型。 | [LIFECYCLE_TIMEOUT生命周期切换超时](#lifecycle_timeout生命周期切换超时) |
 
-当触发上述告警事件时，会上报应用冻屏告警事件，可通过HiAppEvent订阅应用冻屏告警事件介绍。
+当触发上述告警事件时，会上报应用冻屏告警事件，可通过HiAppEvent订阅[应用冻屏告警事件介绍](hiappevent-watcher-appfreezewarning-events.md)。
 
-当触发上述应用冻屏故障时，系统会杀死应用以保证可恢复，同时上报应用冻屏事件，可通过HiAppEvent订阅应用冻屏事件介绍。
+当触发上述应用冻屏故障时，系统会杀死应用以保证可恢复，同时上报应用冻屏事件，可通过HiAppEvent订阅[应用冻屏事件介绍](hiappevent-watcher-freeze-events.md)。
 
 ### THREAD_BLOCK_6S应用主线程卡死超时
 
@@ -45,7 +45,7 @@
 
 **图1**
 
-thread_block
+![thread_block](figures/thread_block.png)
 
 ### APP_INPUT_BLOCK用户输入响应超时
 
@@ -61,15 +61,15 @@ thread_block
 
 **图2**
 
-app_input_block
+![app_input_block](figures/app_input_block.png)
 
 ### LIFECYCLE_TIMEOUT生命周期切换超时
 
-**概述**：生命周期切换超时是指：UIAbility生命周期切换流程没有在指定时间内执行完毕。原因可能为：应用在生命周期切换过程中执行耗时操作，或者后台任务优先级低，资源供给不足导致的。
+**概述**：生命周期切换超时是指：[UIAbility生命周期](../application-models/uiability-lifecycle.md)切换流程没有在指定时间内执行完毕。原因可能为：应用在生命周期切换过程中执行耗时操作，或者后台任务优先级低，资源供给不足导致的。
 
 该故障发生在生命周期切换过程中，影响应用内Ability的切换或不同PageAbility之间的切换。
 
-从**API版本26.0.0**开始，应用在AppScope/app.json5文件中配置如下环境变量，可获取故障日志，获取方式参考日志获取。
+从**API版本26.0.0**开始，应用在AppScope/app.json5文件中配置如下环境变量，可获取故障日志，获取方式参考[日志获取](#日志获取)。
 
 > **注意：**
 >
@@ -97,7 +97,7 @@ app_input_block
 
 **图3**
 
-lifecycle_timeout
+![lifecycle_timeout](figures/lifecycle_timeout.png)
 
 ## 日志获取
 
@@ -105,11 +105,11 @@ lifecycle_timeout
 
 **方式一：通过DevEco Studio获取日志**
 
-DevEco Studio会收集设备/data/log/faultlog/faultlogger/路径下的进程崩溃故障日志到FaultLog下，根据进程名和故障时间分类显示。获取日志的方法参见：DevEco Studio使用指南-FaultLog。
+DevEco Studio会收集设备/data/log/faultlog/faultlogger/路径下的进程崩溃故障日志到FaultLog下，根据进程名和故障时间分类显示。获取日志的方法参见：[DevEco Studio使用指南-FaultLog](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-fault-log)。
 
 **方式二：通过HiAppEvent接口订阅**
 
-HiAppEvent给开发者提供了故障订阅接口，详见HiAppEvent介绍。参考订阅应用冻屏事件（ArkTS）或订阅应用冻屏事件（C/C++）完成应用冻屏事件订阅，并通过事件的external_log字段读取故障日志文件内容。
+HiAppEvent给开发者提供了故障订阅接口，详见[HiAppEvent介绍](hiappevent-intro.md)。参考[订阅应用冻屏事件（ArkTS）](hiappevent-watcher-freeze-events-arkts.md)或[订阅应用冻屏事件（C/C++）](hiappevent-watcher-freeze-events-ndk.md)完成应用冻屏事件订阅，并通过事件的[external_log](hiappevent-watcher-freeze-events.md#事件字段说明)字段读取故障日志文件内容。
 
 **方式三：通过hdc获取日志，需打开开发者选项**
 
@@ -171,30 +171,30 @@ NOTE: Current fault may be caused by the system's low memory or thermal throttli
 ***
 ```
 
-从API version 20开始，发生THREAD_BLOCK_6S故障时，日志中新增HiTraceId信息打印。HiTraceId是HiTraceChain提供的唯一跟踪标识，用于跟踪业务流程调用链。可以协助开发者查看故障时间段内，故障流程的hilog日志，分析日志查看应用的执行状态。
+从API version 20开始，发生THREAD_BLOCK_6S故障时，日志中新增[HiTraceId](../reference/apis-performance-analysis-kit/js-apis-hitracechain.md#hitraceid)信息打印。HiTraceId是HiTraceChain提供的唯一跟踪标识，用于跟踪业务流程调用链。可以协助开发者查看故障时间段内，故障流程的hilog日志，分析日志查看应用的执行状态。
 
 **NOTE信息说明：**
 
 - **从API version 20开始**，系统支持输出提示信息：Current fault may be caused by the system's low memory or thermal throttling, you may ignore it and analysis other faults。当整机资源告警（如整机低内存或热限频）时，系统会在NOTE中输出此信息，此时开发者可忽略应用冻屏故障。
-- **从API版本26.0.0开始**，系统支持输出提示信息：Current process has encountered fd leak which may lead to appfreeze, you may refer to resource overlimit event from hiAppEvent for further analysis。支持AppFreeze日志中关联Resource Leak（资源泄漏）检测事件信息，若当前进程在发生冻屏故障前已存在内存泄漏，故障日志将提示泄漏事件，并指出其可能为导致冻屏的诱因，此时开发者可以优先解决资源泄漏问题。
+- **从API版本26.0.0开始**，系统支持输出提示信息：Current process has encountered fd leak which may lead to appfreeze, you may refer to resource overlimit event from hiAppEvent for further analysis。支持AppFreeze日志中关联[Resource Leak（资源泄漏）检测](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/resource-leak-guidelines)事件信息，若当前进程在发生冻屏故障前已存在内存泄漏，故障日志将提示泄漏事件，并指出其可能为导致冻屏的诱因，此时开发者可以优先解决资源泄漏问题。
 - **从API版本26.0.0开始**，系统支持输出提示信息：Main thread is blocked by GC, which may be caused by high memory usage or system resource overload。
-  - 如果GC垃圾回收类型是Shared GC，系统不会输出此信息。
-  - 如果在GC垃圾回收期间，发生Appfreeze事件，并且GC垃圾回收类型是非Shared GC，系统会在NOTE中输出此信息，此时开发者可忽略应用冻屏故障。
-  - Shared GC类型介绍，请参考SharedHeap结构及SharedHeap相关参数。
-  - Local GC类型介绍，请参考LocalHeap结构及LocalHeap相关参数。
+  - 如果[GC垃圾回收](../arkts-utils/gc-introduction.md)类型是Shared GC，系统不会输出此信息。
+  - 如果在[GC垃圾回收](../arkts-utils/gc-introduction.md)期间，发生Appfreeze事件，并且GC垃圾回收类型是非Shared GC，系统会在NOTE中输出此信息，此时开发者可忽略应用冻屏故障。
+  - Shared GC类型介绍，请参考[SharedHeap结构](../arkts-utils/gc-introduction.md#sharedheap结构)及[SharedHeap相关参数](../arkts-utils/gc-introduction.md#sharedheap相关参数)。
+  - Local GC类型介绍，请参考[LocalHeap结构](../arkts-utils/gc-introduction.md#localheap结构)及[LocalHeap相关参数](../arkts-utils/gc-introduction.md#localheap相关参数)。
 
 AppFreeze事件（THREAD_BLOCK_6S、 APP_INPUT_BLOCK）都包含以下几部分信息：
 
 | 字段 | 说明 |
 | -------- | -------- |
 | DeviceDebuggable | 设备的系统版本是否可调试，和开发者选项无关。<br>**说明**：从API version 23开始支持。 |
-| ReleaseType | 应用的版本类型。release表示应用为release版本应用，debug表示应用为debug版本应用。<br>**说明**：从API version 23开始支持。 |
+| ReleaseType | 应用的版本类型。release表示应用为[release版本应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)，debug表示应用为[debug版本应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)。<br>**说明**：从API version 23开始支持。 |
 | CpuAbi | 二进制接口类型。<br>**说明**：从API version 23开始支持。 |
 | IsSystemApp | 应用是否为系统应用。<br>**说明**：从API version 23开始支持。 |
 | Reason | 应用无响应原因，与应用无响应检测能力点对应。 |
 | PID | 发生故障时的pid。 |
 | PACKAGE_NAME | 应用进程包名。 |
-|Page switch history| 从API version 20开始，维测进程会记录应用切换历史。应用发生故障后，生成的故障文件将包含页面切换历史轨迹。如果维测服务进程崩溃或被终止运行，或者未能成功缓存页面切换轨迹，则不包含此字段。|
+|[Page switch history](./cppcrash-guidelines.md#有页面切换轨迹的故障场景日志规格)| 从API version 20开始，维测进程会记录应用切换历史。应用发生故障后，生成的故障文件将包含页面切换历史轨迹。如果维测服务进程崩溃或被终止运行，或者未能成功缓存页面切换轨迹，则不包含此字段。|
 | App running unique id | 应用运行时唯一关联的id。<br>**说明**：从API版本26.0.0开始支持。|
 | Process life time | 故障进程存活时间。单位：s。<br>**说明**：从API version 22开始支持。|
 | Process Memory(kB) | 故障进程内存占用。<br>**说明**：从API version 22开始支持。|
@@ -263,10 +263,10 @@ AppFreeze事件THREAD_BLOCK_6S、APP_INPUT_BLOCK均包含以下信息：
 | MSG | 发生故障时间及EventHandler信息。 |
 | IS_FROZEN | 发生故障时，进程冻结状态。<br/>- 0表示进程未冻结。<br/>- 1表示进程冻结。<br>**说明**：从API版本26.0.0开始支持。|
 | this thread has blocked 3000ms. | 发生线程阻塞故障时，应用线程执行任务超时 3 秒（即 THREAD_BLOCK_3S 阈值）。具体超时时间以日志中实际数值为准（示例中为 3000ms）。<br>**说明**：从API版本26.0.0开始支持。|
-| MainHeap(bytes) | 主线程LocalHeap大小。详细介绍参考：Heap。<br>**说明**：从API版本26.0.0开始支持。 |
-| SharedHeap(bytes) | 主线程SharedHeap大小。详细介绍参考：Heap。<br>**说明**：<br>- 从API版本26.0.0开始支持。<br>- SharedHeap的Total值为固定大小：815792128byte（即：778MB），请参考SharedHeap相关参数中的SharedHeapSize参数说明。 |
-| GC Status | 发生AppFreeze事件时，GC（垃圾回收）的相关信息。详细介绍参考：application_gc_info字段说明。<br>**说明**：从API版本26.0.0开始支持。 |
-| I/O(bytes) | 发生AppFreeze事件时，I/O的相关信息。详细介绍参考：application_io_info字段说明。<br>**说明**：从API版本26.0.0开始支持。|
+| MainHeap(bytes) | 主线程LocalHeap大小。详细介绍参考：[Heap](../arkts-utils/gc-introduction.md#heap)。<br>**说明**：从API版本26.0.0开始支持。 |
+| SharedHeap(bytes) | 主线程SharedHeap大小。详细介绍参考：[Heap](../arkts-utils/gc-introduction.md#heap)。<br>**说明**：<br>- 从API版本26.0.0开始支持。<br>- SharedHeap的Total值为固定大小：815792128byte（即：778MB），请参考[SharedHeap相关参数](../arkts-utils/gc-introduction.md#sharedheap相关参数)中的SharedHeapSize参数说明。 |
+| GC Status | 发生AppFreeze事件时，GC（垃圾回收）的相关信息。详细介绍参考：[application_gc_info字段说明](hiappevent-watcher-freeze-events.md#application_gc_info字段说明)。<br>**说明**：从API版本26.0.0开始支持。 |
+| I/O(bytes) | 发生AppFreeze事件时，I/O的相关信息。详细介绍参考：[application_io_info字段说明](hiappevent-watcher-freeze-events.md#application_io_info字段说明)。<br>**说明**：从API版本26.0.0开始支持。|
 
 EventHandler信息，具体解释如下：
 
@@ -301,7 +301,7 @@ dump信息包含以下字段：
 >
 > EventHandler信息中，开发者只需重点关注EventHandler dump begin curTime，trigger time和completeTime time时间即可。
 >
-> EventHandler信息详细指导可参考：查看eventHandler信息
+> EventHandler信息详细指导可参考：[查看eventHandler信息](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-app-freeze-way#section190014865618)
 
 ### 堆栈信息
 
@@ -346,7 +346,7 @@ state=S, utime=0, stime=0, priority=0, nice=-20, clk=100
 
 其他情况下（比如瞬时栈场景），由于主线程繁忙等问题，导致获取堆栈信息延迟，无法及时捕获到异常代码段，堆栈的栈顶信息并非开发者期望获取的结果。
 
-为解决上述问题，从API version 21开始，支持获取AppFreeze的增强日志。协助开发者定位问题，详见AppFreeze（应用冻屏）增强日志实现原理。
+为解决上述问题，从API version 21开始，支持获取AppFreeze的增强日志。协助开发者定位问题，详见[AppFreeze（应用冻屏）增强日志实现原理](#实现原理)。
 
 若上述故障进程堆栈内容缺失，可能会出现以下几种日志信息：
 
@@ -536,7 +536,7 @@ client actions for app:
 >
 > "是否需要应用处理"列说明是否需要应用开发者处理及处理方式。
 >
-> 标注"（异常场景）"的记录仅在对应异常发生时出现，标注"（InsightIntent场景）"的记录仅在涉及意图框架时出现。
+> 标注"（异常场景）"的记录仅在对应异常发生时出现，标注"（[InsightIntent](../application-models/insight-intent-overview.md)场景）"的记录仅在涉及意图框架时出现。
 
 1. load 阶段事件，以应用进程未创建为例。
 
@@ -557,15 +557,15 @@ client actions for app:
    | - | HandleLaunchApplication begin | 应用开始执行加载逻辑。 | Application初始化逻辑耗时。 | 是，检查应用是否存在异常耗时。 |
    | - | HandleLaunchApplication end | 应用加载逻辑执行结束。与begin对比可计算加载耗时。 | - | 是，检查应用是否存在异常耗时。 |
    | AppRunningRecord::LaunchPendingAbilities | - | 调度应用中待启动的Ability，触发具体的Ability加载。 | - | 否，系统侧调度。 |
-   | AppLifeCycleDeal::LaunchAbility | - | 服务端通过IPC调度应用加载具体的Ability。 | IPC通信失败、序列化Want失败。 | 否，系统侧IPC问题。 |
+   | AppLifeCycleDeal::LaunchAbility | - | 服务端通过IPC调度应用加载具体的Ability。 | IPC通信失败、序列化[Want](../application-models/want-overview.md)失败。 | 否，系统侧IPC问题。 |
    | AppLifeCycleDeal::LaunchAbility; write want fail（异常场景） | - | 序列化want数据失败，记录异常信息。 | want参数过大或包含不可序列化对象。 | 是，检查want参数是否包含过大或不可序列化数据。 |
    | AppLifeCycleDeal::LaunchAbility; ipc error *（异常场景） | - | ScheduleLaunchAbility IPC调用失败，记录IPC错误码。 | IPC通信异常。 | 否，系统侧IPC问题。 |
    | - | MainThread::ScheduleLaunchAbility | 应用进程收到加载Ability的请求，准备执行Ability的创建流程。 | 主线程被阻塞。 | 是，检查主线程是否存在耗时任务。 |
    | - | MainThread::HandleLaunchAbility | 应用主线程处理Ability加载请求。 | - | 否，系统侧加载过程。 |
-   | - | JsAbilityStage::Create | 加载AbilityStage。 | - | 否，系统侧加载过程。 |
-   | - | JsAbilityStage::OnCreate begin | AbilityStage onCreate生命周期开始。 | AbilityStage onCreate中执行耗时操作。 | 是，避免在AbilityStage onCreate中执行耗时操作。 |
+   | - | JsAbilityStage::Create | 加载[AbilityStage](../application-models/abilitystage.md)。 | - | 否，系统侧加载过程。 |
+   | - | JsAbilityStage::OnCreate begin | AbilityStage [onCreate](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#oncreate)生命周期开始。 | AbilityStage onCreate中执行耗时操作。 | 是，避免在AbilityStage onCreate中执行耗时操作。 |
    | - | JsAbilityStage::OnCreate end | AbilityStage的onCreate生命周期结束，AbilityStage初始化完成。与begin对比可计算耗时。 | AbilityStage onCreate耗时过长。 | 是，优化AbilityStage onCreate逻辑。 |
-   | - | JsAbilityStage::OnAboutToCreateAbility begin（InsightIntent场景） | AbilityStage即将创建Ability（onAboutToCreateAbility回调）。 | onAboutToCreateAbility中执行耗时操作。 | 是，避免在onAboutToCreateAbility中执行耗时操作。 |
+   | - | JsAbilityStage::OnAboutToCreateAbility begin（InsightIntent场景） | AbilityStage即将创建Ability（[onAboutToCreateAbility](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onabouttocreateability24)回调）。 | onAboutToCreateAbility中执行耗时操作。 | 是，避免在onAboutToCreateAbility中执行耗时操作。 |
    | - | JsAbilityStage::OnAboutToCreateAbility end（InsightIntent场景） | onAboutToCreateAbility回调结束。与begin对比可计算耗时。 | onAboutToCreateAbility耗时过长。 | 是，优化onAboutToCreateAbility逻辑。 |
    | - | JsAbilityStage::OnAboutToCreateAbilityAsync begin（InsightIntent场景） | 异步创建Ability（onAboutToCreateAbilityAsync回调）。 | 异步Promise未及时resolve。 | 是，确保onAboutToCreateAbilityAsync返回的Promise及时resolve。 |
    | - | JsAbilityStage::OnAboutToCreateAbilityAsync end（InsightIntent场景） | onAboutToCreateAbilityAsync回调结束。 | 异步Promise未及时resolve。 | 是，确保onAboutToCreateAbilityAsync返回的Promise及时resolve。 |
@@ -591,38 +591,38 @@ client actions for app:
    | AppMgrService::AppForegrounded | - | 应用前台完成，服务端记录应用状态已切换至前台。 | - | 否，系统侧调度。 |
    | ServiceInner::AppForegrounded | - | 应用前台完成。 | - | 否，系统侧调度。 |
    | AppRunningRecord::OnWindowVisibilityChanged | - | 窗口可见性变化。 | - | 否，系统侧窗口调度。 |
-   | write want failed（异常场景） | - | 服务端通过ScheduleAbilityTransaction调度Ability前台事务时，序列化Want失败。 | want参数过大或包含不可序列化对象。 | 是，检查want参数是否包含过大或不可序列化数据。 |
+   | write want failed（异常场景） | - | 服务端通过ScheduleAbilityTransaction调度Ability前台事务时，序列化[Want](../application-models/want-overview.md)失败。 | want参数过大或包含不可序列化对象。 | 是，检查want参数是否包含过大或不可序列化数据。 |
    | write sessionInfo failed（异常场景） | - | 序列化sessionInfo失败。 | - | 否，系统侧数据问题。 |
    | ScheduleAbilityTransaction ipc error *（异常场景） | - | ScheduleAbilityTransaction IPC调用失败，记录IPC错误码。 | IPC通信异常。 | 否，系统侧IPC问题。 |
    | - | AbilityThread::ScheduleAbilityTransaction | 应用收到Ability前台调度，准备对具体的Ability进行事务处理。 | 主线程被阻塞。 | 是，检查主线程是否存在耗时任务。 |
    | - | AbilityThread::HandleAbilityTransaction | 主线程执行Ability前台调度，触发Ability的生命周期回调。 | - | 否，系统侧记录。 |
-   | - | JsUIAbility::OnStart begin | onCreate生命周期开始，Ability执行初始化工作。 | onCreate中执行耗时操作。 | 是，避免在onCreate中执行耗时操作。 |
+   | - | JsUIAbility::OnStart begin | [onCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)生命周期开始，Ability执行初始化工作。 | onCreate中执行耗时操作。 | 是，避免在onCreate中执行耗时操作。 |
    | - | JsUIAbility::OnStart end | onCreate生命周期结束，Ability的初始资源已准备就绪。与begin对比可计算耗时。 | onCreate耗时过长。 | 是，避免在onCreate中执行耗时操作。 |
-   | - | JsUIAbility::OnSceneCreated begin | 创建窗口scene开始。 | onWindowStageCreate中执行耗时操作。 | 是，避免在onWindowStageCreate中执行耗时操作。 |
+   | - | JsUIAbility::OnSceneCreated begin | 创建窗口scene开始。 | [onWindowStageCreate](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate)中执行耗时操作。 | 是，避免在onWindowStageCreate中执行耗时操作。 |
    | - | JsUIAbility::OnSceneCreated end | 创建窗口scene结束。与begin对比可计算耗时。 | onWindowStageCreate耗时过长。 | 是，避免在onWindowStageCreate中执行耗时操作。 |
-   | - | JsUIAbility::OnWillForeground begin | onWillForeground回调开始。 | onWillForeground中执行耗时操作。 | 是，避免在onWillForeground中执行耗时操作。 |
+   | - | JsUIAbility::OnWillForeground begin | [onWillForeground](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwillforeground20)回调开始。 | onWillForeground中执行耗时操作。 | 是，避免在onWillForeground中执行耗时操作。 |
    | - | JsUIAbility::OnWillForeground end | onWillForeground回调结束。与begin对比可计算耗时。 | onWillForeground耗时过长。 | 是，避免在onWillForeground中执行耗时操作。 |
    | - | JsUIAbility::WindowScene::GoForeground begin | 调用窗口接口执行GoForeground开始。 | 窗口scene初始化失败、窗口系统响应慢。 | 否，窗口系统问题。 |
    | - | JsUIAbility::DoOnForegroundForSceneIsNull; error *（异常场景） | 窗口scene初始化失败，记录错误码。 | 窗口scene创建失败、displayId获取失败。 | 否，窗口系统问题。 |
    | - | UIAbilityImpl::WindowLifeCycleImpl::AfterForeground | 窗口前台后回调。 | 窗口GoForeground未及时回调。 | 否，窗口系统问题。 |
    | - | UIAbilityImpl::WindowLifeCycleImpl::ForegroundFailed; GoForeground failed（异常场景） | 窗口GoForeground失败，记录异常信息。 | - | 否，窗口系统问题。 |
-   | - | JsUIAbility::IntentForeground execute start begin（InsightIntent场景） | 执行应用前台相关的意图操作开始，处理由前台切换触发的Intent任务。 | InsightIntent执行器未及时返回。 | 是，确保Intent执行器及时完成。 |
+   | - | JsUIAbility::IntentForeground execute start begin（InsightIntent场景） | 执行应用前台相关的[意图](../application-models/insight-intent-overview.md)操作开始，处理由前台切换触发的Intent任务。 | InsightIntent执行器未及时返回。 | 是，确保Intent执行器及时完成。 |
    | - | JsUIAbility::IntentForeground end（InsightIntent场景） | 应用前台相关的意图操作执行结束，Intent相关逻辑已处理完成。与start对比可计算耗时。 | InsightIntent执行器耗时过长。 | 是，确保Intent执行器及时完成。 |
    | - | JsUIAbility::IntentRepeat execute start（InsightIntent场景） | Intent重复执行模式开始。 | InsightIntent执行器未及时返回。 | 是，确保Intent执行器及时完成。 |
    | - | JsUIAbility::IntentRepeat execute end（InsightIntent场景） | Intent重复执行模式结束。与start对比可计算耗时。 | InsightIntent执行器耗时过长。 | 是，确保Intent执行器及时完成。 |
    | - | JsUIAbility::IntentPage execute start（InsightIntent场景） | Intent页面执行模式开始。 | InsightIntent执行器未及时返回。 | 是，确保Intent执行器及时完成。 |
    | - | JsUIAbility::IntentPage execute end（InsightIntent场景） | Intent页面执行模式结束。与start对比可计算耗时。 | InsightIntent执行器耗时过长。 | 是，确保Intent执行器及时完成。 |
    | - | UIAbilityImpl::HandleExecuteInsightIntentForeground（InsightIntent场景） | 处理前台意图执行。 | InsightIntent参数生成失败。 | 是，检查InsightIntent参数配置。 |
-   | - | JsUIAbility::OnForeground begin | onForeground生命周期开始，通知开发者Ability已经在前台展示。 | onForeground中执行耗时操作。 | 是，避免在onForeground中执行耗时操作。 |
+   | - | JsUIAbility::OnForeground begin | [onForeground](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onforeground)生命周期开始，通知开发者Ability已经在前台展示。 | onForeground中执行耗时操作。 | 是，避免在onForeground中执行耗时操作。 |
    | - | JsUIAbility::OnForeground end | onForeground生命周期结束，Ability的前台生命周期回调完成。与begin对比可计算耗时。 | onForeground耗时过长。 | 是，避免在onForeground中执行耗时操作。 |
-   | - | JsUIAbility::OnDidForeground begin | onDidForeground回调开始。 | onDidForeground中执行耗时操作。 | 是，避免在onDidForeground中执行耗时操作。 |
+   | - | JsUIAbility::OnDidForeground begin | [onDidForeground](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#ondidforeground20)回调开始。 | onDidForeground中执行耗时操作。 | 是，避免在onDidForeground中执行耗时操作。 |
    | - | JsUIAbility::OnDidForeground end | onDidForeground回调结束。与begin对比可计算耗时。 | onDidForeground耗时过长。 | 是，避免在onDidForeground中执行耗时操作。 |
    | - | AbilityManagerClient::AbilityTransitionDone | 客户端通知AMS前台切换完成。 | AbilityTransitionDone IPC调用失败。 | 否，系统侧IPC问题。 |
    | - | AbilityTransitionDone; write saveData failed（异常场景） | 客户端序列化saveData失败，记录异常信息。 | - | 否，系统侧数据问题。 |
    | - | AbilityTransitionDone; ipc error *（异常场景） | AbilityTransitionDone IPC调用失败，记录IPC错误码。 | IPC通信异常。 | 否，系统侧IPC问题。 |
    | AbilityManagerService::AbilityTransitionDone; the end of foreground lifecycle. | - | 服务端确认前台切换完成，foreground生命周期结束。 | 客户端未及时调用AbilityTransitionDone。 | 否，系统侧调度。 |
 
-参考日志规格分析其他日志信息。特别说明：生命周期切换时若发生主线程卡死，请结合前后两次日志的堆栈与 BinderCatcher 信息进行对比分析，以定位问题。
+参考[日志规格](#日志规格)分析其他日志信息。特别说明：生命周期切换时若发生主线程卡死，请结合前后两次日志的堆栈与 BinderCatcher 信息进行对比分析，以定位问题。
 
 **APP_INPUT_BLOCK 用户输入响应超时**
 
@@ -641,7 +641,7 @@ DisplayPowerInfo:powerState:AWAKE
 
 事件检测超时阈值：log版本为8000毫秒，nolog版本为5000毫秒。从**API version 24**开始，APP_INPUT_BLOCK检测阈值不区分版本，均为8000毫秒。
 
-前置事件中包含：lastDispatchEvent为上次分发的事件；lastProcessEvent为上次处理的事件；lastMarkedEvent为上次标记的事件。
+前置事件id中包含：lastDispatchEvent为上次分发的事件；lastProcessEvent为上次处理的事件；lastMarkedEvent为上次标记的事件。如果系统侧IPC通信失败（EventHandler信息为空），则无法获取前置事件id，id值为0。
 
 在上述示例中，上次分发的事件是430，上次处理的事件是429，上次标记的事件是428，表明430事件已分发完毕，在处理环节，已超时8000毫秒。此日志可以用于APP_INPUT_BLOCK事件的简单定界，帮助问题分析。
 
@@ -663,7 +663,7 @@ DisplayPowerInfo:powerState:AWAKE
 
    > **说明：**
    >
-   > 由于应用冻屏事件的采样栈会与主线程超时检测冲突，如果应用接入MAIN_THREAD_JANK的setEventConfig接口自定义配置采集堆栈的个数，应用冻屏事件的采集堆栈会与应用当前配置的采集堆栈的个数一致。
+   > 由于应用冻屏事件的采样栈会与[主线程超时检测](apptask-timeout-guidelines.md#主线程超时检测)冲突，如果应用接入MAIN_THREAD_JANK的setEventConfig接口自定义配置采集堆栈的个数，应用冻屏事件的采集堆栈会与应用当前配置的采集堆栈的个数一致。
    >
    > APP_INPUT_BLOCK故障有增强日志的前提是：先发生THREAD_BLOCK_3S或LIFECYCLE_HALF_TIMEOUT。
 
@@ -673,7 +673,7 @@ DisplayPowerInfo:powerState:AWAKE
 
 **方式一：通过HiAppEvent接口订阅**
 
-从<!--RP3-->OpenHarmony 6.1.0.125以上<!--RP3End-->的系统版本开始，系统默认将AppFreeze增强日志内容合并到APP_FREEZE事件的external_log指向的日志结尾。
+从<!--RP3-->OpenHarmony 6.1.0.125以上<!--RP3End-->的系统版本开始，系统默认将AppFreeze增强日志内容合并到APP_FREEZE事件的[external_log](hiappevent-watcher-freeze-events.md#事件字段说明)指向的日志结尾。
 
 如果开发者需要单独的AppFreeze增强日志文件，可以在AppScope/app.json5文件中配置如下环境变量：
 
@@ -686,9 +686,9 @@ DisplayPowerInfo:powerState:AWAKE
    ]
    ```
 
-HiAppEvent给开发者提供了故障订阅接口，开发者可以使用HiAppEvent监听应用冻屏事件，获取文件内容，详见应用冻屏事件介绍。参考订阅应用冻屏事件（ArkTS）或订阅应用冻屏事件（C/C++）完成应用冻屏事件订阅。
+HiAppEvent给开发者提供了故障订阅接口，开发者可以使用HiAppEvent监听应用冻屏事件，获取文件内容，详见[应用冻屏事件介绍](hiappevent-watcher-freeze-events.md)。参考[订阅应用冻屏事件（ArkTS）](hiappevent-watcher-freeze-events-arkts.md)或[订阅应用冻屏事件（C/C++）](hiappevent-watcher-freeze-events-ndk.md)完成应用冻屏事件订阅。
 
-开发者可以通过事件的external_log字段读取应用冻屏事件生成的故障文件和应用冻屏事件的增强日志文件。增强日志文件的命名与应用冻屏事件生成的故障文件名称格式相同。
+开发者可以通过事件的[external_log](hiappevent-watcher-freeze-events.md#事件字段说明)字段读取应用冻屏事件生成的故障文件和应用冻屏事件的增强日志文件。增强日志文件的命名与应用冻屏事件生成的故障文件名称格式相同。
 
 external_log是字符串数组，第一个元素为应用冻屏事件生成的故障文件路径；第二个元素为应用冻屏事件生成的增强日志文件路径。
 
@@ -729,7 +729,7 @@ external_log是字符串数组，第一个元素为应用冻屏事件生成的�
 
 ### 增强日志规格
 
-本节主要介绍增强日志的一般日志规格，以下是一份AppFreeze增强日志的核心内容。可以使用聚类规则提取主线程堆栈关键信息，提高问题定位效率及准确性。
+本节主要介绍增强日志的一般日志规格，以下是一份AppFreeze增强日志的核心内容。可以使用[聚类规则](#增强日志信息聚类)提取主线程堆栈关键信息，提高问题定位效率及准确性。
 
 ```text
 Generated by HiviewDFX @OpenHarmony
@@ -808,6 +808,37 @@ SnapshotTime: 2021-01-01-20-05-58.549685
 .......
 ```
 
+**Promise异步嵌套调用场景日志规格**
+
+从API版本26.0.1开始，在ARM 64位系统下，当Promise异步嵌套调用过程中发生AppFreeze故障时，异步栈跟踪维测功能还会打印提交该异步任务的线程栈，帮助定位由异步任务提交者造成的卡死问题。Promise异步栈功能默认关闭，开启方法参见[Promise异步栈](jscrash-guidelines.md#promise异步栈)。
+
+在多层异步嵌套调用场景下，当前规格仅保留**发生故障的调用层**的提交者调用栈，而非完整的嵌套调用链。故障线程的调用栈与其提交线程的调用栈通过`SubmitterStacktrace`字符串分隔。
+
+以9级`async/await`嵌套调用为例，整个过程如下图所示：调用方发起调用后，每层异步函数执行至`await`处挂起，待其Promise决议后由运行时（事件循环）恢复执行，随后调用下一层异步函数，如此逐层嵌套，直至最深层multiAsync9。每层`await`都会产生一个新的Promise节点，运行时会逐层保存该层的提交者调用栈。multiAsync9恢复执行后调用`APPFREEZE()`触发主线程阻塞，日志中保留的正是该层的提交者调用栈。
+
+![Promise异步嵌套调用过程](figures/promise_async_nested_call.png)
+
+AppFreeze日志文件路径为`/data/log/faultlog/freeze_ext`，以下是一份AppFreeze故障日志中`SubmitterStacktrace`字段的核心内容。
+
+```text
+...
+========SubmitterStacktrace========       <- 任务异常时打印任务提交者调用栈
+#00 pc 00000000008513b8 /system/lib64/platformsdk/libark_jsruntime.so(9bb0fd785aae99ad067e2a94101ee00c)
+#01 pc 000000000038e950 /system/lib64/platformsdk/libark_jsruntime.so(9bb0fd785aae99ad067e2a94101ee00c)
+#02 pc 000000000038dabc /system/lib64/platformsdk/libark_jsruntime.so(9bb0fd785aae99ad067e2a94101ee00c)
+#03 pc 0000000000e74e78 /system/lib64/module/arkcompiler/stub.an(RTStub_CallRuntime+40)
+#04 pc 0000000000d49c18 /system/lib64/module/arkcompiler/stub.an(BCStub_HandleAsyncfunctionawaituncaughtV8StwCopy+64)
+#05 at multiAsync9 (entry|entry|1.0.0|src/main/ets/pages/Index.ts:111:5)  <- 发生故障的调用帧
+#06 at multiAsync8 (entry|entry|1.0.0|src/main/ets/pages/Index.ts:106:5)
+#07 pc 0000000000363568 /system/lib64/platformsdk/libark_jsruntime.so(9bb0fd785aae99ad067e2a94101ee00c)
+#08 pc 0000000000363204 /system/lib64/platformsdk/libark_jsruntime.so(9bb0fd785aae99ad067e2a94101ee00c)
+#09 pc 0000000000362b54 /system/lib64/platformsdk/libark_jsruntime.so(9bb0fd785aae99ad067e2a94101ee00c)
+#10 pc 0000000000362554 /system/lib64/platformsdk/libark_jsruntime.so(9bb0fd785aae99ad067e2a94101ee00c)
+...
+```
+
+日志中JS帧的`.ts`路径为编译产物，需通过SourceMap映射还原到`.ets`源码位置，编译产物路径的解析方法详见[异常堆栈解析原理 sourcemap结构：key字段介绍](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-exception-stack-parsing-principle#section1145914292713)
+
 ## AppFreeze聚类
 
 ### 聚类简介
@@ -826,21 +857,21 @@ AppFreeze故障日志信息中的故障线程信息表示业务线程发生故�
 
 因此，将故障线程信息作为聚类范围是最为准确的，开发者可根据业务聚类的需求调整增加其他故障日志的信息。
 
-故障线程信息可参考堆栈信息介绍获取。
+故障线程信息可参考[堆栈信息介绍](#堆栈信息)获取。
 
 ### AppFreeze故障信息聚类
 
-AppFreeze故障信息聚类方法同Cpp Crash一致，参考CppCrash聚类。
+AppFreeze故障信息聚类方法同Cpp Crash一致，参考[CppCrash聚类](cppcrash-guidelines.md#cppcrash聚类)。
 
 > **注意：**
 >
-> 如果故障线程堆栈中有IPC栈帧，可获取binder堆栈信息用于聚类。
+> 如果故障线程堆栈中有IPC栈帧，可获取[binder堆栈](#对端信息与当前故障进程通信的进程信息)信息用于聚类。
 
 ### 增强日志信息聚类
 
 增强日志信息聚类规格与AppFreeze故障信息提取堆栈聚类规格一致，该部分参与聚类主要是为了解决AppFreeze故障堆栈信息不足导致的无法聚类问题。
 
-开发者可参考AppFreeze故障信息聚类方法获取聚类特征，对增强日志信息进行聚类。
+开发者可参考[AppFreeze故障信息聚类](#appfreeze故障信息聚类)方法获取聚类特征，对增强日志信息进行聚类。
 
 ## 屏蔽AppFreeze检测
 
@@ -848,7 +879,7 @@ AppFreeze故障信息聚类方法同Cpp Crash一致，参考CppCrash聚类。
 
 ### 环境要求
 
-在使用屏蔽指令前，开发者需要先获取hdc工具，并通过`hdc shell`进入设备shell。
+在使用屏蔽指令前，开发者需要先获取[hdc工具](hdc.md#环境准备)，并通过`hdc shell`进入设备shell。
 
 ### 约束与限制
 
@@ -875,7 +906,7 @@ aa attach -b com.example.appfreeze
 attach app debug successfully.
 ```
 
-当给定的`<bundleName>`参数不合法或者不存在时，返回如下内容，更多详细说明请参考：进入调试模式命令（attach）：
+当给定的`<bundleName>`参数不合法或者不存在时，返回如下内容，更多详细说明请参考：[进入调试模式命令（attach）](../tools/aa-tool.md#进入调试模式命令attach)：
 
 ```text
 error: failed to attach app debug.
@@ -901,7 +932,7 @@ aa detach -b com.example.appfreeze
 detach app debug successfully.
 ```
 
-当给定的`<bundleName>`参数不合法或者不存在时，返回如下内容，更多详细说明请参考：退出调试模式命令（detach）：
+当给定的`<bundleName>`参数不合法或者不存在时，返回如下内容，更多详细说明请参考：[退出调试模式命令（detach）](../tools/aa-tool.md#退出调试模式命令detach)：
 
 ```text
 error: failed to detach app debug.

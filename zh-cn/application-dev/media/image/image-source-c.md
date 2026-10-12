@@ -22,19 +22,19 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 
 ### Native接口调用
 
-具体接口说明请参考Image_NativeModule。
+具体接口说明请参考[Image_NativeModule](../../reference/apis-image-kit/capi-image-nativemodule.md)。
 
-在Deveco Studio新建Native C++应用，默认生成的项目中包含index.ets文件，在entry\src\main\cpp目录下会自动生成一个cpp文件（hello.cpp或napi_init.cpp，本示例以hello.cpp文件名为例）。在hello.cpp中实现C API接口调用逻辑，示例代码如下：
+在DevEco Studio新建Native C++应用，默认生成的项目中包含index.ets文件，在entry\src\main\cpp目录下会自动生成一个cpp文件（hello.cpp或napi_init.cpp，本示例以hello.cpp文件名为例）。在hello.cpp中实现C API接口调用逻辑，示例代码如下：
 
 **解码接口使用示例**
 
 > **说明：**
 >
-> 部分接口（如：OH_ImageSourceNative_GetSupportedFormats）在API version 20以后才支持，需要开发者在进行开发时选择合适的API版本。
+> 部分接口（如：[OH_ImageSourceNative_GetSupportedFormats](../../reference/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_getsupportedformats)）在API version 20以后才支持，需要开发者在进行开发时选择合适的API版本。
 
 1. 导入相关头文件。
 
-   <!-- @decodingPixel_import -->     
+   <!-- @[decodingPixel_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->     
    
    ``` C++
    #include <string>
@@ -47,7 +47,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 
 2. 日志宏定义可参考下述代码按实际需求自行修改。
 
-   <!-- @define_logInfo -->     
+   <!-- @[define_logInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->     
    
    ``` C++
    #undef LOG_DOMAIN
@@ -58,7 +58,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 
 3. 定义ImageSourceNative类。
 
-   <!-- @define_sourceClass -->     
+   <!-- @[define_sourceClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/imageKits.h) -->     
    
    ``` C
    class ImageSourceNative {
@@ -75,7 +75,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
    
 4. 创建ImageSourceNative的一个实例。
 
-   <!-- @create_sourceClass -->        
+   <!-- @[create_sourceClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->        
    
    ``` C++
    static ImageSourceNative *g_thisImageSource = new ImageSourceNative();
@@ -83,7 +83,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
    
 5. 创建GetJsResult函数处理napi返回值。
 
-   <!-- @get_returnValue -->       
+   <!-- @[get_returnValue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/napi_init.cpp) -->       
    
    ``` C++
    // 处理napi返回值。
@@ -97,7 +97,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 
 6. 常量定义。
 
-   <!-- @define_maxStringLength -->     
+   <!-- @[define_maxStringLength](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->     
    
    ``` C++
    const int MAX_STRING_LENGTH = 1024;
@@ -105,7 +105,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 
 7. 创建ImageSource实例。
 
-   <!-- @decodingPixel_operations -->     
+   <!-- @[decodingPixel_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->     
    
    ``` C++
    // 返回ErrorCode。
@@ -159,7 +159,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 
    - 创建PixelMap对象。
 
-     <!-- @create_pixelMap -->    
+     <!-- @[create_pixelMap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->    
      
      ``` C++
      // 通过图片解码参数创建PixelMap对象。
@@ -199,7 +199,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 
    - 创建定义图片信息的结构体对象，并获取图片信息。
 
-     <!-- @get_imageInfo -->      
+     <!-- @[get_imageInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->      
      
      ``` C++
      // 创建定义图片信息的结构体对象，并获取图片信息。
@@ -239,7 +239,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 
    - 读取、编辑Exif信息。
 
-     <!-- @editExif_operations -->      
+     <!-- @[editExif_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->  
      
      ``` C++
      // 获取指定property的value值。
@@ -252,7 +252,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
              OH_LOG_ERROR(LOG_APP, "GetImageProperty napi_get_cb_info failed!");
              return GetJsResult(env, IMAGE_BAD_PARAMETER);
          }
-         // 修改指定属性键的值。
+         // 获取指定属性键的值。
          char key[MAX_STRING_LENGTH] = {0};
          size_t keySize = 0;
          if (napi_get_value_string_utf8(env, argValue[0], key, sizeof(key), &keySize) != napi_ok) {
@@ -327,7 +327,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 
    - 获取图像帧数。
 
-     <!-- @get_frameCount -->     
+     <!-- @[get_frameCount](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->     
      
      ``` C++
      // 获取图像帧数。
@@ -345,7 +345,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 
    - 通过图片解码参数创建Pixelmap列表。
 
-     <!-- @create_pixelmapList -->             
+     <!-- @[create_pixelmapList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->             
      
      ``` C++
      // 通过图片解码参数创建Pixelmap列表。
@@ -372,7 +372,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 
    - 获取图像延迟时间列表。
 
-     <!-- @get_delayTimeList -->        
+     <!-- @[get_delayTimeList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->        
      
      ``` C++
      // 获取图像延迟时间列表。
@@ -395,7 +395,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
 
 9. 释放ImageSource。
 
-   <!-- @release_imageSource -->       
+   <!-- @[release_imageSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->       
    
    ``` C++
    // 释放资源。
@@ -411,7 +411,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libpixel
    
  ## 进阶主题
 
-- **内存优化解码**：使用DMA内存和YUV像素格式降低内存占用、提升解码性能，参见图片解码内存优化。
-- **区域解码**：解码图片指定区域，适用于大图局部查看和裁剪预览场景，参见图片区域解码与下采样。
-- **下采样解码**：解码时直接缩放目标尺寸，避免解码后缩放的性能开销，适用于缩略图生成场景，参见图片区域解码与下采样。
-- **多图对象解码**：解码包含主图和辅助图的Picture对象，适用于HDR图片和HEIF专业格式处理，参见使用Image_NativeModule完成多图对象解码。
+- **内存优化解码**：使用DMA内存和YUV像素格式降低内存占用、提升解码性能，参见[图片解码内存优化](image-allocator-type-c.md)。
+- **区域解码**：解码图片指定区域，适用于大图局部查看和裁剪预览场景，参见[图片区域解码与下采样](image-region-and-downsampling-c.md)。
+- **下采样解码**：解码时直接缩放目标尺寸，避免解码后缩放的性能开销，适用于缩略图生成场景，参见[图片区域解码与下采样](image-region-and-downsampling-c.md)。
+- **多图对象解码**：解码包含主图和辅助图的Picture对象，适用于HDR图片和HEIF专业格式处理，参见[使用Image_NativeModule完成多图对象解码](image-source-picture-c.md)。

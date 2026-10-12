@@ -3,7 +3,7 @@
 <!--Subsystem: Window-->
 <!--Owner: @Pakoo007-->
 <!--Designer: @ki_ja-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
 
 ## 窗口模块的定义
@@ -36,7 +36,7 @@
 
 当前窗口的实现和开发与应用开发模型相关联，不同模型下的接口功能略有区别。当前应用开发模型分为FA模型和Stage模型。
 
-两个模型的整体架构和设计思想，详见应用模型。
+两个模型的整体架构和设计思想，详见[应用模型](../application-models/stage-model-development-overview.md)。
 
 针对窗口开发，推荐使用Stage模型进行相关开发。
 
@@ -44,4 +44,4 @@
 
 -  在FA模型下，不支持系统窗口的相关开发。
 
--  窗口存在大小限制WindowLimits，该限制由产品配置决定。未调用setWindowLimits配置过WindowLimits时，使用getWindowLimits可获取系统限制，单位为px。
+-  窗口存在大小限制[WindowLimits](../reference/apis-arkui/arkts-apis-window-i.md#windowlimits11)，该限制由产品配置决定。未调用[setWindowLimits](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlimits11)配置过WindowLimits时，使用[getWindowLimits](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowlimits11)可获取系统限制，单位为px。

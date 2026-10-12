@@ -42,27 +42,27 @@ NDK（Native Development Kit）是OpenHarmony SDK提供的Native API、相应编
 
 - **CMake使用知识**
 
-  CMake是OpenHarmony默认支持的构建系统。请先通过CMake官方文档了解基础用法。
+  CMake是OpenHarmony默认支持的构建系统。请先通过[CMake官方文档](https://cmake.org/cmake/help/v3.16/guide/tutorial/)了解基础用法。
 
 - **Node Addons开发知识**
 
-  ArkTS采用Node-API作为跨语言调用接口，熟悉基本的Node Addons开发模式，可以更好地理解NDK中Node-API的使用。
+  ArkTS采用Node-API作为跨语言调用接口，熟悉基本的[Node Addons开发模式](https://nodejs.org/api/addons.html)，可以更好地理解NDK中Node-API的使用。
 
 - **Clang/LLVM编译器使用知识**
 
   具备一定的Clang/LLVM编译器基础知识，能够帮助开发者编译出更优的Native动态库。
 
-- **Node-API**
+- **[Node-API](napi-introduction.md)**
 
   曾用名NAPI，是OpenHarmony中提供ArkTS/JS与C/C++跨语言调用的接口，该接口基于Node.js的Node-API扩展而来，但不完全兼容。
 
 ### NDK目录简介
 
-获取NDK开发包，请参考<!--RP1-->NDK开发工具目录<!--RP1End-->。
+获取NDK开发包，请参考<!--RP1-->[NDK开发工具目录](build-with-ndk-cmake.md#下载ndk开发包)<!--RP1End-->。
 
-- build目录：放置预定义的toolchain脚本文件<!--RP2-->ohos.toolchain.cmake<!--RP2End-->
+- build目录：放置预定义的toolchain脚本文件<!--RP2-->[ohos.toolchain.cmake](build-with-ndk-overview.md#ohostoolchaincmake简介)<!--RP2End-->
 
-  ndk-build-structure
+  ![ndk-build-structure](figures/ndk-build-structure.png)
 
   CMake编译时需要读取该文件中的默认值，比如编译器架构、C++库链接方式等，因此在编译时会通过CMAKE_TOOLCHAIN_FILE指出该文件的路径，便于CMake在编译时定位到该文件。
 
@@ -77,7 +77,7 @@ NDK（Native Development Kit）是OpenHarmony SDK提供的Native API、相应编
 
 - llvm文件夹：放置NDK提供的编译器
 
-  ndk-tools-list
+  ![ndk-tools-list](figures/ndk-tools-list.png)
 
 
 ## NDK常用模块

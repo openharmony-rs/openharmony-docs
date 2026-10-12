@@ -8,7 +8,7 @@
 
 ## 场景介绍
 
-该库扩展了原生JSON功能，提供了额外的错误处理、循环引用检测、BigInt处理以及对不同输入类型的严格检查。代码中底层依赖于原生JSON.parse和JSON.stringify，但在此基础上加入了多种自定义逻辑并提供额外的has和remove接口，具体可见@arkts.json。
+该库扩展了原生JSON功能，提供了额外的错误处理、循环引用检测、BigInt处理以及对不同输入类型的严格检查。代码中底层依赖于原生JSON.parse和JSON.stringify，但在此基础上加入了多种自定义逻辑并提供额外的has和remove接口，具体可见[@arkts.json](../reference/apis-arkts/js-apis-json.md)。
 
 JSON扩展库主要适用于以下场景：
 
@@ -41,7 +41,8 @@ parse(text: string, reviver?: Transformer, options?: ParseOptions): Object | nul
 
 ### stringify
 
-stringify(value: Object, replacer?: (number | string)[] | null, space?: string | number): string
+stringify(value: Object, replacer?: (number | string)[] | null, space?: string | number): string</br>
+stringify(value: Object, replacer?: Transformer, space?: string | number): string
 
 将对象转换为JSON字符串，支持BigInt模式。
 
@@ -103,7 +104,7 @@ JSON字符串中的嵌套引号会破坏其结构，将导致解析失败。
 
 方式1：避免出现嵌套引号的操作。
 
-<!-- @json_nesting_method1 --> 
+<!-- @[json_nesting_method1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/JsonExtensionLibrary/entry/src/main/ets/pages/ParsingContainingNestedQuotationMarks.ets) --> 
 
 ``` TypeScript
 import { JSON } from '@kit.ArkTS';
@@ -134,7 +135,7 @@ interface TestStr {
 
 方式2：将JSON字符串中嵌套的引号进行双重转义，恢复JSON的正常结构。
 
-<!-- @json_nesting_method2 --> 
+<!-- @[json_nesting_method2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/JsonExtensionLibrary/entry/src/main/ets/pages/ParsingContainingNestedQuotationMarks.ets) --> 
 
 ``` TypeScript
 import { JSON } from '@kit.ArkTS';
@@ -168,7 +169,7 @@ interface TestStr {
 
 当JSON字符串中存在小于-(2^53-1)或大于(2^53-1)的整数时，解析后数据会出现精度丢失或不正确的情况。该解析场景需要指定BigIntMode，将大整数解析为BigInt。
 
-<!-- @containing_bigInt --> 
+<!-- @[containing_bigInt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/JsonExtensionLibrary/entry/src/main/ets/pages/ParsingContainingBigInts.ets) --> 
 
 ``` TypeScript
 import { JSON } from '@kit.ArkTS';
@@ -198,7 +199,7 @@ import { JSON } from '@kit.ArkTS';
 
 方式1：不使用自定义转换函数，直接序列化BigInt对象。
 
-<!-- @bigInt_object_method1 -->
+<!-- @[bigInt_object_method1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/JsonExtensionLibrary/entry/src/main/ets/pages/SerializingBigIntObjects.ets) -->
 
 ``` TypeScript
 import { JSON } from '@kit.ArkTS';
@@ -210,7 +211,7 @@ import { JSON } from '@kit.ArkTS';
 
 方式2：使用自定义转换函数，需预处理BigInt对象进行序列化操作。
 
-<!-- @bigInt_object_method2 -->
+<!-- @[bigInt_object_method2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/JsonExtensionLibrary/entry/src/main/ets/pages/SerializingBigIntObjects.ets) -->
 
 ``` TypeScript
 import { JSON } from '@kit.ArkTS';
@@ -234,7 +235,7 @@ import { JSON } from '@kit.ArkTS';
 
 在JSON序列化中，浮点数处理存在一个特殊行为：当小数部分为零时，为保持数值的简洁表示，序列化结果会自动省略小数部分。这可能导致精度信息丢失，影响需要精确表示浮点数的场景（如金融金额、科学计量）。以下示例提供解决该场景的方法：
 
-<!-- @float_number --> 
+<!-- @[float_number](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/JsonExtensionLibrary/entry/src/main/ets/pages/SerializingFloatingPointNumbers.ets) --> 
 
 ``` TypeScript
 import { JSON } from '@kit.ArkTS';

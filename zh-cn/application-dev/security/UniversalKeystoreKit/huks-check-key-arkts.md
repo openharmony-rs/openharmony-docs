@@ -9,23 +9,23 @@
 
 HUKS提供了接口供应用查询指定密钥是否存在。
 
-从API 23开始支持群组密钥特性。
+从API 23开始支持[群组密钥](huks-group-key-overview.md)特性。
 
 ## 开发步骤
 
-1. 指定密钥别名，密钥别名命名规范参考密钥生成介绍及算法规格。
+1. 指定密钥别名，密钥别名命名规范参考[密钥生成介绍及算法规格](huks-key-generation-overview.md)。
 
 2. 初始化密钥属性集。用于查询时指定密钥的属性，查询单个密钥或者非群组密钥，可传空。
 
-3. 调用接口hasKeyItem，查询密钥是否存在。
+3. 调用接口[hasKeyItem](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukshaskeyitem11)，查询密钥是否存在。
 
-<!-- @querying_the_existence_of_a_key_arkts -->
+<!-- @[querying_the_existence_of_a_key_arkts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/OtherOperations/CheckKeyExists/entry/src/main/ets/pages/CheckKeyExists.ets) -->
 
 ``` TypeScript
 import { huks } from '@kit.UniversalKeystoreKit';
 
 let keyAlias = 'test_key';
-let isKeyExist: Boolean;
+let isKeyExist: boolean;
 
 let generateProperties: huks.HuksParam[] = [
   {
@@ -51,11 +51,11 @@ let generateHuksOptions: huks.HuksOptions = {
 function generateKeyItem(keyAlias: string, huksOptions: huks.HuksOptions) {
   return new Promise<void>((resolve, reject) => {
     try {
-      huks.generateKeyItem(keyAlias, huksOptions, (error, data) => {
+      huks.generateKeyItem(keyAlias, huksOptions, (error) => {
         if (error) {
           reject(error);
         } else {
-          resolve(data);
+          resolve();
         }
       });
     } catch (error) {
@@ -82,7 +82,7 @@ function hasKeyItem(keyAlias: string, huksOptions: huks.HuksOptions) {
         if (error) {
           reject(error);
         } else {
-          resolve(data.valueOf());
+          resolve(data);
         }
       });
     } catch (error) {

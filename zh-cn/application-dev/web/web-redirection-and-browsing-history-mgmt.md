@@ -10,9 +10,9 @@
 
 ## 历史记录导航
 
-在前端页面点击网页中的链接时，Web组件默认会自动打开并加载目标网址。当前端页面替换为新的加载链接时，会自动记录已经访问的网页地址。可以通过forward()和backward()接口向前/向后浏览上一个/下一个历史记录。
+在前端页面点击网页中的链接时，Web组件默认会自动打开并加载目标网址。当前端页面替换为新的加载链接时，会自动记录已经访问的网页地址。可以通过[forward()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#forward)和[backward()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#backward)接口向前/向后浏览上一个/下一个历史记录。
 
-页面加载涉及网络资源时，需在module.json5中配置网络访问权限，添加方法请参考在配置文件中声明权限。
+页面加载涉及网络资源时，需在module.json5中配置网络访问权限，添加方法请参考[在配置文件中声明权限](../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
 
   ```JSON5
   "requestPermissions":[
@@ -23,7 +23,7 @@
   ```
 
 在以下示例中，通过点击应用按钮来触发前端页面的后退操作。
-<!-- @button_click_trigger_back -->
+<!-- @[button_click_trigger_back](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/ManagePageRedirectNav/entry/src/main/ets/pages/HistoryNavigati.ets) -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -48,17 +48,17 @@ struct WebComponent {
 ```
 
 
-如果存在历史记录，accessBackward()接口将返回true。同样，开发者可以使用accessForward()接口检查是否存在前进的历史记录。如果未执行检查，当用户浏览到历史记录的末尾时，调用forward()和backward()接口将不会执行任何操作。
+如果存在历史记录，[accessBackward()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#accessbackward)接口将返回true。同样，开发者可以使用[accessForward()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#accessforward)接口检查是否存在前进的历史记录。如果未执行检查，当用户浏览到历史记录的末尾时，调用[forward()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#forward)和[backward()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#backward)接口将不会执行任何操作。
 
 
 ## 页面跳转
 
-当点击页面中的链接需要跳转到应用内其他页面时，可以通过使用Web组件的onLoadIntercept()接口来实现。
+当点击页面中的链接需要跳转到应用内其他页面时，可以通过使用Web组件的[onLoadIntercept()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onloadintercept10)接口来实现。
 
 在下面的示例中，应用首页Index.ets加载前端页面route.html，在route.html页面点击“个人中心”超链接，可跳转到应用的ProfilePage.ets页面。
 
 - 应用首页Index.ets页面代码。
-  <!-- @index_load_route_link_to_profile -->
+  <!-- @[index_load_route_link_to_profile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/ManagePageRedirectNav/entry/src/main/ets/pages/PageRedirection.ets) -->
   
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
@@ -104,7 +104,7 @@ struct WebComponent {
   ```
 
 - 跳转页面ProfilePage.ets代码。
-  <!-- @navigate_to_profile_page -->
+  <!-- @[navigate_to_profile_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/ManagePageRedirectNav/entry/src/main/ets/pages/ProfilePage.ets) -->
   
   ``` TypeScript
   @Entry
@@ -129,7 +129,7 @@ Web组件可以实现点击前端页面超链接跳转到其他应用。
 在下面的示例代码中，点击call.html前端页面中的超链接，可以跳转到电话应用的拨号界面。
 
 - 应用侧代码。
-  <!-- @click_link_call_html_to_reach_phone_dialing_screen -->
+  <!-- @[click_link_call_html_to_reach_phone_dialing_screen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/ManagePageRedirectNav/entry/src/main/ets/pages/CrossApplicationRedirection.ets) -->
   
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
@@ -179,4 +179,4 @@ Web组件可以实现点击前端页面超链接跳转到其他应用。
   </body>
   </html>
   ```
-web-redirection-and-browsing-history-mgmt
+![web-redirection-and-browsing-history-mgmt](figures/web-call-telephone.gif)

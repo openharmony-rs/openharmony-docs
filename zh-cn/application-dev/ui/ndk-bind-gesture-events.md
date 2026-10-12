@@ -14,7 +14,7 @@ ArkUI开发框架在NDK接口中主要提供点击手势、滑动手势、快滑
 
 
 1. 创建一个Column节点，用于绑定手势。
-    <!-- @create_column -->
+    <!-- @[create_column](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
     
     ``` C
     // 创建Column节点
@@ -35,7 +35,7 @@ ArkUI开发框架在NDK接口中主要提供点击手势、滑动手势、快滑
 
 
 2. 创建一个单指长按1秒并持续响应的长按手势。
-    <!-- @create_long_press_gesture -->
+    <!-- @[create_long_press_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
     
     ``` C
     // 获取手势Native接口集合
@@ -48,7 +48,7 @@ ArkUI开发框架在NDK接口中主要提供点击手势、滑动手势、快滑
 
 
 3. 将创建的手势和步骤一中创建的Column节点绑定。
-    <!-- @bind_event -->
+    <!-- @[bind_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
     
     ``` C
     auto onActionCallBack = [](ArkUI_GestureEvent *event, void *extraParam) {
@@ -73,7 +73,7 @@ ArkUI开发框架在NDK接口中主要提供点击手势、滑动手势、快滑
 
   通过给组件绑定点击手势可在组件被点击时触发此回调，可指定触发回调需要的点击次数和手指个数。
 
-  <!-- @create_tap_gesture -->
+  <!-- @[create_tap_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
     
     ``` C
     // 获取手势Native接口集合
@@ -87,7 +87,7 @@ ArkUI开发框架在NDK接口中主要提供点击手势、滑动手势、快滑
 - 滑动手势
 
   通过给组件绑定滑动手势可在用户滑动组件时触发回调，可指定触发回调需要的手指个数、滑动方向、滑动距离。单位为px。
-  <!-- @create_pan_gesture -->
+  <!-- @[create_pan_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
     
     ``` C
     // 获取手势Native接口集合
@@ -102,7 +102,7 @@ ArkUI开发框架在NDK接口中主要提供点击手势、滑动手势、快滑
 
   通过给组件绑定长按手势可在用户长按组件时触发回调，可指定触发回调需要的手指个数、长按时间（单位毫秒）、是否连续触发。
 
-  <!-- @create_long_press_gesture -->
+  <!-- @[create_long_press_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
     
     ``` C
     // 获取手势Native接口集合
@@ -118,7 +118,7 @@ ArkUI开发框架在NDK接口中主要提供点击手势、滑动手势、快滑
 
   通过给组件绑定捏合手势可在用户捏合组件时触发回调，可指定触发回调需要的手指个数（最小为2）、捏合距离（单位px）。
 
-  <!-- @create_pinch_gesture -->
+  <!-- @[create_pinch_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
   
   ``` C
   // 获取手势Native接口集合
@@ -134,7 +134,7 @@ ArkUI开发框架在NDK接口中主要提供点击手势、滑动手势、快滑
 
   通过给组件绑定旋转手势可在用户旋转组件时触发回调，可指定触发回调需要的手指个数（最小为2）、旋转角度。
 
-  <!-- @create_rotation_gesture -->
+  <!-- @[create_rotation_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
   
   ``` C
   // 获取手势Native接口集合
@@ -150,7 +150,7 @@ ArkUI开发框架在NDK接口中主要提供点击手势、滑动手势、快滑
 
   通过给组件绑定快滑手势可在用户快速滑动组件时触发回调，可指定触发回调需要的手指个数（最小为1）、滑动方向、滑动速度（单位px/s）。
 
-  <!-- @create_swiper_gesture -->
+  <!-- @[create_swiper_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
     
     ``` C
     // 获取手势Native接口集合
@@ -167,16 +167,16 @@ ArkUI开发框架在NDK接口中主要提供点击手势、滑动手势、快滑
 
 可以将多个不同类型的手势组合在一起，形成一个手势组，这个手势组可以作为一个识别整体，达到对用户多个不同类型手势序列的识别目的。
 
-通过设置ArkUI_GroupGestureMode来指定这个手势组的识别模式，即组内的手势之间的关系，包含顺序识别SEQUENTIAL_GROUP，并行识别PARALLEL_GROUP，互斥识别EXCLUSIVE_GROUP。
+通过设置[ArkUI_GroupGestureMode](../reference/apis-arkui/capi-native-gesture-h.md#arkui_groupgesturemode)来指定这个手势组的识别模式，即组内的手势之间的关系，包含顺序识别SEQUENTIAL_GROUP，并行识别PARALLEL_GROUP，互斥识别EXCLUSIVE_GROUP。
 
 
 ### 顺序识别
 
-顺序识别组合手势对应的ArkUI_GroupGestureMode为SEQUENTIAL_GROUP。顺序识别组合手势将按照手势的注册顺序识别手势，直到所有的手势识别成功。当顺序识别组合手势中有一个手势识别失败时，后续手势识别均失败。顺序识别手势组仅有最后一个手势可以响应GESTURE_EVENT_ACTION_END。
+顺序识别组合手势对应的ArkUI_GroupGestureMode为SEQUENTIAL_GROUP。顺序识别组合手势将按照手势的注册顺序识别手势，直到所有的手势识别成功。当顺序识别组合手势中有一个手势识别失败时，后续手势识别均失败。顺序识别手势组仅有最后一个手势可以响应[GESTURE_EVENT_ACTION_END](../reference/apis-arkui/capi-native-gesture-h.md#arkui_gestureeventactiontype)。
 
 以顺序识别长按和快滑手势为例：
 
-<!-- @long_press_and_swipe_gesture -->
+<!-- @[long_press_and_swipe_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/LongPressAndSwipeGesture.h) -->
 
 ``` C
 // LongPressAndSwipeGesture.h
@@ -323,7 +323,7 @@ ArkUI_NodeHandle LongPressAndSwipeGesture()
 
 **完整示例：**
 
-完整示例请参考<!--RP1-->示例工程<!--RP1End-->。
+完整示例请参考<!--RP1-->[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent)<!--RP1End-->。
 
 ### 并行识别
 
@@ -331,7 +331,7 @@ ArkUI_NodeHandle LongPressAndSwipeGesture()
 
 以并行识别长按和快滑手势为例：
 
-<!-- @long_press_and_flick_gesture -->
+<!-- @[long_press_and_flick_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/LongPressAndFlickGesture.h) -->
 
 ``` C
 // LongPressAndFlickGesture.h
@@ -481,7 +481,7 @@ ArkUI_NodeHandle LongPressAndFlickGesture()
 
 **完整示例：**
 
-完整示例请参考<!--RP2-->示例工程<!--RP2End-->。
+完整示例请参考<!--RP2-->[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent)<!--RP2End-->。
 
 ### 互斥识别
 
@@ -489,7 +489,7 @@ ArkUI_NodeHandle LongPressAndFlickGesture()
 
 以互斥识别滑动手势和捏合手势为例：
 
-<!-- @swipe_and_pinch_exclusive_gesture -->
+<!-- @[swipe_and_pinch_exclusive_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/SwipeAndPinchExclusiveGesture.h) -->
 
 ``` C
 // SwipeAndPinchExclusiveGesture.h
@@ -640,7 +640,7 @@ ArkUI_NodeHandle SwipeAndPinchExclusiveGesture()
 
 **完整示例：**
 
-完整示例请参考<!--RP3-->示例工程<!--RP3End-->。
+完整示例请参考<!--RP3-->[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent)<!--RP3End-->。
 
 ### 自定义手势判定
 
@@ -650,7 +650,7 @@ ArkUI_NodeHandle SwipeAndPinchExclusiveGesture()
 
 
 1. 创建自定义手势判定回调。
-    <!-- @create_custom_gestures -->
+    <!-- @[create_custom_gestures](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
     
     ``` C
     auto onInterruptCallback = [](ArkUI_GestureInterruptInfo *info) -> ArkUI_GestureInterruptResult {
@@ -677,7 +677,7 @@ ArkUI_NodeHandle SwipeAndPinchExclusiveGesture()
 
 
 2. 绑定手势判定和节点。
-    <!-- @bind_gestures -->
+    <!-- @[bind_gestures](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
     
     ``` C
     gestureApi->setGestureInterrupterToNode(column, onInterruptCallback);
@@ -689,10 +689,10 @@ ArkUI_NodeHandle SwipeAndPinchExclusiveGesture()
 
 ## 获取事件信息
 
-绑定手势事件已详细说明如何将手势绑定到节点上。在回调执行时，ArkUI框架提供了OH_ArkUI_GestureEvent_GetRawInputEvent()接口，可从手势事件中获取基础事件对象。之后，可通过调用OH_ArkUI_PointerEvent_GetDisplayX()、OH_ArkUI_PointerEvent_GetDisplayXByIndex()、OH_ArkUI_UIInputEvent_GetAction()和OH_ArkUI_UIInputEvent_GetEventTime()等接口，从基础事件中获取更多信息。应用依据获取的信息，在手势事件执行过程中实现差异化交互逻辑。
+绑定手势事件已详细说明如何将手势绑定到节点上。在回调执行时，ArkUI框架提供了[OH_ArkUI_GestureEvent_GetRawInputEvent()](../reference/apis-arkui/capi-native-gesture-h.md#oh_arkui_gestureevent_getrawinputevent)接口，可从手势事件中获取基础事件对象。之后，可通过调用[OH_ArkUI_PointerEvent_GetDisplayX()](../reference/apis-arkui/capi-ui-input-event-h.md#oh_arkui_pointerevent_getdisplayx)、[OH_ArkUI_PointerEvent_GetDisplayXByIndex()](../reference/apis-arkui/capi-ui-input-event-h.md#oh_arkui_pointerevent_getdisplayxbyindex)、[OH_ArkUI_UIInputEvent_GetAction()](../reference/apis-arkui/capi-ui-input-event-h.md#oh_arkui_uiinputevent_getaction)和[OH_ArkUI_UIInputEvent_GetEventTime()](../reference/apis-arkui/capi-ui-input-event-h.md#oh_arkui_uiinputevent_geteventtime)等接口，从基础事件中获取更多信息。应用依据获取的信息，在手势事件执行过程中实现差异化交互逻辑。
 
 
-  <!-- @gesture_callback -->
+  <!-- @[gesture_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
   
   ``` C
   // 设置回调，在触发手势事件时执行回调处理手势事件
@@ -753,9 +753,9 @@ ArkUI_NodeHandle SwipeAndPinchExclusiveGesture()
 
 下面通过示例介绍如何实现自定义干预事件和手势的收集结果。
 
-1. 注册`NODE_ON_GESTURE_COLLECT_INTERCEPT`节点事件并绑定回调处理函数。在回调中使用OH_ArkUI_GestureCollectInterceptInfo_GetResponseRecognizers获取手势识别器、OH_ArkUI_GestureCollectInterceptInfo_GetTouchRecognizers获取触摸识别器，并结合处理函数完成干预。
+1. 注册`NODE_ON_GESTURE_COLLECT_INTERCEPT`节点事件并绑定回调处理函数。在回调中使用[OH_ArkUI_GestureCollectInterceptInfo_GetResponseRecognizers](../reference/apis-arkui/capi-native-gesture-h.md#oh_arkui_gesturecollectinterceptinfo_getresponserecognizers)获取手势识别器、[OH_ArkUI_GestureCollectInterceptInfo_GetTouchRecognizers](../reference/apis-arkui/capi-native-gesture-h.md#oh_arkui_gesturecollectinterceptinfo_gettouchrecognizers)获取触摸识别器，并结合处理函数完成干预。
 
-    <!-- @gesture_intercepting -->
+    <!-- @[gesture_intercepting](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkEventGestureIntercept/entry/src/main/cpp/function.h) -->
     
     ``` C
     nodeAPI->registerNodeEvent(row2, NODE_ON_GESTURE_COLLECT_INTERCEPT, 1, &row2);
@@ -783,12 +783,12 @@ ArkUI_NodeHandle SwipeAndPinchExclusiveGesture()
     ```
 
 2. 创建手势收集干预处理函数，在处理函数中可调用以下接口对响应识别器和触摸识别器进行干预。
-   - 通过OH_ArkUI_GetGestureBindNodeUniqueId接口获取绑定节点ID。
-   - 通过OH_ArkUI_GestureRecognizer_IsHostBelongsTo接口判断手势识别器是否为指定节点的后代。
-   - 通过OH_ArkUI_TouchRecognizer_IsHostBelongsTo接口判断触摸识别器是否为指定节点的后代。
-   - 通过OH_ArkUI_GestureCollectInterceptInfo_SetGestureCollectIntervention接口设置收集干预策略。
+   - 通过[OH_ArkUI_GetGestureBindNodeUniqueId](../reference/apis-arkui/capi-native-gesture-h.md#oh_arkui_getgesturebindnodeuniqueid)接口获取绑定节点ID。
+   - 通过[OH_ArkUI_GestureRecognizer_IsHostBelongsTo](../reference/apis-arkui/capi-native-gesture-h.md#oh_arkui_gesturerecognizer_ishostbelongsto)接口判断手势识别器是否为指定节点的后代。
+   - 通过[OH_ArkUI_TouchRecognizer_IsHostBelongsTo](../reference/apis-arkui/capi-native-gesture-h.md#oh_arkui_touchrecognizer_ishostbelongsto)接口判断触摸识别器是否为指定节点的后代。
+   - 通过[OH_ArkUI_GestureCollectInterceptInfo_SetGestureCollectIntervention](../reference/apis-arkui/capi-native-gesture-h.md#oh_arkui_gesturecollectinterceptinfo_setgesturecollectintervention)接口设置收集干预策略。
 
-    <!-- @create_interception_function -->
+    <!-- @[create_interception_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkEventGestureIntercept/entry/src/main/cpp/function.h) -->
     
     ``` C
     // 处理手势识别器
@@ -829,4 +829,4 @@ ArkUI_NodeHandle SwipeAndPinchExclusiveGesture()
 
 **完整示例：**
 
-完整示例请参考<!--RP4-->示例工程<!--RP4End-->。
+完整示例请参考<!--RP4-->[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NdkEventGestureIntercept)<!--RP4End-->。

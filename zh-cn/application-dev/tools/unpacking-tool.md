@@ -229,21 +229,21 @@ java -jar app_unpacking_tool.jar --mode appqf --appqf-path <path> --out-path <pa
 | label                          | String  | 标识应用的label。  | NA          |
 | description                    | String  | 标识应用的描述信息。    | Stage模型新增。   |
 | minCompatibleVersionCode       | int     | 标识应用能够兼容的最低版本号。  | NA          |
-| distributedNotificationEnabled | boolean | 标记该应用是否开启分布式通知。true表示开启，false表示不开启。   | Stage模型新增。   |
+| distributedNotificationEnabled | boolean | 标识该应用是否开启分布式通知。true表示开启，false表示不开启。   | Stage模型新增。   |
 | bundleType                     | String  | 标识bundle的类型，取值：<br/>- app：应用。<br/>- atomicService：原子化服务。 <br/>- shared：应用间共享库。 | NA   |
 | compileSdkVersion              | String  | 标识编译该应用时使用的sdk版本。   | 仅限API10及以后的应用。   |
 | compileSdkType                 | String  | 标识编译该应用时使用的sdk类别。   | 仅限API10及以后的应用。   |
 | labels                         | HashMap\<String, String> | 标识多语言应用程序AppJson的标签。 | NA          |
 | descriptions                   | HashMap\<String, String> | 标识多语言应用程序AppJson的说明。 | NA          |
-| buildVersion                    | String  | 标识App中的buildVersion信息。  | 从API version 23开始支持。          |
+| buildVersion                    | String  | 标识App中的[buildVersion](../quick-start/app-configuration-file.md#配置文件标签)信息。  | 从API version 23开始支持。          |
 | deduplicateSo                  | boolean | 标识App打包时是否启用so去重功能。true表示启用so去重，false表示不启用so去重。该字段来源于pack.info文件中的deduplicateSo配置。 | 从API版本26.0.0开始支持。 |
-| alternateIcons                  | List\<AlternateIcon\> | 标识应用的动态图标列表。 | 从API版本26.0.0开始支持。  |
+| alternateIcons                  | List\<[AlternateIcon](#alternateicon)\> | 标识应用的动态图标列表。 | 从API版本26.0.0开始支持。  |
 
 ### AlternateIcon
 
 应用的备选图标，支持应用在运行时动态切换图标。
 
-详情请参考alternateIcons标签。
+详情请参考[alternateIcons标签](../quick-start/app-configuration-file.md#alternateicons标签)。
 
 **起始版本：** API版本26.0.0
 
@@ -286,8 +286,8 @@ java -jar app_unpacking_tool.jar --mode appqf --appqf-path <path> --out-path <pa
 | descriptions         | HashMap\<String, String>    | 标识HAP的说明信息。                    | NA             |
 | compressedSize       | long                        | 标识HAP包压缩后的大小，单位字节。         | NA              |
 | originalSize         | long                        | 标识HAP包的原始大小，单位字节。         | NA             |
-| isModuleAbcCompressed  | boolean                   | 标识modules.abc文件是否为压缩状态。true表示压缩状态，false表示非压缩状态。         | NA             |
-| skillProfiles    | List\<SkillProfileInfo\>  | 标识当前模块的技能配置信息列表，用于定义AI代理的技能能力。   | 从API版本26.0.0开始支持。  |
+| isModuleAbcCompressed  | boolean                   | 标识[modules.abc](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-compile-build)文件是否为压缩状态。true表示压缩状态，false表示非压缩状态。         | NA             |
+| skillProfiles    | List\<[SkillProfileInfo](#skillprofileinfo)\>  | 标识当前模块的技能配置信息列表，用于定义AI代理的技能能力。   | 从API版本26.0.0开始支持。  |
 <!--RP1--><!--RP1End-->
 
 ### AbilityInfo结构体信息
@@ -493,7 +493,7 @@ java -jar app_unpacking_tool.jar --mode appqf --appqf-path <path> --out-path <pa
 | name                | String                   | 标识forms的名称。                                              | NA        |
 | type                | String                   | 标签标识卡片的类型。                                           | NA        |
 | updateEnabled       | boolean                  | 标识该卡片是否支持定时刷新。true表示支持，false表示不支持。                                   | NA        |
-| scheduledUpdateTime | String                   | 标签标识卡片顶点刷新的时间，采用24小时计数，精确到分钟。       | NA        |
+| scheduledUpdateTime | String                   | 标签标识卡片定时刷新的时间，采用24小时计数，精确到分钟。       | NA        |
 | updateDuration      | int                      | 标识卡片定时刷新的更新频率，单位为30分钟，取值为30的倍数值。   | NA        |
 | supportDimensions   | List\<String>            | 标识卡片外观规格，取值为”1 * 2“，”2 * 2“，”2 * 4“，”4 * 4“。   | NA        |
 | defaultDimension    | String                   | 标识卡片默认外观规格，取值必须在supportDimensions配置的列表中。 | NA        |

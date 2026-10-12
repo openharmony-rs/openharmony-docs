@@ -26,7 +26,7 @@ NativeImage常见的开发场景如下：
 | OH_NativeImage_GetTransformMatrixV2 (OH_NativeImage \*image, float matrix[16]) | 获取最近调用OH_NativeImage_UpdateSurfaceImage的纹理图像的变换矩阵。 |
 | OH_NativeImage_Destroy (OH_NativeImage \*\*image)            | 销毁通过OH_NativeImage_Create创建的OH_NativeImage实例，销毁后该OH_NativeImage指针会被赋值为空。 |
 
-详细的接口说明请参考OH_NativeImage。
+详细的接口说明请参考[OH_NativeImage](../reference/apis-arkgraphics2d/capi-oh-nativeimage.md)。
 
 ## 开发步骤
 
@@ -61,8 +61,8 @@ libnative_buffer.so
 
 1. **初始化EGL环境**。
 
-    这里提供初始化EGL环境的代码示例。XComponent模块的详细使用方法，请参阅XComponent开发指导。
-    <!-- @init_egl -->
+    这里提供初始化EGL环境的代码示例。XComponent模块的详细使用方法，请参阅[XComponent开发指导](../ui/napi-xcomponent-guidelines.md)。
+    <!-- @[init_egl](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeImage/entry/src/main/cpp/render/image_render.cpp) -->
     
     ``` C++
     bool ImageRender::InitEGL(EGLNativeWindowType window, uint64_t width, uint64_t height)
@@ -220,7 +220,7 @@ libnative_buffer.so
 
 
 2. **创建OH_NativeImage实例**。
-    <!-- @nativeimage_create -->
+    <!-- @[nativeimage_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeImage/entry/src/main/cpp/render/render_engine.cpp) -->
     
     ``` C++
     glGenTextures(1, &nativeImageTexId_);
@@ -229,14 +229,14 @@ libnative_buffer.so
     ```
 
 3. **获取对应的数据生产者端NativeWindow**。
-    <!-- @nativeimage_acquire_nativewindow -->
+    <!-- @[nativeimage_acquire_nativewindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeImage/entry/src/main/cpp/render/native_render.cpp) -->
     
     ``` C++
     nativeWindow_ = OH_NativeImage_AcquireNativeWindow(image);
     ```
 
 4. **设置NativeWindow的宽高**。
-    <!-- @set_buffer_geometry -->
+    <!-- @[set_buffer_geometry](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeImage/entry/src/main/cpp/render/native_render.cpp) -->
     
     ``` C++
     int32_t result = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow_, SET_BUFFER_GEOMETRY,
@@ -250,7 +250,7 @@ libnative_buffer.so
 5. **将生产的内容写入OHNativeWindowBuffer**。
 
     1. 从NativeWindow中获取OHNativeWindowBuffer。
-        <!-- @nativewindow_request_buffer -->
+        <!-- @[nativewindow_request_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeImage/entry/src/main/cpp/render/native_render.cpp) -->
         
         ``` C++
         OHNativeWindowBuffer *buffer = nullptr;
@@ -266,7 +266,7 @@ libnative_buffer.so
         ```
 
     2. 将生产的内容写入OHNativeWindowBuffer。
-        <!-- @write_addr -->
+        <!-- @[write_addr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeImage/entry/src/main/cpp/render/native_render.cpp) -->
         
         ``` C++
         // 使用 mmap 获取虚拟地址
@@ -340,7 +340,7 @@ libnative_buffer.so
 
         
     3. 将OHNativeWindowBuffer提交到NativeWindow。
-        <!-- @flush_buffer -->
+        <!-- @[flush_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeImage/entry/src/main/cpp/render/native_render.cpp) -->
         
         ``` C++
         // 设置刷新区域
@@ -355,7 +355,7 @@ libnative_buffer.so
 
 
 6. **更新内容到OpenGL纹理**。
-   <!-- @update_surfaceimage -->
+   <!-- @[update_surfaceimage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeImage/entry/src/main/cpp/render/render_engine.cpp) -->
    
    ``` C++
        int32_t ret = OH_NativeImage_UpdateSurfaceImage(nativeImage_);
@@ -389,7 +389,7 @@ libnative_buffer.so
 
 
 7. **解绑OpenGL纹理，绑定到新的外部纹理上**。
-   <!-- @nativeimage_change_context -->
+   <!-- @[nativeimage_change_context](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeImage/entry/src/main/cpp/render/render_engine.cpp) -->
    
    ``` C++
    // 将OH_NativeImage实例从当前OpenGL ES上下文分离
@@ -402,7 +402,7 @@ libnative_buffer.so
 
 
 8. **OH_NativeImage实例使用完需要销毁掉**。
-   <!-- @destroy_nativeimage -->
+   <!-- @[destroy_nativeimage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeImage/entry/src/main/cpp/render/render_engine.cpp) -->
    
    ``` C++
    OH_NativeImage_Destroy(&nativeImage_);
@@ -413,5 +413,5 @@ libnative_buffer.so
 
 针对NativeImage的开发，有以下相关实例可供参考：
 
-- Native Window（API12）
-- 基于NdkNativeImage的平滑渐变动画效果（API12）
+- [Native Window（API12）](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeWindow)
+- [基于NdkNativeImage的平滑渐变动画效果（API12）](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeImage)

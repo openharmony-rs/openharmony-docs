@@ -11,7 +11,7 @@
 
 ## 接口说明
 
-具体参数、返回值、错误码等描述，请参考对应的userAuth.getEnrolledState。
+具体参数、返回值、错误码等描述，请参考对应的[userAuth.getEnrolledState](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#userauthgetenrolledstate12)。
 
 | 接口名称 | 功能描述 | 
 | -------- | -------- |
@@ -19,13 +19,13 @@
 
 ## 开发步骤
 
-1. 申请权限：ohos.permission.ACCESS_BIOMETRIC。
+1. [申请权限](prerequisites.md#申请权限)：ohos.permission.ACCESS_BIOMETRIC。
 
-2. 指定认证类型（UserAuthType），调用getEnrolledState接口查询用户注册凭据的状态。
+2. 指定认证类型（[UserAuthType](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#userauthtype8)），调用[getEnrolledState](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#userauthgetenrolledstate12)接口查询用户注册凭据的状态。
 
 以查询用户人脸注册凭据的状态为例：
 
-<!-- @obtain_enrolled_capabilities -->
+<!-- @[obtain_enrolled_capabilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 obtainingEnrolledCredentialInformation() {
@@ -44,4 +44,4 @@ obtainingEnrolledCredentialInformation() {
 
 ## 示例代码
 
-  - 查询用户注册凭据的状态
+  - [查询用户注册凭据的状态](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication)

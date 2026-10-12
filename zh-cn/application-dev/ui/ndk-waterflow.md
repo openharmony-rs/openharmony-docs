@@ -10,17 +10,17 @@
 ArkUI开发框架在NDK接口提供了瀑布流容器组件，通过瀑布流自身的排列规则，将不同大小的"项目"自上而下如瀑布般紧密布局。
 
 ## 接入ArkTS页面
-为了使用NDK接口构建UI界面，参考接入ArkTS页面章节，在ArkTS页面上创建用于Native页面挂载的占位组件，并实现ArkTS侧的NativeNode模块接口。
+为了使用NDK接口构建UI界面，参考[接入ArkTS页面章节](../ui/ndk-access-the-arkts-page.md)，在ArkTS页面上创建用于Native页面挂载的占位组件，并实现ArkTS侧的NativeNode模块接口。
 
 ## 使用懒加载
 ### NodeAdapter介绍 
-NDK中提供了NodeAdapter对象替代ArkTS侧的LazyForEach功能，用于按需生成子组件。详情请参阅NodeAdapter介绍。
+NDK中提供了NodeAdapter对象替代ArkTS侧的[LazyForEach](../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md)功能，用于按需生成子组件。详情请参阅[NodeAdapter介绍](../ui/ndk-loading-long-list.md#nodeadapter介绍)。
 
 ### 实现懒加载适配器
 
 使用FlowItemAdapter类管理懒加载适配器。在类的构造函数中创建NodeAdapter对象，并给NodeAdapter对象设置事件监听器，在类的析构函数中，销毁NodeAdapter对象。
 
-<!-- @flow_item_adapter -->
+<!-- @[flow_item_adapter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKWaterFlowSample/entry/src/main/cpp/FlowItemAdapter.h) -->
 
 ``` C
 // FlowItemAdapter.h
@@ -207,22 +207,22 @@ private:
 
 ### 更新和复用FlowItem
 
-通过NodeAdapter复用FlowItem时，建议保持FlowItem及其直属子组件的节点结构稳定，并通过setAttribute更新已有子组件的内容或样式。上述示例在复用FlowItem时，仅更新已有Text组件的文本内容。
+通过NodeAdapter复用FlowItem时，建议保持FlowItem及其直属子组件的节点结构稳定，并通过[setAttribute](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setattribute)更新已有子组件的内容或样式。上述示例在复用FlowItem时，仅更新已有Text组件的文本内容。
 
 > **说明：**
 >
-> 对于已经显示且设置固定尺寸的FlowItem，不建议在WaterFlow滚动过程中先调用removeChild移除其直属子组件，再调用addChild挂载新的直属子组件。该写法可能导致新挂载的子组件未及时参与布局，造成显示异常。
+> 对于已经显示且设置固定尺寸的FlowItem，不建议在WaterFlow滚动过程中先调用[removeChild](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#removechild)移除其直属子组件，再调用[addChild](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addchild)挂载新的直属子组件。该写法可能导致新挂载的子组件未及时参与布局，造成显示异常。
 >
 > 需要更新复杂内容时，建议采用以下方式之一：
 >
-> - 保持FlowItem的直属容器（例如Stack或Column）不变，仅更新容器内的内容。
-> - 创建新的FlowItem及其完整子树，并通过OH_ArkUI_NodeAdapter_ReloadItem通知NodeAdapter更新对应数据项。
+> - 保持FlowItem的直属容器（例如[Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md)或[Column](../reference/apis-arkui/arkui-ts/ts-container-column.md)）不变，仅更新容器内的内容。
+> - 创建新的FlowItem及其完整子树，并通过[OH_ArkUI_NodeAdapter_ReloadItem](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeadapter_reloaditem)通知NodeAdapter更新对应数据项。
 
 ## 创建分组
-使用WaterflowSection类管理WaterFlow中的分组，其中SectionOption用于描述一个分段的各项配置信息。在类的构造函数中创建ArkUI_WaterFlowSectionOption对象，在析构函数中将其销毁。
+使用WaterflowSection类管理[WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)中的分组，其中SectionOption用于描述一个分段的各项配置信息。在类的构造函数中创建[ArkUI_WaterFlowSectionOption](../reference/apis-arkui/capi-arkui-nativemodule-arkui-waterflowsectionoption.md)对象，在析构函数中将其销毁。
 
 
-<!-- @waterflow_section -->
+<!-- @[waterflow_section](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKWaterFlowSample/entry/src/main/cpp/WaterflowSection.h) -->
 
 ``` C
 // WaterflowSection.h
@@ -295,7 +295,7 @@ private:
 ## 创建瀑布流
 使用ArkUIWaterflowNode类管理Waterflow。支持通过SetLazyAdapter为其设置一个FlowItemAdapter，通过SetSection为其设置分段。
 
-<!-- @waterflow_define -->
+<!-- @[waterflow_define](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKWaterFlowSample/entry/src/main/cpp/waterflow.h) -->
 
 ``` C
 // waterflow.h
@@ -369,7 +369,7 @@ private:
 ## 使用瀑布流
 创建一个ArkUIWaterflowNode类的实例，设置其宽高，并绑定NodeAdapter和分段。
 
-<!-- @create_waterflow_example -->
+<!-- @[create_waterflow_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKWaterFlowSample/entry/src/main/cpp/CreateWaterflowExample.h) -->
 
 ``` C
 // CreateWaterflowExample.h
@@ -411,4 +411,4 @@ inline std::shared_ptr<ArkUIWaterflowNode> CreateWaterflowExample(napi_env env)
 ```
 
 
-image
+![image](figures/UIWaterflow.gif)

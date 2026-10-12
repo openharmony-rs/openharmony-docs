@@ -14,7 +14,7 @@
 ## 实现原理
 三方应用通过订阅故障事件和使能记录页面切换日志来获取故障发生时的页面切换日志信息，其实现原理如下图所示：
 
-页面切换日志实现原理图
+![页面切换日志实现原理图](figures/pageswitch-log.png)
 
 详细步骤如下：
 1. 应用调用HiAppEvent接口添加订阅故障事件。
@@ -68,7 +68,7 @@
    >
    > 进程名：进程名需去除末尾`:N`后缀；进程名中包含`:`、`/`、`-` 字符时，对应字符统一替换为 `_`。
    >
-   > 实例索引：多个进程共用沙箱场景（例如多实例或ExtensionAbility组件）会出现日志写冲突，所以页面切换日志会为每个进程创建一组日志文件，使用实例索引标识不同进程。取值范围：[1, 10]。
+   > 实例索引：多个进程共用沙箱场景（例如[多实例](../quick-start/multiInstance.md)或[ExtensionAbility组件](../application-models/extensionability-overview.md)）会出现日志写冲突，所以页面切换日志会为每个进程创建一组日志文件，使用实例索引标识不同进程。取值范围：[1, 10]。
    >
    > 文件索引：同一进程名及实例索引下最多保留 2 个文件。取值范围：[1, 2]。
 
@@ -207,11 +207,11 @@
 
 ### 事件类型
 
-页面切换日志的获取当前只支持崩溃事件、应用冻屏事件、资源泄漏事件、地址越界事件。
+页面切换日志的获取当前只支持[崩溃事件](./hiappevent-watcher-crash-events.md)、[应用冻屏事件](./hiappevent-watcher-freeze-events.md)、[资源泄漏事件](./hiappevent-watcher-resourceleak-events.md)、[地址越界事件](./hiappevent-watcher-address-sanitizer-events.md)。
 
 ## 日志获取
 
-获取故障页面切换日志需要对故障事件进行订阅并使能故障事件的页面切换日志，日志获取依赖于HiAppEvent的事件订阅和系统事件策略配置能力。接口的详细使用说明（参数限制、取值范围等）请参考@ohos.hiviewdfx.hiAppEvent。
+获取故障页面切换日志需要对故障事件进行订阅并使能故障事件的页面切换日志，日志获取依赖于HiAppEvent的事件订阅和系统事件策略配置能力。接口的详细使用说明（参数限制、取值范围等）请参考[@ohos.hiviewdfx.hiAppEvent](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md)。
 
 ### 接口说明
 | 接口名 | 描述 |

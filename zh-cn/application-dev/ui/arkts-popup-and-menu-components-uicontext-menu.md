@@ -6,13 +6,13 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-菜单控制 (Menu)在使用时依赖绑定UI组件，否则无法使用。从API version 18开始，可以通过使用全局接口openMenu的方式，在无UI组件的场景下直接或封装使用，例如在事件回调中使用或封装后对外提供能力。
+[菜单控制 (Menu)](arkts-popup-and-menu-components-menu.md)在使用时依赖绑定UI组件，否则无法使用。从API version 18开始，可以通过使用全局接口[openMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#openmenu18)的方式，在无UI组件的场景下直接或封装使用，例如在事件回调中使用或封装后对外提供能力。
 
 ## 弹出菜单
 
-通过openMenu可以弹出菜单。
+通过[openMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#openmenu18)可以弹出菜单。
    
- <!-- @open_menu -->
+ <!-- @[open_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/GlobalOpenMenu.ets) -->
  
  ``` TypeScript
  this.getUIContext().getPromptAction()
@@ -27,22 +27,22 @@
    });
  ```
  
- openMenu
+ ![openMenu](figures/openMenu.gif)
 
 ### 创建ComponentContent
    
-   通过调用openMenu接口弹出菜单，需要定义ComponentContent，以提供自定义弹出框的内容。详细规格可参考ComponentContent说明。
+   通过调用openMenu接口弹出菜单，需要定义ComponentContent，以提供自定义弹出框的内容。详细规格可参考[ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md)说明。
    
-  <!-- @content_node --> 
+  <!-- @[content_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/GlobalOpenMenu.ets) --> 
   
   ``` TypeScript
   private contentNode: ComponentContent<Object> =
     new ComponentContent(this.getUIContext(), wrapBuilder(buildText), this.message, { nestingBuilderSupported: true });
   ```
    
-   如果在wrapBuilder中包含其他组件（例如：Popup、Chip组件），则应在创建ComponentContent时设置nestingBuilderSupported属性为true。
+   如果在wrapBuilder中包含其他组件（例如：[Popup](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Popup.md)、[Chip](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Chip.md)组件），则应在创建ComponentContent时设置[nestingBuilderSupported](../reference/apis-arkui/js-apis-arkui-builderNode.md#buildoptions12)属性为true。
    
- <!-- @build_text -->
+ <!-- @[build_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/GlobalOpenMenu.ets) -->
  
  ``` TypeScript
  @Builder
@@ -99,22 +99,22 @@
 
 ### 绑定组件信息
    
-   通过调用openMenu接口弹出菜单，需要提供绑定组件的信息TargetInfo。若未传入有效的target，菜单将无法弹出。
+   通过调用openMenu接口弹出菜单，需要提供绑定组件的信息[TargetInfo](../reference/apis-arkui/arkts-apis-uicontext-i.md#targetinfo18)。若未传入有效的target，菜单将无法弹出。
    
    目前有两种设置target的方式。
    
 - target的id属性设置为number类型，此时需要将id设置为对应组件的UniqueID，组件的UniqueID由系统保证唯一性。
    
-   <!-- @frame_node -->
+   <!-- @[frame_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/GlobalOpenMenu.ets) -->
    
    ``` TypeScript
    let frameNode: FrameNode | null = this.getUIContext().getFrameNodeByUniqueId(this.getUniqueId());
    let targetId = frameNode?.getChild(0)?.getUniqueId();
    ```
    
-- target的id属性设置为string类型，此时需要将id设置为对应组件的通用属性id值。当无法保证id的唯一性时，如多团队开发或者复用自定义组件，可以通过设置componentId属性明确指定此id的范围来精确指定target，此时componentId属性可以设置为对应组件的父组件或者所在自定义组件的UniqueID。
+- target的id属性设置为string类型，此时需要将id设置为对应组件的通用属性[id](../reference/apis-arkui/arkui-ts/ts-universal-attributes-component-id.md#id)值。当无法保证id的唯一性时，如多团队开发或者复用自定义组件，可以通过设置componentId属性明确指定此id的范围来精确指定target，此时componentId属性可以设置为对应组件的父组件或者所在自定义组件的UniqueID。
    
-   <!-- @openMenuWithTargetIdString -->
+   <!-- @[openMenuWithTargetIdString](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/OpenMenuWithTargetIdString.ets) -->
    
    ``` TypeScript
    build() {
@@ -157,9 +157,9 @@
 
 ### 设置弹出菜单样式
    
-   通过调用openMenu接口弹出菜单，可以设置MenuOptions中的属性调整菜单样式。title属性不生效。preview参数仅支持设置MenuPreviewMode类型。
+   通过调用openMenu接口弹出菜单，可以设置[MenuOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#menuoptions10)中的属性调整菜单样式。title属性不生效。preview参数仅支持设置[MenuPreviewMode](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#menupreviewmode11)类型。
    
-  <!-- @menu_options -->
+  <!-- @[menu_options](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/GlobalOpenMenu.ets) -->
   
   ``` TypeScript
   private options: MenuOptions = { enableArrow: true, placement: Placement.Bottom };
@@ -167,9 +167,9 @@
 
 ## 更新菜单样式
 
-从API version 18开始，通过updateMenu可以更新菜单的样式。支持全量更新和增量更新其菜单样式，不支持更新MenuOptions中的showInSubWindow、preview、previewAnimationOptions、transition、onAppear、aboutToAppear、onDisappear、aboutToDisappear、onWillAppear、onDidAppear、onWillDisappear和onDidDisappear属性。
+从API version 18开始，通过[updateMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatemenu18)可以更新菜单的样式。支持全量更新和增量更新其菜单样式，不支持更新[MenuOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#menuoptions10)中的showInSubWindow、preview、previewAnimationOptions、transition、onAppear、aboutToAppear、onDisappear、aboutToDisappear、onWillAppear、onDidAppear、onWillDisappear和onDidDisappear属性。
    
-<!-- @update_menu -->
+<!-- @[update_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/GlobalOpenMenu.ets) -->
 
 ``` TypeScript
 this.getUIContext().getPromptAction()
@@ -184,13 +184,13 @@ this.getUIContext().getPromptAction()
   });
 ```
    
-   openMenu
+   ![openMenu](figures/openMenu.gif)
 
 ## 关闭菜单
 
-从API version 18开始，通过调用closeMenu可以关闭菜单。
+从API version 18开始，通过调用[closeMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#closemenu18)可以关闭菜单。
    
-<!-- @close_menu --> 
+<!-- @[close_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Menu/globalmenusindependentofuicomponents/GlobalOpenMenu.ets) --> 
 
 ``` TypeScript
 this.getUIContext().getPromptAction()
@@ -203,14 +203,14 @@ this.getUIContext().getPromptAction()
   });
 ```
    
-openMenu
+![openMenu](figures/openMenu.gif)
 
 > **说明：**
 >
-> 由于updateMenu和closeMenu依赖content来更新或者关闭指定的菜单，开发者需自行维护传入的content。
+> 由于[updateMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatemenu18)和[closeMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#closemenu18)依赖content来更新或者关闭指定的菜单，开发者需自行维护传入的content。
 
 ## 在HAR包中使用全局菜单
 
-可以通过HAR包封装一个Menu，从而对外提供菜单的弹出、更新和关闭能力。
+可以通过[HAR](../quick-start/har-package.md)包封装一个Menu，从而对外提供菜单的弹出、更新和关闭能力。
 
-具体调用方式参考在HAR包中使用全局气泡提示。
+具体调用方式参考[在HAR包中使用全局气泡提示](./arkts-popup-and-menu-components-uicontext-popup.md#在har包中使用全局气泡提示)。

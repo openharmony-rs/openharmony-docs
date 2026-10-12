@@ -11,7 +11,7 @@
 
 | V1装饰器名称 | V2装饰器名称 |
 | -------- | -------- |
-| @Reusable | @ReusableV2 |
+| [@Reusable](./arkts-reusable.md) | [@ReusableV2](./arkts-new-reusableV2.md) |
 
 
 ## \@Reusable->\@ReusableV2迁移规则
@@ -25,16 +25,16 @@
 
 - 将\@Reusable装饰的子自定义组件迁移为\@ReusableV2装饰。
 
-- 涉及组件内状态变量的迁移可参考组件内状态变量迁移指导。
+- 涉及组件内状态变量的迁移可参考[组件内状态变量迁移指导](./arkts-v1-v2-migration-inner-component.md)。
 
 
 ### aboutToRecycle与aboutToReuse迁移
 
 **迁移规则**
 
-- aboutToRecycle生命周期无需改动，可保留原实现。
+- [aboutToRecycle](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttorecycle10)生命周期无需改动，可保留原实现。
 
-- aboutToReuse生命周期在组件复用V2中进行了优化，去除了参数的同时，在复用前会自动重置各状态变量（详情参考复用前的组件内状态变量重置），无需开发者在aboutToReuse中手动赋值回初始值。
+- [aboutToReuse](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse18)生命周期在组件复用V2中进行了优化，去除了参数的同时，在复用前会自动重置各状态变量（详情参考[复用前的组件内状态变量重置](./arkts-new-reusableV2.md#复用前的组件内状态变量重置)），无需开发者在aboutToReuse中手动赋值回初始值。
 
 ``` TypeScript
 // V1原组件
@@ -90,7 +90,7 @@ struct ReusableV2Component {
 
 **迁移规则**
 
-在组件复用V1中，使用reuseId属性标记组件的复用组。迁移到组件复用V2后，需更换使用reuse属性。
+在组件复用V1中，使用[reuseId](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse-id.md#reuseid)属性标记组件的复用组。迁移到组件复用V2后，需更换使用[reuse](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-reuse.md#reuse)属性。
 
 ``` TypeScript
 // V1原写法
@@ -104,14 +104,14 @@ ReusableV2Component().reuse({reuseId: () => 'groupA'})
 
 **迁移规则**
 
-组件复用V1中，当开发者打开复用组件的冻结开关freezeWhenInactive时，才会冻结复用池中的组件，详细规则参考自定义组件冻结。而在组件复用V2中，会自动开启冻结，详细规则参考复用阶段的冻结。
+组件复用V1中，当开发者打开复用组件的冻结开关freezeWhenInactive时，才会冻结复用池中的组件，详细规则参考[自定义组件冻结](./arkts-custom-components-freeze.md)。而在组件复用V2中，会自动开启冻结，详细规则参考[复用阶段的冻结](./arkts-new-reusableV2.md#复用阶段的冻结)。
 
 
 ### LazyForEach->Repeat
 
 **迁移规则**
 
-组件复用V1中，经常使用LazyForEach配合组件复用实现高性能懒加载。在组件复用V2中，推荐使用Repeat替代LazyForEach。Repeat自身能够对组件进行复用，相比LazyForEach具有更简洁的API以及更好的性能。由LazyForEach迁移至Repeat可参考LazyForEach迁移Repeat。
+组件复用V1中，经常使用LazyForEach配合组件复用实现高性能懒加载。在组件复用V2中，推荐使用[Repeat](../rendering-control/arkts-new-rendering-control-repeat.md)替代[LazyForEach](../rendering-control/arkts-rendering-control-lazyforeach.md)。Repeat自身能够对组件进行复用，相比LazyForEach具有更简洁的API以及更好的性能。由LazyForEach迁移至Repeat可参考[LazyForEach迁移Repeat](./arkts-v1-v2-migration-rendering-control-repeat.md#lazyforeach迁移repeat)。
 
 
 ## @Reusable->@ReusableV2迁移示例
@@ -119,11 +119,11 @@ ReusableV2Component().reuse({reuseId: () => 'groupA'})
 
 ### if使用场景
 
-\@Reusable使用示例请参考动态布局更新。
+\@Reusable使用示例请参考[动态布局更新](./arkts-reusable.md#动态布局更新)。
 
 \@ReusableV2的if使用场景示例代码如下：
 
-<!-- @reusable_if_scene -->
+<!-- @[reusable_if_scene](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/reusablemigration/ReusableIfScene.ets) -->
 
 ``` TypeScript
 // 数据模型，使用@ObservedV2和@Trace实现深度观察
@@ -172,7 +172,7 @@ struct Child {
 
   // 组件复用时回调，如无需对状态变量做额外修改可移除
   aboutToReuse() {
-    console.info('Recycle====Child==');
+    console.info('Reuse====Child==');
   }
 
   build() {
@@ -188,15 +188,15 @@ struct Child {
   }
 }
 ```
-
+![](figures/v1_v2_reusable_if.gif)
 
 ### 列表滚动-Repeat使用场景
 
-\@Reusable使用示例请参考列表滚动配合LazyForEach使用。
+\@Reusable使用示例请参考[列表滚动配合LazyForEach使用](./arkts-reusable.md#列表滚动配合lazyforeach使用)。
 
 \@ReusableV2的列表滚动-Repeat使用场景示例代码如下：
 
-<!-- @reusable_repeat_scene -->
+<!-- @[reusable_repeat_scene](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/reusablemigration/ReusableRepeatScene.ets) -->
 
 ``` TypeScript
 @Entry
@@ -247,7 +247,6 @@ export struct CardViewV2 {
       // 显示当前列表项序号
       Text(`#${this.item}`)
         .fontSize(20)
-        .fontColor('#007dffa')
         .fontWeight(FontWeight.Bold)
 
       // 显示列表项内容
@@ -270,15 +269,15 @@ export struct CardViewV2 {
   }
 }
 ```
-
+![](figures/v1_v2_reusable_repeat.gif)
 
 ### 列表滚动-if使用场景
 
-\@Reusable使用示例请参考列表滚动-if使用场景。
+\@Reusable使用示例请参考[列表滚动-if使用场景](./arkts-reusable.md#列表滚动-if使用场景)。
 
 \@ReusableV2的列表滚动-if使用场景示例代码如下：
 
-<!-- @reusable_list_if_scene -->
+<!-- @[reusable_list_if_scene](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/reusablemigration/ReusableListIfScene.ets) -->
 
 ``` TypeScript
 @Entry
@@ -378,17 +377,17 @@ export struct OneMoment {
   }
 }
 ```
-
+![](figures/v1_v2_reusable_if_two.gif)
 
 ### 列表滚动-Repeat全量加载使用场景
 
-状态管理V2推荐使用Repeat全量加载模式替代ForEach实现循环渲染。
+状态管理V2推荐使用[Repeat全量加载模式](../rendering-control/arkts-new-rendering-control-repeat.md#懒加载能力说明)替代[ForEach](../rendering-control/arkts-rendering-control-foreach.md)实现循环渲染。
 
-\@Reusable使用示例请参考列表滚动-ForEach使用场景。
+\@Reusable使用示例请参考[列表滚动-ForEach使用场景](./arkts-reusable.md#列表滚动-foreach使用场景)。
 
 \@ReusableV2的列表滚动-Repeat全量加载使用场景示例代码如下：
 
-<!-- @reusable_repeat_all_load_scene -->
+<!-- @[reusable_repeat_all_load_scene](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/reusablemigration/ReusableRepeatAllLoadScene.ets) -->
 
 ``` TypeScript
 // xxx.ets
@@ -500,15 +499,15 @@ class ListItemObject {
   @Trace public isExpand: boolean = false;
 }
 ```
-
+![](figures/v1_v2_reusable_repeat_two.gif)
 
 ### Grid使用场景
 
-\@Reusable使用示例请参考Grid使用场景。
+\@Reusable使用示例请参考[Grid使用场景](./arkts-reusable.md#grid使用场景)。
 
 \@ReusableV2的Grid使用场景示例代码如下：
 
-<!-- @reusable_grid_scene -->
+<!-- @[reusable_grid_scene](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/reusablemigration/ReusableGridScene.ets) -->
 
 ``` TypeScript
 @Entry
@@ -571,15 +570,15 @@ struct ReusableV2ChildComponent {
   }
 }
 ```
-
+![](figures/v1_v2_reusable_grid.png)
 
 ### WaterFlow使用场景
 
-\@Reusable使用示例请参考WaterFlow使用场景。
+\@Reusable使用示例请参考[WaterFlow使用场景](./arkts-reusable.md#waterflow使用场景)。
 
 \@ReusableV2的WaterFlow使用场景示例代码如下：
 
-<!-- @reusable_waterflow_scene -->
+<!-- @[reusable_waterflow_scene](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/reusablemigration/ReusableWaterFlowScene.ets) -->
 
 ``` TypeScript
 // 复用组件
@@ -612,8 +611,6 @@ struct ReusableWaterFlowScene {
   @Local minSize: number = 50;
   // 流式布局子项最大尺寸
   @Local maxSize: number = 80;
-  @Local fontSize: number = 24;
-  @Local colors: number[] = [0xFFC0CB, 0xDA70D6, 0x6B8E23, 0x6A5ACD, 0x00FFFF, 0x00FF7F];
   // 瀑布流滚动控制器
   scroller: Scroller = new Scroller();
   // 瀑布流数据源
@@ -677,15 +674,15 @@ struct ReusableWaterFlowScene {
   }
 }
 ```
-
+![](figures/v1_v2_reusable_waterflow.gif)
 
 ### Swiper使用场景
 
-\@Reusable使用示例请参考Swiper使用场景。
+\@Reusable使用示例请参考[Swiper使用场景](./arkts-reusable.md#swiper使用场景)。
 
 \@ReusableV2的Swiper使用场景示例代码如下：
 
-<!-- @reusable_swiper_scene -->
+<!-- @[reusable_swiper_scene](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/reusablemigration/ReusableSwiperScene.ets) -->
 
 ``` TypeScript
 @Entry
@@ -756,7 +753,6 @@ struct QuestionSwiperItem {
         })
       // 显示题目图片
       Image(this.itemData?.image)
-        .width('100%')
         .borderRadius(12)
         .objectFit(ImageFit.Contain)
         .margin({
@@ -785,16 +781,16 @@ struct QuestionSwiperItem {
   }
 }
 ```
-
+![](figures/v1_v2_reusable_swiper.gif)
 
 
 ### 列表滚动-ListItemGroup使用场景
 
-\@Reusable使用示例请参考列表滚动-ListItemGroup使用场景。
+\@Reusable使用示例请参考[列表滚动-ListItemGroup使用场景](./arkts-reusable.md#列表滚动-listitemgroup使用场景)。
 
 \@ReusableV2的列表滚动-ListItemGroup使用场景示例代码如下：
 
-<!-- @reusable_listitemgroup_scene -->
+<!-- @[reusable_listitemgroup_scene](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/reusablemigration/ReusableListItemGroupScene.ets) -->
 
 ``` TypeScript
 @Entry
@@ -868,11 +864,11 @@ class DataSrc {
   @Trace public dataScr1: string[] = [];
 }
 ```
-
+![](figures/v1_v2_reusable_listitemgroup.gif)
 
 ### 多种条目类型使用场景
 
-\@Reusable使用示例请参考多种条目类型使用场景。
+\@Reusable使用示例请参考[多种条目类型使用场景](./arkts-reusable.md#多种条目类型使用场景)。
 
 \@ReusableV2的多种条目类型使用场景示例代码如下：
 
@@ -884,7 +880,7 @@ class DataSrc {
 
 复用组件间存在差异，但类型有限。例如，可以通过显式设置两个reuse选项或使用两个自定义组件来实现复用。
 
-<!-- @reusable_limit_type_scene -->
+<!-- @[reusable_limit_type_scene](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/reusablemigration/ReusableLimitTypeScene.ets) -->
 
 ``` TypeScript
 @Entry
@@ -955,13 +951,13 @@ struct ReusableV2Component {
   }
 }
 ```
-
+![](figures/v1_v2_reusable_limit.png)
 
 **组合型**
 
-复用组件间存在多种差异，但通常具备共同的子组件。将三种复用组件以组合型方式转换为@Builder函数后，内部的共享子组件将统一置于父组件MyComponentV2之下。复用这些子组件时，缓存池在父组件层面实现共享，减少组件创建过程中的资源消耗。
+复用组件间存在多种差异，但通常具备共同的子组件。将三种复用组件以组合型方式转换为[@Builder](./arkts-builder.md)函数后，内部的共享子组件将统一置于父组件MyComponentV2之下。复用这些子组件时，缓存池在父组件层面实现共享，减少组件创建过程中的资源消耗。
 
-<!-- @reusable_group_type_scene -->
+<!-- @[reusable_group_type_scene](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateMigrationProject/entry/src/main/ets/pages/reusablemigration/ReusableGroupTypeScene.ets) -->
 
 ``` TypeScript
 @Entry
@@ -1132,4 +1128,4 @@ struct ChildComponentD {
   }
 }
 ```
-
+![](figures/v1_v2_reusable_group.png)

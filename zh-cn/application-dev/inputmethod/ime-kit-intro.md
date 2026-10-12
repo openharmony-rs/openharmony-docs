@@ -16,7 +16,7 @@ IME Kit提供输入法框架和输入法服务两类API。用于实现输入法�
 
 ## 框架原理
 
-输入法框架子系统架构图
+![输入法框架子系统架构图](./figures/输入法框架子系统框架原理图.PNG)
 
 ## 功能特点
 
@@ -51,16 +51,16 @@ ArkUI: IME Kit在输入法软键盘和自绘编辑框时使用ArkUI提供的部�
 
 ## IME Kit API参考
 
-- inputMethodEngine
+- [inputMethodEngine](../reference/apis-ime-kit/js-apis-inputmethodengine.md)
 
-- inputMethod
+- [inputMethod](../reference/apis-ime-kit/js-apis-inputmethod.md)
 
-- InputMethodExtensionAbility
+- [InputMethodExtensionAbility](../reference/apis-ime-kit/js-apis-inputmethod-extension-ability.md)
 
-- InputMethodExtensionContext
+- [InputMethodExtensionContext](../reference/apis-ime-kit/js-apis-inputmethod-extension-context.md)
 
-- inputMethodList
+- [inputMethodList](../reference/apis-ime-kit/js-apis-inputmethodlist.md)
 
-- InputMethodSubtype
+- [InputMethodSubtype](../reference/apis-ime-kit/js-apis-inputmethod-subtype.md)
 
-- inputMethod.Panel
+- [inputMethod.Panel](../reference/apis-ime-kit/js-apis-inputmethod-panel.md)

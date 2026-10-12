@@ -15,7 +15,7 @@
 
 ## 开发步骤
 
-电话号码格式化通过PhoneNumberFormat的format接口实现。
+电话号码格式化通过[PhoneNumberFormat](../reference/apis-localization-kit/js-apis-i18n.md#phonenumberformat8)的[format](../reference/apis-localization-kit/js-apis-i18n.md#format8)接口实现。
 
 **电话号码格式化选项**
 
@@ -36,7 +36,7 @@
 
 1. 导入模块。
 
-   <!-- @import_module -->
+   <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/PhoneNumberFormatting.ets) -->
    
    ``` TypeScript
    import { i18n } from '@kit.LocalizationKit';
@@ -44,7 +44,7 @@
 
 2. 处理号码。
 
-   <!-- @format_phone_numbers -->
+   <!-- @[format_phone_numbers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/PhoneNumberFormatting.ets) -->
    
    ``` TypeScript
    // 格式化电话号码

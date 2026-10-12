@@ -1,4 +1,4 @@
-# 能效资源申请(ArkTS)（仅对系统特权应用开放）
+# 能效资源申请(ArkTS) (仅对系统特权应用开放)
 
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: ResourceSchedule-->
@@ -17,7 +17,7 @@
 
 - **能效资源申请接口：** 单独为进程申请CPU等资源的接口，保障系统应用在后台执行的诉求。申请CPU资源后，则应用或进程不被挂起。
 
-- **系统特权应用**：配置runningResourcesApply特权应用的系统应用，需在install_list_capability.json中完成配置，参考示例如下：
+- **系统特权应用**：配置[runningResourcesApply特权](../../device-dev/subsystems/subsys-app-privilege-config-guide.md#配置方式)应用的系统应用，需在[install_list_capability.json](https://gitcode.com/openharmony/vendor_hihope/blob/master/rk3568/preinstall-config/install_list_capability.json)中完成配置，参考示例如下：
 
   ```json5
   {
@@ -45,7 +45,7 @@
 
 **表1** 申请能效资源主要接口
 
-以下是能效资源开发使用的相关接口，更多接口及使用方式请见后台任务管理。
+以下是能效资源开发使用的相关接口，更多接口及使用方式请见[@ohos.resourceschedule.backgroundTaskManager (后台任务管理)(系统接口)](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager-sys.md)。
 
 | 接口名 | 描述 |
 | -------- | -------- |
@@ -61,7 +61,7 @@
 | isPersist | boolean | 否 | 是否永久持有资源，默认为false。<br>- true表示永久持有。<br>- false表示有限时间内持有。 |
 | isProcess | boolean | 否 | 进程或应用申请，默认为false。<br>- true表示进程申请，能效资源只对当前进程有效。<br>- false表示应用申请，能效资源对整个应用的所有进程有效。 |
 | reason | string | 是 | 申请资源原因。 |
-| cpuLevel | EfficiencyResourcesCpuLevel  | 否 | 指定CPU级别，能效资源类型resourceTypes为CPU时该参数用于指定CPU资源大小，系统会在负载空闲时间（例如灭屏场景）分配指定的CPU资源给应用。从API version 23开始支持。 |
+| cpuLevel | [EfficiencyResourcesCpuLevel](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager-sys.md#efficiencyresourcescpulevel23)  | 否 | 指定CPU级别，能效资源类型resourceTypes为CPU时该参数用于指定CPU资源大小，系统会在负载空闲时间（例如灭屏场景）分配指定的CPU资源给应用。从API version 23开始支持。 |
 
 > **说明：**
 >

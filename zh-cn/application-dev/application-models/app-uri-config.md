@@ -7,7 +7,7 @@
 <!--Adviser: @HelloCrease-->
 
 ## uris标签说明
-当在module.json5文件的skills字段中声明uris时，主要包含如下字段。
+当在[module.json5](../quick-start/module-configuration-file.md)文件的[skills字段](../quick-start/module-configuration-file.md#skills标签)中声明uris时，主要包含如下字段。
 
 - scheme：协议名称。常见的取值有http、https、file、ftp等，也可以自定义。
 - host：域名或IP地址。例如域名`developer.huawei.com`或IP地址`127.0.0.1`。
@@ -17,7 +17,7 @@
 
 - pathStartWith：路径前缀，该字段在scheme存在时才有意义，表示域名服务器上的目录或文件路径的前缀，用于前缀匹配。
 - pathRegex：路径正则，该字段在scheme存在时才有意义，表示域名服务器上的目录或文件路径的正则表达式，用于正则匹配。
-- linkFeature：应用的功能类型（如文件打开、分享、导航等）。取值为长度不超过127字节的字符串，不支持中文。
+- [linkFeature](#linkfeature标签说明)：应用的功能类型（如文件打开、分享、导航等）。取值为长度不超过127字节的字符串，不支持中文。
 
 > **说明：**
 >
@@ -49,29 +49,29 @@
 > 同一Bundle中声明的linkFeature数量不能超过150个。 
 
 
-目标应用在linkFeature字段中声明功能类型，并通过应用市场上架审核后，可以提升应用跳转体验。主要用于以下两种场景：
+目标应用在linkFeature字段中声明功能类型，并通过<!--RP3--><!--RP3End-->上架审核后，可以提升应用跳转体验。主要用于以下两种场景：
 
 1. 支持系统识别同类应用：当调用方拉起垂类应用（例如导航类应用）时，系统会根据linkFeature字段识别到匹配的应用，并在应用面板中展现。
 
     |值|说明|
     |---|---|
-    |AppStorageMgmt|指示清理应用沙箱目录中缓存数据的功能。使用场景详见清理应用沙箱缓存数据场景。|
-    |FileOpen|指示打开处理文件的功能。使用场景详见拉起文件处理类应用。|
-    |Navigation|指示导航功能。使用场景详见拉起导航类应用。|
-    |RoutePlan|指示路线规划功能。使用场景详见拉起导航类应用。|
-    |PlaceSearch|指示地点搜索功能。使用场景详见拉起导航类应用。|
-    |DetailLocation|指示地点详情功能。使用场景详见拉起导航类应用。|
-    |Transfer|指示转账汇款功能。使用场景详见拉起金融类应用。|
-    |CreditCardRepayment|指示信用卡还款功能。使用场景详见拉起金融类应用。|
-    |ComposeMail|指示撰写邮件功能。使用场景详见拉起邮件类应用。|
-    |QueryByFlightNo|指示按航班号查询航班功能。使用场景详见拉起航班类应用。|
-    |QueryByLocation|指示按起降地查询航班功能。使用场景详见拉起航班类应用。|
-    |QueryExpress|指示快递查询功能。使用场景详见拉起快递类应用。|    
+    |AppStorageMgmt|指示清理应用沙箱目录中缓存数据的功能。使用场景详见[清理应用沙箱缓存数据场景](#清理应用沙箱缓存数据场景)。|
+    |FileOpen|指示打开处理文件的功能。使用场景详见[拉起文件处理类应用](./file-processing-apps-startup.md)。|
+    |Navigation|指示导航功能。使用场景详见[拉起导航类应用](./start-navigation-apps.md)。|
+    |RoutePlan|指示路线规划功能。使用场景详见[拉起导航类应用](./start-navigation-apps.md)。|
+    |PlaceSearch|指示地点搜索功能。使用场景详见[拉起导航类应用](./start-navigation-apps.md)。|
+    |DetailLocation|指示地点详情功能。使用场景详见[拉起导航类应用](./start-navigation-apps.md)。|
+    |Transfer|指示转账汇款功能。使用场景详见[拉起金融类应用](./start-finance-apps.md)。|
+    |CreditCardRepayment|指示信用卡还款功能。使用场景详见[拉起金融类应用](./start-finance-apps.md)。|
+    |ComposeMail|指示撰写邮件功能。使用场景详见[拉起邮件类应用](./start-email-apps.md)。|
+    |QueryByFlightNo|指示按航班号查询航班功能。使用场景详见[拉起航班类应用](./start-flight-apps.md)。|
+    |QueryByLocation|指示按起降地查询航班功能。使用场景详见[拉起航班类应用](./start-flight-apps.md)。|
+    |QueryExpress|指示快递查询功能。使用场景详见[拉起快递类应用](./start-express-apps.md)。|    
     |AppNotificationMgmt|指示应用内通知设置的功能。<!--RP1--><!--RP1End-->|
     |PrimaryContactMgmt|从API version 23开始，新增支持该字段。指示社交通讯类应用“重要联系人列表”的设置功能。<!--RP2--><!--RP2End-->|
 2. 指定类型的应用被拉起时免跳转弹框：正常情况下，拉起指定类型的应用时，都会弹出确认是否打开应用的弹窗。如果您的应用有向其他应用提供登录/分享/支付的功能，可以在应用中声明对应的LinkFeature（取值参见下表）。应用通过上架审核后，当其他应用拉起您的应用时将不再弹窗提示。
 
-    exempted-dialog-between-apps
+    ![exempted-dialog-between-apps](figures/exempted-dialog-between-apps.png)
 
     |值|说明|
     |---|---|
@@ -88,11 +88,11 @@
 
 如果开发者实现了自定义数据清理页面，并希望能够在应用详情页提供跳转入口，可以通过配置linkFeature字段进行接入。
 
-1. 在module.json5配置文件中，对实现了数据清理功能的Ability添加如下skills配置。 
+1. 在[module.json5配置文件](../quick-start/module-configuration-file.md)中，对实现了数据清理功能的Ability添加如下skills配置。 
 
    其中，linkFeature字段必须配置为AppStorageMgmt，其他字段取值请根据实际情况修改为实际值。
 
-    <!-- @pulllink_clearcache -->
+    <!-- @[pulllink_clearcache](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/module.json5) -->
     
     ``` JSON5
     {
@@ -124,7 +124,7 @@
 
 效果图如下：
 
-app-uri-config_storage
+![app-uri-config_storage](figures/app_uri_config_storage.png)
 
 
 
@@ -137,7 +137,7 @@ app-uri-config_storage
 
 2. 设置scheme、host、port、path/pathStartWith属性，与Want中uri相匹配，以便区分不同功能，linkFeature设置为Login。
 
-    <!-- @pulllink_login -->
+    <!-- @[pulllink_login](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/module.json5) -->
 
     ``` JSON5
     "uris": [

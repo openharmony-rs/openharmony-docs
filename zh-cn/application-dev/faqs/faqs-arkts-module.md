@@ -35,7 +35,7 @@
 
 (1) 打开应用工程级编译构建文件: entry > src/main/module.json5
 
-(OpenHarmony工程管理介绍)
+([OpenHarmony工程管理介绍](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V3/ohos-project-overview-0000001218440650-V3))
 
 module.json5部分参数示例如下:
 ``` json5
@@ -156,9 +156,9 @@ load libentry.so failed.
 
 **参考文档**
 
-- Node-API常见问题
-- loadNativeModule
-- 语言基础类库错误码10200301
+- [Node-API常见问题](../napi/use-napi-faqs.md)
+- [loadNativeModule](../reference/common/js-apis-common-load-native-module.md)
+- [语言基础类库错误码10200301](../reference/apis-arkts/errorcode-utils.md)
 
 
 ## 模块间循环依赖导致运行时未初始化异常问题定位
@@ -218,7 +218,7 @@ export class Animal {
 ```
 
 ### 循环依赖的解决方法：
-安全规则@security/no-cycle
+[安全规则@security/no-cycle](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/ide_no-cycle-V5)
 
 
 ##  ArkTS 符号未初始化报错场景示例
@@ -359,7 +359,7 @@ export const b = j; // 报错信息：Error message:j is not initialized
 
 **解决方法**
 
-详见循环依赖的解决方法
+详见[循环依赖的解决方法](#循环依赖的解决方法)
 
 
 ### 模块间循环依赖 - class
@@ -384,4 +384,4 @@ const j = new A(); // 报错信息：Error message:A is not initialized
 
 **解决方法**
 
-详见循环依赖的解决方法
+详见[循环依赖的解决方法](#循环依赖的解决方法)

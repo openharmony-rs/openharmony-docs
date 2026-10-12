@@ -10,7 +10,7 @@
 PersistentStorage是应用程序中的可选单例对象。此对象的作用是持久化存储选定的AppStorage属性，以确保这些属性在应用程序重新启动时的值与应用程序关闭时的值相同。
 
 
-PersistentStorage提供状态变量持久化的能力，但是需要注意，其持久化和读回UI的能力都需要依赖AppStorage。在阅读本文档前，建议提前阅读：AppStorage，PersistentStorage API文档。
+PersistentStorage提供状态变量持久化的能力，但是需要注意，其持久化和读回UI的能力都需要依赖AppStorage。在阅读本文档前，建议提前阅读：[AppStorage](./arkts-appstorage.md)，[PersistentStorage API文档](../../reference/apis-arkui/arkui-ts/ts-state-management.md#persistentstorage)。
 
 ## 概述
 
@@ -20,7 +20,7 @@ PersistentStorage的存储路径为module级别，即哪个module调用了Persis
 
 PersistentStorage的存储路径在应用第一个ability启动时就已确定，为该ability所属的module。如果一个ability调用了PersistentStorage，并且该ability能被不同的module拉起，那么ability存在多少种启动方式，就会有多少份数据副本。
 
-PersistentStorage功能上耦合了AppStorage，并且数据在不同module中使用也会有问题，因此推荐开发者使用PersistenceV2的globalConnect接口替换掉PersistentStorage的persistProp接口。PersistentStorage向PersistenceV2迁移的方案见PersistentStorage->PersistenceV2。
+PersistentStorage功能上耦合了AppStorage，并且数据在不同module中使用也会有问题，因此推荐开发者使用[PersistenceV2](arkts-new-persistencev2.md)的globalConnect接口替换掉PersistentStorage的persistProp接口。PersistentStorage向PersistenceV2迁移的方案见[PersistentStorage->PersistenceV2](arkts-v1-v2-migration-application.md#persistentstorage-persistencev2)。
 
 ## 限制条件
 
@@ -28,11 +28,11 @@ PersistentStorage允许的类型和值有：
 
 - `number`，`string`，`boolean`，`enum` 等简单类型。
 - 可以被`JSON.stringify()`和`JSON.parse()`重构的对象（但是对象中的成员方法不支持持久化）。
-- API version 12及以上支持Map类型，可以观察到Map整体的赋值，同时可通过调用Map的接口`set`、`clear`、`delete` 更新Map的值，且更新的值被持久化存储。详见持久化Map类型变量。
-- API version 12及以上支持Set类型，可以观察到Set整体的赋值，同时可通过调用Set的接口`add`、`clear`、`delete` 更新Set的值，且更新的值被持久化存储。详见持久化Set类型变量。
-- API version 12及以上支持Date类型，可以观察到Date整体的赋值，同时可通过调用Date的接口`setFullYear`、`setMonth`、`setDate`、`setHours`、`setMinutes`、`setSeconds`、`setMilliseconds`、`setTime`、`setUTCFullYear`、`setUTCMonth`、`setUTCDate`、`setUTCHours`、`setUTCMinutes`、`setUTCSeconds`、`setUTCMilliseconds` 更新Date的属性，且更新的值被持久化存储。详见持久化Date类型变量。
+- API version 12及以上支持Map类型，可以观察到Map整体的赋值，同时可通过调用Map的接口`set`、`clear`、`delete` 更新Map的值，且更新的值被持久化存储。详见[持久化Map类型变量](#持久化map类型变量)。
+- API version 12及以上支持Set类型，可以观察到Set整体的赋值，同时可通过调用Set的接口`add`、`clear`、`delete` 更新Set的值，且更新的值被持久化存储。详见[持久化Set类型变量](#持久化set类型变量)。
+- API version 12及以上支持Date类型，可以观察到Date整体的赋值，同时可通过调用Date的接口`setFullYear`、`setMonth`、`setDate`、`setHours`、`setMinutes`、`setSeconds`、`setMilliseconds`、`setTime`、`setUTCFullYear`、`setUTCMonth`、`setUTCDate`、`setUTCHours`、`setUTCMinutes`、`setUTCSeconds`、`setUTCMilliseconds` 更新Date的属性，且更新的值被持久化存储。详见[持久化Date类型变量](#持久化date类型变量)。
 - API version 12及以上支持`undefined` 和 `null`。
-- API version 12及以上支持联合类型。
+- API version 12及以上[支持联合类型](#持久化联合类型变量)。
 
 PersistentStorage不允许的类型和值有：
 
@@ -44,9 +44,9 @@ PersistentStorage不允许的类型和值有：
 
 - 持久化经常变化的变量。
 
-PersistentStorage的持久化变量最好是小于2kb的数据，不要大量的数据持久化，因为PersistentStorage写入磁盘是在UI线程同步执行的，大量数据本地读写会影响UI渲染性能。如果开发者需要存储大量的数据，建议使用@ohos.data.relationalStore (关系型数据库)相关接口。
+PersistentStorage的持久化变量最好是小于2kb的数据，不要大量的数据持久化，因为PersistentStorage写入磁盘是在UI线程同步执行的，大量数据本地读写会影响UI渲染性能。如果开发者需要存储大量的数据，建议使用[@ohos.data.relationalStore (关系型数据库)](../../reference/apis-arkdata/arkts-apis-data-relationalStore.md)相关接口。
 
-PersistentStorage和UI实例相关联，持久化操作需要在UI实例初始化成功后（即loadContent传入的回调被调用时）才可以被调用，早于该时机调用会导致持久化失败。
+PersistentStorage和UI实例相关联，持久化操作需要在UI实例初始化成功后（即[loadContent](../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)传入的回调被调用时）才可以被调用，早于该时机调用会导致持久化失败。
 
 ```ts
 // EntryAbility.ets
@@ -86,7 +86,7 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
    ```
 
    完整代码如下：
-   <!-- @Persistent_page_one --> 
+   <!-- @[Persistent_page_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageOneMessageStorage.ets) --> 
    
    ``` TypeScript
    PersistentStorage.persistProp('aProp', 47);
@@ -119,7 +119,7 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
    }
    ```
 
-   persistent-sync-0
+   ![persistent-sync-0](figures/persistent-sync-0.png)
 
 - 新应用安装后首次启动运行：
   1. 调用persistProp初始化PersistentStorage，首先查询在PersistentStorage本地文件中是否存在“aProp”，查询结果为不存在，因为应用是第一次安装。
@@ -130,7 +130,7 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
 
   **图1** persistProp初始化流程  
 
-  zh-cn_image_0000001553348833
+  ![zh-cn_image_0000001553348833](figures/PersistProp-initialization.png)
 
 - 触发点击事件后：
   1. 状态变量\@StorageLink('aProp') aProp改变，触发Text组件重新刷新。
@@ -163,12 +163,12 @@ PersistentStorage.persistProp('aProp', 48)：在PersistentStorage中查找到“
 
 开发者可以先判断是否需要覆盖上一次保存在PersistentStorage中的值，如果需要覆盖，再调用AppStorage的接口进行修改，如果不需要覆盖，则不调用AppStorage的接口。
 
-<!-- @Persistent_page_first --> 
+<!-- @[Persistent_page_first](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageThreeAppStorage.ets) --> 
 
 ``` TypeScript
 const MAX_NUM: number = 50;
 ```
-<!-- @Persistent_page_three --> 
+<!-- @[Persistent_page_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageThreeAppStorage.ets) --> 
 
 ``` TypeScript
 PersistentStorage.persistProp('aProp', 48);
@@ -184,7 +184,7 @@ if ((AppStorage.get<number>('aProp') ?? 0) > MAX_NUM) {
 
 PersistentStorage支持联合类型和undefined和null，在下面的示例中，使用persistProp方法初始化“P”为undefined。通过@StorageLink('P')绑定变量p，类型为number | undefined | null，点击Button改变P的值，视图会随之刷新。且P的值被持久化存储。
 
-<!-- @Persistent_page_four --> 
+<!-- @[Persistent_page_four](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageFourMessageChange.ets) --> 
 
 ``` TypeScript
 // 定义常量替代魔法值，明确数值含义
@@ -234,13 +234,13 @@ struct TestCase6 {
 }
 ```
 
-persistent-sync-1
+![persistent-sync-1](figures/persistent-sync-1.gif)
 
 ### 持久化Date类型变量
 
 在下面的示例中，@StorageLink装饰的persistedDate类型为Date，点击Button改变persistedDate的值，视图会随之刷新。且persistedDate的值被持久化存储。
 
-<!-- @Persistent_page_five -->  
+<!-- @[Persistent_page_five](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageFivePersistedDate.ets) -->  
 
 ``` TypeScript
 PersistentStorage.persistProp('persistedDate', new Date());
@@ -303,13 +303,13 @@ struct PersistedDate {
 }
 ```
 
-persistent-sync-2
+![persistent-sync-2](figures/persistent-sync-2.gif)
 
 ### 持久化Map类型变量
 
 在下面的示例中，@StorageLink装饰的persistedMapString类型为Map\<number, string\>，点击Button改变persistedMapString的值，视图会随之刷新。且persistedMapString的值被持久化存储。
 
-<!-- @Persistent_page_six -->  
+<!-- @[Persistent_page_six](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageSixPersistedMap.ets) -->  
 
 ``` TypeScript
 PersistentStorage.persistProp('persistedMapString', new Map<number, string>([]));
@@ -361,13 +361,13 @@ struct PersistedMap {
 }
 ```
 
-persistent-sync-3
+![persistent-sync-3](figures/persistent-sync-3.gif)
 
 ### 持久化Set类型变量
 
 在下面的示例中，@StorageLink装饰的persistedSet类型为Set\<number\>，点击Button改变persistedSet的值，视图会随之刷新。且persistedSet的值被持久化存储。
 
-<!-- @Persistent_page_seven -->  
+<!-- @[Persistent_page_seven](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/PersistentStorage/entry/src/main/ets/pages/PageSevenPersistedSet.ets) -->  
 
 ``` TypeScript
 PersistentStorage.persistProp('persistedSet', new Set<number>([]));
@@ -440,4 +440,4 @@ struct PersistedSet {
 }
 ```
 
-persistent-sync-4
+![persistent-sync-4](figures/persistent-sync-4.gif)

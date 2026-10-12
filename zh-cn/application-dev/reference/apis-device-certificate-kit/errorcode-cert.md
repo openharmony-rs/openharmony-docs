@@ -9,7 +9,7 @@
 
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考通用错误码说明文档。
+> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
 
 ## 19020001 内存错误
 
@@ -42,11 +42,15 @@ Runtime error.
 
 **可能原因**
 
-系统出现的不可预期的错误。
+1. 系统内部发生内存拷贝失败。
+2. 系统内部出现空指针，例如证书链校验器对象为空。
+3. 获取原生对象或转换参数失败，例如调用NAPI或ANI接口失败。
 
 **处理步骤**
 
-检查当前系统功能是否正常。
+1. 检查内存空间是否充足，清理内存后重试。
+2. 系统异常，请稍后重试或重启设备。
+3. 若以上检查均无法定位问题，请收集日志信息并联系华为技术支持。
 
 ## 19020003 参数检查失败
 
@@ -267,7 +271,7 @@ Unsupported critical extension.
 
 **处理步骤**
 
-可以通过设置ignoreErrs参数忽略该错误，然后通过证书算法库相关接口获取该扩展数据自行进行校验。
+可以通过设置[ignoreErrs](js-apis-cert.md#certvalidationparams)参数忽略该错误，然后通过证书算法库相关接口获取该扩展数据自行进行校验。
 
 ## 19030012 主机名不匹配
 
@@ -285,7 +289,7 @@ Hostname mismatch in the certificate.
 
 **处理步骤**
 
-检查hostnames参数是否正确。若正确，请不要信任该证书。
+检查[hostnames](js-apis-cert.md#certvalidationparams)参数是否正确。若正确，请不要信任该证书。
 
 ## 19030013 邮箱地址不匹配
 
@@ -303,7 +307,7 @@ Email address mismatch in the certificate.
 
 **处理步骤**
 
-检查emailAddresses参数是否正确。若正确，请不要信任该证书。
+检查[emailAddresses](js-apis-cert.md#certvalidationparams)参数是否正确。若正确，请不要信任该证书。
 
 ## 19030014 密钥用途不匹配
 
@@ -321,7 +325,7 @@ Key usage mismatch in the certificate.
 
 **处理步骤**
 
-检查keyUsage参数是否正确。若正确，请不要信任该证书。
+检查[keyUsage](js-apis-cert.md#certvalidationparams)参数是否正确。若正确，请不要信任该证书。
 
 ## 19030015 无法获取证书吊销列表
 
@@ -344,7 +348,7 @@ Failed to obtain the certificate revocation list.
 1. 检查是否提供了CRL数据。
 2. 若开启了在线下载CRL，检查证书是否包含CDP扩展。
 3. 若开启了在线下载CRL，检查网络连接是否正常，且保证可以正常访问网络。
-4. 若允许在校验证书吊销状态时忽略未找到证书吊销列表的错误，可以通过设置ignoreErrs参数忽略该错误。
+4. 若允许在校验证书吊销状态时忽略未找到证书吊销列表的错误，可以通过设置[ignoreErrs](js-apis-cert.md#certvalidationparams)参数忽略该错误。
 
 ## 19030016 证书吊销列表尚未生效
 
@@ -362,9 +366,9 @@ CRL的生效时间晚于当前验证时间。
 
 **处理步骤**
 
-1. 若允许CRL的生效时间晚于当前验证时间，可以通过设置ignoreErrs参数忽略该错误。
-2. 若未配置date参数，请检查设备时间是否正确。
-3. 若配置了date参数，请检查该参数是否合理。
+1. 若允许CRL的生效时间晚于当前验证时间，可以通过设置[ignoreErrs](js-apis-cert.md#certvalidationparams)参数忽略该错误。
+2. 若未配置[date](js-apis-cert.md#certvalidationparams)参数，请检查设备时间是否正确。
+3. 若配置了[date](js-apis-cert.md#certvalidationparams)参数，请检查该参数是否合理。
 
 ## 19030017 证书吊销列表已过期
 
@@ -382,9 +386,9 @@ CRL的失效时间早于当前验证时间。
 
 **处理步骤**
 
-1. 若允许CRL的失效时间早于当前验证时间，可以通过设置ignoreErrs参数忽略该错误。
-2. 若未配置date参数，请检查设备时间是否正确。
-3. 若配置了date参数，请检查该参数是否合理。
+1. 若允许CRL的失效时间早于当前验证时间，可以通过设置[ignoreErrs](js-apis-cert.md#certvalidationparams)参数忽略该错误。
+2. 若未配置[date](js-apis-cert.md#certvalidationparams)参数，请检查设备时间是否正确。
+3. 若配置了[date](js-apis-cert.md#certvalidationparams)参数，请检查该参数是否合理。
 
 ## 19030018 证书吊销列表签名验证失败
 
@@ -443,7 +447,7 @@ Failed to obtain the OCSP response.
 1. 检查是否提供了OCSP响应数据。
 2. 若开启了在线OCSP检查，检查证书是否包含OCSP URL。
 3. 若开启了在线OCSP检查，检查网络连接是否正常，且保证可以正常访问网络。
-4. 若允许在校验证书吊销状态时忽略未找到OCSP响应的错误，可以通过设置ignoreErrs参数忽略该错误。
+4. 若允许在校验证书吊销状态时忽略未找到OCSP响应的错误，可以通过设置[ignoreErrs](js-apis-cert.md#certvalidationparams)参数忽略该错误。
 
 ## 19030021 无效的OCSP响应
 

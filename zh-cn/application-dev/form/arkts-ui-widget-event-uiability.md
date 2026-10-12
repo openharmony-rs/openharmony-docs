@@ -6,17 +6,17 @@
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
-使用router事件，点击卡片可拉起对应应用的UIAbility至前台，并刷新卡片。使用call事件，点击卡片可拉起对应应用的UIAbility至后台，并刷新卡片。在卡片页面中可以通过postCardAction接口触发router事件或者call事件拉起UIAbility，然后由UIAbility刷新卡片内容，下面是这种刷新方式的简单示例。
+使用router事件，点击卡片可拉起对应应用的UIAbility至前台，并刷新卡片。使用call事件，点击卡片可拉起对应应用的UIAbility至后台，并刷新卡片。在卡片页面中可以通过[postCardAction](../reference/apis-arkui/js-apis-postCardAction.md#postcardaction-1)接口触发router事件或者call事件拉起UIAbility，然后由UIAbility刷新卡片内容，下面是这种刷新方式的简单示例。
 
 > **说明：**
 >
-> 本文主要介绍动态卡片的事件开发。对于静态卡片，请参见FormLink。
+> 本文主要介绍动态卡片的事件开发。对于静态卡片，请参见[FormLink](../reference/apis-arkui/arkui-ts/ts-container-formlink.md)。
 
 ## 通过router事件刷新卡片内容
 
 - 在卡片页面代码文件中，通过注册Button的onClick点击事件回调并在回调中调用postCardAction接口，触发router事件拉起UIAbility至前台。
   
-    <!-- @widget_update_router_card --> 
+    <!-- @[widget_update_router_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetupdaterouter/pages/WidgetUpdateRouterCard.ets) --> 
     
     ``` TypeScript
     // entry/src/main/ets/widgetupdaterouter/pages/WidgetUpdateRouterCard.ets
@@ -75,9 +75,9 @@
     }
     ```
   
-- 在UIAbility的onCreate或者onNewWant生命周期中可以通过入参want获取卡片的formID和传递过来的参数信息，然后调用updateForm接口刷新卡片。
+- 在UIAbility的onCreate或者onNewWant生命周期中可以通过入参want获取卡片的formID和传递过来的参数信息，然后调用[updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform)接口刷新卡片。
   
-    <!-- @widget_event_router_entry_ability --> 
+    <!-- @[widget_event_router_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetevententryability/WidgetEventRouterEntryAbility.ts) --> 
     
     ``` TypeScript
     // entry/src/main/ets/widgetevententryability/WidgetEventRouterEntryAbility.ts
@@ -139,7 +139,7 @@
 
 - 在卡片页面代码文件中，通过注册Button的onClick点击事件回调并在回调中调用postCardAction接口，触发call事件拉起UIAbility至后台。
   
-    <!-- @widget_update_call_card --> 
+    <!-- @[widget_update_call_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetupdatecall/pages/WidgetUpdateCallCard.ets) --> 
     
     ``` TypeScript
     // entry/src/main/ets/widgetupdatecall/pages/WidgetUpdateCallCard.ets
@@ -199,9 +199,9 @@
     }
     ```
   
-- 在UIAbility的onCreate生命周期中监听call事件所需的方法，然后在对应方法中调用updateForm接口刷新卡片。
+- 在UIAbility的onCreate生命周期中监听call事件所需的方法，然后在对应方法中调用[updateForm](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formproviderupdateform)接口刷新卡片。
   
-    <!-- @widget_callee_entry_ability -->
+    <!-- @[widget_callee_entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetcalleeentryability/WidgetCalleeEntryAbility.ts) -->
     
     ``` TypeScript
     // entry/src/main/ets/widgetcalleeentryability/WidgetCalleeEntryAbility.ts
@@ -286,7 +286,7 @@
     ```
     
   要拉起UIAbility至后台，需要在`module.json5`配置文件中，配置`ohos.permission.KEEP_BACKGROUND_RUNNING`权限。
-    <!-- @module_json5_request_permissions -->
+    <!-- @[module_json5_request_permissions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/module.json5) -->
     
     ``` JSON5
     //src/main/module.json5

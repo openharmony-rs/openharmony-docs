@@ -8,19 +8,19 @@
 
 输入框包含多种交互行为，开发者可注册事件监听并获取状态。以下以多行文本输入框为例进行说明，单行文本输入框添加文本事件监听的步骤与此类似。
 
-要实现实时搜索功能，可注册NODE_TEXT_AREA_ON_CHANGE事件，输入框文本发生变化时会收到通知，并能获取当前文本内容。
+要实现实时搜索功能，可注册[NODE_TEXT_AREA_ON_CHANGE](../../application-dev/reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)事件，输入框文本发生变化时会收到通知，并能获取当前文本内容。
 
-要实现文字过滤功能，可注册NODE_TEXT_AREA_ON_WILL_INSERT事件，在文字即将插入前会收到通知，通过返回值控制文字是否插入。
+要实现文字过滤功能，可注册[NODE_TEXT_AREA_ON_WILL_INSERT](../../application-dev/reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)事件，在文字即将插入前会收到通知，通过返回值控制文字是否插入。
 
-要实现用户编辑文字前后页面布局的不同，可注册NODE_TEXT_AREA_ON_EDIT_CHANGE事件，输入框编辑状态切换时会收到通知。
+要实现用户编辑文字前后页面布局的不同，可注册[NODE_TEXT_AREA_ON_EDIT_CHANGE](../../application-dev/reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)事件，输入框编辑状态切换时会收到通知。
 
-以下示例基于接入ArkTS页面章节，说明如何监听输入框的事件及数据解析。
+以下示例基于[接入ArkTS页面章节](../ui/ndk-access-the-arkts-page.md)，说明如何监听输入框的事件及数据解析。
 
 - 注册事件
     
-    事件注册有统一接口，详情请参见registerNodeEvent。输入框支持的事件类型，请参见NativeNode组件支持的事件类型定义ArkUI_NodeEventType，搜索前缀NODE_TEXT_AREA_。
+    事件注册有统一接口，详情请参见[registerNodeEvent](../../application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeevent)。输入框支持的事件类型，请参见NativeNode组件支持的事件类型定义[ArkUI_NodeEventType](../../application-dev/reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)，搜索前缀NODE_TEXT_AREA_。
 
-    <!-- @obtain_create_textarea -->
+    <!-- @[obtain_create_textarea](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextAreaEventNDK/entry/src/main/cpp/manager.cpp) -->
     
     ``` C++
     ArkUI_NodeHandle text = nodeApi->createNode(ARKUI_NODE_TEXT);
@@ -42,9 +42,9 @@
 
 - 注册事件回调
 
-    事件回调注册有统一接口，详情请参见registerNodeEventReceiver。
+    事件回调注册有统一接口，详情请参见[registerNodeEventReceiver](../../application-dev/reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeeventreceiver)。
 
-    <!-- @obtain_textarea_NodeEventReceiver -->
+    <!-- @[obtain_textarea_NodeEventReceiver](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextAreaEventNDK/entry/src/main/cpp/manager.cpp) -->
     
     ``` C++
     nodeApi->registerNodeEventReceiver([](ArkUI_NodeEvent *event) {
@@ -72,9 +72,9 @@
 
 - 完整示例
 
-   本篇示例仅提供核心接口的调用方法，完整的示例工程请参考<!--RP1-->TextAreaEventNDK<!--RP1End-->。
+   本篇示例仅提供核心接口的调用方法，完整的示例工程请参考<!--RP1-->[TextAreaEventNDK](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/TextAreaEventNDK)<!--RP1End-->。
     
-    <!-- @obtain_textarea_all -->
+    <!-- @[obtain_textarea_all](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextAreaEventNDK/entry/src/main/cpp/manager.cpp) -->
     
     ``` C++
     #include "manager.h"
@@ -111,7 +111,7 @@
         napi_value args[ConstIde::NUMBER_1] = {nullptr};
         napi_status st = napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
         if (st != napi_ok || argc < ConstIde::NUMBER_1) {
-            OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, ConstIde::K_LOG_DOMAIN, "%{public}s napi_get_cb_info failed",
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, ConstIde::K_LOG_DOMAIN, "%{public}s napi_get_cb_info failed",
                          who);
             return nullptr;
         }
@@ -126,7 +126,7 @@
 
         OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, ConstIde::K_LOG_DOMAIN, "%{public}s after GetNodeContent", who);
 
-        // 可选：保留对 nodeAPI_ 的健壮性检查（与你现有代码一致）
+        // 可选：保留对 nodeAPI_ 的健壮性检查（与现有代码一致）
         if (Manager::nodeAPI_ == nullptr) {
             OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, ConstIde::K_LOG_DOMAIN, "%{public}s nodeAPI_ is null", who);
             return nullptr;
@@ -224,4 +224,4 @@
     ```
 
 
-textarea_getstringevent
+![textarea_getstringevent](figures/textarea_getstringevent.gif)

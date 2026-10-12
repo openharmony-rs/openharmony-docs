@@ -2,7 +2,7 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -18,7 +18,7 @@
 
 ## 接口说明
 
-通知取消接口如下。接口详情参见@ohos.notificationManager (NotificationManager模块)。
+通知取消接口如下。接口详情参见[@ohos.notificationManager (NotificationManager模块)](../reference/apis-notification-kit/js-apis-notificationManager.md)。
 
 | **接口名** | **描述** |
 | -------- | -------- |
@@ -32,7 +32,7 @@
 
 1. 导入模块。
 
-   <!-- @cancel_notification_header -->
+   <!-- @[cancel_notification_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/CancelNotification.ets) -->
    
    ``` TypeScript
    import { notificationManager } from '@kit.NotificationKit';
@@ -45,11 +45,11 @@
 
 2. 发布通知。
 
-   参考发布文本类型通知。
+   参考[发布文本类型通知](./text-notification.md)。
 
 3. 取消通知。
 
-   <!-- @cancel_notification_content -->
+   <!-- @[cancel_notification_content](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/CancelNotification.ets) -->
    
    ``` TypeScript
    // 当拉起应用到前台，查看消息后，调用该接口取消通知。

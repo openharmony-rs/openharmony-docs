@@ -2,32 +2,32 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-应用向Ability Kit申请WantAgent，并将WantAgent封装至通知中。当发布通知时，用户便可以通过点击通知栏中的消息或按钮，拉起目标应用组件或发布公共事件。
+应用向Ability Kit申请[WantAgent](../reference/apis-ability-kit/js-apis-app-ability-wantAgent.md)，并将WantAgent封装至通知中。当发布通知时，用户便可以通过点击通知栏中的消息或按钮，拉起目标应用组件或发布公共事件。
 
 携带了actionButtons的通知示意图如下。
 
-notification_wantagent
+![notification_wantagent](figures/notification_actionButtons.png)
 
 ## 运行机制
 
-notification_wantagent
+![notification_wantagent](figures/notification_wantagent.png)
 
 ## 接口说明
 
 | **接口名** | **描述** |
 | -------- | -------- |
-| publish(request: NotificationRequest): Promise\<void\>       | 发布通知。  |
-| getWantAgent(info:&nbsp;WantAgentInfo,&nbsp;callback:&nbsp;AsyncCallback&lt;WantAgent&gt;):&nbsp;void | 创建WantAgent。 |
+| [publish](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanagerpublish-1)(request: NotificationRequest): Promise\<void\>       | 发布通知。  |
+| [getWantAgent](../reference/apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagentgetwantagent)(info:&nbsp;WantAgentInfo,&nbsp;callback:&nbsp;AsyncCallback&lt;WantAgent&gt;):&nbsp;void | 创建WantAgent。 |
 
 ## 开发步骤
 
 1. 导入模块。
 
-   <!-- @add_behavior_intent_header -->
+   <!-- @[add_behavior_intent_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/AddWantAgent.ets) -->
    
    ``` TypeScript
    import { notificationManager } from '@kit.NotificationKit';
@@ -41,9 +41,9 @@ notification_wantagent
 
 2. 创建WantAgentInfo信息。
 
-   场景一：创建拉起UIAbility的WantAgent的WantAgentInfo信息。
+   场景一：创建拉起UIAbility的WantAgent的[WantAgentInfo](../reference/apis-ability-kit/js-apis-inner-wantAgent-wantAgentInfo.md)信息。
 
-   <!-- @create_launch_uiAbility_agent_info -->
+   <!-- @[create_launch_uiAbility_agent_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/AddWantAgent.ets) -->
    
    ``` TypeScript
    let wantAgentObj: WantAgent | null = null; // 用于保存创建成功的wantAgent对象，后续使用其完成触发的动作。
@@ -67,9 +67,9 @@ notification_wantagent
    };
    ```
 
-   场景二：创建发布公共事件的WantAgent的WantAgentInfo信息。
+   场景二：创建发布[公共事件](../basic-services/common-event/common-event-overview.md)的WantAgent的[WantAgentInfo](../reference/apis-ability-kit/js-apis-inner-wantAgent-wantAgentInfo.md)信息。
 
-   <!-- @create_pub_event_agent_info -->
+   <!-- @[create_pub_event_agent_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/AddWantAgent.ets) -->
    
    ``` TypeScript
    let wantAgentObj: WantAgent | null = null; // 用于保存创建成功的WantAgent对象，后续使用其完成触发的动作。
@@ -88,9 +88,9 @@ notification_wantagent
    };
    ```
 
-3. 调用getWantAgent()方法进行创建WantAgent。
+3. 调用[getWantAgent()](../reference/apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagentgetwantagent)方法进行创建WantAgent。
 
-   <!-- @create_get_agent -->
+   <!-- @[create_get_agent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/AddWantAgent.ets) -->
    
    ``` TypeScript
    // 创建WantAgent
@@ -113,9 +113,9 @@ notification_wantagent
    >
    > - 如果封装WantAgent至通知消息中，可以点击通知触发WantAgent。当通知消息存在actionButtons时，点击通知会先显示actionButtons，再次点击通知触发WantAgent。
    >
-   > - 如果封装WantAgent至通知按钮中，点击通知后，该通知下方会出现通知按钮，可以点击按钮触发WantAgent。
+   > - 如果封装WantAgent至[通知按钮](notification-glossary.md#notification-button通知按钮)中，点击通知后，该通知下方会出现通知按钮，可以点击按钮触发WantAgent。
 
-   <!-- @pub_want_agent_req_notify -->
+   <!-- @[pub_want_agent_req_notify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/AddWantAgent.ets) -->
    
    ``` TypeScript
    // 构造NotificationActionButton对象
@@ -157,5 +157,5 @@ notification_wantagent
 
 ## 示例代码
 
-  - 自定义通知
+  - [自定义通知](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Notification/CustomNotification/README_zh.md)
 <!--RP1End-->

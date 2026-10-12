@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-在组件上创建和运行动画的快捷方式。具体用法请参考通用方法。
+在组件上创建和运行动画的快捷方式。具体用法请参考[通用方法](../reference/apis-arkui/arkui-js/js-components-common-methods.md)。
 
 
 ## 获取动画对象
@@ -64,7 +64,7 @@ export default {
 }
 ```
 
-animate2
+![animate2](figures/animate2.gif)
 
 > **说明：**
 > -   使用animate方法时必须传入Keyframes和Options参数。
@@ -143,7 +143,7 @@ export default {
 }
 ```
 
-animate
+![animate](figures/animate.gif)
 
 > **说明：**
 > - translate、scale和rotate的先后顺序会影响动画效果。
@@ -211,7 +211,7 @@ export default {
 }
 ```
 
-animate4
+![animate4](figures/animate4.gif)
 
 > **说明：** 
 >

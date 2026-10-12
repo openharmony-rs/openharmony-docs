@@ -7,13 +7,13 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-以PBKDF2和HKDF256密钥为例，完成密钥派生。具体的场景介绍及支持的算法规格，请参考密钥派生支持的算法。
+以PBKDF2和HKDF256密钥为例，完成密钥派生。具体的场景介绍及支持的算法规格，请参考[密钥派生支持的算法](huks-key-derivation-overview.md#支持的算法)。
 
 ## 开发步骤
 
 **生成密钥**
 
-1. 指定密钥别名，密钥别名命名规范参考密钥生成介绍及算法规格。
+1. 指定密钥别名，密钥别名命名规范参考[密钥生成介绍及算法规格](huks-key-generation-overview.md)。
 
 2. 初始化密钥属性集，可指定参数HUKS_TAG_DERIVED_AGREED_KEY_STORAGE_FLAG（可选），用于标识基于该密钥派生出的密钥是否由HUKS管理。
 
@@ -23,9 +23,9 @@
 
     - 若业务未设置TAG的具体值，表示基于该密钥派生出的密钥，即可由HUKS管理，也可返回给调用方管理，业务可在后续派生时再选择使用何种方式保护密钥。
 
-3. 调用generateKeyItem生成密钥，具体请参考密钥生成。
+3. 调用[generateKeyItem](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksgeneratekeyitem9)生成密钥，具体请参考[密钥生成](huks-key-generation-overview.md)。
 
-除此之外，开发者也可以参考密钥导入，导入已有的密钥。
+除此之外，开发者也可以参考[密钥导入](huks-key-import-overview.md)，导入已有的密钥。
 
 **密钥派生**
 
@@ -44,21 +44,21 @@
     注：派生时指定的TAG值，不可与生成时指定的TAG值冲突。表格中仅列举有效的指定方式。
 
 
-2. 调用initSession初始化密钥会话，并获取会话的句柄handle。
+2. 调用[initSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksinitsession9)初始化密钥会话，并获取会话的句柄handle。
 
-3. 调用updateSession更新密钥会话。
+3. 调用[updateSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksupdatesession9)更新密钥会话。
 
-4. 调用finishSession结束密钥会话，完成派生。
+4. 调用[finishSession](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksfinishsession9)结束密钥会话，完成派生。
 
 **删除密钥**
 
-当密钥废弃不用时，需要调用deleteKeyItem删除密钥，具体请参考密钥删除。
+当密钥废弃不用时，需要调用[deleteKeyItem](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksdeletekeyitem9)删除密钥，具体请参考[密钥删除](huks-delete-key-arkts.md)。
 
 ## 开发案例
 
 ### HKDF
 准备HKDF密钥派生材料
-<!-- @the_key_is_derived_from_hkdf_one -->
+<!-- @[the_key_is_derived_from_hkdf_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/KeyDerivation/entry/src/main/ets/pages/HKDF.ets) -->
 
 ``` TypeScript
 /*
@@ -165,17 +165,17 @@ class ThrowObject {
 }
 ```
 执行密钥派生
-<!-- @the_key_is_derived_from_hkdf_two -->
+<!-- @[the_key_is_derived_from_hkdf_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/KeyDerivation/entry/src/main/ets/pages/HKDF.ets) -->
 
 ``` TypeScript
 function generateKeyItem(keyAlias: string, huksOptions: huks.HuksOptions, throwObject: ThrowObject) {
   return new Promise<void>((resolve, reject) => {
     try {
-      huks.generateKeyItem(keyAlias, huksOptions, (error, data) => {
+      huks.generateKeyItem(keyAlias, huksOptions, (error) => {
         if (error) {
           reject(error);
         } else {
-          resolve(data);
+          resolve();
         }
       });
     } catch (error) {
@@ -190,8 +190,8 @@ async function publicGenKeyFunc(keyAlias: string, huksOptions: huks.HuksOptions)
   let throwObject: ThrowObject = { isThrow: false };
   try {
     await generateKeyItem(keyAlias, huksOptions, throwObject)
-      .then((data) => {
-        console.info(`promise: generateKeyItem success, data = ${JSON.stringify(data)}`);
+      .then(() => {
+        console.info(`promise: generateKeyItem success`);
       })
       .catch((error: Error) => {
         if (throwObject.isThrow) {
@@ -248,7 +248,7 @@ async function publicInitFunc(keyAlias: string, huksOptions: huks.HuksOptions) {
 }
 
 function updateSession(handle: number, huksOptions: huks.HuksOptions, throwObject: ThrowObject) {
-  return new Promise<huks.HuksOptions>((resolve, reject) => {
+  return new Promise<huks.HuksReturnResult>((resolve, reject) => {
     try {
       huks.updateSession(handle, huksOptions, (error, data) => {
         if (error) {
@@ -329,11 +329,11 @@ async function publicFinishFunc(handle: number, huksOptions: huks.HuksOptions) {
 function deleteKeyItem(keyAlias: string, huksOptions: huks.HuksOptions, throwObject: ThrowObject) {
   return new Promise<void>((resolve, reject) => {
     try {
-      huks.deleteKeyItem(keyAlias, huksOptions, (error, data) => {
+      huks.deleteKeyItem(keyAlias, huksOptions, (error) => {
         if (error) {
           reject(error);
         } else {
-          resolve(data);
+          resolve();
         }
       });
     } catch (error) {
@@ -348,8 +348,8 @@ async function publicDeleteKeyFunc(keyAlias: string, huksOptions: huks.HuksOptio
   let throwObject: ThrowObject = { isThrow: false };
   try {
     await deleteKeyItem(keyAlias, huksOptions, throwObject)
-      .then((data) => {
-        console.info(`promise: deleteKeyItem key success, data = ${JSON.stringify(data)}`);
+      .then(() => {
+        console.info(`promise: deleteKeyItem key success`);
       })
       .catch((error: Error) => {
         if (throwObject.isThrow) {
@@ -379,7 +379,7 @@ async function testDerive() {
 
 ### PBKDF2
 准备PBKDF2密钥派生材料
-<!-- @the_key_is_derived_from_pbkdf2_one -->
+<!-- @[the_key_is_derived_from_pbkdf2_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/KeyDerivation/entry/src/main/ets/pages/PBKDF2.ets) -->
 
 ``` TypeScript
 /*
@@ -500,17 +500,17 @@ class ThrowObject {
 }
 ```
 执行密钥派生
-<!-- @the_key_is_derived_from_pbkdf2_two -->
+<!-- @[the_key_is_derived_from_pbkdf2_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/KeyDerivation/entry/src/main/ets/pages/PBKDF2.ets) -->
 
 ``` TypeScript
 function generateKeyItem(keyAlias: string, huksOptions: huks.HuksOptions, throwObject: ThrowObject) {
   return new Promise<void>((resolve, reject) => {
     try {
-      huks.generateKeyItem(keyAlias, huksOptions, (error, data) => {
+      huks.generateKeyItem(keyAlias, huksOptions, (error) => {
         if (error) {
           reject(error);
         } else {
-          resolve(data);
+          resolve();
         }
       });
     } catch (error) {
@@ -525,8 +525,8 @@ async function publicGenKeyFunc(keyAlias: string, huksOptions: huks.HuksOptions)
   let throwObject: ThrowObject = { isThrow: false };
   try {
     await generateKeyItem(keyAlias, huksOptions, throwObject)
-      .then((data) => {
-        console.info(`promise: generateKeyItem success, data = ${JSON.stringify(data)}`);
+      .then(() => {
+        console.info(`promise: generateKeyItem success`);
       })
       .catch((error: Error) => {
         if (throwObject.isThrow) {
@@ -583,7 +583,7 @@ async function publicInitFunc(keyAlias: string, huksOptions: huks.HuksOptions) {
 }
 
 function updateSession(handle: number, huksOptions: huks.HuksOptions, throwObject: ThrowObject) {
-  return new Promise<huks.HuksOptions>((resolve, reject) => {
+  return new Promise<huks.HuksReturnResult>((resolve, reject) => {
     try {
       huks.updateSession(handle, huksOptions, (error, data) => {
         if (error) {
@@ -664,11 +664,11 @@ async function publicFinishFunc(handle: number, huksOptions: huks.HuksOptions) {
 function deleteKeyItem(keyAlias: string, huksOptions: huks.HuksOptions, throwObject: ThrowObject) {
   return new Promise<void>((resolve, reject) => {
     try {
-      huks.deleteKeyItem(keyAlias, huksOptions, (error, data) => {
+      huks.deleteKeyItem(keyAlias, huksOptions, (error) => {
         if (error) {
           reject(error);
         } else {
-          resolve(data);
+          resolve();
         }
       });
     } catch (error) {
@@ -683,8 +683,8 @@ async function publicDeleteKeyFunc(keyAlias: string, huksOptions: huks.HuksOptio
   let throwObject: ThrowObject = { isThrow: false };
   try {
     await deleteKeyItem(keyAlias, huksOptions, throwObject)
-      .then((data) => {
-        console.info(`promise: deleteKeyItem key success, data = ${JSON.stringify(data)}`);
+      .then(() => {
+        console.info(`promise: deleteKeyItem key success`);
       })
       .catch((error: Error) => {
         if (throwObject.isThrow) {

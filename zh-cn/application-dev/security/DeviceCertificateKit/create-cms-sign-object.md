@@ -17,22 +17,22 @@ PKCS #7是用于存储签名或加密数据的标准语法。CMS（Cryptographic
 
 ## 开发步骤
 
-1. 导入证书模块。
+1. 导入[证书模块](../../reference/apis-device-certificate-kit/js-apis-cert.md)。
 
    ```ts
    import { cert } from '@kit.DeviceCertificateKit';
    ```
-2. 调用cert.createCmsGenerator创建cmsGenerator对象。
+2. 调用[cert.createCmsGenerator](../../reference/apis-device-certificate-kit/js-apis-cert.md#certcreatecmsgenerator18)创建cmsGenerator对象。
 
-3. 调用cmsGenerator.addSigner添加签名者信息。
+3. 调用[cmsGenerator.addSigner](../../reference/apis-device-certificate-kit/js-apis-cert.md#addsigner18)添加签名者信息。
 
-4. 调用cmsGenerator.addCert添加证书。
+4. 调用[cmsGenerator.addCert](../../reference/apis-device-certificate-kit/js-apis-cert.md#addcert18)添加证书。
 
-5. 调用cmsGenerator.doFinal获取Cms最终签名数据。
+5. 调用[cmsGenerator.doFinal](../../reference/apis-device-certificate-kit/js-apis-cert.md#dofinal18)获取Cms最终签名数据。
 
 - 异步方法示例：
 
-<!-- @create-cms-sign-object-async -->
+<!-- @[create-cms-sign-object-async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/CreateCmsSignObjectAsync.ets) -->
 
 ``` TypeScript
 
@@ -134,7 +134,7 @@ async function testPkcs7SignByPromise() {
 
 - 同步方法示例：
 
-<!-- @create-cms-sign-object-sync -->
+<!-- @[create-cms-sign-object-sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateAlgorithmLibrary/entry/src/main/ets/pages/CreateCmsSignObjectSync.ets) -->
 
 ``` TypeScript
 

@@ -6,7 +6,7 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-对于触摸事件、鼠标事件、轴事件等指向性事件的交互，交互框架基于坐标信息进行命中测试确定事件和手势的响应目标，即收集形成响应链，系统会根据触控事件的坐标、类型等信息，结合UI布局，将事件发送给对应UI组件。多个事件可以组合触发手势或其他功能，如长按、点击、拖拽。
+对于[触摸事件](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md)、[鼠标事件](../reference/apis-arkui/arkui-ts/ts-universal-mouse-key.md)、[轴事件](../reference/apis-arkui/arkui-ts/ts-universal-events-axis.md)等指向性事件的交互，交互框架基于坐标信息进行命中测试确定事件和手势的响应目标，即收集形成响应链，系统会根据触控事件的坐标、类型等信息，结合UI布局，将事件发送给对应UI组件。多个事件可以组合触发手势或其他功能，如长按、点击、拖拽。
 
 ## 事件交互流程
 
@@ -50,9 +50,9 @@
 
 下图展示了组件树的层级结构与事件响应链的收集过程。图中父、子节点分别对应父组件和子组件，左子树和右子树对应兄弟组件，右子树对应的组件会显示在左子树对应组件的上方。
 
-EventResponseChain
+![EventResponseChain](figures/EventResponseChain.png)
 
-通过hitTestBehavior属性可以设置组件的触摸测试模式。在本示例中，所有组件的触摸测试模式均设置为HitTestMode.Default。如果用户点按的动作发生在组件5上，则响应链收集过程如下：
+通过[hitTestBehavior](../reference/apis-arkui/arkui-ts/ts-universal-attributes-hit-test-behavior.md#hittestbehavior)属性可以设置组件的触摸测试模式。在本示例中，所有组件的触摸测试模式均设置为[HitTestMode](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#hittestmode9).Default。如果用户点按的动作发生在组件5上，则响应链收集过程如下：
 
 1. 系统检测到触摸点落在组件5上，组件5被收集。
 
@@ -72,7 +72,7 @@ EventResponseChain
 
 对于指向性基础事件的派发，系统不会直接从页面根节点递归遍历所有组件节点，而是在首次事件发生时确定能够响应此次交互的组件范围，即识别用户点击的组件。对于未被点击的组件，在此次交互中将不会有任何响应。这一过程称为命中测试（hit test/touch test）。系统依据组件响应热区是否包含事件坐标来判定是否被点击。
 
-touch test
+![touch test](figures/interaction-basic-touch-test-01.png)
 
 当用户触发按下事件时，系统将自上而下、自右向左遍历组件树，收集每个组件上绑定的手势和事件，然后将这些信息逐级向上冒泡至父组件进行整合，最终构建完整的事件响应链。
 
@@ -80,7 +80,7 @@ touch test
 
 以下是描述命中测试过程的流程图：
 
-TouchTest
+![TouchTest](figures/TouchTest.png)
 
 如图所示，当起始事件被分发至组件时，组件会收集自身绑定的手势与事件，随后将收集结果传递给父组件，直至达到根节点。若组件透明、已从组件树中移除，或事件坐标不在组件响应热区范围内，将不会触发收集过程，父组件接收的反馈为空。除此之外，所有组件均会执行手势与事件的收集，并将结果反馈给父组件。
 
@@ -90,11 +90,11 @@ TouchTest
 
 | 干预方式       | 功能描述                             | 对应接口         | 说明                                                                                                                                                                                                                                                                                                                                      |
 | -------------- | ------------------------------------ | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 触摸热区设置   | 设置组件能够响应用户交互的热区范围。 | responseRegion   | 1.热区会被用来识别用户手指落下的位置是否在热区范围内，只有在范围内的才会被收集；<br/>2. 热区也会影响一些手势的判定，比如点击，只有当在热区范围抬手时才会被触发。<br/>                                                                                                                                                                     |
-| 触摸热区设置   | 设置组件能够响应鼠标交互的热区范围。 | mouseResponseRegion   | 设置一个或多个鼠标触摸热区。功能与responseRegion类似，但仅对鼠标事件生效。<br/>                                                                                                                                                                     |
-| 触摸热区设置   | 设置组件的触摸热区列表。 | responseRegionList   | 设置组件的触摸热区列表，可指定每个热区适用的输入工具类型（如鼠标、触摸等）。调用该接口时，responseRegion与mouseResponseRegion接口不再生效。从API version 22开始支持。<br/>                                                                                                                                                                     |
-| 触摸测试控制   | 干预自身及其他组件收集结果。         | hitTestBehavior  | 与onTouchIntercept效果相同，但是hitTestBehavior是静态配置。                                                                                                                                                                                                                                                                               |
-| 自定义事件拦截 | 干预自身及其他组件收集结果。         | onTouchIntercept | 当用户触发按下事件时，系统开始收集当前位置下所有需要参与事件处理的组件时触发，应用可通过该回调返回一个HitTestMode值，进而影响系统收集子节点或兄弟节点的行为。可以通过该回调达到动态控制交互响应的效果，如某些组件，根据业务状态的变化，可能有时候需要参与交互，有时候不需要参与交互。<br/>与hitTestBehavior效果相同，但是onTouchIntercept是动态回调。 |
+| 触摸热区设置   | 设置组件能够响应用户交互的热区范围。 | [responseRegion](../reference/apis-arkui/arkui-ts/ts-universal-attributes-touch-target.md#responseregion)   | 1.热区会被用来识别用户手指落下的位置是否在热区范围内，只有在范围内的才会被收集；<br/>2. 热区也会影响一些手势的判定，比如点击，只有当在热区范围抬手时才会被触发。<br/>                                                                                                                                                                     |
+| 触摸热区设置   | 设置组件能够响应鼠标交互的热区范围。 | [mouseResponseRegion](../reference/apis-arkui/arkui-ts/ts-universal-attributes-touch-target.md#mouseresponseregion10)   | 设置一个或多个鼠标触摸热区。功能与responseRegion类似，但仅对鼠标事件生效。<br/>                                                                                                                                                                     |
+| 触摸热区设置   | 设置组件的触摸热区列表。 | [responseRegionList](../reference/apis-arkui/arkui-ts/ts-universal-attributes-touch-target.md#responseregionlist22)   | 设置组件的触摸热区列表，可指定每个热区适用的输入工具类型（如鼠标、触摸等）。调用该接口时，responseRegion与mouseResponseRegion接口不再生效。从API version 22开始支持。<br/>                                                                                                                                                                     |
+| 触摸测试控制   | 干预自身及其他组件收集结果。         | [hitTestBehavior](../reference/apis-arkui/arkui-ts/ts-universal-attributes-hit-test-behavior.md#hittestbehavior)  | 与onTouchIntercept效果相同，但是hitTestBehavior是静态配置。                                                                                                                                                                                                                                                                               |
+| 自定义事件拦截 | 干预自身及其他组件收集结果。         | [onTouchIntercept](../reference/apis-arkui/arkui-ts/ts-universal-attributes-on-touch-intercept.md#ontouchintercept) | 当用户触发按下事件时，系统开始收集当前位置下所有需要参与事件处理的组件时触发，应用可通过该回调返回一个HitTestMode值，进而影响系统收集子节点或兄弟节点的行为。可以通过该回调达到动态控制交互响应的效果，如某些组件，根据业务状态的变化，可能有时候需要参与交互，有时候不需要参与交互。<br/>与hitTestBehavior效果相同，但是onTouchIntercept是动态回调。 |
 
 
 1. 触摸热区设置
@@ -120,7 +120,7 @@ TouchTest
    > 百分比相对于组件自身宽高进行计算。
 
    以下是一个绑定多个热区范围的示例：
-   <!-- @focus_onclick -->
+   <!-- @[focus_onclick](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/FocusOnclickExample/FocusOnclickExample.ets) -->
    
    ``` TypeScript
    @Entry
@@ -161,51 +161,51 @@ TouchTest
 
    上面的代码可以将按钮切分成了3部分，中间40%的区域不响应点击，而两侧的剩下部分可响应。
 
-   response region
+   ![response region](figures/interaction-basic-response-region-01.png)
 
 2. 触摸测试控制
 
-   在组件上绑定触摸测试控制时，可能影响兄弟节点和父子节点的触摸测试。子组件对父组件的触摸测试影响程度取决于最后一个未被阻塞触摸测试的子组件状态。
+   在组件上绑定[触摸测试控制](../reference/apis-arkui/arkui-ts/ts-universal-attributes-hit-test-behavior.md)时，可能影响兄弟节点和父子节点的触摸测试。子组件对父组件的触摸测试影响程度取决于最后一个未被阻塞触摸测试的子组件状态。
 
    开发者可以通过配置触摸测试控制，来实现阻塞组件自身或其他组件的触摸测试。
 
    - HitTestMode.Default：默认不配置hitTestBehavior属性，自身如果命中会阻塞兄弟组件，但是不阻塞子组件。
 
-     hitTestModeDefault
+     ![hitTestModeDefault](figures/hitTestModeDefault.png)
 
    - HitTestMode.None：自身不接收事件，但不会阻塞兄弟组件或子组件继续做触摸测试。
 
-     hitTestModeNone
+     ![hitTestModeNone](figures/hitTestModeNone.png)
 
    - HitTestMode.Block：阻塞子组件的触摸测试，如果自身触摸测试命中，会阻塞兄弟组件及父组件的触摸测试。
 
-     hitTestModeBlock
+     ![hitTestModeBlock](figures/hitTestModeBlock.png)
 
    - HitTestMode.Transparent：自身进行触摸测试，同时不阻塞兄弟组件及父组件。
 
-     hitTestModeTransparent
+     ![hitTestModeTransparent](figures/hitTestModeTransparent.png)
 
    - HitTestMode.BLOCK_HIERARCHY（从API version 20开始支持）: 自身和子节点响应触摸测试，阻止所有优先级较低的兄弟节点和父节点参与触摸测试。
 
-     hitTestModeBLOCK_HIERARCHY.png
+     ![hitTestModeBLOCK_HIERARCHY.png](figures/hitTestModeBLOCK_HIERARCHY.png)
 
    - HitTestMode.BLOCK_DESCENDANTS（从API version 20开始支持）: 自身不响应触摸测试，并且所有的后代（孩子，孙子等）也不响应触摸测试，不会影响祖先节点的触摸测试。
 
-     hitTestModeBLOCK_DESCENDANTS.png
+     ![hitTestModeBLOCK_DESCENDANTS.png](figures/hitTestModeBLOCK_DESCENDANTS.png)
 
 3. 自定义事件拦截
 
-   当用户执行按下操作时，将触发组件上绑定的自定义事件拦截的回调。开发者可根据应用状态，动态调整组件的hitTestBehavior属性，进而影响触控测试的流程。
+   当用户执行按下操作时，将触发组件上绑定的[自定义事件拦截](../reference/apis-arkui/arkui-ts/ts-universal-attributes-on-touch-intercept.md)的回调。开发者可根据应用状态，动态调整组件的hitTestBehavior属性，进而影响触控测试的流程。
 
 ## 禁用控制
 
-设置了禁用控制的组件及其子组件不会发起触摸测试过程，而是直接返回组件的父组件继续触摸测试。
+设置了[禁用控制](../reference/apis-arkui/arkui-ts/ts-universal-attributes-enable.md)的组件及其子组件不会发起触摸测试过程，而是直接返回组件的父组件继续触摸测试。
 
 ## 安全组件
 
-ArkUI包含的安全组件有：使用粘贴控件、使用保存控件等。
+ArkUI包含的安全组件有：[使用粘贴控件](../security/AccessToken/pastebutton.md)、[使用保存控件](../security/AccessToken/savebutton.md)等。
 
-安全组件当前对触摸测试影响：如果有组件的z序比安全组件的z序靠前，且遮盖安全组件，则安全组件事件直接返回到父节点继续触摸测试。
+安全组件当前对触摸测试影响：如果有组件的[z序](../reference/apis-arkui/arkui-ts/ts-universal-attributes-z-order.md)比安全组件的z序靠前，且遮盖安全组件，则安全组件事件直接返回到父节点继续触摸测试。
 
 ## 事件冒泡
 
@@ -213,7 +213,7 @@ ArkUI包含的安全组件有：使用粘贴控件、使用保存控件等。
 
 stopPropagation可终止冒泡。如下图所示，以Touch事件为例，当一个Touch事件传递至C节点时，如果调用了该事件上的stopPropagation接口，则B节点和root节点将不再接收到此事件，但B节点上的手势对象仍能接收和处理该Touch事件。
 
-stopPropagation
+![stopPropagation](figures/raw_event_stop_propagation.png)
 
 > **说明：**
 >
@@ -221,6 +221,6 @@ stopPropagation
 
 ## Cancel事件
 
-当处理基础事件时，会发现存在多种具有Cancel类型的事件，如TouchType.Cancel、MouseAction.CANCEL等。系统在特定场景下发送此类事件，例如在拖拽操作中，当通过手指或鼠标拖动一个支持拖拽（onDragStart）的对象时，由于拖拽动作需达到一定位移阈值才能触发，因此在触发onDragStart之前，应用将正常接收到Touch或Mouse事件。一旦拖拽动作开始，系统将发送Cancel事件，告知应用普通基础事件已结束。
+当处理基础事件时，会发现存在多种具有Cancel类型的事件，如[TouchType](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#touchtype).Cancel、[MouseAction](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#mouseaction8).CANCEL等。系统在特定场景下发送此类事件，例如在拖拽操作中，当通过手指或鼠标拖动一个支持拖拽（onDragStart）的对象时，由于拖拽动作需达到一定位移阈值才能触发，因此在触发[onDragStart](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#ondragstart)之前，应用将正常接收到Touch或Mouse事件。一旦拖拽动作开始，系统将发送Cancel事件，告知应用普通基础事件已结束。
 
 Cancel的含义与Up相同，均表示事件处理结束。若在处理Up/Release的场景中，亦应同时处理Cancel。

@@ -13,7 +13,7 @@
 
 应用冷启动过程大致可分成以下五个阶段：应用进程创建&初始化、Application&Ability初始化、Ability/AbilityStage生命周期、加载绘制首页、网络数据二次刷新，如下图：
 
-
+![](figures/application-cold-start.png)
 
 1. **应用进程创建&初始化阶段**：该阶段主要是系统完成应用进程的创建以及初始化的过程，包含了启动页图标(startWindowIcon)的解码。
 2. **Application&Ability初始化**：该阶段主要是资源加载、虚拟机创建、Application&Ability相关对象的创建与初始化、依赖模块的加载等。
@@ -25,8 +25,8 @@
 
 >**说明：**
 >
-> 1. 关于本文中示例，可参考：提升应用冷启动速度示例。  
-> 2. 如何使用SmartPerf工具分析冷启动可参考：应用冷启动分析。
+> 1. 关于本文中示例，可参考：[提升应用冷启动速度示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Ability/Performance/Startup)。  
+> 2. 如何使用SmartPerf工具分析冷启动可参考：[应用冷启动分析](performance-optimization-using-smartperf-host.md#应用冷启动分析)。
 
 
 ## 缩短应用进程创建&初始化阶段耗时
@@ -62,7 +62,7 @@
     ]
 ```
 
-下面使用SmartPerf工具，对使用优化前的启动页图标（4096像素\*4096像素）及使用优化后的启动页图标（144像素\*144像素）的启动性能进行对比分析。分析阶段的起点为点击应用图标打开应用时触发的触摸事件（即`ProcessTouchEvent`的结束点），阶段终点为应用第一次接到vsync（即`H:ReceiveVsync dataCount:24Bytes now:timestamp expectedEnd:timestamp vsyncId:int`的开始点）。
+下面使用[SmartPerf](https://gitcode.com/openharmony/developtools_smartperf_host)工具，对使用优化前的启动页图标（4096像素\*4096像素）及使用优化后的启动页图标（144像素\*144像素）的启动性能进行对比分析。分析阶段的起点为点击应用图标打开应用时触发的触摸事件（即`ProcessTouchEvent`的结束点），阶段终点为应用第一次接到vsync（即`H:ReceiveVsync dataCount:24Bytes now:timestamp expectedEnd:timestamp vsyncId:int`的开始点）。
 
 对比数据如下（性能耗时数据因设备版本而异，以实测为准）：
 
@@ -125,11 +125,11 @@ import { One } from './Numbers';
 
 【优化前】存在8层嵌套export *。
 
-
+![](./figures/application_coldstart1.png)
 
 【优化后】不存在嵌套export *，从目标文件中直接import。
 
-
+![](./figures/application_coldstart2.png)
 
 对比数据如下：
 
@@ -179,11 +179,11 @@ export const Two: number = 2;
 
 【优化前】使用import * as nm全量引用2000条数据。
 
-
+![](./figures/application_coldstart3.png)
 
 【优化后】使用import { One }按需引用。
 
-
+![](./figures/application_coldstart4.png)
 
 对比数据如下：
 
@@ -244,7 +244,7 @@ export default class EntryAbility extends UIAbility {
 
 【优化前】加载模块时执行了非冷启动相关文件SubPage.ets。
 
-
+![](./figures/application_coldstart5.png)
 
 以下为示例代码：
 ```ts
@@ -327,7 +327,7 @@ export { SubPage } from './src/main/ets/components/mainpage/SubPage'; // 非冷�
 
 【图一】拆分HAR导出文件  
 
-
+![](./figures/application_coldstart6.png)
 
 以下为示例代码：
 1. 将HAR包的导出文件Index.ets进行拆分，IndexAppStart.ets文件仅导出首页相关文件，IndexOthers.ets文件导出非首页相关文件。
@@ -395,7 +395,7 @@ export { SubPage } from './src/main/ets/components/mainpage/SubPage'; // 非冷�
 
 【图二】首页导入冷启动文件时使用全路径展开  
 
-
+![](./figures/application_coldstart7.png)
 
 以下为示例代码：
 ```ts
@@ -422,22 +422,22 @@ struct Index {
 >**说明：**
 >
 >1. **上述两种优化方案默认MainPage中不存在对于SubPage中的import。**
->2. **当存在MainPage对于SubPage的直接import时，需要使用动态import方法来进行优化。**
+>2. **当存在MainPage对于SubPage的直接import时，需要使用[动态import](../arkts-utils/arkts-dynamic-import.md)方法来进行优化。**
 >3. 开发者可自行根据优化方案的优缺点权衡选择合适的优化方案。
 
 下面对优化前后启动性能进行对比分析。阶段起点为`UI Ability Launching`的开始点，阶段终点为应用首帧即`First Frame - App Phase`的开始点。  
 
 【优化前】加载模块时执行了非冷启动相关文件。
 
-
+![](./figures/application_coldstart8.png)
 
 【优化方案一】拆分HAR导出文件。  
 
-
+![](./figures/application_coldstart9.png)
 
 【优化方案二】导入冷启动文件时全路径展开。
 
-
+![](./figures/application_coldstart10.png)
 
 优化前后的对比数据如下：
 
@@ -451,19 +451,19 @@ struct Index {
 
 ### 使用延迟加载Lazy-Import减少冷启动冗余文件执行
 
-可以通过延迟加载 lazy-import 延缓对冷启动时暂不执行的冗余文件的加载，而在后续导出变量被真正使用时再同步加载执行文件，节省资源以提高应用冷启动性能。  
+可以通过延迟加载 [lazy-import](../arkts-utils/arkts-lazy-import.md) 延缓对冷启动时暂不执行的冗余文件的加载，而在后续导出变量被真正使用时再同步加载执行文件，节省资源以提高应用冷启动性能。  
 
-详细使用指导请参考延迟加载lazy-import使用指导。
+详细使用指导请参考[延迟加载lazy-import使用指导](Lazy-Import-Instructions.md)。
 
 ### 减少多个HSP/HAP对于相同HAR的引用
 
-在应用开发的过程中，可以使用HSP或HAR的共享包方式将同类的模块进行整合，用于实现多个模块或多个工程间共享ArkUI组件、资源等相关代码。
+在应用开发的过程中，可以使用[HSP](../quick-start/in-app-hsp.md)或[HAR](../quick-start/har-package.md)的共享包方式将同类的模块进行整合，用于实现多个模块或多个工程间共享ArkUI组件、资源等相关代码。
 
 由于共享包的动态和静态差异，在多HAP/HSP引用相同HAR包的情况下，会存在HAR包中的单例失效，从而影响到应用冷启动的性能。
 
 【优化前】HAP包和HSP包分别引用相同HAR包。
 
-
+![](./figures/application_coldstart11.png)
 
 如上图所示，工程内存在三个模块，HAP包为应用主入口模块，HSP为应用主界面显示模块，HAR_COMMON集成了所有通用工具类，其中funcResult为func方法的执行结果。  
 
@@ -473,7 +473,7 @@ struct Index {
 
 【优化后】切换为HAP包和HAR包分别引用相同HAR包。
 
-
+![](./figures/application_coldstart12.png)
 
 >**说明：**
 >
@@ -526,11 +526,11 @@ struct Index {
 
 【优化前】使用HSP包。
 
-
+![](./figures/application_coldstart13.png)
 
 【优化后】使用HAR代替HSP。
 
-
+![](./figures/application_coldstart14.png)
 
 优化前后的对比数据如下：
 
@@ -554,7 +554,7 @@ struct Index {
 
 在应用启动流程中，系统会执行AbilityStage的生命周期回调函数。因此，不建议在这些回调函数中执行耗时过长的操作，耗时操作建议通过异步任务延迟处理或者放到其他线程执行。
 
-在这些生命周期回调里，推荐开发者只做必要的操作，详情可以参考：AbilityStage组件管理器。
+在这些生命周期回调里，推荐开发者只做必要的操作，详情可以参考：[AbilityStage组件管理器](../application-models/abilitystage.md)。
 
 以下为示例代码：
 
@@ -589,7 +589,7 @@ export default class MyAbilityStage extends AbilityStage {
 }
 ```
 
-下面使用SmartPerf工具，对优化前同步执行耗时操作及优化后异步执行耗时操作的启动性能进行对比分析。分析阶段的起点为启动Ability（即`H:void OHOS::AppExecFwk::MainThread::HandleLaunchAbility`的开始点），阶段终点为应用第一次接到vsync（即`H:ReceiveVsync dataCount:24Bytes now:timestamp expectedEnd:timestamp vsyncId:int`的开始点）。
+下面使用[SmartPerf](https://gitcode.com/openharmony/developtools_smartperf_host)工具，对优化前同步执行耗时操作及优化后异步执行耗时操作的启动性能进行对比分析。分析阶段的起点为启动Ability（即`H:void OHOS::AppExecFwk::MainThread::HandleLaunchAbility`的开始点），阶段终点为应用第一次接到vsync（即`H:ReceiveVsync dataCount:24Bytes now:timestamp expectedEnd:timestamp vsyncId:int`的开始点）。
 
 对比数据如下：
 
@@ -606,15 +606,15 @@ export default class MyAbilityStage extends AbilityStage {
 
 ### 非UI耗时操作并行化
 
-在应用启动流程中，主要聚焦在执行UI相关操作中，为了更快地能显示首页内容，不建议在主线程中执行非UI相关的耗时操作，耗时操作建议通过异步任务进行延迟处理或放到其他子线程中执行，线程并发方案可以参考：TaskPool和Worker的对比实践。  
+在应用启动流程中，主要聚焦在执行UI相关操作中，为了更快地能显示首页内容，不建议在主线程中执行非UI相关的耗时操作，耗时操作建议通过异步任务进行延迟处理或放到其他子线程中执行，线程并发方案可以参考：[TaskPool和Worker的对比实践](../arkts-utils/multi-thread-concurrency-overview.md)。  
 
-在冷启动过程中如果存在图片下载、网络请求前置数据、数据反序列化等非UI操作可以根据开发者实际情况移至子线程中进行，参考下面文章：避免在主线程中执行耗时操作。
+在冷启动过程中如果存在图片下载、网络请求前置数据、数据反序列化等非UI操作可以根据开发者实际情况移至子线程中进行，参考下面文章：[避免在主线程中执行耗时操作](avoid-time-consuming-operations-in-mainthread.md)。
 
 ### 避免在Ability生命周期回调接口进行耗时操作
 
 在应用启动流程中，系统会执行Ability的生命周期回调函数。因此，不建议在这些回调函数中执行耗时过长的操作，耗时操作建议通过异步任务延迟处理或者放到其他线程执行。
 
-在这些生命周期回调里，推荐开发者只做必要的操作，下面以UIAbility为例进行说明。关于UIAbility组件生命周期的详细说明，参见UIAbility组件生命周期。
+在这些生命周期回调里，推荐开发者只做必要的操作，下面以UIAbility为例进行说明。关于UIAbility组件生命周期的详细说明，参见[UIAbility组件生命周期](../application-models/uiability-lifecycle.md)。
 
 ```ts
 const LARGE_NUMBER = 10000000;
@@ -678,7 +678,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-下面使用SmartPerf工具，对优化前同步执行耗时操作及优化后异步执行耗时操作的启动性能进行对比分析。分析阶段的起点为启动Ability（即`H:void OHOS::AppExecFwk::MainThread::HandleLaunchAbility`的开始点），阶段终点为应用第一次接到vsync（即`H:ReceiveVsync dataCount:24Bytes now:timestamp expectedEnd:timestamp vsyncId:int`的开始点）。
+下面使用[SmartPerf](https://gitcode.com/openharmony/developtools_smartperf_host)工具，对优化前同步执行耗时操作及优化后异步执行耗时操作的启动性能进行对比分析。分析阶段的起点为启动Ability（即`H:void OHOS::AppExecFwk::MainThread::HandleLaunchAbility`的开始点），阶段终点为应用第一次接到vsync（即`H:ReceiveVsync dataCount:24Bytes now:timestamp expectedEnd:timestamp vsyncId:int`的开始点）。
 
 对比数据如下：
 
@@ -746,7 +746,7 @@ struct Index {
 }
 ```
 
-下面使用SmartPerf工具，对优化前同步执行耗时操作及优化后异步执行耗时操作的启动性能进行对比分析。分析阶段的起点为启动Ability（即`H:void OHOS::AppExecFwk::MainThread::HandleLaunchAbility`的开始点），阶段终点为应用第一次接到vsync（即`H:ReceiveVsync dataCount:24Bytes now:timestamp expectedEnd:timestamp vsyncId:int`的开始点）。
+下面使用[SmartPerf](https://gitcode.com/openharmony/developtools_smartperf_host)工具，对优化前同步执行耗时操作及优化后异步执行耗时操作的启动性能进行对比分析。分析阶段的起点为启动Ability（即`H:void OHOS::AppExecFwk::MainThread::HandleLaunchAbility`的开始点），阶段终点为应用第一次接到vsync（即`H:ReceiveVsync dataCount:24Bytes now:timestamp expectedEnd:timestamp vsyncId:int`的开始点）。
 
 对比数据如下：
 
@@ -768,13 +768,13 @@ struct Index {
 
 【优化前】应用首页框架加载时进行网络数据请求。
 
-
+![](./figures/application_coldstart15.png)
 
 将网络请求提前至AbilityStage/UIAbility的onCreate()生命周期回调函数中，可以将首刷或二刷的时间提前，减少用户等待时间。此处为了体现性能收益，将网络请求放到了更早的AbilityStage的onCreate()生命周期回调中。
 
 【优化后】网络请求提前至AbilityStage的onCreate()生命周期回调中。
 
-
+![](./figures/application_coldstart16.png)
 
 以下为示例代码：
 
@@ -956,11 +956,11 @@ export let number = computeTask();
 
 【优化前】优化网络请求时机前。
 
-
+![](./figures/application_coldstart17.png)
 
 【优化后】优化网络请求时机后。
 
-
+![](./figures/application_coldstart18.png)
 
 对比数据如下：
 
@@ -973,4 +973,4 @@ export let number = computeTask();
 
 ### 使用本地缓存首页数据
 
-使用本地缓存首页数据是优化应用性能的关键一环。它能有效缩短冷启动时的白屏或白块时间，显著提升用户体验。该策略通过预先存储并优先展示缓存中的首页数据，减少了对外部资源（如网络）的依赖，从而加快数据加载速度。当数据更新时，应用则智能地从网络等渠道获取最新内容，确保信息的时效性与准确性。使用本地缓存首页数据，不仅让应用响应更迅速，还显著优化了整体运行流畅度，为用户带来更加顺畅的体验。更多实现细节与性能提升分析，请参见合理使用缓存提升性能。
+使用本地缓存首页数据是优化应用性能的关键一环。它能有效缩短冷启动时的白屏或白块时间，显著提升用户体验。该策略通过预先存储并优先展示缓存中的首页数据，减少了对外部资源（如网络）的依赖，从而加快数据加载速度。当数据更新时，应用则智能地从网络等渠道获取最新内容，确保信息的时效性与准确性。使用本地缓存首页数据，不仅让应用响应更迅速，还显著优化了整体运行流畅度，为用户带来更加顺畅的体验。更多实现细节与性能提升分析，请参见[合理使用缓存提升性能](./reasonable-using-cache-improve-performance.md)。

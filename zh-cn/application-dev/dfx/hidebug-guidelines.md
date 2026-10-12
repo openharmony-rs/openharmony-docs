@@ -11,7 +11,7 @@ HiDebug可用于获取系统或应用进程的内存、CPU和GPU等数据，以�
 
 本文介绍HiDebug模块中的ArkTS和C/C++接口，并按接口能力分类。
 
-接口详情可查看@ohos.hidebug及hidebug.h。
+接口详情可查看[@ohos.hidebug](../reference/apis-performance-analysis-kit/js-apis-hidebug.md)及[hidebug.h](../reference/apis-performance-analysis-kit/capi-hidebug-h.md)。
 
 ## 约束限制
 
@@ -176,17 +176,17 @@ HiDebug可用于获取VM内存数据、GC统计数据及VM堆转储。
 | 接口名 | 描述   |
 | -------- | -------- |
 | hidebug.getAppVMMemoryInfo | 获取VM内存相关信息。 |
-| hidebug.getVMRuntimeStats | 获取系统GC统计信息。 |
-| hidebug.getVMRuntimeStat | 根据参数获取指定的系统GC统计信息。 |
-| hidebug.dumpJsRawHeapData | 使用异步方式为当前线程转储虚拟机的原始堆快照，辅助JS内存泄漏分析。<br/>**说明**：<br/>从API version 18开始，支持该接口。<br/>从API version 24开始，该接口支持清除nodeId缓存。 <br/>从API版本26.0.0开始，该接口支持转储当前线程所属进程的虚拟机原始堆快照。|
+| hidebug.getVMRuntimeStats | 获取系统[GC](../arkts-utils/gc-introduction.md)统计信息。 |
+| hidebug.getVMRuntimeStat | 根据参数获取指定的系统[GC](../arkts-utils/gc-introduction.md)统计信息。 |
+| hidebug.dumpJsRawHeapData | 使用异步方式为当前线程转储虚拟机的原始堆快照，辅助[JS内存泄漏分析](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-js-memleak-detection)。<br/>**说明**：<br/>从API version 18开始，支持该接口。<br/>从API version 24开始，该接口支持清除nodeId缓存。 <br/>从API版本26.0.0开始，该接口支持转储当前线程所属进程的虚拟机原始堆快照。|
 | hidebug.setJsRawHeapTrimLevel | 设置当前进程转储虚拟机原始堆快照的裁剪级别。<br/>**说明**：从API version 20开始，支持该接口。 |
-| hidebug.dumpJsHeapData | 使用同步方式导出虚拟机堆，辅助JS内存泄漏分析。<br/>**说明**：从API version 24开始，该接口支持清除nodeId缓存。 |
+| hidebug.dumpJsHeapData | 使用同步方式导出虚拟机堆，辅助[JS内存泄漏分析](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-js-memleak-detection)。<br/>**说明**：从API version 24开始，该接口支持清除nodeId缓存。 |
 | hidebug.getAppMemoryLimit | 获取应用程序进程内存限制，其中vmHeapLimit为当前线程对应的虚拟机堆大小限制，vmTotalHeapSize为当前进程所有虚拟机堆总和大小的限制。 |
 | hidebug.getAppVMObjectUsedSize | 获取当前虚拟机中ArkTS对象所占用的内存大小。<br/>**说明**：从API version 21开始，支持该接口。 |
 
 ## 获取应用Trace记录信息
 
-HiTrace提供业务流程调用链跟踪的维测接口，帮助开发者获取指定业务流程调用链的运行日志，定位跨设备、跨进程、跨线程的故障问题。详情请参考Trace性能跟踪。为了便于实现HiTrace的自动化采集，HiDebug模块提供了启动和停止HiTrace采集的接口。
+HiTrace提供业务流程调用链跟踪的维测接口，帮助开发者获取指定业务流程调用链的运行日志，定位跨设备、跨进程、跨线程的故障问题。详情请参考[Trace性能跟踪](hitracemeter-intro.md)。为了便于实现HiTrace的自动化采集，HiDebug模块提供了启动和停止HiTrace采集的接口。
 
 从API version 24开始，提供包括内核信息在内的请求Trace采集接口。
 
@@ -226,7 +226,7 @@ HiDebug提供了开启和停止VM虚拟机CpuProfiler采集的接口，帮助开
 ARM64架构函数栈帧的结构如下图所示：
 
 **图1**
-arm64 stack
+![arm64 stack](figures/arm64_stack.png)
 
 FP：栈顶指针，指向一个栈帧的顶部，当函数发生跳转时，会记录当时的栈的起始位置。
 
@@ -317,7 +317,7 @@ JS帧格式如下：
 
 ## 设置资源泄漏检测阈值
 
-HiDebug提供设置系统资源泄漏检测阈值的接口，开发者可根据业务需求自定义资源泄漏事件触发的阈值。此接口主要用于辅助内存泄漏检测和功能开发，详情请参考资源泄漏检测。
+HiDebug提供设置系统资源泄漏检测阈值的接口，开发者可根据业务需求自定义资源泄漏事件触发的阈值。此接口主要用于辅助内存泄漏检测和功能开发，详情请参考[资源泄漏检测](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/resource-leak-guidelines)。
 
 ### 接口说明（ArkTS）
 
@@ -327,7 +327,7 @@ HiDebug提供设置系统资源泄漏检测阈值的接口，开发者可根据�
 
 ## 管理GWP-ASan
 
-HiDebug提供了启停GWP-ASan使能和查询使能天数的能力。
+HiDebug提供了启停[GWP-ASan](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-gwpasan-detection)使能和查询使能天数的能力。
 
 ### 接口说明（ArkTS）
 
@@ -356,7 +356,7 @@ HiDebug提供修改转储堆快照级别的接口。
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| hidebug.setProcDumpInSharedOOM | 当发生JS OOM的内存类型为SharedHeap，如果应用已经调用过该接口，且传参为true，那么转储的堆快照将会由线程级别变成进程级别。通过订阅资源泄漏事件（ArkTS）获取对应日志。<br/>该接口仅影响SharedHeap发生OOM时转储的堆快照，不影响其他情况下转储的堆快照。<br/>当应用需要定位JS泄漏问题时，建议总是调用该接口并传参为true。<br/>**说明**：从API version 24开始，支持该接口。 |
+| hidebug.setProcDumpInSharedOOM | 当发生JS OOM的内存类型为SharedHeap，如果应用已经调用过该接口，且传参为true，那么转储的堆快照将会由线程级别变成进程级别。通过[订阅资源泄漏事件（ArkTS）](hiappevent-watcher-resourceleak-events-arkts.md)获取对应日志。<br/>该接口仅影响SharedHeap发生OOM时转储的堆快照，不影响其他情况下转储的堆快照。<br/>当应用需要定位JS泄漏问题时，建议总是调用该接口并传参为true。<br/>**说明**：从API version 24开始，支持该接口。 |
 
 ## 采集进程资源调用栈
 
@@ -368,10 +368,21 @@ HiDebug提供修改转储堆快照级别的接口。
 |--------|------|
 | OH_HiDebug_StartProfiler | 按指定类型启动资源分配栈信息采集，须与OH_HiDebug_StopProfiler配对使用。<br/>**说明**：从API version 24开始，支持该接口。 |
 | OH_HiDebug_StopProfiler | 停止资源分配栈信息采集，须与OH_HiDebug_StartProfiler配对使用。<br/>**说明**：从API version 24开始，支持该接口。 |
+| OH_HiDebug_CreateProfilerOptions | 创建资源Profiler配置对象。须与OH_HiDebug_DestroyProfilerOptions配对使用。<br/>**说明**：从API版本26.0.1开始，支持该接口。 |
+| OH_HiDebug_DestroyProfilerOptions | 释放通过OH_HiDebug_CreateProfilerOptions创建的配置对象。<br/>**说明**：从API版本26.0.1开始，支持该接口。 |
+| OH_HiDebug_SetMaxAsyncNestingDepth | 设置异步调用最大嵌套深度（也称为最大嵌套层数）。<br/>**说明**：从API版本26.0.1开始，支持该接口。 |
+| OH_HiDebug_SetMaxAsyncTaskStackDepth | 设置异步任务函数的最大回栈深度。<br/>**说明**：从API版本26.0.1开始，支持该接口。 |
+| OH_HiDebug_SetSampleIntervalBytes | 设置采样间隔，单位字节。<br/>**说明**：从API版本26.0.1开始，支持该接口。 |
+| OH_HiDebug_SetStatisticsIntervalSec | 设置统计间隔，单位秒。<br/>**说明**：从API版本26.0.1开始，支持该接口。 |
+| OH_HiDebug_SetMaxStackDepth | 设置最大回栈深度。<br/>**说明**：从API版本26.0.1开始，支持该接口。 |
+| OH_HiDebug_SetFilterSize | 设置内存分配过滤大小。<br/>**说明**：从API版本26.0.1开始，支持该接口。 |
+| OH_HiDebug_SetMaxDurationSec | 设置最大采集时长，单位秒。<br/>**说明**：从API版本26.0.1开始，支持该接口。 |
+| OH_HiDebug_SetStackTraceMode | 设置调用栈追踪模式，用于配置资源采集时已销毁调用栈追踪的处理方式。<br/>**说明**：从API版本26.0.1开始，支持该接口。 |
+| OH_HiDebug_StartProfilerWithOptions | 按指定资源类型和配置开启资源分配栈信息采集。须与OH_HiDebug_StopProfiler配对使用。<br/>**说明**：从API版本26.0.1开始，支持该接口。 |
 
 ## 导出内存快照
 
-从API版本26.0.0开始，HiDebug支持注册内存导出监听器，用于在内存占用较高或通过hidumper命令手动触发时导出应用内存快照，便于本地导出或上报。
+从API版本26.0.0开始，HiDebug支持注册内存导出监听器，用于在内存占用较高或通过[hidumper命令](hidumper.md#查询虚拟机堆内存)手动触发时导出应用内存快照，便于本地导出或上报。
 
 ### 接口说明（C/C++）
 
@@ -382,24 +393,24 @@ HiDebug提供修改转储堆快照级别的接口。
 
 ## 管理异步上下文
 
-从API版本26.0.0开始，HiDebug提供异步上下文管理接口，用于在自定义异步任务场景中建立和解除异步调用链关系。通过这些接口，开发者可以在异步任务提交和完成时分别压入和弹出异步上下文，使hiperf命令行工具、OH_HiDebug_RequestThreadLiteSampling接口等性能分析工具能够追踪到完整的异步调用栈。
+从API版本26.0.0开始，HiDebug提供异步上下文管理接口，用于在自定义异步任务场景中建立和解除异步调用链关系。通过这些接口，开发者可以在异步任务提交和完成时分别压入和弹出异步上下文，仅支持[hiprofiler](hiprofiler.md#async_type参数介绍)调优组件追踪完整的异步调用栈。
 
 > **注意：**
 >
-> 该功能仅支持ARM64架构，且仅可在debug版本应用中使用。
+> 该功能仅支持ARM64架构，且仅可在[debug版本应用](performance-analysis-kit-terminology.md#debug版本应用)中使用。
 
 ### 使用流程
 
-1. 在异步任务提交前，调用OH_HiDebug_AcquireAsyncContext获取一个异步上下文。
-2. 在异步任务提交时，调用OH_HiDebug_PushAsyncContext将异步上下文压入当前线程的运行上下文，建立异步调用链。
-3. 在异步任务完成时，调用OH_HiDebug_PopAsyncContext将异步上下文弹出，解除异步调用链。
-4. 在异步任务结束后，调用OH_HiDebug_ReleaseAsyncContext释放异步上下文资源，防止资源泄漏。
+1. 在异步任务提交前，调用[OH_HiDebug_AcquireAsyncContext](../reference/apis-performance-analysis-kit/capi-hidebug-h.md#oh_hidebug_acquireasynccontext)获取一个异步上下文。
+2. 在异步任务提交时，调用[OH_HiDebug_PushAsyncContext](../reference/apis-performance-analysis-kit/capi-hidebug-h.md#oh_hidebug_pushasynccontext)将异步上下文压入当前线程的运行上下文，建立异步调用链。
+3. 在异步任务完成时，调用[OH_HiDebug_PopAsyncContext](../reference/apis-performance-analysis-kit/capi-hidebug-h.md#oh_hidebug_popasynccontext)将异步上下文弹出，解除异步调用链。
+4. 在异步任务结束后，调用[OH_HiDebug_ReleaseAsyncContext](../reference/apis-performance-analysis-kit/capi-hidebug-h.md#oh_hidebug_releaseasynccontext)释放异步上下文资源，防止资源泄漏。
 
 ### 接口说明（C/C++）
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| OH_HiDebug_AcquireAsyncContext | 获取一个异步上下文（AsyncContext），用于后续的异步栈追踪操作。对应的释放函数为OH_HiDebug_ReleaseAsyncContext。<br/>**说明**：从API版本26.0.0开始，支持该接口。 |
+| OH_HiDebug_AcquireAsyncContext | 获取一个异步上下文（AsyncContext），用于后续的异步栈追踪操作。对应的释放函数为[OH_HiDebug_ReleaseAsyncContext](../reference/apis-performance-analysis-kit/capi-hidebug-h.md#oh_hidebug_releaseasynccontext)。<br/>**说明**：从API版本26.0.0开始，支持该接口。 |
 | OH_HiDebug_PushAsyncContext | 将异步上下文压入当前线程的运行上下文中，用于建立异步调用链关系。<br/>**说明**：从API版本26.0.0开始，支持该接口。 |
 | OH_HiDebug_PopAsyncContext | 将异步上下文从当前线程的运行上下文中弹出，用于解除异步调用链关系。<br/>**说明**：从API版本26.0.0开始，支持该接口。 |
 | OH_HiDebug_ReleaseAsyncContext | 释放通过OH_HiDebug_AcquireAsyncContext获取的异步上下文资源。<br/>**说明**：从API版本26.0.0开始，支持该接口。 |
@@ -419,7 +430,7 @@ HiDebug提供了获取应用调试状态和启动系统进程DUMP信息采集等
 
 **在使用OH_HiDebug_StartAppTraceCapture和startAppTraceCapture接口抓取HiTrace日志时，接口返回路径为设备内物理路径**
 
-接口返回的路径为设备内的真实物理路径，如需要在应用内访问，请参考应用沙箱路径和真实物理路径的对应关系，需将真实物理路径转化为沙箱路径。
+接口返回的路径为设备内的真实物理路径，如需要在应用内访问，请参考[应用沙箱路径和真实物理路径的对应关系](../file-management/app-sandbox-directory.md#应用沙箱路径和真实物理路径的对应关系)，需将真实物理路径转化为沙箱路径。
 
 例如：/data/app/el2/100/log/com.example.myapplication/trace/com.example.myapplication_20250604_173158.trace -> /data/storage/el2/log/trace/com.example.myapplication_20250604_173158.trace
 

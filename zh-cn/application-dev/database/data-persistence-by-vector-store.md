@@ -19,7 +19,7 @@
 
 ## 约束限制
 
-- 系统默认日志方式是WAL（Write Ahead Log）模式，系统默认落盘方式是FULL模式。
+- 系统默认日志方式是[WAL](data-terminology.md#wal-mode-write-ahead-logwal模式)（Write Ahead Log）模式，系统默认落盘方式是[FULL模式](data-terminology.md#full-modefull模式)。
 
 - 数据库中默认有4个读连接和1个写连接，线程获取到空闲读连接时，即可进行读取操作。当没有空闲读连接时，会创建新的读连接。
 
@@ -124,26 +124,13 @@ SQL语句中的函数，如下所示：
 | UPPER/LOWER | 将字符串转换为大/小写字母。 | 是 |
 | LENGTH | 返回字符串的长度。 | 是 |
 
-## 接口说明
-
-以下是向量数据库持久化功能的相关接口，更多接口及使用方式请见@ohos.data.relationalStore (关系型数据库)。
-
-| 接口名称 | 描述 |
-| -------- | -------- |
-| getRdbStore(context: Context, config: StoreConfig): Promise&lt;RdbStore&gt; | 用户可以根据自己的需求配置StoreConfig参数获得RdbStore对象，通过调用RdbStore接口执行数据操作。|
-| execute(sql: string, txId: number, args?: Array&lt;ValueType&gt;): Promise&lt;ValueType&gt; | 执行包含指定参数的SQL语句，语句中的各种表达式和操作符之间的关系操作符号(例如=、>、<)不超过1000个。 |
-| querySql(sql: string, bindArgs?: Array&lt;ValueType&gt;):Promise&lt;ResultSet&gt; | 根据指定SQL语句查询数据库中的数据，语句中的各种表达式和操作符之间的关系操作符号(例如=、>、<)不超过1000个。 |
-| beginTrans(): Promise&lt;number&gt; | 在开始执行SQL语句之前，开始事务。 |
-| commit(txId : number):Promise&lt;void&gt; | 提交已经执行的SQL语句，跟beginTrans配合使用。 |
-| rollback(txId : number):Promise&lt;void&gt; | 回滚已经执行的SQL语句，跟beginTrans配合使用。 |
-| deleteRdbStore(context: Context, config: StoreConfig): Promise&lt;void&gt; | 删除数据库。 |
-| isVectorSupported(): boolean | 判断系统是否提供向量数据库能力。 |
-
 ## 开发步骤
 
-1. 判断当前系统是否支持向量数据库，若不支持，则表示当前系统不具备向量数据库能力。示例代码如下：
+更多接口及使用方式请见[@ohos.data.relationalStore (关系型数据库)](../reference/apis-arkdata/arkts-apis-data-relationalStore.md)。
 
-   <!--@vector_TS_isVectorSupported--> 
+1. 调用[isVectorSupported()](../reference/apis-arkdata/arkts-apis-data-relationalStore-f.md#relationalstoreisvectorsupported18)接口判断当前系统是否支持向量数据库，返回false表示当前系统不具备向量数据库能力。示例代码如下：
+
+   <!--@[vector_TS_isVectorSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)--> 
    
    ``` TypeScript
    import { relationalStore } from '@kit.ArkData'; // 导入模块
@@ -159,7 +146,7 @@ SQL语句中的函数，如下所示：
      }
    ```
 
-2. 若支持向量数据库则需要获取一个RdbStore。通过getRdbStore接口创建数据库，并执行建表操作。
+2. 若支持向量数据库则需要获取一个RdbStore。通过[getRdbStore()](../reference/apis-arkdata/arkts-apis-data-relationalStore-f.md#relationalstoregetrdbstore)接口创建数据库，并通过[execute()](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#execute12)接口执行建表操作。
 
    > **说明：**
    >
@@ -167,11 +154,11 @@ SQL语句中的函数，如下所示：
    > 
    > - 当应用首次获取数据库（调用getRdbStore）后，在应用沙箱内会产生对应的数据库文件。使用数据库的过程中，在与数据库文件相同的目录下可能会产生以-wal和-shm结尾的临时文件。此时若开发者希望移动数据库文件到其它地方使用查看，则需要同时移动这些临时文件，当应用被卸载完成后，其在设备上产生的数据库文件及临时文件也会被移除。
    > 
-   > - 错误码的详细介绍请参见通用错误码和关系型数据库错误码。
+   > - 错误码的详细介绍请参见[通用错误码](../reference/errorcode-universal.md)和[关系型数据库错误码](../reference/apis-arkdata/errorcode-data-rdb.md)。
 
    示例代码如下：
 
-   <!--@vector_TS_getStore--> 
+   <!--@[vector_TS_getStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)--> 
    
    ``` TypeScript
    let store: relationalStore.RdbStore | undefined = undefined;
@@ -194,7 +181,7 @@ SQL语句中的函数，如下所示：
      };
    ```
 
-3. 获取到RdbStore后，调用execute接口插入数据。
+3. 获取到RdbStore后，调用[execute()](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#execute12)接口插入数据。
 
    > **说明：**
    >
@@ -202,7 +189,7 @@ SQL语句中的函数，如下所示：
    
    示例代码如下：
 
-   <!--@vector_TS_execute_insert-->
+   <!--@[vector_TS_execute_insert](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
    
    ``` TypeScript
    try {
@@ -216,9 +203,9 @@ SQL语句中的函数，如下所示：
    }
    ```
 
-4. 获取到RdbStore后，调用execute接口修改或删除数据。示例代码如下：
+4. 获取到RdbStore后，调用[execute()](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#execute12)接口修改或删除数据。示例代码如下：
 
-   <!--@vector_TS_execute_update_and_delete-->
+   <!--@[vector_TS_execute_update_and_delete](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
    
    ``` TypeScript
    // 修改数据
@@ -243,7 +230,7 @@ SQL语句中的函数，如下所示：
    }
    ```
 
-5. 获取到RdbStore后，调用querySql方法查找数据，返回一个ResultSet结果集。
+5. 获取到RdbStore后，调用[querySql()](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#querysql)接口查找数据，返回一个ResultSet结果集。
 
    > **说明：**
    >
@@ -251,7 +238,7 @@ SQL语句中的函数，如下所示：
 
    示例代码如下：
 
-   <!--@vector_TS_query--> 
+   <!--@[vector_TS_query](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)--> 
    
    ``` TypeScript
    // 单表查询
@@ -316,7 +303,7 @@ SQL语句中的函数，如下所示：
 
 6. 创建视图并执行查询。示例代码如下：
 
-   <!--@vector_TS_execute_create_view-->
+   <!--@[vector_TS_execute_create_view](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
    
    ``` TypeScript
    // 视图查询
@@ -380,7 +367,7 @@ SQL语句中的函数，如下所示：
 
    示例代码如下：
 
-   <!--@vector_TS_execute_create_index-->
+   <!--@[vector_TS_execute_create_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
    
    ``` TypeScript
    // 基础用法
@@ -423,7 +410,7 @@ SQL语句中的函数，如下所示：
 
     示例代码如下：
 
-   <!--@vector_TS_execute_gsdiskann-->
+   <!--@[vector_TS_execute_gsdiskann](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
    
    ``` TypeScript
    try {
@@ -467,7 +454,7 @@ SQL语句中的函数，如下所示：
 
    示例代码如下：
 
-   <!--@vector_TS_execute_auto_dataAging-->
+   <!--@[vector_TS_execute_auto_dataAging](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
    
    ``` TypeScript
    try {
@@ -492,7 +479,7 @@ SQL语句中的函数，如下所示：
 
     示例代码如下：
 
-    <!--@vector_TS_execute_dataAging-->
+    <!--@[vector_TS_execute_dataAging](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
     
     ``` TypeScript
     try {
@@ -505,9 +492,9 @@ SQL语句中的函数，如下所示：
 
 11. 删除数据库。
 
-    调用deleteRdbStore方法，删除数据库及数据库相关文件。示例代码如下：
+    调用[deleteRdbStore()](../reference/apis-arkdata/arkts-apis-data-relationalStore-f.md#relationalstoredeleterdbstore)接口删除数据库及数据库相关文件。示例代码如下：
 
-    <!--@vector_TS_deleteStore-->
+    <!--@[vector_TS_deleteStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets)-->
     
     ``` TypeScript
     try {

@@ -31,7 +31,7 @@ NAPI方法在泳道图上被特殊标记为黄色，此类方法会调用到Nati
 
 图1 **ArkTS Callstack泳道图**
 
-ArkTS Callstack泳道图
+![ArkTS Callstack泳道图](figures/arkts-callstack-eg.png)
 
 **Details图**
 
@@ -39,7 +39,7 @@ ArkTS Callstack泳道图
 
 图2 **阶段耗时详情示意图**
 
-阶段耗时详情示意图
+![阶段耗时详情示意图](figures/details-img-eg.png)
 
 从上图中我们不仅可以看到JS调用栈，还可以看到NAPI接口Native实现部分的C++调用栈。
 
@@ -59,17 +59,17 @@ Chrome浏览器JavaScript Profiler工具默认调用V8引擎提供的Profiler工
 
 图3 **JavaScript Profiler工具入口**
 
-JavaScript Profiler工具入口
+![JavaScript Profiler工具入口](figures/javascript-profiler-entry.png)
 
 图4 **加载cpuprofile文件**
 
-加载cpuprofile文件
+![加载cpuprofile文件](figures/load-cpuprofiler-file.png)
 
 如果找不到此工具，可勾选下图选项后F12重新打开。
 
 图5 **启用JavaScript Profiler功能**
 
-启用JavaScript Profiler功能
+![启用JavaScript Profiler功能](figures/enable-cpuprofiler-func.png)
 
 该工具可将性能分析数据展示在三种视图：时序火焰图（Chart）、比重图（Heavy）、树形图（Tree）。
 
@@ -77,17 +77,17 @@ JavaScript Profiler工具入口
 
 图6 **时序火焰图（Chart）总览**
 
-时序火焰图（Chart）总览
+![时序火焰图（Chart）总览](figures/chart-overview.png)
 
 该视图从时间维度展示应用运行过程中每个时刻的函数调用栈，最为直观，时间轴0时刻代表开始采集，可通过鼠标滚轮放大局部。
 
 图7 **时序火焰图（Chart）详情**
 
-时序火焰图（Chart）详情
+![时序火焰图（Chart）详情](figures/chart-details.png)
 
 可将鼠标放在某一函数上，展示该函数详细信息，详情中包含以下几个字段：
 
-- **Name**：格式为“函数名（标签）”。函数名表示TS/JS代码函数名，标签信息代表函数类型，具体可见 函数名标签tag的相关说明。
+- **Name**：格式为“函数名（标签）”。函数名表示TS/JS代码函数名，标签信息代表函数类型，具体可见 [函数名标签tag的相关说明](#函数名标签tag的相关说明)。
 
 - **Self Time**：以毫秒（ms）为单位。表示该函数本次调用过程中，除去调用下一级函数所消耗时间后的自身执行耗时。计算方法为该函数本次调用的总耗时减去该函数本次调用下一级所有函数的总时间。
 
@@ -121,11 +121,11 @@ Chrome浏览器比重图（Heavy）的时间并不是实际时间，而是通过
 
 图8 **Chrome比重图（Heavy）示例**
 
-Chrome比重图（Heavy）示例
+![Chrome比重图（Heavy）示例](figures/heavy-view.png)
 
 图9 **VSCode比重图（Heavy）示例**
 
-VSCode比重图（Heavy）示例
+![VSCode比重图（Heavy）示例](figures/vscode-cpuprofile-eg.png)
 
 **树形图（Tree）**
 
@@ -137,7 +137,7 @@ VSCode比重图（Heavy）示例
 
 图10 **树形图（Tree）示例**
 
-树形图（Tree）示例
+![树形图（Tree）示例](figures/tree-view.png)
 
 ### 函数名标签(TAG)的相关说明
 
@@ -183,13 +183,13 @@ VSCode比重图（Heavy）示例
 
 图11 **时间占比统计示例**
 
-时间占比统计示例
+![时间占比统计示例](figures/time-distribution-statistic-eg.png)
 
 ## 数据采集方法及适用场景
 
 ### 各采集工具适用场景及支持情况
 
-| 采集方法       | DevEco Studio Profiler | JavaScript Profiler | hdc shell | 应用代码插桩 |
+| 采集方法       | [DevEco Studio Profiler](#deveco-studio-profiler工具采集) | [JavaScript Profiler](#chrome浏览器javascript-profiler工具采集) | [hdc shell](#hdc-shell命令采集) | [应用代码插桩](#应用代码插桩采集) |
 | -------------- | ------------------------------------------------------- | --------------------------------------------------------------- | ------------------------------- | --------------------------------- |
 | debug应用      | 支持                                                    | 支持                                                            | 支持                            | 支持                              |
 | release应用    | 暂不支持                                                | 暂不支持                                                        | 支持                            | 支持                              |
@@ -206,7 +206,7 @@ VSCode比重图（Heavy）示例
 
    图12 **DevEco Studio Profiler采集指引**
 
-   DevEco Studio Profiler采集指引
+   ![DevEco Studio Profiler采集指引](figures/deveco-studio-profiler-catch-guide.png)
 
 3. 点击开始录制按钮，箭头变成方块代表开始录制。
 
@@ -214,7 +214,7 @@ VSCode比重图（Heavy）示例
 
 5. 再次点击录制按钮，方框变成灰色，结束录制。
 
-6. 选择ArkTS Callstack泳道，框选时间范围或者直接选择函数进行分析，具体可见DevEco Studio Profiler视图。
+6. 选择ArkTS Callstack泳道，框选时间范围或者直接选择函数进行分析，具体可见[DevEco Studio Profiler视图](#deveco-studio-profiler视图)。
 
 ### Chrome浏览器JavaScript Profiler工具采集
 
@@ -240,7 +240,7 @@ VSCode比重图（Heavy）示例
 
    图13 **端口映射**
 
-   端口映射
+   ![端口映射](figures/commandline-eg.png)
 
 3. 在Chrome浏览器输入网址： `devtools://devtools/bundled/inspector.html?ws=//127.0.0.1:9006` ，端口号与上文一致，点击回车，进入JavaScript Profiler页面。
 
@@ -250,11 +250,11 @@ VSCode比重图（Heavy）示例
 
 6. 再次点击录制按钮，按钮变为灰色结束录制。
 
-7. 点击左上角性能分析报告，右侧显示性能分析图表，可以选择图表类型，显示数据表或者火焰图，具体可见 Chrome浏览器JavaScript Profiler工具视图。
+7. 点击左上角性能分析报告，右侧显示性能分析图表，可以选择图表类型，显示数据表或者火焰图，具体可见 [Chrome浏览器JavaScript Profiler工具视图](#chrome浏览器javascript-profiler工具视图)。
 
     图14 **JavaScript Profile视图布局**
 
-   JavaScript Profiler视图布局
+   ![JavaScript Profiler视图布局](figures/javascript-profiler-view.png)
 
 ### hdc shell命令采集
 
@@ -336,11 +336,11 @@ VSCode比重图（Heavy）示例
     hdc file recv /data/app/el2/0/base/com.ohos.example/files/com.ohos.example_线程id_次数.cpuprofile ./
     ```
 
-10. 将 `com.ohos.example.cpuprofile` 文件导入**Chrome浏览器 > JavaScript Profiler**进行分析，具体可见 Chrome浏览器JavaScript Profiler工具视图。
+10. 将 `com.ohos.example.cpuprofile` 文件导入**Chrome浏览器 > JavaScript Profiler**进行分析，具体可见 [Chrome浏览器JavaScript Profiler工具视图](#chrome浏览器javascript-profiler工具视图)。
 
     图15 **加载cpuprofile文件**
 
-    加载cpuprofile文件
+    ![加载cpuprofile文件](figures/load-cpuprofiler-file.png)
 
 ### 应用代码插桩采集
 
@@ -372,8 +372,8 @@ VSCode比重图（Heavy）示例
     hdc file recv /data/app/el2/0/base/com.ohos.example/files/filename.json ./filename.cpuprofile
     ```
 
-4. 将 `filename.cpuprofile` 文件导入**Chrome浏览器 > JavaScript Profiler**进行分析，具体可见 Chrome浏览器JavaScript Profiler工具视图。
+4. 将 `filename.cpuprofile` 文件导入**Chrome浏览器 > JavaScript Profiler**进行分析，具体可见 [Chrome浏览器JavaScript Profiler工具视图](#chrome浏览器javascript-profiler工具视图)。
 
     图16 **加载cpuprofile文件**
 
-    加载cpuprofile文件
+    ![加载cpuprofile文件](figures/load-cpuprofiler-file.png)

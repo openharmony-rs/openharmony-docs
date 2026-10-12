@@ -11,7 +11,7 @@ uinput 可模拟用户操作，例如鼠标、键盘、触控板等设备，适�
 
 ## 环境要求
 
-- 根据hdc命令行工具指导，完成环境准备。
+- 根据hdc命令行工具指导，完成[环境准备](hdc.md#环境准备)。
 
 - 确保设备已成功连接，并执行hdc shell。
 
@@ -25,18 +25,18 @@ uinput <option> <command> <arg> ...
 **支持能力**
 | 命令简写  | 命令全写   | 含义说明        | 
 | -------- | --------   | --------       |
-| -D       | --display  | 指定注入事件的目标显示器。|
+| -D       | --display  | [指定注入事件的目标显示器](#指定目标显示器)。|
 | -M       | --mouse    | 注入鼠标事件。  | 
 | -K       | --keyboard | 注入键盘事件。  |
 | -S       | --stylus   | 注入触控笔事件。 | 
 | -T       | --touch    | 注入触摸事件。  |
 | -P       | --touchpad | 注入触控板事件。|
 | -?       | --help     | 帮助命令。      | 
-| enable_key_status | enable_key_status | 控制注入的修饰键状态。| 
+| enable_key_status | enable_key_status | [控制注入的修饰键状态](#控制注入的修饰键状态)。| 
 
 > **说明：**
 >
-> 命令中与坐标相关的参数，单位均为px像素单位。
+> 命令中与坐标相关的参数，单位均为px[像素单位](../reference/apis-arkui/arkui-ts/ts-pixel-units.md)。
 
 ## 帮助命令
 
@@ -55,6 +55,9 @@ uinput -?
 
 # 执行结果
 Usage: uinput <option> <command> <arg>...
+-D <displayId>  --display <displayId>  -inject event to target display (optional, before device option)
+example: uinput -D 0 -M -m 100 200
+
 The option are:
 -K  --keyboard
 commands for keyboard:
@@ -70,7 +73,7 @@ commands for keyboard:
 
 ## 指定目标显示器
 
-指定注入事件的目标显示器，为可选参数，使用时需放在设备类型选项（如-M、-K）之前。指定后，注入的鼠标、键盘、触摸、触控板等事件将作用于目标显示器对应的屏幕；未指定时，事件注入行为与原有默认行为一致。
+指定注入事件的目标显示器，为可选参数，使用时需放在设备类型选项（如-M、-K）之前。指定后，注入的鼠标、触摸、触控板等事件将作用于目标显示器对应的屏幕，注入的键盘事件将作用于屏幕组；未指定时，事件注入行为与原有默认行为一致。
 
 **命令**
 ```bash
@@ -123,6 +126,7 @@ uinput --mouse --move <dx1> <dy1> <dx2> <dy2> [smooth time] --trace
 # <dx2> <dy2>鼠标移动终点以屏幕左上角为原点的相对坐标系的位置坐标。
 # 补充选项 --trace 可以模拟鼠标移动到以指定屏幕左上角为原点的相对坐标系的位置及过程。
 # [smooth time]移动时间，单位：ms，默认值：1000，取值范围：[1,15000]，仅支持整数。
+# 移动过程中，每隔约7ms注入一次鼠标移动事件，直至移动结束。移动时间不是7ms整数倍时，最后一次注入直接落于终点坐标。
 ```
 
 **使用示例**
@@ -132,7 +136,7 @@ uinput -M -m 100 100 200 200 1500 --trace
 ```
 
 ### 鼠标按键按下事件
-模拟鼠标按下按键，建议与鼠标按键抬起事件搭配使用，确保事件闭环。buttonId：鼠标按键。
+模拟鼠标按下按键，建议与鼠标按键抬起事件搭配使用，确保事件闭环。buttonId：[鼠标按键](#鼠标按键)。
 
 **命令**
 ```bash
@@ -141,7 +145,7 @@ uinput --mouse --down <buttonId>
 ```
 
 ### 鼠标按键抬起事件
-模拟鼠标抬起按键，建议与鼠标按键按下事件搭配使用，确保事件闭环。buttonId：鼠标按键。
+模拟鼠标抬起按键，建议与鼠标按键按下事件搭配使用，确保事件闭环。buttonId：[鼠标按键](#鼠标按键)。
 
 **命令**
 ```bash
@@ -156,7 +160,7 @@ uinput -M -d 0 -u 0
 ```
 
 ### 鼠标按键单击事件
-模拟鼠标单击按键。buttonId：鼠标按键。
+模拟鼠标单击按键。buttonId：[鼠标按键](#鼠标按键)。
 
 **命令**
 ```bash
@@ -171,7 +175,7 @@ uinput -M -c 0
 ```
 
 ### 双击鼠标按键事件
-模拟双击鼠标按键。buttonId：鼠标按键。
+模拟双击鼠标按键。buttonId：[鼠标按键](#鼠标按键)。
 
 **命令**
 ```bash
@@ -218,6 +222,7 @@ uinput --mouse --drag <dx1> <dy1> <dx2> <dy2> [total time]
 # <dx1> <dy1>鼠标拖拽起点以屏幕左上角为原点的相对坐标系的位置坐标。
 # <dx2> <dy2>鼠标拖拽终点以屏幕左上角为原点的相对坐标系的位置坐标。
 # [total time]拖拽总耗时，可选参数，单位：ms，默认值为1000，取值范围：[1,15000]，仅支持整数。
+# 拖拽过程中，每隔约7ms注入一次鼠标移动事件，直至拖拽结束。拖拽总耗时不是7ms整数倍时，最后一次注入直接落于终点坐标。
 ```
 
 **使用示例**
@@ -258,7 +263,7 @@ uinput -M -c 0 -i 500 -c 0
 ### 查询鼠标光标信息
 查询当前鼠标光标信息。
 
-如果鼠标光标处于显示状态，将输出鼠标光标显示状态及PointerStyle。若传入`filePath`参数且鼠标光标为应用自定义光标（样式枚举值为-100），会将鼠标光标样式图以二进制形式保存到指定文件中。需要自行创建`filePath`文件。若未传入`filePath`参数，将不会保存样式图。当鼠标光标处于隐藏状态时，不会输出样式信息，也不会保存样式图。
+如果鼠标光标处于显示状态，将输出鼠标光标显示状态及[PointerStyle](../reference/apis-input-kit/js-apis-pointer.md#pointerstyle)。若传入`filePath`参数且鼠标光标为应用自定义光标（样式枚举值为-100），会将鼠标光标样式图以二进制形式保存到指定文件中。需要自行创建`filePath`文件。若未传入`filePath`参数，将不会保存样式图。当鼠标光标处于隐藏状态时，不会输出样式信息，也不会保存样式图。
 
 **命令**
 ```bash
@@ -282,7 +287,7 @@ uinput -M -q /data/local/tmp/testfile
 模拟键盘按键输入。
 
 ### 键盘按键按下事件
-模拟键盘按下按键，建议与键盘按键抬起事件搭配使用，确保事件闭环。keyCode：@ohos.multimodalInput.keyCode (键值)。
+模拟键盘按下按键，建议与键盘按键抬起事件搭配使用，确保事件闭环。keyCode：[@ohos.multimodalInput.keyCode (键值)](../reference/apis-input-kit/js-apis-keycode.md)。
 
 **命令**
 ```bash
@@ -291,7 +296,7 @@ uinput --keyboard --down <keyCode>
 ```
 
 ### 键盘按键抬起事件
-模拟键盘抬起按键，必须与键盘按键按下事件搭配使用，确保事件闭环。keyCode：@ohos.multimodalInput.keyCode (键值)。
+模拟键盘抬起按键，必须与键盘按键按下事件搭配使用，确保事件闭环。keyCode：[@ohos.multimodalInput.keyCode (键值)](../reference/apis-input-kit/js-apis-keycode.md)。
 
 **命令**
 ```bash
@@ -306,7 +311,7 @@ uinput -K -d 2017 -u 2017
 ```
 
 ### 键盘按键长按事件
-模拟键盘按下一个按键并保持设定的时长后抬起，无需再次注入键盘按键抬起事件。长按期间不会重复注入按键按下事件。keyCode：@ohos.multimodalInput.keyCode (键值)。
+模拟键盘按下一个按键并保持设定的时长后抬起，无需再次注入键盘按键抬起事件。长按期间不会重复注入按键按下事件。keyCode：[@ohos.multimodalInput.keyCode (键值)](../reference/apis-input-kit/js-apis-keycode.md)。
 
 **命令**
 ```bash
@@ -323,7 +328,7 @@ uinput -K -l 2017 6000
 ```
 
 ### 键盘按键持续输入事件
-模拟键盘按下一个按键并在设定的时长内持续输入按下事件后抬起，无需再次注入键盘按键抬起事件。长按期间会重复注入按键按下事件。keyCode：@ohos.multimodalInput.keyCode (键值)。
+模拟键盘按下一个按键并在设定的时长内持续输入按下事件后抬起，无需再次注入键盘按键抬起事件。长按期间会重复注入按键按下事件。keyCode：[@ohos.multimodalInput.keyCode (键值)](../reference/apis-input-kit/js-apis-keycode.md)。
 
 **命令**
 ```bash
@@ -373,7 +378,7 @@ uinput -K -t Hello,World!
 
 ## 控制注入的修饰键状态
 
-从API version 22开始，支持启用或禁用控制注入的修饰键状态能力，支持的修饰键包括：KEYCODE_ALT_LEFT、KEYCODE_ALT_RIGHT、KEYCODE_SHIFT_LEFT、KEYCODE_SHIFT_RIGHT、KEYCODE_CTRL_LEFT、KEYCODE_CTRL_RIGHT、KEYCODE_META_LEFT、KEYCODE_META_RIGHT，具体请参考keyCode：@ohos.multimodalInput.keyCode (键值)。
+从API version 22开始，支持启用或禁用控制注入的修饰键状态能力，支持的修饰键包括：KEYCODE_ALT_LEFT、KEYCODE_ALT_RIGHT、KEYCODE_SHIFT_LEFT、KEYCODE_SHIFT_RIGHT、KEYCODE_CTRL_LEFT、KEYCODE_CTRL_RIGHT、KEYCODE_META_LEFT、KEYCODE_META_RIGHT，具体请参考keyCode：[@ohos.multimodalInput.keyCode (键值)](../reference/apis-input-kit/js-apis-keycode.md)。
 
 ### 启用控制注入的修饰键状态能力
 
@@ -416,7 +421,7 @@ uinput enable_key_status 0
 
 ## 触控笔事件
 
-模拟触控笔点击、滑动等。实际注入效果与触摸事件一致，建议优先使用触摸事件命令。
+模拟触控笔点击、滑动等。实际注入效果与[触摸事件](#触摸事件)一致，建议优先使用触摸事件命令。
 
 ### 触控笔按下事件
 模拟触控笔在（dx dy）按下，建议与触控笔抬起事件搭配使用，确保事件闭环。
@@ -458,6 +463,7 @@ uinput --stylus --move <dx1> <dy1> <dx2> <dy2> [smooth time] [-k keep time]
 # <dx2> <dy2>触控笔移动终点以屏幕左上角为原点的相对坐标系的位置坐标。
 # [smooth time]移动时间，可选参数，单位：ms，默认值为1000，取值范围：[1,15000]，仅支持整数。
 # [-k keep time]移动至目标位置后抬起前的停留时间，可选参数，单位：ms，默认值为0，取值范围：[0,60000]，仅支持整数。
+# 移动及停留过程中，每隔约7ms注入一次移动事件，直至抬起。移动时间不是7ms整数倍时，最后一次注入直接落于终点坐标。
 ```
 
 **使用示例**
@@ -496,6 +502,7 @@ uinput --stylus --drag <dx1> <dy1> <dx2> <dy2> [press time] [total time]
 # <dx2> <dy2>触控笔拖拽终点以屏幕左上角为原点的相对坐标系的位置坐标。
 # [press time]按压时间，可选参数，需要与total time配合使用，如果有任一缺省，则命令不生效。同时缺省，命令生效。单位：ms，默认值为500，取值范围：[500,14500]，仅支持整数。
 # [total time]拖动时间，可选参数，需要与press time配合使用，如果有任一缺省，则命令不生效。同时缺省，命令生效。单位：ms，默认值为1000，取值范围：[1000,15000]，仅支持整数。[total time] - [press time]不能少于500，否则命令报错：total time input is error。
+# 拖拽过程中，每隔约7ms注入一次移动事件，直至拖拽结束。拖动时间不是7ms整数倍时，最后一次注入直接落于终点坐标。
 ```
 
 **使用示例**
@@ -565,6 +572,7 @@ uinput --touch --move <dx1> <dy1> <dx2> <dy2> [-k keep time] [smooth time]
 # <dx2> <dy2>触摸移动终点以屏幕左上角为原点的相对坐标系的位置坐标。
 # [-k keep time]按下保持时间，可选参数，单位：ms，默认值为0，取值范围：[0,60000]，仅支持整数。
 # [smooth time]移动时间，可选参数，单位：ms，默认值为1000，取值范围：[1,15000]，仅支持整数。
+# 移动及保持按下过程中，每隔约7ms注入一次触摸移动事件，直至抬起。移动时间不是7ms整数倍时，最后一次注入直接落于终点坐标。
 ```
 
 **使用示例**
@@ -606,6 +614,7 @@ uinput --touch --drag <dx1> <dy1> <dx2> <dy2> [press time] [total time]
 # <dx2> <dy2>触摸拖拽终点以屏幕左上角为原点的相对坐标系的位置坐标。
 # [press time]按压时间，可选参数，需要与total time配合使用，如果有任一缺省，则命令不生效。同时缺省，命令生效。单位：ms，默认值为500，取值范围：[500,14500]，仅支持整数。
 # [total time]拖动时间，可选参数，需要与press time配合使用，如果有任一缺省，则命令不生效。同时缺省，命令生效。单位：ms，默认值为1000，取值范围：[1000,15000]，仅支持整数。[total time] - [press time]不能少于500，否则命令报错：total time input is error。
+# 拖拽过程中，每隔约7ms注入一次移动事件，直至拖拽结束。拖动时间不是7ms整数倍时，最后一次注入直接落于终点坐标。
 ```
 
 **使用示例**

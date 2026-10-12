@@ -7,7 +7,7 @@
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
-list是用来显示列表的组件，包含一系列相同宽度的列表项，适合连续、多行地呈现同类数据。具体用法请参考list API。
+list是用来显示列表的组件，包含一系列相同宽度的列表项，适合连续、多行地呈现同类数据。具体用法请参考[list API](../reference/apis-arkui/arkui-js/js-components-container-list.md)。
 
 
 ## 创建list组件
@@ -42,7 +42,7 @@ list是用来显示列表的组件，包含一系列相同宽度的列表项，�
 }
 ```
 
-list-Component
+![list-Component](figures/list-Component.png)
 
 > **说明：**
 > - &lt;list-item-group&gt;是&lt;list&gt;的子组件，实现列表分组功能，不能再嵌套&lt;list&gt;，可以嵌套&lt;list-item&gt;。
@@ -86,7 +86,7 @@ list-Component
 }
 ```
 
-Adding-Scrollbar
+![Adding-Scrollbar](figures/Adding-Scrollbar.gif)
 
 
 ## 添加侧边索引栏
@@ -115,7 +115,7 @@ Adding-Scrollbar
 }
 ```
 
-Side-Index-Bar
+![Side-Index-Bar](figures/Side-Index-Bar.png)
 
 > **说明：**
 > - indexer属性生效需要flex-direction属性配合设置为column，且columns属性设置为1。
@@ -198,7 +198,7 @@ export default {
 }
 ```
 
-Expanding-List
+![Expanding-List](figures/Expanding-List.gif)
 
 > **说明：**
 >
@@ -314,4 +314,4 @@ export default {
 ```
 
 
-Example-Scenario-7
+![Example-Scenario-7](figures/Example-Scenario-7.gif)

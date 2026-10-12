@@ -6,7 +6,7 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
-使用OffscreenCanvas在离屏Canvas画布组件上进行绘制，绘制对象可以是矩形、文本、图片等。 离屏，即GPU在当前缓冲区以外新开辟的一个缓冲区。具体请参考OffscreenCanvasRenderingContext2D对象。
+使用OffscreenCanvas在离屏Canvas画布组件上进行绘制，绘制对象可以是矩形、文本、图片等。 离屏，即GPU在当前缓冲区以外新开辟的一个缓冲区。具体请参考[OffscreenCanvasRenderingContext2D对象](../reference/apis-arkui/arkui-js/js-offscreencanvasrenderingcontext2d.md)。
 
 以下示例创建了一个OffscreenCanvas画布，再在画布上创建一个getContext2d对象，并设置filter属性改变图片样式。
 
@@ -95,7 +95,7 @@ export default {
 ```
 
 
-OffscreenCanvasRenderingContext2D
+![OffscreenCanvasRenderingContext2D](figures/OffscreenCanvasRenderingContext2D.gif)
 
 
 ## 判断位置
@@ -202,4 +202,4 @@ export default {
 }
 ```
 
-Determining-Position
+![Determining-Position](figures/Determining-Position.gif)

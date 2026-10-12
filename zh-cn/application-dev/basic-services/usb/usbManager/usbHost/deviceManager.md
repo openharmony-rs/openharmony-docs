@@ -1,4 +1,4 @@
-# USB设备管理
+# USB设备管理（ArkTS）
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: USB-->
@@ -17,7 +17,7 @@
 
 - 开发工具及配置：
 
-  DevEco Studio作为驱动开发工具，是进行驱动开发必备条件之一，开发者可以使用该工具进行开发、调试、打包等操作。请下载安装该工具，并参考DevEco Studio使用指南中的创建工程及运行进行基本的操作验证，保证DevEco Studio可正常运行。
+  DevEco Studio作为驱动开发工具，是进行驱动开发必备条件之一，开发者可以使用该工具进行开发、调试、打包等操作。请[下载安装](https://developer.huawei.com/consumer/cn/download/)该工具，并参考[DevEco Studio使用指南](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-tools-overview)中的[创建工程及运行](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-create-new-project)进行基本的操作验证，保证DevEco Studio可正常运行。
 
 
 - SDK版本配置：
@@ -27,12 +27,12 @@
 
 - HDC配置：
 
-  HDC（HarmonyOS Device Connector）是为开发人员提供的用于调试的命令行工具，通过该工具可以在Windows/Linux/Mac系统上与真实设备或者模拟器进行交互，详细参考HDC配置。
+  HDC（HarmonyOS Device Connector）是为开发人员提供的用于调试的命令行工具，通过该工具可以在Windows/Linux/Mac系统上与真实设备或者模拟器进行交互，详细参考[HDC配置](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/hdc)。
 
 ### 搭建环境
 
-- 在PC上安装DevEco Studio，要求版本在4.1及以上。
-- 将public-SDK更新到API 16或以上<!--Del-->，更新SDK的具体操作可参见更新指南<!--DelEnd-->。
+- 在PC上安装[DevEco Studio](https://developer.huawei.com/consumer/cn/download/deveco-studio)，要求版本在4.1及以上。
+- 将public-SDK更新到API 16或以上<!--Del-->，更新SDK的具体操作可参见[更新指南](../../../../faqs/full-sdk-switch-guide.md)<!--DelEnd-->。
 - PC安装HDC工具，通过该工具可以在Windows/Linux/Mac系统上与真实设备或者模拟器进行交互。
 - 用USB线缆将搭载OpenHarmony的设备连接到PC。
 
@@ -42,7 +42,7 @@
 
 USB设备管理主要提供的功能有：查询USB设备列表、USB设备权限控制、设置USB设备配置等。
 
-USB类开放能力如下，具体请查阅@ohos.usbManager。
+USB类开放能力如下，具体请查阅[@ohos.usbManager](../../../../reference/apis-basic-services-kit/js-apis-usbManager.md)。
 
 **表1** USB类的开放能力接口
 
@@ -56,6 +56,7 @@ USB类开放能力如下，具体请查阅@ohos.usbManager。
 | setConfiguration(pipe: USBDevicePipe, config: USBConfiguration): number | 设置设备的配置。                                             |
 | setInterface(pipe: USBDevicePipe, iface: USBInterface): number   | 设置设备的接口。                                             |
 | claimInterface(pipe: USBDevicePipe, iface: USBInterface, force ?: boolean): number | 注册通信接口。                                                   |
+| claimInterfaceExclusive(pipe: USBDevicePipe, iface: USBInterface, force?: boolean, onConflict?: Callback&lt;InterfaceConflictInfo&gt;): void | 独占方式声明USB设备接口。                                                   |
 | closePipe(pipe: USBDevicePipe): number                         | 关闭设备消息控制通道。                                       |
 | releaseInterface(pipe: USBDevicePipe, iface: USBInterface): number | 释放注册过的通信接口。                                                   |
 | getFileDescriptor(pipe: USBDevicePipe): number                 | 获取文件描述符。                                             |
@@ -68,7 +69,7 @@ USB设备可作为Host连接Device进行设备管理，开发示例如下：
 
 1. 导入模块。
 
-   <!-- @head -->
+   <!-- @[head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    // 导入usbManager模块
@@ -79,7 +80,7 @@ USB设备可作为Host连接Device进行设备管理，开发示例如下：
 
 2. 获取设备列表。
 
-   <!-- @getDevices --> 
+   <!-- @[getDevices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    // 获取设备列表。
@@ -154,7 +155,7 @@ USB设备可作为Host连接Device进行设备管理，开发示例如下：
 
 3. 获取设备操作权限。
 
-   <!-- @requestRight -->
+   <!-- @[requestRight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    if (this.deviceList_ === undefined || this.deviceList_.length === 0) {
@@ -177,7 +178,7 @@ USB设备可作为Host连接Device进行设备管理，开发示例如下：
 
 4. 打开Device设备。
 
-   <!-- @connectDevice --> 
+   <!-- @[connectDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    if (this.deviceList_ === undefined || this.deviceList_.length === 0) {
@@ -194,6 +195,11 @@ USB设备可作为Host连接Device进行设备管理，开发示例如下：
      }
      // 打开设备，获取数据传输通道。
      let pipe: usbManager.USBDevicePipe = usbManager.connectDevice(deviceList[0]);
+     if (!pipe) {
+       console.error('connectDevice failed, pipe is undefined');
+       this.logInfo_ += '\n[ERROR] connectDevice failed, pipe is undefined';
+       return;
+     }
      if (!deviceList?.[0]?.configs?.[0]?.interfaces?.[0]) {
        console.error('invalid interface');
        this.logInfo_ += '\n[ERROR] invalid interface';
@@ -203,8 +209,27 @@ USB设备可作为Host连接Device进行设备管理，开发示例如下：
      /*
        打开对应接口，在设备信息（deviceList）中选取对应的interface。
        interface1为设备配置中的一个接口。
+       开关关闭时调用claimInterface（共享式占用，返回0成功），
+       开关打开时调用claimInterfaceExclusive（独占式占用，失败抛出BusinessError）。
       */
-     usbManager.claimInterface(pipe, interface1, true);
+     if (this.isExclusiveClaim_) {
+       usbManager.claimInterfaceExclusive(pipe, interface1, true, (conflict: usbManager.InterfaceConflictInfo) => {
+         // 其他应用claim同一接口时的异步冲突通知
+         const conflictMsg = `busNum = ${conflict.busNum}, devAddr = ${conflict.devAddr}, ` +
+           `interfaceId = ${conflict.interfaceId}`;
+         console.info(`interface conflict: ${conflictMsg}`);
+         this.logInfo_ += `\n[INFO] interface conflict: ${conflictMsg}`;
+       });
+       console.info('claimInterfaceExclusive success');
+       this.logInfo_ += '\n[INFO] claimInterfaceExclusive success';
+     } else {
+       let claimInterfaceResult: number = usbManager.claimInterface(pipe, interface1, true);
+       if (claimInterfaceResult !== 0) {
+         console.error(`claimInterface error = ${claimInterfaceResult}`);
+         this.logInfo_ += '\n[ERROR] claimInterface error = ' + JSON.stringify(claimInterfaceResult);
+         return;
+       }
+     }
      this.pipe_ = pipe;
      this.interface_ = interface1;
      console.info('open device success');
@@ -218,7 +243,7 @@ USB设备可作为Host连接Device进行设备管理，开发示例如下：
 
 5. 释放接口，关闭设备。
 
-   <!-- @closePipe --> 
+   <!-- @[closePipe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    if (this.pipe_ === undefined || this.interface_ === undefined) {
@@ -247,4 +272,4 @@ USB设备可作为Host连接Device进行设备管理，开发示例如下：
 
 针对USB管理开发，有以下相关实例可供参考：
 
-- `DeviceManagementCollection`：设备管理合集（ArkTS）（API9）
+- [`DeviceManagementCollection`：设备管理合集（ArkTS）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/DeviceManagement/DeviceManagementCollection)

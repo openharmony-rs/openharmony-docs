@@ -10,15 +10,15 @@
 
 ## Slider组件滑块与滑轨是如何对齐的
 
-Slider的滑块与滑轨显示样式SliderStyle有三种，其中SliderStyle.OutSet与SliderStyle.InSet存在滑块。Slider的滑动条进度为最小值时，滑块对齐方式如下：
+Slider的滑块与滑轨显示样式[SliderStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md#sliderstyle枚举说明)有三种，其中SliderStyle.OutSet与SliderStyle.InSet存在滑块。Slider的滑动条进度为最小值时，滑块对齐方式如下：
 
 SliderStyle.OutSet模式下，滑块的中心与滑轨的端点对齐，示例图如下：
 
-OutSet示意图
+![OutSet示意图](figures/SliderOutset.jpg)
 
 SliderStyle.InSet模式下，滑块与滑轨的中心对齐，即距离端点滑轨高度的一半的位置，示例图如下：
 
-InSet示意图
+![InSet示意图](figures/SliderInset.jpg)
 
 **示例**
 
@@ -60,14 +60,14 @@ struct Index {
 **可能原因**
 
 设置LabelStyle有两种方式，其中：
-- 直接设置LabelStyle。此时font属性中的weight默认值为FontWeight.Medium，对应数值500。
-- 通过AttributeModifier接口设置。此时font属性中的weight默认值为400，与LabelStyle对象说明中的默认值存在差异。
+- 直接设置[LabelStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md#labelstyle10对象说明)。此时font属性中的weight默认值为FontWeight.Medium，对应数值500。
+- 通过[AttributeModifier](../reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md#attributemodifier)接口设置。此时font属性中的weight默认值为400，与LabelStyle对象说明中的默认值存在差异。
 
 **解决措施**
 
 为避免不同设置方式导致的显示差异，建议在通过AttributeModifier接口设置LabelStyle时，显式指定weight的值，以确保文本样式符合预期，具体示例如下。
 
-<!-- @button_modifier_faq -->
+<!-- @[button_modifier_faq](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/pages/ButtonModifierFAQ.ets) -->
 
 ```ts
 
@@ -117,17 +117,17 @@ struct Index {
 }
 ```
 
-ButtonModifier差异示意图
+![ButtonModifier差异示意图](figures/ButtonModifier.png)
 
 ## Button组件设置type时，ButtonType枚举值与数字值不一致
 
 **问题现象**
 
-Button组件的type属性支持使用ButtonType枚举或数字进行设置，但SDK中枚举的数值与实际type可用的数值不一致。例如ButtonType.ROUNDED_RECTANGLE枚举数值为3，但是使用`type(ButtonType.ROUNDED_RECTANGLE)`与`type(3)`的效果不同。
+Button组件的type属性支持使用[ButtonType](../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-button.md#buttontype枚举说明)枚举或数字进行设置，但SDK中枚举的数值与实际type可用的数值不一致。例如ButtonType.ROUNDED_RECTANGLE枚举数值为3，但是使用`type(ButtonType.ROUNDED_RECTANGLE)`与`type(3)`的效果不同。
 
 **可能原因**
 
-ButtonType枚举数值的定义仅表示枚举项的索引，与type属性实际接收数值不同。映射如下：
+[ButtonType](../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-button.md#buttontype枚举说明)枚举数值的定义仅表示枚举项的索引，与type属性实际接收数值不同。映射如下：
 
 | ButtonType枚举 | 枚举值 | type实际数值 |
 | --- | --- | --- |
@@ -140,11 +140,11 @@ ButtonType枚举数值的定义仅表示枚举项的索引，与type属性实际
 
 **解决措施**
 
-建议使用ButtonType枚举进行设置，避免直接使用数字值可能带来的混淆。如果确需使用数字值，请参照上表中的"type实际数值"列进行设置。
+建议使用[ButtonType](../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-components-button.md#buttontype枚举说明)枚举进行设置，避免直接使用数字值可能带来的混淆。如果确需使用数字值，请参照上表中的"type实际数值"列进行设置。
 
 **示例**
 
-<!-- @button_type_faq -->
+<!-- @[button_type_faq](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/pages/ButtonTypeFAQ.ets) -->
 
 ``` TypeScript
 // pages/ButtonTypeFAQ.ets
@@ -188,4 +188,4 @@ struct ButtonTypeDemo {
 }
 ```
 
-ButtonType枚举与数值示意图
+![ButtonType枚举与数值示意图](figures/ButtonTypeValue.png)

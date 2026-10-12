@@ -1,31 +1,31 @@
 # 本地媒体会话常见问题
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @devil_red-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
-本文汇总音视频应用在本地媒体会话接入AVSession Kit简介过程中遇到的典型问题及其定位与解决方法。开发者可结合媒体会话管理错误码和HiLog日志进一步定位问题。
+本文汇总音视频应用在本地媒体会话接入[AVSession Kit简介](avsession-overview.md)过程中遇到的典型问题及其定位与解决方法。开发者可结合[媒体会话管理错误码](../../reference/apis-avsession-kit/errorcode-avsession.md)和HiLog日志进一步定位问题。
 
 ## 创建AVSession失败
 
 **问题现象**
 
-调用createAVSession抛出异常，会话未创建成功。
+调用[createAVSession](../../reference/apis-avsession-kit/arkts-apis-avsession-f.md#avsessioncreateavsession10)抛出异常，会话未创建成功。
 
 **可能原因**
 
 - 重复创建AVSession会话对象。一个进程只能存在一个AVSession会话对象。
 - 存在频繁创建和销毁AVSession的场景时，旧会话尚未销毁完成。destroy调用是异步过程，如果应用在调用destroy后立即创建新的AVSession，可能因前一个会话尚未完成销毁，导致新会话创建失败。
 - context入参无效。createAVSession的context需要使用应用的合法上下文。
-- type参数取值非法。type必须为AVSessionType定义的值（`audio`/`video`/`voice_call`/`video_call`/`photo`），传入其他字符串会导致校验失败。
+- type参数取值非法。type必须为[AVSessionType](../../reference/apis-avsession-kit/arkts-apis-avsession-t.md#avsessiontype10)定义的值（`audio`/`video`/`voice_call`/`video_call`/`photo`），传入其他字符串会导致校验失败。
 - 其他必填参数传入非法值。createAVSession的context、tag、type均为必填参数，任一缺失或非法都会抛出异常。
 
 **解决措施**
 
-1. 确认是否已经存在存活的AVSession，必要时先调用destroy释放旧会话后再创建。在创建前还可以通过getAVSession接口判断当前应用是否已经创建过会话对象，再决定是否销毁旧会话或直接复用已有会话。
-2. 频繁创建和销毁场景下，通过媒体会话控制器监听on('sessionDestroy')事件，待收到旧会话销毁回调后再创建新的AVSession对象。
+1. 确认是否已经存在存活的AVSession，必要时先调用[destroy](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#destroy10)释放旧会话后再创建。在创建前还可以通过[getAVSession](../../reference/apis-avsession-kit/arkts-apis-avsession-f.md#avsessiongetavsession22)接口判断当前应用是否已经创建过会话对象，再决定是否销毁旧会话或直接复用已有会话。
+2. 频繁创建和销毁场景下，通过媒体会话控制器监听[on('sessionDestroy')](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSessionController.md#onsessiondestroy10)事件，待收到旧会话销毁回调后再创建新的AVSession对象。
 
     ```TypeScript
     import { avSession } from '@kit.AVSessionKit';
@@ -55,7 +55,7 @@
     ```
 
 3. 推荐通过`this.getUIContext().getHostContext() as Context`获取context，避免传入undefined或非当前UIAbility的上下文。
-4. 确保type为AVSessionType定义的合法取值。
+4. 确保type为[AVSessionType](../../reference/apis-avsession-kit/arkts-apis-avsession-t.md#avsessiontype10)定义的合法取值。
 5. 确保所有必填参数均为合法非空值，例如tag避免传入空字符串等无效值。
 
 ## 应用退至后台后音视频被强制暂停
@@ -74,16 +74,16 @@
 
 **解决措施**
 
-1. 参考后台播放中的接入AVSession完成AVSession接入。
-2. 申请AUDIO_PLAYBACK类型长时任务(ArkTS)。
+1. 参考后台播放中的[接入AVSession](avsession-background-scene.md#接入avsession)完成AVSession接入。
+2. 申请AUDIO_PLAYBACK类型[长时任务(ArkTS)](../../task-management/continuous-task.md)。
 3. 使用类成员变量保存session实例，并在应用进程结束或退出播放业务时再释放。
-4. 参考创建AVSession失败中的相关原因逐一排查，确保应用持有有效会话。
-5. 应用退至后台前通过setBackgroundPlayMode设置后台播放模式（BackgroundPlayMode），告知系统应用退至后台时是否继续播放：
+4. 参考[创建AVSession失败](#创建avsession失败)中的相关原因逐一排查，确保应用持有有效会话。
+5. 应用退至后台前通过[setBackgroundPlayMode](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#setbackgroundplaymode24)设置后台播放模式（[BackgroundPlayMode](../../reference/apis-avsession-kit/arkts-apis-avsession-e.md#backgroundplaymode24)），告知系统应用退至后台时是否继续播放：
 
      - `ENABLE_BACKGROUND_PLAY`（支持后台播放）：应用退至后台时仍继续播放。
      - `DISABLE_BACKGROUND_PLAY`（不支持后台播放）：应用退至后台时不再继续播放。
 
-     其中AVSessionType为`audio`类型的应用默认值为`ENABLE_BACKGROUND_PLAY`；`video`类型的应用默认值为`DISABLE_BACKGROUND_PLAY`。如果视频类应用希望支持后台放音，需显式设置为`ENABLE_BACKGROUND_PLAY`；如果应用内提供了"是否支持后台播放"的开关，设置的后台播放模式务必与开关状态保持一致，否则可能导致退后台后被强制暂停或系统实况窗展示错误。设置示例如下：
+     其中[AVSessionType](../../reference/apis-avsession-kit/arkts-apis-avsession-t.md#avsessiontype10)为`audio`类型的应用默认值为`ENABLE_BACKGROUND_PLAY`；`video`类型的应用默认值为`DISABLE_BACKGROUND_PLAY`。如果视频类应用希望支持后台放音，需显式设置为`ENABLE_BACKGROUND_PLAY`；如果应用内提供了"是否支持后台播放"的开关，设置的后台播放模式务必与开关状态保持一致，否则可能导致退后台后被强制暂停或系统实况窗展示错误。设置示例如下：
 
      ```TypeScript
      import { avSession } from '@kit.AVSessionKit';
@@ -101,7 +101,7 @@
      }
      ```
 
-     更多说明请参考设置后台播放模式。
+     更多说明请参考[设置后台播放模式](avsession-background-scene.md#设置后台播放模式)。
 
 ## 播控中心看不到应用会话
 
@@ -113,17 +113,17 @@
 
 - 未设置元数据或元数据设置失败。
 - 未注册任何控制命令回调。会话在播控中心上屏展示要求至少注册一个控制命令（如播放/暂停）。
-- 封面图等字段包含非法字符导致图片不展示。AVMetadata中的mediaImage字段传入的文件路径若包含中文字符或特殊字符（如`/`、`·`等），会导致图片无法正常展示；同理，avQueueName和avQueueId传入非法字符也可能导致图片不展示。
-- 歌词内容超出长度限制。AVMetadata中的lyric字段（歌词内容）字符串长度需小于40960字节，超出限制播控中心将不显示歌词内容。
+- 封面图等字段包含非法字符导致图片不展示。[AVMetadata](../../reference/apis-avsession-kit/arkts-apis-avsession-i.md#avmetadata10)中的mediaImage字段传入的文件路径若包含中文字符或特殊字符（如`/`、`·`等），会导致图片无法正常展示；同理，avQueueName和avQueueId传入非法字符也可能导致图片不展示。
+- 歌词内容超出长度限制。[AVMetadata](../../reference/apis-avsession-kit/arkts-apis-avsession-i.md#avmetadata10)中的lyric字段（歌词内容）字符串长度需小于40960字节，超出限制播控中心将不显示歌词内容。
 - 通话类应用未使用通话会话类型，或系统版本/应用分类不满足要求。<!--RP1--><!--RP1End-->
 
 **解决措施**
 
-1. 设置标题、副标题/歌手、封面图等媒体信息，具体请参考设置元数据信息。确保assetId等元数据关键字段为合法值，避免传入空字符串导致设置失败。
-2. 至少注册一个控制命令，具体请参考控制命令的处理。
+1. 设置标题、副标题/歌手、封面图等媒体信息，具体请参考[设置元数据信息](avsession-access-scene.md#设置元数据信息)。确保assetId等元数据关键字段为合法值，避免传入空字符串导致设置失败。
+2. 至少注册一个控制命令，具体请参考[控制命令的处理](avsession-access-scene.md#控制命令的处理)。
 3. 确保mediaImage、avQueueName、avQueueId等相关字段取值为合法字符。
 4. 确保歌词内容不超过40960字节的长度限制。
-5. 通话类应用接入AVSession时，会话类型（AVSessionType）需选择`voice_call`或`video_call`。<!--RP2--><!--RP2End-->
+5. 通话类应用接入AVSession时，会话类型（[AVSessionType](../../reference/apis-avsession-kit/arkts-apis-avsession-t.md#avsessiontype10)）需选择`voice_call`或`video_call`。<!--RP2--><!--RP2End-->
 
 ## 播控命令无响应 / 播控展示与实际不符
 
@@ -139,9 +139,9 @@
 
 **解决措施**
 
-1. 通过activate激活会话，确认会话已完成激活。
-2. 通过AVSession对象的`on('play')`、`on('pause')`、`on('playNext')`、`on('playPrevious')`等接口注册对应控制命令的监听，并在回调中驱动播放器执行相应操作。请参考控制命令的处理补全注册逻辑。
-3. 在播放状态变更时调用setAVPlaybackState更新播放状态。当状态设置为PLAYBACK_STATE_PAUSE，应用回到后台5秒后，系统将回收胶囊位置的播控卡片；10分钟后，系统将回收通知栏、锁屏位置的播控卡片。
+1. 通过[activate](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#activate10)激活会话，确认会话已完成激活。
+2. 通过AVSession对象的`on('play')`、`on('pause')`、`on('playNext')`、`on('playPrevious')`等接口注册对应控制命令的监听，并在回调中驱动播放器执行相应操作。请参考[控制命令的处理](avsession-access-scene.md#控制命令的处理)补全注册逻辑。
+3. 在播放状态变更时调用[setAVPlaybackState](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#setavplaybackstate10)更新播放状态。当状态设置为[PLAYBACK_STATE_PAUSE](../../reference/apis-avsession-kit/arkts-apis-avsession-e.md#playbackstate10)，应用回到后台5秒后，系统将回收胶囊位置的播控卡片；10分钟后，系统将回收通知栏、锁屏位置的播控卡片。
 
 ## 播控进度条回退闪烁
 
@@ -155,7 +155,7 @@
 
 **解决措施**
 
-在播放器起播前，先通过setAVPlaybackState将状态置为PLAYBACK_STATE_BUFFERING（缓冲），待真正起播后再同步状态与进度。
+在播放器起播前，先通过[setAVPlaybackState](../../reference/apis-avsession-kit/arkts-apis-avsession-AVSession.md#setavplaybackstate10)将状态置为[PLAYBACK_STATE_BUFFERING](../../reference/apis-avsession-kit/arkts-apis-avsession-e.md#playbackstate10)（缓冲），待真正起播后再同步状态与进度。
 
 ```TypeScript
 import { avSession } from '@kit.AVSessionKit';

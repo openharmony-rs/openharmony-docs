@@ -14,7 +14,7 @@
 
 ### 触摸事件
 
-触摸事件（onTouch事件）是所有手势组成的基础，包括Down、Move、Up、Cancel四种类型。手势均由触摸事件组成，例如，点击为Down和Up，滑动为Down和一系列Move及Up。触摸事件具有以下特殊性：
+[触摸事件](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md)（onTouch事件）是所有手势组成的基础，包括Down、Move、Up、Cancel四种类型。手势均由触摸事件组成，例如，点击为Down和Up，滑动为Down和一系列Move及Up。触摸事件具有以下特殊性：
 
 1. 监听了onTouch事件的组件，在手指落下被触摸时均会收到onTouch事件的回调，被触摸受到触摸热区和触摸控制影响。
 
@@ -32,7 +32,7 @@
 
 对于一般的容器组件（例如：Column），父子组件之间onTouch事件能够同时触发，兄弟组件之间onTouch事件根据布局进行触发。
 
-<!-- @column_touch -->
+<!-- @[column_touch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/TouchEvent.ets) -->
 
 ``` TypeScript
 Column() {
@@ -48,7 +48,7 @@ Column() {
 
 所以，父子组件之间onTouch事件能够同时触发，兄弟组件之间onTouch事件会存在遮盖关系。
 
-<!-- @stack_touch -->
+<!-- @[stack_touch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/TouchEvent.ets) -->
 
 ``` TypeScript
 Stack() {
@@ -72,7 +72,7 @@ Stack() {
 
 2. 当一个组件绑定多个手势时，先达到手势触发条件的手势优先触发。
 
-<!-- @priorityfirst_gesture -->
+<!-- @[priorityfirst_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/GesturesEvents.ets) -->
 
 ``` TypeScript
 Column() {
@@ -84,7 +84,7 @@ Column() {
 
 因此，当在B组件上进行点击时，组件B所绑定的TapGesture的回调会被触发，而组件A所绑定的TapGesture的回调不会被触发。
 
-<!-- @prioritysecond_gesture -->
+<!-- @[prioritysecond_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/GesturesEvents.ets) -->
 
 ``` TypeScript
 Column()
@@ -106,13 +106,13 @@ Column()
 
 可以通过设置属性，控制默认的多层级手势事件竞争流程，更好地实现手势事件。
 
-目前，通过设置触摸热区和触摸测试可以控制Touch事件的分发，从而可以影响到onTouch事件和手势的响应。而绑定手势方法属性可以控制手势的竞争从而影响手势的响应，但不能影响到onTouch事件。
+目前，通过设置[触摸热区](../reference/apis-arkui/arkui-ts/ts-universal-attributes-touch-target.md)和[触摸测试](../reference/apis-arkui/arkui-ts/ts-universal-attributes-hit-test-behavior.md)可以控制Touch事件的分发，从而可以影响到onTouch事件和手势的响应。而绑定手势方法属性可以控制手势的竞争从而影响手势的响应，但不能影响到onTouch事件。
 
 ### 触摸热区对手势和事件的控制
 
-通过responseRegion和mouseResponseRegion属性可以设置组件的触摸热区。从API version 22开始，支持通过responseRegionList设置组件的触摸热区。触摸热区范围可以超出或者小于组件的布局范围。
+通过[responseRegion](../reference/apis-arkui/arkui-ts/ts-universal-attributes-touch-target.md#responseregion)和[mouseResponseRegion](../reference/apis-arkui/arkui-ts/ts-universal-attributes-touch-target.md#mouseresponseregion10)属性可以设置组件的触摸热区。从API version 22开始，支持通过[responseRegionList](../reference/apis-arkui/arkui-ts/ts-universal-attributes-touch-target.md#responseregionlist22)设置组件的触摸热区。触摸热区范围可以超出或者小于组件的布局范围。
 
-<!-- @response_region -->
+<!-- @[response_region](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/CustomEvent.ets) -->
 
 ``` TypeScript
 Column() {
@@ -137,9 +137,9 @@ Column() {
 
 ### 触摸测试对手势和事件的控制
 
-hitTestBehavior属性可以实现在复杂的多层级场景下，一些组件能够响应手势和事件，而一些组件不能响应手势和事件。
+[hitTestBehavior](../reference/apis-arkui/arkui-ts/ts-universal-attributes-hit-test-behavior.md#hittestbehavior)属性可以实现在复杂的多层级场景下，一些组件能够响应手势和事件，而一些组件不能响应手势和事件。
 
-<!-- @hittestbehavior_first -->
+<!-- @[hittestbehavior_first](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/CustomEvent.ets) -->
 
 ``` TypeScript
 Column() {
@@ -169,7 +169,7 @@ HitTestMode.Block自身会响应触摸测试，阻塞子节点和兄弟节点的
 
 当组件C设置了hitTestBehavior为HitTestMode.Block时，点击组件D区域，组件A和组件C的onTouch事件会触发，组件D的onTouch事件未触发。同时，由于组件D的点击手势因为被阻塞而无法触发，组件C的点击手势会触发。
 
-<!-- @responseregion_second -->
+<!-- @[responseregion_second](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/CustomEvent.ets) -->
 
 ``` TypeScript
 Stack() {
@@ -194,7 +194,7 @@ HitTestMode.Transparent自身响应触摸测试，不会阻塞兄弟节点的触
 
 而当组件C设置hitTestBehavior为HitTestMode.Transparent时，点击组件B和组件C的重叠区域，组件A和组件C不受到影响与之前一致，组件A和组件C的onTouch事件会触发，组件C的点击手势会触发。而组件B因为组件C设置了HitTestMode.Transparent，组件B也收到了Touch事件，从而组件B的onTouch事件触发。
 
-<!-- @responseregion_thirdly -->
+<!-- @[responseregion_thirdly](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/CustomEvent.ets) -->
 
 ``` TypeScript
 Column() {
@@ -214,7 +214,7 @@ HitTestMode.None自身不响应触摸测试，不会阻塞子节点和兄弟节�
 
 当组件A设置hitTestBehavior为HitTestMode.None时，点击组件B区域时，组件B的onTouch事件触发，而组件A的onTouch事件无法触发，组件B的点击手势触发。
 
-<!-- @responseregion_fourth -->
+<!-- @[responseregion_fourth](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/CustomEvent.ets) -->
 
 ``` TypeScript
 Stack() {
@@ -243,7 +243,7 @@ Stack() {
 
 当组件C设置hitTestBehavior为HitTestMode.BLOCK_HIERARCHY时，点击组件B和组件D的重叠区域时，组件C和组件D的onTouch事件触发，组件A和组件B的onTouch事件无法触发，组件D的点击手势会触发。
 
-<!-- @responseregion_fifth -->
+<!-- @[responseregion_fifth](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/CustomEvent.ets) -->
 
 ``` TypeScript
 Stack() {
@@ -266,11 +266,11 @@ Stack() {
 .onTouch(() => {})
 .gesture(TapGesture({count: 1}))
 ```
-从API version 20开始，HitTestMode.BLOCK_DESCENDANTS自身不响应触摸测试，并且所有的后代（孩子，孙子等）也不响应触摸测试，不会影响祖先节点的触摸测试。
+从API version 20开始，[HitTestMode](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#hittestmode9).BLOCK_DESCENDANTS自身不响应触摸测试，并且所有的后代（孩子，孙子等）也不响应触摸测试，不会影响祖先节点的触摸测试。
 
-若组件C未设置hitTestBehavior，点击组件B和组件D的重叠区域时，组件A、组件C和组件D都会触发onTouch事件，同时组件D的点击手势也会被触发。
+若组件C未设置[hitTestBehavior](../reference/apis-arkui/arkui-ts/ts-universal-attributes-hit-test-behavior.md#hittestbehavior)，点击组件B和组件D的重叠区域时，组件A、组件C和组件D都会触发[onTouch](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#ontouch)事件，同时组件D的点击手势也会被触发。
 
-当组件C设置hitTestBehavior为HitTestMode.BLOCK_DESCENDANTS时，点击组件B和组件D的重叠区域时，组件A和组件B的onTouch事件触发，组件C和组件D的onTouch事件无法触发，组件B的点击手势会触发。
+当组件C设置[hitTestBehavior](../reference/apis-arkui/arkui-ts/ts-universal-attributes-hit-test-behavior.md#hittestbehavior)为HitTestMode.BLOCK_DESCENDANTS时，点击组件B和组件D的重叠区域时，组件A和组件B的[onTouch](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#ontouch)事件触发，组件C和组件D的[onTouch](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#ontouch)事件无法触发，组件B的点击手势会触发。
 
 针对简单的场景，建议在单个组件上绑定hitTestBehavior。
 
@@ -279,9 +279,9 @@ Stack() {
 ### 绑定手势方法对手势的控制
 设置绑定手势的方法可以实现在多层级场景下，当父组件与子组件绑定了相同的手势时，设置不同的绑定手势方法有不同的响应优先级。
 
-当父组件使用.gesture绑定手势，父子组件所绑定手势类型相同时，子组件优先于父组件响应。
+当父组件使用.[gesture](../reference/apis-arkui/arkui-ts/ts-gesture-settings.md#gesture)绑定手势，父子组件所绑定手势类型相同时，子组件优先于父组件响应。
 
-<!-- @bindingfirst_gesture -->
+<!-- @[bindingfirst_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/CustomEvent.ets) -->
 
 ``` TypeScript
 Column() {
@@ -299,7 +299,7 @@ Column() {
 
 如果以带优先级的方式绑定手势，则可使得父组件所绑定手势的响应优先级高于子组件。
 
-<!-- @bindingsecond_gesture -->
+<!-- @[bindingsecond_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/CustomEvent.ets) -->
 
 ``` TypeScript
 Column() {
@@ -311,13 +311,13 @@ Column() {
 .priorityGesture(TapGesture({count: 1}))
 ```
 
-当父组件以.priorityGesture的形式绑定手势时，父组件所绑定的手势优先级高于子组件。
+当父组件以.[priorityGesture](../reference/apis-arkui/arkui-ts/ts-gesture-settings.md#prioritygesture)的形式绑定手势时，父组件所绑定的手势优先级高于子组件。
 
 此时，单击组件B区域范围，组件A的点击手势会触发，组件B的点击手势不会触发。
 
 如果需要父子组件所绑定的手势不发生冲突，均可响应，则可以使用并行的方式在父组件绑定手势。
 
-<!-- @bindingthirdly_gesture -->
+<!-- @[bindingthirdly_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/CustomEvent.ets) -->
 
 ``` TypeScript
 Column() {
@@ -329,16 +329,16 @@ Column() {
 .parallelGesture(TapGesture({count: 1}))
 ```
 
-当父组件以.parallelGesture的形式绑定手势时，父组件和子组件所绑定的手势均可触发。
+当父组件以.[parallelGesture](../reference/apis-arkui/arkui-ts/ts-gesture-settings.md#parallelgesture)的形式绑定手势时，父组件和子组件所绑定的手势均可触发。
 
 此时，单击组件B区域范围，组件A和组件B的点击手势均会触发。
 
 ### OverlayManager的事件透传
-OverlayManager事件机制，默认优先被WrappedBuilder内组件先接收，不会向下传递。
+[OverlayManager](../reference/apis-arkui/arkts-apis-uicontext-overlaymanager.md)事件机制，默认优先被[WrappedBuilder](../reference/apis-arkui/arkui-ts/ts-universal-wrapBuilder.md#wrappedbuilder)内组件先接收，不会向下传递。
 
 若希望OverlayManager下方的页面也能感应到事件，可采用hitTestBehavior(HitTestMode.Transparent)来传递事件，参考以下伪代码。
 
-<!-- @overlay_manager -->
+<!-- @[overlay_manager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultilevelGestureEvents/entry/src/main/ets/pages/OverlayManager.ets) -->
 
 ``` TypeScript
 @Builder

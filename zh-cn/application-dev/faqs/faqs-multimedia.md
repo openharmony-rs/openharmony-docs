@@ -184,7 +184,7 @@ CAMERA_STATUS_AVAILABLE 2 相机可用。
 
 CAMERA_STATUS_UNAVAILABLE 3 相机不可用。
 
-参考文档：CameraStatus
+参考文档：[CameraStatus](../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#oncamerastatus)
 
 ## SoundPool播放的音频是否支持wmv格式？支持哪些格式？(API 10)
 **解决措施**
@@ -193,7 +193,7 @@ WMV当前是不支持，支持的格式有AAC、MPEG(MP3)、Flac、Vorbis。
 
 **参考资料**
 
-soundpool支持的格式与底层一致，支持的格式可以参考文档：音频解码
+soundpool支持的格式与底层一致，支持的格式可以参考文档：[音频解码](../media/avcodec/audio-decoding.md)
 
 ## 如何读取相机的预览图？(API 10)
 
@@ -203,7 +203,7 @@ soundpool支持的格式与底层一致，支持的格式可以参考文档：�
 
 **参考资料**
 
-readLatestImage
+[readLatestImage](../reference/apis-image-kit/arkts-apis-image-ImageReceiver.md#readlatestimage9)
 
 ## 如何实现录音监听？(API 10)
 
@@ -213,7 +213,7 @@ readLatestImage
 
 **参考资料**
 
-on('audioCapturerChange')
+[on('audioCapturerChange')](../reference/apis-audio-kit/arkts-apis-audio-AudioStreamManager.md#onaudiocapturerchange9)
 
 ## 音频处理哪些场景内置了3A处理的算法(AEC、ANC、AGC)？若内置了，有无音频3A处理的相关接口，如何调用？系统3A算法AEC、ANC、AGC是否支持独立开关？录音场景系统是否支持3A，如果不支持的话，解决方案是什么？例如：如何在播放音乐时，不影响音频录制的音质？(API 10)
 
@@ -223,17 +223,17 @@ on('audioCapturerChange')
 
 **参考资料**
 
-AudioCapturer
+[AudioCapturer](../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md)
 
 ## 如何实现低时延音频采集？(API 11)
 
 **解决措施**
 
-支持通过OHAudio C API接口AudioCapturer使用系统低时延采集，具体实现参考：推荐使用OHAudio开发音频录制功能(C/C++)。
+支持通过OHAudio C API接口AudioCapturer使用系统低时延采集，具体实现参考：[推荐使用OHAudio开发音频录制功能(C/C++)](../media/audio/using-ohaudio-for-recording.md)。
 
 **参考资料**
 
-OHAudio
+[OHAudio](../reference/apis-audio-kit/capi-ohaudio.md)
 
 ## 如何实现实时视频流传输？如何实现直播场景？(API 10)
 
@@ -243,8 +243,8 @@ OHAudio
 
 **参考资料**
 
-1. Media Kit
-2. AVPlayer
+1. [Media Kit](../media/media/media-kit-intro.md)
+2. [AVPlayer](../media/media/using-avplayer-for-playback.md)
 
 ## 音频播放器AVPlayer如何在后台进行播放？(API 10)
 
@@ -254,8 +254,8 @@ OHAudio
 
 **参考资料**
 
-1. 长时任务
-2. 应用接入AVSession场景介绍
+1. [长时任务](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/BackGroundTasksKit/ContinuousTask)
+2. [应用接入AVSession场景介绍](../media/avsession/avsession-access-scene.md)
 
 ## 三方应用为什么无法创建相册？(API 10)
 
@@ -281,5 +281,5 @@ OHAudio
 
 **参考资料**
 
-1. scale
-2. packing
+1. [scale](../reference/apis-image-kit/arkts-apis-image-PixelMap.md#scale9)
+2. [packing](../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#packing13)

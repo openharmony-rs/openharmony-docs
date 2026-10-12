@@ -13,13 +13,13 @@
 
 ## 在C++线程上调用ArkTS能力
 
-使用Node-API接口在C++线程中创建ArkTS运行环境并调用的方法，可以参考使用Node-API接口创建ArkTS运行时环境。
+使用Node-API接口在C++线程中创建ArkTS运行环境并调用的方法，可以参考[使用Node-API接口创建ArkTS运行时环境](../napi/use-napi-ark-runtime.md)。
 
 核心代码片段如下所示：
 
 ArkTS文件定义。
 
-<!-- @arkts_define_obj -->
+<!-- @[arkts_define_obj](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/NativeInterthreadShared/entry/src/main/ets/pages/SendableObjTest.ets) -->
 
 ``` TypeScript
 @Sendable
@@ -36,7 +36,7 @@ export class SendableObjTest {
 
 实现Native加载ArkTS模块的能力。
 
-<!-- @native_load_arkts_module -->
+<!-- @[native_load_arkts_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/NativeInterthreadShared/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 #include <thread>
@@ -90,7 +90,7 @@ static void* CreateEnvAndSendSendable(void*)
 }
 ```
 
-主要步骤包括：创建执行环境、加载模块、查找并调用模块函数（或直接通过Node-API接口创建Sendable对象），最后销毁执行环境。加载模块的详细信息，请参见使用Node-API接口进行模块加载。查找并调用函数及更多Node-API接口能力，请参见Node-API。
+主要步骤包括：创建执行环境、加载模块、查找并调用模块函数（或直接通过Node-API接口创建Sendable对象），最后销毁执行环境。加载模块的详细信息，请参见[使用Node-API接口进行模块加载](../napi/use-napi-load-module-with-info.md)。查找并调用函数及更多Node-API接口能力，请参见[Node-API](../reference/native-lib/napi.md)。
 
 ## 在C++线程之间操作Sendable共享对象
 
@@ -100,7 +100,7 @@ static void* CreateEnvAndSendSendable(void*)
 
 ArkTS文件定义。
 
-<!-- @arkts_define_obj -->
+<!-- @[arkts_define_obj](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/NativeInterthreadShared/entry/src/main/ets/pages/SendableObjTest.ets) -->
 
 ``` TypeScript
 @Sendable
@@ -117,7 +117,7 @@ export class SendableObjTest {
 
 在Native中实现两个线程的序列化和反序列化Sendable的逻辑。
 
-<!-- @native_deserialize_sendable -->
+<!-- @[native_deserialize_sendable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/NativeInterthreadShared/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 #include <thread>
@@ -254,7 +254,7 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
 }
 ```
 
-<!-- @native_deserialize_sendable -->
+<!-- @[native_deserialize_sendable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/NativeInterthreadShared/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ``` TypeScript
 export const testSendSendable: () => void;
@@ -262,7 +262,7 @@ export const testSendSendable: () => void;
 
 UI主线程发起调用。
 
-<!-- @main_thread_init_call -->
+<!-- @[main_thread_init_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/NativeInterthreadShared/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -303,4 +303,4 @@ struct Index {
 
    > **说明：**
    >
-   > 操作对象需要符合Sendable对象的规则，具体可见Sendable使用规则与约束。
+   > 操作对象需要符合Sendable对象的规则，具体可见[Sendable使用规则与约束](sendable-constraints.md)。

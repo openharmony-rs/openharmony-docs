@@ -13,7 +13,7 @@ Data Protection Kit为应用提供了将明文文件生成DLP文件的能力和�
 ## 开发步骤
 
 1. 接口所需模块导入。 
-    <!-- @dlp_include_dlpPermission -->
+    <!-- @[dlp_include_dlpPermission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     import { dlpPermission } from '@kit.DataProtectionKit';
@@ -23,11 +23,11 @@ Data Protection Kit为应用提供了将明文文件生成DLP文件的能力和�
 
     2.1 申请权限：ohos.permission.ENTERPRISE_ACCESS_DLP_FILE。
 
-    2.2 需要获取明文文件和加密文件的文件描述符。设置DLP文件通用策略DLPProperty和企业定制策略CustomProperty。
+    2.2 需要获取明文文件和加密文件的文件描述符。设置DLP文件通用策略[DLPProperty](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlpproperty21)和企业定制策略[CustomProperty](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#customproperty21)。
 
-    2.3 调用dlpPermission.generateDlpFileForEnterprise将明文文件加密生成企业账号DLP文件。
+    2.3 调用[dlpPermission.generateDlpFileForEnterprise](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissiongeneratedlpfileforenterprise21)将明文文件加密生成企业账号DLP文件。
 
-    <!-- @dlp_generateDlpFileForEnterprise -->
+    <!-- @[dlp_generateDlpFileForEnterprise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     async generateDlpFileForEnterprise() {
@@ -80,9 +80,9 @@ Data Protection Kit为应用提供了将明文文件生成DLP文件的能力和�
 
     3.2 需要获取明文文件和加密文件的文件描述符。
 
-    3.3 调用dlpPermission.decryptDlpFile将明文文件加密生成企业账号DLP文件。
+    3.3 调用[dlpPermission.decryptDlpFile](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissiondecryptdlpfile21)将明文文件加密生成企业账号DLP文件。
 
-    <!-- @dlp_decryptDlpFile -->
+    <!-- @[dlp_decryptDlpFile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     async decryptDlpFile() {

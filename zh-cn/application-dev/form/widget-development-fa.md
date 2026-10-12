@@ -23,7 +23,7 @@ FormAbility生命周期接口如下：
 | onShare?(formId:&nbsp;string):&nbsp;{[key:&nbsp;string]:&nbsp;any} | 卡片提供方接收卡片分享的通知接口。 |
 | onShareForm?(formId:&nbsp;string):&nbsp;Record&lt;string,&nbsp;Object&gt; | 卡片提供方接收卡片分享的通知接口。推荐使用该接口替代onShare接口。如果实现了该接口，onShare将不再被回调。 |
 
-FormProvider类有如下API接口，具体的API介绍详见@ohos.app.form.formProvider (formProvider)。
+FormProvider类有如下API接口，具体的API介绍详见[@ohos.app.form.formProvider (formProvider)](../reference/apis-form-kit/js-apis-app-form-formProvider.md)。
 
 
 | 接口名 | 描述 |
@@ -34,7 +34,7 @@ FormProvider类有如下API接口，具体的API介绍详见@ohos.app.form.formP
 | updateForm(formId:&nbsp;string,&nbsp;formBindingData:&nbsp;FormBindingData):&nbsp;Promise&lt;void&gt;; | 更新指定的卡片，以promise方式返回。 |
 
 
-FormBindingData类有如下API接口，具体的API介绍详见@ohos.app.form.formBindingData (卡片数据绑定类)。
+FormBindingData类有如下API接口，具体的API介绍详见[@ohos.app.form.formBindingData (卡片数据绑定类)](../reference/apis-form-kit/js-apis-app-form-formBindingData.md)。
 
 
 | 接口名 | 描述 |
@@ -44,24 +44,24 @@ FormBindingData类有如下API接口，具体的API介绍详见@ohos.app.form.fo
 
 ## 开发步骤
 
-FA卡片开发，即基于FA模型的卡片提供方开发，主要涉及如下关键步骤：
+FA卡片开发，即基于[FA模型](../application-models/fa-model-development-overview.md)的卡片提供方开发，主要涉及如下关键步骤：
 
-- 实现卡片生命周期接口：开发FormAbility生命周期回调函数。
+- [实现卡片生命周期接口](#实现卡片生命周期接口)：开发FormAbility生命周期回调函数。
 
-- 配置卡片配置文件：配置应用配置文件config.json。
+- [配置卡片配置文件](#配置卡片配置文件)：配置应用配置文件config.json。
 
-- 卡片信息的持久化：对卡片信息进行持久化管理。
+- [卡片信息的持久化](#卡片信息的持久化)：对卡片信息进行持久化管理。
 
-- 卡片数据交互：通过updateForm()更新卡片显示的信息。
+- [卡片数据交互](#卡片数据交互)：通过updateForm()更新卡片显示的信息。
 
-- 开发卡片页面：使用HML+CSS+JSON开发JS卡片页面。
+- [开发卡片页面](#开发卡片页面)：使用HML+CSS+JSON开发JS卡片页面。
 
-- 开发卡片事件：为卡片添加router事件和message事件。
+- [开发卡片事件](#开发卡片事件)：为卡片添加router事件和message事件。
 
 
 ### 实现卡片生命周期接口
 
-创建FA模型的卡片，需实现卡片的生命周期接口。先参考<!--RP1-->创建服务卡片<!--RP1End-->生成服务卡片模板。
+创建FA模型的卡片，需实现卡片的生命周期接口。先参考<!--RP1-->[创建服务卡片](./arkts-ui-widget-creation.md)<!--RP1End-->生成服务卡片模板。
 
 1. 在form.ts中，导入相关模块
    
@@ -216,7 +216,7 @@ FA卡片开发，即基于FA模型的卡片提供方开发，主要涉及如下�
   | -------- | -------- | -------- | -------- |
   | name | 表示JS&nbsp;Component的名字。该标签不可缺省，默认值为default。 | 字符串 | 否 |
   | pages | 表示JS&nbsp;Component的页面用于列举JS&nbsp;Component中每个页面的路由信息[页面路径+页面名称]。该标签不可缺省，取值为数组，数组第一个元素代表JS&nbsp;FA首页。 | 数组 | 否 |
-  | window | 用于定义与显示窗口相关的配置。 | 对象 | 可缺省，缺省值参考window标签表格。 |
+  | window | 用于定义与显示窗口相关的配置。 | 对象 | 可缺省，缺省值参考[window标签](./arkts-ui-widget-configuration.md#window标签)表格。 |
   | type | 表示JS应用的类型。取值范围如下：<br/>normal：标识该JS&nbsp;Component为应用实例。<br/>form：标识该JS&nbsp;Component为卡片实例。 | 字符串 | 可缺省，缺省值为“normal” 。|
   | mode | 定义JS组件的开发模式。 | 对象 | 可缺省，缺省值为空。 |
 
@@ -384,7 +384,7 @@ let deleteFormInfo = async (formId: string, context: featureAbility.Context): Pr
 // ...
 ```
 
-具体的持久化方法可以参考应用数据持久化概述。
+具体的持久化方法可以参考[应用数据持久化概述](../database/app-data-persistence-overview.md)。
 
 需要注意的是，卡片使用方在请求卡片时传递给提供方应用的Want数据中存在临时标记字段，表示此次请求的卡片是否为临时卡片：
 
@@ -426,7 +426,7 @@ onUpdate(formId: string) {
 
 开发者可以使用类Web范式（HML+CSS+JSON）开发JS卡片页面。生成如下卡片页面，可以这样配置卡片页面文件：
 
-widget-development-fa
+![widget-development-fa](figures/widget-development-fa.png)
 
 > **说明：**
 > FA模型当前仅支持JS扩展的类Web开发范式来实现卡片的UI。

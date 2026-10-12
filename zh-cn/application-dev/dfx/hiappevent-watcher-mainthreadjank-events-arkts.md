@@ -9,7 +9,7 @@
 
 ## 简介
 
-本文介绍如何使用HiAppEvent提供的ArkTS接口订阅主线程超时事件。接口的详细使用说明（参数限制、取值范围等）请参考@ohos.hiviewdfx.hiAppEvent。
+本文介绍如何使用HiAppEvent提供的ArkTS接口订阅主线程超时事件。接口的详细使用说明（参数限制、取值范围等）请参考[@ohos.hiviewdfx.hiAppEvent](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md)。
 
 ## 接口说明
 
@@ -85,7 +85,11 @@
             } else if (path.endsWith(".trace")) {
               targetPath= "/data/storage/el2/base/mainThreadJank.trace";
             }
-            fileIo.copyFileSync(path.toString(), targetPath.toString());
+            try {
+              fileIo.copyFileSync(path.toString(), targetPath.toString());
+            } catch (e) {
+              hilog.error(0x0000, 'testTag', `copy file failed: ${e}`);
+            }
           }
         }
       }
@@ -199,7 +203,7 @@
 
    > **注意：**
    >
-   > 启动主线程超时检测抓取trace的功能的前提是开发者使用nolog版本并且关闭开发者模式。
+   > 启动主线程超时检测抓取trace的功能的前提是开发者使用[nolog版本](performance-analysis-kit-terminology.md#nolog版本)并且关闭开发者模式。
 
    ```ts
      @Entry

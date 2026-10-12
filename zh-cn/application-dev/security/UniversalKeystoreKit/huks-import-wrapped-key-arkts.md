@@ -7,13 +7,13 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-以安全导入ECDH密钥对为例，涉及业务侧加密密钥的密钥生成、协商等操作不在本示例中体现。
+以安全导入ECDH密钥对为例，涉及业务侧加密密钥的[密钥生成](huks-key-generation-overview.md)、[协商](huks-key-agreement-overview.md)等操作不在本示例中体现。
 
-具体的场景介绍及支持的算法规格，请参考密钥导入支持的算法。
+具体的场景介绍及支持的算法规格，请参考[密钥导入支持的算法](huks-key-import-overview.md#支持的算法)。
 
 ## 开发步骤
 
-1. 设备A（导入设备）将待导入密钥转换成HUKS密钥材料格式To_Import_Key（仅针对非对称密钥，若待导入密钥是对称密钥则可省略此步骤）。
+1. 设备A（导入设备）将待导入密钥转换成[HUKS密钥材料格式](huks-concepts.md#密钥材料格式)To_Import_Key（仅针对非对称密钥，若待导入密钥是对称密钥则可省略此步骤）。
 
 2. 设备B（被导入设备）生成一个安全导入用途的非对称密钥对Wrapping_Key（公钥Wrapping_Pk，私钥Wrapping_Sk），导出Wrapping_Key的公钥材料Wrapping_Pk发送给设备A。
 
@@ -23,7 +23,7 @@
 
 5. 设备A基于Caller_Key的私钥Caller_Sk和设备B Wrapping_Key的公钥Wrapping_Pk，协商出Shared_Key，使用Shared_Key加密Caller_Kek，生成Caller_Kek_Enc。
 
-6. 设备A封装Caller_Pk、Caller_Kek_Enc、To_Import_Key_Enc等安全导入的密钥材料并发送给设备B，安全导入密钥材料格式见安全导入密钥材料格式。
+6. 设备A封装Caller_Pk、Caller_Kek_Enc、To_Import_Key_Enc等安全导入的密钥材料并发送给设备B，安全导入密钥材料格式见[安全导入密钥材料格式](huks-key-import-overview.md#安全导入密钥材料格式)。
 
 7. 设备B导入封装的加密密钥材料。
 
@@ -31,7 +31,7 @@
 
 ## 开发案例
 构造用于ECDH密钥协商、AES-GCM加密和包装密钥导入的参数集
-<!-- @prepare_the_import_key_one -->
+<!-- @[prepare_the_import_key_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/ImportEncryptedKey/entry/src/main/ets/pages/ImportEncryptedKey.ets) -->
 
 ``` TypeScript
 
@@ -164,7 +164,7 @@ let importParamsCallerKek: huks.HuksOptions = {
 <!-- -->
 
 构造用于生成ECC解包装密钥、ECDH协商密钥和导入AES-GCM密钥加密密钥的参数集
-<!-- @prepare_the_import_key_two -->
+<!-- @[prepare_the_import_key_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/ImportEncryptedKey/entry/src/main/ets/pages/ImportEncryptedKey.ets) -->
 
 ``` TypeScript
 let importParamsAgreeKey: huks.HuksOptions = {
@@ -291,15 +291,15 @@ let importWrappedAes192Params: huks.HuksOptions = {
 <!-- -->
 
 生成密钥、导入密钥、删除密钥、导入包装密钥以及会话操作
-<!-- @encry_the_import_key_one -->
+<!-- @[encry_the_import_key_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/ImportEncryptedKey/entry/src/main/ets/pages/ImportEncryptedKey.ets) -->
 
 ``` TypeScript
 async function publicGenerateItemFunc(keyAlias: string, huksOptions: huks.HuksOptions) {
   console.info(`enter promise generateKeyItem`);
   try {
     await huks.generateKeyItem(keyAlias, huksOptions)
-      .then(data => {
-        console.info(`promise: generateKeyItem success, data = ${JSON.stringify(data)}`);
+      .then(() => {
+        console.info(`promise: generateKeyItem success`);
       })
       .catch((err: Error) => {
         console.error(`promise: generateKeyItem failed, ${JSON.stringify(err)}`);
@@ -315,8 +315,8 @@ async function publicImportKeyItemFunc(keyAlias: string, huksOptions: huks.HuksO
   console.info(`enter promise importKeyItem`);
   try {
     await huks.importKeyItem(keyAlias, huksOptions)
-      .then(data => {
-        console.info(`promise: importKeyItem success, data = ${JSON.stringify(data)}`);
+      .then(() => {
+        console.info(`promise: importKeyItem success`);
       }).catch((err: Error) => {
         console.error(`promise: importKeyItem failed, ${JSON.stringify(err)}`);
         throw (err as Error);
@@ -331,8 +331,8 @@ async function publicDeleteKeyItemFunc(keyAlias: string, huksOptions: huks.HuksO
   console.info(`enter promise deleteKeyItem`);
   try {
     await huks.deleteKeyItem(keyAlias, huksOptions)
-      .then(data => {
-        console.info(`promise: deleteKeyItem key success, data = ${JSON.stringify(data)}`);
+      .then(() => {
+        console.info(`promise: deleteKeyItem key success`);
       })
       .catch((err: Error) => {
         console.error(`promise: deleteKeyItem failed, ${JSON.stringify(err)}`);
@@ -344,49 +344,13 @@ async function publicDeleteKeyItemFunc(keyAlias: string, huksOptions: huks.HuksO
   }
 }
 
-function importWrappedKeyItem(keyAlias: string, wrappingKeyAlias: string, huksOptions: huks.HuksOptions) {
-  return new Promise<void>((resolve, reject) => {
-    try {
-      huks.importWrappedKeyItem(keyAlias, wrappingKeyAlias, huksOptions, (error, data) => {
-        if (error) {
-          reject(error);
-        } else {
-          resolve(data);
-        }
-      });
-    } catch (error) {
-      throw (error as Error);
-    }
-  });
-}
-
-async function publicImportWrappedKeyFunc(keyAlias: string, wrappingKeyAlias: string, huksOptions: huks.HuksOptions) {
-  console.info(`enter promise importWrappedKeyItem`);
-  for (let i = 0; i < huksOptions.inData!.length; i++) {
-    console.error(`${i}: ${huksOptions.inData![i]}`);
-  }
-  try {
-    await importWrappedKeyItem(keyAlias, wrappingKeyAlias, huksOptions)
-      .then((data) => {
-        console.info(`promise: importWrappedKeyItem success, data = ${JSON.stringify(data)}`);
-      })
-      .catch((error: Error) => {
-        console.error(`promise: importWrappedKeyItem failed, ${JSON.stringify(error)}`);
-        throw (error as Error);
-      });
-  } catch (error) {
-    console.error(`promise: importWrappedKeyItem input arg invalid, ${JSON.stringify(error)}`);
-    throw (error as Error);
-  }
-}
-
 async function publicImportWrappedKeyPromise(keyAlias: string, wrappingKeyAlias: string,
   huksOptions: huks.HuksOptions) {
   console.info(`enter promise importWrappedKeyItem`);
   try {
     await huks.importWrappedKeyItem(keyAlias, wrappingKeyAlias, huksOptions)
-      .then((data) => {
-        console.info(`promise: importWrappedKeyItem success, data = ${JSON.stringify(data)}`);
+      .then(() => {
+        console.info(`promise: importWrappedKeyItem success`);
       })
       .catch((error: Error) => {
         console.error(`promise: importWrappedKeyItem failed, ${JSON.stringify(error)}`);
@@ -486,7 +450,7 @@ async function publicFinishSession(handle: number, huksOptions: huks.HuksOptions
 <!-- -->
 
 密钥协商、加密、数据封装等核心功能函数实现
-<!-- @encry_the_import_key_two -->
+<!-- @[encry_the_import_key_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/ImportEncryptedKey/entry/src/main/ets/pages/ImportEncryptedKey.ets) -->
 
 ``` TypeScript
 async function cipherFunction(keyAlias: string, huksOptions: huks.HuksOptions) {
@@ -504,7 +468,7 @@ async function agreeFunction(keyAlias: string, huksOptions: huks.HuksOptions, hu
   try {
     await huks.updateSession(handle, huksOptions)
       .then((data) => {
-        console.error(`promise: doUpdate success, data = ${JSON.stringify(data)}`);
+        console.info(`promise: doUpdate success, data = ${JSON.stringify(data)}`);
       })
       .catch((error: Error) => {
         console.error(`promise: doUpdate failed, ${JSON.stringify(error)}`);
@@ -617,7 +581,7 @@ async function buildWrappedDataAndImportWrappedKey(plainKey: string) {
 <!-- -->
 
 安全导入密钥的完整流程实现
-<!-- @encry_the_import_key_three -->
+<!-- @[encry_the_import_key_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/ImportEncryptedKey/entry/src/main/ets/pages/ImportEncryptedKey.ets) -->
 
 ``` TypeScript
 /* 模拟安全导入密钥场景，设备A为远端设备（导入设备），设备B为本端设备（被导入设备） */
@@ -660,7 +624,7 @@ async function ImportWrappedKey() {
   importWrappedAes192Params.inData = wrappedData;
 
   /* 7. 设备B导入封装的加密密钥材料 */
-  await publicImportWrappedKeyFunc(importedKeyAliasAes192, srcKeyAliasWrap, importWrappedAes192Params);
+  await publicImportWrappedKeyPromise(importedKeyAliasAes192, srcKeyAliasWrap, importWrappedAes192Params);
 
   /* 8. 设备A、B删除用于安全导入的密钥 */
   await publicDeleteKeyItemFunc(srcKeyAliasWrap, genWrappingKeyParams);
@@ -690,7 +654,7 @@ function Check() {
       if (error) {
         console.error(`callback: isKeyItemExist failed, ${JSON.stringify(error)}`);
       } else {
-        if (data !== null && data.valueOf() !== null) {
+        if (data) {
           isKeyExist = data.valueOf();
           console.info(`callback: isKeyItemExist success, isKeyExist = ${isKeyExist}`);
         }
@@ -706,7 +670,7 @@ function Check() {
 
 ## 调测验证
 
-调用huks.isKeyItemExist验证密钥是否存在，如密钥存在即表示密钥导入成功。
+调用[huks.isKeyItemExist](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksiskeyitemexist9)验证密钥是否存在，如密钥存在即表示密钥导入成功。
 
 ```ts
 import { huks } from '@kit.UniversalKeystoreKit';

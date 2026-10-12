@@ -20,7 +20,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
 
 ### Native接口调用
 
-具体接口说明请参考Image_NativeModule。
+具体接口说明请参考[Image_NativeModule](../../reference/apis-image-kit/capi-image-nativemodule.md)。
 
 在DevEco Studio新建Native C++应用，默认生成的项目中包含index.ets文件，在entry\src\main\cpp目录下会自动生成一个cpp文件（hello.cpp或napi_init.cpp，本示例以hello.cpp文件名为例）。在hello.cpp中实现C API接口调用逻辑，示例代码如下：
 
@@ -34,7 +34,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
 
 1. 导入相关头文件。
 
-   <!-- @decodingPicture_import -->     
+   <!-- @[decodingPicture_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadPicture.cpp) -->     
    
    ``` C++
    #include <hilog/log.h>
@@ -47,7 +47,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
 
 2. 日志宏定义可参考下述代码按实际需求自行修改。
 
-   <!-- @define_logInfo -->   
+   <!-- @[define_logInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->   
    
    ``` C++
    #undef LOG_DOMAIN
@@ -58,7 +58,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
 
 3. 定义用于图像处理的常量。
 
-   <!-- @define_const -->      
+   <!-- @[define_const](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadPicture.cpp) -->      
    
    ``` C++
    #define AUTO 0
@@ -69,7 +69,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
 
 4. 定义ImagePictureNative类。
 
-   <!-- @define_pictureClass -->   
+   <!-- @[define_pictureClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/imageKits.h) -->   
    
    ``` C
    class ImagePictureNative {
@@ -87,7 +87,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
 
 5. 创建ImagePictureNative的一个实例。
 
-   <!-- @create_pictureClass -->   
+   <!-- @[create_pictureClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadPicture.cpp) -->   
    
    ``` C++
    static ImagePictureNative *g_thisPicture = new ImagePictureNative();
@@ -95,7 +95,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
 
 6. 创建GetJsResult函数处理napi返回值。
 
-   <!-- @get_returnValue -->   
+   <!-- @[get_returnValue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/napi_init.cpp) -->   
    
    ``` C++
    // 处理napi返回值。
@@ -109,7 +109,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
 
 7. 创建ImagePacker实例，指定编码参数后，将Picture多图对象编码至文件或缓冲区。
 
-   <!-- @pack_picture -->    
+   <!-- @[pack_picture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadPicture.cpp) -->  
    
    ``` C++
    // 设置编码参数。
@@ -191,7 +191,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
        size_t argc = 2;
        napi_value args[2] = {nullptr};
        if (napi_get_cb_info(env, info, &argc, args, nullptr, nullptr) != napi_ok) {
-       OH_LOG_ERROR(LOG_APP, "napi_get_cb_info failed!");
+           OH_LOG_ERROR(LOG_APP, "napi_get_cb_info failed!");
            return GetJsResult(env, g_thisPicture->errorCode);
        }
        uint32_t fd = 0;

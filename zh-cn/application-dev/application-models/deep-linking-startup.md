@@ -11,14 +11,14 @@
 
 ## 实现原理
 
-Deep Linking基于隐式Want匹配机制中的uri匹配来查询、拉起目标应用。隐式Want的uri匹配规则详见uri匹配规则。
+Deep Linking基于隐式Want匹配机制中的uri匹配来查询、拉起目标应用。隐式Want的uri匹配规则详见[uri匹配规则](explicit-implicit-want-mappings.md#uri匹配规则)。
 
 
 ## 目标应用操作指导
 
 ### 配置module.json5文件
 
-为了能够支持被其他应用访问，目标应用需要在module.json5配置文件中配置skills标签。
+为了能够支持被其他应用访问，目标应用需要在[module.json5配置文件](../quick-start/module-configuration-file.md)中配置[skills标签](../quick-start/module-configuration-file.md#skills标签)。
 
 > **说明：**
 > 
@@ -27,7 +27,7 @@ Deep Linking基于隐式Want匹配机制中的uri匹配来查询、拉起目标�
 
 配置示例如下：
 
-<!-- @skills_custom --> 
+<!-- @[skills_custom](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/module.json5) --> 
 
 ``` JSON5
 {
@@ -70,9 +70,9 @@ Deep Linking基于隐式Want匹配机制中的uri匹配来查询、拉起目标�
 
 ### 获取并解析拉起方传入的应用链接
 
-在目标应用的UIAbility的onCreate()或者onNewWant()生命周期回调中，获取、解析拉起方传入的应用链接。
+在目标应用的UIAbility的[onCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)或者[onNewWant()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onnewwant)生命周期回调中，获取、解析拉起方传入的应用链接。
 
-<!-- @deep_ability -->
+<!-- @[deep_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/DeepAbility/DeepAbility.ets) -->
 
 ``` TypeScript
 // 以DeepAbility.ets为例
@@ -102,16 +102,16 @@ export default class DeepAbility extends UIAbility {
 
 ## 拉起方应用实现应用跳转
 
-下面通过三个案例，分别介绍如何使用openLink()与startAbility()接口实现应用跳转，以及如何在Web组件中实现应用跳转。
+下面通过三个案例，分别介绍如何使用[openLink()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#openlink12)与[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)接口实现应用跳转，以及如何在[Web组件](../reference/apis-arkweb/arkts-basic-components-web.md)中实现应用跳转。
 
 ### 使用openLink实现应用跳转
 
-在openLink()接口的link字段中传入目标应用的URL信息，并将options字段中的appLinkingOnly配置为`false`。
+在[openLink()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#openlink12)接口的link字段中传入目标应用的URL信息，并将options字段中的[appLinkingOnly](../reference/apis-ability-kit/js-apis-app-ability-openLinkOptions.md#openlinkoptions)配置为`false`。
 
 
 示例代码如下：
 
-<!-- @deep_open -->
+<!-- @[deep_open](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/pages/DeepOpenLinkIndex.ets) -->
 
 ``` TypeScript
 import { common, OpenLinkOptions } from '@kit.AbilityKit';
@@ -153,12 +153,12 @@ struct DeepOpenLinkIndex {
 
 ### 使用startAbility实现应用跳转
 
-startAbility()接口是将应用链接放入Want中，通过调用隐式Want匹配的方法触发应用跳转。
+[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)接口是将应用链接放入Want中，通过调用[隐式Want匹配](explicit-implicit-want-mappings.md#隐式want匹配原理)的方法触发应用跳转。
 
 
 示例代码如下：
 
-<!-- @deep_start -->
+<!-- @[deep_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/pages/DeepStartIndex.ets) -->
 
 ``` TypeScript
 import { common, Want } from '@kit.AbilityKit';
@@ -198,11 +198,11 @@ struct DeepStartIndex {
 
 ### 使用Web组件实现应用跳转
 
-Web组件可以在onLoadIntercept()的回调函数中实现应用跳转。
+Web组件可以在[onLoadIntercept()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onloadintercept10)的回调函数中实现应用跳转。
 
 示例代码如下：
 
-<!-- @deep_web -->
+<!-- @[deep_web](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/ets/pages/DeepWebIndex.ets) -->
 
 ``` TypeScript
 // DeepWebIndex.ets

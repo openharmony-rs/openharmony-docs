@@ -11,7 +11,7 @@
 
 当前支持的数据输入类型有：远程连接(http协议)和文件描述符(fd)。
 
-当前支持的解封装格式请参考AVCodec支持的格式。
+当前支持的解封装格式请参考[AVCodec支持的格式](avcodec-support-formats.md#媒体数据解封装)。
 
 **适用场景**：
 
@@ -29,13 +29,13 @@
 
 ## 开发指导
 
-详细的API说明参考AVDemuxer和AVSource
+详细的API说明参考[AVDemuxer](../../reference/apis-avcodec-kit/capi-avdemuxer.md)和[AVSource](../../reference/apis-avcodec-kit/capi-avsource.md)
 
 > **说明**
 >
-> - 调用解封装能力解析网络播放路径，需要声明权限：ohos.permission.INTERNET。
-> - 调用解封装能力解析本地文件，需要向用户申请授权：ohos.permission.READ_MEDIA。
-> - 如果使用ResourceManager.getRawFd打开HAP资源文件描述符，使用方法请参考getRawFd。
+> - 调用解封装能力解析网络播放路径，需要[声明权限](../../security/AccessToken/declare-permissions.md)：ohos.permission.INTERNET。
+> - 如需获取媒体库资源的文件描述符（fd），可参考[使用Picker选择媒体库资源](../medialibrary/photoAccessHelper-photoviewpicker.md)文档。
+> - 如果使用ResourceManager.getRawFd打开HAP资源文件描述符，使用方法请参考[getRawFd](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfd9)。
 
 ### 在 CMake 脚本中链接动态库
 
@@ -68,7 +68,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 
 2. 创建资源管理实例。
 
-   开发者HAP中使用open获取fd时，filepath需要转换为沙箱路径，才能获取沙盒资源。
+   开发者HAP中使用open获取fd时，filepath需要转换为[沙箱路径](../../file-management/app-sandbox-directory.md#应用沙箱路径和真实物理路径的对应关系)，才能获取沙盒资源。
 
    ```c++
    // 创建文件操作符 fd，打开时对文件实例必须有读权限（filePath 为待解封装文件路径，需预置文件，保证路径指向的文件存在）。
@@ -164,7 +164,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
       return;
    }
    ```
-4. 注册DRM信息监听函数，接口参考Demuxer_MediaKeySystemInfoCallback()（可选）。如果不是DRM码流或已获得DRM信息，可跳过此步骤。DRM信息内容参考DRM_MediaKeySystemInfo。
+4. 注册DRM信息监听函数，接口参考[Demuxer_MediaKeySystemInfoCallback()](../../reference/apis-avcodec-kit/capi-native-avdemuxer-h.md#demuxer_mediakeysysteminfocallback)（可选）。如果不是DRM码流或已获得DRM信息，可跳过此步骤。DRM信息内容参考[DRM_MediaKeySystemInfo](../../reference/apis-drm-kit/capi-drm-drm-mediakeysysteminfo.md)。
 
    设置DRM信息监听的接口，回调函数支持返回解封装器实例，适用于多个解封装器场景。
 
@@ -176,7 +176,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    }
 
    Demuxer_MediaKeySystemInfoCallback callback = &OnDrmInfoChangedWithObj;
-   Drm_ErrCode ret = OH_AVDemuxer_SetDemuxerMediaKeySystemInfoCallback(demuxer, callback);
+   OH_AVErrCode ret = OH_AVDemuxer_SetDemuxerMediaKeySystemInfoCallback(demuxer, callback);
    ```
    在监听到DRM信息后，也可主动调用获取DRM信息(uuid及对应pssh)接口。
 
@@ -184,7 +184,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    DRM_MediaKeySystemInfo mediaKeySystemInfo;
    OH_AVDemuxer_GetMediaKeySystemInfo(demuxer, &mediaKeySystemInfo);
    ```
-   在获取、解析DRM信息后，需创建对应DRM解决方案的MediaKeySystem、MediaKeySession，获取DRM许可证等。并根据需要设置音频解密配置(详见异步模式音频解码的开发步骤第4步)、设置视频解密配置（详见异步模式视频解码的Surface模式第5步或Buffer模式第4步），实现DRM内容解密。
+   在获取、解析DRM信息后，需创建对应DRM解决方案的[MediaKeySystem、MediaKeySession](../drm/drm-c-dev-guide.md)，获取DRM许可证等。并根据需要设置音频解密配置(详见异步模式音频解码的[开发步骤](audio-decoding.md#开发步骤)第4步)、设置视频解密配置（详见异步模式视频解码的[Surface模式](video-decoding.md#surface模式)第5步或[Buffer模式](video-decoding.md#buffer模式)第4步），实现DRM内容解密。
 
 5. 获取文件信息。
 
@@ -424,9 +424,9 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 > **说明：**
 >
 > - 正常解封装时才可以获取对应属性数据，如果文件信息错误或缺失，将导致解封装异常，无法获取数据。
-> - 当前GBK格式字符集数据会转换为UTF8提供，其他类型字符集如果需要转换为UTF8格式使用，需要调用方自行转换，参考icu4c。
+> - 当前GBK格式字符集数据会转换为UTF8提供，其他类型字符集如果需要转换为UTF8格式使用，需要调用方自行转换，参考[icu4c](../../reference/native-lib/icu4c.md)。
 > - 从API version 23开始，部分OGG格式资源，如OH_MD_KEY_TITLE、OH_MD_KEY_ARTIST和OH_MD_KEY_ALBUM存在于轨道属性中，可从轨道级别属性中获取。
-> - 数据类型及详细取值范围参考媒体数据键值对。
+> - 数据类型及详细取值范围参考[媒体数据键值对](../../reference/apis-avcodec-kit/capi-codecbase.md#媒体数据键值对)。
 
 **表1** 文件级别属性支持范围
 | 名称 | 描述 |
@@ -453,7 +453,7 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
 > 正常解封装时才可以获取对应属性数据；如果文件信息错误或缺失，将导致解封装异常，无法获取数据。
 > 辅助轨属性范围与实际媒体类型（音频、视频）保持一致。
 > 
-> 数据类型及详细取值范围参考媒体数据键值对。
+> 数据类型及详细取值范围参考[媒体数据键值对](../../reference/apis-avcodec-kit/capi-codecbase.md#媒体数据键值对)。
 
 **表2** 轨道级别属性支持范围
 | 名称 | 描述 | 视频轨支持 | 音频轨支持 | 字幕轨支持 | 辅助轨支持 |

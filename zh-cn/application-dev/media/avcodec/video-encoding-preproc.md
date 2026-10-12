@@ -11,7 +11,7 @@
 
 ## 功能简介
 
-编码前处理是视频编码器在输入帧进入编码管线之前执行的预处理能力，通过OH_VideoEncoder_CreatePrimaryWithPreproc创建的主编码器支持以下三种前处理功能：
+编码前处理是视频编码器在输入帧进入编码管线之前执行的预处理能力，通过[OH_VideoEncoder_CreatePrimaryWithPreproc](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_createprimarywithpreproc)创建的主编码器支持以下三种前处理功能：
 
 | 功能 | 说明 | 典型场景 |
 |------|------|----------|
@@ -95,31 +95,31 @@
 
 | 接口 | 是否可用 | 备注 |
 |------|:--------:|------|
-| OH_VideoEncoder_RegisterCallback | √ | 支持。 |
-| OH_VideoEncoder_RegisterParameterCallback | × | 不支持随帧参数配置，返回AV_ERR_OPERATE_NOT_PERMIT。 |
-| OH_VideoEncoder_PushInputParameter | × | 不支持随帧参数配置，返回AV_ERR_OPERATE_NOT_PERMIT。 |
-| OH_VideoEncoder_Configure | √ | 支持，可配置含前处理参数。 |
-| OH_VideoEncoder_GetSurface | √ | 支持。 |
-| OH_VideoEncoder_Prepare | √ | 支持，准备内部资源。 |
-| OH_VideoEncoder_Start | √ | 支持。 |
-| OH_VideoEncoder_Stop | √ | 支持。 |
-| OH_VideoEncoder_Flush | √ | 支持。 |
-| OH_VideoEncoder_Reset | √ | 支持，重置到 Initialized状态。 |
-| OH_VideoEncoder_SetParameter | √ | 支持，运行时动态调整前处理等参数。 |
-| OH_VideoEncoder_NotifyEndOfStream | √ | 支持，通知编码器EOS信息。 |
-| OH_VideoEncoder_FreeOutputBuffer | √ | 支持。 |
-| OH_VideoEncoder_GetInputDescription | √ | 支持，包含前处理元数据。 |
-| OH_VideoEncoder_GetOutputDescription | √ | 支持。 |
-| OH_VideoEncoder_IsValid | √ | 支持。 |
-| OH_VideoEncoder_Destroy | √ | 支持，销毁编码器实例。 |
-| OH_VideoEncoder_PushInputData  | × | Buffer模式不支持。 |
-| OH_VideoEncoder_PushInputBuffer | × | Buffer模式不支持。 |
-| OH_VideoEncoder_QueryInputBuffer | × | 同步模式不支持。 |
-| OH_VideoEncoder_QueryOutputBuffer | × | 同步模式不支持。 |
+| [OH_VideoEncoder_RegisterCallback](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_registercallback) | √ | 支持。 |
+| [OH_VideoEncoder_RegisterParameterCallback](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_registerparametercallback) | × | 不支持随帧参数配置，返回AV_ERR_OPERATE_NOT_PERMIT。 |
+| [OH_VideoEncoder_PushInputParameter](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_pushinputparameter) | × | 不支持随帧参数配置，返回AV_ERR_OPERATE_NOT_PERMIT。 |
+| [OH_VideoEncoder_Configure](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_configure) | √ | 支持，可配置含前处理参数。 |
+| [OH_VideoEncoder_GetSurface](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_getsurface) | √ | 支持。 |
+| [OH_VideoEncoder_Prepare](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_prepare) | √ | 支持，准备内部资源。 |
+| [OH_VideoEncoder_Start](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_start) | √ | 支持。 |
+| [OH_VideoEncoder_Stop](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_stop) | √ | 支持。 |
+| [OH_VideoEncoder_Flush](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_flush) | √ | 支持。 |
+| [OH_VideoEncoder_Reset](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_reset) | √ | 支持，重置到 Initialized状态。 |
+| [OH_VideoEncoder_SetParameter](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_setparameter) | √ | 支持，运行时动态调整前处理等参数。 |
+| [OH_VideoEncoder_NotifyEndOfStream](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_notifyendofstream) | √ | 支持，通知编码器EOS信息。 |
+| [OH_VideoEncoder_FreeOutputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_freeoutputbuffer) | √ | 支持。 |
+| [OH_VideoEncoder_GetInputDescription](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_getinputdescription) | √ | 支持，包含前处理元数据。 |
+| [OH_VideoEncoder_GetOutputDescription](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_getoutputdescription) | √ | 支持。 |
+| [OH_VideoEncoder_IsValid](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_isvalid) | √ | 支持。 |
+| [OH_VideoEncoder_Destroy](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_destroy) | √ | 支持，销毁编码器实例。 |
+| [OH_VideoEncoder_PushInputData](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_pushinputdata)  | × | Buffer模式不支持。 |
+| [OH_VideoEncoder_PushInputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_pushinputbuffer) | × | Buffer模式不支持。 |
+| [OH_VideoEncoder_QueryInputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_queryinputbuffer) | × | 同步模式不支持。 |
+| [OH_VideoEncoder_QueryOutputBuffer](../../reference/apis-avcodec-kit/capi-native-avcodec-videoencoder-h.md#oh_videoencoder_queryoutputbuffer) | × | 同步模式不支持。 |
 
 ## 开发步骤
 
-支持前处理编码和普通编码器的使用流程一致，主要差异点在于创建方式、支持前处理参数配置以及动态更新。本文主要对差异点进行详细说明。完整编码器开发流程参考视频编码Surface模式。
+支持前处理编码和普通编码器的使用流程一致，主要差异点在于创建方式、支持前处理参数配置以及动态更新。本文主要对差异点进行详细说明。完整编码器开发流程参考视频编码[Surface模式](video-encoding.md#surface模式)。
 
 ### 创建支持前处理的编码器
 
@@ -150,11 +150,11 @@ if (ret != AV_ERR_OK || encoder == nullptr) {
 
 ### 注册回调
 
-参考视频编码Surface模式的“步骤3-调用OH_VideoEncoder_RegisterCallback()设置回调函数”。
+参考视频编码[Surface模式](video-encoding.md#surface模式)的“步骤3-调用OH_VideoEncoder_RegisterCallback()设置回调函数”。
 
 ### 配置编码参数与前处理参数
 
-编码器参数配置参考视频编码Surface模式的“步骤5-调用OH_VideoEncoder_Configure()配置编码器”。以下内容重点说明基础参数与前处理参数的配置。
+编码器参数配置参考视频编码[Surface模式](video-encoding.md#surface模式)的“步骤5-调用OH_VideoEncoder_Configure()配置编码器”。以下内容重点说明基础参数与前处理参数的配置。
 
 ```c++
 OH_AVFormat *format = OH_AVFormat_Create();
@@ -220,7 +220,7 @@ if (ret != AV_ERR_OK || window == nullptr) {
 > - 对于一入二出场景，只需获取一次Surface即可（主/副共享同一输入源）。
 
 ### 准备、启动、写入编码图像
-参考视频编码Surface模式的步骤7、8、10。
+参考视频编码[Surface模式](video-encoding.md#surface模式)的步骤7、8、10。
 
 ### 运行时动态调整（可选）
 
@@ -255,10 +255,10 @@ void AdjustDownsampling(OH_AVCodec *enc, int newWidth, int newHeight)
     OH_AVFormat_Destroy(param);
 }
 ```
-其他编码器仍可动态配置，参考视频编码Surface模式的步骤9。
+其他编码器仍可动态配置，参考视频编码[Surface模式](video-encoding.md#surface模式)的步骤9。
 
 ### 通知编码结束、释放编码帧、销毁编码器
-和普通编码器一致，参考视频编码Surface模式的步骤12、13、17。
+和普通编码器一致，参考视频编码[Surface模式](video-encoding.md#surface模式)的步骤12、13、17。
 
 ## GetInputDescription查询
 

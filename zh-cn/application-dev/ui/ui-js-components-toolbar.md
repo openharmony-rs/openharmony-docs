@@ -6,7 +6,7 @@
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
-toolbar为页面工具栏组件，用于展示针对当前界面的操作选项，可作为页面的一级导航。具体用法请参考toolbar。
+toolbar为页面工具栏组件，用于展示针对当前界面的操作选项，可作为页面的一级导航。具体用法请参考[toolbar](../reference/apis-arkui/arkui-js/js-components-basic-toolbar.md)。
 
 
 ## 创建toolbar组件
@@ -40,7 +40,7 @@ toolbar-item{
 }
 ```
 
-toolbar-Component
+![toolbar-Component](figures/toolbar-Component.gif)
 
 
 ## 添加子组件
@@ -77,7 +77,7 @@ toolbar-item{
 }
 ```
 
-toolbar
+![toolbar](figures/toolbar.gif)
 
 
 ## 设置样式
@@ -114,7 +114,7 @@ toolbar-item{
 ```
 
 
-Setting-Styles-2
+![Setting-Styles-2](figures/Setting-Styles-2.png)
 
 
 ## 绑定事件
@@ -168,7 +168,7 @@ export default {
 }
 ```
 
-Binding-Event-4
+![Binding-Event-4](figures/Binding-Event-4.gif)
 
 > **说明：** 
 >
@@ -226,4 +226,4 @@ export default {
 }
 ```
 
-Example-Scenario-12
+![Example-Scenario-12](figures/Example-Scenario-12.gif)

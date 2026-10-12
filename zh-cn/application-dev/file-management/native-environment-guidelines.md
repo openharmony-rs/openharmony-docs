@@ -8,16 +8,16 @@
 
 ## 场景介绍
 
-Environment提供了获取公共文件用户目录路径的能力，以支持三方应用在公共文件用户目录下进行文件访问操作。
+[Environment](../reference/apis-core-file-kit/capi-oh-environment-h.md)提供了获取公共文件用户目录路径的能力，以支持三方应用在公共文件用户目录下进行文件访问操作。
 
 ## 约束限制
 
 - 使用此接口，需确认设备具有以下系统能力：SystemCapability.FileManagement.File.Environment.FolderObtain。
-- 此接口仅用作公共沙箱目录路径的获取接口，操作对应的公共目录及其子目录需获取通过弹窗授权方式向用户申请授予对应目录的权限，具体参考访问控制-向用户申请授权。
+- 此接口仅用作公共沙箱目录路径的获取接口，操作对应的公共目录及其子目录需获取通过弹窗授权方式向用户申请授予对应目录的权限，具体参考[访问控制-向用户申请授权](../security/AccessToken/request-user-authorization.md)。
 
 ## 接口说明
 
-接口的详细说明，请参考oh_environment.h。
+接口的详细说明，请参考[oh_environment.h](../reference/apis-core-file-kit/capi-oh-environment-h.md)。
 
 | 接口名称 | 描述 |
 | -------- | -------- |
@@ -46,7 +46,7 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
 
 1. 调用OH_Environment_GetUserDownloadDir接口获取用户Download目录沙箱路径，在接口中使用malloc申请的内存需要在使用完后释放因此需要free对应的内存。示例代码如下所示：
 
-   <!--@get_user_download_dir_path_example-->      
+   <!--@[get_user_download_dir_path_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->      
    
    ``` C++
    void GetUserDownloadDirPathExample()
@@ -65,7 +65,7 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
 
 2. 调用OH_Environment_GetUserDesktopDir接口获取用户Desktop目录沙箱路径，在接口中使用malloc申请的内存需要在使用完后释放因此需要free对应的内存。示例代码如下所示：
 
-   <!--@get_user_desktop_dir_path_example-->      
+   <!--@[get_user_desktop_dir_path_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->      
    
    ``` C++
    void GetUserDesktopDirPathExample()
@@ -84,7 +84,7 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
 
 3. 调用OH_Environment_GetUserDocumentDir接口获取用户Document目录沙箱路径，在接口中使用malloc申请的内存需要在使用完后释放因此需要free对应的内存。示例代码如下所示：
 
-   <!--@get_user_document_dir_path_example-->      
+   <!--@[get_user_document_dir_path_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->      
    
    ``` C++
    void GetUserDocumentDirPathExample()
@@ -107,7 +107,7 @@ target_link_libraries(sample PUBLIC libohenvironment.so libhilog_ndk.z.so)
    ``` C++
    #include <sys/stat.h>
    ```
-   <!--@get_user_download_dir_size_example-->        
+   <!--@[get_user_download_dir_size_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKEnvironmentSample/entry/src/main/cpp/napi_init.cpp)-->        
    
    ``` C++
    void GetUserDownloadDirSizeExample()

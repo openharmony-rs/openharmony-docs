@@ -6,14 +6,14 @@
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
-SymbolGlyph是图标小符号组件，便于使用精美的图标，如渲染多色图标和使用动效图标。SymbolSpan作为Text组件的子组件，可在文本中穿插显示图标小符号。具体用法请参考SymbolGlyph和SymbolSpan组件的API文档。
+SymbolGlyph是图标小符号组件，便于使用精美的图标，如渲染多色图标和使用动效图标。SymbolSpan作为Text组件的子组件，可在文本中穿插显示图标小符号。具体用法请参考[SymbolGlyph](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md)和[SymbolSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolSpan.md)组件的API文档。
 
 
 ## 创建图标
 
 SymbolGlyph通过$r引用Resource资源来创建，目前仅支持系统预置的Symbol资源名。<!--RP1--><!--RP1End-->
 
-<!-- @creat_symbol_glyph -->
+<!-- @[creat_symbol_glyph](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/CreatSymbolGlyph.ets) -->
 
 ``` TypeScript
 SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
@@ -22,17 +22,17 @@ SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
   .fontColor([Color.Black, Color.Green, Color.White])
 ```
 
-  symbol_folder_badge_plus
+  ![symbol_folder_badge_plus](figures/symbol_ohos_folder_badge_plus.png)
 
 ## 添加到文本中
 
-SymbolSpan可作为Text的子组件用于显示图标小符号。可以在一个Text组件内添加多个SymbolSpan，从而展示一串连续的图标。  
+[SymbolSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolSpan.md)可作为[Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)的子组件用于显示图标小符号。可以在一个Text组件内添加多个SymbolSpan，从而展示一串连续的图标。  
 
 - 创建SymbolSpan。
 
   SymbolSpan组件需嵌入在Text组件中才能显示，单独使用不会呈现任何内容。
 
-  <!-- @creat_symbol_span -->
+  <!-- @[creat_symbol_span](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolAddToText.ets) -->
   
   ``` TypeScript
   Text() {
@@ -42,11 +42,11 @@ SymbolSpan可作为Text的子组件用于显示图标小符号。可以在一个
   }
   ```
 
-  symbol_trash
+  ![symbol_trash](figures/symbolspan_trash.png)
 
-- 通过fontSize属性设置SymbolSpan的大小。
+- 通过[fontSize](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolSpan.md#fontsize)属性设置SymbolSpan的大小。
 
-  <!-- @symbol_span_font_size -->
+  <!-- @[symbol_span_font_size](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolAddToText.ets) -->
   
   ``` TypeScript
   Row() {
@@ -82,11 +82,11 @@ SymbolSpan可作为Text的子组件用于显示图标小符号。可以在一个
   }
   ```
 
-  symbolSpan_multi_fontSize
+  ![symbolSpan_multi_fontSize](figures/symbolspan_multi_fontsize.png)
 
-- 通过fontWeight属性设置SymbolSpan组件的粗细。
+- 通过[fontWeight](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolSpan.md#fontweight)属性设置SymbolSpan组件的粗细。
 
-  <!-- @symbol_span_font_weight -->
+  <!-- @[symbol_span_font_weight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolAddToText.ets) -->
   
   ``` TypeScript
   Row() {
@@ -119,11 +119,11 @@ SymbolSpan可作为Text的子组件用于显示图标小符号。可以在一个
   }
   ```
   
-  symbolSpan_multi_fontWeight_trash
+  ![symbolSpan_multi_fontWeight_trash](figures/symbol_multi_fontweight_trash.png)
 
-- 通过fontColor属性设置SymbolSpan的颜色。
+- 通过[fontColor](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolSpan.md#fontcolor)属性设置SymbolSpan的颜色。
 
-  <!-- @symbol_span_font_color -->
+  <!-- @[symbol_span_font_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolAddToText.ets) -->
   
   ``` TypeScript
   Row() {
@@ -156,11 +156,11 @@ SymbolSpan可作为Text的子组件用于显示图标小符号。可以在一个
   }
   ```
 
-  symbolSpan_multi_fontColor
+  ![symbolSpan_multi_fontColor](figures/symbolspan_multi_fontcolor.PNG)
 
-- 通过renderingStrategy属性设置SymbolSpan的渲染策略。
+- 通过[renderingStrategy](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolSpan.md#renderingstrategy)属性设置SymbolSpan的渲染策略。
 
-  <!-- @symbol_span_rendering_strategy -->
+  <!-- @[symbol_span_rendering_strategy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolAddToText.ets) -->
   
   ``` TypeScript
   Row() {
@@ -199,11 +199,11 @@ SymbolSpan可作为Text的子组件用于显示图标小符号。可以在一个
   }
   ```
 
-  symbolSpan_multi_renderingStrategy
+  ![symbolSpan_multi_renderingStrategy](figures/symbolspan_multi_renderingStrategy.png)
 
-- 通过effectStrategy属性设置SymbolSpan的动效策略。
+- 通过[effectStrategy](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolSpan.md#effectstrategy)属性设置SymbolSpan的动效策略。
 
-  <!-- @symbol_span_effect_strategy -->
+  <!-- @[symbol_span_effect_strategy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolAddToText.ets) -->
   
   ``` TypeScript
   Row() {
@@ -239,7 +239,7 @@ SymbolSpan可作为Text的子组件用于显示图标小符号。可以在一个
   }
   ```
 
-  symbolSpan_multi_effectStrategy
+  ![symbolSpan_multi_effectStrategy](figures/symbolspan_multi_effectStrategy.gif)
 
 - SymbolSpan不支持通用事件。
 
@@ -247,17 +247,17 @@ SymbolSpan可作为Text的子组件用于显示图标小符号。可以在一个
 
 相较于effectStrategy属性在启动时即触发动效，可以通过以下两种方式来控制动效的播放状态，以及选择更多样化的动效策略。
 
-关于effectStrategy属性与symbolEffect属性的多种动态属性使用及生效原则，详情请参阅SymbolGlyph.symbolEffect属性的说明。  
+关于effectStrategy属性与symbolEffect属性的多种动态属性使用及生效原则，详情请参阅[SymbolGlyph.symbolEffect](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#symboleffect12-1)属性的说明。  
 
 - 通过设置symbolEffect属性，可以同时配置SymbolGlyph的动效策略和播放状态。
 
-  <!-- @symbol_variable_color_new -->
+  <!-- @[symbol_variable_color_new](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolCustomIconAnimation.ets) -->
   
   ``` TypeScript
   @State isActive: boolean = true;
   ```
 
-  <!-- @symbol_variable_color -->
+  <!-- @[symbol_variable_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolCustomIconAnimation.ets) -->
   
   ``` TypeScript
   Column() {
@@ -274,17 +274,17 @@ SymbolSpan可作为Text的子组件用于显示图标小符号。可以在一个
   }
   ```
 
-  symbolGlyph_symbolEffect_isActive
+  ![symbolGlyph_symbolEffect_isActive](figures/symbolGlyph_symbolEffect_isActive.gif)
 
 - 通过设置symbolEffect属性，可以同时指定SymbolGlyph的动画效果策略及其播放触发条件。
 
-  <!-- @symbol_bouncing_effect_new -->
+  <!-- @[symbol_bouncing_effect_new](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolCustomIconAnimation.ets) -->
   
   ``` TypeScript
   @State triggerValueReplace: number = 0;
   ```
 
-  <!-- @symbol_bouncing_effect -->
+  <!-- @[symbol_bouncing_effect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolCustomIconAnimation.ets) -->
   
   ``` TypeScript
   Column() {
@@ -301,11 +301,11 @@ SymbolSpan可作为Text的子组件用于显示图标小符号。可以在一个
   }
   ```
 
-  BounceSymbolEffect
+  ![BounceSymbolEffect](figures/symbolGlyph_bounceSymbolEffect_trigger.gif)
 
-- 从API version 20开始，支持通过设置symbolEffect属性为ReplaceSymbolEffect，设置ReplaceEffectType为ReplaceEffectType.SLASH_OVERLAY，可以指定SymbolGlyph的禁用动画效果及其播放触发条件。
+- 从API version 20开始，支持通过设置symbolEffect属性为[ReplaceSymbolEffect](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#replacesymboleffect12)，设置[ReplaceEffectType](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#replaceeffecttype20枚举说明)为ReplaceEffectType.SLASH_OVERLAY，可以指定SymbolGlyph的禁用动画效果及其播放触发条件。
 
-  <!-- @symbol_disable_effect_new -->
+  <!-- @[symbol_disable_effect_new](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolCustomIconAnimation.ets) -->
   
   ``` TypeScript
   @State triggerValueReplace: number = 0;
@@ -313,7 +313,7 @@ SymbolSpan可作为Text的子组件用于显示图标小符号。可以在一个
   @State renderMode: number = 1;
   ```
 
-  <!-- @symbol_disable_effect -->
+  <!-- @[symbol_disable_effect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolCustomIconAnimation.ets) -->
   
   ``` TypeScript
   Column() {
@@ -331,18 +331,18 @@ SymbolSpan可作为Text的子组件用于显示图标小符号。可以在一个
   }
   ```
 
-  symbolGlyph_symbolEffect_disable
+  ![symbolGlyph_symbolEffect_disable](figures/symbolGlyph_symbolEffect_disable.gif)
 
-- 从API version 20开始，支持通过设置symbolEffect属性为ReplaceSymbolEffect，设置ReplaceEffectType为ReplaceEffectType.CROSS_FADE，可以指定SymbolGlyph的快速替换动画效果及其播放触发条件。
+- 从API version 20开始，支持通过设置symbolEffect属性为[ReplaceSymbolEffect](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#replacesymboleffect12)，设置[ReplaceEffectType](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#replaceeffecttype20枚举说明)为ReplaceEffectType.CROSS_FADE，可以指定SymbolGlyph的快速替换动画效果及其播放触发条件。
 
-  <!-- @symbol_quick_replacement_new -->
+  <!-- @[symbol_quick_replacement_new](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolCustomIconAnimation.ets) -->
   
   ``` TypeScript
   @State triggerValueReplace: number = 0;
   replaceFlag: boolean = true;
   ```
 
-  <!-- @symbol_quick_replacement -->
+  <!-- @[symbol_quick_replacement](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolCustomIconAnimation.ets) -->
   
   ``` TypeScript
   Column() {
@@ -359,13 +359,12 @@ SymbolSpan可作为Text的子组件用于显示图标小符号。可以在一个
   }
   ```
 
-  symbolGlyph_symbolEffect_quick_replace
+  ![symbolGlyph_symbolEffect_quick_replace](figures/symbolGlyph_symbolEffect_quick_replace.gif)
 
 ## 设置阴影和渐变色
 
-- 从API version 20开始，支持通过symbolShadow接口实现了SymbolGlyph组件显示阴影效果。
-
-  <!-- @shadow_color_1_new -->
+- 从API version 20开始，支持通过[symbolShadow](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#symbolshadow20)接口为SymbolGlyph组件设置阴影效果。
+  <!-- @[shadow_color_1_new](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolShadowAndColor.ets) -->
   
   ``` TypeScript
   @State isActive: boolean = true;
@@ -378,7 +377,7 @@ SymbolSpan可作为Text的子组件用于显示图标小符号。可以在一个
   };
   ```
 
-  <!-- @shadow_color_1 -->
+  <!-- @[shadow_color_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolShadowAndColor.ets) -->
   
   ``` TypeScript
   Column() {
@@ -396,11 +395,11 @@ SymbolSpan可作为Text的子组件用于显示图标小符号。可以在一个
   }
   ```
 
-  SymbolShadowSymbolEffect
+  ![SymbolShadowSymbolEffect](figures/symbolGlyph_symbolShadow.gif)
 
-- 从API version 20开始，支持通过shaderStyle接口实现了SymbolGlyph组件显示渐变色效果。
+- 从API version 20开始，支持通过[shaderStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#shaderstyle20)接口为SymbolGlyph组件设置渐变色效果。
 
-  <!-- @shadow_color_2_new -->
+  <!-- @[shadow_color_2_new](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolShadowAndColor.ets) -->
   
   ``` TypeScript
   radialGradientOptions: RadialGradientOptions = {
@@ -411,7 +410,7 @@ SymbolSpan可作为Text的子组件用于显示图标小符号。可以在一个
   };
   ```
 
-  <!-- @shadow_color_2 -->
+  <!-- @[shadow_color_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolShadowAndColor.ets) -->
   
   ``` TypeScript
   Column() {
@@ -426,19 +425,19 @@ SymbolSpan可作为Text的子组件用于显示图标小符号。可以在一个
   }
   ```
 
-  ShaderStyleSymbolEffect
+  ![ShaderStyleSymbolEffect](figures/symbolGlyph_shaderStyle.jpg)
 
 ## 添加事件
 
-SymbolGlyph组件可以添加通用事件，例如绑定onClick、onTouch等事件来响应操作。
+SymbolGlyph组件可以添加通用事件，例如绑定[onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick)、[onTouch](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#ontouch)等事件来响应操作。
 
-<!-- @symbol_glyph_span_add_event_up -->
+<!-- @[symbol_glyph_span_add_event_up](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolAddEvent.ets) -->
 
 ``` TypeScript
 @State wifiColor: ResourceColor = Color.Black;
 ```
 
-<!-- @symbol_glyph_span_add_event -->
+<!-- @[symbol_glyph_span_add_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolAddEvent.ets) -->
 
 ``` TypeScript
 SymbolGlyph($r('sys.symbol.ohos_wifi'))
@@ -450,13 +449,13 @@ SymbolGlyph($r('sys.symbol.ohos_wifi'))
 ```
 
 
-symbolGlyph_onClick
+![symbolGlyph_onClick](figures/symbolGlyph_onClick.gif)
 
 ## 场景示例
 
 该示例通过symbolEffect、fontSize、fontColor属性展示了播放列表的效果。
 
-<!-- @symbol_glyph_span_scene_example -->
+<!-- @[symbol_glyph_span_scene_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolSceneExample.ets) -->
 
 ``` TypeScript
 // resourceGetString封装工具，从资源中获取字符串
@@ -555,7 +554,7 @@ struct SymbolMusicDemo {
         }
       }
 
-      Divider().width(5).color(this.fontColorValue1).width('98%')
+      Divider().color(this.fontColorValue1).width('98%')
       Row() {
         Row() {
           // 请将$r('app.string.song_again')替换为实际资源文件，在本示例中该资源文件的value值为"歌曲二"
@@ -572,7 +571,7 @@ struct SymbolMusicDemo {
         }
       }
 
-      Divider().width(5).color(this.fontColorValue1).width('98%')
+      Divider().color(this.fontColorValue1).width('98%')
       Row() {
         Row() {
           // 请将$r('app.string.again_song')替换为实际资源文件，在本示例中该资源文件的value值为"歌曲三"
@@ -589,7 +588,7 @@ struct SymbolMusicDemo {
         }
       }
 
-      Divider().width(5).color(this.fontColorValue1).width('98%')
+      Divider().color(this.fontColorValue1).width('98%')
       Row() {
         Row() {
           // 请将$r('app.string.song_repeat')替换为实际资源文件，在本示例中该资源文件的value值为"歌曲四"
@@ -606,7 +605,7 @@ struct SymbolMusicDemo {
         }
       }
 
-      Divider().width(5).color(this.fontColorValue1).width('98%')
+      Divider().color(this.fontColorValue1).width('98%')
       Row() {
         Row() {
           // 请将$r('app.string.repeat_song')替换为实际资源文件，在本示例中该资源文件的value值为"歌曲五"
@@ -623,7 +622,7 @@ struct SymbolMusicDemo {
         }
       }
 
-      Divider().width(5).color(this.fontColorValue1).width('98%')
+      Divider().color(this.fontColorValue1).width('98%')
       Row() {
         Row() {
           // 请将$r('app.string.song_play')替换为实际资源文件，在本示例中该资源文件的value值为"歌曲六"
@@ -640,7 +639,7 @@ struct SymbolMusicDemo {
         }
       }
 
-      Divider().width(5).color(this.fontColorValue1).width('98%')
+      Divider().color(this.fontColorValue1).width('98%')
       Row() {
         Row() {
           // 请将$r('app.string.play_song')替换为实际资源文件，在本示例中该资源文件的value值为"歌曲七"
@@ -676,4 +675,4 @@ struct SymbolMusicDemo {
 }
 ```
 
-symbol_scene_demo
+![symbol_scene_demo](figures/symbol_music_demo.gif)

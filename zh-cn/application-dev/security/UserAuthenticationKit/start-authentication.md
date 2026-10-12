@@ -11,11 +11,11 @@
 
 ## 接口说明
 
-具体参数、返回值、错误码等描述，请参考对应的userAuth.getUserAuthInstance。
+具体参数、返回值、错误码等描述，请参考对应的[userAuth.getUserAuthInstance](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#userauthgetuserauthinstance10)。
 
 | 接口名称 | 功能描述 | 
 | -------- | -------- |
-| getUserAuthInstance(authParam: AuthParam, widgetParam: WidgetParam): UserAuthInstance | 获取UserAuthInstance对象，用于执行用户身份认证，并支持使用统一用户认证控件。 | 
+| getUserAuthInstance(authParam: AuthParam, widgetParam: WidgetParam): UserAuthInstance | 获取UserAuthInstance对象，用于执行用户身份认证，并支持使用[统一用户认证控件](#统一用户认证控件介绍)。 | 
 | on(type: 'result', callback: IAuthCallback): void | 订阅用户身份认证结果。 | 
 | off(type: 'result', callback?: IAuthCallback): void | 取消订阅用户身份认证结果。 | 
 | start(): void | 执行用户认证。 | 
@@ -28,10 +28,10 @@
 
 - 统一固定的UI组件样式，便于用户识别。
 
-认证控件的样式如图所示，通过WidgetParam配置对应参数。
+认证控件的样式如图所示，通过[WidgetParam](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#widgetparam10)配置对应参数。
 
 <!--RP1-->
-unified-UI-component-authentication
+![unified-UI-component-authentication](figures/unified-UI-component-authentication.png)
 <!--RP1End-->
 
 - 标注1：用户认证界面的标题（WidgetParam.title），不支持传空字串，最大长度为500字符。应用可在此配置符合场景的字符串，建议传入认证目的，例如用于支付、登录应用等。
@@ -47,7 +47,7 @@ unified-UI-component-authentication
 
   当前仅系统应用可以选择和使用全屏类型的认证界面。
 
-  popup-authentication
+  ![popup-authentication](figures/popup-authentication.png)
 <!--DelEnd-->
 
 当前支持使用认证控件的认证类型包括：
@@ -74,23 +74,23 @@ unified-UI-component-authentication
 
 > **说明：**
 >
-> 从API版本26.1.0开始，在企业账号场景下，如果用户开通了企业账号认证解锁但没有注册锁屏口令时，应用发起的锁屏口令认证将会自动切换为企业账号密码认证。
+> 从API版本26.0.1开始，在企业账号场景下，如果用户开通了企业账号认证解锁但没有注册锁屏口令时，应用发起的锁屏口令认证将会自动切换为企业账号密码认证。
 
 ## 开发步骤
 
-1. 申请权限：ohos.permission.ACCESS_BIOMETRIC。
+1. [申请权限](prerequisites.md#申请权限)：ohos.permission.ACCESS_BIOMETRIC。
 
-2. 指定用户认证相关参数AuthParam（包括挑战值、认证类型UserAuthType列表和认证等级AuthTrustLevel）、配置认证控件界面WidgetParam，调用getUserAuthInstance获取认证对象。
+2. 指定用户认证相关参数[AuthParam](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#authparam10)（包括挑战值、认证类型[UserAuthType](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#userauthtype8)列表和认证等级[AuthTrustLevel](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#authtrustlevel8)）、配置认证控件界面[WidgetParam](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#widgetparam10)，调用[getUserAuthInstance](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#userauthgetuserauthinstance10)获取认证对象。
 
-3. 调用UserAuthInstance.on('result')接口订阅认证结果。
+3. 调用[UserAuthInstance.on('result')](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#onresult10-1)接口订阅认证结果。
 
-4. 调用UserAuthInstance.start接口发起认证，通过IAuthCallback回调返回认证结果UserAuthResult。当认证成功时返回认证通过类型（UserAuthType）和令牌信息（AuthToken）。
+4. 调用[UserAuthInstance.start](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#start10)接口发起认证，通过[IAuthCallback](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#iauthcallback10)回调返回认证结果[UserAuthResult](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#userauthresult10)。当认证成功时返回认证通过类型（[UserAuthType](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#userauthtype8)）和令牌信息（AuthToken）。
 
 **示例1：**
 
  发起用户认证，采用认证可信等级≥ATL3的人脸+指纹+锁屏口令认证，获取认证结果。
 
-<!-- @authentication_example1 -->
+<!-- @[authentication_example1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 initiatingUserAuthentication1() {
@@ -141,7 +141,7 @@ initiatingUserAuthentication1() {
 
 发起用户认证，采用认证可信等级≥ATL3的人脸+认证类型相关+复用设备解锁最大有效时长认证，获取认证结果。
 
-<!-- @authentication_example2 -->
+<!-- @[authentication_example2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 initiatingUserAuthentication2() {
@@ -197,7 +197,7 @@ initiatingUserAuthentication2() {
 
 发起用户认证，采用认证可信等级≥ATL3的人脸+任意应用认证类型相关+复用任意应用最大有效时长认证，获取认证结果。
 
-<!-- @authentication_example3 -->
+<!-- @[authentication_example3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 initiatingUserAuthentication3() {
@@ -254,9 +254,9 @@ initiatingUserAuthentication3() {
 以模应用弹窗方式拉起身份认证控件对用户进行身份认证：
 
 > **说明：**
-> 在PC/2in1设备上，应用如果使用模应用弹窗方式发起认证（即配置用户界面参数widgetParam时传入了有效的uiContext），收到认证结果后，若需弹出其他窗口，应先获取控件弹窗释放的标志消息，通过on('authTip')接口订阅控件释放消息（authTipInfo.tipCode = UserAuthTipCode.WIDGET_RELEASED）。
+> 在PC/2in1设备上，应用如果使用模应用弹窗方式发起认证（即配置用户界面参数[widgetParam](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#widgetparam10)时传入了有效的uiContext），收到认证结果后，若需弹出其他窗口，应先获取控件弹窗释放的标志消息，通过[on('authTip')](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#onauthtip20)接口订阅控件释放消息（authTipInfo.tipCode = UserAuthTipCode.WIDGET_RELEASED）。
 
-<!-- @authentication_example4 -->
+<!-- @[authentication_example4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 initiatingUserAuthentication4() {
@@ -306,4 +306,4 @@ initiatingUserAuthentication4() {
 
 ## 示例代码
 
-  - 发起认证
+  - [发起认证](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication)

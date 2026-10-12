@@ -20,7 +20,7 @@
 
 ## 系统框架
 
-PartnerAgent服务框架原理图
+![PartnerAgent服务框架原理图](figures/fusionConnectivity-architecture.png)
 
 ### 模块功能说明
 

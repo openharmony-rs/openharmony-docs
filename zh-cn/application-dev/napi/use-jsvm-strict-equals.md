@@ -22,7 +22,7 @@ JSVM-API 中的函数用于判断两个 JavaScript 值是否严格相等，类�
 
 ## 使用示例
 
-JSVM-API接口开发流程参考使用JSVM-API实现JS与C/C++语言交互开发流程，本文仅对接口对应C++相关代码进行展示。
+JSVM-API接口开发流程参考[使用JSVM-API实现JS与C/C++语言交互开发流程](use-jsvm-process.md)，本文仅对接口对应C++相关代码进行展示。
 
 ### OH_JSVM_StrictEquals
 
@@ -30,7 +30,7 @@ JSVM-API接口开发流程参考使用JSVM-API实现JS与C/C++语言交互开发
 
 cpp部分代码：
 
-<!-- @oh_jsvm_strict_equals -->
+<!-- @[oh_jsvm_strict_equals](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/UsageInstructionsTwo/strictequals/src/main/cpp/hello.cpp) -->
 
 ``` C++
 #include "napi/native_api.h"

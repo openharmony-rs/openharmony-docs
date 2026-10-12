@@ -6,15 +6,15 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-在开发相机应用时，需要先申请相关权限。
+在开发相机应用时，需要先[申请相关权限](camera-preparation.md)。
 
-当前示例提供完整的拍照流程及其接口调用顺序的介绍。对于单个流程（如设备输入、会话管理、拍照）的介绍请参考相机开发指导(Native)的具体章节。
+当前示例提供完整的拍照流程及其接口调用顺序的介绍。对于单个流程（如设备输入、会话管理、拍照）的介绍请参考[相机管理(C/C++)](native-camera-device-management.md)的具体章节。
 
 ## 开发流程
 
 在获取到相机支持的输出流能力后，开始创建拍照流，开发流程如下。
 
-Photographing Development Process
+![Photographing Development Process](figures/photographing-ndk-development-process.png)
 
 ## 完整示例
 
@@ -50,6 +50,7 @@ Photographing Development Process
 3. cpp侧导入NDK接口，并根据传入的SurfaceId进行拍照。
     ```c++
     #include "hilog/log.h"
+    #include "ndk_camera.h"
 
     void CaptureSessionOnFocusStateChange(Camera_CaptureSession* session, Camera_FocusState focusState)
     {
@@ -267,7 +268,7 @@ Photographing Development Process
         // 根据所需从cameraOutputCapability->photoProfiles中选择合适的拍照分辨率
         photoProfile = cameraOutputCapability->photoProfiles[0];
 
-        // 创建预览输出流,其中参数 previewSurfaceId 参考上文 XComponent 组件，预览流为XComponent组件提供的surface。
+        // 创建预览输出流，其中参数 previewSurfaceId 参考上文 XComponent 组件，预览流为XComponent组件提供的surface。
         ret = OH_CameraManager_CreatePreviewOutput(cameraManager, previewProfile, previewSurfaceId, &previewOutput);
         if (previewProfile == nullptr || previewOutput == nullptr || ret != CAMERA_OK) {
             OH_LOG_ERROR(LOG_APP, "OH_CameraManager_CreatePreviewOutput failed.");

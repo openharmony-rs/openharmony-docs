@@ -19,13 +19,13 @@ ArkGraphics 3D支持开发者创建自定义的着色器，开发者可以通过
 着色器通常配合MaterialType.SHADER材质使用，是实现个性化渲染的重要手段。其创建依赖名称及沙箱路径，创建后可绑定至材质上，替代默认的渲染行为。
 
 ## 材质类型（MaterialType）
-ArkGraphics 3D中的材质类型通过MaterialType枚举指定，目前支持以下两种类型：
+ArkGraphics 3D中的材质类型通过[MaterialType](../reference/apis-arkgraphics3d/js-apis-inner-scene-resources.md#materialtype)枚举指定，目前支持以下两种类型：
 
 - MaterialType.SHADER：基于Shader（着色器）的材质类型，支持绑定自定义着色器，开发者可通过自定义渲染程序实现个性化的视觉表现，适用于高级图形渲染需求。
 
 - MaterialType.METALLIC_ROUGHNESS：基于金属-粗糙度模型的标准PBR材质类型，符合glTF材质规范，适合快速构建真实感渲染效果，支持设置基础色、金属度、粗糙度、法线贴图等常见属性。
 
-材质的创建一般通过SceneResourceFactory.createMaterial()方法完成，需指定材质名称和类型。不同类型的材质支持不同的参数配置，开发者可按需选择以实现预期的渲染效果。
+材质的创建一般通过[SceneResourceFactory.createMaterial()](../reference/apis-arkgraphics3d/js-apis-inner-scene.md#creatematerial)方法完成，需指定材质名称和类型。不同类型的材质支持不同的参数配置，开发者可按需选择以实现预期的渲染效果。
 
 
 ## 材质的属性
@@ -35,7 +35,7 @@ ArkGraphics 3D中的材质类型通过MaterialType枚举指定，目前支持以
 
 
 ### 通用属性
-所有材质均具备以下基础属性（如materialType、shadowReceiver、blend等）可通过设置Material类型对象实现，用于控制材质的类型及其渲染基础行为：
+所有材质均具备以下基础属性（如materialType、shadowReceiver、blend等）可通过设置[Material](../reference/apis-arkgraphics3d/js-apis-inner-scene-resources.md#material)类型对象实现，用于控制材质的类型及其渲染基础行为：
 
 - materialType：材质类型，标识该材质是标准PBR材质还是基于Shader的自定义材质。
 
@@ -66,7 +66,7 @@ ArkGraphics 3D中的材质类型通过MaterialType枚举指定，目前支持以
   适用场景：以线框模式渲染3D物体的网格，可直观显示模型的建模结构。
 
 ### PBR材质属性
-符合glTF标准的基于物理渲染（PBR）的金属-粗糙度材质，通过设置MetallicRoughnessMaterial实现，其中各项属性采用MaterialProperty类型封装，支持绑定纹理和设置因子（factor）值。具体属性包括：
+符合glTF标准的基于物理渲染（PBR）的金属-粗糙度材质，通过设置[MetallicRoughnessMaterial](../reference/apis-arkgraphics3d/js-apis-inner-scene-resources.md#metallicroughnessmaterial20)实现，其中各项属性采用[MaterialProperty](../reference/apis-arkgraphics3d/js-apis-inner-scene-resources.md#materialproperty20)类型封装，支持绑定纹理和设置因子（factor）值。具体属性包括：
 
 - baseColor：基础颜色和透明度，包含纹理及对应因子，用于定义材质表面的主色调。
 
@@ -86,7 +86,7 @@ ArkGraphics 3D中的材质类型通过MaterialType枚举指定，目前支持以
 
 - emissive：自发光颜色及纹理，表达材质自发光的效果。
 
-  适用场景：灯光、屏幕、发光标志、荧光材料等需要表现光源或自发光效果的材质。
+  适用场景：屏幕、发光标志、荧光材料等需要表现光源或自发光效果的材质。
 
 - clearCoat：清漆层强度，模拟车漆等具有透明反光层的材质。
 
@@ -115,7 +115,7 @@ ArkGraphics 3D中的材质类型通过MaterialType枚举指定，目前支持以
 
    在页面脚本中导入ArkGraphics 3D提供的核心类型，用于创建Shader材质及绑定Shader资源。
 
-   <!-- @resource_header -->
+   <!-- @[resource_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
    
    ``` TypeScript
    import { Camera, Environment, Geometry, Image, Material, MaterialType, Scene, SceneResourceFactory,
@@ -126,14 +126,14 @@ ArkGraphics 3D中的材质类型通过MaterialType枚举指定，目前支持以
 
    调用Scene.load()方法加载.glb或.gltf格式的模型文件，并在加载完成后获取Scene对象。随后构建SceneOptions对象，指定场景及渲染模式，用于后续通过Component3D将场景内容渲染到界面中。
 
-   <!-- @scene_load_init -->
+   <!-- @[scene_load_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
    
    ``` TypeScript
    if (this.scene === null) {
-     // Switched from .gltf to .glb; same content, different format
+     // 从 .gltf 切换为 .glb；内容相同，格式不同
      Scene.load($rawfile('gltf/CubeWithFloor/glTF/AnimatedCube.glb'))
        .then(async (result: Scene) => {
-         // Assign loaded scene to globalScene for unified resource creation
+         // 将加载的场景赋值给globalScene，以便统一创建资源
          globalScene = result;
          this.scene = result;
          this.sceneOpt = { scene: this.scene, modelType: ModelType.SURFACE } as SceneOptions;
@@ -150,7 +150,7 @@ ArkGraphics 3D中的材质类型通过MaterialType枚举指定，目前支持以
 
    创建相机对象并设置相机启用状态与观察位置，用于后续展示模型。
 
-   <!-- @scene_camera_init -->
+   <!-- @[scene_camera_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
    
    ``` TypeScript
    this.cam = await this.rf.createCamera({ name: 'Camera1' });
@@ -162,12 +162,12 @@ ArkGraphics 3D中的材质类型通过MaterialType枚举指定，目前支持以
 
    通过Scene.getNodeByPath()方法获取目标模型的几何体（Geometry）节点，并记录其原始材质，以便在后续修改材质后可进行回退或恢复操作。
 
-   <!-- @geometry_node_get -->
+   <!-- @[geometry_node_get](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
    
    ``` TypeScript
    this.geom = this.scene.getNodeByPath('rootNode_/Unnamed Node 1/AnimatedCube') as Geometry;
    
-   // record original material
+   // 记录原始材质
    this.originalMat = this.geom.mesh.subMeshes[0].material;
    ```
 
@@ -175,16 +175,16 @@ ArkGraphics 3D中的材质类型通过MaterialType枚举指定，目前支持以
 
    调用SceneResourceFactory.createMaterial()创建Shader类型的空白材质，为后续绑定自定义Shader做准备。
 
-   <!-- @create_material_promise -->
+   <!-- @[create_material_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
    
    ``` TypeScript
    function createMaterialPromise(): Promise<Material> {
      return new Promise((resolve, reject) => {
-       // Ensure the scene is loaded before accessing sceneFactory
+       // 确保在访问sceneFactory之前场景已加载
        if (globalScene) {
          let sceneFactory: SceneResourceFactory = globalScene.getResourceFactory();
          let sceneMaterialParameter: SceneResourceParameters = { name: 'material' };
-         // Create Material
+         // 创建材质
          let material: Promise<Material> = sceneFactory.createMaterial(sceneMaterialParameter, MaterialType.SHADER);
          material.then(resolve)
          .catch((err: string) => {
@@ -200,18 +200,18 @@ ArkGraphics 3D中的材质类型通过MaterialType枚举指定，目前支持以
 
 6. 创建Shader资源。
 
-   通过SceneResourceFactory.createShader()创建自定义着色器资源，创建的shader资源可在后续步骤中绑定到Shader材质上，实现自定义渲染逻辑。
+   通过SceneResourceFactory.createShader()创建自定义着色器资源，创建的Shader资源可在后续步骤中绑定到Shader材质上，实现自定义渲染逻辑。
 
-   <!-- @create_shader_promise -->
+   <!-- @[create_shader_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
    
    ``` TypeScript
    function createShaderPromise(): Promise<Shader> {
      return new Promise((resolve, reject) => {
-       // Ensure the scene is loaded before accessing sceneFactory
+       // 确保在访问sceneFactory之前场景已加载
        if (globalScene) {
          let sceneFactory: SceneResourceFactory = globalScene.getResourceFactory();
    
-         // Create a SceneResourceParameters object and use it to create a shader
+         // 创建一个SceneResourceParameters对象，并用它来创建着色器
          let sceneResourceParameter: SceneResourceParameters = {
            name: 'shaderResource',
            uri: $rawfile('shaders/custom_shader/custom_material_sample.shader')
@@ -235,7 +235,7 @@ ArkGraphics 3D中的材质类型通过MaterialType枚举指定，目前支持以
 
    将着色器资源绑定至Shader材质，再将Shader材质绑定至几何体节点，使用自定义渲染逻辑进行绘制。通过按钮点击事件可触发材质切换，实现运行时从默认材质到Shader材质的动态过渡。
 
-   <!-- @material_button_action -->
+   <!-- @[material_button_action](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
    
    ``` TypeScript
    Button('Replace with a blank material')
@@ -299,7 +299,7 @@ ArkGraphics 3D中的材质类型通过MaterialType枚举指定，目前支持以
 
    在页面脚本中导入ArkGraphics 3D提供的核心类型，用于创建PBR材质及绑定贴图资源。
 
-   <!-- @pbr_clearcoat_header -->
+   <!-- @[pbr_clearcoat_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/material/pbr_clearcoat.ets) -->
    
    ``` TypeScript
    import { Scene, Camera, Material, Node, Image, SceneResourceFactory, Geometry, EnvironmentBackgroundType,
@@ -311,11 +311,11 @@ ArkGraphics 3D中的材质类型通过MaterialType枚举指定，目前支持以
 
    调用Scene.load()方法加载.glb或.gltf格式的模型文件，并在加载完成后获取Scene对象。场景加载完成后，可以访问场景的资源工厂以创建材质和其他资源。
 
-   <!-- @pbr_clearcoat_loadScene -->
+   <!-- @[pbr_clearcoat_loadScene](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/material/pbr_clearcoat.ets) -->
    
    ``` TypeScript
    if (this.scene == null) {
-     // Switched from .gltf to .glb; same content, different format
+     // 从 .gltf 切换为 .glb；内容相同，格式不同
      Scene.load($rawfile('gltf/CompareClearcoat/CompareClearcoat.glb'))
        .then(async (scene: Scene) => {
          this.scene = scene;
@@ -333,7 +333,7 @@ ArkGraphics 3D中的材质类型通过MaterialType枚举指定，目前支持以
 
    通过场景的节点路径获取目标几何体节点，并提取其材质，随后预加载清漆层（Clearcoat）相关的纹理资源。
 
-   <!-- @pbr_clearcoat_getMaterialAndTextures -->
+   <!-- @[pbr_clearcoat_getMaterialAndTextures](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/material/pbr_clearcoat.ets) -->
    
    ``` TypeScript
    let pbrNode: Node | null | undefined = this.scene.root?.getNodeByPath('Unnamed Node 1/GeoSphere003');
@@ -357,7 +357,7 @@ ArkGraphics 3D中的材质类型通过MaterialType枚举指定，目前支持以
 
    创建图像基础的光照（IBL）环境，配置环境贴图和辐射贴图，以实现真实的环境光照效果。
 
-   <!-- @pbr_clearcoat_createIBL -->
+   <!-- @[pbr_clearcoat_createIBL](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/material/pbr_clearcoat.ets) -->
    
    ``` TypeScript
    scene.environment = await rf.createEnvironment({ name: 'env' });
@@ -380,7 +380,7 @@ ArkGraphics 3D中的材质类型通过MaterialType枚举指定，目前支持以
 
    创建一个相机对象，并设置其位置和观察目标。然后启用轨道控制功能，让用户可以通过手势旋转和缩放视图。
 
-   <!-- @pbr_clearcoat_createCamera -->
+   <!-- @[pbr_clearcoat_createCamera](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/material/pbr_clearcoat.ets) -->
    
    ``` TypeScript
    this.cam = await rf.createCamera({ name: 'ClearcoatCam' });
@@ -394,7 +394,7 @@ ArkGraphics 3D中的材质类型通过MaterialType枚举指定，目前支持以
 
    允许用户在不同的清漆纹理之间切换。通过按下按钮或触发事件来实现纹理的动态切换。
 
-   <!-- @pbr_clearcoat_changeClearcoatTexture -->
+   <!-- @[pbr_clearcoat_changeClearcoatTexture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/material/pbr_clearcoat.ets) -->
    
    ``` TypeScript
    changeClearcoatTex() {
@@ -409,7 +409,7 @@ ArkGraphics 3D中的材质类型通过MaterialType枚举指定，目前支持以
 
    通过滑动条调整清漆层的强度。这个方法通过更新材质的clearCoat.factor属性来实现。
 
-   <!-- @pbr_clearcoat_setClearcoat -->
+   <!-- @[pbr_clearcoat_setClearcoat](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/material/pbr_clearcoat.ets) -->
    
    ``` TypeScript
    setClearcoat(v: number) {
@@ -425,7 +425,7 @@ ArkGraphics 3D中的材质类型通过MaterialType枚举指定，目前支持以
 
    类似于清漆层纹理切换，用户也可以在不同的清漆层粗糙度纹理之间切换。
 
-   <!-- @pbr_clearcoat_changeRoughnessTexture -->
+   <!-- @[pbr_clearcoat_changeRoughnessTexture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/material/pbr_clearcoat.ets) -->
    
    ``` TypeScript
    changeClearcoatRoughTex() {
@@ -440,7 +440,7 @@ ArkGraphics 3D中的材质类型通过MaterialType枚举指定，目前支持以
 
    通过滑动条调整清漆层的粗糙度，同样地，这通过更新clearCoatRoughness.factor来实现。
 
-   <!-- @pbr_clearcoat_setClearcoatRoughness -->
+   <!-- @[pbr_clearcoat_setClearcoatRoughness](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/material/pbr_clearcoat.ets) -->
    
    ``` TypeScript
    setClearcoatRoughness(v: number) {
@@ -456,8 +456,8 @@ ArkGraphics 3D中的材质类型通过MaterialType枚举指定，目前支持以
 ## 相关实例
 
 详细的代码实现与示例，可以通过访问相应的samples路径查看，了解更多内容：
-- 通用材质属性与PBR材质示例（ArkTS）
+- [通用材质属性与PBR材质示例（ArkTS）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/material)
 
 对于3D资源更加综合的使用可以参考以下实例：
-- 3D引擎接口示例（ArkTS）（API12）
+- [3D引擎接口示例（ArkTS）（API12）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Graphics/Graphics3d)
 <!--RP1End-->

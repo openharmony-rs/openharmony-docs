@@ -79,9 +79,9 @@ ohos.permission.DISTRIBUTED_DATASYNC：分布式数据同步权限
    import { abilityAccessCtrl } from '@kit.AbilityKit';
    ```
 
-3. 分布式数据同步权限的授权方式为user_grant，因此需要调用requestPermissionsFromUser()接口，以动态弹窗的方式向用户申请授权。
+3. 分布式数据同步权限的授权方式为user_grant，因此需要调用[requestPermissionsFromUser()](../../application-dev/reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#requestpermissionsfromuser9)接口，以动态弹窗的方式向用户申请授权。
 
-   <!-- @permissions_user_grant --> 
+   <!-- @[permissions_user_grant](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    let atManager = abilityAccessCtrl.createAtManager();
@@ -106,7 +106,7 @@ ohos.permission.DISTRIBUTED_DATASYNC：分布式数据同步权限
 
 startDiscovering(discoverParam: {[key:&nbsp;string]:&nbsp;Object;} , filterOptions?: {[key:&nbsp;string]:&nbsp;Object;} ): void;
 
-发现周边同局域网或者开启蓝牙的设备。详细信息参见：startDiscovering。
+发现周边同局域网或者开启蓝牙的设备。详细信息参见：[startDiscovering](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#startdiscovering)。
 
 
 ### 开发步骤
@@ -127,7 +127,7 @@ startDiscovering(discoverParam: {[key:&nbsp;string]:&nbsp;Object;} , filterOptio
 
 4. 创建设备管理实例，设备管理实例是分布式设备管理方法的调用入口。
 
-   <!-- @create_device_manager -->
+   <!-- @[create_device_manager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/model/RemoteDeviceModel.ets) -->
    
    ``` TypeScript
    async createDeviceManager(): Promise<void> {
@@ -153,7 +153,7 @@ startDiscovering(discoverParam: {[key:&nbsp;string]:&nbsp;Object;} , filterOptio
 
 5. 注册发现设备的回调，调用发现接口发现周边设备。发现状态持续两分钟，超过两分钟，会停止发现，最大发现数量99个。
    
-   <!-- @start_discovering -->
+   <!-- @[start_discovering](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/model/RemoteDeviceModel.ets) -->
    
    ``` TypeScript
    startDeviceDiscovery(): void {
@@ -195,7 +195,7 @@ startDiscovering(discoverParam: {[key:&nbsp;string]:&nbsp;Object;} , filterOptio
 
 6. 发现结束或页面退出时，调用停止发现接口释放发现监听。
 
-   <!-- @stop_discovering --> 
+   <!-- @[stop_discovering](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/model/RemoteDeviceModel.ets) --> 
    
    ``` TypeScript
    stopDeviceDiscovery(): void {
@@ -225,7 +225,7 @@ startDiscovering(discoverParam: {[key:&nbsp;string]:&nbsp;Object;} , filterOptio
 
 bindTarget(deviceId: string, bindParam: {[key:&nbsp;string]:&nbsp;Object;} , callback: AsyncCallback&lt;{deviceId: string;}>): void;
 
-设备绑定。详细信息参见：bindTarget。
+设备绑定。详细信息参见：[bindTarget](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#bindtarget)。
 
 ### 开发步骤
 
@@ -235,7 +235,7 @@ bindTarget(deviceId: string, bindParam: {[key:&nbsp;string]:&nbsp;Object;} , cal
    
 3. 选择不可信设备id，发起设备绑定。
 
-   <!-- @bind_target -->
+   <!-- @[bind_target](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/model/RemoteDeviceModel.ets) -->
    
    ``` TypeScript
    authenticateDevice(device: distributedDeviceManager.DeviceBasicInfo): void {
@@ -285,7 +285,7 @@ bindTarget(deviceId: string, bindParam: {[key:&nbsp;string]:&nbsp;Object;} , cal
 
 getAvailableDeviceListSync(): Array&lt;DeviceBasicInfo&gt;;
 
-设备信息查询。详细信息参见：getAvailableDeviceListSync。
+设备信息查询。详细信息参见：[getAvailableDeviceListSync](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync)。
 
 ### 开发步骤
 
@@ -297,7 +297,7 @@ getAvailableDeviceListSync(): Array&lt;DeviceBasicInfo&gt;;
 
 4. 查询周围上线并且可信的设备。
 
-   <!-- @get_available_device_list -->
+   <!-- @[get_available_device_list](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/model/RemoteDeviceModel.ets) -->
    
    ``` TypeScript
    getTrustedDeviceList(): void {
@@ -330,7 +330,7 @@ getAvailableDeviceListSync(): Array&lt;DeviceBasicInfo&gt;;
 
 on(type: 'deviceStateChange', callback: Callback&lt;{ action: DeviceStateChange; device: DeviceBasicInfo; }&gt;): void;
 
-设备上下线监听。详细信息参见：on('deviceStateChange')。
+设备上下线监听。详细信息参见：[on('deviceStateChange')](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange)。
 
 ### 开发步骤
 
@@ -350,7 +350,7 @@ on(type: 'deviceStateChange', callback: Callback&lt;{ action: DeviceStateChange;
 
 4. 创建设备管理实例，设备管理实例是分布式设备管理方法的调用入口，并注册设备上下线回调。
 
-   <!-- @device_state_change -->
+   <!-- @[device_state_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedAuthentication/entry/src/main/ets/model/RemoteDeviceModel.ets) -->
    
    ``` TypeScript
    registerDeviceStateListener(): void {

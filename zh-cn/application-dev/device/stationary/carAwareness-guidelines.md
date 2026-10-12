@@ -10,7 +10,7 @@
 
 carAwareness（车辆感知）模块面向车载应用提供基于摄像头的环境与动作感知能力。
 
-详细的接口介绍请参考@ohos.multimodalAwareness.carAwareness (车辆感知)。
+详细的接口介绍请参考[@ohos.multimodalAwareness.carAwareness (车辆感知)](../../reference/apis-multimodalawareness-kit/js-apis-awareness-carAwareness.md)。
 
 ## 隔空手势感知开发指导
 
@@ -30,7 +30,7 @@ carAwareness（车辆感知）模块面向车载应用提供基于摄像头的�
 
 使用隔空手势感知时，需要权限：ohos.permission.vehicle.MMA_SPATIALACTION。
 
-具体申请方式请参考声明权限。
+具体申请方式请参考[声明权限](../../security/AccessToken/declare-permissions.md)。
 
 ```JSON5
 "requestPermissions": [
@@ -69,7 +69,7 @@ carAwareness（车辆感知）模块面向车载应用提供基于摄像头的�
 
 1. 导入模块
 
-   <!-- @carAwareness_import -->
+   <!-- @[carAwareness_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/CarAwareness/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    import { carAwareness } from '@kit.MultimodalAwarenessKit';
@@ -79,7 +79,7 @@ carAwareness（车辆感知）模块面向车载应用提供基于摄像头的�
 
 2. 检测设备是否支持隔空手势能力
 
-   <!-- @spatialMotion_query -->
+   <!-- @[spatialMotion_query](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/CarAwareness/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    async function querySpatialMotionCapability(): Promise<boolean> {
@@ -98,7 +98,7 @@ carAwareness（车辆感知）模块面向车载应用提供基于摄像头的�
 
 3. 注册手势感知回调，处理识别结果
 
-   <!-- @spatialMotion_subscribe -->
+   <!-- @[spatialMotion_subscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/CarAwareness/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    function subscribeSpatialMotion(onUpdate: (data: string) => void): void {
@@ -120,7 +120,7 @@ carAwareness（车辆感知）模块面向车载应用提供基于摄像头的�
 
 4. 取消手势感知订阅
 
-   <!-- @spatialMotion_unsubscribe -->
+   <!-- @[spatialMotion_unsubscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/CarAwareness/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    function unsubscribeSpatialMotion(): void {
@@ -153,7 +153,7 @@ carAwareness（车辆感知）模块面向车载应用提供基于摄像头的�
 
 使用实时天气感知时，需要权限：ohos.permission.vehicle.MMA_WEATHER。
 
-具体申请方式请参考声明权限。
+具体申请方式请参考[声明权限](../../security/AccessToken/declare-permissions.md)。
 
 ```JSON5
 "requestPermissions": [
@@ -180,7 +180,7 @@ carAwareness（车辆感知）模块面向车载应用提供基于摄像头的�
 ### 开发步骤
 
 1. 导入模块
-   <!-- @carAwareness_import -->
+   <!-- @[carAwareness_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/CarAwareness/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    import { carAwareness } from '@kit.MultimodalAwarenessKit';
@@ -190,7 +190,7 @@ carAwareness（车辆感知）模块面向车载应用提供基于摄像头的�
 
 2. 注册天气感知回调
 
-   <!-- @realTimeWeather_subscribe -->
+   <!-- @[realTimeWeather_subscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/CarAwareness/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    function subscribeWeather(onUpdate: (data: string) => void): void {
@@ -210,7 +210,7 @@ carAwareness（车辆感知）模块面向车载应用提供基于摄像头的�
 
 3. 取消天气感知订阅
 
-   <!-- @realTimeWeather_unsubscribe -->
+   <!-- @[realTimeWeather_unsubscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/CarAwareness/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    function unsubscribeWeather(): void {
@@ -243,7 +243,7 @@ carAwareness（车辆感知）模块面向车载应用提供基于摄像头的�
 
 使用补能状态感知时，需要权限：ohos.permission.vehicle.MMA_ENERGYREFILL。
 
-具体申请方式请参考声明权限。
+具体申请方式请参考[声明权限](../../security/AccessToken/declare-permissions.md)。
 
 ```JSON5
 "requestPermissions": [
@@ -270,7 +270,7 @@ carAwareness（车辆感知）模块面向车载应用提供基于摄像头的�
 ### 开发步骤
 
 1. 导入模块
-   <!-- @carAwareness_import -->
+   <!-- @[carAwareness_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/CarAwareness/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    import { carAwareness } from '@kit.MultimodalAwarenessKit';
@@ -280,7 +280,7 @@ carAwareness（车辆感知）模块面向车载应用提供基于摄像头的�
 
 2. 注册补能状态回调
 
-   <!-- @refueling_subscribe -->
+   <!-- @[refueling_subscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/CarAwareness/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    function subscribeRefueling(onUpdate: (data: string) => void): void {
@@ -300,7 +300,7 @@ carAwareness（车辆感知）模块面向车载应用提供基于摄像头的�
 
 3. 取消补能状态订阅
 
-   <!-- @refueling_unsubscribe -->
+   <!-- @[refueling_unsubscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/CarAwareness/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    function unsubscribeRefueling(): void {

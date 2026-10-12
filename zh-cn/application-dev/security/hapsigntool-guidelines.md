@@ -258,7 +258,7 @@ OpenHarmony系统内置密钥库文件，文件名称为OpenHarmony.p12，内含
 > **注意事项：** <br/>
 >
 > 1. 步骤一中的密钥对算法推荐使用ECC，出于安全性考虑，应用签名暂不使用RSA算法。
-> 2. 建议将待签名应用包、profile文件、密钥库文件OpenHarmony.p12、根CA证书、中间CA证书、签名工具放在同一个目录下，方便操作。在**developtools_hapsigner/autosign/result**路径下，有如下文件：<br/>- OpenHarmony密钥库文件**OpenHarmony.p12**<br/>- 根CA证书**rootCA.cer**<br/>- 中间CA证书**subCA.cer**<br/>- profile签名证书**OpenHarmonyProfileRelease.pem**
+> 2. 建议将待签名应用包、profile文件、密钥库文件OpenHarmony.p12、根CA证书、中间CA证书、签名工具放在同一个目录下，方便操作。在[**developtools_hapsigner/autosign/result**](https://gitcode.com/openharmony/developtools_hapsigner/tree/master/autosign/result)路径下，有如下文件：<br/>- OpenHarmony密钥库文件**OpenHarmony.p12**<br/>- 根CA证书**rootCA.cer**<br/>- 中间CA证书**subCA.cer**<br/>- profile签名证书**OpenHarmonyProfileRelease.pem**
 
 1. **生成应用签名证书密钥对**
 
@@ -568,9 +568,9 @@ OpenHarmony系统内置密钥库文件，文件名称为OpenHarmony.p12，内含
 
    - **可能原因**
 
-     （1）profile文件并没有被签名(没有生成p7b文件),在进行hap签名之前profile文件里的不存在"type"键值信息
+     （1）profile文件并没有被签名（没有生成p7b文件），在进行hap签名之前profile文件里的不存在"type"键值信息。
 
-     （2）输入的zip包超过了4G，压缩文件格式发生变化，导致解压错误
+     （2）输入的zip包超过了4G，压缩文件格式发生变化，导致解压错误。
 
      （3）签名使用的密钥和实体证书不匹配。
 

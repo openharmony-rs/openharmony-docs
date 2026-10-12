@@ -15,7 +15,7 @@
 
 具有高帧率（>30fps）视频源的播放场景；视频帧率小于或等于30的场景建议以30Hz的刷新率运行。下图以播放一段60fps的视频为例，算法根据视频内容实时调整屏幕刷新率，调节过程中，当刷新率小于视频帧率时，显示前会丢弃部分视频帧以节省功耗。
 
-Video variable refreshrate
+![Video variable refreshrate](figures/video-variable-refreshrate.png)
 
 ## 约束与限制
 
@@ -26,13 +26,13 @@ Video variable refreshrate
 
 ## 开发步骤
 
-基础解码功能请参考异步模式视频解码开发指南，下面仅针对于基础视频解码过程中存在的区别做具体说明。
+基础解码功能请参考[异步模式视频解码开发指南](video-decoding.md)，下面仅针对于基础视频解码过程中存在的区别做具体说明。
 
 1. 解码器配置阶段，添加视频可变帧率使能开关。
    
    示例中的变量说明如下：
    
-   • videoDec：视频解码器实例的指针。创建方式参考Surface模式下创建解码器实例对象。
+   • videoDec：视频解码器实例的指针。创建方式参考[Surface模式下创建解码器实例对象](video-decoding.md#surface模式)。
 
     ```cpp
     OH_AVFormat *format = OH_AVFormat_Create();

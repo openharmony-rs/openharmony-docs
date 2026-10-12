@@ -40,21 +40,21 @@
 
    可通过以下方式获取音视频编解码能力实例。获取成功后，可继续执行后续操作。实例无显式释放接口，使用完毕后系统会自动释放资源并回收。
 
-   方式一：通过OH_AVCodec_GetCapability获取系统推荐的音视频编解码器能力实例。
+   方式一：通过[OH_AVCodec_GetCapability](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md#oh_avcodec_getcapability)获取系统推荐的音视频编解码器能力实例。
    
    ```c++
    // 获取系统推荐的音频AAC解码器能力实例。
    OH_AVCapability *capability = OH_AVCodec_GetCapability(OH_AVCODEC_MIMETYPE_AUDIO_AAC, false);
    ```
 
-   方式二：通过OH_AVCodec_GetCapabilityByCategory获取指定软硬件的编解码能力实例。
+   方式二：通过[OH_AVCodec_GetCapabilityByCategory](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md#oh_avcodec_getcapabilitybycategory)获取指定软硬件的编解码能力实例。
 
    ```c++
    // 获取指定硬件的视频AVC编码器能力实例。
    OH_AVCapability *capability = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
    ```
 
-   方式三：从API version 24开始，开发者可调用OH_AVCodec_GetCapabilityList接口，获取指定编解码器类型（如视频解码器）的全量能力实例列表。
+   方式三：从API version 24开始，开发者可调用[OH_AVCodec_GetCapabilityList](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md#oh_avcodec_getcapabilitylist)接口，获取指定编解码器类型（如视频解码器）的全量能力实例列表。
 
    ```c++
    // 获取系统中所有视频解码器的能力实例列表。
@@ -62,7 +62,7 @@
    OH_AVCapability **capabilityList = OH_AVCodec_GetCapabilityList(OH_AVCODEC_TYPE_VIDEO_DECODER, &count);
    ```
 
-4. 按需调用相应的查询接口。详细的API说明请参考native_avcapability.h。
+4. 按需调用相应的查询接口。详细的API说明请参考[native_avcapability.h](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md)。
 
 ## 场景化开发
 
@@ -314,7 +314,7 @@ if (format == nullptr) {
 }
 if (!OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_ENCODE_BITRATE_MODE, bitrateMode) ||
    !OH_AVFormat_SetIntValue(format, OH_MD_KEY_SQR_FACTOR, sqrFactor) ||
-   !OH_AVFormat_SetIntValue(format, OH_MD_KEY_MAX_BITRATE, maxBitrate)) {
+   !OH_AVFormat_SetLongValue(format, OH_MD_KEY_MAX_BITRATE, maxBitrate)) {
    // 异常处理。
 }
 if (OH_VideoEncoder_Configure(videoEnc, format) != AV_ERR_OK) {
@@ -485,9 +485,9 @@ OH_AVFormat_Destroy(format);
 
 ### 查询编解码档次和级别支持情况
 
-编解码标准包含多种编码工具，适用于不同的编码场景。对于特定应用场景，编解码标准按档次确定所需编码工具的开启与关闭情况（例如，H.264有基本档次、高档次和主档次）。详情参见 OH_AVCProfile。
+编解码标准包含多种编码工具，适用于不同的编码场景。对于特定应用场景，编解码标准按档次确定所需编码工具的开启与关闭情况（例如，H.264有基本档次、高档次和主档次）。详情参见 [OH_AVCProfile](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avcprofile)。
 
-级别划分了编解码器所需的处理能力和存储空间。H.264有1到6.2的20个级别，参考OH_AVCLevel。
+级别划分了编解码器所需的处理能力和存储空间。H.264有1到6.2的20个级别，参考[OH_AVCLevel](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_avclevel)。
 
 | 接口     | 功能描述                         |
 | -------- | ---------------------------- |
@@ -579,7 +579,7 @@ bool isSupported = OH_AVCapability_AreProfileAndLevelSupported(capability, AVC_P
 
 根据视频高度计算最大视频宽度的公式如下。
 
-
+![](figures/formula-maxmbsperframe.png)
 
 *MaxMBsPerFrameLevelLimits*表示协议限定的编解码器最大每帧宏块数，*MaxMBsPerFrameSubmit*表示编解码器上报的最大每帧宏块数，实际生效的每帧最大宏块数（*MaxMBsPerFrame*）取这两者的最小值。在此基础上，结合给定的视频高度（*height*）以及单个宏块的宽和高（*MBWidth*和*MBHeight*，通常为16），即可推算得出该高度下所支持的最大视频宽度（*maxWidth*）。
 
@@ -687,7 +687,7 @@ if (ret != AV_ERR_OK || widthRange.maxVal <= 0) {
 
 根据视频的宽度和高度，计算最大帧率的公式如下。
 
-
+![](figures/formula-maxmbspersecond.png)
 
 *MaxMBsPerSecondLevelLimits*表示协议限定的编解码器最大每秒宏块数，*MaxMBsPerSecondSubmit*表示编解码器上报的最大每秒宏块数，实际能力取这两者的最小值。
 
@@ -757,7 +757,7 @@ OH_AVFormat_Destroy(format);
 
 ### 设置正确的视频像素格式信息
 
-视频像素格式指示的编码输入图像或解码输出图像的像素排布方式，参考OH_AVPixelFormat。
+视频像素格式指示的编码输入图像或解码输出图像的像素排布方式，参考[OH_AVPixelFormat](../../reference/apis-avcodec-kit/capi-native-avformat-h.md#oh_avpixelformat)。
 
 | 接口     | 功能描述                         |
 | -------- | ---------------------------- |
@@ -795,7 +795,7 @@ if (!isMatched) {
 
 ### 查询编解码特性支持情况并获取特性属性信息
 
-编解码特性是指在特定编解码场景中使用的可选特性，例如视频编码场景的时域可分级编码、 低时延编解码等。具体请参考OH_AVCapabilityFeature。
+编解码特性是指在特定编解码场景中使用的可选特性，例如视频编码场景的时域可分级编码、 低时延编解码等。具体请参考[OH_AVCapabilityFeature](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md#oh_avcapabilityfeature)。
 
 | 接口     | 功能描述                         |
 | -------- | ---------------------------- |
@@ -826,6 +826,7 @@ if (isSupported) {
          // 异常处理。
       }
    }
+   OH_AVFormat_Destroy(properties);
 }
 // 3. 编码器创建和配置。
 OH_AVCodec *videoEnc = OH_VideoEncoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_AVC);

@@ -24,11 +24,11 @@
 
 ## 开发步骤
 
-应用实现录音功能的具体内容请参考使用AudioCapturer开发音频录制功能(ArkTs)、推荐使用OHAudio开发音频录制功能(C/C++)或使用AVRecorder录制音频(ArkTS)。当应用需要退至后台持续录音时，还需要申请录音类型的长时任务(ArkTS)。
+应用实现录音功能的具体内容请参考[使用AudioCapturer开发音频录制功能(ArkTS)](using-audiocapturer-for-recording.md)、[推荐使用OHAudio开发音频录制功能(C/C++)](using-ohaudio-for-recording.md)或[使用AVRecorder录制音频(ArkTS)](../media/using-avrecorder-for-recording.md)。当应用需要退至后台持续录音时，还需要申请录音类型的[长时任务(ArkTS)](../../task-management/continuous-task.md)。
 
 1. 声明后台录音模式。
 
-   在module.json5配置文件中，为需要执行后台录音的UIAbility声明`audioRecording`后台模式。
+   在[module.json5配置文件](../../quick-start/module-configuration-file.md)中，为需要执行后台录音的UIAbility声明`audioRecording`后台模式。
 
    ```json
    {
@@ -47,19 +47,19 @@
 
    应用需要在前台启动录音任务，启动后可以退至后台继续录音。在后台直接启动录音会失败。
 
-   录音开始前，应用需要确认用户已经明确触发录音操作，并处理麦克风权限未授权、设备被占用、存储路径不可用等异常场景。录音开发方式请参考音频录制开发概述。
+   录音开始前，应用需要确认用户已经明确触发录音操作，并处理麦克风权限未授权、设备被占用、存储路径不可用等异常场景。录音开发方式请参考[音频录制开发概述](audio-recording-overview.md)。
 
    针对应用在后台录音被其他音频流打断后无法恢复的场景，推荐使用以下解决方案：
 
    - 应用录音在后台被打断，收到焦点恢复通知时出现start失败，可以弹窗提醒用户再次打开应用手动重新开始录音。
-   - 使用音频录制接口setIndependentAudioSessionStrategy，AudioSessionBehaviorFlags使用MUTE_WHEN_INTERRUPTED，录音流焦点策略被设置成静音打断模式，被其他应用打断导致停止或暂停录制时会进入静音录制状态，在此状态下录制的音频没有声音，其他应用录制动作完成后恢复录制有声数据。
+   - 使用音频录制接口[setIndependentAudioSessionStrategy](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#setindependentaudiosessionstrategy24)，AudioSessionBehaviorFlags使用MUTE_WHEN_INTERRUPTED，录音流焦点策略被设置成静音打断模式，被其他应用打断导致停止或暂停录制时会进入静音录制状态，在此状态下录制的音频没有声音，其他应用录制动作完成后恢复录制有声数据。
 
 3. 申请录音类型长时任务。
 
    当录音需要退至后台持续运行时，应用需要申请`AUDIO_RECORDING`类型长时任务，使系统识别该后台任务与录音业务匹配。
 
-   <!-- @background_task -->
-   
+   <!-- @[background_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioVoIPCallSampleC/entry/src/main/ets/pages/AudioPlayer.ets) -->
+
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
    import { backgroundTaskManager } from '@kit.BackgroundTasksKit'
@@ -107,13 +107,13 @@
      }
    ```
 
-   长时任务启动失败时，应用需避免继续以后台录音方式运行，应停止录音或引导用户回到前台处理。长时任务的完整申请和取消流程请参考长时任务(ArkTS)。
+   长时任务启动失败时，应用需避免继续以后台录音方式运行，应停止录音或引导用户回到前台处理。长时任务的完整申请和取消流程请参考[长时任务(ArkTS)](../../task-management/continuous-task.md)。
 
 4. 停止录音并释放资源。
 
-   用户停止录音、录音异常中断或业务结束时，应用需要调用AudioCapturer的release接口停止录音、释放音频采集资源，并同步取消录音类型长时任务。
+   用户停止录音、录音异常中断或业务结束时，应用需要调用AudioCapturer的[release](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#release8)接口停止录音、释放音频采集资源，并同步取消录音类型长时任务。
 
-   <!-- @background_task_cancel --> 
+   <!-- @[background_task_cancel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioVoIPCallSampleC/entry/src/main/ets/pages/AudioPlayer.ets) --> 
    
    ``` TypeScript
    // 取消长时任务。

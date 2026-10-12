@@ -9,7 +9,7 @@
 
 ## 简介
 
-restool是应用资源编译工具，会解析应用资源文件生成资源索引文件和资源二进制文件等产物，生成的产物由打包工具打包到应用包中，在应用运行阶段开发者可以通过资源管理接口获取应用包中的资源。
+restool是应用资源编译工具，会解析应用资源文件生成资源索引文件和资源二进制文件等产物，生成的产物由[打包工具](../tools/packing-tool.md)打包到应用包中，在应用运行阶段开发者可以通过[资源管理](../reference/apis-localization-kit/js-apis-resource-manager.md)接口获取应用包中的资源。
 
 restool工具存放在SDK安装目录下的toolchains文件夹中。
 
@@ -19,7 +19,7 @@ restool工具存放在SDK安装目录下的toolchains文件夹中。
 
 | 选项 | 是否可缺省 | 是否存在入参 | 描述 |
 | -------- | -------- | -------- | -------- |
-| -i/--inputPath | 不可缺省 | 带参数 | 指定需要构建的资源目录或者资源中间件。<br>在资源目录中支持指定一个编译好的HAP/HSP资源目录（解压态），在此HAP/HSP的基础上完成叠加编译。<br>具体可参考如下编译资源命令。 |
+| -i/--inputPath | 不可缺省 | 带参数 | 指定需要构建的资源目录或者资源中间件。<br>在资源目录中支持指定一个编译好的HAP/HSP资源目录（解压态），在此HAP/HSP的基础上完成叠加编译。<br>具体可参考如下[编译资源命令](#编译资源)。 |
 | -j/--json | 不可缺省 | 带参数 | 指定config.json或者module.json文件路径。 |
 | -o/--outputPath | 不可缺省 | 带参数 | 指定已编译资源的输出路径。 |
 | -p/--packageName | 不可缺省 | 带参数 | 指定编译资源的bundle名称。 |
@@ -87,7 +87,7 @@ Locale匹配规则：Locale匹配需满足以下三条规则。
 
 **--compressed-config参数说明**
 
-在DevEco Studio配置纹理压缩的编译配置参数，编译后会在模块的`build\default\intermediates\res\default`下生成restool的纹理压缩配置文件opt-compression.json，文件结构如下：
+在DevEco Studio配置[纹理压缩](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#section2095319147103)的编译配置参数，编译后会在模块的`build\default\intermediates\res\default`下生成restool的纹理压缩配置文件opt-compression.json，文件结构如下：
 
 ```json5
 {
@@ -336,7 +336,7 @@ JSON文件格式错误，如包含多余的逗号等。
 
 **处理步骤**
 
-检查JSON文件格式，可参考JSON。
+检查JSON文件格式，可参考[JSON](https://www.json.org/json-zh.html)。
 
 ### 11203003 JSON节点的类型与预期不匹配
 
@@ -750,7 +750,7 @@ The paths 'xxx' and 'xxx' of the module.json (in the stage model) or config.json
 
 **错误描述**
 
-应用配置文件module.json（Stage模型）或config.json（FA模型）的路径存在冲突。
+应用配置文件[module.json（Stage模型）](../quick-start/module-configuration-file.md)或[config.json（FA模型）](../quick-start/application-configuration-file-overview-fa.md)的路径存在冲突。
 
 **可能原因**
 
@@ -830,7 +830,7 @@ Invalid target configuration argument 'xxx'. The argument format for option --ta
 
 **处理步骤**
 
-检查--target-config选项对应参数格式是否准确，如：`Locale[zh_CN,en_US];Device[phone]`，具体格式信息可以参考restool支持的命令选项中关于target-config的说明。
+检查--target-config选项对应参数格式是否准确，如：`Locale[zh_CN,en_US];Device[phone]`，具体格式信息可以参考[restool支持的命令选项](#restool支持的命令选项)中关于target-config的说明。
 
 ### 11210017 无效的系统资源id_defined.json路径
 
@@ -1038,7 +1038,7 @@ There are multiple input paths, but the path of the module.json (in the stage mo
 
 **错误描述**
 
-缺少应用配置文件module.json（Stage模型）或config.json（FA模型）的路径。
+缺少应用配置文件[module.json（Stage模型）](../quick-start/module-configuration-file.md)或[config.json（FA模型）](../quick-start/application-configuration-file-overview-fa.md)的路径。
 
 **可能原因**
 
@@ -1060,7 +1060,7 @@ Invalid module type 'xxx'. Valid values: ["entry", "har", "shared", "feature"].
 
 **可能原因**
 
-应用配置文件module.json（Stage模型）或config.json（FA模型）中指定的模块类型错误，取值不在["entry", "har", "shared", "feature"]范围内。
+应用配置文件[module.json（Stage模型）](../quick-start/module-configuration-file.md)或[config.json（FA模型）](../quick-start/application-configuration-file-overview-fa.md)中指定的模块类型错误，取值不在["entry", "har", "shared", "feature"]范围内。
 
 **处理步骤**
 
@@ -1080,7 +1080,7 @@ The start ID 'xxx' specified by option -e/--startId conflict with the IDs in the
 
 默认情况下，资源起始id为`0x01000000`，编译时资源id依次递增，同时restool提供了两种方式自定义资源id：
 1. 选项-e/--startId：可以在[0x01000000, 0x06FFFFFF) 或 [0x08000000, 0xFFFFFFFF)的范围内指定资源起始id。
-2. 固定资源ID：通过id_defined.json文件指定资源id。
+2. [固定资源ID](#固定资源id)：通过id_defined.json文件指定资源id。
 
 若同时使用两种方式，可能导致同一个资源在两种方式下计算得到的资源id值不一致，存在冲突。
 
@@ -1110,7 +1110,7 @@ id_defined.json中资源类型type的取值不在["boolean","color","float","id"
 
 **错误信息**
 
-Invalid ID value 'xxx' in the id_defined.json file. It should be a hexadecimal string, match the pattern ^0xX{8}, and be in the scope [0x01000000,0x06FFFFFF] or [0x08000000,0xFFFFFFFF].
+Invalid ID value 'xxx' in the id_defined.json file. It should be a hexadecimal string, match the pattern ^0[xX][0-9a-fA-F]{8}, and be in the scope [0x01000000,0x06FFFFFF] or [0x08000000,0xFFFFFFFF].
 
 **错误描述**
 
@@ -1196,7 +1196,7 @@ The module name 'xxx' is not found in ["yyy","zzz"], which is specified by -m/--
 **可能原因**
 
 1. -m/--modules指定的模块名称列表错误。
-2. 应用配置文件module.json（Stage模型）或config.json（FA模型）中name指定的模块名称错误。
+2. 应用配置文件[module.json（Stage模型）](../quick-start/module-configuration-file.md)或[config.json（FA模型）](../quick-start/application-configuration-file-overview-fa.md)中name指定的模块名称错误。
 
 **处理步骤**
 
@@ -1220,7 +1220,7 @@ Failed to scan resources: invalid path 'xxx'.
 
 **处理步骤**
 
-检查资源文件的类型是否正确，可参考资源分类与访问-资源分类中关于各类资源文件的说明。
+检查资源文件的类型是否正确，可参考[资源分类与访问-资源分类](../quick-start/resource-categories-and-access.md#资源分类)中关于各类资源文件的说明。
 
 ### 11211103 无效的限定词目录
 
@@ -1238,7 +1238,7 @@ Invalid qualifier key 'xxx'. It should match the pattern of the qualifiers direc
 
 **处理步骤**
 
-检查限定词目录名称是否准确，限定词目录命名规则可参考资源分类与访问-限定词目录。
+检查限定词目录名称是否准确，限定词目录命名规则可参考[资源分类与访问-限定词目录](../quick-start/resource-categories-and-access.md#资源目录)。
 
 ### 11211104 无效的资源组目录
 
@@ -1256,7 +1256,7 @@ Invalid resource directory name 'xxx'. Valid values: ["element","media","profile
 
 **处理步骤**
 
-检查限定词目录下是否仅包含资源组目录：`element`，`media`和`profile`。
+检查限定词目录下是否仅包含[资源组目录](../quick-start/resource-categories-and-access.md#资源组目录)：`element`，`media`和`profile`。
 
 ### 11211106 无效的翻译状态
 
@@ -1270,11 +1270,11 @@ Invalid translation priority value 'xxx'. Valid values: ["code","translate","LT"
 
 **可能原因**
 
-字符串或单复数资源的可翻译属性attr下的翻译状态属性priority配置错误，不在["code","translate","LT","customer"]范围内。
+字符串或[单复数](../../application-dev/internationalization/l10n-singular-plural.md)资源的可翻译属性attr下的翻译状态属性priority配置错误，不在["code","translate","LT","customer"]范围内。
 
 **处理步骤**
 
-检查翻译状态priority的值是否准确，可参考资源可翻译特性中关于priority的说明。
+检查翻译状态priority的值是否准确，可参考[资源可翻译特性](../quick-start/resource-categories-and-access.md#资源可翻译特性)中关于priority的说明。
 
 ### 11211107 不支持的element资源类型
 
@@ -1292,7 +1292,7 @@ element目录下json资源文件支持的资源类型为["integer","string","str
 
 **处理步骤**
 
-检查element资源的类型是否准确，可参考资源组目录中关于element资源的说明。
+检查element资源的类型是否准确，可参考[资源组目录](../quick-start/resource-categories-and-access.md#资源组目录)中关于element资源的说明。
 
 ### 11211108 无效的颜色值
 
@@ -1418,7 +1418,7 @@ Invalid quantity 'xxx' of the plural resource 'xxx'. Valid values: ["zero","one"
 
 **处理步骤**
 
-检查单复数的类别是否准确，可参考支持单复数中关于单复数类别的说明。
+检查单复数的类别是否准确，可参考[支持单复数](../../application-dev/internationalization/l10n-singular-plural.md)中关于单复数类别的说明。
 
 ### 11211113 单复数资源的类别重复
 
@@ -1459,7 +1459,7 @@ Duplicated quantity 'xxx' of the plural resource 'xxx'.
 
 **处理步骤**
 
-检查单复数资源声明的类别是否重复，可参考支持单复数中关于单复数类别的说明。
+检查单复数资源声明的类别是否重复，可参考[支持单复数](../../application-dev/internationalization/l10n-singular-plural.md)中关于单复数类别的说明。
 
 ### 11211114 单复数资源缺少other类别
 
@@ -1477,7 +1477,7 @@ The plural resource 'xxx' should contain the 'other' quantity.
 
 **处理步骤**
 
-检查单复数资源是否包含other类别的声明，可参考支持单复数中关于单复数类别的说明。
+检查单复数资源是否包含other类别的声明，可参考[支持单复数](../../application-dev/internationalization/l10n-singular-plural.md)中关于单复数类别的说明。
 
 ### 11211115 无效的symbol资源
 

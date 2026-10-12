@@ -8,7 +8,7 @@
 
 录屏主要为主屏幕录屏功能。
 
-开发者可以调用AVScreenCapture模块的C API接口，完成录屏，采集设备内、麦克风等的音视频源数据。可以调用录屏模块获取音视频文件，然后通过文件的形式流转到其他模块进行播放或处理，达成文件形式分享屏幕内容的场景。
+开发者可以调用[AVScreenCapture](media-kit-intro.md#avscreencapture)模块的C API接口，完成录屏，采集设备内、麦克风等的音视频源数据。可以调用录屏模块获取音视频文件，然后通过文件的形式流转到其他模块进行播放或处理，达成文件形式分享屏幕内容的场景。
 
 录屏模块和窗口（Window）、图形（Graphic）等模块协同完成整个视频采集的流程。
 
@@ -18,13 +18,13 @@
 
 录屏过程中发生系统用户切换事件时，录屏将自动停止。因系统用户切换中断的录屏会上报OH_SCREEN_CAPTURE_STATE_STOPPED_BY_USER_SWITCHES状态。
 
-本开发指导将以完成一次屏幕数据录制的过程为例，向开发者讲解如何使用AVScreenCapture进行录屏，详细的API声明请参考AVScreenCapture API参考。
+本开发指导将以完成一次屏幕数据录制的过程为例，向开发者讲解如何使用AVScreenCapture进行录屏，详细的API声明请参考[AVScreenCapture API参考](../../reference/apis-media-kit/capi-avscreencapture.md)。
 
-如果配置了采集麦克风音频数据，需申请对应麦克风权限ohos.permission.MICROPHONE和长时任务。配置方式请参考向用户申请权限、申请长时任务。
+如果配置了采集麦克风音频数据，需申请对应麦克风权限ohos.permission.MICROPHONE和长时任务。配置方式请参考[向用户申请权限](../../security/AccessToken/request-user-authorization.md)、[申请长时任务](../../task-management/continuous-task.md)。
 
-从API version 22开始，在PC/2in1设备上对应用进行录屏时，可通过申请权限**ohos.permission.TIMEOUT_SCREENOFF_DISABLE_LOCK**，实现在屏幕熄灭但不锁屏的场景下，继续保持录制的效果，配置方式请参见声明权限。
+从API version 22开始，在PC/2in1设备上对应用进行录屏时，可通过申请权限**ohos.permission.TIMEOUT_SCREENOFF_DISABLE_LOCK**，实现在屏幕熄灭但不锁屏的场景下，继续保持录制的效果，配置方式请参见[声明权限](../../security/AccessToken/declare-permissions.md)。
 
-从API version 22开始，在PC/2in1设备上对应用进行录屏时，可通过申请权限**ohos.permission.CUSTOM_SCREEN_RECORDING**，实现在录屏时不再弹出隐私告警弹窗。配置方式请参见受限开放权限。
+从API version 22开始，在PC/2in1设备上对应用进行录屏时，可通过申请权限**ohos.permission.CUSTOM_SCREEN_RECORDING**，实现在录屏时不再弹出隐私告警弹窗。配置方式请参见[受限开放权限](../../security/AccessToken/restricted-permissions.md)。
 ## 开发步骤及注意事项
 
 使用AVScreenCapture时要明确其状态的变化，在创建实例后，调用对应的方法可以进入指定的状态实现对应的行为。
@@ -39,7 +39,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
 
 1. 添加头文件。
 
-   <!-- @screenCapture_import -->
+   <!-- @[screenCapture_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/main.h) -->
    
    ``` C
    #include "hilog/log.h"
@@ -57,7 +57,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
 
 2. 创建AVScreenCapture实例g_avCapture。
 
-   <!-- @screenCapture_create_for_file -->
+   <!-- @[screenCapture_create_for_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
    g_avCapture = OH_AVScreenCapture_Create();
@@ -71,7 +71,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
 
    同时，录屏存文件需要设置状态回调，感知录制状态。
 
-   <!-- @screenCapture_config -->   
+   <!-- @[screenCapture_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->   
    
    ``` C++
    void SetConfig02(OH_AVScreenCaptureConfig &config, OH_RecorderInfo &recorderInfo)
@@ -139,7 +139,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
 
 4. 调用OH_AVScreenCapture_StartScreenRecording()方法开始进行录屏。
 
-   <!-- @screenCapture_startScreenRecording_for_file -->
+   <!-- @[screenCapture_startScreenRecording_for_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
    result = OH_AVScreenCapture_StartScreenRecording(g_avCapture);
@@ -147,7 +147,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
 
 5. 调用OH_AVScreenCapture_StopScreenRecording()方法停止录制。
 
-   <!-- @screenCapture_stopScreenRecording -->
+   <!-- @[screenCapture_stopScreenRecording](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
    result = OH_AVScreenCapture_StopScreenRecording(g_avCapture);
@@ -155,7 +155,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
 
 6. 调用OH_AVScreenCapture_Release()方法销毁实例，释放资源。
 
-   <!-- @screenCapture_releaseScreenRecording_for_file -->
+   <!-- @[screenCapture_releaseScreenRecording_for_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
    result = OH_AVScreenCapture_Release(g_avCapture);
@@ -165,4 +165,4 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so libability_runt
 
 针对使用AVScreenCapture录屏存文件的完整示例代码可参考：
 
-- ScreenCaptureSample
+- [ScreenCaptureSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample)

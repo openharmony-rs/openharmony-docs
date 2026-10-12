@@ -15,7 +15,7 @@
 
 分布式数据对象即实现了对“变量”的“全局”访问。向应用开发者提供内存对象的创建、查询、删除、修改、订阅等基本数据对象的管理能力，同时具备分布式能力。为开发者在分布式应用场景下提供简单易用的JS接口，轻松实现多设备间同应用的数据协同，同时设备间可以监听对象的状态和数据变更。满足超级终端场景下，相同应用多设备间的数据对象协同需求。与传统方式相比，分布式数据对象大大减少了开发者的工作量。
 
-目前<!--RP2-->分布式数据对象只能在跨端迁移和通过跨设备Call调用实现多端协同的场景中使用。<!--RP2End-->
+目前<!--RP2-->分布式数据对象只能在[跨端迁移](../application-models/hop-cross-device-migration.md)和[通过跨设备Call调用实现多端协同](../application-models/uiability-cross-device-interaction.md)的场景中使用。<!--RP2End-->
 
 ## 基本概念
 
@@ -34,7 +34,7 @@
 
 **图1** 分布式数据对象运作机制 
 
-distributedObject
+![distributedObject](figures/distributedObject.jpg)
 
 分布式数据对象生长在分布式内存数据库之上，在分布式内存数据库上进行了JS对象型的封装，能像操作本地变量一样操作分布式数据对象，数据的跨设备同步由系统自动完成。
 
@@ -55,7 +55,7 @@ distributedObject
 
   **图2** 对象的同步关系  
 
-distributedObject_sync
+![distributedObject_sync](figures/distributedObject_sync.jpg)
 
 一个同步关系中，一个设备只能有一个对象加入。比如上图中，设备A的“分布式数据对象1”已经加入了session1的同步关系，所以设备A的“分布式数据对象2”就加入失败了。
 
@@ -83,12 +83,12 @@ dataObject['parents']['mom'] = "amy"; // 不支持的修改
 **图3** 数据同步视图 
 
 
-distributedObject_syncView
+![distributedObject_syncView](figures/distributedObject_syncView.jpg)
 
 
 ### 对象持久化缓存机制
 
-分布式数据对象主要运行在应用程序的进程空间。当调用分布式数据对象持久化接口时，通过分布式数据库对对象进行持久化和同步，进程退出后数据也不会丢失。分布式数据库会自动实现同步，可调用on('change')监听数据变更。
+分布式数据对象主要运行在应用程序的进程空间。当调用分布式数据对象持久化接口时，通过分布式数据库对对象进行持久化和同步，进程退出后数据也不会丢失。分布式数据库会自动实现同步，可调用[on('change')](../reference/apis-arkdata/js-apis-data-distributedobject.md#onchange20)监听数据变更。
 
 该场景是分布式数据对象的扩展场景，主要用于以下情况：
 
@@ -98,19 +98,19 @@ distributedObject_syncView
 
 ### 资产同步机制
 
-在分布式数据对象中，可以使用资产类型Asset来描述本地实体资产文件，分布式数据对象跨设备同步时，该文件会和数据一起同步到其他设备上。
+在分布式数据对象中，可以使用资产类型[Asset](../reference/apis-arkdata/js-apis-data-commonType.md#asset)来描述本地实体资产文件，分布式数据对象跨设备同步时，该文件会和数据一起同步到其他设备上。
 
-在API version 20之前版本，仅支持资产类型，不支持资产类型数组Assets。如需同步多个资产，可将每个资产作为分布式数据对象的一个根属性实现。
+在API version 20之前版本，仅支持资产类型，不支持资产类型数组[Assets](../reference/apis-arkdata/js-apis-data-commonType.md#assets)。如需同步多个资产，可将每个资产作为分布式数据对象的一个根属性实现。
 
-从API version 20开始，支持资产类型数组Assets的同步。
+从API version 20开始，支持资产类型数组[Assets](../reference/apis-arkdata/js-apis-data-commonType.md#assets)的同步。
 
 ## 约束限制
 <!--RP5-->
-- 目前分布式数据对象只能在跨端迁移和通过跨设备Call调用实现多端协同的场景中使用。跨端迁移场景下，每个分布式数据对象大小不超过150KB；多端协同场景下，每个分布式数据对象大小不超过500KB。
+- 目前分布式数据对象只能在[跨端迁移](../application-models/hop-cross-device-migration.md)和[通过跨设备Call调用实现多端协同](../application-models/uiability-cross-device-interaction.md)的场景中使用。跨端迁移场景下，每个分布式数据对象大小不超过150KB；多端协同场景下，每个分布式数据对象大小不超过500KB。
 
 - 当前跨设备接续能力支持以下两种场景的​​Ability跨端迁移​​
-  - 支持同应用中不同Ability跨端迁移
-  - 支持同应用不同BundleName的Ability跨端迁移
+  - [支持同应用中不同Ability跨端迁移](../application-models/hop-cross-device-migration.md#支持同应用中不同ability跨端迁移)
+  - [支持同应用不同BundleName的Ability跨端迁移](../application-models/hop-cross-device-migration.md#支持同应用不同bundlename的ability跨端迁移)
 <!--RP5End-->
 - 分布式数据对象的数据同步发生在同一个应用程序下，且同sessionId之间。
 
@@ -120,13 +120,13 @@ distributedObject_syncView
 
 - 考虑到性能和用户体验，最多不超过3个设备进行数据协同。
 
-- 如对复杂类型的数据进行修改，仅支持修改根属性，暂不支持下级属性修改。资产同步机制中，资产类型的数据支持下一级属性修改。
+- 如对复杂类型的数据进行修改，仅支持修改根属性，暂不支持下级属性修改。[资产同步机制](#资产同步机制)中，资产类型的数据支持下一级属性修改。
 
 - 支持JS接口间的互通，与其他语言不互通。
 
 ## 接口说明
 
-以下是分布式数据对象跨设备数据同步功能的相关接口，更多接口及使用方式请见分布式数据对象。
+以下是分布式数据对象跨设备数据同步功能的相关接口，更多接口及使用方式请见[分布式数据对象](../reference/apis-arkdata/js-apis-data-distributedobject.md)。
 
 
 
@@ -143,12 +143,12 @@ distributedObject_syncView
 | save(deviceId: string, callback: AsyncCallback&lt;SaveSuccessResponse&gt;): void | 保存分布式数据对象。 |
 | revokeSave(callback: AsyncCallback&lt;RevokeSaveSuccessResponse&gt;): void | 撤回保存的分布式数据对象。 |
 | bindAssetStore(assetKey: string, bindInfo: BindInfo, callback: AsyncCallback&lt;void&gt;): void | 绑定融合资产。 |
-| setAsset(assetKey: string, uri: string): void | 设置单个资产。 |
-| setAssets(assetKey: string, uris: Array&lt;string&gt;): void | 设置资产数组。 |
-| on(type: 'change', callback: DataObserver&lt;void&gt;): void | 监听分布式数据对象的数据变更。 |
-| off(type: 'change', callback?: DataObserver&lt;void&gt;): void |  删除分布式数据对象数据变更监听的回调实例。 |
-| on(type: 'status', callback: StatusObserver&lt;void&gt;): void | 监听分布式数据对象的状态变更。 |
-| off(type: 'status', callback?: StatusObserver&lt;void&gt;): void | 删除分布式数据对象状态变更监听的回调实例。 |
+| setAsset(assetKey: string, uri: string): Promise&lt;void&gt; | 设置单个资产。 |
+| setAssets(assetsKey: string, uris: Array&lt;string&gt;): Promise&lt;void&gt; | 设置资产数组。 |
+| on(type: 'change', callback: DataObserver): void | 监听分布式数据对象的数据变更。 |
+| off(type: 'change', callback?: DataObserver): void |  删除分布式数据对象数据变更监听的回调实例。 |
+| on(type: 'status', callback: StatusObserver): void | 监听分布式数据对象的状态变更。 |
+| off(type: 'status', callback?: StatusObserver): void | 删除分布式数据对象状态变更监听的回调实例。 |
 
 
 ## 开发步骤
@@ -174,10 +174,10 @@ distributedObject_syncView
 > **说明：**
 >
 > - 跨端迁移时，在迁移发起端调用setSessionId接口设置同步的sessionId后，必须再调用save接口保存数据到接收端。跨端迁移过程中save接口仅在首次调用时数据可以同步到接收端（原理是：首次从发起端设备获取数据后迁移任务即已完成，后续数据以接收端设备为准，不需要再同步）。
-> - 在应用迁移启动时，无论是冷启动还是热启动，都会在执行完onCreate()/onNewWant()后，触发onWindowStageRestore()生命周期函数，不执行onWindowStageCreate()生命周期函数。开发者如果在`onWindowStageCreate()`中进行了一些应用启动时必要的初始化，那么迁移后需要在`onWindowStageRestore()`中执行同样的初始化操作，避免应用异常。
+> - 在应用迁移启动时，无论是冷启动还是热启动，都会在执行完onCreate()/onNewWant()后，触发[onWindowStageRestore()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagerestore)生命周期函数，不执行[onWindowStageCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate)生命周期函数。开发者如果在`onWindowStageCreate()`中进行了一些应用启动时必要的初始化，那么迁移后需要在`onWindowStageRestore()`中执行同样的初始化操作，避免应用异常。
 >
 <!--RP1-->
-> - 跨端迁移需要配置`continuable`标签，详见跨端迁移开发步骤。<!--RP1End-->
+> - 跨端迁移需要配置`continuable`标签，详见[跨端迁移开发步骤](../application-models/hop-cross-device-migration.md#开发步骤)。<!--RP1End-->
 >
 > - wantParam中的"sessionId"字段可能被其他服务占用，建议自定义一个key存取sessionId。
 >
@@ -187,9 +187,9 @@ distributedObject_syncView
 >
 > - API version 20版本之前不支持资产类型数组，如果要迁移多个文件，在业务数据中定义多条资产数据来记录。从API version 20开始，支持资产类型数组的同步。
 >
-> - 目前仅支持迁移分布式文件目录下的文件，非分布式文件目录下的文件可以复制或移动到分布式文件目录下再进行迁移。文件的操作和URI的获取详见文件管理和文件URI。
+> - 目前仅支持迁移分布式文件目录下的文件，非分布式文件目录下的文件可以复制或移动到分布式文件目录下再进行迁移。文件的操作和URI的获取详见[文件管理](../reference/apis-core-file-kit/js-apis-file-fs.md)和[文件URI](../reference/apis-core-file-kit/js-apis-file-fileuri.md)。
 
-<!-- @data_sync_on_distributed_data_object_cross_device_migration-->
+<!-- @[data_sync_on_distributed_data_object_cross_device_migration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/DataObject/CrossDeviceMigration/entry/src/main/ets/entrybackupability/EntryBackupAbility.ets)-->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -386,17 +386,17 @@ export default class EntryAbility extends UIAbility {
 
 > **说明：**
 >
-> - 暂时只支持在通过跨设备Call调用实现多端协同的场景中使用分布式数据对象进行数据同步。
+> - 暂时只支持在[通过跨设备Call调用实现多端协同](../application-models/uiability-cross-device-interaction.md)的场景中使用分布式数据对象进行数据同步。
 >
-> - 跨设备Call调用实现的多端协同开发需要申请`ohos.permission.DISTRIBUTED_DATASYNC`权限和配置单实例启动标签，详见通过跨设备Call调用实现多端协同。
+> - 跨设备Call调用实现的多端协同开发需要申请`ohos.permission.DISTRIBUTED_DATASYNC`权限和配置单实例启动标签，详见[通过跨设备Call调用实现多端协同](../application-models/uiability-cross-device-interaction.md)。
 >
 > - wantParam中的"sessionId"字段可能被其他服务占用，建议自定义一个key存取sessionId。
 >
-> - 使用分布式设备管理获取对端设备networkId详见设备信息查询开发指导。
+> - 使用分布式设备管理获取对端设备networkId详见[设备信息查询开发指导](../distributedservice/devicemanager-guidelines.md#设备信息查询开发指导)。
 
  示例代码如下：
 
-<!-- @data_sync_on_distributed_data_object_cross_device_collaboration-->
+<!-- @[data_sync_on_distributed_data_object_cross_device_collaboration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/DataObject/CrossDeviceCollaboration/entry/src/main/ets/entrybackupability/EntryBackupAbility.ets)-->
 
 ``` TypeScript
 import { AbilityConstant, Caller, UIAbility, Want } from '@kit.AbilityKit';
@@ -528,6 +528,6 @@ function getRemoteDeviceId() {
 
 针对分布式数据对象开发，有以下相关实例可供参考：
 
-- 设备管理（ArkTS）（Full SDK）（API10）
+- [设备管理（ArkTS）（Full SDK）（API10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/DistributedAppDev/DistributedAuthentication)
 
-- 分布式备忘录（ArkTS）（Full SDK）（API10）
+- [分布式备忘录（ArkTS）（Full SDK）（API10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/DistributedAppDev/DistributedNote)

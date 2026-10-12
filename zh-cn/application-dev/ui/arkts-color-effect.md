@@ -1,8 +1,8 @@
 # 色彩
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
@@ -10,15 +10,15 @@
 
 | 接口 | 说明 |
 | -------- | -------- |
-| linearGradient | 为当前组件添加线性渐变的颜色渐变效果。 |
-| sweepGradient | 为当前组件添加角度渐变的颜色渐变效果。 |
-| radialGradient | 为当前组件添加径向渐变的颜色渐变效果。 |
+| [linearGradient](../reference/apis-arkui/arkui-ts/ts-universal-attributes-gradient-color.md#lineargradient) | 为当前组件添加线性渐变的颜色渐变效果。 |
+| [sweepGradient](../reference/apis-arkui/arkui-ts/ts-universal-attributes-gradient-color.md#sweepgradient) | 为当前组件添加角度渐变的颜色渐变效果。 |
+| [radialGradient](../reference/apis-arkui/arkui-ts/ts-universal-attributes-gradient-color.md#radialgradient) | 为当前组件添加径向渐变的颜色渐变效果。 |
 
 
 ## 为组件添加线性渐变效果
 
 
-  <!-- @Linear_Gradient_Effect -->
+  <!-- @[Linear_Gradient_Effect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GradientEffect/entry/src/main/ets/homePage/LinearGradientEffect.ets) -->
   
   ``` TypeScript
   @Entry
@@ -107,13 +107,13 @@
   }
   ```
 
-zh-cn_image_0000001641176829
+![zh-cn_image_0000001641176829](figures/zh-cn_image_0000001641176829.png)
 
 
 ## 为组件添加角度渐变效果
 
 
-  <!-- @Direction_Gradient_Effect -->  
+  <!-- @[Direction_Gradient_Effect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GradientEffect/entry/src/main/ets/homePage/DirectionGradientEffect.ets) -->  
   
   ``` TypeScript
   @Entry
@@ -134,7 +134,7 @@ zh-cn_image_0000001641176829
             center: [50, 50], // 角度渐变中心点
             start: 0, // 角度渐变的起点
             end: 360, // 角度渐变的终点。
-            repeating: true, // 渐变效果在重复
+            repeating: true, // 渐变效果会重复
             colors: [
               // 当前组件中，按照中心点和渐变的起点和终点值,
               // 角度区域为0-0.125的范围，从颜色断点1的颜色渐变到颜色断点2的颜色,
@@ -224,13 +224,13 @@ zh-cn_image_0000001641176829
   }
   ```
 
-zh-cn_image_0000001641177073
+![zh-cn_image_0000001641177073](figures/zh-cn_image_0000001641177073.png)
 
 
 ## 为组件添加径向渐变效果
 
 
-  <!-- @Radial_Gradient_Effect -->
+  <!-- @[Radial_Gradient_Effect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GradientEffect/entry/src/main/ets/homePage/RadialGradientEffect.ets) -->
   
   ``` TypeScript
   @Entry
@@ -335,4 +335,4 @@ zh-cn_image_0000001641177073
   }
   ```
 
-zh-cn_image_0000001592904050
+![zh-cn_image_0000001592904050](figures/zh-cn_image_0000001592904050.png)

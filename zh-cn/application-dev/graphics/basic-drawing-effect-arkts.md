@@ -16,12 +16,12 @@
 
 ## 填充效果
 
-可以通过画刷设置基础的填充颜色，还可以通过画刷使用混合模式、着色器效果、滤波器效果等实现更多复杂绘制效果，具体可见复杂绘制效果。
+可以通过画刷设置基础的填充颜色，还可以通过画刷使用混合模式、着色器效果、滤波器效果等实现更多复杂绘制效果，具体可见[复杂绘制效果](complex-drawing-effect-arkts.md)。
 
 
 ### 接口说明
 
-使用画刷（Brush）设置绘制效果的常用接口如下表所示，详细的使用和参数请见drawing.Brush和drawing.Canvas。
+使用画刷（Brush）设置绘制效果的常用接口如下表所示，详细的使用和参数请见[drawing.Brush](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Brush.md)和[drawing.Canvas](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md)。
 
 | 接口 | 描述 |
 | -------- | -------- |
@@ -35,10 +35,10 @@
 
 1. 创建画刷Brush对象。
 
-   <!-- @arkts_graphics_draw_create_brush -->
+   <!-- @[arkts_graphics_draw_create_brush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
    
    ``` TypeScript
-   // 设置画刷
+   // 创建画刷
    const brush = new drawing.Brush();
    ```
 
@@ -46,7 +46,7 @@
 
    可使用setColor()接口设置填充颜色。
 
-   <!-- @arkts_graphics_draw_brush_set_color -->
+   <!-- @[arkts_graphics_draw_brush_set_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
    
    ``` TypeScript
    // 填充颜色设为红色
@@ -55,7 +55,7 @@
 
    可使用setAntiAlias()接口开启抗锯齿效果，以使图形边缘更加平滑。
 
-   <!-- @arkts_graphics_draw_brush_set_antialias -->
+   <!-- @[arkts_graphics_draw_brush_set_antialias](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
    
    ``` TypeScript
    // 开启抗锯齿效果
@@ -64,18 +64,18 @@
 
 3. 使用attachBrush()接口给Canvas画布设置画刷。
 
-   <!-- @arkts_graphics_draw_canvas_attach_brush -->
+   <!-- @[arkts_graphics_draw_canvas_attach_brush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
    
    ``` TypeScript
    // 为画布设置画刷
    canvas.attachBrush(brush);
    ```
 
-4. 按需绘制图元，具体可见图元绘制一节。
+4. 按需绘制图元，具体可见[图元绘制](primitive-drawing-overview.md)一节。
 
 5. 当不需要填充效果时，可以使用detachBrush()接口去除画布中的画刷。
 
-   <!-- @arkts_graphics_draw_canvas_detach_brush -->
+   <!-- @[arkts_graphics_draw_canvas_detach_brush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
    
    ``` TypeScript
    // 去除画刷
@@ -85,12 +85,12 @@
 
 ## 描边效果
 
-可以通过画笔设置基础的描边颜色，还可以通过画笔使用混合模式、路径效果、着色器效果、滤波器效果等实现更多复杂绘制效果，具体可见复杂绘制效果。
+可以通过画笔设置基础的描边颜色，还可以通过画笔使用混合模式、路径效果、着色器效果、滤波器效果等实现更多复杂绘制效果，具体可见[复杂绘制效果](complex-drawing-effect-arkts.md)。
 
 
 ### 接口说明
 
-使用画笔（Pen）设置绘制效果的常用接口如下表所示，详细的使用和参数请见drawing.Pen和drawing.Canvas。
+使用画笔（Pen）设置绘制效果的常用接口如下表所示，详细的使用和参数请见[drawing.Pen](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Pen.md)和[drawing.Canvas](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md)。
 
 
 | 接口 | 描述 |
@@ -101,14 +101,14 @@
 | setAntiAlias(aa: boolean) : void | 用于设置画笔的抗锯齿属性，设置为true则画笔在绘制图形时会对图形的边缘像素进行半透明的模糊处理。 |
 | setCapStyle(style: CapStyle): void | 用于设置画笔线帽样式。 |
 | setJoinStyle(style: JoinStyle): void | 用于设置画笔绘制转角的样式。 |
-| detachPen(): void | 用于去除画布中的画笔，执行后画布将不去绘制图形形状的轮廓，恢复到默认的填充效果。 |
+| detachPen(): void | 用于去除画布中的画笔，执行后画布将不去绘制图形形状的轮廓，恢复到默认的描边效果。 |
 
 
 ### 开发步骤
 
 1. 创建画笔Pen对象。
 
-   <!-- @arkts_graphics_draw_create_drawing_pen -->
+   <!-- @[arkts_graphics_draw_create_drawing_pen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
    
    ``` TypeScript
    // 创建画笔
@@ -119,7 +119,7 @@
 
    - 可使用setColor()接口设置画笔颜色，对应为绘制图形轮廓时使用的颜色。
 
-      <!-- @arkts_graphics_draw_pen_set_color -->
+      <!-- @[arkts_graphics_draw_pen_set_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
       
       ``` TypeScript
       // 设置颜色为红色
@@ -128,7 +128,7 @@
 
    - 可使用setStrokeWidth()接口设置画笔的线宽。
 
-      <!-- @arkts_graphics_draw_pen_set_stroke_width -->
+      <!-- @[arkts_graphics_draw_pen_set_stroke_width](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
       
       ``` TypeScript
       // 设置线宽
@@ -137,7 +137,7 @@
 
    - 可使用setAntiAlias()接口设置画笔抗锯齿，以使图形绘制边缘更平滑。
 
-      <!-- @arkts_graphics_draw_pen_set_antialias -->
+      <!-- @[arkts_graphics_draw_pen_set_antialias](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
       
       ``` TypeScript
       // 设置抗锯齿效果
@@ -146,7 +146,7 @@
 
    - 可使用setCapStyle()接口设置画笔线帽样式。
 
-      <!-- @arkts_graphics_draw_pen_set_cap_style -->
+      <!-- @[arkts_graphics_draw_pen_set_cap_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
       
       ``` TypeScript
       // 设置画笔线帽样式
@@ -157,13 +157,13 @@
 
       | 线帽样式 | 说明 | 示意图 |
       | -------- | -------- | -------- |
-      | FLAT_CAP | 没有线帽样式，线条头尾端点处横切。 | Screenshot_20241130143725824 |
-      | SQUARE_CAP | 线帽的样式为方框，线条的头尾端点处多出一个方框，方框宽度和线段一样宽，高度是线段宽度的一半。 | Screenshot_20241130143837975 |
-      | ROUND_CAP | 线帽的样式为圆弧，线条的头尾端点处多出一个半圆弧，半圆的直径与线段宽度一致。 | Screenshot_20241130143949934 |
+      | FLAT_CAP | 没有线帽样式，线条头尾端点处横切。 | ![Screenshot_20241130143725824](figures/Screenshot_20241130143725824.jpg) |
+      | SQUARE_CAP | 线帽的样式为方框，线条的头尾端点处多出一个方框，方框宽度和线段一样宽，高度是线段宽度的一半。 | ![Screenshot_20241130143837975](figures/Screenshot_20241130143837975.jpg) |
+      | ROUND_CAP | 线帽的样式为圆弧，线条的头尾端点处多出一个半圆弧，半圆的直径与线段宽度一致。 | ![Screenshot_20241130143949934](figures/Screenshot_20241130143949934.jpg) |
 
    - 可使用setJoinStyle()接口设置画笔转角样式。
 
-      <!-- @arkts_graphics_draw_pen_set_join_style -->
+      <!-- @[arkts_graphics_draw_pen_set_join_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
       
       ``` TypeScript
       // 设置画笔转角样式
@@ -174,24 +174,24 @@
 
       | 转角样式 | 说明 | 示意图 |
       | -------- | -------- | -------- |
-      | MITER_JOIN | 转角类型为尖角 | MITER-JOIN |
-      | ROUND_JOIN | 转角类型为圆头 | ROUND-JOIN |
-      | BEVEL_JOIN | 转角类型为平头 | BEVEL-JOIN |
+      | MITER_JOIN | 转角类型为尖角 | ![MITER-JOIN](figures/MITER-JOIN.png) |
+      | ROUND_JOIN | 转角类型为圆角 | ![ROUND-JOIN](figures/ROUND-JOIN.png) |
+      | BEVEL_JOIN | 转角类型为平角 | ![BEVEL-JOIN](figures/BEVEL-JOIN.png) |
 
 3. 使用attachPen()接口给Canvas画布设置画笔。画布将会使用设置的画笔样式和颜色等绘制图形轮廓。
 
-   <!-- @arkts_graphics_draw_canvas_attach_pen -->
+   <!-- @[arkts_graphics_draw_canvas_attach_pen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
    
    ``` TypeScript
    // 为画布设置画笔
    canvas.attachPen(pen);
    ```
 
-4. 按需绘制图元，具体可见图元绘制一节。
+4. 按需绘制图元，具体可见[图元绘制](primitive-drawing-overview.md)一节。
 
 5. 当不需要描边效果时，可以使用detachPen()接口去除画布中的画笔。
 
-   <!-- @arkts_graphics_draw_canvas_detach_pen -->
+   <!-- @[arkts_graphics_draw_canvas_detach_pen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/BasicEffect.ets) -->
    
    ``` TypeScript
    // 去除描边效果
@@ -203,5 +203,5 @@
 
 针对Drawing(ArkTS)的开发，有以下相关实例可供参考：
 
-- ArkTSGraphicsDraw (API20)
+- [ArkTSGraphicsDraw (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw)
 <!--RP1End-->

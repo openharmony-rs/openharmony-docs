@@ -6,7 +6,7 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
-本文主要介绍了多UI实例涉及的概念，以及使用UIContext的方法替换全局接口的原因，并提供了相应的替换方案。
+本文主要介绍了多UI实例涉及的概念，以及使用[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)的方法替换全局接口的原因，并提供了相应的替换方案。
 
 ## 基本概念
 
@@ -30,27 +30,27 @@
 
 **图1** 调用作用域原理图
 
-calling_scope
+![calling_scope](figures/calling_scope.png)
 
 ## UI上下文不明确
 
 UI上下文不明确是指调用ArkUI全局接口时，调用点无法明确识别UI实例的问题。
 
-当前的系统支持两种应用模型——FA模型和Stage模型。在FA模型中，每个UI实例拥有独立的ArkTS引擎，全局接口可以通过ArkTS引擎跟踪到对应的UI实例上，因此不存在UI上下文不明确的问题。
+当前的系统支持两种[应用模型](../application-models/stage-model-development-overview.md)——FA模型和Stage模型。在FA模型中，每个UI实例拥有独立的ArkTS引擎，全局接口可以通过ArkTS引擎跟踪到对应的UI实例上，因此不存在UI上下文不明确的问题。
 
 在Stage模型中，一个ArkTS引擎中可运行多个ArkUI实例。全局接口通过分析调用链中的上下文信息来确定当前UI上下文，异步接口和非UI接口可能导致UI上下文跟踪失败。
 
 为了保证全局接口的相关功能正常，开发者应当使用UIContext的接口替换全局接口。
 
-下图展示了Stage模型下ArkTS引擎和UI上下文的对应关系，一个ArkTS引擎中存在两个Ability，这些Ability对应了三个窗口，三个窗口各自对应一个ArkUI实例。
+下图展示了Stage模型下ArkTS引擎和UI上下文的对应关系，一个ArkTS引擎中存在两个[Ability](../application-models/abilitykit-overview.md)，这些Ability对应了三个窗口，三个窗口各自对应一个ArkUI实例。
 
 **图2** 多实例关系图
 
-multi-instance
+![multi-instance](figures/multi-instance.png)
 
 ## UIContext接口替换全局接口的关系
 
-部分多实例替代接口如下表所示，UIContext实例支持的全量接口以UIContext中描述为准。
+部分多实例替代接口如下表所示，UIContext实例支持的全量接口以[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)中描述为准。
 
 |               全局接口                |               替代接口                |            说明            |
 | :-----------------------------------: | :-----------------------------------: | :------------------------: |
@@ -82,16 +82,16 @@ multi-instance
 
 ## 常见UIContext接口替换全局接口的场景
 
-以下UIContext接口替换全局接口示例以像素单位接口为例。示例代码使用的接口中，isAvailable从API版本20开始生效，UIContext.resolveUIContext()、UIContext.getCallingScopeUIContext()、UIContext.getLastFocusedUIContext()、UIContext.getLastForegroundUIContext()、UIContext.getAllUIContexts()以及UIContext()构造函数从API版本22开始生效，其余接口从API版本15开始生效。
+以下UIContext接口替换全局接口示例以[像素单位](../reference/apis-arkui/arkui-ts/ts-pixel-units.md)接口为例。示例代码使用的接口中，[isAvailable](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#isavailable20)从API版本20开始生效，UIContext.resolveUIContext()、UIContext.getCallingScopeUIContext()、UIContext.getLastFocusedUIContext()、UIContext.getLastForegroundUIContext()、UIContext.getAllUIContexts()以及UIContext()构造函数从API版本22开始生效，其余接口从API版本15开始生效。
 
 ### 通过自定义组件获取UIContext
 
-当全局接口在自定义组件的成员方法或组件生命周期方法等其他作用域中，且this指向自定义组件时，可以通过调用自定义组件的成员方法getUIContext来获取UIContext对象。
+当全局接口在[自定义组件](./ui-js-custom-components.md)的成员方法或组件生命周期方法等其他作用域中，且this指向自定义组件时，可以通过调用自定义组件的成员方法[getUIContext](../reference/apis-arkui/arkui-ts/ts-custom-component-api.md#getuicontext)来获取UIContext对象。
 
 >**说明：**
 > 1. 在异步调用的回调方法中使用getUIContext，或者该接口的起始调用不在当前页面时，可能会在自定义组件销毁后调用接口，从而导致返回undefined。
 > 2. 该方法只能通过this调用，不能通过new关键字创建的自定义组件对象调用。
-> 3. 通过在自定义声明式节点 (BuilderNode)中创建的自定义节点获取的UIContext与创建BuilderNode的UIContext指向同一个UI实例。
+> 3. 通过在[自定义声明式节点 (BuilderNode)](./arkts-user-defined-arktsNode-builderNode.md)中创建的自定义节点获取的UIContext与创建BuilderNode的UIContext指向同一个UI实例。
 
 使用全局接口，该接口已经废弃，推荐使用下方的UIContext接口替换：
 <!--deprecated_code_no_check-->
@@ -125,7 +125,7 @@ struct Index {
 
 使用UIContext接口替换：
 
-<!-- @Main_NewGlobal -->  
+<!-- @[Main_NewGlobal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/NewGlobal.ets) -->  
 
 ``` TypeScript
 // pages/NewGlobal.ets
@@ -158,12 +158,12 @@ struct Index {
 
 ### 通过窗口对象获取UIContext对象
 
-开发者可以通过窗口对象的getUIContext方法获取UIContext对象。
+开发者可以通过窗口对象的[getUIContext](../reference/apis-arkui/arkts-apis-window-Window.md#getuicontext10)方法获取UIContext对象。
 
 >**说明：**
 >
 >1. 必须在UI实例创建完成后，才可以通过窗口对象的getUIContext方法获取UIContext。建议在loadContent的成功回调中调用，以确保UI实例准备就绪。
->2. vp2px/px2vp在UI实例未创建时会获取默认值进行计算，替换时可考虑获取当前默认的Display对象的逻辑像素密度进行计算结果，可参考像素单位转换接口替换为UIContext接口。
+>2. vp2px/px2vp在UI实例未创建时会获取默认值进行计算，替换时可考虑获取当前默认的[Display](../reference/apis-arkui/js-apis-display.md#display)对象的逻辑像素密度进行计算结果，可参考[像素单位转换接口替换为UIContext接口](#像素单位转换接口替换为uicontext接口)。
 
 使用全局接口：
 <!--deprecated_code_no_check-->
@@ -203,7 +203,7 @@ export default class EntryAbility extends UIAbility {
 ```
 使用UIContext接口替换：
 
-<!-- @Common_UIContext -->  
+<!-- @[Common_UIContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
 // entryability/EntryAbility.ets
@@ -267,7 +267,7 @@ export default class EntryAbility extends UIAbility {
 
 ```
 ### 通过静态方法获取UIContext对象
-从API版本22开始，开发者可以通过UIContext类静态方法如resolveUIContext获取UIContext对象。
+从API版本22开始，开发者可以通过UIContext类静态方法如[resolveUIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#resolveuicontext22)获取UIContext对象。
 
 >**说明：**
 > - 优先通过自定义组件或者窗口对象获取UIContext，通过这两种方式获取不受调用作用域的影响，且获取到的是可预期的UIContext实例。
@@ -343,7 +343,7 @@ struct Index {
 
 使用静态方法替换：
 
-<!-- @Common_Entry -->  
+<!-- @[Common_Entry](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ResolvedUIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 <!--deprecated_code_no_check-->
 ``` TypeScript
@@ -403,7 +403,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<!-- @Common_Index -->  
+<!-- @[Common_Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ResolvedUIContext/entry/src/main/ets/pages/Index.ets) -->  
 
 ``` TypeScript
 // pages/Index.ets
@@ -436,9 +436,9 @@ struct Index {
 }
 ```
 
-resolveUIContext接口获取UIContext的逻辑与下面示例通过基础查询接口组合使用的代码逻辑是等价的。
+[resolveUIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#resolveuicontext22)接口获取UIContext的逻辑与下面示例通过基础查询接口组合使用的代码逻辑是等价的。
 
-<!-- @Common_Utils -->  
+<!-- @[Common_Utils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ResolvedUIContext/entry/src/main/ets/common/Utils.ets) -->  
 
 ``` TypeScript
 // common/Utils.ets
@@ -485,7 +485,7 @@ export function GetUIContextByAtomicInterface(): UIContext {
 >**说明：**
 >1. 创建UI实例是异步过程，需要在回调中调用窗口对象的getUIContext来获取UIContext对象。
 >2. 建议增加可选的UIContext入参，方便调用者传入UIContext。
->3. vp2px/px2vp在UI实例未创建时会获取默认值进行计算，替换时可考虑获取当前默认的Display对象的逻辑像素密度进行计算，可参考像素单位转换接口替换为UIContext接口。
+>3. vp2px/px2vp在UI实例未创建时会获取默认值进行计算，替换时可考虑获取当前默认的Display对象的逻辑像素密度进行计算，可参考[像素单位转换接口替换为UIContext接口](#像素单位转换接口替换为uicontext接口)。
 
 使用全局接口：
 <!--deprecated_code_no_check-->
@@ -509,7 +509,7 @@ class PixelUtils {
 
 使用UIContext接口替换：
 
-<!-- @Common_Utils -->  
+<!-- @[Common_Utils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/Common/Utils.ets) -->  
 
 ``` TypeScript
 // common/Utils.ets
@@ -557,7 +557,7 @@ export class PixelUtil {
   }
 }
 ```
-<!-- @Common_UIContext -->  
+<!-- @[Common_UIContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
 // entryability/EntryAbility.ets
@@ -623,7 +623,7 @@ export default class EntryAbility extends UIAbility {
 
 使用替换的封装接口时，建议在能够获取UIContext的场景下传入UIContext参数。
 
-<!-- @Main_VpPage -->  
+<!-- @[Main_VpPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/VpPage.ets) -->  
 
 ``` TypeScript
 // pages/VpPage.ets
@@ -656,7 +656,7 @@ struct Index {
 
 无法获取UIContext时，可考虑直接调用。
 
-<!-- @Common_pxValue -->  
+<!-- @[Common_pxValue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
 let pxValue = PixelUtils.vp2px(20);
@@ -674,7 +674,7 @@ hilog.info(DOMAIN, 'testTag', `20vp equals to ${pxValue}px`);
 
 使用UIContext接口替换：
 
-<!-- @Common_WindowUtils -->  
+<!-- @[Common_WindowUtils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/Common/WindowUtils.ets) -->  
 
 ``` TypeScript
 // common/WindowUtils.ets
@@ -723,7 +723,7 @@ export class WindowUIContextUtils {
   }
 }
 ```
-<!-- @Common_registerWindowCallback -->  
+<!-- @[Common_registerWindowCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
 // entryability/EntryAbility.ets
@@ -785,7 +785,7 @@ export default class EntryAbility extends UIAbility {
 }
 
 ```
-<!-- @Main_WindowTestPage -->  
+<!-- @[Main_WindowTestPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/WindowTestPage.ets) -->  
 
 ``` TypeScript
 // pages/WindowTestPage.ets
@@ -850,11 +850,11 @@ struct Index {
 
 ### 执行绑定UI实例的闭包
 
-对于UIContext中没有提供替代的接口（例如CalendarPickerDialog），或者开发者自定义实现的业务行为与多实例相关，需要和实例绑定时（例如，一个代码段），可以使用UIContext对象runScopedTask方法执行闭包。
+对于UIContext中没有提供替代的接口（例如CalendarPickerDialog），或者开发者自定义实现的业务行为与多实例相关，需要和实例绑定时（例如，一个代码段），可以使用UIContext对象[runScopedTask](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#runscopedtask)方法执行闭包。
 
 使用UIContext接口替换：
 
-<!-- @Main_CalendarPickerDialogPage -->  
+<!-- @[Main_CalendarPickerDialogPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/CalendarPickerDialogPage.ets) -->  
 
 ``` TypeScript
 // pages/CalendarPickerDialogPage.ets
@@ -894,7 +894,7 @@ struct CalendarPickerDialogPage {
 
 ### 像素单位转换接口替换为UIContext接口
 
-因为不同的UI实例可以有不同的转换系数，像素单位接口计算结果依赖UI实例。其中fp2px/px2fp/lpx2px/px2lpx接口在无有效UI上下文时会返回undefined，而vp2px/px2vp接口在无有效UI上下文时，会获取默认屏幕像素密度进行计算。
+因为不同的UI实例可以有不同的转换系数，[像素单位](../reference/apis-arkui/arkui-ts/ts-pixel-units.md)接口计算结果依赖UI实例。其中fp2px/px2fp/lpx2px/px2lpx接口在无有效UI上下文时会返回undefined，而vp2px/px2vp接口在无有效UI上下文时，会获取默认屏幕像素密度进行计算。
 
 | 像素单位转换接口调用时机                                     | 接口行为                                                     | 可能与预期不一致的场景                                       |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -904,7 +904,7 @@ struct CalendarPickerDialogPage {
 | 多Ability或多窗口的多UI实例场景，在loadContent或setUIContent调用之后，但在其他异步回调中调用。 | 无法根据UI跟踪的调用域（Scope）找到具体的UI实例，也无法确定唯一实例。接口按照最近获焦、最近前台、最近创建的优先级依次查找匹配的UI实例，并根据UI实例关联的信息进行计算。 | 多实例场景可能存在作用实例和预期不一致。如预期以主窗所处屏幕的逻辑像素密度计算结果，实际以子窗所处屏幕的像素密度计算结果。 |
 | 所有的窗口销毁，无UI实例后。                                 | 没有合适的UI实例。<br/>px2vp/vp2px使用默认屏幕的density进行换算，返回结果。<br/>fp2px/px2fp/lpx2px/px2lpx返回undefined。 | px2vp/vp2px在多屏场景下可能与预期不一致。如预期以扩展屏的逻辑像素密度计算结果，实际以主屏的像素密度计算结果。 |
 
-在实际的开发场景中，全局接口可能在UI实例创建前被调用。此时，在替换vp2px/px2vp时，开发者可以通过display.getDefaultDisplaySync获取当前默认屏幕的逻辑像素密度计算结果；替换fp2px/px2fp/lpx2px/px2lpx接口时，可以直接返回undefined，以保证行为的一致性。
+在实际的开发场景中，全局接口可能在UI实例创建前被调用。此时，在替换vp2px/px2vp时，开发者可以通过[display.getDefaultDisplaySync](../reference/apis-arkui/js-apis-display.md#displaygetdefaultdisplaysync9)获取当前默认屏幕的逻辑像素密度计算结果；替换fp2px/px2fp/lpx2px/px2lpx接口时，可以直接返回undefined，以保证行为的一致性。
 
 使用全局接口：
 <!--deprecated_code_no_check-->
@@ -928,7 +928,7 @@ export class PixelUtils {
 
 使用UIContext接口替换：
 
-<!-- @Common_PixelUtils -->  
+<!-- @[Common_PixelUtils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/Common/UIContext.ets) -->  
 
 ``` TypeScript
 // Common/UIContext.ets
@@ -976,7 +976,7 @@ export class PixelUtils {
 
 ### 获取Ability的Context
 
-getContext接口用于在UI页面中获取对应UI实例所属Ability的Context，因此依赖于UI实例。
+[getContext](../reference/apis-arkui/js-apis-getContext.md)接口用于在UI页面中获取对应UI实例所属Ability的Context，因此依赖于UI实例。
 
 | getContext接口的调用时机                                     | 接口行为                                                     | 可能与预期不一致的场景                                     |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -1028,7 +1028,7 @@ struct GetContextPage {
 
 使用UIContext接口替换：
 
-<!-- @Common_ContextUtils -->  
+<!-- @[Common_ContextUtils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/Common/ContextUtils.ets) -->  
 
 ``` TypeScript
 // Common/ContextUtils.ets
@@ -1051,7 +1051,7 @@ export class ContextUtils {
 
 接口的默认返回值设置为Ability的成员属性context。
 
-<!-- @Common_setContext -->  
+<!-- @[Common_setContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
 // entryability/EntryAbility.ets
@@ -1083,7 +1083,7 @@ export default class EntryAbility extends UIAbility {
 
 在UI界面中，建议传入UIContext，以保证符合预期或直接调用getHostContext。
 
-<!-- @Main_Index -->  
+<!-- @[Main_Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/ContextPage.ets) -->  
 
 ``` TypeScript
 // pages/ContextPage.ets
@@ -1111,7 +1111,7 @@ struct Index {
 
 无UI场景直接返回窗口创建时设置的默认返回值。
 
-<!-- @Common_getContext -->  
+<!-- @[Common_getContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
 let context = ContextUtils.getContext();
@@ -1120,7 +1120,7 @@ hilog.info(DOMAIN, 'testTag', `The context is ${context}`);
 
 ### LocalStorage替换为UIContext的接口
 
-LocalStorage是页面级的UI状态存储，通过@Entry装饰器接收的参数可以在页面内共享同一个LocalStorage实例。使用全局接口时，开发者使用getShared向@Entry装饰器传递LocalStorage对象。使用UIContext接口后，无法直接获取UIContext对象，可以将EntryOptions的useSharedStorage参数设置为true，以使用共享的LocalStorage实例对象。
+LocalStorage是页面级的UI状态存储，通过@Entry装饰器接收的参数可以在页面内共享同一个LocalStorage实例。使用全局接口时，开发者使用[getShared](../reference/apis-arkui/arkui-ts/ts-state-management.md#getshareddeprecated)向@Entry装饰器传递LocalStorage对象。使用UIContext接口后，无法直接获取UIContext对象，可以将[EntryOptions](../reference/apis-arkui/arkui-ts/ts-universal-entry.md#entryoptions10)的useSharedStorage参数设置为true，以使用共享的LocalStorage实例对象。
 
 使用全局接口，该接口已经废弃，推荐使用下方的UIContext接口替换：
 
@@ -1157,7 +1157,7 @@ struct LocalStoragePage {
 
 使用UIContext接口替换：
 
-<!-- @Main_LocalStoragePage -->  
+<!-- @[Main_LocalStoragePage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/pages/LocalStoragePage.ets) -->  
 
 ``` TypeScript
 // pages/LocalStoragePage
@@ -1190,9 +1190,9 @@ struct LocalStoragePage {
 }
 ```
 
-使用共享的LocalStorage对象需要在loadContent时传入LocalStorage，详细可参考LocalStorage：页面级UI状态存储。
+使用共享的LocalStorage对象需要在loadContent时传入LocalStorage，详细可参考[LocalStorage：页面级UI状态存储](./state-management/arkts-localstorage.md)。
 
-<!-- @Common_LocalStorage -->  
+<!-- @[Common_LocalStorage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UIContext/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
 // entryability/EntryAbility.ets

@@ -7,12 +7,12 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
-hitrace命令行工具提供trace信息采集能力，支持采集系统提供的打点和开发者使用HiTraceMeter接口在应用中设置的打点。该工具支持多种方式采集文本格式或二进制格式的trace信息，帮助开发者观测程序运行情况和定位故障问题。
+hitrace命令行工具提供trace信息采集能力，支持采集系统提供的打点和开发者使用[HiTraceMeter接口](hitracemeter-intro.md)在应用中设置的打点。该工具支持多种方式采集文本格式或二进制格式的trace信息，帮助开发者观测程序运行情况和定位故障问题。
 
 
 ## 环境要求
 
-- 根据hdc命令行工具指导，完成hdc环境准备。
+- 根据hdc命令行工具指导，完成[hdc环境准备](hdc.md#环境准备)。
 
 - 确保设备已正常连接，并执行hdc shell。
 
@@ -43,11 +43,11 @@ hitrace命令行工具提供trace信息采集能力，支持采集系统提供�
 | --stop_bgsrv | 关闭快照模式trace捕获。 |
 | --trace_level | 设置trace输出级别阈值，输出级别可以是Debug、Info、Critical、Commercial或其对应缩写D、I、C、M。<br/>**说明**：从API version 19开始，支持该命令。 |
 | --get_level | 查询trace输出级别阈值。<br/>**说明**：从API version 20开始，支持该命令。 |
-| <!--DelRow-->--boot_trace | 配置开机trace（Boot trace），在后续若干次启动过程中，依据预设参数自动采集并落盘一段trace数据，详见下文配置开机trace。<br/>须以root权限执行，且受开发者模式、可调试镜像等条件约束。<br/>**说明**：从API版本26.0.0开始，支持该命令。 |
+| <!--DelRow-->--boot_trace | 配置开机trace（Boot trace），在后续若干次启动过程中，依据预设参数自动采集并落盘一段trace数据，详见下文[配置开机trace](#配置开机trace)。<br/>须以root权限执行，且受开发者模式、可调试镜像等条件约束。<br/>**说明**：从API版本26.0.0开始，支持该命令。 |
 
 > **说明：**
 >
-> trace信息可以用两种不同的格式保存，分别为文本格式和二进制格式。文本格式的trace可以直接用文本编辑器查看，二进制格式的trace可以使用Smartperf_Host工具进行可视化trace分析。工具下载链接：developtools_smartperf_host官方发行版。
+> trace信息可以用两种不同的格式保存，分别为文本格式和二进制格式。文本格式的trace可以直接用文本编辑器查看，二进制格式的trace可以使用[Smartperf_Host](https://gitcode.com/openharmony/developtools_smartperf_host)工具进行可视化trace分析。工具下载链接：[developtools_smartperf_host官方发行版](https://gitcode.com/openharmony/developtools_smartperf_host/releases)。
 
 
 ## 常用命令
@@ -122,7 +122,7 @@ hitrace -l
 | accessibility      | 用户态trace标签，无障碍软件服务管理器。                      |
 | ace                | 用户态trace标签，ArkUI跨平台引擎开发框架。                   |
 | animation          | 用户态trace标签，动画模块。                                  |
-| app                | 用户态trace标签，应用模块。通过HiTraceMeter接口做的trace打点属于app tag。 |
+| app                | 用户态trace标签，应用模块。通过[HiTraceMeter](hitracemeter-intro.md)接口做的trace打点属于app tag。 |
 | ark                | 用户态trace标签，Ark模块。                                   |
 | account            | 用户态trace标签，账户管理器。                                |
 | binder             | 内核态trace标签，binder通信内核信息。                        |
@@ -556,7 +556,7 @@ $ hitrace -z -b 102400 -t 10 sched freq idle disk -o /data/local/tmp/test.ftrace
 
 打点级别优先级从高到低分别为 M（Commercial）、C（Critical）、I（Info）、D（Debug），低于trace输出级别阈值的打点将不会生效。
 
-开发者可使用带trace级别的打点接口（参考@ohos.hiTraceMeter和trace.h中的API version 19的trace打点接口），测试不同阈值下的trace输出是否符合预期。
+开发者可使用带trace级别的打点接口（参考[@ohos.hiTraceMeter](../reference/apis-performance-analysis-kit/js-apis-hitracemeter.md)和[trace.h](../reference/apis-performance-analysis-kit/capi-trace-h.md)中的API version 19的trace打点接口），测试不同阈值下的trace输出是否符合预期。
 
 ```shell
 // 设置trace输出级别阈值
@@ -617,7 +617,7 @@ hitrace --boot_trace off
 | --increment | 启用增量命名。启用后，输出文件名为`{file_prefix}_{n}.sys`，序号`n`从0开始；每次采集成功后序号加1。该选项须写在`--boot_trace`之后。 |
 | --file_prefix prefix | 设置输出文件名前缀，未指定时默认值为`boot_trace`。未启用`--increment`时，输出文件名为`{file_prefix}.sys`。 |
 
-配置成功后，将生成或覆盖配置文件`/data/local/tmp/boot_trace.cfg`。系统重启时，init进程会读取该配置文件并触发trace抓取，生成`.sys`文件。生成的`.sys`文件可使用Smartperf_Host等工具进行分析。
+配置成功后，将生成或覆盖配置文件`/data/local/tmp/boot_trace.cfg`。系统重启时，init进程会读取该配置文件并触发trace抓取，生成`.sys`文件。生成的`.sys`文件可使用[Smartperf_Host](https://gitcode.com/openharmony/developtools_smartperf_host)等工具进行分析。
 
 **使用样例1**：配置后续3次启动自动采集，采集tag为`sched`和`app`，单次时长20s：
 

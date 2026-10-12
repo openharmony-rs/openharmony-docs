@@ -25,7 +25,7 @@ JSVM-API提供了OH_JSVM_AddHandlerForGC接口，可以在VM中注册回调函�
 
 ## 使用示例
 
-JSVM-API接口开发流程参考使用JSVM-API实现JS与C/C++语言交互开发流程，本文仅对接口对应C++相关代码进行展示。
+JSVM-API接口开发流程参考[使用JSVM-API实现JS与C/C++语言交互开发流程](use-jsvm-process.md)，本文仅对接口对应C++相关代码进行展示。
 
 ### OH_JSVM_AddHandlerForGC & OH_JSVM_RemoveHandlerForGC
 

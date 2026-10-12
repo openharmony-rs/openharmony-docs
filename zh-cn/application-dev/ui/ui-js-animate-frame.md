@@ -99,7 +99,7 @@ export default {
 }
 ```
 
-requestAnimationFrame
+![requestAnimationFrame](figures/requestAnimationFrame.gif)
 
 > **说明：** 
 >
@@ -189,7 +189,7 @@ export default {
 }
 ```
 
-cancelAnimationFrame
+![cancelAnimationFrame](figures/cancelAnimationFrame.gif)
 
 > **说明：** 
 >

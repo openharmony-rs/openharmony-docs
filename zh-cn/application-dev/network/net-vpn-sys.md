@@ -11,13 +11,13 @@
 VPN，即虚拟专用网络（Virtual Private Network），是在公用网络上建立专用网络的技术。整个 VPN 网络的任意两个节点之间的连接并没有传统专网所需的端到端的物理链路，而是架构在公用网络服务商所提供的网络平台（如 Internet）之上的逻辑网络，用户数据在逻辑链路中传输。
 
 > **说明：**
-> 为了保证应用的运行效率，大部分 API 调用都是异步的，对于异步调用的 API 均提供了 callback 和 Promise 两种方式，以下示例均采用 promise 函数，更多方式可以查阅@ohos.net.vpn (VPN 管理)（系统接口）。
+> 为了保证应用的运行效率，大部分 API 调用都是异步的，对于异步调用的 API 均提供了 callback 和 Promise 两种方式，以下示例均采用 promise 函数，更多方式可以查阅[@ohos.net.vpn (VPN 管理)（系统接口）](../reference/apis-network-kit/js-apis-net-vpn-sys.md)。
 
 以下分别介绍具体开发方式。
 
 ## 接口说明
 
-完整的 JS API 说明以及实例代码请参考：@ohos.net.vpn (VPN 管理)（系统接口）。
+完整的 JS API 说明以及实例代码请参考：[@ohos.net.vpn (VPN 管理)（系统接口）](../reference/apis-network-kit/js-apis-net-vpn-sys.md)。
 
 | 接口名                                                            | 描述                                          |
 | ----------------------------------------------------------------- | --------------------------------------------------- |
@@ -33,7 +33,7 @@ VPN，即虚拟专用网络（Virtual Private Network），是在公用网络上
 4. 处理虚拟网卡的数据，如：读写操作。
 5. 销毁 VPN 网络。
 
-本示例通过 Native C++ 的方式开发应用程序，Native C++ 可参考：简易 Native C++ 示例（ArkTS）（API9）。
+本示例通过 Native C++ 的方式开发应用程序，Native C++ 可参考：[简易 Native C++ 示例（ArkTS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/NativeAPI/NativeTemplateDemo)。
 
 示例程序主要包含两个部分：js 功能代码和 C++功能代码。
 
@@ -41,7 +41,7 @@ VPN，即虚拟专用网络（Virtual Private Network），是在公用网络上
 
 主要功能：实现业务逻辑，如：创建隧道、建立 VPN 网络、保护 VPN 网络、销毁 VPN 网络。
 
-<!-- @vpn_control_case_extention_ability -->
+<!-- @[vpn_control_case_extention_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/ets/vpnability/VPNExtentionAbility.ets) -->
 
 ``` TypeScript
 import { vpnExtension, VpnExtensionAbility } from '@kit.NetworkKit';
@@ -177,7 +177,7 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
 
 主要功能：具体业务的底层实现，如：UDP 隧道 Client 端的实现、虚拟网卡读写数据的实现。
 
-<!-- @vpn_control_case_c++ -->
+<!-- @[vpn_control_case_c++](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -410,4 +410,4 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule(void) { napi_mo
 
 针对 VPN 管理的开发，有以下相关实例可供参考：
 
-- VPN应用
+- [VPN应用](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/VPNControl_Case)

@@ -26,7 +26,7 @@
 
 ### 接口说明
 
-多语言文本绘制的相关接口如下所示，详细接口说明请参考drawing_text_typography.h。
+多语言文本绘制的相关接口如下所示，详细接口说明请参考[drawing_text_typography.h](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md)。
 
 | 接口定义 | 描述 | 
 | -------- | -------- |
@@ -35,9 +35,9 @@
 
 ### 开发步骤
 
-画布Canvas对象具体可见画布的获取与绘制结果的显示。
+画布Canvas对象具体可见[画布的获取与绘制结果的显示](canvas-get-result-draw-c.md)。
 
-<!-- @complex_text_c_multilingual_text -->
+<!-- @[complex_text_c_multilingual_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
 ``` C++
 // 创建一个 TypographyStyle，创建 TypographyCreate 时需要使用
@@ -82,7 +82,7 @@ OH_Drawing_DestroyTypography(typography);
 
 ### 效果展示
 
-hello-chinese
+![hello-chinese](figures/hello-chinese.png)
 
 
 ## 多行文本绘制与显示
@@ -92,7 +92,7 @@ hello-chinese
 
 ### 接口说明
 
-多行文本绘制的相关接口如下所示，详细接口说明请参考drawing_text_typography.h。
+多行文本绘制的相关接口如下所示，详细接口说明请参考[drawing_text_typography.h](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md)。
 
 | 接口定义 | 描述 | 
 | -------- | -------- |
@@ -105,7 +105,7 @@ hello-chinese
 
 以下以断行策略为 BREAK_ALL 的场景为例，其余策略同理。
 
-<!-- @complex_text_c_break_all_text -->
+<!-- @[complex_text_c_break_all_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
 ``` C++
 // 创建 FontCollection，FontCollection 用于管理字体匹配逻辑
@@ -160,11 +160,11 @@ OH_Drawing_DestroyTypography(typography);
 
 | BREAK_ALL | BREAK_WORD | 
 | -------- | -------- |
-| ndk_word_break_all.jpg | ndk_word_break_word.jpg | 
+| ![ndk_word_break_all.jpg](figures/ndk_word_break_all.jpg) | ![ndk_word_break_word.jpg](figures/ndk_word_break_word.jpg) | 
 
 | BREAK_HYPHEN（locale：未设置） | BREAK_HYPHEN（locale：en-gb） | BREAK_HYPHEN（locale：en-us） | 
 | -------- | -------- |-------- |
-| hyphen-locale-undefined.jpg | hyphen-local-en-gb.jpg | hyphen-local-en-us.jpg |
+| ![hyphen-locale-undefined.jpg](figures/hyphen-locale-undefined.jpg) | ![hyphen-local-en-gb.jpg](figures/hyphen-local-en-gb.jpg) | ![hyphen-local-en-us.jpg](figures/hyphen-local-en-us.jpg) |
 
 ## 多样式文本绘制与显示
 
@@ -220,7 +220,7 @@ OH_Drawing_DestroyTypography(typography);
 
 示例及示意效果如下所示：
 
-<!-- @complex_text_c_decoration_text -->
+<!-- @[complex_text_c_decoration_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
 ``` C++
 // 创建一个TypographyStyle创建Typography时需要使用
@@ -280,7 +280,7 @@ OH_Drawing_DestroyTypographyHandler(handler);
 OH_Drawing_DestroyTypography(typography);
 ```
 
-Decoration
+![Decoration](figures/Decoration.png)
 
 
 ### 字体特征
@@ -297,7 +297,7 @@ Decoration
 
 示例及示意效果如下所示：
 
-<!-- @complex_text_c_font_feature_text -->
+<!-- @[complex_text_c_font_feature_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
 ``` C++
 // 创建一个 TypographyStyle，创建 TypographyCreate 时需要使用
@@ -357,7 +357,7 @@ OH_Drawing_DestroyTypographyHandler(handler);
 OH_Drawing_DestroyTypography(typography);
 ```
 
-Font-Feature
+![Font-Feature](figures/Font-Feature.png)
 
 
 ### 可变字体
@@ -374,7 +374,7 @@ Font-Feature
 
 示例及示意效果如下所示：
 
-<!-- @complex_text_c_font_variation_text -->
+<!-- @[complex_text_c_font_variation_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
 ``` C++
 // 创建一个 TypographyStyle 创建 Typography 时需要使用
@@ -435,7 +435,7 @@ OH_Drawing_DestroyTypographyHandler(handler);
 OH_Drawing_DestroyTypography(typography);
 ```
 
-Font-Variation
+![Font-Variation](figures/Font-Variation.png)
 
 
 ### 文本阴影
@@ -458,7 +458,7 @@ Font-Variation
 
 示例及示意效果如下所示：
 
-<!-- @complex_text_c_shadow_text -->
+<!-- @[complex_text_c_shadow_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
 ``` C++
 // 创建一个 TypographyStyle 创建 Typography 时需要使用
@@ -522,7 +522,7 @@ OH_Drawing_DestroyTypographyHandler(handler);
 OH_Drawing_DestroyTypography(typography);
 ```
 
-Text-Shadow
+![Text-Shadow](figures/Text-Shadow.png)
 
 
 ### 占位符
@@ -539,7 +539,7 @@ Text-Shadow
 
 示例及示意效果如下所示：
 
-<!-- @complex_text_c_placeholder_text -->
+<!-- @[complex_text_c_placeholder_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
 ``` C++
 // 设置页面最大宽度
@@ -607,7 +607,7 @@ OH_Drawing_DestroyTypography(typographyWithPlaceholder);
 OH_Drawing_DestroyTypography(typographyNoPlaceholder);
 ```
 
-Placeholder
+![Placeholder](figures/Placeholder.png)
 
 
 ### 自动间距
@@ -622,7 +622,7 @@ Placeholder
 
 示例及示意效果如下所示：
 
-<!-- @complex_text_c_auto_space_text -->
+<!-- @[complex_text_c_auto_space_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
 ``` C++
 // 创建一个TypographyStyle创建Typography时需要使用
@@ -684,12 +684,12 @@ OH_Drawing_DestroyTypography(typographyWithoutAutoSpace);
 
 | 段落样式设置（自动间距） | 示意效果 | 
 | -------- | -------- |
-| 不使能自动间距 | Disabled-autoSpace | 
-| 使能自动间距 | Enabled-autoSpace | 
+| 不使能自动间距 | ![Disabled-autoSpace](figures/Disabled-autoSpace.png) | 
+| 使能自动间距 | ![Enabled-autoSpace](figures/Enabled-autoSpace.png) | 
 
 ### 渐变色
 
-**渐变色**是一种在文字设计中广泛应用的视觉效果，通过在文字的不同部分应用不同的颜色，从而创造出从一种颜色平滑过渡到另一种颜色的效果。可以通过着色器实现文字渐变的效果，着色器的更多介绍请参考着色器效果。
+**渐变色**是一种在文字设计中广泛应用的视觉效果，通过在文字的不同部分应用不同的颜色，从而创造出从一种颜色平滑过渡到另一种颜色的效果。可以通过着色器实现文字渐变的效果，着色器的更多介绍请参考[着色器效果](complex-drawing-effect-c.md#着色器效果)。
 
 
 | 接口定义 | 描述 | 
@@ -699,7 +699,7 @@ OH_Drawing_DestroyTypography(typographyWithoutAutoSpace);
 
 示例及效果如下所示：
 
-<!-- @complex_text_c_gradient_text -->
+<!-- @[complex_text_c_gradient_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
 ``` C++
 OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
@@ -745,7 +745,7 @@ OH_Drawing_DestroyTypographyHandler(handler);
 OH_Drawing_DestroyTypography(typography);
 ```
 
-gradient-c
+![gradient-c](figures/gradient-c.png)
 
 ### 垂直对齐
 
@@ -757,7 +757,7 @@ gradient-c
 
 示例及效果如下所示：
 
-<!-- @complex_text_c_vertical_alignment_text -->
+<!-- @[complex_text_c_vertical_alignment_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
 ``` C++
 OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
@@ -792,7 +792,7 @@ OH_Drawing_DestroyTypography(typography);
 
 效果如下（黑框仅为展示文本绘制区域，实际不绘制）：
 
-verticalAlignment-center
+![verticalAlignment-center](figures/verticalAlignment-center.jpg)
 
 ### 上下标
 
@@ -804,7 +804,7 @@ verticalAlignment-center
 
 示例及效果如下所示：
 
-<!-- @complex_text_c_badge_text -->
+<!-- @[complex_text_c_badge_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
 ``` C++
 OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
@@ -843,7 +843,7 @@ OH_Drawing_DestroyTypographyHandler(handler);
 OH_Drawing_DestroyTypography(typography);
 ```
 
-superscript
+![superscript](figures/superscript.jpg)
 
 ### 高对比度
 
@@ -852,12 +852,12 @@ superscript
 
 | 接口定义 | 描述 | 
 | -------- | -------- |
-| void OH_Drawing_SetTextHighContrast(OH_Drawing_TextHighContrast action) | 设置文字渲染高对比度模式。模式具体可参考OH_Drawing_TextHighContrast。 | 
+| void OH_Drawing_SetTextHighContrast(OH_Drawing_TextHighContrast action) | 设置文字渲染高对比度模式。模式具体可参考[OH_Drawing_TextHighContrast](../reference/apis-arkgraphics2d/capi-drawing-text-global-h.md#oh_drawing_texthighcontrast)。 | 
 
 
 示例及示意效果如下所示：
 
-<!-- @complex_text_c_high_contrast_text -->
+<!-- @[complex_text_c_high_contrast_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
 ``` C++
 // 开启APP的文字渲染高对比模式，该模式的优先级要高于系统设置中的高对比度文字配置
@@ -899,8 +899,8 @@ OH_Drawing_DestroyTypography(typography);
 
 | 高对比度设置 | 示意效果 | 
 | -------- | -------- |
-| 不开启高对比度 | Disabled-highContrast | 
-| 开启高对比度 | Enabled-highContrast | 
+| 不开启高对比度 | ![Disabled-highContrast](figures/Disabled-highContrast.png) | 
+| 开启高对比度 | ![Enabled-highContrast](figures/Enabled-highContrast.png) | 
 
 ### 行高调整
 
@@ -914,11 +914,11 @@ OH_Drawing_DestroyTypography(typography);
 
 | 接口定义 | 描述 | 
 | -------- | -------- |
-| OH_Drawing_ErrorCode OH_Drawing_SetTextStyleAttributeDouble(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, double value) | 传入id为OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_D_LINE_HEIGHT_MAXIMUM，设置行高上限。|
-| OH_Drawing_ErrorCode OH_Drawing_SetTextStyleAttributeDouble(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, double value) | 传入id为OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_D_LINE_HEIGHT_MINIMUM，设置行高下限。|
+| [OH_Drawing_ErrorCode OH_Drawing_SetTextStyleAttributeDouble(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, double value)](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settextstyleattributedouble) | 传入id为OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_D_LINE_HEIGHT_MAXIMUM，设置行高上限。|
+| [OH_Drawing_ErrorCode OH_Drawing_SetTextStyleAttributeDouble(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, double value)](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settextstyleattributedouble) | 传入id为OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_D_LINE_HEIGHT_MINIMUM，设置行高下限。|
 
 示例及效果如下所示：
-<!-- @complex_text_c_line_height_limit_one_text -->
+<!-- @[complex_text_c_line_height_limit_one_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
 ``` C++
 OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
@@ -954,8 +954,8 @@ OH_Drawing_DestroyTypography(typography);
 
 | 行高上限值 | 行高下限值 | 示意效果（黑框仅为展示文本绘制区域，实际不绘制） |
 | -------- | -------- | -------- |
-| 65 | 65 | zh-cn_image_maxMinLineHeight65 |
-| 200 | 200 | zh-cn_image_maxMinLineHeight200 |
+| 65 | 65 | ![zh-cn_image_maxMinLineHeight65](figures/MaxMinLineHeight65.png) |
+| 200 | 200 | ![zh-cn_image_maxMinLineHeight200](figures/MaxMinLineHeight200.png) |
 
 **行高调整（方式二）**
 
@@ -963,11 +963,11 @@ OH_Drawing_DestroyTypography(typography);
 
 | 接口定义 | 描述 | 
 | -------- | -------- |
-| void OH_Drawing_SetTextStyleFontHeight(OH_Drawing_TextStyle* style, double fontHeight) | 使能行高缩放。|
-| OH_Drawing_ErrorCode OH_Drawing_SetTextStyleAttributeInt(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, int value) | 传入id为OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_I_LINE_HEIGHT_STYLE，使能行高缩放样式。|
+| [void OH_Drawing_SetTextStyleFontHeight(OH_Drawing_TextStyle* style, double fontHeight)](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settextstylefontheight) | 使能行高缩放。|
+| [OH_Drawing_ErrorCode OH_Drawing_SetTextStyleAttributeInt(OH_Drawing_TextStyle* style, OH_Drawing_TextStyleAttributeId id, int value)](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settextstyleattributeint) | 传入id为OH_Drawing_TextStyleAttributeId::TEXT_STYLE_ATTR_I_LINE_HEIGHT_STYLE，使能行高缩放样式。|
 
 示例及效果如下所示：
-<!-- @complex_text_c_line_height_limit_two_text -->
+<!-- @[complex_text_c_line_height_limit_two_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
 ``` C++
 OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
@@ -1004,8 +1004,8 @@ OH_Drawing_DestroyTypography(typography);
 
 | 行高缩放样式 | 示意效果（黑框仅为展示文本绘制区域，实际不绘制） |
 | -------- | -------- |
-| TEXT_LINE_HEIGHT_BY_FONT_SIZE | zh-cn_image_lineHeightStyleFontSize |
-| TEXT_LINE_HEIGHT_BY_FONT_HEIGHT | zh-cn_image_lineHeightStyleFontHeight |
+| TEXT_LINE_HEIGHT_BY_FONT_SIZE | ![zh-cn_image_lineHeightStyleFontSize](figures/LineHeightStyle-FontSize.png) |
+| TEXT_LINE_HEIGHT_BY_FONT_HEIGHT | ![zh-cn_image_lineHeightStyleFontHeight](figures/LineHeightStyle-FontHeight.png) |
 
 
 ### 行间距调整
@@ -1014,10 +1014,10 @@ OH_Drawing_DestroyTypography(typography);
 
 | 接口定义 | 描述 | 
 | -------- | -------- |
-| OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeDouble(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, double value) | 传入id为OH_Drawing_TypographyStyleAttributeId::TYPOGRAPHY_STYLE_ATTR_D_LINE_SPACING，设置行间距。|
+| [OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeDouble(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, double value)](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settypographystyleattributedouble) | 传入id为OH_Drawing_TypographyStyleAttributeId::TYPOGRAPHY_STYLE_ATTR_D_LINE_SPACING，设置行间距。|
 
 示例及效果如下所示：
-<!-- @complex_text_c_line_spacing_text -->
+<!-- @[complex_text_c_line_spacing_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
 ``` C++
 OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
@@ -1051,18 +1051,18 @@ OH_Drawing_DestroyTypography(typography);
 
 | 行间距 | 上升部下降部开关 | 示意效果（黑框仅为展示文本绘制区域，实际不绘制） |
 | -------- | -------- | -------- |
-|  0  | TEXT_HEIGHT_ALL | zh-cn_image_noLineSpacing |
-| 100 | TEXT_HEIGHT_ALL | zh-cn_image_lineSpacing |
-| 100 | TEXT_HEIGHT_DISABLE_ALL | zh-cn_image_lineSpacingAndDisableBehavior |
+|  0  | TEXT_HEIGHT_ALL | ![zh-cn_image_noLineSpacing](figures/LineSpacingClose.png) |
+| 100 | TEXT_HEIGHT_ALL | ![zh-cn_image_lineSpacing](figures/LineSpacing.png) |
+| 100 | TEXT_HEIGHT_DISABLE_ALL | ![zh-cn_image_lineSpacingAndDisableBehavior](figures/LineSpacingAndDisableBehavior.png) |
 
 
 ### 省略号样式设置
 
 从API version 22开始，支持设置省略号样式，在文本内容超出显示区域时截断文本。从API version 24开始，支持多行省略模式。
 
-使用OH_Drawing_SetTypographyStyleAttributeInt接口，传入TYPOGRAPHY_STYLE_ATTR_I_ELLIPSIS_MODAL设置省略号模式，可选的省略号模式可见OH_Drawing_EllipsisModal。
+使用[OH_Drawing_SetTypographyStyleAttributeInt](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settypographystyleattributeint)接口，传入[TYPOGRAPHY_STYLE_ATTR_I_ELLIPSIS_MODAL](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_typographystyleattributeid)设置省略号模式，可选的省略号模式可见[OH_Drawing_EllipsisModal](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_ellipsismodal)。
 
-<!-- @complex_text_c_ellipsis_text -->
+<!-- @[complex_text_c_ellipsis_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
 ``` C++
 // 创建一个带有省略号设置的 TypographyStyle
@@ -1078,20 +1078,20 @@ OH_Drawing_SetTypographyTextEllipsis(typoStyle, "...");
 
 | 省略号模式 | 效果 |
 | -------- | -------- |
-| ELLIPSIS_MODAL_TAIL | complexCDemoEllipsis1 |
-| ELLIPSIS_MODAL_HEAD | complexCDemoEllipsis2 |
-| ELLIPSIS_MODAL_MIDDLE | complexCDemoEllipsis3 |
-| ELLIPSIS_MODAL_MULTILINE_HEAD | complexCDemoEllipsis4 |
-| ELLIPSIS_MODAL_MULTILINE_MIDDLE | complexCDemoEllipsis5 |
+| ELLIPSIS_MODAL_TAIL | ![complexCDemoEllipsis1](figures/complexCDemoEllipsis1.png) |
+| ELLIPSIS_MODAL_HEAD | ![complexCDemoEllipsis2](figures/complexCDemoEllipsis2.png) |
+| ELLIPSIS_MODAL_MIDDLE | ![complexCDemoEllipsis3](figures/complexCDemoEllipsis3.png) |
+| ELLIPSIS_MODAL_MULTILINE_HEAD | ![complexCDemoEllipsis4](figures/complexCDemoEllipsis4.png) |
+| ELLIPSIS_MODAL_MULTILINE_MIDDLE | ![complexCDemoEllipsis5](figures/complexCDemoEllipsis5.png) |
 
 
 ### 文字换行方式设置
 
 从API version 22开始，支持在文本排版时设置断行策略，断行策略决定了文本如何在行尾进行换行处理。
 
-使用OH_Drawing_SetTypographyTextBreakStrategy接口设置断行策略，可选的断行策略可见OH_Drawing_BreakStrategy。
+使用[OH_Drawing_SetTypographyTextBreakStrategy](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settypographytextbreakstrategy)接口设置断行策略，可选的断行策略可见[OH_Drawing_BreakStrategy](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_breakstrategy)。
 
-<!-- @complex_text_c_break_strategy_text -->
+<!-- @[complex_text_c_break_strategy_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
 ``` C++
 // 创建一个设置了均衡断行策略的 TypographyStyle
@@ -1102,17 +1102,17 @@ OH_Drawing_SetTypographyTextBreakStrategy(typoStyle, BREAK_STRATEGY_BALANCED);
 
 | 换行方式 | 效果 |
 | -------- | -------- |
-| GREEDY | complexCDemoBreakStrategy1 |
-| HIGH_QUALITY | complexCDemoBreakStrategy2 |
-| BALANCED | complexCDemoBreakStrategy3 |
+| GREEDY | ![complexCDemoBreakStrategy1](figures/complexCDemoBreakStrategy1.png) |
+| HIGH_QUALITY | ![complexCDemoBreakStrategy2](figures/complexCDemoBreakStrategy2.png) |
+| BALANCED | ![complexCDemoBreakStrategy3](figures/complexCDemoBreakStrategy3.png) |
 
 ### 行首标点压缩
 
 从API version 23开始，在文本排版中支持行首标点压缩功能。通过启用行首标点压缩功能，可以将行首标点符号进行挤压处理，提升排版紧凑度。
 
-使用OH_Drawing_SetTypographyStyleAttributeBool接口，传入TYPOGRAPHY_STYLE_ATTR_B_COMPRESS_HEAD_PUNCTUATION设置是否启用行首标点压缩，使用OH_Drawing_GetTypographyStyleAttributeBool接口查询是否启用了行首标点压缩。
+使用[OH_Drawing_SetTypographyStyleAttributeBool](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_settypographystyleattributebool)接口，传入[TYPOGRAPHY_STYLE_ATTR_B_COMPRESS_HEAD_PUNCTUATION](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_typographystyleattributeid)设置是否启用行首标点压缩，使用[OH_Drawing_GetTypographyStyleAttributeBool](../reference/apis-arkgraphics2d/capi-drawing-text-typography-h.md#oh_drawing_gettypographystyleattributebool)接口查询是否启用了行首标点压缩。
 
-<!-- @complex_text_c_punctuation_compress_text -->
+<!-- @[complex_text_c_punctuation_compress_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
 ``` C++
 // 第二段：开启行首标点压缩
@@ -1127,8 +1127,8 @@ if (errorCode != OH_DRAWING_SUCCESS) {
 
 | 是否开启行首标点压缩 | 效果 |
 | -------- | -------- |
-| 关闭行首标点压缩 | complexCDemoCompressPunctuation1 |
-| 开启行首标点压缩 | complexCDemoCompressPunctuation2 |
+| 关闭行首标点压缩 | ![complexCDemoCompressPunctuation1](figures/complexCDemoCompressPunctuation1.png) |
+| 开启行首标点压缩 | ![complexCDemoCompressPunctuation2](figures/complexCDemoCompressPunctuation2.png) |
 
 ## 样式的拷贝、绘制与显示
 支持拷贝文本样式、段落样式、阴影样式，以便快速复制相关样式作用到不同文字上。
@@ -1141,7 +1141,7 @@ if (errorCode != OH_DRAWING_SUCCESS) {
 
 示例及示意效果如下所示：
 
-<!-- @complex_text_c_style_copy_text -->
+<!-- @[complex_text_c_style_copy_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
 
 ``` C++
 // 创建一个TypographyStyle，其中创建Typography时需要使用
@@ -1233,4 +1233,4 @@ OH_Drawing_DestroyTextShadow(shadow);
 OH_Drawing_DestroyTextShadow(shadowCopy);
 ```
 
-styleCopy
+![styleCopy](figures/styleCopy.png)

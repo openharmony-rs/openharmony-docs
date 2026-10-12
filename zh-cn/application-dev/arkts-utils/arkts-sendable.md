@@ -7,19 +7,19 @@
 <!--Adviser: @k1ngqaquuu-->
 
 
-在传统JS引擎中，要优化对象的并发通信开销，唯一的方法是将实现下沉到Native侧，通过Transferable对象的转移或共享来降低开销。然而，开发者仍有大量对象并发通信的需求，这个问题在业界JS引擎中尚未解决。
+在传统JS引擎中，要优化对象的并发通信开销，唯一的方法是将实现下沉到Native侧，通过[Transferable对象](transferabled-object.md)的转移或共享来降低开销。然而，开发者仍有大量对象并发通信的需求，这个问题在业界JS引擎中尚未解决。
 
 ArkTS提供了Sendable对象类型，它是一种可在ArkTS并发实例间安全共享和传递的数据类型，它支持引用传递来减少通信成本。
 
 Sendable对象可共享，跨线程前后指向同一个JS对象。如果Sendable对象通过调用Napi接口与一个Native对象绑定，当共享传递Sendable对象时，其绑定的Native对象也会一并共享传递。通信过程如下图所示：
 
-sendable
+![sendable](figures/sendable.png)
 
 与其它ArkTS数据对象不同，符合Sendable协议的数据对象在运行时应为类型固定的对象。
 
-当多个并发实例尝试同时更新Sendable数据时，会发生数据竞争，例如ArkTS共享容器的多线程操作。因此，ArkTS提供异步锁机制来避免不同并发实例间的数据竞争，并提供了异步等待机制来控制多线程处理数据的时序。同时，还可以通过对象冻结接口将对象冻结为只读，从而避免数据竞争。
+当多个并发实例尝试同时更新Sendable数据时，会发生数据竞争，例如[ArkTS共享容器](arkts-collections-introduction.md)的多线程操作。因此，ArkTS提供[异步锁](arkts-async-lock-introduction.md)机制来避免不同并发实例间的数据竞争，并提供了[异步等待](arkts-condition-variable-introduction.md)机制来控制多线程处理数据的时序。同时，还可以通过[对象冻结接口](sendable-freeze.md)将对象冻结为只读，从而避免数据竞争。
 
-Sendable对象提供了并发实例间高效的通信能力，即引用传递，适用于开发者自定义大对象需要线程间通信的场景，例如子线程读取数据库数据并返回给宿主线程，具体代码实现可参考跨并发实例传输大数据场景。
+Sendable对象提供了并发实例间高效的通信能力，即引用传递，适用于开发者自定义大对象需要线程间通信的场景，例如子线程读取数据库数据并返回给宿主线程，具体代码实现可参考[跨并发实例传输大数据场景](sendable-guide.md#跨并发实例传输大数据场景)。
 ## 基础概念
 
 ### Sendable协议
@@ -30,7 +30,7 @@ Sendable协议定义了ArkTS的可共享对象体系及其规格约束。符合S
 
 ### ISendable
 
-在ArkTS语言基础库@arkts.lang中引入了interface ISendable，没有任何方法或属性。ISendable是所有Sendable类型（除了null和undefined）的父类型。ISendable主要用于开发者自定义Sendable数据结构的场景中。类装饰器@Sendable装饰器是implements ISendable的语法糖。
+在ArkTS语言基础库[@arkts.lang](../reference/apis-arkts/js-apis-arkts-lang.md)中引入了interface ISendable，没有任何方法或属性。ISendable是所有Sendable类型（除了null和undefined）的父类型。ISendable主要用于开发者自定义Sendable数据结构的场景中。类装饰器[@Sendable装饰器](#sendable装饰器)是implements ISendable的语法糖。
 
 ### Sendable class
 
@@ -40,31 +40,31 @@ Sendable协议定义了ArkTS的可共享对象体系及其规格约束。符合S
 
 Sendable class需同时满足以下两个规则：
 
-1. 针对API version 22以前的工程，当且仅当被标注了@Sendable装饰器。从API version 22开始，Sendable class除了必须标注@Sendable装饰器之外，开发者可根据需要在Sendable class上叠加使用其他自定义装饰器，具体操作可参考在Sendable class上叠加其他自定义装饰器。
+1. 针对API version 22以前的工程，当且仅当被标注了[@Sendable装饰器](#sendable装饰器)。从API version 22开始，Sendable class除了必须标注@Sendable装饰器之外，开发者可根据需要在Sendable class上叠加使用其他自定义装饰器，具体操作可参考[在Sendable class上叠加其他自定义装饰器](sendable-constraints.md#支持在sendable-class上叠加自定义装饰器)。
 
-2. 需满足Sendable约束，详情可查Sendable使用规则。
+2. 需满足Sendable约束，详情可查[Sendable使用规则](sendable-constraints.md)。
 
 ### Sendable function
 
 > **说明：**
 >
-> - 针对API version 12的工程，开发者使用\@Sendable装饰器校验Sendable function时，需在工程中配置"compatibleSdkVersionStage": "beta3"，否则其Sendable特性将不生效。参考build-profile.json5配置文件说明。
+> - 针对API version 12的工程，开发者使用\@Sendable装饰器校验Sendable function时，需在工程中配置"compatibleSdkVersionStage": "beta3"，否则其Sendable特性将不生效。参考[build-profile.json5配置文件说明](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/ide-hvigor-build-profile-V5)。
 >
 > - 针对API version大于12的工程，可直接使用\@Sendable装饰器校验Sendable function，无需再进行其他配置。
 
 Sendable function需同时满足以下两个规则：
 
-1. 当且仅当被标注了@Sendable装饰器。
+1. 当且仅当被标注了[@Sendable装饰器](#sendable装饰器)。
 
-2. 需满足Sendable约束，具体可参考Sendable使用规则。
+2. 需满足Sendable约束，具体可参考[Sendable使用规则](sendable-constraints.md)。
 
 ### Sendable interface
 
 Sendable interface需同时满足以下两个规则：
 
-1. 当且仅当是ISendable或者继承了ISendable。
+1. 当且仅当是[ISendable](#isendable)或者继承了ISendable。
 
-2. 需满足Sendable约束，具体可参考Sendable使用规则。
+2. 需满足Sendable约束，具体可参考[Sendable使用规则](sendable-constraints.md)。
 
 ### Sendable支持的数据类型
 
@@ -72,30 +72,30 @@ Sendable interface需同时满足以下两个规则：
 
 - ArkTS数据类型：const enum（常量枚举）。
 
-- ArkTS语言标准库中定义的容器类型数据（须显式引入@arkts.collections）。
+- ArkTS语言标准库中定义的[容器类型数据](arkts-collections-introduction.md)（须显式引入[@arkts.collections](../reference/apis-arkts/arkts-apis-arkts-collections.md)）。
 
-- ArkTS语言标准库中定义的异步锁对象（须显式引入@arkts.utils）。
+- ArkTS语言标准库中定义的[异步锁对象](arkts-async-lock-introduction.md)（须显式引入[@arkts.utils](../reference/apis-arkts/arkts-apis-arkts-utils.md)）。
 
-- ArkTS语言标准库中定义的异步等待对象（须显式引入@arkts.utils）。
+- ArkTS语言标准库中定义的[异步等待对象](arkts-condition-variable-introduction.md)（须显式引入[@arkts.utils](../reference/apis-arkts/arkts-apis-arkts-utils.md)）。
 
-- ArkTS语言标准库中定义的SendableLruCache对象（须显式引入@arkts.utils）。
+- ArkTS语言标准库中定义的[SendableLruCache](../reference/apis-arkts/arkts-apis-arkts-utils-SendableLruCache.md)对象（须显式引入[@arkts.utils](../reference/apis-arkts/arkts-apis-arkts-utils.md)）。
 
-- 继承了ISendable的interface。
+- 继承了[ISendable](#isendable)的interface。
 
-- 标注了@Sendable装饰器的class。
+- 标注了[@Sendable装饰器](#sendable装饰器)的class。
 
-- 标注了@Sendable装饰器的function。
+- 标注了[@Sendable装饰器](#sendable装饰器)的function。
 
 - 接入Sendable的系统对象：
-  - 共享用户首选项
-  - 可共享的色彩管理
-  - 基于Sendable对象的图片处理
-  - 资源管理
-  - Sendable上下文管理
+  - [共享用户首选项](../reference/apis-arkdata/js-apis-data-sendablePreferences.md)
+  - [可共享的色彩管理](../reference/apis-arkgraphics2d/js-apis-sendableColorSpaceManager.md)
+  - [基于Sendable对象的图片处理](../reference/apis-image-kit/js-apis-sendableImage.md)
+  - [资源管理](../reference/apis-localization-kit/js-apis-sendable-resource-manager.md)
+  - [Sendable上下文管理](../reference/apis-ability-kit/js-apis-app-ability-sendableContextManager.md)
 
 - 元素均为Sendable类型的union type数据。
 
-- 开发者自定义的Native Sendable对象。ArkTS支持开发者自定义Native Sendable对象，详情参见自定义Native Sendable对象的多线程操作场景。
+- 开发者自定义的Native Sendable对象。ArkTS支持开发者自定义Native Sendable对象，详情参见[自定义Native Sendable对象的多线程操作场景](napi-define-sendable-object.md)。
 
 > **说明：**
 >
@@ -105,7 +105,7 @@ Sendable interface需同时满足以下两个规则：
 
 **Sendable支持const enum类型使用示例：**
 
-<!-- @example_sendable_enum --> 
+<!-- @[example_sendable_enum](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/SendableObjectIntroduction/entry/src/main/ets/managers/Test.ets) --> 
 
 ``` TypeScript
 export const enum ModelState {
@@ -113,7 +113,7 @@ export const enum ModelState {
   INACTIVE
 }
 ```
-<!-- @example_modify_enum --> 
+<!-- @[example_modify_enum](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/SendableObjectIntroduction/entry/src/main/ets/managers/enumusage.ets) --> 
 
 ``` TypeScript
 import { taskpool } from '@kit.ArkTS';
@@ -170,14 +170,14 @@ struct enumusage {
 
 ## Sendable的实现原理
 
-为了实现Sendable数据在不同并发实例间的引用传递，Sendable共享对象分配在共享堆中，实现跨并发实例的内存共享。
+为了实现[Sendable数据](#sendable支持的数据类型)在不同并发实例间的引用传递，Sendable共享对象分配在共享堆中，实现跨并发实例的内存共享。
 
 
 共享堆（SharedHeap）是进程级别的堆空间，与虚拟机本地堆（LocalHeap）不同，LocalHeap仅限单个并发实例访问，而SharedHeap可被所有线程访问。Sendable对象的跨线程行为为引用传递，因此，一个Sendable对象可能被多个并发实例引用。判断该Sendable对象是否存活，取决于所有并发实例是否存在对此Sendable对象的引用。
 
 **SharedHeap与LocalHeap关系图**
 
-Sendable-communication-Process
+![Sendable-communication-Process](figures/Sendable-communication-Process.png)
 
 各个并发实例的LocalHeap是隔离的。SharedHeap是进程级别的堆，可以被所有并发实例共享，但SharedHeap不能引用LocalHeap中的对象。
 
@@ -198,7 +198,7 @@ Sendable-communication-Process
 | 适用场景 | 1. 在TaskPool或Worker中使用类方法或Sendable函数。<br/>2. 传输对象数据量较大的场景。序列化耗时会随着数据量增大而增大，使用Sendable对数据进行改造后，传输100KB数据效率提升约20倍，传输1MB数据效率提升约100倍。 |
 
 **装饰器修饰Class使用示例：**
-<!-- @example_modify_class -->  
+<!-- @[example_modify_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/SendableObjectIntroduction/class/Index.ets) -->  
 
 ``` TypeScript
 @Sendable
@@ -218,7 +218,7 @@ export { object }
 ```
 
 **装饰器修饰Function使用示例：**
-<!-- @example_modify_function --> 
+<!-- @[example_modify_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/SendableObjectIntroduction/entry/src/main/ets/managers/functionusage.ets) --> 
 
 ``` TypeScript
 @Sendable

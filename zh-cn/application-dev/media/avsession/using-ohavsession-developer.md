@@ -10,7 +10,7 @@
 
 ## 使用入门
 
-开发者使用native_avsession.h实现媒体会话，需要添加对应的头文件。
+开发者使用[native_avsession.h](../../reference/apis-avsession-kit/capi-native-avsession-h.md)实现媒体会话，需要添加对应的头文件。
 
 ### 在 CMake 脚本中链接动态库
 
@@ -20,7 +20,7 @@ target_link_libraries(entry PUBLIC libohavsession.so)
 
 ### 添加头文件
 
-<!-- @avSession_include -->
+<!-- @[avSession_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProviderNative/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 #include <multimedia/av_session/native_avmetadata.h>
@@ -33,7 +33,7 @@ target_link_libraries(entry PUBLIC libohavsession.so)
 开发者可以通过以下几个步骤在NDK接入本地会话。
 1. 创建并激活会话，需要传入会话类型`AVSession_Type`，自定义的TAG，以及应用的包名、Ability名称。
 
-   <!-- @create -->
+   <!-- @[create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProviderNative/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
    OH_AVSession* avsession;
@@ -55,7 +55,7 @@ target_link_libraries(entry PUBLIC libohavsession.so)
  
    使用OH_AVMetadataBuilder构造元数据示例：
  
-   <!-- @construct_metadata --> 
+   <!-- @[construct_metadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProviderNative/entry/src/main/cpp/napi_init.cpp) --> 
    
    ``` C++
    // 创建OH_AVMetadataBuilder构造器。
@@ -93,7 +93,7 @@ target_link_libraries(entry PUBLIC libohavsession.so)
    
    使用完AVMetadata后，开发者应该执行OH_AVMetadata_Destroy接口销毁元数据对象，同时执行OH_AVMetadataBuilder_Destroy接口销毁构造器，且不能继续使用。
    
-   <!-- @destroy_metadata -->
+   <!-- @[destroy_metadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProviderNative/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
    OH_AVMetadata_Destroy(ohMetadata);
@@ -104,7 +104,7 @@ target_link_libraries(entry PUBLIC libohavsession.so)
 
    媒体播放状态，包含状态值、播放位置、播放速度、收藏状态等，可以按需使用对应的接口进行设置。
    
-   <!-- @state_change --> 
+   <!-- @[state_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProviderNative/entry/src/main/cpp/napi_init.cpp) --> 
    
    ``` C++
    AVSession_ErrCode ret = AV_SESSION_ERR_SUCCESS;
@@ -141,7 +141,7 @@ target_link_libraries(entry PUBLIC libohavsession.so)
    - 设置进度
    - 设置收藏
    
-   <!-- @control_command -->
+   <!-- @[control_command](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProviderNative/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
    // 设置播放/暂停/停止/上一首/下一首回调。
@@ -177,7 +177,7 @@ target_link_libraries(entry PUBLIC libohavsession.so)
    |OH_AVSession_RegisterToggleFavoriteCallback(OH_AVSession* avsession,   OH_AVSessionCallback_OnToggleFavorite callback, void* userData) | 注册收藏的回调。  |
 5. 音视频应用在退出，并且不需要继续播放时，及时取消监听以及销毁媒体会话释放资源。示例代码如下所示：
  
-   <!-- @destroy -->
+   <!-- @[destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionProviderNative/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
    OH_AVSession_Destroy(avsession);
@@ -187,4 +187,4 @@ target_link_libraries(entry PUBLIC libohavsession.so)
 
 针对媒体会话提供方的NDK开发，有以下相关实例可供参考：
 
-- 媒体会话——提供方（C/C++）（API13）
+- [媒体会话——提供方（C/C++）（API13）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/AVSession/MediaProvider)

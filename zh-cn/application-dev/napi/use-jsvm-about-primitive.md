@@ -32,7 +32,7 @@
 
 ## 使用示例
 
-JSVM-API接口开发流程参考使用JSVM-API实现JS与C/C++语言交互开发流程。本文仅展示接口对应的C++相关代码。
+JSVM-API接口开发流程参考[使用JSVM-API实现JS与C/C++语言交互开发流程](use-jsvm-process.md)。本文仅展示接口对应的C++相关代码。
 
 ### OH_JSVM_CoerceToBool
 
@@ -40,7 +40,7 @@ JSVM-API接口开发流程参考使用JSVM-API实现JS与C/C++语言交互开发
 
 cpp 部分代码：
 
-<!-- @oh_jsvm_coerce_to_bool -->
+<!-- @[oh_jsvm_coerce_to_bool](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/coercetobool/src/main/cpp/hello.cpp) -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -89,7 +89,7 @@ JSVM OH_JSVM_CoerceToBool success:1
 
 cpp 部分代码：
 
-<!-- @oh_jsvm_coerce_to_number -->
+<!-- @[oh_jsvm_coerce_to_number](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/coercetonumber/src/main/cpp/hello.cpp) -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -138,7 +138,7 @@ JSVM OH_JSVM_CoerceToNumber success:1
 
 cpp 部分代码：
 
-<!-- @oh_jsvm_coerce_to_object -->
+<!-- @[oh_jsvm_coerce_to_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/coercetoobject/src/main/cpp/hello.cpp) -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -186,7 +186,7 @@ JSVM OH_JSVM_CoerceToObject success
 
 cpp 部分代码：
 
-<!-- @oh_jsvm_coerce_to_string -->
+<!-- @[oh_jsvm_coerce_to_string](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/coercetostring/src/main/cpp/hello.cpp) -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -234,7 +234,7 @@ JSVM OH_JSVM_CoerceToString success
 
 cpp 部分代码：
 
-<!-- @oh_jsvm_get_boolean -->
+<!-- @[oh_jsvm_get_boolean](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/getboolean/src/main/cpp/hello.cpp) -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -297,7 +297,7 @@ JSVM OH_JSVM_GetBoolean success:1
 
 cpp 部分代码：
 
-<!-- @oh_jsvm_get_value_bool -->
+<!-- @[oh_jsvm_get_value_bool](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/getvaluebool/src/main/cpp/hello.cpp) -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -352,7 +352,7 @@ JSVM OH_JSVM_GetValueBool success:0
 
 cpp 部分代码：
 
-<!-- @oh_jsvm_get_global -->
+<!-- @[oh_jsvm_get_global](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/getglobal/src/main/cpp/hello.cpp) -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -400,7 +400,7 @@ JSVM OH_JSVM_GetGlobal success
 
 cpp 部分代码：
 
-<!-- @oh_jsvm_get_null -->
+<!-- @[oh_jsvm_get_null](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/getnull/src/main/cpp/hello.cpp) -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -444,7 +444,7 @@ JSVM OH_JSVM_GetNull success
 
 cpp 部分代码：
 
-<!-- @oh_jsvm_get_undefined -->
+<!-- @[oh_jsvm_get_undefined](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPrimitive/getundefined/src/main/cpp/hello.cpp) -->
 
 ``` C++
 #include "napi/native_api.h"

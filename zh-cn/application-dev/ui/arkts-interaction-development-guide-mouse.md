@@ -6,21 +6,21 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-mouse
+![mouse](figures/device_mouse.png)
 
-鼠标设备是PC/2in1、Tablet类型设备必不可少的输入设备，其特点是可以通过按键达成点击或滑动操作，也可以通过滚轮触发滑动，另外还有一些按键，这些分别通过MouseEvent及AxisEvent上报给应用。
+鼠标设备是PC/2in1、Tablet类型设备必不可少的输入设备，其特点是可以通过按键达成点击或滑动操作，也可以通过滚轮触发滑动，另外还有一些按键，这些分别通过[MouseEvent](../reference/apis-arkui/arkui-ts/ts-universal-mouse-key.md#mouseevent对象说明)及[AxisEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-axis.md#axisevent)上报给应用。
 
 >**说明：**
 >
 >所有单指可响应的触摸事件/手势事件，均可通过鼠标左键来操作和响应。
-> - 例如当我们需要开发单击Button跳转页面的功能、且需要支持手指点击和鼠标左键点击，那么只绑定一个点击事件（onClick）就可以实现该效果；
+> - 例如当我们需要开发单击[Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md)跳转页面的功能、且需要支持手指点击和鼠标左键点击，那么只绑定一个点击事件（[onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick)）就可以实现该效果；
 > - 若需要针对手指和鼠标左键的点击实现不一样的效果，可以在onClick回调中，使用回调参数中的source字段判断当前触发事件的来源是手指还是鼠标。
 
 此外，对PC/2in1、Tablet类型设备上没有针对鼠标操作适配的应用，系统会提供兜底方案，将鼠标左键的点击和滑动，以及滚轮事件转换为触摸事件。并且对开发者开放了通过配置文件自行控制是否转换事件的能力。
 
 ## 处理鼠标移动
 
-鼠标事件通过onMouse接口注册一个回调来接收，当鼠标事件发生时，会按照鼠标光标所在位置下的组件进行派发，派发过程同样遵循事件冒泡机制。
+鼠标事件通过[onMouse](../reference/apis-arkui/arkui-ts/ts-universal-mouse-key.md#onmouse)接口注册一个回调来接收，当鼠标事件发生时，会按照鼠标光标所在位置下的组件进行派发，派发过程同样遵循事件冒泡机制。
 
 ### onMouse
 
@@ -28,16 +28,16 @@ mouse
 onMouse(event: (event?: MouseEvent) => void)
 ```
 
-鼠标事件回调。每当鼠标指针在绑定该API的组件内产生行为（MouseAction）时，触发事件回调，参数为MouseEvent对象，表示触发此次的鼠标事件。该事件支持自定义冒泡设置，默认父子冒泡。常用于开发者自定义的鼠标行为逻辑处理。
+鼠标事件回调。每当鼠标指针在绑定该API的组件内产生行为（MouseAction）时，触发事件回调，参数为[MouseEvent](../reference/apis-arkui/arkui-ts/ts-universal-mouse-key.md#mouseevent对象说明)对象，表示触发此次的鼠标事件。该事件支持自定义冒泡设置，默认父子冒泡。常用于开发者自定义的鼠标行为逻辑处理。
 
 
-开发者可以通过回调中的MouseEvent对象获取触发事件的坐标（displayX/displayY/windowX/windowY/x/y）、按键（MouseButton）、行为（MouseAction）、时间戳（BaseEvent的`timestamp`属性）、交互组件的区域（EventTarget）、事件来源（SourceType）等。MouseEvent的回调函数stopPropagation用于设置当前事件是否阻止冒泡。
+开发者可以通过回调中的MouseEvent对象获取触发事件的坐标（displayX/displayY/windowX/windowY/x/y）、按键（[MouseButton](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#mousebutton8)）、行为（[MouseAction](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#mouseaction8)）、时间戳（[BaseEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#baseevent8)的`timestamp`属性）、交互组件的区域（[EventTarget](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#eventtarget8)）、事件来源（[SourceType](../reference/apis-arkui/arkui-ts/ts-gesture-settings.md#sourcetype枚举说明8)）等。MouseEvent的回调函数stopPropagation用于设置当前事件是否阻止冒泡。
 
 > **说明：**
 >
 > 按键（MouseButton）的值：Left/Right/Middle/Back/Forward均对应鼠标上的实体按键，当这些按键被按下或松开时触发这些按键的事件。None表示没有鼠标按键按下或松开的状态下，仅移动鼠标所触发的事件。
 
-<!-- @mouse_move --> 
+<!-- @[mouse_move](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/mouseMove/MouseMove.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -101,10 +101,10 @@ struct MouseMove {
    右键点击时：button = 2（MouseButton.Right的枚举值），按下时：action = 1（MouseAction.Press的枚举值），抬起时：action = 2（MouseAction.Release的枚举值）。
 
 
-onMouse1
+![onMouse1](figures/onMouse_1.gif)
 
 如果需要阻止鼠标事件冒泡，可以通过调用stopPropagation方法进行设置。
-<!-- @stop_propagation -->
+<!-- @[stop_propagation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/stopPropagation/StopPropagation.ets) -->
 
 ``` TypeScript
 @Entry
@@ -157,13 +157,13 @@ struct StopPropagation {
   }
 }
 ```
-onMouse2
+![onMouse2](figures/onMouse_2.gif)
 
 在子组件（Button）的onMouse中，通过回调参数event调用stopPropagation回调方法（如上）即可阻止Button子组件的鼠标事件冒泡到父组件Column上。
 
 ### onHover
 
-如果需要感知鼠标移入或移出控件范围，建议直接使用高级事件onHover，建议避免直接处理鼠标move事件，以保持代码简洁。
+如果需要感知鼠标移入或移出控件范围，建议直接使用高级事件[onHover](../reference/apis-arkui/arkui-ts/ts-universal-events-hover.md#onhover)，建议避免直接处理鼠标move事件，以保持代码简洁。
 
 ```ts
 onHover(event: (isHover: boolean) => void)
@@ -174,7 +174,7 @@ onHover(event: (isHover: boolean) => void)
 
 若组件绑定了该接口，当鼠标指针从组件外部进入到该组件的瞬间会触发事件回调，参数isHover等于true；鼠标指针离开组件的瞬间也会触发该事件回调，参数isHover等于false。
 
-<!-- @on_hover -->
+<!-- @[on_hover](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/onHover/OnHover.ets) -->
 
 ``` TypeScript
 @Entry
@@ -208,16 +208,16 @@ struct OnHover {
 
 当鼠标从Button内移动到Button外的瞬间，回调响应，isHover值等于false，又将组件变成了初始的样式。
 
-onHover
+![onHover](figures/onHover.gif)
 
 
 ## 处理鼠标按键
 
-当用户按下鼠标上的按键时，会产生鼠标按下事件，可以通过MouseEvent访问事件的一些重要信息，如发生时间，鼠标按键（MouseButton：左键/右键等），也可以通过getModifierKeyState接口获取到用户在使用鼠标时，物理键盘上的**ctrl/alt/shift**这几个修饰键的按下状态，可以通过组合判断它们的状态来实现一些便捷操作。
+当用户按下鼠标上的按键时，会产生鼠标按下事件，可以通过[MouseEvent](../reference/apis-arkui/arkui-ts/ts-universal-mouse-key.md#mouseevent对象说明)访问事件的一些重要信息，如发生时间，鼠标按键（MouseButton：左键/右键等），也可以通过[getModifierKeyState](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#getmodifierkeystate12)接口获取到用户在使用鼠标时，物理键盘上的**ctrl/alt/shift**这几个修饰键的按下状态，可以通过组合判断它们的状态来实现一些便捷操作。
 
 以下是一个通过处理鼠标按键实现快速多选的示例：
 
-<!-- @mouse_button -->   
+<!-- @[mouse_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/MouseButton/MouseButton.ets) -->   
 
 ``` TypeScript
 class ListDataSource implements IDataSource {
@@ -351,21 +351,21 @@ struct ListExample {
 }
 ```
 
-ChangeMouse
+![ChangeMouse](figures/ChangeMouse.gif)
 
 ## 处理滚轮
 
-鼠标的滚轮是一种可以产生纵向滚动量的输入设备，当用户滚动鼠标滚轮时，系统会产生纵向轴事件上报，应用可在组件上通过onAxisEvent接口接收轴事件，轴事件中上报的坐标，为鼠标光标所在的位置，而滚轮上报的角度变化可从BaseEvent的axisVertical获得。
+鼠标的滚轮是一种可以产生纵向滚动量的输入设备，当用户滚动鼠标滚轮时，系统会产生纵向[轴事件](../reference/apis-arkui/arkui-ts/ts-universal-events-axis.md)上报，应用可在组件上通过[onAxisEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-axis.md#onaxisevent)接口接收轴事件，轴事件中上报的坐标，为鼠标光标所在的位置，而滚轮上报的角度变化可从[BaseEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#baseevent8)的axisVertical获得。
 
-鼠标滚轮轴事件的上报，每次都以AxisAction.BEGIN类型开始，当停止滚动时以AxisAction.END结束，慢速滚动时，会产生多段的BEGIN、END上报。当你处理axisVertical时，应确保理解它的数值含义与单位，其有以下特点：
+鼠标滚轮轴事件的上报，每次都以[AxisAction](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#axisaction17).BEGIN类型开始，当停止滚动时以[AxisAction](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#axisaction17).END结束，慢速滚动时，会产生多段的BEGIN、END上报。当你处理axisVertical时，应确保理解它的数值含义与单位，其有以下特点：
 - 上报的数值单位为角度，为单次变化量，非总量。
 - 上报数值大小受系统设置中对滚轮放大倍数设置的影响。
-- 系统设置中的放大倍数通过AxisEvent中的scrollStep告知。
+- 系统设置中的放大倍数通过[AxisEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-axis.md#axisevent)中的scrollStep告知。
 - 向前滚动，上报数值为负，向后滚动，上报数值为正。
 
 如果使用滚动类组件，对于滚轮的响应，系统内部已实现，不需要额外处理。
 
-如果使用PanGesture，对于滚轮的响应，此时向前滚动，offsetY的上报数值为正，向后滚动，offsetY的上报数值为负。
+如果使用[PanGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-pangesture.md)，对于滚轮的响应，此时向前滚动，offsetY的上报数值为正，向后滚动，offsetY的上报数值为负。
 
 > **说明：**
 >
@@ -375,7 +375,7 @@ ChangeMouse
 
 以下是纵向和横向的List响应滚轮的示例：
 
-<!-- @list_data_source -->
+<!-- @[list_data_source](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/MouseWheel/ListDataSource.ets) -->
 
 ``` TypeScript
 export class ListDataSource implements IDataSource {
@@ -435,7 +435,7 @@ export class ListDataSource implements IDataSource {
 }
 ```
 
-<!-- @mouse_wheel --> 
+<!-- @[mouse_wheel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/MouseWheel/MouseWheel.ets) --> 
 
 ``` TypeScript
 import { ListDataSource } from './ListDataSource';
@@ -498,7 +498,7 @@ struct MouseWheel {
 }
 ```
 
-ListAxis
+![ListAxis](figures/listAxis.gif)
 
 ## 鼠标事件转换
 如果开发者在开发应用时，只考虑实现了触控操作场景，没有针对PC/2in1、Tablet设备使用鼠标操作的场景做适配，会导致出现应用在使用鼠标操作时发生实际行为与预期不一致、甚至无法操作的情况。针对该场景，系统提供兜底方案，会默认将鼠标左键事件、轴事件转换成触摸事件发送给应用，从而达到类似手机上的操作体验。
@@ -508,9 +508,9 @@ ListAxis
 ### 开发步骤
 **1. 增加配置文件**
 
-在应用的entry/src/main/resources/base/profile目录下创建配置文件easy_go.json（示例文件名，可自行命名）。在module.json5配置文件中添加easyGo字段，并指向引用的easy_go.json配置文件。
+在应用的entry/src/main/resources/base/profile目录下创建配置文件easy_go.json（示例文件名，可自行命名）。在[module.json5](../quick-start/module-configuration-file.md)配置文件中添加easyGo字段，并指向引用的easy_go.json配置文件。
 
-easy_go
+![easy_go](figures/easy_go.png)
 
 **2. 增加事件转换配置**
 

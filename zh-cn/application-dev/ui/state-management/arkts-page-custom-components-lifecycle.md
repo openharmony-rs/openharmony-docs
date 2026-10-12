@@ -6,23 +6,23 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-自定义组件生命周期，即用@Component或@ComponentV2装饰的自定义组件的生命周期，提供以下生命周期接口：
+自定义组件生命周期，即用[@Component](arkts-create-custom-components.md#component)或[@ComponentV2](./arkts-create-custom-components.md#componentv2)装饰的自定义组件的生命周期，提供以下生命周期接口：
 
 
-- aboutToAppear：组件即将出现时回调该接口，具体时机为在创建自定义组件的新实例后，在执行其build函数之前执行。
+- [aboutToAppear](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)：组件即将出现时回调该接口，具体时机为在创建自定义组件的新实例后，在执行其build函数之前执行。
 
-- onDidBuild：在组件首次渲染触发的build函数执行完成之后回调该接口，后续组件重新渲染将不回调该接口。开发者可以在这个阶段实现埋点数据上报等不影响实际UI的功能。
+- [onDidBuild](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#ondidbuild12)：在组件首次渲染触发的build函数执行完成之后回调该接口，后续组件重新渲染将不回调该接口。开发者可以在这个阶段实现埋点数据上报等不影响实际UI的功能。
 
-- aboutToDisappear：aboutToDisappear函数在自定义组件析构销毁之前执行。不允许在aboutToDisappear函数中改变状态变量，特别是@Link变量的修改可能会导致应用程序行为不稳定。
+- [aboutToDisappear](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)：aboutToDisappear函数在自定义组件析构销毁之前执行。不允许在aboutToDisappear函数中改变状态变量，特别是[@Link变量](./arkts-link.md)的修改可能会导致应用程序行为不稳定。
 
 > **说明：**
 >
-> 页面生命周期及其相关内容参考页面路由。
+> 页面生命周期及其相关内容参考[页面路由](../arkts-routing.md#生命周期)。
 
 自定义组件生命周期流程如下图所示。
 
 
-custom-component-lifecycle-demo1
+![custom-component-lifecycle-demo1](figures/custom-component-lifecycle-demo1.png)
 
 
 根据上面的流程图，接下来从自定义组件的初始创建、重新渲染和删除来详细说明。
@@ -42,7 +42,7 @@ custom-component-lifecycle-demo1
 
 ## 自定义组件重新渲染
 
-当触发事件（比如点击）改变状态变量时，或者LocalStorage / AppStorage中的属性更改，并导致绑定的状态变量更改其值时：
+当触发事件（比如点击）改变状态变量时，或者[LocalStorage](./arkts-localstorage.md) / [AppStorage](./arkts-appstorage.md)中的属性更改，并导致绑定的状态变量更改其值时：
 
 1. 框架观察到变化，启动重新渲染。
 
@@ -54,7 +54,7 @@ custom-component-lifecycle-demo1
 
 1. 在删除组件之前，将调用其aboutToDisappear生命周期函数，标记着该节点将要被销毁。ArkUI的节点删除机制是：后端节点直接从组件树上摘下，后端节点被销毁，对前端节点解引用，前端节点已经没有引用时，将被Ark虚拟机垃圾回收。
 
-2. 自定义组件和它的变量将被删除，如果组件有同步的变量（如@Link、@Prop、@StorageLink），将从状态数据源上取消注册。
+2. 自定义组件和它的变量将被删除，如果组件有同步的变量（如[@Link](arkts-link.md)、[@Prop](arkts-prop.md)、[@StorageLink](arkts-appstorage.md#storagelink)），将从[状态数据源](arkts-state-management-glossary.md#state-data-source状态数据源)上取消注册。
 
 不建议在生命周期`aboutToDisappear`中使用`async await`。如果在此生命周期中使用异步操作（如 Promise 或回调方法），自定义组件将被保留在Promise的闭包中，直到回调方法执行完毕，这会阻止自定义组件的垃圾回收。
 
@@ -62,7 +62,7 @@ custom-component-lifecycle-demo1
 
 通过以下示例，来详细说明自定义组件在嵌套使用时，自定义组件生命周期的调用时序：
 
-<!-- @nested_custom_components --> 
+<!-- @[nested_custom_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycle/entry/src/main/ets/pages/parent/Index.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -138,9 +138,9 @@ struct Child {
 }
 ```
 
-page-custom-components-lifecycle-0
+![page-custom-components-lifecycle-0](figures/page-custom-components-lifecycle-0.gif)
 
-以上示例中，Index页面包含两个自定义组件，一个是Parent，一个是Child，Parent及其子组件Child分别声明了各自的自定义组件生命周期函数（aboutToAppear / onDidBuild / aboutToDisappear）。
+以上示例中，Parent作为页面入口组件，包含一个子组件Child，Parent及其子组件Child分别声明了各自的自定义组件生命周期函数（aboutToAppear / onDidBuild / aboutToDisappear）。
 
 - 应用冷启动的初始化流程为：Parent aboutToAppear --&gt; Parent build --&gt; Parent onDidBuild --&gt; Child aboutToAppear --&gt; Child build --&gt; Child onDidBuild。此处体现了自定义组件懒展开特性，即Parent执行完onDidBuild之后才会执行Child组件的aboutToAppear。日志输出信息如下：
 
@@ -178,4 +178,4 @@ Child onDidBuild
 ```
 当showChild为默认值true时，该示例的生命周期流程图如下所示：
 
-custom-component-lifecycle-demo2
+![custom-component-lifecycle-demo2](figures/custom-component-lifecycle-demo2.png)

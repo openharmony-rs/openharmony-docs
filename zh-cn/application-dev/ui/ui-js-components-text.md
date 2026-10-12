@@ -6,7 +6,7 @@
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
-text是文本组件，用于呈现一段文本信息。具体用法请参考text的API文档。
+text是文本组件，用于呈现一段文本信息。具体用法请参考[text](../reference/apis-arkui/arkui-js/js-components-basic-text.md)的API文档。
 
 
 ## 创建text组件
@@ -32,7 +32,7 @@ text是文本组件，用于呈现一段文本信息。具体用法请参考text
 }
 ```
 
-text-Component
+![text-Component](figures/text-Component.png)
 
 
 ## 设置text组件样式和属性
@@ -66,7 +66,7 @@ text-Component
   }
   ```
 
-  Text-Style
+  ![Text-Style](figures/Text-Style.png)
 
 
 
@@ -100,7 +100,7 @@ text-Component
   }
   ```
 
-  Text-Style-2
+  ![Text-Style-2](figures/Text-Style-2.png)
 
 
 
@@ -139,9 +139,9 @@ text-Component
   > - max-lines属性设置文本最多可以展示的行数。
 
 
-  ​    Text-Style-3
+  ​    ![Text-Style-3](figures/Text-Style-3.png)
 
-- text组件支持span子组件
+- text组件支持[span](../reference/apis-arkui/arkui-js/js-components-basic-span.md)子组件
 
   ```html
   <!-- xxx.hml -->
@@ -158,7 +158,7 @@ text-Component
   </div>
   ```
 
-  Text-Style-1
+  ![Text-Style-1](figures/Text-Style-1.png)
     > **说明：**
     > - 当使用span子组件组成文本段落时，如果span属性样式异常（例如：font-weight设置为1000），将导致文本段落显示异常。
     >
@@ -220,4 +220,4 @@ export default {
 }
 ```
 
-Example-Scenario-14
+![Example-Scenario-14](figures/Example-Scenario-14.gif)

@@ -9,7 +9,7 @@
 
 ## 接口说明
 
-分布式跟踪接口由HiTraceChain模块提供，详细API请参考@ohos.hiTraceChain (分布式跟踪)。
+分布式跟踪接口由HiTraceChain模块提供，详细API请参考[@ohos.hiTraceChain (分布式跟踪)](../reference/apis-performance-analysis-kit/js-apis-hitracechain.md)。
 
 | 接口名 | 描述 |
 | -------- | -------- |
@@ -27,7 +27,7 @@
 
 ## 开发步骤
 
-HiTraceChain在ArkTS中的使用方法参考以下示例，开发者可参考约束与限制，了解常见的支持与不支持HiTraceChain自动传递的机制。
+HiTraceChain在ArkTS中的使用方法参考以下示例，开发者可参考[约束与限制](hitracechain-intro.md#约束与限制)，了解常见的支持与不支持HiTraceChain自动传递的机制。
 
 1. 在DevEco Studio中新建工程，选择“Empty Ability”，工程的目录结构如下：
 
@@ -42,17 +42,17 @@ HiTraceChain在ArkTS中的使用方法参考以下示例，开发者可参考约
    │       │   │       └── Index.ets
    ```
 
-2. 编辑工程中的“entry&gt; src&gt; main&gt; ets&gt; pages&gt; Index.ets”：
+2. 编辑工程中的“entry &gt; src &gt; main &gt; ets &gt; pages &gt; Index.ets”：
 
    导入所需依赖：
-   <!-- @TestHiTraceChain_Import -->
+   <!-- @[TestHiTraceChain_Import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_ArkTS/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    import { hiTraceChain, hilog } from '@kit.PerformanceAnalysisKit';
    ```
 
    定义测试方法：
-   <!-- @TestHiTraceChain_TestFunc -->
+   <!-- @[TestHiTraceChain_TestFunc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_ArkTS/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    function initTraceId() {
@@ -102,7 +102,7 @@ HiTraceChain在ArkTS中的使用方法参考以下示例，开发者可参考约
    ```
    
    添加按钮以触发接口调用：
-   <!-- @TestHiTraceChain_Button -->
+   <!-- @[TestHiTraceChain_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_ArkTS/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    Button("testHiTraceIdPassedAutomatically").backgroundColor('#FFFF00FF')

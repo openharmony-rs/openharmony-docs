@@ -5,7 +5,7 @@
 <!--Owner: @inter515-->
 <!--Designer: @inter515-->
 <!--Tester: @laonie666-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @chen8281-->
 
 ## 简介
 
@@ -15,9 +15,9 @@
 
 PerfTest功能设计图如下所示：
 
-perftest
+![perftest](figures/perftest.png)
 
-PerfTest对外提供ArkTS API，包括性能测试策略设置、性能测试执行、测试结果获取等能力。<!--RP1-->具体请参考@ohos.test.PerfTestAPI文档<!--RP1End-->。
+PerfTest对外提供ArkTS API，包括性能测试策略设置、性能测试执行、测试结果获取等能力。<!--RP1-->具体请参考[@ohos.test.PerfTest](../reference/apis-test-kit/js-apis-perftest.md)API文档<!--RP1End-->。
 
 跨语言通信层负责上层ArkTS接口与底层C++接口的转换，包括参数校验、JSON序列化对象处理和异常处理等。作为PerfTest的客户端，它提供启动入口和功能调用接口。该层由测试应用加载运行，通过IPC与服务端通信实现功能调用和生命周期管理。此外，该层还负责管理C++层对ArkTS回调函数的调用。
 
@@ -31,7 +31,7 @@ PerfTest服务端负责白盒性能测试框架的主要功能处理，包含以
 
 使用PerfTest接口进行白盒性能测试流程如下图所示：
 
-perftest-run
+![perftest-run](figures/perftest-run.png)
 
 1. 定义性能测试策略，明确测试指标列表、被测代码段、环境复位代码段、被测应用包名、测试迭代次数、代码段单次执行超时时间等，后续白盒性能测试中将依照此策略执行测试。
 
@@ -49,9 +49,9 @@ perftest-run
 
 1. 定义测试性能指标列表
 
-    定义所需测试的性能指标列表`metrics`，类型为`Array<PerfMetric>`，其中<!--RP2-->PerfMetric<!--RP2End-->为框架支持采集的性能指标枚举。
+    定义所需测试的性能指标列表`metrics`，类型为`Array<PerfMetric>`，其中<!--RP2-->[PerfMetric](../reference/apis-test-kit/js-apis-perftest.md#perfmetric)<!--RP2End-->为框架支持采集的性能指标枚举。
 
-    <!-- @metricsDefine_sample --> 
+    <!-- @[metricsDefine_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/perftest/entry/src/ohosTest/ets/test/CPUMetric.test.ets) --> 
     
     ``` TypeScript
     let metrics: Array<PerfMetric> = [PerfMetric.DURATION, PerfMetric.CPU_USAGE]; // 定义待测指标
@@ -61,7 +61,7 @@ perftest-run
 
     被测代码段`actionCode`是一个类型为`Callback<Callback<boolean>>`的回调函数，框架在测试期间会自动调用此回调函数，并采集性能数据。执行结束时需调用入参`Callback<boolean>`函数通知框架执行完成，否则会导致代码段执行超时。例如测试`Utils.CalculateTest`方法性能时，通过调用`finish(true)`通知框架代码段执行完成。
 
-    <!-- @callbackDefine_sample --> 
+    <!-- @[callbackDefine_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/perftest/entry/src/ohosTest/ets/test/CPUMetric.test.ets) --> 
     
     ``` TypeScript
     let actionCode: Callback<Callback<boolean>> = async (finish: Callback<boolean>) => { // 定义被测代码段
@@ -72,7 +72,7 @@ perftest-run
 
     此外，框架支持定义环境复位代码段`resetCode`，用于在单次测试后进行环境复位，类型和使用方法与`actionCode`相同。`resetCode`会在`actionCode`执行完成后执行，但执行期间不会采集应用性能数据。
 
-    <!-- @resetCodeDefine_sample --> 
+    <!-- @[resetCodeDefine_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/perftest/entry/src/ohosTest/ets/test/CPUMetric.test.ets) --> 
     
     ``` TypeScript
     let resetCode: Callback<Callback<boolean>> = async (finish: Callback<boolean>) => { // 定义环境复位代码段
@@ -83,9 +83,9 @@ perftest-run
 
 3. 构造测试策略对象
 
-    除以上步骤定义的属性外，框架还支持定义其他测试策略，从而帮助开发者进行更加精确的自动化性能测试。所有测试策略通过<!--RP3-->PerfTestStrategy<!--RP3End-->对象定义和保存，性能测试期间会依据此策略执行并采集数据。
+    除以上步骤定义的属性外，框架还支持定义其他测试策略，从而帮助开发者进行更加精确的自动化性能测试。所有测试策略通过<!--RP3-->[PerfTestStrategy](../reference/apis-test-kit/js-apis-perftest.md#perfteststrategy)<!--RP3End-->对象定义和保存，性能测试期间会依据此策略执行并采集数据。
     
-    <!-- @strategyDefine_sample --> 
+    <!-- @[strategyDefine_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/perftest/entry/src/ohosTest/ets/test/CPUMetric.test.ets) --> 
     
     ``` TypeScript
     let perfTestStrategy: PerfTestStrategy = {
@@ -101,9 +101,9 @@ perftest-run
 
 ### 创建测试任务和启动测试
 
-  使用<!--RP4-->PerfTest.create()<!--RP4End-->创建测试任务时，传入上文定义的`PerfTestStrategy`对象。然后调用<!--RP5-->PerfTest.run()<!--RP5End-->异步接口启动测试。测试会自动迭代执行被测代码段并采集性能数据。使用await语法糖同步等待执行完成后再进行后续操作。
+  使用<!--RP4-->[PerfTest.create()](../reference/apis-test-kit/js-apis-perftest.md#create)<!--RP4End-->创建测试任务时，传入上文定义的`PerfTestStrategy`对象。然后调用<!--RP5-->[PerfTest.run()](../reference/apis-test-kit/js-apis-perftest.md#run)<!--RP5End-->异步接口启动测试。测试会自动迭代执行被测代码段并采集性能数据。使用await语法糖同步等待执行完成后再进行后续操作。
 
-<!-- @startTest_sample --> 
+<!-- @[startTest_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/perftest/entry/src/ohosTest/ets/test/CPUMetric.test.ets) --> 
 
 ``` TypeScript
 let perfTest: PerfTest = PerfTest.create(perfTestStrategy); // 创建测试任务对象PerfTest
@@ -112,9 +112,9 @@ await perfTest.run(); // 执行测试，异步函数需使用await同步等待�
 
 ### 获取测试结果
 
-  性能测试运行完成后，调用<!--RP6-->PerfTest.getMeasureResult()<!--RP6End-->获取各个指标的测试结果。结果存储在<!--RP7-->PerfMeasureResult<!--RP7End-->对象中。若测试未完成或指标未定义，则抛出错误码。
+  性能测试运行完成后，调用<!--RP6-->[PerfTest.getMeasureResult()](../reference/apis-test-kit/js-apis-perftest.md#getmeasureresult)<!--RP6End-->获取各个指标的测试结果。结果存储在<!--RP7-->[PerfMeasureResult](../reference/apis-test-kit/js-apis-perftest.md#perfmeasureresult)<!--RP7End-->对象中。若测试未完成或指标未定义，则抛出错误码。
 
-<!-- @getResult_sample --> 
+<!-- @[getResult_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/perftest/entry/src/ohosTest/ets/test/CPUMetric.test.ets) --> 
 
 ``` TypeScript
 let res1: PerfMeasureResult = perfTest.getMeasureResult(PerfMetric.DURATION); // 获取耗时指标的测试结果
@@ -123,9 +123,9 @@ let res2: PerfMeasureResult = perfTest.getMeasureResult(PerfMetric.CPU_USAGE); /
 
 ### 销毁创建的对象
 
-  性能测试完成后，若无需继续使用`PerfTest`对象，可以调用<!--RP8-->PerfTest.destroy()<!--RP8End-->销毁对象以释放内存。
+  性能测试完成后，若无需继续使用`PerfTest`对象，可以调用<!--RP8-->[PerfTest.destroy()](../reference/apis-test-kit/js-apis-perftest.md#destroy)<!--RP8End-->销毁对象以释放内存。
 
-<!-- @exit_sample --> 
+<!-- @[exit_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/perftest/entry/src/ohosTest/ets/test/CPUMetric.test.ets) --> 
 
 ``` TypeScript
 perfTest.destroy(); // 销毁PerfTest对象
@@ -139,7 +139,7 @@ perfTest.destroy(); // 销毁PerfTest对象
 
 1. 在 main > ets > utils 文件夹下新增 Utils.ets 文件，在文件中编写自定义的函数。
 
-    <!-- @utils_sample --> 
+    <!-- @[utils_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/perftest/entry/src/main/ets/utils/Utils.ets) --> 
     
     ``` TypeScript
     export class Utils {
@@ -160,7 +160,7 @@ perfTest.destroy(); // 销毁PerfTest对象
 
 2. 在 ohosTest > ets > test 文件夹下 CPUMetric.test.ets 文件中编写具体测试代码。
 
-    <!-- @CPUMetric_sample --> 
+    <!-- @[CPUMetric_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/perftest/entry/src/ohosTest/ets/test/CPUMetric.test.ets) --> 
     
     ``` TypeScript
     import { describe, expect, it, Level } from '@ohos/hypium';
@@ -211,7 +211,7 @@ perfTest.destroy(); // 销毁PerfTest对象
 
 1. 在 main > ets > pages 文件夹下编写 PageListPage.ets 页面代码，作为被测示例demo。
 
-    <!-- @scroll_sample --> 
+    <!-- @[scroll_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/perftest/entry/src/main/ets/pages/PageListPage.ets) --> 
     
     ``` TypeScript
     @Entry
@@ -250,7 +250,7 @@ perfTest.destroy(); // 销毁PerfTest对象
 
 2. 在ohosTest > ets > test文件夹下 slideFps.test.ets 文件中编写具体测试代码。
 
-    <!-- @slideFps_sample --> 
+    <!-- @[slideFps_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/perftest/entry/src/ohosTest/ets/test/SlideFps.test.ets) --> 
     
     ``` TypeScript
     import { describe, expect, it, Level } from '@ohos/hypium';
@@ -323,5 +323,5 @@ perfTest.destroy(); // 销毁PerfTest对象
     ```
 
 <!--Del-->
-PerfTest详细工程示例可参考白盒性能测试示例。
+PerfTest详细工程示例可参考[白盒性能测试示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Test/perftest)。
 <!--DelEnd-->

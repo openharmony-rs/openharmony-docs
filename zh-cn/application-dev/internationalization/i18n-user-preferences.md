@@ -13,11 +13,11 @@
 
 ## 开发步骤
 
-接口具体使用方法和说明请参考System的API接口文档。
+接口具体使用方法和说明请参考[System](../reference/apis-localization-kit/js-apis-i18n.md#system9)的API接口文档。
 
 1. 导入模块。
 
-   <!-- @import_module -->
+   <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/LanguagePreferenceSetting.ets) -->
    
    ``` TypeScript
    import { i18n } from '@kit.LocalizationKit';
@@ -27,7 +27,7 @@
 2. 使用场景。
 - 获取用户偏好。
 
-   <!-- @get_user_preference -->
+   <!-- @[get_user_preference](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/LanguagePreferenceSetting.ets) -->
    
    ``` TypeScript
    // 判断系统当前是否使用本地数字

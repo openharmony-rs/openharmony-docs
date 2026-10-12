@@ -1,21 +1,21 @@
 # 使用Web组件上传文件
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
-<!--Owner: @zourongchun-->
-<!--Designer: @zhufenghao-->
+<!--Owner: @runlei-->
+<!--Designer: @shulssins-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-Web组件支持前端页面选择文件上传功能，应用开发者可以使用onShowFileSelector()接口来处理前端页面文件上传的请求，如果应用开发者不做任何处理，ArkWeb会提供默认行为来处理前端页面文件上传的请求。应用开发者也可以通过获取到的前端数据，自定义拉起Picker。
+Web组件支持前端页面选择文件上传功能，应用开发者可以使用[onShowFileSelector()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onshowfileselector9)接口来处理前端页面文件上传的请求，如果应用开发者不做任何处理，ArkWeb会提供默认行为来处理前端页面文件上传的请求。应用开发者也可以通过获取到的前端数据，自定义拉起Picker。
 
 ## 使用onShowFileSelector拉起文件管理器
 
-下面的示例中，当用户在前端页面点击文件上传按钮，应用侧在onShowFileSelector()接口中收到文件上传请求，在此接口中开发者将上传的本地文件路径设置给前端页面。
+下面的示例中，当用户在前端页面点击文件上传按钮，应用侧在[onShowFileSelector()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onshowfileselector9)接口中收到文件上传请求，在此接口中开发者将上传的本地文件路径设置给前端页面。
 
 
 - 应用侧代码。
 
-<!-- @web_file_upload -->
+<!-- @[web_file_upload](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageFileIO/entry/src/main/ets/pages/UploadFiles.ets) -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -68,11 +68,11 @@ struct WebComponent {
   </body>
   </html>
   ```
-web-app-document
+![web-app-document](./figures/web-app-document.gif)
 
 ## 使用onShowFileSelector拉起图库
 
-下面的示例中，当用户在前端页面点击文件上传按钮，应用侧在onShowFileSelector()接口中收到文件上传请求，在此接口中开发者将上传的本地图片路径设置给前端页面。
+下面的示例中，当用户在前端页面点击文件上传按钮，应用侧在[onShowFileSelector()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onshowfileselector9)接口中收到文件上传请求，在此接口中开发者将上传的本地图片路径设置给前端页面。
 
 
 - 应用侧代码。
@@ -131,13 +131,13 @@ web-app-document
   </body>
   </html>
   ```
-web-app-photo
+![web-app-photo](./figures/web-app-photo.gif)
 
 ## 使用onShowFileSelector拉起相机
 
-Web组件支持前端页面上传图片文件时调用相机即时拍照，应用开发者可以使用onShowFileSelector()接口来处理前端页面文件上传的请求并自行拉起相机，如果应用开发者不做任何处理，ArkWeb会提供默认行为来处理前端页面调用相机的请求。
+Web组件支持前端页面上传图片文件时调用相机即时拍照，应用开发者可以使用[onShowFileSelector()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onshowfileselector9)接口来处理前端页面文件上传的请求并自行拉起相机，如果应用开发者不做任何处理，ArkWeb会提供默认行为来处理前端页面调用相机的请求。
 
-此示例中，应用侧通过监听onShowFileSelector事件并返回`true`拦截ArkWeb默认弹窗，并调用系统CameraPicker拉起相机。应用可以通过获取AcceptType对不同类型的目标文件做更精细的筛选。
+此示例中，应用侧通过监听[onShowFileSelector](../reference/apis-arkweb/arkts-basic-components-web-events.md#onshowfileselector9)事件并返回`true`拦截ArkWeb默认弹窗，并调用系统CameraPicker拉起相机。应用可以通过获取AcceptType对不同类型的目标文件做更精细的筛选。
 
 ```ts
 // xxx.ets
@@ -227,7 +227,7 @@ HTML页面代码
 </body>
 </html>
 ```
-web-app-camera
+![web-app-camera](./figures/web-app-camera.gif)
 
 ## 使用ArkWeb默认的方式处理文件上传请求
 
@@ -258,7 +258,7 @@ web-app-camera
 
 >  **说明：** 
 >
-> ArkWeb默认仅拉起相机后置摄像头，值`'user'`不会被处理成拉起前置摄像头。如有需要，请在应用侧通过onShowFileSelector()接口另行处理。
+> ArkWeb默认仅拉起相机后置摄像头，值`'user'`不会被处理成拉起前置摄像头。如有需要，请在应用侧通过[onShowFileSelector()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onshowfileselector9)接口另行处理。
 
 HTML页面代码
 ```html
@@ -318,7 +318,7 @@ struct Index {
   }
 }
 ```
-web-default-camera
+![web-default-camera](./figures/web-default-camera.gif)
 
 ## 自定义处理JS接口拉起的文件请求
 
@@ -328,15 +328,15 @@ web-default-camera
 
 API version 23 新增支持如下option中的成员：
 
-`suggestedName`对应接口getSuggestedName。
+`suggestedName`对应接口[getSuggestedName](../reference/apis-arkweb/arkts-basic-components-web-FileSelectorParam.md#getsuggestedname23)。
 
-`description`对应接口getDescriptions。
+`description`对应接口[getDescriptions](../reference/apis-arkweb/arkts-basic-components-web-FileSelectorParam.md#getdescriptions23)。
 
-`excludeAcceptAllOption`对应接口isAcceptAllOptionExcluded。
+`excludeAcceptAllOption`对应接口[isAcceptAllOptionExcluded](../reference/apis-arkweb/arkts-basic-components-web-FileSelectorParam.md#isacceptalloptionexcluded23)。
 
-`startIn`对应接口getDefaultPath。
+`startIn`对应接口[getDefaultPath](../reference/apis-arkweb/arkts-basic-components-web-FileSelectorParam.md#getdefaultpath23)。
 
-`types`对应接口getAcceptableFileTypes。
+`types`对应接口[getAcceptableFileTypes](../reference/apis-arkweb/arkts-basic-components-web-FileSelectorParam.md#getacceptablefiletypes23)。
 
 index.html代码。
 ```html
@@ -467,14 +467,14 @@ struct WebComponent {
   }
 }
 ```
-web-custom-mode-file-picker.gif
+![web-custom-mode-file-picker.gif](./figures/web-custom-mode-file-picker.gif)
 
 样例以HTML中的`showSaveFilePicker()`配合ArkTS中`documentViewPicker.save()`方法为例。
 
 需注意：
 
 1. HTML中的`showOpenFilePicker`、`showDirectoryPicker`方法的入参option与`showSaveFilePicker`的入参option的成员存在差异。
-2. ETS中如调用`documentViewPicker.select()`方法需配合`picker.DocumentSelectOptions`对象为Picker传参，而非`picker.DocumentSaveOptions`对象，请参见@ohos.file.picker (选择器)。
+2. ETS中如调用[`documentViewPicker.select()`](../reference/apis-core-file-kit/js-apis-file-picker.md#select)方法需配合[`picker.DocumentSelectOptions`](../reference/apis-core-file-kit/js-apis-file-picker.md#documentselectoptions)对象为Picker传参，而非[`picker.DocumentSaveOptions`](../reference/apis-core-file-kit/js-apis-file-picker.md#documentsaveoptions)对象，请参见[@ohos.file.picker (选择器)](../reference/apis-core-file-kit/js-apis-file-picker.md)。
 
 ## 常见问题
 
@@ -496,4 +496,4 @@ getAcceptType返回的是`accept`属性值全量转换为文件扩展名所组�
 
 该函数将选择的文件路径提交给ArkWeb，入参主要有两种类型：
 1. file协议路径，目前只支持前缀为`file://media/`、`file://docs/`的公共路径和`file://<packageName>/`的应用包名路径，其他file协议路径无权限。
-2. 沙箱目录，具体参考应用沙箱目录。
+2. 沙箱目录，具体参考[应用沙箱目录](../file-management/app-sandbox-directory.md)。

@@ -11,7 +11,7 @@ HiAppEvent提供接口用于处理上报事件。
 
 ## 接口说明
 
-API接口的具体使用说明（参数使用限制、具体取值范围等）请参考@ohos.hiviewdfx.hiAppEvent。
+API接口的具体使用说明（参数使用限制、具体取值范围等）请参考[@ohos.hiviewdfx.hiAppEvent](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md)。
 
 **数据处理者接口功能介绍：**
 
@@ -38,9 +38,9 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
 
 以用户点击按钮的行为为例，说明实现事件打点和上报的开发步骤。
 
-1. 编辑工程中的“entry > src > main > ets  > pages > Index.ets” 文件，添加一个按钮并在其onClick函数中添加数据处理者。analytics_demo为预置在设备里面的数据处理者lib库<!--Del-->，具体实现可以参考《HiAppEvent数据处理者lib库概述》<!--DelEnd-->。完整示例代码如下：
+1. 编辑工程中的“entry > src > main > ets  > pages > Index.ets” 文件，添加一个按钮并在其onClick函数中添加数据处理者。analytics_demo为预置在设备里面的数据处理者lib库<!--Del-->，具体实现可以参考[《HiAppEvent数据处理者lib库概述》](../../device-dev/subsystems/subsys-dfx-hiappevent-extend-so.md)<!--DelEnd-->。完整示例代码如下：
 
-   <!-- @EventEsc_Header_And_Add_Processor -->    
+   <!-- @[EventEsc_Header_And_Add_Processor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventEsc/entry/src/main/ets/pages/Index.ets) -->    
    
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -94,7 +94,7 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
 
 2. 编辑工程中的“entry > src > main > ets  > pages > Index.ets” 文件，添加一个按钮并在其onClick函数中添加并查看用户ID。完整示例代码如下：
 
-   <!-- @Button_Add_ID -->    
+   <!-- @[Button_Add_ID](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventEsc/entry/src/main/ets/pages/Index.ets) -->    
    
    ``` TypeScript
    Button('userIdTest')
@@ -117,7 +117,7 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
 
 3. 编辑工程中的“entry > src > main > ets  > pages > Index.ets” 文件，添加一个按钮并在其onClick函数中添加并查看用户属性。完整示例代码如下：
 
-   <!-- @Button_Add_Property -->    
+   <!-- @[Button_Add_Property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventEsc/entry/src/main/ets/pages/Index.ets) -->    
    
    ``` TypeScript
    Button('userPropertyTest')
@@ -140,7 +140,7 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
 
 4. 编辑工程中的“entry > src > main > ets  > pages > Index.ets” 文件，添加一个按钮并在其onClick函数中进行事件打点，以记录按钮点击事件。完整示例代码如下：
 
-   <!-- @Button_Add_Event -->    
+   <!-- @[Button_Add_Event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventEsc/entry/src/main/ets/pages/Index.ets) -->    
    
    ``` TypeScript
    Button('writeTest')
@@ -174,7 +174,7 @@ API接口的具体使用说明（参数使用限制、具体取值范围等）�
 
 5. 编辑工程中的“entry > src > main > ets  > pages > Index.ets” 文件，添加一个按钮并在其onClick函数中移除数据处理者（第二步已完成数据处理者添加）。完整示例代码如下：
 
-   <!-- @Button_Remove_Processor -->    
+   <!-- @[Button_Remove_Processor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventEsc/entry/src/main/ets/pages/Index.ets) -->    
    
    ``` TypeScript
    Button('removeProcessorTest')

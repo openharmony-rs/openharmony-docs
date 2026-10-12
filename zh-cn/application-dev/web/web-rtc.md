@@ -10,10 +10,10 @@ WebRTC（Web Real-Time Communications）是一项实时通讯技术，它允许�
 
 ## 申请权限
 
-Web组件可以通过W3C标准协议接口访问摄像头和麦克风，通过onPermissionRequest接口接收权限请求通知，需在配置文件中声明相应的音视频权限并且进行系统侧授权与应用侧授权。
+Web组件可以通过W3C标准协议接口访问摄像头和麦克风，通过[onPermissionRequest](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpermissionrequest9)接口接收权限请求通知，需在配置文件中声明相应的音视频权限并且进行系统侧授权与应用侧授权。
 
 ### 在module.json5配置权限
-- 使用摄像头和麦克风功能前请在module.json5中添加音视频相关权限，权限的添加方法请参考在配置文件中声明权限。
+- 使用摄像头和麦克风功能前请在module.json5中添加音视频相关权限，权限的添加方法请参考[在配置文件中声明权限](../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
 
   ```json5
     // src/main/resources/base/element/string.json
@@ -58,14 +58,14 @@ Web组件可以通过W3C标准协议接口访问摄像头和麦克风，通过on
 通过在JavaScript中调用W3C标准协议接口navigator.mediaDevices.getUserMedia()，该接口用于打开摄像头和麦克风。constraints参数是一个包含了video和audio两个成员的MediaStreamConstraints对象，用于说明请求的媒体类型。
 
 ### 系统侧授权
-参考完整示例代码中，调用requestPermissionsFromUser，使得进入应用后会弹出是否允许该应用访问摄像头和麦克风的授权框，需点击"始终允许"或"每次使用时询问"按钮，授权应用访问摄像头和麦克风。
+参考[完整示例代码](../web/web-rtc.md#完整示例代码)中，调用requestPermissionsFromUser，使得进入应用后会弹出是否允许该应用访问摄像头和麦克风的授权框，需点击"始终允许"或"每次使用时询问"按钮，授权应用访问摄像头和麦克风。
 
 ### 应用侧授权
-参考完整示例代码中，点击前端界面中的"开启摄像头"按钮后会通过onPermissionRequest触发权限请求，在弹出的对话框中单击"onConfirm"按钮后，打开摄像头和麦克风。
+参考[完整示例代码](../web/web-rtc.md#完整示例代码)中，点击前端界面中的"开启摄像头"按钮后会通过onPermissionRequest触发权限请求，在弹出的对话框中单击"onConfirm"按钮后，打开摄像头和麦克风。
 
 ## 完整示例代码
 
-  <!-- @click_button_to_turn_on_camera_microphone --> 
+  <!-- @[click_button_to_turn_on_camera_microphone](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UsingWebMultimedia/entry/src/main/ets/pages/Index.ets) --> 
   
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
@@ -110,7 +110,9 @@ Web组件可以通过W3C标准协议接口访问摄像头和麦克风，通过on
                 secondaryButton: {
                   value: 'onConfirm',
                   action: () => {
-                    event.request.grant(event.request.getAccessibleResource());
+                    let resources = event.request.getAccessibleResource();
+                    console.info('Granting permissions for resources: ' + JSON.stringify(resources));
+                    event.request.grant(resources);
                   }
                 },
                 cancel: () => {

@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-button是按钮组件，其类型包括胶囊按钮、圆形按钮、文本按钮、弧形按钮、下载按钮。具体用法请参考button API。
+button是按钮组件，其类型包括胶囊按钮、圆形按钮、文本按钮、弧形按钮、下载按钮。具体用法请参考[button API](../reference/apis-arkui/arkui-js/js-components-basic-button.md)。
 
 
 ## 创建button组件
@@ -32,7 +32,7 @@ button是按钮组件，其类型包括胶囊按钮、圆形按钮、文本按�
 }
 ```
 
-button-Component
+![button-Component](figures/button-Component.png)
 
 
 ## 设置button类型
@@ -76,7 +76,7 @@ button-Component
 ```
 
 
-button-type
+![button-type](figures/button-type.png)
 
 
 > **说明：**
@@ -173,7 +173,7 @@ export default {
 }
 ```
 
-Download-Progress
+![Download-Progress](figures/Download-Progress.gif)
 
 > **说明：** 
 >
@@ -285,4 +285,4 @@ export default {
 ```
 
 
-Example-Scenario-1
+![Example-Scenario-1](figures/Example-Scenario-1.gif)

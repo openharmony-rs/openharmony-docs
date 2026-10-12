@@ -8,8 +8,8 @@
 <!--Adviser: @zengyawen-->
 
 使用Device Certificate Kit（设备证书服务）来对应用的数字证书进行管理和校验。总体而言，Device Certificate Kit支持如下两个特性：
-1. 证书算法库：数字证书文件的解析和属性读取，证书链的合法性校验。
-2. 证书管理服务：数字证书与私钥的存储和管理，包括导入、导出、查询、签名等。
+1. [证书算法库](./certificate-framework-overview.md)：数字证书文件的解析和属性读取，证书链的合法性校验。
+2. [证书管理服务](./certManager-overview.md)：数字证书与私钥的存储和管理，包括导入、导出、查询、签名等。
 
 数字证书的主要作用及目标场景：
 1. 身份可信认证：证明实体身份真实性（个人、设备、服务器、机构），防止冒充、中间人攻击。
@@ -23,11 +23,11 @@
 
 ## 整体架构
 
-ArkWeb和Network Kit等网络通信相关的服务基于Device Certificate Kit提供证书链校验、双向HTTPS认证等功能。
+[ArkWeb](../../web/web-component-overview.md)和[Network Kit](../../network/net-mgmt-overview.md)等网络通信相关的服务基于Device Certificate Kit提供证书链校验、双向HTTPS认证等功能。
 
-证书管理服务在对数字证书凭据的安装和使用时，依赖Universal Keystore Kit的密钥存储和管理能力。
+证书管理服务在对数字证书凭据的安装和使用时，依赖[Universal Keystore Kit](../UniversalKeystoreKit/huks-overview.md)的密钥存储和管理能力。
 
-
+![](figures/device-certificate-kit-framework.png)
 
 > **说明：**
 >

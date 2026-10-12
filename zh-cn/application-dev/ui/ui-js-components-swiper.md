@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-swiper为滑动容器，提供切换显示子组件的能力。具体用法请参考swiper。
+swiper为滑动容器，提供切换显示子组件的能力。具体用法请参考[swiper](../reference/apis-arkui/arkui-js/js-components-container-swiper.md)。
 
 
 ## 创建swiper组件
@@ -59,7 +59,7 @@ text{
 ```
 
 
-swiper-Component
+![swiper-Component](figures/swiper-Component.gif)
 
 
 > **说明：** 
@@ -120,7 +120,7 @@ text{
 }
 ```
 
-Adding-Attributes
+![Adding-Attributes](figures/Adding-Attributes.gif)
 
 > **说明：**
 > - 设置indicator（是否启用导航点指示器）属性为true时digital（是否启用数字导航点）属性才会生效。
@@ -186,7 +186,7 @@ text{
 }
 ```
 
-Setting-Style-1
+![Setting-Style-1](figures/Setting-Style-1.gif)
 
 
 ## 绑定事件
@@ -288,7 +288,7 @@ export default{
 }
 ```
 
-Binding-Event-5
+![Binding-Event-5](figures/Binding-Event-5.gif)
 
 
 ## 场景示例
@@ -369,11 +369,11 @@ export default {
 }
 ```
 
-Example-Scenario-13
+![Example-Scenario-13](figures/Example-Scenario-13.gif)
 
 
 ## 相关实例
 
 针对swiper开发，有以下相关实例可供参考：
 
-- 简易视频播放器（JS）（API9）
+- [简易视频播放器（JS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/Media/VideoOpenHarmony)

@@ -6,28 +6,28 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @zhang_yixin13-->
 
-\@CustomEnv可用于获取自定义环境变量。开发者可通过WithEnv组件的.customEnv接口设置自定义环境变量，在子组件中通过\@CustomEnv装饰器读取相同CustomEnvKey\<S\>对应的变量值。该机制实现了组件树间的数据透传，使父子组件能基于环境变量进行联动，同时保持代码解耦。
+[\@CustomEnv](../reference/apis-arkui/arkui-ts/ts-custom-env-property.md#customenv)可用于获取自定义环境变量。开发者可通过[WithEnv](../reference/apis-arkui/arkui-ts/ts-container-with-env.md)组件的[.customEnv](../reference/apis-arkui/arkui-ts/ts-container-with-env.md#customenv)接口设置自定义环境变量，在子组件中通过[\@CustomEnv](../reference/apis-arkui/arkui-ts/ts-custom-env-property.md#customenv)装饰器读取相同[CustomEnvKey\<S\>](../reference/apis-arkui/arkui-ts/ts-custom-env-property.md#customenvkeys)对应的变量值。该机制实现了组件树间的数据透传，使父子组件能基于环境变量进行联动，同时保持代码解耦。
 
 >**说明：**
 >
-> 从API版本26.0.0开始，\@CustomEnv支持在\@Component和\@ComponentV2中使用。
+> 从API版本26.0.0开始，[\@CustomEnv](../reference/apis-arkui/arkui-ts/ts-custom-env-property.md#customenv)支持在[\@Component](./state-management/arkts-create-custom-components.md#component)和[\@ComponentV2](./state-management/arkts-create-custom-components.md#componentv2)中使用。
 >
 > 从API版本26.0.0开始，该装饰器支持在原子化服务中使用。
 
 ## 概述
-\@CustomEnv是响应式自定义环境变量装饰器，其功能包括：
-- 根据入参读取相应的自定义环境变量信息，详情见\@CustomEnv使用方法。
+[\@CustomEnv](../reference/apis-arkui/arkui-ts/ts-custom-env-property.md#customenv)是响应式自定义环境变量装饰器，其功能包括：
+- 根据入参读取相应的自定义环境变量信息，详情见[\@CustomEnv使用方法](#customenv使用方法)。
 - 自定义环境变量改变时，通知\@CustomEnv装饰的变量更新，并触发\@CustomEnv关联组件刷新，以实现界面内容的更新。
 - 使用\@CustomEnv装饰的变量具有只读特性，不允许开发者在初始化后对\@CustomEnv装饰的变量做整体赋值。如需更新该变量的值，必须通过父组件的WithEnv组件配合`.customEnv()`方法进行更新。尝试对\@CustomEnv变量赋值将导致编译错误。
 
-开发者可以使用\@CustomEnv装饰器，并传入一个自定义的key，来声明响应式环境变量。示例请参考:支持自定义key和value。
+开发者可以使用\@CustomEnv装饰器，并传入一个自定义的key，来声明响应式环境变量。示例请参考:[支持自定义key和value](#支持自定义key和value)。
 ## \@CustomEnv使用方法
 
 ### 装饰器说明
 
 | \@CustomEnv装饰器 | 说明 |
 | ------------------- | ------------------------------------------------------------ |
-| 装饰器参数 | \@CustomEnv装饰器的入参必须为CustomEnvKey\<S\>类型。 |
+| 装饰器参数 | [\@CustomEnv](../reference/apis-arkui/arkui-ts/ts-custom-env-property.md#customenv)装饰器的入参必须为[CustomEnvKey\<S\>](../reference/apis-arkui/arkui-ts/ts-custom-env-property.md#customenvkeys)类型。 |
 | 可装饰的变量类型 | string、number、boolean、enum等基本类型以及Object、class等对象类型和Array、Date、Map、Set等内置类型。支持null、undefined以及联合类型。 |
 | 装饰变量的初始值 | 必须本地初始化，不允许外部传入初始化。 |
 
@@ -40,17 +40,17 @@
 
 ### 观察变化
 
-当点击更新按钮导致\@Local装饰的变量值发生变化时，WithEnv组件中通过.customEnv()方法设置的值也会通知\@CustomEnv，此时子组件中\@CustomEnv装饰的变量将更新最新值并触发界面重新渲染，实现了完整的响应式更新链路。示例请参考:响应式更新能力。
+当点击更新按钮导致\@Local装饰的变量值发生变化时，WithEnv组件中通过.customEnv()方法设置的值也会通知\@CustomEnv，此时子组件中\@CustomEnv装饰的变量将更新最新值并触发界面重新渲染，实现了完整的响应式更新链路。示例请参考:[响应式更新能力](#响应式更新能力)。
 
 
 ## \@CustomEnv和\@Env能力对比
-\@CustomEnv和\@Env都是环境变量相关，具体能力对比见下表。
+\@CustomEnv和[\@Env](./arkts-env-system-property.md)都是环境变量相关，具体能力对比见下表。
 
 | 能力 | \@CustomEnv | \@Env|
 | ------------------ | ------------------ | ------------------ |
 |起始API version|从API版本26.0.0开始支持。|从API version 22开始支持。|
-|支持参数|开发者自定义的CustomEnvKey类型对象。|SystemProperties的枚举值。<br/>API版本26.0.0之后支持SystemProperties\|SystemEnvKey\<T\>类型参数。|
-|使用形式|\@CustomEnv为装饰器，可声明在\@Component或\@ComponentV2中，开发者通过WithEnv的customEnv接口设置的环境变量|\@Env为装饰器，可声明在\@Component或\@ComponentV2中，直接读取系统环境变量。<br/>API版本26.0.0之后，开发者可通过WithEnv的env接口设置SystemEnvKey\<T\>类型参数的系统环境变量。|
+|支持参数|开发者自定义的CustomEnvKey类型对象。|[SystemProperties的枚举值](./arkts-env-system-property.md#env支持参数)。<br/>API版本26.0.0之后支持[SystemProperties](./arkts-env-system-property.md#env支持参数)\|[SystemEnvKey\<T\>](./arkts-env-system-property.md#env支持参数)类型参数。|
+|使用形式|\@CustomEnv为装饰器，可声明在\@Component或\@ComponentV2中，开发者通过WithEnv的customEnv接口设置的环境变量|\@Env为装饰器，可声明在\@Component或\@ComponentV2中，直接读取系统环境变量。<br/>API版本26.0.0之后，开发者可通过WithEnv的env接口设置[SystemEnvKey\<T\>](./arkts-env-system-property.md#env支持参数)类型参数的系统环境变量。|
 |值的来源|初始化给定默认值或通过WithEnv组件的.customEnv()方法设置。|通过WithEnv的env接口设置的系统环境变量。|
 |是否有响应式能力|有，当WithEnv设置的值变化时，会通知\@CustomEnv装饰的变量更新，并通知关联组件刷新。|有，当系统环境变量变化时，会通知\@Env装饰的变量更新，并通知关联组件刷新。|
 
@@ -61,13 +61,13 @@
 const custom = CustomEnvKey.create<string>();
 // 错误用法，编译报错
 class CustomEnvKey {
-  @CustomEnv(custom) customVarName: string = 'hello world'; 
+  @CustomEnv(custom) customVarName: string = 'hello world';
 }
 // 正确用法
 @Entry
 @Component
 struct Index {
-  @CustomEnv(custom) customVarName: string = 'hello world'; 
+  @CustomEnv(custom) customVarName: string = 'hello world';
 
   build() {
     Column() {
@@ -77,7 +77,7 @@ struct Index {
 }
 ```
 
-- \@CustomEnv的入参必须是通过CustomEnvKey\<S\>的create\<T\>方法创建的全局常量，且类型为开发者自定义的CustomEnvKey\<S\>，否则会编译报错，若开发者绕过编译检查，则会运行时报错。
+- \@CustomEnv的入参必须是通过[CustomEnvKey\<S\>](../reference/apis-arkui/arkui-ts/ts-custom-env-property.md#customenvkeys)的[create\<T\>](../reference/apis-arkui/arkui-ts/ts-custom-env-property.md#createt)方法创建的全局常量，且类型为开发者自定义的CustomEnvKey\<S\>，否则会编译报错，若开发者绕过编译检查，则会运行时报错。
 
 ```ts
 const custom = CustomEnvKey.create<string>();
@@ -98,7 +98,7 @@ struct Index {
 
 - \@CustomEnv装饰的变量为只读属性，不允许开发者进行赋值操作，否则会有编译报错。
 ```ts
-import { WithEnv, WithEnvAttribute } from '@kit.ArkUI';
+import { WithEnv } from '@kit.ArkUI';
 
 const custom = CustomEnvKey.create<string>();
 
@@ -176,7 +176,7 @@ struct Child {
 
   build() {
     Column() {
-      Text(`Child: ${this.customMessage}`);
+      Text(`Child: ${this.customMessage}`)
     }
   }
 }
@@ -195,13 +195,13 @@ struct Child {
 
 流程图如下。
 
-image
+![image](./figures/customenv-flow.png)
 
 ## 使用场景
 
 ### 支持自定义key和value
 
-新增的状态管理装饰器\@CustomEnv支持自定义key配置，并且可以指定变量的初始值。语法格式为：`@CustomEnv(custom) customVarName: string = 'hello world'`。其中`custom`为开发者自定义的环境变量key，类型为CustomEnvKey\<S\>，`hello world`为该变量的初始值。
+新增的状态管理装饰器\@CustomEnv支持自定义key配置，并且可以指定变量的初始值。语法格式为：`@CustomEnv(custom) customVarName: string = 'hello world'`。其中`custom`为开发者自定义的环境变量key，类型为[CustomEnvKey\<S\>](../reference/apis-arkui/arkui-ts/ts-custom-env-property.md#customenvkeys)，`hello world`为该变量的初始值。
 
 <!-- @[CustomValue]
 (https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomEnvSample/entry/src/main/ets/pages/CustomValuePage.ets) -->
@@ -225,13 +225,13 @@ struct CustomValue {
 
 运行效果图如下。
 
-image
+![image](./figures/custom-env-9.png)
 
 ### \@CustomEnv支持多种数据类型
 
 \@CustomEnv支持简单类型和复杂类型的变量声明。简单类型包括string、number、boolean、enum等；复杂类型包括class、Object等对象类型。
 
-<!-- @CustomEnvSupportClass -->
+<!-- @[CustomEnvSupportClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomEnvSample/entry/src/main/ets/pages/CustomEnvValueClassPage.ets) -->
 ```ts
 
 @ObservedV2
@@ -266,13 +266,13 @@ struct ClassIndex {
 
 运行效果图如下。
 
-image
+![image](./figures/custom-env-11.png)
 
 ### \@CustomEnv支持默认初始值
 
 当子组件中使用\@CustomEnv装饰的变量向上查找环境变量值但未找到匹配的WithEnv组件时，该变量将使用声明时指定的初始值作为默认值。
 
-<!-- @CustomEnvDefaultValue -->
+<!-- @[CustomEnvDefaultValue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomEnvSample/entry/src/main/ets/pages/CustomEnvDefaultValPage.ets) -->
 ```ts
 
 const custom = CustomEnvKey.create<string>();
@@ -293,8 +293,8 @@ struct DefaultChild {
 
   build() {
     Column() {
-     // 此时Text中的内容显示为: Child: default content 
-      Text(`Child: ${this.customMessage}`);
+      // 此时Text中的内容显示为: Child: default content
+      Text(`Child: ${this.customMessage}`)
     }
   }
 }
@@ -302,7 +302,7 @@ struct DefaultChild {
 
 运行效果图如下。
 
-image
+![image](./figures/custom-env-10.png)
 
 ### 环境变量查找遵循就近原则
 
@@ -341,7 +341,7 @@ struct NearChild {
 
   build() {
     Column() {
-      Text(`Child: ${this.customMessage}`);
+      Text(`Child: ${this.customMessage}`)
     }
   }
 }
@@ -349,15 +349,15 @@ struct NearChild {
 
 运行效果图如下。
 
-image
+![image](./figures/custom-env-12.png)
 
 ### 响应式更新能力
 
 当点击更新按钮导致\@Local装饰的变量值发生变化时，WithEnv组件中通过.customEnv()方法设置的值也会通知\@CustomEnv，此时子组件中\@CustomEnv装饰的变量将更新最新值并触发界面重新渲染，实现了完整的响应式更新链路。
 
-<!-- @CustomEnvUpdateValue -->
+<!-- @[CustomEnvUpdateValue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomEnvSample/entry/src/main/ets/pages/CustomEnvValUpdatePage.ets) -->
 ```ts
-import { WithEnv, WithEnvAttribute } from '@kit.ArkUI';
+import { WithEnv } from '@kit.ArkUI';
 
 const customMsge = CustomEnvKey.create<string>();
 
@@ -388,7 +388,7 @@ struct UpdateChild {
 
   build() {
     Column() {
-      Text(`Child: ${this.customMessage}`);
+      Text(`Child: ${this.customMessage}`)
     }
   }
 }
@@ -396,15 +396,15 @@ struct UpdateChild {
 
 运行效果图如下。
 
-image
+![image](./figures/customenv_1.gif)
 
 ### \@Watch与\@Monitor监听\@CustomEnv装饰的变量
 
-在\@Component中，可通过\@Watch监听\@CustomEnv装饰变量的变化。
+在\@Component中，可通过[\@Watch](state-management/arkts-watch.md)监听\@CustomEnv装饰变量的变化。
 
-<!-- @CustomEnvSupportWatch -->
+<!-- @[CustomEnvSupportWatch](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomEnvSample/entry/src/main/ets/pages/CustomEnvSupportWatchPage.ets) -->
 ```ts
-import { WithEnv, WithEnvAttribute } from '@kit.ArkUI';
+import { WithEnv } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const customWatch: CustomEnvKey<number> = CustomEnvKey.create<number>();
@@ -436,13 +436,13 @@ struct WatchChild {
 
   // Watch回调
   onParentValChanged() {
-    hilog.info(0x0000, 'testTag','@Watch message update');
+    hilog.info(0x0000, 'testTag', '@Watch message update');
   }
 
   build() {
     Column() {
       Text('parentVal is: ' + this.parentVal)
-        .fontSize(22);
+        .fontSize(22)
     }
     .height('100%')
     .width('100%')
@@ -456,16 +456,17 @@ struct WatchChild {
 
 运行效果图如下。
 
-image
+![image](./figures/custom-env-16.png)
 
-当\@CustomEnv装饰的变量其内部属性的变化时，也会触发回调。
+当\@CustomEnv装饰的变量内部属性发生变化时，也会触发回调。
 
 <!-- @[CustomEnvDeepWatch]
 (https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomEnvSample/entry/src/main/ets/pages/CustomEnvSupportDeepWatchPage.ets) -->
 ```ts
 import { WithEnv } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
-const customDeepWatch = CustomEnvKey.create<number[][]>()
+const customDeepWatch = CustomEnvKey.create<number[][]>();
 
 @Entry
 @Component
@@ -474,8 +475,8 @@ struct BuildIn_Watch {
 
   build() {
     Column() {
-      Button('ss').onClick(() => {
-        this.message[0][0]++
+      Button('change message').onClick(() => {
+        this.message[0][0]++;
       })
       WithEnv() {
         Child()
@@ -488,15 +489,15 @@ struct BuildIn_Watch {
 
 @Component
 struct Child {
-  @Watch('update') @CustomEnv(customDeepWatch) msg: number[][] = [[3, 4]]
+  @CustomEnv(customDeepWatch) @Watch('update') msg: number[][] = [[3, 4]];
 
   update() {
-    console.info(`TabContent message callback func ${this.msg}`)
+    hilog.info(0x0000, 'testTag', `DeepWatch message callback func ${this.msg}`);
   }
 
   build() {
     Column() {
-      Text(this.msg[0][0] + '')
+      Text(`message: ${this.msg[0][0]}`)
     }
   }
 }
@@ -504,17 +505,17 @@ struct Child {
 
 在上面的示例中：
 
-点击'ss'更改message的值，将会触发\@Watch装饰器的回调并输出对应日志。
+点击'change message'更改message的值，将会触发\@Watch装饰器的回调并输出对应日志。
 
 运行效果图如下。
 
-image
+![image](./figures/DeepWatch.png)
 
 在\@ComponentV2中，可通过\@Monitor监听\@CustomEnv装饰变量的变化。需要注意的是，仅当\@CustomEnv装饰的变量被整体赋值时才会触发\@Monitor监听回调，其内部属性的变化不会触发回调。
 
-<!-- @CustomEnvSupportMonitor -->
+<!-- @[CustomEnvSupportMonitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomEnvSample/entry/src/main/ets/pages/CustomEnvSupportMonitorPage.ets) -->
 ```ts
-import { WithEnv, WithEnvAttribute } from '@kit.ArkUI';
+import { WithEnv } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const customMon = CustomEnvKey.create<number>();
@@ -568,7 +569,7 @@ struct MonitorChild {
 
 运行效果图如下。
 
-image
+![image](./figures/customenv_8.gif)
 
 ### \@CustomEnv支持组件冻结
 
@@ -576,9 +577,9 @@ image
 
 需要注意的是：在首次渲染的时候，Tab只会创建当前正在显示的TabContent，当切换所有TabContent后，TabContent才会被全部创建。
 
-<!-- @CustomEnvSupportFreezed -->
+<!-- @[CustomEnvSupportFreezed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomEnvSample/entry/src/main/ets/pages/CustomEnvSupportComponentFreezePage.ets) -->
 ```ts
-import { WithEnv, WithEnvAttribute } from '@kit.ArkUI';
+import { WithEnv } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 const custom = CustomEnvKey.create<number>();
@@ -644,7 +645,7 @@ struct FreezeChild {
 
 运行效果图如下。
 
-image
+![image](./figures/customenv_2.gif)
 
 
 ### 装饰Array类型变量
@@ -709,7 +710,7 @@ struct FruitPage {
 
 运行效果图如下。
 
-image
+![image](./figures/customenv_4.gif)
 
 ### 装饰Date类型变量
 
@@ -765,7 +766,7 @@ struct DatePickerExample {
 
 运行效果图如下。
 
-image
+![image](./figures/customenv_5.gif)
 
 ### 装饰Map类型变量
 
@@ -829,7 +830,7 @@ struct MapSample {
 
 运行效果图如下。
 
-image
+![image](./figures/customenv_6.gif)
 
 ### 装饰Set类型变量
 
@@ -885,11 +886,11 @@ struct SetSample {
 
 运行效果图如下。
 
-image
+![image](./figures/customenv_7.gif)
 
 ### \@CustomEnv的V1/V2混用
 
-\@CustomEnv可以在\@Component和\@ComponentV2中使用，其遵循V1V2混用的基本规则。\@CustomEnv装饰的变量传递给V1时，遵循V1状态变量装饰器不能和\@ObservedV2装饰的class的规则。\@CustomEnv装饰的变量传递给V2时，遵循V2只有\@Param可以接收外部变量的规则。
+\@CustomEnv可以在\@Component和\@ComponentV2中使用，其遵循[V1V2混用的基本规则](./state-management/arkts-v1-v2-mixusage.md)。\@CustomEnv装饰的变量传递给V1时，遵循V1状态变量装饰器不能接收[\@ObservedV2](./state-management/arkts-new-observedV2-and-trace.md)装饰的class的规则。\@CustomEnv装饰的变量传递给V2时，遵循V2只有[\@Param](./state-management/arkts-new-param.md)可以接收外部变量的规则。
 
 
 
@@ -899,18 +900,18 @@ image
 (https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomEnvSample/entry/src/main/ets/pages/CustomEnvObservedV2MixV2ToV1Page.ets) -->
 ```ts
 @ObservedV2
-class CustomDefaultvalue {
+class CustomDefaultValue {
   @Trace public defaultVal: string = 'hello';
 }
 
 const customOne = CustomEnvKey.create<string>();
-const customTwo = CustomEnvKey.create<CustomDefaultvalue>();
+const customTwo = CustomEnvKey.create<CustomDefaultValue>();
 
 @Entry
 @ComponentV2
 struct PageTwo {
   @CustomEnv(customOne) defaultMessage: string = 'parent Value';
-  @CustomEnv(customTwo) defaultMessage1: CustomDefaultvalue = new CustomDefaultvalue();
+  @CustomEnv(customTwo) defaultMessage1: CustomDefaultValue = new CustomDefaultValue();
 
   build() {
     Column() {
@@ -926,7 +927,7 @@ struct PageTwo {
 @Component
 struct PageTwoChild {
   @Require @Prop message: string;
-  // @Prop customMessage: CustomValue; //  错误用法，V1状态变量装饰器装饰的类型不能是ObservedV2装饰的class。
+  // @Prop customMessage: CustomDefaultValue; //  错误用法，V1状态变量装饰器装饰的类型不能是ObservedV2装饰的class。
 
   build() {
     Column() {
@@ -940,7 +941,7 @@ struct PageTwoChild {
 
 运行效果图如下。
 
-image
+![image](./figures/custom-env-13.png)
 
 - \@CustomEnv装饰的变量传递给V2时，遵循V2只有\@Param可以接收外部变量的规则。
 
@@ -989,11 +990,11 @@ struct PageOneChild {
 
 运行效果图如下。
 
-image
+![image](./figures/custom-env-14.gif)
 
-- \@CustomEnv提供状态管理V2的观察能力，当\@CustomEnv装饰的变量的类型被\@Observed装饰时，需要调用enableV2Compatibility使其具有观察类属性的能力，否则将无法观察类属性的变化。
+- \@CustomEnv提供状态管理V2的观察能力，当\@CustomEnv装饰的变量的类型被\@Observed装饰时，需要调用[enableV2Compatibility](../reference/apis-arkui/js-apis-stateManagement.md#enablev2compatibility19)使其具有观察类属性的能力，否则将无法观察类属性的变化。
 
-<!-- @CustomEnvWithenableV2Compatibility -->
+<!-- @[CustomEnvWithenableV2Compatibility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomEnvSample/entry/src/main/ets/pages/CustomEnvObservedMixV2ToV1WithenableV2CompatibilityPage.ets) -->
 ```ts
 import { UIUtils } from '@kit.ArkUI';
 
@@ -1039,4 +1040,4 @@ struct ComponentPageChild {
 
 运行效果图如下。
 
-image
+![image](./figures/custom-env-15.gif)

@@ -26,7 +26,7 @@ FFRT并发队列提供了设置任务优先级（Priority）和队列并发度�
 
 实现代码如下所示：
 
-<!-- @concurrent_c_header -->
+<!-- @[concurrent_c_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FunctionFlowRuntime/ConcurrentQueue/entry/src/main/cpp/concurrent_queue.h) -->
 
 ``` C
 #include <cstdio>
@@ -38,7 +38,7 @@ FFRT并发队列提供了设置任务优先级（Priority）和队列并发度�
 #define LOG_TAG "ConcurrentTag"
 ```
 
-<!-- @concurrent_c -->
+<!-- @[concurrent_c](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FunctionFlowRuntime/ConcurrentQueue/entry/src/main/cpp/concurrent_queue.cpp) -->
 
 ``` C++
 
@@ -139,11 +139,11 @@ int ConcurrentQueueCExec()
 
 > **说明：**
 >
-> `ffrt_queue_submit_h_f`接口可以接收裸函数指针任务作为参数，如果任务存在前后处理可以参见ffrt_alloc_auto_managed_function_storage_base函数查看如何构造任务结构体。
+> `ffrt_queue_submit_h_f`接口可以接收裸函数指针任务作为参数，如果任务存在前后处理可以参见[ffrt_alloc_auto_managed_function_storage_base](ffrt-api-guideline-c.md#ffrt_alloc_auto_managed_function_storage_base)函数查看如何构造任务结构体。
 
 ## 接口说明
 
-上述样例中涉及到主要的FFRT的接口如下，详情请参考Function Flow Runtime C API里的方法：
+上述样例中涉及到主要的FFRT的接口如下，详情请参考[Function Flow Runtime C API](ffrt-api-guideline-c.md)里的方法：
 
 | 名称                                                                             | 描述                                                                  |
 | -------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
@@ -155,7 +155,7 @@ int ConcurrentQueueCExec()
 
 > **说明：**
 >
-> - 如何使用FFRT C++ API详见：FFRT C++接口三方库使用指导。
+> - 如何使用FFRT C++ API详见：[FFRT C++接口三方库使用指导](ffrt-development-guideline.md#使用ffrt-c-api-1)。
 > - 使用FFRT C接口或C++接口时，都可以通过FFRT C++接口三方库简化头文件包含，即使用`#include "ffrt/ffrt.h"`头文件包含语句。
 
 ## 约束限制

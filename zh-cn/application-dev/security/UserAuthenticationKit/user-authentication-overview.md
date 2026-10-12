@@ -17,7 +17,7 @@ User Authentication Kit（用户认证服务）提供了基于用户在设备本
 
 用户身份认证可用于各种鉴权场景，如应用内账号登录、支付认证等。
 
-user-authentication-process
+![user-authentication-process](figures/user-authentication-process.png)
 
 ## 亮点/特征
 
@@ -59,7 +59,7 @@ user-authentication-process
 
 统一用户认证框架架构如下图所示。
 
-unified-user-authentication-framework
+![unified-user-authentication-framework](figures/unified-user-authentication-framework.png)
 
 用户认证框架主要包括四个部分：
 
@@ -73,7 +73,7 @@ unified-user-authentication-framework
 
 用户身份认证通过后，统一用户认证框架会在设备可信执行环境中签发用户身份认证通过证明，简称AuthToken。
 
-从图的左侧，可以看到应用使用用户身份认证功能完成用户鉴权的过程：当应用需要调用通用密钥库服务中需用户授权才能访问的密钥时，应用可以将获取到的AuthToken随密钥调用请求一同提供给通用密钥库服务，作为密钥二次访问控制的用户鉴权证明。通用密钥库服务在可信执行环境中校验了AuthToken的合法性和有效性后，便会响应业务请求，执行对应的密钥操作。
+从图的左侧，可以看到应用使用用户身份认证功能完成用户鉴权的过程：当应用需要调用通用密钥库服务中需用户授权才能访问的密钥时，应用可以将获取到的AuthToken随密钥调用请求一同提供给[通用密钥库服务](../UniversalKeystoreKit/huks-overview.md)，作为密钥二次访问控制的用户鉴权证明。通用密钥库服务在可信执行环境中校验了AuthToken的合法性和有效性后，便会响应业务请求，执行对应的密钥操作。
 
 ### AuthToken数据结构
 
@@ -84,7 +84,7 @@ unified-user-authentication-framework
 | version | token版本号 | uint32_t | 当前为2.0。 |
 | challenge | 认证随机挑战 | uint8_t[32] | 需要校验认证结果的业务方生成的一次性随机挑战。 |
 | time | 认证通过时间戳 | uint64_t | 认证通过时间戳。在复用场景中，该时间戳为用户认证通过的时间，而不是复用认证结果时AuthToken的签发时间。|
-| authTrustLevel | 认证可信等级 | uint32_t | 表示用户认证结果的可信等级，取决于设备上认证执行器本身的能力，正常情况下应该大于或者等于调用者传入的authTrustLevel。见生物认证可信等级划分原则。 |
+| authTrustLevel | 认证可信等级 | uint32_t | 表示用户认证结果的可信等级，取决于设备上认证执行器本身的能力，正常情况下应该大于或者等于调用者传入的authTrustLevel。见[生物认证可信等级划分原则](#生物认证可信等级划分原则)。 |
 | authType | 认证类型 | uint32_t | 认证通过采用的认证类型，包括人脸、指纹、口令（特指锁屏口令认证）、伴随设备。 |
 | authMode | 操作类型 | uint32_t | 操作类型：识别/认证。 |
 | securityLevel | token签发环境安全等级 | uint32_t | token签发环境安全等级。 |

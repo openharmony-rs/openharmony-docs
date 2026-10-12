@@ -34,8 +34,8 @@
 
 **图1** 页面布局分解
 
-Layout-Description-2
+![Layout-Description-2](figures/Layout-Description-2.png)
 
 **图2** 留言区布局分解
 
-Layout-Description-1
+![Layout-Description-1](figures/Layout-Description-1.png)

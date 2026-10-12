@@ -26,7 +26,7 @@
 
 ## 开发准备
 
-以下各步骤示例为片段代码，可通过示例代码链接获取完整示例。
+以下各步骤示例为片段代码，可通过示例代码链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioSnapshot)。
 
 ### 导入模块
 
@@ -42,7 +42,7 @@ target_link_libraries(sample PUBLIC libohaudio.so)
 
 **添加头文件：**
 
-<!-- @header_file -->
+<!-- @[header_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSnapshot/entry/src/main/cpp/audio.cpp) -->
 
 ``` C++
 #include <ohaudio/native_audio_debugging_manager.h>
@@ -56,7 +56,7 @@ constexpr mode_t FILE_PERMISSION = S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH; // 064
 
 开发者使用ArkTS接口获取音频快照时，需导入音频模块。
 
-<!-- @import_module -->
+<!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSnapshot/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
@@ -67,11 +67,11 @@ import { fileIo as fileio } from '@kit.CoreFileKit';
 
 在使用调试接口前，需先获取音频调试管理器实例。该实例为单例，获取后可重复使用。
 
-接口说明请参考getDebuggingManager。
+接口说明请参考[getDebuggingManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioManager.md#getdebuggingmanager)。
 
 **C/C++接口：**
 
-<!-- @get_debug_manager_c -->
+<!-- @[get_debug_manager_c](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSnapshot/entry/src/main/cpp/audio.cpp) -->
 
 ``` C++
 // 获取音频调试管理器。
@@ -85,7 +85,7 @@ if (result != AUDIOCOMMON_RESULT_SUCCESS || debugManager == nullptr) {
 
 **ArkTS接口：**
 
-<!-- @get_debug_manager_ts -->
+<!-- @[get_debug_manager_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSnapshot/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 // 获取音频调试管理器。
@@ -101,20 +101,20 @@ const debugManager: audio.AudioDebuggingManager = audioManager.getDebuggingManag
 
 | 信息分类 | 包含字段 | 说明 |
 | :--- | :--- | :--- |
-| 播放快照列表 | renderers | 当前应用进程中所有播放快照信息，具体请参考音频播放快照。 |
-| 录音快照列表 | capturers | 当前应用进程中所有录音快照信息，具体请参考录音快照。 |
-| 耳返快照列表 | loopbacks | 当前应用进程中所有耳返快照信息，具体请参考音频耳返快照。 |
-| 会话快照列表 | sessions | 当前应用进程中所有会话快照信息，具体请参考音频会话快照。 |
+| 播放快照列表 | renderers | 当前应用进程中所有播放快照信息，具体请参考[音频播放快照](#音频播放快照)。 |
+| 录音快照列表 | capturers | 当前应用进程中所有录音快照信息，具体请参考[录音快照](#录音快照)。 |
+| 耳返快照列表 | loopbacks | 当前应用进程中所有耳返快照信息，具体请参考[音频耳返快照](#音频耳返快照)。 |
+| 会话快照列表 | sessions | 当前应用进程中所有会话快照信息，具体请参考[音频会话快照](#音频会话快照)。 |
 
 > **说明：**
 >
 > 各快照详细字段信息见下方对应章节的输出示例。
 
-接口说明请参考printAppInfo。
+接口说明请参考[printAppInfo](../../reference/apis-audio-kit/arkts-apis-audio-AudioDebuggingManager.md#printappinfo)。
 
 **C/C++接口：**
 
-<!-- @print_app_snapshot_c -->
+<!-- @[print_app_snapshot_c](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSnapshot/entry/src/main/cpp/audio.cpp) -->
 
 ``` C++
 // 打印应用快照到文件。
@@ -130,7 +130,7 @@ OH_AudioDebuggingManager_PrintAppInfo(debugManager, -1);
 
 **ArkTS接口：**
 
-<!-- @print_app_snapshot_ts -->  
+<!-- @[print_app_snapshot_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSnapshot/entry/src/main/ets/pages/Index.ets) -->  
 
 ``` TypeScript
 // 打印应用快照到文件。
@@ -186,11 +186,11 @@ audioApp {
 >
 > 详细字段信息见下方输出示例。
 
-接口说明请参考printRendererInfo。
+接口说明请参考[printRendererInfo](../../reference/apis-audio-kit/arkts-apis-audio-AudioDebuggingManager.md#printrendererinfo)。
 
 **C/C++接口：**
 
-<!-- @print_renderer_snapshot_c -->
+<!-- @[print_renderer_snapshot_c](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSnapshot/entry/src/main/cpp/audio.cpp) -->
 
 ``` C++
 // 打印指定播放实例的快照。
@@ -204,7 +204,7 @@ if (fd >= 0) {
 
 **ArkTS接口：**
 
-<!-- @print_renderer_snapshot_ts -->  
+<!-- @[print_renderer_snapshot_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSnapshot/entry/src/main/ets/pages/Index.ets) -->  
 
 ``` TypeScript
 // 打印指定播放实例的快照。
@@ -284,11 +284,11 @@ audioRenderer {
 >
 > 详细字段信息见下方输出示例。
 
-接口说明请参考printCapturerInfo。
+接口说明请参考[printCapturerInfo](../../reference/apis-audio-kit/arkts-apis-audio-AudioDebuggingManager.md#printcapturerinfo)。
 
 **C/C++接口：**
 
-<!-- @print_capturer_snapshot_c -->
+<!-- @[print_capturer_snapshot_c](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSnapshot/entry/src/main/cpp/audio.cpp) -->
 
 ``` C++
 // 打印指定录音实例的快照。
@@ -302,7 +302,7 @@ if (fd >= 0) {
 
 **ArkTS接口：**
 
-<!-- @print_capturer_snapshot_ts -->  
+<!-- @[print_capturer_snapshot_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSnapshot/entry/src/main/ets/pages/Index.ets) -->  
 
 ``` TypeScript
 // 打印指定录音实例的快照。
@@ -367,13 +367,13 @@ audioCapturer {
 > **说明：**
 >
 > 详细字段信息见下方输出示例。
-> 调用该方法前，需要先创建AudioLoopback实例。耳返的创建及使用方式可参考实现低时延耳返。耳返处于可用状态（AVAILABLE_IDLE或AVAILABLE_RUNNING）时，可查询到完整的快照信息。
+> 调用该方法前，需要先创建AudioLoopback实例。耳返的创建及使用方式可参考[实现低时延耳返](audio-ear-monitor-loopback.md)。耳返处于可用状态（AVAILABLE_IDLE或AVAILABLE_RUNNING）时，可查询到完整的快照信息。
 
-接口说明请参考printLoopbackInfo。
+接口说明请参考[printLoopbackInfo](../../reference/apis-audio-kit/arkts-apis-audio-AudioDebuggingManager.md#printloopbackinfo)。
 
 **ArkTS接口：**
 
-<!-- @print_loopback_info -->
+<!-- @[print_loopback_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioLoopbackDebugInfo.ets) -->
 
 ``` TypeScript
 // audioLoopback为已创建的AudioLoopback实例。
@@ -436,13 +436,13 @@ audioLoopback {
 > **说明：**
 >
 > 详细字段信息见下方输出示例。
-> 调用该方法前，需要先创建并激活音频会话。音频会话的创建及使用方式可参考使用OHAudio开发音频会话功能(C/C++)或音频会话管理(ArkTS)。
+> 调用该方法前，需要先创建并激活音频会话。音频会话的创建及使用方式可参考[使用OHAudio开发音频会话功能(C/C++)](using-ohaudio-for-session.md)或[音频会话管理(ArkTS)](audio-session-management.md)。
 
-接口说明请参考printSessionInfo。
+接口说明请参考[printSessionInfo](../../reference/apis-audio-kit/arkts-apis-audio-AudioDebuggingManager.md#printsessioninfo)。
 
 **C/C++接口：**
 
-<!-- @print_session_info -->  
+<!-- @[print_session_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleC/entry/src/main/cpp/audiosession.cpp) -->  
 
 ``` C++
 #include "ohaudio/native_audio_debugging_manager.h"
@@ -470,7 +470,7 @@ OH_AudioSessionManager *audioSessionManager;
 
 **ArkTS接口：**
 
-<!-- @print_session_info -->
+<!-- @[print_session_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
@@ -521,7 +521,7 @@ audioSession {
 
 ## 音频编创快照
 
-音频编创（AudioSuite）快照信息用于获取音频编创引擎、管线和节点的状态信息，帮助开发者排查音频编创处理链路中的问题。音频编创的基本概念（引擎、管线、节点）请参考音频编创开发概述(C/C++)。
+音频编创（AudioSuite）快照信息用于获取音频编创引擎、管线和节点的状态信息，帮助开发者排查音频编创处理链路中的问题。音频编创的基本概念（引擎、管线、节点）请参考[音频编创开发概述(C/C++)](audio-suite.md)。
 
 音频编创快照包含如下信息：
 
@@ -536,9 +536,9 @@ audioSession {
 >
 > 详细字段信息见下方输出示例。
 
-接口说明请参考OH_AudioSuite_PrintInfo。
+接口说明请参考[OH_AudioSuite_PrintInfo](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuite_printinfo)。
 
-<!-- @audioSuite_PrintInfo -->
+<!-- @[audioSuite_PrintInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/print_info_to_file.cpp) -->
 
 ``` C++
 // engine为已创建的OH_AudioSuiteEngine实例，必须确保engine参数有效，否则输出内容为空。
@@ -618,4 +618,4 @@ Pipeline [ID: 1]                         // 管线唯一标识符。
 - 耳返须处于可用状态（AVAILABLE_IDLE或AVAILABLE_RUNNING）时，才能查询到完整的快照信息。
 - 调用会话快照接口前，需要先创建并激活音频会话，否则无法获取到完整的快照信息。
 - 当`pipeline`参数为NULL时，输出引擎下所有管线的信息。
-- 节点属性配置的具体参数因节点类型而异，详见OHAudioSuite中各节点的说明。
+- 节点属性配置的具体参数因节点类型而异，详见[OHAudioSuite](../../reference/apis-audio-kit/capi-ohaudiosuite.md)中各节点的说明。

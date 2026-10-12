@@ -29,11 +29,11 @@
 
 ## 参数说明
 
-本能力需主动下发配置才可以生效。通过在OH_AVFormat中配置以下键值对来精确控制行为。
+本能力需主动下发配置才可以生效。通过在[OH_AVFormat](../../reference/apis-avcodec-kit/capi-core-oh-avformat.md)中配置以下键值对来精确控制行为。
 
 1. **OH_MD_KEY_VIDEO_DECODER_FRAME_RETENTION_MODE（模式配置）**
    - 类型：`int32_t`
-   - 取值范围：参考OH_FrameRetentionMode。
+   - 取值范围：参考[OH_FrameRetentionMode](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_frameretentionmode)。
    - 描述：能力的总开关与模式选择，建议在初始化阶段配置。
 
 2. **OH_MD_KEY_VIDEO_DECODER_SPEED（解码倍速）**
@@ -65,7 +65,7 @@
 
 在视频起播前的初始化阶段，仅需配置`ADAPTIVE`模式，倍速参数在播放过程中随用户倍速变化动态下发即可。
 
-<!-- @configure_full_baseline -->
+<!-- @[configure_full_baseline](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capbilities/video_decoder.cpp) -->
 
 ``` C++
 int32_t VideoDecoder::Configure(const SampleInfo &sampleInfo)
@@ -101,7 +101,7 @@ int32_t VideoDecoder::Configure(const SampleInfo &sampleInfo)
 
 系统支持在运行态下动态切换帧保留模式。开发者可通过调用`OH_VideoDecoder_SetParameter`实时下发配置，参数的生效时机与该接口的标准行为一致。
 
-<!-- @onUserSpeedChanged -->
+<!-- @[onUserSpeedChanged](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capbilities/video_decoder.cpp) -->
 
 ``` C++
 int32_t VideoDecoder::OnUserSpeedChanged(double targetSpeed)
@@ -143,7 +143,7 @@ int32_t VideoDecoder::OnUserSpeedChanged(double targetSpeed)
 
 **示例（以应对温控告警为例）：**
 
-<!-- @onThermalWarningReceived -->
+<!-- @[onThermalWarningReceived](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/capbilities/video_decoder.cpp) -->
 
 ``` C++
 int32_t VideoDecoder::OnThermalWarningReceived(double ratio)

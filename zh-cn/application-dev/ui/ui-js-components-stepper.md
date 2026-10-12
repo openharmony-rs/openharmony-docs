@@ -6,7 +6,7 @@
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
-当一个任务需要多个步骤时，可以使用stepper组件展示当前进展。具体用法请参考stepper API。
+当一个任务需要多个步骤时，可以使用stepper组件展示当前进展。具体用法请参考[stepper API](../reference/apis-arkui/arkui-js/js-components-container-stepper.md)。
 
 
 ## 创建stepper组件
@@ -44,7 +44,7 @@ text{
 }
 ```
 
-stepper-Component
+![stepper-Component](figures/stepper-Component.gif)
 
 
 ## 设置index和label属性
@@ -83,7 +83,7 @@ text{
 }
 ```
 
-Setting-Index
+![Setting-Index](figures/Setting-Index-1.gif)
 
 通过设置label属性，自定义stepper-item的提示按钮。
 
@@ -144,7 +144,7 @@ export default {
 }
 ```
 
-Setting-Index
+![Setting-Index](figures/Setting-Index.gif)
 
 
 ## 设置样式
@@ -188,7 +188,7 @@ text{
 }
 ```
 
-Setting-Styles-3
+![Setting-Styles-3](figures/Setting-Styles-3.png)
 
 
 ## 添加事件
@@ -290,4 +290,4 @@ export default {
 }
 ```
 
-Adding-Events-1
+![Adding-Events-1](figures/Adding-Events-1.gif)

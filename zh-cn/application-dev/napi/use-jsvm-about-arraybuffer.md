@@ -27,7 +27,7 @@ ArrayBuffer 是 JavaScript 中的一种数据类型，用于表示通用的、�
 
 ## 使用示例
 
-JSVM-API 接口开发流程参考使用JSVM-API实现JS与C/C++语言交互开发流程，本文仅对接口对应 C++ 相关代码进行展示。
+JSVM-API 接口开发流程参考[使用JSVM-API实现JS与C/C++语言交互开发流程](use-jsvm-process.md)，本文仅对接口对应 C++ 相关代码进行展示。
 
 ### OH_JSVM_GetArraybufferInfo
 
@@ -35,7 +35,7 @@ JSVM-API 接口开发流程参考使用JSVM-API实现JS与C/C++语言交互开�
 
 cpp部分代码：
 
-<!-- @oh_jsvm_get_arraybuffer_info -->
+<!-- @[oh_jsvm_get_arraybuffer_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArraybuffer/getarraybufferinfo/src/main/cpp/hello.cpp) -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -93,7 +93,7 @@ JSVM GetArraybufferInfo: success
 
 cpp部分代码：
 
-<!-- @oh_jsvm_is_arraybuffer -->
+<!-- @[oh_jsvm_is_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArraybuffer/isarraybuffer/src/main/cpp/hello.cpp) -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -151,7 +151,7 @@ JSVM IsArrayBuffer: 1
 
 cpp部分代码：
 
-<!-- @oh_jsvm_is_detached_arraybuffer -->
+<!-- @[oh_jsvm_is_detached_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArraybuffer/isdetachedarraybuffer/src/main/cpp/hello.cpp) -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -225,7 +225,7 @@ JSVM IsArrayBuffer: 1
 
 cpp部分代码：
 
-<!-- @oh_jsvm_create_arraybuffer -->
+<!-- @[oh_jsvm_create_arraybuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutArraybuffer/createarraybuffer/src/main/cpp/hello.cpp) -->
 
 ``` C++
 #include "napi/native_api.h"

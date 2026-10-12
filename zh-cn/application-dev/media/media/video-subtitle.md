@@ -2,7 +2,7 @@
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @chennotfound-->
-<!--Designer: @dongyu_dy-->
+<!--Designer: @chennotfound-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -12,9 +12,9 @@
 
 ## 开发步骤及注意事项
 
-详细的API说明请参考AVPlayer
+详细的API说明请参考[AVPlayer](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md)
 
-1. 调用addSubtitleFromFd，使用视频播放的AVPlayer实例设置外挂字幕资源。
+1. 调用[addSubtitleFromFd](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#addsubtitlefromfd12)，使用视频播放的AVPlayer实例设置外挂字幕资源。
 
    ```ts
     import { media } from '@kit.MediaKit';
@@ -34,7 +34,7 @@
     this.avPlayer.addSubtitleFromFd(fileDescriptorSub?.fd, fileDescriptorSub?.offset, fileDescriptorSub?.length);
    ```
 
-2. 调用on('subtitleUpdate')接口，注册字幕回调函数。
+2. 调用[on('subtitleUpdate')](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md#onsubtitleupdate12)接口，注册字幕回调函数。
 
    ```ts
     import { media } from '@kit.MediaKit';
@@ -73,7 +73,7 @@
 
 ## 运行完整示例
 
-1. 新建工程，下载示例工程，并将示例工程的以下资源复制到对应目录。
+1. 新建工程，下载[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVPlayer/AVPlayerArkTSSubtitle)，并将示例工程的以下资源复制到对应目录。
    ```text
     AVPlayerArkTSSubtitle
     entry/src/main/ets/

@@ -8,7 +8,7 @@
 
 ## 概述
 
-XComponent组件作为一种渲染组件，可用于EGL/OpenGLES和媒体数据写入，通过使用XComponent持有的“NativeWindow”渲染画面，满足开发需要实现高级自定义渲染的需求，例如相机预览流的显示和游戏画面的渲染。开发者可通过指定XComponent组件的type字段来实现不同的渲染方式，分别为XComponentType.SURFACE和XComponentType.TEXTURE。对于SURFACE类型，开发者将定制的绘制内容单独展示到屏幕上。对于TEXTURE类型，开发者将定制的绘制内容和XComponent组件的内容合成后展示到屏幕上。
+XComponent组件作为一种渲染组件，可用于EGL/OpenGLES和媒体数据写入，通过使用XComponent持有的“[NativeWindow](../graphics/native-window-guidelines.md)”渲染画面，满足开发需要实现高级自定义渲染的需求，例如相机预览流的显示和游戏画面的渲染。开发者可通过指定XComponent组件的type字段来实现不同的渲染方式，分别为[XComponentType](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#xcomponenttype10).SURFACE和XComponentType.TEXTURE。对于SURFACE类型，开发者将定制的绘制内容单独展示到屏幕上。对于TEXTURE类型，开发者将定制的绘制内容和XComponent组件的内容合成后展示到屏幕上。
 
 可以将XComponent类比为一个“画布”，在其上支持使用各种渲染技术（如OpenGL、Vulkan等）绘制复杂的图形，而XComponent组件则负责管理这个画布的位置、大小和各种交互事件。
 
@@ -25,11 +25,11 @@ XComponent组件作为一种渲染组件，可用于EGL/OpenGLES和媒体数据�
 
 ## XComponent渲染上屏原理
 
-XComponent持有一个Surface，开发者能通过调用NativeWindow等接口，申请并提交Buffer至图形队列，以此方式将自绘制内容传送至该Surface，其主体流程如下：
+XComponent持有一个Surface，开发者能通过调用[NativeWindow](../graphics/native-window-guidelines.md)等接口，申请并提交Buffer至图形队列，以此方式将自绘制内容传送至该Surface，其主体流程如下：
 
 应用`RequestBuffer`获取空闲帧 → 应用生产帧数据 → 应用调用`FlushBuffer`提交到BufferQueue → 系统渲染侧通过`AcquireBuffer`获取帧 → 渲染到屏幕 → 系统渲染侧通过调用`ReleaseBuffer`释放。
 
-经过上述流程，应用自绘制的内容就可以显示在XComponent持有的Surface区域，而XComponent则负责将此Surface整合进UI界面，其中展示的内容正是开发者发送的自绘制内容。Surface的默认位置与大小与XComponent组件一致，开发者可利用setXComponentSurfaceRect接口自定义调整Surface的位置和大小。XComponent组件负责创建Surface，并通过回调将Surface的相关信息告知应用。应用可以通过一系列接口设定Surface的属性。该组件本身不对所绘制的内容进行感知，亦不提供渲染绘制的接口。
+经过上述流程，应用自绘制的内容就可以显示在XComponent持有的Surface区域，而XComponent则负责将此Surface整合进UI界面，其中展示的内容正是开发者发送的自绘制内容。Surface的默认位置与大小与XComponent组件一致，开发者可利用[setXComponentSurfaceRect](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#setxcomponentsurfacerect12)接口自定义调整Surface的位置和大小。XComponent组件负责创建Surface，并通过回调将Surface的相关信息告知应用。应用可以通过一系列接口设定Surface的属性。该组件本身不对所绘制的内容进行感知，亦不提供渲染绘制的接口。
 
 > **说明：**
 >
@@ -41,15 +41,15 @@ XComponent持有一个Surface，开发者能通过调用NativeWindow等接口，
 
 ### 创建XComponent
 
-目前ArkUI提供了三种UI组件的创建方式，分别是使用ArkTS声明式UI描述创建、使用ArkTS自定义组件节点创建以及使用NDK接口创建。
+目前ArkUI提供了三种UI组件的创建方式，分别是使用[ArkTS声明式UI描述](./state-management/arkts-declarative-ui-description.md)创建、使用[ArkTS自定义组件节点](./arkts-user-defined-arktsNode-frameNode.md)创建以及使用[NDK接口](./ndk-build-ui-overview.md)创建。
 
 通用UI界面开发场景下，建议使用ArkTS声明式UI描述创建XComponent组件。对于需要使用ArkTS自定义组件节点创建以及NDK接口创建的具体场景请参考这两种创建方式的相关介绍。
 
 ### 管理XComponent持有Surface的生命周期
 
-在XComponent渲染上屏原理中提到，XComponent能够显示应用自绘制的内容依赖的是其持有的Surface，因此了解如何获取XComponent持有的Surface的生命周期也十分重要。
+在[XComponent渲染上屏原理](#xcomponent渲染上屏原理)中提到，XComponent能够显示应用自绘制的内容依赖的是其持有的Surface，因此了解如何管理XComponent持有的Surface的生命周期也十分重要。
 
-XComponent推荐使用两种方式获取XComponent持有Surface的生命周期，分别为在ArkTS侧使用XComponentController管理Surface生命周期，以及在Native侧使用OH_ArkUI_SurfaceHolder管理Surface生命周期。
+XComponent推荐使用两种方式管理XComponent持有Surface的生命周期，分别为在ArkTS侧使用[XComponentController](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#xcomponentcontroller)管理Surface生命周期，以及在Native侧使用[OH_ArkUI_SurfaceHolder](../reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md)管理Surface生命周期。
 
 对于需要在ArkTS侧使用已封装接口进行功能开发（如相机预览、视频播放等）或对跨语言性能损耗不敏感的跨语言开发，建议直接在ArkTS侧使用XComponentController管理Surface生命周期。其生命周期的触发时机如下：
 
@@ -59,7 +59,7 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
 
   ArkTS侧onSurfaceCreated的时序如下图：
 
-  OnSurfaceCreated
+  ![OnSurfaceCreated](./figures/onSurfaceCreated1.png)
 
 - onSurfaceChanged回调
 
@@ -67,7 +67,7 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
 
   ArkTS侧onSurfaceChanged的时序如下图：
 
-  OnSurfaceChanged
+  ![OnSurfaceChanged](./figures/onSurfaceChanged1.png)
 
 - onSurfaceDestroyed回调
 
@@ -75,42 +75,42 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
 
   ArkTS侧onSurfaceDestroyed的时序图：
 
-  OnSurfaceDestroyed
+  ![OnSurfaceDestroyed](./figures/onSurfaceDestroyed1.png)
 
-对于复杂的交互逻辑需跨语言开发，追求极致渲染性能或业务需求自主控制Surface的创建和销毁的，建议在Native侧使用OH_ArkUI_SurfaceHolder管理Surface生命周期。其生命周期触发时机如下：
+对于复杂的交互逻辑需跨语言开发，追求极致渲染性能或业务需求自主控制Surface的创建和销毁的，建议在Native侧使用[OH_ArkUI_SurfaceHolder](../reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md)管理Surface生命周期。其生命周期触发时机如下：
 
 - OnSurfaceCreated回调
 
   触发时刻：XComponent创建完成且Surface绑定生命周期回调后，满足以下任一条件时触发。
   1. 组件上树且autoInitialize = true。
-  2. 调用OH_ArkUI_XComponent_Initialize。
+  2. 调用[OH_ArkUI_XComponent_Initialize](../reference/apis-arkui/capi-native-interface-xcomponent-h.md#oh_arkui_xcomponent_initialize)。
 
   Native侧OnSurfaceCreated的时序如下图：
 
-  OnSurfaceCreated
+  ![OnSurfaceCreated](./figures/onSurfaceCreated2.png)
 - OnSurfaceChanged回调
   
   触发时刻：OnSurfaceCreated回调成功触发且Surface大小变化触发重新布局之后触发。
 
   Native侧OnSurfaceChanged的时序如下图：
 
-  OnSurfaceChanged
+  ![OnSurfaceChanged](./figures/onSurfaceChanged2.png)
 
 - OnSurfaceDestroyed回调
 
-  触发时刻：组件下树且autoInitialize=true 或者调用OH_ArkUI_XComponent_Finalize后触发。
+  触发时刻：组件下树且autoInitialize=true 或者调用[OH_ArkUI_XComponent_Finalize](../reference/apis-arkui/capi-native-interface-xcomponent-h.md#oh_arkui_xcomponent_finalize)后触发。
 
   Native侧OnSurfaceDestroyed的时序图：
 
-  OnSurfaceDestroyed
+  ![OnSurfaceDestroyed](./figures/onSurfaceDestroyed2.png)
 
 ### XComponent的开发范式
 
-将创建XComponent和管理XComponent持有Surface的生命周期进行排列组合，除使用NDK接口创建的XComponent无法在ArkTS侧使用XComponentController来管理Surface生命周期外，目前共有以下五种XComponent开发范式：
+将[创建XComponent](#创建xcomponent)和[管理XComponent持有Surface的生命周期](#管理xcomponent持有surface的生命周期)进行排列组合，除使用NDK接口创建的XComponent无法在ArkTS侧使用XComponentController来管理Surface生命周期外，目前共有以下五种XComponent开发范式：
 
 - 通过ArkTS声明式UI描述来创建组件并结合XComponentController实现对Surface生命周期的管理。
 
-  <!-- @xcomponent_index -->
+  <!-- @[xcomponent_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkTSXComponent/entry/src/main/ets/pages/Index.ets) -->
 
   ``` TypeScript
   import nativeRender from 'libnativerender.so';
@@ -171,7 +171,7 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
   
 - 通过ArkTS声明式UI描述来创建组件并结合OH_ArkUI_SurfaceHolder实现对Surface生命周期的管理。
 
-  <!-- @surface_holder_declarative_ets -->
+  <!-- @[surface_holder_declarative_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponent/entry/src/main/ets/pages/SurfaceHolderDeclarative.ets) -->
 
   ``` typescript
   import native from 'libnativerender.so';
@@ -212,7 +212,7 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
   ```
   Native侧获取SurfaceHolder并绑定Surface生命周期回调的具体实现。
 
-  <!-- @surface_holder_declarative_c_bind -->
+  <!-- @[surface_holder_declarative_c_bind](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
   
   ``` C++
   napi_value PluginManager::BindNode(napi_env env, napi_callback_info info)
@@ -240,7 +240,7 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
   ```
   
 - 通过ArkTS自定义组件节点来创建组件并结合XComponentController实现对Surface生命周期的管理。
-  <!-- @xcomponent_type_node_controller_ets -->
+  <!-- @[xcomponent_type_node_controller_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponent/entry/src/main/ets/pages/XComponentTypeNodeController.ets) -->
   ``` typescript
   // 重写XComponentController，设置生命周期回调
   class MyXComponentController extends XComponentController {
@@ -290,7 +290,7 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
   ```
   
 - 通过ArkTS自定义组件节点来创建组件并结合OH_ArkUI_SurfaceHolder实现对Surface生命周期的管理。
-  <!-- @surface_holder_type_node_ets -->
+  <!-- @[surface_holder_type_node_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponent/entry/src/main/ets/pages/SurfaceHolderTypeNode.ets) -->
   ``` typescript
   import native from 'libnativerender.so';
   import { FrameNode, NodeController, typeNode, UIContext } from '@kit.ArkUI';
@@ -343,7 +343,7 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
   ```
   Native侧绑定Surface生命周期回调的具体实现。
 
-  <!-- @surface_holder_declarative_c_bind -->
+  <!-- @[surface_holder_declarative_c_bind](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
   
   ``` C++
   napi_value PluginManager::BindNode(napi_env env, napi_callback_info info)
@@ -371,7 +371,7 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
   ```
   
 - 通过NDK接口来创建组件并使用OH_ArkUI_SurfaceHolder实现对Surface生命周期的管理。
-  <!-- @surface_holder_ndk_ets -->
+  <!-- @[surface_holder_ndk_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponent/entry/src/main/ets/pages/SurfaceHolderNDK.ets) -->
   ``` typescript
   import nativeNode from 'libnativerender.so';
   import { NodeContent } from '@kit.ArkUI';
@@ -404,7 +404,7 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
   ```
   Native侧createNativeNode可以参照如下代码实现。
 
-  <!-- @surface_holder_ndk_createNode -->
+  <!-- @[surface_holder_ndk_createNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
   ``` c++
   napi_value PluginManager::createNativeNode(napi_env env, napi_callback_info info)
   {
@@ -446,7 +446,7 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
 
   创建XComponent组件并使用SurfaceHolder管理Surface生命周期的实现如下。
 
-  <!-- @surface_holder_ndk_create_xc_node -->    
+  <!-- @[surface_holder_ndk_create_xc_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->    
   
   ``` C++
   ArkUI_NodeHandle CreateNodeHandleUsingSurfaceHolder(const std::string &tag)
@@ -478,7 +478,7 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
   ```
 ## OH_NativeXComponent向OH_ArkUI_SurfaceHolder的迁移
 
-从API version 8开始，开发者可以通过基于OH_NativeXComponent实例相关的接口进行XComponent组件Surface的生命周期监听、获取NativeWindow实例以及监听基础事件，实现渲染绘制和响应交互功能。但使用OH_NativeXComponent相关的接口存在以下问题：
+从API version 8开始，开发者可以通过基于[OH_NativeXComponent](../reference/apis-arkui/capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例相关的接口进行XComponent组件Surface的生命周期监听、获取NativeWindow实例以及监听基础事件，实现渲染绘制和响应交互功能。但使用OH_NativeXComponent相关的接口存在以下问题：
 
 - OH_NativeXComponent实例生命周期与XComponent组件强相关，开发者如果在XComponent组件销毁后仍然操作该对象将可能出现稳定性问题，造成应用的崩溃。
 - OH_NativeXComponent提供的交互事件接口不够丰富，只提供基础的触摸、鼠标、键盘交互接口，开发者若想识别长按、拖拽等高级手势需要自己写识别逻辑。
@@ -490,7 +490,7 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
 组件创建过程中的主要差异在于使用OH_NativeXComponent需要传入id和libraryname属性以支持在Native侧获取对应的OH_NativeXComponent实例；而使用OH_ArkUI_SurfaceHolder管理Surface生命周期的XComponent不再需要在XComponent的构造参数中传入id和libraryname属性，而是直接将组件对应的FrameNode节点传递至Native侧进行生命周期绑定和其他设置。
 
 - OH_NativeXComponent
-  <!-- @native_xcomponent_declarative_create_ets -->
+  <!-- @[native_xcomponent_declarative_create_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponent/entry/src/main/ets/pages/NativeXComponentDeclarative.ets) -->
   
   ``` TypeScript
   XComponent({
@@ -509,7 +509,7 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
   ```
 
 - OH_ArkUI_SurfaceHolder
-  <!-- @surface_holder_declarative_create_ets -->
+  <!-- @[surface_holder_declarative_create_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponent/entry/src/main/ets/pages/SurfaceHolderDeclarative.ets) -->
   
   ``` TypeScript
   XComponent({
@@ -535,7 +535,7 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
 绑定Surface生命周期中的主要差异在于注册生命周期回调的接口不同，具体回调内执行的逻辑基本保持不变。
 
 - OH_NativeXComponent
-  <!-- @native_xcomponent_declarative_get_native_xcomponent -->
+  <!-- @[native_xcomponent_declarative_get_native_xcomponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
   
   ``` C++
   void PluginManager::Export(napi_env env, napi_value exports)
@@ -583,7 +583,7 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
 
   注册Surface生命周期。
 
-  <!-- @native_xcomponent_declarative_surface_callback -->
+  <!-- @[native_xcomponent_declarative_surface_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponent/entry/src/main/cpp/render/plugin_render.cpp) -->
   
   ``` C++
   void PluginRender::RegisterCallback(OH_NativeXComponent* nativeXComponent)
@@ -599,7 +599,7 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
   ```
 
 - OH_ArkUI_SurfaceHolder
-  <!-- @surface_holder_declarative_surface_callback -->
+  <!-- @[surface_holder_declarative_surface_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
   
   ``` C++
   napi_value PluginManager::BindNode(napi_env env, napi_callback_info info)
@@ -634,7 +634,7 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
 
   在OnSurfaceCreated等生命周期回调返回的参数(即下面的void *window)中获取。
 
-  <!-- @native_xcomponent_get_native_window -->
+  <!-- @[native_xcomponent_get_native_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
   
   ``` C++
   void OnSurfaceCreatedCB(OH_NativeXComponent *component, void *window)
@@ -659,7 +659,7 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
 
   调用OH_ArkUI_XComponent_GetNativeWindow接口从OH_ArkUI_SurfaceHolder中获取。
 
-  <!-- @surface_holder_declarative_get_native_window -->
+  <!-- @[surface_holder_declarative_get_native_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
   
   ``` C++
   void OnSurfaceCreatedNative(OH_ArkUI_SurfaceHolder *holder)
@@ -675,7 +675,7 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
 
 - OH_NativeXComponent
 
-  <!-- @native_xcomponent_declarative_register_event -->
+  <!-- @[native_xcomponent_declarative_register_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponent/entry/src/main/cpp/render/plugin_render.cpp) -->
   
   ``` C++
   renderCallback_.DispatchTouchEvent = DispatchTouchEventCB; // 注册触摸事件
@@ -691,9 +691,9 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
 
 - OH_ArkUI_SurfaceHolder
 
-  以下只以注册触摸事件为例，鼠标、按键等更多事件请参考绑定基础输入事件。
+  以下只以注册触摸事件为例，鼠标、按键等更多事件请参考[绑定基础输入事件](./ndk-bind-input-events.md)。
 
-  <!-- @surface_holder_declarative_register_event -->
+  <!-- @[surface_holder_declarative_register_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponent/entry/src/main/cpp/manager/plugin_manager.cpp) -->
   
   ``` C++
   if (nodeAPI->addNodeEventReceiver(handle, onEvent)) { // 添加事件监听，返回0表示成功，非0表示失败
@@ -714,7 +714,7 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
 - 基于OH_ArkUI_SurfaceHolder实例注册相应的生命周期回调，获取NativeWindow实例。
 - 利用NativeWindow和EGL接口开发自定义绘制内容，并申请提交Buffer到图形队列。
 - XComponent组件相关的无障碍、可变帧率等能力根据ArkUI_NodeHandle通过相关接口来实现。
-- XComponent组件上的基础事件（如点击、触摸）和手势事件（如滑动、缩放）可通过ArkUI_NodeHandle对象使用ArkUI NDK接口来监听，具体可参考添加事件监听。
+- XComponent组件上的基础事件（如点击、触摸）和手势事件（如滑动、缩放）可通过ArkUI_NodeHandle对象使用ArkUI NDK接口来监听，具体可参考[添加事件监听](./ndk-add-component-events.md)。
 
 **接口说明**
 
@@ -745,11 +745,11 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
 
 **开发步骤**
 
-以下步骤通过在ArkTS侧创建SURFACE类型的XComponent为例（Native侧如何创建XComponent组件对应的ArkUI_NodeHandle可参考ArkUI_NativeNodeAPI_1），描述了如何使用`XComponent组件`调用OH_ArkUI_SurfaceHolder相关接口管理Surface生命周期，并在Native侧创建`EGL/GLES`环境，实现在主页面绘制图形，以及可以改变图形的颜色。
+以下步骤通过在ArkTS侧创建SURFACE类型的XComponent为例（Native侧如何创建XComponent组件对应的ArkUI_NodeHandle可参考[ArkUI_NativeNodeAPI_1](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md)），描述了如何使用`XComponent组件`调用OH_ArkUI_SurfaceHolder相关接口管理Surface生命周期，并在Native侧创建`EGL/GLES`环境，实现在主页面绘制图形，以及可以改变图形的颜色。
 
 1. 在界面中定义XComponent。
 
-    <!-- @page_three -->
+    <!-- @[page_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/ets/pages/PageThree.ets) -->
     
     ``` TypeScript
     import native from 'libnativerender.so';
@@ -875,9 +875,9 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
     }
     ```
 
-2. Node-API模块注册，具体使用请参考Node-API开发规范。
+2. Node-API模块注册，具体使用请参考[Node-API开发规范](../napi/napi-guidelines.md)。
 
-    <!-- @napi_init_part -->
+    <!-- @[napi_init_part](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/napi_init.cpp) -->
 
     ``` C++
     #include <hilog/log.h>
@@ -937,7 +937,7 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
 
     (1) 定义BindNode、UnbindNode、SetFrameRate、SetNeedSoftKeyboard方法，暴露到ArkTS侧的bindNode、unbindNode、setFrameRate、setNeedSoftKeyboard方法会执行该方法。
 
-    <!-- @plugin_manager_h_part -->
+    <!-- @[plugin_manager_h_part](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/manager/plugin_manager.h) -->
 
     ``` C
     // plugin_manager.h
@@ -962,7 +962,7 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
     } // namespace NativeXComponentSample
     ```
 
-    <!-- @plugin_manager_cpp -->
+    <!-- @[plugin_manager_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/manager/plugin_manager.cpp) -->
     
     ``` C++
     // plugin_manager.cpp
@@ -1089,9 +1089,9 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
     }
     ```
 
-    (2) 定义Surface创建成功，发生改变，销毁和事件，可变帧率回调接口。
+    (2) 定义Surface创建、改变、销毁、显示、隐藏回调接口，以及事件回调和可变帧率回调接口。
 
-    <!-- @surface_holder -->
+    <!-- @[surface_holder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/manager/plugin_manager.cpp) -->
     
     ``` C++
     void OnSurfaceCreatedNative(OH_ArkUI_SurfaceHolder *holder)
@@ -1154,7 +1154,7 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
 
 4. 初始化环境，包括初始化可用的EGLDisplay、确定可用的Surface配置、创建渲染区域Surface、创建并关联上下文等。
 
-    <!-- @egl_const_h -->
+    <!-- @[egl_const_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/render/EGLConst.h) -->
 
     ``` C
     // EGLConst.h
@@ -1283,7 +1283,7 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
                                 "}                                         \n";
     ```
 
-    <!-- @egl_render_h -->
+    <!-- @[egl_render_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/render/EGLRender.h) -->
 
     ``` C
     // EGLRender.h
@@ -1319,7 +1319,7 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
     };
     ```
 
-    <!-- @egl_render -->
+    <!-- @[egl_render](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/render/EGLRender.cpp) -->
     
     ``` C++
     // EGLRender.cpp
@@ -1622,7 +1622,7 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
     ```
 5. CMakeLists，使用CMake工具链将C++源代码编译成动态链接库文件。
 
-    <!-- @cmake_lists -->
+    <!-- @[cmake_lists](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeXComponentSample/entry/src/main/cpp/CMakeLists.txt) -->
 
     ```CMake
     # the minimum version of CMake.
@@ -1697,9 +1697,9 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
         ${EGL-lib} ${GLES-lib} ${hilog-lib} ${libace-lib} ${libnapi-lib} ${libuv-lib} libnative_window.so)
     ```
 
-    上述用例具体实现可参考<!--RP3-->NativeXComponent<!--RP3End-->。
+    上述用例具体实现可参考<!--RP3-->[NativeXComponent](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeXComponentSample)<!--RP3End-->。
 
-    示意图
+    ![示意图](./figures/drawStar.jpeg)
 
 ### 在ArkTS侧使用SurfaceId进行渲染绘制
 
@@ -1711,7 +1711,7 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
 
 > **说明：**
 >
-> 更多AVPlayer用法请参考AVPlayer。
+> 更多AVPlayer用法请参考[AVPlayer](../reference/apis-media-kit/arkts-apis-media-AVPlayer.md)。
 
 **接口说明**
 
@@ -1724,13 +1724,13 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
 以下步骤展示如何在ArkTS侧创建SURFACE类型的XComponent，获取surfaceId，并将其设置给AVPlayer实现视频播放。
 
 1. 创建XComponent并传入XComponentController。
-   <!-- @av_player_create_xcomponent -->
+   <!-- @[av_player_create_xcomponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/XComponentAVPlayer.ets) -->
    ``` typescript
    XComponent({ type: XComponentType.SURFACE, controller: this.videoXComponentController })
    ```
 
 2. 在XComponentController中注册onSurfaceCreated生命周期，并在其中获取surfaceId，将获取到的surfaceId和待播的视频源信息传递给AVPlayer。
-   <!-- @av_player_xcomponent_controller -->
+   <!-- @[av_player_xcomponent_controller](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/XComponentAVPlayer.ets) -->
    ``` typescript
    class VideoXComponentController extends XComponentController {
      private avPlayerController: AVPlayerController;
@@ -1752,7 +1752,7 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
    ```
 
 3. 初始化AVPlayer。
-   <!-- @av_player_init -->
+   <!-- @[av_player_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/avplayertool/AVPlayerController.ets) -->
    
    ``` TypeScript
    public async initAVPlayer(source: VideoData, surfaceId: string) {
@@ -1859,13 +1859,13 @@ XComponent推荐使用两种方式获取XComponent持有Surface的生命周期�
 <!--RP1-->
 ## 相关实例
 
-针对Native XComponent的使用，有以下相关实例可供参考：
+针对NativeXComponent的使用，有以下相关实例可供参考：
 
-- XComponent3D（API version 10）
-- OpenGL三棱锥（API version 10）
-- NativeXComponent（API version 19）
+- [XComponent3D（API version 10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/XComponent3D)
+- [OpenGL三棱锥（API version 10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NdkOpenGL)
+- [NativeXComponent（API version 19）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeXComponentSample)
 
 针对ArkTS XComponent的使用，有以下相关实例可供参考：
 
-- ArkTSXComponent（API version 12）
+- [ArkTSXComponent（API version 12）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/ArkTSXComponent)
 <!--RP1End-->

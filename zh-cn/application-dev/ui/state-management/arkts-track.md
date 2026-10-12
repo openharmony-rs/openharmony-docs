@@ -7,10 +7,10 @@
 <!--Adviser: @zhang_yixin13-->
 
 
-\@Track应用于class对象的属性级更新。\@Track装饰的属性变化时，只会触发该属性关联的UI更新。
+[\@Track](../../reference/apis-arkui/arkui-ts/ts-state-management-track.md#track)应用于class对象的属性级更新。\@Track装饰的属性变化时，只会触发该属性关联的UI更新。
 
 
-在阅读本文档之前，建议开发者对状态管理基本观察能力有基本的了解。建议提前阅读：\@State。
+在阅读本文档之前，建议开发者对状态管理基本观察能力有基本的了解。建议提前阅读：[\@State](./arkts-state.md)。
 
 > **说明：**
 >
@@ -27,7 +27,7 @@
 
 状态管理V1中\@State等装饰器默认支持观察第一层属性的变化，第一层属性的变化虽然可以触发更新，但无法做到类属性级的观察，下面的例子就展示了这一限制：
 
-<!-- @Index_start --> 
+<!-- @[Index_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateTrack/entry/src/main/ets/pages/stateTrack/StateTrackClass.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -84,7 +84,7 @@ struct Index {
 }
 ```
 
-track-demo-0
+![track-demo-0](figures/track-demo-0.gif)
 
 > **说明：**
 >
@@ -128,7 +128,7 @@ track-demo-0
 
 使用\@Track装饰器可以避免冗余刷新。
 
-<!-- @AddLog_start --> 
+<!-- @[AddLog_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateTrack/entry/src/main/ets/pages/stateTrack/StateTrackClass2.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -179,7 +179,6 @@ struct AddLog {
           .fontWeight(FontWeight.Bold)
           .margin(10)
         Button('change logTrack.str1')
-          .id('str2')
           .width(300)
           .margin(10)
           .onClick(() => {
@@ -207,7 +206,7 @@ struct AddLog {
 }
 ```
 
-track-demo-1
+![track-demo-1](figures/track-demo-1.gif)
 
 在上面的示例中：
 
@@ -224,9 +223,9 @@ track-demo-1
 
 ## 限制条件
 
-- 如果class类中使用了\@Track装饰器，那么该class类中非\@Track装饰的属性不能在\@Component UI中使用，包括不能绑定在组件上、不能用于初始化子组件，错误的使用将导致运行时报错，从API version 23开始，将返回错误码140110，详见在UI中使用非\@Track装饰的属性发生运行时报错；可以在非UI中使用非\@Track装饰的属性，如事件回调函数中、生命周期函数中等。
+- 如果class类中使用了\@Track装饰器，那么该class类中非\@Track装饰的属性不能在\@Component UI中使用，包括不能绑定在组件上、不能用于初始化子组件，错误的使用将导致运行时报错，从API version 23开始，将返回错误码[140110](../../reference/apis-arkui/errorcode-stateManagement.md#140110-在ui中使用非track装饰的属性发生运行时报错)，详见[在UI中使用非\@Track装饰的属性发生运行时报错](#在ui中使用非track装饰的属性发生运行时报错)；可以在非UI中使用非\@Track装饰的属性，如事件回调函数中、生命周期函数中等。
 
-- API version 19及以后，\@Track使用在\@ComponentV2的UI中，不会引起运行时报错，但依旧不会刷新，详见\@Observed+\@Track装饰的class（V1->V2）、@Observed+\@Track装饰的class（V2->V1）。
+- API version 19及以后，\@Track使用在[\@ComponentV2](./arkts-create-custom-components.md#componentv2)的UI中，不会引起运行时报错，但依旧不会刷新，详见[\@Observed+\@Track装饰的class（V1->V2）](./arkts-v1-v2-mixusage.md#传递class类型v1-v2)、[@Observed+\@Track装饰的class（V2->V1）](./arkts-v1-v2-mixusage.md#传递class类型v2-v1)。
 
 - 建议开发者不要混用包含\@Track的class对象和不包含\@Track的class对象，如联合类型中、类继承中等，容易在UI中误用非\@Track装饰的属性，导致运行时报错。
 
@@ -238,7 +237,7 @@ track-demo-1
 以下示例展示组件更新和\@Track的处理步骤。对象log是\@State装饰的状态变量，logInfo是\@Track装饰的成员属性，其余成员属性都是非\@Track装饰的，而且也不准备在UI中更新它们的值。
 
 
-<!-- @addLog3_start --> 
+<!-- @[addLog3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateTrack/entry/src/main/ets/pages/stateTrack/StateTrackClass3.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -292,7 +291,7 @@ struct AddLog {
 }
 ```
 
-track-demo-2
+![track-demo-2](figures/track-demo-2.gif)
 
 处理步骤：
 

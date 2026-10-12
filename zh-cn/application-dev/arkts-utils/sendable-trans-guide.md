@@ -8,11 +8,11 @@
 
 ## 简介
 
-本文介绍TurboTrans三方库中@hadss/turbo-trans-json（下文简称**TurboTransJSON**）与@hadss/turbo-trans-protobuf（下文简称**TurboTransProtobuf**）在ArkTS中操作Sendable对象的典型用法：
+本文介绍[TurboTrans](https://gitcode.com/openharmony-sig/turbo_trans)三方库中@hadss/turbo-trans-json（下文简称**TurboTransJSON**）与@hadss/turbo-trans-protobuf（下文简称**TurboTransProtobuf**）在ArkTS中操作Sendable对象的典型用法：
 
-- 使用**TurboTransJSON**将JSON字符串反序列化为对象，并转换为Sendable对象在并发实例间传递，适用于将普通对象或JSON字符串转换为Sendable对象，详细可参考使用TurboTransJSON序列化/反序列化并生成Sendable对象。
-- 使用**TurboTransProtobuf**通过.proto生成@Sendable的消息类，并进行编码/解码，详细可参考使用TurboTransProtobuf生成Sendable对象并编解码。
-- 使用TurboTransJSON或TurboTransProtobuf转换生成Sendable对象后，如果还需要绑定UI进行组件刷新的话，可以阅读使用makeObserved将Sendable对象转换为可观察对象章节。
+- 使用**TurboTransJSON**将JSON字符串反序列化为对象，并转换为Sendable对象在并发实例间传递，适用于将普通对象或JSON字符串转换为Sendable对象，详细可参考[使用TurboTransJSON序列化/反序列化并生成Sendable对象](#使用turbotransjson序列化反序列化并生成sendable对象)。
+- 使用**TurboTransProtobuf**通过.proto生成@Sendable的消息类，并进行编码/解码，详细可参考[使用TurboTransProtobuf生成Sendable对象并编解码](#使用turbotransprotobuf生成sendable对象并编解码)。
+- 使用TurboTransJSON或TurboTransProtobuf转换生成Sendable对象后，如果还需要绑定UI进行组件刷新的话，可以阅读[使用makeObserved将Sendable对象转换为可观察对象](#使用makeobserved将sendable对象转换为可观察对象)章节。
 
 ## 使用TurboTrans三方库操作Sendable对象
 
@@ -22,7 +22,7 @@
 
    引入TurboTrans三方库。
 
-   <!-- @transferableObject_jsonPlugin -->
+   <!-- @[transferableObject_jsonPlugin](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/hvigor/hvigor-config.json5) -->
    
    ``` JSON5
      "dependencies": {
@@ -39,7 +39,7 @@
 
    插件生效还需在工程根目录hvigorfile.ts添加相关插件配置。
 
-   <!-- @transferableObject_configPlugin --> 
+   <!-- @[transferableObject_configPlugin](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/hvigorfile.ts) --> 
    
    ``` TypeScript
    import { turboTransJsonPlugin } from '@hadss/turbo-trans-json-plugin';
@@ -66,7 +66,7 @@
    - `@Serializable({ generateSendable: true })`：表示需要生成与该模型对应的Sendable类型与转换方法。
    - `@SerialName({ name: 'xxx' })`：将类属性与JSON字段名绑定。
 
-     <!-- @transferableObject_Layout --> 
+     <!-- @[transferableObject_Layout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/entry/src/main/ets/turbotrans_JSON/layout.ets) --> 
      
      ``` TypeScript
      // 本文件在工程中的路径：entry/src/main/ets/turbotrans_JSON/layout.ets
@@ -96,7 +96,7 @@
    - testJSON1方法是将普通对象通过`JSON.stringify()`序列化为JSON字符串后，再将JSON字符串反序列化为普通对象，最后再转换为Sendable对象的过程。
    - testJSON2方法是将手写的JSON字符串反序列化为普通对象，然后再转换为Sendable对象的过程。
 
-     <!-- @transferableObject_testJSON --> 
+     <!-- @[transferableObject_testJSON](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/entry/src/main/ets/turbotrans_JSON/test1.ets) --> 
      
      ``` TypeScript
      // 本文件在工程中的路径：entry/src/main/ets/turbotrans_JSON/test1.ets
@@ -308,7 +308,7 @@
 
 ## 使用makeObserved将Sendable对象转换为可观察对象
 
-使用UIUtils.makeObserved()方法可以将Sendable对象转换为可观察对象。
+使用[UIUtils.makeObserved()](../reference/apis-arkui/js-apis-stateManagement.md#makeobserved)方法可以将Sendable对象转换为可观察对象。
 
 - 定义并发任务。
 - 使用`taskpool.execute()`获取并发任务返回的Sendable对象，再通过`UIUtils.makeObserved()`转为可观察对象。
@@ -318,7 +318,7 @@
 
 定义observeJSON1与observeJSON2并发任务
 
-<!-- @transferableObject_observeJSON -->
+<!-- @[transferableObject_observeJSON](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/entry/src/main/ets/pages/concurrentFunc.ets) -->
 
 ``` TypeScript
 import { LayoutS } from '../turbotrans_JSON/layout';
@@ -353,7 +353,7 @@ export function observeProtobuf(): test_pb {
 
 执行observeJSON1并发任务返回Sendable对象工程示例如下：
 
-<!-- @transferableObject_makeObserved -->
+<!-- @[transferableObject_makeObserved](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 runTests() {
@@ -379,7 +379,7 @@ Index.ets中通过`@Local`状态保存任务返回值，再由Text组件绑定`p
 
 observeJSON1返回的Sendable对象工程示例如下：
 
-<!-- @transferableObject_Text --> 
+<!-- @[transferableObject_Text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/TurboTrans/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 import { LayoutS } from '../turbotrans_JSON/layout';
@@ -392,7 +392,7 @@ import { UIUtils } from '@kit.ArkUI';
 struct Index {
   @Local message: string = 'Hello World';
   // 替换成 pb: test_pb = test_pb.create(); 则用于observeProtobuf返回Sendable对象的场景
-  // @Local test_pb = test_pb.create();
+  // @Local pb: test_pb = test_pb.create();
   @Local layout: LayoutS = new LayoutS();
 
   build() {

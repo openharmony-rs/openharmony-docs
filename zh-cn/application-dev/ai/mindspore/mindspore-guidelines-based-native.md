@@ -9,7 +9,7 @@
 
 ## 场景说明
 
-开发者可以使用MindSpore，在UI代码中直接集成MindSpore Lite能力，快速部署AI算法，进行AI模型推理，实现图像分类的应用。
+开发者可以使用[MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md)，在UI代码中直接集成MindSpore Lite能力，快速部署AI算法，进行AI模型推理，实现图像分类的应用。
 
 图像分类可实现对图像中物体的识别，在医学影像分析、自动驾驶、电子商务、人脸识别等领域有广泛的应用。
 
@@ -24,17 +24,17 @@
 
 ### 选择模型
 
-本示例程序中使用的图像分类模型文件为mobilenetv2.ms，放置在entry/src/main/resources/rawfile工程目录下。
+本示例程序中使用的图像分类模型文件为[mobilenetv2.ms](https://download.mindspore.cn/model_zoo/official/lite/mobilenetv2_openimage_lite/1.5/mobilenetv2.ms)，放置在entry/src/main/resources/rawfile工程目录下。
 
-如果开发者有其他图像分类的预训练模型，请参考MindSpore Lite 模型转换介绍，将原始模型转换成.ms格式。
+如果开发者有其他图像分类的预训练模型，请参考[MindSpore Lite 模型转换](mindspore-lite-converter-guidelines.md)介绍，将原始模型转换成.ms格式。
 
 ### 编写推理代码
 
-在 entry/src/main/cpp/mslite_napi.cpp，调用MindSpore实现端侧推理，推理代码流程如下。
+在 entry/src/main/cpp/mslite_napi.cpp，调用[MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md)实现端侧推理，推理代码流程如下。
 
 1. 引用对应的头文件
 
-   <!-- @napi_image_classification_headers -->
+   <!-- @[napi_image_classification_headers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/cpp/mslite_napi.cpp) -->
    
    ```c++
    #include <iostream>
@@ -52,7 +52,7 @@
 
 2. 读取模型文件
 
-   <!-- @napi_image_classification_log -->
+   <!-- @[napi_image_classification_log](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/cpp/mslite_napi.cpp) -->
 
    ```c++
    #define LOGI(...) ((void)OH_LOG_Print(LOG_APP, LOG_INFO, LOG_DOMAIN, "[MSLiteNapi]", __VA_ARGS__))
@@ -61,7 +61,7 @@
    #define LOGE(...) ((void)OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_DOMAIN, "[MSLiteNapi]", __VA_ARGS__))
    ```
 
-   <!-- @napi_image_classification_ReadModelFile -->
+   <!-- @[napi_image_classification_ReadModelFile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/cpp/mslite_napi.cpp) -->
 
    ```c++
    void *ReadModelFile(NativeResourceManager *nativeResourceManager, const std::string &modelName, size_t *modelSize)
@@ -92,9 +92,9 @@
    }
    ```
 
-3. 创建上下文，设置线程数、设备类型等参数，并加载模型。本样例模型，不支持使用NNRt推理。
+3. 创建上下文，设置线程数、设备类型等参数，并加载模型。本样例模型，不支持使用[NNRt](mindspore-lite-term.md#nnrt神经网络运行时)推理。
 
-   <!-- @napi_image_classification_context -->
+   <!-- @[napi_image_classification_context](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/cpp/mslite_napi.cpp) -->
 
    ```c++
    void DestroyModelBuffer(void **buffer)
@@ -150,13 +150,13 @@
 
 4. 设置模型输入数据，执行模型推理。
 
-   <!-- @napi_image_classification_print_num -->
+   <!-- @[napi_image_classification_print_num](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/cpp/mslite_napi.cpp) -->
 
    ```c++
    constexpr int K_NUM_PRINT_OF_OUT_DATA = 20;
    ```
 
-   <!-- @napi_image_classification_FillInputTensor -->
+   <!-- @[napi_image_classification_FillInputTensor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/cpp/mslite_napi.cpp) -->
 
    ```c++
    // 设置模型输入数据
@@ -174,7 +174,7 @@
    }
    ```
 
-   <!-- @napi_image_classification_RunMSLiteModel -->
+   <!-- @[napi_image_classification_RunMSLiteModel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/cpp/mslite_napi.cpp) -->
 
    ```c++
    // 执行模型推理
@@ -221,7 +221,7 @@
 
 5. 调用以上方法，实现完整的模型推理流程。
 
-   <!-- @napi_image_classification_RunDemo -->
+   <!-- @[napi_image_classification_RunDemo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/cpp/mslite_napi.cpp) -->
 
    ```c++
    static napi_value RunDemo(napi_env env, napi_callback_info info)
@@ -326,7 +326,7 @@
 
 1. 在 entry/src/main/cpp/types/libentry/Index.d.ts，定义ArkTS接口`runDemo()` 。内容如下：
 
-   <!-- @index_image_classification_runDemo -->
+   <!-- @[index_image_classification_runDemo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/cpp/types/libentry/Index.d.ts) -->
    
    ``` TypeScript
    export const runDemo: (a: number[], b:Object) => Array<number>;
@@ -345,11 +345,11 @@
 
 ### 实现图像输入和预处理，并执行推理
 
-1. 此处以获取相册图片为例，调用@ohos.file.picker 实现相册图片文件的选择。
-2. 根据模型的输入尺寸，调用@ohos.multimedia.image（实现图片处理）、@ohos.file.fs（实现基础文件操作）API对选择图片进行裁剪、获取图片buffer数据，并进行标准化处理。
+1. 此处以获取相册图片为例，调用[@ohos.file.picker](../../reference/apis-core-file-kit/js-apis-file-picker.md) 实现相册图片文件的选择。
+2. 根据模型的输入尺寸，调用[@ohos.multimedia.image](../../reference/apis-image-kit/arkts-apis-image.md)（实现图片处理）、[@ohos.file.fs](../../reference/apis-core-file-kit/js-apis-file-fs.md)（实现基础文件操作）API对选择图片进行裁剪、获取图片buffer数据，并进行标准化处理。
 3. 在 entry/src/main/ets/pages/Index.ets 中，调用封装的ArkTS模块，最后对推理结果进行处理。
 
-<!-- @index_image_classification --> 
+<!-- @[index_image_classification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 import msliteNapi from 'libentry.so';
@@ -471,9 +471,9 @@ struct Index {
                         let index = 0;
                         for (let i = 0; i < imageArr.length; i++) {
                           if ((i + 1) % 4 === 0) {
-                            float32View[index] = (imageArr[i - 3] / 255.0 - means[0]) / stds[0]; // B
+                            float32View[index] = (imageArr[i - 3] / 255.0 - means[0]) / stds[0]; // R
                             float32View[index+1] = (imageArr[i - 2] / 255.0 - means[1]) / stds[1]; // G
-                            float32View[index+2] = (imageArr[i - 1] / 255.0 - means[2]) / stds[2]; // R
+                            float32View[index+2] = (imageArr[i - 1] / 255.0 - means[2]) / stds[2]; // B
                             index += 3;
                           }
                         }
@@ -585,14 +585,14 @@ struct Index {
 
 在设备上，点击photo按钮，选择相册中的一张图片，点击确定。在图片下方显示此图片占比前4的分类信息。
 
-stepc1           step2
+![stepc1](figures/stepc1.png)           ![step2](figures/step2.png)
 
-step3         stepc4 
+![step3](figures/step3.png)         ![stepc4](figures/stepc4.png) 
 
 ## 相关实例
 
 针对使用MindSpore Lite进行图像分类应用的开发，有以下相关实例可供参考：
 
-- 基于Native接口的MindSpore Lite应用开发（C/C++）（API11）
+- [基于Native接口的MindSpore Lite应用开发（C/C++）（API11）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemo)
 
 <!--RP1--><!--RP1End-->

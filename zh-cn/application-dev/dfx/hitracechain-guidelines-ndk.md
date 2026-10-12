@@ -9,7 +9,7 @@
 
 ## 接口说明
 
-分布式跟踪接口由HiTraceChain模块提供，详细API请参考trace.h。
+分布式跟踪接口由HiTraceChain模块提供，详细API请参考[trace.h](../reference/apis-performance-analysis-kit/capi-trace-h.md)。
 
 下表所示的接口提供基本的分布式跟踪功能，ArkTS中也有相应的接口。
 
@@ -45,7 +45,7 @@
 
 ## 开发步骤
 
-std::thread不支持自动传递HiTraceId，开发示例展示了该场景下分布式跟踪的使用方法。开发者可参考约束与限制，了解常见的支持与不支持HiTraceChain自动传递的机制。
+std::thread不支持自动传递HiTraceId，开发示例展示了该场景下分布式跟踪的使用方法。开发者可参考[约束与限制](hitracechain-intro.md#约束与限制)，了解常见的支持与不支持HiTraceChain自动传递的机制。
 
 1. 在DevEco Studio中新建工程，选择“Native C++”，工程的目录结构如下：
 
@@ -69,9 +69,9 @@ std::thread不支持自动传递HiTraceId，开发示例展示了该场景下分
    │       │   │       └── Index.ets
    ```
 
-2. 在“entry&gt; src&gt; main&gt; cpp&gt; CMakeLists.txt”文件中新增libhitrace_ndk.z.so和libhilog_ndk.z.so动态链接库，完整的文件内容如下：
+2. 在“entry &gt; src &gt; main &gt; cpp &gt; CMakeLists.txt”文件中新增libhitrace_ndk.z.so和libhilog_ndk.z.so动态链接库，完整的文件内容如下：
 
-   <!-- @hitracechain_ndk_cmake_code -->
+   <!-- @[hitracechain_ndk_cmake_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_NDK/entry/src/main/cpp/CMakeLists.txt) -->
    
    ``` cmake
    # the minimum version of CMake.
@@ -92,9 +92,9 @@ std::thread不支持自动传递HiTraceId，开发示例展示了该场景下分
    ```
 
 
-3. 编辑“entry&gt; src&gt; main&gt; cpp&gt; napi_init.cpp”文件，使用HiTraceChain跟踪多线程任务，完整的示例代码如下：
+3. 编辑“entry &gt; src &gt; main &gt; cpp &gt; napi_init.cpp”文件，使用HiTraceChain跟踪多线程任务，完整的示例代码如下：
 
-   <!-- @hitracechain_ndk_native_code -->
+   <!-- @[hitracechain_ndk_native_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_NDK/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
    #include <thread>
@@ -206,9 +206,9 @@ std::thread不支持自动传递HiTraceId，开发示例展示了该场景下分
    }
    ```
    
-   编辑“entry&gt; src&gt; main&gt; ets&gt; pages&gt; Index.ets”文件，在按钮点击事件里调用Add方法，完整的示例代码如下：
+   编辑“entry &gt; src &gt; main &gt; ets &gt; pages &gt; Index.ets”文件，在按钮点击事件里调用Add方法，完整的示例代码如下：
    
-   <!-- @hitracechain_ndk_page_code -->
+   <!-- @[hitracechain_ndk_page_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceChain_NDK/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';

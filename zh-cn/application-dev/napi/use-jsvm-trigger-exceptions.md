@@ -30,7 +30,7 @@ JSVM-API提供了一组用于处理JSVM异常的接口。通过这些接口，�
 
 ## 使用示例
 
-JSVM-API接口开发流程参考使用JSVM-API实现JS与C/C++语言交互开发流程，本文仅对接口对应C++相关代码进行展示。
+JSVM-API接口开发流程参考[使用JSVM-API实现JS与C/C++语言交互开发流程](use-jsvm-process.md)，本文仅对接口对应C++相关代码进行展示。
 
 ### OH_JSVM_SetHandlerForOOMError
 通过OH_JSVM_SetHandlerForOOMError，用户可以设置处理OOM Error的函数。当多次调用这个API进行函数设置时，仅最后一次设置会生效。当用户传入的设置函数为NULL时，则表示取消之前设置的处理函数。

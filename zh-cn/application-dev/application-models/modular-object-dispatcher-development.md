@@ -9,7 +9,7 @@
 
 在跨进程调用场景中，客户端通常需要在编译期依赖服务端生成的Proxy头文件才能发起接口调用。当接口数量多或服务端频繁变更时，客户端每次都要重新同步头文件并编译，维护成本较高；同时静态绑定要求调用目标在编译期完全确定，难以适应运行时才能决定调用目标的场景。
 
-从API版本26.0.0开始，系统提供客户端动态调用引擎ModularObjectDispatcher（相关C API定义见modular_object_dispatcher.h）。它基于已连接的远端Proxy对象创建，允许客户端在运行时查询服务端注册的类型库元数据（接口名、方法签名、参数类型、结构体字段等），并通过方法名动态解析出成员ID后直接发起IPC调用，无需在编译期依赖服务端任何接口定义。
+从API版本26.0.0开始，系统提供客户端动态调用引擎ModularObjectDispatcher（相关C API定义见[modular_object_dispatcher.h](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md)）。它基于已连接的远端Proxy对象创建，允许客户端在运行时查询服务端注册的类型库元数据（接口名、方法签名、参数类型、结构体字段等），并通过方法名动态解析出成员ID后直接发起IPC调用，无需在编译期依赖服务端任何接口定义。
 
 适用于需要在运行时动态确定调用目标的场景，如通用脚本引擎动态调用远端方法、自动化测试框架自动扫描并验证服务端全部接口、跨版本网关服务通过元数据适配不同版本的后端接口等。不适用于接口在编译期已完全确定且对性能极度敏感的场景，此时应使用静态Proxy/Stub方式直接调用。
 
@@ -24,28 +24,28 @@
 
 ## 运行机制
 
-modular_object_dispatcher_mechanism
+![modular_object_dispatcher_mechanism](figures/modular_object_dispatcher_mechanism.png)
 
 ModularObjectDispatcher的调用流程分为以下几个阶段：
 
-1. 连接ExtensionAbility获取Proxy对象：客户端通过连接ModularObjectExtensionAbility获取远端Proxy对象（`OHIPCRemoteProxy*`），作为后续创建分发器和发起动态调用的通信基础。
+1. 连接ExtensionAbility获取Proxy对象：客户端通过连接[ModularObjectExtensionAbility](./modular-object-extension-development.md)获取远端Proxy对象（`OHIPCRemoteProxy*`），作为后续创建分发器和发起动态调用的通信基础。
 
-2. 创建分发器：通过OH_AbilityRuntime_ModObjDispatcher_CreateMainServiceInstance从Proxy创建绑定到主服务接口的分发器。
+2. 创建分发器：通过[OH_AbilityRuntime_ModObjDispatcher_CreateMainServiceInstance](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_createmainserviceinstance)从Proxy创建绑定到主服务接口的分发器。
 
-3. 获取类型描述符：建议先调用OH_AbilityRuntime_ModObjDispatcher_HasTypeDescriptor确认远端服务支持元数据，再通过OH_AbilityRuntime_ModObjDispatcher_GetTypeDescriptor获取TypeDescriptor句柄。该调用会触发类型库元数据通过IPC从远端拉取并缓存在本地，后续查询直接命中缓存。
+3. 获取类型描述符：建议先调用[OH_AbilityRuntime_ModObjDispatcher_HasTypeDescriptor](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_hastypedescriptor)确认远端服务支持元数据，再通过[OH_AbilityRuntime_ModObjDispatcher_GetTypeDescriptor](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_gettypedescriptor)获取TypeDescriptor句柄。该调用会触发类型库元数据通过IPC从远端拉取并缓存在本地，后续查询直接命中缓存。
 
 4. 查询接口元数据：基于类型描述符，客户端可在运行时遍历服务端定义的全部接口、方法、结构体（含字段名与字段类型）、枚举（含枚举值名称与取值），以及类型库版本、主服务接口名等。
 
-5. 获取方法参数类型与MemberID：调用某个方法前，通过OH_AbilityRuntime_TypeDescriptor_GetMethodReturnType与OH_AbilityRuntime_TypeDescriptor_GetMethodParamType查询返回值与各入参的类型信息，并通过OH_AbilityRuntime_TypeDescriptor_GetMethodMemberId将方法名解析为MemberID，以便严格按照类型构造Variant，避免类型不匹配错误。
+5. 获取方法参数类型与MemberID：调用某个方法前，通过[OH_AbilityRuntime_TypeDescriptor_GetMethodReturnType](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getmethodreturntype)与[OH_AbilityRuntime_TypeDescriptor_GetMethodParamType](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getmethodparamtype)查询返回值与各入参的类型信息，并通过[OH_AbilityRuntime_TypeDescriptor_GetMethodMemberId](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getmethodmemberid)将方法名解析为MemberID，以便严格按照类型构造Variant，避免类型不匹配错误。
 
-6. 构造Variant参数并动态调用：通过OH_AbilityRuntime_ModObjDispatcher_CallMethod传入MemberID和构造的Variant参数发起调用。分发器将参数序列化后经IPC发往远端，再将返回值反序列化到出参Variant。
+6. 构造Variant参数并动态调用：通过[OH_AbilityRuntime_ModObjDispatcher_CallMethod](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_callmethod)传入MemberID和构造的Variant参数发起调用。分发器将参数序列化后经IPC发往远端，再将返回值反序列化到出参Variant。
 
 7. 释放资源：分发器、类型描述符、各类容器句柄、Variant和TypeInfo对象均需按所有权规则调用对应的接口释放。
 
 ## 约束与限制
 
-- 使用ModularObjectDispatcher前，需确保客户端已与ModularObjectExtensionAbility建立连接，连接相关约束与限制请参考使用ModularObjectExtensionAbility实现模块化对象 (C/C++)。
-- 服务端的Stub必须通过Taihe工具生成。ModularObjectDispatcher依赖类型库元数据完成动态调用，只有Taihe工具生成的Stub才会嵌入类型库元数据，手动编写的Stub无法支持动态调用。
+- 使用ModularObjectDispatcher前，需确保客户端已与ModularObjectExtensionAbility建立连接，连接相关约束与限制请参考[使用ModularObjectExtensionAbility实现模块化对象 (C/C++)](./modular-object-extension-development.md#约束与限制)。
+- 服务端的Stub必须通过[Taihe工具](modular-object-extension-ability-taihe.md)生成。ModularObjectDispatcher依赖类型库元数据完成动态调用，只有Taihe工具生成的Stub才会嵌入类型库元数据，手动编写的Stub无法支持动态调用。
 - 方法的参数和返回值类型由服务端定义，客户端须通过元数据查询获取后，严格按照类型构造Variant，否则将返回类型不匹配错误。
 - 主动断开连接或者对端死亡的时候，ModularObjectDispatcher将不再可用。
 
@@ -53,11 +53,11 @@ ModularObjectDispatcher的调用流程分为以下几个阶段：
 
 分发器是客户端动态调用的入口。创建分发器后，客户端即可在运行时查询服务端接口元数据并按方法名发起调用。本节介绍如何基于已连接的Proxy对象创建绑定到主服务接口的分发器实例，类型库元数据将在首次需要时从远端延迟加载。
 
-前提条件：已完成客户端连接ModularObjectExtensionAbility并获取Proxy对象，请参考使用ModularObjectExtensionAbility实现模块化对象 (C/C++)中的"连接ModularObjectExtensionAbility"和"通过Proxy与服务端通信"章节。
+前提条件：已完成客户端连接ModularObjectExtensionAbility并获取Proxy对象，请参考[使用ModularObjectExtensionAbility实现模块化对象 (C/C++)](./modular-object-extension-development.md)中的"连接ModularObjectExtensionAbility"和"通过Proxy与服务端通信"章节。
 
 以下步骤假设已通过连接回调获取到类型为`OHIPCRemoteProxy*`的`g_remoteProxy`对象，以及保存分发器、类型描述符的全局变量`g_ModObjDispatcher`、`g_TypeDescriptor`。
 
-<!-- @modular_object_extension_dispatcher_createMainServiceInstance -->
+<!-- @[modular_object_extension_dispatcher_createMainServiceInstance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 AbilityRuntime_ErrorCode err =
@@ -68,15 +68,15 @@ if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
 }
 ```
 
-如果服务端定义了多个非主服务接口，可通过OH_AbilityRuntime_ModObjDispatcher_CreateSubInstance创建子实例分发器。子实例共享主服务分发器的类型库元数据，但使用独立的IPC代理发送请求。
+如果服务端定义了多个非主服务接口，可通过[OH_AbilityRuntime_ModObjDispatcher_CreateSubInstance](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_createsubinstance)创建子实例分发器。子实例共享主服务分发器的类型库元数据，但使用独立的IPC代理发送请求。
 
 ## 获取类型描述符
 
 类型描述符是查询服务端接口元数据的访问句柄。获取类型描述符后，客户端可以遍历服务端定义的全部接口、方法、参数、结构体和枚举等信息，为后续按方法名动态调用做准备。本节介绍如何判断远端服务是否提供类型库元数据，并获取类型描述符句柄。
 
-1. 通过OH_AbilityRuntime_ModObjDispatcher_HasTypeDescriptor接口判断远端服务是否提供了类型库元数据。只有支持动态接口的服务端才能进行后续的元数据查询和动态调用。
+1. 通过[OH_AbilityRuntime_ModObjDispatcher_HasTypeDescriptor](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_hastypedescriptor)接口判断远端服务是否提供了类型库元数据。只有支持动态接口的服务端才能进行后续的元数据查询和动态调用。
 
-    <!-- @modular_object_extension_dispatcher_hasTypeDescriptor -->
+    <!-- @[modular_object_extension_dispatcher_hasTypeDescriptor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
     ``` C++
     uint32_t hasTypeDescriptor = 0;
@@ -91,9 +91,9 @@ if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
     }
     ```
 
-2. 确认远端支持类型库元数据后，通过OH_AbilityRuntime_ModObjDispatcher_GetTypeDescriptor获取类型描述符句柄。
+2. 确认远端支持类型库元数据后，通过[OH_AbilityRuntime_ModObjDispatcher_GetTypeDescriptor](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_gettypedescriptor)获取类型描述符句柄。
 
-    <!-- @modular_object_extension_dispatcher_getTypeDescriptor -->
+    <!-- @[modular_object_extension_dispatcher_getTypeDescriptor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
     ``` C++
     err = OH_AbilityRuntime_ModObjDispatcher_GetTypeDescriptor(g_ModObjDispatcher, &g_TypeDescriptor);
@@ -111,9 +111,9 @@ if (err != ABILITY_RUNTIME_ERROR_CODE_NO_ERROR) {
 
 ### 查询类型库版本
 
-通过OH_AbilityRuntime_TypeDescriptor_GetVersion获取类型库版本号字符串。
+通过[OH_AbilityRuntime_TypeDescriptor_GetVersion](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getversion)获取类型库版本号字符串。
 
-<!-- @modular_object_extension_dispatcher_getVersion -->
+<!-- @[modular_object_extension_dispatcher_getVersion](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 char version[256];
@@ -128,9 +128,9 @@ OH_LOG_INFO(LOG_APP, "Version:%{public}s", version);
 
 ### 查询主服务接口名称
 
-通过OH_AbilityRuntime_TypeDescriptor_GetMainServiceInterfaceName获取主服务接口名称。
+通过[OH_AbilityRuntime_TypeDescriptor_GetMainServiceInterfaceName](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getmainserviceinterfacename)获取主服务接口名称。
 
-<!-- @modular_object_extension_dispatcher_getMainServiceInterfaceName -->
+<!-- @[modular_object_extension_dispatcher_getMainServiceInterfaceName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 char mainServiceInterfaceName[256];
@@ -145,9 +145,9 @@ OH_LOG_INFO(LOG_APP, "MainServiceInterfaceName:%{public}s", mainServiceInterface
 
 ### 查询所有接口和接口下的方法信息
 
-1. 查询所有接口名称：通过OH_AbilityRuntime_TypeDescriptor_GetInterfaceCount获取接口数量，再通过OH_AbilityRuntime_TypeDescriptor_GetInterfaceName逐个获取接口名称。
+1. 查询所有接口名称：通过[OH_AbilityRuntime_TypeDescriptor_GetInterfaceCount](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getinterfacecount)获取接口数量，再通过[OH_AbilityRuntime_TypeDescriptor_GetInterfaceName](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getinterfacename)逐个获取接口名称。
 
-    <!-- @modular_object_extension_dispatcher_getInterface -->
+    <!-- @[modular_object_extension_dispatcher_getInterface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
     ``` C++
     uint32_t interfaceCount = 0;
@@ -171,9 +171,9 @@ OH_LOG_INFO(LOG_APP, "MainServiceInterfaceName:%{public}s", mainServiceInterface
     }
     ```
 
-2. 遍历接口下的方法名称：针对每个接口，通过OH_AbilityRuntime_TypeDescriptor_GetMethodCount获取方法数量，再通过OH_AbilityRuntime_TypeDescriptor_GetMethodName和OH_AbilityRuntime_TypeDescriptor_GetMethodMemberId获取方法名称及其MemberID。
+2. 遍历接口下的方法名称：针对每个接口，通过[OH_AbilityRuntime_TypeDescriptor_GetMethodCount](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getmethodcount)获取方法数量，再通过[OH_AbilityRuntime_TypeDescriptor_GetMethodName](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getmethodname)和[OH_AbilityRuntime_TypeDescriptor_GetMethodMemberId](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getmethodmemberid)获取方法名称及其MemberID。
 
-    <!-- @modular_object_extension_dispatcher_getMethod -->
+    <!-- @[modular_object_extension_dispatcher_getMethod](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
     ``` C
     static void QueryMethodMetadata(const char *interfaceName)
@@ -211,9 +211,9 @@ OH_LOG_INFO(LOG_APP, "MainServiceInterfaceName:%{public}s", mainServiceInterface
 
 ### 查询所有结构体的字段信息
 
-1. 查询所有结构体名称：通过OH_AbilityRuntime_TypeDescriptor_GetStructCount获取结构体数量，再通过OH_AbilityRuntime_TypeDescriptor_GetStructName逐个获取结构体名称。
+1. 查询所有结构体名称：通过[OH_AbilityRuntime_TypeDescriptor_GetStructCount](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getstructcount)获取结构体数量，再通过[OH_AbilityRuntime_TypeDescriptor_GetStructName](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getstructname)逐个获取结构体名称。
 
-    <!-- @modular_object_extension_dispatcher_getStructName -->
+    <!-- @[modular_object_extension_dispatcher_getStructName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
     ``` C++
     uint32_t structCount = 0;
@@ -236,9 +236,9 @@ OH_LOG_INFO(LOG_APP, "MainServiceInterfaceName:%{public}s", mainServiceInterface
     }
     ```
 
-2. 遍历结构体的字段名称和类型：针对每个结构体，通过OH_AbilityRuntime_TypeDescriptor_GetStructFieldCount获取字段数量，再通过OH_AbilityRuntime_TypeDescriptor_GetStructFieldName和OH_AbilityRuntime_TypeDescriptor_GetStructFieldType逐个获取字段名称和类型。
+2. 遍历结构体的字段名称和类型：针对每个结构体，通过[OH_AbilityRuntime_TypeDescriptor_GetStructFieldCount](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getstructfieldcount)获取字段数量，再通过[OH_AbilityRuntime_TypeDescriptor_GetStructFieldName](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getstructfieldname)和[OH_AbilityRuntime_TypeDescriptor_GetStructFieldType](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getstructfieldtype)逐个获取字段名称和类型。
 
-    <!-- @modular_object_extension_dispatcher_getStructField -->
+    <!-- @[modular_object_extension_dispatcher_getStructField](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
     
     ``` C++
     // 获取结构体的字段数量，逐个遍历字段名和字段类型
@@ -271,9 +271,9 @@ OH_LOG_INFO(LOG_APP, "MainServiceInterfaceName:%{public}s", mainServiceInterface
 
 ### 查询所有枚举信息
 
-1. 查询所有枚举名称：通过OH_AbilityRuntime_TypeDescriptor_GetEnumCount获取枚举数量，再通过OH_AbilityRuntime_TypeDescriptor_GetEnumName逐个获取枚举名称。
+1. 查询所有枚举名称：通过[OH_AbilityRuntime_TypeDescriptor_GetEnumCount](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getenumcount)获取枚举数量，再通过[OH_AbilityRuntime_TypeDescriptor_GetEnumName](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getenumname)逐个获取枚举名称。
 
-    <!-- @modular_object_extension_dispatcher_getEnumName -->
+    <!-- @[modular_object_extension_dispatcher_getEnumName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
     ``` C++
     uint32_t enumCount = 0;
@@ -297,9 +297,9 @@ OH_LOG_INFO(LOG_APP, "MainServiceInterfaceName:%{public}s", mainServiceInterface
     }
     ```
 
-2. 遍历所有枚举值名称和枚举值：针对每个枚举，通过OH_AbilityRuntime_TypeDescriptor_GetEnumValueCount获取枚举值数量，再通过OH_AbilityRuntime_TypeDescriptor_GetEnumValueName和OH_AbilityRuntime_TypeDescriptor_GetEnumValue逐个获取枚举值名称和枚举值。
+2. 遍历所有枚举值名称和枚举值：针对每个枚举，通过[OH_AbilityRuntime_TypeDescriptor_GetEnumValueCount](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getenumvaluecount)获取枚举值数量，再通过[OH_AbilityRuntime_TypeDescriptor_GetEnumValueName](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getenumvaluename)和[OH_AbilityRuntime_TypeDescriptor_GetEnumValue](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getenumvalue)逐个获取枚举值名称和枚举值。
 
-    <!-- @modular_object_extension_dispatcher_getEnumValue -->
+    <!-- @[modular_object_extension_dispatcher_getEnumValue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
     ``` C++
     // 遍历枚举的所有枚举值名称和对应的枚举值
@@ -336,9 +336,9 @@ OH_LOG_INFO(LOG_APP, "MainServiceInterfaceName:%{public}s", mainServiceInterface
 
 ### 获取方法入参类型和名称
 
-通过OH_AbilityRuntime_TypeDescriptor_GetMethodParamCount获取方法参数数量，再通过OH_AbilityRuntime_TypeDescriptor_GetMethodParamName和OH_AbilityRuntime_TypeDescriptor_GetMethodParamType逐个获取参数名称和类型。
+通过[OH_AbilityRuntime_TypeDescriptor_GetMethodParamCount](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getmethodparamcount)获取方法参数数量，再通过[OH_AbilityRuntime_TypeDescriptor_GetMethodParamName](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getmethodparamname)和[OH_AbilityRuntime_TypeDescriptor_GetMethodParamType](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getmethodparamtype)逐个获取参数名称和类型。
 
-<!-- @modular_object_extension_dispatcher_getMethodParam -->
+<!-- @[modular_object_extension_dispatcher_getMethodParam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 static void QueryMethodParamInfo(const char *interfaceName, const char *methodName)
@@ -378,9 +378,9 @@ static void QueryMethodParamInfo(const char *interfaceName, const char *methodNa
 
 ### 获取方法返回值类型
 
-通过OH_AbilityRuntime_TypeDescriptor_GetMethodReturnType获取方法的返回值类型信息。TypeInfo中的`vt`字段标识数据类型。
+通过[OH_AbilityRuntime_TypeDescriptor_GetMethodReturnType](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getmethodreturntype)获取方法的返回值类型信息。TypeInfo中的`vt`字段标识数据类型。
 
-<!-- @modular_object_extension_dispatcher_getMethodReturnType -->
+<!-- @[modular_object_extension_dispatcher_getMethodReturnType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 static void QueryMethodReturnType(const char *interfaceName, const char *methodName)
@@ -425,17 +425,17 @@ TypeInfo中的`vt`字段表示数据类型，常见类型如下表所示：
 | VT_IPC_REMOTE_PROXY | OHIPCRemoteProxy* | 远端Proxy对象 |
 | VT_IPC_REMOTE_STUB | OHIPCRemoteStub* | 远端Stub对象 |
 
-完整的枚举定义及各类型的取值范围参见OH_AbilityRuntime_ModObjDispatcher_ValueType。
+完整的枚举定义及各类型的取值范围参见[OH_AbilityRuntime_ModObjDispatcher_ValueType](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_valuetype)。
 
 ## 通过动态接口执行动态调用
 
 此场景是动态调用的核心环节。客户端通过方法对应的MemberID与已构造的参数，即可在运行时发起IPC调用并获取返回值，无需编译期绑定服务端接口，适用于通用调用框架、脚本引擎、动态测试工具等运行时才能确定接口的场景。
 
-通过方法名解析MemberID，构造参数后发起动态调用。MemberID可通过OH_AbilityRuntime_TypeDescriptor_GetMethodMemberId接口从TypeDescriptor查询，具体参见查询所有接口和接口下的方法信息。
+通过方法名解析MemberID，构造参数后发起动态调用。MemberID可通过[OH_AbilityRuntime_TypeDescriptor_GetMethodMemberId](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_getmethodmemberid)接口从TypeDescriptor查询，具体参见[查询所有接口和接口下的方法信息](#查询所有接口和接口下的方法信息)。
 
-以调用`Add(int32_t a, int32_t b)`方法为例，将参数封装为Variant数组，通过OH_AbilityRuntime_ModObjDispatcher_CallMethod发起调用。
+以调用`Add(int32_t a, int32_t b)`方法为例，将参数封装为Variant数组，通过[OH_AbilityRuntime_ModObjDispatcher_CallMethod](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_callmethod)发起调用。
 
-<!-- @modular_object_extension_dispatcher_callMethod -->
+<!-- @[modular_object_extension_dispatcher_callMethod](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 // 构造参数
@@ -482,11 +482,11 @@ OH_LOG_INFO(LOG_APP, "addResult :%{public}d", addResult);
 
 ### 传递数组参数
 
-通过OH_AbilityRuntime_ModObjDispatcher_ArrayCreate创建数组，使用OH_AbilityRuntime_ModObjDispatcher_ArraySet填充元素。下方示例以二维数组`array<array<i32,5>,5>`为例，分为创建数组、调用方法、解析结果三步。
+通过[OH_AbilityRuntime_ModObjDispatcher_ArrayCreate](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_arraycreate)创建数组，使用[OH_AbilityRuntime_ModObjDispatcher_ArraySet](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_arrayset)填充元素。下方示例以二维数组`array<array<i32,5>,5>`为例，分为创建数组、调用方法、解析结果三步。
 
 创建并填充二维数组：先构造嵌套的TypeInfo（内层`array<i32,5>`，外层`array<inner,5>`），再用`ArrayCreate`创建外层数组，逐行创建内层数组并填充元素后设入外层。
 
-<!-- @modular_object_extension_dispatcher_callTypeArray_build -->
+<!-- @[modular_object_extension_dispatcher_callTypeArray_build](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 static OH_AbilityRuntime_ModObjDispatcher_ArrayHandle BuildMatrixArray(uint32_t arrSize)
@@ -529,7 +529,7 @@ static OH_AbilityRuntime_ModObjDispatcher_ArrayHandle BuildMatrixArray(uint32_t 
 
 组装参数并调用方法：将数组句柄包装为Variant参数，通过`CallMethod`发起调用。
 
-<!-- @modular_object_extension_dispatcher_callTypeArray -->
+<!-- @[modular_object_extension_dispatcher_callTypeArray](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 uint32_t arrSize = 5;
@@ -555,7 +555,7 @@ OH_AbilityRuntime_ModObjDispatcher_VariantClear(&result);
 
 解析返回的二维数组：通过`ArrayGetSize`获取行列数，用`ArrayGet`逐层读取元素。
 
-<!-- @modular_object_extension_dispatcher_callTypeArray_parse -->
+<!-- @[modular_object_extension_dispatcher_callTypeArray_parse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C
 static void ParseArrayResult(OH_AbilityRuntime_ModObjDispatcher_Variant *result)
@@ -588,9 +588,9 @@ static void ParseArrayResult(OH_AbilityRuntime_ModObjDispatcher_Variant *result)
 
 ### 传递向量参数
 
-通过OH_AbilityRuntime_ModObjDispatcher_VectorCreate创建向量，使用OH_AbilityRuntime_ModObjDispatcher_VectorAdd添加元素。向量为动态长度容器。
+通过[OH_AbilityRuntime_ModObjDispatcher_VectorCreate](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_vectorcreate)创建向量，使用[OH_AbilityRuntime_ModObjDispatcher_VectorAdd](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_vectoradd)添加元素。向量为动态长度容器。
 
-<!-- @modular_object_extension_dispatcher_callTypeVector -->
+<!-- @[modular_object_extension_dispatcher_callTypeVector](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 // 创建 vector<i32> 并添加元素
@@ -643,9 +643,9 @@ OH_AbilityRuntime_ModObjDispatcher_VariantClear(&result);
 
 ### 传递集合参数
 
-通过OH_AbilityRuntime_ModObjDispatcher_SetCreate创建集合，使用OH_AbilityRuntime_ModObjDispatcher_SetAdd添加元素。集合中的元素不重复。
+通过[OH_AbilityRuntime_ModObjDispatcher_SetCreate](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_setcreate)创建集合，使用[OH_AbilityRuntime_ModObjDispatcher_SetAdd](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_setadd)添加元素。集合中的元素不重复。
 
-<!-- @modular_object_extension_dispatcher_callTypeSet -->
+<!-- @[modular_object_extension_dispatcher_callTypeSet](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 // 创建 set<i32> 并添加元素
@@ -698,11 +698,11 @@ OH_AbilityRuntime_ModObjDispatcher_VariantClear(&result);
 
 ### 传递映射参数
 
-通过OH_AbilityRuntime_ModObjDispatcher_MapCreate创建映射，使用OH_AbilityRuntime_ModObjDispatcher_MapPut添加键值对。
+通过[OH_AbilityRuntime_ModObjDispatcher_MapCreate](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_mapcreate)创建映射，使用[OH_AbilityRuntime_ModObjDispatcher_MapPut](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_mapput)添加键值对。
 
 创建映射并填充键值对：通过`MapCreate`指定键值类型后，构造key和value的Variant调用`MapPut`逐条添加。
 
-<!-- @modular_object_extension_dispatcher_callTypeMap_fill -->
+<!-- @[modular_object_extension_dispatcher_callTypeMap_fill](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C
 static void FillMapEntries(OH_AbilityRuntime_ModObjDispatcher_MapHandle map)
@@ -723,7 +723,7 @@ static void FillMapEntries(OH_AbilityRuntime_ModObjDispatcher_MapHandle map)
 
 组装参数并调用方法：将映射句柄包装为Variant参数，通过`CallMethod`发起调用。
 
-<!-- @modular_object_extension_dispatcher_callTypeMap -->
+<!-- @[modular_object_extension_dispatcher_callTypeMap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 // 创建 map<String,i32>，填充键值对后调用方法
@@ -754,7 +754,7 @@ OH_AbilityRuntime_ModObjDispatcher_VariantClear(&result);
 
 解析返回的映射：通过`MapGetSize`获取元素数量，用`MapGetKeyAt`和`MapGetValueAt`逐条读取键值。
 
-<!-- @modular_object_extension_dispatcher_callTypeMap_parse -->
+<!-- @[modular_object_extension_dispatcher_callTypeMap_parse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C
 static void ParseMapResult(OH_AbilityRuntime_ModObjDispatcher_Variant *result)
@@ -779,11 +779,11 @@ static void ParseMapResult(OH_AbilityRuntime_ModObjDispatcher_Variant *result)
 
 ### 传递结构体参数
 
-通过OH_AbilityRuntime_ModObjDispatcher_StructCreate按结构体名称创建实例，使用OH_AbilityRuntime_ModObjDispatcher_StructSetField填充字段值。
+通过[OH_AbilityRuntime_ModObjDispatcher_StructCreate](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_structcreate)按结构体名称创建实例，使用[OH_AbilityRuntime_ModObjDispatcher_StructSetField](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_structsetfield)填充字段值。
 
 创建结构体并设置字段：通过`StructCreate`按名称创建实例，再用`StructSetField`逐个设置字段值。
 
-<!-- @modular_object_extension_dispatcher_callTypeStruct_create -->
+<!-- @[modular_object_extension_dispatcher_callTypeStruct_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C
 static OH_AbilityRuntime_ModObjDispatcher_StructHandle CreatePointStruct(int32_t x, int32_t y)
@@ -805,7 +805,7 @@ static OH_AbilityRuntime_ModObjDispatcher_StructHandle CreatePointStruct(int32_t
 
 组装参数并调用方法：将结构体句柄包装为Variant参数，通过`CallMethod`发起调用。
 
-<!-- @modular_object_extension_dispatcher_callTypeStruct -->
+<!-- @[modular_object_extension_dispatcher_callTypeStruct](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 // 创建 Point 结构体入参，组装参数后调用方法
@@ -838,7 +838,7 @@ OH_AbilityRuntime_ModObjDispatcher_VariantClear(&result);
 
 解析返回的结构体：通过`StructGetField`按字段名读取返回结构体中的字段值。
 
-<!-- @modular_object_extension_dispatcher_callTypeStruct_parse -->
+<!-- @[modular_object_extension_dispatcher_callTypeStruct_parse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionDispatcherClient/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C
 static void ParseStructResult(OH_AbilityRuntime_ModObjDispatcher_Variant *result)
@@ -875,8 +875,8 @@ if (g_ModObjDispatcher != NULL) {
 
 资源释放需遵循以下规则：
 
-- 通过OH_AbilityRuntime_ModObjDispatcher_TypeInfoClear清理TypeInfo持有的堆资源，清理后内部指针置为NULL，vt重置为VT_EMPTY。
-- 通过OH_AbilityRuntime_ModObjDispatcher_VariantClear清理Variant持有的堆资源（字符串、容器句柄等），清理后变体重置为VT_EMPTY。简单类型（布尔、整数、浮点数）不持有堆资源，无需清理。
+- 通过[OH_AbilityRuntime_ModObjDispatcher_TypeInfoClear](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_typeinfoclear)清理TypeInfo持有的堆资源，清理后内部指针置为NULL，vt重置为VT_EMPTY。
+- 通过[OH_AbilityRuntime_ModObjDispatcher_VariantClear](../reference/apis-ability-kit/capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_variantclear)清理Variant持有的堆资源（字符串、容器句柄等），清理后变体重置为VT_EMPTY。简单类型（布尔、整数、浮点数）不持有堆资源，无需清理。
 - 所有容器的Release接口会将句柄指针置为NULL，支持传入NULL指针。
 - Variant传入容器函数（如ArraySet、MapPut）时执行深拷贝，调用方保留原始Variant的所有权，需自行释放。
 - 从容器函数返回的Variant（如ArrayGet、MapGet、CallMethod返回值）为深拷贝，调用方获得所有权，需调用VariantClear释放。

@@ -6,7 +6,7 @@
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
-Navigation提供系统路由表和自定义路由表两种实现方式，通过路由表的配置可以完成本包和跨包的页面跳转。
+Navigation提供[系统路由表](#系统路由表)和[自定义路由表](#自定义路由表)两种实现方式，通过路由表的配置可以完成本包和跨包的页面跳转。
 
 支持自定义路由表和系统路由表混用。
 
@@ -16,8 +16,8 @@ Navigation提供系统路由表和自定义路由表两种实现方式，通过�
 
 | 路由方式     | 跨包跳转能力             | 可扩展性     | 易用性                               |
 | ------------ | ------------------------ | ------------ | ------------------------------------ |
-| 系统路由表   | 跳转前无需import页面文件，页面按需动态加载。 | 可扩展性一般。 | 易用性更强，系统自动维护路由表。使用简单，开发者只需要添加对应页面跳转配置项，即可实现页面跳转。       |
-| 自定义路由表 | 跳转前需要import页面文件。 | 可扩展性更强。 | 易用性一般，需要开发者自行维护路由表。使用复杂，但是可以根据应用业务进行定制处理。 |
+| [系统路由表](#系统路由表)   | 跳转前无需import页面文件，页面按需动态加载。 | 可扩展性一般。 | 易用性更强，系统自动维护路由表。使用简单，开发者只需要添加对应页面跳转配置项，即可实现页面跳转。       |
+| [自定义路由表](#自定义路由表) | 跳转前需要import页面文件。 | 可扩展性更强。 | 易用性一般，需要开发者自行维护路由表。使用复杂，但是可以根据应用业务进行定制处理。 |
 
 ## 系统路由表
 
@@ -25,9 +25,9 @@ Navigation提供系统路由表和自定义路由表两种实现方式，通过�
 
 系统路由表支持模拟器但不支持预览器。
 
-要实现系统路由表，各业务模块（HAP、HSP、HAR）中需要独立配置router_map.json文件，在触发路由跳转时，应用只需要通过NavPathStack提供的路由方法，传入需要路由的页面配置名称，此时系统会自动完成路由模块的动态加载、页面组件构建，并完成路由跳转，从而实现了开发层面的模块解耦。其主要步骤如下：
+要实现系统路由表，各业务模块（[HAP](../quick-start/hap-package.md)、[HSP](../quick-start/in-app-hsp.md)、[HAR](../quick-start/har-package.md)）中需要独立配置router_map.json文件，在触发路由跳转时，应用只需要通过NavPathStack提供的路由方法，传入需要路由的页面配置名称，此时系统会自动完成路由模块的动态加载、页面组件构建，并完成路由跳转，从而实现了开发层面的模块解耦。其主要步骤如下：
 
-1. 添加完路由配置文件地址后，在工程resources/base/profile路径下创建router_map.json文件。添加如下配置信息，各字段含义详见routerMap标签。
+1. 添加完路由配置文件地址后，在工程resources/base/profile路径下创建router_map.json文件。添加如下配置信息，各字段含义详见[routerMap标签](../quick-start/module-configuration-file.md#routermap标签)。
 
      ```json
      {
@@ -44,9 +44,9 @@ Navigation提供系统路由表和自定义路由表两种实现方式，通过�
      }
      ```
 
-2. 在跳转目标模块的配置文件module.json5添加路由表配置。
+2. 在跳转目标模块的配置文件[module.json5](../quick-start/module-configuration-file.md)添加路由表配置。
 
-    <!-- @moduleJson5 -->
+    <!-- @[moduleJson5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/module.json5) -->
     
     ``` JSON5
     {
@@ -60,7 +60,7 @@ Navigation提供系统路由表和自定义路由表两种实现方式，通过�
 
 3. 在跳转目标页面，配置入口Builder函数，函数名称需要和router_map.json配置文件中的buildFunction保持一致，否则在编译时会报错。
 
-   <!-- @SystemRoutingTableOne -->
+   <!-- @[SystemRoutingTableOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/PageOne.ets) -->
    
    ``` TypeScript
    // 跳转页面入口函数
@@ -86,7 +86,7 @@ Navigation提供系统路由表和自定义路由表两种实现方式，通过�
 
 4. 通过pushPathByName等路由接口进行页面跳转。
 
-   <!-- @SystemRoutingTable -->
+   <!-- @[SystemRoutingTable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/PageOne.ets) -->
    
    ``` TypeScript
    @Entry
@@ -106,7 +106,7 @@ Navigation提供系统路由表和自定义路由表两种实现方式，通过�
 
 ## 自定义路由表
 
-自定义路由表通过给Navigation的navDestination属性设置Builder函数实现，其特点是需要import页面。有两种import页面的方式，静态import和动态import，二者的区别在于：
+自定义路由表通过给Navigation的[navDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navdestination10)属性设置Builder函数实现，其特点是需要import页面。有两种import页面的方式，静态import和动态import，二者的区别在于：
 
 | import方式 | 模块间耦合度   | 实现复杂度 | 性能                                     |
 | ---------- | -------------- | ---------- | ---------------------------------------- |
@@ -123,25 +123,25 @@ Navigation提供系统路由表和自定义路由表两种实现方式，通过�
 - 给每个路由页面设置一个名字，按照名称进行跳转而不是文件路径。
 - 页面的加载可以使用动态import（按需加载），防止首个页面加载大量代码导致卡顿。
 
-实现步骤如下，具体请参考<!--RP1-->Navigation动态路由<!--RP1End-->示例。
+实现步骤如下，具体请参考<!--RP1-->[Navigation动态路由](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/ApplicationModels/DynamicRouter)<!--RP1End-->示例。
 
 1. 定义页面跳转配置项。
-   - 使用资源文件进行定义，通过资源管理@ohos.resourceManager在运行时对资源文件解析。
+   - 使用资源文件进行定义，通过资源管理[@ohos.resourceManager](../reference/apis-localization-kit/js-apis-resource-manager.md)在运行时对资源文件解析。
    - 在ets文件中配置路由加载配置项，一般包括路由页面名称（即pushPath等接口中页面的别名），文件所在模块名称（HSP/HAR的模块名），加载页面在模块内的路径（相对src目录的路径）。
-2. 加载目标跳转页面，通过动态import将跳转目标页面所在的模块在运行时加载，在模块加载完成后，调用模块中的方法，通过import在模块的方法中加载模块中显示的目标页面，并返回页面加载完成后定义的Builder函数。
-3. 触发页面跳转，在Navigation的navDestination属性中执行步骤2加载的Builder函数，即可跳转到目标页面。
+2. 加载目标跳转页面，通过[动态import](../arkts-utils/arkts-dynamic-import.md)将跳转目标页面所在的模块在运行时加载，在模块加载完成后，调用模块中的方法，通过import在模块的方法中加载模块中显示的目标页面，并返回页面加载完成后定义的Builder函数。
+3. 触发页面跳转，在Navigation的[navDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navdestination10)属性中执行步骤2加载的Builder函数，即可跳转到目标页面。
 
 ### 静态import
 
-静态import实现方式简单，但通过静态import页面进行路由跳转会导致不同模块之间的依赖耦合，并存在首页加载时间长等问题。建议使用动态import或系统路由表。
+静态import实现方式简单，但通过静态import页面进行路由跳转会导致不同模块之间的依赖耦合，并存在首页加载时间长等问题。建议使用[动态import](#动态import)或[系统路由表](#系统路由表)。
 
 静态import实现步骤如下：
 
-1. 使用@Builder装饰器创建自定义构造函数`pageMap`。
+1. 使用[@Builder装饰器](./state-management/arkts-builder.md)创建自定义构造函数`pageMap`。
 2. 在自定义构造函数`pageMap`里实现路由表，根据传入的页面名称构造不同的页面。
-3. 将`pageMap`配置到Navigation的navDestination属性中，完成路由表注册。
+3. 将`pageMap`配置到Navigation的[navDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navdestination10)属性中，完成路由表注册。
 
-<!-- @CustomRoutingTable -->
+<!-- @[CustomRoutingTable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template1/CustomRoutingTable.ets) -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -248,7 +248,7 @@ export struct pageOneTmp {
 
 1. 配置路由表。
 
-   参考系统路由表在每个HAP、HAR、HSP模块中配置各自的系统路由表，每个模块的`src/main/resources/base/profile/`目录都需要创建一个router_map.json文件。
+   参考[系统路由表](#系统路由表)在每个[HAP](../quick-start/hap-package.md)、[HAR](../quick-start/har-package.md)、[HSP](../quick-start/in-app-hsp.md)模块中配置各自的系统路由表，每个模块的`src/main/resources/base/profile/`目录都需要创建一个router_map.json文件。
 
    在router_map.json文件中填写具体的路由表信息（下面仅以HAP模块中的配置为例），示例如下：
 
@@ -275,9 +275,9 @@ export struct pageOneTmp {
     }
     ```
 
-   在每个模块的module.json5中配置各自的路由表。
+   在每个模块的[module.json5](../quick-start/module-configuration-file.md)中配置各自的路由表。
 
-    <!-- @moduleJson5 -->
+    <!-- @[moduleJson5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/module.json5) -->
     
     ``` JSON5
     {
@@ -293,7 +293,7 @@ export struct pageOneTmp {
 
    以HAP包中的HapPageA为例：
 
-    <!-- @CrossPackagePageA -->
+    <!-- @[CrossPackagePageA](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template4/HapPageA.ets) -->
     
     ``` TypeScript
     // 仅作为示例写法，其余页面、模块需自行创建
@@ -322,7 +322,7 @@ export struct pageOneTmp {
 
    其中Common是为了方便演示页面间跳转抽出来的一个控制面板组件，示例如下：
 
-    <!-- @CrossPackageCommon -->
+    <!-- @[CrossPackageCommon](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template4/Common.ets) -->
     
     ``` TypeScript
     @Component
@@ -365,7 +365,7 @@ export struct pageOneTmp {
 
    **图1** HSP、HAR编译产物示意图
 
-   img
+   ![img](figures/NavigationBuildHARandHSP.png)
 
    在HAP的oh-package.json5配置文件中配置对HAR与HSP的依赖。
 
@@ -388,6 +388,6 @@ export struct pageOneTmp {
 
    **图2** Navigation跨包跳转示例
 
-   img
+   ![img](figures/NavigationCrossPackageExample.gif)
 
 <!--RP2--><!--RP2End-->

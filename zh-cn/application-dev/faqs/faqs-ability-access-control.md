@@ -20,7 +20,7 @@
 
 **参考链接**
 
-应用权限列表 - ohos.permission.LOCATION
+[应用权限列表 - ohos.permission.LOCATION](../security/AccessToken/permissions-for-all-user.md#ohospermissionlocation)
 
 
 ## 向用户申请授予权限但被用户拒绝后，如何处理才能避免应用二次进入时崩溃(API 9)
@@ -41,7 +41,7 @@
 
 **参考链接**
 
-应用权限管控概述
+[应用权限管控概述](../security/AccessToken/access-token-overview.md)
 
 ## module.json5配置文件中extensionAbilities和requestPermissions的权限声明有何区别(API 9)
 
@@ -51,7 +51,7 @@
 
 **参考链接**
 
-module.json5配置文件
+[module.json5配置文件](../quick-start/module-configuration-file.md)
 
 ## 如何自定义申请权限时的选项文本，例如申请定位权限时，如何自定义弹出的选项文本(API 10)
 
@@ -61,7 +61,7 @@ module.json5配置文件
 
 **参考资料**
 
-权限申请
+[权限申请](../security/AccessToken/determine-application-mode.md)
 
 ## 如何使用安全控件SaveButton进行图片的快速保存，保存控件可以用于哪些场景，区别于使用filepicker方式有什么优势(API 10)
 
@@ -73,6 +73,6 @@ module.json5配置文件
 
 **参考资料**
 
-安全控件概述
+[安全控件概述](../security/AccessToken/security-component-overview.md)
 
-SaveButton
+[SaveButton](../reference/apis-arkui/arkui-ts/ts-security-components-savebutton.md)

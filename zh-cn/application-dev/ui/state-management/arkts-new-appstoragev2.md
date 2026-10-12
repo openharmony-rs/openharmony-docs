@@ -10,7 +10,7 @@
 
 AppStorageV2提供应用级全局共享状态变量的能力，开发者可以通过connect绑定同一个key，进行跨UIAbility的数据共享。
 
-在阅读本文档前，建议提前阅读：\@ComponentV2，\@ObservedV2和\@Trace，配合阅读：AppStorageV2-API文档。
+在阅读本文档前，建议提前阅读：[\@ComponentV2](./arkts-create-custom-components.md#componentv2)，[\@ObservedV2和\@Trace](./arkts-new-observedV2-and-trace.md)，配合阅读：[AppStorageV2-API文档](../../reference/apis-arkui/js-apis-stateManagement.md#appstoragev2)。
 
 >**说明：**
 >
@@ -23,7 +23,7 @@ AppStorageV2是在应用UI启动时会被创建的单例。它用于提供应用
 
 通过修改AppStorageV2的connect接口返回值，可以实现数据与UI组件的同步。
 
-AppStorageV2支持应用的主线程内多个UIAbility实例间的状态共享。
+AppStorageV2支持应用的[主线程](../../application-models/thread-model-stage.md)内多个UIAbility实例间的状态共享。
 
 ## 使用说明
 
@@ -31,15 +31,15 @@ AppStorageV2支持应用的主线程内多个UIAbility实例间的状态共享�
 
 >**说明：**
 >
->1、若未指定key，使用第二个参数作为默认构造器；否则使用第三个参数作为默认构造器（第二个参数非法也使用第三个参数作为默认构造器）。
+>1. 若未指定key，使用第二个参数作为默认构造器；否则使用第三个参数作为默认构造器（第二个参数非法也使用第三个参数作为默认构造器）。
 >
->2、确保数据已经存储在AppStorageV2中，可省略默认构造器，获取存储的数据；否则必须指定默认构造器，不指定将导致应用异常。
+>2. 确保数据已经存储在AppStorageV2中，可省略默认构造器，获取存储的数据；否则必须指定默认构造器，不指定将导致应用异常。
 >
->3、同一个key，connect不同类型的数据会导致应用异常，应用需要确保类型匹配。
+>3. 同一个key，connect不同类型的数据会导致应用异常，应用需要确保类型匹配。
 >
->4、key建议使用有意义的值，可由字母、数字、下划线组成，长度不超过255，使用非法字符或空字符的行为是未定义的。
+>4. key建议使用有意义的值，可由字母、数字、下划线组成，长度不超过255，使用非法字符或空字符的行为是未定义的。
 >
->5、关联\@Observed对象时，由于该类型的name属性未定义，需要指定key或者自定义name属性。
+>5. 关联[\@Observed](arkts-observed-and-objectlink.md)对象时，由于该类型的name属性未定义，需要指定key或者自定义name属性。
 
 - remove：删除指定key的存储数据。
 
@@ -49,20 +49,20 @@ AppStorageV2支持应用的主线程内多个UIAbility实例间的状态共享�
 
 - keys：返回所有AppStorageV2中的key。
 
-以上接口详细描述请参考状态管理API文档中的AppStorageV2。
+以上接口详细描述请参考状态管理API文档中的[AppStorageV2](../../reference/apis-arkui/js-apis-stateManagement.md#appstoragev2)。
 
 
 ## 使用限制
 
-1、只支持class类型，否则会抛出运行时报错，从API version 23开始，将返回错误码140103。
+1. 只支持class类型，否则会抛出运行时报错，从API version 23开始，将返回错误码[140103](../../reference/apis-arkui/errorcode-stateManagement.md#140103-appstoragev2和persistencev2使用不支持的数据类型)。
 
-2、需要配合UI使用（UI线程），不能在其他线程使用，如不支持@Sendable。
+2. 需要配合UI使用（UI线程），不能在其他线程使用，如不支持[@Sendable](../../arkts-utils/arkts-sendable.md)。
 
-3、不支持collections.Set、collections.Map等类型。
+3. 不支持[collections.Set](../../reference/apis-arkts/arkts-apis-arkts-collections-Set.md)、[collections.Map](../../reference/apis-arkts/arkts-apis-arkts-collections-Map.md)等类型。
 
-4、不支持非built-in类型，如PixelMap、NativePointer、ArrayList等Native类型。
+4. 不支持非built-in类型，如[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)、NativePointer、[ArrayList](../../reference/apis-arkts/js-apis-arraylist.md)等Native类型。
 
-5、不支持存储基本类型，如string、number、boolean等。注意：不支持存储基本类型意味着connect接口传入的类型不能是基本类型，但connect传入的class中可以包含基本类型。
+5. 不支持存储基本类型，如string、number、boolean等。注意：不支持存储基本类型意味着connect接口传入的类型不能是基本类型，但connect传入的class中可以包含基本类型。
 
 ## 使用场景
 
@@ -70,7 +70,7 @@ AppStorageV2支持应用的主线程内多个UIAbility实例间的状态共享�
 
 AppStorageV2使用connect接口即可实现对AppStorageV2中数据的修改和同步，如果修改的数据被@Trace装饰，该数据的修改会同步更新UI。需要注意的是，使用remove接口只会将数据从AppStorageV2中删除，不影响组件中已创建的数据，详见以下示例代码：
 
-<!-- @appStorageV2_index -->
+<!-- @[appStorageV2_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorageV2/entry/src/main/ets/pages/AppStorageV2.ets) -->
 
 ``` TypeScript
 import { AppStorageV2 } from '@kit.ArkUI';
@@ -178,12 +178,12 @@ struct Child {
 }
 ```
 
-appstoragev2-sync-0
+![appstoragev2-sync-0](./figures/appstoragev2-sync-0.gif)
 
 ### 在两个页面之间存储数据
 
 数据页面
-<!-- @appStorageV2_sample -->
+<!-- @[appStorageV2_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorageV2/entry/src/main/ets/pages/Sample.ets) -->
 
 ``` TypeScript
 // 数据中心
@@ -196,7 +196,7 @@ export class Sample {
 ```
 
 页面1
-<!-- @appStorageV2_pageOne -->
+<!-- @[appStorageV2_pageOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorageV2/entry/src/main/ets/pages/PageOne.ets) -->
 
 ``` TypeScript
 import { AppStorageV2 } from '@kit.ArkUI';
@@ -261,7 +261,7 @@ struct PageOne {
 ```
 
 页面2
-<!-- @appStorageV2_pageTwo -->
+<!-- @[appStorageV2_pageTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorageV2/entry/src/main/ets/pages/PageTwo.ets) -->
 
 ``` TypeScript
 import { AppStorageV2 } from '@kit.ArkUI';
@@ -334,4 +334,4 @@ struct PageTwo {
 }
 ```
 
-appstoragev2-sync-1
+![appstoragev2-sync-1](./figures/appstoragev2-sync-1.gif)

@@ -8,7 +8,7 @@
 
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考通用错误码说明文档。
+> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
 
 ## 17100001 WebviewController没有和具体的Web组件关联
 
@@ -26,7 +26,7 @@ WebviewController还没有和具体的Web组件关联。
 
 **处理步骤**
 
-请检查WebviewController对象是否已与Web组件关联，可以通过onControllerAttached()接口进行检查。<!--RP1--><!--RP1End-->
+请检查WebviewController对象是否已与Web组件关联，可以通过[onControllerAttached()](./arkts-basic-components-web-events.md#oncontrollerattached10)接口进行检查。<!--RP1--><!--RP1End-->
 
 
 ## 17100002 URL格式错误
@@ -97,7 +97,7 @@ Function not enabled.
 请检查相关功能开关是否已配置为true，或检测当前接口是否支持并发。
 
 
-## 17100005 cookie value格式错误
+## 17100005 Cookie value格式错误
 
 **错误信息**
 
@@ -105,15 +105,15 @@ The provided cookie value is invalid. It must follow the format specified in RFC
 
 **错误描述**
 
-cookie value格式错误。
+Cookie value格式错误。
 
 **可能原因**
 
-不支持的cookie value类型。
+不支持的Cookie value类型。
 
 **处理步骤**
 
-请检查输入的cookie value是否符合RFC 6265规范，确保不包含控制字符、分隔符等非法内容。
+请检查输入的Cookie value是否符合RFC 6265规范，确保不包含控制字符、分隔符等非法内容。
 
 
 ## 17100006 无法注册message port回调
@@ -340,11 +340,9 @@ WebResourceHandler已经失效。
 
 **可能原因**
 
-1.对应的请求在WebSchemeHandler中没有拦截；
-
-2.该请求拦截在构造返回体之前，因为某些原因已经请求结束；
-
-3.该WebResourceHandler已经调用过didFinish和didFail。
+1. 对应的请求在WebSchemeHandler中没有拦截。
+2. 该请求拦截在构造返回体之前，因为某些原因已经请求结束。
+3. 该WebResourceHandler已经调用过didFinish和didFail。
 
 
 **处理步骤**
@@ -399,7 +397,7 @@ AIPageCommand参数格式错误。
 
 **可能原因**
 
-调用WebviewController.executeAIPageCommand时，传入的command参数不是合法的JSON对象字符串，或命令字段不符合格式要求。
+调用[WebviewController.executeAIPageCommand](arkts-apis-webview-WebviewController.md#executeaipagecommand)时，传入的command参数不是合法的JSON对象字符串，或命令字段不符合格式要求。
 
 **处理步骤**
 
@@ -417,8 +415,8 @@ The errorCode is either ARKWEB_NET_OK or outside the range of error codes in Web
 
 **可能原因**
 
-使用的错误码不在WebNetErrorList范围内，或者调用didFail接口时使用了NET_OK错误码。
+使用的错误码不在[WebNetErrorList](arkts-apis-netErrorList.md#webneterrorlist)范围内，或者调用didFail接口时使用了NET_OK错误码。
 
 **处理步骤**
 
-检查使用的错误码是否在WebNetErrorList范围内，或者调用didFail时是否使用了NET_OK错误码。
+检查使用的错误码是否在[WebNetErrorList](arkts-apis-netErrorList.md#webneterrorlist)范围内，或者调用didFail时是否使用了NET_OK错误码。

@@ -12,25 +12,25 @@
 
 ## 接口说明
 
-常用接口如下表所示，具体API说明详见Native_Bundle。
+常用接口如下表所示，具体API说明详见[Native_Bundle](../reference/apis-ability-kit/capi-native-bundle.md)。
 
 | 接口名                                                       | 描述                                     |
 | :----------------------------------------------------------- | :--------------------------------------- |
-| OH_NativeBundle_GetCurrentApplicationInfo | 获取应用自身相关信息。          |
-| OH_NativeBundle_GetAppId | 获取自身应用的appId信息。 |
-| OH_NativeBundle_GetAppIdentifier | 获取自身应用的appIdentifier信息。 |
-| OH_NativeBundle_GetMainElementName | 获取自身应用入口的信息。 |
-| OH_NativeBundle_GetCompatibleDeviceType | 获取自身应用适用的设备类型。 |
-| OH_NativeBundle_IsDebugMode | 查询当前应用的调试模式。从API version 20开始支持。|
-| OH_NativeBundle_GetModuleMetadata | 获取当前应用的元数据信息。从API version 20开始支持。 |
-| OH_NativeBundle_GetAbilityResourceInfo | 获取支持打开特定文件类型的组件资源信息列表。从API version 21开始支持。 |
+| [OH_NativeBundle_GetCurrentApplicationInfo](../reference/apis-ability-kit/capi-native-interface-bundle-h.md#oh_nativebundle_getcurrentapplicationinfo) | 获取应用自身相关信息。          |
+| [OH_NativeBundle_GetAppId](../reference/apis-ability-kit/capi-native-interface-bundle-h.md#oh_nativebundle_getappid) | 获取自身应用的appId信息。 |
+| [OH_NativeBundle_GetAppIdentifier](../reference/apis-ability-kit/capi-native-interface-bundle-h.md#oh_nativebundle_getappidentifier) | 获取自身应用的appIdentifier信息。 |
+| [OH_NativeBundle_GetMainElementName](../reference/apis-ability-kit/capi-native-interface-bundle-h.md#oh_nativebundle_getmainelementname) | 获取自身应用入口的信息。 |
+| [OH_NativeBundle_GetCompatibleDeviceType](../reference/apis-ability-kit/capi-native-interface-bundle-h.md#oh_nativebundle_getcompatibledevicetype) | 获取自身应用适用的设备类型。 |
+| [OH_NativeBundle_IsDebugMode](../reference/apis-ability-kit/capi-native-interface-bundle-h.md#oh_nativebundle_isdebugmode) | 查询当前应用的调试模式。从API version 20开始支持。|
+| [OH_NativeBundle_GetModuleMetadata](../reference/apis-ability-kit/capi-native-interface-bundle-h.md#oh_nativebundle_getmodulemetadata) | 获取当前应用的元数据信息。从API version 20开始支持。 |
+| [OH_NativeBundle_GetAbilityResourceInfo](../reference/apis-ability-kit/capi-native-interface-bundle-h.md#oh_nativebundle_getabilityresourceinfo) | 获取支持打开特定文件类型的组件资源信息列表。从API version 21开始支持。 |
 
 
 ## 开发步骤
 
 **1. 创建工程**
 
-native
+![native](figures/rawfile1.png)
 
 
 **2. 添加依赖**
@@ -45,7 +45,7 @@ native
 
 2. 打开src/main/cpp/napi_init.cpp文件，添加头文件。
 
-    <!-- @native-bundle-guidelines_002 -->
+    <!-- @[native-bundle-guidelines_002](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/NativeBundleGuidelines/entry/src/main/cpp/napi_init.cpp) -->
     
     ``` C++
     // napi依赖头文件
@@ -61,7 +61,7 @@ native
 
 1. 打开src/main/cpp/napi_init.cpp文件，文件Init会对当前方法进行初始化映射，这里定义对外的接口。
 
-    <!-- @native-bundle-guidelines_004 -->
+    <!-- @[native-bundle-guidelines_004](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/NativeBundleGuidelines/entry/src/main/cpp/napi_init.cpp) -->
     
     ``` C++
     EXTERN_C_START
@@ -96,7 +96,7 @@ native
 
 2. 在src/main/cpp/napi_init.cpp文件中获取Native的包信息对象，并转为js的包信息对象，即可在js侧获取应用的信息：
 
-    <!-- @native-bundle-guidelines_003 -->
+    <!-- @[native-bundle-guidelines_003](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/NativeBundleGuidelines/entry/src/main/cpp/napi_init.cpp) -->
     
     ``` C++
     static napi_value GetCurrentApplicationInfo(napi_env env, napi_callback_info info)
@@ -253,7 +253,7 @@ native
 
 
 
-    <!-- @native-bundle-guidelines_006 -->
+    <!-- @[native-bundle-guidelines_006](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/NativeBundleGuidelines/entry/src/main/cpp/napi_init.cpp) -->
     
     ``` C++
     static void AddDefaultApp(napi_env env,
@@ -436,7 +436,7 @@ native
 
 1. 在src/main/cpp/types/libentry/Index.d.ts文件中，声明暴露接口。
 
-    <!-- @native-bundle-guidelines_001 -->
+    <!-- @[native-bundle-guidelines_001](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/NativeBundleGuidelines/entry/src/main/cpp/types/libentry/Index.d.ts) -->
     
     ``` TypeScript
     export const add: (a: number, b: number) => number;
@@ -454,7 +454,7 @@ native
 
 1. 打开src/main/ets/pages/Index.ets，导入"libentry.so"，调用Native接口打印出获取的信息内容。示例如下：
 
-    <!-- @native-bundle-guidelines_005 -->
+    <!-- @[native-bundle-guidelines_005](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/NativeBundleGuidelines/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -503,4 +503,4 @@ native
     ```
 
 
-关于包管理NDK接口说明，可参考Native_Bundle模块介绍。
+关于包管理NDK接口说明，可参考[Native_Bundle模块介绍](../reference/apis-ability-kit/capi-native-bundle.md)。

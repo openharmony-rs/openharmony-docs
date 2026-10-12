@@ -53,7 +53,7 @@ export default {
 >
 > - hml文件中的js表达式不支持ES6语法。
 
-zh-cn_image_0000001118642003
+![zh-cn_image_0000001118642003](figures/Data-Binding.png)
 
 ## 普通事件绑定
 
@@ -132,7 +132,7 @@ zh-cn_image_0000001118642003
   }
   ```
 
-zh-cn_image_0000001118642002
+![zh-cn_image_0000001118642002](figures/Common-Event-Binding.gif)
 
 ## 冒泡事件绑定<sup>5+</sup>
 
@@ -145,7 +145,7 @@ zh-cn_image_0000001118642002
   >
   > 冒泡事件是指多个组件嵌套时，组件之间会有层次关系，当这些组件注册了相同的事件时，这个事件会首先运行在该元素上的处理程序，然后运行其父元素上的处理程序，一直向上到其他祖先上的处理程序。如果当一个组件触发了这个事件，它会首先触发该组件的回调函数，然后触发其父元素上的回调函数，然后触发其他祖先上的处理程序。
   >
-  > 详细冒泡事件说明参见通用事件章节。
+  > 详细冒泡事件说明参见[通用事件](../reference/apis-arkui/arkui-js/js-components-common-events.md)章节。
 - 示例
   ```html
   <!-- xxx.hml -->
@@ -267,7 +267,7 @@ tid属性主要用来加速for循环的重渲染，旨在列表中的数据有�
 >
 > - tid不支持表达式。
 
-zh-cn_image_0000001118642001
+![zh-cn_image_0000001118642001](figures/Loop-Rendering.gif)
 
 ## 条件渲染
 
@@ -313,7 +313,7 @@ export default {
 }
 ```
 
-zh-cn_image_0000001118642004
+![zh-cn_image_0000001118642004](figures/Conditional-Rendering.gif)
 
 优化渲染：show方法。当show为true时，节点正常渲染；当为false时，仅仅设置display样式为none。
 
@@ -353,7 +353,7 @@ export default {
 > **说明：**
 > 禁止在同一个元素上同时设置for和if属性。
 
-zh-cn_image_0000001118642005
+![zh-cn_image_0000001118642005](figures/Conditional-Rendering01.gif)
 
 ## 逻辑控制块
 
@@ -387,11 +387,11 @@ export default {
 }
 ```
 
-zh-cn_image_0000001118642006
+![zh-cn_image_0000001118642006](figures/Logic-Control-Block.png)
 
 ## 模板引用
 
-HML可以通过element引用模板文件，详细介绍可参考自定义组件的基本用法章节。
+HML可以通过element引用模板文件，详细介绍可参考[自定义组件的基本用法](../reference/apis-arkui/arkui-js/js-components-custom-basic-usage.md)章节。
 
 ```html
 <!-- template.hml -->

@@ -29,7 +29,7 @@ ForEach(this.nums,(item) => {
 
 **参考链接**
 
-渲染控制语法
+[渲染控制语法](../ui/rendering-control/arkts-rendering-control-overview.md)
 
 
 ## 使用\@Builder装饰器包含自定义组件的方法与普通方法的区别是什么(API 9)
@@ -40,7 +40,7 @@ ForEach(this.nums,(item) => {
 
 **参考链接**
 
-@BuilderParam
+[@BuilderParam](../ui/state-management/arkts-builderparam.md)
 
 
 ## 如何使用\@BuilderParam装饰器进行组件传参(API 9)
@@ -57,7 +57,7 @@ ForEach(this.nums,(item) => {
 
 **参考链接**
 
-@BuilderParam
+[@BuilderParam](../ui/state-management/arkts-builderparam.md)
 
 
 ## 如何监听数组内对象属性变化(API 9)
@@ -109,7 +109,7 @@ ForEach(this.nums,(item) => {
 
 **参考链接**
 
-Observed和ObjectLink数据管理
+[Observed和ObjectLink数据管理](../ui/state-management/arkts-observed-and-objectlink.md)
 
 
 ## 子组件使用\@Link修饰成员变量时，如何通过父组件传值(API 9)
@@ -165,7 +165,7 @@ Observed和ObjectLink数据管理
 
 **参考链接**
 
-@Link
+[@Link](../ui/state-management/arkts-link.md)
 
 
 ## 父组件如何与孙子组件进行状态同步(API 9)
@@ -393,7 +393,7 @@ listener.off('change', onPortrait) // 去注册回调
 
 **参考链接**
 
-媒体查询
+[媒体查询](../reference/apis-arkui/js-apis-mediaquery.md)
 
 
 ## 创建的单例换了页面后不生效问题(API 9)
@@ -431,9 +431,9 @@ new Date(yearValue, IndexOfMonth, dayValue, hours, minutes, seconds)
 
 其中每一个参数换算为对应时间参数传入即可。
 
-- yearValue：应符合 ISO 8061 YYYY 格式。例如 2021。如果我们以 YY 格式指定一个值，它将会被错误地接受。例如，仅将 2021 提到 21 会被认为是 1921 年而不是 2021 年。
+- yearValue：应符合 ISO 8601 YYYY 格式。例如 2021。如果我们以 YY 格式指定一个值，它将会被错误地接受。例如，仅将 2021 提到 21 会被认为是 1921 年而不是 2021 年。
 
-- IndexOfMonth：从索引 0 开始。因此，从 Month 值中减去 1。例如，对于 3 月，该值为 3，但 monthIndex 将为 2（即 3-1 = 2）。本月指数通常应在 0-11 范围内
+- IndexOfMonth：从索引 0 开始。因此，从 Month 值中减去 1。例如，对于 3 月，该值为 3，但 monthIndex 将为 2（即 3-1 = 2）。月份索引通常应在 0-11 范围内
 
 - dayValue：表示一个月中的某天。它应在 1-31 范围内，具体取决于一个月中的天数。例如：对于 21-05-2021，日期值为 21
 
@@ -469,7 +469,7 @@ function stringToArray(testString : string): number[] {
 
 **参考链接**
 
-TextEncoder、TextDecoder
+[TextEncoder](../reference/apis-arkts/js-apis-util.md#textencoder)、[TextDecoder](../reference/apis-arkts/js-apis-util.md#textdecoder)
 
 
 ## 如何导入和导出namespace命名空间(API 9)
@@ -512,7 +512,7 @@ TextEncoder、TextDecoder
 
 **参考链接**
 
-资源访问与资源管理
+[资源访问](../quick-start/resource-categories-and-access.md)与[资源管理](../reference/apis-localization-kit/js-apis-resource-manager.md)
 
 
 ## XML格式如何转为JSON格式(API 9)
@@ -655,7 +655,7 @@ generateRandomUUID底层使用Node.js crypto.randomUUID()接口，传递参数�
 
 **参考链接**
 
-参考文档：util.generateRandomUUID
+参考文档：[util.generateRandomUUID](../reference/apis-arkts/js-apis-util.md#utilgeneraterandomuuid9)
 
 
 ## worker线程与主线程是否运行在相同的全局上下文中(API 9)
@@ -666,7 +666,7 @@ worker线程与主线程不在同一个上下文中，它们使用数据通信�
 
 **参考链接**
 
-worker：启动一个Worker
+worker：[启动一个Worker](../reference/apis-arkts/js-apis-worker.md)
 
 
 ## 应用图标一多设置(API 9)
@@ -739,7 +739,7 @@ systemTime.getCurrentTime(false)和new Date().getTime()一样，都是返回1970
 
 **参考链接**
 
-@BuilderParam装饰器：引用@Builder函数
+[@BuilderParam装饰器：引用@Builder函数](../ui/state-management/arkts-builderparam.md)
 
 
 ## 加上lineHeight，Text垂直不居中的原因(API 9)
@@ -750,7 +750,7 @@ Text组件不用设置lineHeight属性，默认就是居中的。绘制文本是
 
 **参考链接**
 
-Text
+[Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#示例1设置文本布局)
 
 
 ## 使用什么接口进行url编码(API 9)
@@ -773,7 +773,7 @@ console.info(a) // %20
 
 **参考链接**
 
-xml转换JavaScript
+[xml转换JavaScript](../reference/apis-arkts/js-apis-convertxml.md)
 
 
 ## 使用Styles装饰器，编译报错.stateStyles doesn't conform standard(API 9)
@@ -797,7 +797,7 @@ Radio组件使用\$\$绑定的变量变更时，仅渲染当前组件，提高�
 
 **参考链接**
 
-内置组件双向同步
+[内置组件双向同步](../ui/state-management/arkts-two-way-sync.md)
 
 ## ForEach组件在真机上无法执行(API 9)
 
@@ -840,7 +840,7 @@ AppStorage是UI相关的数据，需要运行在UI线程，无法将对象共享
 
 **参考链接**
 
-AppStorage：应用全局的UI状态存储
+[AppStorage：应用全局的UI状态存储](../ui/state-management/arkts-appstorage.md)
 
 ## 自定义字体的注册方式有哪些，推荐的字体资源存放路径是哪里，如何从资源存放路径中取出字体资源(API 10)
 
@@ -852,7 +852,7 @@ AppStorage：应用全局的UI状态存储
 
 **参考链接**
 
-@ohos.font (注册自定义字体)
+[@ohos.font (注册自定义字体)](../reference/apis-arkui/js-apis-font.md)
 
 ## Text组件如何加载Unicode字符(API 10)
 
@@ -887,6 +887,6 @@ ArkUI还提供了一种更轻量的UI元素复用机制@Builder，@Builder所装
 
 **参考链接**
 
-1. @Builder装饰器：自定义构建函数
+1. [@Builder装饰器：自定义构建函数](../ui/state-management/arkts-builder.md)
 
-2. @BuilderParam装饰器：引用@Builder函数
+2. [@BuilderParam装饰器：引用@Builder函数](../ui/state-management/arkts-builderparam.md)

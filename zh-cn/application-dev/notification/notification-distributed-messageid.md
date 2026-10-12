@@ -2,7 +2,7 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -10,13 +10,13 @@
 
 ## 实现原理
 
-应用发送通知时携带唯一标识字段appMessageId，分布式通知接收到多渠道发布的通知后，会根据该字段进行判断，从而实现通知去重。
+应用发送通知时携带唯一标识字段[appMessageId](../../application-dev/reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1)，[分布式通知](notification-glossary.md#distributed-notification分布式通知)接收到多渠道发布的通知后，会根据该字段进行判断，从而实现通知去重。
 
 设备只会展示第一条通知，后续收到的重复通知会被静默去重，不展示、不提醒。
 
 **图1** 全场景通知去重流程图
 
-distributed_messageid
+![distributed_messageid](figures/notification_messageid.png)
 
 ## 约束条件
 
@@ -27,13 +27,13 @@ distributed_messageid
 
 | **接口名**  | **描述** |**说明**|
 | -------- | -------- | -------- |
-| publish(request: NotificationRequest): Promise\<void\>       | 发布通知。  |使用方法见对象NotificationRequest中**appMessageId**字段说明。|
+| [publish](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanagerpublish-1)(request: NotificationRequest): Promise\<void\>       | 发布通知。  |使用方法见对象[NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md)中**appMessageId**字段说明。|
 
 ## 开发步骤
 
 1. 导入模块。
 
-   <!-- @clear_duplicate_notifications_header -->
+   <!-- @[clear_duplicate_notifications_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ClearDuplicateNotifications.ets) -->
    
    ``` TypeScript
    import { notificationManager } from '@kit.NotificationKit';
@@ -42,7 +42,7 @@ distributed_messageid
 
 2. 发布通知消息，通知消息中包含`appMessageId`字段。
 
-   <!-- @pub_appMsgId_notify -->
+   <!-- @[pub_appMsgId_notify](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ClearDuplicateNotifications.ets) -->
    
    ``` TypeScript
    // publish回调

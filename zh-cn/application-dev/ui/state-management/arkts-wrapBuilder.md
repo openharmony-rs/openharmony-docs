@@ -6,9 +6,9 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-  当在一个struct内使用多个全局\@Builder函数实现UI的不同效果时，代码维护将变得非常困难，且页面不够整洁。此时，可以使用wrapBuilder封装全局\@Builder。
+  当在一个struct内使用多个全局\@Builder函数实现UI的不同效果时，代码维护将变得非常困难，且页面不够整洁。此时，可以使用[wrapBuilder](../../reference/apis-arkui/arkui-ts/ts-universal-wrapBuilder.md)封装全局\@Builder。
 
-  在阅读本文档前，建议阅读：\@Builder。
+  在阅读本文档前，建议阅读：[\@Builder](./arkts-builder.md)。
 
 > **说明：**
 >
@@ -16,7 +16,7 @@
 >
 > 从API version 12开始，wrapBuilder支持在原子化服务中使用。
 >
-> 从API version 22开始，推荐开发者使用mutableBuilder，支持二次赋值后刷新UI。
+> 从API version 22开始，推荐开发者使用[mutableBuilder](./arkts-mutableBuilder.md)，支持二次赋值后刷新UI。
 
 当\@Builder方法赋值给变量或者数组后，在UI方法中无法使用。
 
@@ -36,7 +36,7 @@ function testBuilder() {
 
 在上述代码中，`builderArr`是一个由\@Builder方法组成的数组。在ForEach循环中取每个\@Builder方法时，会出现\@Builder方法在UI方法中无法使用的问题。
 
-为了解决这一问题，引入wrapBuilder作为全局\@Builder封装函数。wrapBuilder返回WrappedBuilder对象，用于全局\@Builder的赋值和传递。 
+为了解决这一问题，引入wrapBuilder作为全局\@Builder封装函数。wrapBuilder返回WrappedBuilder对象，用于[全局\@Builder](arkts-builder.md#全局自定义构建函数)的赋值和传递。 
 
 ## 接口说明
 
@@ -71,7 +71,7 @@ let builderArr: WrappedBuilder<[string, number]>[] = [wrapBuilder(MyBuilder)]; /
 
 ## 限制条件
 
-1. wrapBuilder方法只能传入全局\@Builder方法。
+1. wrapBuilder方法只能传入[全局\@Builder](arkts-builder.md#全局自定义构建函数)方法。
 
 2. WrappedBuilder对象的builder属性方法仅限在struct内部使用。
 
@@ -79,7 +79,7 @@ let builderArr: WrappedBuilder<[string, number]>[] = [wrapBuilder(MyBuilder)]; /
 
 使用\@Builder装饰器装饰的方法`myBuilder`作为wrapBuilder的参数，然后将wrapBuilder的返回值赋值给变量`globalBuilder`，以解决\@Builder方法赋值给变量后无法使用的问题。
 
- <!-- @wrapbuilder_page_two -->  
+ <!-- @[wrapbuilder_page_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageTwo.ets) -->  
  
  ``` TypeScript
  @Builder
@@ -109,13 +109,13 @@ let builderArr: WrappedBuilder<[string, number]>[] = [wrapBuilder(MyBuilder)]; /
  }
  ```
 
-arkts-wrapBuilder-0
+![arkts-wrapBuilder-0](./figures/arkts-wrapBuilder-0.png)
 
 ## @Builder方法赋值给变量在UI语法中使用
 
 自定义组件`IndexItem`使用ForEach进行不同\@Builder函数的渲染，可以使用`builderArr`声明的wrapBuilder数组来实现不同的\@Builder函数的效果。整体代码会更加整洁。
 
-<!-- @wrapbuilder_page_three -->   
+<!-- @[wrapbuilder_page_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageThree.ets) -->   
 
 ``` TypeScript
 @Builder
@@ -159,13 +159,13 @@ struct IndexItem {
 }
 ```
 
-arkts-wrapBuilder-1
+![arkts-wrapBuilder-1](./figures/arkts-wrapBuilder-1.png)
 
 ## @Builder方法赋值给类或者接口的属性
 
 使用\@Builder装饰器装饰的方法`myBuilder`作为wrapBuilder的参数，然后将wrapBuilder的返回值赋值给接口`ChildOptions`中的属性，可以以数据的形式传递给其他子组件调用。
 
-<!-- @wrapbuilder_as_field --> 
+<!-- @[wrapbuilder_as_field](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/WrapBuilderAsField.ets) --> 
 
 ``` TypeScript
 @Builder
@@ -206,13 +206,13 @@ struct Child {
 }
 ```
 
-arkts-wrapBuilder-2
+![arkts-wrapBuilder-2](./figures/arkts-wrapBuilder-2.png)
 
 ## 引用传递
 
 按引用传递参数时，状态变量的改变会引起\@Builder方法内的UI刷新。
 
-<!-- @wrapbuilder_page_four -->  
+<!-- @[wrapbuilder_page_four](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageFour.ets) -->  
 
 ``` TypeScript
 class Tmp {
@@ -222,7 +222,7 @@ class Tmp {
 @Builder
 function overBuilder(param: Tmp) {
   Column() {
-    Text(`wrapBuildervalue:${param.paramA2}`)
+    Text(`wrapBuilder value: ${param.paramA2}`)
       .fontSize(20)
       .margin(10)
   }
@@ -252,7 +252,7 @@ struct Parent {
 }
 ```
 
-arkts-wrapBuilder-3
+![arkts-wrapBuilder-3](./figures/arkts-wrapBuilder-3.gif)
 
 ## 常见问题
 
@@ -260,7 +260,7 @@ arkts-wrapBuilder-3
 
 在同一个自定义组件内，同一个wrapBuilder只能初始化一次。例如，`builderObj`通过`wrapBuilder(myBuilderFirst)`初始化后，再次对`builderObj`赋值`wrapBuilder(myBuilderSecond)`将不会生效。
 
-<!-- @wrapbuilder_page_five --> 
+<!-- @[wrapbuilder_page_five](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageFive.ets) --> 
 
 ``` TypeScript
 @Builder
@@ -306,4 +306,4 @@ struct TestBuilderIndex {
 }
 ```
 
-arkts-wrapBuilder-4
+![arkts-wrapBuilder-4](./figures/arkts-wrapBuilder-4.png)

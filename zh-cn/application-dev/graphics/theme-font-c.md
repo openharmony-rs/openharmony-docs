@@ -15,7 +15,7 @@
 
 **图1** 主题字体的切换和使用 
 
-themeText_native
+![themeText_native](figures/themeText_native.jpg)
 
 针对主题字的切换使用，应用方应确保订阅主题字变更事件，当接收字体变更事件后，由应用方主动调用页面刷新才能实现主题字的切换，否则主题字只能在重启应用后才生效；主题字的绘制需要使用OH_Drawing_GetFontCollectionGlobalInstance来获取全局字体集对象，仅该接口返回的对象拥有主题字体信息。
 
@@ -26,21 +26,21 @@ themeText_native
 
 ## 接口说明
 
-注册使用主题字体的常用接口如下表所示，详细接口说明请参考Drawing。
+注册使用主题字体的常用接口如下表所示，详细接口说明请参考[Drawing](../reference/apis-arkgraphics2d/capi-drawing.md)。
 
 | 接口名 | 描述 |
 | -------- | -------- |
 | OH_Drawing_FontCollection\* OH_Drawing_GetFontCollectionGlobalInstance(void) | 获取全局的字体集对象OH_Drawing_FontCollection。 |
-| onConfigurationUpdate(newConfig: Configuration): void | 系统配置更新时调用。<br/>主题应用当前仅提供ArkTS接口发布变更事件，需要应用自行处理进行跨语言调用。 |
+| [onConfigurationUpdate(newConfig: Configuration): void](../reference/apis-ability-kit/js-apis-app-ability-ability.md#abilityonconfigurationupdate) | 系统配置更新时调用。<br/>主题应用当前仅提供ArkTS接口发布变更事件，需要应用自行处理进行跨语言调用。 |
 
 
 ## 开发步骤
 
 1. 请确保在设备系统**主题应用**中，能成功应用一项主题字体。
 
-2. 在应用入口文件（默认工程中为EntryAbility.ets）中重写onConfigurationUpdate函数，以响应fontId变更，适配主题字体的切换和页面刷新，重写方式可参考主题字变更事件。
+2. 在应用入口文件（默认工程中为EntryAbility.ets）中重写onConfigurationUpdate函数，以响应fontId变更，适配主题字体的切换和页面刷新，重写方式可参考[主题字变更事件](./theme-font-arkts.md#开发步骤)。
 
-   系统配置信息（即示例中的newConfig）变化时，会自动触发onConfigurationUpdate函数。应用可从系统发送的配置信息获取fontId，通过判断是否与应用本地保存的fontId一致来识别主题字的切换。若不一致则刷新本地fontId，并调用C++代码刷新排版结果。从ArkTS到C++的调用通路需应用根据实际情况选取调用方式，本示例不作推荐。跨语言调用可参考Node-API简介。
+   系统配置信息（即示例中的newConfig）变化时，会自动触发onConfigurationUpdate函数。应用可从系统发送的配置信息获取fontId，通过判断是否与应用本地保存的fontId一致来识别主题字的切换。若不一致则刷新本地fontId，并调用C++代码刷新排版结果。从ArkTS到C++的调用通路需应用根据实际情况选取调用方式，本示例不作推荐。跨语言调用可参考[Node-API简介](../napi/napi-introduction.md)。
 
 3. 导入C++侧依赖，本步骤及之后均为主题字体在C++侧的使用
 
@@ -51,7 +51,7 @@ themeText_native
 
    导入头文件。
 
-   <!-- @theme_font_c_header --> 
+   <!-- @[theme_font_c_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) --> 
    
    ``` C++
    #include <native_drawing/drawing_font_collection.h>
@@ -66,7 +66,7 @@ themeText_native
    >
    > 注册主题字体作用于字体管理集全局对象，故必须使用OH_Drawing_GetFontCollectionGlobalInstance获取全局字体集对象进行绘制。如若使用OH_Drawing_CreateSharedFontCollection或OH_Drawing_CreateFontCollection创建字体集对象，无法使用主题字体。OH_Drawing_GetFontCollectionGlobalInstance获取的全局字体集不允许开发者主动释放，否则会造成字体绘制紊乱的问题。
 
-   <!-- @theme_font_c_draw_text_step1 --> 
+   <!-- @[theme_font_c_draw_text_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) --> 
    
    ``` C++
    OH_Drawing_FontCollection *fontCollection = OH_Drawing_GetFontCollectionGlobalInstance();
@@ -75,7 +75,7 @@ themeText_native
 
 5. OH_Drawing_SetTextStyleFontFamilies()接口可以用来指定字体家族名，从而实现使用指定字体。但使用主题字体，不需要使用OH_Drawing_SetTextStyleFontFamilies()接口指定字体，否则行为变更为优先使用指定字体，而不是主题字体。
 
-   <!-- @theme_font_c_draw_text_step2 --> 
+   <!-- @[theme_font_c_draw_text_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) --> 
    
    ``` C++
    OH_Drawing_TextStyle *myTextStyle = OH_Drawing_CreateTextStyle();
@@ -84,7 +84,7 @@ themeText_native
 
 6. 设置段落文本内容为"Hello World. \nThis is the theme font."，此时该段落文本将应用主题字体。
 
-   <!-- @theme_font_c_draw_text_step3 --> 
+   <!-- @[theme_font_c_draw_text_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKThemFontAndCustomFontText/entry/src/main/cpp/samples/sample_bitmap.cpp) --> 
    
    ``` C++
    // 设置其他文本样式
@@ -114,8 +114,8 @@ themeText_native
 
 **图2** 主题字体1的效果 
 
-themeFont_native_01
+![themeFont_native_01](figures/NdkThemeFont.PNG)
 
 **图3** 主题字体2的效果 
 
-themeFont_native_02
+![themeFont_native_02](figures/themeFont_native_02.png)

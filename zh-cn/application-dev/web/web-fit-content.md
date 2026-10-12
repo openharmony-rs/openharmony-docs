@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-使用Web组件大小自适应页面内容布局模式layoutMode(WebLayoutMode.FIT_CONTENT)时，能使Web组件的大小根据页面内容自适应变化。
+使用Web组件大小自适应页面内容布局模式[layoutMode](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#layoutmode11)([WebLayoutMode](../reference/apis-arkweb/arkts-basic-components-web-e.md#weblayoutmode11).FIT_CONTENT)时，能使Web组件的大小根据页面内容自适应变化。
 
 <!--RP1--><!--RP1End-->
 
@@ -23,7 +23,7 @@
 
 | 图一  Web布局跟随系统| 图二 Web布局跟随系统实机效果|
 | --- | --- |
-| web-fit-content-sample | web-without-fit-content |
+| ![web-fit-content-sample](figures/arkweb-layoutmode-none.png) | ![web-without-fit-content](figures/web-without-fit-content.gif) |
 
 **Web组件大小自适应页面内容布局：**
 
@@ -31,13 +31,13 @@
 
 | 图三 Web组件大小自适应页面内容布局| 图四 Web组件大小自适应页面内容布局实机效果|
 | --- | --- |
-| web-fit-content-sample | web-fit-content |
+| ![web-fit-content-sample](figures/arkweb-layoutmode-fit-content.png) | ![web-fit-content](figures/web-fit-content.gif) |
 
 ## 规格与约束
 
-1. 建议配置渲染模式为同步渲染模式，避免因为组件大小超出限制导致异常场景（白屏，布局错误）。
-2. 建议配置overScrollMode（过滚动模式）为关闭状态。当过滚动模式开启时，当用户在Web界面上滑动到边缘时，Web会通过弹性动画弹回界面，会与Scroll组件的回弹相互冲突，影响体验。
-3. keyboardAvoidMode（键盘避让）属性配置为RESIZE_CONTENT时，该避让模式不生效。
+1. 建议配置[渲染模式](web-render-mode.md)为[同步渲染模式](web-render-mode.md#同步渲染模式)，避免因为组件大小超出限制导致异常场景（白屏，布局错误）。
+2. 建议配置[overScrollMode](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#overscrollmode11)（过滚动模式）为关闭状态。当过滚动模式开启时，当用户在Web界面上滑动到边缘时，Web会通过弹性动画弹回界面，会与Scroll组件的回弹相互冲突，影响体验。
+3. [keyboardAvoidMode](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#keyboardavoidmode12)（键盘避让）属性配置为RESIZE_CONTENT时，该避让模式不生效。
 4. 不支持对页面进行手势缩放。
 5. 不支持通过Web组件的height属性修改组件高度。
 6. 仅支持根据页面内容自适应组件高度，不支持自适应宽度。
@@ -45,7 +45,7 @@
 
 ## 示例代码
 
-<!-- @a_page_that_contains_a_webview_and_text_in_the_comment_section -->
+<!-- @[a_page_that_contains_a_webview_and_text_in_the_comment_section](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebRenderLayout/entry/src/main/ets/pages/FitPageContent.ets) -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -143,12 +143,12 @@ fit_content.html页面代码如下：
 
 **可能原因：**
 
-- 内部H5页面高度超过了7680px（物理像素），但没有设置渲染模式为同步渲染模式。
-- 未配置metaviewport属性。
+- 内部H5页面高度超过了7680px（物理像素），但没有设置渲染模式为[同步渲染模式](web-render-mode.md#同步渲染模式)。
+- 未配置[metaviewport](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#metaviewport12)属性。
 
 **解决方案：**
 
-- 更改渲染模式为同步渲染模式。
+- 更改渲染模式为[同步渲染模式](web-render-mode.md#同步渲染模式)。
 - 在H5页面增加meta配置`<meta name="viewport" content="width=device-width, initial-scale=1.0">`
 
 

@@ -89,7 +89,7 @@ text {
 ```
 
 
-animation3
+![animation3](figures/animation3.gif)
 
 
 > **说明：** 

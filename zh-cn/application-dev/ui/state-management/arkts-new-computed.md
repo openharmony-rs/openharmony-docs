@@ -6,9 +6,9 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-当开发者使用相同的计算逻辑重复绑定在UI上时，为了防止重复计算，可以使用\@Computed计算属性。计算属性中依赖的状态变量变化时，只会计算一次。这解决了UI多次重用该属性导致的重复计算和性能问题。如下面例子。
+当开发者使用相同的计算逻辑重复绑定在UI上时，为了防止重复计算，可以使用[\@Computed](../../reference/apis-arkui/arkui-ts/ts-state-management-computed.md#computed)计算属性。计算属性中依赖的状态变量变化时，只会计算一次。这解决了UI多次重用该属性导致的重复计算和性能问题。如下面例子。
 
-<!-- @computed_property -->
+<!-- @[computed_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/ComputedProperty.ets) -->
 
 ``` TypeScript
 @Computed
@@ -16,7 +16,7 @@ get sum() {
   return this.count1 + this.count2 + this.count3;
 }
 ```
-<!-- @computed_property_text -->
+<!-- @[computed_property_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/ComputedProperty.ets) -->
 
 ``` TypeScript
 Text(`${this.count1 + this.count2 + this.count3}`) // 计算this.count1 + this.count2 + this.count3
@@ -25,7 +25,7 @@ Text(`${this.sum}`) // 读取@Computed sum的缓存值，节省上述重复计�
 Text(`${this.sum}`) // 读取@Computed sum的缓存值，节省上述重复计算
 ```
 
-在阅读本文档前，建议提前阅读：\@ComponentV2，\@ObservedV2和\@Trace，\@Local。
+在阅读本文档前，建议提前阅读：[\@ComponentV2](./arkts-create-custom-components.md#componentv2)，[\@ObservedV2和\@Trace](./arkts-new-observedV2-and-trace.md)，[\@Local](./arkts-new-local.md)。
 
 >**说明：**
 >
@@ -37,7 +37,7 @@ Text(`${this.sum}`) // 读取@Computed sum的缓存值，节省上述重复计�
 
 ## 概述
 
-@Computed为方法装饰器，装饰getter方法。@Computed会检测被计算的属性变化，当被计算的属性变化时，@Computed只会被求解一次。不建议在@Computed中修改变量，错误的使用会导致数据无法被追踪或appfreeze等问题，详情见使用限制。
+@Computed为方法装饰器，装饰getter方法。@Computed会检测被计算的属性变化，当被计算的属性变化时，@Computed只会被求解一次。不建议在@Computed中修改变量，错误的使用会导致数据无法被追踪或appfreeze等问题，详情见[使用限制](#使用限制)。
 
 但需要注意，对于简单计算，不建议使用计算属性，因为计算属性本身也有开销。对于复杂的计算，\@Computed能带来性能收益。
 
@@ -55,9 +55,9 @@ get varName(): T {
 | ------------------ | ----------------------------------------------------- |
 | 支持类型           | getter访问器。 |
 | 从父组件初始化     | 禁止。 |
-| 可初始化子组件     | \@Param。  |
+| 可初始化子组件     | [\@Param](./arkts-new-param.md)。  |
 | 被执行的时机       | \@ComponentV2中的\@Computed会在自定义组件创建的时候初始化，触发\@Computed计算。</br>\@ObservedV2装饰的类中的\@Computed，会在\@ObservedV2装饰的类实例创建后，异步初始化，触发\@Computed计算。</br>参与\@Computed计算的状态变量被改变时，计算属性会重新计算。 |
-| 是否允许赋值       | @Computed装饰的属性是只读的，不允许赋值，详情见使用限制。 |
+| 是否允许赋值       | @Computed装饰的属性是只读的，不允许赋值，详情见[使用限制](#使用限制)。 |
 
 ## 使用限制
 
@@ -118,7 +118,7 @@ get varName(): T {
   }
   ```
 
-  computed-sync-0
+  ![computed-sync-0](./figures/computed-sync-0.gif)
 
 - 在\@Computed装饰的getter方法中，不能改变参与计算的属性，以防止重复执行计算属性导致的appfreeze。
 
@@ -159,7 +159,7 @@ get varName(): T {
   }
   ```
 
-- \@Computed不能和双向绑定!!连用，\@Computed装饰的是getter访问器，不会被子组件同步，也不能被赋值。开发者自己实现的计算属性的setter不生效，且产生编译时报错。
+- \@Computed不能和[双向绑定!!](./arkts-new-binding.md#概述)连用，\@Computed装饰的是getter访问器，不会被子组件同步，也不能被赋值。开发者自己实现的计算属性的setter不生效，且产生编译时报错。
 
   ```ts
   @ComponentV2
@@ -219,6 +219,52 @@ get varName(): T {
   }
   ```
 
+- @Computed装饰器会缓存装饰函数的计算结果。如果@Computed依赖的状态变量被修改了，缓存的计算结果不会同步更新，@Computed会在下一帧重新计算结果，并更新@Computed绑定的UI组件。如果在修改@Computed依赖的状态变量后同步获取@Computed的值，获取的是修改前@Computed缓存的值。
+
+   <!-- @[Computed_Sync_Access](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/ComputedSyncAccess.ets) -->
+   ```ts
+   @Entry
+   @ComponentV2
+   struct Page {
+     @Local count: number = 1;
+
+     // 使用@Computed缓存计算数据
+     @Computed
+     get computedDouble(): number {
+       return this.count * 2;
+     }
+
+     // 使用getter直接计算数据
+     get normalDouble(): number {
+       return this.count * 2;
+     }
+
+     build() {
+       Column() {
+         Text(`count: ${this.count}`)
+           .fontSize(20)
+           .margin(10)
+         Text(`double: ${this.computedDouble}`)
+           .fontSize(20)
+           .margin(10)
+         Button('change count')
+           .width(300)
+           .margin(10)
+           .onClick(() => {
+             this.count = 10;
+             // 同步获取普通getter函数的值，获取的是20
+             console.info('Normal double: ' + this.normalDouble);
+             // 同步获取@Computed的值，获取的是修改前的缓存值2，而非20
+             console.info('Computed double: ' + this.computedDouble);
+           })
+       }
+       .width('100%')
+     }
+   }
+   ```
+
+   ![computed-faq-1](./figures/arkts-computed-faq-1.gif)
+
 ## 使用场景
 ### 当被计算的属性变化时，\@Computed装饰的getter访问器只会被求解一次
 1. 在自定义组件中使用计算属性。
@@ -229,7 +275,7 @@ get varName(): T {
    - 如果UI中有多处需要使用`this.lastName + ' '+ this.firstName`这段计算逻辑，可以使用计算属性，减少计算次数。
    - 点击第二个Button，age自增，UI无变化。因为age非状态变量，只有被观察到的变化才会触发\@Computed fullName重新计算。
 
-   <!-- @custom_component_use --> 
+   <!-- @[custom_component_use](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/CustomComponentUse.ets) --> 
    
    ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -248,7 +294,7 @@ get varName(): T {
      @Computed
      get fullName() {
        hilog.info(DOMAIN, TAG, BUNDLE + '---------Computed----------');
-       return this.firstName + ' ' + this.lastName + this.age;
+       return this.lastName + ' ' + this.firstName + this.age;
      }
    
      build() {
@@ -284,7 +330,7 @@ get varName(): T {
    }
    ```
 
-   computed-sync-1
+   ![computed-sync-1](./figures/computed-sync-1.gif)
 
    计算属性本身会带来性能开销，在实际应用开发中需要注意：
 
@@ -295,7 +341,7 @@ get varName(): T {
 
    点击Button改变lastName，触发\@Computed fullName重新计算，且只被计算一次。
 
-   <!-- @ObservedV2_Class_User -->  
+   <!-- @[ObservedV2_Class_User](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/ObservedV2ClassUser.ets) -->  
    
    ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -344,14 +390,14 @@ get varName(): T {
    }
    ```
 
-   computed-sync-2
+   ![computed-sync-2](./figures/computed-sync-2.gif)
 
 ### \@Computed装饰的属性可以被\@Monitor监听变化
 下面示例展示如何使用计算属性求解fahrenheit和kelvin，并使用\@Monitor监听计算属性的变化：
 - 点击“-”，celsius-- -> fahrenheit -> kelvin --> kelvin变化时调用onKelvinMonitor。
 - 点击“+”，celsius++ -> fahrenheit -> kelvin --> kelvin变化时调用onKelvinMonitor。
 
-  <!-- @Computing_Property_Resolution --> 
+  <!-- @[Computing_Property_Resolution](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/ComputingPropertyResolution.ets) --> 
   
   ``` TypeScript
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -408,7 +454,7 @@ get varName(): T {
   }
   ```
 
-  computed-sync-3
+  ![computed-sync-3](./figures/computed-sync-3.gif)
 
 ### \@Computed装饰的属性可以初始化\@Param
 下面的例子使用\@Computed初始化\@Param。
@@ -416,7 +462,7 @@ get varName(): T {
 - `quantity`的改变会触发`total`和`qualifiesForDiscount`重新计算，计算商品总价和是否可以享有优惠。
 - `total`和`qualifiesForDiscount`的改变会触发子组件`Child`对应Text组件刷新。
 
-  <!-- @Computed_Init_Param -->  
+  <!-- @[Computed_Init_Param](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/ComputedInitParam.ets) -->  
   
   ``` TypeScript
   @ObservedV2
@@ -499,4 +545,4 @@ get varName(): T {
   }
   ```
 
-  computed-sync-4
+  ![computed-sync-4](./figures/computed-sync-4.gif)

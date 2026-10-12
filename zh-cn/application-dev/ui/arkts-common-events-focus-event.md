@@ -14,7 +14,7 @@
 
 - 焦点：指向当前应用界面上唯一的一个可交互元素，当用户使用键盘、电视遥控器、车机摇杆/旋钮等非指向性输入设备与应用程序进行间接交互时，基于焦点的导航和交互是重要的输入手段。
 - 焦点链：在应用的组件树形结构中，当一个组件获得焦点时，从根节点到该组件节点的整条路径上的所有节点都会处于焦点状态，形成一条连续的焦点链。
-- 走焦：指焦点在应用内的组件之间转移的行为。这一过程对用户是透明的，但开发者可以通过监听onFocus（焦点获取）和onBlur（焦点失去）事件来捕捉这些变化。关于走焦的具体方式和规则，详见走焦规范。
+- 走焦：指焦点在应用内的组件之间转移的行为。这一过程对用户是透明的，但开发者可以通过监听onFocus（焦点获取）和onBlur（焦点失去）事件来捕捉这些变化。关于走焦的具体方式和规则，详见[走焦规范](#走焦规范)。
 
 
 **焦点激活态**
@@ -34,14 +34,14 @@
 - 如何进入激活态
 
   - 按下外接键盘的Tab键（注意：首次激活时的Tab键仅用于激活，不会触发焦点移动）。
-  - 调用FocusController的activate(true)方法。
+  - 调用[FocusController](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md)的activate(true)方法。
 
 - 如何退出激活态
 
   - 调用FocusController的activate(false)方法。
   - 发生点击事件时（包括触屏点击或鼠标左键点击）。
 
-<!-- @dynamic_focus_active -->
+<!-- @[dynamic_focus_active](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusActive.ets) -->
 
 ``` TypeScript
 @Entry
@@ -66,20 +66,20 @@ export struct FocusActiveExample {
 
 按下Tab键，焦点激活态显示。点击鼠标退出焦点激活态。
 
-Active_Focus_1
+![Active_Focus_1](figures/Active_Focus_1.gif)
 
 
-调用activate接口进入和退出焦点激活态。
+调用[activate](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md#activate14)接口进入和退出焦点激活态。
 
-Active_Focus_2
+![Active_Focus_2](figures/Active_Focus_2.gif)
 
 示例操作步骤：
-1. 点击Set Active按钮，调用activate接口进入焦点激活态。
-2. Tab键走焦至Set Not Active按钮，Enter键触发按键事件，调用activate接口退出焦点激活态。
+1. 点击Set Active按钮，调用[activate](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md#activate14)接口进入焦点激活态。
+2. Tab键走焦至Set Not Active按钮，Enter键触发按键事件，调用[activate](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md#activate14)接口退出焦点激活态。
 
 **层级页面**
 
-层级页面是焦点框架中特定容器组件的统称，涵盖普通页面、全屏模态页面、半模态页面、Dialog、Menu、Popup、NavBar、NavDestination等。这些组件通常具有以下关键特性：
+层级页面是焦点框架中特定容器组件的统称，涵盖普通页面、[全屏模态](../reference/apis-arkui/arkui-ts/ts-universal-attributes-modal-transition.md)页面、[半模态](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md)页面、[Dialog](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md)、[Menu](../reference/apis-arkui/arkui-ts/ts-basic-components-menu.md)、[Popup](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md)、[NavBar](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navbar12)、[NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)等。这些组件通常具有以下关键特性：
 
 - 视觉层级独立性：从视觉呈现上看，这些组件独立于其他页面内容，并通常位于其上方，形成视觉上的层级差异。
 - 焦点跟随：此类组件在首次创建并展示之后，会立即将应用内焦点抢占。
@@ -95,11 +95,11 @@ Active_Focus_2
 
 **根容器**
 
-根容器是层级页面内的概念，当某个层级页面首次创建并展示时，根据层级页面的特性，焦点会立即被该层级页面抢占。此时，该层级页面所在焦点链的末端节点将成为默认焦点，而这个默认焦点通常位于该层级页面的根容器上。
+根容器是[层级页面](#基础概念)内的概念，当某个[层级页面](#基础概念)首次创建并展示时，根据[层级页面](#基础概念)的特性，焦点会立即被该[层级页面](#基础概念)抢占。此时，该[层级页面](#基础概念)所在焦点链的末端节点将成为默认焦点，而这个默认焦点通常位于该[层级页面](#基础概念)的根容器上。
 
-在缺省状态下，层级页面的默认焦点位于其根容器上，但开发者可以通过defaultFocus属性来自定义这一行为。
+在缺省状态下，[层级页面](#基础概念)的默认焦点位于其根容器上，但开发者可以通过defaultFocus属性来自定义这一行为。
 
-当焦点位于根容器时，首次按下Tab键不仅会使焦点进入激活状态，还会根据焦点传递规则进行传递。
+当焦点位于根容器时，首次按下Tab键不仅会使焦点进入激活状态，还会根据[焦点传递规则](#焦点传递规则)进行传递。
 
 ### 焦点传递规则
 
@@ -107,7 +107,7 @@ Active_Focus_2
 
 在焦点链上的组件，都会处于获焦状态。同时组件在获焦时，会继续向下递归传递获焦状态，每次传递给第一个子组件，直到叶子节点。
 
-<!-- @dynamic_focus_transfer -->
+<!-- @[dynamic_focus_transfer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusTransfer.ets) -->
 
 ``` TypeScript
 @Entry
@@ -202,7 +202,7 @@ export struct FocusTransferExample {
 
 运行后点击Button1，请求焦点给Row组件，Row组件的第一个可获焦子节点Button2获焦。
 
-Liner_Focus_1
+![Liner_Focus_1](figures/Focus_transfer.gif)
 
 ### 走焦规范
 
@@ -230,17 +230,17 @@ Liner_Focus_1
 
 - requestFocus
 
-  详见主动获焦失焦，可以主动将焦点转移到指定组件上。
+  详见[主动获焦失焦](#主动获焦失焦)，可以主动将焦点转移到指定组件上。
 
   不可跨窗口或跨ArkUI实例申请焦点，但可以跨层级页面申请焦点。
 
 - clearFocus
 
-  详见clearFocus，会清除当前层级页面中的焦点，最终焦点停留在根容器上。
+  详见[clearFocus](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md#clearfocus12)，会清除当前层级页面中的焦点，最终焦点停留在根容器上。
 
 - focusOnTouch
 
-  详见focusOnTouch，使绑定组件具备点击后获得焦点的能力。若组件本身不可获焦，则此功能无效。若绑定的是容器组件，点击后优先将焦点转移给上一次获焦的子组件，否则转移给第一个可获焦的子组件。
+  详见[focusOnTouch](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#focusontouch9)，使绑定组件具备点击后获得焦点的能力。若组件本身不可获焦，则此功能无效。若绑定的是容器组件，点击后优先将焦点转移给上一次获焦的子组件，否则转移给第一个可获焦的子组件。
 
 
 **被动走焦**
@@ -252,7 +252,7 @@ Liner_Focus_1
 
 - 组件删除：当处于焦点状态的组件被删除时，焦点框架首先尝试将焦点转移到相邻的兄弟组件上，遵循先向后再向前的顺序。若所有兄弟组件均不可获焦，则焦点将释放，并通知其父组件进行焦点处理。
 - 属性变更：若将处于焦点状态的组件的focusable或enabled属性设置为false，或者将visibility属性设置为不可见，系统将自动转移焦点至其他可获焦组件，转移方式与1中相同。
-- 层级页面切换：当发生层级页面切换时，如从一个层级页面跳转到另一个层级页面，当前层级页面的焦点将自动释放，新层级页面可能会根据预设逻辑自动获得焦点。
+- [层级页面](#基础概念)切换：当发生[层级页面](#基础概念)切换时，如从一个[层级页面](#基础概念)跳转到另一个[层级页面](#基础概念)，当前[层级页面](#基础概念)的焦点将自动释放，新[层级页面](#基础概念)可能会根据预设逻辑自动获得焦点。
 - Web组件初始化：对于Web组件，当其被创建时，若其设计需要立即获得焦点（如某些弹出框或输入框），则可能触发焦点转移至该Web组件，其行为属于组件自身的行为逻辑，不属于焦点框架的规格范围。
 
 ### 走焦算法
@@ -272,7 +272,7 @@ Liner_Focus_1
 - 方向键走焦：当使用与容器定义方向垂直的方向键时，容器不接受该方向的走焦请求。例如，在横向的Row容器中，无法使用方向键进行上下移动。
 - 边界处理：当焦点位于容器的首尾子节点时，容器将拒绝与当前焦点方向相反的方向键走焦请求。例如，焦点在一个横向的Row容器的第一个子节点上时，该容器无法处理方向键左的走焦请求。
 
-<!-- @dynamic_focus_liner -->
+<!-- @[dynamic_focus_liner](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusTraversalGuidelines.ets) -->
 
 ``` TypeScript
 @Entry
@@ -315,15 +315,15 @@ export struct FocusLinerExample {
 
 Tab键走焦：按照子节点的挂载顺序循环走焦。
 
-Liner_Focus_1
+![Liner_Focus_1](figures/Liner_Focus_1.gif)
 
 方向键上下走焦：纵向的Column容器中，可以使用上下键走焦，无法使用左右键走焦。
 
-Liner_Focus_2
+![Liner_Focus_2](figures/Liner_Focus_2.gif)
 
 横向的Row容器中，可以使用左右键走焦，无法使用上下键走焦。
 
-Liner_Focus_3
+![Liner_Focus_3](figures/Liner_Focus_3.gif)
 
 
 **投影走焦算法**
@@ -335,7 +335,7 @@ Liner_Focus_3
 - Tab键走焦时，先使用规格1，按照方向键右进行判定，若找到则成功退出，若无法找到，则将当前获焦子组件的位置模拟往下移动该获焦子组件的高度，然后再按照方向键左进行投影判定，有投影重叠且中心点直线距离最近的子组件胜出，若无投影重叠的子组件，则表示该容器无法处理本次Tab键走焦请求。
 - Shift+Tab键走焦时，先使用规格1，按照方向键左进行判定，找到则成功退出。若无法找到，则将当前获焦子组件的位置模拟向上移动该获焦子组件的高度，然后再按照方向键右进行投影判定，有投影重叠且中心点直线距离最近的子组件胜出，若无投影重叠的子组件，则表示该容器无法处理本次的Shift+Tab键走焦请求。
 
- <!-- @dynamic_focus_project_area -->
+ <!-- @[dynamic_focus_project_area](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/ProjectionBasedFocus.ets) -->
  
  ``` TypeScript
  @Entry
@@ -372,9 +372,9 @@ Liner_Focus_3
 
 Flex多行组件布局，组件大小一致，走焦正常。
 
-Project_Area_Focus_1
+![Project_Area_Focus_1](figures/Project_Area_Focus_1.gif)
 
-<!-- @dynamic_focus_project_area_flex -->
+<!-- @[dynamic_focus_project_area_flex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/ProjectAreaFocusFlex.ets) -->
 
 ``` TypeScript
 @Entry
@@ -405,7 +405,7 @@ export struct ProjectAreaFocusFlexExample {
 
 Flex多行组件布局，组件大小不一且有纵向的交叠关系，无法Tab键走焦至下方4、5按钮组件。
 
-Project_Area_Focus_2
+![Project_Area_Focus_2](figures/Project_Area_Focus_2.gif)
 
 
 **自定义走焦算法**
@@ -429,7 +429,7 @@ onBlur(event: () => void)
 
 onFocus和onBlur两个接口通常成对使用，来监听组件的焦点变化。
 
-<!-- @focus_dynamic_reflect -->
+<!-- @[focus_dynamic_reflect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/onFocusBlur.ets) -->
 
 ``` TypeScript
 @Entry
@@ -492,7 +492,7 @@ export struct OnFocusBlur {
 ```
 
 
-focus-event
+![focus-event](figures/focus-event.gif)
 
 
 上述示例包含以下3步：
@@ -505,7 +505,7 @@ focus-event
 
 父节点Row1失焦 —> 子节点Button1失焦 —> 子节点Button2获焦 —> 父节点Row2获焦。
 
-<!-- @dynamic_focus_blur --> 
+<!-- @[dynamic_focus_blur](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/OnFocusOnBlurEvents.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -588,11 +588,11 @@ focusable(value: boolean)
 
 - 有获焦能力，但默认不可获焦的组件，典型的是Text、Image组件，此类组件缺省情况下无法获焦，若需要使其获焦，可使用通用属性focusable(true)使能。对于没有配置focusable属性，有获焦能力但默认不可获焦的组件，例如没有可获焦子组件的容器组件，为其配置onClick或是单指单击的Tap手势，该组件会隐式地成为可获焦组件。如果其focusable属性被设置为false，即使配置了上述事件，该组件依然不可获焦。
 
-- 无获焦能力的组件，通常是无任何交互行为的展示类组件，例如Blank、Canvas、Circle组件，此类组件即使使用focusable属性也无法使其可获焦。
+- 无获焦能力的组件，通常是无任何交互行为的展示类组件，例如[Blank](../reference/apis-arkui/arkui-ts/ts-basic-components-blank.md)、[Canvas](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md)、[Circle](../reference/apis-arkui/arkui-ts/ts-drawing-components-circle.md)组件，此类组件即使使用focusable属性也无法使其可获焦。
 
 设置容器组件可获焦：
 
-获焦的主要目的是为了响应用户交互，如果组件不具备交互能力，则其也不会具有可获焦能力。容器组件通常不具备交互能力，因此如果一个容器组件（如Stack、Column）作为叶子节点，即使通过.focusable(true)也无法使其具备可获焦能力。需要注意的是通过动态方式创建的FrameNode节点也受限于这个规则。
+获焦的主要目的是为了响应用户交互，如果组件不具备交互能力，则其也不会具有可获焦能力。容器组件通常不具备交互能力，因此如果一个容器组件（如Stack、Column）作为叶子节点，即使通过.focusable(true)也无法使其具备可获焦能力。需要注意的是通过动态方式创建的[FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md)节点也受限于这个规则。
 
 如果想让作为叶子节点的容器组件可获焦，可通过以下任一方式实现：
 
@@ -604,13 +604,13 @@ focusable(value: boolean)
 enabled(value: boolean)
 ```
 
-设置组件可交互性属性enabled为`false`，则组件不可交互，无法获焦。
+设置组件可交互性属性[enabled](../reference/apis-arkui/arkui-ts/ts-universal-attributes-enable.md#enabled)为`false`，则组件不可交互，无法获焦。
 
 ```ts
 visibility(value: Visibility)
 ```
 
-设置组件可见性属性visibility为`Visibility.None`或`Visibility.Hidden`，则组件不可见，无法获焦。
+设置组件可见性属性[visibility](../reference/apis-arkui/arkui-ts/ts-universal-attributes-visibility.md#visibility)为`Visibility.None`或`Visibility.Hidden`，则组件不可见，无法获焦。
 
 ```ts
 focusOnTouch(value: boolean)
@@ -620,10 +620,10 @@ focusOnTouch(value: boolean)
 
 > **说明：**
 >
->当某组件处于获焦状态时，将其的focusable属性或enabled属性设置为false，会自动使该组件失焦，然后焦点按照走焦规范将焦点转移给其他组件。
+>当某组件处于获焦状态时，将其的focusable属性或enabled属性设置为false，会自动使该组件失焦，然后焦点按照[走焦规范](#走焦规范)将焦点转移给其他组件。
 
 
- <!-- @dynamic_focus_control_manage --> 
+ <!-- @[dynamic_focus_control_manage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/Focusable.ets) --> 
  
  ``` TypeScript
  @Entry
@@ -724,7 +724,7 @@ focusOnTouch(value: boolean)
 运行效果：
 
 
-focus-1.gif
+![focus-1.gif](figures/focus-1.gif)
 
 上述示例包含以下3步：
 
@@ -743,7 +743,7 @@ focus-1.gif
 > - 容器配置有onClick或是单指单击的Tap手势。
 > - 容器本身未设置focusable属性，或设置在onClick或是单指单击的Tap手势之后。
 
-<!-- @dynamic_focus_scope -->
+<!-- @[dynamic_focus_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/ScopeFocus.ets) -->
 
 ``` TypeScript
 
@@ -779,7 +779,7 @@ export struct ScopeFocusExample {
           .margin(5)
           .onClick(() => {
             this.scopeFocusState = !this.scopeFocusState;
-            hilog.info(DOMAIN, TAG, BUNDLE + 'Button1 onFocus');
+            hilog.info(DOMAIN, TAG, BUNDLE + 'Button1 onClick');
           })
         Button('Button2')
           .width(140)
@@ -793,7 +793,7 @@ export struct ScopeFocusExample {
 ```
 
 
-Scope_Focus_1.gif
+![Scope_Focus_1.gif](figures/Scope_Focus_1.gif)
 
 上述示例包含以下2步：
 
@@ -805,9 +805,9 @@ Scope_Focus_1.gif
 ```ts
 tabStop(isTabStop: boolean) 
 ```
-设置当前容器组件的tabStop属性，可决定在走焦时焦点是否会停留在当前容器。
+设置当前容器组件的[tabStop](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#tabstop14)属性，可决定在走焦时焦点是否会停留在当前容器。
 
-<!-- @dynamic_focus_tab_stop -->
+<!-- @[dynamic_focus_tab_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/TabStop.ets) -->
 
 ``` TypeScript
 @Entry
@@ -837,7 +837,7 @@ export struct TabStopExample {
 }
 ```
 
-TabStop_Focus_1.gif
+![TabStop_Focus_1.gif](figures/TabStop_Focus_1.gif)
 
 上述示例包含以下2步：
 
@@ -852,9 +852,9 @@ TabStop_Focus_1.gif
 defaultFocus(value: boolean)
 ```
 
-设置当前组件是否为当前层级页面上的默认焦点。
+设置当前组件是否为当前[层级页面](#基础概念)上的默认焦点。
 
-<!-- @focus_visualization_manage -->
+<!-- @[focus_visualization_manage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/DefaultFocus.ets) -->
 
 ``` TypeScript
 @Entry
@@ -918,24 +918,24 @@ export struct DefaultFocus {
 }
 ```
 
-defaultFocus.gif
+![defaultFocus.gif](figures/defaultFocus.gif)
 
 上述示例包含以下2步：
 
-- 在第三个Button组件上设置了defaultFocus(true)，进入层级页面后第三个Button默认获焦，显示为绿色。
+- 在第三个Button组件上设置了defaultFocus(true)，进入[层级页面](#基础概念)后第三个Button默认获焦，显示为绿色。
 - 按下Tab键，触发走焦，第三个Button正处于获焦状态，会出现焦点框。
 
 ### 容器的默认焦点
 
-容器的默认焦点受到获焦优先级的影响。
+容器的默认焦点受到[获焦优先级](#焦点组与获焦优先级)的影响。
 
 **defaultFocus与FocusPriority的区别**
 
-defaultFocus是用于指定层级页面首次展示时的默认获焦节点，FocusPriority是用于指定某个容器首次获焦时其子节点的获焦优先级。上述两个属性在某些场景同时配置时行为未定义，例如下面的场景，层级页面首次展示无法同时满足defaultFocus获焦和高优先级组件获焦。
+[defaultFocus](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#defaultfocus9)是用于指定[层级页面](#基础概念)首次展示时的默认获焦节点，[FocusPriority](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#focuspriority12)是用于指定某个容器首次获焦时其子节点的获焦优先级。上述两个属性在某些场景同时配置时行为未定义，例如下面的场景，[层级页面](#基础概念)首次展示无法同时满足defaultFocus获焦和高优先级组件获焦。
 
 示例
 
-<!-- @dynamic_focus_scope_priority_previous -->
+<!-- @[dynamic_focus_scope_priority_previous](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusScopePriorityPrevious.ets) -->
 
 ``` TypeScript
 @Entry
@@ -959,32 +959,32 @@ export struct FocusScopePriorityPrevious {
 
 **整体获焦与非整体获焦**
 
-- 整体获焦是层级页面/容器自身作为焦点链的叶节点获焦，获焦后再把焦点链叶节点转移到子孙组件。例如，层级页面切换、Navigation组件中的路由切换、焦点组走焦、容器组件主动调用requestFocusById等。
+- 整体获焦是[层级页面](#基础概念)/容器自身作为焦点链的叶节点获焦，获焦后再把焦点链叶节点转移到子孙组件。例如，[层级页面](#基础概念)切换、Navigation组件中的路由切换、焦点组走焦、容器组件主动调用requestFocusById等。
 
 - 非整体获焦是某个组件作为焦点链叶节点获焦，导致其祖先节点跟着获焦。例如TextInput组件主动获取焦点、Tab键在非焦点组场景下走焦等。
 
 **整体获焦的焦点链形成**
 
-1.层级页面首次获焦：
+1. [层级页面](#基础概念)首次获焦：
 
-- 焦点链叶节点为配置了defaultFocus的节点。
+   - 焦点链叶节点为配置了defaultFocus的节点。
 
-- 未配置defaultFocus时，焦点停留在层级页面的根容器上。
+   - 未配置defaultFocus时，焦点停留在[层级页面](#基础概念)的根容器上。
 
-2.层级页面非首次获焦：由上次获焦的节点获焦。
+2. [层级页面](#基础概念)非首次获焦：由上次获焦的节点获焦。
 
-3.焦点链上存在配置了获焦优先级的组件和容器：
+3. 焦点链上存在配置了获焦优先级的组件和容器：
 
-- 容器内存在优先级大于PREVIOUS的组件，由优先级最高的组件获焦。
+   - 容器内存在优先级大于PREVIOUS的组件，由优先级最高的组件获焦。
 
-- 容器内不存在优先级大于PREVIOUS的组件，由上次获焦的节点获焦。例如，窗口失焦后重新获焦。
+   - 容器内不存在优先级大于PREVIOUS的组件，由上次获焦的节点获焦。例如，窗口失焦后重新获焦。
 
 
 ## 焦点样式
 
 > **说明：**
 >
-> 最终绘制焦点激活态的组件的zIndex默认会被抬升至INT_MAX，如果该组件已经配置了zIndex，则不做zIndex调整。该组件不再绘制焦点激活态时，例如组件失焦或是退出走焦态，zIndex恢复为默认层级。
+> 最终绘制焦点激活态的组件的[zIndex](../reference/apis-arkui/arkui-ts/ts-universal-attributes-z-order.md#zindex)默认会被抬升至INT_MAX，如果该组件已经配置了zIndex，则不做zIndex调整。该组件不再绘制焦点激活态时，例如组件失焦或是退出走焦态，zIndex恢复为默认层级。
 >
 
 ```ts
@@ -993,7 +993,7 @@ focusBox(style: FocusBoxStyle)
 
 设置当前组件系统焦点框样式。
 
-<!-- @dynamic_focus_request -->
+<!-- @[dynamic_focus_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/RequestFocus.ets) -->
 
 ``` TypeScript
 import { ColorMetrics, LengthMetrics } from '@kit.ArkUI';
@@ -1024,12 +1024,12 @@ export struct RequestFocusExample {
 }
 ```
 
-focusBox
+![focusBox](figures/focusBox.gif)
 
 
 上述示例包含以下2步：
 
-- 进入层级页面，按下Tab键触发走焦，第一个Button获焦，焦点框样式为紧贴边缘的黑色细框。
+- 进入[层级页面](#基础概念)，按下Tab键触发走焦，第一个Button获焦，焦点框样式为紧贴边缘的黑色细框。
 - 按下Tab键，走焦到第二个Button，焦点框样式为远离边缘的红色粗框。
 
 ## 主动获焦/失焦
@@ -1041,7 +1041,7 @@ focusBox
   - 有异常值返回，便于排查主动获取焦点失败的原因。
   - 避免多实例场景中取到错误实例。
 
-  需先使用UIContext中的getFocusController()方法获取实例，再通过此实例调用对应方法。
+  需先使用UIContext中的[getFocusController()](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getfocuscontroller12)方法获取实例，再通过此实例调用对应方法。
 
   ```ts
   requestFocus(key: string): void
@@ -1060,7 +1060,7 @@ focusBox
 
   调用此接口可以主动让焦点转移至参数指定的组件上，焦点转移生效时间为下一个帧信号。
 
-  <!-- @dynamic_focus_control_demo --> 
+  <!-- @[dynamic_focus_control_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusController.ets) --> 
   
   ``` TypeScript
   @Entry
@@ -1141,7 +1141,7 @@ focusBox
   }
   ```
 
-focus-2
+![focus-2](figures/focus-2.gif)
 
 上述示例包含以下3步：
 
@@ -1163,7 +1163,7 @@ nextFocus(nextStep: Optional<FocusMovement>): T
 >
 >  - 该能力从API version 18开始支持。
 
-  <!-- @dynamic_focus_next -->
+  <!-- @[dynamic_focus_next](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/NextFocus.ets) -->
   
   ``` TypeScript
   @Entry
@@ -1211,11 +1211,11 @@ nextFocus(nextStep: Optional<FocusMovement>): T
 
 Tab键走焦：未配置nextFocus时，Tab键走焦顺序为A->B->C->D->E->F。配置nextFocus之后，Tab键走焦顺序为A->F->B->C->D->E->A。
 
-NextFocus_Focus_1.gif
+![NextFocus_Focus_1.gif](figures/NextFocus_Focus_1.gif)
 
 方向键走焦（以方向下键为例）：未配置nextFocus时，按下Tab键激活焦点态之后，按方向下键走焦顺序为A->D->E->F。配置nextFocus之后，按下Tab键激活焦点态之后，按方向下键走焦顺序为A->B->C->D->E->F->A。
 
-NextFocus_Focus_2.gif
+![NextFocus_Focus_2.gif](figures/NextFocus_Focus_2.gif)
 
 ### tabIndex自定义走焦
 
@@ -1231,11 +1231,11 @@ tabIndex自定义组件Tab键走焦顺序。
 >
 > 不能同时设置tabIndex与focusScopeId属性。
 > 
-> 不建议在层级页面中通过单独设置组件的tabIndex属性为负数来控制获焦能力，可以使用focusable属性代替。
+> 不建议在[层级页面](#基础概念)中通过单独设置组件的tabIndex属性为负数来控制获焦能力，可以使用focusable属性代替。
 > 
-> tabIndex只能够自定义Tab键走焦，若想同时自定义方向键等走焦能力，建议使用nextFocus。
+> tabIndex只能够自定义Tab键走焦，若想同时自定义方向键等走焦能力，建议使用[nextFocus](#nextfocus自定义走焦)。
 
-  <!-- @dynamic_focus_tab_index -->
+  <!-- @[dynamic_focus_tab_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/TabIndex.ets) -->
   
   ``` TypeScript
   @Entry
@@ -1269,11 +1269,11 @@ tabIndex自定义组件Tab键走焦顺序。
 
 Tab键走焦：只在配置TabIndex的节点间循环走焦。
 
-TabIndex_Focus_1.gif
+![TabIndex_Focus_1.gif](figures/TabIndex_Focus_1.gif)
 
 tabIndex配置在容器上时，如果容器中的所有组件都没有获焦过，则走到第一个可获焦组件上，否则会走到上次获焦的节点。
 
-<!-- @dynamic_focus_tab_index_focus -->
+<!-- @[dynamic_focus_tab_index_focus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/TabIndexFocus.ets) -->
 
 ``` TypeScript
 @Entry
@@ -1305,7 +1305,7 @@ export struct TabIndexFocusExample {
 
 Tab键走焦：tabIndex配置在容器上。
 
-TabIndex_Focus_2.gif
+![TabIndex_Focus_2.gif](figures/TabIndex_Focus_2.gif)
 
 上述示例包含以下3步：
 
@@ -1328,7 +1328,7 @@ focusScopeId(id: string, isGroup?: boolean)
 
 设置当前容器组件的id标识，设置当前容器组件是否为焦点组。焦点组与tabIndex不能混用。
 
-<!-- @focus_scope_navigation -->
+<!-- @[focus_scope_navigation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusScopePriority.ets) -->
 
 ``` TypeScript
 @Entry
@@ -1463,7 +1463,7 @@ export struct FocusScopePriority {
 ```
 
 
-focus-3
+![focus-3](figures/focus-3.gif)
 
 
 
@@ -1478,7 +1478,7 @@ focus-3
 focusScopeId(id: string, isGroup?: boolean, arrowStepOut?: boolean)
 ```
 
-<!-- @dynamic_focus_scope_id -->
+<!-- @[dynamic_focus_scope_id](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusScopeId.ets) -->
 
 ``` TypeScript
 @Entry
@@ -1539,7 +1539,7 @@ export struct FocusScopeIdExample {
 ```
 
 
-FocusScopeId_1
+![FocusScopeId_1](figures/FocusScopeId_1.gif)
 
 上述示例包含以下3步：
 - Group1和Group2设置焦点组，因此按下Tab键后焦点会快速从Group1和Group2的方框内走出。
@@ -1556,7 +1556,7 @@ FocusScopeId_1
 
 > **说明：**
 >
-> - 点击事件（`onClick`）或单指单击事件（`TapGesture`）在回车、空格触发对应事件回调时，默认不冒泡传递，即父组件对应按键事件不会被同步触发。
+> - 点击事件（`onClick`）或单指单击事件（`TapGesture`）在回车、空格触发对应事件回调时，默认不冒泡传递，即父组件对应[按键事件](../reference/apis-arkui/arkui-ts/ts-universal-events-key.md)不会被同步触发。
 >
 > - 按键事件（`onKeyEvent`）默认冒泡传递，即同时会触发父组件的按键事件回调。
 >
@@ -1564,7 +1564,7 @@ FocusScopeId_1
 >
 > - 从API version 18开始，获焦组件只有在焦点激活态时才会响应点击事件（`onClick`）。
 
-   <!-- @dynamic_focus_on_click -->
+   <!-- @[dynamic_focus_on_click](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/focus/FocusOnClick.ets) -->
    
    ``` TypeScript
    @Entry
@@ -1593,7 +1593,7 @@ FocusScopeId_1
    }
    ```
 
-focus-4
+![focus-4](figures/focus-4.gif)
 
 ## 组件获焦能力说明
 
@@ -1602,104 +1602,104 @@ focus-4
 
 | 基础组件                                     | 是否有获焦能力 | focusable默认值 |
 | ---------------------------------------- | ------- | ------------ |
-| AlphabetIndexer | 是       | true         |
-| Blank | 否       | false        |
-| Button | 是       | true         |
-| CalendarPicker | 是       | true         |
-| Canvas                 | 否       | false        |
-| Checkbox | 是       | true         |
-| CheckboxGroup | 是       | true         |
-| Circle                 | 否       | false        |
-| Component3D | 否       | false         |
-| ContainerSpan | 否       | false         |
-| DataPanel | 是       | false        |
-| DatePicker | 是       | true         |
-| Divider | 是       | false        |
-| Ellipse                 | 否       | false        |
-| Gauge | 是       | false        |
-| Image | 是       | false        |
-| ImageAnimator | 否       | false        |
-| ImageSpan                 | 否       | false        |
-| Indicator | 是       | true        |
-| Line                 | 否       | false        |
-| LoadingProgress | 是       | true        |
-| Marquee | 否       | false        |
-| Menu | 是       | true         |
-| MenuItem | 是       | true         |
-| MenuItemGroup | 否       | false         |
-| MultiNavigation | 否       | false         |
-| Navigation | 是       | true       |
-| NavRouter | 否       | false        |
-| NavDestination | 是       | true        |
-| Path | 否       | false        |
-| PatternLock | 是       | true        |
-| Polygon                 | 否       | false        |
-| Polyline                 | 否       | false        |
-| Progress | 是       | true        |
-| QRCode | 是       | true        |
-| Radio | 是       | true         |
-| Rating | 是       | true         |
-| Rect | 否       | false        |
-| RichEditor | 是       | true         |
-| RichText | 否       | false        |
-| ScrollBar | 否       | false        |
-| Search | 是       | true         |
-| Select | 是       | true         |
-| Shape | 否       | false        |
-| Slider | 是       | true         |
-| Span | 否       | false        |
-| Stepper | 是       | true         |
-| StepperItem | 是       | true         |
-| SymbolSpan | 否       | false         |
-| SymbolGlyph | 否       | false         |
-| Text | 是       | false        |
-| TextArea | 是       | true         |
-| TextClock | 否       | false        |
-| TextInput | 是       | true         |
-| TextPicker | 是       | true         |
-| TextTimer | 否       | false        |
-| TimePicker | 否       | false         |
-| Toggle | 是       | true         |
-| XComponent | 是       | false        |
+| [AlphabetIndexer](../reference/apis-arkui/arkui-ts/ts-container-alphabet-indexer.md) | 是       | true         |
+| [Blank](../reference/apis-arkui/arkui-ts/ts-basic-components-blank.md) | 否       | false        |
+| [Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md) | 是       | true         |
+| [CalendarPicker](../reference/apis-arkui/arkui-ts/ts-basic-components-calendarpicker.md) | 是       | true         |
+| [Canvas](../reference/apis-arkui/arkui-ts/ts-components-canvas-canvas.md)                 | 否       | false        |
+| [Checkbox](../reference/apis-arkui/arkui-ts/ts-basic-components-checkbox.md) | 是       | true         |
+| [CheckboxGroup](../reference/apis-arkui/arkui-ts/ts-basic-components-checkboxgroup.md) | 是       | true         |
+| [Circle](../reference/apis-arkui/arkui-ts/ts-drawing-components-circle.md)                 | 否       | false        |
+| [Component3D](../reference/apis-arkui/arkui-ts/ts-basic-components-component3d.md) | 否       | false         |
+| [ContainerSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-containerspan.md) | 否       | false         |
+| [DataPanel](../reference/apis-arkui/arkui-ts/ts-basic-components-datapanel.md) | 是       | false        |
+| [DatePicker](../reference/apis-arkui/arkui-ts/ts-basic-components-datepicker.md) | 是       | true         |
+| [Divider](../reference/apis-arkui/arkui-ts/ts-basic-components-divider.md) | 是       | false        |
+| [Ellipse](../reference/apis-arkui/arkui-ts/ts-drawing-components-ellipse.md)                 | 否       | false        |
+| [Gauge](../reference/apis-arkui/arkui-ts/ts-basic-components-gauge.md) | 是       | false        |
+| [Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md) | 是       | false        |
+| [ImageAnimator](../reference/apis-arkui/arkui-ts/ts-basic-components-imageanimator.md) | 否       | false        |
+| [ImageSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-imagespan.md)                 | 否       | false        |
+| [Indicator](../reference/apis-arkui/arkui-ts/ts-swiper-components-indicator.md) | 是       | true        |
+| [Line](../reference/apis-arkui/arkui-ts/ts-drawing-components-line.md)                 | 否       | false        |
+| [LoadingProgress](../reference/apis-arkui/arkui-ts/ts-basic-components-loadingprogress.md) | 是       | true        |
+| [Marquee](../reference/apis-arkui/arkui-ts/ts-basic-components-marquee.md) | 否       | false        |
+| [Menu](../reference/apis-arkui/arkui-ts/ts-basic-components-menu.md) | 是       | true         |
+| [MenuItem](../reference/apis-arkui/arkui-ts/ts-basic-components-menuitem.md) | 是       | true         |
+| [MenuItemGroup](../reference/apis-arkui/arkui-ts/ts-basic-components-menuitemgroup.md) | 否       | false         |
+| [MultiNavigation](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-MultiNavigation.md) | 否       | false         |
+| [Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md) | 是       | true       |
+| [NavRouter](../reference/apis-arkui/arkui-ts/ts-basic-components-navrouter.md) | 否       | false        |
+| [NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md) | 是       | true        |
+| [Path](../reference/apis-arkui/arkui-ts/ts-drawing-components-path.md) | 否       | false        |
+| [PatternLock](../reference/apis-arkui/arkui-ts/ts-basic-components-patternlock.md) | 是       | true        |
+| [Polygon](../reference/apis-arkui/arkui-ts/ts-drawing-components-polygon.md)                 | 否       | false        |
+| [Polyline](../reference/apis-arkui/arkui-ts/ts-drawing-components-polyline.md)                 | 否       | false        |
+| [Progress](../reference/apis-arkui/arkui-ts/ts-basic-components-progress.md) | 是       | true        |
+| [QRCode](../reference/apis-arkui/arkui-ts/ts-basic-components-qrcode.md) | 是       | true        |
+| [Radio](../reference/apis-arkui/arkui-ts/ts-basic-components-radio.md) | 是       | true         |
+| [Rating](../reference/apis-arkui/arkui-ts/ts-basic-components-rating.md) | 是       | true         |
+| [Rect](../reference/apis-arkui/arkui-ts/ts-drawing-components-rect.md) | 否       | false        |
+| [RichEditor](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md) | 是       | true         |
+| [RichText](../reference/apis-arkui/arkui-ts/ts-basic-components-richtext.md) | 否       | false        |
+| [ScrollBar](../reference/apis-arkui/arkui-ts/ts-basic-components-scrollbar.md) | 否       | false        |
+| [Search](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md) | 是       | true         |
+| [Select](../reference/apis-arkui/arkui-ts/ts-basic-components-select.md) | 是       | true         |
+| [Shape](../reference/apis-arkui/arkui-ts/ts-drawing-components-shape.md) | 否       | false        |
+| [Slider](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md) | 是       | true         |
+| [Span](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md) | 否       | false        |
+| [Stepper](../reference/apis-arkui/arkui-ts/ts-basic-components-stepper.md) | 是       | true         |
+| [StepperItem](../reference/apis-arkui/arkui-ts/ts-basic-components-stepperitem.md) | 是       | true         |
+| [SymbolSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolSpan.md) | 否       | false         |
+| [SymbolGlyph](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md) | 否       | false         |
+| [Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md) | 是       | false        |
+| [TextArea](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md) | 是       | true         |
+| [TextClock](../reference/apis-arkui/arkui-ts/ts-basic-components-textclock.md) | 否       | false        |
+| [TextInput](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md) | 是       | true         |
+| [TextPicker](../reference/apis-arkui/arkui-ts/ts-basic-components-textpicker.md) | 是       | true         |
+| [TextTimer](../reference/apis-arkui/arkui-ts/ts-basic-components-texttimer.md) | 否       | false        |
+| [TimePicker](../reference/apis-arkui/arkui-ts/ts-basic-components-timepicker.md) | 否       | false         |
+| [Toggle](../reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md) | 是       | true         |
+| [XComponent](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md) | 是       | false        |
 
   **表2** 容器组件获焦能力
 
 | 容器组件                                     | 是否可获焦 | focusable默认值 |
 | ---------------------------------------- | ----- | ------------ |
-| Badge | 否     | false        |
-| Column | 是     | true         |
-| ColumnSplit | 是     | true         |
-| Counter | 是     | false         |
-| EmbeddedComponent    | 否     | false         |
-| Flex | 是     | true         |
-| FlowItem             | 是     | true         |
-| FolderStack             | 是     | true         |
-| FormLink               | 否     | false         |
-| GridCol | 是     | true         |
-| GridRow | 是     | true         |
-| Grid | 是     | true         |
-| GridItem | 是     | true         |
-| Hyperlink         | 是     | true         |
-| LazyVGridLayout | 否     | false         |
-| List | 是     | true         |
-| ListItem | 是     | true         |
-| ListItemGroup | 是     | true         |
-| Navigator | 是     | true         |
-| Refresh | 是     | true        |
-| RelativeContainer | 否     | false         |
-| Row | 是    | true         |
-| RowSplit | 是     | true         |
-| Scroll | 是     | true         |
-| SideBarContainer | 是     | true         |
-| Stack | 是     | true         |
-| Swiper | 是     | true         |
-| Tabs | 是     | true         |
-| TabContent | 否     | false         |
-| WaterFlow         | 否     | false         |
-| WithTheme         | 是     | true         |
+| [Badge](../reference/apis-arkui/arkui-ts/ts-container-badge.md) | 否     | false        |
+| [Column](../reference/apis-arkui/arkui-ts/ts-container-column.md) | 是     | true         |
+| [ColumnSplit](../reference/apis-arkui/arkui-ts/ts-container-columnsplit.md) | 是     | true         |
+| [Counter](../reference/apis-arkui/arkui-ts/ts-container-counter.md) | 是     | false         |
+| [EmbeddedComponent](../reference/apis-arkui/arkui-ts/ts-container-embedded-component.md)    | 否     | false         |
+| [Flex](../reference/apis-arkui/arkui-ts/ts-container-flex.md) | 是     | true         |
+| [FlowItem](../reference/apis-arkui/arkui-ts/ts-container-flowitem.md)             | 是     | true         |
+| [FolderStack](../reference/apis-arkui/arkui-ts/ts-container-folderstack.md)             | 是     | true         |
+| [FormLink](../reference/apis-arkui/arkui-ts/ts-container-formlink.md)               | 否     | false         |
+| [GridCol](../reference/apis-arkui/arkui-ts/ts-container-gridcol.md) | 是     | true         |
+| [GridRow](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md) | 是     | true         |
+| [Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md) | 是     | true         |
+| [GridItem](../reference/apis-arkui/arkui-ts/ts-container-griditem.md) | 是     | true         |
+| [Hyperlink](../reference/apis-arkui/arkui-ts/ts-container-hyperlink.md)         | 是     | true         |
+| [LazyVGridLayout](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md) | 否     | false         |
+| [List](../reference/apis-arkui/arkui-ts/ts-container-list.md) | 是     | true         |
+| [ListItem](../reference/apis-arkui/arkui-ts/ts-container-listitem.md) | 是     | true         |
+| [ListItemGroup](../reference/apis-arkui/arkui-ts/ts-container-listitemgroup.md) | 是     | true         |
+| [Navigator](../reference/apis-arkui/arkui-ts/ts-container-navigator.md) | 是     | true         |
+| [Refresh](../reference/apis-arkui/arkui-ts/ts-container-refresh.md) | 是     | true        |
+| [RelativeContainer](../reference/apis-arkui/arkui-ts/ts-container-relativecontainer.md) | 否     | false         |
+| [Row](../reference/apis-arkui/arkui-ts/ts-container-row.md) | 是    | true         |
+| [RowSplit](../reference/apis-arkui/arkui-ts/ts-container-rowsplit.md) | 是     | true         |
+| [Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md) | 是     | true         |
+| [SideBarContainer](../reference/apis-arkui/arkui-ts/ts-container-sidebarcontainer.md) | 是     | true         |
+| [Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md) | 是     | true         |
+| [Swiper](../reference/apis-arkui/arkui-ts/ts-container-swiper.md) | 是     | true         |
+| [Tabs](../reference/apis-arkui/arkui-ts/ts-container-tabs.md) | 是     | true         |
+| [TabContent](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md) | 否     | false         |
+| [WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)         | 否     | false         |
+| [WithTheme](../reference/apis-arkui/arkui-ts/ts-container-with-theme.md)         | 是     | true         |
 
   **表3** 媒体组件获焦能力
 
 | 媒体组件                                     | 是否可获焦 | focusable默认值 |
 | ---------------------------------------- | ----- | ------------ |
-| Video | 是     | true         |
+| [Video](../reference/apis-arkui/arkui-ts/ts-media-components-video.md) | 是     | true         |

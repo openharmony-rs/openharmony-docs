@@ -9,10 +9,10 @@
 
 以下为管理群组关键资产使用示例，请先查看开发指导：
 
-- 新增关键资产(C/C++)
-- 删除关键资产(C/C++)
-- 更新关键资产(C/C++)
-- 查询关键资产(C/C++)
+- [新增关键资产(C/C++)](asset-native-add.md)
+- [删除关键资产(C/C++)](asset-native-remove.md)
+- [更新关键资产(C/C++)](asset-native-update.md)
+- [查询关键资产(C/C++)](asset-native-query.md)
 
 ## 前置条件
 
@@ -33,7 +33,7 @@
 
 引用头文件。
 
-<!-- @include -->
+<!-- @[include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -46,7 +46,7 @@
 
 在群组中新增密码为demo_pwd、别名为demo_alias、附属信息为demo_label的关键资产。
 
-<!-- @add_group_asset -->
+<!-- @[add_group_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 static napi_value AddGroupAsset(napi_env env, napi_callback_info info)
@@ -79,7 +79,7 @@ static napi_value AddGroupAsset(napi_env env, napi_callback_info info)
 
 在群组中删除别名为demo_alias的关键资产。
 
-<!-- @remove_group_asset -->
+<!-- @[remove_group_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 static napi_value RemoveGroupAsset(napi_env env, napi_callback_info info)
@@ -106,7 +106,7 @@ static napi_value RemoveGroupAsset(napi_env env, napi_callback_info info)
 
 在群组中更新别名为demo_alias的关键资产，将关键资产的明文更新为demo_pwd_new，附属信息更新为demo_label_new。
 
-<!-- @update_group_asset -->
+<!-- @[update_group_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 static napi_value UpdateGroupAsset(napi_env env, napi_callback_info info)
@@ -142,7 +142,7 @@ static napi_value UpdateGroupAsset(napi_env env, napi_callback_info info)
 
 在群组中查询别名为demo_alias的关键资产明文。
 
-<!-- @query_group_single_plaintext -->
+<!-- @[query_group_single_plaintext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 static napi_value QueryGroupAssetPlaintext(napi_env env, napi_callback_info info)
@@ -180,7 +180,7 @@ static napi_value QueryGroupAssetPlaintext(napi_env env, napi_callback_info info
 
 查询别名为demo_alias的关键资产属性。
 
-<!-- @query_group_single_attribute -->
+<!-- @[query_group_single_attribute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 static napi_value QueryGroupAssetAttribute(napi_env env, napi_callback_info info)

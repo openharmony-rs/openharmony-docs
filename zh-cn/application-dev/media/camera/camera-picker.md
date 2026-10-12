@@ -16,18 +16,18 @@ CameraPicker的相机交互界面由系统提供，在用户点击拍摄和确�
 
 ## 开发步骤
 
-详细的API说明请参考@ohos.multimedia.cameraPicker (相机选择器)。
+详细的API说明请参考[@ohos.multimedia.cameraPicker (相机选择器)](../../reference/apis-camera-kit/js-apis-cameraPicker.md)。
 
 1. 导入相关接口，导入方法如下。
 
-   <!-- @camera_picker_imports -->
+   <!-- @[camera_picker_imports](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/CameraPicker/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    import { camera, cameraPicker as picker } from '@kit.CameraKit';
    import { fileIo, fileUri } from '@kit.CoreFileKit';
    ```
 
-2. 配置PickerProfile。
+2. 配置[PickerProfile](../../reference/apis-camera-kit/js-apis-cameraPicker.md#pickerprofile)。
 
    > **说明：**
    >
@@ -36,7 +36,7 @@ CameraPicker的相机交互界面由系统提供，在用户点击拍摄和确�
    > 如果不想将照片和视频存入媒体库，请自行配置应用沙箱内的文件路径。
    > 应用沙箱内的这个文件必须是一个存在的、可写的文件。这个文件的uri传入picker接口之后，相当于应用给系统相机授权该文件的读写权限。系统相机在拍摄结束之后，会对此文件进行覆盖写入。
 
-   <!-- @camera_picker_profile_setup -->
+   <!-- @[camera_picker_profile_setup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/CameraPicker/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    createPickerProfile(context: Context): picker.PickerProfile {
@@ -54,11 +54,11 @@ CameraPicker的相机交互界面由系统提供，在用户点击拍摄和确�
    }
    ```
 
-   fileIo接口调用方法请参考：createRandomAccessFileSync和getUriFromPath。
+   fileIo接口调用方法请参考：[createRandomAccessFileSync](../../reference/apis-core-file-kit/js-apis-file-fs.md#fileiocreaterandomaccessfilesync10)和[getUriFromPath](../../reference/apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)。
 
 3. 调用picker拍摄接口获取拍摄的结果。
 
-   <!-- @camera_picker_pick_usage -->
+   <!-- @[camera_picker_pick_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/CameraPicker/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    async getPickerResult(context: Context, pickerProfile: picker.PickerProfile): Promise<picker.PickerResult> {
@@ -72,7 +72,7 @@ CameraPicker的相机交互界面由系统提供，在用户点击拍摄和确�
 
 ## 完整示例
 
-<!-- @camera_picker_full_example -->
+<!-- @[camera_picker_full_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/CameraPicker/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 import { camera, cameraPicker as picker } from '@kit.CameraKit';

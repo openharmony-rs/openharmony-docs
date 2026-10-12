@@ -24,17 +24,17 @@
 
 > **说明：**
 >
-> 由于Actor模型不同线程间内存隔离的特性，非线程安全的单例无法在不同线程间使用。可通过共享模块导出单例解决此问题。
+> 由于[Actor模型](multi-thread-concurrency-overview.md#actor模型)不同线程间内存隔离的特性，非线程安全的单例无法在不同线程间使用。可通过共享模块导出单例解决此问题。
 
 1. 定义并发函数，实现业务逻辑。
 
-2. 创建任务Task，通过execute()接口执行该任务。
+2. 创建任务[Task](../reference/apis-arkts/js-apis-taskpool.md#task)，通过[execute()](../reference/apis-arkts/js-apis-taskpool.md#taskpoolexecute-1)接口执行该任务。
 
 3. 对任务返回的结果进行操作。
 
-如下示例中业务使用TaskPool调用相关同步方法的代码，首先定义并发函数taskpoolFunc，需要注意必须使用@Concurrent装饰器装饰该函数；其次定义函数mainFunc，该函数功能为创建任务，执行任务并处理任务返回的结果。
+如下示例中业务使用TaskPool调用相关同步方法的代码，首先定义并发函数taskpoolFunc，需要注意必须使用[@Concurrent装饰器](taskpool-introduction.md#concurrent装饰器)装饰该函数；其次定义函数mainFunc，该函数功能为创建任务，执行任务并处理任务返回的结果。
 
-<!-- @taskpool_handle_sync_task --> 
+<!-- @[taskpool_handle_sync_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/SyncTaskDevelopment.ets) --> 
 
 ``` TypeScript
 import { taskpool } from '@kit.ArkTS';
@@ -58,6 +58,9 @@ async function mainFunc(): Promise<void> {
   console.info(`taskpool: task res1 is: ${res1}`);
   console.info(`taskpool: task res2 is: ${res2}`);
 }
+
+const MSG_SET = 0;
+const MSG_GET = 1;
 
 @Entry
 @Component
@@ -89,7 +92,7 @@ struct Index {
 
 1. 在UI主线程中创建Worker对象并接收Worker线程发送的消息。DevEco Studio支持一键生成Worker。在{moduleName}目录下任意位置，点击鼠标右键 > New > Worker，即可生成Worker的模板文件及配置信息。
 
-    <!-- @worker_handle_associated_sync_task --> 
+    <!-- @[worker_handle_associated_sync_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/managers/SyncTaskDevelopment.ets) --> 
     
     ``` TypeScript
     import { MessageEvents, worker } from '@kit.ArkTS';
@@ -117,9 +120,9 @@ struct Index {
                   }
                 }
                 // 向Worker子线程发送Set消息
-                w.postMessage({'type': 0, 'data': 10});
+                w.postMessage({'type': MSG_SET, 'data': 10});
                 // 向Worker子线程发送Get消息
-                w.postMessage({'type': 1});
+                w.postMessage({'type': MSG_GET});
               })
           }
           .width('100%')
@@ -132,7 +135,7 @@ struct Index {
 
 2. 在Worker线程中绑定Worker对象，同时处理同步任务逻辑。
 
-    <!-- @worker_handle_associated_sync_task -->  
+    <!-- @[worker_handle_associated_sync_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/workers/handle.ts) -->  
     
     ``` TypeScript
     export default class Handle {
@@ -149,12 +152,15 @@ struct Index {
     }
     ```
 
-    <!-- @worker_handle_associated_sync_task --> 
+    <!-- @[worker_handle_associated_sync_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/ApplicationMultithreading/entry/src/main/ets/workers/MyWorker2.ets) --> 
     
     ``` TypeScript
     import { worker, ThreadWorkerGlobalScope, MessageEvents } from '@kit.ArkTS';
     // 导入句柄类型
     import Handle from './handle'; 
+    
+    const MSG_SET = 0;
+    const MSG_GET = 1;
     
     let workerPort : ThreadWorkerGlobalScope = worker.workerPort;
     
@@ -164,12 +170,12 @@ struct Index {
     // Worker线程的onmessage逻辑
     workerPort.onmessage = (e : MessageEvents): void => {
       switch (e.data.type as number) {
-        case 0:
+        case MSG_SET:
           let result: boolean = handler.syncSet(e.data.data);
           console.info('worker: result is ' + result);
           workerPort.postMessage({'message': 'the result of syncSet() is ' + result, 'isTerminate': false});
           break;
-        case 1:
+        case MSG_GET:
           let num: number = handler.syncGet();
           console.info('worker: num is ' + num);
           workerPort.postMessage({'message': 'the result of syncGet() is ' + num, 'isTerminate': true});

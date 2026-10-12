@@ -25,7 +25,7 @@ gesture为通用的一种手势绑定方法，可以将手势绑定到对应的�
 例如，可以将点击手势TapGesture通过gesture方法将手势绑定到Text组件上。
 
 
-  <!-- @regular_binding -->
+  <!-- @[regular_binding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureBinding/entry/src/main/ets/pages/Gesture.ets) -->
   
   ``` TypeScript
   // xxx.ets
@@ -59,13 +59,13 @@ priorityGesture是带优先级的手势绑定方法，可以在组件上绑定�
 
 在默认情况下，当父组件和子组件均使用gesture绑定相同类型手势时，子组件优先识别通过gesture绑定的手势。当父组件使用priorityGesture绑定与子组件同类型的手势时，父组件优先识别通过priorityGesture绑定的手势。
 
-对于绑定了长按手势的组件，可以设置触发长按的最短时间duration。触发长按时，系统将优先响应触发长按时间最短的组件，忽略priorityGesture设置。
+对于绑定了长按手势的组件，可以设置触发长按的最短时间[duration](../reference/apis-arkui/arkui-ts/ts-gesturehandler.md#longpressgesturehandleroptions)。触发长按时，系统将优先响应触发长按时间最短的组件，忽略priorityGesture设置。
 
 例如，当父组件Column和子组件Text同时绑定TapGesture手势时，父组件以带优先级手势priorityGesture的形式进行绑定时，优先响应父组件绑定的TapGesture。
 
 
 
-  <!-- @priority_binding -->
+  <!-- @[priority_binding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureBinding/entry/src/main/ets/pages/PriorityGesture.ets) -->
   
   ``` TypeScript
   // xxx.ets
@@ -107,7 +107,7 @@ parallelGesture是并行的手势绑定方法，可以在父子组件上绑定�
 
 
 
-  <!-- @parallel_binding -->
+  <!-- @[parallel_binding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GestureBinding/entry/src/main/ets/pages/ParallelGesture.ets) -->
   
   ``` TypeScript
   // xxx.ets

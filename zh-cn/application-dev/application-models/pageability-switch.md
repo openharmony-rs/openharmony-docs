@@ -7,10 +7,10 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-FA模型中PageAbility对应Stage模型中的UIAbility，PageAbility切换为UIAbility的方法如下。
+[FA模型](ability-terminology.md#fa模型)中PageAbility对应[Stage模型](ability-terminology.md#stage模型)中的UIAbility，PageAbility切换为UIAbility的方法如下。
 
 
-1. 在Stage应用中创建UIAbility。
+1. 在Stage应用中[创建UIAbility](uiability-usage.md)。
 
 2. 将FA应用中PageAbility的代码迁移到新创建的UIAbility中。
 
@@ -28,7 +28,7 @@ FA模型中PageAbility对应Stage模型中的UIAbility，PageAbility切换为UIA
    | NA | onWindowStageDestroy():&nbsp;void | Stage模型新增，窗口销毁时由系统回调。 |
    | onDestroy():&nbsp;void | onDestroy():&nbsp;void | 两者的意义和调用时机一致，参数也一致。 |
 
-   pageability-switch
+   ![pageability-switch](figures/pageability-switch.png)
 
 3. 对迁移过来的代码进行调整，主要有以下两部分。
 

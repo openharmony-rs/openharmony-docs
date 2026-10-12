@@ -21,7 +21,7 @@
 
 **1. 播放实例创建失败。**
 
-   开发者需参考当前系统支持的音频格式进行参数设置，并合理规划播放实例的生命周期。若开发者设置无效的参数，或当前应用/系统超过了最大可创建实例数，都会导致实例创建失败。
+   开发者需参考当前系统[支持的音频格式](audio-kit-intro.md#支持的音频格式)进行参数设置，并合理规划播放实例的生命周期。若开发者设置无效的参数，或当前应用/系统超过了最大可创建实例数，都会导致实例创建失败。
 
 **2. 播放实例不在运行态。**
 
@@ -47,13 +47,13 @@
 
    检查项如下：
 
-   - 参数配置：确认采样率、声道数、采样格式、编码格式和`StreamUsage`符合业务场景。可参考当前系统支持的音频格式进行参数设置。
+   - 参数配置：确认采样率、声道数、采样格式、编码格式和`StreamUsage`符合业务场景。可参考当前系统[支持的音频格式](audio-kit-intro.md#支持的音频格式)进行参数设置。
    - 创建结果：确认`OH_AudioStreamBuilder_GenerateRenderer`已成功返回播放实例。如果创建失败，先根据错误码和日志排查权限、参数配置和并发场景。
    - 异常频繁创建：系统内部的资源是有限的，应用无限制地创建音频流会将整个系统的资源占满；因此当应用创建的音频流超过一定的限度时，系统会阻止应用持续创建音频流。开发者在确认当前音频流不再使用后，请及时调用`OH_AudioStreamBuilder_Destroy`接口进行音频资源的释放。
 
    可参考以下示例进行音频参数的设置。
    
-   <!-- @Render_ConfigStream -->
+   <!-- @[Render_ConfigStream](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
    
    ``` C++
    // 设置音频采样率。
@@ -90,7 +90,7 @@
    - 回调耗时：确认没有在`OH_AudioRenderer_OnWriteDataCallback`回调中执行复杂音效处理、大文件写入合并等耗时任务或长时间不返回，避免阻塞下一次数据回调。
    
    回调注册可参考AudioRendererSampleC页面代码中的`SetRendererWriteDataCallback`。
-   <!-- @Render_SetRendererWriteDataCallback -->
+   <!-- @[Render_SetRendererWriteDataCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
    
    ``` C++
    // 自定义写入数据函数。
@@ -132,8 +132,8 @@
    检查项如下：
 
    - 音量设置：开发者可通过`OH_AudioRenderer_GetVolume`接口查询当前音频流的音量，也可通过`OH_AudioVolumeManager_OnStreamVolumeChangeCallback`监听当前音频流的音量变化，以确认当前是否存在音量值过小或异常的静音操作。
-   - 进入免打扰模式：在免打扰模式下，若开发者设置的音频流类型为铃音、通知类型，系统会将其静音播放。开发者可参考@ohos.intelligentScene (情景模式)查询系统的免打扰功能是否开启、应用自身是否允许打扰等。
-   - 前后台（亮屏息屏）播放差异：系统内部存在功耗策略，当应用未申请长时任务即切换到后台时，会导致无声。如果发现应用在前台/亮屏时播放正常，后台/灭屏时出现持续无声的情况，请检查应用是否接入AVSession或申请长时任务(ArkTS)。详细的适配指南可参考应用接入AVSession场景介绍和后台播放。
+   - 进入免打扰模式：在免打扰模式下，若开发者设置的音频流类型为铃音、通知类型，系统会将其静音播放。开发者可参考[@ohos.intelligentScene (情景模式)](../../reference/apis-basic-services-kit/js-apis-intelligentScene.md)查询系统的免打扰功能是否开启、应用自身是否允许打扰等。
+   - 前后台（亮屏息屏）播放差异：系统内部存在功耗策略，当应用未申请长时任务即切换到后台时，会导致无声。如果发现应用在前台/亮屏时播放正常，后台/灭屏时出现持续无声的情况，请检查应用是否接入AVSession或申请[长时任务(ArkTS)](../../task-management/continuous-task.md)。详细的适配指南可参考[应用接入AVSession场景介绍](../avsession/avsession-access-scene.md)和[后台播放](../avsession/avsession-background-scene.md)。
 
 
 6. 如果问题与外设操作或并发场景相关，请检查输出设备和并发播放策略。
@@ -141,12 +141,12 @@
    检查项如下：
 
    - 设备切换：确认播放开始前后是否发生蓝牙耳机、有线耳机等设备切换，并针对回调函数做了音频流处理；例如在蓝牙设备断连时发送了设备变更回调，应用自行暂停了音频流等。
-   - 并发策略：确认当前设备上是否存在其他音频任务。如果业务与VoIP通话、蜂窝通话、闹钟、语音消息等场景并发后无声，可参考音频焦点介绍确认系统侧的音频策略，同时参考处理音频焦点变化，确认正确处理了焦点回调。
+   - 并发策略：确认当前设备上是否存在其他音频任务。如果业务与VoIP通话、蜂窝通话、闹钟、语音消息等场景并发后无声，可参考[音频焦点介绍](audio-playback-concurrency.md)确认系统侧的音频策略，同时参考[处理音频焦点变化](audio-playback-concurrency.md#处理音频焦点变化)，确认正确处理了焦点回调。
    
 
 ## 相关文档参考
 
-- 使用OHAudio播放的示例代码，请参考推荐使用OHAudio开发音频播放功能(C/C++)。
-- 使用AudioRenderer播放的示例代码，请参考使用AudioRenderer开发音频播放功能(ArkTS)。
-- 如果问题与其他音频任务并发有关，优先参考音频焦点介绍，同时参考处理音频焦点变化。
-- 后台播放适配指南，可参考后台播放。
+- 使用OHAudio播放的示例代码，请参考[推荐使用OHAudio开发音频播放功能(C/C++)](using-ohaudio-for-playback.md)。
+- 使用AudioRenderer播放的示例代码，请参考[使用AudioRenderer开发音频播放功能(ArkTS)](using-audiorenderer-for-playback.md)。
+- 如果问题与其他音频任务并发有关，优先参考[音频焦点介绍](audio-playback-concurrency.md)，同时参考[处理音频焦点变化](audio-playback-concurrency.md#处理音频焦点变化)。
+- 后台播放适配指南，可参考[后台播放](../avsession/avsession-background-scene.md)。

@@ -1,7 +1,7 @@
 # 使用Node-API接口进行错误处理开发
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
@@ -23,7 +23,7 @@
 
 ## 场景和功能介绍
 
-以下Node-API接口主要用于与ArkTS交互时处理错误和异常情况。其使用场景如下：
+以下[Node-API](../reference/native-lib/napi.md#已从node-api组件标准库中导出的符号列表)接口主要用于与ArkTS交互时处理错误和异常情况。其使用场景如下：
 | 接口 | 描述 |
 | -------- | -------- |
 | napi_create_error、napi_create_type_error、napi_create_range_error | 在C/C++中需要创建一个错误对象时，可以使用这些函数。创建的错误对象可以使用napi_throw抛出到ArkTS。 |
@@ -37,7 +37,7 @@
 
 ## 使用示例
 
-Node-API接口开发流程参考使用Node-API实现跨语言交互开发流程，本文仅对接口对应C++及ArkTS相关代码进行展示。
+Node-API接口开发流程参考[使用Node-API实现跨语言交互开发流程](use-napi-process.md)，本文仅对接口对应C++及ArkTS相关代码进行展示。
 
 ### napi_get_last_error_info
 
@@ -45,7 +45,7 @@ Node-API接口开发流程参考使用Node-API实现跨语言交互开发流程�
 
 cpp部分代码
 
-<!-- @napi_get_last_error_info -->
+<!-- @[napi_get_last_error_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIError/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 // napi_get_last_error_info
@@ -78,7 +78,7 @@ static napi_value GetLastErrorInfo(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @napi_get_last_error_info_api -->  
+<!-- @[napi_get_last_error_info_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIError/entry/src/main/cpp/types/libentry/Index.d.ts) -->  
 
 ``` TypeScript
 export const getLastErrorInfo: (str: string) => string; // napi_get_last_error_info
@@ -86,7 +86,7 @@ export const getLastErrorInfo: (str: string) => string; // napi_get_last_error_i
 
 ArkTS侧示例代码
 
-<!-- @ark_napi_get_last_error_info -->
+<!-- @[ark_napi_get_last_error_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIError/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 // napi_get_last_error_info
@@ -106,7 +106,7 @@ try {
 
 cpp部分代码
 
-<!-- @napi_create_type_error -->
+<!-- @[napi_create_type_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIError/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 // napi_create_type_error
@@ -125,7 +125,7 @@ static napi_value CreateTypeError(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @napi_create_type_error_api -->  
+<!-- @[napi_create_type_error_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIError/entry/src/main/cpp/types/libentry/Index.d.ts) -->  
 
 ``` TypeScript
 export const createTypeError: () => Error; // napi_create_type_error
@@ -133,7 +133,7 @@ export const createTypeError: () => Error; // napi_create_type_error
 
 ArkTS侧示例代码
 
-<!-- @ark_napi_create_type_error -->
+<!-- @[ark_napi_create_type_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIError/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 try {
@@ -153,7 +153,7 @@ try {
 
 cpp部分代码
 
-<!-- @napi_create_range_error -->
+<!-- @[napi_create_range_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIError/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 // napi_create_range_error
@@ -172,7 +172,7 @@ static napi_value CreateRangeError(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @napi_create_range_error_api -->  
+<!-- @[napi_create_range_error_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIError/entry/src/main/cpp/types/libentry/Index.d.ts) -->  
 
 ``` TypeScript
 export const createRangeError: () => Error; // napi_create_range_error
@@ -180,7 +180,7 @@ export const createRangeError: () => Error; // napi_create_range_error
 
 ArkTS侧示例代码
 
-<!-- @ark_napi_create_range_error -->
+<!-- @[ark_napi_create_range_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIError/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 // napi_create_range_error
@@ -206,7 +206,7 @@ try {
 
 cpp部分代码
 
-<!-- @napi_create_error -->
+<!-- @[napi_create_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIError/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 // napi_create_error and napi_throw
@@ -230,7 +230,7 @@ static napi_value NapiThrow(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @napi_create_error_api -->  
+<!-- @[napi_create_error_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIError/entry/src/main/cpp/types/libentry/Index.d.ts) -->  
 
 ``` TypeScript
 export const napiThrow: () => void; // napi_create_error and napi_throw
@@ -238,7 +238,7 @@ export const napiThrow: () => void; // napi_create_error and napi_throw
 
 ArkTS侧示例代码
 
-<!-- @ark_napi_create_error -->
+<!-- @[ark_napi_create_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIError/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 // napi_create_error and napi_throw
@@ -259,7 +259,7 @@ try {
 
 cpp部分代码
 
-<!-- @napi_throw_error -->
+<!-- @[napi_throw_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIError/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 // napi_throw_error
@@ -292,7 +292,7 @@ static napi_value NapiThrowError(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @napi_throw_error_api -->  
+<!-- @[napi_throw_error_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIError/entry/src/main/cpp/types/libentry/Index.d.ts) -->  
 
 ``` TypeScript
 export const napiThrowErrorMessage: () => void; // napi_throw_error
@@ -302,7 +302,7 @@ export const napiThrowError: (dividend: number, divisor: number) => void; // nap
 
 ArkTS侧示例代码
 
-<!-- @ark_napi_throw_error -->
+<!-- @[ark_napi_throw_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIError/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 // napi_throw_error
@@ -328,11 +328,11 @@ try {
 
 ### napi_throw_business_error
 
-napi_throw_business_error用于抛出一个带文本信息的ArkTS Error，其错误对象的code属性类型为number。该接口抛出的是一个原生的Error对象，并不是ArkTS的SDK中声明的BusinessError对象。
+[napi_throw_business_error](../reference/native-lib/napi.md#napi_throw_business_error)用于抛出一个带文本信息的ArkTS Error，其错误对象的code属性类型为number。该接口抛出的是一个原生的Error对象，并不是ArkTS的SDK中声明的BusinessError对象。
 
 cpp部分代码
 
-<!-- napi_throw_business_error -->
+<!-- [napi_throw_business_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIError/entry/src/main/cpp/napi_init.cpp) -->
 
 ```cpp
 #include "napi/native_api.h"
@@ -353,7 +353,7 @@ static napi_value NapiThrowBusinessError(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- napi_throw_business_error_api -->
+<!-- [napi_throw_business_error_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIError/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ```ts
 // index.d.ts
@@ -362,7 +362,7 @@ export const napiThrowBusinessError: () => void;
 
 ArkTS侧示例代码
 
-<!-- ark_napi_throw_business_error -->
+<!-- [ark_napi_throw_business_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIError/entry/src/main/ets/pages/Index.ets) -->
 
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -382,7 +382,7 @@ try {
 
 cpp部分代码
 
-<!-- @napi_throw_type_error -->
+<!-- @[napi_throw_type_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIError/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 // napi_throw_type_error
@@ -414,7 +414,7 @@ static napi_value ThrowTypeError(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @napi_throw_type_error_api -->  
+<!-- @[napi_throw_type_error_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIError/entry/src/main/cpp/types/libentry/Index.d.ts) -->  
 
 ``` TypeScript
 export const throwTypeErrorMessage: () => void; // napi_throw_type_error
@@ -424,7 +424,7 @@ export const throwTypeError: (message: string) => void; // napi_throw_type_error
 
 ArkTS侧示例代码
 
-<!-- @ark_napi_throw_type_error -->
+<!-- @[ark_napi_throw_type_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIError/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 // napi_throw_type_error
@@ -456,7 +456,7 @@ try {
 
 cpp部分代码
 
-<!-- @napi_throw_range_error -->
+<!-- @[napi_throw_range_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIError/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 // napi_throw_range_error
@@ -494,7 +494,7 @@ static napi_value ThrowRangeError(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @napi_throw_range_error_api -->  
+<!-- @[napi_throw_range_error_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIError/entry/src/main/cpp/types/libentry/Index.d.ts) -->  
 
 ``` TypeScript
 export const throwRangeErrorMessage: () => void; // napi_throw_range_error
@@ -504,7 +504,7 @@ export const throwRangeError: (num: number) => number | undefined; // napi_throw
 
 ArkTS侧示例代码
 
-<!-- @ark_napi_throw_range_error -->
+<!-- @[ark_napi_throw_range_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIError/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 // napi_throw_range_error
@@ -537,7 +537,7 @@ try {
 
 cpp部分代码
 
-<!-- @napi_is_error -->
+<!-- @[napi_is_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIError/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 // napi_is_error
@@ -560,7 +560,7 @@ static napi_value NapiIsError(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @napi_is_error_api -->  
+<!-- @[napi_is_error_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIError/entry/src/main/cpp/types/libentry/Index.d.ts) -->  
 
 ``` TypeScript
 export const napiIsError: <T>(obj: T) => boolean; // napi_is_error
@@ -568,7 +568,7 @@ export const napiIsError: <T>(obj: T) => boolean; // napi_is_error
 
 ArkTS侧示例代码
 
-<!-- @ark_napi_is_error -->
+<!-- @[ark_napi_is_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIError/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 // napi_is_error
@@ -592,7 +592,7 @@ try {
 
 cpp部分代码
 
-<!-- @napi_get_and_clear_last_exception -->
+<!-- @[napi_get_and_clear_last_exception](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIError/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 // napi_get_and_clear_last_exception
@@ -612,7 +612,7 @@ static napi_value GetAndClearLastException(napi_env env, napi_callback_info info
 
 接口声明
 
-<!-- @napi_get_and_clear_last_exception_api -->  
+<!-- @[napi_get_and_clear_last_exception_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIError/entry/src/main/cpp/types/libentry/Index.d.ts) -->  
 
 ``` TypeScript
 export const getAndClearLastException: () => Error | undefined; // napi_get_and_clear_last_exception
@@ -620,7 +620,7 @@ export const getAndClearLastException: () => Error | undefined; // napi_get_and_
 
 ArkTS侧示例代码
 
-<!-- @ark_napi_get_and_clear_last_exception -->  
+<!-- @[ark_napi_get_and_clear_last_exception](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIError/entry/src/main/ets/pages/Index.ets) -->  
 
 ``` TypeScript
 // napi_get_and_clear_last_exception
@@ -637,7 +637,7 @@ hilog.info(0x0000, 'testTag',
 
 cpp部分代码
 
-<!-- @napi_is_exception_pending -->
+<!-- @[napi_is_exception_pending](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIError/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 // napi_is_exception_pending
@@ -668,7 +668,7 @@ static napi_value IsExceptionPending(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @napi_is_exception_pending_api -->  
+<!-- @[napi_is_exception_pending_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIError/entry/src/main/cpp/types/libentry/Index.d.ts) -->  
 
 ``` TypeScript
 export const isExceptionPending: () => Object | undefined; // napi_is_exception_pending
@@ -676,7 +676,7 @@ export const isExceptionPending: () => Object | undefined; // napi_is_exception_
 
 ArkTS侧示例代码
 
-<!-- @ark_napi_is_exception_pending -->
+<!-- @[ark_napi_is_exception_pending](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIError/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 // napi_is_exception_pending
@@ -703,7 +703,7 @@ try {
 
 cpp部分代码
 
-<!-- @napi_fatal_error -->
+<!-- @[napi_fatal_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIError/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 // napi_fatal_error
@@ -722,7 +722,7 @@ static napi_value FatalError(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @napi_fatal_error_api -->  
+<!-- @[napi_fatal_error_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIError/entry/src/main/cpp/types/libentry/Index.d.ts) -->  
 
 ``` TypeScript
 export const fatalError: () => void; // napi_fatal_error
@@ -730,7 +730,7 @@ export const fatalError: () => void; // napi_fatal_error
 
 ArkTS侧示例代码
 
-<!-- @ark_napi_fatal_error -->
+<!-- @[ark_napi_fatal_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIError/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 // napi_fatal_error 请注意，使用napi_fatal_error函数会导致应用进程直接终止，因此应该谨慎使用，仅在遇到无法恢复的严重错误时才应该调用该函数
@@ -749,7 +749,7 @@ try {
 
 cpp部分代码
 
-<!-- @napi_fatal_exception -->
+<!-- @[napi_fatal_exception](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIError/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 // napi_fatal_exception
@@ -774,7 +774,7 @@ static napi_value FatalException(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @napi_fatal_exception_api --> 
+<!-- @[napi_fatal_exception_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIError/entry/src/main/cpp/types/libentry/Index.d.ts) --> 
 
 ``` TypeScript
 export const fatalException: (err: Error) => void; // napi_fatal_exception
@@ -782,7 +782,7 @@ export const fatalException: (err: Error) => void; // napi_fatal_exception
 
 ArkTS侧示例代码
 
-<!-- @ark_napi_fatal_exception -->
+<!-- @[ark_napi_fatal_exception](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIError/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 const err = new Error("a fatal exception occurred");

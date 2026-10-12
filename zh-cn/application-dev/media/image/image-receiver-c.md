@@ -6,11 +6,11 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-图像接收类，用于获取组件的surfaceId、接收最新的图片、读取下一张图片以及释放ImageReceiver实例。结合camera API实现的相机预览示例代码可参考预览流二次处理(C/C++)。
+图像接收类，用于获取组件的surfaceId、接收最新的图片、读取下一张图片以及释放ImageReceiver实例。结合camera API实现的相机预览示例代码可参考[预览流二次处理(C/C++)](../camera/native-camera-preview-imageReceiver.md)。
 
 > **说明：**
 >
-> ImageReceiver只作为图片的接收方、消费者，在ImageReceiver设置的size、format等属性实际上并不会生效。图片属性需要在发送方、生产者进行设置，可参考预览(C/C++)设置previewProfiles。
+> ImageReceiver只作为图片的接收方、消费者，在ImageReceiver设置的size、format等属性实际上并不会生效。图片属性需要在发送方、生产者进行设置，可参考[预览(C/C++)](../camera/native-camera-preview.md)设置previewProfiles。
 
 ## 开发步骤
 
@@ -24,7 +24,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
 
 ### Native接口调用
 
-具体接口说明请参考Image_NativeModule。
+具体接口说明请参考[Image_NativeModule](../../reference/apis-image-kit/capi-image-nativemodule.md)。
 
 下述代码主要演示了Receiver的初始化、相机预览流的创建以及获取图像的信息和Receiver的释放等相关功能。
 
@@ -34,7 +34,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
 
 1. 导入相关头文件。
 
-   <!-- @receiver_import -->        
+   <!-- @[receiver_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadReceiver.cpp) -->        
    
    ``` C++
    #include <hilog/log.h>
@@ -58,7 +58,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
 
 2. 常量定义。
 
-   <!-- @receiver_defineConst -->      
+   <!-- @[receiver_defineConst](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadReceiver.cpp) -->      
    
    ``` C++
    #undef LOG_DOMAIN
@@ -74,7 +74,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
 
 3. 定义全局变量。
 
-   <!-- @define_receiverInstance -->                
+   <!-- @[define_receiverInstance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadReceiver.cpp) -->                
    
    ``` C++
    static OH_ImageReceiverNative* g_receiver = nullptr;
@@ -88,7 +88,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
 
 4. 定义一些工具类函数，用来处理napi的返回值和参数类型的转换。
  
-   <!-- @receiver_utility -->      
+   <!-- @[receiver_utility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadReceiver.cpp) -->      
    
    ``` C++
    // 处理napi返回值。
@@ -115,7 +115,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
 
    - 创建并设置ReceiverOptions。
 
-     <!-- @set_receiverOptions -->       
+     <!-- @[set_receiverOptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadReceiver.cpp) -->       
      
      ``` C++
      static Image_ErrorCode CreateAndConfigOptions(OH_ImageReceiverOptions** options)
@@ -144,7 +144,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
 
    - 获取ReceiverOptions。
 
-     <!-- @get_receiverOptions -->       
+     <!-- @[get_receiverOptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadReceiver.cpp) -->       
      
      ``` C++
      static Image_ErrorCode ValidateOptions(OH_ImageReceiverOptions* options)
@@ -176,7 +176,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
 
    - 创建Receiver对象。
 
-     <!-- @create_receiver -->       
+     <!-- @[create_receiver](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadReceiver.cpp) -->       
      
      ``` C++
      static Image_ErrorCode CreateReceiver(OH_ImageReceiverOptions* options, OH_ImageReceiverNative** receiver)
@@ -192,7 +192,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
      
    - 定义获取下一张图片的callback函数。
 
-     <!-- @define_callback -->         
+     <!-- @[define_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadReceiver.cpp) -->         
      
      ``` C++
      static void OnCallback(OH_ImageReceiverNative* receiver)
@@ -219,7 +219,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
 
    - 注册callback。
 
-     <!-- @register_callback -->       
+     <!-- @[register_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadReceiver.cpp) -->       
      
      ``` C++
      static Image_ErrorCode RegisterCallbackAndQuery(OH_ImageReceiverNative* receiver)
@@ -257,7 +257,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
  
    - 初始化Receiver的整体流程。
 
-     <!-- @init_receiver -->      
+     <!-- @[init_receiver](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadReceiver.cpp) -->      
      
      ``` C++
      static napi_value ImageReceiverNativeCTest(napi_env env, napi_callback_info info)
@@ -304,7 +304,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
 
    - 创建一个CameraManager实例。
 
-     <!-- @init_camera -->     
+     <!-- @[init_camera](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadReceiver.cpp) -->     
      
      ``` C++
      Camera_ErrorCode InitCameraManagerAndInput(Camera_Manager*& cameraManager,
@@ -344,7 +344,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
 
    - 获取相机输出能力。
 
-     <!-- @get_cameraOutCapability -->      
+     <!-- @[get_cameraOutCapability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadReceiver.cpp) -->      
      
      ``` C++
      Camera_ErrorCode GetCameraOutputCapability(Camera_Manager* cameraManager,
@@ -365,7 +365,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
 
    - 创建相机捕获会话，用于捕获相机拍摄的照片。
 
-     <!-- @create_captureSession -->      
+     <!-- @[create_captureSession](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadReceiver.cpp) -->      
      
      ``` C++
      Camera_CaptureSession* CreateAndStartSession(Camera_Manager* cameraManager, Camera_Input* cameraInput, int sessionMode)
@@ -397,7 +397,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
 
    - 开启捕获会话。
 
-     <!-- @start_captureSession -->      
+     <!-- @[start_captureSession](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadReceiver.cpp) -->      
      
      ``` C++
      static Camera_ErrorCode StartCaptureSession(Camera_Manager* mgr, Camera_Input* input,
@@ -433,7 +433,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
 
    - 创建相机拍照流。
 
-     <!-- @start_cameraSession -->      
+     <!-- @[start_cameraSession](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadReceiver.cpp) -->      
      
      ``` C++
      Camera_ErrorCode StartTakePhoto(char* str)
@@ -477,7 +477,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
 
    - 调用相机拍照的整体流程。
 
-     <!-- @load_cameraSession -->      
+     <!-- @[load_cameraSession](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadReceiver.cpp) -->      
      
      ``` C++
      static napi_value TakePhoto(napi_env env, napi_callback_info info)
@@ -503,7 +503,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
 
    - 等待OnCallback回调通知。
 
-     <!-- @wait_callBack -->       
+     <!-- @[wait_callBack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadReceiver.cpp) -->       
      
      ``` C++
      // 同步等待。
@@ -528,7 +528,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
 
    - 获取图片大小。
 
-     <!-- @get_imageSize -->       
+     <!-- @[get_imageSize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadReceiver.cpp) -->       
      
      ``` C++
      // 获取图片大小。
@@ -564,7 +564,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
      
    - 获取组件类型。
 
-     <!-- @get_componentType -->      
+     <!-- @[get_componentType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadReceiver.cpp) -->      
      
      ``` C++
      // 获取组件类型。
@@ -581,7 +581,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
 
    - 获取组件信息。
 
-     <!-- @get_componentInfo -->      
+     <!-- @[get_componentInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadReceiver.cpp) -->      
      
      ``` C++
      // 获取组件信息。
@@ -641,7 +641,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
 
    - 获取图片属性并封装为napi对象。
 
-     <!-- @get_imageInfo -->      
+     <!-- @[get_imageInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadReceiver.cpp) -->      
      
      ``` C++
      // 获取图像属性并封装为napi对象。
@@ -675,7 +675,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
 
    - 获取ReceiverImageInfo的整体流程。
 
-     <!-- @get_receiverImageInfo -->      
+     <!-- @[get_receiverImageInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadReceiver.cpp) -->      
      
      ``` C++
      static napi_value GetReceiverImageInfo(napi_env env, napi_callback_info info)
@@ -694,7 +694,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libohimage.so libimage_rece
 
 8. 释放receiver。
 
-   <!-- @release_receiver -->     
+   <!-- @[release_receiver](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadReceiver.cpp) -->     
    
    ``` C++
    static napi_value ReleaseImageReceiver(napi_env env, napi_callback_info info)

@@ -24,7 +24,7 @@ TaskPool的生命周期无需开发者手动去管理。有一定时间没有执
 
 ## 对于预加载任务量大的场景推荐使用Worker还是TaskPool
 
-Worker存在数量限制，支持最多同时存在8个Worker。所以针对预加载任务量大的场景，推荐使用TaskPool。更多TaskPool和Worker的特点和场景选择，可见Worker和TaskPool的对比。
+Worker存在数量限制，支持最多同时存在8个Worker。所以针对预加载任务量大的场景，推荐使用TaskPool。更多TaskPool和Worker的特点和场景选择，可见[Worker和TaskPool的对比](../arkts-utils/taskpool-vs-worker.md#实现特点对比)。
 
 
 ## 存在线程复用的并发场景，推荐使用Worker还是TaskPool
@@ -51,7 +51,7 @@ Worker存在数量限制，支持最多同时存在8个Worker。所以针对预�
 
 **参考资料**
 
-1. 多线程并发概述 (TaskPool和Worker)
+1. [多线程并发概述 (TaskPool和Worker)](../arkts-utils/multi-thread-concurrency-overview.md)
 
 ## 线程间JS对象的数据通信依赖序列化方式，是否存在性能问题？(API 10)
 
@@ -68,7 +68,7 @@ Worker存在数量限制，支持最多同时存在8个Worker。所以针对预�
 
 **参考链接**
 
-1. TaskPool和Worker的对比 (TaskPool和Worker)
+1. [TaskPool和Worker的对比 (TaskPool和Worker)](../arkts-utils/taskpool-vs-worker.md)
 
 ## 并发任务的调度及实时性问题，如何设置Task优先级，各个优先级的调度策略有什么区别，原理是什么，分别推荐在什么场景使用？(API 10)
 
@@ -111,7 +111,7 @@ for (let i: number = 0; i < allCount; i++) { // 每次执行3个任务
 
 **参考链接**
 
-1. @ohos.taskpool (启动任务池)
+1. [@ohos.taskpool (启动任务池)](../reference/apis-arkts/js-apis-taskpool.md)
 
 ## 如何将内存共享的线程模型，转换成在ArkTS的线程模型下（内存隔离）的实现方式？(API 11)
 
@@ -334,7 +334,7 @@ mainPort.onmessage = (e: MessageEvents): void => {
 ```
 **参考链接**
 
-1. 并发概述
+1. [并发概述](../arkts-utils/concurrency-overview.md)
 
 ## TaskPool和Worker的区别是什么，分别推荐在什么场景下使用？(API 10)
 
@@ -348,7 +348,7 @@ mainPort.onmessage = (e: MessageEvents): void => {
 
 **参考链接**
 
-1. TaskPool和Worker的对比 (TaskPool和Worker)
+1. [TaskPool和Worker的对比 (TaskPool和Worker)](../arkts-utils/taskpool-vs-worker.md)
 
 ## Worker和TaskPool的线程数量是否都有限制，如果超过会如何？在使用时，是否会相互影响，如Worker在达到上限数量时，会影响TaskPool吗？(API 10)
 
@@ -362,7 +362,7 @@ TaskPool与Worker不影响。两者独立，Worker是固定数量，当前是8�
 
 **参考链接**
 
-1. TaskPool和Worker的对比 (TaskPool和Worker)
+1. [TaskPool和Worker的对比 (TaskPool和Worker)](../arkts-utils/taskpool-vs-worker.md)
 
 ## 是否有线程安全的容器类？(API 10)
 
@@ -372,7 +372,7 @@ TaskPool与Worker不影响。两者独立，Worker是固定数量，当前是8�
 
 **参考链接**
 
-1. 异步并发概述 (Promise和async/await)
+1. [异步并发概述 (Promise和async/await)](../arkts-utils/async-concurrency-overview.md)
 
 ## TaskPool，Worker中任务调度机制是什么？是否和JS单线程的事件循环机制一样的？先执行完微任务队列，再执行宏任务？(API 10)
 
@@ -400,7 +400,7 @@ Native侧建议使用FFRT线程池，pthread暂无限制。
 
 **参考链接**
 
-1. 可共享对象
+1. [可共享对象](../arkts-utils/arkts-sendable.md)
 
 ## 在多线程并发场景中，如何实现安全访问同一块共享内存？(API 10)
 
@@ -451,8 +451,8 @@ Worker支持通过PostMessage往父线程抛任务。TaskPool支持往父线程�
 
 **参考链接**
 
-1. @ohos.taskpool (启动任务池)
-2. @ohos.worker (启动一个Worker)
+1. [@ohos.taskpool (启动任务池)](../reference/apis-arkts/js-apis-taskpool.md)
+2. [@ohos.worker (启动一个Worker)](../reference/apis-arkts/js-apis-worker.md)
 
 ## ArkTS是否支持共享内存模型进行多线程开发吗？(API 10)
 
@@ -462,7 +462,7 @@ Worker支持通过PostMessage往父线程抛任务。TaskPool支持往父线程�
 
 **参考链接**
 
-1. 多线程并发概述 (TaskPool和Worker)
+1. [多线程并发概述 (TaskPool和Worker)](../arkts-utils/multi-thread-concurrency-overview.md)
 
 ## ArkTS的SendableClass对象内存共享的原理是什么？有什么限制？如何使用？(API 11)
 
@@ -488,7 +488,7 @@ Sendable对象需要满足一定的规格：
 
 **参考链接**
 
-1. 多线程并发概述 (TaskPool和Worker)
+1. [多线程并发概述 (TaskPool和Worker)](../arkts-utils/multi-thread-concurrency-overview.md)
 
 ## ArkTS类的方法是否支持重载？怎么实现？(API 10)
 
@@ -599,7 +599,7 @@ ArkTS支持内置的类型转换函数，例如Number(), String(), Boolean()等�
 
 **参考资料**
 
-1. 从TypeScript到ArkTS的适配规则
+1. [从TypeScript到ArkTS的适配规则](../quick-start/typescript-to-arkts-migration-guide.md)
 
 ## TaskPool后台I/O任务池，应用能否自行做管控？有无方法开放管理机制？（API 10）
 
@@ -671,7 +671,7 @@ AST属于编译器编译过程中间数据结构，该数据本身不稳定，�
 
 **参考资料**
 
-1. 基于方舟字节码文件的安全扫描接口
+1. [基于方舟字节码文件的安全扫描接口](https://gitcode.com/openharmony/arkcompiler_runtime_core/blob/master/libark_defect_scan_aux/README.md)
 
 ## 目前系统的多线程内存占用大，每个线程需要一个ArkTS引擎，意味着更多的内存占用。如何解决应用需要避免开辟过多线程，并发处理任务数量受限，无法充分发挥设备性能的问题？
 
@@ -690,7 +690,7 @@ AST属于编译器编译过程中间数据结构，该数据本身不稳定，�
 
 **参考链接**
 
-1. TaskPool和Worker的对比 (TaskPool和Worker)
+1. [TaskPool和Worker的对比 (TaskPool和Worker)](../arkts-utils/taskpool-vs-worker.md)
 
 ## taskpool线程中是否可以使用emitter.on等长时间监听接口
 
@@ -704,7 +704,7 @@ AST属于编译器编译过程中间数据结构，该数据本身不稳定，�
 
 **解决方案**
 
-建议使用长时任务。
+建议使用[长时任务](../reference/apis-arkts/js-apis-taskpool.md#longtask12)。
 
 ## taskpool中监听任务的接口onEnqueued、onStartExecution、onExecutionFailed、onExecutionSucceeded是否有调用顺序(API 12)
 
@@ -720,7 +720,7 @@ AST属于编译器编译过程中间数据结构，该数据本身不稳定，�
 
 **参考链接**
 
-在HAR包中的使用规则
+[在HAR包中的使用规则](../arkts-utils/sendable-constraints.md#在har包中的使用规则)
 
 ## 使用TS HAR中的UI组件时编译报错 "'UI组件' does not meet UI component syntax"
 
@@ -732,7 +732,7 @@ AST属于编译器编译过程中间数据结构，该数据本身不稳定，�
 
 **参考链接**
 
-HAR开发文档
+[HAR开发文档](../quick-start/har-package.md)
 
 ## hdc属性开关
 

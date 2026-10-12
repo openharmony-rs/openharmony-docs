@@ -11,7 +11,7 @@
 
 ## 多组件关联同一对象的不同属性
 
-在学习本示例之前，需要了解当前状态管理的刷新机制。
+在学习本示例之前，需要了解当前[状态管理的刷新机制](../ui/state-management/arkts-observed-and-objectlink.md)。
 
 ```ts
 @Observed
@@ -70,7 +70,7 @@ struct Page {
 
 上文代码运行图示如下：
 
-precisely-control-render-scope-01.gif
+![precisely-control-render-scope-01.gif](figures/precisely-control-render-scope-01.gif)
 
 下面的示例代码为一个较典型的冗余刷新场景。
 
@@ -247,7 +247,7 @@ struct Page {
 
 上文代码运行图示如下：
 
-precisely-control-render-scope-02.gif
+![precisely-control-render-scope-02.gif](figures/precisely-control-render-scope-02.gif)
 
 对此，推荐将属性进行拆分，将一个大的属性对象拆分成几个小的属性对象，来减少甚至避免冗余刷新的现象，达到精准控制组件的更新范围。
 
@@ -333,7 +333,7 @@ struct Page {
 
 上文代码运行图示如下：
 
-precisely-control-render-scope-03.gif
+![precisely-control-render-scope-03.gif](figures/precisely-control-render-scope-03.gif)
 
 利用这一个机制，可以做到精准控制组件的更新范围。
 
@@ -430,7 +430,7 @@ struct Page {
 
 上文代码运行图示如下：
 
-precisely-control-render-scope-04.gif
+![precisely-control-render-scope-04.gif](figures/precisely-control-render-scope-04.gif)
 
 通过这个方法，可以将上文的复杂冗余刷新场景进行属性拆分实现性能优化。
 
@@ -671,17 +671,17 @@ struct Page {
 
 上文代码运行图示如下：
 
-precisely-control-render-scope-05.gif
+![precisely-control-render-scope-05.gif](figures/precisely-control-render-scope-05.gif)
 
 可以使用SmartPerf Host工具分别抓取优化前后点击“move”按钮时的trace数据，来查看属性拆分的性能收益。
 
 优化前点击move按钮的脏节点更新耗时如下图：
 
-precisely-control-render-scope-dirty-node-trace-01
+![precisely-control-render-scope-dirty-node-trace-01](figures/precisely-control-render-scope-dirty-node-trace-01.PNG)
 
 优化后点击move按钮的脏节点更新耗时如下图：
 
-precisely-control-render-scope-dirty-node-trace-02
+![precisely-control-render-scope-dirty-node-trace-02](figures/precisely-control-render-scope-dirty-node-trace-02.PNG)
 
 从上面trace图中的“H:FlushDirtyNodeUpdate”标签可以看出，优化前点击“move”按钮的脏节点更新耗时为1ms416μs，而通过拆分属性进行优化后耗时仅836μs，性能提升了大约40.9%。
 
@@ -769,8 +769,8 @@ struct Page {
 多个组件依赖对象中的不同属性时，直接关联该对象会出现改变任一属性所有组件都刷新的现象，可以通过将类中的属性拆分组合成新类的方式精准控制组件刷新。
 
 在多个组件依赖同一个数据源并根据数据源变化刷新组件的情况下，直接关联数据源会导致每次数据源改变都刷新所有组件。为精准控制组件刷新，可以采取以下策略：
-  1. 使用 @Watch 装饰器：在组件中使用@Watch装饰器监听数据源，当数据变化时执行业务逻辑，确保只有满足条件的组件进行刷新。
-  2. 事件驱动更新：对于复杂组件关系或跨层级情况，使用Emitter自定义事件发布订阅机制。数据源变化时触发相应事件，订阅该事件的组件接收到通知后，根据变化的具体值判断组件是否刷新。
+  1. 使用 [@Watch](../ui/state-management/arkts-watch.md) 装饰器：在组件中使用@Watch装饰器监听数据源，当数据变化时执行业务逻辑，确保只有满足条件的组件进行刷新。
+  2. 事件驱动更新：对于复杂组件关系或跨层级情况，使用[Emitter](../reference/apis-basic-services-kit/js-apis-emitter.md)自定义事件发布订阅机制。数据源变化时触发相应事件，订阅该事件的组件接收到通知后，根据变化的具体值判断组件是否刷新。
 
 【反例】
 
@@ -836,7 +836,7 @@ struct ListItemComponent {
 
 下面是运行效果图。
 
-redundant_refresh
+![redundant_refresh](./figures/redundant_refresh.gif)
 
 可以看到每次点击后即使其中部分Text组件的颜色并没有发生改变，所有的Text组件也都会刷新。这是由于ListItemComponent组件中的Text组件直接关联了currentIndex，而不是根据currentIndex计算得到的颜色。
 
@@ -910,7 +910,7 @@ struct ListItemComponent {
 
 运行效果图如下。
 
-precise_refresh.gif
+![precise_refresh.gif](./figures/precise_refresh.gif)
 
 【效果对比】
 
@@ -918,11 +918,11 @@ precise_refresh.gif
 
 反例点击组件2的脏节点更新耗时如下图：
 
-precisely-control-render-scope-dirty-node-trace-03
+![precisely-control-render-scope-dirty-node-trace-03](figures/precisely-control-render-scope-dirty-node-trace-03.PNG)
 
 正例点击组件2的脏节点更新耗时如下图：
 
-precisely-control-render-scope-dirty-node-trace-04
+![precisely-control-render-scope-dirty-node-trace-04](figures/precisely-control-render-scope-dirty-node-trace-04.PNG)
 
 从上面的trace图可以看出，反例中点击组件2后十个ListItemComponent组件节点都触发了更新，脏节点更新耗时3ms179μs，而正例只有三个节点触发更新，脏节点更新耗时仅为1ms600μs，性能提升了大约49.7%。
 
@@ -959,7 +959,7 @@ onCurrentValueUpdate() {
 Component.property(this.nestedComponentResult)
 ```
 
-当组件关系复杂或跨越层级过多时，推荐使用 Emitter 自定义事件发布订阅的方式。当数据源改变时发布事件，依赖该数据源的组件通过订阅事件来获取数据源的改变，完成业务逻辑的处理，从而实现组件的精准刷新。
+当组件关系复杂或跨越层级过多时，推荐使用 [Emitter](../reference/apis-basic-services-kit/js-apis-emitter.md) 自定义事件发布订阅的方式。当数据源改变时发布事件，依赖该数据源的组件通过订阅事件来获取数据源的改变，完成业务逻辑的处理，从而实现组件的精准刷新。
 
 下面通过部分示例代码介绍使用方式。
 
