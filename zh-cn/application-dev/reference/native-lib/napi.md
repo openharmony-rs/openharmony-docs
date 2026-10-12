@@ -668,6 +668,8 @@ OpenHarmony的Node-API组件对Node-API的接口进行了重新实现，底层�
 
 - OpenHarmony调用uv_async_send接口前会检查env是否存活。
 
+- 调用uv_async_send接口失败时，OpenHarmony中会返回napi_generic_failure。
+
 - ThreadCount为0时，OpenHarmony中会返回napi_generic_failure。
 
 ### napi_ref_threadsafe_function
@@ -735,6 +737,8 @@ OpenHarmony的Node-API组件对Node-API的接口进行了重新实现，底层�
 **返回：**
 
 - OpenHarmony中创建的buffer类型为ArrayBufferLike。
+
+- OpenHarmony中，data为nullptr时返回napi_invalid_arg。
 
 - OpenHarmony中，length小于等于0时返回napi_invalid_arg。
 
@@ -908,7 +912,7 @@ napi_status napi_queue_async_work_with_qos(napi_env env,
 
 **返回：**
 
-如果API成功，则返回napi_ok。
+如果API成功，则返回napi_ok。当底层任务入队失败时，OpenHarmony中仍返回napi_ok，并打印失败日志，execute和complete回调函数不会执行。
 
 ### napi_run_script_path
 
@@ -1219,7 +1223,7 @@ napi_status napi_deserialize(napi_env env, void* buffer, napi_value* object)
 
 - [in] env: Node-API的环境对象，表示当前的执行环境。
 
-- [in] buffer: 指向包含二进制数据的指针。这些二进制数据需要被反序列化为JavaScript对象。
+- [in] buffer: 指向包含二进制数据的指针，该数据需通过napi_serialize接口序列化获得。这些二进制数据需要被反序列化为JavaScript对象。
 
 - [out] object: 用于接收反序列化后的JavaScript对象。
 
@@ -1270,7 +1274,7 @@ napi_status napi_call_threadsafe_function_with_priority(napi_threadsafe_function
 
 - [in] data: 传递给 JavaScript 回调函数的参数数据。
 
-- [in] priority: 指定调用 JavaScript 回调函数的任务优先级。
+- [in] priority: 指定调用 JavaScript 回调函数的任务优先级，取值范围参见napi_task_priority枚举，该枚举定义了不同的任务优先级等级。
 
 - [in] isTail: 一个布尔值，指示调用是否应该排队等待在事件循环的尾部执行。如果为 true，则调用将在事件循环的尾部执行；如果为 false，则调用将立即执行，不会排队等待。
 
@@ -1475,7 +1479,7 @@ napi_status napi_create_sendable_typedarray(napi_env env,
 
 - [in] length：TypedArray 的长度。length与byte_offset、arraybuffer的大小存在制约关系，若length * sizeof(elementType) + byte_offset超过arraybuffer的大小，将抛出RangeError异常并返回napi_pending_exception。
 
-- [in] arraybuffer：一个 ArrayBuffer 实例。
+- [in] arraybuffer：一个Sendable ArrayBuffer实例（如通过napi_create_sendable_arraybuffer创建）。
 
 - [in] byte_offset：ArrayBuffer 的偏移量。
 
@@ -1505,7 +1509,7 @@ napi_status napi_wrap_sendable(napi_env env,
 
 - [in] env: Node-API的环境对象，表示当前的执行环境。
 
-- [in] js_object：ArkTS对象。
+- [in] js_object：Sendable ArkTS对象。
 
 - [in] native_object：将被包裹在ArkTS对象中的native实例。
 
@@ -1538,7 +1542,7 @@ napi_status napi_wrap_sendable_with_size(napi_env env,
 
 - [in] env: Node-API的环境对象，表示当前的执行环境。
 
-- [in] js_object：ArkTS对象。
+- [in] js_object：Sendable ArkTS对象。
 
 - [in] native_object：将被包裹在ArkTS对象中的native实例。
 
@@ -1568,7 +1572,7 @@ napi_status napi_unwrap_sendable(napi_env env, napi_value js_object, void** resu
 
 - [in] env: Node-API的环境对象，表示当前的执行环境。
 
-- [in] js_object：ArkTS对象。
+- [in] js_object：Sendable ArkTS对象。
 
 - [out] result：包裹在ArkTS对象中的native实例。
 
@@ -1592,7 +1596,7 @@ napi_status napi_remove_wrap_sendable(napi_env env, napi_value js_object, void**
 
 - [in] env: Node-API的环境对象，表示当前的执行环境。
 
-- [in] js_object：ArkTS对象。
+- [in] js_object：Sendable ArkTS对象。
 
 - [out] result：包裹在ArkTS对象中的native实例。
 
@@ -1789,7 +1793,7 @@ napi_status napi_get_buffer_string_utf16_in_critical_scope(napi_env env,
 
 - [in] env：Node-API的环境对象，表示当前的执行环境。
 
-- [in] value：ArkTS String对象。
+- [in] value：ArkTS String对象。该接口必须在通过napi_open_critical_scope打开的临界区作用域内调用。
 
 - [out] buffer：接收UTF-16编码内存缓冲区数据的指针。
 
