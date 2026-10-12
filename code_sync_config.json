@@ -27846,13 +27846,7 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/AbilityStage/entry/src/main/ets/exampleabilitystage/MyAbilityStage.ets",
-				"functions":[
-					{
-						"end_line":29,
-						"name":"my_example_ability_start",
-						"start_line":16
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/AbilityStage/entry/src/main/module.json5",
@@ -27868,9 +27862,14 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/AbilityStage/entry/src/main/ets/myabilitystage/MyAbilityStage.ets",
 				"functions":[
 					{
-						"end_line":56,
-						"name":"myAbility_start",
+						"end_line":63,
+						"name":"myAbility_start_one",
 						"start_line":16
+					},
+					{
+						"end_line":62,
+						"name":"myAbility_start_two",
+						"start_line":17
 					}
 				]
 			}
