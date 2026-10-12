@@ -105,7 +105,7 @@
 
 1. 创建域名配置文件applinking.json。
 
-   内容为如下：
+   内容如下：
 
    ```json
    {
@@ -203,10 +203,10 @@ struct Index {
         // 仅以App Linking的方式打开应用
         context.openLink(link, { appLinkingOnly: true })
           .then(() => {
-            hilog.info(DOMAIN_NUMBER, TAG, 'openlink success.');
+            hilog.info(DOMAIN_NUMBER, TAG, 'openLink success.');
           })
           .catch((error: BusinessError) => {
-            hilog.error(DOMAIN_NUMBER, TAG, `openlink failed. error:${JSON.stringify(error)}`);
+            hilog.error(DOMAIN_NUMBER, TAG, `openLink failed. error:${JSON.stringify(error)}`);
           });
       })
   }
