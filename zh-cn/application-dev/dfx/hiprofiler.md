@@ -837,7 +837,7 @@ smartperf工具暂时不支持该插件的trace数据解析，若需分析networ
 ## 常用命令
 
 ### 抓取指定进程chromium/cef/electron框架 V8 和 PartitionAlloc内存调用栈
- 	 
+
 对com.huawei.ohos_chromium:Renderer进程的堆内存分配操作进行抓栈，并开启fp回栈、离线符号化、统计模式、跨语言回栈、异步栈抓取、启动模式、文件缓存模式，以及通过restrace_tag抓取chromium/cef/electron框架V8 JS堆内存分配栈和PartitionAlloc分配器内存跟踪数据。
 
 ```shell
