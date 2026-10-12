@@ -724,7 +724,7 @@ getDeviceAdsorbState(mechId: number): AdsorbState
 
 **示例：**
 
-```ts
+console.info(`'Query the adsorb state successfully, adsorb state:' ${adsorbState}`);
 console.info('Query the adsorb state');
 let adsorbState: mechanicManager.AdsorbState = mechanicManager.getDeviceAdsorbState(0);
 console.info(`'Query the adsorb state successfully, axis state:' ${axisStatus}`);
