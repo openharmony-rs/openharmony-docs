@@ -16023,7 +16023,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/UIExtensionAndAccessibility/entry/src/main/ets/pages/UniversalAttributesAccessibility/VirtualNodeExample.ets",
 				"functions":[
 					{
-						"end_line":35,
+						"end_line":61,
 						"name":"virtual_node_example_start",
 						"start_line":16
 					}
