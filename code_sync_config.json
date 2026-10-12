@@ -4749,20 +4749,34 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/Ability/AbilityStage-sta/entry/src/main/ets/exampleabilitystage/MyAbilityStage.ets",
-				"functions":[
-					{
-						"end_line":30,
-						"name":"my_example_ability_start",
-						"start_line":17
-					}
-				]
+				"functions":[]
 			},
 			{
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/Ability/AbilityStage-sta/entry/src/main/ets/myabilitystage/MyAbilityStage.ets",
 				"functions":[
 					{
-						"end_line":60,
-						"name":"myAbility_start",
+						"end_line":65,
+						"name":"myAbility_start_one",
+						"start_line":17
+					},
+					{
+						"end_line":64,
+						"name":"myAbility_start_two",
+						"start_line":18
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/AbilityStage/entry/src/main/ets/myabilitystage/MyAbilityStage.ets",
+				"functions":[
+					{
+						"end_line":63,
+						"name":"myAbility_start_one",
+						"start_line":16
+					},
+					{
+						"end_line":62,
+						"name":"myAbility_start_two",
 						"start_line":17
 					}
 				]
