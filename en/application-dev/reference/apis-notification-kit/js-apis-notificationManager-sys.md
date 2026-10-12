@@ -6931,7 +6931,7 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
 
 ## DoNotDisturbDate
 
-Defines the DND time opitions.
+Defines the DND time options.
 
 **System capability**: SystemCapability.Notification.Notification
 
