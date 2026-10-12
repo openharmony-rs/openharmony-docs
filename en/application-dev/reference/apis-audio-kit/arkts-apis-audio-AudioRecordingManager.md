@@ -1,20 +1,20 @@
 # Interface (AudioRecordingManager)
-
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
 <!--Designer: @zhanganxiang1-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=2fdda33ed977e9eb00b7b643ab233c994134ccf5 translatedAt=2026-08-10T06:25:11.711Z pushedAt=2026-08-10T07:24:43.897Z -->
+<!-- md-trans-meta sourceCommit=59c3fabc0701f94b960b606856aa3cc084316830 translatedAt=2026-10-08T12:01:54.800Z pushedAt=2026-10-12T02:08:04.206Z -->
 
-Manages recording policies, and provides collaborative recording and recording control capabilities.
+**AudioRecordingManager** is a recording policy management module in the audio system. This module provides recording policy management capabilities, including collaborative recording and recording control. When you need to configure recording policies or manage the recording control panel, use the APIs of this module to perform related operations.
 
-Before using the APIs of AudioRecordingManager, you need to first obtain an AudioRecordingManager instance through [getRecordingManager](arkts-apis-audio-AudioManager.md#getrecordingmanager).
+Before using the APIs of this module, you need to obtain an **AudioRecordingManager** instance by calling [getRecordingManager](arkts-apis-audio-AudioManager.md#getrecordingmanager).
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 26.0.0.
+> - The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this interface are supported since API version 26.0.0.
 > - The APIs of this module can be used only in the stage model.
 
 ## Modules to Import
@@ -72,6 +72,7 @@ let config: audio.SystemRecordControllerConfig = {
   sourceType: audio.SourceType.SOURCE_TYPE_MIC
 };
 
+// Enable the system recording control panel to let users select a recording device.
 audioRecordingManager.enableSystemRecordController(true, config).then(() => {
   console.info('Succeeded in enabling system record controller.');
 }).catch((err: BusinessError) => {

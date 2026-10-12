@@ -1,12 +1,11 @@
 # Deprecated Interface (CaptureSession, deprecated)
-
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=425e79ed59a841b19860caacc0b050f68405d43e translatedAt=2026-08-11T01:58:09.067Z pushedAt=2026-08-11T09:17:37.697Z -->
+<!-- md-trans-meta sourceCommit=8b512243901c55915aa61df5cc70cfb3620f6e97 translatedAt=2026-10-08T13:00:05.848Z pushedAt=2026-10-12T11:24:46.175Z -->
 
 **CaptureSession** implements a capture session, which saves all [CameraInput](arkts-apis-camera-CameraInput.md) and [CameraOutput](arkts-apis-camera-CameraOutput.md) instances required to run the camera and requests the camera to complete shooting or video recording.
 
@@ -649,7 +648,6 @@ Sets a flash mode.
 Before the setting, do the following checks:
 
 1. Use [hasFlash](#hasflashdeprecated) to check whether the camera device has flash.
-
 2. Use [isFlashModeSupported](#isflashmodesupporteddeprecated) to check whether the camera device supports the flash mode.
 
 > **NOTE**
@@ -1098,7 +1096,7 @@ Checks whether a focus mode is supported.
 
 | Name     | Type                    | Mandatory| Description                             |
 | -------- | ----------------------- | ---- | -------------------------------- |
-| afMode   | [FocusMode](arkts-apis-camera-e.md#focusmode) | Yes  | Focus mode.                   |
+| afMode   | [FocusMode](arkts-apis-camera-e.md#focusmode) | Yes   | Specified focus mode.                    |
 
 **Return value**
 
@@ -1149,7 +1147,7 @@ Before the setting, call [isFocusModeSupported](#isfocusmodesupporteddeprecated)
 
 | Name     | Type                    | Mandatory| Description                |
 | -------- | ----------------------- | ---- | ------------------- |
-| afMode   | [FocusMode](arkts-apis-camera-e.md#focusmode) | Yes  | Focus mode.      |
+| afMode   | [FocusMode](arkts-apis-camera-e.md#focusmode) | Yes   | Specified focus mode.       |
 
 **Error codes**
 
@@ -1190,7 +1188,7 @@ Obtains the focus mode in use.
 
 | Type       | Description                         |
 | ---------- | ----------------------------- |
-| [FocusMode](arkts-apis-camera-e.md#focusmode)   | Focus mode obtained. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
+| [FocusMode](arkts-apis-camera-e.md#focusmode)   | Focus mode obtained. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned. |
 
 **Error codes**
 
@@ -1485,7 +1483,7 @@ function getZoomRatio(captureSession: camera.CaptureSession): number {
 
 isVideoStabilizationModeSupported(vsMode: VideoStabilizationMode): boolean
 
-Checks whether a video stabilization mode is supported. 
+Checks whether a video stabilization mode is supported.
 
 > **NOTE**
 >This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Stabilization.isVideoStabilizationModeSupported](arkts-apis-camera-StabilizationQuery.md#isvideostabilizationmodesupported11) instead.

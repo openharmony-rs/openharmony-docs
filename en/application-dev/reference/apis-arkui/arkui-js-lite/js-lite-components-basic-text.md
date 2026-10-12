@@ -5,6 +5,7 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=cb1d5c28dc57e395dbff165342290038ffcffa43 translatedAt=2026-10-12T03:57:12.718Z pushedAt=2026-10-12T06:46:04.260Z -->
 
 The **\<text>** component is used to display a piece of textual information.
 
@@ -34,7 +35,7 @@ Not supported.
 | -------- | -------- | -------- |
 | click | - | Triggered when the component is clicked.|
 | longpress | - | Triggered when the component is long pressed.|
-| swipe<sup>5+</sup> | [SwipeEvent](js-lite-common-events.md) | Triggered when a user quickly swipes on the component.|
+| swipe<sup>5+</sup> | [SwipeEvent](js-lite-common-events.md#swipeevent) | Triggered when a user quickly swipes on the component. |
 
 
 ## Styles
@@ -51,7 +52,7 @@ Not supported.
 | height | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>5+</sup> | 0px | No| Component height.<br>Unit: px<br>If this attribute is not set, the default value **0** is used.|
 | padding | &lt;length&gt; | 0 | No| Shorthand attribute to set the padding for all sides.<br>The attribute can have one to four values:<br>- If you set only one value, it specifies the padding for all the four sides.<br>- If you set two values, the first value specifies the top and bottom padding, and the second value specifies the left and right padding.<br>- If you set three values, the first value specifies the top padding, the second value specifies the left and right padding, and the third value specifies the bottom padding.<br>- If you set four values, they respectively specify the padding for top, right, bottom, and left sides (in clockwise order).|
 | padding-[left\|top\|right\|bottom] | &lt;length&gt; | 0 | No| Left, top, right, and bottom padding.|
-| margin | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>5+</sup> | 0 | No| Shorthand attribute to set the margin for all sides. The attribute can have one to four values:<br>- If you set only one value, it specifies the margin for all the four sides.<br>- If you set two values, the first value specifies the top and bottom margins, and the second value specifies the left and right margins.<br>- If you set three values, the first value specifies the top margin, the second value specifies the left and right margins, and the third value specifies the bottom margin.<br>- If you set four values, they respectively specify the margin for top, right, bottom, and left sides (in clockwise order).|
+| margin | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>5+</sup> | 0 | No | Use shorthand to set all margin attributes. This attribute can have 1 to 4 values.<br/>-&nbsp;When there is only one value, this value is applied to all four sides.<br/>-&nbsp;When there are two values, the first value is matched to the top and bottom, and the second value is matched to the left and right.<br/>-&nbsp;When there are three values, the first value is matched to the top, the second value is matched to the left and right, and the third value is matched to the bottom.<br/>-&nbsp;When there are four values, they are matched in the order of top, right, bottom, and left (that is, clockwise order). |
 | margin-[left\|top\|right\|bottom] | &lt;length&gt;&nbsp;\|&nbsp;&lt;percentage&gt;<sup>5+</sup> | 0 | No| Left, top, right, and bottom margins.|
 | border-width | &lt;length&gt; | 0 | No| Shorthand attribute to set the border width for all sides.|
 | border-color | &lt;color&gt; | black | No| Shorthand attribute to set the color for all borders.|

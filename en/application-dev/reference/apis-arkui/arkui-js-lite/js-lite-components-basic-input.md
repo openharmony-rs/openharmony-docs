@@ -1,12 +1,11 @@
 # input
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @jiaxiaguang-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=dfb15c325281e5e789ea7ade45dfdd45876606ad translatedAt=2026-07-27T02:26:29.670Z pushedAt=2026-07-27T09:23:36.719Z -->
+<!-- md-trans-meta sourceCommit=50f5d66e38b8b4fff9b1e5a462513d4b69c2569d translatedAt=2026-10-12T03:57:11.125Z pushedAt=2026-10-12T06:46:04.255Z -->
 
 The **\<input>** component provides an interactive interface to receive user input. It can be a radio button, check box, or button.
 
@@ -14,9 +13,11 @@ The **\<input>** component provides an interactive interface to receive user inp
 >
 > This component is supported since API version 4. Updates will be marked with a superscript to indicate their earliest API version.
 
+
 ## Child Components
 
 Not supported.
+
 
 ## Attributes
 
@@ -31,24 +32,24 @@ Not supported.
 | class | string | - | No| Style class of the component, which is used to refer to a style table.|
 | ref | string | - | No| Reference information of child elements, which is registered with the parent component on **$refs**.|
 
+
 ## Events
 
 - When **type** is set to **checkbox** or **radio**, the following events are supported.
-
   | Name| Parameter| Description|
   | -------- | -------- | -------- |
   | change | {&nbsp;checked:true&nbsp;\|&nbsp;false&nbsp;} | Triggered when the checked status of the **checkbox** or **radio** button changes.|
   | click | - | Triggered when the component is clicked.|
   | longpress | - | Triggered when the component is long pressed.|
-  | swipe<sup>5+</sup> | [SwipeEvent](js-lite-common-events.md#swipeevent) | Triggered when a user quickly swipes on the component. |
+  | swipe<sup>5+</sup> | [SwipeEvent](js-lite-common-events.md#swipeevent) | Event object triggered when a user quickly swipes on a component. |
 
 - When **type** is set to **button**, the following events are supported.
-
   | Name| Parameter| Description|
   | -------- | -------- | -------- |
   | click | - | Triggered when the component is clicked.|
   | longpress | - | Triggered when the component is long pressed.|
-  | swipe<sup>5+</sup> | [SwipeEvent](js-lite-common-events.md#swipeevent) | Triggered when a user quickly swipes on the component. |
+  | swipe<sup>5+</sup> | [SwipeEvent](js-lite-common-events.md#swipeevent) | Event object triggered when a user quickly swipes on a component. |
+
 
 ## Styles
 
@@ -96,6 +97,8 @@ Not supported.
    ```
 
    ![input-type-button](figures/input-type-button.png)
+
+   
 
 2. Check box
 
