@@ -9495,8 +9495,7 @@ Allows an application to install other applications of the debug type.
 
 ## ohos.permission.AUTH_SERVICE_ACCESS
 
-Allows an application to access authentication event management framework to report authentication
-events and receive event authentication results.
+Allows an application to access authentication event management framework to report authentication events and receive event authentication results.
 
 **Permission level**: system_basic
 
@@ -9504,7 +9503,7 @@ events and receive event authentication results.
 
 **Certificate-based authorization**: true
 
-**Supported devices**: PC/2in1
+**Supported devices**: PCs/2-in-1 devices
 
 **Valid since**: 26.2.0
 
