@@ -111,7 +111,7 @@ DLP_ErrCode OH_DLP_GetDlpPermissionInfo(DLP_FileAccess *dlpFileAccess, uint32_t 
 
 | 类型 | 说明 |
 | -- | -- |
-| [DLP_ErrCode](#dlp_errcode) | 0 - 操作成功。<br>         801 - 功能不支持。可能原因：车不支持。在版本26.0.1及其以上，该错误码返回。<br>         19100001 - 入参错误。<br>         19100006 - 非DLP沙箱应用。<br>         19100011 - 系统服务工作异常。<br>         19100012 - 内存申请失败。 |
+| [DLP_ErrCode](#dlp_errcode) | 0 - 操作成功。<br>         801 - 功能不支持。可能原因：车不支持。在API版本26.0.1及其以上版本，将返回该错误码。<br>         19100001 - 入参错误。<br>         19100006 - 非DLP沙箱应用。<br>         19100011 - 系统服务工作异常。<br>         19100012 - 内存申请失败。 |
 
 ### OH_DLP_GetOriginalFileName()
 
@@ -137,7 +137,7 @@ DLP_ErrCode OH_DLP_GetOriginalFileName(const char *fileName, char **originalFile
 
 | 类型 | 说明 |
 | -- | -- |
-| [DLP_ErrCode](#dlp_errcode) | 0 - 操作成功。<br>         801 - 功能不支持。可能原因：车不支持。在版本26.0.1及其以上，该错误码返回。<br>        19100001 - 入参错误。<br>         19100012 - 内存申请失败。 |
+| [DLP_ErrCode](#dlp_errcode) | 0 - 操作成功。<br>         801 - 功能不支持。可能原因：车不支持。在API版本26.0.1及其以上版本，将返回该错误码。<br>        19100001 - 入参错误。<br>         19100012 - 内存申请失败。 |
 
 ### OH_DLP_IsInSandbox()
 
@@ -162,7 +162,7 @@ DLP_ErrCode OH_DLP_IsInSandbox(bool *isInSandbox)
 
 | 类型 | 说明 |
 | -- | -- |
-| [DLP_ErrCode](#dlp_errcode) | 0 - 操作成功。<br>         801 - 功能不支持。可能原因：车不支持。在版本26.0.1及其以上，该错误码返回。<br>         19100011 - 系统服务工作异常。<br>         19100012 - 内存申请失败。 |
+| [DLP_ErrCode](#dlp_errcode) | 0 - 操作成功。<br>         801 - 功能不支持。可能原因：车不支持。在API版本26.0.1及其以上版本，将返回该错误码。<br>         19100011 - 系统服务工作异常。<br>         19100012 - 内存申请失败。 |
 
 ### OH_DLP_SetSandboxAppConfig()
 
@@ -187,7 +187,7 @@ DLP_ErrCode OH_DLP_SetSandboxAppConfig(const char *configInfo)
 
 | 类型 | 说明 |
 | -- | -- |
-| [DLP_ErrCode](#dlp_errcode) | 0 - 操作成功。<br>         801 - 功能不支持。可能原因：车不支持。在版本26.0.1及其以上，该错误码返回。<br>         19100001 - 入参错误。<br>         19100007 - DLP沙箱应用不允许调用此接口。<br>         19100011 - 系统服务工作异常。<br>         19100018 - 应用未授权。 |
+| [DLP_ErrCode](#dlp_errcode) | 0 - 操作成功。<br>         801 - 功能不支持。可能原因：车不支持。在API版本26.0.1及其以上版本，将返回该错误码。<br>         19100001 - 入参错误。<br>         19100007 - DLP沙箱应用不允许调用此接口。<br>         19100011 - 系统服务工作异常。<br>         19100018 - 应用未授权。 |
 
 ### OH_DLP_GetSandboxAppConfig()
 
@@ -212,7 +212,7 @@ DLP_ErrCode OH_DLP_GetSandboxAppConfig(char **configInfo)
 
 | 类型 | 说明 |
 | -- | -- |
-| [DLP_ErrCode](#dlp_errcode) | 0 - 操作成功。<br>         801 - 功能不支持。可能原因：车不支持。在版本26.0.1及其以上，该错误码返回。<br>         19100011 - 系统服务工作异常。<br>         19100012 - 内存申请失败。<br>         19100018 - 应用未授权。 |
+| [DLP_ErrCode](#dlp_errcode) | 0 - 操作成功。<br>         801 - 功能不支持。可能原因：车不支持。在API版本26.0.1及其以上版本，将返回该错误码。<br>         19100011 - 系统服务工作异常。<br>         19100012 - 内存申请失败。<br>         19100018 - 应用未授权。 |
 
 ### OH_DLP_CleanSandboxAppConfig()
 
@@ -230,6 +230,6 @@ DLP_ErrCode OH_DLP_CleanSandboxAppConfig()
 
 | 类型 | 说明 |
 | -- | -- |
-| [DLP_ErrCode](#dlp_errcode) | 0 - 操作成功。<br>         801 - 功能不支持。可能原因：车不支持。在版本26.0.1及其以上，该错误码返回。<br>         19100007 - DLP沙箱应用不允许调用此接口。<br>         19100011 - 系统服务工作异常。<br>         19100018 - 应用未授权。 |
+| [DLP_ErrCode](#dlp_errcode) | 0 - 操作成功。<br>         801 - 功能不支持。可能原因：车不支持。在API版本26.0.1及其以上版本，将返回该错误码。<br>         19100007 - DLP沙箱应用不允许调用此接口。<br>         19100011 - 系统服务工作异常。<br>         19100018 - 应用未授权。 |
 
 
