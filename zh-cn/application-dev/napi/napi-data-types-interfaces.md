@@ -375,7 +375,7 @@ Node-API接口在Node.js提供的原生模块基础上扩展，目前支持部�
 | napi_is_array | 判断给定ArkTS value是否为array。 |
 | napi_set_element | 在给定Object的指定索引处，设置属性值。 |
 | napi_get_element | 获取给定Object指定索引处的元素。 |
-| napi_has_element | 若给定Object的指定索引处拥有属性。 |
+| napi_has_element | 判断给定Object的指定索引处是否存在元素。 |
 | napi_delete_element | 尝试删除给定Object的指定索引处的元素。 |
 | napi_create_typedarray | 通过现有的ArrayBuffer创建一个ArkTS TypedArray。 |
 | napi_is_typedarray | 判断给定ArkTS value是否为TypedArray。|
