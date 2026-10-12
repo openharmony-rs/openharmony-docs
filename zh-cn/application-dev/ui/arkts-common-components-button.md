@@ -370,7 +370,7 @@ Button('Ok', { type: ButtonType.Normal, stateEffect: true })
 
   在可以滑动的界面，滑动时按钮始终保持悬浮状态。
 
-  <!-- @[hover_button_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/HoverButtonExample.ets) --> 
+  <!-- @[hover_button_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/button/HoverButtonExample.ets) -->  
   
   ``` TypeScript
   // xxx.ets
