@@ -163,8 +163,7 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-import { userAccessCtrl } from '@kit.UserAuthenticationKit';
-import { userAuth } from '@kit.UserAuthenticationKit';
+import { userAccessCtrl, userAuth } from '@kit.UserAuthenticationKit';
 
 try {
   const rand = cryptoFramework.createRandom();
@@ -232,8 +231,7 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@ohos.base';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-import { userAccessCtrl } from '@kit.UserAuthenticationKit';
-import { userAuth } from '@kit.UserAuthenticationKit';
+import { userAccessCtrl, userAuth } from '@kit.UserAuthenticationKit';
 
 try {
   const rand = cryptoFramework.createRandom();
