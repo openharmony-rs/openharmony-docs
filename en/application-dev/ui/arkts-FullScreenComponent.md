@@ -1,12 +1,11 @@
-# Atomic Service Full Screen Launch Component (FullScreenLaunchComponent)
-
+# Full-Screen Launch of Atomic Services (FullScreenLaunchComponent)
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @dutie123-->
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=871010847291a8d5221a0bd1c554d4d2cba1ab41 translatedAt=2026-08-01T00:25:36.665Z pushedAt=2026-08-01T02:23:13.870Z -->
+<!-- md-trans-meta sourceCommit=08213ac47c0fa9b130663973348a874ae6895d07 translatedAt=2026-10-12T09:11:15.802Z pushedAt=2026-10-12T10:35:28.741Z -->
 
 With the **FullScreenLaunchComponent** component, you can launch atomic services in full screen mode, providing a more user-friendly experience within applications.
 
@@ -22,24 +21,26 @@ With the **FullScreenLaunchComponent** component, you can launch atomic services
 
   Defined and used in the provider application, **UIExtensionAbility** allows the provider to run in a separate process. It offers two launch modes: one for redirecting to the provider and another for embedding the provider directly within the application.
 
+
 ## Implementation Principles
 
 FullScreenLaunchComponent provides a capability for full-screen launch of an atomic service. When an atomic service needs to be launched, the launching party queries AMS to check whether the launched party has authorized the consumer to run the atomic service in embedded mode. If authorized, the consumer runs the atomic service in full-screen embedded mode; if unauthorized, the consumer launches the atomic service via redirect.
 
-<!--Del-->Running an atomic service in full-screen embedded mode means to embed it into the host application's component tree using [UIExtension](./arkts-ui-extension-components-sys.md) and, by launching the EmbeddableUIAbility, display the content of the provider, offering a seamless, component-based interaction experience.<!--DelEnd-->
+<!--Del-->
+Running an atomic service in full-screen embedded mode means embedding it into the consumer's component tree as a component encapsulated by [UIExtension](./arkts-ui-extension-components-sys.md), starting EmbeddableUIAbility, and displaying the provider's application content to deliver a component-based interaction experience.
+<!--DelEnd-->
 
 Launching an atomic service in a separate, pop-up mode means to launch the EmbeddableUIAbility outside of the component hierarchy, offering an interaction experience similar to that of a standalone window.
 
 ![fullscreenlaunch-component](figures/fullscreenlaunch-component.png)
+
 
 ## Available Capabilities
 
 ### Basic Component Capabilities
 
 - When the service provider authorizes the host application to run the atomic service in an embedded manner, the host application runs the atomic service in full-screen embedded mode.
-
 - When the service provider does not authorize the host application to run the atomic service in an embedded manner, the host application launches the atomic service in a separate, pop-up mode.
-
 - You can customize an icon placeholder component, which, when touched, launches the atomic service.
 
 ### Available Capabilities of the EmbeddableUIAbility Process
@@ -59,15 +60,12 @@ The universal attributes are not supported.
 By default, the provider application cannot interact with the host application's components or process context. Specifically, the following are not supported:
 
 - Effects that exceed a component's boundaries, such as the **Navigation** component displaying into the safe area
-
 - Components that rely on other components or require cross-component or cross-application control and access, for example, **PluginComponent** for accessing other components or **FormComponent** for displaying pages from other applications across processes
-
 - Components that depend on the host application's window information or process **UIContext** instance for capabilities, interactions, or animations, such as the **FolderStack** component
 
 The details are as follows.
 
 <!--Table: 25%; 10%; 35%; 30%-->
-
 | Component                                                        | Capability Support| Description                                                    | Remarks                                                |
 | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [FullScreenLaunchComponent](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-FullScreenLaunchComponent.md) | Not supported  | **FullScreenLaunchComponent** is a component designed for launching atomic services in full screen. If the invoked application (the one being launched) grants the invoker the authorization to run the atomic service in an embedded manner, the invoker can operate the atomic service in full-screen embedded mode. If authorization is not provided, the invoker will launch the atomic service in a pop-up manner.| Due to its cross-application scheduling capability, the **FullScreenLaunchComponent** does not support nested launching of this component. |
@@ -92,13 +90,11 @@ The details are as follows.
 The Native APIs provide capabilities that, in the **FullScreenLaunchComponent** context, also need to consider whether they extend beyond the current component, as well as interactions with the launcher (host) component and the application process context. This mainly includes the following scenarios:
 
 - The API may require information from the host application's context or window, such as **UIContext**.
-
 - The API may control or influence not just the component itself but also other components or aspects of the host application, such as UI appearance.
 
 The details are as follows.
 
 <!--Table: 25%; 10%; 35%; 30%-->
-
 | Module                                                        | Capability Support| Description                                                    | Remarks                                                |
 | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [Page Transition](../reference/apis-arkui/arkui-ts/ts-page-transition-animation.md) | Not supported  | You can customize the page entrance and exit animations in the **pageTransition** API for transition between pages.| —                                                            |
@@ -123,10 +119,10 @@ Considering the extensive capabilities of the **FullScreenLaunchComponent**, if 
 **Usage modes:**
 
 - When the service provider authorizes the host application to run the atomic service in an embedded manner, the host application runs the atomic service in full-screen embedded mode.
-
 - When the service provider does not authorize the host application to run the atomic service in an embedded manner, the host application runs the atomic service in a separate, pop-up mode.
 
 The full-screen embedded mode restricts the host application's interaction capabilities, as it can no longer create subwindows that could cover the provider application's window.
+
 
 ### Nesting Constraints
 
@@ -139,7 +135,6 @@ The **FullScreenLaunchComponent** does not support the universal events. Instead
 Events are handled synchronously or asynchronously based on their use case:
 
 - Interactions between the host process and the provider process are handled asynchronously by default: This avoids performance issues and deadlocks, which could affect the overall interaction experience.
-
 - Synchronous event handling principles: Events that can be processed synchronously should have a low triggering frequency and minor performance impact, and should meet the actual scenarios of the application as much as possible.
 
 When using the **FullScreenLaunchComponent**, comply with the following design constraints:
@@ -147,7 +142,6 @@ When using the **FullScreenLaunchComponent**, comply with the following design c
 Asynchronous event handling scenarios: Both the **FullScreenLaunchComponent** component and the host application's components may receive events simultaneously. You need to manage this based on the use scenario. For example, you can configure the host application components not to handle the events. If this is not feasible, you are advised to replace the **FullScreenLaunchComponent** component to ensure a seamless interaction experience.
 
 <!--Table: 20%; 25%; 10%; 10%; 35%-->
-
 | Scenario    | Category                      | Supported or Not| Synchronous/Asynchronous (Host and Provider)| Remarks                                                        |
 | -------- | -------------------------- | -------- | ------------------------- | ------------------------------------------------------------ |
 | Universal event| Click event (**Click**)         | Supported    | Asynchronous                     | —                                                            |
@@ -164,14 +158,14 @@ Asynchronous event handling scenarios: Both the **FullScreenLaunchComponent** co
 As the **FullScreenLaunchComponent** involves cross-process application calls, the processing between the host application process and the provider application process cannot be synchronized, leading to different experience issues compared to regular components. Be aware of the performance constraints of rendering pages across multiple processes with this component and take targeted measures.
 
 - **Flickering white screen**: Initiating a new process through the **FullScreenLaunchComponent** to deliver functionality involves a sequence of steps – creation, launch, and page rendering – that require time to complete. During this period, users may notice a brief display of the **FullScreenLaunchComponent**'s default white background, resulting in a flickering white screen.
-
 - **Desynchronization between rendering and display**: When the host application page changes rapidly (such as during screen rotation or window resizing), there can be a desynchronization between the rendering of the host application page and the content displayed within the **FullScreenLaunchComponent** component. This issue arises from cross-process interactions; while the provider application's process tasks are triggered by the host application, layout tasks are handled in the respective process's JavaScript thread. There is no guarantee of synchronization between the host application's and provider application's rendering tasks, resulting in desynchronization.
+
+
 
 When developing the provider application, you (provider) need to consider the following design constraints:
 
 - Use scenarios with minimal layout changes.
-
-- When layout changes occur, the provider application's JavaScript thread should execute as few tasks as possible to ensure that it can respond to layout change tasks promptly.
+- When layout changes occur, the provider's JS thread should execute as few tasks as possible to ensure that it can respond to layout change tasks in a timely manner.
 
 You can mitigate the flickering white screen issue in the following ways:
 
