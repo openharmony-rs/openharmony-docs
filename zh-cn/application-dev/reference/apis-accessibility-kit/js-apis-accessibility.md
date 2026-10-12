@@ -2839,7 +2839,7 @@ struct Index {
 
 无障碍聚焦节点元素信息。
 
-可通过[accessibility.getFocusedUIAccessibilityElement](##accessibility.getfocuseduiaccessibilityelement)获取实例
+可通过[accessibility.getFocusedUIAccessibilityElement](#accessibility.getfocuseduiaccessibilityelement)获取实例
  
 **起始版本：** 26.0.1
 
