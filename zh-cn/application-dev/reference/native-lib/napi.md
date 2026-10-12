@@ -52,8 +52,8 @@ OpenHarmony的Node-API组件对Node-API的接口进行了重新实现，底层�
 |FUNC|napi_get_and_clear_last_exception|获取并清除最近一次出现的异常。|10|
 |FUNC|napi_is_exception_pending|判断是否出现了异常。|10|
 |FUNC|napi_fatal_error|引发致命错误以立即终止进程。|10|
-|FUNC|napi_open_handle_scope|创建一个napi_handle_scope，用于管理napi_value的生命周期。|10|
-|FUNC|napi_close_handle_scope|关闭传入的napi_handle_scope，关闭后所有在其中创建的napi_value都将被释放。|10|
+|FUNC|napi_open_handle_scope|创建一个napi_handle_scope。|10|
+|FUNC|napi_close_handle_scope|关闭传入的napi_handle_scope，关闭后，所有在其中声明的引用都将被关闭。|10|
 |FUNC|napi_open_escapable_handle_scope|创建出一个可逃逸的handle scope，可将范围内声明的值返回到父作用域。|10|
 |FUNC|napi_close_escapable_handle_scope|关闭传入的可逃逸的handle scope。|10|
 |FUNC|napi_escape_handle|提升传入的js object的生命周期到其父作用域。|10|
