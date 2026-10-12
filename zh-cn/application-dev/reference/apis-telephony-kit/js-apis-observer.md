@@ -1366,7 +1366,6 @@ onVoIPStateChange\( callback: Callback\<VoIPCallStateInfo\>\): void
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
 | 201      | Permission denied.                           |
-| 8300001  | Invalid parameter value.                     |
 | 8300002  | Service connection failed.                   |
 | 8300003  | System internal error.                       |
 
@@ -1384,9 +1383,9 @@ let callback: (data: observer.VoIPCallStateInfo) => void = (data: observer.VoIPC
 
 //订阅三方VoIP通话状态变化
 try {
-    observer.onVoIPStateChanage(callback);
+    observer.onVoIPStateChange(callback);
 } catch (err) {
-    console.error(`observer.onVoIPStateChanage failed: ${JSON.stringify(err)}`);
+    console.error(`observer.onVoIPStateChange failed: ${JSON.stringify(err)}`);
 }
 ```
 
@@ -1415,7 +1414,6 @@ offVoIPStateChange\(callback?: Callback\<VoIPCallStateInfo\>\): void
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
 | 201      | Permission denied.                           |
-| 8300001  | Invalid parameter value.                     |
 | 8300002  | Service connection failed.                   |
 | 8300003  | System internal error.                       |
 
@@ -1433,16 +1431,16 @@ let callback: (data: observer.VoIPCallStateInfo) => void = (data: observer.VoIPC
 
 //取消订阅：指定回调取消单条订阅
 try {
-    observer.offVoIPStateChanage(callback);
+    observer.offVoIPStateChange(callback);
 } catch (err) {
-    console.error(`observer.offVoIPStateChanage failed: ${JSON.stringify(err)}`);
+    console.error(`observer.offVoIPStateChange failed: ${JSON.stringify(err)}`);
 }
 
 //取消订阅：不带参数取消全部订阅
 try {
-    observer.offVoIPStateChanage();
+    observer.offVoIPStateChange();
 } catch (err) {
-    console.error(`observer.offVoIPStateChanage failed: ${JSON.stringify(err)}`);
+    console.error(`observer.offVoIPStateChange failed: ${JSON.stringify(err)}`);
 }
 ```
 
