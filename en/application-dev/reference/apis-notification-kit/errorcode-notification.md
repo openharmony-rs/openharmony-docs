@@ -2,9 +2,10 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=4faed534b39ef26ef8f9b647802a53e9f8d2b792 translatedAt=2026-10-09T10:03:26.018Z pushedAt=2026-10-12T08:05:06.631Z -->
 
 > **NOTE**
 >
@@ -62,7 +63,7 @@ The notification service is busy or abnormal.
 
 **Solution**
 
-Restart the system.
+Wait for a while and try again, or check the running status of the notification service and restart it if necessary.
 
 ## 1600004 Notification Disabled
 
@@ -76,11 +77,11 @@ This error code is reported when notification is disabled.
 
 **Possible Causes**
 
-The notification feature is not enabled for the application.
+The notification switch is not enabled for the application.
 
 **Solution**
 
-Enable notification for the application in notification settings.
+Enable the application notification switch in [notification settings](../../notification/notification-glossary.md#notification-setting).
 
 ## 1600005 Notification Slot Disabled
 
@@ -90,7 +91,7 @@ Notification slot disabled.
 
 **Description**
 
-This error code is reported when the notification slot is not available.
+When the [notification slot](../../notification/notification-glossary.md#notification-slot) is disabled, the method returns this error code.
 
 **Possible Causes**
 
@@ -98,9 +99,9 @@ The notification slot is disabled or has not been added.
 
 **Solution**
 
-1. Access notification settings and check whether the application has the notification slot. If no, add it.
+1. In [notification settings](../../notification/notification-glossary.md#notification-setting), check whether the application has a slot of this type. If not, add one.
 
-2. Make sure the notification slot is enabled.
+2. In notification settings, check the status of the notification slot of this type for the application and keep it enabled.
 
 <!--Del-->
 ## 1600006 Notification Deletion Failed
@@ -111,7 +112,7 @@ Notification deletion disabled.
 
 **Description**
 
-This error code is reported when notification deletion is disabled.
+If the deletion prohibition attribute is set in [notification settings](../../notification/notification-glossary.md#notification-setting), the method returns this error code.
 
 **Possible Causes**
 
@@ -119,7 +120,7 @@ The notification attribute **isUnremovable** is set to true.
 
 **Solution**
 
-Enable notification deletion. For details, see [NotificationRequest](./js-apis-inner-notification-notificationRequest.md).
+Enable notification deletion. For details, see [NotificationRequest](js-apis-inner-notification-notificationRequest.md).
 <!--DelEnd-->
 
 ## 1600007 Notification Not Found
@@ -156,7 +157,7 @@ The user information passed is incorrect.
 
 **Solution**
 
-Verify the user information.
+Verify that the user information passed in is correct.
 
 ## 1600009 Notification Sending Limit Reached
 
@@ -226,9 +227,9 @@ This error code is returned if a memory allocation error occurs due to insuffici
 
 **Possible Causes**
 
-The memory space is insufficient.
+1. The memory space is insufficient.
 
-A memory allocation error occurs.
+2. A memory allocation error occurs.
 
 **Solution**
 
@@ -242,34 +243,42 @@ A notification dialog box is already displayed.
 
 **Description**
 
-This error code is reported when the notification pop-up window is displayed.
+This error code is reported when the notification dialog box is displayed.
 
 **Possible Causes**
 
-The notification pop-up window is displayed.
+The notification dialog box is displayed.
 
 **Solution**
 
-Check whether the notification pop-up window is displayed.
+Check whether the notification dialog box is displayed.
 
 
 ## 1600014 No Related Permission
 
 **Error Message**
 
-No permission.
+1. No permission.
+
+2. The right of liveView is not enabled.
 
 **Description**
 
-This error code is reported when you do not have the related permission.
+1. The application does not have the related permission, and the API returns this error code.
+
+2. The application publishes a third-party live view notification without applying for the live view permission, and the API returns this error code.
 
 **Possible Causes**
 
-You do not have the related permission.
+1. The application does not have the related permission.
+
+2. The application has not applied for the permission of the corresponding scenario.
 
 **Solution**
 
-Check whether you have the related permission.
+1. Check whether the application has the related permission.
+
+2. Check whether the application has applied for the live view permission.
 
 ## 1600015 Duplicate Configurations not Allowed for the Current Notification Status
 
@@ -316,15 +325,15 @@ There is no corresponding agent relationship configuration.
 
 **Description**
 
-This error code is reported when no proxy relationship is configured.
+This error code is reported when no agent relationship is configured.
 
 **Possible Causes**
 
-No corresponding proxy relationship is configured.
+No corresponding agent relationship is configured.
 
 **Solution**
 
-Check the proxy relationship configuration.
+Check the agent relationship configuration.
 <!--DelEnd-->
 
 ## 1600018 Notification Settings Page Already Displayed
@@ -335,7 +344,7 @@ The notification settings window is already displayed.
 
 **Description**
 
-This error code is reported when the notification settings page has been displayed.
+If the [notification settings](../../notification/notification-glossary.md#notification-setting) page has already been launched, the method returns this error code.
 
 **Possible Causes**
 
@@ -392,7 +401,7 @@ Distributed operation timed out.
 
 **Description**
 
-This error code is reported when the cross-device collaboration APIs (for example, redirection or quick reply) of notification is called but the communication times out.
+When calling the [cross-device collaboration](../../notification/notification-glossary.md#cross-device-collaboration) APIs of notifications (for example, cross-device notification click redirection and cross-device quick reply), if cross-device communication times out, this error code is returned.
 
 **Possible Causes**
 
@@ -431,7 +440,7 @@ The application does not implement the NotificationSubscriberExtensionAbility.
 
 **Description**
 
-This error code is reported when the application does not implement the NotificationSubscriberExtensionAbility.
+This error code is returned when the application does not implement **NotificationSubscriberExtensionAbility**.
 
 **Possible Causes**
 
@@ -450,7 +459,7 @@ The specified bundle has no custom ringtone information.
 
 **Description**
 
-This error code is reported when the custom ringtones are not configured for the specified application.
+If the specified application has not configured [custom ringtone](../../notification/notification-glossary.md#customized-ringtone) information, this error code is returned.
 
 **Possible Causes**
 
@@ -470,7 +479,7 @@ Geofencing disabled.
 
 **Description**
 
-This error code is reported when geofencing is disabled.
+When the [geofence](../../notification/notification-glossary.md#geofence) switch is off, the method returns this error code.
 
 **Possible Causes**
 
@@ -478,7 +487,7 @@ Geofencing is disabled.
 
 **Solution**
 
-Enable geofencing in notification settings.
+The user needs to enable the geofence switch in [notification settings](../../notification/notification-glossary.md#notification-setting).
 <!--DelEnd-->
 
 <!--Del-->
@@ -490,7 +499,7 @@ The location switch is off.
 
 **Description**
 
-This error code is reported when the location service is disabled, which is required for geofence registration.
+The location service switch is not enabled, causing the [geofence](../../notification/notification-glossary.md#geofence) registration to fail.
 
 **Possible Causes**
 
@@ -510,7 +519,7 @@ The "Awareness & suggestions" switch of the location-based service is off.
 
 **Description**
 
-This error code is reported when the **Awareness & suggestions** switch of the location service is disabled, as enabling this switch is a prerequisite for geofence registration.
+The **Awareness & suggestions** switch of the location system service is turned off, causing a failure to register the [geofence](../../notification/notification-glossary.md#geofence).
 
 **Possible Causes**
 
@@ -534,9 +543,27 @@ The current notification does not support this API.
 
 **Possible Causes**
 
-The reminder for later is set for a third-party live notification, system live notification, or other notification types that cannot be deleted.
+When setting [notification snooze](../../notification/notification-glossary.md#notification-snooze), the notification type is a third-party live view, a system live view, or another type that cannot be deleted.
 
 **Solution**
 
-Check whether the notification is third-party live notification, system live notification, or other types that cannot be deleted when you set the reminder.
+Check whether the notification is third-party live view notification, system live view notification, or other types that cannot be deleted when you set the notification snooze.
 <!--DelEnd-->
+
+## 1600029 Failed to Find the ExtensionAbility for the Custom Extension Area of the Live View Widget
+
+**Error Message**
+
+The system failed to find the ExtensionAbility instance for the custom Live View widget template.
+
+**Description**
+
+When the application publishes a third-party live view notification, the system fails to find the **ExtensionAbility** instance for the custom extension area, and the API returns this error code.
+
+**Possible Causes**
+
+The application does not configure or incorrectly configures the **ExtensionAbility** for the custom extension area of the live view widget.
+
+**Solution**
+
+Check whether the application correctly configures the **ExtensionAbility** for the custom extension area of the live view widget.

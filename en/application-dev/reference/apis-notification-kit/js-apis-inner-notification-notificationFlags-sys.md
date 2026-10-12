@@ -2,9 +2,10 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=4faed534b39ef26ef8f9b647802a53e9f8d2b792 translatedAt=2026-10-09T10:06:10.100Z pushedAt=2026-10-12T08:05:06.635Z -->
 
 The **NotificationFlags** module implements a **NotificationFlags** instance.
 
@@ -12,14 +13,14 @@ The **NotificationFlags** module implements a **NotificationFlags** instance.
 >
 > The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> This topic describes only system APIs provided by the module. For details about its public APIs, see [NotificationFlags](./js-apis-inner-notification-notificationFlags.md).
+> This topic describes only system APIs provided by the module. For details about its public APIs, see [NotificationFlags](js-apis-inner-notification-notificationFlags.md).
 
 ## NotificationFlags
 
-Defines the notification flags.
+Describes the [notification flags](../../notification/notification-glossary.md#notification-flags).
 
 **System capability**: SystemCapability.Notification.Notification
 
 | Name            | Type                   | Read Only| Optional| Description                              |
 | ---------------- | ---------------------- | ---- | ---- | --------------------------- |
-| reminderFlags<sup>11+</sup> | number| Yes| Yes| Settings of the input information reminder features.<br>**System API**: This is a system API.<br>- Bit 0: sound alert. The value **0** means to enable the feature, and **1** means the opposite.<br>- Bit 1: locking the screen. The value **0** means to enable the feature, and **1** means the opposite.<br>- Bit 2: banner. The value **0** means to enable the feature, and **1** means the opposite.<br>- Bit 3: turning on the screen. The value **0** means to enable the feature, and **1** means the opposite.<br>- Bit 4: vibration. The value **0** means to enable the feature, and **1** means the opposite.<br>- Bit 5: notification icon in the status bar. The value **0** means to enable the feature, and **1** means the opposite.|
+| reminderFlags<sup>11+</sup> | number| Yes| Yes| Whether to enable the input information reminder features.<br>**System API**: This is a system API.<br>- Bit 0: sound alert. The value **0** means to disable the feature, and **1** means the opposite.<br>- Bit 1: locking the screen. The value **0** means to disable the feature, and **1** means the opposite.<br>- Bit 2: banner. The value **0** means to disable the feature, and **1** means the opposite.<br>- Bit 3: turning on the screen. The value **0** means to disable the feature, and **1** means the opposite.<br>- Bit 4: vibration. The value **0** means to disable the feature, and **1** means the opposite.<br>- Bit 5: notification icon in the status bar. The value **0** means to disable the feature, and **1** means the opposite.|
