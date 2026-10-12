@@ -509,9 +509,9 @@ setScreenLockDisabledForAccount(admin: Want, disable: boolean): void
 >
 > 3. 设备上存在密码时，设置禁用滑动解锁会失败，抛出9201021错误码。
 >
-> 4.下发禁用滑动解锁的策略后，用户输入了设备密码，此时密码会生效，设备需要验证密码后才能进入桌面，之前下发的策略失效。
+> 4. 下发禁用滑动解锁的策略后，用户输入了设备密码，此时密码会生效，设备需要验证密码后才能进入桌面，之前下发的策略失效。
 >
-> 5.在多个MDM应用场景下，遵循[配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)规则。
+> 5. 在多个MDM应用场景下，遵循[配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)规则。
 
 **起始版本：** 26.0.0
 
@@ -969,9 +969,9 @@ setWatermarkImage(admin: Want, bundleName: string, source: string | image.PixelM
 >
 > 1. 本接口适用于企业场景下为三方应用设置水印，降低企业信息泄露风险。不建议为系统应用设置水印（如：桌面应用），可能存在未知异常。
 >
-> 2.水印图片会以平铺方式重复覆盖整个应用界面。
+> 2. 水印图片会以平铺方式重复覆盖整个应用界面。
 >
-> 3.在多个MDM应用场景下，同一个用户下的同一个应用的水印遵循[独占](../../mdm/mdm-kit-multi-mdm.md#规则2独占)规则。不同用户、不同应用的水印遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
+> 3. 在多个MDM应用场景下，同一个用户下的同一个应用的水印遵循[独占](../../mdm/mdm-kit-multi-mdm.md#规则2独占)规则。不同用户、不同应用的水印遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -1535,9 +1535,9 @@ setScreenWatermarkImage(admin: Want, pixelMap: image.PixelMap): void
 >
 > 1. 屏幕水印策略会将设置的图片平铺覆盖整个屏幕，建议使用带透明度的图片以确保设备屏幕内容可见。
 >
-> 2.当水印图片尺寸小于屏幕时，图片会被拉伸；当水印图片尺寸大于屏幕时，图片会被压缩。该实现方式与应用级别水印的重复平铺方式不同。
+> 2. 当水印图片尺寸小于屏幕时，图片会被拉伸；当水印图片尺寸大于屏幕时，图片会被压缩。该实现方式与应用级别水印的重复平铺方式不同。
 >
-> 3.在多个MDM应用场景下，遵循[配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)规则。
+> 3. 在多个MDM应用场景下，遵循[配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)规则。
 
 **起始版本：** 26.0.0
 
@@ -1657,9 +1657,9 @@ setDisallowedPermission(admin: Want, permission: string, disallow: boolean, acco
 >
 > 2. 单个用户下最多可以禁用200个权限。
 >
-> 3.权限禁用后，仅影响应用（系统应用和普通应用）使用对应的权限，不影响系统SA使用对应的权限。
+> 3. 权限禁用后，仅影响应用（系统应用和普通应用）使用对应的权限，不影响系统SA使用对应的权限。
 >
-> 4.在多个MDM应用场景下，针对同一个权限设置[从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)，不同权限设置[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
+> 4. 在多个MDM应用场景下，针对同一个权限设置[从严管控](../../mdm/mdm-kit-multi-mdm.md#规则1从严管控)，不同权限设置[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
 **起始版本：** 26.0.0
 
@@ -1786,11 +1786,11 @@ addAllowedPermissionBundle(admin: Want, permission: string, applicationInstance:
 >
 > 3. 当指定权限通过[setDisallowedPermission](#securitymanagersetdisallowedpermission)接口取消禁用后，该权限对应的权限使用例外名单会同步清理。
 >
-> 4.所有用户下单个权限最多可以设置1024个应用到权限使用例外名单。
+> 4. 所有用户下单个权限最多可以设置1024个应用到权限使用例外名单。
 >
-> 5.系统应用和普通应用都可以添加。
+> 5. 系统应用和普通应用都可以添加。
 >
-> 6.在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
+> 6. 在多个MDM应用场景下，遵循[合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)规则。
 
 **起始版本：** 26.0.0
 
