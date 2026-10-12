@@ -57,4 +57,35 @@
 
 7. 媒体会话退出时，媒体会话控制方应及时取消监听，并释放资源。
 
-   <!-- @[listenAVSessionDestroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionController/entry/src/main/ets/feature/MediaController.ets) -->    
+   <!-- @[listenAVSessionDestroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionController/entry/src/main/ets/feature/MediaController.ets) -->
+
+   <div class="same-source-code">
+   ``` TypeScript
+   async listenAVSessionDestroy(): Promise<void> {
+     try {
+       // 注册会话销毁监听。
+       this.currentController?.on('sessionDestroy', () => {
+         Log.info(TAG, 'on sessionDestroy: SUCCESS');
+         this.currentController?.destroy(() => { // 销毁当前控制器，销毁后当前控制器不可再用。
+           Log.info(TAG, 'Succeeded in destroying.');
+         });
+       });
+     } catch (error) {
+       if (error) {
+         Log.error(TAG, `destroy Error: Code: ${error.code}, message: ${error.message}`);
+       }
+     }
+   }
+   
+   stopControl() {
+     Log.info(TAG, 'stopControl');
+     avSession.offSessionCreate();
+     avSession.offTopSessionChange();
+     Log.info(TAG, 'stopControl done');
+   }
+   ```
+
+   <p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionController/entry/src/main/ets/feature/MediaController.ets?same_code_link_text=listenAVSessionDestroy" target="_blank" rel="nofollow">MediaController.ets</a></p>
+
+   </div>
+
