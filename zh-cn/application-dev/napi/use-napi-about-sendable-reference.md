@@ -286,10 +286,10 @@ OpenHarmony的API提供进程内跨ArkTS线程共享的强引用能力。相较�
    const workerPort: ThreadWorkerGlobalScope = worker.workerPort;
 
    /**
-    * Defines the event handler to be called when the worker thread receives a message sent by the host thread.
-    * The event handler is executed in the worker thread.
+    * 定义Worker线程收到宿主线程发送的消息时调用的事件处理程序。
+    * 该事件处理程序在Worker线程中执行。
     *
-    * @param event message data
+    * @param event 消息数据
     */
    workerPort.onmessage = (event: MessageEvents) => {
       let data: string = event.data;
@@ -300,21 +300,25 @@ OpenHarmony的API提供进程内跨ArkTS线程共享的强引用能力。相较�
    };
 
    /**
-    * Defines the event handler to be called when the worker receives a message that cannot be deserialized.
-    * The event handler is executed in the worker thread.
+    * 定义Worker线程接收到无法被反序列化的消息时调用的事件处理程序。
+    * 该事件处理程序在Worker线程中执行。
     *
-    * @param event message data
+    * @param event 消息数据
     */
    workerPort.onmessageerror = (event: MessageEvents) => {
+      // 预留接口
+      console.error('onmessageerror:' + event.data);
    };
 
    /**
-    * Defines the event handler to be called when an exception occurs during worker execution.
-    * The event handler is executed in the worker thread.
+    * 定义Worker执行过程中发生异常时调用的事件处理程序。
+    * 该事件处理程序在Worker线程中执行。
     *
-    * @param event error message
+    * @param event 错误信息
     */
    workerPort.onerror = (event: ErrorEvent) => {
+      // 预留接口
+      console.error('onerror:' + event.message);
    };
    ```
 
