@@ -11,8 +11,6 @@ The system provides the light and dark theme modes for users. Dark mode reduces 
 
 ArkWeb allows you to flexibly set dark mode for **Web** components without affecting the system. In addition, ArkWeb can enforce dark mode on different web pages to ensure compatibility with various system themes.
 
-Since API 26.1.0, applications can also use `caretColor` to customize the input caret and text selection handle colors. Applications must provide suitable light/dark colors. For an example, see [Customizing Caret and Selection Handle Colors](web-caret-color.md).
-
 ## Adapting Web Pages to Dark Mode
 You can adapt web pages to dark mode using the **color-scheme** and **prefers-color-scheme** attributes.
 

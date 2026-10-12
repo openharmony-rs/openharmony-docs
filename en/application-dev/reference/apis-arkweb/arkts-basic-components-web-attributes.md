@@ -805,8 +805,6 @@ Place the following HTML file at `entry/src/main/resources/rawfile/caret_color.h
 </html>
 ```
 
-For a complete example with multiple editable elements and application-managed light/dark colors, see [Customizing Caret and Selection Handle Colors](../../web/web-caret-color.md).
-
 ## cacheMode
 
 cacheMode(cacheMode: CacheMode)

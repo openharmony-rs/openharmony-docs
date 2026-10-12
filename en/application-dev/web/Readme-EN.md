@@ -14,7 +14,6 @@
   - [Developing User-Agent](web-default-userAgent.md)
   - [Managing Cookies and Data Storage](web-cookie-and-data-storage-mgmt.md)
   - [Setting Dark Mode](web-set-dark-mode.md)
-  - [Customizing Caret and Selection Handle Colors](web-caret-color.md)
   - [Opening Pages in a New Window](web-open-in-new-window.md)
   - [Managing Location Permissions](web-geolocation-permission.md)
   - [Using Incognito Mode](web-incognito-mode.md)
