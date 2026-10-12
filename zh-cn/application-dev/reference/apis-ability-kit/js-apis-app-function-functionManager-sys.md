@@ -231,6 +231,8 @@ Function结果包装类，用于[onAfterInvokeFunction()](#onafterinvokefunction
 | 名称   | 类型 | 必填 | 说明 |
 | ------ | ---- | --- | ------------------ |
 | result | [InvokeResult](#invokeresult) | 是 | Function调用的结果，包含调用是否成功（success）、成功时的返回数据（data）、失败时的错误码（errorCode）和错误信息（errorMsg），详见[InvokeResult](#invokeresult)。在[onAfterInvokeFunction()](#onafterinvokefunction)回调中可读取该字段查看原始调用结果，修改后会将替换后的结果返回给调用方。 |
+| toolCallId | string | 否 | 表示Function调用的唯一标识，从[InvokeOptions](#invokeoptions)回传。仅当调用方传入该标识时存在。取值由字母、数字、'_'和'-'组成，最大长度为256。<br>**说明**：从API版本26.0.1开始支持。 |
+| dmSessionId | string | 否 | 表示对话管理器（DM）的会话ID，从[InvokeOptions](#invokeoptions)回传。仅当调用方传入该标识时存在。取值由字母、数字、'_'和'-'组成，最大长度为256。<br>**说明**：从API版本26.0.1开始支持。 |
 
 ## FunctionHook
 
