@@ -413,7 +413,7 @@ create(config: VpnConfig): Promise\<number\>
 
 | 错误码ID | 错误信息                                         |
 | --------- | ------------------------------------------------ |
-| 201       | Permission denied.                                 |
+| 201       | Permission denied.                               |
 | 401       | Parameter error.                                 |
 | 2200001   | Invalid parameter value.                         |
 | 2200002   | Operation failed. Cannot connect to service.     |
