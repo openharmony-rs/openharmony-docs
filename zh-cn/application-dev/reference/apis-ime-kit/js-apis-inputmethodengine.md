@@ -7716,12 +7716,14 @@ inputMethodEngine.getInputMethodAbility()
 
 ### getLeftRichText
 
-ArkTS-Dyn: getLeftRichText(length: number): Promise&lt;[InputMethodRichText](#inputmethodrichtext)&gt;
+ArkTS-Dyn: getLeftRichText(length: number): Promise&lt;InputMethodRichText&gt;
 
-ArkTS-Sta: getLeftRichText(length: int): Promise&lt;[InputMethodRichText](#inputmethodrichtext)&gt;
+ArkTS-Sta: getLeftRichText(length: int): Promise&lt;InputMethodRichText&gt;
 
 获取光标前指定长度的富文本内容。使用promise异步回调。
+
 使用场景：获取编辑框中光标前的富文本内容（包括纯文本、图片、符号等），用于输入法应用分析已输入的多模态内容，提供更精准的智能补全和输入建议。
+
 使用后效果：成功时返回光标前指定长度的[InputMethodRichText](#inputmethodrichtext)对象，输入法应用可通过该对象提取纯文本或遍历span数组获取各类型内容。
 
 > **说明：**
@@ -7805,9 +7807,9 @@ inputClient.getLeftRichText(length).then((richText: inputMethodEngine.InputMetho
 
 ### getLeftRichTextSync
 
-ArkTS-Dyn: getLeftRichTextSync(length: number): [InputMethodRichText](#inputmethodrichtext)
+ArkTS-Dyn: getLeftRichTextSync(length: number): InputMethodRichText
 
-ArkTS-Sta: getLeftRichTextSync(length: int): [InputMethodRichText](#inputmethodrichtext)
+ArkTS-Sta: getLeftRichTextSync(length: int): InputMethodRichText
 
 获取光标前指定长度的富文本内容。
 
@@ -7898,12 +7900,14 @@ try {
 
 ### getRightRichText
 
-ArkTS-Dyn: getRightRichText(length: number): Promise&lt;[InputMethodRichText](#inputmethodrichtext)&gt;
+ArkTS-Dyn: getRightRichText(length: number): Promise&lt;InputMethodRichText&gt;
 
-ArkTS-Sta: getRightRichText(length: int): Promise&lt;[InputMethodRichText](#inputmethodrichtext)&gt;
+ArkTS-Sta: getRightRichText(length: int): Promise&lt;InputMethodRichText&gt;
 
 获取光标后指定长度的富文本内容。使用promise异步回调。
+
 使用场景：获取编辑框中光标后的富文本内容（包括纯文本、图片、符号等），用于输入法应用分析光标后的多模态内容，提供更精准的智能补全和输入建议。
+
 使用后效果：成功时返回光标后指定长度的[InputMethodRichText](#inputmethodrichtext)对象，输入法应用可通过该对象提取纯文本或遍历span数组获取各类型内容。
 
 > **说明：**
@@ -7987,9 +7991,9 @@ inputClient.getRightRichText(length).then((richText: inputMethodEngine.InputMeth
 
 ### getRightRichTextSync
 
-ArkTS-Dyn: getRightRichTextSync(length: number): [InputMethodRichText](#inputmethodrichtext)
+ArkTS-Dyn: getRightRichTextSync(length: number): InputMethodRichText
 
-ArkTS-Sta: getRightRichTextSync(length: int): [InputMethodRichText](#inputmethodrichtext)
+ArkTS-Sta: getRightRichTextSync(length: int): InputMethodRichText
 
 获取光标后指定长度的富文本内容。
 
