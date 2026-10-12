@@ -1,3 +1,11 @@
+---
+kit: Image Kit / 图片处理服务
+description: PixelMap提供图像变换能力，支持对解码后的图片执行裁剪、缩放、平移、旋转、翻转及透明度设置，适用于图片编辑、美化等需要几何变换的开发场景。
+keywords: PixelMap, 图像变换, 裁剪, 缩放, 平移, 旋转, 翻转, 透明度, 图像信息
+doctype: guide
+status: active
+---
+
 # 使用PixelMap完成图像变换
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
