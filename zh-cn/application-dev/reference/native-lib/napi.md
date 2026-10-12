@@ -174,7 +174,7 @@ OpenHarmony的Node-API组件对Node-API的接口进行了重新实现，底层�
 |FUNC|napi_get_all_property_names|获取一个数组，其中包含此对象过滤后的属性名称。|10|
 |FUNC|napi_detach_arraybuffer|分离给定`ArrayBuffer`的底层数据。|10|
 |FUNC|napi_is_detached_arraybuffer|判断给定的`ArrayBuffer`是否已被分离过。|10|
-|FUNC|napi_run_script|将给定对象作为js代码运行。当前接口实际为空实现，可使用系统扩展接口`napi_run_script_path`接口，提升安全性。|10|
+|FUNC|napi_run_script|将给定对象作为js代码运行。当前接口实际为空实现，请使用系统扩展接口`napi_run_script_path`替代，提升安全性。|10|
 |FUNC|napi_set_instance_data|绑定与当前运行的环境相关联的数据项。|11|
 |FUNC|napi_get_instance_data|检索与当前运行的环境相关联的数据项。|11|
 |FUNC|napi_add_env_cleanup_hook|注册环境清理钩子函数。|11|
@@ -1019,7 +1019,7 @@ napi_status napi_create_object_with_named_properties(napi_env env,
 
 - [in] keys: 一个指向const char*数组的指针，表示属性的名称。
 
-- [in] values: 一个指向napi_value数组的指针，表示属性的值，与属性名称一一对应。
+- [in] values: 一个指向napi_value数组的指针，表示属性的值，与属性名称一一对应。keys数组与values数组的元素个数须一致，若不匹配将返回napi_invalid_arg。
 
 **返回：**
 
@@ -1074,7 +1074,7 @@ napi_status napi_create_ark_runtime(napi_env *env)
 
 **参数：**
 
-- [out] env: 接收新创建的运行时环境对象的指针。
+- [out] env：新创建的Node-API环境对象。
 
 **返回：**
 
@@ -1329,7 +1329,7 @@ napi_status napi_define_sendable_class(napi_env env,
 
 - [in] env: Node-API的环境对象，表示当前的执行环境。
 
-- [in] utf8name：一个const char*类型的参数，表示类的名称。
+- [in] utf8name：一个const char*类型的参数，表示类的名称。与length配合使用，OpenHarmony中使用min(length, strlen(utf8name))对名称进行截断。
 
 - [in] length：一个size_t类型的参数，表示类名称的字节数。
 
@@ -1473,7 +1473,7 @@ napi_status napi_create_sendable_typedarray(napi_env env,
 
 - [in] type：TypedArray 的类型。
 
-- [in] length：TypedArray 的长度。
+- [in] length：TypedArray 的长度。length与byte_offset、arraybuffer的大小存在制约关系，若length * sizeof(elementType) + byte_offset超过arraybuffer的大小，将抛出RangeError异常并返回napi_pending_exception。
 
 - [in] arraybuffer：一个 ArrayBuffer 实例。
 
@@ -1509,7 +1509,7 @@ napi_status napi_wrap_sendable(napi_env env,
 
 - [in] native_object：将被包裹在ArkTS对象中的native实例。
 
-- [in] napi_finalize：[可选]ArkTS对象被销毁时调用的回调函数。
+- [in] finalize_cb：[可选]ArkTS对象被销毁时调用的回调函数。
 
 - [in] finalize_hint：[可选]上下文提示，会传递给回调函数。
 
@@ -1542,7 +1542,7 @@ napi_status napi_wrap_sendable_with_size(napi_env env,
 
 - [in] native_object：将被包裹在ArkTS对象中的native实例。
 
-- [in] napi_finalize：[可选]ArkTS对象被销毁时调用的回调函数。
+- [in] finalize_cb：[可选]ArkTS对象被销毁时调用的回调函数。
 
 - [in] finalize_hint：[可选]上下文提示，会传递给回调函数。
 
@@ -2106,7 +2106,11 @@ napi_status napi_throw_business_error(napi_env env,
 
 **返回：**
 
-如果API成功，则返回napi_ok。
+- napi_ok：如果API成功，则返回napi_ok。
+
+- napi_invalid_arg：入参env或msg为nullptr时返回。
+
+- napi_pending_exception：当前上下文中存在ArkTS Error时返回。
 
 ### napi_create_callsite_info
 
