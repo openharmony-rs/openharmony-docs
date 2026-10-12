@@ -30,7 +30,7 @@
 
 ## 接口说明
 
-几何形状绘制的常用接口如下表所示，详细的使用和参数说明请见drawing.Canvas。
+几何形状绘制的常用接口如下表所示，详细的使用和参数说明请见[drawing.Canvas](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Canvas.md)。
 
 | 接口 | 描述 |
 | -------- | -------- |
@@ -49,7 +49,7 @@
 
 简单示例如下：
 
-<!-- @arkts_graphics_draw_point -->
+<!-- @[arkts_graphics_draw_point](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
 
 ``` TypeScript
 // 设置画笔
@@ -72,18 +72,18 @@ canvas.detachPen();
 
 效果如下：
 
-Screenshot_20241129174520171
+![Screenshot_20241129174520171](figures/Screenshot_20241129174520171.jpg)
 
 
 ## 绘制圆弧
 
 可以使用画笔或画刷在画布上进行圆弧的绘制，通过使用drawArc()接口绘制圆弧。
 
-绘制圆弧需要一个矩形（common2D.Rect），以矩形的边为轮廓进行绘制，还需要两个参数，分别表示弧形的起始角度（startAngle）和扫描角度（sweepAngle）。
+绘制圆弧需要一个矩形（[common2D.Rect](../reference/apis-arkgraphics2d/js-apis-graphics-common2D.md#rect)），以矩形的边为轮廓进行绘制，还需要两个参数，分别表示弧形的起始角度（startAngle）和扫描角度（sweepAngle）。
 
 此处以使用画笔绘制圆弧为例，简单示例如下：
 
-<!-- @arkts_graphics_draw_arc -->
+<!-- @[arkts_graphics_draw_arc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
 
 ``` TypeScript
 // 创建画笔
@@ -114,7 +114,7 @@ canvas.detachPen();
 
 效果如下：
 
-Drawing-an-Arc
+![Drawing-an-Arc](figures/Drawing-an-Arc.png)
 
 
 ## 绘制圆
@@ -124,7 +124,7 @@ Drawing-an-Arc
 绘制圆需要圆心点的x坐标和y坐标，以及圆半径（radius）。
 
 此处以使用画笔绘制圆为例，简单示例如下：
-<!-- @arkts_graphics_draw_circle -->
+<!-- @[arkts_graphics_draw_circle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
 
 ``` TypeScript
 // 创建画笔
@@ -148,14 +148,14 @@ canvas.detachPen();
 
 效果如下：
 
-Screenshot_20241129172555673
+![Screenshot_20241129172555673](figures/Screenshot_20241129172555673.jpg)
 
 
 ## 绘制路径
 
 可以使用画笔或画刷在画布上进行路径的绘制，路径具体可以用于绘制直线、弧线、贝塞尔曲线等，也可以通过路径组合的方式组成其他复杂的形状。
 
-绘制路径的相关接口和实现如下，详细的使用和参数说明请见Path。常用的接口如下：
+绘制路径的相关接口和实现如下，详细的使用和参数说明请见[Path](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Path.md)。常用的接口如下：
 
 1. 使用new drawing.Path()可以创建一个路径对象。
 
@@ -165,7 +165,7 @@ Screenshot_20241129172555673
 
 此处以使用画笔和画刷绘制五角星为例，简单示例如下：
 
-<!-- @arkts_graphics_draw_path -->
+<!-- @[arkts_graphics_draw_path](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
 
 ``` TypeScript
 let height_ = VALUE_1800;
@@ -220,18 +220,18 @@ canvas.detachPen();
 
 效果如下：
 
-Screenshot_20241129164326302
+![Screenshot_20241129164326302](figures/Screenshot_20241129164326302.jpg)
 
 
 ## 绘制区域
 
-区域不是一个特定的形状，可以设置为指定的矩形或路径，也可以对两个区域进行组合操作。可以使用画笔或画刷对区域进行绘制。详细的API说明请参考Region。
+区域不是一个特定的形状，可以设置为指定的矩形或路径，也可以对两个区域进行组合操作。可以使用画笔或画刷对区域进行绘制。详细的API说明请参考[Region](../reference/apis-arkgraphics2d/arkts-apis-graphics-drawing-Region.md)。
 
 目前支持设置矩形区域和路径区域，分别通过setRect()接口和setPath()接口来设置。
 
 此处以使用画刷绘制矩形的组合区域为例，示例如下：
 
-<!-- @arkts_graphics_draw_region -->
+<!-- @[arkts_graphics_draw_region](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
 
 ``` TypeScript
 // 创建画刷
@@ -256,7 +256,7 @@ canvas.detachBrush();
 
 效果如下：
 
-Screenshot_20241206112505234
+![Screenshot_20241206112505234](figures/Screenshot_20241206112505234.jpg)
 
 
 ## 绘制矩形
@@ -265,7 +265,7 @@ Screenshot_20241206112505234
 
 此处以使用画刷绘制矩形为例，简单示例如下：
 
-<!-- @arkts_graphics_draw_rect -->
+<!-- @[arkts_graphics_draw_rect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
 
 ``` TypeScript
 // 创建画刷
@@ -282,7 +282,7 @@ canvas.detachBrush();
 
 效果如下：
 
-Drawing-a-Rectangle
+![Drawing-a-Rectangle](figures/Drawing-a-Rectangle.png)
 
 
 ## 绘制圆角矩形
@@ -299,7 +299,7 @@ Drawing-a-Rectangle
 
 此处以使用画刷绘制圆角矩形为例，简单示例代码如下：
 
-<!-- @arkts_graphics_draw_round_rect -->
+<!-- @[arkts_graphics_draw_round_rect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw/entry/src/main/ets/drawing/pages/ShapeDrawing.ets) -->
 
 ``` TypeScript
 // 创建画刷
@@ -326,12 +326,12 @@ canvas.detachBrush();
 
 效果如下：
 
-Drawing-a-Rounded-Rectangle
+![Drawing-a-Rounded-Rectangle](figures/Drawing-a-Rounded-Rectangle.png)
 
 <!--RP1-->
 ## 相关实例
 
 针对Drawing(ArkTS)的开发，有以下相关实例可供参考：
 
-- ArkTSGraphicsDraw (API20)
+- [ArkTSGraphicsDraw (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/ArkTSGraphicsDraw)
 <!--RP1End-->

@@ -4,7 +4,7 @@
 <!--Subsystem: Window-->
 <!--Owner: @gcw_bkPrirku-->
 <!--Designer: @shinmy-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
 
 ## 场景介绍
@@ -14,12 +14,12 @@
 以下为支持设置自定义窗口动效的几种典型场景：
 
 <!--Del-->
-- 设置窗口显示/隐藏动效
+- [设置窗口显示/隐藏动效](#设置窗口显示隐藏动效)
 <!--DelEnd-->
 
-- 设置应用内UIAbility组件启动淡入淡出动效
+- [设置应用内UIAbility组件启动淡入淡出动效](#设置应用内uiability组件启动淡入淡出动效)
 
-- 设置主窗口销毁时的转场动画
+- [设置主窗口销毁时的转场动画](#设置主窗口销毁时的转场动画)
 
 <!--Del-->
 ## 设置窗口显示/隐藏动效
@@ -30,15 +30,15 @@
 
 - 模态窗
 
-- 系统窗口：包括音量条、壁纸、通知栏、导航栏窗口等。系统窗口类型具体可见WindowType。
+- 系统窗口：包括音量条、壁纸、通知栏、导航栏窗口等。系统窗口类型具体可见[WindowType](../reference/apis-arkui/js-apis-window-sys.md#windowtype7)。
 
 此处以创建“可设置窗口层级的系统窗口”为例，设置其显示/隐藏过程中的组合动画效果。
 
 1. 获取窗口属性转换控制器。
 
-   通过getTransitionController()接口获取控制器。后续的动画操作都由属性控制器来完成。
+   通过[getTransitionController()](../reference/apis-arkui/js-apis-window-sys.md#gettransitioncontroller9)接口获取控制器。后续的动画操作都由属性控制器来完成。
 
-   <!-- @window_animation_config --> 
+   <!-- @[window_animation_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowAnimationSample/entry/src/main/ets/pages/AnimationConfig.ts) --> 
    
    ``` TypeScript
    import { window } from '@kit.ArkUI';
@@ -68,9 +68,9 @@
 
 2. 配置窗口显示/隐藏时的动画。
 
-   通过动画函数animateTo()配置具体的属性动画，可通过opacity()设置窗口不透明度，通过scale()设置缩放参数，通过rotate()设置旋转参数，通过translate()设置平移参数。
+   通过动画函数[animateTo()](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto)配置具体的属性动画，可通过[opacity()](../reference/apis-arkui/js-apis-window-sys.md#opacity9)设置窗口不透明度，通过[scale()](../reference/apis-arkui/js-apis-window-sys.md#scale9)设置缩放参数，通过[rotate()](../reference/apis-arkui/js-apis-window-sys.md#rotate9)设置旋转参数，通过[translate()](../reference/apis-arkui/js-apis-window-sys.md#translate9)设置平移参数。
 
-   <!-- @window_animation_show --> 
+   <!-- @[window_animation_show](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowAnimationSample/entry/src/main/ets/pages/WindowAnimationDemo.ets) --> 
    
    ``` TypeScript
    import { window } from '@kit.ArkUI';
@@ -129,9 +129,9 @@
 
 3. 设置属性转换完成。
 
-   通过completeTransition()传入true来设置属性转换的最终完成状态。如果传入false，则表示撤销本次转换。
+   通过[completeTransition()](../reference/apis-arkui/js-apis-window-sys.md#completetransition9)传入true来设置属性转换的最终完成状态。如果传入false，则表示撤销本次转换。
 
-   <!-- @window_animation_complete_transition --> 
+   <!-- @[window_animation_complete_transition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowAnimationSample/entry/src/main/ets/pages/WindowAnimationDemo.ets) --> 
    
    ``` TypeScript
    struct WindowAnimationDemo {
@@ -166,9 +166,9 @@
 
 4. 显示或隐藏当前窗口，过程中播放动画。
 
-   调用showWithAnimation()接口，来显示窗口并播放动画。调用hideWithAnimation()接口，来隐藏窗口并播放动画。
+   调用[showWithAnimation()](../reference/apis-arkui/js-apis-window-sys.md#showwithanimation9)接口，来显示窗口并播放动画。调用[hideWithAnimation()](../reference/apis-arkui/js-apis-window-sys.md#hidewithanimation9)接口，来隐藏窗口并播放动画。
 
-   <!-- @window_animation_play --> 
+   <!-- @[window_animation_play](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowAnimationSample/entry/src/main/ets/pages/AnimationConfig.ts) --> 
    
    ``` TypeScript
    import { window } from '@kit.ArkUI';
@@ -193,18 +193,18 @@
    }
    ```
 
-showAndHideWindow
+![showAndHideWindow](figures/showAndHideWindow.gif)
 <!--DelEnd-->
 
 ## 设置应用内UIAbility组件启动淡入淡出动效
 
-在使用startAbility()接口拉起同一应用内其他UIAbility组件时，可以通过StartOptions中WindowCreateParams配置窗口的启动动画。
+在使用[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability-2)接口拉起同一应用内其他UIAbility组件时，可以通过[StartOptions](../reference/apis-ability-kit/js-apis-app-ability-startOptions.md)中[WindowCreateParams](../reference/apis-arkui/arkts-apis-window-i.md#windowcreateparams20)配置窗口的启动动画。
 
-目前支持将窗口启动动画配置为淡入淡出动效FADE_IN_OUT。
+目前支持将窗口启动动画配置为淡入淡出动效[FADE_IN_OUT](../reference/apis-arkui/arkts-apis-window-e.md#animationtype20)。
 
 示例代码如下：
 
-<!-- @window_animation_start_ability --> 
+<!-- @[window_animation_start_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/StartAbilityWithFadeinoutSample/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 import { Want, StartOptions, common } from '@kit.AbilityKit';
@@ -261,15 +261,15 @@ struct Index {
 }
 ```
 
-startAbilityWithFadeInOut
+![startAbilityWithFadeInOut](figures/startAbilityWithFadeInOut.gif)
 
 ## 设置主窗口销毁时的转场动画
 
-在自由窗口状态下，应用使用getWindowTransitionAnimation()获取主窗口转场的动画配置，当前转场动画配置不符合业务诉求时，可以使用setWindowTransitionAnimation()接口配置窗口转场时的动画，当前仅支持配置窗口销毁时的转场动画。
+在[自由窗口](window-terminology.md#freeform-window自由窗口)状态下，应用使用[getWindowTransitionAnimation()](../reference/apis-arkui/arkts-apis-window-Window.md#getwindowtransitionanimation20)获取主窗口转场的动画配置，当前转场动画配置不符合业务诉求时，可以使用[setWindowTransitionAnimation()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowtransitionanimation20)接口配置窗口转场时的动画，当前仅支持配置窗口销毁时的转场动画。
 
 示例代码如下：
 
-<!-- @window_destroy_transition_animation -->
+<!-- @[window_destroy_transition_animation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/AppTransitionAnimationSample/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript
 import { UIAbility } from '@kit.AbilityKit';
@@ -339,4 +339,4 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-appDestroyAnimation
+![appDestroyAnimation](figures/appDestroyAnimation.gif)

@@ -3,7 +3,7 @@
 <!--Subsystem: Window-->
 <!--Owner: @oh_wangxk-->
 <!--Designer: @wulong158-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @LiTongguan2026-->
 <!--Adviser: @ge-yafang-->
 
 ## 场景介绍
@@ -12,7 +12,7 @@
 
 ## 接口说明
 
-以下为虚拟屏的常用接口。更多接口说明请参考 @ohos.screen (屏幕)(系统接口)。
+以下为虚拟屏的常用接口。更多接口说明请参考[ @ohos.screen (屏幕)(系统接口)](../reference/apis-arkui/js-apis-screen-sys.md)。
 
 | 接口名                                                       | 描述                                         |
 | ------------------------------------------------------------ | -------------------------------------------- |
@@ -30,7 +30,7 @@
 
    - 通过createVirtualScreen()创建虚拟屏。
 
-   需特别注意的是，使用createVirtualScreen()创建虚拟屏时，需要申请`ohos.permission.CAPTURE_SCREEN`权限，配置方式请参见申请使用受限权限。
+   需特别注意的是，使用createVirtualScreen()创建虚拟屏时，需要申请`ohos.permission.CAPTURE_SCREEN`权限，配置方式请参见[申请使用受限权限](../security/AccessToken/declare-permissions-in-acl.md)。
 
 2. 将渲染目标SurfaceID绑定在虚拟屏上。
 

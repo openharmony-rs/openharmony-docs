@@ -4,12 +4,12 @@
 <!--Subsystem: AGC-->
 <!--Owner: @liusu23-->
 <!--Designer: @xukeke-->
-<!--Tester: @lusq-->
+<!--Tester: @hid12719688-->
 <!--Adviser: @HelloCrease-->
 
 本章节介绍如何拉起快递类应用扩展面板。
 
-例如，在消息类App中，用户收到快递单号，应用能够识别快递单号信息并提供快递查询的链接。用户点击链接后，应用将通过调用UIAbilityContext.startAbilityByType或UIExtensionContentSession.startAbilityByType接口，拉起快递类应用的扩展面板。面板上将展示设备上所有支持快递查询的应用，供用户选择并跳转至所需应用。
+例如，在消息类App中，用户收到快递单号，应用能够识别快递单号信息并提供快递查询的链接。用户点击链接后，应用将通过调用[UIAbilityContext.startAbilityByType](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybytype11)或[UIExtensionContentSession.startAbilityByType](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#startabilitybytype11)接口，拉起快递类应用的扩展面板。面板上将展示设备上所有支持快递查询的应用，供用户选择并跳转至所需应用。
 
 ## 快递类应用扩展面板参数说明
 
@@ -18,7 +18,7 @@ startAbilityByType接口中type字段为express，支持查询快递意图，对
 
 | 参数名    | 类型   | 必填 | 说明                                   |
 | --------- | ------ | ---- | -------------------------------------- |
-| sceneType | number | 否   | 意图场景，表明本次请求对应的操作意图。默认为1，查询快递填场景填1或不填。 |
+| sceneType | number | 否   | 意图场景，表明本次请求对应的操作意图。默认为1，查询快递场景填1或不填。 |
 | expressNo | string | 是   | 快递单号。                               |
 
 
@@ -76,11 +76,11 @@ startAbilityByType接口中type字段为express，支持查询快递意图，对
     
     效果示例图：
         
-    效果示例图
+    ![效果示例图](./figures/start-express-panel.png)
 
 ## 目标方开发步骤
 
-1. 在module.json5中配置uris：
+1. 在module.json5中配置[uris](../quick-start/module-configuration-file.md#skills标签)：
     1. 设置linkFeature属性以声明当前应用支持的特性功能，从而系统可以从设备已安装应用中找到当前支持该特性的应用，取值范围如下：
         | 取值         | 含义                 |
         | ------------ | -------------------- |

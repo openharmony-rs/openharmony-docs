@@ -21,15 +21,15 @@
 
 ## 区域解码
 
-区域解码通过设置解码参数desiredRegion，指定需要解码的矩形区域。解码器仅解码该区域的数据。参数详情请参考Region。
+区域解码通过设置解码参数desiredRegion，指定需要解码的矩形区域。解码器仅解码该区域的数据。参数详情请参考[Region](../../reference/apis-image-kit/arkts-apis-image-i.md#region8)。
 
 ### 开发步骤
 
-1. 参考使用ImageSource完成图片解码创建ImageSource实例。
+1. 参考[使用ImageSource完成图片解码](image-decoding.md)创建ImageSource实例。
 
 2. 设置desiredRegion参数执行区域解码。
 
-   <!-- @decode_region --> 
+   <!-- @[decode_region](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) --> 
    
    ``` TypeScript
    async DecodeRegion(imageSource: image.ImageSource): Promise<image.PixelMap | undefined> {
@@ -65,15 +65,15 @@
 - **JPEG、PNG、HEIF格式**：解码过程中采用下采样策略，按最优采样率解码，解码效率更高。
 - **其他格式**：先完整解码原图，再缩放至期望尺寸。
 
-参数详情请参考DecodingOptions。
+参数详情请参考[DecodingOptions](../../reference/apis-image-kit/arkts-apis-image-i.md#decodingoptions7)。
 
 ### 开发步骤
 
-1. 参考使用ImageSource完成图片解码创建ImageSource实例。
+1. 参考[使用ImageSource完成图片解码](image-decoding.md)创建ImageSource实例。
 
 2. 设置desiredSize参数执行下采样解码。
 
-   <!-- @decode_downsample --> 
+   <!-- @[decode_downsample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) --> 
    
    ``` TypeScript
    async DownsampleDecode(imageSource: image.ImageSource): Promise<image.PixelMap | undefined> {
@@ -105,15 +105,15 @@
 
 **推荐使用CROP_FIRST**：先裁剪再缩放可精确控制裁剪区域，保证不同格式解码效果一致。
 
-参数详情请参考CropAndScaleStrategy。
+参数详情请参考[CropAndScaleStrategy](../../reference/apis-image-kit/arkts-apis-image-e.md#cropandscalestrategy18)。
 
 ### 开发步骤
 
-1. 参考使用ImageSource完成图片解码创建ImageSource实例。
+1. 参考[使用ImageSource完成图片解码](image-decoding.md)创建ImageSource实例。
 
 2. 同时设置desiredRegion、desiredSize和cropAndScaleStrategy参数。
 
-   <!-- @decode_combined --> 
+   <!-- @[decode_combined](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) --> 
    
    ``` TypeScript
    async CombinedDecode(imageSource: image.ImageSource): Promise<image.PixelMap | undefined> {

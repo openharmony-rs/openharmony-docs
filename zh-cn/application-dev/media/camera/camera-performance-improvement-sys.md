@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-在开发相机应用时，需要先申请相关权限。
+在开发相机应用时，需要先[申请相关权限](camera-preparation.md)。
 
 相机启动性能受限于底层器件上电、流程Pipeline初始化等耗时操作影响，本文档将为开发者提供更进一步的指导，以提升相机启动速度以及拍照返回缩略图速度。相关能力与底层器件相关，请开发者在使用前确认是否支持相关特性。
 
@@ -18,7 +18,7 @@
 
 延时配流方案是把配流启流与surface解耦，在组件尚未给应用surface之前，可以先进行配流启流，只需要在启流结束之前提供surface，可以提升启动速度，防止影响其他启动优化方案的落地。
 
-deferred-surface-scene
+![deferred-surface-scene](figures/deferred-surface-scene.png)
 
 优化前：配流动作依赖surface对象，surface对象依赖于UI加载完成。也就是在UI加载完成后，才可以创建Session、配置输入输出流、启动Session，由相机HDI进行配流。
 
@@ -26,20 +26,20 @@ deferred-surface-scene
 
 ### 接口说明
 
-详细的API参考说明，请参考@ohos.multimedia.camera (相机管理)。
+详细的API参考说明，请参考[@ohos.multimedia.camera (相机管理)](../../reference/apis-camera-kit/arkts-apis-camera.md)。
 
 | 接口 | 说明 |
 | ---- | ---- |
 | createDeferredPreviewOutput(profile: Profile): Promise\<PreviewOutput> | 创建延迟预览输出对象，在配流时替代普通的预览输出对象加入数据流。 |
-| addDeferredSurface(surfaceId: string): Promise\<void> | 配置延迟预览的Surface，可以在session.commitConfig配流和session.start启流之后运行。 |
+| addDeferredSurface(surfaceId: string): Promise\<void> | 配置延迟预览的Surface，可以在[session.commitConfig](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#commitconfig11)配流和[session.start](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#start11)启流之后运行。 |
 
 ### 开发示例
 
 接口调用流程建议如下图所示：
 
+![](figures/deferred-surface-sequence-diagram.png)
 
-
-Context获取方式请参考：获取UIAbility的上下文信息。
+Context获取方式请参考：[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 ```ts
 import { camera } from '@kit.CameraKit';
@@ -99,7 +99,7 @@ async function preview(baseContext: common.BaseContext, cameraInfo: camera.Camer
 
 ### 接口说明
 
-详细的API参考说明，请参考@ohos.multimedia.camera (相机管理)。
+详细的API参考说明，请参考[@ohos.multimedia.camera (相机管理)](../../reference/apis-camera-kit/arkts-apis-camera.md)。
 
 | 接口 | 说明 |
 | ---- | ---- |
@@ -109,16 +109,16 @@ async function preview(baseContext: common.BaseContext, cameraInfo: camera.Camer
 
 > **说明：**
 >
-> - isQuickThumbnailSupported及enableQuickThumbnail接口的调用需要在addOutput、addInput后，commitConfig之前。
-> - on接口需要在enableQuickThumbnail(true)之后生效。
+> - [isQuickThumbnailSupported](../../reference/apis-camera-kit/js-apis-camera-sys.md#isquickthumbnailsupported)及[enableQuickThumbnail](../../reference/apis-camera-kit/js-apis-camera-sys.md#enablequickthumbnail)接口的调用需要在[addOutput](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#addoutput11)、[addInput](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#addinput11)后，[commitConfig](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#commitconfig11)之前。
+> - on接口需要在[enableQuickThumbnail(true)](../../reference/apis-camera-kit/js-apis-camera-sys.md#enablequickthumbnail)之后生效。
 
 ### 开发示例
 
 接口调用流程建议如下图所示：
 
+![](figures/quick-thumbnail-sequence-diagram.png)
 
-
-Context获取方式请参考：获取UIAbility的上下文信息。
+Context获取方式请参考：[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 ```ts
 import { camera } from '@kit.CameraKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -196,11 +196,11 @@ function showOrSavePicture(pixelMap: image.PixelMap): void {
 
 使用预热启动前后的相机应用流程对比如下：
 
-prelaunch-scene
+![prelaunch-scene](figures/prelaunch-scene.png)
 
 ### 接口说明
 
-详细的API参考说明，请参考@ohos.multimedia.camera (相机管理)。
+详细的API参考说明，请参考[@ohos.multimedia.camera (相机管理)](../../reference/apis-camera-kit/arkts-apis-camera.md)。
 
 | 接口 | 说明 |
 | ---- | ---- |
@@ -212,9 +212,9 @@ prelaunch-scene
 
 接口调用流程建议如下图所示：
 
+![](figures/prelaunch-sequence-diagram.png)
 
-
-Context获取方式请参考：获取UIAbility的上下文信息。
+Context获取方式请参考：[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 - **桌面应用**
 
@@ -246,7 +246,7 @@ Context获取方式请参考：获取UIAbility的上下文信息。
 
   使用该功能前，应用需要**申请权限**：ohos.permission.CAMERA
 
-  具体申请方式及校验方式，请参考向用户申请授权。
+  具体申请方式及校验方式，请参考[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
 
   ```ts
   import { camera } from '@kit.CameraKit';

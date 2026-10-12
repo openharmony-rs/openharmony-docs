@@ -8,7 +8,7 @@
 
 ## 简介
 
-开发者实现在应用中跳转显示网页需要分为两个方面：使用@ohos.web.webview提供Web控制能力；使用Web组件提供网页显示的能力。在实际应用中往往由于各种原因导致首次跳转Web网页或Web组件内跳转时出现白屏、卡顿等情况。本文介绍提升Web首页加载与Web网页间跳转速度的几种方法，并提供示例源码。
+开发者实现在应用中跳转显示网页需要分为两个方面：使用@ohos.web.webview提供Web控制能力；使用Web组件提供网页显示的能力。在实际应用中往往由于各种原因导致首次跳转Web网页或Web组件内跳转时出现白屏、卡顿等情况。本文介绍提升Web首页加载与Web网页间跳转速度的几种方法，并提供[示例源码](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Performance/PerformanceLibrary/feature/webPerformance)。
 
 ## 优化思路
 
@@ -16,7 +16,7 @@
 
 图一 Web组件显示页面的阶段
 
-Web组件显示页面的阶段
+![Web组件显示页面的阶段](./figures/web-display-stage.png)
 
 要优化Web组件的首页加载性能，可以从图例标记的三个阶段来进行优化：
 
@@ -30,7 +30,7 @@ Web组件显示页面的阶段
 
 图二 Web组件的生命周期回调函数
 
-Web组件的生命周期回调函数
+![Web组件的生命周期回调函数](./figures/web-life-cycle.png)
 
 ## 优化方法
 
@@ -68,7 +68,7 @@ struct Index {
 
 性能打点数据如下，getMessageData进程中的Duration为加载页面开始到结束的耗时：
 
-
+![](figures/web_engine_un_init.png)
 
 
 【正例】
@@ -111,7 +111,7 @@ struct Index {
 
 性能打点数据如下，getMessageData进程中的Duration为加载页面开始到结束的耗时：
 
-
+![](figures/web_engine_init.png)
 
 
 **总结**
@@ -209,13 +209,13 @@ struct WebComponent {
 
 图三 预渲染优化原理图
 
-
+![](./figures/web-node-container.png)
 
 > **说明**
 >
 > 预渲染相比于预下载、预连接方案，会消耗更多的内存、算力，仅建议针对高频页面使用，单应用后台创建的ArkWeb组件要求小于200个。
 >
-> 在后台，预渲染的网页会持续进行渲染，为了防止发热和功耗问题，建议在预渲染完成后立即停止渲染过程。可以参考以下示例，使用 onFirstMeaningfulPaint 来确定预渲染的停止时机，该接口适用于http和https的在线网页。
+> 在后台，预渲染的网页会持续进行渲染，为了防止发热和功耗问题，建议在预渲染完成后立即停止渲染过程。可以参考以下示例，使用 [onFirstMeaningfulPaint](../reference/apis-arkweb/arkts-basic-components-web-events.md#onfirstmeaningfulpaint12) 来确定预渲染的停止时机，该接口适用于http和https的在线网页。
 
 **实践案例**
 
@@ -588,11 +588,11 @@ struct WebComponent {
 
 推荐使用ArkWeb在native侧提供的ArkWeb_ControllerAPI、ArkWeb_ComponentAPI实现JSBridge功能。
 
-img.png
+![img.png](figures/web_jsbridge_ets_ndk_compare.png)
 
 上图为具有普适性的小程序一般架构，其中逻辑层需要应用自带JavaScript运行时，本身已存在C++环境，通过native接口可直接在C++环境中完成与视图层（ArkWeb作为渲染器）的通信，无需再返回ArkTS环境调用JSBridge相关接口。
 
-img.png
+![img.png](figures/web_jsbridge_ets_ndk_compare_new.png)
 
 Native JSBridge方案可以解决ArkTS环境的冗余切换，同时允许回调在非UI线程上报，避免造成UI阻塞。
 
@@ -665,9 +665,9 @@ struct WebComponent {
 
 点击runJavaScript按钮后触发h5页面htmlTest方法，使得页面内容变更为当前时间戳，如下图所示：
 
-img.png
+![img.png](figures/web_jsbridge_h5_screen.png)
 
-img.png
+![img.png](figures/web_jsbridge_ets_screen.png)
 
 经过多轮测试，可以得出从点击原生button到h5触发htmlTest方法，耗时约7ms~9ms。
 
@@ -790,7 +790,7 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule(void) { napi_mo
 
 Native侧业务代码entry/src/main/cpp/jsbridge_object.h、entry/src/main/cpp/jsbridge_object.cpp
 
-详见应用侧与前端页面的相互调用(C/C++)。
+详见[应用侧与前端页面的相互调用(C/C++)](../web/arkweb-ndk-jsbridge.md)。
 
 runJS.html作为应用前端页面：
 
@@ -880,9 +880,9 @@ runJS.html作为应用前端页面：
 
 点击runJS hello按钮后触发h5页面runJSRetStr方法，使得页面内容变更为当前时间戳。
 
-img.png
+![img.png](figures/web_jsbridge_ndk_ets_screen.png)
 
-img.png
+![img.png](figures/web_jsbridge_ndk_h5_screen.png)
 
 经过多轮测试，可以得出从点击原生button到h5触发runJSRetStr方法，耗时约2ms~6ms。
 
@@ -896,14 +896,15 @@ img.png
 
 JSBridge优化方案适用于ArkWeb应用侧与前端网页通信场景，开发者可根据应用架构选择合适的业务通信机制：
 
-1.应用使用ArkTS语言开发，推荐使用ArkWeb在ArkTS提供的runJavaScriptExt接口实现应用侧至前端页面的通信，同时使用registerJavaScriptProxy实现前端页面至应用侧的通信。
+1. 应用使用ArkTS语言开发，推荐使用ArkWeb在ArkTS提供的runJavaScriptExt接口实现应用侧至前端页面的通信，同时使用registerJavaScriptProxy实现前端页面至应用侧的通信。
 
-2.应用使用ArkTS、C++语言混合开发，或本身应用结构较贴近于小程序架构，自带C++侧环境，推荐使用ArkWeb在NDK侧提供的OH_NativeArkWeb_RunJavaScript及OH_NativeArkWeb_RegisterJavaScriptProxy接口实现JSBridge功能。
+2. 应用使用ArkTS、C++语言混合开发，或本身应用结构较贴近于小程序架构，自带C++侧环境，推荐使用ArkWeb在NDK侧提供的OH_NativeArkWeb_RunJavaScript及OH_NativeArkWeb_RegisterJavaScriptProxy接口实现JSBridge功能。
 
-> 说明
-> 开发者需根据当前业务区分是否存在C++侧环境（较为显著标志点为当前应用是否使用了Node API技术进行开发，若是则该应用具备C++侧环境）。
-> 具备C++侧环境的应用开发，可使用ArkWeb提供的NDK侧JSBridge接口。
-> 不具备C++侧环境的应用开发，可使用ArkWeb侧JSBridge接口。
+   > **说明:**
+   >
+   > - 开发者需根据当前业务区分是否存在C++侧环境（较为显著标志点为当前应用是否使用了Node API技术进行开发，若是则该应用具备C++侧环境）。
+   > - 具备C++侧环境的应用开发，可使用ArkWeb提供的NDK侧JSBridge接口。
+   > - 不具备C++侧环境的应用开发，可使用ArkWeb侧JSBridge接口。
 
 
 ### 异步JSBridge调用
@@ -1130,7 +1131,7 @@ Web({src: $rawfile('index.html'),controller: this.controller})
 
 **总结**
 
-img.png
+![img.png](figures/web_jsbridge_async_compare.png)
 
 | **注册方法类型** | **耗时(局限不同设备和场景，数据仅供参考)** | **说明**                 |
 | ---------------- | ------------------------------------------ | ------------------------ |
@@ -1257,7 +1258,7 @@ struct Index {
 
 点击“加载页面”按钮，性能打点数据如下，getMessageData进程中的Duration为加载页面开始到结束的耗时：
 
-
+![](figures/web_js_un_pre_compile.png)
 
 
 【推荐用法】
@@ -1322,7 +1323,7 @@ struct Index {
 
 点击“加载页面”按钮，性能打点数据如下，getMessageData进程中的Duration为加载页面开始到结束的耗时：
 
-
+![](figures/web_js_pre_compile.png)
 
 
 > 说明
@@ -1425,7 +1426,7 @@ struct Index {
 
 性能打点数据如下，getMessageData进程中的Duration为加载页面开始到结束的耗时：
 
-
+![](figures/web_schemes_un_customize.png)
 
 
 【推荐用法】
@@ -1493,19 +1494,19 @@ struct Index {
 
 性能打点数据如下，getMessageData进程中的Duration为加载页面开始到结束的耗时：
 
-
+![](figures/web_schemes_customize.png)
 
 
 **场景二 调用Native接口，int32_t OH_ArkWeb_RegisterCustomSchemes(const char * scheme, int32_t option)**
 
 【不推荐用法】
 
-通过网络拦截接口对Web组件发出的请求进行拦截，Demo工程构建请参考拦截Web组件发起的网络请求。
+通过网络拦截接口对Web组件发出的请求进行拦截，Demo工程构建请参考[拦截Web组件发起的网络请求](../web/web-scheme-handler.md)。
 
 
 性能打点数据如下，getMessageData进程中的Avg Wall Duration为两次加载页面开始到结束的平均耗时：
 
-
+![](figures/web_schemes_un_registe.png)
 
 
 【推荐用法】
@@ -1562,7 +1563,7 @@ struct Index {
 
 性能打点数据如下，getMessageData进程中的Avg Wall Duration为两次加载页面开始到结束的平均耗时：
 
-
+![](figures/web_schemes_registe.png)
 
 
 
@@ -1624,7 +1625,7 @@ struct Index {
 
 性能打点数据如下，getMessageData进程中的Duration为加载页面开始到结束的耗时：
 
-
+![](figures/web_resource_un_offline.png)
 
 
 【推荐用法】
@@ -1699,7 +1700,7 @@ struct Index {
 
 性能打点数据如下，getMessageData进程中的Duration为加载页面开始到结束的耗时：
 
-
+![](figures/web_resource_offline.png)
 
 **总结**
 
@@ -1763,7 +1764,7 @@ struct Index {
 
 资源替换耗时如图所示，getMessageData ... someFunction took后的时间页面加载资源的耗时：
 
-
+![](figures/web_send_response_data_string.png)
 
 
 【推荐用法】
@@ -1806,7 +1807,7 @@ struct Index {
 
 资源替换耗时如图所示，getMessageData william someFunction took后的时间页面加载资源的耗时：
 
-
+![](figures/web_send_response_data_buffer.png)
 
 
 
@@ -1834,7 +1835,7 @@ Web场景应用在加载图片资源时，需要先发起请求，然后解析�
 
 常规案例使用懒加载的逻辑加载图片，图片组件进入可视区域后再执行加载，滑动过程中列表有大量图片未加载完成产生的白块。
 
-img
+![img](figures/web-sliding-white-block-optimization-1.gif)
 
 ```html
 <!DOCTYPE html>
@@ -1892,7 +1893,7 @@ const observer = new IntersectionObserver(function(entries,observer){
 document.querySelectorAll('img').forEach(img => {observer.observe(img)});
 ```
 
-img
+![img](figures/web-sliding-white-block-optimization-2.gif)
 
 **总结**
 
@@ -2000,13 +2001,13 @@ struct WebComponent {
 
 通过分别抓取正反示例的trace数据后使用SmartPerf Host工具分析可以得出以下结论：
 
-hilog
+![hilog](./figures/web-hilog.png)
 
 从点击按钮进入Web首页到Web组件触发OnPageEnd事件，表示首页加载完成。对比优化前后时延可以得出，使用提前初始化内核和预解析、预连接可以减少平均100ms左右的加载时间。
 
-首页完成时延
+![首页完成时延](./figures/web-open-time-chart.png)
 
 从Web首页内点击跳转下一页按钮到Web组件触发OnPageEnd事件，表示页面间跳转完成。对比优化前后时延可以得出，使用预加载下一页方法可以减少平均40~50ms左右的跳转时间。
 
-跳转完成时延
+![跳转完成时延](./figures/web-route-time-chart.png)
 

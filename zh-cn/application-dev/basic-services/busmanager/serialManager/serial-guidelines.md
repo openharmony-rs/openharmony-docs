@@ -72,7 +72,7 @@
 
 - **开发工具及配置**：
 
-  DevEco Studio作为开发工具，是进行串口通信开发必备条件之一，开发者可以使用该工具进行开发、调试、打包等操作。请下载安装该工具，并参考DevEco Studio使用指南中的创建工程及运行进行基本的操作验证，保证DevEco Studio可正常运行。
+  DevEco Studio作为开发工具，是进行串口通信开发必备条件之一，开发者可以使用该工具进行开发、调试、打包等操作。请[下载安装](https://developer.huawei.com/consumer/cn/download/)该工具，并参考[DevEco Studio使用指南](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-tools-overview)中的[创建工程及运行](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-create-new-project)进行基本的操作验证，保证DevEco Studio可正常运行。
 
 - **SDK版本配置**：
 
@@ -80,8 +80,8 @@
 
 ### 搭建环境
 
-- 在PC上安装DevEco Studio，要求版本在6.1及以上。
-- 将public-SDK更新到API 26.0.0或以上<!--Del-->，更新SDK的具体操作可参见更新指南<!--DelEnd-->。
+- 在PC上安装[DevEco Studio](https://developer.huawei.com/consumer/cn/download/deveco-studio)，要求版本在6.1及以上。
+- 将public-SDK更新到API 26.0.0或以上<!--Del-->，更新SDK的具体操作可参见[更新指南](../../../tools/openharmony-sdk-upgrade-assistant.md)<!--DelEnd-->。
 - 准备串口连接线缆，将OpenHarmony设备的串口端口与目标设备的串口正确连接。
 
 ## 开发指导
@@ -92,30 +92,30 @@
 
 | 接口名 | 描述 |
 |--------|------|
-| SerialPort.getSerialPortList(): Promise&lt;SerialPort[]&gt; | 查询串口设备列表，返回SerialPort对象数组。使用Promise异步回调。 |
-| SerialPort.open(config?: SerialConfigs): Promise&lt;void&gt; | 打开串口设备。首次打开时系统会弹窗请求用户授权访问目标串口，用户拒绝则抛出35700007错误码。授权在USB虚拟串口拔出、系统切换用户、整机重启后失效，需重新授权。使用Promise异步回调。 |
-| SerialPort.close(): Promise&lt;void&gt; | 关闭串口设备。使用Promise异步回调。 |
-| SerialPort.write(data: Uint8Array, timeout?: number): Promise&lt;number&gt; | 向串口设备发送数据，每次发送数据长度范围：(0, 4096]。使用Promise异步回调。 |
-| SerialPort.onDataRead(callback: Callback&lt;Uint8Array&gt;): void | 监听串口接收数据事件。使用callback异步回调返回接收到的数据。调用close后，所有回调将被清除。 |
-| SerialPort.offDataRead(callback?: Callback&lt;Uint8Array&gt;): void | 取消监听串口接收数据事件。使用callback异步回调。 |
-| SerialPort.flush(): Promise&lt;void&gt; | 清空串口缓冲区，包括读缓冲区和写缓冲区，缓冲区中的数据将被直接丢弃，不再发送或读取。使用Promise异步回调。 |
-| SerialPort.drain(): Promise&lt;void&gt; | 等待所有写请求完成。使用Promise异步回调。 |
-| SerialPort.setRts(enable: boolean): Promise&lt;void&gt; | 设置RTS（请求发送）信号状态。使用Promise异步回调。 |
-| SerialPort.getCts(): Promise&lt;boolean&gt; |  获取CTS（清除发送）信号状态。使用Promise异步回调。 |
-| SerialPort.sendBrk(): Promise&lt;void&gt; | 发送BRK（中断）信号。使用Promise异步回调。 |
-| SerialPort.setDtr(enable: boolean): Promise&lt;void&gt; | 设置DTR（数据终端就绪）信号状态。使用Promise异步回调。 |
-| SerialPort.getDsr(): Promise&lt;boolean&gt; | 获取DSR（数据设备就绪）信号状态。使用Promise异步回调。 |
-| SerialPort.onDisconnect(callback: Callback&lt;void&gt;): void | 监听串口断开事件。使用callback异步回调。 |
-| SerialPort.offDisconnect(callback?: Callback&lt;void&gt;): void | 取消监听串口断开事件。 |
+| [SerialPort.getSerialPortList](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#serialgetserialportlist)(): Promise&lt;[SerialPort](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#serialport)[]&gt; | 查询串口设备列表，返回[SerialPort](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#serialport)对象数组。使用Promise异步回调。 |
+| [SerialPort.open](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#open)(config?: [SerialConfigs](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#serialconfigs)): Promise&lt;void&gt; | 打开串口设备。首次打开时系统会弹窗请求用户授权访问目标串口，用户拒绝则抛出35700007错误码。授权在USB虚拟串口拔出、系统切换用户、整机重启后失效，需重新授权。使用Promise异步回调。 |
+| [SerialPort.close](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#close)(): Promise&lt;void&gt; | 关闭串口设备。使用Promise异步回调。 |
+| [SerialPort.write](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#write)(data: Uint8Array, timeout?: number): Promise&lt;number&gt; | 向串口设备发送数据，每次发送数据长度范围：(0, 4096]。使用Promise异步回调。 |
+| [SerialPort.onDataRead](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#ondataread)(callback: Callback&lt;Uint8Array&gt;): void | 监听串口接收数据事件。使用callback异步回调返回接收到的数据。调用[close](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#close)后，所有回调将被清除。 |
+| [SerialPort.offDataRead](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#offdataread)(callback?: Callback&lt;Uint8Array&gt;): void | 取消监听串口接收数据事件。使用callback异步回调。 |
+| [SerialPort.flush](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#flush)(): Promise&lt;void&gt; | 清空串口缓冲区，包括读缓冲区和写缓冲区，缓冲区中的数据将被直接丢弃，不再发送或读取。使用Promise异步回调。 |
+| [SerialPort.drain](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#drain)(): Promise&lt;void&gt; | 等待所有写请求完成。使用Promise异步回调。 |
+| [SerialPort.setRts](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#setrts)(enable: boolean): Promise&lt;void&gt; | 设置RTS（请求发送）信号状态。使用Promise异步回调。 |
+| [SerialPort.getCts](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#getcts)(): Promise&lt;boolean&gt; |  获取CTS（清除发送）信号状态。使用Promise异步回调。 |
+| [SerialPort.sendBrk](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#sendbrk)(): Promise&lt;void&gt; | 发送BRK（中断）信号。使用Promise异步回调。 |
+| [SerialPort.setDtr](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#setdtr)(enable: boolean): Promise&lt;void&gt; | 设置DTR（数据终端就绪）信号状态。使用Promise异步回调。 |
+| [SerialPort.getDsr](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#getdsr)(): Promise&lt;boolean&gt; | 获取DSR（数据设备就绪）信号状态。使用Promise异步回调。 |
+| [SerialPort.onDisconnect](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#ondisconnect)(callback: Callback&lt;void&gt;): void | 监听串口断开事件。使用callback异步回调。 |
+| [SerialPort.offDisconnect](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#offdisconnect)(callback?: Callback&lt;void&gt;): void | 取消监听串口断开事件。 |
 
-SerialConfigs配置参数说明：
+[SerialConfigs](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#serialconfigs)配置参数说明：
 
 | 参数名 | 类型 | 必填 | 默认值 | 描述 |
 |--------|------|------|--------|------|
 | baudRate | number | 否 | 115200 | 波特率。 |
-| dataBits | DataBits | 否 | DataBits.EIGHT | 数据位。 |
-| stopBits | StopBits | 否 | StopBits.ONE | 停止位。 |
-| parity | Parity | 否 | Parity.NONE | 校验位。 |
+| dataBits | [DataBits](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#databits) | 否 | DataBits.EIGHT | 数据位。 |
+| stopBits | [StopBits](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#stopbits) | 否 | StopBits.ONE | 停止位。 |
+| parity | [Parity](../../../reference/apis-basic-services-kit/js-apis-busmanager-serial.md#parity) | 否 | Parity.NONE | 校验位。 |
 | rtscts | boolean | 否 | false | 检查是否启用RTS/CTS硬件自动流控。true表示启用，false表示未启用。 |
 | xon | boolean | 否 | false | 检查是否启用XON软件流控。true表示启用，false表示未启用。 |
 | xoff | boolean | 否 | false | 检查是否启用XOFF软件流控。true表示启用，false表示未启用。 |
@@ -129,7 +129,7 @@ SerialConfigs配置参数说明：
 
 1. 导入模块。
 
-   <!-- @head -->
+   <!-- @[head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    import { serial, BusinessError } from '@kit.BasicServicesKit';
@@ -137,7 +137,7 @@ SerialConfigs配置参数说明：
 
 2. 获取串口设备列表。
 
-   <!-- @getSerialPortList -->
+   <!-- @[getSerialPortList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    try {
@@ -157,7 +157,7 @@ SerialConfigs配置参数说明：
 
 3. 打开串口设备。
 
-   <!-- @open -->
+   <!-- @[open](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    try {
@@ -181,7 +181,7 @@ SerialConfigs配置参数说明：
 
 4. 注册数据接收回调，监听串口数据。
 
-   <!-- @onDataRead -->
+   <!-- @[onDataRead](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    try {
@@ -202,7 +202,7 @@ SerialConfigs配置参数说明：
 
 5. 通过串口写入数据。
 
-   <!-- @write -->
+   <!-- @[write](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    try {
@@ -221,7 +221,7 @@ SerialConfigs配置参数说明：
 
 6. 刷新缓冲区与等待发送完成。
 
-   <!-- @flush -->
+   <!-- @[flush](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    try {
@@ -241,7 +241,7 @@ SerialConfigs配置参数说明：
 
    * 设置RTS信号为高电平。
 
-     <!-- @setRts -->
+     <!-- @[setRts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
      
      ``` TypeScript
      try {
@@ -259,7 +259,7 @@ SerialConfigs配置参数说明：
 
    * 获取CTS信号状态。
 
-     <!-- @getCts -->
+     <!-- @[getCts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
      
      ``` TypeScript
      try {
@@ -277,7 +277,7 @@ SerialConfigs配置参数说明：
 
    * 发送break信号。
 
-     <!-- @sendBrk -->
+     <!-- @[sendBrk](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
      
      ``` TypeScript
      try {
@@ -295,7 +295,7 @@ SerialConfigs配置参数说明：
 
    * 设置DTR信号为高电平。
 
-     <!-- @setDtr -->
+     <!-- @[setDtr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
      
      ``` TypeScript
      try {
@@ -313,7 +313,7 @@ SerialConfigs配置参数说明：
 
    * 获取DSR信号状态。
 
-     <!-- @getDsr -->
+     <!-- @[getDsr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
      
      ``` TypeScript
      try {
@@ -331,7 +331,7 @@ SerialConfigs配置参数说明：
 
 8. 监听串口断开事件。
 
-   <!-- @onDisconnect -->
+   <!-- @[onDisconnect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    try {
@@ -352,7 +352,7 @@ SerialConfigs配置参数说明：
 
 9. 注销数据接收回调和关闭串口设备。
 
-   <!-- @close -->
+   <!-- @[close](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Serial/SerialManagerSample/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    try {

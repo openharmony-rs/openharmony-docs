@@ -18,7 +18,7 @@
 
 ## 接口说明
 
-自定义字体注册和使用的常用接口如下表所示，详细接口说明请见@ohos.graphics.text (文本模块)。
+自定义字体注册和使用的常用接口如下表所示，详细接口说明请见[@ohos.graphics.text (文本模块)](../reference/apis-arkgraphics2d/js-apis-graphics-text.md)。
 
 | 接口 | 描述 | 
 | -------- | -------- |
@@ -31,17 +31,16 @@
 
 1. 导入依赖的相关模块。
 
-   <!-- @arkts_custom_font_include -->
+   <!-- @[arkts_custom_font_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/CustomFont/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-   import { NodeController, FrameNode, RenderNode, DrawContext } from '@kit.ArkUI'
-   import { UIContext } from '@kit.ArkUI'
+   import { NodeController, FrameNode, RenderNode, DrawContext, UIContext } from '@kit.ArkUI'
    import { text } from '@kit.ArkGraphics2D'
    ```
 
 2. 注册自定义字体。有以下两种方式：
 
-   <!-- @arkts_custom_font_step2 -->
+   <!-- @[arkts_custom_font_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/CustomFont/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    // 注册自定义字体
@@ -53,7 +52,7 @@
 
 3. 使用自定义字体。
 
-   <!-- @arkts_custom_font_step3 -->
+   <!-- @[arkts_custom_font_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/CustomFont/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    // 使用自定义字体
@@ -74,7 +73,7 @@
 
 4. 创建段落样式，并使用字体管理器实例构造段落生成器ParagraphBuilder实例。
 
-   <!-- @arkts_custom_font_step4 -->
+   <!-- @[arkts_custom_font_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/CustomFont/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    // 创建一个段落样式对象，以设置排版风格
@@ -89,7 +88,7 @@
 
 5. 生成段落。
 
-   <!-- @arkts_custom_font_step5 -->
+   <!-- @[arkts_custom_font_step5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/CustomFont/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    // 在段落生成器中设置文本样式
@@ -102,7 +101,7 @@
 
 6. 如果需要注销自定义字体，可以使用unloadFontSync接口。
 
-   <!-- @arkts_custom_font_step6 -->
+   <!-- @[arkts_custom_font_step6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/CustomFont/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    // 注销自定义字体
@@ -113,6 +112,6 @@
 
 ## 效果展示
 
-image-load
+![image-load](figures/image-load.png)
 
-image-unload
+![image-unload](figures/image-unload.png)

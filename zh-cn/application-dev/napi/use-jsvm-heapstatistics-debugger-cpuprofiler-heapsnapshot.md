@@ -31,7 +31,7 @@
 
 ## 使用示例
 
-JSVM-API接口开发流程参考使用JSVM-API实现JS与C/C++语言交互开发流程，本文仅展示接口对应的C++代码。
+JSVM-API接口开发流程参考[使用JSVM-API实现JS与C/C++语言交互开发流程](use-jsvm-process.md)，本文仅展示接口对应的C++代码。
 
 ### OH_JSVM_GetVM
 
@@ -39,7 +39,7 @@ JSVM-API接口开发流程参考使用JSVM-API实现JS与C/C++语言交互开发
 
 cpp部分代码
 
-<!-- @oh_jsvm_get_vm -->
+<!-- @[oh_jsvm_get_vm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/UsageInstructionsTwo/getvm/src/main/cpp/hello.cpp) -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -93,7 +93,7 @@ JSVM OH_JSVM_GetVM: success
 
 cpp部分代码
 
-<!-- @oh_jsvm_get_heap_statistics -->
+<!-- @[oh_jsvm_get_heap_statistics](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/UsageInstructionsTwo/getheapstatistics/src/main/cpp/hello.cpp) -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -172,7 +172,7 @@ JSVM API heap usedGlobalHandlesSize: 32
 
 以下接口的示例代码可以参考链接：
 
-JSVM-API调试&定位
+[JSVM-API调试&定位](./jsvm-debugger-cpuprofiler-heapsnapshot.md)
 
 ### OH_JSVM_StartCpuProfiler
 

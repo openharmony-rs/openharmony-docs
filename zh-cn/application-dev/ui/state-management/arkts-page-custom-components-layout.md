@@ -6,11 +6,11 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
-如果系统提供的布局组件（如Flex，Column，Row等）无法满足复杂布局需求，或开发者希望自定义计算组件内子组件的大小和位置，建议在自定义组件中使用以下接口：
+如果系统提供的布局组件（如[Flex](../../reference/apis-arkui/arkui-ts/ts-container-flex.md)，[Column](../../reference/apis-arkui/arkui-ts/ts-container-column.md)，[Row](../../reference/apis-arkui/arkui-ts/ts-container-row.md)等）无法满足复杂布局需求，或开发者希望自定义计算组件内子组件的大小和位置，建议在自定义组件中使用以下接口：
 
-- onMeasureSize：组件每次布局时触发，开发者可以在这个回调中增加自定义组件内子组件的大小的计算逻辑，返回自定义组件的尺寸信息，其执行时间先于onPlaceChildren。
+- [onMeasureSize](../../reference/apis-arkui/arkui-ts/ts-custom-component-layout.md#onmeasuresize10)：组件每次布局时触发，开发者可以在这个回调中增加自定义组件内子组件的大小的计算逻辑，返回自定义组件的尺寸信息，其执行时间先于onPlaceChildren。
 
-- onPlaceChildren：组件每次布局时触发，开发者可以在这个回调中增加放置自定义组件内子组件位置的逻辑。
+- [onPlaceChildren](../../reference/apis-arkui/arkui-ts/ts-custom-component-layout.md#onplacechildren10)：组件每次布局时触发，开发者可以在这个回调中增加放置自定义组件内子组件位置的逻辑。
 
 以下示例中，Index页面包含一个实现了自定义布局的自定义组件，且对应自定义组件的子组件通过Index页面内的builder方式传入。
 
@@ -18,7 +18,7 @@
 
 **示例：**
 
-<!-- @CustomLayout -->
+<!-- @[CustomLayout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ComponentsLayout/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 // xxx.ets
@@ -84,4 +84,4 @@ struct CustomLayout {
 }
 ```
 
-custom-component-custom-layout
+![custom-component-custom-layout](figures/custom-component-custom-layout.png)

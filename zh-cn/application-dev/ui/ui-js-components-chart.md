@@ -6,7 +6,7 @@
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
-chart为图表组件，用于呈现线形图、柱状图和量规图界面。具体用法请参考chart。
+chart为图表组件，用于呈现线形图、柱状图和量规图界面。具体用法请参考[chart](../reference/apis-arkui/arkui-js/js-components-basic-chart.md)。
 
 
 ## 创建chart组件
@@ -67,7 +67,7 @@ export default {
 ```
 
 
-chart-Component
+![chart-Component](figures/chart-Component.png)
 
 
 ## 设置图表类型
@@ -214,7 +214,7 @@ export default {
 }
 ```
 
-Chart-Type
+![Chart-Type](figures/Chart-Type.gif)
 
 > **说明：** 
 >
@@ -525,4 +525,4 @@ export default {
 }
 ```
 
-Example-Scenario-4
+![Example-Scenario-4](figures/Example-Scenario-4.gif)

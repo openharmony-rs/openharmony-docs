@@ -13,19 +13,19 @@
 
 ## 约束与限制
 
-申请短时任务的按钮，不可连续点击超过3次，否则会超出短时任务数量限制并报错。使用过程中更多的约束与限制请参考短时任务（ArkTS）的约束与限制。
+申请短时任务的按钮，不可连续点击超过3次，否则会超出短时任务数量限制并报错。使用过程中更多的约束与限制请参考短时任务（ArkTS）的[约束与限制](transient-task.md#约束与限制)。
 
 ## 接口说明
 
-常用接口如下表所示，具体API说明详见transient_task_api.h。
+常用接口如下表所示，具体API说明详见[transient_task_api.h](../reference/apis-backgroundtasks-kit/capi-transient-task-api-h.md)。
 
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| int32_t OH_BackgroundTaskManager_RequestSuspendDelay(const char *reason, TransientTask_Callback callback, TransientTask_DelaySuspendInfo *info)  | 申请短时任务。 |
-| int32_t OH_BackgroundTaskManager_GetRemainingDelayTime(int32_t requestId, int32_t *delayTime) | 获取对应短时任务的剩余时间。 |
-| int32_t OH_BackgroundTaskManager_CancelSuspendDelay(int32_t requestId) | 取消短时任务。 |
-| int32_t OH_BackgroundTaskManager_GetTransientTaskInfo(TransientTask_TransientTaskInfo  *transientTaskInfo) | 获取所有短时任务信息，如当日剩余总配额等。 |
+| [int32_t OH_BackgroundTaskManager_RequestSuspendDelay(const char *reason, TransientTask_Callback callback, TransientTask_DelaySuspendInfo *info)](../reference/apis-backgroundtasks-kit/capi-transient-task-api-h.md#oh_backgroundtaskmanager_requestsuspenddelay)  | 申请短时任务。 |
+| [int32_t OH_BackgroundTaskManager_GetRemainingDelayTime(int32_t requestId, int32_t *delayTime)](../reference/apis-backgroundtasks-kit/capi-transient-task-api-h.md#oh_backgroundtaskmanager_getremainingdelaytime) | 获取对应短时任务的剩余时间。 |
+| [int32_t OH_BackgroundTaskManager_CancelSuspendDelay(int32_t requestId)](../reference/apis-backgroundtasks-kit/capi-transient-task-api-h.md#oh_backgroundtaskmanager_cancelsuspenddelay) | 取消短时任务。 |
+| [int32_t OH_BackgroundTaskManager_GetTransientTaskInfo(TransientTask_TransientTaskInfo  *transientTaskInfo)](../reference/apis-backgroundtasks-kit/capi-transient-task-api-h.md#oh_backgroundtaskmanager_gettransienttaskinfo) | 获取所有短时任务信息，如当日剩余总配额等。 |
 
 ## 开发步骤
 
@@ -33,7 +33,7 @@
 
 1. 封装函数
 
-   <!-- @encapsulation_function -->
+   <!-- @[encapsulation_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/NativeTransientTask/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
    #include "napi/native_api.h"
@@ -134,7 +134,7 @@
 
 2. 注册函数
 
-   <!-- @registration_function -->
+   <!-- @[registration_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/NativeTransientTask/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
    EXTERN_C_START
@@ -154,7 +154,7 @@
 
 3. 注册模块
 
-   <!-- @registration_module -->
+   <!-- @[registration_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/NativeTransientTask/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
    static napi_module demoModule = {
@@ -175,7 +175,7 @@
 
 ### 在index.d.ts文件中声明函数
 
-   <!-- @declaration_function -->
+   <!-- @[declaration_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/NativeTransientTask/entry/src/main/cpp/types/libentry/Index.d.ts) -->
    
    ``` TypeScript
    import backgroundTaskManager from '@kit.BackgroundTasksKit';
@@ -188,7 +188,7 @@
 
 ### 在index.ets文件中调用函数
 
-   <!-- @native_transient_task -->   
+   <!-- @[native_transient_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/NativeTransientTask/entry/src/main/ets/pages/Index.ets) -->   
    
    ``` TypeScript
    import testTransientTask from 'libentry.so';
@@ -286,7 +286,7 @@
 
 配置`CMakeLists.txt`，本模块需要用到的共享库是`libtransient_task.so`，在工程自动生成的`CMakeLists.txt`中的`target_link_libraries`中添加此共享库。
 
-   <!-- @dependent -->
+   <!-- @[dependent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/NativeTransientTask/entry/src/main/cpp/CMakeLists.txt) -->
    
    ``` Text
    target_link_libraries(entry PUBLIC libace_napi.z.so libtransient_task.so)

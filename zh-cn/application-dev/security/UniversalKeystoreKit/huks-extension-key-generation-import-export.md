@@ -17,21 +17,21 @@
 
 - 在密钥管理扩展场景下，keyAlias即为resourceId，即已执行过打开资源操作，且keyAlias中包含的providerName、abilityName、bundleName内容一致。
 
-- 调用时均需指定HUKS_TAG_KEY_CLASS为HUKS_KEY_CLASS_EXTENSION，表示该密钥由密钥管理扩展服务实现方管理，密钥用途等参数由密钥管理扩展服务实现方根据业务场景自行处理，**HUKS不做额外校验**。
+- 调用时均需指定[HUKS_TAG_KEY_CLASS](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag)为[HUKS_KEY_CLASS_EXTENSION](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukskeyclasstype22)，表示该密钥由密钥管理扩展服务实现方管理，密钥用途等参数由密钥管理扩展服务实现方根据业务场景自行处理，**HUKS不做额外校验**。
 
 ## 密钥生成（ArkTS）
 
 在密钥管理扩展场景下，HUKS支持在密钥管理扩展服务中生成密钥对。生成的密钥存储在服务中，私钥不会离开服务提供方，公钥可通过导出接口获取。密钥用途等参数由密钥管理扩展服务提供方根据业务场景自行处理，HUKS不做额外校验。
 
-应用通过调用HUKS的generateKeyItem接口发起密钥生成请求，请求被转发到CryptoExtensionAbility的onGenerateKeyItem接口完成密钥生成。
+应用通过调用HUKS的[generateKeyItem](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksgeneratekeyitem9)接口发起密钥生成请求，请求被转发到CryptoExtensionAbility的[onGenerateKeyItem](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#ongeneratekeyitem)接口完成密钥生成。
 
 ### 开发步骤
 
-1. 通过获取资源ID操作，得到resourceId，并传入该resourceId进行打开资源，可参考打开关闭资源。
+1. 通过[获取资源ID](huks-extension-ability-general-operation.md#获取资源id)操作，得到resourceId，并传入该resourceId进行打开资源，可参考[打开关闭资源](huks-extension-ability-general-operation.md#打开关闭资源)。
 
-2. 调用generateKeyItem生成密钥对。建议传入算法类型、密钥长度、密钥用途等参数。密钥参数中需指定HUKS_TAG_KEY_CLASS为HUKS_KEY_CLASS_EXTENSION，表示该密钥由密钥管理扩展服务管理。
+2. 调用[generateKeyItem](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksgeneratekeyitem9)生成密钥对。建议传入算法类型、密钥长度、密钥用途等参数。密钥参数中需指定[HUKS_TAG_KEY_CLASS](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag)为[HUKS_KEY_CLASS_EXTENSION](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukskeyclasstype22)，表示该密钥由密钥管理扩展服务管理。
 
-3. 操作执行完后，关闭资源，可参考打开关闭资源。
+3. 操作执行完后，关闭资源，可参考[打开关闭资源](huks-extension-ability-general-operation.md#打开关闭资源)。
 
 ### 开发示例
 
@@ -40,7 +40,7 @@ import { huks, huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { util } from '@kit.ArkTS';
 
-function StringToUint8Array(str: string): Uint8Array {
+function stringToUint8Array(str: string): Uint8Array {
   const encoder = new util.TextEncoder();
   return encoder.encodeInto(str);
 }
@@ -81,23 +81,24 @@ async function extensionKeyGeneration(): Promise<void> {
     const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
       {
         tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_ABILITY_NAME,
-        value: StringToUint8Array("CryptoExtensionAbility1"),
+        value: stringToUint8Array("CryptoExtensionAbility1"),
       },
       {
         tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_BUNDLE_NAME,
-        value: StringToUint8Array("com.example.cryptoapplication"),
+        value: stringToUint8Array("com.example.cryptoapplication"),
       },
       {
         tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO,
-        value: StringToUint8Array("vendor_defined_resource_info"),
+        value: stringToUint8Array("vendor_defined_resource_info"),
       },
     ];
+    const providerName = 'VendorA_ProductX'; // 为注册时传入的ProviderName
     const resourceId: string = await huksExternalCrypto.getResourceId(providerName, extProperties);
     const keyAlias = resourceId;  // keyAlias即为resourceId
 
     // 2. 构造密钥参数
     const properties: Array<huks.HuksParam> = [
-      { tag: huks.HuksTag.HUKS_TAG_KEY_CLASS, value: huks.HuksKeyClass.HUKS_KEY_CLASS_EXTENSION },
+      { tag: huks.HuksTag.HUKS_TAG_KEY_CLASS, value: huks.HuksKeyClassType.HUKS_KEY_CLASS_EXTENSION },
       { tag: huks.HuksTag.HUKS_TAG_ALGORITHM, value: huks.HuksKeyAlg.HUKS_ALG_RSA },
       { tag: huks.HuksTag.HUKS_TAG_KEY_SIZE, value: huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048 },
       { tag: huks.HuksTag.HUKS_TAG_PURPOSE, value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN }
@@ -109,13 +110,13 @@ async function extensionKeyGeneration(): Promise<void> {
     };
 
     // 3. 打开资源
-    await openResource(resourceId, []);
+    await openResource(resourceId);
 
     // 4. 生成密钥
     await generateKeyItem(keyAlias, huksOptions);
 
     // 5. 关闭资源
-    await closeResource(resourceId, []);
+    await closeResource(resourceId);
 
     console.info('promise: extensionKeyGeneration completed successfully.');
   } catch (error) {
@@ -133,15 +134,15 @@ async function extensionKeyGeneration(): Promise<void> {
 
 - 当传入的keyAlias和wrappingKeyAlias不一致时，默认将证书导入到keyAlias所标识的资源中。
 
-应用通过调用HUKS的importWrappedKeyItem接口发起密钥安全导入请求，请求被转发到CryptoExtensionAbility的onImportWrappedKeyItem接口完成密钥安全导入。
+应用通过调用HUKS的[importWrappedKeyItem](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksimportwrappedkeyitem9)接口发起密钥安全导入请求，请求被转发到CryptoExtensionAbility的[onImportWrappedKeyItem](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#onimportwrappedkeyitem)接口完成密钥安全导入。
 
 ### 开发步骤
 
-1. 通过获取资源ID操作，得到resourceId，并传入该resourceId进行打开资源，可参考打开关闭资源。
+1. 通过[获取资源ID](huks-extension-ability-general-operation.md#获取资源id)操作，得到resourceId，并传入该resourceId进行打开资源，可参考[打开关闭资源](huks-extension-ability-general-operation.md#打开关闭资源)。
 
-2. 调用importWrappedKeyItem导入加密封装的密钥对。密钥参数中需指定HUKS_TAG_KEY_CLASS为HUKS_KEY_CLASS_EXTENSION，表示该密钥由密钥管理扩展服务管理。
+2. 调用[importWrappedKeyItem](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksimportwrappedkeyitem9)导入加密封装的密钥对。密钥参数中需指定[HUKS_TAG_KEY_CLASS](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag)为[HUKS_KEY_CLASS_EXTENSION](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukskeyclasstype22)，表示该密钥由密钥管理扩展服务管理。
 
-3. 操作执行完后，关闭资源，可参考打开关闭资源。
+3. 操作执行完后，关闭资源，可参考[打开关闭资源](huks-extension-ability-general-operation.md#打开关闭资源)。
 
 ### 开发示例
 
@@ -150,39 +151,9 @@ import { huks, huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { util } from '@kit.ArkTS';
 
-function StringToUint8Array(str: string): Uint8Array {
+function stringToUint8Array(str: string): Uint8Array {
   const encoder = new util.TextEncoder();
   return encoder.encodeInto(str);
-}
-
-async function openResource(resourceId: string): Promise<void> {
-  try {
-    await huksExternalCrypto.openResource(resourceId);
-    console.info('promise: openResource success.');
-  } catch (error) {
-    const e = error as BusinessError;
-    console.error(`promise: openResource failed, errCode: ${e.code}, errMsg: ${e.message}`);
-  }
-}
-
-async function importWrappedKeyItem(keyAlias: string, wrappingKeyAlias: string, huksOptions: huks.HuksOptions): Promise<void> {
-  try {
-    await huks.importWrappedKeyItem(keyAlias, wrappingKeyAlias, huksOptions);
-    console.info('promise: importWrappedKeyItem success.');
-  } catch (error) {
-    const e = error as BusinessError;
-    console.error(`promise: importWrappedKeyItem failed, errCode: ${e.code}, errMsg: ${e.message}`);
-  }
-}
-
-async function closeResource(resourceId: string): Promise<void> {
-  try {
-    await huksExternalCrypto.closeResource(resourceId);
-    console.info('promise: closeResource success.');
-  } catch (error) {
-    const e = error as BusinessError;
-    console.error(`promise: closeResource failed, errCode: ${e.code}, errMsg: ${e.message}`);
-  }
 }
 
 async function extensionKeyImport(): Promise<void> {
@@ -191,24 +162,25 @@ async function extensionKeyImport(): Promise<void> {
     const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
       {
         tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_ABILITY_NAME,
-        value: StringToUint8Array("CryptoExtensionAbility1"),
+        value: stringToUint8Array("CryptoExtensionAbility1"),
       },
       {
         tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_BUNDLE_NAME,
-        value: StringToUint8Array("com.example.cryptoapplication"),
+        value: stringToUint8Array("com.example.cryptoapplication"),
       },
       {
         tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO,
-        value: StringToUint8Array("vendor_defined_resource_info"),
+        value: stringToUint8Array("vendor_defined_resource_info"),
       },
     ];
+    const providerName = 'VendorA_ProductX'; // 为注册时传入的ProviderName
     const resourceId: string = await huksExternalCrypto.getResourceId(providerName, extProperties);
     const keyAlias = resourceId;
     const wrappingKeyAlias = resourceId;
 
     // 2. 构造密钥参数
     const properties: Array<huks.HuksParam> = [
-      { tag: huks.HuksTag.HUKS_TAG_KEY_CLASS, value: huks.HuksKeyClass.HUKS_KEY_CLASS_EXTENSION },
+      { tag: huks.HuksTag.HUKS_TAG_KEY_CLASS, value: huks.HuksKeyClassType.HUKS_KEY_CLASS_EXTENSION },
       { tag: huks.HuksTag.HUKS_TAG_ALGORITHM, value: huks.HuksKeyAlg.HUKS_ALG_RSA },
       { tag: huks.HuksTag.HUKS_TAG_KEY_SIZE, value: huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048 },
       { tag: huks.HuksTag.HUKS_TAG_PURPOSE, value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_ENCRYPT }
@@ -241,15 +213,15 @@ async function extensionKeyImport(): Promise<void> {
 
 在密钥管理扩展场景下，HUKS支持从密钥管理扩展服务中导出指定密钥的公钥。导出的公钥可用于证书申请、密钥协商、PIN加密等场景。
 
-应用通过调用HUKS的exportKeyItem接口发起公钥导出请求，请求被转发到CryptoExtensionAbility的onExportKeyItem接口完成公钥导出。
+应用通过调用HUKS的[exportKeyItem](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksexportkeyitem9)接口发起公钥导出请求，请求被转发到CryptoExtensionAbility的[onExportKeyItem](../../reference/apis-universal-keystore-kit/js-apis-CryptoExtensionAbility.md#onexportkeyitem)接口完成公钥导出。
 
 ### 开发步骤
 
-1. 通过获取资源ID操作，得到resourceId，并传入该resourceId进行打开资源，可参考打开关闭资源。
+1. 通过[获取资源ID](huks-extension-ability-general-operation.md#获取资源id)操作，得到resourceId，并传入该resourceId进行打开资源，可参考[打开关闭资源](huks-extension-ability-general-operation.md#打开关闭资源)。
 
-2. 调用exportKeyItem导出公钥，密钥参数中需指定HUKS_TAG_KEY_CLASS为HUKS_KEY_CLASS_EXTENSION，表示该密钥由外部密钥管理扩展管理。
+2. 调用[exportKeyItem](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksexportkeyitem9)导出公钥，密钥参数中需指定[HUKS_TAG_KEY_CLASS](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag)为[HUKS_KEY_CLASS_EXTENSION](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukskeyclasstype22)，表示该密钥由外部密钥管理扩展管理。
 
-3. 操作执行完后，关闭资源，可参考打开关闭资源。
+3. 操作执行完后，关闭资源，可参考[打开关闭资源](huks-extension-ability-general-operation.md#打开关闭资源)。
 
 ### 开发示例
 
@@ -257,6 +229,11 @@ async function extensionKeyImport(): Promise<void> {
 import { huks, huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { util } from '@kit.ArkTS';
+
+function stringToUint8Array(str: string): Uint8Array {
+  const encoder = new util.TextEncoder();
+  return encoder.encodeInto(str);
+}
 
 async function openResource(resourceId: string): Promise<void> {
   try {
@@ -274,7 +251,7 @@ async function exportPublicKey(keyAlias: string): Promise<Uint8Array> {
     const exportProperties: Array<huks.HuksParam> = [
       {
         tag: huks.HuksTag.HUKS_TAG_KEY_CLASS,
-        value: huks.HuksKeyClass.HUKS_KEY_CLASS_EXTENSION
+        value: huks.HuksKeyClassType.HUKS_KEY_CLASS_EXTENSION
       }
     ];
     const exportOptions: huks.HuksOptions = {
@@ -306,22 +283,23 @@ async function extensionKeyExport(): Promise<Uint8Array> {
     const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
       {
         tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_ABILITY_NAME,
-        value: StringToUint8Array("CryptoExtensionAbility1"),
+        value: stringToUint8Array("CryptoExtensionAbility1"),
       },
       {
         tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_BUNDLE_NAME,
-        value: StringToUint8Array("com.example.cryptoapplication"),
+        value: stringToUint8Array("com.example.cryptoapplication"),
       },
       {
         tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO,
-        value: StringToUint8Array("vendor_defined_resource_info"),
+        value: stringToUint8Array("vendor_defined_resource_info"),
       },
     ];
+    const providerName = 'VendorA_ProductX'; // 为注册时传入的ProviderName
     const resourceId: string = await huksExternalCrypto.getResourceId(providerName, extProperties);
     const keyAlias = resourceId;  // keyAlias即为resourceId
 
     // 2. 打开资源
-    await openResource(resourceId, []);
+    await openResource(resourceId);
 
     // 3. 导出公钥
     const publicKey = await exportPublicKey(keyAlias);

@@ -10,7 +10,7 @@
 hiperf是一款集成多种性能分析功能的命令行工具，可用于分析系统性能瓶颈、定位软件热点及优化代码效率，支持采集和统计程序运行时的性能数据。
 
 
-开发者可以通过Deveco Studio或SmartPerf使用hiperf采集函数的调用栈，获取调用栈上各层函数的执行时间，通过泳道图等方式查看调用链信息进而进行性能分析，具体使用方式参考通过Deveco Studio使用hiperf介绍，通过SmartPerf使用hiperf介绍。若需要指定采集的事件、采样周期、采集时长、CPU核数等选项，可以单独使用 hiperf 命令行工具。采样数据 perf.data 文件可以使用SmartPerf工具打开并以可视化的火焰图进行展示。
+开发者可以通过[Deveco Studio](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-software-install)或[SmartPerf](https://gitcode.com/openharmony/developtools_smartperf_host/releases)使用hiperf采集函数的调用栈，获取调用栈上各层函数的执行时间，通过泳道图等方式查看调用链信息进而进行性能分析，具体使用方式参考[通过Deveco Studio使用hiperf介绍](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-insight-session-time)，[通过SmartPerf使用hiperf介绍](https://gitcode.com/openharmony/developtools_smartperf_host/blob/master/smartperf_host/ide/src/doc/md/quickstart_hiperf.md)。若需要指定采集的事件、采样周期、采集时长、CPU核数等选项，可以单独使用 hiperf 命令行工具。采样数据 perf.data 文件可以使用SmartPerf工具打开并以可视化的火焰图进行展示。
 
 
 本文档详细说明了hiperf命令行工具的使用方法，帮助开发者借助该工具进行详细的性能分析。
@@ -18,7 +18,7 @@ hiperf是一款集成多种性能分析功能的命令行工具，可用于分�
 
 ## 环境要求
 
-- 根据hdc命令行工具指导，完成环境准备。
+- 根据hdc命令行工具指导，完成[环境准备](hdc.md#环境准备)。
 
 - 确保设备已连接，然后执行hdc shell。
 
@@ -43,11 +43,11 @@ $ hiperf --help
 | --nodebug | 关闭所有日志的记录。 | 
 | --mixlog | 日志输出到命令行界面。 | 
 | -h/--help | 帮助命令。 | 
-| dump | 将性能数据文件（如perf.data）转换为内容可读的格式。 | 
-| list | 展示当前系统支持的性能事件类型。 | 
-| record | 收集性能数据。 | 
-| report | 将性能数据进行可视化转换。 | 
-| stat | 统计性能数据。 | 
+| [dump](#dump命令) | 将性能数据文件（如perf.data）转换为内容可读的格式。 | 
+| [list](#list命令) | 展示当前系统支持的性能事件类型。 | 
+| [record](#record命令) | 收集性能数据。 | 
+| [report](#report命令) | 将性能数据进行可视化转换。 | 
+| [stat](#stat命令) | 统计性能数据。 | 
 
 
 **使用样例**：
@@ -244,9 +244,9 @@ Supported events for hardware:
 
 > **注意：**
 >
-> 命令采集的进程应为使用debug证书签名的应用。  
-> 从API version 24开始，PC设备通过终端命令行应用可以采集在配置文件标签中开启了profileable属性的应用。
-> 从API版本26.0.0开始，可以采集在配置文件标签中开启了profileable属性的应用。
+> 命令采集的进程应为[使用debug证书签名的应用](hiperf.md#hiperf采集没有debug证书签名的应用失败)。  
+> 从API version 24开始，PC设备通过终端命令行应用可以采集在[配置文件标签](../quick-start/app-configuration-file.md#配置文件标签)中开启了profileable属性的应用。
+> 从API版本26.0.0开始，可以采集在[配置文件标签](../quick-start/app-configuration-file.md#配置文件标签)中开启了profileable属性的应用。
 
 **record命令参数说明**
 
@@ -295,8 +295,8 @@ Supported events for hardware:
 | -a | 采集整机的性能数据。 | 
 | --exclude-hiperf | 不采集hiperf进程自身的性能数据，该可选参数必须和-a一起使用。 | 
 | --exclude-process | 不采集的进程名，该参数必须和-a一起使用。 |
-| --pipe_input | 在设备开发中，该参数用于客户端进程调用hiperf时建立命令输入通道，开发者可参考hiperf_client接口使用该能力。在应用开发中，无需使用该参数。 |
-| --pipe_output | 在设备开发中，该参数用于客户端进程调用hiperf时建立响应输出通道，开发者可参考hiperf_client接口使用该能力。在应用开发中，无需使用该参数。 |
+| --pipe_input | 在设备开发中，该参数用于客户端进程调用hiperf时建立命令输入通道，开发者可参考[hiperf_client接口](../../device-dev/subsystems/subsys-toolchain-hiperf.md)使用该能力。在应用开发中，无需使用该参数。 |
+| --pipe_output | 在设备开发中，该参数用于客户端进程调用hiperf时建立响应输出通道，开发者可参考[hiperf_client接口](../../device-dev/subsystems/subsys-toolchain-hiperf.md)使用该能力。在应用开发中，无需使用该参数。 |
 | --append-smo-data | 开启此参数后增加打包的so中原始so的名称。<br>**说明**：从API version 23开始，支持该参数。|
 | --add-counter | 采集该参数指定事件的性能计数器值，多个事件以逗号分隔。该参数必须和--no-inherit一起使用。<br>**说明**：从API版本26.0.0开始，支持该参数。|
 | --raw-data | 启用事件原始二进制数据采集，通常用于获取tracepoint等事件的详细信息<br>**说明**：从API版本26.0.0开始，支持该参数。|
@@ -321,9 +321,9 @@ $ hiperf record -p 267 -d 10 -s dwarf
 
 > **注意：**
 >
-> 命令采集的进程应为使用debug证书签名的应用。  
-> 从API version 24开始，PC设备通过终端命令行应用可以采集在配置文件标签中开启了profileable属性的应用。
-> 从API版本26.0.0开始，可以采集在配置文件标签中开启了profileable属性的应用。
+> 命令采集的进程应为[使用debug证书签名的应用](hiperf.md#hiperf采集没有debug证书签名的应用失败)。  
+> 从API version 24开始，PC设备通过终端命令行应用可以采集在[配置文件标签](../quick-start/app-configuration-file.md#配置文件标签)中开启了profileable属性的应用。
+> 从API版本26.0.0开始，可以采集在[配置文件标签](../quick-start/app-configuration-file.md#配置文件标签)中开启了profileable属性的应用。
 
 **stat命令参数说明**
 
@@ -415,7 +415,7 @@ $ hiperf dump -i /data/local/tmp/perf.data -o /data/local/tmp/perf.dump
 | --json | 输出json格式数据。 | 
 | --diff | 显示源文件与转换后文件的差别。不能与--proto、--json、-s参数一起使用。 | 
 | --branch | 根据函数地址显示分支。 | 
-| --&lt;keys&gt; &lt;keyname1&gt;,keyname2 | 可选关键字：comms、pids、tids、dsos、funcs、from_dsos、from_funcs，例如： --comms hiperf。 | 
+| --&lt;keys&gt; &lt;keyname1&gt;[,keyname2][,...] | 可选关键字：comms、pids、tids、dsos、funcs、from_dsos、from_funcs，例如： --comms hiperf。 | 
 | --sort [key1],[key2],[...] | 按关键字排序。 | 
 | --hide_count | 报告中不显示数值。 | 
 | --dumpoptions | 展示当前列表里所有选项的详细信息。 | 
@@ -480,6 +480,6 @@ hdc shell "bm dump -n bundlename | grep profileable"
 "profileable": true
 ```
 
-构建可调试应用需要使用debug证书进行签名，申请调试证书及签名可参考：申请调试证书。
+构建可调试应用需要使用debug证书进行签名，申请调试证书及签名可参考：[申请调试证书](https://developer.huawei.com/consumer/cn/doc/app/agc-help-add-debugcert-0000001914263178)。
 
-开启profileable标签属性可参考：配置文件标签。
+开启profileable标签属性可参考：[配置文件标签](../quick-start/app-configuration-file.md#配置文件标签)。

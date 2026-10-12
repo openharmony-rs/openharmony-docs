@@ -23,7 +23,7 @@
 
 - other：其他情况
 
-例如，在阿拉伯语中，单复规则如下：
+例如，在阿拉伯语中，单复数规则如下：
 
 - zero：0
 
@@ -39,4 +39,4 @@
 
 ## 开发步骤
 
-接口具体使用方法请参考getIntPluralStringValueSync的API文档。
+接口具体使用方法请参考[getIntPluralStringValueSync](../reference/apis-localization-kit/js-apis-resource-manager.md#getintpluralstringvaluesync18)的API文档。

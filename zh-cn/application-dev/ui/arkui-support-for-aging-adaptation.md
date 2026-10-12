@@ -16,7 +16,7 @@
 
 * 适老化规则
 
-  由于在系统字体大于1倍时，组件并没有默认放大，需要通过配置configuration标签，实现组件放大的适老化功能。
+  由于在系统字体大于1倍时，组件并没有默认放大，需要通过配置[configuration标签](../quick-start/app-configuration-file.md#configuration标签)，实现组件放大的适老化功能。
 
 * 适老化操作
 
@@ -42,14 +42,14 @@
 
 | 触发方式             | 组件名称                                                     |
 | -------------------- | ------------------------------------------------------------ |
-| 长按组件触发         | SideBarContainer， 底部页签（tabBar），Navigation，NavDestination， Tabs |
-| 设置系统字体默认放大 | PickerDialog， Button， Menu， Stepper， bindSheet，TextInput，TextArea，Search，SelectionMenu，Chip，Dialog，Slider， Progress， Badge |
+| 长按组件触发         | [SideBarContainer](../reference/apis-arkui/arkui-ts/ts-container-sidebarcontainer.md)， 底部页签（[tabBar](../reference/apis-arkui/arkui-ts/ts-container-tabcontent.md#tabbar9)），[Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)，[NavDestination](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md)， [Tabs](../reference/apis-arkui/arkui-ts/ts-container-tabs.md) |
+| 设置系统字体默认放大 | [PickerDialog](arkts-fixes-style-dialog.md#选择器弹窗-pickerdialog)， [Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md)， [Menu](../reference/apis-arkui/arkui-ts/ts-basic-components-menu.md)， [Stepper](../reference/apis-arkui/arkui-ts/ts-basic-components-stepper.md)， [bindSheet](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet)，[TextInput](../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md)，[TextArea](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md)，[Search](../reference/apis-arkui/arkui-ts/ts-basic-components-search.md)，[SelectionMenu](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SelectionMenu.md)，[Chip](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Chip.md)，[Dialog](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md)，[Slider](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md)， [Progress](../reference/apis-arkui/arkui-ts/ts-basic-components-progress.md)， [Badge](../reference/apis-arkui/arkui-ts/ts-container-badge.md) |
 
 ## 示例
 
 SideBarContainer组件通过长按控制按钮触发适老化弹窗。在系统字体为1倍的情况下，长按控制按钮不能弹窗。在系统字体大于1倍的情况下，长按控制按钮可以弹窗。
 
-<!-- @trigger_aging_friendly_by_long_press --> 
+<!-- @[trigger_aging_friendly_by_long_press](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SupportingAgingFriendly/entry/src/main/ets/pages/SideBarContainer.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -113,11 +113,11 @@ struct SideBarContainerExample {
 
 | 系统字体为一倍（适老化能力开启前） | 系统字体为1.75倍（适老化能力开启后） |
 | ---------------------------------- | ------------------------------------ |
-|           |             |
+| ![](figures/aging_01_replace.png)          | ![](figures/aging_02_replace.png)            |
 
-TextPickerDialog组件通过设置系统字体大小触发适老化弹窗。在系统字体为1倍的情况下，适老化不触发；在系统字体大于1倍的情况下，适老化触发。
+[TextPickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-textpicker-dialog.md)组件通过设置系统字体大小触发适老化弹窗。在系统字体为1倍的情况下，适老化不触发；在系统字体大于1倍的情况下，适老化触发。
 
-<!-- @trigger_aging_friendly_by_set_font_size --> 
+<!-- @[trigger_aging_friendly_by_set_font_size](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/SupportingAgingFriendly/entry/src/main/ets/pages/TextPickerDialog.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -217,5 +217,5 @@ struct TextPickerExample {
 
 | 系统字体为一倍（适老化能力开启前） | 系统字体为1.75倍（适老化能力开启后） |
 | ---------------------------------- | ------------------------------------ |
-|           |             |
+| ![](figures/aging_03_replace.png)          | ![](figures/aging_04_replace.png)            |
 <!--RP1End-->

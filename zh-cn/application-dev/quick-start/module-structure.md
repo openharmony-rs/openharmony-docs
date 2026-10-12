@@ -30,7 +30,7 @@ module对象包含HAP的配置信息。
 |commonEvents | 定义了公共事件静态订阅者的信息，该字段中需要声明静态订阅者的名称、权限要求及订阅事件列表信息，当订阅的公共事件发送时，该公共事件静态订阅者将被拉起。这里的静态订阅者区分于常用的动态订阅者，前者无需在业务代码中主动调用订阅事件的接口，在公共事件发布时可能未被拉起，而动态订阅者则在业务代码中主动调用公共事件订阅的相关API，因此需要应用处于活动状态。 | 对象数组 | 可缺省，缺省为空。 |
 | entryTheme | 此标签标识系统内部主题的关键字。将标记值设置为名称的资源索引。 | 字符串 | 可缺省，缺省值为空。 |
 |testRunner | 此标签用于支持对测试框架的配置。 | 对象 | 可缺省，缺省值为空。 |
-|generateBuildHash |标识当前HAP/HSP是否由打包工具生成哈希值。<br/>该字段配置为true时，当前HAP/HSP会由打包工具生成对应的哈希值。系统OTA升级时，若应用的version下的code保持不变时，可根据哈希值判断应用是否需要升级。<br/>-&nbsp;true：表示当前HAP/HSP是由打包工具生成对应的哈希值。<br/>-&nbsp;false：表示当前HAP/HSP不会由打包工具生成对应的哈希值。<br/>**说明：**<br/>该字段仅对预置应用生效。 |布尔值|该标签可缺省，缺省值为false。|
+|generateBuildHash |标识当前HAP/HSP是否由打包工具生成哈希值。<br/>该字段配置为true时，当前HAP/HSP会由打包工具生成对应的哈希值。系统OTA升级时，若应用的[version下的code](./app-structure.md#version对象内部结构)保持不变时，可根据哈希值判断应用是否需要升级。<br/>-&nbsp;true：表示当前HAP/HSP是由打包工具生成对应的哈希值。<br/>-&nbsp;false：表示当前HAP/HSP不会由打包工具生成对应的哈希值。<br/>**说明：**<br/>该字段仅对预置应用生效。 |布尔值|该标签可缺省，缺省值为false。|
 |libIsolation |用于区分同应用不同hap下的so文件，以防止so冲突。<br/>-&nbsp;true：当前hap的so会存储在libs目录中以Module名命名的路径下。<br/>-&nbsp;false：当前hap的so会直接存储在libs目录中。|布尔值|该标签可缺省，缺省值为false。|
 
 module示例：
@@ -104,7 +104,7 @@ module示例：
 <!--Table: 15%; 60%; 10%; 15%-->
 | 属性名称 | 含义 | 数据类型 | 是否可缺省 |
 | -------- | -------- | -------- | -------- |
-| moduleName | 标识当前HAP的名称，最大长度为31个字节。 在应用升级时，该名称允许修改，但需要应用适配Module相关数据目录的迁移，可使用@ohos.file.fs (文件管理)接口。| 字符串 | 不可缺省。 |
+| moduleName | 标识当前HAP的名称，最大长度为31个字节。 在应用升级时，该名称允许修改，但需要应用适配Module相关数据目录的迁移，可使用[@ohos.file.fs (文件管理)](../reference/apis-core-file-kit/js-apis-file-fs.md)接口。| 字符串 | 不可缺省。 |
 | moduleType | 标识当前HAP的类型，包括三种类型：entry、feature和har。 | 字符串 | 不可缺省。 |
 | installationFree | 标识当前HAP是否支持免安装特性。true：表示支持免安装特性，且符合免安装约束。false：表示不支持免安装特性。另外还需注意：当entry.hap该字段配置为true时，与该entry.hap相关的所有feature.hap该字段也需要配置为true。当entry.hap该字段配置为false时，与该entry.hap相关的各feature.hap该字段可按业务需求配置true或false。 | 布尔值 | 不可缺省。 |
 | deliveryWithInstall | 标识当前HAP是否在用户主动安装HAP所在应用的时候一起安装。true：&nbsp;安装应用时当前HAP随应用一起下载安装。false：安装应用时当前HAP并不下载安装，后续使用时按需下载。 | 布尔值 | 不可缺省。 |
@@ -196,7 +196,7 @@ metadata对象示例：
 | 智能手表 | wearable | 系统能力较丰富的手表，具备电话功能。 |
 | 运动表 | liteWearable | - |
 | 车机 | car | - |
-| 默认设备 | default | 默认设备类型，详情参考标准系统开发板。 |
+| 默认设备 | default | 默认设备类型，详情参考[标准系统开发板](../../device-dev/dev-board-on-the-master.md#标准系统开发板)。 |
 | 2in1 | 2in1 | 即PC设备，主要交互方式以多窗口、多任务及键盘鼠标操作为主，充分发挥设备的生产力属性。|
 <!--RP2End-->
 
@@ -221,7 +221,7 @@ metadata对象示例：
 | metaData | 元数据。 | 对象 | 可缺省，缺省值为空。 |
 | type | 标识Ability的类型。取值范围如下：<br/>page：表示基于Page模板开发的FA，用于提供与用户交互的能力。<br/>service：表示基于Service模板开发的PA，用于提供后台运行任务的能力。<br/>data：表示基于Data模板开发的PA，用于对外部提供统一的数据访问对象。<br/>CA：表示支持其他应用以窗口方式调起该Ability。 | 字符串 | 不可缺省。 |
 | orientation | 标识该Ability的显示模式。该标签仅适用于page类型的Ability。取值范围如下：<br/>unspecified：由系统自动判断显示方向。<br/>landscape：横屏模式。<br/>portrait：竖屏模式。<br/>followRecent：跟随栈中最近的应用。 | 字符串 | 可缺省，缺省值为"unspecified"。 |
-| backgroundModes | 标识后台服务的类型，可以为一个服务配置多个后台服务类型。该标签仅适用于service类型的Ability。取值范围如下：<br/>dataTransfer：通过网络/对端设备进行数据下载、备份、分享、传输等。<br/>audioPlayback：音频播放。<br/>audioRecording：录音。<br/>pictureInPicture：画中画、小窗口播放视频。<br/>voip：音视频电话、VOIP。<br/>location：定位、导航。<br/>bluetoothInteraction：蓝牙扫描、连接、传输。<br/>wifiInteraction：Wi-Fi扫描、连接、传输。<br/>screenFetch：录屏、截屏。<br/>multiDeviceConnection：多设备互联。 | 字符串数组 | 可缺省，缺省值为空。 |
+| backgroundModes | 标识后台服务的类型，可以为一个服务配置多个后台服务类型。该标签仅适用于service类型的Ability。取值范围如下：<br/>dataTransfer：通过网络/对端设备进行数据下载、备份、分享、传输等。<br/>audioPlayback：音频播放。<br/>audioRecording：录音。<br/>pictureInPicture：画中画、小窗口播放视频。<br/>voip：音视频电话、VOIP。<br/>location：定位、导航。<br/>bluetoothInteraction：蓝牙扫描、连接、传输。<br/>wifiInteraction：Wi-Fi扫描、连接、传输。<br/>screenFetch：录屏、截屏。<br/>multiDeviceConnection：多设备互联。<br/>usbConnection：USB连接，从API版本26.2.0开始支持。 | 字符串数组 | 可缺省，缺省值为空。 |
 | grantPermission | 指定是否可以向Ability内任何数据授予权限。<br/>-&nbsp;true：表示可以向Ability内任何数据授予权限。<br/>-&nbsp;false：表示不可以向Ability内任何数据授予权限。 | 布尔值 | 可缺省，缺省值为空。 |
 | readPermission | 标识读取Ability的数据所需的权限。该标签仅适用于data类型的Ability。取值为长度不超过255字节的字符串。该标签仅适用于默认设备、平板、智慧屏、车机、智能穿戴。 | 字符串 | 可缺省，缺省为空。 |
 | writePermission | 标识向Ability写数据所需的权限。该标签仅适用于data类型的Ability。取值为长度不超过255字节的字符串。 | 字符串 | 可缺省，缺省为空。 |
@@ -259,7 +259,7 @@ metadata对象示例：
 }
 ```
 
-如果应用确需隐藏入口图标，需要配置AllowAppDesktopIconHide应用特权<!--Del-->，具体配置方式参考应用特权配置指南<!--DelEnd-->。详细的入口图标及入口标签的显示规则如下。
+如果应用确需隐藏入口图标，需要配置AllowAppDesktopIconHide应用特权<!--Del-->，具体配置方式参考[应用特权配置指南](../../device-dev/subsystems/subsys-app-privilege-config-guide.md)<!--DelEnd-->。详细的入口图标及入口标签的显示规则如下。
 * HAP中包含Page类型的PageAbility
   * 配置文件（config.json）中abilities配置中设置了入口图标
     * 该应用没有隐藏图标的特权
@@ -282,7 +282,7 @@ metadata对象示例：
 
 **图1** 应用的详情页示意图
 
-应用的详情页例图
+![应用的详情页例图](figures/application_details.jpg)
 
 注：应用详情页面中显示的label可能与桌面上显示的不同。如果非Page类型的PageAbility配置了入口图标和label，那么详情页中显示的即为配置的。<br>
 ## uriPermission对象的内部结构
@@ -755,7 +755,7 @@ definePermissions仅支持系统应用配置，三方应用配置不生效。
 | name | 标识权限的名称，该标签最大长度为255字节。 | 字符串 | 不可缺省。 |
 | grantMode | 标识权限的授予方式，支持如下两种授予模式如下：<br/>-&nbsp;system_grant：安装后系统自动授予该权限。<br/>-&nbsp;user_grant：使用时动态申请，用户授权后才可使用。 | 字符串 | 可缺省，缺省值为system_grant。 |
 | availableLevel | 标识权限限制类别，可选值如下：<br/>-&nbsp;system_core：系统核心权限。<br/>-&nbsp;system_basic：系统基础权限。<br/>-&nbsp;normal：普通权限。所有应用允许申请的权限。 | 字符串 | 可缺省，缺省值为normal。 |
-| provisionEnable | 标识权限是否支持证书方式申请，详情参考申请调试Profile中的权限申请，包括高级别的权限。<br/>-&nbsp;true：表示开发者可以通过证书方式申请权限。<br/>-&nbsp;false：表示开发者不可以通过证书方式申请权限。 | 布尔值 | 可缺省，缺省值为true。 |
+| provisionEnable | 标识权限是否支持证书方式申请，详情参考[申请调试Profile](https://developer.huawei.com/consumer/cn/doc/app/agc-help-add-debugprofile-0000001914423102)中的权限申请，包括高级别的权限。<br/>-&nbsp;true：表示开发者可以通过证书方式申请权限。<br/>-&nbsp;false：表示开发者不可以通过证书方式申请权限。 | 布尔值 | 可缺省，缺省值为true。 |
 | distributedSceneEnabled | 标识权限是否支持分布式场景下使用该权限。<br/>-&nbsp;true：表示开发者可以在分布式场景下使用该权限。<br/>-&nbsp;false：表示开发者不可以在分布式场景下使用该权限。 | 布尔值 | 可缺省，缺省值为false。 |
 | label | 标识权限的简短描述，配置为对描述内容的资源索引。 | 字符串 | 可缺省，缺省值为空。 |
 | description | 标识权限的详细描述，可以是字符串（最大长度为255字节），或者为对描述内容的资源索引。 | 字符串 | 可缺省，缺省值为空。 |

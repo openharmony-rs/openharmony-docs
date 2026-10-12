@@ -9,9 +9,9 @@
 
 ## 场景介绍
 
-针对utd.h中定义的部分常见UTD标准化数据类型，为了方便业务使用，提供了标准化数据结构。例如，系统定义的桌面图标类型（标准化数据类型标识为'OH_UdsAppItem'）明确定义了相关描述信息。
+针对[utd.h](../reference/apis-arkdata/capi-utd-h.md)中定义的部分常见UTD标准化数据类型，为了方便业务使用，提供了标准化数据结构。例如，系统定义的桌面图标类型（标准化数据类型标识为'OH_UdsAppItem'）明确定义了相关描述信息。
 
-某些业务场景下应用可以直接使用我们具体定义的UTD标准化数据结构，例如跨应用拖拽场景。拖出方应用可以按照标准化数据结构将拖拽数据写入绑定拖拽事件，拖入方应用从拖拽事件中读取拖拽数据并按照标准化数据结构进行数据的解析。这使得不同应用间的数据交互遵从相同的标准定义，有效减少了跨应用数据交互的开发工作量。
+某些业务场景下应用可以直接使用我们具体定义的UTD标准化数据结构，例如跨应用拖拽场景。拖出方应用可以按照标准化数据结构将拖拽数据写入[绑定拖拽事件](../ui/ndk-drag-event.md)，拖入方应用从拖拽事件中读取拖拽数据并按照标准化数据结构进行数据的解析。这使得不同应用间的数据交互遵从相同的标准定义，有效减少了跨应用数据交互的开发工作量。
 
 ## 基本概念
 
@@ -19,7 +19,7 @@
 
 ## 接口说明
 
-详细的接口说明请参考uds.h中定义的标准化数据结构相关接口。
+详细的接口说明请参考[uds.h](../reference/apis-arkdata/capi-uds-h.md)中定义的标准化数据结构相关接口。
 
 | 接口名称                                                                                    | 描述                                          | 
 |-----------------------------------------------------------------------------------------|---------------------------------------------|
@@ -48,7 +48,7 @@ libudmf.so, libhilog_ndk.z.so
 ```
 
 ## 引用头文件
-<!-- @import_module -->
+<!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataStructure_C/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 #include <database/udmf/uds.h>
@@ -68,7 +68,7 @@ libudmf.so, libhilog_ndk.z.so
 3. 获取数据。
 4. 使用完成后销毁指针。
 
-<!-- @use_plaintext_datastructure -->
+<!-- @[use_plaintext_datastructure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataStructure_C/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 // 1.创建PlainText对象指针
@@ -127,7 +127,7 @@ OH_UdsPlainText_Destroy(plainText2);
 4. 获取fileUri数据。
 5. 使用完成后销毁指针。
 
-<!-- @use_fileUri_datastructure -->
+<!-- @[use_fileUri_datastructure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataStructure_C/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 // 1.创建fileUri类型的数据结构

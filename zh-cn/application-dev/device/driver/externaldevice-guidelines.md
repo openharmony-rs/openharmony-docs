@@ -12,22 +12,22 @@
 
 ## 环境搭建
 
-请参考环境准备完成开发前的准备工作。
+请参考[环境准备](environmental-preparation.md)完成开发前的准备工作。
 
 ## 接口说明
 
-扩展外设管理基本能力如下，更多详情请查阅@ohos.driver.deviceManager。
+扩展外设管理基本能力如下，更多详情请查阅[@ohos.driver.deviceManager](../../reference/apis-driverdevelopment-kit/js-apis-driver-deviceManager.md)。
 
 **表1** 扩展外设管理基本能力接口
 
 | 接口名                                                       | 描述                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | queryDevices(busType?: number): Array&lt;Readonly&lt;Device&gt;&gt; | 查询扩展外设列表。                                           |
-| bindDriverWithDeviceId(deviceId: number, onDisconnect: AsyncCallback&lt;number&gt;): Promise&lt;RemoteDeviceDriver&gt; | 绑定设备的Promise形式，API19开始支持。                       |
-| unbindDriverWithDeviceId(deviceId: number): Promise&lt;number&gt; | 解绑设备的Promise形式，API19开始支持。                       |
+| bindDriverWithDeviceId(deviceId: number, onDisconnect: AsyncCallback&lt;number&gt;): Promise&lt;RemoteDeviceDriver&gt; | 绑定设备的Promise形式，API version 19开始支持。                       |
+| unbindDriverWithDeviceId(deviceId: number): Promise&lt;number&gt; | 解绑设备的Promise形式，API version 19开始支持。                       |
 
 <!--Del-->
-扩展外设管理系统接口如下，具体请查阅@ohos.driver.deviceManager。
+扩展外设管理系统接口如下，具体请查阅[@ohos.driver.deviceManager](../../reference/apis-driverdevelopment-kit/js-apis-driver-deviceManager-sys.md)。
 
 **表2** 扩展外设管理系统接口
 
@@ -43,7 +43,7 @@
 
 开发示例如下（仅供参考）：为开发者提供的示例代码为同时开发客户端和服务端的Demo，并实现IPC通信。
 
-1. 创建新工程，请参考创建一个新的工程，创建一个OpenHarmony工程。
+1. 创建新工程，请参考[创建一个新的工程](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-create-new-project)，创建一个OpenHarmony工程。
 
    > **说明：**
    >
@@ -57,7 +57,7 @@
    >
    > 以下示例代码均写在entry/src/main/ets/pages/Index.ets文件中。
 
-   <!-- @driver_ui_step2 --> 
+   <!-- @[driver_ui_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -77,7 +77,7 @@
    >
    > 第3步开始，以下接口均在struct Index{}中定义。
 
-   <!-- @driver_ui_step3 --> 
+   <!-- @[driver_ui_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    @State message: string = 'Hello';
@@ -86,7 +86,7 @@
 
 4. 定义查询设备接口，通过queryDevices获取目标设备ID。
 
-   <!-- @driver_ui_step4 --> 
+   <!-- @[driver_ui_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    private async queryTargetDeviceId(): Promise<number> {
@@ -98,11 +98,11 @@
          hilog.info(DOMAIN, 'testTag', `usbDevice.productId = ${usbDevice.productId}, usbDevice.vendorId = ${usbDevice.vendorId}`);
          return usbDevice.productId === productId && usbDevice.vendorId === vendorId;
        });
-       hilog.info(DOMAIN, 'testTag', `queryTargetDeviceId index = ${index}, deviceId = ${devices[index].deviceId}`);
        if (index < 0) {
          hilog.error(DOMAIN, 'testTag', 'can not find device');
          return -1;
        }
+       hilog.info(DOMAIN, 'testTag', `queryTargetDeviceId index = ${index}, deviceId = ${devices[index].deviceId}`);
        return devices[index].deviceId;
      } catch (error) {
        hilog.error(DOMAIN, 'testTag', `queryDevice failed, err: ${JSON.stringify(error)}`);
@@ -113,12 +113,12 @@
 
 5. 定义获取对应驱动远程对象的接口，通过bindDeviceDriver获取远程对象。
 
-   <!-- @driver_ui_step5 --> 
+   <!-- @[driver_ui_step5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    private async getDriverRemote(deviceId: number): Promise<rpc.IRemoteObject | null> {
      try {
-       let remoteDeviceDriver: deviceManager.RemoteDeviceDriver = await deviceManager.bindDeviceDriver(deviceId,
+       let remoteDeviceDriver: deviceManager.RemoteDeviceDriver = await deviceManager.bindDriverWithDeviceId(deviceId,
          (err: BusinessError, id: number) => {
            hilog.info(DOMAIN, 'testTag', `device[${id}] id disconnect, err: ${JSON.stringify(err)}`);
          });
@@ -132,7 +132,7 @@
 
 6. 定义与远程对象通信接口，通过sendMessageRequest与远程对象进行IPC通信。
 
-   <!-- @driver_ui_step6 --> 
+   <!-- @[driver_ui_step6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    private async communicateWithRemote(): Promise<void> {
@@ -167,9 +167,9 @@
    }
    ```
 
-7. 渲染UI界面，更多UI界面开发请参考UI开发。
+7. 渲染UI界面，更多UI界面开发请参考[UI开发](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/arkts-ui-development)。
 
-   <!-- @driver_ui_step7 --> 
+   <!-- @[driver_ui_step7](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    build() {
@@ -189,7 +189,7 @@
    }
    ```
 
-8. 接下来请参考开发无UI界面基础驱动，进行对应驱动的示例代码开发。
+8. 接下来请参考[开发无UI界面基础驱动](driverextensionability.md)，进行对应驱动的示例代码开发。
 
 <!--RP1-->
 ## 应用签名
@@ -201,12 +201,12 @@
 应用需要配置签名文件才能在设备上运行，并且扩展外设管理客户端开发，需要配置扩展外设的权限：ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER及ohos.permission.ACCESS_DDK_DRIVERS。
 - ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER（API version 10及以上版本，需要申请此权限。）
 
-  在module.json5配置文件的requestPermissions标签中声明权限后，即可获得授权。
+  在module.json5配置文件的requestPermissions标签中[声明权限](../../security/AccessToken/declare-permissions.md)后，即可获得授权。
 
 - ohos.permission.ACCESS_DDK_DRIVERS（API version 18及以上版本，需要申请此权限。）
 
-  1. 在module.json5配置文件的requestPermissions标签中声明权限。
-  2. HarmonyAppProvision配置文件中，修改acls字段，跨级别申请权限，可参考申请受限权限。
+  1. 在module.json5配置文件的requestPermissions标签中[声明权限](../../security/AccessToken/declare-permissions.md)。
+  2. HarmonyAppProvision配置文件中，修改acls字段，跨级别申请权限，可参考[申请受限权限](../../security/AccessToken/declare-permissions-in-acl.md)。
   3. 在HarmonyAppProvision配置文件（即SDK目录下的“Sdk/openharmony/_{Version} _/toolchains /lib/UnsgnedReleasedProfileTemplate.json”文件）中，配置当前客户需要连接的驱动服务端的bundleName，如果存在多个服务端，多个服务端的bundleName以逗号分隔。
 
       具体配置方法如下：
@@ -218,5 +218,5 @@
       }
       ```
 
-自动签名方法： 请参考配置调试签名。
+自动签名方法： 请参考[配置调试签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section18815157237)。
 <!--RP1End-->

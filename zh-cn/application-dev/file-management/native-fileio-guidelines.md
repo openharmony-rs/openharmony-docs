@@ -8,7 +8,7 @@
 
 ## 场景介绍
 
-FileIO模块提供了部分文件基础操作能力，其他能力请参考libc标准库/c++标准库。
+FileIO模块提供了部分文件基础操作能力，其他能力请参考[libc标准库](../reference/native-lib/musl.md)/[c++标准库](../reference/native-lib/cpp.md)。
 
 ## 约束限制
 
@@ -16,7 +16,7 @@ FileIO模块提供了部分文件基础操作能力，其他能力请参考libc�
 
 ## 接口说明
 
-接口的详细说明，请参考FileIO。
+接口的详细说明，请参考[FileIO](../reference/apis-core-file-kit/capi-oh-fileio-h.md)。
 
 | 接口名称 | 描述 |
 | -------- | -------- |
@@ -44,7 +44,7 @@ target_link_libraries(sample PUBLIC libohfileio.so)
 
 调用OH_FileIO_GetFileLocation接口获取文件存储位置。示例代码如下所示：
 
-<!--@get_file_location_example-->    
+<!--@[get_file_location_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/NDKAppFileSample/entry/src/main/cpp/napi_init.cpp)-->    
 
 ``` C++
 void GetFileLocationExample(char *uri)

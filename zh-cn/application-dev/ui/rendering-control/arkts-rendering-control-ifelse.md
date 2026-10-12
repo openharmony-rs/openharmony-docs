@@ -20,9 +20,9 @@ ArkTS提供了渲染控制能力。条件渲染可根据应用状态，使用if�
 
 - 允许在容器组件内使用，通过条件渲染语句构建不同的子组件。
 
-- 条件渲染语句在涉及到组件的父子关系时是“透明”的，父组件和子组件之间的条件渲染语句不影响父组件关于子组件使用的限制。例如，某些容器组件限制子组件的类型或数量。将条件渲染语句用于这些组件内时，这些限制同样适用于条件渲染语句内创建的组件。具体而言，Grid容器组件的子组件仅支持GridItem组件。在Grid内使用条件渲染语句时，条件渲染语句内仅允许使用GridItem组件。
+- 条件渲染语句在涉及到组件的父子关系时是“透明”的，父组件和子组件之间的条件渲染语句不影响父组件关于子组件使用的限制。例如，某些容器组件限制子组件的类型或数量。将条件渲染语句用于这些组件内时，这些限制同样适用于条件渲染语句内创建的组件。具体而言，[Grid](../../reference/apis-arkui/arkui-ts/ts-container-grid.md)容器组件的子组件仅支持[GridItem](../../reference/apis-arkui/arkui-ts/ts-container-griditem.md)组件。在Grid内使用条件渲染语句时，条件渲染语句内仅允许使用GridItem组件。
 
-- 每个分支内部的构建函数必须遵循构建函数的规则，并创建一个或多个组件。无法创建组件的空构建函数会产生语法错误。关于构建函数的规则，请参考：基本语法概述、声明式UI描述。
+- 每个分支内部的构建函数必须遵循构建函数的规则，并创建一个或多个组件。无法创建组件的空构建函数会产生语法错误。关于构建函数的规则，请参考：[基本语法概述](../state-management/arkts-basic-syntax-overview.md)、[声明式UI描述](../state-management/arkts-declarative-ui-description.md)。
 
 
 ## 更新机制
@@ -33,15 +33,15 @@ ArkTS提供了渲染控制能力。条件渲染可根据应用状态，使用if�
 
 2. 移除此前构建的所有子组件。
 
-3. 执行新分支的构造函数，将生成的子组件添加到if父容器中。如果缺少适用的else分支，则不创建任何内容。
+3. 执行新分支的构建函数，将生成的子组件添加到if父容器中。如果缺少适用的else分支，则不创建任何内容。
 
-条件可以包含Typescript表达式。构造函数中的表达式不得更改应用程序状态。
+条件可以包含Typescript表达式。构建函数中的表达式不得更改应用程序状态。
 
 ## 使用场景
 
 ### 使用if进行条件渲染
 
-<!-- @render_if -->
+<!-- @[render_if](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingIf/IfRendering.ets) -->
 
 ``` TypeScript
 @Entry
@@ -71,7 +71,7 @@ struct IfExample {
   }
 }
 ```
-
+![](figures/render_if.gif)
 
 if语句的每个分支都包含一个构建函数。此类构建函数必须创建一个或多个子组件。在初始渲染时，if语句会执行构建函数，并将生成的子组件添加到其父组件中。
 
@@ -79,15 +79,15 @@ if语句的每个分支都包含一个构建函数。此类构建函数必须创
 
 1. 移除所有以前渲染的（早期分支的）组件。
 
-2. 执行新分支的构造函数，将生成的子组件添加到其父组件中。
+2. 执行新分支的构建函数，将生成的子组件添加到其父组件中。
 
-在以上示例中，当count从0增至1时，if (this.count > 0)更新为true，执行该分支的构造函数，创建一个Text组件并添加到父组件Column中。如果后续count更改为0，则Text组件将从Column组件中删除。由于没有else分支，因此不会执行新的构造函数。
+在以上示例中，当count从0增至1时，if (this.count > 0)更新为true，执行该分支的构建函数，创建一个[Text](../../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)组件并添加到父组件Column中。如果后续count更改为0，则Text组件将从[Column](../../reference/apis-arkui/arkui-ts/ts-container-column.md)组件中删除。由于没有else分支，因此不会执行新的构建函数。
 
 ### if ... else ...语句和子组件状态
 
-以下示例包含if ... else ...语句与拥有\@State装饰变量的子组件。
+以下示例包含if ... else ...语句与拥有[\@State](../state-management/arkts-state.md)装饰变量的子组件。
 
-<!-- @render_if_else -->
+<!-- @[render_if_else](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingIf/IfElseRendering.ets) -->
 
 ``` TypeScript
 @Component
@@ -131,7 +131,7 @@ struct MainView {
   }
 }
 ```
-
+![](figures/render_if_else.gif)
 
 **初次渲染**：创建CounterView子组件（label为 'CounterView \#positive'），其状态变量counter初始值为0。
 
@@ -147,7 +147,7 @@ struct MainView {
 
 以下示例展示了条件更改时，若需要保留counter值所做的修改。
 
-<!-- @render_keep_counter -->
+<!-- @[render_keep_counter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingIf/KeepCounter.ets) -->
 
 ``` TypeScript
 @Component
@@ -193,15 +193,15 @@ struct KeepMainView {
   }
 }
 ```
+![](figures/render_keep_counter.gif)
 
-
-此处，\@State counter变量归父组件所有。因此，当KeepCounterView组件实例被删除时，该变量不会被销毁。KeepCounterView组件通过\@Link装饰器引用状态。状态必须从子级移动到其父级（或父级的父级），以避免在条件内容或重复内容被销毁时丢失状态。
+此处，\@State counter变量归父组件所有。因此，当KeepCounterView组件实例被删除时，该变量不会被销毁。KeepCounterView组件通过[\@Link](../state-management/arkts-link.md)装饰器引用状态。状态必须从子级移动到其父级（或父级的父级），以避免在条件内容或重复内容被销毁时丢失状态。
 
 ### 嵌套if语句
 
 嵌套条件语句不会影响父组件的相关规则。
 
-<!-- @render_nested_if -->
+<!-- @[render_nested_if](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingIf/NestedIf.ets) -->
 
 ``` TypeScript
 @Entry
@@ -252,4 +252,4 @@ struct NestedIf {
   }
 }
 ```
-
+![](figures/render_nested_if.gif)

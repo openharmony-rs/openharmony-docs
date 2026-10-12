@@ -30,7 +30,7 @@ HidDdk（HID Driver Development Kit）是为开发者提供的HID设备驱动程
 
 **图1** HidDdk调用原理
 
-HID_DDK原理图
+![HID_DDK原理图](figures/ddk-schematic-diagram.png)
 
 ## 约束与限制
 
@@ -63,7 +63,7 @@ HID_DDK原理图
 | int32_t OH_Hid_GetReport(Hid_DeviceHandle *dev, Hid_ReportType reportType, uint8_t *data, uint32_t buffSize) | 获取设备报告。 |
 | int32_t OH_Hid_GetReportDescriptor(Hid_DeviceHandle *dev, uint8_t *buf, uint32_t buffSize, uint32_t *bytesRead) | 获取设备报告描述符。 |
 
-详细的接口说明请参考HidDdk。
+详细的接口说明请参考[HidDdk](../../reference/apis-driverdevelopment-kit/capi-hidddk.md)。
 
 ## 开发步骤
 
@@ -86,9 +86,9 @@ libhid.z.so
 
 1. 创建设备。
 
-   使用 **hid_ddk_api.h** 的 **OH_Hid_CreateDevice** 接口创建HID设备，成功返回设备deviceId，失败返回Hid_DdkErrCode。
+   使用 **hid_ddk_api.h** 的 **OH_Hid_CreateDevice** 接口创建HID设备，成功返回设备deviceId，失败返回[Hid_DdkErrCode](../../reference/apis-driverdevelopment-kit/capi-hid-ddk-types-h.md#hid_ddkerrcode)。
 
-   <!-- @driver_hid1_step1 --> 
+   <!-- @[driver_hid1_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbDriverDemo/entry/src/main/cpp/inject_thread.cpp) --> 
    
    ``` C++
    Hid_Device hidDevice = {
@@ -118,7 +118,7 @@ libhid.z.so
 
    使用 **hid_ddk_api.h** 的 **OH_Hid_EmitEvent** 向指定的deviceId的设备发送事件。
 
-   <!-- @driver_hid1_step2 --> 
+   <!-- @[driver_hid1_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbDriverDemo/entry/src/main/cpp/inject_thread.cpp) --> 
    
    ``` C++
    // 向指定deviceId的设备发送事件，事件来源于物理外设，通过InjectEvent方法注入
@@ -132,7 +132,7 @@ libhid.z.so
 
    在所有请求处理完毕，程序退出前，使用 **hid_ddk_api.h** 的 **OH_Hid_DestroyDevice** 接口销毁HID设备。
 
-   <!-- @driver_hid1_step3 --> 
+   <!-- @[driver_hid1_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbDriverDemo/entry/src/main/cpp/inject_thread.cpp) --> 
    
    ``` C++
    // 销毁HID设备
@@ -161,7 +161,7 @@ libhid.z.so
 
    使用 **hid_ddk_api.h** 的 **OH_Hid_Init** 初始化HidDdk。
 
-   <!-- @driver_hid_report_step1 --> 
+   <!-- @[driver_hid_report_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/data_parser.cpp) --> 
    
    ``` C++
    // 初始化HID DDK
@@ -176,7 +176,7 @@ libhid.z.so
 
    初始化HidDdk后，使用 **hid_ddk_api.h** 的 **OH_Hid_Open** 打开HID设备。
 
-   <!-- @driver_hid_report_step2 --> 
+   <!-- @[driver_hid_report_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/data_parser.cpp) --> 
    
    ``` C++
    uint32_t bInterfaceNum1 = 0x00;
@@ -201,7 +201,7 @@ libhid.z.so
    - 当报告类型为HID_OUTPUT_REPORT（输出报告）时，支持如下两种写入/发送方式。
      - 使用 **hid_ddk_api.h** 的 **OH_Hid_Write** 向HID设备写入一个输出报告。
 
-       <!-- @driver_hid_report_step3_1 --> 
+       <!-- @[driver_hid_report_step3_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/hello.cpp) --> 
        
        ``` C++
        uint32_t bytesWritten;
@@ -215,7 +215,7 @@ libhid.z.so
 
      - 使用 **hid_ddk_api.h** 的 **OH_Hid_SendReport** 向HID设备发送一个输出报告。
 
-       <!-- @driver_hid_report_step3_2 --> 
+       <!-- @[driver_hid_report_step3_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/hello.cpp) --> 
        
        ``` C++
        // 发送输出报告
@@ -229,7 +229,7 @@ libhid.z.so
 
      - 当报告类型为HID_FEATURE_REPORT（特性报告）时，使用 **hid_ddk_api.h** 的 **OH_Hid_SendReport** 向HID设备发送一个特性报告。
 
-       <!-- @driver_hid_report_step3_3 --> 
+       <!-- @[driver_hid_report_step3_3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/hello.cpp) --> 
        
        ``` C++
        uint8_t dataBuff[NUM_EIGHT] = { 0x00 };
@@ -247,7 +247,7 @@ libhid.z.so
    - 当报告类型为HID_INPUT_REPORT（输入报告）时，支持如下三种读取方式。
      - 使用 **hid_ddk_api.h** 的 **OH_Hid_SetNonBlocking** 设置读取模式。
 
-       <!-- @driver_hid_report_step4_1 --> 
+       <!-- @[driver_hid_report_step4_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/hello.cpp) --> 
        
        ``` C++
        // nonblock取值：1启用非阻塞，0禁用非阻塞
@@ -261,7 +261,7 @@ libhid.z.so
 
      - 使用 **hid_ddk_api.h** 的 **OH_Hid_Read** 或者 **OH_Hid_ReadTimeout** 以非阻塞模式或者阻塞模式从HID设备读取一个输入报告。
 
-       <!-- @driver_hid_report_step4_2 --> 
+       <!-- @[driver_hid_report_step4_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/hello.cpp) --> 
        
        ``` C++
        if (nonblock) {
@@ -275,7 +275,7 @@ libhid.z.so
 
      - 使用 **hid_ddk_api.h** 的 **OH_Hid_GetReport** 从HID设备读取一个输入报告。
 
-       <!-- @driver_hid_report_step4_3 --> 
+       <!-- @[driver_hid_report_step4_3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/hello.cpp) --> 
        
        ``` C++
        uint8_t dataBuff[NUM_NINE] = { 0x00 };
@@ -291,7 +291,7 @@ libhid.z.so
 
      - 当报告类型为HID_FEATURE_REPORT（特性报告）时，使用 **hid_ddk_api.h** 的 **OH_Hid_GetReport** 从HID设备读取一个特性报告。
 
-       <!-- @driver_hid_report_step4_4 --> 
+       <!-- @[driver_hid_report_step4_4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/hello.cpp) --> 
        
        ``` C++
        uint8_t dataBuff[NUM_EIGHT] = { 0x00 };
@@ -310,7 +310,7 @@ libhid.z.so
 
     使用 **hid_ddk_api.h** 的 **OH_Hid_GetRawInfo** 获取HID设备原始信息，使用 **OH_Hid_GetRawName** 获取HID设备原始名称，使用 **OH_Hid_GetPhysicalAddress** 获取HID设备物理地址，使用 **OH_Hid_GetRawUniqueId** 获取HID设备原始唯一标识符。这些信息可被上层应用引用，例如在界面中展示设备信息等。
 
-   <!-- @driver_hid_report_step5_1 --> 
+   <!-- @[driver_hid_report_step5_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/hello.cpp) --> 
    
    ``` C++
    Hid_RawDevInfo rawDevInfo;
@@ -321,7 +321,7 @@ libhid.z.so
    }
    ```
    
-   <!-- @driver_hid_report_step5_2 --> 
+   <!-- @[driver_hid_report_step5_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/hello.cpp) --> 
    
    ``` C++
    char dataBuff[DATA_BUFF_SIZE];
@@ -332,7 +332,7 @@ libhid.z.so
    }
    ```
 
-   <!-- @driver_hid_report_step5_3 --> 
+   <!-- @[driver_hid_report_step5_3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/hello.cpp) --> 
    
    ``` C++
    char dataBuff[DATA_BUFF_SIZE];
@@ -343,7 +343,7 @@ libhid.z.so
    }
    ```
 
-   <!-- @driver_hid_report_step5_4 --> 
+   <!-- @[driver_hid_report_step5_4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/hello.cpp) --> 
 
    ``` C++
    uint8_t dataBuff[NUM_SIXTY_FOUR];
@@ -358,7 +358,7 @@ libhid.z.so
 
    使用 **hid_ddk_api.h** 的 **OH_Hid_GetReportDescriptor** 获取HID设备报告描述符。
 
-   <!-- @driver_hid_report_step6 --> 
+   <!-- @[driver_hid_report_step6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/hello.cpp) --> 
    
    ``` C++
    uint8_t dataBuff[DATA_BUFF_SIZE1];
@@ -375,7 +375,7 @@ libhid.z.so
 
    在所有请求处理完毕后，使用 **hid_ddk_api.h** 的 **OH_Hid_Close** 关闭设备。
 
-   <!-- @driver_hid_report_step7 --> 
+   <!-- @[driver_hid_report_step7](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/hello.cpp) --> 
    
    ``` C++
    Hid_DeviceHandle *hid = DataParser::GetInstance().getHidObject();
@@ -387,7 +387,7 @@ libhid.z.so
 
    在关闭HID设备后，使用 **hid_ddk_api.h** 的 **OH_Hid_Release** 释放HidDdk。
 
-   <!-- @driver_hid_report_step8 --> 
+   <!-- @[driver_hid_report_step8](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/HidDriverDemo/entry/src/main/cpp/hello.cpp) --> 
    
    ``` C++
    ret1 = OH_Hid_Release();

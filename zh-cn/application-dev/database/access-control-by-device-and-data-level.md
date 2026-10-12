@@ -30,7 +30,7 @@
 在设备组网时，可以通过`hidumper -s 3511`命令查看设备的安全等级。如果查询无结果可以通过service_control start dslm_service主动拉起对应进程，之后再使用hidumper命令查询。例如，rk3568设备的安全等级查询如下：
 <!--RP1End-->
 <!--Del-->
-Device-Security-Levels
+![Device-Security-Levels](figures/Device-Security-Levels.png)
 <!--DelEnd-->
 
 ## 跨设备同步访问控制机制
@@ -55,9 +55,9 @@ Device-Security-Levels
 
 ## 使用键值型数据库实现数据分级
 
-键值型数据库，通过securityLevel参数设置数据库的安全等级，安全等级具体可见SecurityLevel枚举。此处以创建安全等级为S3的数据库为例。
+键值型数据库，通过securityLevel参数设置数据库的安全等级，安全等级具体可见[SecurityLevel](../reference/apis-arkdata/js-apis-distributedKVStore.md#securitylevel)枚举。此处以创建安全等级为S3的数据库为例。
 
-具体接口及功能，可见分布式键值数据库。
+具体接口及功能，可见[分布式键值数据库](../reference/apis-arkdata/js-apis-distributedKVStore.md)。
 > **说明**：
 >
 > 在单设备使用场景下，KV数据库支持修改securityLevel开库参数进行安全等级升级。数据库安全等级升级操作需要注意以下几点：
@@ -84,7 +84,7 @@ Device-Security-Levels
    export class KvInterface {
    }
    ```
-   <!-- @kv_store1 -->
+   <!-- @[kv_store1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
    
    ``` TypeScript
    public CreateKvManager = (() => {
@@ -106,7 +106,7 @@ Device-Security-Levels
      }
    })
    ```
-   <!-- @kv_store3 -->
+   <!-- @[kv_store3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
    
    ``` TypeScript
    public GetKvStore = (() => {
@@ -166,12 +166,12 @@ Device-Security-Levels
 
 ## 使用关系型数据库实现数据分级
 
-关系型数据库，通过securityLevel参数设置数据库的安全等级，安全等级具体可见SecurityLevel枚举。此处以创建安全等级为S3的数据库为例。
+关系型数据库，通过securityLevel参数设置数据库的安全等级，安全等级具体可见[SecurityLevel](../reference/apis-arkdata/arkts-apis-data-relationalStore-e.md#securitylevel)枚举。此处以创建安全等级为S3的数据库为例。
 
-具体接口及功能，可见@ohos.data.relationalStore (关系型数据库)。
+具体接口及功能，可见[@ohos.data.relationalStore (关系型数据库)](../reference/apis-arkdata/arkts-apis-data-relationalStore.md)。
 
 
-<!-- @rdb_accessControlByDeviceAndDataLevel -->  
+<!-- @[rdb_accessControlByDeviceAndDataLevel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/pages/accessControlByDeviceAndDataLevel.ets) -->  
 
 ``` TypeScript
 import { relationalStore } from '@kit.ArkData';

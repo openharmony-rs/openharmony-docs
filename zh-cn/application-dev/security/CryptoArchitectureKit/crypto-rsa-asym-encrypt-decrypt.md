@@ -7,38 +7,38 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
-对应的算法规格请查看非对称密钥加解密算法规格：RSA。
+对应的算法规格请查看[非对称密钥加解密算法规格：RSA](crypto-encryption-decryption.md#rsa)。
 
 ## 使用RSA非对称密钥（PKCS1模式）加解密
 
 **加密**
 
-1. 调用cryptoFramework.createAsyKeyGenerator、AsyKeyGenerator.generateKeyPair，生成RSA密钥类型为RSA1024、素数个数为2的非对称密钥对（KeyPair）。KeyPair对象中包括公钥PubKey、私钥PriKey。
+1. 调用[cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator)、[AsyKeyGenerator.generateKeyPair](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypair-1)，生成RSA密钥类型为RSA1024、素数个数为2的非对称密钥对（KeyPair）。KeyPair对象中包括公钥PubKey、私钥PriKey。
 
-   如何生成RSA非对称密钥对，开发者可参考下文示例，并结合非对称密钥生成和转换规格：RSA和随机生成非对称密钥对理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。
+   如何生成RSA非对称密钥对，开发者可参考下文示例，并结合[非对称密钥生成和转换规格：RSA](crypto-key-generation-conversion.md#rsa)和[随机生成非对称密钥对](crypto-generate-asym-key-pair-randomly.md)理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。
 
-2. 调用cryptoFramework.createCipher，指定字符串参数'RSA1024|PKCS1'，创建非对称密钥类型为RSA1024、填充模式为PKCS1的Cipher实例，用于完成加解密操作。
+2. 调用[cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher)，指定字符串参数'RSA1024|PKCS1'，创建非对称密钥类型为RSA1024、填充模式为PKCS1的Cipher实例，用于完成加解密操作。
 
-3. 调用Cipher.init，设置模式为加密（cryptoFramework.CryptoMode.ENCRYPT_MODE），指定加密密钥（KeyPair.PubKey），初始化加密Cipher实例。
+3. 调用[Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1)，设置模式为加密（cryptoFramework.CryptoMode.ENCRYPT_MODE），指定加密密钥（KeyPair.PubKey），初始化加密Cipher实例。
 
    非对称密钥无加密参数，直接传入null。
 
-4. 调用Cipher.doFinal，传入明文，获取加密后的数据。
+4. 调用[Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1)，传入明文，获取加密后的数据。
 
    - doFinal输出结果可能为null，在访问具体数据前，需要先判断结果是否为null，避免产生异常。
-   - 当数据量较大时，可以多次调用doFinal，即分段加解密。
+   - 当数据量较大时，可以多次调用doFinal，即[分段加解密](crypto-rsa-asym-encrypt-decrypt.md#使用rsa非对称密钥分段加解密)。
 
 **解密**
 
-1. 由于RSA算法的Cipher实例不支持重复init操作，需要调用cryptoFramework.createCipher，重新生成Cipher实例。
+1. 由于RSA算法的Cipher实例不支持重复init操作，需要调用[cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher)，重新生成Cipher实例。
 
-2. 调用Cipher.init，设置模式为解密（cryptoFramework.CryptoMode.DECRYPT_MODE），指定解密密钥（KeyPair.PriKey）初始化解密Cipher实例。PKCS1模式无加密参数，直接传入null。
+2. 调用[Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1)，设置模式为解密（cryptoFramework.CryptoMode.DECRYPT_MODE），指定解密密钥（KeyPair.PriKey）初始化解密Cipher实例。PKCS1模式无加密参数，直接传入null。
 
-3. 调用Cipher.doFinal，传入密文，获取解密后的数据。
+3. 调用[Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1)，传入密文，获取解密后的数据。
 
 - 异步方法示例：
 
-  <!-- @rsa_pkcs1_encrypt_decrypt_async -->
+  <!-- @[rsa_pkcs1_encrypt_decrypt_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceRSA/entry/src/main/ets/pages/rsa_pkcs1/RSAPKCS1Async.ets) -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -128,7 +128,7 @@
 
 - 同步方法示例：
 
-  <!-- @rsa_pkcs1_encrypt_decrypt_sync -->
+  <!-- @[rsa_pkcs1_encrypt_decrypt_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceRSA/entry/src/main/ets/pages/rsa_pkcs1/RSAPKCS1Sync.ets) -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -220,34 +220,34 @@
 
 **加密**
 
-1. 调用cryptoFramework.createAsyKeyGenerator、AsyKeyGenerator.generateKeyPair，生成RSA密钥类型为RSA1024、素数个数为2（不填默认）的非对称密钥对（KeyPair）。KeyPair对象中包括公钥PubKey、私钥PriKey。
+1. 调用[cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator)、[AsyKeyGenerator.generateKeyPair](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypair-1)，生成RSA密钥类型为RSA1024、素数个数为2（不填默认）的非对称密钥对（KeyPair）。KeyPair对象中包括公钥PubKey、私钥PriKey。
 
-   如何生成RSA非对称密钥对，开发者可参考下文示例，并结合非对称密钥生成和转换规格：RSA和随机生成非对称密钥对理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。
+   如何生成RSA非对称密钥对，开发者可参考下文示例，并结合[非对称密钥生成和转换规格：RSA](crypto-key-generation-conversion.md#rsa)和[随机生成非对称密钥对](crypto-generate-asym-key-pair-randomly.md)理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。
 
-2. 调用cryptoFramework.createCipher，指定字符串参数'RSA1024|PKCS1'，创建非对称密钥类型为RSA1024、填充模式为PKCS1的Cipher实例，用于完成加解密操作。
+2. 调用[cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher)，指定字符串参数'RSA1024|PKCS1'，创建非对称密钥类型为RSA1024、填充模式为PKCS1的Cipher实例，用于完成加解密操作。
 
-3. 调用Cipher.init，设置模式为加密（cryptoFramework.CryptoMode.ENCRYPT_MODE），指定加密密钥（KeyPair.PubKey），初始化加密Cipher实例。
+3. 调用[Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1)，设置模式为加密（cryptoFramework.CryptoMode.ENCRYPT_MODE），指定加密密钥（KeyPair.PubKey），初始化加密Cipher实例。
 
-4. 多次调用Cipher.doFinal，传入明文，获取加密后的数据。
+4. 多次调用[Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1)，传入明文，获取加密后的数据。
 
    doFinal输出结果可能为null，在访问具体数据前，需要先判断结果是否为null，避免产生异常。
 
    此处将明文按64个字节一组拆分，多次加密。使用1024位密钥，每次将生成128字节密文。
    > **说明：**
    >
-   > 非对称密钥的分段加解密是指当明文大于单次加解密支持的数据长度时，需要将待加解密数据分为合适长度的数据段，并对每个数据段执行加解密操作。详细介绍可见非对称分段加解密介绍。
+   > 非对称密钥的分段加解密是指当明文大于单次加解密支持的数据长度时，需要将待加解密数据分为合适长度的数据段，并对每个数据段执行加解密操作。详细介绍可见[非对称分段加解密介绍](crypto-encryption-decryption.md#非对称加解密)。
 
 **解密**
 
-1. 由于RSA算法的Cipher实例不支持重复init操作，需要调用cryptoFramework.createCipher，重新生成Cipher实例。
+1. 由于RSA算法的Cipher实例不支持重复init操作，需要调用[cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher)，重新生成Cipher实例。
 
-2. 调用Cipher.init，设置模式为解密（cryptoFramework.CryptoMode.DECRYPT_MODE），指定解密密钥（KeyPair.PriKey）初始化解密Cipher实例。PKCS1模式无加密参数，直接传入null。
+2. 调用[Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1)，设置模式为解密（cryptoFramework.CryptoMode.DECRYPT_MODE），指定解密密钥（KeyPair.PriKey）初始化解密Cipher实例。PKCS1模式无加密参数，直接传入null。
 
-3. 多次调用Cipher.doFinal，传入密文，获取解密后的数据。
+3. 多次调用[Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1)，传入密文，获取解密后的数据。
 
 - 异步方法示例：
 
-  <!-- @rsa_segmentation_encrypt_decrypt_async -->
+  <!-- @[rsa_segmentation_encrypt_decrypt_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceRSA/entry/src/main/ets/pages/rsa_segmentation/RSASegmentationAsync.ets) -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -319,7 +319,7 @@
 
 - 同步方法示例：
 
-  <!-- @rsa_segmentation_encrypt_decrypt_sync -->
+  <!-- @[rsa_segmentation_encrypt_decrypt_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceRSA/entry/src/main/ets/pages/rsa_segmentation/RSASegmentationSync.ets) -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -392,33 +392,33 @@
 
 **加密**
 
-1. 调用cryptoFramework.createAsyKeyGeneratorBySpec、AsyKeyGeneratorBySpec.generateKeyPair，指定密钥参数，生成RSA非对称密钥对（KeyPair）。
+1. 调用[cryptoFramework.createAsyKeyGeneratorBySpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygeneratorbyspec10)、[AsyKeyGeneratorBySpec.generateKeyPair](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypair10)，指定密钥参数，生成RSA非对称密钥对（KeyPair）。
    
-   如何生成RSA非对称密钥对，开发者可参考下文示例，并结合非对称密钥生成和转换规格：RSA和指定密钥参数生成非对称密钥对理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。
+   如何生成RSA非对称密钥对，开发者可参考下文示例，并结合[非对称密钥生成和转换规格：RSA](crypto-key-generation-conversion.md#rsa)和[指定密钥参数生成非对称密钥对](crypto-generate-asym-key-pair-from-key-spec.md)理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。
 
-2. 调用cryptoFramework.createCipher，指定字符串参数'RSA2048|PKCS1_OAEP|SHA256|MGF1_SHA1'，创建非对称密钥类型为RSA2048、填充模式为PKCS1_OAEP、摘要算法为SHA256、掩码摘要为MGF1_SHA1的RSA密钥的Cipher实例，用于完成加解密操作。
+2. 调用[cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher)，指定字符串参数'RSA2048|PKCS1_OAEP|SHA256|MGF1_SHA1'，创建非对称密钥类型为RSA2048、填充模式为PKCS1_OAEP、摘要算法为SHA256、掩码摘要为MGF1_SHA1的RSA密钥的Cipher实例，用于完成加解密操作。
 
-3. 调用Cipher.init，设置模式为加密（cryptoFramework.CryptoMode.ENCRYPT_MODE），指定加密密钥（KeyPair.PubKey），初始化加密Cipher实例。
+3. 调用[Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1)，设置模式为加密（cryptoFramework.CryptoMode.ENCRYPT_MODE），指定加密密钥（KeyPair.PubKey），初始化加密Cipher实例。
    
    非对称密钥无加密参数，直接传入null。
 
-4. 在调用Cipher.doFinal前，调用Cipher.setCipherSpec设置PKCS1_OAEP填充参数pSource。调用Cipher.getCipherSpec可获得OAEP相关参数。
+4. 在调用Cipher.doFinal前，调用[Cipher.setCipherSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#setcipherspec10)设置PKCS1_OAEP填充参数pSource。调用[Cipher.getCipherSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getcipherspec10)可获得OAEP相关参数。
 
-5. 调用Cipher.doFinal，传入明文，获取加密后的数据。
+5. 调用[Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1)，传入明文，获取加密后的数据。
 
 **解密**
 
-1. 由于RSA算法的Cipher实例不支持重复init操作，需要调用cryptoFramework.createCipher，重新生成Cipher实例。
+1. 由于RSA算法的Cipher实例不支持重复init操作，需要调用[cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher)，重新生成Cipher实例。
 
-2. 调用Cipher.init，设置模式为解密（cryptoFramework.CryptoMode.DECRYPT_MODE），指定解密密钥（KeyPair.PriKey）初始化解密Cipher实例。PKCS1_OAEP模式无额外加密参数，直接传入null。
+2. 调用[Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1)，设置模式为解密（cryptoFramework.CryptoMode.DECRYPT_MODE），指定解密密钥（KeyPair.PriKey）初始化解密Cipher实例。PKCS1_OAEP模式无额外加密参数，直接传入null。
 
-3. 在调用Cipher.doFinal前，调用Cipher.setCipherSpec设置PKCS1_OAEP填充参数pSource，此处需要和加密时设置的保持一致。调用Cipher.getCipherSpec可获得OAEP相关参数。
+3. 在调用Cipher.doFinal前，调用[Cipher.setCipherSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#setcipherspec10)设置PKCS1_OAEP填充参数pSource，此处需要和加密时设置的保持一致。调用[Cipher.getCipherSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getcipherspec10)可获得OAEP相关参数。
 
-4. 调用Cipher.doFinal，传入密文，获取解密后的数据。
+4. 调用[Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1)，传入密文，获取解密后的数据。
 
 - 异步方法示例：
 
-  <!-- @pss_verify_rsa_keypair_sign_async -->
+  <!-- @[pss_verify_rsa_keypair_sign_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceRSA/entry/src/main/ets/pages/rsa_pkcs1_oaep/RSAPKCS1OAEPAsync.ets) -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -513,7 +513,7 @@
 
 - 同步方法示例：
 
-  <!-- @pss_verify_rsa_keypair_sign_sync -->
+  <!-- @[pss_verify_rsa_keypair_sign_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceRSA/entry/src/main/ets/pages/rsa_pkcs1_oaep/RSAPKCS1OAEPSync.ets) -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';

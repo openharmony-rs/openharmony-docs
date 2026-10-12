@@ -12,7 +12,7 @@
 
 ## 开发步骤及示例
 
-在将音频投播到组网内其他设备前，需要先获取组网内的设备列表，并监听设备连接状态的变化，具体开发步骤请参考查询和监听音频输出设备。
+在将音频投播到组网内其他设备前，需要先获取组网内的设备列表，并监听设备连接状态的变化，具体开发步骤请参考[查询和监听音频输出设备](audio-output-device-management.md)。
 
 在获取组网内的设备列表时，可以通过指定DeviceFlag，筛选出需要的设备。
 
@@ -26,11 +26,11 @@
 | DISTRIBUTED_INPUT_DEVICES_FLAG<sup>9+</sup> | 分布式输入设备。&nbsp;此接口为系统接口。 | 
 | ALL_DISTRIBUTED_DEVICES_FLAG<sup>9+</sup> | 分布式输入输出设备。&nbsp;此接口为系统接口。 | 
 
-具体接口说明请参考API文档：AudioRoutingManager。
+具体接口说明请参考API文档：[AudioRoutingManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioRoutingManager.md)。
 
 ### 投播所有音频
 
-1. 获取输出设备信息。
+1. [获取输出设备信息](audio-output-device-management.md#获取输出设备信息)。
 
 2. 创建AudioDeviceDescriptor对象，用于指定音频输出设备。
 
@@ -70,7 +70,7 @@ async function exampleSelectOutputDevice(): Promise<void> {
 
 ### 投播指定音频流
 
-1. 获取输出设备信息。
+1. [获取输出设备信息](audio-output-device-management.md#获取输出设备信息)。
 
 2. 创建AudioRendererFilter对象，通过uid指定应用，通过rendererId指定音频流。
 

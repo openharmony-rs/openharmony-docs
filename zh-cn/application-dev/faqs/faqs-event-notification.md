@@ -109,7 +109,7 @@ struct Faq10_1 {
 
 **参考链接**
 
-公共事件模块
+[公共事件模块](../reference/apis-basic-services-kit/js-apis-commonEventManager.md)
 
 ## 如何让事件只在一个UIAbility实例中传递(API 9)
 
@@ -149,7 +149,7 @@ import UIAbility from '@ohos.app.ability.UIAbility';
 
 **参考链接**
 
-使用EventHub进行数据
+[使用EventHub进行数据](../application-models/uiability-data-sync-with-ui.md#使用eventhub进行数据通信)
 
 
 ## 如何实现点击Notification通知打开App功能(API 9)
@@ -193,7 +193,7 @@ async function publishNotification() {
 
 **参考链接**
 
-Notification、WantAgent
+[Notification](../reference/apis-notification-kit/js-apis-notificationManager.md)、[WantAgent](../reference/apis-ability-kit/js-apis-app-ability-wantAgent.md)
 
 
 ## 调用notificationManager.publish发布通知失败(API 9)
@@ -206,6 +206,6 @@ Notification、WantAgent
 
 发布通知时，需要在真机端系统设置中，开启对应应用的通知开关，然后才能在通知栏中看到发布的通知。
 
-手动开启步骤：设置&gt; 通知和状态栏&gt; 应用名称&gt; 允许通知。
+手动开启步骤：设置 &gt; 通知和状态栏 &gt; 应用名称 &gt; 允许通知。
 
 也可通过接口notificationManager.requestEnableNotification()来弹窗让用户授权（仅弹一次）。

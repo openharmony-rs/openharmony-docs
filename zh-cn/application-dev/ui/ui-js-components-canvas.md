@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-Canvas组件提供画布，用于自定义绘制图形。具体用法请参考CanvasRenderingContext2D对象。
+Canvas组件提供画布，用于自定义绘制图形。具体用法请参考[CanvasRenderingContext2D对象](../reference/apis-arkui/arkui-js/js-components-canvas-canvasrenderingcontext2d.md)。
 
 
 ## 创建Canvas组件
@@ -39,7 +39,7 @@ canvas {
 }
 ```
 
-canvas-Component
+![canvas-Component](figures/canvas-Component.png)
 
 > **说明：**
 > - Canvas组件默认背景色与父组件的背景色一致。
@@ -79,7 +79,7 @@ canvas {
 }
 ```
 
-Adding-Styles
+![Adding-Styles](figures/Adding-Styles.png)
 
 
 ## 添加事件
@@ -88,7 +88,7 @@ Canvas添加长按事件，长按后可获取Canvas组件的dataUrl值（toDataU
 
 > **说明：** 
 >
-> promptAction相关接口参考弹窗。
+> promptAction相关接口参考[弹窗](../reference/apis-arkui/js-apis-promptAction.md)。
 
 
 ```html
@@ -152,7 +152,7 @@ export default {
 }
 ```
 
-Adding-Events
+![Adding-Events](figures/Adding-Events.gif)
 
 > **说明：** 
 >
@@ -162,6 +162,6 @@ Adding-Events
 
 针对Canvas开发，有以下相关实例可供参考：
 
-- 自定义抽奖转盘（JS）（API9）
+- [自定义抽奖转盘（JS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/JSUI/JSCanvasComponent)
 
-- 图片编辑（JS）（API9）
+- [图片编辑（JS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/Media/ImageEditorTemplate)

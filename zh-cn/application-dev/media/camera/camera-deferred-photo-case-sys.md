@@ -6,21 +6,21 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-在开发相机应用时，需要先申请相关权限。
+在开发相机应用时，需要先[申请相关权限](camera-preparation.md)。
 
 当前示例提供完整的高性能拍照流程介绍，方便开发者了解完整的接口调用顺序。
 
-在参考以下示例前，建议开发者查看高性能拍照(仅对系统应用开放)(ArkTS)的具体章节，了解设备输入、会话管理、拍照等单个流程。
+在参考以下示例前，建议开发者查看[高性能拍照(仅对系统应用开放)(ArkTS)](camera-deferred-photo-sys.md)的具体章节，了解[设备输入](camera-device-input.md)、[会话管理](camera-session-management.md)、[拍照](camera-shooting.md)等单个流程。
 
 ## 开发流程
 
 在获取到相机支持的输出流能力后，开始创建拍照流，开发流程如下。
 
-deferred-photo-development-process
+![deferred-photo-development-process](figures/deferred-photo-development-process.png)
 
 ## 完整示例
 
-Context获取方式请参考：获取UIAbility的上下文信息。
+Context获取方式请参考：[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 ```ts
 import { camera } from '@kit.CameraKit';
@@ -336,7 +336,7 @@ async function deferredPhotoCase(context: Context, surfaceId: string): Promise<v
     }
   }
 
-  // 判断是否支持连续自动变焦模式。
+  // 判断是否支持连续自动对焦模式。
   let focusModeStatus: boolean = false;
   try {
     let status: boolean = photoSession.isFocusModeSupported(camera.FocusMode.FOCUS_MODE_CONTINUOUS_AUTO);
@@ -347,7 +347,7 @@ async function deferredPhotoCase(context: Context, surfaceId: string): Promise<v
   }
 
   if (focusModeStatus) {
-    // 设置连续自动变焦模式。
+    // 设置连续自动对焦模式。
     try {
       photoSession.setFocusMode(camera.FocusMode.FOCUS_MODE_CONTINUOUS_AUTO);
     } catch (error) {

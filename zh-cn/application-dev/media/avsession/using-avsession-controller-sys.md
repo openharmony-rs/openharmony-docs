@@ -1,8 +1,8 @@
 # 媒体会话控制方（仅对系统应用开放）
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @devil_red-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -25,7 +25,7 @@ OpenHarmony系统预置的播控中心，作为媒体会话控制方与音视频
 
 异步的JavaScript接口返回值有callback和promise两种返回形式。promise和callback只是返回值方式不一样，功能相同。
 
-更多API说明请参见@ohos.multimedia.avsession (媒体会话管理)的模块描述。
+更多API说明请参见@ohos.multimedia.avsession (媒体会话管理)的[模块描述](../../reference/apis-avsession-kit/arkts-apis-avsession.md)。
 
 ### 直接通过AVSessionManager调用的接口
 
@@ -388,4 +388,4 @@ OpenHarmony系统预置的播控中心，作为媒体会话控制方与音视频
 
 针对媒体会话控制方开发，有以下相关实例可供参考：
 
-- 媒体会话——控制方（仅对系统应用开放）（ArkTS）（Full SDK）（API10）
+- [媒体会话——控制方（仅对系统应用开放）（ArkTS）（Full SDK）（API10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/Media/AVSession/MediaController)

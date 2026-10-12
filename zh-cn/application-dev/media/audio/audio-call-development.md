@@ -20,9 +20,9 @@
 
 ### 生效方式
 
-- 播放对端声音时，`AudioRendererInfo`中的`usage`需设置为STREAM_USAGE_VOICE_COMMUNICATION或者STREAM_USAGE_VIDEO_COMMUNICATION，用于标识VoIP语音通话播放流。该类型的播放流起播时，会触发开启3A算法。
-- 录制本端声音时，`AudioCapturerInfo`中的`source`需设置为SOURCE_TYPE_VOICE_COMMUNICATION，用于标识语音通话采集流。
-- 播放和录制具体开发流程见下文音频通话功能。
+- 播放对端声音时，`AudioRendererInfo`中的`usage`需设置为[STREAM_USAGE_VOICE_COMMUNICATION](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)或者[STREAM_USAGE_VIDEO_COMMUNICATION](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)，用于标识VoIP语音通话播放流。该类型的播放流起播时，会触发开启3A算法。
+- 录制本端声音时，`AudioCapturerInfo`中的`source`需设置为[SOURCE_TYPE_VOICE_COMMUNICATION](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8)，用于标识语音通话采集流。
+- 播放和录制具体开发流程见下文[音频通话功能](audio-call-development.md#音频通话功能)。
 
 ### 注意事项
 
@@ -33,17 +33,17 @@
 
 ## 音频通话功能
 
-在音频通话开始和结束时，应用可以自行检查当前的音频场景模式和铃声模式，以便采取合适的音频管理及提示策略。
+在音频通话开始和结束时，应用可以自行检查当前的[音频场景模式](audio-call-overview.md#音频场景模式)和[铃声模式](audio-call-overview.md#铃声模式)，以便采取合适的音频管理及提示策略。
 
 以下代码示范了同时使用AudioRenderer和AudioCapturer实现音频通话功能的基本过程，其中未包含音频通话数据的传输过程，实际开发中，需要将网络传输来的对端通话数据解码播放，此处仅以读取音频文件的数据代替；同时需要将本端录制的通话数据编码打包，通过网络发送给对端，此处仅以将数据写入音频文件代替。
 
-示例为片段代码，可通过点击示例代码右下方的链接获取完整示例。
+示例为片段代码，可通过点击示例代码右下方的链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/VoipCallSampleJS)。
 
 ### 使用AudioRenderer播放对端的通话声音
 
-该过程与使用AudioRenderer开发音频播放功能(ArkTS)过程相似，关键区别在于audioRendererInfo参数和音频数据来源。audioRendererInfo参数中，音频流使用类型usage需设置为VoIP通话：STREAM_USAGE_VOICE_COMMUNICATION。
+该过程与[使用AudioRenderer开发音频播放功能(ArkTS)](using-audiorenderer-for-playback.md)过程相似，关键区别在于audioRendererInfo参数和音频数据来源。audioRendererInfo参数中，音频流使用类型usage需设置为VoIP通话：STREAM_USAGE_VOICE_COMMUNICATION。
 
-<!-- @all_VoIPDemoForAudioRenderer -->   
+<!-- @[all_VoIPDemoForAudioRenderer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/VoipCallSampleJS/entry/src/main/ets/pages/VoIpDemoForAudioRenderer.ets) -->  
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit'; // 导入audio模块。
@@ -93,11 +93,11 @@ async function initArguments(context: common.UIAbilityContext) {
     try {
       let bufferLength = fs.readSync(file.fd, buffer, options);
       bufferSize += buffer.byteLength;
-      // 如果当前回调传入的数据不足一帧，空白区域需要使用静音数据填充,否则会导致播放出现杂音。
+      // 如果当前回调传入的数据不足一帧，空白区域需要使用静音数据填充，否则会导致播放出现杂音。
       if (bufferLength < buffer.byteLength) {
         let view = new DataView(buffer);
         for (let i = bufferLength; i < buffer.byteLength; i++) {
-          // 空白区域填充静音数据。当使用音频采样格式为SAMPLE_FORMAT_U8时0x7F为静音数据，使用其他采样格式时0为静音数据。
+          // 空白区域填充静音数据。当使用音频采样格式为SAMPLE_FORMAT_U8时0x80为静音数据，使用其他采样格式时0为静音数据。本示例采样格式为SAMPLE_FORMAT_S16LE，因此静音数据填充0。
           view.setUint8(i, 0);
         }
       }
@@ -133,7 +133,7 @@ async function init() {
         audioRenderer.on('writeData', writeDataCallback);
       }
     } else {
-      console.info(`${TAG}: creating AudioRenderer failed, error: ${err.message}`);
+      console.error(`${TAG}: creating AudioRenderer failed, error: ${err.message}`);
       // ...
     }
   });
@@ -144,7 +144,7 @@ async function start() {
   if (audioRenderer !== undefined) {
     let stateGroup = [audio.AudioState.STATE_PREPARED, audio.AudioState.STATE_PAUSED, audio.AudioState.STATE_STOPPED];
     if (stateGroup.indexOf(audioRenderer.state.valueOf()) === -1) { // 当且仅当状态为prepared、paused和stopped之一时才能启动渲染。
-      console.error(TAG + 'start failed');
+      console.info(TAG + 'start failed');
       // ...
       return;
     }
@@ -209,7 +209,7 @@ async function stop() {
 // 销毁实例，释放资源。
 async function release() {
   if (audioRenderer !== undefined) {
-    // 渲染器状态不是released状态,才能release。
+    // 渲染器状态不是released状态，才能release。
     if (audioRenderer.state.valueOf() === audio.AudioState.STATE_RELEASED) {
       console.info('Renderer already released');
       // ...
@@ -232,11 +232,11 @@ async function release() {
 
 ### 使用AudioCapturer录制本端的通话声音
 
-该过程与使用AudioCapturer开发音频录制功能(ArkTs)过程相似，关键区别在于audioCapturerInfo参数和音频数据流向。audioCapturerInfo参数中音源类型source需设置为语音通话：SOURCE_TYPE_VOICE_COMMUNICATION。
+该过程与[使用AudioCapturer开发音频录制功能(ArkTs)](using-audiocapturer-for-recording.md)过程相似，关键区别在于audioCapturerInfo参数和音频数据流向。audioCapturerInfo参数中音源类型source需设置为语音通话：SOURCE_TYPE_VOICE_COMMUNICATION。
 
-所有录制均需要申请麦克风权限：ohos.permission.MICROPHONE，申请方式请参考向用户申请授权。
+所有录制均需要申请麦克风权限：ohos.permission.MICROPHONE，申请方式请参考[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
 
-<!-- @all_VoIPDemoForAudioCapturer -->   
+<!-- @[all_VoIPDemoForAudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/VoipCallSampleJS/entry/src/main/ets/pages/VoIpDemoForAudioCapturer.ets) -->  
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit'; // 导入audio模块。
@@ -313,7 +313,7 @@ async function start() {
     let stateGroup = [audio.AudioState.STATE_PREPARED, audio.AudioState.STATE_PAUSED, audio.AudioState.STATE_STOPPED];
     if (stateGroup.indexOf(audioCapturer.state.valueOf()) === -1) {
       // 当且仅当状态为STATE_PREPARED、STATE_PAUSED和STATE_STOPPED之一时才能启动采集。
-      console.error(`${TAG}: start failed`);
+      console.info(`${TAG}: start failed`);
       // ...
       return;
     }
@@ -359,7 +359,7 @@ async function stop() {
 // 销毁实例，释放资源。
 async function release() {
   if (audioCapturer !== undefined) {
-    // 采集器状态不是STATE_RELEASED或STATE_NEW状态,才能release。
+    // 采集器状态不是STATE_RELEASED或STATE_NEW状态，才能release。
     if (audioCapturer.state.valueOf() === audio.AudioState.STATE_RELEASED ||
       audioCapturer.state.valueOf() === audio.AudioState.STATE_NEW) {
       console.info('Capturer already released');

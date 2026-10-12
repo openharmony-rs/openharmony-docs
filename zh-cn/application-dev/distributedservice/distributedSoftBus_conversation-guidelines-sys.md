@@ -14,7 +14,7 @@
 
 跨设备智能体唤醒与消息传输的完整流程如下图所示，通过该流程实现用户意图的跨设备精准执行：
 
-conversation-process
+![conversation-process](figures/conversation-process.png)
 
 应用通过注册会话监听器，可以接收来自其他设备的消息；通过发送会话数据接口，可以向指定设备的目标Ability发送消息。整个通信过程依赖于设备的networkId或UDID进行寻址，确保消息能够准确投递到目标设备的目标应用。
 
@@ -24,7 +24,7 @@ conversation-process
 - 不同设备间只有相同`bundleName`的应用才能进行消息交互。
 - 目标设备必须是同账号可信设备。
 - 支持系统原生的快速设备唤醒能力，近距离打开蓝牙、Wi-Fi，且Wi-Fi连接同一局域网。
-- 该能力从API版本 26.1.0开始支持。
+- 该能力从API版本 26.0.1开始支持。
 
 ## 环境准备
 
@@ -34,14 +34,14 @@ conversation-process
 
 ### 搭建环境
 
-1. 在开发PC上安装DevEco Studio，版本要求在4.1及以上。
-2. 将public-SDK更新到API 26.1.0或以上，具体操作参见更新指南。
+1. 在开发PC上安装[DevEco Studio](https://developer.huawei.com/consumer/cn/download)，版本要求在4.1及以上。
+2. 将public-SDK更新到API 26.0.1或以上，具体操作参见[更新指南](../tools/openharmony-sdk-upgrade-assistant.md)。
 3. 用USB线缆将两台调试设备（设备A和设备B）连接到开发PC。
 4. 确保两台设备已开启网络连接，并登录相同账号。
 
 ## 接口说明
 
-常用接口说明如下表。具体接口说明详见API参考：@ohos.distributedSoftBus.conversation。
+常用接口说明如下表。具体接口说明详见API参考：[@ohos.distributedSoftBus.conversation](../reference/apis-distributedservice-kit/js-apis-conversation-sys.md)。
 
 | 接口名                                      | 功能描述                                                                                               |
 | ------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
@@ -52,15 +52,15 @@ conversation-process
 
 ## 分布式软总线会话开发指导
 
-- 接收端调用registerConversationListener()接口注册会话监听器，监听来自可信设备的数据。
-- 发送端调用getTrustedDevices()接口获取可信设备列表，选择目标设备后调用postConversationData()接口发送会话数据。
-- 不再需要接收数据时，调用unregisterConversationListener()接口注销会话监听器。
+- 接收端调用[registerConversationListener()接口](../reference/apis-distributedservice-kit/js-apis-conversation-sys.md#conversationregisterconversationlistener)注册会话监听器，监听来自可信设备的数据。
+- 发送端调用[getTrustedDevices()接口](../reference/apis-distributedservice-kit/js-apis-conversation-sys.md#conversationgettrusteddevices)获取可信设备列表，选择目标设备后调用[postConversationData()接口](../reference/apis-distributedservice-kit/js-apis-conversation-sys.md#conversationpostconversationdata)发送会话数据。
+- 不再需要接收数据时，调用[unregisterConversationListener()接口](../reference/apis-distributedservice-kit/js-apis-conversation-sys.md#conversationunregisterconversationlistener)注销会话监听器。
 
 ### 接收端开发指导
 
 1. 导入所需的模块。
 
-   <!-- @import_conversation -->
+   <!-- @[import_conversation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) -->
 
    ``` TypeScript
    import { conversation } from '@kit.DistributedServiceKit'
@@ -99,7 +99,7 @@ conversation-process
 
 3. 定义会话监听器回调函数。
 
-   <!-- @data_callback --> 
+   <!-- @[data_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    // 定义消息回调
@@ -117,7 +117,7 @@ conversation-process
 
 4. 注册会话监听器，接收来自可信设备的数据。
 
-   <!-- @register_listener --> 
+   <!-- @[register_listener](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    // 注册监听器
@@ -135,7 +135,7 @@ conversation-process
 
 5. 注销会话监听器。
 
-   <!-- @unregister_listener --> 
+   <!-- @[unregister_listener](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    // 注销监听器
@@ -155,7 +155,7 @@ conversation-process
 
 1. 导入所需的模块。
 
-   <!-- @import_conversation -->
+   <!-- @[import_conversation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) -->
 
    ``` TypeScript
    import { conversation } from '@kit.DistributedServiceKit'
@@ -194,7 +194,7 @@ conversation-process
 
 3. 获取可信设备列表，选择目标设备。
 
-   <!-- @get_trusted_devices --> 
+   <!-- @[get_trusted_devices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    // 获取受信任设备
@@ -220,7 +220,7 @@ conversation-process
 
 4. 向指定设备发送会话数据。
 
-   <!-- @send_message --> 
+   <!-- @[send_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedAppDev/DistributedSoftbusConversationDemo/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    // 发送消息

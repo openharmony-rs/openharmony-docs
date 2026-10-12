@@ -7,7 +7,7 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
-HiDebug ArkTS接口功能独立，需要获取调试信息时直接调用。具体调用方式请参考@ohos.hidebug中的示例。
+HiDebug ArkTS接口功能独立，需要获取调试信息时直接调用。具体调用方式请参考[@ohos.hidebug](../reference/apis-performance-analysis-kit/js-apis-hidebug.md)中的示例。
 
 ## 开发示例
 
@@ -18,28 +18,28 @@ HiDebug ArkTS接口功能独立，需要获取调试信息时直接调用。具�
 2. 在Project窗口单击entry > src > main > ets > pages，打开并编辑Index.ets文件：
 
    导入所需依赖：
-   <!-- @TestHidebugArk_Import -->
+   <!-- @[TestHidebugArk_Import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiDebugTool/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
    import { hidebug, hilog } from '@kit.PerformanceAnalysisKit';
    ```
    定义测试方法：
-   <!-- @TestHidebugArk_Function -->
+   <!-- @[TestHidebugArk_Function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiDebugTool/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    function testHiDebugArk() {  // 按照需要调用的接口实现
      try {
        hilog.info(0x0000, 'testTag', `getSystemCpuUsage: ${hidebug.getSystemCpuUsage()}`);
      } catch (error) {
-       hilog.info(0x0000, 'testTag', `error code: ${(error as BusinessError).code},
+       hilog.error(0x0000, 'testTag', `error code: ${(error as BusinessError).code},
          error msg: ${(error as BusinessError).message}`);
      }
    }
    ```
 
    添加按钮以触发接口调用：
-   <!-- @TestHidebugArk_Button -->
+   <!-- @[TestHidebugArk_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiDebugTool/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    Button('testHiDebugArk')

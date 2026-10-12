@@ -9,7 +9,7 @@
 即时反馈（Toast）是一种临时性的消息提示框，用于向用户显示简短的操作反馈或状态信息。​它通常在屏幕的底部或顶部短暂弹出，随后在一段时间后自动消失。即时反馈的主要目的是提供简洁、不打扰的信息反馈，避免干扰用户当前的操作流程。
 
 
-可以通过使用UIContext中的getPromptAction方法获取当前UI上下文关联的PromptAction对象，再通过该对象调用showToast创建并显示文本提示框。
+可以通过使用[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)中的[getPromptAction](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getpromptaction)方法获取当前UI上下文关联的[PromptAction](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md)对象，再通过该对象调用[showToast](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showtoast)创建并显示文本提示框。
 
 > **说明：** 
 >
@@ -19,7 +19,7 @@
 
  - 合理使用弹出场景，避免过度提醒用户。
 
-    可以针对以下常用场景使用即时反馈操作，例如，当用户执行某个操作时及时结果反馈，用来提示用户操作是否成功或失败；或是当应用程序的状态发生变化时提供状态更新等。
+    可以针对以下常用场景使用即时反馈操作，例如，当用户执行某个操作时及时给出结果反馈，用来提示用户操作是否成功或失败；或是当应用程序的状态发生变化时提供状态更新等。
 
  - 注意文本的信息密度，即时反馈展示时间有限，应当避免长文本的出现。
 
@@ -50,7 +50,7 @@
 | 是否避让软键盘 | 软键盘抬起时，必定上移软键盘的高度 | 软键盘抬起时，只有toast被遮挡时，才会避让，且避让后toast底部距离软键盘高度为80vp |
 | UIExtension内布局 | 以UIExtension为主窗中布局，对齐方式与UIExtension对齐 | 以宿主窗口为主窗中布局，对齐方式与宿主窗口对齐 |
 
-<!-- @toast_showDefaultAndTop --> 
+<!-- @[toast_showDefaultAndTop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Toast/DefaultAndTopToast.ets) --> 
 
 ``` TypeScript
 import { promptAction } from '@kit.ArkUI';
@@ -108,13 +108,13 @@ export struct DefaultAndTopToastExample {
 }
 ```
 
-defaultToast
+![defaultToast](figures/defaultToast.gif)
 
 ## 创建即时反馈
 
 适用于短时间内提示框自动消失的场景。
 
-<!-- @toast_create --> 
+<!-- @[toast_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Toast/CreateToast.ets) --> 
 
 ``` TypeScript
 import { PromptAction } from '@kit.ArkUI';
@@ -151,13 +151,13 @@ export struct CreateToastExample {
 }
 ```
 
-image
+![image](figures/UIToast1.gif)
 
 ## 显示和关闭即时反馈
 
 适用于提示框停留时间较长，用户操作可以提前关闭提示框的场景。
 
-<!-- @toast_openClose --> 
+<!-- @[toast_openClose](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Toast/OpenCloseToast.ets) --> 
 
 ``` TypeScript
 import { PromptAction } from '@kit.ArkUI';
@@ -213,6 +213,6 @@ export struct OpenCloseToastExample {
 }
 ```
 
-image
+![image](figures/UIToast.gif)
 
 

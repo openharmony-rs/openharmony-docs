@@ -7,11 +7,11 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-从API版本26.0.0开始，系统提供ModularObjectExtensionAbility（相关C API定义见modular_object_extension_ability.h）组件，支持应用将自身功能以模块化对象的形式开放给其他应用调用。本文将介绍如何实现ModularObjectExtensionAbility服务端和客户端。
+从API版本26.0.0开始，系统提供ModularObjectExtensionAbility（相关C API定义见[modular_object_extension_ability.h](../reference/apis-ability-kit/capi-modular-object-extension-ability-h.md)）组件，支持应用将自身功能以模块化对象的形式开放给其他应用调用。本文将介绍如何实现ModularObjectExtensionAbility服务端和客户端。
 
 > **说明**
 >
-> 有关模块化对象的介绍、基本概念和运行机制，请参考模块化对象模型概述 (C/C++)。
+> 有关模块化对象的介绍、基本概念和运行机制，请参考[模块化对象模型概述 (C/C++)](./modular-object-extension-overview.md)。
 
 ## 约束与限制
 
@@ -21,20 +21,20 @@ ModularObjectExtensionAbility组件当前仅支持PC/2in1设备。
 
 ### 规格限制
 
-- 客户端连接服务端时，客户端进程需要处于前台状态，服务端应用需要有正在运行的UIAbility或UIExtensionAbility实例。
+- 客户端连接服务端时，客户端进程需要处于前台状态，服务端应用需要有正在运行的[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)或[UIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md)实例。
 - 同一服务端应用下运行的Ability名称相同的ModularObjectExtensionAbility实例个数不能超过20个。
 - 同一客户端进程，针对同一服务端应用下Ability名称相同的ModularObjectExtensionAbility，最多创建5个连接。
-- 同一客户端应用，调用OH_AbilityRuntime_ConnectModularObjectExtensionAbility接口的频率不能超过20次每秒。
+- 同一客户端应用，调用[OH_AbilityRuntime_ConnectModularObjectExtensionAbility](../reference/apis-ability-kit/capi-modular-object-extension-manager-h.md#oh_abilityruntime_connectmodularobjectextensionability)接口的频率不能超过20次每秒。
 
 ## ModularObjectExtensionAbility配置说明
 
-ModularObjectExtensionAbility支持灵活的进程、线程模型以及其他属性配置，通过extensionAbilities标签中metadata设置。若metadata未配置或配置为无效值，则使用默认值。
+ModularObjectExtensionAbility支持灵活的进程、线程模型以及其他属性配置，通过[extensionAbilities标签](../quick-start/module-configuration-file.md#extensionabilities标签)中metadata设置。若metadata未配置或配置为无效值，则使用默认值。
 
 | 名称 | 说明 | 可选值 | 默认值 |
 | --- | --- | --- | --- |
 | launchMode | 启动模式。决定了ModularObjectExtensionAbility是否允许跨进程启动。 | IN_PROCESS：表示ModularObjectExtensionAbility将在客户端进程中启动。此模式下，客户端与目标Ability必须属于同一应用。<br/>CROSS_PROCESS：表示ModularObjectExtensionAbility允许跨进程启动。 | IN_PROCESS |
 | processMode | 进程模式。决定了多个ModularObjectExtensionAbility实例之间的进程共享策略，仅在launchMode配置为CROSS_PROCESS时生效。 | BUNDLE：表示同一应用下的所有ModularObjectExtensionAbility实例共享一个进程。<br/>TYPE：表示Ability名称相同的ModularObjectExtensionAbility实例共享一个进程。<br/>INSTANCE：表示每个ModularObjectExtensionAbility实例独占一个进程。 | BUNDLE |
-| threadMode | 线程模式。决定了IPC请求的执行线程。<br/>**说明：**<br/>需要使用OH_AbilityRuntime_ModObjExtensionContext_CreateIPCRemoteStub接口创建OHIPCRemoteStub，threadMode才能生效，否则IPC请求将在IPC工作线程池中执行。详见实现ModularObjectExtensionAbility服务端中实现IPC Stub部分。 | BUNDLE：表示同一应用下的所有ModularObjectExtensionAbility实例共享一个线程。<br/>TYPE：表示Ability名称相同的ModularObjectExtensionAbility实例共享一个线程。<br/>INSTANCE：表示每个ModularObjectExtensionAbility实例独占一个线程。 | BUNDLE |
+| threadMode | 线程模式。决定了IPC请求的执行线程。<br/>**说明：**<br/>需要使用[OH_AbilityRuntime_ModObjExtensionContext_CreateIPCRemoteStub](../reference/apis-ability-kit/capi-modular-object-extension-context-h.md#oh_abilityruntime_modobjextensioncontext_createipcremotestub)接口创建[OHIPCRemoteStub](../reference/apis-ipc-kit/capi-ohipcparcel-ohipcremotestub.md)，threadMode才能生效，否则IPC请求将在IPC工作线程池中执行。详见[实现ModularObjectExtensionAbility服务端](#实现modularobjectextensionability服务端)中实现IPC Stub部分。 | BUNDLE：表示同一应用下的所有ModularObjectExtensionAbility实例共享一个线程。<br/>TYPE：表示Ability名称相同的ModularObjectExtensionAbility实例共享一个线程。<br/>INSTANCE：表示每个ModularObjectExtensionAbility实例独占一个线程。 | BUNDLE |
 | isDisabled | 是否禁用该ExtensionAbility。 | true：禁用，只允许本应用连接该ExtensionAbility。<br/>false：不禁用，允许其他应用连接该ExtensionAbility。 | false |
 
 ## 实现ModularObjectExtensionAbility服务端
@@ -79,7 +79,7 @@ ModularObjectExtensionAbility支持灵活的进程、线程模型以及其他属
     )
     ```
 
-3. 在工程Module对应的module.json5配置文件中注册ModularObjectExtensionAbility，type标签需要设置为"modularObject"，srcEntry标签设置为CMakeLists.txt中配置的编译后的so库名称。
+3. 在工程Module对应的[module.json5配置文件](../quick-start/module-configuration-file.md)中注册ModularObjectExtensionAbility，type标签需要设置为"modularObject"，srcEntry标签设置为CMakeLists.txt中配置的编译后的so库名称。
 
     ```json5
     {
@@ -115,11 +115,11 @@ ModularObjectExtensionAbility支持灵活的进程、线程模型以及其他属
     }
     ```
 
-4. 实现IPC Stub。在cpp目录下分别创建icalculator.h、calculator_stub.h和calculator_stub.cpp文件，以下以实现一个计算器接口（Add方法）为例说明。推荐使用Taihe编译器工具生成，请参考使用Taihe实现ModularObjectExtensionAbility的IPC通信 (C/C++)。
+4. 实现IPC Stub。在cpp目录下分别创建icalculator.h、calculator_stub.h和calculator_stub.cpp文件，以下以实现一个计算器接口（Add方法）为例说明。推荐使用Taihe编译器工具生成，请参考[使用Taihe实现ModularObjectExtensionAbility的IPC通信 (C/C++)](./modular-object-extension-ability-taihe.md)。
 
     icalculator.h定义了接口类ICalculator，包含接口描述符、命令码和方法业务声明。服务端和客户端都需要包含此头文件。
 
-    <!-- @modular_object_extension_icalculator -->
+    <!-- @[modular_object_extension_icalculator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionService/entry/src/main/cpp/icalculator.h) -->
     
     ``` C
     class ICalculator {
@@ -138,7 +138,7 @@ ModularObjectExtensionAbility支持灵活的进程、线程模型以及其他属
 
     calculator_stub.h和calculator_stub.cpp继承ICalculator接口，负责创建OHIPCRemoteStub，并处理客户端发送的IPC请求。
 
-    <!-- @modular_object_extension_stub_header -->
+    <!-- @[modular_object_extension_stub_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionService/entry/src/main/cpp/calculator_stub.h) -->
     
     ``` C
     class CalculatorStub : public ICalculator {
@@ -162,7 +162,7 @@ ModularObjectExtensionAbility支持灵活的进程、线程模型以及其他属
     // ...
     ```
 
-    <!-- @modular_object_extension_stub_impl -->
+    <!-- @[modular_object_extension_stub_impl](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionService/entry/src/main/cpp/calculator_stub.cpp) -->
     
     ``` C++
     #include "calculator_stub.h"
@@ -226,9 +226,9 @@ ModularObjectExtensionAbility支持灵活的进程、线程模型以及其他属
     }
     ```
 
-5. 在cpp目录下创建moe_ability.cpp文件，实现OH_AbilityRuntime_OnNativeExtensionCreate入口函数，在该函数中获取ModularObjectExtensionAbility实例并注册生命周期回调。在OnConnect回调中，创建CalculatorStub并返回OHIPCRemoteStub对象。
+5. 在cpp目录下创建moe_ability.cpp文件，实现[OH_AbilityRuntime_OnNativeExtensionCreate](../reference/apis-ability-kit/capi-extension-ability-h.md#oh_abilityruntime_onnativeextensioncreate)入口函数，在该函数中获取ModularObjectExtensionAbility实例并注册生命周期回调。在OnConnect回调中，创建CalculatorStub并返回[OHIPCRemoteStub](../reference/apis-ipc-kit/capi-ohipcparcel-ohipcremotestub.md)对象。
 
-    <!-- @modular_object_extension_moe_ability -->
+    <!-- @[modular_object_extension_moe_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionService/entry/src/main/cpp/moe_ability.cpp) -->
     
     ``` C++
     // ...
@@ -306,7 +306,7 @@ ModularObjectExtensionAbility支持灵活的进程、线程模型以及其他属
 介绍客户端应用如何连接ModularObjectExtensionAbility，并与服务端通信。客户端可通过Proxy对象进行静态调用，也可通过ModularObjectDispatcher进行动态调用。
 
 ### 连接ModularObjectExtensionAbility
-<!-- @modular_object_extension_connect -->
+<!-- @[modular_object_extension_connect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionClient/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 static OHIPCRemoteProxy *g_remoteProxy = NULL;
@@ -366,9 +366,9 @@ static napi_value TestConnect(napi_env env, napi_callback_info info)
 
 ### 通过Proxy与服务端通信
 
-1. 创建calculator_proxy.h和calculator_proxy.cpp文件，实现CalculatorProxy类。CalculatorProxy继承服务端提供的ICalculator接口，并封装OHIPCRemoteProxy。同时在Add方法中将参数序列化并通过OHIPCRemoteProxy发送给服务端，接收服务端返回的结果并反序列化。推荐使用Taihe编译器工具生成，请参考使用Taihe实现ModularObjectExtensionAbility的IPC通信 (C/C++)。
+1. 创建calculator_proxy.h和calculator_proxy.cpp文件，实现CalculatorProxy类。CalculatorProxy继承服务端提供的ICalculator接口，并封装OHIPCRemoteProxy。同时在Add方法中将参数序列化并通过OHIPCRemoteProxy发送给服务端，接收服务端返回的结果并反序列化。推荐使用Taihe编译器工具生成，请参考[使用Taihe实现ModularObjectExtensionAbility的IPC通信 (C/C++)](./modular-object-extension-ability-taihe.md)。
 
-    <!-- @modular_object_extension_proxy_header -->
+    <!-- @[modular_object_extension_proxy_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionClient/entry/src/main/cpp/calculator_proxy.h) -->
     
     ``` C
     class CalculatorProxy : public ICalculator {
@@ -388,7 +388,7 @@ static napi_value TestConnect(napi_env env, napi_callback_info info)
     };
     // ...
     ```
-    <!-- @modular_object_extension_proxy_impl -->
+    <!-- @[modular_object_extension_proxy_impl](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionClient/entry/src/main/cpp/calculator_proxy.cpp) -->
     
     ``` C++
     #include "calculator_proxy.h"
@@ -434,7 +434,7 @@ static napi_value TestConnect(napi_env env, napi_callback_info info)
 
 2. 通过g_remoteProxy创建CalculatorProxy对象，并调用Add方法与服务端通信获取result。
 
-    <!-- @modular_object_extension_test_add -->
+    <!-- @[modular_object_extension_test_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionClient/entry/src/main/cpp/napi_init.cpp) -->
     
     ``` C++
     static OHIPCRemoteProxy *g_remoteProxy = NULL;
@@ -463,12 +463,12 @@ static napi_value TestConnect(napi_env env, napi_callback_info info)
 
 除了上述基于Proxy的静态调用方式外，客户端还可以通过ModularObjectDispatcher实现动态调用。静态调用方式需要在编译期依赖服务端的接口定义，而动态调用方式允许客户端在运行时查询服务端的类型库元数据，并通过方法名发起调用，无需编译期绑定。
 
-动态调用适用于运行时才能确定接口的场景，如通用脚本引擎、自动化测试框架和跨版本网关服务。完整开发流程请参考使用ModularObjectDispatcher实现动态接口调用 (C/C++)。
+动态调用适用于运行时才能确定接口的场景，如通用脚本引擎、自动化测试框架和跨版本网关服务。完整开发流程请参考[使用ModularObjectDispatcher实现动态接口调用 (C/C++)](./modular-object-dispatcher-development.md)。
 
 ### 断连ModularObjectExtensionAbility
 
-客户端通过OH_AbilityRuntime_DisconnectModularObjectExtensionAbility断开连接。断连成功后系统会触发OH_AbilityRuntime_ConnectOptions_OnDisconnectCallback回调，在回调中清理保存的g_remoteProxy。
-<!-- @modular_object_extension_disconnect -->
+客户端通过[OH_AbilityRuntime_DisconnectModularObjectExtensionAbility](../reference/apis-ability-kit/capi-modular-object-extension-manager-h.md#oh_abilityruntime_disconnectmodularobjectextensionability)断开连接。断连成功后系统会触发[OH_AbilityRuntime_ConnectOptions_OnDisconnectCallback](../reference/apis-ability-kit/capi-connect-options-h.md#oh_abilityruntime_connectoptions_ondisconnectcallback)回调，在回调中清理保存的g_remoteProxy。
+<!-- @[modular_object_extension_disconnect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionClient/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 static OHIPCRemoteProxy *g_remoteProxy = NULL;

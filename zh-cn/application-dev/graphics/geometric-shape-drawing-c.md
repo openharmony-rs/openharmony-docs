@@ -30,14 +30,14 @@
 
 ## 接口说明
 
-几何形状绘制的常用接口如下表所示，详细的使用和参数说明请见drawing_canvas.h、drawing_point.h、drawing_rect.h、drawing_path.h、drawing_region.h和drawing_round_rect.h。
+几何形状绘制的常用接口如下表所示，详细的使用和参数说明请见[drawing_canvas.h](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md)、[drawing_point.h](../reference/apis-arkgraphics2d/capi-drawing-point-h.md)、[drawing_rect.h](../reference/apis-arkgraphics2d/capi-drawing-rect-h.md)、[drawing_path.h](../reference/apis-arkgraphics2d/capi-drawing-path-h.md)、[drawing_region.h](../reference/apis-arkgraphics2d/capi-drawing-region-h.md)和[drawing_round_rect.h](../reference/apis-arkgraphics2d/capi-drawing-round-rect-h.md)。
 
 | 接口 | 描述 |
 | -------- | -------- |
 | OH_Drawing_Point\* OH_Drawing_PointCreate(float x, float y) | 用于创建一个坐标点对象。 |
 | OH_Drawing_ErrorCode OH_Drawing_CanvasDrawPoint(OH_Drawing_Canvas \*canvas, const OH_Drawing_Point2D \*point) | 用于画一个点。 |
 | OH_Drawing_Rect\* OH_Drawing_RectCreate(float left, float top, float right, float bottom) | 用于创建一个矩形对象。 |
-| void OH_Drawing_CanvasDrawArc(OH_Drawing_Canvas \*canvas, const OH_Drawing_Rect \*rect, float startAngle, float sweepAngle) | 用于画一个弧。 |
+| void OH_Drawing_CanvasDrawArc(OH_Drawing_Canvas \*canvas, const OH_Drawing_Rect \*rect, float startAngle, float sweepAngle) | 用于画一个圆弧。 |
 | void OH_Drawing_CanvasDrawCircle(OH_Drawing_Canvas \*canvas, const OH_Drawing_Point \*point, float radius) | 用于画一个圆形。 |
 | OH_Drawing_Path\* OH_Drawing_PathCreate(void) | 用于创建一个路径对象。 |
 | void OH_Drawing_CanvasDrawPath(OH_Drawing_Canvas \*canvas, const OH_Drawing_Path \*path) | 用于画一个自定义路径。 |
@@ -50,11 +50,11 @@
 
 ## 绘制点
 
-点只能基于画笔在画布上进行绘制，通过使用OH_Drawing_CanvasDrawPoint()接口绘制点。接口接受两个参数，一个是画布对象Canvas，请确保已创建或获取得到画布Canvas，具体可见画布的获取与绘制结果的显示（C/C++）；另一个是要绘制的点的指针。
+点只能基于画笔在画布上进行绘制，通过使用OH_Drawing_CanvasDrawPoint()接口绘制点。接口接受两个参数，一个是画布对象Canvas，请确保已创建或获取得到画布Canvas，具体可见[画布的获取与绘制结果的显示（C/C++）](canvas-get-result-draw-c.md)；另一个是要绘制的点的指针。
 
 简单示例如下：
 
-<!-- @ndk_graphics_draw_point -->
+<!-- @[ndk_graphics_draw_point](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 ``` C++
 // 创建画笔对象
@@ -66,7 +66,6 @@ OH_Drawing_PenSetWidth(pen, 40);
 // 设置画布的画笔
 OH_Drawing_CanvasAttachPen(canvas, pen);
 // 绘制5个点
-AdaptationUtil* adaptationUtil = AdaptationUtil::GetInstance();
 OH_Drawing_Point2D point1 = {value200_, value200_};
 OH_Drawing_CanvasDrawPoint(canvas, &point1);
 OH_Drawing_Point2D point2 = {value400_, value400_};
@@ -87,14 +86,14 @@ OH_Drawing_PenDestroy(pen);
 效果如下：
 
 
-Drawing-Points
+![Drawing-Points](figures/Drawing-Points.png)
 
 
 ## 绘制圆弧
 
 可以使用画笔或画刷在画布上进行圆弧的绘制，通过使用OH_Drawing_CanvasDrawArc()接口绘制圆弧。使用接口需要传入4个参数，分别如下：
 
-- 需要画布对象Canvas，请确保已创建或获取得到画布Canvas，具体可见画布的获取与绘制结果的显示（C/C++）。
+- 需要画布对象Canvas，请确保已创建或获取得到画布Canvas，具体可见[画布的获取与绘制结果的显示（C/C++）](canvas-get-result-draw-c.md)。
 
 - 绘制圆弧还需要一个矩形，会以矩形的边为轮廓进行绘制。
 
@@ -104,7 +103,7 @@ Drawing-Points
 
 此处以使用画笔绘制圆弧为例，简单示例如下：
 
-<!-- @ndk_graphics_draw_arc -->
+<!-- @[ndk_graphics_draw_arc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 ``` C++
 // 创建画笔对象
@@ -128,14 +127,14 @@ OH_Drawing_RectDestroy(rect);
 
 效果如下：
 
-Drawing-Arc
+![Drawing-Arc](figures/Drawing-Arc.png)
 
 
 ## 绘制圆
 
 可以使用画笔或画刷在画布上进行圆的绘制，通过使用OH_Drawing_CanvasDrawCircle()接口绘制圆。使用接口需要传入3个参数，分别如下：
 
-- 需要画布对象Canvas，请确保已创建或获取得到画布Canvas，具体可见画布的获取与绘制结果的显示（C/C++）。
+- 需要画布对象Canvas，请确保已创建或获取得到画布Canvas，具体可见[画布的获取与绘制结果的显示（C/C++）](canvas-get-result-draw-c.md)。
 
 - 绘制圆还需要一个指向圆心点对象的指针，会以此点为圆心进行绘制。
 
@@ -143,7 +142,7 @@ Drawing-Arc
 
 此处以使用画笔绘制圆为例，简单示例如下：
 
-<!-- @ndk_graphics_draw_circle -->
+<!-- @[ndk_graphics_draw_circle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 ``` C++
 // 创建画笔对象
@@ -167,14 +166,14 @@ OH_Drawing_PointDestroy(point);
 
 效果如下：
 
-Drawing-a-Circle
+![Drawing-a-Circle](figures/Drawing-a-Circle.png)
 
 
 ## 绘制路径
 
 可以使用画笔或画刷在画布上进行路径的绘制，路径具体可以用于绘制直线、弧线、贝塞尔曲线等，也可以通过路径组合的方式组成其他复杂的形状。
 
-绘制路径的相关接口和实现如下，详细的使用和参数说明请见drawing_path。常用的接口如下：
+绘制路径的相关接口和实现如下，详细的使用和参数说明请见[drawing_path](../reference/apis-arkgraphics2d/capi-drawing-path-h.md)。常用的接口如下：
 
 1. 使用OH_Drawing_PathCreate()接口可以创建一个路径对象。
 
@@ -184,7 +183,7 @@ Drawing-a-Circle
 
 此处以使用画笔和画刷绘制五角星为例，示例如下：
 
-<!-- @ndk_graphics_draw_path -->
+<!-- @[ndk_graphics_draw_path](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 ``` C++
 // 创建画笔对象
@@ -237,18 +236,18 @@ OH_Drawing_PathDestroy(path);
 
 效果如下：
 
-Drawing-a-Path
+![Drawing-a-Path](figures/Drawing-a-Path.png)
 
 
 ## 绘制区域
 
-区域不是一个特定的形状，可以设置为指定的矩形或路径，也可以对两个区域进行组合操作。可以使用画笔或画刷在画布上进行区域的绘制。详细的API说明请参考drawing_region.h。
+区域不是一个特定的形状，可以设置为指定的矩形或路径，也可以对两个区域进行组合操作。可以使用画笔或画刷在画布上进行区域的绘制。详细的API说明请参考[drawing_region.h](../reference/apis-arkgraphics2d/capi-drawing-region-h.md)。
 
 目前支持设置矩形区域和路径区域，分别通过OH_Drawing_RegionSetRect()接口和OH_Drawing_RegionSetPath()接口来设置。
 
 此处以使用画刷绘制矩形的组合区域为例，示例如下：
 
-<!-- @ndk_graphics_draw_region -->
+<!-- @[ndk_graphics_draw_region](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 ``` C++
 // 创建画刷对象
@@ -266,7 +265,7 @@ OH_Drawing_Region *region2 = OH_Drawing_RegionCreate();
 OH_Drawing_Rect *rect2 = OH_Drawing_RectCreate(value300_, value300_, value900_, value900_);
 OH_Drawing_RegionSetRect(region2, rect2);
 // 两个矩形区域组合
-OH_Drawing_RegionOp(region1, region2, OH_Drawing_RegionOpMode::REGION_OP_MODE_XOR);
+OH_Drawing_RegionOp(region1, region2, REGION_OP_MODE_XOR);
 OH_Drawing_CanvasDrawRegion(canvas, region1);
 // 去除掉画布中的画刷
 OH_Drawing_CanvasDetachBrush(canvas);
@@ -280,7 +279,7 @@ OH_Drawing_RectDestroy(rect2);
 
 效果如下：
 
-Screenshot_20241206112505234
+![Screenshot_20241206112505234](figures/Screenshot_20241206112505234.jpg)
 
 
 ## 绘制矩形
@@ -289,7 +288,7 @@ Screenshot_20241206112505234
 
 简单示例如下：
 
-<!-- @ndk_graphics_draw_rect -->
+<!-- @[ndk_graphics_draw_rect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 ``` C++
 // 创建画刷对象
@@ -310,7 +309,7 @@ OH_Drawing_RectDestroy(rect);
 
 效果如下：
 
-draw-rect
+![draw-rect](figures/draw-rect.png)
 
 
 ## 绘制圆角矩形
@@ -325,7 +324,7 @@ draw-rect
 
 简单示例如下：
 
-<!-- @ndk_graphics_draw_round_rect -->
+<!-- @[ndk_graphics_draw_round_rect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 ``` C++
 // 创建画刷对象
@@ -352,12 +351,12 @@ OH_Drawing_RoundRectDestroy(roundRect);
 效果如下：
 
 
-Drawing-Rounded-Rectangle
+![Drawing-Rounded-Rectangle](figures/Drawing-Rounded-Rectangle.png)
 
 <!--RP1-->
 ## 相关实例
 
 针对Drawing(C/C++)的开发，有以下相关实例可供参考：
 
-- NDKGraphicsDraw (API20)
+- [NDKGraphicsDraw (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw)
 <!--RP1End-->

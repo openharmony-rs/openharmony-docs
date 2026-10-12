@@ -62,7 +62,7 @@ ArkWeb提供灵活控制Web组件深色模式的能力，支持独立于系统�
 
   **图1** color-scheme效果图
 
-  web-color-scheme
+  ![web-color-scheme](figures/arkweb_color_scheme.png)
 
 - prefers-color-scheme是CSS中的一个媒体查询功能，可以检测系统的主题颜色。网页开发者可以通过该特性，为不同的系统主题颜色定义不同的网页CSS样式，以适应用户的主题偏好。使用样例如下：
 
@@ -98,16 +98,16 @@ ArkWeb提供灵活控制Web组件深色模式的能力，支持独立于系统�
 
   **图2** prefers-color-scheme效果图
 
-  web-prefers-color-scheme
+  ![web-prefers-color-scheme](figures/arkweb_prefers_color_scheme.png)
 
 
 ## Web深色模式设置
 
-通过darkMode()接口可以配置Web深色模式，默认状态为关闭。应用可设置WebDarkMode.Auto，表示Web深色模式跟随系统设置。也可以手动设置WebDarkMode.On或WebDarkMode.Off来控制深色模式的开启与关闭。
+通过[darkMode()](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#darkmode9)接口可以配置Web深色模式，默认状态为关闭。应用可设置[WebDarkMode.Auto](../reference/apis-arkweb/arkts-basic-components-web-e.md#webdarkmode9)，表示Web深色模式跟随系统设置。也可以手动设置[WebDarkMode.On](../reference/apis-arkweb/arkts-basic-components-web-e.md#webdarkmode9)或[WebDarkMode.Off](../reference/apis-arkweb/arkts-basic-components-web-e.md#webdarkmode9)来控制深色模式的开启与关闭。
 
-设置WebDarkMode.On，或设置WebDarkMode.Auto并启用系统深色模式时，Web将进入深色模式。在深色模式下，Web会应用媒体查询@media(prefers-color-scheme: dark)中定义的深色样式。如果网页未定义深色样式，则保持原有样式。
+设置[WebDarkMode.On](../reference/apis-arkweb/arkts-basic-components-web-e.md#webdarkmode9)，或设置[WebDarkMode.Auto](../reference/apis-arkweb/arkts-basic-components-web-e.md#webdarkmode9)并启用系统深色模式时，Web将进入深色模式。在深色模式下，Web会应用媒体查询@media(prefers-color-scheme: dark)中定义的深色样式。如果网页未定义深色样式，则保持原有样式。
 
-若要使未适配深色模式的网页强制转换为深色样式，可以使用forceDarkAccess()接口开启强制深色模式。强制深色模式可以覆盖网页默认样式，转换网页背景和文字的颜色，以适应在深色模式下显示。强制深色模式无法保证所有颜色转换符合预期。
+若要使未适配深色模式的网页强制转换为深色样式，可以使用[forceDarkAccess()](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#forcedarkaccess9)接口开启强制深色模式。强制深色模式可以覆盖网页默认样式，转换网页背景和文字的颜色，以适应在深色模式下显示。强制深色模式无法保证所有颜色转换符合预期。
 
 在强制深色模式下，高亮度色值将被转换为适合低光环境的色值，低亮度色值则保持不变。具体色值转换算法沿用Chromium内核标准，随Chromium内核的更新迭代。色值转换只针对不支持深色配色方案的元素。如果网页全局声明支持深色配色方案，则整个网页的色值均不会被Web转换。
 
@@ -124,9 +124,9 @@ ArkWeb提供灵活控制Web组件深色模式的能力，支持独立于系统�
 | 开启 | 开启 | 支持深色 | 网页采用深色配色方案，并应用@media(prefers-color-scheme: dark)中定义的样式。 |
 | 开启 | 开启 | 不支持深色 | 根据算法转换网页高亮元素色值。若网页在@media(prefers-color-scheme: dark)中定义了样式，则会在该样式色值上进行转换。 |
 
-forceDarkAccess()接口仅在Web深色模式开启时生效。在下面的示例中，应用设置Web深色模式跟随系统。系统开启深色模式时，Web进入强制深色模式。
+[forceDarkAccess()](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#forcedarkaccess9)接口仅在Web深色模式开启时生效。在下面的示例中，应用设置Web深色模式跟随系统。系统开启深色模式时，Web进入强制深色模式。
 
-<!-- @force_the_page_to_be_configured_to_dark_mode -->
+<!-- @[force_the_page_to_be_configured_to_dark_mode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/DarkMode_two.ets) -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -176,16 +176,16 @@ darkModePage.html页面在深色模式关闭、深色模式开启及强制深色
 
 **图3** Web深色模式和强制深色模式效果图
 
-web-dark-mode
+![web-dark-mode](figures/arkweb_dark_mode.png)
 
 ## Web组件背景色适配
 
 Web组件发生旋转或大小改变等事件时，Web网页尺寸改变，变化过程中可能会漏出Web组件的背景色。深色模式下，建议将Web组件背景色置为黑色，与网页背景保持一致，以提升用户体验。
 
-Web组件背景色可通过backgroundColor()设置。未设置背景色时，Web组件默认背景色为白色。仅当强制深色模式下，默认背景色变为黑色。未开启强制深色模式时，可通过以下方法进行适配。
+Web组件背景色可通过[backgroundColor()](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)设置。未设置背景色时，Web组件默认背景色为白色。仅当强制深色模式下，默认背景色变为黑色。未开启强制深色模式时，可通过以下方法进行适配。
 
-- 应用侧设置WebDarkMode.On和WebDarkMode.Off控制深色模式开启和关闭时，背景色跟随深色模式开启和关闭状态改变。
-  <!-- @set_web_background_color -->
+- 应用侧设置[WebDarkMode.On](../reference/apis-arkweb/arkts-basic-components-web-e.md#webdarkmode9)和[WebDarkMode.Off](../reference/apis-arkweb/arkts-basic-components-web-e.md#webdarkmode9)控制深色模式开启和关闭时，背景色跟随深色模式开启和关闭状态改变。
+  <!-- @[set_web_background_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/DarkMode_three.ets) -->
   
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
@@ -206,8 +206,8 @@ Web组件背景色可通过backgroundColor()设置。未设置背景色时，Web
   }
   ```
 
-- 应用侧设置WebDarkMode.Auto跟随系统深色模式时，监听系统设置，背景色跟随系统改变。
-  <!-- @set_web_darkmode_auto -->
+- 应用侧设置[WebDarkMode.Auto](../reference/apis-arkweb/arkts-basic-components-web-e.md#webdarkmode9)跟随系统深色模式时，监听系统设置，背景色跟随系统改变。
+  <!-- @[set_web_darkmode_auto](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/entryability/EntryAbility.ets) -->
   
   ``` TypeScript
   import { window } from '@kit.ArkUI';
@@ -231,7 +231,7 @@ Web组件背景色可通过backgroundColor()设置。未设置背景色时，Web
   }
   ```
   <!-- -->
-  <!-- @set_web_darkmode_auto -->
+  <!-- @[set_web_darkmode_auto](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/SetBasicAttrsEvts/SetBasicAttrsEvtsOne/entry/src/main/ets/pages/DarkMode_Four.ets) -->
   
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
@@ -276,9 +276,9 @@ Web组件背景色可通过backgroundColor()设置。未设置背景色时，Web
 
 网页未切换为深色样式的原因有多种，可以按以下步骤排查：
 
-1. 检查Web是否开启深色模式。Web深色模式接口darkMode()默认状态为关闭，需显式声明为WebDarkMode.On或WebDarkMode.Auto，才能开启深色模式。
+1. 检查Web是否开启深色模式。Web深色模式接口[darkMode()](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#darkmode9)默认状态为关闭，需显式声明为[WebDarkMode.On](../reference/apis-arkweb/arkts-basic-components-web-e.md#webdarkmode9)或[WebDarkMode.Auto](../reference/apis-arkweb/arkts-basic-components-web-e.md#webdarkmode9)，才能开启深色模式。
 
-2. Web已开启深色模式时，检查网页是否定义深色样式。网页的深色样式需要网页开发者适配。如果未定义深色样式，即使Web开启深色模式，网页样式也会保持不变。若需强制适配，可以使用forceDarkAccess()接口开启强制深色模式。
+2. Web已开启深色模式时，检查网页是否定义深色样式。网页的深色样式需要网页开发者适配。如果未定义深色样式，即使Web开启深色模式，网页样式也会保持不变。若需强制适配，可以使用[forceDarkAccess()](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#forcedarkaccess9)接口开启强制深色模式。
 
 3. Web已开启强制深色模式时，检查网页是否声明支持深色配色方案。通过color-scheme声明支持深色配色方案的网页，在强制深色模式下色值不会被Web转换。同时，如果网页内元素自定义了颜色样式，则不会被color-scheme影响。因此表现为网页样式未切换为深色样式。此时，需要网页开发者进行适配修改。
 
@@ -300,4 +300,4 @@ Web组件未开启深色模式，但Web网页背景变深。
 
 **解决措施**
 
-Web网页未设置背景颜色，或者设置背景颜色透明时，会呈现Web组件的背景颜色。因此出现该问题时，可排查Web组件是否设置了深色的backgroundColor()。
+Web网页未设置背景颜色，或者设置背景颜色透明时，会呈现Web组件的背景颜色。因此出现该问题时，可排查Web组件是否设置了深色的[backgroundColor()](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)。

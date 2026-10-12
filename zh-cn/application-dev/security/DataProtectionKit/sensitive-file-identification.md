@@ -18,7 +18,7 @@ Data Protection Kit为应用提供了识别文件中是否存在敏感内容的�
 ## 开发步骤
  
 1. 导入模块。 
-    <!-- @dlp_include_identifySensitiveContent -->
+    <!-- @[dlp_include_identifySensitiveContent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     import { identifySensitiveContent } from '@kit.DataProtectionKit';
@@ -30,9 +30,9 @@ Data Protection Kit为应用提供了识别文件中是否存在敏感内容的�
  
     2.2 设置待识别的文件物理路径和用于识别敏感内容的策略数组。
  
-    2.3 调用identifySensitiveContent.scanFile，根据设置的策略，识别指定文件中的敏感内容，返回识别的结果数组，包含匹配的敏感标签、匹配内容及匹配数量。
+    2.3 调用[identifySensitiveContent.scanFile](../../reference/apis-data-protection-kit/js-apis-identifySensitiveContent.md#identifysensitivecontentscanfile)，根据设置的策略，识别指定文件中的敏感内容，返回识别的结果数组，包含匹配的敏感标签、匹配内容及匹配数量。
  
-    <!-- @dlp_scanSensitiveInfo -->
+    <!-- @[dlp_scanSensitiveInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     scanSensitiveInfo() {
@@ -68,5 +68,5 @@ Data Protection Kit为应用提供了识别文件中是否存在敏感内容的�
 **问题描述**：调用scanFile扫描敏感内容时报错。
  
 **解决方法**：
-- 确认文件路径是否正确，例如：路径是否存在、路径是否是物理路径。
+- 确认文件路径是否正确，例如：路径是否存在、路径是否为物理路径。
 - 确认策略配置格式是否正确，例如：正则表达式是否正确、策略内容长度是否超上限。

@@ -11,23 +11,23 @@
 
 | V1装饰器名称/场景 | V2装饰器名称 |
 | -------- | -------- |
-| 滚动组件场景 | makeObserved |
-| Modifier | makeObserved、\@ObservedV2、\@Trace |
+| 滚动组件场景 | [makeObserved](./arkts-new-makeObserved.md) |
+| [Modifier](../arkts-user-defined-modifier.md) | [makeObserved](./arkts-new-makeObserved.md)、[\@ObservedV2](./arkts-new-observedV2-and-trace.md)、[\@Trace](./arkts-new-observedV2-and-trace.md) |
 
 
 ## 滚动组件
 
 ### List
 
-开发者可以通过ChildrenMainSize来设置List的子组件在主轴方向的大小信息。
+开发者可以通过[ChildrenMainSize](../../reference/apis-arkui/arkui-ts/ts-container-list.md#childrenmainsize12)来设置[List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)的子组件在主轴方向的大小信息。
 
 V1：
 
-在状态管理V1中，可以通过@State装饰观察其api调用。
+在状态管理V1中，可以通过[@State](./arkts-state.md)装饰观察其api调用。
 
 具体示例如下：
 
-<!-- @Internal_Other_Migrations_List_V1 -->
+<!-- @[Internal_Other_Migrations_List_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalOtherMigrationsListV1.ets) -->
 
 ``` TypeScript
 @Entry
@@ -67,11 +67,11 @@ struct ListExample {
 
 V2：
 
-在状态管理V2中，@Local只能观察本身的变化，无法观察第一层的变化，而由于ChildrenMainSize定义在List组件框架中，开发者无法使用@Trace来标注ChildrenMainSize属性。可以使用makeObserved替代。从API version 22开始，可以无需使用makeObserved，直接使用\@Local标注的ChildrenMainSize设置List的子组件在主轴方向的大小信息。
+在状态管理V2中，[@Local](./arkts-new-local.md)只能观察本身的变化，无法观察第一层的变化，而由于ChildrenMainSize定义在List组件框架中，开发者无法使用[@Trace](./arkts-new-observedV2-and-trace.md)来标注ChildrenMainSize属性。可以使用[makeObserved](./arkts-new-makeObserved.md)替代。从API version 22开始，可以无需使用makeObserved，直接使用\@Local标注的ChildrenMainSize设置List的子组件在主轴方向的大小信息。
 
 具体示例如下：
 
-<!-- @Internal_Other_Migrations_List_V2 -->
+<!-- @[Internal_Other_Migrations_List_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalOtherMigrationsListV2.ets) -->
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
@@ -115,7 +115,7 @@ struct ListExample {
 
 ### WaterFlow
 
-开发者可以通过WaterFlowSections来设置WaterFlow瀑布流分组信息。
+开发者可以通过[WaterFlowSections](../../reference/apis-arkui/arkui-ts/ts-container-waterflow.md#waterflowsections12)来设置WaterFlow瀑布流分组信息。
 
 需要注意的是，数组arr的长度需要与WaterFlowSections的所有SectionOptions的itemsCount总和一致，否则WaterFlow无法处理，导致UI不刷新。
 
@@ -123,11 +123,11 @@ struct ListExample {
 
 V1：
 
-在状态管理V1中，可以通过@State装饰观察其api调用。
+在状态管理V1中，可以通过[@State](./arkts-state.md)装饰观察其api调用。
 
 具体示例如下：
 
-<!-- @Internal_Other_Migrations_WaterFlow_V1 --> 
+<!-- @[Internal_Other_Migrations_WaterFlow_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalOtherMigrationsWaterFlowV1.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -207,11 +207,11 @@ struct WaterFlowSample {
 
 V2：
 
-在状态管理V2中，@Local只能观察本身的变化，无法观察第一层的变化，由于WaterFlowSections定义在框架中，开发者无法使用@Trace标注其属性，此时可以使用makeObserved替代。
+在状态管理V2中，[@Local](./arkts-new-local.md)只能观察本身的变化，无法观察第一层的变化，由于WaterFlowSections定义在框架中，开发者无法使用[@Trace](./arkts-new-observedV2-and-trace.md)标注其属性，此时可以使用[makeObserved](./arkts-new-makeObserved.md)替代。
 
 具体示例如下：
 
-<!-- @Internal_Other_Migrations_WaterFlow_V2 -->
+<!-- @[Internal_Other_Migrations_WaterFlow_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalOtherMigrationsWaterFlowV2.ets) -->
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
@@ -297,15 +297,15 @@ struct WaterFlowSample {
 
 ### attributeModifier
 
-开发者可以通过attributeModifier动态设置组件的属性方法。
+开发者可以通过[attributeModifier](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置组件的属性方法。
 
 V1：
 
-在状态管理V1中，可以通过@State装饰观察其变化。
+在状态管理V1中，可以通过[@State](./arkts-state.md)装饰观察其变化。
 
 具体示例如下：
 
-<!-- @Internal_attribute_Modifier_V1 --> 
+<!-- @[Internal_attribute_Modifier_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalattributeModifierV1.ets) --> 
 
 ``` TypeScript
 class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
@@ -344,11 +344,11 @@ struct AttributeDemo {
 
 V2：
 
-在状态管理V2中，@Local只能观察本身的变化，无法观察第一层的变化，如果要观察attributeModifier的属性变化，可以使用makeObserved替代。
+在状态管理V2中，[@Local](./arkts-new-local.md)只能观察本身的变化，无法观察第一层的变化，如果要观察attributeModifier的属性变化，可以使用[makeObserved](./arkts-new-makeObserved.md)替代。
 
 具体示例如下：
 
-<!-- @Internal_attribute_Modifier_V2 -->
+<!-- @[Internal_attribute_Modifier_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalattributeModifierV2.ets) -->
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
@@ -390,15 +390,15 @@ struct AttributeDemo {
 
 ### CommonModifier
 
-动态设置组件的属性类。以自定义Modifier为例。
+动态设置组件的属性类。以[自定义Modifier](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md#自定义modifier)为例。
 
 V1：
 
-在状态管理V1中，可以通过@State装饰观察其变化。
+在状态管理V1中，可以通过[@State](./arkts-state.md)装饰观察其变化。
 
 具体实例如下：
 
-<!-- @Internal_Common_Modifier_V1 --> 
+<!-- @[Internal_Common_Modifier_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalCommonModifierV1.ets) --> 
 
 ``` TypeScript
 import { CommonModifier } from '@kit.ArkUI';
@@ -464,11 +464,11 @@ struct Index {
 
 V2：
 
-在状态管理V2中，@Local只能观察本身的变化，无法观察第一层的变化，又因为自定义Modifier在框架内是通过其属性触发刷新，此时可以使用makeObserved替代。
+在状态管理V2中，[@Local](./arkts-new-local.md)只能观察本身的变化，无法观察第一层的变化，又因为[自定义Modifier](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md#自定义modifier)在框架内是通过其属性触发刷新，此时可以使用[makeObserved](./arkts-new-makeObserved.md)替代。
 
 具体示例如下：
 
-<!-- @Internal_Common_Modifier_V2 -->
+<!-- @[Internal_Common_Modifier_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalCommonModifierV2.ets) -->
 
 ``` TypeScript
 import { UIUtils, CommonModifier } from '@kit.ArkUI';
@@ -540,11 +540,11 @@ struct Index {
 
 V1：
 
-在状态管理V1中，可以通过@State装饰观察其变化。
+在状态管理V1中，可以通过[@State](./arkts-state.md)装饰观察其变化。
 
 具体示例如下：
 
-<!-- @Internal_Module_Modifier_V1 -->  
+<!-- @[Internal_Module_Modifier_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalModuleModifierV1.ets) -->  
 
 ``` TypeScript
 import { TextModifier } from '@kit.ArkUI';
@@ -619,11 +619,11 @@ struct Index {
 
 V2：
 
-但在状态管理V2中，@Local只能观察本身的变化，无法观察第一层的变化，此时可以使用makeObserved替代。
+但在状态管理V2中，[@Local](./arkts-new-local.md)只能观察本身的变化，无法观察第一层的变化，此时可以使用[makeObserved](./arkts-new-makeObserved.md)替代。
 
 具体示例如下：
 
-<!-- @Internal_Module_Modifier_V2 --> 
+<!-- @[Internal_Module_Modifier_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalModuleModifierV2.ets) --> 
 
 ``` TypeScript
 import { UIUtils, TextModifier } from '@kit.ArkUI';
@@ -699,13 +699,13 @@ struct Index {
 
 ### AttributeUpdater
 
-AttributeUpdater可以将属性直接设置给组件，无需标记为状态变量即可直接触发UI更新。
+[AttributeUpdater](../arkts-user-defined-extension-attributeUpdater.md)可以将属性直接设置给组件，无需标记为状态变量即可直接触发UI更新。
 
 V1：
 
 在状态管理V1中，开发者希望通过修改MyButtonModifier的flag来改变绑定在Button上的属性。由于状态管理V1的\@State装饰器支持自身及第一层对象属性的观察能力，因此只需用\@State装饰AttributeUpdater，即可监听其变化并触发属性更新。
 
-<!-- @Internal_Attribute_Updater_V1 -->
+<!-- @[Internal_Attribute_Updater_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalAttributeUpdaterV1.ets) -->
 
 ``` TypeScript
 // xxx.ets
@@ -755,7 +755,7 @@ V2：
 
 与状态管理V1不同，状态管理V2的\@Local仅观察自身变化，因此MyButtonModifier需添加\@ObservedV2装饰器，flag需要被\@Trace装饰，并且需要在组件创建过程中读取flag以建立其与Button组件的联系。在AttributeUpdater场景中，需在initializeModifier中读取flag（如示例所示），否则无法建立关联。
 
-<!-- @Internal_Attribute_Updater_V2 -->
+<!-- @[Internal_Attribute_Updater_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/internalmigrate/InternalAttributeUpdaterV2.ets) -->
 
 ``` TypeScript
 // xxx.ets

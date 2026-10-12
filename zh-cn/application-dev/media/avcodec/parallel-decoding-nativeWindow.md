@@ -107,14 +107,14 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
 5. 配置解码器。
 
-    具体开发指导请参考异步模式视频解码Surface模式“步骤-5：调用OH_VideoDecoder_Configure()配置解码器”。
+    具体开发指导请参考异步模式视频解码[Surface模式](video-decoding.md#surface模式)“步骤-5：调用OH_VideoDecoder_Configure()配置解码器”。
 
 6. 设置surface。
 
     在应用业务真正的surface消费端创建成功之前，可以先使用上面临时创建的消费端连接解码器。
 
     示例中的变量说明如下：
-    - videoDec：视频解码器实例的指针。创建方式可参考异步模式视频解码Surface模式“步骤-2：创建解码器实例对象”。
+    - videoDec：视频解码器实例的指针。创建方式可参考异步模式视频解码[Surface模式](video-decoding.md#surface模式)“步骤-2：创建解码器实例对象”。
 
     ```c++
 
@@ -126,7 +126,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
 7. 启动解码器。
 
-    具体开发指导请参考异步模式视频解码Surface模式“步骤-8：调用OH_VideoDecoder_Start()启动解码器”。
+    具体开发指导请参考异步模式视频解码[Surface模式](video-decoding.md#surface模式)“步骤-8：调用OH_VideoDecoder_Start()启动解码器”。
 
 
 8. 设置surface。
@@ -134,8 +134,8 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
     在应用业务真正的surface消费端创建成功后，可以调用OH_VideoDecoder_SetSurface接口，将解码输出重定向到新的surface上。
 
     本例中的nativeWindow，有两种方式获取：
-    1. 如果解码后直接显示，则从XComponent组件获取，获取方式请参考 XComponent；
-    2. 如果解码后接OpenGL后处理，则从NativeImage获取，获取方式请参考 NativeImage。
+    1. 如果解码后直接显示，则从XComponent组件获取，获取方式请参考 [XComponent](../../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)；
+    2. 如果解码后接OpenGL后处理，则从NativeImage获取，获取方式请参考 [NativeImage](../../graphics/native-image-guidelines.md)。
 
     ```c++
 

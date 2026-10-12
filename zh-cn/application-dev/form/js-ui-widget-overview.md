@@ -6,7 +6,7 @@
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
-JS卡片是使用类Web范式（HML+CSS+JSON）开发页面的卡片，现在已经支持FA模型和Stage模型两种应用模型。开发指导请参见JS卡片开发指导（Stage模型）和JS卡片开发指导（FA模型）。在开发新卡片时，推荐采用ArkTS声明式来构建UI，声明式和类Web范式差异点可参考ArkUI简介。
+JS卡片是使用类Web范式（HML+CSS+JSON）开发页面的卡片，现在已经支持FA模型和Stage模型两种[应用模型](../application-models/stage-model-development-overview.md)。开发指导请参见[JS卡片开发指导（Stage模型）](js-ui-widget-development.md)和[JS卡片开发指导（FA模型）](widget-development-fa.md)。在开发新卡片时，推荐采用ArkTS声明式来构建UI，声明式和类Web范式差异点可参考[ArkUI简介](../ui/arkui-overview.md)。
 
 ## 实现原理
 
@@ -14,7 +14,7 @@ JS卡片实现原理如图1所示。
 
 **图1** JS卡片实现原理
 
-JSCardPrinciple
+![JSCardPrinciple](figures/JSCardPrinciple.png)
 
 卡片使用方包含以下模块：
 

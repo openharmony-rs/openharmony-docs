@@ -37,7 +37,7 @@
 
 ### 接口说明
 
-裁剪操作常用接口如下表所示，详细的使用和参数说明请见drawing_canvas.h。
+裁剪操作常用接口如下表所示，详细的使用和参数说明请见[drawing_canvas.h](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md)。
 
 | 接口 | 描述 |
 | -------- | -------- |
@@ -49,10 +49,10 @@
 
 ### 开发示例
 
-此处以在画布上裁剪矩形为例给出示例和效果图，其他裁剪操作的逻辑基本相同，注意调用对应的接口并确保要裁剪的数据类型对应准确即可，此处不再一一展开。详细的使用和参数说明请见drawing_canvas.h。
+此处以在画布上裁剪矩形为例给出示例和效果图，其他裁剪操作的逻辑基本相同，注意调用对应的接口并确保要裁剪的数据类型对应准确即可，此处不再一一展开。详细的使用和参数说明请见[drawing_canvas.h](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md)。
 
 使用OH_Drawing_CanvasClipRect接口裁剪矩形。有以下四个入参：
-- 第一个参数是画布Canvas，裁剪操作将在这个画布上进行。请确保已创建或获取得到画布Canvas，具体可见画布的获取与绘制结果的显示（C/C++）。
+- 第一个参数是画布Canvas，裁剪操作将在这个画布上进行。请确保已创建或获取得到画布Canvas，具体可见[画布的获取与绘制结果的显示（C/C++）](canvas-get-result-draw-c.md)。
 
 - 第二个参数是要裁剪的矩形区域。
 
@@ -61,7 +61,7 @@
 - 第四个参数表示是否需要进行抗锯齿处理。
 
 
-<!-- @ndk_graphics_draw_canvas_clip -->
+<!-- @[ndk_graphics_draw_canvas_clip](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 ``` C++
 // 创建画刷对象
@@ -86,7 +86,7 @@ OH_Drawing_RectDestroy(rect);
 
 | 原始图 | 裁剪后的图 |
 | -------- | -------- |
-| Screenshot_20250120154655737 | Screenshot_20250118152812670 |
+| ![Screenshot_20250120154655737](figures/Screenshot_20250120154655737.jpg) | ![Screenshot_20250118152812670](figures/Screenshot_20250118152812670.jpg) |
 
 
 ## 矩阵变换操作
@@ -104,7 +104,7 @@ OH_Drawing_RectDestroy(rect);
 
 ### 接口说明
 
-矩阵变换操作常用接口如下表所示，详细的使用和参数说明请见drawing_canvas.h。
+矩阵变换操作常用接口如下表所示，详细的使用和参数说明请见[drawing_canvas.h](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md)。
 
 | 接口 | 描述 |
 | -------- | -------- |
@@ -120,7 +120,7 @@ OH_Drawing_RectDestroy(rect);
 
 简单示例和示意图如下所示：
 
-<!-- @ndk_graphics_draw_canvas_translation -->
+<!-- @[ndk_graphics_draw_canvas_translation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 ``` C++
 // 创建画刷对象
@@ -145,7 +145,7 @@ OH_Drawing_BrushDestroy(brush);
 
 | 原始图 | 平移后的效果图 |
 | -------- | -------- |
-| Original-Image3 | Translated-Image |
+| ![Original-Image3](figures/Original-Image3.png) | ![Translated-Image](figures/Translated-Image.png) |
 
 
 ### 旋转
@@ -154,7 +154,7 @@ OH_Drawing_BrushDestroy(brush);
 
 简单示例和示意图如下所示：
 
-<!-- @ndk_graphics_draw_canvas_rotation -->
+<!-- @[ndk_graphics_draw_canvas_rotation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 ``` C++
 // 创建画刷对象
@@ -179,7 +179,7 @@ OH_Drawing_BrushDestroy(brush);
 
 | 原始图 | 旋转后的效果图 |
 | -------- | -------- |
-| Original-Image1 | Rotated-Image |
+| ![Original-Image1](figures/Original-Image1.png) | ![Rotated-Image](figures/Rotated-Image.png) |
 
 
 ### 缩放
@@ -188,7 +188,7 @@ OH_Drawing_BrushDestroy(brush);
 
 简单示例和示意图如下所示：
 
-<!-- @ndk_graphics_draw_canvas_scale -->
+<!-- @[ndk_graphics_draw_canvas_scale](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 ``` C++
 // 创建画刷对象
@@ -213,7 +213,7 @@ OH_Drawing_BrushDestroy(brush);
 
 | 原始图 | 放大后的效果图 |
 | -------- | -------- |
-| Original-Image2 | Scaled-up-Image |
+| ![Original-Image2](figures/Original-Image2.png) | ![Scaled-up-Image](figures/Scaled-up-Image.png) |
 
 
 ## 画布状态保存与恢复
@@ -223,7 +223,7 @@ OH_Drawing_BrushDestroy(brush);
 
 ### 接口说明
 
-画布状态保存与恢复使用的接口如下表所示，详细的使用和参数说明请见drawing_canvas.h。
+画布状态保存与恢复使用的接口如下表所示，详细的使用和参数说明请见[drawing_canvas.h](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md)。
 
 | 接口 | 描述 |
 | -------- | -------- |
@@ -234,7 +234,7 @@ OH_Drawing_BrushDestroy(brush);
 
 ### 开发示例
 
-<!-- @ndk_graphics_draw_canvas_state_operation -->
+<!-- @[ndk_graphics_draw_canvas_state_operation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 ``` C++
 // 创建画笔对象
@@ -265,12 +265,12 @@ OH_Drawing_PointDestroy(point);
 OH_Drawing_MatrixDestroy(matrix);
 ```
 
-Development-example
+![Development-example](figures/Development-example.png)
 
 <!--RP1-->
 ## 相关实例
 
 针对Drawing(C/C++)的开发，有以下相关实例可供参考：
 
-- NDKGraphicsDraw (API20)
+- [NDKGraphicsDraw (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw)
 <!--RP1End-->

@@ -13,7 +13,7 @@
 
 ## 常用布局
 
-布局是UI的必要元素，它定义了组件在界面中的位置。ArkUI框架提供了多种布局方式，除了基础的线性布局（Row/Column）、层叠布局（Stack）、弹性布局（Flex）、相对布局（RelativeContainer）、栅格布局（GridCol）外，也提供了相对复杂的列表（List）、网格（Grid/GridItem）、轮播（Swiper）。
+布局是UI的必要元素，它定义了组件在界面中的位置。ArkUI框架提供了多种布局方式，除了基础的[线性布局](../ui/arkts-layout-development-linear.md)（[Row](../reference/apis-arkui/arkui-ts/ts-container-row.md)/[Column](../reference/apis-arkui/arkui-ts/ts-container-column.md)）、[层叠布局](../ui/arkts-layout-development-stack-layout.md)（[Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md)）、[弹性布局](../ui/arkts-layout-development-flex-layout.md)（[Flex](../reference/apis-arkui/arkui-ts/ts-container-flex.md)）、[相对布局](../ui/arkts-layout-development-relative-layout.md)（[RelativeContainer](../reference/apis-arkui/arkui-ts/ts-container-relativecontainer.md)）、[栅格布局](../ui/arkts-layout-development-grid-layout.md)（[GridCol](../reference/apis-arkui/arkui-ts/ts-container-gridcol.md)）外，也提供了相对复杂的[列表](../ui/arkts-layout-development-create-list.md)（[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)）、[网格](../ui/arkts-layout-development-create-grid.md)（[Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md)/[GridItem](../reference/apis-arkui/arkui-ts/ts-container-griditem.md)）、[轮播](../ui/arkts-layout-development-create-looping.md)（[Swiper](../reference/apis-arkui/arkui-ts/ts-container-swiper.md)）。
 
 ## 优化布局结构
 
@@ -120,7 +120,7 @@ struct AspectRatioExample11 {
 
 例如，以下是一个自适应的效果：
 
-输入图片说明
+![输入图片说明](figures/layout-ui-view.png)
 
 反例：
 
@@ -204,7 +204,7 @@ struct MyComponent {
 
 分析元素之间的布局关系可以得到如下：
 
-输入图片说明
+![输入图片说明](figures/layout-relative-view.png)
 
 正例：
 
@@ -292,17 +292,17 @@ struct MyComponent {
 
 从上述案例中可以看到，使用扁平化布局逻辑概念设计更清晰，避免使用不参与绘制的布局组件，优化性能并减少占用内存。这种将一棵深度很高的UI树，改造为将内容排布到同一个节点下的思路，为扁平化布局。如下图所示，采用扁平化布局去除了中间冗余的两层布局节点。
 
-输入图片说明
+![输入图片说明](figures/layout-relative-introduce.png)
 
-使用扁平化布局推荐使用RelativeContainer、位置设置、Grid组件等
+使用扁平化布局推荐使用[RelativeContainer](../reference/apis-arkui/arkui-ts/ts-container-relativecontainer.md)、[位置设置](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md)、[Grid组件](../reference/apis-arkui/arkui-ts/ts-container-grid.md)等
 
 ### 使用高性能布局组件
 
 **使用Column/Row替换Flex容器**
 
-如果使用Flex布局容器，只是为了实现横向或者纵向的布局。那直接使用Row、Column容器反而能够提升渲染性能。关于Flex带来的性能影响可以参考《Flex布局性能提升使用指导》。
+如果使用Flex布局容器，只是为了实现横向或者纵向的布局。那直接使用Row、Column容器反而能够提升渲染性能。关于Flex带来的性能影响可以参考《[Flex布局性能提升使用指导](flex-development-performance-boost.md)》。
 
-使用Column、Row替换Flex容器组件避免二次渲染的案例见：《性能提升的其他方法》
+使用Column、Row替换Flex容器组件避免二次渲染的案例见：《[性能提升的其他方法](arkts-performance-improvement-recommendation.md)》
 
 **适当减少使用if/else条件渲染**
 
@@ -625,11 +625,11 @@ struct NormalCustom {
 
 图1 常规设置自定义组件全局属性
 
-image-20240624191206151
+![image-20240624191206151](figures/custom_component_node_1.png)
 
 **正例**
 
-ArkUI提供了动态属性设置（Modifier）的接口，支持使用自定义Modifier构建组件并配置属性。
+ArkUI提供了[动态属性设置（Modifier）](../reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md)的接口，支持使用自定义Modifier构建组件并配置属性。
 
 ```ts
 @Entry
@@ -678,7 +678,7 @@ class ColumnModifier implements AttributeModifier<ColumnAttribute> {
 
 图2 使用Modifier设置自定义组件全局属性
 
-image-20240624192653146
+![image-20240624192653146](figures/custom_component_node_2.png)
 
 
 
@@ -712,7 +712,7 @@ struct ComponentStackNormal {
 
 图3 使用Stack实现遮罩效果
 
-image-20240624195032415
+![image-20240624195032415](figures/stack_normal.png)
 
 **正例**
 
@@ -739,7 +739,7 @@ struct ComponentStackOverlay {
 
 通过DevEco Studio内置ArkUI Inspector工具，查看组件树结构，如图4所示。和反例中的代码相比，虽然组件树层数相同，但是减少了Stack组件的创建，优化了性能。
 
-image-20240624195635402
+![image-20240624195635402](figures/stack_overlay.png)
 
 ### 按压态效果
 
@@ -783,7 +783,7 @@ struct GrayScaleNormalCustom {
 
 图5 常规遮罩实现
 
-image-20240624204921380
+![image-20240624204921380](figures/mask_normal.png)
 
 **正例**
 
@@ -818,7 +818,7 @@ struct GrayScaleCustom {
 
 图6 通过组件效果实现遮罩
 
-image-20240624205531083
+![image-20240624205531083](figures/mask_grayscale.png)
 
 ### 颜色叠加效果
 
@@ -873,7 +873,7 @@ struct Index {
 
 图7 
 
-image-20240628153525200
+![image-20240628153525200](figures/color_normal.png)
 
 **正例**
 
@@ -931,10 +931,10 @@ struct Index {
 
 图8
 
-image-20240628154436228
+![image-20240628154436228](figures/color_measure.png)
 
 ## 优化布局工具介绍
 
-DevEco Studio内置ArkUI Inspector工具，开发者可以使用ArkUI
+[DevEco Studio](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-tools-overview)内置ArkUI Inspector工具，开发者可以使用ArkUI
 
 Inspector，在DevEco Studio上查看应用在真机上的UI显示效果。利用ArkUI Inspector工具，开发者可以快速定位布局不理想或其他UI相关问题，同时也可以观察和了解不同组件之间的布局关系和属性。

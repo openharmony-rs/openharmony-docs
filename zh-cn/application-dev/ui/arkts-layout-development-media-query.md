@@ -9,7 +9,7 @@
 
 ## 概述
 
-媒体查询作为响应式设计的核心，在移动设备上应用十分广泛。媒体查询可根据不同设备类型或同设备不同状态修改应用的样式。媒体查询常用于下面两种场景：
+[媒体查询](../reference/apis-arkui/js-apis-mediaquery.md)作为响应式设计的核心，在移动设备上应用十分广泛。媒体查询可根据不同设备类型或同设备不同状态修改应用的样式。媒体查询常用于下面两种场景：
 
 1. 针对设备和应用的属性信息（比如显示区域、深浅色、分辨率），设计出相匹配的布局。
 
@@ -18,12 +18,12 @@
 
 ## 引入与使用流程
 
-媒体查询通过mediaquery模块接口，设置查询条件并绑定回调函数，任一媒体特征改变时，均会触发回调函数，返回匹配结果，根据返回值更改页面布局或者实现业务逻辑，实现页面的响应式设计。具体步骤如下：
+媒体查询通过mediaquery模块接口，设置查询条件并绑定回调函数，任一[媒体特征](#媒体特征media-feature)改变时，均会触发回调函数，返回匹配结果，根据返回值更改页面布局或者实现业务逻辑，实现页面的响应式设计。具体步骤如下：
 
 首先导入媒体查询模块。
 
 
-<!-- @obtain_mediaquery_import -->
+<!-- @[obtain_mediaquery_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MediaQuerySample/entry/src/main/ets/pages/MediaQueryExample.ets) -->
 
 ``` TypeScript
 import { mediaquery } from '@kit.ArkUI';
@@ -32,7 +32,7 @@ import { mediaquery } from '@kit.ArkUI';
 通过matchMediaSync接口设置媒体查询条件，保存返回的条件监听句柄listener。例如监听横屏事件：
 
 
-<!-- @obtain_mediaquery_listener -->
+<!-- @[obtain_mediaquery_listener](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MediaQuerySample/entry/src/main/ets/pages/MediaQueryExample.ets) -->
 
 ``` TypeScript
 listener: mediaquery.MediaQueryListener =
@@ -42,7 +42,7 @@ listener: mediaquery.MediaQueryListener =
 给条件监听句柄listener绑定回调函数onPortrait，当listener检测设备状态变化时执行回调函数。在回调函数内，根据不同设备状态更改页面布局或者实现业务逻辑。
 
 
-<!-- @obtain_mediaquery_Portrait -->
+<!-- @[obtain_mediaquery_Portrait](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MediaQuerySample/entry/src/main/ets/pages/MediaQueryExample.ets) -->
 
 ``` TypeScript
 onPortrait(mediaQueryResult: mediaquery.MediaQueryResult) {
@@ -68,7 +68,7 @@ onPortrait(mediaQueryResult: mediaquery.MediaQueryResult) {
 
 ### 语法规则
 
-语法规则包括媒体类型（media-type）、媒体逻辑操作（media-logic-operations）和媒体特征（media-feature）。
+语法规则包括[媒体类型（media-type）](#媒体类型media-type)、[媒体逻辑操作（media-logic-operations）](#媒体逻辑操作media-logic-operations)和[媒体特征（media-feature）](#媒体特征media-feature)。
 
 
 ```ts
@@ -117,9 +117,9 @@ onPortrait(mediaQueryResult: mediaquery.MediaQueryResult) {
 | 类型    | 说明                                       |
 | ----- | ---------------------------------------- |
 | &lt;= | 小于等于，例如：screen&nbsp;and&nbsp;(height&nbsp;&lt;=&nbsp;50)。 |
-|&gt;= | 大于等于，例如：screen&nbsp;and&nbsp;(height&nbsp;&gt;=&nbsp;600)。 |
+| &gt;= | 大于等于，例如：screen&nbsp;and&nbsp;(height&nbsp;&gt;=&nbsp;600)。 |
 | &lt;  | 小于，例如：screen&nbsp;and&nbsp;(height&nbsp;&lt;&nbsp;50)。 |
-|&gt;  | 大于，例如：screen&nbsp;and&nbsp;(height&nbsp;&gt;&nbsp;600)。 |
+| &gt;  | 大于，例如：screen&nbsp;and&nbsp;(height&nbsp;&gt;&nbsp;600)。 |
 
 
 ### 媒体特征（media-feature）
@@ -165,7 +165,7 @@ onPortrait(mediaQueryResult: mediaquery.MediaQueryResult) {
 示例一使用媒体查询，实现屏幕横竖屏切换时，为页面文本应用添加不同的内容和样式。
 
 <!--deprecated_code_no_check-->
-<!-- @obtain_mediaquery_all --> 
+<!-- @[obtain_mediaquery_all](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MediaQuerySample/entry/src/main/ets/pages/MediaQueryExample.ets) --> 
 
 ``` TypeScript
 import { mediaquery } from '@kit.ArkUI';
@@ -234,15 +234,15 @@ struct MediaQueryExample {
 
   **图1** 竖屏  
 
-portrait
+![portrait](figures/portrait.jpg)
 
   **图2** 横屏  
 
-landscape
+![landscape](figures/landscape.jpg)
 
 示例二使用媒体查询实现屏幕横竖屏切换时Flex组件的不同布局，竖屏时Flex采用垂直方向布局，横屏时采用水平方向布局。
 
-<!-- @obtain_mediaquery_flex -->
+<!-- @[obtain_mediaquery_flex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MediaQuerySample/entry/src/main/ets/pages/MediaQueryFlex.ets) -->
 
 ``` TypeScript
 import { LengthMetrics, mediaquery, window } from '@kit.ArkUI';
@@ -336,14 +336,14 @@ struct MediaQueryFlex {
 
   **图3** 竖屏  
 
-portrait
+![portrait](figures/PortraitWidthFlex.png)
 
   **图4** 横屏  
 
-landscape
+![landscape](figures/LandscapeWidthFlex.png)
 
 ## 相关实例
 
 针对媒体查询开发，以下相关实例可供参考：
 
-- 横竖屏切换（ArkTS）（API9）
+- [横竖屏切换（ArkTS）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/UI/ArkTsComponentCollection/MediaQuery)

@@ -11,20 +11,20 @@
 
 应用证书凭据功能为应用提供了应用级别的证书凭据（包含证书链和私钥）的安全存储和管理能力，且支持应用间的访问隔离。
 
-您的应用可以读取已安装应用证书凭据的证书链，及使用对应私钥进行签名，但不能读取私钥数据（保护私钥数据的安全）。应用证书凭据的公私钥对存储在Universal Keystore Kit。
+您的应用可以读取已安装应用证书凭据的证书链，及使用对应私钥进行签名，但不能读取私钥数据（保护私钥数据的安全）。应用证书凭据的公私钥对存储在[Universal Keystore Kit](../UniversalKeystoreKit/huks-overview.md)。
 
-
+![](figures/certificate-manager-app-credential.PNG)
 
 > **说明：**
 >
 > 本开发指导需使用API版本11及以上版本SDK。
 >
-> 如需在不同应用间共享访问同一个证书凭据，请使用“用户证书凭据”功能。
+> 如需在不同应用间共享访问同一个证书凭据，请使用“[用户证书凭据](./certManager-user-credential-guidelines.md)”功能。
 
 
 ## 约束与限制
 
-应用证书凭据的安装和签名、验签操作，依赖密钥管理服务（HUKS）能力。
+应用证书凭据的安装和签名、验签操作，依赖[密钥管理服务](../UniversalKeystoreKit/huks-overview.md)（HUKS）能力。
 
 
 ## 开发步骤
@@ -33,7 +33,7 @@
 
    需要申请的权限：ohos.permission.ACCESS_CERT_MANAGER
 
-   声明权限请参考：声明权限
+   声明权限请参考：[声明权限](../AccessToken/declare-permissions.md)
 
 2. 导入相关模块。
 
@@ -73,7 +73,7 @@
 
    > **说明：**
    >
-   > 签名、验签操作支持的参数组合，详见HUKS声明的签名/验签介绍及算法规格中RSA、ECC及SM2的描述。
+   > 签名、验签操作支持的参数组合，详见HUKS声明的[签名/验签介绍及算法规格](../UniversalKeystoreKit/huks-signing-signature-verification-overview.md)中RSA、ECC及SM2的描述。
 
 5. 卸载已安装的应用证书凭据。
 
@@ -81,7 +81,7 @@
 
 ## 样例代码
 
-<!-- @certificate_management_development_guidance -->
+<!-- @[certificate_management_development_guidance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DeviceCertificateKit/CertificateManagement/entry/src/main/ets/samples/CertManagerPrivateCredSample.ets) -->
 
 ``` TypeScript
 import { certificateManager } from '@kit.DeviceCertificateKit';

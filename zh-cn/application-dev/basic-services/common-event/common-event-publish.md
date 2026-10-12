@@ -2,26 +2,26 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
 ## 场景介绍
 
-当需要发布某个公共事件时，可以通过publish()方法发布事件。发布的公共事件可以携带数据，供订阅者解析并进行下一步处理。
+当需要发布某个公共事件时，可以通过[publish()](../../reference/apis-basic-services-kit/js-apis-commonEventManager.md#commoneventmanagerpublish)方法发布事件。发布的公共事件可以携带数据，供订阅者解析并进行下一步处理。
 
 > **须知：**
-> 已发出的粘性公共事件后来订阅者也可以接收到，其他公共事件都需要先订阅再接收，订阅参考公共事件订阅章节。
+> 已发出的粘性公共事件后来订阅者也可以接收到，其他公共事件都需要先订阅再接收，订阅参考[公共事件订阅章节](common-event-subscription.md)。
 
 
 ## 接口说明
 
-详细接口见接口文档。
+详细接口见[commonEventManager.publish](../../reference/apis-basic-services-kit/js-apis-commonEventManager.md#commoneventmanagerpublish)。
 
 | 接口名                                                       | 接口描述                     |
 | ------------------------------------------------------------ | ---------------------------- |
 | publish(event:&nbsp;string,&nbsp;callback:&nbsp;AsyncCallback<void\>) | 发布公共事件。               |
-| publish(event:&nbsp;string,&nbsp;options:&nbsp;CommonEventPublishData,&nbsp;callback:&nbsp;AsyncCallback<void\>) | 指定发布信息并发布公共事件。 |
+| publish(event:&nbsp;string,&nbsp;options:&nbsp;[CommonEventPublishData](../../reference/apis-basic-services-kit/js-apis-inner-commonEvent-commonEventPublishData.md),&nbsp;callback:&nbsp;AsyncCallback<void\>) | 指定发布信息并发布公共事件。 |
 
 
 ## 发布不携带信息的公共事件
@@ -30,7 +30,7 @@
 
 1. 导入模块。
    
-   <!-- @ImportModule --> 
+   <!-- @[ImportModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets) -->
    
    ``` TypeScript
    import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
@@ -42,7 +42,7 @@
 
 2. 传入需要发布的事件名称和回调函数，发布事件。
    
-   <!-- @PublicEventNoInformation -->
+   <!-- @[PublicEventNoInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets) -->
    
    ``` TypeScript
    // 发布公共事件，其中的event字段需要替换为实际的事件名称。
@@ -60,11 +60,11 @@
 
 ## 发布携带信息的公共事件
 
-携带信息的公共事件，可以发布为无序公共事件、有序公共事件和粘性事件，可以通过参数CommonEventPublishData的isOrdered、isSticky的字段进行设置。
+携带信息的公共事件，可以发布为无序公共事件、有序公共事件和粘性事件，可以通过参数[CommonEventPublishData](../../reference/apis-basic-services-kit/js-apis-inner-commonEvent-commonEventPublishData.md)的isOrdered、isSticky的字段进行设置。
 
 1. 导入模块。
    
-   <!-- @ImportModule -->
+   <!-- @[ImportModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets) -->
    
    ``` TypeScript
    import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
@@ -76,7 +76,7 @@
 
 2. 构建需要发布的公共事件信息。
    
-   <!-- @PublicEventInformation -->
+   <!-- @[PublicEventInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets) -->
    
    ``` TypeScript
    // 公共事件相关信息
@@ -88,7 +88,7 @@
 
 3. 传入需要发布的事件名称、需要发布的指定信息和回调函数，发布事件。
    
-   <!-- @PublicEventCarryingInformation -->
+   <!-- @[PublicEventCarryingInformation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets) -->
    
    ``` TypeScript
    // 发布公共事件，其中的event字段需要替换为实际的事件名称。

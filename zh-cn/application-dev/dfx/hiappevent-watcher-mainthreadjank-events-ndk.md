@@ -9,7 +9,7 @@
 
 ## 简介
 
-本文介绍如何使用HiAppEvent提供的C/C++接口订阅主线程超时事件。接口的详细使用说明（参数限制、取值范围等）请参考hiappevent.h。
+本文介绍如何使用HiAppEvent提供的C/C++接口订阅主线程超时事件。接口的详细使用说明（参数限制、取值范围等）请参考[hiappevent.h](../reference/apis-performance-analysis-kit/capi-hiappevent-h.md)。
 
 ## 接口说明
 
@@ -21,7 +21,7 @@
 ## 开发步骤
 
 ### 添加事件观察者
-1. 获取该示例工程依赖的jsoncpp文件，从三方开源库jsoncpp代码仓下载源码的压缩包，并按照README的**Amalgamated source**中介绍的操作步骤得到jsoncpp.cpp、json.h和json-forwards.h三个文件。
+1. 获取该示例工程依赖的jsoncpp文件，从[三方开源库jsoncpp代码仓](https://github.com/open-source-parsers/jsoncpp)下载源码的压缩包，并按照README的**Amalgamated source**中介绍的操作步骤得到jsoncpp.cpp、json.h和json-forwards.h三个文件。
 
 2. 在DevEco Studio中，新建Native C++工程，并将上述文件导入到新建工程内，目录结构如下。
 
@@ -202,7 +202,7 @@
 
     > **说明：**
     >
-    > 主线程超时事件具体规格可参考：主线程超时事件默认时间规格 和 主线程超时事件日志规格。
+    > 主线程超时事件具体规格可参考：[主线程超时事件默认时间规格](apptask-timeout-guidelines.md#检测原理) 和 [主线程超时事件日志规格](apptask-timeout-guidelines.md#日志规格)。
 
 ### 移除并销毁事件观察者
 

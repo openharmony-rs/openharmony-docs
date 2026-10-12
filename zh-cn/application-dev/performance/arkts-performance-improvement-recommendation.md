@@ -21,9 +21,9 @@
 >  
 >  - List设置宽高，会布局List显示区域内的子组件。
 >  
->  - List使用ForEach加载子组件时，无论是否设置List的宽高，都会加载所有子组件。
+>  - List使用[ForEach](../ui/rendering-control/arkts-rendering-control-foreach.md)加载子组件时，无论是否设置List的宽高，都会加载所有子组件。
 >  
->  - List使用LazyForEach加载子组件时，没有设置List的宽高，会加载所有子组件，设置了List的宽高，会加载List显示区域内的子组件。
+>  - List使用[LazyForEach](../ui/rendering-control/arkts-rendering-control-lazyforeach.md)加载子组件时，没有设置List的宽高，会加载所有子组件，设置了List的宽高，会加载List显示区域内的子组件。
 
 ```ts
 class BasicDataSource implements IDataSource {
@@ -229,17 +229,17 @@ struct MyComponent {
 }
 ```
 
-list1
+![list1](figures/list1.gif)
 
 使用SmartPerf Host工具分别抓取List不设置宽高时和设置宽高时的trace数据。
 
 **List不设置宽高：**
 
-list-trace-01
+![list-trace-01](figures/arkts-performance-improvement-recommendation-list-trace-01.PNG)
 
 **List设置宽高：**
 
-list-trace-02
+![list-trace-02](figures/arkts-performance-improvement-recommendation-list-trace-02.PNG)
 
 从trace图可以看出，List不设置宽高时100个子组件全部参与布局，布局时间46.62ms。而给List设置宽高后只有给定高度内的12个子组件参与布局，布局时间减少到8.51ms，大幅提升了首次加载时的性能。
 
@@ -301,7 +301,7 @@ struct ColumnAndRowBuild {
 }
 ```
 
-flex1
+![flex1](figures/flex1.PNG)
 
 使用SmartPerf Host抓取上述两种不同布局方式示例程序的trace数据，对比其性能消耗，如下表所示。
 
@@ -360,9 +360,9 @@ class MyDataSource implements IDataSource {
   }
 }
 ```
-list2
+![list2](figures/list2.gif)
 
 **使用说明：**
 cachedCount的增加会增大UI的CPU、内存开销。使用时需要根据实际情况，综合性能和用户体验进行调整。
 
-更多关于cachedCount的使用指导，请参考文档列表场景性能提升实践。
+更多关于cachedCount的使用指导，请参考文档[列表场景性能提升实践](list-perf-improvement.md#缓存列表项)。

@@ -8,7 +8,7 @@
 
 > **说明：**
 > 
-> 以下仅介绍本模块特有错误码，通用错误码请参考通用错误码说明文档。
+> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
 
 ## 19100001 入参错误
 
@@ -515,7 +515,7 @@ The specified userId is inconsistent with the current userId.
 
 **处理步骤**
 
-请确保传入的用户ID与当前用户ID一致。当前用户ID可以通过@ohos.account.osAccount中的getOsAccountLocalId等接口来获取。
+请确保传入的用户ID与当前用户ID一致。当前用户ID可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。
 
 ## 19100024 个人空间用户不支持设置受控应用
 

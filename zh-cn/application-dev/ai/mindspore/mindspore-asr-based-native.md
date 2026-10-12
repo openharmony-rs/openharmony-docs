@@ -9,13 +9,13 @@
 
 ## 场景说明
 
-开发者可以使用MindSpore，在UI代码中集成MindSpore Lite能力，快速部署AI算法，进行AI模型推理，实现语音识别的应用。
+开发者可以使用[MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md)，在UI代码中集成MindSpore Lite能力，快速部署AI算法，进行AI模型推理，实现语音识别的应用。
 
 语音识别可以将一段音频信息转换为文本，在智能语音助手、语音输入、语音搜索等领域有广泛的应用。
 
 ## 环境配置
 
-若需要使用模拟器运行该示例，请参考：使用模拟器运行应用
+若需要使用模拟器运行该示例，请参考：[使用模拟器运行应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-run-emulator)
 
 ## 开发流程
 
@@ -32,9 +32,9 @@
 
 ### 编写播放音频代码
 
-调用@ohos.multimedia.media、@ohos.multimedia.audio，实现播放音频的功能。
+调用[@ohos.multimedia.media](../../reference/apis-media-kit/arkts-apis-media.md)、[@ohos.multimedia.audio](../../reference/apis-audio-kit/arkts-apis-audio.md)，实现播放音频的功能。
 
-<!-- @player_asr --> 
+<!-- @[player_asr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/ets/pages/player.ets) --> 
 
 ``` TypeScript
 import { media } from '@kit.MediaKit';
@@ -136,11 +136,11 @@ export default class AVPlayerDemo {
 
 ### 编写识别音频代码
 
-在 entry/src/main/cpp/mslite_napi.cpp，调用MindSpore，依次对3个模型进行推理，推理代码流程如下。
+在 entry/src/main/cpp/mslite_napi.cpp，调用[MindSpore](../../reference/apis-mindspore-lite-kit/capi-mindspore.md)，依次对3个模型进行推理，推理代码流程如下。
 
-1. 引用对应的头文件。说明：需要用户下载三方库，其中librosa来源是LibrosaCpp，libsamplerate来源是libsamplerate，下载后置于entry/src/main/cpp/third_party目录下。AudioFile.h的来源是AudioFile，base64.h、base64.cpp的来源是whisper.axera下载后置于entry/src/main/cpp/src目录下。
+1. 引用对应的头文件。说明：需要用户下载三方库，其中librosa来源是[LibrosaCpp](https://github.com/ewan-xu/LibrosaCpp)，libsamplerate来源是[libsamplerate](https://github.com/libsndfile/libsamplerate)，下载后置于entry/src/main/cpp/third_party目录下。AudioFile.h的来源是[AudioFile](https://github.com/adamstark/AudioFile/blob/1.1.2/AudioFile.h)，base64.h、base64.cpp的来源是[whisper.axera](https://github.com/ml-inory/whisper.axera/tree/main/cpp/src)下载后置于entry/src/main/cpp/src目录下。
 
-   <!-- @napi_asr_headers -->
+   <!-- @[napi_asr_headers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/mslite_napi.cpp) -->
 
    ```c++
    #include "AudioFile.h"
@@ -166,7 +166,7 @@ export default class AVPlayerDemo {
 
 2. 读取音频文件、模型文件等，转换为buffer数据。
 
-   <!-- @napi_asr_log -->
+   <!-- @[napi_asr_log](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/mslite_napi.cpp) -->
 
    ```c++
    #define LOGI(...) ((void)OH_LOG_Print(LOG_APP, LOG_INFO, LOG_DOMAIN, "[MSLiteNapi]", __VA_ARGS__))
@@ -175,13 +175,13 @@ export default class AVPlayerDemo {
    #define LOGE(...) ((void)OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_DOMAIN, "[MSLiteNapi]", __VA_ARGS__))
    ```
 
-   <!-- @napi_asr_BinBuffer -->
+   <!-- @[napi_asr_BinBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/mslite_napi.cpp) -->
 
    ```c++
    using BinBuffer = std::pair<void *, size_t>;
    ```
 
-   <!-- @napi_asr_read_file -->
+   <!-- @[napi_asr_read_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/mslite_napi.cpp) -->
 
    ```c++
    BinBuffer ReadBinFile(NativeResourceManager *nativeResourceManager, const std::string &modelName)
@@ -242,7 +242,7 @@ export default class AVPlayerDemo {
 
 3. 创建上下文，设置设备类型，并加载模型。
 
-   <!-- @napi_asr_context -->
+   <!-- @[napi_asr_context](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/mslite_napi.cpp) -->
 
    ```c++
    void DestroyModelBuffer(void **buffer)
@@ -290,13 +290,13 @@ export default class AVPlayerDemo {
 
 4. 设置模型输入数据，执行模型推理。
 
-   <!-- @napi_print_num -->
+   <!-- @[napi_print_num](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/mslite_napi.cpp) -->
 
    ```c++
    constexpr int K_NUM_PRINT_OF_OUT_DATA = 20;
    ```
 
-   <!-- @napi_asr_FillInputTensor -->
+   <!-- @[napi_asr_FillInputTensor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/mslite_napi.cpp) -->
 
    ```c++
    int FillInputTensor(OH_AI_TensorHandle input, const BinBuffer &bin)
@@ -310,7 +310,7 @@ export default class AVPlayerDemo {
    }
    ```
 
-   <!-- @napi_asr_RunMSLiteModel -->
+   <!-- @[napi_asr_RunMSLiteModel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/mslite_napi.cpp) -->
 
    ```c++
    // 执行模型推理
@@ -361,7 +361,7 @@ export default class AVPlayerDemo {
 
 5. 调用以上方法，实现3个模型的推理流程。
 
-   <!-- @napi_asr_constants -->
+   <!-- @[napi_asr_constants](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/mslite_napi.cpp) -->
 
    ```c++
    const float NEG_INF = -std::numeric_limits<float>::infinity();
@@ -377,7 +377,7 @@ export default class AVPlayerDemo {
    constexpr int WHISPER_SAMPLE_RATE = 16000;
    ```
 
-   <!-- @napi_asr_GetMSOutput -->
+   <!-- @[napi_asr_GetMSOutput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/mslite_napi.cpp) -->
 
    ```c++
    BinBuffer GetMSOutput(OH_AI_TensorHandle output)
@@ -388,7 +388,7 @@ export default class AVPlayerDemo {
    }
    ```
 
-   <!-- @napi_asr_SuppressTokens --> 
+   <!-- @[napi_asr_SuppressTokens](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/mslite_napi.cpp) --> 
    
    ``` C++
    void SuppressTokens(BinBuffer &logits, bool isInitial)
@@ -408,7 +408,7 @@ export default class AVPlayerDemo {
    }
    ```
 
-   <!-- @napi_asr_predict --> 
+   <!-- @[napi_asr_predict](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/mslite_napi.cpp) --> 
    
    ``` C++
    std::vector<int> LoopPredict(const OH_AI_ModelHandle model, const BinBuffer &n_layer_cross_k,
@@ -693,7 +693,7 @@ export default class AVPlayerDemo {
 
 1. 在 entry/src/main/cpp/types/libentry/Index.d.ts，定义ArkTS接口`runDemo()` 。内容如下：
 
-   <!-- @index_asr_runDemo -->
+   <!-- @[index_asr_runDemo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
    ```ts
    export const runDemo: (a: Object) => string;
@@ -712,10 +712,10 @@ export default class AVPlayerDemo {
 
 ### 调用封装的ArkTS模块进行推理并输出结果
 
-在 entry/src/main/ets/pages/Index.ets 中，调用封装的ArkTS模块，最后对推理结果进行处理。若提示@nutpi/chinese_transverter不存在，请参考中文简繁体转换器三方库安装@nutpi/chinese_transverter组件。
+在 entry/src/main/ets/pages/Index.ets 中，调用封装的ArkTS模块，最后对推理结果进行处理。若提示@nutpi/chinese_transverter不存在，请参考[中文简繁体转换器三方库](https://developer.huawei.com/consumer/cn/forum/topic/0202169478029484501?fid=0109140870620153026)安装@nutpi/chinese_transverter组件。
 
 
-<!-- @index_asr --> 
+<!-- @[index_asr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 import msliteNapi from 'libentry.so'
@@ -857,13 +857,13 @@ struct Index {
 
 |         初始页面          |  点击识别示例音频按钮后   |
 | :-----------------------: | :-----------------------: |
-| asr1 | asr2 |
+| ![asr1](figures/asr1.png) | ![asr2](figures/asr2.png) |
 
 
 ## 相关实例
 
 针对使用MindSpore Lite进行语音识别应用的开发，有以下相关实例可供参考：
 
-- 基于Native接口的MindSpore Lite ASR应用开发（C/C++）（API14）
+- [基于Native接口的MindSpore Lite ASR应用开发（C/C++）（API14）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/MindSporeLiteKit/MindSporeLiteCDemoASR)
 
 <!--RP1--><!--RP1End-->

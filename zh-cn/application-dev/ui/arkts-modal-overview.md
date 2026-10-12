@@ -10,21 +10,21 @@
 
 * **​半模态：​**开发者可以利用此模态页面实现多形态效果。支持不同宽度设备显示不同样式的半模态页面。允许用户通过侧滑，点击蒙层，点击关闭按钮，下拉关闭半模态页面。
 
-  zh-cn_sheet1
+  ![zh-cn_sheet1](./figures/sheet1.gif)
 
 * **全模态：​**开发者可以利用此模态页面实现全屏的模态弹窗效果。默认需要侧滑才能关闭。
 
-  zh-cn_modal1
+  ![zh-cn_modal1](./figures/modal1.gif)
 
 ## 使用场景
 
 | 接口|使用场景  |
 | ----------| ----------------------------------- |
-| bindContentCover | 用于自定义全屏的模态展示界面，结合转场动画和共享元素动画可实现复杂转场动画效果，如缩略图片点击后查看大图。 |
-| bindSheet  | 用于半模态展示界面，如分享框。 |
-| openBindSheet/ updateBindSheet/ closeBindSheet | 用于不依赖UI组件的场景，如全局拉起、更新、关闭。|
+| [bindContentCover](arkts-contentcover-page.md) | 用于自定义全屏的模态展示界面，结合转场动画和共享元素动画可实现复杂转场动画效果，如缩略图片点击后查看大图。 |
+| [bindSheet](arkts-sheet-page.md)  | 用于半模态展示界面，如分享框。 |
+| [openBindSheet](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#openbindsheet12)/ [updateBindSheet](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#updatebindsheet12)/ [closeBindSheet](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#closebindsheet12) | 用于不依赖UI组件的场景，如全局拉起、更新、关闭。|
 
 ## 规格约束
 
-* 建议<!--Del-->在除ServiceExtensionAbility等无UI界面的场景外，均<!--DelEnd-->使用UIContext中的弹窗方法。其他规格约束可参考openBindSheet、updateBindSheet、closeBindSheet说明。
+* 建议<!--Del-->在除[ServiceExtensionAbility](../../application-dev/application-models/serviceextensionability-sys.md)等无UI界面的场景外，均<!--DelEnd-->使用UIContext中的弹窗方法。其他规格约束可参考[openBindSheet](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#openbindsheet12)、[updateBindSheet](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#updatebindsheet12)、[closeBindSheet](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#closebindsheet12)说明。
 

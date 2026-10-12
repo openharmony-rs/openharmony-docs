@@ -35,7 +35,7 @@ Promise是JavaScript中用来处理异步操作的对象，Promise有pending（�
 
 ## 使用示例
 
-JSVM-API接口开发流程参考使用JSVM-API实现JS与C/C++语言交互开发流程，本文仅对接口对应C++相关代码进行展示。
+JSVM-API接口开发流程参考[使用JSVM-API实现JS与C/C++语言交互开发流程](use-jsvm-process.md)，本文仅对接口对应C++相关代码进行展示。
 
 ### OH_JSVM_IsPromise
 
@@ -43,7 +43,7 @@ JSVM-API接口开发流程参考使用JSVM-API实现JS与C/C++语言交互开发
 
 cpp部分代码
 
-<!-- @oh_jsvm_ispromise -->
+<!-- @[oh_jsvm_ispromise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPromise/ispromise/src/main/cpp/hello.cpp) -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -97,7 +97,7 @@ OH_JSVM_CreatePromise用于创建一个Promise对象。
 
 cpp部分代码
 
-<!-- @oh_jsvm_resolvedeferred_and_rejectdeferred -->
+<!-- @[oh_jsvm_resolvedeferred_and_rejectdeferred](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutPromise/resolvereject/src/main/cpp/hello.cpp) -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -183,7 +183,7 @@ OH_JSVM_RejectDeferred reject
 
 用于设置 Promise 解析或拒绝后的回调，等效于调用原生的 `Promise.then()` 或 `Promise.catch()`。
 
-以下仅对 cpp 部分代码进行展示，其余框架代码如 `TestJSVM` 函数参考 使用JSVM-API接口进行任务队列相关开发 OH_JSVM_SetMicrotaskPolicy 段落中的实现。
+以下仅对 cpp 部分代码进行展示，其余框架代码如 `TestJSVM` 函数参考 [使用JSVM-API接口进行任务队列相关开发](use-jsvm-execute-tasks.md) OH_JSVM_SetMicrotaskPolicy 段落中的实现。
 
 ``` C++
 static int PromiseRegisterHandler(JSVM_VM vm, JSVM_Env env) {

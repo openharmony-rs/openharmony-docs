@@ -22,7 +22,7 @@ FileUri提供了关于文件URI的基本操作，将URI转换成对应的沙箱�
 
 ## 接口说明
 
-接口的详细说明，请参考oh_file_uri.h。
+接口的详细说明，请参考[oh_file_uri.h](../reference/apis-core-file-kit/capi-oh-file-uri-h.md)。
 
 | 接口名称 | 描述 |
 | -------- |-------|
@@ -50,7 +50,7 @@ target_link_libraries(sample PUBLIC libohfileuri.so)
 
 1. 调用OH_FileUri_GetUriFromPath接口，在接口中malloc的内存需要在使用完后释放，因此需要free对应的内存，避免内存泄漏。示例代码如下所示：
 
-   <!-- @get_uri_from_path_example -->    
+   <!-- @[get_uri_from_path_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileUriDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->    
    
    ``` C++
    static napi_value NAPI_Global_OH_FileUri_GetUriFromPathExample(napi_env env, napi_callback_info info)
@@ -89,7 +89,7 @@ target_link_libraries(sample PUBLIC libohfileuri.so)
 
 2. 调用OH_FileUri_GetPathFromUri通过URI转成对应的路径，在接口中malloc的内存需要在使用完后释放，因此需要free对应的内存，避免内存泄漏。示例代码如下所示。
 
-   <!-- @get_path_from_uri_example -->
+   <!-- @[get_path_from_uri_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileUriDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
    static napi_value NAPI_Global_OH_FileUri_GetPathFromUriExample(napi_env env, napi_callback_info info)
@@ -128,7 +128,7 @@ target_link_libraries(sample PUBLIC libohfileuri.so)
 
 3. 调用OH_FileUri_GetFullDirectoryUri获取URI所在路径的URI，在接口中malloc的内存需要在使用完后释放，因此需要free对应的内存，避免内存泄漏。示例代码如下所示。
 
-   <!-- @get_full_directory_uri -->    
+   <!-- @[get_full_directory_uri](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileUriDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->    
    
    ``` C++
    static napi_value NAPI_Global_OH_FileUri_GetFullDirectoryUriExample(napi_env env, napi_callback_info info)
@@ -162,7 +162,7 @@ target_link_libraries(sample PUBLIC libohfileuri.so)
 
 4. 可以调用OH_FileUri_IsValidUri接口进行URI格式验证。 示例代码如下所示。
 
-   <!-- @is_valid_uri_example -->    
+   <!-- @[is_valid_uri_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileUriDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->    
    
    ``` C++
    static napi_value NAPI_Global_OH_FileUri_IsValidUriExample(napi_env env, napi_callback_info info)
@@ -182,7 +182,7 @@ target_link_libraries(sample PUBLIC libohfileuri.so)
 
 5. 调用OH_FileUri_GetFileName获取URI中的文件名称，在接口中malloc的内存需要在使用完后释放，因此需要free对应的内存，避免内存泄漏。示例代码如下所示。
 
-   <!-- @get_file_name_example -->    
+   <!-- @[get_file_name_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/FileUriDevelopment_C/entry/src/main/cpp/napi_init.cpp) -->    
    
    ``` C++
    static napi_value NAPI_Global_OH_FileUri_GetFileNameExample(napi_env env, napi_callback_info info)

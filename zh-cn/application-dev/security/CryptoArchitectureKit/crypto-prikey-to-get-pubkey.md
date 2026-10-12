@@ -11,29 +11,29 @@
 
 以RSA为例，根据私钥对象获取公钥对象。
 
-对应的算法规格请查看非对称密钥加解密算法规格：RSA。
+对应的算法规格请查看[非对称密钥加解密算法规格：RSA](crypto-encryption-decryption.md#rsa)。
 
 ## 开发步骤
 
-1. 调用cryptoFramework.createAsyKeyGenerator，指定字符串参数'RSA1024'，创建RSA密钥类型为RSA1024、素数个数为2的非对称密钥生成器（AsyKeyGenerator）。
+1. 调用[cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator)，指定字符串参数'RSA1024'，创建RSA密钥类型为RSA1024、素数个数为2的非对称密钥生成器（AsyKeyGenerator）。
 
    生成RSA非对称密钥时，默认素数为2，此处省略了参数PRIMES_2。
 
-2. 调用AsyKeyGenerator.generateKeyPair，随机生成非对称密钥对象（KeyPair）。
-   
+2. 调用[AsyKeyGenerator.convertKeySync](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkeysync12-1)，传入私钥的二进制数据，生成非对称密钥对象（KeyPair）。
+
    KeyPair对象中包括公钥PubKey、私钥PriKey。
 
-3. 调用PubKey.getEncoded获取KeyPair中公钥对象的二进制数据。
+3. 调用[PubKey.getEncoded](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getencoded)获取KeyPair中公钥对象的二进制数据。
 
-4. 调用PriKey.getPubKey从私钥中获取公钥对象为PubKey。
+4. 调用[PriKey.getPubKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getpubkey23)从私钥中获取公钥对象为PubKey。
 
-5. 调用PubKey.getEncoded获取PubKey对象的二进制数据。
+5. 调用[PubKey.getEncoded](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getencoded)获取PubKey对象的二进制数据。
 
 6. 比较两个公钥对象的二进制数据。
 
-- 以异步方式生成RSA密钥对为例（调用方法getPubKey）：
+- 以异步方式生成RSA密钥对为例（调用方法[getPubKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getpubkey23)）：
 
-  <!-- @prikey_get_pubkey_async -->
+  <!-- @[prikey_get_pubkey_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/PrikeyOperation/entry/src/main/ets/pages/prikeyGetPubkeyAsync.ets) -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -92,8 +92,8 @@
     try {
       let keyPair = rsaGenerator.convertKeySync(null, skDataBlob);
       let priKey = keyPair.priKey;
-      let pubkey = await priKey.getPubKey();
-      let pkBlob = pubkey.getEncoded();
+      let pubKey = await priKey.getPubKey();
+      let pkBlob = pubKey.getEncoded();
       console.info('pk1 bin data: ' + pkBlob.data);
       let ret: boolean = compareUint8Array(pkBlob.data, expectPkdata);
       console.info('result: ' + ret);
@@ -104,9 +104,9 @@
   ```
 
 
-- 以同步方式生成RSA密钥对为例（调用方法getPubKeySync）：
+- 以同步方式生成RSA密钥对为例（调用方法[getPubKeySync](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getpubkeysync23)）：
 
-  <!-- @prikey_get_pubkey_sync -->
+  <!-- @[prikey_get_pubkey_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/PrikeyOperation/entry/src/main/ets/pages/prikeyGetPubKeySync.ets) -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -165,8 +165,8 @@
     try {
       let keyPair = rsaGenerator.convertKeySync(null, skDataBlob);
       let priKey = keyPair.priKey;
-      let pubkey = priKey.getPubKeySync();
-      let pkBlob = pubkey.getEncoded();
+      let pubKey = priKey.getPubKeySync();
+      let pkBlob = pubKey.getEncoded();
       console.info('pk1 bin data: ' + pkBlob.data);
       let ret: boolean = compareUint8Array(pkBlob.data, expectPkdata);
       console.info('result: ' + ret);

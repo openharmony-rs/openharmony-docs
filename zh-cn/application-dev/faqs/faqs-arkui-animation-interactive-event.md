@@ -19,7 +19,7 @@
 
 **参考链接**
 
-焦点控制
+[焦点控制](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md)
 
 
 ## scroll里面套一个grid，如何禁用grid的滑动事件(API 9)
@@ -28,12 +28,12 @@
 
 **参考链接**
 
-容器嵌套滚动示例
+容器嵌套滚动[示例](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#示例2嵌套滚动实现方式一)
 
 
 ## 如何实现一个组件不停地旋转(API 9)
 
-可以通过属性动画的方式实现。
+可以通过[属性动画](../reference/apis-arkui/arkui-ts/ts-animatorproperty.md)的方式实现。
 
 
 ## 列表目前无法键盘上下滑动，是否能力不支持(API 9)
@@ -59,7 +59,7 @@
 
 ## 使用router或Navigator实现页面跳转时，如何关闭页面间转场动效(API 9)
 
-1. 参考页面间转场示例在当前页面和目标页面中定义pageTransition方法。
+1. 参考[页面间转场示例](../reference/apis-arkui/arkui-ts/ts-page-transition-animation.md#示例)在当前页面和目标页面中定义pageTransition方法。
 
 2. 将页面入场组件PageTransitionEnter和页面退场组件PageTransitionExit的动效参数duration都设置为0。
 
@@ -70,7 +70,7 @@ PanGesture用于触发拖动手势事件，滑动的最小距离distance默认�
 
 **参考链接**
 
-PanGesture
+[PanGesture](../reference/apis-arkui/arkui-ts/ts-basic-gestures-pangesture.md)
 
 
 ## 是否支持使用fontFamily属性设置不同的字体(API 9)
@@ -194,7 +194,7 @@ struct PageTransition2 {
 
 **参考链接**
 
-页面间转场
+[页面间转场](../reference/apis-arkui/arkui-ts/ts-page-transition-animation.md)
 
 ## 自定义组件间如何实现从底部滑入滑出的效果(API 9)
 
@@ -267,7 +267,7 @@ struct ComponentChild2 {
 
 **参考链接**
 
-出现/消失转场
+[出现/消失转场](../ui/arkts-enter-exit-transition.md)
 
 
 ## 文件管理器短按不响应(API 10)
@@ -288,41 +288,41 @@ struct ComponentChild2 {
 
 **解决措施**
 
-1.系统会基于触摸测试来收集需要响应事件的控件，测试的顺序由父组件向子组件蔓延，后续手势的识别和竞争都基于测试结果进行；
+1. 系统会基于触摸测试来收集需要响应事件的控件，测试的顺序由父组件向子组件蔓延，后续手势的识别和竞争都基于测试结果进行；
 
-2.应用可通过改变组件上hitTestBehavior的值来改变系统对其的hittest结果；
+2. 应用可通过改变组件上hitTestBehavior的值来改变系统对其的hittest结果；
 
-3.可通过自定义事件和自定义手势判定能力来细化对手势识别和竞争结果的干预。
+3. 可通过自定义事件和自定义手势判定能力来细化对手势识别和竞争结果的干预。
 
 **参考链接**
 
-1.hitTestBehavior
+1. [hitTestBehavior](../reference/apis-arkui/arkui-ts/ts-universal-attributes-hit-test-behavior.md#hittestbehavior)
 
-2.自定义事件分发
+2. [自定义事件分发](../reference/apis-arkui/arkui-ts/ts-universal-attributes-on-child-touch-test.md)
 
-3.自定义手势判定
+3. [自定义手势判定](../reference/apis-arkui/arkui-ts/ts-gesture-customize-judge.md)
 
 ## 如何实现对列表的列表项进行拖动时，其他列表项自动补位和动态排列的效果(API 10)
  
 **解决措施**
 
-1.为列表或宫格项(item)添加拖拽能力，使能draggable，并注册onDragStart； 
+1. 为列表或宫格项(item)添加拖拽能力，使能draggable，并注册onDragStart； 
 
-2.在onDragStart回调中将所拖条目设置visibility为HIDDEN状态； 
+2. 在onDragStart回调中将所拖条目设置visibility为HIDDEN状态； 
 
-2.在列表或宫格项(item)上注册onDragMove监听拖起的移动事件； 
+3. 在列表或宫格项(item)上注册onDragMove监听拖起的移动事件； 
 
-3.拖动过程中，通过onDragMove的event参数获取到拖拽跟手点坐标； 
+4. 拖动过程中，通过onDragMove的event参数获取到拖拽跟手点坐标； 
 
-4.计算跟手点坐标与item中线的距离关系，当重合时，启动挤位动效； 
+5. 计算跟手点坐标与item中线的距离关系，当重合时，启动挤位动效； 
 
-5.Item布局信息可通过componentUtils API获取到； 
+6. Item布局信息可通过componentUtils API获取到； 
 
-6.挤位动效通过animateTo来改变datasource里的index，触发list的排序动效； 
+7. 挤位动效通过animateTo来改变datasource里的index，触发list的排序动效； 
 
-7.落位动效可通过自定义动效完成。
+8. 落位动效可通过自定义动效完成。
 
- **示例代码**
+**示例代码**
 
 ```ts
 // 起拖时记录拖拽item
@@ -370,10 +370,10 @@ Image组件默认支持拖拽，中转站感知到拖拽后会主动拉起。
 
 **解决措施**
 
-1.设置Image组件的draggable属性为false。
+1. 设置Image组件的draggable属性为false。
 
-2.在设置->系统->中转站中关闭“拖拽时启动”功能。
+2. 在设置->系统->中转站中关闭“拖拽时启动”功能。
 
 **参考链接**
 
-draggable
+[draggable](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md#draggable9)

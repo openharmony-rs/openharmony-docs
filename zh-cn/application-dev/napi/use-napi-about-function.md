@@ -24,14 +24,14 @@
 
 ## 使用示例
 
-Node-API接口开发流程参考使用Node-API实现跨语言交互开发流程，本文仅对接口对应C++及ArkTS相关代码进行展示。
+Node-API接口开发流程参考[使用Node-API实现跨语言交互开发流程](use-napi-process.md)，本文仅对接口对应C++及ArkTS相关代码进行展示。
 ## napi_get_cb_info
 
 获取有关函数调用的详细信息。
 
 cpp部分代码
 
-<!-- @napi_get_cb_info --> 
+<!-- @[napi_get_cb_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/cpp/napi_init.cpp) --> 
 
 ``` C++
 #include "napi/native_api.h"
@@ -67,7 +67,7 @@ static napi_value GetCbContext(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @napi_get_cb_info_api --> 
+<!-- @[napi_get_cb_info_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/cpp/types/libentry/Index.d.ts) --> 
 
 ``` TypeScript
 export const getCbArgs: <T>(arg: T) => T; // napi_get_cb_info
@@ -80,7 +80,7 @@ export const getCbContext: () => Object;
 
 ArkTS 侧示例代码
 
-<!-- @ark_napi_get_cb_info_header -->
+<!-- @[ark_napi_get_cb_info_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -111,7 +111,7 @@ class Student {
 }
 ```
 
-<!-- @ark_napi_get_cb_info --> 
+<!-- @[ark_napi_get_cb_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 // napi_get_cb_info
@@ -141,11 +141,14 @@ hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_cb_info get thisArg:%{publ
 
 在C/C++侧对ArkTS函数进行调用。
 
-注意事项：napi_call_function传入的argv长度需不少于argc；argc为0时可传nullptr，否则argv元素应为有效的`napi_value`。
+注意事项：
+- napi_call_function传入的argv长度需不少于argc。
+- argc为0时可传nullptr，否则argv元素应为有效的`napi_value`。
+- napi_call_function执行后会触发微任务执行。
 
 cpp部分代码
 
-<!-- @napi_call_function --> 
+<!-- @[napi_call_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/cpp/napi_init.cpp) --> 
 
 ``` C++
 // napi_call_function
@@ -186,7 +189,7 @@ static napi_value ObjCallFunction(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @napi_call_function_api --> 
+<!-- @[napi_call_function_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/cpp/types/libentry/Index.d.ts) --> 
 
 ``` TypeScript
 export const callFunction: (func: Function) => number; // napi_call_function
@@ -196,7 +199,7 @@ export const objCallFunction: (obj: Object, func: Function) => number;
 
 ArkTS 侧示例代码
 
-<!-- @ark_napi_call_function_header -->
+<!-- @[ark_napi_call_function_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 function returnNumber(num: number) {
@@ -210,7 +213,7 @@ class Person {
 }
 ```
 
-<!-- @ark_napi_call_function --> 
+<!-- @[ark_napi_call_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 // napi_call_function
@@ -227,7 +230,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API call_function:%{public}d',
 
 cpp部分代码
 
-<!-- @napi_create_function --> 
+<!-- @[napi_create_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/cpp/napi_init.cpp) --> 
 
 ``` C++
 // napi_create_function
@@ -261,7 +264,7 @@ EXTERN_C_END
 
 接口声明
 
-<!-- @napi_create_function_api --> 
+<!-- @[napi_create_function_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/cpp/types/libentry/Index.d.ts) --> 
 
 ``` TypeScript
 export const calculateArea: (width: number, height: number) => number; // napi_create_function
@@ -269,7 +272,7 @@ export const calculateArea: (width: number, height: number) => number; // napi_c
 
 ArkTS 侧示例代码
 
-<!-- @ark_napi_create_function --> 
+<!-- @[ark_napi_create_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIFunction/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 // napi_create_function

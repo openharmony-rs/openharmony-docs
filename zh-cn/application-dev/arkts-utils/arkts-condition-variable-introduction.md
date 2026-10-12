@@ -6,7 +6,7 @@
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
-ArkTS引入了异步任务的等待和唤醒能力，以解决多线程任务时序控制问题。异步任务通过ConditionVariable对象实现等待和唤醒机制，该对象支持跨线程引用传递。
+ArkTS引入了异步任务的等待和唤醒能力，以解决多线程任务时序控制问题。异步任务通过[ConditionVariable](../reference/apis-arkts/arkts-apis-arkts-utils-locks.md#conditionvariable18)对象实现等待和唤醒机制，该对象支持跨线程引用传递。
 
 ArkTS语言支持异步操作，从API version 18开始支持异步任务的等待和唤醒功能。当异步任务收到唤醒通知或等待超时后，将继续执行。
 
@@ -16,9 +16,9 @@ ArkTS语言支持异步操作，从API version 18开始支持异步任务的等�
 
 ## 使用示例
 
-Sendable共享对象在不同线程控制异步任务等待和唤醒的示例如下：
+[Sendable](arkts-sendable.md)共享对象在不同线程控制异步任务等待和唤醒的示例如下：
 
-   <!-- @sendable_object -->
+   <!-- @[sendable_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/AsynchronousWaiting/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    import { ArkTSUtils, taskpool } from '@kit.ArkTS';

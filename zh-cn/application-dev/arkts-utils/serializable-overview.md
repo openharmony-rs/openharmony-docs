@@ -11,13 +11,13 @@
 > **说明：**
 >
 > - 单次序列化传输的数据量大小限制为16MB。
-> - 序列化不支持使用@State装饰器、@Prop装饰器、@Link装饰器等装饰器修饰的复杂类型。
+> - 序列化不支持使用[@State装饰器](../ui/state-management/arkts-state.md)、[@Prop装饰器](../ui/state-management/arkts-prop.md)、[@Link装饰器](../ui/state-management/arkts-link.md)等装饰器修饰的复杂类型。
 
 目前ArkTS支持线程间通信的对象有以下几种：
 
-- 普通对象：可直接传递基本数据类型及自定义对象（需满足序列化规范）。
-- 容器类对象：可直接传递已经支持的容器类对象（需满足序列化规范）。
-- ArrayBuffer对象：用于二进制数据的高效传递，适用于大段连续内存数据（如图片、音频原始数据）。
-- SharedArrayBuffer对象：支持多线程共享内存，允许线程间直接访问同一块内存区域，提升数据传递效率。
-- Transferable对象（NativeBinding对象）：支持跨线程转移对象所有权（如文件描述符、图形资源等），转移后原线程不再拥有访问权限。
-- Sendable对象：符合ArkTS语言规范的可共享对象，支持的数据类型详见Sendable支持的数据类型，需要满足Sendable约束，详情可查Sendable使用规则与约束。
+- [普通对象](normal-object.md)：可直接传递基本数据类型及自定义对象（需满足序列化规范）。
+- [容器类对象](container-object.md)：可直接传递已经支持的容器类对象（需满足序列化规范）。
+- [ArrayBuffer对象](arraybuffer-object.md)：用于二进制数据的高效传递，适用于大段连续内存数据（如图片、音频原始数据）。
+- [SharedArrayBuffer对象](shared-arraybuffer-object.md)：支持多线程共享内存，允许线程间直接访问同一块内存区域，提升数据传递效率。
+- [Transferable对象（NativeBinding对象）](transferabled-object.md)：支持跨线程转移对象所有权（如文件描述符、图形资源等），转移后原线程不再拥有访问权限。
+- [Sendable对象](arkts-sendable.md)：符合ArkTS语言规范的可共享对象，支持的数据类型详见[Sendable支持的数据类型](arkts-sendable.md#sendable支持的数据类型)，需要满足Sendable约束，详情可查[Sendable使用规则与约束](sendable-constraints.md)。

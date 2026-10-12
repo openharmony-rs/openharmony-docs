@@ -9,13 +9,13 @@
 
 日历账户‌用于存储和管理个人或团队的日程，通过日历账户，用户可以方便地查看、编辑和共享日程信息。
 
-日历管理器CalendarManager用于管理日历账户Calendar。日历账户主要包含账户信息CalendarAccount和配置信息CalendarConfig。
+日历管理器[CalendarManager](../reference/apis-calendar-kit/js-apis-calendarManager.md#calendarmanager)用于管理日历账户[Calendar](../reference/apis-calendar-kit/js-apis-calendarManager.md#calendar)。日历账户主要包含账户信息[CalendarAccount](../reference/apis-calendar-kit/js-apis-calendarManager.md#calendaraccount)和配置信息[CalendarConfig](../reference/apis-calendar-kit/js-apis-calendarManager.md#calendarconfig)。
 
-开发者可以创建属于应用特有的日历账户，还可以对日历账户进行新增、删除、更新和查询。此外，每个日程Event归属于某一个特定的日历账户，可以通过日历账户对该账户下面的日程进行管理，具体相关指导可见日程管理。
+开发者可以创建属于应用特有的日历账户，还可以对日历账户进行新增、删除、更新和查询。此外，每个日程[Event](../reference/apis-calendar-kit/js-apis-calendarManager.md#event)归属于某一个特定的日历账户，可以通过日历账户对该账户下面的日程进行管理，具体相关指导可见[日程管理](calendarmanager-event-developer.md)。
 
 ## 接口说明
 
-以下是日历账户管理的相关接口，更多详细接口及使用请参考@ohos.calendarManager。
+以下是日历账户管理的相关接口，更多详细接口及使用请参考[@ohos.calendarManager](../reference/apis-calendar-kit/js-apis-calendarManager.md)。
 
 | 接口名称                                                     | 描述                                                         |
 | ----------------------------------------------------------- | ------------------------------------------------------------ |
@@ -33,7 +33,7 @@
 
 1. 导入相关依赖。
 
-    <!-- @calendarData_entryAbilityImport -->
+    <!-- @[calendarData_entryAbilityImport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/entryability/EntryAbility.ets) -->
     
     ``` TypeScript
     import { abilityAccessCtrl, AbilityConstant, common, PermissionRequestResult, Permissions, UIAbility, Want } from '@kit.AbilityKit';
@@ -43,11 +43,11 @@
     import { hilog } from '@kit.PerformanceAnalysisKit';
     ```
 
-2. 申请权限。使用Calendar Kit时，需要在module.json5中声明申请读写日历日程所需的权限：`ohos.permission.READ_CALENDAR`和`ohos.permission.WRITE_CALENDAR`。具体指导可见声明权限。
+2. 申请权限。使用Calendar Kit时，需要在module.json5中声明申请读写日历日程所需的权限：`ohos.permission.READ_CALENDAR`和`ohos.permission.WRITE_CALENDAR`。具体指导可见[声明权限](../security/AccessToken/declare-permissions.md)。
 
 3. 根据上下文获取日历管理器对象calendarMgr，用于对日历账户进行相关管理操作。推荐在`EntryAbility.ets`文件中进行操作。
 
-    <!-- @calendarData_entryAbility -->
+    <!-- @[calendarData_entryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/entryability/EntryAbility.ets) -->
     
     ``` TypeScript
     const DOMAIN = 0x0000;
@@ -105,7 +105,7 @@
 
 4. 根据日历账户信息，创建一个日历账户Calendar对象。
 
-    <!-- @calendarData_indexImport -->
+    <!-- @[calendarData_indexImport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -123,7 +123,7 @@
       displayName: 'MyCalendar'
     };
     ```
-    <!-- @calendarData_createAccount -->
+    <!-- @[calendarData_createAccount](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     // 创建日历账户
@@ -139,7 +139,7 @@
 
 5. 日历账户创建之后，日历账户颜色默认为黑色，不指定日历账户颜色可能导致部分版本/设备深色模式下显示效果不佳。开发者需要调用setConfig()接口设置日历配置信息，包括是否打开日历账户下的日程提醒能力、设置日历账户颜色。
 
-    <!-- @calendarData_setConfig -->
+    <!-- @[calendarData_setConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     const calendarAccounts: calendarManager.CalendarAccount = {
@@ -172,7 +172,7 @@
 
 6. 可以查询指定日历账户。
 
-    <!-- @calendarData_getAccountByParam -->
+    <!-- @[calendarData_getAccountByParam](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     calendarMgr?.getCalendar(calendarAccount).then((data: calendarManager.Calendar) => {
@@ -184,7 +184,7 @@
 
 7. 也可以查询默认日历账户，默认日历账户是日历存储首次运行时创建的，若创建日程时不关注归属哪个账户，则无须单独创建日历账户，可以直接使用默认日历账户。
 
-    <!-- @calendarData_getDefaultAccount -->
+    <!-- @[calendarData_getDefaultAccount](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     calendarMgr?.getCalendar().then((data: calendarManager.Calendar) => {
@@ -198,7 +198,7 @@
 
    由于涉及数据隐私安全，进行了权限管控的应用无法获取其他应用创建的账户信息。
    
-    <!-- @calendarData_getAllCalendars -->
+    <!-- @[calendarData_getAllCalendars](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     calendarMgr?.getAllCalendars().then((data: calendarManager.Calendar[]) => {
@@ -214,7 +214,7 @@
 
 9. 删除指定的日历账户，删除账户后，该账户下的所有日程会全部删除。
 
-    <!-- @calendarData_deleteCalendar -->
+    <!-- @[calendarData_deleteCalendar](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Calendar/CalendarManager/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     if (!calendar || calendar === null) {

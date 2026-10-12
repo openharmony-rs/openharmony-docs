@@ -29,7 +29,7 @@ napi_status napi_load_module(napi_env env, const char* path, napi_value* result)
 - 禁止在线程安全函数的回调函数当中进行文件路径的加载。
 - 在信号函数中调用不安全，直接调用可能导致栈溢出。
 
-建议使用napi_load_module_with_info来进行模块加载，该接口支持了更多的场景。
+建议使用[napi_load_module_with_info](use-napi-load-module-with-info.md)来进行模块加载，该接口支持了更多的场景。
 
 ## napi_load_module支持的场景
 | 场景            | 详细分类           | 说明                         |
@@ -45,7 +45,7 @@ napi_status napi_load_module(napi_env env, const char* path, napi_value* result)
 
 - **加载系统模块**
 
-    <!-- @napi_load_module_napi_init -->
+    <!-- @[napi_load_module_napi_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPILoadModule/entry/src/main/cpp/napi_init.cpp) -->
     
     ``` C++
     static napi_value loadModule(napi_env env, napi_callback_info info)
@@ -89,7 +89,7 @@ napi_status napi_load_module(napi_env env, const char* path, napi_value* result)
 
     当加载文件中的模块时，如以下ArkTS代码：
 
-    <!-- @napi_load_module_napi_test -->
+    <!-- @[napi_load_module_napi_test](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPILoadModule/entry/src/main/ets/Test.ets) -->
     
     ``` TypeScript
     let value = 123;
@@ -101,7 +101,7 @@ napi_status napi_load_module(napi_env env, const char* path, napi_value* result)
 
 1. 需要在模块的build-profile.json5文件中进行以下配置：
 
-    <!-- @napi_load_module_napi_build -->  
+    <!-- @[napi_load_module_napi_build](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPILoadModule/entry/build-profile.json5) -->  
     
     ``` JSON5
     "buildOption": {
@@ -125,7 +125,7 @@ napi_status napi_load_module(napi_env env, const char* path, napi_value* result)
 
 2. 使用napi_load_module加载Test文件，调用函数test以及获取变量value：
 
-    <!-- @napi_load_module_napi_file -->
+    <!-- @[napi_load_module_napi_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPILoadModule/entry/src/main/cpp/file.cpp) -->
     
     ``` C++
     static napi_value loadModule(napi_env env, napi_callback_info info)

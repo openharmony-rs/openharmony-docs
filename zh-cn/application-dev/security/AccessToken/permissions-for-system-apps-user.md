@@ -7,15 +7,15 @@
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
 
-在申请目标权限前，建议开发者先了解不同权限的申请路径，对权限的工作流程有基本了解后，再结合以下权限字段的具体说明，判断应用能否申请目标权限，提高开发效率。
+在申请目标权限前，建议开发者先了解[不同权限的申请路径](determine-application-mode.md)，对权限的工作流程有基本了解后，再结合以下权限字段的具体说明，判断应用能否申请目标权限，提高开发效率。
 
 > **说明：**
 >
 > - 以下权限仅对APL等级为system_basic及以上的应用开放，不向APL等级为normal的应用开放。
 > - 以下权限的授权方式均为user_grant（用户授权）。
-> - 以下权限可通过访问控制列表（ACL）的方式跨级别申请。
+> - 以下权限可通过[访问控制列表（ACL）](app-permission-mgmt-overview.md#权限机制中的基本概念)的方式跨级别申请。
 
-申请流程可参考选择申请权限的方式。
+申请流程可参考[选择申请权限的方式](determine-application-mode.md)。
 
 ## ohos.permission.GET_INSTALLED_BUNDLE_LIST
 

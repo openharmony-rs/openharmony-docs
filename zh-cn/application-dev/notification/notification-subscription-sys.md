@@ -2,31 +2,31 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
 应用需要接收通知，必须先发起订阅，通知子系统提供两种接口：订阅所有应用发布的通知和订阅某些应用发布的通知。
 
 
-系统提供NotificationSubscriber对象，用于提供订阅成功、通知接收、通知取消、订阅取消等回调接口，将变化信息回调给订阅者。
+系统提供[NotificationSubscriber](../reference/apis-notification-kit/js-apis-inner-notification-notificationSubscriber-sys.md)对象，用于提供订阅成功、通知接收、通知取消、订阅取消等回调接口，将变化信息回调给订阅者。
 
 ## 通知订阅原理
 
-通知业务流程由通知子系统、通知发送端、通知订阅端组成。一条通知从通知发送端产生，通过IPC通信发送到通知子系统，再由通知子系统分发给通知订阅端。
+通知业务流程由通知子系统、通知发送端、[通知订阅](notification-glossary.md#notification-subscription通知订阅)端组成。一条通知从通知发送端产生，通过[IPC通信](../ipc/ipc-rpc-overview.md)发送到通知子系统，再由通知子系统分发给通知订阅端。
 
 * 通知发送端：可以是三方应用或系统应用。开发者重点关注。
 
-* 通知订阅端：只能为系统应用，比如通知中心。通知中心默认会订阅手机上所有应用对当前用户的通知。开发者无需关注。
+* 通知订阅端：只能为系统应用，比如[通知中心](notification-glossary.md#notification-center通知中心)。通知中心默认会订阅手机上所有应用对当前用户的通知。开发者无需关注。
 
 **图1** 通知业务流程  
 
-notification_internal_principle
+![notification_internal_principle](figures/notification_internal_principle.png)
 
 
 ## 接口说明
 
-通知订阅主要接口如下。详细接口介绍请参见@ohos.notificationSubscribe (NotificationSubscribe模块)(系统接口)。
+[通知订阅](notification-glossary.md#notification-subscription通知订阅)主要接口如下。详细接口介绍请参见[@ohos.notificationSubscribe (NotificationSubscribe模块)(系统接口)](../reference/apis-notification-kit/js-apis-notificationSubscribe-sys.md)。
 
 **表1** 通知订阅接口介绍
 
@@ -37,13 +37,13 @@ notification_internal_principle
 
 **表2** 通知订阅回调接口介绍
 
-详细接口介绍请参见NotificationSubscriber。
+详细接口介绍请参见[NotificationSubscriber](../reference/apis-notification-kit/js-apis-inner-notification-notificationSubscriber-sys.md)。
 
 | **接口名** | **描述** |
 | -------- | -------- |
 | onConsume?: (data:&nbsp;SubscribeCallbackData)&nbsp;=&gt;&nbsp;void  | 通知回调。               |
 | onCancel?: (data:&nbsp;SubscribeCallbackData)&nbsp;=&gt;&nbsp;void   | 通知取消回调。           |
-| onUpdate?: (data:&nbsp;NotificationSortingMap)&nbsp;=&gt;&nbsp;void  | 通知排序更新回调。       |
+| onUpdate?: (data:&nbsp;NotificationSortingMap)&nbsp;=&gt;&nbsp;void  | [通知排序](notification-glossary.md#notification-sorting通知排序)更新回调。       |
 | onConnect?: ()&nbsp;=&gt;&nbsp;void                                 | 订阅成功回调。           |
 | onDisconnect?: ()&nbsp;=&gt;&nbsp;void                              | 取消订阅回调。           |
 | onDestroy?: ()&nbsp;=&gt;&nbsp;void                                  | 与通知子系统断开回调。   |
@@ -54,15 +54,15 @@ notification_internal_principle
 | onEnabledPriorityChanged?: (callbackData:&nbsp;EnabledPriorityNotificationCallbackData)&nbsp;=&gt;&nbsp;void                               | 通知优先级总开关状态变化回调。   |
 | onEnabledPriorityByBundleChanged?: (callbackData:&nbsp;EnabledPriorityNotificationByBundleCallbackData)&nbsp;=&gt;&nbsp;void                               | 应用通知优先级开关状态变化回调。   |
 | onSystemUpdate?: SystemUpdateCallback            | 系统属性值变化回调。   |
-| onEnabledSilentReminderChanged?: EnabledSilentReminderChangedCallback   | 应用通知静默提醒的使能状态变化回调。   |
+| onEnabledSilentReminderChanged?: EnabledSilentReminderChangedCallback   | 应用通知[静默提醒](notification-glossary.md#silent-reminder静默提醒)的使能状态变化回调。   |
 | onBadgeEnabledChanged?: BadgeEnabledChangedCallback   | 应用角标的使能状态变化回调。   |
 
 
 ## 开发步骤
 
-1. 申请`ohos.permission.NOTIFICATION_SYSTEM_SUBSCRIBER`权限，配置方式请参见申请应用权限。
+1. 申请`ohos.permission.NOTIFICATION_SYSTEM_SUBSCRIBER`权限，配置方式请参见[申请应用权限](../security/AccessToken/determine-application-mode.md#system_basic等级应用申请权限的方式)。
 
-2. 导入通知订阅模块。
+2. 导入[通知订阅](notification-glossary.md#notification-subscription通知订阅)模块。
    
    ```ts
    import { notificationSubscribe, notificationManager } from '@kit.NotificationKit';

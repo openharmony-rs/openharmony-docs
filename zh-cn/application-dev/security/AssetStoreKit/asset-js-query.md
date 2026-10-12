@@ -9,7 +9,7 @@
 
 ## 接口介绍
 
-开发者可以查阅API文档，获取关键资产查询接口的详细说明：异步接口query(query: AssetMap)、同步接口querySync(query: AssetMap)。
+开发者可以查阅API文档，获取关键资产查询接口的详细说明：异步接口[query(query: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetquery)、同步接口[querySync(query: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetquerysync12)。
 
 在查询关键资产时，关键资产属性的内容（AssetMap）参数如下表所示：
 > **注意：**
@@ -20,10 +20,10 @@
 | 属性名称（Tag）        | 属性内容（Value）                                             | 是否必选  | 说明                                                         |
 | --------------------- | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ |
 | ALIAS                 | 类型为Uint8Array，长度为1-256字节。                            | 可选     | 关键资产别名，每条关键资产的唯一索引。                       |
-| ACCESSIBILITY         | 类型为number，取值范围详见Accessibility。 | 可选     | 基于锁屏状态的访问控制。                                |
+| ACCESSIBILITY         | 类型为number，取值范围详见[Accessibility](../../reference/apis-asset-store-kit/js-apis-asset.md#accessibility)。 | 可选     | 基于锁屏状态的访问控制。                                |
 | REQUIRE_PASSWORD_SET  | 类型为boolean。                                                   | 可选     | 是否仅在设置了锁屏密码的情况下，可访问关键资产。为true时表示查询仅用户设置了锁屏密码才允许访问的关键资产；为false时表示查询无论用户是否设置锁屏密码，均可访问的关键资产。                 |
-| AUTH_TYPE             | 类型为number，取值范围详见AuthType。 | 可选     | 访问关键资产所需的用户认证类型。                               |
-| SYNC_TYPE             | 类型为number，取值范围详见SyncType。 | 可选     | 关键资产支持的同步类型。                                      |
+| AUTH_TYPE             | 类型为number，取值范围详见[AuthType](../../reference/apis-asset-store-kit/js-apis-asset.md#authtype)。 | 可选     | 访问关键资产所需的用户认证类型。                               |
+| SYNC_TYPE             | 类型为number，取值范围详见[SyncType](../../reference/apis-asset-store-kit/js-apis-asset.md#synctype)。 | 可选     | 关键资产支持的同步类型。                                      |
 | IS_PERSISTENT         | 类型为boolean。                                                   | 可选     | 在应用卸载时是否需要保留关键资产。为true时表示查询应用卸载后会被保留的关键资产；为false时表示查询应用卸载后会被删除的关键资产。               |
 | DATA_LABEL_CRITICAL_1 | 类型为Uint8Array，长度为1-2048字节。                        | 可选     | 关键资产附属信息，内容由业务自定义且有完整性保护。<br>**说明：** 在API version 12及之前版本，长度为1-512字节。 |
 | DATA_LABEL_CRITICAL_2 | 类型为Uint8Array，长度为1-2048字节。                        | 可选     | 关键资产附属信息，内容由业务自定义且有完整性保护。<br/>**说明：** 在API version 12及之前版本，长度为1-512字节。 |
@@ -37,7 +37,7 @@
 | DATA_LABEL_NORMAL_LOCAL_2<sup>12+</sup> | 类型为Uint8Array，长度为1-2048字节。 | 可选 | 关键资产附属的本地信息，内容由业务自定义且无完整性保护，该项信息不会进行同步。 |
 | DATA_LABEL_NORMAL_LOCAL_3<sup>12+</sup> | 类型为Uint8Array，长度为1-2048字节。 | 可选 | 关键资产附属的本地信息，内容由业务自定义且无完整性保护，该项信息不会进行同步。 |
 | DATA_LABEL_NORMAL_LOCAL_4<sup>12+</sup> | 类型为Uint8Array，长度为1-2048字节。 | 可选 | 关键资产附属的本地信息，内容由业务自定义且无完整性保护，该项信息不会进行同步。 |
-| RETURN_TYPE           | 类型为number，取值范围详见ReturnType。 | 可选     | 关键资产查询返回的结果类型。             |
+| RETURN_TYPE           | 类型为number，取值范围详见[ReturnType](../../reference/apis-asset-store-kit/js-apis-asset.md#returntype)。 | 可选     | 关键资产查询返回的结果类型。             |
 | RETURN_LIMIT          | 类型为number。                                                 | 可选     | 关键资产查询返回的结果数量。                                         |
 | RETURN_OFFSET         | 类型为number，取值范围：1-65536。                              | 可选     | 关键资产查询返回的结果偏移量。<br>**说明：** 用于分批查询场景时，指定从第几个结果开始返回。                                 |
 | RETURN_ORDERED_BY     | 类型为number，取值范围：asset.Tag.DATA_LABEL_xxx。             | 可选     | 关键资产查询返回的结果排序依据，仅支持按照附属信息排序。<br>**说明：** 默认按照关键资产新增的顺序返回。 |
@@ -52,18 +52,18 @@
 
 > **说明：**
 >
-> 本模块提供了异步和同步两套接口，以下为异步接口的使用示例，同步接口详见@ohos.security.asset (关键资产存储服务)。
+> 本模块提供了异步和同步两套接口，以下为异步接口的使用示例，同步接口详见[@ohos.security.asset (关键资产存储服务)](../../reference/apis-asset-store-kit/js-apis-asset.md)。
 >
-> 在指定群组中查询一条关键资产明文的使用示例详见查询单条群组关键资产明文，在指定群组中查询一条关键资产属性的使用示例详见查询单条群组关键资产属性。
+> 在指定群组中查询一条关键资产明文的使用示例详见[查询单条群组关键资产明文](asset-js-group-access-control.md#查询单条群组关键资产明文)，在指定群组中查询一条关键资产属性的使用示例详见[查询单条群组关键资产属性](asset-js-group-access-control.md#查询单条群组关键资产属性)。
 > 
-> 在查询前，需确保已有关键资产，可参考指南文档新增关键资产，否则将抛出NOT_FOUND错误（错误码24000002）。
+> 在查询前，需确保已有关键资产，可参考[指南文档](asset-js-add.md)新增关键资产，否则将抛出NOT_FOUND错误（错误码24000002）。
 
 ### 查询单条关键资产明文
 
 查询别名是demo_alias的关键资产明文。
 
 1. 引用头文件，定义工具函数。
-   <!-- @import -->
+   <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_plaintext.ets) -->
    
    ``` TypeScript
    import { asset } from '@kit.AssetStoreKit';
@@ -83,7 +83,7 @@
    ```
 
 2. 参考如下示例代码，进行业务功能开发。
-   <!-- @query_single_plaintext -->
+   <!-- @[query_single_plaintext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_plaintext.ets) -->
    
    ``` TypeScript
    let query: asset.AssetMap = new Map();
@@ -115,7 +115,7 @@
 查询别名是demo_alias的关键资产属性。
 
 1. 引用头文件，定义工具函数。
-   <!-- @import -->
+   <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_attr.ets) -->
    
    ``` TypeScript
    import { asset } from '@kit.AssetStoreKit';
@@ -129,7 +129,7 @@
    ```
 
 2. 参考如下示例代码，进行业务功能开发。
-   <!-- @query_single_attribute -->
+   <!-- @[query_single_attribute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_attr.ets) -->
    
    ``` TypeScript
    let query: asset.AssetMap = new Map();
@@ -160,7 +160,7 @@
 批量查询标签为demo_label的关键资产属性，共返回10条符合条件的查询结果，结果按DATA_LABEL_NORMAL_1属性内容排序。
 
 1. 引用头文件，定义工具函数。
-   <!-- @import -->
+   <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_batch_attrs.ets) -->
    
    ``` TypeScript
    import { asset } from '@kit.AssetStoreKit';
@@ -174,7 +174,7 @@
    ```
 
 2. 参考如下示例代码，进行业务功能开发。
-   <!-- @query_batch_attributes -->
+   <!-- @[query_batch_attributes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_batch_attrs.ets) -->
    
    ``` TypeScript
    let query: asset.AssetMap = new Map();

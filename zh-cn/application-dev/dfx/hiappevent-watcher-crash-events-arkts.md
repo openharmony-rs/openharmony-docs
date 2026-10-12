@@ -8,7 +8,7 @@
 
 ## 简介
 
-本文介绍如何使用HiAppEvent提供的ArkTS接口订阅应用崩溃事件。接口的详细使用说明（参数限制、取值范围等）请参考@ohos.hiviewdfx.hiAppEvent。
+本文介绍如何使用HiAppEvent提供的ArkTS接口订阅应用崩溃事件。接口的详细使用说明（参数限制、取值范围等）请参考[@ohos.hiviewdfx.hiAppEvent](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md)。
 
 > **说明：**
 >
@@ -31,17 +31,17 @@
 
 1. 在DevEco Studio新建Native C++模板工程，编辑“entry > src > main > ets > entryability > EntryAbility.ets”文件，导入依赖模块。示例代码如下：
 
-    <!-- @Crash_Click_ArkTS_Header -->
+    <!-- @[Crash_Click_ArkTS_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
     
     ``` TypeScript
     import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
     import { deviceInfo } from '@kit.BasicServicesKit';
     ```
 
-2. 编辑工程中的“entry > src > main > ets  > entryability > EntryAbility.ets”文件，在onCreate函数中设置事件的崩溃事件自定义参数和崩溃日志自定义规格设置，示例代码如下：
+2. 编辑工程中的“entry > src > main > ets  > entryability > EntryAbility.ets”文件，在onCreate函数中设置事件的[崩溃事件自定义参数](hiappevent-watcher-crash-events.md#崩溃事件自定义参数设置)和崩溃日志[自定义规格设置](hiappevent-watcher-crash-events.md#自定义规格设置)，示例代码如下：
 
 
-    <!-- @Crash_ArkTS_Add_Event -->
+    <!-- @[Crash_ArkTS_Add_Event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) --> 
     
     ``` TypeScript
     // 构建崩溃事件的自定义参数
@@ -73,7 +73,7 @@
     if (deviceInfo.sdkApiVersion >= 24) {
       let crashEventPolicy : hiAppEvent.EventPolicy = {
         "appCrashPolicy": { // 崩溃事件配置策略
-          "pageSwitchLogEnable": true, // 从API版本24开始，支持使能页面切换日志
+          "pageSwitchLogEnable": true, // 从API version 24开始，支持使能页面切换日志
           "collectMinidump": true // 从API版本26.0.0开始，支持使能minidump
         }
       };
@@ -88,7 +88,7 @@
 
 3. 编辑工程中的“entry > src > main > ets > entryability > EntryAbility.ets”文件，在 `onCreate` 函数中订阅系统事件。示例代码如下：
 
-    <!-- @CrashEvent_ArkTS_Add_Watcher -->    
+    <!-- @[CrashEvent_ArkTS_Add_Watcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->    
     
     ``` TypeScript
     // 添加崩溃事件观察者
@@ -161,7 +161,7 @@
 
       编辑工程中的“entry > src > main > cpp > napi_init.cpp”文件，添加TestNullptr方法，并将TestNullptr注册为ArkTS接口，增加如下代码：
 
-      <!-- @Sys_Native_Nullptr_Event_C++ -->
+      <!-- @[Sys_Native_Nullptr_Event_C++](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
       
       ``` C++
       static napi_value TestNullptr(napi_env env, napi_callback_info info)
@@ -172,7 +172,7 @@
       }
       ```
 
-      <!-- @Sys_Native_Nullptr_Event_C++_Init -->
+      <!-- @[Sys_Native_Nullptr_Event_C++_Init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
       
       ``` C++
       static napi_value Init(napi_env env, napi_value exports)
@@ -189,7 +189,7 @@
 
       在"entry > src > main > cpp > types > libentry > Index.d.ts"文件中，定义ArkTS接口：
 
-      <!-- @Sys_Native_Crash_Event_C++_Index.d.ts -->
+      <!-- @[Sys_Native_Crash_Event_C++_Index.d.ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/types/libentry/Index.d.ts) -->
       
       ``` TypeScript
       export const testNullptr: () => void;
@@ -197,7 +197,7 @@
 
       编辑工程中的“entry > src > main > ets > pages > Index.ets”文件，添加按钮并在其onClick函数中构造崩溃场景，以触发崩溃事件。示例代码如下：
 
-      <!-- @Native_CrashEvent_Button -->
+      <!-- @[Native_CrashEvent_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
       
       ``` TypeScript
       Button('NativeCrash')
@@ -218,7 +218,7 @@
 
       编辑工程中的“entry > src > main > ets > pages > Index.ets”文件，添加按钮并在其onClick函数中构造崩溃场景，以触发崩溃事件。示例代码如下：
 
-      <!-- @JsError_CrashEvent_Button -->
+      <!-- @[JsError_CrashEvent_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
       
       ``` TypeScript
       Button('JsError')
@@ -249,7 +249,7 @@
 
 若应用未主动捕获崩溃异常，系统处理崩溃后应用将退出。**应用下次启动时**，HiAppEvent将崩溃事件上报给已注册的监听，完成回调。
 
-若应用无法启动或长时间未启动，开发者可以参考使用FaultLogExtensionAbility订阅事件回调重写的函数，进行延迟上报。
+若应用无法启动或长时间未启动，开发者可以参考[使用FaultLogExtensionAbility订阅事件](./fault-log-extension-app-events-arkts.md)回调重写的函数，进行延迟上报。
 
 **应用主动捕获崩溃异常场景**
 
@@ -257,11 +257,11 @@
 
 1. 异常处理中未主动退出，应用崩溃后将不会退出。
 
-   采用errorManager.on方法捕获异常会导致JsError类型的崩溃事件在应用退出前回调。若应用主动注册崩溃信号处理函数但未主动退出，会导致NativeCrash类型的崩溃事件在应用退出前回调。
+   采用[errorManager.on](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronerror)方法捕获异常会导致JsError类型的崩溃事件在应用退出前回调。若应用主动注册[崩溃信号](cppcrash-guidelines.md#系统处理的崩溃信号)处理函数但未主动退出，会导致NativeCrash类型的崩溃事件在应用退出前回调。
 
 2. 异常处理耗时过长，导致应用退出延迟。
 
-在开发调试阶段，HiAppEvent上报事件完成回调后，可以在DevEco Studio的HiLog窗口查看JsError类型崩溃事件内容。NativeCrash类型崩溃事件内容略有不同，具体参见崩溃事件字段说明。JsError类型崩溃事件内容样例如下：
+在开发调试阶段，HiAppEvent上报事件完成回调后，可以在DevEco Studio的HiLog窗口查看JsError类型崩溃事件内容。NativeCrash类型崩溃事件内容略有不同，具体参见[崩溃事件字段说明](hiappevent-watcher-crash-events.md#事件字段说明)。JsError类型崩溃事件内容样例如下：
 
 ```text
 HiAppEvent onReceive: domain=OS
@@ -292,13 +292,13 @@ HiAppEvent eventInfo.params.test_data=100
 
 ## 从Faultlogger接口迁移崩溃事件
 
-@ohos.faultLogger (故障日志获取)接口从API version 18开始废弃使用，不再维护。后续版本推荐使用@ohos.hiviewdfx.hiAppEvent订阅崩溃事件。该章节指导开发者从Faultlogger接口迁移至hiAppEvent接口，来订阅崩溃事件。
+[@ohos.faultLogger (故障日志获取)](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md)接口从API version 18开始废弃使用，不再维护。后续版本推荐使用[@ohos.hiviewdfx.hiAppEvent](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md)订阅崩溃事件。该章节指导开发者从Faultlogger接口迁移至hiAppEvent接口，来订阅崩溃事件。
 
-在Faultlogger的FaultType里定义的CPP_CRASH和JS_CRASH都属于崩溃故障类型。
+在Faultlogger的[FaultType](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faulttype)里定义的CPP_CRASH和JS_CRASH都属于崩溃故障类型。
 
 在hiAppEvent的hiAppEvent.addWatcher接口中设置事件名称为hiAppEvent.event.APP_CRASH、事件领域为hiAppEvent.domain.OS，可以订阅崩溃事件。
 
-通过hiAppEvent.AppEventInfo.params中的crash_type字段可以区分具体是哪种崩溃事件。
+通过[hiAppEvent.AppEventInfo.params](./hiappevent-watcher-crash-events.md#params字段说明)中的crash_type字段可以区分具体是哪种崩溃事件。
 
 两者对应关系如下：
 | Faultlogger.FaultType | hiAppEvent.AppEventInfo.params.crash_type |
@@ -306,7 +306,7 @@ HiAppEvent eventInfo.params.test_data=100
 | CPP_CRASH | NativeCrash |
 | JS_CRASH | JsError |
 
-FaultLogInfo与hiAppEvent.AppEventInfo.params的对应关系如下：
+[FaultLogInfo](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faultloginfo)与[hiAppEvent.AppEventInfo.params](./hiappevent-watcher-crash-events.md#params字段说明)的对应关系如下：
 | Faultlogger.FaultLogInfo | hiAppEvent.AppEventInfo.params | 说明 |
 | --- | --- | --- |
 | pid | pid | 无 |
@@ -318,8 +318,8 @@ FaultLogInfo与hiAppEvent.AppEventInfo.params的对应关系如下：
 | reason | external_log文件内容中的Reason字段 | 无 |
 | summary | external_log文件内容中的一部分 | CPP_CRASH的summary对应external_log文件内容中的Fault thread info字段；JS_CRASH的summary对应external_log文件内容中的Error name、Error message、 Stacktrace、HybridStack字段。 |
 
-使用callback回调的FaultLogger.query和使用Promise回调的FaultLogger.query都可以使用hiAppEvent.addWatcher实现相同功能。
+使用callback回调的[FaultLogger.query](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faultloggerquery9)和使用Promise回调的[FaultLogger.query](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faultloggerquery9-1)都可以使用[hiAppEvent.addWatcher](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventaddwatcher)实现相同功能。
 
-查阅开发步骤和验证观察者是否订阅到崩溃事件，了解使用hiAppEvent订阅崩溃事件（ArkTS）的具体步骤。
+查阅[开发步骤](#开发步骤)和[验证观察者是否订阅到崩溃事件](#验证观察者是否订阅到崩溃事件)，了解使用hiAppEvent订阅崩溃事件（ArkTS）的具体步骤。
 <!--RP1-->
 <!--RP1End-->

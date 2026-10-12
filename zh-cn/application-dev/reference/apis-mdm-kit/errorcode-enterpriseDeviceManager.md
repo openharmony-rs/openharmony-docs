@@ -8,7 +8,7 @@
 
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考通用错误码说明文档。
+> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
 
 ## 9200001 应用没有激活成设备管理器
 
@@ -228,8 +228,8 @@ Failed to replace the administrator application of the device.
 
 **处理步骤**
 
-1. 采用disableSuperAdmin接口取消超级设备管理权限，即可取消指定应用的被委托、被授权的设备管理权限。
-2. 采用disableAdmin接口取消指定应用的普通设备管理权限。
+1. 采用[disableSuperAdmin](js-apis-enterprise-adminManager-sys.md#adminmanagerdisablesuperadmin)接口取消超级设备管理权限，即可取消指定应用的被委托、被授权的设备管理权限。
+2. 采用[disableAdmin](js-apis-enterprise-adminManager.md#adminmanagerdisableadmin)接口取消指定应用的普通设备管理权限。
 <!--DelEnd-->
 
 ## 9200012 参数校验失败
@@ -289,13 +289,13 @@ Failed to start the ability.
 
 **可能原因**
 
-1. 当设置了禁止运行应用名单（例如调用addDisallowedRunningBundlesSync接口），且应用在禁止运行应用名单中时，启动组件会失败。
-2. 当设置了允许运行应用名单（例如调用addAllowedRunningBundles接口），且应用不在允许运行应用名单中时，启动组件会失败。
+1. 当设置了禁止运行应用名单（例如调用[addDisallowedRunningBundlesSync](js-apis-enterprise-applicationManager.md#applicationmanageradddisallowedrunningbundlessync)接口），且应用在禁止运行应用名单中时，启动组件会失败。
+2. 当设置了允许运行应用名单（例如调用[addAllowedRunningBundles](js-apis-enterprise-applicationManager.md#applicationmanageraddallowedrunningbundles21)接口），且应用不在允许运行应用名单中时，启动组件会失败。
 
 **处理步骤**
 
-1. 将应用从禁止运行名单中移除，例如调用removeDisallowedRunningBundlesSync接口。
-2. 将应用添加到允许运行名单，例如调用addAllowedRunningBundles接口。
+1. 将应用从禁止运行名单中移除，例如调用[removeDisallowedRunningBundlesSync](js-apis-enterprise-applicationManager.md#applicationmanagerremovedisallowedrunningbundlessync)接口。
+2. 将应用添加到允许运行名单，例如调用[addAllowedRunningBundles](js-apis-enterprise-applicationManager.md#applicationmanageraddallowedrunningbundles21)接口。
 
 ## 9200015 组件不存在
 
@@ -407,7 +407,7 @@ Failed to install the application.
 
 该错误码表示安装企业应用失败。
 
-如果调用接口为bundleManager.install，可能原因如下。
+如果调用接口为[bundleManager.install](./js-apis-enterprise-bundleManager.md#bundlemanagerinstall)，可能原因如下。
 1. 应用安装路径为空、不存在、无效路径。
 2. 安装多个不同包名的应用。
 3. 当安装参数flag为0时再次安装已存在的应用。
@@ -418,7 +418,7 @@ Failed to install the application.
 
 **处理步骤**
 
-如果调用接口为bundleManager.install，处理步骤如下。
+如果调用接口为[bundleManager.install](./js-apis-enterprise-bundleManager.md#bundlemanagerinstall)，处理步骤如下。
 
 1. 检查应用安装路径是有效的安装路径。
 2. 检查安装参数是有效的安装参数。
@@ -574,11 +574,11 @@ Collecting logs, please try again later.
 
 **可能原因**
 
-当已有一个日志收集任务正在执行时，调用了systemManager.startCollectLog接口创建日志收集任务。
+当已有一个日志收集任务正在执行时，调用了[systemManager.startCollectLog](./js-apis-enterprise-systemManager.md#systemmanagerstartcollectlog23)接口创建日志收集任务。
 
 **处理步骤**
 
-等前一个日志收集任务完成（即收到EnterpriseAdminExtensionAbility.onLogCollected回调）后，再调用systemManager.startCollectLog接口创建日志收集任务。
+等前一个日志收集任务完成（即收到[EnterpriseAdminExtensionAbility.onLogCollected](js-apis-EnterpriseAdminExtensionAbility.md#onlogcollected23)回调）后，再调用[systemManager.startCollectLog](./js-apis-enterprise-systemManager.md#systemmanagerstartcollectlog23)接口创建日志收集任务。
 
 ## 9201010 以太网网络接口配置失败
 
@@ -1029,7 +1029,7 @@ The specified user ID is not found.
 
 检查指定的用户ID是否为有效的用户ID。
 
-可参考包管理子系统通用错误码中的错误码17700004。
+可参考[包管理子系统通用错误码](../apis-ability-kit/errorcode-bundle.md)中的错误码17700004。
 
 ## 9201033 overlay检查失败导致应用安装失败
 
@@ -1239,7 +1239,7 @@ Prerequisites for the API call have not been satisfied. For example, distributed
 
 **处理步骤**
 
-先通过setDisallowedPolicyForAccount接口禁用设备间单向传输数据的能力，再添加允许分布式双向协同应用名单。
+先通过[setDisallowedPolicyForAccount](./js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicyforaccountdeprecated)接口禁用设备间单向传输数据的能力，再添加允许分布式双向协同应用名单。
 
 ## 9201044 指定权限未被禁用
 
@@ -1257,7 +1257,7 @@ This permission is not disallowed. Applications cannot be added to or removed fr
 
 **处理步骤**
 
-先通过setDisallowedPermission接口禁用指定权限，再给指定权限添加权限使用例外名单。
+先通过[setDisallowedPermission](./js-apis-enterprise-securityManager.md#securitymanagersetdisallowedpermission)接口禁用指定权限，再给指定权限添加权限使用例外名单。
 
 ## 9201045 指定权限不可被禁用
 
@@ -1294,3 +1294,99 @@ The number of signed-in accounts reaches the upper limit.
 **处理步骤**
 
 尝试注销多余的系统账号，并及时移除不再需要保留的系统账号。
+
+## 9201048 设备操作失败
+
+**错误信息**
+
+Failed to operate the device.
+
+**错误描述**
+
+当前设备操作失败。
+
+**可能原因**
+
+磁盘擦除失败。
+
+**处理步骤**
+
+擦除失败，请重试。
+
+## 9201052 会话超期
+
+**错误信息**
+
+USB key session time out.
+
+**错误描述**
+
+三方自定义身份认证操作过程中会话超期或authToken过期时，会产生此错误码。
+
+**可能原因**
+
+1. 调用openSession后长时间未操作，会话已过期（超过10分钟）。
+2. 通过userAuth获取的authToken已超过有效时长（10分钟）。
+
+**处理步骤**
+
+1. 重新调用openSession获取新的会话和挑战值。
+2. 重新发起用户身份认证，获取新的authToken。
+3. 使用新的会话和authToken重新执行操作。
+
+## 9201053 定时器数量已达上限
+
+**错误信息**
+
+The number of timers has reached the upper limit.
+
+**错误描述**
+
+当设备管理应用同时生效的精确定时器数量超过上限（5个）时，会产生此错误码。
+
+**可能原因**
+
+单个设备管理应用同时生效的精确定时器数量已超过5个上限。
+
+**处理步骤**
+
+销毁不再使用的定时器后重试。可通过[systemManager.destroyExactTimer](./js-apis-enterprise-systemManager.md#systemmanagerdestroyexacttimer)接口销毁定时器，释放定时器资源后再创建新的定时器。
+
+## 9201054 指定的定时器不存在或不属于当前设备管理应用
+
+**错误信息**
+
+The specified timer does not exist or does not belong to the current administrator.
+
+**错误描述**
+
+当操作不存在的定时器或操作非当前设备管理应用创建的定时器时，会产生此错误码。
+
+**可能原因**
+
+该错误码表示指定的定时器不存在或不属于当前设备管理应用，可能原因如下。
+1. 传入的定时器ID对应的定时器不存在。
+2. 传入的定时器ID对应的定时器不属于当前设备管理应用。
+
+**处理步骤**
+
+1. 检查传入的定时器ID是否正确，定时器ID由[systemManager.createExactTimer](./js-apis-enterprise-systemManager.md#systemmanagercreateexacttimer)接口创建时返回。
+2. 检查传入的定时器ID是否属于当前设备管理应用，设备管理应用只能操作自身创建的定时器。
+
+## 9201055 获取USB设备序列号失败
+
+**错误信息**
+
+Failed to obtain the USB serial number.
+
+**错误描述**
+
+获取指定USB设备序列号失败。
+
+**可能原因**
+
+USB设备未连接或不支持序列号获取。
+
+**处理步骤**
+
+重新拔插USB设备，再尝试获取序列号。

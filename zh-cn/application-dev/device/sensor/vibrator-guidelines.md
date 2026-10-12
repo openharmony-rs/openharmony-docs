@@ -2,7 +2,7 @@
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @andeszhang-->
+<!--Designer: @butterls-->
 <!--Tester: @zhaofangyuan-->
 <!--Adviser: @hu-zhiqiong-->
 
@@ -10,7 +10,7 @@
 
 当设备需要设置不同的振动效果时，可以调用Vibrator模块，例如：设备的按键可以设置不同强度和不同时长的振动，闹钟和来电可以设置不同强度和时长的单次或周期振动。
 
-详细的接口介绍请参考@ohos.vibrator (振动)。
+详细的接口介绍请参考[@ohos.vibrator (振动)](../../reference/apis-sensor-service-kit/js-apis-vibrator.md)。
 
 
 ## 接口说明
@@ -28,8 +28,8 @@
 | isSupportEffect(effectId: string, callback: AsyncCallback&lt;boolean&gt;): void | 查询是否支持传入的参数effectId。返回true则表示支持，否则不支持，使用Callback异步回调。                       |
 | getEffectInfoSync(effectId: string, param?: VibratorInfoParam): EffectInfo | 同步查询是否支持传入的参数effectId，param可指定具体马达。返回EffectInfo中isEffectSupported字段可判断是否支持。 |
 | getVibratorInfoSync(param?: VibratorInfoParam): Array&lt;VibratorInfo&gt; | 同步查询一个或所有设备的马达信息列表。返回VibratorInfo包含设备ID、马达ID、设备名称、是否支持高清振动、是否本地设备等信息。       |
-| on(type: 'vibratorStateChange', callback: Callback&lt;VibratorStatusEvent&gt;): void | 注册马达设备上线下状态变化的监听。callback参数VibratorStatusEvent可返回事件时间戳、设备ID、马达数量、上线或下线等信息。  |
-| off(type: 'vibratorStateChange', callback?: Callback&lt;VibratorStatusEvent&gt;): void | 注销马达设备上线下状态变化的监听。                                                           |
+| on(type: 'vibratorStateChange', callback: Callback&lt;VibratorStatusEvent&gt;): void | 注册马达设备上下线状态变化的监听。callback参数VibratorStatusEvent可返回事件时间戳、设备ID、马达数量、上线或下线等信息。  |
+| off(type: 'vibratorStateChange', callback?: Callback&lt;VibratorStatusEvent&gt;): void | 注销马达设备上下线状态变化的监听。                                                           |
 | isHdHapticSupported(): boolean | 查询是否支持高清振动。                                                           |
 
 
@@ -39,9 +39,9 @@
 
 | 名称         | 说明                                                         |
 | ------------ | ------------------------------------------------------------ |
-| 固定时长振动 | 传入一个固定时长，马达按照默认强度和频率触发振动，振动效果描述请参考VibrateTime。 |
-| 预置振动     | 系统中的EffectId，这些效果适用于某些固定场景，比如效果"haptic.clock.timer"通常用于用户调整计时器时的振感反馈，振动效果描述请参考VibratePreset。 |
-| 自定义振动   | 自定义振动提供给用户设计自己所需振动效果的能力，用户可通过自定义振动配置文件，并遵循相应规则编排所需振动形式，使能更加开放的振感交互体验，效果描述请参考VibrateFromFile。 |
+| 固定时长振动 | 传入一个固定时长，马达按照默认强度和频率触发振动，振动效果描述请参考[VibrateTime](../../reference/apis-sensor-service-kit/js-apis-vibrator.md#vibratetime9)。 |
+| 预置振动     | 系统中的[EffectId](../../reference/apis-sensor-service-kit/js-apis-vibrator.md#effectid)，这些效果适用于某些固定场景，比如效果"haptic.clock.timer"通常用于用户调整计时器时的振感反馈，振动效果描述请参考[VibratePreset](../../reference/apis-sensor-service-kit/js-apis-vibrator.md#vibratepreset9)。 |
+| 自定义振动   | 自定义振动提供给用户设计自己所需振动效果的能力，用户可通过自定义振动配置文件，并遵循相应规则编排所需振动形式，使能更加开放的振感交互体验，效果描述请参考[VibrateFromFile](../../reference/apis-sensor-service-kit/js-apis-vibrator.md#vibratefromfile10)。 |
 
 自定义振动配置文件为Json格式，在形式上如下所示：
 
@@ -162,11 +162,11 @@ JSON文件共包含3个属性。
 
 1. 新建一个工程。
 
-   输入图片说明
+   ![输入图片说明](figures/008.png)
 
-2. 配置权限，具体配置方式请参考声明权限。
+2. 配置权限，具体配置方式请参考[声明权限](../../security/AccessToken/declare-permissions.md)。
 
-   <!-- @vibrator_js_permission_example -->
+   <!-- @[vibrator_js_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorJsSamples/entry/src/main/module.json5) -->
    
    ``` JSON5
    "requestPermissions": [
@@ -178,7 +178,7 @@ JSON文件共包含3个属性。
 
 3. 导入模块。
 
-   <!-- @vibrator_js_development_dependency_import_example --> 
+   <!-- @[vibrator_js_development_dependency_import_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    import { vibrator } from '@kit.SensorServiceKit';
@@ -189,7 +189,7 @@ JSON文件共包含3个属性。
 
 4. 定义常量。
 
-   <!-- @vibrator_js_define_variables_example --> 
+   <!-- @[vibrator_js_define_variables_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    const fileName: string = 'vibrator.json';
@@ -200,7 +200,7 @@ JSON文件共包含3个属性。
 
    **情形一** 查询所有马达信息：
 
-   <!-- @vibrator_js_get_vibrator_info_sync_example --> 
+   <!-- @[vibrator_js_get_vibrator_info_sync_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    try {
@@ -215,7 +215,7 @@ JSON文件共包含3个属性。
 
    **情形二** 查询指定设备的一个或多个马达信息：
 
-   <!-- @vibrator_js_get_vibrator_info_sync_by_device_id_example -->
+   <!-- @[vibrator_js_get_vibrator_info_sync_by_device_id_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    try {
@@ -235,7 +235,7 @@ JSON文件共包含3个属性。
 
    **情形一** 按照指定持续时间触发马达振动：
 
-   <!-- @vibrator_js_vibrator_by_type_time_example --> 
+   <!-- @[vibrator_js_vibrator_by_type_time_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    try {
@@ -261,7 +261,7 @@ JSON文件共包含3个属性。
 
    **情形二** 按照预置振动效果触发马达振动，可先查询振动效果是否被支持，再调用振动接口：
 
-   <!-- @vibrator_js_vibrator_by_type_preset_example --> 
+   <!-- @[vibrator_js_vibrator_by_type_preset_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    try {
@@ -302,7 +302,7 @@ JSON文件共包含3个属性。
 
    **情形三** 按照自定义振动配置文件触发马达振动：
 
-   <!-- @vibrator_js_vibrator_by_type_file_example --> 
+   <!-- @[vibrator_js_vibrator_by_type_file_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    // 获取文件资源描述符
@@ -337,7 +337,7 @@ JSON文件共包含3个属性。
 
    添加短振事件的方式获取Pattern，并触发振动：
 
-   <!-- @vibrator_js_vibrator_by_type_pattern_use_transient_example --> 
+   <!-- @[vibrator_js_vibrator_by_type_pattern_use_transient_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    let builder: vibrator.VibratorPatternBuilder = new vibrator.VibratorPatternBuilder();
@@ -378,7 +378,7 @@ JSON文件共包含3个属性。
 
    添加长振事件的方式获取Pattern，并触发振动：
 
-   <!-- @vibrator_js_vibrator_by_type_pattern_use_continuous_example --> 
+   <!-- @[vibrator_js_vibrator_by_type_pattern_use_continuous_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    let builder: vibrator.VibratorPatternBuilder = new vibrator.VibratorPatternBuilder();
@@ -437,7 +437,7 @@ JSON文件共包含3个属性。
 
    ​停止固定时长振动：
 
-   <!-- @vibrator_js_stop_vibrator_by_type_time_example --> 
+   <!-- @[vibrator_js_stop_vibrator_by_type_time_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    try {
@@ -457,7 +457,7 @@ JSON文件共包含3个属性。
 
    ​停止预置振动：
 
-   <!-- @vibrator_js_stop_vibrator_by_type_preset_example --> 
+   <!-- @[vibrator_js_stop_vibrator_by_type_preset_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    try {
@@ -477,7 +477,7 @@ JSON文件共包含3个属性。
 
    **方式二** 停止所有模式的马达振动，包括自定义振动：
 
-   <!-- @vibrator_js_stop_vibrator_by_type_all_example --> 
+   <!-- @[vibrator_js_stop_vibrator_by_type_all_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    try {
@@ -497,7 +497,7 @@ JSON文件共包含3个属性。
 
    **方式三** 停止指定设备的振动：
 
-   <!-- @vibrator_js_stop_vibrator_by_device_id_example -->
+   <!-- @[vibrator_js_stop_vibrator_by_device_id_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    const vibratorInfoParam: vibrator.VibratorInfoParam = {
@@ -519,7 +519,7 @@ JSON文件共包含3个属性。
 
    注册监听。
 
-   <!-- @vibrator_js_vibrator_on_state_change_example --> 
+   <!-- @[vibrator_js_vibrator_on_state_change_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    // 回调函数
@@ -537,9 +537,9 @@ JSON文件共包含3个属性。
                }
    ```
 
-   取消监听,取消传入的callback需与注册的一致。
+   取消监听，取消传入的callback需与注册的一致。
 
-   <!-- @vibrator_js_vibrator_off_state_change_example --> 
+   <!-- @[vibrator_js_vibrator_off_state_change_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    // 回调函数
@@ -561,7 +561,7 @@ JSON文件共包含3个属性。
 
 9. 通过设备ID和马达ID获取预置振动效果信息。
 
-   <!-- @vibrator_js_vibrator_get_effect_info_sync_example --> 
+   <!-- @[vibrator_js_vibrator_get_effect_info_sync_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    try {
@@ -576,7 +576,7 @@ JSON文件共包含3个属性。
 
 10. 查询是否支持高清振动。
 
-    <!-- @vibrator_js_vibrator_is_hd_haptic_supported_example -->
+    <!-- @[vibrator_js_vibrator_is_hd_haptic_supported_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Vibrator/VibratorJsSamples/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     try {
@@ -594,6 +594,6 @@ JSON文件共包含3个属性。
 
 针对振动开发，有以下相关实例可供参考：
 
-- 振动（ArkTS）（API9）
+- [振动（ArkTS）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Vibrator/BasicVibration)
 
-- 自定义振动（ArkTS）(Full SDK)（API10）
+- [自定义振动（ArkTS）(Full SDK)（API10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Vibrator/CustomHaptic)

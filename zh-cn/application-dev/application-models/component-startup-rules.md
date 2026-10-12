@@ -10,9 +10,9 @@
 启动组件是指一切启动或连接应用组件的行为：
 
 
-- 启动UIAbility、<!--Del-->ServiceExtensionAbility、<!--DelEnd-->DataShareExtensionAbility，如使用startAbility()、<!--Del-->startServiceExtensionAbility()、<!--DelEnd-->startAbilityByCall()、openLink()等相关接口。
+- 启动[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)、<!--Del-->ServiceExtensionAbility、<!--DelEnd-->DataShareExtensionAbility，如使用[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)、<!--Del-->startServiceExtensionAbility()、<!--DelEnd-->[startAbilityByCall()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall)、[openLink()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#openlink12)等相关接口。
 
-- 连接ServiceExtensionAbility、DataShareExtensionAbility，如使用connectServiceExtensionAbility()、createDataShareHelper()等相关接口。
+- 连接ServiceExtensionAbility、DataShareExtensionAbility，如使用[connectServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability)、createDataShareHelper()等相关接口。
 
 ## 组件启动总体规则
 
@@ -30,7 +30,7 @@
 
 - **跨应用启动组件，需校验目标组件是否可以被其他应用调用。**
 
-  若目标组件exported字段配置为true，表示可以被其他应用调用；若目标组件exported字段配置为false，表示不可以被其他应用调用，还需进一步校验`ohos.permission.START_INVISIBLE_ABILITY`权限（该权限仅系统应用可申请）。组件exported字段说明可参考abilities标签。
+  若目标组件exported字段配置为true，表示可以被其他应用调用；若目标组件exported字段配置为false，表示不可以被其他应用调用，还需进一步校验`ohos.permission.START_INVISIBLE_ABILITY`权限（该权限仅系统应用可申请）。组件exported字段说明可参考[abilities标签](../quick-start/module-configuration-file.md#abilities标签)。
 
 - **位于后台的UIAbility应用，启动组件需校验BACKGROUND权限`ohos.permission.START_ABILITIES_FROM_BACKGROUND`（该权限仅系统应用可申请）。**
 
@@ -55,13 +55,13 @@
 
 - 启动ServiceExtensionAbility、DataShareExtensionAbility。
 
-- 通过startAbilityByCall()接口启动UIAbility。
+- 通过[startAbilityByCall()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall)接口启动UIAbility。
 
 > **说明：**
 > 
 > 下图中的BACKGROUND权限是指`ohos.permission.START_ABILITIES_FROM_BACKGROUND`，CALL权限是指`ohos.permission.ABILITY_BACKGROUND_COMMUNICATION`。
 
-startup-rule
+![startup-rule](figures/component-startup-inner-stage.png)
 
 
 ## 分布式跨设备组件启动规则
@@ -72,10 +72,10 @@ startup-rule
 
 - 启动ServiceExtensionAbility、DataShareExtensionAbility。
 
-- 通过startAbilityByCall()接口启动UIAbility。
+- 通过[startAbilityByCall()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybycall)接口启动UIAbility。
 
 > **说明：**
 > 
 > 下图中的BACKGROUND权限是指`ohos.permission.START_ABILITIES_FROM_BACKGROUND`，DATASYNC权限是指`ohos.permission.DISTRIBUTED_DATASYNC`。
 
-component-startup-rules
+![component-startup-rules](figures/component-startup-inter-stage.png)

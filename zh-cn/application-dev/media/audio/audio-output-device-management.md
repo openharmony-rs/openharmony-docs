@@ -6,20 +6,20 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 应用可通过以下两种方式管理全局音频输出设备：
-- 通常情况下，可以通过AudioRoutingManager查询和监听音频输出设备。
-- 从API version 20开始，AudioSessionManager提供了部分输出设备管理的接口，支持通过AudioSession查询和监听音频输出设备，方便在使用AudioSession管理音频焦点的同时管理音频输出。
+- 通常情况下，可以[通过AudioRoutingManager查询和监听音频输出设备](#通过audioroutingmanager查询和监听音频输出设备)。
+- 从API version 20开始，AudioSessionManager提供了部分输出设备管理的接口，支持[通过AudioSession查询和监听音频输出设备](#通过audiosession查询和监听音频输出设备)，方便在使用AudioSession管理音频焦点的同时管理音频输出。
 
-以下各步骤示例为片段代码，可通过示例代码右下方链接获取完整示例。
+以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample)。
 
 ## 通过AudioRoutingManager查询和监听音频输出设备
 
-本模块提供音频输出设备管理能力，包括查询设备信息和监听连接状态变化。具体API说明请参考文档AudioRoutingManager。
+本模块提供音频输出设备管理能力，包括查询设备信息和监听连接状态变化。具体API说明请参考文档[AudioRoutingManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioRoutingManager.md)。
 
 ### 创建AudioRoutingManager实例
 
 在使用AudioRoutingManager管理音频设备前，需要先导入模块并创建实例。
 
-<!-- @getRoutingManager -->
+<!-- @[getRoutingManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceManagement.ets) -->
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
@@ -46,9 +46,9 @@ let audioRoutingManager = audioManager.getRoutingManager();
 
 ### 获取输出设备信息
 
-使用getDevices方法可以获取当前所有输出设备的信息。
+使用[getDevices](../../reference/apis-audio-kit/arkts-apis-audio-AudioRoutingManager.md#getdevices9)方法可以获取当前所有输出设备的信息。
 
-<!-- @getDevices -->
+<!-- @[getDevices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceManagement.ets) -->
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
@@ -71,9 +71,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 > **说明：**
 >
-> 监听设备连接状态变化可以监听到全部的设备连接状态变化，不建议作为应用处理自动暂停的依据。应用如需处理自动暂停相关业务，可参考音频流输出设备变更原因。
+> 监听设备连接状态变化可以监听到全部的设备连接状态变化，不建议作为应用处理自动暂停的依据。应用如需处理自动暂停相关业务，可参考[音频流输出设备变更原因](audio-output-device-change.md#音频流输出设备变更原因)。
 
-<!-- @onDeviceChange -->  
+<!-- @[onDeviceChange](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceManagement.ets) -->  
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
@@ -96,7 +96,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 <!--Del-->
 ### 选择音频输出设备（仅对系统应用开放）
 
-选择音频输出设备，当前只能选择一个输出设备，以设备ID作为唯一标识。AudioDeviceDescriptors的具体信息可以参考AudioDeviceDescriptors。
+选择音频输出设备，当前只能选择一个输出设备，以设备ID作为唯一标识。AudioDeviceDescriptors的具体信息可以参考[AudioDeviceDescriptors](../../reference/apis-audio-kit/arkts-apis-audio-t.md#audiodevicedescriptors)。
 
 > **说明：**
 >
@@ -133,13 +133,13 @@ async function selectOutputDevice() {
 
 ### 获取最高优先级输出设备信息
 
-使用getPreferOutputDeviceForRendererInfo方法，可以获取当前最高优先级的输出设备。
+使用[getPreferOutputDeviceForRendererInfo](../../reference/apis-audio-kit/arkts-apis-audio-AudioRoutingManager.md#getpreferoutputdeviceforrendererinfo10)方法，可以获取当前最高优先级的输出设备。
 
 > **说明：**
 >
 > 最高优先级输出设备表示声音将在此设备输出的设备。
 
-<!-- @getPreferOutputDeviceForRendererInfo -->  
+<!-- @[getPreferOutputDeviceForRendererInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceManagement.ets) -->  
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
@@ -164,7 +164,7 @@ let audioRendererInfo: audio.AudioRendererInfo = {
 
 ### 监听最高优先级输出设备变化
 
-<!-- @onPreferOutputDeviceChangeForRendererInfo -->  
+<!-- @[onPreferOutputDeviceChangeForRendererInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceManagement.ets) -->  
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
@@ -190,14 +190,14 @@ let audioRendererInfo: audio.AudioRendererInfo = {
 ```
 
 ## 通过AudioSession查询和监听音频输出设备
-应用使用播放器的SDK播放音频流，不持有AudioRenderer对象，因此无法灵活控制播放设备的选择和状态监听。从API version 20开始，AudioSession不仅增加了焦点管理功能，还提供了音频输出设备管理功能，包括设置默认输出设备和监听设备变化。请参考以下文档获取更多信息：
-- ArkTS API：AudioSessionManager
-- C API：native_audio_session_manager.h
+应用使用播放器的SDK播放音频流，不持有[AudioRenderer](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md)对象，因此无法灵活控制播放设备的选择和状态监听。从API version 20开始，AudioSession不仅增加了焦点管理功能，还提供了音频输出设备管理功能，包括设置默认输出设备和监听设备变化。请参考以下文档获取更多信息：
+- ArkTS API：[AudioSessionManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md)
+- C API：[native_audio_session_manager.h](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md)
 
 ### 创建AudioSession实例
 在使用AudioSessionManager管理音频设备前，需要先导入模块并创建实例。
 
-<!-- @getSessionManager -->
+<!-- @[getSessionManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceManagement.ets) -->
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
@@ -210,13 +210,13 @@ let audioSessionManager = audioManager.getSessionManager();
 
 ### 设置本机默认音频输出设备
 
-setDefaultOutputDevice可以用于设置本机默认输出设备。
+[setDefaultOutputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setdefaultoutputdevice20)可以用于设置本机默认输出设备。
 > **说明：**
 > 
 > - 由于AudioSession是应用级设置，调用本接口设置默认音频输出设备会覆盖AudioRenderer的`setDefaultOutputDevice`接口设置的音频输出设备信息。
 > - 调用`setDefaultOutputDevice`设置音频输出设备后，如需取消，可将参数设为`audio.DeviceType.DEFAULT`，将音频设备选择权交还给系统。否则，每次调用`activateAudioSession`时，应用选择的默认输出设备将生效。
 
-<!-- @setDefaultOutputDevice -->  
+<!-- @[setDefaultOutputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceManagement.ets) -->  
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
@@ -263,12 +263,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 ### 查询本机默认音频输出设备
 
-应用可以通过getDefaultOutputDevice查询本机默认输出设备类型。
+应用可以通过[getDefaultOutputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#getdefaultoutputdevice20)查询本机默认输出设备类型。
 > **说明：**
 >
-> 本接口用于查询通过setDefaultOutputDevice接口设置的输出设备。
+> 本接口用于查询通过[setDefaultOutputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setdefaultoutputdevice20)接口设置的输出设备。
 
-<!-- @getDefaultOutputDevice -->
+<!-- @[getDefaultOutputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceManagement.ets) -->
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
@@ -288,13 +288,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 ### 监听输出设备变化
 
-应用可以通过注册CurrentOutputDeviceChangedEvent监听输出设备的连接状态变化。
+应用可以通过注册[CurrentOutputDeviceChangedEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#currentoutputdevicechangedevent20)监听输出设备的连接状态变化。
 
 > **说明：**
 > 
 > `currentOutputDeviceChangedCallback`包含设备变更的原因及推荐的后续操作。应用应根据不同的变更原因进行处理，并按系统推荐的操作继续或停止当前播放。
 
-<!-- @onCurrentOutputDeviceChanged -->
+<!-- @[onCurrentOutputDeviceChanged](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceManagement.ets) -->
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
@@ -340,11 +340,11 @@ let currentOutputDeviceChangedCallback = (currentOutputDeviceChangedEvent: audio
 <!--Del-->
 ### 获取活跃输出设备信息（仅对系统应用开放）
 
-从API版本26.0.0开始，使用getActiveOutputDeviceDescriptors方法，可以获取当前音频设备场景下的活跃输出设备描述符。
+从API版本26.0.0开始，使用[getActiveOutputDeviceDescriptors](../../reference/apis-audio-kit/js-apis-audio-sys.md#getactiveoutputdevicedescriptors)方法，可以获取当前音频设备场景下的活跃输出设备描述符。
 
 > **说明：**
 >
-> 该接口返回的活跃设备跟系统的音频设备选择策略AudioStreamDeviceChangeReason有关。
+> 该接口返回的活跃设备跟系统的音频设备选择策略[AudioStreamDeviceChangeReason](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiostreamdevicechangereason11)有关。
 
 ```typescript
 import { audio } from '@kit.AudioKit';  // 导入audio模块。

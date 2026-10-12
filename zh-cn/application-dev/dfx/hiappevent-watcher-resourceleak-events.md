@@ -11,19 +11,19 @@
 
 资源泄漏是指句柄、线程或内存等资源在应用运行过程中未被正确释放，导致资源长期占用且无法被其他应用使用。如果某一类资源耗尽，系统可能出现卡死或重启等异常情况。
 
-本文面向开发者介绍资源泄漏事件各字段的含义和规格。如需了解如何使用HiAppEvent接口订阅系统资源泄漏事件，请参考以下文档。目前提供ArkTs和C/C++两种接口。
+本文面向开发者介绍资源泄漏事件各字段的含义和规格。如需了解如何使用HiAppEvent接口订阅系统资源泄漏事件，请参考以下文档。目前提供ArkTS和C/C++两种接口。
 
-- 订阅资源泄漏事件（ArkTS）
+- [订阅资源泄漏事件（ArkTS）](hiappevent-watcher-resourceleak-events-arkts.md)
 
-- 订阅资源泄漏事件（C/C++）
+- [订阅资源泄漏事件（C/C++）](hiappevent-watcher-resourceleak-events-ndk.md)
 
 > **说明：**
 >
-> 资源泄漏事件支持在应用分身场景下使用 HiAppEvent 进行订阅，支持在原子化服务场景下使用 HiAppEvent 进行订阅，从 API version 22 开始支持在输入法应用场景下使用 HiAppEvent 进行订阅。
+> 资源泄漏事件支持在[应用分身](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/app-clone)场景下使用 HiAppEvent 进行订阅，支持在原子化服务场景下使用 HiAppEvent 进行订阅，从 API version 22 开始支持在[输入法应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/inputmethod-application-guide)场景下使用 HiAppEvent 进行订阅。
 
 ## 检测原理
 
-检测原理详见Resource Leak（资源泄漏）检测。
+检测原理详见[Resource Leak（资源泄漏）检测](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/resource-leak-guidelines)。
 
 ## 自定义规格设置
 
@@ -68,19 +68,19 @@ hiAppEvent.setEventConfig(hiAppEvent.event.RESOURCE_OVERLIMIT, configParams);
 
 从**API version 24**开始支持页面切换日志配置。当应用发生资源泄漏故障时，系统可以收集并上报页面切换日志，帮助开发者定位问题。
 
-从**API version 26.0.0**开始支持设置资源泄漏事件的日志和回调事件规格。
+从**API版本26.0.0**开始支持设置资源泄漏事件的日志和回调事件规格。
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| configEventPolicy (policy: EventPolicy): Promise&lt;void>| 设置资源泄漏事件策略参数接口，支持开启资源泄漏事件的页面切换日志采集、设置资源泄漏事件的日志和回调事件规格。 |
+| [configEventPolicy](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventconfigeventpolicy22) (policy: EventPolicy): Promise&lt;void>| 设置资源泄漏事件策略参数接口，支持开启资源泄漏事件的页面切换日志采集、设置资源泄漏事件的日志和回调事件规格。 |
 
 ### configEventPolicy接口参数设置说明
 
-开发者可以通过设置EventPolicy 的参数来开启资源泄漏事件的页面切换日志采集以及设置资源泄漏事件的日志和回调事件规格。
+开发者可以通过设置[EventPolicy](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#eventpolicy22) 的参数来开启资源泄漏事件的页面切换日志采集以及设置资源泄漏事件的日志和回调事件规格。
 
 | 名称       | 类型    | 只读 | 可选 | 说明                                         |
 | ---------- | ------- | ---- | ---- | ------------------------------------------ |
-| resourceOverlimitPolicy | ResourceOverlimitPolicy | 否 | 是   | 资源泄漏事件配置策略。 |
+| resourceOverlimitPolicy | [ResourceOverlimitPolicy](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#resourceoverlimitpolicy24) | 否 | 是   | 资源泄漏事件配置策略。 |
 
 参数配置示例：
 
@@ -116,12 +116,12 @@ hiAppEvent.configEventPolicy(policy).then(() => {
 | pid | number | 应用的进程ID。 |
 | uid | number | 应用的用户ID。 |
 | resource_type | string | 资源类型，取值范围详见resource_type属性。 |
-| memory | object | （resource_type为pss_memory或js_heap专有）内存信息，详见memory字段说明。 |
-| fd | object | （resource_type为fd专有）文件描述符信息，详见fd字段说明。 |
-| thread | object | （resource_type为thread专有）线程信息，详见thread字段说明。 |
+| memory | object | （resource_type为pss_memory或js_heap专有）内存信息，详见[memory字段说明](#memory字段说明)。 |
+| fd | object | （resource_type为fd专有）文件描述符信息，详见[fd字段说明](#fd字段说明)。 |
+| thread | object | （resource_type为thread专有）线程信息，详见[thread字段说明](#thread字段说明)。 |
 | external_log | string[] | 故障日志文件路径。**为避免目录空间超限（限制参考log_over_limit），导致新生成的日志文件写入失败，请在日志文件处理完后及时删除。** |
 | log_over_limit | boolean | 生成的故障日志文件与已存在的日志文件总大小是否超过2GB上限。true表示超过上限，日志写入失败；false表示未超过上限。 |
-| page_switch_log | string | 页面切换日志路径，日志介绍详见页面切换日志。<br>**说明**：从API version 24开始支持。 |
+| page_switch_log | string | 页面切换日志路径，日志介绍详见[页面切换日志](pageswitch-log.md)。<br>**说明**：从API version 24开始支持。 |
 
 ### resource_type字段说明
 
@@ -149,8 +149,8 @@ hiAppEvent.configEventPolicy(policy).then(() => {
 | sys_total_mem | number | （resource_type为pss_memory、ion_memory、gpu_memory专有）总内存大小，单位：KB。 |
 | limit_size | number | （resource_type为js_heap专有）基线大小，单位：KB。 |
 | live_object_size | number | （resource_type为js_heap专有）实际使用内存大小，单位：KB。 |
-| rss_detail | object | （resource_type为rss_memory）RSS内存详细分布信息，详见detail字段说明。<br>**说明**：从API版本26.0.0开始，支持该字段。 |
-| pss_detail | object | （resource_type为pss_memory）PSS内存详细分布信息，详见detail字段说明。<br>**说明**：从API版本26.0.0开始，支持该字段。 |
+| rss_detail | object | （resource_type为rss_memory）RSS内存详细分布信息，详见[detail字段说明](#detail字段说明)。<br>**说明**：从API版本26.0.0开始，支持该字段。 |
+| pss_detail | object | （resource_type为pss_memory）PSS内存详细分布信息，详见[detail字段说明](#detail字段说明)。<br>**说明**：从API版本26.0.0开始，支持该字段。 |
 
 ### detail字段说明
 
@@ -162,7 +162,6 @@ hiAppEvent.configEventPolicy(policy).then(() => {
 | .ttf | number | 字体文件占用内存大小，单位：KB。 |
 | anon_page_other | number | 其他匿名页占用内存大小，单位：KB。 |
 | ark ts heap | number | ArkTS堆占用内存大小，单位：KB。 |
-| arkts-static heap | number | ArkTS静态堆占用内存大小，单位：KB。 |
 | arkweb-js heap | number | ArkWeb JS堆占用内存大小，单位：KB。 |
 | arkweb-pa heap | number | ArkWeb PA堆占用内存大小，单位：KB。 |
 | dart heap | number | Dart堆占用内存大小，单位：KB。 |

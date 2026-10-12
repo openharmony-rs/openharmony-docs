@@ -5,7 +5,7 @@
 
 随着全场景多设备的生活方式不断深入，用户拥有的设备越来越多，不同设备都能在适合的场景下提供良好的体验，例如手表可以提供及时的信息查看能力，电视可以带来沉浸的观影体验。但是，每个设备也有使用场景的局限，例如在电视上输入文本相对移动设备来说是非常糟糕的体验。当多个设备通过分布式操作系统能够相互感知、进而整合成一个超级终端时，设备与设备之间就可以取长补短、相互帮助，为用户提供更加自然流畅的分布式体验。
 
-跨多设备的分布式操作可以统称为**流转**；根据使用场景的不同，流转又分为跨端迁移和多端协同两种具体场景。
+跨多设备的分布式操作可以统称为**流转**；根据使用场景的不同，流转又分为[跨端迁移](hop-cross-device-migration.md)和[多端协同](hop-multi-device-collaboration.md)两种具体场景。
 
 
 ## 基本概念
@@ -23,7 +23,7 @@
   用户拥有的多个设备，可以作为一个整体，为用户提供比单设备更加高效、沉浸的体验，这就是多端协同场景。常见的多端协同场景实例：
   
   - 场景一：两台设备A和B打开备忘录同一篇笔记进行双端协同编辑，在设备A上可以使用本地图库中的图片资源插入编辑，设备B上进行文字内容编辑。
-  - 场景二：设备A上正在和客户进行聊天，客户需要的资料在设备B上，可以通过聊天软件打开设备B上的文档应用选择到想要的资料回传到设备A上，然后通过聊天软件发送给客户。在应用开发层面，多端协同指多端上的不同UIAbility/ServiceExtensionAbility同时运行、或者交替运行实现完整的业务；或者多端上的相同UIAbility/ServiceExtensionAbility同时运行实现完整的业务。
+  - 场景二：设备A上正在和客户进行聊天，客户需要的资料在设备B上，可以通过聊天软件打开设备B上的文档应用选择到想要的资料回传到设备A上，然后通过聊天软件发送给客户。在应用开发层面，多端协同指多端上的不同[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)/[ServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md)同时运行、或者交替运行实现完整的业务；或者多端上的相同[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)/[ServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-serviceExtensionAbility-sys.md)同时运行实现完整的业务。
 
 
 ## 流转架构
@@ -40,7 +40,7 @@
 
   **图1** 流转架构图
 
- hop-structure  
+ ![hop-structure](figures/hop-structure.png)  
 
 - 跨端迁移任务管理：在迁移发起端，接受用户迁移的意图，提供迁移流转入口，迁移结果显示等能力。
 

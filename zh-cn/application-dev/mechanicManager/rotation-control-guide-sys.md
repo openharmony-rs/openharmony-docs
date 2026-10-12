@@ -12,9 +12,9 @@
 
 ## 接口介绍
 
-机械体设备管理公开API接口使用指导请参见MechanicManager API参考。
+机械体设备管理公开API接口使用指导请参见[MechanicManager API参考](../reference/apis-mechanic-kit/js-apis-mechanicManager.md)。
 
-机械体设备管理系统API接口使用指导请参见MechanicManager API参考。
+机械体设备管理系统API接口使用指导请参见[MechanicManager API参考](../reference/apis-mechanic-kit/js-apis-mechanicManager-sys.md)。
 
 | 接口名                                                               | 描述                       |
 | -------------------------------------------------------------------- | -------------------------- |
@@ -42,7 +42,7 @@
 
 1. 一台支持Mechanic Kit协议的机械体设备。
 2. 若要验证智能跟踪功能，主设备的摄像头驱动需要支持人脸检测功能。
-3. 更新SDK到API 20或以上，具体操作参见更新指南。
+3. 更新SDK到API 20或以上，具体操作参见[更新指南](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-software-install)。
 4. 机械体设备与主设备完成蓝牙连接状态。
 
 ### 管理设备连接状态

@@ -3,20 +3,20 @@
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
 <!--Designer: @gcw_sPCsris4-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
 
 ## F
 
 ### Floating Window；悬浮窗
 
-悬浮窗分为智慧多窗悬浮窗、全局悬浮窗和闪控窗。
+悬浮窗分为智慧多窗悬浮窗、全局悬浮窗和[闪控窗](../reference/apis-arkui/js-apis-floatView.md)。
 
 - 智慧多窗悬浮窗是指设备屏幕上悬浮的、非全屏的应用窗口。
 
   一般用于在已有全屏任务运行的基础上，临时处理另一个任务，或短时间多任务并行使用。如浏览网页的同时回复消息。
 
-  相关参考：智慧多窗简介、智慧多窗最佳实践。
+  相关参考：[智慧多窗简介](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/multi-window-intro)、[智慧多窗最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-multi-window-practice)。
 
 - 全局悬浮窗是指一种特殊的应用辅助窗口，具备在应用主窗口和对应UIAbility退至后台后仍然可以在前台显示的能力。
 
@@ -24,27 +24,27 @@
 
   应用在创建全局悬浮窗前，需要申请对应的权限。
   
-  相关参考：全局悬浮窗开发指导。
+  相关参考：[全局悬浮窗开发指导](global-floating-window-guide.md)。
 
 - 闪控窗是指一种由系统管理并统一绘制UI的特殊应用辅助窗口，具备在应用主窗口和对应UIAbility退至后台后仍然可以在前台显示的能力。
 
-  闪控窗由系统统一管理UI和动效，支持与闪控球绑定联合使用，用户点击闪控球可展开为闪控窗，点击闪控窗左上角的缩小按钮可收起为闪控球，实现两种窗口形态的相互切换。闪控窗适用于需要在独立小窗口中持续展示应用内容或提供快捷操作的场景，例如股市盯盘应用实时查看股票行情变化，或手机直播应用展示自定义的互动面板和控制界面。
+  闪控窗由系统统一管理UI和动效，支持与[闪控球](../reference/apis-arkui/js-apis-floatingBall.md)绑定联合使用，用户点击闪控球可展开为闪控窗，点击闪控窗左上角的缩小按钮可收起为闪控球，实现两种窗口形态的相互切换。闪控窗适用于需要在独立小窗口中持续展示应用内容或提供快捷操作的场景，例如股市盯盘应用实时查看股票行情变化，或手机直播应用展示自定义的互动面板和控制界面。
 
   应用在创建闪控窗前，需要申请对应的权限。
 
-  相关参考：<!--RP1-->@ohos.window.floatView (闪控窗)<!--RP1End-->。
+  相关参考：<!--RP1-->[@ohos.window.floatView (闪控窗)](../reference/apis-arkui/js-apis-floatView.md)<!--RP1End-->。
 
 ### Free Windows；自由多窗模式
 
 自由多窗模式是一种支持用户在移动设备上进行多任务处理的交互方式。
 
-自由多窗下，允许用户在一块屏幕上同时显示多个应用窗口。此时的应用窗口为自由窗口。
+自由多窗下，允许用户在一块屏幕上同时显示多个应用窗口。此时的应用窗口为[自由窗口](#freeform-window自由窗口)。
 
 部分Tablet设备上，可通过下拉控制中心，点击“自由多窗”按钮开启自由多窗。
 
 部分Phone设备上，可通过下拉控制中心，点击“自由多窗”按钮开启自由多窗。
 
-freeWindows
+![freeWindows](figures/freeWindows.png)
 
 ### Freeform Window；自由窗口
 
@@ -54,27 +54,27 @@ freeWindows
 
 启动新的自由窗口时，默认以一定间距在上一个窗口的右下方层叠显示。
 
-每个自由窗口默认会在窗口上方显示窗口标题栏，标题栏左侧显示应用图标，右侧显示三键控制按钮（窗口最大化/还原、窗口最小化和关闭窗口），且窗口标题栏支持额外的沉浸式配置。
+每个自由窗口默认会在窗口上方显示窗口标题栏，标题栏左侧显示应用图标，右侧显示三键控制按钮（窗口最大化/还原、窗口最小化和关闭窗口），且窗口标题栏支持额外的[沉浸式配置](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-multi-device-window-immersive#section359241062916)。
 
 自由窗口可以通过拖动窗口边缘调节窗口大小，可以通过拖动标题栏移动窗口位置。
 
-freeformWindow
+![freeformWindow](figures/freeformWindow.png)
 
 当前设备支持情况：
 
--  **2in1设备**：2in1设备上的窗口，默认为自由窗口。
--  **Tablet设备**：部分Tablet设备，支持开启自由多窗模式（通过下拉控制中心，点击“自由多窗”按钮开启），开启此模式后，应用窗口默认为自由窗口。
--  **Phone设备**：部分Phone设备，支持开启自由多窗模式（通过下拉控制中心，点击“自由多窗”按钮开启），开启此模式后，应用窗口默认为自由窗口。
+-  **2in1设备**：2in1设备上的窗口，默认为[自由窗口](#freeform-window自由窗口)。
+-  **Tablet设备**：部分Tablet设备，支持开启[自由多窗模式](#free-windows自由多窗模式)（通过下拉控制中心，点击“自由多窗”按钮开启），开启此模式后，应用窗口默认为[自由窗口](#freeform-window自由窗口)。
+-  **Phone设备**：部分Phone设备，支持开启[自由多窗模式](#free-windows自由多窗模式)（通过下拉控制中心，点击“自由多窗”按钮开启），开启此模式后，应用窗口默认为[自由窗口](#freeform-window自由窗口)。
 
 ## G
 
 ### Global Coordinate System；全局坐标系
 
-全局坐标系是指在设备连接扩展屏（多物理屏幕）的场景下，以主屏幕左上角为原点(0, 0)，屏幕右侧为x轴正方向，屏幕下侧为y轴正方向，对窗口、指针等对象的位置进行统一描述的坐标体系。
+全局坐标系是指在设备连接[扩展屏](../displaymanager/display-terminology.md#扩展屏)（多物理屏幕）的场景下，以主屏幕左上角为原点(0, 0)，屏幕右侧为x轴正方向，屏幕下侧为y轴正方向，对窗口、指针等对象的位置进行统一描述的坐标体系。
 
 在该坐标系中，所有物理屏幕被映射到同一连续的虚拟坐标空间内，各类窗口操作、坐标转换及窗口矩形变化事件均基于该坐标空间进行计算和回调。
 
-global-coordinate-system
+![global-coordinate-system](figures/global-coordinate-system.png)
 
 使用场景：
 
@@ -91,7 +91,7 @@ global-coordinate-system
 
 ### PC Mode；电脑模式
 
-一种支持用户在移动设备上进行多任务处理的交互方式。电脑模式下，允许用户在一块屏幕上同时显示多个应用窗口，此时的应用窗口为自由窗口。部分Tablet设备上，可通过下拉控制中心，点击"电脑模式"按钮开启电脑模式。
+一种支持用户在移动设备上进行多任务处理的交互方式。电脑模式下，允许用户在一块屏幕上同时显示多个应用窗口，此时的应用窗口为[自由窗口](#freeform-window自由窗口)。部分Tablet设备上，可通过下拉控制中心，点击"电脑模式"按钮开启电脑模式。
 
 ## S
 
@@ -121,7 +121,7 @@ global-coordinate-system
 
   桌面模式适用于折叠屏设备半折叠状态下，窗口铺满整个屏幕并在上下半屏之间适配不同布局的场景，例如视频播放、阅读等。
 
-  window-desktop-mode
+  ![window-desktop-mode](figures/window-desktop-mode.jpg)
 
 ### Window Privacy Mode；隐私模式
 

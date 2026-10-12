@@ -6,7 +6,7 @@
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
-image是图片组件，用来渲染展示图片。具体用法请参考image组件。
+image是图片组件，用来渲染展示图片。具体用法请参考[image](../reference/apis-arkui/arkui-js/js-components-basic-image.md)组件。
 
 
 ## 创建image组件
@@ -31,7 +31,7 @@ image是图片组件，用来渲染展示图片。具体用法请参考image组�
 }
 ```
 
-image-Component
+![image-Component](figures/image-Component.png)
 
 
 ## 设置image样式
@@ -68,7 +68,7 @@ image{
 ```
 
 
-Image-Style
+![Image-Style](figures/Image-Style.png)
 
 
 ## 加载图片
@@ -126,7 +126,7 @@ export default {
 }
 ```
 
-Loading-Image
+![Loading-Image](figures/Loading-Image.gif)
 
 
 
@@ -208,12 +208,12 @@ export default {
 }
 ```
 
-zh-cn_image_0000001188771430
+![zh-cn_image_0000001188771430](figures/zh-cn_image_0000001188771430.gif)
 
 ## 相关实例
 
 针对image开发，有以下相关实例可供参考：
 
-- image、image-animator组件的使用（JS）（API9）
+- [image、image-animator组件的使用（JS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/JSUI/ClickableJs)
 
-- 图片常见操作（JS）（API9）
+- [图片常见操作（JS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/Media/ImageOperation)

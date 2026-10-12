@@ -6,11 +6,11 @@
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
-由于任务池TaskPool的任务对象Task不支持跨线程传递，无法在子线程中直接取消任务。从API version 18开始，Task新增了任务ID属性，支持通过任务ID在子线程中取消任务。开发者可将已创建任务的任务ID存储在Sendable对象中，需要取消任务时，通过Sendable对象在子线程中取消任务。详情可参考以下示例。
+由于任务池[TaskPool](../reference/apis-arkts/js-apis-taskpool.md)的任务对象[Task](../reference/apis-arkts/js-apis-taskpool.md#task)不支持跨线程传递，无法在子线程中直接取消任务。从API version 18开始，Task新增了任务ID[属性](../reference/apis-arkts/js-apis-taskpool.md#属性)，支持通过任务ID在子线程中取消任务。开发者可将已创建任务的任务ID存储在[Sendable对象](./arkts-sendable.md)中，需要取消任务时，通过Sendable对象在子线程中取消任务。详情可参考以下示例。
 
 1. 定义一个Sendable类，在类属性中存储任务ID。
 
-   <!-- @define_sendable --> 
+   <!-- @[define_sendable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/utils/Sendable.ets) --> 
    
    ``` TypeScript
    // sendable.ets
@@ -31,7 +31,7 @@
 
 2. 在UI主线程向TaskPool提交一个延时任务，并在子线程取消该任务。
 
-   <!-- @taskpool_cancel -->
+   <!-- @[taskpool_cancel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/pages/TaskpoolCancel.ets) -->
    
    ``` TypeScript
    // TaskpoolCancel.ets
@@ -43,8 +43,12 @@
    @Concurrent
    function cancel(send: SendableTest) {
      // 在子线程中通过任务ID取消任务
-     taskpool.cancel(send.getTaskId());
-     console.info('cancel task finished');
+     try {
+       taskpool.cancel(send.getTaskId());
+       console.info('cancel task finished');
+     } catch (e) {
+       console.error(`cancel failed, taskId: ${send.getTaskId()}, error: ${e.message}`);
+     }
    }
    
    @Concurrent

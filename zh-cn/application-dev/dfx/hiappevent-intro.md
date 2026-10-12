@@ -28,25 +28,25 @@ HiAppEvent是系统为应用开发者提供的事件订阅和事件打点机制�
 
 - 事件参数：指定事件的参数，每个事件可以包含一组参数，建议设置为事件属性或事件发生的上下文信息，以便于描述事件的详细信息。
 
-**事件订阅**：通过HiAppEvent的接口addWatcher，开发者可以注册监听自己关注的系统事件或应用事件。目的是当订阅的事件发生后，接收事件的回调信息并进行处理。
+**事件订阅**：通过HiAppEvent的接口[addWatcher](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventaddwatcher)，开发者可以注册监听自己关注的系统事件或应用事件。目的是当订阅的事件发生后，接收事件的回调信息并进行处理。
 
 ## 实现原理
 
 ### 系统事件订阅机制
 
-在当前系统应用沙箱机制下，应用进程仅可以直接访问自己的应用沙箱目录，参考应用沙箱目录。而系统事件信息的存放路径不在应用沙箱目录中，因此无法直接获取。
+在当前系统应用沙箱机制下，应用进程仅可以直接访问自己的应用沙箱目录，参考[应用沙箱目录](../file-management/app-sandbox-directory.md)。而系统事件信息的存放路径不在应用沙箱目录中，因此无法直接获取。
 
 应用调用HiAppEvent的addWatcher接口订阅系统事件并创建共享目录。当应用进程发生故障时，DFX系统捕获相关信息，生成事件和日志，并写入到共享目录。HiAppEvent监听到事件后，将事件回调给应用。
 
-hiappevent-watch-systemevents
+![hiappevent-watch-systemevents](figures/hiappevent-watch-systemevents.PNG)
 
 ### 应用事件订阅机制
 
-应用调用addWatcher接口订阅关注的应用事件后，还需在应用事件发生时，调用write接口进行打点，用来记录应用事件。
+应用调用addWatcher接口订阅关注的应用事件后，还需在应用事件发生时，调用[write](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventwrite-1)接口进行打点，用来记录应用事件。
 
 HiAppEvent通过事件领域和事件名称关联应用事件，并通过addWatcher接口设置的回调方式将事件回调给应用。
 
-hiappevent-watch-appevents
+![hiappevent-watch-appevents](figures/hiappevent-watch-appevents.PNG)
 
 > **说明：**
 >
@@ -58,7 +58,7 @@ hiappevent-watch-appevents
 
 - 订阅接口addWatcher传入的名称name是唯一的，相同的name，后一次调用会覆盖前一次的订阅。
 
-- 目前应用有普通应用、应用分身、原子化服务、输入法应用等多种类型，不同类型应用上，系统事件的订阅规格不同。从API version 22开始，HiAppEvent系统事件订阅能力支持输入法应用。具体规格可参见如下表格：
+- 目前应用有普通应用、[应用分身](../quick-start/app-clone.md)、原子化服务、[输入法应用](../inputmethod/inputmethod-application-guide.md)等多种类型，不同类型应用上，系统事件的订阅规格不同。从API version 22开始，HiAppEvent系统事件订阅能力支持输入法应用。具体规格可参见如下表格：
 
 |系统事件名称|是否支持应用分身订阅|是否支持原子化服务订阅|是否支持输入法应用订阅|
 |-----------|------------------|-----------------|-------------------|

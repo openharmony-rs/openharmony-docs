@@ -21,7 +21,7 @@
 
 ### 数据安全标签
 
-按照数据分类分级规范要求，可将数据分为S1、S2、S3、S4四个安全等级，安全等级具体可见OH_Rdb_SecurityLevel枚举。
+按照数据分类分级规范要求，可将数据分为S1、S2、S3、S4四个安全等级，安全等级具体可见[OH_Rdb_SecurityLevel](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_securitylevel)枚举。
 
 | 风险等级 | 风险标准 | 定义 | 样例 | 
 | -------- | -------- | -------- | -------- |
@@ -37,7 +37,7 @@
 在设备组网时，可以使用`hidumper -s 3511`命令查看设备的安全等级。如果查询无结果，可以通过service_control start dslm_service主动拉起对应进程，之后再使用hidumper命令查询。例如，rk3568设备的安全等级查询如下：
 <!--RP1End-->
 <!--Del-->
-Device-Security-Levels
+![Device-Security-Levels](figures/Device-Security-Levels.png)
 <!--DelEnd-->
 
 ## 跨设备同步访问控制机制
@@ -67,7 +67,7 @@ Device-Security-Levels
 
 2. 导入头文件。
 
-    <!-- @encryption_include --> 
+    <!-- @[encryption_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) --> 
     
     ``` C++
     #include <cstring>
@@ -79,7 +79,7 @@ Device-Security-Levels
 
 3. 调用OH_Rdb_SetSecurityLevel接口设置数据库的安全等级。
 
-    <!-- @SetSecurityLevelForRdbStore -->
+    <!-- @[SetSecurityLevelForRdbStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) -->
     
     ``` C++
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();

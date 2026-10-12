@@ -19,11 +19,11 @@
 
 算法库框架目前提供了两种RSA签名验签的填充模式：
 
-- PKCS1：即RFC3447规范中的RSAES-PKCS1-V1_5模式，对应OpenSSL中的RSA_PKCS1_PADDING。
+- [PKCS1](#填充模式为pkcs1)：即RFC3447规范中的RSAES-PKCS1-V1_5模式，对应OpenSSL中的RSA_PKCS1_PADDING。
   
   使用该模式时需要设置摘要（md），摘要算法输出的长度需要小于RSA密钥长度。例如RSA2048的密钥字节长度为256。
 
-- PSS： 即RFC3447规范中的RSASSA-PSS模式，对应OpenSSL中的RSA_PKCS1_PSS_PADDING。
+- [PSS](#填充模式为pss)： 即RFC3447规范中的RSASSA-PSS模式，对应OpenSSL中的RSA_PKCS1_PSS_PADDING。
   
   使用该模式时需要设置两个摘要（md和mgf1_md），且md摘要字节长度 + saltLen + 2 需要小于等于RSA的密钥长度。
 
@@ -41,7 +41,7 @@
 >
 > 使用同步接口生成RSA2048、RSA3072、RSA4096、RSA8192非对称密钥或者明文长度超过2048会导致耗时增加。
 >
-> 由于系统对主线程有时间限制，耗时较长会导致失败，建议开发者在生成位数较大的密钥时，使用对应的异步接口或是使用多线程并发能力进行开发。
+> 由于系统对主线程有时间限制，耗时较长会导致失败，建议开发者在生成位数较大的密钥时，使用对应的异步接口或是[使用多线程并发能力](../../arkts-utils/multi-thread-concurrency-overview.md)进行开发。
 
 ### 填充模式为PKCS1
 

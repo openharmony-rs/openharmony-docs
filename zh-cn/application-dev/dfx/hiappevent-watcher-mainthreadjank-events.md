@@ -9,21 +9,21 @@
 
 ## 简介
 
-当应用的主线程执行耗时任务时，开发者会感知到应用卡顿，但卡顿时间未达到系统设定的应用冻屏时间限制，因此不会生成故障日志。为了更好地定位和分析问题，开发者可以查看主线程超时事件检测原理，根据生成的主线程超时事件日志规格，分析主线程任务的执行情况。
+当应用的主线程执行耗时任务时，开发者会感知到应用卡顿，但卡顿时间未达到系统设定的[应用冻屏](appfreeze-guidelines.md)时间限制，因此不会生成故障日志。为了更好地定位和分析问题，开发者可以查看[主线程超时事件检测原理](apptask-timeout-guidelines.md#检测原理)，根据生成的[主线程超时事件日志规格](apptask-timeout-guidelines.md#日志规格)，分析主线程任务的执行情况。
 
 本文面向开发者介绍主线程超时检测原理，以及各字段的含义和规格。如需了解如何使用HiAppEvent接口订阅主线程超时事件，请参考以下文档。目前提供ArkTS和C/C++两种接口，按需选择。
 
-- 订阅主线程超时事件（ArkTS）。
+- [订阅主线程超时事件（ArkTS）](hiappevent-watcher-mainthreadjank-events-arkts.md)。
 
-- 订阅主线程超时事件（C/C++）。
+- [订阅主线程超时事件（C/C++）](hiappevent-watcher-mainthreadjank-events-ndk.md)。
 
 > **说明：**
 >
-> 主线程超时事件支持在应用分身场景下使用 HiAppEvent 进行订阅，支持在原子化服务场景下使用HiAppEvent 进行订阅，从 API version 22 开始支持在输入法应用场景下使用 HiAppEvent 进行订阅。
+> 主线程超时事件支持在[应用分身](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/app-clone)场景下使用 HiAppEvent 进行订阅，支持在原子化服务场景下使用HiAppEvent 进行订阅，从 API version 22 开始支持在[输入法应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/inputmethod-application-guide)场景下使用 HiAppEvent 进行订阅。
 
 ## 检测原理
 
-详见主线程超时检测原理。
+详见[主线程超时检测原理](apptask-timeout-guidelines.md#主线程超时检测)。
 
 > **注意：**
 >
@@ -37,7 +37,7 @@ setEventConfig接口不提供主线程超时结束自动停止采样栈的功能
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| setEventConfig(name: string, config: Record&lt;string, ParamType>): Promise&lt;void> | 设置主线程采样栈参数接口。 |
+| [setEventConfig(name: string, config: Record&lt;string, ParamType>): Promise&lt;void>](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventseteventconfig15) | 设置主线程采样栈参数接口。 |
 
 ### setEventConfig接口参数设置说明
 
@@ -132,15 +132,15 @@ setEventConfig接口不提供主线程超时结束自动停止采样栈的功能
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| configEventPolicy(policy: EventPolicy): Promise&lt;void> | 设置主线程采样栈参数接口。支持超时卡顿结束自动停止采样。 |
+| [configEventPolicy(policy: EventPolicy): Promise&lt;void>](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventconfigeventpolicy22) | 设置主线程采样栈参数接口。支持超时卡顿结束自动停止采样。 |
 
 ### configEventPolicy接口参数设置说明
 
-开发者可以使用上述hiappevent提供的接口，在EventPolicy 中配置采样栈接口的参数。
+开发者可以使用上述hiappevent提供的接口，在[EventPolicy](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#eventpolicy22) 中配置采样栈接口的参数。
 
 | 名称       | 类型    | 只读 | 可选 | 说明                                         |
 | ---------- | ------- | ---- | ---- | ------------------------------------------ |
-| mainThreadJankPolicy | MainThreadJankPolicy | 否 | 是   | 主线程超时事件配置策略。 |
+| mainThreadJankPolicy | [MainThreadJankPolicy](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#mainthreadjankpolicy22) | 否 | 是   | 主线程超时事件配置策略。 |
 
 **参数设置示例**
 
@@ -210,14 +210,14 @@ setEventConfig接口不提供主线程超时结束自动停止采样栈的功能
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| int OH_HiAppEvent_SetEventConfig(const char\* name, HiAppEvent_Config\* config) | 设置主线程采样栈参数接口。 |
+| [int OH_HiAppEvent_SetEventConfig(const char\* name, HiAppEvent_Config\* config)](../reference/apis-performance-analysis-kit/capi-hiappevent-h.md#oh_hiappevent_seteventconfig) | 设置主线程采样栈参数接口。 |
 
 ### OH_HiAppEvent_SetEventConfig接口参数设置说明
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | name | const char\* | 是 | 主线程超时事件名称，此处为预定义的宏EVENT_MAIN_THREAD_JANK或EVENT_MAIN_THREAD_JANK_V2。|
-| config | HiAppEvent_Config\* | 是 | 主线程超时采样栈配置参数，可使用OH_HiAppEvent_SetConfigItem函数设置config参数的配置项。 |
+| config | HiAppEvent_Config\* | 是 | 主线程超时采样栈配置参数，可使用[OH_HiAppEvent_SetConfigItem](../reference/apis-performance-analysis-kit/capi-hiappevent-h.md#oh_hiappevent_setconfigitem)函数设置config参数的配置项。 |
 
 **name为EVENT_MAIN_THREAD_JANK**
 
@@ -271,11 +271,13 @@ setEventConfig接口不提供主线程超时结束自动停止采样栈的功能
 
    HiAppEvent_Config* config = OH_HiAppEvent_CreateConfig();    
    OH_HiAppEvent_SetConfigItem(config, MAIN_THREAD_JANK_PARAM_LOG_TYPE, "0");
-   int ret = OH_HiAppEvent_SetEventConfig(EVENT_MAIN_THREAD_JANK, config);
-   if (ret == HIAPPEVENT_SUCCESS) {
-       OH_LOG_INFO(LogType::LOG_APP, "Setting default value successfully.");
-   }
-   OH_HiAppEvent_DestroyConfig(config);
+    int ret = OH_HiAppEvent_SetEventConfig(EVENT_MAIN_THREAD_JANK, config);
+    if (ret == HIAPPEVENT_SUCCESS) {
+        OH_LOG_INFO(LogType::LOG_APP, "Setting default value successfully.");
+    }
+    if (config != nullptr) {
+       OH_HiAppEvent_DestroyConfig(config);
+    }
    ```
 
    （2）MAIN_THREAD_JANK_PARAM_LOG_TYPE为"1"时，仅用于采集调用栈。
@@ -299,7 +301,9 @@ setEventConfig接口不提供主线程超时结束自动停止采样栈的功能
    if (ret == HIAPPEVENT_SUCCESS) {
        OH_LOG_INFO(LogType::LOG_APP, "Successfully set sampling stack parameters.");
    }
-   OH_HiAppEvent_DestroyConfig(config);
+   if (config != nullptr) {
+       OH_HiAppEvent_DestroyConfig(config);
+   }
    ```
 
    （3）MAIN_THREAD_JANK_PARAM_LOG_TYPE为"2"时，仅用于采集trace。
@@ -319,7 +323,9 @@ setEventConfig接口不提供主线程超时结束自动停止采样栈的功能
    if (ret == HIAPPEVENT_SUCCESS) {
        OH_LOG_INFO(LogType::LOG_APP, "Set to only collect trace successfully");
    }
-   OH_HiAppEvent_DestroyConfig(config);
+   if (config != nullptr) {
+       OH_HiAppEvent_DestroyConfig(config);
+   }
    ```  
 
 **name为EVENT_MAIN_THREAD_JANK_V2**
@@ -378,7 +384,9 @@ setEventConfig接口不提供主线程超时结束自动停止采样栈的功能
    if (ret == HIAPPEVENT_SUCCESS) {
        OH_LOG_INFO(LogType::LOG_APP, "Setting default value successfully.");
    }
-   OH_HiAppEvent_DestroyConfig(config);
+   if (config != nullptr) {
+       OH_HiAppEvent_DestroyConfig(config);
+   }
    ```
 
    （2）MAIN_THREAD_JANK_PARAM_LOG_TYPE为"1"时，仅用于采集调用栈。
@@ -403,7 +411,9 @@ setEventConfig接口不提供主线程超时结束自动停止采样栈的功能
    if (ret == HIAPPEVENT_SUCCESS) {
        OH_LOG_INFO(LogType::LOG_APP, "Successfully set sampling stack parameters.");
    }
-   OH_HiAppEvent_DestroyConfig(config);
+   if (config != nullptr) {
+       OH_HiAppEvent_DestroyConfig(config);
+   }
    ```
 
    （3）MAIN_THREAD_JANK_PARAM_LOG_TYPE为"2"时，仅用于采集trace。
@@ -423,7 +433,9 @@ setEventConfig接口不提供主线程超时结束自动停止采样栈的功能
    if (ret == HIAPPEVENT_SUCCESS) {
        OH_LOG_INFO(LogType::LOG_APP, "Set to only collect trace successfully");
    }
-   OH_HiAppEvent_DestroyConfig(config);
+   if (config != nullptr) {
+       OH_HiAppEvent_DestroyConfig(config);
+   }
    ```  
 
 ## 事件字段说明

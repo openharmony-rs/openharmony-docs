@@ -6,11 +6,11 @@
 <!--Tester: @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
-OpenHarmony NDK提供业界标准库libc标准库、c++标准库，本文用于介绍C/C++标准库在OpenHarmony中的机制，开发者了解这些机制有助于在NDK开发过程中避免相关问题。
+OpenHarmony NDK提供业界标准库[libc标准库](../reference/native-lib/musl.md)、[c++标准库](../reference/native-lib/cpp.md)，本文用于介绍C/C++标准库在OpenHarmony中的机制，开发者了解这些机制有助于在NDK开发过程中避免相关问题。
 
 ## C++兼容性
 
-在OpenHarmony系统中，系统库和应用Native库均使用C++标准库（参考libc++版本）。系统库依赖的C++标准库随镜像版本升级，应用Native库依赖的C++标准库随编译使用的SDK版本升级。由于两部分依赖的C++标准库会跨多个大版本，可能导致ABI兼容性问题。为解决此问题，OpenHarmony对系统库和应用Native库依赖的C++标准库进行了区分。
+在OpenHarmony系统中，系统库和应用Native库均使用C++标准库（参考[libc++版本](../reference/native-lib/cpp.md#libc版本)）。系统库依赖的C++标准库随镜像版本升级，应用Native库依赖的C++标准库随编译使用的SDK版本升级。由于两部分依赖的C++标准库会跨多个大版本，可能导致ABI兼容性问题。为解决此问题，OpenHarmony对系统库和应用Native库依赖的C++标准库进行了区分。
 
 - 系统库：使用libc++.so，随系统镜像发布。
 - 应用Native库：使用libc++_shared.so，随应用发布。
@@ -38,14 +38,14 @@ OpenHarmony中动态库加载namespace配置的情况
 
 - ndk ns：动态链接器启动时默认创建的ns，它可以搜索`/system/lib{abi}/ndk`目录下的so，主要是暴露了NDK接口的so。
 
-- app ns: 应用启动时创建的ns，它的搜索路径一般是应用的安装路径(可能为沙箱路径)，即可加载应用的so。
+- app ns：应用启动时创建的ns，它的搜索路径一般是应用的安装路径（可能为沙箱路径），即可加载应用的so。
 
 当前的命名空间机制主要限制了应用native库和系统native库之间的调用，规则如图所示：
 
 1. default ns和ndk ns可以互相访问全部so，不能访问app ns的so。
 2. app ns能访问ndk ns的全部so，不能访问default ns的so。
 
-zh-cn_image_musl_ld_namespace
+![zh-cn_image_musl_ld_namespace](figures/dl_namespace.png)
 
 ### rpath机制
 rpath（run-time path）是在运行时指定共享库搜索路径的机制。该机制允许在可执行文件或共享库中嵌入一个用于在运行时指定库的搜索路径的信息。
@@ -57,13 +57,13 @@ rpath（run-time path）是在运行时指定共享库搜索路径的机制。�
 SET(CMAKE_BUILD_WITH_INSTALL_RPATH TRUE)
 SET(CMAKE_INSTALL_RPATH "\${ORIGIN}/module")
 ```
-zh-cn_image_musl_ld_rpath
+![zh-cn_image_musl_ld_rpath](figures/dl_rpath.png)
 
 ### 支持dlclose
 支持使用dlclose真正卸载动态库的能力。
 
 ### 支持symbol-version机制
-symbol-version是libc在**动态链接-符号重定位**阶段的符号检索机制，支持不同版本的符号重定位，也可以帮助解决重复符号的问题。可参考LD Version Scripts (GNU Gnulib)。
+symbol-version是libc在**动态链接-符号重定位**阶段的符号检索机制，支持不同版本的符号重定位，也可以帮助解决重复符号的问题。可参考<a href="https://www.gnu.org/software/gnulib/manual/html_node/LD-Version-Scripts.html">LD Version Scripts (GNU Gnulib)</a>。
 
 ### 网络接口select支持fd fortify检测
 宏定义FD_SET和FD_CLR增加了对fd有效值的检查。如果传入的fd不在区间`[0, 1024)`中，将触发abort crash。
@@ -74,7 +74,7 @@ symbol-version是libc在**动态链接-符号重定位**阶段的符号检索机
 自API12起，newlocale及setlocale接口支持将locale设置为C、C.UTF-8、en_US、en_US.UTF-8、zh_CN及zh_CN.UTF-8。新增在zh_CN及zh_CN.UTF-8的locale设置下对strtod_l、wcstod_l和localeconv的支持。注意strtod_l及wcstod_l不支持对十六进制及十六进制小数的转换。
 
 ### fdsan功能
-fdsan使用指导可以帮助检测文件的重复关闭和关闭后使用问题。
+[fdsan使用指导](./fdsan.md)可以帮助检测文件的重复关闭和关闭后使用问题。
 
 ### 网络使用
 由于route netlink类型创建的socket通过send、sendto、sendmsg、getifaddrs、if_nameindex接口调用RTM_GETLINK（网络接口信息的核心消息类型）功能存在安全风险，因此不推荐使用。推荐使用C库ioctl接口，使用对应的cmd查询网络接口信息。

@@ -1,14 +1,14 @@
 # 模块加载副作用及优化
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @shilei123-->
-<!--Designer: @yao_dashuai-->
+<!--Owner: @shilei123; @li-jiangfeng-->
+<!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
 ## 概述
 
-当使用ArkTS模块化时，模块的加载和执行可能会引发**副作用**。副作用是指在模块导入时除了导出功能或对象之外，额外的行为或状态变化，**这些行为可能影响程序的其他部分，并导致产生非预期的顶层代码执行、全局状态变化、原型链修改、导入内容未定义等问题**。
+当使用[ArkTS模块化](module-principle.md)时，模块的加载和执行可能会引发**副作用**。副作用是指在模块导入时除了导出功能或对象之外，额外的行为或状态变化，**这些行为可能影响程序的其他部分，并导致非预期的顶层代码执行、全局状态变化、原型链修改、导入内容未定义等问题**。
 
 ## ArkTS模块化导致副作用的场景及优化方式
 
@@ -18,7 +18,7 @@
 
 模块在被导入时，整个模块文件中的顶层代码会立即执行，而不仅仅是导出的部分。这意味着，即使只想使用模块中的某些导出内容，任何在顶层作用域中执行的代码也会运行，从而产生副作用。
 
-<!-- @export_modulePartOne -->
+<!-- @[export_modulePartOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/ModulePartOne.ets) -->
 
 ``` TypeScript
 // ModulePartOne.ets
@@ -26,7 +26,7 @@ console.info('Module loaded!'); // 这段代码在导入时会立即执行，可
 export const data = 1;
 ```
 
-<!-- @import_modulePartOne -->
+<!-- @[import_modulePartOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/PageOne.ets) -->
 
 ``` TypeScript
 // PageOne.ets
@@ -49,14 +49,14 @@ data is  1
 
 优化方式1：去除顶层代码，只导出需要的内容，避免不必要的代码执行。
 
-<!-- @export_modulePartTwo -->
+<!-- @[export_modulePartTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/ModulePartTwo.ets) -->
 
 ``` TypeScript
 // ModulePartTwo.ets
 export const data = 1;
 ```
 
-<!-- @import_modulePartTwo -->
+<!-- @[import_modulePartTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/PageTwo.ets) -->
 
 ``` TypeScript
 // PageTwo.ets
@@ -72,7 +72,7 @@ data is  1
 
 优化方式2：将可能引发副作用的代码放在函数或方法内部，只有在需要时再执行，而不是在模块加载时立即执行。
 
-<!-- @export_modulePartThree -->
+<!-- @[export_modulePartThree](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/ModulePartThree.ets) -->
 
 ``` TypeScript
 // ModulePartThree.ets
@@ -82,7 +82,7 @@ export function initialize() {
 export const data = 1;
 ```
 
-<!-- @import_modulePartThree -->
+<!-- @[import_modulePartThree](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/PageThree.ets) -->
 
 ``` TypeScript
 // PageThree.ets
@@ -102,7 +102,7 @@ data is  1
 
 顶层代码或导入的模块可能会直接**操作全局变量**，改变全局状态，引发副作用。
 
-<!-- @export_modulePartFour -->
+<!-- @[export_modulePartFour](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/ModulePartFour.ets) -->
 
 ``` TypeScript
 // ModulePartFour.ets
@@ -110,7 +110,7 @@ export let data1 = 'data from module';
 globalThis.someGlobalVar = 100; // 改变了全局状态
 ```
 
-<!-- @export_sideEffectModuleFour -->
+<!-- @[export_sideEffectModuleFour](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/SideEffectModuleFour.ets) -->
 
 ``` TypeScript
 // SideEffectModuleFour.ets
@@ -118,7 +118,7 @@ export let data2 = 'data from side effect module';
 globalThis.someGlobalVar = 200; // 也改变了全局状态
 ```
 
-<!-- @export_moduleUseGlobalVarFour -->
+<!-- @[export_moduleUseGlobalVarFour](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/ModuleUseGlobalVarFour.ets) -->
 
 ``` TypeScript
 // ModuleUseGlobalVarFour.ets
@@ -129,7 +129,7 @@ export function useGlobalVar() {
 }
 ```
 
-<!-- @import_modulePartFour -->
+<!-- @[import_modulePartFour](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/PageFour.ets) -->
 
 ``` TypeScript
 // PageFour.ets（执行入口）
@@ -159,7 +159,7 @@ globalThis.someGlobalVar is  200
 
 将可能引发副作用的代码放在函数或方法内部，只有在需要时再执行，而不是在模块加载时立即执行。
 
-<!-- @export_modulePartFive -->
+<!-- @[export_modulePartFive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/ModulePartFive.ets) -->
 
 ``` TypeScript
 // ModulePartFive.ets
@@ -169,7 +169,7 @@ export function changeGlobalVar() {
 }
 ```
 
-<!-- @export_sideEffectModuleFive -->
+<!-- @[export_sideEffectModuleFive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/SideEffectModuleFive.ets) -->
 
 ``` TypeScript
 // SideEffectModuleFive.ets
@@ -179,7 +179,7 @@ export function changeGlobalVar() {
 }
 ```
 
-<!-- @export_moduleUseGlobalVarFive -->
+<!-- @[export_moduleUseGlobalVarFive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/ModuleUseGlobalVarFive.ets) -->
 
 ``` TypeScript
 // ModuleUseGlobalVarFive.ets
@@ -191,7 +191,7 @@ export function useGlobalVar() {
 }
 ```
 
-<!-- @import_modulePartFive -->
+<!-- @[import_modulePartFive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/PageFive.ets) -->
 
 ``` TypeScript
 // PageFive.ets（执行入口）
@@ -219,7 +219,7 @@ globalThis.someGlobalVar is  100
 
 顶层代码或导入的模块可能会直接**修改应用级ArkUI组件的状态变量信息**，改变全局状态，引发副作用。
 
-<!-- @export_modulePartSix -->
+<!-- @[export_modulePartSix](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/ModulePartSix.ets) -->
 
 ``` TypeScript
 // ModulePartSix.ets
@@ -227,7 +227,7 @@ export let data = 'data from module';
 AppStorage.setOrCreate('SomeAppStorageVar', 200); // 修改应用全局的UI状态
 ```
 
-<!-- @import_modulePartSix -->
+<!-- @[import_modulePartSix](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/PageSix.ets) -->
 
 ``` TypeScript
 // PageSix.ets
@@ -264,13 +264,13 @@ test200
 
 模块加载时直接修改AppStorage中SomeAppStorageVar的值，**会影响其他依赖该变量的模块或代码**。
 
-ArkUI组件的状态变量信息可以通过一些应用级接口修改，详见ArkUI状态管理接口文档。
+ArkUI组件的状态变量信息可以通过一些应用级接口修改，详见[ArkUI状态管理接口文档](../ui/state-management/arkts-state-management-overview.md)。
 
 **优化方式**
 
 将可能引发副作用的代码放在函数或方法内部，只有在需要时再执行，而不是在模块加载时立即执行。
 
-<!-- @export_modulePartSeven -->
+<!-- @[export_modulePartSeven](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/ModulePartSeven.ets) -->
 
 ``` TypeScript
 // ModulePartSeven.ets
@@ -280,7 +280,7 @@ export function initialize() {
 }
 ```
 
-<!-- @import_modulePartSeven -->
+<!-- @[import_modulePartSeven](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/PageSeven.ets) -->
 
 ``` TypeScript
 // PageSeven.ets
@@ -318,7 +318,7 @@ test100
 
 为使现代JavaScript特性能够在旧版浏览器或运行环境中运行，第三方库或框架可能会修改内置的全局对象或原型链，从而影响其他代码的执行。
 
-<!-- @export_modifyPrototype -->
+<!-- @[export_modifyPrototype](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/ModifyPrototype.ts) -->
 
 ``` TypeScript
 // ModifyPrototype.ts
@@ -328,7 +328,7 @@ Array.prototype.includes = function (value) {
 };
 ```
 
-<!-- @import_modulePartEight -->
+<!-- @[import_modulePartEight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/PageEight.ets) -->
 
 ``` TypeScript
 // PageEight.ets
@@ -354,7 +354,7 @@ function maybeNotCalledAtAll() {
 
 ArkTS模块化支持循环依赖，即模块A依赖模块B，同时模块B又依赖模块A。在这种情况下，某些导入的模块可能尚未完全加载，从而导致部分代码在执行时行为异常，产生意外的副作用。
 
-<!-- @export_a -->
+<!-- @[export_a](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/ExportA.ets) -->
 
 ``` TypeScript
 // ExportA.ets
@@ -363,7 +363,7 @@ console.info('Module A: ', b);
 export const a = 'A';
 ```
 
-<!-- @export_b -->
+<!-- @[export_b](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/ExportB.ets) -->
 
 ``` TypeScript
 // ExportB.ets
@@ -386,15 +386,15 @@ Stacktrace:
 
 **优化方式**
 
-尽量避免模块间的循环依赖，确保模块的加载顺序是明确和可控的，以避免产生意外的副作用。@security/no-cycle循环依赖检查工具 可以辅助检查循环依赖。
+尽量避免模块间的循环依赖，确保模块的加载顺序是明确和可控的，以避免产生意外的副作用。[@security/no-cycle循环依赖检查工具](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide_no-cycle) 可以辅助检查循环依赖。
 
 ### 延迟加载（lazy import）改变模块执行顺序，可能导致预期的全局变量未定义
 
 **副作用产生场景**
 
-延迟加载特性可使待加载模块在冷启动阶段不被加载，直至应用程序实际运行过程中需要用到这些模块时，才按需同步加载相关模块，从而缩短应用冷启动耗时。但这也同时会改变模块的执行顺序。
+[延迟加载](arkts-lazy-import.md)特性可使待加载模块在冷启动阶段不被加载，直至应用程序实际运行过程中需要用到这些模块时，才按需同步加载相关模块，从而缩短应用冷启动耗时。但这也同时会改变模块的执行顺序。
 
-<!-- @export_modulePartNine -->
+<!-- @[export_modulePartNine](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/ModulePartNine.ets) -->
 
 ``` TypeScript
 // ModulePartNine.ets
@@ -402,7 +402,7 @@ export let data = 'data from module';
 globalThis.someGlobalVar = 100;
 ```
 
-<!-- @import_moduleUseGlobalVarNine -->
+<!-- @[import_moduleUseGlobalVarNine](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/ModuleUseGlobalVarNine.ets) -->
 
 ``` TypeScript
 // ModuleUseGlobalVarNine.ets
@@ -426,7 +426,7 @@ data is  data from module
 
 将可能引发副作用的代码放在函数或方法内部，只有在需要时再执行，而不是在模块加载时立即执行。
 
-<!-- @export_modulePartTen -->
+<!-- @[export_modulePartTen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/ModulePartTen.ets) -->
 
 ``` TypeScript
 // ModulePartTen.ets
@@ -436,7 +436,7 @@ export function initialize() {
 }
 ```
 
-<!-- @import_moduleUseGlobalVarTen -->
+<!-- @[import_moduleUseGlobalVarTen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/ArkModuleSideEffects/entry/src/main/ets/pages/ModuleUseGlobalVarTen.ets) -->
 
 ``` TypeScript
 // ModuleUseGlobalVarTen.ets
@@ -461,7 +461,7 @@ data is  data from module
 
 下文将通过示例说明import路径展开优化性能的原理。
 
-<!-- @unOptIndex -->
+<!-- @[unOptIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/expandPath/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 // src/main/ets/pages/Index.ets
@@ -470,7 +470,7 @@ import * as har from 'expandPathHar';
 console.info('har.One is ', har.One); // 这里的One变量是expandPathHar/src/main/ets/NumberString.ets导出的
 ```
 
-<!-- @expandPathHarIndex -->
+<!-- @[expandPathHarIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/expandPath/expandPathHar/Index.ets) -->
 
 ``` TypeScript
 // expandPath/expandPathHar/Index.ets
@@ -480,7 +480,7 @@ export * from './src/main/ets/Utils'
 console.info('expandPathHar Index.ets execute.');
 ```
 
-<!-- @Utils -->
+<!-- @[Utils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/expandPath/expandPathHar/src/main/ets/Utils.ets) -->
 
 ``` TypeScript
 // expandPathHar/src/main/ets/Utils.ets
@@ -490,7 +490,7 @@ export * from './NumberString'
 console.info('expandPathHar Utils.ets execute.');
 ```
 
-<!-- @export_numberString -->
+<!-- @[export_numberString](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/expandPath/expandPathHar/src/main/ets/NumberString.ets) -->
 
 ``` TypeScript
 // expandPathHar/src/main/ets/NumberString.ets
@@ -506,7 +506,7 @@ console.info('expandPathHar NumberString.ets execute.');
 
 优化方式：改为如下的代码写法，跳过中间的依赖路径，直接依赖变量对应的模块。
 
-<!-- @OptIndex -->
+<!-- @[OptIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/expandPath/entry/src/main/ets/pages/index2.ets) -->
 
 ``` TypeScript
 // src/main/ets/pages/index2.ets
@@ -515,7 +515,7 @@ import { One } from 'expandPathHar/src/main/ets/NumberString';
 console.info('One is ', One);
 ```
 
-<!-- @export_numberString -->
+<!-- @[export_numberString](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/expandPath/expandPathHar/src/main/ets/NumberString.ets) -->
 
 ``` TypeScript
 // expandPathHar/src/main/ets/NumberString.ets
@@ -529,7 +529,7 @@ console.info('expandPathHar NumberString.ets execute.');
 
 由于import路径展开会跳过中间模块的执行，若业务依赖模块的执行顺序，修改后可能会导致业务异常。
 
-<!-- @opServiceManagerIndex -->
+<!-- @[opServiceManagerIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/expandPathSideEffects/entry/src/main/ets/pages/opIndex.ets) -->
 
 ``` TypeScript
 // src/main/ets/pages/opIndex.ets
@@ -538,7 +538,7 @@ import { serviceManager } from 'servicemanagerhar'
 serviceManager.print();
 ```
 
-<!-- @ServiceManagerIndex -->
+<!-- @[ServiceManagerIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/expandPathSideEffects/serviceManagerHar/Index.ets) -->
 
 ``` TypeScript
 // serviceManagerHar/Index.ets
@@ -548,7 +548,7 @@ serviceManager.init();
 export { serviceManager }
 ```
 
-<!-- @ServiceManager -->
+<!-- @[ServiceManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/expandPathSideEffects/serviceManagerHar/src/main/ets/ServiceManager.ets) -->
 
 ``` TypeScript
 // serviceManagerHar/src/main/ets/ServiceManager.ets
@@ -577,7 +577,7 @@ ServiceManager is inited.
 
 如果进行import路径展开，展开后的代码为：
 
-<!-- @ServiceManagerIndex -->
+<!-- @[ServiceManagerIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/expandPathSideEffects/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 // src/main/ets/pages/Index.ets
@@ -586,7 +586,7 @@ import { serviceManager } from 'servicemanagerhar/src/main/ets/OpServiceManager'
 serviceManager.print();
 ```
 
-<!-- @ServiceManager -->
+<!-- @[ServiceManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/expandPathSideEffects/serviceManagerHar/src/main/ets/ServiceManager.ets) -->
 
 ``` TypeScript
 // serviceManagerHar/src/main/ets/ServiceManager.ets
@@ -623,7 +623,7 @@ ServiceManager is not inited.
 
 对于上文的示例，可以进行如下修改：
 
-<!-- @ServiceManagerIndex -->
+<!-- @[ServiceManagerIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/expandPathSideEffects/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 // src/main/ets/pages/Index.ets
@@ -632,7 +632,7 @@ import { serviceManager } from 'servicemanagerhar/src/main/ets/OpServiceManager'
 serviceManager.print();
 ```
 
-<!-- @OpServiceManager -->
+<!-- @[OpServiceManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSModule/expandPathSideEffects/serviceManagerHar/src/main/ets/OpServiceManager.ets) -->
 
 ``` TypeScript
 // serviceManagerHar/src/main/ets/OpServiceManager.ets

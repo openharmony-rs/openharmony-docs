@@ -44,7 +44,7 @@ Node-API提供了一组功能，使开发人员能够在Node-API模块中创建�
 
 ## 使用示例
 
-Node-API接口开发流程参考使用Node-API实现跨语言交互开发流程，本文仅对接口对应C++及ArkTS相关代码进行展示。
+Node-API接口开发流程参考[使用Node-API实现跨语言交互开发流程](use-napi-process.md)，本文仅对接口对应C++及ArkTS相关代码进行展示。
 
 本文cpp部分代码所需引用的头文件如下：
 ```cpp
@@ -66,15 +66,15 @@ import testNapi from 'libentry.so';
 
 关于生命周期管理的代码部分也可参考下面链接：
 
-生命周期管理  
+[生命周期管理](napi-guidelines.md#生命周期管理)  
 
 关于典型错误使用方法的代码部分也可参考下面链接： 
 
-典型错误场景
+[典型错误场景](napi-faq-about-stability.md#napi_open_handle_scope与napi_close_handle_scope进行生命周期相关开发典型错误场景)
 
 cpp部分代码
 
-<!-- @napi_open_close_handle_scope -->  
+<!-- @[napi_open_close_handle_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/napi_init.cpp) -->  
 
 ``` C++
 // napi_open_handle_scope、napi_close_handle_scope
@@ -124,7 +124,7 @@ static napi_value HandleScope(napi_env env, napi_callback_info info)
 接口声明
 
 index.d.ts
-<!-- @napi_open_close_handle_scope_api -->
+<!-- @[napi_open_close_handle_scope_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ``` TypeScript
 export const handleScopeTest: () => string; // napi_open_handle_scope、napi_close_handle_scope
@@ -135,7 +135,7 @@ export const handleScope: () => string;
 
 ArkTS侧示例代码
 
-<!-- @ark_napi_open_close_handle_scope -->
+<!-- @[ark_napi_open_close_handle_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 // napi_open_handle_scope  napi_close_handle_scope
@@ -195,7 +195,7 @@ static napi_value Init(napi_env env, napi_value exports)
 
 cpp部分代码
 
-<!-- @napi_open_close_escapable_handle_scope -->
+<!-- @[napi_open_close_escapable_handle_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 // napi_open_escapable_handle_scope、napi_close_escapable_handle_scope、napi_escape_handle
@@ -227,7 +227,7 @@ static napi_value EscapableHandleScopeTest(napi_env env, napi_callback_info info
 接口声明
 
 index.d.ts
-<!-- @napi_open_close_escapable_handle_scope_api -->
+<!-- @[napi_open_close_escapable_handle_scope_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ``` TypeScript
 export const escapableHandleScopeTest: () => string; // napi_open_escapable_handle_scope、napi_close_escapable_handle_scope、napi_escape_handle
@@ -236,7 +236,7 @@ export const escapableHandleScopeTest: () => string; // napi_open_escapable_hand
 
 ArkTS侧示例代码
 
-<!-- @ark_napi_open_close_escapable_handle_scope -->
+<!-- @[ark_napi_open_close_escapable_handle_scope](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 // napi_open_escapable_handle_scope napi_close_escapable_handle_scope、napi_escape_handle
@@ -454,7 +454,7 @@ try {
 
 cpp部分代码
 
-<!-- @napi_create_delete_reference -->
+<!-- @[napi_create_delete_reference](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 // 创建一个napi_ref类型的指针，用于存储创建的引用。在调用napi_add_finalizer函数前，分配一个napi_ref类型的变量，并传递其地址作为result参数。
@@ -594,7 +594,7 @@ static napi_value DeleteReference(napi_env env, napi_callback_info info)
 接口声明
 
 // index.d.ts
-<!-- @napi_create_delete_reference_api -->
+<!-- @[napi_create_delete_reference_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ``` TypeScript
 export const addFinalizer: () => Object | undefined; // napi_add_finalizer
@@ -609,7 +609,7 @@ export const deleteReference: () => string | undefined; // napi_delete_reference
 
 ArkTS侧示例代码
 
-<!-- @ark_napi_create_delete_reference -->
+<!-- @[ark_napi_create_delete_reference](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 // napi_add_finalizer
@@ -643,7 +643,7 @@ try {
 
 cpp部分代码
 
-<!-- @napi_get_global_handle_count -->
+<!-- @[napi_get_global_handle_count](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 // napi_get_global_handle_count
@@ -666,7 +666,7 @@ static napi_value GetGlobalHandleCount(napi_env env, napi_callback_info info)
 接口声明
 
 // index.d.ts
-<!-- @napi_get_global_handle_count -->
+<!-- @[napi_get_global_handle_count](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ``` TypeScript
 export const getGlobalHandleCount: () => number;
@@ -674,7 +674,7 @@ export const getGlobalHandleCount: () => number;
 
 ArkTS侧示例代码
 
-<!-- @napi_get_global_handle_count -->
+<!-- @[napi_get_global_handle_count](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 try {

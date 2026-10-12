@@ -8,19 +8,19 @@
 
 ## 概述
 
-当某些组件本身的绘制内容不满足需求时，可使用组件自定义绘制功能，在原有组件基础上部分绘制、或者全部自行绘制，以达到预期效果。例如：独特的按钮形状、文字和图像混合的图标等。NDK提供了自定义绘制节点的能力，通过自定义绘制事件，开发者可以实现基于NDK侧ArkUI_NodeType中ARKUI_NODE_CUSTOM类型节点的自绘制能力。
+当某些组件本身的绘制内容不满足需求时，可使用组件自定义绘制功能，在原有组件基础上部分绘制、或者全部自行绘制，以达到预期效果。例如：独特的按钮形状、文字和图像混合的图标等。NDK提供了自定义绘制节点的能力，通过自定义绘制事件，开发者可以实现基于NDK侧[ArkUI_NodeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodetype)中ARKUI_NODE_CUSTOM类型节点的自绘制能力。
 
 > **说明：**
 >
-> * ArkTS的自定义绘制能力和示例请参考自定义绘制修改器 (DrawModifier)。
+> * ArkTS的自定义绘制能力和示例请参考[自定义绘制修改器 (DrawModifier)](./arkts-user-defined-extension-drawModifier.md)。
 
 ## 自定义绘制层级
 
 自定义绘制提供了五个绘制层级，从低到高依次为：内容背景层（drawBehind）、内容层（drawContent）、内容前景层（drawFront）、前景层（drawForeground）和浮层（drawOverlay）。开发者可以根据需求选择合适的层级进行绘制。自定义绘制层级图如下所示。
 
+![](figures/drawModifier.png)
 
-
-开发者可以通过注册相应的事件类型来实现不同层级的自定义绘制，不同层级对应的枚举如下，NDK接口支持的事件类型范围请参考ArkUI_NodeCustomEventType枚举值。
+开发者可以通过注册相应的事件类型来实现不同层级的自定义绘制，不同层级对应的枚举如下，NDK接口支持的事件类型范围请参考[ArkUI_NodeCustomEventType](../reference/apis-arkui/capi-native-node-node-attributes-custom-attributes-h.md#arkui_nodecustomeventtype)枚举值。
 
 | 事件类型 | 说明 |
 | --- | --- |
@@ -35,13 +35,13 @@
 
 本示例通过注册内容层绘制事件`ARKUI_NODE_CUSTOM_EVENT_ON_DRAW`在节点内容层绘制一条从左上区域到右下区域的对角线段，效果图如下。
 
-以下场景基于接入ArkTS页面章节，创建前置工程。内容绘制的完整示例请参考<!--RP1-->NativeDrawPageSample<!--RP1End-->。
+以下场景基于[接入ArkTS页面](ndk-access-the-arkts-page.md)章节，创建前置工程。内容绘制的完整示例请参考<!--RP1-->[NativeDrawPageSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeType/NativeDrawPageSample)<!--RP1End-->。
 
-自定义绘制
+![自定义绘制](figures/自定义绘制.jpg)
 
-1. 通过ArkUI_NativeNodeAPI_1的createNode接口，传入ArkUI_NodeType中的ARKUI_NODE_CUSTOM枚举值创建自定义节点。
+1. 通过[ArkUI_NativeNodeAPI_1](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md)的[createNode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#createnode)接口，传入[ArkUI_NodeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodetype)中的ARKUI_NODE_CUSTOM枚举值创建自定义节点。
 
-   <!-- @create_customNode_start -->
+   <!-- @[create_customNode_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeDrawPageSample/entry/src/main/cpp/Drawing.h) -->
    
    ``` C
    auto customNode = nodeAPI->createNode(ARKUI_NODE_CUSTOM);
@@ -49,7 +49,7 @@
 
 2. 事件注册时将自定义节点、事件类型、事件ID和UserData作为参数传入。
 
-   <!-- @userdata_start -->
+   <!-- @[userdata_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeDrawPageSample/entry/src/main/cpp/Drawing.h) -->
    
    ``` C
    // UserData
@@ -69,9 +69,9 @@
    });
    ```
     
-3. 在回调函数中，通过OH_ArkUI_NodeCustomEvent_GetEventType获取自定义事件的事件类型，通过OH_ArkUI_NodeCustomEvent_GetEventTargetId获取事件ID，通过OH_ArkUI_NodeCustomEvent_GetUserData获取UserData，再根据事件类型和事件ID判断当前触发的是哪个绘制事件，从而执行对应的逻辑。
+3. 在回调函数中，通过[OH_ArkUI_NodeCustomEvent_GetEventType](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodecustomevent_geteventtype)获取自定义事件的事件类型，通过[OH_ArkUI_NodeCustomEvent_GetEventTargetId](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodecustomevent_geteventtargetid)获取事件ID，通过[OH_ArkUI_NodeCustomEvent_GetUserData](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodecustomevent_getuserdata)获取UserData，再根据事件类型和事件ID判断当前触发的是哪个绘制事件，从而执行对应的逻辑。
 
-   <!-- @nodeCustomEvent_start -->
+   <!-- @[nodeCustomEvent_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeDrawPageSample/entry/src/main/cpp/Drawing.h) -->
    
    ``` C
    auto type = OH_ArkUI_NodeCustomEvent_GetEventType(event);
@@ -79,9 +79,9 @@
    auto userData = reinterpret_cast<A *>(OH_ArkUI_NodeCustomEvent_GetUserData(event));
    ```
     
-4. OH_ArkUI_NodeCustomEvent_GetDrawContextInDraw通过自定义组件事件获取绘制上下文，并将其传入OH_ArkUI_DrawContext_GetCanvas以获取Canvas画布指针，该指针随后将转换为OH_Drawing_Canvas指针进行绘制。
+4. [OH_ArkUI_NodeCustomEvent_GetDrawContextInDraw](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodecustomevent_getdrawcontextindraw)通过自定义组件事件获取绘制上下文，并将其传入[OH_ArkUI_DrawContext_GetCanvas](../reference/apis-arkui/capi-native-type-h.md#oh_arkui_drawcontext_getcanvas)以获取Canvas画布指针，该指针随后将转换为[OH_Drawing_Canvas](../reference/apis-arkgraphics2d/capi-drawing-oh-drawing-canvas.md)指针进行绘制。
 
-   <!-- @drawCanvas_Start -->  
+   <!-- @[drawCanvas_Start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeDrawPageSample/entry/src/main/cpp/Drawing.h) -->  
    
    ``` C
    // 获取自定义事件绘制的上下文。
@@ -109,17 +109,17 @@
 
 ### 多层级绘制示例
 
-以下示例创建了一个自定义绘制组件，实现自定义矩形绘制、自定义绘制内容前景层和内容背景层，并支持使用自定义布局容器进行布局排布。完整示例请参考<!--RP2-->NativeNodeUtilsSample<!--RP2End-->。
+以下示例创建了一个自定义绘制组件，实现自定义矩形绘制、自定义绘制内容前景层和内容背景层，并支持使用[自定义布局容器](ndk-build-custom-components.md#自定义布局容器)进行布局排布。完整示例请参考<!--RP2-->[NativeNodeUtilsSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample)<!--RP2End-->。
 
-customDrawLayer
+![customDrawLayer](figures/capiDrawLayer.jpg)
 
 图中深蓝矩形为`drawFront`内容前景层，浅蓝色矩形为`drawContent`内容层，白色矩形为`drawBehind`内容背景层。三层的叠加关系用于验证多层级绘制顺序是否符合预期。
 
-1. 按照自定义布局容器章节准备前置工程。
+1. 按照[自定义布局容器](ndk-build-custom-components.md#自定义布局容器)章节准备前置工程。
 
 2. 创建自定义绘制组件封装对象。
 
-   <!-- @arkUICustomNode_start -->  
+   <!-- @[arkUICustomNode_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/ArkUICustomNode.h) -->  
    
    ``` C
    #ifndef MYAPPLICATION_ARKUICUSTOMNODE_H
@@ -269,7 +269,7 @@ customDrawLayer
 
 3. 使用自定义绘制组件和自定义容器创建示例界面。
 
-    <!-- @arkUICustomNodeCpp_start -->  
+    <!-- @[arkUICustomNodeCpp_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/NativeEntry.cpp) -->  
     
     ``` C++
     #include <arkui/native_node_napi.h>
@@ -400,21 +400,21 @@ customDrawLayer
 
 ## 通过前景绘制实现消息蒙层
 
-以下示例创建了一个消息提示组件，通过内容层绘制消息气泡与文本，并在前景层叠加星标装饰，实现消息高亮提示效果，常用于消息提醒和引导标记等场景。完整示例请参考<!--RP2-->NativeNodeUtilsSample<!--RP2End-->。
+以下示例创建了一个消息提示组件，通过内容层绘制消息气泡与文本，并在前景层叠加星标装饰，实现消息高亮提示效果，常用于消息提醒和引导标记等场景。完整示例请参考<!--RP2-->[NativeNodeUtilsSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample)<!--RP2End-->。
 
 未添加消息蒙层，没有前景层叠加星标装饰效果：
 
-messageMask
+![messageMask](figures/messageMask2.jpg)
 
 添加消息蒙层，添加后有前景层叠加星标装饰效果：
 
-messageMask
+![messageMask](figures/messageMask1.jpg)
 
-1. 按照多层级绘制示例章节准备前置工程。
+1. 按照[多层级绘制示例](#多层级绘制示例)章节准备前置工程。
 
 2. 创建消息蒙层组件封装对象。
 
-   <!-- @messageMaskNode_start -->  
+   <!-- @[messageMaskNode_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/ArkUIMessageMaskNode.h) -->  
    
    ``` C
    #ifndef MYAPPLICATION_ARKUIMESSAGEMASKNODE_H
@@ -719,7 +719,7 @@ messageMask
    
 3. 使用消息蒙层组件创建示例界面。
 
-    <!-- @messageMaskCpp_start -->
+    <!-- @[messageMaskCpp_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/NativeEntry.cpp) -->
     
     ``` C++
     #include <arkui/native_node_napi.h>

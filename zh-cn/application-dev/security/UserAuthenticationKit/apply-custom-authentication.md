@@ -16,7 +16,7 @@
 当用户点击该按钮，发起认证的业务应用便会收到统一用户认证框架返回的一个特殊认证结果，提示业务系统认证结束，需要拉起业务自定义的认证界面。这样，用户在点击“使用支付密码”按钮后，便会看到系统认证控件消失，显示出业务自定义的支付密码认证界面。
 
 <!--RP1-->
-
+![](figures/authentication-widget.png)
 <!--RP1End-->
 
 如图所示，框选区域为WidgetParam.navigationButtonText字段。开发者可配置此字段，引导用户从生物认证切换到应用自定义的业务密码认证。
@@ -36,11 +36,11 @@
 
 ## 开发示例
 
-针对需要切换自定义认证方式的场景，发起认证请求的方式请参考发起认证，但传入的widgetParam必须包含navigationButtonText字段。
+针对需要切换自定义认证方式的场景，发起认证请求的方式请参考[发起认证](start-authentication.md)，但传入的widgetParam必须包含navigationButtonText字段。
 
 当前示例仅展示如何配置界面和选择切换到自定义认证界面。具体拉起的页面及对应页面的实现，请开发者自行实现，代码插入位置可参考注释提示。
 
-<!-- @custom_authentication -->
+<!-- @[custom_authentication](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 handleCustomAuthResult(userAuthInstance: userAuth.UserAuthInstance, exampleNumber: number) {
@@ -99,5 +99,5 @@ applyingCustomAuthentication() {
 
 ## 示例代码
 
-  - 切换自定义认证
+  - [切换自定义认证](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication)
   

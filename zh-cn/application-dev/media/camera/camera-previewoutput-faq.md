@@ -12,13 +12,13 @@
 
 ## 可能原因
 
-预览流（previewOutput）在相机流程中，分为创建，添加以及启动三个流程。流程间存在依赖，如果上一个流程失败，则会导致后续流程失败，进而使相机黑屏。具体原因可能有如下情况：
+预览流（previewOutput）在相机流程中，分为创建、添加以及启动三个流程。流程间存在依赖，如果上一个流程失败，则会导致后续流程失败，进而使相机黑屏。具体原因可能有如下情况：
 
 1. SurfaceId没有正确传入，导致图像无法正常显示。
 
-2. createPreviewOutput失败或者使用的profile与cameraDevice不匹配。
+2. [createPreviewOutput](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#createpreviewoutput)失败或者使用的profile与cameraDevice不匹配。
 
-3. addOutput失败导致output没有成功配置到session中。
+3. [addOutput](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#addoutput11)失败导致output没有成功配置到session中。
 
 4. previewOutput的分辨率比例与photoOutput/videoOutput不一致。
 
@@ -28,7 +28,7 @@
 
 步骤二：如果配置文件profile有问题，会出现“ValidCreateOutputStream”相关日志。如果相机的profile的宽高选择与显示的组件（如XComponent）的宽高不同，则会导致图像出现拉伸的情况。
 
-步骤三：调用addOutput时，会进行时序检测，仅能在session处于beginConfig并且进行addInput之后，commitConfig之前开始配置。可通过ValidateOutputProfile，查看对应的previewOutput的profile内容。
+步骤三：调用[addOutput](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#addoutput11)时，会进行时序检测，仅能在session处于beginConfig并且进行addInput之后，commitConfig之前开始配置。可通过ValidateOutputProfile，查看对应的previewOutput的profile内容。
 
 相关log搜索关键词：CreatePreviewOutput|ValidCreateOutputStream|CanAddOutput|ValidateOutputProfile
 

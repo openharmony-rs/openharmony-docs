@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-\@Require是校验\@Prop、\@State、\@Provide、\@BuilderParam、\@Param和普通变量（无状态装饰器修饰的变量）是否需要构造传参的一个装饰器。
+[\@Require](../../reference/apis-arkui/arkui-ts/ts-universal-require-dynamic.md#require)是校验\@Prop、\@State、\@Provide、\@BuilderParam、\@Param和普通变量（无状态装饰器修饰的变量）是否需要构造传参的一个装饰器。
 
 > **说明：**
 >
@@ -20,19 +20,19 @@
 
 ## 概述
 
-当\@Require装饰器和\@Prop、\@State、\@Provide、\@Param、\@BuilderParam、普通变量（无状态装饰器修饰的变量）结合使用时，在构造该自定义组件时，\@Prop、\@State、\@Provide、\@Param、\@BuilderParam和普通变量（无状态装饰器修饰的变量）必须在构造时传参。
+当\@Require装饰器和[\@Prop](./arkts-prop.md)、[\@State](./arkts-state.md)、[\@Provide](./arkts-provide-and-consume.md)、[\@Param](./arkts-new-param.md)、[\@BuilderParam](./arkts-builderparam.md)、普通变量（无状态装饰器修饰的变量）结合使用时，在构造该自定义组件时，\@Prop、\@State、\@Provide、\@Param、\@BuilderParam和普通变量（无状态装饰器修饰的变量）必须在构造时传参。
 
 ## 限制条件
 
 \@Require装饰器仅用于装饰struct内的\@Prop、\@State、\@Provide、\@BuilderParam、\@Param和普通变量（无状态装饰器修饰的变量）。
 
-预览器的限制场景请参考PreviewChecker检测规则。
+预览器的限制场景请参考[PreviewChecker检测规则](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/ide-previewer-previewchecker-V5)。
 
 ## 使用场景
 
 当Child组件内使用\@Require装饰器和\@Prop、\@State、\@Provide、\@BuilderParam和普通变量（无状态装饰器修饰的变量）结合使用时，父组件SceneRequire在构造Child时必须传参，否则编译不通过。
 
-<!-- @scene_require_start -->
+<!-- @[scene_require_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RequireDemo/entry/src/main/ets/pages/SceneRequire.ets) -->
 
 ``` TypeScript
 @Entry
@@ -90,9 +90,9 @@ struct Child {
 ```
 
 
-使用\@ComponentV2修饰的自定义组件ChildPage通过父组件ParentPage进行初始化，因为有\@Require装饰\@Param，所以父组件必须进行构造赋值。
+使用[\@ComponentV2](./arkts-create-custom-components.md#componentv2)修饰的自定义组件ChildPage通过父组件ParentPage进行初始化，因为有\@Require装饰\@Param，所以父组件必须进行构造赋值。
 
-<!-- @parent_require_start -->
+<!-- @[parent_require_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RequireDemo/entry/src/main/ets/pages/ParentPage.ets) -->
 
 ``` TypeScript
 @ObservedV2
@@ -154,11 +154,11 @@ struct ParentPage {
   }
 }
 ```
-
+![](figures/arkts-require-1.gif)
 
 从API version 18开始，使用\@Require装饰\@State、\@Prop、\@Provide装饰的状态变量，可以在无本地初始值的情况下直接在组件内使用，不会编译报错。
 
-<!-- @page_one_require_start -->
+<!-- @[page_one_require_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RequireDemo/entry/src/main/ets/pages/PageOne.ets) -->
 
 ``` TypeScript
 @Entry
@@ -249,7 +249,7 @@ struct ChildV2 {
 
 【正例】
 
-<!-- @example_require_start -->
+<!-- @[example_require_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RequireDemo/entry/src/main/ets/pages/Example.ets) -->
 
 ``` TypeScript
 @Entry

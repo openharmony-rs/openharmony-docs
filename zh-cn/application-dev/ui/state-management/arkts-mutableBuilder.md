@@ -6,7 +6,7 @@
 <!--Tester: @zhangwenhan-->
 <!--Adviser: @zhang_yixin13-->
 
- 当在一个自定义组件内使用多个全局\@Builder函数实现UI的不同效果时，代码维护将变得非常困难，且页面不够整洁。此时，可以使用wrapBuilder封装全局@Builder。但是wrapBuilder不支持动态切换@Builder，引入mutableBuilder实现全局@Builder的动态切换。
+ 当在一个自定义组件内使用多个全局[\@Builder](./arkts-builder.md)函数实现UI的不同效果时，代码维护将变得非常困难，且页面不够整洁。此时，可以使用[wrapBuilder](./arkts-wrapBuilder.md)封装全局@Builder。但是wrapBuilder不支持动态切换@Builder，引入[mutableBuilder](../../reference/apis-arkui/arkui-ts/ts-universal-mutableBuilder.md)实现全局@Builder的动态切换。
 
 > **说明：**
 >
@@ -49,15 +49,15 @@ struct Index {
 ```
 在上述代码中，使用`textBuilder`初始化wrapBuilder，点击Button的onClick事件，使用`buttonBuilder`再次初始化wrapBuilder，不会触发对应的@Builder的更新。
 
-为了解决这一问题，引入mutableBuilder作为动态全局\@Builder封装函数。mutableBuilder返回MutableBuilder对象，用于全局\@Builder的动态刷新。 
+为了解决这一问题，引入mutableBuilder作为动态全局\@Builder封装函数。mutableBuilder返回MutableBuilder对象，用于[全局\@Builder](arkts-builder.md#全局自定义构建函数)的动态刷新。 
 
 ## 接口说明
 
-mutableBuilder是一个模板函数，返回一个MutableBuilder对象。相比WrappedBuilder，MutableBuilder可以实现动态切换全局@Builder。
+mutableBuilder是一个模板函数，返回一个[MutableBuilder](../../reference/apis-arkui/arkui-ts/ts-universal-mutableBuilder.md#mutablebuilder-1)对象。相比[WrappedBuilder](../../reference/apis-arkui/arkui-ts/ts-universal-wrapBuilder.md#wrappedbuilder)，MutableBuilder可以实现动态切换全局@Builder。
 ```ts
 declare function mutableBuilder<Args extends Object[]>(builder: BuilderCallback): MutableBuilder<Args>;
 ```
-同时`MutableBuilder`是一个模板类，继承自WrappedBuilder。
+同时`MutableBuilder`是一个模板类，继承自[WrappedBuilder](./arkts-wrapBuilder.md#接口说明)。
 
 ```ts
 declare class MutableBuilder<Args extends Object[]> extends WrappedBuilder<Args> {
@@ -79,7 +79,7 @@ let builderArr: MutableBuilder<[string, number]>[] = [mutableBuilder(MyBuilder)]
 
 ## 限制条件
 
-1. mutableBuilder方法只能传入全局\@Builder方法，传入局部@Builder方法编译时报错。
+1. mutableBuilder方法只能传入[全局\@Builder](arkts-builder.md#全局自定义构建函数)方法，传入局部@Builder方法编译时报错。
 
    ```ts
    class TextContent {
@@ -146,9 +146,9 @@ let builderArr: MutableBuilder<[string, number]>[] = [mutableBuilder(MyBuilder)]
 
    ```ts
    // 在实例化MutableBuilder对象时，建议使用mutableBuilder(builderName)方法
-   @State switchingBuilder: MutableBuilder<[MutableBinding]> = mutableBuilder(textBuilder);
+   @State switchingBuilder: MutableBuilder<[MutableBinding<string>]> = mutableBuilder(textBuilder);
    // 不支持将MutableBuilder类型的变量赋值为undefined或null，会导致运行时crash
-   @State switchingBuilder: MutableBuilder<[MutableBinding]> | undefined | null = null; 
+   @State switchingBuilder: MutableBuilder<[MutableBinding<string>]> | undefined | null = null; 
    Button(`MutableBuilder`).onClick(() => {
      // 不建议将wrapBuilder创建的对象赋值给MutableBuilder类型的对象，赋值后会将textBuilder动态切换成buttonBuilder
      this.switchingBuilder = wrapBuilder(buttonBuilder);  
@@ -159,7 +159,7 @@ let builderArr: MutableBuilder<[string, number]>[] = [mutableBuilder(MyBuilder)]
 
    ```ts
    // 在实例化MutableBuilder对象时，建议使用mutableBuilder(builderName)方法
-   @State switchingBuilder: MutableBuilder<[MutableBinding]> = mutableBuilder(textBuilder);
+   @State switchingBuilder: MutableBuilder<[MutableBinding<string>]> = mutableBuilder(textBuilder);
    
    Button(`MutableBuilder`).onClick(() => {
       // 赋值会将textBuilder动态切换成buttonBuilder
@@ -170,7 +170,7 @@ let builderArr: MutableBuilder<[string, number]>[] = [mutableBuilder(MyBuilder)]
 ## 动态更改全局@Builder实例
 使用\@Builder装饰器装饰的方法`textBuilder`作为mutableBuilder的参数，然后将mutableBuilder的返回值赋值给变量`switchingBuilder`，在Button的点击事件中，使用\@Builder装饰器装饰的方法`buttonBuilder`作为mutableBuilder的参数，将mutableBuilder的返回值再次赋值给变量`switchingBuilder`，可实现`textBuilder` 更新为`buttonBuilder`，以解决wrapBuilder不支持二次赋值的问题。
 
-<!-- @mutable_builder_dynamic --> 
+<!-- @[mutable_builder_dynamic](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/mutableBuilder/entry/src/main/ets/pages/MutableBuilderDynamic.ets) --> 
 
 ``` TypeScript
 class TextContent {
@@ -213,14 +213,14 @@ struct MyApp {
 ```
 点击Button，可将`textBuilder`动态更改为`buttonBuilder`，如下图所示：
 
-arkts-mutableBuilder-dynamic-demo1
+![arkts-mutableBuilder-dynamic-demo1](figures/mutableBuilder-dynamic-demo1.gif)
 
 
 ## 使用mutableBuilder显示弹出菜单
 
 由于MutableBuilder继承自WrappedBuilder，故mutableBuilder对应的@Builder具有跟WrappedBuilder同等能力，如下示例，mutableBuilder对应的@Builder方法可作为bindMenu入参，支持点击弹出菜单。
 
-<!-- @mutable_builder_context_menu --> 
+<!-- @[mutable_builder_context_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/mutableBuilder/entry/src/main/ets/pages/MutableBuilderContextMenu.ets) --> 
 
 ``` TypeScript
 @Builder
@@ -244,7 +244,7 @@ struct Index {
         ForEach(this.arr, (item: number) => {
           ListItem() {
             Text(`${item}`)
-            .width('100%')
+              .width('100%')
               .height(100)
               .fontSize(16)
               .textAlign(TextAlign.Center)
@@ -262,9 +262,9 @@ struct Index {
 
 ## 观察mutableBuilder中@Builder的变化
 
- mutableBuilder对应的@Builder函数中可使用MutableBinding进行包裹来观察状态变量的变化，同时可通过@Monitor或addMonitor监听mutableBuilder中@Builder的变化。
+ mutableBuilder对应的@Builder函数中可使用[MutableBinding](../../reference/apis-arkui/js-apis-stateManagement.md#mutablebindingt20)进行包裹来观察状态变量的变化，同时可通过[@Monitor](./arkts-new-monitor.md)或[addMonitor](./arkts-new-addMonitor-clearMonitor.md)监听mutableBuilder中@Builder的变化。
 
-<!-- @mutable_builder_binding --> 
+<!-- @[mutable_builder_binding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/mutableBuilder/entry/src/main/ets/pages/MutableBuilderBinding.ets) --> 
 
 ``` TypeScript
 import { UIUtils, MutableBinding } from '@kit.ArkUI';
@@ -319,7 +319,7 @@ struct MyApp {
 ```
 点击`Click to change`按钮，可将`textBuilder`动态切换为`buttonBuilder`，`this.message`将自动加`B`，界面会显示`initB`按钮。点击`initB`按钮，`buttonBuilder`中的`p.value`将自动加`b`，如下图所示：
 
-arkts-mutableBuilder-dynamic-demo2
+![arkts-mutableBuilder-dynamic-demo2](figures/mutableBuilder-dynamic-demo2.gif)
 
 点击`Click to change`按钮将`textBuilder`动态切换为`buttonBuilder`时，@Monitor将监听到全局@Builder的变化，并打印日志`Builder changed. is buttonBuilder: true`。
 

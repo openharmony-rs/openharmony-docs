@@ -18,7 +18,7 @@ if/else条件渲染是ArkUI应用开发框架提供的渲染控制的能力之�
 - 页面初始构建时，会评估条件语句，构建适用分支的组件，若缺少适用分支，则不构建任何内容。
 - 应用状态变化时，会重新评估条件语句，删除不适用分支的组件，构建适用分支的组件，若缺少适用分支，则不构建任何内容。
 
-关于条件渲染的详细说明，可以参考if/else：条件渲染。
+关于条件渲染的详细说明，可以参考[if/else：条件渲染](../ui/rendering-control/arkts-rendering-control-ifelse.md)。
 
 ### 显隐控制
 
@@ -30,7 +30,7 @@ if/else条件渲染是ArkUI应用开发框架提供的渲染控制的能力之�
 | Hidden  | 组件状态为不可见，但参与布局、进行占位   |
 | None    | 组件状态为不可见，不参与布局、不进行占位 |
 
-关于显隐控制的详细说明，可以参考显隐控制。
+关于显隐控制的详细说明，可以参考[显隐控制](../reference/apis-arkui/arkui-ts/ts-universal-attributes-visibility.md)。
 
 ### 机制区别
 
@@ -142,11 +142,11 @@ struct BetterUseVisibility {
 
 此时组件从显示切换到隐藏状态，由于条件渲染会触发一次销毁组件，再从隐藏切换到显示，二次触发创建组件，此时用条件渲染实现切换的方式， 核心函数forEach耗时1s。
 
-img 
+![img](./figures/WorseUseIf.png) 
 
 基于上例，由于显隐控制会将组件缓存到组件树，从缓存中取状态值修改，再从隐藏切换到显示，继续从缓存中取状态值修改，没有触发创建销毁组件，此时用显隐控制实现切换的方式，核心函数forEach耗时2ms。
 
-img 
+![img](./figures/BetterUseVisibility.png) 
 
 可见，如果组件频繁地在显示和隐藏间切换时，使用显隐控制替代条件渲染，避免组件的频繁创建与销毁，可以提高性能。
 
@@ -232,15 +232,15 @@ struct BetterUseIf {
 
 **效果对比**
 
-正反例相同的操作步骤：通过hdc命令方式，采集应用主线程冷启动的CPU Profiler数据。具体操作，可以参考应用性能分析工具CPU Profiler的使用指导。
+正反例相同的操作步骤：通过hdc命令方式，采集应用主线程冷启动的CPU Profiler数据。具体操作，可以参考[应用性能分析工具CPU Profiler的使用指导](./application-performance-analysis.md#hdc-shell命令采集)。
 
 当应用加载绘制首页，大量组件初始不需要显示的冷启动场景时，如果组件初始不需要显示，此时使用显隐控制，启动时即使组件为隐藏状态也会创建组件。在UIAbility 启动阶段，以下为使用显隐控制的方式，渲染初始页面initialRenderView耗时401.1ms。
 
-img 
+![img](./figures/WorseUseVisibility.png) 
 
 基于上例，如果组件初始不需要显示，此时使用条件渲染由于不满足渲染条件，启动时组件不会创建。在UIAbility 启动阶段，以下为使用条件渲染的方式，渲染初始页面initialRenderView耗时12.6ms。
 
-img 
+![img](./figures/BetterUseIf.png) 
 
 可见，如果在应用冷启动阶段，应用加载绘制首页时，如果组件初始不需要显示，使用条件渲染替代显隐控制，可以减少渲染时间，加快启动速度。
 
@@ -252,13 +252,13 @@ img
 
 以下为未使用容器限制条件渲染组件的刷新范围的方式，Column组件被标记脏区，ForEach耗时13ms。
 
-img 
+![img](./figures/RenderControlWithoutStack.png) 
 
 基于上例，容器内有Text组件被if条件包含，if条件结果变更会触发创建和销毁该组件，此时对于这种受状态变量控制的组件，在if外套一层Stack容器，只局部刷新if条件包含的组件。因此减少了主线程UI刷新耗时。
 
 以下为使用容器限制条件渲染组件的刷新范围的方式，Column组件没有被标记脏区，没有ForEach耗时。
 
-img 
+![img](./figures/RenderControlWithStack.png) 
 
 可见，如果切换项仅涉及部分组件的情况，且反复切换条件渲染的控制分支，使用条件渲染配合容器限制，精准控制组件更新的范围，可以提升应用性能。
 
@@ -392,10 +392,10 @@ export struct MockComplexSubBranch {
 
 此时由于按钮反复切换了条件渲染分支，且每一分支中的MockComplexSubBranch组件子树结构都比较复杂，会造成大量的组件销毁创建过程，以下为不使用组件复用实现条件渲染控制分支中的子组件的方式，应用Index主页面渲染耗时180ms。
 
-img 
+![img](./figures/IfWithoutReusable.png) 
 
 基于上例，考虑到将控制分支中的复杂组件子树结构在父组件中进行组件复用，此时从组件树缓存中拿出子组件，避免大量的组件销毁创建过程，以下为使用组件复用实现条件渲染控制分支中的子组件的方式，应用Index主页面渲染耗时14ms。
 
-img 
+![img](./figures/IfWithReusable.png) 
 
 可见，针对反复切换条件渲染的控制分支的情况，且控制分支中的组件子树结构比较复杂，使用组件复用机制，可以提升应用性能。

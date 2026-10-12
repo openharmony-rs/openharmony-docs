@@ -13,11 +13,11 @@
 
 ## 开发步骤
 
-详细的API说明请参考OH_Camera。
+详细的API说明请参考[OH_Camera](../../reference/apis-camera-kit/capi-oh-camera.md)。
 
 1. 导入NDK接口，接口中提供了相机相关的属性和方法，导入方法如下。
 
-   <!-- @import_header -->    
+   <!-- @[import_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKDeferredCaptureSample/entry/src/main/cpp/camera_manager.h) --> 
    
    ``` C
    #include <cstdint>
@@ -27,7 +27,6 @@
    #include <cstdio>
    #include <fcntl.h>
    #include <map>
-   #include <string>
    #include <vector>
    #include <native_buffer/native_buffer.h>
    #include "iostream"
@@ -71,7 +70,7 @@
    )
    ```
 
-3. 相机初始化及拍照触发参考拍照(C/C++)。
+3. 相机初始化及拍照触发参考[拍照(C/C++)](./native-camera-shooting.md)。
 
 4. 注册分段式（PhotoAssetAvailable）拍照回调，对比单段式拍照，仅注册的拍照回调接口不同。
 
@@ -87,10 +86,10 @@
 
    - 在会话commitConfig前注册分段式拍照回调。
    - 通过分段式拍照回调，获取媒体库资源mediaAsset。
-   - 通过mediaAsset直接落盘图片或者通过mediaAsset配置策略模式请求图像资源，业务处理后通过buffer保存图片，或显示图片(参考拍照(C/C++)步骤5)。
+   - 通过mediaAsset直接落盘图片或者通过mediaAsset配置策略模式请求图像资源，业务处理后通过buffer保存图片，或显示图片(参考[拍照(C/C++)](./native-camera-shooting.md)步骤5)。
    - 使用完后解注册分段式拍照回调函数。
 
-   <!-- @deferred_photo -->    
+   <!-- @[deferred_photo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKDeferredCaptureSample/entry/src/main/cpp/camera_manager.cpp) -->    
    
    ``` C++
    // 分段式拍照回调函数。

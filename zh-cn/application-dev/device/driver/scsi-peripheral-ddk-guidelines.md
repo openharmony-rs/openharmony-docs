@@ -54,7 +54,7 @@ ScsiPeripheralDDK支持SPC（SCSI Primary Commands）、SBC（SCSI Block Command
 
 **图1** ScsiPeripheralDDK调用原理
 
-SCSI_Peripheral_DDK原理图
+![SCSI_Peripheral_DDK原理图](figures/ddk-schematic-diagram.png)
 
 ### 约束与限制
 
@@ -66,7 +66,7 @@ SCSI_Peripheral_DDK原理图
 
 ## 环境搭建
 
-请参考环境准备完成开发前的准备工作。
+请参考[环境准备](environmental-preparation.md)完成开发前的准备工作。
 
 ## 开发指导
 
@@ -90,7 +90,7 @@ SCSI_Peripheral_DDK原理图
 | int32_t OH_ScsiPeripheral_DestroyDeviceMemMap(ScsiPeripheral_DeviceMemMap *devMmap) | 销毁缓冲区。|
 | int32_t OH_ScsiPeripheral_ParseBasicSenseInfo(uint8_t *senseData, uint8_t senseDataLen, ScsiPeripheral_BasicSenseInfo *senseInfo) | 解析基本的sense data，包括Information、Command specific information、Sense key specific字段。 |
 
-详细的接口说明请参考ScsiPeripheralDDK。
+详细的接口说明请参考[ScsiPeripheralDDK](../../reference/apis-driverdevelopment-kit/capi-scsiperipheralddk.md)。
 
 ### 开发步骤
 
@@ -113,7 +113,7 @@ libscsi.z.so
 
    使用 **scsi_peripheral_api.h** 的 **OH_ScsiPeripheral_Init** 初始化ScsiPeripheralDDK。
 
-   <!-- @driver_scsi_step1 --> 
+   <!-- @[driver_scsi_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
    
    ``` C++
    // 初始化SCSI Peripheral DDK
@@ -124,7 +124,7 @@ libscsi.z.so
 
    初始化ScsiPeripheralDDK后，使用 **scsi_peripheral_api.h** 的 **OH_ScsiPeripheral_Open** 打开SCSI设备。
 
-   <!-- @driver_scsi_step2 --> 
+   <!-- @[driver_scsi_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
    
    ``` C++
    ret = OH_ScsiPeripheral_Open(g_devHandle, interfaceIndex, &g_scsiPeripheralDevice);
@@ -134,7 +134,7 @@ libscsi.z.so
 
    使用 **scsi_peripheral_api.h** 的 **OH_ScsiPeripheral_CreateDeviceMemMap** 创建内存缓冲区devMmap。
 
-   <!-- @driver_scsi_step3 --> 
+   <!-- @[driver_scsi_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
    
    ``` C++
    ret = OH_ScsiPeripheral_CreateDeviceMemMap(g_scsiPeripheralDevice, DEVICE_MEM_MAP_SIZE, &g_scsiDeviceMemMap);
@@ -144,7 +144,7 @@ libscsi.z.so
 
    使用 **scsi_peripheral_api.h** 的 **OH_ScsiPeripheral_TestUnitReady** 检查逻辑单元是否已经准备好。
 
-   <!-- @driver_scsi_step4 --> 
+   <!-- @[driver_scsi_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
    
    ``` C++
    int32_t ret = OH_ScsiPeripheral_TestUnitReady(g_scsiPeripheralDevice, &request, &response);
@@ -154,7 +154,7 @@ libscsi.z.so
 
    使用 **scsi_peripheral_api.h** 的 **OH_ScsiPeripheral_Inquiry** 获取SCSI设备的基本信息。
 
-   <!-- @driver_scsi_step5 --> 
+   <!-- @[driver_scsi_step5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
    
    ``` C++
    int32_t ret = OH_ScsiPeripheral_Inquiry(g_scsiPeripheralDevice, &inquiryRequest, &inquiryInfo, &response);
@@ -164,7 +164,7 @@ libscsi.z.so
 
    使用 **scsi_peripheral_api.h** 的 **OH_ScsiPeripheral_ReadCapacity10** 获取SCSI设备容量信息。
 
-   <!-- @driver_scsi_step6 --> 
+   <!-- @[driver_scsi_step6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
    
    ``` C++
    ret = OH_ScsiPeripheral_ReadCapacity10(g_scsiPeripheralDevice, &readCapacityRequest, &capacityInfo, &response);
@@ -174,7 +174,7 @@ libscsi.z.so
 
    使用 **scsi_peripheral_api.h** 的 **OH_ScsiPeripheral_RequestSense** 获取sense data。
 
-   <!-- @driver_scsi_step7 --> 
+   <!-- @[driver_scsi_step7](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
    
    ``` C++
    int32_t ret = OH_ScsiPeripheral_RequestSense(g_scsiPeripheralDevice, &senseRequest, &response);
@@ -184,7 +184,7 @@ libscsi.z.so
 
    使用 **scsi_peripheral_api.h** 的 **OH_ScsiPeripheral_ParseBasicSenseInfo** 解析基本的sense data，包括Information、Command specific information、Sense key specific字段。
 
-   <!-- @driver_scsi_step8 --> 
+   <!-- @[driver_scsi_step8](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
    
    ``` C++
    int32_t ret = OH_ScsiPeripheral_ParseBasicSenseInfo(response.senseData, SCSIPERIPHERAL_MAX_SENSE_DATA_LEN,
@@ -195,7 +195,7 @@ libscsi.z.so
 
    使用 **scsi_peripheral_api.h** 的 **OH_ScsiPeripheral_Read10** 读取指定逻辑块的数据。
 
-   <!-- @driver_scsi_step9 --> 
+   <!-- @[driver_scsi_step9](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
    
    ``` C++
    int32_t ret = OH_ScsiPeripheral_Read10(g_scsiPeripheralDevice, &request, &response);
@@ -205,7 +205,7 @@ libscsi.z.so
 
     使用 **scsi_peripheral_api.h** 的 **OH_ScsiPeripheral_Write10** 写数据到设备指定逻辑块。
 
-    <!-- @driver_scsi_step10 --> 
+    <!-- @[driver_scsi_step10](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
     
     ``` C++
     int32_t ret = OH_ScsiPeripheral_Write10(g_scsiPeripheralDevice, &request, &response);
@@ -215,7 +215,7 @@ libscsi.z.so
 
     使用 **scsi_peripheral_api.h** 的 **OH_ScsiPeripheral_Verify10** 校验指定逻辑块。
 
-    <!-- @driver_scsi_step11 --> 
+    <!-- @[driver_scsi_step11](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
     
     ``` C++
     int32_t ret = OH_ScsiPeripheral_Verify10(g_scsiPeripheralDevice, &request, &response);
@@ -225,7 +225,7 @@ libscsi.z.so
 
     使用 **scsi_peripheral_api.h** 的 **OH_ScsiPeripheral_SendRequestByCdb** 发送SCSI命令。
 
-    <!-- @driver_scsi_step12 --> 
+    <!-- @[driver_scsi_step12](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
     
     ``` C++
     int32_t ret = OH_ScsiPeripheral_SendRequestByCdb(g_scsiPeripheralDevice, &request, &response);
@@ -235,7 +235,7 @@ libscsi.z.so
 
     在所有请求处理完毕，程序退出前，使用 **scsi_peripheral_api.h** 的 **OH_ScsiPeripheral_DestroyDeviceMemMap** 销毁缓冲区。
 
-    <!-- @driver_scsi_step13 --> 
+    <!-- @[driver_scsi_step13](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
     
     ``` C++
     ret = OH_ScsiPeripheral_DestroyDeviceMemMap(g_scsiDeviceMemMap);
@@ -245,7 +245,7 @@ libscsi.z.so
 
     在销毁缓冲区后，使用 **scsi_peripheral_api.h** 的 **OH_ScsiPeripheral_Close** 关闭设备。
 
-    <!-- @driver_scsi_step14 --> 
+    <!-- @[driver_scsi_step14](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
     
     ``` C++
     ret = OH_ScsiPeripheral_Close(&g_scsiPeripheralDevice);
@@ -255,7 +255,7 @@ libscsi.z.so
 
     在关闭SCSI设备后，使用 **scsi_peripheral_api.h** 的 **OH_ScsiPeripheral_Release** 释放ScsiPeripheralDDK。
 
-    <!-- @driver_scsi_step15 --> 
+    <!-- @[driver_scsi_step15](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/ScsiPeripheralDemo/entry/src/main/cpp/hello.cpp) --> 
     
     ``` C++
     ret = OH_ScsiPeripheral_Release();

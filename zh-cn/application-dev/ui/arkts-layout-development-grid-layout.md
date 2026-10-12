@@ -19,7 +19,7 @@
 
 4. 自动换行和自适应：栅格布局可以完成一对多布局的自动换行和自适应。当页面元素的数量超出了一行或一列的容量时，它们会自动换到下一行或下一列，并且在不同的设备上自适应排版，使得页面布局更加灵活和适应性强。
 
-GridRow为栅格容器组件，需与栅格子组件GridCol在栅格布局场景中联合使用。
+[GridRow](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md)为栅格容器组件，需与栅格子组件[GridCol](../reference/apis-arkui/arkui-ts/ts-container-gridcol.md)在栅格布局场景中联合使用。
 
 
 ## 栅格容器GridRow
@@ -27,7 +27,7 @@ GridRow为栅格容器组件，需与栅格子组件GridCol在栅格布局场景
 
 ### 栅格容器断点
 
-栅格容器以设备的水平宽度（像素单位，单位vp）作为断点依据，定义设备的宽度类型，形成了一套断点规则。开发者可根据需求在不同的断点区间实现不同的页面布局效果。
+栅格容器以设备的水平宽度（[像素单位](../reference/apis-arkui/arkui-ts/ts-pixel-units.md)，单位vp）作为断点依据，定义设备的宽度类型，形成了一套断点规则。开发者可根据需求在不同的断点区间实现不同的页面布局效果。
 
 栅格容器默认断点将设备宽度分为xs、sm、md、lg四类，尺寸范围如下：
 
@@ -38,7 +38,7 @@ GridRow为栅格容器组件，需与栅格子组件GridCol在栅格布局场景
 | md   | [600,&nbsp;840) | 中等宽度类型设备。 |
 | lg   | [840,&nbsp;+∞)  | 大宽度类型设备。  |
 
-在GridRow栅格组件中，允许开发者使用BreakPoints自定义修改断点的取值范围，最多支持6个断点，除了默认的4个断点外，还可以启用xl和xxl断点，支持6种不同尺寸（xs，sm，md，lg，xl，xxl）设备的布局设置。
+在GridRow栅格组件中，允许开发者使用[BreakPoints](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#breakpoints)自定义修改断点的取值范围，最多支持6个断点，除了默认的4个断点外，还可以启用xl和xxl断点，支持6种不同尺寸（xs，sm，md，lg，xl，xxl）设备的布局设置。
 
 | 断点名称 | 设备描述      |
 | ---- | --------- |
@@ -49,7 +49,7 @@ GridRow为栅格容器组件，需与栅格子组件GridCol在栅格布局场景
 | xl   | 特大宽度类型设备。 |
 | xxl  | 超大宽度类型设备。 |
 
-- 开发者可根据实际使用场景，通过一个单调递增数组设置断点位置。由于栅格容器默认支持4个断点，在不设置断点位置时，系统为默认断点配置的单调递增数组为["320vp", "600vp", "840vp"]。开发者使用BreakPoints最多可支持6个断点，因此此单调递增数组最大长度为5。
+- 开发者可根据实际使用场景，通过一个单调递增数组设置断点位置。由于栅格容器默认支持4个断点，在不设置断点位置时，系统为默认断点配置的单调递增数组为["320vp", "600vp", "840vp"]。开发者使用[BreakPoints](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#breakpoints)最多可支持6个断点，因此此单调递增数组最大长度为5。
 
   假设传入的数组是[n0, n1, n2, n3, n4]，则各个断点取值如下：
 
@@ -68,12 +68,12 @@ GridRow为栅格容器组件，需与栅格子组件GridCol在栅格布局场景
   breakpoints: {value: ['320vp', '600vp', '840vp', '1440vp']} // 表示xs、sm、md、lg、xl共5个断点被使用，小于320vp为xs，320vp-600vp为sm，  600vp-840vp为md，840vp-1440vp为lg，大于1440vp为xl。
   ```
 
-- 栅格容器通过监听窗口或容器的尺寸变化进行断点，通过reference设置断点切换参考物。考虑到应用可能以非全屏窗口的形式显示，以应用窗口宽度为参照物更为通用。
+- 栅格容器通过监听窗口或容器的尺寸变化进行断点，通过[reference](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#breakpoints)设置断点切换参考物。考虑到应用可能以非全屏窗口的形式显示，以应用窗口宽度为参照物更为通用。
 
-  例如，通过断点设置将应用宽度分成6个区间，通过columns配置各断点下栅格容器的栅格列数。
+  例如，通过断点设置将应用宽度分成6个区间，通过[columns](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowoptions对象说明)配置各断点下栅格容器的栅格列数。
 
 
-  <!-- @GridLayoutReference_start -->
+  <!-- @[GridLayoutReference_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridLayoutReference.ets) -->
   
   ``` TypeScript
   @Entry
@@ -120,7 +120,7 @@ GridRow为栅格容器组件，需与栅格子组件GridCol在栅格布局场景
   }
   ```
 
-  gridLayoutReference
+  ![gridLayoutReference](figures/gridLayoutReference.gif)
 
 
 ### 布局的总列数
@@ -131,7 +131,7 @@ GridRow中通过columns设置栅格布局的总列数。
 - API version 20及以后，columns默认值为{ xs: 2, sm: 4, md: 8, lg: 12, xl: 12, xxl: 12 }。
 
 
-  <!-- @GridLayoutColumns_start -->
+  <!-- @[GridLayoutColumns_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridLayoutColumns.ets) -->
   
   ``` TypeScript
   // xxx.ets
@@ -158,17 +158,17 @@ GridRow中通过columns设置栅格布局的总列数。
 
     API version 20之前布局显示：
 
-    gridLayoutColumns
+    ![gridLayoutColumns](figures/gridLayoutColumns.png)
     
     API version 20及以后布局显示（以sm设备为例，默认栅格列数为4）：
     
-    gridLayoutColumns2
+    ![gridLayoutColumns2](figures/gridLayoutColumns2.png)
 
 
-columns支持number和GridRowColumnOption两种类型，可按两种方式设置栅格布局的总列数。
+columns支持number和[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowcolumnoption)两种类型，可按两种方式设置栅格布局的总列数。
 - 当columns类型为number时，栅格布局在任何尺寸设备下都被分为同一列数。下面分别设置栅格布局列数为4和8，子元素占一列，效果如下：
 
-  <!-- @GridLayoutColumnsToFour_start -->
+  <!-- @[GridLayoutColumnsToFour_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridLayoutColumnsToFour.ets) -->
   
   ``` TypeScript
   // xxx.ets
@@ -203,7 +203,7 @@ columns支持number和GridRowColumnOption两种类型，可按两种方式设置
   }
   ```
 
-  <!-- @GridLayoutColumnsToEight_start -->
+  <!-- @[GridLayoutColumnsToEight_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridLayoutColumnsToEight.ets) -->
   
   ``` TypeScript
   // xxx.ets
@@ -238,11 +238,11 @@ columns支持number和GridRowColumnOption两种类型，可按两种方式设置
   }
   ```
 
-    gridLayoutColumnsToEight
+    ![gridLayoutColumnsToEight](figures/gridLayoutColumnsToEight.png)
 
-- 当columns类型为GridRowColumnOption时，支持下面6种不同尺寸（xs，sm，md，lg，xl，xxl）设备的栅格列数设置，不同尺寸的设备支持配置不同的栅格列数。
+- 当columns类型为[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowcolumnoption)时，支持下面6种不同尺寸（xs，sm，md，lg，xl，xxl）设备的栅格列数设置，不同尺寸的设备支持配置不同的栅格列数。
 
-  <!-- @GridLayoutColumnOption_start -->
+  <!-- @[GridLayoutColumnOption_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridLayoutColumnOption.ets) -->
   
   ``` TypeScript
   @Entry
@@ -275,83 +275,83 @@ columns支持number和GridRowColumnOption两种类型，可按两种方式设置
 
     API version 20之前布局显示（xs设备未配置栅格列数，取默认列数12）：
 
-    gridRow
+    ![gridRow](figures/gridRow.gif)
 
     API version 20及以后布局显示（xs设备继承sm设备栅格列数）：
 
-    gridRow2
+    ![gridRow2](figures/gridRow2.gif)
 
-  仅部分设置sm、md的栅格列数，未配置的xs、lg、xl、xxl设备根据栅格列数补全（见GridRowColumnOption）取默认值。
+  仅部分设置sm、md的栅格列数，未配置的xs、lg、xl、xxl设备根据栅格列数补全（见[GridRowColumnOption](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowcolumnoption)）取默认值。
 
 
 ### 排列方向
 
-栅格布局中，可以通过设置GridRow的direction属性来指定栅格子组件在栅格容器中的排列方向。该属性可以设置为GridRowDirection.Row（从左往右排列）或GridRowDirection.RowReverse（从右往左排列），以满足不同的布局需求。通过合理的direction属性设置，可以使得页面布局更加灵活和符合设计要求。
+栅格布局中，可以通过设置GridRow的[direction](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowoptions对象说明)属性来指定栅格子组件在栅格容器中的排列方向。该属性可以设置为[GridRowDirection](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowdirection枚举说明).Row（从左往右排列）或[GridRowDirection](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowdirection枚举说明).RowReverse（从右往左排列），以满足不同的布局需求。通过合理的direction属性设置，可以使得页面布局更加灵活和符合设计要求。
 
 - 子组件默认从左往右排列。
 
 
-    <!-- @GridLayoutDirectionRow_start -->
+    <!-- @[GridLayoutDirectionRow_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridLayoutDirectionRow.ets) -->
     
     ``` TypeScript
     GridRow({ direction: GridRowDirection.Row }) { /* ... */ }
     ```
 
-    zh-cn_image_0000001511740488
+    ![zh-cn_image_0000001511740488](figures/zh-cn_image_0000001511740488.png)
 
 - 子组件从右往左排列。
 
 
-    <!-- @GridLayoutDirectionRowReverse_start -->
+    <!-- @[GridLayoutDirectionRowReverse_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridLayoutDirectionRowReverse.ets) -->
     
     ``` TypeScript
     GridRow({ direction: GridRowDirection.RowReverse }) { /* ... */ }
     ```
 
-    gridLayoutDirectionRowReverse
+    ![gridLayoutDirectionRowReverse](figures/gridLayoutDirectionRowReverse.png)
 
 
 ### 子组件间距
 
-GridRow中通过gutter属性设置子元素在水平和垂直方向的间距。
+GridRow中通过[gutter](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowoptions对象说明)属性设置子元素在水平和垂直方向的间距。
 
 - 当gutter类型为number时，同时设置栅格子组件间水平和垂直方向边距且相等。下例中，设置子组件水平与垂直方向距离相邻元素的间距为10。
 
 
-    <!-- @GridLayoutGutterToNumber_start -->
+    <!-- @[GridLayoutGutterToNumber_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridLayoutGutterToNumber.ets) -->
     
     ``` TypeScript
     GridRow({ gutter: 10 }) { /* ... */ }
     ```
 
-    zh-cn_image_0000001511740476
+    ![zh-cn_image_0000001511740476](figures/zh-cn_image_0000001511740476.png)
 
-- 当gutter类型为GutterOption时，单独设置栅格子组件水平垂直边距，x属性为水平方向间距，y为垂直方向间距。
+- 当gutter类型为[GutterOption](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gutteroption)时，单独设置栅格子组件水平垂直边距，x属性为水平方向间距，y为垂直方向间距。
 
 
-    <!-- @GridLayoutGutterOption_start -->
+    <!-- @[GridLayoutGutterOption_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridLayoutGutterOption.ets) -->
     
     ``` TypeScript
     GridRow({ gutter: { x: 20, y: 50 } }) { /* ... */ }
     ```
 
-    gridLayoutGutterOption
+    ![gridLayoutGutterOption](figures/gridLayoutGutterOption.png)
 
 
 ## 子组件GridCol
 
-GridCol组件作为GridRow组件的子组件，通过给GridCol传参或者设置属性两种方式，设置span（占用列数），offset（偏移列数），order（元素序号）的值。
+[GridCol](../reference/apis-arkui/arkui-ts/ts-container-gridcol.md)组件作为[GridRow](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md)组件的子组件，通过给GridCol传参或者设置属性两种方式，设置[span](../reference/apis-arkui/arkui-ts/ts-container-gridcol.md#gridcoloptions对象说明)（占用列数），[offset](../reference/apis-arkui/arkui-ts/ts-container-gridcol.md#gridcoloptions对象说明)（偏移列数），[order](../reference/apis-arkui/arkui-ts/ts-container-gridcol.md#gridcoloptions对象说明)（元素序号）的值。
 
 - 设置span。
 
 
-    <!-- @GridColSpan_start -->
+    <!-- @[GridColSpan_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridColSpan.ets) -->
     
     ``` TypeScript
     let gSpan:Record<string,number> = { 'xs': 1, 'sm': 2, 'md': 3, 'lg': 4 }
     ```
 
-    <!-- @GridColSpan1_start -->
+    <!-- @[GridColSpan1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridColSpan.ets) -->
     
     ``` TypeScript
     GridCol({ span: 2 }){}
@@ -363,13 +363,13 @@ GridCol组件作为GridRow组件的子组件，通过给GridCol传参或者设�
 - 设置offset。
 
 
-    <!-- @GridColOffset_start -->
+    <!-- @[GridColOffset_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridColOffset.ets) -->
     
     ``` TypeScript
     let gOffset:Record<string,number> = { 'xs': 1, 'sm': 2, 'md': 3, 'lg': 4 }
     ```
 
-    <!-- @GridColOffset1_start -->
+    <!-- @[GridColOffset1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridColOffset.ets) -->
     
     ``` TypeScript
     GridCol({ offset: 2, span: 1 }){}
@@ -380,13 +380,13 @@ GridCol组件作为GridRow组件的子组件，通过给GridCol传参或者设�
 - 设置order。
 
 
-    <!-- @GridColOrder_start -->
+    <!-- @[GridColOrder_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridColOrder.ets) -->
     
     ``` TypeScript
     let gOrder:Record<string,number> = { 'xs': 1, 'sm': 2, 'md': 3, 'lg': 4 }
     ```
 
-    <!-- @GridColOrder1_start -->
+    <!-- @[GridColOrder1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridColOrder.ets) -->
     
     ``` TypeScript
     GridCol({ order: 2, span: 1 }){}
@@ -400,11 +400,11 @@ GridCol组件作为GridRow组件的子组件，通过给GridCol传参或者设�
 
 子组件占栅格布局的列数，决定了子组件的宽度。默认值为1。
 
-span支持number和GridColColumnOption两种类型，可按两种方式设置栅格子组件占栅格容器的列数。
+span支持number和[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-container-gridcol.md#gridcolcolumnoption)两种类型，可按两种方式设置栅格子组件占栅格容器的列数。
 - 当span类型为number时，子组件在所有尺寸设备下占用的列数相同。
 
 
-    <!-- @GridColSpanToNumber_start -->
+    <!-- @[GridColSpanToNumber_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridColSpanToNumber.ets) -->
     
     ``` TypeScript
     // xxx.ets
@@ -432,12 +432,12 @@ span支持number和GridColColumnOption两种类型，可按两种方式设置栅
     }
     ```
 
-    gridColSpanToNumber
+    ![gridColSpanToNumber](figures/gridColSpanToNumber.png)
 
-- 当span类型为GridColColumnOption时，支持6种不同尺寸（xs，sm，md，lg，xl，xxl）设备中子组件所占列数设置，不同尺寸的设备下子组件支持配置不同列数。若仅部分设置sm、md的列数，未配置的xs、lg、xl、xxl设备根据列数补全（见GridColColumnOption）取默认值。
+- 当span类型为GridColColumnOption时，支持6种不同尺寸（xs，sm，md，lg，xl，xxl）设备中子组件所占列数设置，不同尺寸的设备下子组件支持配置不同列数。若仅部分设置sm、md的列数，未配置的xs、lg、xl、xxl设备根据列数补全（见[GridColColumnOption](../reference/apis-arkui/arkui-ts/ts-container-gridcol.md#gridcolcolumnoption)）取默认值。
 
 
-    <!-- @GridColSpanToOption_start -->
+    <!-- @[GridColSpanToOption_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridColSpanToOption.ets) -->
     
     ``` TypeScript
     @Entry
@@ -479,7 +479,7 @@ span支持number和GridColColumnOption两种类型，可按两种方式设置栅
     }
     ```
 
-    zh-cn_image_0000001511740492
+    ![zh-cn_image_0000001511740492](figures/zh-cn_image_0000001511740492.gif)
 
 
 ### offset
@@ -489,7 +489,7 @@ span支持number和GridColColumnOption两种类型，可按两种方式设置栅
 - 当offset类型为number时，子组件偏移相同列数。
 
 
-    <!-- @GridColOffsetToNumber_start -->
+    <!-- @[GridColOffsetToNumber_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridColOffsetToNumber.ets) -->
     
     ``` TypeScript
     @Entry
@@ -518,14 +518,14 @@ span支持number和GridColColumnOption两种类型，可按两种方式设置栅
     }
     ```
 
-    gridColOffsetToNumber
+    ![gridColOffsetToNumber](figures/gridColOffsetToNumber.png)
 
   在lg及以上尺寸的设备上，栅格分成12列，每一个子组件占1列，偏移2列，每个子组件及间距共占3列，1行放4个子组件。
 
 - 当offset类型为GridColColumnOption时，支持6种不同尺寸（xs，sm，md，lg，xl，xxl）设备中子组件所占列数设置，各个尺寸下数值可不同。
 
 
-    <!-- @GridColOffsetToOption_start -->
+    <!-- @[GridColOffsetToOption_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridColOffsetToOption.ets) -->
     
     ``` TypeScript
     @Entry
@@ -568,7 +568,7 @@ span支持number和GridColColumnOption两种类型，可按两种方式设置栅
     }
     ```
 
-    gridColOffsetToOption
+    ![gridColOffsetToOption](figures/gridColOffsetToOption.gif)
 
 
 ### order
@@ -580,7 +580,7 @@ span支持number和GridColColumnOption两种类型，可按两种方式设置栅
 - 当order类型为number时，子组件在任何尺寸下排序次序一致。
 
 
-    <!-- @GridColOrderToNumber_start -->
+    <!-- @[GridColOrderToNumber_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridColOrderToNumber.ets) -->
     
     ``` TypeScript
     GridRow({ columns: 12 }) {
@@ -610,12 +610,12 @@ span支持number和GridColColumnOption两种类型，可按两种方式设置栅
     }.border({ width: 1, color: 'rgb(39,135,217)' }).height('200vp')
     ```
 
-    gridColOrderToNumber
+    ![gridColOrderToNumber](figures/gridColOrderToNumber.png)
 
 - 当order类型为GridColColumnOption时，支持6种不同尺寸（xs，sm，md，lg，xl，xxl）设备中子组件排序次序设置。在xs设备中，子组件排列顺序为1234；sm为2341，md为3412，lg为2431。
 
 
-    <!-- @GridColOrderToOption_start -->
+    <!-- @[GridColOrderToOption_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridColOrderToOption.ets) -->
     
     ``` TypeScript
     @Entry
@@ -661,7 +661,7 @@ span支持number和GridColColumnOption两种类型，可按两种方式设置栅
     }
     ```
 
-    gridColOrderToOption
+    ![gridColOrderToOption](figures/gridColOrderToOption.gif)
 
 
 ## 栅格组件的嵌套使用
@@ -670,7 +670,7 @@ span支持number和GridColColumnOption两种类型，可按两种方式设置栅
 
 以下示例中，栅格把整个空间分为12份。第一层GridRow嵌套GridCol，分为中间大区域以及“footer”区域。第二层GridRow嵌套GridCol，分为“left”和“right”区域。子组件空间按照上一层父组件的空间划分，粉色的区域是屏幕空间的12列，绿色和蓝色的区域是父组件GridCol的12列，依次进行空间的划分。
 
-<!-- @GridRowExample_start -->
+<!-- @[GridRowExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/gridlayout/GridRowExample.ets) -->
 
 ``` TypeScript
 @Entry
@@ -710,7 +710,7 @@ struct GridRowExample {
 ```
 
 
-gridRowExample
+![gridRowExample](figures/gridRowExample.png)
 
 
-综上所述，栅格组件提供了丰富的自定义能力，功能非常灵活和强大。只需要明确栅格在不同断点下的columns、margin、gutter及span等参数，即可确定最终布局，无需关心具体的设备类型及设备状态（如横竖屏）等。
+综上所述，栅格组件提供了丰富的自定义能力，功能非常灵活和强大。只需要明确栅格在不同断点下的[columns](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowoptions对象说明)、[margin](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#margin)、[gutter](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#gridrowoptions对象说明)及[span](../reference/apis-arkui/arkui-ts/ts-container-gridcol.md#gridcoloptions对象说明)等参数，即可确定最终布局，无需关心具体的设备类型及设备状态（如横竖屏）等。

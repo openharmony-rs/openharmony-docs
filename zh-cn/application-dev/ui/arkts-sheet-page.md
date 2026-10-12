@@ -6,17 +6,17 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-半模态页面（bindSheet）默认是模态形式的非全屏弹窗式交互页面，允许部分底层父视图可见，帮助用户在与半模态交互时保留其父视图环境。
+[半模态页面（bindSheet）](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet)默认是模态形式的非全屏弹窗式交互页面，允许部分底层父视图可见，帮助用户在与半模态交互时保留其父视图环境。
 
 半模态页面适用于展示简单的任务或信息面板，例如，个人信息、文本简介、分享面板、创建日程、添加内容等。若需展示可能影响父视图的半模态页面，半模态支持配置为非模态交互形式。
 
-半模态在不同宽度的设备上存在不同的形态能力，开发者对不同宽度的设备上有不同的形态诉求请参考(preferType)属性。可以使用bindSheet构建半模态转场效果，详见模态转场。对于复杂或者冗长的用户流程，建议考虑其他的转场方式替代半模态。如全模态转场和Navigation转场。
+半模态在不同宽度的设备上存在不同的形态能力，开发者对不同宽度的设备上有不同的形态诉求请参考([preferType](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions))属性。可以使用bindSheet构建半模态转场效果，详见[模态转场](arkts-modal-transition.md#使用bindsheet构建半模态转场效果)。对于复杂或者冗长的用户流程，建议考虑其他的转场方式替代半模态。如[全模态转场](arkts-contentcover-page.md)和[Navigation转场](./arkts-navigation-animation.md)。
 
 ## 使用约束
 
- - 半模态内嵌UIExtension时，不支持再在UIExtension内拉起半模态/弹窗。
+ - 半模态内嵌[UIExtension](../reference/apis-arkui/js-apis-arkui-uiExtension.md)时，不支持再在UIExtension内拉起半模态/弹窗。
 
- - 若无二次确认或者自定义关闭行为的场景，不建议使用shouldDismiss/onWillDismiss接口。
+ - 若无二次确认或者自定义关闭行为的场景，不建议使用[shouldDismiss](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions)/[onWillDismiss](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions)接口。
 
 ## 生命周期
 
@@ -62,7 +62,7 @@
 ```
 
 完整示例代码如下：
-<!-- @Nested_scrolling_Sheet -->
+<!-- @[Nested_scrolling_Sheet](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BindSheet/entry/src/main/ets/pages/bindSheet/template10/SheetDemo.ets) -->
 
 ``` TypeScript
 
@@ -122,7 +122,7 @@ struct SheetDemo {
 ```
 
 
-sheetTwo
+![sheetTwo](figures/sheetTwo.PNG)
 
 ## 二次确认能力
 
@@ -131,7 +131,7 @@ sheetTwo
 > **说明：** 
 >
 > 声明onWillDismiss接口后，半模态页面的所有关闭操作，包括侧滑、点击关闭按钮、点击蒙层和下拉关闭，都需通过调用dismiss方法来实现。若未实现此逻辑，半模态页面将无法响应上述关闭操作。
-<!-- @onWillDismiss_Dismiss -->  
+<!-- @[onWillDismiss_Dismiss](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BindSheet/entry/src/main/ets/pages/bindSheet/template11/OnWillDismiss_Dismiss.ets) -->  
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -206,7 +206,7 @@ struct OnWillDismiss_Dismiss {
 ```
 
 
-onWillDismiss
+![onWillDismiss](figures/onWillDismiss.png)
 
 ## 屏蔽部分关闭行为
 
@@ -242,13 +242,13 @@ onWillSpringBackWhenDismiss: ((SpringBackAction: SpringBackAction) => {
 
 ## 半模态支持避让中轴
 
-半模态从API version 14开始支持中轴避让，当前在2in1设备默认开启（仅窗口处于瀑布模式时产生避让）中轴避让能力，且在2in1设备默认避让区域为上半屏。开发者可以通过SheetOptions的enableHoverMode主动设置是否避让中轴，及SheetOptions的hoverModeArea设置避让中轴后显示区域。
+半模态从API version 14开始支持中轴避让，当前在2in1设备默认开启（仅窗口处于瀑布模式时产生避让）中轴避让能力，且在2in1设备默认避让区域为上半屏。开发者可以通过[SheetOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions)的enableHoverMode主动设置是否避让中轴，及[SheetOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions)的hoverModeArea设置避让中轴后显示区域。
 
-- 半模态中轴避让不支持控件子窗能力，SheetOptions中的showInSubWindow为true的场景。
+- 半模态中轴避让不支持控件子窗能力，[SheetOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions)中的showInSubWindow为true的场景。
 - 2in1设备上需同时满足窗口处于瀑布模式才会产生避让。
 
 完整示例代码如下：
-<!-- @SheetTransitionExample -->
+<!-- @[SheetTransitionExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BindSheet/entry/src/main/ets/pages/bindSheet/template12/SheetTransitionExample.ets) -->
 
 ``` TypeScript
 
@@ -315,4 +315,4 @@ struct SheetTransitionExample {
 ```
 
 
-sheetOne
+![sheetOne](figures/sheetOne.PNG)

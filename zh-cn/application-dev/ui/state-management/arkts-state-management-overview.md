@@ -10,7 +10,7 @@
 
   **图1** 效果图  
 
-Video_2023-03-06_152548
+![Video_2023-03-06_152548](figures/Video_2023-03-06_152548.gif)
 
 上面的示例中，用户与应用程序的交互触发了文本状态变更，状态变更引起了UI渲染，UI从“Hello World”变更为“Hello ArkUI”。
 
@@ -18,13 +18,13 @@ Video_2023-03-06_152548
 
 自定义组件中的变量，必须使用装饰器装饰，才能成为状态变量，状态变量的改变会引起UI的渲染刷新。如果不使用状态变量，UI只能在初始化时渲染，后续将不会再刷新。下图展示了State和View（UI）之间的关系。
 
-zh-cn_image_0000001562352677
+![zh-cn_image_0000001562352677](figures/State-UI-relationship.png)
 
 - View(UI)：UI渲染，指将build方法内的UI描述和\@Builder装饰的方法内的UI描述映射到界面。
 
 - State：状态，指驱动UI更新的数据。通过触发组件的事件方法，改变状态数据。状态数据的改变，引起UI的重新渲染。
 
-在阅读状态管理文档前，开发者需要了解UI范式基本语法。建议提前阅读基本语法概述、声明式UI描述、状态管理术语和自定义组件-创建自定义组件。
+在阅读状态管理文档前，开发者需要了解UI范式基本语法。建议提前阅读[基本语法概述](./arkts-basic-syntax-overview.md)、[声明式UI描述](./arkts-declarative-ui-description.md)、[状态管理术语](./arkts-state-management-glossary.md)和[自定义组件-创建自定义组件](./arkts-create-custom-components.md)。
 
 >**说明：**
 >
@@ -51,55 +51,55 @@ ArkUI状态管理V1提供了多种装饰器，通过使用这些装饰器，状�
 
 装饰器可按数据传递形式和同步类型分为：只读的单向传递和可变更的双向传递。
 
-图示如下，具体装饰器的介绍，可详见<!--RP1-->管理组件拥有的状态<!--RP1End-->和<!--RP2-->管理应用拥有的状态<!--RP2End-->。开发者可以利用这些能力来实现数据和UI的联动。
+图示如下，具体装饰器的介绍，可详见<!--RP1-->[管理组件拥有的状态](arkts-state.md)<!--RP1End-->和<!--RP2-->[管理应用拥有的状态](arkts-application-state-management-overview.md)<!--RP2End-->。开发者可以利用这些能力来实现数据和UI的联动。
 
-zh-cn_image_0000001502704640
+![zh-cn_image_0000001502704640](figures/V1-Decorators.png)
 
-上图中，Components部分的装饰器为组件级别的状态管理，Application部分为应用的状态管理。开发者可以通过@StorageLink/@LocalStorageLink实现应用和组件状态的双向同步，通过@StorageProp/@LocalStorageProp实现应用和组件状态的单向同步。
+上图中，Components部分的装饰器为组件级别的状态管理，Application部分为应用的状态管理。开发者可以通过[@StorageLink](arkts-appstorage.md#storagelink)/[@LocalStorageLink](arkts-localstorage.md#localstoragelink)实现应用和组件状态的双向同步，通过[@StorageProp](arkts-appstorage.md#storageprop)/[@LocalStorageProp](arkts-localstorage.md#localstorageprop)实现应用和组件状态的单向同步。
 
-<!--RP1-->管理组件拥有的状态<!--RP1End-->，即图中Components级别的状态管理：
+<!--RP1-->[管理组件拥有的状态](arkts-state.md)<!--RP1End-->，即图中Components级别的状态管理：
 
-- \@State：\@State装饰的变量拥有其所属组件的状态，可以作为其子组件单向和双向同步的数据源。当其数值改变时，会引起相关组件的渲染刷新。
+- [\@State](arkts-state.md)：\@State装饰的变量拥有其所属组件的状态，可以作为其子组件单向和双向同步的数据源。当其数值改变时，会引起相关组件的渲染刷新。
 
-- \@Prop：\@Prop装饰的变量可以和父组件建立单向同步关系，\@Prop装饰的变量是可变的，但修改不会同步回父组件。
+- [\@Prop](arkts-prop.md)：\@Prop装饰的变量可以和父组件建立单向同步关系，\@Prop装饰的变量是可变的，但修改不会同步回父组件。
 
-- \@Link：\@Link装饰的变量可以和父组件建立双向同步关系，子组件中\@Link装饰变量的修改会同步给父组件中建立双向数据绑定的数据源，父组件的更新也会同步给\@Link装饰的变量。
+- [\@Link](arkts-link.md)：\@Link装饰的变量可以和父组件建立双向同步关系，子组件中\@Link装饰变量的修改会同步给父组件中建立双向数据绑定的数据源，父组件的更新也会同步给\@Link装饰的变量。
 
-- \@Provide/\@Consume：\@Provide/\@Consume装饰的变量用于跨组件层级（多层组件）同步状态变量，可以不需要通过参数命名机制传递，通过alias（别名）或者属性名绑定。
+- [\@Provide/\@Consume](arkts-provide-and-consume.md)：\@Provide/\@Consume装饰的变量用于跨组件层级（多层组件）同步状态变量，可以不需要通过参数命名机制传递，通过alias（别名）或者属性名绑定。
 
-- \@Observed：\@Observed装饰class，需要观察多层嵌套场景的class需要被\@Observed装饰。单独使用\@Observed没有任何作用，需要和\@ObjectLink、\@Prop联用。
+- [\@Observed](arkts-observed-and-objectlink.md)：\@Observed装饰class，需要观察多层嵌套场景的class需要被\@Observed装饰。单独使用\@Observed没有任何作用，需要和\@ObjectLink、\@Prop联用。
 
-- \@ObjectLink：\@ObjectLink装饰的变量接收\@Observed装饰的class的实例，应用于观察多层嵌套场景，和父组件的数据源构建双向同步。
+- [\@ObjectLink](arkts-observed-and-objectlink.md)：\@ObjectLink装饰的变量接收\@Observed装饰的class的实例，应用于观察多层嵌套场景，和父组件的数据源构建双向同步。
 
 > **说明：**
 >
-> 仅\@Observed/\@ObjectLink可以观察嵌套场景，其他的状态变量仅能观察第一层，详情见各个装饰器章节的“观察变化和行为表现”小节。
+> 仅[\@Observed/\@ObjectLink](arkts-observed-and-objectlink.md)可以观察嵌套场景，其他的状态变量仅能观察第一层，详情见各个装饰器章节的“观察变化和行为表现”小节。
 
 
-<!--RP2-->管理应用拥有的状态<!--RP2End-->，即图中Application级别的状态管理：
+<!--RP2-->[管理应用拥有的状态](arkts-application-state-management-overview.md)<!--RP2End-->，即图中Application级别的状态管理：
 
 
-- AppStorage是应用程序中的一个特殊的单例LocalStorage对象，是应用级的数据库，和进程绑定，通过@StorageProp和@StorageLink装饰器可以和组件联动。
+- [AppStorage](arkts-appstorage.md)是应用程序中的一个特殊的单例[LocalStorage](arkts-localstorage.md)对象，是应用级的数据库，和进程绑定，通过[@StorageProp](arkts-appstorage.md#storageprop)和[@StorageLink](arkts-appstorage.md#storagelink)装饰器可以和组件联动。
 
-- AppStorage是应用状态的“中枢”，将需要与组件（UI）交互的数据存入AppStorage，比如持久化数据PersistentStorage和环境变量Environment。UI再通过AppStorage提供的装饰器或API接口访问这些数据。
+- AppStorage是应用状态的“中枢”，将需要与组件（UI）交互的数据存入AppStorage，比如持久化数据[PersistentStorage](arkts-persiststorage.md)和环境变量[Environment](arkts-environment.md)。UI再通过AppStorage提供的装饰器或API接口访问这些数据。
 
-- 框架还提供了LocalStorage，AppStorage是LocalStorage特殊的单例。LocalStorage是应用程序声明的应用状态的内存“数据库”，通常用于页面级的状态共享，通过@LocalStorageProp和@LocalStorageLink装饰器可以和UI联动。
+- 框架还提供了LocalStorage，AppStorage是LocalStorage特殊的单例。LocalStorage是应用程序声明的应用状态的内存“数据库”，通常用于页面级的状态共享，通过[@LocalStorageProp](arkts-localstorage.md#localstorageprop)和[@LocalStorageLink](arkts-localstorage.md#localstoragelink)装饰器可以和UI联动。
 
 
 ### 其他状态管理V1功能
 
-\@Watch用于监听状态变量的变化。
+[\@Watch](arkts-watch.md)用于监听状态变量的变化。
 
 
-$$运算符：给系统组件提供TS变量的引用，使得TS变量和系统组件的内部状态保持同步。
+[$$运算符](arkts-two-way-sync.md)：给系统组件提供TS变量的引用，使得TS变量和系统组件的内部状态保持同步。
 
 ### 相关实例
 
 针对页面状态管理，有以下相关实例可供参考：
 
-- 状态管理（ArkTS）（API9）
+- [状态管理（ArkTS）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/UI/ArkTsComponentCollection/StateManagement)
 
-- 目标管理（ArkTS）（API9）
+- [目标管理（ArkTS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/ETSUI/TargetManagement)
 
 ## 状态管理（V2）
 
@@ -114,7 +114,7 @@ $$运算符：给系统组件提供TS变量的引用，使得TS变量和系统�
 - 在更改对象中属性以及更改数组中元素的场景下存在冗余更新的问题。
 - 装饰器间配合使用限制多，不易用。组件中没有明确状态变量的输入与输出，不利于组件化。
 
-arkts-old-state-management
+![arkts-old-state-management](figures/arkts-old-state-management.png)
 
 状态管理V2增强了数据的观察能力，使数据本身可观察。更改数据时，会触发相应视图的更新。相较于状态管理V1，状态管理V2有如下优点：
 
@@ -126,40 +126,40 @@ arkts-old-state-management
 
 - 装饰器易用性高、拓展性强，在组件中明确输入与输出，有利于组件化。
 
-arkts-new-state-management
+![arkts-new-state-management](figures/arkts-new-state-management.png)
 
 ### 装饰器总览
 
 状态管理（V2）提供了一套全新的装饰器。
 
-- \@ObservedV2：\@ObservedV2装饰器装饰class，使得被装饰的class具有深度监听的能力。\@ObservedV2和\@Trace配合使用可以使class中的属性具有深度观测的能力。
+- [\@ObservedV2](arkts-new-observedV2-and-trace.md)：\@ObservedV2装饰器装饰class，表明当前class为可观察对象，本身无观察能力。\@ObservedV2和\@Trace配合使用可以使class中的属性具有深度观察的能力。
 
-- \@Trace：\@Trace装饰器装饰被\@ObservedV2装饰的class中的属性，被装饰的属性具有深度观测的能力。
+- [\@Trace](arkts-new-observedV2-and-trace.md)：\@Trace装饰器装饰被\@ObservedV2装饰的class中的属性，被装饰的属性具有深度观测的能力。
 
-- \@ComponentV2：使用\@ComponentV2装饰的struct中能使用新的装饰器。例如：\@Local、\@Param、\@Event、\@Once、\@Monitor、\@Provider、\@Consumer。
+- [\@ComponentV2](arkts-create-custom-components.md#componentv2)：使用\@ComponentV2装饰的struct中能使用新的装饰器。例如：\@Local、\@Param、\@Event、\@Once、\@Monitor、\@Provider、\@Consumer。
 
-- \@Local：\@Local装饰的变量为组件内部状态，无法从外部初始化。
+- [\@Local](arkts-new-local.md)：\@Local装饰的变量为组件内部状态，无法从外部初始化。
 
-- \@Param：\@Param装饰的变量作为组件的输入，可以接受从外部传入初始化并同步。
+- [\@Param](arkts-new-param.md)：\@Param装饰的变量作为组件的输入，可以接受从外部传入初始化并同步。
 
-- \@Once：\@Once装饰的变量仅初始化时同步一次，需要与\@Param一起使用。
+- [\@Once](arkts-new-once.md)：\@Once装饰的变量仅初始化时同步一次，需要与\@Param一起使用。
 
-- \@Event：\@Event装饰方法类型，作为组件输出，可以通过该方法影响父组件中变量。
+- [\@Event](arkts-new-event.md)：\@Event装饰方法类型，作为组件输出，可以通过该方法影响父组件中变量。
 
-- \@Monitor：\@Monitor装饰器用于\@ComponentV2装饰的自定义组件或\@ObservedV2装饰的类中，能够对状态变量进行深度监听。
+- [\@Monitor](arkts-new-monitor.md)：\@Monitor装饰器用于\@ComponentV2装饰的自定义组件或\@ObservedV2装饰的类中，能够对状态变量进行深度监听。
 
-- \@Provider和\@Consumer：用于跨组件层级双向同步。
+- [\@Provider和\@Consumer](arkts-new-provider-and-consumer.md)：用于跨组件层级双向同步。
 
-- \@Computed：计算属性，在被计算的值变化的时候，只会计算一次。主要应用于解决UI多次重用该属性从而重复计算导致的性能问题。
+- [\@Computed](arkts-new-computed.md)：计算属性，在被计算的值变化的时候，只会计算一次。主要应用于解决UI多次重用该属性从而重复计算导致的性能问题。
 
-- !!语法：双向绑定语法糖。
+- [!!语法](arkts-new-binding.md)：双向绑定语法糖。
 
 ### 状态管理V1与V2能力对比
 
 | V1能力   | V2能力                                             | 说明                                                         |
 | ------------ | ------------------------------------------------------ | ------------------------------------------------------------ |
 | \@Observed   | \@ObservedV2                                           | 表明当前对象为可观察对象。但两者能力并不相同。<br/>\@Observed可观察第一层的属性，需要搭配\@ObjectLink使用才能生效。 <br/>\@ObservedV2本身无观察能力，仅代表当前class可被观察，如果要观察其属性，需要搭配\@Trace使用。 |
-| \@Track      | \@Trace                                                | V1装饰器\@Track为精确观察，可以不依赖@Observed单独使用。不使用则无法做到类属性的精准观察。<br/>V2\@Trace装饰的属性可以被精确跟踪观察。 |
+| \@Track      | \@Trace                                                | V1装饰器\@Track为精确观察，可以不依赖@Observed单独使用。不使用@Track则无法做到类属性的精准观察。<br/>V2\@Trace装饰的属性可以被精确跟踪观察。 |
 | \@Component  | \@ComponentV2                                          | \@Component为搭配V1状态变量使用的自定义组件装饰器。<br/>\@ComponentV2为搭配V2状态变量使用的自定义组件装饰器。 |
 | \@State      | 无外部初始化：\@Local<br/>外部初始化一次：\@Param\@Once | \@State和\@Local类似都是数据源的概念，区别是\@State可以外部传入初始化，而\@Local无法外部传入初始化。 |
 | \@Prop       | \@Param                                                | \@Prop和\@Param类似都是自定义组件参数的概念。当输入参数为复杂类型时，\@Prop为深拷贝，\@Param为引用。 |
@@ -172,13 +172,13 @@ arkts-new-state-management
 | AppStorage               | AppStorageV2   | 兼容。 |
 | Environment       | 调用Ability接口获取系统环境变量   | Environment获取环境变量能力和AppStorage耦合。在V2中可直接调用Ability接口获取系统环境变量。 |
 | PersistentStorage     | PersistenceV2   | PersistentStorage持久化能力和AppStorage耦合，PersistenceV2持久化能力可独立使用。 |
-| 自定义组件生命周期     | 自定义组件生命周期   | 均支持。aboutToAppear、onDidBuild、aboutToDisappear。 |
-| 页面生命周期     | 页面生命周期   | 均支持。onPageShow、onPageHide、onBackPress。  |
-| \@Reusable   | \@ReusableV2                                                 | 组件复用。包括：aboutToReuse、aboutToRecycle。 |
+| 自定义组件生命周期     | 自定义组件生命周期   | 均支持。[aboutToAppear](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)、[onDidBuild](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#ondidbuild12)、[aboutToDisappear](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)。 |
+| 页面生命周期     | 页面生命周期   | 均支持。[onPageShow](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onpageshow)、[onPageHide](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onpagehide)、[onBackPress](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onbackpress)。  |
+| \@Reusable   | \@ReusableV2                                                 | 组件复用。包括：[aboutToReuse](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse10)、[aboutToRecycle](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttorecycle10)。 |
 | $$            | !!         | 双向绑定。V2建议使用!!实现双向绑定。 |
-| \@CustomDialog | openCustomDialog接口   | 自定义弹窗。V2建议使用openCustomDialog实现自定义弹窗功能。 |
-| WithTheme     | WithTheme   | 主题。用于设置应用局部页面自定义主题风格。包括：onWillApplyTheme。<br>从API version 18开始，该接口支持在状态管理V2组件中使用。 |
-| 系统预置UI组件库     | 系统预置UI组件库    | 系统预置UI组件库 。支持V1的系统预置UI组件，例如：Dialog、ProgressButton、SegmentButton。<br>从API version 18开始，系统预置UI组件支持在状态管理V2组件中使用，例如：DialogV2、ProgressButtonV2、SegmentButtonV2。 |
-| animateTo | 部分场景不支持 | 当前某些场景下，在状态管理V2中使用animateTo动画，会产生异常效果，详见：在状态管理V2中使用animateTo动画效果异常。 |
+| \@CustomDialog | [openCustomDialog](../../../application-dev/reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12)接口   | 自定义弹窗。V2建议使用openCustomDialog实现自定义弹窗功能。 |
+| WithTheme     | WithTheme   | 主题。用于设置应用局部页面自定义主题风格。包括：[onWillApplyTheme](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onwillapplytheme12)。<br>从API version 18开始，该接口支持在状态管理V2组件中使用。 |
+| 系统预置UI组件库     | 系统预置UI组件库    | 系统预置UI组件库 。支持V1的系统预置UI组件，例如：[Dialog](../../../application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md)、[ProgressButton](../../../application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ProgressButton.md)、[SegmentButton](../../../application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButton.md)。<br>从API version 18开始，系统预置UI组件支持在状态管理V2组件中使用，例如：[DialogV2](../../../application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-DialogV2.md)、[ProgressButtonV2](../../../application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ProgressButtonV2.md)、[SegmentButtonV2](../../../application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButtonV2.md)。 |
+| animateTo | 部分场景不支持 | 当前某些场景下，在状态管理V2中使用animateTo动画，会产生异常效果，详见：[在状态管理V2中使用animateTo动画效果异常](./arkts-new-local.md#在状态管理v2中使用animateto动画效果异常)。 |
 
-有关V1向V2的迁移可参考迁移指导，<!--RP3-->有关V1与V2的混用可参考状态管理V1和V2混用场景<!--RP3End-->。
+有关V1向V2的迁移可参考[迁移指导](./arkts-v1-v2-migration.md)，<!--RP3-->有关V1与V2的混用可参考[状态管理V1和V2混用场景](./arkts-v1-v2-mixusage-before-api-version.md)<!--RP3End-->。

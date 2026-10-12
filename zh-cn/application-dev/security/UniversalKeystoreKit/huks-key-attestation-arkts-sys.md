@@ -7,20 +7,20 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-在使用本功能前，需申请权限：ohos.permission.ATTEST_KEY。请开发者根据应用的APL等级，参考具体的操作路径权限申请。
+在使用本功能前，需申请权限：[ohos.permission.ATTEST_KEY](../AccessToken/permissions-for-system-apps.md#ohospermissionattest_key)。请开发者根据应用的APL等级，参考具体的操作路径[权限申请](../AccessToken/determine-application-mode.md)。
 
 ## 开发步骤
 
-1. 指定密钥别名，密钥别名命名规范参考密钥生成介绍及算法规格。
+1. 指定密钥别名，密钥别名命名规范参考[密钥生成介绍及算法规格](huks-key-generation-overview.md)。
 
-2. 初始化参数集。HuksOptions中的properties字段中的参数必须包含HUKS_TAG_ATTESTATION_CHALLENGE属性，可选参数包含HUKS_TAG_ATTESTATION_ID_VERSION_INFO，HUKS_TAG_ATTESTATION_ID_ALIAS属性。
+2. 初始化参数集。[HuksOptions](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksoptions)中的properties字段中的参数必须包含[HUKS_TAG_ATTESTATION_CHALLENGE](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag)属性，可选参数包含[HUKS_TAG_ATTESTATION_ID_VERSION_INFO](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag)，[HUKS_TAG_ATTESTATION_ID_ALIAS](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukstag)属性。
 
-3. 生成非对称密钥，具体请参考密钥生成。
+3. 生成非对称密钥，具体请参考[密钥生成](huks-key-generation-overview.md)。
 
-4. 将密钥别名与参数集作为参数传入attestKeyItem方法中，即可证明密钥。
+4. 将密钥别名与参数集作为参数传入[attestKeyItem](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksattestkeyitem9)方法中，即可证明密钥。
 
-## 开发步骤
-<!-- @non_anonymized_key_proof -->
+## 开发案例
+<!-- @[non_anonymized_key_proof](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/NonanonymousKeyProof/entry/src/main/ets/pages/NonAnonymousKeyProof.ets) -->
 
 ``` TypeScript
 /*
@@ -77,7 +77,7 @@ let genOptions: huks.HuksOptions = {
 };
 
 /* 2.封装证明密钥的参数集 */
-let attestKeyproperties: huks.HuksParam[] = [
+let attestKeyProperties: huks.HuksParam[] = [
   {
     tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_SEC_LEVEL_INFO,
     value: securityLevel
@@ -96,7 +96,7 @@ let attestKeyproperties: huks.HuksParam[] = [
   }
 ]
 let huksOptions: huks.HuksOptions = {
-  properties: attestKeyproperties
+  properties: attestKeyProperties
 };
 
 function stringToUint8Array(str: string) {
@@ -110,11 +110,11 @@ function stringToUint8Array(str: string) {
 function generateKeyItem(keyAlias: string, huksOptions: huks.HuksOptions, throwObject: ThrowObject) {
   return new Promise<void>((resolve, reject) => {
     try {
-      huks.generateKeyItem(keyAlias, huksOptions, (error, data) => {
+      huks.generateKeyItem(keyAlias, huksOptions, (error) => {
         if (error) {
           reject(error);
         } else {
-          resolve(data);
+          resolve();
         }
       });
     } catch (error) {
@@ -130,8 +130,8 @@ async function publicGenKeyFunc(keyAlias: string, huksOptions: huks.HuksOptions)
   let throwObject: ThrowObject = { isThrow: false };
   try {
     await generateKeyItem(keyAlias, huksOptions, throwObject)
-      .then((data) => {
-        console.info(`promise: generateKeyItem success, data = ${JSON.stringify(data)}`);
+      .then(() => {
+        console.info(`promise: generateKeyItem success`);
       })
       .catch((error: Error) => {
         if (throwObject.isThrow) {
@@ -167,24 +167,15 @@ async function publicAttestKey(keyAlias: string, huksOptions: huks.HuksOptions):
   console.info(`enter promise attestKeyItem`);
   let throwObject: ThrowObject = { isThrow: false };
   try {
-    await attestKeyItem(keyAlias, huksOptions, throwObject)
-      .then((data) => {
-        console.info(`promise: attestKeyItem success, data = ${JSON.stringify(data)}`);
-        if (data !== null && data.certChains !== null) {
-          attestCertChain = data.certChains as string[];
-        }
-      })
-      .catch((error: Error) => {
-        if (throwObject.isThrow) {
-          throw (error as Error);
-        } else {
-          console.error(`promise: attestKeyItem failed, ${JSON.stringify(error)}`);
-        }
-      });
+    const data = await attestKeyItem(keyAlias, huksOptions, throwObject);
+    console.info(`promise: attestKeyItem success, data = ${JSON.stringify(data)}`);
+    if (data !== null && data.certChains !== null) {
+      attestCertChain = data.certChains as string[];
+    }
     return 'Success';
   } catch (error) {
-    console.error(`promise: attestKeyItem input arg invalid, ${JSON.stringify(error)}`);
-    return 'Failed';
+      console.error(`promise: attestKeyItem input arg invalid, ${JSON.stringify(error)}`);
+      return 'Failed';
   }
 }
 

@@ -22,20 +22,20 @@
 
 **问题分析步骤**
 
-步骤一：创建相机管理器（cameraManager），并选择使用的镜头（getSupportedCameras），然后通过选定的镜头，获取输出流的配置文件（getSupportedOutputCapability），需要保证和输出流的模式对应（拍照或者录像）。
+步骤一：创建相机管理器（[cameraManager](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md)），并选择使用的镜头（[getSupportedCameras](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedcameras)），然后通过选定的镜头，获取输出流的配置文件（[getSupportedOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedoutputcapability11)），需要保证和输出流的模式对应（拍照或者录像）。
 
-步骤二：根据配置文件创建对应的输入流，调用输入流的open方法打开镜头，然后创建输出流（预览，拍照/录像）。此时建议注册photoAvailable监听，用以获取照片。输出流的分辨率保持相同，然后创建对应模式的session，注意模式和输出流对应。
+步骤二：根据配置文件创建对应的输入流，调用输入流的[open](../../reference/apis-camera-kit/arkts-apis-camera-CameraInput.md#open)方法打开镜头，然后创建输出流（预览，拍照/录像）。此时建议注册photoAvailable监听，用以获取照片。输出流的分辨率保持相同，然后创建对应模式的session，注意模式和输出流对应。
 
-步骤三：调用session的beginConfig方法，开始配置。首先调用addInput方法，添加输入流；再调用addOutput方法，添加输出流；然后调用commitConfig方法，提交session的配置，此时session的配置完成。大部分问题都会在这个流程报错，如果有问题，则无法正常完成commitConfig整个流程。
+步骤三：调用session的[beginConfig](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#beginconfig11)方法，开始配置。首先调用[addInput](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#addinput11)方法，添加输入流；再调用[addOutput](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#addoutput11)方法，添加输出流；然后调用[commitConfig](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#commitconfig11)方法，提交session的配置，此时session的配置完成。大部分问题都会在这个流程报错，如果有问题，则无法正常完成[commitConfig](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#commitconfig11)整个流程。
 
-步骤四：在commitConfig之后，大部分的session监听方法可在此时配置，并且可以做一些效果设定，例如白平衡等。
+步骤四：在[commitConfig](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#commitconfig11)之后，大部分的session监听方法可在此时配置，并且可以做一些效果设定，例如白平衡等。
 
 ## 解决措施
 
-1. 创建的输出流与输入流前，将两者的profile中的分辨率进行比较，保证分辨率一致。
+1. 创建输出流与输入流前，将两者的profile中的分辨率进行比较，保证分辨率一致。
 
 2. 大部分的set方法建议在commitConfig之后进行调用，比如白平衡相关的set接口。
 
 3. 大部分监听相关接口，需要在addInput之后调用，保证镜头打开并添加到session中后，数据可通过监听返回。
 
-具体代码可参考拍照实践(ArkTS)。
+具体代码可参考[拍照实践(ArkTS)](camera-shooting-case.md)。

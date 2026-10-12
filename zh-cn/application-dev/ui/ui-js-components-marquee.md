@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-marquee为跑马灯组件，用于展示一段单行滚动的文字。具体用法请参考marquee。
+marquee为跑马灯组件，用于展示一段单行滚动的文字。具体用法请参考[marquee](../reference/apis-arkui/arkui-js/js-components-basic-marquee.md)。
 
 
 ## 创建marquee组件
@@ -35,7 +35,7 @@ marquee为跑马灯组件，用于展示一段单行滚动的文字。具体用�
 }
 ```
 
-marquee-Component
+![marquee-Component](figures/marquee-Component.png)
 
 
 ## 设置属性和样式
@@ -75,7 +75,7 @@ marquee通过color和font-weight属性设置跑马灯中文本的颜色和字体
 }
 ```
 
-Attributes-and-Styles
+![Attributes-and-Styles](figures/Attributes-and-Styles.png)
 
 通过scrollamount、loop和direction属性实现跑马灯滚动时的移动距离、滚动次数和文字滚动方向。
 
@@ -156,7 +156,7 @@ export default {
 >
 > 当loop的值小于等于零时，跑马灯marquee将连续滚动。如果loop未指定，则默认为-1。
 
-Attributes-and-Styles
+![Attributes-and-Styles](figures/Attributes-and-Styles.gif)
 
 
 ## 场景示例
@@ -241,4 +241,4 @@ export default {
 }
 ```
 
-marquee
+![marquee](figures/marquee.gif)

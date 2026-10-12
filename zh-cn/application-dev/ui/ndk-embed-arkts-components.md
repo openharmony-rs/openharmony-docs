@@ -9,28 +9,28 @@
 ArkUI在Native侧提供的能力作为ArkTS的子集，部分能力不会在Native侧提供，如声明式UI语法，自定义struct组件，UI高级组件。
 
 
-针对需要使用ArkTS侧独立能力的场景，ArkUI开发框架提供了Native侧嵌入ArkTS组件的能力，该能力依赖ComponentContent机制，通过ComponentContent完成对ArkTS组件的封装，然后将封装对象传递到Native侧，通过Native侧的OH_ArkUI_GetNodeHandleFromNapiValue接口转化为ArkUI_NodeHandle对象用于Native侧组件挂载使用。
+针对需要使用ArkTS侧独立能力的场景，ArkUI开发框架提供了Native侧嵌入ArkTS组件的能力，该能力依赖[ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md)机制，通过ComponentContent完成对ArkTS组件的封装，然后将封装对象传递到Native侧，通过Native侧的[OH_ArkUI_GetNodeHandleFromNapiValue](../reference/apis-arkui/capi-native-node-napi-h.md#oh_arkui_getnodehandlefromnapivalue)接口转化为ArkUI_NodeHandle对象用于Native侧组件挂载使用。
 
 
 > **说明：**
 >
-> - 通过OH_ArkUI_GetNodeHandleFromNapiValue接口获得的ArkUI_NodeHandle对象只能作为子组件参数使用，如addChild接口的第二个参数，将该对象使用在其他场景下，如setAttribute设置属性将不生效并返回错误码。
+> - 通过OH_ArkUI_GetNodeHandleFromNapiValue接口获得的ArkUI_NodeHandle对象只能作为子组件参数使用，如[addChild](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addchild)接口的第二个参数，将该对象使用在其他场景下，如[setAttribute](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setattribute)设置属性将不生效并返回错误码。
 > 
-> - 针对Native侧修改ArkTS组件的场景，需要在Native侧通过Node-API方式构建ArkTS侧的更新数据，再通过ComponentContent的update接口更新。
+> - 针对Native侧修改ArkTS组件的场景，需要在Native侧通过Node-API方式构建ArkTS侧的更新数据，再通过ComponentContent的[update](../reference/apis-arkui/js-apis-arkui-ComponentContent.md#update)接口更新。
 > 
-> - 构建自定义组件时，相关函数如measureNode等无法对ArkTS模块内部的组件进行调用。
+> - [构建自定义组件](ndk-build-custom-components.md)时，相关函数如measureNode等无法对ArkTS模块内部的组件进行调用。
 
 
-以下示例代码在接入ArkTS页面章节基础上引入ArkTS的Refresh组件。
+以下示例代码在[接入ArkTS页面](ndk-access-the-arkts-page.md)章节基础上引入ArkTS的Refresh组件。
 
 
 **图1** Refresh组件挂载文本列表
 
-refresh_text_list
+![refresh_text_list](figures/refresh_text_list.gif)
 
 
 1. 注册ArkTS组件创建函数给Native侧，以便Native侧调用，创建函数使用ComponentContent能力进行封装。
-   <!-- @mixed_module -->
+   <!-- @[mixed_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/ets/pages/MixedModule.ets) -->
    
    ``` TypeScript
    
@@ -164,7 +164,7 @@ refresh_text_list
    ```
 
 2. 将创建和更新函数注册给Native侧。
-   <!-- @page_index -->
+   <!-- @[page_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    //  Index.ets
@@ -214,7 +214,7 @@ refresh_text_list
    
    ```
 
-   <!-- @native_init -->
+   <!-- @[native_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/NapiInit.cpp) -->
    
    ``` C++
    // NapiInit.cpp
@@ -252,7 +252,7 @@ refresh_text_list
    ```
 
 3. Native侧通过Node-API保存创建和更新函数，用于后续调用。
-   <!-- @arkui_mixed_refresh_template -->
+   <!-- @[arkui_mixed_refresh_template](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/ArkUIMixedRefreshTemplate.h) -->
    
    ``` C
    
@@ -283,7 +283,7 @@ refresh_text_list
 
    相关实现类说明：
 
-   <!-- @arkui_mixed_refresh_template_cpp -->
+   <!-- @[arkui_mixed_refresh_template_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/ArkUIMixedRefreshTemplate.cpp) -->
    
    ``` C++
    
@@ -387,7 +387,7 @@ refresh_text_list
    ```
 
 4. 抽象混合模式下组件的基类，用于通用逻辑管理。
-   <!-- @arkui_mixed_node -->
+   <!-- @[arkui_mixed_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/ArkUIMixedNode.h) -->
    
    ``` C
    // ArkUIMixedNode.h
@@ -424,7 +424,7 @@ refresh_text_list
    ```
 
 5. 实现Refresh组件的混合模式封装对象。
-   <!-- @arkui_mixed_refresh -->
+   <!-- @[arkui_mixed_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/ArkUIMixedRefresh.h) -->
    
    ``` C
    // ArkUIMixedRefresh.h
@@ -527,7 +527,7 @@ refresh_text_list
 
    相关实现类说明：
 
-   <!-- @arkui_mixed_refresh_cpp -->
+   <!-- @[arkui_mixed_refresh_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/ArkUIMixedRefresh.cpp) -->
    
    ``` C++
    // ArkUIMixedRefresh.cpp
@@ -742,7 +742,7 @@ refresh_text_list
    ```
 
 6. 定时器模块相关简单实现。
-   <!-- @ui_timer -->
+   <!-- @[ui_timer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/UITimer.h) -->
    
    ``` C
    // UITimer.h
@@ -821,8 +821,8 @@ refresh_text_list
    #endif // MYAPPLICATION_UITIMER_H
    ```
 
-7. 使用接入ArkTS页面章节的页面结构，将Refresh组件作为文本列表的父组件。
-   <!-- @mixed_refresh_example -->
+7. 使用[接入ArkTS页面](ndk-access-the-arkts-page.md)章节的页面结构，将Refresh组件作为文本列表的父组件。
+   <!-- @[mixed_refresh_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/MixedRefreshExample.h) -->
    
    ``` C
    // MixedRefreshExample.h
@@ -875,7 +875,7 @@ refresh_text_list
 
    替换入口组件创建为下拉刷新文本列表。
 
-   <!-- @native_entry -->
+   <!-- @[native_entry](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/NativeEntry.cpp) -->
    
    ``` C++
    // NativeEntry.cpp
@@ -924,7 +924,7 @@ refresh_text_list
    ```
 
 8. 在Native侧提供Node-API的桥接方法，实现ArkTS侧的NativeNode模块接口。 
-   <!-- @bridge_index -->
+   <!-- @[bridge_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NdkEmbedArktsComponents/entry/src/main/cpp/types/libentry/Index.d.ts) -->
    
    ``` TypeScript
    export const createNativeRoot: (content: Object) => void;

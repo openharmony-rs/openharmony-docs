@@ -29,7 +29,7 @@
 | napi_get_property | 在调用Node-API模块的函数或方法时，可能需要将ArkTS对象的属性值作为参数传递。此接口可以获取属性值，并将其传递给其他函数。 |
 | napi_has_property | 在进行属性访问之前，通常需要先检查对象中是否存在指定的属性。此接口可以检查对象中是否存在指定的属性，避免访问不存在属性导致的异常。 |
 | napi_delete_property | 此函数用于删除ArkTS对象上的属性。 |
-| napi_has_own_property | 此函数用于检查ArkTS对象是否直接拥有（而不是从其原型链上继承）某个属性。 |
+| napi_has_own_property | 与napi_has_property行为一致，用于检查对象中是否存在指定的属性，避免访问不存在属性导致的异常。 |
 | napi_set_named_property | 此函数用于将值赋给ArkTS对象的命名属性。 |
 | napi_get_named_property | 此函数用于获取ArkTS对象的命名属性值。 |
 | napi_has_named_property | 此函数用于检查ArkTS对象是否包含某个命名属性。 |
@@ -38,7 +38,7 @@
 
 ## 使用示例
 
-Node-API接口开发流程可参考使用Node-API实现跨语言交互开发流程，本文展示接口对应C++及ArkTS代码。
+Node-API接口开发流程可参考[使用Node-API实现跨语言交互开发流程](use-napi-process.md)，本文展示接口对应C++及ArkTS代码。
 
 ### napi_get_property_names
 
@@ -46,7 +46,7 @@ Node-API接口开发流程可参考使用Node-API实现跨语言交互开发流�
 
 cpp部分代码
 
-<!-- @napi_get_property_names -->
+<!-- @[napi_get_property_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 // napi_get_property_names
@@ -69,7 +69,7 @@ static napi_value GetPropertyNames(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @napi_get_property_names_api --> 
+<!-- @[napi_get_property_names_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/types/libentry/Index.d.ts) --> 
 
 ``` TypeScript
 export const getPropertyNames: (obj: Object) => Array<string> | undefined; // napi_get_property_names
@@ -77,7 +77,7 @@ export const getPropertyNames: (obj: Object) => Array<string> | undefined; // na
 
 ArkTS侧示例代码
 
-<!-- @ark_napi_get_property_names -->
+<!-- @[ark_napi_get_property_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 // napi_get_property_names
@@ -109,7 +109,7 @@ try {
 
 cpp部分代码
 
-<!-- @napi_set_property -->
+<!-- @[napi_set_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 // napi_set_property
@@ -135,7 +135,7 @@ static napi_value SetProperty(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @napi_set_property_api --> 
+<!-- @[napi_set_property_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/types/libentry/Index.d.ts) --> 
 
 ``` TypeScript
 export const setProperty: (obj: Object, key: String, value: string) => Object | undefined; // napi_set_property
@@ -143,7 +143,7 @@ export const setProperty: (obj: Object, key: String, value: string) => Object | 
 
 ArkTS侧示例代码
 
-<!-- @ark_napi_set_property -->
+<!-- @[ark_napi_set_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 // napi_set_property
@@ -170,7 +170,7 @@ try {
 
 cpp部分代码
 
-<!-- @napi_get_property -->
+<!-- @[napi_get_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 // napi_get_property
@@ -193,7 +193,7 @@ static napi_value GetProperty(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @napi_get_property_api --> 
+<!-- @[napi_get_property_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/types/libentry/Index.d.ts) --> 
 
 ``` TypeScript
 export const getProperty: (obj: Object, key: string) => string | undefined; // napi_get_property
@@ -201,7 +201,7 @@ export const getProperty: (obj: Object, key: string) => string | undefined; // n
 
 ArkTS侧示例代码
 
-<!-- @ark_napi_get_property -->
+<!-- @[ark_napi_get_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 // napi_get_property
@@ -227,7 +227,7 @@ try {
 
 cpp部分代码
 
-<!-- @napi_has_property -->
+<!-- @[napi_has_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 // napi_has_property
@@ -255,14 +255,14 @@ static napi_value HasProperty(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @napi_has_property_api -->
+<!-- @[napi_has_property_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ``` TypeScript
 export const hasProperty: (obj: Object, key: number | string) => boolean | undefined; // napi_has_property
 ```
 ArkTS侧示例代码
 
-<!-- @ark_napi_has_property -->
+<!-- @[ark_napi_has_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 // napi_has_property
@@ -294,7 +294,7 @@ try {
 
 cpp部分代码
 
-<!-- @napi_delete_property -->
+<!-- @[napi_delete_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 // napi_delete_property
@@ -328,7 +328,7 @@ static napi_value DeleteProperty(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @napi_delete_property_api -->
+<!-- @[napi_delete_property_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ``` TypeScript
 export const deleteProperty: (obj: Object, key: string) => boolean; // napi_delete_property
@@ -336,7 +336,7 @@ export const deleteProperty: (obj: Object, key: string) => boolean; // napi_dele
 
 ArkTS侧示例代码
 
-<!-- @ark_napi_delete_property --> 
+<!-- @[ark_napi_delete_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/ets/pages/napiDeleteProperty.ts) --> 
 
 ``` TypeScript
 import testNapi from 'libentry.so';
@@ -363,11 +363,11 @@ export function napiDeleteProperty() {
 
 ### napi_has_own_property
 
-用于检查传入的Object是否包含自己的命名属性，不包括从原型链上继承的属性。
+与napi_has_property行为一致，用于检查对象中是否存在指定的属性，避免访问不存在属性导致的异常。
 
 cpp部分代码
 
-<!-- @napi_has_own_property -->
+<!-- @[napi_has_own_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 // napi_has_own_property
@@ -407,7 +407,7 @@ static napi_value NapiHasOwnProperty(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @napi_has_own_property_api -->
+<!-- @[napi_has_own_property_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ``` TypeScript
 export const napiHasOwnProperty: (obj: Object, key: string) => boolean | undefined; // napi_has_own_property
@@ -415,7 +415,7 @@ export const napiHasOwnProperty: (obj: Object, key: string) => boolean | undefin
 
 ArkTS侧示例代码
 
-<!-- @ark_napi_has_own_property -->
+<!-- @[ark_napi_has_own_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/ets/pages/napiHasOwnProperty.ts) -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -433,13 +433,83 @@ export function napiHasOwnProperty() {
 }
 ```
 
+当前`napi_has_own_property`的行为与`napi_has_property`一致（会遍历原型链），若需要只检查自有属性而不遍历原型链，可通过调用Node-API接口等价实现`Object.prototype.hasOwnProperty.call(obj, key)`的功能，cpp示例代码如下：
+
+``` C++
+// 等价实现napi_has_own_property功能（只检查自有属性）
+static napi_value HasOwnPropertyEquivalent(napi_env env, napi_callback_info info)
+{
+    // 接收两个ArkTS传来的参数
+    size_t argc = 2;
+    napi_value args[2] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    // 检查第一个参数是否为对象
+    napi_valuetype valueTypeObj;
+    napi_typeof(env, args[0], &valueTypeObj);
+    if (valueTypeObj != napi_object) {
+        napi_throw_error(env, nullptr, "First argument must be an object.");
+        return nullptr;
+    }
+    // 检查第二个参数是否为string
+    valueTypeObj = napi_undefined;
+    napi_typeof(env, args[1], &valueTypeObj);
+    if (valueTypeObj != napi_string) {
+        napi_throw_error(env, nullptr, "Second argument must be a string.");
+        return nullptr;
+    }
+    // 获取全局对象
+    napi_value global = nullptr;
+    napi_status status = napi_get_global(env, &global);
+    if (status != napi_ok) {
+        napi_throw_error(env, nullptr, "napi_get_global failed");
+        return nullptr;
+    }
+    // 获取Object构造器
+    napi_value objectCtor = nullptr;
+    status = napi_get_named_property(env, global, "Object", &objectCtor);
+    if (status != napi_ok) {
+        napi_throw_error(env, nullptr, "get Object failed");
+        return nullptr;
+    }
+    // 获取Object.prototype
+    napi_value prototype = nullptr;
+    status = napi_get_named_property(env, objectCtor, "prototype", &prototype);
+    if (status != napi_ok) {
+        napi_throw_error(env, nullptr, "get Object.prototype failed");
+        return nullptr;
+    }
+    // 获取Object.prototype.hasOwnProperty函数
+    napi_value hasOwnProperty = nullptr;
+    status = napi_get_named_property(env, prototype, "hasOwnProperty", &hasOwnProperty);
+    if (status != napi_ok) {
+        napi_throw_error(env, nullptr, "get hasOwnProperty failed");
+        return nullptr;
+    }
+    // 以args[0]作为this、args[1]作为入参调用hasOwnProperty，
+    // 等价于Object.prototype.hasOwnProperty.call(obj, key)，只判断自有属性而不遍历原型链
+    napi_value argv[1] = { args[1] };
+    napi_value callResult = nullptr;
+    status = napi_call_function(env, args[0], hasOwnProperty, 1, argv, &callResult);
+    if (status != napi_ok) {
+        napi_throw_error(env, nullptr, "napi_call_function failed");
+        return nullptr;
+    }
+    // 将结果转为bool返回
+    bool hasProperty = false;
+    napi_get_value_bool(env, callResult, &hasProperty);
+    napi_value result;
+    napi_get_boolean(env, hasProperty, &result);
+    return result;
+}
+```
+
 ### napi_set_named_property
 
 在传入的ArkTS对象上添加一个命名属性。
 
 cpp部分代码
 
-<!-- @napi_set_named_property -->
+<!-- @[napi_set_named_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 // napi_set_named_property
@@ -478,7 +548,7 @@ static napi_value NapiSetNamedProperty(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @napi_set_named_property_api -->
+<!-- @[napi_set_named_property_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ``` TypeScript
 export const napiSetNamedProperty: (key: string) => Object | undefined; // napi_set_named_property
@@ -486,7 +556,7 @@ export const napiSetNamedProperty: (key: string) => Object | undefined; // napi_
 
 ArkTS侧示例代码
 
-<!-- @ark_napi_set_named_property -->
+<!-- @[ark_napi_set_named_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 // napi_set_named_property
@@ -501,7 +571,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API napi_set_named_property: %{public}s
 
 cpp部分代码
 
-<!-- @napi_get_named_property -->
+<!-- @[napi_get_named_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 // napi_get_named_property
@@ -530,7 +600,7 @@ static napi_value NapiGetNamedProperty(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @napi_get_named_property_api -->
+<!-- @[napi_get_named_property_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ``` TypeScript
 export const napiGetNamedProperty: (obj: Object,
@@ -539,7 +609,7 @@ export const napiGetNamedProperty: (obj: Object,
 
 ArkTS侧示例代码
 
-<!-- @ark_napi_get_named_property -->
+<!-- @[ark_napi_get_named_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 // napi_get_named_property
@@ -580,7 +650,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API napi_get_named_property : %{public}
 
 cpp部分代码
 
-<!-- @napi_has_named_property -->
+<!-- @[napi_has_named_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 // napi_has_named_property
@@ -611,7 +681,7 @@ static napi_value NapiHasNamedProperty(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @napi_has_named_property_api -->
+<!-- @[napi_has_named_property_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ``` TypeScript
 export const napiHasNamedProperty: (obj: Object, key: string) => boolean | undefined; // napi_has_named_property
@@ -619,7 +689,7 @@ export const napiHasNamedProperty: (obj: Object, key: string) => boolean | undef
 
 ArkTS侧示例代码
 
-<!-- @ark_napi_has_named_property -->
+<!-- @[ark_napi_has_named_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 // napi_has_named_property
@@ -655,7 +725,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API napi_has_named_property : %{public}
 
 cpp部分代码
 
-<!-- @napi_define_properties -->
+<!-- @[napi_define_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 // napi_define_properties
@@ -743,7 +813,7 @@ static napi_value CreateStringWithGetterSetter(napi_env env, napi_callback_info 
 
 接口声明
 
-<!-- @napi_define_properties_api -->
+<!-- @[napi_define_properties_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ``` TypeScript
 export class DefineMethodObj {
@@ -768,7 +838,7 @@ export const createStringWithGetterSetter: () => DefineGetterSetterObj;
 
 ArkTS侧示例代码
 
-<!-- @ark_napi_define_properties -->
+<!-- @[ark_napi_define_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 // napi_define_properties
@@ -795,7 +865,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API setter::%{public}s ',
 
 cpp部分代码
 
-<!-- @napi_get_all_property_names -->
+<!-- @[napi_get_all_property_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 // napi_get_all_property_names
@@ -822,7 +892,7 @@ static napi_value GetAllPropertyNames(napi_env env, napi_callback_info info)
 
 接口声明
 
-<!-- @napi_get_all_property_names_api -->
+<!-- @[napi_get_all_property_names_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ``` TypeScript
 export const getAllPropertyNames: (obj: Object) => Array<string> | undefined; // napi_get_all_property_names
@@ -830,7 +900,7 @@ export const getAllPropertyNames: (obj: Object) => Array<string> | undefined; //
 
 ArkTS侧示例代码
 
-<!-- @ark_napi_get_all_property_names -->
+<!-- @[ark_napi_get_all_property_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIProperty/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 // napi_get_all_property_names

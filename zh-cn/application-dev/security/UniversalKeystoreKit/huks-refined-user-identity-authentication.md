@@ -19,7 +19,7 @@
 
 ## 开发步骤
 ### 密钥生成和数据加密
-<!-- @fingerprint_access_key_generation_and_encryption -->
+<!-- @[fingerprint_access_key_generation_and_encryption](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/AccessControl/entry/src/main/ets/pages/FineGrainedUserIdentityAuthentication.ets) -->
 
 ``` TypeScript
 import { huks } from '@kit.UniversalKeystoreKit';
@@ -93,11 +93,11 @@ const KEY_GENERATION_PROPERTIES: huks.HuksParam[] = [
 function generateKeyItem(keyAlias: string, huksOptions: huks.HuksOptions, throwObject: ThrowObject): Promise<void> {
   return new Promise<void>((resolve, reject) => {
     try {
-      huks.generateKeyItem(keyAlias, huksOptions, (error, data) => {
+      huks.generateKeyItem(keyAlias, huksOptions, (error) => {
         if (error) {
           reject(error);
         } else {
-          resolve(data);
+          resolve();
         }
       });
     } catch (error) {
@@ -118,8 +118,8 @@ async function step1GenerateKey(): Promise<void> {
   let throwObject: ThrowObject = { isThrow: true };
   try {
     await generateKeyItem(KEY_ALIAS, generateOptions, throwObject)
-      .then((data) => {
-        console.info(`密钥生成成功: ${JSON.stringify(data)}`);
+      .then(() => {
+        console.info(`密钥生成成功`);
       })
       .catch((error: Error) => {
         if (throwObject.isThrow) {
@@ -258,7 +258,7 @@ async function step2EncryptData(): Promise<void> {
 ```
 
 ### 用户认证
-<!-- @fingerprint_access_user_authentication -->
+<!-- @[fingerprint_access_user_authentication](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/AccessControl/entry/src/main/ets/pages/FineGrainedUserIdentityAuthentication.ets) -->
 
 ``` TypeScript
 /* 步骤3：用户认证模块 */
@@ -314,7 +314,7 @@ function performUserAuthentication(huksChallenge: Uint8Array): void {
 ```
 
 ### 数据解密和验证
-<!-- @fingerprint_access_decryption_and_verification -->
+<!-- @[fingerprint_access_decryption_and_verification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/AccessControl/entry/src/main/ets/pages/FineGrainedUserIdentityAuthentication.ets) -->
 
 ``` TypeScript
 /* 步骤4：解密模块 */

@@ -85,6 +85,8 @@ Purgeable Memory 在系统压力较大时优先回收，可以有效缓解内存
 
 ## 相关文档
 
-- QoS 开发指导
-- Purgeable Memory 开发指导
-- 格物服务开发指导
+- [QoS 开发指导](qos-guidelines.md)
+- [Purgeable Memory 开发指导](purgeable-memory-guidelines.md)
+- [格物服务开发指导](gewu-ndk-api-guidelines.md)
+
+<!--RP1--><!--RP1End-->

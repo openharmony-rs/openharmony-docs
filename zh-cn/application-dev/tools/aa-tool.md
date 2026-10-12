@@ -11,7 +11,7 @@ Ability assistant（Ability助手，简称为aa），是用于启动应用和启
 
 ## 环境要求
 
-在使用本工具前，开发者需要先获取hdc工具，执行hdc shell。
+在使用本工具前，开发者需要先获取[hdc工具](../dfx/hdc.md#环境准备)，执行hdc shell。
 
 本文中命令介绍均基于交互式命令环境。如果直接执行hdc shell [aa命令]，则需要采用""来包裹aa命令，确保命令中的传参能被正确识别。示例如下：
 
@@ -37,7 +37,7 @@ hdc shell "aa process -b com.example.myapplication -a EntryAbility -p perf-cmd"
 | detach | 退出调试模式命令。通过bundleName使指定应用退出调试模式。|
 | appdebug | 等待调试命令。用于设置、取消设置应用等待调试状态，以及获取处于等待调试状态的应用包名和持久化信息。等待调试状态只对debug类型应用生效。appdebug的设置命令只对单个应用生效，当重复设置时，应用包名与持久化状态会替换成最新设置内容。|
 | process | 应用调试/调优命令。对应用进行调试或调优，IDE用该命令集成调试和调优工具。|
-| send-memory-level | onMemoryLevel回调命令。指定进程的pid和内存使用级别来触发该进程的onMemoryLevel生命周期回调。|
+| send-memory-level | onMemoryLevel()回调命令。指定进程的pid和内存使用级别来触发该进程的onMemoryLevel()生命周期回调。|
 | pre-start | 应用预启动命令。用于在后台预先启动应用到生命周期特定阶段，以提升用户点击应用的启动速度。|
 
 ## 帮助命令（help）
@@ -124,7 +124,7 @@ aa start [-d <deviceId>] [-U <URI>] [-t <type>] [-A <action>] [-e <entity>] [-u 
 
   > **说明：**
   > 
-  > 本例中仅介绍了部分字段的使用。关于Ability匹配的详细规则参考显式Want与隐式Want匹配规则。
+  > 本例中仅介绍了部分字段的使用。关于Ability匹配的详细规则参考[显式Want与隐式Want匹配规则](../application-models/explicit-implicit-want-mappings.md)。
 
 
   - **目标应用**：修改module.json5配置，为目标Ability配置uris。
@@ -241,7 +241,7 @@ aa dump -a
 
 > **说明：**
 >
-> aa dump命令从API version 7开始支持，从API version 9废弃，替换命令为hidumper -s AbilityManagerService。
+> aa dump命令从API version 7开始支持，从API version 9废弃，替换命令为[hidumper](../dfx/hidumper.md) -s AbilityManagerService。
 
   **打印命令参数列表**
   | 参数 | 二级参数 | 参数说明 |
@@ -270,7 +270,7 @@ aa dump -a
   aa dump -a
   ```
 
-  aa-dump-a
+  ![aa-dump-a](figures/aa-dump-a.png)
 
   
   ```bash
@@ -278,7 +278,7 @@ aa dump -a
   aa dump -l
   ```
 
-  aa-dump-l
+  ![aa-dump-l](figures/aa-dump-l.png)
 
   
   ```bash
@@ -286,7 +286,7 @@ aa dump -a
   aa dump -i 105
   ```
 
-  aa-dump-i
+  ![aa-dump-i](figures/aa-dump-i.png)
 
 ## 强制停止进程命令（force-stop）
 
@@ -333,7 +333,7 @@ aa test -b <bundleName> [-m <module-name>] [-p <package-name>] [-s class <test-c
 
 > **说明**：
 > 
-> 关于class、level、size、testType等参数的详细说明请参见<!--RP2-->aa test命令执行配置参数<!--RP2End-->。
+> 关于class、level、size、testType等参数的详细说明请参见<!--RP2-->[aa test命令执行配置参数](../application-test/unittest-guidelines.md#命令行执行测试脚本)<!--RP2End-->。
 
   **启动测试框架命令参数列表**
   | 参数 | 参数说明 |
@@ -535,12 +535,12 @@ aa process -b <bundleName> -a <abilityName> [-m <moduleName>] [-p <perf-cmd>] [-
   aa process -b com.example.myapplication -a EntryAbility -p perf-cmd [-S]
   ```
 
-## onMemoryLevel回调命令（send-memory-level）
+## onMemoryLevel()回调命令（send-memory-level）
 
-从API version 13开始，开发者可以通过该命令来调试应用的onMemoryLevel生命周期。通过在参数中指定进程的pid和内存使用级别来触发该进程的onMemoryLevel生命周期回调。该命令只提供基本的应用调试能力，不能完全模拟真实的内存加压测试场景。
+从API version 13开始，开发者可以通过该命令来调试应用的[onMemoryLevel](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onmemorylevel)生命周期。通过在参数中指定进程的pid和内存使用级别来触发该进程的onMemoryLevel()生命周期回调。该命令只提供基本的应用调试能力，不能完全模拟真实的内存加压测试场景。
 
 ```bash
-# 触发onMemoryLevel回调
+# 触发onMemoryLevel()回调
 aa send-memory-level -p <processId> -l <memoryLevel>
 ```
 
@@ -550,7 +550,7 @@ aa send-memory-level -p <processId> -l <memoryLevel>
 | -------- | -------- |
 | -h/--help | 帮助信息。 |
 | -p | 必选参数，进程pid。 |
-| -l | 必选参数，内存使用级别，具体值参考AbilityConstant.MemoryLevel。 |
+| -l | 必选参数，内存使用级别，具体值参考[AbilityConstant.MemoryLevel](../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#memorylevel)。 |
 
 **返回值**：
 
@@ -564,13 +564,13 @@ aa send-memory-level -p <processId> -l <memoryLevel>
 **示例**：
 
 ```bash
-# 触发进程号为6066应用的onMemoryLevel回调，此时回调的level为0
+# 触发进程号为6066应用的onMemoryLevel()回调，此时回调的level为0
 aa send-memory-level -p 6066 -l 0
 ```
 
 ## 应用预启动命令（pre-start）
 
-从 API version 26.0.0 开始，开发者可以通过此命令在后台预先启动应用，以提升用户点击应用的启动速度。当前支持预启动应用到生命周期的特定阶段，即会先将应用预启动到onDidForeground阶段（前台窗口会隐藏不显示），若默认30秒内用户未手动点击应用，系统会自动将应用预启动到onDidBackground阶段。
+从 API version 26.0.0 开始，开发者可以通过此命令在后台预先启动应用，以提升用户点击应用的启动速度。当前支持预启动应用到生命周期的特定阶段，即会先将应用预启动到[onDidForeground](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#ondidforeground20)阶段（前台窗口会隐藏不显示），若默认30秒内用户未手动点击应用，系统会自动将应用预启动到[onDidBackground](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#ondidbackground20)阶段。
 
 ```bash
 aa pre-start -m <MODE> -b <BUNDLE-NAME> -u <USER-ID>
@@ -619,7 +619,7 @@ Failed to verify the visibility of the target ability.
 
 **可能原因**
 
-当目标应用在module.json5配置文件中的abilities标签/extensionAbilities标签中的exported字段配置为false时，表示对应UIAbility组件/ExtensionAbility组件不可以被其他应用调用，也无法被aa工具命令拉起。
+当目标应用在module.json5配置文件中的[abilities标签](../quick-start/module-configuration-file.md#abilities标签)/[extensionAbilities标签](../quick-start/module-configuration-file.md#extensionabilities标签)中的exported字段配置为false时，表示对应UIAbility组件/ExtensionAbility组件不可以被其他应用调用，也无法被aa工具命令拉起。
 
 **处理步骤**
 
@@ -952,15 +952,15 @@ The target application is under control.
 - 目标应用是系统预装应用，并且使用本地编译的版本进行覆盖安装。
 - 目标应用开发证书过期，拉起时被系统管控拦截，此时会有系统弹框提示“应用已过期”。
 - 目标应用刚完成应用克隆，处于数据恢复中，此时会有系统弹框提示“数据恢复中，请稍后再试”。
-- 创建试用调试Profile的5天有效期已过期，导致应用拉起时被系统管控拦截。
+- [创建试用调试Profile](https://developer.huawei.com/consumer/cn/doc/app/agc-help-apply-acl-0000002394212138#section1443958124819)的5天有效期已过期，导致应用拉起时被系统管控拦截。
 
 **处理步骤**
 
 - 针对可能原因1，建议卸载该应用。
 - 针对可能原因2，需要先卸载该应用，再使用本地编译的版本进行安装。
-- 针对可能原因3，需要更换证书。
+- 针对可能原因3，需要[更换证书](https://developer.huawei.com/consumer/cn/doc/app/agc-help-cert-faq-0000002329508280#section11365113515519)。
 - 针对可能原因4，需要等待数据恢复完成后再尝试启动。
-- 针对可能原因5，需要重新创建试用调试Profile。
+- 针对可能原因5，需要重新[创建试用调试Profile](https://developer.huawei.com/consumer/cn/doc/app/agc-help-apply-acl-0000002394212138#section1443958124819)。
 
 ### 10106106 目标应用被EDM管控
 
@@ -1196,4 +1196,4 @@ Cannot debug applications using a release certificate.
 
 使用Debug签名证书重新签名，安装新签名出的HAP后，再尝试执行该命令。
 
-签名工具及签名证书的生成方式可以参考：签名工具指导。
+签名工具及签名证书的生成方式可以参考：[签名工具指导](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing)。

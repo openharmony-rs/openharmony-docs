@@ -17,13 +17,13 @@
 
 **时域可分层视频编码**，是指能编码出时域分层码流的视频编码，下图展示了通过参考关系构建的4层时域分层码流结构。
 
-Temporal scalability 4 layers
+![Temporal scalability 4 layers](figures/temporal-scalability-4layers.png)
 
 从高到低逐层丢弃部分层级的码流（丢弃顺序L3->L2->L1），能实现不同程度的帧率伸缩，以满足传输和解码能力的变化需求。
 
 如下图所示，这是上述4层时域分层码流结构丢弃L3后组成的新的码流结构，能在解码正常的情况下实现帧率减半的效果。其他层的丢弃同理。
 
-Temporal scalability 4 layers L3 dropped
+![Temporal scalability 4 layers L3 dropped](figures/temporal-scalability-4layers-L3-dropped.png)
 
 ### 时域分层码流结构介绍
 基础码流是由一个或多个独立图像组（Group Of Pictures，简称GOP）组合而成的视频码流。GOP是在编码中一组从I帧开始到I帧结束的连续的可独立解码的图像组。
@@ -51,7 +51,7 @@ Temporal scalability 4 layers L3 dropped
 
 - 场景2：有视频预览播放或倍速播放需求的视频编码录制场景。
 
-若应用场景不涉及动态调整时域参考结构，且分层结构简单，则推荐使用全局时域可分层特性，否则使能长期参考帧特性。
+若应用场景不涉及动态调整时域参考结构，且分层结构简单，则推荐使用[全局时域可分层特性](#全局时域可分层特性feature_temporal_scalability)，否则使能[长期参考帧特性](#长期参考帧特性feature_long-term_reference)。
 
 ## 约束和限制
 
@@ -63,7 +63,7 @@ Temporal scalability 4 layers L3 dropped
 
   参考帧仅在GOP内有效，刷新I帧后，DPB随之清空，参考帧也会被清空，因此参考关系的指定受I帧刷新位置影响很大。
 
-  使能时域分层能力后，若需要通过`OH_MD_KEY_REQUEST_I_FRAME`临时请求I帧，应使用生效时机确定的随帧通路配置方式准确告知系统I帧刷新位置以避免参考关系错乱，参考随帧通路配置相关指导，避免使用生效时机不确定的`OH_VideoEncoder_SetParameter`方式。详情请参考异步模式视频编码Surface模式"步骤-4"。
+  使能时域分层能力后，若需要通过`OH_MD_KEY_REQUEST_I_FRAME`临时请求I帧，应使用生效时机确定的随帧通路配置方式准确告知系统I帧刷新位置以避免参考关系错乱，参考随帧通路配置相关指导，避免使用生效时机不确定的`OH_VideoEncoder_SetParameter`方式。详情请参考异步模式视频编码[Surface模式](video-encoding.md#surface模式)"步骤-4"。
 
 - 支持`OH_AVBuffer`回调通路，不支持`OH_AVMemory`回调通路。
 
@@ -99,19 +99,19 @@ Temporal scalability 4 layers L3 dropped
 
 使用举例1：TGOP=4时的相邻参考模式。
 
-Temporal gop 4 adjacent reference
+![Temporal gop 4 adjacent reference](figures/temporal-scalability-tgop4-adjacent.png)
 
 使用举例2：TGOP=4时的跨帧参考模式。
 
-TGOP4 jump reference
+![TGOP4 jump reference](figures/temporal-scalability-tgop4-jump.png)
 
 使用举例3：TGOP=4时的均匀分层模式。
 
-TGOP4 uniformly scaled reference
+![TGOP4 uniformly scaled reference](figures/temporal-scalability-tgop4-uniformly.png)
 
 ### 开发指导
 
-基础编码流程请参考异步模式视频编码开发指导。下面将重点说明与基础视频编码流程中的不同之处。
+基础编码流程请参考[异步模式视频编码开发指导](video-encoding.md)。下面将重点说明与基础视频编码流程中的不同之处。
 
 1. 在初始阶段创建编码实例时，校验视频编码器是否支持全局时域可分层特性。
 
@@ -250,7 +250,7 @@ TGOP4 uniformly scaled reference
     从API版本26.0.0开始，可以通过OH_MD_KEY_VIDEO_ENCODER_TEMPORAL_LAYER_ID字段获取时域层级信息，无需根据TGOP参数及出帧信息自行计算所属时域层级信息。时域层号为0时，表示基础层，1及以上时表示增强层。
 
     示例代码如下：
-    <!-- @quick_start -->
+    <!-- @[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/common/sample_callback.cpp) -->
     
     ``` C++
     static int32_t GetTemporalLayerID(OH_AVBuffer *buffer)
@@ -293,7 +293,7 @@ TGOP4 uniformly scaled reference
 - **当前帧标记为LTR帧：** BL层和被跳跃参考的EL层均标记为LTR。
 - **当前帧参考的LTR帧的POC号：** 如当前帧需要跳跃参考前面已被标记为LTR帧的POC号。
 
-使用举例，实现时域可分层视频编码介绍中的4层时域分层结构的配置如下。
+使用举例，实现[时域可分层视频编码介绍](#时域可分层视频编码介绍)中的4层时域分层结构的配置如下。
 
 1. 在配置阶段，将`OH_MD_KEY_VIDEO_ENCODER_LTR_FRAME_COUNT` 配置为5。
 
@@ -306,7 +306,7 @@ TGOP4 uniformly scaled reference
 
 ### 开发指导
 
-基础编码流程请参考异步模式视频编码开发指导，下面仅针对与基础视频编码过程中存在的区别做具体说明。
+基础编码流程请参考[异步模式视频编码开发指导](video-encoding.md)，下面仅针对与基础视频编码过程中存在的区别做具体说明。
 
 1. 在初始阶段创建编码实例时，校验当前视频编码器是否支持LTR特性。
 
@@ -346,13 +346,14 @@ TGOP4 uniformly scaled reference
         // - 写入编码码流。
         // - 通知编码器码流结束。
         // - 随帧参数写入。
-        auto format = std::shared_ptr<OH_AVFormat>(OH_AVBuffer_GetParameter(buffer), OH_AVFormat_Destroy);
+        OH_AVFormat *format = OH_AVBuffer_GetParameter(buffer);
         if (format == nullptr) {
             // 异常处理。
         }
-        OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_VIDEO_ENCODER_PER_FRAME_MARK_LTR, 1);
-        OH_AVFormat_SetIntValue(format.get(), OH_MD_KEY_VIDEO_ENCODER_PER_FRAME_USE_LTR, 4);
-        OH_AVBuffer_SetParameter(buffer, format.get());
+        OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_ENCODER_PER_FRAME_MARK_LTR, 1);
+        OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_ENCODER_PER_FRAME_USE_LTR, 4);
+        OH_AVBuffer_SetParameter(buffer, format);
+        OH_AVFormat_Destroy(format);
         // 通知编码器buffer输入完成。
         OH_VideoEncoder_PushInputBuffer(codec, index);
     }
@@ -380,6 +381,9 @@ TGOP4 uniformly scaled reference
     // 2.1 编码输入参数回调OH_VideoEncoder_OnNeedInputParameter实现。
     static void OnNeedInputParameter(OH_AVCodec *codec, uint32_t index, OH_AVFormat *parameter, void *userData)
     {
+        if (parameter == nullptr) {
+            // 异常处理。
+        }
         // 输入帧buffer对应的index，送入InIndexQueue队列。
         // 输入帧的数据avformat送入InFormatQueue队列。
         // 数据处理，请参考：

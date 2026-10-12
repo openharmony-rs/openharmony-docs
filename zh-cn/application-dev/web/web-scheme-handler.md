@@ -2,11 +2,11 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-应用可以通过onInterceptRequest拦截Web组件发起的网络请求，也可以通过SchemeHandler来拦截Web组件发起的网络请求。SchemeHandler提供了ArkTS与NDK两套接口。
+应用可以通过[onInterceptRequest](../reference/apis-arkweb/arkts-basic-components-web-events.md#oninterceptrequest9)拦截Web组件发起的网络请求，也可以通过SchemeHandler来拦截Web组件发起的网络请求。SchemeHandler提供了ArkTS与NDK两套接口。
 
 > **注意：**
 >
@@ -14,7 +14,7 @@
 
 ## 网络请求拦截处理 (onInterceptRequest接口)
 
-通过onInterceptRequest接口拦截Web组件发起的网络请求可参考自定义页面请求响应。
+通过onInterceptRequest接口拦截Web组件发起的网络请求可参考[自定义页面请求响应](./web-resource-interception-request-mgmt.md)。
 
 ## 网络请求拦截处理 (SchemeHandler机制)
 
@@ -28,20 +28,20 @@ ArkWeb支持通过SchemeHandler拦截Web组件或者ServiceWorker发出的HTTP(s
 
 请求开始的回调：  
 
-NDK：ArkWeb_OnRequestStart  
+NDK：[ArkWeb_OnRequestStart](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#arkweb_onrequeststart)  
 
-ArkTS：onRequestStart  
+ArkTS：[onRequestStart](../reference/apis-arkweb/arkts-apis-webview-WebSchemeHandler.md#onrequeststart12)  
 
 请求结束的回调：  
 
-NDK：ArkWeb_OnRequestStop  
+NDK：[ArkWeb_OnRequestStop](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#arkweb_onrequeststop)  
 
-ArkTS：onRequestStop  
+ArkTS：[onRequestStop](../reference/apis-arkweb/arkts-apis-webview-WebSchemeHandler.md#onrequeststop12)  
 
 > **注意：**
 >
 > - 需要在Web组件初始化之后设置SchemeHandler，否则会设置失败。 
-> - 若想要拦截Web组件发出的第一个请求，可以通过initializeWebEngine方法提前进行Web组件初始化，再设置SchemeHandler实现拦截。详细代码请参考完整示例。
+> - 若想要拦截Web组件发出的第一个请求，可以通过[initializeWebEngine](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#initializewebengine)方法提前进行Web组件初始化，再设置SchemeHandler实现拦截。详细代码请参考[完整示例](#完整示例)。
 
 在C++中，通过NDK接口为Web组件设置SchemeHandler：
 
@@ -79,9 +79,9 @@ ArkTS：onRequestStop
 
 Web组件的创建会触发Web内核的初始化。另外ArkWeb还提供了initializeWebEngine接口，用于单独进行Web初始化。
 
-在NDK中可以在ets侧先调用testNapi.registerCustomSchemes注册自定义协议，然后调用initializeWebEngine初始化Web内核，示例如下：
+在NDK中可以在ets侧先调用testNapi.registerCustomSchemes注册自定义协议，然后调用[initializeWebEngine](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#initializewebengine)初始化Web内核，示例如下：
 
-<!-- @register_init_scheme -->    
+<!-- @[register_init_scheme](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebSchemeHandler/entry/src/main/ets/entryability/EntryAbility.ets) -->    
 
 ``` TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -106,7 +106,7 @@ export default class EntryAbility extends UIAbility {
 
 testNapi.registerCustomSchemes的C++实现：
 
-<!-- @register_set_custom_schemes -->
+<!-- @[register_set_custom_schemes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebSchemeHandler/entry/src/main/cpp/hello.cpp) -->
 
 ``` C++
 // 注册“custom“ scheme到Web组件，并指定该scheme需要遵循标准的scheme规则，允许该scheme发出跨域请求。
@@ -221,9 +221,9 @@ OH_ArkWeb_RegisterCustomSchemes("custom-isolated", ARKWEB_SCHEME_OPTION_DISPLAY_
 
 错误码定义：  
 
-NDK：arkweb_net_error_list.h。  
+NDK：[arkweb_net_error_list.h](../reference/apis-arkweb/capi-arkweb-net-error-list-h.md)。  
 
-ArkTS：@ohos.web.netErrorList (ArkWeb网络协议栈错误列表)。  
+ArkTS：[@ohos.web.netErrorList (ArkWeb网络协议栈错误列表)](../reference/apis-arkweb/arkts-apis-netErrorList.md)。  
 
 > **注意：**
 >
@@ -292,9 +292,11 @@ ArkTS：@ohos.web.netErrorList (ArkWeb网络协议栈错误列表)。
    })
    ```
 
-当希望通过OH_ArkWebResourceHandler_DidFailWithError或者didFail(code: WebNetErrorList)结束当前请求时，需要在调用该接口之前通过OH_ArkWebResourceHandler_DidReceiveResponse或者didReceiveResponse返回给Web内核一个响应头，否则无法结束请求。
+网络拦截支持流式请求，可以通过多次调用[didReceiveResponseBody](../reference/apis-arkweb/arkts-apis-webview-WebResourceHandler.md#didreceiveresponsebody12)或者[OH_ArkWebResourceHandler_DidReceiveData](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didreceivedata)，分块构造返回响应体。最后一次返回响应体时，再调用[didFinish](../reference/apis-arkweb/arkts-apis-webview-WebResourceHandler.md#didfinish12)或者[OH_ArkWebResourceHandler_DidFinish](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didfinish)通知Web组件被拦截的请求已经完成。
 
-从API version 20开始，可以直接通过OH_ArkWebResourceHandler_DidFailWithErrorV2或者didFail(code: WebNetErrorList, completeIfNoResponse: boolean)结束网络请求，不再依赖必须通过OH_ArkWebResourceHandler_DidReceiveResponse或者didReceiveResponse返回给Web内核一个响应头。
+当希望通过[OH_ArkWebResourceHandler_DidFailWithError](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didfailwitherror)或者[didFail(code: WebNetErrorList)](../reference/apis-arkweb/arkts-apis-webview-WebResourceHandler.md#didfail12)结束当前请求时，需要在调用该接口之前通过[OH_ArkWebResourceHandler_DidReceiveResponse](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didreceiveresponse)或者[didReceiveResponse](../reference/apis-arkweb/arkts-apis-webview-WebResourceHandler.md#didreceiveresponse12)返回给Web内核一个响应头，否则无法结束请求。
+
+从API version 20开始，可以直接通过[OH_ArkWebResourceHandler_DidFailWithErrorV2](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didfailwitherrorv2)或者[didFail(code: WebNetErrorList, completeIfNoResponse: boolean)](../reference/apis-arkweb/arkts-apis-webview-WebResourceHandler.md#didfail20)结束网络请求，不再依赖必须通过[OH_ArkWebResourceHandler_DidReceiveResponse](../reference/apis-arkweb/capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didreceiveresponse)或者[didReceiveResponse](../reference/apis-arkweb/arkts-apis-webview-WebResourceHandler.md#didreceiveresponse12)返回给Web内核一个响应头。
 
 NDK示例：
   ```c++
@@ -315,5 +317,5 @@ ArkTS示例：
 ## 完整示例
 
 <!--RP1-->
-拦截Web组件发起的网络请求
+[拦截Web组件发起的网络请求](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkWeb/ArkWebSchemeHandler)
 <!--RP1End-->

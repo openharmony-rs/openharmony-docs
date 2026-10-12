@@ -11,15 +11,11 @@
 
 当应用的代码存在规范问题或错误时，会在运行中产生异常和错误，如应用未捕获异常等。在错误产生后，应用会异常退出。错误日志通常会保存在用户本地存储设备中，不方便开发者定位问题。所以，应用开发者可以使用错误管理的接口，在应用退出前，及时将相关错误及日志上报到开发者的服务平台来定位问题。
 
-使用errorManager接口监听异常和错误后，应用不会退出，建议在回调函数执行完后，增加同步退出操作，如果只是为了获取错误日志，建议使用HiAppEvent订阅事件。
-
-> **说明：**
->
-> 从API版本26.0.0开始，如果已经通过errorManager接口监听了可捕获异常，则HiAppEvent将无法订阅JsError崩溃问题。
+使用errorManager接口监听异常和错误后，应用不会退出，建议在回调函数执行完后，增加同步退出操作，如果只是为了获取错误日志，建议使用[HiAppEvent订阅事件](hiappevent-intro.md)。
 
 ## 接口说明
 
-应用错误管理接口由@ohos.app.ability.errorManager (错误管理模块)提供，使用接口能力前需注册错误观测器，开发者可以通过import引入，详见开发示例。
+应用错误管理接口由[@ohos.app.ability.errorManager (错误管理模块)](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md)提供，使用接口能力前需注册错误观测器，开发者可以通过import引入，详见[开发示例](#开发示例)。
 
 **错误管理接口功能介绍**：
 
@@ -28,10 +24,10 @@
 | on(type: "error", observer: ErrorObserver): number | 注册错误监听接口，当系统监测到应用异常时会回调该监听。该接口为同步接口，返回值为注册的监听对象对应的序号。 |
 | off(type: "error", observerId: number, callback: AsyncCallback&lt;void>): void | 以callback的形式解除注册监听，传入的number为之前注册监听时返回的序号。 |
 | off(type: "error", observerId: number): Promise&lt;void> | 以Promise的形式解除注册监听，传入的number为之前注册监听时返回的序号。 |
-| on(type: 'globalErrorOccurred', observer: GlobalObserver): void | 注册进程错误监听接口，当系统监测到应用异常时会回调该监听，该接口为同步接口，即一次注册，全局监听。（**推荐使用**）<br/>说明：从API version 18开始，支持该接口。 |
-| off(type: 'globalErrorOccurred', observer?: GlobalObserver): void | 以callback的形式解除注册监听。（**推荐使用**）<br/>说明：从API version 18开始，支持该接口。 |
-| on(type: 'globalUnhandledRejectionDetected', observer: GlobalObserver): void | 注册进程错误监听接口，当系统监测到应用promise异常时会回调该监听，该接口为同步接口，即一次注册，全局监听。（**推荐使用**）<br/>说明：从API version 18开始，支持该接口。 |
-| off(type: 'globalUnhandledRejectionDetected', observer?: GlobalObserver): void | 以callback的形式解除注册监听。（**推荐使用**）<br/>说明：从API version 18开始，支持该接口。 |
+| on(type: 'globalErrorOccurred', observer: GlobalObserver): void | 注册进程错误监听接口，当系统监测到应用异常时会回调该监听，该接口为同步接口，即一次注册，全局监听。<br/>**说明**：从API version 18开始，支持该接口。 |
+| off(type: 'globalErrorOccurred', observer?: GlobalObserver): void | 以callback的形式解除注册监听。<br/>**说明**：<br/>- 从API version 18开始，支持该接口。<br/>- 注销监听器时可以监听进程中所有线程的异常，建议在进程回收时调用off接口，否则可能造成应用崩溃。 |
+| on(type: 'globalUnhandledRejectionDetected', observer: GlobalObserver): void | 注册进程错误监听接口，当系统监测到应用promise异常时会回调该监听，该接口为同步接口，即一次注册，全局监听。<br/>说明：从API version 18开始，支持该接口。 |
+| off(type: 'globalUnhandledRejectionDetected', observer?: GlobalObserver): void | 以callback的形式解除注册监听。<br/>**说明**：<br/>- 从API version 18开始，支持该接口。<br/>- 注销监听器时可以监听进程中所有线程的异常，建议在进程回收时调用off接口，否则可能造成应用崩溃。 |
 | on(type: 'loopObserver', timeout: number, observer: LoopObserver): void | 注册主线程消息处理耗时监听器，当系统监测到应用主线程事件处理超时时会回调该监听。<br/>只能在主线程调用，多次注册后，后一次的注册会覆盖前一次的。 |
 | off(type: 'loopObserver', observer?: LoopObserver): void | 以LoopObserver的形式解除应用主线程消息处理耗时监听。 |
 | on(type: 'freeze', observer: FreezeObserver): void | 注册应用主线程freeze监听。只能在主线程调用，重复注册后，后一次的注册会覆盖前一次的。 |
@@ -42,7 +38,7 @@
 
 当采用callback作为异步回调时，可以在callback中进行下一步处理。
 
-当采用Promise对象返回时，可以在Promise对象中类似地处理接口返回值，具体结果码说明见解除注册结果码。
+当采用Promise对象返回时，可以在Promise对象中类似地处理接口返回值，具体结果码说明见[解除注册结果码](#解除注册结果码)。
 
 **错误监听(ErrorObserver)接口功能介绍**：
 
@@ -74,7 +70,7 @@
 ### 单线程监听场景
 
  引入头文件。
-<!-- @index_h -->   
+<!-- @[index_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
 
 ``` TypeScript
 import { errorManager } from '@kit.AbilityKit';
@@ -82,7 +78,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
  新增监听回调函数。
-<!-- @error_observer -->   
+<!-- @[error_observer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
 
 ``` TypeScript
 let observer: errorManager.ErrorObserver = {
@@ -100,7 +96,7 @@ let observer: errorManager.ErrorObserver = {
 ```
 
  新增触发按钮。
-<!-- @onclick_error_observer -->   
+<!-- @[onclick_error_observer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
 
 ``` TypeScript
 Button('单线程监听场景').onClick(()=>{
@@ -121,7 +117,7 @@ Button('单线程监听场景').onClick(()=>{
 ### 进程监听异常场景
 
  引入头文件。
-<!-- @index_h -->   
+<!-- @[index_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
 
 ``` TypeScript
 import { errorManager } from '@kit.AbilityKit';
@@ -129,7 +125,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
  新增监听回调函数。
-<!-- @error_func -->   
+<!-- @[error_func](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
 
 ``` TypeScript
 function errorFunc(observer: errorManager.GlobalError) {
@@ -142,7 +138,7 @@ function errorFunc(observer: errorManager.GlobalError) {
 ```
 
  新增触发按钮。
-<!-- @onclick_error_func -->   
+<!-- @[onclick_error_func](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
 
 ``` TypeScript
 Button('进程监听异常场景').onClick(()=>{
@@ -161,7 +157,7 @@ Button('进程监听异常场景').onClick(()=>{
 ### 进程监听promise异常场景
 
  引入头文件。
-<!-- @index_h -->   
+<!-- @[index_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
 
 ``` TypeScript
 import { errorManager } from '@kit.AbilityKit';
@@ -169,7 +165,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
  新增监听回调函数。
-<!-- @promise_func -->   
+<!-- @[promise_func](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
 
 ``` TypeScript
 function promiseFunc(observer: errorManager.GlobalError) {
@@ -186,7 +182,7 @@ async function promiseFuncOne() {
 ```
 
  新增触发按钮。
-<!-- @onclick_promise_func -->   
+<!-- @[onclick_promise_func](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
 
 ``` TypeScript
 Button('进程监听promise异常场景').onClick(()=>{
@@ -209,7 +205,7 @@ Button('进程监听promise异常场景').onClick(()=>{
 ### 主线程监听freeze
 
  引入头文件。
-<!-- @index_h -->   
+<!-- @[index_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
 
 ``` TypeScript
 import { errorManager } from '@kit.AbilityKit';
@@ -217,7 +213,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
  新增监听回调函数。
-<!-- @freeze_call_back -->   
+<!-- @[freeze_call_back](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
 
 ``` TypeScript
 function freezeCallback() {
@@ -226,7 +222,7 @@ function freezeCallback() {
 ```
 
  新增触发按钮。
-<!-- @onclick_freeze_call_back -->   
+<!-- @[onclick_freeze_call_back](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
 
 ``` TypeScript
 Button('主线程监听freeze').onClick(()=>{
@@ -247,7 +243,7 @@ Button('主线程监听freeze').onClick(()=>{
 ### 主线程监听消息处理耗时
 
  引入头文件。
-<!-- @index_h -->   
+<!-- @[index_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
 
 ``` TypeScript
 import { errorManager } from '@kit.AbilityKit';
@@ -255,7 +251,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
  新增监听回调函数。
-<!-- @loop_observer -->   
+<!-- @[loop_observer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
 
 ``` TypeScript
 let loopObserver: errorManager.LoopObserver = {
@@ -266,7 +262,7 @@ let loopObserver: errorManager.LoopObserver = {
 ```
 
  新增触发按钮。
-<!-- @onclick_loop_observer -->   
+<!-- @[onclick_loop_observer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
 
 ``` TypeScript
 Button('主线程监听消息处理耗时').onClick(()=>{
@@ -287,7 +283,7 @@ Button('主线程监听消息处理耗时').onClick(()=>{
 ### 进程promise监听注册被拒绝
 
  引入头文件。
-<!-- @index_h -->   
+<!-- @[index_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
 
 ``` TypeScript
 import { errorManager } from '@kit.AbilityKit';
@@ -295,7 +291,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
  新增监听回调函数。
-<!-- @unhandled_rejection_observer -->   
+<!-- @[unhandled_rejection_observer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
 
 ``` TypeScript
 let promise1 = new Promise<void>(() => {}).then(() => {
@@ -319,7 +315,7 @@ async function promiseFuncTwo() {
 ```
 
  新增触发按钮。
-<!-- @onclick_unhandled_rejection_observer -->   
+<!-- @[onclick_unhandled_rejection_observer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->   
 
 ``` TypeScript
 Button('进程promise监听注册被拒绝').onClick(()=>{
@@ -342,7 +338,7 @@ Button('进程promise监听注册被拒绝').onClick(()=>{
 ### 错误处理器责任链模式场景
 
  定义第一个错误处理器及注册方法，无前置处理器时退出进程。
-<!-- @first_error_handler -->  
+<!-- @[first_error_handler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/FirstErrorHandler.ets) -->  
 
 ``` TypeScript
 import { errorManager } from '@kit.AbilityKit';
@@ -375,7 +371,7 @@ export function setFirstErrorHandler() {
 ```
 
  定义第二个错误处理器及注册方法，形成链式调用。
-<!-- @second_error_handler -->  
+<!-- @[second_error_handler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/SecondErrorHandler.ets) -->  
 
 ``` TypeScript
 import { errorManager } from '@kit.AbilityKit';
@@ -407,7 +403,7 @@ export function setSecondErrorHandler() {
 ```
 
  引入头文件。
-<!-- @error_handler_h --> 
+<!-- @[error_handler_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 import { setFirstErrorHandler } from './FirstErrorHandler';
@@ -415,7 +411,7 @@ import { setSecondErrorHandler } from './SecondErrorHandler';
 ```
 
  新增错误处理器责任链模式构造函数。
-<!-- @test_error_handlers --> 
+<!-- @[test_error_handlers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 function testErrorHandlers() {
@@ -426,7 +422,7 @@ function testErrorHandlers() {
 ```
 
  主组件通过按钮触发测试，注册两个处理器并抛错验证处理链。
-<!-- @onclick_error_Handler --> 
+<!-- @[onclick_error_Handler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 Button('错误处理器责任链模式场景').onClick(()=>{
@@ -437,7 +433,7 @@ Button('错误处理器责任链模式场景').onClick(()=>{
 ### freeze处理器责任链模式场景
 
  定义第一个freeze处理器及注册方法，无前置处理器时退出进程。
-<!-- @first_freeze_handler -->  
+<!-- @[first_freeze_handler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/FirstFreezeHandler.ets) -->  
 
 ``` TypeScript
 import { errorManager } from '@kit.AbilityKit';
@@ -467,7 +463,7 @@ export function setFirstFreezeHandler() {
 ```
 
  定义第二个freeze处理器及注册方法，形成链式调用。
-<!-- @second_freeze_handler -->  
+<!-- @[second_freeze_handler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/SecondFreezeHandler.ets) -->  
 
 ``` TypeScript
 import { errorManager } from '@kit.AbilityKit';
@@ -497,7 +493,7 @@ export function setSecondFreezeHandler() {
 ```
 
  引入头文件。
-<!-- @freeze_handler_h -->  
+<!-- @[freeze_handler_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->  
 
 ``` TypeScript
 import { setFirstFreezeHandler } from './FirstFreezeHandler';
@@ -505,7 +501,7 @@ import { setSecondFreezeHandler } from './SecondFreezeHandler';
 ```
 
  新增构造场景故障函数。
-<!-- @test_timeout_handlers -->  
+<!-- @[test_timeout_handlers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->  
 
 ``` TypeScript
 function waitTime() {
@@ -517,7 +513,7 @@ function waitTime() {
 ```
 
  新增freeze处理器责任链模式构造函数。
-<!-- @test_freeze_handlers -->  
+<!-- @[test_freeze_handlers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->  
 
 ``` TypeScript
 function testFreezeHandlers() {
@@ -528,7 +524,7 @@ function testFreezeHandlers() {
 ```
 
  主组件通过按钮触发测试，注册两个处理器并调用构造场景故障函数验证处理链。
-<!-- @onclick_freeze_Handler -->  
+<!-- @[onclick_freeze_Handler](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/ErrorManage/ErrorManage/entry/src/main/ets/pages/Index.ets) -->  
 
 ``` TypeScript
 Button('freeze处理器责任链模式场景').onClick(()=>{

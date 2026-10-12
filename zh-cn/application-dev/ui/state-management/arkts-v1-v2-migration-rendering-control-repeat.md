@@ -11,15 +11,15 @@
 
 | 迁移前渲染控制组件名称 | 迁移后渲染控制组件名称 |
 | -------- | -------- |
-| ForEach | Repeat |
-| LazyForEach | Repeat |
+| [ForEach](../rendering-control/arkts-rendering-control-foreach.md) | [Repeat](../rendering-control/arkts-new-rendering-control-repeat.md) |
+| [LazyForEach](../rendering-control/arkts-rendering-control-lazyforeach.md) | [Repeat](../rendering-control/arkts-new-rendering-control-repeat.md) |
 
 
 ## ForEach迁移Repeat
 
 状态管理V2推荐使用Repeat替代ForEach。
 
-ForEach使用示例请参考数据源数组项子属性变化。对应在V2中，ForEach迁移Repeat示例代码参考如下。
+ForEach使用示例请参考[数据源数组项子属性变化](../rendering-control/arkts-rendering-control-foreach.md#数据源数组项子属性变化)。对应在V2中，ForEach迁移Repeat示例代码参考如下。
 
 Repeat需要和状态管理V2一起使用，状态管理V2提供了\@ObservedV2和\@Trace装饰器对子属性进行深度观测。
 
@@ -27,7 +27,7 @@ Repeat需要和状态管理V2一起使用，状态管理V2提供了\@ObservedV2�
 - 其余V1装饰器遵循迁移规则，替换成V2相关装饰器。
 - 直接把ForEach的循环结构替换成Repeat结构。
 
-<!-- @foreach_to_repeat_child_properties -->
+<!-- @[foreach_to_repeat_child_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/ForEachToRepeatChildProperties.ets) -->
 
 ``` TypeScript
 @ObservedV2
@@ -104,7 +104,7 @@ export struct ArticleCardChangeChild {
           .margin({ bottom: 8 })
 
         Row() {
-          // 此处app.media.iconLiked'，'app.media.iconUnliked'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
+          // 此处'app.media.iconLiked'，'app.media.iconUnliked'仅作示例，请开发者自行替换，否则imageSource创建失败会导致后续无法正常执行。
           Image(this.article.isLiked ? $r('app.media.iconLiked') : $r('app.media.iconUnliked'))
             .width(24)
             .height(24)
@@ -139,11 +139,11 @@ export struct ArticleCardChangeChild {
 
 LazyForEach根据数据源循环渲染子组件。
 
-示例1中，在容器组件List中使用LazyForEach，并基于数据源循环渲染出了一系列Text子组件。
+示例1中，在容器组件[List](../arkts-layout-development-create-list.md)中使用LazyForEach，并基于数据源循环渲染出了一系列[Text](../arkts-common-components-text-display.md)子组件。
 
 **示例1 - 迁移前**
 
-<!-- @lazyforeach_to_repeat_initial_rendering_before -->
+<!-- @[lazyforeach_to_repeat_initial_rendering_before](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/LazyForEachToRepeatInitialRenderingBefore.ets) -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -204,7 +204,7 @@ export struct MyComponent {
 
 1. 使用状态管理V2装饰器。
 
-   Repeat推荐和状态管理V2装饰器配合使用（懒加载模式下只支持和状态管理V2装饰器配合使用）。如果之前使用的是状态管理V1装饰器，需要修改为状态管理V2装饰器。
+   Repeat推荐和状态管理V2装饰器配合使用（[懒加载](../rendering-control/arkts-new-rendering-control-repeat.md#懒加载能力说明)模式下只支持和状态管理V2装饰器配合使用）。如果之前使用的是状态管理V1装饰器，需要修改为状态管理V2装饰器。
 
    ``` TypeScript
    // 迁移前 - LazyForEach
@@ -232,7 +232,7 @@ export struct MyComponent {
 
 2. 迁移数据源。
 
-   LazyForEach使用专用的数据结构IDataSource作为数据源。迁移至Repeat后，不再使用IDataSource作为数据源，而是使用状态管理V2装饰的数组作为数据源。
+   LazyForEach使用专用的数据结构[IDataSource](../../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#idatasource)作为数据源。迁移至Repeat后，不再使用IDataSource作为数据源，而是使用状态管理V2装饰的数组作为数据源。
 
    ``` TypeScript
    // 迁移前 - LazyForEach
@@ -258,7 +258,7 @@ export struct MyComponent {
 
    LazyForEach与Repeat均通过组件生成函数，为每一项数据创建一个子组件；通过键值生成函数，为每一项数据生成一个唯一的键值。
 
-   从LazyForEach迁移至Repeat时，两者的语法存在差异。Repeat需要在.each()或.template()中设置组件生成函数，在.key()中设置键值生成函数。
+   从LazyForEach迁移至Repeat时，两者的语法存在差异。Repeat需要在[.each()](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#each)或[.template()](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#template)中设置组件生成函数，在[.key()](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#key)中设置键值生成函数。
 
    ``` TypeScript
    // 迁移前 - LazyForEach
@@ -288,13 +288,13 @@ export struct MyComponent {
 
 4. 配置懒加载功能。
 
-   Repeat具有懒加载和全量加载两种模式。
+   Repeat具有[懒加载和全量加载](../rendering-control/arkts-new-rendering-control-repeat.md#懒加载能力说明)两种模式。
 
-   - 全量加载模式渲染所有子节点（对标ForEach）。
+   - 全量加载模式渲染所有子节点（对标[ForEach](../rendering-control/arkts-rendering-control-foreach.md)）。
 
    - 懒加载模式动态渲染屏幕区域和预加载区域内的子节点（需要与容器组件配合使用，对标LazyForEach）。
 
-   从LazyForEach迁移至Repeat时，需要调用virtualScroll属性，使能懒加载。
+   从LazyForEach迁移至Repeat时，需要调用[virtualScroll](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#virtualscroll)属性，使能懒加载。
 
    ``` TypeScript
    // 迁移前 - LazyForEach
@@ -311,7 +311,7 @@ export struct MyComponent {
 
 **示例1 - 迁移后**
 
-<!-- @lazyforeach_to_repeat_initial_rendering -->
+<!-- @[lazyforeach_to_repeat_initial_rendering](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/LazyForEachToRepeatInitialRendering.ets) -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -352,20 +352,20 @@ export struct MyComponent {
 运行后界面如下图所示。
 
 
-LazyForEach-Repeat-Migration-Demo-1
+![LazyForEach-Repeat-Migration-Demo-1](../rendering-control/figures/LazyForEach-Repeat-Migration-Demo-1.gif)
 
 
 ### 数据更新操作
 
 **LazyForEach示例**
 
-当LazyForEach的数据源发生变化时，开发者需要根据数据源的变化情况调用DataChangeListener对应的接口，通知LazyForEach做相应的更新。主要的数据操作包括：添加数据、删除数据、交换数据、修改单个数据、修改多个数据、精准批量修改数据。
+当LazyForEach的数据源发生变化时，开发者需要根据数据源的变化情况调用[DataChangeListener](../../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md#datachangelistener)对应的接口，通知LazyForEach做相应的更新。主要的数据操作包括：添加数据、删除数据、交换数据、修改单个数据、修改多个数据、精准批量修改数据。
 
 示例2演示了主要的数据操作。
 
 **示例2 - 迁移前**
 
-<!-- @lazyforeach_to_repeat_data_update_before -->
+<!-- @[lazyforeach_to_repeat_data_update_before](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/LazyForEachToRepeatDataUpdateBefore.ets) -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -480,7 +480,7 @@ export struct MyComponent {
 
 1. 迁移准备。
 
-   根据数据首次渲染小节中的步骤，将LazyForEach替换为Repeat。
+   根据[数据首次渲染](#数据首次渲染)小节中的步骤，将LazyForEach替换为Repeat。
 
    1. 使用状态管理V2装饰器。
    2. 迁移数据源。
@@ -518,7 +518,7 @@ export struct MyComponent {
 
 **示例2 - 迁移后**
 
-<!-- @lazyforeach_to_repeat_data_update -->
+<!-- @[lazyforeach_to_repeat_data_update](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/LazyForEachToRepeatDataUpdate.ets) -->
 
 ``` TypeScript
 @Entry
@@ -573,20 +573,20 @@ export struct MyComponent {
 
 运行后界面如下图所示。
 
-LazyForEach-Repeat-Migration-Demo-2
+![LazyForEach-Repeat-Migration-Demo-2](../rendering-control/figures/LazyForEach-Repeat-Migration-Demo-2.gif)
 
 
 ### 修改数据子属性
 
 **LazyForEach示例**
 
-LazyForEach可以使用@Observed与@ObjectLink装饰器实现对数据子属性的观测。当有数据子属性发生变化时，仅更新使用了该子属性的组件，从而提高性能。
+LazyForEach可以使用[@Observed与@ObjectLink](./arkts-observed-and-objectlink.md)装饰器实现对数据子属性的观测。当有数据子属性发生变化时，仅更新使用了该子属性的组件，从而提高性能。
 
 示例3演示了对子属性的观测。
 
 **示例3 - 迁移前**
 
-<!-- @lazyforeach_to_repeat_child_properties_before -->
+<!-- @[lazyforeach_to_repeat_child_properties_before](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/LazyForEachToRepeatChildPropertiesBefore.ets) -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -663,13 +663,13 @@ export struct ChildComponent {
 
 **迁移Repeat**
 
-Repeat需要和状态管理V2一起使用，状态管理V2提供了@ObservedV2和@Trace装饰器对子属性进行深度观测。迁移时，需要将\@Observed和\@ObjectLink装饰器迁移至\@ObservedV2和\@Trace装饰器。
+Repeat需要和状态管理V2一起使用，状态管理V2提供了[@ObservedV2和@Trace](./arkts-new-observedV2-and-trace.md)装饰器对子属性进行深度观测。迁移时，需要将\@Observed和\@ObjectLink装饰器迁移至\@ObservedV2和\@Trace装饰器。
 
 迁移后的示例如下所示。
 
 **示例3 - 迁移后**
 
-<!-- @lazyforeach_to_repeat_child_properties -->
+<!-- @[lazyforeach_to_repeat_child_properties](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/LazyForEachToRepeatChildProperties.ets) -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -719,19 +719,19 @@ export struct MyComponent {
 
 运行后界面如下图所示。
 
-LazyForEach-Repeat-Migration-Demo-3
+![LazyForEach-Repeat-Migration-Demo-3](../rendering-control/figures/LazyForEach-Repeat-Migration-Demo-3.gif)
 
 ### 状态管理V2观测组件内部状态
 
 **LazyForEach示例**
 
-状态管理V2的@Local装饰器提供了观测自定义组件内部变量的能力。被\@Local装饰的变量发生变化时，会通知LazyForEach更新对应的组件。
+状态管理V2的[@Local](./arkts-new-local.md)装饰器提供了观测自定义组件内部变量的能力。被\@Local装饰的变量发生变化时，会通知LazyForEach更新对应的组件。
 
 示例4演示了在LazyForEach中使用\@Local装饰器观测数据变化，触发组件更新。
 
 **示例4 - 迁移前**
 
-<!-- @lazyforeach_to_repeat_internal_state_before -->
+<!-- @[lazyforeach_to_repeat_internal_state_before](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/LazyForEachToRepeatInternalStateBefore.ets) -->
 
 ``` TypeScript
 // GenericBasicDataSource代码见文档末尾GenericBasicDataSource示例代码。
@@ -816,7 +816,7 @@ Repeat本身支持与状态管理V2联合使用，将LazyForEach相关代码修�
 
 **示例4 - 迁移后**
 
-<!-- @lazyforeach_to_repeat_internal_state -->
+<!-- @[lazyforeach_to_repeat_internal_state](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/LazyForEachToRepeatInternalState.ets) -->
 
 ``` TypeScript
 @ObservedV2
@@ -878,20 +878,20 @@ export struct ChildComponent {
 
 运行后界面如下图所示。
 
-LazyForEach-Repeat-Migration-Demo-4
+![LazyForEach-Repeat-Migration-Demo-4](../rendering-control/figures/LazyForEach-Repeat-Migration-Demo-4.gif)
 
 
 ### 状态管理V2观测组件外部输入
 
 **LazyForEach示例**
 
-状态管理V2的@Param装饰器提供了观测自定义组件外部输入变量的能力，可以实现父子组件间的数据同步。将父组件的变量传递给子组件，并用\@Param装饰，当父组件变量发生变化时，会通知对应的组件更新。
+状态管理V2的[@Param](./arkts-new-param.md)装饰器提供了观测自定义组件外部输入变量的能力，可以实现父子组件间的数据同步。将父组件的变量传递给子组件，并用\@Param装饰，当父组件变量发生变化时，会通知对应的组件更新。
 
 示例5演示了在LazyForEach中使用\@Param装饰器观测数据变化，触发组件更新。
 
 **示例5 - 迁移前**
 
-<!-- @lazyforeach_to_repeat_external_input_before -->
+<!-- @[lazyforeach_to_repeat_external_input_before](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/LazyForEachToRepeatExternalInputBefore.ets) -->
 
 ``` TypeScript
 // GenericBasicDataSource代码见文档末尾GenericBasicDataSource示例代码。
@@ -968,7 +968,7 @@ Repeat本身支持与状态管理V2联合使用，将LazyForEach相关代码修�
 
 **示例5 - 迁移后**
 
-<!-- @lazyforeach_to_repeat_external_input -->
+<!-- @[lazyforeach_to_repeat_external_input](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/LazyForEachToRepeatExternalInput.ets) -->
 
 ``` TypeScript
 @ObservedV2
@@ -1022,20 +1022,20 @@ export struct ChildComponent {
 
 运行后界面如下图所示。
 
-LazyForEach-Repeat-Migration-Demo-5
+![LazyForEach-Repeat-Migration-Demo-5](../rendering-control/figures/LazyForEach-Repeat-Migration-Demo-5.gif)
 
 
 ### 拖拽排序
 
 **LazyForEach示例**
 
-LazyForEach的onMove属性提供了拖拽排序能力。
+LazyForEach的[onMove](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-sorting.md#onmove)属性提供了拖拽排序能力。
 
 示例6为典型用例。
 
 **示例6 - 迁移前**
 
-<!-- @lazyforeach_to_repeat_drag_sort_before -->
+<!-- @[lazyforeach_to_repeat_drag_sort_before](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/LazyForEachToRepeatDragSortBefore.ets) -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1111,7 +1111,7 @@ Repeat具有与LazyForEach相同的onMove属性。将LazyForEach相关代码修�
 
 **示例6 - 迁移后**
 
-<!-- @lazyforeach_to_repeat_drag_sort -->
+<!-- @[lazyforeach_to_repeat_drag_sort](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/LazyForEachToRepeatDragSort.ets) -->
 
 ``` TypeScript
 @Entry
@@ -1160,19 +1160,19 @@ export struct Parent {
 
 运行后界面如下图所示。
 
-LazyForEach-Repeat-Migration-Demo-6
+![LazyForEach-Repeat-Migration-Demo-6](../rendering-control/figures/LazyForEach-Repeat-Migration-Demo-6.gif)
 
 ### 组件复用
 
 **LazyForEach示例**
 
-LazyForEach自身并不具备组件复用能力，为实现组件复用，需要与@Reusable装饰器配合使用（被\@Reusable装饰的自定义组件具有复用能力）。
+LazyForEach自身并不具备组件复用能力，为实现组件复用，需要与[@Reusable](./arkts-reusable.md)装饰器配合使用（被\@Reusable装饰的自定义组件具有复用能力）。
 
 示例7演示了组件复用的典型场景。
 
 **示例7 - 迁移前**
 
-<!-- @lazyforeach_to_repeat_reuse_before -->
+<!-- @[lazyforeach_to_repeat_reuse_before](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/LazyForEachToRepeatReuseBefore.ets) -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1260,12 +1260,12 @@ export struct ChildComponent {
 
 **迁移Repeat**
 
-Repeat本身具备组件复用能力，同时也支持与状态管理V2的@ReusableV2装饰器联合使用。因此，迁移至Repeat后，其组件复用具有两种实现方案。
+Repeat本身具备组件复用能力，同时也支持与状态管理V2的[@ReusableV2](./arkts-new-reusableV2.md)装饰器联合使用。因此，迁移至Repeat后，其组件复用具有两种实现方案。
 
 1. 直接使用Repeat自身的复用能力。
 2. 使用\@ReusableV2装饰器提供的复用能力。
 
-需要注意的是，Repeat默认启用自身的复用能力，且优先级高于\@ReusableV2装饰器。若要使用\@ReusableV2装饰器，必须先手动关闭Repeat自身的复用能力，即Repeat中VirtualScrollOptions的reusable属性设置为false（\@ReusableV2装饰器从API version 18开始支持，Repeat从API version 18开始支持关闭自身复用能力）。
+需要注意的是，Repeat默认启用自身的复用能力，且优先级高于\@ReusableV2装饰器。若要使用\@ReusableV2装饰器，必须先手动关闭Repeat自身的复用能力，即Repeat中[VirtualScrollOptions](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#virtualscrolloptions)的reusable属性设置为false（\@ReusableV2装饰器从API version 18开始支持，Repeat从API version 18开始支持关闭自身复用能力）。
 
 **示例7 - 迁移方案1：使用Repeat自身的复用能力**
 
@@ -1273,7 +1273,7 @@ Repeat本身具备复用能力，且默认开启。将LazyForEach相关代码迁
 
 修改后的示例如下。
 
-<!-- @lazyforeach_to_repeat_reuse_self -->
+<!-- @[lazyforeach_to_repeat_reuse_self](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/LazyForEachToRepeatReuseSelf.ets) -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1322,7 +1322,7 @@ export struct MyComponent {
 
 使用\@ReusableV2装饰器的迁移示例如下所示。
 
-<!-- @lazyforeach_to_repeat_reuse_v2 -->
+<!-- @[lazyforeach_to_repeat_reuse_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/LazyForEachToRepeatReuseV2.ets) -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1393,7 +1393,7 @@ export struct ChildComponent {
 
 运行后界面如下图所示。
 
-LazyForEach-Repeat-Migration-Demo-7
+![LazyForEach-Repeat-Migration-Demo-7](../rendering-control/figures/LazyForEach-Repeat-Migration-Demo-7.gif)
 
 
 ### 模板渲染
@@ -1406,7 +1406,7 @@ LazyForEach自身并不具备模板渲染能力。为实现模板渲染能力，
 
 **示例8 - 迁移前**
 
-<!-- @lazyforeach_to_repeat_template_before -->
+<!-- @[lazyforeach_to_repeat_template_before](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/LazyForEachToRepeatTemplateBefore.ets) -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1541,13 +1541,13 @@ export struct ChildComponentB {
 
 **迁移Repeat**
 
-Repeat本身具备模板渲染能力，开发者可以通过templateId方法为不同的数据项选择不同的模板，再通过template方法为不同的模板配置不同的组件生成函数。同时，开发者仍然可以选择自己实现逻辑判断，为不同的数据项分配不同的模板。
+Repeat本身具备模板渲染能力，开发者可以通过[templateId](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#templateid)方法为不同的数据项选择不同的模板，再通过[template](../../reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md#template)方法为不同的模板配置不同的组件生成函数。同时，开发者仍然可以选择自己实现逻辑判断，为不同的数据项分配不同的模板。
 
 需要注意的是，如果开发者选择自己实现模板渲染，则需要关闭Repeat自身的复用功能。否则，Repeat在复用子组件时无法选择正确的模板，会导致渲染异常。
 
 **示例8 - 迁移方案1：使用Repeat自身的模板渲染能力**
 
-<!-- @lazyforeach_to_repeat_template_self -->
+<!-- @[lazyforeach_to_repeat_template_self](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/LazyForEachToRepeatTemplateSelf.ets) -->
 
 ``` TypeScript
 export class StringData {
@@ -1619,7 +1619,7 @@ export struct MyComponent {
 
 **示例8 - 迁移方案2：由开发者实现模板渲染能力**
 
-<!-- @lazyforeach_to_repeat_template_custom -->
+<!-- @[lazyforeach_to_repeat_template_custom](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/LazyForEachToRepeatTemplateCustom.ets) -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1734,14 +1734,14 @@ export struct ChildComponentB {
 
 运行后界面如下图所示。
 
-LazyForEach-Repeat-Migration-Demo-8
+![LazyForEach-Repeat-Migration-Demo-8](../rendering-control/figures/LazyForEach-Repeat-Migration-Demo-8.gif)
 
 
 ## BasicDataSource示例代码
 
 ### string类型数组的BasicDataSource代码
 
-<!-- @basic_data_source_string -->
+<!-- @[basic_data_source_string](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/BasicDataSource.ets) -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1828,7 +1828,7 @@ export class BasicDataSource implements IDataSource {
 
 ### GenericBasicDataSource示例代码
 
-<!-- @generic_basic_data_source -->
+<!-- @[generic_basic_data_source](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RepeatMigration/GenericBasicDataSource.ets) -->
 
 ``` TypeScript
 // GenericBasicDataSource实现了IDataSource接口，用于管理listener监听，以及通知LazyForEach数据更新

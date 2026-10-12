@@ -12,40 +12,40 @@ NDK接口为组件提供了事件监听能力。本文介绍组件事件监听�
 
 NDK接口支持监听UI组件自身状态变化和用户交互事件。
 
-首先，可使用addNodeEventReceiver函数添加组件事件的监听器，该监听器会监听该组件上发生的所有事件，例如：点击事件、焦点事件。然后，使用registerNodeEvent函数声明组件需要监听的事件，NDK接口支持的事件范围可以查询ArkUI_NodeEventType枚举。 
+首先，可使用[addNodeEventReceiver](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addnodeeventreceiver)函数添加组件事件的监听器，该监听器会监听该组件上发生的所有事件，例如：点击事件、焦点事件。然后，使用[registerNodeEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeevent)函数声明组件需要监听的事件，NDK接口支持的事件范围可以查询[ArkUI_NodeEventType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)枚举。 
 
 > **说明：**
 >
-> - 事件注册需要声明addNodeEventReceiver监听器注册和registerNodeEvent事件类型，监听器只能监听已声明的事件。
+> - 事件注册需要声明[addNodeEventReceiver](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addnodeeventreceiver)监听器注册和[registerNodeEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeevent)事件类型，监听器只能监听已声明的事件。
 >
-> - 需要关注事件的反注册逻辑，如在组件销毁前调用removeNodeEventReceiver移除事件监听器，unregisterNodeEvent通知ArkUI框架已监听的事件不再需要监听。
+> - 需要关注事件的反注册逻辑，如在组件销毁前调用[removeNodeEventReceiver](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#removenodeeventreceiver)移除事件监听器，[unregisterNodeEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#unregisternodeevent)通知ArkUI框架已监听的事件不再需要监听。
 >
-> - addNodeEventReceiver可以添加多个函数指针，每个函数指针都会在对应事件触发时触发，对应的removeNodeEventReceiver需要传递对应的函数指针用于移除监听。
+> - [addNodeEventReceiver](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addnodeeventreceiver)可以添加多个函数指针，每个函数指针都会在对应事件触发时触发，对应的[removeNodeEventReceiver](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#removenodeeventreceiver)需要传递对应的函数指针用于移除监听。
 >
-> - registerNodeEventReceiver是全局监听函数，不同于addNodeEventReceiver，registerNodeEventReceiver能够监听所有Native组件的事件触发，但只能传递一个函数指针，多次调用使用最后一次的函数指针进行回调，释放时使用unregisterNodeEventReceiver进行释放。
+> - [registerNodeEventReceiver](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeeventreceiver)是全局监听函数，不同于[addNodeEventReceiver](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addnodeeventreceiver)，[registerNodeEventReceiver](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeeventreceiver)能够监听所有Native组件的事件触发，但只能传递一个函数指针，多次调用使用最后一次的函数指针进行回调，释放时使用[unregisterNodeEventReceiver](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#unregisternodeeventreceiver)进行释放。
 
-以下示例均需基于接入ArkTS页面，详细代码请参考完整示例。
+以下示例均需基于[接入ArkTS页面](ndk-access-the-arkts-page.md)，详细代码请参考[完整示例](#完整示例)。
 
 ### 监听节点事件
 
 通过addNodeEventReceiver对节点绑定事件处理函数，接着通过调用registerNodeEvent注册对应的事件监听。
 
-定义ArkUI_NativeNodeAPI_1类型的指针。
-<!-- @define_node -->
+定义[ArkUI_NativeNodeAPI_1](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md)类型的指针。
+<!-- @[define_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Common.h) -->
 
 ``` C
 ArkUI_NativeNodeAPI_1 *nodeAPI = nullptr;
 ```
 
-调用OH_ArkUI_GetModuleInterface接口给定义的指针赋值。
-<!-- @get_module_interface -->
+调用[OH_ArkUI_GetModuleInterface](../reference/apis-arkui/capi-native-interface-h.md#oh_arkui_getmoduleinterface)接口给定义的指针赋值。
+<!-- @[get_module_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/NativeEntry.cpp) -->
 
 ``` C++
 OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeAPI);
 ```
 
 定义事件触发回调函数。
-<!-- @node_event_receiver -->
+<!-- @[node_event_receiver](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
 
 ``` C
 void NodeEventReceiver(ArkUI_NodeEvent *event) {
@@ -54,7 +54,7 @@ void NodeEventReceiver(ArkUI_NodeEvent *event) {
 ```
 
 创建一个节点，将事件触发回调函数绑定到该节点并进行事件注册。
-<!-- @create_and_register_node -->
+<!-- @[create_and_register_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
 
 ``` C
 auto button = nodeAPI->createNode(ARKUI_NODE_BUTTON);
@@ -62,19 +62,19 @@ nodeAPI->addNodeEventReceiver(button, NodeEventReceiver);
 nodeAPI->registerNodeEvent(button, NODE_ON_CLICK_EVENT, 0, nullptr);
 ```
 
-详细的事件类型请参考ArkUI_NodeEventType。
+详细的事件类型请参考[ArkUI_NodeEventType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)。
 
 通过unregisterNodeEvent解注册对应的事件类型，再通过removeNodeEventReceiver卸载事件处理函数。
 
 解注册对应的事件类型。
-<!-- @unregister_node_event -->
+<!-- @[unregister_node_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
 
 ``` C
 nodeAPI->unregisterNodeEvent(button, NODE_ON_CLICK_EVENT);
 ```
 
 卸载事件处理函数。
-<!-- @remove_node_event_receiver -->
+<!-- @[remove_node_event_receiver](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
 
 ``` C
 nodeAPI->removeNodeEventReceiver(button, NodeEventReceiver);
@@ -85,7 +85,7 @@ nodeAPI->removeNodeEventReceiver(button, NodeEventReceiver);
 使用registerNodeEventReceiver注册全局的事件处理函数，对事件进行统一的监听，结束后可使用unregisterNodeEventReceiver进行释放。
 
 注册全局的事件处理函数。
-<!-- @register_global_event -->
+<!-- @[register_global_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
 
 ``` C
 nodeAPI->registerNodeEventReceiver([](ArkUI_NodeEvent *event) {
@@ -107,7 +107,7 @@ nodeAPI->registerNodeEventReceiver([](ArkUI_NodeEvent *event) {
 ```
 
 解注册全局的事件处理函数。
-<!-- @unregister_node_event_receiver -->
+<!-- @[unregister_node_event_receiver](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
 
 ``` C
 nodeAPI->unregisterNodeEventReceiver();
@@ -117,7 +117,7 @@ nodeAPI->unregisterNodeEventReceiver();
 
 1. 在ArkUINode基类对象中封装事件注册及监听接口调用的方法。
 
-   <!-- @arkui_node -->
+   <!-- @[arkui_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/ArkUINode.h) -->
    
    ``` C
    // ArkUINode.h
@@ -330,8 +330,8 @@ nodeAPI->unregisterNodeEventReceiver();
    #endif // MYAPPLICATION_ARKUINODE_H
    ```
 
-2. 在ArkUIListNode对象中注册列表事件NODE_LIST_ON_SCROLL_INDEX。
-   <!-- @arkui_list_node -->
+2. 在ArkUIListNode对象中注册列表事件[NODE_LIST_ON_SCROLL_INDEX](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)。
+   <!-- @[arkui_list_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/ArkUIListNode.h) -->
    
    ``` C
    // ArkUIListNode.h
@@ -398,8 +398,8 @@ nodeAPI->unregisterNodeEventReceiver();
    ```
 
 
-3. 在文本列表项中添加事件监听函数，本示例以点击事件（NODE_ON_CLICK_EVENT）为例，添加事件响应的具体信息。
-   <!-- @normal_text_list_example -->
+3. 在文本列表项中添加事件监听函数，本示例以点击事件（[NODE_ON_CLICK_EVENT](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)）为例，添加事件响应的具体信息。
+   <!-- @[normal_text_list_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/NormalTextListExample.h) -->
    
    ``` C
    // NormalTextListExample.h
@@ -526,7 +526,7 @@ nodeAPI->unregisterNodeEventReceiver();
    #endif // MYAPPLICATION_NORMALTEXTLISTEXAMPLE_H
    ```
 
-   由于使用了日志打印接口OH_LOG_Print和OH_LOG_INFO，需要在CMakeLists.txt中添加对libhilog_ndk.z.so的引用。
+   由于使用了日志打印接口[OH_LOG_Print](../reference/apis-performance-analysis-kit/capi-log-h.md#oh_log_print)和[OH_LOG_INFO](../reference/apis-performance-analysis-kit/capi-log-h.md#oh_log_info)，需要在CMakeLists.txt中添加对libhilog_ndk.z.so的引用。
 
    ```text
    add_library(entry SHARED napi_init.cpp NativeEntry.cpp)
@@ -538,25 +538,25 @@ nodeAPI->unregisterNodeEventReceiver();
 
 从API version 16开始，NDK接口针对UI组件的布局或绘制送显完成，提供了注册与取消监听函数的方式。开发者可使用如下接口监听指定节点布局完成或者绘制送显完成的时机，并注册相应的回调函数。
 
-可使用OH_ArkUI_RegisterLayoutCallbackOnNodeHandle注册组件布局完成的回调方法。
+可使用[OH_ArkUI_RegisterLayoutCallbackOnNodeHandle](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_registerlayoutcallbackonnodehandle)注册组件布局完成的回调方法。
 
-可使用OH_ArkUI_RegisterDrawCallbackOnNodeHandle注册绘制送显完成的回调方法。
+可使用[OH_ArkUI_RegisterDrawCallbackOnNodeHandle](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_registerdrawcallbackonnodehandle)注册绘制送显完成的回调方法。
 
-可使用OH_ArkUI_UnregisterLayoutCallbackOnNodeHandle取消组件布局完成的回调方法注册。
+可使用[OH_ArkUI_UnregisterLayoutCallbackOnNodeHandle](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_unregisterlayoutcallbackonnodehandle)取消组件布局完成的回调方法注册。
 
-可使用OH_ArkUI_UnregisterDrawCallbackOnNodeHandle取消绘制送显完成的回调方法注册。 
+可使用[OH_ArkUI_UnregisterDrawCallbackOnNodeHandle](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_unregisterdrawcallbackonnodehandle)取消绘制送显完成的回调方法注册。 
 
 
 > **说明：**
 >
-> OH_ArkUI_RegisterLayoutCallbackOnNodeHandle和OH_ArkUI_RegisterDrawCallbackOnNodeHandle能够监听组件的布局完成或者绘制送显完成事件触发，但只能传递一个函数指针，多次调用使用最后一次的函数指针进行回调。
+> [OH_ArkUI_RegisterLayoutCallbackOnNodeHandle](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_registerlayoutcallbackonnodehandle)和[OH_ArkUI_RegisterDrawCallbackOnNodeHandle](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_registerdrawcallbackonnodehandle)能够监听组件的布局完成或者绘制送显完成事件触发，但只能传递一个函数指针，多次调用使用最后一次的函数指针进行回调。
 
 
-以下示例基于接入ArkTS页面章节，提供组件布局和绘制送显事件监听的开发指导。
+以下示例基于[接入ArkTS页面](ndk-access-the-arkts-page.md)章节，提供组件布局和绘制送显事件监听的开发指导。
 
 在ArkUITextNode对象中封装上述监听组件布局和绘制送显事件接口的调用方法。
 
-<!-- @arkUITestNode_start -->
+<!-- @[arkUITestNode_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/ArkUITextNode.h) -->
 
 ``` C
 // ArkUITextNode.h
@@ -647,7 +647,7 @@ public:
 #endif // MYAPPLICATION_ARKUITEXTNODE_H
 ```
 
-<!-- @normalTextListExample_start -->
+<!-- @[normalTextListExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/NativeNodeUtilsSample/entry/src/main/cpp/NormalTextListExample.h) -->
 
 ``` C
 // NormalTextListExample.h
@@ -701,7 +701,7 @@ std::shared_ptr<ArkUIBaseNode> CreateTextListExample()
 
 ## 监听深浅色变更事件
 
-ArkUI开发框架在NDK接口提供了以组件为注册单位的系统深浅色变更事件。开发者可使用OH_ArkUI_RegisterSystemColorModeChangeEvent注册回调函数，当系统深浅色发生变更时，会通知注册在组件上的回调，从而实现NDK侧的深浅色变更事件监听。
+ArkUI开发框架在NDK接口提供了以组件为注册单位的系统深浅色变更事件。开发者可使用[OH_ArkUI_RegisterSystemColorModeChangeEvent](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_registersystemcolormodechangeevent)注册回调函数，当系统深浅色发生变更时，会通知注册在组件上的回调，从而实现NDK侧的深浅色变更事件监听。
 
 > **说明：**
 >
@@ -711,7 +711,7 @@ ArkUI开发框架在NDK接口提供了以组件为注册单位的系统深浅色
 >
 > - 建议将注册操作放置于页面生命周期中不会被销毁的节点上，以避免因节点销毁导致回调失效的问题。
 
-<!-- @shade_change_event -->
+<!-- @[shade_change_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
 
 ``` C
 struct ColorModeInfo {

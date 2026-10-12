@@ -6,11 +6,11 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
-从API version 22开始，OHAudioSuite给开发者提供音频编创的实时预览能力（API version 22只支持均衡器效果，API version 23及以后支持其他效果）。例如，可以使用均衡器中预置的音效，改变音乐的风格。
+从API version 22开始，[OHAudioSuite](../../reference/apis-audio-kit/capi-ohaudiosuite.md)给开发者提供音频编创的实时预览能力（API version 22只支持均衡器效果，API version 23及以后支持其他效果）。例如，可以使用均衡器中预置的音效，改变音乐的风格。
 
 ## 开发基础配置
 
-开发者使用OHAudioSuite提供的实时预览能力，添加对应的头文件。
+开发者使用[OHAudioSuite](../../reference/apis-audio-kit/capi-ohaudiosuite.md)提供的实时预览能力，添加对应的头文件。
 
 ### 在CMake脚本中链接动态库
 
@@ -19,9 +19,9 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
 ```
 
 ### 添加头文件
-开发者通过引入头文件<native_audio_suite_base.h>、<native_audio_suite_engine.h>、<native_audiostreambuilder.h>和<native_audiorenderer.h>使用音频编创和音频播放相关API。
+开发者通过引入头文件<[native_audio_suite_base.h](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md)>、<[native_audio_suite_engine.h](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md)>、<[native_audiostreambuilder.h](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md)>和<[native_audiorenderer.h](../../reference/apis-audio-kit/capi-native-audiorenderer-h.md)>使用音频编创和音频播放相关API。
 
-<!-- @audioSuite_RealTimeRenderingInclude -->
+<!-- @[audioSuite_RealTimeRenderingInclude](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/real_time_rendering.cpp) -->
    
 ``` C++
 #include <ohaudiosuite/native_audio_suite_base.h>
@@ -34,19 +34,19 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
 
 ### 接口调用
 
-详细的API说明请参考OHAudioSuite。
+详细的API说明请参考[OHAudioSuite](../../reference/apis-audio-kit/capi-ohaudiosuite.md)。
 
 ### 均衡器效果
 
 **图1**：实时预览示意图
 
-   OHAudioSuite realtime play
+   ![OHAudioSuite realtime play](figures/audiosuite-audio-separation-time.png)
 
-开发者可以通过以下步骤来实现一个简单的均衡器效果节点实时预览功能。此处以均衡器效果为例演示实时预览流程，其他效果节点的详细说明请参考音频效果(C/C++)。
+开发者可以通过以下步骤来实现一个简单的均衡器效果节点实时预览功能。此处以均衡器效果为例演示实时预览流程，其他效果节点的详细说明请参考[音频效果(C/C++)](audio-suite-effects.md)。
 
-1. 在初始化时，创建OHAudioSuite管线（包括输入节点、均衡器节点、输出节点）。
+1. 在初始化时，创建[OHAudioSuite](../../reference/apis-audio-kit/capi-ohaudiosuite.md)管线（包括输入节点、均衡器节点、输出节点）。
   
-   <!-- @audioSuite_AudioDataInfo -->
+   <!-- @[audioSuite_AudioDataInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/pcm_file_utils.h) -->
    
    ``` C
    struct AudioDataInfo {
@@ -56,7 +56,7 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
        int32_t totalReadSize = 0;  // 已读取的音频数据总大小。
    };
    ```
-   <!-- @audioSuite_RealTimeRenderingInputNodeWriteDataCallBack -->
+   <!-- @[audioSuite_RealTimeRenderingInputNodeWriteDataCallBack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/real_time_rendering.cpp) -->
    
    ``` C++
    // 示例接口未包含返回值校验，实际使用时请务必添加校验逻辑。
@@ -86,7 +86,7 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
        return actualDataSize;
    }
    ```
-   <!-- @audioSuite_CreateRealTimeRendering -->
+   <!-- @[audioSuite_CreateRealTimeRendering](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/real_time_rendering.cpp) -->
    
    ``` C++
    // 示例接口未包含返回值校验，实际使用时请务必添加校验逻辑。
@@ -153,18 +153,18 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
    > + 离线编辑：OH_AudioSuite_PipelineWorkMode::AUDIOSUITE_PIPELINE_EDIT_MODE
 
 
-2. 创建OH_AudioRendererStruct实例，并在其`AudioRendererOnWriteData()`回调函数中调用OHAudioSuite管线的OH_AudioSuiteEngine_RenderFrame()接口来处理数据。
+2. 创建[OH_AudioRendererStruct](../../reference/apis-audio-kit/capi-ohaudio-oh-audiorendererstruct.md)实例，并在其`AudioRendererOnWriteData()`回调函数中调用[OHAudioSuite](../../reference/apis-audio-kit/capi-ohaudiosuite.md)管线的[OH_AudioSuiteEngine_RenderFrame()](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_renderframe)接口来处理数据。
 
    > **注意：**
    >
-   > OH_AudioSuiteEngine_RenderFrame()接口的处理时长和管线中连接的效果节点数量有关，需要注意接口处理时长，以避免实时预览卡顿。
+   > [OH_AudioSuiteEngine_RenderFrame()](../../reference/apis-audio-kit/capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_renderframe)接口的处理时长和管线中连接的效果节点数量有关，需要注意接口处理时长，以避免实时预览卡顿。
 
-   请参考使用OHAudio开发音频播放功能(C/C++)完成音频播放功能开发。
+   请参考[使用OHAudio开发音频播放功能(C/C++)](./using-ohaudio-for-playback.md)完成音频播放功能开发。
 
 
 3. 在播放器的回调函数中，将处理后的数据复制到OH_AudioRenderer实例的缓冲区中，实现音频播放过程中实时预览。
  
-   <!-- @audioSuite_AudioRendererOnWriteData -->
+   <!-- @[audioSuite_AudioRendererOnWriteData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/real_time_rendering.cpp) -->
    
    ``` C++
    // 示例接口未包含返回值校验，实际使用时请务必添加校验逻辑。
@@ -187,7 +187,7 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
        return AUDIO_DATA_CALLBACK_RESULT_VALID;
    }
    ```
-   <!-- @audioSuite_StartRealTimeRenderingPipeline -->
+   <!-- @[audioSuite_StartRealTimeRenderingPipeline](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/real_time_rendering.cpp) -->
    
    ``` C++
    // 示例接口未包含返回值校验，实际使用时请务必添加校验逻辑。
@@ -221,7 +221,7 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
 
 4. 资源销毁。
 
-   <!-- @audioSuite_DestroyRealTimeRendering -->
+   <!-- @[audioSuite_DestroyRealTimeRendering](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSuiteSample/entry/src/main/cpp/real_time_rendering.cpp) -->
    
    ``` C++
    // 示例接口未包含返回值校验，实际使用时请务必添加校验逻辑。
@@ -244,10 +244,10 @@ target_link_libraries(sample PUBLIC libohaudio.so libohaudiosuite.so)
 
 - 音频实时预览过程中，不支持重新创建新的效果节点，只支持修改效果节点的参数。
 
-- 音频编创错误码具体报错信息请参考：OH_AudioSuite_Result。
+- 音频编创错误码具体报错信息请参考：[OH_AudioSuite_Result](../../reference/apis-audio-kit/capi-native-audio-suite-base-h.md#oh_audiosuite_result)。
 
 <!--RP1-->
 ## 完整示例代码
 
-- 音频编创示例代码
+- [音频编创示例代码](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioSuiteSample)
 <!--RP1End-->

@@ -14,9 +14,9 @@
 
 相机预览旋转会出现在“会话配置过程中调用预览旋转接口”和“相机窗口发生旋转对预览角度进行修正”两种场景，如果没有在对应场景进行相应的旋转角度调整，则会导致预览画面旋转角度异常。具体原因可能有如下情况：
 
-1. 在会话配置过程中，未适配相机预览旋转接口：getPreviewRotation、setPreviewRotation。
+1. 在会话配置过程中，未适配相机预览旋转接口：[getPreviewRotation](../../reference/apis-camera-kit/arkts-apis-camera-PreviewOutput.md#getpreviewrotation12)、[setPreviewRotation](../../reference/apis-camera-kit/arkts-apis-camera-PreviewOutput.md#setpreviewrotation12)。
 
-2. 会话配置过程中的时序不正确，即调用相机预览旋转接口前未完成会话commitConfig。
+2. 会话配置过程中的时序不正确，即调用相机预览旋转接口前未完成会话[commitConfig](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#commitconfig11)。
 
 3. 相机窗口发生旋转时，未适配相机预览旋转接口。
 
@@ -56,7 +56,7 @@
 
 相机窗口发生旋转时，调用getPreviewRotation、setPreviewRotation对预览流进行角度修正。
 
-参考文档：适配相机旋转角度(ArkTS)。
+参考文档：[适配相机旋转角度(ArkTS)](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/camera-rotation-angle-adaptation#%E9%A2%84%E8%A7%88)。
 
 ## 预防措施
 
@@ -64,4 +64,4 @@
 
 应用使用相机时，监听Display对象变化，感知窗口当前状态。如当前相机窗口发生旋转时，需对预览流进行角度修正。推荐在会话配置中完成调用预览旋转接口后，直接创建监听。
 
-参考文档：适配相机旋转角度(ArkTS)。
+参考文档：[适配相机旋转角度(ArkTS)](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/camera-rotation-angle-adaptation#%E9%A2%84%E8%A7%88)。

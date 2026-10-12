@@ -10,7 +10,7 @@
 
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考通用错误码说明文档。
+> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码](../errorcode-universal.md)说明文档。
 
 ## 29400000 指定用户不存在
 
@@ -98,9 +98,9 @@ domain类型的防火墙规则中，域名规则数量超过最大值。
 
 **可能原因**
 
-1.添加/更新的一条域名规则里的域名参数NetFirewallDomainParams的个数大于100个。
+1. 添加/更新的一条域名规则里的域名参数NetFirewallDomainParams的个数大于100个。
 
-2.单个用户userid的所有域名规则里的域名参数NetFirewallDomainParams的个数大于1000个。
+2. 单个用户userid的所有域名规则里的域名参数NetFirewallDomainParams的个数大于1000个。
 
 **处理步骤**
 

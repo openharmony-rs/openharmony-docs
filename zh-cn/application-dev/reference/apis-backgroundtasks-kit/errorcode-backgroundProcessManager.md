@@ -9,7 +9,7 @@
 
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考通用错误码说明文档。
+> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
 
 ## 31800002 参数错误
 
@@ -35,7 +35,7 @@ Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 
 
 **错误信息**
 
-Setup error, This setting is overridden by setting in Task Manager.
+Setup error, This setting is overridden by settings in Task Manager.
 
 **错误描述**
 

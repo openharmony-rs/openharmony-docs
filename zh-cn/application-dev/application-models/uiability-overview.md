@@ -9,7 +9,7 @@
 
 ## 概述
 
-UIAbility组件是一种包含UI的应用组件，主要用于和用户交互。例如，图库类应用可以在UIAbility组件中展示图片瀑布流。
+[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)组件是一种包含UI的应用组件，主要用于和用户交互。例如，图库类应用可以在UIAbility组件中展示图片瀑布流。
 
 UIAbility的设计理念：
 
@@ -38,9 +38,9 @@ UIAbility组件是系统调度的基本单元，为应用提供绘制界面的�
 
 ## 声明配置
 
-为使应用能够正常使用UIAbility，需要在module.json5配置文件的abilities标签中声明UIAbility的名称、入口、标签等相关信息。
+为使应用能够正常使用UIAbility，需要在[module.json5配置文件](../quick-start/module-configuration-file.md)的[abilities标签](../quick-start/module-configuration-file.md#abilities标签)中声明UIAbility的名称、入口、标签等相关信息。
 
-<!-- @module_start -->  
+<!-- @[module_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityLifecycle/entry/src/main/module.json5) -->  
 
 ``` JSON5
 {

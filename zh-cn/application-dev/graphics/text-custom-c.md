@@ -1,7 +1,7 @@
 # 自定义文本绘制与显示（C/C++）
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @oh_wangxk; @KejiePeng-->
+<!--Owner: @oh_wangxk-->
 <!--Designer: @liumingxiang-->
 <!--Tester: @yhl0101-->
 <!--Adviser: @ge-yafang-->
@@ -25,7 +25,7 @@
 
 ### 接口说明
 
-文本塑形中常用接口如下表所示，详细接口说明参考drawing_text_lineTypography.h、drawing_text_line.h、drawing_text_run.h、drawing_text_blob.h和drawing_canvas.h。
+文本塑形中常用接口如下表所示，详细接口说明参考[drawing_text_lineTypography.h](../reference/apis-arkgraphics2d/capi-drawing-text-linetypography-h.md)、[drawing_text_line.h](../reference/apis-arkgraphics2d/capi-drawing-text-line-h.md)、[drawing_text_run.h](../reference/apis-arkgraphics2d/capi-drawing-text-run-h.md)、[drawing_text_blob.h](../reference/apis-arkgraphics2d/capi-drawing-text-blob-h.md)和[drawing_canvas.h](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md)。
 
 | 接口名 | 描述 | 
 | -------- | -------- |
@@ -64,7 +64,7 @@
 
 3. 创建段落样式，并使用OH_Drawing_CreateTypographyHandler创建排版处理器，用于生成段落实例。
 
-   <!-- @complex_text_c_independent_shaping_text_step1 -->
+   <!-- @[complex_text_c_independent_shaping_text_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
    
    ``` C++
    // 创建一个 TypographyStyle，创建 TypographyCreate 时需要使用
@@ -81,7 +81,7 @@
 
 4. 设置文本样式，添加文本内容。
 
-   <!-- @complex_text_c_independent_shaping_text_step2 -->
+   <!-- @[complex_text_c_independent_shaping_text_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
    
    ``` C++
    // 设置文本内容，并将文本添加到 handler 中
@@ -93,7 +93,7 @@
 
    使用OH_Drawing_LineTypographyCreateLine()方法创建一个单行对象，通过行对象OH_Drawing_TextLineGetGlyphRuns()方法获取相同样式的文字单元。
 
-   <!-- @complex_text_c_independent_shaping_text_step3 -->
+   <!-- @[complex_text_c_independent_shaping_text_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
    
    ``` C++
    // 通过 handler 创建一个 Typography
@@ -108,7 +108,7 @@
 6. 该步骤是文本塑形流程中的自定义绘制环节。通过调用OH_Drawing_GetRunGlyphs()方法获取文本中每个字符对应的字形序号，再结合OH_Drawing_GetRunFont()方法获取的字体对象，即可唯一确定每个字形的具体图形信息。
 
    从 API version 20 开始，新增的OH_Drawing_GetRunGlyphAdvances()方法能够返回一个数组，包含范围内每个字形的字形宽度。依赖这些精确的测量数据，开发者可以自由地计算并定义每个字形的绘制位置，从而实现复杂的文本布局效果，如自定义字符间距、垂直偏移或特殊排版。
-   <!-- @complex_text_c_independent_shaping_text_step4 -->
+   <!-- @[complex_text_c_independent_shaping_text_step4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
    
    ``` C++
    size_t runsLength = OH_Drawing_GetDrawingArraySize(runs);
@@ -158,7 +158,7 @@
    ```
 
 7. 释放内存
-   <!-- @complex_text_c_independent_shaping_text_step5 -->
+   <!-- @[complex_text_c_independent_shaping_text_step5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/TextEngine/NDKComplexText1/entry/src/main/cpp/samples/draw_text_impl.cpp) -->
    
    ``` C++
    // 释放内存
@@ -174,4 +174,4 @@
 
 效果展示：
 
-ndk_independent_shaping.png
+![ndk_independent_shaping.png](figures/ndk_independent_shaping.png)

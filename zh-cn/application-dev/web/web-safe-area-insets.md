@@ -18,7 +18,7 @@ Web组件提供利用W3C CSS进行安全区域计算和避让适配的能力，�
 
 Web组件默认布局在安全区域内。开启<!--RP1-->沉浸式效果<!--RP1End-->后，Web网页将扩展至状态栏和导航栏，从而最大化利用屏幕可视区域，增强视觉连贯性，改善用户的UI体验。开发者可通过以下方式启用Web组件的沉浸式效果。
 
-- 通过setWindowLayoutFullScreen设置应用窗口全屏。窗口全屏时，Web组件可布局至非安全区域。
+- 通过[setWindowLayoutFullScreen](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowlayoutfullscreen9)设置应用窗口全屏。窗口全屏时，Web组件可布局至非安全区域。
 
   ```ts
   // EntryAbility.ets
@@ -54,9 +54,9 @@ Web组件默认布局在安全区域内。开启<!--RP1-->沉浸式效果<!--RP1
   }
   ```
 
-- 通过expandSafeArea设置Web组件扩展安全区域，可以自定义扩展类型和方向。下面的示例中，Web组件可扩展至状态栏和导航栏，实现沉浸式效果。
+- 通过[expandSafeArea](../reference/apis-arkui/arkui-ts/ts-universal-attributes-expand-safe-area.md#expandsafearea)设置Web组件扩展安全区域，可以自定义扩展类型和方向。下面的示例中，Web组件可扩展至状态栏和导航栏，实现沉浸式效果。
 
-<!-- @use_expand_safe_area_to_enable_immersive_effect -->
+<!-- @[use_expand_safe_area_to_enable_immersive_effect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWebPageCont/entry/src/main/ets/pages/CalcAdjustSafeArea.ets) -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -105,7 +105,7 @@ viewport-fit用于设置网页在可视窗口中的布局方式，是`<meta name
 
 **图1** safe-area-inset-*示意图
 
-web-safe-area-inset
+![web-safe-area-inset](figures/arkweb_safe_area_inset.png)
 
 当设置`viewport-fit=cover`时，ArkWeb内核将持续监测Web组件及系统非安全区域的位置与尺寸，根据两者的重叠部分计算网页在四个方向上需避让的具体距离，并设置给环境变量`safe-area-inset-*`。在矩形显示器（如普通PC/2in1设备的屏幕）上，这些值为零。在非矩形显示器（如圆形表盘或移动设备屏幕）上，`safe-area-inset-*`所界定的内矩形区域即为安全区域，网页内容在该区域内可完整显示，避免被非矩形显示区域裁剪。
 
@@ -141,7 +141,7 @@ Web组件启用沉浸式效果时，渲染内容可能与非安全区域重叠�
 
 **图2** Web组件开启沉浸式效果时网页元素被非安全区域遮挡
 
-web-safe-area-immersion
+![web-safe-area-immersion](figures/arkweb_safe_area_immersion.png)
 
 ```html
 <!-- index.html -->
@@ -223,4 +223,4 @@ web-safe-area-immersion
 
 **图3** Web组件开启沉浸式效果时网页元素避让非安全区域
 
-web-safe-area
+![web-safe-area](figures/arkweb_safe_area_avoid.png)

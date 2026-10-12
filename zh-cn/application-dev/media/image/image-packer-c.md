@@ -20,9 +20,9 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
 
 ### Native接口调用
 
-具体接口说明请参考Image_NativeModule。
+具体接口说明请参考[Image_NativeModule](../../reference/apis-image-kit/capi-image-nativemodule.md)。
 
-在Deveco Studio新建Native C++应用，默认生成的项目中包含index.ets文件，在entry\src\main\cpp目录下会自动生成一个cpp文件（hello.cpp或napi_init.cpp，本示例以hello.cpp文件名为例）。在hello.cpp中实现C API接口调用逻辑，示例代码如下：
+在DevEco Studio新建Native C++应用，默认生成的项目中包含index.ets文件，在entry\src\main\cpp目录下会自动生成一个cpp文件（hello.cpp或napi_init.cpp，本示例以hello.cpp文件名为例）。在hello.cpp中实现C API接口调用逻辑，示例代码如下：
 
 **编码接口使用示例**
 
@@ -30,11 +30,11 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
 >
 > - 根据MIME标准，标准编码格式为image/jpeg。当使用image编码时，编码参数中的编码格式image_MimeType设置为image/jpeg，image编码后的文件扩展名可设为.jpg或.jpeg，可在支持image/jpeg解码的平台上使用。
 >
-> - 部分接口（如：OH_ImagePackerNative_GetSupportedFormats）在API version 20以后才支持，需要开发者在进行开发时选择合适的API版本。
+> - 部分接口（如：[OH_ImagePackerNative_GetSupportedFormats](../../reference/apis-image-kit/capi-image-packer-native-h.md#oh_imagepackernative_getsupportedformats)）在API version 20以后才支持，需要开发者在进行开发时选择合适的API版本。
 
 1. 导入相关头文件。
 
-   <!-- @packSource_import -->     
+   <!-- @[packSource_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->     
    
    ``` C++
    #include <string>
@@ -49,7 +49,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
 
 2. 日志宏定义可参考下述代码按实际需求自行修改。
 
-   <!-- @define_logInfo -->     
+   <!-- @[define_logInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->     
    
    ``` C++
    #undef LOG_DOMAIN
@@ -60,7 +60,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
 
 3. 定义ImageSourceNative类。
 
-   <!-- @define_sourceClass -->   
+   <!-- @[define_sourceClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/imageKits.h) -->   
    
    ``` C
    class ImageSourceNative {
@@ -77,7 +77,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
 
 4. 创建ImageSourceNative的一个实例。
 
-   <!-- @create_sourceClass -->   
+   <!-- @[create_sourceClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->   
    
    ``` C++
    static ImageSourceNative *g_thisImageSource = new ImageSourceNative();
@@ -85,7 +85,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
 
 5. 定义一个全局变量用来记录编码所支持的格式。
 
-   <!-- @packSource_supportedFormats -->   
+   <!-- @[packSource_supportedFormats](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->   
    
    ``` C++
    static std::set<std::string> g_encodeSupportedFormats;
@@ -93,7 +93,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
 
 6. 创建GetJsResult函数处理napi返回值。
 
-   <!-- @get_returnValue -->   
+   <!-- @[get_returnValue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/napi_init.cpp) -->   
    
    ``` C++
    // 处理napi返回值。
@@ -107,7 +107,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so libimage
 
 7. 创建ImagePacker实例后，指定编码参数，将ImageSource或PixelMap编码至文件或者缓冲区。
 
-   <!-- @pack_source -->     
+   <!-- @[pack_source](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->     
    
    ``` C++
    // 获取编码能力范围。

@@ -25,7 +25,7 @@
 
 ## 接口说明
 
-以下是键值型数据库持久化功能的相关接口，更多接口及使用方式请见分布式键值数据库。
+以下是键值型数据库持久化功能的相关接口，更多接口及使用方式请见[分布式键值数据库](../reference/apis-arkdata/js-apis-distributedKVStore.md)。
 
 | 接口名称 | 描述 | 
 | -------- | -------- |
@@ -40,60 +40,48 @@
 
 ## 开发步骤
 
-1. 若要使用键值型数据库，首先要使用createKVManager()方法获取一个KVManager实例，用于管理数据库对象。示例代码如下所示：
+1. 若要使用键值型数据库，首先要使用createKVManager()方法获取一个KVManager实例，用于管理数据库对象。此处context获取以Stage模型为例，FA模型context的获取请见[context](../application-models/application-context-fa.md)，示例代码如下所示：
 
-   ```ts
-   // 导入模块
-   // 在pages目录下新建KvStoreInterface.ets
+   <!-- @[CreateKvManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
+   
+   ``` TypeScript
    import { distributedKVStore } from '@kit.ArkData';
    import { BusinessError } from '@kit.BasicServicesKit';
+   import { distributedDeviceManager } from '@kit.DistributedServiceKit';
    import EntryAbility from '../entryability/EntryAbility';
-   // Logger为hilog封装后实现的打印功能
    import Logger from '../common/Logger';
-
+   
    let kvManager: distributedKVStore.KVManager | undefined = undefined;
    let kvStore: distributedKVStore.SingleKVStore | undefined = undefined;
    let appId: string = 'com.example.kvstoresamples';
    let storeId: string = 'storeId';
-   // Stage模型context从EntryAbility.ets中获取
+   // 获取context
    const context = EntryAbility.getContext();
-
-   // FA模型获取context
-   import { featureAbility } from '@kit.AbilityKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-
-   let context = featureAbility.getContext();
-
-   // 下面所有接口的代码都实现在KvInterface中
-   export class KvInterface {
-   }
-   ```
-   <!-- @kv_store1 -->
    
-   ``` TypeScript
-   public CreateKvManager = (() => {
-     Logger.info('CreateKvManager start');
-     if (typeof (kvManager) === 'undefined') {
-       const kvManagerConfig: distributedKVStore.KVManagerConfig = {
-         bundleName: appId,
-         context: context
-       };
-       try {
-         // 创建KVManager实例
-         kvManager = distributedKVStore.createKVManager(kvManagerConfig);
-         Logger.info('Succeeded in creating KVManager.');
-       } catch (err) {
-         Logger.error(`Failed to create KVManager. Code:${err.code},message:${err.message}`);
+   // ...
+     public CreateKvManager = (() => {
+       Logger.info('CreateKvManager start');
+       if (typeof (kvManager) === 'undefined') {
+         const kvManagerConfig: distributedKVStore.KVManagerConfig = {
+           bundleName: appId,
+           context: context
+         };
+         try {
+           // 创建KVManager实例
+           kvManager = distributedKVStore.createKVManager(kvManagerConfig);
+           Logger.info('Succeeded in creating KVManager.');
+         } catch (err) {
+           Logger.error(`Failed to create KVManager. Code:${err.code},message:${err.message}`);
+         }
+       } else {
+         Logger.info ('KVManager has created');
        }
-     } else {
-       Logger.info ('KVManager has created');
-     }
-   })
+     })
    ```
 
 2. 使用getKVStore()方法创建并获取键值数据库。示例代码如下所示：
 
-   <!-- @kv_store3 -->
+   <!-- @[kv_store3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
    
    ``` TypeScript
    public GetKvStore = (() => {
@@ -151,9 +139,9 @@
    })
    ```
 
-3. 使用on()方法订阅分布式数据变化，如需关闭订阅分布式数据变化，调用off('dataChange')关闭。示例代码如下所示：
+3. 使用on()方法订阅分布式数据变化，如需关闭订阅分布式数据变化，调用[off('dataChange')](../reference/apis-arkdata/js-apis-distributedKVStore.md#offdatachange)关闭。示例代码如下所示：
 
-   <!-- @kv_store12 -->
+   <!-- @[kv_store12](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
    
    ``` TypeScript
    public On = (() =>{
@@ -175,7 +163,7 @@
 
 4. 调用put()方法向键值数据库中插入数据。示例代码如下所示：
 
-   <!-- @kv_store4 -->
+   <!-- @[kv_store4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
    
    ``` TypeScript
    public Put = (() => {
@@ -208,7 +196,7 @@
 
 5. 调用get()方法获取指定键的值。示例代码如下所示：
 
-   <!-- @kv_store5 -->
+   <!-- @[kv_store5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
    
    ``` TypeScript
    public Get = (() => {
@@ -235,7 +223,7 @@
 
 6. 调用delete()方法删除指定键值的数据。示例代码如下所示：
 
-   <!-- @kv_store6 -->
+   <!-- @[kv_store6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
    
    ``` TypeScript
    public Delete = (() => {
@@ -262,7 +250,7 @@
 
 7. 调用closeKVStore()方法通过storeId的值关闭指定的分布式键值数据库。示例代码如下所示：
 
-    <!-- @kv_store10 -->
+    <!-- @[kv_store10](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
     
     ``` TypeScript
     public CloseKVStore = (()=>{
@@ -290,7 +278,7 @@
 
 8. 调用deleteKVStore()方法通过storeId的值删除指定的分布式键值数据库。示例代码如下所示：
 
-    <!-- @kv_store11 -->
+    <!-- @[kv_store11](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
     
     ``` TypeScript
     public DeleteKvStore = (()=>{

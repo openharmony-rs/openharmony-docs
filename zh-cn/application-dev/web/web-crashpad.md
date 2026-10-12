@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-Web组件支持使用Crashpad记录进程崩溃信息。Crashpad是Chromium内核提供的进程崩溃信息处理工具，在应用使用Web组件导致的进程（Web渲染进程）崩溃出现后，Crashpad会在应用主进程沙箱目录写入dmp文件。该文件为二进制格式，后缀为dmp，其记录了进程崩溃的原因、线程信息、寄存器信息等，应用可以使用该文件分析Web组件相关进程崩溃问题。Web组件分别从API version 9和API version 12开始支持接口onRenderExited和onRenderProcessNotResponding，开发者可以分别通过Web接口onRenderExited和onRenderProcessNotResponding来检测渲染进程退出和渲染进程不响应，也可以在这些接口中增加应用处理的逻辑。
+Web组件支持使用Crashpad记录进程崩溃信息。Crashpad是Chromium内核提供的进程崩溃信息处理工具，在应用使用Web组件导致的进程（Web渲染进程）崩溃出现后，Crashpad会在应用主进程沙箱目录写入dmp文件。该文件为二进制格式，后缀为dmp，其记录了进程崩溃的原因、线程信息、寄存器信息等，应用可以使用该文件分析Web组件相关进程崩溃问题。Web组件分别从API version 9和API version 12开始支持接口onRenderExited和onRenderProcessNotResponding，开发者可以分别通过Web接口[onRenderExited](../reference/apis-arkweb/arkts-basic-components-web-events.md#onrenderexited9)和[onRenderProcessNotResponding](../reference/apis-arkweb/arkts-basic-components-web-events.md#onrenderprocessnotresponding12)来检测渲染进程退出和渲染进程不响应，也可以在这些接口中增加应用处理的逻辑。
 
 使用步骤如下：
 
@@ -27,7 +27,7 @@ Web组件支持使用Crashpad记录进程崩溃信息。Crashpad是Chromium内�
 
 2. 参考<!--RP1-->Native访问应用沙箱<!--RP1End-->实现访问应用沙箱dmp文件；也可将存放dmp文件的沙箱路径的文件复制到可以查看的路径。示例如下
 
-<!-- @web_get_dmp_files -->
+<!-- @[web_get_dmp_files](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebGetDmpFiles/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 import { fileIo as fs } from '@kit.CoreFileKit'
@@ -69,7 +69,7 @@ struct Index {
 
 这个路径可以利用DevEco Studio查看。
 
-image.png
+![image.png](figures/arkweb-visible-sandbox-path.png 'image.png')
 
 3. 获取dmp文件后进行解析，具体步骤如下：
 
@@ -79,7 +79,7 @@ image.png
      ./minidump_stackwalk b678e0b5-894b-4794-9ab3-fb5d6dda06a3.dmp > parsed_stacktrace.txt
      ```
 
-     minidump_stackwalk由Breakpad项目源码编译得到，编译方法见项目仓库：Breakpad仓库地址。
+     minidump_stackwalk由Breakpad项目源码编译得到，编译方法见项目仓库：[Breakpad仓库地址](https://chromium.googlesource.com/breakpad/breakpad)。
 
    * 查看解析后的文件，以下示例列出部分内容：
 

@@ -16,7 +16,7 @@
 
    如果发现没有该维测日志表明taskpool.execute实际未调用，应用需排查taskpool.execute之前的其他业务逻辑是否执行完成。
 
-   <!-- @is_execute -->  
+   <!-- @[is_execute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/IsExecute.ets) -->  
    
    ``` TypeScript
    import { taskpool } from '@kit.ArkTS';
@@ -98,7 +98,7 @@
 
    1. 如果在执行TaskPool任务过程中发生JS异常，TaskPool会捕获该JS异常并通过taskpool.execute().catch((e:Error)=>{})将异常信息返回，应用需要查看异常信息并修复。
 
-      <!-- @catch_error -->    
+      <!-- @[catch_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/Index.ets) -->    
       
       ``` TypeScript
       import { taskpool } from '@kit.ArkTS';
@@ -166,8 +166,8 @@
 
 **解决方案**
 
-1.分析其他任务执行耗时3s/5s是否合理；<br>
-2.调整taskA优先级。
+1. 分析其他任务执行耗时3s/5s是否合理；
+2. 调整taskA优先级。
 
 ### 排查方向：晚执行的TaskPool任务是串行任务或者依赖其他任务
 
@@ -210,7 +210,8 @@ TaskPool第一次执行任务慢，间隔几百毫秒，原因是子线程反序
 
 **解决方案**
 
-1.可拆分@Concurrent方法到单独的ets文件，减少模块初始化时间；2.使用延迟加载（lazy import）。
+1. 可拆分@Concurrent方法到单独的ets文件，减少模块初始化时间；
+2. 使用延迟加载（[lazy import](arkts-lazy-import.md)）。
 
 ## TaskPool序列化失败问题定位指导
 
@@ -254,19 +255,19 @@ TaskPool第一次执行任务慢，间隔几百毫秒，原因是子线程反序
 
 **问题原因**
 
-TaskPool实现任务的函数（Concurrent函数）入参和返回结果需满足线程间通信支持的对象类型，详情请查看序列化支持类型。当Concurrent函数的入参或返回结果是线程间通信不支持的对象类型时，会出现上述现象。应用可以结合hilog日志中打印的对象类型进一步排查通信对象是否符合要求。
+TaskPool实现任务的函数（Concurrent函数）入参和返回结果需满足线程间通信支持的对象类型，详情请查看[序列化支持类型](../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。当Concurrent函数的入参或返回结果是线程间通信不支持的对象类型时，会出现上述现象。应用可以结合hilog日志中打印的对象类型进一步排查通信对象是否符合要求。
 
 **场景示例**
 
 1. 应用在启动TaskPool任务时，在Concurrent函数中传入线程间通信不支持的对象类型，导致抛出入参序列化失败异常。  
-**解决方案**：应用需要查看序列化支持类型排查Concurrent函数入参。
+**解决方案**：应用需要查看[序列化支持类型](../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)排查Concurrent函数入参。
 
 2. 应用在启动TaskPool任务时，抛出入参序列化失败异常，同时hilog打印错误日志Unsupported serialize object type: Proxy（API version 20及之后版本打印错误日志：Serialize error: Serialize don't support object type: Proxy）。基于错误日志可知应用在Concurrent函数中传入代理对象，排查代码发现入参使用了@State装饰器，导致原对象实际上变为Proxy代理对象，代理对象不属于线程间通信支持的对象类型。  
-**解决方案**：TaskPool不支持@State、@Prop等装饰器修饰的复杂类型，具体内容可见TaskPool注意事项。应用需要去掉@State装饰器。
+**解决方案**：TaskPool不支持@State、@Prop等装饰器修饰的复杂类型，具体内容可见[TaskPool注意事项](taskpool-introduction.md#taskpool注意事项)。应用需要去掉@State装饰器。
 
 3. 应用执行TaskPool任务时，抛出返回结果序列化失败异常，排查代码发现Concurrent函数返回结果是不支持的序列化类型。
 
-   <!-- @define_printArgs -->     
+   <!-- @[define_printArgs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/utils.ets) -->     
    
    ``` TypeScript
    // utils.ets
@@ -276,7 +277,7 @@ TaskPool实现任务的函数（Concurrent函数）入参和返回结果需满�
    }
    ```
 
-   <!-- @unsupport_task -->     
+   <!-- @[unsupport_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/ExecuteFailedTask.ets) -->     
    
    ``` TypeScript
    // ExecuteFailedTask.ets
@@ -305,7 +306,7 @@ TaskPool实现任务的函数（Concurrent函数）入参和返回结果需满�
 
    **解决方案**：task1在.then中创建执行，Concurrent函数的返回结果设置为可序列化的类型。
 
-   <!-- @define_printArgs -->     
+   <!-- @[define_printArgs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/utils.ets) -->     
    
    ``` TypeScript
    // utils.ets
@@ -315,7 +316,7 @@ TaskPool实现任务的函数（Concurrent函数）入参和返回结果需满�
    }
    ```
 
-   <!-- @support_task -->     
+   <!-- @[support_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/ExecuteSupportTask.ets) -->     
    
    ``` TypeScript
    // ExecuteSupportTask.ets
@@ -344,11 +345,11 @@ TaskPool实现任务的函数（Concurrent函数）入参和返回结果需满�
 
 ## Sendable类A的实例对象a传递到子线程后，使用a instanceof A判断返回false
 
-应用在子线程使用instanceof接口时，需要在导出Sendable类A的ets文件使用"use shared"指令标记该模块为共享模块。
+应用在子线程使用instanceof接口时，需要在导出Sendable类A的ets文件使用"use shared"指令标记该模块为[共享模块](../arkts-utils/arkts-sendable-module.md)。
 
 **代码示例**
 
-<!-- @test_instanceof -->     
+<!-- @[test_instanceof](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/TestInstanceof.ets) -->     
 
 ``` TypeScript
 // pages/TestInstanceof.ets
@@ -374,7 +375,7 @@ function testInstanceof() {
 testInstanceof();
 ```
 
-<!-- @define_sendable -->  
+<!-- @[define_sendable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/Sendable.ets) -->  
 
 ``` TypeScript
 // pages/Sendable.ets
@@ -390,7 +391,7 @@ export class A {
 }
 ```
 
-<!-- @define_workers -->    
+<!-- @[define_workers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/workers/Worker.ets) -->    
 
 ``` TypeScript
 // workers/Worker.ets
@@ -430,7 +431,7 @@ JS异常：TypeError: Cannot set sendable property with mismatched type
 1. 应用在向子线程传递Sendable类A的实例对象时，抛出类型不一致异常。基于JS栈定位到问题发生在创建类A的实例对象时，排查后发现应用当前模块与其他模块联调时，其他模块未使用Sendable类B封装数据集。   
 **解决方案** ： 应用当前模块将其他模块传递的数据使用Sendable类重新封装。
 
-   <!-- @define_resolveOne -->    
+   <!-- @[define_resolveOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/SolveMismatchTypeOne.ets) -->    
    
    ``` TypeScript
    @Sendable
@@ -453,7 +454,7 @@ JS异常：TypeError: Cannot set sendable property with mismatched type
 
 3. 自定义Sendable类继承collections.Array，并重写构造函数。在实例化该类后调用slice函数时，抛出类型不一致异常。原因是调用slice函数时，collections.Array内部会创建新的SendableArray。构造函数的入参是新数组长度，类型为number。由于ans是string类型，而在构造函数中使用number类型的入参对ans赋值，在Sendable类中不允许使用number类型对string类型赋值，因此抛出异常。
 
-   <!-- @define_resolveTwo -->     
+   <!-- @[define_resolveTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/SolveMismatchTypeTwo.ets) -->     
    
    ``` TypeScript
    // pages/SolveMismatchTypeTwo.ets
@@ -473,7 +474,7 @@ JS异常：TypeError: Cannot set sendable property with mismatched type
 
    **解决方案**： 对属性的赋值使用独立接口。
 
-   <!-- @define_resolveThree -->    
+   <!-- @[define_resolveThree](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/SolveMismatchTypeThree.ets) -->    
    
    ``` TypeScript
    // pages/SolveMismatchTypeThree.ets
@@ -515,27 +516,27 @@ JS异常：TypeError: Cannot add property in prevent extensions
 **解决方案**：规格限制，暂不支持合并同名Sendable class和namespace。
 
 2. 应用在HAR中使用Sendable特性时，抛出新增属性异常。查看JS异常栈，发现异常代码行定位在js文件，而Sendable特性不支持在js文件中使用，导致抛出非预期的异常。  
-**解决方案**：在HAR中使用Sendable特性时，配置UseTsHar。
+**解决方案**：在HAR中使用Sendable特性时，[配置UseTsHar](sendable-constraints.md#在har包中的使用规则)。
 
 3. 应用在Local Test单元测试或预览器中使用Sendable特性时，抛出新增属性异常。由于Sendable特性暂不支持在Local Test和预览器中使用，导致抛出非预期的异常。  
 **解决方案**：规格限制，暂不支持。
 
 ## ArkTS提供的Promise能力的原理是什么
 
-Promise是ArkTS提供的异步并发能力，是标准的JS语法。详情请查看Promise概述。
+Promise是ArkTS提供的异步并发能力，是标准的JS语法。详情请查看[Promise](async-concurrency-overview.md#promise)概述。
 
 ## TaskPool线程是否可以执行不需要@Concurrent和@Sendable修饰的JS闭包函数
 
-TaskPool执行的任务函数必须使用@Concurrent装饰器修饰，由于Concurrent函数不能访问闭包，因此函数内不可调用当前文件的其他普通函数，详情请参考TaskPool注意事项。但是，开发者可以通过给Concurrent函数传参的方式，传入@Sendable装饰器修饰的普通function和Async function，在Concurrent函数内调用Sendable function。
+TaskPool执行的任务函数必须使用@Concurrent装饰器修饰，由于Concurrent函数不能访问闭包，因此函数内不可调用当前文件的其他普通函数，详情请参考[TaskPool注意事项](taskpool-introduction.md#taskpool注意事项)。但是，开发者可以通过给Concurrent函数传参的方式，传入@Sendable装饰器修饰的普通function和Async function，在Concurrent函数内调用Sendable function。
 
-因此，TaskPool线程目前不支持执行普通的JS闭包函数。如果有相关诉求，开发者可以根据业务需要使用Worker并发能力进行业务改造。
+因此，TaskPool线程目前不支持执行普通的JS闭包函数。如果有相关诉求，开发者可以根据业务需要使用[Worker](worker-introduction.md)并发能力进行业务改造。
 
 ## @Concurrent修饰的函数与async函数异同点是什么
 
-1. Concurrent函数常与taskpool配合使用以完成异步并发任务；async是用于处理异步操作的Promise语法糖，async函数返回Promise对象，实现异步操作。此两类函数的constructor.name属性均为`'AsyncFunction'`，通过isAsyncFunction的异步函数类型检查的结果均为true。
+1. Concurrent函数常与taskpool配合使用以完成异步并发任务；async是用于处理异步操作的Promise语法糖，async函数返回Promise对象，实现异步操作。此两类函数的constructor.name属性均为`'AsyncFunction'`，通过[isAsyncFunction](../reference/apis-arkts/js-apis-util.md#isasyncfunction8)的异步函数类型检查的结果均为true。
 2. async函数会将返回值自动封装成Promise；Concurrent函数的返回值与被修饰函数保持一致，不会被自动封装。
 3. Concurrent函数不能访问闭包，函数内不可调用当前文件的其他普通函数；async函数无此限制。
-4. 使用errorManager进行异常捕获时，@Concurrent修饰符不会改变被修饰函数的异常捕获行为；async函数会被globalUnhandledRejectionDetected和unhandledRejection捕获。
+4. 使用[errorManager](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md)进行异常捕获时，@Concurrent修饰符不会改变被修饰函数的异常捕获行为；async函数会被[globalUnhandledRejectionDetected](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronglobalunhandledrejectiondetected18)和[unhandledRejection](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md#errormanageronunhandledrejection12)捕获。
 
 ## TaskPool任务执行后的结果如何保存到自定义的数据结构
 
@@ -545,11 +546,11 @@ TaskPool的任务执行函数Concurrent函数只能使用局部变量和函数�
 
 **解决方案**
 
-1. 自定义Sendable类。Sendable对象可以在不同的子线程中共享，开发者可以将任务执行后的结果保存到Sendable对象上。
+1. 自定义Sendable类。[Sendable对象](arkts-sendable.md)可以在不同的子线程中共享，开发者可以将任务执行后的结果保存到Sendable对象上。
 
 2. TaskPool任务执行后的结果可以在.then中返回，需要保存的数据如果仅在当前线程使用，可以在.then中将执行结果保存到自定义的数据结构中。
 
-   <!-- @define_sendableTwo -->      
+   <!-- @[define_sendableTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/Sendable.ets) -->      
    
    ``` TypeScript
    // Sendable.ets，与Index.ets在同级目录下
@@ -567,7 +568,7 @@ TaskPool的任务执行函数Concurrent函数只能使用局部变量和函数�
    }
    ```
 
-   <!-- @save_result -->      
+   <!-- @[save_result](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/SaveResult.ets) -->      
    
    ``` TypeScript
    // SaveResult.ets
@@ -598,7 +599,7 @@ TaskPool的任务执行函数Concurrent函数只能使用局部变量和函数�
 
 Sendable装饰器修饰的类与Observed装饰器修饰的类定义在同一个ets文件中，在TaskPool子线程加载Sendable类时捕获到错误信息：SendableItem is not initialized。
 
-<!-- @initialize_item -->     
+<!-- @[initialize_item](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/SolveItemInitialized.ets) -->     
 
 ``` TypeScript
 // pages/SolveItemInitialized.ets
@@ -644,7 +645,7 @@ Observed装饰器仅支持在UI线程使用，不能在子线程、Worker、Task
 
 将Observed装饰器修饰的类NormalItem剥离到单独的ets文件后，TaskPool子线程再去加载Sendable类SendableItem，应用运行符合预期。
 
-<!-- @initialize_item -->     
+<!-- @[initialize_item](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/SolveItemInitialized.ets) -->     
 
 ``` TypeScript
 // pages/SolveItemInitialized.ets
@@ -669,7 +670,7 @@ function executeTask() {
 executeTask();
 ```
 
-<!-- @define_sendableThree -->
+<!-- @[define_sendableThree](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/Sendable.ets) -->
 
 ``` TypeScript
 // Sendable.ets
@@ -679,7 +680,7 @@ export class SendableItem {
 }
 ```
 
-<!-- @define_normalItem -->
+<!-- @[define_normalItem](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrencyFaq/entry/src/main/ets/pages/ui.ets) -->
 
 ``` TypeScript
 // ui.ets

@@ -13,20 +13,20 @@
 
 ## 接口说明
 
-创建和删除事件监听相关接口如下表所示，接口详细介绍请参考input。
+创建和删除事件监听相关接口如下表所示，接口详细介绍请参考[oh_input_manager.h](../../reference/apis-input-kit/capi-oh-input-manager-h.md)。
 
-| 接口名称  | 描述 |
+| 接口名称 | 描述 |
 | ------------------------------------------------------------ | -------------------------- |
-| Input_Result OH_Input_AddKeyEventMonitor(Input_KeyEventCallback callback) |创建按键事件监听。  |
-| Input_Result OH_Input_AddMouseEventMonitor(Input_MouseEventCallback callback) |创建鼠标事件监听。  |
-| Input_Result OH_Input_AddTouchEventMonitor(Input_TouchEventCallback callback) |创建触摸事件监听。  |
-| Input_Result OH_Input_AddAxisEventMonitorForAll(Input_AxisEventCallback callback) |创建所有类型轴事件监听。  |
-| Input_Result OH_Input_AddAxisEventMonitor(InputEvent_AxisEventType axisEventType, Input_AxisEventCallback callback) |创建指定类型轴事件监听。  |
-| Input_Result OH_Input_RemoveKeyEventMonitor(Input_KeyEventCallback callback) |删除按键事件监听。  |
-| Input_Result OH_Input_RemoveMouseEventMonitor(Input_MouseEventCallback callback) |删除鼠标事件监听。  |
-| Input_Result OH_Input_RemoveTouchEventMonitor(Input_TouchEventCallback callback) |删除触摸事件监听。  |
-| Input_Result OH_Input_RemoveAxisEventMonitorForAll(Input_AxisEventCallback callback) |删除所有类型轴事件监听。  |
-| Input_Result OH_Input_RemoveAxisEventMonitor(InputEvent_AxisEventType axisEventType, Input_AxisEventCallback callback) |删除指定类型轴事件监听。  |
+| Input_Result OH_Input_AddKeyEventMonitor(Input_KeyEventCallback callback) | 创建按键事件监听。 |
+| Input_Result OH_Input_AddMouseEventMonitor(Input_MouseEventCallback callback) | 创建鼠标事件监听。 |
+| Input_Result OH_Input_AddTouchEventMonitor(Input_TouchEventCallback callback) | 创建触摸事件监听。 |
+| Input_Result OH_Input_AddAxisEventMonitorForAll(Input_AxisEventCallback callback) | 创建所有类型轴事件监听。 |
+| Input_Result OH_Input_AddAxisEventMonitor(InputEvent_AxisEventType axisEventType, Input_AxisEventCallback callback) | 创建指定类型轴事件监听。 |
+| Input_Result OH_Input_RemoveKeyEventMonitor(Input_KeyEventCallback callback) | 删除按键事件监听。 |
+| Input_Result OH_Input_RemoveMouseEventMonitor(Input_MouseEventCallback callback) | 删除鼠标事件监听。 |
+| Input_Result OH_Input_RemoveTouchEventMonitor(Input_TouchEventCallback callback) | 删除触摸事件监听。 |
+| Input_Result OH_Input_RemoveAxisEventMonitorForAll(Input_AxisEventCallback callback) | 删除所有类型轴事件监听。 |
+| Input_Result OH_Input_RemoveAxisEventMonitor(InputEvent_AxisEventType axisEventType, Input_AxisEventCallback callback) | 删除指定类型轴事件监听。 |
 
 ## 开发步骤
 
@@ -40,7 +40,7 @@ target_link_libraries(entry PUBLIC libohinput.so)
 
 ### 申请所需权限
 
-应用需要在module.json5中添加下面权限的配置，详细的配置方法参考声明声明权限文档。
+应用需要在module.json5中添加下面权限的配置，详细的配置方法参考声明[声明权限文档](../../security/AccessToken/declare-permissions.md)。
 
 ```json
 "requestPermissions": [
@@ -54,7 +54,7 @@ target_link_libraries(entry PUBLIC libohinput.so)
 
 - **按键事件**
 
-<!-- @key_event_monitor -->
+<!-- @[key_event_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputKit/NDKInputEventMonitor/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 struct KeyEvent {
@@ -90,7 +90,7 @@ static napi_value RemoveKeyEventMonitor(napi_env env, napi_callback_info info)
 
 - **鼠标事件**
 
-<!-- @mouse_event_monitor -->
+<!-- @[mouse_event_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputKit/NDKInputEventMonitor/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 struct MouseEvent {
@@ -134,7 +134,7 @@ static napi_value RemoveMouseEventMonitor(napi_env env, napi_callback_info info)
 
 - **触摸事件**
 
-<!-- @touch_event_monitor -->
+<!-- @[touch_event_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputKit/NDKInputEventMonitor/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 struct TouchEvent {
@@ -173,7 +173,7 @@ static napi_value RemoveTouchEventMonitor(napi_env env, napi_callback_info info)
 
 - **轴事件**
 
-<!-- @axis_event_monitor --> 
+<!-- @[axis_event_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputKit/NDKInputEventMonitor/entry/src/main/cpp/napi_init.cpp) --> 
 
 ``` C++
 struct AxisEvent {

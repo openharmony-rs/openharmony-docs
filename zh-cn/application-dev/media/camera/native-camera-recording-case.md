@@ -6,15 +6,15 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-在开发相机应用时，需要先申请相关权限。
+在开发相机应用时，需要先[申请相关权限](camera-preparation.md)。
 
-当前示例提供完整的录像流程及其接口调用顺序的介绍。对于单个流程（如设备输入、会话管理、录像）的介绍请参考具体章节。
+当前示例提供完整的录像流程及其接口调用顺序的介绍。对于单个流程（如[设备输入](native-camera-device-input.md)、[会话管理](native-camera-session-management.md)、[录像](native-camera-recording.md)）的介绍请参考具体章节。
 
 ## 开发流程
 
 在获取到相机支持的输出流能力后，开始创建录像流，开发流程如下。
 
-Recording Development Process
+![Recording Development Process](figures/recording-ndk-development-process.png)
 
 ## 完整示例
 
@@ -57,7 +57,7 @@ Recording Development Process
 
     void OnCameraInputError(const Camera_Input* cameraInput, Camera_ErrorCode errorCode)
     {
-        OH_LOG_INFO(LOG_APP, "OnCameraInput errorCode = %{public}d", errorCode);
+        OH_LOG_ERROR(LOG_APP, "OnCameraInput errorCode = %{public}d", errorCode);
     }
 
     CameraInput_Callbacks* GetCameraInputListener(void)
@@ -75,7 +75,7 @@ Recording Development Process
 
     void CaptureSessionOnError(Camera_CaptureSession* session, Camera_ErrorCode errorCode)
     {
-        OH_LOG_INFO(LOG_APP, "CaptureSessionOnError = %{public}d", errorCode);
+        OH_LOG_ERROR(LOG_APP, "CaptureSessionOnError = %{public}d", errorCode);
     }
 
     CaptureSession_Callbacks* GetCaptureSessionRegister(void)
@@ -99,7 +99,7 @@ Recording Development Process
 
     void VideoOutputOnError(Camera_VideoOutput* videoOutput, Camera_ErrorCode errorCode)
     {
-        OH_LOG_INFO(LOG_APP, "VideoOutput errorCode = %{public}d", errorCode);
+        OH_LOG_ERROR(LOG_APP, "VideoOutput errorCode = %{public}d", errorCode);
     }
 
     VideoOutput_Callbacks* GetVideoOutputListener(void)
@@ -163,10 +163,10 @@ Recording Development Process
         }
 
         for (int index = 0; index < size; index++) {
-            OH_LOG_ERROR(LOG_APP, "cameraId  =  %{public}s ", cameras[index].cameraId);              // 获取相机ID。
-            OH_LOG_ERROR(LOG_APP, "cameraPosition  =  %{public}d ", cameras[index].cameraPosition);  // 获取相机位置。
-            OH_LOG_ERROR(LOG_APP, "cameraType  =  %{public}d ", cameras[index].cameraType);          // 获取相机类型。
-            OH_LOG_ERROR(LOG_APP, "connectionType  =  %{public}d ", cameras[index].connectionType);  // 获取相机连接类型。
+            OH_LOG_INFO(LOG_APP, "cameraId  =  %{public}s ", cameras[index].cameraId);              // 获取相机ID。
+            OH_LOG_INFO(LOG_APP, "cameraPosition  =  %{public}d ", cameras[index].cameraPosition);  // 获取相机位置。
+            OH_LOG_INFO(LOG_APP, "cameraType  =  %{public}d ", cameras[index].cameraType);          // 获取相机类型。
+            OH_LOG_INFO(LOG_APP, "connectionType  =  %{public}d ", cameras[index].connectionType);  // 获取相机连接类型。
         }
 
         if (size < cameraDeviceIndex + 1) {
@@ -372,19 +372,19 @@ Recording Development Process
         if (ret != CAMERA_OK) {
             OH_LOG_ERROR(LOG_APP, "Delete Cameras failed.");
         } else {
-            OH_LOG_ERROR(LOG_APP, "OH_CameraManager_DeleteSupportedCameras. ok");
+            OH_LOG_INFO(LOG_APP, "OH_CameraManager_DeleteSupportedCameras. ok");
         }
         ret = OH_CameraManager_DeleteSupportedCameraOutputCapability(cameraManager, cameraOutputCapability);
         if (ret != CAMERA_OK) {
             OH_LOG_ERROR(LOG_APP, "Delete Cameras failed.");
         } else {
-            OH_LOG_ERROR(LOG_APP, "OH_CameraManager_DeleteSupportedCameraOutputCapability success");
+            OH_LOG_INFO(LOG_APP, "OH_CameraManager_DeleteSupportedCameraOutputCapability success");
         }
         ret = OH_Camera_DeleteCameraManager(cameraManager);
         if (ret != CAMERA_OK) {
             OH_LOG_ERROR(LOG_APP, "Delete Cameras failed.");
         } else {
-            OH_LOG_ERROR(LOG_APP, "OH_Camera_DeleteCameraManager success");
+            OH_LOG_INFO(LOG_APP, "OH_Camera_DeleteCameraManager success");
         }
     }
     ```

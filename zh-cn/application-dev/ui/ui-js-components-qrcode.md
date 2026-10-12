@@ -6,7 +6,7 @@
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
-生成并显示二维码，具体用法请参考qrcode。
+生成并显示二维码，具体用法请参考[qrcode](../reference/apis-arkui/arkui-js/js-components-basic-qrcode.md)。
 
 
 ## 创建qrcode组件
@@ -34,7 +34,7 @@
 }
 ```
 
-qrcode-Component
+![qrcode-Component](figures/qrcode-Component.png)
 
 > **说明：** 
 >
@@ -87,7 +87,7 @@ export default {
 }
 ```
 
-Component-Type
+![Component-Type](figures/Component-Type.gif)
 
 
 ## 设置样式
@@ -120,7 +120,7 @@ qrcode{
 }
 ```
 
-Setting-Styles
+![Setting-Styles](figures/Setting-Styles.png)
 
 > **说明：**
 > - width和height不一致时，取二者较小值作为二维码的边长，且最终生成的二维码居中显示。
@@ -172,4 +172,4 @@ export default {
 }
 ```
 
-Example-Scenarios
+![Example-Scenarios](figures/Example-Scenarios.gif)

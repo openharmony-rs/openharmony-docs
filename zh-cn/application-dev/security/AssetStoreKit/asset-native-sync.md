@@ -15,7 +15,7 @@ target_link_libraries(entry PUBLIC libasset_ndk.z.so)
 ```
 
 引用头文件。
-<!-- @include -->
+<!-- @[include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -28,7 +28,7 @@ target_link_libraries(entry PUBLIC libasset_ndk.z.so)
 
 新增密码demo_pwd（别名demo_alias），附属信息为demo_label，支持同步的关键资产。
 
-<!-- @add_sync_asset -->
+<!-- @[add_sync_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 static napi_value AddSyncAsset(napi_env env, napi_callback_info info)
@@ -57,7 +57,7 @@ static napi_value AddSyncAsset(napi_env env, napi_callback_info info)
 
 ## 接入备份恢复扩展能力
 
-为触发应用数据备份恢复，需要应用接入数据备份恢复。
+为触发应用数据备份恢复，需要[应用接入数据备份恢复](../../file-management/app-file-backup-extension.md)。
 
 ## 查询关键资产同步结果
 
@@ -75,7 +75,7 @@ static napi_value AddSyncAsset(napi_env env, napi_callback_info info)
 
 ### 代码示例
 
-<!-- @query_sync_result -->
+<!-- @[query_sync_result](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 static napi_value QuerySyncResult(napi_env env, napi_callback_info info)

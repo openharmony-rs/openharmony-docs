@@ -58,7 +58,7 @@ typedef struct {
 
 ### napi_value
 
-napi_value是一个C的结构体指针，表示一个ArkTS/JS对象的引用。napi_value持有了ArkTS/JS对象，同时，napi_value受napi_handle_scope管理，scope中napi_value持有的JS对象不会被释放；出scope后，napi_value将失效，不再持有对应的ArkTS/JS对象。
+napi_value是一个C的结构体指针，表示一个ArkTS/JS对象的引用。napi_value持有了ArkTS/JS对象，同时，napi_value受[napi_handle_scope](#内存管理类型)管理，scope中napi_value持有的JS对象不会被释放；出scope后，napi_value将失效，不再持有对应的ArkTS/JS对象。
 
 ### napi_env
 
@@ -70,7 +70,7 @@ napi_value是一个C的结构体指针，表示一个ArkTS/JS对象的引用。n
 
 ### napi_threadsafe_function
 
-napi_threadsafe_function用来创建一个线程安全的ArkTS/JS函数，可以在不同的线程中调用。可以用于将异步操作的结果传递给ArkTS/JS环境，例如从另一个线程中读取数据或执行计算密集型操作。线程安全函数回调的执行仅在创建线程安全函数的ArkTS线程中执行。通过使用napi_threadsafe_function，可以实现ArkTS/JS和C++之间的高效通信，同时保持线程安全性。
+[napi_threadsafe_function](use-napi-thread-safety.md)用来创建一个线程安全的ArkTS/JS函数，可以在不同的线程中调用。可以用于将异步操作的结果传递给ArkTS/JS环境，例如从另一个线程中读取数据或执行计算密集型操作。线程安全函数回调的执行仅在创建线程安全函数的ArkTS线程中执行。通过使用napi_threadsafe_function，可以实现ArkTS/JS和C++之间的高效通信，同时保持线程安全性。
 
 ### napi_threadsafe_function_release_mode
 
@@ -119,7 +119,7 @@ Node-API包含以下内存管理类型：
 
 **napi_handle_scope**
 
-napi_handle_scope数据类型是用来管理ArkTS/JS对象的生命周期的。它允许ArkTS/JS对象在一定范围内保持活动状态，以便在ArkTS/JS代码中使用。在创建napi_handle_scope时，所有在该范围内创建的ArkTS/JS对象都会保持活动状态，直到scope被关闭。这样可以做到ArkTS/JS对象生命周期最小化，避免发生内存泄漏问题。同时，napi_handle_scope也可参考<!--RP1-->生命周期类问题注意事项。<!--RP1End-->
+napi_handle_scope数据类型是用来管理ArkTS/JS对象的生命周期的。它允许ArkTS/JS对象在一定范围内保持活动状态，以便在ArkTS/JS代码中使用。在创建napi_handle_scope时，所有在该范围内创建的ArkTS/JS对象都会保持活动状态，直到scope被关闭。这样可以做到ArkTS/JS对象生命周期最小化，[避免发生内存泄漏问题](napi-guidelines.md#生命周期管理)。同时，napi_handle_scope也可参考<!--RP1-->生命周期类问题注意事项。<!--RP1End-->
 
 **napi_escapable_handle_scope**
 
@@ -480,7 +480,7 @@ Node-API接口在Node.js提供的原生模块基础上扩展，目前支持部�
 | napi_get_property | 获取给定Object的给定属性。 |
 | napi_has_property | 判断给定对象中是否存在给定属性。 |
 | napi_delete_property | 尝试从给定Object中删除给定key属性。 |
-| napi_has_own_property | 判断给定Object中是否有名为key的own property。 |
+| napi_has_own_property | 与napi_has_property行为一致，判断给定Object中是否存在给定属性。 |
 | napi_set_named_property | 对给定Object设置一个给定名称的属性。 |
 | napi_get_named_property | 获取给定Object中指定名称的属性。 |
 | napi_has_named_property | 判断给定Object中是否有给定名称的属性。 |
@@ -537,7 +537,7 @@ Node-API接口在Node.js提供的原生模块基础上扩展，目前支持部�
 
 ### 扩展能力
 
-Node-API组件扩展的接口
+[Node-API组件扩展的接口](../reference/native-lib/napi.md#node-api组件扩展的接口)
 
 | 接口 | 功能说明 |
 | -------- | -------- |
@@ -595,7 +595,7 @@ napi_status napi_queue_async_work_with_qos(napi_env env,
                                            napi_qos_t qos);
 ```
 
-用法同napi_queue_async_work，但可以指定QoS等级。napi_queue_async_work_with_qos使用方法可参考指定异步任务调度优先级。QoS详细介绍可参考QoS 开发指导。
+用法同napi_queue_async_work，但可以指定QoS等级。napi_queue_async_work_with_qos使用方法可参考指定异步任务调度优先级。QoS详细介绍可参考[QoS 开发指导](../kernel-enhance/qos-guidelines.md)。
 
 **napi_run_script_path**
 
@@ -604,7 +604,7 @@ napi_status napi_run_script_path(napi_env env,
                                  const char* abcPath,
                                  napi_value* result);
 ```
-**注：**使用限制说明文档：使用napi_run_script_path接口执行包内abc文件的使用限制
+**注：**使用限制说明文档：[使用napi_run_script_path接口执行包内abc文件的使用限制](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-ndk-65)
 **napi_load_module**
 
 ```c
@@ -648,7 +648,7 @@ napi_status napi_coerce_to_native_binding_object(napi_env env,
 ```c
 napi_status napi_create_ark_runtime(napi_env *env);
 ```
-使用napi_create_ark_runtime、napi_destroy_ark_runtime接口创建ArkTS运行时环境。
+[使用napi_create_ark_runtime、napi_destroy_ark_runtime接口创建ArkTS运行时环境](use-napi-ark-runtime.md)。
 
 **napi_destroy_ark_runtime**
 
@@ -662,7 +662,7 @@ napi_status napi_destroy_ark_runtime(napi_env *env);
 napi_status napi_run_event_loop(napi_env env, napi_event_mode mode);
 ```
 
-开发者只能在自己通过napi_create_ark_runtime创建的ArkTS运行环境中调用napi_run_event_loop与napi_stop_event_loop接口，使用方法可参考使用扩展的Node-API接口在异步线程中运行和停止事件循环。
+开发者只能在自己通过napi_create_ark_runtime创建的ArkTS运行环境中调用napi_run_event_loop与napi_stop_event_loop接口，使用方法可参考[使用扩展的Node-API接口在异步线程中运行和停止事件循环](use-napi-event-loop.md)。
 
 **napi_stop_event_loop**
 

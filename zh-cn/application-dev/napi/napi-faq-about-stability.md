@@ -14,7 +14,7 @@
 
 - 崩溃信息如下：  
 ```sh
-Reason:Signal:SIGSEGV(SEGV_MAPERR)@0x00000136 probably caus
+Reason:Signal:SIGSEGV(SEGV_MAPERR)@0x00000136 probably caused by NULL pointer dereference
 Fault thread info:
 Tid:15894, Name:e.myapplication
 #00 pc 002b8dd4 /system/lib/platformsdk/libark_jsruntime.so
@@ -32,11 +32,11 @@ Tid:15894, Name:e.myapplication
 
    DevEco Studio中提供了相关开关，开启开关后，重新编译打包并运行，看看崩溃栈是不是符合下面这个文档的描述，如果是，那就是在使用Node-API时，存在多线程安全问题。 
 
-   常见多线程安全问题  
+   [常见多线程安全问题](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-ark-runtime-detection#section19357830121120)  
 
    DevEco Studio开关：   
 
-   multi-thread-check   
+   ![multi-thread-check](figures/multi-thread-check.png)   
 2. 使用Node-API接口时入参非法导致。   
 - 这种情况一般是崩溃栈上的so会很浅，so调用了某个具体的Node-API接口，比如调用了napi_call_function之类的接口，然后Node-API又调到了libark_jsruntime的so，然后直接崩溃在libark_jsruntime里面。  
 
@@ -56,7 +56,7 @@ b. 排查有没有在这个易错API列表里面找到相应的篇章。
 
   可参考文档：
   
-  方舟运行时API。
+  [方舟运行时API](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615)。
 
 
 ## 线程池中并发调用ArkTS方法如何处理线程安全问题
@@ -73,9 +73,9 @@ b. 排查有没有在这个易错API列表里面找到相应的篇章。
 
 对于问题二：
 
-上面提到，C++线程都是抛任务到ArkTS线程，进而执行ArkTS方法。关于线程安全，可参考使用Node-API接口进行线程安全开发。  
+上面提到，C++线程都是抛任务到ArkTS线程，进而执行ArkTS方法。关于线程安全，可参考[使用Node-API接口进行线程安全开发](use-napi-thread-safety.md)。  
 
-另外，开发过程中也可以打开方舟多线程检测开关，这个开关可以拦截多线程安全问题。  
+另外，开发过程中也可以打开[方舟多线程检测](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-ark-runtime-detection#section75786272088)开关，这个开关可以拦截多线程安全问题。  
 
 ## napi_value内容产生变化
 
@@ -86,7 +86,7 @@ b. 排查有没有在这个易错API列表里面找到相应的篇章。
 
    可参考文档：
 
-   方舟运行时API。
+   [方舟运行时API](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615)。
 
 2. 保存时建议使用napi_ref，而不是直接保存napi_value。
 
@@ -110,7 +110,7 @@ b. 排查有没有在这个易错API列表里面找到相应的篇章。
    
    可参考文档：
    
-   napi_env禁止缓存的原因是什么 。 
+   [napi_env禁止缓存的原因是什么](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs/faqs-ndk-73) 。 
 
 2. 该问题的关键在于：  
 
@@ -118,7 +118,7 @@ b. 排查有没有在这个易错API列表里面找到相应的篇章。
 
    可参考文档：
    
-   常见多线程安全问题。   
+   [常见多线程安全问题](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-ark-runtime-detection#section19357830121120)。   
 
 3. 对于崩溃问题本身，该崩溃可能发生在调用napi_call_function时，入参 func 有问题，即非法入参，开发者可排查napi_value是否被缓存。这种情况可能是napi_value被缓存后，napi_value超出napi_handle_scope作用域导致失效。 
 
@@ -126,9 +126,9 @@ b. 排查有没有在这个易错API列表里面找到相应的篇章。
 
 - 可参考文档：  
 
-  napi_create_reference、napi_delete_reference  
+  [napi_create_reference、napi_delete_reference](use-napi-life-cycle.md)  
 
-  方舟运行时API 
+  [方舟运行时API](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615) 
 
 ## napi_add_env_cleanup_hook调用报错该如何处理
 
@@ -166,9 +166,9 @@ static napi_value Test(napi_env env, napi_callback_info info)
 
 相关参考资料链接：
 
-使用Node-API接口注册和使用环境清理钩子
+[使用Node-API接口注册和使用环境清理钩子](use-napi-about-cleanuphook.md)
 
-方舟运行时API
+[方舟运行时API](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-coding-standard-api#section1219614634615)
 
 ## napi_open_handle_scope与napi_close_handle_scope进行生命周期相关开发典型错误场景
 
@@ -275,4 +275,4 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so)
 
 相关参考资料链接：
 
-使用Node-API接口进行生命周期相关开发
+[使用Node-API接口进行生命周期相关开发](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/use-napi-life-cycle#napi_open_handle_scopenapi_close_handle_scope)

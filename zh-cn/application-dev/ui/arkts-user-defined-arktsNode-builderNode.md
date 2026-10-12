@@ -9,39 +9,39 @@
 
 ## 概述
 
-自定义声明式节点 (BuilderNode)提供能够挂载系统组件的能力，支持采用无状态的UI方式，通过全局自定义构建函数@Builder定制组件树。组件树的根FrameNode节点可通过getFrameNode获取，该节点既可直接由NodeController返回并挂载于NodeContainer节点下，亦可在FrameNode树与RenderNode树中嵌入声明式组件，实现混合显示。同时，BuilderNode具备纹理导出功能，导出的纹理可在XComponent中实现同层渲染。
+自定义声明式节点 ([BuilderNode](../reference/apis-arkui/js-apis-arkui-builderNode.md))提供能够挂载系统组件的能力，支持采用无状态的UI方式，通过[全局自定义构建函数](../ui/state-management/arkts-builder.md#全局自定义构建函数)@Builder定制组件树。组件树的根[FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md)节点可通过[getFrameNode](../reference/apis-arkui/js-apis-arkui-builderNode.md#getframenode)获取，该节点既可直接由[NodeController](../reference/apis-arkui/js-apis-arkui-nodeController.md)返回并挂载于[NodeContainer](../reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md)节点下，亦可在FrameNode树与[RenderNode](../reference/apis-arkui/js-apis-arkui-renderNode.md)树中嵌入声明式组件，实现混合显示。同时，BuilderNode具备纹理导出功能，导出的纹理可在[XComponent](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)中实现同层渲染。
 
 由BuilderNode构建的ArkTS组件树，支持与自定义节点（如FrameNode、RenderNode）关联使用，确保了系统组件与自定义节点的混合显示效果。对于需与自定义节点对接的第三方框架，BuilderNode提供了嵌入系统组件的方法。
 
-此外，BuilderNode还提供了组件预创建的能力，能够自定义系统组件的创建开始的时间，在后续业务中实现动态挂载与显示。此功能尤其适用于初始化耗时较长的声明式组件，如Web、XComponent等，通过预创建，可以有效减少初始化时间，优化组件加载效率。
+此外，BuilderNode还提供了组件预创建的能力，能够自定义系统组件的创建开始的时间，在后续业务中实现动态挂载与显示。此功能尤其适用于初始化耗时较长的声明式组件，如[Web](../reference/apis-arkweb/arkts-basic-components-web.md)、[XComponent](../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)等，通过预创建，可以有效减少初始化时间，优化组件加载效率。
 
-zh-cn_image_builder-node
+![zh-cn_image_builder-node](figures/builder-node.png)
 
 ## 基本概念
 
-- 系统组件：组件是UI的必要元素，形成了在界面中的样子，由ArkUI直接提供的称为系统组件。
+- 系统组件：组件是UI的必要元素，形成了在界面中的样子，由ArkUI直接提供的称为[系统组件](arkts-ui-development-overview.md)。
 
 - 实体节点：由后端创建的Native节点。
 
-BuilderNode仅可作为叶子节点进行使用。如有更新需要，建议通过BuilderNode中的update方式触发更新，不建议通过BuilderNode中获取的RenderNode对节点进行修改操作。
+BuilderNode仅可作为叶子节点进行使用。如有更新需要，建议通过BuilderNode中的[update](../reference/apis-arkui/js-apis-arkui-builderNode.md#update)方式触发更新，不建议通过BuilderNode中获取的RenderNode对节点进行修改操作。
 
 > **说明：**
 > 
-> - BuilderNode只支持一个由wrapBuilder包装的全局自定义构建函数@Builder。
+> - BuilderNode只支持一个由[wrapBuilder](../ui/state-management/arkts-wrapBuilder.md)包装的[全局自定义构建函数](../ui/state-management/arkts-builder.md#全局自定义构建函数)@Builder。
 > 
-> - 一个新建的BuilderNode在build之后才能通过getFrameNode获取到一个指向根节点的FrameNode对象，否则返回null。
+> - 一个新建的BuilderNode在[build](../reference/apis-arkui/js-apis-arkui-builderNode.md#build)之后才能通过[getFrameNode](../reference/apis-arkui/js-apis-arkui-builderNode.md#getframenode)获取到一个指向根节点的FrameNode对象，否则返回null。
 > 
 > - 如果传入的Builder的根节点为语法节点（if/else/foreach/...），需要额外生成一个FrameNode，在节点树中的显示为“BuilderProxyNode”。
 > 
 > - 如果BuilderNode通过getFrameNode将节点挂载在另一个FrameNode上，或者将其作为子节点挂载在NodeContainer节点上。则节点中使用父组件的布局约束进行布局。
 > 
-> - 如果BuilderNode的FrameNode通过getRenderNode形式将自己的节点挂载在RenderNode节点上，由于其FrameNode未上树，其大小默认为0，需要通过构造函数中的selfIdealSize显式指定布局约束大小，才能正常显示。
+> - 如果BuilderNode的FrameNode通过[getRenderNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#getrendernode)形式将自己的节点挂载在RenderNode节点上，由于其FrameNode未上树，其大小默认为0，需要通过构造函数中的[selfIdealSize](../reference/apis-arkui/js-apis-arkui-builderNode.md#renderoptions)显式指定布局约束大小，才能正常显示。
 > 
 > - BuilderNode的预加载并不会减少组件的创建时间。Web组件创建的时候需要在内核中加载资源，预创建不能减少Web组件的创建时间，但是可以让内核进行预加载，减少正式使用时候内核的加载耗时。
 
 ## 创建BuilderNode对象
 
-BuilderNode对象为一个模板类，需要在创建的时候指定类型。该类型需要与后续build方法中传入的WrappedBuilder的类型保持一致，否则会存在编译告警导致编译失败。
+BuilderNode对象为一个模板类，需要在创建的时候指定类型。该类型需要与后续build方法中传入的[WrappedBuilder](../ui/state-management/arkts-wrapBuilder.md)的类型保持一致，否则会存在编译告警导致编译失败。
 
 ## 创建组件树
 
@@ -55,15 +55,15 @@ BuilderNode对象为一个模板类，需要在创建的时候指定类型。该
 >
 > build中对于@Builder嵌套@Builder进行使用的场景，需要保证嵌套的参数与build中提供的入参一致。
 > 
-> 对于@Builder嵌套@Builder进行使用的场景，如果入参类型不一致，则要求增加BuildOptions字段作为build的入参。
+> 对于@Builder嵌套@Builder进行使用的场景，如果入参类型不一致，则要求增加[BuildOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#buildoptions12)字段作为[build](../reference/apis-arkui/js-apis-arkui-builderNode.md#build12)的入参。
 > 
 > 需要操作BuilderNode中的对象时，需要保证其引用不被回收。当BuilderNode对象被虚拟机回收之后，它的FrameNode、RenderNode对象也会与后端节点解引用。即从BuilderNode中获取的FrameNode对象不对应任何一个节点。
 
 创建离线节点以及组件树，结合FrameNode进行使用。
 
-BuilderNode的根节点直接作为NodeController的makeNode返回值。
+BuilderNode的根节点直接作为[NodeController](../reference/apis-arkui/js-apis-arkui-nodeController.md)的[makeNode](../reference/apis-arkui/js-apis-arkui-nodeController.md#makenode)返回值。
 
-  <!-- @Main_FrameNode -->   
+  <!-- @[Main_FrameNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/FrameNode.ets) -->   
   
   ``` TypeScript
   import { BuilderNode, FrameNode, NodeController, UIContext } from '@kit.ArkUI';
@@ -125,9 +125,9 @@ BuilderNode的根节点直接作为NodeController的makeNode返回值。
 
 将BuilderNode与RenderNode进行结合使用。
 
-BuilderNode的RenderNode挂载其它RenderNode下时，需要明确定义RenderOptions的selfIdealSize属性的大小作为BuilderNode的布局约束。不建议通过该方式挂载节点。
+BuilderNode的RenderNode挂载其它RenderNode下时，需要明确定义[RenderOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#renderoptions)的selfIdealSize属性的大小作为BuilderNode的布局约束。不建议通过该方式挂载节点。
 
-  <!-- @Main_RenderNode -->
+  <!-- @[Main_RenderNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/RenderNode.ets) -->
   
   ``` TypeScript
   import { NodeController, BuilderNode, FrameNode, UIContext, RenderNode } from '@kit.ArkUI';
@@ -201,16 +201,16 @@ BuilderNode的RenderNode挂载其它RenderNode下时，需要明确定义RenderO
 
 ## 更新组件树
 
-自定义组件的更新遵循状态管理的更新机制。WrappedBuilder中直接使用的自定义组件其父组件为BuilderNode对象。因此，更新子组件即WrappedBuilder中定义的自定义组件，需要遵循状态管理的定义将相关的状态变量定义为\@Prop或者\@ObjectLink。装饰器的选择请参照状态管理的装饰器规格结合应用开发需求进行选择。
+自定义组件的更新遵循[状态管理](../ui/state-management/arkts-state-management-overview.md)的更新机制。WrappedBuilder中直接使用的自定义组件其父组件为BuilderNode对象。因此，更新子组件即WrappedBuilder中定义的自定义组件，需要遵循状态管理的定义将相关的状态变量定义为[\@Prop](../ui/state-management/arkts-prop.md)或者[\@ObjectLink](../ui/state-management/arkts-observed-and-objectlink.md)。装饰器的选择请参照状态管理的装饰器规格结合应用开发需求进行选择。
 
 
 使用update更新BuilderNode中的节点。
 
-使用updateConfiguration触发BuilderNode中节点的全量更新。
+使用[updateConfiguration](../reference/apis-arkui/js-apis-arkui-builderNode.md#updateconfiguration12)触发BuilderNode中节点的全量更新。
 
 更新BuilderNode中的节点。
 
-  <!-- @Main_WrappedBuilder -->
+  <!-- @[Main_WrappedBuilder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/WrappedBuilder.ets) -->
   
   ``` TypeScript
   import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI'; 
@@ -310,11 +310,11 @@ BuilderNode的RenderNode挂载其它RenderNode下时，需要明确定义RenderO
   }
   ```
   
-  zh-cn_image_update_BuilderNode
+  ![zh-cn_image_update_BuilderNode](figures/update-BuilderNode.gif)
 
 ## 解除实体节点引用关系
 
-由于BuilderNode对应的是后端的实体节点，正常的内存释放依赖前端对象的回收。如果期望直接释放后端的节点对象，则可以通过调用dispose与实体节点解除引用关系，此时持有的前端BuilderNode对象不再影响实体节点的生命周期。
+由于BuilderNode对应的是后端的实体节点，正常的内存释放依赖前端对象的回收。如果期望直接释放后端的节点对象，则可以通过调用[dispose](../reference/apis-arkui/js-apis-arkui-builderNode.md#dispose12)与实体节点解除引用关系，此时持有的前端BuilderNode对象不再影响实体节点的生命周期。
 
 > **说明：**
 >
@@ -324,13 +324,13 @@ BuilderNode的RenderNode挂载其它RenderNode下时，需要明确定义RenderO
 
 ## 注入触摸事件
 
-BuilderNode中提供了postTouchEvent，可以通过该接口向BuilderNode中绑定的组件注入触摸事件，实现事件的模拟转发。
+BuilderNode中提供了[postTouchEvent](../reference/apis-arkui/js-apis-arkui-builderNode.md#posttouchevent)，可以通过该接口向BuilderNode中绑定的组件注入[触摸事件](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md)，实现事件的模拟转发。
 
 通过postTouchEvent向BuilderNode对应的节点树中注入触摸事件。
 
 向BuilderNode中的Column组件转发另一个Column接收的事件，即点击下方的Column组件，上方的Column组件也会收到同样的触摸事件。当Button中的事件被成功识别的时候，返回值为true。
 
-  <!-- @Main_PostTouchEvent -->
+  <!-- @[Main_PostTouchEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/PostTouchEvent.ets) -->
   
   ``` TypeScript
   import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
@@ -414,11 +414,11 @@ BuilderNode中提供了postTouchEvent，可以通过该接口向BuilderNode中�
 
 若传入的Builder的根节点为语法节点（if/else/foreach/…）或自定义组件，将额外生成一个FrameNode，在节点树中显示为“BuilderProxyNode”，这会导致树结构变化，影响某些测试的传递过程。
 
-在以下示例中，Column和Row绑定了触摸事件，同时Column设置了hitTestBehavior属性为HitTestMode.Transparent。然而，由于生成了BuilderProxyNode，且BuilderProxyNode无法设置属性，因此在触摸Column时，Column的触摸测试无法传递到Row上。
+在以下示例中，Column和Row绑定了触摸事件，同时Column设置了[hitTestBehavior](../reference/apis-arkui/arkui-ts/ts-universal-attributes-hit-test-behavior.md#hittestbehavior)属性为[HitTestMode.Transparent](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#hittestmode9)。然而，由于生成了BuilderProxyNode，且BuilderProxyNode无法设置属性，因此在触摸Column时，Column的触摸测试无法传递到Row上。
 
-BuilderNode_BuilderProxyNode_1
+![BuilderNode_BuilderProxyNode_1](figures/BuilderNode_BuilderProxyNode_1.png)
 
-  <!-- @Main_BuilderProxyNode01 --> 
+  <!-- @[Main_BuilderProxyNode01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/BuilderProxyNode01.ets) --> 
   
   ``` TypeScript
   import { BuilderNode, typeNode, NodeController, UIContext } from '@kit.ArkUI';
@@ -500,9 +500,9 @@ BuilderNode_BuilderProxyNode_1
 
 在上述场景中，若要实现触摸测试的传递，可以使用一个容器组件包裹语法节点或自定义组件，以避免生成BuilderProxyNode，并将容器组件的hitTestBehavior设置为HitTestMode.Transparent，从而向兄弟节点传递触摸测试。
 
-BuilderNode_BuilderProxyNode_2
+![BuilderNode_BuilderProxyNode_2](figures/BuilderNode_BuilderProxyNode_2.png)
 
-  <!-- @Main_BuilderProxyNode02 --> 
+  <!-- @[Main_BuilderProxyNode02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/BuilderProxyNode02.ets) --> 
   
   ``` TypeScript
   import { BuilderNode, typeNode, NodeController, UIContext } from '@kit.ArkUI';
@@ -587,9 +587,9 @@ BuilderNode_BuilderProxyNode_2
 
 此外，对于自定义组件，可以直接设置属性，此时将额外生成节点__Common__，自定义组件的属性将挂载于__Common__上，同样能够实现上述效果。
 
-BuilderNode_BuilderProxyNode_3
+![BuilderNode_BuilderProxyNode_3](figures/BuilderNode_BuilderProxyNode_3.png)
 
-  <!-- @Main_BuilderProxyNode03 --> 
+  <!-- @[Main_BuilderProxyNode03](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/BuilderProxyNode03.ets) --> 
   
   ``` TypeScript
   import { BuilderNode, typeNode, NodeController, UIContext } from '@kit.ArkUI';
@@ -671,14 +671,14 @@ BuilderNode_BuilderProxyNode_3
 
 ## BuilderNode调用reuse和recycle接口实现节点复用能力
 
-调用reuse接口和recycle接口，将复用和回收事件传递至BuilderNode中的自定义组件，以实现BuilderNode节点内部的自定义组件的复用。
+调用[reuse](../reference/apis-arkui/js-apis-arkui-builderNode.md#reuse12)接口和[recycle](../reference/apis-arkui/js-apis-arkui-builderNode.md#recycle12)接口，将复用和回收事件传递至BuilderNode中的自定义组件，以实现BuilderNode节点内部的自定义组件的复用。
 
 以下面的Demo为例，被复用的自定义组件ReusableChildComponent可以传递复用和回收事件到其下的自定义组件ChildComponent3，但无法传递给自定义组件ChildComponent2，因为被BuilderNode所隔断。因此需要主动调用BuilderNode的reuse和recycle接口，将复用和回收事件传递给自定义组件ChildComponent2，以实现复用效果。
 
-zh-cn_image_reuse-recycle
+![zh-cn_image_reuse-recycle](figures/reuse-recycle.png)
 
 
-  <!-- @Main_ReusablePage01 --> 
+  <!-- @[Main_ReusablePage01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/ReusablePage01.ets) --> 
   
   ``` TypeScript
   import { FrameNode, NodeController, BuilderNode, UIContext } from '@kit.ArkUI';
@@ -863,13 +863,13 @@ zh-cn_image_reuse-recycle
 
 ## BuilderNode在子自定义组件中使用@Reusable装饰器
 
-BuilderNode节点的复用机制与使用@Reusable装饰器的自定义组件的复用机制会相互冲突。因此，当BuilderNode的子节点为自定义组件时，不支持该自定义组件使用@Reusable装饰器标记，否则将导致应用程序触发JSCrash。若需要使用@Reusable装饰器，应使用一个普通自定义组件包裹该自定义组件。
+BuilderNode节点的复用机制与使用[@Reusable](./state-management/arkts-reusable.md)装饰器的自定义组件的复用机制会相互冲突。因此，当BuilderNode的子节点为自定义组件时，不支持该自定义组件使用@Reusable装饰器标记，否则将导致应用程序触发JSCrash。若需要使用@Reusable装饰器，应使用一个普通自定义组件包裹该自定义组件。
 
 在下面的示例中，ReusableChildComponent作为BuilderNode的子自定义组件，无法标记为@Reusable。通过ChildComponent2对其包裹，ReusableChildComponent可以使用@Reusable装饰器标记。
 
-BuilderNode-Reusable
+![BuilderNode-Reusable](figures/BuilderNode-Reusable.png)
 
-  <!-- @Main_ReusablePage02 --> 
+  <!-- @[Main_ReusablePage02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/ReusablePage02.ets) --> 
   
   ``` TypeScript
   import { FrameNode, NodeController, BuilderNode, UIContext } from '@kit.ArkUI';
@@ -965,13 +965,13 @@ BuilderNode-Reusable
 
 ## 通过系统环境变化更新节点
 
-使用updateConfiguration来监听系统环境变化事件，以触发节点的全量更新。系统环境变化详情参见@ohos.app.ability.Configuration (环境变量)。
+使用[updateConfiguration](../reference/apis-arkui/js-apis-arkui-builderNode.md#updateconfiguration12)来监听系统环境变化事件，以触发节点的全量更新。系统环境变化详情参见[@ohos.app.ability.Configuration (环境变量)](../reference/apis-ability-kit/js-apis-app-ability-configuration.md)。
 
 > **说明：**
 >
 > updateConfiguration接口用于通知对象进行更新，更新所使用的系统环境取决于应用当前系统环境的变化。
 
-  <!-- @Main_EnvironmentCallbackPage -->
+  <!-- @[Main_EnvironmentCallbackPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/EnvironmentCallbackPage.ets) -->
   
   ``` TypeScript
   import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
@@ -1112,9 +1112,9 @@ BuilderNode-Reusable
 
 ## 跨页面复用注意事项
 
-在使用Class (Router)的接口router.replaceUrl、router.back、router.clear、router.replaceNamedRoute操作页面时，若某个被缓存的BuilderNode位于即将销毁的页面内，那么在新页面中复用该BuilderNode时，可能会存在数据无法更新或新创建节点无法显示的问题。以router.replaceNamedRoute为例，在以下示例代码中，当点击“router replace”按钮后，页面将切换至PageTwo，同时标志位isShowText会被设定为false。
+在使用[Class (Router)](../reference/apis-arkui/arkts-apis-uicontext-router.md)的接口[router.replaceUrl](../reference/apis-arkui/arkts-apis-uicontext-router.md#replaceurl)、[router.back](../reference/apis-arkui/arkts-apis-uicontext-router.md#back)、[router.clear](../reference/apis-arkui/arkts-apis-uicontext-router.md#clear)、[router.replaceNamedRoute](../reference/apis-arkui/arkts-apis-uicontext-router.md#replacenamedroute)操作页面时，若某个被缓存的BuilderNode位于即将销毁的页面内，那么在新页面中复用该BuilderNode时，可能会存在数据无法更新或新创建节点无法显示的问题。以[router.replaceNamedRoute](../reference/apis-arkui/arkts-apis-uicontext-router.md#replacenamedroute)为例，在以下示例代码中，当点击“router replace”按钮后，页面将切换至PageTwo，同时标志位isShowText会被设定为false。
 
-  <!-- @Main_RouterPage3 --> 
+  <!-- @[Main_RouterPage3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/RouterPage3.ets) --> 
   
   ``` TypeScript
   // ets/pages/RouterPage3.ets
@@ -1206,7 +1206,7 @@ BuilderNode-Reusable
 
 PageTwo的实现如下：
 
-  <!-- @Main_RouterPage2 --> 
+  <!-- @[Main_RouterPage2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/RouterPage2.ets) --> 
   
   ``` TypeScript
   // ets/pages/RouterPage2.ets
@@ -1231,13 +1231,13 @@ PageTwo的实现如下：
   }
   ```
 
-BuilderNode Reuse Example
+![BuilderNode Reuse Example](./figures/builder_node_reuse.gif)
 
-在API version 16之前，解决该问题的方法是在页面销毁时，将页面上的BuilderNode从缓存中移除。以上述例子为例，可以在页面跳转前，通过点击事件将BuilderNode从AppStorage中移除，以此达到预期效果。
+在API version 16之前，解决该问题的方法是在页面销毁时，将页面上的BuilderNode从缓存中移除。以上述例子为例，可以在页面跳转前，通过点击事件将BuilderNode从[AppStorage](../ui/state-management/arkts-appstorage.md)中移除，以此达到预期效果。
 
 API version 16及之后版本，BuilderNode在新页面被复用时，会自动刷新自身内容，无需在页面销毁时将BuilderNode从缓存中移除，如下所示。
 
-  <!-- @Main_RouterPage1 -->
+  <!-- @[Main_RouterPage1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/RouterPage1.ets) -->
   
   ``` TypeScript
   // ets/pages/RouterPage1.ets
@@ -1328,9 +1328,9 @@ API version 16及之后版本，BuilderNode在新页面被复用时，会自动�
 
 ## BuilderNode中使用LocalStorage
 
-从API version 12开始，自定义组件支持接收LocalStorage实例。可以通过传递LocalStorage实例来使用LocalStorage相关的装饰器@LocalStorageProp、@LocalStorageLink。
+从API version 12开始，自定义组件支持接收[LocalStorage](../ui/state-management/arkts-localstorage.md)实例。可以通过[传递LocalStorage实例](../ui/state-management/arkts-localstorage.md#自定义组件接收localstorage实例)来使用LocalStorage相关的装饰器[@LocalStorageProp](../ui/state-management/arkts-localstorage.md#localstorageprop)、[@LocalStorageLink](../ui/state-management/arkts-localstorage.md#localstoragelink)。
 
-  <!-- @Main_LocalStoragePage -->
+  <!-- @[Main_LocalStoragePage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/LocalStoragePage.ets) -->
   
   ``` TypeScript
   import { BuilderNode, NodeController, UIContext } from '@kit.ArkUI';
@@ -1411,9 +1411,9 @@ API version 16及之后版本，BuilderNode在新页面被复用时，会自动�
 
 前端节点均绑定有相应的后端实体节点，当节点调用dispose接口解除绑定后，再次调用接口可能会出现crash、返回默认值的情况。
 
-从API version 20开始，使用isDisposed接口查询当前BuilderNode对象是否已解除与后端实体节点的引用关系，从而可以在操作节点前检查其有效性，避免潜在风险。
+从API version 20开始，使用[isDisposed](../reference/apis-arkui/js-apis-arkui-builderNode.md#isdisposed20)接口查询当前BuilderNode对象是否已解除与后端实体节点的引用关系，从而可以在操作节点前检查其有效性，避免潜在风险。
 
-  <!-- @Main_IsDisposedPage --> 
+  <!-- @[Main_IsDisposedPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/IsDisposedPage.ets) --> 
   
   ``` TypeScript
   import { NodeController, FrameNode, BuilderNode } from '@kit.ArkUI';
@@ -1493,31 +1493,31 @@ API version 16及之后版本，BuilderNode在新页面被复用时，会自动�
 
 ## 设置BuilderNode继承冻结能力
 
-ArkUI支持自定义组件冻结，该功能冻结非激活状态组件的刷新能力。当组件处于非激活状态时，即便其绑定状态变量发生变化，也不会触发组件UI的重新渲染，从而减少复杂UI场景的刷新负载。
+ArkUI支持[自定义组件冻结](./state-management/arkts-custom-components-freeze.md)，该功能冻结非激活状态组件的刷新能力。当组件处于非激活状态时，即便其绑定状态变量发生变化，也不会触发组件UI的重新渲染，从而减少复杂UI场景的刷新负载。
 
-从API version 20开始，BuilderNode节点可以通过inheritFreezeOptions接口继承父自定义组件（即从该BuilderNode节点向上查找的第一个自定义组件）的冻结策略。当BuilderNode节点继承父自定义组件的冻结策略时，若父自定义组件的冻结策略设置为开启组件冻结（即freezeWhenInactive选项设为true），则BuilderNode节点在不活跃时将会冻结，当切换至活跃状态时解冻，并使用缓存的数据更新节点。
+从API version 20开始，BuilderNode节点可以通过[inheritFreezeOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20)接口继承父自定义组件（即从该BuilderNode节点向上查找的第一个自定义组件）的冻结策略。当BuilderNode节点继承父自定义组件的冻结策略时，若父自定义组件的冻结策略设置为开启组件冻结（即[freezeWhenInactive](../reference/apis-arkui/arkui-ts/ts-custom-component-parameter.md#componentoptions)选项设为true），则BuilderNode节点在不活跃时将会冻结，当切换至活跃状态时解冻，并使用缓存的数据更新节点。
 
 BuilderNode节点只有通过以下方式上下树时，才会根据该节点是否继承父自定义组件的冻结策略，来更新自己的冻结策略：
 
 | 类 | 接口 |
 | -------- | -------- |
-| FrameNode | appendChild、insertChildAfter、removeChild、clearChildren、addComponentContent |
-| NodeContent | addFrameNode、removeFrameNode |
-| NodeController | makeNode |
-| RenderNode | appendChild、insertChildAfter、removeChild、clearChildren |
-| NodeAdapter | 节点通过LazyForEach方式上下树时 |
+| [FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md) | [appendChild](../reference/apis-arkui/js-apis-arkui-frameNode.md#appendchild12)、[insertChildAfter](../reference/apis-arkui/js-apis-arkui-frameNode.md#insertchildafter12)、[removeChild](../reference/apis-arkui/js-apis-arkui-frameNode.md#removechild12)、[clearChildren](../reference/apis-arkui/js-apis-arkui-frameNode.md#clearchildren12)、[addComponentContent](../reference/apis-arkui/js-apis-arkui-frameNode.md#addcomponentcontent12) |
+| [NodeContent](../reference/apis-arkui/js-apis-arkui-NodeContent.md) | [addFrameNode](../reference/apis-arkui/js-apis-arkui-NodeContent.md#addframenode)、[removeFrameNode](../reference/apis-arkui/js-apis-arkui-NodeContent.md#removeframenode) |
+| [NodeController](../reference/apis-arkui/js-apis-arkui-nodeController.md) | [makeNode](../reference/apis-arkui/js-apis-arkui-nodeController.md#makenode) |
+| [RenderNode](../reference/apis-arkui/js-apis-arkui-renderNode.md) | [appendChild](../reference/apis-arkui/js-apis-arkui-renderNode.md#appendchild)、[insertChildAfter](../reference/apis-arkui/js-apis-arkui-renderNode.md#insertchildafter)、[removeChild](../reference/apis-arkui/js-apis-arkui-renderNode.md#removechild)、[clearChildren](../reference/apis-arkui/js-apis-arkui-renderNode.md#clearchildren) |
+| [NodeAdapter](../reference/apis-arkui/js-apis-arkui-frameNode.md#nodeadapter12) | 节点通过[LazyForEach](../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md)方式上下树时 |
 
 > **说明：**
 >
 > 当BuilderNode节点设置为继承父自定义组件的冻结策略时，BuilderNode节点的冻结策略将与其上层最近的自定义组件或BuilderNode节点的冻结策略保持一致。
 >
-> 当BuilderNode节点被冻结时，调用update接口不会触发节点的更新，等其被解冻时再更新节点。
+> 当BuilderNode节点被冻结时，调用[update](../reference/apis-arkui/js-apis-arkui-builderNode.md#update)接口不会触发节点的更新，等其被解冻时再更新节点。
 
 ### BuilderNode常用冻结场景（状态管理V1）
 
-从API version 20开始，在状态管理V1中，当BuilderNode节点开启冻结（即inheritFreezeOptions设置为true）并继承父自定义组件的冻结策略时，如果父自定义组件的冻结策略设置为开启组件冻结（即freezeWhenInactive选项设为true），则BuilderNode节点在不活跃时将会冻结。当切换至活跃状态时，节点将解冻并使用缓存的数据进行更新，示例如下。
+从API version 20开始，在状态管理V1中，当BuilderNode节点开启冻结（即[inheritFreezeOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20)设置为true）并继承父自定义组件的冻结策略时，如果父自定义组件的冻结策略设置为开启组件冻结（即freezeWhenInactive选项设为true），则BuilderNode节点在不活跃时将会冻结。当切换至活跃状态时，节点将解冻并使用缓存的数据进行更新，示例如下。
 
-  <!-- @Main_InheritFreezeOptionsPage -->
+  <!-- @[Main_InheritFreezeOptionsPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/InheritFreezeOptionsPage.ets) -->
   
   ``` TypeScript
   import { BuilderNode, FrameNode, NodeController } from '@kit.ArkUI';
@@ -1714,21 +1714,21 @@ BuilderNode节点只有通过以下方式上下树时，才会根据该节点是
   }
   ```
 
-inheritFreezeOptions
+![inheritFreezeOptions](figures/builderNode_inheritFreezeOptions.gif)
 
 ### BuilderNode常用冻结场景（状态管理V2）
 
-从API version 22开始，在状态管理V2中，BuilderNode冻结开启方式和在状态管理V1中的开启方式一致，当BuilderNode节点开启冻结（即inheritFreezeOptions设置为true）并继承父自定义组件的冻结策略时，如果父自定义组件的冻结策略设置为开启组件冻结（即freezeWhenInactive选项设为true），则BuilderNode节点在不活跃时将会冻结。当切换至活跃状态时，节点将解冻并使用缓存的数据进行更新。以下示例展示了几种状态管理V2常用的BuilderNode冻结场景。
+从API version 22开始，在状态管理V2中，BuilderNode冻结开启方式和在状态管理V1中的开启方式一致，当BuilderNode节点开启冻结（即[inheritFreezeOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20)设置为true）并继承父自定义组件的冻结策略时，如果父自定义组件的冻结策略设置为开启组件冻结（即freezeWhenInactive选项设为true），则BuilderNode节点在不活跃时将会冻结。当切换至活跃状态时，节点将解冻并使用缓存的数据进行更新。以下示例展示了几种状态管理V2常用的BuilderNode冻结场景。
 
 **页面路由**
 
-当BuilderNode节点开启冻结（即inheritFreezeOptions设置为true）并且继承父自定义组件的冻结策略设置为开启组件冻结（即freezeWhenInactive选项设为true）时，页面1调用router.pushUrl接口跳转到页面2时，页面1为隐藏不可见状态，此时如果更新页面1中的状态变量，不会触发页面1刷新。图示如下：
+当BuilderNode节点开启冻结（即[inheritFreezeOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20)设置为true）并且继承父自定义组件的冻结策略设置为开启组件冻结（即freezeWhenInactive选项设为true）时，页面1调用router.pushUrl接口跳转到页面2时，页面1为隐藏不可见状态，此时如果更新页面1中的状态变量，不会触发页面1刷新。图示如下：
 
-alt text
+![alt text](state-management/figures/freezeInPage.png)
 
 页面1示例代码如下：
 
-<!-- @Main_inheritFreezeRouterPage1 -->
+<!-- @[Main_inheritFreezeRouterPage1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/inheritFreezeRouterPage1.ets) -->
 
 ``` TypeScript
 import { BuilderNode, FrameNode, NodeController } from '@kit.ArkUI';
@@ -1812,7 +1812,7 @@ struct BuildNodeChild {
 
 页面2-inheritFreezeRouterPage2（即页面1的下一页）示例代码如下：
 
-<!-- @Main_inheritFreezeRouterPage2 -->
+<!-- @[Main_inheritFreezeRouterPage2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/inheritFreezeRouterPage2.ets) -->
 
 ``` TypeScript
 @Entry
@@ -1830,7 +1830,7 @@ struct Page2 {
 }
 ```
 
-inheritFreezeOptions
+![inheritFreezeOptions](figures/V2Routing.gif)
 
 在上面的示例中：
 
@@ -1840,15 +1840,15 @@ inheritFreezeOptions
 
 **TabContent**
 
-当BuilderNode节点开启冻结（即inheritFreezeOptions设置为true）并且继承父自定义组件的冻结策略设置为开启组件冻结（即freezeWhenInactive选项设为true）时，BuilderNode的子组件在不活跃时将会冻结，当切换至活跃状态时解冻。
+当BuilderNode节点开启冻结（即[inheritFreezeOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20)设置为true）并且继承父自定义组件的冻结策略设置为开启组件冻结（即freezeWhenInactive选项设为true）时，BuilderNode的子组件在不活跃时将会冻结，当切换至活跃状态时解冻。
 
 在首次渲染的时候，Tabs只会创建当前正在显示的TabContent，当切换全部的TabContent后，TabContent才会被全部创建。
 
 图示如下：
 
-freezeWithTab
+![freezeWithTab](state-management/figures/freezewithTabs.png)
 
-<!-- @Main_TabContentPage -->
+<!-- @[Main_TabContentPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/TabContentPage.ets) -->
 
 ``` TypeScript
 import { BuilderNode, FrameNode, NodeController } from '@kit.ArkUI';
@@ -1965,7 +1965,7 @@ struct buildNodeChild {
 }
 ```
 
-inheritFreezeOptions
+![inheritFreezeOptions](figures/V2tabFree.gif)
 
 在上面的示例中：
 
@@ -1977,9 +1977,9 @@ inheritFreezeOptions
 
 **Navigation**
 
-Navigation组件的BuilderNode冻结功能（通过配置inheritFreezeOptions为true）是组件冻结机制在导航场景下的延伸，核心作用是优化包含BuilderNode的Navigation组件在页面切换或状态更新时的性能，避免非活跃状态下的冗余计算和渲染。当BuilderNode所在的Navigation页面处于非活跃状态（如被切换到后台、隐藏在Tab页/侧边栏后等），系统会将其标记为 “冻结”。冻结状态下，该BuilderNode的子组件会暂停状态更新、事件响应和渲染刷新（如@State、@Prop等状态变化不会触发重新渲染，生命周期回调暂时失效）。通过配置inheritFreezeOptions为true，BuilderNode会继承父组件（如Navigation）的冻结状态，确保其下的整个子组件树同步进入冻结状态，避免局部未冻结导致的性能浪费。
+Navigation组件的BuilderNode冻结功能（通过配置[inheritFreezeOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20)为true）是组件冻结机制在导航场景下的延伸，核心作用是优化包含BuilderNode的Navigation组件在页面切换或状态更新时的性能，避免非活跃状态下的冗余计算和渲染。当BuilderNode所在的Navigation页面处于非活跃状态（如被切换到后台、隐藏在Tab页/侧边栏后等），系统会将其标记为 “冻结”。冻结状态下，该BuilderNode的子组件会暂停状态更新、事件响应和渲染刷新（如@State、@Prop等状态变化不会触发重新渲染，生命周期回调暂时失效）。通过配置[inheritFreezeOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20)为true，BuilderNode会继承父组件（如Navigation）的冻结状态，确保其下的整个子组件树同步进入冻结状态，避免局部未冻结导致的性能浪费。
 
-<!-- @Main_NavigationPage -->
+<!-- @[Main_NavigationPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/NavigationPage.ets) -->
 
 ``` TypeScript
 import { BuilderNode, FrameNode, NodeController } from '@kit.ArkUI';
@@ -2173,7 +2173,7 @@ struct TextBuilder {
 }
 ```
 
-inheritFreezeOptions
+![inheritFreezeOptions](figures/V2Navination.gif)
 
 在上面的示例中：
 
@@ -2185,9 +2185,9 @@ inheritFreezeOptions
 
 **Repeat**
 
-Repeat组件（用于循环生成子组件）的BuilderNode冻结功能（通过设置BuilderNode的inheritFreezeOptions为true启用），是组件冻结机制在循环列表场景下的具体应用，核心目的是优化列表中重复生成的子组件在非活跃状态下的性能，减少不必要的资源消耗。当BuilderNode生成的子组件处于非活跃状态（如列表项被滚动出屏幕、父组件进入冻结状态、或整个列表不可见时），系统会将该BuilderNode及其子组件树标记为“冻结”。冻结状态下，该BuilderNode对应的列表项会暂停状态更新（如@Local、@Param等状态变化不会触发重新渲染）、事件响应（如点击、滑动等事件暂时失效）和生命周期回调，避免后台无效计算。通过inheritFreezeOptions设置为true，BuilderNode会继承Repeat父组件的冻结状态，确保循环生成的每个子组件都能同步遵循冻结规则，避免局部未冻结导致的性能浪费。
+Repeat组件（用于循环生成子组件）的BuilderNode冻结功能（通过设置BuilderNode的[inheritFreezeOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20)为true启用），是组件冻结机制在循环列表场景下的具体应用，核心目的是优化列表中重复生成的子组件在非活跃状态下的性能，减少不必要的资源消耗。当BuilderNode生成的子组件处于非活跃状态（如列表项被滚动出屏幕、父组件进入冻结状态、或整个列表不可见时），系统会将该BuilderNode及其子组件树标记为“冻结”。冻结状态下，该BuilderNode对应的列表项会暂停状态更新（如@Local、@Param等状态变化不会触发重新渲染）、事件响应（如点击、滑动等事件暂时失效）和生命周期回调，避免后台无效计算。通过[inheritFreezeOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20)设置为true，BuilderNode会继承Repeat父组件的冻结状态，确保循环生成的每个子组件都能同步遵循冻结规则，避免局部未冻结导致的性能浪费。
 
-<!-- @Main_RepeatPage -->
+<!-- @[Main_RepeatPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/RepeatPage.ets) -->
 
 ``` TypeScript
 import { BuilderNode, FrameNode, NodeController, UIContext } from '@kit.ArkUI';
@@ -2324,19 +2324,19 @@ struct BuildNodeChild {
 }
 ```
 
-  inheritFreezeOptions
+  ![inheritFreezeOptions](figures/20251015-191040.gif)
 
 在上面的示例中：
 
 点击`Reduce length to 5`后，被移除的两个组件会进入Repeat缓存池，然后点击`Change bgColor`更改bgColor的值触发节点刷新。
 
-开启组件冻结（freezeWhenInactive: true）和BuilderNode节点开启冻结（即inheritFreezeOptions: true），只有剩余节点中@Monitor装饰的方法onMessageChange被触发，如示例中屏上的5个节点会刷新并打印BuilderNode子组件monitor的5条日志，缓存池中的节点则不会。
+开启组件冻结（freezeWhenInactive: true）和BuilderNode节点开启冻结（即[inheritFreezeOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20): true），只有剩余节点中@Monitor装饰的方法onBgColorChange被触发，如示例中屏上的5个节点会刷新并打印BuilderNode子组件monitor的5条日志，缓存池中的节点则不会。
 
 **Repeat和TabContent混用**
 
-BuilderNode节点开启冻结功能（即通过设置inheritFreezeOptions为true）后，支持与Repeat、TabContent等不同组件混合使用，示例如下：
+BuilderNode节点开启冻结功能（即通过设置[inheritFreezeOptions](../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20)为true）后，支持与Repeat、TabContent等不同组件混合使用，示例如下：
 
-<!-- @Main_RepeatTabPage -->
+<!-- @[Main_RepeatTabPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/RepeatTabPage.ets) -->
 
 ``` TypeScript
 import { BuilderNode, FrameNode, NodeController, UIContext } from '@kit.ArkUI';
@@ -2465,7 +2465,7 @@ struct FreezeBuildNode {
 }
 ```
 
-inheritFreezeOptions
+![inheritFreezeOptions](figures/V2RepeatTabs.gif)
 
 在上面的示例中：
 
@@ -2477,15 +2477,15 @@ inheritFreezeOptions
 
 ## 设置BuilderNode支持内部@Consume接收外部的@Provide数据（状态管理V1）
 
-从API version 20开始，通过配置BuildOptions参数，BuilderNode内部自定义组件的@Consume支持接收所在页面的@Provide数据。
+从API version 20开始，通过配置BuildOptions参数，BuilderNode内部自定义组件的[@Consume](./state-management/arkts-provide-and-consume.md)支持接收所在页面的[@Provide](./state-management/arkts-provide-and-consume.md)数据。
 
-参见示例5（BuilderNode支持内部@Consume接收外部的@Provide数据）。
+参见[示例5（BuilderNode支持内部@Consume接收外部的@Provide数据）](../reference/apis-arkui/js-apis-arkui-builderNode.md#示例5buildernode支持内部consume接收外部的provide数据)。
 
 ## 设置BuilderNode支持内部@Consumer接收外部的@Provider数据（状态管理V2）
 
-从API version 23开始，通过配置BuildOptions参数，BuilderNode内部自定义组件的@Consumer支持接收所在页面的@Provider数据。
+从API version 23开始，通过配置BuildOptions参数，BuilderNode内部自定义组件的[@Consumer](./state-management/arkts-new-provider-and-consumer.md)支持接收所在页面的[@Provider](./state-management/arkts-new-provider-and-consumer.md)数据。
     
-参见示例6（BuilderNode支持内部@Consumer接收外部的@Provider数据）。
+参见[示例6（BuilderNode支持内部@Consumer接收外部的@Provider数据）](../reference/apis-arkui/js-apis-arkui-builderNode.md#示例6buildernode支持内部consumer接收外部的provider数据)。
 
 ## BuilderNode结合ArkWeb组件实现预渲染页面
 
@@ -2493,11 +2493,11 @@ inheritFreezeOptions
 
 > **说明**
 >
-> 访问在线网页时需添加网络权限：ohos.permission.INTERNET，具体申请方式请参考声明权限。
+> 访问在线网页时需添加网络权限：ohos.permission.INTERNET，具体申请方式请参考[声明权限](../security/AccessToken/declare-permissions.md)。
 
 1. 创建载体Ability，并创建Web组件。
 
-    <!-- @Web_createNWeb -->
+    <!-- @[Web_createNWeb](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/entryability/EntryAbility.ets) -->
     
     ``` TypeScript
     import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -2530,7 +2530,7 @@ inheritFreezeOptions
 
 2. 创建NodeContainer和对应的NodeController，渲染后台Web组件。
 
-    <!-- @Common_CommonIndex -->   
+    <!-- @[Common_CommonIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/Common/CommonIndex.ets) -->   
     
     ``` TypeScript
     import { UIContext, NodeController, BuilderNode, Size, FrameNode } from '@kit.ArkUI';
@@ -2640,7 +2640,7 @@ inheritFreezeOptions
 
 3. 通过NodeContainer使用已经预渲染的页面。
 
-    <!-- @Main_ArkWebPage --> 
+    <!-- @[Main_ArkWebPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/ArkWebPage.ets) --> 
     
     ``` TypeScript
     // 使用NodeController的Page页。

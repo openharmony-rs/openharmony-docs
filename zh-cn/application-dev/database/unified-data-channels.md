@@ -37,7 +37,7 @@ UDMF针对多对多跨应用数据共享的不同业务场景提供了标准化�
 
 ## 接口说明
 
-以下是UDMF标准化数据通路的相关接口，更多接口及使用方式请见标准化数据通路和标准化数据定义与描述。
+以下是UDMF标准化数据通路的相关接口，更多接口及使用方式请见[标准化数据通路](../reference/apis-arkdata/js-apis-data-unifiedDataChannel.md)和[标准化数据定义与描述](../reference/apis-arkdata/js-apis-data-uniformTypeDescriptor.md)。
 
 | 接口名称                                                                                    | 描述                                          | 
 |-----------------------------------------------------------------------------------------|---------------------------------------------|
@@ -49,13 +49,13 @@ UDMF针对多对多跨应用数据共享的不同业务场景提供了标准化�
 
 ## 开发步骤
 
-以PlainText、HTML、PixelMap三种数据进行多对多数据共享的过程为例说明开发步骤，数据提供方可以通过UDMF提供的insertData接口将数据写入公共数据通路，获取到的返回值（生成的数据的唯一标识符），可用于对其插入的数据进行更新和删除操作。数据访问方则可以通过UDMF提供的查询接口获取当前公共数据通路的全量数据。
+以[PlainText](../reference/apis-arkdata/js-apis-data-uniformDataStruct.md#plaintext)、[HTML](../reference/apis-arkdata/js-apis-data-uniformDataStruct.md#html)、[PixelMap](../reference/apis-arkdata/js-apis-data-uniformDataStruct.md#pixelmap15)三种数据进行多对多数据共享的过程为例说明开发步骤，数据提供方可以通过UDMF提供的insertData接口将数据写入公共数据通路，获取到的返回值（生成的数据的唯一标识符），可用于对其插入的数据进行更新和删除操作。数据访问方则可以通过UDMF提供的查询接口获取当前公共数据通路的全量数据。
 
 ### 数据提供方
 
 1. 导入unifiedDataChannel、uniformTypeDescriptor和uniformDataStruct模块。
 
-    <!-- @import_module -->
+    <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels/entry/src/main/ets/pages/UdmfInterface.ets) -->
     
     ``` TypeScript
     import { unifiedDataChannel, uniformTypeDescriptor, uniformDataStruct } from '@kit.ArkData';
@@ -65,7 +65,7 @@ UDMF针对多对多跨应用数据共享的不同业务场景提供了标准化�
 2. 创建一个统一数据对象并插入到UDMF的公共数据通路中。
    1. 导入对应数据对象模块。
 
-      <!-- @import_unifiedData_object_module -->
+      <!-- @[import_unifiedData_object_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels/entry/src/main/ets/pages/UdmfInterface.ets) -->
 
       ``` TypeScript
       import { BusinessError } from '@kit.BasicServicesKit';
@@ -74,7 +74,7 @@ UDMF针对多对多跨应用数据共享的不同业务场景提供了标准化�
 
    2. 创建并插入数据。
 
-      <!-- @unified_data_channels_insert_data -->
+      <!-- @[unified_data_channels_insert_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels/entry/src/main/ets/pages/UdmfInterface.ets) -->
       
       ``` TypeScript
       // 准备PlainText文本数据内容
@@ -130,7 +130,7 @@ UDMF针对多对多跨应用数据共享的不同业务场景提供了标准化�
 
 3. 更新上一步插入的统一数据对象。
 
-    <!-- @unified_data_channels_update_data -->
+    <!-- @[unified_data_channels_update_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels/entry/src/main/ets/pages/UdmfInterface.ets) -->
     
     ``` TypeScript
     let plainTextUpdate: uniformDataStruct.PlainText = {
@@ -171,7 +171,7 @@ UDMF针对多对多跨应用数据共享的不同业务场景提供了标准化�
 
 4. 删除存储在UDMF公共数据通路中的统一数据对象。
 
-    <!-- @unified_data_channels_delete_data -->
+    <!-- @[unified_data_channels_delete_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels/entry/src/main/ets/pages/UdmfInterface.ets) -->
     
     ``` TypeScript
     // 指定要删除数据的数据通路枚举类型
@@ -215,7 +215,7 @@ UDMF针对多对多跨应用数据共享的不同业务场景提供了标准化�
 
 1. 导入unifiedDataChannel、uniformTypeDescriptor和uniformDataStruct模块。
 
-    <!-- @import_module -->
+    <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels/entry/src/main/ets/pages/UdmfInterface.ets) -->
     
     ``` TypeScript
     import { unifiedDataChannel, uniformTypeDescriptor, uniformDataStruct } from '@kit.ArkData';
@@ -224,7 +224,7 @@ UDMF针对多对多跨应用数据共享的不同业务场景提供了标准化�
 
 2. 查询存储在UDMF公共数据通路中的全量统一数据对象。
 
-    <!-- @unified_data_channels_query_data -->
+    <!-- @[unified_data_channels_query_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UnifiedDataChannels/entry/src/main/ets/pages/UdmfInterface.ets) -->
     
     ``` TypeScript
     // 指定要查询数据的数据通路枚举类型

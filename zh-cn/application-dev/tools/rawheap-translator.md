@@ -8,7 +8,7 @@
 
 ## 使用场景
 
-为方便开发者定位问题，应用在ArkTS内存OOM（Out of Memory）时会自动进行HeapDump。此操作会将虚拟机当前堆上的所有对象信息保存在后缀为.rawheap的二进制文件中。此外，使用接口hidebug.dumpJsRawHeapData能获取当前线程的rawheap文件，或使用命令行hidumper --mem-jsheap pid [-T tid] --raw能主动获取指定进程或指定JS线程的rawheap文件。开发者可使用rawheap_translator工具解析.rawheap文件，生成.heapsnapshot文件。该文件可通过DevEco Studio的Heap Snapshot离线导入或Chrome浏览器的开发者工具中的内存工具导入并查看。
+为方便开发者定位问题，应用在ArkTS内存OOM（Out of Memory）时会自动进行HeapDump。此操作会将虚拟机当前堆上的所有对象信息保存在后缀为.rawheap的二进制文件中。此外，使用接口[hidebug.dumpJsRawHeapData](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/js-apis-hidebug#hidebugdumpjsrawheapdata18)能获取当前线程的rawheap文件，或使用命令行[hidumper --mem-jsheap pid [-T tid] --raw](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/hidumper#查询虚拟机堆内存)能主动获取指定进程或指定JS线程的rawheap文件。开发者可使用rawheap_translator工具解析.rawheap文件，生成.heapsnapshot文件。该文件可通过DevEco Studio的[Heap Snapshot离线导入](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-snapshot-basic-operations#section6760173514388)或Chrome浏览器的开发者工具中的内存工具导入并查看。
 
 ## 使用指导
 
@@ -116,9 +116,9 @@ MacOS系统中解析示例
 
 ## 文件参考规格
 
-rawheap文件的大小和生成耗时与当前ArkTS堆内存大小及存活对象数量呈强正相关。当ArkTS堆内存占用较大、存活对象数量较多时，生成的rawheap文件会更大，耗时也会更长。开发者可以订阅资源泄漏事件，自定义事件处理逻辑。
+rawheap文件的大小和生成耗时与当前ArkTS堆内存大小及存活对象数量呈强正相关。当ArkTS堆内存占用较大、存活对象数量较多时，生成的rawheap文件会更大，耗时也会更长。开发者可以订阅[资源泄漏事件](../dfx/hiappevent-watcher-resourceleak-events.md)，自定义事件处理逻辑。
 
-从API version 20开始，虚拟机支持两种规格的HeapDump，具体切换操作可参考setJsRawHeapTrimLevel接口设置当前进程转储虚拟机原始堆快照的裁剪级别。
+从API version 20开始，虚拟机支持两种规格的HeapDump，具体切换操作可参考[setJsRawHeapTrimLevel](../reference/apis-performance-analysis-kit/js-apis-hidebug.md#hidebugsetjsrawheaptrimlevel20)接口设置当前进程转储虚拟机原始堆快照的裁剪级别。
 
 从API version 22开始，TRIM_LEVEL_1模式新增对象属性名解析能力，生成的rawheap文件相对于原先会变大，具体增长大小与对象属性名数量和字符串大小有关。
 | 规格 | 特点 |
@@ -202,4 +202,4 @@ rawheap文件的大小和生成耗时与当前ArkTS堆内存大小及存活对�
 **原因**<br>
 解析工具版本过低。<br>
 **解决措施**<br>
-使用DevEco Studio 6.1.1 Release及以上版本的工具。
+使用[DevEco Studio 6.1.1 Release](https://developer.huawei.com/consumer/cn/download/deveco-studio)及以上版本的工具。

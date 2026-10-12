@@ -13,7 +13,7 @@ PageAbility生命周期是PageAbility被调度到INACTIVE、ACTIVE、BACKGROUND�
 
   **图1** PageAbility生命周期流转
 
-page-ability-lifecycle
+![page-ability-lifecycle](figures/page-ability-lifecycle.png)
 
 
   **表1** PageAbility生命周期状态说明
@@ -48,7 +48,7 @@ PageAbility生命周期回调与生命周期状态的关系如下图所示。
 
   **图2** PageAbility生命周期回调与生命周期状态的关系
 
-fa-pageAbility-lifecycle
+![fa-pageAbility-lifecycle](figures/fa-pageAbility-lifecycle.png)
 
 
 > **说明：**
@@ -123,7 +123,7 @@ fa-pageAbility-lifecycle
     export default new Test()
     ```
 
-2. Index.ets页面提供一个"terminateSelf"按钮，点击后调用featureAbility.terminateSelf接口关闭Ability，从而触发`onDestroy`生命周期回调。
+2. Index.ets页面提供一个"terminateSelf"按钮，点击后调用[featureAbility.terminateSelf](../reference/apis-ability-kit/js-apis-ability-featureAbility.md#featureabilityterminateself7-1)接口关闭Ability，从而触发`onDestroy`生命周期回调。
 
     <!--code_no_check-->
     ```ts

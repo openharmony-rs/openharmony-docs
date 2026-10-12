@@ -17,11 +17,11 @@
 
 应用退至后台一小段时间后，应用进程会被挂起，无法执行对应的任务。如果应用在后台仍需要执行耗时不长的任务，可以申请短时任务，扩展应用在后台的运行时间。
 
-短时任务适用于小文件下载、缓存、信息发送等实时性高、需要临时占用资源执行的任务。详细的开发指导可参考短时任务。
+短时任务适用于小文件下载、缓存、信息发送等实时性高、需要临时占用资源执行的任务。详细的开发指导可参考[短时任务](../task-management/transient-task.md)。
 
 ### 场景示例
 
-下面代码在申请短时任务后执行了一个耗时计算任务。源代码可访问短时任务示例程序获取。
+下面代码在申请短时任务后执行了一个耗时计算任务。源代码可访问[短时任务示例程序](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Performance/PerformanceLibrary/feature/backgroundTask/src/main/ets/view/TransientTaskView.ets)获取。
 
 ```typescript
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
@@ -106,7 +106,7 @@ struct Index {
 
 图1 短时任务 Time Profiler 泳道图
 
-
+![](./figures/reasonable-running-backgroundTask-image1.png)
 
 - ArkTS Callstack：基于时间轴展示 CPU 占用率和状态的变化。
 - User Trace：基于时间轴展示当前时段内触发用户自定义打点任务的具体情况。H:computeTask 表示短时任务执行用时。
@@ -118,21 +118,21 @@ struct Index {
 
 图2 任务执行阶段的 CPU 占用率
 
-
+![](./figures/reasonable-running-backgroundTask-image2.png)
 
 图3 任务取消后未被挂起阶段的 CPU 占用率
 
-
+![](./figures/reasonable-running-backgroundTask-image3.png)
 
 可以看到应用主线程在任务执行阶段的平均 CPU 占用率为 12.6%，最高 CPU 占用率为 40.0%，在任务取消后未被挂起阶段的平均 CPU 占用率为 2.2%，最高 CPU 占用率为 28.6%。
 
 在后台运行短时任务，会占用系统 CPU，在后台执行过多的短时任务就有可能会导致前台的应用卡顿，因此建议非必要情况不使用短时任务，使用时也避免同时申请过多的短时任务。
 
-更多短时任务的使用限制和注意事项可以参考短时任务约束与限制。
+更多短时任务的使用限制和注意事项可以参考[短时任务约束与限制](../task-management/transient-task.md#约束与限制)。
 
 ## 长时任务
 
-应用退至后台后，在后台需要长时间运行用户可感知的任务，如播放音乐、导航等。为防止应用进程被挂起，导致对应功能异常，可以申请长时任务，使应用在后台长时间运行。申请长时任务后，系统会做相应的校验，确保应用在执行相应的长时任务。详细的开发指导可参考长时任务。
+应用退至后台后，在后台需要长时间运行用户可感知的任务，如播放音乐、导航等。为防止应用进程被挂起，导致对应功能异常，可以申请长时任务，使应用在后台长时间运行。申请长时任务后，系统会做相应的校验，确保应用在执行相应的长时任务。详细的开发指导可参考[长时任务](../task-management/continuous-task.md)。
 
 长时任务支持的类型包括数据传输、音视频播放、录音、定位导航、蓝牙相关、多设备互联、WLAN 相关、音视频通话、计算任务。可以根据下表的场景举例选择相应的长时任务类型。
 
@@ -148,15 +148,15 @@ struct Index {
 | 音视频通话（仅对系统应用开放） | 系统聊天类应用后台音频电话。     |
 | 计算任务（仅对特定设备开放）   | 杀毒软件。              |
 
-- 申请了数据传输的长时任务，系统仅会提升应用进程的优先级，降低系统终止应用进程的概率，但仍然会挂起对应的应用进程。对于上传下载对应的功能，需要调用系统@ohos.request (上传下载)托管给系统执行，可以参考文件上传下载性能提升指导。
-- 申请音视频播放长时任务必须使用媒体会话服务，否则无法在后台播放。
+- 申请了数据传输的长时任务，系统仅会提升应用进程的优先级，降低系统终止应用进程的概率，但仍然会挂起对应的应用进程。对于上传下载对应的功能，需要调用系统[@ohos.request (上传下载)](../reference/apis-basic-services-kit/js-apis-request.md)托管给系统执行，可以参考[文件上传下载性能提升指导](./improve-file-upload-and-download-performance.md)。
+- 申请音视频播放长时任务必须使用[媒体会话服务](../media/avsession/avsession-overview.md)，否则无法在后台播放。
 - 申请录音类型长时任务，需要有显著的用户提示，必须通过动态授权弹框来提供用户授权界面，请求用户授权麦克风权限。
 
 ### 场景示例
 
-下面模拟一个后台定位的场景。应用订阅设备位置变化，每隔一秒获取位置信息，为了保证应用在退到后台后仍然可以使用定位服务，申请了定位类型的长时任务。源代码可访问长时任务示例程序获取。
+下面模拟一个后台定位的场景。应用订阅设备位置变化，每隔一秒获取位置信息，为了保证应用在退到后台后仍然可以使用定位服务，申请了定位类型的长时任务。源代码可访问[长时任务示例程序](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Performance/PerformanceLibrary/feature/backgroundTask/src/main/ets/view/LongTermTaskView.ets)获取。
 
-首先需要在 module.json5 配置文件中为需要使用长时任务的 EntryAbility 声明任务类型。
+首先需要在 [module.json5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Performance/PerformanceLibrary/product/phone/entry/src/main/module.json5) 配置文件中为需要使用长时任务的 EntryAbility 声明任务类型。
 
 ```javascript
 {
@@ -183,7 +183,7 @@ struct Index {
 - ohos.permission.LOCATION
 - ohos.permission.KEEP_BACKGROUND_RUNNING
 
-权限申请方式参考配置文件权限声明，在 module.json5 中进行配置。其中部分权限申请以及打开使能通知开关需要用户手动确认。系统为申请的长时任务发布通知栏消息时，应用的使能通知开关必须处于开启状态，否则用户无法感知后台正在运行的长时任务。
+权限申请方式参考[配置文件权限声明](../security/AccessToken/declare-permissions.md#在配置文件中声明权限)，在 [module.json5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Performance/PerformanceLibrary/product/phone/entry/src/main/module.json5) 中进行配置。其中部分权限申请以及打开使能通知开关需要用户手动确认。系统为申请的长时任务发布通知栏消息时，应用的使能通知开关必须处于开启状态，否则用户无法感知后台正在运行的长时任务。
 
 后台定位的实现代码如下：
 
@@ -333,17 +333,17 @@ export struct LongTermTaskView {
 
 - 数据传输中使用高效率的数据格式和解析方法，减少任务执行时间。
 
-更多长时任务的使用限制和注意事项可以参考长时任务约束与限制。
+更多长时任务的使用限制和注意事项可以参考[长时任务约束与限制](../task-management/continuous-task.md#约束与限制)。
 
 ## 延迟任务
 
 应用退至后台后，如果需要执行实时性要求不高的任务，可以使用延迟任务。当应用满足设定条件（包括网络类型、充电类型、存储状态、电池状态、定时状态等）时，将任务添加到执行队列，系统会根据内存、功耗、设备温度、用户使用习惯等统一调度拉起应用。
 
-延迟任务适用于软件更新、信息收集、数据处理等场景。详细的开发指导可参考延迟任务。
+延迟任务适用于软件更新、信息收集、数据处理等场景。详细的开发指导可参考[延迟任务](../task-management/work-scheduler.md)。
 
 ## 代理提醒
 
-应用退到后台或进程终止后，仍然有一些提醒用户的定时类任务，例如购物类应用抢购提醒等，为满足此类功能场景，系统提供了代理提醒（reminderAgentManager）的能力。当应用退至后台或进程终止后，系统会代理应用做相应的提醒。详细的开发指导可参考代理提醒。
+应用退到后台或进程终止后，仍然有一些提醒用户的定时类任务，例如购物类应用抢购提醒等，为满足此类功能场景，系统提供了代理提醒（reminderAgentManager）的能力。当应用退至后台或进程终止后，系统会代理应用做相应的提醒。详细的开发指导可参考[代理提醒](../task-management/agent-powered-reminder.md)。
 
 当前支持的提醒类型包括：
 

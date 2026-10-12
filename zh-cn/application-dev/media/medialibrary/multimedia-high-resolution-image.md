@@ -68,7 +68,7 @@ API version 24开始提供AssetCompatibleCapability接口，支持配置应用�
 
 如果应用需要获取高像素原图，应显式声明应用具备处理高像素图片的能力，并在后续处理流程中做好降采样、区域解码和内存管理。
 
-通过PhotoPicker获取图片时，可在PhotoSelectOptions中配置`assetCompatibleCapability`以声明具备高像素原图的处理能力。
+通过PhotoPicker获取图片时，可在[PhotoSelectOptions](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-class.md#photoselectoptions)中配置`assetCompatibleCapability`以声明具备高像素原图的处理能力。
 
 ```typescript
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
@@ -92,7 +92,7 @@ async function pickerExample(): Promise<void> {
 }
 ```
 
-对于网盘、备份等需要按高像素原图处理媒体文件的应用，可使用setAssetCompatibleCapability接口配置AssetCompatibleCapability。
+对于网盘、备份等需要按高像素原图处理媒体文件的应用，可使用[setAssetCompatibleCapability](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#setassetcompatiblecapability24)接口配置[AssetCompatibleCapability](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-i.md#assetcompatiblecapability24)。
 
 ```typescript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -249,7 +249,7 @@ static char* GetImageMimeType(int32_t fd)
 
 该阈值不是固定标准，主要用于识别带来较高解码和渲染内存压力的图片。应用可根据目标设备内存、页面显示尺寸、性能指标和业务体验要求调整阈值。
 
-需要注意，只有接入高像素原图获取后拿到的图片宽高才是原始图片的宽高，否则获取到的是转换后兼容性文件的宽高。接入方式可参考为什么通过PhotoPicker或URI获取高像素图片时得到约1200万像素或约1250万像素的JPEG图片？。
+需要注意，只有接入高像素原图获取后拿到的图片宽高才是原始图片的宽高，否则获取到的是转换后兼容性文件的宽高。接入方式可参考[为什么通过PhotoPicker或URI获取高像素图片时得到约1200万像素或约1250万像素的JPEG图片？](#为什么通过photopicker或uri获取高像素图片时得到约1200万像素或约1250万像素的jpeg图片)。
 
 **示例（ArkTS）：**
 
@@ -397,7 +397,7 @@ const decodingOptions: image.DecodingOptions = {
 5. 区域解码会释放不再显示的区域图像，避免缓存过多PixelMap对象。
 6. （可选）如果业务需要控制内存或接入特定处理链路，可同时设置`desiredPixelFormat`。
 
-降采样解码与区域解码示例请参考图片区域解码与下采样(C/C++)或图片区域解码与下采样(ArkTS)。
+降采样解码与区域解码示例请参考[图片区域解码与下采样(C/C++)](../image/image-region-and-downsampling-c.md)或[图片区域解码与下采样(ArkTS)](../image/image-region-and-downsampling.md)。
 
 ## 高像素图片处理总结
 

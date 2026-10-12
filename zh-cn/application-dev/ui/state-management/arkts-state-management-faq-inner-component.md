@@ -24,7 +24,7 @@
    - 刷新过程中组件不会再标脏自己。
    - Text最终显示为2。
 
-<!-- @state_problem_not_update_in_build_error_01 --> 
+<!-- @[state_problem_not_update_in_build_error_01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemNotUpdateInBuildError01.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -54,7 +54,7 @@ FIX THIS APPLICATION ERROR: @Component 'Index': State variable 'count' has chang
 在上述示例中，Text组件多渲染了一次。这个错误行为不会造成严重的后果，所以许多开发者忽略了这个日志。
 
 但是，此行为是严重错误的，随着工程的复杂度升级，隐患将逐渐增大。见下一个例子。
-<!-- @state_problem_not_update_in_build_error_02 -->   
+<!-- @[state_problem_not_update_in_build_error_02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemNotUpdateInBuildError02.ets) -->   
 
 ``` TypeScript
 @Entry
@@ -76,7 +76,7 @@ struct Index {
 
 上面示例的渲染过程为：
 
-1. 创建第一个Text组件，触发this.message改变，标脏第一个Text组件。
+1. 创建第一个Text组件，触发this.message改变，[标脏](./arkts-state-management-glossary.md#mark-dirty标脏)第一个Text组件。
 2. 创建第二个Text组件，触发this.message改变，标脏两个Text组件。
 3. 下一帧到来时，刷新脏系统组件。
 4. 刷新第一个Text组件，触发this.message改变，不会标脏自己，仅标脏第二个Text组件。
@@ -88,17 +88,15 @@ struct Index {
 
 ## 注册回调中更改状态变量未解注册导致内存泄漏
 
-开发者可以在aboutToAppear中注册箭头函数，以此改变组件中的状态变量。
+开发者可以在[aboutToAppear](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear)中注册箭头函数，以此改变组件中的状态变量。
 
 >**注意：**
 >
->需要在aboutToDisappear中将注册的函数置空，以避免箭头函数捕获自定义组件的this实例，导致自定义组件无法被释放，从而造成内存泄漏。
+>需要在[aboutToDisappear](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear)中将注册的函数置空，以避免箭头函数捕获自定义组件的this实例，导致自定义组件无法被释放，从而造成内存泄漏。
 
-<!-- @state_problem_unregister_state_callback -->     
+<!-- @[state_problem_unregister_state_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemUnregisterStateCallback.ets) -->     
 
 ``` TypeScript
-import { common } from '@kit.AbilityKit';
-
 class Model {
   private callback: (() => void) | undefined = () => {
   };
@@ -133,8 +131,7 @@ struct Test {
 
   build() {
     Column() {
-      // 请在resources\base\element\string.json文件中配置name为'state_countvalue_text1' ，value为非空字符串的资源
-      Text(resource.resourceToString($r('app.string.state_countvalue_text1')) + `${this.count}`)
+      Text(`count: ${this.count}`)
       Button('change')
         .onClick(() => {
           model.call();
@@ -148,14 +145,14 @@ struct Test {
 }
 ```
 
-此外，也可以使用 LocalStorage在自定义组件外改变状态变量。
+此外，也可以使用 LocalStorage在[自定义组件外改变状态变量](./arkts-localstorage.md#自定义组件外改变状态变量)。
 
 ## 使用a.b(this.object)形式调用，不会触发UI刷新
 
 在build方法内，当\@State装饰的变量是Object类型，且通过a.b(this.object)形式调用时，b方法内传入的是this.object的原始对象，修改其属性，无法触发UI刷新。如下例中，通过静态方法Balloon.increaseVolume或者this.reduceVolume修改balloon的volume时，UI不会刷新。
 
 【反例】
-<!-- @state_problem_a_b_call_ui_refresh_opposite --> 
+<!-- @[state_problem_a_b_call_ui_refresh_opposite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemABCallUiRefreshOpposite.ets) --> 
 
 ``` TypeScript
 class Balloon {
@@ -208,7 +205,7 @@ struct Index {
    具体见正例。
 
 【正例】
-<!-- @state_problem_a_b_call_ui_refresh_positive --> 
+<!-- @[state_problem_a_b_call_ui_refresh_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemABCallUiRefreshPositive.ets) --> 
 
 ``` TypeScript
 class Balloon {
@@ -261,7 +258,7 @@ struct Index {
 
 在状态管理V1中，会给被\@Observed装饰的类对象以及使用状态变量装饰器如@State装饰的Class、Date、Map、Set、Array类型的对象添加一层代理，用于观测一层属性或API调用产生的变化。当复杂类型常量重复赋值给状态变量时，可能会由于加了代理而判断为新旧值不相等，导致不必要的刷新。
 
-<!-- @state_problem_complex_constant_repeat_refresh -->  
+<!-- @[state_problem_complex_constant_repeat_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemComplexConstantRepeatRefresh.ets) -->  
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -314,10 +311,10 @@ struct ConsumerChild {
 
 以上示例每次点击Button('change to self')，把相同的类实例赋值给一个Class类型的状态变量，会触发刷新并输出`this.dataObj.name change: a`日志。这是因为当再次赋值`list[0]`时，`dataObjFromList`已经是`Proxy`类型，而`list[0]`是`Object`类型，因此判断两者不相等，会触发赋值和刷新。
 
-为了避免这种不必要的赋值和刷新，可以通过用\@Observed装饰类，或者使用UIUtils.getTarget()获取原始对象，提前进行新旧值的判断，如果相同则不执行赋值。
+为了避免这种不必要的赋值和刷新，可以通过用\@Observed装饰类，或者使用[UIUtils.getTarget()](./arkts-new-getTarget.md)获取原始对象，提前进行新旧值的判断，如果相同则不执行赋值。
 
 方法一：增加\@Observed
-<!-- @state_problem_complex_solution_01 -->  
+<!-- @[state_problem_complex_solution_01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemComplexSolution01.ets) -->  
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -367,8 +364,8 @@ struct ConsumerChild {
 
 以上示例，给对应的类增加了\@Observed装饰器后，list[0]已经是Proxy类型了，这样再次赋值时，相同的对象，就不会触发刷新。
 
-方法二：使用UIUtils.getTarget()获取原始对象
-<!-- @state_problem_complex_solution_02 -->  
+方法二：使用[UIUtils.getTarget()](./arkts-new-getTarget.md)获取原始对象
+<!-- @[state_problem_complex_solution_02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateProblemComplexSolution02.ets) -->  
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
@@ -423,7 +420,7 @@ struct ConsumerChild {
 
 在状态管理V2中，会给使用状态变量装饰器如@Trace、@Local装饰的Date、Map、Set、Array添加一层代理用于观测API调用产生的变化。当复杂类型常量重复赋值给状态变量时，可能会由于加了代理而判断为新旧值不相等，导致不必要的刷新。
 
-<!-- @Local_Question_Spark_Update --> 
+<!-- @[Local_Question_Spark_Update](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalQuestionSparkUpdate.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -452,11 +449,11 @@ struct Index {
 
 以上示例每次点击Button('change to self')，把相同的Array类型常量赋值给一个Array类型的状态变量，都会触发刷新。这是因为当再次赋值`list[0]`时，`dataObjFromList`已经是Proxy类型，而`list[0]`是Array类型。由于类型不相等，会触发赋值和刷新。
 
-为了避免这种不必要的赋值和刷新，可以使用UIUtils.getTarget()获取原始对象提前进行新旧值的判断，当两者相同时不执行赋值。
+为了避免这种不必要的赋值和刷新，可以使用[UIUtils.getTarget()](./arkts-new-getTarget.md)获取原始对象提前进行新旧值的判断，当两者相同时不执行赋值。
 
 使用UIUtils.getTarget()方法示例。
 
-<!-- @Local_Question_UIUtils --> 
+<!-- @[Local_Question_UIUtils](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalQuestionUIUtils.ets) --> 
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
@@ -490,11 +487,11 @@ struct Index {
 
 ## 子组件无需修改状态变量时，使用@Prop导致不必要的深拷贝
 
-在应用开发中，父组件常向子组件传值。如果子组件不需要修改该状态变量，子组件使用@Prop装饰器会增加组件创建时间并影响性能，此时建议改用@ObjectLink。
+在应用开发中，父组件常向子组件传值。如果子组件不需要修改该状态变量，子组件使用[@Prop](./arkts-prop.md)装饰器会增加组件创建时间并影响性能，此时建议改用[@ObjectLink](./arkts-observed-and-objectlink.md)。
 
 【反例】
 
-<!-- @deep_copy_reverse --> 
+<!-- @[deep_copy_reverse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/DeepCopyReverse.ets) --> 
 
 ``` TypeScript
 @Observed
@@ -538,7 +535,7 @@ struct DeepReParent {
 
 【正例】
 
-<!-- @deep_copy_correct --> 
+<!-- @[deep_copy_correct](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/DeepCopyCorrect.ets) --> 
 
 ``` TypeScript
 @Observed
@@ -580,11 +577,11 @@ struct Parent {
 
 ## 状态变量关联的组件数过多导致性能下降
 
-建议每个状态变量关联的组件数少于20个。精准控制状态变量关联的组件数量可减少不必要的组件刷新，提升刷新效率。有时开发者会将同一状态变量绑定于多个同级组件属性，状态变化时将导致这些组件同步更新，产生不必要的刷新，当组件复杂度较高时会显著影响整体性能。相反，将该状态变量绑定在这些组件的父组件上，可以减少需要刷新的组件数，提高性能。在应用开发中，可以通过HiDumper查看状态变量关联的组件数。<!--Del-->具体可参考状态变量组件定位工具实践。<!--DelEnd-->
+建议每个状态变量关联的组件数少于20个。精准控制状态变量关联的组件数量可减少不必要的组件刷新，提升刷新效率。有时开发者会将同一状态变量绑定于多个同级组件属性，状态变化时将导致这些组件同步更新，产生不必要的刷新，当组件复杂度较高时会显著影响整体性能。相反，将该状态变量绑定在这些组件的父组件上，可以减少需要刷新的组件数，提高性能。在应用开发中，可以通过HiDumper查看状态变量关联的组件数。<!--Del-->具体可参考[状态变量组件定位工具实践](../../performance/state-variable-dfx-practice.md)。<!--DelEnd-->
 
 【反例】
 
-<!-- @precise_control_counterexamples -->
+<!-- @[precise_control_counterexamples](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/PreciseControlCounterexamples.ets) -->
 
 ``` TypeScript
 @Observed
@@ -652,7 +649,7 @@ struct Page {
 
 【正例】
 
-<!-- @precise_control_positive_cases -->  
+<!-- @[precise_control_positive_cases](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/PreciseControlPositiveCases.ets) -->  
 
 ``` TypeScript
 @Observed
@@ -710,7 +707,7 @@ struct Page1 {
 
 【反例】
 
-<!-- @loop_state_inefficient -->  
+<!-- @[loop_state_inefficient](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/LoopStateInefficient.ets) -->  
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -747,7 +744,7 @@ struct Index {
 
 【正例】
 
-<!-- @loop_state_optimized -->  
+<!-- @[loop_state_optimized](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/LoopStateOptimized.ets) -->  
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -787,11 +784,11 @@ struct Index {
 
 在应用开发中，应尽量减少对状态变量的直接赋值，通过临时变量完成数据计算操作。
 
-状态变量发生变化时，ArkUI会查询依赖该状态变量的组件并执行该组件的更新方法，完成组件渲染。通过使用临时变量的计算代替直接操作状态变量，可以使ArkUI仅在最后一次状态变量变更时查询并渲染组件，减少不必要的操作，从而提高应用性能。状态变量行为可参考@State装饰器：组件内状态。
+状态变量发生变化时，ArkUI会查询依赖该状态变量的组件并执行该组件的更新方法，完成组件渲染。通过使用临时变量的计算代替直接操作状态变量，可以使ArkUI仅在最后一次状态变量变更时查询并渲染组件，减少不必要的操作，从而提高应用性能。状态变量行为可参考[@State装饰器：组件内状态](arkts-state.md)。
 
 【反例】
 
-<!-- @calculation_directState --> 
+<!-- @[calculation_directState](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/CalculationDirectState.ets) --> 
 
 ``` TypeScript
 import { hiTraceMeter } from '@kit.PerformanceAnalysisKit';
@@ -832,13 +829,13 @@ struct Index {
 }
 ```
 
-直接操作状态变量，三次触发计算函数，运行耗时结果如下：
+直接操作状态变量，三次触发计算函数，运行[耗时](../ui-inspector-profiler.md#trace调试能力)结果如下：
 
-hp_arkui_use_state_var
+![hp_arkui_use_state_var](figures/hp_arkui_use_state_var.png)
 
 【正例】
 
-<!-- @calculation_temp_variable --> 
+<!-- @[calculation_temp_variable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateManagement/entry/src/main/ets/pages/CalculationTempVariable.ets) --> 
 
 ``` TypeScript
 import { hiTraceMeter } from '@kit.PerformanceAnalysisKit';
@@ -883,7 +880,7 @@ struct Index {
 
 使用临时变量取代状态变量的计算，三次触发计算函数，运行耗时结果如下：
 
-hp_arkui_use_local_var
+![hp_arkui_use_local_var](figures/hp_arkui_use_local_var.png)
 
 【总结】
 
@@ -894,9 +891,9 @@ hp_arkui_use_local_var
 
 ## 使用LazyForEach的重建机制刷新UI导致性能下降
 
-开发过程中通常会将LazyForEach和状态变量结合起来使用。
+开发过程中通常会将[LazyForEach](../rendering-control/arkts-rendering-control-lazyforeach.md)和状态变量结合起来使用。
 
-<!-- @StateArrayLazy_start -->  
+<!-- @[StateArrayLazy_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayLazy.ets) -->  
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1041,13 +1038,13 @@ struct MyComponent {
 
 上述代码运行效果如下。
 
-properly-use-state-management-to-develop-7
+![properly-use-state-management-to-develop-7](figures/properly-use-state-management-to-develop-7.gif)
 
 可以观察到在点击更改message之后，图片“闪烁”了一下，同时输出了组件的onAppear日志，这说明组件进行了重建。这是因为在更改message之后，导致LazyForEach中这一项的key值发生了变化，使得LazyForEach在reloadData的时候将这一项ListItem进行了重建。Text组件仅仅更改显示的内容却发生了重建，而不是更新。而尽管Image组件没有需要重新绘制的内容，但是因为触发LazyForEach的重建，会使得同样位于ListItem下的Image组件重新创建。
 
 当前LazyForEach与状态变量都能触发UI的刷新，两者的性能开销是不一样的。使用LazyForEach刷新会对组件进行重建，如果包含了多个组件，则会产生比较大的性能开销。使用状态变量刷新会对组件进行刷新，具体到状态变量关联的组件上，相对于LazyForEach的重建来说，范围更小更精确。因此，推荐使用状态变量来触发LazyForEach中的组件刷新，这就需要使用自定义组件。
 
-<!-- @StateArrayLazy2_start -->  
+<!-- @[StateArrayLazy2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayLazy2.ets) -->  
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1192,17 +1189,17 @@ struct ChildComponent {
 
 上述代码运行效果如下。
 
-properly-use-state-management-to-develop-8
+![properly-use-state-management-to-develop-8](figures/properly-use-state-management-to-develop-8.gif)
 
 可以观察到UI能够正常刷新，图片没有“闪烁”，且没有输出日志信息，说明没有对Text组件和Image组件进行重建。
 
-这是因为使用自定义组件之后，可以通过@Observed和@ObjectLink配合去直接更改自定义组件内的状态变量实现刷新，而不需要利用LazyForEach进行重建。使用@Track装饰器分别装饰StringData类型中的message和imgSrc属性可以使更新范围进一步缩小到指定的Text组件。
+这是因为使用自定义组件之后，可以通过@Observed和@ObjectLink配合去直接更改自定义组件内的状态变量实现刷新，而不需要利用LazyForEach进行重建。使用[@Track装饰器](arkts-track.md)分别装饰StringData类型中的message和imgSrc属性可以使更新范围进一步缩小到指定的组件。
 
 ## ForEach和对象数组结合使用导致UI不刷新
 
-开发过程中经常会使用对象数组和ForEach结合起来使用，但是写法不当的话会出现UI不刷新的情况。
+开发过程中经常会使用对象数组和[ForEach](../rendering-control/arkts-rendering-control-foreach.md)结合起来使用，但是写法不当的话会出现UI不刷新的情况。
 
-<!-- @StateArrayForeach_start -->   
+<!-- @[StateArrayForeach_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayForeach.ets) -->   
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1262,11 +1259,11 @@ struct Page {
 
 上述代码运行效果如下。
 
-properly-use-state-management-to-develop-9
+![properly-use-state-management-to-develop-9](figures/properly-use-state-management-to-develop-9.gif)
 
 由于ForEach中生成的item是一个常量，因此当点击改变item中的内容时，没有办法观测到UI刷新，尽管日志表明item的值已改变（这体现在打印了“change font size”的日志）。因此，需要使用自定义组件，配合@ObjectLink来实现观测的能力。
 
-<!-- @TextComponent_start -->   
+<!-- @[TextComponent_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/statemanagementproject/entry/src/main/ets/pages/statemanagementguide/StateArrayForeach2.ets) -->   
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1333,7 +1330,7 @@ struct Page {
 
 上述代码的运行效果如下。
 
-properly-use-state-management-to-develop-10
+![properly-use-state-management-to-develop-10](figures/properly-use-state-management-to-develop-10.gif)
 
 使用@ObjectLink接受传入的item后，使得TextComponent组件内的textStyle变量具有了被观测的能力。在父组件更改styleList中的值时，由于@ObjectLink是引用传递，所以会观测到styleList每一个数据项的地址指向的对应item的fontSize的值被改变，因此触发UI的刷新。
 

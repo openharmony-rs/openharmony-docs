@@ -10,7 +10,7 @@ param是为开发人员提供用于操作系统参数的工具，该工具只支
 
 ## 环境要求
 
-* 获取<!--Del--><!--DelEnd-->hdc工具<!--Del--><!--DelEnd-->，执行hdc shell。
+* 获取<!--Del-->[<!--DelEnd-->hdc工具<!--Del-->](../../device-dev/subsystems/subsys-toolchain-hdc-guide.md)<!--DelEnd-->，执行hdc shell。
 * 正常连接设备。
 
 ## param工具命令列表
@@ -40,11 +40,11 @@ param是为开发人员提供用于操作系统参数的工具，该工具只支
   param ls [-r] [name]
   ```
   **示例**<br>
-  ls-integrity
+  ![ls-integrity](figures/param-ls-integrity.png)
 
-  ls-part
+  ![ls-part](figures/param-ls-part.png)
   
-  ls
+  ![ls](figures/param-ls.png)
 
 ## 获取系统参数的值
 
@@ -54,7 +54,7 @@ param是为开发人员提供用于操作系统参数的工具，该工具只支
   param get [name]
   ```
   **示例**<br>
-  get
+  ![get](figures/param-get.png)
 
 ## 设置系统参数的值
 
@@ -64,7 +64,7 @@ param是为开发人员提供用于操作系统参数的工具，该工具只支
   param set name value
   ```
   **示例**<br>
-  set
+  ![set](figures/param-set.png)
 
 ## 等待系统参数值匹配
 
@@ -74,7 +74,7 @@ param是为开发人员提供用于操作系统参数的工具，该工具只支
   param wait name [value] [timeout]
   ```
   **示例**<br>
-  wait
+  ![wait](figures/param-wait.png)
 
 ## 保存persist(可持久化)参数
 
@@ -84,10 +84,10 @@ param是为开发人员提供用于操作系统参数的工具，该工具只支
   param save
   ```
   **示例**<br>
-  save
+  ![save](figures/param-save.png)
   
 ## 系统参数错误码说明
 
 **错误码说明**
 
-错误码详情参考系统参数文档描述
+错误码详情参考[系统参数](https://gitcode.com/openharmony/docs/blob/master/zh-cn/device-dev/subsystems/subsys-boot-init-sysparam.md#系统参数错误码说明)文档描述

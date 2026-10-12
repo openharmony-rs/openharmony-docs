@@ -12,7 +12,7 @@ ArkTS支持开发者自定义Native Sendable对象，Sendable对象提供了并�
 
 1. 接口声明中自定义Sendable类。
 
-   <!-- @export_myObject -->
+   <!-- @[export_myObject](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCaseSendable/entry/src/main/cpp/types/libentry/Index.d.ets) -->
    
    ``` TypeScript
    // Index.d.ets
@@ -52,7 +52,7 @@ ArkTS支持开发者自定义Native Sendable对象，Sendable对象提供了并�
 
    修改与Index.d.ets同目录下的配置文件oh-package.json5，配置如下：
 
-   <!-- @define_libentry -->    
+   <!-- @[define_libentry](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCaseSendable/entry/src/main/cpp/types/libentry/oh-package.json5) -->    
    
    ``` JSON5
    {
@@ -65,7 +65,7 @@ ArkTS支持开发者自定义Native Sendable对象，Sendable对象提供了并�
 
 3. Native实现各项接口功能，例如取值、设置值或者给Native对象的值加1等功能。
 
-   <!-- @init_sendable -->
+   <!-- @[init_sendable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCaseSendable/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
    // napi_init.cpp
@@ -100,7 +100,10 @@ ArkTS支持开发者自定义Native Sendable对象，Sendable对象提供了并�
    void MyObject::Destructor(napi_env env, void *nativeObject, [[maybe_unused]] void *finalizeHint)
    {
        OH_LOG_INFO(LOG_APP, "MyObject::Destructor called");
-       reinterpret_cast<MyObject *>(nativeObject)->~MyObject();
+       MyObject *obj = reinterpret_cast<MyObject *>(nativeObject);
+       if (obj != nullptr) {
+           delete obj;
+       }
    }
    
    // 在构造函数中绑定ArkTS Sendable对象与C++对象
@@ -246,7 +249,7 @@ ArkTS支持开发者自定义Native Sendable对象，Sendable对象提供了并�
 
 4. ArkTS侧在UI主线程中定义Sendable实例对象并传递给TaskPool子线程，子线程处理完数据后返回UI主线程，UI主线程可以继续访问该Sendable实例对象。
 
-   <!-- @load_nativeSendable --> 
+   <!-- @[load_nativeSendable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCaseSendable/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    // Index.ets

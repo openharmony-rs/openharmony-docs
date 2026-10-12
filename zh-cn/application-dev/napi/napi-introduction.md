@@ -8,13 +8,13 @@
 
 ## 场景介绍
 
-OpenHarmony Node-API是基于Node.js 18.x LTS的Node-API规范扩展开发的机制，为开发者提供了ArkTS/JS与C/C++模块之间的交互能力。它提供了一组稳定的、跨平台的API，可以在不同的操作系统上使用。
+OpenHarmony Node-API是基于Node.js 18.x LTS的[Node-API](https://nodejs.org/docs/latest-v18.x/api/n-api.html)规范扩展开发的机制，为开发者提供了ArkTS/JS与C/C++模块之间的交互能力。它提供了一组稳定的、跨平台的API，可以在不同的操作系统上使用。
 
 本文中如无特别说明，后续均使用Node-API指代OpenHarmony Node-API能力。
 
 > **说明：**
 >
-> OpenHarmony Node-API与Node.js 18.x LTS的Node-API规范的接口异同点，详见Node-API参考文档
+> OpenHarmony Node-API与Node.js 18.x LTS的Node-API规范的接口异同点，详见[Node-API参考文档](../reference/native-lib/napi.md)
 
 一般情况下OpenHarmony应用开发使用ArkTS/JS语言，但部分场景由于性能、效率等要求，比如游戏、物理模拟等，需要依赖使用现有的C/C++库。Node-API规范封装了I/O、CPU密集型、OS底层等能力并对外暴露C接口，使用C/C++模块的注册机制，向ArkTS/JS对象上挂载属性和方法的方式来实现ArkTS/JS和C/C++的交互。主要场景如下：
 
@@ -26,7 +26,7 @@ OpenHarmony Node-API是基于Node.js 18.x LTS的Node-API规范扩展开发的机
 
 **图1** Node-API的组成架构
   
-napi_mechanism
+![napi_mechanism](figures/napi_mechanism.png)
 
 - Native Module：开发者使用Node-API开发的模块，用于在ArkTS侧导入使用。
 
@@ -46,7 +46,7 @@ napi_mechanism
 
 **图2** Node-API的关键交互流程
   
-process_napi
+![process_napi](figures/process_napi.png)
 
 ArkTS和C++之间的交互流程，主要分为以下两步：
 

@@ -12,11 +12,11 @@
 
 ## 使用示例
 
-JSVM-API接口开发流程参考使用JSVM-API实现JS与C/C++语言交互开发流程，本文仅对接口对应C++相关代码进行展示。
+JSVM-API接口开发流程参考[使用JSVM-API实现JS与C/C++语言交互开发流程](use-jsvm-process.md)，本文仅对接口对应C++相关代码进行展示。
 
 创建多个JS运行时环境并运行JS代码
 
-<!-- @runtime_task -->
+<!-- @[runtime_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmDebug/runtimetask/src/main/cpp/hello.cpp) -->
 
 ``` C++
 #include <map>

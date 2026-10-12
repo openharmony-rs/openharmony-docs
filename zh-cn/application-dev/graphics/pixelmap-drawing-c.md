@@ -7,10 +7,10 @@
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
 
-位图是一种用于在内存中存储和表示图像的数据结构，它是一个未经过压缩的像素集合，而JPEG或PNG等图片是压缩格式的，两者并不相同。如果需要将JPEG或PNG绘制到屏幕上，需要先解码成位图格式，具体可参考图片处理服务（Image Kit）图片解码相关章节。
+位图是一种用于在内存中存储和表示图像的数据结构，它是一个未经过压缩的像素集合，而JPEG或PNG等图片是压缩格式的，两者并不相同。如果需要将JPEG或PNG绘制到屏幕上，需要先解码成位图格式，具体可参考[图片处理服务（Image Kit）](../media/image/image-overview.md)图片解码相关章节。
 
 
-目前Drawing（C/C++）中位图绘制需要依赖PixelMap，它可以用于读取或写入图像数据以及获取图像信息。详细的API介绍请参考drawing_pixel_map.h。
+目前Drawing（C/C++）中位图绘制需要依赖PixelMap，它可以用于读取或写入图像数据以及获取图像信息。详细的API介绍请参考[drawing_pixel_map.h](../reference/apis-arkgraphics2d/capi-drawing-pixel-map-h.md)。
 
 
 有多个API接口可以创建PixelMap，下文以使用OH_Drawing_PixelMapGetFromOhPixelMapNative()为例。
@@ -28,7 +28,7 @@
 
 2. 导入依赖的相关头文件。
 
-   <!-- @ndk_graphics_draw_include_pixelmap_native -->
+   <!-- @[ndk_graphics_draw_include_pixelmap_native](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
    
    ``` C++
    #include <multimedia/image_framework/image/pixelmap_native.h>
@@ -38,7 +38,7 @@
 
    PixelMap需要从图像框架定义的像素图对象（OH_PixelmapNative）中获取，所以需要先通过OH_PixelmapNative_CreatePixelmap()创建OH_PixelmapNative。该函数接受4个参数，第一个参数为图像像素数据的缓冲区，用于初始化PixelMap的像素。第二个参数是缓冲区长度。第三个参数是位图格式（包括长、宽、颜色类型、透明度类型等）。第四个参数即OH_PixelmapNative对象，作为出参使用。
 
-   <!-- @ndk_graphics_draw_image_pixel_map -->
+   <!-- @[ndk_graphics_draw_image_pixel_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
    
    ``` C++
    // 图片宽高分别为 600 * 400
@@ -78,7 +78,7 @@
 
    通过OH_Drawing_PixelMapGetFromOhPixelMapNative()函数从OH_PixelmapNative中获取PixelMap。
 
-   <!-- @ndk_graphics_draw_create_pixel_map -->
+   <!-- @[ndk_graphics_draw_create_pixel_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
    
    ``` C++
    OH_Drawing_PixelMap *pixelMap = OH_Drawing_PixelMapGetFromOhPixelMapNative(pixelMapNative);
@@ -88,9 +88,9 @@
 
    需要通过OH_Drawing_CanvasDrawPixelMapRect()绘制位图PixelMap。函数接受5个参数，分别为画布Canvas、PixelMap对象、PixelMap中像素的截取区域、画布中显示的区域以及采样选项对象。
 
-   其中采样选项对象（OH_Drawing_SamplingOptions）表示了从原始像素数据（即Bitmap）中采样以生成新的像素值的具体方式，具体可见drawing_sampling_options.h。
+   其中采样选项对象（OH_Drawing_SamplingOptions）表示了从原始像素数据（即Bitmap）中采样以生成新的像素值的具体方式，具体可见[drawing_sampling_options.h](../reference/apis-arkgraphics2d/capi-drawing-sampling-options-h.md)。
 
-   <!-- @ndk_graphics_draw_image_to_canvas -->
+   <!-- @[ndk_graphics_draw_image_to_canvas](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
    
    ``` C++
    // PixelMap中像素的截取区域
@@ -106,7 +106,7 @@
 
 6. 绘制完成后释放相关对象。
 
-   <!-- @ndk_graphics_draw_release_pixelmap -->
+   <!-- @[ndk_graphics_draw_release_pixelmap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
    
    ``` C++
    OH_PixelmapNative_Release(pixelMapNative);
@@ -120,12 +120,12 @@
 
    绘制效果如下：
 
-   Screenshot_20241225200426678
+   ![Screenshot_20241225200426678](figures/Screenshot_20241225200426678.jpg)
 
 <!--RP1-->
 ## 相关实例
 
 针对Drawing(C/C++)的开发，有以下相关实例可供参考：
 
-- NDKGraphicsDraw (API20)
+- [NDKGraphicsDraw (API20)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw)
 <!--RP1End-->

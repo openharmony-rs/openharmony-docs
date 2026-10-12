@@ -14,11 +14,11 @@
 
 ## 开发步骤
 
-接口具体说明请参考getDisplayCountry和getDisplayLanguage的API文档。
+接口具体说明请参考[getDisplayCountry](../reference/apis-localization-kit/js-apis-i18n.md#getdisplaycountry9)和[getDisplayLanguage](../reference/apis-localization-kit/js-apis-i18n.md#getdisplaylanguage9)的API文档。
 
 1. 导入模块。
 
-   <!-- @import_module -->
+   <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/NameLocalization.ets) -->
    
    ``` TypeScript
    import { i18n } from '@kit.LocalizationKit';
@@ -27,7 +27,7 @@
 2. 使用场景。
 - 本地化语言名称。支持获取语言名称在不同语言下的翻译，以获取德文语言名称的中文翻译为例：
 
-   <!-- @localized_language_names -->
+   <!-- @[localized_language_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/NameLocalization.ets) -->
    
    ``` TypeScript
    let displayLanguage = i18n.System.getDisplayLanguage('de', 'zh-Hans-CN'); // displayLanguage = '德文'
@@ -38,7 +38,7 @@
 
 - 本地化国家/地区名称。支持获取国家/地区名称在不同语言下的翻译，以获取沙特阿拉伯国家名称的英文翻译为例：
 
-   <!-- @localized_country_names -->
+   <!-- @[localized_country_names](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/NameLocalization.ets) -->
    
    ``` TypeScript
    let displayCountry = i18n.System.getDisplayCountry('SA', 'en-GB'); // displayCountry = 'Saudi Arabia'

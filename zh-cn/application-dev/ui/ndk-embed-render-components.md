@@ -7,14 +7,14 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-从API version 20开始，ArkUI开发框架针对NDK接口，提供了直接构建渲染节点的能力，包括节点树操作、属性设置及含动画的自定义绘制。开发者通过调用渲染节点相关能力，可以绕过registerNodeCustomEvent的测量布局过程，直接对节点进行绘制并调整其大小和位置。
+从API version 20开始，ArkUI开发框架针对NDK接口，提供了直接构建渲染节点的能力，包括节点树操作、属性设置及含动画的自定义绘制。开发者通过调用渲染节点相关能力，可以绕过[registerNodeCustomEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodecustomevent)的测量布局过程，直接对节点进行绘制并调整其大小和位置。
 
 
-- **渲染节点树操作相关的能力** ，例如OH_ArkUI_RenderNodeUtils_AddRenderNode、OH_ArkUI_RenderNodeUtils_AddChild等接口用于编辑渲染节点树的结构。仅类型为ARKUI_NODE_CUSTOM且无其他子节点的自定义节点能够挂载渲染节点，且最多挂载一个渲染节点。即渲染节点以子树形式挂载在类型为ARKUI_NODE_CUSTOM的叶子自定义节点上。
+- **渲染节点树操作相关的能力** ，例如[OH_ArkUI_RenderNodeUtils_AddRenderNode](../reference/apis-arkui/capi-native-render-h.md#oh_arkui_rendernodeutils_addrendernode)、[OH_ArkUI_RenderNodeUtils_AddChild](../reference/apis-arkui/capi-native-render-h.md#oh_arkui_rendernodeutils_addchild)等接口用于编辑渲染节点树的结构。仅类型为ARKUI_NODE_CUSTOM且无其他子节点的自定义节点能够挂载渲染节点，且最多挂载一个渲染节点。即渲染节点以子树形式挂载在类型为ARKUI_NODE_CUSTOM的叶子自定义节点上。
 
-- **渲染节点属性设置的能力** ，详情请参考函数，查看当前渲染节点支持的属性能力。
+- **渲染节点属性设置的能力** ，详情请参考[函数](../reference/apis-arkui/capi-native-render-h.md#函数)，查看当前渲染节点支持的属性能力。
 
-- **自定义绘制能力**，参考OH_ArkUI_RenderNodeUtils_SetContentModifierOnDraw及其相关接口，同时可以通过OH_ArkUI_RenderNodeUtils_SetFloatPropertyValue这一类绑定在ContentModifier的接口对自定义绘制的内容进行动态修改。
+- **自定义绘制能力**，参考[OH_ArkUI_RenderNodeUtils_SetContentModifierOnDraw](../reference/apis-arkui/capi-native-render-h.md#oh_arkui_rendernodeutils_setcontentmodifierondraw)及其相关接口，同时可以通过[OH_ArkUI_RenderNodeUtils_SetFloatPropertyValue](../reference/apis-arkui/capi-native-render-h.md#oh_arkui_rendernodeutils_setfloatpropertyvalue)这一类绑定在ContentModifier的接口对自定义绘制的内容进行动态修改。
 
 
 
@@ -22,7 +22,7 @@
 
 以下示例创建了一个渲染节点，并进行了基础的节点挂载和属性设置操作。
 
-1. 按照接入ArkTS页面创建前置工程。
+1. 按照[接入ArkTS页面](ndk-access-the-arkts-page.md)创建前置工程。
 
 2. 创建渲染节点能力对象。
    ```c
@@ -157,7 +157,7 @@
 
 以下示例创建了一个渲染节点，调用自定义绘制能力并附加动画功能。
 
-1. 按照接入ArkTS页面创建前置工程。
+1. 按照[接入ArkTS页面](ndk-access-the-arkts-page.md)创建前置工程。
 
 2. 创建渲染节点能力对象。
    ```c
@@ -377,7 +377,7 @@
 
 ### 接纳子节点为附属节点
 
-满足以下条件的节点，可以作为OH_ArkUI_NativeModule_AdoptChild接口中的父节点接纳其他节点：
+满足以下条件的节点，可以作为[OH_ArkUI_NativeModule_AdoptChild](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nativemodule_adoptchild)接口中的父节点接纳其他节点：
 1. 父节点是C-API侧创建的命令式节点。
 2. 父节点是ArkTS侧创建的命令式节点。
 
@@ -386,13 +386,13 @@
 2. 子节点是ArkTS侧创建的命令式节点。
 3. 子节点是BuilderNode下的根节点。
 
-子节点被接纳为附属节点后，不允许再作为常规子节点挂载至其他节点，否则会抛出相应的错误码。但允许该子节点被其他父节点再次接纳，此时该子节点将会成为其他父节点的新附属节点。被接纳的子节点不是其父节点的真实子节点，不在子组件查询接口的查询范围，也不支持像常规子节点那样被操作，同时不接受父节点的测量布局和事件传递，仅接收父节点的生命周期传递。
+子节点被接纳为附属节点后，不允许再作为常规子节点挂载至其他节点，否则会抛出相应的错误码。但允许该子节点被其他父节点再次接纳，此时该子节点将会成为其他父节点的新附属节点。被接纳的子节点不是其父节点的真实子节点，不在子组件查询接口的查询范围，也不支持像常规子节点那样被操作，同时不接受父节点的测量布局和事件传递，仅接收父节点的[生命周期](../application-models/uiability-lifecycle.md#概述)传递。
 
 ### 获取附属节点的渲染节点
 
-节点处于被接纳的附属节点状态下，允许调用OH_ArkUI_RenderNodeUtils_GetRenderNode获取它对应的RenderNode。
+节点处于被接纳的附属节点状态下，允许调用[OH_ArkUI_RenderNodeUtils_GetRenderNode](../reference/apis-arkui/capi-native-render-h.md#oh_arkui_rendernodeutils_getrendernode)获取它对应的RenderNode。
 
-调用ArkUI_NativeNodeAPI_1的disposeNode接口主动销毁父节点时，需要额外调用OH_ArkUI_RenderNodeUtils_DisposeNode释放该渲染节点，否则会发生内存泄漏。
+调用[ArkUI_NativeNodeAPI_1](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md)的[disposeNode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#disposenode)接口主动销毁父节点时，需要额外调用[OH_ArkUI_RenderNodeUtils_DisposeNode](../reference/apis-arkui/capi-native-render-h.md#oh_arkui_rendernodeutils_disposenode)释放该渲染节点，否则会发生内存泄漏。
 
 
 ### 操作来自附属节点的渲染节点
@@ -404,19 +404,19 @@
 
 2. 附属节点的渲染节点依赖离屏挂载状态。
 
-   如果该附属节点被它的父节点调用OH_ArkUI_NativeModule_RemoveAdoptedChild接口取消离屏挂载状态，那么该渲染节点也会随之一同从渲染节点树上被移除。
+   如果该附属节点被它的父节点调用[OH_ArkUI_NativeModule_RemoveAdoptedChild](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nativemodule_removeadoptedchild)接口取消离屏挂载状态，那么该渲染节点也会随之一同从渲染节点树上被移除。
 
 3. 来自附属节点的渲染节点，如果它对应的附属节点已不处于离屏挂载状态，不允许重新将它挂载至其他渲染节点上。
 
 ### 创建并接纳Web组件以实现混排挂载
 
-在进行如下代码开发前，请参考接入ArkTS页面，创建前置工程。
+在进行如下代码开发前，请参考[接入ArkTS页面](ndk-access-the-arkts-page.md)，创建前置工程。
 
-<!--RP1-->完整示例请参考native_render_node_sample。<!--RP1End-->
+<!--RP1-->完整示例请参考[native_render_node_sample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeRenderNodeSample)。<!--RP1End-->
 
 1. NDK初始化组件环境，并创建对应的渲染节点根节点。
 
-   <!-- @Create_RootNode -->  
+   <!-- @[Create_RootNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeRenderNodeSample/entry/src/main/cpp/NativeEntry.cpp) -->  
    
    ``` C++
    
@@ -485,7 +485,7 @@
 
 2. ArkTS侧创建节点并传递该节点至C-API。
 
-   <!-- @Create_Node -->  
+   <!-- @[Create_Node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeRenderNodeSample/entry/src/main/ets/pages/GetNode.ets) -->  
    
    ``` TypeScript
    
@@ -604,7 +604,7 @@
 
 3. C-API侧获取该节点，接纳节点并获取对应的渲染节点。
 
-   <!-- @Adopt_Node -->  
+   <!-- @[Adopt_Node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeRenderNodeSample/entry/src/main/cpp/NativeEntry.cpp) -->  
    
    ``` C++
    
@@ -627,7 +627,7 @@
 
 4. C-API侧解除已被接纳节点的接纳状态，释放其对应的渲染节点。
 
-   <!-- @Remove_Adopt_Node -->
+   <!-- @[Remove_Adopt_Node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeRenderNodeSample/entry/src/main/cpp/NativeEntry.cpp) -->
    
    ``` C++
    

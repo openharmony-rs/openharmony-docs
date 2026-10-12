@@ -19,7 +19,7 @@ HAP签名工具支持本地签名和远程签名两种模式。
 
 在使用远程签名插件前，开发者应了解以下基本概念：
 
-- **ISigner接口**
+- **[ISigner接口](#签名接口)**
   
   所有远程签名插件必须实现的接口，定义了签名操作的核心方法。插件通过实现这个接口，将自定义的签名逻辑集成到HAP签名工具中。
 
@@ -102,7 +102,7 @@ public interface ISigner {
 
 **获取HAP签名工具**
 
-- 签名工具仓库下载。
+- [签名工具仓库下载](https://gitcode.com/openharmony/developtools_hapsigner/blob/master/dist/hap-sign-tool.jar)。
 - 通过SDK获取，签名工具路径：`${SDK安装目录}/toolchains/lib/hap-sign-tool.jar`。
 
 ## 开发步骤

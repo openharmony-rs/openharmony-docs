@@ -16,15 +16,15 @@
 
 ## 创建Native C++工程
 
-具体见创建NDK工程
+具体见[创建NDK工程](create-with-ndk.md)
 
 ## Native侧方法的实现
 
-参考使用Node-API实现跨语言交互开发流程，以下代码提供了“使用JSVM-API实现JS与C/C++语言交互开发流程”Native侧方法实现的一个demo。
+参考[使用Node-API实现跨语言交互开发流程](use-napi-process.md#native侧方法的实现)，以下代码提供了“使用JSVM-API实现JS与C/C++语言交互开发流程”Native侧方法实现的一个demo。
 
 - 在index.d.ts文件中，提供JS侧的接口方法。
 
-  <!-- @export_native -->
+  <!-- @[export_native](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmProcess/entry/src/main/cpp/types/libentry/Index.d.ts) -->
   
   ``` TypeScript
   export const runTest: () => void;
@@ -62,7 +62,7 @@
 
 - 新建entry/src/main/cpp/hello.cpp，实现Native侧的runTest接口。具体代码如下：
 
-  <!-- @oh_jsvm_process -->
+  <!-- @[oh_jsvm_process](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmProcess/entry/src/main/cpp/hello.cpp) -->
   
 ``` C++
 #include "napi/native_api.h"
@@ -213,7 +213,7 @@ extern "C" __attribute__((constructor)) void RegisterEntryModule(void) { napi_mo
 ```
 ## ArkTS侧调用C/C++方法实现
 
-<!-- @call_native_cpp -->
+<!-- @[call_native_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmProcess/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 import napitest from 'libentry.so';

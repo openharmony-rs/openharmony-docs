@@ -40,7 +40,7 @@ JSVM-API提供了OH_JSVM_SetHeapThresholdCallback接口，为指定的VM注册�
 
 ## 使用示例
 
-JSVM-API接口开发流程参考使用JSVM-API实现JS与C/C++语言交互开发流程，本文仅对接口对应C++相关代码进行展示。
+JSVM-API接口开发流程参考[使用JSVM-API实现JS与C/C++语言交互开发流程](use-jsvm-process.md)，本文仅对接口对应C++相关代码进行展示。
 
 ### 具体函数使用示例代码
 
@@ -48,7 +48,7 @@ JSVM-API接口开发流程参考使用JSVM-API实现JS与C/C++语言交互开发
 
 **cpp部分代码**
 
- <!-- @oh_jsvm_take_raw_heap_snapshot -->    
+ <!-- @[oh_jsvm_take_raw_heap_snapshot](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/JsvmAboutRawheap/entry/src/main/cpp/hello.cpp) -->    
  
  ``` C++
  #include <iostream>

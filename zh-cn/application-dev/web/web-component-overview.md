@@ -23,7 +23,7 @@ Web组件为开发者提供了丰富的控制Web页面能力。包括：
 
 - 生命周期管理：组件生命周期状态变化，通知Web页面的加载状态变化等。
 
-- 常用属性与事件：User-Agent开发指导、管理Cookie及数据存储、字体与Web深色模式适配、权限管理等。
+- 常用属性与事件：[User-Agent开发指导](./web-default-userAgent.md)、[管理Cookie及数据存储](./web-cookie-and-data-storage-mgmt.md)、字体与[Web深色模式适配](./web-set-dark-mode.md)、权限管理等。
 
 - 与应用界面交互：自定义文本选择菜单、上下文菜单、文件上传界面等与应用界面交互能力。
 
@@ -31,13 +31,13 @@ Web组件为开发者提供了丰富的控制Web页面能力。包括：
 
 - 安全与隐私：无痕浏览模式、广告拦截、坚盾守护模式等。
 
-- 维测能力：DevTools工具调试能力，使用crashpad收集Web组件崩溃信息、定位与解决Web白屏问题<!--RP2--><!--RP2End-->。
+- 维测能力：[DevTools工具](web-debugging-with-devtools.md)调试能力，使用crashpad收集Web组件崩溃信息、定位与解决Web白屏问题<!--RP2--><!--RP2End-->。
 
 - 其他高阶能力：与系统组件同层渲染、Web组件的网络托管、Web组件的媒体播放托管、Web组件输入框拉起自定义输入法<!--RP1--><!--RP1End-->等。
 
 ## 需要权限
 
-使用Web组件访问在线Web网页时需添加网络权限：ohos.permission.INTERNET，具体申请方式请参考声明权限。
+使用Web组件访问在线Web网页时需添加网络权限：ohos.permission.INTERNET，具体申请方式请参考[声明权限](../security/AccessToken/declare-permissions.md)。
 
   ```ts
   "requestPermissions":[
@@ -57,9 +57,9 @@ Web组件为开发者提供了丰富的控制Web页面能力。包括：
   | --- | --- |
   | OpenHarmony 4.0及之前 | M99 |
   | OpenHarmony 4.1-5.1 | M114 |
-  | OpenHarmony 6.0 | M132（默认，推荐使用，请参考M114->M132差异适配指南）<br>M114（可选，若应用需切换为此内核，请参考M114内核在OpenHarmony 6.0系统上的适配指导） |
+  | OpenHarmony 6.0 | M132（默认，推荐使用，请参考[M114->M132差异适配指南](https://gitcode.com/openharmony-tpc/chromium_src/blob/master/web/ReleaseNote/ArkWeb_114_132.md)）<br>M114（可选，若应用需切换为此内核，请参考[M114内核在OpenHarmony 6.0系统上的适配指导](https://gitcode.com/openharmony-tpc/chromium_src/blob/master/web/ReleaseNote/CompatibleWithLegacyWebEngine_6.0.md)） |
   | OpenHarmony 6.1 | M132 |
-  | OpenHarmony 7.0 | M144（默认，推荐使用，请参考M132->M144差异适配指南）<br>M132（可选，若应用需切换为此内核，请参考M132内核在OpenHarmony 7.0系统上的适配指导） |
+  | OpenHarmony 7.0 | M144（默认，推荐使用，请参考[M132->M144差异适配指南](https://gitcode.com/openharmony-tpc/chromium_src/blob/master/web/ReleaseNote/ArkWeb_132_144.md)）<br>M132（可选，若应用需切换为此内核，请参考[M132内核在OpenHarmony 7.0系统上的适配指导](https://gitcode.com/openharmony-tpc/chromium_src/blob/master/web/ReleaseNote/CompatibleWithLegacyWebEngine_7.0.md)） |
 <!--RP3--><!--RP3End-->
 
 <!--RP4--><!--RP4End-->
@@ -67,6 +67,6 @@ Web组件为开发者提供了丰富的控制Web页面能力。包括：
 
 针对Web组件开发，有以下相关实例可供参考：
 
-- Web组件的使用（ArkTS）（API9）
+- [Web组件的使用（ArkTS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/ETSUI/WebCookie)
 
-- Web组件抽奖案例（ArkTS）（API9）
+- [Web组件抽奖案例（ArkTS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/ETSUI/WebComponent)

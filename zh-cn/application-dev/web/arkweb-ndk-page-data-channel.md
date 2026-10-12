@@ -2,7 +2,7 @@
 <!--Kit: ArkWeb-->
 <!--Subsystem: Web-->
 <!--Owner: @aohui-->
-<!--Designer: @yaomingliu-->
+<!--Designer: @xuefuzhang-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
@@ -10,15 +10,15 @@
 
 ## 适用的应用架构
 
-应用使用ArkTS、C++语言混合开发，或本身应用架构较贴近于小程序架构，自带C++侧环境，推荐使用ArkWeb在Native侧提供的ArkWeb_ControllerAPI、ArkWeb_WebMessageAPI、ArkWeb_WebMessagePortAPI实现PostWebMessage功能。
+应用使用ArkTS、C++语言混合开发，或本身应用架构较贴近于小程序架构，自带C++侧环境，推荐使用ArkWeb在Native侧提供的[ArkWeb_ControllerAPI](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md)、[ArkWeb_WebMessageAPI](../reference/apis-arkweb/capi-web-arkweb-webmessageapi.md)、[ArkWeb_WebMessagePortAPI](../reference/apis-arkweb/capi-web-arkweb-webmessageportapi.md)实现PostWebMessage功能。
 
-  arkweb_jsbridge_arch
+  ![arkweb_jsbridge_arch](figures/arkweb_jsbridge_arch.png)
 
   上图展示了具有普遍适用性的小程序的通用架构。在这一架构中，逻辑层依赖于应用程序自带的JavaScript运行时，该运行时在一个已有的C++环境中运行。通过Native接口，逻辑层能够直接在C++环境中与视图层（其中ArkWeb充当渲染器）进行通信，无需回退至ArkTS环境使用ArkTS PostWebMessage接口。
 
   左图是使用ArkTS PostWebMessage接口构建小程序的方案，如红框所示，应用需要先调用到ArkTS环境，再调用到C++环境。右图是使用Native PostWebMessage接口构建小程序的方案，不需要ArkTS环境和C++环境的切换，执行效率更高。
 
-  arkweb_postwebmessage_diff
+  ![arkweb_postwebmessage_diff](figures/arkweb_postwebmessage_diff.png)
 
 ## 使用Native接口实现PostWebMessage通信
 
@@ -45,7 +45,7 @@
 
 ### 使用Native接口获取API结构体
 
-ArkWeb Native侧需先获取API结构体，才能调用结构体里的Native API。ArkWeb Native侧API通过函数OH_ArkWeb_GetNativeAPI获取，根据入参type不同，可获取对应的函数指针结构体。其中本指导涉及ArkWeb_ControllerAPI、ArkWeb_WebMessageAPI、ArkWeb_WebMessagePortAPI。
+ArkWeb Native侧需先获取API结构体，才能调用结构体里的Native API。ArkWeb Native侧API通过函数[OH_ArkWeb_GetNativeAPI](../reference/apis-arkweb/capi-arkweb-interface-h.md#oh_arkweb_getnativeapi)获取，根据入参type不同，可获取对应的函数指针结构体。其中本指导涉及[ArkWeb_ControllerAPI](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md)、[ArkWeb_WebMessageAPI](../reference/apis-arkweb/capi-web-arkweb-webmessageapi.md)、[ArkWeb_WebMessagePortAPI](../reference/apis-arkweb/capi-web-arkweb-webmessageportapi.md)。
 
   ```c++
   static ArkWeb_ControllerAPI *controller = nullptr;
@@ -60,7 +60,7 @@ ArkWeb Native侧需先获取API结构体，才能调用结构体里的Native API
 
 ### 完整示例
 
-在调用API前建议通过ARKWEB_MEMBER_MISSING校验该函数结构体是否有对应函数指针，避免SDK与设备ROM不匹配导致crash问题。createWebMessagePorts、postWebMessage、close需运行在UI线程。
+在调用API前建议通过[ARKWEB_MEMBER_MISSING](../reference/apis-arkweb/capi-arkweb-type-h.md#宏定义)校验该函数结构体是否有对应函数指针，避免SDK与设备ROM不匹配导致crash问题。[createWebMessagePorts](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#createwebmessageports)、[postWebMessage](../reference/apis-arkweb/capi-web-arkweb-controllerapi.md#postwebmessage)、[close](../reference/apis-arkweb/capi-web-arkweb-webmessageportapi.md#close)需运行在UI线程。
 
 * 前端页面代码
 
@@ -194,7 +194,7 @@ ArkWeb Native侧需先获取API结构体，才能调用结构体里的Native API
 
 * ArkTS侧代码
 
-  <!-- @webview_and_native_modules_are_used_to_implement_complex_message_interaction_between_applications_and_h5_pages -->
+  <!-- @[webview_and_native_modules_are_used_to_implement_complex_message_interaction_between_applications_and_h5_pages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebJsBridge/entry/src/main/ets/pages/Index.ets) -->
   
   ``` TypeScript
   import testNapi from 'libentry.so';
@@ -458,7 +458,7 @@ ArkWeb Native侧需先获取API结构体，才能调用结构体里的Native API
 
 * Node-API侧暴露ArkTS接口
 
-  <!-- @the_arkts_interface_is_exposed_on_the_node_api_side -->
+  <!-- @[the_arkts_interface_is_exposed_on_the_node_api_side](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebJsBridge/entry/src/main/cpp/types/libentry/Index.d.ts) -->
   
   ``` TypeScript
   // entry/src/main/cpp/types/libentry/index.d.ts
@@ -507,7 +507,7 @@ ArkWeb Native侧需先获取API结构体，才能调用结构体里的Native API
 
 * Node-API层代码
 
-  <!-- @the_node_api_layer_code_for_the_data_channel_between_the_application_side_and_the_frontend_page -->
+  <!-- @[the_node_api_layer_code_for_the_data_channel_between_the_application_side_and_the_frontend_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebJsBridge/entry/src/main/cpp/hello.cpp) -->
   
   ``` C++
   #include "hilog/log.h"

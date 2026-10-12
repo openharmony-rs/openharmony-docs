@@ -23,7 +23,7 @@ JSVM-API提供了一组用于管理JavaScript虚拟机内存的API，可以更�
 
 ## 使用示例
 
-JSVM-API接口开发流程请参考使用JSVM-API实现JS与C/C++语言交互开发流程。本文仅展示接口对应C++及ArkTS相关代码。
+JSVM-API接口开发流程请参考[使用JSVM-API实现JS与C/C++语言交互开发流程](use-jsvm-process.md)。本文仅展示接口对应C++及ArkTS相关代码。
 
 ### OH_JSVM_AdjustExternalMemory
 
@@ -31,7 +31,7 @@ JSVM-API接口开发流程请参考使用JSVM-API实现JS与C/C++语言交互开
 
 cpp部分代码：
 
-<!-- @oh_jsvm_adjust_external_memory -->
+<!-- @[oh_jsvm_adjust_external_memory](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/UsageInstructionsTwo/adjustexternalmemory/src/main/cpp/hello.cpp) -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -88,7 +88,7 @@ JSVM Allocate memory size: 1048576
 
 cpp部分代码：
 
-<!-- @oh_jsvm_memory_pressure_notification -->
+<!-- @[oh_jsvm_memory_pressure_notification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/UsageInstructionsTwo/memorypressurenotification/src/main/cpp/hello.cpp) -->
 
 ``` C++
 #include "napi/native_api.h"

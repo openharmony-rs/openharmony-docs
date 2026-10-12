@@ -3,7 +3,7 @@
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
 <!--Designer: @gcw_sPCsris4-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
 
 ## 基本概念
@@ -31,7 +31,7 @@
 
 ## 接口说明
 
-上述场景涉及的常用接口如下表所示。更多API说明请参见@ohos.window (窗口)。
+上述场景涉及的常用接口如下表所示。更多API说明请参见[@ohos.window (窗口)](../reference/apis-arkui/arkts-apis-window.md)。
 
 | 实例名         | 接口名                                                       | 描述                                                         |
 | -------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -55,7 +55,7 @@
 
 ## 设置应用主窗口
 
-在`Stage`模型下，应用主窗口由`UIAbility`创建并维护生命周期。在`UIAbility`的`onWindowStageCreate`回调中，通过`WindowStage`获取应用主窗口，即可对其进行属性设置等操作。还可以在应用配置文件中设置应用主窗口的属性，如最大窗口宽度maxWindowWidth等，详见module.json5配置文件中的abilities标签。
+在`Stage`模型下，应用主窗口由`UIAbility`创建并维护生命周期。在`UIAbility`的`onWindowStageCreate`回调中，通过`WindowStage`获取应用主窗口，即可对其进行属性设置等操作。还可以在应用配置文件中设置应用主窗口的属性，如最大窗口宽度maxWindowWidth等，详见[module.json5配置文件中的abilities标签](../quick-start/module-configuration-file.md#abilities标签)。
 
 ### 开发步骤
 
@@ -71,7 +71,7 @@
 
    通过`loadContent`接口加载主窗口的目标页面。
    
-<!-- @create_main_window -->
+<!-- @[create_main_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/CreateMainWindow/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript
 import { UIAbility} from '@kit.AbilityKit';
@@ -123,7 +123,7 @@ export default class EntryAbility extends UIAbility {
 开发者可以按需创建应用子窗口，如弹窗等，并对其进行属性设置等操作。
 
 > **说明：**  
-> 以下几种场景不建议使用子窗口，建议优先考虑使用控件浮层能力实现。
+> 以下几种场景不建议使用子窗口，建议优先考虑使用控件[浮层](../reference/apis-arkui/arkui-ts/ts-universal-attributes-overlay.md)能力实现。
 > - 移动设备（手机、在非自由模式下的平板设备）场景下子窗不能超出处于智慧多窗悬浮窗模式、分屏模式的应用主窗口范围，与控件一致。  
 > - 分屏窗口与自由窗口模式下，主窗口位置大小发生改变时控件实时跟随变化能力优于子窗。  
 > - 部分设备平台下根据实际的系统配置限制，子窗只有系统默认的动效和圆角阴影，应用无法设置，自由度低。
@@ -134,7 +134,7 @@ export default class EntryAbility extends UIAbility {
 
    通过`createSubWindow`接口创建应用子窗口。
    
-   子窗口创建后默认是沉浸式布局。
+   子窗口创建后默认是[沉浸式布局](../windowmanager/immersive-window-feature.md#沉浸式布局)。
 
 2. 设置子窗口属性。
 
@@ -143,7 +143,7 @@ export default class EntryAbility extends UIAbility {
    在调用`showWindow`之前，建议设置子窗口的大小和位置。
 
    如果没有设置子窗口的大小，调用`showWindow`后：
-    + 自由窗口状态下，默认子窗口大小为当前物理屏幕的大小。<!--RP3--><!--RP3End-->
+    + [自由窗口](./window-terminology.md#freeform-window自由窗口)状态下，默认子窗口大小为当前物理屏幕的大小。<!--RP3--><!--RP3End-->
     + 非自由窗口状态下，默认子窗口大小为主窗口大小。
 
 3. 加载显示子窗口的具体内容。
@@ -156,7 +156,7 @@ export default class EntryAbility extends UIAbility {
 
 直接在onWindowStageCreate里面创建子窗口的整体示例代码如下：
 
-<!-- @create_sub_window -->
+<!-- @[create_sub_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/CreateSubWindow/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript
 import { UIAbility } from '@kit.AbilityKit';
@@ -262,7 +262,7 @@ export default class EntryAbility extends UIAbility {
 
 另外，也可以在某个page页面通过点击按钮创建子窗口，整体示例代码如下：
 
-<!-- @create_sub_window2_entryability -->
+<!-- @[create_sub_window2_entryability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/CreateSubWindow2/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript
 // EntryAbility.ets
@@ -289,7 +289,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<!-- @create_sub_window2_index -->
+<!-- @[create_sub_window2_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/CreateSubWindow2/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 // Index.ets
@@ -414,7 +414,7 @@ struct Index {
 }
 ```
 
-<!-- @create_sub_window2_subwindow -->
+<!-- @[create_sub_window2_subwindow](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/CreateSubWindow2/entry/src/main/ets/pages/SubWindow.ets) -->
 
 ``` TypeScript
 // subWindow.ets
@@ -461,7 +461,7 @@ struct SubWindow {
 
    通过`loadContent`接口加载沉浸式窗口的具体内容。
    
-<!-- @set_window_system_bar_enable -->
+<!-- @[set_window_system_bar_enable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/SetWindowSystemBarEnable/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript
 import { UIAbility } from '@kit.AbilityKit';
@@ -539,7 +539,7 @@ export default class EntryAbility extends UIAbility {
 ### 开发步骤
 
 <!--RP1-->
-**前提条件：** 创建WindowType.TYPE_FLOAT即全局悬浮窗类型的窗口，需要申请ohos.permission.SYSTEM_FLOAT_WINDOW权限，该权限为受控开放，权限申请方式请参考：申请使用受限权限。
+**前提条件：** 创建WindowType.TYPE_FLOAT即全局悬浮窗类型的窗口，需要申请ohos.permission.SYSTEM_FLOAT_WINDOW权限，该权限为受控开放，权限申请方式请参考：[申请使用受限权限](../security/AccessToken/declare-permissions-in-acl.md)。
 <!--RP1End-->
 
 1. 创建全局悬浮窗。
@@ -558,7 +558,7 @@ export default class EntryAbility extends UIAbility {
 
    当不再需要全局悬浮窗时，可根据具体实现逻辑，使用`destroyWindow`接口销毁全局悬浮窗。
 
-<!-- @create_float_window -->
+<!-- @[create_float_window](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/CreateFloatWindow/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript
 import { UIAbility } from '@kit.AbilityKit';
@@ -633,7 +633,7 @@ export default class EntryAbility extends UIAbility {
 
 在创建WindowStage对象后可通过监听`'windowStageEvent'`事件类型，监听到窗口进入前台、后台、前台可交互、前台不可交互等事件，应用可根据这些上报的事件状态进行相应的业务处理。
 
-<!-- @listen_window_stage -->
+<!-- @[listen_window_stage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/ListenWindowStage/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript
 import { UIAbility } from '@kit.AbilityKit';
@@ -682,8 +682,8 @@ export default class EntryAbility extends UIAbility {
 
 针对window开发（Stage模型），有以下相关实例可供参考：
 
-- `Window`：一多设置典型页面（Settings）（API9）
+- [`Window`：一多设置典型页面（Settings）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/MultiDeviceAppDev/Settings)
 
-- 全局悬浮窗（ArkTS）（API10）（Full SDK）
+- [全局悬浮窗（ArkTS）（API10）（Full SDK）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/WindowManagement/WindowRatio)
 
-- 窗口管理（ArkTS）（API12）（Full SDK）
+- [窗口管理（ArkTS）（API12）（Full SDK）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/WindowManagement/WindowManage)

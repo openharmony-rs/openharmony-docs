@@ -6,20 +6,20 @@
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
 
-在动态卡片中使用postCardAction接口的router能力，能够快速拉起动态卡片提供方应用的指定UIAbility(页面)，因此UIAbility较多的应用往往会通过卡片提供不同的跳转按钮，实现一键直达的效果。例如相机卡片，卡片上提供拍照、录像等按钮，点击不同按钮将拉起相机应用的不同UIAbility，从而提升用户的体验。
+在动态卡片中使用[postCardAction](../reference/apis-arkui/js-apis-postCardAction.md#postcardaction-1)接口的router能力，能够快速拉起动态卡片提供方应用的指定UIAbility(页面)，因此UIAbility较多的应用往往会通过卡片提供不同的跳转按钮，实现一键直达的效果。例如相机卡片，卡片上提供拍照、录像等按钮，点击不同按钮将拉起相机应用的不同UIAbility，从而提升用户的体验。
 
-WidgetCameraCard
+![WidgetCameraCard](figures/WidgetCameraCard.png)
 
 > **说明：**
 >
-> 本文主要介绍动态卡片的事件开发。对于静态卡片，请参见FormLink。
+> 本文主要介绍动态卡片的事件开发。对于静态卡片，请参见[FormLink](../reference/apis-arkui/arkui-ts/ts-container-formlink.md)。
 
 ## 开发步骤
 1. 创建动态卡片，在工程的entry模块中，新建名为WidgetEventRouterCard的ArkTS卡片。
 
 2. 构建ArkTS卡片页面代码布局，卡片页面布局中有两个按钮，点击其中一个按钮时调用postCardAction向指定UIAbility发送router事件，并在事件内定义需要传递的内容。
 
-   <!-- @widget_event_router_card -->
+   <!-- @[widget_event_router_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgeteventrouter/pages/WidgetEventRouterCard.ets) -->
    
    ``` TypeScript
    // src/main/ets/widgeteventrouter/pages/WidgetEventRouterCard.ets
@@ -89,7 +89,7 @@ WidgetCameraCard
 
 3. 处理router事件，在UIAbility中接收router事件并获取参数，根据传递的params不同，选择拉起不同的页面。
   
-   <!-- @entry_ability --> 
+   <!-- @[entry_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/entryability/EntryAbility.ts) --> 
    
    ``` TypeScript
    // src/main/ets/entryability/EntryAbility.ts
@@ -160,7 +160,7 @@ WidgetCameraCard
 
 4. 创建跳转后的UIAbility页面，新建FunA.ets和FunB.ets，构建页面布局。
 
-   <!-- @fun_a --> 
+   <!-- @[fun_a](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/funpages/FunA.ets) --> 
    
    ``` TypeScript
    // src/main/ets/funpages/FunA.ets
@@ -211,7 +211,7 @@ WidgetCameraCard
    }
    ```
 
-   <!-- @fun_b --> 
+   <!-- @[fun_b](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/funpages/FunB.ets) --> 
    
    ``` TypeScript
    // src/main/ets/funpages/FunB.ets
@@ -299,4 +299,4 @@ WidgetCameraCard
    }
    ```
 ## 运行效果
-WidgetPrinciple
+![WidgetPrinciple](figures/router跳转运行截图.gif)

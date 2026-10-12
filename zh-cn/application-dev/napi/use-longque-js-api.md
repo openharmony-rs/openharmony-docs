@@ -69,7 +69,7 @@ __Longque__.SKIP_CONSTRUCTOR: 过滤掉 'constructor' 属性
 
 ### 使用示例
 
-本示例展示了在 JSVM 中使用 Longque JS API 的方式，JSVM-API 接口开发流程参考使用JSVM-API实现JS与C/C++语言交互开发流程，本文仅对接口对应C++相关代码进行展示。
+本示例展示了在 JSVM 中使用 Longque JS API 的方式，JSVM-API 接口开发流程参考[使用JSVM-API实现JS与C/C++语言交互开发流程](use-jsvm-process.md)，本文仅对接口对应C++相关代码进行展示。
 
 cpp部分代码：
 ``` cpp

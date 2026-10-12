@@ -10,7 +10,7 @@
 Access Token Manager (程序访问控制管理工具，简称atm工具)，是用于查询或设置应用进程的权限、使用类型等信息的工具，为开发者提供了根据tokenId、包名、进程名等信息进行访问控制管理的能力。
 
 ## 环境说明
-在使用本工具前，开发者需要先获取hdc工具，执行hdc shell。
+在使用本工具前，开发者需要先获取[hdc工具](../dfx/hdc.md)，执行hdc shell。
 
 ## atm工具命令列表
 
@@ -138,13 +138,13 @@ atm dump [-h] [-d [-p <permission-name>]] [-t [-i <token-id>] [-b <bundle-name>]
 | -d                                     | 必选参数，查询系统中所有的权限定义。                               | 
 | -d&nbsp;-p \<permission-name\>              | 可选参数，通过权限名，查询权限定义。                              | 
 | -t                                     | 必选参数，查询系统中所有进程的tokenId。                             | 
-| -t&nbsp;-i \<token-id\>                     | 可选参数，通过进程的tokenId，查询该进程的基本信息以及对应的GrantStatus。             | 
-| -t&nbsp;-b \<bundle-name\>                  |  可选参数，通过应用进程的包名bundle-name，查询该应用的基本信息以及对应的GrantStatus。     | 
-| -t&nbsp;-n \<process-name\>                 |  可选参数，通过进程名process-name，查询该进程的基本信息以及对应的GrantStatus。  |
+| -t&nbsp;-i \<token-id\>                     | 可选参数，通过进程的tokenId，查询该进程的基本信息以及对应的[GrantStatus](../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#grantstatus)。             | 
+| -t&nbsp;-b \<bundle-name\>                  |  可选参数，通过应用进程的包名bundle-name，查询该应用的基本信息以及对应的[GrantStatus](../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#grantstatus)。     | 
+| -t&nbsp;-n \<process-name\>                 |  可选参数，通过进程名process-name，查询该进程的基本信息以及对应的[GrantStatus](../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#grantstatus)。  |
 | -t&nbsp;-p \<permission-name\>                 |  可选参数，通过权限名，查询申请该权限的应用进程的tokenId。<br>**说明**：从API版本26.0.0开始，支持该参数。  |
-| <!--DelRow-->-r                        |  必选参数，查询系统内的所有PermissionUsedResponse。                           | 
-| <!--DelRow-->-r&nbsp;-i \<token-id\>        | 可选参数，通过应用进程的tokenId，查询该应用的PermissionUsedResponse。        | 
-| <!--DelRow-->-r&nbsp;-p \<permission-name\> | 可选参数，通过权限名，查询该权限的PermissionUsedResponse。                        |
+| <!--DelRow-->-r                        |  必选参数，查询系统内的所有[PermissionUsedResponse](../reference/apis-ability-kit/js-apis-privacyManager-sys.md#permissionusedresponse)。                           | 
+| <!--DelRow-->-r&nbsp;-i \<token-id\>        | 可选参数，通过应用进程的tokenId，查询该应用的[PermissionUsedResponse](../reference/apis-ability-kit/js-apis-privacyManager-sys.md#permissionusedresponse)。        | 
+| <!--DelRow-->-r&nbsp;-p \<permission-name\> | 可选参数，通过权限名，查询该权限的[PermissionUsedResponse](../reference/apis-ability-kit/js-apis-privacyManager-sys.md#permissionusedresponse)。                        |
 | <!--DelRow-->-v                                     | 必选参数，查询系统中所有应用进程的权限使用类型。                    | 
 | <!--DelRow-->-v&nbsp;-i \<token-id\>                     | 可选参数，通过应用进程的tokenId，查询该应用的权限使用类型。         | 
 | <!--DelRow-->-v&nbsp;-p \<permission-name\>              | 可选参数，通过权限名，查询该权限的使用类型。                        | 

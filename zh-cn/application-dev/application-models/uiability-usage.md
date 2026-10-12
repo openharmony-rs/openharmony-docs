@@ -7,17 +7,17 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-本文主要介绍UIAbility组件的基本用法，包括：
+本文主要介绍[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)组件的基本用法，包括：
 - 指定UIAbility的启动页面。
-- 获取UIAbility的上下文UIAbilityContext。
+- 获取UIAbility的上下文[UIAbilityContext (UIAbility上下文)](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)。
 - 获取UIAbility拉起方的信息。
 
 ## 指定UIAbility的启动页面
 
-应用中的UIAbility在启动过程中，需要指定启动页面，否则应用启动后会因为没有默认加载页面而导致白屏。可以在UIAbility的onWindowStageCreate()生命周期回调中，通过WindowStage对象的loadContent()方法设置启动页面。
+应用中的[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)在启动过程中，需要指定启动页面，否则应用启动后会因为没有默认加载页面而导致白屏。可以在UIAbility的[onWindowStageCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#onwindowstagecreate)生命周期回调中，通过[WindowStage](../reference/apis-arkui/arkts-apis-window-WindowStage.md)对象的[loadContent()](../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)方法设置启动页面。
 
 
-<!-- @onWindowStageCreate -->  
+<!-- @[onWindowStageCreate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityUsage/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -44,13 +44,13 @@ export default class EntryAbility extends UIAbility {
 
 ## 获取UIAbility的上下文信息
 
-UIAbility类拥有自身的上下文信息，该信息为UIAbilityContext类的实例，UIAbilityContext类拥有abilityInfo、currentHapModuleInfo等属性。通过UIAbilityContext可以获取UIAbility的相关配置信息，如包代码路径、Bundle名称、Ability名称和应用程序需要的环境状态等属性信息，以及可以获取操作UIAbility实例的方法（如startAbility()、connectServiceExtensionAbility()、terminateSelf()等）。
+[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)类拥有自身的上下文信息，该信息为[UIAbilityContext (UIAbility上下文)](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)类的实例，[UIAbilityContext (UIAbility上下文)](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)类拥有abilityInfo、currentHapModuleInfo等属性。通过UIAbilityContext可以获取UIAbility的相关配置信息，如包代码路径、Bundle名称、Ability名称和应用程序需要的环境状态等属性信息，以及可以获取操作UIAbility实例的方法（如[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)、[connectServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectserviceextensionability)、[terminateSelf()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself)等）。
 
-如果需要在页面中获得当前Ability的Context，需要通过调用组件的getUIContext()方法获取UIContext对象，再调用UIContext对象的getHostContext()方法获取当前页面关联的UIAbilityContext或ExtensionContext。
+如果需要在页面中获得当前Ability的Context，需要通过调用组件的[getUIContext()](../reference/apis-arkui/arkui-ts/ts-custom-component-api.md#getuicontext)方法获取[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)对象，再调用UIContext对象的[getHostContext()](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#gethostcontext12)方法获取当前页面关联的UIAbilityContext或[ExtensionContext](../reference/apis-ability-kit/js-apis-inner-application-extensionContext.md)。
 
 - 在UIAbility中可以通过`this.context`获取UIAbility实例的上下文信息。
 
-  <!-- @onCreate -->
+  <!-- @[onCreate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityUsage/entry/src/main/ets/entryability/EntryAbility.ets) -->
   
   ``` TypeScript
   import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -67,7 +67,7 @@ UIAbility类拥有自身的上下文信息，该信息为UIAbilityContext类的�
   
 - 在页面中获取UIAbility实例的上下文信息，包括导入依赖资源context模块和在组件中定义一个context变量两个部分。
 
-  <!-- @Page_EventHub -->
+  <!-- @[Page_EventHub](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityUsage/entry/src/main/ets/context/EventHubPage.ets) -->
   
   ``` TypeScript
   import { common, Want } from '@kit.AbilityKit';
@@ -92,10 +92,10 @@ UIAbility类拥有自身的上下文信息，该信息为UIAbilityContext类的�
   }
   ```
 
-  也可以在导入依赖资源context模块后，在具体使用UIAbilityContext前进行变量定义。
+  也可以在导入依赖资源context模块后，在具体使用[UIAbilityContext (UIAbility上下文)](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md)前进行变量定义。
 
   
-  <!-- @basicUsage -->
+  <!-- @[basicUsage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityUsage/entry/src/main/ets/context/BasicUsage.ets) -->
   
   ``` TypeScript
   import { common, Want } from '@kit.AbilityKit';
@@ -120,9 +120,9 @@ UIAbility类拥有自身的上下文信息，该信息为UIAbilityContext类的�
   }
   ```
 
-- 当业务完成后，开发者如果想要终止当前UIAbility实例，可以通过调用terminateSelf()方法实现。
+- 当业务完成后，开发者如果想要终止当前[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)实例，可以通过调用[terminateSelf()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself)方法实现。
 
-  <!-- @terminateSelf -->
+  <!-- @[terminateSelf](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityUsage/entry/src/main/ets/context/BasicUsage.ets) -->
   
   ``` TypeScript
   import { common, Want } from '@kit.AbilityKit';
@@ -171,12 +171,12 @@ UIAbility类拥有自身的上下文信息，该信息为UIAbilityContext类的�
 
 ## 获取UIAbility拉起方的信息
 
-拉起方（UIAbilityA）通过startAbility启动目标方（UIAbilityB）时，UIAbilityB可以通过@ohos.app.ability.Want中parameters参数获取UIAbilityA的Pid、BundleName和AbilityName等信息。
+拉起方（UIAbilityA）通过startAbility启动目标方（UIAbilityB）时，UIAbilityB可以通过[@ohos.app.ability.Want](../reference/apis-ability-kit/js-apis-app-ability-want.md)中parameters参数获取UIAbilityA的Pid、BundleName和AbilityName等信息。
 
 
 1. 通过点击UIAbilityA中的"拉起UIAbilityB"按钮，拉起UIAbilityB。
 
-    <!-- @Index -->  
+    <!-- @[Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityUsage/entry/src/main/ets/pages/Index.ets) -->  
     
     ``` TypeScript
     import { common, Want } from '@kit.AbilityKit';
@@ -222,9 +222,9 @@ UIAbility类拥有自身的上下文信息，该信息为UIAbilityContext类的�
     }
     ```
 
-2. 在UIAbilityB的onCreate()生命周期中，获取UIAbilityA的Pid、BundleName和AbilityName，并通过日志输出。
+2. 在UIAbilityB的[onCreate()](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#oncreate)生命周期中，获取UIAbilityA的Pid、BundleName和AbilityName，并通过日志输出。
 
-    <!-- @UIAbilityB -->
+    <!-- @[UIAbilityB](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityUsage/entry/src/main/ets/entryability/UIAbilityB.ets) -->
 
     ``` TypeScript
     import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';

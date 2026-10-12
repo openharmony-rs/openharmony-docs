@@ -63,7 +63,7 @@ struct AttrAnimationExample0 {
 }
 ```
 
-img
+![img](./figures/reasonable-using-animation-1.png)
 
 ### 使用系统提供的属性动效API
 
@@ -103,9 +103,9 @@ struct AttrAnimationExample1 {
 }
 ```
 
-img
+![img](./figures/reasonable-using-animation-2.png)
 
-更详细的API文档请参考：属性动画。
+更详细的API文档请参考：[属性动画](../reference/apis-arkui/arkui-ts/ts-animatorproperty.md)。
 
 ### 使用系统提供的显式动效API
 
@@ -154,9 +154,9 @@ struct AnimateToExample2 {
 }
 ```
 
-img
+![img](./figures/reasonable-using-animation-3.png)
 
-更详细的API文档请参考：显式动画。
+更详细的API文档请参考：[显式动画](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md)。
 
 ### 优化效果
 
@@ -198,7 +198,7 @@ struct TabsExample {
 }
 ```
 
-img
+![img](./figures/reasonable-using-animation-4.PNG)
 
 ### 正例：
 
@@ -226,17 +226,17 @@ struct TabsExample {
 }
 ```
 
-img
+![img](./figures/reasonable-using-animation-5.PNG)
 
 ### 优化效果
 
 | 优化前 1000ms                                         | 优化后 100ms                                          |   
 |----------------------------------------------------|----------------------------------------------------|
-| img | img |
+| ![img](./figures/reasonable-using-animation-6.gif) | ![img](./figures/reasonable-using-animation-7.gif) |
 
 上述示例通过减少`animationDuration`数值，减少Tabs切换完成时延。当数值设置为0且TabBar不为BottomTabBarStyle样式时，隐式动效延时为默认的300ms。开发者可根据实际场景适当减少隐式动效时延，如果应用没有特殊的动效要求时，建议设置数值为1，减少阻塞主线程，提高应用性能。
 
-更详细的API文档请参考：Tabs-animationduration。
+更详细的API文档请参考：[Tabs-animationduration](../reference/apis-arkui/arkui-ts/ts-container-tabs.md#animationduration)。
 
 ## 合理设置动效时长
 
@@ -292,11 +292,11 @@ struct ListExample {
 
 100vp/s：
 
-img
+![img](./figures/reasonable-using-animation-8.PNG)
 
 10000vp/s：
 
-img
+![img](./figures/reasonable-using-animation-9.PNG)
 
 | 示例  | 动效耗时（ms） |
 |-----|----------|

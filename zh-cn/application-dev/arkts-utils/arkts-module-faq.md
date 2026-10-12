@@ -96,7 +96,7 @@ ModuleImportStack:
 
 **可能原因**
 
-应用在升级时并未升级版本号，或者应用使用了normalized特性，但是在升级或者更新时没有重启应用。
+应用在升级时并未升级版本号，或者应用使用了[normalized](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile-app#section13181758123312)特性，但是在升级或者更新时没有重启应用。
 
 **解决措施**
 
@@ -106,21 +106,21 @@ ModuleImportStack:
 
    若不一致，则为应用版本号降级导致更新失败，应用需要更新版本号。
 
-   hapVersion
+   ![hapVersion](./figures/module_hapVersion.PNG)
 
-   crashVersion
+   ![crashVersion](./figures/module_crashVersion.PNG)
 
 3. 检查是否使用了normalized特性但未重启应用。
 
    查看反编译后的abc文件为normalized ohmurl格式。可以在文件内搜索@normalized：
 
-   normalized
+   ![normalized](./figures/module_normalized.PNG)
 
 4. 重新启动应用，确保normalized特性生效。
 
 **参考链接**
 
-Disassembler反汇编工具
+[Disassembler反汇编工具](./tool-disassembler.md)
 
 ## cannot find record 'fileName', please check request path.
 
@@ -130,7 +130,7 @@ Disassembler反汇编工具
 
 **可能原因**
 
-1. 该文件使用了动态import加载模块，但未在build-profile.json5的"buildOption"中进行相关配置。
+1. 该文件使用了动态import加载模块，但未在build-profile.json5的"buildOption"中进行[相关配置](./arkts-dynamic-import.md#动态import变量表达式)。
 
 2. 文件路径配置错误，导致无法在hap包中找到对应文件。
 
@@ -138,7 +138,7 @@ Disassembler反汇编工具
 
 1. 检查动态加载文件的配置是否正确。
 
-   按照动态加载写法进行检查。
+   按照[动态加载写法](./arkts-dynamic-import.md#动态import实现中的关键点)进行检查。
 
 2. 检查文件路径和编译产物是否匹配。
 
@@ -146,16 +146,16 @@ Disassembler反汇编工具
 
    情况一：搜索不到完整的文件名，但可以搜索到相似的名字。
 
-      unComplete
+      ![unComplete](./figures/module_unComplete.PNG)
 
       解决办法：每行的第一个和第二个分号之间会有完整的名字，报错中的文件名和编译产物中的文件名需要修改为一致。
 
    情况二：filesInfo.txt搜索不到这个文件，在编译产物区域也找不到对应产物的文件生成。
 
-      entry
+      ![entry](./figures/module_entry.PNG)
 
       解决方法：每个被打入abc的文件都会在编译产物中生成，如entry包、har包。开发者如果在对应路径没有查到该文件，则排查是否为动态加载文件。
 
 **参考链接**
 
-动态加载
+[动态加载](./arkts-dynamic-import.md)

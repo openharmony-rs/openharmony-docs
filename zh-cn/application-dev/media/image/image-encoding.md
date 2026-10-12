@@ -8,21 +8,21 @@
 
 图片编码指将PixelMap压缩成不同格式的图片文件，用于保存和传输。
 
-支持使用PackToData和PackToFile将PixelMap编码为JPEG、WebP、PNG、HEIC和TIFF格式。
+支持使用[PackToData](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#packtodata13-1)和[PackToFile](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#packtofile11-2)将[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)编码为JPEG、WebP、PNG、HEIC和TIFF格式。
 
-从API version 18开始，支持使用PackToDataFromPixelmapSequence和PackToFileFromPixelmapSequence将多个PixelMap编码为GIF格式。
+从API version 18开始，支持使用[PackToDataFromPixelmapSequence](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#packtodatafrompixelmapsequence18)和[PackToFileFromPixelmapSequence](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#packtofilefrompixelmapsequence18)将多个PixelMap编码为GIF格式。
 
-从API版本26.0.0开始，支持使用PackBinaryImageToTiffFile和PackBinaryImageToTiffData将二值图像数据编码为TIFF格式。
+从API版本26.0.0开始，支持使用[PackBinaryImageToTiffFile](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#packbinaryimagetotifffile)和[PackBinaryImageToTiffData](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#packbinaryimagetotiffdata)将二值图像数据编码为TIFF格式。
 
 ## 开发步骤
 
-图片编码相关API的详细介绍请参见ImagePacker。
+图片编码相关API的详细介绍请参见[ImagePacker](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md)。
 
 ### 图片编码进文件流
 
 1. 导入相关模块包。
    
-   <!-- @encodingPixelMap_import -->    
+   <!-- @[encodingPixelMap_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/EncodingPixelMap.ets) -->    
    
    ``` TypeScript
    // 导入相关模块。
@@ -33,11 +33,11 @@
    import { resourceManager } from '@kit.LocalizationKit';
    ```
 
-2. 设置编码选项PackingOption。
+2. 设置编码选项[PackingOption](../../reference/apis-image-kit/arkts-apis-image-i.md#packingoption)。
    
    2.1 这里以编码成jpeg图片为例。编码的目标格式format遵循MIME标准定义，因此PackingOption.format应设置为image/jpeg，编码后的文件扩展名可设为.jpg或.jpeg。
    
-   <!-- @create_packOpts -->   
+   <!-- @[create_packOpts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
    
    ``` TypeScript
    // quality默认值为0，建议不低于80；本示例统一设置为90，兼顾图片质量和文件体积。
@@ -46,28 +46,28 @@
    
    2.2 当图片源是HDR，且希望编码为HDR图片文件时，需要额外配置desiredDynamicRange。
    
-   <!-- @packOpts_isHdr -->   
+   <!-- @[packOpts_isHdr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
    
    ``` TypeScript
    // 资源本身为hdr且设备支持HDR编码则会编码为hdr内容(需要资源本身为hdr且设备支持HDR编码，支持jpeg格式)。
    packOpts.desiredDynamicRange = image.PackingDynamicRange.AUTO;
    ```
 
-3. 封装函数，传入imageSource或pixelMap，使用packToData接口编码到ArrayBuffer，或使用packToFile接口编码到文件。
+3. 封装函数，传入imageSource或pixelMap，使用[packToData](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#packtodata13)接口编码到ArrayBuffer，或使用[packToFile](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#packtofile11)接口编码到文件。
    
    > **说明：**
    >
-   > 在进行编码前，需要先获取imageSource或pixelMap，可参考使用ImageSource完成图片解码。
+   > 在进行编码前，需要先获取imageSource或pixelMap，可参考[使用ImageSource完成图片解码](./image-decoding.md)。
 
    - 定义copyData，获取编码后的文件流，方便后续保存为图片或者用于解码显示。
-     <!-- @create_copyData -->   
+     <!-- @[create_copyData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
      
      ``` TypeScript
      let copyData: ArrayBuffer = new ArrayBuffer(0);
      ```
    
    - pixelMap编码到ArrayBuffer。
-     <!-- @packToData_pixelMap -->   
+     <!-- @[packToData_pixelMap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
      
      ``` TypeScript
      async function packToDataFromPixelMap(pixelMap : image.PixelMap) {
@@ -88,7 +88,7 @@
      ```
    
    - imageSource编码到ArrayBuffer。
-     <!-- @packToData_imageSource -->  
+     <!-- @[packToData_imageSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->  
      
      ``` TypeScript
      async function packToDataFromImageSource(imageSource : image.ImageSource) {
@@ -107,7 +107,7 @@
      ```
    
    - pixelMap编码到文件。
-     <!-- @packToFile_pixelMap -->    
+     <!-- @[packToFile_pixelMap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->    
      
      ``` TypeScript
      async function packToFileFromPixelMap(context : Context, pixelMap : image.PixelMap) {
@@ -130,7 +130,7 @@
      ```
    
    - imageSource编码到文件。
-     <!-- @packToFile_imageSource -->    
+     <!-- @[packToFile_imageSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->    
      
      ``` TypeScript
      async function packToFileFromImageSource(context : Context, imageSource : image.ImageSource) {
@@ -154,7 +154,7 @@
 
 4. 将图片保存进图库。
    
-将图片编码到ArrayBuffer或文件后，可使用Media Library Kit的相关接口保存媒体库资源保存进图库。
+将图片编码到ArrayBuffer或文件后，可使用[Media Library Kit](../medialibrary/photoAccessHelper-overview.md)的相关接口[保存媒体库资源](../medialibrary/photoAccessHelper-savebutton.md)保存进图库。
 
 <!--RP1-->
 <!--RP1End-->

@@ -403,7 +403,7 @@ typedef JSVM_PropertyHandlerConfigurationStruct* JSVM_PropertyHandlerCfg;
 
 **JSVM_InitOptions 的使用描述**
 
-JSVM 提供了多种配置选项，允许开发者在执行 `OH_JSVM_Init` 时灵活配置其行为。可以通过 `OH_JSVM_GetVMInfo` 接口获取当前 JSVM 版本所对应的 V8 引擎版本。JSVM 中可支持的选项范围与对应的 V8 引擎版本可支持的选项范围保持一致。`OH_JSVM_GetVMInfo` 接口的使用参考使用JSVM-API接口获取JSVM API的版本号。
+JSVM 提供了多种配置选项，允许开发者在执行 `OH_JSVM_Init` 时灵活配置其行为。可以通过 `OH_JSVM_GetVMInfo` 接口获取当前 JSVM 版本所对应的 V8 引擎版本。JSVM 中可支持的选项范围与对应的 V8 引擎版本可支持的选项范围保持一致。`OH_JSVM_GetVMInfo` 接口的使用参考[使用JSVM-API接口获取JSVM API的版本号](use-jsvm-about-version.md)。
 
 > **注意：**
 >
@@ -826,7 +826,7 @@ RunWithOption: success: 1
 RunWithOrigin: success: 1
 ```
 
-OH_JSVM_CreateCodeCache接口用法可参考使用code cache加速编译。
+OH_JSVM_CreateCodeCache接口用法可参考[使用code cache加速编译](use-jsvm-about-code-cache.md)。
 
 ### 使用 JSVM-API WebAssembly 接口编译 wasm module
 
@@ -834,7 +834,7 @@ OH_JSVM_CreateCodeCache接口用法可参考使用code cache加速编译。
 
 JSVM-API WebAssembly 接口提供了 WebAssembly 字节码编译、WebAssembly 函数优化、WebAssembly cache 序列化和反序列化的能力。
 
-详见使用 JSVM-API WebAssembly 接口。
+详见[使用 JSVM-API WebAssembly 接口](use-jsvm-about-wasm.md)。
 
 **接口说明**
 
@@ -848,7 +848,7 @@ JSVM-API WebAssembly 接口提供了 WebAssembly 字节码编译、WebAssembly �
 
 **场景示例**
 
-详见使用 JSVM-API WebAssembly 接口。
+详见[使用 JSVM-API WebAssembly 接口](use-jsvm-about-wasm.md)。
 
 ### 异常处理
 
@@ -2041,7 +2041,7 @@ static napi_value TestDefineClassWithProperty(napi_env env1, napi_callback_info 
 ```
 场景示例：设置父类并通过DefineClassOptions设置监听拦截属性操作
 
-具体示例参考使用JSVM-API接口进行class相关开发。
+具体示例参考[使用JSVM-API接口进行class相关开发](use-jsvm-about-class.md)。
 
 ### 版本管理
 
@@ -2255,7 +2255,7 @@ OH_JSVM_JsonParse(env, jsonString, &result);
 
 场景示例：
 
-创建和使用虚拟机的启动快照。
+[创建和使用虚拟机的启动快照。](use-jsvm-create-snapshot.md)
 
 ### 检查传入的值是否可调用
 
@@ -2553,7 +2553,7 @@ static napi_value GetInstanceData(napi_env env1, napi_callback_info info)
 
 场景示例：
 
-使用JSVM-API接口进行任务队列相关开发
+[使用JSVM-API接口进行任务队列相关开发](use-jsvm-execute-tasks.md)
 
 ### 后台反序列化
 

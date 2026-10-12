@@ -7,12 +7,12 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-Radio是单选框组件，通常用于提供相应的用户交互选择项，同一组的Radio中只有一个可以被选中。具体用法请参考Radio。
+Radio是单选框组件，通常用于提供相应的用户交互选择项，同一组的Radio中只有一个可以被选中。具体用法请参考[Radio](../reference/apis-arkui/arkui-ts/ts-basic-components-radio.md)。
 
 
 ## 创建单选框
 
-Radio通过调用RadioOptions来创建，以RadioOptions中的value和group为例：
+Radio通过调用[RadioOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-radio.md#radiooptions对象说明)来创建，以RadioOptions中的value和group为例：
 
 ```ts
 Radio(options: {value: string, group: string})
@@ -22,7 +22,7 @@ Radio(options: {value: string, group: string})
 
 Radio支持设置选中状态和非选中状态的样式。
 
-<!-- @click_radio_to_show_function -->
+<!-- @[click_radio_to_show_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/radio/RadioButton.ets) -->
 
 ``` TypeScript
 Radio({ value: 'Radio1', group: 'radioGroup' })
@@ -32,13 +32,13 @@ Radio({ value: 'Radio2', group: 'radioGroup' })
 ```
 
 
-zh-cn_image_0000001562820821
+![zh-cn_image_0000001562820821](figures/zh-cn_image_0000001562820821.png)
 
 ## 添加事件
 
-除支持通用事件外，Radio还用于选中后触发某些操作，可以绑定onChange事件来响应选中操作后的自定义行为。
+除支持[通用事件](../reference/apis-arkui/arkui-ts/ts-component-general-events.md)外，Radio还用于选中后触发某些操作，可以绑定onChange事件来响应选中操作后的自定义行为。
 
-<!-- @click_radio_event_function -->
+<!-- @[click_radio_event_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/radio/RadioButton.ets) -->
 
 ``` TypeScript
 Radio({ value: 'Radio1', group: 'radioGroup' })
@@ -62,7 +62,7 @@ Radio({ value: 'Radio2', group: 'radioGroup' })
 
 通过点击Radio切换声音模式。
 
-<!-- @click_radio_to_change_function --> 
+<!-- @[click_radio_to_change_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/radio/RadioSample.ets) --> 
 
 ``` TypeScript
 // xxx.ets
@@ -135,12 +135,12 @@ export struct RadioExample {
 ```
 
 
-zh-cn_image_0000001562700457
+![zh-cn_image_0000001562700457](figures/zh-cn_image_0000001562700457.gif)
 
 为不同Swiper页中的Radio设置独立的group值，实现各季节活动选项的隔离与独立选择。
 
 
-<!-- @radio_control_swiper_function -->
+<!-- @[radio_control_swiper_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ChooseComponent/entry/src/main/ets/pages/radio/RadioSwiper.ets) -->
 
 ``` TypeScript
 // xxx.ets
@@ -215,4 +215,4 @@ export struct RadioSwiperSample {
 ```
 
 
-radio-swiper
+![radio-swiper](figures/radio-swiper.gif)

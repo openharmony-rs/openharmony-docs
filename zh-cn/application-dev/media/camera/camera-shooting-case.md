@@ -6,25 +6,25 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-在开发相机应用时，需要先申请相关权限。
+在开发相机应用时，需要先[申请相关权限](camera-preparation.md)。
 
 当前示例提供完整的拍照流程介绍，方便开发者了解完整的接口调用顺序。
 
-在参考以下示例前，建议开发者查看相机开发指导(ArkTS)的具体章节，了解设备输入、会话管理、拍照等单个流程。
+在参考以下示例前，建议开发者查看[相机开发指导(ArkTS)](camera-device-management.md)的具体章节，了解[设备输入](camera-device-input.md)、[会话管理](camera-session-management.md)、[拍照](camera-shooting.md)等单个流程。
 
 ## 开发流程
 
 在获取到相机支持的输出流能力后，开始创建拍照流，开发流程如下。
 
-Photographing Development Process
+![Photographing Development Process](figures/photographing-development-process.png)
 
 ## 完整示例
 
-Context获取方式请参考：获取UIAbility的上下文信息。
+Context获取方式请参考：[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-如需要在图库中看到所保存的图片、视频资源，需要将其保存到媒体库，保存方式请参考：保存媒体库资源。
+如需要在图库中看到所保存的图片、视频资源，需要将其保存到媒体库，保存方式请参考：[保存媒体库资源](../medialibrary/photoAccessHelper-savebutton.md)。
 
-需要在photoOutput.on('photoAvailable')接口获取到buffer时，将buffer在安全控件中保存到媒体库。
+需要在[photoOutput.on('photoAvailable')](../../reference/apis-camera-kit/arkts-apis-camera-PhotoOutput.md#onphotoavailable11)接口获取到buffer时，将buffer在安全控件中保存到媒体库。
 ```ts
 import { camera } from '@kit.CameraKit';
 import { image } from '@kit.ImageKit';

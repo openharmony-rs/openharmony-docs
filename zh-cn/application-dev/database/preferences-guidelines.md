@@ -10,14 +10,14 @@
 用户首选项（Preferences）模块主要提供轻量级Key-Value操作，支持本地存储少量数据，数据存储在文件和内存中，访问速度快。如果存在大量数据场景，请考虑使用键值型数据库或关系型数据库。
 
 ## 约束限制
-- API version 18之前：ArkTS API仅支持XML存储模式；C API仅支持GSKV存储模式；存储模式互不兼容，不支持ArkTS和C API操作同一个Preferences实例。
+- API version 18之前：ArkTS API仅支持[XML存储模式](./data-persistence-by-preferences.md#xml存储)；C API仅支持[GSKV存储模式](./data-persistence-by-preferences.md#gskv存储)；存储模式互不兼容，不支持ArkTS和C API操作同一个Preferences实例。
 - API version 18及之后：ArkTS和C API均支持XML和GSKV双模式；ArkTS和C API使用相同的存储模式时，可以正常操作同一Preferences实例；禁止ArkTS和C API选择不同的存储模式，来操作同一个Preferences实例。
 - Key的最大长度限制为1024个字节，Value的最大长度限制为16MB。
 
 
 ## 接口说明
 
-详细的接口说明请参考Preferences接口文档。
+详细的接口说明请参考[Preferences接口文档](../reference/apis-arkdata/capi-preferences.md)。
 
 | 接口名称 | 描述 |
 | -------- | -------- |
@@ -58,7 +58,7 @@ libohpreferences.so
 
 ## 引用头文件
 
-<!--@preferences_include-->
+<!--@[preferences_include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
 ``` C++
 #include <database/preferences/oh_preferences.h>
 #include <database/preferences/oh_preferences_err_code.h>
@@ -70,7 +70,7 @@ libohpreferences.so
 下列实例展示如何通过Preferences实现对键值数据的修改与持久化。
 1. 创建Preferences配置选项（PreferencesOption）对象并设置配置选项成员（名称、应用组ID、包名、存储模式）。使用完毕后，调用OH_PreferencesOption_Destroy销毁配置选项实例。
 2. 调用OH_Preferences_Open打开一个Preferences实例，该实例使用完后需要调用OH_Preferences_Close关闭。
-   <!--@PreferencesOpen-->
+   <!--@[PreferencesOpen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
    
    ``` C++
    // 1. 创建Preferences配置选项。
@@ -132,7 +132,7 @@ libohpreferences.so
    }
    ```
 3. 订阅回调函数为DataChangeObserverCallback。
-   <!--@DataChangeObserverCallback-->
+   <!--@[DataChangeObserverCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
    
    ``` C++
    // 数据变更回调函数
@@ -171,7 +171,7 @@ libohpreferences.so
    }
    ```
    调用OH_Preferences_RegisterDataObserver注册3个Key的数据变更订阅。
-   <!--@RegisterDataObserver-->
+   <!--@[RegisterDataObserver](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
    
    ``` C++
    // 3. 对key_int、key_bool和key_string注册数据变更订阅。
@@ -194,7 +194,7 @@ libohpreferences.so
    }
    ```
 4. 设置Preferences实例中的键值数据。
-   <!--@PreferencesCrud-->
+   <!--@[PreferencesCrud](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
    
    ``` C++
    // 4. 设置Preferences实例中的KV数据。
@@ -236,7 +236,7 @@ libohpreferences.so
    }
    ```
 5. 获取Preferences实例中的键值数据。
-   <!--@PreferencesCrudGet-->
+   <!--@[PreferencesCrudGet](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
    
    ``` C++
    // 5. 获取Preferences实例中的KV数据。
@@ -296,7 +296,7 @@ libohpreferences.so
    ```
 
 6. 调用OH_Preferences_Close关闭Preferences实例，关闭后需要将实例指针置空。
-   <!--@PreferencesClose-->
+   <!--@[PreferencesClose](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
    
    ``` C++
    // 6. 使用完Preferences实例后需要关闭实例，关闭后需要将指针置空。
@@ -304,7 +304,7 @@ libohpreferences.so
    preference = nullptr;
    ```
 7. 设置和获取OH_PreferencesValue数据。
-   <!--@PreferencesValueSets-->
+   <!--@[PreferencesValueSets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Preferences/PreferencesNDKSample/entry/src/main/cpp/napi_init.cpp)-->
    
    ``` C++
    const int arg5 = 5;

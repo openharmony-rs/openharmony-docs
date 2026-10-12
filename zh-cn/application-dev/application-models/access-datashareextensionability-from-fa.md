@@ -9,11 +9,11 @@
 
 ## 概述
 
-无论FA模型还是Stage模型，数据读写功能都包含客户端和服务端两部分。
+无论[FA模型](ability-terminology.md#fa模型)还是[Stage模型](ability-terminology.md#stage模型)，数据读写功能都包含客户端和服务端两部分。
 
-- FA模型中，客户端是由DataAbilityHelper提供对外接口，服务端是由DataAbility提供数据库的读写服务。
+- FA模型中，客户端是由[DataAbilityHelper](../reference/apis-ability-kit/js-apis-inner-ability-dataAbilityHelper.md)提供对外接口，服务端是由[DataAbility](dataability-overview.md)提供数据库的读写服务。
 
-- Stage模型中，客户端是由DataShareHelper提供对外接口，服务端是由DataShareExtensionAbility提供数据库的读写服务。
+- Stage模型中，客户端是由[DataShareHelper](../reference/apis-arkdata/js-apis-data-dataShare-sys.md#datasharehelper)提供对外接口，服务端是由[DataShareExtensionAbility](../reference/apis-arkdata/js-apis-application-dataShareExtensionAbility-sys.md)提供数据库的读写服务。
 
 服务端由FA模型升级到Stage模型后，会导致FA模型的客户端在API 9(含)之后的版本上无法访问服务端。
 
@@ -33,7 +33,7 @@
 
 ## 约束与限制
 
-1. 由DataAbility切换到DataShareExtensionAbility时，只能修改URI的前缀，不能修改URI的其他部分。FAvsStage-uri
+1. 由DataAbility切换到DataShareExtensionAbility时，只能修改URI的前缀，不能修改URI的其他部分。![FAvsStage-uri](figures/FAvsStage-uri.png)
 
 2. DataShareHelper并没有实现原DataAbilityHelper对外API接口的所有功能，因此有部分接口是无法兼容的，具体如表1所示。
 

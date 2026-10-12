@@ -22,7 +22,7 @@
 | OH_HiCollie_SetTimer | 注册定时器，用于检测函数或代码块执行是否超过自定义时间。<br>结合OH_HiCollie_CancelTimer接口配套使用，应在调用耗时的函数之前使用。<br>说明：从API version 18开始，支持该接口。 |
 | OH_HiCollie_CancelTimer | 取消定时器。<br>结合OH_HiCollie_SetTimer接口配套使用，执行函数或代码块后使用，OH_HiCollie_CancelTimer通过id将该任务取消；<br>若未在自定义时间内取消，则执行回调函数，在特定自定义超时动作下，生成故障日志。<br>说明：从API version 18开始，支持该接口。 |
 
-- API接口的具体使用说明（参数使用限制、具体取值范围等）请参考HiCollie。
+- API接口的具体使用说明（参数使用限制、具体取值范围等）请参考[HiCollie](../reference/apis-performance-analysis-kit/capi-hicollie-h.md)。
 
 - 函数执行时间超长故障日志以syswarning-开头，生成在“设备/data/log/warninglog/”路径下。文件名格式为“syswarning-应用包名-应用UID-秒级时间.log”。
 
@@ -60,7 +60,7 @@
 
    引入头文件及定义LOG_TAG。
 
-   <!-- @EventSub_napi_nohiappevent_Header -->
+   <!-- @[EventSub_napi_nohiappevent_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
    #include "napi/native_api.h"
@@ -71,7 +71,7 @@
    #define LOG_TAG "testTag"
    ```
 
-   <!-- @Hicollie_Set_Timer_h -->
+   <!-- @[Hicollie_Set_Timer_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
    #include <unistd.h>
@@ -80,7 +80,7 @@
 
    构造任务执行时间超时场景，并使用OH_HiCollie_SetTimer及OH_HiCollie_CancelTimer函数进行监控。
 
-   <!-- @Hicollie_Set_Timer -->  
+   <!-- @[Hicollie_Set_Timer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->   
    
    ``` C++
    // 定义回调函数
@@ -99,6 +99,8 @@
            OH_LOG_INFO(LogType::LOG_APP, "HiCollieTimer taskId: %{public}d", id); // 打印任务id
            sleep(2);  // 模拟执行耗时函数，在这里简单地将线程阻塞2s
            OH_HiCollie_CancelTimer(id);  // 根据id取消已注册任务
+       } else {
+           OH_LOG_INFO(LogType::LOG_APP, "OH_HiCollie_SetTimer failed, errorCode is %{public}d", errorCode);
        }
        return nullptr;
    }
@@ -106,7 +108,7 @@
 
    在Init函数中的desc[]数组中将TestHiCollieTimerNdk注册为ArkTS接口。
 
-   <!-- @test_hicollie_timer -->
+   <!-- @[test_hicollie_timer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
    // 将TestHiCollieTimerNdk注册为ArkTS接口
@@ -115,7 +117,7 @@
 
 4. 编辑工程中的“entry > src > main > cpp > types > libentry > Index.ets”文件，定义ArkTS接口。
 
-   <!-- @test_hicollie_timer_Index.d.ts -->
+   <!-- @[test_hicollie_timer_Index.d.ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/types/libentry/Index.d.ts) -->
    
    ``` TypeScript
    export const TestHiCollieTimerNdk: () => void;
@@ -125,7 +127,7 @@
    
    引入调用C接口的头文件。
 
-   <!-- @EventSub_Index_Capi_Header -->
+   <!-- @[EventSub_Index_Capi_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    import testNapi from 'libentry.so';
@@ -133,7 +135,7 @@
 
    在Index页面新增触发TestHiCollieTimerNdk方法的按钮。
 
-   <!-- @hicollie_timer_ndk_Button --> 
+   <!-- @[hicollie_timer_ndk_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    // 添加点击事件，触发TestHiCollieTimerNdk方法。
@@ -166,4 +168,4 @@
    .../testTag ... HiCollieTimerNdk CallBack
    ```
 
-   获取故障文件信息相关内容可参考订阅任务执行超时事件（C/C++） 订阅获取。
+   获取故障文件信息相关内容可参考[订阅任务执行超时事件（C/C++）](hiappevent-watcher-apphicollie-events-ndk.md) 订阅获取。

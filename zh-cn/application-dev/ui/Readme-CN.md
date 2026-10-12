@@ -250,7 +250,7 @@
       - [色彩](arkts-color-effect.md)
       - 模糊<!--arkts-blur-->
         - [动态模糊](arkts-blur-effect.md)<!--RP13--><!--RP13End-->
-    - [帧动画（ohos.animator）](arkts-guide-animator.md)<!--RP10--><!--RP10End-->
+    - [帧动画（ohos.animator）](arkts-animator.md)<!--RP10--><!--RP10End-->
   - 使用自定义能力<!--arkts-user-defined-capabilities-->
     - [自定义能力概述](arkts-user-defined.md)
     - [自定义组合](arkts-user-defined-composition.md)
@@ -288,6 +288,7 @@
     <!--Del-->
     - [跨进程应用能力扩展（UIExtension，仅对系统应用开放）](arkts-ui-extension-components-sys.md)
     - [跨线程嵌入式组件 (IsolatedComponent，仅对系统应用开放)](arkts-isolated-components-sys.md)
+    - [景深组件 (DepthComponent，仅对系统应用开放)](arkts-depth-components-sys.md)
     <!--DelEnd-->
 - UI开发 (基于NDK构建UI)<!--arkts-use-ndk-->
   - [基于NDK构建UI概述](ndk-build-ui-overview.md)

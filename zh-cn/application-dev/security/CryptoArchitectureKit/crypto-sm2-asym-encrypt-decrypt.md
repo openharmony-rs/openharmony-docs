@@ -7,35 +7,35 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
-对应的算法规格请查看非对称密钥加解密算法规格：SM2。
+对应的算法规格请查看[非对称密钥加解密算法规格：SM2](crypto-encryption-decryption.md#sm2)。
 
 **加密**
 
-1. 调用cryptoFramework.createAsyKeyGenerator、AsyKeyGenerator.generateKeyPair，生成SM2密钥类型为SM2_256的非对称密钥对（KeyPair）。KeyPair对象中包括公钥PubKey、私钥PriKey。
+1. 调用[cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator)、[AsyKeyGenerator.generateKeyPair](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypair-1)，生成SM2密钥类型为SM2_256的非对称密钥对（KeyPair）。KeyPair对象中包括公钥PubKey、私钥PriKey。
 
-   如何生成SM2非对称密钥对，开发者可参考下文示例，并结合非对称密钥生成和转换规格：SM2和随机生成非对称密钥对理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。
+   如何生成SM2非对称密钥对，开发者可参考下文示例，并结合[非对称密钥生成和转换规格：SM2](crypto-key-generation-conversion.md#sm2)和[随机生成非对称密钥对](crypto-generate-asym-key-pair-randomly.md)理解，参考文档与当前示例可能存在入参差异，请在阅读时注意区分。
 
-2. 调用cryptoFramework.createCipher，指定字符串参数'SM2_256|SM3'，创建非对称密钥类型为SM2_256、摘要算法为SM3的Cipher实例，用于完成加解密操作。
+2. 调用[cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher)，指定字符串参数'SM2_256|SM3'，创建非对称密钥类型为SM2_256、摘要算法为SM3的Cipher实例，用于完成加解密操作。
 
-3. 调用Cipher.init，设置模式为加密（cryptoFramework.CryptoMode.ENCRYPT_MODE），指定加密密钥（KeyPair.PubKey），初始化加密Cipher实例。
+3. 调用[Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1)，设置模式为加密（cryptoFramework.CryptoMode.ENCRYPT_MODE），指定加密密钥（KeyPair.PubKey），初始化加密Cipher实例。
 
    非对称密钥无加密参数，直接传入null。
 
-4. 调用Cipher.doFinal，传入明文，获取加密后的数据。
+4. 调用[Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1)，传入明文，获取加密后的数据。
 
    doFinal输出结果可能为null，在访问具体数据前，需要先判断结果是否为null，避免产生异常。
 
 **解密**
 
-1. 由于SM2算法的Cipher实例不支持重复init操作，需要调用cryptoFramework.createCipher，重新生成Cipher实例。
+1. 由于SM2算法的Cipher实例不支持重复init操作，需要调用[cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher)，重新生成Cipher实例。
 
-2. 调用Cipher.init，设置模式为解密（cryptoFramework.CryptoMode.DECRYPT_MODE），指定解密密钥（KeyPair.PriKey）初始化解密Cipher实例。SM2无加密参数，直接传入null。
+2. 调用[Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1)，设置模式为解密（cryptoFramework.CryptoMode.DECRYPT_MODE），指定解密密钥（KeyPair.PriKey）初始化解密Cipher实例。SM2无加密参数，直接传入null。
 
-3. 调用Cipher.doFinal，传入密文，获取解密后的数据。
+3. 调用[Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1)，传入密文，获取解密后的数据。
 
 - 异步方法示例：
 
-  <!-- @sm2_encrypt_decrypt_async -->
+  <!-- @[sm2_encrypt_decrypt_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceSM2/entry/src/main/ets/pages/sm2/SM2EncryptionDecryptionAsync.ets) -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -81,13 +81,13 @@
     let pubKey = keyPair.pubKey;
     let priKey = keyPair.priKey;
     let message = 'This is a test';
-    // 把字符串按utf-8解码为Uint8Array
+    // 把字符串按utf-8编码为Uint8Array
     let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
     let encryptText = await encryptMessagePromise(pubKey, plainText);
     let decryptText = await decryptMessagePromise(priKey, encryptText);
     if (plainText.data.toString() === decryptText.data.toString()) {
       console.info('decrypt ok.');
-      // 把Uint8Array按utf-8编码为字符串
+      // 把Uint8Array按utf-8解码为字符串
       let messageDecrypted = buffer.from(decryptText.data).toString('utf-8');
       console.info('decrypted result string:' + messageDecrypted);
     } else {
@@ -99,7 +99,7 @@
 
 - 同步方法示例：
 
-  <!-- @sm2_encrypt_decrypt_sync -->
+  <!-- @[sm2_encrypt_decrypt_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceSM2/entry/src/main/ets/pages/sm2/SM2EncryptionDecryptionSync.ets) -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -147,13 +147,13 @@
       let pubKey = keyPair.pubKey;
       let priKey = keyPair.priKey;
       let message = 'This is a test';
-      // 把字符串按utf-8解码为Uint8Array
+      // 把字符串按utf-8编码为Uint8Array
       let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
       let encryptText = encryptMessage(pubKey, plainText);
       let decryptText = decryptMessage(priKey, encryptText);
       if (plainText.data.toString() === decryptText.data.toString()) {
         console.info('decrypt ok.');
-        // 把Uint8Array按utf-8编码为字符串
+        // 把Uint8Array按utf-8解码为字符串
         let messageDecrypted = buffer.from(decryptText.data).toString('utf-8');
         console.info('decrypted result string:' + messageDecrypted);
       } else {

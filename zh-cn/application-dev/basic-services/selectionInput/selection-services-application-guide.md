@@ -11,23 +11,23 @@
 
 | 名称 | 描述 |
 | ---- | ---- |
-| on(type: 'selectionCompleted', callback: Callback\<SelectionInfo\>): void | 订阅划词完成事件，使用`callback`回调函数。 |
-| getSelectionContent(): Promise\<string\> | 获取选中文本的内容。 |
-| createPanel(ctx: Context, info: PanelInfo): Promise\<Panel\> | 创建划词面板。 |
-| show(): Promise\<void\> | 显示面板。 |
-| hide(): Promise\<void\> | 隐藏面板。 |
-| startMoving(): Promise\<void\> | 使当前划词面板可以随鼠标拖动。 |
-| moveToGlobalDisplay(x: number, y: number): Promise\<void\> | 移动划词面板至屏幕指定位置。 |
+| [on(type: 'selectionCompleted', callback: Callback\<SelectionInfo\>): void](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#selectionmanageronselectioncompleted) | 订阅划词完成事件，使用`callback`回调函数。 |
+| [getSelectionContent(): Promise\<string\>](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#getselectioncontent) | 获取选中文本的内容。 |
+| [createPanel(ctx: Context, info: PanelInfo): Promise\<Panel\>](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#createpanel) | 创建划词面板。 |
+| [show(): Promise\<void\>](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#show) | 显示面板。 |
+| [hide(): Promise\<void\>](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#hide) | 隐藏面板。 |
+| [startMoving(): Promise\<void\>](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#startmoving) | 使当前划词面板可以随鼠标拖动。 |
+| [moveToGlobalDisplay(x: number, y: number): Promise\<void\>](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#movetoglobaldisplay) | 移动划词面板至屏幕指定位置。 |
 
-上述接口为本文档用到的核心接口，如需了解划词服务的全量接口，请参考selectionInput.SelectionExtensionAbility接口文档获取接口详细描述。
+上述接口为本文档用到的核心接口，如需了解划词服务的全量接口，请参考[selectionInput.SelectionExtensionAbility](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility.md)接口文档获取接口详细描述。
 
 ## 开发步骤
 
-完整的工程示例详见SelectionAppSample。
+完整的工程示例详见[SelectionAppSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/SelectionService/SelectionAppSample)。
 
 1. 创建划词应用工程。
 
-    1.1 打开DevEco Studio，点击"File>New>Create Project"创建一个Empty Ability，设备类型勾选"PC/2in1"。
+    1.1 打开[DevEco Studio](https://developer.huawei.com/consumer/cn/deveco-studio/)，点击"File>New>Create Project"创建一个Empty Ability，设备类型勾选"PC/2in1"。
 
     1.2 在工程对应的ets目录下，右键选择"New>Directory"，新建两个目录，分别命名为selectionextability、models。
 
@@ -47,15 +47,15 @@
     ├── module.json5                             # 配置文件
     ```
 
-    划词应用工程
+    ![划词应用工程](figures/selection-application-project.png)
 
-2. 在SelectionModel.ets文件中，开发者可自定义划词模块管理类，用于统一管理划词内容、窗口等信息。并且实现一些get、set接口，便于信息的类间传递。
-    <!-- @SelectionModel -->
+2. 在[SelectionModel.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/models/SelectionModel.ets)文件中，开发者可自定义划词模块管理类，用于统一管理划词内容、窗口等信息。并且实现一些get、set接口，便于信息的类间传递。
+    <!-- @[SelectionModel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/models/SelectionModel.ets) -->
     
     ``` TypeScript
     import { selectionManager, SelectionExtensionContext } from '@kit.BasicServicesKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
-    
+
     export class SelectionModel {
       private selectionInfo: selectionManager.SelectionInfo | undefined;
       private selectionContent: string | undefined;
@@ -100,7 +100,7 @@
         return this.selectionPanel;
       }
     
-      public setSelectionPanel(selectionPanel: selectionManager.Panel) {
+      public setSelectionPanel(selectionPanel: selectionManager.Panel | undefined) {
         this.selectionPanel = selectionPanel;
       }
     
@@ -118,7 +118,7 @@
     }
     ```
 
-3. 在SelectionExtAbility.ets文件中，开发者可实现扩展能力类。该类需要继承SelectionExtensionAbility，用于划词扩展生命周期的管理。
+3. 在[SelectionExtAbility.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/selectionextability/SelectionExtAbility.ets)文件中，开发者可实现扩展能力类。该类需要继承[SelectionExtensionAbility](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility.md)，用于划词扩展生命周期的管理。
 
     ``` TypeScript
     import { selectionManager, SelectionExtensionAbility} from '@kit.BasicServicesKit';
@@ -156,11 +156,11 @@
 
     export default SelectionExtAbility;
     ```
-    上述代码中，划词扩展被拉起时会触发onConnect回调，可以在该回调中监听划词事件，完成划词窗口的创建、窗口内容的设定、窗口的移动、窗口的显示和隐藏等操作；当划词扩展退出时会触发onDisconnect回调，可以在该回调中完成窗口销毁的操作。详细内容可参见下面第4步。
+    上述代码中，划词扩展被拉起时会触发[onConnect](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility.md#onconnect)回调，可以在该回调中监听划词事件，完成划词窗口的创建、窗口内容的设定、窗口的移动、窗口的显示和隐藏等操作；当划词扩展退出时会触发[onDisconnect](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility.md#ondisconnect)回调，可以在该回调中完成窗口销毁的操作。详细内容可参见下面第4步。
 
 
-4. 在划词扩展被拉起时，可以提前创建划词窗口（但不调用show接口），以缩短用户在第一次划词时的响应延迟。同时，可以在onConnect中监听划词事件，执行后续的弹窗操作。通过监听selectionCompleted获取SelectionInfo其中包含了划词操作的起始和结束坐标等信息。通过调用getSelectionContent接口获取划词内容。
-    <!-- @SelectionExtAbility -->
+4. 在划词扩展被拉起时，可以提前创建划词窗口（但不调用[show](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#show)接口），以缩短用户在第一次划词时的响应延迟。同时，可以在[onConnect](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionExtensionAbility.md#onconnect)中监听划词事件，执行后续的弹窗操作。通过监听[selectionCompleted](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#selectionmanageronselectioncompleted)获取[SelectionInfo](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#selectioninfo)其中包含了划词操作的起始和结束坐标等信息。通过调用[getSelectionContent](../../reference/apis-basic-services-kit/js-apis-selectionInput-selectionManager.md#getselectioncontent)接口获取划词内容。
+    <!-- @[SelectionExtAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/selectionextability/SelectionExtAbility.ets) -->
     
     ``` TypeScript
     import { selectionManager, PanelInfo, PanelType, SelectionExtensionAbility } from '@kit.BasicServicesKit';
@@ -168,12 +168,12 @@
     import { Want } from '@kit.AbilityKit';
     import { rpc } from '@kit.IPCKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
-    
+
     class SelectionAbilityStub extends rpc.RemoteObject {
       constructor(des: string) {
         super(des);
       }
-    
+
       onRemoteMessageRequest(
         code: number,
         data: rpc.MessageSequence,
@@ -218,16 +218,16 @@
               hilog.info(0x0000, 'SelectionExtensionAbility', 'panel has hidden.');
             })
           } catch (error) {
-            hilog.info(0x0000, 'SelectionExtensionAbility', 'Failed to listen panel hidden');
+            hilog.error(0x0000, 'SelectionExtensionAbility', 'Failed to listen panel hidden');
           }
           try {
             await panel.setUiContent('pages/MenuPanel')   // 设置菜单面板样式
             hilog.info(0x0000, 'SelectionExtensionAbility', 'Succeed to setUiContent [pages/MenuPanel].');
           } catch (error) {
-            hilog.info(0x0000, 'SelectionExtensionAbility', `Failed to setUiContent, error: ${JSON.stringify(error)}`);
+            hilog.error(0x0000, 'SelectionExtensionAbility', `Failed to setUiContent, error: ${JSON.stringify(error)}`);
           }
         } catch(error) {
-          hilog.info(0x0000, 'SelectionExtensionAbility', `Failed to createPanel, error: ${JSON.stringify(error)}`);
+          hilog.error(0x0000, 'SelectionExtensionAbility', `Failed to createPanel, error: ${JSON.stringify(error)}`);
         }
       }
     
@@ -237,7 +237,7 @@
           let content = await selectionManager.getSelectionContent();   // 获取划词内容
           SelectionModel.getInstance().setSelectionContent(content);
         } catch (error) {
-          hilog.info(0x0000, 'SelectionExtensionAbility', `Failed to get selection content: ${JSON.stringify(error)}`);
+          hilog.error(0x0000, 'SelectionExtensionAbility', `Failed to get selection content: ${JSON.stringify(error)}`);
           return;
         }
         if (!this.panel_) {
@@ -248,7 +248,7 @@
           await this.panel_.moveToGlobalDisplay(info.startDisplayX, info.startDisplayY)    // 将弹窗移动到用户鼠标划词的起始点
           hilog.info(0x0000, 'SelectionExtensionAbility', 'Move succeed.');
         } catch (error) {
-          hilog.info(0x0000, 'SelectionExtensionAbility', `Failed to move, error: ${JSON.stringify(error)}`);
+          hilog.error(0x0000, 'SelectionExtensionAbility', `Failed to move, error: ${JSON.stringify(error)}`);
           return;
         }
     
@@ -256,7 +256,7 @@
           await this.panel_.show()    // 显示弹窗
           hilog.info(0x0000, 'SelectionExtensionAbility', 'Show succeed.');
         } catch (error) {
-          hilog.info(0x0000, 'SelectionExtensionAbility', `Failed to show panel, error: ${JSON.stringify(error)}`);
+          hilog.error(0x0000, 'SelectionExtensionAbility', `Failed to show panel, error: ${JSON.stringify(error)}`);
           return;
         }
       }
@@ -265,15 +265,15 @@
     export default SelectionExtAbility;
     ```
 
-5. 在MenuPanel.ets文件中，开发者可根据业务内容自主实现菜单面板的显示效果，例如提供翻译、查询、扩写等按钮。并且可以通过绑定点击事件，弹出不同的主面板，以展示不同的内容。本示例仅提供了一个简单的点击按钮，用于展示如何弹出主面板。
-    <!-- @MenuPanel -->
+5. 在[MenuPanel.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/pages/MenuPanel.ets)文件中，开发者可根据业务内容自主实现菜单面板的显示效果，例如提供翻译、查询、扩写等按钮。并且可以通过绑定点击事件，弹出不同的主面板，以展示不同的内容。本示例仅提供了一个简单的点击按钮，用于展示如何弹出主面板。
+    <!-- @[MenuPanel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/pages/MenuPanel.ets) -->
     
     ``` TypeScript
     import { SelectionModel } from '../models/SelectionModel';
     import { selectionManager, PanelInfo, BusinessError, PanelType, SelectionExtensionContext } from '@kit.BasicServicesKit';
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { Want } from '@kit.AbilityKit';
-    
+
     @Entry
     @Component
     struct MenuPanel {
@@ -282,8 +282,13 @@
     
       CreateMainPanel() {
         this.selectionInfo = SelectionModel.getInstance().getSelectionInfo();
-        if (SelectionModel.getInstance().getSelectionPanel() !== undefined) {
-          hilog.info(0x0000, 'SelectionExtensionAbility', 'Main panel already exists, skip creating.');
+        let existingPanel = SelectionModel.getInstance().getSelectionPanel();
+        if (existingPanel !== undefined) {
+          try {
+            existingPanel.show();
+          } catch (error) {
+            SelectionModel.getInstance().setSelectionPanel(undefined);
+          }
           return;
         }
         let panelInfo: PanelInfo = {
@@ -303,15 +308,16 @@
             try {
               panel.on('destroyed', () => {
                 hilog.info(0x0000, 'SelectionExtensionAbility', 'panel has destroyed');
+                SelectionModel.getInstance().setSelectionPanel(undefined);
               })
             } catch (error) {
-              hilog.info(0x0000, 'SelectionExtensionAbility', 'Failed to listen window destroy');
+              hilog.error(0x0000, 'SelectionExtensionAbility', 'Failed to listen window destroy');
             }
             try {
               await panel.setUiContent('pages/MainPanel');
               hilog.info(0x0000, 'SelectionExtensionAbility', 'Succeed to setUiContent [pages/MainPanel].');
             } catch (error) {
-              hilog.info(0x0000, 'SelectionExtensionAbility', `Failed to setUiContent of main panel, error: [${JSON.stringify(error)}]`);
+              hilog.error(0x0000, 'SelectionExtensionAbility', `Failed to setUiContent of main panel, error: [${JSON.stringify(error)}]`);
               return;
             }
     
@@ -319,7 +325,7 @@
               await panel.show();
               hilog.info(0x0000, 'SelectionExtensionAbility', 'Succeed to show main panel.');
             } catch (error) {
-              hilog.info(0x0000, 'SelectionExtensionAbility', `Failed to show main panel, error: [${JSON.stringify(error)}]`);
+              hilog.error(0x0000, 'SelectionExtensionAbility', `Failed to show main panel, error: [${JSON.stringify(error)}]`);
             }
           })
           .catch((error: BusinessError) => {
@@ -363,8 +369,8 @@
     }
     ```
 
-6. 在MainPanel.ets文件中，开发者可根据业务场景，自行实现主面板的显示效果。本示例仅提供了一个简单的展示划词内容的主面板，具体的业务侧功能需要开发者自行实现。
-    <!-- @MainPanel -->
+6. 在[MainPanel.ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/pages/MainPanel.ets)文件中，开发者可根据业务场景，自行实现主面板的显示效果。本示例仅提供了一个简单的展示划词内容的主面板，具体的业务侧功能需要开发者自行实现。
+    <!-- @[MainPanel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/ets/pages/MainPanel.ets) -->
 
     ``` TypeScript
     import { SelectionModel } from '../models/SelectionModel';
@@ -406,7 +412,7 @@
     }
     ```
 
-7. 配置main_pages.json文件。
+7. 配置[main_pages.json](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/resources/base/profile/main_pages.json)文件。
 
     在..\resources\base\profile\main_pages.json文件中的`src`字段中添加新增的`MainPanel`和`MenuPanel`页面。
 
@@ -417,10 +423,10 @@
     ]
     ```
 
-8.  配置module.json5文件。
+8.  配置[module.json5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/module.json5)文件。
 
     在`extensionAbilities`字段中配置划词扩展类文件路径。
-    <!-- @extensionAbilities -->
+    <!-- @[extensionAbilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/SelectionService/SelectionAppSample/entry/src/main/module.json5) -->
     
     ``` JSON5
     "extensionAbilities": [
@@ -435,11 +441,11 @@
 
 9.  配置签名。
 
-    点击DevEco Studio右上角的"Project Structure"按钮，点击"Signing Configs"按钮，按操作登录华为账号后会自动生成签名。
+    点击[DevEco Studio](https://developer.huawei.com/consumer/cn/deveco-studio/)右上角的"Project Structure"按钮，点击"Signing Configs"按钮，按操作登录华为账号后会自动生成签名。
 
 ## 调测验证
 
-1. 连接设备后，点击DevEco Studio右上角的绿色三角形"Run entry"按钮，编译器会执行编译并自动将应用安装到设备中。
+1. 连接设备后，点击[DevEco Studio](https://developer.huawei.com/consumer/cn/deveco-studio/)右上角的绿色三角形"Run entry"按钮，编译器会执行编译并自动将应用安装到设备中。
 
 2. 设置划词服务的系统参数。
 
@@ -451,6 +457,6 @@
 
 3. 通过日志观察划词服务拉起划词扩展能力的过程。
 
-    使用DevEco Studio的Hilog窗口查看日志。
+    使用[DevEco Studio](https://developer.huawei.com/consumer/cn/deveco-studio/)的Hilog窗口查看日志。
 
 4. 使用鼠标左键双击、三击或拖动选中文本后，键盘点击ctrl键，观察菜单面板的弹出。点击菜单面板上的按钮，观察主面板的弹出。

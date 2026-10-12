@@ -16,7 +16,7 @@
 
 2. UI主线程发起数据库操作请求，在子线程中完成数据库的增删改查等操作。
 
-<!-- @operate_child_thread_data -->
+<!-- @[operate_child_thread_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/managers/UsingTaskPool.ets) -->
 
 ``` TypeScript
 import { relationalStore, ValuesBucket } from '@kit.ArkData';
@@ -31,7 +31,7 @@ async function create(context: Context) {
 
   // 默认数据库文件路径为 context.databaseDir + "/rdb/" + StoreConfig.name
   let store: relationalStore.RdbStore = await relationalStore.getRdbStore(context, CONFIG);
-  console.info(`Insert data successfully!`);
+  console.info(`Get Store.db successfully!`);
 
   // 创建表
   const CREATE_TABLE_SQL = 'CREATE TABLE IF NOT EXISTS test (' +
@@ -53,7 +53,7 @@ async function insert(context: Context, valueBucketArray: Array<relationalStore.
 
   // 默认数据库文件路径为 context.databaseDir + "/rdb/" + StoreConfig.name
   let store: relationalStore.RdbStore = await relationalStore.getRdbStore(context, CONFIG);
-  console.info(`Insert data successfully!`);
+  console.info(`Get Store.db successfully!`);
 
   // 数据插入
   await store.batchInsert('test', valueBucketArray as Object as Array<relationalStore.ValuesBucket>);
@@ -68,7 +68,7 @@ async function query(context: Context): Promise<Array<relationalStore.ValuesBuck
 
   // 默认数据库文件路径为 context.databaseDir + "/rdb/" + StoreConfig.name
   let store: relationalStore.RdbStore = await relationalStore.getRdbStore(context, CONFIG);
-  console.info(`Insert data successfully!`);
+  console.info(`Get Store.db successfully!`);
 
   // 获取结果集
   let predicates: relationalStore.RdbPredicates = new relationalStore.RdbPredicates('test');
@@ -154,7 +154,7 @@ struct Index {
 
 1. 定义数据库中的数据格式，可以使用Sendable，以减少跨线程操作的耗时。
 
-   <!-- @define_data_format -->
+   <!-- @[define_data_format](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/managers/SharedValuesBucket.ets) -->
    
    ``` TypeScript
    export interface IValueBucket {
@@ -182,7 +182,7 @@ struct Index {
 
 2. UI主线程发起数据库操作请求，在子线程完成数据的增删改查等操作。
 
-   <!-- @taskpool_frequently_operate_database -->
+   <!-- @[taskpool_frequently_operate_database](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/managers/UsingSendable.ets) -->
    
    ``` TypeScript
    import { relationalStore, ValuesBucket } from '@kit.ArkData';
@@ -198,7 +198,7 @@ struct Index {
    
      // 默认数据库文件路径为 context.databaseDir + "/rdb/" + StoreConfig.name
      let store: relationalStore.RdbStore = await relationalStore.getRdbStore(context, CONFIG);
-     console.info(`Insert data successfully!`);
+     console.info(`Get Store.db successfully!`);
    
      // 创建表
      const CREATE_TABLE_SQL = 'CREATE TABLE IF NOT EXISTS test (' +
@@ -220,14 +220,14 @@ struct Index {
    
      // 默认数据库文件路径为 context.databaseDir + "/rdb/" + StoreConfig.name
      let store: relationalStore.RdbStore = await relationalStore.getRdbStore(context, CONFIG);
-     console.info(`Insert data successfully!`);
+     console.info(`Get Store.db successfully!`);
    
      // 数据插入
      await store.batchInsert('test', valueBucketArray as Object as Array<relationalStore.ValuesBucket>);
    }
    
    @Concurrent
-   async function query(context: Context): Promise<Array<relationalStore.ValuesBucket>> {
+   async function query(context: Context): Promise<collections.Array<SharedValuesBucket | undefined>> {
      const CONFIG: relationalStore.StoreConfig = {
        name: 'Store.db',
        securityLevel: relationalStore.SecurityLevel.S1,
@@ -235,17 +235,27 @@ struct Index {
    
      // 默认数据库文件路径为 context.databaseDir + "/rdb/" + StoreConfig.name
      let store: relationalStore.RdbStore = await relationalStore.getRdbStore(context, CONFIG);
-     console.info(`Insert data successfully!`);
+     console.info(`Get Store.db successfully!`);
    
      // 获取结果集
      let predicates: relationalStore.RdbPredicates = new relationalStore.RdbPredicates('test');
      let resultSet = await store.query(predicates); // 查询所有数据
      console.info(`Query data successfully! row count:${resultSet.rowCount}`);
+   
+     // 使用 collections.Array 作为 Sendable 容器存储结果
      let index = 0;
-     let result = new Array<relationalStore.ValuesBucket>(resultSet.rowCount);
+     let result = collections.Array.create<SharedValuesBucket | undefined>(resultSet.rowCount, undefined);
      resultSet.goToFirstRow();
      do {
-       result[index++] = resultSet.getRow();
+       // 逐字段从 ResultSet 读取数据，封装为 IValueBucket
+       let v: IValueBucket = {
+         id: resultSet.getLong(resultSet.getColumnIndex('id')),
+         name: resultSet.getString(resultSet.getColumnIndex('name')),
+         age: resultSet.getLong(resultSet.getColumnIndex('age')),
+         salary: resultSet.getDouble(resultSet.getColumnIndex('salary'))
+       };
+       // 包装为 @Sendable 类实例，支持跨线程引用传递
+       result[index++] = new SharedValuesBucket(v);
      } while (resultSet.goToNextRow());
      resultSet.close();
      return result;
@@ -324,7 +334,7 @@ struct Index {
 
 1. 定义数据库中的数据格式，采用Sendable，减少跨线程耗时。
 
-   <!-- @define_data_format -->
+   <!-- @[define_data_format](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/managers/SharedValuesBucket.ets) -->
    
    ``` TypeScript
    export interface IValueBucket {
@@ -352,7 +362,7 @@ struct Index {
 
 2. 定义普通类实例对象，持有Sendable类实例对象。
 
-   <!-- @define_normal_class_instance_object -->
+   <!-- @[define_normal_class_instance_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/managers/Material.ets) -->
    
    ``` TypeScript
    import { SharedValuesBucket } from './SharedValuesBucket';
@@ -382,7 +392,7 @@ struct Index {
 
 3. UI主线程发起数据库操作请求，在子线程进行数据的增删改查等操作。
 
-   <!-- @complex_class_instance_object_using_sendable -->
+   <!-- @[complex_class_instance_object_using_sendable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCases/entry/src/main/ets/managers/ComplexClassInstanceObjectUsingSendable.ets) -->
    
    ``` TypeScript
    import { relationalStore, ValuesBucket } from '@kit.ArkData';
@@ -400,7 +410,7 @@ struct Index {
      try {
        // 默认数据库文件路径为 context.databaseDir + "/rdb/" + StoreConfig.name
        let store: relationalStore.RdbStore = await relationalStore.getRdbStore(context, CONFIG);
-       console.info('Insert data successfully!');
+       console.info('Get Store.db successfully!');
    
        // 创建表
        const CREATE_TABLE_SQL = 'CREATE TABLE IF NOT EXISTS test (' +
@@ -427,7 +437,7 @@ struct Index {
    
      // 默认数据库文件路径为 context.databaseDir + "/rdb/" + StoreConfig.name
      let store: relationalStore.RdbStore = await relationalStore.getRdbStore(context, CONFIG);
-     console.info('Insert data successfully!');
+     console.info('Get Store.db successfully!');
    
      // 数据插入
      await store.batchInsert('test', valueBucketArray as Object as Array<ValuesBucket>);
@@ -442,7 +452,7 @@ struct Index {
    
      // 默认数据库文件路径为 context.databaseDir + "/rdb/" + StoreConfig.name
      let store: relationalStore.RdbStore = await relationalStore.getRdbStore(context, CONFIG);
-     console.info('Insert data successfully!');
+     console.info('Get Store.db successfully!');
    
      // 获取用于查询的谓词
      let predicates: relationalStore.RdbPredicates = new relationalStore.RdbPredicates('test');

@@ -23,11 +23,11 @@ nolog版本是指在系统中关闭了日志记录功能的系统版本。这种
 
 ### debug版本应用
 
-使用debug模式构建的应用。
+使用[debug模式](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)构建的应用。
 
 ### release版本应用
 
-使用release模式构建的应用。
+使用[release模式](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)构建的应用。
 
 ## 稳定性
 
@@ -76,7 +76,7 @@ UBSan（Undefined Behavior Sanitizer）可以检测代码中出现的未定义�
 
 ### 调用栈
 
-记录线程执行到当前现场（如崩溃、冻屏等）的函数调用顺序。具体说明请参见调用栈帧内容说明和JS混合栈帧内容说明。
+记录线程执行到当前现场（如崩溃、冻屏等）的函数调用顺序。具体说明请参见[调用栈帧内容说明](cppcrash-guidelines.md#一般故障场景日志规格)和[JS混合栈帧内容说明](cppcrash-guidelines.md#一般故障场景日志规格)。
 
 
 ## 性能

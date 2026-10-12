@@ -14,13 +14,13 @@
 
 ## 场景介绍
 
-应用通过HTTP发起一个数据请求，支持常见的GET、POST、OPTIONS、HEAD、PUT、DELETE、TRACE、CONNECT方法。当前提供了2种HTTP请求方式，若请求发送或接收的数据量较少，可使用HttpRequest.request，若是大文件的上传或者下载，且关注数据发送和接收进度，可使用HTTP请求流式传输HttpRequest.requestInStream。从API version 22开始，若是需要在"HTTP请求-响应"生命周期中的关键节点插入自定义逻辑，可以使用HTTP拦截器。
+应用通过HTTP发起一个数据请求，支持常见的GET、POST、OPTIONS、HEAD、PUT、DELETE、TRACE、CONNECT方法。当前提供了2种HTTP请求方式，若请求发送或接收的数据量较少，可使用[HttpRequest.request](../reference/apis-network-kit/js-apis-http.md#request)，若是大文件的上传或者下载，且关注数据发送和接收进度，可使用HTTP请求流式传输[HttpRequest.requestInStream](../reference/apis-network-kit/js-apis-http.md#requestinstream10)。从API version 22开始，若是需要在"HTTP请求-响应"生命周期中的关键节点插入自定义逻辑，可以使用[HTTP拦截器](#http拦截器)。
 
 <!--RP1-->
 
 <!--RP1End-->
 
-当前HTTP请求支持的场景如下，以下功能对应的选项可以在HTTP请求的HttpRequestOptions中进行设置：
+当前HTTP请求支持的场景如下，以下功能对应的选项可以在HTTP请求的[HttpRequestOptions](../reference/apis-network-kit/js-apis-http.md#httprequestoptions)中进行设置：
 
 | 功能分类     | 功能名称                           |功能描述                      | 开始支持的版本         |
 | ----------- | -----------------------------------|-----------------------------|------------------------|
@@ -46,19 +46,19 @@
 | 证书验证     | 设置跳过SSL证书校验                     | 可以设置跳过SSL证书校验流程。 | API version 18    |
 | 证书验证     | 设置证书校验的版本和加密套件             | 自定义证书校验版本和加密套件。 |  API version 18  |
 | 证书验证     | 设置安全连接期间的服务器身份验证配置信息        | 设置安全连接期间的服务器身份验证配置。 |  API version 18   |
-| 代理设置     | 设置SOCKS5代理        | 设置SOCKS5代理，默认不使用SOCKS5代理，若正确配置了Socks5Proxy自定义SOCKS5代理，则HttpProxy不生效。 |  API version 26.0.0   |
+| 代理设置     | 设置SOCKS5代理        | 设置SOCKS5代理，默认不使用SOCKS5代理，若正确配置了[Socks5Proxy](../reference/apis-network-kit/js-apis-net-connection.md#socks5proxy)自定义SOCKS5代理，则HttpProxy不生效。 |  API version 26.0.0   |
 
 ## 发起HTTP数据请求
 
 > **说明：**
 >
-> 在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需在页面中使用UIAbilityContext提供的能力，请参见获取UIAbility的上下文信息。
+> 在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
-完整示例代码见：Http_case
+完整示例代码见：[Http_case](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case)
 
 1. 导入HTTP一般数据请求所需模块
 
-   <!-- @HTTP_case_module_import_data_request -->  
+   <!-- @[HTTP_case_module_import_data_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->  
    
    ``` TypeScript
    import { http } from '@kit.NetworkKit';
@@ -69,9 +69,9 @@
 
 2. 创建HttpRequest对象
 
-    调用createHttp()方法，创建HttpRequest对象。
+    调用[createHttp()](../reference/apis-network-kit/js-apis-http.md#httpcreatehttp)方法，创建HttpRequest对象。
 
-    <!-- @HTTP_case_create_http_method -->
+    <!-- @[HTTP_case_create_http_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -81,9 +81,9 @@
 
 3. 订阅HTTP响应头事件
 
-    调用该对象的on()方法，订阅HTTP响应头事件，此接口会比request请求先返回。可以根据业务需要订阅此消息。
+    调用该对象的[on()](../reference/apis-network-kit/js-apis-http.md#onheadersreceive8)方法，订阅HTTP响应头事件，此接口会比request请求先返回。可以根据业务需要订阅此消息。
 
-   <!-- @HTTP_case_http_request_on_method -->
+   <!-- @[HTTP_case_http_request_on_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    // 用于订阅HTTP响应头，此接口会比request请求先返回。可以根据业务需要订阅此消息。
@@ -96,9 +96,9 @@
 
 4. 发起HTTP请求，解析服务器响应事件
 
-    调用该对象的request()方法，传入HTTP请求的url地址和可选参数，发起网络请求，按照实际业务需要，解析返回结果。
+    调用该对象的[request()](../reference/apis-network-kit/js-apis-http.md#httprequest)方法，传入HTTP请求的url地址和可选参数，发起网络请求，按照实际业务需要，解析返回结果。
 
-   <!-- @HTTP_case_http_request_request_method -->
+   <!-- @[HTTP_case_http_request_request_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    httpRequest.request(
@@ -186,7 +186,7 @@
 
 5. 取消订阅HTTP响应头事件
 
-    调用该对象的off()方法，取消订阅HTTP响应头事件。
+    调用该对象的[off()](../reference/apis-network-kit/js-apis-http.md#offheadersreceive8)方法，取消订阅HTTP响应头事件。
 
     ```ts
     // 在不需要该回调信息时，需要取消订阅HTTP响应头事件，该方法调用的时机，可以参考步骤4中的示例代码。
@@ -194,7 +194,7 @@
     ```
 6. 调用destroy()方法销毁
 
-    当该请求使用完毕时，调用destroy()方法销毁。
+    当该请求使用完毕时，调用[destroy()](../reference/apis-network-kit/js-apis-http.md#destroy)方法销毁。
 
     ```ts
     // 当该请求使用完毕时，调用destroy方法主动销毁，该方法调用的时机，可以参考步骤4中的示例代码。
@@ -204,11 +204,11 @@
 
 HTTP流式传输是指在处理HTTP响应时，可以一次只处理响应内容的一小部分，而不是一次性将整个响应加载到内存，这对于处理大文件、实时数据流等场景非常有用。
 
-完整示例代码见：Http_case
+完整示例代码见：[Http_case](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case)
 
 1. 导入HTTP流式传输所需模块
 
-     <!-- @HTTP_case_module_import_data_request -->
+     <!-- @[HTTP_case_module_import_data_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
      
      ``` TypeScript
      import { http } from '@kit.NetworkKit';
@@ -219,9 +219,9 @@ HTTP流式传输是指在处理HTTP响应时，可以一次只处理响应内容
 
 2. 创建HTTP流式传输HttpRequest对象
 
-    调用createHttp()方法，创建HttpRequest对象。
+    调用[createHttp()](../reference/apis-network-kit/js-apis-http.md#httpcreatehttp)方法，创建HttpRequest对象。
 
-    <!-- @request_in_stream_create_http_method -->
+    <!-- @[request_in_stream_create_http_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     // 每一个httpRequest对应一个HTTP请求任务，不可复用。
@@ -232,7 +232,7 @@ HTTP流式传输是指在处理HTTP响应时，可以一次只处理响应内容
 
    服务器响应的数据在dataReceive回调中返回，可通过订阅该信息获取服务器响应的数据，其他流式响应事件可按需进行订阅。
   
-   <!-- @request_in_stream_data_receive -->
+   <!-- @[request_in_stream_data_receive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    // 用于订阅HTTP流式响应数据接收事件。
@@ -266,7 +266,7 @@ HTTP流式传输是指在处理HTTP响应时，可以一次只处理响应内容
 
 4. 发起HTTP流式请求，获取服务端数据
 
-   <!-- @request_in_stream_get_server_data -->
+   <!-- @[request_in_stream_get_server_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    let streamInfo: http.HttpRequestOptions = {
@@ -305,9 +305,9 @@ HTTP流式传输是指在处理HTTP响应时，可以一次只处理响应内容
 
 5. 取消步骤3中订阅HTTP流式响应事件，并调用destroy()方法销毁流式HTTP请求
 
-    调用该对象的off()方法，取消订阅步骤3中的事件，并且当该请求使用完毕时，调用destroy()方法销毁，该方法调用的时机，可以参考步骤4中的示例代码。
+    调用该对象的[off()](../reference/apis-network-kit/js-apis-http.md#offdatareceive10)方法，取消订阅步骤3中的事件，并且当该请求使用完毕时，调用[destroy()](../reference/apis-network-kit/js-apis-http.md#destroy)方法销毁，该方法调用的时机，可以参考步骤4中的示例代码。
 
-   <!-- @request_in_stream_destroy_request_method -->
+   <!-- @[request_in_stream_destroy_request_method](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    public destroyRequest(httpRequest: http.HttpRequest) {
@@ -327,9 +327,9 @@ HTTP流式传输是指在处理HTTP响应时，可以一次只处理响应内容
 
 从API version 23开始，HTTP请求支持WebDAV协议的文件访问，WebDAV是基于HTTP协议的扩展，支持对远程服务器上的文件进行创建、读取、更新、删除、移动、复制(MKCOL、GET、PUT、DELETE、MOVE、COPY)等操作。
 
-完整示例代码见：Http_case
+完整示例代码见：[Http_case](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case)
 
-<!-- @HTTP_webDav -->
+<!-- @[HTTP_webDav](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case/entry/src/main/ets/pages/WebDav.ets) -->
 
 ``` TypeScript
 import { http } from '@kit.NetworkKit';
@@ -660,19 +660,19 @@ struct Index {
 
  **配置参考**
  
-1. 配置应用信任证书（具体配置方法可参考网络连接安全配置）。
+1. 配置应用信任证书（具体配置方法可参考[网络连接安全配置](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/network-connection-security-configuration#%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E5%AE%89%E5%85%A8%E9%85%8D%E7%BD%AE-1)）。
 2. 配置请求级CA证书：
-   - 通过httprequestoptions的caPath和caData字段配置HTTPS请求CA证书。
-   - 通过websocketrequestoptions的caPath字段配置WebSocket请求CA证书。
-   - 通过tlssecureoptions的ca字段指定TLS请求CA证书。
+   - 通过[httprequestoptions](../reference/apis-network-kit/js-apis-http.md#httprequestoptions)的caPath和caData字段配置HTTPS请求CA证书。
+   - 通过[websocketrequestoptions](../reference/apis-network-kit/js-apis-webSocket.md#websocketrequestoptions)的caPath字段配置WebSocket请求CA证书。
+   - 通过[tlssecureoptions](../reference/apis-network-kit/js-apis-socket.md#tlssecureoptions9)的ca字段指定TLS请求CA证书。
 3. 配置跳过证书校验：
-   - HTTPS：通过remoteValidation = 'skip' 配置。
-   - WebSocket：通过websocketrequestoptions的skipServerCertVerification = true 配置。
-   - TLSSocket：通过tlsconnectoptions的skipRemoteValidation = true 配置。
+   - HTTPS：通过[remoteValidation](../reference/apis-network-kit/js-apis-http.md#remotevalidation18) = 'skip' 配置。
+   - WebSocket：通过[websocketrequestoptions](../reference/apis-network-kit/js-apis-webSocket.md#websocketrequestoptions)的skipServerCertVerification = true 配置。
+   - TLSSocket：通过[tlsconnectoptions](../reference/apis-network-kit/js-apis-socket.md#tlsconnectoptions9)的skipRemoteValidation = true 配置。
 
  **调试参考**
  
-   - 通过API校验指定证书是否可信：可参考networkSecurity.certVerification。
+   - 通过API校验指定证书是否可信：可参考[networkSecurity.certVerification](../reference/apis-network-kit/js-apis-networkSecurity.md#networksecuritycertverification)。
    - 通过openssl命令校验域名服务器证书链是否被系统信任：`hdc shell openssl s_client -connect 主机名:端口 -CApath /etc/security/certificates -brief`。若出现`Verification: OK`说明证书链可信。将`-brief`替换为`-trace -showcerts`可以打印详细的TLS握手信息。
 
 
@@ -720,7 +720,7 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 
 **JSON配置文件示例**
 
-预置应用级证书的配置例子如下（具体配置路径可参考网络连接安全配置）：
+预置应用级证书的配置例子如下（具体配置路径可参考[网络连接安全配置](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/network-connection-security-configuration#%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E5%AE%89%E5%85%A8%E9%85%8D%E7%BD%AE-1)）：
 
 ```json
 {
@@ -828,7 +828,7 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 
 ### 配置不信任用户安装的CA证书
 
-系统默认信任系统预置的CA证书和用户安装的CA证书，可配置不信任用户安装的CA证书提升安全性。配置不信任用户安装的CA证书可以在src/main/resources/base/profile/network_config.json进行配置，更多网络连接安全相关的配置可以参考网络连接安全配置。
+系统默认信任系统预置的CA证书和用户安装的CA证书，可配置不信任用户安装的CA证书提升安全性。配置不信任用户安装的CA证书可以在src/main/resources/base/profile/network_config.json进行配置，更多网络连接安全相关的配置可以参考[网络连接安全配置](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/network-connection-security-configuration#%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E5%AE%89%E5%85%A8%E9%85%8D%E7%BD%AE-1)。
 
 ```json5
 {
@@ -841,7 +841,7 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 ```
 ### 明文HTTP访问权限配置说明
 
-该配置用于控制HTTP请求是否允许以明文形式传输。以下为明文HTTP访问权限的配置示例（含应用、组件及域名级配置），以及各字段的详细含义说明。更多网络连接安全相关的配置可以参考网络连接安全配置。
+该配置用于控制HTTP请求是否允许以明文形式传输。以下为明文HTTP访问权限的配置示例（含应用、组件及域名级配置），以及各字段的详细含义说明。更多网络连接安全相关的配置可以参考[网络连接安全配置](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/network-connection-security-configuration#%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E5%AE%89%E5%85%A8%E9%85%8D%E7%BD%AE-1)。
 > **说明：**
 >
 > 配置优先级规则：组件配置（component-config）> 域名配置（domain-config）> 基础配置（base-config），优先级高的配置会覆盖优先级低的规则。
@@ -886,7 +886,7 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 |include-subdomains         | boolean         | 否| 指示规则是否适用于子域。true表示适用于子域，false表示不适用于子域。默认为true。注意：每增加1000条域名配置，正则匹配的延迟将增加大约10至15毫秒。当域名配置数量超过10000条时，正则匹配会带来较高耗时。默认为true。 |
 |name         | string         | 否| 配置主域名。 |
 |component-config<sup>20+</sup>                    | object         |  否| 指示每个组件的明文配置。优先级最高。|
-|Request                    | boolean          |否| Request从API version 18开始默认支持明文HTTP功能，不可配置。从API version 20开始支持配置开启或关闭明文HTTP功能。true表示支持，false表示不支持，默认为true。|
+|Request                    | boolean          |否| [Request](../reference/apis-basic-services-kit/js-apis-request.md)从API version 18开始默认支持明文HTTP功能，不可配置。从API version 20开始支持配置开启或关闭明文HTTP功能。true表示支持，false表示不支持，默认为true。|
 |Network Kit                 | boolean          |否| Network Kit从API version 18开始默认支持明文HTTP功能，不可配置。从API version 20开始支持配置开启或关闭明文HTTP功能。true表示支持，false表示不支持，默认为true。 |
 |ArkWeb                    | boolean          |否| ArkWeb从API version 20开始支持配置开启或关闭明文HTTP功能。true表示支持，false表示不支持，默认为false。 |
 |Media Kit                    | boolean          |否| Media Kit从API version 23开始支持配置开启或关闭明文HTTP功能。true表示支持，false表示不支持，默认为false。 |
@@ -916,7 +916,7 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 
 1.  导入HTTP请求拦截器所需模块。
 
-    <!-- @HTTP_interceptor_case_import -->  
+    <!-- @[HTTP_interceptor_case_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->  
     
     ``` TypeScript
     import { http } from '@kit.NetworkKit';
@@ -924,18 +924,18 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
     import { hilog } from '@kit.PerformanceAnalysisKit';
     ```
 
-2.  调用createHttp()方法，创建HttpRequest对象。
+2.  调用[createHttp()](../reference/apis-network-kit/js-apis-http.md#httpcreatehttp)方法，创建HttpRequest对象。
 
-     <!-- @HTTP_interceptor_case_creat_request -->
+     <!-- @[HTTP_interceptor_case_creat_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
      
      ``` TypeScript
      // 创建http请求
      let httpRequest: http.HttpRequest = http.createHttp();
      ```
 
-3.  调用HttpInterceptorChain()方法，创建拦截器链对象。
+3.  调用[HttpInterceptorChain()](../reference/apis-network-kit/js-apis-http.md#httpinterceptorchain22)方法，创建拦截器链对象。
 
-    <!-- @HTTP_interceptor_case_chain -->
+    <!-- @[HTTP_interceptor_case_chain](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     // 创建拦截器链
@@ -944,7 +944,7 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 
 4.  创建拦截器类实现http.HttpInterceptor接口。
 
-    <!-- @HTTP_interceptor_case_creat_http_interceptor -->
+    <!-- @[HTTP_interceptor_case_creat_http_interceptor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     class InitialHttpInterceptor implements http.HttpInterceptor {
@@ -1035,9 +1035,9 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
     }
     ```
 
-5.  调用addChain()方法，将需要的拦截器实例加入到拦截器链中。
+5.  调用[addChain()](../reference/apis-network-kit/js-apis-http.md#addchain22)方法，将需要的拦截器实例加入到拦截器链中。
 
-    <!-- @HTTP_interceptor_case_addChain -->
+    <!-- @[HTTP_interceptor_case_addChain](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     // 创建所需要的拦截器对象,将拦截器对象加入拦截器链中
@@ -1048,9 +1048,9 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
     ]);
     ```
 
-6.  调用apply()方法，将当前配置好的拦截器链附加到httpRequest中。
+6.  调用[apply()](../reference/apis-network-kit/js-apis-http.md#apply22)方法，将当前配置好的拦截器链附加到httpRequest中。
 
-    <!-- @HTTP_interceptor_case_apply -->
+    <!-- @[HTTP_interceptor_case_apply](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     // 将当前配置好的拦截器链附加到httpRequest中
@@ -1059,7 +1059,7 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 
 7.  创建请求可选项。
 
-    <!-- @HTTP_interceptor_case_options -->
+    <!-- @[HTTP_interceptor_case_options](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     // 创建请求可选项
@@ -1070,9 +1070,9 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
     };
     ```
 
-8.  调用该对象的request()方法，传入HTTP请求的URL地址和可选参数，发起网络请求，按照实际业务需要，解析服务器响应事件。
+8.  调用该对象的[request()](../reference/apis-network-kit/js-apis-http.md#request-1)方法，传入HTTP请求的URL地址和可选参数，发起网络请求，按照实际业务需要，解析服务器响应事件。
 
-    <!-- @HTTP_interceptor_case_request -->
+    <!-- @[HTTP_interceptor_case_request](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     // 发起请求
@@ -1088,9 +1088,9 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
     });
     ```
 
-9.  调用destroy()方法销毁http请求。
+9.  调用[destroy()](../reference/apis-network-kit/js-apis-http.md#destroy)方法销毁http请求。
 
-    <!-- @HTTP_interceptor_case_request_destroy -->
+    <!-- @[HTTP_interceptor_case_request_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     // 销毁请求
@@ -1102,10 +1102,10 @@ openssl dgst -sha256 -binary www.example.com.pubkey.der | openssl base64
 
 针对HTTP数据请求，有以下相关实例可供参考：
 
-* 上传和下载（ArkTS）(API10)
+* [上传和下载（ArkTS）(API10)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Connectivity/UploadAndDownLoad)
 
-* Http（ArkTS）（API10）
+* [Http（ArkTS）（API10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Connectivity/Http)
 
-* Http_case
+* [Http_case](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_case)
 
-* HTTP_interceptor_case(网络请求拦截器)
+* [HTTP_interceptor_case(网络请求拦截器)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/HTTP_interceptor_case)

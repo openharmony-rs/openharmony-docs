@@ -12,7 +12,7 @@ Exif（Exchangeable image file format）是专门为数码相机的照片设定�
 
 在图库、相机、图片编辑等应用中，开发者可以读取图片的拍摄时间、方向、焦距、地理位置等Exif信息，也可以在需要时修改部分Exif信息。例如，当摄像机的手动镜头参数无法自动写入Exif信息，或者因相机断电导致拍摄时间错误时，可手动修正对应的Exif数据。
 
-系统目前仅支持读取和修改部分Exif信息，具体支持范围请参见变量里的OHOS_IMAGE_PROPERTY_XXX类型。不同图片格式对Exif信息的读写支持情况如下。
+系统目前仅支持读取和修改部分Exif信息，具体支持范围请参见[变量](../../reference/apis-image-kit/capi-image-common-h.md#变量)里的OHOS_IMAGE_PROPERTY_XXX类型。不同图片格式对Exif信息的读写支持情况如下。
 
 | 图片格式 | 读取Exif信息 | 修改Exif信息 |
 | -------- | -------- | -------- |
@@ -24,12 +24,12 @@ Exif（Exchangeable image file format）是专门为数码相机的照片设定�
 
 ## 接口说明
 
-Exif信息的读取与编辑相关C API如下，详细介绍请参考image_source_native.h。
+Exif信息的读取与编辑相关C API如下，详细介绍请参考[image_source_native.h](../../reference/apis-image-kit/capi-image-source-native-h.md)。
 
 | 接口 | 说明 |
 | -------- | -------- |
-| OH_ImageSourceNative_GetImageProperty() | 获取指定属性键的Exif信息。 |
-| OH_ImageSourceNative_ModifyImageProperty() | 修改指定属性键的Exif信息。 |
+| [OH_ImageSourceNative_GetImagePropertyWithNull()](../../reference/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertywithnull) | 获取指定属性键的Exif信息。 |
+| [OH_ImageSourceNative_ModifyImageProperty()](../../reference/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_modifyimageproperty) | 修改指定属性键的Exif信息。 |
 
 ## 注意事项
 
@@ -62,7 +62,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so)
 
 1. 导入相关头文件。
 
-   <!-- @editExif_operations_import -->      
+   <!-- @[editExif_operations_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->      
    
    ``` C++
    #include <string>
@@ -73,7 +73,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so)
 
 2. 日志宏定义可参考下述代码按实际需求自行修改。
 
-   <!-- @define_logInfo -->     
+   <!-- @[define_logInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->     
    
    ``` C++
    #undef LOG_DOMAIN
@@ -84,7 +84,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so)
 
 3. 定义ImageSourceNative类。
 
-   <!-- @define_sourceClass -->    
+   <!-- @[define_sourceClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/imageKits.h) -->    
    
    ``` C
    class ImageSourceNative {
@@ -101,7 +101,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so)
    
 4. 创建ImageSourceNative的一个实例。
 
-   <!-- @create_sourceClass -->   
+   <!-- @[create_sourceClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->   
    
    ``` C++
    static ImageSourceNative *g_thisImageSource = new ImageSourceNative();
@@ -109,7 +109,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so)
 
 5. 创建GetJsResult函数处理napi返回值。
 
-   <!-- @get_returnValue -->     
+   <!-- @[get_returnValue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/napi_init.cpp) -->     
    
    ``` C++
    // 处理napi返回值。
@@ -125,9 +125,9 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so)
 
    > **说明：**
    >
-   > 创建ImageSource对象可参考图片解码。
+   > 创建ImageSource对象可参考[图片解码](../image/image-source-c.md)。
 
-   <!-- @editExif_operations -->      
+   <!-- @[editExif_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->  
    
    ``` C++
    // 获取指定property的value值。
@@ -140,7 +140,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so)
            OH_LOG_ERROR(LOG_APP, "GetImageProperty napi_get_cb_info failed!");
            return GetJsResult(env, IMAGE_BAD_PARAMETER);
        }
-       // 修改指定属性键的值。
+       // 获取指定属性键的值。
        char key[MAX_STRING_LENGTH] = {0};
        size_t keySize = 0;
        if (napi_get_value_string_utf8(env, argValue[0], key, sizeof(key), &keySize) != napi_ok) {

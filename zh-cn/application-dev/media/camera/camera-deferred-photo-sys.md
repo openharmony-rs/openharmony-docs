@@ -23,7 +23,7 @@
 
 ## 开发步骤
 
-详细的API说明请参考@ohos.multimedia.camera (相机管理)。
+详细的API说明请参考[@ohos.multimedia.camera (相机管理)(系统接口)](../../reference/apis-camera-kit/js-apis-camera-sys.md)。
 
 1. 导入依赖，需要导入相机框架、媒体库、图片相关领域依赖。
 
@@ -36,14 +36,14 @@
 
 2. 确定拍照输出流。
 
-   通过CameraOutputCapability中的photoProfiles属性，可获取当前设备支持的拍照输出流，通过createPhotoOutput方法创建拍照输出流。
+   通过[CameraOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraoutputcapability)中的photoProfiles属性，可获取当前设备支持的拍照输出流，通过[createPhotoOutput](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#createphotooutput11)方法创建拍照输出流。
 
    ```ts
    function getPhotoOutput(cameraManager: camera.CameraManager,
     cameraOutputCapability: camera.CameraOutputCapability): camera.PhotoOutput | undefined {
     let photoProfilesArray: Array<camera.Profile> = cameraOutputCapability.photoProfiles;
     if (photoProfilesArray === null || photoProfilesArray === undefined) {
-      console.error("createOutput photoProfilesArray is null!");
+      console.error("createPhotoOutput photoProfilesArray is null!");
       return undefined;
     }
     let photoOutput: camera.PhotoOutput | undefined = undefined;
@@ -78,7 +78,7 @@
 4. 使能分段式拍照能力。
 
    ```ts
-   function EnableDeferredPhotoAbility(photoOutput: camera.PhotoOutput): void {
+   function enableDeferredPhotoAbility(photoOutput: camera.PhotoOutput): void {
      photoOutput.deferImageDelivery(camera.DeferredDeliveryImageType.PHOTO);
    }
    ```
@@ -96,7 +96,7 @@
    }
    ```
 
-6. 触发拍照，与普通拍照方式相同，请参考拍照。
+6. 触发拍照，与普通拍照方式相同，请参考[拍照](camera-shooting.md)。
 
 
 
@@ -126,7 +126,7 @@
 
 2. 调用媒体库接口落盘缩略图。
 
-   Context获取方式请参考：获取UIAbility的上下文信息。
+   Context获取方式请参考：[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
    ```ts
    async function saveDeferredPhoto(proxyObj: camera.DeferredPhotoProxy, context: Context) {    

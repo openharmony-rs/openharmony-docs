@@ -9,7 +9,7 @@
 
 ## 概述
 
-OpenHarmony的DFX子系统提供了为应用框架以及系统底座核心模块的性能打点能力，每一处打点即是一个Trace，其上附带了记录执行时间、运行时格式化数据、进程或线程信息等。开发者可以使用SmartPerf-Host调试工具对Trace进行解析，在其绘制的泳道图中，对应用运行过程中的性能热点进行分析，得出优化方案。本文旨在介绍OpenHarmony中常用的Trace，解释它们的含义和用途，并阐述如何通过这些Trace来识别潜在的性能问题。同时，我们还将详细介绍Trace的工作原理，帮助读者更好地理解这些Trace及如何实现性能数据的采集和分析。通过本文的阅读，读者将对OpenHarmony中的Trace有一个深入的了解，为应用程序性能优化提供有力支持。
+OpenHarmony的DFX子系统提供了为应用框架以及系统底座核心模块的性能打点能力，每一处打点即是一个Trace，其上附带了记录执行时间、运行时格式化数据、进程或线程信息等。开发者可以使用[SmartPerf-Host调试工具](../../device-dev/device-test/smartperf-host.md)对Trace进行解析，在其绘制的泳道图中，对应用运行过程中的性能热点进行分析，得出优化方案。本文旨在介绍OpenHarmony中常用的Trace，解释它们的含义和用途，并阐述如何通过这些Trace来识别潜在的性能问题。同时，我们还将详细介绍Trace的工作原理，帮助读者更好地理解这些Trace及如何实现性能数据的采集和分析。通过本文的阅读，读者将对OpenHarmony中的Trace有一个深入的了解，为应用程序性能优化提供有力支持。
 
 ## 常用Trace及含义
 
@@ -21,7 +21,7 @@ OpenHarmony的DFX子系统提供了为应用框架以及系统底座核心模块
 
 **图1 渲染流程图**
 
-渲染流程图
+![渲染流程图](figures/trace-process.jpg)
 
 从Trace角度来看，一帧的渲染流程如下：
 
@@ -39,7 +39,7 @@ OpenHarmony的DFX子系统提供了为应用框架以及系统底座核心模块
 
 **图2 UI后端引擎渲染Trace泳道图**
 
-UI后端引擎渲染Trace泳道图
+![UI后端引擎渲染Trace泳道图](figures/trace-ui-engine.png)
 
 | 序号  | **Trace**                               | **参数说明**         | **描述**                               |
 |:--- | --------------------------------------- | ---------------- | ------------------------------------ |
@@ -59,7 +59,7 @@ UI后端引擎渲染Trace泳道图
 
 **图3 RS侧渲染Trace泳道图**
 
-RS侧渲染Trace泳道图
+![RS侧渲染Trace泳道图](figures/trace-rs.png)
 
 | 序号  | Trace                        | 描述           |
 |:--- | ---------------------------- | ------------ |
@@ -81,7 +81,7 @@ RS侧渲染Trace泳道图
 
 **图4 懒加载Trace泳道图**
 
-懒加载Trace泳道图
+![懒加载Trace泳道图](figures/trace-lazyforeach.png)
 
 | **序号** | **Trace**                      | **参数说明**                               | **描述**                                           |
 |:------ | ------------------------------ | -------------------------------------- | ------------------------------------------------ |
@@ -89,8 +89,8 @@ RS侧渲染Trace泳道图
 | 2      | expiringItem_ count:[%zu]      | 懒加载Item的个数                             | 预构建，包含处理所有懒加载项                                   |
 | 3      | List predict                   |                                        | 添加预测布局任务                                         |
 | 4      | Builder:BuildLazyItem [%d]     | 需创建的项目索引                               | 在需要时创建项，并进行缓存                                    |
-| 5      | Layout%s[parent:%d] | tag标签，当前节点在UINode树中的索引，父节点在UINode树中的索引 | 当前帧节点布局                                          |
-| 6      | Build%s[parent:%d]  | tag标签，当前节点在UINode树中的索引，父节点在UINode树中的索引 | 当前帧节点构建                                          |
+| 5      | Layout[%s][self:%d][parent:%d] | tag标签，当前节点在UINode树中的索引，父节点在UINode树中的索引 | 当前帧节点布局                                          |
+| 6      | Build[%s][self:%d][parent:%d]  | tag标签，当前节点在UINode树中的索引，父节点在UINode树中的索引 | 当前帧节点构建                                          |
 | 7      | CustomNode:BuildRecycle %s     | JS视图名称                                 | 触发复用渲染                                           |
 | 8      | ExecuteJS                      |                                        | 执行JS代码                                           |
 
@@ -100,7 +100,7 @@ RS侧渲染Trace泳道图
 
 **图5 页面加载帧Trace泳道图**
 
-页面加载帧Trace泳道图
+![页面加载帧Trace泳道图](figures/trace-load-frame-rate.png)
 
 | **序号** | **Trace**                                                     | **参数说明**                               | **描述**                       |
 |:------ | ------------------------------------------------------------- | -------------------------------------- | ---------------------------- |
@@ -108,14 +108,14 @@ RS侧渲染Trace泳道图
 | 2      | PageRouterManager::LoadPage                                   |                                        | 加载页面并路由                      |
 | 3      | JsiDeclarativeEngine::LoadPageSource                          |                                        | 加载一个JavaScript文件并将其解析为ABC字节码 |
 | 4      | JsiDeclarativeEngine::LoadJsWithModule Execute Page code : %s | 页面url地址                                | 执行页面代码                       |
-| 5      | Build%s[parent:%d]                                 | tag标签，当前节点在UINode树中的索引，父节点在UINode树中的索引 | 当前帧节点构建                      |
+| 5      | Build[%s][self:%d][parent:%d]                                 | tag标签，当前节点在UINode树中的索引，父节点在UINode树中的索引 | 当前帧节点构建                      |
 | 6      | CustomNode:BuildItem %s                                       | JS视图名称                                 | 渲染子节点然后将其挂载到父节点上             |
 | 7      | ViewChangeCallback(%d, %d)                                    | 视图宽，视图高                                | 视图变化回调                       |
 
 ## Trace实践
 
-以下示例采用`LazyForEach`的方式遍历列表，并借助SmartPerf-Host调试工具追踪代码执行流程。
-在代码示例中，使用一个List容器组件，通过懒加载方式来创建出120个IconView自定义组件。在IconView组件中，使用了Flex容器组件包含Image和Text子组件，形成了图文混合列表。
+以下示例采用`LazyForEach`的方式遍历列表，并借助[SmartPerf-Host调试工具](../../device-dev/device-test/smartperf-host.md)追踪代码执行流程。
+在[代码示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/Performance/PerformanceLibrary/feature/trace)中，使用一个List容器组件，通过懒加载方式来创建出120个IconView自定义组件。在IconView组件中，使用了Flex容器组件包含Image和Text子组件，形成了图文混合列表。
 
 ```ts
 // src/main/ets/pages/LazyForEachPage.ets
@@ -188,11 +188,11 @@ export struct IconItem {
 }
 ```
 
-下面使用SmartPerf-Host调试工具抓取htrace文件，并生成一个跟踪泳道分析图，来了解示例代码的加载流程。跟踪泳道分析图被分为五个部分，每个部分都标注数字并框选出相应的标签，从而使得整体的过程能够得到更好的理解。
+下面使用[SmartPerf-Host调试工具](../../device-dev/device-test/smartperf-host.md)抓取htrace文件，并生成一个跟踪泳道分析图，来了解示例代码的加载流程。跟踪泳道分析图被分为五个部分，每个部分都标注数字并框选出相应的标签，从而使得整体的过程能够得到更好的理解。
 
 **图6 LazyForEach遍历的列表的泳道分析图**
 
-LazyForEach遍历的列表的泳道分析图
+![LazyForEach遍历的列表的泳道分析图](figures/trace-lazyforeach-channel.png)
 
 接下来，逐一解析这五个模块的详情：
 
@@ -200,7 +200,7 @@ LazyForEach遍历的列表的泳道分析图
 
 **图7 加载并路由LazyForEach页面泳道图**
 
-加载并路由LazyForEach页面泳道图
+![加载并路由LazyForEach页面泳道图](figures/trace-load-lazyforeach.png)
 
 **①** `H:JsiDeclarativeEngine::LoadPageSource`加载一个 JavaScript 文件，并且解析为 ABC 字节码；
 
@@ -214,7 +214,7 @@ LazyForEach遍历的列表的泳道分析图
 
 **图8 对当前帧节点Stage，执行布局任务、执行渲染任务并通知图形侧进行渲染泳道图**
 
-对当前帧节点Stage，执行布局任务、执行渲染任务并通知图形侧进行渲染泳道图
+![对当前帧节点Stage，执行布局任务、执行渲染任务并通知图形侧进行渲染泳道图](figures/trace-stage-frame-rate.png)
 
 **①** `H:Layout[stage][self:1][parent:0]` 对当前帧节点Stage，执行布局任务；(Stage作为框架，承载着页面Page节点。因此，标签的呈现会从Stage开始)
    - `H:Measure[%s][self:17][parent:16]` 对Page、Column、Row、Image、Text等组件布局尺寸计算；
@@ -229,7 +229,7 @@ LazyForEach遍历的列表的泳道分析图
 
 **图9 对当前帧节点Flex，执行布局任务、执行渲染任务并通知图形侧进行渲染泳道图**
 
-执行渲染任务并通知图形侧进行渲染泳道图
+![执行渲染任务并通知图形侧进行渲染泳道图](figures/trace-notify-rs.png)
 
 **①** `H:Layout[Flex][self:63][parent:62]`对当前帧节点Flex，执行布局任务；
   - `H:Measure[%s][self:17][parent:16]` 对Image、Text等组件布局尺寸计算；
@@ -242,7 +242,7 @@ LazyForEach遍历的列表的泳道分析图
 
 **图10 构建前预处理数据及添加预测布局任务泳道图**
 
-构建前预处理数据及添加预测布局任务泳道图
+![构建前预处理数据及添加预测布局任务泳道图](figures/trace-per-build.png)
 
 **①** `H:Builder:BuildLazyItem [11]`构建前预处理数据了11条数据；
 
@@ -254,7 +254,7 @@ LazyForEach遍历的列表的泳道分析图
 
 **图11 合成渲染树上各节点图层任务泳道图**
 
-合成渲染树上各节点图层任务泳道图
+![合成渲染树上各节点图层任务泳道图](figures/trace-node-tree.png)
 
 **①** `H:AcquireBuffer`、`H:ProcessSurfaceNode:EntryView XYWH[0 0 720 1280]`获取屏幕缓冲区并绘制EntryView、SystemUi_StatusBar、SystemUi_NavigationBar等；
 
@@ -264,34 +264,34 @@ LazyForEach遍历的列表的泳道分析图
 
 开发者可以根据业务需求，使用hiTraceMeter进行自定义Trace打点跟踪，目前支持ArkTS和Native，具体使用细节可参考下方链接：
 
-> 性能打点跟踪开发指导（ArkTS）
-> 性能打点跟踪开发指导（Native）
+> [性能打点跟踪开发指导（ArkTS）](../dfx/hitracemeter-guidelines-arkts.md)
+> [性能打点跟踪开发指导（Native）](../dfx/hitracemeter-guidelines-ndk.md)
 
-添加自定义Trace后，可在SmartPerf-Host调试工具上查看，自定义Trace将以独立泳道的形式呈现在对应打点的进程下。
+添加自定义Trace后，可在[SmartPerf-Host调试工具](../../device-dev/device-test/smartperf-host.md)上查看，自定义Trace将以独立泳道的形式呈现在对应打点的进程下。
 下图两条泳道使用了startTrace和finishTrace方法，表示程序运行过程中，指定标签从调用startTrace到调用finishTrace的耗时统计。图中记录了CUSTOM_TRACE_TAG_1和CUSTOM_TRACE_TAG_2两个标签，先后呈现了2个标签的耗时统计。
 
 **图12 自定义Trace示例**
 
-自定义Trace示例
+![自定义Trace示例](figures/trace-custom-example.png)
 
 下图两条泳道使用了TraceByValue方法，表示程序运行过程中，指定Trace在对应时间段内的状态值，状态值含义可按需传参，开发者可以通过鼠标放置在对应数据块上，来查看具体的状态值。图中记录了CUSTOM_TRACE_TAG_2标签在红色方框标识的时间段内，打点状态值为2001。
 
 **图13 自定义状态值示例**
 
-自定义状态值示例
+![自定义状态值示例](figures/trace-custom-value.png)
 
 ## 性能打点原理
 
 Trace的生成依赖了DFX子系统中的HiTrace组件，其中包含的hiTraceMeter模块为开发者提供系统性能打点接口，具体细节可参考下方链接：
 
-> HiTrace组件
-> hiTraceMeter模块
+> [HiTrace组件](https://gitcode.com/openharmony/hiviewdfx_hitrace)
+> [hiTraceMeter模块](../reference/apis-performance-analysis-kit/capi-trace-h.md)
 
 hiTraceMeter拥有两套开始和结束打点接口，实现对逻辑行为的耗时统计。由于耗时统计大多数以方法为单位，所以hiTraceMeter也提供了快速打点单个方法执行耗时的宏定义HITRACE_METER、HITRACE_METER_NAME、HITRACE_METER_FMT，使用它们，只需要在方法起始位置调用即可。这些宏定义依赖了方法内局部变量的生命周期，其原理是在方法开始时构造了一个打点实例，在实例构造函数中调用开始打点接口，当方法执行完毕，打点实例随着方法结束而执行析构，在实例析构函数中调用结束打点接口。
 
 ### App中的打点示例
 
-ArkUI框架子系统应用hiTraceMeter的例子，来源于ArkUI开发框架源码。
+ArkUI框架子系统应用hiTraceMeter的例子，来源于[ArkUI开发框架](https://gitcode.com/openharmony/arkui_ace_engine)源码。
 以下代码对hiTraceMeter进行接口封装，其原理与HITRACE_METER等相同，依赖方法内局部变量的生命周期实现快速打点。
 
 ```cpp
@@ -328,7 +328,7 @@ void PipelineContext::FlushVsync(uint64_t nanoTimestamp, uint32_t frameCount)
 
 ### RS中的打点示例
 
-图形子系统应用hiTraceMeter的例子，来源于图形子系统源码。
+图形子系统应用hiTraceMeter的例子，来源于[图形子系统](https://gitcode.com/openharmony/graphic_graphic_2d)源码。
 以下代码对hiTraceMeter进行接口封装。
 
 ```cpp

@@ -5,13 +5,13 @@
 <!--Designer: @defeng20201-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-应用使用Navigation等路由策略导航至Web组件页面时，在网页加载过程中，页面底部可能出现闪烁现象，这会影响用户体验。
+应用使用[Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)等路由策略导航至Web组件页面时，在网页加载过程中，页面底部可能出现闪烁现象，这会影响用户体验。
 
 ## 闪烁原因
 
 使用Navigation等路由策略导航至Web组件页面时，通常根据网页的回调通知判断是否隐藏系统导航栏。若决定隐藏，Web组件布局会进行调整。这一布局调整过程可简化为如下四个阶段：
 
-web-router-flash-optimization.png
+![web-router-flash-optimization.png](figures/web-router-flash-optimization.png)
 
 图中四个状态的说明（从左至右）：
 
@@ -33,7 +33,7 @@ web-router-flash-optimization.png
 
 以下为设置Web组件背景色的接口示例（示例中将Web组件背景色设置为灰色，若不设置，Web组件背景色默认为白色）：
 
-  <!-- @FixingPageFlickeringButton -->
+  <!-- @[FixingPageFlickeringButton](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ProcessWeb/entry/src/main/ets/pages/FixingPageFlickering.ets) -->
 
   ``` TypeScript
   Web({ src: $rawfile('xxx.html'),  controller: this.webController})

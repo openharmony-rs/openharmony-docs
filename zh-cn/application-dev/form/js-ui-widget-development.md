@@ -9,7 +9,7 @@ Stage模型是从API version 9开始支持，目前主推且会长期演进的�
 
 ## 接口说明
 
-FormExtensionAbility类拥有如下API接口，具体的API介绍详见@ohos.app.form.FormExtensionAbility (FormExtensionAbility)。
+FormExtensionAbility类拥有如下API接口，具体的API介绍详见[@ohos.app.form.FormExtensionAbility (FormExtensionAbility)](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md)。
 
 | 接口名                                                                                              | 描述 |
 | -------- | -------- |
@@ -21,7 +21,7 @@ FormExtensionAbility类拥有如下API接口，具体的API介绍详见@ohos.app
 | onRemoveForm(formId:&nbsp;string):&nbsp;void                                                     | 卡片提供方接收删除卡片的通知接口。 |
 | onConfigurationUpdate(newConfig:&nbsp;Configuration):&nbsp;void                                  | 当系统配置更新时调用。 |
 
-formProvider类部分API接口如下，具体的API介绍详见@ohos.app.form.formProvider (formProvider)。
+formProvider类部分API接口如下，具体的API介绍详见[@ohos.app.form.formProvider (formProvider)](../reference/apis-form-kit/js-apis-app-form-formProvider.md)。
 
 | 接口名 | 描述 |
 | -------- | -------- |
@@ -30,7 +30,7 @@ formProvider类部分API接口如下，具体的API介绍详见@ohos.app.form.fo
 | updateForm(formId:&nbsp;string,&nbsp;formBindingData:&nbsp;formBindingData.FormBindingData,&nbsp;callback:&nbsp;AsyncCallback&lt;void&gt;):&nbsp;void | 更新指定的卡片，使用callback异步回调。 |
 | updateForm(formId:&nbsp;string,&nbsp;formBindingData:&nbsp;formBindingData.FormBindingData):&nbsp;Promise&lt;void&gt; | 更新指定的卡片，使用Promise异步回调。 |
 
-formBindingData类部分API接口如下，具体的API介绍详见@ohos.app.form.formBindingData (卡片数据绑定类)。
+formBindingData类部分API接口如下，具体的API介绍详见[@ohos.app.form.formBindingData (卡片数据绑定类)](../reference/apis-form-kit/js-apis-app-form-formBindingData.md)。
 
 | 接口名 | 描述 |
 | -------- | -------- |
@@ -39,28 +39,28 @@ formBindingData类部分API接口如下，具体的API介绍详见@ohos.app.form
 
 ## 开发步骤
 
-Stage卡片开发，即基于Stage模型的卡片提供方开发，主要涉及如下关键步骤：
+Stage卡片开发，即基于[Stage模型](../application-models/stage-model-development-overview.md)的卡片提供方开发，主要涉及如下关键步骤：
 
-- 创建卡片FormExtensionAbility：卡片生命周期回调函数FormExtensionAbility开发。
+- [创建卡片FormExtensionAbility](#创建卡片formextensionability)：卡片生命周期回调函数FormExtensionAbility开发。
 
-- 配置卡片配置文件：配置应用配置文件module.json5和profile配置文件。
+- [配置卡片配置文件](#配置卡片配置文件)：配置应用配置文件module.json5和profile配置文件。
 
-- 卡片信息的持久化：对卡片信息进行持久化管理。
+- [卡片信息的持久化](#卡片信息的持久化)：对卡片信息进行持久化管理。
 
-- 卡片数据交互：通过updateForm更新卡片显示的信息。
+- [卡片数据交互](#卡片数据交互)：通过updateForm更新卡片显示的信息。
 
-- 开发卡片页面：使用HML+CSS+JSON开发JS卡片页面。
+- [开发卡片页面](#开发卡片页面)：使用HML+CSS+JSON开发JS卡片页面。
 
-- 开发卡片事件：为卡片添加router事件和message事件。
+- [开发卡片事件](#开发卡片事件)：为卡片添加router事件和message事件。
 
 
 ### 创建卡片FormExtensionAbility
 
-创建Stage模型的卡片，需实现FormExtensionAbility生命周期接口。先参考<!--RP1-->创建ArkTS卡片<!--RP1End-->生成服务卡片模板。
+创建Stage模型的卡片，需实现FormExtensionAbility生命周期接口。先参考<!--RP1-->[创建ArkTS卡片](./arkts-ui-widget-creation.md)<!--RP1End-->生成服务卡片模板。
 
 1. 在JsCardFormAbility.ets中，导入相关模块。
 
-   <!-- @JSForm_JsCardFormAbility_import --> 
+   <!-- @[JSForm_JsCardFormAbility_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) --> 
    
    ``` TypeScript
    // entry/src/main/ets/jscardformability/JsCardFormAbility.ets
@@ -74,7 +74,7 @@ Stage卡片开发，即基于Stage模型的卡片提供方开发，主要涉及�
 
 2. 在JsCardFormAbility.ets中，实现FormExtension生命周期接口。
 
-   <!-- @JSForm_JsCardFormAbility_FormExtensionAbility --> 
+   <!-- @[JSForm_JsCardFormAbility_FormExtensionAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) --> 
    
    ``` TypeScript
    // entry/src/main/ets/jscardformability/JsCardFormAbility.ets
@@ -174,11 +174,11 @@ Stage卡片开发，即基于Stage模型的卡片提供方开发，主要涉及�
 
 ### 配置卡片配置文件
 
-1. 卡片需要在module.json5配置文件中的extensionAbilities标签下，配置ExtensionAbility相关信息。FormExtensionAbility需要填写metadata元信息标签，其中键名称为固定字符串"ohos.extension.form"，资源为卡片的具体配置信息的索引。
+1. 卡片需要在[module.json5配置文件](../quick-start/module-configuration-file.md)中的extensionAbilities标签下，配置ExtensionAbility相关信息。FormExtensionAbility需要填写metadata元信息标签，其中键名称为固定字符串"ohos.extension.form"，资源为卡片的具体配置信息的索引。
 
    配置示例如下：
 
-   <!-- @JSForm_modulejson5 --> 
+   <!-- @[JSForm_modulejson5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/module.json5) --> 
    
    ``` JSON5
    {
@@ -214,7 +214,7 @@ Stage卡片开发，即基于Stage模型的卡片提供方开发，主要涉及�
    | name | 表示卡片的类名，字符串最大长度为127字节。 | 字符串 | 否 |
    | description | 表示卡片的描述。取值可以是描述性内容，也可以是对描述性内容的资源索引，以支持多语言。字符串最大长度为255字节。 | 字符串 | 可缺省，缺省为空。 |
    | src | 表示卡片对应的UI代码的完整路径。 | 字符串 | 否 |
-   | window | 用于定义与显示窗口相关的配置。 | 对象 | 可缺省，缺省值参考window标签表格。 |
+   | window | 用于定义与显示窗口相关的配置。 | 对象 | 可缺省，缺省值参考[window标签](./arkts-ui-widget-configuration.md#window标签)表格。 |
    | isDefault | 表示该卡片是否为默认卡片，每个UIAbility有且只有一个默认卡片。<br/>-&nbsp;true：默认卡片。<br/>-&nbsp;false：非默认卡片。 | 布尔值 | 否 |
    | colorMode<sup>(deprecated)</sup> | 表示卡片的颜色模式，取值范围如下：<br/>-&nbsp;auto：跟随系统的颜色模式值选取主题。<br/>-&nbsp;dark：深色主题。<br/>-&nbsp;light：浅色主题。<br/>**说明：**<br/>1. 从API version 12开始支持该配置项，从API version 20开始废弃该配置项，卡片主题样式统一跟随系统的颜色模式。<br/> | 字符串 | 可缺省，缺省值为“auto”。 |
    | supportDimensions | 表示卡片支持的外观规格，取值范围：<!--RP2--><!--RP2End--><br/>-&nbsp;1&nbsp;\*&nbsp;2：表示1行2列的二宫格。<br/>-&nbsp;2&nbsp;\*&nbsp;2：表示2行2列的四宫格。<br/>-&nbsp;2&nbsp;\*&nbsp;4：表示2行4列的八宫格。<br/>-&nbsp;2&nbsp;\*&nbsp;3：表示2行3列的六宫格。<br/>-&nbsp;3&nbsp;\*&nbsp;3：表示3行3列的九宫格。<br/>-&nbsp;4&nbsp;\*&nbsp;4：表示4行4列的十六宫格。<br/>-&nbsp;6&nbsp;\*&nbsp;4：表示6行4列的二十四宫格。<br>**说明**：&nbsp;2&nbsp;\*&nbsp;3和&nbsp;3&nbsp;\*&nbsp;3仅支持手表设备<!--RP3--><!--RP3End-->。 | 字符串数组 | 否 |
@@ -258,9 +258,9 @@ Stage卡片开发，即基于Stage模型的卡片提供方开发，主要涉及�
 
 因大部分卡片提供方都不是常驻服务，只有在需要使用时才会被拉起获取卡片信息，且卡片管理服务支持对卡片进行多实例管理，卡片ID对应实例ID，因此若卡片提供方支持对卡片数据进行配置，则需要对卡片的业务数据按照卡片ID进行持久化管理，以便在后续获取、更新以及拉起时能获取到正确的卡片业务数据。
 
-代码导入请参考创建卡片FormExtensionAbility中的导入模块。
+代码导入请参考[创建卡片FormExtensionAbility](#创建卡片formextensionability)中的导入模块。
 
-<!-- @JSForm_JsCardFormAbility_onAddForm --> 
+<!-- @[JSForm_JsCardFormAbility_onAddForm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) --> 
 
 ``` TypeScript
 // entry/src/main/ets/jscardformability/JsCardFormAbility.ets
@@ -314,7 +314,7 @@ export default class JsCardFormAbility extends FormExtensionAbility {
 
 且需要适配onRemoveForm卡片删除通知接口，在其中实现卡片实例数据的删除。
 
-<!-- @JSForm_JsCardFormAbility_onRemoveForm --> 
+<!-- @[JSForm_JsCardFormAbility_onRemoveForm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) --> 
 
 ``` TypeScript
 // entry/src/main/ets/jscardformability/JsCardFormAbility.ets
@@ -349,7 +349,7 @@ export default class JsCardFormAbility extends FormExtensionAbility {
 
 ```
 
-具体的持久化方法可以参考轻量级数据存储开发指导。
+具体的持久化方法可以参考[轻量级数据存储开发指导](../database/app-data-persistence-overview.md)。
 
 需要注意的是，卡片使用方在请求卡片时传递给提供方应用的Want数据中存在临时标记字段，表示此次请求的卡片是否为临时卡片：
 
@@ -364,8 +364,8 @@ export default class JsCardFormAbility extends FormExtensionAbility {
 
 当卡片应用需要更新数据时（如触发了定时更新或定点更新），卡片应用获取最新数据，并调用updateForm()接口主动触发卡片的更新。
 
-代码导入请参考创建卡片FormExtensionAbility中的导入模块。
-<!-- @JSForm_JsCardFormAbility_onUpdateForm -->
+代码导入请参考[创建卡片FormExtensionAbility](#创建卡片formextensionability)中的导入模块。
+<!-- @[JSForm_JsCardFormAbility_onUpdateForm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) -->
 
 ``` TypeScript
 // entry/src/main/ets/jscardformability/JsCardFormAbility.ets
@@ -398,7 +398,7 @@ export default class JsCardFormAbility extends FormExtensionAbility {
 
 开发者可以使用类Web范式（HML+CSS+JSON）开发JS卡片页面。生成如下卡片页面，可以这样配置卡片页面文件：
 
-WidgetCardPage
+![WidgetCardPage](figures/WidgetCardPage.png)
 
 - HML：使用类Web范式的组件描述卡片的页面信息。
 
@@ -633,7 +633,7 @@ WidgetCardPage
 
 - 在UIAbility中接收router事件并获取参数
 
-    <!-- @JSForm_EntryAbility --> 
+    <!-- @[JSForm_EntryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/entryability/EntryAbility.ets) --> 
     
     ``` TypeScript
     // entry/src/main/ets/entryability/EntryAbility.ets
@@ -666,9 +666,9 @@ WidgetCardPage
     ```
 
 
-- 在FormExtensionAbility中接收message事件并获取参数，代码导入请参考创建卡片FormExtensionAbility中的导入模块。
+- 在FormExtensionAbility中接收message事件并获取参数，代码导入请参考[创建卡片FormExtensionAbility](#创建卡片formextensionability)中的导入模块。
 
-    <!-- @JSForm_JsCardFormAbility_onFormEvent -->
+    <!-- @[JSForm_JsCardFormAbility_onFormEvent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/JSForm/entry/src/main/ets/jscardformability/JsCardFormAbility.ets) -->
     
     ``` TypeScript
     // entry/src/main/ets/jscardformability/JsCardFormAbility.ets
@@ -698,9 +698,9 @@ WidgetCardPage
 
 针对卡片开发，有以下相关实例可供参考：
 
-- JS多设备自适应服务卡片（JS）（API9）
+- [JS多设备自适应服务卡片（JS）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SuperFeature/Widget/AdaptiveServiceWidget)
 
-- 电影卡片（JS）（API9）
+- [电影卡片（JS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/Card/MovieCard)
 
-- 计步器卡片（JS）（API9）
+- [计步器卡片（JS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/Card/StepsCardJS)
 <!--DelEnd-->

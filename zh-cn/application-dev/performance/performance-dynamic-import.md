@@ -14,7 +14,7 @@
 
 ## 场景示例
 
-场景示例图
+![场景示例图](figures/dynamic_import_1.gif)
 
 下面示例应用通过Navigation组件常规加载与动态加载的对比，介绍如何在跳转时触发加载方法，实现按需加载子模块。
 
@@ -87,11 +87,11 @@
    }
    ```
 
-编译运行后，通过DevEco Studio中的Profiler工具抓取Trace，可以得到图1。通过图中泳道可以看到，主页面加载完成共耗时22.9ms（从DispatchTouchEvent标签到sendCommands标签，即从点击进入页面到通知系统开始渲染页面）。其中，load page标签表示加载整个页面的时间，共耗时19ms。继续向下可以看到，虽然主页面并没有使用Web组件，但是依旧加载了libwebview_napi.z.so，耗时大概12ms左右。如果用户只是在主页面停留，并没有继续进入子页面，那么这个so库的初始化就是没有必要的，但是依旧产生了耗时，并且占用了一部分的内存，会降低应用的性能。
+编译运行后，通过DevEco Studio中的[Profiler工具](application-performance-analysis.md)抓取Trace，可以得到图1。通过图中泳道可以看到，主页面加载完成共耗时22.9ms（从DispatchTouchEvent标签到sendCommands标签，即从点击进入页面到通知系统开始渲染页面）。其中，load page标签表示加载整个页面的时间，共耗时19ms。继续向下可以看到，虽然主页面并没有使用Web组件，但是依旧加载了libwebview_napi.z.so，耗时大概12ms左右。如果用户只是在主页面停留，并没有继续进入子页面，那么这个so库的初始化就是没有必要的，但是依旧产生了耗时，并且占用了一部分的内存，会降低应用的性能。
 
 图1 常规加载主页面泳道图
 
-image-20240725204758662
+![image-20240725204758662](figures/dynamic_import_normal_1.PNG)
 
 ### 动态加载
 
@@ -139,11 +139,11 @@ export struct Page2 {
 
 图2 动态加载主页面泳道图
 
-di1
+![di1](figures/dynamic_import_dynamic_1.PNG)
 
 图3 动态加载子页面泳道图
 
-di2
+![di2](figures/dynamic_import_dynamic_2.PNG)
 
 ### 性能对比
 
@@ -158,4 +158,4 @@ di2
 
 ## 参考链接
 
-动态import
+[动态import](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/arkts-dynamic-import-V5)

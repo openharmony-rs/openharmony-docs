@@ -12,7 +12,7 @@ Web组件支持手势缩放、鼠标滚轮、键盘缩放，以方便用户调�
 
 ### 启用/禁用网页手势缩放
 
-通过属性zoomAccess控制网页缩放功能，当设置为false时，网页不允许手势缩放行为。
+通过属性[zoomAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#zoomaccess)控制网页缩放功能，当设置为false时，网页不允许手势缩放行为。
 
 当html网页设置`<meta name="viewport" id="viewport" content="user-scalable=no">`时，网页不允许手势缩放。
 
@@ -26,7 +26,7 @@ Web组件支持手势缩放、鼠标滚轮、键盘缩放，以方便用户调�
 >
 > 另外，网页的内容宽度也会限制缩小的比例。
 
-<!-- @ControlWebGestureZooming -->
+<!-- @[ControlWebGestureZooming](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebManagementZooming/entry/src/main/ets/pages/ControlWebGestureZooming.ets) -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -47,7 +47,7 @@ struct WebComponent {
 
 ### 启用/禁用手势强制缩放
 
-通过属性forceEnableZoom控制网页强制缩放功能，当设置为`true`时，手势缩放行为不受`minimum-scale`和`maximum-scale`以及`user-scalable=no`的限制。
+通过属性[forceEnableZoom](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#forceenablezoom21)控制网页强制缩放功能，当设置为`true`时，手势缩放行为不受`minimum-scale`和`maximum-scale`以及`user-scalable=no`的限制。
 
 ### 启用/禁用网页键盘鼠标缩放
 
@@ -55,7 +55,7 @@ ArkWeb默认支持通过`Ctrl`+按键`'-'/'+'` 或者 `Ctrl`+鼠标滚轮进行�
 
 通过拦截键盘事件来阻止按键缩放：
 
-<!-- @ControlMouseAndKeyBoardZooming -->
+<!-- @[ControlMouseAndKeyBoardZooming](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebManagementZooming/entry/src/main/ets/pages/ControlMouseAndKeyBoardZooming.ets) -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -85,7 +85,7 @@ struct WebComponent {
 }
 ```
 
-或者通过属性zoomControlAccess设置是否允许通过组合按键（Ctrl+'-/+'或Ctrl+鼠标滚轮/触摸板）进行缩放。
+或者通过属性[zoomControlAccess](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#zoomcontrolaccess22)设置是否允许通过组合按键（Ctrl+'-/+'或Ctrl+鼠标滚轮/触摸板）进行缩放。
 
 ```ts
 // xxx.ets
@@ -107,9 +107,9 @@ struct WebComponent {
 
 ## 监听页面缩放比例变化
 
-应用可以通过onScaleChange接口监听页面缩放比例的变化。该接口事件对应手势事件（双指缩放），`event.newScale`对应网页属性`visualViewport.scale`。
+应用可以通过[onScaleChange](../reference/apis-arkweb/arkts-basic-components-web-events.md#onscalechange9)接口监听页面缩放比例的变化。该接口事件对应手势事件（双指缩放），`event.newScale`对应网页属性`visualViewport.scale`。
 
-<!-- @MonitorZoomRatio -->
+<!-- @[MonitorZoomRatio](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebManagementZooming/entry/src/main/ets/pages/MonitorZoomRatio.ets) -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -132,9 +132,9 @@ struct WebComponent {
 
 ## 控制网页的缩放比例
 
-应用可以通过设置initialScale属性设置页面初始缩放比例。
+应用可以通过设置[initialScale](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#initialscale9)属性设置页面初始缩放比例。
 
-应用可以通过zoom、zoomIn、zoomOut接口控制页面缩放。
+应用可以通过[zoom](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#zoom)、[zoomIn](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#zoomin)、[zoomOut](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#zoomout)接口控制页面缩放。
 
  > **说明：**
  >
@@ -144,7 +144,7 @@ struct WebComponent {
 
 `zoomIn`将当前网页进行放大，比例为25%；`zoomOut`将当前网页进行缩小，比例为20%。
 
-<!-- @ControlZoomByFixedRatio -->
+<!-- @[ControlZoomByFixedRatio](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebManagementZooming/entry/src/main/ets/pages/ControlZoomByFixedRatio.ets) -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -183,7 +183,7 @@ struct WebComponent {
 
 `zoom`基于当前网页比例进行缩放，入参要求大于0，当入参为1时为默认加载网页的缩放比例，入参小于1为缩小，入参大于1为放大。
 
-<!-- @ControlZoomByInput -->
+<!-- @[ControlZoomByInput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebManagementZooming/entry/src/main/ets/pages/ControlZoomByInput.ets) -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -216,7 +216,7 @@ struct WebComponent {
   }
 }
 ```
-zoom-by-step
+![zoom-by-step](./figures/zoom-by-step.gif)
 
 ### 缩放页面到目标比例:
 
@@ -226,7 +226,7 @@ zoom-by-step
 factor = 100 * targetFactor / pageFactor
 ```
 
-<!-- @ControlZoomToFixedRatio --> 
+<!-- @[ControlZoomToFixedRatio](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebManagementZooming/entry/src/main/ets/pages/ControlZoomToFixedRatio.ets) --> 
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -268,4 +268,4 @@ struct WebComponent {
   }
 }
 ```
-zoom-to-target
+![zoom-to-target](./figures/zoom-to-target.gif)

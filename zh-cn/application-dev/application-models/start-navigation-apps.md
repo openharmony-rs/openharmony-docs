@@ -132,11 +132,11 @@ startAbilityByType接口中type字段为navigation，支持路线规划、导航
     ```
     效果示例图：
 
-    效果示例图
+    ![效果示例图](./figures/start-navigation-panel.png)
 
 ## 目标方开发步骤
 
-1. 在module.json5中配置uris，步骤如下：
+1. 在module.json5中配置[uris](../quick-start/module-configuration-file.md#skills标签)，步骤如下：
     1. 设置linkFeature属性以声明当前应用支持的特性功能，从而系统可以从设备已安装应用中找到当前支持该特性的应用，取值范围如下：
         | 取值           | 含义                         |
         | -------------- | ---------------------------- |
@@ -187,7 +187,11 @@ startAbilityByType接口中type字段为navigation，支持路线规划、导航
 2. 解析参数并做对应处理。
 
     ```ts
-    UIAbility.onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void
+    export default class EntryAbility extends UIAbility {
+      onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        // 实现初始化逻辑，解析参数
+      }
+    }
     ```
 
     在参数**want.uri**中会携带目标方配置的linkFeature对应的uri。
@@ -235,7 +239,7 @@ startAbilityByType接口中type字段为navigation，支持路线规划、导航
         | destinationPoiIds    | Record<number, string> | 否   | 地点POI ID列表，当前仅支持传入花瓣地图、高德地图、百度地图的POI ID。|
 
 
-    应用可根据linkFeature中定义的特性功能，比如路线规划、导航、位置搜索和地点详情，结合接收到的uri和参数开发不同的样式页面。
+    应用可根据[linkFeature](../quick-start/module-configuration-file.md#skills标签)中定义的特性功能，比如路线规划、导航、位置搜索和地点详情，结合接收到的uri和参数开发不同的样式页面。
 
 **完整示例：**
 

@@ -10,7 +10,7 @@
 **卡片切换**主要包含如下三部分：
 
 
-- 卡片页面布局：FA模型卡片和Stage模型卡片的布局都采用类web范式开发可以直接复用。
+- 卡片页面布局：[FA模型](ability-terminology.md#fa模型)卡片和[Stage模型](ability-terminology.md#stage模型)卡片的布局都采用类web范式开发可以直接复用。
 - 卡片配置文件：FA模型的卡片配置在config.json中，Stage卡片配置在module.json5和form_config.json中（如下图1和图2）。
 - 卡片业务逻辑：FA模型和Stage模型在卡片入口文件以及生命周期存在细微的差异（如下图3和图4）。
 
@@ -27,13 +27,13 @@
 入口配置差异示意图1：
 
 
-widget-switch1
+![widget-switch1](./figures/widget-switch1.png)
 
 
 卡片信息配置差异示意图2：
 
 
-widget-switch2
+![widget-switch2](./figures/widget-switch2.png)
 
 
 | 入口及生命周期 | FA模型 | Stage模型 |
@@ -45,10 +45,10 @@ widget-switch2
 入口文件差异示意图3：
 
 
-widget-switch3
+![widget-switch3](./figures/widget-switch3.png)
 
 
 生命周期差异示意图4（ 生命周期回调均一致，不需要调整）：
 
 
-widget-switch4
+![widget-switch4](./figures/widget-switch4.png)

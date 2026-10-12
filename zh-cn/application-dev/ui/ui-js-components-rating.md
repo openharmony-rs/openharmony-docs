@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-rating是评分组件，用于展示用户对某项内容的评价等级。具体用法请参考rating。
+rating是评分组件，用于展示用户对某项内容的评价等级。具体用法请参考[rating](../reference/apis-arkui/arkui-js/js-components-basic-rating.md)。
 
 
 ## 创建rating组件
@@ -39,7 +39,7 @@ rating是评分组件，用于展示用户对某项内容的评价等级。具�
 }
 ```
 
-rating-Component
+![rating-Component](figures/rating-Component.gif)
 
 
 ## 设置评分星级
@@ -72,7 +72,7 @@ rating组件通过设置numstars和rating属性设置评分条的星级总数和
 }
 ```
 
-Rating-Level
+![Rating-Level](figures/Rating-Level.gif)
 
 
 ## 设置评分样式
@@ -120,7 +120,7 @@ export default {
 }
 ```
 
-Rating-Style
+![Rating-Style](figures/Rating-Style.gif)
 
 > **说明：**
 > - star-background、star-secondary、star-foreground属性的星级图源必须全部设置，否则默认的星级颜色为灰色，提示图源设置错误。
@@ -169,7 +169,7 @@ export default {
 }
 ```
 
-Binding-Events-2
+![Binding-Events-2](figures/Binding-Events-2.gif)
 
 
 ## 场景示例
@@ -258,10 +258,10 @@ export default {
 }
 ```
 
-rating-Development
+![rating-Development](figures/rating-Development.gif)
 
 ## 相关实例
 
 针对rating组件的开发，有以下相关实例可供参考：
 
-- rating组件的使用（JS）（API9）
+- [rating组件的使用（JS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/JSUI/RatingApplication)

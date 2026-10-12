@@ -24,7 +24,7 @@
 
     在本模块`build-profile.json5`配置文件中的`arkOptions.obfuscation.ruleOptions`字段中，通过`enable`字段配置是否开启混淆。
 
-    <!-- @set_openObfuscation1 -->    
+    <!-- @[set_openObfuscation1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/build-profile.json5) -->    
     
     ``` JSON5
     "arkOptions": {
@@ -47,7 +47,7 @@
 
     > **注意：**
     >
-    > 为保证声明与字节码中的实现一致，在使用方模块开启混淆时，ArkGuard**不会对HAR包内的abc再次执行名称混淆**；字节码混淆仅在**构建该HAR模块**时执行一次。应用代码中对HAR接口的引用仍可能按使用方规则参与处理，需结合导出名收集、`consumer-rules`等保证正确性，详见HAP包混淆建议。
+    > 为保证声明与字节码中的实现一致，在使用方模块开启混淆时，ArkGuard**不会对HAR包内的abc再次执行名称混淆**；字节码混淆仅在**构建该HAR模块**时执行一次。应用代码中对HAR接口的引用仍可能按使用方规则参与处理，需结合导出名收集、`consumer-rules`等保证正确性，详见[HAP包混淆建议](bytecode-obfuscation-practice.md#hap包混淆建议)。
 
 * 配置混淆规则
 
@@ -62,7 +62,7 @@
     -enable-export-obfuscation
     ```
 
-    开发者还可以使用#在混淆规则文件中进行注释，每行以`#`开头的文本会被当做是注释。使用方法如下，`#`后为注释内容：
+    开发者还可以使用#在混淆规则文件中进行注释，每行以`#`开头的文本会被当作是注释。使用方法如下，`#`后为注释内容：
 
     ```txt
     # options:
@@ -73,7 +73,7 @@
     -keep-property-name # white list for dynamic property names
     ```
 
-    混淆选项的配置推荐参考混淆选项配置指导，混淆过程中涉及的所有配置文件的详情介绍请参考三种混淆配置文件。
+    混淆选项的配置推荐参考[混淆选项配置指导](#混淆选项配置指导)，混淆过程中涉及的所有配置文件的详情介绍请参考[三种混淆配置文件](#三种混淆配置文件)。
 
     > **说明：**
     >
@@ -81,7 +81,7 @@
 
 * 指定release编译
 
-    字节码混淆当前仅支持release编译，不支持debug编译。即开启混淆开关后，若为release编译则会进行混淆，若为debug编译则不会进行混淆。开发者可参考指定构建模式查看和修改构建模式。
+    字节码混淆当前仅支持release编译，不支持debug编译。即开启混淆开关后，若为release编译则会进行混淆，若为debug编译则不会进行混淆。开发者可参考[指定构建模式](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)查看和修改构建模式。
 
     > **注意**
     >
@@ -97,7 +97,7 @@
 
     对于HAR和HSP模块，在`build-profile.json5`中包含`arkOptions.obfuscation.consumerFiles`字段，**用于指定当本包被依赖时，期望在其他模块生效的混淆规则**，新建HAR或HSP模块时会创建默认文件`consumer-rules.txt`。它与`obfuscation-rules.txt`字段的区别是：**`obfuscation-rules.txt`在编译本模块时生效，`consumer-rules.txt`在编译依赖本模块的其他模块时生效**。
 
-    <!-- @set_openObfuscation2 -->      
+    <!-- @[set_openObfuscation2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/build-profile.json5) -->      
     
     ``` JSON5
     "arkOptions": {
@@ -113,7 +113,7 @@
 
 * `obfuscation.txt`
 
-    不同于以上两种开发者可自行修改的配置文件，`obfuscation.txt`是在编译构建HAR或HSP时根据`consumer-rules.txt`和依赖模块的混淆规则文件自动生成的文件，它作为一种编译产物存在于发布的HAR或HSP包中，用于在其他应用使用该发布包时应用相应的混淆规则。`obfuscation.txt`内容的生成逻辑请参考混淆规则合并策略。
+    不同于以上两种开发者可自行修改的配置文件，`obfuscation.txt`是在编译构建HAR或HSP时根据`consumer-rules.txt`和依赖模块的混淆规则文件自动生成的文件，它作为一种编译产物存在于发布的HAR或HSP包中，用于在其他应用使用该发布包时应用相应的混淆规则。`obfuscation.txt`内容的生成逻辑请参考[混淆规则合并策略](bytecode-obfuscation.md#混淆规则合并策略)。
 
     > **说明**
     >
@@ -133,7 +133,7 @@
 2. 待上述选项开启成功后，开启`-enable-property-obfuscation`
     1. 若代码中存在静态定义、动态访问的情况或者动态定义、静态访问的情况，需要使用`-keep-property-name`保留属性名称。示例：
 
-        <!-- @example_openObfuscation1 -->   
+        <!-- @[example_openObfuscation1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->   
         
         ``` TypeScript
         // file.ts
@@ -145,7 +145,7 @@
         console.info(obj001[fieldName]);  // 使用方括号语法动态访问属性
         ```
 
-        <!-- @example_openObfuscation2 -->  
+        <!-- @[example_openObfuscation2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->  
         
         ``` TypeScript
         // file.ts
@@ -161,18 +161,18 @@
         2. 若在代码中使用json文件中的字段，需要使用`-keep-property-name`保留json文件中的字段名称。
         3. 若在代码中使用数据库相关的字段，需要使用`-keep-property-name`保留数据库中的字段名称。
     3. 若构建HAR模块并发布给其他模块使用的情况，要在HAR模块中的consumer-rules.txt文件中将不能被二次混淆的属性使用`-keep-property-name`保留。consumer-rules.txt文件在构建HAR时会生成obfuscation.txt文件。此HAR被其它模块依赖时，DevEco Studio会解析obfuscation.txt文件，读取文件中的白名单。
-    4. 验证应用功能，排查遗漏的场景。若应用出现功能异常，可依据混淆后的报错栈，在模块的 **`build/default/[...]/release/obfuscation/`** 目录下查阅 **`nameCache.json`**（名称映射表）、**`config.json`**（混淆项与白名单）等产物，按查看混淆效果对照定位源码行并排查白名单。确定需保留的名称后，使用`-keep-property-name`进行保留。
+    4. 验证应用功能，排查遗漏的场景。若应用出现功能异常，可依据混淆后的报错栈，在模块的 **`build/default/[...]/release/obfuscation/`** 目录下查阅 **`nameCache.json`**（名称映射表）、**`config.json`**（混淆项与白名单）等产物，按[查看混淆效果](#查看混淆效果)对照定位源码行并排查白名单。确定需保留的名称后，使用`-keep-property-name`进行保留。
 
 3. 待上述选项应用适配成功后，开启`-enable-export-obfuscation`选项。此选项开启后以下场景需要适配：
     1. 若构建HSP模块，它会提供接口及其属性给其它模块调用，因此需要将对外接口使用`-keep-global-name`来保留、将对外暴露的class/interface等语法中的属性使用`-keep-property-name`保留。
     2. 若构建HAR模块并发布给其他模块使用的场景，要在HAR模块中的obfuscation-rules.txt文件中将对外接口使用`-keep-global-name`来保留、将对外暴露的class/interface等语法中的属性使用`-keep-property-name`保留。
     3. 若在代码中引用so库的API，如`import { napiA } from 'library.so'`；需要使用`-keep-global-name napiA`来保留so接口名称napiA。
-    4. 验证应用功能以及模块被依赖时的接口调用功能，排查遗漏的场景。若应用出现功能异常，可依据混淆后的报错栈，在模块的 **`build/default/[...]/release/obfuscation/`** 目录下查阅 **`nameCache.json`**（名称映射表）、**`config.json`**（混淆项与白名单）等产物，按查看混淆效果对照定位源码行；并按需使用`-keep-global-name`、`-keep-property-name`等进行保留。
+    4. 验证应用功能以及模块被依赖时的接口调用功能，排查遗漏的场景。若应用出现功能异常，可依据混淆后的报错栈，在模块的 **`build/default/[...]/release/obfuscation/`** 目录下查阅 **`nameCache.json`**（名称映射表）、**`config.json`**（混淆项与白名单）等产物，按[查看混淆效果](#查看混淆效果)对照定位源码行；并按需使用`-keep-global-name`、`-keep-property-name`等进行保留。
 4. 待上述选项应用适配成功后，开启`-enable-filename-obfuscation`选项。此选项开启后以下场景需要适配：
     1. 若代码中有动态import语句，如`const path = './filePath'; import (path)`，会出现文件引用失败的情况，需要使用`-keep-file-name filePath`来保留这个文件名。
-    2. 若应用中有描述路由表信息的routerMap配置，其中的pageSourceFile字段标记页面在模块的路径，需要使用`-keep-file-name`来保留这个路径。
+    2. 若应用中有描述路由表信息的[routerMap配置](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/module-configuration-file#routermap%E6%A0%87%E7%AD%BE)，其中的pageSourceFile字段标记页面在模块的路径，需要使用`-keep-file-name`来保留这个路径。
     3. 若代码中有传入ohmUrl进行页面跳转，如`router.pushUrl({url: '@bundle:com.example.routerPage/Library/Index'})`，使用`-keep-file-name`来保留这个路径。
-    4. 验证应用功能，排查遗漏的场景。若应用出现功能异常，且报错栈中的路径为混淆后的路径，可以在模块中的`build/default/[...]/release/obfuscation/nameCache.json`文件中查询到原始路径，进而找到源码文件。另外，插件hstack支持自动还原混淆后的报错栈。在定位到需要保留的路径后，使用`-keep-file-name`来保留此路径。
+    4. 验证应用功能，排查遗漏的场景。若应用出现功能异常，且报错栈中的路径为混淆后的路径，可以在模块中的`build/default/[...]/release/obfuscation/nameCache.json`文件中查询到原始路径，进而找到源码文件。另外，[插件hstack](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-command-line-hstack)支持自动还原混淆后的报错栈。在定位到需要保留的路径后，使用`-keep-file-name`来保留此路径。
 
 ## 说明
 
@@ -189,12 +189,12 @@
 * origin目录：混淆前的modules.abc文件。
 * 配置信息文件：`config.json`，该文件记录了混淆的配置项和白名单列表。
 
-bytecode-build-product
+![bytecode-build-product](figures/bytecode-build-product.png)
 
 ## 报错栈还原
 
-经过混淆的应用程序中代码名称会发生更改，crash时打印的报错栈更难以理解，因为报错栈与源码不完全一致。开发人员可使用DevEco Studio命令工具Command Line Tools中的hstack插件来还原源码堆栈，进而分析问题。
+经过混淆的应用程序中代码名称会发生更改，crash时打印的报错栈更难以理解，因为报错栈与源码不完全一致。开发人员可使用DevEco Studio命令工具Command Line Tools中的[hstack插件](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-command-line-hstack)来还原源码堆栈，进而分析问题。
 
 反混淆工具需要使用应用编译过程中生成的sourceMaps.json文件以及混淆名称映射文件nameCache.json文件，因此请本地备份它们；为方便问题定位，建议备份release目录。
 
-bytecode-obfuscation-product
+![bytecode-obfuscation-product](figures/bytecode-obfuscation-product.png)

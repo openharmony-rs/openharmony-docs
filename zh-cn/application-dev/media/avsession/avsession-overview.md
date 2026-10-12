@@ -1,8 +1,8 @@
 # AVSession Kit简介
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @devil_red-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -12,7 +12,7 @@ AVSession Kit（Audio &amp; Video Session Kit，音视频播控服务）是系�
 
 - 提供音视频统一管控能力，音视频类应用接入AVSession后，可以发送应用的数据（比如正在播放的歌曲、歌曲的播放状态等），用户可以通过系统播控中心、语音助手等应用切换多个应用、多个设备播放。
 
-- 提供音频后台播放能力，音频接入AVSession后，可以进行后台音频播放。此功能需要同时申请长时任务。
+- 提供音频后台播放能力，音频接入AVSession后，可以进行后台音频播放。此功能需要同时申请[长时任务](../../task-management/continuous-task.md)。
 
 ## 亮点/特征
 
@@ -56,7 +56,7 @@ AVSession Kit（Audio &amp; Video Session Kit，音视频播控服务）是系�
 
 媒体会话分为本地和分布式两种场景。
 
-AVSession Interaction Process
+![AVSession Interaction Process](figures/avsession-interaction-process.png)
 
 - 本地媒体会话
 
@@ -72,6 +72,6 @@ AVSession Interaction Process
 
 ## 与相关Kit的关系
 
-应用实现后台播放时，需要使用Background Tasks Kit（后台任务管理）的能力，申请对应的长时任务，避免进入挂起（Suspend）状态。
+应用实现后台播放时，需要使用[Background Tasks Kit](../../task-management/background-task-overview.md)（后台任务管理）的能力，申请对应的长时任务，避免进入挂起（Suspend）状态。
 
 <!--RP1--><!--RP1End-->

@@ -6,7 +6,7 @@
 <!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
 
-本页面提供应用图标和名称的配置指导。应用图标分为单层图标和分层图标。单层图标包含一个图片，分层图标包含前景图和背景图。图标规范详见<!--RP1-->设计原则<!--RP1End-->，图标和名称配置约束详见图标和名称配置。
+本页面提供应用图标和名称的配置指导。应用图标分为单层图标和分层图标。单层图标包含一个图片，分层图标包含前景图和背景图。图标规范详见<!--RP1-->[设计原则](../../design/ux-design/visual-app-icons.md#设计原则)<!--RP1End-->，图标和名称配置约束详见[图标和名称配置](../application-models/application-component-configuration-stage.md#应用图标和名称配置)。
 
 ## 使用场景
 
@@ -17,7 +17,7 @@
 
 效果图如下。
 <!--RP3-->
-application-component-configuration-stage-app-module
+![application-component-configuration-stage-app-module](figures/application-component-configuration-stage-app-module.png)
 <!--RP3End-->
 
 ## 配置优先级和生成策略
@@ -61,7 +61,7 @@ application-component-configuration-stage-app-module
 
   该配置仅当module.json5配置文件中无UIAbility、或者存在UIAbility但abilities标签中未设置icon和label（可手动删除icon和label配置）时生效。
 
-  <!-- @layered_image_001 -->
+  <!-- @[layered_image_001](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage1/AppScope/app.json5) -->
   
   ``` JSON5
   {
@@ -77,7 +77,7 @@ application-component-configuration-stage-app-module
 
   除了需要配置icon与label字段，还需要在skills标签下面的entities中添加"entity.system.home"、actions中添加"ohos.want.action.home"。
 
-  <!-- @layered_image_002 -->
+  <!-- @[layered_image_002](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage1/entry/src/main/module.json5) -->
   
   ``` JSON5
   {
@@ -127,9 +127,9 @@ application-component-configuration-stage-app-module
         }
       }
       ```
-  3. 在app.json5配置文件中引用分层图标资源文件。示例如下：
+  3. 在[app.json5配置文件](app-configuration-file.md)中引用分层图标资源文件。示例如下：
 
-      <!-- @layered_image_003 -->
+      <!-- @[layered_image_003](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage2/AppScope/app.json5) -->
       
       ``` JSON5
       {
@@ -161,7 +161,7 @@ application-component-configuration-stage-app-module
 
   3. 如果需要在桌面显示UIAbility图标，除了需要配置icon与label字段，还需要在skills标签下面的entities中添加"entity.system.home"、actions中添加"ohos.want.action.home"。
 
-      <!-- @layered_image_004  -->
+      <!-- @[layered_image_004](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage2/entry/src/main/module.json5)  -->
       
       ``` JSON5
       {
@@ -199,9 +199,9 @@ application-component-configuration-stage-app-module
 
 ## 配置备用图标
 
-从API版本26.0.0开始，配置备用图标可在应用运行时动态切换，适用于用户偏好、节日主题、品牌活动等场景。开发者可以在app.json5配置文件的alternateIcons标签中预先配置多个备用图标，最多可以配置1024个，可参考下方步骤进行动态切换。
+从API版本26.0.0开始，配置备用图标可在应用运行时动态切换，适用于用户偏好、节日主题、品牌活动等场景。开发者可以在[app.json5配置文件](app-configuration-file.md#alternateicons标签)的alternateIcons标签中预先配置多个备用图标，最多可以配置1024个，可参考下方步骤进行动态切换。
 
-备用图标支持单层图标和分层图标，资源文件的准备和配置方式分别参考配置单层图标和应用名称和配置分层图标和应用名称。
+备用图标支持单层图标和分层图标，资源文件的准备和配置方式分别参考[配置单层图标和应用名称](#配置单层图标和应用名称)和[配置分层图标和应用名称](#配置分层图标和应用名称)。
 
 >
 > **说明：**
@@ -213,9 +213,9 @@ application-component-configuration-stage-app-module
 > - 分身应用不支持设置和查询备用图标。
 >
 
-1. 在app.json5配置文件中添加alternateIcons标签，声明备用图标列表。
+1. 在[app.json5配置文件](app-configuration-file.md)中添加[alternateIcons标签](app-configuration-file.md#alternateicons标签)，声明备用图标列表。
 
-    <!-- @layered_image_005 -->
+    <!-- @[layered_image_005](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage3/AppScope/app.json5) -->
     
     ``` JSON5
     {
@@ -235,9 +235,9 @@ application-component-configuration-stage-app-module
     }
     ```
 
-2. 使用bundleManager.setAlternateIcon接口设置备用图标，传入alternateIcons标签中配置的name字段值即可启用对应备用图标。
+2. 使用[bundleManager.setAlternateIcon](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagersetalternateicon)接口设置备用图标，传入alternateIcons标签中配置的name字段值即可启用对应备用图标。
 
-    <!-- @layered_image_006  -->
+    <!-- @[layered_image_006](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage3/entry/src/main/ets/pages/Index.ets)  -->
     
     ``` TypeScript
     import { bundleManager } from '@kit.AbilityKit';
@@ -282,9 +282,9 @@ application-component-configuration-stage-app-module
     }
     ```
 
-3. 调用bundleManager.setAlternateIcon接口传入空字符串可恢复默认图标。
+3. 调用[bundleManager.setAlternateIcon](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagersetalternateicon)接口传入空字符串可恢复默认图标。
 
-    <!-- @layered_image_007  -->
+    <!-- @[layered_image_007](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage3/entry/src/main/ets/pages/Index.ets)  -->
     
     ``` TypeScript
     import { bundleManager } from '@kit.AbilityKit';
@@ -327,9 +327,9 @@ application-component-configuration-stage-app-module
     }
     ```
 
-4. 使用bundleManager.getAlternateIcons接口查询备用图标信息。返回的AlternateIconInfo数组包含每个备用图标的名称（iconName）、资源ID（iconId）和启用状态（enabled）。
+4. 使用[bundleManager.getAlternateIcons](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetalternateicons)接口查询备用图标信息。返回的[AlternateIconInfo](../reference/apis-ability-kit/js-apis-bundleManager-bundleInfo.md#alternateiconinfo)数组包含每个备用图标的名称（iconName）、资源ID（iconId）和启用状态（enabled）。
 
-    <!-- @layered_image_008  -->
+    <!-- @[layered_image_008](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/LayeredImage3/entry/src/main/ets/pages/Index.ets)  -->
     
     ``` TypeScript
     import { bundleManager } from '@kit.AbilityKit';
@@ -376,4 +376,4 @@ application-component-configuration-stage-app-module
 
 系统对无图标应用实施严格管控，防止一些恶意应用故意配置无桌面应用图标，导致用户找不到软件所在的位置，无法操作卸载应用，在一定程度上保证用户终端设备的安全。因此除预置应用外，其他应用不支持隐藏桌面图标。
 
-如果预置应用确需隐藏桌面应用图标，必须配置AllowAppDesktopIconHide应用特权，具体配置方式参考应用特权配置指南。申请该特权后，应用不会在桌面上显示。<!--DelEnd-->
+如果预置应用确需隐藏桌面应用图标，必须配置AllowAppDesktopIconHide[应用特权](../../device-dev/subsystems/subsys-app-privilege-config-guide.md#通用应用特权)，具体配置方式参考应用特权配置指南。申请该特权后，应用不会在桌面上显示。<!--DelEnd-->

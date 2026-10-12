@@ -1,4 +1,4 @@
-# 设备使用信息统计开发指导（仅对系统应用开放）
+# 设备使用信息统计开发指导(ArkTS) (仅对系统应用开放)
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: ResourceSchedule-->
 <!--Owner: @xufu7-->
@@ -51,7 +51,7 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
 
     系统提供的设备使用信息统计的权限是ohos.permission.BUNDLE_ACTIVE_INFO。
 
-    具体配置方式请参考申请应用权限。
+    具体配置方式请参考[申请应用权限](../security/AccessToken/determine-application-mode.md#system_basic等级应用申请权限的方式)。
 
 2. 通过指定起始和结束时间查询所有应用的事件集合，需要配置ohos.permission.BUNDLE_ACTIVE_INFO权限。
 
@@ -313,8 +313,8 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
 
     // 异步方法promise方式
     usageStatistics.queryDeviceEventStats(0, 20000000000000).then((res: Array<usageStatistics.DeviceEventStats>) => {
-        console.info('BUNDLE_ACTIVE queryDeviceEventStates promise success.');
-        console.info('BUNDLE_ACTIVE queryDeviceEventStates promise result ' + JSON.stringify(res));
+        console.info('BUNDLE_ACTIVE queryDeviceEventStats promise success.');
+        console.info('BUNDLE_ACTIVE queryDeviceEventStats promise result ' + JSON.stringify(res));
     }).catch( (err: BusinessError) => {
         console.error('BUNDLE_ACTIVE queryDeviceEventStats promise failed. code is: ' + err.code + ',message is: ' + err.message);
     });
@@ -448,6 +448,6 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
 
 针对设备使用信息统计，有以下相关实例可供参考：
 
-- 存储空间统计（ArkTS）（Full SDK）（API10）
+- [存储空间统计（ArkTS）（Full SDK）（API10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/DeviceManagement/StorageStatistic)
 
-- 设备使用信息统计（ArkTS）（Full SDK）（API9）
+- [设备使用信息统计（ArkTS）（Full SDK）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/DeviceUsageStatistics/DeviceUsageStatistics)

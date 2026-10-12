@@ -1,8 +1,8 @@
 # 分布式媒体会话概述（仅对系统应用开放）
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @devil_red-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -15,7 +15,7 @@ OpenHarmony提供的媒体会话允许用户把本地播放的媒体投播到远
 
 当本地投播主控端设备与远端被控端设备成功配对之后，主控端设备中的媒体会话控制方，可以通过媒体会话管理器将媒体投播到被控设备上，实现分布式媒体会话，交互过程如图所示。
 
-Distributed AVSession Interaction Process
+![Distributed AVSession Interaction Process](figures/distributed-avsession-interaction-process.png)
 
 媒体投播时，被控端设备上的AVSession服务会自动创建一个与主控设备保持同步的媒体会话，主控设备的会话信息、主控设备的命令事件与被控设备上的命令事件时刻保持同步。
 
@@ -53,7 +53,7 @@ Distributed AVSession Interaction Process
 
 媒体会话服务在实现分布式媒体会话进行跨设备投播时，内部的实现逻辑可以描述为：
 
-- 调用分布式音频播放（仅对系统应用开放）能力的相关接口，将音频流投播到远端设备。
+- 调用[分布式音频播放（仅对系统应用开放）](../audio/distributed-audio-playback-sys.md)能力的相关接口，将音频流投播到远端设备。
 
 - 通过分布式能力将媒体会话元数据投播到了远端设备，供远端设备获取并显示。
 

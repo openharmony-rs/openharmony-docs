@@ -15,7 +15,7 @@
 
 ## 接口说明
 
-使用滤镜（Filter）设置图像效果的常用接口如下表所示，详细使用和参数请见effect_filter。
+使用滤镜（Filter）设置图像效果的常用接口如下表所示，详细使用和参数请见[effect_filter](../reference/apis-arkgraphics2d/capi-effect-filter-h.md)。
 
 | 接口 | 描述 |
 | -------- | -------- |
@@ -85,9 +85,13 @@
    // 创建OH_PixelmapNative对象
    OH_PixelmapNative *pixelMapNative = nullptr;
    OH_PixelmapNative_CreatePixelmap(pixels, bufferSize, createOps, &pixelMapNative);
+   // 像素数据已拷贝至像素图中，创建完成后释放像素数据缓冲区
+   delete[] pixels;
+   // 释放初始化选项对象
+   OH_PixelmapInitializationOptions_Release(createOps);
    ```
 
-4. 基于上文生成的OH_PixelmapNative像素图对象，使用OH_Filter_CreateEffect()接口初始化OH_Filter对象。
+4. 基于上文生成的OH_PixelmapNative像素图对象，使用OH_Filter_CreateEffect()接口创建OH_Filter对象。
 
    ``` C++
    OH_Filter *filter = nullptr;
@@ -128,17 +132,21 @@
    EffectErrorCode errCodeResult = OH_Filter_GetEffectPixelMap(filter, &filterResult);
    ```
 
-7. 当不再需要滤镜生成图像效果后，请及时使用OH_Filter_Release()销毁OH_Filter对象。
+7. 当不再需要滤镜生成图像效果后，请及时使用OH_Filter_Release()释放OH_Filter对象。同样，当不再需要原图及滤镜处理后生成的像素图时，请使用OH_PixelmapNative_Release()及时释放。
 
    ``` C++
    EffectErrorCode errCodeRelease = OH_Filter_Release(filter);
+   // 释放滤镜处理后生成的像素图对象
+   OH_PixelmapNative_Release(filterResult);
+   // 释放原图像素图对象
+   OH_PixelmapNative_Release(pixelMapNative);
    ```
 
    绘制效果如下：
    | 图像处理 | 绘制效果 |
    | -------- | -------- |
-   | 原始图像 | effectfilter_origin |
-   | 添加模糊效果 |effectfilter_blur |
-   | 添加提亮效果 |effectfilter_brighten |
-   | 添加灰度效果 |effectfilter_grayscale  |
-   | 添加反色效果 |effectfilter_invert  |
+   | 原始图像 | ![effectfilter_origin](figures/effectfilter_origin.png) |
+   | 添加模糊效果 |![effectfilter_blur](figures/effectfilter_blur.png) |
+   | 添加提亮效果 |![effectfilter_brighten](figures/effectfilter_brighten.png) |
+   | 添加灰度效果 |![effectfilter_grayscale](figures/effectfilter_grayscale.png)  |
+   | 添加反色效果 |![effectfilter_invert](figures/effectfilter_invert.png)  |

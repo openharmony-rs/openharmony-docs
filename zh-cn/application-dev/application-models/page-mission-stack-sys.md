@@ -12,20 +12,20 @@
 单个UIAbility组件可以实现多个页面，并在多个页面之间跳转，这种UIAbility组件内部的页面跳转关系称为“页面栈”，由ArkUI框架统一管理，如下图中的UIAbility1的Page1-&gt;Page2-&gt;Page3和UIAbility2的PageA-&gt;PageB-&gt;PageC。
 
 **图1** 页面栈示意图  
-mission-record
+![mission-record](figures/mission-record.png)
 
 - 页面栈的形成（下面2/3/5/6步骤为页面跳转，由ArkUI管理）
-  1. 点击桌面图标（startAbility()）启动UIAbility1，UIAbility1的初始页面为Page1。
+  1. 点击桌面图标（[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)）启动UIAbility1，UIAbility1的初始页面为Page1。
 
-  2. 点击Page1页面按钮（Navigator）跳转到Page2页面。
+  2. 点击Page1页面按钮（[Navigator](../reference/apis-arkui/arkui-ts/ts-container-navigator.md)）跳转到Page2页面。
 
-  3. 点击Page2页面按钮（Navigator）跳转到Page3页面。
+  3. 点击Page2页面按钮（[Navigator](../reference/apis-arkui/arkui-ts/ts-container-navigator.md)）跳转到Page3页面。
 
-  4. 点击Page3页面按钮（startAbility()）跳转到UIAbility2，UIAbility2的初始页面为PageA。
+  4. 点击Page3页面按钮（[startAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)）跳转到UIAbility2，UIAbility2的初始页面为PageA。
 
-  5. 点击PageA页面按钮（Navigator）跳转到PageB页面。
+  5. 点击PageA页面按钮（[Navigator](../reference/apis-arkui/arkui-ts/ts-container-navigator.md)）跳转到PageB页面。
 
-  6. 点击PageB页面按钮（Navigator）跳转到PageC页面。
+  6. 点击PageB页面按钮（[Navigator](../reference/apis-arkui/arkui-ts/ts-container-navigator.md)）跳转到PageC页面。
 
 - 页面栈的返回（下面1/2/4/5步骤为页面跳转，由ArkUI管理）
   1. 在UIAbility2的PageC页面点击**返回键**回到UIAbility2的PageB页面。
@@ -49,12 +49,12 @@ MissionList任务链记录了任务之间的拉起关系，但是这个任务链
 
 - 进入任务列表，把任务链中间某个任务移动到前台。
 
-  mission-chain1
+  ![mission-chain1](figures/mission-chain1.png)
 
 - 进入任务列表，把任务链中间某个任务清理掉。
 
-  mission-chain2
+  ![mission-chain2](figures/mission-chain2.png)
 
 - 单实例UIAbility的任务，被不同的任务（包括Ability或桌面）反复拉起（AbilityB为单例）。
   
-  mission-chain3
+  ![mission-chain3](figures/mission-chain3.png)

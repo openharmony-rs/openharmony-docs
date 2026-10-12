@@ -16,7 +16,7 @@
 
 ## 键值型数据库备份、恢复与删除
 
-键值型数据库，通过backup接口实现数据库备份，通过restore接口实现数据库恢复，通过deletebackup接口删除数据库备份。具体接口及功能，可见分布式键值数据库。
+键值型数据库，通过backup接口实现数据库备份，通过restore接口实现数据库恢复，通过deletebackup接口删除数据库备份。具体接口及功能，可见[分布式键值数据库](../reference/apis-arkdata/js-apis-distributedKVStore.md)。
 
 1. 创建数据库。
 
@@ -45,7 +45,7 @@
    export class KvInterface {
    }
    ```
-   <!-- @kv_store1 -->
+   <!-- @[kv_store1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
    
    ``` TypeScript
    public CreateKvManager = (() => {
@@ -67,7 +67,7 @@
      }
    })
    ```
-   <!-- @kv_store3 -->
+   <!-- @[kv_store3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
    
    ``` TypeScript
    public GetKvStore = (() => {
@@ -127,7 +127,7 @@
 
 2. 使用put()方法插入数据。
 
-   <!-- @kv_store4 -->
+   <!-- @[kv_store4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
    
    ``` TypeScript
    public Put = (() => {
@@ -156,7 +156,7 @@
 
 3. 使用backup()方法备份数据。
 
-   <!-- @kv_store7 -->
+   <!-- @[kv_store7](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
    
    ``` TypeScript
    public Backup = (() => {
@@ -183,7 +183,7 @@
 
 4. 使用delete()方法删除数据（模拟意外删除、篡改场景）。
 
-   <!-- @kv_store6 -->
+   <!-- @[kv_store6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
    
    ``` TypeScript
    public Delete = (() => {
@@ -210,7 +210,7 @@
 
 5. 使用restore()方法恢复数据。
 
-   <!-- @kv_store8 -->
+   <!-- @[kv_store8](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
    
    ``` TypeScript
    public Restore = (() => {
@@ -237,7 +237,7 @@
 
 6. 当本地设备存储空间有限或需要重新备份时，还可使用deleteBackup()方法删除备份，释放存储空间。
 
-   <!-- @kv_store9 -->
+   <!-- @[kv_store9](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/KvStoreSamples/entry/src/main/ets/pages/KvStoreInterface.ets) -->
    
    ``` TypeScript
    public DeleteBackup = (() => {
@@ -271,9 +271,9 @@
 
 ### 手动备份
 
-手动备份：通过调用backup接口实现数据库手动备份。示例如下：
+手动备份：通过调用[backup](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#backup)接口实现数据库手动备份。示例如下：
 
-<!-- @backuprestore_TS_IncludeSupported -->
+<!-- @[backuprestore_TS_IncludeSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
 
 ``` TypeScript
 import { relationalStore } from '@kit.ArkData';
@@ -286,7 +286,7 @@ import { common } from '@kit.AbilityKit';
 
 
 
-<!-- @backupManually -->
+<!-- @[backupManually](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
 
 ``` TypeScript
 /* context为应用的上下文信息，由调用方自行获取，此处仅为示例。 */
@@ -326,7 +326,7 @@ try {
 
 ### 自动备份（仅系统应用可用）
 
-自动备份：可以通过在StoreConfig中配置haMode参数为MAIN_REPLICA实现数据库双写备份，仅支持系统应用。示例如下：
+自动备份：可以通过在[StoreConfig](../reference/apis-arkdata/js-apis-data-relationalStore-sys.md#storeconfig)中配置haMode参数为MAIN_REPLICA实现数据库双写备份，仅支持系统应用。示例如下：
 
 ```ts
 import { UIAbility } from '@kit.AbilityKit';
@@ -363,13 +363,13 @@ export default class EntryAbility extends UIAbility {
 
 在创建或使用关系型数据库的过程中，抛出14800011异常错误码说明数据库出现异常，可以删除数据库后恢复数据。
 
-需要通过在StoreConfig中配置allowRebuild参数为true以设置数据库在出现异常时自动删库。数据库重建成功后为空库，需要开发者重新建表并且使用提前备份好的数据进行数据恢复，备份操作可见关系型数据库备份，数据恢复可见关系型数据库恢复。
+需要通过在[StoreConfig](../reference/apis-arkdata/arkts-apis-data-relationalStore-i.md#storeconfig)中配置allowRebuild参数为true以设置数据库在出现异常时自动删库。数据库重建成功后为空库，需要开发者重新建表并且使用提前备份好的数据进行数据恢复，备份操作可见[关系型数据库备份](#关系型数据库备份)，数据恢复可见[关系型数据库恢复](#关系型数据库数据恢复)。
 
 若数据库异常前已配置StoreConfig中的allowRebuild为true，则数据库出现异常时将自动删库。
 
 若数据库异常前未配置StoreConfig中的allowRebuild或allowRebuild配置为false，则需将其配置为true再次进行开库。具体示例如下：
 
-<!-- @rebuildingRelationalDatabaseAbnormally -->
+<!-- @[rebuildingRelationalDatabaseAbnormally](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
 
 ``` TypeScript
 let store: relationalStore.RdbStore | undefined = undefined;
@@ -401,13 +401,13 @@ try {
 
 ### 恢复手动备份数据
 
-关系型数据库通过调用backup接口可以实现手动备份数据库，通过restore接口可以实现手动恢复数据库。
+关系型数据库通过调用backup接口可以实现[手动备份数据库](#手动备份)，通过restore接口可以实现手动恢复数据库。
 
 具体恢复过程和关键示例代码片段如下，完整示例代码请结合关系型数据库的备份、重建等上下文进行实现。
 
 1. 抛出数据库异常错误码。
 
-    <!-- @databaseExceptionErrorCodeThrown -->
+    <!-- @[databaseExceptionErrorCodeThrown](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
     
     ``` TypeScript
     let predicates = new relationalStore.RdbPredicates('EMPLOYEE');
@@ -443,7 +443,7 @@ try {
 
 2. 关闭所有打开着的结果集。
 
-    <!-- @closeAllOpenResultSets -->
+    <!-- @[closeAllOpenResultSets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->
     
     ``` TypeScript
     let resultSets: relationalStore.ResultSet[] = []
@@ -464,7 +464,7 @@ try {
 
 3. 调用restore接口恢复数据。
 
-    <!-- @invokeTheRestoreInterfaceToRestoreData -->  
+    <!-- @[invokeTheRestoreInterfaceToRestoreData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/ets/pages/backuprestore/BackupAndRestore.ets) -->  
     
     ``` TypeScript
     let store: relationalStore.RdbStore | undefined = undefined;
@@ -507,7 +507,7 @@ try {
 
 ### 恢复自动备份数据（仅系统应用可用）
 
-关系型数据库，可以通过restore接口恢复自动备份的数据，仅支持系统应用。
+关系型数据库，可以通过[restore](../reference/apis-arkdata/js-apis-data-relationalStore-sys.md#restore12)接口恢复[自动备份的数据](#自动备份仅系统应用可用)，仅支持系统应用。
 
 关键示例代码片段如下，完整示例代码请结合关系型数据库的备份、重建等上下文进行实现。
 

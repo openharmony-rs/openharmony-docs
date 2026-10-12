@@ -11,18 +11,18 @@
 ### 排查功能异常步骤
 1. 在`obfuscation-rules.txt`中配置`-disable-obfuscation`选项关闭混淆，确认问题是否由混淆引起。
 2. 若确认开启混淆后功能出现异常，请先阅读文档，了解模块已配置的混淆规则的能力和需要配置白名单的语法场景，以确保应用功能正常。下文简要介绍默认开启的四项选项功能，详情请参阅对应选项的完整描述。
-   1. -enable-toplevel-obfuscation为顶层作用域名称混淆开关。
+   1. [-enable-toplevel-obfuscation](./source-obfuscation-rule-options.md#-enable-toplevel-obfuscation)为顶层作用域名称混淆开关。
 
-   2. -enable-property-obfuscation为属性混淆开关。配置白名单的主要场景包括网络数据访问、json字段访问、动态属性访问、调用so库接口等。需要使用-keep-property-name来保留指定的属性名称。
+   2. [-enable-property-obfuscation](./source-obfuscation-rule-options.md#-enable-property-obfuscation)为属性混淆开关。配置白名单的主要场景包括网络数据访问、json字段访问、动态属性访问、调用so库接口等。需要使用[-keep-property-name](./source-obfuscation-keep-options.md#-keep-property-name)来保留指定的属性名称。
 
-   3. -enable-export-obfuscation为导入/导出名称混淆。一般与`-enable-toplevel-obfuscation`和`-enable-property-obfuscation`选项配合使用。配置白名单的主要场景为模块对外接口不能混淆。需要使用-keep-global-name来保留指定的导出/导入名称。
+   3. [-enable-export-obfuscation](./source-obfuscation-rule-options.md#-enable-export-obfuscation)为导入/导出名称混淆。一般与`-enable-toplevel-obfuscation`和`-enable-property-obfuscation`选项配合使用。配置白名单的主要场景为模块对外接口不能混淆。需要使用[-keep-global-name](./source-obfuscation-keep-options.md#-keep-global-name)来保留指定的导出/导入名称。
 
-   4. -enable-filename-obfuscation为文件名混淆。配置白名单的主要场景为动态import或运行时直接加载的文件路径。需要使用-keep-file-name来保留这些文件路径及名称。
-3. 排查需要配置的白名单场景时，推荐使用混淆助手配置保留选项，可以快速识别需要配置的保留选项和白名单字段。也可以参考以下典型报错案例，若遇到相似场景，可参照对应解决方法快速处理。
+   4. [-enable-filename-obfuscation](./source-obfuscation-rule-options.md#-enable-filename-obfuscation)为文件名混淆。配置白名单的主要场景为动态import或运行时直接加载的文件路径。需要使用[-keep-file-name](./source-obfuscation-keep-options.md#-keep-file-name)来保留这些文件路径及名称。
+3. 排查需要配置的白名单场景时，推荐使用[混淆助手配置保留选项](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-build-obfuscation#section19439175917123)，可以快速识别需要配置的保留选项和白名单字段。也可以参考以下典型报错案例，若遇到相似场景，可参照对应解决方法快速处理。
 4. 若以下报错案例中未找到相似场景，建议依据各项配置功能正向定位（若不需要相应功能，可删除对应配置项）。
 5. 应用运行时崩溃分析方法：
    1. 打开应用运行日志，或点击DevEco Studio中出现的Crash弹窗，找到运行时崩溃栈。
-   2. 应用运行时异常栈中的行号为编译产物的行号，方法名也可能为混淆后名称；因此排查时建议直接根据异常栈查看编译产物，进而分析哪些名称不能被混淆，然后将其配置到白名单中。
+   2. 应用运行时异常栈中的行号为[编译产物](./source-obfuscation-guide.md#查看混淆效果)的行号，方法名也可能为混淆后名称；因此排查时建议直接根据异常栈查看编译产物，进而分析哪些名称不能被混淆，然后将其配置到白名单中。
 6. 应用在运行时未崩溃但出现功能异常（如白屏）的分析方法：
    1. 打开应用运行日志：选择HiLog，检索与功能异常直接相关的日志，定位问题发生的上下文。
 
@@ -69,7 +69,7 @@
 
 示例代码如下：
 
-<!-- @import_json -->
+<!-- @[import_json](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 // 示例JSON文件结构（ImportJson.json）：
@@ -123,7 +123,7 @@ jsonProperty
 
 示例代码如下：
 
-<!-- @export_ts -->
+<!-- @[export_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/ExportNs.ts) -->
 
 ``` TypeScript
 // 混淆前
@@ -133,7 +133,7 @@ export namespace NS {
 }
 ```
 
-<!-- @ns_import --> 
+<!-- @[ns_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 // Index.ets
@@ -183,7 +183,7 @@ foo
 
 示例代码如下：
 
-<!-- @export_add -->
+<!-- @[export_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/ExportUtils.ts) -->
 
 ``` TypeScript
 // 混淆前
@@ -193,7 +193,7 @@ export function add(a: number, b: number): number {
 }
 ```
 
-<!-- @add_call --> 
+<!-- @[add_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 // Index.ets
@@ -261,14 +261,14 @@ add
 
 示例代码如下：
 
-<!-- @export_addNum -->
+<!-- @[export_addNum](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ``` TypeScript
 // src/main/cpp/types/libentry/Index.d.ts
 export const addNum: (a: number, b: number) => number;
 ```
 
-<!-- @call_addNum --> 
+<!-- @[call_addNum](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 // example.ets
@@ -311,7 +311,7 @@ addNum
 ```
 
 示例代码如下：
-<!-- @export_addNum -->
+<!-- @[export_addNum](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/sharedlibrary/src/main/ets/utils/Calc.ets) -->
 
 ``` TypeScript
 // 混淆前
@@ -321,7 +321,7 @@ export function addNum(a: number, b: number) {
 }
 ```
 
-<!-- @call_hsp --> 
+<!-- @[call_hsp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 // entry模块
@@ -379,7 +379,7 @@ addNum
 
 示例代码如下：
 
-<!-- @call_want --> 
+<!-- @[call_want](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 // 混淆前
@@ -436,7 +436,7 @@ linkSource
 
 示例代码如下：
 
-<!-- @export_myInfo -->
+<!-- @[export_myInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/FileInside.ts) -->
 
 ``` TypeScript
 // 混淆前
@@ -449,7 +449,7 @@ export interface MyInfo {
 }
 ```
 
-<!-- @call_myInfo --> 
+<!-- @[call_myInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 // Index.ets
@@ -492,7 +492,7 @@ const person: MyInfo = {
 
 方案一：使用`interface`定义该属性的类型，并使用`export`进行导出，这样该属性将被自动加入到属性白名单中。
 
-<!-- @export_file -->
+<!-- @[export_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/CodeObfuscationIssues/entry/src/main/ets/pages/FileOutside.ts) -->
 
 ``` TypeScript
 // FileOutside.ts
@@ -540,7 +540,7 @@ person["m"] = 20;
 
 从API version 18开始，主模块默认不会被三方库的混淆规则所影响，因此不会有这种情况。但如果API version低于18，可参考以下两种解决方案。
 
-方案一：确认依赖的远程HAR包的`obfuscation.txt`文件中是否配置了`-enable-string-property-obfuscation`选项。若配置了则会影响主模块，需将其关闭。参考排查非预期的混淆能力。
+方案一：确认依赖的远程HAR包的`obfuscation.txt`文件中是否配置了`-enable-string-property-obfuscation`选项。若配置了则会影响主模块，需将其关闭。参考[排查非预期的混淆能力](source-obfuscation-questions.md#排查非预期的混淆能力)。
 
 方案二：若工程复杂无法找到配置了该混淆选项的远程HAR包，可以将属性名直接配置到白名单中。
 
@@ -550,7 +550,7 @@ person["m"] = 20;
 
 HiLog日志中报错信息为：`table Account has no column named a1 in 'INSERT INTO Account(a1)'`。
 
-<!-- @optionExample_keepPropertyName4 -->      
+<!-- @[optionExample_keepPropertyName4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForSourceCodeObfuscation/ArkGuardObfuscationAbility/entry/src/main/ets/arkguardability/ArkGuardAbility.ts) -->      
 
 ``` TypeScript
 import { ValuesBucket } from '@kit.ArkData';

@@ -6,10 +6,10 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-为了增强状态管理框架对状态变量变化的监听能力，开发者可以使用\@Monitor装饰器对状态变量进行监听。
+为了增强状态管理框架对状态变量变化的监听能力，开发者可以使用[\@Monitor](../../reference/apis-arkui/arkui-ts/ts-state-management-monitor.md#monitor)装饰器对状态变量进行监听。
 
 
-\@Monitor提供了对V2状态变量的监听。在阅读本文档前，建议提前阅读：\@ComponentV2，\@ObservedV2和\@Trace，\@Local。
+\@Monitor提供了对V2状态变量的监听。在阅读本文档前，建议提前阅读：[\@ComponentV2](./arkts-create-custom-components.md#componentv2)，[\@ObservedV2和\@Trace](./arkts-new-observedV2-and-trace.md)，[\@Local](./arkts-new-local.md)。
 
 >**说明：**
 >
@@ -25,25 +25,25 @@
 
 \@Monitor装饰器用于监听状态变量修改，使得状态变量具有深度监听的能力：
 
-- \@Monitor装饰器支持在\@ComponentV2装饰的自定义组件中使用，未被状态变量装饰器\@Local、\@Param、\@Provider、\@Consumer、\@Computed装饰的变量无法被\@Monitor监听到变化。
+- \@Monitor装饰器支持在\@ComponentV2装饰的自定义组件中使用，未被状态变量装饰器[\@Local](arkts-new-local.md)、[\@Param](arkts-new-param.md)、[\@Provider](arkts-new-provider-and-consumer.md)、[\@Consumer](arkts-new-provider-and-consumer.md)、[\@Computed](arkts-new-computed.md)装饰的变量无法被\@Monitor监听到变化。
 
-- \@Monitor装饰器支持在类中与\@ObservedV2、\@Trace配合使用，不允许在未被\@ObservedV2装饰的类中使用\@Monitor装饰器。未被\@Trace装饰的属性无法被\@Monitor监听到变化。
+- \@Monitor装饰器支持在类中与[\@ObservedV2、\@Trace](arkts-new-observedV2-and-trace.md)配合使用，不允许在未被\@ObservedV2装饰的类中使用\@Monitor装饰器。未被\@Trace装饰的属性无法被\@Monitor监听到变化。
 - 当观测的属性变化时，\@Monitor装饰器定义的回调方法将被调用。判断属性是否变化使用的是严格相等（===），当严格相等判断的结果是false（即不相等）的情况下，就会触发\@Monitor的回调。当在一次事件中多次改变同一个属性时，将会使用初始值和最终值进行比较以判断是否变化。
 - 单个\@Monitor装饰器能够同时监听多个属性的变化，当这些属性在一次事件中共同变化时，只会触发一次\@Monitor的回调方法。
 - \@Monitor装饰器具有深度监听的能力，能够监听嵌套类、多维数组、对象数组中指定项的变化。对于嵌套类、对象数组中成员属性变化的监听要求该类被\@ObservedV2装饰且该属性被\@Trace装饰。
 - 当\@Monitor监听整个数组时，更改数组的某一项不会被监听到。无法监听内置类型（Array、Map、Date、Set）的API调用引起的变化。
 - 在继承类场景中，可以在父子组件中对同一个属性分别定义\@Monitor进行监听，当属性变化时，父子组件中定义的\@Monitor回调均会被调用。
-- 和\@Watch装饰器类似，开发者需要自己定义回调函数，区别在于\@Watch装饰器将函数名作为参数，而\@Monitor直接装饰回调函数。\@Monitor与\@Watch的对比可以查看\@Monitor与\@Watch的对比。
+- 和[\@Watch装饰器](arkts-watch.md)类似，开发者需要自己定义回调函数，区别在于\@Watch装饰器将函数名作为参数，而\@Monitor直接装饰回调函数。\@Monitor与\@Watch的对比可以查看[\@Monitor与\@Watch的对比](#monitor与watch对比)。
 
-从API版本26.0.0开始，支持配置MonitorDecoratorOptions来获得以下能力增强：
+从API版本26.0.0开始，支持配置[MonitorDecoratorOptions](../../reference/apis-arkui/arkui-ts/ts-state-management-monitor.md#monitordecoratoroptions)来获得以下能力增强：
 
-- 支持在监听路径中设置通配符“*”，用于模糊监听对象内部变化，包括@ObservedV2中任意@Trace属性变化，内置类型（Array、Map、Date、Set）的API调用引起的变化等。详情见监听包含通配符的路径。
-- 对@Monitor部分能力进行修正，详情见@Monitor使用配置项前后的对比。
+- 支持在监听路径中设置通配符“*”，用于模糊监听对象内部变化，包括@ObservedV2中任意@Trace属性变化，内置类型（Array、Map、Date、Set）的API调用引起的变化等。详情见[监听包含通配符的路径](#监听包含通配符的路径)。
+- 对@Monitor部分能力进行修正，详情见[@Monitor使用配置项前后的对比](#monitor使用配置项前后的对比)。
 
 ## 状态管理V1版本\@Watch装饰器的局限性
 
 现有状态管理V1版本无法实现对对象、数组中某一单个属性或数组项变化的监听，且无法获取变化之前的值。
-<!-- @monitor_watch_decorator_limitations_v1 -->  
+<!-- @[monitor_watch_decorator_limitations_v1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/WatchDecoratorLimitationsV1.ets) -->  
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -104,7 +104,7 @@ struct Index {
 }
 ```
 
-monitor-sync-0
+![monitor-sync-0](./figures/monitor-sync-0.png)
 
 上述代码中，点击"change info name"更改info中的name属性或点击"change info age"更改age时，均会触发info注册的\@Watch回调。点击"change numArr[2]"更改numArr中的第3个元素或点击"change numArr[3]"更改第4个元素时，均会触发numArr注册的\@Watch回调。在这两个回调中，由于无法获取数据更改前的值，在业务逻辑更加复杂的场景下，无法准确知道是哪一个属性或元素发生了改变从而触发了\@Watch事件，这不便于开发者对变量的更改进行准确监听。因此推出\@Monitor装饰器实现对对象、数组中某一单个属性或数组项变化的监听，并且能够获取到变化之前的值。
 
@@ -112,8 +112,8 @@ monitor-sync-0
 
 | \@Monitor属性装饰器 | 说明                                                         |
 | ------------------- | ------------------------------------------------------------ |
-| 装饰器参数          | API版本26.0.0之前，参数为字符串类型的对象属性名。<br>从API版本26.0.0开始，第一个参数也可以为MonitorDecoratorOptions配置项。<br>可同时监听多个对象属性，每个属性以逗号隔开，例如@Monitor('prop1', 'prop2')。可监听深层的属性变化，如多维数组中的某一个元素，嵌套对象或对象数组中的某一个属性。详见监听变化。 |
-| 装饰对象            | \@Monitor装饰成员方法。当监听的属性发生变化时，会触发该回调方法。该回调方法以IMonitor类型的变量作为参数，开发者可以从该参数中获取变化前后的相关信息。 |
+| 装饰器参数          | API版本26.0.0之前，参数为字符串类型的对象属性名。<br>从API版本26.0.0开始，第一个参数也可以为[MonitorDecoratorOptions](../../reference/apis-arkui/arkui-ts/ts-state-management-monitor.md#monitordecoratoroptions)配置项。<br>可同时监听多个对象属性，每个属性以逗号隔开，例如@Monitor('prop1', 'prop2')。可监听深层的属性变化，如多维数组中的某一个元素，嵌套对象或对象数组中的某一个属性。详见[监听变化](#监听变化)。 |
+| 装饰对象            | \@Monitor装饰成员方法。当监听的属性发生变化时，会触发该回调方法。该回调方法以[IMonitor类型](../../reference/apis-arkui/arkui-ts/ts-state-management-monitor.md#imonitor)的变量作为参数，开发者可以从该参数中获取变化前后的相关信息。 |
 
 ### 语法
 
@@ -148,14 +148,14 @@ onValueChange3(monitor: IMonitor) {
 | 场景             | 未使用配置项的@Monitor                                       | 使用配置项的@Monitor                                         |
 | ---------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | 使用通配符       | 不支持。                                                     | 支持。                                                       |
-| 监听不可监听变量 | 存在被连带触发监听的可能，详情见正确设置@Monitor入参。 | 忽略不可监听变量，对路径的监听变为互相独立的监听。           |
+| 监听不可监听变量 | 存在被连带触发监听的可能，详情见[正确设置@Monitor入参](#正确设置monitor入参)。 | 忽略不可监听变量，对路径的监听变为互相独立的监听。           |
 | 变量可访问性变化 | 仅记录变量可访问时的状态，无法正常处理变量变为不可访问的情况。 | 变量从可访问变为不可访问，或从不可访问变为可访问，均能正常处理。 |
 
-使用配置项的@Monitor在以上场景的表现，将与@SyncMonitor、addMonitor保持一致。
+使用配置项的@Monitor在以上场景的表现，将与[@SyncMonitor](arkts-new-syncmonitor.md)、[addMonitor](./arkts-new-addMonitor-clearMonitor.md)保持一致。
 
 ## 接口说明
 
-IMonitor类型、IMonitorValue\<T\>类型以及MonitorDecoratorOptions的接口说明参考API文档：@Monitor：状态变量修改监听。
+IMonitor类型、IMonitorValue\<T\>类型以及MonitorDecoratorOptions的接口说明参考API文档：[@Monitor：状态变量修改监听](../../reference/apis-arkui/arkui-ts/ts-state-management-monitor.md)。
 
 ## 监听变化
 
@@ -165,7 +165,7 @@ IMonitor类型、IMonitorValue\<T\>类型以及MonitorDecoratorOptions的接口�
 
 - \@Monitor监听的变量需要被\@Local、\@Param、\@Provider、\@Consumer、\@Computed装饰，未被状态变量装饰器装饰的变量在变化时无法被监听。\@Monitor可以同时监听多个状态变量，这些变量名之间用","隔开。
 
-  <!-- @monitor_decorator_multi_watch_comp_v2 -->  
+  <!-- @[monitor_decorator_multi_watch_comp_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorDecoratorMultiWatchCompV2.ets) -->  
   
   ``` TypeScript
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -201,11 +201,11 @@ IMonitor类型、IMonitorValue\<T\>类型以及MonitorDecoratorOptions的接口�
   }
   ```
 
-  monitor-sync-1
+  ![monitor-sync-1](./figures/monitor-sync-1.png)
 
 - \@Monitor监听的状态变量为类对象时，仅能监听对象整体的变化。监听类属性的变化需要类属性被\@Trace装饰。
 
-  <!-- @monitor_decorator_object_trace_comp_v2 --> 
+  <!-- @[monitor_decorator_object_trace_comp_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorDecoratorObjectTraceCompV2.ets) --> 
   
   ``` TypeScript
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -258,14 +258,14 @@ IMonitor类型、IMonitorValue\<T\>类型以及MonitorDecoratorOptions的接口�
   }
   ```
 
-  monitor-sync-2
+  ![monitor-sync-2](./figures/monitor-sync-2.gif)
 
 ### 在\@ObservedV2装饰的类中使用\@Monitor
 
 使用\@Monitor监听的属性发生变化时，会触发\@Monitor的回调方法。
 
 - \@Monitor监听的对象属性需要被\@Trace装饰，未被\@Trace装饰的属性的变化无法被监听。\@Monitor可以同时监听多个属性，这些属性之间用","隔开。
-  <!-- @monitor_decorator_multi_watch_observed_v2 --> 
+  <!-- @[monitor_decorator_multi_watch_observed_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorDecoratorMultiWatchObservedV2.ets) --> 
   
   ``` TypeScript
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -338,10 +338,10 @@ IMonitor类型、IMonitorValue\<T\>类型以及MonitorDecoratorOptions的接口�
   }
   ```
 
-  monitor-sync-3
+  ![monitor-sync-3](./figures/monitor-sync-3.png)
 
 - \@Monitor可以监听深层属性的变化，该深层属性需要被@Trace装饰。
-  <!-- @monitor_decorator_object_trace_observed_v2 --> 
+  <!-- @[monitor_decorator_object_trace_observed_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorDecoratorObjectTraceObservedV2.ets) --> 
   
   ``` TypeScript
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -381,10 +381,10 @@ IMonitor类型、IMonitorValue\<T\>类型以及MonitorDecoratorOptions的接口�
   }
   ```
 
-  monitor-sync-4
+  ![monitor-sync-4](./figures/monitor-sync-4.png)
 
 - 在继承类场景下，可以在继承链中对同一个属性进行多次监听。
-  <!-- @monitor_decorator_inheritance_support_observed_v2 --> 
+  <!-- @[monitor_decorator_inheritance_support_observed_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorDecoratorInheritanceSupportObservedV2.ets) --> 
   
   ``` TypeScript
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -436,14 +436,14 @@ IMonitor类型、IMonitorValue\<T\>类型以及MonitorDecoratorOptions的接口�
   }
   ```
 
-  monitor-sync-5
+  ![monitor-sync-5](./figures/monitor-sync-5.png)
 
 ### 通用监听能力
 
 \@Monitor还有一些通用的监听能力。
 
 - \@Monitor支持对数组中的项进行监听，包括多维数组，对象数组。\@Monitor无法监听内置类型（Array、Map、Date、Set）的API调用引起的变化。当\@Monitor监听数组整体时，只能观测到数组整体的赋值。可以通过监听数组的长度变化来判断数组是否有插入、删除等变化。当前仅支持使用"."的方式表达深层属性、数组项的监听。
-  <!-- @monitor_decorator_array_support --> 
+  <!-- @[monitor_decorator_array_support](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorDecoratorArraySupport.ets) --> 
   
   ``` TypeScript
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -556,14 +556,14 @@ IMonitor类型、IMonitorValue\<T\>类型以及MonitorDecoratorOptions的接口�
   }
   ```
 
-  monitor-sync-6
+  ![monitor-sync-6](./figures/monitor-sync-6.png)
 
 - 对象整体改变，但监听的属性不变时，不触发\@Monitor回调。
 
   下面的示例按照Step1-Step2-Step3的顺序点击，表现为代码注释中的行为。
 
   如果只点击Step2或Step3，改变name、age的值，此时会触发onNameChange和onAgeChange方法。
-  <!-- @monitor_decorator_object_support --> 
+  <!-- @[monitor_decorator_object_support](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorDecoratorObjectSupport.ets) --> 
   
   ``` TypeScript
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -631,10 +631,10 @@ IMonitor类型、IMonitorValue\<T\>类型以及MonitorDecoratorOptions的接口�
   }
   ```
 
-  monitor-sync-7
+  ![monitor-sync-7](./figures/monitor-sync-7.png)
 
 - 在一次事件中多次改变被\@Monitor监听的属性，以最后一次修改为准。
-  <!-- @monitor_decorator_last_write --> 
+  <!-- @[monitor_decorator_last_write](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorDecoratorLastWrite.ets) --> 
   
   ``` TypeScript
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -680,7 +680,7 @@ IMonitor类型、IMonitorValue\<T\>类型以及MonitorDecoratorOptions的接口�
   }
   ```
 
-  monitor-sync-8
+  ![monitor-sync-8](./figures/monitor-sync-8.png)
 
 在点击按钮"change count to 1000"后，会触发一次onCountChange方法，并输出日志"count change from 0 to 1000"。在点击按钮"change count to 0 then to 1000"后，由于事件前后属性count的值并没有改变，都为1000，所以不触发onCountChange方法。
 
@@ -711,7 +711,7 @@ IMonitor类型、IMonitorValue\<T\>类型以及MonitorDecoratorOptions的接口�
 
 当使用通配符监听对象时，对象的任意@Trace装饰的属性变化，或者对象本身被整体赋新值时，触发@Monitor回调。
 
-<!-- @monitor_wildcard_support_object_property --> 
+<!-- @[monitor_wildcard_support_object_property](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorWildcardSupportObjectProperty.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -764,13 +764,13 @@ struct MonitorWildcardObject {
 }
 ```
 
-  monitor-sync-9
+  ![monitor-sync-9](./figures/monitor-sync-9.gif)
 
 ### 使用通配符监听嵌套对象属性变化
 
 观察嵌套对象属性变化的示例如下。
 
-<!-- @monitor_wildcard_support_nested_object --> 
+<!-- @[monitor_wildcard_support_nested_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorWildcardSupportNestedObject.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -867,7 +867,7 @@ struct MonitorWildcardNestedObject {
 }
 ```
 
-monitor-sync-10
+![monitor-sync-10](./figures/monitor-sync-10.png)
 
 当使用配置项的@Monitor监听的变量在可访问和不可访问之间切换时，都会触发@Monitor回调。
 
@@ -875,7 +875,7 @@ monitor-sync-10
 
 使用配置项的@Monitor可以监听到数组的API调用。任意数组的方法被调用时，@Monitor回调都会被执行，即使数组为空或并未实际修改数组的内容。API包括`push`、`pop`、`shift`、`splice`、`unshift`、`copyWithin`、`fill`、`reverse`、`sort`。
 
-<!-- @monitor_wildcard_support_array --> 
+<!-- @[monitor_wildcard_support_array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorWildcardSupportArray.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1021,7 +1021,7 @@ struct MonitorWildcardArray {
 }
 ```
 
-monitor-sync-11
+![monitor-sync-11](./figures/monitor-sync-11.png)
 
 ### 使用通配符监听Date对象的变化
 
@@ -1040,7 +1040,7 @@ onDateChange(m: IMonitor) {
 
 使用通配符监听Date对象的示例如下。
 
-<!-- @monitor_wildcard_support_date --> 
+<!-- @[monitor_wildcard_support_date](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorWildcardSupportDate.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1092,7 +1092,7 @@ struct MonitorWildcardDate {
 }
 ```
 
-monitor-sync-12
+![monitor-sync-12](./figures/monitor-sync-12.png)
 
 ### 使用通配符监听Map对象的变化
 
@@ -1113,7 +1113,7 @@ onMapChange(m: IMonitor) {
 
 使用通配符监听Map对象的示例如下。
 
-<!-- @monitor_wildcard_support_map --> 
+<!-- @[monitor_wildcard_support_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorWildcardSupportMap.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1214,7 +1214,7 @@ struct MonitorWildcardMap {
 }
 ```
 
-monitor-sync-13
+![monitor-sync-13](./figures/monitor-sync-13.gif)
 
 ### 使用通配符监听Set对象的变化
 
@@ -1235,7 +1235,7 @@ onSetChange(m: IMonitor) {
 
 使用通配符监听Set对象的示例如下。
 
-<!-- @monitor_wildcard_support_set --> 
+<!-- @[monitor_wildcard_support_set](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorWildcardSupportSet.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1309,14 +1309,14 @@ struct MonitorWildcardSet {
 }
 ```
 
-monitor-sync-14
+![monitor-sync-14](./figures/monitor-sync-14.png)
 
 ## 限制条件
 
 使用\@Monitor需要注意如下限制条件：
 
 - 不建议在一个类中对同一个属性进行多次\@Monitor的监听。当一个类中存在对一个属性的多次监听时，只有最后一个定义的监听方法会生效。
-  <!-- @monitor_limitation_last_listener_wins --> 
+  <!-- @[monitor_limitation_last_listener_wins](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorLimitationLastListenerWins.ets) --> 
   
   ``` TypeScript
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1355,10 +1355,10 @@ monitor-sync-14
   }
   ```
 
-  monitor-sync-15
+  ![monitor-sync-15](./figures/monitor-sync-15.png)
 
 - 当@Monitor传入多个路径参数时，以参数的全拼接结果判断是否重复监听。全拼接时会在参数间加空格，以区分不同参数。例如，`'ab', 'c'`的全拼接结果为`'ab c'`，`'a', 'bc'`的全拼接结果为`'a bc'`，二者全拼接不相等。以下示例中，`Monitor 1`、`Monitor 2`与`Monitor 3`都监听了name属性的变化。由于`Monitor 2`与`Monitor 3`的入参全拼接相等（都为`'name position'`），因此`Monitor 2`不生效，仅`Monitor 3`生效。当name属性变化时，将同时触发onNameAgeChange与onNamePositionChangeDuplicate方法。但请注意，`Monitor 2`与`Monitor 3`的写法仍然被视作在一个类中对同一个属性进行多次@Monitor的监听，这是不建议的。
-  <!-- @monitor_limitation_multiple_path_params --> 
+  <!-- @[monitor_limitation_multiple_path_params](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorLimitationMultiplePathParams.ets) --> 
   
   ``` TypeScript
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1414,11 +1414,11 @@ monitor-sync-14
   }
   ```
 
-  monitor-sync-16
+  ![monitor-sync-16](./figures/monitor-sync-16.png)
 
 - \@Monitor的参数需要为监听属性名的字符串，仅可以使用字符串字面量、const常量、enum枚举值作为参数。如果使用变量作为参数，仅会监听\@Monitor初始化时，变量值所对应的属性。当更改变量时，\@Monitor无法实时改变监听的属性，即\@Monitor监听的目标属性从初始化时便已经确定，无法动态更改。不建议开发者使用变量作为\@Monitor的参数进行初始化。
 
-  <!-- @monitor_limitation_parameter_string_constraint --> 
+  <!-- @[monitor_limitation_parameter_string_constraint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorLimitationParameterStringConstraint.ets) --> 
   
   ``` TypeScript
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1515,7 +1515,7 @@ monitor-sync-14
   }
   ```
 
-  monitor-sync-17
+  ![monitor-sync-17](./figures/monitor-sync-17.png)
 
 - 建议开发者避免在\@Monitor中再次更改被监听的属性，这会导致无限循环。
 
@@ -1529,6 +1529,113 @@ monitor-sync-14
     }
   }
   ```
+
+- 从API version 24开始，当\@Monitor监听的路径可能不存在或者路径中的变量缺少观测能力时，编辑器会提示告警`The '@Monitor' decorator needs to monitor the state variables that exist.`。以下为\@Monitor路径校验的告警场景及修复方式：
+
+  - **类未被\@ObservedV2装饰**：当\@Monitor监听的路径经过未被\@ObservedV2装饰的类时，该路径无法被正常监听，编辑器会提示告警。
+
+    告警代码：
+    ``` TypeScript
+    class Inner {
+      public num: number = 0;
+    }
+
+    @ObservedV2
+    class Outer {
+      @Trace public inner: Inner = new Inner();
+
+      // inner的类型Inner未被@ObservedV2装饰，路径'inner.num'无法监听'num'属性的修改
+      @Monitor('inner.num')
+      onChange(monitor: IMonitor) {
+      }
+    }
+    ```
+
+    修复代码：使用@ObservedV2装饰Inner类，并使用@Trace装饰其属性。
+    ``` TypeScript
+    @ObservedV2
+    class Inner {
+      @Trace public num: number = 0;
+    }
+
+    @ObservedV2
+    class Outer {
+      @Trace public inner: Inner = new Inner();
+
+      @Monitor('inner.num')
+      onChange(monitor: IMonitor) {
+      }
+    }
+    ```
+
+  - **属性未被\@Trace装饰**：当\@Monitor监听的属性未被\@Trace装饰时，该属性的变化无法被监听，编辑器会提示告警。
+
+    告警代码：
+    ``` TypeScript
+    @ObservedV2
+    class Info {
+      public name: string = 'Tom';
+
+      // name未被@Trace装饰，路径'name'无法监听修改
+      @Monitor('name')
+      onNameChange(monitor: IMonitor) {
+      }
+    }
+    ```
+
+    修复代码：使用@Trace装饰name属性。
+    ``` TypeScript
+    @ObservedV2
+    class Info {
+      @Trace public name: string = 'Tom';
+
+      @Monitor('name')
+      onNameChange(monitor: IMonitor) {
+      }
+    }
+    ```
+
+  - **路径类型为interface**：当\@Monitor监听的路径中存在类型为interface的变量时，由于interface本身对其属性没有观测能力，编辑器会提示路径可能不存在的告警。该告警无法去除，开发者需要确认interface数据有UIUtils.makeObserved封装才能被\@Monitor监听。
+
+    告警代码：
+    ``` TypeScript
+    import { UIUtils } from '@kit.ArkUI';
+
+    interface IInfo {
+      name: string;
+    }
+
+    @ObservedV2
+    class Container {
+      // 使用UIUtils.makeObserved封装的interface数据才能被@Monitor监听
+      public info: IInfo = UIUtils.makeObserved({ name: 'Name' }); 
+
+      // info的类型为interface，路径'info.name'可能无法监听'name'属性的修改
+      @Monitor('info.name')
+      onNameChange(monitor: IMonitor) {
+      }
+    }
+    ```
+
+  - **路径类型为联合类型**：当\@Monitor监听的路径中存在类型为联合类型的变量时，编辑器会提示路径可能不存在的告警。该告警无法去除，开发者需要确认联合类型中包含目标路径的对象类型存在并具有观测能力。
+
+    告警代码：
+    ``` TypeScript
+    @ObservedV2
+    class User {
+      @Trace public age: number = 10;
+    }
+
+    @ObservedV2
+    class Page {
+      @Trace user: User | number = new User();
+
+      // user的类型为联合类型User | number，路径'user.age'可能不存在
+      @Monitor('user.age')
+      onChange(monitor: IMonitor) {
+      }
+    }
+    ```
 
 ## \@Monitor与\@Watch对比
 
@@ -1551,7 +1658,7 @@ monitor-sync-14
 
 下面的示例中监听了属性value的变化，并根据变化的幅度改变Text组件显示的样式。
 
-<!-- @monitor_scene_deep_attribute_changes -->  
+<!-- @[monitor_scene_deep_attribute_changes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorSceneDeepAttributeChanges.ets) -->  
 
 ``` TypeScript
 @ObservedV2
@@ -1609,7 +1716,7 @@ struct Index {
 }
 ```
 
-monitor-sync-18
+![monitor-sync-18](./figures/monitor-sync-18.gif)
 
 ## 常见问题
 
@@ -1617,7 +1724,7 @@ monitor-sync-18
 
 当\@Monitor定义在\@ComponentV2装饰的自定义组件中时，\@Monitor会在状态变量初始化完成之后生效，并在组件销毁时失效。
 
-<!-- @monitor_problem_effect_time_comp_v2 -->  
+<!-- @[monitor_problem_effect_time_comp_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemEffectTimeCompV2.ets) -->  
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1705,7 +1812,7 @@ struct Index {
 }
 ```
 
-monitor-sync-19
+![monitor-sync-19](./figures/monitor-sync-19.gif)
 
 在上面的例子中，可以通过创建和销毁Child组件来观察定义在自定义组件中的\@Monitor的生效和失效时机。推荐按如下顺序进行操作：
 
@@ -1722,7 +1829,7 @@ monitor-sync-19
 
 当\@Monitor定义在\@ObservedV2装饰的类中时，\@Monitor会在类的实例创建完成后生效，在类的实例销毁时失效。
 
-<!-- @monitor_problem_effect_time_class -->  
+<!-- @[monitor_problem_effect_time_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemEffectTimeClass.ets) -->  
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1765,7 +1872,7 @@ struct Index {
 }
 ```
 
-monitor-sync-20
+![monitor-sync-20](./figures/monitor-sync-20.png)
 
 上面的例子中，\@Monitor会在info创建完成后生效，这个时机晚于类的constructor，早于自定义组件的aboutToAppear。当界面加载完成后，点击“change message”，修改message变量。此时日志输出信息如下：
 
@@ -1776,7 +1883,7 @@ message change from Index aboutToAppear to Index click to change message
 
 类中定义的\@Monitor随着类的销毁失效。而由于类的实际销毁释放依赖于垃圾回收机制，因此会出现即使所在自定义组件已经销毁，类却还未及时销毁，导致类中定义的\@Monitor仍在监听变化的情况。
 
-<!-- @monitor_problem_class_delayed -->   
+<!-- @[monitor_problem_class_delayed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemClassDelayed.ets) -->   
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1869,203 +1976,203 @@ struct Index {
 }
 ```
 
-monitor-sync-21
+![monitor-sync-21](./figures/monitor-sync-21.gif)
 
 在上面的例子中，当点击“change showFlag”切换if组件的条件时，Child组件会被销毁。此时，点击“change number”修改age的值时，可以通过日志观察到InfoWrapper中定义的\@Monitor回调仍然被触发了。这是因为此时自定义组件Child虽然执行了aboutToDisappear，但是其成员变量infoWrapper还没有被立刻回收，当变量发生变化时，依然能够调用到infoWrapper中定义的onInfoAgeChange方法，所以从现象上看\@Monitor回调仍会被触发。
 
 借助垃圾回收机制去取消\@Monitor的监听是不稳定的，开发者可以采用以下两种方式去管理\@Monitor的失效时间：
 
-1、将\@Monitor定义在自定义组件中。由于自定义组件在销毁时，状态管理框架会手动取消\@Monitor的监听，因此在自定义组件调用完aboutToDisappear，尽管自定义组件的数据不一定已经被释放，但\@Monitor回调已不会再被触发。
+1. 将\@Monitor定义在自定义组件中。由于自定义组件在销毁时，状态管理框架会手动取消\@Monitor的监听，因此在自定义组件调用完aboutToDisappear，尽管自定义组件的数据不一定已经被释放，但\@Monitor回调已不会再被触发。
 
-<!-- @monitor_problem_class_failure_time_set_comp -->   
+   <!-- @[monitor_problem_class_failure_time_set_comp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemClassFailureTimeSetComp.ets) --> 
+   
+   ``` TypeScript
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   
+   @ObservedV2
+   class InfoWrapper {
+     public info?: Info;
+   
+     constructor(info: Info) {
+       this.info = info;
+     }
+   }
+   
+   @ObservedV2
+   class Info {
+     @Trace public age: number;
+   
+     constructor(age: number) {
+       this.age = age;
+     }
+   }
+   
+   @ComponentV2
+   struct Child {
+     @Param @Require infoWrapper: InfoWrapper;
+   
+     @Monitor('infoWrapper.info.age')
+     onInfoAgeChange(monitor: IMonitor) {
+       hilog.info(0xFF00, 'testTag', '%{public}s',
+         `age change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+     }
+   
+     aboutToDisappear(): void {
+       hilog.info(0xFF00, 'testTag', '%{public}s', `Child aboutToDisappear, age: ${this.infoWrapper.info?.age}`);
+     }
+   
+     build() {
+       Column() {
+         Text(`${this.infoWrapper.info?.age}`)
+           .fontSize(20)
+           .margin(10)
+       }
+     }
+   }
+   
+   @Entry
+   @ComponentV2
+   struct Index {
+     dataArray: Info[] = [];
+     @Local showFlag: boolean = true;
+   
+     aboutToAppear(): void {
+       for (let i = 0; i < 5; i++) {
+         this.dataArray.push(new Info(i));
+       }
+     }
+   
+     build() {
+       Column() {
+         // 点击Button切换showFlag，触发Child组件的创建/销毁
+         Button('change showFlag')
+           .onClick(() => {
+             this.showFlag = !this.showFlag;
+           })
+           .margin(10)
+         Button('change number')
+           .onClick(() => {
+             hilog.info(0xFF00, 'testTag', '%{public}s', 'click to change age');
+             this.dataArray.forEach((info: Info) => {
+               info.age += 100;
+             })
+           })
+           .margin(10)
+         if (this.showFlag) {
+           Column() {
+             Text('Children')
+               .fontSize(20)
+               .margin(10)
+             ForEach(this.dataArray, (info: Info) => {
+               Child({ infoWrapper: new InfoWrapper(info) })
+             })
+           }
+           .borderColor(Color.Red)
+           .borderWidth(2)
+         }
+       }
+       .width('100%')
+     }
+   }
+   ```
 
-``` TypeScript
-import { hilog } from '@kit.PerformanceAnalysisKit';
+   ![monitor-sync-22](./figures/monitor-sync-22.gif)
 
-@ObservedV2
-class InfoWrapper {
-  public info?: Info;
+2. 主动置空监听的对象。当自定义组件即将销毁时，主动置空\@Monitor的监听目标，这样\@Monitor无法再监听原监听目标的变化，达到取消\@Monitor监听的效果。
 
-  constructor(info: Info) {
-    this.info = info;
-  }
-}
+   <!-- @[monitor_problem_class_failure_time_empty_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemClassFailureTimeEmptyObject.ets) -->  
+   
+   ``` TypeScript
+   import { hilog } from '@kit.PerformanceAnalysisKit';
+   
+   @ObservedV2
+   class InfoWrapper {
+     public info?: Info;
+   
+     constructor(info: Info) {
+       this.info = info;
+     }
+   
+     @Monitor('info.age')
+     onInfoAgeChange(monitor: IMonitor) {
+       hilog.info(0xFF00, 'testTag', '%{public}s',
+         `age change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
+     }
+   }
+   
+   @ObservedV2
+   class Info {
+     @Trace public age: number;
+   
+     constructor(age: number) {
+       this.age = age;
+     }
+   }
+   
+   @ComponentV2
+   struct Child {
+     @Param @Require infoWrapper: InfoWrapper;
+   
+     aboutToDisappear(): void {
+       hilog.info(0xFF00, 'testTag', '%{public}s', `Child aboutToDisappear, age: ${this.infoWrapper.info?.age}`);
+       this.infoWrapper.info = undefined; // 使InfoWrapper对info.age的监听失效
+     }
+   
+     build() {
+       Column() {
+         Text(`${this.infoWrapper.info?.age}`)
+           .fontSize(20)
+           .margin(10)
+       }
+     }
+   }
+   
+   @Entry
+   @ComponentV2
+   struct Index {
+     dataArray: Info[] = [];
+     @Local showFlag: boolean = true;
+   
+     aboutToAppear(): void {
+       for (let i = 0; i < 5; i++) {
+         this.dataArray.push(new Info(i));
+       }
+     }
+   
+     build() {
+       Column() {
+         Button('change showFlag')
+           .onClick(() => {
+             this.showFlag = !this.showFlag;
+           })
+           .margin(10)
+         Button('change number')
+           .onClick(() => {
+             hilog.info(0xFF00, 'testTag', '%{public}s', 'click to change age');
+             this.dataArray.forEach((info: Info) => {
+               info.age += 100;
+             })
+           })
+           .margin(10)
+         if (this.showFlag) {
+           Column() {
+             Text('Children')
+               .fontSize(20)
+               .margin(10)
+             ForEach(this.dataArray, (info: Info) => {
+               Child({ infoWrapper: new InfoWrapper(info) })
+             })
+           }
+           .borderColor(Color.Red)
+           .borderWidth(2)
+         }
+       }
+       .width('100%')
+     }
+   }
+   ```
 
-@ObservedV2
-class Info {
-  @Trace public age: number;
-
-  constructor(age: number) {
-    this.age = age;
-  }
-}
-
-@ComponentV2
-struct Child {
-  @Param @Require infoWrapper: InfoWrapper;
-
-  @Monitor('infoWrapper.info.age')
-  onInfoAgeChange(monitor: IMonitor) {
-    hilog.info(0xFF00, 'testTag', '%{public}s',
-      `age change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
-  }
-
-  aboutToDisappear(): void {
-    hilog.info(0xFF00, 'testTag', '%{public}s', `Child aboutToDisappear, age: ${this.infoWrapper.info?.age}`);
-  }
-
-  build() {
-    Column() {
-      Text(`${this.infoWrapper.info?.age}`)
-        .fontSize(20)
-        .margin(10)
-    }
-  }
-}
-
-@Entry
-@ComponentV2
-struct Index {
-  dataArray: Info[] = [];
-  @Local showFlag: boolean = true;
-
-  aboutToAppear(): void {
-    for (let i = 0; i < 5; i++) {
-      this.dataArray.push(new Info(i));
-    }
-  }
-
-  build() {
-    Column() {
-      // 点击Button切换showFlag，触发Child组件的创建/销毁
-      Button('change showFlag')
-        .onClick(() => {
-          this.showFlag = !this.showFlag;
-        })
-        .margin(10)
-      Button('change number')
-        .onClick(() => {
-          hilog.info(0xFF00, 'testTag', '%{public}s', 'click to change age');
-          this.dataArray.forEach((info: Info) => {
-            info.age += 100;
-          })
-        })
-        .margin(10)
-      if (this.showFlag) {
-        Column() {
-          Text('Children')
-            .fontSize(20)
-            .margin(10)
-          ForEach(this.dataArray, (info: Info) => {
-            Child({ infoWrapper: new InfoWrapper(info) })
-          })
-        }
-        .borderColor(Color.Red)
-        .borderWidth(2)
-      }
-    }
-    .width('100%')
-  }
-}
-```
-
-monitor-sync-22
-
-2、主动置空监听的对象。当自定义组件即将销毁时，主动置空\@Monitor的监听目标，这样\@Monitor无法再监听原监听目标的变化，达到取消\@Monitor监听的效果。
-
-<!-- @monitor_problem_class_failure_time_empty_object -->  
-
-``` TypeScript
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-@ObservedV2
-class InfoWrapper {
-  public info?: Info;
-
-  constructor(info: Info) {
-    this.info = info;
-  }
-
-  @Monitor('info.age')
-  onInfoAgeChange(monitor: IMonitor) {
-    hilog.info(0xFF00, 'testTag', '%{public}s',
-      `age change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
-  }
-}
-
-@ObservedV2
-class Info {
-  @Trace public age: number;
-
-  constructor(age: number) {
-    this.age = age;
-  }
-}
-
-@ComponentV2
-struct Child {
-  @Param @Require infoWrapper: InfoWrapper;
-
-  aboutToDisappear(): void {
-    hilog.info(0xFF00, 'testTag', '%{public}s', `Child aboutToDisappear, age: ${this.infoWrapper.info?.age}`);
-    this.infoWrapper.info = undefined; // 使InfoWrapper对info.age的监听失效
-  }
-
-  build() {
-    Column() {
-      Text(`${this.infoWrapper.info?.age}`)
-        .fontSize(20)
-        .margin(10)
-    }
-  }
-}
-
-@Entry
-@ComponentV2
-struct Index {
-  dataArray: Info[] = [];
-  @Local showFlag: boolean = true;
-
-  aboutToAppear(): void {
-    for (let i = 0; i < 5; i++) {
-      this.dataArray.push(new Info(i));
-    }
-  }
-
-  build() {
-    Column() {
-      Button('change showFlag')
-        .onClick(() => {
-          this.showFlag = !this.showFlag;
-        })
-        .margin(10)
-      Button('change number')
-        .onClick(() => {
-          hilog.info(0xFF00, 'testTag', '%{public}s', 'click to change age');
-          this.dataArray.forEach((info: Info) => {
-            info.age += 100;
-          })
-        })
-        .margin(10)
-      if (this.showFlag) {
-        Column() {
-          Text('Children')
-            .fontSize(20)
-            .margin(10)
-          ForEach(this.dataArray, (info: Info) => {
-            Child({ infoWrapper: new InfoWrapper(info) })
-          })
-        }
-        .borderColor(Color.Red)
-        .borderWidth(2)
-      }
-    }
-    .width('100%')
-  }
-}
-```
-
-monitor-sync-23
+   ![monitor-sync-23](./figures/monitor-sync-23.gif)
 
 ### 正确设置\@Monitor入参
 
@@ -2073,7 +2180,7 @@ monitor-sync-23
 
 【反例1】
 
-<!-- @monitor_problem_param_counter_example_1 --> 
+<!-- @[monitor_problem_param_counter_example_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemParamCounterExample1.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -2112,7 +2219,7 @@ struct Index {
 }
 ```
 
-monitor-sync-24
+![monitor-sync-24](./figures/monitor-sync-24.png)
 
 上面的代码中，当点击按钮同时更改状态变量age和非状态变量name时，会输出以下日志：
 
@@ -2133,7 +2240,7 @@ property path:age change from 24 to 25
 
 【正例1】
 
-<!-- @monitor_problem_param_positive_example_1 --> 
+<!-- @[monitor_problem_param_positive_example_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemParamPositiveExample1.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -2171,11 +2278,11 @@ struct Index {
 }
 ```
 
-monitor-sync-25
+![monitor-sync-25](./figures/monitor-sync-25.png)
 
 【反例2】
 
-<!-- @monitor_problem_param_counter_example_2 --> 
+<!-- @[monitor_problem_param_counter_example_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemParamCounterExample2.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -2219,7 +2326,7 @@ struct Index {
 【正例2】
 
 将myAge变为状态变量：
-<!-- @monitor_problem_param_positive_example_2 --> 
+<!-- @[monitor_problem_param_positive_example_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemParamPositiveExample2.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -2259,10 +2366,10 @@ struct Index {
 }
 ```
 
-monitor-sync-26
+![monitor-sync-26](./figures/monitor-sync-26.png)
 
 或直接监听状态变量本身：
-<!-- @monitor_problem_param_state_variables --> 
+<!-- @[monitor_problem_param_state_variables](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemParamStateVariables.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -2296,16 +2403,16 @@ struct Index {
 }
 ```
 
-monitor-sync-27
+![monitor-sync-27](./figures/monitor-sync-27.png)
 
 ### 无法监听变量从可访问变为不可访问和从不可访问变为可访问
 \@Monitor仅会保存变量可访问时的值，当状态变量变为不可访问的状态时，并不会记录其值的变化。在下面的例子中，点击三个Button，均不会触发`onChange`的回调。
 
-从API version 20开始，可以使用addMonitor监听变量从可访问到不可访问和从不可访问到可访问的状态变化。
+从API version 20开始，可以使用addMonitor[监听变量从可访问到不可访问和从不可访问到可访问](./arkts-new-addMonitor-clearMonitor.md#监听变量从可访问到不可访问和从不可访问到可访问)的状态变化。
 
 从API版本26.0.0开始，使用配置项的\@Monitor能够正常处理变量在可访问与不可访问之间的切换。在下面的例子中，若将`@Monitor('user.age')`改写为使用配置项的形式`@Monitor({}, 'user.age')`，则点击三个Button均会触发`onChange`回调，dirty中将包含路径`user.age`，其对应的IMonitorValue的before值与now值会分别反映可访问性切换前后的状态（变量可访问时为实际值，变量不可访问时为undefined）。
 
-<!-- @monitor_problem_state_change_use_addMonitor --> 
+<!-- @[monitor_problem_state_change_use_addMonitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemStateChangeUseAddMonitor.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -2359,4 +2466,4 @@ struct Page {
 }
 ```
 
-monitor-sync-28
+![monitor-sync-28](./figures/monitor-sync-28.gif)

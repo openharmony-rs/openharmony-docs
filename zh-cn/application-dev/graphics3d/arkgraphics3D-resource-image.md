@@ -6,16 +6,22 @@
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->
 
-图片（Image）：图片本质上是一个储存信息的二维内存块(buffer)，用于储存3D渲染计算过程需要的相关信息，比如基础颜色、法线等等。
+图片（Image）：3D渲染中的二维纹理资源，本质为存储像素数据的内存缓冲区（buffer）。它提供物体表面渲染所需的数据，包括基础颜色、法线、金属度、粗糙度和环境遮蔽等贴图，也可作为材质或自定义着色器的纹理输入，最终决定物体表面的外观。
 
-ArkGraphics 3D提供基于png、jpg、ktx格式创建Image资源的能力，支持用户自定义需要的Image资源。
+ArkGraphics 3D提供基于JPEG、PNG和KTX格式创建Image资源的能力，支持用户自定义需要的Image资源。各个格式的支持情况如下表所示：
+
+| 格式 | 支持情况 |
+|------|----------|
+| JPEG（.jpg/.jpeg） | 支持识别头部携带JFIF、Exif或ICC Profile标记的JPEG文件；<br>搭载OpenHarmony 7.0.0及以上版本的设备，新增支持识别头部包含DQT、XMP、MPF或Adobe标记的JPEG文件。 |
+| PNG（.png） | 支持标准的PNG文件。 |
+| KTX（.ktx） | 支持KTX格式的文件。KTX（Khronos Texture）是由Khronos Group定义的纹理容器格式，用于存储GPU可直接读取的纹理数据。 |
 
 ## 开发步骤
 1. 导入相关模块。
 
    在页面脚本中导入ArkGraphics 3D提供的核心类型，用于创建场景、相机、材质、图片等对象。
 
-   <!-- @resource_header -->
+   <!-- @[resource_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
    
    ``` TypeScript
    import { Camera, Environment, Geometry, Image, Material, MaterialType, Scene, SceneResourceFactory,
@@ -26,14 +32,14 @@ ArkGraphics 3D提供基于png、jpg、ktx格式创建Image资源的能力，支�
 
    调用Scene.load()方法加载.glb或.gltf格式的模型文件，并在加载完成后获取Scene对象。随后构建SceneOptions对象，指定场景及渲染模式，用于后续通过Component3D将场景内容渲染到界面中。
 
-   <!-- @scene_load_init -->
+   <!-- @[scene_load_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
    
    ``` TypeScript
    if (this.scene === null) {
-     // Switched from .gltf to .glb; same content, different format
+     // 从 .gltf 切换为 .glb；内容相同，格式不同
      Scene.load($rawfile('gltf/CubeWithFloor/glTF/AnimatedCube.glb'))
        .then(async (result: Scene) => {
-         // Assign loaded scene to globalScene for unified resource creation
+         // 将加载的场景赋值给globalScene，以便统一创建资源
          globalScene = result;
          this.scene = result;
          this.sceneOpt = { scene: this.scene, modelType: ModelType.SURFACE } as SceneOptions;
@@ -50,7 +56,7 @@ ArkGraphics 3D提供基于png、jpg、ktx格式创建Image资源的能力，支�
 
    创建相机对象并设置相机启用状态与观察位置，用于后续展示模型。
 
-   <!-- @scene_camera_init -->
+   <!-- @[scene_camera_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
    
    ``` TypeScript
    this.cam = await this.rf.createCamera({ name: 'Camera1' });
@@ -62,12 +68,12 @@ ArkGraphics 3D提供基于png、jpg、ktx格式创建Image资源的能力，支�
 
    通过Scene.getNodeByPath()方法获取目标模型的几何体（Geometry）节点，并记录其原始材质，以便在后续修改材质后能够恢复至原始材质状态。
 
-   <!-- @geometry_node_get -->
+   <!-- @[geometry_node_get](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
    
    ``` TypeScript
    this.geom = this.scene.getNodeByPath('rootNode_/Unnamed Node 1/AnimatedCube') as Geometry;
    
-   // record original material
+   // 记录原始材质
    this.originalMat = this.geom.mesh.subMeshes[0].material;
    ```
 
@@ -75,12 +81,12 @@ ArkGraphics 3D提供基于png、jpg、ktx格式创建Image资源的能力，支�
 
    使用SceneResourceFactory.createImage()创建图片资源。
 
-   <!-- @create_image_promise -->
+   <!-- @[create_image_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
    
    ``` TypeScript
    function createImagePromise(): Promise<Image> {
      return new Promise((resolve, reject) => {
-       // Ensure the scene is loaded before accessing sceneFactory
+       // 确保在访问sceneFactory之前场景已加载
        if (globalScene) {
          let sceneFactory: SceneResourceFactory = globalScene.getResourceFactory();
    
@@ -107,7 +113,7 @@ ArkGraphics 3D提供基于png、jpg、ktx格式创建Image资源的能力，支�
 
    在按钮点击回调中，通过createShader()和createMaterial()创建Shader材质，调用createImagePromise()获取图片资源并绑定到Shader输入属性BASE_COLOR_Image上，最后将材质应用到模型几何体，使模型表面贴图生效，实现贴图替换。
 
-   <!-- @replace_with_image_material -->
+   <!-- @[replace_with_image_material](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/resource.ets) -->
    
    ``` TypeScript
    Button('Replace with a Image material')
@@ -119,16 +125,16 @@ ArkGraphics 3D提供基于png、jpg、ktx格式创建Image资源的能力，支�
          return;
        }
    
-       // create shader
+       // 创建着色器
        this.shader = await this.rf.createShader({
          name: 'shaderResource',
          uri: $rawfile('shaders/custom_shader/custom_material_sample.shader')
        });
    
-       // create imageMat
+       // 创建图像材质
        this.imageMat = await this.rf.createMaterial({ name: 'imageMat' }, MaterialType.SHADER) as ShaderMaterial;
    
-       // bind between shader and imageMat
+       // 在着色器和图像材质之间进行绑定
        this.imageMat.colorShader = this.shader;
        let createdImage =  await createImagePromise();
        if (createdImage) {
@@ -146,5 +152,5 @@ ArkGraphics 3D提供基于png、jpg、ktx格式创建Image资源的能力，支�
 ## 相关实例
 
 对于3D资源更加综合的使用可以参考以下实例：
-- 3D引擎接口示例（ArkTS）（API12）
+- [3D引擎接口示例（ArkTS）（API12）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Graphics/Graphics3d)
 <!--RP1End-->

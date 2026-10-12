@@ -1,14 +1,14 @@
 # 使用组件切换通话设备
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @devil_red-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
 ## 切换通话输出设备
 
-本文主要介绍AVCastPicker组件接入，实现通话设备切换功能。相关参数可参考@ohos.multimedia.avCastPicker (投播组件)和@ohos.multimedia.avCastPickerParam (投播组件参数)。如果希望实现音频输出设备路由切换的效果，请参考实现音频输出设备路由切换。
+本文主要介绍AVCastPicker组件接入，实现通话设备切换功能。相关参数可参考[@ohos.multimedia.avCastPicker (投播组件)](../../reference/apis-avsession-kit/ohos-multimedia-avcastpicker.md)和[@ohos.multimedia.avCastPickerParam (投播组件参数)](../../reference/apis-avsession-kit/js-apis-avCastPickerParam.md)。如果希望实现音频输出设备路由切换的效果，请参考[实现音频输出设备路由切换](../audio/audio-output-device-switcher.md)。
 
 当前系统支持两种组件样式的显示方式：默认样式显示和自定义样式显示。
 - 如果应用选择显示默认样式，当设备切换时，系统将根据当前选择的设备显示系统默认的组件样式。
@@ -18,7 +18,7 @@
 
 1. 创建voice_call类型的AVSession。AVSession在创建方法中支持不同的类型参数，由AVSessionType定义。voice_call表示通话类型，如果不创建，将显示空列表。
 
-   <!-- @create_voiceCall -->    
+   <!-- @[create_voiceCall](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/pages/Index.ets) -->    
    
    ``` TypeScript
    import { AVCastPicker, AVCastPickerState, AVInputCastPicker, avSession } from '@kit.AVSessionKit';
@@ -47,7 +47,7 @@
 
 2. 在需要切换设备的通话界面创建AVCastPicker组件。
 
-   <!-- @create_castPicker -->     
+   <!-- @[create_castPicker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/pages/SwitchOutputDevice.ets) -->     
    
    ``` TypeScript
    import { AVCastPicker } from '@kit.AVSessionKit';
@@ -83,7 +83,7 @@
 
    或者创建AVCastPickerHelper组件。
 
-   <!-- @create_castPickerHelper -->   
+   <!-- @[create_castPickerHelper](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/utils/AVCastPickerHelper.ets) -->   
    
    ``` TypeScript
    import { common } from '@kit.AbilityKit';
@@ -111,9 +111,9 @@
    }
    ```
 
-3. 创建VOICE_COMMUNICATION类型的AudioRenderer，并开始播放。具体通话音频播放等实现，请参考开发音频通话功能。
+3. 创建VOICE_COMMUNICATION类型的AudioRenderer，并开始播放。具体通话音频播放等实现，请参考[开发音频通话功能](../audio/audio-call-development.md)。
 
-   <!-- @start_render -->         
+   <!-- @[start_render](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/utils/AudioRenderer.ets) -->         
    
    ``` TypeScript
    import { audio } from '@kit.AudioKit';
@@ -210,7 +210,7 @@
   
 4. （可选）如果应用想知道设备切换情况，可以监听当前发声设备切换回调。
 
-   <!-- @device_monitor -->       
+   <!-- @[device_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/utils/AudioRenderer.ets) -->       
    
    ``` TypeScript
    import { audio } from '@kit.AudioKit';
@@ -251,7 +251,7 @@
 
 5. 通话结束后，销毁会话。
 
-   <!-- @destroy_session -->     
+   <!-- @[destroy_session](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/pages/Index.ets) -->     
    
    ``` TypeScript
    // 通话结束销毁第一步创建的session。
@@ -266,15 +266,15 @@
 
 ### 自定义样式实现
 
-自定义样式通过设置CustomBuilder类型的参数customPicker实现。
+自定义样式通过设置[CustomBuilder](../../reference/apis-arkui/arkui-ts/ts-types.md#custombuilder8)类型的参数[customPicker](../../reference/apis-avsession-kit/ohos-multimedia-avcastpicker.md#avcastpicker)实现。
 
-实现自定义样式的步骤与实现默认样式基本相同，开发者可参考默认样式实现，完成创建AVSession、实现音频播放等步骤。
+实现自定义样式的步骤与实现默认样式基本相同，开发者可参考[默认样式实现](#默认样式实现)，完成创建AVSession、实现音频播放等步骤。
 
 存在差异的步骤如下所示。
 
 1. 创建自定义AVCastPicker，需要新增自定义参数（对应默认样式实现步骤2）。
 
-   <!-- @self_castPicker -->    
+   <!-- @[self_castPicker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/pages/SelfAVCastPicker.ets) -->    
    
    ``` TypeScript
    import { AVCastPicker } from '@kit.AVSessionKit';
@@ -310,7 +310,7 @@
 
 2. 如果应用要根据发声设备变化而改变自定义样式，必须监听设备切换，然后实时刷新自定义样式（对应默认样式实现步骤4）。
 
-   <!-- @device_monitor -->    
+   <!-- @[device_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/pages/SelfAVCastPicker.ets) -->    
    
    ``` TypeScript
    import { audio } from '@kit.AudioKit';
@@ -351,7 +351,7 @@
 
 ## 切换通话输入设备
 
-系统不再提供音频输入设备切换的API，如果需要在应用内切换音频输入设备，可通过接入AVInputCastPicker组件来完成。相关参数可参考@ohos.multimedia.avInputCastPicker和@ohos.multimedia.avCastPickerParam。
+系统不再提供音频输入设备切换的API，如果需要在应用内切换音频输入设备，可通过接入AVInputCastPicker组件来完成。相关参数可参考[@ohos.multimedia.avInputCastPicker](../../reference/apis-avsession-kit/ohos-multimedia-avinputcastpicker.md)和[@ohos.multimedia.avCastPickerParam](../../reference/apis-avsession-kit/js-apis-avCastPickerParam.md)。
 
 本文将主要介绍AVInputCastPicker组件接入，实现通话输入设备切换功能。
 
@@ -363,7 +363,7 @@
 
 1. 在需要切换设备的通话界面创建AVInputCastPicker组件。
 
-   <!-- @default_InputCastPicker -->   
+   <!-- @[default_InputCastPicker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/pages/DefaultAVInputCastPicker.ets) -->   
    
    ``` TypeScript
    import { AVCastPickerState, AVInputCastPicker } from '@kit.AVSessionKit';
@@ -392,15 +392,15 @@
      }
    ```
 
-2. 实现通话功能，请参考开发音频通话功能。
+2. 实现通话功能，请参考[开发音频通话功能](../audio/audio-call-development.md)。
 
 ### 自定义样式实现
 
-自定义样式通过设置AVInputCastPicker中的参数customPicker实现。
+自定义样式通过设置[AVInputCastPicker](../../reference/apis-avsession-kit/ohos-multimedia-avinputcastpicker.md#avinputcastpicker)中的参数customPicker实现。
 
 1. 创建自定义AVInputCastPicker，需要新增自定义参数。
 
-   <!-- @self_inputCastPicker -->   
+   <!-- @[self_inputCastPicker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/SwitchCallDevices/entry/src/main/ets/pages/SwitchInputDevice.ets) -->   
    
    ``` TypeScript
    import { AVCastPickerState, AVInputCastPicker } from '@kit.AVSessionKit';
@@ -453,4 +453,4 @@
    }
    ```
 
-2. 实现通话功能，请参考开发音频通话功能。
+2. 实现通话功能，请参考[开发音频通话功能](../audio/audio-call-development.md)。

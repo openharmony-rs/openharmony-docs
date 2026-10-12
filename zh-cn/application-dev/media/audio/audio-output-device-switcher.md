@@ -8,9 +8,9 @@
 
 当应用进行音频输出时，系统将依据音频流类型自动匹配对应的输出设备。如果系统输出设备不满足应用需求，应用可通过`AVCastPicker`或`setDefaultOutputDevice`实现音频输出设备路由切换。在连接音频外设（如蓝牙耳机、有线耳机）的情况下，应用还可通过`setMediaOutputDevice`强制将媒体输出切换到扬声器。
 
-从API版本26.0.0开始，PC/2in1设备还支持基于AudioDeviceEnhanceManager和native_audio_device_enhance_manager.h的输出设备切换能力，应用可按应用级或音频流级精确指定输出设备，满足多设备场景下对声音输出去向的控制需求。
+从API版本26.0.0开始，PC/2in1设备还支持基于[AudioDeviceEnhanceManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioDeviceEnhanceManager.md)和[native_audio_device_enhance_manager.h](../../reference/apis-audio-kit/capi-native-audio-device-enhance-manager-h.md)的输出设备切换能力，应用可按应用级或音频流级精确指定输出设备，满足多设备场景下对声音输出去向的控制需求。
 
-以下各步骤示例为片段代码，可通过示例代码右下方链接获取完整示例。其中，PC/2in1设备输出设备切换的完整示例请参见ArkTS示例和C/C++示例。
+以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample)。其中，[PC/2in1设备输出设备切换](#pc2in1设备输出设备切换)的完整示例请参见[ArkTS示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleJS)和[C/C++示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleC)。
 
 ## 使用场景
 
@@ -20,17 +20,17 @@
 
 ## 实现媒体流输出设备路由切换
 
-应用可以通过使用AVCastPicker组件为用户提供选择设备的入口。
+应用可以通过使用[AVCastPicker](../../reference/apis-avsession-kit/ohos-multimedia-avcastpicker.md#avcastpicker)组件为用户提供选择设备的入口。
 
 该组件集成了设备发现、连接、认证等能力，可嵌入应用界面。用户点击后，系统自动识别并展示当前可切换的设备列表，支持在扬声器、耳机、智能音箱等输出设备间自由切换。
 
 ## 实现通话流输出设备路由切换
 
-`AVCastPicker`组件也适用于通话场景，应用可使用通话设备切换组件为用户提供听筒、扬声器、耳机等通话设备的切换入口，方便用户在通话过程中灵活调整音频输出设备。
+`AVCastPicker`组件也适用于通话场景，应用可使用[通话设备切换组件](../avsession/using-switch-call-devices.md)为用户提供听筒、扬声器、耳机等通话设备的切换入口，方便用户在通话过程中灵活调整音频输出设备。
 
 ## 设置默认输出设备
 
-如果系统未连接外设（如蓝牙耳机），语音通话场景音频默认听筒播放，其他场景音频默认扬声器播放；外设接入后，系统优先从外设播放。应用可通过`setDefaultOutputDevice`更改默认输出设备，但仅对以下三种StreamUsage生效：
+如果系统未连接外设（如蓝牙耳机），语音通话场景音频默认听筒播放，其他场景音频默认扬声器播放；外设接入后，系统优先从外设播放。应用可通过`setDefaultOutputDevice`更改默认输出设备，但仅对以下三种[StreamUsage](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage)生效：
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -38,7 +38,7 @@
 | STREAM_USAGE_VOICE_COMMUNICATION | 2 | VoIP语音通话。 |
 | STREAM_USAGE_VIDEO_COMMUNICATION | 17 | VoIP视频通话。 |
 
-支持的设备类型:
+支持的设备类型：
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -59,14 +59,14 @@
 
 **音频流级设置接口**
 
-从API version 12开始，应用可使用AudioRenderer的setDefaultOutputDevice设置默认设备为听筒和扬声器，调用前需要先获取AudioRenderer实例，设置默认设备的生命周期跟随音频流。调用`setDefaultOutputDevice`设置音频输出设备后，如需取消，可将参数设为`audio.DeviceType.DEFAULT`，将音频输出设备选择权交还给系统。
+从API version 12开始，应用可使用AudioRenderer的[setDefaultOutputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setdefaultoutputdevice12)设置默认设备为听筒和扬声器，调用前需要先获取[AudioRenderer](../../reference/apis-audio-kit/arkts-apis-audio-f.md#audiocreateaudiorenderer8)实例，设置默认设备的生命周期跟随音频流。调用`setDefaultOutputDevice`设置音频输出设备后，如需取消，可将参数设为`audio.DeviceType.DEFAULT`，将音频输出设备选择权交还给系统。
 
    > **说明：**
    >
    > - 由于AudioRenderer是流级别，调用本接口设置的默认音频输出设备仅对当前流生效。
-   > - 本接口优先级低于AudioSessionManager的setDefaultOutputDevice。如果使用AudioSessionManager的setDefaultOutputDevice设置了默认音频输出设备，本接口的设置将不会生效。
+   > - 本接口优先级低于AudioSessionManager的[setDefaultOutputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setdefaultoutputdevice20)。如果使用AudioSessionManager的[setDefaultOutputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setdefaultoutputdevice20)设置了默认音频输出设备，本接口的设置将不会生效。
 
-   <!-- @audioRenderer_setDefaultOutputDevice -->  
+   <!-- @[audioRenderer_setDefaultOutputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceSwitcher.ets) -->  
    
    ``` TypeScript
    import { audio } from '@kit.AudioKit';
@@ -95,13 +95,13 @@
 
 **应用级设置接口**
 
-从API version 20开始，应用激活AudioSession后，可使用AudioSessionManager的setDefaultOutputDevice设置默认输出设备，并通过`AudioSessionManager.getDefaultOutputDevice`查看默认设备是否设置成功，设置默认设备的生命周期跟随`AudioSession`。调用`setDefaultOutputDevice`设置音频输出设备后，如需取消，可将参数设为`audio.DeviceType.DEFAULT`，将音频输出设备选择权交还给系统。
+从API version 20开始，应用激活[AudioSession](../audio/audio-session-management.md)后，可使用AudioSessionManager的[setDefaultOutputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setdefaultoutputdevice20)设置默认输出设备，并通过`AudioSessionManager.getDefaultOutputDevice`查看默认设备是否设置成功，设置默认设备的生命周期跟随`AudioSession`。调用`setDefaultOutputDevice`设置音频输出设备后，如需取消，可将参数设为`audio.DeviceType.DEFAULT`，将音频输出设备选择权交还给系统。
 
    > **说明：**
    >
-   > 由于AudioSessionManager是应用级设置，调用本接口设置默认音频输出设备，会对当前应用所有适用范围内的音频流生效，且会覆盖AudioRenderer的setDefaultOutputDevice接口设置的默认音频输出设备信息。
+   > 由于AudioSessionManager是应用级设置，调用本接口设置默认音频输出设备，会对当前应用所有适用范围内的音频流生效，且会覆盖AudioRenderer的[setDefaultOutputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md#setdefaultoutputdevice12)接口设置的默认音频输出设备信息。
 
-   <!-- @audioSessionManager_setDefaultOutputDevice -->  
+   <!-- @[audioSessionManager_setDefaultOutputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceSwitcher.ets) -->  
    
    ``` TypeScript
    import { audio } from '@kit.AudioKit';
@@ -152,19 +152,19 @@
 
 ## 连接外设时强制切换媒体输出设备
 
-当系统连接蓝牙耳机或有线耳机等外设时，系统优先从外设播放。从API版本26.0.0开始，应用可使用`AudioSessionManager`的setMediaOutputDevice接口，强制将媒体输出设备切换为扬声器，使音频在连接外设的情况下仍从扬声器播放。
+当系统连接蓝牙耳机或有线耳机等外设时，系统优先从外设播放。从API版本26.0.0开始，应用可使用`AudioSessionManager`的[setMediaOutputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setmediaoutputdevice)接口，强制将媒体输出设备切换为扬声器，使音频在连接外设的情况下仍从扬声器播放。
 
    > **说明：**
    >
    > - 本接口仅对媒体流生效，作用于应用内所有媒体流，通话流不受影响。应用需处于前台且有正在运行的媒体流，否则设置不生效且应用退出后自动清除。
-   > - 本接口设置的输出设备与实现媒体流输出设备路由切换设置的输出设备会相互覆盖（后调用者会覆盖先调用者设置的输出设备）。
-   > - 本接口设置的输出设备不会覆盖通过设置默认输出设备设置的输出设备。
-   > - 应用可通过监听CurrentOutputDeviceChangedEvent事件获取当前输出设备信息，以确认设置的输出设备是否生效。
+   > - 本接口设置的输出设备与[实现媒体流输出设备路由切换](#实现媒体流输出设备路由切换)设置的输出设备会相互覆盖（后调用者会覆盖先调用者设置的输出设备）。
+   > - 本接口设置的输出设备不会覆盖通过[设置默认输出设备](#设置默认输出设备)设置的输出设备。
+   > - 应用可通过监听[CurrentOutputDeviceChangedEvent](../../reference/apis-audio-kit/arkts-apis-audio-i.md#currentoutputdevicechangedevent20)事件获取当前输出设备信息，以确认设置的输出设备是否生效。
    > - 在无内置扬声器的设备（如智慧屏）上调用本接口将输出设备切换为扬声器不会生效，但接口调用仍会返回成功，不会抛出错误或触发错误回调。
 
 ### 开发步骤
 
-应用可使用`AudioSessionManager`的setMediaOutputDevice接口强制将媒体输出设备切换为扬声器。调用`setMediaOutputDevice`后，如需取消强制切换、恢复系统默认路由规则，可将参数设为`audio.DeviceType.DEFAULT`。
+应用可使用`AudioSessionManager`的[setMediaOutputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setmediaoutputdevice)接口强制将媒体输出设备切换为扬声器。调用`setMediaOutputDevice`后，如需取消强制切换、恢复系统默认路由规则，可将参数设为`audio.DeviceType.DEFAULT`。
 
 支持的设备类型：
 
@@ -173,7 +173,7 @@
 | SPEAKER | 2 | 扬声器，强制将媒体输出切换到扬声器。 |
 | DEFAULT | 1000 | 系统默认设备，清除强制切换，恢复系统默认路由规则。 |
 
-   <!-- @audioSessionManager_setMediaOutputDevice -->
+   <!-- @[audioSessionManager_setMediaOutputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceSwitcher.ets) -->
    
    ``` TypeScript
    import { audio } from '@kit.AudioKit';
@@ -210,11 +210,11 @@ PC/2in1设备经常存在多路输出设备可用（如内置扬声器、外接�
 
 ### 查询能力是否支持
 
-使用前需先通过isEnhancedRoutingSupported或OH_AudioDeviceEnhanceManager_IsEnhancedRoutingSupported查询系统是否支持该能力，不支持时调用输出设备切换接口不生效，将继续使用当前输出设备。
+使用前需先通过[isEnhancedRoutingSupported](../../reference/apis-audio-kit/arkts-apis-audio-AudioDeviceEnhanceManager.md#isenhancedroutingsupported)或[OH_AudioDeviceEnhanceManager_IsEnhancedRoutingSupported](../../reference/apis-audio-kit/capi-native-audio-device-enhance-manager-h.md#oh_audiodeviceenhancemanager_isenhancedroutingsupported)查询系统是否支持该能力，不支持时调用输出设备切换接口不生效，将继续使用当前输出设备。
 
 ArkTS示例：
 
-<!-- @isEnhancedRoutingSupported -->
+<!-- @[isEnhancedRoutingSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleJS/entry/src/main/ets/pages/EnhancedDeviceRouting.ets) -->
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
@@ -231,7 +231,7 @@ C/C++示例：
 
 使用前需添加头文件：
 
-<!-- @header_file -->
+<!-- @[header_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleC/entry/src/main/cpp/EnhancedDeviceRouting.cpp) -->
 
 ``` C++
 #include <ohaudio/native_audio_device_enhance_manager.h>
@@ -242,7 +242,7 @@ C/C++示例：
 #include <ohaudio/native_audiostreambuilder.h>
 ```
 
-<!-- @isEnhancedRoutingSupported -->
+<!-- @[isEnhancedRoutingSupported](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleC/entry/src/main/cpp/EnhancedDeviceRouting.cpp) -->
 
 ``` C++
 napi_value IsEnhancedRoutingSupported(napi_env env, napi_callback_info info)
@@ -266,9 +266,9 @@ napi_value IsEnhancedRoutingSupported(napi_env env, napi_callback_info info)
 
 ArkTS示例：
 
-- **应用级：** 通过selectOutputDevice选择指定的输出设备，设置成功后对应用下创建的所有播放流生效。
+- **应用级：** 通过[selectOutputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioDeviceEnhanceManager.md#selectoutputdevice)选择指定的输出设备，设置成功后对应用下创建的所有播放流生效。
 
-  <!-- @select_OutputDevice -->
+  <!-- @[select_OutputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleJS/entry/src/main/ets/pages/EnhancedDeviceRouting.ets) -->
 
   ``` TypeScript
   import { audio } from '@kit.AudioKit';
@@ -286,9 +286,9 @@ ArkTS示例：
     });
   ```
 
-- **音频流级：** 通过selectOutputDeviceForAudioRenderer为指定音频播放流选择输出设备，设置成功后仅对该播放流生效。
+- **音频流级：** 通过[selectOutputDeviceForAudioRenderer](../../reference/apis-audio-kit/arkts-apis-audio-AudioDeviceEnhanceManager.md#selectoutputdeviceforaudiorenderer)为指定音频播放流选择输出设备，设置成功后仅对该播放流生效。
 
-  <!-- @select_OutputDeviceForAudioRenderer -->
+  <!-- @[select_OutputDeviceForAudioRenderer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleJS/entry/src/main/ets/pages/EnhancedDeviceRouting.ets) -->
 
   ``` TypeScript
   import { audio } from '@kit.AudioKit';
@@ -308,9 +308,9 @@ ArkTS示例：
 
 C/C++示例：
 
-- **应用级：** 通过OH_AudioDeviceEnhanceManager_SelectOutputDevice选择指定的输出设备。
+- **应用级：** 通过[OH_AudioDeviceEnhanceManager_SelectOutputDevice](../../reference/apis-audio-kit/capi-native-audio-device-enhance-manager-h.md#oh_audiodeviceenhancemanager_selectoutputdevice)选择指定的输出设备。
 
-  <!-- @select_OutputDevice -->
+  <!-- @[select_OutputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleC/entry/src/main/cpp/EnhancedDeviceRouting.cpp) -->
 
   ``` C++
   // 获取音频设备增强管理器。
@@ -381,9 +381,9 @@ C/C++示例：
   }
   ```
 
-- **音频流级：** 通过OH_AudioDeviceEnhanceManager_SelectOutputDeviceForAudioRenderer为指定音频播放流选择输出设备。
+- **音频流级：** 通过[OH_AudioDeviceEnhanceManager_SelectOutputDeviceForAudioRenderer](../../reference/apis-audio-kit/capi-native-audio-device-enhance-manager-h.md#oh_audiodeviceenhancemanager_selectoutputdeviceforaudiorenderer)为指定音频播放流选择输出设备。
 
-  <!-- @select_OutputDeviceForAudioRenderer -->
+  <!-- @[select_OutputDeviceForAudioRenderer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioEnhanceDeviceSampleC/entry/src/main/cpp/EnhancedDeviceRouting.cpp) -->
 
   ``` C++
   // 获取音频设备增强管理器。

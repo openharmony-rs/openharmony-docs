@@ -9,7 +9,7 @@
 
 ## 场景介绍
 
-napi_create_threadsafe_function是Node-API接口之一，用于创建一个线程安全的JavaScript函数。该函数主要用于在多个线程之间共享和调用，避免竞争条件和死锁。包含以下场景：
+[napi_create_threadsafe_function](../reference/native-lib/napi.md#napi_create_threadsafe_function)是Node-API接口之一，用于创建一个线程安全的JavaScript函数。该函数主要用于在多个线程之间共享和调用，避免竞争条件和死锁。包含以下场景：
 
 
 - 异步计算：若需执行耗时的计算或IO操作，可创建线程安全的函数，在另一线程中完成计算或IO操作，避免阻塞主线程，提升程序响应速度。
@@ -45,7 +45,7 @@ napi_create_threadsafe_function是Node-API接口之一，用于创建一个线�
 
 2. 定义线程安全函数在Native入口。
 
-   <!-- @napi_thread_safety_cpp -->
+   <!-- @[napi_thread_safety_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/thread_safety.cpp) -->
    
    ``` C++
    #include "napi/native_api.h"
@@ -187,7 +187,7 @@ napi_create_threadsafe_function是Node-API接口之一，用于创建一个线�
 
 4. ArkTS侧示例代码
 
-   <!-- @napi_thread_safety_dts -->
+   <!-- @[napi_thread_safety_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/types/libentry1/Index.d.ts) -->
    
    ``` TypeScript
    export const startThread: (a: () => Promise<string>) => void;
@@ -198,7 +198,7 @@ napi_create_threadsafe_function是Node-API接口之一，用于创建一个线�
    import nativeModule from 'libentry1.so';
    ```
    
-   <!-- @napi_thread_safety_ets -->
+   <!-- @[napi_thread_safety_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    // index.ets
@@ -216,7 +216,7 @@ napi_create_threadsafe_function是Node-API接口之一，用于创建一个线�
 
 - napi_threadsafe_function在主线程和子线程使用并无差异，下面是子线程的使用示例。
 
-### 基于Worker实现的C++子线程与ArkTS子线程交互场景
+### 基于[Worker](../../application-dev/arkts-utils/worker-introduction.md)实现的C++子线程与ArkTS子线程交互场景
 
 1. CMakeLists.txt配置
    ``` txt
@@ -243,7 +243,7 @@ napi_create_threadsafe_function是Node-API接口之一，用于创建一个线�
 
 2. 在Native入口定义线程安全函数并创建子线程。
 
-   <!-- @napi_call_threadsafe_function_cpp -->
+   <!-- @[napi_call_threadsafe_function_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/thread_safety.cpp) -->
    
    ``` C++
    #include "napi/native_api.h"
@@ -377,7 +377,7 @@ napi_create_threadsafe_function是Node-API接口之一，用于创建一个线�
    ```
 5. Worker线程示例代码。
 
-   <!-- @napi_call_threadsafe_function_worker -->
+   <!-- @[napi_call_threadsafe_function_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/ets/workers/Worker.ets) -->
    
    ``` TypeScript
    // entry/src/main/ets/workers/Worker.ets
@@ -398,7 +398,7 @@ napi_create_threadsafe_function是Node-API接口之一，用于创建一个线�
 
 6. 接口对应的.d.ts描述。
 
-   <!-- @napi_call_threadsafe_function_dts -->
+   <!-- @[napi_call_threadsafe_function_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/types/libentry1/Index.d.ts) -->
    
    ``` TypeScript
    export const startWithCallback: (input: string, callback: (msg: string) => void) => void;
@@ -410,7 +410,7 @@ napi_create_threadsafe_function是Node-API接口之一，用于创建一个线�
    import { worker } from '@kit.ArkTS';
    ```
 
-   <!-- @napi_call_threadsafe_function_worker_ets -->  
+   <!-- @[napi_call_threadsafe_function_worker_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/ets/pages/Index.ets) -->  
    
    ``` TypeScript
    // index.ets
@@ -430,7 +430,7 @@ napi_create_threadsafe_function是Node-API接口之一，用于创建一个线�
    [Main] Received: Echo of Hello from C++!
    ```
 
-### 基于Taskpool实现的C++子线程与ArkTS子线程交互场景
+### 基于[Taskpool](../../application-dev/arkts-utils/taskpool-introduction.md)实现的C++子线程与ArkTS子线程交互场景
 
 1. native侧实现代码以及模块注册与“基于Worker实现的C++子线程与ArkTS子线程交互场景”一致，可直接复用。
 
@@ -458,7 +458,7 @@ napi_create_threadsafe_function是Node-API接口之一，用于创建一个线�
    }
    ```
 
-   <!-- @napi_call_threadsafe_function_taskpool_ets -->
+   <!-- @[napi_call_threadsafe_function_taskpool_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    // index.ets

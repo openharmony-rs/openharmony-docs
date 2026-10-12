@@ -9,7 +9,7 @@ TaskPool支持开发者在宿主线程封装任务抛给任务队列，系统选
 
 ## TaskPool注意事项
 
-- 实现任务的函数需要使用@Concurrent装饰器标注，且仅支持在.ets文件中使用。
+- 实现任务的函数需要使用[@Concurrent装饰器](#concurrent装饰器)标注，且仅支持在.ets文件中使用。
 
 - 从API version 11开始，跨并发实例传递带方法的实例对象时，该类必须使用装饰器@Sendable装饰器标注，且仅支持在.ets文件中使用。
 
@@ -111,7 +111,7 @@ struct Index {
   }
 }
 ```
-<!--@concurrent_taskpool_common_usage-->
+<!--@[concurrent_taskpool_common_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/TaskPoolIntroduction/entry/src/main/ets/managers/generaluse.ets)-->
 
 #### 并发函数返回Promise
 
@@ -223,7 +223,7 @@ struct Index {
   }
 }
 ```
-<!--@concurrent_taskpool_promise_return-->
+<!--@[concurrent_taskpool_promise_return](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/TaskPoolIntroduction/entry/src/main/ets/managers/returnpromise.ets)-->
 
 #### 并发函数中使用自定义类或函数
 
@@ -304,7 +304,7 @@ struct Index {
   }
 }
 ```
-<!--@quickstart1-->
+<!--@[quickstart1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/TaskPoolIntroduction/entry/src/main/ets/managers/generaluse.ets)-->
 
 ```ts
 // Test.ets
@@ -324,7 +324,7 @@ export class MyTestB {
   static nameStr:string = 'MyTestB';
 }
 ```
-<!--@quickstart-->
+<!--@[quickstart](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/TaskPoolIntroduction/entry/src/main/ets/managers/generaluse.ets)-->
 
 #### 并发异步函数中使用Promise
 
@@ -401,4 +401,4 @@ struct Index {
   }
 }
 ```
-<!--@concurrent_taskpool_async_promise_usage-->
+<!--@[concurrent_taskpool_async_promise_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/TaskPoolIntroduction/entry/src/main/ets/managers/asynchronousfunctions.ets)-->

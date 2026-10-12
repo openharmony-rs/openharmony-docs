@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-Video组件用于播放视频文件并控制其播放状态，常用于短视频和应用内部视频的列表页面。当视频完整出现时会自动播放，用户点击视频区域则会暂停播放，同时显示播放进度条，通过拖动播放进度条指定视频播放到具体位置。具体用法请参考Video。
+Video组件用于播放视频文件并控制其播放状态，常用于短视频和应用内部视频的列表页面。当视频完整出现时会自动播放，用户点击视频区域则会暂停播放，同时显示播放进度条，通过拖动播放进度条指定视频播放到具体位置。具体用法请参考[Video](../reference/apis-arkui/arkui-ts/ts-media-components-video.md)。
 
 
 ## 创建视频组件
@@ -18,7 +18,7 @@ Video通过调用接口来创建，接口调用形式如下：
 
 ## 加载视频资源
 
-Video组件支持加载本地视频和网络视频。具体的数据源配置请参考VideoOptions对象说明。
+Video组件支持加载本地视频和网络视频。具体的数据源配置请参考[VideoOptions对象说明](../reference/apis-arkui/arkui-ts/ts-media-components-video.md#videooptions对象说明)。
 
 
 ### 加载本地视频
@@ -27,11 +27,11 @@ Video组件支持加载本地视频和网络视频。具体的数据源配置请
 
   加载本地视频时，需在工程资源的rawfile目录中放置视频文件，如下图所示。
 
-  videoplayer-local
+  ![videoplayer-local](figures/videoplayer-local.png)
 
   再使用资源访问符$rawfile()引用视频资源。
 
-  <!-- @local_video -->
+  <!-- @[local_video](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/LocalVideo.ets) -->
   
   ``` TypeScript
   // xxx.ets
@@ -57,9 +57,9 @@ Video组件支持加载本地视频和网络视频。具体的数据源配置请
   ```
 
 
-- Data Ability提供的视频路径带有dataability://前缀，使用时确保对应视频资源存在。
+- [Data Ability](../application-models/dataability-overview.md)提供的视频路径带有dataability://前缀，使用时确保对应视频资源存在。
 
-  <!-- @data_ability -->  
+  <!-- @[data_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/DataAbility.ets) -->  
   
   ``` TypeScript
   // xxx.ets
@@ -88,7 +88,7 @@ Video组件支持加载本地视频和网络视频。具体的数据源配置请
 
 支持file://路径前缀的字符串，用于读取应用沙箱路径内的资源，需要确保应用沙箱目录路径下的文件存在并且有可读权限。
 
-<!-- @sandbox -->  
+<!-- @[sandbox](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/Sandbox.ets) -->  
 
 ``` TypeScript
 // xxx.ets
@@ -113,10 +113,10 @@ export struct Sandbox {
 
 ### 加载网络视频
 
-加载网络视频时，需要申请ohos.permission.INTERNET权限，具体申请方式请参考声明权限。此时，Video的src属性为网络视频的链接。
+加载网络视频时，需要申请ohos.permission.INTERNET权限，具体申请方式请参考[声明权限](../security/AccessToken/declare-permissions.md)。此时，Video的src属性为网络视频的链接。
 
 
-<!-- @online_video -->  
+<!-- @[online_video](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/OnlineVideo.ets) -->  
 
 ``` TypeScript
 // xxx.ets
@@ -144,10 +144,10 @@ export struct OnlineVideo {
 
 ## 添加属性
 
-Video组件属性主要用于设置视频的播放形式。例如设置视频播放是否静音、播放是否显示控制条等。
+Video组件[属性](../reference/apis-arkui/arkui-ts/ts-media-components-video.md#属性)主要用于设置视频的播放形式。例如设置视频播放是否静音、播放是否显示控制条等。
 
 
-<!-- @attribute_video -->  
+<!-- @[attribute_video](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/AttributeVideo.ets) -->  
 
 ``` TypeScript
 // xxx.ets
@@ -177,9 +177,9 @@ export struct AttributeVideo {
 
 ## 事件调用
 
-  Video组件回调事件主要包括播放开始、播放暂停、播放结束、播放失败、播放停止、视频准备和操作进度条等事件，除此之外，Video组件也支持通用事件的调用，如点击、触摸等事件的调用。详细事件请参考事件说明。
+  Video组件回调事件主要包括播放开始、播放暂停、播放结束、播放失败、播放停止、视频准备和操作进度条等事件，除此之外，Video组件也支持通用事件的调用，如点击、触摸等事件的调用。详细事件请参考[事件说明](../reference/apis-arkui/arkui-ts/ts-media-components-video.md#事件)。
 
-<!-- @event_call -->  
+<!-- @[event_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/EventCall.ets) -->  
 
 ``` TypeScript
 // xxx.ets
@@ -215,13 +215,13 @@ struct EventCall {
 
 ## Video控制器使用
 
-Video控制器主要用于控制视频的状态，包括播放、暂停、停止以及设置进度等，详细使用请参考VideoController使用说明。
+Video控制器主要用于控制视频的状态，包括播放、暂停、停止以及设置进度等，详细使用请参考[VideoController使用说明](../reference/apis-arkui/arkui-ts/ts-media-components-video.md#videocontroller)。
 
 - 默认控制器
 
   默认的控制器支持视频的开始、暂停、进度调整、全屏显示四项基本功能。
 
-  <!-- @video_guide -->  
+  <!-- @[video_guide](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/VideoControl.ets) -->  
   
   ``` TypeScript
   // xxx.ets
@@ -252,9 +252,9 @@ Video控制器主要用于控制视频的状态，包括播放、暂停、停止
 
 - 自定义控制器
 
-  使用自定义的控制器，先关闭默认控制器，然后使用Button以及Slider等组件进行自定义的控制与显示，适合自定义较强的场景下使用。
+  使用自定义的控制器，先关闭默认控制器，然后使用[Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md)以及[Slider](../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md)等组件进行自定义的控制与显示，适合自定义较强的场景下使用。
 
-  <!-- @customize_control -->  
+  <!-- @[customize_control](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/CustomizedControl.ets) -->  
   
   ``` TypeScript
   // xxx.ets
@@ -319,8 +319,8 @@ Video控制器主要用于控制视频的状态，包括播放、暂停、停止
 
 ## 其他说明
 
-Video组件已经封装好了视频播放的基础能力，开发者无需进行视频实例的创建，视频信息的设置获取，只需要设置数据源以及基础信息即可播放视频，相对扩展能力较弱。如果开发者想自定义视频播放，请使用AVPlayer，下面是一个使用AVPlayer进行播放视频的简单示例，如果需要更详细信息或更复杂功能请参考视频播放。
-<!-- @xcomponent_av_player -->  
+Video组件已经封装好了视频播放的基础能力，开发者无需进行视频实例的创建，视频信息的设置获取，只需要设置数据源以及基础信息即可播放视频，相对扩展能力较弱。如果开发者想自定义视频播放，请使用[AVPlayer](../media/media/media-kit-intro.md#avplayer)，下面是一个使用AVPlayer进行播放视频的简单示例，如果需要更详细信息或更复杂功能请参考[视频播放](../media/media/video-playback.md)。
+<!-- @[xcomponent_av_player](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/VideoPlayer/entry/src/main/ets/pages/XComponentAVPlayer.ets) -->  
 
 ``` TypeScript
 // xxx.ets
@@ -529,7 +529,7 @@ struct XComponentAVPlayer {
 
 针对Video组件开发，有以下相关实例可供参考：
 
--  媒体库视频（ArkTS）（API9）
+- [ 媒体库视频（ArkTS）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Media/VideoShow)
 
-- 简易视频播放器（ArkTS）（API9）
+- [简易视频播放器（ArkTS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/Media/SimpleVideo)
 <!--RP1--><!--RP1End-->

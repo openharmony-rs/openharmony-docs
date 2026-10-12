@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-动画分为静态动画和连续动画。
+动画分为[静态动画](#静态动画)和[连续动画](#连续动画)。
 
 
 ## 静态动画
@@ -19,7 +19,7 @@
 
 - **rotate**：将指定组件沿横轴或纵轴或中心点旋转指定的角度。
 
-具体的使用示例如下，更多信息请参考动画样式。
+具体的使用示例如下，更多信息请参考[动画样式](../reference/apis-arkui/arkui-js/js-components-common-animation.md)。
 
 ```html
 <!-- xxx.hml -->
@@ -67,7 +67,7 @@
 
 **图1** 静态动画效果图
 
-Static-Animation
+![Static-Animation](figures/Static-Animation.png)
 
 
 ## 连续动画
@@ -166,4 +166,4 @@ export default {
 
 **图2** 连续动画效果图
 
-Continuous-Animation
+![Continuous-Animation](figures/Continuous-Animation.gif)

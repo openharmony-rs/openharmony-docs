@@ -9,7 +9,7 @@
 
 ## 系统账号ID体系
 
-在OpenHarmony中，每个系统账号在创建时都会被分配一个唯一的整型标识，称为**系统账号ID**，对应OsAccountInfo中的`localId`字段。系统账号ID按用途可划分为以下类别：
+在OpenHarmony中，每个系统账号在创建时都会被分配一个唯一的整型标识，称为**系统账号ID**，对应[OsAccountInfo](../../reference/apis-basic-services-kit/js-apis-osAccount.md#osaccountinfo)中的`localId`字段。系统账号ID按用途可划分为以下类别：
 
 | 范围 | 类别  | 用途 |
 |------|------|------|
@@ -20,8 +20,8 @@
 
 > **说明**：
 > 
-> 各类系统账号下应用的安装规格，请参考应用安装说明文档。
+> 各类系统账号下应用的安装规格，请参考[应用安装说明文档](../../tools/bm-tool.md#userid)。
 
 ## 相关文档
 
-- OsAccountInfo
+- [OsAccountInfo](../../reference/apis-basic-services-kit/js-apis-osAccount.md#osaccountinfo)

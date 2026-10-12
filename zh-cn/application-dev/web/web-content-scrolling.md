@@ -16,21 +16,21 @@
 + 通过鼠标滚轮控制Web页面滚动：支持用鼠标滚轮上下滚动来控制页面滚动。
 
 ## 调用ArkTS侧接口控制Web页面滚动
-+ scrollTo：在指定时间内，将页面滚动到指定的绝对位置。
++ [scrollTo](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#scrollto)：在指定时间内，将页面滚动到指定的绝对位置。
 
   返回页面顶部。
 
-  <!-- @scrollTo_ArkTS_one -->
+  <!-- @[scrollTo_ArkTS_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebScrollDemo/entry/src/main/ets/pages/WebScrollDemo.ets) -->
   
   ``` TypeScript
   this.webController.scrollTo(0, 0);
   ```
-+ scrollBy：在指定时间内将页面滚动指定的偏移量。
++ [scrollBy](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#scrollby)：在指定时间内将页面滚动指定的偏移量。
 
-  可以作为Web组件嵌套滚动中，控制Web组件滚动的接口，详见滚动偏移量由滚动父组件统一派发。
+  可以作为Web组件嵌套滚动中，控制Web组件滚动的接口，详见[滚动偏移量由滚动父组件统一派发](web-nested-scrolling.md#滚动偏移量由滚动父组件统一派发)。
 
-+ pageUp：将Web组件的内容向上滚动半个视口大小或者滚动到页面最顶部，通过top入参控制。
-+ pageDown：将Web组件的内容向下滚动半个视口大小或者滚动到页面最底部，通过bottom入参控制。
++ [pageUp](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#pageup)：将Web组件的内容向上滚动半个视口大小或者滚动到页面最顶部，通过top入参控制。
++ [pageDown](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#pagedown)：将Web组件的内容向下滚动半个视口大小或者滚动到页面最底部，通过bottom入参控制。
 ## 调用JS侧接口控制Web页面滚动
 + scrollBy：相对当前滚动位置滚动一定距离（正数向下/右，负数向上/左）。
 
@@ -58,7 +58,7 @@
 
 ## 点击状态栏回顶
 
-当Web页面处于非顶部状态或向下抛滑时，此时若需返回Web页面顶部，可以使用backToTop方法，开启后通过点击状态栏，打断抛滑并将Web页面滚动到页面顶部。
+当Web页面处于非顶部状态或向下抛滑时，此时若需返回Web页面顶部，可以使用[backToTop](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#backtotop22)方法，开启后通过点击状态栏，打断抛滑并将Web页面滚动到页面顶部。
 
 + 示例代码：
   ```ts
@@ -116,4 +116,4 @@
   ```
 
 + 效果展示：<br>
-backToTop
+![backToTop](figures/backToTop.gif)

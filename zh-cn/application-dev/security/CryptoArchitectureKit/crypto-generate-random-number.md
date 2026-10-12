@@ -41,16 +41,16 @@
 
 ## 开发步骤
 
-1. 调用cryptoFramework.createRandom，生成随机数实例。
+1. 调用[cryptoFramework.createRandom](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreaterandom)，生成随机数实例。
 
-2. （可选）设置DataBlob数据，调用Random.setSeed，为随机数生成池设置种子。
+2. （可选）设置DataBlob数据，调用[Random.setSeed](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#setseed)，为随机数生成池设置种子。
 
-3. 设置指定字节长度，调用Random.generateRandom或Random.generateRandomSync，生成安全随机数。
+3. 设置指定字节长度，调用[Random.generateRandom](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generaterandom)或[Random.generateRandomSync](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generaterandomsync10)，生成安全随机数。
 
    指定字节长度范围为1~INT_MAX。
 
 - 通过await返回异步结果：
-  <!-- @secure_hard_ware_random_number_generation_await -->
+  <!-- @[secure_hard_ware_random_number_generation_await](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SecureRandomNumberGeneration/entry/src/main/ets/pages/Await.ets) -->
   
   ``` TypeScript
   
@@ -68,7 +68,7 @@
 
 
 - 同步返回结果：
-  <!-- @secure_hard_ware_random_number_generation_sync -->
+  <!-- @[secure_hard_ware_random_number_generation_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/SecureRandomNumberGeneration/entry/src/main/ets/pages/Sync.ets) -->
   
   ``` TypeScript
   
@@ -77,7 +77,7 @@
   
   function doRandBySync() {
     let rand = cryptoFramework.createRandom();
-    let len = 24; // Generate a 24-byte random number.
+    let len = 24; // 生成一个24字节的随机数。
     try {
       let randData = rand.generateRandomSync(len);
       if (randData.data.length !== 0) {

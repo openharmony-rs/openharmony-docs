@@ -7,9 +7,9 @@
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
 
-ArkUI提供了LazyColumnLayout、LazyVGridLayout、LazyVWaterFlowLayout三种预置懒加载布局容器，分别支持垂直线性布局、垂直网格布局和垂直瀑布流布局。当这些预置布局容器无法满足业务需求时，可以使用LazyDynamicLayout组件配合自定义布局算法实现灵活的懒加载布局。
+ArkUI提供了[LazyColumnLayout](../reference/apis-arkui/arkui-ts/ts-container-lazycolumnlayout.md)、[LazyVGridLayout](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md)、[LazyVWaterFlowLayout](../reference/apis-arkui/arkui-ts/ts-container-lazyvwaterflowlayout.md)三种预置懒加载布局容器，分别支持垂直线性布局、垂直网格布局和垂直瀑布流布局。当这些预置布局容器无法满足业务需求时，可以使用[LazyDynamicLayout](../reference/apis-arkui/arkui-ts/ts-container-lazydynamiclayout.md)组件配合自定义布局算法实现灵活的懒加载布局。
 
-LazyDynamicLayout是一个支持懒加载的动态布局容器，允许开发者通过自定义布局算法LazyLayoutAlgorithm实现任意布局模式。该组件仅对父可滚动组件可视区域内的子组件进行创建和布局，减少首帧渲染时间和内存开销。
+LazyDynamicLayout是一个支持懒加载的动态布局容器，允许开发者通过自定义布局算法[LazyLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-lazyLayoutAlgorithm.md#lazylayoutalgorithm-1)实现任意布局模式。该组件仅对父可滚动组件可视区域内的子组件进行创建和布局，减少首帧渲染时间和内存开销。
 
 从API版本26.0.0开始，支持LazyDynamicLayout组件。
 
@@ -28,29 +28,29 @@ LazyDynamicLayout适用于以下典型场景。
 
 ## 约束与限制
 
-1. LazyDynamicLayout需要配合可滚动父组件使用，仅限于List、Scroll、WaterFlow、FlowItem或LazyColumnLayout，并支持使用自定义组件或NodeContainer组件封装后应用在上述组件中。
+1. LazyDynamicLayout需要配合可滚动父组件使用，仅限于[List](../reference/apis-arkui/arkui-ts/ts-container-list.md)、[Scroll](../reference/apis-arkui/arkui-ts/ts-container-scroll.md)、[WaterFlow](../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)、[FlowItem](../reference/apis-arkui/arkui-ts/ts-container-flowitem.md)或[LazyColumnLayout](../reference/apis-arkui/arkui-ts/ts-container-lazycolumnlayout.md)，并支持使用自定义组件或[NodeContainer](../reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md)组件封装后应用在上述组件中。
 
 2. LazyDynamicLayout在不同父组件下的懒加载支持条件如下。
 
    - 在WaterFlow组件下，仅在WaterFlow组件的单列模式或分段布局中的单列分段场景下使用时支持懒加载。
    
-   - 在List组件下，当List设置了lanes、chainAnimation、scrollSnapAlign属性中的任意一个时，该组件的懒加载功能会失效。
+   - 在List组件下，当List设置了[lanes](../reference/apis-arkui/arkui-ts/ts-container-list.md#lanes9)、[chainAnimation](../reference/apis-arkui/arkui-ts/ts-container-list.md#chainanimation)、[scrollSnapAlign](../reference/apis-arkui/arkui-ts/ts-container-list.md#scrollsnapalign10)属性中的任意一个时，该组件的懒加载功能会失效。
    
-   - 在Scroll、List、WaterFlow组件下使用时，Scroll、List、WaterFlow的滚动方向（水平或垂直）必须和该组件布局方向相同，若布局方向不同会导致应用崩溃。该组件布局方向通过LazyCustomLayoutAlgorithm的构造函数参数axis成员设置。
+   - 在Scroll、List、WaterFlow组件下使用时，Scroll、List、WaterFlow的滚动方向（水平或垂直）必须和该组件布局方向相同，若布局方向不同会导致应用崩溃。该组件布局方向通过[LazyCustomLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-lazyLayoutAlgorithm.md#lazycustomlayoutalgorithm)的构造函数参数axis成员设置。
 
    - 通过FlowItem、LazyColumnLayout、自定义组件或NodeContainer封装使用时，懒加载行为取决于其上层滚动组件（如WaterFlow、Scroll或List）的配置条件。
 
-3. 当布局算法为LazyCustomLayoutAlgorithm时，LazyDynamicLayout组件FrameNode的setMeasuredSize方法优先级高于尺寸设置和边框设置属性，子组件FrameNode的measure和layout方法优先级高于ignoreLayoutSafeArea属性。
+3. 当布局算法为[LazyCustomLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-lazyLayoutAlgorithm.md#lazycustomlayoutalgorithm)时，LazyDynamicLayout组件[FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#framenode-1)的[setMeasuredSize](../reference/apis-arkui/js-apis-arkui-frameNode.md#setmeasuredsize12)方法优先级高于[尺寸设置](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md)和[边框设置](../reference/apis-arkui/arkui-ts/ts-universal-attributes-border.md)属性，子组件[FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#framenode-1)的[measure](../reference/apis-arkui/js-apis-arkui-frameNode.md#measure12)和[layout](../reference/apis-arkui/js-apis-arkui-frameNode.md#layout12)方法优先级高于[ignoreLayoutSafeArea](../reference/apis-arkui/arkui-ts/ts-universal-attributes-expand-safe-area.md#ignorelayoutsafearea20)属性。
 
 ## 自定义布局算法开发步骤
 
-自定义布局算法需要继承LazyCustomLayoutAlgorithm类，并实现onMeasure和onLayout方法。以下以LazyColumnLayoutAlgorithm为例，介绍自定义布局算法的开发步骤。
+自定义布局算法需要继承[LazyCustomLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-lazyLayoutAlgorithm.md#lazycustomlayoutalgorithm)类，并实现onMeasure和onLayout方法。以下以LazyColumnLayoutAlgorithm为例，介绍自定义布局算法的开发步骤。
 
 ### 创建布局算法类
 
 首先创建一个继承自LazyCustomLayoutAlgorithm的类，定义布局所需的参数和数据结构。
 
-<!-- @lazy_custom_layout_algorithm_class -->
+<!-- @[lazy_custom_layout_algorithm_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyCustomLayout/LazyColumnLayoutAlgorithm.ets) -->
 
 ``` TypeScript
 /**
@@ -95,7 +95,7 @@ export class LazyColumnLayoutAlgorithm extends LazyCustomLayoutAlgorithm {
   private anchorChildRelativePos: number = 0;        // 锚点位置（正向距内容顶部，反向距内容底部）
 ```
 
-定义内边距变量用于存储容器的内边距信息。通过getUserConfigPadding方法获取用户设置的padding属性值，该方法返回的LengthMetrics类型需要转换为像素值。
+定义内边距变量用于存储容器的内边距信息。通过[getUserConfigPadding](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuserconfigpadding12)方法获取用户设置的padding属性值，该方法返回的[LengthMetrics](../reference/apis-arkui/js-apis-arkui-graphics.md#lengthmetrics12)类型需要转换为像素值。
 
 ``` TypeScript
 private updatePadding(self: FrameNode, constraint: LayoutConstraint): void {
@@ -133,9 +133,9 @@ private convertToPx(lengthMetrics: LengthMetrics | undefined, referenceSize?: nu
 }
 ```
 
-提供setRowGap方法用于动态修改间距。当布局参数变化时，调用setNeedsLayout方法触发重新布局。
+提供setRowGap方法用于动态修改间距。当布局参数变化时，调用[setNeedsLayout](../reference/apis-arkui/js-apis-arkui-frameNode.md#setneedslayout12)方法触发重新布局。
 
-<!-- @lazy_custom_layout_algorithm_set_row_gap -->
+<!-- @[lazy_custom_layout_algorithm_set_row_gap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyCustomLayout/LazyColumnLayoutAlgorithm.ets) -->
 
 ``` TypeScript
 setRowGap(value: number): void {
@@ -152,7 +152,7 @@ setRowGap(value: number): void {
 
 onMeasure方法负责测量子组件并计算容器大小。在懒加载模式下，该方法的核心流程如下。
 
-<!-- @lazy_custom_layout_algorithm_on_measure -->
+<!-- @[lazy_custom_layout_algorithm_on_measure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyCustomLayout/LazyColumnLayoutAlgorithm.ets) -->
 
 ``` TypeScript
 /**
@@ -206,11 +206,11 @@ onMeasure(self: FrameNode, constraint: LayoutConstraint, helper?: LazyLayoutHelp
 
 1. 计算并保存内边距。
 
-    通过getUserConfigPadding方法获取容器设置的padding属性值，并根据单位类型转换为像素值。内边距需要在后续测量和布局中使用。
+    通过[getUserConfigPadding](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuserconfigpadding12)方法获取容器设置的padding属性值，并根据单位类型转换为像素值。内边距需要在后续测量和布局中使用。
 
 2. 处理空子元素或非懒加载布局。
 
-    首先获取子组件总数，使用ChildrenCountMode.ALL_NOT_EXPAND避免全量加载导致懒加载失效。如果子组件数量为0，清空测量状态并设置容器高度为垂直内边距（topPadding + bottomPadding）。如果helper参数为undefined，表示不支持懒加载（如在List多列模式下），需要全量测量所有子组件。
+    首先获取子组件总数，使用[ChildrenCountMode](../reference/apis-arkui/js-apis-arkui-frameNode.md#childrencountmode).ALL_NOT_EXPAND避免全量加载导致懒加载失效。如果子组件数量为0，清空测量状态并设置容器高度为垂直内边距（topPadding + bottomPadding）。如果helper参数为undefined，表示不支持懒加载（如在List多列模式下），需要全量测量所有子组件。
 
 3. 处理布局参数变化保持滚动稳定。
 
@@ -225,7 +225,7 @@ onMeasure(self: FrameNode, constraint: LayoutConstraint, helper?: LazyLayoutHelp
         - 正向滚动（FORWARD，从上到下）：锚点是可视区域的第一个子组件（startIndex）。
         - 反向滚动（BACKWARD，从下到上）：锚点是可视区域的最后一个子组件（endIndex）。
 
-        <!-- @lazy_custom_layout_save_anchor -->
+        <!-- @[lazy_custom_layout_save_anchor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyCustomLayout/LazyColumnLayoutAlgorithm.ets) -->
         
         ``` TypeScript
         /**
@@ -274,9 +274,9 @@ onMeasure(self: FrameNode, constraint: LayoutConstraint, helper?: LazyLayoutHelp
 
     - 调整滚动位置。
 
-        通过对比锚点的新旧位置，计算偏移调整量，并通过setAdjustedOffset调整滚动位置。
+        通过对比锚点的新旧位置，计算偏移调整量，并通过[setAdjustedOffset](../reference/apis-arkui/js-apis-arkui-lazyLayoutAlgorithm.md#setadjustedoffset)调整滚动位置。
 
-        <!-- @lazy_custom_layout_algorithm_adjust_anchor -->
+        <!-- @[lazy_custom_layout_algorithm_adjust_anchor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyCustomLayout/LazyColumnLayoutAlgorithm.ets) -->
         
         ``` TypeScript
         /**
@@ -326,9 +326,9 @@ onMeasure(self: FrameNode, constraint: LayoutConstraint, helper?: LazyLayoutHelp
 
     - 获取子组件。
 
-        通过getChild方法获取指定索引的子组件FrameNode。必须传入ExpandMode.LAZY_NOT_EXPAND参数，避免全量加载导致懒加载失效。
+        通过[getChild](../reference/apis-arkui/js-apis-arkui-frameNode.md#getchild12)方法获取指定索引的子组件[FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#framenode-1)。必须传入[ExpandMode.LAZY_NOT_EXPAND](../reference/apis-arkui/js-apis-arkui-frameNode.md#expandmode15)参数，避免全量加载导致懒加载失效。
 
-        <!-- @lazy_custom_layout_get_child_not_expand -->
+        <!-- @[lazy_custom_layout_get_child_not_expand](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyCustomLayout/LazyColumnLayoutAlgorithm.ets) -->
         
         ``` TypeScript
         let child = self.getChild(currIndex, ExpandMode.LAZY_NOT_EXPAND);
@@ -338,7 +338,7 @@ onMeasure(self: FrameNode, constraint: LayoutConstraint, helper?: LazyLayoutHelp
 
         根据容器约束和布局需求，为子组件创建测量约束。单列布局中，子组件宽度等于容器宽度减去左右内边距。
 
-        <!-- @lazy_custom_layout_create_child_constraint -->
+        <!-- @[lazy_custom_layout_create_child_constraint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyCustomLayout/LazyColumnLayoutAlgorithm.ets) -->
         
         ``` TypeScript
         /**
@@ -371,13 +371,13 @@ onMeasure(self: FrameNode, constraint: LayoutConstraint, helper?: LazyLayoutHelp
 
     - 调用子组件measure函数和获取测量大小。
 
-        调用子组件FrameNode的measure方法，传入测量约束，触发子组件测量流程。测量完成后，通过getMeasuredSize方法获取子组件的测量大小。
+        调用子组件[FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#framenode-1)的[measure](../reference/apis-arkui/js-apis-arkui-frameNode.md#measure12)方法，传入测量约束，触发子组件测量流程。测量完成后，通过[getMeasuredSize](../reference/apis-arkui/js-apis-arkui-frameNode.md#getmeasuredsize12)方法获取子组件的测量大小。
 
     **完整测量流程示例**
 
     以下示例展示了正向测量可视范围内元素的完整流程，包含获取子组件、创建约束、调用measure、获取测量大小、记录位置信息。
 
-    <!-- @lazy_custom_layout_measure_forward -->
+    <!-- @[lazy_custom_layout_measure_forward](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyCustomLayout/LazyColumnLayoutAlgorithm.ets) -->
     
     ``` TypeScript
     private measureForward(
@@ -421,7 +421,7 @@ onMeasure(self: FrameNode, constraint: LayoutConstraint, helper?: LazyLayoutHelp
 
     对于未测量的子组件区域，使用估算高度计算总高度，避免为了获取总高度而全量测量所有子组件。
 
-    <!-- @lazy_custom_layout_estimate -->
+    <!-- @[lazy_custom_layout_estimate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyCustomLayout/LazyColumnLayoutAlgorithm.ets) -->
     
     ``` TypeScript
     private calculateEstimateItemHeight(): void {
@@ -448,9 +448,9 @@ onMeasure(self: FrameNode, constraint: LayoutConstraint, helper?: LazyLayoutHelp
 
 5. 回收离开可视区域的子组件。
 
-    当子组件离开可视区域后，通过setChildrenInactive将其设置为非激活态，释放内存。
+    当子组件离开可视区域后，通过[setChildrenInactive](../reference/apis-arkui/js-apis-arkui-lazyLayoutAlgorithm.md#setchildreninactive)将其设置为非激活态，释放内存。
 
-    <!-- @lazy_custom_layout_recycle -->
+    <!-- @[lazy_custom_layout_recycle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyCustomLayout/LazyColumnLayoutAlgorithm.ets) -->
     
     ``` TypeScript
     /**
@@ -482,27 +482,27 @@ onMeasure(self: FrameNode, constraint: LayoutConstraint, helper?: LazyLayoutHelp
 
 6. 设置布局容器自身大小。
 
-    最后调用setMeasuredSize设置容器的测量大小。容器宽度通常设置为constraint.maxSize.width，高度根据子组件排列情况、估算高度和垂直内边距（topPadding + bottomPadding）计算得出。
+    最后调用[setMeasuredSize](../reference/apis-arkui/js-apis-arkui-frameNode.md#setmeasuredsize12)设置容器的测量大小。容器宽度通常设置为constraint.maxSize.width，高度根据子组件排列情况、估算高度和垂直内边距（[topPadding](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#padding) + [bottomPadding](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#padding)）计算得出。
 
     **关键接口说明**
 
     | 接口 | 说明 |
     |------|------|
-    | getChildrenCount | 获取子组件总数。使用ChildrenCountMode.ALL_NOT_EXPAND避免获取子组件总数时全量加载导致懒加载失效。 |
-    | getChild | 获取指定索引的子组件FrameNode。使用ExpandMode.LAZY_NOT_EXPAND避免获取子组件时全量加载导致懒加载失效。 |
-    | getViewStart | 获取可视区域的起始位置（相对于LazyDynamicLayout内容区域顶部）。 |
-    | getViewEnd | 获取可视区域的结束位置。 |
-    | getLazyLayoutDirection | 获取当前布局方向。FORWARD表示正向布局（从上到下），BACKWARD表示反向布局（从下到上）。 |
-    | setAdjustedOffset | 设置偏移调整量。用于布局参数变化后调整滚动位置，使锚点子组件在可视区域内的相对位置保持不变；正向布局时锚点为可视区域第一个子组件，反向布局时为可视区域最后一个子组件。 |
-    | setChildrenInactive | 将指定索引的子组件设置为非激活态。非激活态的子组件会被回收，释放内存。 |
-    | getUserConfigPadding | 获取用户设置的padding属性值。返回LengthMetrics类型，需要转换为像素值。 |
-    | setMeasuredSize | 设置组件的测量大小。 |
+    | [getChildrenCount](../reference/apis-arkui/js-apis-arkui-frameNode.md#getchildrencount12) | 获取子组件总数。使用[ChildrenCountMode](../reference/apis-arkui/js-apis-arkui-frameNode.md#childrencountmode).ALL_NOT_EXPAND避免获取子组件总数时全量加载导致懒加载失效。 |
+    | [getChild](../reference/apis-arkui/js-apis-arkui-frameNode.md#getchild12) | 获取指定索引的子组件[FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#framenode-1)。使用[ExpandMode.LAZY_NOT_EXPAND](../reference/apis-arkui/js-apis-arkui-frameNode.md#expandmode15)避免获取子组件时全量加载导致懒加载失效。 |
+    | [getViewStart](../reference/apis-arkui/js-apis-arkui-lazyLayoutAlgorithm.md#getviewstart) | 获取可视区域的起始位置（相对于LazyDynamicLayout内容区域顶部）。 |
+    | [getViewEnd](../reference/apis-arkui/js-apis-arkui-lazyLayoutAlgorithm.md#getviewend) | 获取可视区域的结束位置。 |
+    | [getLazyLayoutDirection](../reference/apis-arkui/js-apis-arkui-lazyLayoutAlgorithm.md#getlazylayoutdirection) | 获取当前布局方向。FORWARD表示正向布局（从上到下），BACKWARD表示反向布局（从下到上）。 |
+    | [setAdjustedOffset](../reference/apis-arkui/js-apis-arkui-lazyLayoutAlgorithm.md#setadjustedoffset) | 设置偏移调整量。用于布局参数变化后调整滚动位置，使锚点子组件在可视区域内的相对位置保持不变；正向布局时锚点为可视区域第一个子组件，反向布局时为可视区域最后一个子组件。 |
+    | [setChildrenInactive](../reference/apis-arkui/js-apis-arkui-lazyLayoutAlgorithm.md#setchildreninactive) | 将指定索引的子组件设置为非激活态。非激活态的子组件会被回收，释放内存。 |
+    | [getUserConfigPadding](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuserconfigpadding12) | 获取用户设置的padding属性值。返回LengthMetrics类型，需要转换为像素值。 |
+    | [setMeasuredSize](../reference/apis-arkui/js-apis-arkui-frameNode.md#setmeasuredsize12) | 设置组件的测量大小。 |
 
 ### 实现onLayout方法
 
 onLayout方法负责确定每个子组件的位置。在onLayout方法中，需要遍历可视区域的所有子组件，调用每个子组件的layout方法，传入相对于LazyDynamicLayout组件区域左上角的布局位置。布局子组件时需要考虑内边距：子组件的x坐标为leftPadding，y坐标为itemArr中记录的位置加上topPadding。
 
-<!-- @lazy_custom_layout_algorithm_on_layout -->
+<!-- @[lazy_custom_layout_algorithm_on_layout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyCustomLayout/LazyColumnLayoutAlgorithm.ets) -->
 
 ``` TypeScript
 onLayout(self: FrameNode): void {
@@ -535,7 +535,7 @@ onLayout(self: FrameNode): void {
 
 使用LazyDynamicLayout组件时，需要先导入组件和布局算法类，然后在构造函数中传入布局算法实例。
 
-<!-- @lazy_custom_layout_create -->
+<!-- @[lazy_custom_layout_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyCustomLayout/CustomLazyColumnLayoutSample.ets) -->
 
 ``` TypeScript
 @Component
@@ -586,17 +586,17 @@ export struct CustomLazyColumnLayoutSample {
 }
 ```
 
-动态调整布局参数，配合\@Watch装饰器监听参数变化。
+动态调整布局参数，配合[\@Watch](state-management/arkts-watch.md)装饰器监听参数变化。
 
-<!-- @lazy_custom_layout_dynamic_param -->
+<!-- @[lazy_custom_layout_dynamic_param](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyCustomLayout/CustomLazyColumnLayoutSample.ets) -->
 
 ``` TypeScript
 @State @Watch('onRowGapChange') rowGap: number = 5;
 ```
 
-布局算法中的尺寸参数使用像素单位，需要通过getUIContext().vp2px方法进行单位转换。
+布局算法中的尺寸参数使用像素单位，需要通过[getUIContext().vp2px](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#vp2px12)方法进行单位转换。
 
-<!-- @lazy_custom_layout_unit_convert -->
+<!-- @[lazy_custom_layout_unit_convert](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyCustomLayout/CustomLazyColumnLayoutSample.ets) -->
 
 ``` TypeScript
 onRowGapChange(): void {
@@ -610,9 +610,9 @@ onRowGapChange(): void {
 
 ### 监听可视区域变化
 
-LazyDynamicLayout组件提供了onVisibleIndexesChange事件，用于监听可视区域内子组件索引值的变化。当LazyDynamicLayout首次布局完成或在其父可滚动组件可视区域内的子组件索引值发生变化时触发回调，返回可视区域内子组件的索引值列表。
+LazyDynamicLayout组件提供了[onVisibleIndexesChange](../reference/apis-arkui/arkui-ts/ts-container-lazydynamiclayout.md#onvisibleindexeschange)事件，用于监听可视区域内子组件索引值的变化。当LazyDynamicLayout首次布局完成或在其父可滚动组件可视区域内的子组件索引值发生变化时触发回调，返回可视区域内子组件的索引值列表。
 
-<!-- @lazy_custom_layout_on_visible_indexes_change -->
+<!-- @[lazy_custom_layout_on_visible_indexes_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyCustomLayout/CustomLazyColumnLayoutSample.ets) -->
 
 ``` TypeScript
 LazyDynamicLayout(this.lazyAlgorithm) {
@@ -627,16 +627,16 @@ LazyDynamicLayout(this.lazyAlgorithm) {
 
 以下示例展示了如何使用LazyDynamicLayout配合自定义布局算法LazyColumnLayoutAlgorithm实现懒加载单列列表，支持动态调整行间距并保持滚动位置稳定。
 <!--RP1-->
-完整示例请参考自定义懒加载单列布局示例。
+完整示例请参考[自定义懒加载单列布局示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyCustomLayout/CustomLazyColumnLayoutSample.ets)。
 <!--RP1End-->
-上述示例中，点击底部按钮可以切换行间距。由于布局算法中实现了setAdjustedOffset调整逻辑，切换间距后锚点子组件（正向布局时为可视区域第一个子组件，反向布局时为可视区域最后一个子组件）的位置保持不变，避免了滚动跳动。
+上述示例中，点击底部按钮可以切换行间距。由于布局算法中实现了[setAdjustedOffset](../reference/apis-arkui/js-apis-arkui-lazyLayoutAlgorithm.md#setadjustedoffset)调整逻辑，切换间距后锚点子组件（正向布局时为可视区域第一个子组件，反向布局时为可视区域最后一个子组件）的位置保持不变，避免了滚动跳动。
 
-LazyDynamicLayout1.gif
+![LazyDynamicLayout1.gif](figures/customLazyColumnLayout.gif)
 
 针对自定义懒加载布局的开发，有以下相关实例可供参考。
 
 <!--RP2-->
-- 自定义懒加载单列布局示例：展示如何使用LazyDynamicLayout配合LazyColumnLayoutAlgorithm实现懒加载单列列表。
-- 自定义懒加载网格布局示例：展示如何使用LazyDynamicLayout配合LazyGridLayoutAlgorithm实现懒加载网格布局。
-- 自定义懒加载瀑布流布局示例：展示如何使用LazyDynamicLayout配合LazyWaterFlowLayoutAlgorithm实现懒加载瀑布流布局。
+- [自定义懒加载单列布局示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyCustomLayout/CustomLazyColumnLayoutSample.ets)：展示如何使用LazyDynamicLayout配合LazyColumnLayoutAlgorithm实现懒加载单列列表。
+- [自定义懒加载网格布局示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyCustomLayout/CustomLazyGridLayoutSample.ets)：展示如何使用LazyDynamicLayout配合LazyGridLayoutAlgorithm实现懒加载网格布局。
+- [自定义懒加载瀑布流布局示例](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyCustomLayout/CustomLazyWaterFlowLayoutSample.ets)：展示如何使用LazyDynamicLayout配合LazyWaterFlowLayoutAlgorithm实现懒加载瀑布流布局。
 <!--RP2End-->

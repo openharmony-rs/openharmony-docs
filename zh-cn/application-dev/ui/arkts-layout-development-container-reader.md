@@ -7,9 +7,9 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-容器断点组件ContainerReader是ArkUI提供的一种响应式布局解决方案，从API版本26.0.0开始，允许开发者基于容器尺寸而非窗口尺寸实现自适应布局。与传统的窗口断点相比，容器断点提供了更细粒度的布局控制能力，使得组件能够在不同的容器尺寸下呈现不同的布局效果。
+容器断点组件[ContainerReader](../reference/apis-arkui/arkui-ts/ts-container-containerreader.md)是ArkUI提供的一种响应式布局解决方案，从API版本26.0.0开始，允许开发者基于容器尺寸而非窗口尺寸实现自适应布局。与传统的窗口断点相比，容器断点提供了更细粒度的布局控制能力，使得组件能够在不同的容器尺寸下呈现不同的布局效果。
 
-ContainerReader在实际开发中常用于Flex、Row或Column容器内部、Navigation以及自定义组件内部场景，提供实时尺寸获取、断点值获取和自定义断点阈值核心功能。
+ContainerReader在实际开发中常用于[Flex](../reference/apis-arkui/arkui-ts/ts-container-flex.md)、[Row](../reference/apis-arkui/arkui-ts/ts-container-row.md)或[Column](../reference/apis-arkui/arkui-ts/ts-container-column.md)容器内部、[Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md)以及[自定义组件](state-management/arkts-create-custom-components.md)内部场景，提供实时尺寸获取、断点值获取和自定义断点阈值核心功能。
 
 ## 能力范围
 
@@ -18,12 +18,12 @@ ContainerReader提供以下关键能力。
 - **容器级尺寸感知**：基于组件自身实际尺寸确定断点值，而非窗口尺寸。适用于组件级响应式布局、嵌套布局场景和可复用组件开发。
 - **双向绑定实时获取**：通过状态变量实时获取容器尺寸和断点信息。
 - **宽度/高度双模式**：同时支持宽度断点和高度断点，满足不同维度的自适应需求。
-- **自定义断点阈值**：通过breakpointConfig属性灵活配置不同尺寸区间对应的布局策略。
+- **自定义断点阈值**：通过[breakpointConfig](../reference/apis-arkui/arkui-ts/ts-container-containerreader.md#breakpointconfig)属性灵活配置不同尺寸区间对应的布局策略。
 
 
 ## 布局规格
 
-从API版本26.0.0开始，ContainerReader组件在不同父容器类型下的布局规格如下。
+从API版本26.0.0开始，[ContainerReader](../reference/apis-arkui/arkui-ts/ts-container-containerreader.md)组件在不同父容器类型下的布局规格如下。
 
 > **说明：**
 > - 当父容器为Flex组件、Row组件或Column组件时，ContainerReader会占满父容器剩余空间，Flex的弹性特性生效优先级不变。
@@ -36,9 +36,9 @@ ContainerReader提供以下关键能力。
 | 其他类型组件 | 撑满父组件。 | 撑满父组件。 |
 
 
-ContainerReader作为子组件时，其尺寸由父容器决定。当父容器为Flex、Row或Column时，ContainerReader会根据父容器的布局方向自动撑满父容器剩余空间。
+[ContainerReader](../reference/apis-arkui/arkui-ts/ts-container-containerreader.md)作为子组件时，其尺寸由父容器决定。当父容器为Flex、Row或Column时，ContainerReader会根据父容器的布局方向自动撑满父容器剩余空间。
 
-<!-- @FillTheSpace -->  
+<!-- @[FillTheSpace](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/layoutSpecifications/FillTheSpace.ets) -->  
 
 ``` TypeScript
 import {ContainerReader,  Size} from '@kit.ArkUI';
@@ -69,11 +69,11 @@ struct Example {
 }
 ```
 
+![](figures/containerReader-development-demo1.png)
 
+[ContainerReader](../reference/apis-arkui/arkui-ts/ts-container-containerreader.md)作为Flex、Row或Column的子组件使用时，会优先为非ContainerReader类型的子组件测算尺寸，再结合父容器剩余空间与开发者设置为ContainerReader组件分配空间。这在固定内容与自适应内容并存的场景中较为适用。
 
-ContainerReader作为Flex、Row或Column的子组件使用时，会优先为非ContainerReader类型的子组件测算尺寸，再结合父容器剩余空间与开发者设置为ContainerReader组件分配空间。这在固定内容与自适应内容并存的场景中较为适用。
-
-<!-- @DivideRemainingSpace -->  
+<!-- @[DivideRemainingSpace](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/layoutSpecifications/DivideRemainingSpace.ets) -->  
 
 ``` TypeScript
 import {ContainerReader,  Size} from '@kit.ArkUI';
@@ -113,11 +113,11 @@ struct Example {
 }
 ```
 
+![](figures/containerReader-development-remainSize.png)
 
+当Flex、Row或Column容器中有多个[ContainerReader](../reference/apis-arkui/arkui-ts/ts-container-containerreader.md)子组件时，按开发者书写顺序第一个ContainerReader会占满剩余空间，此时其余ContainerReader组件的主轴大小为0。但开发者可以通过layoutWeight属性使多个ContainerReader平分剩余空间。
 
-当Flex、Row或Column容器中有多个ContainerReader子组件时，按开发者书写顺序第一个ContainerReader会占满剩余空间，此时其余ContainerReader组件的主轴大小为0。但开发者可以通过layoutWeight属性使多个ContainerReader平分剩余空间。
-
-<!-- @DivideRemainingSpaceEqually -->  
+<!-- @[DivideRemainingSpaceEqually](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/layoutSpecifications/DivideRemainingSpaceEqually.ets) -->  
 
 ``` TypeScript
 import {ContainerReader,  Size} from '@kit.ArkUI';
@@ -179,7 +179,7 @@ struct Example {
 }
 ```
 
-
+![](figures/containerReader-development-remainSize-layoutWeight.png)
 
 
 ## 约束与限制
@@ -215,7 +215,7 @@ ContainerReader({
 
 **尺寸计算时机**
 
-ContainerReader的尺寸由父容器和自身布局确定，不受子组件影响。在ContainerReader组件尺寸测算时，先根据父组件和自身设置确认自身尺寸，然后再做子组件的展开尺寸测算。为防止在节点未尺寸测算前的生命周期中使用ContainerReader组件双向绑定的size状态变量，需要给双向绑定状态变量一个初始值。
+[ContainerReader](../reference/apis-arkui/arkui-ts/ts-container-containerreader.md)的尺寸由父容器和自身布局确定，不受子组件影响。在ContainerReader组件尺寸测算时，先根据父组件和自身设置确认自身尺寸，然后再做子组件的展开尺寸测算。为防止在节点未尺寸测算前的生命周期中使用ContainerReader组件双向绑定的size状态变量，需要给双向绑定状态变量一个初始值。
 
 因此请确保，父容器有明确尺寸，含有ContainerReader组件的父容器不应依赖子节点确认自身大小，ContainerReader组件不依赖自身子节点大小确认尺寸。
 
@@ -226,12 +226,12 @@ ContainerReader的主要接口包括ContainerReader和breakpointConfig。
 
 - ContainerReader接口
 
-   ContainerReader是实现容器断点的核心组件，其使用要求如下。ContainerReaderInfo所有参数都必须通过状态变量进行双向绑定。ContainerReader通过双向绑定机制，将后端计算的尺寸和断点值实时更新到状态变量中。不能通过改变此处ContainerReaderInfo的size来试图设置ContainerReader尺寸。在使用状态变量时需要添加!!后缀，触发双向绑定更新。
+   [ContainerReader](../reference/apis-arkui/arkui-ts/ts-container-containerreader.md)是实现容器断点的核心组件，其使用要求如下。[ContainerReaderInfo](../reference/apis-arkui/arkui-ts/ts-container-containerreader.md#containerreaderinfo)所有参数都必须通过状态变量进行双向绑定。ContainerReader通过双向绑定机制，将后端计算的尺寸和断点值实时更新到状态变量中。不能通过改变此处[ContainerReaderInfo](../reference/apis-arkui/arkui-ts/ts-container-containerreader.md#containerreaderinfo)的size来试图设置ContainerReader尺寸。在使用状态变量时需要添加[!!](state-management/arkts-new-binding.md)后缀，触发双向绑定更新。
 
 
 - breakpointConfig属性
 
-   通过breakpointConfig属性可以自定义断点阈值。断点数组必须为单调递增数组。其中，宽度断点最多支持5个，即数组最大长度为4；高度断点最多支持3个，即数组最大长度为2。断点区间为左闭右开区间`[breakpoint[i], breakpoint[i+1])`。宽度断点值单位为vp；高度断点值为组件高度与宽度的比值，无单位。
+   通过[breakpointConfig](../reference/apis-arkui/arkui-ts/ts-container-containerreader.md#breakpointconfig)属性可以自定义断点阈值。断点数组必须为单调递增数组。其中，宽度断点最多支持5个，即数组最大长度为4；高度断点最多支持3个，即数组最大长度为2。断点区间为左闭右开区间`[breakpoint[i], breakpoint[i+1])`。宽度断点值单位为vp；高度断点值为组件高度与宽度的比值，无单位。
 
    **异常处理规则：**
 
@@ -264,7 +264,7 @@ ContainerReader的主要接口包括ContainerReader和breakpointConfig。
 
    首先需要声明用于存储容器尺寸和断点信息的状态变量并初始化，防止在未获取ContainerReader的大小和断点时使用造成异常。
 
-   <!-- @DevelopmentSteps1 -->  
+   <!-- @[DevelopmentSteps1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/developmentSteps/DevelopmentSteps.ets) -->  
    
    ``` TypeScript
    @State containerSize: Size = { width: 0, height: 0 };
@@ -275,7 +275,7 @@ ContainerReader的主要接口包括ContainerReader和breakpointConfig。
 
    将状态变量绑定到ContainerReader组件，使用`!!`后缀触发双向绑定更新。
 
-   <!-- @DevelopmentSteps2 -->  
+   <!-- @[DevelopmentSteps2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/developmentSteps/DevelopmentSteps.ets) -->  
    
    ``` TypeScript
    ContainerReader({
@@ -301,7 +301,7 @@ ContainerReader的主要接口包括ContainerReader和breakpointConfig。
 
    以情况一的撑满父容器为例，Flex给子组件ContainerReader分配与Flex等大的空间。
 
-   <!-- @DevelopmentSteps -->  
+   <!-- @[DevelopmentSteps](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/developmentSteps/DevelopmentSteps.ets) -->  
    
    ``` TypeScript
    import {ContainerReader,  Size} from '@kit.ArkUI';
@@ -333,14 +333,14 @@ ContainerReader的主要接口包括ContainerReader和breakpointConfig。
    ```
 
 
-   
+   ![](figures/containerReader-development-demo1.png)
 
 
 ## 实现独立断点
 
 在同一组件中，可以同时使用多个ContainerReader组件，每个组件可以拥有独立的断点状态，实现更精细化的布局控制。
 
-<!-- @IndependentBreakpoints -->  
+<!-- @[IndependentBreakpoints](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/developmentDemo/IndependentBreakpoints.ets) -->  
 
 ``` TypeScript
 import {ContainerReader,  Size} from '@kit.ArkUI';
@@ -399,14 +399,14 @@ struct MultiContainerExample {
 }
 ```
 
-
+![](figures/containerReader-development-multi.png)
 
 
 ## 网格组件根据自身容器断点设置列数
 
-在多设备开发中，网格组件（如Grid）可以根据自身容器尺寸设置不同的列数，实现自适应的列表布局。
+在多设备开发中，网格组件（如[Grid](../reference/apis-arkui/arkui-ts/ts-container-grid.md)）可以根据自身容器尺寸设置不同的列数，实现自适应的列表布局。
 
-<!-- @GridComponentAdaptiveColumnSettings -->  
+<!-- @[GridComponentAdaptiveColumnSettings](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/developmentDemo/GridComponentAdaptiveColumnSettings.ets) -->  
 
 ``` TypeScript
 import {ContainerReader,  Size} from '@kit.ArkUI';
@@ -480,14 +480,14 @@ struct GridBreakpointExample {
 ```
 
 
-
+![](figures/containerReader-development-grid.png)
 
 
 ## 自定义组件根据容器断点自适应布局
 
 开发者可以创建自定义组件，组件内部使用ContainerReader来实现自适应的内部布局，使组件在不同的使用场景下都能呈现最佳效果。
 
-<!-- @CustomComponentAdaptiveLayout -->  
+<!-- @[CustomComponentAdaptiveLayout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/developmentDemo/CustomComponentAdaptiveLayout.ets) -->  
 
 ``` TypeScript
 import {ContainerReader,  Size} from '@kit.ArkUI';
@@ -554,14 +554,14 @@ struct AdaptiveCardExample {
 }
 ```
 
-
+![](figures/containerReader-development-custom.png)
 
 
 ## 左右分栏布局自适应
 
 在主从结构页面中，左侧为固定宽度的Tab标签，右侧为自适应的详情区域。右侧详情区域使用ContainerReader，根据剩余宽度自动切换布局：窄屏时上下排列，宽屏时左右排列。
 
-<!-- @LeftOrRightSplitLayout -->  
+<!-- @[LeftOrRightSplitLayout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ContainerReader/entry/src/main/ets/pages/developmentDemo/LeftOrRightSplitLayout.ets) -->  
 
 ``` TypeScript
 import { ContainerReader,  Size } from '@kit.ArkUI';
@@ -674,8 +674,8 @@ struct SplitLayoutExample {
 
 窄屏时上下排列。
 
-
+![](figures/containerReader-development-tabs1.png)
 
 宽屏时左右排列。
 
-
+![](figures/containerReader-development-tabs2.png)

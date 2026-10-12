@@ -9,9 +9,9 @@
 
 ## 场景介绍
 
-针对UTD标准化数据类型uniformdatatype中的部分常见类型，为了方便业务使用，我们按照不同的数据类型提供了标准化数据结构，例如系统定义的桌面图标类型（对应的标准化数据类型标识为'openharmony.app-item'），我们明确定义了该数据结构对应的相关描述信息。
+针对UTD标准化数据类型[uniformdatatype](../reference/apis-arkdata/js-apis-data-uniformTypeDescriptor.md#uniformdatatype)中的部分常见类型，为了方便业务使用，我们按照不同的数据类型提供了标准化数据结构，例如系统定义的桌面图标类型（对应的标准化数据类型标识为'openharmony.app-item'），我们明确定义了该数据结构对应的相关描述信息。
 
-某些业务场景下应用可以直接使用我们具体定义的UTD标准化数据结构，例如跨应用拖拽场景。拖出方应用可以按照标准化数据结构将拖拽数据写入拖拽事件DragEvent，拖入方应用从拖拽事件中读取拖拽数据并按照标准化数据结构进行数据的解析。这使得不同应用间的数据交互遵从相同的标准定义，有效减少了跨应用数据交互的开发工作量。
+某些业务场景下应用可以直接使用我们具体定义的UTD标准化数据结构，例如跨应用拖拽场景。拖出方应用可以按照标准化数据结构将拖拽数据写入拖拽事件[DragEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-drag-drop.md#dragevent7)，拖入方应用从拖拽事件中读取拖拽数据并按照标准化数据结构进行数据的解析。这使得不同应用间的数据交互遵从相同的标准定义，有效减少了跨应用数据交互的开发工作量。
 
 ## 接口说明
 
@@ -19,11 +19,11 @@ UDMF针对部分标准化数据类型定义的标准化数据结构如下所示�
 
 | 数据结构                                                                                                |       数据类型        | 说明   |
 |-----------------------------------------------------------------------------------------------------| :-------------------: |------|
-| PlainText                  |      'general.plain-text'        | 纯文本。  |
-| Hyperlink                  |       'general.hyperlink'       | 超链接。  |
-| HTML                            |         'general.html'          | 富文本。  |
-| OpenHarmonyAppItem | 'openharmony.app-item'    | 图标。   |
-| ContentForm            | 'general.content-form'    | 内容卡片。 |
+| [PlainText](../reference/apis-arkdata/js-apis-data-uniformDataStruct.md#plaintext)                  |      'general.plain-text'        | 纯文本。  |
+| [Hyperlink](../reference/apis-arkdata/js-apis-data-uniformDataStruct.md#hyperlink)                  |       'general.hyperlink'       | 超链接。  |
+| [HTML](../reference/apis-arkdata/js-apis-data-uniformDataStruct.md#html)                            |         'general.html'          | 富文本。  |
+| [OpenHarmonyAppItem](../reference/apis-arkdata/js-apis-data-uniformDataStruct.md#openharmonyappitem) | 'openharmony.app-item'    | 图标。   |
+| [ContentForm](../reference/apis-arkdata/js-apis-data-uniformDataStruct.md#contentform14)            | 'general.content-form'    | 内容卡片。 |
 
 ## 开发步骤
 
@@ -33,7 +33,7 @@ UDMF针对部分标准化数据类型定义的标准化数据结构如下所示�
 
 1. 导入对应模块。
 
-    <!-- @import_module -->
+    <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataStructure/entry/src/main/ets/pages/UdmfInterface.ets) -->
     
     ``` TypeScript
     // 1. 导入uniformDataStruct、unifiedDataChannel和uniformTypeDescriptor模块。
@@ -53,7 +53,7 @@ UDMF针对部分标准化数据类型定义的标准化数据结构如下所示�
 
 7. 遍历每条记录，判断该记录的数据类型，转换为子类对象并得到原数据记录。
 
-    <!-- @unified_data_structure -->
+    <!-- @[unified_data_structure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataStructure/entry/src/main/ets/pages/UdmfInterface.ets) -->
     
     ``` TypeScript
     // 2. 创建超链接数据记录。

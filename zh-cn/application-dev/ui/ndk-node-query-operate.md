@@ -8,15 +8,15 @@
 
 NDK提供一系列节点查询、遍历、操作能力，通过使用以下接口，开发者可以高效地访问和操控节点。
 
-以下场景基于接入ArkTS页面章节，创建前置工程。
+以下场景基于[接入ArkTS页面](ndk-access-the-arkts-page.md)章节，创建前置工程。
 
 ## 查询节点uniqueId及通过uniqueId获取节点信息
 
 uniqueId是系统分配的唯一标识的节点Id。
 
-从API version 20开始，使用OH_ArkUI_NodeUtils_GetNodeUniqueId接口，可以获取目标节点的uniqueId。使用OH_ArkUI_NodeUtils_GetNodeHandleByUniqueId接口，可以通过uniqueId获取目标节点的指针。
+从API version 20开始，使用[OH_ArkUI_NodeUtils_GetNodeUniqueId](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeutils_getnodeuniqueid)接口，可以获取目标节点的uniqueId。使用[OH_ArkUI_NodeUtils_GetNodeHandleByUniqueId](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeutils_getnodehandlebyuniqueid)接口，可以通过uniqueId获取目标节点的指针。
 
-<!-- @ndknodequeryoperate1_start -->
+<!-- @[ndknodequeryoperate1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/InquireUniqueId.cpp) -->
 
 ```cpp
 const unsigned int VALUE_1 = 480;
@@ -60,11 +60,11 @@ const unsigned int VALUE_3 = 50;
 
 ## 通过用户id获取节点信息
 
-使用OH_ArkUI_NodeUtils_GetAttachedNodeHandleById接口，可以通过用户设置的id获取目标节点的指针。
+使用[OH_ArkUI_NodeUtils_GetAttachedNodeHandleById](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeutils_getattachednodehandlebyid)接口，可以通过用户设置的id获取目标节点的指针。
 
 1. ArkTS侧接入Native组件。
 
-   <!-- @ndknodequeryoperate2_start -->
+   <!-- @[ndknodequeryoperate2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/ets/pages/GetNodeById.ets) -->
    
    ``` TypeScript
    import nativeNode from 'libentry.so';
@@ -94,7 +94,7 @@ const unsigned int VALUE_3 = 50;
 
 2. 新建`GetNodeByIdExample.h`文件，在其中创建Text节点并设置id属性，通过OH_ArkUI_NodeUtils_GetAttachedNodeHandleById接口拿到节点。
 
-   <!-- @ndknodequeryoperate3_start -->
+   <!-- @[ndknodequeryoperate3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/GetNodeByIdExample.h) -->
    
    ```c
    // GetNodeByIdExample.h
@@ -199,7 +199,7 @@ const unsigned int VALUE_3 = 50;
 
 3. 在`NativeEntry.cpp`中，挂载Native节点。
 
-   <!-- @ndknodequeryoperate3_start -->
+   <!-- @[ndknodequeryoperate3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/NativeEntry.cpp) -->
    
    ```cpp
    // NativeEntry.cpp
@@ -252,15 +252,15 @@ const unsigned int VALUE_3 = 50;
 
 ## 移动节点
 
-使用OH_ArkUI_NodeUtils_MoveTo接口，可以将Native节点移动到新的父节点下，从而按需改变节点树结构。
+使用[OH_ArkUI_NodeUtils_MoveTo](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeutils_moveto)接口，可以将Native节点移动到新的父节点下，从而按需改变节点树结构。
 
 > **说明：**
 >
-> 当前仅支持以下类型的ArkUI_NodeType进行移动操作：ARKUI_NODE_STACK、ARKUI_NODE_XCOMPONENT、ARKUI_NODE_EMBEDDED_COMPONENT。对于其他类型的节点，移动操作不会生效。
+> 当前仅支持以下类型的[ArkUI_NodeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodetype)进行移动操作：ARKUI_NODE_STACK、ARKUI_NODE_XCOMPONENT、ARKUI_NODE_EMBEDDED_COMPONENT。对于其他类型的节点，移动操作不会生效。
 
 1. ArkTS侧接入Native组件。
 
-   <!-- @ndknodequeryoperate4_start -->
+   <!-- @[ndknodequeryoperate4_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/ets/pages/MoveTo.ets) -->
    
    ``` TypeScript
    // MoveTo.ets
@@ -291,7 +291,7 @@ const unsigned int VALUE_3 = 50;
 
 2. 新建`MoveTo.h`文件，在其中创建Stack节点，通过OH_ArkUI_NodeUtils_MoveTo接口移动Stack节点。
 
-   <!-- @ndknodequeryoperate5_start -->
+   <!-- @[ndknodequeryoperate5_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/MoveToExample.h) -->
 
    ```c
    // MoveToExample.h
@@ -445,7 +445,7 @@ const unsigned int VALUE_3 = 50;
 
 3. 在`NativeEntry.cpp`中，挂载Native节点。
 
-   <!-- @ndknodequeryoperate3_start -->
+   <!-- @[ndknodequeryoperate3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/NativeEntry.cpp) -->
 
    ```cpp
    // NativeEntry.cpp
@@ -496,15 +496,15 @@ const unsigned int VALUE_3 = 50;
 
 4. 运行程序，点击按钮，Stack节点会移动到目标位置。
 
-   moveToNativeDemo
+   ![moveToNativeDemo](figures/moveToNativeDemo.gif)
 
 ## 在当前即时帧触发节点属性更新
 
-从API version 21开始，使用OH_ArkUI_NativeModule_InvalidateAttributes接口，在当前帧即时触发节点属性更新，避免组件切换过程中出现闪烁。
+从API version 21开始，使用[OH_ArkUI_NativeModule_InvalidateAttributes](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nativemodule_invalidateattributes)接口，在当前帧即时触发节点属性更新，避免组件切换过程中出现闪烁。
 
 1. ArkTS侧接入Native组件。
 
-   <!-- @ndknodequeryoperate6_start -->
+   <!-- @[ndknodequeryoperate6_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/ets/pages/Attribute.ets) -->
    
    ``` TypeScript
    
@@ -554,7 +554,7 @@ const unsigned int VALUE_3 = 50;
 
 2. 新建`Attribute_util.h`用于设置组件属性。
 
-   <!-- @ndknodequeryoperate7_start -->
+   <!-- @[ndknodequeryoperate7_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/Attribute_util.h) -->
    
    ```c
    #ifndef MYAPPLICATION_ATTRIBUTE_UTIL_H
@@ -601,7 +601,7 @@ const unsigned int VALUE_3 = 50;
 
 3. 在`napi_init.cpp`中，挂载Native节点。
 
-   <!-- @ndknodequeryoperate7_start -->
+   <!-- @[ndknodequeryoperate7_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/napi_init.cpp) -->
    
    ```cpp
    #include "Attribute_util.h"
@@ -698,17 +698,17 @@ const unsigned int VALUE_3 = 50;
 
 4. 运行程序，点击按钮，切换图片正常展示。
 
-   moveToNativeDemo
+   ![moveToNativeDemo](figures/OH_ArkUI_NativeModule_InvalidateAttributes_test.png)
 
 ## 用不同的展开模式获取对应下标的子节点
 
 NDK支持通过不同的展开方式获取目标节点下的有效节点信息。例如，在LazyForEach场景下，可以处理存在多个子节点的情况。
 
-从API version 20开始，使用OH_ArkUI_NodeUtils_GetFirstChildIndexWithoutExpand接口，可以获取目标节点的第一个存在于组件树的节点。使用OH_ArkUI_NodeUtils_GetLastChildIndexWithoutExpand接口，可以获取目标节点的最后一个存在于组件树的节点。OH_ArkUI_NodeUtils_GetChildWithExpandMode接口，可以通过不同的节点展开模式获取对应下标的子节点。
+从API version 20开始，使用[OH_ArkUI_NodeUtils_GetFirstChildIndexWithoutExpand](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeutils_getfirstchildindexwithoutexpand)接口，可以获取目标节点的第一个存在于组件树的节点。使用[OH_ArkUI_NodeUtils_GetLastChildIndexWithoutExpand](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeutils_getlastchildindexwithoutexpand)接口，可以获取目标节点的最后一个存在于组件树的节点。[OH_ArkUI_NodeUtils_GetChildWithExpandMode](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeutils_getchildwithexpandmode)接口，可以通过不同的节点展开模式获取对应下标的子节点。
 
 > **说明：**
 >
-> 节点展开方式请参考ArkUI_ExpandMode，此处推荐使用ARKUI_LAZY_EXPAND懒展开方式，智能识别对应场景。
+> 节点展开方式请参考[ArkUI_ExpandMode](../reference/apis-arkui/capi-native-type-h.md#arkui_expandmode)，此处推荐使用ARKUI_LAZY_EXPAND懒展开方式，智能识别对应场景。
 
 1. 通过ArkTS构造LazyForEach及ArkTS的下树节点展开场景。
 
@@ -974,9 +974,9 @@ NDK支持通过不同的展开方式获取目标节点下的有效节点信息�
       }
     ```
   
-2. NDK侧通过OH_ArkUI_NodeUtils_GetAttachedNodeHandleById接口获取ArkTS组件，并通过懒展开模式获取对应的子组件信息。
+2. NDK侧通过[OH_ArkUI_NodeUtils_GetAttachedNodeHandleById](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nodeutils_getattachednodehandlebyid)接口获取ArkTS组件，并通过懒展开模式获取对应的子组件信息。
 
-   <!-- @ndknodequeryoperate9_start -->
+   <!-- @[ndknodequeryoperate9_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkNodeQueryOperate/entry/src/main/cpp/ShowSubcomponentInfo.h) -->
    
    ```c
    ArkUI_NodeHandle childNode = nullptr;
@@ -997,7 +997,7 @@ NDK支持通过不同的展开方式获取目标节点下的有效节点信息�
 
 ## 节点是否处于渲染状态
 
-从API version 23开始，使用OH_ArkUI_NativeModule_IsInRenderState接口，可以查询节点是否在渲染树上。
+从API version 23开始，使用[OH_ArkUI_NativeModule_IsInRenderState](../reference/apis-arkui/capi-native-node-h.md#oh_arkui_nativemodule_isinrenderstate)接口，可以查询节点是否在渲染树上。
 
 
 1. ArkTS侧接入Native组件。
@@ -1176,4 +1176,4 @@ NDK支持通过不同的展开方式获取目标节点下的有效节点信息�
 
 4. 运行程序，点击change text visibility后打印text是否在渲染树上。
 
-   isInRenderState
+   ![isInRenderState](figures/isInRenderState_c.png)

@@ -26,7 +26,7 @@ FFRT串行队列基于协程调度模型实现，提供高效的消息队列功�
 
 用例简化了异常处理和线程安全相关的一些逻辑，实现代码如下所示：
 
-<!-- @serial_c_header -->
+<!-- @[serial_c_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FunctionFlowRuntime/SerialQueue/entry/src/main/cpp/serial_queue.h) -->
 
 ``` C
 #include <cstdio>
@@ -37,7 +37,7 @@ FFRT串行队列基于协程调度模型实现，提供高效的消息队列功�
 #include "ffrt/ffrt.h" // 来自 OpenHarmony 第三方库 "@ppd/ffrt"
 ```
 
-<!-- @serial_c -->
+<!-- @[serial_c](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FunctionFlowRuntime/SerialQueue/entry/src/main/cpp/serial_queue.cpp) -->
 
 ``` C++
 #undef LOG_TAG
@@ -154,11 +154,11 @@ int SerialQueueCExec()
 
 > **说明：**
 >
-> `ffrt_queue_submit_h_f`接口可以接收裸函数指针任务作为参数，如果任务存在前后处理可以参见ffrt_alloc_auto_managed_function_storage_base函数查看如何构造任务结构体。
+> `ffrt_queue_submit_h_f`接口可以接收裸函数指针任务作为参数，如果任务存在前后处理可以参见[ffrt_alloc_auto_managed_function_storage_base](ffrt-api-guideline-c.md#ffrt_alloc_auto_managed_function_storage_base)函数查看如何构造任务结构体。
 
 ## 接口说明
 
-上述样例中涉及到主要的FFRT的接口如下，详情请参考ffrt_queue_t下的方法：
+上述样例中涉及到主要的FFRT的接口如下，详情请参考[ffrt_queue_t](ffrt-api-guideline-c.md#ffrt_queue_t)下的方法：
 
 | 名称                                                        | 描述                                                                  |
 | ----------------------------------------------------------- | --------------------------------------------------------------------- |
@@ -168,7 +168,7 @@ int SerialQueueCExec()
 
 > **说明：**
 >
-> - 如何使用FFRT C++ API详见：FFRT C++接口三方库使用指导。
+> - 如何使用FFRT C++ API详见：[FFRT C++接口三方库使用指导](ffrt-development-guideline.md#使用ffrt-c-api-1)。
 > - 使用FFRT C接口或C++接口时，都可以通过FFRT C++接口三方库简化头文件包含，即使用`#include "ffrt/ffrt.h"`头文件包含语句。
 
 ## 约束限制

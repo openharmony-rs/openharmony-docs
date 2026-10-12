@@ -15,7 +15,7 @@
 
 示意图如下：
 
-system-level-modal
+![system-level-modal](figures/system-level-modal.png)
 
 ### 模应用弹窗
 
@@ -23,4 +23,4 @@ system-level-modal
 
 示意图如下：
 
-application-level-modal
+![application-level-modal](figures/application-level-modal.png)

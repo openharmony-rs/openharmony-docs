@@ -16,15 +16,15 @@ OpenHarmony提供了分布式增强连接能力，实现跨设备互联，完成
 
 在设备互联过程中，发现对端的蓝牙地址并建立物理链路；在多设备互联场景下，通过特有的多通道合并算法，在保证设备间交互能力的前提下，减少实际物理链路的个数，达到设备间可用连接数增大、降低干扰提升通信的稳定性的效果。
 
-两个设备的交互实现如下，在使用linkEnhance能力后，当两端同时发起连接时，会自动识别合并底层多余物理链路，减少实际物理链路的个数，减少蓝牙链路资源的消耗，增加可用连接数量。
+两个设备的交互实现如下，在使用[linkEnhance](../reference/apis-distributedservice-kit/js-apis-link-enhance.md)能力后，当两端同时发起连接时，会自动识别合并底层多余物理链路，减少实际物理链路的个数，减少蓝牙链路资源的消耗，增加可用连接数量。
 
-linkEnhance-process
+![linkEnhance-process](figures/linkEnhance-process.png)
 
 ### 约束与限制
 
 - 设备互联时需要开启蓝牙功能。
 
-- 通过蓝牙广播/扫描接口获取对端设备BLE MAC。蓝牙BLE接口参见查找设备。
+- 通过蓝牙广播/扫描接口获取对端设备BLE MAC。蓝牙BLE接口参见[查找设备](../connectivity/bluetooth/ble-development-guide.md)。
 
 - 不同设备间只有相同bundleName的应用才能进行互联。
 
@@ -43,14 +43,14 @@ linkEnhance-process
 
 ### 搭建环境
 
-1. 在PC上安装DevEco Studio，版本要求在4.1及以上。
-2. 将public-SDK更新到API 20或以上<!--Del-->，具体操作参见更新指南<!--DelEnd-->。
+1. 在PC上安装[DevEco Studio](https://developer.huawei.com/consumer/cn/download/deveco-studio)，版本要求在4.1及以上。
+2. 将public-SDK更新到API 20或以上<!--Del-->，具体操作参见[更新指南](../tools/openharmony-sdk-upgrade-assistant.md)<!--DelEnd-->。
 3. 用USB线缆将两台调测设备（设备A和设备B）连接到PC。
 4. 打开设备A和设备B的蓝牙开关。
 
 ## 接口说明
 
-常用接口说明如下表。更多接口的详细介绍参考@ohos.distributedsched.linkEnhance增强连接。
+常用接口说明如下表。更多接口的详细介绍参考@ohos.distributedsched.linkEnhance[增强连接](../reference/apis-distributedservice-kit/js-apis-link-enhance.md)。
 
 | 接口名                                      | 功能描述                                                                                               |
 | ------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
@@ -72,9 +72,9 @@ linkEnhance-process
 
 ## 增强连接开发指导
 
-- 服务端开启蓝牙后，创建Server对象，并调用start()接口开启服务，让服务端处于可连接状态，通过注册的事件监听，监听事件的变化通知。
-- 客户端开启蓝牙后，创建Connection对象，并调用connect()接口发起连接，通过注册的事件监听，监听事件的变化通知。
-- 连接成功后，可以使用sendData接口发送数据。
+- 服务端开启蓝牙后，创建Server对象，并调用[start()接口](../reference/apis-distributedservice-kit/js-apis-link-enhance.md#start)开启服务，让服务端处于可连接状态，通过注册的事件监听，监听事件的变化通知。
+- 客户端开启蓝牙后，创建Connection对象，并调用[connect()接口](../reference/apis-distributedservice-kit/js-apis-link-enhance.md#connect)发起连接，通过注册的事件监听，监听事件的变化通知。
+- 连接成功后，可以使用[sendData接口](../reference/apis-distributedservice-kit/js-apis-link-enhance.md#senddata)发送数据。
 
 ### 服务端开发指导
 1. 导入所需的模块。

@@ -6,7 +6,7 @@
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
-多线程并发是指在单个程序中同时运行多个线程，通过并行或交替执行任务来提升性能和资源利用率的编程模型。在ArkTS应用开发中，多线程并发适用于多种业务场景，常见的业务场景主要分为以下三类，更详细的使用请参考**应用多线程开发实践案例**。
+多线程并发是指在单个程序中同时运行多个线程，通过并行或交替执行任务来提升性能和资源利用率的编程模型。在ArkTS应用开发中，多线程并发适用于多种业务场景，常见的业务场景主要分为以下三类，更详细的使用请参考[应用多线程开发概述](multithread-develop-overview.md)。
 
 - 业务逻辑包含大量计算或频繁的I/O读写等需要长时间执行的任务，例如图片和视频的编解码、文件的压缩与解压缩、数据库操作等场景。
 
@@ -21,7 +21,7 @@ Actor并发模型是基于消息通信的典型并发模型。开发者无需处
 
 当前ArkTS提供了TaskPool和Worker两种并发能力，两者均基于Actor并发模型实现。
 
-Actor并发模型和内存共享并发模型的具体对比请见多线程并发模型。
+Actor并发模型和内存共享并发模型的具体对比请见[多线程并发模型](#多线程并发模型)。
 
 ## 多线程并发模型
 
@@ -39,11 +39,11 @@ Actor并发模型中，不同Actor之间不共享内存，需通过消息传递�
 
 以下示例伪代码和示意图展示了如何使用内存共享模型解决生产者消费者问题。
 
-Shared-Memory-Model
+![Shared-Memory-Model](figures/Shared-Memory-Model.png)
 
 为了避免不同生产者或消费者同时访问同一块共享内存容器时产生脏读、脏写现象，同一时间只能有一个生产者或消费者访问该容器。即不同生产者和消费者需争夺使用容器的锁。当一个角色获取锁后，其他角色需等待该角色释放锁，才能重新尝试获取锁以访问该容器。
 
-<!-- @cale_model --> 
+<!-- @[cale_model](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/MultiThreadConcurrencyOverview/entry/src/main/ets/managers/Cale.ets) --> 
 
 ``` TypeScript
 // 此段示例为伪代码仅作为逻辑示意，便于开发者理解使用内存共享模型和Actor模型的区别
@@ -154,13 +154,13 @@ export function main(): void {
 
 以下示例简单展示了如何使用基于Actor模型的TaskPool并发能力来解决生产者消费者问题。
 
-Actor-Model
+![Actor-Model](figures/Actor-Model.png)
 
 Actor模型中，不同角色之间并不共享内存，生产者线程和UI线程都有自己的虚拟机实例，两个虚拟机实例之间拥有独占的内存，相互隔离。生产者生产出结果后，通过序列化通信将结果发送给UI线程。UI线程消费结果后，再发送新的生产任务给生产者线程。
 
 也可以等待生产者完成所有任务，通过序列化通信将结果发送给UI线程。UI线程接收后，由消费者统一消费结果。
 
-<!-- @actor_model -->
+<!-- @[actor_model](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/MultithreadedConcurrency/MultiThreadConcurrencyOverview/entry/src/main/ets/managers/actormodel.ets) -->
 
 ``` TypeScript
 import { taskpool } from '@kit.ArkTS';
@@ -252,7 +252,7 @@ struct ActorModel {
 
 ## TaskPool和Worker
 
-ArkTS提供了TaskPool和Worker两种并发能力供开发者选择，各自的运作机制和注意事项请见TaskPool简介和Worker简介，两者之间实现的特点和适用场景也存在差异，请见TaskPool和Worker的对比。
+ArkTS提供了TaskPool和Worker两种并发能力供开发者选择，各自的运作机制和注意事项请见[TaskPool简介](taskpool-introduction.md)和[Worker简介](worker-introduction.md)，两者之间实现的特点和适用场景也存在差异，请见[TaskPool和Worker的对比](taskpool-vs-worker.md)。
 
 ## 并发注意事项
 
@@ -262,7 +262,7 @@ ArkTS提供了TaskPool和Worker两种并发能力供开发者选择，各自的�
 
 - 数据传递需支持序列化/反序列化
 
-  并发任务间传递数据时，对象必须是可序列化的（如基本类型、普通对象等），或者可共享的（sendable对象），不可传递函数、循环引用、特殊对象（如Promise、Error）等。已完成（fulfilled或rejected）状态的 Promise可以被传递，因为其结果是可序列化的。
+  并发任务间传递数据时，对象必须是可序列化的（如基本类型、普通对象等），或者可共享的（Sendable对象），不可传递函数、循环引用、特殊对象（如Promise、Error）等。已完成（fulfilled或rejected）状态的 Promise可以被传递，因为其结果是可序列化的。
 
 - 合理控制并发粒度
 

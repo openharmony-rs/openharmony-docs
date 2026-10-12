@@ -12,7 +12,7 @@
 
 当开发者需要开发一个相机应用（或是在应用内开发相机模块）时，可参考以下开发模型了解相机的工作流程，进而开发相机应用。
 
-如果开发者仅是需要拉起系统相机拍摄一张照片、录制一段视频，可直接使用CameraPicker，无需申请相机权限，直接拉起系统相机完成拍摄，具体可参考CameraPicker。
+如果开发者仅是需要拉起系统相机拍摄一张照片、录制一段视频，可直接使用CameraPicker，无需申请相机权限，直接拉起系统相机完成拍摄，具体可参考[CameraPicker](../../reference/apis-camera-kit/js-apis-cameraPicker.md)。
 
 ## 开发模型
 
@@ -27,7 +27,7 @@
 - 相机输出管理配置相机的输出流，即将图像内容以预览流、拍照流或视频流输出。
 
 **图1** 相机工作流程  
-Camera Workflow
+![Camera Workflow](figures/camera-workflow.png)
 
 为便于开发者更好地开发相机应用，建议先了解相机开发工作流程，再了解相机的开发模型（如图2所示）。
 
@@ -36,12 +36,12 @@ Camera Workflow
 以视频录制为例进行说明：相机服务可控制相机设备采集视频数据，生成视频流。采集的数据通过底层相机HDI处理后，再通过Surface将视频流传递给媒体录制服务，最后由媒体录制服务对视频数据进行处理，保存为视频文件，完成视频录制。
 
 **图2** 相机开发模型  
-Camera Development Model
+![Camera Development Model](figures/camera-development-model.png)
 
 ## 相关实例
 
 针对相机开发，有以下相关实例可供参考：
 
-- 相机和媒体库(ArkTS) (Full SDK)（API10）
+- [相机和媒体库(ArkTS) (Full SDK)（API10）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/Media/Camera)
 
 <!--RP1--><!--RP1End-->

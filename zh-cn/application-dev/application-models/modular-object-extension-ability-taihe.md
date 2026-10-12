@@ -7,15 +7,15 @@
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
 
-从API版本26.0.0开始，通过Taihe可自动生成ModularObjectExtensionAbility（相关C API定义见modular_object_extension_ability.h）所需的Proxy/Stub代码及类型库文件，屏蔽IPC通信底层细节（如参数序列化/反序列化、消息码分发等），使开发者专注于接口设计与业务逻辑，大幅简化ModularObjectExtensionAbility的开发流程。
+从API版本26.0.0开始，通过[Taihe](ability-terminology.md#taihe)可自动生成ModularObjectExtensionAbility（相关C API定义见[modular_object_extension_ability.h](../reference/apis-ability-kit/capi-modular-object-extension-ability-h.md)）所需的Proxy/Stub代码及类型库文件，屏蔽IPC通信底层细节（如参数序列化/反序列化、消息码分发等），使开发者专注于接口设计与业务逻辑，大幅简化ModularObjectExtensionAbility的开发流程。taihec工具的获取方式与使用说明请参见[命令行使用](#命令行使用)。
 
 ## 命令行使用
 
-Taihe提供了核心编译器工具taihec，用于解析`ohidl`文件并将其编译为目标语言代码。本章节介绍如何使用`taihec`生成ModularObjectExtensionAbility在IPC通信场景下所需的Proxy和Stub代码。请参考模块化对象模型概述 (C/C++)的基本概念，了解Proxy与Stub。
+Taihe提供了核心编译器工具[taihec](ability-terminology.md#taihec)，用于解析`ohidl`文件并将其编译为目标语言代码。本章节介绍如何使用`taihec`生成ModularObjectExtensionAbility在IPC通信场景下所需的Proxy和Stub代码。请参考[模块化对象模型概述 (C/C++)](modular-object-extension-overview.md)的[基本概念](modular-object-extension-overview.md#基本概念)，了解Proxy与Stub。
 
 **taihec工具获取：**
 
-taihec工具随SDK发布，位于DevEco Studio/sdk/default/openharmony/toolchains/taihe/bin目录下。
+taihec工具随SDK内置于API版本26.0.0及以上的[DevEco Studio](https://developer.huawei.com/consumer/cn/download/deveco-studio)中，无需额外下载；其默认位于DevEco Studio/sdk/default/openharmony/toolchains/taihe/bin目录下（macOS系统则位于DevEco Studio/Contents对应的SDK路径下）。
 
 **命令基本格式：**
 
@@ -84,8 +84,8 @@ taihec -G modobj-ipc -O example/generated example/Easy.ohidl
 
 | 注解                             | 作用范围   |说明                                    | 示例                               |                   
 | :---                             | :---       | :---                                  | :---                               |                     
-| `@main_service(version="x.y.z")` | interface     | 有且仅能声明一个主服务接口，生成的Stub作为OH_AbilityRuntime_ModObjExtensionAbility_OnConnectFunc的返回值。  | @main_service(version="1.0.0")    |
-| `@callback` | 方法 | 用于声明一个回调接口。服务端可持有此接口的实例来调用客户端，相关逻辑会在客户端的线程中执行。典型使用场景：客户端向服务端注册监听器、服务端主动通知客户端事件。完整开发流程参见示例文件说明中的ITestEventCallback示例。 | @callback interface ICallback {} |
+| `@main_service(version="x.y.z")` | interface     | 有且仅能声明一个主服务接口，生成的Stub作为[OH_AbilityRuntime_ModObjExtensionAbility_OnConnectFunc](../reference/apis-ability-kit/capi-modular-object-extension-ability-h.md#oh_abilityruntime_modobjextensionability_onconnectfunc)的返回值。  | @main_service(version="1.0.0")    |
+| `@callback` | 方法 | 用于声明一个回调接口。服务端可持有此接口的实例来调用客户端，相关逻辑会在客户端的线程中执行。典型使用场景：客户端向服务端注册监听器、服务端主动通知客户端事件。完整开发流程参见[示例文件说明](#示例文件说明)中的ITestEventCallback示例。 | @callback interface ICallback {} |
 | `@oneway`                        | 方法       | 异步单向IPC调用，仅支持void类型返回值。       | @oneway Notify(...): void;        |
 | `@!namespace("A","B")`           | ohidl文件   | 设置生成代码所在的命名空间，以及IPC接口描述符字符串前缀。 | @!namespace("OHOS","NativeApp")   |
 | `@size(N)`                       | 参数       | 定长数组的大小，仅供Array类型参数使用。  | @size(4) Array\<i32\>; |
@@ -108,7 +108,7 @@ taihec -G modobj-ipc -O example/generated example/Easy.ohidl
 
 **文件示例：**
 
-<!-- @example -->
+<!-- @[example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionAbilityIDL/exampletwo/ITestInterface.ohidl) -->
 
 ```ohipc
 @!namespace("OHOS", "IPC")
@@ -141,7 +141,7 @@ interface ITestCallbackService {
 
 1. 创建example文件夹，并新建Easy.ohidl文件。
 
-   <!-- @easy -->
+   <!-- @[easy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionAbilityIDL/exampleone/example/Easy.ohidl) -->
    
    ```ohipc
    @!namespace("OHOS", "IPC")
@@ -173,7 +173,7 @@ interface ITestCallbackService {
 
      `GetDescriptor()`返回接口描述符字符串，`IpcCode`枚举为每个方法分配唯一命令码，从1001开始。
 
-     <!-- @ICalculator -->
+     <!-- @[ICalculator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionAbilityIDL/exampleone/generated/icalculator.h) -->
    
         ``` C
         class ICalculator {
@@ -201,7 +201,7 @@ interface ITestCallbackService {
 
      `CalculatorProxy`继承`ICalculator`，并包含了远端代理对象`remoteProxy_`。
 
-     <!-- @CalculatorProxy -->
+     <!-- @[CalculatorProxy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionAbilityIDL/exampleone/generated/calculator_proxy.h) -->
    
         ``` C
         class CalculatorProxy : public ICalculator {
@@ -224,7 +224,7 @@ interface ITestCallbackService {
 
      调用`OH_IPCRemoteProxy_SendRequest()`发起同步IPC，并读取`reply`中的错误码与返回值。
 
-     <!-- @CalculatorProxy -->
+     <!-- @[CalculatorProxy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionAbilityIDL/exampleone/generated/calculator_proxy.cpp) -->
    
         ``` C++
         ErrCode CalculatorProxy::WriteRemoteObject(OHIPCParcel* parcel) const
@@ -277,7 +277,7 @@ interface ITestCallbackService {
 
      `OnRemoteRequest`作为IPC调用入口，`OnRemoteRequestInner`根据`code`分发到具体`HandleXXX`方法。
 
-     <!-- @CalculatorStub -->
+     <!-- @[CalculatorStub](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionAbilityIDL/exampleone/generated/calculator_stub.h) -->
    
         ``` C
         class CalculatorStub : public ICalculator {
@@ -302,7 +302,7 @@ interface ITestCallbackService {
 
      `OnRemoteRequestInner`方法中先校验接口描述符，再调用`HandleAdd`从`data`中读取参数，调用真实`Add`业务实现，并将`errCode`和结果写回`reply`。
 
-     <!-- @CalculatorStub -->
+     <!-- @[CalculatorStub](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ModularObjectExtensionAbilityIDL/exampleone/generated/calculator_stub.cpp) -->
    
         ``` C++
         int32_t CalculatorStub::OnRemoteRequestInner(uint32_t code, const OHIPCParcel* data, OHIPCParcel* reply)
@@ -403,4 +403,4 @@ interface ITestCallbackService {
 
    生成的Proxy和Stub代码可直接用于IPC通信。在客户端侧，通过创建CalculatorProxy实例并传入OHIPCRemoteProxy对象来调用远端方法；在服务端侧，继承CalculatorStub并实现业务逻辑接口。
 
-   详细开发流程请参考使用ModularObjectExtensionAbility实现模块化对象 (C/C++)。
+   详细开发流程请参考[使用ModularObjectExtensionAbility实现模块化对象 (C/C++)](./modular-object-extension-development.md)。

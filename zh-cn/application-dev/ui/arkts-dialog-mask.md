@@ -14,19 +14,19 @@ ArkUI提供多种弹出框，不同类型的弹出框具备不同的蒙层定制
 
 |         接口&组件          |autoCancel|maskRect|isModal|immersiveMode|
 | ----------------- | ------ |------ |------ |------ |
-|openCustomDialog|支持|支持|支持|支持|
-|openCustomDialogWithController|支持|支持|支持|支持|
-|presentCustomDialog|支持|支持|支持|支持|
-|updateCustomDialog|支持|不支持|不支持|不支持|
-|CustomDialog|支持|支持|支持|支持|
-|showDialog|不支持|支持|支持|支持|
-|showAlertDialog|支持|支持|支持|支持|
-|showActionSheet|支持|支持|支持|支持|
-|showActionMenu|不支持|不支持|支持|支持|
-|showDatePickerDialog|不支持|支持|不支持|不支持|
-|CalendarPickerDialog|不支持|不支持|不支持|不支持|
-|showTimePickerDialog|不支持|支持|不支持|不支持|
-|showTextPickerDialog|不支持|支持|不支持|不支持|
+|[openCustomDialog](arkts-uicontext-custom-dialog.md)|支持|支持|支持|支持|
+|[openCustomDialogWithController](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18)|支持|支持|支持|支持|
+|[presentCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18)|支持|支持|支持|支持|
+|[updateCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatecustomdialog12)|支持|不支持|不支持|不支持|
+|[CustomDialog](arkts-common-components-custom-dialog.md)|支持|支持|支持|支持|
+|[showDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog)|不支持|支持|支持|支持|
+|[showAlertDialog](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showalertdialog)|支持|支持|支持|支持|
+|[showActionSheet](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showactionsheet)|支持|支持|支持|支持|
+|[showActionMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showactionmenu11)|不支持|不支持|支持|支持|
+|[showDatePickerDialog](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showdatepickerdialog)|不支持|支持|不支持|不支持|
+|[CalendarPickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-calendarpicker-dialog.md)|不支持|不支持|不支持|不支持|
+|[showTimePickerDialog](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showtimepickerdialog)|不支持|支持|不支持|不支持|
+|[showTextPickerDialog](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showtextpickerdialog)|不支持|支持|不支持|不支持|
 
 > **说明：**
 > 
@@ -40,19 +40,19 @@ ArkUI提供多种弹出框，不同类型的弹出框具备不同的蒙层定制
 
 | 接口&组件                                                    | maskColor | transition                                      | maskTransition |
 | ------------------------------------------------------------ | --------- | ----------------------------------------------- | -------------- |
-| openCustomDialog         | 支持      | 支持                                            | 支持           |
-| openCustomDialogWithController | 支持      | 支持                                            | 支持           |
-| presentCustomDialog | 支持      | 支持                                            | 支持           |
-| updateCustomDialog | 支持      | 不支持                                          | 不支持         |
-| CustomDialog     | 支持      | 不支持（可由openAnimation和closeAnimation替代） | 不支持         |
-| showDialog | 不支持    | 不支持                                          | 不支持         |
-| showAlertDialog | 不支持    | 支持                                            | 不支持         |
-| showActionSheet | 不支持    | 支持                                            | 不支持         |
-| showActionMenu | 不支持    | 不支持                                          | 不支持         |
-| showDatePickerDialog | 不支持    | 不支持                                          | 不支持         |
-| CalendarPickerDialog | 不支持    | 不支持                                          | 不支持         |
-| showTimePickerDialog | 不支持    | 不支持                                          | 不支持         |
-| showTextPickerDialog | 不支持    | 不支持                                          | 不支持         |
+| [openCustomDialog](arkts-uicontext-custom-dialog.md)         | 支持      | 支持                                            | 支持           |
+| [openCustomDialogWithController](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18) | 支持      | 支持                                            | 支持           |
+| [presentCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18) | 支持      | 支持                                            | 支持           |
+| [updateCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#updatecustomdialog12) | 支持      | 不支持                                          | 不支持         |
+| [CustomDialog](arkts-common-components-custom-dialog.md)     | 支持      | 不支持（可由openAnimation和closeAnimation替代） | 不支持         |
+| [showDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog) | 不支持    | 不支持                                          | 不支持         |
+| [showAlertDialog](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showalertdialog) | 不支持    | 支持                                            | 不支持         |
+| [showActionSheet](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showactionsheet) | 不支持    | 支持                                            | 不支持         |
+| [showActionMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showactionmenu11) | 不支持    | 不支持                                          | 不支持         |
+| [showDatePickerDialog](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showdatepickerdialog) | 不支持    | 不支持                                          | 不支持         |
+| [CalendarPickerDialog](../reference/apis-arkui/arkui-ts/ts-methods-calendarpicker-dialog.md) | 不支持    | 不支持                                          | 不支持         |
+| [showTimePickerDialog](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showtimepickerdialog) | 不支持    | 不支持                                          | 不支持         |
+| [showTextPickerDialog](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showtextpickerdialog) | 不支持    | 不支持                                          | 不支持         |
 
 > **说明：**
 >
@@ -73,7 +73,7 @@ ArkUI提供多种弹出框，不同类型的弹出框具备不同的蒙层定制
 
 设置autoCancel为false，取消默认点击蒙层时弹窗消失。
 
-<!-- @custom_dialog_control_autoCancel --> 
+<!-- @[custom_dialog_control_autoCancel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) --> 
 
 ``` TypeScript
 autoCancelOpt: promptAction.CustomDialogOptions = {
@@ -100,11 +100,11 @@ build() {
   }
 }
 ```
- dialog_mask_autoCancel
+ ![dialog_mask_autoCancel](figures/dialog_mask_autoCancel.gif)
 
 设置isModal为false，将默认的模态弹出框变为非模态弹出框。
 
-<!-- @custom_dialog_control_modal --> 
+<!-- @[custom_dialog_control_modal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) --> 
 
 ``` TypeScript
 modalOpt: promptAction.CustomDialogOptions = {
@@ -132,7 +132,7 @@ build() {
   }
 }
 ```
- dialog_mask_modal
+ ![dialog_mask_modal](figures/dialog_mask_modal.PNG)
 
 
 ## 弹出框蒙层样式控制
@@ -142,7 +142,7 @@ build() {
 
 设置maskRect和maskColor，实现蒙层区域和蒙层颜色的设置。
 
-<!-- @custom_dialog_control_mask --> 
+<!-- @[custom_dialog_control_mask](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) --> 
 
 ``` TypeScript
 maskOpt: promptAction.CustomDialogOptions = {
@@ -176,11 +176,11 @@ build() {
   }
 }
 ```
- dialog_mask_mask
+ ![dialog_mask_mask](figures/dialog_mask_mask.PNG)
 
 
 在levelMode为LevelMode.EMBEDDED下，展示不同immersiveMode对蒙层在导航栏和状态栏的延伸效果。
-<!-- @custom_dialog_control_immersive -->
+<!-- @[custom_dialog_control_immersive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) -->
 
 ``` TypeScript
   @State immersiveMode: ImmersiveMode = ImmersiveMode.DEFAULT;
@@ -211,14 +211,14 @@ build() {
     }
   }
 ```
- dialog_mask_immersiveMode
+ ![dialog_mask_immersiveMode](figures/dialog_mask_immersiveMode.gif)
 
 ## 弹出框蒙层动画控制
 
 该示例通过transition和maskTransition分别展示弹出框在蒙层动画方面的能力。
 
 设置transition，实现弹出框与蒙层整体的动画。
-<!-- @custom_dialog_control_transition -->
+<!-- @[custom_dialog_control_transition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) -->
 
 ``` TypeScript
   transitionOpt: promptAction.CustomDialogOptions = {
@@ -246,10 +246,10 @@ build() {
     }
   }
 ```
- dialog_mask_transition
+ ![dialog_mask_transition](figures/dialog_mask_transition.gif)
 
 设置maskTransition，实现弹出框中蒙层单独的动画定制能力。
-<!-- @custom_dialog_control_mask_transition -->
+<!-- @[custom_dialog_control_mask_transition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) -->
 
 ``` TypeScript
 Button('openCustomDialog maskTransition')
@@ -265,11 +265,11 @@ Button('openCustomDialog maskTransition')
     });
   })
 ```
- dialog_mask_maskTransition
+ ![dialog_mask_maskTransition](figures/dialog_mask_maskTransition.gif)
 
-CustomDialog虽然不支持transition接口，但与之对应的openAnimation和closeAnimation接口在动画的打开和关闭时可进行定制，示例代码如下：
+[CustomDialog](arkts-common-components-custom-dialog.md)虽然不支持transition接口，但与之对应的openAnimation和closeAnimation接口在动画的打开和关闭时可进行定制，示例代码如下：
 
-<!-- @custom_dialog_animation -->
+<!-- @[custom_dialog_animation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogAnimation.ets) -->
 
 ``` TypeScript
 // xxx.ets
@@ -329,12 +329,12 @@ export struct CustomDialogAnimation {
   }
 }
 ```
- CustomDialogController
+ ![CustomDialogController](figures/dialog_mask_CustomDialogController.gif)
 
 
 ## 完整示例
 
-<!-- @custom_dialog_control --> 
+<!-- @[custom_dialog_control](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/maskdialog/CustomDialogControl.ets) --> 
 
 ``` TypeScript
 // xxx.ets
@@ -453,4 +453,4 @@ export struct CustomDialogControl {
   }
 }
 ```
- openCustomDialog
+ ![openCustomDialog](figures/dialog_mask_openCustomDialog.gif)

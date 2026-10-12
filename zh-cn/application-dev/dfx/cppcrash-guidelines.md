@@ -8,7 +8,7 @@
 
 ## 简介
 
-进程发生崩溃后，系统首先感知到崩溃，然后抓取崩溃相关的信息，最后生成崩溃日志并上报崩溃事件，为开发者提供详细的维测日志以辅助故障定位。本文分为基本概念、实现原理、约束与限制、日志获取、日志规格五个小节介绍系统提供的CppCrash检测方法。开发者如果想进一步了解如何分析CppCrash问题，请参见CppCrash类问题分析方法。
+进程发生崩溃后，系统首先感知到崩溃，然后抓取崩溃相关的信息，最后生成崩溃日志并上报崩溃事件，为开发者提供详细的维测日志以辅助故障定位。本文分为基本概念、实现原理、约束与限制、日志获取、日志规格五个小节介绍系统提供的CppCrash检测方法。开发者如果想进一步了解如何分析CppCrash问题，请参见[CppCrash类问题分析方法](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-app-crash-cpp-way)。
 
 ## 基本概念
 
@@ -159,7 +159,7 @@ SIGSEGV是一种信号，它表示进程试图访问一个不属于它的内存�
 
 - 上述崩溃信号和35、38、42信号已经被系统注册信号处理函数，建议应用不要对这些信号注册信号处理函数，如果应用注册了可能会造成系统检测能力失效。
 
-- 异步线程栈跟踪维测功能默认仅在ARM 64位系统中开启。对于**API version 22**之前版本，**三方和系统应用**通过libuv和ffrt提交异步任务仅debug版本默认开启。对于**API version 22**及之后版本，**三方应用**通过libuv提交异步任务debug和release版本均默认开启，**三方和系统应用**通过ffrt提交异步任务仅debug版本默认开启。崩溃日志规格请参见异步线程栈跟踪故障场景日志规格。
+- 异步线程栈跟踪维测功能默认仅在ARM 64位系统中开启。对于**API version 22**之前版本，**三方和系统应用**通过[libuv](../reference/native-lib/libuv.md)和[ffrt](../reference/apis-ffrt-kit/capi-ffrt.md)提交异步任务仅debug版本默认开启。对于**API version 22**及之后版本，**三方应用**通过libuv提交异步任务debug和release版本均默认开启，**三方和系统应用**通过ffrt提交异步任务仅debug版本默认开启。崩溃日志规格请参见[异步线程栈跟踪故障场景日志规格](#异步线程栈跟踪故障场景日志规格)。
 
 ## 日志获取
 
@@ -167,11 +167,11 @@ SIGSEGV是一种信号，它表示进程试图访问一个不属于它的内存�
 
 **方式一：通过DevEco Studio获取日志**
 
-DevEco Studio会收集设备“/data/log/faultlog/faultlogger/”路径下的进程崩溃故障日志到FaultLog下，根据进程名和故障类型分类显示。获取日志的方法参见：DevEco Studio使用指南-FaultLog。
+DevEco Studio会收集设备“/data/log/faultlog/faultlogger/”路径下的进程崩溃故障日志到FaultLog下，根据进程名和故障类型分类显示。获取日志的方法参见：[DevEco Studio使用指南-FaultLog](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-fault-log)。
 
 **方式二：通过HiAppEvent接口订阅**
 
-HiAppEvent给开发者提供了故障订阅接口，详见HiAppEvent介绍。参考订阅崩溃事件（ArkTS）或订阅崩溃事件（C/C++）完成崩溃事件订阅，并通过事件的external_log字段读取故障日志文件内容。
+HiAppEvent给开发者提供了故障订阅接口，详见[HiAppEvent介绍](hiappevent-intro.md)。参考[订阅崩溃事件（ArkTS）](hiappevent-watcher-crash-events-arkts.md)或[订阅崩溃事件（C/C++）](hiappevent-watcher-crash-events-ndk.md)完成崩溃事件订阅，并通过事件的[external_log](hiappevent-watcher-crash-events.md#事件字段说明)字段读取故障日志文件内容。
 
 **方式三：通过hdc获取日志，需打开开发者选项**
 
@@ -186,32 +186,32 @@ HiAppEvent给开发者提供了故障订阅接口，详见HiAppEvent介绍。参
 | Build info | 版本信息 | 8 | 是 | - |
 | DeviceDebuggable | 设备的系统版本是否可调试 | 23 | 是 | - |
 | Fingerprint | 故障特征，聚类同类问题的哈希值，哈希值相同即判定为同一故障原因。 | 8 | 是 | - |
-| Enabled app log configs | 使能的配置参数列表 | 20 | 否 | 仅用户配置时打印，详见应用通过HiAppEvent设置崩溃日志配置参数场景日志规格。 |
+| Enabled app log configs | 使能的配置参数列表 | 20 | 否 | 仅用户配置时打印，详见[应用通过HiAppEvent设置崩溃日志配置参数场景日志规格](#应用通过hiappevent设置崩溃日志配置参数场景日志规格)。 |
 | Module name | 模块名 | 8 | 是 | - |
-| ReleaseType | 应用的版本类型 | 23 | 否 | 仅在应用进程提供，release表示应用为release版本应用，debug表示应用为debug版本应用。 |
+| ReleaseType | 应用的版本类型 | 23 | 否 | 仅在应用进程提供，release表示应用为[release版本应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)，debug表示应用为[debug版本应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)。 |
 | CpuAbi | 二进制接口类型 | 23 | 否 | 仅在应用进程提供。 |
 | Version | 应用版本号（点分格式） | 8 | 否 | 仅在应用进程提供。 |
 | VersionCode | 应用版本号（整数格式） | 8 | 否 | 仅在应用进程提供。 |
 | IsSystemApp | 应用是否为系统应用 | 23 | 否 | 仅在应用进程提供。 |
 | PreInstalled | 是否预置应用 | 8 | 否 | 仅在应用进程提供。 |
 | Foreground | 前后台状态 | 8 | 否 | 仅在应用进程提供。 |
-| Page switch history | 页面切换轨迹 | 20 | 否 | 如果维测服务进程出现故障或未缓存切换轨迹，则不包含此字段，详见实现原理。 |
+| Page switch history | 页面切换轨迹 | 20 | 否 | 如果维测服务进程出现故障或未缓存切换轨迹，则不包含此字段，详见[实现原理](#实现原理)。 |
 | Timestamp | 故障发生时间戳 | 8 | 是 | - |
 | Pid | 进程号 | 8 | 是 | - |
 | Uid | 用户ID | 8 | 是 | - |
-| HiTraceId | HiTraceChain唯一跟踪标识 | 20 | 否 | 仅故障线程开启HiTraceChain功能时提供，详见HiTraceChain介绍。 |
+| HiTraceId | HiTraceChain唯一跟踪标识 | 20 | 否 | 仅故障线程开启HiTraceChain功能时提供，详见[HiTraceChain介绍](hitracechain-intro.md)。 |
 | Process name | 故障进程名 | 8 | 是 | - |
 | App running unique id | 应用运行时唯一关联的ID | 26.0.0 | 是 | - |
 | Process life time | 故障进程存活时间 | 8 | 是 | - |
 | Process Memory(kB) | 故障进程内存占用 | 20 | 是 | - |
-| Device Memory(kB) | 整机内存信息 | 20 | 否 | 依赖维测服务进程，若发生故障时维测服务进程停止或设备重启则无此字段，详见实现原理。 |
-| Log source | 用于标识采集日志的方式，目前有以下几种方式： <br> **processdump：** 由用户态生成<br> **pdump：** 用户态生成cppcrash日志失败时由内核补偿生成<br> **liteprocessdump：** render/cpu等低权限进程崩溃时由用户态生成<br> 不同方式下生成日志规格会有差异，详见不同采集方式下日志规格差异。 | 26.0.0 | 是 | - |
+| Device Memory(kB) | 整机内存信息 | 20 | 否 | 依赖维测服务进程，若发生故障时维测服务进程停止或设备重启则无此字段，详见[实现原理](#实现原理)。 |
+| Log source | 用于标识采集日志的方式，目前有以下几种方式： <br> **processdump：** 由用户态生成<br> **pdump：** 用户态生成cppcrash日志失败时由内核补偿生成<br> **liteprocessdump：** render/cpu等低权限进程崩溃时由用户态生成<br> 不同方式下生成日志规格会有差异，详见[不同采集方式下日志规格差异](#不同采集方式下日志规格差异)。 | 26.0.0 | 是 | - |
 | Reason | 故障原因 | 8 | 是 | - |
-| LastFatalMessage | Fatal消息 | 8 | 否 | 以下几种情况共用此字段：<br> 解析到不可靠的栈帧地址时输出的提示信息。<br> 因ABORT信号崩溃退出时保存最后一条FATAL级Hilog日志。<br>系统内部的维测信息。<br>应用通过OH_HiDebug_SetCrashObj设置的字符串信息。<br>从API版本26.0.0开始，应用若开启模块加载链路调试开关，则此字段包含模块加载链路。|
+| LastFatalMessage | Fatal消息 | 8 | 否 | 以下几种情况共用此字段：<br> 解析到不可靠的栈帧地址时输出的提示信息。<br> 因ABORT信号崩溃退出时保存最后一条FATAL级Hilog日志。<br>系统内部的维测信息。<br>应用通过[OH_HiDebug_SetCrashObj](hidebug-guidelines.md#添加维测信息到崩溃日志中)设置的字符串信息。<br>从API版本26.0.0开始，应用若开启[模块加载链路调试开关](../arkts-utils/arkts-module-debug.md)，则此字段包含模块加载链路。|
 | Fault thread info | 故障线程信息 | 8 | 是 | - |
 | SubmitterStacktrace | 提交者线程栈 | 12 | 否 | 异步线程栈跟踪维测功能默认仅在ARM 64位系统中开启。<br>对于**API version 22**之前版本，**三方和系统应用**通过libuv和ffrt提交异步任务仅debug版本默认开启。<br>对于**API version 22**及之后版本，**三方应用**通过libuv提交异步任务debug和release版本均默认开启；**三方和系统应用**通过ffrt提交异步任务仅debug版本默认开启。 |
 | Registers | 故障现场寄存器 | 8 | 是 | - |
-| ExtraCrashInfo | 额外的内存信息 | 23 | 否 | 应用通过OH_HiDebug_SetCrashObj设置的内存信息。 |
+| ExtraCrashInfo | 额外的内存信息 | 23 | 否 | 应用通过[OH_HiDebug_SetCrashObj](hidebug-guidelines.md#添加维测信息到崩溃日志中)设置的内存信息。 |
 | Other thread info | 其他线程信息 | 8 | 是 | - |
 | Memory near registers | 故障现场寄存器附近内存值 | 8 | 是 | - |
 | FaultStack | 故障线程栈内存信息 | 8 | 是 | - |
@@ -227,19 +227,19 @@ HiAppEvent给开发者提供了故障订阅接口，详见HiAppEvent介绍。参
 
 不同的故障场景中日志规格略有不同，分以下七个场景的日志规格，示例如下：
 
-- 一般故障场景日志规格
+- [一般故障场景日志规格](#一般故障场景日志规格)
 
-- 空指针解引用故障场景日志规格
+- [空指针解引用故障场景日志规格](#空指针解引用故障场景日志规格)
 
-- 栈溢出故障场景日志规格
+- [栈溢出故障场景日志规格](#栈溢出故障场景日志规格)
 
-- 栈覆盖故障场景日志规格
+- [栈覆盖故障场景日志规格](#栈覆盖故障场景日志规格)
 
-- 异步线程栈跟踪故障场景日志规格
+- [异步线程栈跟踪故障场景日志规格](#异步线程栈跟踪故障场景日志规格)
 
-- 应用通过HiAppEvent设置崩溃日志配置参数场景日志规格
+- [应用通过HiAppEvent设置崩溃日志配置参数场景日志规格](#应用通过hiappevent设置崩溃日志配置参数场景日志规格)
 
-- 有页面切换轨迹的故障场景日志规格
+- [有页面切换轨迹的故障场景日志规格](#有页面切换轨迹的故障场景日志规格)
 
 > **说明：**
 >
@@ -395,7 +395,7 @@ app crash log. <- 应用生成用于拼接的日志
 
 **HiTraceId说明**
 
-HiTraceId：HiTraceChain提供的唯一跟踪标识，参考HiTraceChain介绍。
+HiTraceId：HiTraceChain提供的唯一跟踪标识，参考[HiTraceChain介绍](hitracechain-intro.md)。
 
 **调用栈帧内容说明**
 
@@ -422,7 +422,7 @@ HiTraceId：HiTraceChain提供的唯一跟踪标识，参考HiTraceChain介绍�
 >
 >   2. 二进制文件中保存的函数名长度超过256字节。
 >
-> - 函数名是通过解析二进制符号表和MiniDebugInfo得来，**可能会随版本函数名变更、编译优化等原因而改变**。
+> - 函数名是通过解析二进制符号表和[MiniDebugInfo](https://sourceware.org/gdb/current/onlinedocs/gdb.html/MiniDebugInfo.html)得来，**可能会随版本函数名变更、编译优化等原因而改变**。
 >
 > - 如果没打印BuildID，可以通过readelf -n xxx.so确认二进制是否有BuildID。如果没有则尝试在编译选项里增加编译参数--enable-linker-build-id，同时注意编译选项中不要加编译参数--build-id=none。
 
@@ -434,7 +434,7 @@ ARM 64位系统支持抓取CPP和JS之间跨语言的调用栈，因此如果在
 #00 at onPageShow (entry|har1|1.0.0|src/main/ets/pages/Index.ts:7:13)
 ```
 
-详细说明JS异常代码调用栈格式规范。
+详细说明[JS异常代码调用栈格式规范](jscrash-guidelines.md#异常代码调用栈格式)。
 
 ### 空指针解引用故障场景日志规格
 
@@ -594,7 +594,7 @@ cpsr:608f0010
 
 原理示意图如下：
 
-工作机制说明
+![工作机制说明](figures/submitter_stacktrace.png)
 
 1. 提交线程搜集自身的调用栈信息，保存至进程特定区域内存的异步栈表中。
 
@@ -684,9 +684,38 @@ Tid:29192, Name:OS_FFRT_2_0                 <- 故障线程号，线程名
 ```
 <!--RP5End-->
 
+### Promise异步嵌套调用故障场景日志规格
+
+从API版本26.0.1开始，在ARM 64位系统下，当Promise异步嵌套调用过程中发生Cpp Crash时，异步栈跟踪维测功能还会打印提交该异步任务的线程栈，帮助定位由异步任务提交者造成的崩溃问题。Promise异步栈功能默认关闭，开启方法参见[Promise异步栈](jscrash-guidelines.md#promise异步栈)。
+
+在多层异步嵌套调用场景下，当前规格仅保留**发生故障的调用层**的提交者调用栈，而非完整的嵌套调用链。崩溃线程的调用栈与其提交线程的调用栈通过`SubmitterStacktrace`字符串分隔。
+
+以9级`async/await`嵌套调用为例，整个过程如下图所示：调用方发起调用后，每层异步函数执行至`await`处挂起，待其Promise决议后由运行时（事件循环）恢复执行，随后调用下一层异步函数，如此逐层嵌套，直至最深层multiAsync9。每层`await`都会产生一个新的Promise节点，运行时会逐层保存该层的提交者调用栈。multiAsync9恢复执行后调用`TriggerCppCrash()`触发Cpp Crash，日志中保留的正是该层的提交者调用栈。
+
+![Promise异步嵌套调用过程](figures/promise_async_nested_call.png)
+
+以下是一份DevEco Studio归档在FaultLog的进程崩溃日志的核心内容。
+
+```text
+...
+========SubmitterStacktrace========       <- 任务异常时打印任务提交者调用栈
+#00 pc 00000000005f40d0 /system/lib64/platformsdk/libark_jsruntime.so(panda::ecmascript::AsyncStackTraceManager::SavePromiseNode(panda::ecmascript::JSHandle<panda::ecmascript::JSPromise> const&)+60)(dbd213472df8eda22fa2fc27e7353c09)
+#01 pc 0000000000289628 /system/lib64/platformsdk/libark_jsruntime.so(panda::ecmascript::JSAsyncFunction::AsyncFunctionAwait(panda::ecmascript::JSThread*, panda::ecmascript::JSHandle<panda::ecmascript::JSTaggedValue> const&, panda::ecmascript::JSHandle<panda::ecmascript::JSTaggedValue> const&)+1752)(dbd213472df8eda22fa2fc27e7353c09)
+#02 pc 0000000000288cb0 /system/lib64/platformsdk/libark_jsruntime.so(panda::ecmascript::RuntimeStubs::AsyncFunctionAwaitUncaught(unsigned long, unsigned int, unsigned long)+116)(dbd213472df8eda22fa2fc27e7353c09)
+#03 pc 0000000000e85c58 /system/lib64/module/arkcompiler/stub.an(RTStub_CallRuntime+40)
+#04 pc 0000000000d55e8c /system/lib64/module/arkcompiler/stub.an(BCStub_HandleAsyncfunctionawaituncaughtV8StwCopy+64)
+#05 at multiAsync9 entry (entry/src/main/ets/pages/Index.ets:140:3)  <- 发生故障的调用帧
+#06 at multiAsync8 entry (entry/src/main/ets/pages/Index.ets:134:3)
+#07 pc 00000000004b0860 /system/lib64/platformsdk/libark_jsruntime.so(panda::ecmascript::InterpreterAssembly::GeneratorReEnterInterpreter(panda::ecmascript::JSThread*, panda::ecmascript::JSHandle<panda::ecmascript::GeneratorContext>)+164)(dbd213472df8eda22fa2fc27e7353c09)
+#08 pc 000000000027ff7c /system/lib64/platformsdk/libark_jsruntime.so(panda::ecmascript::EcmaInterpreter::GeneratorReEnterInterpreter(panda::ecmascript::JSThread*, panda::ecmascript::JSHandle<panda::ecmascript::GeneratorContext>)+248)(dbd213472df8eda22fa2fc27e7353c09)
+#09 pc 000000000027fd3c /system/lib64/platformsdk/libark_jsruntime.so(panda::ecmascript::GeneratorHelper::Next(panda::ecmascript::JSThread*, panda::ecmascript::JSHandle<panda::ecmascript::GeneratorContext> const&, panda::ecmascript::JSTaggedValue)+172)(dbd213472df8eda22fa2fc27e7353c09)
+#10 pc 000000000027fbdc /system/lib64/platformsdk/libark_jsruntime.so(dbd213472df8eda22fa2fc27e7353c09)
+...
+```
+
 ### 应用通过HiAppEvent设置崩溃日志配置参数场景日志规格
 
-系统提供了通用的崩溃日志生成功能，但部分应用有自定义日志内容的需求。因此从**API version 20**开始，可通过设置setEventConfig接口配置自定义日志内容。
+系统提供了通用的崩溃日志生成功能，但部分应用有自定义日志内容的需求。因此从**API version 20**开始，可通过设置[setEventConfig](hiappevent-watcher-crash-events.md#seteventconfig接口说明)接口配置自定义日志内容。
 
 以下是一份DevEco Studio归档在FaultLog的系统崩溃日志的核心内容：
 
@@ -779,7 +808,7 @@ Uid:0
 
 > **注意：**
 >
-> 仅在通过Navigation跳转到子页面时才会有页面名，页面名在系统路由表中定义。
+> 仅在通过Navigation跳转到子页面时才会有页面名，页面名在[系统路由表](../ui/arkts-navigation-cross-package.md#系统路由表)中定义。
 >
 > 当应用发生前后台切换时，对应的页面URL为空，但是会将enters foreground、leaves foreground作为特殊的页面名进行填充。
 >
@@ -788,7 +817,7 @@ Uid:0
 > leaves foreground：应用在后台运行。
 
 ### 包含额外内存信息的故障场景日志规格
-通过使用HiDebug提供添加维测信息的接口OH_HiDebug_SetCrashObj，开发者可根据业务需要将维测信息添加到崩溃日志中，若程序发生崩溃，可在崩溃日志中找到该维测信息。
+通过使用HiDebug提供添加维测信息的接口[OH_HiDebug_SetCrashObj](hidebug-guidelines.md#添加维测信息到崩溃日志中)，开发者可根据业务需要将维测信息添加到崩溃日志中，若程序发生崩溃，可在崩溃日志中找到该维测信息。
 
 故障文件按照设置长度从指定地址记录内存内容。以长度64字节为例：
 
@@ -1016,7 +1045,7 @@ at onPageShow (sample|sample|1.0.0|src/main/ets/pages/Index.ts:381:36)
 
 **编译选项开启方法**
 
-以Cmake为例，在CMakeList.txt中添加`set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-omit-frame-pointer -funwind-tables")`。
+以CMake为例，在CMakeLists.txt中添加`set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-omit-frame-pointer -funwind-tables")`。
 
 ### 应用发生SIGPIPE异常退出
 
@@ -1024,7 +1053,7 @@ at onPageShow (sample|sample|1.0.0|src/main/ets/pages/Index.ts:381:36)
 
 > **注意：**
 >
-> 此功能只能在debug版本应用开启。
+> 此功能只能在[debug版本应用](performance-analysis-kit-terminology.md#debug版本应用)开启。
 
 SIGPIPE异常退出时关键日志如下所示：
 ```text

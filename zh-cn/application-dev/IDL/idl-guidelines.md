@@ -11,7 +11,7 @@
 
   **图1** IDL接口描述
 
-IDL-interface-description
+![IDL-interface-description](./figures/IDL-interface-description.png)
 
  **OpenHarmony IDL接口描述语言主要用于：** 
 
@@ -21,7 +21,7 @@ IDL-interface-description
 
 **图2** IPC/RPC通信模型
 
-IPC-RPC-communication-model
+![IPC-RPC-communication-model](./figures/IPC-RPC-communication-model.png)
 
  **使用OpenHarmony IDL接口描述语言声明接口具有以下优点：** 
 
@@ -158,15 +158,15 @@ OpenHarmony IDL容器数据类型与Ts数据类型、C++数据类型的对应关
 
 ## 获取IDL工具
 ### 方法一（推荐）：
-1. 在linux系统，下载OpenHarmony的两个仓：ability_idl_tool代码仓、third_party_bounds_checking_function代码仓。
-2. 进入ability_idl_tool代码仓，在Makefile所在目录执行make命令。注意修改MakefileLinux中关于bounds_checking_function的相对位置。
+1. 在linux系统，下载OpenHarmony的两个仓：[ability_idl_tool](https://gitcode.com/openharmony/ability_idl_tool)代码仓、[third_party_bounds_checking_function](https://gitcode.com/openharmony/third_party_bounds_checking_function)代码仓。
+2. 进入[ability_idl_tool](https://gitcode.com/openharmony/ability_idl_tool)代码仓，在Makefile所在目录执行make命令。注意修改MakefileLinux中关于bounds_checking_function的相对位置。
 3. make执行完成后，在当前目录下会生成idl-gen可执行文件，可用于idl文件本地调试。
 
 ### 方法二：
 首先，打开DevEco Studio—>Tools—>SDK Manager，查看OpenHarmony SDK的本地安装路径，此处以DevEco Studio 3.0.0.993版本为例，查看方式如下图所示。
 
-SDKpath
-SDKpath
+![SDKpath](./figures/SDKpath.png)
+![SDKpath](./figures/SDKpath2.png)
 
 进入对应路径后，查看toolchains->3.x.x.x（对应版本号命名文件夹）下是否存在idl工具的可执行文件。
 
@@ -174,9 +174,9 @@ SDKpath
 > 
 > 请保证使用最新版的SDK，版本老旧可能导致部分语句报错。
 
-若不存在，可对应版本前往docs仓版本目录下载SDK包，以3.2Beta3版本为例，可通过镜像站点获取。
+若不存在，可对应版本前往[docs仓版本目录](../../release-notes/Readme.md)下载SDK包，以[3.2Beta3版本](../../release-notes/OpenHarmony-v3.2-beta3.md)为例，可通过镜像站点获取。
 
-关于如何替换DevEco Studio的SDK包具体操作，参考full-SDK替换指南中的替换方法。
+关于如何替换DevEco Studio的SDK包具体操作，参考[full-SDK替换指南](../faqs/full-sdk-compile-guide.md)中的替换方法。
 
 得到idl工具的可执行文件后，根据具体场景进行后续开发步骤。
 
@@ -895,4 +895,4 @@ interface OHOS.AAFwk.IQuickFixManager {
 
 针对IDL的使用，有以下相关实例可供参考：
 
-- Ability与ServiceExtensionAbility通信（ArkTS）(Full SDK)（API9）
+- [Ability与ServiceExtensionAbility通信（ArkTS）(Full SDK)（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/IDL/AbilityConnectServiceExtension)

@@ -7,9 +7,9 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-以安全导入ECDH密钥对为例，涉及业务侧加密密钥的密钥生成、协商等操作不在本示例中体现。
+以安全导入ECDH密钥对为例，涉及业务侧加密密钥的[密钥生成](huks-key-generation-overview.md)、[协商](huks-key-agreement-overview.md)等操作不在本示例中体现。
 
-具体的场景介绍及支持的算法规格，请参考密钥导入支持的算法。
+具体的场景介绍及支持的算法规格，请参考[密钥导入支持的算法](huks-key-import-overview.md#支持的算法)。
 
 ## 在CMake脚本中链接相关动态库
 ```txt
@@ -18,7 +18,7 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 
 ## 开发步骤
 
-1. 设备A（导入设备）将待导入密钥转换成HUKS密钥材料格式To_Import_Key（仅针对非对称密钥，若待导入密钥是对称密钥则可省略此步骤）。
+1. 设备A（导入设备）将待导入密钥转换成[HUKS密钥材料格式](huks-concepts.md#密钥材料格式)To_Import_Key（仅针对非对称密钥，若待导入密钥是对称密钥则可省略此步骤）。
 
 2. 设备B（被导入设备）生成一个安全导入用途的非对称密钥对Wrapping_Key（公钥Wrapping_Pk，私钥Wrapping_Sk），导出Wrapping_Key的公钥材料Wrapping_Pk发送给设备A。
 
@@ -28,7 +28,7 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 
 5. 设备A基于Caller_Key的私钥Caller_Sk和设备B Wrapping_Key的公钥Wrapping_Pk，协商出Shared_Key，使用Shared_Key加密Caller_Kek，生成Caller_Kek_Enc。
 
-6. 设备A封装Caller_Pk、Caller_Kek_Enc、To_Import_Key_Enc等安全导入的密钥材料并发送给设备B，安全导入密钥材料格式见安全导入密钥材料格式。
+6. 设备A封装Caller_Pk、Caller_Kek_Enc、To_Import_Key_Enc等安全导入的密钥材料并发送给设备B，安全导入密钥材料格式见[安全导入密钥材料格式](huks-key-import-overview.md#安全导入密钥材料格式)。
 
 7. 设备B导入封装的加密密钥材料。
 
@@ -36,7 +36,7 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 
 ## 开发案例
 构造安全导入密钥的参数集
-<!-- @prepare_import_key_cpp_one -->
+<!-- @[prepare_import_key_cpp_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/ImportEncryptedKey/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 
@@ -109,7 +109,7 @@ static struct OH_Huks_Blob g_importedKeyAliasAes256 = {.size = (uint32_t)strlen(
 static struct OH_Huks_Blob g_importedAes256PlainKey = {.size = (uint32_t)strlen("This is plain key to be imported"),
                                                        .data = (uint8_t *)"This is plain key to be imported"};
 ```
-<!-- @prepare_import_key_cpp_two -->
+<!-- @[prepare_import_key_cpp_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/ImportEncryptedKey/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 static struct OH_Huks_Param g_importWrappedAes256Params[] = {
@@ -171,7 +171,7 @@ static struct OH_Huks_Param g_importAgreeKeyParams[] = {
 <!-- -->
 
 安全导入密钥的核心函数实现
-<!-- @encrypt_import_key_cpp_one -->
+<!-- @[encrypt_import_key_cpp_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/ImportEncryptedKey/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 OH_Huks_Result HuksAgreeKey(const struct OH_Huks_ParamSet *paramSet, const struct OH_Huks_Blob *keyAlias,
@@ -331,7 +331,7 @@ static OH_Huks_Result BuildWrappedKeyData(struct OH_Huks_Blob **blobArray, uint3
     return ret;
 }
 ```
-<!-- @encrypt_import_key_cpp_two -->
+<!-- @[encrypt_import_key_cpp_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/ImportEncryptedKey/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 static OH_Huks_Result CheckParamsValid(const struct HksImportWrappedKeyTestParams *params)
@@ -469,7 +469,7 @@ static OH_Huks_Result ImportWrappedKey(const struct HksImportWrappedKeyTestParam
 <!-- -->
 
 安全导入密钥的完整流程实现
-<!-- @encrypt_import_key_cpp_three -->
+<!-- @[encrypt_import_key_cpp_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/ImportEncryptedKey/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 OH_Huks_Result HksImportWrappedKeyTestCommonCase(const struct HksImportWrappedKeyTestParams *params)
@@ -640,7 +640,7 @@ static napi_value IsKeyExist(napi_env env, napi_callback_info info)
 
 ## 调测验证
 
-调用OH_Huks_IsKeyItemExist验证密钥是否存在，如密钥存在即表示密钥导入成功。
+调用[OH_Huks_IsKeyItemExist](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_iskeyitemexist)验证密钥是否存在，如密钥存在即表示密钥导入成功。
 
 ```c++
 #include "huks/native_huks_api.h"

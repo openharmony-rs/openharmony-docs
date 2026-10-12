@@ -6,15 +6,15 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-录像是循环帧的捕获，同时也是相机应用的最重要功能之一。对于录像的流畅度，开发者可以参考拍照(C/C++)中的开发步骤7，设置分辨率、闪光灯、焦距、照片质量及旋转角度等信息。
+录像是循环帧的捕获，同时也是相机应用的最重要功能之一。对于录像的流畅度，开发者可以参考拍照(C/C++)中的[开发步骤](native-camera-shooting.md#开发步骤)7，设置分辨率、闪光灯、焦距、照片质量及旋转角度等信息。
 
 ## 开发步骤
 
-详细的API说明请参考OH_Camera。
+详细的API说明请参考[OH_Camera](../../reference/apis-camera-kit/capi-oh-camera.md)。
 
 1. 导入NDK接口，接口中提供了相机相关的属性和方法，导入方法如下。
 
-   <!-- @import_header -->
+   <!-- @[import_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.h) -->     
    
    ``` C
    #include <cstdint>
@@ -25,7 +25,6 @@
    #include <cstdio>
    #include <fcntl.h>
    #include <map>
-   #include <string>
    #include <vector>
    #include <native_buffer/native_buffer.h>
    #include "iostream"
@@ -73,19 +72,19 @@
 
 3. 获取SurfaceId。
 
-   系统提供的OH_AVRecorder_Create()接口可以创建一个录像AVRecorder实例，通过该实例的OH_AVRecorder_GetInputSurface()方法获取SurfaceId。
+   系统提供的[OH_AVRecorder_Create()](../../reference/apis-media-kit/capi-avrecorder-h.md#oh_avrecorder_create)接口可以创建一个录像AVRecorder实例，通过该实例的[OH_AVRecorder_GetInputSurface()](../../reference/apis-media-kit/capi-avrecorder-h.md#oh_avrecorder_getinputsurface)方法获取SurfaceId。
 
 4. 创建录像输出流。
 
-   根据传入的SurfaceId，通过OH_CameraManager_GetSupportedCameraOutputCapability接口获取Camera_OutputCapability能力，可以通过Camera_OutputCapability中的videoProfiles，获取当前设备支持的录像输出流。然后，定义创建录像的参数，通过OH_CameraManager_CreateVideoOutput方法创建录像输出流。
+   根据传入的SurfaceId，通过[OH_CameraManager_GetSupportedCameraOutputCapability](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getsupportedcameraoutputcapability)接口获取[Camera_OutputCapability](../../reference/apis-camera-kit/capi-oh-camera-camera-outputcapability.md)能力，可以通过[Camera_OutputCapability](../../reference/apis-camera-kit/capi-oh-camera-camera-outputcapability.md)中的videoProfiles，获取当前设备支持的录像输出流。然后，定义创建录像的参数，通过OH_CameraManager_CreateVideoOutput方法创建录像输出流。
   
    > **说明：**
    >
    > - 预览流与录像输出流的分辨率的宽高比要保持一致。如示例代码中宽高比为640:480 = 4:3，则需要预览流中的分辨率的宽高比也为4:3，可选择的分辨率有：640:480、960:720、1440:1080等。
    >
-   > - 在设置预览输出流的分辨率宽高前，需要先通过OH_AVRecorder_Profile查询视频帧支持可配置的宽高范围。
+   > - 在设置预览输出流的分辨率宽高前，需要先通过[OH_AVRecorder_Profile](../../reference/apis-media-kit/capi-avrecorder-oh-avrecorder-profile.md)查询视频帧支持可配置的宽高范围。
 
-   <!-- @create_video_output -->
+   <!-- @[create_video_output](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->     
    
    ``` C++
    Camera_ErrorCode NDKCamera::CreateVideoOutput(char *videoId)
@@ -95,7 +94,7 @@
            return CAMERA_INVALID_ARGUMENT;
        }
        ret_ = OH_CameraManager_CreateVideoOutput(cameraManager_, videoProfile_, videoId, &videoOutput_);
-       OH_LOG_ERROR(LOG_APP, " create video width: %{public}d, height: %{public}d, format: %{public}d",
+       OH_LOG_INFO(LOG_APP, " create video width: %{public}d, height: %{public}d, format: %{public}d",
            videoProfile_->size.width, videoProfile_->size.height, videoProfile_->format);
        if (videoId == nullptr || videoOutput_ == nullptr || ret_ != CAMERA_OK) {
            OH_LOG_ERROR(LOG_APP, "CreateVideoOutput failed.");
@@ -108,9 +107,9 @@
 
 5. 开始录像。
 
-   通过OH_VideoOutput_Start()方法启动录像输出流。
+   通过[OH_VideoOutput_Start()](../../reference/apis-camera-kit/capi-video-output-h.md#oh_videooutput_start)方法启动录像输出流。
 
-   <!-- @video_output_start -->
+   <!-- @[video_output_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
    
    ``` C++
    Camera_ErrorCode NDKCamera::VideoOutputStart(void)
@@ -128,14 +127,14 @@
 
 6. 停止录像。
 
-   通过OH_VideoOutput_Stop()方法停止录像输出流。
+   通过[OH_VideoOutput_Stop()](../../reference/apis-camera-kit/capi-video-output-h.md#oh_videooutput_stop)方法停止录像输出流。
 
-   <!-- @video_output_stop -->
+   <!-- @[video_output_stop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->   
    
    ``` C++
    Camera_ErrorCode NDKCamera::VideoOutputStop(void)
    {
-       OH_LOG_ERROR(LOG_APP, "enter VideoOutputStop.");
+       OH_LOG_INFO(LOG_APP, "enter VideoOutputStop.");
        ret_ = OH_VideoOutput_Stop(videoOutput_);
        if (ret_ != CAMERA_OK) {
            OH_LOG_ERROR(LOG_APP, "VideoOutputStop failed.");
@@ -151,7 +150,7 @@
 
 - 通过注册固定的frameStart回调函数获取监听录像开始结果，videoOutput创建成功时即可监听，录像第一次曝光时触发，当触发该事件回调时表示录像已开始。
 
-  <!-- @video_callback_start -->
+  <!-- @[video_callback_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
   
   ``` C++
   void VideoOutputOnFrameStart(Camera_VideoOutput *videoOutput)
@@ -162,7 +161,7 @@
 
 - 通过注册固定的frameEnd回调函数获取监听录像结束结果，videoOutput创建成功时即可监听，录像完成最后一帧时触发，有该事件返回结果则认为录像流已结束。
 
-  <!-- @video_callback_end -->
+  <!-- @[video_callback_end](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
   
   ``` C++
   void VideoOutputOnFrameEnd(Camera_VideoOutput *videoOutput, int32_t frameCount)
@@ -171,18 +170,18 @@
   }
   ```
 
-- 通过注册固定的error回调函数获取监听录像输出错误结果，callback返回录像输出接口使用错误时对应的错误码，错误码类型参见Camera_ErrorCode。
+- 通过注册固定的error回调函数获取监听录像输出错误结果，callback返回录像输出接口使用错误时对应的错误码，错误码类型参见[Camera_ErrorCode](../../reference/apis-camera-kit/capi-camera-h.md#camera_errorcode)。
 
-  <!-- @video_callback_error -->
+  <!-- @[video_callback_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->     
   
   ``` C++
   void VideoOutputOnError(Camera_VideoOutput *videoOutput, Camera_ErrorCode errorCode)
   {
-      OH_LOG_INFO(LOG_APP, "VideoOutput errorCode = %{public}d", errorCode);
+      OH_LOG_ERROR(LOG_APP, "VideoOutput errorCode = %{public}d", errorCode);
   }
   ```
 
-  <!-- @get_video_listener_and_register -->
+  <!-- @[get_video_listener_and_register](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
   
   ``` C++
   VideoOutput_Callbacks *NDKCamera::GetVideoOutputListener(void)

@@ -9,7 +9,7 @@
 
 ## 概述
 
-弹性布局（Flex）提供更加有效的方式对容器中的子元素进行排列、对齐和分配剩余空间。常用于页面头部导航栏的均匀分布、页面框架的搭建、多行数据的排列等。
+弹性布局（[Flex](../reference/apis-arkui/arkui-ts/ts-container-flex.md)）提供更加有效的方式对容器中的子元素进行排列、对齐和分配剩余空间。常用于页面头部导航栏的均匀分布、页面框架的搭建、多行数据的排列等。
 
 容器默认存在主轴与交叉轴，子元素默认沿主轴排列，子元素在主轴方向的尺寸称为主轴尺寸，在交叉轴方向的尺寸称为交叉轴尺寸。
 
@@ -17,7 +17,7 @@
 
   **图1** 主轴为水平方向的Flex容器示意图
 
-flex-layout
+![flex-layout](figures/flex-layout.png)
 
 
 ## 基本概念
@@ -29,16 +29,16 @@ flex-layout
 
 ## 布局方向
 
-在弹性布局中，容器的子元素可以按照任意方向排列。通过设置FlexOptions的参数direction，可以决定主轴的方向，从而控制子元素的排列方向。
+在弹性布局中，容器的子元素可以按照任意方向排列。通过设置[FlexOptions](../reference/apis-arkui/arkui-ts/ts-container-flex.md#flexoptions对象说明)的参数direction，可以决定主轴的方向，从而控制子元素的排列方向。
 
   **图2** 弹性布局方向图
 
-flex-layout-direction
+![flex-layout-direction](figures/flex-layout-direction.png)
 
 - FlexDirection.Row（默认值）：主轴为水平方向，子元素从起始端沿着水平方向开始排布。
 
 
-  <!-- @FlexDirectionRow_start -->
+  <!-- @[FlexDirectionRow_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexDirectionRow.ets) -->
   
   ``` TypeScript
   Flex({ direction: FlexDirection.Row }) {
@@ -52,12 +52,12 @@ flex-layout-direction
   .backgroundColor('#AFEEEE')
   ```
 
-  flexDirectionRow
+  ![flexDirectionRow](figures/flexDirectionRow.png)
 
 - FlexDirection.RowReverse：主轴为水平方向，子元素从终点端沿着FlexDirection.Row相反的方向开始排布。
 
 
-  <!-- @FlexDirectionRowReverse_start -->
+  <!-- @[FlexDirectionRowReverse_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexDirectionRowReverse.ets) -->
   
   ``` TypeScript
   Flex({ direction: FlexDirection.RowReverse }) {
@@ -71,12 +71,12 @@ flex-layout-direction
   .backgroundColor('#AFEEEE')
   ```
 
-  flexDirectionRowReverse
+  ![flexDirectionRowReverse](figures/flexDirectionRowReverse.png)
 
 - FlexDirection.Column：主轴为垂直方向，子元素从起始端沿着垂直方向开始排布。
 
 
-  <!-- @FlexDirectionColumn_start -->
+  <!-- @[FlexDirectionColumn_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexDirectionColumn.ets) -->
   
   ``` TypeScript
   Flex({ direction: FlexDirection.Column }) {
@@ -90,12 +90,12 @@ flex-layout-direction
   .backgroundColor('#AFEEEE')
   ```
 
-  flexDirectionColumn
+  ![flexDirectionColumn](figures/flexDirectionColumn.png)
 
 - FlexDirection.ColumnReverse：主轴为垂直方向，子元素从终点端沿着FlexDirection.Column相反的方向开始排布。
 
 
-  <!-- @FlexDirectionColumnReverse_start -->
+  <!-- @[FlexDirectionColumnReverse_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexDirectionColumnReverse.ets) -->
   
   ``` TypeScript
   Flex({ direction: FlexDirection.ColumnReverse }) {
@@ -109,7 +109,7 @@ flex-layout-direction
   .backgroundColor('#AFEEEE')
   ```
 
-  flexDirectionColumnReverse
+  ![flexDirectionColumnReverse](figures/flexDirectionColumnReverse.png)
 
 
 ## 布局换行
@@ -119,7 +119,7 @@ flex-layout-direction
 - FlexWrap.NoWrap（默认值）：不换行。如果子元素的宽度总和大于父元素的宽度，则子元素会被压缩宽度。
 
 
-  <!-- @FlexWrapNoWrap_start -->
+  <!-- @[FlexWrapNoWrap_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexWrapNoWrap.ets) -->
   
   ``` TypeScript
   Flex({ wrap: FlexWrap.NoWrap }) {
@@ -132,12 +132,12 @@ flex-layout-direction
   .backgroundColor('#AFEEEE')
   ```
 
-  flexWrapNoWrap
+  ![flexWrapNoWrap](figures/flexWrapNoWrap.png)
 
 - FlexWrap.Wrap：换行，每一行子元素按照主轴方向排列。
 
 
-  <!-- @FlexWrapWrap_start -->
+  <!-- @[FlexWrapWrap_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexWrapWrap.ets) -->
   
   ``` TypeScript
   Flex({ wrap: FlexWrap.Wrap }) {
@@ -150,12 +150,12 @@ flex-layout-direction
   .backgroundColor('#AFEEEE')
   ```
 
-  zh-cn_image_0000001511740468
+  ![zh-cn_image_0000001511740468](figures/zh-cn_image_0000001511740468.png)
 
 - FlexWrap.WrapReverse：换行，每一行子元素按照主轴反方向排列。
 
 
-  <!-- @FlexWrapWrapReverse_start -->
+  <!-- @[FlexWrapWrapReverse_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexWrapWrapReverse.ets) -->
   
   ``` TypeScript
   Flex({ wrap: FlexWrap.WrapReverse }) {
@@ -168,20 +168,20 @@ flex-layout-direction
   .backgroundColor('#AFEEEE')
   ```
 
-  flexWrapWrapReverse
+  ![flexWrapWrapReverse](figures/flexWrapWrapReverse.png)
 
 
 ## 主轴对齐方式
 
-通过justifyContent参数设置子元素在主轴方向的对齐方式。
+通过[justifyContent](../reference/apis-arkui/arkui-ts/ts-container-flex.md#flexoptions对象说明)参数设置子元素在主轴方向的对齐方式。
 
-flex-spindle-alignment
+![flex-spindle-alignment](figures/flex-spindle-alignment.png)
 
 
 - FlexAlign.Start（默认值）：子元素在主轴方向起始端对齐， 第一个子元素与父元素边沿对齐，其他元素与前一个元素对齐。
 
 
-  <!-- @FlexAlignStart_start -->
+  <!-- @[FlexAlignStart_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignStart.ets) -->
   
   ``` TypeScript
   Flex({ justifyContent: FlexAlign.Start }) {
@@ -194,12 +194,12 @@ flex-spindle-alignment
   .backgroundColor('#AFEEEE')
   ```
 
-  flexAlignStart
+  ![flexAlignStart](figures/flexAlignStart.png)
 
 - FlexAlign.Center：子元素在主轴方向居中对齐。
 
 
-  <!-- @FlexAlignCenter_start -->
+  <!-- @[FlexAlignCenter_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignCenter.ets) -->
   
   ``` TypeScript
   Flex({ justifyContent: FlexAlign.Center }) {
@@ -212,12 +212,12 @@ flex-spindle-alignment
   .backgroundColor('#AFEEEE')
   ```
 
-  flexAlignCenter
+  ![flexAlignCenter](figures/flexAlignCenter.png)
 
 - FlexAlign.End：子元素在主轴方向终点端对齐，最后一个子元素与父元素边沿对齐，其他元素与后一个元素对齐。
 
 
-  <!-- @FlexAlignEnd_start -->
+  <!-- @[FlexAlignEnd_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignEnd.ets) -->
   
   ``` TypeScript
   Flex({ justifyContent: FlexAlign.End }) {
@@ -230,12 +230,12 @@ flex-spindle-alignment
   .backgroundColor('#AFEEEE')
   ```
 
-  flexAlignEnd
+  ![flexAlignEnd](figures/flexAlignEnd.png)
 
 - FlexAlign.SpaceBetween：Flex主轴方向均匀分配弹性元素，相邻子元素之间距离相同。第一个子元素和最后一个子元素与父元素边沿对齐。
 
 
-  <!-- @FlexAlignSpaceBetween_start -->
+  <!-- @[FlexAlignSpaceBetween_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignSpaceBetween.ets) -->
   
   ``` TypeScript
   Flex({ justifyContent: FlexAlign.SpaceBetween }) {
@@ -248,12 +248,12 @@ flex-spindle-alignment
   .backgroundColor('#AFEEEE')
   ```
 
-  flexAlignSpaceBetween
+  ![flexAlignSpaceBetween](figures/flexAlignSpaceBetween.png)
 
 - FlexAlign.SpaceAround：Flex主轴方向均匀分配弹性元素，相邻子元素之间距离相同。第一个子元素到主轴起始端的距离和最后一个子元素到主轴终点端的距离是相邻元素之间距离的一半。
 
 
-  <!-- @FlexAlignSpaceAround_start -->
+  <!-- @[FlexAlignSpaceAround_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignSpaceAround.ets) -->
   
   ``` TypeScript
   Flex({ justifyContent: FlexAlign.SpaceAround }) {
@@ -266,12 +266,12 @@ flex-spindle-alignment
   .backgroundColor('#AFEEEE')
   ```
 
-  flexAlignSpaceAround
+  ![flexAlignSpaceAround](figures/flexAlignSpaceAround.png)
 
 - FlexAlign.SpaceEvenly：Flex主轴方向元素等间距布局，相邻子元素之间的间距、第一个子元素与主轴起始端的间距、最后一个子元素到主轴终点端的间距均相等。
 
 
-  <!-- @FlexAlignSpaceEvenly_start -->
+  <!-- @[FlexAlignSpaceEvenly_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignSpaceEvenly.ets) -->
   
   ``` TypeScript
   Flex({ justifyContent: FlexAlign.SpaceEvenly }) {
@@ -284,7 +284,7 @@ flex-spindle-alignment
   .backgroundColor('#AFEEEE')
   ```
 
-  flexAlignSpaceEvenly
+  ![flexAlignSpaceEvenly](figures/flexAlignSpaceEvenly.png)
 
 
 ## 交叉轴对齐方式
@@ -294,13 +294,13 @@ flex-spindle-alignment
 
 ### 容器组件设置交叉轴对齐
 
-可以通过设置FlexOptions的参数alignItems，设置子元素在交叉轴的对齐方式。
+可以通过设置[FlexOptions](../reference/apis-arkui/arkui-ts/ts-container-flex.md#flexoptions对象说明)的参数alignItems，设置子元素在交叉轴的对齐方式。
 
 
 - ItemAlign.Auto：使用Flex容器中默认配置。
 
 
-  <!-- @FlexItemAlignAuto_start -->
+  <!-- @[FlexItemAlignAuto_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexItemAlignAuto.ets) -->
   
   ``` TypeScript
   Flex({ alignItems: ItemAlign.Auto }) {
@@ -313,12 +313,12 @@ flex-spindle-alignment
   .backgroundColor('#AFEEEE')
   ```
 
-  flexItemAlignAuto
+  ![flexItemAlignAuto](figures/flexItemAlignAuto.png)
 
 - ItemAlign.Start：交叉轴方向首部对齐。
 
 
-  <!-- @FlexItemAlignStart_start -->
+  <!-- @[FlexItemAlignStart_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexItemAlignStart.ets) -->
   
   ``` TypeScript
   Flex({ alignItems: ItemAlign.Start }) {
@@ -331,12 +331,12 @@ flex-spindle-alignment
   .backgroundColor('#AFEEEE')
   ```
 
-  flexItemAlignStart
+  ![flexItemAlignStart](figures/flexItemAlignStart.png)
 
 - ItemAlign.Center：交叉轴方向居中对齐。
 
 
-  <!-- @FlexItemAlignCenter_start -->
+  <!-- @[FlexItemAlignCenter_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexItemAlignCenter.ets) -->
   
   ``` TypeScript
   Flex({ alignItems: ItemAlign.Center }) {
@@ -349,12 +349,12 @@ flex-spindle-alignment
   .backgroundColor('#AFEEEE')
   ```
 
-  zh-cn_image_0000001511740484
+  ![zh-cn_image_0000001511740484](figures/zh-cn_image_0000001511740484.png)
 
 - ItemAlign.End：交叉轴方向底部对齐。
 
 
-  <!-- @FlexItemAlignEnd_start -->
+  <!-- @[FlexItemAlignEnd_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexItemAlignEnd.ets) -->
   
   ``` TypeScript
   Flex({ alignItems: ItemAlign.End }) {
@@ -367,12 +367,12 @@ flex-spindle-alignment
   .backgroundColor('#AFEEEE')
   ```
 
-  flexItemAlignEnd
+  ![flexItemAlignEnd](figures/flexItemAlignEnd.png)
 
-- ItemAlign.Stretch：交叉轴方向拉伸填充，在未设置尺寸时，拉伸到容器尺寸。元素在Flex容器中，沿交叉轴方向拉伸填充。容器为Flex且设置FlexWrap为FlexWrap.Wrap或FlexWrap.WrapReverse时，元素拉伸到与当前行或列交叉轴长度最长的元素尺寸。其余情况下，无论元素尺寸是否设置，均拉伸到容器尺寸。
+- ItemAlign.Stretch：交叉轴方向拉伸填充，在未设置尺寸时，拉伸到容器尺寸。元素在Flex容器中，沿交叉轴方向拉伸填充。容器为Flex且设置[FlexWrap](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#flexwrap)为FlexWrap.Wrap或FlexWrap.WrapReverse时，元素拉伸到与当前行或列交叉轴长度最长的元素尺寸。其余情况下，无论元素尺寸是否设置，均拉伸到容器尺寸。
 
 
-  <!-- @FlexItemAlignStretch_start -->
+  <!-- @[FlexItemAlignStretch_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexItemAlignStretch.ets) -->
   
   ``` TypeScript
   Flex({ alignItems: ItemAlign.Stretch }) {
@@ -385,12 +385,12 @@ flex-spindle-alignment
   .backgroundColor('#AFEEEE')
   ```
 
-  flexItemAlignStretch
+  ![flexItemAlignStretch](figures/flexItemAlignStretch.png)
 
 - ItemAlign.Baseline：交叉轴方向文本基线对齐。
 
 
-  <!-- @FlexItemAlignBaseline_start -->
+  <!-- @[FlexItemAlignBaseline_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexItemAlignBaseline.ets) -->
   
   ``` TypeScript
   Flex({ alignItems: ItemAlign.Baseline }) {
@@ -403,14 +403,14 @@ flex-spindle-alignment
   .backgroundColor('#AFEEEE')
   ```
 
-  flexItemAlignBaseline
+  ![flexItemAlignBaseline](figures/flexItemAlignBaseline.png)
 
 
 ### 子元素设置交叉轴对齐
 
-子元素的alignSelf属性也可以设置子元素在父容器交叉轴的对齐方式，且会覆盖Flex布局容器中alignItems配置。如下例所示：
+子元素的[alignSelf](../reference/apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#alignself)属性也可以设置子元素在父容器交叉轴的对齐方式，且会覆盖Flex布局容器中alignItems配置。如下例所示：
 
-<!-- @FlexAlignSelf_start -->
+<!-- @[FlexAlignSelf_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignSelf.ets) -->
 
 ``` TypeScript
 Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) { // 容器组件设置子元素居中
@@ -434,7 +434,7 @@ Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) { // 容器
 ```
 
 
-flexAlignSelf
+![flexAlignSelf](figures/flexAlignSelf.png)
 
 
 上例中，Flex容器中alignItems设置交叉轴子元素的对齐方式为居中，子元素自身设置了alignSelf属性的情况，覆盖父组件的alignItems值，表现为alignSelf的定义。
@@ -442,12 +442,12 @@ flexAlignSelf
 
 ### 内容对齐
 
-可以通过alignContent参数设置子元素各行在交叉轴剩余空间内的对齐方式，只在多行的Flex布局中生效，可选值有：
+可以通过[alignContent](../reference/apis-arkui/arkui-ts/ts-container-flex.md#flexoptions对象说明)参数设置子元素各行在交叉轴剩余空间内的对齐方式，只在多行的Flex布局中生效，可选值有：
 
 - FlexAlign.Start：子元素各行与交叉轴起点对齐。
 
 
-  <!-- @FlexAlignCenterFlexAlignStart_start -->
+  <!-- @[FlexAlignCenterFlexAlignStart_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignCenterFlexAlignStart.ets) -->
   
   ``` TypeScript
   Flex({ justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap, alignContent: FlexAlign.Start }) {
@@ -462,12 +462,12 @@ flexAlignSelf
   .backgroundColor('#AFEEEE')
   ```
 
-  flexAlignCenterFlexAlignStart
+  ![flexAlignCenterFlexAlignStart](figures/flexAlignCenterFlexAlignStart.png)
 
 - FlexAlign.Center：子元素各行在交叉轴方向居中对齐。
 
 
-  <!-- @FlexAlignCenterFlexAlignCenter_start -->
+  <!-- @[FlexAlignCenterFlexAlignCenter_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignCenterFlexAlignCenter.ets) -->
   
   ``` TypeScript
   Flex({ justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap, alignContent: FlexAlign.Center }) {
@@ -482,12 +482,12 @@ flexAlignSelf
   .backgroundColor('#AFEEEE')
   ```
 
-  flexAlignCenterFlexAlignCenter
+  ![flexAlignCenterFlexAlignCenter](figures/flexAlignCenterFlexAlignCenter.png)
 
 - FlexAlign.End：子元素各行与交叉轴终点对齐。
 
 
-  <!-- @FlexAlignCenterFlexAlignEnd_start -->
+  <!-- @[FlexAlignCenterFlexAlignEnd_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignCenterFlexAlignEnd.ets) -->
   
   ``` TypeScript
   Flex({ justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap, alignContent: FlexAlign.End }) {
@@ -502,12 +502,12 @@ flexAlignSelf
   .backgroundColor('#AFEEEE')
   ```
 
-  flexAlignCenterFlexAlignEnd
+  ![flexAlignCenterFlexAlignEnd](figures/flexAlignCenterFlexAlignEnd.png)
 
 - FlexAlign.SpaceBetween：子元素各行与交叉轴两端对齐，各行间垂直间距平均分布。
 
 
-  <!-- @FlexAlignCenterFlexAlignSpaceBetween_start -->
+  <!-- @[FlexAlignCenterFlexAlignSpaceBetween_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignCenterFlexAlignSpaceBetween.ets) -->
   
   ``` TypeScript
   Flex({ justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap, alignContent: FlexAlign.SpaceBetween }) {
@@ -522,12 +522,12 @@ flexAlignSelf
   .backgroundColor('#AFEEEE')
   ```
 
-  flexAlignCenterFlexAlignSpaceBetween
+  ![flexAlignCenterFlexAlignSpaceBetween](figures/flexAlignCenterFlexAlignSpaceBetween.png)
 
 - FlexAlign.SpaceAround：子元素各行间距相等，是元素首尾行与交叉轴两端距离的两倍。
 
 
-  <!-- @FlexAlignCenterFlexAlignSpaceAround_start -->
+  <!-- @[FlexAlignCenterFlexAlignSpaceAround_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignCenterFlexAlignSpaceAround.ets) -->
   
   ``` TypeScript
   Flex({ justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap, alignContent: FlexAlign.SpaceAround }) {
@@ -542,12 +542,12 @@ flexAlignSelf
   .backgroundColor('#AFEEEE')
   ```
 
-  flexAlignCenterFlexAlignSpaceAround
+  ![flexAlignCenterFlexAlignSpaceAround](figures/flexAlignCenterFlexAlignSpaceAround.png)
 
 - FlexAlign.SpaceEvenly：子元素各行间距，子元素首尾行与交叉轴两端距离都相等。
 
 
-  <!-- @FlexAlignCenterFlexAlignSpaceBetween_start -->
+  <!-- @[FlexAlignCenterFlexAlignSpaceBetween_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexAlignCenterFlexAlignSpaceEvenly.ets) -->
   
   ``` TypeScript
   Flex({ justifyContent: FlexAlign.SpaceBetween, wrap: FlexWrap.Wrap, alignContent: FlexAlign.SpaceEvenly }) {
@@ -562,17 +562,17 @@ flexAlignSelf
   .backgroundColor('#AFEEEE')
   ```
 
-  flexAlignCenterFlexAlignSpaceEvenly
+  ![flexAlignCenterFlexAlignSpaceEvenly](figures/flexAlignCenterFlexAlignSpaceEvenly.png)
 
 
 ## 自适应拉伸
 
 在弹性布局父组件尺寸过小时，通过子元素的以下属性设置其在父容器的占比，达到自适应布局。
 
-- flexBasis：设置子元素在父容器主轴方向上的基准尺寸。如果设置了该属性，则子项占用的空间为该属性所设置的值；如果没设置该属性，那子项的空间为width/height的值。
+- [flexBasis](../reference/apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#flexbasis)：设置子元素在父容器主轴方向上的基准尺寸。如果设置了该属性，则子项占用的空间为该属性所设置的值；如果没设置该属性，那子项的空间为width/height的值。
 
 
-  <!-- @FlexBasis_start -->
+  <!-- @[FlexBasis_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexBasis.ets) -->
   
   ``` TypeScript
   Flex() {
@@ -599,11 +599,11 @@ flexAlignSelf
   }.width('90%').height(120).padding(10).backgroundColor('#AFEEEE')
   ```
 
-  flexBasis
+  ![flexBasis](figures/flexBasis.png)
 
-- flexGrow：设置父容器的剩余空间分配给此属性所在组件的比例，用于分配父组件的剩余空间。
+- [flexGrow](../reference/apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#flexgrow)：设置父容器的剩余空间分配给此属性所在组件的比例，用于分配父组件的剩余空间。
 
-  <!-- @FlexGrow_start -->
+  <!-- @[FlexGrow_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexGrow.ets) -->
   
   ``` TypeScript
   Flex() {
@@ -625,16 +625,16 @@ flexAlignSelf
   }.width(360).height(120).padding(10).backgroundColor('#AFEEEE')
   ```
   
-  flexGrow
+  ![flexGrow](figures/flexGrow.png)
   
   父容器宽度360vp，三个子元素原始宽度均为100vp，左右padding为20vp，总和320vp，剩余空间40vp根据flexGrow值的占比分配给子元素，未设置flexGrow的子元素不参与分配。
   
   第一个元素以及第二个元素以1:4分配剩下的40vp。第一个元素为100vp+40vp * 1/5=108vp，第二个元素为100vp+40vp * 4/5=132vp。
   
-- flexShrink：当父容器空间不足时，子元素的压缩比例。
+- [flexShrink](../reference/apis-arkui/arkui-ts/ts-universal-attributes-flex-layout.md#flexshrink)：当父容器空间不足时，子元素的压缩比例。
 
 
-  <!-- @FlexShrink_start -->
+  <!-- @[FlexShrink_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexShrink.ets) -->
   
   ``` TypeScript
   Flex({ direction: FlexDirection.Row }) {
@@ -658,7 +658,7 @@ flexAlignSelf
   }.width(400).height(120).padding(10).backgroundColor('#AFEEEE')
   ```
 
-  flexShrink
+  ![flexShrink](figures/flexShrink.png)
 
   父容器宽度400vp，三个子元素原始宽度为200vp，左右padding为20vp，父容器给子元素的布局空间为380vp，超出父容器空间220vp。
   
@@ -670,7 +670,7 @@ flexAlignSelf
 使用弹性布局，可以实现子元素沿水平方向排列，两端对齐，子元素间距平分，垂直方向上子元素居中的效果。
 
 
-<!-- @FlexExample_start -->
+<!-- @[FlexExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/flexlayout/FlexExample.ets) -->
 
 ``` TypeScript
 @Entry
@@ -698,10 +698,10 @@ struct FlexExample {
 }
 ```
 
-flexExample
+![flexExample](figures/flexExample.png)
 
 ## 相关实例
 
 针对Flex开发，有以下相关实例可供参考：
 
-- 弹性布局（ArkTS）（API9）
+- [弹性布局（ArkTS）（API9）](https://gitcode.com/openharmony/codelabs/tree/master/ETSUI/FlexLayout)

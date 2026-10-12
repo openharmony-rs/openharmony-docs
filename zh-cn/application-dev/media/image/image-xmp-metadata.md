@@ -12,11 +12,11 @@ XMP（Extensible Metadata Platform，可扩展元数据平台）是一种用于�
 
 ## 开发步骤
 
-获取图片，创建ImageSource（可选），再获取XMPMetadata对象，使用XMP路径语法读写标签。XMP元数据的操作方法请参考XMPMetadata。
+获取图片，创建ImageSource（可选），再获取XMPMetadata对象，使用XMP路径语法读写标签。XMP元数据的操作方法请参考[XMPMetadata](../../reference/apis-image-kit/arkts-apis-image-XMPMetadata.md)。
 
 1. 导入相关模块。
 
-   <!-- @xmp_import -->
+   <!-- @[xmp_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/XMPUtility.ets) -->
    
    ``` TypeScript
    // 导入相关模块。
@@ -26,11 +26,11 @@ XMP（Extensible Metadata Platform，可扩展元数据平台）是一种用于�
 
 2. 获取XMPMetadata对象。
 
-   在使用XMP元数据相关接口前，需要先获取一个XMPMetadata实例。当前支持以下方式：
+   在使用XMP元数据相关接口前，需要先获取一个[XMPMetadata](../../reference/apis-image-kit/arkts-apis-image-XMPMetadata.md)实例。当前支持以下方式：
 
    - 方式一：手动创建新的XMPMetadata对象。适用于需要构造全新XMP元数据的场景。
 
-     <!-- @create_xmp_metadata -->
+     <!-- @[create_xmp_metadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/XMPUtility.ets) -->
      
      ``` TypeScript
      async createXMPMetadata(): Promise<image.XMPMetadata> {
@@ -40,9 +40,9 @@ XMP（Extensible Metadata Platform，可扩展元数据平台）是一种用于�
      }
      ```
 
-   - 方式二：通过ImageSource读取图片中的XMP元数据。适用于需要读取或修改已有图片中XMP元数据的场景。<br>推荐使用readImageMetadataByType接口获取XMP元数据，可以直接传入`MetadataType.XMP_METADATA`，精准获取XMP类型的元数据，避免读取其他无关元数据。
+   - 方式二：通过ImageSource读取图片中的XMP元数据。适用于需要读取或修改已有图片中XMP元数据的场景。<br>推荐使用[readImageMetadataByType](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#readimagemetadatabytype24)接口获取XMP元数据，可以直接传入`MetadataType.XMP_METADATA`，精准获取XMP类型的元数据，避免读取其他无关元数据。
 
-     <!-- @read_xmp_metadata_from_image -->
+     <!-- @[read_xmp_metadata_from_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/XMPUtility.ets) -->
      
      ``` TypeScript
      async readXMPMetadataFromImage(imageSource: image.ImageSource): Promise<image.XMPMetadata | undefined> {
@@ -66,9 +66,9 @@ XMP（Extensible Metadata Platform，可扩展元数据平台）是一种用于�
 
 3. 编辑XMP元数据。
 
-   使用XMP路径定位到目标标签后，调用对应的方法进行编辑。例如：通过setValue设置标签值，通过getTag获取标签值，通过removeTag删除标签。
+   使用XMP路径定位到目标标签后，调用对应的方法进行编辑。例如：通过[setValue](../../reference/apis-image-kit/arkts-apis-image-XMPMetadata.md#setvalue)设置标签值，通过[getTag](../../reference/apis-image-kit/arkts-apis-image-XMPMetadata.md#gettag)获取标签值，通过[removeTag](../../reference/apis-image-kit/arkts-apis-image-XMPMetadata.md#removetag)删除标签。
 
-   <!-- @operate_xmp_metadata -->
+   <!-- @[operate_xmp_metadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/XMPUtility.ets) -->
    
    ``` TypeScript
    async operateXMPMetadata(xmpMetadata: image.XMPMetadata): Promise<void> {
@@ -90,13 +90,13 @@ XMP（Extensible Metadata Platform，可扩展元数据平台）是一种用于�
 
 4. 将编辑后的XMP元数据写回图片。
 
-   编辑后的XMPMetadata对象可通过writeImageMetadata写回图片文件。
+   编辑后的XMPMetadata对象可通过[writeImageMetadata](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#writeimagemetadata23)写回图片文件。
 
    > **注意：**
    >
    > DNG和TIFF格式的图片不支持将XMP元数据写回图片文件。
 
-   <!-- @write_xmp_metadata_to_image -->
+   <!-- @[write_xmp_metadata_to_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/XMPUtility.ets) -->
    
    ``` TypeScript
    async writeXMPMetadataToImage(imageSource: image.ImageSource, xmpMetadata: image.XMPMetadata): Promise<void> {
@@ -113,7 +113,7 @@ XMP（Extensible Metadata Platform，可扩展元数据平台）是一种用于�
 
 ## XMP路径语法详解
 
-XMP路径由以下语法构件组合而成。在使用getTag、setValue、removeTag等接口时，均需通过XMP路径指定目标标签。
+XMP路径由以下语法构件组合而成。在使用[getTag](../../reference/apis-image-kit/arkts-apis-image-XMPMetadata.md#gettag)、[setValue](../../reference/apis-image-kit/arkts-apis-image-XMPMetadata.md#setvalue)、[removeTag](../../reference/apis-image-kit/arkts-apis-image-XMPMetadata.md#removetag)等接口时，均需通过XMP路径指定目标标签。
 
 ### 基本属性路径
 
@@ -121,12 +121,12 @@ XMP路径由以下语法构件组合而成。在使用getTag、setValue、remove
 
 > **说明：**
 >
-> - 使用标准命名空间（如`xmp`、`dc`、`exif`等）时，无需额外注册。Image Kit支持但不限于常量中定义的标准命名空间。
-> - 使用自定义命名空间时，需要先通过registerXMPNamespace完成注册。
+> - 使用标准命名空间（如`xmp`、`dc`、`exif`等）时，无需额外注册。Image Kit支持但不限于[常量](../../reference/apis-image-kit/arkts-apis-image-c.md#常量)中定义的标准命名空间。
+> - 使用自定义命名空间时，需要先通过[registerXMPNamespace](../../reference/apis-image-kit/arkts-apis-image-XMPMetadata.md#registerxmpnamespace)完成注册。
 
 **示例：**
 
-<!-- @set_and_get_basic_tag -->
+<!-- @[set_and_get_basic_tag](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/XMPUtility.ets) -->
 
 ``` TypeScript
 async setAndGetBasicTag(xmpMetadata: image.XMPMetadata): Promise<void> {
@@ -153,9 +153,9 @@ async setAndGetBasicTag(xmpMetadata: image.XMPMetadata): Promise<void> {
 
 **示例1：创建数组容器并添加元素**
 
-以下示例假设已注册自定义命名空间`book`。如果尚未注册，请先调用registerXMPNamespace完成注册。
+以下示例假设已注册自定义命名空间`book`。如果尚未注册，请先调用[registerXMPNamespace](../../reference/apis-image-kit/arkts-apis-image-XMPMetadata.md#registerxmpnamespace)完成注册。
 
-<!-- @create_array_and_add_elements -->
+<!-- @[create_array_and_add_elements](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/XMPUtility.ets) -->
 
 ``` TypeScript
 async createArrayAndAddElements(xmpMetadata: image.XMPMetadata): Promise<void> {
@@ -177,9 +177,9 @@ async createArrayAndAddElements(xmpMetadata: image.XMPMetadata): Promise<void> {
 
 **示例2：通过索引获取数组元素**
 
-以下示例假设已注册自定义命名空间`book`。如果尚未注册，请先调用registerXMPNamespace完成注册。
+以下示例假设已注册自定义命名空间`book`。如果尚未注册，请先调用[registerXMPNamespace](../../reference/apis-image-kit/arkts-apis-image-XMPMetadata.md#registerxmpnamespace)完成注册。
 
-<!-- @get_array_elements -->
+<!-- @[get_array_elements](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/XMPUtility.ets) -->
 
 ``` TypeScript
 async getArrayElements(xmpMetadata: image.XMPMetadata): Promise<void> {
@@ -207,9 +207,9 @@ async getArrayElements(xmpMetadata: image.XMPMetadata): Promise<void> {
 
 **示例：创建结构体父节点并操作成员**
 
-以下示例假设已注册自定义命名空间`book`。如果尚未注册，请先调用registerXMPNamespace完成注册。
+以下示例假设已注册自定义命名空间`book`。如果尚未注册，请先调用[registerXMPNamespace](../../reference/apis-image-kit/arkts-apis-image-XMPMetadata.md#registerxmpnamespace)完成注册。
 
-<!-- @create_struct_and_operate_members -->
+<!-- @[create_struct_and_operate_members](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/XMPUtility.ets) -->
 
 ``` TypeScript
 async createStructAndOperateMembers(xmpMetadata: image.XMPMetadata): Promise<void> {
@@ -245,9 +245,9 @@ async createStructAndOperateMembers(xmpMetadata: image.XMPMetadata): Promise<voi
 
 **示例1：设置并获取限定符的值**
 
-以下示例假设已注册自定义命名空间`book`。如果尚未注册，请先调用registerXMPNamespace完成注册。
+以下示例假设已注册自定义命名空间`book`。如果尚未注册，请先调用[registerXMPNamespace](../../reference/apis-image-kit/arkts-apis-image-XMPMetadata.md#registerxmpnamespace)完成注册。
 
-<!-- @set_and_get_qualifier -->
+<!-- @[set_and_get_qualifier](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/XMPUtility.ets) -->
 
 ``` TypeScript
 async setAndGetQualifierValue(xmpMetadata: image.XMPMetadata): Promise<void> {
@@ -271,7 +271,7 @@ async setAndGetQualifierValue(xmpMetadata: image.XMPMetadata): Promise<void> {
 
 多语言文本（语言替代数组）本质上也是一种数组，类型为`ALTERNATE_TEXT`。在添加元素前，必须先创建数组容器；且每个元素**必须**通过`"xml:lang"`限定符指定语言，否则在序列化时会失败，导致无法写回文件。
 
-<!-- @set_language_qualifier -->
+<!-- @[set_language_qualifier](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/XMPUtility.ets) -->
 
 ``` TypeScript
 async setLanguageQualifier(xmpMetadata: image.XMPMetadata): Promise<void> {
@@ -302,11 +302,11 @@ async setLanguageQualifier(xmpMetadata: image.XMPMetadata): Promise<void> {
 
 > **注意：**
 >
-> 该语法仅适用于enumerateTags和getTags接口的`rootPath`参数。
+> 该语法仅适用于[enumerateTags](../../reference/apis-image-kit/arkts-apis-image-XMPMetadata.md#enumeratetags)和[getTags](../../reference/apis-image-kit/arkts-apis-image-XMPMetadata.md#gettags)接口的`rootPath`参数。
 
 **示例：**
 
-<!-- @enumerate_namespace_tags -->
+<!-- @[enumerate_namespace_tags](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/XMPUtility.ets) -->
 
 ``` TypeScript
 async enumerateNamespaceTags(xmpMetadata: image.XMPMetadata): Promise<void> {

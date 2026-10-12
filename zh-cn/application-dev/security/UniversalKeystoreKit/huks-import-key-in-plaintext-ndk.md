@@ -7,7 +7,7 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-以明文导入ECC密钥为例。具体的场景介绍及支持的算法规格，请参考密钥导入支持的算法。
+以明文导入ECC密钥为例。具体的场景介绍及支持的算法规格，请参考[密钥导入支持的算法](huks-key-import-overview.md#支持的算法)。
 
 ## 在CMake脚本中链接相关动态库
 ```txt
@@ -15,16 +15,16 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 ```
 ## 开发步骤
 
-1. 指定密钥别名，密钥别名命名规范参考密钥生成介绍及算法规格。
+1. 指定密钥别名，密钥别名命名规范参考[密钥生成介绍及算法规格](huks-key-generation-overview.md)。
 
-2. 封装密钥属性集和密钥材料。通过OH_Huks_InitParamSet、OH_Huks_AddParams、OH_Huks_BuildParamSet构造密钥属性集paramSet。
-   - 密钥属性集中必须包含OH_Huks_KeyAlg、OH_Huks_KeySize、OH_Huks_KeyPurpose属性。
-   - 密钥材料须符合HUKS密钥材料格式。
+2. 封装密钥属性集和密钥材料。通过[OH_Huks_InitParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_initparamset)、[OH_Huks_AddParams](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_addparams)、[OH_Huks_BuildParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_buildparamset)构造密钥属性集paramSet。
+   - 密钥属性集中必须包含[OH_Huks_KeyAlg](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_keyalg)、[OH_Huks_KeySize](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_keysize)、[OH_Huks_KeyPurpose](../../reference/apis-universal-keystore-kit/capi-native-huks-type-h.md#oh_huks_keypurpose)属性。
+   - 密钥材料须符合[HUKS密钥材料格式](huks-concepts.md#密钥材料格式)。
 
-3. 调用OH_Huks_ImportKeyItem，传入密钥别名和密钥属性集，导入密钥。
+3. 调用[OH_Huks_ImportKeyItem](../../reference/apis-universal-keystore-kit/capi-native-huks-api-h.md#oh_huks_importkeyitem)，传入密钥别名和密钥属性集，导入密钥。
 
 ### 导入AES256密钥
-<!-- @import_keys_in_plaintext_AES256_cpp -->
+<!-- @[import_keys_in_plaintext_AES256_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/ImportKeyPlainText/entry/src/main/cpp/types/projects/napi_aes256.cpp) -->
 
 ``` C++
 /* 以下以明文导入AES密钥为例 */
@@ -94,7 +94,7 @@ napi_value ImportAesKey(napi_env env, napi_callback_info info)
 
 
 ### 导入RSA2048密钥对
-<!-- @import_keys_in_plaintext_RSA2048_cpp -->
+<!-- @[import_keys_in_plaintext_RSA2048_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/ImportKeyPlainText/entry/src/main/cpp/types/projects/napi_rsa2048.cpp) -->
 
 ``` C++
 /* 以下以明文导入RSA2048密钥为例 */
@@ -189,7 +189,7 @@ napi_value ImportRsaKey(napi_env env, napi_callback_info info)
 
 
 ### 导入X25519密钥公钥
-<!-- @import_keys_in_plaintext_X25519_cpp -->
+<!-- @[import_keys_in_plaintext_X25519_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/ImportKeyPlainText/entry/src/main/cpp/types/projects/napi_x25519.cpp) -->
 
 ``` C++
 /* 以下以明文导入X25519密钥为例 */

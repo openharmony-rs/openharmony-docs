@@ -1,4 +1,4 @@
-# ArkGraphics 3D场景动画控制以及管理
+# 场景动画控制与管理
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @jason_stark-->
@@ -6,7 +6,7 @@
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->
 
-动画（animation）：动画是3D场景中重要的资源类型，用于控制场景中各种元素的运动。比如想要场景中的人物进行走路这个动作，每帧计算人物每一个关节的旋转角并进行设置是难以实现的。所以在完成类似的要求时，3D场景资源的制作者会将动画制作好，在模型文件中保存动画的关键帧数据以及关键帧间的插值器类型。
+动画（animation）：3D场景中重要的资源类型，用于控制场景中各种元素的运动。例如，要让场景中的人物完成走路动作，逐帧计算并设置人物每个关节的旋转角是难以实现的。因此，针对这类复杂的动画需求，3D场景资源的制作者会预先制作好动画，在模型文件中保存动画的关键帧数据以及关键帧之间的插值器类型。
 
 ArkGraphics 3D提供播放并控制场景动画的能力，支持开发者灵活地控制动画的状态，达到预期的渲染效果。
 
@@ -15,7 +15,7 @@ ArkGraphics 3D提供播放并控制场景动画的能力，支持开发者灵活
 
    在页面脚本中导入ArkGraphics 3D提供的核心类型，用于创建和控制3D场景、相机以及动画资源。
 
-   <!-- @anim_header -->
+   <!-- @[anim_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/animation.ets) -->
    
    ``` TypeScript
    import { Animation, Camera, Scene, SceneResourceFactory } from '@kit.ArkGraphics3D';
@@ -25,7 +25,7 @@ ArkGraphics 3D提供播放并控制场景动画的能力，支持开发者灵活
 
    调用Scene.load()方法从应用的resources/rawfile/目录加载.glb（或.gltf）模型，并在加载完成后获取Scene对象。
 
-   <!-- @anim_load -->
+   <!-- @[anim_load](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/animation.ets) -->
    
    ``` TypeScript
    Scene.load($rawfile('gltf/BrainStem/glTF/BrainStem.glb'))
@@ -46,13 +46,13 @@ ArkGraphics 3D提供播放并控制场景动画的能力，支持开发者灵活
     - onStarted()：动画开始播放时触发，start与restart操作均会触发该回调。
     - onFinished()：动画播放完成或执行finish操作时触发。
 
-   <!-- @anim_pick_anim -->
+   <!-- @[anim_pick_anim](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/animation.ets) -->
    
    ``` TypeScript
    this.anim = this.scene.animations[0];
    if (this.anim) {
      this.anim.enabled = true;
-     // Register callback function
+     // 注册回调函数
      this.anim.onStarted(() => {
        // ...
        this.animationCallbackInvoked = 'animation on start';
@@ -72,12 +72,12 @@ ArkGraphics 3D提供播放并控制场景动画的能力，支持开发者灵活
 
    通过SceneResourceFactory.createCamera()创建相机并调整观察位置。随后将加载完成的Scene封装为SceneOptions，并指定渲染类型为ModelType.SURFACE，以便通过Component3D在界面上进行渲染。
 
-   <!-- @anim_camera_sceneopt -->
+   <!-- @[anim_camera_sceneopt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/animation.ets) -->
    
    ``` TypeScript
-   // create a new camera.
+   // 创建一个新相机。
    this.cam = await rf.createCamera({ name: 'Camera' });
-   // set the camera.
+   // 设置相机。
    this.cam.enabled = true;
    this.cam.position.z = 5;
    this.sceneOpt = { scene: this.scene, modelType: ModelType.SURFACE } as SceneOptions;
@@ -95,7 +95,7 @@ ArkGraphics 3D提供播放并控制场景动画的能力，支持开发者灵活
     - 重启（restart）：从动画的起点开始播放动画。
     - 跳转（seek）：按比例跳转动画进度（例如seek(0.3)跳至总时长的30%）。
 
-   <!-- @anim_controls -->
+   <!-- @[anim_controls](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/animation.ets) -->
    
    ``` TypeScript
    Button('start')
@@ -155,7 +155,7 @@ ArkGraphics 3D提供播放并控制场景动画的能力，支持开发者灵活
          return;
        }
        this.anim = this.scene.animations[0];
-       // seek to 30%
+       // 定位到 30% 处
        this.anim.seek(0.3);
      });
    ```
@@ -164,5 +164,5 @@ ArkGraphics 3D提供播放并控制场景动画的能力，支持开发者灵活
 ## 相关实例
 
 对于3D动画更详细的使用可以参考以下实例：
-- 3D引擎接口示例（ArkTS）（API12）
+- [3D引擎接口示例（ArkTS）（API12）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Graphics/Graphics3d)
 <!--RP1End-->

@@ -11,7 +11,7 @@ HiAppEvent提供了事件订阅接口，用于获取应用的事件。
 
 ## 接口说明
 
-API接口使用说明，包括参数使用限制和具体取值范围。请参考@ohos.hiviewdfx.hiAppEvent。
+API接口使用说明，包括参数使用限制和具体取值范围。请参考[@ohos.hiviewdfx.hiAppEvent](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md)。
 
 **订阅接口功能介绍**：
 
@@ -26,7 +26,7 @@ API接口使用说明，包括参数使用限制和具体取值范围。请参�
 >
 > 如果选择在子线程中调用addWatcher，需要确保该子线程在整个接口使用周期内不会被销毁，以免影响接口的正常工作。
 >
-> 可参考多线程并发概述，以实现在子线程中调用接口。
+> 可参考[多线程并发概述](../arkts-utils/multi-thread-concurrency-overview.md)，以实现在子线程中调用接口。
 
 **打点接口功能介绍**：
 
@@ -39,7 +39,7 @@ API接口使用说明，包括参数使用限制和具体取值范围。请参�
 >
 > write接口涉及I/O操作，执行时间通常在毫秒级别。因此，开发者应根据实际业务需求，确定该接口是在主线程还是在子线程中调用。
 >
-> 可参考多线程并发概述，以实现在子线程中调用接口。
+> 可参考[多线程并发概述](../arkts-utils/multi-thread-concurrency-overview.md)，以实现在子线程中调用接口。
 
 ## 事件订阅开发指导
 
@@ -47,7 +47,7 @@ API接口使用说明，包括参数使用限制和具体取值范围。请参�
 
 1. 新建一个ArkTS应用工程，编辑工程中的“entry > src > main > ets  > entryability > EntryAbility.ets”文件，导入所需的依赖模块：
 
-   <!-- @AppEvent_Crash_Click_ArkTS_Header -->
+   <!-- @[AppEvent_Crash_Click_ArkTS_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
    ``` TypeScript
    import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
@@ -57,7 +57,7 @@ API接口使用说明，包括参数使用限制和具体取值范围。请参�
 
    订阅崩溃事件，采用OnReceive类型观察者的订阅方式，观察者接收到事件后会立即触发OnReceive()回调。编辑“EntryAbility.ets”文件，定义OnReceive类型观察者相关方法：
 
-   <!-- @AppEvent_Crash_ArkTS_Add_Watcher -->    
+   <!-- @[AppEvent_Crash_ArkTS_Add_Watcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->    
    
    ``` TypeScript
    hiAppEvent.addWatcher({
@@ -91,7 +91,7 @@ API接口使用说明，包括参数使用限制和具体取值范围。请参�
 
    订阅按钮点击事件，采用OnTrigger类型观察者的订阅方式。需满足triggerCondition设置的条件，才能触发OnTrigger()回调。编辑“EntryAbility.ets”文件，定义OnTrigger类型观察者相关方法：
 
-   <!-- @AppEvent_Click_ArkTS_Add_Watcher -->    
+   <!-- @[AppEvent_Click_ArkTS_Add_Watcher](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->    
    
    ``` TypeScript
    hiAppEvent.addWatcher({
@@ -128,7 +128,7 @@ API接口使用说明，包括参数使用限制和具体取值范围。请参�
 
 3. 编辑工程中的“entry > src > main > ets  > pages > Index.ets” 文件，导入依赖模块：
 
-   <!-- @EventSub_Header -->    
+   <!-- @[EventSub_Header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->    
    
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -139,7 +139,7 @@ API接口使用说明，包括参数使用限制和具体取值范围。请参�
 
    触发崩溃事件。
 
-   <!-- @AppEvent_Crash_Button -->    
+   <!-- @[AppEvent_Crash_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->    
    
    ``` TypeScript
    Button('WatchAppCrash ArkTS&C++')
@@ -158,7 +158,7 @@ API接口使用说明，包括参数使用限制和具体取值范围。请参�
 
    在按钮点击的函数中进行事件打点。
 
-   <!-- @AppEvent_Click_ArkTS_Button -->    
+   <!-- @[AppEvent_Click_ArkTS_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->    
    
    ``` TypeScript
    Button('writeEvent ArkTS')

@@ -9,11 +9,11 @@
 在卡片上需要展示本地图片或从网络上下载的图片，获取本地图片和网络图片需要通过FormExtensionAbility来实现，如下示例代码介绍了如何在卡片上显示本地图片和网络图片。
 
 
-1. 下载网络图片需要使用到网络能力，需要申请ohos.permission.INTERNET权限，配置方式请参见声明权限。
+1. 下载网络图片需要使用到网络能力，需要申请ohos.permission.INTERNET权限，配置方式请参见[声明权限](../security/AccessToken/declare-permissions.md)。
 
 2. 在WgtImgUpdateEntryFormAbility.ts文件中导入相关模块。
 
-   <!-- @refresh_import --> 
+   <!-- @[refresh_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/wgtimgupdateentryformability/WgtImgUpdateEntryFormAbility.ts) --> 
    
    ``` TypeScript
    // entry/src/main/ets/wgtimgupdateentryformability/WgtImgUpdateEntryFormAbility.ts
@@ -27,7 +27,7 @@
 
 3. 在WgtImgUpdateEntryFormAbility中的onAddForm生命周期回调中实现本地文件的刷新。
 
-   <!-- @local_file_refresh --> 
+   <!-- @[local_file_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/wgtimgupdateentryformability/WgtImgUpdateEntryFormAbility.ts) --> 
    
    ``` TypeScript
    // entry/src/main/ets/wgtimgupdateentryformability/WgtImgUpdateEntryFormAbility.ts
@@ -70,7 +70,7 @@
 
 4. 在WgtImgUpdateEntryFormAbility中的onFormEvent生命周期回调中实现网络文件的刷新。
 
-   <!-- @network_file_refresh --> 
+   <!-- @[network_file_refresh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/wgtimgupdateentryformability/WgtImgUpdateEntryFormAbility.ts) --> 
    
    ``` TypeScript
    // entry/src/main/ets/wgtimgupdateentryformability/WgtImgUpdateEntryFormAbility.ts
@@ -158,7 +158,7 @@
 
 5. 在卡片页面通过backgroundImage属性展示WgtImgUpdateEntryFormAbility传递过来的卡片内容。
 
-   <!-- @widget_image_update_card --> 
+   <!-- @[widget_image_update_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetimageupdate/pages/WidgetImageUpdateCard.ets) --> 
    
    ``` TypeScript
    // entry/src/main/ets/widgetimageupdate/pages/WidgetImageUpdateCard.ets

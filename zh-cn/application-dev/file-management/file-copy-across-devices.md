@@ -6,7 +6,7 @@
 <!--Tester: @zsyztt; @yue-ye2; @fuwei-->
 <!--Adviser: @jinqiuheng-->
 
-分布式文件系统为应用提供了跨设备文件拷贝的能力，开发者可以通过@ohos.file.fs (文件管理)进行跨设备拷贝文件。例如：多设备数据流转的场景，设备组网互联之后，设备A上的应用可将沙箱文件拷贝到设备A的分布式目录下。设备B在粘贴时，从B设备的分布式目录下将文件拷贝到对应的沙箱文件中。
+分布式文件系统为应用提供了跨设备文件拷贝的能力，开发者可以通过[@ohos.file.fs (文件管理)](../reference/apis-core-file-kit/js-apis-file-fs.md)进行跨设备拷贝文件。例如：多设备数据流转的场景，设备组网互联之后，设备A上的应用可将沙箱文件拷贝到设备A的分布式目录下。设备B在粘贴时，从B设备的分布式目录下将文件拷贝到对应的沙箱文件中。
 
 ## 开发步骤
 
@@ -16,13 +16,13 @@
 
 2. 授权分布式数据同步权限。
 
-   分布式数据同步权限的授权方式为user_grant，因此需要调用requestPermissionsFromUser接口，以动态弹窗的方式向用户申请授权。示例中的context的获取方式请参见获取UIAbility的上下文信息。
+   分布式数据同步权限的授权方式为user_grant，因此需要调用requestPermissionsFromUser接口，以动态弹窗的方式向用户申请授权。示例中的context的获取方式请参见[获取UIAbility的上下文信息](../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
    ```ts
    import { common, abilityAccessCtrl } from '@kit.AbilityKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
-   <!--@distributed_Data_Permission-->      
+   <!--@[distributed_Data_Permission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->      
 
    ``` TypeScript
    let atManager = abilityAccessCtrl.createAtManager();
@@ -52,7 +52,7 @@
    import { BusinessError } from '@kit.BasicServicesKit';
    import { fileUri } from '@kit.CoreFileKit';
    ```
-   <!--@copy_sand_to_distributed-->     
+   <!--@[copy_sand_to_distributed](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->     
 
    ``` TypeScript
    let pathDir: string = context.filesDir;
@@ -96,7 +96,7 @@
    import { fileUri } from '@kit.CoreFileKit';
    import { distributedDeviceManager } from '@kit.DistributedServiceKit';
    ```
-   <!--@copy_distributed_to_sand-->        
+   <!--@[copy_distributed_to_sand](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->        
    
    ``` TypeScript
    // ...
@@ -165,7 +165,7 @@
    import { distributedDeviceManager } from '@kit.DistributedServiceKit'
    import { fileIo } from '@kit.CoreFileKit';
    ```
-   <!--@access_DisConnectDfs-->        
+   <!--@[access_DisConnectDfs](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->        
    
    ``` TypeScript
    // 获取设备A的networkId

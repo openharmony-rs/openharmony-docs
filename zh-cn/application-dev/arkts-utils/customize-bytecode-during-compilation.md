@@ -10,7 +10,7 @@
 
 ## 能力配置说明
 
-准备一个操作方舟字节码文件的动态库文件，在工程的配置文件build-profile.json5中配置编译选项transformLib，选项值为这个动态库的路径。编译器会在编译过程中加载该动态库，调用其中的Transform方法，并在Transform方法执行完成后卸载该动态库。
+准备一个操作方舟字节码文件的动态库文件，在工程的配置文件build-profile.json5中[配置编译选项transformLib](arkoptions-guide.md#transformlib)，选项值为这个动态库的路径。编译器会在编译过程中加载该动态库，调用其中的Transform方法，并在Transform方法执行完成后卸载该动态库。
 
 ## 能力执行机制
 
@@ -63,6 +63,6 @@
 
    选项中配置的路径为步骤2生成的链接库文件在项目中的路径（这里是dll目录下）。
 
-   zh-cn_image_0000002079773605
+   ![zh-cn_image_0000002079773605](figures/zh-cn_image_0000002079773605.png)
 
 4. 重新编译项目，即可完成自定义修改方舟字节码。

@@ -2,7 +2,7 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -15,15 +15,15 @@
 
 ## 接口说明
 
-当角标设定个数取值小于或等于0时，表示清除角标。取值大于99时，通知角标将显示99+。
+当角标设定个数取值小于或等于0时，表示清除角标。取值大于99时，[通知角标](notification-glossary.md#notification-badge通知角标)将显示99+。
 
 - 增加角标数，支持如下两种方法：
 
-   - 发布通知时，在NotificationRequest的badgeNumber字段里携带，桌面收到通知后，在原角标数上累加、呈现。
+   - 发布通知时，在[NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1)的badgeNumber字段里携带，桌面收到通知后，在原角标数上累加、呈现。
 
-   - 调用接口setBadgeNumber()设置，桌面按设置的角标数呈现。
+   - 调用接口[setBadgeNumber()](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanagersetbadgenumber10)设置，桌面按设置的角标数呈现。
 
-- 减少角标数，目前仅支持通过setBadgeNumber()设置。
+- 减少角标数，目前仅支持通过[setBadgeNumber()](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanagersetbadgenumber10)设置。
 
   | **接口名** | **描述** |
   | -------- | -------- |
@@ -34,7 +34,7 @@
 
 1. 导入NotificationManager模块。
 
-   <!-- @manage_notification_badges_header -->    
+   <!-- @[manage_notification_badges_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationBadges.ets) -->
    
    ``` TypeScript
    import { notificationManager } from '@kit.NotificationKit';
@@ -47,11 +47,11 @@
    
 2. 增加角标个数。
 
-   发布通知时，可在NotificationRequest的badgeNumber字段里携带相关信息，具体可参考通知发布章节。
+   发布通知时，可在[NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1)的badgeNumber字段里携带相关信息，具体可参考[通知发布](text-notification.md)章节。
    
    示例为调用setBadgeNumber接口增加角标，在发布完新的通知后，调用该接口。
 
-   <!-- @add_badge_count -->
+   <!-- @[add_badge_count](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationBadges.ets) -->
    
    ``` TypeScript
    let badgeNumber: number = 9;
@@ -67,7 +67,7 @@
 
    一条通知被查看后，应用需要调用接口设置剩下未读通知个数，桌面刷新角标。
 
-   <!-- @reduce_badge_count -->
+   <!-- @[reduce_badge_count](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationBadges.ets) -->
    
    ``` TypeScript
    let badgeNumber: number = 8;
@@ -89,7 +89,7 @@
 
     示例如下：
 
-    <!-- @increase_badge_count_seq -->
+    <!-- @[increase_badge_count_seq](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationBadges.ets) -->
     
     ``` TypeScript
     let badgeNumber: number = 10;
@@ -114,7 +114,7 @@
 
     示例如下：
 
-    <!-- @update_badge_count_idempotent -->
+    <!-- @[update_badge_count_idempotent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationBadges.ets) -->
     
     ``` TypeScript
     let badgeNumber: number = 10;

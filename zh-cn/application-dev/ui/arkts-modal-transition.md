@@ -13,19 +13,19 @@
 **表1** 模态转场接口
 | 接口                                       | 说明                | 使用场景                                     |
 | ---------------------------------------- | ----------------- | ---------------------------------------- |
-| bindContentCover | 弹出全屏的模态组件。        | 用于自定义全屏的模态展示界面，结合转场动画和共享元素动画可实现复杂转场动画效果，如缩略图片点击后查看大图。 |
-| bindSheet | 弹出半模态组件。          | 用于半模态展示界面，如分享框。                          |
-| bindMenu | 弹出菜单，点击组件后弹出。     | 需要Menu菜单的场景，如一般应用的“+”号键。                 |
-| bindContextMenu | 弹出菜单，长按或者右键点击后弹出。 | 长按浮起效果，一般结合拖拽框架使用，如桌面图标长按浮起。             |
-| bindPopup | 弹出Popup弹框。        | Popup弹框场景，如点击后对某个组件进行临时说明。               |
-| if                                       | 通过if新增或删除组件。      | 用来在某个状态下临时显示一个界面，这种方式的返回导航需要由开发者监听接口实现。  |
+| [bindContentCover](../reference/apis-arkui/arkui-ts/ts-universal-attributes-modal-transition.md#bindcontentcover) | 弹出全屏的模态组件。        | 用于自定义全屏的模态展示界面，结合转场动画和共享元素动画可实现复杂转场动画效果，如缩略图片点击后查看大图。 |
+| [bindSheet](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet) | 弹出半模态组件。          | 用于半模态展示界面，如分享框。                          |
+| [bindMenu](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindmenu11) | 弹出菜单，点击组件后弹出。     | 需要Menu菜单的场景，如一般应用的“+”号键。                 |
+| [bindContextMenu](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindcontextmenu12) | 弹出菜单，长按或者右键点击后弹出。 | 长按浮起效果，一般结合拖拽框架使用，如桌面图标长按浮起。             |
+| [bindPopup](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#bindpopup) | 弹出Popup弹框。        | Popup弹框场景，如点击后对某个组件进行临时说明。               |
+| [if](../ui/rendering-control/arkts-rendering-control-ifelse.md)                                       | 通过if新增或删除组件。      | 用来在某个状态下临时显示一个界面，这种方式的返回导航需要由开发者监听接口实现。  |
 
 
 ## 使用bindContentCover构建全屏模态转场效果
 
-bindContentCover接口用于为组件绑定全屏模态页面，在组件出现和消失时可通过设置转场参数ModalTransition添加过渡动效。
+[bindContentCover](../reference/apis-arkui/arkui-ts/ts-universal-attributes-modal-transition.md#bindcontentcover)接口用于为组件绑定全屏模态页面，在组件出现和消失时可通过设置转场参数ModalTransition添加过渡动效。
 
-1. 定义全屏模态转场效果bindContentCover。
+1. 定义全屏模态转场效果[bindContentCover](../reference/apis-arkui/arkui-ts/ts-universal-attributes-modal-transition.md#bindcontentcover)。
 
 2. 定义模态展示界面。
 
@@ -65,7 +65,7 @@ bindContentCover接口用于为组件绑定全屏模态页面，在组件出现�
 
 完整示例代码和效果如下。
 
-<!-- @bind_content_cover -->
+<!-- @[bind_content_cover](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/modalTransition/template1/BindContentCoverDemo.ets) -->
 
 ``` TypeScript
 import { curves } from '@kit.ArkUI';
@@ -264,18 +264,18 @@ struct BindContentCoverDemo {
 
 
 
-zh-cn_image_0000001646921957
+![zh-cn_image_0000001646921957](figures/Modal-Transition-bindContentCover.gif)
 
 
 
 ## 使用bindSheet构建半模态转场效果
 
-bindSheet属性可为组件绑定半模态页面，在组件出现时可通过设置自定义或默认的内置高度确定半模态大小。构建半模态转场动效的步骤基本与使用bindContentCover构建全屏模态转场动效相同。
+[bindSheet](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet)属性可为组件绑定半模态页面，在组件出现时可通过设置自定义或默认的内置高度确定半模态大小。构建半模态转场动效的步骤基本与使用[bindContentCover](../reference/apis-arkui/arkui-ts/ts-universal-attributes-modal-transition.md#bindcontentcover)构建全屏模态转场动效相同。
 
 完整示例和效果如下。
 
 
-<!-- @bind_sheet_demo -->
+<!-- @[bind_sheet_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/modalTransition/template2/BindSheetDemo.ets) -->
 
 ``` TypeScript
 import { common } from '@kit.AbilityKit';
@@ -386,15 +386,15 @@ struct BindSheetDemo {
 }
 ```
 
-zh-cn_image_0000001599977924
+![zh-cn_image_0000001599977924](figures/Sheet-Transition-bindSheet.gif)
 
 
 ## 使用bindMenu实现菜单弹出效果
 
-bindMenu为组件绑定弹出式菜单，通过点击触发。完整示例和效果如下。
+[bindMenu](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindmenu)为组件绑定弹出式菜单，通过点击触发。完整示例和效果如下。
 
 
-<!-- @bind_menu_demo -->
+<!-- @[bind_menu_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/modalTransition/template3/BindMenuDemo.ets) -->
 
 ``` TypeScript
 import { common } from '@kit.AbilityKit';
@@ -446,17 +446,17 @@ struct BindMenuDemo {
 }
 ```
 
-zh-cn_image_0000001599643478
+![zh-cn_image_0000001599643478](figures/Creating-Menu-bindMenu.gif)
 
 
 ## 使用bindContextMenu实现菜单弹出效果
 
-bindContextMenu为组件绑定弹出式菜单，通过长按或右键点击触发。
+[bindContextMenu](../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindcontextmenu8)为组件绑定弹出式菜单，通过长按或右键点击触发。
 
 完整示例和效果如下。
 
 
-<!-- @bind_context_menu_demo -->
+<!-- @[bind_context_menu_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/modalTransition/template4/BindContextMenuDemo.ets) -->
 
 ``` TypeScript
 import { common } from '@kit.AbilityKit';
@@ -531,17 +531,17 @@ struct BindContextMenuDemo {
 }
 ```
 
-zh-cn_image_0000001600137920
+![zh-cn_image_0000001600137920](figures/Context-Menu-bindContextMenu.gif)
 
 
 ## 使用bindPopup实现气泡弹窗效果
 
-bindPopup属性可为组件绑定弹窗，并设置弹窗内容，交互逻辑和显示状态。
+[bindPopup](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#bindpopup)属性可为组件绑定弹窗，并设置弹窗内容，交互逻辑和显示状态。
 
 完整示例和效果如下。
 
 
-<!-- @bind_popup_demo -->
+<!-- @[bind_popup_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/modalTransition/template5/BindPopupDemo.ets) -->
 
 ``` TypeScript
 @Entry
@@ -599,7 +599,7 @@ struct BindPopupDemo {
 
 
 
-zh-cn_image_0000001649282285
+![zh-cn_image_0000001649282285](figures/Creating-Popup-with-bindPopup.gif)
 
 
 ## 使用if实现模态转场
@@ -609,7 +609,7 @@ zh-cn_image_0000001649282285
 完整示例和效果如下。
 
 
-<!-- @modal_transition_with_if -->
+<!-- @[modal_transition_with_if](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/modalTransition/template6/ModalTransitionWithIf.ets) -->
 
 ``` TypeScript
 import { common } from '@kit.AbilityKit';
@@ -809,4 +809,4 @@ struct ModalTransitionWithIf {
 }
 ```
 
-zh-cn_image_0000001597792146
+![zh-cn_image_0000001597792146](figures/Modal-Transition.gif)

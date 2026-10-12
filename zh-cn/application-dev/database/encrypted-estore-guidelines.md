@@ -9,9 +9,9 @@
 
 ## 场景介绍
 
-从安全角度考虑，为满足部分敏感数据的安全特性，提供了E类加密数据库的方案以提高锁屏下数据的安全性。存有敏感信息的应用在申请ohos.permission.PROTECT_SCREEN_LOCK_DATA权限后会在EL5路径下创建一个E类数据库。在锁屏的情况下（未调用Access接口获取保留文件密钥）会触发文件密钥的销毁，此时E类数据库不可读写。当锁屏解锁后，密钥会恢复，E类数据库恢复正常读写操作。这样的设计可以有效防止用户数据的泄露。
+从安全角度考虑，为满足部分敏感数据的安全特性，提供了E类加密数据库的方案以提高锁屏下数据的安全性。存有敏感信息的应用在申请ohos.permission.PROTECT_SCREEN_LOCK_DATA权限后会在[EL5](../reference/apis-ability-kit/js-apis-app-ability-contextConstant.md#areamode)路径下创建一个E类数据库。在锁屏的情况下（未调用Access接口获取保留文件密钥）会触发文件密钥的销毁，此时E类数据库不可读写。当锁屏解锁后，密钥会恢复，E类数据库恢复正常读写操作。这样的设计可以有效防止用户数据的泄露。
 
-在锁屏的情况下，应用程序仍然可以继续写入数据。由于此时E类数据库不可读写，这可能会导致数据丢失。为了解决这个问题，当前提供了一种方案：在锁屏的情况下，将数据存储在EL2路径下的C类数据库中。当解锁后，再将数据迁移到E类数据库中。这样可以确保数据在锁屏期间的安全性和完整性。
+在锁屏的情况下，应用程序仍然可以继续写入数据。由于此时E类数据库不可读写，这可能会导致数据丢失。为了解决这个问题，当前提供了一种方案：在锁屏的情况下，将数据存储在[EL2](../reference/apis-ability-kit/js-apis-app-ability-contextConstant.md#areamode)路径下的C类数据库中。当解锁后，再将数据迁移到E类数据库中。这样可以确保数据在锁屏期间的安全性和完整性。
 
 键值型数据库和关系型数据库均支持E类加密数据库。
 
@@ -42,13 +42,13 @@ ECStoreManager类：用于管理应用的E类数据库和C类数据库。
 
 ## 键值型数据库E类加密
 
-本章节提供键值型数据库的E类加密数据库使用方式，提供Mover类、Store类、SecretKeyObserver类和ECStoreManager类的具体实现，并在EntryAbility和index按键事件中展示这几个类的使用方式。
+本章节提供键值型数据库的E类加密数据库使用方式，提供[Mover](#mover)类、[Store](#store)类、[SecretKeyObserver](#secretkeyobserver)类和[ECStoreManager](#ecstoremanager)类的具体实现，并在[EntryAbility](#entryability)和[index按键事件](#index按键事件)中展示这几个类的使用方式。
 
 ### Mover
 
 提供数据库数据迁移接口，在锁屏解锁后，若C类数据库中存在数据，使用该接口将数据迁移到E类数据库。
 
-<!-- @Mover --> 
+<!-- @[Mover](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/ECStoreSamples/entry/src/main/ets/entryability/Mover.ts) -->
 
 ``` TypeScript
 import { distributedKVStore } from '@kit.ArkData';
@@ -62,7 +62,7 @@ export class Mover {
         await eStore.putBatch(entries);
         Logger.info(`ECDB_Encry move success`);
       } catch (e) {
-        Logger.info(`ECDB_Encry move failed,code is ${e.code},message is ${e.message}`);
+        Logger.error(`ECDB_Encry move failed,code is ${e.code},message is ${e.message}`);
       }
     }
   }
@@ -73,7 +73,7 @@ export class Mover {
 
 提供了获取数据库，在数据库中插入数据、删除数据、更新数据和获取当前数据数量的接口。
 
-<!-- @Store --> 
+<!-- @[Store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/ECStoreSamples/entry/src/main/ets/entryability/Store.ts) --> 
 
 ``` TypeScript
 import { distributedKVStore } from '@kit.ArkData';
@@ -195,7 +195,7 @@ export class Store {
 
 该类提供了获取当前密钥状态的接口，在密钥销毁后，关闭E类数据库。
 
-<!-- @SecretKeyObserver -->
+<!-- @[SecretKeyObserver](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/ECStoreSamples/entry/src/main/ets/entryability/SecretKeyObserver.ts) -->
 
 ``` TypeScript
 import { ECStoreManager } from './ECStoreManager';
@@ -243,7 +243,7 @@ export let lockObserve = new SecretKeyObserver();
 
 ECStoreManager类用于管理应用的E类数据库和C类数据库。支持配置数据库信息、配置迁移函数的信息，可根据密钥状态为应用提供相应的数据库句柄，并提供了关闭E类数据库、数据迁移完成后销毁C类数据库等接口。
 
-<!-- @ECStoreManager --> 
+<!-- @[ECStoreManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/ECStoreSamples/entry/src/main/ets/entryability/ECStoreManager.ts) --> 
 
 ``` TypeScript
 import { distributedKVStore } from '@kit.ArkData';
@@ -340,7 +340,7 @@ export class ECStoreManager {
 
 模拟应用启动期间，注册对COMMON_EVENT_SCREEN_LOCK_FILE_ACCESS_STATE_CHANGED公共事件的监听，并配置相应的数据库信息、密钥状态信息等。
 
-<!-- @EntryAbility --> 
+<!-- @[EntryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/ECStoreSamples/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript
 import { AbilityConstant, application, contextConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -351,8 +351,7 @@ import { ECStoreManager } from './ECStoreManager';
 import { StoreInfo } from './Store';
 import { Mover } from './Mover';
 import { SecretKeyObserver } from './SecretKeyObserver';
-import { commonEventManager } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
 import Logger from '../common/Logger';
 
 export let storeManager = new ECStoreManager();
@@ -477,7 +476,7 @@ export default class EntryAbility extends UIAbility {
 
 使用Button按钮，通过点击按钮来模拟应用操作数据库，如插入数据、删除数据、更新数据和获取数据数量的操作等，展示数据库基本的增删改查能力。
 
-<!-- @Index -->
+<!-- @[Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/ECStoreSamples/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 import { storeManager, e_secretKeyObserver } from '../entryability/EntryAbility';
@@ -555,13 +554,13 @@ struct Index {
 
 ## 关系型数据库E类加密
 
-本章节提供关系型数据库的E类加密数据库使用方式，提供Mover类，Store类，SecretKeyObserver类和ECStoreManager类的具体实现，并在EntryAbility和index按键事件中展示这几个类的使用方式。
+本章节提供关系型数据库的E类加密数据库使用方式，提供[Mover](#mover-1)类，[Store](#store-1)类，[SecretKeyObserver](#secretkeyobserver-1)类和[ECStoreManager](#ecstoremanager-1)类的具体实现，并在[EntryAbility](#entryability-1)和[index按键事件](#index按键事件-1)中展示这几个类的使用方式。
 
 ### Mover
 
 提供数据库数据迁移接口，在锁屏解锁后，若C类数据库中有数据，使用该接口将数据迁移到E类数据库。
 
-<!-- @rdb_Mover -->
+<!-- @[rdb_Mover](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/encryptedEStoreGuidelines/Mover.ts) -->
 
 ``` TypeScript
 import { relationalStore } from '@kit.ArkData';
@@ -584,7 +583,7 @@ export class Mover {
 
 提供了获取数据库，在数据库中插入数据、删除数据、更新数据和获取当前数据数量的接口。其中StoreInfo类用于存储获取数据库相关信息。
 
-<!-- @rdb_Store -->   
+<!-- @[rdb_Store](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/encryptedEStoreGuidelines/Store.ts) -->   
 
 ``` TypeScript
 import { relationalStore } from '@kit.ArkData';
@@ -691,7 +690,7 @@ export class Store {
 
 该类提供了获取当前密钥状态的接口，在密钥销毁后，关闭E类数据库。
 
-<!-- @rdb_SecretKeyObserver -->
+<!-- @[rdb_SecretKeyObserver](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/encryptedEStoreGuidelines/SecretKeyObserver.ts) -->
 
 ``` TypeScript
 import { ECStoreManager } from './ECStoreManager';
@@ -739,7 +738,7 @@ export let lockObserve = new SecretKeyObserver();
 
 ECStoreManager类用于管理应用的E类数据库和C类数据库。支持配置数据库信息、配置迁移函数的信息，可根据密钥状态为应用提供相应的数据库句柄，并提供了关闭E类数据库、数据迁移完成后销毁C类数据库等接口。
 
-<!-- @rdb_ECStoreManager -->
+<!-- @[rdb_ECStoreManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/encryptedEStoreGuidelines/ECStoreManager.ts) -->
 
 ``` TypeScript
 import { relationalStore } from '@kit.ArkData';
@@ -817,7 +816,7 @@ export class ECStoreManager {
 
 模拟在应用启动期间，注册对COMMON_EVENT_SCREEN_LOCK_FILE_ACCESS_STATE_CHANGED公共事件的监听，并配置相应的数据库信息、密钥状态信息等。
 
-<!-- @rdb_EntryAbility -->
+<!-- @[rdb_EntryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript
 import { AbilityConstant, contextConstant, UIAbility, Want, application } from '@kit.AbilityKit';
@@ -933,7 +932,7 @@ export default class EntryAbility extends UIAbility {
 
 使用Button按钮，通过点击按钮来模拟应用操作数据库，如插入数据、删除数据、更新数据和获取数据数量的操作等，展示数据库基本的增删改查能力。
 
-<!-- @rdb_encryptedEStoreGuidelines_index -->
+<!-- @[rdb_encryptedEStoreGuidelines_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/ets/encryptedEStoreGuidelines/Index.ets) -->
 
 ``` TypeScript
 import { storeManager, e_secretKeyObserver } from '../entryability/EntryAbility';

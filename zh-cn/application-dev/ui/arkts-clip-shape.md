@@ -6,20 +6,20 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-可利用clipShape接口将组件裁剪为所需的形状。调用该接口后，可以保留该形状覆盖的组件部分，同时移除组件的其余部分。裁剪形状本身是不可见的。
+可利用[clipShape](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sharp-clipping.md#clipshape12)接口将组件裁剪为所需的形状。调用该接口后，可以保留该形状覆盖的组件部分，同时移除组件的其余部分。裁剪形状本身是不可见的。
 
 > **说明：**  
 >
 > 不同的形状支持的属性范围不同，路径是一种形状，除此之外还有椭圆、矩形等形状。
 >
-> 路径的形状不支持设置宽度和高度，具体形状支持的属性参考具体形状的文档。
+> 路径的形状不支持设置宽度和高度，具体形状支持的属性参考具体[形状](../reference/apis-arkui/js-apis-arkui-shape.md)的文档。
 >
-> 形状中的fill属性对clipShape接口不生效。
+> 形状中的[fill](../reference/apis-arkui/js-apis-arkui-shape.md#fill)属性对clipShape接口不生效。
 
 ## 裁剪圆形
 
 通过设置CircleShape，将图片裁剪为圆形。
-<!-- @ClipShapeExampleA -->
+<!-- @[ClipShapeExampleA](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ClipShape/entry/src/main/ets/View/ClipShapeExample1.ets) -->
 
 ``` TypeScript
 // xxx.ets
@@ -48,12 +48,12 @@ struct ClipShapeExample {
 }
 ```
 
-clip-circle
+![clip-circle](figures/clip-circle.png)
 
 ## 裁剪椭圆形
 
 通过设置EllipseShape，将图片裁剪为椭圆形。
-<!-- @ClipShapeExampleB -->
+<!-- @[ClipShapeExampleB](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ClipShape/entry/src/main/ets/View/ClipShapeExample2.ets) -->
 
 ``` TypeScript
 // xxx.ets
@@ -80,12 +80,12 @@ struct ClipShapeExample {
 }
 ```
 
-clip-elliptical
+![clip-elliptical](figures/clip-elliptical.png)
 
 ## 裁剪矩形
 
 通过设置RectShape，将图片裁剪为矩形。
-<!-- @ClipShapeExampleC -->
+<!-- @[ClipShapeExampleC](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ClipShape/entry/src/main/ets/View/ClipShapeExample3.ets) -->
 
 ``` TypeScript
 // xxx.ets
@@ -112,12 +112,12 @@ struct ClipShapeExample {
 }
 ```
 
-clip-rectangle
+![clip-rectangle](figures/clip-rectangle.png)
 
 ## 裁剪不规则形状
 
 通过设置PathShape，将图片裁剪为不规则形状。
-<!-- @ClipShapeExampleD -->
+<!-- @[ClipShapeExampleD](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ClipShape/entry/src/main/ets/View/ClipShapeExample4.ets) -->
 
 ``` TypeScript
 // xxx.ets
@@ -143,4 +143,4 @@ struct ClipShapeExample {
 }
 ```
 
-clip-irregular
+![clip-irregular](figures/clip-irregular.png)

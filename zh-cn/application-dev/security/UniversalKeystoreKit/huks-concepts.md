@@ -25,9 +25,9 @@
 
 下图以RSA密钥材料内存结构为例，其他算法格式见样例下方表格。
 
-keyt
+![keyt](figures/keyt.png)
 
-其中，密钥算法的值取自枚举类HuksKeyAlg。
+其中，密钥算法的值取自枚举类[HuksKeyAlg](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukskeyalg)。
 
 ```ts
 let rsa2048KeyPairMaterial = new Uint8Array([
@@ -130,7 +130,7 @@ let eccP256PubKey = new Uint8Array([
 
 以RSA私钥材料为例：
 
-priKey
+![priKey](figures/priKey.png)
 
 ```ts
 let rsa2048PrivateKeyMaterial = new Uint8Array([

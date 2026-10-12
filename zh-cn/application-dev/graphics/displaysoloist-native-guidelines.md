@@ -20,25 +20,25 @@
 | OH_DisplaySoloist_Stop (OH_DisplaySoloist * displaySoloist)  | 停止请求下一次VSync信号，并停止调用回调函数callback。 |
 | OH_DisplaySoloist_SetExpectedFrameRateRange (OH_DisplaySoloist* displaySoloist, DisplaySoloist_ExpectedRateRange* range) | 设置期望帧率范围。                                    |
 
-详细的接口说明请参考NativeDisplaySoloist。
+详细的接口说明请参考[NativeDisplaySoloist](../reference/apis-arkgraphics2d/capi-nativedisplaysoloist.md)。
 
 ## 开发示例
 
-   本范例是通过Drawing在Native侧实现图形的绘制，通过异步线程设置期望的帧率，再根据帧率进行图形的绘制并将其呈现在NativeWindow上，图形绘制部分可参考使用Drawing实现图形绘制与显示。
+   本范例是通过Drawing在Native侧实现图形的绘制，通过异步线程设置期望的帧率，再根据帧率进行图形的绘制并将其呈现在NativeWindow上，图形绘制部分可参考[使用Drawing实现图形绘制与显示](graphic-drawing-overview.md)。
 
 ### 添加开发依赖
 
 **添加动态链接库**
 
 CMakeLists.txt中添加以下lib。
-<!-- @display_soloist_add_lib -->
+<!-- @[display_soloist_add_lib](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySoloist/entry/src/main/cpp/CMakeLists.txt) -->
 
 ``` Text
 target_link_libraries(entry PUBLIC libace_napi.z.so libnative_drawing.so libnative_window.so libace_ndk.z.so libnative_display_soloist.so)
 ```
 
 **头文件**
-<!-- @display_soloist_import_module_one -->
+<!-- @[display_soloist_import_module_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySoloist/entry/src/main/cpp/samples/sample_xcomponent.h) -->
 
 ``` C
 #include <ace/xcomponent/native_interface_xcomponent.h>
@@ -57,7 +57,7 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libnative_drawing.so libnati
 #include <string>
 #include "napi/native_api.h"
 ```
-<!-- @display_soloist_import_module_two -->
+<!-- @[display_soloist_import_module_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySoloist/entry/src/main/cpp/samples/sample_xcomponent.cpp) -->
 
 ``` C++
 #include <native_display_soloist/native_display_soloist.h>
@@ -66,7 +66,7 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libnative_drawing.so libnati
 ### 开发步骤
 
 1. 定义ArkTS接口文件XComponentContext.ts，用来对接Native层。
-   <!-- @display_soloist_export_interface_xcomponent_context -->
+   <!-- @[display_soloist_export_interface_xcomponent_context](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySoloist/entry/src/main/ets/interface/XComponentContext.ts) -->
    
    ``` TypeScript
    export default interface XComponentContext {
@@ -79,7 +79,7 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libnative_drawing.so libnati
    ```
 
 2. 定义演示页面，包含两个XComponent组件。
-   <!-- @display_soloist_create_xcomponent -->
+   <!-- @[display_soloist_create_xcomponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySoloist/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    import XComponentContext from '../interface/XComponentContext';
@@ -132,7 +132,7 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libnative_drawing.so libnati
 3. 在 Native C++层获取NativeXComponent。建议使用单例模式保存XComponent。此步骤需要在napi_init的过程中处理。
 
     创建一个PluginManager单例类，用于管理NativeXComponent。
-   <!-- @display_soloist_create_plugin_manager -->
+   <!-- @[display_soloist_create_plugin_manager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySoloist/entry/src/main/cpp/plugin/plugin_manager.h) -->
    
    ``` C
    class PluginManager {
@@ -152,7 +152,7 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libnative_drawing.so libnati
    ```
 
    SampleXComponent类会在后面的绘制图形中创建。
-   <!-- @display_soloist_export_api -->
+   <!-- @[display_soloist_export_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySoloist/entry/src/main/cpp/plugin/plugin_manager.cpp) -->
    
    ``` C++
    void PluginManager::Export(napi_env env, napi_value exports)
@@ -201,7 +201,7 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libnative_drawing.so libnati
 4. Native层配置帧率和注册回调函数。
 
    定义每帧回调函数内容。
-   <!-- @display_soloist_frame_rate_setting_and_subscription_function_registration -->
+   <!-- @[display_soloist_frame_rate_setting_and_subscription_function_registration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySoloist/entry/src/main/cpp/samples/sample_xcomponent.cpp) -->
    
    ``` C++
    static void TestCallback(long long timestamp, long long targetTimestamp, void *data)
@@ -252,7 +252,7 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libnative_drawing.so libnati
    >
    > - 实例在调用NapiRegister后，在不需要进行帧率控制时，应进行NapiUnregister操作，避免内存泄漏问题。
    > - 在页面跳转时，应进行NapiUnregister和NapiDestroy操作，避免内存泄漏问题。
-   <!-- @display_soloist_napi_register_and_unregister -->
+   <!-- @[display_soloist_napi_register_and_unregister](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySoloist/entry/src/main/cpp/samples/sample_xcomponent.cpp) -->
    
    ``` C++
    static std::unordered_map<std::string, OH_DisplaySoloist *> g_displaySync;
@@ -352,7 +352,7 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libnative_drawing.so libnati
    ```
 
 5. TS层注册和取消注册每帧回调，销毁OH_DisplaySoloist实例。
-   <!-- @display_soloist_disappear -->
+   <!-- @[display_soloist_disappear](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/DisplaySoloist/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    aboutToDisappear(): void {
@@ -411,5 +411,5 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libnative_drawing.so libnati
 
 针对可变帧率的开发，有以下相关实例可供参考：
 
-- DisplaySoloist分级管控 (API14)
+- [DisplaySoloist分级管控 (API14)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/DisplaySoloist)
 <!--RP1End-->

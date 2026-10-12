@@ -8,29 +8,29 @@
 
 ## 概述
 
-已有的自定义组件生命周期回调函数触发只取决于事件的触发，在某些特定的情况下，会出现自定义组件生命周期回调函数的触发顺序不符合预期。比如：aboutToDisappear在特定情况下会误调用aboutToAppear、组件未展开被复用时，会误调用aboutToReuse。新的自定义组件生命周期回调函数受状态机限制，生命周期回调函数调用时机符合预期。
+已有的[自定义组件生命周期](./arkts-page-custom-components-lifecycle.md)回调函数触发只取决于事件的触发，在某些特定的情况下，会出现自定义组件生命周期回调函数的触发顺序不符合预期。比如：[aboutToDisappear在特定情况下会误调用aboutToAppear、组件未展开被复用时，会误调用aboutToReuse](#生命周期回调函数的区别)。新的自定义组件生命周期回调函数受状态机限制，生命周期回调函数调用时机符合预期。
 
-自定义组件生命周期，即用@Component或@ComponentV2装饰的自定义组件的生命周期，从API version 23开始，提供以下生命周期装饰器：
+自定义组件生命周期，即用[@Component](arkts-create-custom-components.md#component)或[@ComponentV2](./arkts-create-custom-components.md#componentv2)装饰的自定义组件的生命周期，从API version 23开始，提供以下生命周期装饰器（其中\@ComponentActive和\@ComponentInactive自API版本26.0.0起可用）：
 
-- \@ComponentInit：\@ComponentInit装饰的函数在自定义组件即将构造完毕时执行。可以在此函数中注册监听和修改变量。
+- [\@ComponentInit](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentinit)：\@ComponentInit装饰的函数在自定义组件即将构造完毕时执行。可以在此函数中注册监听和修改变量。
 
-- \@ComponentAppear：组件即将出现时回调该装饰器装饰的函数，具体时机为在创建自定义组件的新实例后，在执行其build函数之前执行。
+- [\@ComponentAppear](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentappear)：组件即将出现时回调该装饰器装饰的函数，具体时机为在创建自定义组件的新实例后，在执行其build函数之前执行。
 
-- \@ComponentBuilt：在组件首次渲染触发的build函数执行完成后，回调该装饰器装饰的函数，后续组件重新渲染将不再回调该函数。开发者可以在此阶段实现数据上报等不影响实际UI的功能。
+- [\@ComponentBuilt](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentbuilt)：在组件首次渲染触发的build函数执行完成后，回调该装饰器装饰的函数，后续组件重新渲染将不再回调该函数。开发者可以在此阶段实现数据上报等不影响实际UI的功能。
 
-- \@ComponentDisappear：该装饰器装饰的函数在自定义组件析构销毁之前执行。不建议在\@ComponentDisappear装饰的函数中改变状态变量，特别是@Link变量的修改可能会导致应用程序行为不稳定。
+- [\@ComponentDisappear](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentdisappear)：该装饰器装饰的函数在自定义组件析构销毁之前执行。不建议在\@ComponentDisappear装饰的函数中改变状态变量，特别是@Link变量的修改可能会导致应用程序行为不稳定。
 
-- \@ComponentReuse：当可复用的自定义组件从复用池中重新添加到节点树时调用该装饰器装饰的函数，以接收组件的构造入参。最后，\@ComponentReuse装饰的函数会递归遍历所有子组件，对每个完成复用的组件调用\@ComponentReuse装饰的函数。
+- [\@ComponentReuse](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentreuse)：当可复用的自定义组件从复用池中重新添加到节点树时调用该装饰器装饰的函数，以接收组件的构造入参。最后，\@ComponentReuse装饰的函数会递归遍历所有子组件，对每个完成复用的组件调用\@ComponentReuse装饰的函数。
 
-- \@ComponentRecycle：当组件被回收后触发，先执行应用程序中定义的必要回收操作，完成回收后调用该装饰器装饰的函数。最后，\@ComponentRecycle装饰的函数会递归遍历所有子组件，对每个完成回收的组件调用\@ComponentRecycle装饰的函数。
+- [\@ComponentRecycle](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentrecycle)：当组件被回收后触发，先执行应用程序中定义的必要回收操作，完成回收后调用该装饰器装饰的函数。最后，\@ComponentRecycle装饰的函数会递归遍历所有子组件，对每个完成回收的组件调用\@ComponentRecycle装饰的函数。
 
-- \@ComponentActive：当组件从非激活状态变为激活状态时，调用该装饰器装饰的函数。自定义组件的激活和非激活概念与组件冻结中的组件激活（active）和非激活（inactive）概念相同，详见自定义组件的激活与非激活生命周期。
+- [\@ComponentActive](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentactive)：当组件从非激活状态变为激活状态时，调用该装饰器装饰的函数。自定义组件的激活和非激活概念与[组件冻结](./arkts-custom-components-freeze.md)中的组件激活（active）和非激活（inactive）概念相同，详见[自定义组件的激活与非激活生命周期](#自定义组件的激活与非激活生命周期)。
 
-- \@ComponentInactive：当组件从激活状态变为非激活状态时，调用该装饰器装饰的函数。
+- [\@ComponentInactive](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentinactive)：当组件从激活状态变为非激活状态时，调用该装饰器装饰的函数。
 
-自定义组件生命周期受状态机限制，每个生命周期回调函数仅在特定的状态转换阶段才会被调用，比如\@ComponentReuse的限制条件是从CustomComponentLifecycleState.RECYCLED到CustomComponentLifecycleState.BUILT阶段触发，\@ComponentAppear仅在组件处于CustomComponentLifecycleState.INIT状态时触发，流程如下图所示。
+自定义组件生命周期受状态机限制，除\@ComponentActive和\@ComponentInactive外，每个生命周期回调函数仅在特定的状态转换阶段才会被调用，比如\@ComponentReuse的限制条件是从CustomComponentLifecycleState.RECYCLED到CustomComponentLifecycleState.BUILT阶段触发，\@ComponentAppear仅在组件处于CustomComponentLifecycleState.INIT状态时触发，流程如下图所示。
 
-custom-component-lifecycle-demo1
+![custom-component-lifecycle-demo1](figures/customcomponent-lifecycle-new-state.png)
 
 ### 自定义组件的创建和渲染流程
 
@@ -46,7 +46,7 @@ custom-component-lifecycle-demo1
 
 1. 在删除组件之前，将调用其\@ComponentDisappear装饰的生命周期函数，标记着该节点将要被销毁。ArkUI的节点删除机制是：后端节点直接从组件树上摘下，后端节点被销毁，对前端节点解引用，前端节点已经没有引用时，将被Ark虚拟机垃圾回收。
 
-2. 自定义组件和它的变量将被删除，如果组件有同步的变量（如@Link、@Prop、@StorageLink），将从状态数据源上取消注册。
+2. 自定义组件和它的变量将被删除，如果组件有同步的变量（如[@Link](arkts-link.md)、[@Prop](arkts-prop.md)、[@StorageLink](arkts-appstorage.md#storagelink)），将从[状态数据源](arkts-state-management-glossary.md#state-data-source状态数据源)上取消注册。
 
 ## 自定义组件的激活与非激活生命周期
 
@@ -62,7 +62,7 @@ custom-component-lifecycle-demo1
 
 进入复用池的组件转变为非激活态。可复用组件从复用池中重新添加到节点树时转变为激活态。本示例展示了组件回收复用场景下，自定义组件激活和非激活生命周期回调函数触发情况。
 
-<!-- @ComponentActiveRecycle -->  
+<!-- @[ComponentActiveRecycle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycleNew/entry/src/main/ets/pages/ComponentActiveRecycle.ets) -->  
 
 ``` TypeScript
 import { ComponentActive, ComponentInactive, ComponentReuse, ComponentRecycle } from '@kit.ArkUI';
@@ -132,7 +132,7 @@ struct Child {
 }
 ```
 
-new-lifecycle-syn-0
+![new-lifecycle-syn-0](./figures/new-lifecycle-syn-0.gif)
 
 上述代码建议按以下步骤执行。
 
@@ -158,9 +158,9 @@ new-lifecycle-syn-0
 
 懒创建的含义为，容器中有多个组件，只有选定的组件完成创建，其余组件需要通过翻页跳转等方法选中时触发创建。当切换到创建完成的组件时，该组件转变为激活态；组件不再被选中时，该组件转变为非激活态。
 
-懒创建场景包含Tabs和Navigation，以下示例展示Navigation和Tabs场景中，`@ComponentActive`和`@ComponentInactive`生命周期装饰器的触发时机。
+懒创建场景包含[Tabs](../../ui/arkts-navigation-tabs.md)和[Navigation](../../ui/arkts-navigation-introduction.md)，以下示例展示Navigation和Tabs场景中，`@ComponentActive`和`@ComponentInactive`生命周期装饰器的触发时机。
 
-<!-- @ComponentActiveLazyCreate -->
+<!-- @[ComponentActiveLazyCreate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycleNew/entry/src/main/ets/pages/ComponentActiveLazyCreate.ets) -->
 
 ``` TypeScript
 // Index.ets
@@ -195,7 +195,7 @@ struct Index {
 }
 ```
 
-<!-- @PageOne -->
+<!-- @[PageOne](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycleNew/entry/src/main/ets/pages/PageOne.ets) -->
 
 ``` TypeScript
 @Builder
@@ -237,7 +237,7 @@ struct PageOne {
 }
 ```
 
-<!-- @PageTwo -->  
+<!-- @[PageTwo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycleNew/entry/src/main/ets/pages/PageTwo.ets) -->  
 
 ``` TypeScript
 import { ComponentActive, ComponentInactive } from '@kit.ArkUI';
@@ -378,7 +378,7 @@ struct TabsComponent {
 }
 ```
 
-new-lifecycle-syn-1
+![new-lifecycle-syn-1](./figures/new-lifecycle-syn-1.gif)
 
 **场景说明与日志输出：**
 
@@ -413,11 +413,11 @@ new-lifecycle-syn-1
 
 ### 预加载场景下监听激活状态变化
 
-以LazyForEach为例，LazyForEach预加载区域的组件创建完毕转变为非激活态。List、Swiper、Grid、WaterFlow等组件使用LazyForEach时，可以通过cachedCount的count属性设置预加载区域的节点数量。
+以[LazyForEach](../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)为例，LazyForEach预加载区域的组件创建完毕转变为非激活态。[List](../../reference/apis-arkui/arkui-ts/ts-container-list.md)、[Swiper](../../reference/apis-arkui/arkui-ts/ts-container-swiper.md)、[Grid](../../reference/apis-arkui/arkui-ts/ts-container-grid.md)、[WaterFlow](../../reference/apis-arkui/arkui-ts/ts-container-waterflow.md)等组件使用LazyForEach时，可以通过[cachedCount](../../reference/apis-arkui/arkui-ts/ts-container-list.md#cachedcount14)的count属性设置预加载区域的节点数量。
 
 本示例展示了`List`和`LazyForEach`场景下的组件激活/非激活状态变化。
 
-<!-- @ComponentActivePreRender -->
+<!-- @[ComponentActivePreRender](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycleNew/entry/src/main/ets/pages/ComponentActivePreRender.ets) -->
 
 ``` TypeScript
 import { ComponentActive, ComponentInactive } from '@kit.ArkUI';
@@ -427,7 +427,6 @@ import { MyDataSource } from './BasicDataSource';
 @Component
 struct Index {
   @State dataSource: MyDataSource<string> = new MyDataSource();
-  @State colors: number[] = [0xFFC0CB, 0xDA70D6, 0x6B8E23, 0x6A5ACD, 0x00FFFF, 0x00FF7F];
   @State changeShow: boolean = false;
 
   aboutToAppear(): void {
@@ -487,7 +486,7 @@ struct Child {
 }
 ```
 
-<!-- @BasicDataSource -->
+<!-- @[BasicDataSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycleNew/entry/src/main/ets/pages/BasicDataSource.ets) -->
 
 ``` TypeScript
 abstract class BasicDataSource<T> implements IDataSource {
@@ -539,7 +538,7 @@ export class MyDataSource<T> extends BasicDataSource<T> {
 }
 ```
 
-new-lifecycle-syn-2
+![new-lifecycle-syn-2](./figures/new-lifecycle-syn-2.gif)
 
 **场景说明与日志输出：**
 
@@ -565,11 +564,11 @@ new-lifecycle-syn-2
 
 ### 页面可见性变化场景下监听激活状态变化
 
-Router页面每次隐藏时触发onPageHide，页面中的组件转变为非激活态；页面每次显示时触发onPageShow，页面中的组件转变为激活态。同理，亮屏时页面会触发onPageShow，页面中的组件转变为激活态；息屏时页面会触发onPageHide，页面中的组件转变为非激活态。
+[Router](../../ui/arkts-router-to-navigation.md)页面每次隐藏时触发onPageHide，页面中的组件转变为非激活态；页面每次显示时触发onPageShow，页面中的组件转变为激活态。同理，亮屏时页面会触发onPageShow，页面中的组件转变为激活态；息屏时页面会触发onPageHide，页面中的组件转变为非激活态。
 
 本示例展示了页面可见性变化场景下的组件激活/非激活状态变化。
 
-<!-- @ComponentActivePageVisible -->
+<!-- @[ComponentActivePageVisible](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycleNew/entry/src/main/ets/pages/ComponentActivePageVisible.ets) -->
 
 ``` TypeScript
 import { ComponentActive, ComponentInactive } from '@kit.ArkUI';
@@ -601,7 +600,7 @@ struct MyActiveSample {
 }
 ```
 
-new-lifecycle-syn-3
+![new-lifecycle-syn-3](./figures/new-lifecycle-syn-3.png)
 
 **场景说明与日志输出：**
 
@@ -627,7 +626,7 @@ new-lifecycle-syn-3
 
 - 在\@ComponentV2装饰的struct中，\@ComponentReuse装饰的函数不能有入参，否则编译会报错。
 
-- 新增生命周期装饰器装饰方法时，自定义组件对应事件发生时会回调该方法。新增生命周期装饰器建议单独使用，不与其他状态变量装饰器联合使用。比如生命周期装饰器和\@Computed联合使用时，生命周期装饰器不生效。
+- 新增生命周期装饰器装饰方法时，自定义组件对应事件发生时会回调该方法。新增生命周期装饰器建议单独使用，不与其他状态变量装饰器联合使用。比如生命周期装饰器和[\@Computed](./arkts-new-computed.md)联合使用时，生命周期装饰器不生效。
   ``` TypeScript
   @Computed
   @ComponentAppear
@@ -635,7 +634,7 @@ new-lifecycle-syn-3
     return 1 + 2 + 3; // 错误用法，生命周期装饰器装饰get方法不生效
   }
   ```
-- 当自定义组件没有使用生命周期装饰器，且没有注册监听，使用getCurrentState查询自定义组件当前生命周期状态时，返回值永远为CustomComponentLifecycleState.INIT。
+- 当自定义组件没有使用生命周期装饰器，且没有注册监听，使用[getCurrentState](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#getcurrentstate)查询自定义组件当前生命周期状态时，返回值永远为[CustomComponentLifecycleState.INIT](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#customcomponentlifecyclestate)。当自定义组件没有使用生命周期装饰器时，自定义组件注册监听成功时才开启状态机且当前生命周期状态为INIT。
 
 - 自定义组件创建后默认为激活状态，不会触发`@ComponentActive`装饰的函数回调函数。
 
@@ -645,7 +644,7 @@ new-lifecycle-syn-3
 
 通过以下示例，来详细说明自定义组件在嵌套使用时，自定义组件生命周期的调用时序：
 
-<!-- @ComponentNesting -->
+<!-- @[ComponentNesting](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycleNew/entry/src/main/ets/pages/ComponentNesting.ets) -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -738,7 +737,7 @@ struct Child {
 }
 ```
 
-new-lifecycle-syn-4
+![new-lifecycle-syn-4](./figures/new-lifecycle-syn-4.gif)
 
 以上示例中，Index页面包含两个自定义组件，一个是Parent，一个是Child，Parent及其子组件Child分别声明了各自的自定义组件生命周期装饰器装饰的函数（myAppear / myBuilt / myDisappear）。
 
@@ -778,13 +777,13 @@ Child myBuilt
 ```
 当showChild为默认值true时，该示例的生命周期流程图如下所示：
 
-custom-component-lifecycle-demo2
+![custom-component-lifecycle-demo2](figures/custom-component-lifecycle-nest.png)
 
 ### 自定义组件回收复用
 
 通过以下示例，来详细说明自定义组件在使用时，回收复用的生命周期调用时序：
 
-<!-- @ComponentRecycleReuse -->
+<!-- @[ComponentRecycleReuse](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycleNew/entry/src/main/ets/pages/ComponentRecycleReuse.ets) -->
 
 ``` TypeScript
 import { ComponentInit, ComponentAppear, ComponentBuilt, ComponentDisappear, ComponentReuse, ComponentRecycle } from '@kit.ArkUI';
@@ -927,7 +926,7 @@ struct GrandChild {
 }
 ```
 
-new-lifecycle-syn-5
+![new-lifecycle-syn-5](./figures/new-lifecycle-syn-5.gif)
 
 以上示例中，Index页面包含自定义组件Child，Child组件包含自定义组件GrandChild。Child和GrandChild分别声明了各自的自定义组件生命周期装饰器装饰的函数（myInit / myAppear / myBuilt / myRecycle / myReuse / myDisappear）。
 
@@ -951,9 +950,9 @@ GrandChild myRecycle
 
 ### 自定义组件生命周期的注册监听
 
-CustomComponentLifecycleObserver用于监听自定义组件的生命周期，开发者可以根据自己的需求重写CustomComponentLifecycleObserver中的回调函数。
+[CustomComponentLifecycleObserver](../../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#customcomponentlifecycleobserver)用于监听自定义组件的生命周期，开发者可以根据自己的需求重写CustomComponentLifecycleObserver中的回调函数。
 
-<!-- @ComponentLifecycleObserver -->
+<!-- @[ComponentLifecycleObserver](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycleNew/entry/src/main/ets/pages/ComponentLifecycleObserver.ets) -->
 
 ``` TypeScript
 import { ComponentInit, ComponentDisappear, UIUtils, CustomComponentLifecycleObserver, CustomComponentLifecycle } from '@kit.ArkUI';
@@ -1044,7 +1043,7 @@ export function unRegisterObserver(lifeCycle: CustomComponentLifecycle) {
 }
 ```
 
-new-lifecycle-syn-6
+![new-lifecycle-syn-6](./figures/new-lifecycle-syn-6.gif)
 
 在@ComponentDisappear装饰的函数中解除注册监听，所以监听器无法监听到aboutToDisappear。
 
@@ -1057,7 +1056,7 @@ MyObserver aboutToRecycle
 MyObserver aboutToReuse
 ```
 
-可以在组件的onAppear和onDisAppear中注册和解除监听。在onAppear中注册监听，此时组件已经处于Appeared状态，所以无法监听组件的aboutToAppear。
+不建议在组件的onAppear和onDisAppear中注册和解除监听。在onAppear中注册监听，此时组件已经处于BUILT状态，所以无法监听组件的aboutToAppear和onDidBuild。
 
 ``` TypeScript
 Column() {
@@ -1082,7 +1081,7 @@ Column() {
 
 aboutToAppear是自定义组件build之前执行，aboutToDisappear是自定义组件销毁前执行。但有时自定义组件没有build，就被销毁。为了执行一个完整的生命周期，aboutToDisappear会判断，该组件是否执行了aboutToAppear，如果没有执行便强制触发一次aboutToAppear。\@ComponentAppear装饰的函数和\@ComponentDisappear装饰的函数受状态机约束，\@ComponentDisappear装饰的函数不会误调用\@ComponentAppear装饰的函数。例子如下所示：
 
-<!-- @LifecycleDifference -->
+<!-- @[LifecycleDifference](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycleNew/entry/src/main/ets/pages/LifecycleDifference.ets) -->
 
 ``` TypeScript
 // Index.ets
@@ -1125,7 +1124,7 @@ struct Index {
 }
 ```
 
-<!-- @SwiperPage -->
+<!-- @[SwiperPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycleNew/entry/src/main/ets/pages/SwiperPage.ets) -->
 
 ``` TypeScript
 import { ComponentAppear, ComponentDisappear } from '@kit.ArkUI';
@@ -1227,7 +1226,7 @@ export struct SwiperExample {
 }
 ```
 
-new-lifecycle-syn-7
+![new-lifecycle-syn-7](./figures/new-lifecycle-syn-7.gif)
 
 启动程序后，先按start按钮，此时只有Swiper缓存的五个节点开始执行aboutToAppear和myAppear，非缓存的节点未触发aboutToAppear和myAppear。
 
@@ -1270,7 +1269,7 @@ SwiperPage aboutToDisappear 4
 
 自定义组件在BUILT状态时，即将转化为RECYCLED时，先调用aboutToRecycle后调用\@ComponentRecycle装饰的函数。
 
-<!-- @ComponentReuseDifference -->
+<!-- @[ComponentReuseDifference](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycleNew/entry/src/main/ets/pages/ComponentReuseDifference.ets) -->
 
 ``` TypeScript
 import { ComponentAppear, ComponentBuilt, ComponentReuse } from '@kit.ArkUI';
@@ -1357,7 +1356,7 @@ struct ReusableComp3 {
 }
 ```
 
-new-lifecycle-syn-8
+![new-lifecycle-syn-8](./figures/new-lifecycle-syn-8.gif)
 
 按下change flag 1按钮，此时ReusableComp2进入回收状态，再按下change flag 2按钮，此时ReusableComp3第一次被创建，此时日志输出信息如下：
 

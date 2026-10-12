@@ -65,7 +65,7 @@ task4(OUT A);
 task5(OUT A);
 ```
 
-image
+![image](figures/ffrt_figure3.png)
 
 为表述方便，本文中的数据流图均以圆圈表示Task，方块表示数据。
 
@@ -79,11 +79,11 @@ image
 
 用户上传视频到流媒体平台，处理步骤包含：视频解析A、视频转码B、视频缩略图生成C、视频水印添加D和视频发布E，其中步骤B和步骤C可以并行执行。任务流程如下图所示：
 
-image
+![image](figures/ffrt_figure1.png)
 
 借助FFRT提供的图依赖并发范式，可以描述任务依赖关系，同时并行化上述视频处理流程，代码如下所示：
 
-<!-- @parallel_dep_c_header -->
+<!-- @[parallel_dep_c_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FunctionFlowRuntime/TaskGraph/entry/src/main/cpp/parallel.h) -->
 
 ``` C
 #include <cstdio>
@@ -94,7 +94,7 @@ image
 #define LOG_TAG "ParallelTag"
 ```
 
-<!-- @parallel_dep_c -->
+<!-- @[parallel_dep_c](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FunctionFlowRuntime/TaskGraph/entry/src/main/cpp/parallel.cpp) -->
 
 ``` C++
 void FuncTaskA(void* arg)
@@ -171,13 +171,13 @@ int DependenceCExec()
 
 > **说明：**
 >
-> `ffrt_submit_h_f`和`ffrt_submit_f`接口可以接收裸函数指针任务作为参数，如果任务存在前后处理可以参见ffrt_alloc_auto_managed_function_storage_base函数查看如何构造任务结构体。
+> `ffrt_submit_h_f`和`ffrt_submit_f`接口可以接收裸函数指针任务作为参数，如果任务存在前后处理可以参见[ffrt_alloc_auto_managed_function_storage_base](ffrt-api-guideline-c.md#ffrt_alloc_auto_managed_function_storage_base)函数查看如何构造任务结构体。
 
 ## 示例：斐波那契数列
 
 斐波那契数列中每个数字是前两个数字之和，计算斐波那契数的过程可以很好地通过数据对象来表达任务依赖关系。使用FFRT并发编程框架计算斐波那契数的代码如下所示：
 
-<!-- @parallel_dep_c_header -->
+<!-- @[parallel_dep_c_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FunctionFlowRuntime/TaskGraph/entry/src/main/cpp/parallel.h) -->
 
 ``` C
 #include <cstdio>
@@ -188,7 +188,7 @@ int DependenceCExec()
 #define LOG_TAG "ParallelTag"
 ```
 
-<!-- @parallel_fib_c -->
+<!-- @[parallel_fib_c](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FunctionFlowRuntime/TaskGraph/entry/src/main/cpp/parallel.cpp) -->
 
 ``` C++
 const int FIB_NUM = 5;
@@ -257,11 +257,11 @@ Fibonacci(5) is 5
 
 > **说明：**
 >
-> `ffrt_submit_f`接口可以接收裸函数指针任务作为参数，如果任务存在前后处理可以参见ffrt_alloc_auto_managed_function_storage_base函数查看如何构造任务结构体。
+> `ffrt_submit_f`接口可以接收裸函数指针任务作为参数，如果任务存在前后处理可以参见[ffrt_alloc_auto_managed_function_storage_base](ffrt-api-guideline-c.md#ffrt_alloc_auto_managed_function_storage_base)函数查看如何构造任务结构体。
 
 各个任务在FFRT内部形成了一棵调用树：
 
-image
+![image](figures/ffrt_figure2.png)
 
 ## 接口说明
 
@@ -269,13 +269,13 @@ image
 
 | 名称                                                       | 描述                                                                              |
 | ---------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| ffrt_submit_f     | 提交任务调度执行。<br/>**说明**：从API version 20开始，支持该接口。               |
-| ffrt_submit_h_f | 提交任务调度执行并返回任务句柄。<br/>**说明**：从API version 20开始，支持该接口。 |
-| ffrt_wait_deps   | 等待依赖的任务完成。                                                              |
+| [ffrt_submit_f](ffrt-api-guideline-c.md#ffrt_submit_f)     | 提交任务调度执行。<br/>**说明**：从API version 20开始，支持该接口。               |
+| [ffrt_submit_h_f](ffrt-api-guideline-c.md#ffrt_submit_h_f) | 提交任务调度执行并返回任务句柄。<br/>**说明**：从API version 20开始，支持该接口。 |
+| [ffrt_wait_deps](ffrt-api-guideline-c.md#ffrt_wait_deps)   | 等待依赖的任务完成。                                                              |
 
 > **说明：**
 >
-> - 如何使用FFRT C++ API详见：FFRT C++接口三方库使用指导。
+> - 如何使用FFRT C++ API详见：[FFRT C++接口三方库使用指导](ffrt-development-guideline.md#使用ffrt-c-api-1)。
 > - 使用FFRT C接口或C++接口时，均可通过FFRT C++接口三方库简化头文件包含，即使用`#include "ffrt/ffrt.h"`头文件包含语句。
 
 ## 约束限制

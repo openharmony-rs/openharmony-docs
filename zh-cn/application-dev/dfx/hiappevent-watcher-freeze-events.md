@@ -12,17 +12,17 @@
 
 本文面向开发者介绍AppFreeze（应用冻屏）检测原理，以及各字段的含义和规格。如需了解如何使用HiAppEvent接口订阅应用冻屏事件，请参考以下文档。目前提供ArkTS和C/C++两种接口，按需选择。
 
-- 订阅应用冻屏事件（ArkTS）。
+- [订阅应用冻屏事件（ArkTS）](hiappevent-watcher-freeze-events-arkts.md)。
 
-- 订阅应用冻屏事件（C/C++）。
+- [订阅应用冻屏事件（C/C++）](hiappevent-watcher-freeze-events-ndk.md)。
 
 > **说明：**
 >
-> 应用冻屏事件支持在应用分身场景下使用 HiAppEvent 进行订阅，支持在原子化服务场景下使用HiAppEvent 进行订阅，从 API version 22 开始支持在输入法应用场景下使用 HiAppEvent 进行订阅。
+> 应用冻屏事件支持在[应用分身](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/app-clone)场景下使用 HiAppEvent 进行订阅，支持在原子化服务场景下使用HiAppEvent 进行订阅，从 API version 22 开始支持在[输入法应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/inputmethod-application-guide)场景下使用 HiAppEvent 进行订阅。
 
 ## 检测原理
 
-详见AppFreeze（应用冻屏）检测原理。
+详见[AppFreeze（应用冻屏）检测原理](appfreeze-guidelines.md#检测原理)。
 
 ## 页面切换日志规格自定义参数设置
 
@@ -32,15 +32,15 @@
 
 | 接口名 | 描述 |
 | -------- | -------- |
-| configEventPolicy (policy: EventPolicy): Promise&lt;void>| 设置应用冻屏事件策略参数接口，支持开启应用冻屏事件的页面切换日志采集。 |
+| [configEventPolicy](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventconfigeventpolicy22) (policy: EventPolicy): Promise&lt;void>| 设置应用冻屏事件策略参数接口，支持开启应用冻屏事件的页面切换日志采集。 |
 
 ### configEventPolicy接口参数设置说明
 
-开发者可以通过设置EventPolicy 的参数来开启应用冻屏事件的页面切换日志采集。
+开发者可以通过设置[EventPolicy](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#eventpolicy22) 的参数来开启应用冻屏事件的页面切换日志采集。
 
 | 名称       | 类型    | 只读 | 可选 | 说明                                         |
 | ---------- | ------- | ---- | ---- | ------------------------------------------ |
-| appFreezePolicy | AppFreezePolicy | 否 | 是   | 应用冻屏事件配置策略。 |
+| appFreezePolicy | [AppFreezePolicy](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#appfreezepolicy24) | 否 | 是   | 应用冻屏事件配置策略。 |
 
 **参数设置示例**
 
@@ -54,9 +54,9 @@ let policy: hiAppEvent.EventPolicy = {
     }
 };
 hiAppEvent.configEventPolicy(policy).then(() => {
-    hilog.info(0x0000, 'hiAppEvent', `Set crash config policy successfully.`);
+    hilog.info(0x0000, 'testTag', `Set appfreeze config policy successfully.`);
 }).catch((err: BusinessError) => {
-    hilog.error(0x0000, 'hiAppEvent', `Failed to set crash config policy. code: ${err.code}, message: ${err.message}`);
+    hilog.error(0x0000, 'testTag', `Failed to set appfreeze config policy. code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -70,7 +70,7 @@ hiAppEvent.configEventPolicy(policy).then(() => {
 | -------- | -------- | -------- |
 | time | number | 事件触发时间，单位为ms。 |
 | foreground | boolean | 应用是否处于前台状态。true表示应用处于前台；false表示应用处于后台。 |
-| release_type | string | 应用的版本类型。release表示应用为release版本应用，debug表示应用为debug版本应用。<br>**说明**：从API version 23开始支持。 |
+| release_type | string | 应用的版本类型。release表示应用为[release版本应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)，debug表示应用为[debug版本应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-compilation-options-customizing-guide#section192461528194916)。<br>**说明**：从API version 23开始支持。 |
 | cpu_abi | string | 二进制接口类型。<br>**说明**：从API version 23开始支持。 |
 | app_running_unique_id | string | 应用运行时唯一关联的id。<br>**说明**：从API version 24开始支持该参数。 |
 | bundle_version | string | 应用版本。 |
@@ -79,21 +79,21 @@ hiAppEvent.configEventPolicy(policy).then(() => {
 | pid | number | 应用的进程ID。 |
 | uid | number | 应用的用户ID。 |
 | uuid | string | 根据故障信息生成的故障特征码，用于标识特征相同的崩溃故障。 |
-| exception | object | 异常信息，详见exception字段说明。 |
+| exception | object | 异常信息，详见[exception字段说明](#exception字段说明)。 |
 | hilog | string[] | 日志信息。当生成应用无响应事件日志时，从hilog缓冲区中获取最多100行故障进程日志信息。 |
 | event_handler | string[] | 主线程未处理消息。 |
-| event_handler_size_3s | string | THREAD_BLOCK_6S事件（仅在应用无响应事件生效）中3s时任务栈中任务数量。 |
-| event_handler_size_6s | string | THREAD_BLOCK_6S事件（仅在应用无响应事件生效）中6s时任务栈中任务数量。 |
+| event_handler_size_3s | string | [THREAD_BLOCK_6S事件](appfreeze-guidelines.md#thread_block_6s应用主线程卡死超时)（仅在应用无响应事件生效）中3s时任务栈中任务数量。 |
+| event_handler_size_6s | string | [THREAD_BLOCK_6S事件](appfreeze-guidelines.md#thread_block_6s应用主线程卡死超时)（仅在应用无响应事件生效）中6s时任务栈中任务数量。 |
 | peer_binder | string[] | binder调用信息。 |
-| threads | object[] | 全量线程调用栈，详见thread字段说明。 |
-| memory | object | 内存信息，详见memory字段说明。 |
+| threads | object[] | 全量线程调用栈，详见[thread字段说明](#thread字段说明)。 |
+| memory | object | 内存信息，详见[memory字段说明](#memory字段说明)。 |
 | external_log<sup>12+</sup> | string[] | 故障日志文件路径。**为避免目录空间超限（参考log_over_limit），导致新生成的日志文件写入失败，日志文件处理完后请及时删除。** |
-| log_over_limit<sup>12+</sup> | boolean | 生成的故障日志文件与已存在的日志文件总大小是否超过5MB上限。true表示超过上限，日志写入失败；false表示未超过上限。<br>启用minidump时，上限调整至35MB；关闭minidump时，上限恢复到5MB。 |
+| log_over_limit<sup>12+</sup> | boolean | 生成的故障日志文件与已存在的日志文件总大小是否超过5MB上限。true表示超过上限，日志写入失败；false表示未超过上限。<br>启用[minidump](performance-analysis-kit-terminology.md#minidump)时，上限调整至35MB；关闭minidump时，上限恢复到5MB。 |
 | process_life_time | number | 故障进程存活时间。<br>**说明**：从API version 22开始支持。 |
-| external_callback_log | string | 自定义回调日志信息，可通过OH_HiCollie_SetFreezeCallback写入。<br>**说明**：从API version 24开始支持。 |
-| page_switch_log | string | 页面切换日志路径，日志介绍详见页面切换日志。<br>**说明**：从API version 24开始支持。 |
-| application_gc_info | object | 应用GC信息，详见application_gc_info字段说明。<br>**说明**：从API版本26.0.0开始支持。 |
-| application_io_info | object | I/O信息，详见application_io_info字段说明。<br>**说明**：从API版本26.0.0开始支持。 |
+| external_callback_log | string | 自定义回调日志信息，可通过[OH_HiCollie_SetFreezeCallback](../reference/apis-performance-analysis-kit/capi-hicollie-h.md#oh_hicollie_setfreezecallback)写入。<br>**说明**：从API version 24开始支持。 |
+| page_switch_log | string | 页面切换日志路径，日志介绍详见[页面切换日志](pageswitch-log.md)。<br>**说明**：从API version 24开始支持。 |
+| application_gc_info | object | 应用GC信息，详见[application_gc_info字段说明](#application_gc_info字段说明)。<br>**说明**：从API版本26.0.0开始支持。 |
+| application_io_info | object | I/O信息，详见[application_io_info字段说明](#application_io_info字段说明)。<br>**说明**：从API版本26.0.0开始支持。 |
 
 ### exception字段说明
 
@@ -108,7 +108,7 @@ hiAppEvent.configEventPolicy(policy).then(() => {
 | -------- | -------- | -------- |
 | thread_name | string | 线程名。 |
 | tid | number | 线程id。 |
-| frames | object[] | 线程调用栈，详见frame字段说明。 |
+| frames | object[] | 线程调用栈，详见[frame字段说明](#frame字段说明)。 |
 | state | string | 线程运行状态。读取自/proc/pid/stat的state的值。<br>**说明**：从API version 23开始支持。 |
 | utime | number | 线程在用户态下消耗的CPU的嘀嗒数。读取自/proc/pid/stat的utime的值。<br>**说明**：从API version 23开始支持。|
 | stime | number | 线程在内核态下消耗的CPU的嘀嗒数。读取自/proc/pid/stat的stime的值。<br>**说明**：从API version 23开始支持。|
@@ -128,7 +128,7 @@ hiAppEvent.configEventPolicy(policy).then(() => {
 | pc | string | 程序执行的指令在文件内的偏移十六进制字节数。 |
 | offset | number | 程序执行的指令在函数内偏移字节数。 |
 
-详细说明请参见调用栈帧内容说明。
+详细说明请参见[调用栈帧内容说明](cppcrash-guidelines.md#一般故障场景日志规格)。
 
 **Js帧frame字段说明**
 
@@ -140,21 +140,21 @@ hiAppEvent.configEventPolicy(policy).then(() => {
 | line | number | 代码行号。 |
 | column | number | 代码列号。 |
 
-详细说明请参见JS混合栈帧内容说明。
+详细说明请参见[JS混合栈帧内容说明](cppcrash-guidelines.md#一般故障场景日志规格)。
 
 ### memory字段说明
 
 | 名称 | 类型 | 说明 |
 | -------- | -------- | -------- |
-| rss | number | 进程实际占用内存大小，单位KB。对应Appfreeze日志中Process Memory(kB)字段。|
+| rss | number | 进程实际占用内存大小，单位KB。对应[Appfreeze日志](appfreeze-guidelines.md#日志头部信息)中Process Memory(kB)字段。|
 | vss | number | 进程向系统申请的虚拟内存大小，单位KB。 |
 | pss | number | 进程实际使用的物理内存大小，单位KB。 |
-| sys_free_mem | number | 空闲内存大小，单位KB。对应Appfreeze日志中Device Memory(kB)字段的Free。|
-| sys_avail_mem | number | 可用内存大小，单位KB。对应Appfreeze日志中Device Memory(kB)字段的Available。|
-| sys_total_mem | number | 总内存大小，单位KB。对应Appfreeze日志中Device Memory(kB)字段的Total。|
-| vm_heap_total_size | number | 主虚拟机总堆内存大小，单位KB。对应Appfreeze日志中MainHeap(bytes)字段的Total。<br>**说明**：从API version 22开始支持。|
-| vm_heap_used_size | number | 主虚拟机的生命周期过程中，持续统计存活对象的大小，单位KB。对应Appfreeze日志中MainHeap(bytes)字段的Used。<br>**说明**：从API version 22开始支持。|
-| vm_heap_shared_size | number | 主虚拟机的生命周期过程中，持续统计存活对象的大小，单位KB。对应Appfreeze日志中SharedHeap(bytes)字段的Used。<br>**说明**：从API版本26.0.0开始支持。|
+| sys_free_mem | number | 空闲内存大小，单位KB。对应[Appfreeze日志](appfreeze-guidelines.md#日志头部信息)中Device Memory(kB)字段的Free。|
+| sys_avail_mem | number | 可用内存大小，单位KB。对应[Appfreeze日志](appfreeze-guidelines.md#日志头部信息)中Device Memory(kB)字段的Available。|
+| sys_total_mem | number | 总内存大小，单位KB。对应[Appfreeze日志](appfreeze-guidelines.md#日志头部信息)中Device Memory(kB)字段的Total。|
+| vm_heap_total_size | number | 主虚拟机总堆内存大小，单位KB。对应[Appfreeze日志](appfreeze-guidelines.md#日志主干通用信息)中MainHeap(bytes)字段的Total。<br>**说明**：从API version 22开始支持。|
+| vm_heap_used_size | number | 主虚拟机的生命周期过程中，持续统计存活对象的大小，单位KB。对应[Appfreeze日志](appfreeze-guidelines.md#日志主干通用信息)中MainHeap(bytes)字段的Used。<br>**说明**：从API version 22开始支持。|
+| vm_heap_shared_size | number | 主虚拟机的生命周期过程中，持续统计存活对象的大小，单位KB。对应[Appfreeze日志](appfreeze-guidelines.md#日志主干通用信息)中SharedHeap(bytes)字段的Used。<br>**说明**：从API版本26.0.0开始支持。|
 
 ### application_gc_info字段说明
 
@@ -190,4 +190,4 @@ hiAppEvent.configEventPolicy(policy).then(() => {
 
 ### 参数设置说明
 
-开发者可以通过该接口订阅name为hiAppEvent.event.APP_FREEZE的应用冻屏事件，具体使用详见hiAppEvent.setEventParam。
+开发者可以通过该接口订阅name为hiAppEvent.event.APP_FREEZE的应用冻屏事件，具体使用详见[hiAppEvent.setEventParam](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventseteventparam12)。

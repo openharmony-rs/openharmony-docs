@@ -6,7 +6,7 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-在状态管理V1中，推荐使用$$实现系统组件的双向绑定。
+在状态管理V1中，推荐使用[$$](./arkts-two-way-sync.md)实现系统组件的双向绑定。
 
 在状态管理V2中，推荐使用`!!`语法糖统一处理双向绑定。
 
@@ -17,7 +17,7 @@
 
 ## 概述
 
-`!!`双向绑定语法，是一个语法糖，方便开发者实现数据双向绑定，用于初始化子组件的\@Param装饰的属性和\@Event装饰的事件。其中\@Event方法名需要声明为“$”+ \@Param属性名，详见使用场景。
+`!!`双向绑定语法，是一个语法糖，方便开发者实现数据双向绑定，用于初始化子组件的[\@Param](arkts-new-param.md)装饰的属性和[\@Event](arkts-new-event.md)装饰的事件。其中\@Event方法名需要声明为“$”+ \@Param属性名，详见[使用场景](#使用场景)。
 
 - 如果使用了`!!`双向绑定语法，表明父组件的变化会同步给子组件，子组件的变化也会同步给父组件。
 - 父组件未使用`!!`时，变化是单向的。
@@ -29,14 +29,14 @@
 
    \@Param与\@Event装饰器配合使用的双向绑定语法糖。
 
-   <!-- @ArkUI_Star_binding1 -->  
+   <!-- @[ArkUI_Star_binding1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUI_Binding/entry/src/main/ets/pages/Binding_Star_Param_Event.ets) -->  
    
    ``` TypeScript
    Star({ value: this.value, $value: (val: number) => { this.value = val; } })
    ```
    上述语法可以简化为!!双向绑定语法糖。
    
-    <!-- @ArkUI_Star_binding3 -->
+    <!-- @[ArkUI_Star_binding3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUI_Binding/entry/src/main/ets/pages/Binding_Star.ets) -->
     
     ``` TypeScript
     Star({ value: this.value!! })
@@ -44,7 +44,7 @@
 
 2. 使用`@Param value`与`@Event $value`语法实现自定义组件双向绑定。
 
-    <!-- @ArkUI_Star_binding4 -->  
+    <!-- @[ArkUI_Star_binding4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUI_Binding/entry/src/main/ets/pages/Binding_Star_Param_Event.ets) -->  
     
     ``` TypeScript
     @Entry
@@ -86,7 +86,7 @@
 
 3. 使用!!语法糖实现自定义组件双向绑定。
 
-   <!-- @ArkUI_Star_binding2 -->
+   <!-- @[ArkUI_Star_binding2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUI_Binding/entry/src/main/ets/pages/Binding_Star.ets) -->
    
    ``` TypeScript
    @Entry
@@ -133,11 +133,11 @@
 
 ### 系统组件参数双向绑定
 
-!!运算符为系统组件提供TS变量的引用，使得TS变量和系统组件的内部状态保持同步。添加方式是在变量名后添加，例如isShow!!。
+!!运算符为系统组件提供TS变量的引用，使得TS变量和系统组件的内部状态保持同步。添加方式是在变量名后添加!!，例如isShow!!。
 
-内部状态的含义由组件或属性决定。例如：bindMenu属性的isShow参数。
+内部状态的含义由组件或属性决定。例如：[bindMenu](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindmenu11)属性的isShow参数。
 
-<!-- @ArkUI_Sys_binding -->
+<!-- @[ArkUI_Sys_binding](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUI_Binding/entry/src/main/ets/pages/Sys_Binding.ets) -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -187,30 +187,30 @@ struct BindMenuInterface {
 ```
 
 
-bindMenu
+![bindMenu](figures/bindmenu_doublebind.gif)
 
 **使用规则**
 
-- 当前`!!`双向绑定支持基础类型变量，当该变量使用\@State等状态管理V1装饰器装饰，或者\@Local等状态管理V2装饰器装饰时，变量值的变化会触发UI刷新。
+- 当前`!!`双向绑定支持基础类型变量，当该变量使用[\@State](arkts-state.md)等状态管理V1装饰器装饰，或者[\@Local](arkts-new-local.md)等状态管理V2装饰器装饰时，变量值的变化会触发UI刷新。
 
   | 属性                                                         | 支持的参数 | 起始API版本 |
   | ------------------------------------------------------------ | --------------- | ----------- |
-  | bindMenu | isShow | 18        |
-  | bindContextMenu | isShown | 18          |
-  | bindPopup | show | 18   |
-  | TextInput | text | 18   |
-  | TextArea | text | 18   |
-  | Search | value | 18   |
-  | bindSheet | isShow | 18   |
-  | bindContentCover | isShow | 18   |
-  | SideBarContainer | sideBarWidth | 18   |
-  | Navigation | navBarWidth | 18   |
-  | Toggle | isOn | 18   |
-  | Checkbox | select | 18   |
-  | CheckboxGroup | selectAll | 18   |  
-  | Radio | checked | 18   |  
-  | Rating | rating | 18   |  
-  | Slider | value | 18   |  
-  | Select | selected | 18   |  
-  | Select | value | 18   |
-  | MenuItem | selected | 18   |
+  | [bindMenu](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindmenu11) | isShow | 18        |
+  | [bindContextMenu](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindcontextmenu12) | isShown | 18          |
+  | [bindPopup](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#bindpopup) | show | 18   |
+  | [TextInput](../../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md#textinputoptions对象说明) | text | 18   |
+  | [TextArea](../../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#textareaoptions对象说明) | text | 18   |
+  | [Search](../../reference/apis-arkui/arkui-ts/ts-basic-components-search.md#searchoptions18对象说明) | value | 18   |
+  | [bindSheet](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#bindsheet) | isShow | 18   |
+  | [bindContentCover](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-modal-transition.md#bindcontentcover) | isShow | 18   |
+  | [SideBarContainer](../../reference/apis-arkui/arkui-ts/ts-container-sidebarcontainer.md) | [sideBarWidth](../../reference/apis-arkui/arkui-ts/ts-container-sidebarcontainer.md#sidebarwidth) | 18   |
+  | [Navigation](../../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md) | [navBarWidth](../../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navbarwidth9) | 18   |
+  | [Toggle](../../reference/apis-arkui/arkui-ts/ts-basic-components-toggle.md#toggleoptions18对象说明) | isOn | 18   |
+  | [Checkbox](../../reference/apis-arkui/arkui-ts/ts-basic-components-checkbox.md) | [select](../../reference/apis-arkui/arkui-ts/ts-basic-components-checkbox.md#select) | 18   |
+  | [CheckboxGroup](../../reference/apis-arkui/arkui-ts/ts-basic-components-checkboxgroup.md) | [selectAll](../../reference/apis-arkui/arkui-ts/ts-basic-components-checkboxgroup.md#selectall) | 18   |  
+  | [Radio](../../reference/apis-arkui/arkui-ts/ts-basic-components-radio.md) | [checked](../../reference/apis-arkui/arkui-ts/ts-basic-components-radio.md#checked) | 18   |  
+  | [Rating](../../reference/apis-arkui/arkui-ts/ts-basic-components-rating.md#ratingoptions18对象说明) | rating | 18   |  
+  | [Slider](../../reference/apis-arkui/arkui-ts/ts-basic-components-slider.md#slideroptions对象说明) | value | 18   |  
+  | [Select](../../reference/apis-arkui/arkui-ts/ts-basic-components-select.md) | [selected](../../reference/apis-arkui/arkui-ts/ts-basic-components-select.md#selected) | 18   |  
+  | Select | [value](../../reference/apis-arkui/arkui-ts/ts-basic-components-select.md#value) | 18   |
+  | [MenuItem](../../reference/apis-arkui/arkui-ts/ts-basic-components-menuitem.md) | [selected](../../reference/apis-arkui/arkui-ts/ts-basic-components-menuitem.md#selected) | 18   |

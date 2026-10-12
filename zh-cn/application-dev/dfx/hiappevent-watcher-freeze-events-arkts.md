@@ -9,7 +9,7 @@
 
 ## 简介
 
-本文介绍如何使用HiAppEvent提供的ArkTS接口订阅应用冻屏事件。接口的详细使用说明（参数限制、取值范围等）请参考@ohos.hiviewdfx.hiAppEvent。
+本文介绍如何使用HiAppEvent提供的ArkTS接口订阅应用冻屏事件。接口的详细使用说明（参数限制、取值范围等）请参考[@ohos.hiviewdfx.hiAppEvent](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md)。
 
 ## 接口说明
 
@@ -186,19 +186,19 @@
    HiAppEvent eventInfo.params.application_io_info={"cancelled_write_bytes":4096,"rchar":14557921,"read_bytes":0,"syscr":6934,"syscw":118,"wchar":909,"write_bytes":"4096"}
    ```
 
-2. 若应用无法启动或长时间未启动，开发者可以参考使用FaultLogExtensionAbility订阅事件回调重写的函数，进行延迟上报。
+2. 若应用无法启动或长时间未启动，开发者可以参考[使用FaultLogExtensionAbility订阅事件](./fault-log-extension-app-events-arkts.md)回调重写的函数，进行延迟上报。
 
 ## 从FaultLogger接口迁移应用冻屏事件
 
-@ohos.faultLogger (故障日志获取)接口从API version 18开始废弃使用，不再维护。后续版本推荐使用@ohos.hiviewdfx.hiAppEvent订阅应用冻屏事件。该章节指导开发者从FaultLogger接口迁移至hiAppEvent接口，来订阅应用冻屏事件。
+[@ohos.faultLogger (故障日志获取)](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md)接口从API version 18开始废弃使用，不再维护。后续版本推荐使用[@ohos.hiviewdfx.hiAppEvent](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md)订阅应用冻屏事件。该章节指导开发者从FaultLogger接口迁移至hiAppEvent接口，来订阅应用冻屏事件。
 
-在FaultLogger的FaultType里定义的APP_FREEZE即为应用冻屏故障类型。
+在FaultLogger的[FaultType](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faulttype)里定义的APP_FREEZE即为应用冻屏故障类型。
 
 在hiAppEvent的hiAppEvent.addWatcher接口中设置事件名称为hiAppEvent.event.APP_FREEZE、事件领域为hiAppEvent.domain.OS，可以订阅应用冻屏事件。
 
-通过hiAppEvent.AppEventInfo.params中exception字段的name子字段可以区分具体是哪种应用冻屏事件。
+通过[hiAppEvent.AppEventInfo.params](./hiappevent-watcher-freeze-events.md#params字段说明)中exception字段的name子字段可以区分具体是哪种应用冻屏事件。
 
-FaultLogInfo与hiAppEvent.AppEventInfo.params的字段对应关系如下：
+[FaultLogInfo](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faultloginfo)与[hiAppEvent.AppEventInfo.params](./hiappevent-watcher-freeze-events.md#params字段说明)的字段对应关系如下：
 | FaultLogger.FaultLogInfo | hiAppEvent.AppEventInfo.params | 说明 |
 | --- | --- | --- |
 | pid | pid | 无。 |
@@ -210,9 +210,6 @@ FaultLogInfo与hiAppEvent.AppEventInfo.params的字段对应关系如下：
 | reason | external_log文件内容中的Reason字段 | 无。 |
 | summary | external_log文件内容中特定段落 | APP_FREEZE的summary对应external_log文件中从appfreeze:进程名所在行到DisplayPowerInfo:所在行的这一段内容。 |
 
-FaultLogger.query(使用callback回调)和FaultLogger.query(使用Promise回调)都可以使用hiAppEvent.addWatcher实现相同功能。
+[FaultLogger.query](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faultloggerquery9)(使用callback回调)和[FaultLogger.query](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faultloggerquery9-1)(使用Promise回调)都可以使用[hiAppEvent.addWatcher](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md#hiappeventaddwatcher)实现相同功能。
 
-查阅开发步骤和验证观察者是否订阅到应用冻屏事件，了解使用HiAppEvent订阅应用冻屏事件（ArkTS）的具体步骤。
-
-<!--RP1-->
-<!--RP1End-->
+查阅[开发步骤](#开发步骤)和[验证观察者是否订阅到应用冻屏事件](#验证观察者是否订阅到应用冻屏事件)，了解使用HiAppEvent订阅应用冻屏事件（ArkTS）的具体步骤。

@@ -37,7 +37,7 @@ Socket连接主要是通过Socket进行数据传输，支持TCP/UDP/Multicast/TL
 
 >**说明：** 
 >
->在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需在页面中使用UIAbilityContext提供的能力，请参见获取UIAbility的上下文信息。
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 ## 应用TCP/UDP协议进行通信
 
@@ -45,7 +45,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
 
 1. 导入所需的socket模块。
 
-    <!-- @tcp_client_worker_import -->
+    <!-- @[tcp_client_worker_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TcpClientWorker.ets) -->
     
     ``` TypeScript
     import { socket } from '@kit.NetworkKit';
@@ -55,7 +55,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
 
 2. 创建一个TCPSocket连接，返回一个TCPSocket对象。
 
-    <!-- @tcp_client_worker_tcpClient -->
+    <!-- @[tcp_client_worker_tcpClient](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TcpClientWorker.ets) -->
     
     ``` TypeScript
     // 创建一个TCPSocket连接，返回一个TCPSocket对象。
@@ -64,7 +64,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
 
 3. （可选）订阅TCPSocket相关的订阅事件。
 
-      <!-- @tcp_client_worker_socketInfo -->
+      <!-- @[tcp_client_worker_socketInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TcpClientWorker.ets) -->
       
       ``` TypeScript
       class SocketInfo {
@@ -104,7 +104,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
     netAddress.address = "192.168.xxx.xxx";
     netAddress.port = 5678;
     ```
-    <!-- @tcp_client_worker_ipAddress -->
+    <!-- @[tcp_client_worker_ipAddress](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TcpClientWorker.ets) -->
     
     ``` TypeScript
     // 绑定本地IP地址和端口。
@@ -142,7 +142,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
 
 5. Socket连接使用完毕后，主动关闭。
 
-    <!-- @tcp_client_worker_disConnect -->
+    <!-- @[tcp_client_worker_disConnect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TcpClientWorker.ets) -->
     
     ``` TypeScript
     // 连接使用完毕后，主动关闭。取消相关事件的订阅。
@@ -166,7 +166,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
 
 1. 导入所需的socket模块。
 
-    <!-- @tcp_server_worker_import -->
+    <!-- @[tcp_server_worker_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TcpServerWorker.ets) -->
     
     ``` TypeScript
     import { socket } from '@kit.NetworkKit';
@@ -176,7 +176,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
 
 2. 创建一个TCPSocketServer连接，返回一个TCPSocketServer对象。
 
-    <!-- @tcp_server_worker_tcpServer -->
+    <!-- @[tcp_server_worker_tcpServer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TcpServerWorker.ets) -->
     
     ``` TypeScript
     // 创建一个TCPSocketServer连接，返回一个TCPSocketServer对象。
@@ -190,7 +190,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
     ipAddress.address = "192.168.xxx.xxx";
     ipAddress.port = 4651;
     ```
-    <!-- @tcp_server_worker_ipAddress -->
+    <!-- @[tcp_server_worker_ipAddress](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TcpServerWorker.ets) -->
     
     ``` TypeScript
     // 绑定本地IP地址和端口，进行监听。
@@ -205,7 +205,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
 
 4. 订阅TCPSocketServer的connect事件，用于监听客户端的连接状态。客户端与服务端建立连接后，会返回一个TCPSocketConnection对象，用于与客户端通信，通过该对象可以订阅与客户端的连接关闭、客户端数据接收事件，也可以进行向客户端发送数据、关闭与客户端的连接、取消订阅TCPSocketConnection相关事件的动作。
 
-    <!-- @tcp_server_worker_socketInfo -->
+    <!-- @[tcp_server_worker_socketInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TcpServerWorker.ets) -->
     
     ``` TypeScript
     class SocketInfo {
@@ -268,7 +268,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
 
 5. 取消TCPSocketServer相关事件的订阅。
 
-    <!-- @tcp_server_worker_setTimeout -->
+    <!-- @[tcp_server_worker_setTimeout](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TcpServerWorker.ets) -->
     
     ``` TypeScript
     // 设置连接超时（例如 30 秒后取消连接）
@@ -281,7 +281,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
 
 1. 导入所需的socket模块。
 
-   <!-- @multicast_worker_import -->
+   <!-- @[multicast_worker_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/MulticastWorker.ets) -->
    
    ``` TypeScript
    import { socket } from '@kit.NetworkKit';
@@ -290,7 +290,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
 
 2. 创建multicastSocket多播对象。
 
-   <!-- @multicast_worker_multicast -->
+   <!-- @[multicast_worker_multicast](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/MulticastWorker.ets) -->
    
    ``` TypeScript
    // 创建Multicast对象。
@@ -306,7 +306,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
      family: 1
    }
    ```
-   <!-- @multicast_worker_multicastConfig -->
+   <!-- @[multicast_worker_multicastConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/MulticastWorker.ets) -->
    
    ``` TypeScript
    // 加入多播组。
@@ -321,7 +321,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
 
 4. 开启消息message监听。
 
-   <!-- @multicast_worker_on_message -->
+   <!-- @[multicast_worker_on_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/MulticastWorker.ets) -->
    
    ``` TypeScript
    // 开启监听消息数据，将接收到的ArrayBuffer类型数据转换为String。
@@ -343,7 +343,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
 
 5. 发送数据，数据以广播的形式传输，同一多播组中已经开启消息message监听的多播对象都会接收到数据。
 
-   <!-- @multicast_worker_send -->
+   <!-- @[multicast_worker_send](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/MulticastWorker.ets) -->
    
    ``` TypeScript
    // 发送一条多播消息
@@ -356,7 +356,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
 
 6. 关闭message消息的监听。
 
-   <!-- @multicast_worker_off_message -->
+   <!-- @[multicast_worker_off_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/MulticastWorker.ets) -->
    
    ``` TypeScript
    // 关闭消息的监听。
@@ -365,7 +365,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
 
 7. 退出多播组。
 
-   <!-- @multicast_worker_dropMembership -->
+   <!-- @[multicast_worker_dropMembership](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/MulticastWorker.ets) -->
    
    ``` TypeScript
    // 退出多播组。
@@ -380,7 +380,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
 
 1. 导入所需的socket模块。
 
-   <!-- @local_socket_worker_import -->
+   <!-- @[local_socket_worker_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/LocalSocketWorker.ets) -->
    
    ``` TypeScript
    import { socket } from '@kit.NetworkKit';
@@ -390,7 +390,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
 
 2. 使用constructLocalSocketInstance接口，创建一个LocalSocket客户端对象。
 
-   <!-- @local_socket_worker_client -->
+   <!-- @[local_socket_worker_client](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/LocalSocketWorker.ets) -->
    
    ``` TypeScript
    // 创建一个LocalSocket连接，返回一个LocalSocket对象。
@@ -399,7 +399,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
 
 3. 注册LocalSocket的消息(message)事件，以及一些其它事件(可选)。
 
-   <!-- @local_socket_worker_on_message -->
+   <!-- @[local_socket_worker_on_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/LocalSocketWorker.ets) -->
    
    ``` TypeScript
    client.on('message', (value: socket.LocalSocketMessageInfo) => {
@@ -439,7 +439,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
      data: 'Hello world!'
    }
    ```
-   <!-- @local_socket_worker_sendOpt -->
+   <!-- @[local_socket_worker_sendOpt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/LocalSocketWorker.ets) -->
    
    ``` TypeScript
    client.connect(connectOpt).then(() => {
@@ -457,7 +457,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
 
 5. Socket连接使用完毕后，取消事件的注册，并关闭套接字。
 
-   <!-- @local_socket_worker_close_server -->
+   <!-- @[local_socket_worker_close_server](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/LocalSocketWorker.ets) -->
    
    ``` TypeScript
    // 当不需要再连接服务端，需要断开且取消事件的监听时。
@@ -479,7 +479,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
 
 1. 导入所需的socket模块。
 
-   <!-- @local_socket_worker_import -->
+   <!-- @[local_socket_worker_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/LocalSocketWorker.ets) -->
    
    ``` TypeScript
    import { socket } from '@kit.NetworkKit';
@@ -489,7 +489,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
 
 2. 使用constructLocalSocketServerInstance接口，创建一个 LocalSocketServer 服务端对象。
 
-   <!-- @local_socket_server_create -->
+   <!-- @[local_socket_server_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/LocalSocketWorker.ets) -->
    
    ``` TypeScript
    // 创建一个LocalSocketServer连接，返回一个LocalSocketServer对象。
@@ -506,7 +506,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
      address: sandboxPath
    }
    ```
-   <!-- @local_socket_worker_server_listen -->
+   <!-- @[local_socket_worker_server_listen](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/LocalSocketWorker.ets) -->
    
    ``` TypeScript
    server.listen(listenAddr).then(() => {
@@ -520,7 +520,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
 
 4. 注册LocalSocket的客户端连接事件，以及一些其它事件(可选)，在客户端连接成功时，可以获取到客户端连接会话对象LocalSocketConnection，通过该会话对象可以订阅客户端收到消息(message)事件，以及一些其它事件(可选)，通过该会话对象也可发起主动向客户端发送数据，主动关闭与客户端的连接的动作，订阅事件不再需要时，可以取消LocalSocketConnection相关的事件订阅。
 
-   <!-- @local_socket_worker_server_connection -->
+   <!-- @[local_socket_worker_server_connection](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/LocalSocketWorker.ets) -->
    
    ``` TypeScript
    // 订阅LocalSocketServer的connect事件。
@@ -570,7 +570,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
 
 5.  取消LocalSocketServer相关事件的订阅。
 
-    <!-- @local_socket_worker_server_off -->
+    <!-- @[local_socket_worker_server_off](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/LocalSocketWorker.ets) -->
     
     ``` TypeScript
     // 取消LocalSocketServer相关的事件订阅。
@@ -584,7 +584,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
 
 1. 导入所需的socket模块。
 
-   <!-- @two_way_tls_worker_import -->
+   <!-- @[two_way_tls_worker_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TwoWayTlsWorker.ets) -->
    
    ``` TypeScript
    import { socket } from '@kit.NetworkKit';
@@ -594,14 +594,14 @@ UDP与TCP流程大体类似，下面以TCP为例：
 
 2. 创建一个双向认证TLSSocket连接，返回一个TLSSocket对象。
 
-   <!-- @two-way_constructTLSSocketInstance -->
+   <!-- @[two-way_constructTLSSocketInstance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TwoWayTlsWorker.ets) -->
    
    ``` TypeScript
    // 创建一个（双向认证）TLS Socket连接，返回一个TLS Socket对象。
    let tlsSocket: socket.TLSSocket | null = socket.constructTLSSocketInstance();
    ```
 
-3. 绑定本地IP地址和端口，确保bind成功后，再订阅TLS Socket相关的订阅事件。上传客户端CA证书及数字证书，调用connect接口建立连接。连接成功后，可调用send接口发送数据。
+3. 绑定本地IP地址和端口，确保bind成功后，再订阅TLS Socket相关的订阅事件。上传客户端CA证书及数字证书，调用[connect](../reference/apis-network-kit/js-apis-socket.md#connect9)接口建立连接。连接成功后，可调用[send](../reference/apis-network-kit/js-apis-socket.md#send9)接口发送数据。
    ```ts
    // 绑定本地IP地址和端口。
    let ipAddress : socket.NetAddress = {} as socket.NetAddress;
@@ -628,7 +628,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
    tlsTwoWayConnectOption.secureOptions = tlsSecureOption;
    tlsTwoWayConnectOption.ALPNProtocols = ["spdy/1", "http/1.1"];
    ```
-   <!-- @two-way_bindTlsSocket -->
+   <!-- @[two-way_bindTlsSocket](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TwoWayTlsWorker.ets) -->
    
    ``` TypeScript
    class SocketInfo {
@@ -683,7 +683,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
 
 4. TLSSocket连接使用完毕后，主动关闭。
 
-   <!-- @two-way_closeTlsSocket -->
+   <!-- @[two-way_closeTlsSocket](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TwoWayTlsWorker.ets) -->
    
    ``` TypeScript
    // 连接使用完毕后，主动关闭，并取消相关事件的订阅。
@@ -703,7 +703,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
 
 1. 导入所需的socket模块。
 
-   <!-- @one_way_tls_worker_import -->
+   <!-- @[one_way_tls_worker_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/OneWayTlsWorker.ets) -->
    
    ``` TypeScript
    import { socket } from '@kit.NetworkKit';
@@ -713,14 +713,14 @@ UDP与TCP流程大体类似，下面以TCP为例：
 
 2. 创建一个单向认证TLSSocket连接，返回一个TLSSocket对象。
 
-   <!-- @create_tls_worker_object -->
+   <!-- @[create_tls_worker_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/OneWayTlsWorker.ets) -->
    
    ``` TypeScript
    // 创建一个（单向认证）TLS Socket连接，返回一个TLS Socket对象。
    let tlsOneWaySocket: socket.TLSSocket = socket.constructTLSSocketInstance();  // One way authentication
    ```
 
-3. 绑定本地IP地址和端口，确保bind成功后，再订阅TLS Socket相关的订阅事件。上传客户端CA证书及数字证书，调用connect接口建立连接。连接成功后，可调用send接口发送数据。
+3. 绑定本地IP地址和端口，确保bind成功后，再订阅TLS Socket相关的订阅事件。上传客户端CA证书及数字证书，调用[connect](../reference/apis-network-kit/js-apis-socket.md#connect9)接口建立连接。连接成功后，可调用[send](../reference/apis-network-kit/js-apis-socket.md#send9)接口发送数据。
    ```ts
    // 绑定本地IP地址和端口。
    let ipAddress : socket.NetAddress = {} as socket.NetAddress;
@@ -739,7 +739,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
    tlsOneWayConnectOptions.address = serverAddress;
    tlsOneWayConnectOptions.secureOptions = tlsOneWaySecureOption;
    ```
-   <!-- @tls_worker_bind_the_server -->
+   <!-- @[tls_worker_bind_the_server](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/OneWayTlsWorker.ets) -->
    
    ``` TypeScript
    class SocketInfo {
@@ -793,7 +793,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
 
 4. TLSSocket连接使用完毕后，主动关闭。
 
-   <!-- @tls_worker_close_the_server -->
+   <!-- @[tls_worker_close_the_server](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/OneWayTlsWorker.ets) -->
    
    ``` TypeScript
    // 连接使用完毕后，主动关闭，并取消相关事件的订阅。
@@ -817,7 +817,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
 
 1. 导入所需的socket模块。
 
-   <!-- @tcp_to_tls_server_import -->
+   <!-- @[tcp_to_tls_server_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/Tcp2TwoWayTlsWorker.ets) -->
    
    ``` TypeScript
    import { socket } from '@kit.NetworkKit';
@@ -825,9 +825,9 @@ UDP与TCP流程大体类似，下面以TCP为例：
    import { hilog } from '@kit.PerformanceAnalysisKit';
    ```
 
-2. 参考应用 TCP/UDP 协议进行通信，创建一个TCPSocket连接。
+2. 参考[应用 TCP/UDP 协议进行通信](#应用tcpudp协议进行通信)，创建一个TCPSocket连接。
 
-   <!-- @tcp_to_tls_server_create_object -->
+   <!-- @[tcp_to_tls_server_create_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/Tcp2TwoWayTlsWorker.ets) -->
    
    ``` TypeScript
    // 创建一个TCPSocket连接，返回一个TCPSocket对象。
@@ -862,7 +862,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
    tlsTwoWayConnectOption.secureOptions = tlsSecureOption;
    tlsTwoWayConnectOption.ALPNProtocols = ["spdy/1", "http/1.1"];
    ```
-   <!-- @tcp_Upgrade_to_tls_server -->
+   <!-- @[tcp_Upgrade_to_tls_server](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/Tcp2TwoWayTlsWorker.ets) -->
    
    ``` TypeScript
    // 如果需要绑定特定的端口，可通过bind接口实现
@@ -906,7 +906,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
 
 4. 连接使用完毕后，主动关闭。取消相关事件的订阅。
 
-   <!-- @tls_server_close -->
+   <!-- @[tls_server_close](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/Tcp2TwoWayTlsWorker.ets) -->
    
    ``` TypeScript
    // 连接使用完毕后，主动关闭。取消相关事件的订阅。
@@ -930,7 +930,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
 
 1. 导入所需的socket模块。
 
-   <!-- @tls_server_import -->
+   <!-- @[tls_server_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TlsServerWorker.ets) -->
    
    ``` TypeScript
    import { socket } from '@kit.NetworkKit';
@@ -940,7 +940,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
 
 2. 创建一个TLSSocketServer连接，返回一个TLSSocketServer对象。
 
-   <!-- @tls_server_instance -->
+   <!-- @[tls_server_instance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TlsServerWorker.ets) -->
    
    ``` TypeScript
    let tlsServer: socket.TLSSocketServer = socket.constructTLSSocketServerInstance();
@@ -970,7 +970,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
      ALPNProtocols: ["spdy/1", "http/1.1"]
    }
    ```
-   <!-- @tlsServer_start_service -->
+   <!-- @[tlsServer_start_service](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TlsServerWorker.ets) -->
    
    ``` TypeScript
    tlsServer.listen(tlsConnectOptions).then(() => {
@@ -984,7 +984,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
 
 4. 订阅TLSSocketServer的连接事件，收到客户端连接，通过回调得到TLSSocketConnection对象，通过该对象可以实现订阅TLSSocketConnection相关的事件、向客户端发送数据的动作，TLSSocketConnection连接使用完毕后，需要主动断开连接，进行取消订阅回调的动作。
 
-   <!-- @tlsServer_connection_methods -->
+   <!-- @[tlsServer_connection_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TlsServerWorker.ets) -->
    
    ``` TypeScript
    class SocketInfo {
@@ -1031,7 +1031,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
 
 5. 取消订阅TLSSocketServer的相关事件。
 
-   <!-- @tlsServer_off_connect -->
+   <!-- @[tlsServer_off_connect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TlsServerWorker.ets) -->
    
    ``` TypeScript
    tlsServer.close();
@@ -1043,6 +1043,6 @@ UDP与TCP流程大体类似，下面以TCP为例：
 
 针对Socket连接开发，有以下相关实例可供参考：
 
-- 网络管理-Socket连接（ArkTS）（API9）
+- [网络管理-Socket连接（ArkTS）（API9）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Connectivity/Socket)
 
-- Socket连接
+- [Socket连接](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket)

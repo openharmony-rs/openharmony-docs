@@ -8,9 +8,9 @@
 
 ## 概述
 
-从API version 20开始，支持开发者使用AppServiceExtensionAbility组件，为应用提供后台服务能力，其他三方应用可通过启动或连接该AppServiceExtensionAbility组件获取相应的服务。
+从API version 20开始，支持开发者使用[AppServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)组件，为应用提供后台服务能力，其他三方应用可通过启动或连接该AppServiceExtensionAbility组件获取相应的服务。
 
-例如，企业部署的数据防泄漏 (DLP) 软件需要能够长期无界面运行，持续监听文件操作、网络流量，并拦截违规行为，可以使用AppServiceExtensionAbility组件来实现其核心的后台监控服务。
+例如，企业部署的数据防泄露 (DLP) 软件需要能够长期无界面运行，持续监听文件操作、网络流量，并拦截违规行为，可以使用AppServiceExtensionAbility组件来实现其核心的后台监控服务。
 > **说明**
 >
 > 本文将被启动或被连接的AppServiceExtensionAbility组件称为服务端，将启动或连接AppServiceExtensionAbility组件的应用组件（当前仅支持UIAbility）称为客户端。
@@ -25,14 +25,14 @@ AppServiceExtensionAbility组件当前仅支持2in1设备。
 
 - 应用集成AppServiceExtensionAbility组件需要申请ACL权限（ohos.permission.SUPPORT_APP_SERVICE_EXTENSION）。该ACL权限当前只对企业普通应用开放申请。
 
-- 针对AppServiceExtensionAbility接口调用限制，详情请参考 @ohos.app.ability.AppServiceExtensionAbility (应用后台服务扩展组件) 的约束限制。
+- 针对AppServiceExtensionAbility接口调用限制，详情请参考 [@ohos.app.ability.AppServiceExtensionAbility (应用后台服务扩展组件)](../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md) 的约束限制。
 
 ## 运作机制
 
-开发者可以在UIAbility中以启动（startAppServiceExtensionAbility()）或连接（connectAppServiceExtensionAbility()）的方式来拉起AppServiceExtensionAbility组件。
+开发者可以在[UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)中以启动（[startAppServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startappserviceextensionability20)）或连接（[connectAppServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectappserviceextensionability20)）的方式来拉起AppServiceExtensionAbility组件。
 
-- **启动：** 客户端必须为AppServiceExtensionAbility所属应用或者在AppServiceExtensionAbility支持的应用清单（即extensionAbilities标签的appIdentifierAllowList属性）中的应用才能调用startAppServiceExtensionAbility()接口。
-- **连接：** 如果AppServiceExtensionAbility实例未启动，客户端必须为AppServiceExtensionAbility所属应用或者在AppServiceExtensionAbility支持的应用清单（即extensionAbilities标签的appIdentifierAllowList属性）中的应用才能调用connectAppServiceExtensionAbility()接口。如果实例已启动，则没有上述限制。
+- **启动：** 客户端必须为AppServiceExtensionAbility所属应用或者在AppServiceExtensionAbility支持的应用清单（即[extensionAbilities标签](../quick-start/module-configuration-file.md#extensionabilities标签)的appIdentifierAllowList属性）中的应用才能调用[startAppServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startappserviceextensionability20)接口。
+- **连接：** 如果[AppServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)实例未启动，客户端必须为AppServiceExtensionAbility所属应用或者在AppServiceExtensionAbility支持的应用清单（即[extensionAbilities标签](../quick-start/module-configuration-file.md#extensionabilities标签)的appIdentifierAllowList属性）中的应用才能调用[connectAppServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectappserviceextensionability20)接口。如果实例已启动，则没有上述限制。
 
 下表展示了拉起和连接的几种场景：
 
@@ -57,11 +57,11 @@ AppServiceExtensionAbility组件当前仅支持2in1设备。
 
 在DevEco Studio工程中手动新建一个AppServiceExtensionAbility组件，具体步骤如下：
 
-1. 在工程Module对应的ets目录下，右键选择“New&gt; Directory”，新建一个目录并命名为myappserviceextability。
+1. 在工程Module对应的ets目录下，右键选择“New &gt; Directory”，新建一个目录并命名为myappserviceextability。
 
-2. 在myappserviceextability目录，右键选择“New&gt; ArkTS File”，新建一个文件并命名为MyAppServiceExtAbility.ets。
+2. 在myappserviceextability目录，右键选择“New &gt; ArkTS File”，新建一个文件并命名为MyAppServiceExtAbility.ets。
 
-    
+    ![](figures/app-service-extension-ability-create-new-file.png)
 
     其目录结构如下所示：
 
@@ -72,9 +72,9 @@ AppServiceExtensionAbility组件当前仅支持2in1设备。
     └
     ```
 
-3. 在MyAppServiceExtAbility.ets文件中，增加导入AppServiceExtensionAbility的依赖包，自定义类继承AppServiceExtensionAbility组件并实现生命周期回调。
+3. 在MyAppServiceExtAbility.ets文件中，增加导入[AppServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)的依赖包，自定义类继承AppServiceExtensionAbility组件并实现生命周期回调。
 
-    <!-- @ability_app_service_one -->
+    <!-- @[ability_app_service_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/myappserviceextability/MyAppServiceExtAbility.ets) -->
     
     ``` TypeScript
     import { AppServiceExtensionAbility, Want } from '@kit.AbilityKit';
@@ -125,9 +125,9 @@ AppServiceExtensionAbility组件当前仅支持2in1设备。
     };
     ```
 
-4. 在工程Module对应的module.json5配置文件中注册AppServiceExtensionAbility组件，type标签需要设置为“appService”，srcEntry标签表示当前ExtensionAbility组件所对应的代码路径。
+4. 在工程Module对应的[module.json5配置文件](../quick-start/module-configuration-file.md)中注册AppServiceExtensionAbility组件，type标签需要设置为“appService”，srcEntry标签表示当前ExtensionAbility组件所对应的代码路径。
 
-    <!-- @my_app_service_module_start -->
+    <!-- @[my_app_service_module_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/module.json5) -->
 
     ``` JSON5
     {
@@ -152,15 +152,15 @@ AppServiceExtensionAbility组件当前仅支持2in1设备。
 
 ## 启动一个后台服务
 
-应用通过startAppServiceExtensionAbility()方法启动一个后台服务，服务的onRequest()回调就会被调用，并在该回调方法中接收到调用者传递过来的Want对象。后台服务启动后，其生命周期独立于客户端，即使客户端已经销毁，该后台服务仍可继续运行。因此，后台服务需要在其工作完成时通过调用AppServiceExtensionContext的terminateSelf()来自行停止，或者由另一个组件调用stopAppServiceExtensionAbility()来将其停止。
+应用通过[startAppServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startappserviceextensionability20)方法启动一个后台服务，服务的[onRequest()](../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md#onrequest)回调就会被调用，并在该回调方法中接收到调用者传递过来的[Want](../reference/apis-ability-kit/js-apis-app-ability-want.md)对象。后台服务启动后，其生命周期独立于客户端，即使客户端已经销毁，该后台服务仍可继续运行。因此，后台服务需要在其工作完成时通过调用[AppServiceExtensionContext](../reference/apis-ability-kit/js-apis-inner-application-appServiceExtensionContext.md)的[terminateSelf()](../reference/apis-ability-kit/js-apis-inner-application-appServiceExtensionContext.md#terminateself)来自行停止，或者由另一个组件调用[stopAppServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#stopappserviceextensionability20)来将其停止。
 
 > **说明：**
 >
-> AppServiceExtensionAbility组件以start方式启动，并且没有连接的时候，AppServiceExtensionAbility组件进程可能被挂起（请参考Background Tasks Kit简介）。
+> AppServiceExtensionAbility组件以start方式启动，并且没有连接的时候，AppServiceExtensionAbility组件进程可能被挂起（请参考[Background Tasks Kit简介](../task-management/background-task-overview.md)）。
 
-- 在应用中启动一个新的AppServiceExtensionAbility组件。示例中的context的获取方式请参见获取UIAbility的上下文信息。
+- 在应用中启动一个新的[AppServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)组件。示例中的context的获取方式请参见[获取UIAbility的上下文信息](uiability-usage.md#获取uiability的上下文信息)。
 
-  <!-- @app_ext_service_one_start -->
+  <!-- @[app_ext_service_one_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/pages/StartAppServiceExt.ets) -->
 
   ``` TypeScript
   import { common, Want } from '@kit.AbilityKit';
@@ -213,9 +213,9 @@ AppServiceExtensionAbility组件当前仅支持2in1设备。
   ```
 
 
-- 在应用中停止一个已启动的AppServiceExtensionAbility组件。
+- 在应用中停止一个已启动的[AppServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)组件。
 
-  <!-- @app_ext_service_two_start -->
+  <!-- @[app_ext_service_two_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/pages/StopAppServiceExt.ets) -->
 
   ``` TypeScript
   import { common, Want } from '@kit.AbilityKit';
@@ -268,9 +268,9 @@ AppServiceExtensionAbility组件当前仅支持2in1设备。
   ```
 
 
-- 已启动的AppServiceExtensionAbility组件停止自身。
+- 已启动的[AppServiceExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)组件停止自身。
 
-  <!-- @ability_app_service_two -->
+  <!-- @[ability_app_service_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/myappserviceextability/MyAppServiceExtAbility.ets) -->
   
   ``` TypeScript
   import { AppServiceExtensionAbility, Want } from '@kit.AbilityKit';
@@ -300,13 +300,13 @@ AppServiceExtensionAbility组件当前仅支持2in1设备。
 
 ### 客户端连接服务端
 
-客户端可以通过connectAppServiceExtensionAbility()连接服务端（在Want对象中指定连接的目标服务），服务端的onConnect()就会被调用，并在该回调方法中接收到客户端传递过来的Want对象。
+客户端可以通过[connectAppServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectappserviceextensionability20)连接服务端（在Want对象中指定连接的目标服务），服务端的[onConnect()](../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md#onconnect)就会被调用，并在该回调方法中接收到客户端传递过来的[Want](../reference/apis-ability-kit/js-apis-app-ability-want.md)对象。
 
-服务端的AppServiceExtensionAbility组件会在onConnect()中返回IRemoteObject对象给客户端ConnectOptions的onConnect()方法。开发者通过该IRemoteObject定义通信接口，实现客户端与服务端的RPC交互。多个客户端可以同时连接到同一个后台服务，客户端完成与服务端的交互后，客户端需要通过调用disconnectAppServiceExtensionAbility()来断开连接。如果所有连接到某个后台服务的客户端均已断开连接，则系统会销毁该服务。
+服务端的AppServiceExtensionAbility组件会在onConnect()中返回[IRemoteObject](../reference/apis-ipc-kit/js-apis-rpc.md#iremoteobject)对象给客户端[ConnectOptions](../reference/apis-ability-kit/js-apis-inner-ability-connectOptions.md)的[onConnect()](../reference/apis-ability-kit/js-apis-inner-ability-connectOptions.md#onconnect)方法。开发者通过该IRemoteObject定义通信接口，实现客户端与服务端的RPC交互。多个客户端可以同时连接到同一个后台服务，客户端完成与服务端的交互后，客户端需要通过调用[disconnectAppServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#disconnectappserviceextensionability20)来断开连接。如果所有连接到某个后台服务的客户端均已断开连接，则系统会销毁该服务。
 
-- 使用connectAppServiceExtensionAbility()建立与后台服务的连接。示例中的context的获取方式请参见获取UIAbility的上下文信息。
+- 使用[connectAppServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#connectappserviceextensionability20)建立与后台服务的连接。示例中的context的获取方式请参见[获取UIAbility的上下文信息](uiability-usage.md#获取uiability的上下文信息)。
 
-  <!-- @app_ext_service_three_start -->
+  <!-- @[app_ext_service_three_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/pages/ConnectAppServiceExt.ets) -->
 
   ``` TypeScript
   import { common, Want } from '@kit.AbilityKit';
@@ -327,7 +327,7 @@ AppServiceExtensionAbility组件当前仅支持2in1设备。
     onConnect(elementName, remote: rpc.IRemoteObject): void {
       hilog.info(DOMAIN_NUMBER, TAG, 'onConnect callback');
       if (remote === null) {
-        hilog.info(DOMAIN_NUMBER, TAG, `onConnect remote is null`);
+        hilog.error(DOMAIN_NUMBER, TAG, `onConnect remote is null`);
         return;
       }
       // 通过remote进行通信
@@ -336,7 +336,7 @@ AppServiceExtensionAbility组件当前仅支持2in1设备。
       hilog.info(DOMAIN_NUMBER, TAG, 'onDisconnect callback');
     },
     onFailed(code: number): void {
-      hilog.info(DOMAIN_NUMBER, TAG, 'onFailed callback', JSON.stringify(code));
+      hilog.error(DOMAIN_NUMBER, TAG, 'onFailed callback', JSON.stringify(code));
     }
   };
 
@@ -376,9 +376,9 @@ AppServiceExtensionAbility组件当前仅支持2in1设备。
   ```
 
 
-- 使用disconnectAppServiceExtensionAbility()断开与后台服务的连接。
+- 使用[disconnectAppServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#disconnectappserviceextensionability20)断开与后台服务的连接。
 
-  <!-- @app_ext_service_four_start -->
+  <!-- @[app_ext_service_four_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/pages/DisConnectAppServiceExt.ets) -->
 
   ``` TypeScript
   import { common } from '@kit.AbilityKit';
@@ -431,11 +431,11 @@ AppServiceExtensionAbility组件当前仅支持2in1设备。
 
 ### 客户端与服务端通信
 
-客户端在onConnect()中获取到rpc.IRemoteObject对象后便可与服务端进行通信。
+客户端在[onConnect()](../reference/apis-ability-kit/js-apis-inner-ability-connectOptions.md#onconnect)中获取到[rpc.IRemoteObject](../reference/apis-ipc-kit/js-apis-rpc.md#iremoteobject)对象后便可与服务端进行通信。
 
-**客户端**：使用sendMessageRequest接口向服务端发送消息。
+**客户端**：使用[sendMessageRequest](../reference/apis-ipc-kit/js-apis-rpc.md#sendmessagerequest9)接口向服务端发送消息。
 
-<!-- @app_ext_service_five_start -->
+<!-- @[app_ext_service_five_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/pages/ClientServerExt.ets) -->
 
 ``` TypeScript
 import { common, Want } from '@kit.AbilityKit';
@@ -456,7 +456,7 @@ let options: common.ConnectOptions = {
   onConnect(elementName, remote): void {
     hilog.info(DOMAIN_NUMBER, TAG, 'onConnect callback');
     if (remote === null) {
-      hilog.info(DOMAIN_NUMBER, TAG, `onConnect remote is null`);
+      hilog.error(DOMAIN_NUMBER, TAG, `onConnect remote is null`);
       return;
     }
     let option = new rpc.MessageOption();
@@ -489,7 +489,7 @@ let options: common.ConnectOptions = {
     hilog.info(DOMAIN_NUMBER, TAG, 'onDisconnect callback');
   },
   onFailed(code): void {
-    hilog.info(DOMAIN_NUMBER, TAG, 'onFailed callback');
+    hilog.error(DOMAIN_NUMBER, TAG, 'onFailed callback');
   }
 };
 
@@ -521,9 +521,9 @@ struct ClientServerExt {
 ```
 
 
-**服务端**：使用onRemoteMessageRequest接口接收客户端发送的消息。
+**服务端**：使用[onRemoteMessageRequest](../reference/apis-ipc-kit/js-apis-rpc.md#onremotemessagerequest9)接口接收客户端发送的消息。
 
-<!-- @ability_app_service_three -->
+<!-- @[ability_app_service_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/myappserviceextabilitytwo/MyAppServiceExtAbility.ets) -->
 
 ``` TypeScript
 import { AppServiceExtensionAbility, Want } from '@kit.AbilityKit';
@@ -581,13 +581,12 @@ export default class MyAppServiceExtAbility extends AppServiceExtensionAbility {
 <!--Del-->
 **通过callerUid识别客户端应用**
 
-通过调用getCallingUid()接口获取客户端的uid，再调用getBundleNameByUid()接口获取uid对应的bundleName，从而识别客户端身份。此处需要注意的是getBundleNameByUid()是一个异步接口，因此服务端无法将校验结果返回给客户端，这种校验方式适合客户端向服务端发起执行异步任务请求的场景，示例代码如下：
+通过调用[getCallingUid()](../reference/apis-ipc-kit/js-apis-rpc.md#getcallinguid)接口获取客户端的uid，再调用[getBundleNameByUidSync()](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundlenamebyuidsync14)接口获取uid对应的bundleName，从而识别客户端身份。示例代码如下：
 
-<!-- @ability_app_service_five -->
+<!-- @[ability_app_service_five](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/myappserviceextabilitythree/MyAppServiceExtAbility.ets) -->
 
 ``` TypeScript
-import { AppServiceExtensionAbility, Want } from '@kit.AbilityKit';
-import { bundleManager } from '@kit.AbilityKit';
+import { AppServiceExtensionAbility, Want, bundleManager } from '@kit.AbilityKit';
 import { rpc } from '@kit.IPCKit';
 import { osAccount, BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -602,32 +601,39 @@ class Stub extends rpc.RemoteObject {
     code: number,
     data: rpc.MessageSequence,
     reply: rpc.MessageSequence,
-    options: rpc.MessageOption): boolean | Promise<boolean> {
-    this.verifyClientIdentity().then((isValid: boolean) => {
-      if (isValid) {
-        hilog.info(DOMAIN_NUMBER, TAG, 'Client authentication PASSED');
-      } else {
+    options: rpc.MessageOption): boolean {
+    try {
+      let isValid: boolean = this.verifyClientIdentity();
+      if (!isValid) {
         hilog.error(DOMAIN_NUMBER, TAG, 'Client authentication FAILED');
+        // 返回false后，客户端sendMessageRequest会调用失败
+        return false;
       }
-    }).catch((err: BusinessError) => {
-      hilog.error(DOMAIN_NUMBER, TAG, `Authentication error: ${err.code}, ${err.message}`);
-    });
-    return true;
+      hilog.info(DOMAIN_NUMBER, TAG, 'Client authentication PASSED');
+      // 校验通过后处理业务逻辑
+      // ...
+      return true;
+    } catch (err) {
+      const error: BusinessError = err as BusinessError;
+      hilog.error(DOMAIN_NUMBER, TAG, `Authentication error: ${error.code}, ${error.message}`);
+      // 校验异常时视为校验失败
+      return false;
+    }
   }
 
-  private async verifyClientIdentity(): Promise<boolean> {
+  private verifyClientIdentity(): boolean {
     try {
       const callerUid: number = rpc.IPCSkeleton.getCallingUid();
       hilog.info(DOMAIN_NUMBER, TAG, `Caller UID: ${callerUid}`);
 
-      const userId: number = await this.getUserIdByUid(callerUid);
+      const userId: number = this.getUserIdByUid(callerUid);
       hilog.info(DOMAIN_NUMBER, TAG, `User ID: ${userId}`);
 
-      const bundleName: string = await bundleManager.getBundleNameByUid(callerUid);
+      const bundleName: string = bundleManager.getBundleNameByUidSync(callerUid);
       hilog.info(DOMAIN_NUMBER, TAG, `Bundle Name: ${bundleName}`);
 
       const bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_SIGNATURE_INFO;
-      const bundleInfo: bundleManager.BundleInfo = await bundleManager.getBundleInfo(bundleName, bundleFlags, userId);
+      const bundleInfo: bundleManager.BundleInfo = bundleManager.getBundleInfoSync(bundleName, bundleFlags, userId);
 
       if (bundleInfo.signatureInfo && bundleInfo.signatureInfo.appIdentifier) {
         const appIdentifier: string = bundleInfo.signatureInfo.appIdentifier;
@@ -645,10 +651,10 @@ class Stub extends rpc.RemoteObject {
     }
   }
 
-  private async getUserIdByUid(uid: number): Promise<number> {
+  private getUserIdByUid(uid: number): number {
     try {
       const accountManager = osAccount.getAccountManager();
-      const userId: number = await accountManager.getOsAccountLocalIdForUid(uid);
+      const userId: number = accountManager.getOsAccountLocalIdForUidSync(uid);
       return userId;
     } catch (err) {
       if (err instanceof Error) {
@@ -674,16 +680,14 @@ export default class MyAppServiceExtAbility extends AppServiceExtensionAbility {
 
 **通过callerTokenId对客户端进行鉴权**
 
-通过调用getCallingTokenId()接口获取客户端的tokenID，再调用verifyAccessTokenSync()接口判断客户端是否有某个具体权限，由于当前不支持自定义权限，因此只能校验当前系统所定义的权限。示例代码如下：
+通过调用[getCallingTokenId()](../reference/apis-ipc-kit/js-apis-rpc.md#getcallingtokenid8)接口获取客户端的tokenID，再调用[verifyAccessTokenSync()](../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#verifyaccesstokensync9)接口判断客户端是否有某个具体权限，由于当前不支持自定义权限，因此只能校验当前[系统所定义的权限](../security/AccessToken/app-permissions.md)。示例代码如下：
 
-<!-- @ability_app_service_four -->
+<!-- @[ability_app_service_four](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/myappserviceextabilityfour/MyAppServiceExtAbility.ets) -->
 
 ``` TypeScript
-import { AppServiceExtensionAbility, Want } from '@kit.AbilityKit';
-import { abilityAccessCtrl, bundleManager } from '@kit.AbilityKit';
+import { AppServiceExtensionAbility, Want, abilityAccessCtrl } from '@kit.AbilityKit';
 import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 const TAG: string = '[AppServiceExtImpl]';
 const DOMAIN_NUMBER: number = 0xFF00;
@@ -698,19 +702,6 @@ class Stub extends rpc.RemoteObject {
     options: rpc.MessageOption): boolean | Promise<boolean> {
     // 开发者自行实现业务逻辑
     hilog.info(DOMAIN_NUMBER, TAG, `onRemoteMessageRequest: ${data}`);
-    let callerUid = rpc.IPCSkeleton.getCallingUid();
-    bundleManager.getBundleNameByUid(callerUid).then((callerBundleName) => {
-      hilog.info(DOMAIN_NUMBER, TAG, 'getBundleNameByUid: ' + callerBundleName);
-      // 对客户端包名进行识别
-      if (callerBundleName !== 'com.samples.stagemodelabilitydevelop') { // 识别不通过
-        hilog.info(DOMAIN_NUMBER, TAG, 'The caller bundle is not in trustlist, reject');
-        return;
-      }
-      // 识别通过，执行正常业务逻辑
-    }).catch((err: BusinessError) => {
-      hilog.error(DOMAIN_NUMBER, TAG, 'getBundleNameByUid failed: ' + err.message);
-    });
-
     let callerTokenId = rpc.IPCSkeleton.getCallingTokenId();
     let accessManager = abilityAccessCtrl.createAtManager();
     // 所校验的具体权限由开发者自行选择，此处ohos.permission.GET_BUNDLE_INFO_PRIVILEGED只作为示例

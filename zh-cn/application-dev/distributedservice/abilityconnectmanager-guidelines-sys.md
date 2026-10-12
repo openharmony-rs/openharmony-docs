@@ -27,12 +27,12 @@
 
 - **UIAbility**
 
-  UIAbility描述应用程序的界面交互能力，负责管理应用界面的生命周期、用户交互以及界面渲染等任务。
+  [UIAbility](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/uiability-overview)描述应用程序的界面交互能力，负责管理应用界面的生命周期、用户交互以及界面渲染等任务。
 
 
 - **字节流**
   
-  字节流是数据类型为ArrayBuffer类型的数据。可以被用于存储二进制数据，例如图像或音频数据。
+  字节流是数据类型为[ArrayBuffer](../arkts-utils/arraybuffer-object.md)类型的数据。可以被用于存储二进制数据，例如图像或音频数据。
 
 - **传输流**
 
@@ -44,7 +44,7 @@
 
 **图1** 应用跨设备连接运行机制
 
-how-abilityconnectmanager-works
+![how-abilityconnectmanager-works](figures/how-abilityconnectmanager-works.png)
 
 
 ### 约束与限制
@@ -67,15 +67,15 @@ how-abilityconnectmanager-works
 
 ### 环境要求
 
-可登录华为账号的设备A和设备B，设备间需要组网成功（设备组网通过调用Device Manager的接口实现）。
+可登录华为账号的设备A和设备B，设备间需要组网成功（设备组网通过调用[Device Manager](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/devicemanager-guidelines)的接口实现）。
 
 
 ### 搭建环境
 
-1. 在PC上安装DevEco Studio，要求版本在4.1及以上。
-2. 将public-SDK更新到API 18或以上，更新SDK的具体操作可参见更新指南。
+1. 在PC上安装[DevEco Studio](https://developer.huawei.com/consumer/cn/download/deveco-studio)，要求版本在4.1及以上。
+2. 将public-SDK更新到API 18或以上，更新SDK的具体操作可参见[更新指南]( ../tools/openharmony-sdk-upgrade-assistant.md)。
 3. 用USB线缆将两台调试设备（设备A和设备B）连接到PC。
-4. 打开设备A和设备B的Wi-Fi和蓝牙。如果登录同一个华为账号，则设备间会进行自组网；非同账号环境下，需先通过设备发现和设备绑定建立可信关系以完成组网。
+4. 打开设备A和设备B的Wi-Fi和蓝牙。如果登录同一个华为账号，则设备间会进行自组网；非同账号环境下，需先通过[设备发现](devicemanager-guidelines.md#设备发现开发指导)和[设备绑定](devicemanager-guidelines.md#设备绑定开发指导)建立可信关系以完成组网。
 
 
 ### 检验环境是否搭建成功
@@ -96,7 +96,7 @@ hidumper -s 4700 -a "buscenter -l remote_device_info"
 
 ### 接口说明
 
-应用跨设备连接管理接口如下表所示。具体API说明详见API参考：abilityConnectionManager。
+应用跨设备连接管理接口如下表所示。具体API说明详见API参考：[abilityConnectionManager](../reference/apis-distributedservice-kit/js-apis-distributed-abilityConnectionManager.md)。
 
 **表1** abilityConnectionManager接口功能介绍
 
@@ -122,7 +122,7 @@ hidumper -s 4700 -a "buscenter -l remote_device_info"
 
 **导入AbilityConnectionManager模块文件**
 
-<!-- @import_abilityConnectionManager -->
+<!-- @[import_abilityConnectionManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedCollab/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 import {abilityConnectionManager, distributedDeviceManager } from '@kit.DistributedServiceKit';
@@ -131,7 +131,7 @@ import {abilityConnectionManager, distributedDeviceManager } from '@kit.Distribu
 
 **发现设备**
 
-设备A上的应用，需要发现并选择设备B的networkId来作为协同接口的入参。可调用分布式设备管理模块接口，进行对端设备的发现和选择，详情可参考设备信息查询开发指导。
+设备A上的应用，需要发现并选择设备B的[networkId](../reference/apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicebasicinfo)来作为协同接口的入参。可调用分布式设备管理模块接口，进行对端设备的发现和选择，详情可参考[设备信息查询开发指导](devicemanager-guidelines.md#设备信息查询开发指导)。
 
 
 **应用间创建会话并进行连接**
@@ -142,7 +142,7 @@ import {abilityConnectionManager, distributedDeviceManager } from '@kit.Distribu
 
 应用主动调用createAbilityConnectionSession()接口创建会话，获得sessionId。之后调用connect()方法启动ability会话连接（此时设备B上应用会被拉起）。
 
-<!-- @source_1 -->
+<!-- @[source_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedCollab/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 let dmClass: distributedDeviceManager.DeviceManager;
@@ -179,7 +179,7 @@ function getRemoteDeviceId(): string | undefined {
 }
 ```
 
-<!-- @source_2 -->
+<!-- @[source_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedCollab/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
   createSession(): void {
@@ -225,7 +225,7 @@ function getRemoteDeviceId(): string | undefined {
 
 设备A的应用调用connect()后，设备B的应用会通过协同的方式被拉起，拉起时会触发协同生命周期函数onCollaborate()，可在该接口中配置createAbilityConnectionSession()接口以及acceptConnect()接口的调用。
 
-<!-- @collab -->
+<!-- @[collab](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedCollab/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript
 onCollaborate(wantParam: Record<string, Object>): AbilityConstant.CollaborateResult {
@@ -270,7 +270,7 @@ createSessionFromWant(collabParam: Record<string, Object>): number {
 **注册事件监听**
 
 在应用创建会话成功并获得sessionId后，开发者可调用on()方法进行对应事件的监听，通过触发回调函数的方式通知监听者，以便执行对应业务。
-<!-- @abilityconnectionmanager_on -->
+<!-- @[abilityconnectionmanager_on](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DistributedCollab/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript
 registerSessionEvent(sessionId: number) {
@@ -455,4 +455,4 @@ registerSessionEvent(sessionId: number) {
 
 **解决措施**
 
-应用申请长时任务，消除此限制。
+应用[申请长时任务](../task-management/continuous-task.md)，消除此限制。

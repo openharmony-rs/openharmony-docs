@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-使用CanvasRenderingContext2D在Canvas画布组件上进行绘制，绘制对象可以是图形、文本、线段、图片等。具体请参考CanvasRenderingContext2D对象。
+使用CanvasRenderingContext2D在Canvas画布组件上进行绘制，绘制对象可以是图形、文本、线段、图片等。具体请参考[CanvasRenderingContext2D对象](../reference/apis-arkui/arkui-js/js-components-canvas-canvasrenderingcontext2d.md)。
 
 
 ## 画线段
@@ -209,7 +209,7 @@ export default {
 }
 ```
 
-Drawing-Line-Segments
+![Drawing-Line-Segments](figures/Drawing-Line-Segments.gif)
 
 
 ## 画边框
@@ -306,12 +306,12 @@ export default {
 ```
 
 
-Drawing-Border
+![Drawing-Border](figures/Drawing-Border.gif)
 
 
 ## 填充渐变色
 
-添加createLinearGradient和createRadialGradient属性创建渐变容器，接着用addColorStop方法添加多个色块组成渐变色，再设置fillStyle为gradient将渐变色填充到矩形中，最后设置阴影的模糊级别（shadowBlur）、阴影颜色（shadowColor）及阴影偏移量（shadowOffset）。
+添加[createLinearGradient](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#createlineargradient)和[createRadialGradient](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#createradialgradient)属性创建渐变容器，接着用addColorStop方法添加多个色块组成渐变色，再设置fillStyle为gradient将渐变色填充到矩形中，最后设置阴影的模糊级别（shadowBlur）、阴影颜色（shadowColor）及阴影偏移量（shadowOffset）。
 
 
 ```html
@@ -418,7 +418,6 @@ export default {
             this.ctx.fillRect(100, 100, 400, 300);
         } else if (e.newValue == 'value4') {
             this.ctx.clearRect(0, 0, 600, 500);
-            this.ctx.clearRect(0, 0, 600, 500);
             let gradient = this.ctx.createRadialGradient(300, 250, 20, 300, 250, 200);
             gradient.addColorStop(0.0, 'red');
             gradient.addColorStop(0.5, 'white');
@@ -435,12 +434,12 @@ export default {
 }
 ```
 
-Gradient-Fill-Colors
+![Gradient-Fill-Colors](figures/Gradient-Fill-Colors.gif)
 
 
 ## 填充文字
 
-先创建文本，再用fillText方法把文字写在画布上。通过globalAlpha属性改变基线透明度，使基线不会挡住文字，再设置textAlign和textBaseline属性确定文字基于基线的位置。
+先创建文本，再用[fillText](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#filltext)方法把文字写在画布上。通过[globalAlpha](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-property.md#globalalpha)属性改变基线透明度，使基线不会挡住文字，再设置[textAlign](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-property.md#textalign)和[textBaseline](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-property.md#textbaseline)属性确定文字基于基线的位置。
 
 
 ```html
@@ -569,7 +568,7 @@ export default {
 }
 ```
 
-Filling-Text
+![Filling-Text](figures/Filling-Text.gif)
 
 > **说明：** 
 >
@@ -578,7 +577,7 @@ Filling-Text
 
 ## 添加图片
 
-创建图片对象后使用drawImage方法画出图片，给图片设置一些动画样式如scale（缩放）、translate（平移）或rotate（旋转）。
+创建图片对象后使用[drawImage](../reference/apis-arkui/arkui-ts/ts-components-canvas-common-method.md#drawimage)方法画出图片，给图片设置一些动画样式如scale（缩放）、translate（平移）或rotate（旋转）。
 
 
 ```html
@@ -749,7 +748,7 @@ export default {
 }
 ```
 
-Adding-Images
+![Adding-Images](figures/Adding-Images.gif)
 
 > **说明：**
 > - setTransform方法使用的参数和transform()方法相同，但setTransform()方法会重置现有的变换矩阵并创建新的变换矩阵。
@@ -851,4 +850,4 @@ export default {
 }
 ```
 
-Adding-Methods
+![Adding-Methods](figures/Adding-Methods.gif)

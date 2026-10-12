@@ -18,7 +18,7 @@ napi_status napi_call_threadsafe_function_with_priority(napi_threadsafe_function
 | :------------- | :----------------------------- |
 | func           | 线程安全方法                   |
 | data           | 异步线程期望传递给主线程的数据  |
-| priority       | 指定任务的优先级napi_task_priority |
+| priority       | 指定任务的优先级[napi_task_priority](napi-data-types-interfaces.md#线程安全任务优先级) |
 | isTail         | 指定任务的入队方式，true代表任务从队列的尾部入队，false代表任务从队列的头部入队 |
 
 ## 场景介绍
@@ -30,7 +30,7 @@ napi_status napi_call_threadsafe_function_with_priority(napi_threadsafe_function
 
 - 功能实现
 
-  <!-- @napi_call_threadsafe_function_with_priority_cpp -->  
+  <!-- @[napi_call_threadsafe_function_with_priority_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/napi_init.cpp) -->  
   
   ``` C++
   #include "napi/native_api.h"
@@ -170,7 +170,7 @@ napi_status napi_call_threadsafe_function_with_priority(napi_threadsafe_function
 
 - 接口声明
 
-  <!-- @napi_call_threadsafe_function_with_priority_dts -->
+  <!-- @[napi_call_threadsafe_function_with_priority_dts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/types/libentry/Index.d.ts) -->
   
   ``` TypeScript
   // index.d.ts
@@ -205,7 +205,7 @@ napi_status napi_call_threadsafe_function_with_priority(napi_threadsafe_function
 
 - ArkTS代码示例
 
-  <!-- @napi_call_threadsafe_function_with_priority_ets -->
+  <!-- @[napi_call_threadsafe_function_with_priority_ets](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/ets/pages/Index.ets) -->
   
   ``` TypeScript
   // index.ets

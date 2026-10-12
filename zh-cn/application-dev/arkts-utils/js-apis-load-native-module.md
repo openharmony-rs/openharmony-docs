@@ -6,7 +6,7 @@
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
 
-loadNativeModule (同步动态加载系统库接口)用于同步动态加载Native模块，目的是按需加载所需要的模块。
+[loadNativeModule (同步动态加载系统库接口)](../reference/common/js-apis-common-load-native-module.md)用于同步动态加载Native模块，目的是按需加载所需要的模块。
 
 ## 函数说明
 
@@ -37,7 +37,7 @@ loadNativeModule(moduleName: string): Object;
 
 1. 在模块级`oh-package.json5`文件中配置`dependencies`字段。
 
-    <!-- @hap_load_native_dependence -->
+    <!-- @[hap_load_native_dependence](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/JsApisLoadNativeModule/entry/oh-package.json5) -->
     
     ``` JSON5
     "dependencies": {
@@ -47,7 +47,7 @@ loadNativeModule(moduleName: string): Object;
 
 2. 在模块级`build-profile.json5`文件中配置`runtimeOnly.packages`字段。
 
-    <!-- @hap_load_native_dependence_01 -->
+    <!-- @[hap_load_native_dependence_01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/JsApisLoadNativeModule/entry/build-profile.json5) -->
     
     ``` JSON5
     "buildOption": {
@@ -66,7 +66,7 @@ loadNativeModule(moduleName: string): Object;
 
 **示例1**：HAP加载系统库模块
 
-<!-- @hap_load_system_module --> 
+<!-- @[hap_load_system_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/JsApisLoadNativeModule/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 // HAP加载系统库模块
@@ -78,15 +78,15 @@ hilog.info(0, 'testTag', 'loadNativeModule ohos.hilog success');
 
 libentry.so的index.d.ts文件如下：
 
-<!-- @hap_load_native -->
+<!-- @[hap_load_native](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/JsApisLoadNativeModule/entry/src/main/cpp/types/libentry/index.d.ts) -->
 
 ``` TypeScript
 export const add: (a: number, b: number) => number;
 ```
 
-完成使用注意事项中的依赖配置后，使用`loadNativeModule`加载`libentry.so`并调用`add`函数。
+完成[使用注意事项](#使用注意事项)中的依赖配置后，使用`loadNativeModule`加载`libentry.so`并调用`add`函数。
 
-<!-- @load_native_module_libentry -->
+<!-- @[load_native_module_libentry](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArkTSModule/JsApisLoadNativeModule/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 //HAP加载Native库

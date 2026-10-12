@@ -11,7 +11,7 @@
 
 ## 接口说明
 
-具体参数、返回值、错误码等描述，请参考对应的userAuth.getAuthLockState。
+具体参数、返回值、错误码等描述，请参考对应的[userAuth.getAuthLockState](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#userauthgetauthlockstate22)。
 
 | 接口名称 | 功能描述 |
 | -------- | -------- |
@@ -19,20 +19,20 @@
 
 ## 开发步骤
 
-1. 申请权限：ohos.permission.ACCESS_BIOMETRIC。
+1. [申请权限](prerequisites.md#申请权限)：ohos.permission.ACCESS_BIOMETRIC。
 
-2. 指定认证类型（UserAuthType），并调用getAuthLockState接口查询指定认证类型的认证冻结状态。
+2. 指定认证类型（[UserAuthType](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#userauthtype8)），并调用[getAuthLockState](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#userauthgetauthlockstate22)接口查询指定认证类型的认证冻结状态。
 
 以查询PIN认证类型的认证冻结状态为例：
 
-<!-- @obtain_auth_lock_state_capabilities -->
+<!-- @[obtain_auth_lock_state_capabilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 async obtainingAuthLockState() : Promise<string> {
   try {
     Logger.info(`get auth lock state start`);
     const authLockState : userAuth.AuthLockState = await userAuth.getAuthLockState(userAuth.UserAuthType.PIN);
-    if (authLockState.lockoutDuration === userAuth.PERMANENT_LOCKOUT_DURATION) {
+    if (authLockState.isLocked && authLockState.lockoutDuration === userAuth.PERMANENT_LOCKOUT_DURATION) {
       Logger.info('the authentication of given authType is permanent locked.');
     }
     const authLockStateContent : string = JSON.stringify(authLockState);
@@ -48,4 +48,4 @@ async obtainingAuthLockState() : Promise<string> {
 
 ## 示例代码
 
-  - 查询指定认证类型的认证冻结状态
+  - [查询指定认证类型的认证冻结状态](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/UserAuthentication)

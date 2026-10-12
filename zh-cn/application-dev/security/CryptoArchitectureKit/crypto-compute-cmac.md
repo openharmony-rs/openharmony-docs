@@ -11,29 +11,29 @@ CMAC通过使用分组密码（如AES）和一个密钥生成认证码，确保�
 
 ## 开发步骤
 
-在调用update接口传入数据时，可以一次性传入所有数据，也可以把数据人工分段，然后分段update。对于同一段数据而言，是否分段，计算结果没有差异。对于数据量较大的数据，开发者可以根据实际需求选择是否分段传入。
+在调用update接口传入数据时，可以[一次性传入所有数据](#cmac一次性传入数据)，也可以把数据人工分段，然后[分段update](#分段cmac)。对于同一段数据而言，是否分段，计算结果没有差异。对于数据量较大的数据，开发者可以根据实际需求选择是否分段传入。
 
 下面分别提供两种方式的示例代码。
 
 ### CMAC（一次性传入数据）
 
-1. 调用cryptoFramework.createMac，指定消息认证码算法为CMAC，指定对称算法为AES128，生成消息认证码实例（Mac）。
+1. 调用[cryptoFramework.createMac](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatemac18)，指定消息认证码算法为CMAC，指定对称算法为AES128，生成消息认证码实例（Mac）。
 
-2. 调用cryptoFramework.createSymKeyGenerator和SymKeyGenerator.convertKey，生成密钥算法为AES128的对称密钥（SymKey）。
+2. 调用[cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator)和[SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-1)，生成密钥算法为AES128的对称密钥（SymKey）。
 
-   生成对称密钥的详细开发指导，请参考指定二进制数据生成对称密钥。
+   生成对称密钥的详细开发指导，请参考[指定二进制数据生成对称密钥](crypto-convert-binary-data-to-sym-key.md)。
 
-3. 调用Mac.init，指定共享对称密钥（SymKey），初始化Mac对象。
+3. 调用[Mac.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-6)，指定共享对称密钥（SymKey），初始化Mac对象。
 
-4. 调用Mac.update，传入自定义消息，进行消息认证码计算。单次update的长度没有限制。
+4. 调用[Mac.update](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#update-8)，传入自定义消息，进行消息认证码计算。单次update的长度没有限制。
 
-5. 调用Mac.doFinal，获取Mac计算结果。
+5. 调用[Mac.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-2)，获取Mac计算结果。
 
-6. 调用Mac.getMacLength，获取Mac长度，单位为字节。
+6. 调用[Mac.getMacLength](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getmaclength)，获取Mac长度，单位为字节。
 
 - 以使用await方式一次性传入数据，获取消息认证码计算结果为例：
 
-  <!-- @message_authentication_code_calculation_cmac_single_time_async -->
+  <!-- @[message_authentication_code_calculation_cmac_single_time_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/CMACSingleTime/Async.ets) -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -47,7 +47,7 @@ CMAC通过使用分组密码（如AES）和一个密钥生成认证码，确保�
     return symKey;
   }
   async function doCmac() {
-    // 把字符串按utf-8解码为Uint8Array，使用固定的128位的密钥，即16字节。
+    // 把字符串按utf-8编码为Uint8Array，使用固定的128位的密钥，即16字节。
     let keyData = new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer);
     let key = await genSymKeyByData(keyData);
     let spec: cryptoFramework.CmacSpec = {
@@ -69,7 +69,7 @@ CMAC通过使用分组密码（如AES）和一个密钥生成认证码，确保�
 
 - 以使用同步方式一次性传入数据，获取消息认证码计算结果为例：
 
-  <!-- @message_authentication_code_calculation_cmac_single_time_sync -->
+  <!-- @[message_authentication_code_calculation_cmac_single_time_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/CMACSingleTime/Sync.ets) -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -83,7 +83,7 @@ CMAC通过使用分组密码（如AES）和一个密钥生成认证码，确保�
     return symKey;
   }
   function doCmacBySync() {
-    // 把字符串按utf-8解码为Uint8Array，使用固定的128位的密钥，即16字节。
+    // 把字符串按utf-8编码为Uint8Array，使用固定的128位的密钥，即16字节。
     let keyData = new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer);
     let key = genSymKeyByData(keyData);
     let spec: cryptoFramework.CmacSpec = {
@@ -104,23 +104,23 @@ CMAC通过使用分组密码（如AES）和一个密钥生成认证码，确保�
 
 ### 分段CMAC
 
-1. 调用cryptoFramework.createMac，指定消息认证码算法CMAC，对称算法AES128，生成消息认证码实例（Mac）。
+1. 调用[cryptoFramework.createMac](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatemac18)，指定消息认证码算法CMAC，对称算法AES128，生成消息认证码实例（Mac）。
 
-2. 调用cryptoFramework.createSymKeyGenerator、SymKeyGenerator.convertKey，生成密钥算法为AES128的对称密钥（SymKey）。
+2. 调用[cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator)、[SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-1)，生成密钥算法为AES128的对称密钥（SymKey）。
 
-   生成对称密钥的详细开发指导，请参考指定二进制数据生成对称密钥。
+   生成对称密钥的详细开发指导，请参考[指定二进制数据生成对称密钥](crypto-convert-binary-data-to-sym-key.md)。
 
-3. 调用Mac.init，指定共享对称密钥（SymKey），初始化Mac对象。
+3. 调用[Mac.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-7)，指定共享对称密钥（SymKey），初始化Mac对象。
 
-4. 传入自定义消息，设置每次传入数据量为20字节，多次调用Mac.update，计算消息认证码。
+4. 传入自定义消息，设置每次传入数据量为20字节，多次调用[Mac.update](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#update-9)，计算消息认证码。
 
-5. 调用Mac.doFinal，获取Mac计算结果。
+5. 调用[Mac.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-3)，获取Mac计算结果。
 
-6. 调用Mac.getMacLength，获取Mac消息认证码的长度，单位为字节。
+6. 调用[Mac.getMacLength](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getmaclength)，获取Mac消息认证码的长度，单位为字节。
 
 - 以使用await方式分段传入数据，获取消息认证码计算结果为例。
 
-  <!-- @message_authentication_code_calculation_cmac_segmentation_async -->
+  <!-- @[message_authentication_code_calculation_cmac_segmentation_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/CMACSegmentation/Async.ets) -->
   
   ``` TypeScript
   
@@ -135,7 +135,7 @@ CMAC通过使用分组密码（如AES）和一个密钥生成认证码，确保�
     return symKey;
   }
   async function doLoopCmac() {
-    // 把字符串按utf-8解码为Uint8Array，使用固定的128位的密钥，即16字节。
+    // 把字符串按utf-8编码为Uint8Array，使用固定的128位的密钥，即16字节。
     let keyData = new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer);
     let key = await genSymKeyByData(keyData);
     let spec: cryptoFramework.CmacSpec = {
@@ -163,7 +163,7 @@ CMAC通过使用分组密码（如AES）和一个密钥生成认证码，确保�
 
 - 以使用同步方式分段传入数据，获取消息认证码计算结果为例。
 
-  <!-- @message_authentication_code_calculation_cmac_segmentation_sync -->
+  <!-- @[message_authentication_code_calculation_cmac_segmentation_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/MessageAuthenticationCode/entry/src/main/ets/pages/CMACSegmentation/Sync.ets) -->
   
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
@@ -177,7 +177,7 @@ CMAC通过使用分组密码（如AES）和一个密钥生成认证码，确保�
     return symKey;
   }
   function doLoopCmacBySync() {
-    // 把字符串按utf-8解码为Uint8Array，使用固定的128位的密钥，即16字节。
+    // 把字符串按utf-8编码为Uint8Array，使用固定的128位的密钥，即16字节。
     let keyData = new Uint8Array(buffer.from('12345678abcdefgh', 'utf-8').buffer);
     let key = genSymKeyByData(keyData);
     let spec: cryptoFramework.CmacSpec = {

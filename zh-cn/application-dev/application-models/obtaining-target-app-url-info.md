@@ -9,9 +9,9 @@
 
 ## 场景介绍
 
-开发者在使用UIAbilityContext.openLink接口拉起目标应用时，需要传入目标应用的URL信息。本章节主要介绍如何获取目标应用的URL信息。
+开发者在使用[UIAbilityContext.openLink](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#openlink12)接口拉起目标应用时，需要传入目标应用的URL信息。本章节主要介绍如何获取目标应用的URL信息。
 
-假设目标应用的UIAbility的module.json5配置信息如下：
+假设目标应用的UIAbility的[module.json5](../quick-start/module-configuration-file.md)配置信息如下：
 
 ```json5
 {
@@ -39,11 +39,11 @@
 
 ## 环境要求
 
-开发者需要先获取hdc工具。
+开发者需要先获取[hdc工具](../dfx/hdc.md)。
 
 ## 操作步骤
 
-1. 使用bm工具获取目标应用的bundleName。
+1. 使用[bm工具](../tools/bm-tool.md)获取目标应用的bundleName。
 
     1. 获取当前设备上所有已安装应用的bundleName，保存结果。
 
@@ -59,7 +59,7 @@
 
 2. 根据bundleName获取目标应用的`Mission ID`。
 
-    1. 使用aa工具，获取目标应用的abilityName。
+    1. 使用[aa工具](../tools/aa-tool.md)，获取目标应用的abilityName。
 
         ```bash
         hdc shell "aa dump -l | grep com.example.myapplication"
@@ -82,14 +82,14 @@
         hdc shell bm dump -n com.example.myapplication
         ```
 
-    2. 通过查看输出中`name`为的`EntryAbility`下方的`skills`部分，获取应用支持的URL Scheme配置。
+    2. 通过查看输出中`name`为`EntryAbility`下方的`skills`部分，获取应用支持的URL Scheme配置。
 
         ```json5
         // 输出示例（skills部分）：
         // ...
-        "name": "EntryAbility",
-        // ...
         {
+          "name": "EntryAbility",
+          // ...
           "skills": [
             {
               "actions": [
@@ -150,7 +150,7 @@
 
 5. 使用Deep Linking方式拉起目标应用。
 
-    以下为通过UIAbilityContext.openLink接口拉起目标应用的完整示例。
+    以下为通过[UIAbilityContext.openLink](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#openlink12)接口拉起目标应用的完整示例。
 
     > **说明：**
     >
@@ -158,7 +158,7 @@
     >
     > - 应用安装检测：在拉起目标应用前，建议先检测应用是否已安装。
 
-   <!-- @Deep_Linking --> 
+   <!-- @[Deep_Linking](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ObtainingTargetAppUrlInfo/entry/src/main/ets/pages/Index.ets) --> 
     
     ``` TypeScript
     import { common } from '@kit.AbilityKit'
@@ -199,5 +199,5 @@
 
     **图1** 拉起目标应用演示
 
-    obtaining-target-app-url-info 
+    ![obtaining-target-app-url-info](figures/obtaining-target-app-url-info.gif) 
 

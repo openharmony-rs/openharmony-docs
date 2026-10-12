@@ -18,14 +18,14 @@
 
 >**说明：**
 >
->从API version 24开始，可通过在应用工程的module.json5配置文件中配置metadata标签来使能自定义组件支持跨Ability迁移。具体配置方式为：新增name为`"enableCustomComponentCrossAbility"`，value为`"true"`。因为自定义组件提供的是UI能力，所以这里的Ability也特指UIAbility。具体示例参考自定义组件支持跨Ability迁移。
+>从API version 24开始，可通过在应用工程的[module.json5配置文件](./../../quick-start/module-configuration-file.md)中配置[metadata标签](./../../quick-start/module-configuration-file.md#metadata标签)来使能自定义组件支持跨[Ability](../../reference/apis-ability-kit/js-apis-app-ability-ability.md)迁移。具体配置方式为：新增[name](./../../quick-start/module-configuration-file.md#metadata标签)为`"enableCustomComponentCrossAbility"`，[value](./../../quick-start/module-configuration-file.md#metadata标签)为`"true"`。因为自定义组件提供的是UI能力，所以这里的Ability也特指[UIAbility](../../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)。具体示例参考[自定义组件支持跨Ability迁移](#自定义组件支持跨ability迁移)。
 
 
 ## 自定义组件的基本用法
 
 以下示例展示了自定义组件的基本用法。
 
-<!-- @HelloComponent_Hello -->  
+<!-- @[HelloComponent_Hello](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/ParentComponent.ets) -->  
 
 ``` TypeScript
 @Component
@@ -43,7 +43,6 @@ struct HelloComponent {
           this.message = 'Hello, ArkUI!';
         })
     }
-    .height('100%')
   }
 }
 ```
@@ -54,7 +53,7 @@ struct HelloComponent {
 
 可以在其他自定义组件的`build()`函数中多次创建`HelloComponent`，以实现自定义组件的重用。
 
-<!-- @ArkUI_message -->   
+<!-- @[ArkUI_message](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/ParentComponent.ets) -->   
 
 ``` TypeScript
 @Entry
@@ -75,19 +74,19 @@ struct ParentComponent {
 }
 ```
 
-arkts-create-custom-components-0
+![arkts-create-custom-components-0](../figures/arkts-create-custom-components-0.gif)
 
 要完全理解上面的示例，需要了解自定义组件的以下概念定义，本文将在后面的小节中介绍：
 
-- 自定义组件的基本结构
+- [自定义组件的基本结构](#自定义组件的基本结构)
 
-- 成员函数/变量
+- [成员函数/变量](#成员函数变量)
 
-- 自定义组件的参数规定
+- [自定义组件的参数规定](#自定义组件的参数规定)
 
-- build()函数实现规则
+- [build()函数实现规则](#build函数实现规则)
 
-- 自定义组件通用样式
+- [自定义组件通用样式](#自定义组件通用样式)
 
 
 ## 自定义组件的基本结构
@@ -102,17 +101,17 @@ arkts-create-custom-components-0
 
 ### \@Entry
 
-\@Entry装饰的自定义组件将作为UI页面的入口。在单个UI页面中，仅允许存在一个由@Entry装饰的自定义组件作为页面的入口。
+[\@Entry](../../reference/apis-arkui/arkui-ts/ts-universal-entry.md#entry)装饰的自定义组件将作为[UI页面](../arkts-router-to-navigation.md#页面结构)的入口。在单个UI页面中，仅允许存在一个由@Entry装饰的自定义组件作为页面的入口。
 
   > **说明：**
   >
   > 从API version 9开始，该装饰器支持在ArkTS卡片中使用。
   >
-  > 从API version 10开始，\@Entry可以接受一个可选的LocalStorage参数或者一个可选的EntryOptions<sup>10+</sup>参数。
+  > 从API version 10开始，\@Entry可以接受一个可选的[LocalStorage](../../reference/apis-arkui/arkui-ts/ts-state-management.md#localstorage9)参数或者一个可选的EntryOptions<sup>10+</sup>参数。
   >
   > 从API version 11开始，该装饰器支持在原子化服务中使用。
 
-  <!-- @Entry_UI_page -->  
+  <!-- @[Entry_UI_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/Entry.ets) -->  
   
   ``` TypeScript
   @Entry
@@ -130,14 +129,14 @@ arkts-create-custom-components-0
   | 名称   | 类型   | 只读 | 可选 | 说明                                                         |
   | ------ | ------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
   | routeName | string | 否 | 是 | 表示作为命名路由页面的名字。 |
-  | storage | LocalStorage | 否 | 是 | 页面级的UI状态存储。当未传入时，框架会创建一个新的LocalStorage实例作为默认值。 |
-  | useSharedStorage<sup>12+</sup> | boolean | 否 | 是 | 是否使用loadContent传入的LocalStorage实例对象。默认值false。值为true时：若loadContent传入了LocalStorage实例，则使用该LocalStorage实例对象，否则会新建一个LocalStorage实例。值为false时：不使用共享的LocalStorage实例对象。 |
+  | storage | [LocalStorage](arkts-localstorage.md) | 否 | 是 | 页面级的UI状态存储。当未传入时，框架会创建一个新的LocalStorage实例作为默认值。 |
+  | useSharedStorage<sup>12+</sup> | boolean | 否 | 是 | 是否使用[loadContent](../../reference/apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)传入的LocalStorage实例对象。默认值false。值为true时：若loadContent传入了LocalStorage实例，则使用该LocalStorage实例对象，否则会新建一个LocalStorage实例。值为false时：不使用共享的LocalStorage实例对象。 |
 
   > **说明：**
   >
   > 当useSharedStorage设置为true且storage已赋值时，useSharedStorage的优先级高于storage参数，此时无论loadContent中是否传入LocalStorage实例，都不会使用传入的storage参数。
 
-  <!-- @routeName_myPage -->  
+  <!-- @[routeName_myPage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/RouteName.ets) -->  
   
   ``` TypeScript
   @Entry({ routeName: 'myPage' })
@@ -149,17 +148,17 @@ arkts-create-custom-components-0
 
 ### \@Component
 
-@Component装饰的struct为V1自定义组件，可以使用状态管理V1版本装饰器的能力。
+[@Component](../../reference/apis-arkui/arkui-ts/ts-custom-component-decorator-component.md#component)装饰的struct为V1自定义组件，可以使用[状态管理V1版本](./arkts-state-management-overview.md#状态管理v1)装饰器的能力。
 
   > **说明：**
   >
   > 从API version 9开始，该装饰器支持在ArkTS卡片中使用。
   > 
-  > 从API version 11开始，\@Component可以接受一个ComponentOptions参数。
+  > 从API version 11开始，\@Component可以接受一个[ComponentOptions参数](../../reference/apis-arkui/arkui-ts/ts-custom-component-parameter.md#componentoptions)。
   >
   > 从API version 11开始，该装饰器支持在原子化服务中使用。
 
-  <!-- @Component_data_structure -->   
+  <!-- @[Component_data_structure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/Component.ets) -->   
   
   ``` TypeScript
   @Component
@@ -170,7 +169,7 @@ arkts-create-custom-components-0
 
 ### \@ComponentV2
 
-@ComponentV2装饰的struct为V2自定义组件，可以使用状态管理V2版本装饰器的能力。
+[@ComponentV2](../../reference/apis-arkui/arkui-ts/ts-custom-component-decorator-componentv2.md#componentv2)装饰的struct为V2自定义组件，可以使用[状态管理V2版本](./arkts-state-management-overview.md#状态管理v2)装饰器的能力。
 >  **说明：**
 >
 > \@ComponentV2装饰器从API version 12开始支持。
@@ -179,16 +178,16 @@ arkts-create-custom-components-0
 >
 > 从API version 23开始，该装饰器支持在ArkTS卡片中使用。
 
-和\@Component装饰器一样，\@ComponentV2装饰器用于装饰自定义组件：
+和[\@Component装饰器](#component)一样，\@ComponentV2装饰器用于装饰自定义组件：
 
-- 在\@ComponentV2装饰的自定义组件中，开发者仅可以使用全新的状态变量装饰器，包括\@Local、\@Param、\@Once、\@Event、\@Provider、\@Consumer等。
-- \@ComponentV2装饰的自定义组件暂不支持LocalStorage等现有自定义组件的能力。
+- 在\@ComponentV2装饰的自定义组件中，开发者仅可以使用全新的状态变量装饰器，包括[\@Local](arkts-new-local.md)、[\@Param](arkts-new-param.md)、[\@Once](arkts-new-once.md)、[\@Event](arkts-new-event.md)、[\@Provider](arkts-new-provider-and-consumer.md)、[\@Consumer](arkts-new-provider-and-consumer.md)等。
+- \@ComponentV2装饰的自定义组件暂不支持[LocalStorage](arkts-localstorage.md)等现有自定义组件的能力。
 - 无法同时使用\@ComponentV2与\@Component装饰同一个struct结构。
-- \@ComponentV2支持一个可选的ComponentOptions参数，来实现组件冻结。
+- \@ComponentV2支持一个可选的[ComponentOptions参数](../../reference/apis-arkui/arkui-ts/ts-custom-component-parameter.md#componentoptions)，来实现[组件冻结](arkts-custom-components-freezeV2.md)。
 
 - 一个简单的\@ComponentV2装饰的自定义组件应具有以下部分：
 
-    <!-- @ComponentV2_page_componentV2 -->  
+    <!-- @[ComponentV2_page_componentV2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/wrapbuilder/entry/src/main/ets/pages/PageComponentV2.ets) -->  
     
     ``` TypeScript
     @Entry
@@ -216,7 +215,7 @@ arkts-create-custom-components-0
     }
     ```
 
-    arkts-create-custom-components-1
+    ![arkts-create-custom-components-1](../figures/arkts-create-custom-components-1.gif)
 
 除非特别说明，\@ComponentV2装饰的自定义组件将与\@Component装饰的自定义组件保持相同的行为。
 
@@ -224,7 +223,7 @@ arkts-create-custom-components-0
 
 build()函数用于定义自定义组件的声明式UI描述，自定义组件必须定义build()函数。
 
-  <!-- @Declarative_UI_description -->   
+  <!-- @[Declarative_UI_description](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/BuildFunction.ets) -->   
   
   ``` TypeScript
   @Component
@@ -237,9 +236,9 @@ build()函数用于定义自定义组件的声明式UI描述，自定义组件�
 
 ### \@Reusable
 
-\@Reusable装饰V1自定义组件，使得该自定义组件具有被复用的能力。详细请参考：\@Reusable装饰器：组件复用。
+\@Reusable装饰V1自定义组件，使得该自定义组件具有被复用的能力。详细请参考：[\@Reusable装饰器：组件复用](./arkts-reusable.md#使用场景)。
 
-  <!-- @Reusable_MyComponent --> 
+  <!-- @[Reusable_MyComponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/Reusable.ets) --> 
   
   ``` TypeScript
   @Reusable
@@ -251,7 +250,7 @@ build()函数用于定义自定义组件的声明式UI描述，自定义组件�
 
 ### \@ReusableV2
 
-\@ReusableV2装饰V2自定义组件，使得该自定义组件具有被复用的能力。详细请参考：\@ReusableV2装饰器：V2组件复用。
+\@ReusableV2装饰V2自定义组件，使得该自定义组件具有被复用的能力。详细请参考：[\@ReusableV2装饰器：V2组件复用](./arkts-new-reusableV2.md#使用场景)。
 
   ``` TypeScript
   @ReusableV2
@@ -271,7 +270,7 @@ build()函数用于定义自定义组件的声明式UI描述，自定义组件�
 
 - 自定义组件的成员变量仅能从组件内部访问，且不建议声明为静态变量。
 
-- 自定义组件的成员变量本地初始化有些是可选的，有些是必选的。具体是否需要本地初始化，是否需要从父组件通过参数传递初始化子组件的成员变量，请参考状态管理。
+- 自定义组件的成员变量本地初始化有些是可选的，有些是必选的。具体是否需要本地初始化，是否需要从父组件通过参数传递初始化子组件的成员变量，请参考[状态管理](arkts-state-management-overview.md)。
 
 
 ## 自定义组件的参数规定
@@ -283,31 +282,31 @@ build()函数用于定义自定义组件的声明式UI描述，自定义组件�
 | 变量类型 | 本地初始化 | 从父组件传入 |
 |---------|-----------|-------------|
 | 普通变量 | 必选 | 可选，传入非undefined值时使用传入值，否则使用本地默认值。 |
-| @State | 必选 | 可选，传入非undefined值时使用传入值，否则使用本地默认值。 |
-| @Prop | 可选 | 可选，无本地默认值时必选，传入非undefined值时使用传入值，否则使用本地默认值。 |
-| @Link | 不支持 | 必选，需传入状态变量。 |
-| @ObjectLink | 不支持 | 必选，需传入@Observed装饰的class实例（API version 19起可传入复杂类型）。 |
-| @Provide | 必选 | 可选，传入非undefined值时使用传入值，否则使用本地默认值。 |
-| @Consume | 不支持（API version 20起可选） | 不支持，通过别名/变量名匹配\@Provide初始化。 |
-| @StorageProp | 必选 | 不支持，通过AppStorage对应key初始化。 |
-| @StorageLink | 必选 | 不支持，通过AppStorage对应key初始化。 |
-| @LocalStorageProp | 必选 | 不支持，通过LocalStorage对应key初始化。 |
-| @LocalStorageLink | 必选 | 不支持，通过LocalStorage对应key初始化。 |
+| [@State](arkts-state.md) | 必选 | 可选，传入非undefined值时使用传入值，否则使用本地默认值。 |
+| [@Prop](arkts-prop.md) | 可选 | 可选，无本地默认值时必选，传入非undefined值时使用传入值，否则使用本地默认值。 |
+| [@Link](arkts-link.md) | 不支持 | 必选，需传入状态变量。 |
+| [@ObjectLink](arkts-observed-and-objectlink.md) | 不支持 | 必选，需传入[@Observed](arkts-observed-and-objectlink.md)装饰的class实例（API version 19起可传入复杂类型）。 |
+| [@Provide](arkts-provide-and-consume.md) | 必选 | 可选，传入非undefined值时使用传入值，否则使用本地默认值。 |
+| [@Consume](arkts-provide-and-consume.md) | 不支持（API version 20起可选） | 不支持，通过别名/变量名匹配\@Provide初始化。 |
+| [@StorageProp](arkts-appstorage.md) | 必选 | 不支持，通过[AppStorage](arkts-appstorage.md)对应key初始化。 |
+| [@StorageLink](arkts-appstorage.md) | 必选 | 不支持，通过[AppStorage](arkts-appstorage.md)对应key初始化。 |
+| [@LocalStorageProp](arkts-localstorage.md) | 必选 | 不支持，通过[LocalStorage](arkts-localstorage.md)对应key初始化。 |
+| [@LocalStorageLink](arkts-localstorage.md) | 必选 | 不支持，通过[LocalStorage](arkts-localstorage.md)对应key初始化。 |
 
 **\@ComponentV2成员变量初始化规则**
 
 | 变量类型 | 本地初始化 | 从父组件传入 |
 |---------|-----------|-------------|
 | 普通变量 | 必选 | 不支持。 |
-| @Local | 必选 | 不支持。 |
-| @Param | 可选 | 可选，无本地默认值时必选，有传入值时使用传入值，否则使用本地默认值。 |
-| @Event | 可选 | 可选，无本地默认值且未从父组件传入时，自动生成空函数作为默认回调。 |
-| @Provider | 必选 | 不支持。 |
-| @Consumer | 必选 | 不支持，通过别名/变量名匹配\@Provider初始化。 |
+| [@Local](arkts-new-local.md) | 必选 | 不支持。 |
+| [@Param](arkts-new-param.md) | 可选 | 可选，无本地默认值时必选，有传入值时使用传入值，否则使用本地默认值。 |
+| [@Event](arkts-new-event.md) | 可选 | 可选，无本地默认值且未从父组件传入时，自动生成空函数作为默认回调。 |
+| [@Provider](arkts-new-provider-and-consumer.md) | 必选 | 不支持。 |
+| [@Consumer](arkts-new-provider-and-consumer.md) | 必选 | 不支持，通过别名/变量名匹配\@Provider初始化。 |
 
 下面以普通变量为例，展示如何在build方法中初始化自定义组件的参数。其余装饰器的使用示例，可参考各文档。
 
-<!-- @Parameter_specification -->  
+<!-- @[Parameter_specification](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/ParameterSpecification.ets) -->  
 
 ``` TypeScript
 @Component
@@ -341,11 +340,11 @@ struct ParentComponent {
 }
 ```
 
-arkts-create-custom-components-2
+![arkts-create-custom-components-2](../figures/arkts-create-custom-components-2.png)
 
 以下示例代码将父组件中的函数传递给子组件，并在子组件中调用。
 
-<!-- @Function_passing  --> 
+<!-- @[Function_passing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/ParentFunction.ets)  --> 
 
 ``` TypeScript
 @Entry
@@ -388,7 +387,7 @@ struct Son {
 }
 ```
 
-arkts-create-custom-components-3
+![arkts-create-custom-components-3](../figures/arkts-create-custom-components-3.gif)
 
 ## build()函数实现规则
 
@@ -396,7 +395,7 @@ arkts-create-custom-components-3
 
 - \@Entry装饰的自定义组件，其build()函数下的根节点唯一且必要，且必须为容器组件，其中ForEach禁止作为根节点。\@Component装饰的自定义组件，其build()函数下的根节点唯一且必要，可以为非容器组件，其中ForEach禁止作为根节点。
 
-  <!-- @build_function --> 
+  <!-- @[build_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/MyComponentBuild.ets) --> 
   
   ``` TypeScript
   @Entry
@@ -465,7 +464,7 @@ arkts-create-custom-components-3
     }
   }
   ```
-  <!-- @Builder_decoration -->  
+  <!-- @[Builder_decoration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/BuilderMethod.ets) -->  
   
   ``` TypeScript
   @Component
@@ -496,7 +495,7 @@ arkts-create-custom-components-3
   ```
 
 
-- 不允许使用switch语法，当需要使用条件判断时，请使用if。示例如下。
+- 不允许使用switch语法，当需要使用条件判断时，请使用[if](../rendering-control/arkts-rendering-control-ifelse.md)。示例如下。
 
   ```ts
   build() {
@@ -521,7 +520,7 @@ arkts-create-custom-components-3
     .width('100%')
   }
   ```
-  <!-- @switch_syntax -->  
+  <!-- @[switch_syntax](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/If.ets) -->  
   
   ``` TypeScript
   build() {
@@ -549,7 +548,7 @@ arkts-create-custom-components-3
     }
   }
   ```
-  <!-- @if_component -->  
+  <!-- @[if_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/ModuleComponent.ets) -->  
   
   ``` TypeScript
   build() {
@@ -594,7 +593,7 @@ arkts-create-custom-components-3
   
   在ArkUI状态管理中，状态驱动UI更新。
 
-  zh-cn_image_0000001651365257
+  ![zh-cn_image_0000001651365257](figures/State-UI-function.png)
 
   所以，不能在自定义组件的`build()`或\@Builder方法里直接改变状态变量，这可能会造成循环渲染的风险。``Text(`${this.count++}`)``在全量更新或最小化更新会产生不同的影响：
 
@@ -603,7 +602,7 @@ arkts-create-custom-components-3
   
   `build()`函数中更改应用状态的行为可能比上面的示例更加隐蔽，例如：
 
-  - 在\@Builder，\@Extend或\@Styles方法内改变状态变量。
+  - 在\@Builder，[\@Extend](arkts-extend.md)或[\@Styles](arkts-style.md)方法内改变状态变量。
 
   - 在计算参数时调用函数中改变应用状态变量，例如 ``Text(`${this.calcLabel()}`)``。
 
@@ -626,13 +625,13 @@ arkts-create-custom-components-3
       });
     ```
   
-  该问题可以参考常见问题：build函数中更改状态变量导致appfreeze。
+  该问题可以参考[常见问题：build函数中更改状态变量导致appfreeze](./arkts-state-management-faq-inner-component.md#build函数中更改状态变量导致appfreeze)。
 
 ## 自定义组件通用样式
 
 自定义组件通过“.”链式调用设置通用样式。
 
-<!-- @Custom_style -->   
+<!-- @[Custom_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/MyComponentStyle.ets) -->   
 
 ``` TypeScript
 @Component
@@ -660,7 +659,7 @@ struct MyComponent {
 }
 ```
 
-arkts-create-custom-components-4
+![arkts-create-custom-components-4](../figures/arkts-create-custom-components-4.png)
 
 > **说明：**
 >
@@ -672,7 +671,7 @@ API version 24前，自定义组件不支持跨Ability迁移，自定义组件�
 
 API version 24开始，可在应用工程的module.json5配置文件中配置metadata标签来使能自定义组件支持跨Ability迁移。具体配置方式如下。
 
-<!-- @EnableCustomComponentCrossAbility_config -->  
+<!-- @[EnableCustomComponentCrossAbility_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnableCustomComponentCrossAbility/entry/src/main/module.json5) -->  
 
 ``` JSON5
 "metadata": [
@@ -685,9 +684,9 @@ API version 24开始，可在应用工程的module.json5配置文件中配置met
 
 需要注意：
 1. 不建议在原Ability的onBackground阶段异步修改迁移组件中的状态变量，此时状态变量可以被赋值，但无法触发关联组件的刷新。
-2. 仅支持组件树上的自定义组件迁移。对于未挂载在组件树上的自定义组件将不支持迁移。例如使用OH_ArkUI_GetNodeHandleFromNapiValue获取ArkUI_NodeHandle场景中，如果OH_ArkUI_GetNodeHandleFromNapiValue接收的参数为ComponentContent，获取到的ArkUI_NodeHandle为ComponentContent下子树的第一个FrameNode节点，中间跳过的自定义组件将不会在组件树上，不支持迁移。
+2. 仅支持组件树上的自定义组件迁移。对于未挂载在组件树上的自定义组件将不支持迁移。例如使用[OH_ArkUI_GetNodeHandleFromNapiValue](../../reference/apis-arkui/capi-native-node-napi-h.md#oh_arkui_getnodehandlefromnapivalue)获取[ArkUI_NodeHandle](../../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md)场景中，如果OH_ArkUI_GetNodeHandleFromNapiValue接收的参数为[ComponentContent](../../reference/apis-arkui/js-apis-arkui-ComponentContent.md)，获取到的ArkUI_NodeHandle为ComponentContent下子树的第一个[FrameNode](../../reference/apis-arkui/js-apis-arkui-frameNode.md)节点，中间跳过的自定义组件将不会在组件树上，不支持迁移。
 
-<!-- @EnableCustomComponentCrossAbility_EntryAbility -->  
+<!-- @[EnableCustomComponentCrossAbility_EntryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnableCustomComponentCrossAbility/entry/src/main/ets/entryability/EntryAbility.ets) -->  
 
 ``` TypeScript
 import { UIAbility } from '@kit.AbilityKit';
@@ -721,9 +720,9 @@ export default class EntryAbility extends UIAbility {
    - 自定义组件`ComponentUnderBuilderNode`在被挂载到新的Ability下时，会通知切换Ability的自定义组件更新其所属的Ability实例ID。
    - 点击自定义组件`ComponentUnderBuilderNode`内```Button('change message')```，改变状态变量`message`的值，触发```@Watch('messageUpdate') ```回调和UI刷新。
 
-下面的示例包含了创建新的Ability流程，具体示例可参考startAbility。
+下面的示例包含了创建新的Ability流程，具体示例可参考[startAbility](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)。
 
-<!-- @EnableCustomComponentCrossAbility_Index -->  
+<!-- @[EnableCustomComponentCrossAbility_Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnableCustomComponentCrossAbility/entry/src/main/ets/pages/Index.ets) -->  
 
 ``` TypeScript
 import { MyNodeController } from './MyNodeController';
@@ -782,7 +781,7 @@ struct Index {
 }
 ```
 
-<!-- @EnableCustomComponentCrossAbility_MyNodeController -->  
+<!-- @[EnableCustomComponentCrossAbility_MyNodeController](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnableCustomComponentCrossAbility/entry/src/main/ets/pages/MyNodeController.ets) -->  
 
 ``` TypeScript
 import { BuilderNode, FrameNode, NodeController } from '@kit.ArkUI';
@@ -853,7 +852,7 @@ struct ComponentUnderBuilderNode {
 }
 ```
 
-<!-- @EnableCustomComponentCrossAbility_ExtraAbility -->   
+<!-- @[EnableCustomComponentCrossAbility_ExtraAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnableCustomComponentCrossAbility/entry/src/main/ets/extraability/ExtraAbility.ets) -->   
 
 ``` TypeScript
 import { UIAbility } from '@kit.AbilityKit';
@@ -877,7 +876,7 @@ export default class ExtraAbility extends UIAbility {
 }
 ```
 
-<!-- @EnableCustomComponentCrossAbility_ExtraIndex -->  
+<!-- @[EnableCustomComponentCrossAbility_ExtraIndex](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnableCustomComponentCrossAbility/entry/src/main/ets/pages/ExtraIndex.ets) -->  
 
 ``` TypeScript
 import { MyNodeController } from './MyNodeController';
@@ -910,7 +909,7 @@ struct ExtraIndex {
 }
 ```
 
-customcomponent-cross-ability
+![customcomponent-cross-ability](./figures/component-cross-ability.gif)
 
 ## 限制条件
 
@@ -919,7 +918,7 @@ customcomponent-cross-ability
 静态代码块用于初始化静态属性。
 - 在\@Component或\@CustomDialog装饰的自定义组件中编写静态代码块时，该代码不会被执行。从API version 22开始，添加对静态代码块的校验，编译期告警提示静态代码块不生效。
 
-  <!-- @Static_code_V1 -->   
+  <!-- @[Static_code_V1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/StaticCodeV1.ets) -->   
   
   ``` TypeScript
   @Component
@@ -936,7 +935,7 @@ customcomponent-cross-ability
 
 - 在\@ComponentV2装饰的自定义组件中支持使用。
 
-  <!-- @Static_code_V2 -->   
+  <!-- @[Static_code_V2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/createCustomComponents/entry/src/main/ets/component/StaticCodeV2.ets) -->   
   
   ``` TypeScript
   @ComponentV2
@@ -952,8 +951,8 @@ customcomponent-cross-ability
 
 ### \@Component与\@ComponentV2混用
 
-在将\@Component装饰的自定义组件与\@ComponentV2装饰的自定义组件混合使用时，<!--RP1-->可参考状态管理V1和V2混用场景<!--RP1End-->。
+在将\@Component装饰的自定义组件与\@ComponentV2装饰的自定义组件混合使用时，<!--RP1-->可参考[状态管理V1和V2混用场景](./arkts-v1-v2-mixusage-before-api-version.md)<!--RP1End-->。
 
 ### \@Reusable或\@ReusableV2混用
 
-当将\@Reusable或\@ReusableV2装饰的复用组件与其他自定义组件混合使用时，可参考使用限制。
+当将\@Reusable或\@ReusableV2装饰的复用组件与其他自定义组件混合使用时，可参考[使用限制](./arkts-new-reusableV2.md#使用限制)。

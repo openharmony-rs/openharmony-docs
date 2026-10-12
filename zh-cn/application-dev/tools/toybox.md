@@ -1,4 +1,4 @@
-# toybox
+# toybox工具
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Startup-->
 <!--Owner: @yan-mingzhen-->
@@ -213,7 +213,7 @@ toybox的执行方式有两种：
 | ping/ping6    | 检测网络连通性。ping6自带-6选项。<br/>usage: ping/ping6 [OPTIONS] HOST |
 | <!--DelRow-->sntp    | SNTP客户端。<br/>usage: sntp [-saSdDq] [-r SHIFT] [-mM[ADDRESS]] [-p PORT] [SERVER] |
 | telnet  | 连接telnet服务器。<br/>usage: telnet HOST [PORT] |
-| traceroute/traceroute6 | 跟踪报文到HOST的路径。traceroute6自带-6选项。<br/>usage: traceroute [-46FUIldnvr] [-f 1ST_TTL] [-m MAXTTL] [-p PORT] [-q PROBES]<br/>[-s SRC_IP] [-t TOS] [-w WAIT_SEC] [-g GATEWAY] [-i IFACE] [-z PAUSE_MSEC] HOST [BYTES]<br/>usage: traceroute6 [-dnrv] [-m MAXTTL] [-p PORT] -q PROBES [-t TOS] [-w WAIT_SEC]<br/>&emsp;[-i IFACE] HOST [BYTES] |
+| traceroute/traceroute6 | 跟踪报文到HOST的路径。traceroute6自带-6选项。<br/>usage: traceroute [-46FUIldnvr] [-f 1ST_TTL] [-m MAXTTL] [-p PORT] [-q PROBES]<br/>[-s SRC_IP] [-t TOS] [-w WAIT_SEC] [-g GATEWAY] [-i IFACE] [-z PAUSE_MSEC] HOST [BYTES]<br/>usage: traceroute6 [-dnrv] [-m MAXTTL] [-p PORT] [-q PROBES][-s SRC_IP] [-t TOS] [-w WAIT_SEC]<br/>&emsp;[-i IFACE] HOST [BYTES] |
 | wget    | 从网络上下载资源。<br/>usage: wget [OPTIONS]... [URL]<br/>[OPTIONS] = --max-redirect x -d -O filename -p data |
 
 ### 文件操作
@@ -287,7 +287,7 @@ toybox的执行方式有两种：
 | seq       | 从头到尾按递增计数。省略参数默认值为1。使用两个参数作为第一个和最后一个。参数可以是负数或浮点数。<br/>usage: seq [-w \| -f fmt\_str] [-s sep\_str] [first] [increment] last |
 | setfattr  | 写入POSIX扩展属性。<br/>usage: setfattr [-h] [-x \| -n NAME] [-v VALUE] FILE... |
 | sha1sum/sha256sum | 计算sha系列哈希值。<br/>usage: ???sum [-bcs] [FILE]... |
-| shred     | 安全的删除文件（用随机数据覆盖文件内容）。<br/>usage: shred [-fuxz] [-n COUNT] [-o OFFSET] [-s SIZE] FILE... |
+| shred     | 安全地删除文件（用随机数据覆盖文件内容）。<br/>usage: shred [-fuxz] [-n COUNT] [-o OFFSET] [-s SIZE] FILE... |
 | sort      | 对从输入文件（或标准输入设备）到标准输出设备的所有文本行进行排序。<br/>usage: sort [-Mbcdfginrsuz] [FILE...] [-k#[,#[x]] [-t X]] [-o FILE] |
 | split     | 将输入（或标准输入设备）数据复制到一系列输出（或“x”）文件，使用按字母顺序递增的后缀（aa,ab,ac...az,ba,bb...）。<br/>usage: split [-a SUFFIX\_LEN] [-b BYTES] [-l LINES] [-n PARTS] [INPUT [OUTPUT]] |
 | stat      | 显示文件或文件系统的状态。<br/>usage: stat [-tfL] [-c FORMAT] FILE... |

@@ -13,7 +13,7 @@
 
 ## 入门
 
-入门可以帮助开发者了解应用开发的基本方法。
+[入门](quick-start/start-overview.md)可以帮助开发者了解应用开发的基本方法。
 
 通过这一部分内容的学习和初步实践，开发者可以快速构建出首个OpenHarmony应用，掌握应用程序包结构、资源文件的使用、以及ArkTS的核心功能和语法等基础知识，为后续的应用开发奠定基础。
 
@@ -31,12 +31,12 @@
 
 ## 工具
 
-DevEco Studio工具是OpenHarmony应用开发的推荐IDE工具。在工具部分，讲解了DevEco Studio工具的详细用法，包括使用该工具进行工程创建、应用签名、应用调试、应用安装运行的指导。
+DevEco Studio工具是OpenHarmony应用开发的推荐IDE工具。在[工具](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-tools-overview)部分，讲解了DevEco Studio工具的详细用法，包括使用该工具进行工程创建、应用签名、应用调试、应用安装运行的指导。
 
 ## 示例教程
 
-我们提供了Sample工程和Codelab这两种形式的示例教程，为开发者提供更丰富的开发参考，辅助开发者理解功能逻辑，提升开发效率。
+我们提供了[Sample工程](https://gitcode.com/openharmony/applications_app_samples/blob/master/README_zh.md)和[Codelab](https://gitcode.com/openharmony/codelabs/blob/master/README.md)这两种形式的示例教程，为开发者提供更丰富的开发参考，辅助开发者理解功能逻辑，提升开发效率。
 
 ## API参考
 
-API参考提供了OpenHarmony SDK各Kit开放能力的全量组件和接口的说明文档，可以帮助开发者快速查找到指定接口的详细描述和调用方法。
+[API参考](reference/development-intro-api.md)提供了OpenHarmony SDK各Kit开放能力的全量组件和接口的说明文档，可以帮助开发者快速查找到指定接口的详细描述和调用方法。

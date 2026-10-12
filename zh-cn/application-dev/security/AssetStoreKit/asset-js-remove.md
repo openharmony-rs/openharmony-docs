@@ -9,7 +9,7 @@
 
 ## 接口介绍
 
-开发者可以查阅API文档，获取关键资产删除接口的详细说明：异步接口remove(query: AssetMap)、同步接口removeSync(query: AssetMap)。
+开发者可以查阅API文档，获取关键资产删除接口的详细说明：异步接口[remove(query: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetremove)、同步接口[removeSync(query: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetremovesync12)。
 
 在删除关键资产时，关键资产属性的内容（AssetMap）参数如下表所示：
 
@@ -20,10 +20,10 @@
 | 属性名称（Tag）        | 属性内容（Value）                                             | 是否必选  | 说明                                             |
 | --------------------- | ------------------------------------------------------------ | -------- | ------------------------------------------------ |
 | ALIAS                 | 类型为Uint8Array，长度为1-256字节。                            | 可选     | 关键资产别名，每条关键资产的唯一索引。            |
-| ACCESSIBILITY         | 类型为number，取值范围详见Accessibility。 | 可选     | 基于锁屏状态的访问控制。                                     |
+| ACCESSIBILITY         | 类型为number，取值范围详见[Accessibility](../../reference/apis-asset-store-kit/js-apis-asset.md#accessibility)。 | 可选     | 基于锁屏状态的访问控制。                                     |
 | REQUIRE_PASSWORD_SET  | 类型为boolean。                                                   | 可选     | 是否仅在设置了锁屏密码的情况下，可访问关键资产。为true时表示删除仅用户设置了锁屏密码才允许访问的关键资产；为false时表示删除无论用户是否设置锁屏密码，均可访问的关键资产。     |
-| AUTH_TYPE             | 类型为number，取值范围详见AuthType。 | 可选     | 访问关键资产所需的用户认证类型。                   |
-| SYNC_TYPE             | 类型为number，取值范围详见SyncType。 | 可选     | 关键资产支持的同步类型。                           |
+| AUTH_TYPE             | 类型为number，取值范围详见[AuthType](../../reference/apis-asset-store-kit/js-apis-asset.md#authtype)。 | 可选     | 访问关键资产所需的用户认证类型。                   |
+| SYNC_TYPE             | 类型为number，取值范围详见[SyncType](../../reference/apis-asset-store-kit/js-apis-asset.md#synctype)。 | 可选     | 关键资产支持的同步类型。                           |
 | IS_PERSISTENT         | 类型为boolean。                                                   | 可选     | 在应用卸载时是否需要保留关键资产。为true时表示删除应用卸载后会被保留的关键资产；为false时表示删除应用卸载后会被删除的关键资产。               |
 | DATA_LABEL_CRITICAL_1 | 类型为Uint8Array，长度为1-2048字节。                        | 可选     | 关键资产附属信息，内容由业务自定义且有完整性保护。<br/>**说明：** 在API version 12及之前版本，长度为1-512字节。 |
 | DATA_LABEL_CRITICAL_2 | 类型为Uint8Array，长度为1-2048字节。                        | 可选     | 关键资产附属信息，内容由业务自定义且有完整性保护。<br/>**说明：** 在API version 12及之前版本，长度为1-512字节。 |
@@ -44,16 +44,16 @@
 
 > **说明：**
 >
-> 本模块提供了异步和同步两套接口，以下为异步接口的使用示例，同步接口详见@ohos.security.asset (关键资产存储服务)。
+> 本模块提供了异步和同步两套接口，以下为异步接口的使用示例，同步接口详见[@ohos.security.asset (关键资产存储服务)](../../reference/apis-asset-store-kit/js-apis-asset.md)。
 >
-> 在指定群组中删除一条关键资产的使用示例详见删除群组关键资产。
+> 在指定群组中删除一条关键资产的使用示例详见[删除群组关键资产](asset-js-group-access-control.md#删除群组关键资产)。
 >
-> 在删除前，需确保已有关键资产，可参考指南文档新增关键资产，否则将抛出NOT_FOUND错误（错误码24000002）。
+> 在删除前，需确保已有关键资产，可参考[指南文档](asset-js-add.md)新增关键资产，否则将抛出NOT_FOUND错误（错误码24000002）。
 
 删除一条别名是demo_alias的关键资产。
 
 1. 引用头文件，定义工具函数。
-   <!-- @import -->
+   <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/remove.ets) -->
    
    ``` TypeScript
    import { asset } from '@kit.AssetStoreKit';
@@ -67,7 +67,7 @@
    ```
 
 2. 参考如下示例代码，进行业务功能开发。
-   <!-- @remove_asset -->
+   <!-- @[remove_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/remove.ets) -->
    
    ``` TypeScript
    let query: asset.AssetMap = new Map();

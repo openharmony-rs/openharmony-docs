@@ -7,12 +7,12 @@
 <!--Adviser: @zhang_yixin13-->
 
 
-\@Watch应用于对状态变量的监听。如果开发者需要关注某个状态变量的值是否改变，可以使用\@Watch为状态变量设置回调函数。
+[\@Watch](../../reference/apis-arkui/arkui-ts/ts-state-management-watch.md#watch)应用于对状态变量的监听。如果开发者需要关注某个状态变量的值是否改变，可以使用\@Watch为状态变量设置回调函数。
 
 
 \@Watch提供了状态变量的监听能力，\@Watch仅能监听到可以观察到的变化。
 
-在阅读本文档前，建议开发者对状态管理基本观察能力有基本的了解。建议提前阅读：\@State。
+在阅读本文档前，建议开发者对状态管理基本观察能力有基本的了解。建议提前阅读：[\@State](./arkts-state.md)。
 
 > **说明：**
 >
@@ -31,8 +31,8 @@
 | -------------- | ---------------------------------------- |
 | 装饰器参数          | 必填。常量字符串，字符串需要有引号。是(string)&nbsp;=&gt;&nbsp;void&nbsp;自定义成员函数的方法的引用。 |
 | 可装饰的自定义组件变量    | 可监听所有装饰器装饰的状态变量。不允许监听常规变量。               |
-| 装饰器的顺序         | 装饰器顺序不影响实际功能，开发者可以根据自己的需要决定装饰器顺序的先后。建议\@State、\@Prop、\@Link等装饰器在\@Watch装饰器之前，以保持整体风格的一致。 |
-| \@Watch触发时机 | 使用\@Watch来监听状态变量变化时，回调触发时间是变量真正变化、被赋值的时间。详细示例请参考使用场景中的@Watch的触发时机。 |
+| 装饰器的顺序         | 装饰器顺序不影响实际功能，开发者可以根据自己的需要决定装饰器顺序的先后。建议[\@State](./arkts-state.md)、[\@Prop](./arkts-prop.md)、[\@Link](./arkts-link.md)等装饰器在\@Watch装饰器之前，以保持整体风格的一致。 |
+| \@Watch触发时机 | 使用\@Watch来监听状态变量变化时，回调触发时间是变量真正变化、被赋值的时间。详细示例请参考使用场景中的[@Watch的触发时机](#watch的触发时机)。 |
 
 ## 语法说明
 
@@ -43,7 +43,7 @@
 
 ## 观察变化和行为表现
 
-1. 当观察到状态变量的变化（包括双向绑定的AppStorage和LocalStorage中对应的key发生的变化）的时候，对应的\@Watch的回调方法将被触发；
+1. 当观察到状态变量的变化（包括双向绑定的[AppStorage](./arkts-appstorage.md)和[LocalStorage](./arkts-localstorage.md)中对应的key发生的变化）的时候，对应的\@Watch的回调方法将被触发；
 
 2. \@Watch方法在自定义组件的属性变更之后同步执行；
 
@@ -114,7 +114,7 @@ change() {
 以下示例展示组件更新和\@Watch的处理步骤。count在CountModifier中由\@State装饰，在TotalView中由\@Prop装饰。
 
 
-<!-- @count_modifier --> 
+<!-- @[count_modifier](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Watch/entry/src/main/ets/pages/CountModifier.ets) --> 
 
 ``` TypeScript
 @Component
@@ -154,7 +154,7 @@ struct CountModifier {
 }
 ```
 
-watch-count-modifier
+![watch-count-modifier](figures/watch-count-modifier.gif)
 
 处理步骤：
 
@@ -170,7 +170,7 @@ watch-count-modifier
 以下示例说明了如何在子组件中观察\@Link变量。
 
 
-<!-- @basket_modifier --> 
+<!-- @[basket_modifier](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Watch/entry/src/main/ets/pages/BasketModifier.ets) --> 
 
 ``` TypeScript
 class PurchaseItem {
@@ -191,7 +191,7 @@ struct BasketViewer {
 
   updateTotal(): number {
     let total = this.shopBasket.reduce((sum, i) => sum + i.price, 0);
-    // 超过100欧元可享受折扣
+    // 满100欧元可享受折扣
     if (total >= 100) {
       total = 0.9 * total;
     }
@@ -245,13 +245,13 @@ struct BasketModifier {
 
 效果图如下：
 
-watch_001
+![watch_001](figures/watch_001.gif)
 
 ### \@Watch的触发时机
 
-为了展示\@Watch回调触发时间是根据状态变量真正变化的时间，本示例在子组件中同时使用\@Link和\@ObjectLink装饰器，分别观察不同的状态对象。通过在父组件中更改状态变量并观察\@Watch回调的先后顺序，来表明\@Watch触发的时机与赋值、同步的关系。
+为了展示\@Watch回调触发时间是根据状态变量真正变化的时间，本示例在子组件中同时使用\@Link和[\@ObjectLink](./arkts-observed-and-objectlink.md)装饰器，分别观察不同的状态对象。通过在父组件中更改状态变量并观察\@Watch回调的先后顺序，来表明\@Watch触发的时机与赋值、同步的关系。
 
-<!-- @parent_component --> 
+<!-- @[parent_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Watch/entry/src/main/ets/pages/ParentComponent.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -366,7 +366,7 @@ struct ChildComponent {
 }
 ```
 
-watch-parent-component
+![watch-parent-component](figures/watch-parent-component.gif)
 
 处理步骤如下：
 
@@ -389,7 +389,7 @@ watch-parent-component
 以下示例说明了如何在\@Watch函数中使用changedPropertyName进行不同的逻辑处理。
 
 
-<!-- @use_property_name --> 
+<!-- @[use_property_name](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Watch/entry/src/main/ets/pages/UsePropertyName.ets) --> 
 
 ``` TypeScript
 @Entry
@@ -435,7 +435,7 @@ struct UsePropertyName {
 }
 ```
 
-watch-use-property-name
+![watch-use-property-name](figures/watch-use-property-name.gif)
 
 处理步骤如下：
 

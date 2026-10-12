@@ -6,15 +6,15 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-NDK接口提供了监听和处理基础输入事件的能力，可绑定点击事件（NODE_ON_CLICK_EVENT）、触摸事件（NODE_TOUCH_EVENT）、鼠标事件（NODE_ON_MOUSE）、悬浮事件（NODE_ON_HOVER_EVENT）、轴事件（NODE_ON_AXIS）、按键事件（NODE_ON_KEY_EVENT），然后通过事件接收器中的回调函数获取事件的详细信息。
+NDK接口提供了监听和处理基础输入事件的能力，可绑定点击事件（[NODE_ON_CLICK_EVENT](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)）、触摸事件（[NODE_TOUCH_EVENT](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)）、鼠标事件（[NODE_ON_MOUSE](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)）、悬浮事件（[NODE_ON_HOVER_EVENT](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)）、轴事件（[NODE_ON_AXIS](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)）、按键事件（[NODE_ON_KEY_EVENT](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)），然后通过事件接收器中的回调函数获取事件的详细信息。
 
-以下示例均需基于接入ArkTS页面章节，详细代码请参考完整示例。
+以下示例均需基于[接入ArkTS页面](ndk-access-the-arkts-page.md)章节，详细代码请参考[完整示例](#完整示例)。
 
 ## 点击事件
 
 点击事件在用户点击组件时触发，可获取点击位置、触摸点数量、指针ID、压力值等信息。可对节点绑定如下处理函数。
 
-<!-- @handle_click_event -->
+<!-- @[handle_click_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkBindInputEvent/entry/src/main/cpp/NormalTextListExample.h) -->
 
 ``` C
 // 处理点击事件
@@ -47,9 +47,9 @@ void HandleClickEvent(ArkUI_UIInputEvent *inputEvent)
 }
 ```
 
-从API version 18开始，新增NODE_ON_CLICK_EVENT枚举。节点自身可以注册NODE_ON_CLICK_EVENT事件监听，以响应上述处理函数。
+从API version 18开始，新增[NODE_ON_CLICK_EVENT](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)枚举。节点自身可以注册NODE_ON_CLICK_EVENT事件监听，以响应上述处理函数。
 
-<!-- @register_click_event -->
+<!-- @[register_click_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkBindInputEvent/entry/src/main/cpp/NormalTextListExample.h) -->
 
 ``` C
 nativeModule_->registerNodeEvent(handle_, NODE_ON_CLICK_EVENT, 0, this);
@@ -59,7 +59,7 @@ nativeModule_->registerNodeEvent(handle_, NODE_ON_CLICK_EVENT, 0, this);
 
 触摸事件在用户触摸屏幕时触发，除了点击事件的信息外，还可获取触摸区域宽度和高度。可对节点绑定如下处理函数。
 
-<!-- @handle_touch_event -->
+<!-- @[handle_touch_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkBindInputEvent/entry/src/main/cpp/NormalTextListExample.h) -->
 
 ``` C
 // 处理触摸事件
@@ -95,9 +95,9 @@ void HandleTouchEvent(ArkUI_UIInputEvent *inputEvent)
 }
 ```
 
-节点自身需要注册NODE_TOUCH_EVENT事件监听，以响应上述处理函数。
+节点自身需要注册[NODE_TOUCH_EVENT](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)事件监听，以响应上述处理函数。
 
-<!-- @register_touch_event -->
+<!-- @[register_touch_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkBindInputEvent/entry/src/main/cpp/NormalTextListExample.h) -->
 
 ``` C
 nativeModule_->registerNodeEvent(handle_, NODE_TOUCH_EVENT, 0, this);
@@ -107,7 +107,7 @@ nativeModule_->registerNodeEvent(handle_, NODE_TOUCH_EVENT, 0, this);
 
 鼠标事件在使用鼠标操作时触发，可获取鼠标按键类型、鼠标动作类型、滚轮移动增量等信息。可对节点绑定如下处理函数。
 
-<!-- @handle_mouse_event -->
+<!-- @[handle_mouse_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkBindInputEvent/entry/src/main/cpp/NormalTextListExample.h) -->
 
 ``` C
 // 处理鼠标事件
@@ -132,9 +132,9 @@ void HandleMouseEvent(ArkUI_UIInputEvent *inputEvent)
 }
 ```
 
-节点自身需要注册NODE_ON_MOUSE事件监听，以响应上述处理函数。
+节点自身需要注册[NODE_ON_MOUSE](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)事件监听，以响应上述处理函数。
 
-<!-- @register_mouse_event -->
+<!-- @[register_mouse_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkBindInputEvent/entry/src/main/cpp/NormalTextListExample.h) -->
 
 ``` C
 nativeModule_->registerNodeEvent(handle_, NODE_ON_MOUSE, 0, this);
@@ -144,7 +144,7 @@ nativeModule_->registerNodeEvent(handle_, NODE_ON_MOUSE, 0, this);
 
 悬浮事件在鼠标指针移至组件上方或远离组件时触发，可获取悬浮状态。可对节点绑定如下处理函数。
 
-<!-- @handle_hover_event -->
+<!-- @[handle_hover_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkBindInputEvent/entry/src/main/cpp/NormalTextListExample.h) -->
 
 ``` C
 // 处理悬浮事件
@@ -163,9 +163,9 @@ void HandleHoverEvent(ArkUI_UIInputEvent *inputEvent)
 }
 ```
 
-从API version 17开始，新增NODE_ON_HOVER_EVENT枚举。节点自身可以注册NODE_ON_HOVER_EVENT事件监听，以响应上述处理函数。
+从API version 17开始，新增[NODE_ON_HOVER_EVENT](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)枚举。节点自身可以注册NODE_ON_HOVER_EVENT事件监听，以响应上述处理函数。
 
-<!-- @register_hover_event -->
+<!-- @[register_hover_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkBindInputEvent/entry/src/main/cpp/NormalTextListExample.h) -->
 
 ``` C
 nativeModule_->registerNodeEvent(handle_, NODE_ON_HOVER_EVENT, 0, this);
@@ -175,7 +175,7 @@ nativeModule_->registerNodeEvent(handle_, NODE_ON_HOVER_EVENT, 0, this);
 
 轴事件通过鼠标滚轮、游戏摇杆等设备触发，可获取轴动作类型、垂直轴值、水平轴值、缩放比例、滚动步长等信息。可对节点绑定如下处理函数。
 
-<!-- @handle_axis_event -->
+<!-- @[handle_axis_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkBindInputEvent/entry/src/main/cpp/NormalTextListExample.h) -->
 
 ``` C
 // 处理轴事件
@@ -197,9 +197,9 @@ void HandleAxisEvent(ArkUI_UIInputEvent *inputEvent)
 }
 ```
 
-从API version 17开始，新增NODE_ON_AXIS枚举。节点自身可以注册NODE_ON_AXIS事件监听，以响应上述处理函数。
+从API version 17开始，新增[NODE_ON_AXIS](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)枚举。节点自身可以注册NODE_ON_AXIS事件监听，以响应上述处理函数。
 
-<!-- @register_axis_event -->
+<!-- @[register_axis_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkBindInputEvent/entry/src/main/cpp/NormalTextListExample.h) -->
 
 ``` C
 nativeModule_->registerNodeEvent(handle_, NODE_ON_AXIS, 0, this);
@@ -209,7 +209,7 @@ nativeModule_->registerNodeEvent(handle_, NODE_ON_AXIS, 0, this);
 
 按键事件在用户按下或释放键盘按键时触发，可获取按键类型、按键动作、按下的键、修饰键状态、设备ID等信息。组件需要先获取焦点才能响应按键事件。可对节点绑定如下处理函数。
 
-<!-- @handle_key_event -->
+<!-- @[handle_key_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkBindInputEvent/entry/src/main/cpp/NormalTextListExample.h) -->
 
 ``` C
 // 处理按键事件
@@ -228,9 +228,9 @@ void HandleKeyEvent(ArkUI_UIInputEvent *inputEvent)
 }
 ```
 
-设置节点为可聚焦，并绑定点击事件，在点击时请求焦点。同时节点自身需要注册NODE_ON_KEY_EVENT事件监听，以响应上述处理函数。
+设置节点为可聚焦，并绑定点击事件，在点击时请求焦点。同时节点自身需要注册[NODE_ON_KEY_EVENT](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)事件监听，以响应上述处理函数。
 
-<!-- @register_key_event -->
+<!-- @[register_key_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkBindInputEvent/entry/src/main/cpp/NormalTextListExample.h) -->
 
 ``` C
 // 设置为可聚焦，以便接收按键事件
@@ -249,7 +249,7 @@ nativeModule_->registerNodeEvent(handle_, NODE_ON_KEY_EVENT, 0, this);
 
 1. 定义基础输入事件的数据结构。
 
-   <!-- @Cpp_InputEventTypes -->
+   <!-- @[Cpp_InputEventTypes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkBindInputEvent/entry/src/main/cpp/InputEventTypes.h) -->
    
    ``` C
    // InputEventTypes.h
@@ -293,7 +293,7 @@ nativeModule_->registerNodeEvent(handle_, NODE_ON_KEY_EVENT, 0, this);
 
 2. 注册各种基础输入事件并实现相应事件的监听。
 
-   <!-- @Cpp_InputEventListExample -->
+   <!-- @[Cpp_InputEventListExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkBindInputEvent/entry/src/main/cpp/NormalTextListExample.h) -->
    
    ``` C
    // NormalTextListExample.h
@@ -828,7 +828,7 @@ nativeModule_->registerNodeEvent(handle_, NODE_ON_KEY_EVENT, 0, this);
    #endif // MYAPPLICATION_NORMALTEXTLISTEXAMPLE_H
    ```
 
-   由于使用了日志打印接口OH_LOG_Print，需要在CMakeLists.txt中添加对libhilog_ndk.z.so的引用。
+   由于使用了日志打印接口[OH_LOG_Print](../reference/apis-performance-analysis-kit/capi-log-h.md#oh_log_print)，需要在CMakeLists.txt中添加对libhilog_ndk.z.so的引用。
 
    ```text
    add_library(entry SHARED napi_init.cpp NativeEntry.cpp)

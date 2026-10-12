@@ -12,10 +12,10 @@
 
 **问题现象**
 
-使用AttributeModifier对组件进行动态属性设置，设置某些属性后出现JS Crash。
+使用AttributeModifier对组件进行[动态属性设置](../reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md)，设置某些属性后出现[JS Crash](../dfx/jscrash-guidelines.md)。
 
 <!--RP1-->
-
+![](figures/jscrash_happened.png)
 <!--RP1End-->
 
 **解决措施**
@@ -54,4 +54,4 @@ struct attributeDemo {
   }
 }
 ```
-attributeModifier_error
+![attributeModifier_error](figures/attributeModifier_error.gif)

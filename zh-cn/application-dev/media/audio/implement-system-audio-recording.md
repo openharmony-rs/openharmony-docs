@@ -8,13 +8,13 @@
 
 从API版本26.0.0开始，Audio Kit支持应用使用AudioCapturer（ArkTS）或OH_AudioCapturer（C/C++）录制系统音频。本文介绍具体开发方法。
 
-Phone、Tablet和TV设备支持`SystemCapability.Multimedia.Audio.PlaybackCapture`系统能力，其他设备可以通过canIUse()检查是否支持该系统能力。使用ArkTS API开发时，仅支持Stage模型。
+Phone、Tablet和TV设备支持`SystemCapability.Multimedia.Audio.PlaybackCapture`系统能力，其他设备可以通过[canIUse()](../../reference/common/js-apis-syscap.md#caniuse)检查是否支持该系统能力。使用ArkTS API开发时，仅支持Stage模型。
 
 创建AudioCapturer时通过`playbackCaptureMode`配置内录模式，创建OH_AudioCapturer时通过`OH_AudioStreamBuilder_SetPlaybackCaptureMode()`配置内录模式。
 
 配置内录模式后，需分别通过`requestPlaybackCaptureStart()`或`OH_AudioCapturer_RequestPlaybackCaptureStart()`启动，不支持通过`start()`或`OH_AudioCapturer_Start()`接口启动。
 
-如果需要同时录制屏幕画面和系统音频，请参考AVScreenCapture录屏基础流程。
+如果需要同时录制屏幕画面和系统音频，请参考[AVScreenCapture录屏基础流程](../media/avscreencapture-c-basic-process.md)。
 
 ## 开发指导
 
@@ -26,9 +26,9 @@ Phone、Tablet和TV设备支持`SystemCapability.Multimedia.Audio.PlaybackCaptur
 4. 启动成功后，通过音频数据回调处理内录PCM数据。
 5. 停止采集，取消监听并释放音频采集器资源。
 
-ArkTS开发建议搭配AudioCapturer、AudioCapturerOptions和AudioPlaybackCaptureMode的API说明阅读。
+ArkTS开发建议搭配[AudioCapturer](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md)、[AudioCapturerOptions](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiocaptureroptions8)和[AudioPlaybackCaptureMode](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioplaybackcapturemode)的API说明阅读。
 
-C/C++开发建议搭配OH_AudioStreamBuilderStruct、OH_AudioCapturerStruct和OH_AudioStream_PlaybackCaptureMode的API说明阅读。
+C/C++开发建议搭配[OH_AudioStreamBuilderStruct](../../reference/apis-audio-kit/capi-ohaudio-oh-audiostreambuilderstruct.md)、[OH_AudioCapturerStruct](../../reference/apis-audio-kit/capi-ohaudio-oh-audiocapturerstruct.md)和[OH_AudioStream_PlaybackCaptureMode](../../reference/apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_playbackcapturemode)的API说明阅读。
 
 ### 用户授权流程
 
@@ -40,7 +40,7 @@ C/C++开发建议搭配OH_AudioStreamBuilderStruct、OH_AudioCapturerStruct和OH
 
 **系统弹框示意图：**
 
-
+<img src="figures/playback-capture-authorization.jpg" width="320" alt="音频内录授权弹框">
 
 ### 开发步骤及注意事项(ArkTS)
 
@@ -48,7 +48,7 @@ C/C++开发建议搭配OH_AudioStreamBuilderStruct、OH_AudioCapturerStruct和OH
 
 1. 导入模块。
 
-   <!-- @PlaybackCaptureImport -->
+   <!-- @[PlaybackCaptureImport](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/PlaybackCapture.ets) -->
    ``` TypeScript
    import { audio } from '@kit.AudioKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -56,7 +56,7 @@ C/C++开发建议搭配OH_AudioStreamBuilderStruct、OH_AudioCapturerStruct和OH
 
 2. 配置音频采集参数并创建AudioCapturer实例。
 
-   创建AudioCapturer时，通过AudioCapturerOptions中的`playbackCaptureMode`配置内录模式。该字段支持AudioPlaybackCaptureMode枚举值、按位或组合。未配置`playbackCaptureMode`时，AudioCapturer按普通音频采集器创建。
+   创建AudioCapturer时，通过[AudioCapturerOptions](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiocaptureroptions8)中的`playbackCaptureMode`配置内录模式。该字段支持[AudioPlaybackCaptureMode](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioplaybackcapturemode)枚举值、按位或组合。未配置`playbackCaptureMode`时，AudioCapturer按普通音频采集器创建。
 
    当前支持的内录模式如下：
 
@@ -71,7 +71,7 @@ C/C++开发建议搭配OH_AudioStreamBuilderStruct、OH_AudioCapturerStruct和OH
    >
    > 内录启动时还会进行用户授权检查，部分设备会展示系统授权或隐私提示弹窗，授权结果通过`requestPlaybackCaptureStart()`回调返回。
 
-   <!-- @SetPlaybackCaptureMode -->
+   <!-- @[SetPlaybackCaptureMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/PlaybackCapture.ets) -->
    ``` TypeScript
    let audioStreamInfo: audio.AudioStreamInfo = {
      samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
@@ -96,11 +96,11 @@ C/C++开发建议搭配OH_AudioStreamBuilderStruct、OH_AudioCapturerStruct和OH
      await audio.createAudioCapturer(audioCapturerOptions);
    ```
 
-3. 调用on('readData')订阅音频数据读入回调。
+3. 调用[on('readData')](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#onreaddata11)订阅音频数据读入回调。
 
    回调返回PCM数据，应用可根据业务写入文件、送入编码器或交给自定义音频处理模块。以下示例统计接收到的PCM数据字节数。
 
-   <!-- @PlaybackCaptureGlobalState -->
+   <!-- @[PlaybackCaptureGlobalState](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/PlaybackCapture.ets) -->
    ``` TypeScript
    let audioCapturer: audio.AudioCapturer | undefined = undefined;
    let isPlaybackCaptureStarted: boolean = false;
@@ -109,7 +109,7 @@ C/C++开发建议搭配OH_AudioStreamBuilderStruct、OH_AudioCapturerStruct和OH
    let playbackCaptureStartState: audio.PlaybackCaptureStartState | undefined = undefined;
    ```
 
-   <!-- @PlaybackCaptureReadDataCallback -->
+   <!-- @[PlaybackCaptureReadDataCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/PlaybackCapture.ets) -->
    ``` TypeScript
      private readDataCallback: Callback<ArrayBuffer> = (buffer: ArrayBuffer): void => {
        readBytes += buffer.byteLength;
@@ -123,9 +123,9 @@ C/C++开发建议搭配OH_AudioStreamBuilderStruct、OH_AudioCapturerStruct和OH
    >
    > `readData`回调中不建议执行耗时任务。若需要编码、网络发送或复杂算法处理，建议将PCM数据转交给独立任务处理，避免数据回调阻塞导致丢帧、卡顿或杂音。
 
-4. 调用requestPlaybackCaptureStart()请求启动内录。
+4. 调用[requestPlaybackCaptureStart()](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#requestplaybackcapturestart)请求启动内录。
 
-   该接口为非阻塞接口，系统会继续处理用户授权检查和内录流启动，最终结果通过PlaybackCaptureStartState返回。
+   该接口为非阻塞接口，系统会继续处理用户授权检查和内录流启动，最终结果通过[PlaybackCaptureStartState](../../reference/apis-audio-kit/arkts-apis-audio-e.md#playbackcapturestartstate)返回。
 
    示例通过递增`playbackCaptureRequestId`标识每次启动请求。回调返回时同时校验采集器实例和请求ID，避免旧请求回调修改当前内录状态。等待授权期间，应用应继续处理其他业务，避免同步阻塞当前线程。
 
@@ -133,7 +133,7 @@ C/C++开发建议搭配OH_AudioStreamBuilderStruct、OH_AudioCapturerStruct和OH
    >
    > 内录采集器不能通过`start()`接口启动。调用`requestPlaybackCaptureStart()`后，只有收到`STATE_SUCCESS`时，应用才应认为内录已启动成功。
 
-   <!-- @RequestPlaybackCaptureStart -->
+   <!-- @[RequestPlaybackCaptureStart](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/PlaybackCapture.ets) -->
    ``` TypeScript
    if (audioCapturer === undefined) {
      return;
@@ -159,13 +159,13 @@ C/C++开发建议搭配OH_AudioStreamBuilderStruct、OH_AudioCapturerStruct和OH
    });
    ```
 
-   启动结果请参考PlaybackCaptureStartState。如果启动结果不是`STATE_SUCCESS`，应用应根据业务提示用户，并及时释放已创建的AudioCapturer实例。应用主动停止内录流后，还应忽略旧请求返回的异步回调。
+   启动结果请参考[PlaybackCaptureStartState](../../reference/apis-audio-kit/arkts-apis-audio-e.md#playbackcapturestartstate)。如果启动结果不是`STATE_SUCCESS`，应用应根据业务提示用户，并及时释放已创建的AudioCapturer实例。应用主动停止内录流后，还应忽略旧请求返回的异步回调。
 
-5. 调用stop停止采集，并调用release释放AudioCapturer资源。
+5. 调用[stop](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#stop8)停止采集，并调用[release](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#release8)释放AudioCapturer资源。
 
    应用结束内录后，需要停止AudioCapturer并释放资源。释放前应取消`readData`监听，避免对象释放后仍处理回调。
 
-   <!-- @ReleasePlaybackCapture -->
+   <!-- @[ReleasePlaybackCapture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/PlaybackCapture.ets) -->
    ``` TypeScript
    private async releasePlaybackCapture(): Promise<void> {
      if (audioCapturer === undefined) {
@@ -188,19 +188,19 @@ C/C++开发建议搭配OH_AudioStreamBuilderStruct、OH_AudioCapturerStruct和OH
 
 ### 开发步骤及注意事项(C/C++)
 
-以下C/C++示例为片段代码，展示创建、启动、停止和释放OH_AudioCapturer的完整生命周期。OH_AudioCapturer的基础录制流程可参考推荐使用OHAudio开发音频录制功能(C/C++)。
+以下C/C++示例为片段代码，展示创建、启动、停止和释放OH_AudioCapturer的完整生命周期。OH_AudioCapturer的基础录制流程可参考[推荐使用OHAudio开发音频录制功能(C/C++)](using-ohaudio-for-recording.md)。
 
 1. 引入头文件，并定义用于保存内录采集器及启动状态的变量。
 
    内录启动接口为异步接口，需要在启动函数返回后继续保存`OH_AudioCapturer`实例，确保在启动结果回调中处理失败场景，并在业务结束时停止和释放实例。互斥锁（Mutual Exclusion Lock）用于保护全局采集器指针，避免启动结果回调、重复启动和主动停止同时访问该指针。
 
-   <!-- @header_file -->
+   <!-- @[header_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
    ``` C++
    #include <ohaudio/native_audiocapturer.h>
    #include <ohaudio/native_audiostreambuilder.h>
    ```
 
-   <!-- @PlaybackCaptureConstants -->
+   <!-- @[PlaybackCaptureConstants](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
    ``` C++
    constexpr int32_t PLAYBACK_CAPTURE_SAMPLE_RATE = 48000;
    constexpr int32_t PLAYBACK_CAPTURE_CHANNEL_COUNT = 2;
@@ -208,7 +208,7 @@ C/C++开发建议搭配OH_AudioStreamBuilderStruct、OH_AudioCapturerStruct和OH
        AUDIOSTREAM_PLAYBACKCAPTURE_MODE_EXCLUDING_SELF;
    ```
 
-   <!-- @PlaybackCaptureGlobalState -->
+   <!-- @[PlaybackCaptureGlobalState](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
    ``` C++
    std::mutex g_playbackCaptureMutex;
    OH_AudioCapturer* g_playbackCaptureCapturer = nullptr;
@@ -220,7 +220,7 @@ C/C++开发建议搭配OH_AudioStreamBuilderStruct、OH_AudioCapturerStruct和OH
 
    音频数据回调返回内录PCM数据，不建议在回调中执行耗时任务。内录启动失败或用户未授权时，及时释放已创建的采集器。
 
-   <!-- @PlaybackCaptureReadDataCallback -->
+   <!-- @[PlaybackCaptureReadDataCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
    ``` C++
    void MyOnPlaybackCaptureReadData(
        OH_AudioCapturer* capturer,
@@ -235,7 +235,7 @@ C/C++开发建议搭配OH_AudioStreamBuilderStruct、OH_AudioCapturerStruct和OH
    }
    ```
 
-   <!-- @PlaybackCaptureStartCallback -->
+   <!-- @[PlaybackCaptureStartCallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
    ``` C++
    void MyOnPlaybackCaptureStart(
        OH_AudioCapturer* capturer,
@@ -267,7 +267,7 @@ C/C++开发建议搭配OH_AudioStreamBuilderStruct、OH_AudioCapturerStruct和OH
 
 3. 创建音频采集器并配置内录模式。
 
-   通过OH_AudioStreamBuilder_SetPlaybackCaptureMode()配置内录模式。内录启动时，系统会进行用户授权检查，并通过启动结果回调返回授权结果。
+   通过[OH_AudioStreamBuilder_SetPlaybackCaptureMode()](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setplaybackcapturemode)配置内录模式。内录启动时，系统会进行用户授权检查，并通过启动结果回调返回授权结果。
 
    当前支持的内录模式如下：
 
@@ -280,7 +280,7 @@ C/C++开发建议搭配OH_AudioStreamBuilderStruct、OH_AudioCapturerStruct和OH
 
    单独使用排除自身模式时，会录制大部分允许被采集的音频流并排除应用自身播放的音频；与媒体模式组合时，只录制媒体类音频并排除应用自身播放的音频。
 
-   <!-- @SetPlaybackCaptureMode -->
+   <!-- @[SetPlaybackCaptureMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
    ``` C++
    bool ConfigurePlaybackCaptureBuilder(OH_AudioStreamBuilder* builder)
    {
@@ -382,9 +382,9 @@ C/C++开发建议搭配OH_AudioStreamBuilderStruct、OH_AudioCapturerStruct和OH
    
 4. 停止并释放内录采集器。
 
-   业务结束后，通过OH_AudioCapturer_Stop()停止采集，并通过OH_AudioCapturer_Release()释放资源。
+   业务结束后，通过[OH_AudioCapturer_Stop()](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_stop)停止采集，并通过[OH_AudioCapturer_Release()](../../reference/apis-audio-kit/capi-native-audiocapturer-h.md#oh_audiocapturer_release)释放资源。
 
-   <!-- @StopPlaybackCapture -->
+   <!-- @[StopPlaybackCapture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCapturerSampleC/entry/src/main/cpp/AudioCapture.cpp) -->
    ``` C++
    napi_value StopPlaybackCapture(napi_env env, napi_callback_info info)
    {
@@ -418,5 +418,5 @@ C/C++开发建议搭配OH_AudioStreamBuilderStruct、OH_AudioCapturerStruct和OH
 
 播放端可以通过配置自身音频流的隐私属性，控制是否允许其他应用录制。系统建立内录采集链路时，会过滤标记为隐私保护的播放流，因此通话内容、账号信息或其他隐私内容不会被内录采集。该配置属于播放端能力，不需要内录应用额外处理。
 
-- 使用ArkTS API开发时，播放端可通过AudioRendererOptions中的`privacyType`控制播放流是否允许被其他应用录制。
-- 使用C API开发时，播放端可通过OH_AudioStreamBuilder_SetRendererPrivacy()控制播放流是否允许被其他应用录制。
+- 使用ArkTS API开发时，播放端可通过[AudioRendererOptions](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiorendereroptions8)中的`privacyType`控制播放流是否允许被其他应用录制。
+- 使用C API开发时，播放端可通过[OH_AudioStreamBuilder_SetRendererPrivacy()](../../reference/apis-audio-kit/capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_setrendererprivacy)控制播放流是否允许被其他应用录制。

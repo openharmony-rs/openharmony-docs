@@ -9,22 +9,22 @@
 
 ## OpenHarmony提供的两种打印方式
 
-方式一：应用通过接口拉起系统打印预览界面。适合没有实现打印预览能力的应用。
+[方式一](#通过接口拉起系统打印预览界面下发任务)：应用通过接口拉起系统打印预览界面。适合没有实现打印预览能力的应用。
 
-方式二：应用通过接口指定打印文件和选项直接下发打印任务，适合已经实现打印预览能力的应用。
+[方式二](#通过打印接口直接下发打印任务)：应用通过接口指定打印文件和选项直接下发打印任务，适合已经实现打印预览能力的应用。
 
 > **说明：**
 >
-> 使用打印服务，需声明权限：ohos.permission.PRINT。
+> 使用打印服务，需[声明权限](../../security/AccessToken/declare-permissions.md)：ohos.permission.PRINT。
 >
 > 当不再使用打印服务时，需先调用OH_Print_UnregisterPrinterChangeListener()和OH_Print_StopPrinterDiscovery()取消事件订阅，再调用OH_Print_Release()释放打印客户端资源。
 >
-> C/C++接口需要在NDK工程中使用，请参考NDK开发导读。
+> C/C++接口需要在NDK工程中使用，请参考[NDK开发导读](../../napi/ndk-development-overview.md)。
 
 ### 引用NDK头文件
 初始路径为entry/src/main/cpp/types/napi_init.cpp # C++ 源码目录 NAPI 初始化入口（桥接 ArkTS 与 C++）。
 
-<!-- @print_native_init -->
+<!-- @[print_native_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 #include "napi/native_api.h"
@@ -43,7 +43,7 @@
 
 初始路径为entry/src/main/ets/pages/Index.ets # ArkTS 源码目录主页面。
 
-<!-- @print_native_ts_init -->
+<!-- @[print_native_ts_init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -72,7 +72,7 @@ target_link_libraries(entry PUBLIC
 
 封装C/C++接口。
 
-<!-- @print_native_callback1 -->
+<!-- @[print_native_callback1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 static void PrinterDiscoveryCallback(Print_DiscoveryEvent event, const Print_PrinterInfo *printerInfo)
@@ -106,7 +106,7 @@ static void PrinterDiscoveryCallback(Print_DiscoveryEvent event, const Print_Pri
 }
 ```
 
-<!-- @print_native_callback2 -->
+<!-- @[print_native_callback2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 static void PrinterChangeCallback(Print_PrinterEvent event, const Print_PrinterInfo *printerInfo)
@@ -141,7 +141,7 @@ static void PrinterChangeCallback(Print_PrinterEvent event, const Print_PrinterI
 }
 ```
 
-<!-- @print_native_lifecycle1 -->
+<!-- @[print_native_lifecycle1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 static napi_value NativeInit(napi_env env, napi_callback_info info)
@@ -163,7 +163,7 @@ static napi_value NativeInit(napi_env env, napi_callback_info info)
 }
 ```
 
-<!-- @print_native_lifecycle2 -->
+<!-- @[print_native_lifecycle2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 static napi_value NativeRelease(napi_env env, napi_callback_info info)
@@ -198,7 +198,7 @@ EXTERN_C_END
 
 应用侧在页面被拉起的生命周期初始化，在页面关掉时释放。
 
-<!-- @print_native_ts_lifecycle -->
+<!-- @[print_native_ts_lifecycle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 // 页面展示到屏幕时，初始化打印服务
@@ -214,7 +214,7 @@ aboutToDisappear(): void {
 ### 通过接口拉起系统打印预览界面下发任务
 封装C/C++接口。
 
-<!-- @print_native_startprint1 -->
+<!-- @[print_native_startprint1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 // WriteFile 由开发者实现，示例仅为简单的文件拷贝。根据当前用户修改后的打印参数，若需要更新打印文件可重新写入系统提供的fd中
@@ -241,7 +241,7 @@ static uint32_t WriteFile(uint32_t fd, const Print_PrintAttributes *oldAttrs, co
 }
 ```
 
-<!-- @print_native_startprint2 -->
+<!-- @[print_native_startprint2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 // 系统打印预览界面回调，首次拉起或用户修改打印参数时的延迟文件写入回调。可以根据新参数适当修改打印文件
@@ -267,7 +267,7 @@ static void OnJobStateChangedCb(const char *jobId, uint32_t state)
 }
 ```
 
-<!-- @print_native_startprint3 -->
+<!-- @[print_native_startprint3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 // 拉起系统打印预览界面
@@ -307,7 +307,7 @@ EXTERN_C_END
 
 主页上新增一个按钮，单击调用C/C++的nativeStartPrintByNative接口拉起打印预览界面。
 
-<!-- @print_native_ts_startprint -->
+<!-- @[print_native_ts_startprint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 Button('OH_Print_StartPrintByNative')
@@ -322,7 +322,7 @@ Button('OH_Print_StartPrintByNative')
 ### 通过打印接口直接下发打印任务
 封装C/C++接口，示例仅演示从已添加打印设备列表获取信息并下发任务。
 
-<!-- @print_native_startjob -->
+<!-- @[print_native_startjob](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 // 下发打印任务
@@ -404,7 +404,7 @@ EXTERN_C_END
 
 主页上新增一个按钮，单击调用C/C++的nativeStartPrintJob直接下发任务。
 
-<!-- @print_native_ts_startjob -->
+<!-- @[print_native_ts_startjob](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/print/NativePrintFile/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 Button('OH_Print_StartPrintJob')

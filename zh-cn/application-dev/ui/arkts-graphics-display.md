@@ -6,7 +6,7 @@
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
-开发者经常需要在应用中显示一些图片，例如：按钮中的icon、网络图片、本地图片等。在应用中显示图片需要使用Image组件实现，Image支持多种图片格式，包括png、jpg、jpeg等格式，不支持apng和svga格式，具体支持格式和用法请参考Image组件。
+开发者经常需要在应用中显示一些图片，例如：按钮中的icon、网络图片、本地图片等。在应用中显示图片需要使用Image组件实现，Image支持多种图片格式，包括png、jpg、jpeg等格式，不支持apng和svga格式，具体支持格式和用法请参考[Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md)组件。
 
 
 Image通过调用接口来创建，接口调用形式如下：
@@ -16,9 +16,9 @@ Image(src: PixelMap | ResourceStr | DrawableDescriptor)
 ```
 
 
-该接口通过图片数据源获取图片，支持本地图片和网络图片的渲染展示。其中，src是图片的数据源，加载方式请参考加载图片资源。
+该接口通过图片数据源获取图片，支持本地图片和网络图片的渲染展示。其中，src是图片的数据源，加载方式请参考[加载图片资源](#加载图片资源)。
 
-如果图片加载过程中出现白色块，请参考Image白块解决方案。如果图片加载时间过长，请参考预置图片资源加载优化。
+如果图片加载过程中出现白色块，请参考[Image白块解决方案](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-image-white-lump-solution)。如果图片加载时间过长，请参考[预置图片资源加载优化](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-texture-compression-improve-performance)。
 
 
 ## 加载图片资源
@@ -38,9 +38,9 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
 
   > **说明：**
   > 
-  > 从DevEco Studio 6.0.0 Beta2版本开始，新建工程或模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使相关模块：build-profile.json5中buildOption > resOptions > copyCodeResource > enable设置为true，详见resOptions中copyCodeResource相关介绍。
+  > 从DevEco Studio 6.0.0 Beta2版本开始，新建工程或模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使相关模块：build-profile.json5中buildOption > resOptions > copyCodeResource > enable设置为true，详见resOptions中[copyCodeResource](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#section754823013348)相关介绍。
 
-  <!-- @local_resource -->    
+  <!-- @[local_resource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadingResources.ets) -->    
   
   ``` TypeScript
   // 'images/view.jpg'需要替换为开发者所需的资源文件
@@ -52,25 +52,25 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
 
 - 网络资源
 
-  引入网络图片需申请权限ohos.permission.INTERNET，具体申请方式请参考声明权限。此时，Image组件的src参数为网络图片的链接。
+  引入网络图片需申请权限ohos.permission.INTERNET，具体申请方式请参考[声明权限](../security/AccessToken/declare-permissions.md)。此时，Image组件的src参数为网络图片的链接。
 
   当前Image组件仅支持加载简单网络图片。
 
   首次加载网络图片时，Image组件需要请求网络资源；非首次加载时，默认从缓存中直接读取图片。
   
-  更多图片缓存设置请参考setImageCacheCount、setImageRawDataCacheSize和setImageFileCacheSize。这三个图片缓存接口主要用于支持简单、通用的场景，后续不再继续演进，且在灵活和扩展性方面存在一定限制，例如：
+  更多图片缓存设置请参考[setImageCacheCount](../reference/apis-arkui/js-apis-system-app.md#setimagecachecount7)、[setImageRawDataCacheSize](../reference/apis-arkui/js-apis-system-app.md#setimagerawdatacachesize7)和[setImageFileCacheSize](../reference/apis-arkui/js-apis-system-app.md#setimagefilecachesize7)。这三个图片缓存接口主要用于支持简单、通用的场景，后续不再继续演进，且在灵活和扩展性方面存在一定限制，例如：
   - 无法获取当前缓存占用信息。Image组件目前不支持查询磁盘缓存的实时状态，包括文件总大小和文件数量。
   - 缓存策略不可定制，缺乏缓存状态观测能力。开发者无法通过接口感知缓存命中率、淘汰次数等运行时的指标，难以基于实际缓存效果进行动态调优。
 
-  对于复杂情况，推荐使用ImageKnife，该图像库提供了更灵活、可扩展的缓存策略以及完善的生命周期管理能力，更适合复杂业务需求。
+  对于复杂情况，推荐使用[ImageKnife](https://gitcode.com/CPF-ApplicationTPC/ImageKnife)，该图像库提供了更灵活、可扩展的缓存策略以及完善的生命周期管理能力，更适合复杂业务需求。
 
-  网络图片必须支持RFC 9113标准，否则会导致加载失败。如果下载的网络图片大于10MB或一次下载的网络图片数量较多，建议使用HTTP工具提前下载，提高图片加载性能，方便应用侧管理数据。
+  网络图片必须支持RFC 9113标准，否则会导致加载失败。如果下载的网络图片大于10MB或一次下载的网络图片数量较多，建议使用[HTTP](../network/http-request.md)工具提前下载，提高图片加载性能，方便应用侧管理数据。
 
-  在显示网络图片时，Image组件在机制上会依赖@ohos.request.cacheDownload (缓存下载)，开发者可参考示例3（下载与显示网络gif图片）了解具体用法。
+  在显示网络图片时，Image组件在机制上会依赖[@ohos.request.cacheDownload (缓存下载)](../reference/apis-basic-services-kit/js-apis-request-cacheDownload.md)，开发者可参考[示例3（下载与显示网络gif图片）](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md#示例3下载与显示网络gif图片)了解具体用法。
   
   缓存下载模块提供独立的预下载接口，允许应用开发者在创建Image组件前预下载所需图片。组件创建后，Image组件可直接从缓存下载模块中获取已下载的图片数据，从而加快图片的显示速度，优化加载体验，并有效避免网络图片加载延迟。网络缓存的位置位于应用根目录下的cache目录中。
 
-  <!-- @net_resource -->    
+  <!-- @[net_resource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadingResources.ets) -->    
   
   ``` TypeScript
   // $r('app.string.LoadingResources')需要替换为开发者所需的资源文件，资源文件中的value值请替换为真实路径
@@ -83,11 +83,11 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
 
   **图1** resources  
 
-  image-resource
+  ![image-resource](figures/image-resource.jpg)
 
   调用方式：
 
-  <!-- @resource_icon -->    
+  <!-- @[resource_icon](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadingResources.ets) -->    
   
   ``` TypeScript
   // 请将$r('app.media.icon')替换为实际资源文件
@@ -98,11 +98,11 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
 
   **图2** rawfile  
 
-  image-rawfile
+  ![image-rawfile](figures/image-rawfile.jpg)
 
   调用方式：
 
-  <!-- @rawfile_resource -->    
+  <!-- @[rawfile_resource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadingResources.ets) -->    
   
   ``` TypeScript
   // $rawfile('example1.png')需要替换为开发者所需的资源文件
@@ -111,9 +111,9 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
 
 - 媒体库资源（file://路径前缀）
   
-  支持file://路径前缀的字符串，用于访问通过选择器提供的图片路径。
+  支持file://路径前缀的字符串，用于访问通过[选择器](../reference/apis-core-file-kit/js-apis-file-picker.md)提供的图片路径。
   1. 调用接口获取图库的照片url。
-      <!-- @media_libraryfile -->    
+      <!-- @[media_libraryfile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadImageResources.ets) -->    
   
       ``` TypeScript
       import { photoAccessHelper } from '@kit.MediaLibraryKit';
@@ -169,7 +169,7 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
       }
       ```
     2. 从媒体库获取的url格式通常如下。
-       <!-- @fileLibrary_format -->    
+       <!-- @[fileLibrary_format](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadingResources.ets) -->    
   
        ``` TypeScript
        // 'file://media/Photos/5'为媒体库URL示例，实际使用时需通过选择器（PhotoViewPicker）动态获取真实媒体库图片URL
@@ -187,10 +187,10 @@ Image支持加载存档图、多媒体像素图和可绘制描述符三种类型
 
 ### 多媒体像素图
 
-PixelMap是图片解码后的像素图，具体用法请参考Image Kit简介。以下示例将加载的网络图片返回的数据解码成PixelMap格式，再显示在Image组件上。
+PixelMap是图片解码后的像素图，具体用法请参考[Image Kit简介](../media/image/image-overview.md)。以下示例将加载的网络图片返回的数据解码成PixelMap格式，再显示在Image组件上。
 
 
-<!-- @multimedia_pixel -->
+<!-- @[multimedia_pixel](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/MultimediaPixelArt.ets) -->
 
 ``` TypeScript
 import { http } from '@kit.NetworkKit';
@@ -245,11 +245,11 @@ struct HttpExample {
 
 ### 可绘制描述符
 
-DrawableDescriptor是ArkUI提供的一种高级图片抽象机制，它通过将图片资源封装为可编程对象，实现了传统Image组件难以实现的动态组合与运行时控制功能。开发者可利用它实现图片的分层叠加（如徽章图标）、动态属性调整（如颜色滤镜）、复杂动画序列等高级效果，适用于需要灵活控制图片展现或实现复杂视觉交互的场景。详细使用方法，请参考DrawableDescriptor。
+DrawableDescriptor是ArkUI提供的一种高级图片抽象机制，它通过将图片资源封装为可编程对象，实现了传统Image组件难以实现的动态组合与运行时控制功能。开发者可利用它实现图片的分层叠加（如徽章图标）、动态属性调整（如颜色滤镜）、复杂动画序列等高级效果，适用于需要灵活控制图片展现或实现复杂视觉交互的场景。详细使用方法，请参考[DrawableDescriptor](../../application-dev/reference/apis-arkui/js-apis-arkui-drawableDescriptor.md)。
 
 通过DrawableDescriptor显示图片及动画的示例如下所示：
 
-  <!-- @drawable_descriptor -->    
+  <!-- @[drawable_descriptor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/DrawableDescriptor.ets) -->    
   
   ``` TypeScript
   import {
@@ -368,19 +368,19 @@ DrawableDescriptor是ArkUI提供的一种高级图片抽象机制，它通过将
   }
   ```
 
-drawableDescriptor
+![drawableDescriptor](figures/drawableDescriptor.gif)
 
 
 ## 显示矢量图
 
-Image组件可显示矢量图（SVG格式的图片），SVG标签文档请参考SVG标签说明。
+Image组件可显示矢量图（SVG格式的图片），SVG标签文档请参考[SVG标签说明](../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-svg.md)。
 
 如果SVG图片没有原始大小，需要给Image组件设置宽高，否则不显示。SVG图片不支持通过`<image>`标签引用SVG格式和gif格式的本地其他图片。
 
 SVG格式的图片可以使用fillColor属性改变图片的绘制颜色。
 
 
-  <!-- @svg_fillColor -->    
+  <!-- @[svg_fillColor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/DisplayVectorDiagram.ets) -->    
   
   ``` TypeScript
   // 请将$r('app.media.cloud')替换为实际资源文件
@@ -391,11 +391,11 @@ SVG格式的图片可以使用fillColor属性改变图片的绘制颜色。
 
   **图3** 原始图片  
 
-屏幕截图_20230223_141141
+![屏幕截图_20230223_141141](figures/屏幕截图_20230223_141141.png)
 
   **图4** 设置绘制颜色后的SVG图片  
 
-屏幕截图_20230223_141404
+![屏幕截图_20230223_141404](figures/屏幕截图_20230223_141404.png)
 
 ### 矢量图引用位图
 
@@ -405,9 +405,9 @@ Image加载的SVG图源路径设置方法如下所示：
 
 > **说明：**
 > 
-> 从DevEco Studio 6.0.0 Beta2版本开始，新建工程或模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使相关模块：build-profile.json5中buildOption > resOptions > copyCodeResource > enable设置为true，详见resOptions中copyCodeResource相关介绍。
+> 从DevEco Studio 6.0.0 Beta2版本开始，新建工程或模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使相关模块：build-profile.json5中buildOption > resOptions > copyCodeResource > enable设置为true，详见resOptions中[copyCodeResource](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#section754823013348)相关介绍。
 
-  <!-- @local_svg -->    
+  <!-- @[local_svg](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/DisplayVectorDiagram.ets) -->    
   
   ``` TypeScript
   // 'images/icon.svg'需要替换为开发者所需的资源文件
@@ -424,18 +424,18 @@ SVG图源通过`<image>`标签的`xlink:href`属性指定本地位图路径，�
 ```
 文件工程路径示例如图：
 
-image path
+![image path](figures/imagePath.png)
 
 ## 添加属性
 
-给Image组件设置属性可以使图片显示更灵活，达到一些自定义的效果。以下是几个常用属性的使用示例，完整属性信息详见Image。
+给Image组件设置属性可以使图片显示更灵活，达到一些自定义的效果。以下是几个常用属性的使用示例，完整属性信息详见[Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md)。
 
 ### 设置图片缩放类型
 
-通过设置objectFit属性，可以使图片在高度和宽度确定的框内进行缩放。
+通过设置[objectFit](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md#objectfit)属性，可以使图片在高度和宽度确定的框内进行缩放。
 
 
-  <!-- @image_objectfit -->   
+  <!-- @[image_objectfit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/SetImageZoomType.ets) -->   
   
   ``` TypeScript
   @Entry
@@ -523,15 +523,15 @@ image path
   }
   ```
 
-zh-cn_image_0000001622804833
+![zh-cn_image_0000001622804833](figures/Image-Scale-Mode.png)
 
 
 ### 图片插值
 
-当原图分辨率较低并放大显示时，图片会变得模糊并出现锯齿。这时可以使用interpolation属性对图片进行插值，以提高显示清晰度。
+当原图分辨率较低并放大显示时，图片会变得模糊并出现锯齿。这时可以使用[interpolation](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md#interpolation)属性对图片进行插值，以提高显示清晰度。
 
 
-  <!-- @image_interpolation -->    
+  <!-- @[image_interpolation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/ImageInterpolation.ets) -->    
   
   ``` TypeScript
   @Entry
@@ -588,15 +588,15 @@ zh-cn_image_0000001622804833
   }
   ```
 
-zh-cn_image_0000001643127365
+![zh-cn_image_0000001643127365](figures/Image-Interpolation.png)
 
 
 ### 设置图片重复样式
 
-通过objectRepeat属性设置图片的重复样式方式，重复样式请参考ImageRepeat枚举说明。
+通过objectRepeat属性设置图片的重复样式方式，重复样式请参考[ImageRepeat](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#imagerepeat)枚举说明。
 
 
-  <!-- @image_repetitionstyle -->    
+  <!-- @[image_repetitionstyle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/SetImageRepetitionStyle.ets) -->    
   
   ``` TypeScript
   @Entry
@@ -644,7 +644,7 @@ zh-cn_image_0000001643127365
   }
   ```
 
-zh-cn_image_0000001593444112
+![zh-cn_image_0000001593444112](figures/Setting-Image-Repeat.png)
 
 
 ### 设置图片渲染模式
@@ -652,7 +652,7 @@ zh-cn_image_0000001593444112
 通过renderMode属性设置图片的渲染模式为原色或黑白。
 
 
-  <!-- @image_renderingmode -->    
+  <!-- @[image_renderingmode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/SetImageRenderingMode.ets) -->    
   
   ``` TypeScript
   @Entry
@@ -685,7 +685,7 @@ zh-cn_image_0000001593444112
   }
   ```
 
-zh-cn_image_0000001593293100
+![zh-cn_image_0000001593293100](figures/Setting-Image-Rendering.png)
 
 
 ### 设置图片解码尺寸
@@ -695,7 +695,7 @@ zh-cn_image_0000001593293100
 原图尺寸为1280×960，该示例将图片解码为40×40和90×90两个尺寸。
 
 
-  <!-- @image_decodingsize -->    
+  <!-- @[image_decodingsize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/SetImageDecodingSize.ets) -->    
   
   ``` TypeScript
   @Entry
@@ -737,7 +737,7 @@ zh-cn_image_0000001593293100
   }
   ```
 
-zh-cn_image_0000001593769844
+![zh-cn_image_0000001593769844](figures/Image-Decoding-Size.png)
 
 
 ### 为图片添加滤镜效果
@@ -745,7 +745,7 @@ zh-cn_image_0000001593769844
 通过colorFilter调整图片的像素颜色，为图片添加滤镜。<!--RP1--><!--RP1End-->
 
 
-  <!-- @image_filtereffect -->    
+  <!-- @[image_filtereffect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/AddFilterEffectsToImages.ets) -->    
   
   ``` TypeScript
   @Entry
@@ -775,7 +775,7 @@ zh-cn_image_0000001593769844
   }
   ```
 
-zh-cn_image_0000001643171357
+![zh-cn_image_0000001643171357](figures/Adding-Filter-Image.png)
 
 
 ### 同步加载图片
@@ -783,7 +783,7 @@ zh-cn_image_0000001643171357
 一般情况下，图片加载流程会异步进行，以避免阻塞主线程，影响UI交互。但是特定情况下，图片刷新时会出现闪烁，这时可以使用syncLoad属性，使图片同步加载，从而避免出现闪烁。不建议图片加载较长时间时使用，会导致页面无法响应。
 
 
-  <!-- @synchronous_imageloading -->    
+  <!-- @[synchronous_imageloading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/DisplayVectorDiagram.ets) -->    
   
   ``` TypeScript
   // 请将$r('app.media.icon')替换为实际资源文件
@@ -798,7 +798,7 @@ zh-cn_image_0000001643171357
 通过在Image组件上绑定onComplete事件，图片加载成功后可以获取图片的必要信息。如果图片加载失败，也可以通过绑定onError回调来获得结果。
 
 
-  <!-- @event_invocation -->    
+  <!-- @[event_invocation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/EventCall.ets) -->    
   
   ``` TypeScript
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -846,10 +846,10 @@ zh-cn_image_0000001643171357
   }
   ```
 
-zh-cn_image_0000001511740460
+![zh-cn_image_0000001511740460](figures/Adding-Events.png)
 
 ## 相关实例
 
 针对显示图片开发，有以下相关实例可供参考：
 
-- 显示图片
+- [显示图片](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/ImageComponent)

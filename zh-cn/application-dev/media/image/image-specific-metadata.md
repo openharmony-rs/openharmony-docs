@@ -6,20 +6,22 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-从API version 23开始，支持使用ImageSource获取GIF、HEIFS、DNG、WebP、PNG、JFIF、TIFF、AVIS多种图像格式的专有元数据。
+从API version 23开始，ImageSource陆续支持获取GIF、HEIFS、DNG、WebP、PNG、JFIF、TIFF、AVIS多种图像格式的专有元数据。
+
+各格式支持的起始API版本如下表所示：
 
 ## 支持的元数据类别
 
 | 元数据类别 | MetadataType | 返回字段 | 起始API版本 | 典型信息 |
 | ---------- | ------------ | -------- | ----------- | -------- |
-| GIF | GIF_METADATA | GifMetadata | 26.0.0 | 帧延迟时长、循环次数、画布尺寸等。 |
-| HEIFS | HEIFS_METADATA | HeifsMetadata | 23 | 画布高度、画布宽度、未钳制延迟时长等。 |
-| DNG | DNG_METADATA | DngMetadata | 24 | DNG版本号、相机型号、CFA参数、黑白电平、色彩校正矩阵等。 |
-| WebP | WEBP_METADATA | WebPMetadata | 24 | 画布尺寸、帧延迟时长、循环次数等。 |
-| PNG | PNG_METADATA | PngMetadata | 26.0.0 | 像素密度、描述、版权等。 |
-| JFIF | JFIF_METADATA | JfifMetadata | 26.0.0 | 像素密度、渐进编码等。 |
-| TIFF | TIFF_METADATA | TiffMetadata | 26.0.0 | 分辨率、色度坐标、压缩方式等。 |
-| AVIS | AVIS_METADATA | AvisMetadata | 26.0.0 | 帧延迟时长等。 |
+| GIF | GIF_METADATA | [GifMetadata](../../reference/apis-image-kit/arkts-apis-image-GifMetadata.md) | 26.0.0 | 帧延迟时长、循环次数、画布尺寸等。 |
+| HEIFS | HEIFS_METADATA | [HeifsMetadata](../../reference/apis-image-kit/arkts-apis-image-HeifsMetadata.md) | 23 | 画布高度、画布宽度、未钳制延迟时长等。 |
+| DNG | DNG_METADATA | [DngMetadata](../../reference/apis-image-kit/arkts-apis-image-i.md#dngmetadata24) | 24 | DNG版本号、相机型号、CFA参数、黑白电平、色彩校正矩阵等。 |
+| WebP | WEBP_METADATA | [WebPMetadata](../../reference/apis-image-kit/arkts-apis-image-WebPMetadata.md) | 24 | 画布尺寸、帧延迟时长、循环次数等。 |
+| PNG | PNG_METADATA | [PngMetadata](../../reference/apis-image-kit/arkts-apis-image-PngMetadata.md) | 26.0.0 | 像素密度、描述、版权等。 |
+| JFIF | JFIF_METADATA | [JfifMetadata](../../reference/apis-image-kit/arkts-apis-image-JfifMetadata.md) | 26.0.0 | 像素密度、渐进编码等。 |
+| TIFF | TIFF_METADATA | [TiffMetadata](../../reference/apis-image-kit/arkts-apis-image-TiffMetadata.md) | 26.0.0 | 分辨率、色度坐标、压缩方式等。 |
+| AVIS | AVIS_METADATA | [AvisMetadata](../../reference/apis-image-kit/arkts-apis-image-AvisMetadata.md) | 26.0.0 | 帧延迟时长等。 |
 
 > **注意：**
 >
@@ -29,16 +31,16 @@
 
 | 接口 | 说明 |
 | --- | --- |
-| readImageMetadata | 读取图像源的元数据，使用propertyKeys指定元数据字段。<br>从API version 23开始支持。 |
-| readImageMetadataByType | 读取图像源的元数据，使用metadataTypes指定元数据类型。<br>从API version 24开始支持。 |
+| [readImageMetadata](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#readimagemetadata23) | 读取图像源的元数据，使用propertyKeys指定元数据字段。<br>从API version 23开始支持。 |
+| [readImageMetadataByType](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#readimagemetadatabytype24) | 读取图像源的元数据，使用metadataTypes指定元数据类型。<br>从API version 24开始支持。 |
 
 ## 开发步骤
 
-获取图片专有元数据相关API的详细介绍请参见ImageSource和Metadata。
+获取图片专有元数据相关API的详细介绍请参见[ImageSource](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md)和[Metadata](../../reference/apis-image-kit/arkts-apis-image-Metadata.md)。
 
 1. 全局导入Image模块，根据实际需求导入对应的Kit模块。
 
-   <!-- @decodingPixelMap_import -->   
+   <!-- @[decodingPixelMap_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/DecodingPixelMap.ets) -->   
    
    ``` TypeScript
    // 导入相关模块。
@@ -49,13 +51,13 @@
    import { resourceManager } from '@kit.LocalizationKit';
    ```
 
-2. 参考使用ImageSource完成图片解码创建ImageSource实例。
+2. 参考[使用ImageSource完成图片解码](image-decoding.md)创建ImageSource实例。
 
 3. 读取专有元数据。
 
-   使用readImageMetadata接口，通过指定属性键（propertyKeys）读取对应格式的专有元数据。以读取GIF元数据中的帧延迟时长为例：
+   使用[readImageMetadata](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#readimagemetadata23)接口，通过指定属性键（propertyKeys）读取对应格式的专有元数据。以读取GIF元数据中的帧延迟时长为例：
 
-   <!-- @read_imageMetadata -->   
+   <!-- @[read_imageMetadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->  
    
    ``` TypeScript
    async readImageMetadata(imageSource: image.ImageSource | undefined) : Promise<image.ImageMetadata | undefined> {
@@ -70,18 +72,18 @@
        if (imageMetadata.gifMetadata != undefined) {
          console.info(`GIF_DELAY_TIME: ${JSON.stringify(imageMetadata.gifMetadata?.delayTime)}`);
        }
-       return imageMetadata
+       return imageMetadata;
      } catch (error) {
        console.error(`ReadImageMetadata failed, error.code: ${error.code},
-                  error.message: ${error.message}`)
+                  error.message: ${error.message}`);
        return undefined;
      }
    }
    ```
 
-   使用readImageMetadataByType接口，通过指定MetadataType枚举值读取对应格式的专有元数据。以读取GIF元数据为例：
+   使用[readImageMetadataByType](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#readimagemetadatabytype24)接口，通过指定[MetadataType](../../reference/apis-image-kit/arkts-apis-image-e.md#metadatatype13)枚举值读取对应格式的专有元数据。以读取GIF元数据为例：
 
-   <!-- @read_imageMetadataByType -->   
+   <!-- @[read_imageMetadataByType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->  
    
    ``` TypeScript
    async readImageMetadataByType(imageSource: image.ImageSource | undefined) : Promise<image.ImageMetadata | undefined> {
@@ -99,7 +101,7 @@
        return imageMetadata;
      } catch (error) {
        console.error(`ReadImageMetadataByType failed, error.code: ${error.code},
-                  error.message: ${error.message}`)
+                  error.message: ${error.message}`);
        return undefined;
      }
    }
@@ -109,18 +111,10 @@
 
    确认imageSource的异步方法已经执行完成，不再使用该变量后，可按需手动调用下面方法释放。
 
-   <!-- @release_pixelMapDecoder -->   
+   <!-- @[release_imageSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/DecodingPixelMap.ets) -->   
    
    ``` TypeScript
-   async release() {
-     try {
-       await this.pixelMap?.release();
-     } catch (error) {
-       console.error(`Failed to release PixelMap: ${error}.`);
-     } finally {
-       this.pixelMap = undefined;
-     }
-   
+   async release_imageSource() {
      try {
        await this.imageSource?.release();
      } catch (error) {

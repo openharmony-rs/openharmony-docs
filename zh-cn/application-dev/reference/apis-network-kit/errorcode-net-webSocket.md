@@ -1,4 +1,4 @@
-# webSocket错误码
+# WebSocket错误码
 
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
@@ -9,7 +9,7 @@
 
 > **说明：**
 >
-> 以下仅介绍本模块特有错误码，通用错误码请参考通用错误码说明文档。
+> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码](../errorcode-universal.md)说明文档。
 
 ## 200 连接失败
 
@@ -79,7 +79,7 @@ WebSocket 证书不存在。
 
 1. 检查CA证书路径是否有效。
 
-2. 如指定了WebSocketRequestOptions.clientCert，请检查证书路径与私钥路径是否有效。
+2. 如指定了[WebSocketRequestOptions](./js-apis-webSocket.md#websocketrequestoptions).clientCert，请检查证书路径与私钥路径是否有效。
 
 
 ## 2302003 Websocket 连接已经存在
@@ -136,6 +136,24 @@ WebSocketServer服务器配置文件中的端口号无效。
 
 检查端口号的有效性。
 
+## 2302006 WebSocketServer连接不存在
+
+**错误信息**
+
+websocket connection does not exist.
+
+**错误描述**
+
+WebSocketServer连接不存在。
+
+**可能原因**
+
+被操作（关闭连接或发送消息）的WebSocketServer连接已被断开或不存在。
+
+**处理步骤**
+
+检查该连接是否仍然有效，必要时重新建立连接后再操作。
+
 ## 2302007 WebsocketServer当前监听的端口已被占用
 
 **错误信息**
@@ -170,7 +188,7 @@ It is not allowed to access this domain.
 
 **处理步骤**
 
-可参考配置服务器域名文档完成服务器域名相关配置。
+可参考[配置服务器域名](https://developer.huawei.com/consumer/cn/doc/atomic-guides/agc-help-harmonyos-server-domain)文档完成服务器域名相关配置。
 
 ## 2302999 内部错误
 

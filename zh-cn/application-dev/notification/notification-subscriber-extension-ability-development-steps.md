@@ -2,27 +2,27 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 ## 接口说明
 | 接口名                              | 描述                |
 | ---------------------------------- | --------------------|
-| onDestroy(): void                  | 通知订阅扩展被销毁时的回调。 |
-| onReceiveMessage(notificationInfo: NotificationInfo): void | 收到通知时的回调。 |
-| onCancelMessages(hashCodes: Array\<string>): void | 取消通知时的回调。 |
+| [onDestroy(): void](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md#ondestroy)                  | [通知订阅](notification-glossary.md#notification-subscription通知订阅)扩展被销毁时的回调。 |
+| [onReceiveMessage(notificationInfo: NotificationInfo): void](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md#onreceivemessage) | 收到通知时的回调。 |
+| [onCancelMessages(hashCodes: Array\<string>): void](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md#oncancelmessages) | 取消通知时的回调。 |
 
 ## 前提条件
-申请ohos.permission.SUBSCRIBE_NOTIFICATION权限。
+申请[ohos.permission.SUBSCRIBE_NOTIFICATION](../security/AccessToken/restricted-permissions.md#ohospermissionsubscribe_notification)权限。
 
 ## 开发步骤
 
-开发者在实现NotificationSubscriberExtensionAbility提供方时，需在DevEco Studio工程中新建一个NotificationSubscriberExtensionAbility。具体步骤如下。
+开发者在实现[NotificationSubscriberExtensionAbility](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)提供方时，需在[DevEco Studio](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-tools-overview)工程中新建一个NotificationSubscriberExtensionAbility。具体步骤如下。
 
 1. 在entry/src/main/ets/创建目录extensionability。
 
 2. 在entry/src/main/ets/extensionability目录下创建NotificationSubscriberExtAbility.ets，其内容如下。
-   <!--@callback_start-->   
+   <!--@[callback_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/ThirdpartyWearableDemo/entry/src/main/ets/extensionability/NotificationSubscriberExtAbility.ets)-->
    
    ``` TypeScript
    import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -50,12 +50,12 @@
      // ...
    }
    ```
-3. 使用蓝牙模块接口与穿戴设备配对（蓝牙处于配对状态）并获取地址，然后通过subscribe/unsubscribe接口订阅或取消订阅通知。
+3. 使用[蓝牙模块](../connectivity/connectivity-kit-intro.md#蓝牙简介)接口与穿戴设备配对（蓝牙处于配对状态）并获取地址，然后通过[subscribe](../reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md#notificationextensionsubscriptionsubscribe)/[unsubscribe](../reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md#notificationextensionsubscriptionunsubscribe)接口订阅或取消订阅通知。
 
-4. 实现NotificationSubscriberExtensionAbility后，还需要在合适的时机调用openSubscriptionSettingsWithResult接口，打开通知扩展订阅设置页面，引导用户授予获取本机通知的权限，该页面以半模态弹窗显示，并在弹窗关闭时返回授权的结果。建议在设备管理页面提供一个通知授权的按钮，用户点击按钮则调用openSubscriptionSettingsWithResult接口。
+4. 实现[NotificationSubscriberExtensionAbility](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)后，还需要在合适的时机调用[openSubscriptionSettingsWithResult](../reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md#notificationextensionsubscriptionopensubscriptionsettingswithresult)接口，打开通知扩展订阅设置页面，引导用户授予获取本机通知的权限，该页面以半模态弹窗显示，并在弹窗关闭时返回授权的结果。建议在设备管理页面提供一个[通知授权](notification-glossary.md#notification-authorization通知授权)的按钮，用户点击按钮则调用[openSubscriptionSettingsWithResult](../reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md#notificationextensionsubscriptionopensubscriptionsettingswithresult)接口。
 
 5. 在应用的module.json5文件中配置extensionAbilities。
-   <!--@quick_start-->
+   <!--@[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/ThirdpartyWearableDemo/entry/src/main/module.json5)-->
    
    ``` JSON5
    {
@@ -91,8 +91,8 @@
 
 10. 如果使用该蓝牙连接发送消息失败，则需要重新建立蓝牙连接，连接成功后即可发送消息。
 
-11. 需要申请权限ohos.permission.ACCESS_BLUETOOTH。如何配置和申请权限，具体操作请参考声明权限和向用户申请授权。
-    <!--@quick_start-->   
+11. 需要申请权限[ohos.permission.ACCESS_BLUETOOTH](../security/AccessToken/permissions-for-all-user.md#ohospermissionaccess_bluetooth)。如何配置和申请权限，具体操作请参考[声明权限](../security/AccessToken/declare-permissions.md)和[向用户申请授权](../security/AccessToken/request-user-authorization.md)。
+    <!--@[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/ThirdpartyWearableDemo/entry/src/main/ets/extensionability/NotificationSubscriberExtAbility.ets)-->
     
     ``` TypeScript
     import { hilog } from '@kit.PerformanceAnalysisKit';

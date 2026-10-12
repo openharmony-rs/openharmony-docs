@@ -13,7 +13,7 @@ HiLog日志系统，提供给系统框架、服务、以及应用，用于打印
 
 ## 接口说明
 
-HiLog中定义了DEBUG、INFO、WARN、ERROR、FATAL五种日志级别，并提供了对应的方法输出不同级别的日志，接口如下表所示，具体说明可查阅log.h。
+HiLog中定义了DEBUG、INFO、WARN、ERROR、FATAL五种日志级别，并提供了对应的方法输出不同级别的日志，接口如下表所示，具体说明可查阅[log.h](../reference/apis-performance-analysis-kit/capi-log-h.md)。
 
 | 方法/宏 | 接口描述 |
 | -------- | -------- |
@@ -35,7 +35,7 @@ HiLog中定义了DEBUG、INFO、WARN、ERROR、FATAL五种日志级别，并提�
 >
 > hilog日志接口是非信号安全函数，禁止在信号处理函数中调用非信号安全的HiLog日志接口。
 >
-> 如果设置的日志级别低于全局日志级别，OH_LOG_SetMinLogLevel()设置不生效。
+> 如果设置的日志级别低于[全局日志级别](hilog.md#查看和设置日志级别)，OH_LOG_SetMinLogLevel()设置不生效。
 >
 > debug版本应用下，OH_LOG_SetMinLogLevel()和OH_LOG_SetLogLevel()函数均不生效。
 
@@ -45,9 +45,9 @@ HiLog中定义了DEBUG、INFO、WARN、ERROR、FATAL五种日志级别，并提�
 
 - tag：用于指定日志标识，可以为任意字符串，建议标识调用所在的类或者业务行为。tag最多为31字节，超出后会截断。不建议使用中文字符，可能出现乱码或者对齐问题。
 
-- level：用于指定日志级别。取值见LogLevel。
+- level：用于指定日志级别。取值见[LogLevel](../reference/apis-performance-analysis-kit/capi-log-h.md#loglevel)。
 
-- prefer：用于指定偏好策略。取值见PreferStrategy。
+- prefer：用于指定偏好策略。取值见[PreferStrategy](../reference/apis-performance-analysis-kit/capi-log-h.md#preferstrategy)。
 
 - fmt：格式字符串，用于日志的格式化输出。日志打印的格式化参数需按照“%{private flag}specifier”的格式打印。
 
@@ -62,7 +62,7 @@ HiLog中定义了DEBUG、INFO、WARN、ERROR、FATAL五种日志级别，并提�
   | d/i | 支持打印十进制整数类型。 | 123 |
   | s | 支持打印char\*类型。 | "this is a hilog" |
 
-  格式字符串中可以设置多个参数，例如格式字符串为"%s World"，“%s”为参数类型为字符串的变参标识，具体取值在args中定义，格式说明符使用参考printf。
+  格式字符串中可以设置多个参数，例如格式字符串为"%s World"，“%s”为参数类型为字符串的变参标识，具体取值在args中定义，格式说明符使用参考[printf](https://man7.org/linux/man-pages/man3/printf.3.html)。
 
   debug应用无隐私管控机制，使用上述任意隐私标识符打印日志，都可明文显示参数。
 
@@ -77,7 +77,7 @@ HiLog中定义了DEBUG、INFO、WARN、ERROR、FATAL五种日志级别，并提�
 >
 >   release应用：按照全局日志级别管控，当日志的级别不低于全局日志级别时，才能正常打印出来；
 >
->   调试过程中，可手动修改日志级别，参考：查看和设置日志级别。
+>   调试过程中，可手动修改日志级别，参考：[查看和设置日志级别](hilog.md#查看和设置日志级别)。
 
 ## 约束与限制
 

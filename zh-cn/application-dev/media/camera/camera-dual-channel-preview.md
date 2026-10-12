@@ -6,26 +6,26 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-在开发相机应用时，需要先申请相关权限。
+在开发相机应用时，需要先[申请相关权限](camera-preparation.md)。
 
 双路预览，即应用可同时使用两路预览流，一路用于在屏幕上显示，一路用于图像处理等其他操作，提升处理效率。
 
-相机应用通过控制相机，实现图像显示（预览）、照片保存（拍照）、视频录制（录像）等基础操作。相机开发模型为Surface模型，即应用通过Surface进行数据传递，通过ImageReceiver的Surface获取拍照流的数据、通过XComponent的Surface获取预览流的数据。
+相机应用通过控制相机，实现图像显示（预览）、照片保存（拍照）、视频录制（录像）等基础操作。相机开发模型为Surface模型，即应用通过Surface进行数据传递，通过[ImageReceiver](../../reference/apis-image-kit/arkts-apis-image-ImageReceiver.md)的Surface获取拍照流的数据、通过XComponent的Surface获取预览流的数据。
 
-如果要实现双路预览，可以先参考拍照，在双路预览中将拍照流改为另一路预览流，通过ImageReceiver的Surface创建另一个previewOutput，其余流程与拍照一致。
+如果要实现双路预览，可以先参考[拍照](camera-shooting.md)，在双路预览中将拍照流改为另一路预览流，通过[ImageReceiver](../../reference/apis-image-kit/arkts-apis-image-ImageReceiver.md)的Surface创建另一个previewOutput，其余流程与拍照一致。
 
-详细的API说明请参考@ohos.multimedia.camera (相机管理)。
+详细的API说明请参考[@ohos.multimedia.camera (相机管理)](../../reference/apis-camera-kit/arkts-apis-camera.md)。
 
 ## 约束与限制
 
-- 暂不支持动态添加流，即不能在没有调用session.stop的情况下，调用addOutput添加流。
+- 暂不支持动态添加流，即不能在没有调用[session.stop](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#stop11)的情况下，调用[addOutput](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#addoutput11)添加流。
 - 对ImageReceiver组件获取到的图像数据处理后，需要将对应的图像Buffer释放，确保Surface的BufferQueue正常轮转。
 
 ## 调用流程
 
 双路方案调用流程图建议如下：
 
-dual-preview-streams-instructions
+![dual-preview-streams-instructions](figures/dual-preview-streams-instructions.png)
 
 ## 开发步骤
 
@@ -39,7 +39,7 @@ dual-preview-streams-instructions
 
 1. 导入依赖，本篇文档需要用到图片和相机框架等相关依赖包。
 
-   <!-- @dual_preview_imports -->
+   <!-- @[dual_preview_imports](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/DualPreview/camera/src/main/ets/cameramanagers/ImageReceiverManager.ets) -->
    
    ``` TypeScript
    import { image } from '@kit.ImageKit';
@@ -50,7 +50,7 @@ dual-preview-streams-instructions
 
 2. 获取第一路预览流SurfaceId：创建ImageReceiver对象，通过ImageReceiver对象可获取其SurfaceId。
 
-   <!-- @init_image_receiver -->
+   <!-- @[init_image_receiver](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/DualPreview/camera/src/main/ets/cameramanagers/ImageReceiverManager.ets) -->
    
    ``` TypeScript
    async init(size: Size, format = image.ImageFormat.JPEG, capacity = 8) {
@@ -61,7 +61,7 @@ dual-preview-streams-instructions
    }
    ```
 
-3. ImageReceiver接收预览流图像数据获取图像格式请参考Image中的format参数，PixelMap格式请参考PixelMapFormat。
+3. ImageReceiver接收预览流图像数据获取图像格式请参考[Image](../../reference/apis-image-kit/arkts-apis-image-Image.md)中的format参数，[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)格式请参考[PixelMapFormat](../../reference/apis-image-kit/arkts-apis-image-e.md#pixelmapformat7)。
 
    ```ts
    // Image格式与PixelMap格式映射关系。
@@ -80,15 +80,15 @@ dual-preview-streams-instructions
    ]);
    ```
 
-4. 注册监听处理预览流每帧图像数据：通过ImageReceiver组件中imageArrival事件监听获取底层返回的图像数据，详细的API说明请参考ImageReceiver。
+4. 注册监听处理预览流每帧图像数据：通过ImageReceiver组件中imageArrival事件监听获取底层返回的图像数据，详细的API说明请参考[ImageReceiver](../../reference/apis-image-kit/arkts-apis-image-ImageReceiver.md)。
 
    > **说明：**
    >
-   > - 在通过createPixelMap接口创建PixelMap实例时，设置的Size、srcPixelFormat等属性必须和相机预览输出流previewProfile中配置的Size、Format属性保持一致，ImageReceiver图片像素格式请参考PixelMapFormat，相机预览输出流previewProfile输出格式请参考CameraFormat。
-   > - 由于不同设备产品差异性，应用开发者在创建相机预览输出流前，必须先通过getSupportedOutputCapability方法获取当前设备支持的预览输出流previewProfile，再根据实际业务需求选择CameraFormat和Size适合的预览输出流previewProfile。
-> - ImageReceiver接收预览流图像数据实际format格式由应用开发者在创建相机预览输出流时，根据实际业务需求选择的previewProfile中format格式参数影响，详细步骤请参考创建预览流获取数据。
+   > - 在通过[createPixelMap](../../reference/apis-image-kit/arkts-apis-image-f.md#imagecreatepixelmap8)接口创建[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)实例时，设置的Size、srcPixelFormat等属性必须和相机预览输出流previewProfile中配置的Size、Format属性保持一致，ImageReceiver图片像素格式请参考[PixelMapFormat](../../reference/apis-image-kit/arkts-apis-image-e.md#pixelmapformat7)，相机预览输出流previewProfile输出格式请参考[CameraFormat](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraformat)。
+   > - 由于不同设备产品差异性，应用开发者在创建相机预览输出流前，必须先通过[getSupportedOutputCapability](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getsupportedoutputcapability11)方法获取当前设备支持的预览输出流previewProfile，再根据实际业务需求选择[CameraFormat](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraformat)和[Size](../../reference/apis-camera-kit/arkts-apis-camera-i.md#size)适合的预览输出流previewProfile。
+> - ImageReceiver接收预览流图像数据实际format格式由应用开发者在创建相机预览输出流时，根据实际业务需求选择的previewProfile中format格式参数影响，详细步骤请参考[创建预览流获取数据](camera-dual-channel-preview.md#创建预览流获取数据)。
 
-   <!-- @onImageArrival -->
+   <!-- @[onImageArrival](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/DualPreview/camera/src/main/ets/cameramanagers/ImageReceiverManager.ets) -->
    
    ``` TypeScript
    onImageArrival(receiver: image.ImageReceiver): void {
@@ -115,7 +115,7 @@ dual-preview-streams-instructions
    }
    ```
 
-   通过 image.Component 解析图片buffer数据参考：
+   通过 [image.Component](../../reference/apis-image-kit/arkts-apis-image-i.md#component9) 解析图片buffer数据参考：
 
    > **注意：**
    >
@@ -123,7 +123,7 @@ dual-preview-streams-instructions
 
    方式一：去除imgComponent.byteBuffer中stride数据，拷贝得到新的buffer，调用不支持stride的接口处理buffer。
 
-   <!-- @getPixelMap -->
+   <!-- @[getPixelMap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/DualPreview/camera/src/main/ets/cameramanagers/ImageReceiverManager.ets) -->
    
    ``` TypeScript
    async getPixelMap(imgComponent: image.Component, width: number, height: number, stride: number) {
@@ -160,9 +160,9 @@ dual-preview-streams-instructions
 
 ### 用于显示画面的第二路预览流
 
-获取第二路预览流SurfaceId：创建XComponent组件用于预览流显示，获取SurfaceId请参考XComponent组件提供的getXComponentSurfaceId方法，而XComponent的能力由UI提供，相关介绍可参考XComponent组件参考。
+获取第二路预览流SurfaceId：创建XComponent组件用于预览流显示，获取SurfaceId请参考XComponent组件提供的[getXComponentSurfaceId](../../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#getxcomponentsurfaceid9)方法，而XComponent的能力由UI提供，相关介绍可参考[XComponent组件参考](../../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)。
 
-<!-- @XComponent -->
+<!-- @[XComponent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/DualPreview/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 XComponent({
@@ -183,7 +183,7 @@ XComponent({
 
 通过两个SurfaceId分别创建两路预览流输出，加入相机会话，启动相机会话，获取预览流数据。
 
-<!-- @createOutput -->
+<!-- @[createOutput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/DualPreview/camera/src/main/ets/cameramanagers/PreviewManager.ets) -->
 
 ``` TypeScript
 async createOutput(config: CreateOutputConfig) {
@@ -209,7 +209,7 @@ async createOutput(config: CreateOutputConfig) {
 
 ## 完整示例
 
-<!-- @dual_preview_case -->
+<!-- @[dual_preview_case](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/DualPreview/camera/src/main/ets/cameramanagers/ImageReceiverManager.ets) -->
 
 ``` TypeScript
 import { image } from '@kit.ImageKit';

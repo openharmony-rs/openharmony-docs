@@ -2,7 +2,7 @@
 
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
-<!--Owner: @amunra03-->
+<!--Owner: @yh1719-->
 <!--Designer: @wenxiaolin-->
 <!--Tester: @zs_111-->
 <!--Adviser: @zhang_yixin13-->
@@ -11,10 +11,10 @@
 电子设备上可能存在一个或多个安全单元（SecureElement，简称SE），比如有eSE(Embedded SE)和SIM卡。安全单元的访问控制，通过GPAC（GlobalPlatform Access Control）规范实现。
 
 ## 场景介绍
-应用程序可以通过接口访问安全单元，比如往安全单元里面写入数据，实现在电子设备上模拟一张NFC卡片的目的。该卡片数据可能存储在eSE安全单元，或在SIM卡安全单元上。安全单元上一般会预置有访问控制规则（GPAC规范），应用程序需要具备对应的权限，参考@ohos.secureElement (安全单元的通道管理)，也就是通过安全单元的访问控制权限校验之后，才能正常访问安全单元。
+应用程序可以通过接口访问安全单元，比如往安全单元里面写入数据，实现在电子设备上模拟一张NFC卡片的目的。该卡片数据可能存储在eSE安全单元，或在SIM卡安全单元上。安全单元上一般会预置有访问控制规则（GPAC规范），应用程序需要具备对应的权限，参考[@ohos.secureElement (安全单元的通道管理)](../../reference/apis-connectivity-kit/js-apis-secureElement.md)，也就是通过安全单元的访问控制权限校验之后，才能正常访问安全单元。
 
 ## 接口说明
-安全单元完整的API说明以及示例代码请参考：@ohos.secureElement (安全单元的通道管理)。
+安全单元完整的API说明以及示例代码请参考：[@ohos.secureElement (安全单元的通道管理)](../../reference/apis-connectivity-kit/js-apis-secureElement.md)。
 
 实现安全单元的访问，需要使用到下面的接口。
 
@@ -38,7 +38,7 @@
 
 > **注意：**
 >
-> - 从API version 9之后的应用开发新增支持Stage模型，作为目前主推并长期演进的模型。
+> - 从API version 9之后的应用开发新增支持[Stage模型](../../application-models/ability-terminology.md#stage模型)，作为目前主推并长期演进的模型。
 > - 由于SE的安全级别较高，必须将构建模式设置为release进行打包，否则应用将无法正常运行。
 
 ```ts
@@ -68,19 +68,25 @@ export default class EntryAbility extends UIAbility {
   }
 
   private async omaTest() {
-    // 创建安全单元service，用于访问安全单元
-    await omapi.createService().then((data) => {
-      if (data == undefined || !data.isConnected()) {
-        hilog.error(0x0000, 'testTag', 'secure element service disconnected.');
+    try {
+      // 创建安全单元service，用于访问安全单元
+      await omapi.createService().then((data) => {
+        if (data == undefined || !data.isConnected()) {
+          hilog.error(0x0000, 'testTag', 'secure element service disconnected.');
+          return;
+        }
+        seService = data;
+        hilog.info(0x0000, 'testTag', 'secure element service connected.');
+      }).catch((error: BusinessError) => {
+        hilog.error(0x0000, 'testTag', 'createService error %{public}s', JSON.stringify(error));
+        return;
+      });
+    } catch (error) {
+      if (error as BusinessError) {
+        hilog.error(0x0000, 'testTag', 'omapi on error %{public}s', JSON.stringify(error));
         return;
       }
-      seService = data;
-      hilog.info(0x0000, 'testTag', 'secure element service connected.');
-    }).catch((error: BusinessError) => {
-      hilog.error(0x0000, 'testTag', 'createService error %{public}s', JSON.stringify(error));
-      return;
-    });
-
+    }
     // 获取设备上所有支持的readers，即所有的安全单元列表
     try {
       seReaders = seService.getReaders();
@@ -132,6 +138,7 @@ export default class EntryAbility extends UIAbility {
 
     if (seChannel == undefined) {
       hilog.error(0x0000, 'testTag', 'seChannel invalid.');
+      seSession.close();
       seService.shutdown();
       return;
     }
@@ -151,7 +158,8 @@ export default class EntryAbility extends UIAbility {
     } catch (exception) {
       hilog.error(0x0000, 'testTag', 'seChannel.close() exception = %{public}s.', JSON.stringify(exception));
     }
-
+    // 关闭seSession，也将关闭此Session打开的所有Channel
+    seSession.close();
     // 关闭服务资源，关闭应用程序和安全单元服务的绑定关系
     seService.shutdown();
   }

@@ -23,7 +23,7 @@ NativeBuffer的常见应用场景包括：图像数据处理、视频编解码�
 | OH_NativeBuffer_Unmap (OH_NativeBuffer \*buffer) | 将OH_NativeBuffer对应的ION内存从进程空间解除映射。 | 
 | OH_NativeBuffer_GetSeqNum (OH_NativeBuffer \*buffer) | 获取OH_NativeBuffer的序列号。 | 
 
-详细的接口说明请参考OH_NativeBuffer。
+详细的接口说明请参考[OH_NativeBuffer](../reference/apis-arkgraphics2d/capi-oh-nativebuffer.md)。
 
 ## 开发步骤
 
@@ -42,7 +42,7 @@ libnative_buffer.so
 ```
 
 1. **创建OH_NativeBuffer实例**。
-    <!-- @nativebuffer_alloc -->
+    <!-- @[nativebuffer_alloc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
     
     ``` C++
     OH_NativeBuffer_Config config {
@@ -62,7 +62,7 @@ libnative_buffer.so
 2. **将OH_NativeBuffer对应的ION内存映射到进程空间**。
 
     应用如需访问buffer内存空间，可通过OH_NativeBuffer_Map接口将ION内存映射到进程空间。
-    <!-- @nativebuffer_map -->
+    <!-- @[nativebuffer_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
     
     ``` C++
     void* virAddr = nullptr;
@@ -79,7 +79,7 @@ libnative_buffer.so
 
 
 3. **获取内存的属性信息**。
-    <!-- @nativebuffer_getconfig -->
+    <!-- @[nativebuffer_getconfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
     
     ``` C++
     OH_NativeBuffer_Config config2 = {};
@@ -88,7 +88,7 @@ libnative_buffer.so
     ```
 
 4. **销毁OH_NativeBuffer**。
-    <!-- @nativebuffer_unreference -->
+    <!-- @[nativebuffer_unreference](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
     
     ``` C++
     OH_NativeBuffer_Unreference(nativeBuffer);
@@ -99,4 +99,4 @@ libnative_buffer.so
 
 针对NativeBuffer的开发，有以下相关实例可供参考：
 
-- Native Window（API12）
+- [Native Window（API12）](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkGraphics2D/NdkNativeWindow)

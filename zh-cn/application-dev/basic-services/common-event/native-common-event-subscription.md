@@ -2,34 +2,34 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
 ## 场景介绍
 
-通过OH_CommonEvent_CreateSubscriber创建的订阅者可以对某个公共事件进行订阅，如果有订阅的事件发布那么订阅了这个事件的订阅者将会收到该事件及其传递的参数，也可以通过订阅者对象进一步处理有序公共事件。
+通过[OH_CommonEvent_CreateSubscriber](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_createsubscriber)创建的订阅者可以对某个公共事件进行订阅，如果有订阅的事件发布那么订阅了这个事件的订阅者将会收到该事件及其传递的参数，也可以通过订阅者对象进一步处理有序公共事件。
 
 ## 接口说明
 
-详细的API说明请参考oh_commonevent.h。
+详细的API说明请参考[oh_commonevent.h](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md)。
 
 | 接口名                               | 描述                                                             |
 | ------------------------------------ | ---------------------------------------------------------------- |
-|CommonEvent_SubscribeInfo* OH_CommonEvent_CreateSubscribeInfo(const char* events[], int32_t eventsNum)|创建订阅者信息。|
-|void OH_CommonEvent_DestroySubscribeInfo(CommonEvent_SubscribeInfo* info)|销毁订阅者信息。|
-|CommonEvent_Subscriber* OH_CommonEvent_CreateSubscriber(const CommonEvent_SubscribeInfo* info, CommonEvent_ReceiveCallback callback)| 创建订阅者。|
-|void OH_CommonEvent_DestroySubscriber(CommonEvent_Subscriber* subscriber)|销毁订阅者。|
-|CommonEvent_ErrCode OH_CommonEvent_Subscribe(const CommonEvent_Subscriber* subscriber)|订阅事件。|
-|bool OH_CommonEvent_AbortCommonEvent(CommonEvent_Subscriber* subscriber)|中止当前的有序公共事件。|
-|bool OH_CommonEvent_ClearAbortCommonEvent(CommonEvent_Subscriber* subscriber)|取消当前有序公共事件的中止状态。|
-|bool OH_CommonEvent_FinishCommonEvent(CommonEvent_Subscriber* subscriber)|结束对当前有序公共事件的处理。|
+|[CommonEvent_SubscribeInfo* OH_CommonEvent_CreateSubscribeInfo(const char* events[], int32_t eventsNum)](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_createsubscribeinfo)|创建订阅者信息。|
+|[void OH_CommonEvent_DestroySubscribeInfo(CommonEvent_SubscribeInfo* info)](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_destroysubscribeinfo)|销毁订阅者信息。|
+|[CommonEvent_Subscriber* OH_CommonEvent_CreateSubscriber(const CommonEvent_SubscribeInfo* info, CommonEvent_ReceiveCallback callback)](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_createsubscriber)| 创建订阅者。|
+|[void OH_CommonEvent_DestroySubscriber(CommonEvent_Subscriber* subscriber)](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_destroysubscriber)|销毁订阅者。|
+|[CommonEvent_ErrCode OH_CommonEvent_Subscribe(const CommonEvent_Subscriber* subscriber)](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_subscribe)|订阅事件。|
+|[bool OH_CommonEvent_AbortCommonEvent(CommonEvent_Subscriber* subscriber)](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_abortcommonevent)|中止当前的有序公共事件。|
+|[bool OH_CommonEvent_ClearAbortCommonEvent(CommonEvent_Subscriber* subscriber)](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_clearabortcommonevent)|取消当前有序公共事件的中止状态。|
+|[bool OH_CommonEvent_FinishCommonEvent(CommonEvent_Subscriber* subscriber)](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_finishcommonevent)|结束对当前有序公共事件的处理。|
 
 ## 开发步骤
 
 1. 引用头文件。
 
-   <!-- @event_subscriber_import -->
+   <!-- @[event_subscriber_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_subscribe.h) -->
    
    ``` C
    #include <cstdint>
@@ -51,24 +51,44 @@
 
 3. 创建订阅者信息。
 
-   通过OH_CommonEvent_CreateSubscribeInfo创建订阅者信息。
+   通过[OH_CommonEvent_CreateSubscribeInfo](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_createsubscribeinfo)创建订阅者信息。
 
-   <!-- @event_subscriber_create_destroy -->
+   <!-- @[event_subscriber_create_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_subscribe.cpp) -->
    
    ``` C++
+   static bool CheckRetAndDestroySub(CommonEvent_SubscribeInfo *info, int32_t ret, const char *apiName)
+   {
+       if (ret != COMMONEVENT_ERR_OK) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, 1, "CES_TEST", "%{public}s failed, ret <%{public}d>.", apiName, ret);
+           OH_CommonEvent_DestroySubscribeInfo(info);
+           return true;
+       }
+       return false;
+   }
+   
    CommonEvent_SubscribeInfo *CreateSubscribeInfo(const char *events[], int32_t eventsNum, const char *permission,
                                                   const char *bundleName)
    {
        int32_t ret = -1;
        // 创建订阅者信息
        CommonEvent_SubscribeInfo *info = OH_CommonEvent_CreateSubscribeInfo(events, eventsNum);
+       if (info == nullptr) {
+           OH_LOG_Print(LOG_APP, LOG_ERROR, 1, "CES_TEST", "OH_CommonEvent_CreateSubscribeInfo failed, info is null.");
+           return nullptr;
+       }
    
        // 设置发布者权限
        ret = OH_CommonEvent_SetPublisherPermission(info, permission);
+       if (CheckRetAndDestroySub(info, ret, "OH_CommonEvent_SetPublisherPermission")) {
+           return nullptr;
+       }
        OH_LOG_Print(LOG_APP, LOG_INFO, 1, "CES_TEST", "OH_CommonEvent_SetPublisherPermission ret <%{public}d>.", ret);
    
        // 设置发布者包名称
        ret = OH_CommonEvent_SetPublisherBundleName(info, bundleName);
+       if (CheckRetAndDestroySub(info, ret, "OH_CommonEvent_SetPublisherBundleName")) {
+           return nullptr;
+       }
        OH_LOG_Print(LOG_APP, LOG_INFO, 1, "CES_TEST", "OH_CommonEvent_SetPublisherBundleName ret <%{public}d>.", ret);
        return info;
    }
@@ -84,9 +104,9 @@
 
 4. 创建订阅者。
 
-   创建订阅者时需传入公共事件的回调函数CommonEvent_ReceiveCallback。待事件发布时，订阅者会接收到回调数据CommonEvent_RcvData。
+   创建订阅者时需传入公共事件的回调函数[CommonEvent_ReceiveCallback](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#commonevent_receivecallback)。待事件发布时，订阅者会接收到回调数据[CommonEvent_RcvData](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#结构体)。
 
-   <!-- @event_subscriber_on_receive -->
+   <!-- @[event_subscriber_on_receive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_subscribe.cpp) -->
    
    ``` C++
    // 公共事件回调函数
@@ -110,9 +130,9 @@
    ```
 
 
-   通过CommonEvent_Parameters传入key来获取附加信息内容。
+   通过[CommonEvent_Parameters](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#变量)传入key来获取附加信息内容。
 
-   <!-- @event_subscriber_get_parameters -->
+   <!-- @[event_subscriber_get_parameters](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_subscribe.cpp) -->
    
    ``` C++
    void GetParameters(const CommonEvent_RcvData *data)
@@ -129,19 +149,19 @@
    
        // 补充说明：除int类型外，还支持获取以下多种类型的公共事件附加信息，调用对应鸿蒙API即可：
        // - 基础数据类型：bool（OH_CommonEvent_GetBoolFromParameters）、long（OH_CommonEvent_GetLongFromParameters）、
-       // double（OH_CommonEvent_GetDoubleFromParameters）、char（OH_CommonEvent_GetCharFromParameters）
+       //   double（OH_CommonEvent_GetDoubleFromParameters）、char（OH_CommonEvent_GetCharFromParameters）
        // -
        // 数组数据类型：int数组（OH_CommonEvent_GetIntArrayFromParameters）、long数组（OH_CommonEvent_GetLongArrayFromParameters）、
-       // double数组（OH_CommonEvent_GetDoubleArrayFromParameters）、char数组（OH_CommonEvent_GetCharArrayFromParameters）、
-       // bool数组（OH_CommonEvent_GetBoolArrayFromParameters）
+       //   double数组（OH_CommonEvent_GetDoubleArrayFromParameters）、char数组（OH_CommonEvent_GetCharArrayFromParameters）、
+       //   bool数组（OH_CommonEvent_GetBoolArrayFromParameters）
        // 所有类型均支持通过OH_CommonEvent_HasKeyInParameters先校验键是否存在，避免获取失败
    }
    ```
 
 
-   通过OH_CommonEvent_CreateSubscriber创建订阅者，传入订阅者信息CommonEvent_SubscribeInfo和步骤4公共事件回调函数OnReceive。
+   通过[OH_CommonEvent_CreateSubscriber](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_createsubscriber)创建订阅者，传入订阅者信息[CommonEvent_SubscribeInfo](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#结构体)和步骤4公共事件回调函数OnReceive。
 
-   <!-- @event_subscriber_create_and_destroy -->
+   <!-- @[event_subscriber_create_and_destroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_subscribe.cpp) -->
    
    ``` C++
    // 创建订阅者
@@ -161,9 +181,9 @@
 
 5. 订阅事件。
 
-   通过OH_CommonEvent_Subscribe订阅事件。
+   通过[OH_CommonEvent_Subscribe](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_subscribe)订阅事件。
 
-   <!-- @event_subscriber_subscriber -->
+   <!-- @[event_subscriber_subscriber](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_subscribe.cpp) -->
    
    ``` C++
    void Subscribe(CommonEvent_Subscriber *subscriber)
@@ -185,9 +205,9 @@
 
    - 中止当前的有序公共事件。
 
-     通过OH_CommonEvent_AbortCommonEvent与OH_CommonEvent_FinishCommonEvent配合使用，可以中止当前的有序公共事件，使该公共事件不再向下一个订阅者传递。
+     通过[OH_CommonEvent_AbortCommonEvent](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_abortcommonevent)与[OH_CommonEvent_FinishCommonEvent](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_finishcommonevent)配合使用，可以中止当前的有序公共事件，使该公共事件不再向下一个订阅者传递。
 
-     <!-- @event_subscriber_abort_event -->
+     <!-- @[event_subscriber_abort_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_subscribe.cpp) -->
      
      ``` C++
      void AbortCommonEvent(CommonEvent_Subscriber *subscriber)
@@ -213,9 +233,9 @@
 
    - 取消当前有序公共事件的中止状态。
 
-     通过OH_CommonEvent_ClearAbortCommonEvent与OH_CommonEvent_FinishCommonEvent配合使用，可以取消当前有序公共事件的中止状态，使该公共事件继续向下一个订阅者传递。
+     通过[OH_CommonEvent_ClearAbortCommonEvent](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_clearabortcommonevent)与[OH_CommonEvent_FinishCommonEvent](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_finishcommonevent)配合使用，可以取消当前有序公共事件的中止状态，使该公共事件继续向下一个订阅者传递。
 
-     <!-- @event_subscriber_clear -->
+     <!-- @[event_subscriber_clear](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_subscribe.cpp) -->
      
      ``` C++
      void ClearAbortCommonEvent(CommonEvent_Subscriber *subscriber)
@@ -246,9 +266,9 @@
 
    - 修改有序公共事件的内容。
 
-     通过OH_CommonEvent_SetCodeToSubscriber与OH_CommonEvent_SetDataToSubscriber设置有序公共事件的代码和数据。
+     通过[OH_CommonEvent_SetCodeToSubscriber](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_setcodetosubscriber)与[OH_CommonEvent_SetDataToSubscriber](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md#oh_commonevent_setdatatosubscriber)设置有序公共事件的代码和数据。
 
-     <!-- @event_subscriber_set_get -->
+     <!-- @[event_subscriber_set_get](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_subscribe.cpp) -->
      
      ``` C++
      void SetToSubscriber(CommonEvent_Subscriber *subscriber, const int32_t code, const char *data)

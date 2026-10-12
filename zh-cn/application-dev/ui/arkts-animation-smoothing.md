@@ -11,11 +11,11 @@ UI界面除了运行动画之外，还承载着与用户进行实时交互的功
 
 ## 动画与动画的衔接
 
-假设对于某一可动画属性，存在正在运行的动画。当UI侧行为改变该属性终点值时，开发者仅需在animateTo动画闭包中改变属性值或者改变animation接口作用的属性值，即可产生动画。系统会自动衔接之前的动画和当前的动画，开发者仅需要关注当前单次动画的实现。
+假设对于某一可动画属性，存在正在运行的动画。当UI侧行为改变该属性终点值时，开发者仅需在[animateTo](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md)动画闭包中改变属性值或者改变[animation](../reference/apis-arkui/arkui-ts/ts-animatorproperty.md)接口作用的属性值，即可产生动画。系统会自动衔接之前的动画和当前的动画，开发者仅需要关注当前单次动画的实现。
 
 示例如下。通过点击Click，红色方块的缩放属性会发生变化。当连续快速点击Click时，缩放属性的终点值连续发生变化，当前动画也会平滑过渡到朝着新的缩放属性终点值运动。
 
-<!-- @animation_template1_start -->
+<!-- @[animation_template1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/cohesion/template1/Index.ets) -->
 
 ``` TypeScript
 import { curves } from '@kit.ArkUI';
@@ -67,7 +67,7 @@ struct AnimationToAnimationDemo {
 ```
 
 
-zh-cn_image_0000001599971890
+![zh-cn_image_0000001599971890](figures/Animation-smoothing.gif)
 
 
 
@@ -77,11 +77,11 @@ zh-cn_image_0000001599971890
 
 离手阶段的属性变化初始速度应与离手前一刻的属性改变速度保持一致。如果离手后属性变化速度从0开始，就好像正在运行的汽车紧急刹车，造成观感上的骤变是用户和开发者都不希望看到的。
 
-针对在触摸事件和动画之间进行衔接的场景（如列表滑动），可以在跟手阶段每一次更改组件属性时，都使用跟手弹簧曲线的属性动画。离手时再用离手弹簧曲线产生离手阶段的属性动画。对于采用springMotion曲线的动画，离手阶段动画将自动继承跟手阶段动画的速度，并以跟手动画当前位置为起点，运动到指定的属性终点。
+针对在[触摸事件](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md)和[动画](./arkts-animation.md)之间进行衔接的场景（如列表滑动），可以在跟手阶段每一次更改组件属性时，都使用跟手弹簧曲线的属性动画。离手时再用离手弹簧曲线产生离手阶段的属性动画。对于采用[springMotion](../reference/apis-arkui/js-apis-curve.md#curvesspringmotion9)曲线的动画，离手阶段动画将自动继承跟手阶段动画的速度，并以跟手动画当前位置为起点，运动到指定的属性终点。
 
 示例代码如下，小球跟手运动。
 
-<!-- @animation_template2_start -->
+<!-- @[animation_template2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/cohesion/template2/Index.ets) -->
 
 ``` TypeScript
 import { curves } from '@kit.ArkUI';
@@ -149,4 +149,4 @@ struct SpringMotionDemo {
 
 
 
-zh-cn_image_0000001647027001
+![zh-cn_image_0000001647027001](figures/Smoothing-Gestures-Animations.gif)

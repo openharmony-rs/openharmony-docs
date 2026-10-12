@@ -8,17 +8,17 @@
 
 ## 概述
 
-ArkUI开发框架支持在NDK接口使用弧形滑块视图容器ArcSwiper，提供子组件滑动轮播显示的能力，适用于可穿戴设备等圆形屏幕场景。本文介绍NDK接口的开发指导，ArkTS指南请参考创建弧形轮播 (ArcSwiper)。
+ArkUI开发框架支持在NDK接口使用弧形滑块视图容器ArcSwiper，提供子组件滑动轮播显示的能力，适用于可穿戴设备等圆形屏幕场景。本文介绍NDK接口的开发指导，ArkTS指南请参考[创建弧形轮播 (ArcSwiper)](arkts-layout-development-arcswiper.md)。
 
-使用NDK接口构建UI界面以及NDK基本使用，可以参考接入ArkTS页面。页面构建完成创建ArcSwiper后，可以通过设置常用属性和设置弧形导航点指示器优化页面显示效果，页面切换时可以通过监听事件获取页面切换信息。
+使用NDK接口构建UI界面以及NDK基本使用，可以参考[接入ArkTS页面](ndk-access-the-arkts-page.md)。页面构建完成[创建ArcSwiper](#创建arcswiper)后，可以通过[设置常用属性](#设置常用属性)和[设置弧形导航点指示器](#设置弧形导航点指示器)优化页面显示效果，页面切换时可以通过[监听事件](#监听事件)获取页面切换信息。
 
 ## 创建ArcSwiper
 
-本示例通过调用createNode创建ARKUI_NODE_ARC_SWIPER类型的UI组件节点，用于后续设置属性等操作。并通过addChild在ArcSwiper组件下挂载多个Text文本组件，作为轮播页面内容。
+本示例通过调用[createNode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#createnode)创建ARKUI_NODE_ARC_SWIPER类型的UI组件节点，用于后续设置属性等操作。并通过[addChild](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#addchild)在ArcSwiper组件下挂载多个Text文本组件，作为轮播页面内容。
 
-本示例仅展示核心功能代码，完整示例请参考工程<!--RP1-->NDKArcSwiperSample<!--RP1End-->。
+本示例仅展示核心功能代码，完整示例请参考工程<!--RP1-->[NDKArcSwiperSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NDKArcSwiperSample)<!--RP1End-->。
 
-<!-- @arc_swiper_create -->
+<!-- @[arc_swiper_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKArcSwiperSample/entry/src/main/cpp/NativeEntry.cpp) -->
 
 ``` C++
 ArkUI_NativeNodeAPI_1 *nodeApi = nullptr;
@@ -29,7 +29,7 @@ AddChild(arcSwiper, nodeApi);
 
 ## 设置常用属性
 
-本示例通过设置ArkUI_NodeAttributeType中的属性调整ArcSwiper页面显示和交互效果，常见的属性如下：
+本示例通过设置[ArkUI_NodeAttributeType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeattributetype)中的属性调整ArcSwiper页面显示和交互效果，常见的属性如下：
 
 | 枚举项 | 描述 |
 |---------|----------|
@@ -39,13 +39,13 @@ AddChild(arcSwiper, nodeApi);
 | NODE_ARC_SWIPER_DURATION | 子组件切换的动画时长，单位为毫秒。 |
 | NODE_ARC_SWIPER_VERTICAL | 是否为纵向滑动。 |
 | NODE_ARC_SWIPER_DISABLE_SWIPE | 是否禁用滑动切换功能。 |
-| NODE_ARC_SWIPER_DIGITAL_CROWN_SENSITIVITY | 转动表冠的灵敏度，参数类型为ArkUI_CrownSensitivity。 |
-| NODE_ARC_SWIPER_EFFECT_MODE | 滑动到可滚动内容边界时的边缘滑动效果，参数类型为ArkUI_EdgeEffect。 |
+| NODE_ARC_SWIPER_DIGITAL_CROWN_SENSITIVITY | 转动表冠的灵敏度，参数类型为[ArkUI_CrownSensitivity](../reference/apis-arkui/capi-native-type-h.md#arkui_crownsensitivity)。 |
+| NODE_ARC_SWIPER_EFFECT_MODE | 滑动到可滚动内容边界时的边缘滑动效果，参数类型为[ArkUI_EdgeEffect](../reference/apis-arkui/capi-scroll-h.md#arkui_edgeeffect)。 |
 | NODE_ARC_SWIPER_DISABLE_TRANSITION_ANIMATION | 是否禁用转场动画。 |
 
-本示例仅展示核心功能代码，完整示例请参考工程<!--RP1-->NDKArcSwiperSample<!--RP1End-->。
+本示例仅展示核心功能代码，完整示例请参考工程<!--RP1-->[NDKArcSwiperSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NDKArcSwiperSample)<!--RP1End-->。
 
-<!-- @arc_swiper_attribute -->
+<!-- @[arc_swiper_attribute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKArcSwiperSample/entry/src/main/cpp/NativeEntry.cpp) -->
 
 ``` C++
 ArkUI_NumberValue value[] = {0};
@@ -90,11 +90,11 @@ nodeApi->setAttribute(arcSwiper, NODE_ARC_SWIPER_INDICATOR, &indicatorItem);
 | OH_ARKUI_ARCDIRECTION_SIX_CLOCK_DIRECTION | 6点钟方向。 |
 | OH_ARKUI_ARCDIRECTION_NINE_CLOCK_DIRECTION | 9点钟方向。 |
 
-相关代码请参考设置常用属性中的arc_swiper_attribute代码片段。如需设置导航点遮罩渐变颜色，可将ArkUI_ColorStop对象通过ArkUI_AttributeItem的object字段传入。
+相关代码请参考[设置常用属性](#设置常用属性)中的arc_swiper_attribute代码片段。如需设置导航点遮罩渐变颜色，可将[ArkUI_ColorStop](../reference/apis-arkui/capi-arkui-nativemodule-arkui-colorstop.md)对象通过ArkUI_AttributeItem的object字段传入。
 
 ## 监听事件
 
-本示例通过registerNodeEvent注册ArcSwiper组件支持的事件类型ArkUI_NodeEventType，开发者可以在registerNodeEventReceiver注册的监听回调中，判断回调类型并解析对应的回调内容。涉及的回调如下：
+本示例通过[registerNodeEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeevent)注册ArcSwiper组件支持的事件类型[ArkUI_NodeEventType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)，开发者可以在[registerNodeEventReceiver](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeeventreceiver)注册的监听回调中，判断回调类型并解析对应的回调内容。涉及的回调如下：
 
 | 枚举项 | 描述 |
 |---------|----------|
@@ -103,9 +103,9 @@ nodeApi->setAttribute(arcSwiper, NODE_ARC_SWIPER_INDICATOR, &indicatorItem);
 | NODE_ARC_SWIPER_EVENT_ON_ANIMATION_END | 页面切换动画结束时，当前显示页面的索引和当前页面位移。 |
 | NODE_ARC_SWIPER_EVENT_ON_GESTURE_SWIPE | 页面跟手滑动过程中逐帧触发，返回当前显示页面的索引和当前页面位移。 |
 
-本示例仅展示核心功能代码，完整示例请参考工程<!--RP1-->NDKArcSwiperSample<!--RP1End-->。
+本示例仅展示核心功能代码，完整示例请参考工程<!--RP1-->[NDKArcSwiperSample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NDKArcSwiperSample)<!--RP1End-->。
 
-<!-- @arc_swiper_event -->
+<!-- @[arc_swiper_event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NDKArcSwiperSample/entry/src/main/cpp/NativeEntry.cpp) -->
 
 ``` C++
 nodeApi->registerNodeEvent(arcSwiper, NODE_ARC_SWIPER_EVENT_ON_CHANGE, 0, nullptr);  // 0: onChange事件id

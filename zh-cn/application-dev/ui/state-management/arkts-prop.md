@@ -6,9 +6,9 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-\@Prop装饰的变量可以和父组件建立单向同步关系。
+[\@Prop](../../reference/apis-arkui/arkui-ts/ts-state-management-prop.md#prop)装饰的变量可以和父组件建立单向同步关系。
 
-在阅读\@Prop文档前，建议开发者首先了解\@State的基本用法。最佳实践请参考状态管理最佳实践。常见问题请参考状态管理常见问题。
+在阅读\@Prop文档前，建议开发者首先了解[\@State](./arkts-state.md)的基本用法。最佳实践请参考[状态管理最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-status-management)。常见问题请参考[状态管理常见问题](./arkts-state-management-faq.md)。
 
 > **说明：**
 >
@@ -30,24 +30,24 @@
 | \@Prop变量装饰器 | 说明                                       |
 | ----------- | ---------------------------------------- |
 | 装饰器参数       | 无。                                        |
-| 同步类型        | 单向同步。对父组件状态变量值的修改，将同步给子组件\@Prop装饰的变量，子组件\@Prop装饰的变量的修改不会同步到父组件的状态变量上。<br>嵌套类型的场景请参考观察变化。 |
-| 允许装饰的变量类型   |  Object、class、string、number、boolean、enum类型，以及这些类型的数组。<br/>API version 10开始支持Date类型。<br/>API version 11及以上支持Map、Set类型、undefined和null类型、ArkUI框架定义的联合类型Length、ResourceStr、ResourceColor类型以及这些类型的联合类型，示例见Prop支持联合类型实例。<br/>支持类型的场景请参考观察变化。|
+| 同步类型        | 单向同步。对父组件状态变量值的修改，将同步给子组件\@Prop装饰的变量，子组件\@Prop装饰的变量的修改不会同步到父组件的状态变量上。<br>嵌套类型的场景请参考[观察变化](#观察变化)。 |
+| 允许装饰的变量类型   |  Object、class、string、number、boolean、enum类型，以及这些类型的数组。<br/>API version 10开始支持[Date类型](#装饰date类型变量)。<br/>API version 11及以上支持[Map](#装饰map类型变量)、[Set](#装饰set类型变量)类型、undefined和null类型、ArkUI框架定义的联合类型[Length](../../reference/apis-arkui/arkui-ts/ts-types.md#length)、[ResourceStr](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcestr)、[ResourceColor](../../reference/apis-arkui/arkui-ts/ts-types.md#resourcecolor)类型以及这些类型的联合类型，示例见[Prop支持联合类型实例](#prop支持联合类型实例)。<br/>支持类型的场景请参考[观察变化](#观察变化)。|
 | 不允许装饰的变量类型 | 不支持装饰Function类型。      |
-| 嵌套传递层数        | 在组件复用场景，建议@Prop深度嵌套数据不要超过5层，嵌套太多会导致深拷贝占用的空间过大以及GarbageCollection(垃圾回收)，引起性能问题，此时更建议使用\@ObjectLink。 |
-| 被装饰变量的初始值   | 允许本地初始化。API version 11及以上，如果和\@Require结合使用，则必须父组件构造传参。 |
+| 嵌套传递层数        | 在组件复用场景，建议@Prop深度嵌套数据不要超过5层，嵌套太多会导致深拷贝占用的空间过大以及GarbageCollection(垃圾回收)，引起性能问题，此时更建议使用[\@ObjectLink](arkts-observed-and-objectlink.md)。 |
+| 被装饰变量的初始值   | 允许本地初始化。API version 11及以上，如果和[\@Require](arkts-require.md)结合使用，则必须父组件构造传参。 |
 
 
 ## 变量的传递/访问规则说明
 
 | 装饰器使用规则          | 说明                                                         |
 | ------------------ | ------------------------------------------------------------ |
-| 从父组件初始化     | 如果本地有初始化，则是可选的，初始化行为和\@State保持一致。没有的话，则必选，支持父组件中的常规变量（常规变量对@Prop赋值，只是数值的初始化，常规变量的变化不会触发UI刷新。只有状态变量才能触发UI刷新）、\@State、\@Link、\@Prop、\@Provide、\@Consume、\@ObjectLink、\@StorageLink、\@StorageProp、\@LocalStorageLink和\@LocalStorageProp去初始化子组件中的\@Prop装饰的变量。 |
+| 从父组件初始化     | 如果本地有初始化，则是可选的，初始化行为和[\@State](./arkts-state.md#变量的传递访问规则说明)保持一致。没有的话，则必选，支持父组件中的常规变量（常规变量对@Prop赋值，只是数值的初始化，常规变量的变化不会触发UI刷新。只有状态变量才能触发UI刷新）、[\@State](arkts-state.md)、[\@Link](arkts-link.md)、\@Prop、[\@Provide](arkts-provide-and-consume.md)、[\@Consume](arkts-provide-and-consume.md)、[\@ObjectLink](arkts-observed-and-objectlink.md)、[\@StorageLink](arkts-appstorage.md#storagelink)、[\@StorageProp](arkts-appstorage.md#storageprop)、[\@LocalStorageLink](arkts-localstorage.md#localstoragelink)和[\@LocalStorageProp](arkts-localstorage.md#localstorageprop)去初始化子组件中的\@Prop装饰的变量。 |
 |用于初始化子组件| \@Prop支持初始化子组件中的常规变量、\@State、\@Link、\@Prop、\@Provide。|
 | 是否支持组件外访问 | \@Prop装饰的变量是私有的，只能在组件内访问。                 |
 
  初始化规则图示：
 
-prop-initialization
+![prop-initialization](figures/prop-initialization.png)
 
 ## 观察变化和行为表现
 
@@ -55,7 +55,7 @@ prop-initialization
 
 \@Prop装饰的数据可以观察到以下变化。
 
-- 当装饰支持类型，可以观察到赋值的变化。简单类型完整示例请参考父组件\@State到子组件\@Prop简单数据类型同步。
+- 当装饰支持类型，可以观察到赋值的变化。简单类型完整示例请参考[父组件\@State到子组件\@Prop简单数据类型同步](#父组件state到子组件prop简单数据类型同步)。
 
   ```ts
   // 简单类型
@@ -65,12 +65,12 @@ prop-initialization
   // 复杂类型
   @Prop title: Model;
   // 可以观察到赋值的变化
-  this.title = new Model('Hi');
+  this.title = new Model('Hi', new Info('ArkUI'));
   ```
 
-- 当装饰的类型是Object或者class复杂类型时，可以观察到自身的赋值和第一层的属性的变化，属性即Object.keys(observedObject)返回的所有属性。复杂类型完整示例请参考从父组件中的\@State类对象属性到\@Prop简单类型的同步。
+- 当装饰的类型是Object或者class复杂类型时，可以观察到自身的赋值和第一层的属性的变化，属性即Object.keys(observedObject)返回的所有属性。复杂类型完整示例请参考[从父组件中的\@State类对象属性到\@Prop复杂类型的同步](#从父组件中的state类对象属性到prop复杂类型的同步)。
 
-  <!-- @prop_seventeen_start -->
+  <!-- @[prop_seventeen_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageSeventeen.ets) -->
   
   ``` TypeScript
   // 定义嵌套类
@@ -92,18 +92,18 @@ prop-initialization
     }
   }
   ```
-  <!-- @prop_twentyone_start -->
+  <!-- @[prop_twentyone_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageSeventeen.ets) -->
   
   ``` TypeScript
   @Prop title: Model;
   ```
-  <!-- @prop_nineteen_start -->
+  <!-- @[prop_nineteen_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageSeventeen.ets) -->
   
   ``` TypeScript
   // 可以观察到第一层的变化
   this.title.value = 'Hi';
   ```
-  <!-- @prop_twenty_start -->
+  <!-- @[prop_twenty_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageSeventeen.ets) -->
   
   ``` TypeScript
   // 观察不到第二层的变化
@@ -111,9 +111,9 @@ prop-initialization
   ```
 
 
-对于嵌套场景，如果class是被\@Observed装饰的，可以观察到class属性的变化，示例请参考@Prop嵌套场景。
+对于嵌套场景，如果class是被\@Observed装饰的，可以观察到class属性的变化，示例请参考[@Prop嵌套场景](#prop嵌套场景)。
 
-- 当装饰的类型是数组的时候，可以观察到数组本身的赋值和数组项的添加、删除和更新。数组类型完整示例请参考父组件\@State数组项到子组件\@Prop简单数据类型同步。
+- 当装饰的类型是数组的时候，可以观察到数组本身的赋值和数组项的添加、删除和更新。数组类型完整示例请参考[父组件\@State数组项到子组件\@Prop简单数据类型同步](#父组件state数组项到子组件prop简单数据类型同步)。
 
   ```ts
   // @Prop装饰的对象为数组时
@@ -135,11 +135,11 @@ prop-initialization
 - 除了\@State，数据源也可以用\@Link或\@Prop装饰，对\@Prop的同步机制是相同的。
 - 数据源和\@Prop装饰的变量的类型需要相同。
 
-- 当装饰的对象是Date时，可以观察到Date整体的赋值，同时可通过调用Date的接口`setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, `setUTCMilliseconds` 更新Date的属性，详见装饰Date类型变量。
+- 当装饰的对象是Date时，可以观察到Date整体的赋值，同时可通过调用Date的接口`setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, `setUTCMilliseconds` 更新Date的属性，详见[装饰Date类型变量](#装饰date类型变量)。
 
-- 当装饰的变量是Map时，可以观察到Map整体的赋值，同时可通过调用Map的接口`set`, `clear`, `delete` 更新Map的值。详见装饰Map类型变量。
+- 当装饰的变量是Map时，可以观察到Map整体的赋值，同时可通过调用Map的接口`set`, `clear`, `delete` 更新Map的值。详见[装饰Map类型变量](#装饰map类型变量)。
 
-- 当装饰的变量是Set时，可以观察到Set整体的赋值，同时可通过调用Set的接口`add`, `clear`, `delete` 更新Set的值。详见装饰Set类型变量。
+- 当装饰的变量是Set时，可以观察到Set整体的赋值，同时可通过调用Set的接口`add`, `clear`, `delete` 更新Set的值。详见[装饰Set类型变量](#装饰set类型变量)。
 
 ### 框架行为
 
@@ -159,7 +159,7 @@ prop-initialization
 
 以下示例中，当@State装饰的变量message改变时，Father组件会刷新。由于Son组件使用@Prop接收了该变量，因此Father组件刷新的过程中会使用message的最新值去更新@Prop的值。@Prop更新后，会触发Son组件的刷新。
 
-<!-- @prop_one_start --> 
+<!-- @[prop_one_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageOne.ets) --> 
 
 ``` TypeScript
 @Component
@@ -193,7 +193,7 @@ struct Father {
 
 ## 限制条件
 
-- \@Prop装饰变量时会进行深拷贝，在拷贝的过程中除了基本类型、Map、Set、Date、Array外，都会丢失类型。例如，对于通过NAPI提供的复杂类型（如PixelMap），由于其部分实现在Native侧，因此无法在ArkTS侧通过深拷贝获得完整的数据；同样，RegExp类型在拷贝过程中会丢失原类型，导致被\@Prop装饰后无法调用正则相关函数。
+- \@Prop装饰变量时会进行深拷贝，在拷贝的过程中除了基本类型、Map、Set、Date、Array外，都会丢失类型。例如，对于通过NAPI提供的复杂类型（如[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)），由于其部分实现在Native侧，因此无法在ArkTS侧通过深拷贝获得完整的数据；同样，RegExp类型在拷贝过程中会丢失原类型，导致被\@Prop装饰后无法调用正则相关函数。
 
 - \@Prop不支持装饰Function类型的变量，API version 23之前，应用在运行时会出现错误。
 
@@ -201,7 +201,7 @@ struct Father {
 
 - 父组件传入undefined时，\@Prop装饰的变量仍使用本地默认值进行初始化。
   
-  <!-- @prop_twenty_start --> 
+  <!-- @[prop_twenty_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageTwenty.ets) --> 
   
   ``` TypeScript
   @Entry
@@ -242,7 +242,7 @@ struct Father {
 
 ParentComponent的状态变量countDownStartValue的变化将重置CountDownComponent的count。
 
-<!-- @prop_two_start -->
+<!-- @[prop_two_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageTwo.ets) -->
 
 ``` TypeScript
 @Component
@@ -293,7 +293,7 @@ struct ParentComponent {
 
 2. 按“+1”或“-1”按钮时，父组件的\@State装饰的countDownStartValue值会变化，这将触发父组件重新渲染，在父组件重新渲染过程中会刷新使用countDownStartValue状态变量的UI组件，并单向同步更新CountDownComponent子组件中的count值。
 
-3. 更新count状态变量值也会触发CountDownComponent的重新渲染，在重新渲染过程中，评估使用count状态变量的if语句条件（this.count&gt; 0），并执行true分支中的使用count状态变量的UI组件相关描述来更新Text组件的UI显示。
+3. 更新count状态变量值也会触发CountDownComponent的重新渲染，在重新渲染过程中，评估使用count状态变量的if语句条件（this.count &gt; 0），并执行true分支中的使用count状态变量的UI组件相关描述来更新Text组件的UI显示。
 
 4. 当按下子组件CountDownComponent的“Try again”按钮时，其\@Prop装饰的变量count将被更改，但是count值的更改不会影响父组件的countDownStartValue值。
 
@@ -303,7 +303,7 @@ struct ParentComponent {
 
 父组件中@State如果装饰数组类型的变量，其数组项也可以初始化@Prop。以下示例中，父组件Index中@State装饰数组arr，将其数组项初始化子组件Child中@Prop装饰的value。
 
-<!-- @prop_four_start -->
+<!-- @[prop_four_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageFour.ets) -->
 
 ``` TypeScript
 @Component
@@ -386,13 +386,13 @@ struct Index {
 
 - this.arr的更改触发ForEach更新，this.arr更新的前后都有数值为3的数组项：[3, 4, 5] 和[1, 2, 3]。根据diff算法，数组项“3”将被保留，删除“1”和“2”的数组项，添加为“4”和“5”的数组项。这就意味着，数组项“3”的组件不会重新生成，而是将其移动到第一位。所以“3”对应的组件不会更新，此时“3”对应的组件数值为“7”，ForEach最终的渲染结果是“7”，“4”，“5”。
 
-### 从父组件中的\@State类对象属性到\@Prop简单类型的同步
+### 从父组件中的\@State类对象属性到\@Prop复杂类型的同步
 
 如果图书馆有一本图书和两位用户，每位用户都可以将图书标记为已读，此标记行为不会影响其他用户。从代码角度讲，对\@Prop图书对象的本地更改不会同步给图书馆组件中的\@State图书对象。
 
-在此示例中，图书类可以使用\@Observed装饰器，但不是必须的，只有在嵌套结构时需要此装饰器。这一点会在从父组件中的\@State数组项到\@Prop class类型的同步说明。
+在此示例中，图书类可以使用\@Observed装饰器，但不是必须的，只有在嵌套结构时需要此装饰器。这一点会在[从父组件中的\@State数组项到\@Prop class类型的同步](#从父组件中的state数组项到prop-class类型的同步)说明。
 
-<!-- @prop_five_start --> 
+<!-- @[prop_five_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageFive.ets) --> 
 
 ``` TypeScript
 class Book {
@@ -440,7 +440,7 @@ struct Library {
 
 以下示例中，更改了\@State装饰的allBooks数组中Book对象的属性，但点击“Mark read for everyone”时，没有触发UI更新。这是因为该属性是第二层的嵌套属性，\@State装饰器只能观察到第一层属性，不会观察到此属性更改，所以框架不会更新ReaderComp。
 
-<!-- @prop_six_start --> 
+<!-- @[prop_six_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageSix.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -572,7 +572,7 @@ class Book {
 
 \@Observed装饰的类的实例会被不透明的代理对象包装，此代理可以检测到包装对象内的所有属性更改。如果发生这种情况，此时，代理通知\@Prop，\@Prop对象值被更新。
 
-Video-prop-UsageScenario-one
+![Video-prop-UsageScenario-one](figures/Video-prop-UsageScenario-one.gif)
 
 ### \@Prop本地初始化不和父组件同步
 
@@ -584,7 +584,7 @@ Video-prop-UsageScenario-one
 
 - \@Prop customCounter2有本地初始化，在这种情况下，\@Prop依旧允许但非强制父组件同步数据源给\@Prop。
 
-<!-- @prop_seven_start -->
+<!-- @[prop_seven_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageSeven.ets) -->
 
 ``` TypeScript
 @Component
@@ -650,13 +650,13 @@ struct MainProgram {
 ```
 
 
-Video-prop-UsageScenario-two
+![Video-prop-UsageScenario-two](figures/Video-prop-UsageScenario-two.gif)
 
 ### \@Prop嵌套场景
 
 在嵌套场景下，每一层都要用\@Observed装饰，且每一层都要被\@Prop接收，这样才能观察到嵌套场景。
 
-<!-- @prop_eight_start -->
+<!-- @[prop_eight_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageEight.ets) -->
 
 ``` TypeScript
 // 以下是嵌套类对象的数据结构。
@@ -683,7 +683,7 @@ class Father {
 
 以下组件层次结构展示了\@Prop嵌套场景的数据结构。
 
-<!-- @prop_nine_start -->
+<!-- @[prop_nine_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageNine.ets) -->
 
 ``` TypeScript
 @Entry
@@ -764,13 +764,13 @@ struct Child {
 }
 ```
 
-Video-prop-UsageScenario-three
+![Video-prop-UsageScenario-three](figures/Video-prop-UsageScenario-three.gif)
 
 ### 装饰Array类型变量
 
 在下面的示例中，message类型为`number[]`，点击Button改变message的值，视图会随之刷新。
 
-<!-- @prop_nineteen_start -->
+<!-- @[prop_nineteen_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageNineteen.ets) -->
 
 ``` TypeScript
 @Entry
@@ -841,7 +841,7 @@ struct Child {
 
 在下面的示例中，value类型为Map\<number, string\>，点击Button改变value的值，视图会随之刷新。
 
-<!-- @prop_ten_start --> 
+<!-- @[prop_ten_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageTen.ets) --> 
 
 ``` TypeScript
 @Component
@@ -901,7 +901,7 @@ struct MapSample {
 
 在下面的示例中，message类型为Set\<number\>，点击Button改变message的值，视图会随之刷新。
 
-<!-- @prop_eleven_start --> 
+<!-- @[prop_eleven_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageEleven.ets) --> 
 
 ``` TypeScript
 @Component
@@ -954,7 +954,7 @@ struct SetSample {
 
 在下面的示例中，selectedDate类型为Date，点击Button改变Date的值，视图会随之刷新。
 
-<!-- @prop_twelve_start --> 
+<!-- @[prop_twelve_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageTwelve.ets) --> 
 
 ``` TypeScript
 @Component
@@ -1014,7 +1014,7 @@ struct ParentComponent {
 
 @Prop支持联合类型和undefined和null，在下面的示例中，animal类型为Animals | undefined，点击父组件Zoo中的Button改变animal的属性或者类型，Child中也会对应刷新。
 
-<!-- @prop_thirteen_start -->
+<!-- @[prop_thirteen_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageThirteen.ets) -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';

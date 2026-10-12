@@ -6,9 +6,9 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-为了实现更好的转场效果，推荐使用Navigation转场动画和模态转场。
+为了实现更好的转场效果，推荐使用[Navigation转场动画](./arkts-navigation-animation.md)和[模态转场](arkts-modal-transition.md)。
 
-两个页面间发生跳转，一个页面消失，另一个页面出现，这时可以配置各自页面的页面转场参数实现自定义的页面转场效果。页面间转场效果写在pageTransition函数中，通过PageTransitionEnter和PageTransitionExit指定页面进入和退出的动画效果。
+两个页面间发生跳转，一个页面消失，另一个页面出现，这时可以配置各自页面的页面转场参数实现自定义的页面转场效果。[页面间转场](../reference/apis-arkui/arkui-ts/ts-page-transition-animation.md)效果写在pageTransition函数中，通过[PageTransitionEnter](../reference/apis-arkui/arkui-ts/ts-page-transition-animation.md#pagetransitionenter)和[PageTransitionExit](../reference/apis-arkui/arkui-ts/ts-page-transition-animation.md#pagetransitionexit)指定页面进入和退出的动画效果。
 
 pageTransition的函数为：
 
@@ -34,17 +34,17 @@ PageTransitionExit({ type?: RouteType, duration?: number, curve?: Curve | string
 ```
 
 
-上述接口定义了PageTransitionEnter和PageTransitionExit组件，可通过slide、translate、scale、opacity属性定义不同的页面转场效果。对于PageTransitionEnter而言，这些效果表示入场时起点值，对于PageTransitionExit而言，这些效果表示退场的终点值，这一点与组件转场transition配置方法类似。此外，PageTransitionEnter提供了onEnter接口进行自定义页面入场动画的回调，PageTransitionExit提供了onExit接口进行自定义页面退场动画的回调。
+上述接口定义了PageTransitionEnter和PageTransitionExit组件，可通过[slide](../reference/apis-arkui/arkui-ts/ts-page-transition-animation.md#slide)、[translate](../reference/apis-arkui/arkui-ts/ts-page-transition-animation.md#translate)、[scale](../reference/apis-arkui/arkui-ts/ts-page-transition-animation.md#scale)、[opacity](../reference/apis-arkui/arkui-ts/ts-page-transition-animation.md#opacity)属性定义不同的页面转场效果。对于PageTransitionEnter而言，这些效果表示入场时起点值，对于PageTransitionExit而言，这些效果表示退场的终点值，这一点与组件转场[transition](../reference/apis-arkui/arkui-ts/ts-transition-animation-component.md)配置方法类似。此外，PageTransitionEnter提供了onEnter接口进行自定义页面入场动画的回调，PageTransitionExit提供了onExit接口进行自定义页面退场动画的回调。
 
 
-上述接口中的参数type，表示路由生效的类型，这一点开发者容易混淆其含义。页面转场的两个页面，必定有一个页面退出，一个页面进入。如果通过pushUrl操作从页面A跳转到页面B，则页面A退出，做页面退场动画，页面B进入，做页面入场动画。如果通过back操作从页面B返回到页面A，则页面B退出，做页面退场动画，页面A进入，做页面入场动画。即页面的PageTransitionEnter既可能是由于新增页面(push，入栈)引起的新页面的入场动画，也可能是由于页面返回(back，或pop，出栈)引起的页面栈中老页面的入场动画，为了能区分这两种形式的入场动画，提供了type参数，这样开发者能完全定义所有类型的页面转场效果。
+上述接口中的参数type，表示路由生效的类型，这一点开发者容易混淆其含义。页面转场的两个页面，必定有一个页面退出，一个页面进入。如果通过[pushUrl](../reference/apis-arkui/arkts-apis-uicontext-router.md#pushurl)操作从页面A跳转到页面B，则页面A退出，做页面退场动画，页面B进入，做页面入场动画。如果通过[back](../reference/apis-arkui/arkts-apis-uicontext-router.md#back)操作从页面B返回到页面A，则页面B退出，做页面退场动画，页面A进入，做页面入场动画。即页面的PageTransitionEnter既可能是由于新增页面(push，入栈)引起的新页面的入场动画，也可能是由于页面返回(back，或pop，出栈)引起的页面栈中老页面的入场动画，为了能区分这两种形式的入场动画，提供了type参数，这样开发者能完全定义所有类型的页面转场效果。
 
 
 ## type配置为RouteType.None
 
 type为RouteType.None表示对页面栈的push、pop操作均生效，type的默认值为RouteType.None。
 
-<!-- @pageTransition_template5_pageA_start -->
+<!-- @[pageTransition_template5_pageA_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/pageTransition/template5/PageTransitionSrc3.ets) -->
 
 ``` TypeScript
 // page A
@@ -60,7 +60,7 @@ pageTransition() {
 
 <!-- -->
 
-<!-- @pageTransition_template5_pageB_start -->
+<!-- @[pageTransition_template5_pageB_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/pageTransition/template5/PageTransitionDst3.ets) -->
 
 ``` TypeScript
 // page B
@@ -92,9 +92,9 @@ pageTransition() {
 
 ## type配置为RouteType.Push或RouteType.Pop
 
-type为RouteType.Push表示仅对页面栈的push操作生效，type为RouteType.Pop表示仅对页面栈的pop操作生效。
+[type](../reference/apis-arkui/arkui-ts/ts-page-transition-animation.md#pagetransitionoptions对象说明)为[RouteType.Push](../reference/apis-arkui/arkui-ts/ts-page-transition-animation.md#routetype枚举说明)表示仅对页面栈的push操作生效，type为RouteType.Pop表示仅对页面栈的pop操作生效。
 
-<!-- @pageTransition_template6_pageA_start -->
+<!-- @[pageTransition_template6_pageA_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/pageTransition/template6/PageTransitionSrc4.ets) -->
 
 ``` TypeScript
 // page A
@@ -116,7 +116,7 @@ pageTransition() {
 
 <!-- -->
 
-<!-- @pageTransition_template6_pageB_start -->
+<!-- @[pageTransition_template6_pageB_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/pageTransition/template6/PageTransitionDst4.ets) -->
 
 ``` TypeScript
 // page B
@@ -168,9 +168,9 @@ pageTransition() {
 
 ## 场景示例
 
-下面介绍了利用pushUrl跳转能力定义了所有的四种页面转场样式的页面转场动画示例。
+下面介绍了利用[pushUrl](../reference/apis-arkui/arkts-apis-uicontext-router.md#pushurl)跳转能力定义了所有的四种页面转场样式的页面转场动画示例。
 
-<!-- @pageTransition_template3_pageTransitionSrc1_start -->
+<!-- @[pageTransition_template3_pageTransitionSrc1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/pageTransition/template3/pageTransitionSrc1.ets) -->
 
 ``` TypeScript
 // PageTransitionSrc1
@@ -223,7 +223,7 @@ struct PageTransitionSrc1 {
 
 <!-- -->
 
-<!-- @pageTransition_template3_pageTransitionDst1_start -->
+<!-- @[pageTransition_template3_pageTransitionDst1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/pageTransition/template3/pageTransitionDst1.ets) -->
 
 ``` TypeScript
 // PageTransitionDst1
@@ -276,12 +276,12 @@ struct PageTransitionDst1 {
 
 
 
-pageTransition_PushPop
+![pageTransition_PushPop](figures/pageTransition_PushPop.gif)
 
 
 下面介绍使用了type为None的页面转场动画示例。 
 
-<!-- @pageTransition_template4_pageTransitionSrc2_start -->
+<!-- @[pageTransition_template4_pageTransitionSrc2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/pageTransition/template4/pageTransitionSrc2.ets) -->
 
 ``` TypeScript
 // PageTransitionSrc2
@@ -329,7 +329,7 @@ struct PageTransitionSrc2 {
 
 <!-- -->
 
-<!-- @pageTransition_template4_pageTransitionDst2_start -->
+<!-- @[pageTransition_template4_pageTransitionDst2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/pageTransition/template4/pageTransitionDst2.ets) -->
 
 ``` TypeScript
 // PageTransitionDst2
@@ -376,4 +376,4 @@ struct PageTransitionDst2 {
 ```
 
 
-pageTransition_None
+![pageTransition_None](figures/pageTransition_None.gif)

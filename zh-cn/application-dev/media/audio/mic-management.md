@@ -1,8 +1,8 @@
 # 管理麦克风静音状态
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @zyy0412-->
-<!--Designer: @weixin_41398971-->
+<!--Owner: @songshenke-->
+<!--Designer: @hao-liangfei-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -14,13 +14,13 @@
 
 ## 开发步骤及注意事项
 
-以下各步骤示例为片段代码，可通过示例代码右下方链接获取完整示例。
+以下各步骤示例为片段代码，可通过示例代码右下方链接获取[完整示例](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS)。
 
-在AudioVolumeGroupManager中提供了管理麦克风状态的方法，接口的详细说明请参考音量API文档AudioVolumeGroupManager。
+在AudioVolumeGroupManager中提供了管理麦克风状态的方法，接口的详细说明请参考音量API文档[AudioVolumeGroupManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioVolumeGroupManager.md)。
 
 1. 创建audioVolumeGroupManager对象。
 
-   <!-- @create_AudioVolumeGroupManager --> 
+   <!-- @[create_AudioVolumeGroupManager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/MacManager.ets) --> 
    
    ``` TypeScript
    import { audio } from '@kit.AudioKit';
@@ -35,11 +35,11 @@
    }
    ```
 
-2. 调用on('micStateChange')监听麦克风状态变化，当麦克风静音状态发生变化时将通知应用。
+2. 调用[on('micStateChange')](../../reference/apis-audio-kit/arkts-apis-audio-AudioVolumeGroupManager.md#onmicstatechange9)监听麦克风状态变化，当麦克风静音状态发生变化时将通知应用。
 
-   目前此订阅接口在单进程多AudioManager实例的使用场景下，仅最后一个实例的订阅生效，其他实例的订阅会被覆盖（即使最后一个实例未订阅），因此推荐使用单一AudioManager实例进行开发。
+   目前此订阅接口在单进程多[AudioManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioManager.md)实例的使用场景下，仅最后一个实例的订阅生效，其他实例的订阅会被覆盖（即使最后一个实例未订阅），因此推荐使用单一AudioManager实例进行开发。
 
-   <!-- @mac_on --> 
+   <!-- @[mac_on](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/MacManager.ets) --> 
 
    ``` TypeScript
    // 监听麦克风状态变化。
@@ -50,9 +50,9 @@
    }
    ```
 
-3. 调用isMicrophoneMute查询麦克风当前静音状态，返回true为静音，false为非静音。
+3. 调用[isMicrophoneMute](../../reference/apis-audio-kit/arkts-apis-audio-AudioVolumeGroupManager.md#ismicrophonemute9)查询麦克风当前静音状态，返回true为静音，false为非静音。
 
-   <!-- @is_MicrophoneMute -->
+   <!-- @[is_MicrophoneMute](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/MacManager.ets) -->
 
    ``` TypeScript
    // 查询麦克风是否静音。
@@ -65,7 +65,7 @@
    ```
 
    <!--Del-->
-4. **（仅对系统应用开放）** 根据查询结果的实际情况，调用setMicMute设置麦克风静音状态，入参输入true为静音，false为非静音。
+4. **（仅对系统应用开放）** 根据查询结果的实际情况，调用[setMicMute](../../reference/apis-audio-kit/js-apis-audio-sys.md#setmicmute11)设置麦克风静音状态，入参输入true为静音，false为非静音。
 
    ``` TypeScript
    // 设置麦克风静音，入参为true。

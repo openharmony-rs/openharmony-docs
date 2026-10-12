@@ -10,13 +10,13 @@ Media Kit（媒体服务）用于开发音视频播放或录制的各类功能�
 
 Media Kit提供的模块有：
 
-- AVPlayer：播放音视频
-- SoundPool：播放短音频
-- AVRecorder：录制音视频
-- AVScreenCapture：录制屏幕
-- AVMetadataExtractor：获取音视频元数据
-- AVImageGenerator：获取视频缩略图
-- AVTranscoder：视频转码
+- [AVPlayer](#avplayer)：播放音视频
+- [SoundPool](#soundpool)：播放短音频
+- [AVRecorder](#avrecorder)：录制音视频
+- [AVScreenCapture](#avscreencapture)：录制屏幕
+- [AVMetadataExtractor](#avmetadataextractor)：获取音视频元数据
+- [AVImageGenerator](#avimagegenerator)：获取视频缩略图
+- [AVTranscoder](#avtranscoder)：视频转码
 
 ## 亮点/特征
 
@@ -38,7 +38,7 @@ Media Kit提供的模块有：
 
 在开发音乐、视频播放功能之前，建议了解流媒体播放的相关概念包括但不限于：
 
-- 播放过程：网络协议&gt; 容器格式&gt; 音视频编解码&gt; 图形/音频渲染
+- 播放过程：网络协议 &gt; 容器格式 &gt; 音视频编解码 &gt; 图形/音频渲染
 
 - 网络协议：比如HLS、HTTP-FLV、HTTP/HTTPS
 
@@ -46,7 +46,7 @@ Media Kit提供的模块有：
 
 - 编码格式：比如h264/h265
 
-详细流媒体开发流程请参考流媒体播放开发指导。
+详细流媒体开发流程请参考[流媒体播放开发指导](streaming-media-playback-development-guide.md)。
 
 ## AVPlayer
 
@@ -58,7 +58,7 @@ AVPlayer提供功能完善一体化播放能力，应用只需要提供流媒体
 
 当使用AVPlayer开发音乐应用播放音频时，AVPlayer与外部模块的交互关系如图所示。
 
-Audio Playback Interaction Diagram
+![Audio Playback Interaction Diagram](figures/audio-playback-interaction-diagram.png)
 
 音乐类应用通过调用JS接口层提供的AVPlayer接口实现相应功能时，框架层会通过播放服务（Player Framework）将资源解析成音频数据流（PCM），音频数据流经过软件解码后输出至音频服务（Audio Framework），由音频服务输出至音频驱动渲染，实现音频播放功能。完整的音频播放需要应用、Player Framework、Audio Framework、音频HDI共同实现。
 
@@ -72,7 +72,7 @@ Audio Playback Interaction Diagram
 
 当使用AVPlayer开发视频应用播放视频时，AVPlayer与外部模块的交互关系如图所示。
 
-Video playback interaction diagram
+![Video playback interaction diagram](figures/video-playback-interaction-diagram.png)
 
 应用通过调用JS接口层提供的AVPlayer接口实现相应功能时，框架层会通过播放服务（Player Framework）解析成单独的音频数据流和视频数据流，音频数据流经过软件解码后输出至音频服务（Audio Framework），再至硬件接口层的音频HDI，实现音频播放功能。视频数据流经过硬件（推荐）/软件解码后输出至图形渲染服务（Graphic Framework），再输出至硬件接口层的显示HDI，完成图形渲染。
 
@@ -80,7 +80,7 @@ Video playback interaction diagram
 
 图中的数字标注表示需要数据与外部模块的传递。
 
-1. 应用从XComponent组件获取窗口SurfaceID，获取方式参考XComponent。
+1. 应用从XComponent组件获取窗口SurfaceID，获取方式参考[XComponent](../../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)。
 
 2. 应用把媒体资源、SurfaceID传递给AVPlayer接口。
 
@@ -154,7 +154,7 @@ SoundPool提供短音频的播放能力，应用只需要提供音频资源来�
 
 当使用SoundPool开发应用播放音频时，SoundPool与外部模块的交互关系如图所示。
 
-SoundPool Interaction Diagram
+![SoundPool Interaction Diagram](figures/soundpool-interaction-diagram.png)
 
 音乐类应用通过调用JS接口层提供的SoundPool接口实现相应功能时，框架层会通过播放服务（Player Framework）将资源解析成音频数据流（PCM），音频数据流经过软件解码后输出至音频服务（Audio Framework），由音频服务输出至音频驱动渲染，实现音频播放功能。完整的音频播放需要应用、Player Framework、Audio Framework、音频HDI共同实现。
 
@@ -190,7 +190,7 @@ AVRecorder主要工作是捕获音频信号，接收视频信号，完成音视�
 
 当使用AVRecorder开发应用录制视频时，AVRecorder与外部模块的交互关系如图所示。
 
-Video recording interaction diagram
+![Video recording interaction diagram](figures/video-recording-interaction-diagram.png)
 
 - 音频录制：应用通过调用JS接口层提供的AVRecorder接口实现音频录制时，框架层会通过录制服务（Player Framework），调用音频服务（Audio Framework）通过音频HDI捕获音频数据，通过软件编码封装后保存至文件中，实现音频录制功能。
 
@@ -253,7 +253,7 @@ AVScreenCapture主要工作是捕获音频信号、视频信号，并通过音�
 
 当使用AVScreenCapture开发应用录制屏幕时，AVScreenCapture与外部模块的交互关系如图所示。
 
-AvScreenCapture interaction diagram
+![AvScreenCapture interaction diagram](figures/avscreencapture-interaction-diagram.png)
 
 - 音频录制：应用通过调用JS/Native接口层提供的AVScreenCapture接口实现音频录制时，框架层会通过录屏框架，调用音频服务（Audio Framework）通过音频捕获音频数据，通过软件编码封装后保存至文件中，实现音频录制功能。
 - 屏幕录制：应用通过调用JS/Native接口层提供的AVScreenCapture接口实现屏幕录制时，框架层会通过录屏框架，调用图形图像服务通过视频捕获屏幕数据，通过软件编码封装后保存至文件中，实现屏幕录制功能。
@@ -300,7 +300,7 @@ AVMetadataExtractor 主要用于获取音视频元数据。通过使用 AVMetada
 
 ### 支持的格式
 
-支持的音视频源参考媒体数据解析。
+支持的音视频源参考[媒体数据解析](../avcodec/audio-video-demuxer.md)。
 
 ## AVImageGenerator
 
@@ -308,7 +308,7 @@ AVImageGenerator 主要用于获取视频缩略图。通过使用 AVImageGenerat
 
 ### 支持的格式
 
-支持的视频源参考视频解码。
+支持的视频源参考[视频解码](../avcodec/video-decoding.md)。
 
 ## AVTranscoder
 
@@ -323,7 +323,7 @@ AVTranscoder主要用于将已压缩编码的视频文件按照指定参数转�
 <!--RP1--><!--RP1End-->
 - 支持的源视频格式：
 
-   当前转码支持的源视频格式依赖于系统解码器和解封装支持的格式，详细情况请参考AVCodec支持的格式。
+   当前转码支持的源视频格式依赖于系统解码器和解封装支持的格式，详细情况请参考[AVCodec支持的格式](../avcodec/avcodec-support-formats.md#媒体数据解封装)。
 
 - 支持的目标视频格式：
 

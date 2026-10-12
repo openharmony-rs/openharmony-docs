@@ -12,17 +12,17 @@
 
 **图1** 位图操作示意图
 
-Bitmap operation
+![Bitmap operation](figures/bitmap-operation.png)
 
 ## 开发步骤
 
-位图操作相关API的详细介绍请参见Interface (PixelMap)。
+位图操作相关API的详细介绍请参见[Interface (PixelMap)](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)。
 
-1. 完成图片解码，获取PixelMap位图对象。
+1. 完成[图片解码](image-decoding.md)，获取PixelMap位图对象。
 
 2. 从PixelMap位图对象中获取信息。
 
-   <!-- @pixelmap_get_pixelmap_info -->
+   <!-- @[pixelmap_get_pixelmap_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/PixelMap/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    // 获取图像像素的总字节数。
@@ -42,7 +42,7 @@ Bitmap operation
    >
    > 建议readPixelsToBuffer和writeBufferToPixels成对使用，readPixels和writePixels成对使用，避免因图像像素格式不一致，造成PixelMap图像出现异常。
 
-   <!-- @pixelmap_bitmap_operation_all -->
+   <!-- @[pixelmap_bitmap_operation_all](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/PixelMap/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    // 场景一：读取并修改整张图像数据。
@@ -63,7 +63,7 @@ Bitmap operation
    });
    ```
 
-   <!-- @pixelmap_bitmap_operation -->
+   <!-- @[pixelmap_bitmap_operation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/PixelMap/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    // 场景二：读取并修改指定区域内的图像数据。
@@ -102,14 +102,14 @@ Bitmap operation
 
 > **说明：**
 >
-> - 该方法仅可实现PixelMap基本内容的复制，不支持复制色域和HDR元数据。如果不需要改变新PixelMap的像素格式，请使用clone或cloneSync。
+> - 该方法仅可实现PixelMap基本内容的复制，不支持复制色域和HDR元数据。如果不需要改变新PixelMap的像素格式，请使用[clone](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md#clone18)或[cloneSync](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md#clonesync18)。
 > - 该方法不支持将新PixelMap转换为下列像素格式：RGBA_1010102、YCBCR_P010、YCRCB_P010、ASTC_4x4。
 
-1. 完成图片解码，获取PixelMap位图对象。
+1. 完成[图片解码](image-decoding.md)，获取PixelMap位图对象。
 
 2. 参考以下代码对PixelMap进行深拷贝。
 
-   <!-- @pixelmap_clone -->
+   <!-- @[pixelmap_clone](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/PixelMap/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    /**
@@ -149,11 +149,11 @@ Bitmap operation
 >
 > 该方法仅支持以下像素格式的PixelMap：RGBA_8888、BGRA_8888、RGBA_F16。
 
-1. 完成图片解码，获取两张宽度相同且像素格式相同的PixelMap位图对象。
+1. 完成[图片解码](image-decoding.md)，获取两张宽度相同且像素格式相同的PixelMap位图对象。
 
 2. 参考以下代码对两张PixelMap进行拼接。
 
-   <!-- @pixelmap_concatenation -->
+   <!-- @[pixelmap_concatenation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/PixelMap/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    /**

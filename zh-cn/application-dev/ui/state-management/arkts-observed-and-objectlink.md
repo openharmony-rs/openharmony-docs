@@ -6,9 +6,9 @@
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
 
-上文所述的装饰器（包括\@State、\@Prop、\@Link、\@Provide和\@Consume装饰器）仅能观察到第一层的变化，但是在实际应用开发中，应用会根据开发需要，封装自己的数据模型。对于多层嵌套的情况，比如二维数组、对象数组、嵌套类场景，无法观察到第二层的属性变化。因此，为了实现对嵌套数据结构中深层属性变化的观察，引入了\@Observed和\@ObjectLink装饰器。
+上文所述的装饰器（包括[\@State](./arkts-state.md)、[\@Prop](./arkts-prop.md)、[\@Link](./arkts-link.md)、[\@Provide和\@Consume](./arkts-provide-and-consume.md)装饰器）仅能观察到第一层的变化，但是在实际应用开发中，应用会根据开发需要，封装自己的数据模型。对于多层嵌套的情况，比如二维数组、对象数组、嵌套类场景，无法观察到第二层的属性变化。因此，为了实现对嵌套数据结构中深层属性变化的观察，引入了[\@Observed](../../reference/apis-arkui/arkui-ts/ts-state-management-observed.md#observed)和[\@ObjectLink](../../reference/apis-arkui/arkui-ts/ts-state-management-objectlink.md#objectlink)装饰器。
 
-\@Observed/\@ObjectLink适用于观察嵌套对象（对象的属性是对象）属性的变化，需要开发者对装饰器的基本观察能力有一定的了解，再来对比阅读该文档。建议提前阅读：\@State的基本用法。最佳实践请参考状态管理最佳实践。常见问题请参考状态管理常见问题。
+\@Observed/\@ObjectLink适用于观察嵌套对象（对象的属性是对象）属性的变化，需要开发者对装饰器的基本观察能力有一定的了解，再来对比阅读该文档。建议提前阅读：[\@State](./arkts-state.md)的基本用法。最佳实践请参考[状态管理最佳实践](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-status-management)。常见问题请参考[状态管理常见问题](./arkts-state-management-faq.md)。
 
 > **说明：**
 >
@@ -20,13 +20,13 @@
 
 \@ObjectLink和\@Observed类装饰器配合使用，可实现嵌套对象或数组的双向数据同步，使用方式如下：
 
-- 将数组项或类属性声明为\@Observed装饰的类型，示例请参考嵌套对象。
+- 将数组项或类属性声明为\@Observed装饰的类型，示例请参考[嵌套对象](#嵌套对象)。
 
 - 在子组件中使用\@ObjectLink装饰的状态变量，用于接收父组件\@Observed装饰的类实例，从而建立双向数据绑定。
 
-- API version 19之前，\@ObjectLink只能接收\@Observed装饰的类实例；API version 19及以后，\@ObjectLink也可以接收复杂类型，无\@Observed装饰的限制。但需注意，如需观察嵌套类型场景，需要其接收\@Observed装饰的类实例或makeV1Observed的返回值。示例请参考二维数组。
+- API version 19之前，\@ObjectLink只能接收\@Observed装饰的类实例；API version 19及以后，\@ObjectLink也可以接收复杂类型，无\@Observed装饰的限制。但需注意，如需观察嵌套类型场景，需要其接收\@Observed装饰的类实例或[makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19)的返回值。示例请参考[二维数组](#二维数组)。
 
-开发者如需实现单向数据同步，需要搭配\@Prop使用，示例请参考\@Prop与\@ObjectLink的差异。
+开发者如需实现单向数据同步，需要搭配\@Prop使用，示例请参考[\@Prop与\@ObjectLink的差异](#prop与objectlink的差异)。
 
 
 ## 装饰器说明
@@ -39,7 +39,7 @@
 | \@ObjectLink变量装饰器 | 说明                                                         |
 | ---------------------- | ------------------------------------------------------------ |
 | 装饰器参数             | 无。                                                         |
-| 允许装饰的变量类型     | 支持继承Date、Array的class实例。<br/>API version 11及以后支持继承Map、Set的class实例以及\@Observed装饰类和undefined或null组成的联合类型，比如ClassA \| ClassB、 ClassA \| undefined 或者 ClassA \| null，示例请参考@ObjectLink支持联合类型。<br/>API version 19之前，必须为被\@Observed装饰的class实例。<br/>API version 19及以后，\@ObjectLink可以被复杂类型初始化，即class、object或built-in类型。但当观察嵌套类型时，仍需其接收\@Observed装饰的类实例或makeV1Observed的返回值。<br/>**说明：**<br/>\@ObjectLink不支持简单类型，如果开发者需要使用简单类型，可以使用\@Prop。 |
+| 允许装饰的变量类型     | 支持继承Date、[Array](#二维数组)的class实例。<br/>API version 11及以后支持继承[Map](#继承map类)、[Set](#继承set类)的class实例以及\@Observed装饰类和undefined或null组成的联合类型，比如ClassA \| ClassB、 ClassA \| undefined 或者 ClassA \| null，示例请参考[@ObjectLink支持联合类型](#objectlink支持联合类型)。<br/>API version 19之前，必须为被\@Observed装饰的class实例。<br/>API version 19及以后，\@ObjectLink可以被复杂类型初始化，即class、object或built-in类型。但当观察嵌套类型时，仍需其接收\@Observed装饰的类实例或makeV1Observed的返回值。<br/>**说明：**<br/>\@ObjectLink不支持简单类型，如果开发者需要使用简单类型，可以使用[\@Prop](arkts-prop.md)。 |
 | 被装饰变量的初始值     | 禁止本地初始化。                                             |
 
 \@ObjectLink的属性可以被改变，但不允许整体赋值，即\@ObjectLink装饰的变量是只读的。
@@ -54,7 +54,7 @@ this.objLink= ...
 
 > **说明：**
 >
-> \@ObjectLink装饰的变量不能被赋值，如果要使用赋值操作，请使用@Prop。
+> \@ObjectLink装饰的变量不能被赋值，如果要使用赋值操作，请使用[@Prop](arkts-prop.md)。
 >
 > - \@Prop装饰的变量和数据源的关系是单向同步，\@Prop装饰的变量在本地拷贝了数据源，所以它允许本地更改，如果父组件中的数据源有更新，\@Prop装饰的变量在本地的修改将被覆盖。
 >
@@ -64,35 +64,35 @@ this.objLink= ...
 
 | \@ObjectLink传递/访问 | 说明                                                         |
 | --------------------- | ------------------------------------------------------------ |
-| 从父组件初始化        | 必须指定。<br/>必须使用复杂类型初始化\@ObjectLink装饰的变量，如果需要观察变化需要满足以下场景：<br/>-&nbsp;API version 19之前，类型必须为被\@Observed装饰的class实例。<br/>- API version 19及以后，\@ObjectLink可以被复杂类型初始化，即class、object或built-in类型。但当观察嵌套类型时，仍需其接收\@Observed装饰的类实例或makeV1Observed的返回值。<br/>-&nbsp;同步源的class或者数组必须是\@State，\@Link，\@Provide，\@Consume或者\@ObjectLink装饰的数据。<br/>同步源是数组项的示例请参考对象数组。初始化的class的示例请参考嵌套对象。 |
+| 从父组件初始化        | 必须指定。<br/>必须使用复杂类型初始化\@ObjectLink装饰的变量，如果需要观察变化需要满足以下场景：<br/>-&nbsp;API version 19之前，类型必须为被\@Observed装饰的class实例。<br/>- API version 19及以后，\@ObjectLink可以被复杂类型初始化，即class、object或built-in类型。但当观察嵌套类型时，仍需其接收\@Observed装饰的类实例或makeV1Observed的返回值。<br/>-&nbsp;同步源的class或者数组必须是[\@State](./arkts-state.md)，[\@Link](./arkts-link.md)，[\@Provide](./arkts-provide-and-consume.md)，[\@Consume](./arkts-provide-and-consume.md)或者\@ObjectLink装饰的数据。<br/>同步源是数组项的示例请参考[对象数组](#对象数组)。初始化的class的示例请参考[嵌套对象](#嵌套对象)。 |
 | 与源对象同步          | 双向。                                                       |
 | 可以初始化子组件      | 允许，可用于初始化常规变量、\@State、\@Link、\@Prop、\@Provide |
 
 
   **图1** 初始化规则图示  
 
-  zh-cn_image_0000001502255261
+  ![zh-cn_image_0000001502255261](figures/Initialization-rules01.png)
 
 
 ## 观察变化和行为表现
 
 ### 观察变化
 
-API version 19之前，如果需要观察嵌套场景的变化，如嵌套类，二维数组，对象数组等，那么内层的数据类型也需要被\@Observed装饰。API version 19及以后，也可以通过使用makeV1Observed来使内层数据可观察。内层数据需要传递给\@ObjectLink，使其在UI上可观察。示例请参考嵌套对象。
+API version 19之前，如果需要观察嵌套场景的变化，如嵌套类，二维数组，对象数组等，那么内层的数据类型也需要被\@Observed装饰。API version 19及以后，也可以通过使用[makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19)来使内层数据可观察。内层数据需要传递给\@ObjectLink，使其在UI上可观察。示例请参考[嵌套对象](#嵌套对象)。
 
-\@ObjectLink接收对象时，如果对象被\@State或其他状态变量装饰器装饰，则可以观察第一层变化。示例请参考对象类型。
+\@ObjectLink接收对象时，如果对象被\@State或其他状态变量装饰器装饰，则可以观察第一层变化。示例请参考[对象类型](#对象类型)。
 
-\@ObjectLink接收嵌套对象时，内层对象需要为被\@Observed装饰的class类型。从API version 19开始，内层对象也支持被makeV1Observed处理的返回值。示例请参考嵌套对象。
+\@ObjectLink接收嵌套对象时，内层对象需要为被\@Observed装饰的class类型。从API version 19开始，内层对象也支持[makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19)的返回值。示例请参考[嵌套对象](#嵌套对象)。
 
 \@ObjectLink推荐设计单独的自定义组件来渲染每一个数组或对象。此时，对象数组或嵌套对象需要两个自定义组件，一个自定义组件呈现外部数组/对象，另一个自定义组件呈现嵌套在数组/对象内的类对象。可以观察到：
 
-- 其属性的数值的变化，其中属性是指Object.keys(observedObject)返回的所有属性，示例请参考嵌套对象。
+- 其属性的数值的变化，其中属性是指Object.keys(observedObject)返回的所有属性，示例请参考[嵌套对象](#嵌套对象)。
 
-- 如果数据源是数组，则可以观察到数组项的替换，如果数据源是class，可观察到class的属性的变化，示例请参考对象数组。
+- 如果数据源是数组，则可以观察到数组项的替换，如果数据源是class，可观察到class的属性的变化，示例请参考[对象数组](#对象数组)。
 
-\@ObjectLink装饰继承于Date的class时，可以观察到Date整体的赋值，同时可通过调用Date的接口`setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, `setUTCMilliseconds` 更新Date的属性。
+\@ObjectLink装饰继承于Date的class时，可以观察到Date整体的赋值，同时可通过调用Date的接口`setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, `setUTCMilliseconds` 更新Date的值。
 
-<!-- @Observation_ChangeInheritance -->  
+<!-- @[Observation_ChangeInheritance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/overview/ObservationChangeInheritance.ets) -->  
 
 ``` TypeScript
 @Observed
@@ -162,11 +162,11 @@ struct Parent {
 }
 ```
 
-observe-date
+![observe-date](figures/observe-date.gif)
 
-\@ObjectLink装饰继承于Map的class时，可以观察到Map整体的赋值，同时可通过调用Map的接口`set`, `clear`, `delete` 更新Map的值。示例请参考继承Map类。
+\@ObjectLink装饰继承于Map的class时，可以观察到Map整体的赋值，同时可通过调用Map的接口`set`, `clear`, `delete` 更新Map的值。示例请参考[继承Map类](#继承map类)。
 
-\@ObjectLink装饰继承于Set的class时，可以观察到Set整体的赋值，同时可通过调用Set的接口`add`, `clear`, `delete` 更新Set的值。示例请参考继承Set类。
+\@ObjectLink装饰继承于Set的class时，可以观察到Set整体的赋值，同时可通过调用Set的接口`add`, `clear`, `delete` 更新Set的值。示例请参考[继承Set类](#继承set类)。
 
 
 ### 框架行为
@@ -184,13 +184,13 @@ observe-date
 
 1. 使用\@Observed装饰class会改变class原始的原型链，\@Observed和其他类装饰器装饰同一个class可能会带来问题。
 
-2. \@ObjectLink装饰器不建议在\@Entry装饰的自定义组件中使用，编译时会产生告警。
+2. \@ObjectLink装饰器不建议在[\@Entry](./arkts-create-custom-components.md#entry)装饰的自定义组件中使用，编译时会产生告警。
 
 3. \@ObjectLink装饰的类型必须是复杂类型，否则会有编译时报错。
 
 4. API version 19前，\@ObjectLink装饰的变量类型必须是显式地由\@Observed装饰的类。如果未指定类型，或不是\@Observed装饰的class，编译时报错。
 
-   API version 19及以后，\@ObjectLink也可以被makeV1Observed的返回值初始化，若\@ObjectLink接收的初始化值既不是\@Observed装饰的class实例，也不是makeV1Observed的返回值，则会有运行时告警日志。
+   API version 19及以后，\@ObjectLink也可以被[makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19)的返回值初始化，若\@ObjectLink接收的初始化值既不是\@Observed装饰的class实例，也不是makeV1Observed的返回值，则会有运行时告警日志。
 
    ```ts
    class Test {
@@ -286,7 +286,7 @@ observe-date
 
    【正例】
 
-   <!-- @variables_decorated_ObjectLink_read_only --> 
+   <!-- @[variables_decorated_ObjectLink_read_only](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/restrictiveconditions/ReadOnlyVariable.ets) --> 
    
    ``` TypeScript
    
@@ -341,7 +341,7 @@ observe-date
    }
    ```
 
-   observed-sync-0
+   ![observed-sync-0](./figures/observed-sync-0.gif)
 
 ## 使用场景
 
@@ -349,7 +349,7 @@ observe-date
 
 该场景包含built-in类型（Array、Map、Set和Date）和普通class。从API version 19开始，\@ObjectLink接收\@State传递built-in类型和普通class对象，可以观察其API调用和第一层变化，无需额外添加\@Observed装饰。因为\@State等状态变量装饰器，会给对象（外层对象）添加一层“代理”包装，其功能等同于添加\@Observed装饰。
 
-<!-- @State_To_Objectlink --> 
+<!-- @[State_To_Objectlink](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/objectLinkusagescenarios/StateToObjectlink.ets) --> 
 
 ``` TypeScript
 class Book {
@@ -396,11 +396,11 @@ struct Index {
 }
 ```
 
-observed-sync-1
+![observed-sync-1](./figures/observed-sync-1.gif)
 
 ### 嵌套对象
 
-<!-- @Nested_Object --> 
+<!-- @[Nested_Object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/objectLinkusagescenarios/NestedObject.ets) --> 
 
 ``` TypeScript
 @Observed
@@ -467,7 +467,7 @@ struct Index {
 }
 ```
 
-Observed_ObjectLink_nested_object
+![Observed_ObjectLink_nested_object](figures/Observed_ObjectLink_nested_object.gif)
 
 上述示例中：
 
@@ -481,9 +481,9 @@ Observed_ObjectLink_nested_object
 
 > **说明：**
 >
-> NextID是用来在ForEach循环渲染过程中，为每个数组元素生成一个唯一且持久的键值，标识对应的组件。
+> NextID是用来在[ForEach循环渲染](../rendering-control/arkts-rendering-control-foreach.md)过程中，为每个数组元素生成一个唯一且持久的键值，标识对应的组件。
 
-<!-- @Object_Array --> 
+<!-- @[Object_Array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/objectLinkusagescenarios/ObjectArray.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -567,7 +567,7 @@ struct Parent {
         .onClick(() => {
           this.arrA[Math.floor(this.arrA.length / 2)].info = 10;
         })
-      Button('ViewParent: item property in middle')
+      Button('ViewParent: replace item in middle')
         .width(320)
         .margin(10)
         .onClick(() => {
@@ -578,10 +578,10 @@ struct Parent {
 }
 ```
 
-Observed_ObjectLink_object_array
+![Observed_ObjectLink_object_array](figures/Observed_ObjectLink_object_array.gif)
 
 - this.arrA[Math.floor(this.arrA.length/2)] = new Info(..) ：该状态变量的改变触发2次更新：
-  1. ForEach：数组项的赋值导致ForEach的itemGenerator被修改，因此数组项被识别为有更改，ForEach的item builder将执行，创建新的Child组件实例。
+  1. ForEach：数组项的赋值导致[ForEach](../../reference/apis-arkui/arkui-ts/ts-rendering-control-foreach.md)的itemGenerator被修改，因此数组项被识别为有更改，ForEach的item builder将执行，创建新的Child组件实例。
   2. Child({ label: 'ViewChild this.arrA[last]', info: this.arrA[this.arrA.length-1] })：上述更改改变了数组中第二个元素，所以绑定this.arrA[1]的Child将被更新。
 
 - this.arrA.push(new Info(0)) ： 将触发2次不同效果的更新：
@@ -606,7 +606,7 @@ class ObservedArray<T> extends Array<T> {
 
 在下面的示例中，展示了如何利用\@Observed观察二维数组的变化。
 
-<!-- @Two_dimensional_array_example -->  
+<!-- @[Two_dimensional_array_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/objectLinkusagescenarios/TwoDimensionalArray.ets) -->  
 
 ``` TypeScript
 @Observed
@@ -681,13 +681,13 @@ struct IndexPage {
 }
 ```
 
-observed-sync-2
+![observed-sync-2](./figures/observed-sync-2.gif)
 
-API version 19及以后，\@ObjectLink也可以被makeV1Observed的返回值初始化。所以开发者如果不想额外声明继承Array的类，也可以使用makeV1Observed来达到同样的效果。
+API version 19及以后，\@ObjectLink也可以被[makeV1Observed](../../reference/apis-arkui/js-apis-stateManagement.md#makev1observed19)的返回值初始化。所以开发者如果不想额外声明继承Array的类，也可以使用makeV1Observed来达到同样的效果。
 
 完整例子如下。
 
-<!-- @Complete_Example_Two_Dimensional_Array -->  
+<!-- @[Complete_Example_Two_Dimensional_Array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/objectLinkusagescenarios/CompleteExampleTwoDimensionalArray.ets) -->  
 
 ``` TypeScript
 import { UIUtils } from '@kit.ArkUI';
@@ -750,7 +750,7 @@ struct IndexPage {
 }
 ```
 
-Observed_ObjectLink_2D_array
+![Observed_ObjectLink_2D_array](figures/Observed_ObjectLink_2D_array.gif)
 
 ### 继承Map类
 
@@ -760,7 +760,7 @@ Observed_ObjectLink_2D_array
 
 在下面的示例中，myMap类型为MyMap\<number, string\>，点击Button改变myMap的属性，视图会随之刷新。
 
-<!-- @Inherit_From_Map_Class -->  
+<!-- @[Inherit_From_Map_Class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/objectLinkusagescenarios/InheritFromMapClass.ets) -->  
 
 ``` TypeScript
 @Observed
@@ -848,7 +848,7 @@ struct MapSampleNestedChild {
 }
 ```
 
-Observed_ObjectLink_inherit_map
+![Observed_ObjectLink_inherit_map](figures/Observed_ObjectLink_inherit_map.gif)
 
 ### 继承Set类
 
@@ -858,7 +858,7 @@ Observed_ObjectLink_inherit_map
 
 在下面的示例中，mySet类型为MySet\<number\>，点击Button改变mySet的属性，视图会随之刷新。
 
-<!-- @Inherit_From_Set_Class -->  
+<!-- @[Inherit_From_Set_Class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/objectLinkusagescenarios/InheritFromSetClass.ets) -->  
 
 ``` TypeScript
 @Observed
@@ -938,13 +938,13 @@ struct SetSampleNestedChild {
 }
 ```
 
-Observed_ObjectLink_inherit_set
+![Observed_ObjectLink_inherit_set](figures/Observed_ObjectLink_inherit_set.gif)
 
 ### \@ObjectLink支持联合类型
 
 \@ObjectLink支持\@Observed装饰类和undefined或null组成的联合类型，在下面的示例中，count类型为Source | Data | undefined，点击父组件Parent中的Button改变count的属性或者类型，Child组件中对应的Text组件刷新。
 
-<!-- @ObjectLink_Supports_Union_Types --> 
+<!-- @[ObjectLink_Supports_Union_Types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/objectLinkusagescenarios/ObjectLinkSupportsUnionTypes.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1034,7 +1034,7 @@ struct Child {
 }
 ```
 
-ObjectLink-support-union-types
+![ObjectLink-support-union-types](figures/ObjectLink-support-union-types.gif)
 
 ## 常见问题
 
@@ -1150,7 +1150,7 @@ struct MyView {
 以下示例使用\@Observed/\@ObjectLink来观察嵌套对象的属性更改。
 
 
-<!-- @Basic_nesting --> 
+<!-- @[Basic_nesting](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/BasicNesting.ets) --> 
 
 ``` TypeScript
 class Parent {
@@ -1273,7 +1273,7 @@ struct MyView {
 }
 ```
 
-observed-sync-3
+![observed-sync-3](./figures/observed-sync-3.gif)
 
 ### 复杂嵌套对象属性更改失效
 
@@ -1386,7 +1386,7 @@ incrSubCounter和setSubCounter都是同一个SubCounter的函数。在第一个�
 对于上述问题，为了直接观察SubCounter中的属性，以便this.counter[0].setSubCounter(10)操作有效，可以利用下面的方法：
 
 
-<!-- @Complex_Methods_Nesting --> 
+<!-- @[Complex_Methods_Nesting](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/ComplexMethodsNesting.ets) --> 
 
 ``` TypeScript
 let nextId = 1;
@@ -1460,14 +1460,14 @@ struct CounterChild {
 }
 ```
 
-observed-sync-4
+![observed-sync-4](./figures/observed-sync-4.gif)
 
 该方法使得\@ObjectLink分别代理了ParentCounter和SubCounter的属性，这样对于这两个类的属性的变化都可以观察到，即都会对UI视图进行刷新。即使删除了上面所说的this.counter[0].incrCounter()，UI也会进行正确的刷新。
 
-该方法可用于实现“两个层级”的观察，即外部对象和内部嵌套对象的观察。但是该方法只能用于\@ObjectLink装饰器，无法作用于\@Prop（\@Prop通过深拷贝传入对象）。详情参考@Prop与@ObjectLink的差异。
+该方法可用于实现“两个层级”的观察，即外部对象和内部嵌套对象的观察。但是该方法只能用于\@ObjectLink装饰器，无法作用于\@Prop（\@Prop通过深拷贝传入对象）。详情参考[@Prop与@ObjectLink的差异](#prop与objectlink的差异)。
 
 
-<!-- @Complex_nested_observation_levels -->  
+<!-- @[Complex_nested_observation_levels](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/ComplexNestingComplete.ets) -->  
 
 ``` TypeScript
 let nextId = 1;
@@ -1586,7 +1586,7 @@ struct ParentComp {
 }
 ```
 
-observed-sync-5
+![observed-sync-5](./figures/observed-sync-5.gif)
 
 ### \@Prop与\@ObjectLink的差异
 
@@ -1597,7 +1597,7 @@ observed-sync-5
 1. 修改\@ObjectLink装饰的对象内容将影响数据源对象，并重新同步给\@Prop，因此两个Text组件都将刷新。
 2. 修改\@Prop装饰的对象内容仅影响使用该对象的Text2组件，不会影响数据源对象。
 
-<!-- @Differences_Prop_ObjectLink --> 
+<!-- @[Differences_Prop_ObjectLink](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/DifferencesPropObjectLink.ets) --> 
 
 ``` TypeScript
 let nextId = 0;
@@ -1659,11 +1659,11 @@ struct UserChild {
 }
 ```
 
-observed-sync-6
+![observed-sync-6](./figures/observed-sync-6.gif)
 
 上面的示例关系如图所示：
 
-zh-cn_image_0000001653949465
+![zh-cn_image_0000001653949465](figures/Differences-example.jpg)
 
 ### 在\@Observed装饰类的构造函数中延时更改成员变量
 
@@ -1719,7 +1719,7 @@ struct Index {
 
 【正例】
 
-<!-- @Delayed_change --> 
+<!-- @[Delayed_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/DelayedChange.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1763,15 +1763,15 @@ struct DelayedChangeIndex {
 }
 ```
 
-observed-sync-7
+![observed-sync-7](./figures/observed-sync-7.png)
 
-上文的示例代码将定时器修改移入到组件内，此时界面显示时会先显示“The value of renderClass is: false”。待定时器触发时，renderClass的值改变，触发@Watch回调，此时界面刷新显示“The value of renderClass is: true”，日志输出“The value of renderClass is changed to: true”。
+上文的示例代码将定时器修改移入到组件内，此时界面显示时会先显示“The value of renderClass is: false”。待定时器触发时，renderClass的值改变，触发[@Watch](./arkts-watch.md)回调，此时界面刷新显示“The value of renderClass is: true”，日志输出“The value of renderClass is changed to: true”。
 
 因此，更推荐开发者在组件中对\@Observed装饰的类成员变量进行修改，以实现刷新。
 
 ### \@ObjectLink数据源更新时机
 
-<!-- @ObjectLink_Data_source_update_timing --> 
+<!-- @[ObjectLink_Data_source_update_timing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/ObjectLinkDataSourceUpdate.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1860,7 +1860,7 @@ struct Child {
 }
 ```
 
-observed-sync-8
+![observed-sync-8](./figures/observed-sync-8.gif)
 
 \@ObjectLink的数据源更新依赖其父组件，当父组件中数据源改变引起父组件刷新时，会重新设置子组件\@ObjectLink的数据源。这个过程不是在父组件数据源变化后立刻发生的，而是在父组件实际刷新时才会进行。上述示例中，Parent包含Child，Parent传递箭头函数给Child，在点击时，日志打印顺序是1-2-3-4-5，打印到日志4时，点击事件流程结束，此时仅仅是将子组件Child标记为需要父组件更新的节点，因此日志4打印的this.per.name的值仍为Bob，等到父组件真正更新时，才会更新Child的数据源。
 
@@ -1882,7 +1882,7 @@ observed-sync-8
 
 当clickEvent中更改this.info.person.name时，修改会立刻生效，此时日志4打印的值是Jack。
 
-<!-- @ClickEvent_Jack --> 
+<!-- @[ClickEvent_Jack](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/ClickEventJack.ets) --> 
 
 ``` TypeScript
 Child({
@@ -1929,7 +1929,7 @@ struct Index {
 
 【正例】
 
-<!-- @Change_Property_In_Constructor --> 
+<!-- @[Change_Property_In_Constructor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/ChangePropertyInConstructor.ets) --> 
 
 ``` TypeScript
 @Observed
@@ -1961,6 +1961,10 @@ struct Index {
     this.dataDownloader.startIntervalUpdate(); // @Observed装饰的类构建后再修改属性可以触发更新UI
   }
 
+  aboutToDisappear() {
+    this.dataDownloader.stopIntervalUpdate();
+  }
+
   build() {
     Column() {
       Text(`Download state is ${this.dataDownloader.state}`)
@@ -1969,11 +1973,11 @@ struct Index {
 }
 ```
 
-observed_constructor_no_update_ui.gif
+![observed_constructor_no_update_ui.gif](./figures/observed_constructor_no_update_ui.gif)
 
 ### LazyForEach和@ObjectLink一起使用时，替换数组数据后UI不刷新
 
-@Observed装饰的类的数组，用LazyForEach展开显示的时候，可能会出现替换数组数据后，修改数组数据不刷新UI的问题。改变数组数据后，需要调用`onDataChange`通知LazyForEach组件重新绑定状态变量，否则就会出现上述问题。
+@Observed装饰的类的数组，用[LazyForEach](../rendering-control/arkts-rendering-control-lazyforeach.md)展开显示的时候，可能会出现替换数组数据后，修改数组数据不刷新UI的问题。改变数组数据后，需要调用`onDataChange`通知LazyForEach组件重新绑定状态变量，否则就会出现上述问题。
 
 【反例】
 
@@ -2111,7 +2115,7 @@ struct ChildComponent {
 
 【正例】
 
-<!-- @Use_With_LazyForEach --> 
+<!-- @[Use_With_LazyForEach](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/UseWithLazyForEach.ets) --> 
 
 ``` TypeScript
 // LazyForEach遍历数据基类
@@ -2256,4 +2260,4 @@ struct ChildComponent {
 }
 ```
 
-observed_lazyforeach_refresh.gif
+![observed_lazyforeach_refresh.gif](./figures/observed_lazyforeach_refresh.gif)

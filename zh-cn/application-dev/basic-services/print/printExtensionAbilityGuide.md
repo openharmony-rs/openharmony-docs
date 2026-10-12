@@ -13,12 +13,12 @@
 ## 回调说明
 | 回调名称 | 回调描述 |
 | ------- | ------- |
-| onCreate(want: Want): void | 初始化打印扩展能力 |
-| onDestroy(): void | 结束打印扩展能力 |
-| onStartDiscoverPrinter(): void | 开始发现打印机 |
-| onStopDiscoverPrinter(): void | 停止发现打印机 |
-| onConnectPrinter(printerId: number): void | 连接打印机 |
-| onDisconnectPrinter(printerId: number): void | 断开与打印机的连接 |
+| [onCreate(want: Want): void](../../reference/apis-basic-services-kit/js-apis-app-ability-PrintExtensionAbility.md#oncreate) | 初始化打印扩展能力 |
+| [onDestroy(): void](../../reference/apis-basic-services-kit/js-apis-app-ability-PrintExtensionAbility.md#ondestroy) | 结束打印扩展能力 |
+| [onStartDiscoverPrinter(): void](../../reference/apis-basic-services-kit/js-apis-app-ability-PrintExtensionAbility.md#onstartdiscoverprinter) | 开始发现打印机 |
+| [onStopDiscoverPrinter(): void](../../reference/apis-basic-services-kit/js-apis-app-ability-PrintExtensionAbility.md#onstopdiscoverprinter) | 停止发现打印机 |
+| [onConnectPrinter(printerId: number): void](../../reference/apis-basic-services-kit/js-apis-app-ability-PrintExtensionAbility.md#onconnectprinter) | 连接打印机 |
+| [onDisconnectPrinter(printerId: number): void](../../reference/apis-basic-services-kit/js-apis-app-ability-PrintExtensionAbility.md#ondisconnectprinter) | 断开与打印机的连接 |
 
 ## 开发步骤
 

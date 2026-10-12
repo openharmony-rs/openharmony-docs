@@ -14,7 +14,7 @@ HiTraceMeter提供系统性能打点接口。开发者在关键代码位置调�
 
 ## 接口说明
 
-性能打点跟踪接口由HiTraceMeter模块提供，详细API请参考@ohos.hiTraceMeter (性能打点)。
+性能打点跟踪接口由HiTraceMeter模块提供，详细API请参考[@ohos.hiTraceMeter (性能打点)](../reference/apis-performance-analysis-kit/js-apis-hitracemeter.md)。
 
 | 接口名 | 描述 |
 | -------- | -------- |
@@ -29,11 +29,11 @@ HiTraceMeter提供系统性能打点接口。开发者在关键代码位置调�
 
 > **注意：**
 >
-> 用户态trace格式使用竖线 | 作为分隔符，所以通过HiTraceMeter接口传递的字符串类型参数应避免包含该字符，防止trace解析异常。
+> [用户态trace格式](hitracemeter-view.md#用户态trace格式说明)使用竖线 | 作为分隔符，所以通过HiTraceMeter接口传递的字符串类型参数应避免包含该字符，防止trace解析异常。
 
 ### 接口分类
 
-HiTraceMeter打点接口分为三类：同步时间片跟踪、异步时间片跟踪和整数跟踪。HiTraceMeter接口实现均为同步，同步和异步针对的是被跟踪的业务。同步业务使用同步时间片跟踪接口，异步业务使用异步时间片跟踪接口。HiTraceMeter打点接口可与HiTraceChain一起使用，进行跨设备、跨进程或跨线程的打点关联与分析。
+HiTraceMeter打点接口分为三类：同步时间片跟踪、异步时间片跟踪和整数跟踪。HiTraceMeter接口实现均为同步，同步和异步针对的是被跟踪的业务。同步业务使用同步时间片跟踪接口，异步业务使用异步时间片跟踪接口。HiTraceMeter打点接口可与[HiTraceChain](hitracechain-guidelines-arkts.md)一起使用，进行跨设备、跨进程或跨线程的打点关联与分析。
 
 
 ### 接口使用场景
@@ -72,7 +72,7 @@ HiTraceMeter打点接口分为三类：同步时间片跟踪、异步时间片�
 
 > **说明：**
 >
-> 用户态trace总长度限制为512个字符，超过部分将会被截断。建议name、customCategory和customArgs三个字段的总长度不超过420字符，以避免trace被截断。
+> [用户态trace](hitracemeter-view.md#用户态trace格式说明)总长度限制为512个字符，超过部分将会被截断。建议name、customCategory和customArgs三个字段的总长度不超过420字符，以避免trace被截断。
 
 ## 开发步骤
 
@@ -93,17 +93,17 @@ HiTraceMeter打点接口分为三类：同步时间片跟踪、异步时间片�
    │       │   │       └── Index.ets
    ```
 
-2. 编辑工程中的“entry&gt; src&gt; main&gt; ets&gt; pages&gt; Index.ets”：
+2. 编辑工程中的“entry &gt; src &gt; main &gt; ets &gt; pages &gt; Index.ets”：
    
    导入所需依赖：
-   <!-- @TestHiTraceMeter_Import -->
+   <!-- @[TestHiTraceMeter_Import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceMeter_ArkTS/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    import { hiTraceMeter, hilog} from '@kit.PerformanceAnalysisKit';
    ```
    
    定义测试方法：
-   <!-- @TestHiTraceMeter_FUNC -->
+   <!-- @[TestHiTraceMeter_FUNC](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceMeter_ArkTS/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    function testHiTraceMeterASync() {
@@ -155,7 +155,7 @@ HiTraceMeter打点接口分为三类：同步时间片跟踪、异步时间片�
    ```
 
    添加按钮以触发接口调用：
-   <!-- @TestHiTraceMeter_BUTTON -->
+   <!-- @[TestHiTraceMeter_BUTTON](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiTrace/HitraceMeter_ArkTS/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    Button("testHiTraceMeter").backgroundColor('#FFFF00FF')
@@ -189,7 +189,7 @@ HiTraceMeter打点接口分为三类：同步时间片跟踪、异步时间片�
    <...>-30265   (-------) [003] ..... 223862.709901: tracing_mark_write: F|30265|H:myTestAsyncTrace|1001|M62
    ```
 
-   每一行trace数据中，tracing_mark_write为打点事件类型，应用程序中调用HiTraceMeter接口打点使用的均为此事件。打点事件类型前面的数据分别为线程名-线程ID、进程ID、CPU和打点时间（从开机到当前的时间，单位为秒）；打点事件类型后面的数据可查看用户态trace格式。
+   每一行trace数据中，tracing_mark_write为打点事件类型，应用程序中调用HiTraceMeter接口打点使用的均为此事件。打点事件类型前面的数据分别为线程名-线程ID、进程ID、CPU和打点时间（从开机到当前的时间，单位为秒）；打点事件类型后面的数据可查看[用户态trace格式](hitracemeter-view.md#用户态trace格式说明)。
 
 
 ### 步骤三：停止采集trace

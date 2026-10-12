@@ -10,16 +10,16 @@
 
 由于不同品牌和型号的手柄在硬件设计与信号输出上存在差异，其上报的键值和轴值可能并不统一，开发者在处理交互逻辑时应注意进行兼容性适配。
 
-下面以常见的游戏手柄为例，说明其按键及操纵杆的常见映射关系：按键通常被映射为离散的键值（方向键有时也可映射为轴值），操纵杆则映射为连续的轴值。KeyCode针对游戏手柄提供了可支持的键值，AxisModel则提供了可支持的轴值。
+下面以常见的游戏手柄为例，说明其按键及操纵杆的常见映射关系：按键通常被映射为离散的键值（方向键有时也可映射为轴值），操纵杆则映射为连续的轴值。[KeyCode](../reference/apis-input-kit/js-apis-keycode.md#keycode)针对游戏手柄提供了可支持的键值，[AxisModel](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#axismodel15)则提供了可支持的轴值。
 
-gamepad_map
+![gamepad_map](figures/gamepad_map.PNG)
 
 ## 处理按键输入
 
-游戏手柄的按键输入会被上报为按键事件，其具体处理机制可参考按键事件数据流。
+游戏手柄的按键输入会被上报为按键事件，其具体处理机制可参考[按键事件数据流](./arkts-interaction-development-guide-keyboard.md#按键事件数据流)。
 
-为响应手柄的按键操作，开发者需要为组件绑定onKeyEvent接口回调。当组件处于获焦状态时，手柄的按键操作会触发此回调，进而处理按键输入的相应逻辑。相关示例如下：
-<!-- @gamepad_common_key -->
+为响应手柄的按键操作，开发者需要为组件绑定[onKeyEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-key.md#onkeyevent)接口回调。当组件处于获焦状态时，手柄的按键操作会触发此回调，进而处理按键输入的相应逻辑。相关示例如下：
+<!-- @[gamepad_common_key](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/gamepad/CommonKey.ets) -->
 
 ``` TypeScript
 import { KeyCode } from '@kit.InputKit';
@@ -61,10 +61,10 @@ struct CommonKey {
 
 手柄的方向键输入在触发按键事件时也会带来默认的走焦效果。当开发者仅需利用方向键进行游戏内操作（如控制角色移动、旋转视角等）时，这种默认的走焦行为可能会干扰正常操作。使用焦点组可以解决这一问题。
 
-gamepad_map
+![gamepad_map](figures/gamepad_direction_disturb.PNG)
 
-如图所示，在没有焦点组的情况下，方向键操作会使焦点在组件A、B、C之间自由移动。当使用焦点组容器将特定组件包裹起来时，就可以在该容器内部独立控制焦点行为。通过focusScopeId可以设置焦点组，并通过设置arrowStepOut参数为false来限制方向键走焦行为，以下示例展示了如何实现这一逻辑：
-<!-- @gamepad_direction_key -->
+如图所示，在没有焦点组的情况下，方向键操作会使焦点在组件A、B、C之间自由移动。当使用焦点组容器将特定组件包裹起来时，就可以在该容器内部独立控制焦点行为。通过[focusScopeId](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#focusscopeid14)可以设置焦点组，并通过设置arrowStepOut参数为false来限制方向键走焦行为，以下示例展示了如何实现这一逻辑：
+<!-- @[gamepad_direction_key](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/gamepad/DirectionKey.ets) -->
 
 ``` TypeScript
 import { KeyCode } from '@kit.InputKit';
@@ -110,8 +110,8 @@ struct DirectionKey {
 
 ## 处理操纵杆输入
 
-游戏手柄的操纵杆输入会触发焦点轴事件，开发者可以为获焦的组件绑定onFocusAxisEvent接口回调，处理相应的事件逻辑。示例如下：
-<!-- @gamepad_joystick -->
+游戏手柄的操纵杆输入会触发焦点轴事件，开发者可以为获焦的组件绑定[onFocusAxisEvent](../reference/apis-arkui/arkui-ts/ts-universal-events-focus-axis.md#onfocusaxisevent)接口回调，处理相应的事件逻辑。示例如下：
+<!-- @[gamepad_joystick](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/gamepad/Joystick.ets) -->
 
 ``` TypeScript
 @Entry
@@ -142,7 +142,7 @@ struct Joystick {
 ## 示例
 
 下面通过一个按键和操纵杆处理的综合示例来展示游戏手柄与应用的交互。
-<!-- @gamepad_sample -->
+<!-- @[gamepad_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/gamepad/GamepadSample.ets) -->
 
 ``` TypeScript
 @Entry
@@ -163,13 +163,13 @@ struct GamepadSample {
             let absX = event.axisMap.get(AxisModel.ABS_X);
             let absY = event.axisMap.get(AxisModel.ABS_Y);
             let absZ = event.axisMap.get(AxisModel.ABS_Z);
-            let absRz = event.axisMap.get(AxisModel.ABS_RZ);
+            let absRZ = event.axisMap.get(AxisModel.ABS_RZ);
             let absGas = event.axisMap.get(AxisModel.ABS_GAS);
             let absBrake = event.axisMap.get(AxisModel.ABS_BRAKE);
             let absHat0X = event.axisMap.get(AxisModel.ABS_HAT0X);
             let absHat0Y = event.axisMap.get(AxisModel.ABS_HAT0Y);
             this.axisValue =
-              'absX: ' + absX + '\nabsY: ' + absY + '\nabsZ: ' + absZ + '\nabsRz: ' + absRz + '\nabsGas: ' + absGas +
+              'absX: ' + absX + '\nabsY: ' + absY + '\nabsZ: ' + absZ + '\nabsRZ: ' + absRZ + '\nabsGas: ' + absGas +
                 '\nabsBrake: ' + absBrake + '\nabsHat0X: ' + absHat0X + '\nabsHat0Y: ' + absHat0Y;
           })
           .onKeyEvent((event: KeyEvent) => {
@@ -199,7 +199,7 @@ struct GamepadSample {
 }
 ```
 
-gamepad_sample
+![gamepad_sample](figures/gamepad_sample.gif)
 
 运行示例，分别使用游戏手柄进行以下操作：
 

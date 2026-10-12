@@ -18,7 +18,7 @@ JSVM-API 提供了创建 Proxy、判断 JSVM_Value 是否为 Proxy 类型和获�
 | OH_JSVM_ProxyGetTarget | 获取给定 proxy 的目标对象                                |
 
 ## 使用示例
-JSVM-API接口开发流程参考使用JSVM-API实现JS与C/C++语言交互开发流程，本文仅展示接口对应的C++相关代码。
+JSVM-API接口开发流程参考[使用JSVM-API实现JS与C/C++语言交互开发流程](use-jsvm-process.md)，本文仅展示接口对应的C++相关代码。
 
 cpp 部分代码
 ```cpp
