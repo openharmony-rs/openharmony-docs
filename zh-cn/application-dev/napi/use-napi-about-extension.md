@@ -171,6 +171,7 @@ static napi_value CreateObjectWithProperties(napi_env env, napi_callback_info in
     if (valueType == napi_object) {
         return object;
     }
+    return nullptr;
 }
 ```
 
@@ -1437,7 +1438,7 @@ static napi_value TestNapiWrapEnhance(napi_env env, napi_callback_info info)
     napi_new_instance(env, testClass, 0, nullptr, &obj);
     const char* testStr = "test";
     napi_ref wrappedRef = nullptr;
-    napi_wrap_enhance(env, obj, (void*)testStr, [](napi_env env, void* data, void* hint) {}, false, nullptr, sizeof(testStr) + 1, &wrappedRef);
+    napi_wrap_enhance(env, obj, (void*)testStr, [](napi_env env, void* data, void* hint) {}, false, nullptr, strlen(testStr) + 1, &wrappedRef);
     return nullptr;
 }
 ```
