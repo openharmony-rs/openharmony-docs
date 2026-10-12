@@ -336,6 +336,8 @@ Error code: 1300002
 
 关键信息：
 - 错误码：1300002
+- 堆栈：创建子窗口、全局悬浮窗、Dialog窗口等API调用处
+- 文件名和行号：定位具体代码位置
 - 模态UIExtension信息：Error Message后会列出模态UIExtension的包名。
 
 **处理步骤**
