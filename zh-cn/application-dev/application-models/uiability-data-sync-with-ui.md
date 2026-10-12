@@ -27,7 +27,7 @@
     ``` TypeScript
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-    // ···
+    // ...
     
     const DOMAIN = 0x0000;
     const TAG: string = '[EventAbility]';
@@ -35,10 +35,10 @@
     export default class EntryAbility extends UIAbility {
       onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
         // 获取eventHub
-        let eventhub = this.context.eventHub;
+        let eventHub = this.context.eventHub;
         // 执行订阅操作
-        eventhub.on('event1', this.eventFunc);
-        eventhub.on('event1', (data: string) => {
+        eventHub.on('event1', this.eventFunc);
+        eventHub.on('event1', (data: string) => {
           // 触发事件，完成相应的业务操作
         });
         hilog.info(DOMAIN, TAG, '%{public}s', 'Ability onCreate');
@@ -49,7 +49,7 @@
         return;
       }
     
-    // ···
+      // ...
     }
     ```
 
@@ -124,18 +124,18 @@
     <!-- @[onDestroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityDataSync/entry/src/main/ets/entryability/EntryAbility.ets) -->
     
     ``` TypeScript
-    // ···
+    // ...
     import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-    // ···
+    // ...
     
     export default class EntryAbility extends UIAbility {
-    // ···
+      // ...
     
       onDestroy(): void {
         this.context.eventHub.off('event1');
       }
     
-    // ···
+      // ...
     }
     ```
 
