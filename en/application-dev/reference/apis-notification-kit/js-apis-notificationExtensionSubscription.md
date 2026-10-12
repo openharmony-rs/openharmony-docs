@@ -1,19 +1,17 @@
 # @ohos.notificationExtensionSubscription (notificationExtensionSubscription)
-
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=9aa812250f4e9aa6e205822b2fc097b3c5b2a47d translatedAt=2026-07-21T01:11:20.676Z pushedAt=2026-07-21T09:32:07.083Z -->
+<!-- md-trans-meta sourceCommit=d92fd96c7713dc18450281df98f1c9ed5f77b2c9 translatedAt=2026-10-08T02:26:48.065Z pushedAt=2026-10-08T09:35:05.821Z -->
 
-The **notificationExtensionSubscription** module provides capabilities for managing notification extension, including opening the extension settings screen, subscribing to/unsubscribing from notification extension, and obtaining/setting the notification authorization status.
+This module provides the capabilities for managing notification extensions, including opening the notification extension subscription settings page, subscribing to and unsubscribing from notification extensions, and obtaining and setting the [notification authorization](../../notification/notification-glossary.md#notification-authorization) status.
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 22. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-
 ## Modules to Import
 
 ```ts
@@ -35,7 +33,7 @@ Opens the settings screen of notification extension subscription in a semi-modal
 
 | Name  | Type                    | Mandatory| Description                |
 | -------- | ------------------------ | ---- |--------------------|
-| context | [UIAbilityContext](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | Yes  | Ability context bound to the notification settings page.|
+| context | [UIAbilityContext](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | Yes | Context of the ability bound to the [notification setting](../../notification/notification-glossary.md#notification-setting) page. |
 
 **Return value**
 
@@ -65,7 +63,7 @@ try {
   notificationExtensionSubscription.openSubscriptionSettings(context).then(() => {
     console.info(`openSubscriptionSettings success`);
   }).catch((e: Error) => {
-    let error = e as BusinessError
+    let error = e as BusinessError;
     console.error(`failed to call openSubscriptionSettings, code is ${error.code}, message is ${error.message}`)
   });
 } catch (error) {
@@ -91,13 +89,13 @@ Opens the settings screen of notification extension subscription in a semi-modal
 
 | Name  | Type                    | Mandatory| Description                |
 | -------- | ------------------------ | ---- |--------------------|
-| context | [UIAbilityContext](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | Yes  | Ability context bound to the notification settings page.|
+| context | [UIAbilityContext](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | Yes   | Context of the ability bound to the [notification setting](../../notification/notification-glossary.md#notification-setting) page. |
 
 **Return value**
 
-| Type    | Description| 
+| Type    | Description|
 | ------- |--|
-| Promise\<[UserGrantSetting](#usergrantsetting)\> | Promise used to return the result of the authorization set by the user.|
+| Promise\<[UserGrantSetting](#usergrantsetting)\> | Promise used to return the result of the authorization set by the user. |
 
 **Error codes**
 
@@ -121,7 +119,7 @@ try {
   notificationExtensionSubscription.openSubscriptionSettingsWithResult(context).then((data) => {
     console.info(`openSubscriptionSettingsWithResult success, data: ${JSON.stringify(data)}`);
   }).catch((e: Error) => {
-    let error = e as BusinessError
+    let error = e as BusinessError;
     console.error(`failed to call openSubscriptionSettingsWithResult, code is ${error.code}, message is ${error.message}`)
   });
 } catch (error) {
@@ -348,7 +346,7 @@ Describes the information about the notification extension subscription.
 
 type NotificationInfo = _NotificationInfo
 
-Describes the notification information delivered to the [onReceiveMessage](js-apis-notificationSubscriberExtensionAbility.md#onreceivemessage) callback of ExtensionAbility for notification subscriptions.
+Defines the notification information in the [onReceiveMessage](js-apis-notificationSubscriberExtensionAbility.md#onreceivemessage) callback of the [notification subscription](../../notification/notification-glossary.md#notification-subscription) extension ability.
 
 **System capability**: SystemCapability.Notification.Notification
 

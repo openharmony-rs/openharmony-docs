@@ -2,17 +2,18 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-10-08T02:20:14.348Z pushedAt=2026-10-08T09:28:05.614Z -->
 
-The **NotificationSlot** module provides APIs for defining the notification slots. The notification reminder modes vary according to notification slots.
+Describes the [notification slot](../../notification/notification-glossary.md#notification-slot). Different notification channels have different [notification reminder modes](../../notification/notification-glossary.md#notification-reminder-mode).
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> This topic describes only system APIs provided by the module. For details about its public APIs, see [NotificationSlot](./js-apis-inner-notification-notificationSlot.md).
+> This topic describes only system APIs provided by the module. For details about its public APIs, see [NotificationSlot](js-apis-inner-notification-notificationSlot.md).
 
 ## NotificationSlot
 

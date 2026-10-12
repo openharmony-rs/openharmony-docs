@@ -6,6 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=e71c18b07e60126d6e035697895e952d325627bd translatedAt=2026-09-23T02:43:56.845Z pushedAt=2026-09-24T06:00:14.226Z -->
 
 The **socket** module implements data transfer over TCP, UDP, Web, and TLS socket connections.
 
@@ -168,14 +169,14 @@ For details about the error codes, see [Socket Error Codes](errorcode-net-socket
 | ------- | ----------------------- |
 | 401     | Parameter error.        |
 | 201     | Permission denied.      |
-| 2301206 | Socks5 failed to connect to the proxy server.  |
-| 2301207 | Socks5 username or password is invalid.        |
-| 2301208 | Socks5 failed to connect to the remote server. |
-| 2301209 | Socks5 failed to negotiate the authentication method. |
-| 2301210 | Socks5 failed to send the message.             |
-| 2301211 | Socks5 failed to receive the message.          |
-| 2301212 | Socks5 serialization error.                    |
-| 2301213 | Socks5 deserialization error.                  |
+| 2301206 | Socks5 failed to connect to the proxy server. <br>Applicable versions: 18+         |
+| 2301207 | Socks5 username or password is invalid. <br>Applicable versions: 18+               |
+| 2301208 | Socks5 failed to connect to the remote server. <br>Applicable versions: 18+        |
+| 2301209 | Socks5 failed to negotiate the authentication method. <br>Applicable versions: 18+ |
+| 2301210 | Socks5 failed to send the message. <br>Applicable versions: 18+                    |
+| 2301211 | Socks5 failed to receive the message. <br>Applicable versions: 18+                 |
+| 2301212 | Socks5 serialization error. <br>Applicable versions: 18+                           |
+| 2301213 | Socks5 deserialization error. <br>Applicable versions: 18+                         |
 
 **Example**
 
@@ -290,14 +291,14 @@ For details about the error codes, see [Socket Error Codes](errorcode-net-socket
 | ------- | ----------------------- |
 | 401     | Parameter error.        |
 | 201     | Permission denied.      |
-| 2301206 | Socks5 failed to connect to the proxy server.  |
-| 2301207 | Socks5 username or password is invalid.        |
-| 2301208 | Socks5 failed to connect to the remote server. |
-| 2301209 | Socks5 failed to negotiate the authentication method. |
-| 2301210 | Socks5 failed to send the message.             |
-| 2301211 | Socks5 failed to receive the message.          |
-| 2301212 | Socks5 serialization error.                    |
-| 2301213 | Socks5 deserialization error.                  |
+| 2301206 | Socks5 failed to connect to the proxy server. <br>Applicable versions: 18+         |
+| 2301207 | Socks5 username or password is invalid. <br>Applicable versions: 18+               |
+| 2301208 | Socks5 failed to connect to the remote server. <br>Applicable versions: 18+        |
+| 2301209 | Socks5 failed to negotiate the authentication method. <br>Applicable versions: 18+ |
+| 2301210 | Socks5 failed to send the message. <br>Applicable versions: 18+                    |
+| 2301211 | Socks5 failed to receive the message. <br>Applicable versions: 18+                 |
+| 2301212 | Socks5 serialization error. <br>Applicable versions: 18+                           |
+| 2301213 | Socks5 deserialization error. <br>Applicable versions: 18+                         |
 
 
 **Example**
@@ -496,7 +497,7 @@ udp.bind(bindAddr, (err: BusinessError) => {
     console.error('bind fail');
     return;
   }
-  console.error('bind success');
+  console.info('bind success');
   udp.getState((err: BusinessError, data: socket.SocketStateBase) => {
     if (err) {
       console.error('getState fail');
@@ -524,7 +525,7 @@ Obtains the status of the UDP socket connection. This API uses a promise to retu
 
 | Type                                            | Description                                      |
 |  ----------------------------------------------- |  ----------------------------------------- |
-| Promise\<[SocketStateBase](#socketstatebase)\> | Promise used to return the result.|
+| Promise\<[SocketStateBase](#socketstatebase)\> | Promise object used to return the result of obtaining the UDPSocket state. |
 
 **Error codes**
 
@@ -763,7 +764,7 @@ Obtains the local socket address of a **UDPSocket** connection. This API uses a 
 
 | Type           | Description                                                |
 |  -------------- |  --------------------------------------------------- |
-| Promise\<[NetAddress](#netaddress)\> | Promise used to return the result.|
+| Promise\<[NetAddress](#netaddress)\> | Promise object used to return the result of obtaining the local socket address. |
 
 **Error codes**
 
@@ -1010,7 +1011,7 @@ Defines the destination address.
 | -------- | ---------------------------------------------- | ---- | --- | ---------------------- |
 | address<sup>11+</sup> | string | No  | No  | IP address.                                          |
 | port    | number | No  | No  | Port number. The value ranges from **0** to **65535**. If this parameter is not specified, the system randomly allocates a port.          |
-| family  | number | No  | No  | Network protocol type.<br>- **1**: IPv4 The default value is **1**.<br>- **2**: IPv6 For an IPv6 address, this field must be explicitly set to **2**.<br>- **3**: domain address<sup>18+</sup> For a domain address, this field must be explicitly set to **3**. Currently, only [TCPSocket.connect](#connect) and [TLSSocket.connect](#connect9) are supported.|
+| family  | number | No   | No   | Network protocol type. Available options:<br />- 1: IPv4. The default value is 1.<br />- 2: IPv6. If the address is of the IPv6 type, this field must be explicitly set to 2.<br />- 3: Domain (supported since API version 18). If the address is of the Domain type, this field must be explicitly set to 3. Currently supported only by [TCPSocket.connect](#connect) and [TLSSocket.connect](#connect9).|
 
 ## ProxyOptions<sup>18+</sup>
 
@@ -1541,7 +1542,7 @@ Obtains the TTL for multicast packets. This API uses a promise to return the res
 
 | Type              | Description                       |
 | ----------------   | --------------------------- |
-| Promise\<number\> | Promise used to return the result.|
+| Promise\<number\> | Promise object used to return the current TTL value. |
 
 **Error codes**
 
@@ -1711,7 +1712,7 @@ Obtains the loopback mode flag for multicast communication. This API uses a prom
 > This API is effective only after [addMembership](#addmembership11) is called.
 
 **System capability**: SystemCapability.Communication.NetStack
-                                                      
+
 **Return value**
 
 | Type               | Description                       |
@@ -1956,14 +1957,14 @@ For details about the error codes, see [Socket Error Codes](errorcode-net-socket
 | ------- | ----------------------- |
 | 401     | Parameter error.        |
 | 201     | Permission denied.      |
-| 2301206 | Socks5 failed to connect to the proxy server.  |
-| 2301207 | Socks5 username or password is invalid.        |
-| 2301208 | Socks5 failed to connect to the remote server. |
-| 2301209 | Socks5 failed to negotiate the authentication method. |
-| 2301210 | Socks5 failed to send the message.             |
-| 2301211 | Socks5 failed to receive the message.          |
-| 2301212 | Socks5 serialization error.                    |
-| 2301213 | Socks5 deserialization error.                  |
+| 2301206 | Socks5 failed to connect to the proxy server. <br>Applicable versions: 18+         |
+| 2301207 | Socks5 username or password is invalid. <br>Applicable versions: 18+               |
+| 2301208 | Socks5 failed to connect to the remote server. <br>Applicable versions: 18+        |
+| 2301209 | Socks5 failed to negotiate the authentication method. <br>Applicable versions: 18+ |
+| 2301210 | Socks5 failed to send the message. <br>Applicable versions: 18+                    |
+| 2301211 | Socks5 failed to receive the message. <br>Applicable versions: 18+                 |
+| 2301212 | Socks5 serialization error. <br>Applicable versions: 18+                           |
+| 2301213 | Socks5 deserialization error. <br>Applicable versions: 18+                         |
 
 **Example**
 
@@ -2057,14 +2058,14 @@ For details about the error codes, see [Socket Error Codes](errorcode-net-socket
 | ------- | ----------------------- |
 | 401     | Parameter error.        |
 | 201     | Permission denied.      |
-| 2301206 | Socks5 failed to connect to the proxy server.  |
-| 2301207 | Socks5 username or password is invalid.        |
-| 2301208 | Socks5 failed to connect to the remote server. |
-| 2301209 | Socks5 failed to negotiate the authentication method. |
-| 2301210 | Socks5 failed to send the message.             |
-| 2301211 | Socks5 failed to receive the message.          |
-| 2301212 | Socks5 serialization error.                    |
-| 2301213 | Socks5 deserialization error.                  |
+| 2301206 | Socks5 failed to connect to the proxy server. <br>Applicable versions: 18+         |
+| 2301207 | Socks5 username or password is invalid. <br>Applicable versions: 18+               |
+| 2301208 | Socks5 failed to connect to the remote server. <br>Applicable versions: 18+        |
+| 2301209 | Socks5 failed to negotiate the authentication method. <br>Applicable versions: 18+ |
+| 2301210 | Socks5 failed to send the message. <br>Applicable versions: 18+                    |
+| 2301211 | Socks5 failed to receive the message. <br>Applicable versions: 18+                 |
+| 2301212 | Socks5 serialization error. <br>Applicable versions: 18+                           |
+| 2301213 | Socks5 deserialization error. <br>Applicable versions: 18+                         |
 
 **Example**
 
@@ -2393,7 +2394,7 @@ Obtains the remote address of a socket connection. This API uses a promise to re
 
 | Type                                       | Description                                       |
 | ------------------------------------------ | ------------------------------------------ |
-| Promise\<[NetAddress](#netaddress)\> | Promise used to return the result.|
+| Promise\<[NetAddress](#netaddress)\> | Promise used to return the result of obtaining the peer socket address. |
 
 **Error codes**
 
@@ -2501,7 +2502,7 @@ Obtains the status of the TCP socket connection. This API uses a promise to retu
 
 | Type                                            | Description                                      |
 | ----------------------------------------------- | ----------------------------------------- |
-| Promise\<[SocketStateBase](#socketstatebase)\> | Promise used to return the result.|
+| Promise\<[SocketStateBase](#socketstatebase)\> | Promise object used to return and obtain the TCPSocket state. |
 
 **Error codes**
 
@@ -2600,7 +2601,7 @@ Obtains the file descriptor of the **TCPSocket** object. This API uses a promise
 
 | Type                                            | Description                                      |
 | ----------------------------------------------- | ----------------------------------------- |
-| Promise\<number\> | Promise used to return the result.|
+| Promise\<number\> | Promise object that returns the file descriptor of the socket. |
 
 **Example**
 
@@ -3277,7 +3278,7 @@ Obtains the status of a TCP socket server connection. This API uses a promise to
 
 | Type                                        | Description                                      |
 |  ------------------------------------------- |  ----------------------------------------- |
-| Promise\<[SocketStateBase](#socketstatebase)\> | Promise used to return the result.|
+| Promise\<[SocketStateBase](#socketstatebase)\> | Promise used to return the result of obtaining the TCPSocket state. |
 
 **Error codes**
 
@@ -4102,7 +4103,7 @@ Obtains the remote address of a socket connection. This API uses a promise to re
 
 | Type                              | Description                                       |
 |  --------------------------------- |  ------------------------------------------ |
-| Promise\<[NetAddress](#netaddress)\> | Promise used to return the result.|
+| Promise\<[NetAddress](#netaddress)\> | Promise object used to return the result of obtaining the local socket address. |
 
 **Error codes**
 
@@ -4772,7 +4773,7 @@ Obtains the local socket connection status. This API uses a promise to return th
 
 | Type                                         | Description                                    |
 | :------------------------------------------- | :--------------------------------------- |
-| Promise\<[SocketStateBase](#socketstatebase)\> | Promise used to return the result.|
+| Promise\<[SocketStateBase](#socketstatebase)\> | Promise object used to return and obtain the result of the LocalSocket state. |
 
 **Example**
 
@@ -4825,7 +4826,7 @@ Obtains the file descriptor of the **LocalSocket** object. This API uses a promi
 
 | Type              | Description                             |
 | :---------------- | :-------------------------------- |
-| Promise\<number\> | Promise used to return the result.|
+| Promise\<number\> | Promise object that returns the file descriptor of the socket. |
 
 **Example**
 
@@ -4945,7 +4946,7 @@ Obtains the socket properties of the **LocalSocket** object. This API uses a pro
 
 | Type                        | Description                                     |
 | :-------------------------- | :---------------------------------------- |
-| Promise\<[ExtraOptionsBase](#extraoptionsbase)\> | Promise used to return the result.|
+| Promise\<[ExtraOptionsBase](#extraoptionsbase)\> | Promise used to return the properties of the LocalSocket socket. |
 
 **Error codes**
 
@@ -5003,7 +5004,7 @@ Obtains the local socket address of a **LocalSocket** connection. This API uses 
 
 | Type           | Description                                                |
 |  -------------- |  --------------------------------------------------- |
-| Promise\<string\> | Promise used to return the result.|
+| Promise\<string\> | Promise used to return the local socket address. |
 
 **Error codes**
 
@@ -5448,7 +5449,7 @@ Binds the address of the local socket file. The server listens to and accepts lo
 
 | Type           | Description                                                  |
 | :-------------- | :---------------------------------------------------- |
-| Promise\<void\> | Promise used to return the result. If the operation is successful, no value is returned. If the operation fails, an error message is returned.|
+| Promise\<void\> | Promise that returns no value.|
 
 **Error codes**
 
@@ -5501,7 +5502,7 @@ Obtains the status of a local socket server connection. This API uses a promise 
 
 | Type                                        | Description                                           |
 | :------------------------------------------- | :--------------------------------------------- |
-| Promise\<[SocketStateBase](#socketstatebase)\> | Promise used to return the result.|
+| Promise\<[SocketStateBase](#socketstatebase)\> | Promise object used to return and obtain the LocalSocketServer status. |
 
 **Example**
 
@@ -5579,7 +5580,7 @@ import { common } from '@kit.AbilityKit';
 let server: socket.LocalSocketServer = socket.constructLocalSocketServerInstance();
 let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
 let sandboxPath: string = context.filesDir + '/testSocket';
-let listenAddr: socket.NetAddress = {
+let listenAddr: socket.LocalAddress = {
   address: sandboxPath
 }
 server.listen(listenAddr).then(() => {
@@ -5615,7 +5616,7 @@ Obtains the socket properties of the **LocalSocketServer** object. This API uses
 
 | Type                        | Description                       |
 | :-------------------------- | :-------------------------- |
-| Promise\<[ExtraOptionsBase](#extraoptionsbase)\> | Promise used to return the result.|
+| Promise\<[ExtraOptionsBase](#extraoptionsbase)\> | Promise object used to return the socket properties. |
 
 **Error codes**
 
@@ -5669,7 +5670,7 @@ Obtains the local socket address of a **LocalSocketServer** connection. This API
 
 | Type           | Description                                                |
 |  -------------- |  --------------------------------------------------- |
-| Promise\<string\> | Promise used to return the result.|
+| Promise\<string\> | Promise object used to return the result of obtaining the local socket address. |
 
 **Error codes**
 
@@ -5923,7 +5924,7 @@ close(): Promise\<void\>
 Stops listening for events of the **LocalSocketServer** object and releases the port bound by [listen](#listen11). This API uses a promise to return the result.
 
 > **NOTE**
-> This API does not close existing connections. To close the connection, call the [close] (#close11-1) API of [LocalSocketConnection] (#localsocketconnection11).
+> This API does not close existing connections. To close the connection, call the [close](#close11-1) API of [LocalSocketConnection](#localsocketconnection11).
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -6087,7 +6088,7 @@ Obtains the local socket address of a **LocalSocketConnection** connection. This
 
 | Type           | Description                                                |
 |  -------------- |  --------------------------------------------------- |
-| Promise\<string\> | Promise used to return the result.|
+| Promise\<string\> | Promise object used to return the result of obtaining the local socket address. |
 
 **Error codes**
 
@@ -6704,7 +6705,7 @@ Obtains the status of the TLS socket connection. This API uses a promise to retu
 
 | Type                                            | Description                                      |
 |  ----------------------------------------------- |  ----------------------------------------- |
-| Promise\<[SocketStateBase](#socketstatebase)\> | Promise used to return the result. If the operation fails, an error message is returned.|
+| Promise\<[SocketStateBase](#socketstatebase)\> | Promise object used to return and obtain the result of the TLSSocket state. On failure, returns the error code and error message. |
 
 **Error codes**
 
@@ -6898,7 +6899,7 @@ Subscribes to **message** events of the **TLSSocket** object. This API uses an a
 | Name  | Type                                                        | Mandatory| Description                                     |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------- |
 | type     | string                                                       | Yes  | Event type.<br/> **message**: message receiving event.|
-| callback | Callback\<[SocketMessageInfo](#socketmessageinfo11)\> | Yes  | Callback used to return the result.  |
+| callback | Callback\<[SocketMessageInfo](#socketmessageinfo11)\> | Yes | Callback Function. The callback invoked when the TLSSocket connection subscribes to a certain type of received message event, returning the TLSSocket connection information. |
 
 **Error codes**
 
@@ -6952,7 +6953,7 @@ Unsubscribes from **message** events of the **TLSSocket** object. This API uses 
 | Name  | Type                                                        | Mandatory| Description                                     |
 | -------- | ------------------------------------------------------------ | ---- | ----------------------------------------- |
 | type     | string                                                       | Yes  | Event type.<br/> **message**: message receiving event.|
-| callback | Callback\<[SocketMessageInfo](#socketmessageinfo11)\> | No  | Callback used to return the result.  |
+| callback | Callback\<[SocketMessageInfo](#socketmessageinfo11)\> | No | Callback for the event of unsubscribing from a type of message receiving event of the TLSSocket connection, which returns the TLSSocket connection information. |
 
 **Error codes**
 
@@ -7194,14 +7195,14 @@ Sets up a **TLSSocket** connection, and creates and initializes a TLS session af
 | 2303505 | An error occurred in the TLS system call.    |
 | 2303506 | Failed to close the TLS connection.          |
 | 2300002 | System internal error.                       |
-| 2301206 | Socks5 failed to connect to the proxy server.  |
-| 2301207 | Socks5 username or password is invalid.        |
-| 2301208 | Socks5 failed to connect to the remote server. |
-| 2301209 | Socks5 failed to negotiate the authentication method. |
-| 2301210 | Socks5 failed to send the message.             |
-| 2301211 | Socks5 failed to receive the message.          |
-| 2301212 | Socks5 serialization error.                    |
-| 2301213 | Socks5 deserialization error.                  |
+| 2301206 | Socks5 failed to connect to the proxy server. <br>Applicable versions: 18+         |
+| 2301207 | Socks5 username or password is invalid. <br>Applicable versions: 18+               |
+| 2301208 | Socks5 failed to connect to the remote server. <br>Applicable versions: 18+        |
+| 2301209 | Socks5 failed to negotiate the authentication method. <br>Applicable versions: 18+ |
+| 2301210 | Socks5 failed to send the message. <br>Applicable versions: 18+                    |
+| 2301211 | Socks5 failed to receive the message. <br>Applicable versions: 18+                 |
+| 2301212 | Socks5 serialization error. <br>Applicable versions: 18+                           |
+| 2301213 | Socks5 deserialization error. <br>Applicable versions: 18+                         |
 
 **Example**
 
@@ -7373,7 +7374,7 @@ Sets up a **TLSSocket** connection, and creates and initializes a TLS session af
 
 | Type                                       | Description                         |
 | ------------------------------------------- | ----------------------------- |
-| Promise\<void\>                              | Promise used to return the result. If the operation is successful, no value is returned. If the operation fails, an error message is returned.|
+| Promise\<void\>                              | Promise that returns no value.|
 
 **Error codes**
 
@@ -7394,14 +7395,14 @@ Sets up a **TLSSocket** connection, and creates and initializes a TLS session af
 | 2303505 | An error occurred in the TLS system call.    |
 | 2303506 | Failed to close the TLS connection.          |
 | 2300002 | System internal error.                       |
-| 2301206 | Socks5 failed to connect to the proxy server.  |
-| 2301207 | Socks5 username or password is invalid.        |
-| 2301208 | Socks5 failed to connect to the remote server. |
-| 2301209 | Socks5 failed to negotiate the authentication method. |
-| 2301210 | Socks5 failed to send the message.             |
-| 2301211 | Socks5 failed to receive the message.          |
-| 2301212 | Socks5 serialization error.                    |
-| 2301213 | Socks5 deserialization error.                  |
+| 2301206 | Socks5 failed to connect to the proxy server. <br>Applicable versions: 18+         |
+| 2301207 | Socks5 username or password is invalid. <br>Applicable versions: 18+               |
+| 2301208 | Socks5 failed to connect to the remote server. <br>Applicable versions: 18+        |
+| 2301209 | Socks5 failed to negotiate the authentication method. <br>Applicable versions: 18+ |
+| 2301210 | Socks5 failed to send the message. <br>Applicable versions: 18+                    |
+| 2301211 | Socks5 failed to receive the message. <br>Applicable versions: 18+                 |
+| 2301212 | Socks5 serialization error. <br>Applicable versions: 18+                           |
+| 2301213 | Socks5 deserialization error. <br>Applicable versions: 18+                         |
 
 **Example**
 
@@ -7612,7 +7613,7 @@ Obtains the remote address of a TLS socket connection. This API uses a promise t
 
 | Type                                       | Description                                       |
 |  ------------------------------------------ |  ------------------------------------------ |
-| Promise\<[NetAddress](#netaddress)\> | Promise used to return the result. If the operation fails, an error message is returned.|
+| Promise\<[NetAddress](#netaddress)\> | Promise object used to return the result of obtaining the local socket address. On failure, returns the error code and error message. |
 
 **Error codes**
 
@@ -7685,7 +7686,7 @@ Obtains the local digital certificate after a **TLSSocket** connection is establ
 
 | Type           | Description                 |
 | -------------- | -------------------- |
-| Promise\<[X509CertRawData](#x509certrawdata9)\> | Promise used to return the result. If the operation fails, an error message is returned.|
+| Promise\<[X509CertRawData](#x509certrawdata9)\> | Promise object used to return the local digital certificate. Returns an error code and error message on failure. |
 
 **Error codes**
 
@@ -7764,7 +7765,7 @@ Obtains the digital certificate of the server after a **TLSSocket** connection i
 
 | Type           | Description                 |
 | -------------- | -------------------- |
-| Promise\<[X509CertRawData](#x509certrawdata9)\> | Promise used to return the result. If the operation fails, an error message is returned.|
+| Promise\<[X509CertRawData](#x509certrawdata9)\> | Promise object used to return the server's digital certificate. If the operation fails, an error code and error message are returned. |
 
 **Error codes**
 
@@ -7840,7 +7841,7 @@ Obtains the communication protocol version after a **TLSSocket** connection is e
 
 | Type           | Description                 |
 | -------------- | -------------------- |
-| Promise\<string\> | Promise used to return the result. If the operation fails, an error message is returned.|
+| Promise\<string\> | Promise object used to return the protocol of the communication. On failure, returns the error code and error message. |
 
 **Error codes**
 
@@ -7915,7 +7916,7 @@ Obtains the cipher suite negotiated by both communication parties after a **TLSS
 
 | Type                   | Description                 |
 | ---------------------- | --------------------- |
-| Promise\<Array\<string\>\> | Promise used to return the result. If the operation fails, an error message is returned.|
+| Promise\<Array\<string\>\> | Promise object that returns the cipher suites supported by both communicating parties. On failure, returns an error code and error message. |
 
 **Error codes**
 
@@ -7989,7 +7990,7 @@ Obtains the signing algorithm negotiated by both communication parties after a *
 
 | Type                   | Description                 |
 | ---------------------- | -------------------- |
-| Promise\<Array\<string\>\> | Promise used to return the result.|
+| Promise\<Array\<string\>\> | Promise object that returns the obtained signature algorithms supported by both parties. |
 
 **Error codes**
 
@@ -8068,7 +8069,7 @@ Obtains the file descriptor of the **TLSSocket** object. This API uses a promise
 
 | Type                                            | Description                                      |
 | ----------------------------------------------- | ----------------------------------------- |
-| Promise\<number\> | Promise used to return the result.|
+| Promise\<number\> | Promise object used to return the file descriptor of the socket. |
 
 **Example**
 
@@ -8282,7 +8283,7 @@ TLS security options. When **cert** (local certificate) and **key** (private key
 | Name  | Type                                          | Read-Only| Optional|Description                   |
 | -------- | ---------------------------------------------- | ---- | --- | ---------------------- |
 | ca                    | string \| Array\<string\> | No  | Yes| CA certificate of the server, which is used to authenticate the digital certificate of the server. The default value is the preset CA certificate<sup>12+</sup>. A maximum of 1000 certificates can be set.|
-| cert                  | string \| Array\<string\>         | No  | Yes| Digital certificate of the local client. An array can be passed since API version 24. A maximum of 1000 certificates can be set.                |
+| cert                  | string \| Array\<string\>         | No   | Yes | Digital certificate of the local client. Starting from API version 24, an array can be passed in, and up to 1000 certificates can be set.                 |
 | key                   | string                                                  | No  | Yes| Private key of the local digital certificate.                  |
 | password                | string                                                  | No  | Yes| Password for reading the private key.                     |
 | protocols             | [Protocol](#protocol9) \|Array\<[Protocol](#protocol9)\> | No  | Yes| TLS protocol version. The default value is **TLSv1.2**.                 |
@@ -8345,7 +8346,7 @@ Defines a TLS socket server connection. Before calling TLSSocketServer APIs, you
 
 listen(options: TLSConnectOptions, callback: AsyncCallback\<void\>): void
 
-Listens for client connections after **bind** is successfully called to bind the IP address and port of **TLSSocketServer**. This API uses an asynchronous callback to return the result. After a connection is established, a TLS session will be created and initialized and a certificate key will be loaded and verified. 
+Binds the IP address and port. After the bind operation succeeds on the TLSSocketServer, listens for client connections, creates and initializes a TLS session, implements the connection establishment process, and loads and verifies the certificate and key. This API uses an asynchronous callback.
 
 >**NOTE**
 >
@@ -8415,7 +8416,7 @@ tlsServer.listen(tlsConnectOptions, (err: BusinessError) => {
 
 listen(options: TLSConnectOptions): Promise\<void\>
 
-Listens for client connections after **bind** is successfully called to bind the IP address and port of **TLSSocketServer**. This API uses an asynchronous callback to return the result. After a connection is established, a TLS session will be created and initialized and a certificate key will be loaded and verified. 
+Binds the IP address and port. After the bind operation succeeds on the TLSSocketServer, listens for client connections, creates and initializes a TLS session, implements the connection establishment process, and loads and verifies the certificate and key. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.INTERNET
 
@@ -8431,7 +8432,7 @@ Listens for client connections after **bind** is successfully called to bind the
 
 | Type           | Description                                                     |
 | --------------- | --------------------------------------------------------- |
-| Promise\<void\> | Promise used to return the result. If the operation is successful, no value is returned. If the operation fails, an error message is returned.|
+| Promise\<void\> | Promise that returns no value. |
 
 **Error codes**
 
@@ -8564,7 +8565,7 @@ Obtains the status of the TLS socket server connection upon successful listening
 
 | Type                                          | Description                                                        |
 |  --------------------------------------------- |  ----------------------------------------------------------- |
-| Promise\<[SocketStateBase](#socketstatebase)\> | Promise used to return the result. If the operation fails, an error message is returned.|
+| Promise\<[SocketStateBase](#socketstatebase)\> | Promise object used to return the result of obtaining the TLSSocketServer state. On failure, returns the error code and error message. |
 
 **Error codes**
 
@@ -8784,7 +8785,7 @@ Sets other properties of the **TLSSocketServer** object after **listen** is succ
 
 | Type           | Description                                                     |
 |  -------------- |  -------------------------------------------------------- |
-| Promise\<void\> | Promise used to return the result. If the operation is successful, no value is returned. If the operation fails, an error message is returned.|
+| Promise\<void\> | Promise that returns no value. |
 
 **Error codes**
 
@@ -8932,7 +8933,7 @@ Obtains the local digital certificate after a **TLSSocketServer** connection is 
 
 | Type                                           | Description                                                        |
 | ----------------------------------------------- | ------------------------------------------------------------ |
-| Promise\<[X509CertRawData](#x509certrawdata9)\> | Promise used to return the result. If the operation fails, an error message is returned.|
+| Promise\<[X509CertRawData](#x509certrawdata9)\> | Promise object used to return the result of the local digital certificate. On failure, returns the Error Code and Error Message. |
 
 **Error codes**
 
@@ -9064,7 +9065,7 @@ Obtains the communication protocol version after a **TLSSocketServer** connectio
 
 | Type             | Description                                                   |
 | ----------------- | ------------------------------------------------------- |
-| Promise\<string\> | Promise used to return the result. If the operation fails, an error message is returned.|
+| Promise\<string\> | Promise object, which returns the protocol used for communication. On failure, returns the error code and error message. |
 
 **Error codes**
 
@@ -9572,7 +9573,7 @@ Sends a message to the server after a **TLSSocketServer** connection is establis
 
 | Type           | Description                                                     |
 | --------------- | --------------------------------------------------------- |
-| Promise\<void\> | Promise used to return the result. If the operation is successful, no value is returned. If the operation fails, an error message is returned.|
+| Promise\<void\> | Promise that returns no value. |
 
 **Error codes**
 
@@ -9705,7 +9706,7 @@ Closes a **TLSSocketServer** connection. This API uses a promise to return the r
 
 | Type           | Description                                                     |
 | --------------- | --------------------------------------------------------- |
-| Promise\<void\> | Promise used to return the result. If the operation is successful, no value is returned. If the operation fails, an error message is returned. If the operation fails, an error message is returned.|
+| Promise\<void\> | Promise that returns no value. |
 
 **Error codes**
 
@@ -9832,7 +9833,7 @@ Obtains the remote address of a TLS socket server connection. This API uses a pr
 
 | Type                                | Description                                                        |
 |  ----------------------------------- |  ----------------------------------------------------------- |
-| Promise\<[NetAddress](#netaddress)\> | Promise used to return the result. If the operation fails, an error message is returned.|
+| Promise\<[NetAddress](#netaddress)\> | Promise object, used to return and obtain the result of the local socket address. On failure, returns the error code and error message. |
 
 **Error codes**
 
@@ -9960,7 +9961,7 @@ Obtains the digital certificate of the peer end after a **TLSSocketServer** conn
 
 | Type                                           | Description                                                        |
 | ----------------------------------------------- | ------------------------------------------------------------ |
-| Promise\<[X509CertRawData](#x509certrawdata9)\> | Promise used to return the result. If the operation fails, an error message is returned.|
+| Promise\<[X509CertRawData](#x509certrawdata9)\> | Promise object used to return the peer's digital certificate. On failure, returns the error code and error message. |
 
 **Error codes**
 
@@ -10090,7 +10091,7 @@ Obtains the cipher suite negotiated by both communication parties after a **TLSS
 
 | Type                      | Description                                                        |
 | -------------------------- | ------------------------------------------------------------ |
-| Promise\<Array\<string\>\> | Promise used to return the result. If the operation fails, an error message is returned.|
+| Promise\<Array\<string\>\> | Promise object, which returns the cipher suites supported by both communicating parties. On failure, returns the error code and error message. |
 
 **Error codes**
 
@@ -10217,7 +10218,7 @@ Obtains the signing algorithm negotiated by both communication parties after a *
 
 | Type                      | Description                                         |
 | -------------------------- | --------------------------------------------- |
-| Promise\<Array\<string\>\> | Promise used to return the result.|
+| Promise\<Array\<string\>\> | Promise object that returns the obtained signature algorithms supported by both parties. |
 
 **Error codes**
 

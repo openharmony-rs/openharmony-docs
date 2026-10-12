@@ -57,7 +57,7 @@
 
    使用[readImageMetadata](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#readimagemetadata23)接口，通过指定属性键（propertyKeys）读取对应格式的专有元数据。以读取GIF元数据中的帧延迟时长为例：
 
-   <!-- @[read_imageMetadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+   <!-- @[read_imageMetadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->  
    
    ``` TypeScript
    async readImageMetadata(imageSource: image.ImageSource | undefined) : Promise<image.ImageMetadata | undefined> {
@@ -72,10 +72,10 @@
        if (imageMetadata.gifMetadata != undefined) {
          console.info(`GIF_DELAY_TIME: ${JSON.stringify(imageMetadata.gifMetadata?.delayTime)}`);
        }
-       return imageMetadata
+       return imageMetadata;
      } catch (error) {
        console.error(`ReadImageMetadata failed, error.code: ${error.code},
-                  error.message: ${error.message}`)
+                  error.message: ${error.message}`);
        return undefined;
      }
    }
@@ -83,7 +83,7 @@
 
    使用[readImageMetadataByType](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#readimagemetadatabytype24)接口，通过指定[MetadataType](../../reference/apis-image-kit/arkts-apis-image-e.md#metadatatype13)枚举值读取对应格式的专有元数据。以读取GIF元数据为例：
 
-   <!-- @[read_imageMetadataByType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+   <!-- @[read_imageMetadataByType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->  
    
    ``` TypeScript
    async readImageMetadataByType(imageSource: image.ImageSource | undefined) : Promise<image.ImageMetadata | undefined> {
@@ -101,7 +101,7 @@
        return imageMetadata;
      } catch (error) {
        console.error(`ReadImageMetadataByType failed, error.code: ${error.code},
-                  error.message: ${error.message}`)
+                  error.message: ${error.message}`);
        return undefined;
      }
    }
@@ -111,18 +111,10 @@
 
    确认imageSource的异步方法已经执行完成，不再使用该变量后，可按需手动调用下面方法释放。
 
-   <!-- @[release_pixelMapDecoder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/DecodingPixelMap.ets) -->   
+   <!-- @[release_imageSource](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/DecodingPixelMap.ets) -->   
    
    ``` TypeScript
-   async release() {
-     try {
-       await this.pixelMap?.release();
-     } catch (error) {
-       console.error(`Failed to release PixelMap: ${error}.`);
-     } finally {
-       this.pixelMap = undefined;
-     }
-   
+   async release_imageSource() {
      try {
        await this.imageSource?.release();
      } catch (error) {

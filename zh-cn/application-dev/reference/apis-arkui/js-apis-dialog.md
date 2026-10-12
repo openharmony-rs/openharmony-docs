@@ -67,7 +67,7 @@ import { dialog } from '@kit.ArkUI';
 | 名称   | 类型                                                | 只读 | 可选 | 说明                       |
 | ------ | --------------------------------------------------- | ---- | ---- | -------------------------- |
 | title  | [ResourceStr](arkui-ts/ts-types.md#resourcestr)     | 否   | 否   | 标题内容。                 |
-| icon   | [ResourceStr](arkui-ts/ts-types.md#resourcestr)     | 否   | 是   | 图标内容。 <br/>默认值：空     |
+| icon   | [ResourceStr](arkui-ts/ts-types.md#resourcestr)     | 否   | 是   | 图标内容。<br/>默认值：空 |
 | action | [VoidCallback](arkui-ts/ts-types.md#voidcallback12) | 否   | 否   | 单击选项时执行的回调。     |
 
 ## DialogBaseOptions
@@ -95,7 +95,7 @@ import { dialog } from '@kit.ArkUI';
 | borderStyle             | [BorderStyle](arkui-ts/ts-appendix-enums.md#borderstyle)&nbsp;\|&nbsp;[EdgeStyles](arkui-ts/ts-types.md#edgestyles9) | 否   | 是   | 弹出框边框样式。<br/>默认值：BorderStyle.Solid               |
 | shadow                  | [ShadowOptions](arkui-ts/ts-universal-attributes-image-effect.md#shadowoptions对象说明)&nbsp;\|&nbsp;[ShadowStyle](arkui-ts/ts-universal-attributes-image-effect.md#shadowstyle10枚举说明) | 否   | 是   | 弹出框的阴影。<br/>当设备为PC/2in1时，默认场景下获焦阴影值为ShadowStyle.OUTER_FLOATING_MD，失焦为ShadowStyle.OUTER_FLOATING_SM。其他设备默认无阴影。 |
 | alignment               | [DialogBaseAlignment](#dialogbasealignment)                  | 否   | 是   | 弹出框的对齐模式。<br/>默认值：DialogBaseAlignment.DEFAULT                                           |
-| offset                  | [Offset](arkui-ts/ts-types.md#offset)                        | 否   | 是   | 弹出框相对于对齐位置的偏移。 <br/>默认值：{ dx: 0, dy: 0 }         |
+| offset                  | [Offset](arkui-ts/ts-types.md#offset)                        | 否   | 是   | 弹出框相对于对齐位置的偏移。<br/>默认值：{ dx: 0, dy: 0 } |
 | maskRect                | [Rectangle](arkui-ts/ts-methods-alert-dialog-box.md#rectangle8类型说明) | 否   | 是   | 弹出框的蒙层区域。<br>默认值：{ x: 0, y: 0, width: '100%', height: '100%' } |
 | maskColor               | [ResourceColor](arkui-ts/ts-types.md#resourcecolor)          | 否   | 是   | 弹出框的蒙层颜色。<br/>默认值：跟随系统主题的默认蒙层颜色。                                           |
 | isModal                 | boolean                                                      | 否   | 是   | 弹出框是否为模态。值为true表示为模态且有蒙层，值为false表示为非模态且无蒙层。<br/>默认值：true |
@@ -106,7 +106,7 @@ import { dialog } from '@kit.ArkUI';
 | dialogTransition        | [TransitionEffect](arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明) | 否   | 是   | 用于打开/关闭弹出框内容区域的弹出框过渡动效参数。<br/>默认值：系统默认过渡动效。            |
 | maskTransition          | [TransitionEffect](arkui-ts/ts-transition-animation-component.md#transitioneffect10对象说明) | 否   | 是   | 用于打开/关闭遮罩的蒙层过渡动效参数。<br/>默认值：系统默认蒙层过渡动效。                       |
 | keyboardAvoidMode       | [KeyboardAvoidMode](arkui-ts/ts-universal-attributes-popup.md#keyboardavoidmode12枚举说明) | 否   | 是   | 键盘避让模式。<br/>默认值：KeyboardAvoidMode.DEFAULT         |
-| keyboardAvoidDistance   | [LengthMetrics](js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 弹出框与系统键盘之间的距离。<br/>默认值：系统默认避让距离。                                 |
+| keyboardAvoidDistance   | [LengthMetrics](js-apis-arkui-graphics.md#lengthmetrics12)   | 否   | 是   | 弹出框与系统键盘之间的距离。<br/>默认值：系统默认避让距离。 |
 | onWillAppear            | [VoidCallback](arkui-ts/ts-types.md#voidcallback12)          | 否   | 是   | 弹出框打开动画开始前的回调函数。                             |
 | onDidAppear             | [VoidCallback](arkui-ts/ts-types.md#voidcallback12)          | 否   | 是   | 弹出框出现时的回调函数。                                     |
 | onWillDisappear         | [VoidCallback](arkui-ts/ts-types.md#voidcallback12)          | 否   | 是   | 弹出框关闭动画开始前的回调函数。                             |

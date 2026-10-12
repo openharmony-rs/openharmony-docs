@@ -64,8 +64,8 @@ setExecFrequency(info: FrequencyInfo): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201 | Permission denied. |
-| 202 | Not System App. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 9700003 | System service operation failed. |
 | 9700006 | Failed to check the execution frequency parameters. |
 
@@ -116,8 +116,8 @@ resetExecFrequency(uid: number): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 201 | Permission denied. |
-| 202 | Not System App. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 9700003 | System service operation failed. |
 | 9700006 | Failed to check the execution frequency parameters. |
 

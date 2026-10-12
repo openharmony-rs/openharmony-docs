@@ -1063,7 +1063,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 3900002      | There is currently no keyboard device connected. |
 | 3900003      | It is prohibited for non-input applications. |
@@ -1172,7 +1172,7 @@ Provides information about an input device.
 | uniq<sup>9+</sup>    | string                                 | No| No| Unique ID of the input device.                                        |
 | isVirtual<sup>23+</sup>    | boolean                                 | No | Yes | Whether the input device is a virtual device.<br>The value **true** indicates a virtual device, and **false** indicates a non-virtual device. If this field does not exist, the default value is **false**.                                      |
 | isLocal<sup>23+</sup>    | boolean                                 | No | Yes | Whether the input device is a local device.<br>The value **true** indicates a local device, and **false** indicates a non-local device. If this field does not exist, the default value is **false**.                                       |
-| displayId  | number                                  | Yes | Yes | ID of the bound target display. This field exists when there is a binding relationship in the system, and does not exist when there is no binding.<br>**Since:** 26.1.0<br>**Model restriction:** This API can be used only in the stage model.|
+| displayId  | number                                  | Yes | Yes | ID of the bound target display. This field exists when there is a binding relationship in the system, and does not exist when there is no binding.<br>**Since:** 26.0.1<br>**Model restriction:** This API can be used only in the stage model.|
 
 ## AxisType<sup>9+</sup>
 

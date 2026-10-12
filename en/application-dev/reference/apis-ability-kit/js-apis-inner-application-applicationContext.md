@@ -811,7 +811,7 @@ Obtains the UIAbility child process information of the current application. This
 
 Returns the processes started through the [startSelfUIAbilityInChildProcess](js-apis-inner-application-uiAbilityContext.md#startselfuiabilityinchildprocess) API, as well as the child processes started through the [startAbility](js-apis-inner-application-uiAbilityContext.md#startability-2) API with [processMode](js-apis-app-ability-contextConstant.md#processmode12) in the [StartOptions](js-apis-app-ability-startOptions.md) parameter set to NEW_PROCESS_ATTACH_TO_PARENT. An empty array is returned when there is no child process.
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

@@ -730,3 +730,208 @@ NODE_TEXT_EDITOR_PUNCTUATION_OVERFLOW = 22030
 | 类型 | 说明 |
 | -- | -- |
 | .value[0].i32 | 是否启用行尾标点符号悬挂，0表示不启用行尾标点符号悬挂，1表示启用行尾标点符号悬挂。 |
+
+
+## NODE_TEXT_EDITOR_CARET_STYLE
+
+```c
+NODE_TEXT_EDITOR_CARET_STYLE = 22040
+```
+
+设置TextEditor组件的光标宽度，支持属性设置、属性重置和属性获取。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.2.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].f32 | 光标宽度，单位vp。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].f32 | 光标宽度，单位vp。 |
+
+## NODE_TEXT_EDITOR_SELECT_ALL
+
+```c
+NODE_TEXT_EDITOR_SELECT_ALL = 22041
+```
+
+设置TextEditor组件在初始状态时是否全选文本，支持属性设置、属性重置和属性获取。<br>
+仅在首次获焦并完成布局阶段时触发全选。窗口恢复获焦时不执行全选。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.2.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].i32 | 是否全选文本，默认值为0。1表示会全选文本，0表示不会全选文本。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].i32 | 是否全选文本。1表示会全选文本，0表示不会全选文本。 |
+
+## NODE_TEXT_EDITOR_BLUR_ON_SUBMIT
+
+```c
+NODE_TEXT_EDITOR_BLUR_ON_SUBMIT = 22042
+```
+
+设置TextEditor组件在提交时是否失焦，支持属性设置、属性重置和属性获取。<br>
+仅在EnterKeyType为NEW_LINE时按Enter键生效：设置为1时关闭键盘并失焦，不插入换行；设置为0时插入换行，不失焦。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.2.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].i32 | 是否在提交时失焦，默认值为0。1表示提交时失焦，0表示提交时不失焦。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].i32 | 是否在提交时失焦。1表示提交时失焦，0表示提交时不失焦。 |
+
+## NODE_TEXT_EDITOR_CONTENT_RECT
+
+```c
+NODE_TEXT_EDITOR_CONTENT_RECT = 22043
+```
+
+获取TextEditor组件编辑内容区域的位置和大小，仅支持属性获取。<br>
+作为属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.2.0
+
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].f32 | 编辑内容区域的x轴偏移，单位px。 |
+| .value[1].f32 | 编辑内容区域的y轴偏移，单位px。 |
+| .value[2].f32 | 编辑内容区域的宽度，单位px。 |
+| .value[3].f32 | 编辑内容区域的高度，单位px。 |
+
+## NODE_TEXT_EDITOR_SELECTION_MENU_HIDDEN
+
+```c
+NODE_TEXT_EDITOR_SELECTION_MENU_HIDDEN = 22044
+```
+
+设置TextEditor组件是否隐藏选择菜单，支持属性设置、属性重置和属性获取。<br>
+设置为1时，长按、双击或右击时不弹出选择菜单，但不影响选区手柄。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.2.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].i32 | 是否隐藏选择菜单，默认值为0。1表示隐藏，0表示不隐藏。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].i32 | 是否隐藏选择菜单。1表示隐藏，0表示不隐藏。 |
+
+## NODE_TEXT_EDITOR_ENABLE_SKIP_PREVIEW_LONG_PRESS
+
+```c
+NODE_TEXT_EDITOR_ENABLE_SKIP_PREVIEW_LONG_PRESS = 22045
+```
+
+设置TextEditor组件是否跳过长按预览态直接进入编辑态，支持属性设置、属性重置和属性获取。<br>
+设置为1时，长按后直接进入编辑态（键盘弹出、光标闪烁），跳过预览态。双击行为不受影响。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.2.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].i32 | 是否跳过长按预览态，默认值为0。1表示跳过预览态，0表示不跳过。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].i32 | 是否跳过长按预览态。1表示跳过预览态，0表示不跳过。 |
+
+## NODE_TEXT_EDITOR_CANCEL_BUTTON
+
+```c
+NODE_TEXT_EDITOR_CANCEL_BUTTON = 22046
+```
+
+设置TextEditor组件的清除按钮样式属性，支持属性设置、属性重置和属性获取。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.2.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].i32 | 按钮样式[ArkUI_CancelButtonStyle](capi-text-input-h.md#arkui_cancelbuttonstyle)，默认值为ARKUI_CANCELBUTTON_STYLE_INPUT，表示清除按钮输入样式。 |
+| .value[1]?.f32 | 图标大小数值，单位为vp。取值范围：[0, +∞)。传入负数时不生效。不传入时使用系统默认图标大小。 |
+| .value[2]?.u32 | 按钮图标颜色数值，0xARGB格式，形如 0xFFFF0000 表示红色。不传入时使用系统默认图标颜色。 |
+| ?.string | 按钮图标地址，入参内容为图片本地地址，例如 /pages/icon.png。不传入时使用系统默认清除图标。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].i32 | 按钮样式[ArkUI_CancelButtonStyle](capi-text-input-h.md#arkui_cancelbuttonstyle)。 |
+| .value[1].f32 | 图标大小数值，单位为vp。 |
+| .value[2].u32 | 按钮图标颜色数值，0xARGB格式。 |
+| .string | 按钮图标地址。 |
+
+## NODE_TEXT_EDITOR_SHOW_COUNTER
+
+```c
+NODE_TEXT_EDITOR_SHOW_COUNTER = 22047
+```
+
+设置TextEditor组件输入的字符数超过阈值时是否显示计数器并设置计数器样式，支持属性设置，属性重置和属性获取接口。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.2.0
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].i32 | 是否开启计数器。值为1表示开启计数器，值为0表示不开启计数器。 |
+| .value[1]?.f32 | 可输入字符数占最大字符限制的百分比值，超过此值时显示计数器，取值范围[1, 100]，小数时向下取整，若超出取值范围，则接口属性设置不生效。默认值-1，即始终显示计数器。 |
+| .value[2]?.i32 | 输入字符超出限制时高亮边框，1表示高亮边框，0表示不高亮边框。默认值1。 |
+| .object | 计数器配置，配置属性为文本输入框未达到最大字符数时计数器的颜色以及超出最大字符数时计数器的颜色。参数类型为[ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-textshowcounterconfig.md)。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].i32 | 是否开启计数器。0表示不开启计数器，1表示开启计数器。 |
+| .value[1].f32 | 可输入字符数占最大字符限制的百分比值，超过此值时显示计数器，取值范围[1, 100]。 |
+| .value[2].i32 | 输入字符超出限制时高亮边框。0表示不高亮边框，1表示高亮边框。 |
+| .object | 计数器配置，配置属性为文本输入框未达到最大字符数时计数器的颜色以及超出最大字符数时计数器的颜色。参数类型为[ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-textshowcounterconfig.md)。 |

@@ -2,18 +2,19 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-10-08T02:25:19.514Z pushedAt=2026-10-08T09:33:04.712Z -->
 
 The **Notification** module provides notification management capabilities, covering notifications, notification slots, notification subscription, notification enabled status, and notification badge status.
 
 > **NOTE**
 >
-> The APIs of this module are deprecated since API version 9. You are advised to use [@ohos.notificationManager](js-apis-notificationManager.md) instead.
-> The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> Since API version 9, this module is no longer maintained. It is recommended that you use [@ohos.notificationManager](js-apis-notificationManager.md) instead.
+> The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with the superscript to indicate their earliest API version.
 >
-> Notification subscription and unsubscription APIs are available only to system applications.
+> [Notification subscription](../../notification/notification-glossary.md#notification-subscription) and unsubscription are open only to system applications.
 
 ## Modules to Import
 
@@ -289,14 +290,14 @@ Adds a notification slot of a specified type. This API uses an asynchronous call
 import Base from '@ohos.base';
 
 // addSlot callback
-let addSlotCallBack = (err: Base.BusinessError) => {
+let addSlotCallback = (err: Base.BusinessError) => {
   if (err) {
     console.error("addSlot failed " + JSON.stringify(err));
   } else {
     console.info("addSlot success");
   }
 }
-Notification.addSlot(Notification.SlotType.SOCIAL_COMMUNICATION, addSlotCallBack);
+Notification.addSlot(Notification.SlotType.SOCIAL_COMMUNICATION, addSlotCallback);
 ```
 
 ## Notification.addSlot
@@ -343,7 +344,7 @@ Obtains a notification slot of a specified type. This API uses an asynchronous c
 
 | Name    | Type                             | Mandatory| Description                                                       |
 | -------- | --------------------------------- | ---- | ----------------------------------------------------------- |
-| slotType | [SlotType](#slottype)                          | Yes  | Type of the notification slot, which can be used for social communication, service information, content consultation, and other purposes.|
+| slotType | [SlotType](#slottype)                          | Yes   | [Notification slot](../../notification/notification-glossary.md#notification-slot) type, currently divided into social communication, service reminder, content consultation, and other types. |
 | callback | AsyncCallback\<[NotificationSlot](#notificationslot)\> | Yes  | Callback used to return the result.                                       |
 
 **Example**
@@ -375,7 +376,7 @@ Obtains a notification slot of a specified type. This API uses a promise to retu
 
 | Name    | Type    | Mandatory| Description                                                       |
 | -------- | -------- | ---- | ----------------------------------------------------------- |
-| slotType | [SlotType](#slottype) | Yes  | Type of the notification slot, which can be used for social communication, service information, content consultation, and other purposes.|
+| slotType | [SlotType](#slottype) | Yes | Type of the [Notification slot](../../notification/notification-glossary.md#notification-slot), currently divided into social communication, service reminder, content consultation, and other types. |
 
 **Return value**
 
@@ -464,7 +465,7 @@ Removes a notification slot of a specified type. This API uses an asynchronous c
 
 | Name    | Type                 | Mandatory| Description                                                       |
 | -------- | --------------------- | ---- | ----------------------------------------------------------- |
-| slotType | [SlotType](#slottype)              | Yes  | Type of the notification slot, which can be used for social communication, service information, content consultation, and other purposes.|
+| slotType | [SlotType](#slottype)              | Yes   | [Notification slot](../../notification/notification-glossary.md#notification-slot) type, currently divided into social communication, service reminder, content consultation, and other types. |
 | callback | AsyncCallback\<void\> | Yes  | Callback used to return the result.                                       |
 
 **Example**
@@ -496,7 +497,7 @@ Removes a notification slot of a specified type. This API uses a promise to retu
 
 | Name    | Type    | Mandatory| Description                                                       |
 | -------- | -------- | ---- | ----------------------------------------------------------- |
-| slotType | [SlotType](#slottype) | Yes  | Type of the notification slot, which can be used for social communication, service information, content consultation, and other purposes.|
+| slotType | [SlotType](#slottype) | Yes | Type of the [notification slot](../../notification/notification-glossary.md#notification-slot), currently divided into social communication, service reminder, content consultation, and other types. |
 
 **Return value**
 
@@ -536,14 +537,14 @@ Removes all notification slots. This API uses an asynchronous callback to return
 ```ts
 import Base from '@ohos.base';
 
-let removeAllCallBack = (err: Base.BusinessError) => {
+let removeAllCallback = (err: Base.BusinessError) => {
   if (err) {
     console.error("removeAllSlots failed " + JSON.stringify(err));
   } else {
     console.info("removeAllSlots success");
   }
 }
-Notification.removeAllSlots(removeAllCallBack);
+Notification.removeAllSlots(removeAllCallback);
 ```
 
 ## Notification.removeAllSlots
@@ -756,7 +757,7 @@ Notification.cancelGroup(groupName).then(() => {
 
 isSupportTemplate(templateName: string, callback: AsyncCallback\<boolean\>): void
 
-Checks whether a specified template is supported before using [NotificationTemplate](js-apis-inner-notification-notificationTemplate.md) to publish a notification. This API uses an asynchronous callback to return the result.
+Before publishing a notification using [NotificationTemplate](js-apis-inner-notification-notificationTemplate.md), you can call this API to check whether the corresponding notification template is supported. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -772,7 +773,7 @@ Checks whether a specified template is supported before using [NotificationTempl
 ```ts
 import Base from '@ohos.base';
 
-let templateName: string = 'process';
+let templateName: string = 'downloadTemplate';
 function isSupportTemplateCallback(err: Base.BusinessError, data: boolean) {
   if (err) {
     console.error("isSupportTemplate failed " + JSON.stringify(err));
@@ -788,7 +789,7 @@ Notification.isSupportTemplate(templateName, isSupportTemplateCallback);
 
 isSupportTemplate(templateName: string): Promise\<boolean\>
 
-Checks whether a specified template is supported before using [NotificationTemplate](js-apis-inner-notification-notificationTemplate.md) to publish a notification. This API uses an asynchronous callback to return the result.
+Checks whether a specified template is supported before using [NotificationTemplate](js-apis-inner-notification-notificationTemplate.md) to publish a notification. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -809,7 +810,7 @@ Checks whether a specified template is supported before using [NotificationTempl
 ```ts
 import Base from '@ohos.base';
 
-let templateName: string = 'process';
+let templateName: string = 'downloadTemplate';
 Notification.isSupportTemplate(templateName).then((data: boolean) => {
   console.info("isSupportTemplate success, data: " + JSON.stringify(data));
 }).catch((err: Base.BusinessError) => {
@@ -877,7 +878,7 @@ Notification.requestEnableNotification().then(() => {
 
 isDistributedEnabled(callback: AsyncCallback\<boolean>): void
 
-Checks whether this device supports distributed notifications. This API uses an asynchronous callback to return the result.
+Checks whether the device supports [distributed notification](../../notification/notification-glossary.md#distributed-notification). This API uses a callback to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -907,7 +908,7 @@ Notification.isDistributedEnabled(isDistributedEnabledCallback);
 
 isDistributedEnabled(): Promise\<boolean>
 
-Checks whether this device supports distributed notifications. This API uses a promise to return the result.
+Checks whether the device supports [distributed notification](../../notification/notification-glossary.md#distributed-notification). This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -950,8 +951,8 @@ Notification.isDistributedEnabled().then((data: boolean) => {
 | LEVEL_NONE                        | 0           | The notification function is disabled.    |
 | LEVEL_MIN                         | 1           | The notification function is enabled, but the notification icon is not displayed in the status bar, with no banner or alert tone.|
 | LEVEL_LOW                         | 2           | The notification function is enabled, and the notification icon is displayed in the status bar, with no banner or alert tone.|
-| LEVEL_DEFAULT                     | 3           | The notification feature is enabled, and the notification icon is displayed in the status bar, with an alert tone but no banner.|
-| LEVEL_HIGH                        | 4           | The notification feature is enabled, and the notification icon is displayed in the status bar, with an alert tone and banner.|
+| LEVEL_DEFAULT                     | 3           | The notification function is enabled, and the notification icon is displayed in the status bar, with an alert tone but no banner.|
+| LEVEL_HIGH                        | 4           | The notification function is enabled, and the notification icon is displayed in the status bar, with an alert tone and banner.|
 
 
 ## BundleOption<sup>deprecated</sup>
@@ -1015,7 +1016,7 @@ Describes the normal text notification.
 | Name          | Type  | Readable| Writable| Description                              |
 | -------------- | ------ | ---- | ---- | ---------------------------------- |
 | title          | string | Yes  | Yes  | Notification title.                        |
-| text           | string | Yes  | Yes  | Notification content.                        |
+| text           | string | Yes   | Yes   | [Notification content](../../notification/notification-glossary.md#notification-content).                         |
 | additionalText | string | Yes  | Yes  | Additional information of the notification.|
 
 
@@ -1028,7 +1029,7 @@ Describes the long text notification.
 | Name          | Type  | Readable| Writable| Description                            |
 | -------------- | ------ | ---- | --- | -------------------------------- |
 | title          | string | Yes | Yes | Notification title.                        |
-| text           | string | Yes | Yes | Notification content.                        |
+| text           | string | Yes  | Yes  | [Notification content](../../notification/notification-glossary.md#notification-content).                         |
 | additionalText | string | Yes | Yes | Additional information of the notification.|
 | longText       | string | Yes | Yes | Long text of the notification.                    |
 | briefText      | string | Yes | Yes | Brief text of the notification.|
@@ -1044,7 +1045,7 @@ Describes the multi-line text notification.
 | Name          | Type           | Readable| Writable| Description                            |
 | -------------- | --------------- | --- | --- | -------------------------------- |
 | title          | string          | Yes | Yes | Notification title.                        |
-| text           | string          | Yes | Yes | Notification content.                        |
+| text           | string          | Yes  | Yes  | [Notification content](../../notification/notification-glossary.md#notification-content).                         |
 | additionalText | string          | Yes | Yes | Additional information of the notification.|
 | briefText      | string          | Yes | Yes | Brief text of the notification.|
 | longTitle      | string          | Yes | Yes | Title of the notification in the expanded state.                |
@@ -1060,7 +1061,7 @@ Describes the picture-attached notification.
 | Name          | Type          | Readable| Writable| Description                            |
 | -------------- | -------------- | ---- | --- | -------------------------------- |
 | title          | string         | Yes | Yes | Notification title.                        |
-| text           | string         | Yes | Yes | Notification content.                        |
+| text           | string         | Yes  | Yes  | [Notification content](../../notification/notification-glossary.md#notification-content).                         |
 | additionalText | string         | Yes | Yes | Additional information of the notification.|
 | briefText      | string         | Yes | Yes | Brief text of the notification.|
 | expandedTitle  | string         | Yes | Yes | Title of the notification in the expanded state.                |
@@ -1075,8 +1076,8 @@ Describes the notification content.
 
 | Name       | Type                                                        | Readable| Writable| Description              |
 | ----------- | ------------------------------------------------------------ | ---- | --- | ------------------ |
-| contentType | [notification.ContentType](#contenttype)                                  | Yes | Yes | Notification content type.      |
-| normal      | [NotificationBasicContent](#notificationbasiccontent)        | Yes | Yes | Normal text.  |
+| contentType | [notification.ContentType](#contenttype)                                  | Yes  | Yes  | [Notification content type](../../notification/notification-glossary.md#content-type).       |
+| normal      | [NotificationBasicContent](#notificationbasiccontent)        | Yes  | Yes  | Basic type [notification content](../../notification/notification-glossary.md#notification-content).   |
 | longText    | [NotificationLongTextContent](#notificationlongtextcontent)  | Yes | Yes | Long text.|
 | multiLine   | [NotificationMultiLineContent](#notificationmultilinecontent) | Yes | Yes | Multi-line text.  |
 | picture     | [NotificationPictureContent](#notificationpicturecontent)    | Yes | Yes | Picture-attached.  |
@@ -1089,7 +1090,7 @@ Describes the notification request.
 
 | Name                 | Type                                         | Readable| Writable| Description                      |
 | --------------------- | --------------------------------------------- | ---- | --- | -------------------------- |
-| content               | [NotificationContent](#notificationcontent)   | Yes | Yes | Notification content.                  |
+| content               | [NotificationContent](#notificationcontent)   | Yes  | Yes  | [Notification content](../../notification/notification-glossary.md#notification-content).                   |
 | id                    | number                                        | Yes | Yes | Notification ID.                    |
 | slotType              | [notification.SlotType](#slottype)                         | Yes | Yes | Slot type.                  |
 | isOngoing             | boolean                                       | Yes | Yes | Whether the notification is an ongoing notification.            |
@@ -1106,9 +1107,9 @@ Describes the notification request.
 | isCountDown           | boolean                                       | Yes | Yes | Whether to display the countdown time.        |
 | isFloatingIcon        | boolean                                       | Yes | Yes | Whether the notification is displayed as a floating icon in the status bar.        |
 | label                 | string                                        | Yes | Yes | Notification label.                  |
-| badgeIconStyle        | number                                        | Yes | Yes | Notification badge type.              |
+| badgeIconStyle        | number                                        | Yes  | Yes  | [Notification badge](../../notification/notification-glossary.md#notification-badge) type.               |
 | showDeliveryTime      | boolean                                       | Yes | Yes | Whether to display the time when the notification is delivered.          |
-| actionButtons         | Array\<[NotificationActionButton](#notificationactionbutton)\>             | Yes | Yes | Buttons in the notification. Up to two buttons are allowed.    |
+| actionButtons         | Array\<[NotificationActionButton](#notificationactionbutton)\>             | Yes  | Yes  | [Notification button](../../notification/notification-glossary.md#notification-button), with a maximum of two buttons.     |
 | smallIcon             | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes | Yes | Small notification icon. This field is optional, and the icon size cannot exceed 30 KB.|
 | largeIcon             | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes | Yes | Large notification icon. This field is optional, and the icon size cannot exceed 30 KB.|
 | creatorBundleName     | string                                        | Yes | No | Name of the bundle that creates the notification.            |
@@ -1116,10 +1117,10 @@ Describes the notification request.
 | creatorPid            | number                                        | Yes | No | PID used for creating the notification.             |
 | creatorUserId<sup>8+</sup>| number                                    | Yes | No | ID of the user who creates the notification.          |
 | hashCode              | string                                        | Yes | No | Unique ID of the notification.              |
-| groupName<sup>8+</sup>| string                                        | Yes | Yes | Notification group name.                |
+| groupName<sup>8+</sup>| string                                        | Yes  | Yes  | [Group notification](../../notification/notification-glossary.md#group-notification) name.                 |
 | template<sup>8+</sup> | [NotificationTemplate](#notificationtemplate8) | Yes | Yes | Notification template.                  |
-| distributedOption<sup>8+</sup>   | [DistributedOptions](#distributedoptions8)                 | Yes | Yes | Distributed notification options.         |
-| notificationFlags<sup>8+</sup> | [NotificationFlags](./js-apis-inner-notification-notificationFlags.md)                    | Yes | No | Notification flags.         |
+| distributedOption<sup>8+</sup>   | [DistributedOptions](#distributedoptions8)                 | Yes  | Yes  | Options of the [distributed notification](../../notification/notification-glossary.md#distributed-notification).          |
+| notificationFlags<sup>8+</sup> | [NotificationFlags](js-apis-inner-notification-notificationFlags.md)                    | Yes  | No  | Notification flags.          |
 | removalWantAgent<sup>9+</sup> | [WantAgent](../apis-ability-kit/js-apis-wantAgent.md) | Yes | Yes | **WantAgent** instance to which the notification will be redirected when it is removed.         |
 | badgeNumber<sup>9+</sup> | number                    | Yes | Yes | Number of notifications displayed on the application icon.         |
 
@@ -1131,7 +1132,7 @@ Describes distributed notifications options.
 
 | Name                  | Type           | Readable| Writable| Description                              |
 | ---------------------- | -------------- | ---- | ---- | ---------------------------------- |
-| isDistributed          | boolean        | Yes  | Yes  | Whether the notification is a distributed notification.                 |
+| isDistributed          | boolean        | Yes   | Yes   | Whether it is a [distributed notification](../../notification/notification-glossary.md#distributed-notification).                  |
 | supportDisplayDevices  | Array\<string> | Yes  | Yes  | List of the devices to which the notification can be synchronized.        |
 | supportOperateDevices  | Array\<string> | Yes  | Yes  | List of the devices on which the notification can be opened.             |
 
@@ -1145,10 +1146,10 @@ Describes the notification slot.
 | Name                | Type                 | Readable| Writable| Description                    |
 | -------------------- | --------------------- | ---- | --- |------------------------|
 | type                 | [notification.SlotType](#slottype) | Yes | Yes | Slot type.                 |
-| level                | [notification.SlotLevel](#slotlevel)                | Yes | Yes | Notification level. If this parameter is not set, the default value is used based on the notification slot type.|
+| level                | [notification.SlotLevel](#slotlevel)                | Yes  | Yes  | Notification level. If not set, the default value is determined by the type of the [notification slot](../../notification/notification-glossary.md#notification-slot). |
 | desc                 | string                | Yes | Yes | Notification slot description.             |
 | badgeFlag            | boolean               | Yes | Yes | Whether to display the badge.               |
-| bypassDnd            | boolean               | Yes | Yes | Whether to bypass DND mode in the system.      |
+| bypassDnd            | boolean               | Yes  | Yes  | Whether to bypass [Do Not Disturb mode](../../notification/notification-glossary.md#do-not-disturb-mode) in the system.       |
 | lockscreenVisibility | number                | Yes | Yes | Mode for displaying the notification on the lock screen.        |
 | vibrationEnabled     | boolean               | Yes | Yes | Whether vibration is enabled for the notification.                |
 | sound                | string                | Yes | Yes | Notification alert tone.                |

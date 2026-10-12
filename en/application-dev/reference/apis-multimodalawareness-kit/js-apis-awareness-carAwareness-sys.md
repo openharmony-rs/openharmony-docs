@@ -7,9 +7,9 @@
 <!--Adviser: @hu-zhiqiong-->
 <!-- md-trans-meta sourceCommit=561a48f0279b682322ad16aa122a3161b679e716 translatedAt=2026-09-14T01:43:01.196Z pushedAt=2026-09-14T10:03:33.568Z -->
 
-This module provides system-level car awareness capabilities, including pointing recognition, body gesture recognition, and car state awareness.
+This module provides system-level car awareness capabilities, including spatial point, spatial motion, and car status awareness.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 > **NOTE**
 > 
@@ -25,7 +25,7 @@ import { carAwareness } from '@kit.MultimodalAwarenessKit';
 
 Enumerates the capability types supported by car awareness.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -33,20 +33,22 @@ Enumerates the capability types supported by car awareness.
 
 | Name | Value | Description |
 | ---- | ---- | ---- |
-| SPATIAL_MOTION | 'SpatialMotion' | Air gesture awareness capability. It supports recognition of the user's air gestures for operating the screen. |
-| SPATIAL_POINT | 'SpatialPoint' | Pointing recognition capability. It supports recognition of the in-car components pointed to by the user.<br>**System API:** This enum member is a system API. |
-| SPATIAL_GESTURE | 'SpatialGesture' | Body gesture awareness capability. It supports recognition of the user's specific posture gestures.<br>**System API:** This enum member is a system API. |
-| REALTIME_WEATHER | 'RealTimeWeather' | Real-time weather awareness capability. It supports recognition of the weather conditions in the vehicle's current environment. |
-| REFUELING | 'Refueling' | Refueling recognition capability. It supports recognition of the start and end states of car refueling. |
-| CAR_STATUS | 'CarStatus' | Car status awareness capability. It supports obtaining vehicle-related status information.<br>**System API:** This enum member is a system API. |
-| CAR_CFG | 'CarCfg' | Car configuration awareness capability. It supports obtaining car configuration-related information.<br>**System API:** This enum member is a system API. |
-| HABIT_RECOMMENDATION | 'HabitRecommendation' | Habit recommendation awareness capability. It supports generating recommendations based on user habits.<br>**System API:** This enum member is a system API. |
+| SPATIAL_MOTION | 'SpatialMotion' | Spatial motion capability, which supports recognizing the user's air gestures for operating the screen. |
+| SPATIAL_POINT | 'SpatialPoint' | Spatial point capability, which supports recognizing the in-car components pointed to by the user.<br>**System API:** This enum member is a system API. |
+| SPATIAL_GESTURE | 'SpatialGesture' | Spatial gesture capability, which supports recognizing the user's specific postures and actions.<br>**System API:** This enum member is a system API. |
+| REALTIME_WEATHER | 'RealTimeWeather' | Real-time weather capability, which supports recognizing the weather conditions of the environment where the car is currently located. |
+| REFUELING | 'Refueling' | Refueling capability, which supports recognizing the start and end states of car refueling. |
+| CAR_STATUS | 'CarStatus' | Car status capability, which supports obtaining vehicle-related status information.<br>**System API:** This enum member is a system API. |
+| HABIT_RECOMMENDATION | 'HabitRecommendation' | Habit recommendation capability, which supports generating recommendations based on user habits.<br>**System API:** This enum member is a system API. |
+| SPATIAL_DRAW | 'SpatialDraw' | Spatial draw capability, which supports identifying the users' air gestures during mid-air drawing.<br>**System API:** This enum member is a system API. |
+| GESTURE_CLOSEDOOR | 'GestureCloseDoor' | Gesture close door capability, which supports recognizing user's hand action for closing the doors.<br>**System API:** This enum member is a system API. |
+| OCCUPANT_SENSE | 'OccupantSense' | Occupant sense capability, which supports recognizing position and classification of in-car occupants.<br>**System API:** This enum member is a system API. |
 
 ## CarAwarenessInfo
 
-Defines the general result information API for car awareness.
+Interface for general car awareness response info.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -56,15 +58,15 @@ Defines the general result information API for car awareness.
 
 | Name | Type | Read Only | Optional | Description |
 | ---- | ---- | ---- | ---- | ---- |
-| timestamp | number | Yes | No | Timestamp of the recognition result.<br>Unit: ms. |
-| capability | [Capability](#capability) | Yes | No | Corresponding awareness capability type. |
-| awarenessEvent | Record\<string, Object\> | Yes | Yes | Key-value pair of the awareness result data. Different capabilities return different fields.<br>- **SPATIAL_POINT**: contains fields such as **object**, **zone**, **value**, and **errorCode**<br>- **SPATIAL_GESTURE**: contains the **action** field |
+| timestamp | number | No | No | Timestamp of the recognition result.<br>Unit: ms. |
+| capability | [Capability](#capability) | No | No | Indicates specific awareness capability type. |
+| awarenessEvent | Record\<string, Object\> | No | Yes | Key-value pair of the awareness result data. Different capabilities return different fields. |
 
 ## CarAwarenessOptions
 
-Defines the subscription configuration options API for car awareness.
+Interface for car awareness subscription options.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -74,15 +76,15 @@ Defines the subscription configuration options API for car awareness.
 
 | Name | Type | Read Only | Optional | Description |
 | ---- | ---- | ---- | ---- | ---- |
-| parameters | Record\<string, Object\> | Yes | Yes | Custom awareness parameter key-value pairs, used to pass in configuration items for a specific capability. |
+| parameters | Record\<string, Object\> | No | Yes | Custom awareness parameter key-value pairs, used to pass in configuration items for a specific capability. |
 
 ## carAwareness.onCarAwareness
 
 onCarAwareness(capability: Capability, callback: Callback<CarAwarenessInfo[]>, options?: CarAwarenessOptions): void
 
-Enables car awareness and subscribes to car awareness results. If the device does not support the capability, error code 34000002 is thrown. You can call **getAllCapabilityList** to query the capabilities available on the device. The data is returned asynchronously through the callback.
+Subscribes to car awareness results. If the device does not support the capability, error code 34000002 is thrown. You can obtain the supported capabilities by calling the getAllCapabilityList method. The data is returned asynchronously through the callback.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -94,8 +96,8 @@ Enables car awareness and subscribes to car awareness results. If the device doe
 
 | Name | Type | Mandatory | Description |
 | ---- | ---- | ---- | ---- |
-| capability | [Capability](#capability) | Yes | Specifies the type of the awareness capability to subscribe to.<br/>**Note:** This parameter cannot be `SpatialMotion`, `RealTimeWeather`, or `Refueling`; otherwise, error code 34000002 is thrown. |
-| callback | Callback\<CarAwarenessInfo[]\> | Yes | Callback used to return the array of awareness result data. |
+| capability | [Capability](#capability) | Yes | Specifies the type of the awareness capability to subscribe to. |
+| callback | Callback\<CarAwarenessInfo[]\> | Yes | Callback used to return the array of awareness response data. |
 | options | [CarAwarenessOptions](#carawarenessoptions) | No | Optional configuration items of the awareness capability. |
 
 **Error codes**
@@ -130,11 +132,11 @@ try {
 
 ## carAwareness.offCarAwareness
 
-offCarAwareness(capability: Capability, callback: Callback<CarAwarenessInfo[]>, options?: CarAwarenessOptions): void
+offCarAwareness(capability: Capability, callback?: Callback<CarAwarenessInfo[]>, options?: CarAwarenessOptions): void
 
-Unsubscribes from the car awareness of the specified subscription type.
+Unsubscribes from the specific car awareness capability result.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -146,9 +148,9 @@ Unsubscribes from the car awareness of the specified subscription type.
 
 | Name | Type | Mandatory | Description |
 | ---- | ---- | ---- | ---- |
-| capability | [Capability](#capability) | Yes | Awareness capability type to unsubscribe from. |
-| callback | Callback\<CarAwarenessInfo[]\> | No | Callback for the car awareness event. If a callback is passed in, the corresponding listener is unregistered; otherwise, all listeners are unregistered. |
-| options | [CarAwarenessOptions](#carawarenessoptions) | No | Optional configuration of the awareness capability. |
+| capability | [Capability](#capability) | Yes | Specifies the type of the awareness capability to unsubscribe. |
+| callback | Callback\<CarAwarenessInfo[]\> | No | Callback used to return specific car awareness event. If a specific callback is passed in, only the corresponding listener is unregistered; otherwise, all listeners are unregistered. |
+| options | [CarAwarenessOptions](#carawarenessoptions) | No | Optional configuration items of the awareness capability. |
 
 **Error Codes**
 
@@ -188,7 +190,7 @@ updateSpatialActionEnableStatus(event: number): void
 
 Updates the start/stop status of spatial action awareness.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -239,9 +241,9 @@ try {
 
 updateSpatialActionZone(zone: number): void
 
-Updates the sound zone information for spatial action awareness.
+Updates the voice zone information for spatial action awareness.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -255,7 +257,7 @@ Updates the sound zone information for spatial action awareness.
 
 | Name | Type | Mandatory | Description |
 | ---- | ---- | ---- | ---- |
-| zone | number | Yes | Sound zone ID.<br>**3**: rear left<br>**4**: rear right<br>The value must be an integer. |
+| zone | number | Yes | Voice zone ID.<br>**3**: rear left<br>**4**: rear right<br>The value must be an integer. |
 
 **Error codes**
 
@@ -294,7 +296,7 @@ getCarAwareness(capability: Capability, options?: CarAwarenessOptions): Promise<
 
 Obtains the car awareness result of the specified type once.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -306,14 +308,14 @@ Obtains the car awareness result of the specified type once.
 
 | Name | Type | Mandatory | Description |
 | ---- | ---- | ---- | ---- |
-| capability | [Capability](#capability) | Yes | Type of the awareness capability to obtain. |
-| options | [CarAwarenessOptions](#carawarenessoptions) | No | Optional configuration of the awareness capability. |
+| capability | [Capability](#capability) | Yes | Specifies the type of the awareness capability result to obtain. |
+| options | [CarAwarenessOptions](#carawarenessoptions) | No | Optional configuration items of the awareness capability. |
 
 **Returns**
 
 | Type | Description |
 | ---- | ---- |
-| Promise\<CarAwarenessInfo[]\> | Promise object that returns an array of awareness result data. |
+| Promise\<CarAwarenessInfo[]\> | Promise used to return an array of awareness result data. |
 
 **Error codes**
 

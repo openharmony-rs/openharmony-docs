@@ -122,14 +122,8 @@ target_link_libraries(sample PUBLIC libnative_drm.so)
     if (info.initDataLen <= sizeof(info.initData)) {
     memcpy(info.initData, initData, info.initDataLen);
     }
-    if (sizeof("optionalDataName") <= sizeof(info.optionName[0])) {
-    memcpy(info.optionName[0], "optionalDataName", sizeof("optionalDataName"));
-    }
-
-    if (sizeof("optionalDataValue") <= sizeof(info.optionData[0])) {
-    memcpy(info.optionData[0], "optionalDataValue", sizeof("optionalDataValue"));
-    }
-    info.optionsCount = 1;
+    // 若DRM解决方案需要可选数据，请按实际设置optionName、optionData，并令optionsCount为实际选项数量。
+    info.optionsCount = 0;
     ret = OH_MediaKeySession_GenerateMediaKeyRequest(mediaKeySession, &info, &mediaKeyRequest);
     if (ret != DRM_ERR_OK) {
         printf("OH_MediaKeySession_GenerateMediaKeyRequest failed.");

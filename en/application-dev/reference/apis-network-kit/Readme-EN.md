@@ -5,12 +5,13 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=ef2b3328db1b7fa83791ef0397254c5c61474766 translatedAt=2026-09-23T02:50:37.691Z pushedAt=2026-09-24T06:00:14.232Z -->
 
 - ArkTS APIs<!--network-api-arkts-->
   - [@ohos.net.connection (Network Connection Management)](js-apis-net-connection.md)
   - [@ohos.net.ethernet (Ethernet Connection Management)](js-apis-net-ethernet.md)
   - [@ohos.net.http (Data Request)](js-apis-http.md)
-  - [@ohos.net.mdns (mDNS Management)](js-apis-net-mdns.md)
+  - [@ohos.net.mdns (MDNS Management)](js-apis-net-mdns.md)
   - [@ohos.net.policy (Network Policy Management)](js-apis-net-policy.md)
   - [@ohos.net.socket (Socket Connection)](js-apis-socket.md)
   - [@ohos.net.statistics (Traffic Management)](js-apis-net-statistics.md)
@@ -99,9 +100,19 @@
     - [OH_TrafficFilter_PortMulti](capi-trafficfilter-oh-trafficfilter-portmulti.md)
     - [OH_TrafficFilter_PortMatch](capi-trafficfilter-oh-trafficfilter-portmatch.md)
     - [OH_TrafficFilter_ConnectionInfo](capi-trafficfilter-oh-trafficfilter-connectioninfo.md)
+    - [OH_TrafficFilter_Config](capi-trafficfilter-oh-trafficfilter-config.md)
+    - [OH_TrafficFilter_ConntrackMatch](capi-trafficfilter-oh-trafficfilter-conntrackmatch.md)
+    - [OH_TrafficFilter_FilterRule](capi-trafficfilter-oh-trafficfilter-filterrule.md)
+    - [OH_TrafficFilter_MACMatch](capi-trafficfilter-oh-trafficfilter-macmatch.md)
+    - [OH_TrafficFilter_PacketCallback](capi-trafficfilter-oh-trafficfilter-packetcallback.md)
+    - [OH_TrafficFilter_PacketController](capi-trafficfilter-oh-trafficfilter-packetcontroller.md)
+    - [OH_TrafficFilter_PacketCopyMode](capi-trafficfilter-oh-trafficfilter-packetcopymode.md)
+    - [OH_TrafficFilter_PacketDecision](capi-trafficfilter-oh-trafficfilter-packetdecision.md)
+    - [OH_TrafficFilter_PacketDesc](capi-trafficfilter-oh-trafficfilter-packetdesc.md)
     - [OH_TrafficFilter_ProcessInfo](capi-trafficfilter-oh-trafficfilter-processinfo.md)
     - [OH_TrafficFilter_RedirectRule](capi-trafficfilter-oh-trafficfilter-redirectrule.md)
     - [OH_TrafficFilter_Redirector](capi-trafficfilter-oh-trafficfilter-redirector.md)
+    - [OH_TrafficFilter_TCPFlagsMatch](capi-trafficfilter-oh-trafficfilter-tcpflagsmatch.md)
     - [OH_Http_Interceptor_Headers](capi-netstack-http-interceptor-headers.md)
     - [OH_Http_Interceptor_Request](capi-netstack-http-interceptor-request.md)
     - [OH_Http_Interceptor_Response](capi-netstack-http-interceptor-response.md)
@@ -120,10 +131,10 @@
   - [WebSocket Error Codes](errorcode-net-webSocket.md)
   - [Network Connection Management Error Codes](errorcode-net-connection.md)
   - [Ethernet Connection Error Codes](errorcode-net-ethernet.md)
-  - [Extensible Authentication Error Codes](errorcode-net-eap.md)
+  - [Extended Authentication Error Codes](errorcode-net-eap.md)
   - [Network Sharing Error Codes](errorcode-net-sharing.md)
   - [Policy Management Error Codes](errorcode-net-policy.md)
-  - [mDNS Error Codes](errorcode-net-mdns.md)
+  - [MDNS Error Codes](errorcode-net-mdns.md)
   - [Traffic Management Error Codes](errorcode-net-statistics.md)
   - [VPN Error Codes](errorcode-net-vpn.md)
   - [Network Security Error Codes](errorcode-net-networkSecurity.md)

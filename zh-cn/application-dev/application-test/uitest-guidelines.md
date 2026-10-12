@@ -5,7 +5,7 @@
 <!--Owner: @inter515-->
 <!--Designer: @inter515-->
 <!--Tester: @laonie666-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @chen8281-->
 
 ## 概述
 
@@ -617,7 +617,7 @@ export default function abilityTest() {
 |---------------|---------------------------------|---------------------------------|
 | help          | - |  显示UITest工具能够支持的命令信息。            |
 | screenCap       |[-p] [-d]| 截图。<br>各参数代表的含义请参考[获取截图](#获取截图)。 |
-| dumpLayout      |[-p] \<-i \| -a \| -b \| -w \| -m \| -d>| 获取控件树。<br>各参数代表的含义请参考[获取控件树](#获取控件树)。|
+| dumpLayout      |[-p] [-e] \<-i \| -a \| -b \| -w \| -m \| -d>| 获取控件树。<br>各参数代表的含义请参考[获取控件树](#获取控件树)。|
 | uiRecord        | \<record \| read>|录制界面操作。  <br> **record** ：开始录制，将当前界面操作记录到'/data/local/tmp/record.csv'，结束录制操作使用Ctrl+C结束录制。  <br> **read** ：读取并且打印录制数据。<br>各参数代表的含义请参考[录制界面操作](#录制界面操作)。|
 | uiInput       | \<help \| click \| doubleClick \| longClick \| fling \| swipe \| drag \| dircFling \| inputText \| keyEvent \| text>| 注入UI模拟操作。<br>各参数代表的含义请参考[注入UI模拟操作](#注入ui模拟操作)。|
 | --version | - |获取当前UITest工具版本信息。 |
@@ -647,10 +647,15 @@ hdc shell uitest screenCap -p /data/local/tmp/1.png
 | -w | \<windowId\>  | 获取指定ID目标窗口的控件树信息。<br> **说明：**<br>可通过hidumper工具<!--RP11-->[获取应用窗口信息](../dfx/hidumper.md#获取应用窗口信息)<!--RP11End-->，包含应用对应窗口的id。|
 | -m | \<true\|false\> | 指定在获取控件树信息时是否合并窗口信息。true表示合并窗口信息，false表示不合并窗口信息，不设置时默认为true。 |
 | -d | \<displayId\>  | 多屏场景下，获取指定ID屏幕下的控件树。未指定该参数时，默认获取displayId为0的屏幕下的控件树。<br> **说明：**<br> 1. 从API version 20开始支持该命令。<br>2. 可通过hidumper工具<!--RP11-->[获取应用窗口信息](../dfx/hidumper.md#获取应用窗口信息)<!--RP11End-->，包含应用对应窗口的DisplayId。|
+| -e | \<attributeName\> | 扩展输出指定属性数据，多个属性以英文逗号分隔。取值范围：**uniqueId**、**accessibility**。<br>- **uniqueId**：输出控件的唯一标识属性。<br>- **accessibility**：输出控件的无障碍属性数据。<br> **说明：**<br> 1. 从API version 23开始支持该命令。<br>2. accessibility取值从API version 26.2.0开始支持。|
 
 ```bash
 # 指定存储路径和文件名，存放在/data/local/tmp/下。
 hdc shell uitest dumpLayout -p /data/local/tmp/1.json
+# 获取控件树，并输出无障碍属性数据。
+hdc shell uitest dumpLayout -p /data/local/tmp/1.json -e accessibility
+# 获取控件树，并同时输出唯一标识和无障碍属性数据。
+hdc shell uitest dumpLayout -p /data/local/tmp/1.json -e uniqueId,accessibility
 ```
 
 ### 录制界面操作

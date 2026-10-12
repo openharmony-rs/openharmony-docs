@@ -1,11 +1,11 @@
 # Publishing a Text Notification
-
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=4bb0b56d7d67b2ab3ff0955bce487aba3399fade translatedAt=2026-09-29T11:14:06.051Z pushedAt=2026-09-30T09:44:29.256Z -->
 
 You can publish text notifications to send SMS messages, alert messages, and more. There are two types of text notifications: normal text and multi-line text.
 
@@ -18,7 +18,7 @@ You can publish text notifications to send SMS messages, alert messages, and mor
 
 ## Available APIs
 
-The following table describes the APIs for notification publishing. You specify the notification information – content, ID, slot type, and publish time – by setting the [NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1) parameter in the APIs.
+The following table describes the APIs for notification publication. The details of a notification to publish can be specified through the input parameter [NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1), including the [notification content](notification-glossary.md#notification-content), notification ID, notification channel type, and notification publication time.
 
 | Name| Description|
 | -------- | -------- |
@@ -95,4 +95,3 @@ The following table describes the APIs for notification publishing. You specify 
        hilog.info(DOMAIN_NUMBER, TAG, 'Succeeded in publishing notification.');
      });
      ```
-        

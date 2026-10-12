@@ -2,7 +2,7 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -40,7 +40,7 @@ publishAsUser(event: string, userId: number, callback: AsyncCallback\<void>): vo
 
 | 参数名     | 类型                 | 必填 | 说明                               |
 | -------- | -------------------- | ---- | ---------------------------------- |
-| event    | string               | 是   | 表示要发布的公共事件。详见[系统定义的公共事件](./common_event/commonEventManager-definitions-sys.md)。             |
+| event    | string               | 是   | 表示要发布的公共事件。详见[系统定义的公共事件](./common_event/commonEventManager-definitions-sys.md)。字符串长度不超过254字节，超出部分会被截断。 |
 | userId   | number               | 是   | 表示指定接收此公共事件的用户ID。 |
 | callback | AsyncCallback\<void> | 是   | 回调函数。当公共事件发布成功，err为undefined，否则为错误对象。             |
 
@@ -94,7 +94,7 @@ publishAsUser(event: string, userId: number, options: CommonEventPublishData, ca
 
 | 参数名     | 类型                   | 必填 | 说明                   |
 | -------- | ---------------------- | ---- | ---------------------- |
-| event    | string                 | 是   | 表示要发布的公共事件。详见[系统定义的公共事件](./common_event/commonEventManager-definitions-sys.md)。  |
+| event    | string                 | 是   | 表示要发布的公共事件。详见[系统定义的公共事件](./common_event/commonEventManager-definitions-sys.md)。字符串长度不超过254字节，超出部分会被截断。 |
 | userId   | number | 是 | 表示指定接收此公共事件的用户ID。 |
 | options  | [CommonEventPublishData](./js-apis-inner-commonEvent-commonEventPublishData.md) | 是   | 表示发布公共事件的属性。 |
 | callback | AsyncCallback\<void>   | 是   | 回调函数。当公共事件发布成功，err为undefined，否则为错误对象。  |
@@ -156,7 +156,7 @@ removeStickyCommonEvent(event: string, callback: AsyncCallback\<void>): void
 
 | 参数名   | 类型                 | 必填 | 说明                             |
 | -------- | -------------------- | ---- | -------------------------------- |
-| event    | string               | 是   | 表示被移除的粘性公共事件。详见[系统定义的公共事件](./common_event/commonEventManager-definitions-sys.md)。       |
+| event    | string               | 是   | 表示被移除的粘性公共事件。详见[系统定义的公共事件](./common_event/commonEventManager-definitions-sys.md)。字符串长度不超过254字节，超出部分会被截断。 |
 | callback | AsyncCallback\<void> | 是   | 回调函数。当移除粘性公共事件成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
@@ -202,7 +202,7 @@ removeStickyCommonEvent(event: string): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| event  | string | 是   | 表示被移除的粘性公共事件。详见[系统定义的公共事件](./common_event/commonEventManager-definitions.md)。 |
+| event  | string | 是   | 表示被移除的粘性公共事件。详见[系统定义的公共事件](./common_event/commonEventManager-definitions.md)。字符串长度不超过254字节，超出部分会被截断。 |
 
 **返回值：**
 

@@ -50,10 +50,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16500050 | IPC connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
-| 16501002 | The number of forms exceeds the maximum allowed. <br/>**Since:** 26.1.0 |
-| 16501008 | Waiting for the form addition to the desktop timed out. <br/>**Since:** 26.1.0 |
-| 16501017 | There is no space to publish form. <br/>**Since:** 26.1.0 |
-| 16501018 | This form does not support publishing. <br/>**Since:** 26.1.0 |
+| 16501002 | The number of forms exceeds the maximum allowed. <br/>**Since:** 26.0.1 |
+| 16501008 | Waiting for the form addition to the desktop timed out. <br/>**Since:** 26.0.1 |
+| 16501017 | There is no space to publish form. <br/>**Since:** 26.0.1 |
+| 16501018 | This form does not support publishing. <br/>**Since:** 26.0.1 |
 
 **Example**
 
@@ -116,10 +116,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16500050 | IPC connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
-| 16501002 | The number of forms exceeds the maximum allowed. <br/>**Since:** 26.1.0 |
-| 16501008 | Waiting for the form addition to the desktop timed out. <br/>**Since:** 26.1.0 |
-| 16501017 | There is no space to publish form. <br/>**Since:** 26.1.0 |
-| 16501018 | This form does not support publishing. <br/>**Since:** 26.1.0 |
+| 16501002 | The number of forms exceeds the maximum allowed. <br/>**Since:** 26.0.1 |
+| 16501008 | Waiting for the form addition to the desktop timed out. <br/>**Since:** 26.0.1 |
+| 16501017 | There is no space to publish form. <br/>**Since:** 26.0.1 |
+| 16501018 | This form does not support publishing. <br/>**Since:** 26.0.1 |
 
 **Example**
 
@@ -183,10 +183,10 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16500050 | IPC connection error. |
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000 | An internal functional error occurred. |
-| 16501002 | The number of forms exceeds the maximum allowed. <br/>**Since:** 26.1.0 |
-| 16501008 | Waiting for the form addition to the desktop timed out. <br/>**Since:** 26.1.0 |
-| 16501017 | There is no space to publish form. <br/>**Since:** 26.1.0 |
-| 16501018 | This form does not support publishing. <br/>**Since:** 26.1.0 |
+| 16501002 | The number of forms exceeds the maximum allowed. <br/>**Since:** 26.0.1 |
+| 16501008 | Waiting for the form addition to the desktop timed out. <br/>**Since:** 26.0.1 |
+| 16501017 | There is no space to publish form. <br/>**Since:** 26.0.1 |
+| 16501018 | This form does not support publishing. <br/>**Since:** 26.0.1 |
 
 **Example**
 

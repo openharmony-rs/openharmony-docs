@@ -10,8 +10,8 @@
 
 ## 开发前检查
 
-1. 请先确认设备支持星闪功能。确认方法：进入"设置 > 星闪和蓝牙"界面（不同产品或系统版本可能为"设置 > 多设备协同"），确认"星闪"选项存在。若选项不存在，则设备不支持星闪功能。
-2. 请参考["应用开发准备"](https://developer.huawei.com/consumer/cn/develop-novice-guide/)完成开发者注册、创建应用、安装开发环境、配置签名信息等基本准备工作，再继续进行以下开发活动。
+1. 请先确认设备支持星闪功能。确认方法：进入“设置 > 星闪和蓝牙”界面（不同产品或系统版本可能为“设置 > 多设备协同”），确认“星闪”选项存在。若选项不存在，则设备不支持星闪功能。
+2. 请参考[“应用开发准备”](https://developer.huawei.com/consumer/cn/develop-novice-guide/)完成开发者注册、创建应用、安装开发环境、配置签名信息等基本准备工作，再继续进行以下开发活动。
 
 ## 申请星闪权限
 
@@ -22,7 +22,7 @@
 
 > **说明：**
 >
-> - 权限申请建议在Ability创建时一次性完成，并检查授权结果（authResults）；用户拒绝后，后续星闪接口调用将返回[201 API权限校验失败](../../reference/errorcode-universal.md#201-api权限校验失败)错误。
+> - 权限申请建议在Ability创建时一次性完成，并检查授权结果（authResults）；用户拒绝后，调用需要ohos.permission.ACCESS_NEARLINK权限的星闪接口将返回[201 API权限校验失败](../../reference/errorcode-universal.md#201-api权限校验失败)错误。
 > - 事件订阅类接口的权限行为参见[星闪常见问题 > 事件订阅类接口的权限要求问题](nearlink-faq-guide.md#事件订阅类接口的权限要求问题)：无权限订阅不会报错，但收不到事件上报。
 
 ## 查询是否支持星闪
@@ -65,7 +65,7 @@
 
 ## 查询星闪开关状态
 
-使用星闪前需要在设置应用里手动打开星闪。可以通过主动查询或订阅通知的方式获取星闪状态，星闪状态变化为STATE_ON时可以进行相应的业务流程。
+使用星闪前需要在设置应用里手动打开星闪。可以通过主动查询或订阅通知的方式获取星闪开关状态，星闪开关状态变化为STATE_ON时可以进行相应的业务流程。
 
 ### 接口说明
 
@@ -75,7 +75,7 @@
 | -------- | -------- |
 | getState(): NearlinkState | 主动查询星闪开关状态。 |
 | onStateChange(callback: Callback&lt;NearlinkState&gt;): void | 订阅星闪开关状态变化事件。使用callback异步回调。 |
-| offStateChange(callback?: Callback&lt;NearlinkState&gt;): void | 取消订阅星闪开关状态变化事件。 |
+| offStateChange(callback?: Callback&lt;NearlinkState&gt;): void | 取消订阅星闪开关状态变化事件。使用callback异步回调。 |
 
 ### 开发步骤
 
@@ -89,7 +89,7 @@
     import { manager } from '@kit.ConnectivityKit';
     ```
 
-2. 发起星闪状态查询。
+2. 发起星闪开关状态查询。
 
     <!-- @[manager_getstate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ConnectivityKit/NearLink/entry/src/main/ets/nearlink/pages/ManagerPage.ets) -->
     

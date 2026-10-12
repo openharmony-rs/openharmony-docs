@@ -52,7 +52,7 @@ Creates an [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md
 
 **Since**: 8
 
-**Deprecated since:** 26.1.0
+**Deprecated since:** 26.0.1
 
 **Substitute API:** [OH_Drawing_CreateSharedFontCollection()](#oh_drawing_createsharedfontcollection)
 

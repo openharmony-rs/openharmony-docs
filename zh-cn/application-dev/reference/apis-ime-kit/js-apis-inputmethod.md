@@ -284,6 +284,10 @@ switchInputMethod(target: InputMethodProperty, callback: AsyncCallback&lt;boolea
 
 切换输入法，使用callback异步回调。
 
+> **说明：**
+>
+> 该接口在[评估管理](../apis-assessment-kit/js-apis-customization-assessment.md)开启时无法切换到其他输入法应用。
+
 含义/功能：将当前输入法切换为指定的目标输入法。
 
 使用场景：当前输入法应用需要切换到另一个输入法时使用（如用户在输入法设置中选择了新的输入法）。
@@ -341,6 +345,10 @@ inputMethod.switchInputMethod(currentIme, (err: BusinessError, result: boolean) 
 switchInputMethod(target: InputMethodProperty): Promise&lt;boolean&gt;
 
 切换输入法，使用promise异步回调。
+
+> **说明：**
+>
+> 该接口在[评估管理](../apis-assessment-kit/js-apis-customization-assessment.md)开启时无法切换到其他输入法应用。
 
 含义/功能：将当前输入法切换为指定的目标输入法。
 

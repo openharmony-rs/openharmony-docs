@@ -125,17 +125,16 @@ let handle: number;
 let plaintext = '123456';
 let signature: Uint8Array;
 
-function StringToUint8Array(str: string): Uint8Array {
+function stringToUint8Array(str: string): Uint8Array {
   return new util.TextEncoder().encodeInto(str);
 }
 
-function Uint8ArrayToString(data: Uint8Array) {
-  let s = '';
-  for (let i = 0; i < data.length; i++) s += String.fromCharCode(data[i]);
-  return s;
+interface HuksProperty {
+    tag: huks.HuksTag;
+    value: number;
 }
 
-function getRsaSignProperties() {
+function getRsaSignProperties(): HuksProperty[] {
   return [
     { tag: huks.HuksTag.HUKS_TAG_ALGORITHM, value: huks.HuksKeyAlg.HUKS_ALG_RSA },
     { tag: huks.HuksTag.HUKS_TAG_KEY_SIZE, value: huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048 },
@@ -146,7 +145,7 @@ function getRsaSignProperties() {
   ];
 }
 
-function getRsaVerifyProperties() {
+function getRsaVerifyProperties(): HuksProperty[] {
   return [
     { tag: huks.HuksTag.HUKS_TAG_ALGORITHM, value: huks.HuksKeyAlg.HUKS_ALG_RSA },
     { tag: huks.HuksTag.HUKS_TAG_KEY_SIZE, value: huks.HuksKeySize.HUKS_RSA_KEY_SIZE_2048 },
@@ -172,7 +171,7 @@ async function sign(keyAlias: string) {
   const options: huks.HuksOptions = { properties: getRsaSignProperties() };
   await initSession(keyAlias, options);
   if (handle !== undefined) {
-    options.inData = StringToUint8Array(plaintext);
+    options.inData = stringToUint8Array(plaintext);
     await finishSession(options);
   }
 }
@@ -181,7 +180,7 @@ async function verify(keyAlias: string) {
   const options: huks.HuksOptions = { properties: getRsaVerifyProperties() };
   await initSession(keyAlias, options);
   if (handle !== undefined) {
-    options.inData = StringToUint8Array(plaintext);
+    options.inData = stringToUint8Array(plaintext);
     await huks.updateSession(handle, options);
     options.inData = signature;
     await huks.finishSession(handle, options);

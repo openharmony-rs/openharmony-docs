@@ -16,7 +16,7 @@ typedef struct OH_AbilityRuntime_ChildProcessInfos *OH_AbilityRuntime_ChildProce
 
 Handle to the collection of child process information.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Related module:** [ChildProcess](capi-childprocess.md)
 

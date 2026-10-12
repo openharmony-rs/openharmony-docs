@@ -543,7 +543,7 @@ Obtains the information about all child processes of the current application. Th
 - [childProcessManager.startArkChildProcess](#childprocessmanagerstartarkchildprocess12)
 - [childProcessManager.startNativeChildProcess](#childprocessmanagerstartnativechildprocess13)
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

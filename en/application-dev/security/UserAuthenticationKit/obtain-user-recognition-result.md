@@ -8,7 +8,7 @@
 <!--Adviser: @zengyawen-->
 <!-- md-trans-meta sourceCommit=b8934297006844e2d00705613379f4bacf074b5e translatedAt=2026-09-20T11:04:28.768Z pushedAt=2026-09-20T11:12:03.482Z -->
 
-Starting from API version 26.1.0, the system supports user recognition. The system continuously recognizes the current user. Applications can query the latest recognition result or subscribe to recognition result changes to determine whether the current user matches the logged-in system user.
+Starting from API version 26.0.1, the system supports user recognition. The system continuously recognizes the current user. Applications can query the latest recognition result or subscribe to recognition result changes to determine whether the current user matches the logged-in system user.
 
 ## Interface Description
 

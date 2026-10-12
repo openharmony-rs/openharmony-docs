@@ -151,6 +151,7 @@ Web同层渲染的配置。用于配置Web同层渲染选项，包括支持固�
 | -------------- | ------- | ---- |  ---- |---------------------------------------- |
 | supportDefaultIntrinsicSize | boolean | 否    | 是 | 设置同层渲染元素是否支持固定大小 300 * 150。<br>当H5侧CSS设置了大小时，同层渲染元素大小为CSS大小，否则为固定大小。<br>为true时，固定大小为 300 * 150。<br>为false时，若H5侧CSS未设置大小，则同层渲染元素不渲染。<br>默认值：false<br>单位：px |
 | supportCssDisplayChange<sup>20+</sup> | boolean | 否    | 是 | 设置同层渲染可见性接口是否支持显示属性。 <br>同层渲染可见性接口默认支持同层标签相对于视口的可见状态。 <br>设置为true时，支持显示CSS属性，包括visibility、display和宽高。 <br>设置为false时，不支持显示CSS属性，仅支持同层标签相对于视口的可见性。 |
+| supportTransformRotateAndSkew | boolean | 否    | 是 | 设置同层渲染是否支持CSS transform中的rotate和skew属性。<br>CSS的rotate属性用于将元素围绕定点旋转，skew属性用于倾斜元素。<br>设置为true时，支持CSS transform中的rotate和skew属性。<br>设置为false时，不支持CSS transform中的rotate和skew属性。<br>默认值：false。<br>**起始版本：** 26.2.0 <br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## OnAlertEvent<sup>12+</sup>
 

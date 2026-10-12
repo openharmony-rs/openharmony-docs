@@ -736,7 +736,7 @@ Obtains the UIAbility child process information of the current application, incl
 
 After the obtained `infos` is used, call [OH_AbilityRuntime_ReleaseChildProcessInfos](capi-child-process-info-h.md#oh_abilityruntime_releasechildprocessinfos) to release it to avoid memory leaks.
 
-**Since:** 26.1.0
+**Since:** 26.0.1
 
 **Parameters**
 

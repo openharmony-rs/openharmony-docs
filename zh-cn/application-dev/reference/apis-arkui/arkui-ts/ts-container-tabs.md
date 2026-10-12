@@ -771,6 +771,26 @@ sidebarSelectedBoardColor(value: Optional\<ResourceColor\>)
 | ------ | -------- | ---- | ---------- |
 | value | Optional<[ResourceColor](ts-types.md#resourcecolor)> | 是 | Tabs侧边栏页签的背板颜色。<br/>设置undefined时，恢复系统默认颜色。 |
 
+### sidebarDisplayStyle
+
+sidebarDisplayStyle(style: Optional\<TabsSidebarDisplayStyle\>)
+
+设置Tabs的侧边栏展示模式。未通过该接口设置时，展示模式默认为TabsSidebarDisplayStyle.EMBED。
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| style | Optional<[TabsSidebarDisplayStyle](#tabssidebardisplaystyle)> | 是 | 侧边栏展示模式。<br/>设置undefined时，恢复默认展示模式。 |
+
 ## DividerStyle<sup>10+</sup>对象说明
 
 分割线样式对象。
@@ -1072,6 +1092,23 @@ Tabs组件和父组件的嵌套滚动模式枚举。
 | ------ | -- | ------  |
 | BOTTOM_TABBAR | 0 | 底部页签栏显示模式。可以通过[vertical](#vertical)和[barPosition](#barposition9)属性调整页签栏实际显示位置。 |
 | SIDEBAR | 1 | 侧边页签栏显示模式。可以通过[sidebarPosition](#sidebarposition)属性调整页签栏实际显示位置。 |
+
+## TabsSidebarDisplayStyle
+
+侧边栏展示模式枚举。
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称 | 值 | 说明 |
+| ---- | -- | ---- |
+| EMBED | 0 | 嵌入模式。侧边栏嵌入到容器内，与内容区并列显示。显示侧边栏时内容区宽度相应减少，侧边栏与内容区共同占满容器宽度。适用于需要同时展示侧边栏和内容区的场景。 |
+| DISPLACE | 1 | 推挤模式。内容区宽度保持不变，显示侧边栏时将内容区部分区域挤出容器外。适用于需要保持内容区宽度不变的场景。 |
 
 ## 事件
 
@@ -3911,3 +3948,71 @@ struct TabsSidebarExample {
 ```
 
 ![tabsTabBarStyle](figures/tabsTabBarStyle.gif)
+
+### 示例26（设置侧边栏展示模式）
+
+本示例展示了如何通过[sidebarDisplayStyle](#sidebardisplaystyle)接口设置Tabs的侧边栏展示模式，切换嵌入模式（EMBED）和推挤模式（DISPLACE）。
+
+从API版本26.2.0开始，新增sidebarDisplayStyle接口。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct TabsSideBarDemo {
+  @State isDisplace: boolean = false;
+
+  build() {
+    Column() {
+      // sidebarDisplayStyle切换
+      Row({ space: 12 }) {
+        Text('EMBED')
+          .fontSize(14)
+          .fontColor('#FFFFFF')
+          .backgroundColor(!this.isDisplace ? '#409EFF' : '#C0C4CC')
+          .padding({ top: 6, bottom: 6, left: 16, right: 16 })
+          .borderRadius(20)
+          .onClick(() => {
+            this.isDisplace = false;
+          })
+
+        Text('DISPLACE')
+          .fontSize(14)
+          .fontColor('#FFFFFF')
+          .backgroundColor(this.isDisplace ? '#67C23A' : '#C0C4CC')
+          .padding({ top: 6, bottom: 6, left: 16, right: 16 })
+          .borderRadius(20)
+          .onClick(() => {
+            this.isDisplace = true;
+          })
+      }
+      .padding({ top: 8, bottom: 8 })
+
+      Tabs() {
+        TabContent() {
+          Column() {
+            Text('首页内容')
+              .fontSize(24)
+              .fontColor('#409EFF')
+          }
+          .width('100%')
+          .height('100%')
+          .justifyContent(FlexAlign.Center)
+          .backgroundColor('#EBF5FF')
+        }
+        .tabBar('首页')
+      }
+      .barStyle(TabBarStyle.SIDEBAR)
+      .sidebarDisplayStyle(this.isDisplace ? TabsSidebarDisplayStyle.DISPLACE : TabsSidebarDisplayStyle.EMBED)
+      .scrollable(true)
+      .animationDuration(300)
+      .width('100%')
+      .layoutWeight(1)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+![tabsSidebarDisplayStyle](figures/tabsSidebarDisplayStyle.gif)

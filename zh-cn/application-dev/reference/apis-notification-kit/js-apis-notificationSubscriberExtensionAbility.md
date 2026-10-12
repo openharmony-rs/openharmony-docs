@@ -2,7 +2,7 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -25,6 +25,9 @@ import { notificationExtensionSubscription, NotificationSubscriberExtensionAbili
 
 **系统能力**：SystemCapability.Notification.Notification
 
+### 属性
+
+**系统能力**：SystemCapability.Notification.Notification
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |

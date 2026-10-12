@@ -2,12 +2,12 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=9aa812250f4e9aa6e205822b2fc097b3c5b2a47d translatedAt=2026-07-21T01:09:14.957Z pushedAt=2026-07-21T09:32:00.594Z -->
+<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-10-08T02:23:20.563Z pushedAt=2026-10-08T09:28:32.485Z -->
 
-The **NotificationSubscribeInfo** module provides APIs for defining the information about the publisher for notification subscription.
+The **NotificationSubscribeInfo** module provides APIs for defining the information about the notification subscriber.
 
 > **NOTE**
 >
@@ -23,15 +23,15 @@ The **NotificationSubscribeInfo** module provides APIs for defining the informat
 
 | Name                | Type                 | Read-Only| Optional| Description                                      |
 | -------------------- | --------------------- | ---- | --- | ------------------------------------------ |
-| bundleNames          | Array<string\>         | No| Yes| Bundle names of the applications whose notifications to subscribe to. If this parameter is not specified, the subscription defaults to notifications from all applications.|
-| userId               | number                | No| Yes | User ID. If this parameter is not specified, the subscription defaults to notifications from the current user ID.|
+| bundleNames          | Array<string\>         | No | Yes | Bundle names of the applications whose notifications are to be subscribed to. If this parameter is not specified, the subscription defaults to notifications from all applications. |
+| userId               | number                | No | Yes  | User ID. If this parameter is not specified, the subscription defaults to notifications from the current user ID. |
 | deviceType<sup>12+</sup>           | string                | No| Yes| Device type. If this parameter is not specified, the subscription defaults to notifications from the current device. The value is obtained based on [device information](../apis-basic-services-kit/js-apis-device-info.md).                                   |
-| slotTypes<sup>18+</sup>   | Array<[notificationManager.SlotType](js-apis-notificationManager.md#slottype)\>| No| Yes| Types of the notification slots. If this parameter is not specified, the subscription defaults to notifications of all slot types.|
+| slotTypes<sup>18+</sup>   | Array<[notificationManager.SlotType](js-apis-notificationManager.md#slottype)\>| No | Yes | [Notification slot](../../notification/notification-glossary.md#notification-slot) type. If this parameter is not passed, notifications of all slot types are subscribed to by default. |
 | filterLimit<sup>18+</sup>   | number| No| Yes| Notification filtering range. The default value is **0**. The options are as follows:<br>- **0**: All notifications are included in the subscription.<br>- **1**: Filter out notifications whose slot type is [SOCIAL_COMMUNICATION](js-apis-notificationManager.md#slottype) and [userInput](js-apis-inner-notification-notificationActionButton.md#notificationactionbutton-1) is empty.<br>- **2**: Filter out notifications whose slot type is [SOCIAL_COMMUNICATION](js-apis-notificationManager.md#slottype) and [userInput](js-apis-inner-notification-notificationActionButton.md#notificationactionbutton-1) is not empty.|
 | voiceContentOptions   | [VoiceContentOptions](#voicecontentoptions)| No | Yes | Configuration options for notification voice broadcast.<br> **Since:** 26.0.0<br> **Model restriction:** This API can be used only in the stage model.|
-| pictureOptions   | [PictureOptions](#pictureoptions)| No| Yes| Image options of the live notification.<br> **Since**: 26.0.0<br> **Model restriction:** This API can be used only in the stage model.|
+| pictureOptions   | [PictureOptions](#pictureoptions)| No | Yes | [Live view notification](../../notification/notification-glossary.md#live-view-notification) image configuration options.<br> **Since:** 26.0.0<br> **Model restriction:** This API can be used only in the stage model.|
 | enableClassification   | boolean | No  | Yes  | Whether to enable notification classification.<br> - **true**: yes.<br> - **false**: no. The default value is **false**.<br> **Since:** 26.0.0<br> **Model restriction:** This API can be used only in the stage model.|
-| needSilentReplayOnSubscribe   | boolean | No  | Yes  | Whether to enable silent replay upon subscription.<br> - **true**: yes.<br> - **false**: no. The default value is **false**.<br> After this feature is enabled, historical notifications are silently re-pushed upon the first subscription, without ringing or vibration reminders.<br> **Since:** 26.0.0<br> **Model restriction:** This API can be used only in the stage model.|
+| needSilentReplayOnSubscribe   | boolean | No | Yes | Whether to enable silent replay upon subscription.<br> - **true**: yes.<br> - **false**: no. The default value is **false**.<br> After this feature is enabled, historical notifications are silently re-pushed upon the first subscription, without ringing or vibration reminders.<br> **Since:** 26.0.0<br> **Model restriction:** This API can be used only in the stage model.|
 
 ## VoiceContentOptions
 

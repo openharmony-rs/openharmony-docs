@@ -1,12 +1,11 @@
-# commonEventSubscriber
-
+# CommonEventSubscriber
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=04248b439068918cc127a54213680eef5225567f translatedAt=2026-07-29T01:29:21.063Z pushedAt=2026-07-29T11:55:39.813Z -->
+<!-- md-trans-meta sourceCommit=54656b3da3e41e2ba7f2b57573523f0dbf41c1e3 translatedAt=2026-10-08T09:14:45.662Z pushedAt=2026-10-09T03:03:08.715Z -->
 
 > **NOTE**
 >
@@ -14,7 +13,7 @@
 
 ## CommonEventSubscriber
 
-The **CommonEventSubscriber** module provides APIs for describing the common event subscriber. This module also provides the capabilities for processing ordered common events, including obtaining and setting the code and data transferred by events, checking whether the current common event is an ordered or sticky common event, terminating an ordered common event or clearing the termination status, ending the processing of the current ordered common event, and obtaining subscription information of a subscriber. This module is applicable to data processing and process control of the received common event by the subscriber.
+The **CommonEventSubscriber** module provides APIs for describing the common event subscriber. The **CommonEventSubscriber** module provides the capabilities for processing [ordered common events](../../basic-services/common-event/common-event-glossary.md#ordered-common-event), including obtaining and setting the code and data transferred by events, checking whether the current common event is an ordered or [sticky common event](../../basic-services/common-event/common-event-glossary.md#sticky-common-event), terminating an ordered common event or clearing the termination status, ending the processing of the current ordered common event, and obtaining subscription information of a subscriber. This module is applicable to data processing and process control of the received common event by the subscriber.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -25,7 +24,6 @@ The **CommonEventSubscriber** module provides APIs for describing the common eve
 Before using the **CommonEventSubscriber** module, you must obtain a **subscriber** object by calling [commonEventManager.createSubscriberSync](js-apis-commonEventManager.md#commoneventmanagercreatesubscribersync10).
 
 <!--code_no_check-->
-
 ```ts
 import { commonEventManager } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -54,7 +52,7 @@ Obtains the result code of an ordered common event. This API uses an asynchronou
 
 | Name  | Type                  | Mandatory| Description              |
 | -------- | ---------------------- | ---- | ------------------ |
-| callback | AsyncCallback\<number\> | Yes | Callback used to return the result. If the result data of an ordered common event is successfully obtained, **err** is **undefined**, and **data** is the data obtained; otherwise, **err** is an error object. |
+| callback | AsyncCallback\<number\> | Yes  | Callback used to return the result. If the result data of an ordered common event is successfully obtained, **err** is **undefined**, and **data** is the data obtained; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -92,7 +90,7 @@ Obtains the result code of an ordered common event. This API uses a promise to r
 
 | Type            | Description                |
 | ---------------- | -------------------- |
-| Promise\<number> | Promise used to return the result code of an ordered common event. |
+| Promise\<number> | Promise used to return the result code of an ordered common event.|
 
 **Example**
 
@@ -110,7 +108,7 @@ subscriber.getCode().then((code: number) => {
 
 getCodeSync(): number
 
-Obtains the result code of an ordered common event. This API returns the result synchronously. 
+Obtains the result code of an ordered common event synchronously.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -120,7 +118,7 @@ Obtains the result code of an ordered common event. This API returns the result 
 
 | Type            | Description                |
 | ---------------- | -------------------- |
-| number | Code delivered by the ordered common event. |
+| number | Result code of an ordered common event.|
 
 **Example**
 
@@ -135,7 +133,7 @@ console.info(`Succeeded in getting code, code is ${JSON.stringify(code)}`);
 
 setCode(code: number, callback: AsyncCallback\<void>): void
 
-Sets the code of an ordered common event. This API uses an asynchronous callback to return the result.
+Sets the result code and data of an ordered common event. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -145,8 +143,8 @@ Sets the code of an ordered common event. This API uses an asynchronous callback
 
 | Name  | Type                | Mandatory| Description                  |
 | -------- | -------------------- | ---- | ---------------------- |
-| code     | number               | Yes   | Code delivered by the ordered common event.   |
-| callback | AsyncCallback\<void> | Yes | Callback used to return the result. If the result data of an ordered common event is successfully set, **err** is **undefined**; otherwise, **err** is an error object. |
+| code     | number               | Yes  | Result code of an ordered common event.  |
+| callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -174,7 +172,7 @@ subscriber.setCode(1, (err: BusinessError) => {
 
 setCode(code: number): Promise\<void>
 
-Sets the result code of an ordered common event. This API uses a promise to return the result.
+Sets the result code and data of an ordered common event. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -184,7 +182,7 @@ Sets the result code of an ordered common event. This API uses a promise to retu
 
 | Name| Type  | Mandatory| Description              |
 | ------ | ------ | ---- | ------------------ |
-| code   | number | Yes   | Code delivered by the ordered common event. |
+| code   | number | Yes  | Result code of an ordered common event.|
 
 **Return value**
 
@@ -216,7 +214,7 @@ subscriber.setCode(1).then(() => {
 
 setCodeSync(code: number): void
 
-Sets the result code of an ordered common event. This API returns the result synchronously.
+Sets the result code of an ordered common event synchronously.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -226,7 +224,7 @@ Sets the result code of an ordered common event. This API returns the result syn
 
 | Name| Type  | Mandatory| Description              |
 | ------ | ------ | ---- | ------------------ |
-| code   | number | Yes   | Code delivered by the ordered common event. |
+| code   | number | Yes  | Result code of an ordered common event.|
 
 **Error codes**
 
@@ -253,7 +251,7 @@ try {
 
 getData(callback: AsyncCallback\<string>): void
 
-Obtains the data of an ordered common event. This API uses an asynchronous callback to return the result.
+Obtains the result code of an ordered common event. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -263,7 +261,7 @@ Obtains the data of an ordered common event. This API uses an asynchronous callb
 
 | Name  | Type                  | Mandatory| Description                |
 | -------- | ---------------------- | ---- | -------------------- |
-| callback | AsyncCallback\<string> | Yes | Callback used to return the result. If the result data of an ordered common event is successfully obtained, **err** is **undefined**, and **data** is the data obtained; otherwise, **err** is an error object. |
+| callback | AsyncCallback\<string> | Yes  | Callback used to return the result. If the result data of an ordered common event is successfully obtained, **err** is **undefined**, and **data** is the data obtained; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -278,7 +276,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 <!--code_no_check-->
 
 ```ts
-// Obtain the data callback for ordered common event delivery.
+// Obtain the result data of an ordered common event.
 subscriber.getData((err: BusinessError, data: string) => {
   if (err) {
     console.error(`Failed to get data. Code is ${err.code}, message is ${err.message}`);
@@ -292,7 +290,7 @@ subscriber.getData((err: BusinessError, data: string) => {
 
 getData(): Promise\<string>
 
-Obtains the data of an ordered common event. This API uses a promise to return the result.
+Obtains the result code of an ordered common event. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -302,7 +300,7 @@ Obtains the data of an ordered common event. This API uses a promise to return t
 
 | Type            | Description              |
 | ---------------- | ------------------ |
-| Promise\<string> | Promise used to return the result data of an ordered common event. |
+| Promise\<string> | Promise used to return the result code of an ordered common event.|
 
 **Example**
 
@@ -320,7 +318,7 @@ subscriber.getData().then((data: string) => {
 
 getDataSync(): string
 
-Obtains the data of an ordered common event. This API returns the result synchronously.
+Obtains the result code of an ordered common event synchronously.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -330,7 +328,7 @@ Obtains the data of an ordered common event. This API returns the result synchro
 
 | Type            | Description              |
 | ---------------- | ------------------ |
-| string | Data delivered by the ordered common event. |
+| string | Result code of an ordered common event.|
 
 **Example**
 
@@ -345,7 +343,7 @@ console.info(`Succeeded in getting data, data is ${data}`);
 
 setData(data: string, callback: AsyncCallback\<void>): void
 
-Sets the data of an ordered common event. This API uses an asynchronous callback to return the result.
+Sets the result code and data of an ordered common event. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -355,8 +353,8 @@ Sets the data of an ordered common event. This API uses an asynchronous callback
 
 | Name  | Type                | Mandatory| Description                |
 | -------- | -------------------- | ---- | -------------------- |
-| data     | string               | Yes   | Data delivered by the ordered common event. The value is a string containing a maximum of 65,536 characters. If the length exceeds the limit, the API setting becomes invalid.   |
-| callback | AsyncCallback\<void> | Yes   | Callback used to return the result. If the data of an ordered common event is successfully set, **err** is **undefined**; otherwise, **err** is an error object. |
+| data     | string               | Yes  | Result data of an ordered common event. The value is a string containing a maximum of 65,536 characters. If the length exceeds the limit, the API setting becomes invalid.  |
+| callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -384,7 +382,7 @@ subscriber.setData('publish_data_changed', (err: BusinessError) => {
 
 setData(data: string): Promise\<void>
 
-Sets the result data of an ordered common event. This API uses a promise to return the result.
+Sets the result code and data of an ordered common event. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -394,7 +392,7 @@ Sets the result data of an ordered common event. This API uses a promise to retu
 
 | Name| Type  | Mandatory| Description                |
 | ------ | ------ | ---- | -------------------- |
-| data   | string | Yes   | Data delivered by the ordered common event. The value is a string containing a maximum of 65,536 characters. If the length exceeds the limit, the API setting becomes invalid. |
+| data   | string | Yes  | Result data of an ordered common event. The value is a string containing a maximum of 65,536 characters. If the length exceeds the limit, the API setting becomes invalid.|
 
 **Return value**
 
@@ -426,7 +424,7 @@ subscriber.setData('publish_data_changed').then(() => {
 
 setDataSync(data: string): void
 
-Sets the result data of an ordered common event. This API returns the result synchronously.
+Sets the result code of an ordered common event synchronously.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -436,7 +434,7 @@ Sets the result data of an ordered common event. This API returns the result syn
 
 | Name| Type  | Mandatory| Description                |
 | ------ | ------ | ---- | -------------------- |
-| data   | string | Yes   | Data delivered by the ordered common event. The value is a string containing a maximum of 65,536 characters. If the length exceeds the limit, the API setting becomes invalid. |
+| data   | string | Yes  | Result data of an ordered common event. The value is a string containing a maximum of 65,536 characters. If the length exceeds the limit, the API setting becomes invalid.|
 
 **Error codes**
 
@@ -473,8 +471,8 @@ Sets the result code and data of an ordered common event. This API uses an async
 
 | Name  | Type                | Mandatory| Description                  |
 | -------- | -------------------- | ---- | ---------------------- |
-| code     | number               | Yes   | Code delivered by the ordered common event.   |
-| data     | string               | Yes   | Data delivered by the ordered common event. The value is a string containing a maximum of 65,536 characters. If the length exceeds the limit, the API setting becomes invalid.   |
+| code     | number               | Yes  | Result code of an ordered common event.  |
+| data     | string               | Yes  | Result data of an ordered common event. The value is a string containing a maximum of 65,536 characters. If the length exceeds the limit, the API setting becomes invalid.  |
 | callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
@@ -513,8 +511,8 @@ Sets the result code and data of an ordered common event. This API uses a promis
 
 | Name| Type  | Mandatory| Description                |
 | ------ | ------ | ---- | -------------------- |
-| code   | number | Yes   | Code delivered by the ordered common event. |
-| data   | string | Yes   | Data delivered by the ordered common event. The value is a string containing a maximum of 65,536 characters. If the length exceeds the limit, the API setting becomes invalid. |
+| code   | number | Yes  | Result code of an ordered common event.|
+| data   | string | Yes  | Result data of an ordered common event. The value is a string containing a maximum of 65,536 characters. If the length exceeds the limit, the API setting becomes invalid.|
 
 **Return value**
 
@@ -546,7 +544,7 @@ subscriber.setCodeAndData(1, 'publish_data_changed').then(() => {
 
 setCodeAndDataSync(code: number, data: string): void
 
-Sets the code and data of an ordered common event. This API returns the result synchronously.
+Sets the result code of an ordered common event synchronously.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -556,8 +554,8 @@ Sets the code and data of an ordered common event. This API returns the result s
 
 | Name| Type  | Mandatory| Description                |
 | ------ | ------ | ---- | -------------------- |
-| code   | number | Yes   | Code delivered by the ordered common event. |
-| data   | string | Yes   | Data delivered by the ordered common event. The value is a string containing a maximum of 65,536 characters. If the length exceeds the limit, the API setting becomes invalid. |
+| code   | number | Yes  | Result code of an ordered common event.|
+| data   | string | Yes  | Result data of an ordered common event. The value is a string containing a maximum of 65,536 characters. If the length exceeds the limit, the API setting becomes invalid.|
 
 **Error codes**
 
@@ -629,7 +627,7 @@ Checks whether the current common event is an ordered common event. This API use
 
 | Type             | Description                            |
 | ----------------- | -------------------------------- |
-| Promise\<boolean> | Promise used to return the result. Returns **true** if the common event is an ordered one; returns **false** if the common event is an unordered one.|
+| Promise\<boolean> | Promise used to return the result. The value **true** indicates an ordered common event, and the value **false** indicates an [unordered common event](../../basic-services/common-event/common-event-glossary.md#unordered-common-event).|
 
 **Example**
 
@@ -647,7 +645,7 @@ subscriber.isOrderedCommonEvent().then((isOrdered: boolean) => {
 
 isOrderedCommonEventSync(): boolean
 
-Checks whether a common event is an ordered one. This API returns the result synchronously.
+Checks whether the current common event is an ordered common event synchronously.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -732,7 +730,7 @@ subscriber.isStickyCommonEvent().then((isSticky: boolean) => {
 
 isStickyCommonEventSync(): boolean
 
-Checks whether a common event is a sticky one. This API returns the result synchronously.
+Checks whether the current common event is a sticky common event synchronously.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -829,7 +827,7 @@ subscriber.finishCommonEvent().then(() => {
 
 abortCommonEventSync(): void
 
-Aborts an ordered common event when used with [finishCommonEvent](#finishcommonevent9). With the abort state, the common event is not sent to the next subscriber. This API returns the result synchronously.
+Aborts an ordered common event synchronously. This API is used with [finishCommonEvent](#finishcommonevent9). After the abort, the common event is not sent to the next subscriber.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -893,7 +891,7 @@ subscriber.finishCommonEvent((err: BusinessError) => {
 
 clearAbortCommonEvent(): Promise\<void>
 
-Clears the abort state of this ordered common event. Use this API together with [finishCommonEvent](#finishcommonevent9), and the common event can be passed to the next subscriber. This API uses a promise to return the result.
+Clears the abort state of an ordered common event. Use this API together with [finishCommonEvent](#finishcommonevent9), and the common event can be passed to the next subscriber. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -924,7 +922,7 @@ subscriber.finishCommonEvent().then(() => {
 
 clearAbortCommonEventSync(): void
 
-Clears the abort state of an ordered common event when used with [finishCommonEvent](#finishcommonevent9). After the clearance, the common event is sent to the next subscriber. This API returns the result synchronously.
+Clears the abort state of an ordered common event synchronously. Use this API together with [finishCommonEvent](#finishcommonevent9), and the common event can be passed to the next subscriber.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -953,7 +951,7 @@ Checks whether this ordered common event should be aborted. This API uses an asy
 
 | Name  | Type                   | Mandatory| Description                              |
 | -------- | ----------------------- | ---- | ---------------------------------- |
-| callback | AsyncCallback\<boolean> | Yes | Callback used to return the result. If the query is successful, **err** is **undefined** and **data** is **true** if the current ordered common event is in the abort state, or **false** if the current ordered common event is not in the abort state. If the operation fails, **err** is an error object. |
+| callback | AsyncCallback\<boolean> | Yes | Callback used to return the result. If the query is successful, **err** is **undefined**. If **data** is **true**, the ordered common event is aborted. If **data** is **false**, the ordered common event is not aborted. Otherwise, **err** is an error object. |
 
 **Error codes**
 
@@ -989,7 +987,7 @@ Checks whether this ordered common event should be aborted. This API uses a prom
 
 | Type             | Description                              |
 | ----------------- | ---------------------------------- |
-| Promise\<boolean> | Promise used to return the result. The **true** indicates that the ordered common event is in the abort state; the value **false** indicates otherwise. |
+| Promise\<boolean> | Promise used to return the result. Returns **true** if the ordered common event is in the abort state; returns **false** otherwise.|
 
 **Example**
 
@@ -1007,7 +1005,7 @@ subscriber.getAbortCommonEvent().then((abortEvent: boolean) => {
 
 getAbortCommonEventSync(): boolean
 
-Checks whether an ordered common event is aborted. This API returns the result synchronously.
+Checks whether an ordered common event is aborted synchronously.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -1015,7 +1013,7 @@ Checks whether an ordered common event is aborted. This API returns the result s
 
 | Type             | Description                              |
 | ----------------- | ---------------------------------- |
-| boolean | The value **true** indicates that the ordered common event is in the abort state; the value **false** indicates otherwise. |
+| boolean | Returns **true** if the ordered common event is in the abort state; returns **false** otherwise. |
 
 **Example**
 
@@ -1096,7 +1094,7 @@ subscriber.getSubscribeInfo().then((subscribeInfo: commonEventManager.CommonEven
 
 getSubscribeInfoSync(): CommonEventSubscribeInfo
 
-Obtains the subscriber information. This API returns the result synchronously.
+Obtains the subscriber information synchronously.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1129,7 +1127,7 @@ Finishes this ordered common event. This API uses an asynchronous callback to re
 
 | Name  | Type                 | Mandatory| Description                             |
 | -------- | -------------------- | ---- | -------------------------------- |
-| callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the subscriber successfully finishes this ordered common event, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
 

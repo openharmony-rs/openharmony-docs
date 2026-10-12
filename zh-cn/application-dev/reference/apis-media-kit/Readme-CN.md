@@ -111,6 +111,7 @@
     - [OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md)
     - [OH_LowPowerAudioSinkCallback](capi-lowpoweraudiosink-oh-lowpoweraudiosinkcallback.md)
     - [OH_AVSamplesBuffer](capi-avsinkbase-oh-avsamplesbuffer.md)
+    - [OH_LowPowerAVSink_Capability](capi-avsinkbase-oh-lowpoweravsinkcapability.md)
     - [OH_LowPowerVideoSink](capi-lowpowervideosink-oh-lowpowervideosink.md)
     - [OH_LowPowerVideoSinkCallback](capi-lowpowervideosink-oh-lowpowervideosinkcallback.md)
     - [VideoProcessing_ColorSpaceInfo](capi-videoprocessing-videoprocessing-colorspaceinfo.md)

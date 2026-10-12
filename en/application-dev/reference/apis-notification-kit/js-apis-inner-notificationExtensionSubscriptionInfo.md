@@ -1,12 +1,11 @@
 # NotificationExtensionSubscriptionInfo
-
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=9aa812250f4e9aa6e205822b2fc097b3c5b2a47d translatedAt=2026-07-21T01:09:32.779Z pushedAt=2026-07-21T09:32:05.219Z -->
+<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-10-08T02:24:53.219Z pushedAt=2026-10-08T09:30:16.879Z -->
 
 The **NotificationExtensionSubscriptionInfo** module describes the information about notification extension subscription.
 

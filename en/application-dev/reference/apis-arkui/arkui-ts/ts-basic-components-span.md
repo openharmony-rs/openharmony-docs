@@ -317,7 +317,7 @@ Sets the attributes of font variations. This API is applicable to scenarios wher
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Widget capability**: This API can be used in ArkTS widgets since API version 26.1.0.
+**Widget capability**: This API can be used in ArkTS widgets since API version 26.0.1.
 
 **Atomic service API**: This API can be used in atomic services since API version 26.0.0.
 

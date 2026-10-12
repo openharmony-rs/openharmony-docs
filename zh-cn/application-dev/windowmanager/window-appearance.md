@@ -3,8 +3,8 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @liu_hongxian-->
-<!--Designer: @shinmy; @qinliwen0417-->
-<!--Tester: @qinliwen0417-->
+<!--Designer: @shinmy; @jingbotao-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
 
 ## 场景介绍

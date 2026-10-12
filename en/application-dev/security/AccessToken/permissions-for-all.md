@@ -793,7 +793,7 @@ With this permission, the application can query vehicle privacy agreements or po
 
 **Supported devices**: cars
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 ## ohos.permission.DCAS_RUN_MODEL
 
@@ -821,7 +821,7 @@ With this permission, the application can use font management APIs to install, u
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 ## ohos.permission.REQUEST_LOCAL_ACCOUNT_AUTHORIZATION
 
@@ -835,7 +835,21 @@ With this permission, an application can call APIs to request local account auth
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets | cars | TVs | wearables
 
-**Since**: 26.1.0
+**Since**: 26.0.1
+
+## ohos.permission.kernel.USB_CAPTURE
+
+Allows an application to capture USB data packets.
+
+With this permission, the application can capture USB packets only after being authenticated by the user.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.0.1
 
 ## ohos.permission.ACCESS_USER_PASSIVE_RECOGNITION
 
@@ -849,7 +863,7 @@ With this permission, the application can use the user passive recognition capab
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets | cars
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
 
 ## ohos.permission.GET_STORAGE_VOLUME_INFO
 

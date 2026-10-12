@@ -145,8 +145,8 @@ Enumerates the search playback information types.
 | ---------- | ----------- | ---------- |
 | PLAY_MUSIC | 'playMusic' | Plays music.|
 | PLAY_VIDEO | 'playVideo' | Plays a video.|
-| PLAY_MUSIC_LIST | 'playMusicList' | Music playlist (specified playlist).<br>**Since:** 26.1.0 |
-| PLAY_VIDEO_LIST | 'playVideoList' | Video playlist (specified video).<br>**Since:** 26.1.0 |
+| PLAY_MUSIC_LIST | 'playMusicList' | Music playlist (specified playlist).<br>**Since:** 26.0.1 |
+| PLAY_VIDEO_LIST | 'playVideoList' | Video playlist (specified video).<br>**Since:** 26.0.1 |
 
 ## DownloadStatus
 

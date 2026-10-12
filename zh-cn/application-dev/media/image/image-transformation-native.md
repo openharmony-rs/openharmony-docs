@@ -6,13 +6,13 @@
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @w_Machine_cc-->
 
+开发者可以通过本指导了解如何使用Native Image的接口完成图像变换。
+
 > **说明：**
 >
 > 当前开发指导使用的接口为[Image](../../reference/apis-image-kit/capi-image.md)模块下的C API，可完成图片编解码，图片接收器，处理图像数据等功能。这部分API在API version 11之前发布，在后续的版本不再增加新功能，**不再推荐使用**。<br>
 > 开发者可使用[Image_NativeModule](../../reference/apis-image-kit/capi-image-nativemodule.md)模块下的C API，不仅提供上述图片框架基础功能，还可以完成多图编解码等新特性，相关开发指导请参考[图片开发指导(C/C++)](image-source-c.md)节点下的内容。这部分API从API version 12开始支持，并将持续演进，**推荐开发者使用**。<br>
 > 两套C API不建议同时使用，在部分场景下存在不兼容的问题。
-
-开发者可以通过本指导了解如何使用Native Image的接口完成图像变换。
 
 ## 开发步骤
 
@@ -117,7 +117,7 @@ EXTERN_C_END
 
 **JS侧调用**
 
-1. 打开src\main\cpp\types\libentry\index.d.ts(其中libentry根据工程名生成)，导入如下引用文件：
+1. 打开src\main\cpp\types\libentry\index.d.ts（其中libentry根据工程名生成），导入如下引用文件：
 
    <!-- @[ndk_pixelmap_js_export_image_transformation_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/NdkPixelMap_js/entry/src/main/cpp/types/libentry/Index.d.ts) -->
    
@@ -129,7 +129,7 @@ EXTERN_C_END
    export const testUnAccessPixels: (a: image.PixelMap) => image.PixelMap;
    ```
 
-2. 打开src\main\ets\pages\index.ets，导入"libentry.so"(根据工程名生成)；调用Native接口，传入JS的资源对象。示例如下：
+2. 打开src\main\ets\pages\index.ets，导入"libentry.so"（根据工程名生成）；调用Native接口，传入JS的资源对象。示例如下：
 
     ```js
     import testNapi from 'libentry.so';

@@ -6,12 +6,13 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=108aa11c2ceb50c68f8417aa3c60f1dcb55dabdd translatedAt=2026-09-23T02:11:56.974Z pushedAt=2026-09-24T06:00:14.202Z -->
 
 The **policy** module provides APIs for managing network policies, which allow you to use firewall technology to control and manage the data traffic used.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 10. Updates will be marked with a superscript to indicate their earliest API version.
 
 
 ## Modules to Import
@@ -42,7 +43,7 @@ Sets whether the current application can connect to the Wi-Fi or cellular networ
 
 **Model restriction**: This API can be used only in the stage model.
 
-**Device behavior differences**: This API can be called on phones, 2-in-1 devices, and tablets, but does not take effect on other devices.
+**Device behavior difference**: This API can be called normally on Phone and Tablet devices, but does not take effect on other devices.
 
 
 **Parameters**
@@ -93,7 +94,7 @@ Queries the network access policy of an application (whether cellular or Wi-Fi n
 
 | Type                                                   | Description                         |
 | ------------------------------------------------------- | ----------------------------- |
-| Promise\<[NetAccessPolicy](#netaccesspolicy)>  |Promise used to return the network access policy of the application.|
+| Promise\<[NetAccessPolicy](#netaccesspolicy)>  |Promise used to return the network access policy of the application itself.|
 
 **Error codes**:
 
@@ -124,7 +125,7 @@ Defines the network access policy information.
 
 **Since**: 26.0.0
 
-**Model constraint**: This API can be used only in the stage model.
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 

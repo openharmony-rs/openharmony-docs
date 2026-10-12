@@ -1,12 +1,11 @@
 # NotificationActionButton
-
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=9aa812250f4e9aa6e205822b2fc097b3c5b2a47d translatedAt=2026-07-21T01:07:52.410Z pushedAt=2026-07-21T09:31:44.048Z -->
+<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-10-08T02:16:49.501Z pushedAt=2026-10-08T09:16:40.903Z -->
 
 The **NotificationActionButton** module defines the action buttons displayed in a notification. It is used to add interactive action buttons in [NotificationRequest](js-apis-inner-notification-notificationRequest.md#notificationrequest-1), allowing users to trigger a **WantAgent** action by tapping the button. This module is used when you need to provide interactive action buttons (such as **Reply** and **Mark as read**) in a notification.
 

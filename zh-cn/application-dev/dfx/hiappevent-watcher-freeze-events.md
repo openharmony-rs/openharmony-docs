@@ -54,9 +54,9 @@ let policy: hiAppEvent.EventPolicy = {
     }
 };
 hiAppEvent.configEventPolicy(policy).then(() => {
-    hilog.info(0x0000, 'hiAppEvent', `Set crash config policy successfully.`);
+    hilog.info(0x0000, 'testTag', `Set appfreeze config policy successfully.`);
 }).catch((err: BusinessError) => {
-    hilog.error(0x0000, 'hiAppEvent', `Failed to set crash config policy. code: ${err.code}, message: ${err.message}`);
+    hilog.error(0x0000, 'testTag', `Failed to set appfreeze config policy. code: ${err.code}, message: ${err.message}`);
 });
 ```
 

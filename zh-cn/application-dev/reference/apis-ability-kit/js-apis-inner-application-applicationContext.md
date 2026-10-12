@@ -1330,6 +1330,8 @@ setFont(font: string): void
 > **说明：**
 >
 > 调用该接口前，需要确保窗口已完成创建、且UIAbility对应的页面已完成加载，即在[onWindowStageCreate()](js-apis-app-ability-uiAbility.md#onwindowstagecreate)生命周期中通过[loadContent](../apis-arkui/arkts-apis-window-WindowStage.md#loadcontent9)方法加载页面之后调用。
+>
+> setFont('null')可以恢复系统默认字体类型。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -1669,7 +1671,7 @@ export default class EntryAbility extends UIAbility {
         console.error(`enableDelayedProcessExit error, code: ${error.code}, error msg: ${error.message}`);
       });
     } catch(error) {
-      console.error('enableDelayedProcessExit failed. Code=%{public}d, Message=%{public}s', error.code, error.message);
+      console.error(`enableDelayedProcessExit failed. Code: ${error.code}, message: ${error.message}`);
     }
   }
 }
@@ -1721,7 +1723,7 @@ export default class EntryAbility extends UIAbility {
         console.error(`disableDelayedProcessExit error, code: ${error.code}, error msg: ${error.message}`);
       });
     } catch(error) {
-      console.error('disableDelayedProcessExit failed. Code=%{public}d, Message=%{public}s', error.code, error.message);
+      console.error(`disableDelayedProcessExit failed. Code: ${error.code}, message: ${error.message}`);
     }
   }
 }

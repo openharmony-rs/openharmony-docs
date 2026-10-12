@@ -6,6 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=fb874ca90538f5923029ba36a0eb464d34221c51 translatedAt=2026-09-23T01:28:00.517Z pushedAt=2026-09-24T06:00:14.112Z -->
 
 ```c
 typedef struct NetConn_NetConnCallback {...} NetConn_NetConnCallback
@@ -31,5 +32,5 @@ Defines a struct for the network status listener callback collection. All callba
 | [OH_NetConn_NetCapabilitiesChange](capi-net-connection-type-h.md#oh_netconn_netcapabilitieschange) onNetCapabilitiesChange               | Callback invoked when the network capabilities change.|
 | [OH_NetConn_NetConnectionPropertiesChange](capi-net-connection-type-h.md#oh_netconn_netconnectionpropertieschange) onConnetionProperties | Callback invoked when network connection properties change.|
 | [OH_NetConn_NetLost](capi-net-connection-type-h.md#oh_netconn_netlost) onNetLost                                                         | Callback invoked when the network is disconnected.|
-| [OH_NetConn_NetUnavailable](capi-net-connection-type-h.md#oh_netconn_netunavailable) onNetUnavailable                                    | Callback invoked when the network is unavailable. This callback is triggered when the network is not activated within the specified timeout interval. If the timeout interval is not set, this callback is not triggered.|
+| [OH_NetConn_NetUnavailable](capi-net-connection-type-h.md#oh_netconn_netunavailable) onNetUnavailable                                    | Callback for the network unavailable event. This callback is triggered when the network is not activated within the specified timeout period. If no timeout period is set, this callback will not be triggered. |
 | [OH_NetConn_NetBlockStatusChange](capi-net-connection-type-h.md#oh_netconn_netblockstatuschange) onNetBlockStatusChange                  | Callback invoked when the network blocking status changes.|

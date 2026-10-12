@@ -490,36 +490,41 @@ struct Index {
 
 ### 示例7（设置图片拉伸）
 
-该示例通过[resizable](#resizable)属性的slice选项，对ImageSpan图片不同方向进行拉伸。
+该示例分别通过[resizable](#resizable)属性的slice和lattice选项，对ImageSpan图片进行拉伸。
 
 从API版本26.0.1开始，新增resizable属性。
 
 ```ts
+import { drawing } from '@kit.ArkGraphics2D';
+
 @Entry
 @Component
 struct ImageSpanResizablePage {
+  private xDivs: Array<number> = [1, 2, 200];
+  private yDivs: Array<number> = [1, 2, 200];
+  private fXCount: number = 3;
+  private fYCount: number = 3;
+  private drawingLattice: DrawingLattice =
+    drawing.Lattice.createImageLattice(this.xDivs, this.yDivs, this.fXCount, this.fYCount);
+
   build() {
     Column({ space: 20 }) {
-      Text('ImageSpan resizable Demo')
-        .fontSize(28)
-        .fontWeight(FontWeight.Bold)
-
-      Text('使用 Text + ImageSpan，设置 resizable 的 slice 属性实现九宫格拉伸：')
-        .fontSize(28)
+      Text('使用Text + ImageSpan，分别设置resizable的slice和lattice属性实现图片拉伸：')
+        .fontSize(18)
         .fontColor('#666666')
         .width('90%')
 
       Text() {
         Span('原图\n')
-          .fontSize(28)
+          .fontSize(25)
         ImageSpan($r('app.media.landscape'))
           .width(200)
           .height(200)
-        Span('\n设置Resizable后\n')
-          .fontSize(28)
+        Span('\n设置slice后\n')
+          .fontSize(25)
         ImageSpan($r('app.media.landscape'))
-          .width(260)
-          .height(260)
+          .width(200)
+          .height(200)
           .resizable({
             slice: {
               left: '200px',
@@ -528,10 +533,17 @@ struct ImageSpanResizablePage {
               bottom: '20px'
             }
           })
+        Span('\n设置lattice后\n')
+          .fontSize(25)
+        ImageSpan($r('app.media.landscape'))
+          .width(200)
+          .height(200)
+          .resizable({
+            lattice: this.drawingLattice
+          })
       }
       .width('90%')
       .textAlign(TextAlign.Center)
-      .margin({ top: 10 })
     }
     .width('100%')
     .height('100%')

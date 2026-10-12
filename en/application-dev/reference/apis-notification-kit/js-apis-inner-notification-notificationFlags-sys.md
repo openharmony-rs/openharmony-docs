@@ -2,9 +2,10 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-10-08T02:18:45.081Z pushedAt=2026-10-08T09:16:56.428Z -->
 
 The **NotificationFlags** module implements a **NotificationFlags** instance.
 
@@ -12,11 +13,11 @@ The **NotificationFlags** module implements a **NotificationFlags** instance.
 >
 > The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> This topic describes only system APIs provided by the module. For details about its public APIs, see [NotificationFlags](./js-apis-inner-notification-notificationFlags.md).
+> This topic describes only system APIs provided by the module. For details about its public APIs, see [NotificationFlags](js-apis-inner-notification-notificationFlags.md).
 
 ## NotificationFlags
 
-Defines the notification flags.
+Describes the [notification flags](../../notification/notification-glossary.md#notification-flags).
 
 **System capability**: SystemCapability.Notification.Notification
 

@@ -1,12 +1,11 @@
 # NotificationTemplate
-
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=50e734d278c25dbb71273705da516c218b3754a1 translatedAt=2026-06-29T02:37:09.948Z pushedAt=2026-06-30T10:57:37.010Z -->
+<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-10-08T02:23:07.139Z pushedAt=2026-10-08T09:30:07.776Z -->
 
 This module defines the notification template, which is used to specify the template type for a notification.
 
