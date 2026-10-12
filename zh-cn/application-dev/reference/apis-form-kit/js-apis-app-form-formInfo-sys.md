@@ -661,9 +661,9 @@ let getWantParamsCallback: formInfo.GetWantParamsCallback =
 
 卡片使用方服务信息。
 
-**ArkTS-Dyn起始版本：** 26.0.1
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 26.0.1
+**ArkTS-Dyn起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -682,9 +682,9 @@ let getWantParamsCallback: formInfo.GetWantParamsCallback =
 
 远端卡片使用方服务信息。
 
-**ArkTS-Dyn起始版本：** 26.0.1
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 26.0.1
+**ArkTS-Dyn起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -706,9 +706,9 @@ let getWantParamsCallback: formInfo.GetWantParamsCallback =
 
 跨设备发布卡片的结果。
 
-**ArkTS-Dyn起始版本：** 26.0.1
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 26.0.1
+**ArkTS-Dyn起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

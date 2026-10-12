@@ -349,9 +349,9 @@ getAvailableFormHostServices(): Promise&lt;Array&lt;formInfo.PeerFormHostService
 
 **系统接口：** 此接口为系统接口。
 
-**ArkTS-Dyn起始版本：** 26.0.1
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 26.0.1
+**ArkTS-Dyn起始版本：** 26.0.1
 
 **返回值：**
 
@@ -372,8 +372,6 @@ getAvailableFormHostServices(): Promise&lt;Array&lt;formInfo.PeerFormHostService
 
 **示例：**
 
-ArkTS-Dyn示例：
-
 ```ts
 import { formAgent, formInfo } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -386,24 +384,6 @@ try {
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
-}
-```
-
-ArkTS-Sta示例：
-
-```ts
-'use static'
-
-import { formAgent, formInfo } from '@kit.FormKit';
-
-try {
-  formAgent.getAvailableFormHostServices().then((data: formInfo.PeerFormHostServiceInfo[]) => {
-    console.info(`formAgent getAvailableFormHostServices success, service count: ${data.length}`);
-  }).catch((error) => {
-    console.error(`testTag promise error, code: ${error?.code}, message: ${error?.message}`);
-  });
-} catch (error) {
-  console.error(`testTag catch error, code: ${error?.code}, message: ${error?.message}`);
 }
 ```
 
@@ -421,9 +401,9 @@ requestPublishFormCrossDevice(peerServiceInfo: formInfo.PeerFormHostServiceInfo,
 
 **系统接口：** 此接口为系统接口。
 
-**ArkTS-Dyn起始版本：** 26.0.1
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 26.0.1
+**ArkTS-Dyn起始版本：** 26.0.1
 
 **参数：**
 
@@ -457,8 +437,6 @@ requestPublishFormCrossDevice(peerServiceInfo: formInfo.PeerFormHostServiceInfo,
 | 16501008 | Waiting for the form addition to the desktop timed out. |
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 ```ts
 import { formBindingData, formAgent, formInfo } from '@kit.FormKit';
@@ -495,47 +473,5 @@ try {
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
-}
-```
-
-ArkTS-Sta示例：
-
-```ts
-'use static'
-
-import { formBindingData, formAgent, formInfo } from '@kit.FormKit';
-import { Want } from '@kit.AbilityKit';
-import { RecordData } from '@kit.BasicServicesKit';
-
-let want: Want = {
-  bundleName: 'com.ohos.exampledemo',
-  abilityName: 'FormAbility',
-  parameters: {
-    'ohos.extra.param.key.form_dimension': 2,
-    'ohos.extra.param.key.form_name': 'widget',
-    'ohos.extra.param.key.module_name': 'entry'
-  } as Record<string, RecordData>
-};
-let peerServiceInfo: formInfo.PeerFormHostServiceInfo = {
-  serviceName: 'serviceName',
-  serviceDisplayName: 'serviceDisplayName',
-  displayId: '0',
-  deviceId: 'deviceId',
-  networkId: 'networkId',
-  serviceId: 'serviceId'
-};
-let param: Record<string, string> = {
-  'temperature': '22c',
-  'time': '22:00'
-};
-let obj: formBindingData.FormBindingData = formBindingData.createFormBindingData(param);
-try {
-  formAgent.requestPublishFormCrossDevice(peerServiceInfo, want, obj).then((data: formInfo.PublishFormCrossDeviceResult) => {
-    console.info(`formAgent requestPublishFormCrossDevice success, form ID is: ${data.formId}`);
-  }).catch((error) => {
-    console.error(`testTag promise error, code: ${error?.code}, message: ${error?.message}`);
-  });
-} catch (error) {
-  console.error(`testTag catch error, code: ${error?.code}, message: ${error?.message}`);
 }
 ```
