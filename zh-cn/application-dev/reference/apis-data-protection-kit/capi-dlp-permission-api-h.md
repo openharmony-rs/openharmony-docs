@@ -95,7 +95,7 @@ DLP_ErrCode OH_DLP_GetDlpPermissionInfo(DLP_FileAccess *dlpFileAccess, uint32_t 
 
 **描述**
 
-查询当前DLP沙箱的权限信息。
+获取当前DLP沙箱的权限信息。
 
 **起始版本：** 14
 
