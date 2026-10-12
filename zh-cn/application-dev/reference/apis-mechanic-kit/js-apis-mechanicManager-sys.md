@@ -678,7 +678,10 @@ offBatteryLevelChange(mechId: number, callback?: Callback&lt;BatteryLevelInfo&gt
 | 33300003 | Feature not supported. |
 
 **示例：**
-
+let mechId: number = 0;
+mechanicManager.offBatteryLevelChange(mechId, (result: mechanicManager.BatteryLevelInfo) => {
+  console.info(`'result:' ${result}`);
+});
 ```ts
 console.info('Unregister Battery Change listener');
 mechanicManager.offBatteryLevelChange(mechId, (result: mechanicManager.BatteryLevelInfo) => {
