@@ -9493,6 +9493,21 @@ Allows an application to install other applications of the debug type.
 
 **Since**: 26.0.1
 
+## ohos.permission.AUTH_SERVICE_ACCESS
+
+Allows an application to access authentication event management framework to report authentication
+events and receive event authentication results.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: PC/2in1
+
+**Valid since**: 26.2.0
+
 ## ohos.permission.SET_DSL_MODE
 
 Allows an application to modify the device security level (DSL) configuration.
