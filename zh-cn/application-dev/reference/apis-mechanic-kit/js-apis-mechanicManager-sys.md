@@ -641,6 +641,7 @@ onBatteryLevelChange(mechId: number, callback: Callback&lt;BatteryLevelInfo&gt;)
 
 ```ts
 console.info('Register Battery Change listener');
+let mechId: number = 0;  
 mechanicManager.onBatteryLevelChange(mechId, (result: mechanicManager.BatteryLevelInfo) => {
   console.info(`'result:' ${result}`);
 });
@@ -679,6 +680,7 @@ offBatteryLevelChange(mechId: number, callback?: Callback&lt;BatteryLevelInfo&gt
 
 ```ts
 console.info('Unregister Battery Change listener');
+let mechId: number = 0;  
 mechanicManager.offBatteryLevelChange(mechId, (result: mechanicManager.BatteryLevelInfo) => {
   console.info(`'result:' ${result}`);
 });
@@ -722,7 +724,7 @@ getDeviceAdsorbState(mechId: number): AdsorbState
 ```ts
 console.info('Query the adsorb state');
 let adsorbState: mechanicManager.AdsorbState = mechanicManager.getDeviceAdsorbState(0);
-console.info(`'Query the adsorb state successfully, axis state:' ${axisStatus}`);
+console.info(`'Query the adsorb state successfully, adsorb state:' ${adsorbState}`);
 ```
   
 ## RotationAngles
