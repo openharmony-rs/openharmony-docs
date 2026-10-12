@@ -4051,7 +4051,7 @@ offUIAccessibilityFocusChanged(callback?: Callback&lt;UIAccessibilityFocusChange
 
 | 错误码ID   | 错误信息                                     |
 | ------- | ---------------------------------------- |
-| 9300000 | System abnormality.Possible causes: <br>1.Internal operation failed. <br>2.Failed to obtain the required service or client object (null pointer). <br>3.The listener or observer is not registered.|
+| 9300000 | System abnormality. Possible causes: <br>1.Internal operation failed. <br>2.Failed to obtain the required service or client object (null pointer). <br>3.The listener or observer is not registered.|
 
 ```ts
 import accessibility from '@ohos.accessibility';
