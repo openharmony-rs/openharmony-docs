@@ -2951,12 +2951,6 @@ onUIAccessibilityFocusChanged(callback: Callback&lt;UIAccessibilityFocusChangeIn
 
 注册监听器，监听应用无障碍焦点变化的事件。
 
-> **说明：**
->
-> - 注册监听的callback参数应使用具名函数而非匿名函数，否则每次调用时会创建一个新的底层对象，引起内存泄漏问题。
-> - 调用此方法后，务必在组件实例销毁前（如aboutToDisappear生命周期中）使用[offUIAccessibilityFocusChanged()](#accessibility.offuiaccessibilityfocuschanged)取消监听，否则可能会导致崩溃。
-
-
 **起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
