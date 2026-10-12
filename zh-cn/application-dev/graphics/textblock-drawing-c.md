@@ -306,6 +306,295 @@ OH_Drawing_FontDestroy(font);
 >
 > 如果 `OH_Drawing_CanvasDrawSingleCharacterWithFeatures` 与 `OH_Drawing_FontMeasureSingleCharacter` 混合使用，或者 `OH_Drawing_CanvasDrawSingleCharacter` 与 `OH_Drawing_FontMeasureSingleCharacterWithFeatures` 混合使用，字体绘制可能会重叠。
 
+## 字体回退
+
+在字块绘制和文本测量场景中，当开发者指定的字体不支持某些字符时，常规接口会直接显示空白。字体回退（Font Fallback）能力可以自动从系统字体中查找支持该字符的回退字体，如果未找到回退字体，则仍使用开发者指定的字体进行显示（如`.notdef`占位符）。
+
+详细的API介绍请参考[drawing_text_blob.h](../reference/apis-arkgraphics2d/capi-drawing-text-blob-h.md)和[drawing_font.h](../reference/apis-arkgraphics2d/capi-drawing-font-h.md)。
+
+### 字块绘制支持字体回退
+
+通过`OH_Drawing_TextBlobCreateFromTextWithFallback`、`OH_Drawing_TextBlobCreateFromPosTextWithFallback`和`OH_Drawing_TextBlobCreateFromStringWithFallback`接口创建字块时，接口会自动进行字体回退查找。当指定的字体不支持某些字符时，自动从系统查找回退typeface。每个使用相同typeface的连续字符run会创建一个独立的TextBlob对象，接口通过输出参数返回TextBlob数组及数组元素个数。所有TextBlob共享整个字符串的坐标系，每个TextBlob应绘制在相同的原点位置。使用完毕后需调用`OH_Drawing_TextBlobsArrayDestroy`接口释放数组内存。
+
+- `OH_Drawing_TextBlobCreateFromTextWithFallback`：从文本创建支持字体回退的字块数组，接受6个参数，分别为文本内容text、文本字节长度byteLength、font字体对象指针、文本编码方式textEncoding、输出参数textBlobs（TextBlob数组指针的地址）和输出参数textBlobsCount（数组元素个数的指针）。
+
+- `OH_Drawing_TextBlobCreateFromPosTextWithFallback`：从文本和坐标点数组创建支持字体回退的字块数组，接受7个参数，分别为文本内容text、文本字节长度byteLength、坐标点数组point2D、font字体对象指针、文本编码方式textEncoding、输出参数textBlobs和输出参数textBlobsCount。坐标点数组的元素个数由`OH_Drawing_FontCountText`确定。
+
+- `OH_Drawing_TextBlobCreateFromStringWithFallback`：从字符串创建支持字体回退的字块数组，接受5个参数，分别为字符串str、font字体对象指针、文本编码方式textEncoding、输出参数textBlobs和输出参数textBlobsCount。
+
+- `OH_Drawing_TextBlobsArrayDestroy`：销毁TextBlob数组并释放内存，接受2个参数，分别为TextBlob数组和数组元素个数count。count必须与创建数组时返回的个数一致。
+
+使用`OH_Drawing_TextBlobCreateFromStringWithFallback`接口从字符串创建支持字体回退的字块数组并绘制的示例代码如下：
+
+<!-- @[ndk_graphics_draw_textblob_string_fallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+
+``` C++
+// 创建字型对象
+OH_Drawing_Font *font = OH_Drawing_FontCreate();
+// 设置字体大小
+OH_Drawing_FontSetTextSize(font, value100_);
+// 需要绘制的文字
+const char *str = "Hello世界";
+// 声明输出参数
+OH_Drawing_TextBlob **textBlobs = nullptr;
+uint32_t textBlobsCount = 0;
+// 创建支持字体回退的字块数组
+OH_Drawing_TextBlobCreateFromStringWithFallback(str, font, TEXT_ENCODING_UTF8,
+    &textBlobs, &textBlobsCount);
+// 遍历字块数组并绘制，每个TextBlob绘制在相同原点
+for (uint32_t i = 0; i < textBlobsCount; i++) {
+    OH_Drawing_CanvasDrawTextBlob(canvas, textBlobs[i], value200_, value800_);
+}
+// 销毁字块数组
+OH_Drawing_TextBlobsArrayDestroy(textBlobs, textBlobsCount);
+// 释放字体对象
+OH_Drawing_FontDestroy(font);
+```
+
+使用`OH_Drawing_TextBlobCreateFromTextWithFallback`接口从文本创建支持字体回退的字块数组并绘制的示例代码如下：
+
+<!-- @[ndk_graphics_draw_textblob_text_fallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+
+``` C++
+// 创建字型对象
+OH_Drawing_Font *font = OH_Drawing_FontCreate();
+// 设置字体大小
+OH_Drawing_FontSetTextSize(font, value100_);
+// 需要绘制的文字
+const char *text = "Hello世界";
+uint32_t byteLength = strlen(text);
+// 声明输出参数
+OH_Drawing_TextBlob **textBlobs = nullptr;
+uint32_t textBlobsCount = 0;
+// 创建支持字体回退的字块数组
+OH_Drawing_TextBlobCreateFromTextWithFallback(text, byteLength, font, TEXT_ENCODING_UTF8,
+    &textBlobs, &textBlobsCount);
+// 遍历字块数组并绘制
+for (uint32_t i = 0; i < textBlobsCount; i++) {
+    OH_Drawing_CanvasDrawTextBlob(canvas, textBlobs[i], value200_, value800_);
+}
+// 销毁字块数组
+OH_Drawing_TextBlobsArrayDestroy(textBlobs, textBlobsCount);
+// 释放字体对象
+OH_Drawing_FontDestroy(font);
+```
+
+使用`OH_Drawing_TextBlobCreateFromPosTextWithFallback`接口从文本和坐标点数组创建支持字体回退的字块数组并绘制的示例代码如下：
+
+<!-- @[ndk_graphics_draw_textblob_postext_fallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+
+``` C++
+// 创建字型对象
+OH_Drawing_Font *font = OH_Drawing_FontCreate();
+// 设置字体大小
+OH_Drawing_FontSetTextSize(font, value100_);
+// 需要绘制的文字
+const char *text = "Hello世界";
+uint32_t byteLength = strlen(text);
+// 获取glyph数量
+int glyphCount = OH_Drawing_FontCountText(font, text, byteLength, TEXT_ENCODING_UTF8);
+// 为每个字符指定坐标位置
+OH_Drawing_Point2D *points = new OH_Drawing_Point2D[glyphCount];
+float xOffset = 0;
+for (int i = 0; i < glyphCount; i++) {
+    points[i].x = value200_ + xOffset;
+    points[i].y = value800_;
+    xOffset += 60;
+}
+// 声明输出参数
+OH_Drawing_TextBlob **textBlobs = nullptr;
+uint32_t textBlobsCount = 0;
+// 创建支持字体回退的字块数组
+OH_Drawing_TextBlobCreateFromPosTextWithFallback(text, byteLength, points, font,
+    TEXT_ENCODING_UTF8, &textBlobs, &textBlobsCount);
+// 遍历字块数组并绘制
+for (uint32_t i = 0; i < textBlobsCount; i++) {
+    OH_Drawing_CanvasDrawTextBlob(canvas, textBlobs[i], 0, 0);
+}
+// 销毁字块数组
+OH_Drawing_TextBlobsArrayDestroy(textBlobs, textBlobsCount);
+// 释放坐标点数组
+delete[] points;
+// 释放字体对象
+OH_Drawing_FontDestroy(font);
+```
+
+### 字形转换与文本测量支持字体回退
+
+除了字块创建接口外，Font也提供了支持字体回退的字形转换和文本测量接口。
+
+- `OH_Drawing_FontTextToGlyphsWithFallback`：将文本转换为glyph索引，支持字体回退。通过输出参数返回`OH_Drawing_TypefaceFallbackInfo`数组及数组元素个数，每个元素包含匹配的typeface和对应的glyph ID数组。使用完毕后需调用`OH_Drawing_FontTypefaceFallbackInfoDestroy`接口释放内存。
+
+- `OH_Drawing_FontMeasureTextWithFallback`：测量文本宽度和边界框，支持字体回退。通过输出参数返回文本宽度和边界框。
+
+- `OH_Drawing_FontMeasureTextWithBrushOrPenWithFallback`：使用画刷或画笔测量文本宽度和边界框，支持字体回退。brush和pen不能同时不为NULL，通过输出参数返回文本宽度和边界框。
+
+- `OH_Drawing_FontTypefaceFallbackInfoDestroy`：释放`OH_Drawing_TypefaceFallbackInfo`数组并释放内存，接受2个参数，分别为infos数组和数组元素个数count。count必须与创建数组时返回的个数一致。
+
+使用`OH_Drawing_FontTextToGlyphsWithFallback`接口获取字形映射信息，并通过`OH_Drawing_CanvasDrawGlyphs`绘制字形数组的示例代码如下：
+
+<!-- @[ndk_graphics_draw_font_text_to_glyphs_fallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+
+``` C++
+// 创建字型对象
+OH_Drawing_Font *font = OH_Drawing_FontCreate();
+// 设置字体大小
+OH_Drawing_FontSetTextSize(font, value100_);
+// 需要转换的文本
+const char *text = "Hello世界";
+uint32_t byteLength = strlen(text);
+// 声明输出参数
+OH_Drawing_TypefaceFallbackInfo *fallbackInfos = nullptr;
+uint32_t infosCount = 0;
+// 将文本转换为glyph索引，支持字体回退
+OH_Drawing_FontTextToGlyphsWithFallback(font, text, byteLength, TEXT_ENCODING_UTF8,
+    &fallbackInfos, &infosCount);
+// 遍历回退信息，每个元素包含相同typeface的glyph ID数组
+float xOffset = 0;
+for (uint32_t i = 0; i < infosCount; i++) {
+    uint32_t glyphCount = fallbackInfos[i].glyphCount;
+    // 为该回退组设置typeface
+    OH_Drawing_FontSetTypeface(font, fallbackInfos[i].typeface);
+    // 将uint16_t的glyphIds转换为int数组
+    int *intGlyphIds = new int[glyphCount];
+    for (uint32_t j = 0; j < glyphCount; j++) {
+        intGlyphIds[j] = fallbackInfos[i].glyphIds[j];
+    }
+    // 为每个字形指定坐标位置
+    OH_Drawing_Point2D *positions = new OH_Drawing_Point2D[glyphCount];
+    for (uint32_t j = 0; j < glyphCount; j++) {
+        positions[j].x = value200_ + xOffset;
+        positions[j].y = value800_;
+        xOffset += value100_;
+    }
+    // 绘制字形数组
+    OH_Drawing_CanvasDrawGlyphs(canvas, intGlyphIds, glyphCount, 0,
+        positions, glyphCount, 0, glyphCount, font);
+    delete[] intGlyphIds;
+    delete[] positions;
+}
+// 释放回退信息数组
+OH_Drawing_FontTypefaceFallbackInfoDestroy(fallbackInfos, infosCount);
+// 释放字体对象
+OH_Drawing_FontDestroy(font);
+```
+
+使用`OH_Drawing_FontMeasureTextWithFallback`接口测量文本宽度和边界框，并绘制文本与边界框的示例代码如下：
+
+<!-- @[ndk_graphics_draw_font_measure_text_fallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+
+``` C++
+// 创建字型对象
+OH_Drawing_Font *font = OH_Drawing_FontCreate();
+// 设置字体大小
+OH_Drawing_FontSetTextSize(font, value100_);
+// 需要测量的文本
+const char *text = "Hello世界";
+uint32_t byteLength = strlen(text);
+// 创建矩形对象用于接收边界框
+OH_Drawing_Rect *bounds = OH_Drawing_RectCreate(0, 0, 0, 0);
+float textWidth = 0;
+// 测量文本宽度，支持字体回退
+OH_Drawing_FontMeasureTextWithFallback(font, text, byteLength, TEXT_ENCODING_UTF8,
+    bounds, &textWidth);
+// 绘制文本的起点
+float startX = value200_;
+float startY = value800_;
+// 创建支持字体回退的字块数组并绘制文本
+OH_Drawing_TextBlob **textBlobs = nullptr;
+uint32_t textBlobsCount = 0;
+OH_Drawing_TextBlobCreateFromStringWithFallback(text, font, TEXT_ENCODING_UTF8,
+    &textBlobs, &textBlobsCount);
+for (uint32_t i = 0; i < textBlobsCount; i++) {
+    OH_Drawing_CanvasDrawTextBlob(canvas, textBlobs[i], startX, startY);
+}
+OH_Drawing_TextBlobsArrayDestroy(textBlobs, textBlobsCount);
+// 获取边界框坐标，并平移到文本绘制起点
+float left = OH_Drawing_RectGetLeft(bounds) + startX;
+float top = OH_Drawing_RectGetTop(bounds) + startY;
+float right = OH_Drawing_RectGetRight(bounds) + startX;
+float bottom = OH_Drawing_RectGetBottom(bounds) + startY;
+// 创建画笔用于绘制边界框
+OH_Drawing_Pen *pen = OH_Drawing_PenCreate();
+OH_Drawing_PenSetAntiAlias(pen, true);
+OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MIN, RGBA_MIN));
+OH_Drawing_PenSetWidth(pen, 3);
+OH_Drawing_CanvasAttachPen(canvas, pen);
+// 绘制边界框矩形
+OH_Drawing_Rect *measureBounds = OH_Drawing_RectCreate(left, top, right, bottom);
+OH_Drawing_CanvasDrawRect(canvas, measureBounds);
+OH_Drawing_CanvasDetachPen(canvas);
+// 销毁各类对象
+OH_Drawing_RectDestroy(measureBounds);
+OH_Drawing_PenDestroy(pen);
+// 释放矩形对象
+OH_Drawing_RectDestroy(bounds);
+// 释放字体对象
+OH_Drawing_FontDestroy(font);
+```
+
+使用`OH_Drawing_FontMeasureTextWithBrushOrPenWithFallback`接口使用画刷或画笔测量文本宽度和边界框，并绘制文本与边界框的示例代码如下：
+
+<!-- @[ndk_graphics_draw_font_measure_text_with_brush_or_pen_fallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
+
+``` C++
+// 创建字型对象
+OH_Drawing_Font *font = OH_Drawing_FontCreate();
+// 设置字体大小
+OH_Drawing_FontSetTextSize(font, value100_);
+// 需要测量的文本
+const char *text = "Hello世界";
+uint32_t byteLength = strlen(text);
+// 创建画刷对象
+OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
+OH_Drawing_BrushSetAntiAlias(brush, true);
+OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, RGBA_MIN, RGBA_MIN));
+// 创建画笔对象
+OH_Drawing_Pen *pen = OH_Drawing_PenCreate();
+OH_Drawing_PenSetAntiAlias(pen, true);
+OH_Drawing_PenSetColor(pen, OH_Drawing_ColorSetArgb(RGBA_MAX, RGBA_MAX, 0x00, 0x00));
+OH_Drawing_PenSetWidth(pen, 3);
+// 绘制文本的起点
+float startX = value200_;
+float startY = value800_;
+// 设置画刷填充效果并绘制文本
+OH_Drawing_CanvasAttachBrush(canvas, brush);
+OH_Drawing_TextBlob **textBlobs = nullptr;
+uint32_t textBlobsCount = 0;
+OH_Drawing_TextBlobCreateFromStringWithFallback(text, font, TEXT_ENCODING_UTF8,
+    &textBlobs, &textBlobsCount);
+for (uint32_t i = 0; i < textBlobsCount; i++) {
+    OH_Drawing_CanvasDrawTextBlob(canvas, textBlobs[i], startX, startY);
+}
+OH_Drawing_TextBlobsArrayDestroy(textBlobs, textBlobsCount);
+OH_Drawing_CanvasDetachBrush(canvas);
+// 创建矩形对象用于接收边界框
+OH_Drawing_Rect *bounds = OH_Drawing_RectCreate(0, 0, 0, 0);
+float textWidth = 0;
+// 使用画刷测量文本宽度，支持字体回退（brush和pen不能同时传入）
+OH_Drawing_FontMeasureTextWithBrushOrPenWithFallback(font, text, byteLength,
+    TEXT_ENCODING_UTF8, brush, nullptr, bounds, &textWidth);
+// 获取边界框坐标，并平移到文本绘制起点
+float left = OH_Drawing_RectGetLeft(bounds) + startX;
+float top = OH_Drawing_RectGetTop(bounds) + startY;
+float right = OH_Drawing_RectGetRight(bounds) + startX;
+float bottom = OH_Drawing_RectGetBottom(bounds) + startY;
+// 设置画笔描边效果并绘制边界框矩形
+OH_Drawing_CanvasAttachPen(canvas, pen);
+OH_Drawing_Rect *measureBounds = OH_Drawing_RectCreate(left, top, right, bottom);
+OH_Drawing_CanvasDrawRect(canvas, measureBounds);
+OH_Drawing_CanvasDetachPen(canvas);
+// 销毁各类对象
+OH_Drawing_RectDestroy(measureBounds);
+OH_Drawing_PenDestroy(pen);
+// 释放矩形对象
+OH_Drawing_RectDestroy(bounds);
+// 释放画刷对象
+OH_Drawing_BrushDestroy(brush);
+// 释放字体对象
+OH_Drawing_FontDestroy(font);
+```
+
 <!--RP1-->
 ## 相关实例
 
