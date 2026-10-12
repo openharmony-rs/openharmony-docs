@@ -1,3 +1,11 @@
+---
+kit: Image Kit / 图片处理服务
+description: PixelMap提供位图操作能力，支持读写像素数据、获取位图信息、深拷贝并改变像素格式，以及多张位图纵向拼接，适用于像素级图像处理和自定义图像合成的开发场景。
+keywords: PixelMap, 位图操作, 像素数据读写, 区域像素读写, 深拷贝, 像素格式转换, 位图拼接, 像素密度, 像素字节数
+doctype: guide
+status: active
+---
+
 # 使用PixelMap完成位图操作
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
