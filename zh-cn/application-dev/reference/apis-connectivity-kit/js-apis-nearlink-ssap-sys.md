@@ -7,14 +7,14 @@
 <!--Adviser: @zhang_yixin13-->
 
 
-本模块提供了SSAP（星闪服务交互协议 SparkLink Service Access Protocol）连接功能，包括客户端创建与连接、调用服务端方法、读写描述符、订阅事件通知等。
+本模块提供了SSAP（星闪服务交互协议 SparkLink Service Access Protocol）连接功能，包括调用服务端方法、读写描述符、订阅事件通知、设置属性指示等系统接口。
 
 
 **起始版本：** 26.0.0
 
 > **说明：**
 >
-> 本模块接口为系统接口。
+> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.nearlink.ssap (星闪SSAP连接能力)](js-apis-nearlink-ssap.md)。
 
 
 ## 导入模块
@@ -74,8 +74,8 @@ setPropertyIndication(property: Property, enable: boolean): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Non-system applications are not allowed to use system APIs. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 36100003 | NearLink disabled. |
 | 36100030 | The connection is not established. |
 | 36100043 | Invalid UUID in property. |
@@ -143,8 +143,8 @@ callMethod(method: Method): Promise&lt;Method&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Non-system applications are not allowed to use system APIs. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 36100003 | NearLink disabled. |
 | 36100043 | Invalid UUID. |
 | 36100044 | NearLink standard UUID not allowed. |
@@ -218,8 +218,8 @@ readDescriptor(descriptor: PropertyDescriptor): Promise&lt;PropertyDescriptor&gt
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Non-system applications are not allowed to use system APIs. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 36100003 | NearLink disabled. |
 | 36100043 | Invalid UUID in descriptor. |
 | 36100044 | NearLink standard UUID not allowed. |
@@ -299,8 +299,8 @@ writeDescriptor(descriptor: PropertyDescriptor): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Non-system applications are not allowed to use system APIs. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 36100003 | NearLink disabled. |
 | 36100043 | Invalid UUID in descriptor. |
 | 36100044 | NearLink standard UUID not allowed. |
@@ -431,15 +431,14 @@ try {
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**系统接口：**  此接口为系统接口。
+
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| serviceUuid | string | 否 | 否 | 星闪服务UUID，长度必须为36个字符，由32个十六进制数字和4个连字符（-）组成，例如： FFFFFFFF-1234-5678-ABCD-000000001234，表示一个128位标识符。 不允许使用星闪标准UUID。 |
-| properties | [Property](js-apis-nearlink-ssap.md#property)[] | 否 | 否 | 表示服务的Property列表。 |
-| methods | [Method](#method)[] | 否 | 是 | 表示服务的方法列表。若未配置该字段，则服务不提供任何方法。 |
-| events | [Event](#event)[] | 否 | 是 | 表示服务的事件列表。若未配置该字段，则服务不提供任何事件。 |
-
+| methods | [Method](#method)[] | 否 | 是 | 表示服务的方法列表。若未配置，该服务不提供任何方法。 |
+| events | [Event](#event)[] | 否 | 是 | 表示服务的事件列表。若未配置，该服务不提供任何事件。 |
 
 ## Method
 
