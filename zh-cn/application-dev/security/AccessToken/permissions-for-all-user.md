@@ -263,3 +263,17 @@
 **替代方案**：
 
 请参考[文件权限组废弃替代方案](app-permission-group-list.md#文件deprecated)。
+
+## ohos.permission.WINDOW_CAPTURE
+
+允许应用获取指定窗口的内容信息。
+
+应用获取此权限后，可获取指定窗口的内容信息。
+
+**权限级别**：normal
+
+**授权方式**：用户授权（user_grant）
+
+**支持设备**：PC/2in1 | Tablet
+
+**起始版本**：26.2.0

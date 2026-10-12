@@ -263,3 +263,17 @@ Allows an application to read media files from and write media files into the us
 **Substitute**:
 
 See the [alternative solution of the **Files** permission group](app-permission-group-list.md#filesdeprecated).
+
+## ohos.permission.WINDOW_CAPTURE
+
+Allows an application to capture the content information of a specified window.
+
+With this permission, the application can capture the content information of specified window.
+
+**Permission level**: normal
+
+**Authorization mode**: user_grant
+
+**Supported devices**: PCs/2-in-1 devices | tablets
+
+**Valid since**: 26.2.0
