@@ -361,7 +361,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    uint32_t skippedBlockCount = 0;
    uint32_t firstEncryptedOffset = 0;
    uint32_t subsampleCount = 1;
-   DrmSubsample subsamples[1] = { {0x10, 0x16} };
+   DrmSubsample subsamples[1] = { { .clearHeaderLen = 0x10, .payLoadLen = 0x16 } };
    // 创建CencInfo实例。
    OH_AVCencInfo *cencInfo = OH_AVCencInfo_Create();
    if (cencInfo == nullptr) {
@@ -398,6 +398,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    if (errNo != AV_ERR_OK) {
        // 异常处理。
    }
+   cencInfo = nullptr;
    ```
 
 9. 调用OH_AudioCodec_PushInputBuffer()，写入待解码的数据。

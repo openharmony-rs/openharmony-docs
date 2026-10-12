@@ -169,7 +169,7 @@ lldb工具在SDK中的路径为`\ohos-sdk\[system]\native\llvm`，其中system�
         ```bash
         hdc file send \ohos-sdk\[system]\native\llvm\lib\clang\[version]\bin\aarch64-linux-ohos\lldb-server /data/local/tmp/debugserver
         ```
-        - PC上准备lldb，如windows系统则使用lldb.exe, 稍后将使用lldb与OH设备上的lldb-server远程连接进行调试。
+        - PC上准备lldb，如Windows系统则使用lldb.exe，稍后将使用lldb与OH设备上的lldb-server远程连接进行调试。
 
 ## 使用指导-本地调试
 
