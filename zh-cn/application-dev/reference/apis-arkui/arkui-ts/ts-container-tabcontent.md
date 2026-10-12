@@ -2338,37 +2338,97 @@ struct TabsIndicatorExample {
 @Entry
 @Component
 struct TabBarVisibilityExample {
+  @State myIndex: number = 0;
   @State isBottomType: boolean = true;
+  private controller: TabsController = new TabsController();
 
   build() {
     Column() {
       Row() {
-        Text('barStyle: ').fontSize(25)
-        Button('BOTTOM').onClick(() => {
-          this.isBottomType = true;
+        Text('barStyle: ')
+        Radio({group: `barStyle`, value: `BOTTOM`}).checked(this.isBottomType).onChange((isChecked: boolean) => {
+          if (isChecked) {
+            this.isBottomType = true;
+          }
+        })
+        Text('BOTTOM  ')
+        Radio({group: `barStyle`, value: `SIDEBAR`}).checked(!this.isBottomType).onChange((isChecked: boolean) => {
+          if (isChecked) {
+            this.isBottomType = false;
+          }
+        })
+        Text('SIDEBAR')
+      }.width(450)
+      .height(55)
+      .justifyContent(FlexAlign.Center)
+      Divider().vertical(false).strokeWidth(1).color('#ffd9d9d9')
+      Row() {
+        // 即使某些页签通过tabBarVisibility属性隐藏了，也可以通过修改index状态变量切换到对应的页面
+        Text('Set myIndex: ')
+        Radio({group: `myIndex`, value: `0`}).checked(this.myIndex === 0).onChange((isChecked: boolean) => {
+          if (isChecked) {
+            this.myIndex = 0;
+          }
+        })
+        Text('0  ')
+        Radio({group: `myIndex`, value: `1`}).checked(this.myIndex === 1).onChange((isChecked: boolean) => {
+          if (isChecked) {
+            this.myIndex = 1;
+          }
+        })
+        Text('1  ')
+        Radio({group: `myIndex`, value: `2`}).checked(this.myIndex === 2).onChange((isChecked: boolean) => {
+          if (isChecked) {
+            this.myIndex = 2;
+          }
+        })
+        Text('2')
+      }.width(450)
+      .height(55)
+      .justifyContent(FlexAlign.Center)
+      Divider().vertical(false).strokeWidth(1).color('#ffd9d9d9')
+      Row() {
+        // 即使某些页签通过tabBarVisibility属性隐藏了，也可以通过TabsController.changeIndex接口切换到对应的页面
+        Text('TabsController.changeIndex').margin({right: 10})
+        Button('0').onClick(() => {
+          this.controller.changeIndex(0)
         }).margin({right: 10}).fontSize(15).backgroundColor('#ff2787d9')
-        Button('SIDEBAR').onClick(() => {
-          this.isBottomType = false;
+        Button('1').onClick(() => {
+          this.controller.changeIndex(1)
+        }).margin({right: 10}).fontSize(15).backgroundColor('#ff2787d9')
+        Button('2').onClick(() => {
+          this.controller.changeIndex(2)
         }).fontSize(15).backgroundColor('#ff2787d9')
       }.width(450)
-      .height('20%')
+      .height(55)
       .justifyContent(FlexAlign.Center)
-      Tabs() {
+      Tabs({index: this.myIndex, controller: this.controller}) {
         TabContent() {
           Stack({alignContent: Alignment.Center}) {
-            Text('TabContent1').fontSize(25)
+            Text('TabContent0').fontSize(18)
           }.width('100%').height('100%')
         }
+        // 请开发者将$r('app.media.arrow')替换为实际的资源
         // 页签默认在TabBarDisplayMode.BOTTOM_TABBAR和TabBarDisplayMode.SIDEBAR显示模式中都可见
-        .tabBar({icon: $r('app.media.startIcon'), text: 'tab1'})
+        .tabBar({icon: $r('app.media.arrow'), text: 'tab0'})
         TabContent() {
           Stack({alignContent: Alignment.Center}) {
-            Text('TabContent2').fontSize(25)
+            Text('TabContent1').fontSize(18)
           }.width('100%').height('100%')
         }
-        .tabBar({icon: $r('app.media.startIcon'), text: 'tab2'})
+        // 请开发者将$r('app.media.arrow')替换为实际的资源
+        .tabBar({icon: $r('app.media.arrow'), text: 'tab1'})
         // 设置该页签在TabBarDisplayMode.BOTTOM_TABBAR显示模式时不可见
         .tabBarVisibility(TabVisibility.HIDDEN, TabBarDisplayMode.BOTTOM_TABBAR)
+        TabContent() {
+          Stack({alignContent: Alignment.Center}) {
+            Text('TabContent2').fontSize(18)
+          }.width('100%').height('100%')
+        }
+        // 请开发者将$r('app.media.arrow')替换为实际的资源
+        .tabBar({icon: $r('app.media.arrow'), text: 'tab2'})
+        // 设置该页签在TabBarDisplayMode.SIDEBAR显示模式时不可见
+        .tabBarVisibility(TabVisibility.HIDDEN, TabBarDisplayMode.SIDEBAR)
       }
       .width(450)
       .height('80%')
