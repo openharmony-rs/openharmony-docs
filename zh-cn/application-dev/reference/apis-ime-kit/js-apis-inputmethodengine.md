@@ -5292,6 +5292,7 @@ InputClient是输入法客户端对象，代表当前绑定到输入法应用的
 - 编辑框属性：通过[getEditorAttribute](#geteditorattribute9)/[getEditorAttributeSync](#geteditorattributesync10)获取编辑框属性信息（输入类型、回车键类型等），据此调整键盘布局。
 - 文本预览：通过[setPreviewText](#setpreviewtext12)/[setPreviewTextSync](#setpreviewtextsync12)设置预览文本，通过[finishTextPreview](#finishtextpreview12)/[finishTextPreviewSync](#finishtextpreviewsync12)结束文本预览。
 - 私有通信：通过[sendPrivateCommand](#sendprivatecommand12)向应用发送私有命令，通过[sendMessage](#sendmessage15)/[recvMessage](#recvmessage15)进行消息通信。
+- 富文本获取：通过[getLeftRichText](#getleftrichtext)/[getLeftRichTextSync](#getleftrichtextsync)获取光标前的富文本内容，通过[getRightRichText](#getrightrichtext)/[getRightRichTextSync](#getrightrichtextsync)获取光标后的富文本内容，用于获取编辑框中的纯文本、图片、符号等多种span类型的富文本数据。
 
 注意事项：
 - InputClient实例与当前绑定的编辑框关联，当编辑框失去焦点或输入法解绑时，该实例可能失效。
@@ -7711,6 +7712,647 @@ inputMethodEngine.getInputMethodAbility()
   inputClient.offAttachOptionsDidChange(attachOptionsDidChangeCallback);
   console.info(`attachOptionsDidChange unsubscribed from attachOptionsDidChange`);
 });
+```
+
+### getLeftRichText
+
+ArkTS-Dyn: getLeftRichText(length: number): Promise&lt;[InputMethodRichText](#inputmethodrichtext)&gt;
+
+ArkTS-Sta: getLeftRichText(length: int): Promise&lt;[InputMethodRichText](#inputmethodrichtext)&gt;
+
+获取光标前指定长度的富文本内容。使用promise异步回调。
+使用场景：获取编辑框中光标前的富文本内容（包括纯文本、图片、符号等），用于输入法应用分析已输入的多模态内容，提供更精准的智能补全和输入建议。
+使用后效果：成功时返回光标前指定长度的[InputMethodRichText](#inputmethodrichtext)对象，输入法应用可通过该对象提取纯文本或遍历span数组获取各类型内容。
+
+> **说明：**
+>
+> 如果当前绑定输入法的编辑框是ArkUI富文本组件（如RichEditor），则返回完整的富文本内容；如果绑定的不是富文本组件，则降级为纯文本实现。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| length | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是 | 文本长度。不能小于0，取值范围为[0, 4096]的整数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;[InputMethodRichText](#inputmethodrichtext)&gt; | Promise对象，返回光标前指定长度的富文本。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let length: number = 5;
+inputClient.getLeftRichText(length).then((richText: inputMethodEngine.InputMethodRichText) => {
+  let plainText: string = richText.getString();
+  console.info(`Succeeded in getting left rich text, plainText: ${plainText}`);
+  let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
+  for (let i = 0; i < spans.length; i++) {
+    let span = spans[i];
+    let type: inputMethodEngine.SpanType = span.getType();
+    let content: string = span.getContent();
+    let range: inputMethodEngine.Range = span.getRange();
+    console.info(`span[${i}]: type=${type}, content=${content}, range={start:${range.start}, end:${range.end}}`);
+  }
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getLeftRichText. Code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let length: int = 5;
+inputClient.getLeftRichText(length).then((richText: inputMethodEngine.InputMethodRichText) => {
+  let plainText: string = richText.getString();
+  console.info(`Succeeded in getting left rich text, plainText: ${plainText}`);
+  let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
+  for (let i = 0; i < spans.length; i++) {
+    let span: inputMethodEngine.RichTextSpan = spans[i];
+    let type: inputMethodEngine.SpanType = span.getType();
+    let content: string = span.getContent();
+    let range: inputMethodEngine.Range = span.getRange();
+    console.info(`span[${i}]: type=${type}, content=${content}, range={start:${range.start}, end:${range.end}}`);
+  }
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getLeftRichText. Code is ${err.code}, message is ${err.message}`);
+});
+```
+
+### getLeftRichTextSync
+
+ArkTS-Dyn: getLeftRichTextSync(length: number): [InputMethodRichText](#inputmethodrichtext)
+
+ArkTS-Sta: getLeftRichTextSync(length: int): [InputMethodRichText](#inputmethodrichtext)
+
+获取光标前指定长度的富文本内容。
+
+> **说明：**
+>
+> 同步接口阻塞主线程，容易影响UI交互，需谨慎使用。建议优先使用对应的异步接口[getLeftRichText](#getleftrichtext)。
+>
+> 如果当前绑定输入法的编辑框是ArkUI富文本组件（如RichEditor），则返回完整的富文本内容；如果绑定的不是富文本组件，则降级为纯文本实现。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| length | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是 | 文本长度。不能小于0，取值范围为[0, 4096]的整数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| [InputMethodRichText](#inputmethodrichtext) | 光标前指定长度的富文本。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let length: number = 5;
+  let richText: inputMethodEngine.InputMethodRichText = inputClient.getLeftRichTextSync(length);
+  let plainText: string = richText.getString();
+  console.info(`Succeeded in getting left rich text sync, plainText: ${plainText}`);
+  let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
+  for (let i = 0; i < spans.length; i++) {
+    let span = spans[i];
+    let type: inputMethodEngine.SpanType = span.getType();
+    let content: string = span.getContent();
+    let range: inputMethodEngine.Range = span.getRange();
+    console.info(`span[${i}]: type=${type}, content=${content}, range={start:${range.start}, end:${range.end}}`);
+  }
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to getLeftRichTextSync. Code is ${error.code}, message is ${error.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let length: int = 5;
+  let richText: inputMethodEngine.InputMethodRichText = inputClient.getLeftRichTextSync(length);
+  let plainText: string = richText.getString();
+  console.info(`Succeeded in getting left rich text sync, plainText: ${plainText}`);
+  let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
+  for (let i = 0; i < spans.length; i++) {
+    let span: inputMethodEngine.RichTextSpan = spans[i];
+    let type: inputMethodEngine.SpanType = span.getType();
+    let content: string = span.getContent();
+    let range: inputMethodEngine.Range = span.getRange();
+    console.info(`span[${i}]: type=${type}, content=${content}, range={start:${range.start}, end:${range.end}}`);
+  }
+} catch (err) {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to getLeftRichTextSync. Code is ${error.code}, message is ${error.message}`);
+}
+```
+
+### getRightRichText
+
+ArkTS-Dyn: getRightRichText(length: number): Promise&lt;[InputMethodRichText](#inputmethodrichtext)&gt;
+
+ArkTS-Sta: getRightRichText(length: int): Promise&lt;[InputMethodRichText](#inputmethodrichtext)&gt;
+
+获取光标后指定长度的富文本内容。使用promise异步回调。
+使用场景：获取编辑框中光标后的富文本内容（包括纯文本、图片、符号等），用于输入法应用分析光标后的多模态内容，提供更精准的智能补全和输入建议。
+使用后效果：成功时返回光标后指定长度的[InputMethodRichText](#inputmethodrichtext)对象，输入法应用可通过该对象提取纯文本或遍历span数组获取各类型内容。
+
+> **说明：**
+>
+> 如果当前绑定输入法的编辑框是ArkUI富文本组件（如RichEditor），则返回完整的富文本内容；如果绑定的不是富文本组件，则降级为纯文本实现。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| length | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是 | 文本长度。不能小于0，取值范围为[0, 4096]的整数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;[InputMethodRichText](#inputmethodrichtext)&gt; | Promise对象，返回光标后指定长度的富文本。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let length: number = 5;
+inputClient.getRightRichText(length).then((richText: inputMethodEngine.InputMethodRichText) => {
+  let plainText: string = richText.getString();
+  console.info(`Succeeded in getting right rich text, plainText: ${plainText}`);
+  let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
+  for (let i = 0; i < spans.length; i++) {
+    let span = spans[i];
+    let type: inputMethodEngine.SpanType = span.getType();
+    let content: string = span.getContent();
+    let range: inputMethodEngine.Range = span.getRange();
+    console.info(`span[${i}]: type=${type}, content=${content}, range={start:${range.start}, end:${range.end}}`);
+  }
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getRightRichText. Code is ${err.code}, message is ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let length: int = 5;
+inputClient.getRightRichText(length).then((richText: inputMethodEngine.InputMethodRichText) => {
+  let plainText: string = richText.getString();
+  console.info(`Succeeded in getting right rich text, plainText: ${plainText}`);
+  let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
+  for (let i = 0; i < spans.length; i++) {
+    let span: inputMethodEngine.RichTextSpan = spans[i];
+    let type: inputMethodEngine.SpanType = span.getType();
+    let content: string = span.getContent();
+    let range: inputMethodEngine.Range = span.getRange();
+    console.info(`span[${i}]: type=${type}, content=${content}, range={start:${range.start}, end:${range.end}}`);
+  }
+}).catch((err: BusinessError) => {
+  console.error(`Failed to getRightRichText. Code is ${err.code}, message is ${err.message}`);
+});
+```
+
+### getRightRichTextSync
+
+ArkTS-Dyn: getRightRichTextSync(length: number): [InputMethodRichText](#inputmethodrichtext)
+
+ArkTS-Sta: getRightRichTextSync(length: int): [InputMethodRichText](#inputmethodrichtext)
+
+获取光标后指定长度的富文本内容。
+
+> **说明：**
+>
+> 同步接口阻塞主线程，容易影响UI交互，需谨慎使用。建议优先使用对应的异步接口[getRightRichText](#getrightrichtext)。
+>
+> 如果当前绑定输入法的编辑框是ArkUI富文本组件（如RichEditor），则返回完整的富文本内容；如果绑定的不是富文本组件，则降级为纯文本实现。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| length | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是 | 文本长度。不能小于0，取值范围为[0, 4096]的整数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| [InputMethodRichText](#inputmethodrichtext) | 光标后指定长度的富文本。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 12800003 | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let length: number = 5;
+  let richText: inputMethodEngine.InputMethodRichText = inputClient.getRightRichTextSync(length);
+  let plainText: string = richText.getString();
+  console.info(`Succeeded in getting right rich text sync, plainText: ${plainText}`);
+  let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
+  for (let i = 0; i < spans.length; i++) {
+    let span = spans[i];
+    let type: inputMethodEngine.SpanType = span.getType();
+    let content: string = span.getContent();
+    let range: inputMethodEngine.Range = span.getRange();
+    console.info(`span[${i}]: type=${type}, content=${content}, range={start:${range.start}, end:${range.end}}`);
+  }
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to getRightRichTextSync. Code is ${error.code}, message is ${error.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let length: int = 5;
+  let richText: inputMethodEngine.InputMethodRichText = inputClient.getRightRichTextSync(length);
+  let plainText: string = richText.getString();
+  console.info(`Succeeded in getting right rich text sync, plainText: ${plainText}`);
+  let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
+  for (let i = 0; i < spans.length; i++) {
+    let span: inputMethodEngine.RichTextSpan = spans[i];
+    let type: inputMethodEngine.SpanType = span.getType();
+    let content: string = span.getContent();
+    let range: inputMethodEngine.Range = span.getRange();
+    console.info(`span[${i}]: type=${type}, content=${content}, range={start:${range.start}, end:${range.end}}`);
+  }
+} catch (err) {
+  let error: BusinessError = err as BusinessError;
+  console.error(`Failed to getRightRichTextSync. Code is ${error.code}, message is ${error.message}`);
+}
+```
+
+## SpanType
+
+枚举，定义富文本中span的类型。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| -------- | -- | -------- |
+| TEXT | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 0 | 纯文本。|
+| IMAGE | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 1 | 图片。|
+| SYMBOL | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 2 | 符号。|
+| CUSTOM | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 3 | 自定义。|
+
+## InputMethodRichText
+
+定义富文本内容。输入法应用通过[getLeftRichText](#getleftrichtext)/[getLeftRichTextSync](#getleftrichtextsync)/[getRightRichText](#getrightrichtext)/[getRightRichTextSync](#getrightrichtextsync)获取该对象实例后，可调用下列方法提取纯文本或遍历span数组。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+### getString
+
+getString(): string
+
+从富文本中提取纯文本。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| string | 从富文本中提取的纯文本。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+let length: number = 5;
+let richText: inputMethodEngine.InputMethodRichText = inputClient.getLeftRichTextSync(length);
+let plainText: string = richText.getString();
+console.info(`plainText: ${plainText}`);
+```
+
+ArkTS-Sta示例：
+
+```ts
+let length: int = 5;
+let richText: inputMethodEngine.InputMethodRichText = inputClient.getLeftRichTextSync(length);
+let plainText: string = richText.getString();
+console.info(`plainText: ${plainText}`);
+```
+
+### getSpans
+
+getSpans(): Array&lt;[RichTextSpan](#richtextspan)&gt;
+
+获取组成富文本的span数组。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Array&lt;[RichTextSpan](#richtextspan)&gt; | 富文本中的span数组。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+let length: number = 5;
+let richText: inputMethodEngine.InputMethodRichText = inputClient.getLeftRichTextSync(length);
+let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
+for (let i = 0; i < spans.length; i++) {
+  let span = spans[i];
+  let type: inputMethodEngine.SpanType = span.getType();
+  let content: string = span.getContent();
+  let range: inputMethodEngine.Range = span.getRange();
+  console.info(`span[${i}]: type=${type}, content=${content}, range={start:${range.start}, end:${range.end}}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+let length: int = 5;
+let richText: inputMethodEngine.InputMethodRichText = inputClient.getLeftRichTextSync(length);
+let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
+for (let i = 0; i < spans.length; i++) {
+  let span: inputMethodEngine.RichTextSpan = spans[i];
+  let type: inputMethodEngine.SpanType = span.getType();
+  let content: string = span.getContent();
+  let range: inputMethodEngine.Range = span.getRange();
+  console.info(`span[${i}]: type=${type}, content=${content}, range={start:${range.start}, end:${range.end}}`);
+}
+```
+
+## RichTextSpan
+
+定义富文本中的一个span。通过该对象可获取span的类型、内容和在富文本中的范围。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+### getType
+
+getType(): [SpanType](#spantype)
+
+获取span的类型。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| [SpanType](#spantype) | span的类型。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+let length: number = 5;
+let richText: inputMethodEngine.InputMethodRichText = inputClient.getLeftRichTextSync(length);
+let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
+for (let i = 0; i < spans.length; i++) {
+  let type: inputMethodEngine.SpanType = spans[i].getType();
+  console.info(`span[${i}] type: ${type}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+let length: int = 5;
+let richText: inputMethodEngine.InputMethodRichText = inputClient.getLeftRichTextSync(length);
+let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
+for (let i = 0; i < spans.length; i++) {
+  let type: inputMethodEngine.SpanType = spans[i].getType();
+  console.info(`span[${i}] type: ${type}`);
+}
+```
+
+### getContent
+
+getContent(): string
+
+获取span的内容。
+
+> **说明：**
+>
+> 如果span类型为[SpanType.IMAGE](#spantype)，则content为图片插入到ArkUI富文本组件时携带的标签信息（imageTag）。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| string | span的内容。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+let length: number = 5;
+let richText: inputMethodEngine.InputMethodRichText = inputClient.getLeftRichTextSync(length);
+let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
+for (let i = 0; i < spans.length; i++) {
+  let content: string = spans[i].getContent();
+  console.info(`span[${i}] content: ${content}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+let length: int = 5;
+let richText: inputMethodEngine.InputMethodRichText = inputClient.getLeftRichTextSync(length);
+let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
+for (let i = 0; i < spans.length; i++) {
+  let content: string = spans[i].getContent();
+  console.info(`span[${i}] content: ${content}`);
+}
+```
+
+### getRange
+
+getRange(): [Range](#range10)
+
+获取span在富文本中的范围，由起始位置和结束位置表示。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| [Range](#range10) | span在富文本中的范围。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+let length: number = 5;
+let richText: inputMethodEngine.InputMethodRichText = inputClient.getLeftRichTextSync(length);
+let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
+for (let i = 0; i < spans.length; i++) {
+  let range: inputMethodEngine.Range = spans[i].getRange();
+  console.info(`span[${i}] range: {start:${range.start}, end:${range.end}}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+let length: int = 5;
+let richText: inputMethodEngine.InputMethodRichText = inputClient.getLeftRichTextSync(length);
+let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
+for (let i = 0; i < spans.length; i++) {
+  let range: inputMethodEngine.Range = spans[i].getRange();
+  console.info(`span[${i}] range: {start:${range.start}, end:${range.end}}`);
+}
 ```
 
 ### CapitalizeMode<sup>20+</sup>
