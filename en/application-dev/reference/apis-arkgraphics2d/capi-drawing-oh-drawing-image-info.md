@@ -1,12 +1,13 @@
 # OH_Drawing_Image_Info
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=3b75f30d038321e59d140485862ef0f48205e17e translatedAt=2026-10-09T12:34:06.509Z pushedAt=2026-10-12T11:34:36.942Z -->
 
-```
+```c
 typedef struct {...} OH_Drawing_Image_Info
 ```
 
@@ -30,3 +31,4 @@ This struct describes the image information.
 | int32_t height                                               | Height, in pixels.                                          |
 | [OH_Drawing_ColorFormat](capi-drawing-types-h.md#oh_drawing_colorformat) colorType | Color type.|
 | [OH_Drawing_AlphaFormat](capi-drawing-types-h.md#oh_drawing_alphaformat) alphaType | Alpha type.|
+
