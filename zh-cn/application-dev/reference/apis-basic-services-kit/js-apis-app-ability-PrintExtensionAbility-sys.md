@@ -22,7 +22,7 @@ import { PrintExtensionAbility } from '@kit.BasicServicesKit';
 
 ## PrintExtensionAbility
 
-### onRequestPreview<sup>24+</sup>
+### onRequestPreview
 
 onRequestPreview(jobInfo: print.PrintJob): string
 
@@ -46,9 +46,9 @@ onRequestPreview(jobInfo: print.PrintJob): string
 
 以下错误码的详细介绍请参见[打印服务错误码](errorcode-print.md)和[通用错误码](../errorcode-universal.md)。
 
-| 错误码ID | 错误信息 | 说明 |
-| -------- | -------- | -------- |
-| 202 | not system application. | 仅系统应用可实现此系统接口，非系统应用实现将返回此错误码。请确认应用具有系统应用权限后再实现此接口。 |
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 202 | not system application. |
 
 **示例：**
 
