@@ -120,7 +120,7 @@
      try {
        let remoteDeviceDriver: deviceManager.RemoteDeviceDriver = await deviceManager.bindDriverWithDeviceId(deviceId,
          (err: BusinessError, id: number) => {
-           hilog.info(DOMAIN, 'testTag', `device[${id}] id disconnect, err: ${JSON.stringify(err)}`);
+           hilog.error(DOMAIN, 'testTag', `device[${id}] id disconnect, err: ${JSON.stringify(err)}`);
          });
        return remoteDeviceDriver.remote;
      } catch (error) {
