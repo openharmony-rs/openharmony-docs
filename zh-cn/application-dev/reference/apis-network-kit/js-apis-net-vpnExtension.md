@@ -393,6 +393,8 @@ create(config: VpnConfig): Promise\<number\>
 >
 > 建议在不需要VPN网络的时候配对调用[destroy()](#destroy)或[destroy(vpnId: string)](#destroy20)接口销毁启动的VPN网络，并执行资源清理等操作。
 
+**需要权限**：ohos.permission.INTERNET
+
 **系统能力**：SystemCapability.Communication.NetManager.Vpn
 
 **参数：**
@@ -413,6 +415,7 @@ create(config: VpnConfig): Promise\<number\>
 
 | 错误码ID | 错误信息                                         |
 | --------- | ------------------------------------------------ |
+| 201       | Permission denied.                                 |
 | 401       | Parameter error.                                 |
 | 2200001   | Invalid parameter value.                         |
 | 2200002   | Operation failed. Cannot connect to service.     |
