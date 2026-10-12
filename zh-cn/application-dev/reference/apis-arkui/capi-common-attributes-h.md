@@ -1,7 +1,7 @@
 # common_attributes.h
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @yihao-lin-->
+<!--Owner: @zhou-chaobo-->
 <!--Designer: @zhou-chaobo-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
