@@ -625,7 +625,7 @@ onBatteryLevelChange(mechId: number, callback: Callback&lt;BatteryLevelInfo&gt;)
 
 | 参数名     | 类型                    | 必填 | 说明   |
 | ---------- | ---------------------- | ---- | ----- |
-| mechId | number | 是 | 需要订阅的设备id。 |
+| mechId | number | 是 | 需要订阅的设备ID。 |
 | callback | Callback\<[BatteryLevelInfo](#batterylevelinfo)> | 是 | 回调函数，电池电量变化的回调函数。 |
 
 **错误码：**
