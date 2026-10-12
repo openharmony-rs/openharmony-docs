@@ -312,34 +312,34 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":22,
+						"end_line":21,
 						"name":"head",
 						"start_line":16
 					},
 					{
-						"end_line":101,
+						"end_line":102,
 						"name":"getDevices",
 						"start_line":32
 					},
 					{
-						"end_line":114,
+						"end_line":122,
 						"name":"requestRight",
-						"start_line":98
+						"start_line":106
 					},
 					{
-						"end_line":184,
+						"end_line":185,
 						"name":"connectDevice",
 						"start_line":126
 					},
 					{
-						"end_line":196,
+						"end_line":234,
 						"name":"bulkTransfer",
-						"start_line":151
+						"start_line":189
 					},
 					{
-						"end_line":503,
+						"end_line":619,
 						"name":"closePipe",
-						"start_line":483
+						"start_line":598
 					}
 				]
 			}
@@ -352,34 +352,34 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":22,
+						"end_line":21,
 						"name":"head",
 						"start_line":16
 					},
 					{
-						"end_line":101,
+						"end_line":102,
 						"name":"getDevices",
 						"start_line":32
 					},
 					{
-						"end_line":114,
+						"end_line":122,
 						"name":"requestRight",
-						"start_line":98
+						"start_line":106
 					},
 					{
-						"end_line":184,
+						"end_line":185,
 						"name":"connectDevice",
 						"start_line":126
 					},
 					{
-						"end_line":238,
+						"end_line":264,
 						"name":"controlTransfer",
-						"start_line":212
+						"start_line":238
 					},
 					{
-						"end_line":503,
+						"end_line":619,
 						"name":"closePipe",
-						"start_line":483
+						"start_line":598
 					}
 				]
 			}
@@ -392,29 +392,29 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":22,
+						"end_line":21,
 						"name":"head",
 						"start_line":16
 					},
 					{
-						"end_line":101,
+						"end_line":102,
 						"name":"getDevices",
 						"start_line":32
 					},
 					{
-						"end_line":114,
+						"end_line":122,
 						"name":"requestRight",
-						"start_line":98
+						"start_line":106
 					},
 					{
-						"end_line":184,
+						"end_line":185,
 						"name":"connectDevice",
 						"start_line":126
 					},
 					{
-						"end_line":503,
+						"end_line":619,
 						"name":"closePipe",
-						"start_line":483
+						"start_line":598
 					}
 				]
 			}
@@ -427,39 +427,39 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":22,
+						"end_line":21,
 						"name":"head",
 						"start_line":16
 					},
 					{
-						"end_line":101,
+						"end_line":102,
 						"name":"getDevices",
 						"start_line":32
 					},
 					{
-						"end_line":114,
+						"end_line":122,
 						"name":"requestRight",
-						"start_line":98
+						"start_line":106
 					},
 					{
-						"end_line":328,
+						"end_line":331,
 						"name":"interruptTransfer_getEndpoint",
-						"start_line":267
+						"start_line":268
 					},
 					{
-						"end_line":347,
+						"end_line":361,
 						"name":"interruptTransfer_claimInterface",
-						"start_line":319
+						"start_line":332
 					},
 					{
-						"end_line":391,
+						"end_line":396,
 						"name":"interruptTransfer_interruptTransfer",
-						"start_line":358
+						"start_line":362
 					},
 					{
-						"end_line":411,
+						"end_line":421,
 						"name":"interruptTransfer_release",
-						"start_line":392
+						"start_line":397
 					}
 				]
 			}
@@ -472,39 +472,39 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":22,
+						"end_line":21,
 						"name":"head",
 						"start_line":16
 					},
 					{
-						"end_line":101,
+						"end_line":102,
 						"name":"getDevices",
 						"start_line":32
 					},
 					{
-						"end_line":114,
+						"end_line":122,
 						"name":"requestRight",
-						"start_line":98
+						"start_line":106
 					},
 					{
-						"end_line":476,
+						"end_line":488,
 						"name":"isochronousTransfer_getEndpoint",
-						"start_line":415
+						"start_line":425
 					},
 					{
-						"end_line":493,
+						"end_line":534,
 						"name":"isochronousTransfer_claimInterface",
-						"start_line":450
+						"start_line":489
 					},
 					{
-						"end_line":554,
+						"end_line":569,
 						"name":"isochronousTransfer_isochronousTransfer",
-						"start_line":521
+						"start_line":535
 					},
 					{
-						"end_line":574,
+						"end_line":594,
 						"name":"isochronousTransfer_release",
-						"start_line":555
+						"start_line":570
 					}
 				]
 			}
@@ -517,7 +517,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":23,
+						"end_line":21,
 						"name":"head",
 						"start_line":16
 					},
@@ -527,29 +527,29 @@
 						"start_line":32
 					},
 					{
-						"end_line":68,
+						"end_line":66,
 						"name":"requestSerialRight",
-						"start_line":47
+						"start_line":45
 					},
 					{
-						"end_line":82,
+						"end_line":81,
 						"name":"openSerialDevice",
-						"start_line":72
+						"start_line":70
 					},
 					{
 						"end_line":113,
 						"name":"serialRead",
-						"start_line":86
+						"start_line":85
 					},
 					{
-						"end_line":144,
+						"end_line":145,
 						"name":"serialWrite",
 						"start_line":117
 					},
 					{
-						"end_line":189,
+						"end_line":198,
 						"name":"closeSerialDevice",
-						"start_line":179
+						"start_line":187
 					}
 				]
 			}
@@ -562,7 +562,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":23,
+						"end_line":21,
 						"name":"head",
 						"start_line":16
 					},
@@ -572,24 +572,24 @@
 						"start_line":32
 					},
 					{
-						"end_line":68,
+						"end_line":66,
 						"name":"requestSerialRight",
-						"start_line":47
+						"start_line":45
 					},
 					{
-						"end_line":82,
+						"end_line":81,
 						"name":"openSerialDevice",
-						"start_line":72
+						"start_line":70
 					},
 					{
-						"end_line":159,
+						"end_line":161,
 						"name":"getSerialConfig",
-						"start_line":148
+						"start_line":149
 					},
 					{
-						"end_line":180,
+						"end_line":183,
 						"name":"setSerialConfig",
-						"start_line":163
+						"start_line":165
 					}
 				]
 			}
@@ -64585,39 +64585,39 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":22,
+						"end_line":21,
 						"name":"head",
 						"start_line":16
 					},
 					{
-						"end_line":101,
+						"end_line":102,
 						"name":"getDevices",
 						"start_line":32
 					},
 					{
-						"end_line":121,
+						"end_line":122,
 						"name":"requestRight",
-						"start_line":105
+						"start_line":106
 					},
 					{
-						"end_line":184,
+						"end_line":185,
 						"name":"connectDevice",
 						"start_line":126
 					},
 					{
-						"end_line":208,
+						"end_line":234,
 						"name":"bulkTransfer",
-						"start_line":163
+						"start_line":189
 					},
 					{
-						"end_line":238,
+						"end_line":264,
 						"name":"controlTransfer",
-						"start_line":212
+						"start_line":238
 					},
 					{
-						"end_line":503,
+						"end_line":619,
 						"name":"closePipe",
-						"start_line":483
+						"start_line":598
 					}
 				]
 			}
