@@ -68,6 +68,16 @@ import { relationalStore } from '@kit.ArkData';
 | targetTable | string | 否 | 否 | 关联的父表名称。   |
 | refFields   | Record<string, string> | 否 | 否 |表示关联表的关联字段。键值数据中键为子表字段，值为父表字段。       |
 
+## Asset<sup>10+</sup>
+
+记录资产附件（文件、图片、视频等类型文件）的相关信息。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| extension | string | 否 | 是 | 资产的扩展信息，由业务侧自定义。端侧不限制长度；云侧长度上限为512字节，超出时截断保留前512字节。默认值为空字符串。<br/>**起始版本：** 26.2.0<br/>**系统接口：** 此接口为系统接口。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+
 ## DistributedConfig<sup>10+</sup>
 
 记录表的分布式配置信息。

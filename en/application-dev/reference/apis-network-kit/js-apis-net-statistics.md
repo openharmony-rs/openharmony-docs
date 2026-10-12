@@ -347,7 +347,7 @@ Obtains the total uplink traffic (in bytes) of the NIC corresponding to the curr
 **Return value**
 | Type| Description|
 | -------- | -------- |
-| Promise\<number> | Promise object that returns the total uplink traffic consumed on the cellular network from the last boot to now (in bytes). |
+| Promise\<number> | Promise used to return the total uplink traffic consumed on the cellular network from the last boot to now (in bytes). |
 
 **Error codes**
 
@@ -508,7 +508,7 @@ Obtains the total uplink traffic (in bytes) of all NICs from the last startup to
 **Return value**
 | Type| Description|
 | -------- | -------- |
-| Promise\<number> | Promise object that returns the real-time uplink traffic of all network cards (in bytes). |
+| Promise\<number> | Promise used to return the real-time uplink traffic of all network cards (in bytes). |
 
 **Error codes**
 
@@ -610,7 +610,7 @@ Obtains the total downlink traffic (in bytes) of the specified application from 
 **Return value**
 | Type| Description|
 | -------- | -------- |
-| Promise\<number> | Promise object that returns the total downlink traffic of the specified application from the last boot to the present (in bytes). |
+| Promise\<number> | Promise used to return the total downlink traffic of the specified application from the last boot to the present (in bytes). |
 
 **Error codes**
 
@@ -715,7 +715,7 @@ Obtains the total uplink traffic of the specified application from the last star
 **Return value**
 | Type| Description|
 | -------- | -------- |
-| Promise\<number> | Promise object that returns the total uplink traffic of the specified application from the last boot to the time of interface call (in bytes). |
+| Promise\<number> | Promise used to return the total uplink traffic of the specified application from the last boot to the time of interface call (in bytes). |
 
 **Error codes**
 
@@ -810,7 +810,7 @@ Obtains the downlink traffic (in bytes) of the specified socket. This API uses a
 
 | Type            | Description                                                        |
 | ---------------- | ------------------------------------------------------------ |
-| Promise\<number> | Promise object that returns the downlink traffic of the socket (in bytes). |
+| Promise\<number> | Promise used to return the downlink traffic of the socket (in bytes). |
 
 **Error codes**
 

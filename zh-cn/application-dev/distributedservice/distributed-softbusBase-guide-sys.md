@@ -41,7 +41,7 @@
 
 ## 接口说明
 
-常用接口说明如下表。具体接口说明详见 API 参考 `@ohos.distributed.softbusBase`。
+常用接口说明如下表。具体接口说明详见API参考：[@ohos.distributed.softbusBase](../reference/apis-distributedservice-kit/js-apis-softbusBase-sys.md)。
 
 | 接口名 | 功能描述 |
 | --- | --- |
@@ -62,15 +62,15 @@
 
 | 名称 | 值 | 说明 |
 | --- | --- | --- |
-| PERCEPTION_CYCLE_LOW | 0 | 低档位。保活周期最长。 |
-| PERCEPTION_CYCLE_MEDIUM | 1 | 中档位。保活周期中等。 |
-| PERCEPTION_CYCLE_HIGH | 2 | 高档位。保活周期最短。 |
+| PERCEPTION_CYCLE_LOW | 0 | 低档位。保活周期为150秒，即150秒内未收到某设备的广播则将该设备从已发现设备列表中移除。 |
+| PERCEPTION_CYCLE_MEDIUM | 1 | 中档位。保活周期为75秒，即75秒内未收到某设备的广播则将该设备从已发现设备列表中移除。 |
+| PERCEPTION_CYCLE_HIGH | 2 | 高档位。保活周期为30秒，即30秒内未收到某设备的广播则将该设备从已发现设备列表中移除。 |
 
 ### PerceptionDeviceInfo 结构体
 
 | 字段 | 类型 | 说明 |
 | --- | --- | --- |
-| deviceType | number | 设备类型，取值为整数，具体取值及含义请参考系统设备类型相关定义。 |
+| deviceType | number | 设备类型标识符，表示设备的类别，取值为整数，例如：0x0E-手机、0x11-平板、0x9C-电视、0x0C-PC等（具体数值以系统定义为准）。 |
 | deviceId | ArrayBuffer | 设备 ID，最大长度 6 字节，网络字节序（大端）。 |
 | customData | ArrayBuffer | 广播携带的自定义数据，最大长度 5 字节。 |
 

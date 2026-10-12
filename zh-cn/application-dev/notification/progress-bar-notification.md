@@ -6,7 +6,7 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-进度条通知也是常见的通知类型，主要应用于文件下载、事务处理进度显示。当前系统提供了进度条模板，发布通知应用应设置好进度条模板的属性值，如模板名、模板数据，通过通知子系统发送到通知栏显示。
+进度条通知也是常见的通知类型，主要应用于文件下载、事务处理进度显示。当前系统提供了进度条模板，发布通知的应用应设置好进度条模板的属性值，如模板名、模板数据，通过通知子系统发送到通知栏显示。
 
 目前系统模板仅支持进度条模板，通知模板[NotificationTemplate](../reference/apis-notification-kit/js-apis-inner-notification-notificationTemplate.md)中的data参数为用户自定义数据，用于显示与模板相关的数据。
 
@@ -42,7 +42,7 @@
    const DOMAIN_NUMBER: number = 0xFF00;
    ```
 
-2. 查询系统是否支持进度条模板，查询结果为支持downloadTemplate模板类通知。
+2. 查询系统是否支持进度条模板，查询结果为是否支持downloadTemplate模板类通知。
 
    <!-- @[check_progress_template_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/PublishNotification.ets) -->
    

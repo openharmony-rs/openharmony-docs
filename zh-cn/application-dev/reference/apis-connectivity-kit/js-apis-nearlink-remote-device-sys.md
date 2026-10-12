@@ -13,7 +13,7 @@
 
 > **说明：**
 >
-> 本模块接口为系统接口。
+> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.nearlink.remoteDevice (星闪远端设备连接能力)](js-apis-nearlink-remote-device.md)。
 
 
 ## 导入模块
@@ -32,6 +32,8 @@ type ConnectionInterval = nearlinkConstant.ConnectionInterval
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**系统接口：**  此接口为系统接口。
+
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
 | 类型 | 说明 |
@@ -46,6 +48,8 @@ type ConnectionInterval = nearlinkConstant.ConnectionInterval
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**系统接口：**  此接口为系统接口。
+
 **系统能力：** SystemCapability.Communication.NearLink.Base
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -53,6 +57,100 @@ type ConnectionInterval = nearlinkConstant.ConnectionInterval
 | modelId | string | 否 | 否 | 远端设备的型号ID。 |
 | subModelId | string | 否 | 否 | 远端设备的子型号ID。 |
 | iconId | string | 否 | 否 | 远端设备的图标ID。 |
+
+## remoteDevice.onPairingRequest
+
+onPairingRequest(callback: Callback&lt;PairingRequestParam&gt;): void
+
+订阅配对请求事件。使用callback异步回调。
+
+应用需具备ohos.permission.ACCESS_NEARLINK权限，方可接收此事件上报。
+
+事件默认返回随机地址；应用若具备系统权限ohos.permission.GET_NEARLINK_PEER_MAC，则返回设备真实地址。
+
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：**  此接口为系统接口。
+
+**系统能力：** SystemCapability.Communication.NearLink.Base
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | Callback&lt;[PairingRequestParam](js-apis-nearlink-remote-device.md#pairingrequestparam)&gt; | 是 | 回调函数，返回配对请求字段。| 
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[星闪错误码](errorcode-nearlink-service.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| 36100099 | Operation failed. |
+
+**示例：**
+```typescript
+import { remoteDevice } from '@kit.ConnectivityKit';
+import { BusinessError, Callback } from '@kit.BasicServicesKit';
+
+let callback: Callback<remoteDevice.PairingRequestParam> = (data: remoteDevice.PairingRequestParam) => {
+  console.info('pairing request param: ' + JSON.stringify(data));
+};
+
+try {
+  remoteDevice.onPairingRequest(callback);
+} catch (err) {
+  console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+## remoteDevice.offPairingRequest
+
+offPairingRequest(callback?: Callback&lt;PairingRequestParam&gt;): void
+
+取消订阅配对请求事件。使用callback异步回调。
+
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：**  此接口为系统接口。
+
+**系统能力：** SystemCapability.Communication.NearLink.Base
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | Callback&lt;[PairingRequestParam](js-apis-nearlink-remote-device.md#pairingrequestparam)&gt; | 否 | 回调函数，返回配对请求字段。<br>填写该参数则取消当前callback订阅。不填写该参数则取消该事件对应的所有回调。| 
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[星闪错误码](errorcode-nearlink-service.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| 36100099 | Operation failed. |
+
+**示例：**
+```typescript
+import { remoteDevice } from '@kit.ConnectivityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  remoteDevice.offPairingRequest();
+} catch (err) {
+  console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
 
 ## RemoteDevice
 
@@ -91,8 +189,8 @@ startCrediblePairing(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Non-system applications are not allowed to use system APIs. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
@@ -138,8 +236,8 @@ removePairedDevice(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Non-system applications are not allowed to use system APIs. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
@@ -185,8 +283,8 @@ setPairingConfirmation(accept: boolean): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Non-system applications are not allowed to use system APIs. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
@@ -230,8 +328,8 @@ connect(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Non-system applications are not allowed to use system APIs. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
@@ -277,8 +375,8 @@ disconnect(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Non-system applications are not allowed to use system APIs. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
@@ -324,8 +422,8 @@ setDeviceAlias(alias: string): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Non-system applications are not allowed to use system APIs. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 36100003 | NearLink disabled. |
 | 36100046 | String exceeds maximum length. |
 | 36100099 | Operation failed. |
@@ -372,8 +470,8 @@ getDeviceAlias(): string
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Non-system applications are not allowed to use system APIs. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
@@ -418,7 +516,7 @@ getDeviceModel(): DeviceModel
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 202 | Non-system applications are not allowed to use system APIs. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
@@ -463,8 +561,8 @@ cancelDevicePairing(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Non-system applications are not allowed to use system APIs. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
@@ -518,8 +616,8 @@ setPairingPasscode(passcode: string): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Non-system applications are not allowed to use system APIs. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 36100003 | NearLink disabled. |
 | 36100045 | Passcode must be a 6-digit number. |
 | 36100099 | Operation failed. |
@@ -569,8 +667,8 @@ getRssiValue(): Promise&lt;number&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Non-system applications are not allowed to use system APIs. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
@@ -618,8 +716,8 @@ setConnectionInterval(interval: ConnectionInterval): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Non-system applications are not allowed to use system APIs. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
@@ -633,98 +731,6 @@ try {
   let device: remoteDevice.RemoteDevice = remoteDevice.createRemoteDevice(addr);
   let interval: nearlinkConstant.ConnectionInterval = nearlinkConstant.ConnectionInterval.HIGH_SPEED_INTERVAL_4_5;
   device.setConnectionInterval(interval);
-} catch (err) {
-  console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
-}
-```
-
-### remoteDevice.onPairingRequest
-
-onPairingRequest(callback: Callback&lt;PairingRequestParam&gt;): void
-
-订阅配对请求事件。使用callback异步回调。
-
-应用需具备ohos.permission.ACCESS_NEARLINK权限，方可接收此事件上报。
-
-事件默认返回随机地址；应用若具备系统权限ohos.permission.GET_NEARLINK_PEER_MAC，则返回设备真实地址。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统接口：**  此接口为系统接口。
-
-**系统能力：** SystemCapability.Communication.NearLink.Base
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| callback | Callback&lt;[PairingRequestParam](js-apis-nearlink-remote-device.md#pairingrequestparam)&gt; | 是 | 回调函数，返回配对请求字段。| 
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[星闪错误码](errorcode-nearlink-service.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 202 | Non-system applications are not allowed to use system APIs. |
-| 801 | Capability not supported because the chip does not support it. |
-| 36100099 | Operation failed. |
-
-**示例：**
-```typescript
-import { remoteDevice } from '@kit.ConnectivityKit';
-import { BusinessError, Callback } from '@kit.BasicServicesKit';
-
-let callback: Callback<remoteDevice.PairingRequestParam> = (data: remoteDevice.PairingRequestParam) => {
-  console.info('pairing request param: ' + JSON.stringify(data));
-};
-
-try {
-  remoteDevice.onPairingRequest(callback);
-} catch (err) {
-  console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
-}
-```
-
-### remoteDevice.offPairingRequest
-
-offPairingRequest(callback?: Callback&lt;PairingRequestParam&gt;): void
-
-取消订阅配对请求事件。使用callback异步回调。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统接口：**  此接口为系统接口。
-
-**系统能力：** SystemCapability.Communication.NearLink.Base
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| callback | Callback&lt;[PairingRequestParam](js-apis-nearlink-remote-device.md#pairingrequestparam)&gt; | 否 | 回调函数，返回配对请求字段。<br>填写该参数则取消当前callback订阅。不填写该参数则取消该事件对应的所有回调。| 
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[星闪错误码](errorcode-nearlink-service.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 202 | Non-system applications are not allowed to use system APIs. |
-| 801 | Capability not supported because the chip does not support it. |
-| 36100099 | Operation failed. |
-
-**示例：**
-```typescript
-import { remoteDevice } from '@kit.ConnectivityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  remoteDevice.offPairingRequest();
 } catch (err) {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }

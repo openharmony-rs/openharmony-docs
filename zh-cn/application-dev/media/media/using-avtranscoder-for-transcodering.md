@@ -80,11 +80,11 @@
          this.avTranscoder = undefined;
          // 2.关闭转码目标文件fd。
          if (lastFdDst != undefined) {
-           fs.closeSync(lastFdDst);
+           fileIo.closeSync(lastFdDst);
          }
          // 3.关闭转码源文件fd。
          if (lastFdSrc != undefined) {
-           fs.closeSync(lastFdSrc.fd);
+           fileIo.closeSync(lastFdSrc.fd);
          }
        }
      }

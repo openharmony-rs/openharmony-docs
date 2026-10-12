@@ -226,7 +226,7 @@ let distributionOSVersion: string = deviceInfo.distributionOSVersion;
 console.info('the value of the deviceInfo distributionOSVersion is :' + distributionOSVersion);
 
 let distributionOSApiVersion: number = deviceInfo.distributionOSApiVersion;
-// 输出结果：the value of the distributionOSApiVersion is :500001
+// 输出结果：the value of the distributionOSApiVersion is :50001
 console.info('the value of the deviceInfo distributionOSApiVersion is :' + distributionOSApiVersion);
 
 let distributionOSApiName: string = deviceInfo.distributionOSApiName;

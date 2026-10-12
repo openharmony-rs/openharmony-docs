@@ -135,14 +135,6 @@ createHdrDarkenBlender(hdrBrightnessRatio: number, grayscaleFactor?: [number, nu
 | ---------------------------------------- | ------------------------- |
 | [HdrDarkenBlender](#hdrdarkenblender) | 返回HDR压暗混合器，用于将压暗效果添加到指定的组件上。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息 |
-| ------- | -------------------------------- |
-| 401  | CreateHdrDarkenBlender failed, parameter is null or undefined. |
-
 **示例：**
 ```ts
 import { uiEffect } from '@kit.ArkGraphics2D';
