@@ -614,6 +614,8 @@ mechanicManager.searchTarget(targetInfo,
 onBatteryLevelChange(mechId: number, callback: Callback&lt;BatteryLevelInfo&gt;): void
 
 订阅目标设备的电池电量变化信息。使用callback异步回调。
+  
+**起始版本**：26.2.0
 
 **系统能力**：SystemCapability.Mechanic.Core
 
@@ -653,6 +655,8 @@ console.info('Successful registration');
 offBatteryLevelChange(mechId: number, callback?: Callback&lt;BatteryLevelInfo&gt;): void
 
 取消订阅电池电量变化信息。使用callback异步回调。
+  
+**起始版本**：26.2.0
 
 **系统能力**：SystemCapability.Mechanic.Core
 
@@ -692,6 +696,8 @@ console.info('Unregister successfully');
 getDeviceAdsorbState(mechId: number): AdsorbState
 
 获取对应的设备吸附状态。
+  
+**起始版本**：26.2.0
 
 **系统能力**：SystemCapability.Mechanic.Core
 
@@ -927,6 +933,8 @@ console.info(`'Query the adsorb state successfully, adsorb state:' ${adsorbState
 ## BatteryLevelInfo
 
 电量状态变化信息。
+  
+**起始版本**：26.2.0
 
 **系统能力**：SystemCapability.Mechanic.Core
 
@@ -942,6 +950,8 @@ console.info(`'Query the adsorb state successfully, adsorb state:' ${adsorbState
 ## AdsorbState  
 
 设备吸附状态的枚举。
+  
+**起始版本**：26.2.0
 
 **系统能力**：SystemCapability.Mechanic.Core
 
