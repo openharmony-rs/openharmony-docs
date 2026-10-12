@@ -1,4 +1,4 @@
-# @ohos.inputMethodEngine (输入法服务)
+﻿# @ohos.inputMethodEngine (输入法服务)
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @codexu62-->
@@ -5227,7 +5227,7 @@ getLeftRichText(length: number): Promise&lt;InputMethodRichText&gt;
 >
 > 如果当前绑定输入法的编辑框是ArkUI富文本组件（如RichEditor），则返回完整的富文本内容；如果绑定的不是富文本组件，则降级为纯文本实现。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.2.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -5288,7 +5288,7 @@ getLeftRichTextSync(length: number): InputMethodRichText
 >
 > 如果当前绑定输入法的编辑框是ArkUI富文本组件（如RichEditor），则返回完整的富文本内容；如果绑定的不是富文本组件，则降级为纯文本实现。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.2.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -5353,7 +5353,7 @@ getRightRichText(length: number): Promise&lt;InputMethodRichText&gt;
 >
 > 如果当前绑定输入法的编辑框是ArkUI富文本组件（如RichEditor），则返回完整的富文本内容；如果绑定的不是富文本组件，则降级为纯文本实现。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.2.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -5414,7 +5414,7 @@ getRightRichTextSync(length: number): InputMethodRichText
 >
 > 如果当前绑定输入法的编辑框是ArkUI富文本组件（如RichEditor），则返回完整的富文本内容；如果绑定的不是富文本组件，则降级为纯文本实现。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.2.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -5469,7 +5469,7 @@ try {
 
 枚举，定义富文本中span的类型。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.2.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -5486,7 +5486,7 @@ try {
 
 定义富文本内容。输入法应用通过[getLeftRichText](#getleftrichtext)/[getLeftRichTextSync](#getleftrichtextsync)/[getRightRichText](#getrightrichtext)/[getRightRichTextSync](#getrightrichtextsync)获取该对象实例后，可调用下列方法提取纯文本或遍历span数组。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.2.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -5498,7 +5498,7 @@ getString(): string
 
 从富文本中提取纯文本。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.2.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -5525,7 +5525,7 @@ getSpans(): Array&lt;[RichTextSpan](#richtextspan)&gt;
 
 获取组成富文本的span数组。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.2.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -5556,7 +5556,7 @@ for (let i = 0; i < spans.length; i++) {
 
 定义富文本中的一个span。通过该对象可获取span的类型、内容和在富文本中的范围。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.2.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -5568,7 +5568,7 @@ getType(): [SpanType](#spantype)
 
 获取span的类型。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.2.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -5602,7 +5602,7 @@ getContent(): string
 >
 > 如果span类型为[SpanType.IMAGE](#spantype)，则content为图片插入到ArkUI富文本组件时携带的标签信息（imageTag）。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.2.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -5632,7 +5632,7 @@ getRange(): [Range](#range10)
 
 获取span在富文本中的范围，由起始位置和结束位置表示。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.2.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
