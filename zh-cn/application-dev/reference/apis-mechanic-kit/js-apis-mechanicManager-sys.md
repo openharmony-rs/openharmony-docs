@@ -640,7 +640,10 @@ onBatteryLevelChange(mechId: number, callback: Callback&lt;BatteryLevelInfo&gt;)
 
 ```ts
 console.info('Register Battery Change listener');
+let mechId: number = 0;
 mechanicManager.onBatteryLevelChange(mechId, (result: mechanicManager.BatteryLevelInfo) => {
+  console.info(`'result:' ${result}`);
+});
   console.info(`'result:' ${result}`);
 });
 console.info('Successful registration');
