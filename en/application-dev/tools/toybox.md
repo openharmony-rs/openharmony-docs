@@ -5,6 +5,7 @@
 <!--Designer: @liveery-->
 <!--Tester: @liuhaonan2-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=cf6296169fb396f1e68d81a285b8a379497cf438 translatedAt=2026-10-10T04:03:04.201Z pushedAt=2026-10-12T03:13:58.392Z -->
 
 Toybox is a lightweight collection of Linux command line utilities. It combines many common Linux command line utilities into a single executable file.
 
@@ -287,7 +288,7 @@ Format: help [-ahu] [COMMAND]
 | seq       | Counts in ascending order from the beginning (specified by **first**) to the end (specified by **last**). If no parameter is carried, the default value is 1.  The parameter can be a negative number or a floating point number.<br>usage: seq [-w \| -f fmt\_str] [-s sep\_str] [first] [increment] last |
 | setfattr  | Writes POSIX extended attributes.<br>usage: setfattr [-h] [-x \| -n NAME] [-v VALUE] FILE... |
 | sha1sum/sha256sum | Calculates the SHA hash value.<br>usage: ???sum [-bcs] [FILE]... |
-| shred     | Deletes a file securely (overwrites the file content with random data).<br>usage: shred [-fuxz] [-n COUNT] [-o OFFSET] [-s SIZE] FILE... |
+| shred     | Securely deletes files (overwrite file contents with random data).<br/>usage: shred [-fuxz] [-n COUNT] [-o OFFSET] [-s SIZE] FILE... |
 | sort      | Sorts all lines of text from the input file (or standard input device) to the standard output device.<br>usage: sort [-Mbcdfginrsuz] [FILE...] [-k#[,#[x]] [-t X]] [-o FILE] |
 | split     | Copies input (or standard input device) data to a series of output (or "x") files with alphabetically increasing suffix (aa, ab, ac, ... az, ba, bb...).<br>usage: split [-a SUFFIX\_LEN] [-b BYTES] [-l LINES] [-n PARTS] [INPUT [OUTPUT]] |
 | stat      | Displays the status of a file or file system.<br>usage: stat [-tfL] [-c FORMAT] FILE... |
