@@ -332,7 +332,7 @@ onPageHide() {
 
 ```text
 Error Name: Error
-Error Message: It is not allowed to create non-secure window when secure extension exists. Maybe blocked by:
+Error Message: [window][createSubWindowWithOptions()]msg: It is not allowed to create non-secure window when secure extension exists. Maybe blocked by:
 Error code: 1300002
 ```
 
@@ -355,7 +355,7 @@ Error code: 1300002
 
 ```text
 Error Name: Error
-Error Message: The parent window and the subwindow are not created by the same process
+Error Message: [window][createSubWindowWithOptions()]msg: The parent window and the subwindow are not created by the same process
 Error code: 1300002
 ```
 
