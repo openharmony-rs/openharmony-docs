@@ -688,7 +688,7 @@ async function DecryptData() {
     })
 }
 
-async function DeleteKey() {
+async function deleteKey() {
   /*
    * 模拟删除密钥场景
    * 1. 获取密钥别名
@@ -711,7 +711,7 @@ async function TestEncryptDecrypt() {
   await GenerateAesKey();
   await EncryptData();
   await DecryptData();
-  await DeleteKey();
+  await deleteKey();
 }
 ```
 
@@ -1104,7 +1104,7 @@ async function deleteKey() {
    * 1. 调用deleteKeyItem删除密钥
    */
   await huks.deleteKeyItem(rsaKeyAlias, emptyOptions)
-    .then((data) => {
+    .then(() => {
       console.info(`promise: delete data success`);
     }).catch((error: BusinessError) => {
       console.error(`promise: delete data failed, errCode : ${error.code}, errMsg : ${error.message}`);

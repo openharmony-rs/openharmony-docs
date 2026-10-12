@@ -91,7 +91,7 @@ ArkTS-Sta: createTimer(options: TimerOptions, callback: AsyncCallback&lt;long&gt
 | 错误码ID | 错误信息                                                                                                                                         |
 |-------|----------------------------------------------------------------------------------------------------------------------------------------------|
 | 202   | Permission verification failed. A non-system application calls a system API.                                                                 |
-| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 
 **示例：**
 
@@ -176,7 +176,7 @@ ArkTS-Sta: createTimer(options: TimerOptions): Promise&lt;long&gt;
 | 错误码ID | 错误信息                                                                                                        |
 |-------|-------------------------------------------------------------------------------------------------------------|
 | 202   | Permission verification failed. A non-system application calls a system API.                                |
-| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
+| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 
 **示例：**
 
@@ -253,7 +253,7 @@ ArkTS-Sta: startTimer(timer: long, triggerTime: long, callback: AsyncCallback&lt
 | 错误码ID | 错误信息                                                                                                        |
 |-------|-------------------------------------------------------------------------------------------------------------|
 | 202   | Permission verification failed. A non-system application calls a system API.                                |
-| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
 **示例：**
 
@@ -355,7 +355,7 @@ ArkTS-Sta: startTimer(timer: long, triggerTime: long): Promise&lt;void&gt;
 | 错误码ID | 错误信息                                                                                                        |
 |-------|-------------------------------------------------------------------------------------------------------------|
 | 202   | Permission verification failed. A non-system application calls a system API.                                |
-| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
 **示例：**
 
@@ -443,7 +443,7 @@ ArkTS-Sta: stopTimer(timer: long, callback: AsyncCallback&lt;void&gt;): void
 | 错误码ID | 错误信息                                                                                                        |
 |-------|-------------------------------------------------------------------------------------------------------------|
 | 202   | Permission verification failed. A non-system application calls a system API.                                |
-| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
 **示例：**
 
@@ -541,7 +541,7 @@ ArkTS-Sta: stopTimer(timer: long): Promise&lt;void&gt;
 | 错误码ID | 错误信息                                                                                                        |
 |-------|-------------------------------------------------------------------------------------------------------------|
 | 202   | Permission verification failed. A non-system application calls a system API.                                |
-| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
 **示例：**
 
@@ -635,7 +635,7 @@ ArkTS-Sta: destroyTimer(timer: long, callback: AsyncCallback&lt;void&gt;): void
 | 错误码ID | 错误信息                                                                                                        |
 |-------|-------------------------------------------------------------------------------------------------------------|
 | 202   | Permission verification failed. A non-system application calls a system API.                                |
-| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
 **示例：**
 
@@ -736,7 +736,7 @@ ArkTS-Sta: destroyTimer(timer: long): Promise&lt;void&gt;
 | 错误码ID | 错误信息                                                                                                        |
 |-------|-------------------------------------------------------------------------------------------------------------|
 | 202   | Permission verification failed. A non-system application calls a system API.                                |
-| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+| 401   | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
 **示例：**
 

@@ -6,7 +6,7 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-提供获取组件绘制区域坐标和大小的能力。
+提供获取组件绘制区域坐标、大小、平移、缩放、旋转及仿射矩阵等属性信息的能力，适用于需要查询组件绘制区域信息的场景，帮助开发者获取组件布局结果。
 
 > **说明：**
 >
@@ -44,17 +44,17 @@ getRectangleById(id: string): componentUtils.ComponentInfo
 
 | 参数名  | 类型     | 必填   | 说明        |
 | ---- | ------ | ---- | --------- |
-| id   | string | 是    | 组件唯一标识id。 |
+| id   | string | 是    | 组件唯一标识id，需确保该id对应的组件已挂载到组件树且完成布局。 |
 
 **返回值：**
 
 | 类型                                                         | 说明                                             |
 | ------------------------------------------------------------ | ------------------------------------------------ |
-| [componentUtils.ComponentInfo](js-apis-arkui-componentUtils.md#componentinfo) | 组件大小、位置、平移、缩放、旋转及仿射矩阵属性信息。 |
+| [componentUtils.ComponentInfo](./js-apis-arkui-componentUtils.md#componentinfo) | 组件大小、位置、平移、缩放、旋转及仿射矩阵属性信息。 |
 
-**错误码：** 
+**错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[接口调用异常错误码](./errorcode-internal.md)。
 
 | 错误码ID  | 错误信息                |
 | ------ | ------------------- |
@@ -84,11 +84,11 @@ struct Index {
         .onClick(() => {
           this.message = 'Welcome';
           let componentUtils: ComponentUtils = this.getUIContext().getComponentUtils();
-          let modePosition = componentUtils.getRectangleById("HelloWorld");
-          let width = modePosition.size.width; // 获取组件的宽度
-          let height = modePosition.size.height; // 获取组件的高度
-          let localOffsetX = modePosition.localOffset.x; // 获取组件相对于父组件的x轴偏移
-          let localOffsetY = modePosition.localOffset.y; // 获取组件相对于父组件的y轴偏移
+          let componentInfo = componentUtils.getRectangleById("HelloWorld");
+          let width = componentInfo.size.width; // 获取组件的宽度
+          let height = componentInfo.size.height; // 获取组件的高度
+          let localOffsetX = componentInfo.localOffset.x; // 获取组件相对于父组件的x轴偏移
+          let localOffsetY = componentInfo.localOffset.y; // 获取组件相对于父组件的y轴偏移
           console.info(`width: ${width}, height: ${height}, localOffsetX: ${localOffsetX}, localOffsetY: ${localOffsetY}`);
         })
     }

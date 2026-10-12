@@ -2,7 +2,7 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -21,13 +21,13 @@ NotificationContent中定义通知的内容结构，提供多种通知类型的�
 
 | 名称           | 类型                                                                        | 只读 | 可选 | 说明               |
 | -----------   | --------------------------------------------------------------------------- | ---- | --- | ------------------ |
-| notificationContentType<sup>11+</sup>    | [notificationManager.ContentType](./js-apis-notificationManager.md#contenttype)                | 否  | 是  | [通知内容类型](../../notification/notification-glossary.md#content-type通知内容类型)，用于指定通知的内容布局类型，决定了通知在[通知中心](../../notification/notification-glossary.md#notification-center通知中心)中的展示样式。需与对应类型的通知内容对象配合使用，例如设置为NOTIFICATION_CONTENT_BASIC_TEXT时需同时填充normal字段。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23        |
+| notificationContentType<sup>11+</sup>    | [notificationManager.ContentType](js-apis-notificationManager.md#contenttype)                | 否  | 是  | [通知内容类型](../../notification/notification-glossary.md#content-type通知内容类型)，用于指定通知的内容布局类型，决定了通知在[通知中心](../../notification/notification-glossary.md#notification-center通知中心)中的展示样式。需与对应类型的通知内容对象配合使用，例如设置为NOTIFICATION_CONTENT_BASIC_TEXT时需同时填充normal字段。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23        |
 | normal         | [NotificationBasicContent](#notificationbasiccontent)                      | 否  | 是  | 基本类型通知内容。当notificationContentType为NOTIFICATION_CONTENT_BASIC_TEXT时使用，通知以普通文本样式展示标题和正文。<br/>**ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：23   |
 | longText       | [NotificationLongTextContent](#notificationlongtextcontent)                | 否  | 是  | 长文本类型通知内容。当notificationContentType为NOTIFICATION_CONTENT_LONG_TEXT时使用，通知展开后可展示完整长文本内容。<br/>**ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：23 |
 | multiLine      | [NotificationMultiLineContent](#notificationmultilinecontent)              | 否  | 是  | 多行类型通知内容。当notificationContentType为NOTIFICATION_CONTENT_MULTILINE时使用，通知展开后以多行列表样式展示。<br/>**ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：23   |
 | picture        | [NotificationPictureContent](#notificationpicturecontent)                  | 否  | 是  | 图片类型通知内容。当notificationContentType为NOTIFICATION_CONTENT_PICTURE时使用。通知展开后可展示图片。<br/>**ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：23   |
 | systemLiveView<sup>11+</sup> | [NotificationSystemLiveViewContent](#notificationsystemliveviewcontent)    | 否  | 是  | [系统实况窗](../../notification/notification-glossary.md#system-live-view系统实况窗)类型通知内容。不支持三方应用直接创建该类型通知，可以由系统代理创建系统实况窗类型通知后，三方应用发布同ID的通知来更新指定内容。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23|
-| contentType<sup>(deprecated)</sup> | [notification.ContentType](./js-apis-notification.md#contenttype)  | 否  | 是  | 通知内容类型。<br>从API version 7开始支持，从API version 11开始废弃，建议使用notificationContentType替代。<br/>**ArkTS模式：** 该属性仅适用于ArkTS-Dyn。 <br/>**ArkTS-Dyn起始版本**：7       |
+| contentType<sup>(deprecated)</sup> | [notification.ContentType](js-apis-notification.md#contenttype)  | 否  | 是  | 通知内容类型。<br>从API version 7开始支持，从API version 11开始废弃，建议使用notificationContentType替代。<br/>**ArkTS模式：** 该属性仅适用于ArkTS-Dyn。 <br/>**ArkTS-Dyn起始版本**：7       |
 
 ## NotificationBasicContent
 
@@ -98,7 +98,7 @@ NotificationContent中定义通知的内容结构，提供多种通知类型的�
 
 > **说明：**
 >
-> - 当该类型通知与其他通知形成[组通知](../../notification/notification-glossary.md#group-notification组通知)时，该通知类型的展示效果默认为折叠态，显示的标题与正文为该类型继承的[普通文本](#notificationbasiccontent)中的`title`与`text`。<br>当该类型通知单独展示，没有与其他通知形成组通知时，该通知类型的展示效果默认为展开态，显示的标题为展开时的标题`expandedTitle`，显示的正文为该类型继承的`普通文本`中的`text`+该类型的图片内容`picture`。
+> - 当该类型通知与其他通知形成[组通知](../../notification/notification-glossary.md#group-notification组通知)时，该通知类型的展示效果默认为折叠态，显示的标题与正文为该类型继承的[普通文本](#notificationbasiccontent)中的`title`与`text`。<br>当该类型通知单独展示，没有与其他通知形成组通知时，该通知类型的展示效果默认为展开态，显示的标题为展开时的标题`expandedTitle`，显示的正文为该类型继承的`普通文本`中的`text`和该类型的图片内容`picture`。
 >
 > - 用户点击成组展示的通知，查看各个通知详情时，该通知的展示效果变化为展开态。
 >

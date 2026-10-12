@@ -280,6 +280,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    if (errNo != AV_ERR_OK) {
        // 异常处理。
    }
+   cencInfo = nullptr;
    ```
 
 8. 同步模式调用，写入待解码的数据，获取解码的输出。

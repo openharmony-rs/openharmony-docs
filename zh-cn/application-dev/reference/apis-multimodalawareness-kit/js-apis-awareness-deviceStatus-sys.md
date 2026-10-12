@@ -24,7 +24,9 @@
 
 设备三维旋转状态信息。
 
-**系统能力**：SystemCapability.Sensors.Sensor
+**系统能力**：SystemCapability.MultimodalAwareness.DeviceStatus
+
+**系统接口**：此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 20
 
@@ -32,9 +34,9 @@
 
 | 名称          | 类型                                      | 只读 | 可选 | 说明               |
 |---------------|-------------------------------------------|----|----|----------------------|
-| x             | ArkTS-Dyn: number<br/>ArkTS-Sta: double  | 否  | 否  | 设备在 X 轴方向的旋转弧度|
-| y             | ArkTS-Dyn: number<br/>ArkTS-Sta: double  | 否  | 否  | 设备在 Y 轴方向的旋转弧度 |
-| z             | ArkTS-Dyn: number<br/>ArkTS-Sta: double  | 否  | 否  | 设备在 Z 轴方向的旋转弧度 |
+| x             | ArkTS-Dyn: number<br/>ArkTS-Sta: double  | 否  | 否  | 设备在 X 轴方向的旋转弧度。|
+| y             | ArkTS-Dyn: number<br/>ArkTS-Sta: double  | 否  | 否  | 设备在 Y 轴方向的旋转弧度。|
+| z             | ArkTS-Dyn: number<br/>ArkTS-Sta: double  | 否  | 否  | 设备在 Z 轴方向的旋转弧度。|
 
 ## deviceStatus.getDeviceRotationRadian()
 
@@ -51,6 +53,12 @@ getDeviceRotationRadian(): Promise&lt;DeviceRotationRadian&gt;
 **ArkTS-Dyn起始版本：** 20
 
 **ArkTS-Sta起始版本：** 23
+
+**返回值**：
+
+| 类型                                | 说明               |
+| ----------------------------------- | ------------------ |
+| Promise&lt;DeviceRotationRadian&gt; | 设备三维旋转状态信息。 |
 
 **错误码**：
 

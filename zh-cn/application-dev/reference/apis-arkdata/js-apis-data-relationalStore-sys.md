@@ -76,6 +76,16 @@ import { relationalStore } from '@kit.ArkData';
 | targetTable | string | 否 | 否 | 关联的父表名称。   |
 | refFields   | Record<string, string> | 否 | 否 |表示关联表的关联字段。键值数据中键为子表字段，值为父表字段。       |
 
+## Asset<sup>10+</sup>
+
+记录资产附件（文件、图片、视频等类型文件）的相关信息。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| extension | string | 否 | 是 | 资产的扩展信息，由业务侧自定义。端侧不限制长度；云侧长度上限为512字节，超出时截断保留前512字节。默认值为空字符串。<br/>**ArkTS-Dyn起始版本：** 26.2.0<br/>**ArkTS-Sta起始版本：** 26.2.0<br/>**系统接口：** 此接口为系统接口。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+
 ## DistributedConfig<sup>10+</sup>
 
 记录表的分布式配置信息。
@@ -1509,6 +1519,66 @@ async function updateDistributedInfoUpdate(store : relationalStore.RdbStore){
     } catch (e) {
       console.error(`updateDistributedInfoUpdate failed, code is ${e.code},message is ${e.message}`);
     }
+  }
+}
+```
+
+### requestFullDataDonation
+
+requestFullDataDonation(tables: Array&lt;string&gt;): Promise&lt;void&gt;
+
+请求指定分布式表的全量数据捐赠，使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**系统接口：** 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
+
+**参数：**
+
+| 参数名      | 类型                              | 必填  | 说明              |
+| -------- | ----------------------------------- | --- |-----------------|
+| tables   | Array&lt;string&gt;                 | 是   | 需要全量捐赠的分布式表名列表，列表最大长度为20且不为空。  |
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
+
+| **错误码ID** | **错误信息**                                                             |
+| ------------ | ----------------------------------------------------------------------- |
+| 202          | Permission verification failed. A non-system application calls a system API.|
+| 14800001     | Invalid arguments. Parameter out of range or empty table list.  |
+| 14800014     | The target instance is already closed.                            |
+| 14800043     | The database does not support this scenario.|
+
+**示例：**
+
+```ts
+import { relationalStore } from '@kit.ArkData';
+
+async function requestFullDataDonationExample() 
+{
+  if (store === null) {
+    console.error('RdbStore is null.');
+    return;
+  }
+  try {
+    const tables: Array<string> = ['EMPLOYEE'];
+    await store.requestFullDataDonation(tables);
+    console.info('Full data donation request submitted successfully.');
+  } catch (e) {
+    console.error(`Failed to request full data donation, code: ${e.code}`);
   }
 }
 ```

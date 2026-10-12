@@ -665,7 +665,7 @@ ArkTS-Sta: getValue(index: int): double
 **示例：**
 
 ```ts
-import {drawing} from "@kit.ArkGraphics2D";
+import {drawing} from '@kit.ArkGraphics2D';
 
 let matrix = new drawing.Matrix();
 for (let i = 0; i < 9; i++) {
@@ -707,7 +707,7 @@ ArkTS-Sta: postRotate(degree: double, px: double, py: double): void
 
 ArkTS-Dyn示例：
 ```ts
-import {drawing} from "@kit.ArkGraphics2D";
+import {drawing} from '@kit.ArkGraphics2D';
 
 let matrix = new drawing.Matrix();
 let degree: number = 2;
@@ -719,7 +719,7 @@ console.info("matrix= "+matrix.getAll().toString());
 
 ArkTS-Sta示例：
 ```ts
-import {drawing} from "@kit.ArkGraphics2D";
+import {drawing} from '@kit.ArkGraphics2D';
 
 let matrix = new drawing.Matrix();
 let degree: double = 2.0;
@@ -766,7 +766,7 @@ ArkTS-Sta: postScale(sx: double, sy: double, px: double, py: double): void
 
 ArkTS-Dyn示例：
 ```ts
-import {drawing} from "@kit.ArkGraphics2D";
+import {drawing} from '@kit.ArkGraphics2D';
 
 let matrix = new drawing.Matrix();
 let sx: number = 2;
@@ -779,7 +779,7 @@ console.info("matrix= "+matrix.getAll().toString());
 
 ArkTS-Sta示例：
 ```ts
-import {drawing} from "@kit.ArkGraphics2D";
+import {drawing} from '@kit.ArkGraphics2D';
 
 let matrix = new drawing.Matrix();
 let sx: double = 2.0;
@@ -825,7 +825,7 @@ ArkTS-Sta: postTranslate(dx: double, dy: double): void
 
 ArkTS-Dyn示例：
 ```ts
-import {drawing} from "@kit.ArkGraphics2D";
+import {drawing} from '@kit.ArkGraphics2D';
 
 let matrix = new drawing.Matrix();
 let dx: number = 3;
@@ -836,7 +836,7 @@ console.info("matrix= "+matrix.getAll().toString());
 
 ArkTS-Sta示例：
 ```ts
-import {drawing} from "@kit.ArkGraphics2D";
+import {drawing} from '@kit.ArkGraphics2D';
 
 let matrix = new drawing.Matrix();
 let dx: double = 3.0;
@@ -881,7 +881,7 @@ ArkTS-Sta: preRotate(degree: double, px: double, py: double): void
 
 ArkTS-Dyn示例：
 ```ts
-import {drawing} from "@kit.ArkGraphics2D";
+import {drawing} from '@kit.ArkGraphics2D';
 
 let matrix = new drawing.Matrix();
 let degree: number = 2;
@@ -893,7 +893,7 @@ console.info("matrix= "+matrix.getAll().toString());
 
 ArkTS-Sta示例：
 ```ts
-import {drawing} from "@kit.ArkGraphics2D";
+import {drawing} from '@kit.ArkGraphics2D';
 
 let matrix = new drawing.Matrix();
 let degree: double = 2.0;
@@ -931,7 +931,7 @@ ArkTS-Sta: postSkew(kx: double, ky: double, px: double, py: double): void
 **示例：**
 
 ```ts
-import { drawing } from "@kit.ArkGraphics2D";
+import { drawing } from '@kit.ArkGraphics2D';
 
 let matrix = new drawing.Matrix();
 matrix.postSkew(2.0, 1.0, 2.0, 1.0);
@@ -963,7 +963,7 @@ ArkTS-Sta: preSkew(kx: double, ky: double, px: double, py: double): void
 **示例：**
 
 ```ts
-import { drawing } from "@kit.ArkGraphics2D";
+import { drawing } from '@kit.ArkGraphics2D';
 let matrix = new drawing.Matrix();
 matrix.preSkew(2.0, 1.0, 2.0, 1.0);
 ```
@@ -997,7 +997,7 @@ ArkTS-Sta: mapRadius(radius: double): double
 **示例：**
 
 ```ts
-import { drawing } from "@kit.ArkGraphics2D";
+import { drawing } from '@kit.ArkGraphics2D';
 
 let matrix = new drawing.Matrix();
 matrix.setMatrix([2.0, 1.0, 3.0, 1.0, 2.0, 1.0, 3.0, 1.0, 2.0]);
@@ -1040,7 +1040,7 @@ ArkTS-Sta: preScale(sx: double, sy: double, px: double, py: double): void
 
 ArkTS-Dyn示例：
 ```ts
-import {drawing} from "@kit.ArkGraphics2D";
+import {drawing} from '@kit.ArkGraphics2D';
 
 let matrix = new drawing.Matrix();
 let sx: number = 2;
@@ -1053,7 +1053,7 @@ console.info("matrix"+matrix.getAll().toString());
 
 ArkTS-Sta示例：
 ```ts
-import {drawing} from "@kit.ArkGraphics2D";
+import {drawing} from '@kit.ArkGraphics2D';
 
 let matrix = new drawing.Matrix();
 let sx: double = 2.0;
@@ -1099,7 +1099,7 @@ ArkTS-Sta: preTranslate(dx: double, dy: double): void
 
 ArkTS-Dyn示例：
 ```ts
-import {drawing} from "@kit.ArkGraphics2D";
+import {drawing} from '@kit.ArkGraphics2D';
 
 let matrix = new drawing.Matrix();
 let dx: number = 3;
@@ -1110,7 +1110,7 @@ console.info("matrix"+matrix.getAll().toString());
 
 ArkTS-Sta示例：
 ```ts
-import {drawing} from "@kit.ArkGraphics2D";
+import {drawing} from '@kit.ArkGraphics2D';
 
 let matrix = new drawing.Matrix();
 let dx: double = 3.0;
@@ -1137,7 +1137,7 @@ reset(): void
 
 ArkTS-Dyn示例：
 ```ts
-import {drawing} from "@kit.ArkGraphics2D";
+import {drawing} from '@kit.ArkGraphics2D';
 
 let matrix = new drawing.Matrix();
 matrix.postScale(2, 3, 4, 5);
@@ -1147,7 +1147,7 @@ console.info("matrix= "+matrix.getAll().toString());
 
 ArkTS-Sta示例：
 ```ts
-import {drawing} from "@kit.ArkGraphics2D";
+import {drawing} from '@kit.ArkGraphics2D';
 
 let matrix = new drawing.Matrix();
 matrix.postScale(2.0, 3.0, 4.0, 5.0);
@@ -1195,7 +1195,7 @@ ArkTS-Sta: mapPoints(src: Array\<common2D.Point>): Array\<common2D.Point> | unde
 
 ArkTS-Dyn示例：
 ```ts
-import {drawing,common2D} from "@kit.ArkGraphics2D";
+import {drawing,common2D} from '@kit.ArkGraphics2D';
 
 let src: Array<common2D.Point> = [];
 src.push({x: 15, y: 20});
@@ -1209,7 +1209,7 @@ console.info("matrix= dst: "+JSON.stringify(dst));
 
 ArkTS-Sta示例：
 ```ts
-import {drawing,common2D} from "@kit.ArkGraphics2D";
+import {drawing,common2D} from '@kit.ArkGraphics2D';
 
 let src: Array<common2D.Point> = [];
 src.push({x: 15, y: 20});
@@ -1244,7 +1244,7 @@ ArkTS-Sta: getAll(): Array\<double> | undefined
 **示例：**
 
 ```ts
-import {drawing} from "@kit.ArkGraphics2D";
+import {drawing} from '@kit.ArkGraphics2D';
 
 let matrix = new drawing.Matrix();
 console.info("matrix "+ matrix.getAll());
@@ -1288,7 +1288,7 @@ mapRect(dst: common2D.Rect, src: common2D.Rect): boolean
 **示例：**
 
 ```ts
-import {drawing,common2D} from "@kit.ArkGraphics2D";
+import {drawing,common2D} from '@kit.ArkGraphics2D';
 
 let dst: common2D.Rect = { left: 100.0, top: 20.0, right: 130.0, bottom: 60.0 };
 let src: common2D.Rect = { left: 100.0, top: 80.0, right: 130.0, bottom: 120.0 };
@@ -1336,7 +1336,7 @@ setRectToRect(src: common2D.Rect, dst: common2D.Rect, scaleToFit: ScaleToFit): b
 
 ArkTS-Dyn示例：
 ```ts
-import {drawing,common2D} from "@kit.ArkGraphics2D";
+import {drawing,common2D} from '@kit.ArkGraphics2D';
 
 let src: common2D.Rect = { left: 100, top: 100, right: 300, bottom: 300 };
 let dst: common2D.Rect = { left: 200, top: 200, right: 600, bottom: 600 };
@@ -1349,7 +1349,7 @@ if (matrix.setRectToRect(src, dst, scaleToFit)) {
 
 ArkTS-Sta示例：
 ```ts
-import {drawing,common2D} from "@kit.ArkGraphics2D";
+import {drawing,common2D} from '@kit.ArkGraphics2D';
 
 let src: common2D.Rect = { left: 100.0, top: 100.0, right: 300.0, bottom: 300.0 };
 let dst: common2D.Rect = { left: 200.0, top: 200.0, right: 600.0, bottom: 600.0 };
@@ -1400,7 +1400,7 @@ ArkTS-Sta: setPolyToPoly(src: Array\<common2D.Point>, dst: Array\<common2D.Point
 
 ArkTS-Dyn示例：
 ```ts
-import {drawing,common2D} from "@kit.ArkGraphics2D";
+import {drawing,common2D} from '@kit.ArkGraphics2D';
 
 let srcPoints: Array<common2D.Point> = [ {x: 10, y: 20}, {x: 200, y: 150} ];
 let dstPoints: Array<common2D.Point> = [{ x:0, y: 10 }, { x:300, y: 600 }];
@@ -1412,7 +1412,7 @@ if (matrix.setPolyToPoly(srcPoints, dstPoints, 2)) {
 
 ArkTS-Sta示例：
 ```ts
-import {drawing,common2D} from "@kit.ArkGraphics2D";
+import {drawing,common2D} from '@kit.ArkGraphics2D';
 
 let srcPoints: Array<common2D.Point> = [ {x: 10.0, y: 20.0}, {x: 200.0, y: 150.0} ];
 let dstPoints: Array<common2D.Point> = [{ x:0.0, y: 10.0 }, { x:300.0, y: 600.0 }];

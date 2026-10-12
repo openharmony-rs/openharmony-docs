@@ -40,7 +40,7 @@ import { AccessibilityExtensionAbility } from '@kit.AccessibilityKit';
 | ----------------------------- | ---------------------------------------- | ---- | ---- | ---------------------------------------- |
 | eventType                     | [AccessibilityEventType](js-apis-accessibility-sys.md#accessibilityeventtype) | 否    | 否    | 无障碍事件类型。 |
 | target                        | [AccessibilityElement](js-apis-inner-application-accessibilityExtensionContext-sys.md#accessibilityelement) | 否    | 是    | 发生事件的目标组件。当无障碍事件涉及具体组件时，此属性包含该组件信息。 |
-| timeStamp                     | ArkTS-Dyn: number<br>ArkTS-Sta: long                         | 否    | 是    | 事件时间戳，单位为毫秒，默认值为0。 |
+| timestamp                     | ArkTS-Dyn: number<br>ArkTS-Sta: long                         | 否    | 是    | 事件时间戳，单位为毫秒，默认值为0。 |
 | extraInfo                     | string                                   | 否    | 是    | 针对TextArea、TextInput、SearchField、RichEdit组件，当组件文本内容发生增删变化时，此属性表示增删的具体文本内容。默认值为空字符串。 |
 
 ## AccessibilityExtensionAbility

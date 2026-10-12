@@ -284,6 +284,7 @@ async function fetchFramesByTimesDemo() {
   };
   // 获取缩略图。
   let avMetadataExtractor = await media.createAVMetadataExtractor();
+  let pixelMap: image.PixelMap | undefined = undefined;
   if (avMetadataExtractor) {
     console.info('Succeeded in creating AVMetadataExtractor');
     avMetadataExtractor.fetchFramesByTimes(timesUs, queryOption, param, (frameInfo: media.FrameInfo, err: BusinessError) => {
@@ -292,7 +293,7 @@ async function fetchFramesByTimesDemo() {
         return;
       }
       if (frameInfo != undefined && frameInfo.image != undefined) {
-        this.pixelMap = frameInfo.image;
+        pixelMap = frameInfo.image;
       }});
   }
 }
@@ -359,6 +360,7 @@ async function fetchFramesByTimesDemo() {
   };
   // 获取缩略图。
   let avMetadataExtractor = await media.createAVMetadataExtractor();
+  let pixelMap: image.PixelMap | undefined = undefined;
   if (avMetadataExtractor) {
     console.info('Succeeded in creating AVMetadataExtractor');
     avMetadataExtractor.fetchFramesByTimesWithTimeout(timesUs, queryOption, param, timeoutMs, (frameInfo: media.FrameInfo, err: BusinessError) => {
@@ -367,7 +369,7 @@ async function fetchFramesByTimesDemo() {
         return;
       }
       if (frameInfo != undefined && frameInfo.image != undefined) {
-        this.pixelMap = frameInfo.image;
+        pixelMap = frameInfo.image;
       }});
   }
 }
@@ -587,7 +589,7 @@ ArkTS-Sta: fetchAlbumCover(callback: AsyncCallback<image.PixelMap | undefined>):
 
 | 错误码ID | 错误信息                                   |
 | -------- | ------------------------------------------ |
-| 5400102  | Operation not allowed. Return by callback. |
+| 5400102  | Operation not allowed. Returned by callback. |
 | 5400106  | Unsupported format. Returned by callback.  |
 
 **示例：**

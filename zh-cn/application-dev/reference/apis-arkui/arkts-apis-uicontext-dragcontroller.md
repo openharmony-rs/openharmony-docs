@@ -6,7 +6,7 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-提供发起主动拖拽的能力，当应用接收到触摸或长按等事件时可以主动发起拖拽的动作，并在其中携带拖拽信息。
+提供拖拽控制能力，支持在应用接收到触摸或长按等事件时主动发起拖拽并携带拖拽信息，也支持创建拖拽Action、获取拖拽背板、控制拖拽事件上报和拖拽启动请求、取消拖拽数据加载，以及设置不允许落入目标区域时的禁止角标显示。
 
 > **说明：**
 >
@@ -65,7 +65,7 @@ struct DragControllerPage {
   @Builder
   DraggingBuilder() {
     Column() {
-      Text("DraggingBuilder")
+      Text('DraggingBuilder')
     }
     .width(100)
     .height(100)
@@ -163,7 +163,7 @@ struct DragControllerPage {
   @Builder
   DraggingBuilder() {
     Column() {
-      Text("DraggingBuilder")
+      Text('DraggingBuilder')
     }
     .width(100)
     .height(100)
@@ -173,7 +173,7 @@ struct DragControllerPage {
   @Builder
   PixmapBuilder() {
     Column() {
-      Text("PixmapBuilder")
+      Text('PixmapBuilder')
     }
     .width(100)
     .height(100)
@@ -194,26 +194,26 @@ struct DragControllerPage {
                 data: unifiedData,
                 extraParams: ''
               };
-              let pb: CustomBuilder = (): void => {
+              let pixmapBuilder: CustomBuilder = (): void => {
                 this.PixmapBuilder()
               };
-              this.getUIContext().getComponentSnapshot().createFromBuilder(pb).then((pix: image.PixelMap) => {
-                this.pixmap = pix;
+              this.getUIContext().getComponentSnapshot().createFromBuilder(pixmapBuilder).then((pixelMap: image.PixelMap) => {
+                this.pixmap = pixelMap;
                 let dragItemInfo: DragItemInfo = {
                   pixelMap: this.pixmap,
                   builder: () => {
                     this.DraggingBuilder()
                   },
-                  extraInfo: "DragItemInfoTest"
+                  extraInfo: 'DragItemInfoTest'
                 };
                 let eve: DragInfo = new DragInfo();
                 this.getUIContext()
                   .getDragController()
                   .executeDrag(dragItemInfo, dragInfo)
-                  .then((eve) => {
-                    if (eve.event.getResult() == DragResult.DRAG_SUCCESSFUL) {
+                  .then((dragEventParam) => {
+                    if (dragEventParam.event.getResult() == DragResult.DRAG_SUCCESSFUL) {
                       // ...
-                    } else if (eve.event.getResult() == DragResult.DRAG_FAILED) {
+                    } else if (dragEventParam.event.getResult() == DragResult.DRAG_FAILED) {
                       // ...
                     }
                   })
@@ -239,11 +239,11 @@ ArkTS-Dyn: createDragAction(customArray: Array&lt;CustomBuilder \| DragItemInfo&
 
 ArkTS-Sta: createDragAction(customArray: Array&lt;CustomBuilder \| DragItemInfo&gt; \| undefined, dragInfo: dragController.DragInfo): dragController.DragAction
 
-创建拖拽的Action对象，需要显式指定拖拽背板图（可多个），以及拖拽的数据，跟手点等信息；当通过一个已创建的Action对象发起的拖拽未结束时，无法再次创建新的Action对象，接口会抛出异常；当Action对象的生命周期结束后，注册在该对象上的回调函数会失效，因此需要在一个尽量长的作用域下持有该对象，并在每次发起拖拽前通过createDragAction返回新的对象覆盖旧值。
+创建拖拽的Action对象时，需要显式指定拖拽背板图（可多个）、拖拽的数据、跟手点等信息。当通过一个已创建的Action对象发起的拖拽未结束时，无法再次创建新的Action对象，接口会抛出异常。当Action对象的生命周期结束后，注册在该对象上的回调函数会失效。因此，需要在需要接收该对象回调期间持有该对象，并在每次发起拖拽前通过createDragAction返回新的对象覆盖旧值。
 
 > **说明：**
 >
-> 建议控制传递的拖拽背板数量，传递过多容易导致拖起的效率问题。
+> 建议控制传递的拖拽背板数量，避免因拖拽背板数量增加导致拖起耗时增加。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -434,11 +434,11 @@ getDragPreview(): dragController.DragPreview
 
 **ArkTS-Sta起始版本：** 23
 
-**返回值：** 
+**返回值：**
 
 | 类型                                                         | 说明                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [dragController.DragPreview](js-apis-arkui-dragController.md#dragpreview11) | 一个代表拖拽背板的对象，提供背板样式设置的接口，在onDrop和onDragEnd回调中使用不生效。 |
+| [dragController.DragPreview](js-apis-arkui-dragController.md#dragpreview11) | 返回一个代表拖拽背板的对象，提供背板样式设置的接口；在onDrop和onDragEnd回调中使用该对象设置背板样式不生效。 |
 
 **错误码：** 通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
 
@@ -450,7 +450,7 @@ getDragPreview(): dragController.DragPreview
 
 setDragEventStrictReportingEnabled(enable: boolean): void
 
-当目标从父组件拖拽到子组件时，通过该方法设置是否会触发父组件的onDragLeave的回调。
+当拖拽对象从父组件拖拽到子组件时，是否会触发父组件的onDragLeave回调。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -464,7 +464,7 @@ setDragEventStrictReportingEnabled(enable: boolean): void
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| enable | boolean | 是   | 将目标从父组件拖拽到子组件时，是否会触发父组件的onDragLeave的回调。true表示触发父组件的onDragLeave的回调，false表示不触发。 |
+| enable | boolean | 是   | 当拖拽对象从父组件拖拽到子组件时，是否会触发父组件的onDragLeave回调。true表示触发父组件的onDragLeave回调，false表示不触发。 |
 
 **示例：**
 
@@ -507,15 +507,15 @@ cancelDataLoading(key: string): void
 
 **参数：**
 
-| 参数名 | 类型    | 必填 | 说明                                                         |
+| 参数名 | 类型    | 必填 | 说明 |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
 | key | string | 是   | 拖拽数据的标识，用于区分每次拖拽。key可通过startDataLoading接口获取。 |
 
-**错误码：** 
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[拖拽事件错误码](./errorcode-drag-event.md)。
 
-| 错误码ID | 错误信息                                                     |
+| 错误码ID | 错误信息 |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. |
 | 190004      | Operation failed. |
@@ -524,7 +524,7 @@ cancelDataLoading(key: string): void
 
 notifyDragStartRequest(requestStatus: dragController.DragStartRequestStatus): void
 
-控制应用是否可以发起拖拽。
+控制应用是否可以发起拖拽。该接口通常与组件的onPreDrag和onDragStart回调配合使用：在拖拽开始但数据尚未准备完成时，可在onDragStart回调中调用notifyDragStartRequest(DragStartRequestStatus.WAITING)，阻止立即发起拖拽；待拖拽数据和预览资源准备完成后，再调用notifyDragStartRequest(DragStartRequestStatus.READY)，允许继续发起拖拽。若未按拖拽准备流程正确上报状态，可能导致拖拽无法按预期启动，或启动时拖拽数据尚未准备完成。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -538,7 +538,7 @@ notifyDragStartRequest(requestStatus: dragController.DragStartRequestStatus): vo
 
 | 参数名 | 类型   | 必填| 说明                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| requestStatus  | [dragController.DragStartRequestStatus](js-apis-arkui-dragController.md#dragstartrequeststatus18)    | 是  |定义应用是否可以发起拖拽。|
+| requestStatus | [dragController.DragStartRequestStatus](js-apis-arkui-dragController.md#dragstartrequeststatus18) | 是 | 定义应用是否可以发起拖拽。取值为WAITING时，表示应用数据仍在准备阶段，暂不允许发起拖拽；取值为READY时，表示应用数据已准备完成，允许继续发起拖拽。 |
 
 **示例：**
 
@@ -560,7 +560,10 @@ struct NormalEts {
   loadData() {
     // 设置4s后才能发起拖拽
     let timeout = setTimeout(() => {
-      this.getUIContext().getComponentSnapshot().get("image1", (error: Error, pixmap: image.PixelMap) => {
+      this.getUIContext().getComponentSnapshot().get('image1', (error: Error, pixmap: image.PixelMap) => {
+        if (error) {
+          return;
+        }
         this.pixmap = pixmap;
         this.previewData = {
           pixelMap: this.pixmap
@@ -569,19 +572,20 @@ struct NormalEts {
       });
 
       let data: unifiedDataChannel.Image = new unifiedDataChannel.Image();
-      data.imageUri = "app.media.startIcon";
+      data.imageUri = 'app.media.startIcon';
       let unifiedData = new unifiedDataChannel.UnifiedData(data);
       this.unifiedData1 = unifiedData;
+      this.finished = true;
     }, 4000);
     this.timeout1 = timeout;
   }
 
   build() {
     Column({ space: 20 }) {
-      Image($r("app.media.startIcon"))
+      Image($r('app.media.startIcon'))
         .width(150)
         .height(150)
-        .id("image1")
+        .id('image1')
         .draggable(true)
         .dragPreview(this.previewData)
         .onPreDrag((status: PreDragStatus) => {
@@ -617,7 +621,7 @@ struct NormalEts {
 
 enableDropDisallowedBadge(enabled: boolean): void
 
-当组件的类型与配置的[allowDrop](../apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#allowdrop)无交集时可显示禁用角标。通常，当组件可以接收或处理拖拽数据，或当它返回DragBehavior.COPY向系统声明数据以复制方式处理时，拖拽对象会显示加号及数据编号的角标。如果返回DragBehavior.MOVE以向系统声明数据以剪切方式处理，拖拽对象将只显示数据编号的角标。当拖拽对象经过目标区域时，若系统决定或组件显式声明无法处理拖拽数据，可通过该方法设置是否显示拖拽禁止角标。该接口暂不支持[UIExtension](../apis-arkui/js-apis-arkui-uiExtension.md)。
+当拖拽数据类型与组件配置的[allowDrop](../apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#allowdrop)允许接收的数据类型无交集时，可显示禁用角标。通常，当组件可以接收或处理拖拽数据，或当它返回DragBehavior.COPY向系统声明数据以复制方式处理时，拖拽对象会显示加号及数据编号的角标。如果返回DragBehavior.MOVE以向系统声明数据以剪切方式处理，拖拽对象将只显示数据编号的角标。当目标进行拖拽时，若系统决定或组件显式声明无法处理拖拽数据，可通过该方法检查是否应显示拖拽禁止角标。该接口暂不支持[UIExtension](../apis-arkui/js-apis-arkui-uiExtension.md)。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -629,13 +633,13 @@ enableDropDisallowedBadge(enabled: boolean): void
 
 **参数：**
 
-| 参数名 | 类型    | 必填 | 说明                                                         |
+| 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
 | enabled | boolean | 是   | 当拖拽数据类型与组件配置的[allowDrop](../apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md#allowdrop)允许接收的数据类型无交集时，可显示禁用角标；当拖拽对象经过目标组件时，通过enableDropDisallowedBadge方法设置是否显示拖拽禁止角标。true表示显示拖拽禁止角标，false表示不显示拖拽禁止角标。未调用该接口时不显示拖拽禁止角标。 |
 
 **示例：**
 
-该示例通过enableDropDisallowedBadge接口实现了对目标进行拖拽时显示拖拽禁止角标的功能。
+该示例通过enableDropDisallowedBadge接口实现了拖拽对象经过不允许落入的目标区域时显示拖拽禁止角标的功能。
 
 1. 在EntryAbility.ets中调用enableDropDisallowedBadge接口，设置enabled参数为true。
 

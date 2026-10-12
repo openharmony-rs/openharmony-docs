@@ -293,7 +293,7 @@ type ToolSummary = _ToolSummary
 
 type CliToolEvent = _CliToolEvent
 
-[CliToolEvent (CLI工具会话事件)](../apis-ability-kit/js-apis-inner-application-cliToolEvent-sys.md)用于描述CLI工具进程运行期间产生的会话事件信息。
+[CliToolEvent (CLI工具会话事件)](../apis-ability-kit/js-apis-inner-application-cliToolEvent.md)用于描述CLI工具进程运行期间产生的会话事件信息。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -307,13 +307,13 @@ type CliToolEvent = _CliToolEvent
 
 | 类型 | 说明 |
 | --- | --- |
-| [_CliToolEvent](../apis-ability-kit/js-apis-inner-application-cliToolEvent-sys.md) | 用于描述CLI工具进程运行期间产生的会话事件信息。 |
+| [_CliToolEvent](../apis-ability-kit/js-apis-inner-application-cliToolEvent.md) | 用于描述CLI工具进程运行期间产生的会话事件信息。 |
 
 ## ToolEventCallback
 
 type ToolEventCallback = _ToolEventCallback
 
-[ToolEventCallback (CLI工具事件回调)](../apis-ability-kit/js-apis-inner-application-toolEventCallback-sys.md)用于接收CLI工具进程运行期间产生的会话事件。
+[ToolEventCallback (CLI工具事件回调)](../apis-ability-kit/js-apis-inner-application-toolEventCallback.md)用于接收CLI工具进程运行期间产生的会话事件。
 
 **ArkTS-Dyn起始版本：** 26.0.0
 
@@ -327,7 +327,7 @@ type ToolEventCallback = _ToolEventCallback
 
 | 类型 | 说明 |
 | --- | --- |
-| [_ToolEventCallback](../apis-ability-kit/js-apis-inner-application-toolEventCallback-sys.md) | 用于接收CLI工具进程运行期间产生的会话事件。 |
+| [_ToolEventCallback](../apis-ability-kit/js-apis-inner-application-toolEventCallback.md) | 用于接收CLI工具进程运行期间产生的会话事件。 |
 
 ## FunctionInfo
 

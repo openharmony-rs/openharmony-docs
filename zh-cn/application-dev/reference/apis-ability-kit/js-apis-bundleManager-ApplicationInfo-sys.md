@@ -31,7 +31,7 @@ import { bundleManager } from '@kit.AbilityKit';
 | 名称      | 类型           | 只读 | 可选 | 说明                        |
 | --------- | -------------- | ---- | ---- | --------------------------- |
 | flags<sup>12+</sup>    | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 是   | 标识当前应用和当前用户之间的状态集合，每一位表示一个特定的布尔状态，取值参考[ApplicationInfoFlag](js-apis-bundleManager-sys.md#applicationinfoflag12)。<br/>**系统API：** 从API version 12开始，该接口支持在系统API中使用。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
-
+| applicationReservedFlag    | [bundleManager.ApplicationReservedFlag](js-apis-bundleManager-sys.md#applicationreservedflag)    | 是   | 是   | 应用的保留标志位。<br>**模型约束：** 此字段仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.1<br>**ArkTS-Sta起始版本：** 26.0.1 |
 
 ## PreinstalledApplicationInfo
 

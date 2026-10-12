@@ -1502,6 +1502,45 @@ try {
 }
 ```
 
+## adminManager.getEnterpriseManagedTips<sup>23+</sup>
+
+getEnterpriseManagedTips(): Promise&lt;string&gt;
+
+获取锁屏界面设备管理提示语。使用Promise异步回调。
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**返回值：**
+
+| 类型   | 说明                                  |
+| ----- | ----------------------------------- |
+| Promise&lt;string&gt; | Promise对象，返回锁屏界面设备管理提示语。当获取锁屏界面设备管理提示语失败时，会抛出错误对象。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                               |
+| ------- | ----------------------------------------------------- |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+
+**示例：**
+
+```ts
+import { adminManager } from '@kit.MDMKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+adminManager.getEnterpriseManagedTips().then((result) => {
+  console.info(`Succeeded in getting enterprise managed tips: ${result}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get enterprise managed tips. Code: ${err.code}, message: ${err.message}`);
+})
+```
+
 ## EnterpriseInfo
 
 设备管理应用的企业信息。

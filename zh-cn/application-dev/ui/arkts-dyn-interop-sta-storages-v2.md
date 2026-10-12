@@ -445,6 +445,7 @@ import {
   PersistenceV2Page, canTracePropPlusInStatic, normalPropPlusInStatic, connectInStatic, saveInStatic, removeInStatic,
   keysInStatic, StaDataModel
 } from 'static_module';
+import st, { STValue } from 'static.@ohos.lang.interop';
 
 @Entry
 @ComponentV2
@@ -452,7 +453,7 @@ struct Index {
   // 承接ArkTS-Sta模块的数据
   @Local canTraceProp: number = 0;
   @Local normalProp: number = 10;
-  @Local keys: Array<string> = [];
+  @Local keys: st.Array<string> = STValue.newSTArray();
 
   build() {
     Column() {
@@ -505,9 +506,7 @@ struct Index {
         .margin(10)
         .fontSize(20)
         .onClick(() => {
-          for (let key of keysInStatic()) {
-            this.keys.push(key);
-          }
+          this.keys = keysInStatic();
         })
 
       // 调用ArkTS-Sta模块组件，初始化一个ArkTS-Sta对象

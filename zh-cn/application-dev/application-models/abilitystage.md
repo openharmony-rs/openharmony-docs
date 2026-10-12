@@ -35,45 +35,51 @@ AbilityStage拥有[onCreate()](../reference/apis-ability-kit/js-apis-app-ability
 DevEco Studio默认工程中未自动生成AbilityStage，如需要使用AbilityStage的能力，可以手动新建一个AbilityStage文件，具体步骤如下。
 
 
-1. 在工程Module对应的ets目录下，右键选择“New &gt; Directory”，新建一个目录并命名为exampleabilitystage。
+1. 在工程Module对应的ets目录下，右键选择“New &gt; Directory”，新建一个目录并命名为myabilitystage。
 
-2. 在exampleabilitystage目录，右键选择“New &gt; ArkTS File”，新建一个文件并命名为MyAbilityStage.ets。
+2. 在myabilitystage目录，右键选择“New &gt; ArkTS File”，新建一个文件并命名为MyAbilityStage.ets。
 
 3. 打开MyAbilityStage.ets文件，导入AbilityStage的依赖包，自定义类继承AbilityStage并加上需要的生命周期回调，示例中增加了一个[onCreate()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#oncreate)生命周期回调。
 
-    ArkTS-Dyn示例：
-    <!-- @[my_example_ability_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AbilityStage/entry/src/main/ets/exampleabilitystage/MyAbilityStage.ets) -->
-
+    <!-- @[myAbility_start_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AbilityStage/entry/src/main/ets/myabilitystage/MyAbilityStage.ets) -->
+    
     ``` TypeScript
-    import { AbilityStage, Want } from '@kit.AbilityKit';
-
+    import { EnvironmentCallback, AbilityStage, Want } from '@kit.AbilityKit';
+    import { BusinessError } from '@kit.BasicServicesKit';
+    
     export default class MyAbilityStage extends AbilityStage {
+    
       onCreate(): void {
         // 应用HAP首次加载时触发，可以在此执行该Module的初始化操作（例如资源预加载、线程创建等）。
+        console.info('AbilityStage onCreate');
+        // ...
       }
-
       onAcceptWant(want: Want): string {
         // 仅specified模式下触发
         return 'MyAbilityStage';
       }
+      // ...
     }
     ```
     
     ArkTS-Sta示例：
-    <!-- @[my_example_ability_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Ability/AbilityStage-sta/entry/src/main/ets/exampleabilitystage/MyAbilityStage.ets) -->
+    <!-- @[myAbility_start_one](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Ability/AbilityStage-sta/entry/src/main/ets/myabilitystage/MyAbilityStage.ets) -->
     
     ``` TypeScript
-    import { AbilityStage, Want } from '@kit.AbilityKit';
+    import { AbilityStage, Configuration, AbilityConstant, Want } from '@kit.AbilityKit';
+    import { BusinessError } from '@kit.BasicServicesKit';
     
     export default class MyAbilityStage extends AbilityStage {
+
       onCreate(): void {
         // 应用HAP首次加载时触发，可以在此执行该Module的初始化操作（例如资源预加载、线程创建等）。
+        console.info('AbilityStage onCreate');
       }
-    
       onAcceptWant(want: Want): string {
         // 仅specified模式下触发
         return 'MyAbilityStage';
       }
+      // ...
     }
     ```
 
@@ -102,15 +108,16 @@ DevEco Studio默认工程中未自动生成AbilityStage，如需要使用Ability
 
 - 通过关闭应用进程，可以触发AbilityStage的onDestroy()生命周期回调。
 
-  ArkTS-Dyn示例：
-  <!-- @[myAbility_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AbilityStage/entry/src/main/ets/myabilitystage/MyAbilityStage.ets) -->
-
+  <!-- @[myAbility_start_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AbilityStage/entry/src/main/ets/myabilitystage/MyAbilityStage.ets) -->
+  
   ``` TypeScript
-  import { EnvironmentCallback, AbilityStage } from '@kit.AbilityKit';
+  import { EnvironmentCallback, AbilityStage, Want } from '@kit.AbilityKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   export default class MyAbilityStage extends AbilityStage {
+  
     onCreate(): void {
+      // 应用HAP首次加载时触发，可以在此执行该Module的初始化操作（例如资源预加载、线程创建等）。
       console.info('AbilityStage onCreate');
       let envCallback: EnvironmentCallback = {
         onConfigurationUpdated(config) {
@@ -133,7 +140,7 @@ DevEco Studio默认工程中未自动生成AbilityStage，如需要使用Ability
         console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
       }
     }
-
+    // ...
     onDestroy(): void {
       // 通过onDestroy()方法，可以监听到Ability的销毁事件。
       console.info('AbilityStage onDestroy');
@@ -142,17 +149,19 @@ DevEco Studio默认工程中未自动生成AbilityStage，如需要使用Ability
   ```
 
   ArkTS-Sta示例：
-  <!-- @[myAbility_start](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Ability/AbilityStage-sta/entry/src/main/ets/myabilitystage/MyAbilityStage.ets) -->
+  <!-- @[myAbility_start_two](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Ability/AbilityStage-sta/entry/src/main/ets/myabilitystage/MyAbilityStage.ets) -->
   
   ``` TypeScript
-  import { AbilityStage, Configuration, AbilityConstant } from '@kit.AbilityKit';
+  import { AbilityStage, Configuration, AbilityConstant, Want } from '@kit.AbilityKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   
   export default class MyAbilityStage extends AbilityStage {
+  
     onCreate(): void {
+      // 应用HAP首次加载时触发，可以在此执行该Module的初始化操作（例如资源预加载、线程创建等）。
       console.info('AbilityStage onCreate');
     }
-  
+    // ...
     onConfigurationUpdated(config: Configuration): void {
       console.info(`envCallback onConfigurationUpdated success: ${JSON.stringify(config)}`);
       let language = config.language; // 应用程序的当前语言

@@ -23,7 +23,7 @@
 
 setCursor(value: PointerStyle): void
 
-方法语句中可使用的全局接口，调用该接口可更改当前的鼠标光标样式。
+在组件方法或事件回调中可使用的全局接口，调用该接口可设置当前的鼠标光标样式，例如在文本编辑区域悬浮时显示I型光标、在可拖拽元素上显示移动光标或在地图标记点悬浮时显示手指光标。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -37,13 +37,13 @@ setCursor(value: PointerStyle): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ----- | ------ | ---- | ---- |
-| value | [PointerStyle](#pointerstyle) | 是   | 设置的光标样式。 |
+| value | [PointerStyle](#pointerstyle) | 是   | 设置的鼠标光标样式。 |
 
 ### restoreDefault
 
 restoreDefault(): void
 
-方法语句中可使用的全局接口，调用此接口可将鼠标光标恢复成默认箭头样式。
+在组件方法或事件回调中可使用的全局接口，调用该接口可将鼠标光标恢复成默认箭头样式，例如在鼠标离开悬浮区域、组件失焦或交互结束时恢复默认光标。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -59,7 +59,7 @@ ArkTS-Dyn: type PointerStyle = import('../api/@ohos.multimodalInput.pointer').de
 
 ArkTS-Sta: type PointerStyle = pointer.PointerStyle
 
-光标样式。
+鼠标光标样式。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。
 

@@ -190,7 +190,8 @@ struct objectLinkSample {
 >
 > 从API version 23开始，在ArkTS-Sta中支持使用ArkTS-Dyn中\@Observed装饰的类中Map类型的成员变量。
 
-在下面示例中，memberMap类型为Map\<number, string\>，点击Button改变memberMap的值，视图会随之刷新。
+在下面示例中，ArkTS-Dyn侧的`memberMap`声明为`st.Map<number, string>`，传入ArkTS-Sta后对应`Map<number, string>`。`st.Map`及`STValue.newSTMap()`的使用方法请参考[ArkTS-Dyn使用st.Map传给ArkTS-Sta Map](arkts-ui-interop-builtin-collection.md#arkts-dyn使用stmap传给arkts-sta-map)。点击Button改变`memberMap`的值，视图会随之刷新。
+
 <!-- @[StaDynObservedMainPageMap](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynObserved/dynamic_module/src/main/ets/components/ObservedMapInfo.ets) -->
 
 ```TypeScript
@@ -211,7 +212,7 @@ export class MapInfo {
 export { MapInfo } from './src/main/ets/components/ObservedMapInfo';
 ```
 
-```json
+```json5
 // entry/oh-package.json5
 
 "dependencies": {
@@ -321,7 +322,8 @@ struct MapSample {
 >
 > 从API version 23开始，在ArkTS-Sta中支持使用ArkTS-Dyn中\@Observed装饰的类中Set类型的成员变量。
 
-在下面示例中，memberSet类型为Set\<number\>，点击Button改变memberSet的值，视图会随之刷新。
+在下面示例中，ArkTS-Dyn侧的`memberSet`声明为`st.Set<number>`，传入ArkTS-Sta后对应`Set<number>`。`st.Set`及`STValue.newSTSet()`的使用方法请参考[ArkTS-Dyn使用st.Set传给ArkTS-Sta Set](arkts-ui-interop-builtin-collection.md#arkts-dyn使用stset传给arkts-sta-set)。点击Button改变`memberSet`的值，视图会随之刷新。
+
 <!-- @[StaDynObservedMainPageSet](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/StaInteropDynObserved/dynamic_module/src/main/ets/components/ObservedSetInfo.ets) -->
 
 ```TypeScript
@@ -342,7 +344,7 @@ export class SetInfo {
 export { SetInfo } from './src/main/ets/components/ObservedSetInfo';
 ```
 
-```json
+```json5
 // entry/oh-package.json5
 
 "dependencies": {

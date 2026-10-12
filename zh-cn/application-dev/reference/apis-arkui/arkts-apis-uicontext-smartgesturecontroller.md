@@ -6,7 +6,7 @@
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
 
-提供智慧手势使能、监听、选中态控制，以及动态决策智慧手势行为的能力。
+提供智慧手势使能、监听、选中态控制，以及动态决策智慧手势行为的能力，适用于应用接入智慧手势、监听系统默认手势处理意图并自定义手势响应行为的场景，可帮助应用灵活控制智慧手势交互流程。
 
 > **说明：**
 >
@@ -42,9 +42,9 @@ enableSmartTapAndSlideGestures(enabled: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| enabled | boolean | 是 | 是否启用智慧手势的敲一敲和划一划操作。true表示启用，false表示关闭。 |
+| enabled | boolean | 是 | 是否启用智慧手势的敲一敲和划一划手势处理。true表示启用，false表示关闭。 |
 
-**示例：** 
+**示例：**
 
 本示例通过enableSmartTapAndSlideGestures接口实现了启用和关闭智慧手势，完整示例请参考[示例1（启用智慧手势并自定义动作处理）](#示例1启用智慧手势并自定义动作处理)。
 
@@ -120,7 +120,7 @@ registerMonitor(monitorCallback: Callback<BaseGestureHandlingProposal, GestureHa
 | ---- | ---- | ---- | ---- |
 | monitorCallback | [Callback](arkui-ts/ts-types.md#callback12)&lt;[BaseGestureHandlingProposal](./arkts-apis-uicontext-basegesturehandlingproposal.md), [GestureHandlingResolution](./arkts-apis-uicontext-gesturehandlingresolution.md)&gt; | 是 | 智慧手势监听回调。回调参数为系统给出的默认动作处理，返回值用于声明是否消费当前智慧手势以及是否替换默认动作处理。 |
 
-**示例：** 
+**示例：**
 
 本示例通过registerMonitor接口实现了注册智慧手势监听回调，完整示例请参考[示例1（启用智慧手势并自定义动作处理）](#示例1启用智慧手势并自定义动作处理)。
 
@@ -179,7 +179,7 @@ struct SmartGestureControllerExample {
     .width('100%')
     .height('100%')
     .padding(12)
-  }
+  };
 }
 ```
 
@@ -187,7 +187,7 @@ struct SmartGestureControllerExample {
 
 ## unregisterMonitor
 
-unregisterMonitor(monitorCallback: Callback<BaseGestureHandlingProposal, GestureHandlingResolution>): void
+unregisterMonitor(monitorCallback: Callback\<BaseGestureHandlingProposal, GestureHandlingResolution\>): void
 
 注销智慧手势监听回调。
 
@@ -207,7 +207,7 @@ unregisterMonitor(monitorCallback: Callback<BaseGestureHandlingProposal, Gesture
 | ---- | ---- | ---- | ---- |
 | monitorCallback | [Callback](arkui-ts/ts-types.md#callback12)&lt;[BaseGestureHandlingProposal](./arkts-apis-uicontext-basegesturehandlingproposal.md), [GestureHandlingResolution](./arkts-apis-uicontext-gesturehandlingresolution.md)&gt; | 是 | 需要注销的智慧手势监听回调。 |
 
-**示例：** 
+**示例：**
 
 本示例通过unregisterMonitor接口实现了注销智慧手势监听回调，完整示例请参考[示例1（启用智慧手势并自定义动作处理）](#示例1启用智慧手势并自定义动作处理)。
 
@@ -266,7 +266,7 @@ struct SmartGestureControllerExample {
     .width('100%')
     .height('100%')
     .padding(12)
-  }
+  };
 }
 ```
 
@@ -288,7 +288,7 @@ clearMonitors(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**示例：** 
+**示例：**
 
 本示例通过clearMonitors接口实现了清空智慧手势监听回调，完整示例请参考[示例1（启用智慧手势并自定义动作处理）](#示例1启用智慧手势并自定义动作处理)。
 
@@ -360,7 +360,7 @@ requestSelected(id: string): void
 请求将指定组件设置为当前智慧手势选中节点。成功选中后会显示选中提示框，选中框样式根据设备有所不同。
 
 > **说明：**
-> 
+>
 > - 仅当目标组件满足以下全部条件时，请求才会生效：组件可以响应智慧手势，组件在屏幕内可见，且组件绑定了[onClick](./arkui-ts/ts-universal-events-click.md#onclick)或绑定了单击手势[TapGesture](./arkui-ts/ts-basic-gestures-tapgesture.md#接口)。
 > - 组件能否响应智慧手势由[smartGestureShortcut](arkui-ts/ts-universal-attributes-smart-gesture-shortcut.md#smartgestureshortcut)中的enabled决定；组件能否被智慧手势选中由其中的selectable决定。
 
@@ -378,9 +378,9 @@ requestSelected(id: string): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
-| id | string | 是 | 组件的[id](./arkui-ts/ts-universal-attributes-component-id.md#id)。 |
+| id | string | 是 | 组件的[id](./arkui-ts/ts-universal-attributes-component-id.md#id)，该id对应的目标组件需满足：可以响应智慧手势、在屏幕内可见，且组件绑定了[onClick](./arkui-ts/ts-universal-events-click.md#onclick)或绑定了单击手势[TapGesture](./arkui-ts/ts-basic-gestures-tapgesture.md#接口)。 |
 
-**示例：** 
+**示例：**
 
 本示例通过requestSelected接口和clearSelected接口实现了请求组件选中并在5000ms后自动清除选中，完整示例请参考[示例1（启用智慧手势并自定义动作处理）](#示例1启用智慧手势并自定义动作处理)。
 
@@ -433,7 +433,7 @@ struct SmartGestureControllerExample {
             setTimeout(() => {
               this.controller.clearSelected();
               console.info('smartGesture selected is clear');
-            }, 5000)
+            }, 5000);
           })
       }.width('100%')
     }
@@ -463,7 +463,7 @@ clearSelected(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**示例：** 
+**示例：**
 
 本示例通过requestSelected接口和clearSelected接口实现了请求组件选中并在5000ms后自动清除选中，完整示例请参考[示例1（启用智慧手势并自定义动作处理）](#示例1启用智慧手势并自定义动作处理)。
 
@@ -494,7 +494,7 @@ struct SmartGestureControllerExample {
 
   aboutToDisappear(): void {
     this.controller.enableSmartTapAndSlideGestures(false);
-  }
+  };
 
   build() {
     Scroll() {
@@ -516,7 +516,7 @@ struct SmartGestureControllerExample {
             setTimeout(() => {
               this.controller.clearSelected();
               console.info('smartGesture selected is clear');
-            }, 5000)
+            }, 5000);
           })
       }.width('100%')
     }
@@ -524,7 +524,7 @@ struct SmartGestureControllerExample {
     .width('100%')
     .height('100%')
     .padding(12)
-  }
+  };
 }
 ```
 
@@ -583,6 +583,8 @@ struct SmartGestureControllerExample {
       // proposal.operateIntention表示底层操作意图，取值包括TAP/SLIDE_FORWARD/BACK_PRESS
       // proposal.action表示最终执行动作，取值包括NONE/SELECT/CLICK/PAGE_FORWARD/SCROLL_FORWARD/BACK_PRESS
       this.hint = `意图=${proposal.operateIntention}, 动作=${proposal.action}`;
+
+      // 消费当前智慧手势，后续根据proposal.action改写默认动作处理。
       const resolution = new GestureHandlingResolution(true);
       // 覆盖为点击动作
       if (proposal.action === SmartGestureAction.CLICK) {
@@ -590,36 +592,26 @@ struct SmartGestureControllerExample {
         if (node) {
           resolution.selectedProposal = new ClickActionProposal(node);
         }
-      }
-      // 覆盖为选中动作
-      else if (proposal.action === SmartGestureAction.SELECT) {
+    } else if (proposal.action === SmartGestureAction.SELECT) { // 覆盖为选中动作
         const node = this.getUIContext().getFrameNodeById('target_text');
         if (node) {
           resolution.selectedProposal = new SelectActionProposal(node);
         }
-      }
-      // 覆盖为翻页动作
-      else if (proposal.action === SmartGestureAction.PAGE_FORWARD) {
+    } else if (proposal.action === SmartGestureAction.PAGE_FORWARD) { // 覆盖为翻页动作
         const node = this.getUIContext().getFrameNodeById('scroll_area');
         if (node) {
           // pageCount：取值为[0, +∞)，单位为页
           resolution.selectedProposal = new PageSwitchActionProposal(node, 1);
         }
-      }
-      // 覆盖为滚动动作
-      else if (proposal.action === SmartGestureAction.SCROLL_FORWARD) {
+    } else if (proposal.action === SmartGestureAction.SCROLL_FORWARD) { // 覆盖为滚动动作
         const node = this.getUIContext().getFrameNodeById('scroll_area');
         if (node) {
           // distance：取值为[0, +∞)，单位为vp
           resolution.selectedProposal = new ScrollActionProposal(node, 180);
         }
-      }
-      // 覆盖为空动作（不执行任何操作）
-      else if (proposal.action === SmartGestureAction.NONE) {
+    } else if (proposal.action === SmartGestureAction.NONE) { // 覆盖为空动作（不执行任何操作）
         resolution.selectedProposal = new NoneActionProposal();
-      }
-      // 覆盖为返回动作
-      else if (proposal.action === SmartGestureAction.BACK_PRESS) {
+    } else if (proposal.action === SmartGestureAction.BACK_PRESS) { // 覆盖为返回动作
         resolution.selectedProposal = new BackPressActionProposal();
       }
 
@@ -695,7 +687,6 @@ struct SmartGestureControllerExample {
         }.width('100%')
       }.width('100%')
     }
-    .width('100%')
     .layoutWeight(1)
     .onAppear(() => {
       this.controller.enableSmartTapAndSlideGestures(true);
@@ -709,7 +700,7 @@ struct SmartGestureControllerExample {
     .height('100%')
     .padding(12)
     .backgroundColor('#f1f3f5')
-  }
+  };
 }
 ```
 

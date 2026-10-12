@@ -80,7 +80,7 @@ allowedTypes(types: Array\<SourceTool>): T
 
 | 参数名 | 类型                                       | 必填 | 说明                        |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
-| types  |  Array\<[SourceTool](ts-gesture-settings.md#sourcetool枚举说明9)> | 是   | 手势响应的输入类型。 |
+| types  |  Array\<[SourceTool](ts-gesture-settings.md#sourcetool枚举说明9)> | 是   | 手势响应的输入类型数组。 |
 
 **返回值：**
 
@@ -144,11 +144,11 @@ allowedTypes(types: Array\<SourceTool>): this
 | ------ | --------- |
 | this | 返回当前组件。 |
 
-## ScrollableTargetInfo<sup>12+</sup> 
+## ScrollableTargetInfo<sup>12+</sup>
 
 手势识别器对应的滚动类容器组件的信息，继承于[EventTargetInfo](#eventtargetinfo12)。
 
-### isBegin<sup>12+</sup> 
+### isBegin<sup>12+</sup>
 
 isBegin(): boolean
 
@@ -170,7 +170,7 @@ isBegin(): boolean
 | ------ | --------- |
 | boolean | 当前滚动类容器组件是否在顶部。true表示组件在顶部，false表示组件不在顶部。 |
 
-### isEnd<sup>12+</sup> 
+### isEnd<sup>12+</sup>
 
 isEnd(): boolean
 
@@ -192,11 +192,11 @@ isEnd(): boolean
 | ------ | --------- |
 | boolean | 当前滚动类容器组件是否在底部。true表示组件在底部，false表示组件不在底部。 |
 
-## EventTargetInfo<sup>12+</sup> 
+## EventTargetInfo<sup>12+</sup>
 
 手势识别器对应组件的信息。
 
-### getId<sup>12+</sup> 
+### getId<sup>12+</sup>
 
 getId(): string
 
@@ -224,7 +224,7 @@ ArkTS-Dyn: getUniqueId(): number
 
 ArkTS-Sta: getUniqueId(): int
 
-返回当前组件的唯一id。
+返回当前组件的唯一ID。与getId()返回的组件标识不同，该接口返回组件的唯一ID。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -282,7 +282,7 @@ getEventTargetInfo(): EventTargetInfo
 
 cancelTouch(): void
 
-向当前触摸识别器发送触摸取消事件的信息。
+向当前触摸识别器发送触摸取消事件，适用于页面状态变化、弹窗打断或业务逻辑需要主动终止当前触摸交互的场景。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -300,7 +300,7 @@ ArkTS-Dyn: isHostBelongsTo(uniqueId: number): boolean
 
 ArkTS-Sta: isHostBelongsTo(uniqueId: int): boolean
 
-返回当前触摸识别器绑定节点是否为传入组件的后代节点。
+返回当前触摸识别器绑定节点是否为传入组件的后代节点，适用于触摸处理或手势分发过程中判断事件是否来自目标组件子树的场景。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -324,11 +324,11 @@ ArkTS-Sta: isHostBelongsTo(uniqueId: int): boolean
 | ------ | --------- |
 | boolean | 当前触摸识别器绑定节点是否为传入组件的后代节点。true表示当前绑定节点为传入组件的后代节点，false表示当前绑定节点非传入组件的后代节点。 |
 
-## GestureRecognizer<sup>12+</sup> 
+## GestureRecognizer<sup>12+</sup>
 
-手势识别器对象。
+手势识别器对象，支持查询手势标志、类型、状态、目标组件信息，控制识别器使能状态、阻止当前识别过程并判断绑定节点是否属于指定组件子树，适用于手势识别状态管理和手势竞争处理场景。
 
-### getTag<sup>12+</sup> 
+### getTag<sup>12+</sup>
 
 getTag(): string
 
@@ -350,7 +350,7 @@ getTag(): string
 | ------ | --------- |
 | string | 当前手势识别器的标志。 |
 
-### getType<sup>12+</sup> 
+### getType<sup>12+</sup>
 
 getType(): GestureControl.GestureType
 
@@ -372,7 +372,7 @@ getType(): GestureControl.GestureType
 | ------ | --------- |
 | [GestureControl.GestureType](#gesturetype11) | 当前手势识别器的类型。 |
 
-### isBuiltIn<sup>12+</sup> 
+### isBuiltIn<sup>12+</sup>
 
 isBuiltIn(): boolean
 
@@ -394,7 +394,7 @@ isBuiltIn(): boolean
 | ------ | --------- |
 | boolean | 当前手势识别器是否为系统内置手势。true表示手势识别器为系统内置手势，false表示非系统内置手势。 |
 
-### setEnabled<sup>12+</sup> 
+### setEnabled<sup>12+</sup>
 
 setEnabled(isEnabled: boolean): void
 
@@ -416,7 +416,7 @@ setEnabled(isEnabled: boolean): void
 | ------- | ---------------------------------- | ---- | ----- |
 | isEnabled   | boolean         | 是    | 手势识别器的使能状态。true表示当前手势识别器能够回调应用事件，false表示当前手势识别器不回调应用事件。<br>当前仅支持[PanRecognizer](#panrecognizer12)设置生效。 |
 
-### isEnabled<sup>12+</sup> 
+### isEnabled<sup>12+</sup>
 
 isEnabled(): boolean
 
@@ -438,7 +438,7 @@ isEnabled(): boolean
 | ------ | --------- |
 | boolean | 当前手势识别器的使能状态。true表示当前手势识别器能够回调应用事件，false表示当前手势识别器不回调应用事件。 |
 
-### getState<sup>12+</sup> 
+### getState<sup>12+</sup>
 
 getState(): GestureRecognizerState
 
@@ -460,7 +460,7 @@ getState(): GestureRecognizerState
 | ------ | --------- |
 | [GestureRecognizerState](#gesturerecognizerstate12) | 当前手势识别器的状态。 |
 
-### getEventTargetInfo<sup>12+</sup> 
+### getEventTargetInfo<sup>12+</sup>
 
 getEventTargetInfo(): EventTargetInfo
 
@@ -480,7 +480,7 @@ getEventTargetInfo(): EventTargetInfo
 | ------ | --------- |
 | [EventTargetInfo](#eventtargetinfo12) | 当前手势识别器对应组件的信息。 |
 
-### isValid<sup>12+</sup> 
+### isValid<sup>12+</sup>
 
 isValid(): boolean;
 
@@ -498,7 +498,7 @@ isValid(): boolean;
 
 | 类型     | 说明        |
 | ------ | --------- |
-| boolean | 当前手势识别器是否有效。<br/>当该识别器绑定的组件被析构或该识别器不在响应链上时返回false。<br/>当该识别器绑定的组件未被析构且该识别器在响应链上时返回true。 |
+| boolean | 当前手势识别器是否有效。<br>当该识别器绑定的组件被析构或该识别器不在响应链上时返回false。<br>当该识别器绑定的组件未被析构且该识别器在响应链上时返回true。 |
 
 ### getFingerCount<sup>18+</sup>
 
@@ -544,13 +544,13 @@ isFingerCountLimit(): boolean
 
 | 类型     | 说明        |
 | ------ | --------- |
-| boolean | 预设手势是否会检测触摸屏幕上手指识别数量。当绑定手势事件且会检测触摸屏幕上手指的数量时，返回true。当绑定手势事件且不会检测触摸屏幕上手指的数量时，返回false。 |
+| boolean | 预设手势是否会检测触摸屏幕上的手指数量。当绑定手势事件且会检测触摸屏幕上的手指数量时，返回true。当绑定手势事件且不会检测触摸屏幕上的手指数量时，返回false。 |
 
 ### preventBegin<sup>20+</sup>
 
 preventBegin(): void
 
-在手指全部抬起前阻止手势识别器参与当前手势识别。如果系统已确定该手势识别器的结果（无论成功与否），调用此接口将无效。此方法与GestureRecognizer.[setEnabled](#setenabled12)(isEnabled: boolean)不同，[setEnabled](#setenabled12)并不会阻止手势识别器对象参与手势识别过程，而只会影响手势对应的回调函数是否执行。
+在手指全部抬起前阻止手势识别器参与当前手势识别，适用于自定义手势竞争、根据业务条件临时放弃当前手势识别的场景。如果系统已确定该手势识别器的结果（无论成功与否），调用此接口将无效。此方法与GestureRecognizer.[setEnabled](#setenabled12)(isEnabled: boolean)不同，[setEnabled](#setenabled12)并不会阻止手势识别器对象参与手势识别过程，而只会影响手势对应的回调函数是否执行。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -568,7 +568,7 @@ ArkTS-Dyn: isHostBelongsTo(uniqueId: number): boolean
 
 ArkTS-Sta: isHostBelongsTo(uniqueId: int): boolean
 
-返回当前手势识别器绑定节点是否为传入组件的后代节点。
+返回当前手势识别器绑定节点是否为传入组件的后代节点，适用于触摸处理或手势分发过程中判断事件是否来自目标组件子树的场景。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -596,7 +596,7 @@ ArkTS-Sta: isHostBelongsTo(uniqueId: int): boolean
 
 ## TapRecognizer<sup>18+</sup>
 
-点击手势识别器对象，继承自[GestureRecognizer](#gesturerecognizer12)。
+点击手势识别器对象，继承自[GestureRecognizer](#gesturerecognizer12)，支持获取点击次数阈值，适用于查询单击或多次点击手势的识别配置。
 
 ### getTapCount<sup>18+</sup>
 
@@ -748,7 +748,7 @@ getDirection(): SwipeDirection
 
 ## PinchRecognizer<sup>18+</sup>
 
-捏合手势识别器对象，继承于[GestureRecognizer](#gesturerecognizer12)。
+捏合手势识别器对象，继承于[GestureRecognizer](#gesturerecognizer12)，支持查询捏合手势的最小识别距离阈值，适用于缩放类手势识别配置查询场景。
 
 ### getDistance<sup>18+</sup>
 
@@ -856,7 +856,7 @@ ArkTS-Dyn: getDistance(): number
 
 ArkTS-Sta: getDistance(): double
 
-返回当前滑动手势识别器触发的最小滑动距离。
+返回当前滑动手势识别器触发的最小滑动距离，默认滑动阈值为5vp。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -1015,9 +1015,9 @@ ArkTS-Sta: getDistanceMap(): Map\<SourceTool, double\>
 
 | 名称            | 类型                  | 只读 | 可选 | 说明         |
 | ---------------  | ---------------------|----|------| -----------|
-| tag              | string                | 否 | 是 | 手势标志。<br/>**说明：**<br/>未设置事件标志tag属性时，tag不返回或返回undefined。      |
-| type             | [GestureControl.GestureType](./ts-gesture-common.md#gesturetype11) | 否 | 否 | 手势类型。<br/>**说明：**<br/> 当手势为未暴露类型的系统内置手势事件时，type的值为-1。 |
-| isSystemGesture  | boolean                 | 否 | 否 | 当前手势是否为组件自带手势。true表示是，false表示否。<br/>默认值：false |
+| tag              | string                | 否 | 是 | 手势标志。<br>**说明：**<br>未设置事件标志tag属性时，tag不返回或返回undefined。      |
+| type             | [GestureControl.GestureType](#gesturetype11) | 否 | 否 | 手势类型。<br>**说明：**<br> 当手势为未暴露类型的系统内置手势事件时，type的值为-1。 |
+| isSystemGesture  | boolean                 | 否 | 否 | 当前手势是否为系统内置手势。true表示是，false表示否。<br/>默认值：false |
 
 ## FingerInfo<sup>8+</sup>对象说明
 

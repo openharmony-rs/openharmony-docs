@@ -338,7 +338,7 @@
             hilog.error(0x0000, 'SelectionExtensionAbility', `Failed to setUiContent, error: ${JSON.stringify(error)}`);
           }
         } catch(error) {
-          hilog.info(0x0000, 'SelectionExtensionAbility', `Failed to createPanel, error: ${JSON.stringify(error)}`);
+          hilog.error(0x0000, 'SelectionExtensionAbility', `Failed to createPanel, error: ${JSON.stringify(error)}`);
         }
       }
 
@@ -416,7 +416,7 @@
             this.onSelected(info);
           });
         } catch(error) {
-          hilog.info(0x0000, 'SelectionExtensionAbility',
+          hilog.error(0x0000, 'SelectionExtensionAbility',
             `Failed to onConnect, error code: ${error.code}, error message: ${error.message}`);
         }
         return new SelectionAbilityStub('remote');
@@ -456,7 +456,7 @@
           }
             await panel.setUiContent('pages/MenuPanel')   // 设置菜单面板样式
           } catch(error) {
-            hilog.info(0x0000, 'SelectionExtensionAbility',
+            hilog.error(0x0000, 'SelectionExtensionAbility',
               `Failed to createPanel, error code: ${error.code}, error message: ${error.message}`);
           }
         }

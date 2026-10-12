@@ -49,7 +49,7 @@ import { Text, Component } from '@ohos.arkui.component';
 export struct MainPage { // 从ArkTS-Sta模块中导出
   message: string = '';
 
-  build() {
+  build(): void {
     Text(this.message)
       .fontSize(20)
   }

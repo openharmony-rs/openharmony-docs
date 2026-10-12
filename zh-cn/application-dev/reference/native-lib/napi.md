@@ -1858,7 +1858,7 @@ napi_status napi_get_strong_reference_value(napi_env env, napi_strong_ref ref, n
 **描述：**
 
 根据强引用获取其关联的ArkTS对象值。使用该接口需要注意以下几点：
-1. 不能使用已删除的强引用去获取ArkTS对象值，否则可能预期外的错误。
+1. 不能使用已删除的强引用去获取ArkTS对象值，否则可能导致预期外的错误。
 
 **起始版本：** 21
 
@@ -2219,6 +2219,28 @@ napi_status napi_set_property_with_callsite_info(napi_env env,
 - [in] info：调用点信息句柄。可以为NULL。
 
 - [out] hit：写入缓存是否命中：true表示命中（快速路径），false表示未命中。可以传入nullptr。
+
+**返回：**
+
+如果API成功，则返回napi_ok。
+
+### napi_get_global_handle_count
+
+```cpp
+napi_status napi_get_global_handle_count(napi_env env, size_t* count);
+```
+
+**描述：**
+
+获取当前虚拟机环境中global handle数量，可用于根据global handle的实际数量来进一步处理业务，比如打印当前堆快照，分析当前的内存占用情况。注意：由于需要遍历，此接口可能耗时较长，在微秒(us)级别。
+
+**起始版本：** 26.0.1
+
+**参数：**
+
+- [in] env：Node-API的环境对象，表示当前的执行环境。
+
+- [out] count：指向size_t的指针，用于接收global handle数量。
 
 **返回：**
 

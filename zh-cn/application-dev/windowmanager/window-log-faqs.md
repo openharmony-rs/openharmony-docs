@@ -3,7 +3,7 @@
 <!--Subsystem: Window-->
 <!--Owner: @liangryan-->
 <!--Designer: @liangryan-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
 
 ## 使用窗口hidumper命令查看窗口信息定位问题

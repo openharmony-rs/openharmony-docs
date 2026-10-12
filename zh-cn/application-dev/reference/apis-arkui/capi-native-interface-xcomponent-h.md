@@ -409,8 +409,8 @@ int32_t OH_NativeXComponent_GetXComponentOffset(OH_NativeXComponent* component, 
 | -- | -- |
 | [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)* component | 表示指向[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例的指针。 |
 | const void* window | 表示NativeWindow句柄。 |
-| double* x | 表示指向当前Surface相对于XComponent父组件左顶点x坐标的指针。单位：vp。 |
-| double* y | 表示指向当前Surface相对于XComponent父组件左顶点y坐标的指针。单位：vp。 |
+| double* x | 表示指向当前Surface相对于XComponent父组件左顶点x坐标的指针。单位：px。 |
+| double* y | 表示指向当前Surface相对于XComponent父组件左顶点y坐标的指针。单位：px。 |
 
 **返回：**
 

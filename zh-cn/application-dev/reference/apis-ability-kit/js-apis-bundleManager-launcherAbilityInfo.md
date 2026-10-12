@@ -36,4 +36,4 @@ import { launcherBundleManager } from '@kit.AbilityKit';
 | labelId         | ArkTS-Dyn: number<br>ArkTS-Sta: long                        | 是   | 否   | launcher ability的名称的资源ID值。      |
 | iconId          | ArkTS-Dyn: number<br>ArkTS-Sta: long                        | 是   | 否   | launcher ability的图标的资源ID值。      |
 | userId          | ArkTS-Dyn: number<br>ArkTS-Sta: int                         | 是   | 否   | launcher ability的用户ID。             |
-| installTime     | ArkTS-Dyn: number<br>ArkTS-Sta: long                        | 是   | 否   | launcher ability的安装时间戳，单位毫秒。 |
+| installTime     | ArkTS-Dyn: number<br>ArkTS-Sta: long                        | 是   | 否   | launcher ability的安装时间戳，单位ms。 |
