@@ -30,7 +30,7 @@ PIR协议（隐私信息检索，Private Information Retrieval）适用于在不
      hashAlg: privacyComputation.HashAlg.SHA256
    };
    const privacyProtocol: privacyComputation.PrivacyProtocol = {
-     dataSetSize: privacyComputation.DataSetSize.SIZE_512,
+     dataSetSize: privacyComputation.DataSetSize.SIZE_256,
      protocolType: privacyComputation.ProtocolType.PIR_PROTOCOL
    };
    const privacyTarget: Uint8Array = await privacyComputation.genPrivacyTarget(targetElement, privacyProtocol);
