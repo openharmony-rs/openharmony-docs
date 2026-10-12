@@ -2,11 +2,12 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=4faed534b39ef26ef8f9b647802a53e9f8d2b792 translatedAt=2026-10-09T10:31:00.204Z pushedAt=2026-10-12T08:05:06.669Z -->
 
-The **NotificationSubscriberExtensionContext** module provides the context for the **NotificationSubscriberExtensionAbility**.
+The **NotificationSubscriberExtensionContext** module provides the extension capability for [notification subscription](../../notification/notification-glossary.md#notification-subscription) subscribers.
 
 > **NOTE**
 > 
