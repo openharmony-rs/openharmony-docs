@@ -157,7 +157,7 @@ target_link_libraries(sample PUBLIC ${BASE_LIBRARY})
 
 5.  准备播放。
 
-     准备播放前，需要调用[OH_LowPowerVideoSink_SetSyncAudioSink](../../reference/apis-media-kit/capi-lowpower-video-sink-h.md#oh_lowpowervideosink_setsyncaudiosink)设置音画同步绑定。然后调用prepare方法，[OH_LowPowerAudioSink_Prepare](../../reference/apis-media-kit/capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_prepare)或[OH_LowPowerVideoSink_Prepare](../../reference/apis-media-kit/capi-lowpower-video-sink-h.md#oh_lowpowervideosink_prepare)进入'准备'阶段。
+     准备播放前，需要调用[OH_LowPowerVideoSink_SetSyncAudioSink](../../reference/apis-media-kit/capi-lowpower-video-sink-h.md#oh_lowpowervideosink_setsyncaudiosink)设置音画同步绑定。然后调用prepare方法，[OH_LowPowerAudioSink_Prepare](../../reference/apis-media-kit/capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_prepare)或[OH_LowPowerVideoSink_Prepare](../../reference/apis-media-kit/capi-lowpower-video-sink-h.md#oh_lowpowervideosink_prepare)进入"准备"阶段。
 
     <!-- @[OH_LowPowerVideoSink_SetSyncAudioSink](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/LowPowerAVSInk/lowPowerAVSinkSample/entry/src/main/cpp/capabilities/lpp_video_streamer.cpp) -->
     
@@ -178,7 +178,7 @@ target_link_libraries(sample PUBLIC ${BASE_LIBRARY})
     ```
 6.  开始播放。
 
-     调用[OH_LowPowerAudioSink_Start](../../reference/apis-media-kit/capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_start)或[OH_LowPowerVideoSink_StartRenderer](../../reference/apis-media-kit/capi-lowpower-video-sink-h.md#oh_lowpowervideosink_startrenderer)开始渲染。视频流需要在渲染开始前调用[OH_LowPowerVideoSink_StartDecoder](../../reference/apis-media-kit/capi-lowpower-video-sink-h.md#oh_lowpowervideosink_startdecoder)开始解码或调用[ OH_LowPowerVideoSink_RenderFirstFrame](../../reference/apis-media-kit/capi-lowpower-video-sink-h.md#oh_lowpowervideosink_renderfirstframe)开始解码并送显首帧'接口'进入解码。
+     调用[OH_LowPowerAudioSink_Start](../../reference/apis-media-kit/capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_start)或[OH_LowPowerVideoSink_StartRenderer](../../reference/apis-media-kit/capi-lowpower-video-sink-h.md#oh_lowpowervideosink_startrenderer)开始渲染。视频流需要在渲染开始前调用[OH_LowPowerVideoSink_StartDecoder](../../reference/apis-media-kit/capi-lowpower-video-sink-h.md#oh_lowpowervideosink_startdecoder)开始解码或调用[ OH_LowPowerVideoSink_RenderFirstFrame](../../reference/apis-media-kit/capi-lowpower-video-sink-h.md#oh_lowpowervideosink_renderfirstframe)开始解码并送显首帧"接口"进入解码。
 
     <!-- @[OH_LowPowerVideoSink_StartDecoder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/LowPowerAVSInk/lowPowerAVSinkSample/entry/src/main/cpp/capabilities/lpp_video_streamer.cpp) -->
     
