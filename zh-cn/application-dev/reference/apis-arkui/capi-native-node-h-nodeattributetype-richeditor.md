@@ -732,6 +732,61 @@ NODE_TEXT_EDITOR_PUNCTUATION_OVERFLOW = 22030
 | .value[0].i32 | 是否启用行尾标点符号悬挂，0表示不启用行尾标点符号悬挂，1表示启用行尾标点符号悬挂。 |
 
 
+## NODE_TEXT_EDITOR_SHOW_UNDERLINE
+
+```c
+NODE_TEXT_EDITOR_SHOW_UNDERLINE = 22038
+```
+
+设置TextEditor组件是否显示下划线，支持属性设置、属性重置和属性获取。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.2.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].i32 | 是否显示下划线，0表示不显示，1表示显示。默认值为0。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].i32 | 是否显示下划线。1表示显示，0表示不显示。 |
+
+## NODE_TEXT_EDITOR_UNDERLINE_COLOR
+
+```c
+NODE_TEXT_EDITOR_UNDERLINE_COLOR = 22039
+```
+
+开启下划线时，支持配置下划线颜色，支持属性设置、属性重置和属性获取。<br>
+需先设置NODE_TEXT_EDITOR_SHOW_UNDERLINE属性为1以开启下划线后，本属性设置才生效。<br>
+作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
+
+**起始版本：** 26.2.0
+
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| .value[0].u32 | typing下划线颜色，表示键入时的下划线颜色，0xARGB类型。 |
+| .value[1].u32 | normal下划线颜色，表示非特殊状态时下划线颜色，0xARGB类型。 |
+| .value[2].u32 | error下划线颜色，表示错误时下划线颜色，0xARGB类型。 |
+| .value[3].u32 | disable下划线颜色，表示禁用时下划线颜色，0xARGB类型。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| .value[0].u32 | typing下划线颜色，表示键入时的下划线颜色，0xARGB类型。 |
+| .value[1].u32 | normal下划线颜色，表示非特殊状态时下划线颜色，0xARGB类型。 |
+| .value[2].u32 | error下划线颜色，表示错误时下划线颜色，0xARGB类型。 |
+| .value[3].u32 | disable下划线颜色，表示禁用时下划线颜色，0xARGB类型。 |
+
 ## NODE_TEXT_EDITOR_CARET_STYLE
 
 ```c
