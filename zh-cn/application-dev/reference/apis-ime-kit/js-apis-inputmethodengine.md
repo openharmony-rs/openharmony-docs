@@ -1,4 +1,4 @@
-# @ohos.inputMethodEngine (输入法服务)
+﻿# @ohos.inputMethodEngine (输入法服务)
 <!--Kit: IME Kit-->
 <!--Subsystem: MiscServices-->
 <!--Owner: @codexu62-->
@@ -7732,9 +7732,9 @@ ArkTS-Sta: getLeftRichText(length: int): Promise&lt;InputMethodRichText&gt;
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.2.0
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 26.2.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -7821,9 +7821,9 @@ ArkTS-Sta: getLeftRichTextSync(length: int): InputMethodRichText
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.2.0
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 26.2.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -7916,9 +7916,9 @@ ArkTS-Sta: getRightRichText(length: int): Promise&lt;InputMethodRichText&gt;
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.2.0
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 26.2.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -8005,9 +8005,9 @@ ArkTS-Sta: getRightRichTextSync(length: int): InputMethodRichText
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.2.0
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 26.2.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -8088,9 +8088,9 @@ try {
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.2.0
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 26.2.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -8107,9 +8107,9 @@ try {
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.2.0
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 26.2.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -8121,9 +8121,9 @@ getString(): string
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.2.0
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 26.2.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -8161,9 +8161,9 @@ getSpans(): Array&lt;[RichTextSpan](#richtextspan)&gt;
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.2.0
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 26.2.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -8211,9 +8211,9 @@ for (let i = 0; i < spans.length; i++) {
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.2.0
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 26.2.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -8225,9 +8225,9 @@ getType(): [SpanType](#spantype)
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.2.0
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 26.2.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -8275,9 +8275,9 @@ getContent(): string
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.2.0
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 26.2.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -8321,9 +8321,9 @@ getRange(): [Range](#range10)
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-**ArkTS-Dyn起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.2.0
 
-**ArkTS-Sta起始版本：** 26.0.0
+**ArkTS-Sta起始版本：** 26.2.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
