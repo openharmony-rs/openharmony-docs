@@ -296,7 +296,7 @@ Allows an application to obtain a running lock to keep running in the background
 
 **Authorization mode**: system_grant
 
-**Supported devices**: PCs/2-in-1devices | tablets | cars | phones | TVs | wearables
+**Supported devices**: PCs/2-in-1 devices | tablets | cars | phones | TVs | wearables
 
 **Valid since**: 7
 

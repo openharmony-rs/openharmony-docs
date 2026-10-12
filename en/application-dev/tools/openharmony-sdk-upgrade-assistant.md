@@ -9,7 +9,7 @@
 
 ## Introduction
 OpenHarmony SDK Upgrade Assistant helps you quickly resolve API incompatibility issues caused by OpenHarmony app SDK upgrades.</br>
-Since OpenHarmony SDK Beta versions do not guarantee API stability, API incompatibility may occur after an SDK upgrade. When you switch the API version of an existing project, you  need to adapt to changes in APIs and their underlying behaviors, which incurs a certain upgrade cost. To address this, OpenHarmony provides the SDK Upgrade Assistant, which helps you quickly understand the full picture of upgrade adaptation and rapidly adapt through tool prompts, significantly improving SDK upgrade efficiency.
+Since OpenHarmony SDK Beta versions do not guarantee API stability, API incompatibility may occur after an SDK upgrade. When you switch the API version of an existing project, you need to adapt to changes in APIs and their underlying behaviors, which incurs a certain upgrade cost. To address this, OpenHarmony provides the SDK Upgrade Assistant, which helps you quickly understand the full picture of upgrade adaptation and rapidly adapt through tool prompts, significantly improving SDK upgrade efficiency.
 
 ## Constraints
 1. Before upgrading the SDK, back up the old SDK files to prevent them from being overwritten by the new SDK version.
