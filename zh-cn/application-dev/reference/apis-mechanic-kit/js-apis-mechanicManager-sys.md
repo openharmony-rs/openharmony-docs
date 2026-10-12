@@ -608,6 +608,7 @@ mechanicManager.searchTarget(targetInfo,
     console.info(`'result:' ${searchResult}`);
 });
 ```
+
 ## mechanicManager.onBatteryLevelChange
 
 onBatteryLevelChange(mechId: number, callback: Callback&lt;BatteryLevelInfo&gt;): void
@@ -623,7 +624,7 @@ onBatteryLevelChange(mechId: number, callback: Callback&lt;BatteryLevelInfo&gt;)
 | 参数名     | 类型                    | 必填 | 说明   |
 | ---------- | ---------------------- | ---- | ----- |
 | mechId | number | 是 | 需要订阅的设备id。 |
-| callback | Callback\<[BatteryLevelInfo](#batterylevelinfo)> | 是 | 回调函数，返回电池电量变化信息。 |
+| callback | Callback\<[BatteryLevelInfo](#batterylevelinfo)> | 是 | 回调函数，电池电量变化的回调函数。 |
 
 **错误码：**
 
@@ -640,10 +641,8 @@ onBatteryLevelChange(mechId: number, callback: Callback&lt;BatteryLevelInfo&gt;)
 
 ```ts
 console.info('Register Battery Change listener');
-let mechId: number = 0;
+let mechId: number = 0;  
 mechanicManager.onBatteryLevelChange(mechId, (result: mechanicManager.BatteryLevelInfo) => {
-  console.info(`'result:' ${result}`);
-});
   console.info(`'result:' ${result}`);
 });
 console.info('Successful registration');
@@ -678,12 +677,10 @@ offBatteryLevelChange(mechId: number, callback?: Callback&lt;BatteryLevelInfo&gt
 | 33300003 | Feature not supported. |
 
 **示例：**
-let mechId: number = 0;
-mechanicManager.offBatteryLevelChange(mechId, (result: mechanicManager.BatteryLevelInfo) => {
-  console.info(`'result:' ${result}`);
-});
+
 ```ts
 console.info('Unregister Battery Change listener');
+let mechId: number = 0;  
 mechanicManager.offBatteryLevelChange(mechId, (result: mechanicManager.BatteryLevelInfo) => {
   console.info(`'result:' ${result}`);
 });
@@ -724,10 +721,10 @@ getDeviceAdsorbState(mechId: number): AdsorbState
 
 **示例：**
 
-console.info(`'Query the adsorb state successfully, adsorb state:' ${adsorbState}`);
+```ts
 console.info('Query the adsorb state');
 let adsorbState: mechanicManager.AdsorbState = mechanicManager.getDeviceAdsorbState(0);
-console.info(`'Query the adsorb state successfully, axis state:' ${axisStatus}`);
+console.info(`'Query the adsorb state successfully, adsorb state:' ${adsorbState}`);
 ```
   
 ## RotationAngles
