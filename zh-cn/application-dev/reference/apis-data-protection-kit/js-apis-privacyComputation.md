@@ -56,7 +56,7 @@ import { privacyComputation } from '@kit.DataProtectionKit';
 
 ## ProtocolType
 
-隐私协议类型的枚举，决定了隐私保护搜索的计算方法。
+隐私协议类型的枚举，决定了隐私保护搜索的算法。
 
 **起始版本**：26.0.1
 
@@ -97,7 +97,7 @@ import { privacyComputation } from '@kit.DataProtectionKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| elemData | Uint8Array | 否 | 否 | 要搜索的目标元素的原始数据。 |
+| elemData | Uint8Array | 否 | 否 | 要搜索的目标元素的原始数据。长度必须不大于1KB。 |
 | hashAlg | [HashAlg](#hashalg) | 否 | 是 | 用于对目标元素计算的哈希算法。未显式指定哈希算法时，默认为NONE。 |
 ## Element
 
@@ -111,7 +111,7 @@ import { privacyComputation } from '@kit.DataProtectionKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| elemKey | Uint8Array | 否 | 否 | 数据集元素的键，用于与隐私目标进行匹配。 |
+| elemKey | Uint8Array | 否 | 否 | 数据集元素的键，用于与隐私目标进行匹配。长度必须不大于1KB。 |
 | hashAlg | [HashAlg](#hashalg) | 否 | 是 | 用于对元素键计算的哈希算法。未显式指定哈希算法时，默认为NONE。 |
 | elemValue | Uint8Array | 否 | 是 | 与元素键关联的附加值。<br>**说明：** <br>仅在PIR协议中使用，当找到匹配项时检索该附加值。<br>未指定时元素只支持键匹配，不支持值检索。 |
 
