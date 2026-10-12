@@ -47,5 +47,5 @@
  
 在使用隐私计算能力前，请确保满足以下环境要求：
  
-- 设备：支持OpenHarmony API 26.0.1及以上版本的设备。
-- 系统能力：设备需支持SystemCapability.Security.Asset，可使用canIUse判断该SysCap是否可调用。
+- 设备：OpenHarmony API版本26.0.1及其以上的设备。
+- 系统能力：设备需支持SystemCapability.Security.Asset，可使用[canIUse](../../reference/common/js-apis-syscap.md#caniuse)判断该SysCap是否可调用。
