@@ -59,7 +59,7 @@ sequenceable数据类型是指使用“sequenceable”关键字声明的数据�
 
 <!-- @[idl_cpp_sequenceable_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/IDLTool/entry/src/cpp/idl_type_declaration.idl) -->
 
-``` TypeScript
+``` 
 sequenceable a.b..C.D
 ```
 
@@ -76,7 +76,7 @@ TS声明放在文件的头部，以 “sequenceable namespace.typename;”的形
 
 <!-- @[idl_ts_sequenceable_declaration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/IDLTool/entry/src/main/ets/idl/idl_type_declaration.idl) -->
 
-``` TypeScript
+``` 
 sequenceable idl.MySequenceable
 ```
 
@@ -187,7 +187,7 @@ OpenHarmony IDL容器数据类型与Ts数据类型、C++数据类型的对应关
 
 <!-- @[idl_interface_definition](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/IDLTool/entry/src/main/ets/IIdlTestServiceTs/IIdlTestService.idl) -->
 
-``` TypeScript
+``` 
 interface OHOS.IIdlTestService {
    int TestIntTransaction([in] int data);
    void TestStringTransaction([in] String data);
