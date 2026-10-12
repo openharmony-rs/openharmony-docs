@@ -1456,7 +1456,7 @@ VoIP呼叫状态信息。
 
 | 名称 | 类型                                   |  只读 | 可选 | 说明 |
 | ----- |--------------------------------------| ----- | ---- | -----|
-|  appName  | strting |  否  |  否  | VoIP应用程序名称。 |
+|  appName  | string |  否  |  否  | VoIP应用程序名称。 |
 | contactName | string  |  否  |  否  | VoIP呼叫的联系人姓名。 |
 | callType | [VoIPCallType](#voipcalltype)  |  否  |  否  | VoIP呼叫类型。 |
 | VoIPCallState | [VoIPCallState](#voipcallstate)  |  否  |  否  | VoIP呼叫状态。 |
