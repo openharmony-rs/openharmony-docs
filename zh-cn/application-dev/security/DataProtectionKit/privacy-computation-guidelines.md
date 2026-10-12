@@ -51,18 +51,6 @@
 - 开发工具：DevEco Studio，并配置对应版本的OpenHarmony SDK。
 - 系统能力：设备需支持SystemCapability.Security.Asset。
 
-## 接口说明
-
-隐私计算关键接口如下表所示，具体API说明详见[@ohos.security.privacyComputation](../../reference/apis-data-protection-kit/js-apis-privacyComputation.md)。
-
-**表1** 隐私计算接口
-
-| 接口名 | 描述 |
-| -------- | -------- |
-| genPrivacyTarget(targetElement: TargetElement, privacyProtocol: PrivacyProtocol): Promise&lt;Uint8Array&gt; | 为给定元素生成隐私目标。 |
-| privacySearch(privacyTarget: Uint8Array, elements: Element[], privacyProtocol: PrivacyProtocol): Promise&lt;PrivacySearchResult&gt; | 执行隐私保护搜索。 |
-| getSearchResult(privacySearchResult: PrivacySearchResult, privacyProtocol: PrivacyProtocol): Promise&lt;SearchResult&gt; | 获取隐私搜索结果和最终搜索结果。 |
-
 ## 支持的协议与数据集大小
  
 在调用接口前，需根据业务场景选择合适的隐私协议与数据集大小。
