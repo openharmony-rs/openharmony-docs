@@ -2839,7 +2839,7 @@ struct Index {
 
 无障碍聚焦节点元素信息。
 
-可通过[accessibility.getFocusedUIAccessibilityElement](#accessibility.getfocuseduiaccessibilityelement)获取实例
+可通过[accessibility.getFocusedUIAccessibilityElement](#accessibilitygetfocuseduiaccessibilityelement)获取实例
  
 **起始版本：** 26.0.1
 
@@ -2950,6 +2950,11 @@ accessibility.getFocusedUIAccessibilityElement().then((data: UIAccessibilityElem
 onUIAccessibilityFocusChanged(callback: Callback&lt;UIAccessibilityFocusChangeInfo&gt;): void
 
 注册监听器，监听应用无障碍焦点变化的事件。
+
+> **说明：**
+>
+> - 注册监听的callback参数应使用具名函数而非匿名函数，否则每次调用时会创建一个新的底层对象，引起内存泄漏问题。
+> - 调用此方法后，务必在组件实例销毁前（如aboutToDisappear生命周期中）使用[offUIAccessibilityFocusChanged()](#accessibilityoffuiaccessibilityfocusChanged)取消监听，否则可能会导致崩溃。
 
 **起始版本：** 26.0.1
 
