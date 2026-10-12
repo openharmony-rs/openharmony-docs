@@ -798,6 +798,8 @@ struct WebComponent {
 </html>
 ```
 
+完整的多种编辑区及应用深浅色适配示例请参见[自定义输入光标及选择手柄颜色](../../web/web-caret-color.md)。
+
 ## cacheMode
 
 cacheMode(cacheMode: CacheMode)

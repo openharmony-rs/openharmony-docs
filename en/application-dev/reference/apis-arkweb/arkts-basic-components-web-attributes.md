@@ -717,6 +717,96 @@ Sets whether to display the vertical scrollbar, including the system default scr
   </html>
   ```
 
+## caretColor
+
+caretColor(value: ResourceColor): WebAttribute
+
+Sets the color of the text input caret and text selection handles in the Web component.
+
+> **NOTE**
+>
+> - When this attribute is not set or is reset, the caret uses the web page's CSS `caret-color` result. If the CSS value is `auto` or is not set, the engine's default caret color is used. Selection handles use the current theme colors.
+> - A non-zero API color takes precedence over CSS `caret-color`, including an explicit CSS color and `transparent`.
+> - The exact parsed color value `0x00000000` resets the API color override and restores the CSS and theme behavior. Use the string `'#00000000'` to reset the attribute. Numeric `0` has its alpha component filled by color parsing and cannot be used for this reset.
+> - This attribute affects the input caret, the outer ring of the selection handles, and their connecting lines. It does not change the inner ring or the text selection background.
+> - Applications must provide appropriate colors for light and dark modes, for example through theme-specific color resources or by listening for mode changes and setting a new color. This attribute does not automatically choose suitable colors or guarantee contrast.
+
+**Since:** 26.1.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+**Parameters**
+
+| Name | Type | Mandatory | Description |
+| ---- | ---- | --------- | ----------- |
+| value | [ResourceColor](../apis-arkui/arkui-ts/ts-types.md#resourcecolor) | Yes | Color of the text input caret and selection handles. A non-zero color overrides the page's CSS caret color. The string `'#00000000'` resets the color override. |
+
+**Example**
+
+After selecting a color, tap the web input field to inspect the caret, or select text to inspect the handles. After resetting the attribute, the caret returns to the CSS blue color and the handles return to the current theme colors.
+
+```ts
+// xxx.ets
+import webview from '@ohos.web.webview';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  @State caretColorValue: ResourceColor = '#FFFF0000';
+
+  build() {
+    Column() {
+      Row() {
+        Button('红色')
+          .onClick(() => {
+            this.caretColorValue = '#FFFF0000';
+          })
+        Button('绿色')
+          .onClick(() => {
+            this.caretColorValue = '#FF00FF00';
+          })
+        Button('重置')
+          .onClick(() => {
+            this.caretColorValue = '#00000000';
+          })
+      }
+      Web({ src: $rawfile('caret_color.html'), controller: this.controller })
+        .caretColor(this.caretColorValue)
+        .width('100%')
+        .layoutWeight(1)
+    }.width('100%').height('100%')
+  }
+}
+```
+
+Place the following HTML file at `entry/src/main/resources/rawfile/caret_color.html`.
+
+```html
+<!-- caret_color.html -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    input {
+      width: 90%;
+      font-size: 24px;
+      caret-color: blue;
+    }
+  </style>
+</head>
+<body>
+  <input value="点击输入文字，或长按选择这些文字">
+</body>
+</html>
+```
+
+For a complete example with multiple editable elements and application-managed light/dark colors, see [Customizing Caret and Selection Handle Colors](../../web/web-caret-color.md).
+
 ## cacheMode
 
 cacheMode(cacheMode: CacheMode)

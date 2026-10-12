@@ -13,6 +13,7 @@
   - [User-Agent开发指导](web-default-userAgent.md)
   - [管理Cookie及数据存储](web-cookie-and-data-storage-mgmt.md)
   - [Web深色模式适配](web-set-dark-mode.md)
+  - [自定义输入光标及选择手柄颜色](web-caret-color.md)
   - [在新窗口中打开页面](web-open-in-new-window.md)
   - [管理位置权限](web-geolocation-permission.md)
   - [使用隐私模式](web-incognito-mode.md)
