@@ -2251,7 +2251,7 @@ SymbolSpan样式选项。
 | 名称     | 类型      | 只读 | 可选   | 说明                                    |
 | ------ | ------ | ---- | ----------|--------------------------- |
 | id | string | 否 | 是    | 开发者自定义的身份标识，用于标识BuilderSpan。框架不强制唯一性约束，由开发者自行保证唯一性。未传入时，值为undefined，表示该BuilderSpan为匿名BuilderSpan。|
-| offset | number | 否 | 是    | 当作为[addRichEditorBuilderSpan](#addricheditorbuilderspan)的参数传入时，表示BuilderSpan的插入位置。当通过[getRichEditorBuilderSpans](#getricheditorbuilderspans)或回调获取时，表示BuilderSpan在文本内容中的当前偏移位置，该值由框架维护，随文本内容变化动态更新。|
+| offset | number | 否 | 是    | 当作为[addRichEditorBuilderSpan](#addricheditorbuilderspan)的参数传入时，表示BuilderSpan的插入位置。省略或当值小于0或大于所有内容长度时，添加到所有内容最后面。当通过[getRichEditorBuilderSpans](#getricheditorbuilderspans)或回调获取时，表示BuilderSpan在文本内容中的当前偏移位置，该值由框架维护，随文本内容变化动态更新。|
 
 ## RichEditorBuilderSpan
 
