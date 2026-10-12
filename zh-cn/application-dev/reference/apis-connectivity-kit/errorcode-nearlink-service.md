@@ -247,7 +247,7 @@ Operation failed.
 
 1. 在设备已配对的情况下重复调用[startPairing](js-apis-nearlink-remote-device.md#startpairing)发起配对。
 
-2. 其他未知错误。
+2. 其他非预期的内部错误。
 
 **处理步骤**
 
