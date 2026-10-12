@@ -822,7 +822,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
 应用侧代码。
 
   ArkTS-Dyn示例：
-  <!-- @[set_web_peer_render](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) -->
+  <!-- @[set_web_peer_render](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) --> 
   
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
@@ -2050,7 +2050,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
 - 应用侧代码：
 
 ArkTS-Dyn示例：
-<!-- @[native_embed_overlay](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/NativeEmbedOverlay.ets) -->
+<!-- @[native_embed_overlay](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/NativeEmbedOverlay.ets) --> 
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -2617,8 +2617,7 @@ ArkWeb同层渲染场景下的私有属性`arkwebnativestyle`，仅在开启同�
   ```ts
     // 创建NodeController
     import { webview } from '@kit.ArkWeb';
-    import { UIContext } from '@kit.ArkUI';
-    import { NodeController, BuilderNode, NodeRenderType, FrameNode } from '@kit.ArkUI';
+    import { UIContext, NodeController, BuilderNode, NodeRenderType, FrameNode } from '@kit.ArkUI';
 
     @Observed
     declare class Params{

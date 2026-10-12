@@ -110,9 +110,7 @@ ArkTS-Dyn示例：
                 secondaryButton: {
                   value: 'onConfirm',
                   action: () => {
-                    let resources = event.request.getAccessibleResource();
-                    console.info('Granting permissions for resources: ' + JSON.stringify(resources));
-                    event.request.grant(resources);
+                    event.request.grant(event.request.getAccessibleResource());
                   }
                 },
                 cancel: () => {
@@ -177,9 +175,7 @@ ArkTS-Sta示例：
                 secondaryButton: {
                   value: 'onConfirm',
                   action: () => {
-                    let resources = event.request.getAccessibleResource();
-                    console.info('Granting permissions for resources: ' + JSON.stringify(resources));
-                    event.request.grant(resources);
+                    event.request.grant(event.request.getAccessibleResource());
                   },
                 } as AlertDialogButtonBaseOptions,
                 cancel: () => {
