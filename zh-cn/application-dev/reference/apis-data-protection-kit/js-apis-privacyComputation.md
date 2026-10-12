@@ -258,7 +258,7 @@ async function search(privacyTarget: Uint8Array) {
     }
   ];
   const privacyProtocol: privacyComputation.PrivacyProtocol = {
-    dataSetSize: privacyComputation.DataSetSize.SIZE_512,
+    dataSetSize: privacyComputation.DataSetSize.SIZE_256,
     protocolType: privacyComputation.ProtocolType.PIR_PROTOCOL
   };
 
@@ -312,7 +312,7 @@ import { privacyComputation } from '@kit.DataProtectionKit';
 
 async function getResult(searchResult: privacyComputation.PrivacySearchResult) {
   const privacyProtocol: privacyComputation.PrivacyProtocol = {
-    dataSetSize: privacyComputation.DataSetSize.SIZE_512,
+    dataSetSize: privacyComputation.DataSetSize.SIZE_256,
     protocolType: privacyComputation.ProtocolType.PIR_PROTOCOL
   };
 
