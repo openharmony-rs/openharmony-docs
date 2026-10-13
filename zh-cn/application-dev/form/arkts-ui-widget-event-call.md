@@ -153,7 +153,7 @@
           this.callee.off('funA');
           this.callee.off('funB');
         } catch (error) {
-          hilog.error(DOMAIN_NUMBER, TAG, `Failed to register callee off. error code: ${error.code}, error message: ${error.message}`);
+          hilog.error(DOMAIN_NUMBER, TAG, `Failed to unregister callee off. error code: ${error.code}, error message: ${error.message}`);
         }
       }
     }
