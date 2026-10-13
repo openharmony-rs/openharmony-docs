@@ -7767,7 +7767,7 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let length: number = 5;
-inputClient.getLeftRichText(length).then((richText: inputMethodEngine.InputMethodRichText) => {
+inputClient?.getLeftRichText(length).then((richText: inputMethodEngine.InputMethodRichText) => {
   let plainText: string = richText.getString();
   console.info(`Succeeded in getting left rich text, plainText: ${plainText}`);
   let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
@@ -7952,7 +7952,7 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let length: number = 5;
-inputClient.getRightRichText(length).then((richText: inputMethodEngine.InputMethodRichText) => {
+inputClient?.getRightRichText(length).then((richText: inputMethodEngine.InputMethodRichText) => {
   let plainText: string = richText.getString();
   console.info(`Succeeded in getting right rich text, plainText: ${plainText}`);
   let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
