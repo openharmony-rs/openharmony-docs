@@ -48,7 +48,7 @@ encodeImage(srcImage: image.PixelMap, metadata: string): Promise&lt;image.PixelM
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-|   202    | Permission check failed. A non-system application uses the system API. |
+|   202    | Permission verification failed. A non-system application calls a system API. |
 | 32100001 | Internal handling failed. |
 | 32100002 | Encode process fail. Possible causes: 1. Image processing error; 2. Channel coding error. |
 
@@ -97,7 +97,7 @@ decodeImage(encodedImage: image.PixelMap): Promise&lt;string&gt;
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-|   202    | Permission check failed. A non-system application uses the system API. |
+|   202    | Permission verification failed. A non-system application calls a system API. |
 | 32100001 | Internal handling failed. |
 | 32100003 | Decode process fail. Possible causes: 1. Image is not an encoded Image; 2. Image destroyed, decoding failed. |
 
@@ -145,7 +145,7 @@ notifyMetadataBindingEvent(bundleName: string): Promise&lt;string&gt;
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-|   202    | Permission check failed. A non-system application uses the system API. |
+|   202    | Permission verification failed. A non-system application calls a system API. |
 | 32100001 | Internal handling failed. |
 
 **示例**：
