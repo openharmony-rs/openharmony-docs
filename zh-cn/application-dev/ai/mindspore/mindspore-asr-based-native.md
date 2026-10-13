@@ -438,6 +438,10 @@ export default class AVPlayerDemo {
            }
        }
    
+       free(logits.first);
+       logits.first = nullptr;
+       logits_data = nullptr;
+   
        int offset = offset_init;
        BinBuffer slice{nullptr, 0};
        slice.second = WHISPER_N_TEXT_STATE * sizeof(float);
@@ -491,6 +495,8 @@ export default class AVPlayerDemo {
            }
            LOGI("MS_LITE_LOG: run decoder loop %{public}d ok!\n token = %{public}d", i, max_token_id);
        }
+       free(slice.first);
+       slice.first = nullptr;
        return output_token;
    }
    
@@ -531,6 +537,8 @@ export default class AVPlayerDemo {
        size_t dataSize = audioBin.second;
        uint8_t *dataBuffer = (uint8_t *)audioBin.first;
        bool ok = audioFile.loadFromMemory(std::vector<uint8_t>(dataBuffer, dataBuffer + dataSize));
+       DestroyModelBuffer(&audioBin.first);
+       dataBuffer = nullptr;
        if (!ok) {
            LOGE("MS_LITE_ERR: Fail to read  %{public}s!", filePath.c_str());
            return error_ret;
@@ -566,8 +574,6 @@ export default class AVPlayerDemo {
        // tiny-encoder.ms模型推理
        auto encoderBin = ReadBinFile(resourcesManager, "tiny-encoder.ms");
        if (encoderBin.first == nullptr) {
-           free(dataBuffer);
-           dataBuffer = nullptr;
            return error_ret;
        }
    
