@@ -180,7 +180,7 @@ if (OH_InputMethodProxy_NotifyConfigurationChange(inputMethodProxy, InputMethod_
    InputMethod_AttachOptions *attachOptions = nullptr;
    InputMethod_InputMethodProxy *inputMethodProxy = nullptr;
    
-   void InputMethodDestroy();
+   static napi_value InputMethodDestroy(napi_env env, napi_callback_info info);
    
    void InitText()
    {
@@ -314,7 +314,7 @@ if (OH_InputMethodProxy_NotifyConfigurationChange(inputMethodProxy, InputMethod_
    int32_t ReceivePrivateCommandFunc(InputMethod_TextEditorProxy *proxy, InputMethod_PrivateCommand *privateCommand[],
        size_t size)
    {
-       SetText("处理扩展编辑请求");
+       SetText("处理私有命令请求");
        return 0;
    }
    
