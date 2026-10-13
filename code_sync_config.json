@@ -21438,6 +21438,16 @@
 						"start_line":18
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/updatebytimeformability/UpdateByTimeFormAbility.ts",
+				"functions":[
+					{
+						"end_line":85,
+						"name":"set_form_next_refreshtime",
+						"start_line":16
+					}
+				]
 			}
 		]
 	},
@@ -23979,6 +23989,16 @@
 						"end_line":93,
 						"name":"entry_ability",
 						"start_line":17
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgeteventcallentryability/WidgetEventCallEntryAbility.ets",
+				"functions":[
+					{
+						"end_line":82,
+						"name":"widget_event_call_card_entry_ability",
+						"start_line":16
 					}
 				]
 			}
@@ -47334,6 +47354,16 @@
 					{
 						"end_line":85,
 						"name":"FormEditUIAbility_FormEditIndex",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/entryformeditability/FormEditSecPageAbility.ets",
+				"functions":[
+					{
+						"end_line":60,
+						"name":"FormEditDemo_FormEditSecPageAbility",
 						"start_line":15
 					}
 				]
