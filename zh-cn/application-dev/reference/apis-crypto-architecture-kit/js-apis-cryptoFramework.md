@@ -9257,6 +9257,124 @@ export default {
 };
 ```
 
+### squeeze
+
+ArkTS-Dyn: squeeze(len: number): Promise\<DataBlob>
+
+ArkTS-Sta: squeeze(len: int): Promise\<DataBlob>
+
+对于SHAKE128和SHAKE256算法，生成指定长度的消息摘要。使用Promise异步回调。
+
+> **说明：**
+>
+> 当前Md实例中，此接口与[squeezeSync](#squeezesync)仅支持单次调用。
+
+**ArkTS-Dyn起始版本：** 26.2.0
+
+**ArkTS-Sta起始版本：** 26.2.0
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.CryptoFramework.MessageDigest
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                                         |
+| ------ | ------ | ---- | ------------------------------------------------------------ |
+| len | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定摘要输出长度（字节）。SHAKE128范围[32, 65536]，SHAKE256范围[64, 65536]。 |
+
+**返回值：**
+
+| 类型               | 说明        |
+| ------------------ | ----------- |
+| Promise\<[DataBlob](#datablob)> | Promise对象，返回指定长度的摘要计算结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
+
+| 错误码ID | 错误信息               |
+| -------- | ---------------------- |
+| 17620001 | Memory operation failed. |
+| 17620002 | Failed to obtain the native object or convert parameters. |
+| 17620003 | Parameter check failed. Possible causes: Invalid len value. |
+| 17620004 | Invalid function call. Fixed-length digest algorithm, such as SHA256, does not support this API. |
+
+**示例：**
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { buffer } from '@kit.ArkTS';
+
+async function squeezeByPromise() {
+  let md = cryptoFramework.createMd('SHAKE128');
+  await md.update({ data: new Uint8Array(buffer.from('mdTestMessage', 'utf-8').buffer) });
+  let mdOutput = await md.squeeze(64);
+  console.info('[Promise]: squeeze result length: ' + mdOutput.data.length);
+}
+```
+
+### squeezeSync
+
+ArkTS-Dyn: squeezeSync(len: number): DataBlob
+
+ArkTS-Sta: squeezeSync(len: int): DataBlob
+
+对于SHAKE128和SHAKE256算法，通过同步方式生成指定长度的消息摘要。
+
+> **说明：**
+>
+> 当前Md实例中，此接口与[squeeze](#squeeze)仅支持单次调用。
+
+**ArkTS-Dyn起始版本：** 26.2.0
+
+**ArkTS-Sta起始版本：** 26.2.0
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.CryptoFramework.MessageDigest
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                                         |
+| ------ | ------ | ---- | ------------------------------------------------------------ |
+| len | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 指定摘要输出长度（字节）。SHAKE128范围[32, 65536]，SHAKE256范围[64, 65536]。 |
+
+**返回值：**
+
+| 类型               | 说明        |
+| ------------------ | ----------- |
+| [DataBlob](#datablob) | 表示生成的指定长度的Md计算结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[cryptoFramework错误码](errorcode-crypto-framework.md)。
+
+| 错误码ID | 错误信息               |
+| -------- | ---------------------- |
+| 17620001 | Memory operation failed. |
+| 17620002 | Failed to obtain the native object or convert parameters. |
+| 17620003 | Parameter check failed. Possible causes: Invalid len value. |
+| 17620004 | Invalid function call. Fixed-length digest algorithm, such as SHA256, does not support this API. |
+
+**示例：**
+
+```ts
+import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+import { buffer } from '@kit.ArkTS';
+
+function squeezeSync() {
+  let md = cryptoFramework.createMd('SHAKE128');
+  md.updateSync({ data: new Uint8Array(buffer.from('mdTestMessage', 'utf-8').buffer) });
+  let mdOutput = md.squeezeSync(64);
+  console.info('[Sync]: squeeze result length: ' + mdOutput.data.length);
+}
+```
+
 ### getMdLength
 
 ArkTS-Dyn: getMdLength() : number
