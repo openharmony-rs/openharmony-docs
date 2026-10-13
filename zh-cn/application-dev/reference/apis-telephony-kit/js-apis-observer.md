@@ -1343,7 +1343,7 @@ observer.offCommunicationStateChange(callback, options);
 
 ## observer.onVoIPStateChange
 
-onVoIPStateChange\( callback: Callback\<VoIPCallStateInfo\>\): void
+onVoIPStateChange\(callback: Callback\<VoIPCallStateInfo\>\): void
 
 订阅VoIP通话状态变化事件，使用callback方式作为异步方法。
 
@@ -1375,16 +1375,16 @@ onVoIPStateChange\( callback: Callback\<VoIPCallStateInfo\>\): void
 import { observer } from '@kit.TelephonyKit';
 
 let callback: (data: observer.VoIPCallStateInfo) => void = (data: observer.VoIPCallStateInfo) => {
-    console.info(`onVoIPStateChange, appName: ${data.appName}, contactName: ${data.contactName}, ` +
-        `callType: ${data.callType}, callState: ${data.callState} ` +
-        `isVoiceAnswerSupported: ${data.isVoiceAnswerSupported}`);
+  console.info(`onVoIPStateChange, appName: ${data.appName}, contactName: ${data.contactName}, ` +
+    `callType: ${data.callType}, callState: ${data.callState} ` +
+    `isVoiceAnswerSupported: ${data.isVoiceAnswerSupported}`);
 }
 
 // 订阅三方VoIP通话状态变化
 try {
-    observer.onVoIPStateChange(callback);
+  observer.onVoIPStateChange(callback);
 } catch (err) {
-    console.error(`observer.onVoIPStateChange failed: ${JSON.stringify(err)}`);
+  console.error(`observer.onVoIPStateChange failed: ${JSON.stringify(err)}`);
 }
 ```
 
@@ -1422,23 +1422,23 @@ offVoIPStateChange\(callback?: Callback\<VoIPCallStateInfo\>\): void
 import { observer } from '@kit.TelephonyKit';
 
 let callback: (data: observer.VoIPCallStateInfo) => void = (data: observer.VoIPCallStateInfo) => {
-    console.info(`onVoIPStateChange, appName: ${data.appName}, contactName: ${data.contactName}, ` +
-        `callType: ${data.callType}, callState: ${data.callState} ` +
-        `isVoiceAnswerSupported: ${data.isVoiceAnswerSupported}`);
+  console.info(`onVoIPStateChange, appName: ${data.appName}, contactName: ${data.contactName}, ` +
+    `callType: ${data.callType}, callState: ${data.callState} ` +
+    `isVoiceAnswerSupported: ${data.isVoiceAnswerSupported}`);
 }
 
 // 取消订阅：指定回调取消单条订阅
 try {
-    observer.offVoIPStateChange(callback);
+  observer.offVoIPStateChange(callback);
 } catch (err) {
-    console.error(`observer.offVoIPStateChange failed: ${JSON.stringify(err)}`);
+  console.error(`observer.offVoIPStateChange failed: ${JSON.stringify(err)}`);
 }
 
 // 取消订阅：不带参数取消全部订阅
 try {
-    observer.offVoIPStateChange();
+  observer.offVoIPStateChange();
 } catch (err) {
-    console.error(`observer.offVoIPStateChange failed: ${JSON.stringify(err)}`);
+  console.error(`observer.offVoIPStateChange failed: ${JSON.stringify(err)}`);
 }
 ```
 
@@ -1456,7 +1456,7 @@ VoIP呼叫状态信息。
 | contactName | string  |  否  |  否  | VoIP呼叫的联系人姓名。 |
 | callType | [VoIPCallType](#voipcalltype)  |  否  |  否  | VoIP呼叫类型。 |
 | VoIPCallState | [VoIPCallState](#voipcallstate)  |  否  |  否  | VoIP呼叫状态。 |
-| isVoiceAnswerSupported | boolean  |  否  |  否  | VoIP应用是否支持将当前呼叫作为语音呼叫接听。<br>- true：支持语音接听。<br>- false：不支持语音接听。 |
+| isVoiceAnswerSupported | boolean  |  否  |  否  | VoIP应用是否支持将当前呼叫作为语音呼叫接听。<br>- true：支持当前呼叫作为语音呼叫接听。<br>- false：不支持当前呼叫作为语音呼叫接听。 |
 
 ## VoIPCallType
 
