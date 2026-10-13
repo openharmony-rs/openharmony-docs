@@ -7894,7 +7894,7 @@ try {
     console.info(`span[${i}]: type=${type}, content=${content}, range={start:${range.start}, end:${range.end}}`);
   }
 } catch (err) {
-  let error = err as BusinessError;
+  let error: BusinessError = err as BusinessError;
   console.error(`Failed to getLeftRichTextSync. Code is ${error.code}, message is ${error.message}`);
 }
 ```
@@ -8079,7 +8079,7 @@ try {
     console.info(`span[${i}]: type=${type}, content=${content}, range={start:${range.start}, end:${range.end}}`);
   }
 } catch (err) {
-  let error = err as BusinessError;
+  let error: BusinessError = err as BusinessError;
   console.error(`Failed to getRightRichTextSync. Code is ${error.code}, message is ${error.message}`);
 }
 ```
