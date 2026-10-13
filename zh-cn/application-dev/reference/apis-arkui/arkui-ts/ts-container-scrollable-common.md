@@ -551,7 +551,7 @@ ArkTS-Dyn: enableScrollWithMouse(enabled: boolean | undefined): T
 
 ArkTS-Sta: enableScrollWithMouse(enabled: boolean | undefined): this
 
-设置是否支持鼠标左键按下拖动滚动。未通过该接口设置时，默认不支持鼠标左键按下拖动滚动。
+设置是否支持鼠标左键按下拖动滚动。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -568,7 +568,7 @@ ArkTS-Sta: enableScrollWithMouse(enabled: boolean | undefined): this
 
 | 参数名 | 类型   | 必填 | 说明                                          |
 | ------ | ------ | ---- | --------------------------------------------- |
-| enabled  | ArkTS-Dyn: boolean&nbsp;\|&nbsp;undefined<br/>ArkTS-Sta: boolean&nbsp; \| undefined | 是   | 是否支持鼠标左键按下拖动滚动。<br/>true：支持鼠标左键按下拖动滚动。<br/>false：不支持鼠标左键按下拖动滚动。<br/>undefined：不支持鼠标左键按下拖动滚动。 |
+| enabled  | ArkTS-Dyn: boolean&nbsp;\|&nbsp;undefined<br/>ArkTS-Sta: boolean&nbsp; \| undefined | 是   | 是否支持鼠标左键按下拖动滚动。<br/>true：支持鼠标左键按下拖动滚动。<br/>false：不支持鼠标左键按下拖动滚动。<br/>默认值：API版本26.2.0之前，默认值为false。从API版本26.2.0开始，当可滚动组件水平滚动时，默认值为true，否则为false。 |
 
 **返回值：**
 
@@ -1799,3 +1799,154 @@ struct ListExample {
 ```
 
 ![scrollBarMargin_list](figures/scrollBarMargin_list.gif)
+
+### 示例5（设置鼠标左键按下拖动滚动）
+
+该示例通过设置[enableScrollWithMouse](#enablescrollwithmouse)属性，实现了鼠标左键按下拖动滚动的效果。属性初始值设置为undefined，表示使用默认效果。
+
+从API版本26.0.0开始，滚动组件新增enableScrollWithMouse属性。
+
+ListDataSource说明及完整代码参考[示例1（添加滚动事件）](./ts-container-list.md#示例1添加滚动事件)。
+
+ArkTS-Dyn示例：
+
+```ts
+// xxx.ets
+import { ListDataSource } from './ListDataSource';
+
+@Entry
+@Component
+struct Index {
+  private verticalData: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  private horizontalData: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  @State verticalMouseScroll: boolean | undefined = undefined;
+  @State horizontalMouseScroll: boolean | undefined = undefined;
+
+  build() {
+    Column({ space: 12 }) {
+      Button(`enableScrollWithMouse(vertical): ${this.verticalMouseScroll}`)
+        .onClick(() => {
+          this.verticalMouseScroll = !this.verticalMouseScroll;
+        }).margin({ top: 40 })
+
+      List({ space: 10 }) {
+        LazyForEach(this.verticalData, (item: number) => {
+          ListItem() {
+            Text(item.toString())
+              .width('100%')
+              .height(80)
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
+              .borderRadius(10)
+              .backgroundColor(0xFFFFFF)
+          }
+        }, (item: number) => item.toString())
+      }
+      .listDirection(Axis.Vertical)
+      .enableScrollWithMouse(this.verticalMouseScroll)
+      .height(190)
+      .width('90%')
+
+      Button(`enableScrollWithMouse(horizontal): ${this.horizontalMouseScroll}`)
+        .onClick(() => {
+          this.horizontalMouseScroll = !this.horizontalMouseScroll;
+        }).margin({ top: 40 })
+
+      List({ space: 10 }) {
+        LazyForEach(this.horizontalData, (item: number) => {
+          ListItem() {
+            Text(item.toString())
+              .width(160)
+              .height(80)
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
+              .borderRadius(10)
+              .backgroundColor(0xFFFFFF)
+          }
+        }, (item: number) => item.toString())
+      }
+      .listDirection(Axis.Horizontal)
+      .enableScrollWithMouse(this.horizontalMouseScroll)
+      .height(100)
+      .width('90%')
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(0xDCDCDC)
+    .padding({ top: 12, bottom: 12 })
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Component, State, Column, ColumnOptions, Button, List, ListItem, ListOptions, LazyForEach, Text,
+  TextAlign, Padding, Margin, Axis } from '@kit.ArkUI';
+import { ListDataSource } from './ListDataSource';
+
+@Entry
+@Component
+struct Index {
+  private verticalData: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  private horizontalData: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  @State verticalMouseScroll: boolean | undefined = undefined;
+  @State horizontalMouseScroll: boolean | undefined = undefined;
+
+  build() {
+    Column({ space: 12 } as ColumnOptions) {
+      Button(`enableScrollWithMouse(vertical): ${this.verticalMouseScroll}`)
+        .onClick(() => {
+          this.verticalMouseScroll = !this.verticalMouseScroll;
+        }).margin({ top: 40 } as Margin)
+
+      List({ space: 10 } as ListOptions) {
+        LazyForEach(this.verticalData, (item: number) => {
+          ListItem() {
+            Text(item.toString())
+              .width('100%')
+              .height(80)
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
+              .borderRadius(10)
+              .backgroundColor(0xFFFFFF)
+          }
+        }, (item: number) => item.toString())
+      }
+      .listDirection(Axis.Vertical)
+      .enableScrollWithMouse(this.verticalMouseScroll)
+      .height(190)
+      .width('90%')
+
+      Button(`enableScrollWithMouse(horizontal): ${this.horizontalMouseScroll}`)
+        .onClick(() => {
+          this.horizontalMouseScroll = !this.horizontalMouseScroll;
+        }).margin({ top: 40 } as Margin)
+
+      List({ space: 10 } as ListOptions) {
+        LazyForEach(this.horizontalData, (item: number) => {
+          ListItem() {
+            Text(item.toString())
+              .width(160)
+              .height(80)
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
+              .borderRadius(10)
+              .backgroundColor(0xFFFFFF)
+          }
+        }, (item: number) => item.toString())
+      }
+      .listDirection(Axis.Horizontal)
+      .enableScrollWithMouse(this.horizontalMouseScroll)
+      .height(100)
+      .width('90%')
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(0xDCDCDC)
+    .padding({ top: 12, bottom: 12 } as Padding)
+  }
+}
+```
+
+![enableScrollWithMouse](figures/enableScrollWithMouse.gif)
