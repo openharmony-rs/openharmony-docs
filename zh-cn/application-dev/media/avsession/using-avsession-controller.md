@@ -191,7 +191,6 @@
 
    <!-- @[listenAVSessionDestroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionController/entry/src/main/ets/feature/MediaController.ets) -->
 
-   <div class="same-source-code">
    ``` TypeScript
    async listenAVSessionDestroy(): Promise<void> {
      try {
@@ -216,8 +215,3 @@
      Log.info(TAG, 'stopControl done');
    }
    ```
-
-   <p class="same-source-code-link"><a href="https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionController/entry/src/main/ets/feature/MediaController.ets?same_code_link_text=listenAVSessionDestroy" target="_blank" rel="nofollow">MediaController.ets</a></p>
-
-   </div>
-
