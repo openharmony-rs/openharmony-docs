@@ -171,6 +171,7 @@ static napi_value CreateObjectWithProperties(napi_env env, napi_callback_info in
     if (valueType == napi_object) {
         return object;
     }
+    return nullptr;
 }
 ```
 
