@@ -1366,8 +1366,8 @@ onVoIPStateChange\( callback: Callback\<VoIPCallStateInfo\>\): void
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
 | 201      | Permission denied.                           |
-| 8300002  | Service connection failed.                   |
-| 8300003  | System internal error.                       |
+| 8800002  | Service connection failed.                   |
+| 8800003  | System internal error.                       |
 
 **示例：**
 
@@ -1377,8 +1377,7 @@ import { observer } from '@kit.TelephonyKit';
 let callback: (data: observer.VoIPCallStateInfo) => void = (data: observer.VoIPCallStateInfo) => {
     console.info(`onVoIPStateChange, appName: ${data.appName}, contactName: ${data.contactName}, ` +
         `callType: ${data.callType}, callState: ${data.callState} ` +
-        `isVoiceAnswerSupported: ${data.isVoiceAnswerSupported}`;
-    );
+        `isVoiceAnswerSupported: ${data.isVoiceAnswerSupported}`);
 }
 
 // 订阅三方VoIP通话状态变化
@@ -1414,8 +1413,8 @@ offVoIPStateChange\(callback?: Callback\<VoIPCallStateInfo\>\): void
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
 | 201      | Permission denied.                           |
-| 8300002  | Service connection failed.                   |
-| 8300003  | System internal error.                       |
+| 8800002  | Service connection failed.                   |
+| 8800003  | System internal error.                       |
 
 **示例：**
 
@@ -1425,8 +1424,7 @@ import { observer } from '@kit.TelephonyKit';
 let callback: (data: observer.VoIPCallStateInfo) => void = (data: observer.VoIPCallStateInfo) => {
     console.info(`onVoIPStateChange, appName: ${data.appName}, contactName: ${data.contactName}, ` +
         `callType: ${data.callType}, callState: ${data.callState} ` +
-        `isVoiceAnswerSupported: ${data.isVoiceAnswerSupported}`;
-    );
+        `isVoiceAnswerSupported: ${data.isVoiceAnswerSupported}`);
 }
 
 // 取消订阅：指定回调取消单条订阅
