@@ -85,7 +85,7 @@ target_link_libraries(sample PUBLIC libOpenSLES.so)
    #include "SLES/OpenSLES_Platform.h"
    ```
 
-2. 使用slCreateEngine接口和获取engine实例。
+2. 使用slCreateEngine接口创建并实例化引擎对象。
      
    ```cpp
    SLObjectItf engineObject = nullptr;
