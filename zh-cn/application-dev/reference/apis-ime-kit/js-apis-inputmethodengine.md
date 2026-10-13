@@ -7858,7 +7858,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let length: number = 5;
-  let richText: inputMethodEngine.InputMethodRichText = inputClient.getLeftRichTextSync(length);
+  let richText: inputMethodEngine.InputMethodRichText = inputClient!.getLeftRichTextSync(length);
   let plainText: string = richText.getString();
   console.info(`Succeeded in getting left rich text sync, plainText: ${plainText}`);
   let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
@@ -8043,7 +8043,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let length: number = 5;
-  let richText: inputMethodEngine.InputMethodRichText = inputClient.getRightRichTextSync(length);
+  let richText: inputMethodEngine.InputMethodRichText = inputClient!.getRightRichTextSync(length);
   let plainText: string = richText.getString();
   console.info(`Succeeded in getting right rich text sync, plainText: ${plainText}`);
   let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
@@ -8141,7 +8141,7 @@ ArkTS-Dyn示例：
 
 ```ts
 let length: number = 5;
-let richText: inputMethodEngine.InputMethodRichText = inputClient.getLeftRichTextSync(length);
+let richText: inputMethodEngine.InputMethodRichText = inputClient!.getLeftRichTextSync(length);
 let plainText: string = richText.getString();
 console.info(`plainText: ${plainText}`);
 ```
@@ -8181,7 +8181,7 @@ ArkTS-Dyn示例：
 
 ```ts
 let length: number = 5;
-let richText: inputMethodEngine.InputMethodRichText = inputClient.getLeftRichTextSync(length);
+let richText: inputMethodEngine.InputMethodRichText = inputClient!.getLeftRichTextSync(length);
 let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
 for (let i = 0; i < spans.length; i++) {
   let span = spans[i];
@@ -8245,7 +8245,7 @@ ArkTS-Dyn示例：
 
 ```ts
 let length: number = 5;
-let richText: inputMethodEngine.InputMethodRichText = inputClient.getLeftRichTextSync(length);
+let richText: inputMethodEngine.InputMethodRichText = inputClient!.getLeftRichTextSync(length);
 let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
 for (let i = 0; i < spans.length; i++) {
   let type: inputMethodEngine.SpanType = spans[i].getType();
@@ -8295,7 +8295,7 @@ ArkTS-Dyn示例：
 
 ```ts
 let length: number = 5;
-let richText: inputMethodEngine.InputMethodRichText = inputClient.getLeftRichTextSync(length);
+let richText: inputMethodEngine.InputMethodRichText = inputClient!.getLeftRichTextSync(length);
 let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
 for (let i = 0; i < spans.length; i++) {
   let content: string = spans[i].getContent();
@@ -8341,7 +8341,7 @@ ArkTS-Dyn示例：
 
 ```ts
 let length: number = 5;
-let richText: inputMethodEngine.InputMethodRichText = inputClient.getLeftRichTextSync(length);
+let richText: inputMethodEngine.InputMethodRichText = inputClient!.getLeftRichTextSync(length);
 let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
 for (let i = 0; i < spans.length; i++) {
   let range: inputMethodEngine.Range = spans[i].getRange();
