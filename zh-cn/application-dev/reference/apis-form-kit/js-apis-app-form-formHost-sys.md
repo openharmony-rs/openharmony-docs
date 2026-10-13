@@ -4543,7 +4543,7 @@ try {
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
-}   
+}
 ```
 
 ## formHost.offFormOverflow<sup>23+</sup>
@@ -4591,6 +4591,88 @@ try {
 } catch (error) {
   console.info( 'testTag EntryFormAbility', `offFormOverflow catch error ${error.code}, ${error.message}`);
 }
+```
+
+## formHost.on('getLiveFormStatus')<sup>20+</sup>
+
+on(type: 'getLiveFormStatus', callback: formInfo.GetLiveFormStatusCallback): void
+
+订阅卡片卸载事件。使用callback异步回调。
+
+> **说明：**
+> 
+> 卡片卸载与卡片移除不同。当应用卸载时，对应的卡片会自动卸载。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                                                   |
+| ------ | ------ | ---- |------------------------------------------------------|
+| type | string | 是   | 事件回调类型，支持的事件为'getLiveFormStatus'，表示在线卡片状态查询。|
+| callback |[formInfo.GetLiveFormStatusCallback](js-apis-app-form-formInfo-sys.md#getformrectinfocallback20) | 是 | 回调函数，卡片使用方对查询请求进行处理，返回卡片相对屏幕左上角的位置信息和卡片尺寸信息。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 202 | The application is not a system application. |
+
+**示例：**
+
+```ts
+import { formHost } from '@kit.FormKit';
+
+let liveFormStatusMap: Record<string, string> = {};
+
+formHost.on('getLiveFormStatus', (): Record<string, string> => {
+  console.info('FMS 查询实时卡片状态, 返回: ' + JSON.stringify(liveFormStatusMap));
+  return liveFormStatusMap;
+});
+```
+
+## formHost.off('getLiveFormStatus')<sup>20+</sup>
+
+off(type: 'getLiveFormStatus', callback?: formInfo.GetLiveFormStatusCallback): void
+
+取消订阅卡片卸载事件。使用callback异步回调。
+
+> **说明：**
+> 
+> 卡片卸载与卡片移除不同。当应用卸载时，对应的卡片会自动卸载。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                                                   |
+| ------ | ------ | ---- |------------------------------------------------------|
+| type | string | 是   | 事件回调类型，支持的事件为'getLiveFormStatus'，表示卡片位置尺寸查询。|
+| callback |[formInfo.GetLiveFormStatusCallback](js-apis-app-form-formInfo-sys.md#getformrectinfocallback20) | 是 | 回调函数，卡片使用方对查询请求进行处理，返回卡片相对屏幕左上角的位置信息和卡片尺寸信息。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 202 | The application is not a system application. |
+
+**示例：**
+
+```ts
+import { formHost } from '@kit.FormKit';
+
+formHost.off('getLiveFormStatus', (): Record<string, string> => {
+  console.info('FMS 注销全部监听');
+  return liveFormStatusMap;
+});
 ```
 
 ## formHost.on('changeSceneAnimationState')<sup>20+</sup>
