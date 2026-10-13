@@ -79,9 +79,8 @@ USB串口配置管理中，波特率、数据位、校验位和停止位是串�
    import { State } from '@ohos.arkui.stateManagement'
    import hilog from '@ohos.hilog'
    import serialManager from '@ohos.usbManager.serial';
-   import { BusinessError } from '@kit.BasicServicesKit';
+   import { BusinessError } from '@ohos.base';
    import { buffer } from '@kit.ArkTS';
-   
    ```
 
 2. 获取设备列表。
@@ -161,9 +160,10 @@ USB串口配置管理中，波特率、数据位、校验位和停止位是串�
      serialManager.requestSerialRight(portId).then((result: boolean) => {
        console.info('serial device request right result: ' + result);
        this.logInfo_ += '\n[INFO] serial device request right result: ' + JSON.stringify(result);
-     }).catch((error: Error) => {
-       console.error(`usb device request right failed : ${error}`);
-       this.logInfo_ += '\n[ERROR] usb device request right failed: ' + JSON.stringify(error);
+     }).catch((error) => {
+       let errorObj: BusinessError = error as BusinessError;
+       console.error(`usb device request right failed : code=${errorObj.code}, message=${errorObj.message}`);
+       this.logInfo_ += '\n[ERROR] usb device request right failed: code=' + errorObj.code + ', message=' + errorObj.message;
      });
    } else {
      console.info('serial device already request right');
@@ -199,8 +199,9 @@ USB串口配置管理中，波特率、数据位、校验位和停止位是串�
      console.info(`open usbSerial success, portId: ${portId}`);
      this.logInfo_ += '\n[INFO] open usbSerial success, portId: ' + JSON.stringify(portId);
    } catch (error) {
-     console.error(`open usbSerial error： ${error}`);
-     this.logInfo_ += '\n[ERROR] open usbSerial error: ' + JSON.stringify(error);
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`open usbSerial error： code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] open usbSerial error: code=' + errorObj.code + ', message=' + errorObj.message;
    }
    ```
 
@@ -233,8 +234,9 @@ USB串口配置管理中，波特率、数据位、校验位和停止位是串�
      console.info(`getAttribute usbSerial success, attribute: ${JSON.stringify(attribute)}`);
      this.logInfo_ += '\n[INFO] getAttribute usbSerial success, attribute: ' + JSON.stringify(attribute);
    } catch (error) {
-     console.error(`getAttribute usbSerial error: ${error}`);
-     this.logInfo_ += '\n[ERROR] getAttribute usbSerial error: ' + JSON.stringify(error);
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`getAttribute usbSerial error: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] getAttribute usbSerial error: code=' + errorObj.code + ', message=' + errorObj.message;
    }
    ```
 
@@ -277,8 +279,9 @@ USB串口配置管理中，波特率、数据位、校验位和停止位是串�
      console.info(`setAttribute usbSerial success, attribute: ${JSON.stringify(attribute)}`);
      this.logInfo_ += '\n[INFO] setAttribute usbSerial success, attribute: ' + JSON.stringify(attribute);
    } catch (error) {
-     console.error(`setAttribute usbSerial error: ${error}`);
-     this.logInfo_ += '\n[ERROR] setAttribute usbSerial error: ' + JSON.stringify(error);
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`setAttribute usbSerial error: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] setAttribute usbSerial error: code=' + errorObj.code + ', message=' + errorObj.message;
    }
    ```
 
