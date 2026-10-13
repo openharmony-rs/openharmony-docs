@@ -276,7 +276,7 @@
     - [Inspecting Page Layouts](arkts-inspector-overview.md)
     - [Media Query (@ohos.mediaquery)](arkts-layout-development-media-query.md)
     - Using Embedded Components<!--arkts-ui-cross-process-->
-      - [Atomic Service Full Screen Launch Component (FullScreenLaunchComponent)](arkts-FullScreenComponent.md)
+      - [Full-Screen Launch of Atomic Services (FullScreenLaunchComponent)](arkts-FullScreenComponent.md)
       - [In-Application Embedded Component (EmbeddedComponent)](arkts-embedded-components.md)
     <!--Del-->
     - [Cross-Process Application Capability Extension (UIExtension, for System Applications Only)](arkts-ui-extension-components-sys.md)
