@@ -574,7 +574,7 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
      if (capturer !== undefined) {
        let state = capturer.state;
        if (state === audio.AudioState.STATE_RELEASED || state === audio.AudioState.STATE_NEW) {
-         console.info('Capturer already released');
+         console.error('Capturer already released');
          const infoMsg = 'Capturer already released';
          if (updateCallback) {
            updateCallback(infoMsg, false);
