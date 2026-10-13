@@ -1,3 +1,16 @@
+---
+kit: Media Kit
+shortdes: 介绍使用AVRecorder的C/C++接口录制音频
+keywords:
+  - AVRecorder
+  - 音频录制
+  - C/C++
+  - NDK
+  - OH_AVRecorder
+doctype: guide
+status: active
+---
+
 # 使用AVRecorder录制音频(C/C++)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->

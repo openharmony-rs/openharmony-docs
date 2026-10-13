@@ -1,3 +1,16 @@
+---
+kit: Media Kit
+shortdes: 介绍AVScreenCapture录屏的自定义场景配置
+keywords:
+  - AVScreenCapture
+  - 录屏策略
+  - 旋转适配
+  - 隐私设置
+  - 内容过滤
+doctype: guide
+status: active
+---
+
 # AVScreenCapture录屏自定义场景
 
 <!--Kit: Media Kit-->

@@ -1,3 +1,15 @@
+---
+kit: Media Kit
+shortdes: 介绍录屏常见问题及解决方法
+keywords:
+  - AVScreenCapture
+  - 录屏FAQ
+  - 实例限制
+  - 通话打断
+doctype: guide
+status: active
+---
+
 # 录屏常见问题
 
 <!--Kit: Media Kit-->

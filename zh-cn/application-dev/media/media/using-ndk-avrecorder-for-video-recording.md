@@ -1,3 +1,16 @@
+---
+kit: Media Kit
+shortdes: 介绍使用AVRecorder的C/C++接口录制视频
+keywords:
+  - AVRecorder
+  - 视频录制
+  - C/C++
+  - NDK
+  - Surface
+doctype: guide
+status: active
+---
+
 # 使用AVRecorder录制视频(C/C++)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->

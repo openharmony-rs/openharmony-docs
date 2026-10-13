@@ -1,3 +1,16 @@
+---
+kit: Media Kit
+shortdes: 介绍使用AVRecorder实现视频录制的完整流程
+keywords:
+  - AVRecorder
+  - 视频录制
+  - ArkTS
+  - Surface
+  - 相机
+doctype: guide
+status: active
+---
+
 # 使用AVRecorder录制视频(ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->

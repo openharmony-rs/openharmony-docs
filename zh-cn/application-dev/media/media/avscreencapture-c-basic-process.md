@@ -1,3 +1,16 @@
+---
+kit: Media Kit
+shortdes: 介绍AVScreenCapture录屏取码流的基础流程
+keywords:
+  - AVScreenCapture
+  - 录屏
+  - C/C++
+  - 码流
+  - 录屏模式
+doctype: guide
+status: active
+---
+
 # AVScreenCapture录屏基础流程
 
 <!--Kit: Media Kit-->

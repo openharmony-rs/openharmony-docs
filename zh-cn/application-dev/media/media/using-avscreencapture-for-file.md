@@ -1,3 +1,16 @@
+---
+kit: Media Kit
+shortdes: 介绍使用AVScreenCapture录屏写文件的C/C++开发
+keywords:
+  - AVScreenCapture
+  - 录屏写文件
+  - C/C++
+  - OH_CAPTURE_FILE
+  - 录屏录制
+doctype: guide
+status: active
+---
+
 # 使用AVScreenCapture录屏写文件(C/C++)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
