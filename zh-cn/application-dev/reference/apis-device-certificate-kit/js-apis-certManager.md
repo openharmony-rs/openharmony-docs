@@ -682,7 +682,7 @@ installUserTrustedCertificate(certificate: CertBlob): Promise\<CMResult>
 
 **起始版本：** 26.0.0
 
-**需要权限：** ohos.permission.ACCESS_ENTERPRISE_USER_TRUSTED_CERT<!--Del-->或ohos.permission.ACCESS_USER_TRUSTED_CERT<!--DelEnd-->
+**需要权限：** ohos.permission.ACCESS_ENTERPRISE_USER_TRUSTED_CERT<!--Del-->或ohos.permission.ACCESS_USER_TRUSTED_CERT（该权限仅系统应用可申请）<!--DelEnd-->
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -747,7 +747,7 @@ installUserTrustedCertificateSync(cert: Uint8Array, certScope: CertScope): CMRes
 
 安装用户CA证书。
 
-**需要权限：** ohos.permission.ACCESS_ENTERPRISE_USER_TRUSTED_CERT<!--Del-->或ohos.permission.ACCESS_USER_TRUSTED_CERT<!--DelEnd-->
+**需要权限：** ohos.permission.ACCESS_ENTERPRISE_USER_TRUSTED_CERT<!--Del-->或ohos.permission.ACCESS_USER_TRUSTED_CERT（该权限仅系统应用可申请）<!--DelEnd-->
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -806,7 +806,7 @@ uninstallUserTrustedCertificateSync(certUri: string) : void
 
 卸载用户CA证书。
 
-**需要权限：** ohos.permission.ACCESS_ENTERPRISE_USER_TRUSTED_CERT<!--Del-->或ohos.permission.ACCESS_USER_TRUSTED_CERT<!--DelEnd-->
+**需要权限：** ohos.permission.ACCESS_ENTERPRISE_USER_TRUSTED_CERT<!--Del-->或ohos.permission.ACCESS_USER_TRUSTED_CERT（该权限仅系统应用可申请）<!--DelEnd-->
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
