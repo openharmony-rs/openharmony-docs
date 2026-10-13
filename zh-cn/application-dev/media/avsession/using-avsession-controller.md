@@ -38,6 +38,57 @@
 2. 监听媒体会话的创建、销毁以及当前最新播放的媒体会话变更，并创建媒体会话对应的AVSessionController，从而对系统中的音视频应用进行统一的播放控制。
 
    <!-- @[getAVSessionDescriptorsInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionController/entry/src/main/ets/feature/MediaController.ets) --> 
+   
+   ``` TypeScript
+   import { avSession } from '@kit.AVSessionKit';
+   // ...
+   
+     // 获取媒体会话描述符及媒体会话控制器。
+     async getAVSessionDescriptorsInfo(): Promise<void> {
+       try {
+         // 获取所有设置过媒体信息且注册过控制回调的会话的描述符信息。
+         avSession.getAllSessionDescriptors().then(async (descriptors: avSession.AVSessionDescriptor[]) => {
+           Log.info(TAG, 'Succeeded in getting all session descriptors, length: ' + descriptors.length);
+           if (descriptors.length > 0) {
+             avSession.createController(descriptors[0].sessionId).then(
+               async (controller: avSession.AVSessionController) => {
+               this.currentController = controller;
+               this.currentControllerLink?.set(controller);
+               await this.getControllerInfo();
+               await this.listenControllerInfo();
+               await this.getAVSessionValidCommands();
+             });
+           }
+         });
+   
+         // 监听最新播放会话变更的事件。
+         avSession.onTopSessionChange(async (descriptor: avSession.AVSessionDescriptor) => {
+           Log.info(TAG, 'on topSessionChange : sessionTag: ' + descriptor.sessionTag);
+           avSession.createController(descriptor.sessionId).then(async (controller: avSession.AVSessionController) => {
+             this.currentController = controller;
+             this.currentControllerLink?.set(controller);
+             await this.getControllerInfo();
+             await this.listenControllerInfo();
+             await this.getAVSessionValidCommands();
+           });
+         });
+   
+         // 监听会话创建事件。
+         avSession.onSessionCreate((descriptor: avSession.AVSessionDescriptor) => {
+           Log.info(TAG, 'on sessionCreate: sessionTag: ' + descriptor.sessionTag);
+         });
+   
+         // 监听会话的销毁事件。
+         avSession.onSessionDestroy((descriptor: avSession.AVSessionDescriptor) => {
+           Log.info(TAG, 'on sessionDestroy: ' + descriptor.sessionTag);
+         });
+       } catch (error) {
+         if (error) {
+           Log.error(TAG, `avSession Error: Code: ${error.code}, message: ${error.message}`);
+         }
+       }
+     }
+   ```
 
 3. 获取媒体会话提供方传递的当前播放曲目及播放状态等。
 
