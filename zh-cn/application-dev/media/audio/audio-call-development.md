@@ -45,7 +45,7 @@
 
 ArkTS-Dyn示例：
 
-<!-- @[all_VoIPDemoForAudioRenderer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/VoipCallSampleJS/entry/src/main/ets/pages/VoIpDemoForAudioRenderer.ets) -->  
+<!-- @[all_VoIPDemoForAudioRenderer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/VoipCallSampleJS/entry/src/main/ets/pages/VoIpDemoForAudioRenderer.ets) -->
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit'; // 导入audio模块。
@@ -234,7 +234,7 @@ async function release() {
 
 ArkTS-Sta示例：
 
-<!-- @[all_VoIPDemoForAudioRenderer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/VoipCallSampleJS-Sta/entry/src/main/ets/pages/VoIpDemoForAudioRenderer.ets) -->  
+<!-- @[all_VoIPDemoForAudioRenderer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/VoipCallSampleJS-Sta/entry/src/main/ets/pages/VoIpDemoForAudioRenderer.ets) -->
 
 ``` TypeScript
 import audio from '@ohos.multimedia.audio'; // 导入audio模块。
@@ -464,7 +464,7 @@ async function release() {
 
 ArkTS-Dyn示例：
 
-<!-- @[all_VoIPDemoForAudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/VoipCallSampleJS/entry/src/main/ets/pages/VoIpDemoForAudioCapturer.ets) -->  
+<!-- @[all_VoIPDemoForAudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/VoipCallSampleJS/entry/src/main/ets/pages/VoIpDemoForAudioCapturer.ets) -->
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit'; // 导入audio模块。
@@ -611,7 +611,7 @@ async function release() {
 
 ArkTS-Sta示例：
 
-<!-- @[all_VoIPDemoForAudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/VoipCallSampleJS-Sta/entry/src/main/ets/pages/VoIpDemoForAudioCapturer.ets) -->  
+<!-- @[all_VoIPDemoForAudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/VoipCallSampleJS-Sta/entry/src/main/ets/pages/VoIpDemoForAudioCapturer.ets) -->
 
 ``` TypeScript
 import audio from '@ohos.multimedia.audio'; // 导入audio模块。
