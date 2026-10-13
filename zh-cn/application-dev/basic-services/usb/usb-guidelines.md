@@ -45,12 +45,11 @@ USB设备可作为Host设备连接Device设备进行数据传输。开发示例�
 
 1. 导入模块。
 
-   <!-- @[head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[head](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    // 导入usbManager模块
-   import { usbManager } from '@kit.BasicServicesKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
+   import { usbManager, BusinessError } from '@kit.BasicServicesKit';
    import { JSON } from '@kit.ArkTS';
    ```
 
@@ -64,8 +63,9 @@ USB设备可作为Host设备连接Device设备进行数据传输。开发示例�
    try {
      deviceList = usbManager.getDevices();
    } catch (error) {
-       console.error(`USB getDevices failed: ${error}`);
-       this.logInfo_ += '\n[ERROR] USB getDevices failed: ' + JSON.stringify(error);
+      let errorObj: BusinessError = error as BusinessError;
+      console.error(`USB getDevices failed: code=${errorObj.code}, message=${errorObj.message}`);
+      this.logInfo_ += '\n[ERROR] USB getDevices failed: code=' + errorObj.code + ', message=' + errorObj.message;
    }
    
    console.info(`deviceList: ${deviceList}`);
@@ -131,7 +131,7 @@ USB设备可作为Host设备连接Device设备进行数据传输。开发示例�
 
 3. 获取设备操作权限。
 
-   <!-- @[requestRight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[requestRight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    if (this.deviceList_ === undefined || this.deviceList_.length === 0) {
@@ -146,8 +146,8 @@ USB设备可作为Host设备连接Device设备进行数据传输。开发示例�
      console.info('usb device request right result: ' + hasRight);
      this.logInfo_ += '\n[INFO] usb device request right result: ' + JSON.stringify(hasRight);
    }).catch((error: BusinessError) => {
-     console.error(`usb device request right failed : ${error}`);
-     this.logInfo_ += '\n[ERROR] usb device request right failed: ' + JSON.stringify(error);
+     console.error(`usb device request right failed : code=${error.code}, message=${error.message}`);
+     this.logInfo_ += '\n[ERROR] usb device request right failed: code=' + error.code + ', message=' + error.message;
    });
    ```
 
@@ -157,7 +157,7 @@ USB设备可作为Host设备连接Device设备进行数据传输。开发示例�
    
    ``` TypeScript
    if (this.deviceList_ === undefined || this.deviceList_.length === 0) {
-     console.error('deviceList_ is empty');
+     console.error('deviceList is empty');
      this.logInfo_ += '\n[ERROR] deviceList is empty';
      return;
    }
@@ -191,15 +191,16 @@ USB设备可作为Host设备连接Device设备进行数据传输。开发示例�
      console.info('open device success');
      this.logInfo_ += '\n[INFO] open device success';
    } catch (error) {
-     console.error(`USB hasRight failed: ${error}`);
-     this.logInfo_ += '\n[ERROR] USB hasRight failed: ' + JSON.stringify(error);
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`USB hasRight failed: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] USB hasRight failed: code=' + errorObj.code + ', message=' + errorObj.message;
    }
    ```
 
 5. 数据传输。当前仅支持批量传输和控制传输。
 
     - 批量传输
-   <!-- @[bulkTransfer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[bulkTransfer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    if (this.pipe_ === undefined || this.interface_ === undefined) {
@@ -226,8 +227,8 @@ USB设备可作为Host设备连接Device设备进行数据传输。开发示例�
          this.logInfo_ += '\n[ERROR] usb readData failed';
        }
      }).catch((error: BusinessError) => {
-       console.error(`usb readData error : ${error}`);
-       this.logInfo_ += '\n[ERROR] usb readData error: ' + JSON.stringify(error);
+       console.error(`usb readData error : code=${error.code}, message=${error.message}`);
+       this.logInfo_ += '\n[ERROR] usb readData error: code=' + error.code + ', message=' + error.message;
      });
    }
    
@@ -242,8 +243,8 @@ USB设备可作为Host设备连接Device设备进行数据传输。开发示例�
          this.logInfo_ += '\n[ERROR] usb writeData failed';
        }
      }).catch((error: BusinessError) => {
-       console.error(`usb writeData error : ${error}`);
-       this.logInfo_ += '\n[ERROR] usb writeData error: ' + JSON.stringify(error);
+       console.error(`usb writeData error : code=${error.code}, message=${error.message}`);
+       this.logInfo_ += '\n[ERROR] usb writeData error: code=' + error.code + ', message=' + error.message;
      });
    }
    ```
@@ -275,8 +276,8 @@ USB设备可作为Host设备连接Device设备进行数据传输。开发示例�
      console.info(`usbControlTransfer = ${ret}`);
      this.logInfo_ += '\n[INFO] usbControlTransfer = ' + JSON.stringify(ret);
    }).catch((error: BusinessError) => {
-     console.error(`usbControlTransfer error : ${error}`);
-     this.logInfo_ += '\n[ERROR] usbControlTransfer error: ' + JSON.stringify(error);
+     console.error(`usbControlTransfer error : code=${error.code}, message=${error.message}`);
+     this.logInfo_ += '\n[ERROR] usbControlTransfer error: code=' + error.code + ', message=' + error.message;
    });
    ```
 
@@ -296,8 +297,9 @@ USB设备可作为Host设备连接Device设备进行数据传输。开发示例�
      usbManager.releaseInterface(pipe, interface1);
      usbManager.closePipe(pipe);
    } catch (error) {
-     console.error(`failed: ${error}`);
-     this.logInfo_ += '\n[ERROR] failed: ' + JSON.stringify(error);
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`failed: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] failed: code=' + errorObj.code + ', message=' + errorObj.message;
    }
    
    this.pipe_ = undefined;
