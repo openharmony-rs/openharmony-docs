@@ -756,7 +756,7 @@ NODE_SCROLL_STATE = 1002030
 
 | 类型 | 说明 |
 | -- | -- |
-| .value[0].i32 | 当前滚动状态。参数类型为[ArkUI_ScrollState](capi-scroll-h.md#arkui_scrollstate)。 |
+| .value[0].i32 | 当前滚动状态。参数类型为[ArkUI_ScrollState](capi-native-type-h.md#arkui_scrollstate)。 |
 
 ## NODE_LIST_DIRECTION
 
