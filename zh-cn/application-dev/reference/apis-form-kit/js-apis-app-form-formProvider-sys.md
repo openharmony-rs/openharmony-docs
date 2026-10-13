@@ -58,7 +58,7 @@ requestPublishForm(want: Want, formBindingData: formBindingData.FormBindingData,
 | 16501000 | An internal functional error occurred. |
 | 16501002 | The number of forms exceeds the maximum allowed. <br/>**起始版本：** 26.0.1 |
 | 16501008 | Waiting for the form addition to the desktop timed out. <br/>**起始版本：** 26.0.1 |
-| 16501017 | There is no space to publish form. <br/>**起始版本：** 26.0.1 |
+| 16501017 | There is no space to publish the form. <br/>**起始版本：** 26.0.1 |
 | 16501018 | This form does not support publishing. <br/>**起始版本：** 26.0.1 |
 
 **示例：**
@@ -167,7 +167,7 @@ requestPublishForm(want: Want, callback: AsyncCallback&lt;string&gt;): void
 | 16501000 | An internal functional error occurred. |
 | 16501002 | The number of forms exceeds the maximum allowed. <br/>**起始版本：** 26.0.1 |
 | 16501008 | Waiting for the form addition to the desktop timed out. <br/>**起始版本：** 26.0.1 |
-| 16501017 | There is no space to publish form. <br/>**起始版本：** 26.0.1 |
+| 16501017 | There is no space to publish the form. <br/>**起始版本：** 26.0.1 |
 | 16501018 | This form does not support publishing. <br/>**起始版本：** 26.0.1 |
 
 **示例：**
@@ -272,7 +272,7 @@ requestPublishForm(want: Want, formBindingData?: formBindingData.FormBindingData
 | 16501000 | An internal functional error occurred. |
 | 16501002 | The number of forms exceeds the maximum allowed. <br/>**起始版本：** 26.0.1 |
 | 16501008 | Waiting for the form addition to the desktop timed out. <br/>**起始版本：** 26.0.1 |
-| 16501017 | There is no space to publish form. <br/>**起始版本：** 26.0.1 |
+| 16501017 | There is no space to publish the form. <br/>**起始版本：** 26.0.1 |
 | 16501018 | This form does not support publishing. <br/>**起始版本：** 26.0.1 |
 
 **示例：**
@@ -590,7 +590,7 @@ activateSceneAnimation(formId: string): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 202 | The application is not a system application. |
-| 801 | Capability not supported.function activateSceneAnimation can not work correctly due to limited device capabilities. |
+| 801 | Capability not supported.function activateSceneAnimation cannot work correctly due to limited device capabilities. |
 | 16500050 | IPC connection error. |
 | 16500060 | Service connection error. |
 | 16500100 | Failed to obtain the configuration information. |
@@ -676,7 +676,7 @@ deactivateSceneAnimation(formId: string): Promise&lt;void&gt;
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 202 | The application is not a system application. |
-| 801 | Capability not supported.function deactivateSceneAnimation can not work correctly due to limited device capabilities. |
+| 801 | Capability not supported.function deactivateSceneAnimation cannot work correctly due to limited device capabilities. |
 | 16500050 | IPC connection error. |
 | 16500060 | Service connection error. |
 | 16500100 | Failed to obtain the configuration information. |
@@ -1035,5 +1035,61 @@ try {
   console.info(`offPublishFormCrossBundleControl success`);
 } catch (error) {
   console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+ 
+## formProvider.openFormManagerCrossBundle<sup>18+</sup>
+ 
+openFormManagerCrossBundle(want: Want): void
+ 
+打开指定应用的卡片管理页面。适用于卡片管理场景，例如预览指定应用所有可以加桌的卡片、添加卡片到负一屏或桌面等。
+ 
+**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+ 
+**需要权限**：ohos.permission.PUBLISH_FORM_CROSS_BUNDLE_CONTROL
+ 
+**系统能力：** SystemCapability.Ability.Form
+ 
+**设备行为差异：** 该接口在Wearable中调用会返回[16501000](./errorcode-form.md#16501000-内部功能错误)错误码。
+ 
+**参数：**
+ 
+| 参数名  | 类型    | 必填 | 说明 |
+|------| ------ | ---- |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| want     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 打开卡片管理页面的请求中的want参数，需包含以下字段。<br>bundleName: 卡片所属应用的包名。<br>abilityName: 卡片所属的ability名称。<br>parameters:<br>- ohos.extra.param.key.form_dimension: [卡片尺寸](js-apis-app-form-formInfo.md#formdimension)。<br>- ohos.extra.param.key.form_name: 卡片名称。<br>- ohos.extra.param.key.module_name: 卡片所属的模块名称。 |
+> **说明：**
+>
+> 如果parameters参数没有填完整或者指定的卡片不存在，就会默认展示[form_config.json](../../form/arkts-ui-widget-configuration.md#卡片配置)中配置的默认卡片。
+ 
+**错误码：**
+ 
+以下错误码的详细介绍请参见[卡片错误码](errorcode-form.md)。
+ 
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permissions denied. |
+| 202 | The application is not a system application. |
+| 801 | Capability not supported. |
+| 16500050 | IPC connection error. |
+ 
+**示例：**
+ 
+```ts
+import { formProvider } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { Want } from '@kit.AbilityKit';
+ 
+const want: Want = {
+  bundleName: 'com.example.formbutton',
+  abilityName: 'EntryFormAbility',
+  parameters: {
+    'ohos.extra.param.key.form_name': 'widget',
+    'ohos.extra.param.key.module_name': 'entry'
+  },
+};
+try {
+  formProvider.openFormManagerCrossBundle(want);
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
