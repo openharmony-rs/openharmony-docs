@@ -23,7 +23,7 @@ import { sim } from '@kit.TelephonyKit';
 
 isSimActive\(slotId: number, callback: AsyncCallback\<boolean\>\): void
 
-获取指定卡槽SIM卡是否激活。使用callback异步回调。
+获取指定卡槽SIM卡是否激活,对于支持eSIM机型，获取指定slotID对应eSIM是否激活，slotID和eSIM号码对应关系需动态查询。使用callback异步回调。
 
 **系统能力**：SystemCapability.Telephony.CoreService
 
@@ -31,7 +31,7 @@ isSimActive\(slotId: number, callback: AsyncCallback\<boolean\>\): void
 
 | 参数名   | 类型                        | 必填 | 说明                                   |
 | -------- | --------------------------- | ---- | -------------------------------------- |
-| slotId   | number                      | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId   | number                      | 是   | 卡槽ID。支持eSIM的机型为逻辑卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 | callback | AsyncCallback&lt;boolean&gt; | 是   | 回调函数。返回指定卡槽是否激活。<br/>- true：激活。<br/>- false：未激活。                               |
 
 **示例：**
@@ -54,7 +54,7 @@ sim.isSimActive(0, (err: BusinessError, data: boolean) => {
 
 isSimActive\(slotId: number\): Promise\<boolean\>
 
-获取指定卡槽SIM卡是否激活。使用Promise异步回调。
+获取指定卡槽SIM卡是否激活,对于支持eSIM机型，获取指定slotID对应eSIM是否激活，slotID和eSIM号码对应关系需动态查询。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Telephony.CoreService
 
@@ -62,7 +62,7 @@ isSimActive\(slotId: number\): Promise\<boolean\>
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId | number | 是   | 卡槽ID。支持eSIM的机型为逻辑卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 
 **返回值：**
 
@@ -87,7 +87,7 @@ sim.isSimActive(0).then((data: boolean) => {
 
 isSimActiveSync\(slotId: number\): boolean
 
-获取指定卡槽SIM卡是否激活。
+获取指定卡槽SIM卡是否激活,对于支持eSIM机型，获取指定slotID对应eSIM是否激活，slotID和eSIM号码对应关系需动态查询。
 
 **系统能力**：SystemCapability.Telephony.CoreService
 
@@ -95,7 +95,7 @@ isSimActiveSync\(slotId: number\): boolean
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId | number | 是   | 卡槽ID。支持eSIM的机型为逻辑卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 
 **返回值：**
 
