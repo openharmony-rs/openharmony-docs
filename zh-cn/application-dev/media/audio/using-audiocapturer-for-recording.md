@@ -474,7 +474,8 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
          // ...
          console.error(`${TAG}: Capturer release failed, code: ${error.code}, message: ${error.message}`);
        } finally {
-         fs.closeSync(file.fd);
+         await pendingRecordingWrite;
+         fs.closeSync(recordingFile.fd);
        }
    ```
 
