@@ -1,8 +1,8 @@
 # native_avqueueitem.h
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @devil_red-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -34,7 +34,7 @@ Declares the definitions of audio and video queue items.
 
 | Name| Description|
 | -- | -- |
-| [AVQueueItem_Result OH_AVSession_AVMediaDescriptionBuilder_Create(OH_AVSession_AVMediaDescriptionBuilder** builder)](#oh_avsession_avmediadescriptionbuilder_create) | Creates an **OH_AVSession_AVMediaDescriptionBuilder** instance. When the instance is no longer used, call [OH_AVSession_AVMediaDescriptionBuilder_Destroy](capi-native-avqueueitem-h.md#oh_avsession_avmediadescriptionbuilder_destroy) to release the builder object.|
+| [AVQueueItem_Result OH_AVSession_AVMediaDescriptionBuilder_Create(OH_AVSession_AVMediaDescriptionBuilder** builder)](#oh_avsession_avmediadescriptionbuilder_create) | Creates an **OH_AVSession_AVMediaDescriptionBuilder** instance. When the instance is no longer used, call [OH_AVSession_AVMediaDescriptionBuilder_Destroy](#oh_avsession_avmediadescriptionbuilder_destroy) to release the builder object.|
 | [AVQueueItem_Result OH_AVSession_AVMediaDescriptionBuilder_Destroy(OH_AVSession_AVMediaDescriptionBuilder* builder)](#oh_avsession_avmediadescriptionbuilder_destroy) | Destroys a builder.|
 | [AVQueueItem_Result OH_AVSession_AVMediaDescriptionBuilder_SetAssetId(OH_AVSession_AVMediaDescriptionBuilder* builder, const char* assetId)](#oh_avsession_avmediadescriptionbuilder_setassetid) | Sets the current asset ID of the media resource.|
 | [AVQueueItem_Result OH_AVSession_AVMediaDescriptionBuilder_SetTitle(OH_AVSession_AVMediaDescriptionBuilder* builder, const char* title)](#oh_avsession_avmediadescriptionbuilder_settitle) | Sets the title of a media resource.|
@@ -62,7 +62,7 @@ Declares the definitions of audio and video queue items.
 | [AVQueueItem_Result OH_AVSession_AVMediaDescription_GetMediaSize(OH_AVSession_AVMediaDescription* description, int32_t* mediaSize)](#oh_avsession_avmediadescription_getmediasize) | Obtains the media size of a resource.|
 | [AVQueueItem_Result OH_AVSession_AVMediaDescription_GetAlbumTitle(OH_AVSession_AVMediaDescription* description, char** albumTitle)](#oh_avsession_avmediadescription_getalbumtitle) | Obtains the album title of a media resource.|
 | [AVQueueItem_Result OH_AVSession_AVMediaDescription_GetAppName(OH_AVSession_AVMediaDescription* description, char** appName)](#oh_avsession_avmediadescription_getappname) | Obtains the application name of a media resource.|
-| [AVQueueItem_Result OH_AVSession_AVMediaDescriptionBuilder_GenerateAVMediaDescription(OH_AVSession_AVMediaDescriptionBuilder* builder, OH_AVSession_AVMediaDescription** avMediaDescription)](#oh_avsession_avmediadescriptionbuilder_generateavmediadescription) | Creates an **avMediaDescription** object. When the object is no longer used, call [OH_AVSession_AVMediaDescription_Destroy](capi-native-avqueueitem-h.md#oh_avsession_avmediadescription_destroy) to release the **avMediaDescription** object.|
+| [AVQueueItem_Result OH_AVSession_AVMediaDescriptionBuilder_GenerateAVMediaDescription(OH_AVSession_AVMediaDescriptionBuilder* builder, OH_AVSession_AVMediaDescription** avMediaDescription)](#oh_avsession_avmediadescriptionbuilder_generateavmediadescription) | Creates an **avMediaDescription** object. When the object is no longer used, call [OH_AVSession_AVMediaDescription_Destroy](#oh_avsession_avmediadescription_destroy) to release the **avMediaDescription** object.|
 | [AVQueueItem_Result OH_AVSession_AVMediaDescription_Destroy(OH_AVSession_AVMediaDescription* avMediaDescription)](#oh_avsession_avmediadescription_destroy) | Releases an **avMediaDescription** object.|
 
 ## Function Description
@@ -75,7 +75,7 @@ AVQueueItem_Result OH_AVSession_AVMediaDescriptionBuilder_Create(OH_AVSession_AV
 
 **Description**
 
-Creates an **OH_AVSession_AVMediaDescriptionBuilder** instance. When the instance is no longer used, call [OH_AVSession_AVMediaDescriptionBuilder_Destroy](capi-native-avqueueitem-h.md#oh_avsession_avmediadescriptionbuilder_destroy) to release the builder object.
+Creates an **OH_AVSession_AVMediaDescriptionBuilder** instance. When the instance is no longer used, call [OH_AVSession_AVMediaDescriptionBuilder_Destroy](#oh_avsession_avmediadescriptionbuilder_destroy) to release the builder object.
 
 **Since:** 23
 
@@ -83,7 +83,7 @@ Creates an **OH_AVSession_AVMediaDescriptionBuilder** instance. When the instanc
 
 | Name| Description|
 | -- | -- |
-| [OH_AVSession_AVMediaDescriptionBuilder](capi-ohavsession-oh-avsession-avmediadescriptionbuilder.md)** builder | Double pointer to the builder object of the creation result.|
+| [OH_AVSession_AVMediaDescriptionBuilder](capi-ohavsession-oh-avsession-avmediadescriptionbuilder.md)** builder | Pointer to the builder object that receives the result.|
 
 **Return value**
 
@@ -282,7 +282,7 @@ Sets the lyrics content of a media resource.
 | Name| Description|
 | -- | -- |
 | [OH_AVSession_AVMediaDescriptionBuilder](capi-ohavsession-oh-avsession-avmediadescriptionbuilder.md)* builder | Pointer to the builder instance of the audio and video media description.|
-| const char* lyricContent | Pointer to the lyrics content of a media resource. The format is Lyric Reduced Codec (LRC).|
+| const char* lyricContent | Lyrics content of a media resource, which must comply with the Lyric Reduced Codec (LRC) specifications.|
 
 **Return value**
 
@@ -307,7 +307,7 @@ Sets the duration of a media resource.
 | Name| Description|
 | -- | -- |
 | [OH_AVSession_AVMediaDescriptionBuilder](capi-ohavsession-oh-avsession-avmediadescriptionbuilder.md)* builder | Pointer to the builder instance of the audio and video media description.|
-| const int32_t duration | Duration of a media resource. The unit is milliseconds.|
+| const int32_t duration | Duration of a media resource, in milliseconds.|
 
 **Return value**
 
@@ -357,7 +357,7 @@ Sets the start position of a media resource.
 | Name| Description|
 | -- | -- |
 | [OH_AVSession_AVMediaDescriptionBuilder](capi-ohavsession-oh-avsession-avmediadescriptionbuilder.md)* builder | Pointer to the builder instance of the audio and video media description.|
-| const int32_t startPosition | Start position of a media resource.|
+| const int32_t startPosition | Start position of a media resource, in milliseconds.|
 
 **Return value**
 
@@ -457,13 +457,13 @@ Obtains the current asset ID of a media resource.
 | Name| Description|
 | -- | -- |
 | [OH_AVSession_AVMediaDescription](capi-ohavsession-oh-avsession-avmediadescription.md)* description | Pointer to the audio and video media description instance.|
-| char** assetId | Double pointer to the current asset ID of the media resource.|
+| char** assetId | Pointer to the current asset ID of the media resource.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | **AVQUEUEITEM_SUCCESS**: The function is executed successfully.<br>         **AVQUEUEITEM_ERROR_INVALID_PARAM**:<br>                                        1. The **description** parameter is **nullptr**.<br>                                        2. **assetId** is **nullptr**.|
+| [AVQueueItem_Result](capi-native-avsession-errors-h.md#avqueueitem_result) | **AVQUEUEITEM_SUCCESS**: The function is executed successfully.<br>         **AVQUEUEITEM_ERROR_INVALID_PARAM**:<br>                                        1. The **description** parameter is **nullptr**.<br>                                        2. The **assetId** parameter is **nullptr**.|
 
 ### OH_AVSession_AVMediaDescription_GetTitle()
 
@@ -632,7 +632,7 @@ Obtains the duration of a media resource.
 | Name| Description|
 | -- | -- |
 | [OH_AVSession_AVMediaDescription](capi-ohavsession-oh-avsession-avmediadescription.md)* description | Pointer to the audio and video media description instance.|
-| int32_t* duration | Pointer to the total duration of the current media resource.|
+| int32_t* duration | Pointer to the total duration of the current media resource, in milliseconds.|
 
 **Return value**
 
@@ -682,7 +682,7 @@ Obtains the start position of a media resource.
 | Name| Description|
 | -- | -- |
 | [OH_AVSession_AVMediaDescription](capi-ohavsession-oh-avsession-avmediadescription.md)* description | Pointer to the audio and video media description instance.|
-| int32_t* startPosition | Pointer to the start position of the media resource.|
+| int32_t* startPosition | Pointer to the start position of the media resource, in milliseconds.|
 
 **Return value**
 
@@ -773,7 +773,7 @@ AVQueueItem_Result OH_AVSession_AVMediaDescriptionBuilder_GenerateAVMediaDescrip
 
 **Description**
 
-Creates an **avMediaDescription** object. When the object is no longer used, call [OH_AVSession_AVMediaDescription_Destroy](capi-native-avqueueitem-h.md#oh_avsession_avmediadescription_destroy) to release the **avMediaDescription** object.
+Creates an **avMediaDescription** object. When the object is no longer used, call [OH_AVSession_AVMediaDescription_Destroy](#oh_avsession_avmediadescription_destroy) to release the **avMediaDescription** object.
 
 **Since:** 23
 
@@ -806,7 +806,7 @@ Releases an **avMediaDescription** object.
 
 | Name| Description|
 | -- | -- |
-| [OH_AVSession_AVMediaDescription](capi-ohavsession-oh-avsession-avmediadescription.md)* avMediaDescription | Pointer to the **avMediaDescription** object.|
+| [OH_AVSession_AVMediaDescription](capi-ohavsession-oh-avsession-avmediadescription.md)* avMediaDescription | Pointer to the **avMediaDescription** object to be released.|
 
 **Return value**
 

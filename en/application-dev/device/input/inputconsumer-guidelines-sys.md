@@ -6,13 +6,13 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=deff468b8adbfa4199da5cbe7b6cbc33f2bddb1e translatedAt=2026-06-24T07:40:34.661Z pushedAt=2026-06-25T06:57:28.875Z -->
+<!-- md-trans-meta sourceCommit=7827db86a6f5dce7b4e9c00c6625ac8083a28ba7 translatedAt=2026-09-28T02:23:15.956Z pushedAt=2026-09-28T11:45:01.251Z -->
 
 ## When to Use
 
 The **inputConsumer** module implements global hotkey management, such as subscribing to global hotkeys and setting the key shielding status. By subscribing to global hotkeys, you can use the corresponding key combinations to activate shortcut functions.
 
-Specifically, global hotkeys are combination keys defined by either the system or applications; system hotkeys are those defined by the system, while application hotkeys are those defined by applications.
+Specifically, global hotkeys are key combinations defined by either the system or applications; system hotkeys are those defined by the system, while application hotkeys are those defined by applications.
 
 ## Modules to Import
 
@@ -22,14 +22,14 @@ import { inputConsumer } from '@kit.InputKit';
 
 ## Available APIs
 
-The following table lists common APIs for global shortcut key management. For details, see [@ohos.multimodalInput.inputConsumer (Global Shortcut Keys) (System API)](../../reference/apis-input-kit/js-apis-inputconsumer-sys.md) and [@ohos.multimodalInput.inputConsumer (Global Shortcut Keys)](../../reference/apis-input-kit/js-apis-inputconsumer.md).
+The following table lists common APIs for global hotkey management. For details, see [@ohos.multimodalInput.inputConsumer (Global Shortcut Keys) (System API)](../../reference/apis-input-kit/js-apis-inputconsumer-sys.md) and [@ohos.multimodalInput.inputConsumer (Global Shortcut Keys)](../../reference/apis-input-kit/js-apis-inputconsumer.md).
 
 | API | Description|
 | ------------------------------------------------------------ | -------------------------- |
 | on(type: 'key', keyOptions: KeyOptions, callback: Callback\<KeyOptions>): void | Subscribes to system hotkey change events.|
 | off(type: 'key', keyOptions: KeyOptions, callback?: Callback\<KeyOptions>): void | Unsubscribes from system hotkey change events.|
-| setShieldStatus(shieldMode: ShieldMode, isShield: boolean): void | Sets the key shielding status.|
-| getShieldStatus(shieldMode: ShieldMode): boolean | Checks whether key shielding is enabled.|
+| setShieldStatus(shieldMode: ShieldMode, isShield: boolean): void | Sets the system hotkey shield type. |
+| getShieldStatus(shieldMode: ShieldMode): boolean | Obtains the system hotkey shield type. |
 | getAllSystemHotkeys(): Promise\<Array\<HotkeyOptions>> | Obtains all system hotkeys.|
 | on(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback: Callback\<HotkeyOptions>): void | Subscribes to application hotkey change events.|
 | off(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback?: Callback\<HotkeyOptions>): void | Unsubscribes from application hotkey change events.|

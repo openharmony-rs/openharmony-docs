@@ -2,7 +2,7 @@
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @gcw_gyH0B0hP-->
-<!--Designer: @ccfriend-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chen-gong1-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -79,7 +79,7 @@ Defines the media entity query event. This API uses a promise to return the resu
 
 | Name| Type                                                                                      | Mandatory| Description                |
 | ------ |------------------------------------------------------------------------------------------| ---- | -------------------- |
-| params | [QueryMediaEntityParam](arkts-apis-avMusicTemplate-i.md#querymediaentityparam) | Yes  | Parameters for querying a media instance.|
+| params | [QueryMediaEntityParam](arkts-apis-avMusicTemplate-i.md#querymediaentityparam) | Yes  | Parameters for querying the media entity.|
 
 **Return value**
 
@@ -125,7 +125,7 @@ Defines the playlist query event. This API uses a promise to return the result.
 | Name   | Type                                                    | Mandatory| Description          |
 | --------- | ------------------------------------------------------ | ---- | -------------- |
 | pageIndex | number                                                    | Yes  | Page index.  |
-| sort      | [Sort](arkts-apis-avMusicTemplate-e.md#sort) | Yes  | Enumeration value of sorting.|
+| sort      | [Sort](arkts-apis-avMusicTemplate-e.md#sort) | Yes  | Sorting type.|
 
 **Return value**
 
@@ -209,7 +209,7 @@ Defines the event of querying the recommended media entity list. This API uses a
 
 | Type                                                        | Description                                   |
 | ------------------------------------------------------------ | --------------------------------------- |
-| Promise<[MediaEntity](arkts-apis-avMusicTemplate-i.md#mediaentity)[]> | Promise used to return the array of recommended media instances.|
+| Promise<[MediaEntity](arkts-apis-avMusicTemplate-i.md#mediaentity)[]> | Promise used to return the array of recommended media entities.|
 
 ## QueryHotWordsEvent
 
@@ -263,7 +263,7 @@ Defines the event of clearing search history. This API uses a promise to return 
 
 type LoginEvent = (controlType: LoginType, id?: string) => Promise&lt;QrCodeInfo[]&gt;
 
-Defines the login event. This API uses a promise to return the result.
+Defines the login event. This API controls the login process, including querying and refreshing login information, canceling operations, and logging out. This API uses a promise to return the result.
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -313,7 +313,7 @@ Defines the dialog box information request event. This API uses a promise to ret
 
 | Name    | Type                                                        | Mandatory| Description                  |
 | ---------- | ------------------------------------------------------------ | ---- | ---------------------- |
-| actionType | [DialogActionType](#dialogactiontype)                        | Yes  | Dialog box type.          |
+| actionType | [DialogActionType](#dialogactiontype)                        | Yes  | Dialog box action type.          |
 | actionInfo | [DialogActionInfo](arkts-apis-avMusicTemplate-i.md#dialogactioninfo) | No  | Information about the dialog box action result.|
 
 **Return value**
@@ -326,7 +326,7 @@ Defines the dialog box information request event. This API uses a promise to ret
 
 type DialogActionType = 'open' | 'close' | 'refresh'
 
-Defines the dialog box action type. You can use the strings listed in the following table.
+Defines the dialog box action type. The value of this type can be any of the following strings.
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -342,7 +342,7 @@ Defines the dialog box action type. You can use the strings listed in the follow
 
 type HandleMemberPurchaseEvent = (info: MemberPurchaseInfo) => Promise&lt;DialogInfo&gt;
 
-Defines the membership purchase handling event. This API uses a promise to return the result.
+Defines the membership purchase handling event. The system calls this event when a user triggers a purchase operation. This API uses a promise to return the result.
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -364,7 +364,7 @@ Defines the membership purchase handling event. This API uses a promise to retur
 
 type QueryMemberPurchaseEvent = (memberPurchaseType: MemberPurchaseType) => Promise&lt;MemberPurchaseInfo[]&gt;
 
-Defines the membership purchase query event. This API uses a promise to return the result.
+Defines the membership purchase query event. This API queries available membership purchase information based on the membership purchase type. The system calls this event when a user accesses the membership purchase page. This API uses a promise to return the result.
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -386,7 +386,7 @@ Defines the membership purchase query event. This API uses a promise to return t
 
 type QueryCustomContentEvent = (queryType: CustomType[]) => Promise&lt;CustomElement&gt;
 
-Defines the content query event. This API uses a promise to return the result.
+Defines the content query event. Queries custom content such as basic user information, tab configuration, collection information, and settings. This API uses a promise to return the result.
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -396,7 +396,7 @@ Defines the content query event. This API uses a promise to return the result.
 
 | Name   | Type                         | Mandatory| Description                                       |
 | --------- | --------------------------- | ---- | ------------------------------------------- |
-| queryType | [CustomType](#customtype)[] | Yes  | Custom type, which contains the user information, tab configuration, code build options, and system settings.|
+| queryType | [CustomType](#customtype)[] | Yes  | Custom type, which contains the user information, tab configuration, collection information, and settings.|
 
 **Return value**
 
@@ -408,7 +408,7 @@ Defines the content query event. This API uses a promise to return the result.
 
 type CustomType = 'USER_INFO' | 'TAB' | 'COMPILATION' | 'SETTINGS'
 
-Defines the custom type. You can use the strings listed in the following table.
+Defines the custom type. The value of this type can be any of the following strings.
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -425,7 +425,7 @@ Defines the custom type. You can use the strings listed in the following table.
 
 type DownloadMediaEntityEvent = (controlType: DownloadControlType, mediaEntity: MediaEntity) => Promise&lt;OperResult&gt;
 
-Defines the media entity download event. This API uses a promise to return the result.
+Defines the media entity download event. This API controls the download process of a media entity, including starting, pausing, resuming, and deleting a download task. This API uses a promise to return the result.
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -435,8 +435,8 @@ Defines the media entity download event. This API uses a promise to return the r
 
 | Name     | Type                                                        | Mandatory| Description                                      |
 | ----------- | ---------------------------------------------------------- | ---- | ------------------------------------------ |
-| controlType | [DownloadControlType](#downloadcontroltype)                | Yes  | Control type, which can be user information, tab, compilation, or settings.|
-| mediaEntity | [MediaEntity](arkts-apis-avMusicTemplate-i.md#mediaentity) | Yes  | Media instance.                                |
+| controlType | [DownloadControlType](#downloadcontroltype)                | Yes  | The options include starting, resuming, pausing, and deleting a download task.|
+| mediaEntity | [MediaEntity](arkts-apis-avMusicTemplate-i.md#mediaentity) | Yes  | Media entity.                                |
 
 **Return value**
 
@@ -448,7 +448,7 @@ Defines the media entity download event. This API uses a promise to return the r
 
 type DownloadControlType = 'startDownload' | 'deleteDownload' | 'resumeDownload' | 'pauseDownload'
 
-Defines the download control types, including starting, resuming, pausing, and deleting a download. You can use the strings listed in the following table.
+Defines the download control type. The value of this type can be any of the following strings.
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -509,7 +509,7 @@ Defines the problem and advice event. This API uses a promise to return the resu
 
 type PlayForSearchEvent = (command: SearchPlayInfoType, args: SearchPlayInfo) => Promise&lt;OperResult&gt;
 
-Defines the search and playback event. This API uses a promise to return the result.
+Defines the media search and playback event. This API uses a promise to return the result.
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -549,7 +549,7 @@ Defines the action execution event. This API uses a promise to return the result
 
 | Type                 | Description                                 |
 | --------------------- | ------------------------------------- |
-| Promise&lt;string&gt; | Promise used to return the result of action execution.|
+| Promise&lt;string&gt; | Promise used to return the result of action execution in the form of a string.|
 
 ## PlayMediaEntityEvent
 
@@ -588,7 +588,7 @@ Defines the event of adding a media entity to favorites. This API uses a promise
 | Name     | Type                                                       | Mandatory| Description      |
 | ----------- | ---------------------------------------------------------- | ---- | ---------- |
 | actionType  | [MediaFavoriteType](#mediafavoritetype)                   | Yes  | Action type.|
-| mediaEntity | [MediaEntity](arkts-apis-avMusicTemplate-i.md#mediaentity) | Yes  | Media instance.|
+| mediaEntity | [MediaEntity](arkts-apis-avMusicTemplate-i.md#mediaentity) | Yes  | Media entity.|
 
 **Return value**
 
@@ -600,7 +600,7 @@ Defines the event of adding a media entity to favorites. This API uses a promise
 
 type MediaFavoriteType = 'addFavorite' | 'removeFavorite'
 
-Defines the media favorites type. You can use the strings listed in the following table.
+Defines the media favorites type. The value of this type can be any of the following strings.
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -615,7 +615,7 @@ Defines the media favorites type. You can use the strings listed in the followin
 
 type DialogControlType = 'open' | 'close' | 'refresh' | 'toast'
 
-Defines the dialog box control type. You can use the strings listed in the following table.
+Defines the dialog box control type. The value of this type can be any of the following strings.
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -632,7 +632,7 @@ Defines the dialog box control type. You can use the strings listed in the follo
 
 type ActionType = 'add' | 'remove'
 
-Defines the action type. You can use the strings listed in the following table.
+Defines the action type. The value of this type can be any of the following strings.
 
 **Model restriction:** This API can be used only in the stage model.
 

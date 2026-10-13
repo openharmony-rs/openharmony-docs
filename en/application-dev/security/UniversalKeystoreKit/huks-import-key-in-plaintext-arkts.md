@@ -6,6 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=ffc5e2859dca1ab6a17f6a8a1c145390f67cf1d5 translatedAt=2026-10-10T03:28:25.530Z pushedAt=2026-10-10T03:30:42.216Z -->
 
 This topic describes how to import a key, using AES256, RSA2048, and X25519 keys as examples. For details about the scenarios and supported algorithm specifications, see [Supported Algorithms](huks-key-import-overview.md#supported-algorithms).
 
@@ -17,7 +18,7 @@ This topic describes how to import a key, using AES256, RSA2048, and X25519 keys
    - The key property set must contain [HuksKeyAlg](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukskeyalg), [HuksKeySize](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukskeysize), and [HuksKeyPurpose](../../reference/apis-universal-keystore-kit/js-apis-huks.md#hukskeypurpose).
    - The key material must comply with the [HUKS key material format](huks-concepts.md#key-material-format) and is used to fill the **inData** field of [HuksOptions](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksoptions) in Uint8Array format.
 
-3. Use [huks.importKeyItem](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksimportkeyitem9) to import the key. 
+3. Use [huks.importKeyItem](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksimportkeyitem9) to import the key.  
 
     For details about **HuksParam** and **HuksOptions**, see [HuksParam](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksparam) and [HuksOptions](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksoptions).
 
@@ -287,7 +288,7 @@ async function isKeyItemExist(keyAlias: string, options: huks.HuksOptions): Prom
         console.info(`promise: isKeyItemExist success, data = ${data}`);
         ret = true;
       }).catch((error: BusinessError) => {
-        console.error(`promise: isKeyItemExist success, errCode : ${error.code}, errMsg : ${error.message}`);
+        console.error(`promise: isKeyItemExist failed, errCode : ${error.code}, errMsg : ${error.message}`);
       })
   } catch (error) {
     console.error(`promise: isKeyItemExist input arg invalid`);

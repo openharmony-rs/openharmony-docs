@@ -6,14 +6,20 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=777c15c9d8c75a1677c1c6408af774652fa3dc6e translatedAt=2026-10-09T02:00:13.131Z pushedAt=2026-10-10T02:43:00.875Z -->
 
-For details about the algorithm specifications, see [SM2](crypto-asym-encrypt-decrypt-spec.md#sm2).
+For the corresponding algorithm specifications, see [Asymmetric Encryption and Decryption Algorithm Specifications: SM2](crypto-encryption-decryption.md#sm2).
+
+## Adding the Dynamic Library in the CMake Script
+```txt
+target_link_libraries(entry PUBLIC libohcrypto.so)
+```
 
 **Encryption**
 
 1. Call [OH_CryptoAsymKeyGenerator_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoasymkeygenerator_create) and [OH_CryptoAsymKeyGenerator_Generate](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoasymkeygenerator_generate) to generate an asymmetric key pair (**keyPair**) of the SM2_256 type. The **keyPair** object includes a public key (**PubKey**) and a private key (**PriKey**).
 
-   For details about how to generate an SM2 asymmetric key pair, see the following example. To learn more, see [SM2](crypto-asym-key-generation-conversion-spec.md#sm2) and [Randomly Generating an Asymmetric Key Pair](crypto-generate-asym-key-pair-randomly-ndk.md). There may be differences between the input parameters in the reference documents and those in the following example.
+   For details about how to generate an SM2 asymmetric key pair, refer to the following example and also see [Asymmetric Key Generation and Conversion Specifications: SM2](crypto-key-generation-conversion.md#sm2) and [Randomly Generating an Asymmetric Key Pair](crypto-generate-asym-key-pair-randomly-ndk.md). Note that the reference documents may differ from the current example in input parameters. Pay attention to these differences when reading.
 
 2. Call [OH_CryptoAsymCipher_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-cipher-h.md#oh_cryptoasymcipher_create) with the string parameter **'SM2_256|SM3'** to create a **Cipher** instance for encryption and decryption. The key type is **SM2_256**, and the digest algorithm is **SM3**.
 

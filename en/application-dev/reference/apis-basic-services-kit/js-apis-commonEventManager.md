@@ -2,11 +2,39 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=8b332ba8e6e72c2d885a38003986f27dfb7e99d3 translatedAt=2026-10-09T12:15:26.275Z pushedAt=2026-10-10T06:01:52.525Z -->
 
-The **CommonEventManager** module provides common event capabilities to publish, subscribe to, and unsubscribe from common events.
+This module provides APIs to publish, subscribe to, and unsubscribe from common events. This module provides a system-level event notification mechanism that allows an app to send notifications to other apps that have subscribed to the event when the system status changes (such as power-on completion, battery level change, and screen on/off) or a custom service event occurs. This mechanism enables transferring information across components and apps.
+
+The key concepts involved in this module are as follows:
+- [Unordered common events](../../basic-services/common-event/common-event-glossary.md#unordered-common-event): common events that CES forwards regardless of whether subscribers receive the events and when they subscribe to the events.
+- [Ordered common events](../../basic-services/common-event/common-event-glossary.md#ordered-common-event): common events that CES forwards based on the subscriber priority. CES preferentially forwards an ordered common event to the subscriber with higher priority, waits until the subscriber receives the event, and then forwards the events to the subscriber with lower priority. Subscribers with the same priority receive common events in a random order.
+- [Sticky common events](../../basic-services/common-event/common-event-glossary.md#sticky-common-event): common events that can be sent to a subscriber before or after they initiate a subscription.
+
+**APIs used in combination**
+
+The event communication of this module involves three processes: subscription, publishing, and ordered event. The subscription process and publishing process are associated through the event name. The publisher and subscriber do not need to be aware of each other.
+
+**Subscription process: Create a subscriber, subscribe to an event, receive the event, and cancel the subscription.**
+
+1. Configure the subscriber information, declare the name of the event to be subscribed to, and set the subscription priority, publisher permission, and package name as required.
+2. Create a subscriber object using **commonEventManager.createSubscriberSync**.
+3. Subscribe to an event using **commonEventManager.subscribe**. When an event is published, use a callback to receive **CommonEventData**, and process the event data in the callback.
+4. Unsubscribe from the event using **commonEventManager.unsubscribe** when it is no longer needed.
+
+**Publishing process: Publish an event (carrying data and attributes as required).**
+
+1. Simple publishing: Publish an event by specifying only the event name using **commonEventManager.publish**.
+2. Publishing with data and attributes: Configure attributes such as code, data, parameters, and **isOrdered** using **CommonEventPublishData**, and then call **publish** to publish the event.
+
+**Ordered event process: Deliver the event by priority by collaborating with the subscriber.**
+
+1. Set **isOrdered** to **true** using **CommonEventPublishData** and call **publish** to publish ordered events. Events are delivered in sequence based on the subscriber priority.
+2. The subscriber with a higher priority receives the event first, who can modify the code and data in the callback using methods such as **setCodeAndData** for subsequent subscribers to receive.
+3. After the processing is complete, call **finishCommonEvent** to deliver the event to the subscriber with the next highest priority. To stop delivering the event, call **abortCommonEvent** to mark the event as aborted.
 
 > **NOTE**
 >
@@ -20,7 +48,7 @@ import { commonEventManager } from '@kit.BasicServicesKit';
 
 ## Support
 
-System common events refer to events released by system services or system applications. Subscribing to these common events requires specific permissions and values. For details, see [System Common Events](./common_event/commonEventManager-definitions.md).
+[System common events](../../basic-services/common-event/common-event-glossary.md#system-common-event) refer to events released by system services or system apps. Subscribing to these common events requires specific permissions and event values. For details, see [System Common Events](./common_event/commonEventManager-definitions.md).
 
 ## commonEventManager.publish
 
@@ -36,12 +64,12 @@ Publishes a common event. This API uses an asynchronous callback to return the r
 
 | Name    | Type                | Mandatory| Description                  |
 | -------- | -------------------- | ---- | ---------------------- |
-| event    | string               | Yes  | Name of the common event to publish. For details, see [System Common Events](./common_event/commonEventManager-definitions.md).|
-| callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
+| event    | string               | Yes   | Common event to publish. For details, see [System Common Events](./common_event/commonEventManager-definitions.md). The value can contain a maximum of 254 bytes. Excess content will be truncated. |
+| callback | AsyncCallback\<void> | Yes   | Callback used to return the result. If the common event is successfully published, **err** is **undefined**; if the event fails to be published, **err** is an error object. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event Error Codes](./errorcode-CommonEventService.md).
+For details about the error codes, see [Common Event IDs](./errorcode-CommonEventService.md).
 
 | Error Code| Error Message                           |
 | -------- | ----------------------------------- | 
@@ -84,13 +112,13 @@ Publishes a common event. This API uses an asynchronous callback to return the r
 
 | Name    | Type                  | Mandatory| Description                  |
 | -------- | ---------------------- | ---- | ---------------------- |
-| event    | string                 | Yes  | Name of the common event to publish. For details, see [System Common Events](./common_event/commonEventManager-definitions.md). |
+| event    | string                 | Yes   | Common event to publish. For details, see [System Common Events](./common_event/commonEventManager-definitions.md). The value can contain a maximum of 254 bytes. Excess content will be truncated. |
 | options  | [CommonEventPublishData](./js-apis-inner-commonEvent-commonEventPublishData.md) | Yes  | Properties of the common event to publish.|
-| callback | AsyncCallback\<void>   | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object. |
+| callback | AsyncCallback\<void>   | Yes   | Callback used to return the result. If the common event is successfully published, **err** is **undefined**; if the event fails to be published, **err** is an error object.  |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event Error Codes](./errorcode-CommonEventService.md).
+For details about the error codes, see [Common Event IDs](./errorcode-CommonEventService.md).
 
 | Error Code| Error Message                           |
 | -------- | ----------------------------------- |
@@ -109,7 +137,7 @@ let options: commonEventManager.CommonEventPublishData = {
   code: 0,
   data: 'initial data',
   isOrdered: true // The common event is an ordered one.
-}
+};
 
 // Publish a common event.
 try {
@@ -141,7 +169,7 @@ Creates a subscriber. This API uses an asynchronous callback to return the resul
 | Name         | Type                                                        | Mandatory| Description                      |
 | ------------- | ------------------------------------------------------------ | ---- | -------------------------- |
 | subscribeInfo | [CommonEventSubscribeInfo](./js-apis-inner-commonEvent-commonEventSubscribeInfo.md)        | Yes  | Subscriber information.            |
-| callback      | AsyncCallback\<[CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md#commoneventsubscriber-1)> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback      | AsyncCallback\<[CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md#commoneventsubscriber-1)> | Yes   | Callback used to receive the created subscriber object. When a common event subscriber is successfully created, **err** is **undefined** and **data** is the **CommonEventSubscriber** object created. If the subscriber fails to be created, **err** is an error object. |
 
 **Error codes**
 
@@ -156,7 +184,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// Define a subscriber to save the created subscriber object for subsequent subscription and unsubscription.
+// Define the subscriber to save the successfully created subscriber object, which is later used to subscribe and unsubscribe.
 let subscriber: commonEventManager.CommonEventSubscriber | null = null;
 // Subscriber information.
 let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
@@ -167,7 +195,7 @@ let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
 try {
   commonEventManager.createSubscriber(subscribeInfo,
     (err: BusinessError, commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
-      if(!err) {
+      if (!err) {
         console.info(`Succeeded in creating subscriber.`);
         subscriber = commonEventSubscriber;
         return;
@@ -214,7 +242,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// Define a subscriber to save the created subscriber object for subsequent subscription and unsubscription.
+// Define a subscriber to save the successfully created subscriber object, which is later used to subscribe and unsubscribe.
 let subscriber: commonEventManager.CommonEventSubscriber | null = null;
 // Subscriber information.
 let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
@@ -233,7 +261,7 @@ commonEventManager.createSubscriber(subscribeInfo).then((commonEventSubscriber: 
 
 createSubscriberSync(subscribeInfo: CommonEventSubscribeInfo): CommonEventSubscriber
 
-Creates a subscriber. The API returns the result synchronously.
+Creates a subscriber synchronously.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -263,7 +291,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// Define a subscriber to save the created subscriber object for subsequent subscription and unsubscription.
+// Define a subscriber to store the successfully created subscriber object, which is later used to subscribe and unsubscribe.
 let subscriber: commonEventManager.CommonEventSubscriber | null = null;
 // Subscriber information.
 let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
@@ -293,25 +321,25 @@ Subscribes to a common event. This API uses an asynchronous callback to return t
 | Name      | Type                                               | Mandatory| Description                            |
 | ---------- | ---------------------------------------------------- | ---- | -------------------------------- |
 | subscriber | [CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md#commoneventsubscriber-1)     | Yes  | Subscriber object.                |
-| callback   | AsyncCallback\<[CommonEventData](./js-apis-inner-commonEvent-commonEventData.md)> | Yes  | Callback used to return the result. if the operation is successful; otherwise, **err** is an error object.|
+| callback   | AsyncCallback\<[CommonEventData](./js-apis-inner-commonEvent-commonEventData.md)> | Yes   | Callback used to return the result. When a common event is successfully subscribed to, the common event data is returned by **data** when the event is triggered. If the subscription fails, **err** is an error object. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event Error Codes](./errorcode-CommonEventService.md).
+For details about the error codes, see [Universal IDs](../errorcode-universal.md) and [Common Event IDs](./errorcode-CommonEventService.md).
 
-| Error Code| Error Message                           |
+| ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 801  | capability not supported.               |
+| 801  | Capability not supported.               |
 | 1500007  | Failed to send the message to the common event service. |
 | 1500008  | Failed to initialize the common event service. |
-| 1500010  | The count of subscriber exceed system specification. <br> Applicable version: 20|
+| 1500010  | The count of subscriber exceeds system specification. <br> Applicable versions: 20+|
 
 **Example**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// Define a subscriber to save the created subscriber object for subsequent subscription and unsubscription.
+// Define a subscriber to save the successfully created subscriber object, which is used later to subscribe and unsubscribe.
 let subscriber: commonEventManager.CommonEventSubscriber | null = null;
 // Subscriber information.
 let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
@@ -322,7 +350,7 @@ let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
 try {
   commonEventManager.createSubscriber(subscribeInfo,
     (err: BusinessError, commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
-      if(!err) {
+      if (!err) {
         console.info(`Succeeded in creating subscriber.`);
         subscriber = commonEventSubscriber;
         // Subscribe to a common event.
@@ -363,16 +391,16 @@ Unsubscribes from a common event. This API uses an asynchronous callback to retu
 | Name      | Type                                            | Mandatory| Description                    |
 | ---------- | ----------------------------------------------- | ---- | ------------------------ |
 | subscriber | [CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md#commoneventsubscriber-1) | Yes  | Subscriber object.        |
-| callback   | AsyncCallback\<void>                            | No  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
+| callback   | AsyncCallback\<void>                            | No   | Callback used to return the result. If the common event is successfully unsubscribed from, **err** is **undefined**; if the unsubscription fails, **err** is an error object. If this parameter is not passed, the subscription is canceled by default and no result is returned. |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event Error Codes](./errorcode-CommonEventService.md).
+For details about the error codes, see [Universal IDs](../errorcode-universal.md) and [Common Event IDs](./errorcode-CommonEventService.md).
 
-| Error Code| Error Message                           |
+| ID| Error Message                           |
 | -------- | ----------------------------------- |
-| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.      | 
-| 801  | capability not supported.               |
+| 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.      |
+| 801  | Capability not supported.               |
 | 1500007  | Failed to send the message to the common event service. |
 | 1500008  | Failed to initialize the common event service. |
 
@@ -381,7 +409,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// Define a subscriber to save the created subscriber object for subsequent subscription and unsubscription.
+// Define a subscriber to save the successfully created subscriber object, which is subsequently used to complete subscription and unsubscription.
 let subscriber: commonEventManager.CommonEventSubscriber | null = null;
 // Subscriber information.
 let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
@@ -392,7 +420,7 @@ let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
 try {
   commonEventManager.createSubscriber(subscribeInfo,
     (err: BusinessError, commonEventSubscriber: commonEventManager.CommonEventSubscriber) => {
-      if(!err) {
+      if (!err) {
         console.info(`Succeeded in creating subscriber.`);
         subscriber = commonEventSubscriber;
         // Subscribe to a common event.
@@ -426,7 +454,7 @@ setTimeout(() => {
         console.error(`Failed to unsubscribe. Code is ${err.code}, message is ${err.message}`);
         return;
       }
-      // If the subscriber is no longer used, set it to null to avoid memory leakage.
+      // Set subscriber to null when it is no longer used to avoid memory leaks.
       subscriber = null;
       console.info(`Succeeded in unsubscribing.`);
     });
@@ -452,7 +480,7 @@ Subscribes to a common event. This API uses a promise to return the result.
 | Name      | Type                                               | Mandatory| Description                            |
 | ---------- | ---------------------------------------------------- | ---- | -------------------------------- |
 | subscriber | [CommonEventSubscriber](./js-apis-inner-commonEvent-commonEventSubscriber.md#commoneventsubscriber-1)     | Yes  | Subscriber object.                |
-| callback   | Callback\<[CommonEventData](./js-apis-inner-commonEvent-commonEventData.md)> | Yes  | Callback to be invoked when a common event is subscribed to.|
+| callback   | Callback\<[CommonEventData](./js-apis-inner-commonEvent-commonEventData.md)> | Yes   | Callback used to return the common event data. |
 
 **Return value**
 | Type                                                     | Description            |
@@ -461,25 +489,25 @@ Subscribes to a common event. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Event Error Codes](./errorcode-CommonEventService.md).
+For details about the error codes, see [Universal IDs](../errorcode-universal.md) and [Common Event IDs](./errorcode-CommonEventService.md).
 
-| Error Code| Error Message                           |
+| ID| Error Message                           |
 | -------- | ----------------------------------- |
 | 801  | Capability not supported.               |
 | 1500007  | Failed to send the message to the common event service. |
 | 1500008  | Failed to initialize the common event service. |
-| 1500010  | The count of subscriber exceed system specification. |
+| 1500010  | The count of subscriber exceeds system specification. |
 
 **Example**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// Define a subscriber to save the created subscriber object for subsequent subscription and unsubscription.
+// Define a subscriber to save the successfully created subscriber object, which is later used to complete subscription and unsubscription actions.
 let subscriber: commonEventManager.CommonEventSubscriber | null = null;
 // Subscriber information.
 let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
-  events: ["event"]
+  events: ['event']
 };
 
 // Create a subscriber.
@@ -494,9 +522,9 @@ try {
         // Subscribe to a common event.
         try {
           commonEventManager.subscribeToEvent(subscriber, (data: commonEventManager.CommonEventData) => {
-            console.info(`Succeeded to receive common event, data is ` + JSON.stringify(data));
+            console.info(`Succeeded to receive common event, data is ${JSON.stringify(data)}`);
           }).then(() => {
-            console.info(`Succeeded to subscribe.`);
+            console.info(`Succeeded in subscribing.`);
           }).catch((err: BusinessError) => {
             console.error(`Failed to subscribe. Code is ${err.code}, message is ${err.message}`);
           });
@@ -544,7 +572,7 @@ Describes the subscriber of a common event.
 
 type CommonEventSubscribeInfo = _CommonEventSubscribeInfo
 
-Describes the information about a subscriber.
+Describes information about a common event subscriber.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -567,3 +595,4 @@ Describes the content and properties of a common event.
 | Type| Description|
 | --- | --- |
 | [_CommonEventPublishData](js-apis-inner-commonEvent-commonEventPublishData.md) | Content and properties of a common event.|
+

@@ -6,6 +6,7 @@
 <!--Designer: @wkr321_ent-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=fc40c8a1c3aad9cf93b514f99c4b41f2d7bdfca0 translatedAt=2026-10-09T01:19:04.109Z pushedAt=2026-10-09T11:22:45.744Z -->
 
 ## Adding Assets That Support Sync
 
@@ -13,7 +14,7 @@ Add an asset with the password **demo_pwd**, alias **demo_alias**, and additiona
 
 1. Include the header file and define the tool function.
    <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/add_sync.ets) -->
-   
+
    ``` TypeScript
    import { asset } from '@kit.AssetStoreKit';
    import { util } from '@kit.ArkTS';
@@ -27,7 +28,7 @@ Add an asset with the password **demo_pwd**, alias **demo_alias**, and additiona
 
 2. Develop the desired feature.
    <!-- @[add_sync_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/add_sync.ets) -->
-   
+
    ``` TypeScript
    let attr: asset.AssetMap = new Map();
    attr.set(asset.Tag.SECRET, stringToArray('demo_pwd'));
@@ -62,16 +63,16 @@ You can call [asset.querySyncResult](../../reference/apis-asset-store-kit/js-api
 
 The following table describes the attributes of **AssetMap** for querying the sync result of assets.
 
-| Attribute Name (Tag)       | Attribute Content (Asset_Value)                                            | Mandatory/Optional  | Description                                                        |
+| Attribute Name (Tag)        | Attribute Content (Value)                                             | Required  | Remarks                                                         |
 | --------------------- | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ |
-| REQUIRE_ATTR_ENCRYPTED<sup>14+</sup> | Type: Boolean| Yes| Whether to query the sync result of the asset whose custom additional information is encrypted. The value **true** means to query the sync result; the value **false** means the opposite. The default value is **false**.|
-| GROUP_ID<sup>18+</sup> | Type: Uint8Array<br>Length: 7-127 bytes| Yes| Group to which the asset to be queried belongs. By default, this parameter is not specified.|
+| REQUIRE_ATTR_ENCRYPTED<sup>14+</sup> | boolean type. | Optional | Whether to query the sync result of assets whose business custom attached information is encrypted. The value `true` means to query the sync result of assets whose business custom attached information is stored encrypted, and `false` means to query the sync result of assets whose business custom attached information is stored unencrypted. The default value is `false`. |
+| GROUP_ID<sup>18+</sup> | Uint8Array type, 7 to 127 bytes in length. | Optional | The group to which the assets to be queried belong. By default, the sync result of assets that do not belong to any group is queried. |
 
 ### Sample Code
 
 1. Include the header file and define the tool function.
    <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_sync_result.ets) -->
-   
+
    ``` TypeScript
    import { asset } from '@kit.AssetStoreKit';
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -79,7 +80,7 @@ The following table describes the attributes of **AssetMap** for querying the sy
 
 2. Develop the desired feature.
    <!-- @[query_sync_result](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_sync_result.ets) -->
-   
+
    ``` TypeScript
    let query: asset.AssetMap = new Map();
    asset.querySyncResult(query).then((res: asset.SyncResult) => {
@@ -97,7 +98,8 @@ The following table describes the attributes of **AssetMap** for querying the sy
 For a successful sync between trusted devices, the assets of both old and new devices must be accessible. Otherwise, the sync might fail.
 
 - For assets that are accessible only when a password is set, the sync will fail if no lock screen password is set on either the old or new device.
-  
+
 - For assets that are accessible only when the screen is unlocked, the sync will fail if the screen of either the old or new device is locked.
 
 - For assets that are accessible only after user authentication, the sync will fail if no lock screen password is set on the old device.
+

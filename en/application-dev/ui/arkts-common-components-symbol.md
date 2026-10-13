@@ -1,14 +1,14 @@
 # Symbol Glyph (SymbolGlyph/SymbolSpan)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hddgzw-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=58aa1a9b8318e579a2b513b7ba023ee57b8ecdda translatedAt=2026-07-29T12:45:15.722Z pushedAt=2026-07-31T01:40:00.423Z -->
+<!-- md-trans-meta sourceCommit=50f5d66e38b8b4fff9b1e5a462513d4b69c2569d translatedAt=2026-10-10T06:10:11.501Z pushedAt=2026-10-12T08:17:17.348Z -->
 
 SymbolGlyph is an icon symbol component that facilitates the use of exquisite icons, such as rendering multicolor icons and using animated icons. SymbolSpan, as a child component of the Text component, allows icon symbols to be interspersed within text. For details about how to use them, see the API documentation for [SymbolGlyph](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md) and [SymbolSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolSpan.md).
+
 
 ## Creating a Symbol Glyph
 
@@ -27,7 +27,7 @@ SymbolGlyph($r('sys.symbol.ohos_folder_badge_plus'))
 
 ## Adding to Text
 
-To embed a symbol glyph within a text string, use [SymbolSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolSpan.md) as a child of the [Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md) component. You can nest multiple **SymbolSpan** components to display a series of symbol glyphs. 
+To embed a symbol glyph within a text string, use [SymbolSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolSpan.md) as a child of the [Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md) component. You can nest multiple **SymbolSpan** components to display a series of symbol glyphs.  
 
 - Create a **SymbolSpan** component.
 
@@ -248,7 +248,7 @@ To embed a symbol glyph within a text string, use [SymbolSpan](../reference/apis
 
 In addition to using the **effectStrategy** attribute, which triggers an animation once it is activated, you can control the animation playback and choose from a variety of effect strategies using the following two methods.
 
-For details about how **effectStrategy** works with **symbolEffect**, see [SymbolGlyph.symbolEffect](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#symboleffect12-1). 
+For details about how **effectStrategy** works with **symbolEffect**, see [SymbolGlyph.symbolEffect](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#symboleffect12-1).  
 
 - By setting the **symbolEffect** attribute, you can configure both the effect strategy and the playback state of SymbolGlyph.
 
@@ -364,8 +364,7 @@ For details about how **effectStrategy** works with **symbolEffect**, see [Symbo
 
 ## Setting Shadow and Gradient Color Effects
 
-- Starting from API version 20, the [symbolShadow](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#symbolshadow20) API enables the SymbolGlyph component to display a shadow effect.
-
+- Starting from API version 20, the [symbolShadow](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#symbolshadow20) API enables you to set a shadow effect for the **SymbolGlyph** component.
   <!-- @[shadow_color_1_new](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolShadowAndColor.ets) -->
 
   ``` TypeScript
@@ -399,7 +398,7 @@ For details about how **effectStrategy** works with **symbolEffect**, see [Symbo
 
   ![SymbolShadowSymbolEffect](figures/symbolGlyph_symbolShadow.gif)
 
-- Starting from API version 20, the [shaderStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#shaderstyle20) API enables the SymbolGlyph component to display a gradient color effect.
+- Starting from API version 20, the [shaderStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md#shaderstyle20) API enables you to set a gradient color effect for the **SymbolGlyph** component.
 
   <!-- @[shadow_color_2_new](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/symbol/SymbolShadowAndColor.ets) -->
 
@@ -449,6 +448,7 @@ SymbolGlyph($r('sys.symbol.ohos_wifi'))
     this.wifiColor = Color.Gray;
   })
 ```
+
 
 ![symbolGlyph_onClick](figures/symbolGlyph_onClick.gif)
 
@@ -555,7 +555,7 @@ struct SymbolMusicDemo {
         }
       }
 
-      Divider().width(5).color(this.fontColorValue1).width('98%')
+      Divider().color(this.fontColorValue1).width('98%')
       Row() {
         Row() {
           // Replace $r('app.string.song_again') with the actual resource file. In this example, the value in the resource file is "Song 2."
@@ -572,7 +572,7 @@ struct SymbolMusicDemo {
         }
       }
 
-      Divider().width(5).color(this.fontColorValue1).width('98%')
+      Divider().color(this.fontColorValue1).width('98%')
       Row() {
         Row() {
           // Replace $r('app.string.again_song') with the actual resource file. In this example, the value in the resource file is "Song 3."
@@ -589,7 +589,7 @@ struct SymbolMusicDemo {
         }
       }
 
-      Divider().width(5).color(this.fontColorValue1).width('98%')
+      Divider().color(this.fontColorValue1).width('98%')
       Row() {
         Row() {
           // Replace $r('app.string.song_repeat') with the actual resource file. In this example, the value in the resource file is "Song 4."
@@ -606,7 +606,7 @@ struct SymbolMusicDemo {
         }
       }
 
-      Divider().width(5).color(this.fontColorValue1).width('98%')
+      Divider().color(this.fontColorValue1).width('98%')
       Row() {
         Row() {
           // Replace $r('app.string.repeat_song') with the actual resource file. In this example, the value in the resource file is "Song 5."
@@ -623,7 +623,7 @@ struct SymbolMusicDemo {
         }
       }
 
-      Divider().width(5).color(this.fontColorValue1).width('98%')
+      Divider().color(this.fontColorValue1).width('98%')
       Row() {
         Row() {
           // Replace $r('app.string.song_play') with the actual resource file. In this example, the value in the resource file is "Song 6."
@@ -640,7 +640,7 @@ struct SymbolMusicDemo {
         }
       }
 
-      Divider().width(5).color(this.fontColorValue1).width('98%')
+      Divider().color(this.fontColorValue1).width('98%')
       Row() {
         Row() {
           // Replace $r('app.string.play_song') with the actual resource file. In this example, the value in the resource file is "Song 7."

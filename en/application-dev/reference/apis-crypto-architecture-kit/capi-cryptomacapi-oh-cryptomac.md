@@ -13,7 +13,7 @@ typedef struct OH_CryptoMac OH_CryptoMac
 
 ## Overview
 
-Defines a struct for a message authentication code (MAC).
+Defines a struct for a MAC, which indicates the MAC context.
 
 **Since**: 20
 

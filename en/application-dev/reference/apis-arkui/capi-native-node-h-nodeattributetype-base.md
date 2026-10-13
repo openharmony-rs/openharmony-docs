@@ -2,9 +2,10 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3; @wangyang2022; @zju_ljz-->
-<!--Designer: @hehongyang3; @wangyang2022; @lanshouren-->
+<!--Designer: @hehongyang3; @wangyang2022; @fenglinbailu-->
 <!--Tester: @liuli0427; @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=420842a866da445322c2fb687976f1e2643ddae2 translatedAt=2026-09-23T10:02:49.905Z pushedAt=2026-10-10T07:47:27.633Z -->
 
 ```c
 enum ArkUI_NodeAttributeType
@@ -35,7 +36,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].u32 | Background color, in 0xARGB format. For example, **0xFFFF0000** indicates red.|
+| .value[0].u32 | Background color, in 0xARGB format. The value range is from 0x00000000 to 0xFFFFFFFF. For example, `0xFFFF0000` indicates red. |
 
 **Returns**
 
@@ -59,7 +60,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | Name| Description|
 | -- | -- |
 | .string | Image address. In API version 22 and earlier versions, the value can be a network image resource address, local image resource address, Base64 string, or [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) resource, but cannot be the address of an animated image such as an [SVG](arkui-js/js-components-svg.md), GIF, or WebP image. In API version 23 and later versions, animated images of the WebP and GIF types are supported. Only the first frame of the animated image is displayed. Other types of animated images are not supported.|
-| .value[0]?.i32 | Whether the image is repeated. This parameter is optional. The parameter type is [ArkUI_ImageRepeat](capi-image-h.md#arkui_imagerepeat). The default value is **ARKUI_IMAGE_REPEAT_NONE**.|
+| .value[0].?i32 | Whether the image is repeated. This parameter is optional. The parameter type is [ArkUI_ImageRepeat](capi-image-h.md#arkui_imagerepeat). The default value is **ARKUI_IMAGE_REPEAT_NONE**. |
 | .object | **PixelMap** object. The parameter type is [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md). Either **.object** or **.string** must be set.|
 
 **Returns**
@@ -133,7 +134,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Background image size with style. The value is an enumerated value of [ArkUI_ImageSize](capi-image-h.md#arkui_imagesize).|
+| .value[0].i32 | Background image size with style. The value is an enumerated value of [ArkUI_ImageSize](capi-image-h.md#arkui_imagesize). Different enumerated values determine how the background image is scaled and cropped, such as displaying at the original size, covering the component area while maintaining the aspect ratio, or displaying completely while maintaining the aspect ratio. |
 
 **Returns**
 
@@ -158,8 +159,8 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | -- | -- |
 | .value[0].f32 | Position along the x-axis, in px.|
 | .value[1].f32 | Position along the y-axis, in px.|
-| .value[2]?.i32 | Alignment mode. This parameter is optional. The parameter type is [ArkUI_Alignment](capi-native-type-h.md#arkui_alignment). The default value is **ARKUI_ALIGNMENT_TOP_START**. This parameter is supported since API version 21.|
-| .value[3]?.i32 | Layout direction. This parameter is optional. The parameter type is [ArkUI_Direction](capi-native-type-h.md#arkui_direction). The default value is **ARKUI_DIRECTION_AUTO**. In most scenarios, you are advised to set this parameter to **AUTO**, so that the system automatically handles the layout direction. If a fixed direction is required, set this parameter to **LTR** or **RTL**. This parameter is supported since API version 21.|
+| .value[2].?i32 | Alignment mode. This parameter is optional. The parameter type is [ArkUI_Alignment](capi-layout-h.md#arkui_alignment). The default value is **ARKUI_ALIGNMENT_TOP_START**. This parameter is supported since API version 21. |
+| .value[3].?i32 | Layout direction. This parameter is optional. The parameter type is [ArkUI_Direction](capi-layout-h.md#arkui_direction). The default value is **ARKUI_DIRECTION_AUTO**. In most scenarios, you are advised to set this parameter to **AUTO**, so that the system automatically handles the layout direction. If a fixed direction is required, set this parameter to **LTR** or **RTL**. This parameter is supported since API version 21. |
 
 **Returns**
 
@@ -167,8 +168,8 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 | -- | -- |
 | .value[0].f32 | Position along the x-axis, in px.|
 | .value[1].f32 | Position along the y-axis, in px.|
-| .value[2].i32 | Alignment mode. The parameter type is [ArkUI_Alignment](capi-native-type-h.md#arkui_alignment). This return value is supported since API version 21.|
-| .value[3].i32 | Layout direction. The parameter type is [ArkUI_Direction](capi-native-type-h.md#arkui_direction). This return value is supported since API version 21.|
+| .value[2].i32 | Alignment mode. The parameter type is [ArkUI_Alignment](capi-layout-h.md#arkui_alignment). This return value is supported since API version 21. |
+| .value[3].i32 | Layout direction. The parameter type is [ArkUI_Direction](capi-layout-h.md#arkui_direction). This return value is supported since API version 21. |
 
 ## NODE_RENDER_GROUP
 
@@ -185,13 +186,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Whether the component and its child components are rendered off the screen and then drawn together with its parent. The value **1** means that the component and its child components are rendered off the screen and then drawn together with its parent, and **0** means the opposite. The default value is **0**.|
+| .value[0].i32 | Whether the component and its child components are rendered off the screen and then drawn together with its parent. The value **1** means that the component and its child components are rendered off the screen and then drawn together with its parent, and **0** means the opposite. The default value is **0**. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Whether the component and its child components are rendered off the screen and then drawn together with its parent. The value **1** means that the component and its child components are rendered off the screen and then drawn together with its parent, and **0** means the opposite.|
+| .value[0].i32 | Whether the component and its child components are rendered off the screen and then drawn together with its parent. The value **1** means that the component and its child components are rendered off the screen and then drawn together with its parent, and **0** means the opposite. |
 
 ## NODE_UNIQUE_ID
 
@@ -205,6 +206,12 @@ The component ID is read-only and unique in a process.<br>
 **Since**: 12
 
 This API is supported since API version 12 and deprecated since API version 20. You are advised to use [OH_ArkUI_NodeUtils_GetNodeUniqueId](capi-native-node-h.md#oh_arkui_nodeutils_getnodeuniqueid) instead.
+
+**Returns**
+
+| Type | Description |
+| -- | -- |
+| .value[0].i32 | Component ID. |
 
 ## NODE_CLICK_DISTANCE
 

@@ -9,7 +9,7 @@
 
 ## Overview
 
-Provides APIs for symmetric key operations.
+Describes the APIs provided by OpenHarmony for managing symmetric keys.
 
 **Since**: 12
 

@@ -2,7 +2,7 @@
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @gcw_gyH0B0hP-->
-<!--Designer: @ccfriend-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chen-gong1-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -21,7 +21,7 @@ Enumerates the audio template types.
 
 | Name   | Value        | Description                                                        |
 | ------- | ---------- | ------------------------------------------------------------ |
-| DEFAULT | 'smartCar' | Default value of the audio template type.<br>It identifies the service type of the current audio template. You can change the value based on your service requirements when creating a template.|
+| DEFAULT | 'smartCar' | Default value of the audio template type.<br>This parameter identifies the service type of the current audio template.|
 
 ## EntityType
 
@@ -69,7 +69,7 @@ Enumerates the sorting types of the queried list data.
 
 | Name         | Value  | Description       |
 | ------------- | ---- |-----------|
-| NONE          | 0    | Default value, which is ascending order.|
+| NONE          | 0    | No sorting mode specified. The default ascending order is used.|
 | ORDER         | 1    | Ascending order      |
 | REVERSE_ORDER | 2    | Reverse order.      |
 
@@ -130,7 +130,7 @@ Enumerates the membership purchase types.
 | Name  | Value      | Description     |
 | ------ | -------- |---------|
 | NORMAL | 'normal' | Normal purchase.  |
-| BANNER | 'banner' | Membership promotion poster.|
+| BANNER | 'banner' | Purchase of a membership promotion poster.|
 
 ## SearchPlayInfoType
 

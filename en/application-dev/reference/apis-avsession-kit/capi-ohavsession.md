@@ -1,16 +1,16 @@
 # OHAVSession
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @devil_red-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
 ## Overview
 
-The module defines the C APIs of the playback control module.
+Defines C APIs of the media session module.
 
-You can use OHAVSession to access AVSession as a provider. For details about the development guide and samples, see [AVSession Provider](../../media/avsession/using-ohavsession-developer.md).
+You can use **OHAVSession** as an AVSession provider to access the AVSession service. For details about the development guide and sample, see [Media Session Provider](../../media/avsession/using-ohavsession-developer.md).
 
 **System capability**: SystemCapability.Multimedia.AVSession.Core
 
@@ -20,6 +20,6 @@ You can use OHAVSession to access AVSession as a provider. For details about the
 
 | Name| Description|
 | -- | -- |
-| [native_avmetadata.h](capi-native-avmetadata-h.md) | Declares the definitions of playback control metadata.|
-| [native_avsession.h](capi-native-avsession-h.md) | Declares the AVSession definition, which can be used to set metadata, playback state, and other information.|
-| [native_avsession_errors.h](capi-native-avsession-errors-h.md) | Declares the playback control error codes.|
+| [native_avmetadata.h](capi-native-avmetadata-h.md) | Defines media metadata.|
+| [native_avsession.h](capi-native-avsession-h.md) | Defines the AVSession, which can be used to set metadata and playback state.|
+| [native_avsession_errors.h](capi-native-avsession-errors-h.md) | Defines the media session error codes.|

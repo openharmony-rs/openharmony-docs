@@ -2,7 +2,7 @@
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @gcw_gyH0B0hP-->
-<!--Designer: @ccfriend-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chen-gong1-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -28,13 +28,13 @@ import { avMusicTemplate } from '@kit.AVSessionKit';
 | Name     | Type   | Read-Only| Optional| Description                                                   |
 | :-------- | :------ | :--- | :--- | :------------------------------------------------------ |
 | sessionId | string  | No  | No  | Unique ID of the audio template controller.                             |
-| isDestroy | boolean | No  | No  | Whether the audio template is destroyed. **true**: yes; **false**: no. No default value.|
+| isDestroy | boolean | No  | No  | Whether the audio template controller is destroyed. **true**: yes; **false**: no. No default value.|
 
 ## queryMainTabs
 
 queryMainTabs(): Promise&lt;MediaTab[]&gt;
 
-Queries the main tabs. This API uses a promise to return the result.
+Queries the main tabs. This API requests the main tabs from the media app through the audio template controller. The array of main tabs is returned, containing information such as the tab ID and tab name. This API uses a promise to return the result.
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -80,7 +80,7 @@ export class ControllerManager {
       console.info(TAG, 'queryMainTabs')
       tabs = await this.controller.queryMainTabs();
     } catch (e) {
-      console.error(TAG, `queryMainTabs failed, errCode: ${e?.code}`)
+      console.error(TAG, `Failed to query main tabs. Code: ${e?.code}, message: ${e?.message}`);
     }
     return tabs;
   }
@@ -228,7 +228,7 @@ export class ControllerManager {
 
 queryCompilation(compilationId: string, pageIndex: number): Promise&lt;PageMediaEntity&gt;
 
-Queries a compilation. This API uses a promise to return the result.
+Queries the media content compilation. This API uses a promise to return the result.
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -239,7 +239,7 @@ Queries a compilation. This API uses a promise to return the result.
 | Name       | Type  | Mandatory| Description          |
 | ------------- | ------ | ---- | -------------- |
 | compilationId | string | Yes  | ID of the compilation.    |
-| pageIndex     | number    | Yes  | Index of the tab page.|
+| pageIndex     | number    | Yes  | Page index.|
 
 **Return value**
 
@@ -271,7 +271,7 @@ export class ControllerManager {
   /**
    * Simulate the query of a compilation.
    *
-   * @returns Page media entity.
+   * @returns Media entity on the page.
    */
   public async queryCompilation(): Promise<avMusicTemplate.PageMediaEntity | undefined> {
     let compilationId: string = 'compilationId';
@@ -307,7 +307,7 @@ Queries a playlist. This API uses a promise to return the result.
 
 | Name   | Type                                                  | Mandatory| Description                            |
 | --------- | ------------------------------------------------------ | ---- | -------------------------------- |
-| pageIndex | number                                                 | Yes  | Index of the tab page.                  |
+| pageIndex | number                                                 | Yes  | Page index.                  |
 | sort      | [Sort](arkts-apis-avMusicTemplate-e.md#sort) | Yes  | Sorting type of the queried playlist data.|
 
 **Return value**
@@ -340,7 +340,7 @@ export class ControllerManager {
   /**
    * Simulate the query of a playlist.
    *
-   * @returns Page media entity.
+   * @returns Media entity on the page.
    */
   public async queryPlaylist(): Promise<avMusicTemplate.PageMediaEntity | undefined> {
     let pageIndex: number = 0;
@@ -366,7 +366,7 @@ export class ControllerManager {
 
 queryCurrentSingle(): Promise&lt;Single&gt;
 
-Queries the current single track. This API uses a promise to return the result.
+Queries the currently playing single. This API obtains the information about the currently playing single from the media app through the audio template controller, including the media item ID, title, and author. This API uses a promise to return the result.
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -503,7 +503,7 @@ Queries media entities by keyword. This API uses a promise to return the result.
 | ---------- | ------------------------------------------------------------ | ---- | -------------- |
 | keyword    | string                                                       | Yes  | Keyword.      |
 | searchType | [EntityType](arkts-apis-avMusicTemplate-e.md#entitytype) | Yes  | Media resource type.|
-| pageIndex  | number                                                          | Yes  | Tab index.  |
+| pageIndex  | number                                                          | Yes  | Page index.  |
 
 **Return value**
 
@@ -937,7 +937,7 @@ export class ControllerManager {
 
 login(controlType: LoginType, id?: string): Promise&lt;QrCodeInfo[]&gt;
 
-Logs in. This API uses a promise to return the result.
+Logs in to the media app account. This API uses a promise to return the result.
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -1120,7 +1120,7 @@ export class ControllerManager {
   private controller: avMusicTemplate.AVMusicTemplateController | undefined = undefined;
 
   /**
-   * Simulate the request for dialog box information.
+   * Simulate handling the membership purchase.
    *
    * @returns Promise used to return the dialog box information.
    */
@@ -1372,7 +1372,7 @@ Searches for playback. Audio and video are supported. The following uses audio a
 
 | Name | Type                                                        | Mandatory| Description                |
 | ------- | ------------------------------------------------------------ | ---- | -------------------- |
-| command | [SearchPlayInfoType](arkts-apis-avMusicTemplate-e.md#searchplayinfotype) | Yes  | Type enumeration of the search and playback information.|
+| command | [SearchPlayInfoType](arkts-apis-avMusicTemplate-e.md#searchplayinfotype) | Yes  | Type of the search and playback information.|
 | args    | [SearchPlayInfo](arkts-apis-avMusicTemplate-i.md#searchplayinfo) | Yes  | Search and playback information.          |
 
 **Return value**
@@ -1646,7 +1646,7 @@ export class ControllerManager {
 
 onUserInfoChange(callback: Callback&lt;UserInfo&gt;): void
 
-Registers a callback for user information changes. This API uses an asynchronous callback to return the result.
+Registers a callback for user information changes. When the information of a media app user changes (for example, the login status changes or the user profile is updated), this callback is triggered to notify the audio template controller. This API uses an asynchronous callback to return the result.
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -1656,7 +1656,7 @@ Registers a callback for user information changes. This API uses an asynchronous
 
 | Name  | Type                                                        | Mandatory| Description           |
 | -------- | ------------------------------------------------------------ | ---- |---------------|
-| callback | Callback<[UserInfo](arkts-apis-avMusicTemplate-i.md#userinfo)> | Yes  | Callback used to return the user information.|
+| callback | Callback<[UserInfo](arkts-apis-avMusicTemplate-i.md#userinfo)> | Yes  | Callback used to return the result. The parameter is user information.|
 
 **Error codes**
 
@@ -1692,7 +1692,7 @@ export class ControllerManager {
 
 offUserInfoChange(callback?: Callback&lt;UserInfo&gt;): void
 
-Unregisters the callback for user information changes. This API uses an asynchronous callback to return the result.
+Unregisters the callback for user information changes.
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -1827,7 +1827,7 @@ export class ControllerManager {
 
 onCurrentSingleChange(callback: Callback&lt;Single&gt;): void
 
-Registers a callback for the current single track changes. This API uses an asynchronous callback to return the result.
+Registers a callback for the current single track changes. When the currently playing song changes (for example, the song is switched or a new song starts to play), this callback is triggered to notify the audio template controller. This API uses an asynchronous callback to return the result.
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -1873,7 +1873,7 @@ export class ControllerManager {
 
 offCurrentSingleChange(callback?: Callback&lt;Single&gt;): void
 
-Unregisters the callback for the current single track changes. This API uses an asynchronous callback to return the result.
+Unregisters the callback for the current single track changes.
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -1964,7 +1964,7 @@ export class ControllerManager {
 
 offMediaEntitiesChange(callback?: Callback&lt;MediaEntity[]&gt;): void
 
-Unregisters the callback for media entity changes. This API uses an asynchronous callback to return the result.
+Unregisters the callback for media entity changes.
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -2099,7 +2099,7 @@ export class ControllerManager {
 
 onPlaylistChange(callback: Callback&lt;PageMediaEntity&gt;): void
 
-Registers a callback for reporting playlist changes. This API uses an asynchronous callback to return the result.
+Registers a callback for reporting playlist changes. When the playlist changes (for example, a song is added or deleted, or the playback sequence is adjusted), this callback is triggered to notify the audio template controller. This API uses an asynchronous callback to return the result.
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -2146,7 +2146,7 @@ export class ControllerManager {
 
 offPlaylistChange(callback?: Callback&lt;PageMediaEntity&gt;): void
 
-Unregisters the callback for reporting playlist changes. This API uses an asynchronous callback to return the result.
+Unregisters the callback for reporting playlist changes.
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -2237,7 +2237,7 @@ export class ControllerManager {
 
 offDownloadMediaEntityStatusChange(callback?: Callback&lt;MediaEntity&gt;): void
 
-Unregisters the callback for reporting media download status changes. This API uses an asynchronous callback to return the result.
+Unregisters the callback for reporting media download status changes.
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -2420,7 +2420,7 @@ export class ControllerManager {
 
 offSettingsChange(callback?: Callback&lt;SettingItem[]&gt;): void
 
-Unregisters the callback for reporting setting changes. This API uses an asynchronous callback to return the result.
+Unregisters the callback for reporting setting changes.
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -2555,7 +2555,7 @@ export class ControllerManager {
 
 onExtensionAbilityChange(callback: ReportExecuteAbilityEvent): void
 
-Registers a callback for the event triggered when the audio template controller launches the media application UI specified by the user. This API uses an asynchronous callback to return the result.
+Registers a callback triggered when the specified media app UI needs to be launched. This API uses an asynchronous callback to return the result.
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -2602,7 +2602,7 @@ export class ControllerManager {
 
 offExtensionAbilityChange(callback?: ReportExecuteAbilityEvent): void
 
-Unregisters the callback for the event triggered when the audio template controller launches the playback screen of a specified media application.
+Unregisters the callback for launching the specified media app UI.
 
 **Model restriction:** This API can be used only in the stage model.
 

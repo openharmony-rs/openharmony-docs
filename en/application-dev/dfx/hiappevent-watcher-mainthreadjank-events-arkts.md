@@ -6,11 +6,11 @@
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=f319e3e62d6356bf78f31e2e8f7ba3927caddf1e translatedAt=2026-07-31T01:26:41.945Z pushedAt=2026-07-31T03:55:25.951Z -->
+<!-- md-trans-meta sourceCommit=8ea556ad50860a98041332a35647945090ac4fac translatedAt=2026-09-28T02:29:40.819Z pushedAt=2026-09-29T10:11:08.085Z -->
 
 ## Overview
 
-This document describes how to use the ArkTS APIs provided by HiAppEvent to subscribe to main thread timeout events. For detailed usage instructions (parameter constraints, value ranges, etc.) of the APIs, see [@ohos.hiviewdfx.hiAppEvent](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md).
+This document describes how to use the ArkTS APIs provided by HiAppEvent to subscribe to main thread jank events. For detailed usage instructions (parameter constraints, value ranges, etc.) of the APIs, see [@ohos.hiviewdfx.hiAppEvent](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md).
 
 ## Available APIs
 
@@ -66,13 +66,13 @@ The following walks you through on how to subscribe to the main thread jank even
             // Obtain the PID and UID of the application.
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.pid=${eventInfo.params['pid']}`);
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.uid=${eventInfo.params['uid']}`);
-            // Obtain the begin time and end time on the main thread.
+            // Obtain the start and end time of main thread processing.
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.begin_time=${eventInfo.params['begin_time']}`);
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.end_time=${eventInfo.params['end_time']}`);
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.log_over_limit=${eventInfo.params['log_over_limit']}`);
-            // Obtain the start time of the task when the main thread jank event occurs. (Parameter of the main thread timeout event collection stack.)
+            // Obtain the task execution start time when the main thread jank event occurs. (Parameter of the main thread jank event collection stack.)
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.app_start_jiffies_time=${JSON.stringify(eventInfo.params['app_start_jiffies_time'])}`);
-            // Obtain the call stack that is printed most frequently in the generated log file. (Parameter of the main thread timeout event collection stack.)
+            // Obtain the call stack that is printed most frequently in the generated log file. (Parameter of the main thread jank event collection stack.)
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.heaviest_stack=${eventInfo.params['heaviest_stack']}`);
 
             // Obtain the error log file generated when the main thread jank event occurs.
@@ -86,7 +86,11 @@ The following walks you through on how to subscribe to the main thread jank even
             } else if (path.endsWith(".trace")) {
               targetPath= "/data/storage/el2/base/mainThreadJank.trace";
             }
-            fileIo.copyFileSync(path.toString(), targetPath.toString());
+            try {
+              fileIo.copyFileSync(path.toString(), targetPath.toString());
+            } catch (e) {
+              hilog.error(0x0000, 'testTag', `copy file failed: ${e}`);
+            }
           }
         }
       }
@@ -236,7 +240,7 @@ The following walks you through on how to subscribe to the main thread jank even
    > If you use the **setEventConfig** API to set sampling stack parameters, the system starts main thread jank event detection after the time specified by **ignore_startup_time**.
 
    The main thread jank event is triggered when two consecutive timeout events are detected within the interval of the detection task.
-
+  
    You can quickly click the timeout button for two or three times (for example, **timeOut350**, **timeOut150**, or **timeOut500**) to trigger the main thread jank event.
 
 ### Verifying the Subscription

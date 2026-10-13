@@ -1,12 +1,11 @@
 # Using Image_NativeModule to Read and Edit Image Exif Data
-
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=51871fad202ca89cea4824e5e1f6eae94c62de6c translatedAt=2026-08-11T01:48:19.733Z pushedAt=2026-08-11T09:47:41.998Z -->
+<!-- md-trans-meta sourceCommit=7309d91550473d80535b32eca83cb9c0b600f845 translatedAt=2026-09-28T02:48:50.168Z pushedAt=2026-09-29T08:40:40.804Z -->
 
 Image Kit provides the capabilities of reading and editing Exchangeable Image File Format (Exif) data.
 
@@ -30,21 +29,16 @@ The following table lists the C APIs for reading and editing Exif data. For deta
 
 | API | Description |
 | -------- | -------- |
-| [OH_ImageSourceNative_GetImageProperty()](../../reference/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_getimageproperty) | Obtains the Exif data of a specified property key. |
+| [OH_ImageSourceNative_GetImagePropertyWithNull()](../../reference/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_getimagepropertywithnull) | Obtains the Exif data of a specified key. |
 | [OH_ImageSourceNative_ModifyImageProperty()](../../reference/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_modifyimageproperty) | Modifies the Exif data of a specified property key. |
 
 ## Precautions
 
 - You must create an `OH_ImageSourceNative` object before reading or editing Exif data.
-
 - Before reading the Exif data of an image, ensure that the app has the read permission on the target image. Before modifying the Exif data of an image, ensure that the app has the write permission on the target image.
-
 - In certain image source or access scenarios, the system may remove privacy information such as GPS data even if the app has the image read permission. In this case, the corresponding Exif data cannot be obtained.
-
 - The image file must contain Exif data. For images that do not contain Exif data or do not contain the target attribute key, the read result may be empty or an error code may be returned.
-
 - Before modifying Exif data, confirm that the image format and the target attribute key support writing.
-
 - Image metadata may contain privacy information such as shooting location. Before displaying, uploading, or sharing images, ensure that user authorization and privacy protection are properly handled based on the service scenario.
 
 ## How to Develop
@@ -70,7 +64,7 @@ When creating a Native C++ app in DevEco Studio, the generated project includes 
 1. Import the required header files.
 
    <!-- @[editExif_operations_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->      
-
+   
    ``` C++
    #include <string>
    #include <hilog/log.h>
@@ -81,7 +75,7 @@ When creating a Native C++ app in DevEco Studio, the generated project includes 
 2. Modify the log macro definition as required.
 
    <!-- @[define_logInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->     
-
+   
    ``` C++
    #undef LOG_DOMAIN
    #undef LOG_TAG
@@ -92,7 +86,7 @@ When creating a Native C++ app in DevEco Studio, the generated project includes 
 3. Define the ImageSourceNative class.
 
    <!-- @[define_sourceClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/imageKits.h) -->    
-
+   
    ``` C
    class ImageSourceNative {
    public:
@@ -105,11 +99,11 @@ When creating a Native C++ app in DevEco Studio, the generated project includes 
        ~ImageSourceNative() {}
    };
    ```
-
+   
 4. Create an instance of ImageSourceNative.
 
    <!-- @[create_sourceClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->   
-
+   
    ``` C++
    static ImageSourceNative *g_thisImageSource = new ImageSourceNative();
    ```
@@ -117,7 +111,7 @@ When creating a Native C++ app in DevEco Studio, the generated project includes 
 5. Create the GetJsResult function to process the NAPI return value.
 
    <!-- @[get_returnValue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/napi_init.cpp) -->     
-
+   
    ``` C++
    // Process the NAPI return value.
    napi_value GetJsResult(napi_env env, int result)
@@ -135,7 +129,7 @@ When creating a Native C++ app in DevEco Studio, the generated project includes 
    > For details about how to create an ImageSource object, see [Image Decoding](../image/image-source-c.md).
 
    <!-- @[editExif_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->      
-
+   
    ``` C++
    // Obtain the value of a specified property.
    napi_value GetImageProperty(napi_env env, napi_callback_info info)

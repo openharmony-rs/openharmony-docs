@@ -6,6 +6,7 @@
 <!--Designer: @skye_you-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=4406a1fcebfd3a8963726b8dfa66bed58dd98b9c translatedAt=2026-10-09T01:25:46.137Z pushedAt=2026-10-09T11:41:01.045Z -->
 
 ## Available APIs
 
@@ -25,20 +26,20 @@ The following table describes the asset attributes.
 | ASSET_TAG_AUTH_TYPE             | Type: uint32_t<br>Value range: see [Asset_AuthType](../../reference/apis-asset-store-kit/capi-asset-type-h.md#asset_authtype).| No    | Type of user authentication required for accessing the asset.                  |
 | ASSET_TAG_SYNC_TYPE             | Type: uint32_t<br>Value range: see [Asset_SyncType](../../reference/apis-asset-store-kit/capi-asset-type-h.md#asset_synctype).| No    | Type of sync supported by the asset.                          |
 | ASSET_TAG_IS_PERSISTENT         | Type: bool                                                  | No    | Whether to retain the asset when the application is uninstalled. The value **true** means to retain the asset even after the application is uninstalled. The value **false** means the opposite.             |
-| ASSET_TAG_DATA_LABEL_CRITICAL_1 | Type: uint8[]<br>Length: 1-2048 bytes                          | No    | Asset attribute information customized by the service with integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
-| ASSET_TAG_DATA_LABEL_CRITICAL_2 | Type: uint8[]<br>Length: 1-2048 bytes                          | No    | Asset attribute information customized by the service with integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
-| ASSET_TAG_DATA_LABEL_CRITICAL_3 | Type: uint8[]<br>Length: 1-2048 bytes                          | No    | Asset attribute information customized by the service with integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
-| ASSET_TAG_DATA_LABEL_CRITICAL_4 | Type: uint8[]<br>Length: 1-2048 bytes                          | No    | Asset attribute information customized by the service with integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
-| ASSET_TAG_DATA_LABEL_NORMAL_1   | Type: uint8[]<br>Length: 1-2048 bytes                          | No    | Asset attribute information customized by the service without integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
-| ASSET_TAG_DATA_LABEL_NORMAL_2   | Type: uint8[]<br>Length: 1-2048 bytes                          | No    | Asset attribute information customized by the service without integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
-| ASSET_TAG_DATA_LABEL_NORMAL_3   | Type: uint8[]<br>Length: 1-2048 bytes                          | No    | Asset attribute information customized by the service without integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
-| ASSET_TAG_DATA_LABEL_NORMAL_4   | Type: uint8[]<br>Length: 1-2048 bytes                          | No    | Asset attribute information customized by the service without integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
-| ASSET_TAG_DATA_LABEL_NORMAL_LOCAL_1<sup>12+</sup> | Type: uint8[]<br>Length: 1-2048 bytes| No| Local attribute information about the asset. The value is assigned by the service without integrity protection and will not be synced.|
-| ASSET_TAG_DATA_LABEL_NORMAL_LOCAL_2<sup>12+</sup> | Type: uint8[]<br>Length: 1-2048 bytes| No| Local attribute information about the asset. The value is assigned by the service without integrity protection and will not be synced.|
-| ASSET_TAG_DATA_LABEL_NORMAL_LOCAL_3<sup>12+</sup> | Type: uint8[]<br>Length: 1-2048 bytes| No| Local attribute information about the asset. The value is assigned by the service without integrity protection and will not be synced.|
-| ASSET_TAG_DATA_LABEL_NORMAL_LOCAL_4<sup>12+</sup> | Type: uint8[]<br>Length: 1-2048 bytes| No| Local attribute information about the asset. The value is assigned by the service without integrity protection and will not be synced.|
+| ASSET_TAG_DATA_LABEL_CRITICAL_1 | The type is uint8[], with a length of 1 to 2048 bytes. | Optional | Attached information of the asset. The content is defined by the service and has integrity protection.<br/>**Note:** In API version 12 and earlier versions, the length is 1 to 512 bytes. |
+| ASSET_TAG_DATA_LABEL_CRITICAL_2 | The type is uint8[], with a length of 1 to 2048 bytes. | Optional | Attached information of the asset. The content is defined by the service and has integrity protection.<br/>**Note:** In API version 12 and earlier versions, the length is 1 to 512 bytes. |
+| ASSET_TAG_DATA_LABEL_CRITICAL_3 | The type is uint8[], with a length of 1 to 2048 bytes. | Optional | Attached information of the asset. The content is defined by the service and has integrity protection.<br/>**Note:** In API version 12 and earlier versions, the length is 1 to 512 bytes. |
+| ASSET_TAG_DATA_LABEL_CRITICAL_4 | The type is uint8[], with a length of 1 to 2048 bytes. | Optional | Attached information of the asset. The content is defined by the service and has integrity protection.<br/>**Note:** In API version 12 and earlier versions, the length is 1 to 512 bytes. |
+| ASSET_TAG_DATA_LABEL_NORMAL_1 | The type is uint8[], with a length of 1 to 2048 bytes. | Optional | Attached information of the asset. The content is defined by the service and has no integrity protection.<br/>**Note:** In API version 12 and earlier versions, the length is 1 to 512 bytes. |
+| ASSET_TAG_DATA_LABEL_NORMAL_2 | The type is uint8[], with a length of 1 to 2048 bytes. | Optional | Attached information of the asset. The content is defined by the service and has no integrity protection.<br/>**Note:** In API version 12 and earlier versions, the length is 1 to 512 bytes. |
+| ASSET_TAG_DATA_LABEL_NORMAL_3 | The type is uint8[], with a length of 1 to 2048 bytes. | Optional | Attached information of the asset. The content is defined by the service and has no integrity protection.<br/>**Note:** In API version 12 and earlier versions, the length is 1 to 512 bytes. |
+| ASSET_TAG_DATA_LABEL_NORMAL_4 | The type is uint8[], with a length of 1 to 2048 bytes. | Optional | Attached information of the asset. The content is defined by the service and has no integrity protection.<br/>**Note:** In API version 12 and earlier versions, the length is 1 to 512 bytes. |
+| ASSET_TAG_DATA_LABEL_NORMAL_LOCAL_1<sup>12+</sup> | Type: uint8[]<br>Length: 1-2048 bytes| No| Local information attached to the asset. The value is assigned by the service without integrity protection and will not be synced.|
+| ASSET_TAG_DATA_LABEL_NORMAL_LOCAL_2<sup>12+</sup> | Type: uint8[]<br>Length: 1-2048 bytes| No| Local information attached to the asset. The value is assigned by the service without integrity protection and will not be synced.|
+| ASSET_TAG_DATA_LABEL_NORMAL_LOCAL_3<sup>12+</sup> | Type: uint8[]<br>Length: 1-2048 bytes| No| Local information attached to the asset. The value is assigned by the service without integrity protection and will not be synced.|
+| ASSET_TAG_DATA_LABEL_NORMAL_LOCAL_4<sup>12+</sup> | Type: uint8[]<br>Length: 1-2048 bytes| No| Local information attached to the asset. The value is assigned by the service without integrity protection and will not be synced.|
 | ASSET_TAG_REQUIRE_ATTR_ENCRYPTED<sup>14+</sup> | Type: bool| No| Whether to remove the encrypted data of service customized supplementary information. The value **true** means to remove the encrypted data of service customized supplementary information; the value **false** means to remove the non-encrypted data of service customized supplementary information. Default value: **false**.|
-| ASSET_TAG_GROUP_ID<sup>18+</sup> | Type: Uint8[]<br>Length: 7-127 bytes| No| Group to which the asset to be removed belongs. By default, this parameter is not specified.|
+| ASSET_TAG_GROUP_ID<sup>18+</sup> | Type: Uint8[]<br>Length: 7-127 bytes| No| Group to which the asset to be removed belongs. By default, only assets that do not belong to any group are deleted.|
 
 ## Example
 
@@ -57,7 +58,7 @@ For details about how to remove an asset in a group, see [Removing an Asset from
 
 2. Include header files.
    <!-- @[include](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
-   
+
    ``` C++
    #include "napi/native_api.h"
    #include <string.h>
@@ -66,7 +67,7 @@ For details about how to remove an asset in a group, see [Removing an Asset from
 
 3. Remove an asset.
    <!-- @[remove_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreNdk/entry/src/main/cpp/napi_init.cpp) -->
-   
+
    ``` C++
    static napi_value RemoveAsset(napi_env env, napi_callback_info info)
    {

@@ -1427,7 +1427,7 @@ let isExist = i18n.ChineseCalendar.checkLeapMonth(2026, 43, 2);
 | cyclicalYear    | number |   否   |   否   |  农历的干支年。<br>取值范围：[1, 60]。   |
 | month           | number |   否   |   否   |  农历的月。<br>**说明：** <br>月份从0开始计数，0表示一月。   |
 | date            | number |   否   |   否   |  农历的日。   |
-| isLeapMonth     | boolean |   否  |   是   |  是否是闰月。默认值：false。  |
+| isLeapMonth     | boolean |   否  |   是   |  该月是否是闰月。<br>true表示该月是闰月，false表示该月不是闰月。默认值：false。  |
 | hour            | number |   否   |   是   |  农历的时。默认值：0。   |
 | minute          | number |   否   |   是   |  农历的分。默认值：0。   |
 | second          | number |   否   |   是   |  农历的秒。默认值：0。   |
@@ -1534,10 +1534,10 @@ format(phoneNumber: string): string
   let typingFormatter: i18n.PhoneNumberFormat = new i18n.PhoneNumberFormat('CN', option);
   let phoneNumber: string = '130493';
   let formatResult: string = '';
-  for (let i = 0; i < phoneNumber.length; i++) {
-    formatResult += phoneNumber.charAt(i);
+  phoneNumber.split('').forEach((char: string) => {
+    formatResult += char;
     formatResult = typingFormatter.format(formatResult); // formatResult = '130 493'
-  }
+  });
   ```
 
 ### getLocationName<sup>9+</sup>
@@ -2726,11 +2726,10 @@ transform(text: string): string
   import { i18n } from '@kit.LocalizationKit';
 
   let transliterator: i18n.Transliterator = i18n.Transliterator.getInstance('Any-Latn');
-  let wordArray: string[] = ['中国', '德国', '美国', '法国']
-  for (let i = 0; i < wordArray.length; i++) {
-    let transliterateLatn: string =
-      transliterator.transform(wordArray[i]); // transliterateLatn依次为：'zhōng guó', 'dé guó', 'měi guó', 'fǎ guó'
-  }
+  let wordArray: string[] = ['中国', '德国', '美国', '法国'];
+  wordArray.forEach((word: string): void => {
+    let transliterateLatn: string = transliterator.transform(word); // transliterateLatn依次为：'zhōng guó', 'dé guó', 'měi guó', 'fǎ guó'
+  });
 
   // 汉语音译去声调
   transliterator = i18n.Transliterator.getInstance('Any-Latn;Latin-Ascii');

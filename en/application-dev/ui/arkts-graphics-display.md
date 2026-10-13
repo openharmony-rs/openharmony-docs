@@ -5,6 +5,7 @@
 <!--Designer: @weixin_52725220-->
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=f0d39c9f49ff01d5be7701bae5da65ca75bb0864 translatedAt=2026-10-12T09:13:59.824Z pushedAt=2026-10-12T11:02:11.668Z -->
 
 More often than not, you may need to display images in your application, for example, icons in buttons, online images, and local images. In such cases, the **Image** component is used, which supports multiple image formats (including PNG, JPG, and JPEG), excluding APNG and SVGA. For details about the supported formats and usage, see [Image](../reference/apis-arkui/arkui-ts/ts-basic-components-image.md).
 
@@ -81,7 +82,7 @@ Archived data sources can be classified into local resources, network resources,
 
   **Resource** objects can be used to import images across bundles and modules. All images in the **resources** folder can be read and converted to the **Resource** objects through **$r**.
 
-  **Figure 1** resources 
+  **Figure 1** resources
 
   ![image-resource](figures/image-resource.jpg)
 
@@ -96,7 +97,7 @@ Archived data sources can be classified into local resources, network resources,
 
   You can also place the images in the **rawfile** folder.
 
-  **Figure 2** rawfile folder 
+  **Figure 2** rawfile folder
 
   ![image-rawfile](figures/image-rawfile.jpg)
 
@@ -109,7 +110,7 @@ Archived data sources can be classified into local resources, network resources,
   Image($rawfile('example1.png'))
   ```
 
-- Media library resource (file://data/storage)
+- Media library `file://data/storage`
   
   To load images from the [picker](../reference/apis-core-file-kit/js-apis-file-picker.md), use a path string that starts with **file://**.
   1. Call the API to obtain the image URL in the media library.
@@ -172,7 +173,7 @@ Archived data sources can be classified into local resources, network resources,
        <!-- @[fileLibrary_format](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/LoadingResources.ets) -->    
   
        ``` TypeScript
-       // Replace 'file://media/Photos/5' with the resource file you need, and replace the value in the resource file with the real file path.
+       // Replace 'file://media/Photos/5' with the resource file you need, and replace the value in the resource file with the actual path.
        Image('file://media/Photos/5')
          .width(200)
        ```
@@ -375,7 +376,7 @@ The following example demonstrates image display and animation implementation us
 
 The Image component supports Scalable Vector Graphics (SVG). For SVG element reference, see [SVG Tags](../../application-dev/reference/apis-arkui/arkui-ts/ts-basic-svg.md).
 
-To display an SVG image without intrinsic dimensions, you must set the width and height for the **Image** component. SVG images cannot reference local SVG or GIF images through `<image>` tags.
+If an SVG image has no intrinsic size, set the width and height for the Image component; otherwise, the image is not displayed. An SVG image does not support referencing other local images in SVG or GIF format through the `image` tag.
 
 You can use the **fillColor** attribute to change the fill color of an SVG image.
 
@@ -389,11 +390,11 @@ You can use the **fillColor** attribute to change the fill color of an SVG image
     .fillColor(Color.Blue)
   ```
 
-  **Figure 3** Original image 
+  **Figure 3** Original image
 
 ![screenshot_20230223_141141](figures/screenshot_20230223_141141.png)
 
-  **Figure 4** SVG image after the fill color is set 
+  **Figure 4** SVG image after the fill color is set
 
 ![screenshot_20230223_141404](figures/screenshot_20230223_141404.png)
 
@@ -742,7 +743,7 @@ In this example, the source image size is 1280 x 960, and the decoding sizes are
 
 ### Adding a Filter to an Image
 
-You can use the **colorFilter** attribute to add a filter to an image.<!--RP1--><!--RP1End-->
+Use `colorFilter` to adjust the pixel colors of an image and add a filter to it.<!--RP1--><!--RP1End-->
 
 
   <!-- @[image_filtereffect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/AddFilterEffectsToImages.ets) -->    
@@ -793,12 +794,12 @@ Generally, the image loading process is performed asynchronously to avoid blocki
 
 <!--RP2--><!--RP2End-->
 
-## Adding Events
+## Calling Events
 
-By binding the **onComplete** event to the **Image** component, you can obtain necessary information about the image after the image is successfully loaded. You can also bind the **onError** event to obtain error information when the image fails to be loaded.
+By binding the **onComplete** event to the **Image** component, you can obtain necessary information about the image after it is successfully loaded. If the image fails to load, you can also obtain the result by binding the **onError** callback.
 
 
-  <!-- @[event_invocation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/EventCall.ets) -->    
+  <!-- @[event_invocation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ImageComponent/entry/src/main/ets/pages/EventCall.ets) -->   
   
   ``` TypeScript
   import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -821,7 +822,7 @@ By binding the **onComplete** event to the **Image** component, you can obtain n
             .width(200)
             .height(150)
             .margin(15)
-            // After the image loads successfully, obtain necessary image information via onComplete.
+            // After the image is loaded successfully, obtain the necessary image information through onComplete.
             .onComplete(msg => {
               if(msg){
                 this.widthValue = msg.width;
@@ -835,7 +836,7 @@ By binding the **onComplete** event to the **Image** component, you can obtain n
             .onError(() => {
               hilog.info(DOMAIN, TAG, 'load image fail');
             })
-            // The overlay API does not support the dark mode.
+            // The overlay API does not support dark mode yet.
             .overlay('\nwidth: ' + String(this.widthValue) + ', height: ' + String(this.heightValue) + '\ncomponentWidth: ' + String(this.componentWidth) + '\ncomponentHeight: ' + String(this.componentHeight), {
               align: Alignment.Bottom,
               offset: { x: 0, y: 60 }
@@ -848,8 +849,8 @@ By binding the **onComplete** event to the **Image** component, you can obtain n
 
 ![zh-cn_image_0000001511740460](figures/Adding-Events.png)
 
-<!--Del-->##  
+## Samples
 
- 
+For image display development, the following examples are available for reference:
 
--  <!--DelEnd-->
+- [Displaying Images](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/ImageComponent)

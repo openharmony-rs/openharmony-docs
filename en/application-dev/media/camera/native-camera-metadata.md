@@ -1,12 +1,11 @@
 # Camera Metadata (C/C++)
-
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=7af318f702cc007dfff9ab3817e651170c470e50 translatedAt=2026-08-10T09:19:26.344Z pushedAt=2026-08-10T13:23:13.900Z -->
+<!-- md-trans-meta sourceCommit=132342cdd19e09e8d1c7a964e48a57b6cf30fc8d translatedAt=2026-09-28T02:44:41.385Z pushedAt=2026-09-29T08:24:28.160Z -->
 
 Metadata is the description and context of image information returned by the camera application. It provides detailed data for the image information, such as the coordinates of a viewfinder frame for identifying a portrait in a photo or video.
 
@@ -18,8 +17,8 @@ For detailed API descriptions, see [OH_Camera](../../reference/apis-camera-kit/c
 
 1. Import the NDK.
 
-   <!-- @[import_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.h) -->
-
+   <!-- @[import_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.h) -->     
+   
    ``` C
    #include <cstdint>
    #include <native_buffer/buffer_common.h>
@@ -29,7 +28,6 @@ For detailed API descriptions, see [OH_Camera](../../reference/apis-camera-kit/c
    #include <cstdio>
    #include <fcntl.h>
    #include <map>
-   #include <string>
    #include <vector>
    #include <native_buffer/native_buffer.h>
    #include "iostream"
@@ -78,7 +76,7 @@ For detailed API descriptions, see [OH_Camera](../../reference/apis-camera-kit/c
 3. Call **OH_CameraManager_GetSupportedCameraOutputCapability()** to obtain the metadata types supported by the current device, and then call **OH_CameraManager_CreateMetadataOutput()** to create a metadata output stream.
 
    <!-- @[create_metadata_output](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
-
+   
    ``` C++
    Camera_ErrorCode NDKCamera::CreateMetadataOutput(void)
    {
@@ -100,7 +98,7 @@ For detailed API descriptions, see [OH_Camera](../../reference/apis-camera-kit/c
 4. Call [OH_CameraManager_CreateCaptureSession()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_createcapturesession) to create a session.
 
    <!-- @[create_capture_session](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
-
+   
    ``` C++
    ret = OH_CameraManager_CreateCaptureSession(cameraManager_, &captureSession_);
    if (captureSession_ == nullptr || ret != CAMERA_OK) {
@@ -111,17 +109,17 @@ For detailed API descriptions, see [OH_Camera](../../reference/apis-camera-kit/c
 5. Configure the session. After the configuration, call [OH_CaptureSession_Start()](../../reference/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_start) to output metadata. If the call fails, an error code is returned. For details about the error code types, see [Camera_ErrorCode](../../reference/apis-camera-kit/capi-camera-h.md#camera_errorcode).
 
    <!-- @[add_metadata_output](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
-
+   
    ``` C++
    // Start configuring the session.
    Camera_ErrorCode ret = OH_CaptureSession_BeginConfig(captureSession_);
-
+   
    // Add the camera input stream to the session.
    ret = OH_CaptureSession_AddInput(captureSession_, cameraInput_);
-
+   
    // Add the camera preview stream to the session.
    ret = OH_CaptureSession_AddPreviewOutput(captureSession_, previewOutput_);
-
+   
    if (isVideo_) {
        // Add the camera video stream to the session.
        AddVideoOutput();
@@ -138,11 +136,11 @@ For detailed API descriptions, see [OH_Camera](../../reference/apis-camera-kit/c
        OH_NativeBuffer_ColorSpace colorSpace = OH_NativeBuffer_ColorSpace::OH_COLORSPACE_P3_FULL;
        SetColorSpace(colorSpace);
    }
-
+   
    // Commit the session configuration.
    ret = OH_CaptureSession_CommitConfig(captureSession_);
    // ...
-
+   
    InitPreviewRotation();
    // Start the session.
    OH_LOG_INFO(LOG_APP, "session start");
@@ -169,7 +167,7 @@ During camera application development, you can listen for the status of metadata
 - Register the **'metadataObjectsAvailable'** event to listen for metadata objects that are available. When a valid metadata object is detected, the callback function returns the metadata. This event can be registered when a MetadataOutput object is created.
 
   <!-- @[metadata_callback_available](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
-
+  
   ``` C++
   void OnMetadataObjectAvailable(Camera_MetadataOutput *metadataOutput, Camera_MetadataObject *metadataObject,
       uint32_t size)
@@ -184,17 +182,17 @@ During camera application development, you can listen for the status of metadata
 
 - Register the **'error'** event to listen for metadata stream errors. The callback function returns an error code when an API is incorrectly used. For details about the error code types, see [Camera_ErrorCode](../../reference/apis-camera-kit/capi-camera-h.md#camera_errorcode).
 
-  <!-- @[metadata_callback_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
-
+  <!-- @[metadata_callback_error](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->  
+  
   ``` C++
   void OnMetadataOutputError(Camera_MetadataOutput *metadataOutput, Camera_ErrorCode errorCode)
   {
-      OH_LOG_INFO(LOG_APP, "OnMetadataOutput errorCode = %{public}d", errorCode);
+      OH_LOG_ERROR(LOG_APP, "OnMetadataOutput errorCode = %{public}d", errorCode);
   }
   ```
 
   <!-- @[get_metadata_listener_and_register](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
-
+  
   ``` C++
   MetadataOutput_Callbacks *NDKCamera::GetMetadataOutputListener(void)
   {

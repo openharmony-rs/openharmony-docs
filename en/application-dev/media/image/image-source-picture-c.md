@@ -1,12 +1,11 @@
 # Using Image_NativeModule to Decode Pictures
-
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
 <!--Designer: @XiaoYao555-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=51871fad202ca89cea4824e5e1f6eae94c62de6c translatedAt=2026-08-11T01:47:41.897Z pushedAt=2026-08-11T09:03:25.344Z -->
+<!-- md-trans-meta sourceCommit=7309d91550473d80535b32eca83cb9c0b600f845 translatedAt=2026-09-28T02:48:10.438Z pushedAt=2026-09-29T08:37:53.595Z -->
 
 You can create an **ImageSource** instance and decode a supported image file into a Picture object for HDR image display, auxiliary image processing, and other operations in an app or the system. Currently supported image file formats include JPEG and HEIF.
 
@@ -39,7 +38,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so libimage_source.so)
 
 For details about the APIs, see [Image_NativeModule](../../reference/apis-image-kit/capi-image-nativemodule.md).
 
-Create a native C++ application in DevEco Studio. The project created by default contains the **index.ets** file, and a **hello.cpp** or **napi_init.cpp** file is generated in the **entry\src\main\cpp** directory. In this example, the generated file is **hello.cpp**. Implement the C APIs in **hello.cpp**. Refer to the sample code below.
+When creating a Native C++ app in DevEco Studio, the generated project includes an `index.ets` file by default, and a `cpp` file (`hello.cpp` or `napi_init.cpp`; this example uses `hello.cpp` as the file name) is automatically generated in the `entry\src\main\cpp` directory. Implement the C API call logic in `hello.cpp`. The sample code is as follows:
 
 **Example of Using the Decoding APIs**
 
@@ -50,7 +49,7 @@ Create a native C++ application in DevEco Studio. The project created by default
 1. Import the required header files.
 
    <!-- @[decodingPicture_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadPicture.cpp) -->     
-
+   
    ``` C++
    #include <hilog/log.h>
    #include <multimedia/image_framework/image/image_native.h>
@@ -63,7 +62,7 @@ Create a native C++ application in DevEco Studio. The project created by default
 2. Modify the log macro definition as required.
 
    <!-- @[define_logInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->    
-
+   
    ``` C++
    #undef LOG_DOMAIN
    #undef LOG_TAG
@@ -74,7 +73,7 @@ Create a native C++ application in DevEco Studio. The project created by default
 3. Define the ImagePictureNative class.
 
    <!-- @[define_pictureClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/imageKits.h) -->    
-
+   
    ``` C
    class ImagePictureNative {
    public:
@@ -92,7 +91,7 @@ Create a native C++ application in DevEco Studio. The project created by default
 4. Create an ImagePictureNative instance.
 
    <!-- @[create_pictureClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadPicture.cpp) -->    
-
+   
    ``` C++
    static ImagePictureNative *g_thisPicture = new ImagePictureNative();
    ```
@@ -100,14 +99,14 @@ Create a native C++ application in DevEco Studio. The project created by default
 5. Define the ImageAuxiliaryPictureNative class.
 
    <!-- @[define_auxPictureClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/imageKits.h) -->    
-
+   
    ``` C
    class ImageAuxiliaryPictureNative {
    public:
        Image_ErrorCode errorCode = IMAGE_SUCCESS;
        Image_AuxiliaryPictureType type = AUXILIARY_PICTURE_TYPE_GAINMAP;
        OH_AuxiliaryPictureNative *auxiliaryPicture = nullptr;
-       size_t buffSize = 640 * 480 * 4; // Size of the auxiliary picture (width * height * number of bytes per pixel).
+       size_t buffSize = 640 * 480 * 4; // Size of the auxiliary image (width * height * number of bytes per pixel).
        ImageAuxiliaryPictureNative() {}
        ~ImageAuxiliaryPictureNative() {}
    };
@@ -116,7 +115,7 @@ Create a native C++ application in DevEco Studio. The project created by default
 6. Create an ImageAuxiliaryPictureNative instance.
 
    <!-- @[create_auxPictureClass](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadPicture.cpp) -->    
-
+   
    ``` C++
    static ImageAuxiliaryPictureNative *g_thisAuxiliaryPicture  = new ImageAuxiliaryPictureNative();
    ```
@@ -124,7 +123,7 @@ Create a native C++ application in DevEco Studio. The project created by default
 7. Create the **GetJsResult** function to process the NAPI return value.
 
    <!-- @[get_returnValue](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/napi_init.cpp) -->    
-
+   
    ``` C++
    // Process the NAPI return value.
    napi_value GetJsResult(napi_env env, int result)
@@ -151,8 +150,9 @@ Create a native C++ application in DevEco Studio. The project created by default
    >
    > Not all images contain auxiliary images. Before obtaining an auxiliary image, call the `OH_PictureNative_GetAuxiliaryPicture` API to attempt retrieval. For other auxiliary image types, see [Image_AuxiliaryPictureType](../../reference/apis-image-kit/capi-picture-native-h.md#image_auxiliarypicturetype).
 
-   <!-- @[picture_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadPicture.cpp) -->      
 
+   <!-- @[picture_operations](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadPicture.cpp) -->      
+   
    ``` C++
    // Release the image source.
    napi_value ReleasePictureSource(napi_env env, napi_callback_info info)

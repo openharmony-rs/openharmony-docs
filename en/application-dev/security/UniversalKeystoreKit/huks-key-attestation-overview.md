@@ -6,7 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=d3532cdb382de60022a0814eb4efa4eadebea1d6 translatedAt=2026-08-13T08:24:08.764Z pushedAt=2026-08-13T10:20:24.711Z -->
+<!-- md-trans-meta sourceCommit=ffc5e2859dca1ab6a17f6a8a1c145390f67cf1d5 translatedAt=2026-10-10T03:30:27.037Z pushedAt=2026-10-10T03:40:22.228Z -->
 
 HUKS provides attestation for the public keys of asymmetric key pairs.
 
@@ -22,7 +22,6 @@ HUKS issues a certificate for the public key of an asymmetric key pair stored in
 The [Group Key](huks-group-key-overview.md) feature is supported since API version 23.
 
 The key attestation extension field uses the ASN.1 DER standard encoding format. The data structure is defined as follows:
-
 ```asn1
 KeyAttestation ::= SEQUENCE {
   version            AttestationVersion DEFAULT v1,
@@ -47,7 +46,6 @@ ApplicationIDType ::= SEQUENCE {
 ```
 
 **AttestationClaim** types and values:
-
 | type (OID)| Data Type of value| securityLevel | Claim Description|
 | -------- | -------- | -------- | -------- | 
 | 1.3.6.1.4.1.2011.2.376.2.1.4 | OCT_STR | Reserved.| Challenge passed in by the application.|
@@ -57,15 +55,12 @@ ApplicationIDType ::= SEQUENCE {
 | 1.3.6.1.4.1.2011.2.376.2.2.4.8 | UTF8_STR | Reserved.| Product model, supported since API version 20.|
 
 <!--Del-->
-
 > **NOTE**
 >
 > OEMs can decide whether to implement these fields based on their needs.
-
 <!--DelEnd-->
 
 ApplicationIDType types and values:
-
 | type (OID)| value|
 | -------- | -------- |
 | 1.3.6.1.4.1.2011.2.376.2.1.3.1 | Example: {appId:"xxx", bundleName:"xxx", appIdentifier:"xxx", appMode:"xxx"},<br>where **appIdentifier** and **appMode** are supported since API version 20.|
@@ -80,13 +75,9 @@ The key attestation process is as follows:
 3. The certificate chain is sent to a trusted server. The server parses the certificate chain and verifies the certificate chain validity and whether a single certificate is revoked.
 
 <!--RP2-->
-
 Currently, the system provides two key attestation modes.
-
 - Anonymous key attestation: This type of attestation will not disclose the device information, and the caller does not require any permission. Anonymous key attestation is available to all applications. To protect user device information, third-party applications can use anonymous attestation only. By default, each application's instantaneous traffic for calling the anonymous key attestation API shall not exceed 35 requests per second.<!--RP3--><!--RP3End-->
-
 - Non-anonymous key attestation: The device information of the caller can be viewed, and the caller must have the [ohos.permission.ATTEST_KEY](../AccessToken/permissions-for-system-apps.md#ohospermissionattest_key) permission.
-
 <!--RP2End-->
 
 Currently, emulators <!--Del-->and developer boards <!--DelEnd-->support anonymous certificates. The certificate used in the debugging environment is not a real device certificate. You need to note this in cloud scenarios and avoid misuse.
@@ -94,19 +85,14 @@ Currently, emulators <!--Del-->and developer boards <!--DelEnd-->support anonymo
 ## Supported Algorithms
 
 The following table lists the supported key attestation specifications.
-
 <!--Del-->
-
 The key management service specifications include mandatory specifications and optional specifications. Mandatory specifications are algorithm specifications that must be supported. Optional specifications can be used based on actual situation. Before using the optional specifications, refer to the documents provided by the vendor to ensure that the specifications are supported.
 
 **You are advised to use mandatory specifications in your development for compatibility purposes.**
-
 <!--DelEnd-->
 
 <!--Del-->
-
 **Anonymous key attestation**
-
 <!--DelEnd-->
 
 | Algorithm| Description| API Version| <!--DelCol4-->Mandatory|
@@ -118,7 +104,6 @@ The key management service specifications include mandatory specifications and o
 | SM2 | - | 11+ | Yes|
 
 <!--Del-->
-
 **Non-anonymous key attestation**
 
 | Algorithm| Description| API Version| Mandatory|
@@ -128,5 +113,4 @@ The key management service specifications include mandatory specifications and o
 | X25519 | - | 8+ | Yes|
 | ED25519 | - | 16+ | Yes|
 | SM2 | - | 8+ | Yes|
-
 <!--DelEnd-->

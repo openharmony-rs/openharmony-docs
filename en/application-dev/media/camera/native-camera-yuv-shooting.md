@@ -1,12 +1,11 @@
 # YUV Photo Capture (C/C++)
-
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=9a88338888413bc410a855d79b95bea9e0b612b8 translatedAt=2026-08-10T09:23:11.439Z pushedAt=2026-08-10T13:51:08.206Z -->
+<!-- md-trans-meta sourceCommit=132342cdd19e09e8d1c7a964e48a57b6cf30fc8d translatedAt=2026-09-28T02:51:19.256Z pushedAt=2026-09-29T08:31:40.322Z -->
 
 Starting from API version 23, the camera framework provides the capability to capture photos in YUV format. Compared with regular photo capture, YUV photo capture obtains unencoded image data, which fully preserves the raw luminance and chrominance information captured by the sensor. This makes it suitable for video encoding or professional processing. However, the capture process incurs higher power consumption, and saving the data occupies more storage space.
 
@@ -17,7 +16,7 @@ For detailed camera API descriptions, refer to the camera module description [OH
 1. Import the NDK interfaces, which provide camera-related attributes and methods. The import method is as follows:
 
    <!-- @[import_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKYUVPhotoSample/entry/src/main/cpp/camera_manager.h) -->
-
+   
    ``` C
    #include <cstdint>
    #include <cstdio>
@@ -78,7 +77,7 @@ For detailed camera API descriptions, refer to the camera module description [OH
    Call [OH_CameraManager_GetSupportedFullCameraOutputCapabilityWithSceneMode()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getsupportedfullcameraoutputcapabilitywithscenemode) to obtain the capabilities of all output streams supported by the current device, including preview streams, photo streams, and video streams. The output streams are in the respective profile fields of `CameraOutputCapability`, where the photo stream supports the YUV format. Depending on the specified camera device mode [Camera_SceneMode](../../reference/apis-camera-kit/capi-camera-h.md#camera_scenemode), different types of output streams need to be added.
 
    <!-- @[get_full_outputCapability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKYUVPhotoSample/entry/src/main/cpp/camera_manager.cpp) -->
-
+   
    ``` C++
    Camera_OutputCapability* NDKCamera::GetSupportedFullCameraOutputCapability(Camera_Manager* cameraManager,
        Camera_Device &camera)
@@ -100,12 +99,12 @@ For detailed camera API descriptions, refer to the camera module description [OH
 
 5. Select the output stream capabilities supported by the device and create a photo output stream.
 
-Create a photo output stream via the [OH_CameraManager_CreatePhotoOutputWithoutSurface()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_createphotooutputwithoutsurface) method.
+   Create a photo output stream via the [OH_CameraManager_CreatePhotoOutputWithoutSurface()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_createphotooutputwithoutsurface) method.
 
-You can call [OH_CameraManager_GetSupportedFullCameraOutputCapabilityWithSceneMode()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getsupportedfullcameraoutputcapabilitywithscenemode) to obtain the complete output capability `cameraOutputCapability` supported by the camera in a specified mode, as described in step 2. From the `photoProfiles` in `cameraOutputCapability`, select a profile that supports the YUV format as the `photoProfile` parameter for creating the photo output stream.
+   You can call [OH_CameraManager_GetSupportedFullCameraOutputCapabilityWithSceneMode()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getsupportedfullcameraoutputcapabilitywithscenemode) to obtain the complete output capability `cameraOutputCapability` supported by the camera in a specified mode, as described in step 2. From the `photoProfiles` in `cameraOutputCapability`, select a profile that supports the YUV format as the `photoProfile` parameter for creating the photo output stream.
 
    <!-- @[create_photo_output](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKYUVPhotoSample/entry/src/main/cpp/camera_manager.cpp) -->
-
+   
    ``` C++
    Camera_ErrorCode NDKCamera::CreatePhotoOutputWithoutSurfaceId()
    {
@@ -126,24 +125,21 @@ You can call [OH_CameraManager_GetSupportedFullCameraOutputCapabilityWithSceneMo
 
 6. Register a one-shot (`PhotoAvailable`) or deferred (`PhotoAssetAvailable`) photo capture callback. If your app needs to receive images quickly, the [deferred photo capture (PhotoAssetAvailable)](./native-camera-deferred-capture.md) callback is recommended.
 
-> **NOTE**
->
-> If a `PhotoAssetAvailable` callback has already been registered and a `PhotoAvailable` callback is registered again after the session starts, registering both `PhotoAssetAvailable` and `PhotoAvailable` simultaneously will cause the stream to restart, and only `PhotoAssetAvailable` will take effect.
+   > **NOTE**
+   >
+   > If a `PhotoAssetAvailable` callback has already been registered and a `PhotoAvailable` callback is registered again after the session starts, registering both `PhotoAssetAvailable` and `PhotoAvailable` simultaneously will cause the stream to restart, and only `PhotoAssetAvailable` will take effect.
 
    - **One-shot photo capture (PhotoAvailable) development process:**
 
      - Register the one-shot photo capture callback before the session [OH_CaptureSession_CommitConfig](../../reference/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_commitconfig).
-
      - In the one-shot photo capture callback function, obtain image information, parse the pixelMap data, and perform custom business processing.
-
      - Pass the processed pixelMap to the ArkTS side via a callback for image display or save the image to a file through a security component.
-
      - Unregister the one-shot photo capture callback function after use.
 
      <!-- @[set_photo_single_cb](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKYUVPhotoSample/entry/src/main/cpp/camera_manager.cpp) -->
-
+     
      ``` C++
-     // Callback function for deferred photo capture.
+     // Callback function for one-shot photo capture.
      void OnPhotoAvailable(Camera_PhotoOutput* photoOutput, OH_PhotoNative* photo)
      {
          OH_LOG_INFO(LOG_APP, "OnPhotoAvailable start!");
@@ -231,20 +227,16 @@ You can call [OH_CameraManager_GetSupportedFullCameraOutputCapabilityWithSceneMo
      }
      ```
 
-   - **Deferred photo capture (PhotoAvailable) development process**:
+   - **Deferred photo capture (PhotoAssetAvailable) development process**:
 
      - Register the deferred photo capture callback before the session [OH_CaptureSession_CommitConfig](../../reference/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_commitconfig).
-
      - In the deferred photo capture callback function, obtain image information, parse the pixelMap data, and perform custom service processing.
-
      - Pass the processed pixelMap to the ArkTS side via a callback for image display or for saving the image to a file through a security component.
-
      - After calling [OH_PhotoOutput_Capture](../../reference/apis-camera-kit/capi-photo-output-h.md#oh_photooutput_capture) to take a photo, you must promptly call [OH_MediaAssetChangeRequest_SaveCameraPhoto](../../reference/apis-media-library-kit/capi-media-asset-change-request-capi-h.md#oh_mediaassetchangerequest_savecameraphoto) to save the image or [OH_MediaAssetChangeRequest_DiscardCameraPhoto](../../reference/apis-media-library-kit/capi-media-asset-change-request-capi-h.md#oh_mediaassetchangerequest_discardcameraphoto) to discard the image. Otherwise, subsequent photo capture will be affected.
-
-     - Deregister the deferred photo capture callback function after use.
+     - Unregister the deferred photo capture callback function after use.
 
      <!-- @[set_photo_double_cb](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKYUVPhotoSample/entry/src/main/cpp/camera_manager.cpp) -->
-
+     
      ``` C++
      // Declare the quick return photo callback.
      void OnRequestQuickImageDataPreparedWithDetails(MediaLibrary_ErrorCode result, MediaLibrary_RequestId requestId,
@@ -333,10 +325,10 @@ You can call [OH_CameraManager_GetSupportedFullCameraOutputCapabilityWithSceneMo
 
 8. Trigger photo capture.
 
-Execute the photo capture task via the [OH_PhotoOutput_Capture()](../../reference/apis-camera-kit/capi-photo-output-h.md#oh_photooutput_capture) method.
+   Execute the photo capture task via the [OH_PhotoOutput_Capture()](../../reference/apis-camera-kit/capi-photo-output-h.md#oh_photooutput_capture) method.
 
    <!-- @[take_picture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKYUVPhotoSample/entry/src/main/cpp/camera_manager.cpp) -->
-
+   
    ``` C++
    Camera_ErrorCode NDKCamera::TakePicture(int32_t degree)
    {
@@ -367,7 +359,7 @@ During camera app development, you can listen for photo output stream status at 
 - Listen for the photo start result by registering the fixed **onFrameStart** callback function. You can listen for this event once the photo output is created successfully. This event is triggered upon the first exposure of a photo.
 
   <!-- @[photo_output_start_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKYUVPhotoSample/entry/src/main/cpp/camera_manager.cpp) -->
-
+  
   ``` C++
   void PhotoOutputOnFrameStart(Camera_PhotoOutput *photoOutput)
   {
@@ -381,9 +373,9 @@ During camera app development, you can listen for photo output stream status at 
   ```
 
 - Listen for the photo end result by registering the fixed **onFrameEnd** callback function. You can listen for this event once the photo output is created successfully.
-
+  
   <!-- @[photo_output_end_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKYUVPhotoSample/entry/src/main/cpp/camera_manager.cpp) -->
-
+  
   ``` C++
   void PhotoOutputOnFrameEnd(Camera_PhotoOutput *photoOutput, int32_t frameCount)
   {
@@ -394,7 +386,7 @@ During camera app development, you can listen for photo output stream status at 
 - Listen for the result of whether the next photo can be captured by registering the fixed **captureReady** callback function. You can listen for this event once the photo output is created successfully. This event is triggered when the next photo is ready to be captured, and the returned result contains information about the readiness for the next photo.
 
   <!-- @[capture_ready_cb](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKYUVPhotoSample/entry/src/main/cpp/camera_manager.cpp) -->
-
+  
   ``` C++
   void CaptureReadyCb(Camera_PhotoOutput* photoOutput)
   {
@@ -412,7 +404,7 @@ During camera app development, you can listen for photo output stream status at 
 - Listen for error results of the photo output stream by registering the fixed `onError` callback function. The callback returns the corresponding error code when an error occurs in using the photo output interface. For details about the error codes, see [Camera_ErrorCode](../../reference/apis-camera-kit/capi-camera-h.md#camera_errorcode).
 
   <!-- @[photo_output_error_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKYUVPhotoSample/entry/src/main/cpp/camera_manager.cpp) -->
-
+  
   ``` C++
   void PhotoOutputOnError(Camera_PhotoOutput *photoOutput, Camera_ErrorCode errorCode)
   {

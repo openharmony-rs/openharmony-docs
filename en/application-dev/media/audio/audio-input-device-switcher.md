@@ -5,7 +5,7 @@
 <!--Designer: @zhanganxiang1-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=d538122145fbb0d7b382ef7934270d2fe6f83e9d translatedAt=2026-09-02T07:32:23.072Z pushedAt=2026-09-02T07:41:09.103Z -->
+<!-- md-trans-meta sourceCommit=3cba3d1071f73693662a910e0841fe04876df38d translatedAt=2026-09-28T02:34:24.687Z pushedAt=2026-09-29T06:38:39.269Z -->
 
 Starting from API version 21, support for switching audio input device routes is available.
 
@@ -52,7 +52,7 @@ Applications can use [selectMediaInputDevice](../../reference/apis-audio-kit/ark
 >
 > In call scenarios, the input device follows the current output device, and other concurrent recording streams also follow the call input device.
 
-<!-- @[selectMediaInputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioInputDeviceSwitcher.ets) -->  
+<!-- @[selectMediaInputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioInputDeviceSwitcher.ets) -->
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
@@ -385,7 +385,7 @@ C/C++ example:
   }
   
   // ...
-  // Set the preferred input device for the specified audio capture stream.
+  // Set the preferred input device for the specified audio recording stream.
   napi_value SelectInputDeviceForAudioCapturer(napi_env env, napi_callback_info info)
   {
       int32_t deviceId = 0;

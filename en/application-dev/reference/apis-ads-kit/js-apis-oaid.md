@@ -5,16 +5,16 @@
 <!--Designer: @zhansf1988-->
 <!--Tester: @hongmei_may-->
 <!--Adviser: @RayShih-->
-<!-- md-trans-meta sourceCommit=3af2c2640a0dfa1285ceb6197505adab556ff3bb translatedAt=2026-09-02T02:15:42.708Z pushedAt=2026-09-03T06:45:35.729Z -->
+<!-- md-trans-meta sourceCommit=0c8a16f2f37045e8dab4d32079468a2615074183 translatedAt=2026-10-09T12:19:14.581Z pushedAt=2026-10-10T09:42:16.760Z -->
 
 
 This module provides the capability of obtaining the Open Anonymous Device Identifier (OAID).
 
 
 > **NOTE**<br>
-> <br>
+> <br> 
 > The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.<br>
-> <br>
+> <br> 
 > To use the API for obtaining the OAID, you need to [request user authorization](../../security/AccessToken/request-user-authorization.md) (the permission is enabled by default): ohos.permission.APP_TRACKING_CONSENT.
 
 
@@ -62,6 +62,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 void identifier.getOAID().then((data: string) => {
   const oaid: string = data;
+  hilog.info(0x0000, 'testTag', `Succeeded in getting OAID: ${oaid}`);
 }).catch((error: BusinessError) => {
   hilog.error(0x0000, 'testTag', `Failed to get oaid. Code is ${error.code}, message is ${error.message}`);
 });
@@ -85,7 +86,7 @@ Obtains the OAID. This API uses an asynchronous callback to return the result.
 | callback | AsyncCallback&lt;string&gt; | Yes | Callback used to return the OAID.<br/>1. If the app has configured the ohos.permission.APP_TRACKING_CONSENT permission and the cross-app association access permission is allowed, the OAID is returned.<br/>2. If the app has configured the ohos.permission.APP_TRACKING_CONSENT permission and the cross-app association access permission is disallowed, 00000000-0000-0000-0000-000000000000 is returned.<br/>3. If the app has not configured the ohos.permission.APP_TRACKING_CONSENT permission, 00000000-0000-0000-0000-000000000000 is returned. |
 
 > **NOTE**<br>
-> <br>
+> <br> 
 > The setting item of cross-app association access permission was named app tracking access permission in HarmonyOS NEXT Developer Beta5 and earlier versions.
 
 **Error codes**
@@ -107,5 +108,6 @@ identifier.getOAID((err: BusinessError, data: string) => {
     return;
   }
   const oaid: string = data;
+  hilog.info(0x0000, 'testTag', `Succeeded in getting OAID: ${oaid}`);
 });
 ```

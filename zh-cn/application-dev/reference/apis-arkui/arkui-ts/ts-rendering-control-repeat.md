@@ -18,7 +18,9 @@ Repeat基于数组类型数据来进行循环渲染，一般与滚动容器组�
 
 ## 接口
 
-### Repeat: \<T\>(arr: Array\<T\>)
+### Repeat
+
+Repeat\<T\>(arr: Array\<T\>)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -36,7 +38,9 @@ Repeat基于数组类型数据来进行循环渲染，一般与滚动容器组�
 Repeat<string>(this.arr)
 ```
 
-### Repeat: \<T\>(arr: RepeatArray\<T\>)<sup>18+</sup>
+### Repeat
+
+Repeat\<T\>(arr: RepeatArray\<T\>)
 
 > **说明：**
 >

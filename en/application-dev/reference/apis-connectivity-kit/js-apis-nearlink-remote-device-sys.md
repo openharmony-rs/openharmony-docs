@@ -1,12 +1,12 @@
 # @ohos.nearlink.remoteDevice (NearLink Remote Device Connection Capability) (System API)
-
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @CCCZKing-->
 <!--Designer: @lilong32; @CCCZKing-->
 <!--Tester: @zhangjiaji111-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=1f7ebf6194dca265f1a8eeefc330905f60a6cb97 translatedAt=2026-08-17T08:48:30.948Z pushedAt=2026-08-18T12:08:21.250Z -->
+<!-- md-trans-meta sourceCommit=304517cf5105092ff7ebb1be0da01c6a3f1d16fb translatedAt=2026-10-09T13:27:07.040Z pushedAt=2026-10-10T07:16:24.943Z -->
+
 
 This module provides the capabilities of connecting to and managing NearLink remote devices, including connecting to and disconnecting from remote devices, pairing with a trusted device and confirmation, adjusting the connection interval, and subscribing to pairing requests.
 
@@ -15,6 +15,7 @@ This module provides the capabilities of connecting to and managing NearLink rem
 > **NOTE**
 >
 > The APIs provided by this module are system APIs.
+
 
 ## Modules to Import
 
@@ -64,6 +65,7 @@ Provides the method for operating on a remote device. Before using this method, 
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
+
 ### startCrediblePairing
 
 startCrediblePairing(): Promise&lt;void&gt;
@@ -96,10 +98,9 @@ For details about the following error codes, see [Universal Error Codes](../erro
 | 36100099 | Operation failed. |
 
 **Example**
-
 ```typescript
 import { remoteDevice } from '@kit.ConnectivityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let addr: string = '11:22:33:44:AA:FF';
@@ -144,10 +145,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 36100099 | Operation failed. |
 
 **Example**
-
 ```typescript
 import { remoteDevice } from '@kit.ConnectivityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let addr: string = '11:22:33:44:AA:FF';
@@ -192,10 +192,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 36100099 | Operation failed. |
 
 **Example**
-
 ```typescript
 import { remoteDevice } from '@kit.ConnectivityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let addr: string = '11:22:33:44:AA:FF';
@@ -238,10 +237,9 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 | 36100099 | Operation failed. |
 
 **Example**
-
 ```typescript
 import { remoteDevice } from '@kit.ConnectivityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let addr: string = '11:22:33:44:AA:FF';
@@ -286,10 +284,9 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 | 36100099 | Operation failed. |
 
 **Example**
-
 ```typescript
 import { remoteDevice } from '@kit.ConnectivityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let addr: string = '11:22:33:44:AA:FF';
@@ -335,10 +332,9 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 | 36100099 | Operation failed. |
 
 **Example**
-
 ```typescript
 import { remoteDevice } from '@kit.ConnectivityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let addr: string = '11:22:33:44:AA:FF'; // Remote device address obtained through scanning
 let device: remoteDevice.RemoteDevice = remoteDevice.createRemoteDevice(addr);
@@ -383,10 +379,9 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 | 36100099 | Operation failed. |
 
 **Example**
-
 ```typescript
 import { remoteDevice } from '@kit.ConnectivityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 let addr: string = '11:22:33:44:AA:FF'; // Remote device address obtained through scanning
 let device: remoteDevice.RemoteDevice = remoteDevice.createRemoteDevice(addr);
@@ -429,7 +424,6 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 | 36100099 | Operation failed. |
 
 **Example**
-
 ```typescript
 import { remoteDevice } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -476,7 +470,6 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 | 36100099 | Operation failed. |
 
 **Example**
-
 ```typescript
 import { remoteDevice } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -533,7 +526,6 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 | 36100099 | Operation failed. |
 
 **Example**
-
 ```typescript
 import { remoteDevice } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -584,7 +576,6 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 | 36100099 | Operation failed. |
 
 **Example**
-
 ```typescript
 import { remoteDevice } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -634,7 +625,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 36100099 | Operation failed. |
 
 **Example**
-
 ```typescript
 import { remoteDevice, nearlinkConstant } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -684,10 +674,9 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 | 36100099 | Operation failed. |
 
 **Example**
-
 ```typescript
 import { remoteDevice } from '@kit.ConnectivityKit';
-import { BusinessError, Callback } from '@ohos.base';
+import { BusinessError, Callback } from '@kit.BasicServicesKit';
 
 let callback: Callback<remoteDevice.PairingRequestParam> = (data: remoteDevice.PairingRequestParam) => {
   console.info('pairing request param: ' + JSON.stringify(data));
@@ -731,10 +720,9 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 | 36100099 | Operation failed. |
 
 **Example**
-
 ```typescript
 import { remoteDevice } from '@kit.ConnectivityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   remoteDevice.offPairingRequest();

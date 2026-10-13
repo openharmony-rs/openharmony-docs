@@ -3,7 +3,7 @@
 <!--Subsystem: Window-->
 <!--Owner: @Pakoo007-->
 <!--Designer: @stupidb-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
 
 用于[EmbeddedUIExtensionAbility](../../application-models/embeddeduiextensionability.md)（或[UIExtensionAbility](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#uiextensionability)）中获取宿主应用的窗口信息或对应的[EmbeddedComponent](./arkui-ts/ts-container-embedded-component.md)<!--Del-->（或[UIExtensionComponent](../../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md)）<!--DelEnd-->组件的信息。

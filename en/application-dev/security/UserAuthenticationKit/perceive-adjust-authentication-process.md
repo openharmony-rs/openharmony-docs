@@ -6,6 +6,7 @@
 <!--Designer: @lichangting518-->
 <!--Tester: @jane_lz-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=e600b12aae0cc3101939a6eae88a77b38f916061 translatedAt=2026-10-10T03:30:40.975Z pushedAt=2026-10-10T03:41:57.103Z -->
 
 From API version 20, you can adjust and perceive the authentication process using related APIs.
 
@@ -37,7 +38,7 @@ For details about the parameters, return values, and error codes, see [@ohos.use
 
 The following code snippet shows how to skip the disabled biometric authentication and subscribe to the authentication information:
 
-<!-- @[perceive-adjust-authentication-process](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[perceive-adjust-authentication-process](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 perceiveAndAdjustAuthentication() {
@@ -60,16 +61,14 @@ perceiveAndAdjustAuthentication() {
     // Obtain an authentication object.
     const userAuthInstance = userAuth.getUserAuthInstance(authParam, widgetParam);
     Logger.info('get userAuth instance successfully.');
-    // Subscribe to authentication tip information.
+    // Subscribe to authentication tips.
     userAuthInstance.on('authTip', (authTipInfo: userAuth.AuthTipInfo) => {
       try {
         Logger.info('userAuthInstance callback.');
         this.result[ResultIndex.PERCEIVE_ADJUST] = (`${authTipInfo.tipType}`);
-        // Unsubscribe from the information after authentication is complete.
-        userAuthInstance.off('result');
       } catch (error) {
         const err: BusinessError = error as BusinessError;
-        Logger.error(`onResult failed, code: ${err?.code}, Message: ${err?.message}`);
+        Logger.error(`onAuthTip failed, code: ${err?.code}, Message: ${err?.message}`);
       }
     });
     // Start user authentication.

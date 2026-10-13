@@ -1,14 +1,13 @@
 # Text Display (Text/Span)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @xiangyuan6-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=b955ecedcc5f339f038655fcc59fbdfb7c977af9 translatedAt=2026-07-31T03:33:18.256Z pushedAt=2026-07-31T03:45:26.884Z -->
+<!-- md-trans-meta sourceCommit=50f5d66e38b8b4fff9b1e5a462513d4b69c2569d translatedAt=2026-10-10T06:11:04.579Z pushedAt=2026-10-12T08:19:52.271Z -->
 
-The **Text** component is used to display textual content. It can be bound to a custom text selection menu, allowing users to select features as needed. Additionally, you can extend this custom menu to add more options, further enhancing user experience. The **Span** component is used to display inline text. 
+The **Text** component is used to display textual content. It can be bound to a custom text selection menu, allowing users to select features as needed. Additionally, you can extend this custom menu to add more options, further enhancing user experience. The **Span** component is used to display inline text.  
 
 For details, see the API documentation for [Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md) and [Span](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md).
 
@@ -18,6 +17,7 @@ For details, see [FAQs About Text Display (Text/Span)](./arkts-text-faq.md#faqs-
 
 You can create text in either of the following ways:
 
+
 - Entering strings
 
   <!-- @[create_a_text_in_one_way](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CreateText.ets) -->
@@ -26,7 +26,9 @@ You can create text in either of the following ways:
   Text('I am a piece of text')
   ```
 
+
 ![text-basic](figures/text-basic.png)
+
 
 - Referencing Resource objects
 
@@ -55,7 +57,8 @@ You can create text in either of the following ways:
     .width(300)
   ```
 
-![text-create](figures/text-create.png)
+  ![text-create](figures/text-create.png)
+
 
 ## Adding Child Components
 
@@ -64,6 +67,7 @@ The [Span](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md) compone
 - Creating a **Span** component
 
   A **Span** component is only visible when embedded within a **Text** component. Using a **Span** independently displays no content. If both **Text** and **Span** content are configured, the **Span** content overrides the **Text** content.
+
 
   <!-- @[create_span](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextSpan.ets) -->
 
@@ -77,11 +81,12 @@ The [Span](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md) compone
   .borderWidth(1)
   ```
 
-![text-child-component](figures/text-child-component.png)
+  ![text-child-component](figures/text-child-component.png)
 
 - Setting the text decoration
 
   Use the [decoration](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md#decoration) attribute to set the style and color of the text decorative line.
+
 
   <!-- @[create_span_with_lines](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextSpan.ets) -->
 
@@ -108,7 +113,7 @@ The [Span](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md) compone
   .padding(10)
   ```
 
-![text-child-span](figures/text-child-span.png)
+  ![text-child-span](figures/text-child-span.png)
 
 - Use the [textCase](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md#textcase) attribute to set the text case.
 
@@ -123,11 +128,12 @@ The [Span](../reference/apis-arkui/arkui-ts/ts-basic-components-span.md) compone
   .padding(10)
   ```
 
-![text-child-image](figures/text-child-image.png)
+  ![text-child-image](figures/text-child-image.png)
 
 - Adding events
 
   Because **Span** components do not have independent size information, they only support the [onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick) and [onHover](../reference/apis-arkui/arkui-ts/ts-universal-events-hover.md#onhover) events.
+
 
   <!-- @[textspan_onhover](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/TextSpanOnHover.ets) -->
 
@@ -240,7 +246,7 @@ The following examples demonstrate usage of common APIs.
     .padding(10)
   ```
 
-![text-styled](figures/text-styled.png)
+  ![text-styled](figures/text-styled.png)
 
 - Use the [textOverflow](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textoverflow) attribute to set the display mode for when the text is too long. This attribute must be used together with [maxLines](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#maxlines). By default, the text is automatically wrapped. Since API version 18, when text overflow is set to marquee mode, you can configure marquee parameters such as enabled status, scroll step, loop count, and direction.
 
@@ -296,7 +302,7 @@ The following examples demonstrate usage of common APIs.
     })
   ```
 
-![text-custom-style](figures/text-custom-style.gif)
+  ![text-custom-style](figures/text-custom-style.gif)
 
 - Use the [lineHeight](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#lineheight) attribute to set the text line height.
 
@@ -313,7 +319,7 @@ The following examples demonstrate usage of common APIs.
     .lineHeight(20)
   ```
 
-![radio-default](figures/radio-default.png)
+  ![text-line-height](figures/text-line-height.png)
 
 - Use the [decoration](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#decoration) attribute to set the style, color, and thickness of the text decoration line.
 
@@ -399,7 +405,7 @@ The following examples demonstrate usage of common APIs.
     .margin(5)
   ```
 
-![text-styled-span](figures/text-styled-span.png)
+  ![text-styled-span](figures/text-styled-span.png)
 
 - Use the [letterSpacing](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#letterspacing) attribute to set the letter spacing.
 
@@ -429,7 +435,7 @@ The following examples demonstrate usage of common APIs.
     .margin(5)
   ```
 
-![text-styled-span2](figures/text-styled-span2.png)
+  ![text-styled-span2](figures/text-styled-span2.png)
 
 - Use the [minFontSize](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#minfontsize) and [maxFontSize](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#maxfontsize) attributes to adaptively adjust the font size.
 
@@ -484,7 +490,7 @@ The following examples demonstrate usage of common APIs.
     .margin(5)
   ```
 
-![radio-styled](figures/radio-styled.png)
+  ![radio-styled](figures/radio-styled.png)
 
 - Use the [textCase](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textcase) attribute to set the text case.
 
@@ -512,7 +518,7 @@ The following examples demonstrate usage of common APIs.
     .margin(5)
   ```
 
-![text-styled-span3](figures/text-styled-span3.png)
+  ![text-styled-span3](figures/text-styled-span3.png)
 
 - Use the [copyOption](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#copyoption9) attribute to set whether copy and paste is allowed.
 
@@ -525,7 +531,7 @@ The following examples demonstrate usage of common APIs.
     .copyOption(CopyOptions.InApp)
   ```
 
-![text-copy-option](figures/text-copy-option.png)
+  ![text-copy-option](figures/text-copy-option.png)
 
 - Via the [fontFamily](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#fontfamily) attribute, set the text font family. The app currently supports the 'HarmonyOS Sans' font and [custom font registration](../reference/apis-arkui/js-apis-font.md).
 
@@ -559,7 +565,7 @@ The following examples demonstrate usage of common APIs.
             .borderWidth(1)
             .fontSize(40)
             .contentTransition(this.numberTransition)
-          Button('chang number')
+          Button('change number')
             .onClick(() => {
               this.number++
             })
@@ -572,7 +578,6 @@ The following examples demonstrate usage of common APIs.
     }
   }
   ```
-
   ![Text_content_transition](figures/Text_content_transition.gif)
 
 - Since API version 20, you can use [optimizeTrailingSpace](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#optimizetrailingspace20) to control whether trailing spaces at the end of each line are optimized during text layout. This addresses alignment issues caused by trailing spaces.
@@ -689,7 +694,7 @@ The following examples demonstrate usage of common APIs.
   }
   ```
 
-  <!--Del-->  <!--DelEnd-->
+  ![Text_enable_auto_spacing](figures/Text_enable_auto_spacing.gif)
 
 - Since API version 20, you can use [shaderStyle](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#shaderstyle20) to apply gradient color effects to text.
 
@@ -942,7 +947,6 @@ Since API version 20, use the [textVerticalAlign](../reference/apis-arkui/arkui-
   When using the **Text** component, you can close the selection state and menu by clicking blank areas in the following scenarios:
 
   - Clicking blank areas within the **Text** component's layout boundaries closes the selection state and menu.
-
   - Clicking blank areas outside the **Text** component requires the [selection](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#selection11) attribute to be set on the **Text** component. Example:
 
     <!-- @[Selection_Change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/SelectionChange.ets) -->
@@ -987,11 +991,11 @@ Since API version 20, use the [textVerticalAlign](../reference/apis-arkui/arkui-
     }
     ```
 
-<!--Del-->  <!--DelEnd-->
+![close_selection_menu](figures/close_selection_menu.gif)
 
 ### Disabling System Menu Callbacks and Custom Extended Menu Items
 
-Since API version 12, use [editMenuOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#editmenuoptions12) to disable system menu callbacks and custom extended menu items .
+Since API version 12, use [editMenuOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#editmenuoptions12) to disable system menu callbacks and custom extended menu items . 
 
   <!-- @[Custom_Block_Menus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/CustomAndBlockMenus.ets) -->
 
@@ -1127,7 +1131,7 @@ Since API version 12, use [editMenuOptions](../reference/apis-arkui/arkui-ts/ts-
   }
   ```
 
- <!--Del--> ![text_disable_system_menu_callback_and_custom_menu](figures/text_disable_system_menu_callback_and_custom_menu.gif)<!--DelEnd-->
+  <!--Del--> <!--DelEnd-->
 
 ### Disabling System Service Menu Items
 
@@ -1231,6 +1235,7 @@ Since API version 12, use [editMenuOptions](../reference/apis-arkui/arkui-ts/ts-
   }
   ```
 
+
   ![text_disable_menuItems](figures/text_disable_menuItems.jpg)
 
 ### Customizing the Default Menu Refresh Behavior
@@ -1318,6 +1323,7 @@ Since API version 20, the [onPrepareMenu](../reference/apis-arkui/arkui-ts/ts-te
   }
   ```
 
+
 ![text_on_prepare_menu](figures/text_on_prepare_menu.gif)
 
 ## Configuring the AI Menu
@@ -1331,7 +1337,6 @@ The **Text** component enables AI menu display through the [enableDataDetector](
 >  The selection range must encompass a complete AI entity for the corresponding options to appear.
 
 - To enable the entity recognition options that pop up when tapping an AI entity, set [enableDataDetector](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#enabledatadetector11) to `true`. The following example shows this:
-
   <!-- @[set_ai_menu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/text/AIMenu.ets) -->
 
   ``` TypeScript
@@ -1350,10 +1355,9 @@ The **Text** component enables AI menu display through the [enableDataDetector](
     })
   ```
 
+
 - Use [dataDetectorConfig](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#datadetectorconfig11) to customize entity recognition styles. For details, see [TextDataDetectorConfig](../reference/apis-arkui/arkui-ts/ts-text-common.md#textdatadetectorconfig11).
-
-- Use [editMenuOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#editmenuoptions12) to adjust the menu position. For implementation details, see [Example 12: Setting Custom Menu Extensions](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#example-12-setting-custom-menu-extensions).
-
+- Use [editMenuOptions](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#editmenuoptions12) to adjust the menu position. For implementation details, see [Example 12: Setting Custom Menu Extensions](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#example-12-setting-custom-menu-extensions). 
 <!--RP2--><!--RP2End-->
 
 ## Implementing Hot Search Rankings
@@ -1466,8 +1470,6 @@ This example demonstrates how to implement a hot search list using the [maxLines
   }
   ```
 
+
 ![text-hot-search](figures/text-hot-search.png)
-
 <!--RP1--><!--RP1End-->
-
-<!--no_check-->

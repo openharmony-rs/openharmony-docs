@@ -1858,7 +1858,7 @@ napi_status napi_get_strong_reference_value(napi_env env, napi_strong_ref ref, n
 **描述：**
 
 根据强引用获取其关联的ArkTS对象值。使用该接口需要注意以下几点：
-1. 不能使用已删除的强引用去获取ArkTS对象值，否则可能预期外的错误。
+1. 不能使用已删除的强引用去获取ArkTS对象值，否则可能导致预期外的错误。
 
 **起始版本：** 21
 

@@ -6,18 +6,16 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=df6785f32b4da7a1b730d36b8c75ab56c8212ae1 translatedAt=2026-08-12T07:09:04.432Z pushedAt=2026-08-12T07:29:33.156Z -->
+<!-- md-trans-meta sourceCommit=e80025ed82ed281bac11c255d720292d542f564f translatedAt=2026-10-09T02:03:09.833Z pushedAt=2026-10-10T02:48:36.672Z -->
 
 For details about the algorithm specifications, see [SM2](crypto-sign-sig-verify-overview.md#sm2).
 
 ## Adding the Dynamic Library in the CMake Script
-
 ```txt
 target_link_libraries(entry PUBLIC libohcrypto.so)
 ```
 
 ## Signing Data
-
 1. Call [OH_CryptoSign_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptosign_create) with the string parameter **'SM2_256|SM3'** to create a **Sign** instance. The key type is **SM2_256**, and MD algorithm is **SM3**.
 
 2. Call [OH_CryptoSign_Init](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptosign_init) to initialize the **Sign** instance using [OH_CryptoPrivKey](../../reference/apis-crypto-architecture-kit/capi-cryptoasymkeyapi-oh-cryptoprivkey.md).
@@ -95,6 +93,7 @@ static OH_Crypto_ErrCode doSm2Test() {
 }
 ```
 
+
 ## Verifying the Signature
 
 1. Call [OH_CryptoVerify_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-signature-h.md#oh_cryptoverify_create) with the string parameter **'SM2_256|SM3'** to create a **Verify** instance. The key type is **SM2_256**, and MD algorithm is **SM3**.
@@ -109,6 +108,20 @@ static OH_Crypto_ErrCode doSm2Test() {
 
 ``` C++
 #include "signing_signature_verification.h"
+
+static void CleanupSm2SignResources(OH_CryptoAsymKeyGenerator *keyCtx,
+    OH_CryptoKeyPair *keyPair, OH_CryptoVerify *verify)
+{
+    if (verify != nullptr) {
+        OH_CryptoVerify_Destroy(verify);
+    }
+    if (keyPair != nullptr) {
+        OH_CryptoKeyPair_Destroy(keyPair);
+    }
+    if (keyCtx != nullptr) {
+        OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
+    }
+}
 
 bool DoTestSm2Signature()
 {
@@ -157,26 +170,17 @@ bool DoTestSm2Signature()
     // verify
     ret = OH_CryptoVerify_Create((const char *)"SM2_256|SM3", &verify);
     if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoVerify_Destroy(verify);
-        OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
+        CleanupSm2SignResources(keyCtx, keyPair, verify);
         return false;
     }
     ret = OH_CryptoVerify_Init(verify, pubKey);
     if (ret != CRYPTO_SUCCESS) {
-        OH_CryptoVerify_Destroy(verify);
-        OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
+        CleanupSm2SignResources(keyCtx, keyPair, verify);
         return false;
     }
     bool res = OH_CryptoVerify_Final(verify, &msgBlob, &signBlob);
-    if (res != true) {
-        OH_CryptoVerify_Destroy(verify);
-        OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
-        return false;
-    }
-
-    OH_CryptoVerify_Destroy(verify);
-    OH_CryptoAsymKeyGenerator_Destroy(keyCtx);
-    OH_CryptoKeyPair_Destroy(keyPair);
+    CleanupSm2SignResources(keyCtx, keyPair, verify);
     return res;
 }
 ```
+

@@ -70,7 +70,7 @@ Allows an application to obtain the print framework capability.
 
 Allows an application to configure Bluetooth on a device, initiate or cancel a scan for Bluetooth devices, and pair with Bluetooth devices.
 
-
+This permission allows the app to configure local Bluetooth (such as setting the Bluetooth name, turning Bluetooth on/off, etc.), initiate or cancel device scanning, and initiate Bluetooth pairing and connect to devices.
 
 **Permission level**: normal
 
@@ -246,7 +246,7 @@ including scanning, enabling/disabling, connecting, and disabling Wi-Fi, modifyi
 
 **Authorization mode**: system_grant
 
-**Supported devices**: phone | PCs/2-in-1 devices | tablets | TV | wearable | car
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
 
 **Valid since**: 8
 
@@ -260,7 +260,7 @@ Vibration includes one-time vibration, preset vibration, or custom vibration.
 
 **Authorization mode**: system_grant
 
-**Supported devices**: phone | PCs/2-in-1 devices | tablets | TV | wearable
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables
 
 **Valid since**: 7
 
@@ -296,7 +296,7 @@ Allows an application to obtain a running lock to keep running in the background
 
 **Authorization mode**: system_grant
 
-**Supported devices**: PCs/2-in-1 devices | tablets | car | phone | TV | wearable
+**Supported devices**: PCs/2-in-1 devices | tablets | cars | phones | TVs | wearables
 
 **Valid since**: 7
 
@@ -464,7 +464,7 @@ This permission allows starting a UIAbility within the same application from the
 
 **Authorization mode**: system_grant
 
-**Supported devices**: PCs/2-in-1 devices | tablets | Phones
+**Supported devices**: PCs/2-in-1 devices | tablets | phones
 
 **Valid since**: 15
 
@@ -763,7 +763,7 @@ With this permission, the application can obtain custom EDM configuration files,
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
-**Since**: 20
+**Valid since**: 20
 
 ## ohos.permission.ACCESS_CAR_AUDIO
 

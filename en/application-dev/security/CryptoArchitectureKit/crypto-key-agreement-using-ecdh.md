@@ -6,6 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=e80025ed82ed281bac11c255d720292d542f564f translatedAt=2026-10-09T01:53:25.412Z pushedAt=2026-10-10T02:38:41.392Z -->
 
 For details about the algorithm specifications, see [ECDH](crypto-key-agreement-overview.md#ecdh).
 
@@ -13,7 +14,7 @@ For details about the algorithm specifications, see [ECDH](crypto-key-agreement-
 
 1. Call [cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator), [AsyKeyGenerator.generateKeyPair](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypair-1), and [AsyKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-3) to generate a 256-bit ECC key pair (**KeyPair**).
 
-   For details about how to generate an ECC asymmetric key pair, see the following example. To learn more, see [ECC](crypto-asym-key-generation-conversion-spec.md#ecc) and [Randomly Generating an Asymmetric Key Pair](crypto-generate-asym-key-pair-randomly.md). There may be differences between the input parameters in the reference documents and those in the following example.
+   For guidance on generating an ECC asymmetric key, refer to the following example, together with [Asymmetric Key Generation and Conversion Specifications: ECC](crypto-key-generation-conversion.md#ecc) and [Randomly Generating an Asymmetric Key Pair](crypto-generate-asym-key-pair-randomly.md). The referenced documents may differ from the current example in input parameters. Pay attention to these differences when reading.
 
 2. Call [cryptoFramework.createKeyAgreement](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatekeyagreement) with the string parameter **'ECC256'** to create a 256-bit ECC key agreement (**KeyAgreement**) instance.
 
@@ -21,8 +22,8 @@ For details about the algorithm specifications, see [ECDH](crypto-key-agreement-
 
 - Example: Perform key agreement using **await**.
 
-  <!-- @[use_ecdh_for_key_negotiation_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyNegotiation/entry/src/main/ets/pages/ECDH/EDCHAsync.ets) -->
-  
+  <!-- @[use_ecdh_for_key_negotiation_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyNegotiation/entry/src/main/ets/pages/ECDH/ECDHAsync.ets) -->
+
   ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   
@@ -59,13 +60,14 @@ For details about the algorithm specifications, see [ECDH](crypto-key-agreement-
 
 - Example (using synchronous APIs):
 
-  <!-- @[use_ecdh_for_key_negotiation_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyNegotiation/entry/src/main/ets/pages/ECDH/EDCHSync.ets) -->
-  
+  <!-- @[use_ecdh_for_key_negotiation_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyNegotiation/entry/src/main/ets/pages/ECDH/ECDHSync.ets) -->
+
   ``` TypeScript
   
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
   
-  function ecdhAwait() {
+  function ecdhSync() {
     // The public and private key pair data is transferred from an external system.
     let pubKeyArray =
       new Uint8Array([48, 89, 48, 19, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7, 3, 66, 0, 4,
@@ -75,22 +77,28 @@ For details about the algorithm specifications, see [ECDH](crypto-key-agreement-
     let priKeyArray =
       new Uint8Array([48, 49, 2, 1, 1, 4, 32, 115, 56, 137, 35, 207, 0, 60, 191, 90, 61, 136, 105, 210, 16, 27, 4, 171,
         57, 10, 61, 123, 40, 189, 28, 34, 207, 236, 22, 45, 223, 10, 189, 160, 10, 6, 8, 42, 134, 72, 206, 61, 3, 1, 7]);
-    let eccGen = cryptoFramework.createAsyKeyGenerator('ECC256');
-    // Key pair A passed from an external system.
-    let keyPairA = eccGen.convertKeySync({ data: pubKeyArray }, { data: priKeyArray });
-    // Key pair B generated internally.
-    let keyPairB = eccGen.generateKeyPairSync();
-    let eccKeyAgreement = cryptoFramework.createKeyAgreement('ECC256');
-    // Use the public key of A and the private key of B to perform key agreement.
-    let secret1 = eccKeyAgreement.generateSecretSync(keyPairB.priKey, keyPairA.pubKey);
-    // Use the private key of A and the public key of B to perform key agreement.
-    let secret2 = eccKeyAgreement.generateSecretSync(keyPairA.priKey, keyPairB.pubKey);
-    // The two key agreement results should be the same.
-    if (secret1.data.toString() === secret2.data.toString()) {
-      console.info('ecdh result: success.');
-      console.info('ecdh output: ' + secret1.data);
-    } else {
-      console.error('ecdh result is not equal.');
+    try {
+      let eccGen = cryptoFramework.createAsyKeyGenerator('ECC256');
+      // Public/private key pair A passed in from outside.
+      let keyPairA = eccGen.convertKeySync({ data: pubKeyArray }, { data: priKeyArray });
+      // Public/private key pair B generated internally.
+      let keyPairB = eccGen.generateKeyPairSync();
+      let eccKeyAgreement = cryptoFramework.createKeyAgreement('ECC256');
+      // Perform key agreement using A's public key and B's private key.
+      let secret1 = eccKeyAgreement.generateSecretSync(keyPairB.priKey, keyPairA.pubKey);
+      // Perform key agreement using A's private key and B's public key.
+      let secret2 = eccKeyAgreement.generateSecretSync(keyPairA.priKey, keyPairB.pubKey);
+      // The results of the two agreements should be the same.
+      if (secret1.data.toString() === secret2.data.toString()) {
+        console.info('ecdh result: success.');
+        console.info('ecdh output: ' + secret1.data);
+      } else {
+        console.error('ecdh result is not equal.');
+      }
+    } catch (err) {
+      let e: BusinessError = err as BusinessError;
+      console.error(`call failed: errCode: ${e.code}, errMsg: ${e.message}`);
     }
   }
   ```
+

@@ -6,6 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=176a53b51231dd6d20addd1768f1625bead2763b translatedAt=2026-09-28T01:45:24.019Z pushedAt=2026-10-09T03:50:52.556Z -->
 
 The **networkSecurity** module provides the network security verification capability. Specifically, it provides APIs for applications to verify the certificates in use.
 
@@ -113,11 +114,11 @@ For details about the error codes, see [Network Security Error Codes](errorcode-
 | 2305010  | Certificate has expired.                             |
 | 2305011  | CRL is not yet valid.                                |
 | 2305012  | CRL has expired.                                     |
-| 2305018  | Self-signed certificate.                             |
+| 2305018  | Self-signed certificate. <br>Applicable versions: 12+ |
 | 2305023  | Certificate has been revoked.                        |
 | 2305024  | Invalid certificate authority (CA).                  |
 | 2305027  | Certificate is untrusted.                            |
-| 2305069  | Invalid certificate verification context.            |
+| 2305069  | Invalid certificate verification context. <br>Applicable versions: 12+ |
 
 > **NOTE**
 > 
@@ -194,11 +195,11 @@ For details about the error codes, see [Network Security Error Codes](errorcode-
 | 2305010  | Certificate has expired.                             |
 | 2305011  | CRL is not yet valid.                                |
 | 2305012  | CRL has expired.                                     |
-| 2305018  | Self-signed certificate.                             |
+| 2305018  | Self-signed certificate. <br>Applicable versions: 12+ |
 | 2305023  | Certificate has been revoked.                        |
 | 2305024  | Invalid certificate authority (CA).                  |
 | 2305027  | Certificate is untrusted.                            |
-| 2305069  | Invalid certificate verification context.            |
+| 2305069  | Invalid certificate verification context. <br>Applicable versions: 12+ |
 
 > **NOTE**
 >
@@ -236,6 +237,93 @@ console.info('Synchronous Verification Result:', resultSync);
 
 > **NOTE**
 >
+> Be sure to replace the certificate data in the example with the actual certificate data.
+
+## networkSecurity.verifyCertChain
+
+verifyCertChain(cert: CertBlob\[\], caCert?: CertBlob, hostname?: string): Promise\<CertBlob\[\]\>
+
+Passes in an array of certificates, verifies the certificate chain, and builds a sorted certificate chain. The system uses the preset CA certificates in certificate management and the CA certificates installed by users to verify the passed-in certificates. This API uses a promise to return the result asynchronously.
+
+**Since:** 26.0.0
+
+**System capability**: SystemCapability.Communication.NetStack
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Parameters**
+
+| Name | Type     | Mandatory | Description                   |
+| ------ | -------- | ---- | ---------------------- |
+| cert   | [CertBlob](#certblob)\[\] | Yes   | Array of certificates to verify. The first element must be the end-entity certificate, and the remaining elements are intermediate certificates. |
+| caCert | [CertBlob](#certblob) | No   | Custom CA certificate. If this parameter is not passed in, the preset CA certificates of the system are used. |
+| hostname | string | No   | Host name to verify, used to check whether the host name in the certificate matches. If this parameter is not passed in, host name verification is skipped. |
+
+**Return value**
+
+| Type            | Description                                                         |
+| --------------- | ------------------------------------------------------------ |
+| Promise\<[CertBlob](#certblob)\[\]\> | Promise used to return the sorted certificate chain array, in the order from the leaf node to the root node. |
+
+**Error codes**
+
+For details about the error codes, see [Network Security Error Codes](errorcode-net-networkSecurity.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                                             |
+| -------- | ---------------------------------------------------- |
+| 2305001  | Unspecified error.                                   |
+| 2305002  | Unable to get issuer certificate.                    |
+| 2305004  | Unable to decrypt certificate signature.             |
+| 2305006  | Unable to decode issuer public key.                  |
+| 2305007  | Certificate signature failure.                       |
+| 2305009  | Certificate is not yet valid.                        |
+| 2305010  | Certificate has expired.                             |
+| 2305018  | Self-signed certificate.                             |
+| 2305024  | Invalid certificate authority (CA).                  |
+| 2305027  | Certificate is untrusted.                            |
+| 2305062  | Invalid hostname.                                    |
+| 2305069  | Invalid certificate verification context.            |
+
+> **NOTE**
+> 
+> The preceding error codes indicate errors that may occur during certificate verification.
+
+**Example**
+
+```ts
+import { networkSecurity } from '@kit.NetworkKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// Define certificate blobs
+const cert1: networkSecurity.CertBlob = {
+  type: networkSecurity.CertType.CERT_TYPE_PEM,
+  data: '-----BEGIN CERTIFICATE-----\n... (server certificate) ...\n-----END CERTIFICATE-----',
+};
+
+const cert2: networkSecurity.CertBlob = {
+  type: networkSecurity.CertType.CERT_TYPE_PEM,
+  data: '-----BEGIN CERTIFICATE-----\n... (intermediate certificate) ...\n-----END CERTIFICATE-----',
+};
+
+const caCert: networkSecurity.CertBlob = {
+  type: networkSecurity.CertType.CERT_TYPE_PEM,
+  data: '-----BEGIN CERTIFICATE-----\n... (CA certificate) ...\n-----END CERTIFICATE-----',
+};
+
+// Verify and build sorted cert chain
+networkSecurity.verifyCertChain([cert1, cert2], caCert, "example.com")
+  .then((sortedChain: Array<networkSecurity.CertBlob>) => {
+    console.info('Certificate chain verified and sorted, chain length:', sortedChain.length);
+    for (let i = 0; i < sortedChain.length; i++) {
+      console.info(`Certificate ${i}: type=${sortedChain[i].type}, data=${sortedChain[i].data}`);
+    }
+  })
+  .catch((error: BusinessError) => {
+    console.error('Certificate chain verification failed:', error);
+  });
+```
+> **NOTE**
+> 
 > Be sure to replace the certificate data in the example with the actual certificate data.
 
 ## networkSecurity.isCleartextPermitted<sup>18+</sup>

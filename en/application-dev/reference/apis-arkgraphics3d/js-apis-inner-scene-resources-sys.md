@@ -1,12 +1,13 @@
-# SceneResource (System API)
+# SceneResources (System API)
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @zzhao0-->
 <!--Designer: @zdustc-->
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=700e59b1ae8c27a949329e4115fdb61df06ad438 translatedAt=2026-10-09T12:20:04.271Z pushedAt=2026-10-10T10:38:06.463Z -->
 
-The module provides basic resource types in 3D graphics.
+This module provides the common basic resource types in ArkGraphics 3D.
 
 > **NOTE**
 >

@@ -2,10 +2,11 @@
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: MiscServices-->
-<!--Owner: @dreamsky8023-->
-<!--Designer: @dreamsky8023-->
+<!--Owner: @gcw_jQMboB9m-->
+<!--Designer: @gcw_jQMboB9m-->
 <!--Tester: @murphy84-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=3cbf80113edbb74893c12b030d0723e47a29db93 translatedAt=2026-10-09T12:21:40.230Z pushedAt=2026-10-10T03:11:47.457Z -->
 
 The **wallpaper** module provides APIs for switching between wallpapers. Since API version 9, the APIs of this module function as system APIs, and only system applications are allowed to switch between wallpapers. Applications that use the wallpaper, for example, the home screen, should subscribe to wallpaper changes and update the wallpaper accordingly.
 
@@ -21,6 +22,7 @@ The **wallpaper** module provides APIs for switching between wallpapers. Since A
 ```ts
 import { wallpaper } from '@kit.BasicServicesKit';
 ```
+
 ## WallpaperResourceType<sup>10+</sup>
 
 Enumerates the types of wallpaper resources.
@@ -75,7 +77,7 @@ Defines the wallpaper information structure.
 | -------- | -------- |  -------- |  -------- |  -------- |
 | foldState | [FoldState](#foldstate14) | No| No|Folding state of a device.|
 | rotateState | [RotateState](#rotatestate14)| No| No|Landscape/portrait mode of a device.|
-| source | string | No| No|Wallpaper resource URI. Only the application sandbox directory is supported.|
+| source | string | No | No | URI of the wallpaper resource. Only the application sandbox directory is supported. |
 
 ## wallpaper.setVideo<sup>10+</sup>
 
@@ -94,8 +96,8 @@ Sets a video resource as the home screen wallpaper or lock screen wallpaper. Thi
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | source | string | Yes| URI of an MP4 file.|
-| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype7) | Yes| Wallpaper type.|
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the wallpaper is set, **err** is **undefined**. Otherwise, **err** is an error object.|
+| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype) | Yes | Wallpaper type. |
+| callback | AsyncCallback&lt;void&gt; | Yes | Callback used to return the result.<br> If the live wallpaper is set successfully, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **Error codes**
 
@@ -112,17 +114,18 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let wallpaperPath = "/data/storage/el2/base/haps/entry/files/test.mp4";
+let wallpaperPath = '/data/storage/el2/base/haps/entry/files/test.mp4';
 try {
     wallpaper.setVideo(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError) => {
         if (error) {
-            console.error(`failed to setVideo. Code: ${error.code}, Message: ${error.message}`);
+            console.error(`Failed to setVideo. Code: ${error.code}, message: ${error.message}`);
             return;
         }
         console.info(`success to setVideo.`);
     });
 } catch (error) {
-    console.error(`failed to setVideo. Code: ${error.code}, Message: ${error.message}`);
+    let err = error as BusinessError;
+    console.error(`Failed to setVideo. Code: ${err.code}, message: ${err.message}`);
 }
 
 ```
@@ -144,7 +147,7 @@ Sets a video resource as the home screen wallpaper or lock screen wallpaper. Thi
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | source | string | Yes| URI of an MP4 file.|
-| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype7) | Yes| Wallpaper type.|
+| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype) | Yes | Wallpaper type. |
 
 **Error codes**
 
@@ -160,22 +163,23 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Example**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let wallpaperPath = "/data/storage/el2/base/haps/entry/files/test.mp4";
+let wallpaperPath = '/data/storage/el2/base/haps/entry/files/test.mp4';
 try {
     wallpaper.setVideo(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
         console.info(`success to setVideo.`);
     }).catch((error: BusinessError) => {
-        console.error(`failed to setVideo. Code: ${error.code}, Message: ${error.message}`);
+        console.error(`Failed to setVideo. Code: ${error.code}, Message: ${error.message}`);
     });
 } catch (error) {
-    console.error(`failed to setVideo. Code: ${error.code}, Message: ${error.message}`);
+    let err = error as BusinessError;
+    console.error(`Failed to setVideo. Code: ${err.code}, Message: ${err.message}`);
 }
 ```
 
@@ -195,9 +199,9 @@ Sets a specific ZIP file as the wallpaper. This API works only when **com.ohos.s
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| source | string | Yes| ZIP file to set as the wallpaper.|
-| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype7) | Yes| Wallpaper type.|
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the wallpaper is set, **err** is **undefined**. Otherwise, **err** is an error object.|
+| source | string | Yes | Path to access the ZIP resource. |
+| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype) | Yes | Wallpaper type. |
+| callback | AsyncCallback&lt;void&gt; | Yes | Callback used to return the result. If the wallpaper resource is set successfully, **err** is **undefined**; otherwise, **err** is an error object. |
 
 **Error codes**
 
@@ -214,17 +218,18 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let wallpaperPath = "/data/storage/el2/base/haps/entry/files/test.zip";
+let wallpaperPath = '/data/storage/el2/base/haps/entry/files/test.zip';
 try {
     wallpaper.setCustomWallpaper(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError) => {
         if (error) {
-            console.error(`failed to setCustomWallpaper. Code: ${error.code}, Message: ${error.message}`);
+            console.error(`Failed to setCustomWallpaper. Code: ${error.code}, message: ${error.message}`);
             return;
         }
         console.info(`success to setCustomWallpaper.`);
     });
 } catch (error) {
-    console.error(`failed to setCustomWallpaper. Code: ${error.code}, Message: ${error.message}`);
+    let err = error as BusinessError;
+    console.error(`Failed to setCustomWallpaper. Code: ${err.code}, message: ${err.message}`);
 }
 
 ```
@@ -245,14 +250,14 @@ Sets a specific ZIP file as the wallpaper. This API works only when **com.ohos.s
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| source | string | Yes| ZIP file to set as the wallpaper.|
-| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype7) | Yes| Wallpaper type.|
+| source | string | Yes | Path to access the ZIP resource. |
+| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype) | Yes | Wallpaper type. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
@@ -274,10 +279,10 @@ try {
     wallpaper.setCustomWallpaper(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
         console.info(`success to setCustomWallpaper.`);
     }).catch((error: BusinessError) => {
-        console.error(`failed to setCustomWallpaper. Code: ${error.code}, Message: ${error.message}`);
+        console.error(`Failed to setCustomWallpaper. Code: ${error.code}, Message: ${error.message}`);
     });
 } catch (error) {
-    console.error(`failed to setCustomWallpaper. Code: ${error.code}, Message: ${error.message}`);
+    console.error(`Failed to setCustomWallpaper. Code: ${error.code}, Message: ${error.message}`);
 }
 ```
 
@@ -310,13 +315,16 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
     let listener = (wallpaperType: wallpaper.WallpaperType, resourceType: wallpaper.WallpaperResourceType): void => {
-        console.info(`wallpaper color changed.`);
+        console.info(`wallpaper changed.`);
     };
     wallpaper.on('wallpaperChange', listener);
 } catch (error) {
-    console.error(`failed to on. Code: ${error.code}, Message: ${error.message}`);
+    let err = error as BusinessError;
+    console.error(`Failed to on. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -349,27 +357,32 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 let listener = (wallpaperType: wallpaper.WallpaperType, resourceType: wallpaper.WallpaperResourceType): void => {
-    console.info(`wallpaper color changed.`);
+    console.info(`wallpaper changed.`);
 };
 try {
     wallpaper.on('wallpaperChange', listener);
 } catch (error) {
-    console.error(`failed to on. Code: ${error.code}, Message: ${error.message}`);
+    let err = error as BusinessError;
+    console.error(`Failed to on. Code: ${err.code}, message: ${err.message}`);
 }
 
 try {
     // Unsubscribe from the listener.
     wallpaper.off('wallpaperChange', listener);
 } catch (error) {
-    console.error(`failed to off. Code: ${error.code}, Message: ${error.message}`);
+    let err = error as BusinessError;
+    console.error(`Failed to off. Code: ${err.code}, message: ${err.message}`);
 }
 
 try {
     // Unsubscribe from all callbacks of the 'wallpaperChange' event type.
     wallpaper.off('wallpaperChange');
 } catch (error) {
-    console.error(`failed to off. Code: ${error.code}, Message: ${error.message}`);
+    let err = error as BusinessError;
+    console.error(`Failed to off. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -391,7 +404,7 @@ Obtains the main color information of the wallpaper of the specified type.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype7) | Yes| Wallpaper type.|
+| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype) | Yes | Wallpaper type. |
 
 **Return value**
 
@@ -411,11 +424,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
     let colors = wallpaper.getColorsSync(wallpaper.WallpaperType.WALLPAPER_SYSTEM);
     console.info(`success to getColorsSync: ${JSON.stringify(colors)}`);
 } catch (error) {
-    console.error(`failed to getColorsSync. Code: ${error.code}, Message: ${error.message}`);
+    let err = error as BusinessError;
+    console.error(`Failed to getColorsSync. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -446,11 +462,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
-  let minHeight = wallpaper.getMinHeightSync();
-  console.info(`success to getMinHeightSync: ${JSON.stringify(minHeight)}`);
+    let minHeight = wallpaper.getMinHeightSync();
+    console.info(`success to getMinHeightSync: ${JSON.stringify(minHeight)}`);
 } catch (error) {
-  console.error(`failed to getMinHeightSync. Code: ${error.code}, Message: ${error.message}`);
+    let err = error as BusinessError;
+    console.error(`Failed to getMinHeightSync. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -481,11 +500,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
-  let minWidth = wallpaper.getMinWidthSync();
-  console.info(`success to getMinWidthSync: ${JSON.stringify(minWidth)}`);
+    let minWidth = wallpaper.getMinWidthSync();
+    console.info(`success to getMinWidthSync: ${JSON.stringify(minWidth)}`);
 } catch (error) {
-  console.error(`failed to getMinWidthSync. Code: ${error.code}, Message: ${error.message}`);
+    let err = error as BusinessError;
+    console.error(`Failed to getMinWidthSync. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 
@@ -505,8 +527,8 @@ Resets the wallpaper of the specified type to the default wallpaper. This API us
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype7) | Yes| Wallpaper type.|
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the wallpaper is reset, **err** is **undefined**. Otherwise, **err** is an error object.|
+| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype) | Yes | Wallpaper type. |
+| callback | AsyncCallback&lt;void&gt; | Yes | Callback used to return the result. If the wallpaper is removed successfully, **err** is **undefined**; otherwise, **err** is an error object. |
 
 **Error codes**
 
@@ -525,7 +547,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 wallpaper.restore(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError) => {
     if (error) {
-        console.error(`failed to restore. Code: ${error.code}, Message: ${error.message}`);
+        console.error(`Failed to restore. Code: ${error.code}, message: ${error.message}`);
         return;
     }
     console.info(`success to restore.`);
@@ -548,13 +570,13 @@ Resets the wallpaper of the specified type to the default wallpaper. This API us
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype7) | Yes| Wallpaper type.|
+| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype) | Yes | Wallpaper Type. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
@@ -574,7 +596,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 wallpaper.restore(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
     console.info(`success to restore.`);
   }).catch((error: BusinessError) => {
-    console.error(`failed to restore. Code: ${error.code}, Message: ${error.message}`);
+    console.error(`Failed to restore. Code: ${error.code}, Message: ${error.message}`);
 });
 ```
 
@@ -595,8 +617,8 @@ Sets a specified source as the wallpaper of a specified type. This API uses an a
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | source | string \| [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes| URI of a JPEG or PNG file, or pixel map of a PNG file.|
-| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype7) | Yes| Wallpaper type.|
-| callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result. If the wallpaper is set, **err** is **undefined**. Otherwise, **err** is an error object.|
+| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype) | Yes | Wallpaper type. |
+| callback | AsyncCallback&lt;void&gt; | Yes | Callback used to return the result.<br> If the wallpaper is set successfully, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **Error codes**
 
@@ -615,17 +637,17 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 
 // The source type is string.
-let wallpaperPath = "/data/storage/el2/base/haps/entry/files/js.jpeg";
+let wallpaperPath = '/data/storage/el2/base/haps/entry/files/js.jpeg';
 wallpaper.setImage(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError) => {
     if (error) {
-        console.error(`failed to setImage. Code: ${error.code}, Message: ${error.message}`);
+        console.error(`Failed to setImage. Code: ${error.code}, message: ${error.message}`);
         return;
-     }
+    }
     console.info(`success to setImage.`);
 });
-  
+
 // The source type is image.PixelMap.
-let imageSource = image.createImageSource("file://" + wallpaperPath);
+let imageSource = image.createImageSource('file://' + wallpaperPath);
 let opts: image.DecodingOptions = {
     desiredSize: {
         height: 3648,
@@ -635,13 +657,13 @@ let opts: image.DecodingOptions = {
 imageSource.createPixelMap(opts).then((pixelMap: image.PixelMap) => {
     wallpaper.setImage(pixelMap, wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError) => {
         if (error) {
-            console.error(`failed to setImage. Code: ${error.code}, Message: ${error.message}`);
+            console.error(`Failed to setImage. Code: ${error.code}, Message: ${error.message}`);
             return;
         }
         console.info(`success to setImage.`);
     });
 }).catch((error: BusinessError) => {
-    console.error(`failed to createPixelMap. Code: ${error.code}, Message: ${error.message}`);
+    console.error(`Failed to createPixelMap. Code: ${error.code}, Message: ${error.message}`);
 });
 ```
 
@@ -662,13 +684,13 @@ Sets a specified source as the wallpaper of a specified type. This API uses a pr
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | source | string \| [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | Yes| URI of a JPEG or PNG file, or pixel map of a PNG file.|
-| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype7) | Yes| Wallpaper type.|
+| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype) | Yes | Wallpaper type. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
@@ -687,15 +709,15 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 
 // The source type is string.
-let wallpaperPath = "/data/storage/el2/base/haps/entry/files/js.jpeg";
+let wallpaperPath = '/data/storage/el2/base/haps/entry/files/js.jpeg';
 wallpaper.setImage(wallpaperPath, wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
     console.info(`success to setImage.`);
 }).catch((error: BusinessError) => {
-    console.error(`failed to setImage. Code: ${error.code}, Message: ${error.message}`);
+    console.error(`Failed to setImage. Code: ${error.code}, Message: ${error.message}`);
 });
 
 // The source type is image.PixelMap.
-let imageSource = image.createImageSource("file://" + wallpaperPath);
+let imageSource = image.createImageSource('file://' + wallpaperPath);
 let opts: image.DecodingOptions = {
     desiredSize: {
         height: 3648,
@@ -706,10 +728,10 @@ imageSource.createPixelMap(opts).then((pixelMap: image.PixelMap) => {
     wallpaper.setImage(pixelMap, wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
         console.info(`success to setImage.`);
     }).catch((error: BusinessError) => {
-        console.error(`failed to setImage. Code: ${error.code}, Message: ${error.message}`);
+        console.error(`Failed to setImage. Code: ${error.code}, Message: ${error.message}`);
     });
 }).catch((error: BusinessError) => {
-    console.error(`failed to createPixelMap. Code: ${error.code}, Message: ${error.message}`);
+    console.error(`Failed to createPixelMap. Code: ${error.code}, Message: ${error.message}`);
 });
 ```
 
@@ -729,8 +751,8 @@ Obtains the pixel map for the wallpaper of the specified type. This API only wor
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype7) | Yes| Wallpaper type.|
-| callback | AsyncCallback&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Yes| Callback used to return the result. If the operation is successful, the pixel map of the wallpaper is returned. Otherwise, error information is returned.|
+| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype) | Yes | Wallpaper type. |
+| callback | AsyncCallback&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Yes | Callback used to return the result. If the pixel map object of the wallpaper image is obtained successfully, **err** is **undefined** and **data** is the pixel map object obtained. Otherwise, **err** is an error object. |
 
 **Error codes**
 
@@ -750,7 +772,7 @@ import { image } from '@kit.ImageKit';
 
 wallpaper.getImage(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError, data: image.PixelMap) => {
   if (error) {
-    console.error(`failed to getImage. Code: ${error.code}, Message: ${error.message}`);
+    console.error(`Failed to getImage. Code: ${error.code}, message: ${error.message}`);
     return;
   }
   console.info(`success to getImage: ${JSON.stringify(data.getImageInfoSync())}`);
@@ -773,13 +795,13 @@ Obtains the pixel map for the wallpaper of the specified type. This API only wor
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype7) | Yes| Wallpaper type.|
+| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype) | Yes | Wallpaper type. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Promise used to return the result. If the operation is successful, the pixel map of the wallpaper is returned. Otherwise, error information is returned.|
+| Promise&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Promise used to return the pixel map object of the wallpaper image. |
 
 **Error codes**
 
@@ -800,14 +822,15 @@ import { image } from '@kit.ImageKit';
 wallpaper.getImage(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then((data: image.PixelMap) => {
   console.info(`success to getImage: ${JSON.stringify(data.getImageInfoSync())}`);
 }).catch((error: BusinessError) => {
-  console.error(`failed to getImage. Code: ${error.code}, Message: ${error.message}`);
+  console.error(`Failed to getImage. Code: ${error.code}, Message: ${error.message}`);
 });
 ```
+
 ## wallpaper.getWallpaperByState<sup>14+</sup>
 
-getWallpaperByState(wallpaperType:WallpaperType, foldState:FoldState, rotateState:RotateState): Promise&lt;image.PixelMap&gt;
+getWallpaperByState(wallpaperType: WallpaperType, foldState: FoldState, rotateState: RotateState): Promise&lt;image.PixelMap&gt;
 
-Obtains the pixel map of the wallpaper of a specific type, folding state, or landscape/portrait mode. If the specified wallpaper does not exist, the matching follows a degrading order: unfolded-land > unfolded-port > normal-port. This API uses a promise to return the result.
+Obtains the pixel map for the wallpaper of the specified type, folding state, or screen orientation. If the specified wallpaper does not exist, the wallpaper is matched in the following order: unfolded-land > unfolded-port > normal-port. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.GET_WALLPAPER
 
@@ -819,7 +842,7 @@ Obtains the pixel map of the wallpaper of a specific type, folding state, or lan
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype7) | Yes| Wallpaper type.|
+| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype) | Yes | Wallpaper type. |
 | foldState | [FoldState](#foldstate14) | Yes| Folding state type.|
 | rotateState | [RotateState](#rotatestate14) | Yes| Landscape/portrait mode.|
 
@@ -827,7 +850,7 @@ Obtains the pixel map of the wallpaper of a specific type, folding state, or lan
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Promise used to return the result. If the operation is successful, the pixel map of the wallpaper is returned. Otherwise, error information is returned.|
+| Promise&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Promise used to return the pixel map object of the wallpaper image. |
 
 **Error codes**
 
@@ -843,21 +866,20 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { wallpaper } from '@kit.BasicServicesKit';
 import { image } from '@kit.ImageKit';
 
 wallpaper.getWallpaperByState(wallpaper.WallpaperType.WALLPAPER_SYSTEM,wallpaper.FoldState.NORMAL,wallpaper.RotateState.PORTRAIT).then((data:image.PixelMap) => {
   console.info(`success to getWallpaperByState: ${JSON.stringify(data.getImageInfoSync())}`);
 }).catch((error: BusinessError) => {
-  console.error(`failed to getWallpaperByState. Code: ${error.code}, Message: ${error.message}`);
+  console.error(`Failed to getWallpaperByState. Code: ${error.code}, Message: ${error.message}`);
 });
 ```
 
 ## wallpaper.setAllWallpapers<sup>14+</sup>
 
-setAllWallpapers(wallpaperInfos: Array\<WallpaperInfo>\, wallpaperType: WallpaperType): Promise&lt;void&gt;
+setAllWallpapers(wallpaperInfos: Array&lt;WallpaperInfo&gt;, wallpaperType: WallpaperType): Promise&lt;void&gt;
 
-Sets all wallpaper to a specific folding state, landscape/portrait mode, and resource path, where **wallpaper.FoldState.NORMAL** and **wallpaper.RotateState.PORTRAIT** are mandatory. This API uses a promise to return the result.  
+Sets wallpapers in all states, including the folding state, screen orientation, and resource path, where **wallpaper.FoldState.NORMAL** and **wallpaper.RotateState.PORTRAIT** are mandatory. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.SET_WALLPAPER
 
@@ -869,14 +891,14 @@ Sets all wallpaper to a specific folding state, landscape/portrait mode, and res
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| wallpaperInfos | Array\<[WallpaperInfo](#wallpaperinfo14)> | Yes| Information structure of all wallpapers.|
-| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype7) | Yes| Wallpaper type.|
+| wallpaperInfos | Array&lt;[WallpaperInfo](#wallpaperinfo14)&gt; | Yes | Information structure of all wallpapers. |
+| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype) | Yes | Wallpaper type. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
@@ -892,9 +914,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { wallpaper } from '@kit.BasicServicesKit';
 
-let wallpaperInfos: Array<wallpaper.WallpaperInfo>
+let wallpaperInfos: Array<wallpaper.WallpaperInfo>;
 wallpaperInfos = [
   {
     foldState: wallpaper.FoldState.NORMAL,
@@ -915,7 +936,7 @@ wallpaperInfos = [
 wallpaper.setAllWallpapers(wallpaperInfos, wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
   console.info(`success to setAllWallpapers.`);
 }).catch((error: BusinessError) => {
-  console.error(`failed to setAllWallpapers. Code: ${error.code}, Message: ${error.message}`);
+  console.error(`Failed to setAllWallpapers. Code: ${error.code}, Message: ${error.message}`);
 });
 ```
 
@@ -923,7 +944,7 @@ wallpaper.setAllWallpapers(wallpaperInfos, wallpaper.WallpaperType.WALLPAPER_SYS
 
 getPixelMap(wallpaperType: WallpaperType, callback: AsyncCallback&lt;image.PixelMap&gt;): void
 
-Obtains the pixel map for the wallpaper of the specified type.
+Obtains the pixel map for the wallpaper. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -939,8 +960,8 @@ Obtains the pixel map for the wallpaper of the specified type.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype7) | Yes| Wallpaper type.|
-| callback | AsyncCallback&lt;image.PixelMap&gt; | Yes| Callback used to return the result. If the operation is successful, the pixel map of the wallpaper is returned. Otherwise, error information is returned.|
+| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype) | Yes | Wallpaper type. |
+| callback | AsyncCallback&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Yes | Callback used to return the result. If the pixel map object of the wallpaper image is obtained successfully, **err** is **undefined** and **data** is the pixel map object obtained. Otherwise, **err** is an error object. |
 
 **Example**
 
@@ -950,10 +971,10 @@ import { image } from '@kit.ImageKit';
 
 wallpaper.getPixelMap(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessError, data: image.PixelMap) => {
   if (error) {
-    console.error(`failed to getPixelMap. Code: ${error.code}, Message: ${error.message}`);
+    console.error(`Failed to getPixelMap. Code: ${error.code}, message: ${error.message}`);
     return;
   }
-  console.info(`success to getPixelMap : ${JSON.stringify(data.getImageInfoSync())}`);
+  console.info(`success to getPixelMap: ${JSON.stringify(data.getImageInfoSync())}`);
 });
 ```
 
@@ -961,7 +982,7 @@ wallpaper.getPixelMap(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: Business
 
 getPixelMap(wallpaperType: WallpaperType): Promise&lt;image.PixelMap&gt;
 
-Obtains the pixel map for the wallpaper of the specified type.
+Obtains the pixel map for the wallpaper. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -977,13 +998,13 @@ Obtains the pixel map for the wallpaper of the specified type.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype7) | Yes| Wallpaper type.|
+| wallpaperType | [WallpaperType](js-apis-wallpaper.md#wallpapertype) | Yes | Wallpaper type. |
 
 **Return value**
 
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;image.PixelMap&gt; | Promise used to return the result. If the operation is successful, the pixel map of the wallpaper is returned. Otherwise, error information is returned.|
+| Promise&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Promise used to return the pixel map object of the wallpaper image. |
 
 **Example**
 
@@ -994,6 +1015,7 @@ import { image } from '@kit.ImageKit';
 wallpaper.getPixelMap(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then((data: image.PixelMap) => {
   console.info(`success to getPixelMap : ${JSON.stringify(data.getImageInfoSync())}`);
 }).catch((error: BusinessError) => {
-  console.error(`failed to getPixelMap. Code: ${error.code}, Message: ${error.message}`);
+  console.error(`Failed to getPixelMap. Code: ${error.code}, Message: ${error.message}`);
 });
 ```
+<!--no_check-->

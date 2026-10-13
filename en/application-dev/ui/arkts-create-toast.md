@@ -1,18 +1,18 @@
 # Using Toasts (Toast)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liyi0309-->
 <!--Designer: @liyi0309-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=d331d662789003e8c3f7c6d67ef1c2e9a890c1fd translatedAt=2026-07-30T11:30:13.970Z pushedAt=2026-07-30T12:01:20.937Z -->
+<!-- md-trans-meta sourceCommit=8d75ae784f56fc7e62ba636f357115f8f4b9c3ff translatedAt=2026-10-10T06:14:26.626Z pushedAt=2026-10-12T08:40:23.980Z -->
 
 A toast is a temporary window that provides brief feedback or status information to users. It typically appears at the bottom or top of the screen for a short duration before automatically disappearing. The main purpose of a toast is to provide concise and non-intrusive information, avoiding disruption to the user's current workflow.
 
+
 You can use the [getPromptAction](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getpromptaction) API in [UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md) to obtain the [PromptAction](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md) object associated with the current UI context, and then use the object to call [showToast](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showtoast) to create and display a toast.
 
-> **NOTE**
+> **NOTE** 
 >
 > For security reasons, toasts can only be displayed within the current UI instance. When the application exits, toasts will not remain visible as separate elements on the home screen.
 
@@ -156,7 +156,7 @@ export struct CreateToastExample {
 
 ## Displaying and Closing a Toast
 
-This mode is suitable for scenarios where the dialog box has a longer retention period and the user can close it manually.
+This mode is suitable for scenarios where the toast has a longer retention period and the user can close it manually.
 
 <!-- @[toast_openClose](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/Toast/OpenCloseToast.ets) --> 
 
@@ -215,3 +215,5 @@ export struct OpenCloseToastExample {
 ```
 
 ![image](figures/UIToast.gif)
+
+

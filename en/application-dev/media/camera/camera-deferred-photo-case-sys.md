@@ -1,12 +1,11 @@
 # Practices for High-Performance Photo Capture (for System Applications Only) (ArkTS)
-
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=425e79ed59a841b19860caacc0b050f68405d43e translatedAt=2026-08-10T09:13:31.487Z pushedAt=2026-08-10T10:55:50.538Z -->
+<!-- md-trans-meta sourceCommit=132342cdd19e09e8d1c7a964e48a57b6cf30fc8d translatedAt=2026-09-28T02:40:35.074Z pushedAt=2026-09-29T07:39:52.466Z -->
 
 Before developing a camera application, you must [request required permissions](camera-preparation.md).
 
@@ -338,7 +337,7 @@ async function deferredPhotoCase(context: Context, surfaceId: string): Promise<v
     }
   }
 
-  // Check whether the continuous auto focus is supported.
+  // Check whether continuous autofocus mode is supported.
   let focusModeStatus: boolean = false;
   try {
     let status: boolean = photoSession.isFocusModeSupported(camera.FocusMode.FOCUS_MODE_CONTINUOUS_AUTO);
@@ -349,7 +348,7 @@ async function deferredPhotoCase(context: Context, surfaceId: string): Promise<v
   }
 
   if (focusModeStatus) {
-    // Set the focus mode to continuous auto focus.
+    // Set continuous autofocus mode.
     try {
       photoSession.setFocusMode(camera.FocusMode.FOCUS_MODE_CONTINUOUS_AUTO);
     } catch (error) {

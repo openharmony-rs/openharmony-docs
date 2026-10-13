@@ -13,7 +13,7 @@ typedef struct OH_CryptoAsymCipher OH_CryptoAsymCipher
 
 ## Overview
 
-Defines a struct for asymmetric encryption.
+Defines an asymmetric cipher struct, indicating the asymmetric cipher context.
 
 **Since**: 20
 

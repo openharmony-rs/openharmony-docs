@@ -48,7 +48,7 @@ ECStoreManager类：用于管理应用的E类数据库和C类数据库。
 
 提供数据库数据迁移接口，在锁屏解锁后，若C类数据库中存在数据，使用该接口将数据迁移到E类数据库。
 
-<!-- @[Mover](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/ECStoreSamples/entry/src/main/ets/entryability/Mover.ts) --> 
+<!-- @[Mover](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/ECStoreSamples/entry/src/main/ets/entryability/Mover.ts) -->
 
 ``` TypeScript
 import { distributedKVStore } from '@kit.ArkData';
@@ -62,7 +62,7 @@ export class Mover {
         await eStore.putBatch(entries);
         Logger.info(`ECDB_Encry move success`);
       } catch (e) {
-        Logger.info(`ECDB_Encry move failed,code is ${e.code},message is ${e.message}`);
+        Logger.error(`ECDB_Encry move failed,code is ${e.code},message is ${e.message}`);
       }
     }
   }
@@ -340,7 +340,7 @@ export class ECStoreManager {
 
 模拟应用启动期间，注册对COMMON_EVENT_SCREEN_LOCK_FILE_ACCESS_STATE_CHANGED公共事件的监听，并配置相应的数据库信息、密钥状态信息等。
 
-<!-- @[EntryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/ECStoreSamples/entry/src/main/ets/entryability/EntryAbility.ets) --> 
+<!-- @[EntryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/KvStore/ECStoreSamples/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
 ``` TypeScript
 import { AbilityConstant, application, contextConstant, UIAbility, Want } from '@kit.AbilityKit';
@@ -351,8 +351,7 @@ import { ECStoreManager } from './ECStoreManager';
 import { StoreInfo } from './Store';
 import { Mover } from './Mover';
 import { SecretKeyObserver } from './SecretKeyObserver';
-import { commonEventManager } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError, commonEventManager } from '@kit.BasicServicesKit';
 import Logger from '../common/Logger';
 
 export let storeManager = new ECStoreManager();
