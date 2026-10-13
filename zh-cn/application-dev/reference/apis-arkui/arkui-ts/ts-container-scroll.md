@@ -2628,17 +2628,19 @@ struct ScrollExample {
         Scroll(this.scroller) {
           Column() {
             ForEach(this.arr, (item: number) => {
-              Text('item value: ' + item)
-                .width('100%').height(100).fontSize(16)
-                .border({ width: 1, color: Color.Blue })
-                .borderRadius(10)
-                .backgroundColor(Color.Pink)
+              Text(item.toString())
+                .width('90%')
+                .height(150)
+                .backgroundColor(0xFFFFFF)
+                .border({ width: 1, color: 0xCCCCCC })
+                .borderRadius(15)
+                .fontSize(16)
                 .textAlign(TextAlign.Center)
+                .margin({ top: 15 })
             }, (item: number) => item.toString())
-          }
+          }.width('100%')
         }
-        .scrollable(ScrollDirection.Vertical)
-        .scrollBar(BarState.On)
+        .edgeEffect(EdgeEffect.Spring, { alwaysEnabled: true, effectEdge: EffectEdge.START })
       }
     }
   }
