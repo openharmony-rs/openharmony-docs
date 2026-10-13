@@ -766,7 +766,7 @@ isDeviceLocked(userId: int): boolean
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 202 | Permission verification failed, application which is not a system application uses system API. |
+| 202 | permission verification failed, application which is not a system application uses system API. |
 | 13200002 | The screenlock management service is abnormal. |
 | 13200004 | The userId is not same as the caller, and is not allowed for the caller. |
 
@@ -812,7 +812,7 @@ getUnlockPolicy(userId: int): UnlockPolicy
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied. |
-| 202 | Permission verification failed: applications that are not system applications cannot use system API. |
+| 202 | permission verification failed: applications that are not system applications cannot use system API. |
 | 13200002 | The screen lock management service is abnormal. |
 | 13200004 | The userId is not the same as the caller, and the caller is not authorized. |
 
