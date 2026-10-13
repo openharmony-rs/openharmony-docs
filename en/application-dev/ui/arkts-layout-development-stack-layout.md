@@ -1,12 +1,11 @@
 # Stack Layout (Stack)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @fenglinbailu-->
-<!--Designer: @lanshouren-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=276d60289816e1dd5baf9329b4a307375826cd4b translatedAt=2026-08-04T06:34:45.605Z pushedAt=2026-08-04T07:39:54.133Z -->
+<!-- md-trans-meta sourceCommit=45ec2d938cfede23d9ca90fe41c0d1f3e7b2b01d translatedAt=2026-10-12T09:32:23.450Z pushedAt=2026-10-13T07:08:50.791Z -->
 
 ## Overview
 
@@ -16,7 +15,8 @@ The stack layout excels at page stacking and positioning, and is widely used in 
 
 In the **Stack** component shown in Figure 1, the sequence of child elements is Item1 -> Item2 -> Item3.
 
-  **Figure 1** Stack layout 
+
+  **Figure 1** Stack layout
 
 ![stack-layout](figures/stack-layout.png)
 
@@ -49,13 +49,15 @@ struct StackLayoutExample {
 }
 ```
 
+
 ![stack-layout-sample](figures/stack-layout-sample.png)
+
 
 ## Alignment
 
 Alignment of elements in the **Stack** component is set through the [alignContent](../reference/apis-arkui/arkui-ts/ts-container-stack.md#aligncontent) parameter. As shown in Figure 2, nine alignment modes are supported.
 
-  **Figure 2** Alignment modes in the Stack component 
+  **Figure 2** Alignment modes in the Stack component
 
 ![stack2](figures/stack2.png)
 
@@ -107,6 +109,7 @@ Stack({ alignContent: Alignment.BottomStart }) {
 
 In the preceding figure, the size of the stacked element 3 is greater than that of all the elements before it. Therefore, the first two elements are completely hidden. To show these elements, modify their **zIndex** attribute settings.
 
+
 <!-- @[StackLayoutzIndex_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/stacklayout/StackLayoutzIndex.ets) -->
 
 ``` TypeScript
@@ -130,9 +133,11 @@ Stack({ alignContent: Alignment.BottomStart }) {
 
 ![stackLayoutzIndex](figures/stackLayoutzIndex.png)
 
+
 ## Example Scenario
 
 In this example, the stack layout is used to quickly set up a page.
+
 
 <!-- @[StackLayoutSceneExample_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/stacklayout/StackLayoutSceneExample.ets) -->
 
@@ -175,6 +180,6 @@ struct StackSample {
 }
 ```
 
-![stackLayoutSceneExample](figures/stackLayoutSceneExample.png)
 
+![stackLayoutSceneExample](figures/stackLayoutSceneExample.png)
 <!--RP1--><!--RP1End-->

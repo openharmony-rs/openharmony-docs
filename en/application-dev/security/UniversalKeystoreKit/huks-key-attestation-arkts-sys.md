@@ -6,7 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=ffc5e2859dca1ab6a17f6a8a1c145390f67cf1d5 translatedAt=2026-10-10T03:29:22.060Z pushedAt=2026-10-10T03:30:45.505Z -->
+<!-- md-trans-meta sourceCommit=4a0d60c413ad51190440217475c8f9ea1644f828 translatedAt=2026-10-13T01:55:32.920Z pushedAt=2026-10-13T03:11:21.367Z -->
 
 The caller must have the [ohos.permission.ATTEST_KEY](../AccessToken/permissions-for-system-apps.md#ohospermissionattest_key) permission. You need to request the permission based on the APL of your permission. For details, see [Workflow for Using Permissions](../AccessToken/determine-application-mode.md).
 
@@ -111,11 +111,11 @@ function stringToUint8Array(str: string) {
 function generateKeyItem(keyAlias: string, huksOptions: huks.HuksOptions, throwObject: ThrowObject) {
   return new Promise<void>((resolve, reject) => {
     try {
-      huks.generateKeyItem(keyAlias, huksOptions, (error, data) => {
+      huks.generateKeyItem(keyAlias, huksOptions, (error) => {
         if (error) {
           reject(error);
         } else {
-          resolve(data);
+          resolve();
         }
       });
     } catch (error) {
@@ -131,8 +131,8 @@ async function publicGenKeyFunc(keyAlias: string, huksOptions: huks.HuksOptions)
   let throwObject: ThrowObject = { isThrow: false };
   try {
     await generateKeyItem(keyAlias, huksOptions, throwObject)
-      .then((data) => {
-        console.info(`promise: generateKeyItem success, data = ${JSON.stringify(data)}`);
+      .then(() => {
+        console.info(`promise: generateKeyItem success`);
       })
       .catch((error: Error) => {
         if (throwObject.isThrow) {
@@ -168,24 +168,15 @@ async function publicAttestKey(keyAlias: string, huksOptions: huks.HuksOptions):
   console.info(`enter promise attestKeyItem`);
   let throwObject: ThrowObject = { isThrow: false };
   try {
-    await attestKeyItem(keyAlias, huksOptions, throwObject)
-      .then((data) => {
-        console.info(`promise: attestKeyItem success, data = ${JSON.stringify(data)}`);
-        if (data !== null && data.certChains !== null) {
-          attestCertChain = data.certChains as string[];
-        }
-      })
-      .catch((error: Error) => {
-        if (throwObject.isThrow) {
-          throw (error as Error);
-        } else {
-          console.error(`promise: attestKeyItem failed, ${JSON.stringify(error)}`);
-        }
-      });
+    const data = await attestKeyItem(keyAlias, huksOptions, throwObject);
+    console.info(`promise: attestKeyItem success, data = ${JSON.stringify(data)}`);
+    if (data !== null && data.certChains !== null) {
+      attestCertChain = data.certChains as string[];
+    }
     return 'Success';
   } catch (error) {
-    console.error(`promise: attestKeyItem input arg invalid, ${JSON.stringify(error)}`);
-    return 'Failed';
+      console.error(`promise: attestKeyItem input arg invalid, ${JSON.stringify(error)}`);
+      return 'Failed';
   }
 }
 

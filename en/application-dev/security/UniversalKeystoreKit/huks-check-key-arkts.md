@@ -6,6 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=4a0d60c413ad51190440217475c8f9ea1644f828 translatedAt=2026-10-13T01:50:20.184Z pushedAt=2026-10-13T02:01:00.261Z -->
 
 Check whether a key exists.
 
@@ -25,7 +26,7 @@ The [Group Key](huks-group-key-overview.md) feature is supported since API versi
 import { huks } from '@kit.UniversalKeystoreKit';
 
 let keyAlias = 'test_key';
-let isKeyExist: Boolean;
+let isKeyExist: boolean;
 
 let generateProperties: huks.HuksParam[] = [
   {
@@ -51,11 +52,11 @@ let generateHuksOptions: huks.HuksOptions = {
 function generateKeyItem(keyAlias: string, huksOptions: huks.HuksOptions) {
   return new Promise<void>((resolve, reject) => {
     try {
-      huks.generateKeyItem(keyAlias, huksOptions, (error, data) => {
+      huks.generateKeyItem(keyAlias, huksOptions, (error) => {
         if (error) {
           reject(error);
         } else {
-          resolve(data);
+          resolve();
         }
       });
     } catch (error) {
@@ -82,7 +83,7 @@ function hasKeyItem(keyAlias: string, huksOptions: huks.HuksOptions) {
         if (error) {
           reject(error);
         } else {
-          resolve(data.valueOf());
+          resolve(data);
         }
       });
     } catch (error) {

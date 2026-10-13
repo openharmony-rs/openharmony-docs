@@ -6,7 +6,7 @@
 <!--Designer: @yangcan18-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=937aa556d9f58747c9a612a2370c25cbc5101587 translatedAt=2026-08-01T00:32:00.357Z pushedAt=2026-08-03T03:15:24.162Z -->
+<!-- md-trans-meta sourceCommit=11a1dfa85450ea7b4e2ba6c6b3a5464b774af8b5 translatedAt=2026-10-12T09:28:51.356Z pushedAt=2026-10-13T08:44:06.570Z -->
 
 ArkUI provides three preset lazy layout containers: [LazyColumnLayout](../reference/apis-arkui/arkui-ts/ts-container-lazycolumnlayout.md), [LazyVGridLayout](../reference/apis-arkui/arkui-ts/ts-container-lazyvgridlayout.md), and [LazyVWaterFlowLayout](../reference/apis-arkui/arkui-ts/ts-container-lazyvwaterflowlayout.md), which support vertical linear layout, vertical grid layout, and vertical waterfall layout respectively. When these preset layout containers cannot meet service requirements, you can use the [LazyDynamicLayout](../reference/apis-arkui/arkui-ts/ts-container-lazydynamiclayout.md) component with a custom layout algorithm to implement flexible lazy layouts.
 
@@ -19,11 +19,8 @@ The **LazyDynamicLayout** component is supported from API version 26.0.0.
 **LazyDynamicLayout** is suitable for the following typical scenarios.
 
 - **Custom layout mode**: The built-in **LazyColumnLayout**, **LazyVGridLayout**, and **LazyVWaterFlowLayout** provide fixed layout modes. When a service requires a special layout method, it can be implemented through a custom layout algorithm. For example:
-
   - Staggered layout: Child components have varying heights and need to be arranged according to specific rules.
-
   - Circular layout: Child components are arranged in a circle or sector.
-
   - Customized layout: Specific child components have customized layout positions, such as sticky headers or footers.
 
 - **Dynamic layout parameter adjustment**: Layout parameters (such as spacing and size ratios) need to be dynamically adjusted at runtime, and the scroll position should remain stable after adjustment. A custom layout algorithm can precisely control the position adjustment logic when layout parameters change.
@@ -37,9 +34,9 @@ The **LazyDynamicLayout** component is supported from API version 26.0.0.
 2. The lazy loading support conditions for **LazyDynamicLayout** under different parent components are as follows.
 
    - Under the **WaterFlow** component, lazy loading is only supported when used in the single-column mode of the **WaterFlow** component or in a single-column segment within a segmented layout.
-
+   
    - Under the **List** component, when the **List** has any of the [lanes](../reference/apis-arkui/arkui-ts/ts-container-list.md#lanes9), [chainAnimation](../reference/apis-arkui/arkui-ts/ts-container-list.md#chainanimation), or [scrollSnapAlign](../reference/apis-arkui/arkui-ts/ts-container-list.md#scrollsnapalign10) attributes set, the lazy loading feature of this component will become invalid.
-
+   
    - When used within **Scroll**, **List**, or **WaterFlow** components, the scroll direction (horizontal or vertical) of **Scroll**, **List**, or **WaterFlow** must be the same as the layout direction of this component. If the layout directions differ, it will cause an app crash. The layout direction of this component is set via the **axis** member of the constructor parameter of [LazyCustomLayoutAlgorithm](../reference/apis-arkui/js-apis-arkui-lazyLayoutAlgorithm.md#lazycustomlayoutalgorithm).
 
    - When encapsulated through **FlowItem**, **LazyColumnLayout**, a custom component, or **NodeContainer**, the lazy loading behavior depends on the configuration conditions of its upper-level scrollable component (such as **WaterFlow**, **Scroll**, or **List**).
@@ -96,7 +93,7 @@ export class LazyColumnLayoutAlgorithm extends LazyCustomLayoutAlgorithm {
 
   // === anchor info (kept stable during scrolling) ===
   private anchorChildIndex: number = -1;              // Index of the anchor element.
-  private anchorChildRelativePos: number = 0;        // Anchor position (distance from the top of the content during forward scrolling, and from the bottom during reverse scrolling).
+  private anchorChildRelativePos: number = 0;        // Anchor position (distance from the top of the content during forward scrolling, and from the bottom during backward scrolling).
 ```
 
 Define padding variables to store the container's padding information. Use the [getUserConfigPadding](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuserconfigpadding12) method to obtain the **padding** attribute values set by the user. The [LengthMetrics](../reference/apis-arkui/js-apis-arkui-graphics.md#lengthmetrics12) type returned by this method needs to be converted to pixel values.
@@ -168,7 +165,7 @@ The **onMeasure** method is responsible for measuring child components and calcu
  * 3. Save anchor information.
  * 4. Measure elements within the visible area.
  * 5. Recycle elements that are no longer visible.
- * 6. Adjust the anchor position to maintain scroll stability.
+ * 6. Adjust the anchor position to maintain scrolling stability.
  * 7. Set the layout container's own size.
  */
 onMeasure(self: FrameNode, constraint: LayoutConstraint, helper?: LazyLayoutHelper): void {
@@ -199,7 +196,7 @@ onMeasure(self: FrameNode, constraint: LayoutConstraint, helper?: LazyLayoutHelp
   // Recycle elements that are no longer visible.
   this.recycleChildren(helper);
 
-  // Adjust the anchor position to maintain scroll stability.
+  // Adjust the anchor position to maintain scrolling stability.
   this.adjustAnchorPosition(helper);
 
   self.setMeasuredSize({ width: constraint.maxSize.width, height: this.totalHeight + verticalPadding });
@@ -214,9 +211,9 @@ Each sub-step is described in detail below.
 
 2. Handle empty child elements or non-lazy layout.
 
-    First, get the total number of child components using [ChildrenCountMode](../reference/apis-arkui/js-apis-arkui-frameNode.md#childrencountmode).**ALL_NOT_EXPAND** to avoid lazy loading failure caused by full loading. If the number of child components is **0**, clear the measurement state and set the container height to **0**. If the **helper** parameter is **undefined**, lazy loading is not supported (such as in **List** multi-column mode), and all child components need to be fully measured.
+    First, get the total number of child components using [ChildrenCountMode](../reference/apis-arkui/js-apis-arkui-frameNode.md#childrencountmode).`ALL_NOT_EXPAND` to avoid lazy loading failure caused by full loading. If the number of child components is `0`, clear the measurement state and set the container height to the vertical padding (`topPadding` + `bottomPadding`). If the `helper` parameter is `undefined`, lazy loading is not supported (such as in `List` multi-column mode), and all child components need to be fully measured.
 
-3. Handle layout parameter changes to maintain scroll stability.
+3. Handle layout parameter changes to maintain scrolling stability.
 
     When layout parameters (such as spacing) change, the positions of all child components will shift. For example, when the spacing increases from 5 vp to 10 vp, the position of the 11th child component will shift downward by 50 vp (10 * 5 vp). If the scroll position is not adjusted, the user will perceive a sudden jump in content, affecting the experience.
 
@@ -227,11 +224,10 @@ Each sub-step is described in detail below.
         Before measurement begins, the position information of the anchor child component needs to be saved. The anchor refers to the child component at the edge of the visible area.
 
         - Forward scrolling (**FORWARD**, from top to bottom): The anchor is the first child component (**startIndex**) in the visible area.
-
         - Backward scrolling (**BACKWARD**, from bottom to top): The anchor is the last child component (**endIndex**) in the visible area.
 
         <!-- @[lazy_custom_layout_save_anchor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyCustomLayout/LazyColumnLayoutAlgorithm.ets) -->
-
+        
         ``` TypeScript
         /**
          * saveAnchorInfo - saves anchor information
@@ -275,7 +271,6 @@ Each sub-step is described in detail below.
         After measurement is complete, the position of the anchor child component may have changed. The new position needs to be calculated:
 
         - During forward scrolling, the new position is the start value of the anchor element, that is, the position of the anchor child component relative to the top of the total height.
-
         - During backward scrolling, the new position is the distance of the anchor element from the bottom of the total height.
 
     - Adjust the scroll position.
@@ -283,10 +278,10 @@ Each sub-step is described in detail below.
         By comparing the old and new positions of the anchor, calculate the offset adjustment and adjust the scroll position via [setAdjustedOffset](../reference/apis-arkui/js-apis-arkui-lazyLayoutAlgorithm.md#setadjustedoffset).
 
         <!-- @[lazy_custom_layout_algorithm_adjust_anchor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyCustomLayout/LazyColumnLayoutAlgorithm.ets) -->
-
+        
         ``` TypeScript
         /**
-         * adjustAnchorPosition - Adjust the anchor position to maintain scroll stability
+         * adjustAnchorPosition - Adjust the anchor position to maintain scrolling stability
          *
          * Purpose: After measurement is complete, adjust the scroll offset to ensure the anchor remains at the same position relative to the visible area.
          */
@@ -317,14 +312,11 @@ Each sub-step is described in detail below.
 
     During forward scrolling, the anchor is the first child component in the visible area. After layout parameters change, the actual position of this child component may change.
 
-    During reverse scrolling, the anchor is the last child component in the visible area, and the anchor position is calculated relative to the bottom of the total height. For example, assume there are 20 child components in total, each with a height of 80 vp, and the anchor child component index is 10 (that is, the 11th child component):
+    During backward scrolling, the anchor is the last child component in the visible area, and the anchor position is calculated relative to the bottom of the total height. For example, assume there are 20 child components in total, each with a height of 80 vp, and the anchor child component index is 10 (that is, the 11th child component):
 
-- The spacing changes from 5 vp to 10 vp.
-
+    - The spacing changes from 5 vp to 10 vp.
     - The previous position of this child component relative to the bottom of the total height: 9 × 80 vp + 9 × 5 vp = 765 vp
-
     - The new position of this child component relative to the bottom of the total height: 9 × 80 vp + 9 × 10 vp = 810 vp
-
     - Offset adjustment: 810 vp - 765 vp = 45 vp
 
     After calling setAdjustedOffset (45 vp), the parent scrollable component of **LazyDynamicLayout** adjusts the scroll position, keeping the anchor child component at the same relative position in the visible area.
@@ -338,7 +330,7 @@ Each sub-step is described in detail below.
         Use the [getChild](../reference/apis-arkui/js-apis-arkui-frameNode.md#getchild12) method to obtain the child component [FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#framenode-1) at the specified index. You must pass the [ExpandMode.LAZY_NOT_EXPAND](../reference/apis-arkui/js-apis-arkui-frameNode.md#expandmode15) parameter to avoid full loading, which causes lazy loading failure.
 
         <!-- @[lazy_custom_layout_get_child_not_expand](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyCustomLayout/LazyColumnLayoutAlgorithm.ets) -->
-
+        
         ``` TypeScript
         let child = self.getChild(currIndex, ExpandMode.LAZY_NOT_EXPAND);
         ```
@@ -348,7 +340,7 @@ Each sub-step is described in detail below.
         Create measurement constraints for the child component based on the container constraints and layout requirements. In a single-column layout, the child component's width equals the container width minus the left and right padding.
 
         <!-- @[lazy_custom_layout_create_child_constraint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyCustomLayout/LazyColumnLayoutAlgorithm.ets) -->
-
+        
         ``` TypeScript
         /**
          * Create layout constraints for the child element.
@@ -387,7 +379,7 @@ Each sub-step is described in detail below.
     The following example demonstrates the complete process of forward measuring elements within the visible range, including obtaining child components, creating constraints, calling measure, obtaining measured sizes, and recording position information.
 
     <!-- @[lazy_custom_layout_measure_forward](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyCustomLayout/LazyColumnLayoutAlgorithm.ets) -->
-
+    
     ``` TypeScript
     private measureForward(
       self: FrameNode,
@@ -431,7 +423,7 @@ Each sub-step is described in detail below.
     For unmeasured child component areas, the total height is calculated using an estimated height to avoid measuring all child components just to obtain the total height.
 
     <!-- @[lazy_custom_layout_estimate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyCustomLayout/LazyColumnLayoutAlgorithm.ets) -->
-
+    
     ``` TypeScript
     private calculateEstimateItemHeight(): void {
       let totalSize = 0;
@@ -460,7 +452,7 @@ Each sub-step is described in detail below.
     When a child component leaves the visible area, set it to inactive state via [setChildrenInactive](../reference/apis-arkui/js-apis-arkui-lazyLayoutAlgorithm.md#setchildreninactive) to release memory.
 
     <!-- @[lazy_custom_layout_recycle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyCustomLayout/LazyColumnLayoutAlgorithm.ets) -->
-
+    
     ``` TypeScript
     /**
      * recycleChildren - Recycle elements that are no longer visible.
@@ -501,7 +493,7 @@ Each sub-step is described in detail below.
     | [getChild](../reference/apis-arkui/js-apis-arkui-frameNode.md#getchild12) | Obtains the child component [FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#framenode-1) at the specified index. Uses [ExpandMode.LAZY_NOT_EXPAND](../reference/apis-arkui/js-apis-arkui-frameNode.md#expandmode15) to avoid full loading when obtaining child components, which causes lazy loading failure. |
     | [getViewStart](../reference/apis-arkui/js-apis-arkui-lazyLayoutAlgorithm.md#getviewstart) | Gets the start position of the visible area (relative to the top of the **LazyDynamicLayout** content area). |
     | [getViewEnd](../reference/apis-arkui/js-apis-arkui-lazyLayoutAlgorithm.md#getviewend) | Gets the end position of the visible area. |
-    | [getLazyLayoutDirection](../reference/apis-arkui/js-apis-arkui-lazyLayoutAlgorithm.md#getlazylayoutdirection) | Gets the current layout direction. **FORWARD** indicates forward layout (top to bottom), and **BACKWARD** indicates backward layout (bottom to top). |
+    | [getLazyLayoutDirection](../reference/apis-arkui/js-apis-arkui-lazyLayoutAlgorithm.md#getlazylayoutdirection) | Gets the current layout direction. **FORWARD** indicates forward layout (top to bottom), and **BACKWARD** indicates reverse layout (bottom to top). |
     | [setAdjustedOffset](../reference/apis-arkui/js-apis-arkui-lazyLayoutAlgorithm.md#setadjustedoffset) | Sets the offset adjustment amount. Used to adjust the scroll position after layout parameter changes so that the anchor child component maintains its relative position within the visible area. In forward layout, the anchor is the first child component in the visible area; in reverse layout, it is the last child component in the visible area. |
     | [setChildrenInactive](../reference/apis-arkui/js-apis-arkui-lazyLayoutAlgorithm.md#setchildreninactive) | Sets the child component at the specified index to the inactive state. Inactive child components are recycled to free memory. |
     | [getUserConfigPadding](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuserconfigpadding12) | Gets the padding attribute value set by the user. Returns a **LengthMetrics** type, which needs to be converted to a pixel value. |
@@ -635,13 +627,9 @@ LazyDynamicLayout(this.lazyAlgorithm) {
 ## Complete Sample Code
 
 The following example demonstrates how to use **LazyDynamicLayout** with the custom layout algorithm **LazyColumnLayoutAlgorithm** to implement a lazy loading single-column list, supporting dynamic adjustment of row spacing while keeping the scroll position stable.
-
 <!--RP1-->
-
 For the complete example, see [Custom Lazy Single-Column Layout Example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyCustomLayout/CustomLazyColumnLayoutSample.ets).
-
 <!--RP1End-->
-
 In the above example, tapping the bottom button can switch the row spacing. Because the [setAdjustedOffset](../reference/apis-arkui/js-apis-arkui-lazyLayoutAlgorithm.md#setadjustedoffset) adjustment logic is implemented in the layout algorithm, the position of the anchor child component (the first child component in the visible area for forward layout, or the last child component in the visible area for reverse layout) remains unchanged after switching the spacing, avoiding scroll jitter.
 
 ![LazyDynamicLayout1.gif](figures/customLazyColumnLayout.gif)
@@ -649,13 +637,7 @@ In the above example, tapping the bottom button can switch the row spacing. Beca
 For the development of custom lazy layouts, the following related examples are available for reference.
 
 <!--RP2-->
-
 - [Custom lazy single-column layout example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyCustomLayout/CustomLazyColumnLayoutSample.ets): Demonstrates how to use **LazyDynamicLayout** with **LazyColumnLayoutAlgorithm** to implement a lazy loading single-column list.
-
 - [Custom lazy grid layout example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyCustomLayout/CustomLazyGridLayoutSample.ets): Demonstrates how to use **LazyDynamicLayout** with **LazyGridLayoutAlgorithm** to implement a lazy loading grid layout.
-
 - [Custom lazy waterfall layout example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/lazyCustomLayout/CustomLazyWaterFlowLayoutSample.ets): Demonstrates how to use **LazyDynamicLayout** with **LazyWaterFlowLayoutAlgorithm** to implement a lazy loading waterfall layout.
-
 <!--RP2End-->
-
-<!--no_check-->
