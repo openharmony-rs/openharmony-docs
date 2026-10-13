@@ -737,8 +737,8 @@ Button('Ok', { type: ButtonType.Normal, stateEffect: true } as ButtonOptions)
           Button() {
             // 请将$r('app.media.ic_public_add')替换为实际资源文件
             Image($r('app.media.ic_public_add'))
-             .width(50)
-             .height(50)
+              .width(50)
+              .height(50)
           }
           .width(60)
           .height(60)
@@ -800,8 +800,8 @@ Button('Ok', { type: ButtonType.Normal, stateEffect: true } as ButtonOptions)
           Button() {
             // 请将$r('app.media.ic_public_add')替换为实际资源文件
             Image($r('app.media.ic_public_add'))
-             .width(50)
-             .height(50)
+              .width(50)
+              .height(50)
           }
           .width(60)
           .height(60)
