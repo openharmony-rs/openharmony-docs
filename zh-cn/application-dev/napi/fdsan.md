@@ -483,7 +483,7 @@ void good_write()
     // int fd = open(DEV_NULL_FILE, O_RDWR);
     fdsan_fd fd(open(TEMP_FILE, O_CREAT | O_RDWR));
     if (fd.get() == -1) {
-        printf("fopen failed errno=%d\n", errno);
+        printf("open failed errno=%d\n", errno);
         return;
     }
     ssize_t ret = write(fd.get(), "fdsan test\n", 11);

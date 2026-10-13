@@ -5,6 +5,7 @@
 <!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=54656b3da3e41e2ba7f2b57573523f0dbf41c1e3 translatedAt=2026-10-08T09:14:45.662Z pushedAt=2026-10-09T03:03:08.715Z -->
 
 > **NOTE**
 >
@@ -950,7 +951,7 @@ Checks whether this ordered common event should be aborted. This API uses an asy
 
 | Name  | Type                   | Mandatory| Description                              |
 | -------- | ----------------------- | ---- | ---------------------------------- |
-| callback | AsyncCallback\<boolean> | Yes  | If the query is successful, **err** is **undefined**. If **data** is **true**, the ordered common event is aborted. If **data** is **false**, the ordered common event is not aborted. Otherwise, **err** is an error object.|
+| callback | AsyncCallback\<boolean> | Yes | Callback used to return the result. If the query is successful, **err** is **undefined**. If **data** is **true**, the ordered common event is aborted. If **data** is **false**, the ordered common event is not aborted. Otherwise, **err** is an error object. |
 
 **Error codes**
 

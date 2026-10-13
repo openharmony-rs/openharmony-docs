@@ -491,8 +491,8 @@ export default class ColdStartAbility extends UIAbility {
     export default class HotStartAbility extends UIAbility {
       private funcAbilityWant: Want | undefined = undefined;
       private uiContext: UIContext | undefined = undefined;
-     // ···
-     
+      // ···
+
       onWindowStageCreate(windowStage: window.WindowStage): void {
         // Main window is created, set main page for this ability
         hilog.info(DOMAIN_NUMBER, TAG, '%{public}s', 'Ability onWindowStageCreate');
@@ -542,7 +542,7 @@ export default class ColdStartAbility extends UIAbility {
         }
         ```
 
-    2. 在Index页面显示时触发onPageShow回调，获取全局变量nameForNavi的值，并进行执行页面的跳转。
+    2. 在Index页面显示时触发onPageShow()回调，获取全局变量nameForNavi的值，并进行执行页面的跳转。
 
         <!-- @[Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/UIAbilityInteraction/entry/src/main/ets/pages/Index.ets) -->
         

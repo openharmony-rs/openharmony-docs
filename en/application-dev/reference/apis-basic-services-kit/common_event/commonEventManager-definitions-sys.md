@@ -2,10 +2,10 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=ba5e4b825fc5a62c6414b81b626efd36743db347 translatedAt=2026-09-23T02:05:56.586Z pushedAt=2026-09-23T10:54:47.126Z -->
+<!-- md-trans-meta sourceCommit=d92fd96c7713dc18450281df98f1c9ed5f77b2c9 translatedAt=2026-09-29T09:38:51.800Z pushedAt=2026-10-08T02:39:02.465Z -->
 
 This topic provides a list of common events defined by the system.
 
@@ -888,4 +888,3 @@ When the device receives a WAP push message, the common event service is trigger
 **Required permissions**: ohos.permission.RECEIVE_SMS (for system applications only)
 
 **Value:** usual.event.SMS_WAPPUSH_RECEIVE_COMPLETED
-<!--no_check-->

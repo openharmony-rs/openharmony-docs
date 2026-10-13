@@ -115,7 +115,7 @@
 
    > **说明：**
    >
-   > 在相机设备输入之前需要先完成相机管理，详细开发步骤请参考[相机管理](native-camera-device-management.md)。
+   > 在相机设备输入之前需要先完成相机管理，详细开发步骤请参考[相机管理(C/C++)](native-camera-device-management.md)。
 
 4. 通过[OH_CameraManager_GetSupportedSceneModes()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getsupportedscenemodes)方法，获取当前相机设备支持的模式列表，列表中存储了相机设备支持的所有模式[Camera_SceneMode](../../reference/apis-camera-kit/capi-camera-h.md#camera_scenemode)。
 

@@ -23,6 +23,10 @@ switchInputMethod(bundleName: string, subtypeId?: string): Promise&lt;void&gt;
 
 切换输入法，使用promise异步回调。
 
+> **说明：**
+>
+> 该接口在[评估管理](../apis-assessment-kit/js-apis-customization-assessment.md)开启时无法切换到其他输入法应用。
+
 **需要权限：** ohos.permission.CONNECT_IME_ABILITY
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
@@ -1015,6 +1019,10 @@ try {
 switchInputMethodWithUserId(bundleName: string, subtypeId?: string, userId?: number): Promise&lt;void&gt;
 
 切换输入法，使用promise异步回调。
+
+> **说明：**
+>
+> 该接口在[评估管理](../apis-assessment-kit/js-apis-customization-assessment.md)开启时无法切换到其他输入法应用。
 
 **起始版本：** 26.0.0
 

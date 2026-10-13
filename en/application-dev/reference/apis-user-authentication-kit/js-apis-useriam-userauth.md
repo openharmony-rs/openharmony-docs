@@ -1291,7 +1291,7 @@ Obtains the latest user recognition result. This API uses a promise to return th
 
 | Type                                                   | Description                       |
 | ------------------------------------------------------ | -------------------------- |
-| Promise\<[UserRecognitionResult](#userrecognitionresult)\> | Promise object that returns the user recognition result. |
+| Promise\<[UserRecognitionResult](#userrecognitionresult)\> | Promise used to return the user recognition result. |
 
 **Error codes**
 

@@ -72,9 +72,9 @@ ArkWeb同层渲染特性主要提供两种能力：同层标签生命周期和�
 
 **同层标签支持的css属性：** 
 
-display，position，z-index，visibility，opacity, background-color，background-image，width，height，padding，padding-left，padding-top，padding-right，padding-bottom，margin，margin-left，margin-top，margin-right，margin-bottom，border-width，border-style，border-color，border-left-width，border-left-style，border-left-color，border-top-width，border-top-style，border-top-color，border-right-width，border-right-style，border-right-color，border-bottom-width，border-bottom-style，border-bottom-color，border-left，border-right，border-top，border-bottom，border，border-top-left-radius，border-top-right-radius，border-bottom-left-radius，border-bottom-right-radius，border-radius，transition，transform（仅支持translate/scale，scale对应参数只支持大于等于0的值）
+display，position，z-index，visibility，opacity, background-color，background-image，width，height，padding，padding-left，padding-top，padding-right，padding-bottom，margin，margin-left，margin-top，margin-right，margin-bottom，border-width，border-style，border-color，border-left-width，border-left-style，border-left-color，border-top-width，border-top-style，border-top-color，border-right-width，border-right-style，border-right-color，border-bottom-width，border-bottom-style，border-bottom-color，border-left，border-right，border-top，border-bottom，border，border-top-left-radius，border-top-right-radius，border-bottom-left-radius，border-bottom-right-radius，border-radius，transition，transform（支持translate/scale，scale对应参数只支持大于等于0的值。从API版本26.2.0开始，可通过[nativeEmbedOptions](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#nativeembedoptions16)将[EmbedOptions](../reference/apis-arkweb/arkts-basic-components-web-i.md#embedoptions16)中的supportTransformRotateAndSkew设为true，支持transform中的rotate和skew属性）
 
- 除上面支持的css属性范围，其他的css属性均不保证符合预期，比如transform属性中的rotate，skew等。
+ 除上面支持的css属性范围，其他的css属性均不保证符合预期。
 
 **同层标签的生命周期管理：** 
 当同层标签生命周期变化时触发[onNativeEmbedLifecycleChange()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onnativeembedlifecyclechange11)回调。
@@ -1615,8 +1615,12 @@ ArkWeb同层渲染场景下的私有属性`arkwebnativestyle`，仅在开启同�
 ### 同层渲染组件被拉伸该如何解决？
 
 - 组件高度过大
-  
+
   受GPU限制，同层标签存在8000px的高度限制，如果H5中同层标签高度过高，会存在组件被拉伸的情况，这时需要将同层标签的高度设为8000px以下。
+
+- transform rotate/skew变换导致
+
+  同层标签应用CSS transform中的rotate/skew变换后，画面会出现拉伸变形，从API版本26.2.0开始，可通过[nativeEmbedOptions](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#nativeembedoptions16)将[EmbedOptions](../reference/apis-arkweb/arkts-basic-components-web-i.md#embedoptions16)中的supportTransformRotateAndSkew设为true解决。
 
 - 自定义组件宽高未指定为同层渲染标签的宽高
 

@@ -143,12 +143,12 @@ dataObject['parents']['mom'] = "amy"; // 不支持的修改
 | save(deviceId: string, callback: AsyncCallback&lt;SaveSuccessResponse&gt;): void | 保存分布式数据对象。 |
 | revokeSave(callback: AsyncCallback&lt;RevokeSaveSuccessResponse&gt;): void | 撤回保存的分布式数据对象。 |
 | bindAssetStore(assetKey: string, bindInfo: BindInfo, callback: AsyncCallback&lt;void&gt;): void | 绑定融合资产。 |
-| setAsset(assetKey: string, uri: string): void | 设置单个资产。 |
-| setAssets(assetKey: string, uris: Array&lt;string&gt;): void | 设置资产数组。 |
-| on(type: 'change', callback: DataObserver&lt;void&gt;): void | 监听分布式数据对象的数据变更。 |
-| off(type: 'change', callback?: DataObserver&lt;void&gt;): void |  删除分布式数据对象数据变更监听的回调实例。 |
-| on(type: 'status', callback: StatusObserver&lt;void&gt;): void | 监听分布式数据对象的状态变更。 |
-| off(type: 'status', callback?: StatusObserver&lt;void&gt;): void | 删除分布式数据对象状态变更监听的回调实例。 |
+| setAsset(assetKey: string, uri: string): Promise&lt;void&gt; | 设置单个资产。 |
+| setAssets(assetsKey: string, uris: Array&lt;string&gt;): Promise&lt;void&gt; | 设置资产数组。 |
+| on(type: 'change', callback: DataObserver): void | 监听分布式数据对象的数据变更。 |
+| off(type: 'change', callback?: DataObserver): void |  删除分布式数据对象数据变更监听的回调实例。 |
+| on(type: 'status', callback: StatusObserver): void | 监听分布式数据对象的状态变更。 |
+| off(type: 'status', callback?: StatusObserver): void | 删除分布式数据对象状态变更监听的回调实例。 |
 
 
 ## 开发步骤
