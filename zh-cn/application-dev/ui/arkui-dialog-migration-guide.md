@@ -83,35 +83,35 @@
 **迁移前示例（老接口）：**
 
  ```typescript
- @CustomDialog 
- struct CustomDialogExample { 
-   controller?: CustomDialogController 
-   build() { 
-     Column() { 
-       Text('自定义弹窗内容') 
-       Button('关闭').onClick(() => { this.controller?.close() }) 
-     } 
-   } 
- } 
- 
- @Entry 
- @Component 
- struct Index { 
-   dialogController: CustomDialogController = new CustomDialogController({ 
-     builder: CustomDialogExample(), 
-     alignment: DialogAlignment.Center, 
-     autoCancel: true, 
-     maskColor: 0x33000000 
-   }) 
-   build() { 
-     Column() { 
-       Button('打开弹窗').onClick(() => { this.dialogController.open() }) 
-     } 
-     .width('100%') 
-     .height('100%') 
-     .justifyContent(FlexAlign.Center) 
-   } 
- } 
+ @CustomDialog
+ struct CustomDialogExample {
+   controller?: CustomDialogController
+   build() {
+     Column() {
+       Text('自定义弹窗内容')
+       Button('关闭').onClick(() => { this.controller?.close() })
+     }
+   }
+ }
+
+ @Entry
+ @Component
+ struct Index {
+   dialogController: CustomDialogController = new CustomDialogController({
+     builder: CustomDialogExample(),
+     alignment: DialogAlignment.Center,
+     autoCancel: true,
+     maskColor: 0x33000000
+   })
+   build() {
+     Column() {
+       Button('打开弹窗').onClick(() => { this.dialogController.open() })
+     }
+     .width('100%')
+     .height('100%')
+     .justifyContent(FlexAlign.Center)
+   }
+ }
  ```
 
  ![迁移前示例图](figures/CustomDialogBeforeMigrate.png)
@@ -123,100 +123,100 @@ import { DialogPresenter, DialogBaseAlignment, DialogResult, ComponentContent } 
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 定义参数类，用于向自定义弹出框内容传递数据
-class Params { 
-  text: string = ''; 
+class Params {
+  text: string = '';
 
-  constructor(text: string) {	 
-    this.text = text;	 
-  }	 
-} 
+  constructor(text: string) {
+    this.text = text;
+  }
+}
 
-// 自定义弹出框内容的构建器函数	 
-@Builder	 
-function buildText(params: Params) {	 
-  Column({ space: 20 }) {	 
-    Text(params.text)	 
-      .fontSize(30)	 
-      .fontWeight(FontWeight.Bold)	 
-      .margin({ bottom: 36 })	 
-    // 关闭弹出框按钮，通过ComponentContent引用关闭弹出框	 
-    Button('关闭弹窗')	 
-      .onClick(() => {	 
-        dialogPresenter?.dismiss(contentNode)	 
-          .then(() => {	 
-            console.info('dismiss success');	 
-          })	 
-          .catch((error: BusinessError) => {	 
-            console.error(`dismiss error code is ${error.code}, message is ${error.message}`);	 
-          })	 
-      })	 
-  }	 
-} 
+// 自定义弹出框内容的构建器函数
+@Builder
+function buildText(params: Params) {
+  Column({ space: 20 }) {
+    Text(params.text)
+      .fontSize(30)
+      .fontWeight(FontWeight.Bold)
+      .margin({ bottom: 36 })
+    // 关闭弹出框按钮，通过ComponentContent引用关闭弹出框
+    Button('关闭弹窗')
+      .onClick(() => {
+        dialogPresenter?.dismiss(contentNode)
+          .then(() => {
+            console.info('dismiss success');
+          })
+          .catch((error: BusinessError) => {
+            console.error(`dismiss error code is ${error.code}, message is ${error.message}`);
+          })
+      })
+  }
+}
 
-let contentNode: ComponentContent<Object> | null = null; 
-// 全局变量，保存DialogPresenter实例 
-let dialogPresenter: DialogPresenter | null = null; 
+let contentNode: ComponentContent<Object> | null = null;
+// 全局变量，保存DialogPresenter实例
+let dialogPresenter: DialogPresenter | null = null;
 
-@Entry 
-@Component 
-struct CustomDialogMigrationPage { 
-  @State result: string = ''; 
+@Entry
+@Component
+struct CustomDialogMigrationPage {
+  @State result: string = '';
 
-  aboutToAppear(): void { 
-    // 获取DialogPresenter实例 
-    dialogPresenter = this.getUIContext().getDialogPresenter(); 
-    // 创建ComponentContent，绑定自定义构建器函数和参数 
-    contentNode = new ComponentContent(this.getUIContext(), wrapBuilder(buildText), new Params("自定义弹窗内容")); 
-  } 
+  aboutToAppear(): void {
+    // 获取DialogPresenter实例
+    dialogPresenter = this.getUIContext().getDialogPresenter();
+    // 创建ComponentContent，绑定自定义构建器函数和参数
+    contentNode = new ComponentContent(this.getUIContext(), wrapBuilder(buildText), new Params("自定义弹窗内容"));
+  }
 
-  build() { 
-    Row() { 
-      Column() { 
-        Text('CustomDialog 迁移示例') 
-          .fontSize(18) 
-          .fontWeight(FontWeight.Bold) 
-          .margin({ bottom: 20 }) 
+  build() {
+    Row() {
+      Column() {
+        Text('CustomDialog 迁移示例')
+          .fontSize(18)
+          .fontWeight(FontWeight.Bold)
+          .margin({ bottom: 20 })
 
-        Button('老接口：@CustomDialog + CustomDialogController') 
-          .width('90%') 
-          .margin({ bottom: 10 }) 
-          .onClick(() => { 
-            this.showOldCustomDialog(); 
-          }) 
+        Button('老接口：@CustomDialog + CustomDialogController')
+          .width('90%')
+          .margin({ bottom: 10 })
+          .onClick(() => {
+            this.showOldCustomDialog();
+          })
 
-        Button('新接口：DialogPresenter.present（自定义弹窗）') 
-          .width('90%') 
-          .margin({ bottom: 10 }) 
-          .onClick(() => { 
-            this.showNewCustomDialog(); 
-          }) 
+        Button('新接口：DialogPresenter.present（自定义弹窗）')
+          .width('90%')
+          .margin({ bottom: 10 })
+          .onClick(() => {
+            this.showNewCustomDialog();
+          })
 
-        if (this.result) { 
-          Text(this.result) 
-            .fontSize(14) 
-            .margin({ top: 10 }) 
-        } 
-      } 
-      .width('100%') 
-    }	 
-    .height('100%') 
-  }	 
+        if (this.result) {
+          Text(this.result)
+            .fontSize(14)
+            .margin({ top: 10 })
+        }
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
 
-  private showOldCustomDialog(): void {	 
-    this.result = '老接口示例请参考 DialogProject 工程';	 
-  }	 
+  private showOldCustomDialog(): void {
+    this.result = '老接口示例请参考 DialogProject 工程';
+  }
 
-  private showNewCustomDialog(): void {	 
-    dialogPresenter?.present(contentNode, {	 
-      alignment: DialogBaseAlignment.CENTER, 
-      autoCancel: true, 
-      maskColor: 0x33000000 
-    }).then((result: DialogResult) => { 
-      this.result = 'present success, dialogId: ' + result.dialogId; 
-    }).catch((error: BusinessError) => { 
-      this.result = `present error: ${error.code}`; 
-    }); 
-  } 
+  private showNewCustomDialog(): void {
+    dialogPresenter?.present(contentNode, {
+      alignment: DialogBaseAlignment.CENTER,
+      autoCancel: true,
+      maskColor: 0x33000000
+    }).then((result: DialogResult) => {
+      this.result = 'present success, dialogId: ' + result.dialogId;
+    }).catch((error: BusinessError) => {
+      this.result = `present error: ${error.code}`;
+    });
+  }
 }
 ```
 
@@ -257,117 +257,117 @@ struct CustomDialogMigrationPage {
 
 **迁移前示例（老接口）：**
 
-```typescript 
-@Entry 
-@Component 
-struct Index { 
-  @State result: string = ''; 
+```typescript
+@Entry
+@Component
+struct Index {
+  @State result: string = '';
 
-  build() { 
-    Column() { 
-      Button('打开 AlertDialog') 
-        .onClick(() => { 
-          this.getUIContext().showAlertDialog({ 
-            title: '提示', 
-            message: '确认删除？', 
-            autoCancel: true, 
-            buttons: [ 
-              { value: '取消', action: () => { this.result = '取消'; } }, 
-              { value: '确认', action: () => { this.result = '确认'; } } 
-            ], 
-            cancel: () => { this.result = 'cancel'; } 
-          }); 
-        })	 
+  build() {
+    Column() {
+      Button('打开 AlertDialog')
+        .onClick(() => {
+          this.getUIContext().showAlertDialog({
+            title: '提示',
+            message: '确认删除？',
+            autoCancel: true,
+            buttons: [
+              { value: '取消', action: () => { this.result = '取消'; } },
+              { value: '确认', action: () => { this.result = '确认'; } }
+            ],
+            cancel: () => { this.result = 'cancel'; }
+          });
+        })
 
-      if (this.result) {	 
-        Text(this.result)	 
-          .fontSize(14)	 
-          .margin({ top: 10 }) 
-      } 
-    } 
-    .width('100%') 
-    .height('100%') 
-    .justifyContent(FlexAlign.Center) 
-  } 
-} 
- ``` 
+      if (this.result) {
+        Text(this.result)
+          .fontSize(14)
+          .margin({ top: 10 })
+      }
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+ ```
 
 ![迁移前示例图](figures/AlertDialogBeforeMigrate.png)
 
-**迁移后示例（新接口）：** 
+**迁移后示例（新接口）：**
 
-```typescript 
-import { DialogBaseAlignment, DialogDismissal, DialogPresenter, DialogResult } from '@kit.ArkUI'; 
-import { BusinessError } from '@kit.BasicServicesKit'; 
+```typescript
+import { DialogBaseAlignment, DialogDismissal, DialogPresenter, DialogResult } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-@Entry 
-@Component 
-struct AlertDialogMigrationPage { 
-  private presenter: DialogPresenter = this.getUIContext().getDialogPresenter(); 
-  @State result: string = ''; 
+@Entry
+@Component
+struct AlertDialogMigrationPage {
+  private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
+  @State result: string = '';
 
-  build() { 
-    Row() { 
-      Column() { 
-        Text('AlertDialog 迁移示例') 
-          .fontSize(18) 
-          .fontWeight(FontWeight.Bold) 
-          .margin({ bottom: 20 }) 
+  build() {
+    Row() {
+      Column() {
+        Text('AlertDialog 迁移示例')
+          .fontSize(18)
+          .fontWeight(FontWeight.Bold)
+          .margin({ bottom: 20 })
 
-        Button('老接口：showAlertDialog') 
-          .width('90%') 
-          .margin({ bottom: 10 }) 
-          .onClick(() => { 
-            this.result = '老接口示例请参考 ts-methods-alert-dialog-box.md'; 
-          }) 
+        Button('老接口：showAlertDialog')
+          .width('90%')
+          .margin({ bottom: 10 })
+          .onClick(() => {
+            this.result = '老接口示例请参考 ts-methods-alert-dialog-box.md';
+          })
 
-        Button('新接口：DialogPresenter.present（固定样式弹窗）') 
-          .width('90%') 
-          .margin({ bottom: 10 }) 
-          .onClick(() => { 
-            this.showNewAlertDialog(); 
-          }) 
+        Button('新接口：DialogPresenter.present（固定样式弹窗）')
+          .width('90%')
+          .margin({ bottom: 10 })
+          .onClick(() => {
+            this.showNewAlertDialog();
+          })
 
-        if (this.result) { 
-          Text(this.result) 
-            .fontSize(14) 
-            .margin({ top: 10 }) 
-        } 
-      } 
-      .width('100%') 
-    } 
-    .height('100%') 
-  } 
+        if (this.result) {
+          Text(this.result)
+            .fontSize(14)
+            .margin({ top: 10 })
+        }
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
 
-  private showNewAlertDialog(): void { 
-    this.presenter.present({ 
-      title: '提示', 
-      message: { content: '确认删除？' }, 
-      buttons: [ 
-        { 
-          value: '取消', action: () => { 
-          this.result = '用户点击取消'; 
-        } 
-        }, 
-        { 
-          value: '确认', action: () => { 
-          this.result = '用户点击确认'; 
-        } 
-        } 
-      ], 
-      alignment: DialogBaseAlignment.BOTTOM, 
-      onWillDismiss: (dismissal: DialogDismissal) => { 
-        this.result = 'onWillDismiss, reason: ' + dismissal.reason; 
-        dismissal.dismiss(); 
-      } 
-    }).then((result: DialogResult) => { 
-      this.result = 'present success, dialogId: ' + result.dialogId; 
-    }).catch((error: BusinessError) => { 
-      this.result = `present error: ${error.code}`; 
-    }); 
-  } 
-} 
-``` 
+  private showNewAlertDialog(): void {
+    this.presenter.present({
+      title: '提示',
+      message: { content: '确认删除？' },
+      buttons: [
+        {
+          value: '取消', action: () => {
+          this.result = '用户点击取消';
+        }
+        },
+        {
+          value: '确认', action: () => {
+          this.result = '用户点击确认';
+        }
+        }
+      ],
+      alignment: DialogBaseAlignment.BOTTOM,
+      onWillDismiss: (dismissal: DialogDismissal) => {
+        this.result = 'onWillDismiss, reason: ' + dismissal.reason;
+        dismissal.dismiss();
+      }
+    }).then((result: DialogResult) => {
+      this.result = 'present success, dialogId: ' + result.dialogId;
+    }).catch((error: BusinessError) => {
+      this.result = `present error: ${error.code}`;
+    });
+  }
+}
+```
 
 ![迁移后示例图](figures/AlertDialogAfterMigrate.png)
 
@@ -403,111 +403,111 @@ struct AlertDialogMigrationPage {
 | 层级模式 | `levelMode`（API 15+） + `levelUniqueId`（API 15+） + `immersiveMode`（API 15+） + `levelOrder`（API 18+） | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` |
 | 系统材质 | `systemMaterial: SystemUiMaterial`（API 26+） | `systemMaterial: SystemUiMaterial` |
 
-**迁移前示例（老接口）：** 
+**迁移前示例（老接口）：**
 
-```typescript 
-@Entry 
-@Component 
-struct Index { 
-  @State result: string = ''; 
+```typescript
+@Entry
+@Component
+struct Index {
+  @State result: string = '';
 
-  build() { 
-    Column() { 
-      Button('打开 ActionSheet') 
-        .onClick(() => { 
-          this.getUIContext().showActionSheet({ 
-            title: '选择操作', 
-            message: '请选择一个操作', 
-            autoCancel: true, 
-            sheets: [ 
-              { title: '复制', action: () => { this.result = '复制'; } }, 
-              { title: '删除', action: () => { this.result = '删除'; } } 
-            ], 
-            cancel: () => { this.result = '取消'; } 
-          }); 
-        }) 
+  build() {
+    Column() {
+      Button('打开 ActionSheet')
+        .onClick(() => {
+          this.getUIContext().showActionSheet({
+            title: '选择操作',
+            message: '请选择一个操作',
+            autoCancel: true,
+            sheets: [
+              { title: '复制', action: () => { this.result = '复制'; } },
+              { title: '删除', action: () => { this.result = '删除'; } }
+            ],
+            cancel: () => { this.result = '取消'; }
+          });
+        })
 
-      if (this.result) { 
-        Text(this.result) 
-          .fontSize(14) 
-          .margin({ top: 10 }) 
-      } 
-    } 
-    .width('100%') 
-    .height('100%') 
-    .justifyContent(FlexAlign.Center) 
-  } 
-} 
-``` 
+      if (this.result) {
+        Text(this.result)
+          .fontSize(14)
+          .margin({ top: 10 })
+      }
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
 
-![迁移前示例图](figures/ActionSheetBeforeMigrate.png) 
+![迁移前示例图](figures/ActionSheetBeforeMigrate.png)
 
-**迁移后示例（新接口）：** 
+**迁移后示例（新接口）：**
 
-```typescript 
-import { DialogDismissal, DialogPresenter, DialogResult } from '@kit.ArkUI'; 
-import { BusinessError } from '@kit.BasicServicesKit'; 
+```typescript
+import { DialogDismissal, DialogPresenter, DialogResult } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-@Entry 
-@Component 
-struct ActionSheetMigrationPage { 
-  private presenter: DialogPresenter = this.getUIContext().getDialogPresenter(); 
-  @State result: string = ''; 
+@Entry
+@Component
+struct ActionSheetMigrationPage {
+  private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
+  @State result: string = '';
 
-  build() { 
-    Row() { 
-      Column() { 
-        Text('ActionSheet 迁移示例') 
-          .fontSize(18) 
-          .fontWeight(FontWeight.Bold) 
-          .margin({ bottom: 20 }) 
+  build() {
+    Row() {
+      Column() {
+        Text('ActionSheet 迁移示例')
+          .fontSize(18)
+          .fontWeight(FontWeight.Bold)
+          .margin({ bottom: 20 })
 
-        Button('老接口：showActionSheet') 
-          .width('90%') 
-          .margin({ bottom: 10 }) 
-          .onClick(() => { 
-            this.result = '老接口示例请参考 ts-methods-action-sheet.md'; 
-          }) 
+        Button('老接口：showActionSheet')
+          .width('90%')
+          .margin({ bottom: 10 })
+          .onClick(() => {
+            this.result = '老接口示例请参考 ts-methods-action-sheet.md';
+          })
 
-        Button('新接口：DialogPresenter.present（列表选择弹窗）') 
-          .width('90%') 
-          .margin({ bottom: 10 }) 
-          .onClick(() => { 
-            this.showNewActionSheet(); 
-          }) 
+        Button('新接口：DialogPresenter.present（列表选择弹窗）')
+          .width('90%')
+          .margin({ bottom: 10 })
+          .onClick(() => {
+            this.showNewActionSheet();
+          })
 
-        if (this.result) { 
-          Text(this.result) 
-            .fontSize(14) 
-            .margin({ top: 10 }) 
-        } 
-      } 
-      .width('100%') 
-    } 
-    .height('100%') 
+        if (this.result) {
+          Text(this.result)
+            .fontSize(14)
+            .margin({ top: 10 })
+        }
+      }
+      .width('100%')
+    }
+    .height('100%')
   }
 
-  private showNewActionSheet(): void { 
-    this.presenter.present({ 
-      title: '选择操作', 
-      message: { content: '请选择一个操作' }, 
-      autoCancel: true, 
-      sheets: [ 
-        { title: '复制', action: () => { this.result = '复制'; } }, 
-        { title: '删除', action: () => { this.result = '删除'; } } 
-      ], 
-      onWillDismiss: (dismissal: DialogDismissal) => { 
-        this.result = '取消'; 
-        dismissal.dismiss(); 
-      } 
-    }).then((result: DialogResult) => { 
-      this.result = 'present success, dialogId: ' + result.dialogId; 
-    }).catch((error: BusinessError) => { 
-      this.result = `present error: ${error.code}`; 
-    }); 
-  } 
-} 
-``` 
+  private showNewActionSheet(): void {
+    this.presenter.present({
+      title: '选择操作',
+      message: { content: '请选择一个操作' },
+      autoCancel: true,
+      sheets: [
+        { title: '复制', action: () => { this.result = '复制'; } },
+        { title: '删除', action: () => { this.result = '删除'; } }
+      ],
+      onWillDismiss: (dismissal: DialogDismissal) => {
+        this.result = '取消';
+        dismissal.dismiss();
+      }
+    }).then((result: DialogResult) => {
+      this.result = 'present success, dialogId: ' + result.dialogId;
+    }).catch((error: BusinessError) => {
+      this.result = `present error: ${error.code}`;
+    });
+  }
+}
+```
 
 ![迁移后示例图](figures/ActionSheetAfterMigrate.png)
 
@@ -544,110 +544,110 @@ struct ActionSheetMigrationPage {
 | 层级模式 | `levelMode`（API 15+） + `levelUniqueId`（API 15+） + `immersiveMode`（API 15+） + `levelOrder`（API 18+） | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` |
 | 系统材质 | `systemMaterial: SystemUiMaterial`（API 26+） | `systemMaterial: SystemUiMaterial` |
 
-**迁移前示例（老接口）：** 
- 
-```typescript 
-import { BusinessError } from '@kit.BasicServicesKit'; 
+**迁移前示例（老接口）：**
 
-@Entry 
-@Component 
-struct Index { 
-  @State result: string = ''; 
+```typescript
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  build() { 
-    Column() { 
-      Button('打开 showDialog') 
-        .onClick(() => { 
-          this.getUIContext().getPromptAction().showDialog({ 
-            title: '提示', 
-            message: '确认删除？', 
-            buttons: [ 
-              { text: '取消', color: '#666666' }, 
-              { text: '确认', color: '#0000FF' } 
-            ] 
-          }).then((data) => { 
-            this.result = 'click button index: ' + data.index; 
-          }).catch((error: BusinessError) => { 
-            this.result = `showDialog error: ${error.code}`; 
-          }); 
-        }) 
+@Entry
+@Component
+struct Index {
+  @State result: string = '';
 
-      if (this.result) { 
-        Text(this.result) 
-          .fontSize(14) 
-          .margin({ top: 10 }) 
-      } 
-    } 
-    .width('100%') 
-    .height('100%') 
-    .justifyContent(FlexAlign.Center) 
-  } 
-} 
-``` 
+  build() {
+    Column() {
+      Button('打开 showDialog')
+        .onClick(() => {
+          this.getUIContext().getPromptAction().showDialog({
+            title: '提示',
+            message: '确认删除？',
+            buttons: [
+              { text: '取消', color: '#666666' },
+              { text: '确认', color: '#0000FF' }
+            ]
+          }).then((data) => {
+            this.result = 'click button index: ' + data.index;
+          }).catch((error: BusinessError) => {
+            this.result = `showDialog error: ${error.code}`;
+          });
+        })
 
-![迁移前示例图](figures/ShowDialogBeforeMigrate.png) 
+      if (this.result) {
+        Text(this.result)
+          .fontSize(14)
+          .margin({ top: 10 })
+      }
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
 
-**迁移后示例（新接口）：** 
+![迁移前示例图](figures/ShowDialogBeforeMigrate.png)
 
-```typescript 
-import { DialogPresenter, DialogResult } from '@kit.ArkUI'; 
-import { BusinessError } from '@kit.BasicServicesKit'; 
+**迁移后示例（新接口）：**
 
-@Entry 
-@Component 
-struct ShowDialogMigrationPage { 
-  private presenter: DialogPresenter = this.getUIContext().getDialogPresenter(); 
-  @State result: string = ''; 
+```typescript
+import { DialogPresenter, DialogResult } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  build() { 
-    Row() { 
-      Column() { 
-        Text('showDialog 迁移示例') 
-          .fontSize(18) 
-          .fontWeight(FontWeight.Bold) 
-          .margin({ bottom: 20 }) 
+@Entry
+@Component
+struct ShowDialogMigrationPage {
+  private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
+  @State result: string = '';
 
-        Button('老接口：promptAction.showDialog') 
-          .width('90%') 
-          .margin({ bottom: 10 }) 
-          .onClick(() => { 
-            this.result = '老接口示例请参考 js-apis-promptAction.md'; 
-          }) 
+  build() {
+    Row() {
+      Column() {
+        Text('showDialog 迁移示例')
+          .fontSize(18)
+          .fontWeight(FontWeight.Bold)
+          .margin({ bottom: 20 })
 
-        Button('新接口：DialogPresenter.present（对话框）') 
-          .width('90%') 
-          .margin({ bottom: 10 }) 
-          .onClick(() => { 
-            this.showNewDialog(); 
-          }) 
+        Button('老接口：promptAction.showDialog')
+          .width('90%')
+          .margin({ bottom: 10 })
+          .onClick(() => {
+            this.result = '老接口示例请参考 js-apis-promptAction.md';
+          })
 
-        if (this.result) { 
-          Text(this.result) 
-            .fontSize(14) 
-            .margin({ top: 10 }) 
-        } 
-      } 
-      .width('100%') 
-    } 
-    .height('100%') 
-  } 
+        Button('新接口：DialogPresenter.present（对话框）')
+          .width('90%')
+          .margin({ bottom: 10 })
+          .onClick(() => {
+            this.showNewDialog();
+          })
 
-  private showNewDialog(): void { 
-    this.presenter.present({ 
-      title: '提示', 
-      message: { content: '确认删除？' }, 
-      buttons: [ 
-        { value: '取消', action: () => { this.result = '取消'; } }, 
-        { value: '确认', action: () => { this.result = '确认'; } } 
-      ] 
-    }).then((result: DialogResult) => { 
-      this.result = 'present success, dialogId: ' + result.dialogId; 
-    }).catch((error: BusinessError) => { 
-      this.result = `present error: ${error.code}`; 
-    }); 
-  } 
-} 
-``` 
+        if (this.result) {
+          Text(this.result)
+            .fontSize(14)
+            .margin({ top: 10 })
+        }
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+
+  private showNewDialog(): void {
+    this.presenter.present({
+      title: '提示',
+      message: { content: '确认删除？' },
+      buttons: [
+        { value: '取消', action: () => { this.result = '取消'; } },
+        { value: '确认', action: () => { this.result = '确认'; } }
+      ]
+    }).then((result: DialogResult) => {
+      this.result = 'present success, dialogId: ' + result.dialogId;
+    }).catch((error: BusinessError) => {
+      this.result = `present error: ${error.code}`;
+    });
+  }
+}
+```
 
 ![迁移后示例图](figures/ShowDialogAfterMigrate.png)
 
@@ -684,110 +684,110 @@ struct ShowDialogMigrationPage {
 | 层级模式 | `levelMode`（API 15+） + `levelUniqueId`（API 15+） + `immersiveMode`（API 15+） | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` |
 | 系统材质 | `systemMaterial: SystemUiMaterial`（API 26+） | `systemMaterial: SystemUiMaterial` |
 
-**迁移前示例（老接口）：** 
+**迁移前示例（老接口）：**
 
-```typescript 
-import { BusinessError } from '@kit.BasicServicesKit'; 
+```typescript
+import { BusinessError } from '@kit.BasicServicesKit';
 
-@Entry 
-@Component 
-struct Index { 
-  @State result: string = ''; 
+@Entry
+@Component
+struct Index {
+  @State result: string = '';
 
-  build() { 
-    Column() { 
-      Button('打开 showActionMenu') 
-        .onClick(() => { 
-          this.getUIContext().getPromptAction().showActionMenu({ 
-            title: '选择操作', 
-            buttons: [ 
-              { text: '保存', color: '#0000FF' }, 
-              { text: '分享', color: '#0000FF' }, 
-              { text: '删除', color: '#FF0000' } 
-            ] 
-          }).then((data) => { 
-            this.result = 'click button index: ' + data.index; 
-          }).catch((error: BusinessError) => { 
-            this.result = `showActionMenu error: ${error.code}`; 
-          }); 
-        }) 
+  build() {
+    Column() {
+      Button('打开 showActionMenu')
+        .onClick(() => {
+          this.getUIContext().getPromptAction().showActionMenu({
+            title: '选择操作',
+            buttons: [
+              { text: '保存', color: '#0000FF' },
+              { text: '分享', color: '#0000FF' },
+              { text: '删除', color: '#FF0000' }
+            ]
+          }).then((data) => {
+            this.result = 'click button index: ' + data.index;
+          }).catch((error: BusinessError) => {
+            this.result = `showActionMenu error: ${error.code}`;
+          });
+        })
 
-      if (this.result) { 
-        Text(this.result) 
-          .fontSize(14) 
-          .margin({ top: 10 }) 
-      } 
-    } 
-    .width('100%') 
-    .height('100%') 
-    .justifyContent(FlexAlign.Center) 
-  } 
-} 
-``` 
+      if (this.result) {
+        Text(this.result)
+          .fontSize(14)
+          .margin({ top: 10 })
+      }
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
 
-![迁移前示例图](figures/ActionMenuBeforeMigrate.png) 
+![迁移前示例图](figures/ActionMenuBeforeMigrate.png)
 
-**迁移后示例（新接口）：** 
+**迁移后示例（新接口）：**
 
-```typescript 
-import { DialogPresenter, DialogResult } from '@kit.ArkUI'; 
-import { BusinessError } from '@kit.BasicServicesKit'; 
+```typescript
+import { DialogPresenter, DialogResult } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-@Entry 
-@Component 
-struct ShowActionMenuMigrationPage { 
-  private presenter: DialogPresenter = this.getUIContext().getDialogPresenter(); 
-  @State result: string = ''; 
+@Entry
+@Component
+struct ShowActionMenuMigrationPage {
+  private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
+  @State result: string = '';
 
-  build() { 
-    Row() { 
-      Column() { 
-        Text('showActionMenu 迁移示例') 
-          .fontSize(18) 
-          .fontWeight(FontWeight.Bold) 
-          .margin({ bottom: 20 }) 
+  build() {
+    Row() {
+      Column() {
+        Text('showActionMenu 迁移示例')
+          .fontSize(18)
+          .fontWeight(FontWeight.Bold)
+          .margin({ bottom: 20 })
 
-        Button('老接口：promptAction.showActionMenu') 
-          .width('90%') 
-          .margin({ bottom: 10 }) 
-          .onClick(() => { 
-            this.result = '老接口示例请参考 js-apis-promptAction.md'; 
-          }) 
+        Button('老接口：promptAction.showActionMenu')
+          .width('90%')
+          .margin({ bottom: 10 })
+          .onClick(() => {
+            this.result = '老接口示例请参考 js-apis-promptAction.md';
+          })
 
-        Button('新接口：DialogPresenter.present（操作菜单）') 
-          .width('90%') 
-          .margin({ bottom: 10 }) 
-          .onClick(() => { 
-            this.showNewActionMenu(); 
-          }) 
+        Button('新接口：DialogPresenter.present（操作菜单）')
+          .width('90%')
+          .margin({ bottom: 10 })
+          .onClick(() => {
+            this.showNewActionMenu();
+          })
 
-        if (this.result) { 
-          Text(this.result) 
-            .fontSize(14) 
-            .margin({ top: 10 }) 
-        } 
-      } 
-      .width('100%') 
-    } 
-    .height('100%') 
-  } 
+        if (this.result) {
+          Text(this.result)
+            .fontSize(14)
+            .margin({ top: 10 })
+        }
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
 
-  private showNewActionMenu(): void { 
-    this.presenter.present({ 
-      title: '选择操作', 
-      buttons: [ 
-        { value: '保存', action: () => { this.result = '保存'; } }, 
-        { value: '分享', action: () => { this.result = '分享'; } }, 
-        { value: '删除', action: () => { this.result = '删除'; } } 
-      ] 
-    }).then((result: DialogResult) => { 
-      this.result = 'present success, dialogId: ' + result.dialogId; 
-    }).catch((error: BusinessError) => { 
-      this.result = `present error: ${error.code}`; 
-    }); 
-  } 
-} 
-``` 
+  private showNewActionMenu(): void {
+    this.presenter.present({
+      title: '选择操作',
+      buttons: [
+        { value: '保存', action: () => { this.result = '保存'; } },
+        { value: '分享', action: () => { this.result = '分享'; } },
+        { value: '删除', action: () => { this.result = '删除'; } }
+      ]
+    }).then((result: DialogResult) => {
+      this.result = 'present success, dialogId: ' + result.dialogId;
+    }).catch((error: BusinessError) => {
+      this.result = `present error: ${error.code}`;
+    });
+  }
+}
+```
 
 ![迁移后示例图](figures/ActionMenuAfterMigrate.png)
 
@@ -822,135 +822,135 @@ struct ShowActionMenuMigrationPage {
 | 层级模式 | `levelMode`（API 15+） + `levelUniqueId`（API 15+） + `immersiveMode`（API 15+） + `levelOrder`（API 18+） | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` |
 | 系统材质 | `systemMaterial: SystemUiMaterial`（API 26+） | `systemMaterial: SystemUiMaterial` |
 
-**迁移前示例（老接口）：** 
- 
-```typescript 
-import { promptAction } from '@kit.ArkUI'; 
-import { BusinessError } from '@kit.BasicServicesKit'; 
+**迁移前示例（老接口）：**
 
-@Entry 
-@Component 
-struct Index { 
-  private dialogController: promptAction.DialogController = new promptAction.DialogController(); 
-  @State result: string = ''; 
+```typescript
+import { promptAction } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  @Builder customDialogComponent() { 
-    Column() { 
-      Text('自定义弹窗内容') 
-        .fontSize(16) 
-        .margin({ bottom: 10 }) 
-      Button('关闭弹窗') 
-        .onClick(() => { 
-          this.dialogController.close(); 
-        })	 
-    }	 
-    .padding(20) 
-  }	 
+@Entry
+@Component
+struct Index {
+  private dialogController: promptAction.DialogController = new promptAction.DialogController();
+  @State result: string = '';
 
-  build() {	 
-    Column() {	 
-      Button('打开 presentCustomDialog')	 
-        .onClick(() => {	 
-          this.getUIContext().getPromptAction().presentCustomDialog(() => {	 
-            this.customDialogComponent()	 
-          }, this.dialogController, { autoCancel: true })	 
-            .then((dialogId: number) => { 
-              this.result = 'present success, dialogId: ' + dialogId; 
-            }) 
-            .catch((error: BusinessError) => { 
-              this.result = `present error: ${error.code}`; 
-            }); 
-        })	 
+  @Builder customDialogComponent() {
+    Column() {
+      Text('自定义弹窗内容')
+        .fontSize(16)
+        .margin({ bottom: 10 })
+      Button('关闭弹窗')
+        .onClick(() => {
+          this.dialogController.close();
+        })
+    }
+    .padding(20)
+  }
 
-      if (this.result) {	 
-        Text(this.result)	 
-          .fontSize(14)	 
-          .margin({ top: 10 })	 
-      }	 
-    }	 
-    .width('100%') 
-    .height('100%') 
-    .justifyContent(FlexAlign.Center) 
-  }	 
-}	 
-```	 
+  build() {
+    Column() {
+      Button('打开 presentCustomDialog')
+        .onClick(() => {
+          this.getUIContext().getPromptAction().presentCustomDialog(() => {
+            this.customDialogComponent()
+          }, this.dialogController, { autoCancel: true })
+            .then((dialogId: number) => {
+              this.result = 'present success, dialogId: ' + dialogId;
+            })
+            .catch((error: BusinessError) => {
+              this.result = `present error: ${error.code}`;
+            });
+        })
 
-![迁移前示例图](figures/PresentCustomDialogBeforeMigrate.png) 
+      if (this.result) {
+        Text(this.result)
+          .fontSize(14)
+          .margin({ top: 10 })
+      }
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
 
-**迁移后示例（新接口）：** 
+![迁移前示例图](figures/PresentCustomDialogBeforeMigrate.png)
 
-```typescript	 
-import { DialogBaseController, DialogPresenter, DialogResult } from '@kit.ArkUI';	 
-import { BusinessError } from '@kit.BasicServicesKit';	 
+**迁移后示例（新接口）：**
 
-@Entry 
-@Component 
-struct PresentCustomDialogMigrationPage { 
-  private presenter: DialogPresenter = this.getUIContext().getDialogPresenter(); 
-  private controller: DialogBaseController = new DialogBaseController(); 
-  @State result: string = ''; 
+```typescript
+import { DialogBaseController, DialogPresenter, DialogResult } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-  build() { 
-    Row() { 
-      Column() { 
-        Text('presentCustomDialog 迁移示例') 
-          .fontSize(18) 
-          .fontWeight(FontWeight.Bold) 
-          .margin({ bottom: 20 }) 
+@Entry
+@Component
+struct PresentCustomDialogMigrationPage {
+  private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
+  private controller: DialogBaseController = new DialogBaseController();
+  @State result: string = '';
 
-        Button('老接口：promptAction.presentCustomDialog') 
-          .width('90%') 
-          .margin({ bottom: 10 }) 
-          .onClick(() => { 
-            this.result = '老接口示例请参考 arkts-apis-uicontext-promptaction.md'; 
-          }) 
+  build() {
+    Row() {
+      Column() {
+        Text('presentCustomDialog 迁移示例')
+          .fontSize(18)
+          .fontWeight(FontWeight.Bold)
+          .margin({ bottom: 20 })
 
-        Button('新接口：DialogPresenter.present（自定义弹窗）') 
-          .width('90%') 
-          .margin({ bottom: 10 }) 
-          .onClick(() => { 
-            this.showNewCustomDialog(); 
-          }) 
+        Button('老接口：promptAction.presentCustomDialog')
+          .width('90%')
+          .margin({ bottom: 10 })
+          .onClick(() => {
+            this.result = '老接口示例请参考 arkts-apis-uicontext-promptaction.md';
+          })
 
-        if (this.result) { 
-          Text(this.result) 
-            .fontSize(14) 
-            .margin({ top: 10 }) 
-        } 
-      } 
-      .width('100%') 
-    } 
-    .height('100%') 
-  } 
+        Button('新接口：DialogPresenter.present（自定义弹窗）')
+          .width('90%')
+          .margin({ bottom: 10 })
+          .onClick(() => {
+            this.showNewCustomDialog();
+          })
 
-  @Builder 
-  CustomComponentContent() { 
-    Column() { 
-      Text('自定义弹窗内容') 
-        .fontSize(16) 
-        .margin({ bottom: 10 }) 
-      Button('关闭弹窗') 
-        .onClick(() => { 
-          this.controller.close(); 
-        }) 
-    } 
-    .padding(20) 
-  } 
+        if (this.result) {
+          Text(this.result)
+            .fontSize(14)
+            .margin({ top: 10 })
+        }
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
 
-  private showNewCustomDialog(): void { 
-    this.presenter.present(() => { 
-      this.CustomComponentContent() 
-    }, { 
-      controller: this.controller, 
-      autoCancel: true 
-    }).then((result: DialogResult) => { 
-      this.result = 'present success, dialogId: ' + result.dialogId; 
-    }).catch((error: BusinessError) => { 
-      this.result = `present error: ${error.code}`; 
-    }); 
-  } 
-} 
-``` 
+  @Builder
+  CustomComponentContent() {
+    Column() {
+      Text('自定义弹窗内容')
+        .fontSize(16)
+        .margin({ bottom: 10 })
+      Button('关闭弹窗')
+        .onClick(() => {
+          this.controller.close();
+        })
+    }
+    .padding(20)
+  }
+
+  private showNewCustomDialog(): void {
+    this.presenter.present(() => {
+      this.CustomComponentContent()
+    }, {
+      controller: this.controller,
+      autoCancel: true
+    }).then((result: DialogResult) => {
+      this.result = 'present success, dialogId: ' + result.dialogId;
+    }).catch((error: BusinessError) => {
+      this.result = `present error: ${error.code}`;
+    });
+  }
+}
+```
 
 ![迁移后示例图](figures/PresentCustomDialogAfterMigrate.png)
 
@@ -985,146 +985,146 @@ struct PresentCustomDialogMigrationPage {
 | 层级模式 | `levelMode`（API 15+） + `levelUniqueId`（API 15+） + `immersiveMode`（API 15+） + `levelOrder`（API 18+） | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` |
 | 系统材质 | `systemMaterial: SystemUiMaterial`（API 26+） | `systemMaterial: SystemUiMaterial` |
 
-**迁移前示例（老接口）：** 
+**迁移前示例（老接口）：**
 
-```typescript 
-import { ComponentContent, promptAction } from '@kit.ArkUI'; 
-import { BusinessError } from '@kit.BasicServicesKit'; 
+```typescript
+import { ComponentContent, promptAction } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-class Params {	 
-  text: string = '';	 
+class Params {
+  text: string = '';
 
-  constructor(text: string) {	 
-    this.text = text;	 
-  }	 
-}	 
+  constructor(text: string) {
+    this.text = text;
+  }
+}
 
-@Builder	 
-function buildText(params: Params) {	 
-  Column() {	 
-    Text(params.text)	 
-      .fontSize(16)	 
-      .margin({ bottom: 10 })	 
-    Button('关闭弹窗')	 
-      .onClick(() => {	 
-      })	 
-  }	 
-  .padding(20) 
-}	 
+@Builder
+function buildText(params: Params) {
+  Column() {
+    Text(params.text)
+      .fontSize(16)
+      .margin({ bottom: 10 })
+    Button('关闭弹窗')
+      .onClick(() => {
+      })
+  }
+  .padding(20)
+}
 
-@Entry	 
-@Component	 
-struct Index {	 
-  private dialogController: promptAction.DialogController = new promptAction.DialogController();	 
-  @State result: string = '';	 
+@Entry
+@Component
+struct Index {
+  private dialogController: promptAction.DialogController = new promptAction.DialogController();
+  @State result: string = '';
 
-  build() {	 
-    Column() {	 
-      Button('打开 openCustomDialogWithController')	 
-        .onClick(() => {	 
-          let contentNode = new ComponentContent(this.getUIContext(), wrapBuilder(buildText),	 
-            new Params('自定义弹窗内容'));	 
-          this.getUIContext().getPromptAction().openCustomDialogWithController(contentNode,	 
-            this.dialogController, {	 
-              autoCancel: true, 
-              alignment: DialogAlignment.Center 
-            }).then(() => { 
-              this.result = 'opened'; 
-            }).catch((error: BusinessError) => { 
-              this.result = `open error: ${error.code}`; 
-            }); 
-        }) 
+  build() {
+    Column() {
+      Button('打开 openCustomDialogWithController')
+        .onClick(() => {
+          let contentNode = new ComponentContent(this.getUIContext(), wrapBuilder(buildText),
+            new Params('自定义弹窗内容'));
+          this.getUIContext().getPromptAction().openCustomDialogWithController(contentNode,
+            this.dialogController, {
+              autoCancel: true,
+              alignment: DialogAlignment.Center
+            }).then(() => {
+              this.result = 'opened';
+            }).catch((error: BusinessError) => {
+              this.result = `open error: ${error.code}`;
+            });
+        })
 
-      if (this.result) {	 
-        Text(this.result)	 
-          .fontSize(14)	 
-          .margin({ top: 10 })	 
+      if (this.result) {
+        Text(this.result)
+          .fontSize(14)
+          .margin({ top: 10 })
       }
-    }	 
-    .width('100%') 
-    .height('100%') 
-    .justifyContent(FlexAlign.Center) 
-  }	 
-}	 
-```	 
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
 
-![迁移前示例图](figures/OpenCustomDialogWithControllerBeforeMigrate.png)	 
+![迁移前示例图](figures/OpenCustomDialogWithControllerBeforeMigrate.png)
 
-**迁移后示例（新接口）：**	 
+**迁移后示例（新接口）：**
 
-```typescript	 
-import { DialogBaseAlignment, DialogBaseController, DialogPresenter, DialogResult } from '@kit.ArkUI';	 
-import { BusinessError } from '@kit.BasicServicesKit';	 
+```typescript
+import { DialogBaseAlignment, DialogBaseController, DialogPresenter, DialogResult } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
-@Entry	 
-@Component	 
-struct OpenCustomDialogWithControllerMigrationPage {	 
-  private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();	 
-  private controller: DialogBaseController = new DialogBaseController();	 
-  @State result: string = '';	 
+@Entry
+@Component
+struct OpenCustomDialogWithControllerMigrationPage {
+  private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
+  private controller: DialogBaseController = new DialogBaseController();
+  @State result: string = '';
 
-  build() {	 
-    Row() {	 
-      Column() {	 
-        Text('openCustomDialogWithController 迁移示例')	 
-          .fontSize(18)	 
-          .fontWeight(FontWeight.Bold)	 
-          .margin({ bottom: 20 }) 
+  build() {
+    Row() {
+      Column() {
+        Text('openCustomDialogWithController 迁移示例')
+          .fontSize(18)
+          .fontWeight(FontWeight.Bold)
+          .margin({ bottom: 20 })
 
-        Button('老接口：promptAction.openCustomDialogWithController') 
-          .width('90%') 
-          .margin({ bottom: 10 }) 
-          .onClick(() => {	 
-            this.result = '老接口示例请参考 arkts-apis-uicontext-promptaction.md';	 
-          })	 
+        Button('老接口：promptAction.openCustomDialogWithController')
+          .width('90%')
+          .margin({ bottom: 10 })
+          .onClick(() => {
+            this.result = '老接口示例请参考 arkts-apis-uicontext-promptaction.md';
+          })
 
-        Button('新接口：DialogPresenter.present（自定义弹窗）') 
-          .width('90%') 
-          .margin({ bottom: 10 }) 
-          .onClick(() => { 
-            this.showNewCustomDialog(); 
-          }) 
+        Button('新接口：DialogPresenter.present（自定义弹窗）')
+          .width('90%')
+          .margin({ bottom: 10 })
+          .onClick(() => {
+            this.showNewCustomDialog();
+          })
 
-        if (this.result) { 
-          Text(this.result) 
-            .fontSize(14) 
-            .margin({ top: 10 }) 
-        } 
-      }	 
-      .width('100%')	 
-    }	 
-    .height('100%')	 
-  }	 
+        if (this.result) {
+          Text(this.result)
+            .fontSize(14)
+            .margin({ top: 10 })
+        }
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
 
-  @Builder 
-  CustomContent() { 
-    Column() { 
-      Text('自定义弹窗内容') 
-        .fontSize(16) 
-        .margin({ bottom: 10 }) 
-      Button('关闭弹窗') 
-        .onClick(() => { 
-          this.controller.close(); 
-        }) 
-    } 
-    .padding(20) 
-  } 
+  @Builder
+  CustomContent() {
+    Column() {
+      Text('自定义弹窗内容')
+        .fontSize(16)
+        .margin({ bottom: 10 })
+      Button('关闭弹窗')
+        .onClick(() => {
+          this.controller.close();
+        })
+    }
+    .padding(20)
+  }
 
-  private showNewCustomDialog(): void { 
-    this.presenter.present(() => { 
-      this.CustomContent() 
-    }, { 
-      controller: this.controller, 
-      autoCancel: true, 
-      alignment: DialogBaseAlignment.CENTER 
-    }).then((result: DialogResult) => { 
-      this.result = 'present success, dialogId: ' + result.dialogId; 
-    }).catch((error: BusinessError) => { 
-      this.result = `present error: ${error.code}`; 
-    }); 
-  } 
-}	 
-```	 
+  private showNewCustomDialog(): void {
+    this.presenter.present(() => {
+      this.CustomContent()
+    }, {
+      controller: this.controller,
+      autoCancel: true,
+      alignment: DialogBaseAlignment.CENTER
+    }).then((result: DialogResult) => {
+      this.result = 'present success, dialogId: ' + result.dialogId;
+    }).catch((error: BusinessError) => {
+      this.result = `present error: ${error.code}`;
+    });
+  }
+}
+```
 
 ![迁移后示例图](figures/OpenCustomDialogWithControllerAfterMigrate.png)
 
