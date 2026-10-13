@@ -186,7 +186,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    int32_t AudioDecoder::Configure(const SampleInfo &sampleInfo)
    {
        // 解码能力表可能未完整列出部分容器编码格式的采样率/声道信息。
-       // 解码器Configure调用的返回值才是最终判定依据，此处仅将能力查询结果作为参考日志。
+       // 解码器 Configure 调用的返回值才是最终判定依据，此处仅将能力查询结果作为参考日志。
        if (!CodecCapability::ValidateAudioConfiguration(sampleInfo, false)) {
            AVCODEC_SAMPLE_LOGW("Audio capability query did not fully describe mime: %{public}s; "
                "continue with decoder configure", sampleInfo.audio.audioCodecMime.c_str());
