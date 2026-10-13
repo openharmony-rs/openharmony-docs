@@ -824,7 +824,7 @@ const int *OH_Rdb_GetSupportedDbType(int *typeCount)
 
 | 类型         | 说明 |
 |------------| -- |
-| const int * | 返回支持的数据库类型，元素为[Rdb_DBType](#rdb_dbtype)枚举值，个数由typeCount返回。 |
+| const int * | 返回当前系统支持的所有数据库类型，元素为[Rdb_DBType](#rdb_dbtype)枚举值，个数由typeCount返回。 |
 
 ### OH_Rdb_CreateValueObject()
 
