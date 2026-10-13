@@ -568,7 +568,7 @@ ArkTS-Sta: enableScrollWithMouse(enabled: boolean | undefined): this
 
 | 参数名 | 类型   | 必填 | 说明                                          |
 | ------ | ------ | ---- | --------------------------------------------- |
-| enabled  | ArkTS-Dyn: boolean&nbsp;\|&nbsp;undefined<br/>ArkTS-Sta: boolean&nbsp; \| undefined | 是   | 是否支持鼠标左键按下拖动滚动。<br/>true：支持鼠标左键按下拖动滚动。<br/>false：不支持鼠标左键按下拖动滚动。<br/>默认值：API版本26.2.0之前，默认值为false。从API版本26.2.0开始，当可滚动组件水平滚动时，默认值为true，否则为false。 |
+| enabled  | ArkTS-Dyn: boolean&nbsp;\|&nbsp;undefined<br/>ArkTS-Sta: boolean&nbsp; \| undefined | 是   | 是否支持鼠标左键按下拖动滚动。<br/>true：支持鼠标左键按下拖动滚动。<br/>false：不支持鼠标左键按下拖动滚动。<br/>undefined：使用默认值。<br/>默认值：API版本26.2.0之前为false。从API版本26.2.0开始，当可滚动组件水平滚动时为true，否则为false。 |
 
 **返回值：**
 
@@ -1802,14 +1802,13 @@ struct ListExample {
 
 ### 示例5（设置鼠标左键按下拖动滚动）
 
-该示例通过设置[enableScrollWithMouse](#enablescrollwithmouse)属性，实现了鼠标左键按下拖动滚动的效果。属性初始值设置为undefined，表示使用默认效果。
-
-从API版本26.0.0开始，滚动组件新增enableScrollWithMouse属性。
+该示例通过设置[enableScrollWithMouse](#enablescrollwithmouse)属性（从API版本26.0.0开始新增），实现了鼠标左键按下拖动滚动的效果。属性初始值设置为undefined，表示使用默认效果。
 
 ListDataSource说明及完整代码参考[示例1（添加滚动事件）](./ts-container-list.md#示例1添加滚动事件)。
 
 ArkTS-Dyn示例：
 
+<!--code_no_check-->
 ```ts
 // xxx.ets
 import { ListDataSource } from './ListDataSource';
@@ -1880,6 +1879,7 @@ struct Index {
 
 ArkTS-Sta示例：
 
+<!--code_no_check-->
 ```ts
 import { Entry, Component, State, Column, ColumnOptions, Button, List, ListItem, ListOptions, LazyForEach, Text,
   TextAlign, Padding, Margin, Axis } from '@kit.ArkUI';
