@@ -28530,9 +28530,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/napi_init.cpp",
 				"functions":[
 					{
-						"end_line":69,
+						"end_line":68,
 						"name":"node_api_module_create_object_properties",
-						"start_line":49
+						"start_line":47
 					},
 					{
 						"end_line":95,
@@ -28570,7 +28570,7 @@
 						"start_line":398
 					},
 					{
-						"end_line":588,
+						"end_line":589,
 						"name":"node_api_module_add",
 						"start_line":23
 					},
