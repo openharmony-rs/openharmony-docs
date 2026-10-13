@@ -26,7 +26,7 @@ import { Repeat, RepeatItem } from '@ohos.arkui.component';
 
 ## 接口
 
-Repeat\<T\>(arr: RepeatArray\<T\>)
+Repeat\<T\>(arr: RepeatArray\<T\>, options?: RepeatOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -35,6 +35,7 @@ Repeat\<T\>(arr: RepeatArray\<T\>)
 | 参数名 | 类型       | 必填 | 说明      |
 | ------ | ---------- | -------- | -------- |
 | arr    | [RepeatArray\<T\>](#repeatarrayt) | 是 | 数据源，为`RepeatArray<T>`类型的数组，由开发者决定数据类型。 |
+| options    | [RepeatOptions](#repeatoptions) | 否 | 创建Repeat组件时的配置项，用于绑定控制器。不传入时使用默认配置（不绑定控制器）。<br>**起始版本：** 26.2.0<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ArkTS-Sta中Repeat()强制要求声明数组类型`<T>`。
 
@@ -211,6 +212,136 @@ Repeat数据源参数联合类型。
 | Array\<T\> | 常规数组类型。 |
 | ReadonlyArray\<T\> | 只读数组类型，不允许数组对象变更。 |
 | Readonly\<Array\<T\>> | 只读数组类型，不允许数组对象变更。 |
+
+## RepeatOptions
+
+创建Repeat组件时的配置项。
+
+**起始版本：** 26.2.0
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| --- | --- | --- | --- | --- |
+| controller | [RepeatController](#repeatcontroller) | 否 | 是 | 绑定到Repeat组件上的控制器。绑定后，需要清理缓存时可调用[clearCache](#clearcache)清理Repeat组件懒加载模式下缓存池中的组件。该控制器仅在创建Repeat时绑定，不支持动态修改。<br>默认值：undefined，即不绑定控制器。 |
+
+## RepeatController
+
+Repeat组件的控制器。通过[RepeatOptions](#repeatoptions)中的controller字段将控制器绑定到Repeat组件上，需要清理缓存时调用[clearCache](#clearcache)清理Repeat组件懒加载模式下缓存池中的组件。
+
+> **说明：**
+>
+> 1. controller仅在Repeat创建时绑定，不支持动态修改。
+> 2. 一个控制器只能控制一个Repeat组件。若将控制器绑定到另一个Repeat，则之前的绑定自动失效，控制器仅控制最后绑定的组件。
+
+**起始版本：** 26.2.0
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+### constructor
+
+constructor()
+
+RepeatController的构造函数。
+
+**起始版本：** 26.2.0
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+### clearCache
+
+clearCache(): void
+
+清理该控制器绑定的Repeat组件懒加载模式下缓存池中的组件。
+
+**起始版本：** 26.2.0
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**示例：**
+
+以下示例中，通过[RepeatOptions](#repeatoptions)的controller属性绑定了[RepeatController](#repeatcontroller)，点击Scroll按钮跳转列表，使旧的子组件进入缓存池，然后点击Clear按钮，主动清理Repeat懒加载模式下缓存池中的组件。
+
+从API版本26.2.0开始，Repeat接口新增options参数。
+
+```ts
+import { Entry, ComponentV2, Column, Text, Repeat, RepeatItem, RepeatController, List, ListItem, Button, ClickEvent, Scroller } from '@ohos.arkui.component';
+import { Param } from '@ohos.arkui.stateManagement';
+
+@ComponentV2
+struct ChildComponent {
+  @Param label: string = '';
+  aboutToAppear() {
+    console.info(`ChildComponent [${this.label}] aboutToAppear`);
+  }
+  aboutToDisappear() {
+    console.info(`ChildComponent [${this.label}] aboutToDisappear`);
+  }
+  aboutToRecycle() {
+    console.info(`ChildComponent [${this.label}] aboutToRecycle`);
+  }
+  aboutToReuse() {
+    console.info(`ChildComponent [${this.label}] aboutToReuse`);
+  }
+ 
+  build() {
+    Text(`ChildComponent: ${this.label}`)
+  }
+}
+
+@Entry
+@ComponentV2
+struct ClearCacheDemo {
+  @Param data: Array<string> = new Array<string>();
+  // 创建RepeatController对象
+  private controller: RepeatController = new RepeatController();
+  private scroller: Scroller = new Scroller();
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 100; i++) {
+      this.data.push(`item ${i}`);
+    }
+  }
+
+  build() {
+    Column() {
+      List({ space: 10, scroller: this.scroller }) {
+        // 通过RepeatOptions的controller字段绑定控制器
+        Repeat<string>(this.data, { controller: this.controller })
+          .each((ri: RepeatItem<string>) => {
+            ListItem() {
+              ChildComponent({ label: ri.item })
+            }
+          })
+          .key((item: string) => item)
+          .virtualScroll()
+      }
+      .height('80%')
+      .cachedCount(0)
+
+      Button('Scroll')
+        .onClick((e: ClickEvent) => {
+          // 主动清理Repeat缓存池中的组件
+          this.scroller.scrollToIndex(30);
+        })
+
+      Button('Clear')
+        .onClick((e: ClickEvent) => {
+          // 主动清理Repeat缓存池中的组件
+          this.controller.clearCache();
+        })
+    }
+  }
+}
+```
 
 ## RepeatItem\<T\>
 

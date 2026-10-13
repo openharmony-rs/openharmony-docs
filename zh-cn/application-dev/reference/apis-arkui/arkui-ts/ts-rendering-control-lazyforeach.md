@@ -45,6 +45,8 @@ LazyForEach从提供的数据源中按需迭代数据，并在每次迭代过程
 > **说明**
 >
 > 从API版本26.0.0开始，LazyForEach支持传入[LazyForEachOptions](#lazyforeachoptions)，用于配置内存优化策略。
+>
+> 从API版本26.2.0开始，LazyForEachOptions新增[controller](#lazyforeachoptions)属性，用于绑定控制器[LazyForEachController](#lazyforeachcontroller)。
 
 **起始版本：** 26.0.0
 
@@ -61,7 +63,7 @@ LazyForEach从提供的数据源中按需迭代数据，并在每次迭代过程
 | dataSource    | [IDataSource](#idatasource)                       | 是   | LazyForEach数据源，需要开发者实现相关接口。  |
 | itemGenerator | (item:&nbsp;any, index: number)&nbsp;=&gt;&nbsp;void   | 是   | 子组件生成函数，为数组中的每一个数据项创建一个子组件。<br>**说明：**<br>- item是当前数据项（可选），index是数据项索引值（可选）。<br>- 建议item的数据类型与数据源的数据类型保持一致，否则，当itemGenerator中存在与数据类型强相关的操作时，会导致子组件无法正常渲染，甚至运行时崩溃。<br>- itemGenerator的函数体必须使用大括号{...}。<br>- itemGenerator每次迭代只能并且必须生成一个子组件。<br>- itemGenerator中可以使用if语句，但是必须保证if语句每个分支都会创建一个相同类型的子组件。 |
 | keyGenerator  | (item:&nbsp;any, index: number)&nbsp;=&gt;&nbsp;string | 否   | 键值生成函数，用于给数据源中的每一个数据项生成唯一且固定的键值。修改数据源中的一个数据项若不影响其生成的键值，则对应组件不会被更新，否则对应组件就会被重建更新。`keyGenerator`参数是可选的，但是，为了使开发框架能够更好地识别数组更改并正确更新组件，建议提供。<br>默认使用框架内置的键值生成函数（详见下方说明）。<br>**说明：**<br>- item是当前数据项（可选），index是数据项索引值（可选）。<br>- 建议item的数据类型与数据源的数据类型保持一致，否则，当keyGenerator中存在与数据类型强相关的操作时，会导致子组件无法正常渲染，甚至运行时崩溃。<br>- `keyGenerator`缺省时，使用默认的键值生成函数，即`(item: Object, index: number) => { return viewId + '-' + index.toString(); }`，生成键值仅受索引值index影响（viewId在编译器转换过程中生成，同一个LazyForEach组件内的viewId一致）。<br>- 为保证`LazyForEach`正确、高效地更新子组件，避免渲染结果异常、渲染效率降低等问题，键值应满足以下条件。<br>1. 键值具有唯一性，每个数据项对应的键值互不相同。<br>2. 键值具有一致性，数据项不变时对应的键值也不变。 |
-| options   | [LazyForEachOptions](#lazyforeachoptions)   | 否   | 开发者配置项，用于配置内存优化策略。使用此配置项时，必须设置键值生成函数，否则将编译失败。不传入时使用默认配置（内存优化策略默认为DEFAULT）。   |
+| options   | [LazyForEachOptions](#lazyforeachoptions)   | 否   | 开发者配置项，用于配置内存优化策略，以及绑定控制器。使用此配置项时，必须设置键值生成函数，否则将编译失败。不传入时使用默认配置（内存优化策略默认为DEFAULT）。   |
 
 ## 属性
 
@@ -572,6 +574,7 @@ type DataOperation = DataAddOperation | DataDeleteOperation | DataChangeOperatio
 | 名称 | 类型                       | 只读 | 可选 | 说明            |
 | ------ | --------------- | ---- | ---- | ------- |
 | memoryOptimizationStrategy   | [LazyForEachMemOptStrategy](#lazyforeachmemoptstrategy) | 否 | 是   | LazyForEach的内存优化策略。该参数在创建LazyForEach时设定，不支持动态修改。<br>默认值：[DEFAULT](#lazyforeachmemoptstrategy) |
+| controller   | [LazyForEachController](#lazyforeachcontroller) | 否 | 是   | 绑定到LazyForEach组件上的控制器。绑定后，需要清理缓存时可调用[clearCache](#clearcache)清理LazyForEach组件预加载的子组件。该控制器仅在创建LazyForEach时绑定，不支持动态修改。<br>默认值：undefined，即不绑定控制器。<br>**起始版本：** 26.2.0<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。 |
 
 ## LazyForEachMemOptStrategy
 
@@ -589,6 +592,51 @@ LazyForEach内存优化策略枚举。
 | --- | --- | --- |
 | DEFAULT | 0 | 无内存优化策略。 |
 | ENABLE_AUTO_CACHE_OPTIMIZATION | 1 << 0 | 自动内存优化策略，当LazyForEach承载的列表项数量较多（例如达到数百项以上）或单项子组件结构复杂（例如包含多层嵌套或数十个子节点），导致内存占用偏高（可通过性能分析工具检测内存占用情况）时，建议使用此策略以降低内存使用量。<br>当应用退后台时、LazyForEach所在组件不可见时（[visibility](./ts-universal-attributes-visibility.md#visibility)属性设置为[Visible](./ts-appendix-enums.md#visibility)以外的值，或组件面积为0，不考虑遮挡）、整机低内存时（[MemoryLevel](../../apis-ability-kit/js-apis-app-ability-abilityConstant.md#memorylevel)达到MEMORY_LEVEL_LOW或MEMORY_LEVEL_CRITICAL），对于内存大于6G的设备，释放[预加载区域](../../../ui/rendering-control/arkts-rendering-control-overview.md#基本概念)内的部分节点，直至上下预加载区域内的节点数量均不超过2；对于内存小于等于6G的设备，释放预加载区域内的全部节点。<br>当应用恢复前台时、LazyForEach所在组件恢复显示时，LazyForEach发生滑动时，恢复预加载区域内的节点。<br>在释放和恢复节点时，会触发[自定义组件生命周期](../../../ui/state-management/arkts-page-custom-components-lifecycle.md)。 |
+
+## LazyForEachController
+
+LazyForEach组件的控制器。通过[LazyForEachOptions](#lazyforeachoptions)中的controller字段将控制器绑定到LazyForEach组件上，需要清理缓存时调用[clearCache](#clearcache)清理LazyForEach组件预加载的子组件。
+
+> **说明：**
+>
+> 1. controller仅在LazyForEach创建时绑定，不支持动态修改。
+> 2. 一个控制器只能控制一个LazyForEach组件。若将控制器绑定到另一个LazyForEach，则之前的绑定自动失效，控制器仅控制最后绑定的组件。
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+### constructor
+
+constructor()
+
+LazyForEachController的构造函数。
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+### clearCache
+
+clearCache(): void
+
+清理该控制器绑定的LazyForEach组件预加载的子组件。
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## 示例
 
@@ -654,6 +702,85 @@ struct MemoryOptimizeDemo {
         )
       }
       .cachedCount(5)
+    }
+  }
+}
+```
+
+### 示例2（主动清理预加载的子组件）
+
+以下示例中，通过[LazyForEachOptions](#lazyforeachoptions)的controller属性绑定了[LazyForEachController](#lazyforeachcontroller)，点击Clear按钮时主动清理LazyForEach预加载的子组件。
+
+从API版本26.2.0开始，LazyForEachOptions新增controller属性。
+
+BasicDataSource代码见LazyForEach开发者指南末尾BasicDataSource示例代码：[string类型数组的BasicDataSource代码](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md#string类型数组的basicdatasource代码)。
+
+<!--code_no_check-->
+```ts
+import { BasicDataSource } from './BasicDataSource';
+
+class DataSource extends BasicDataSource {
+  public dataArray: string[] = [];
+  public totalCount(): number {
+    return this.dataArray.length;
+  }
+  public getData(index: number): string {
+    return this.dataArray[index];
+  }
+  public pushData(data: string): void {
+    this.dataArray.push(data);
+    this.notifyDataAdd(this.dataArray.length - 1);
+  }
+}
+
+@Component
+struct ChildComponent {
+  aboutToAppear() {
+    console.info('ChildComponent aboutToAppear');
+  }
+  aboutToDisappear() {
+    console.info('ChildComponent aboutToDisappear');
+  }
+  build() {
+    Text('ChildComponent')
+  }
+}
+
+@Entry
+@Component
+struct ClearCacheDemo {
+  private data: DataSource = new DataSource();
+  // 创建LazyForEachController对象
+  private controller: LazyForEachController = new LazyForEachController();
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 100; i++) {
+      this.data.pushData(`item ${i}`);
+    }
+  }
+
+  build() {
+    Column() {
+      List() {
+        // 通过LazyForEachOptions的controller字段绑定控制器
+        LazyForEach(this.data,
+          (item: string, index: number) => {
+            ListItem() {
+              ChildComponent()
+            }
+          },
+          (item: string, index: number) => item,
+          { controller: this.controller }
+        )
+      }
+      .cachedCount(5)
+      .height('80%')
+
+      Button('Clear')
+        .onClick(() => {
+          // 主动清理LazyForEach预加载的子组件
+          this.controller.clearCache();
+        })
     }
   }
 }

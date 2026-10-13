@@ -2241,6 +2241,98 @@ struct PoolOwner {
 }
 ```
 
+### getDefaultReusePool
+
+getDefaultReusePool?(): IDefaultReusePool | undefined
+
+返回该自定义组件拥有的默认复用池。与[getReusePool](#getreusepool)返回的全局复用池不同，默认复用池用于缓存该组件回收的直接子组件，无需开发者配置。当组件存在默认复用池时返回默认复用池，否则返回`undefined`。
+
+> **说明：**
+>
+> 该方法为可选方法，调用时建议使用`getDefaultReusePool?.()`的形式。
+
+**起始版本：** 26.2.0
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| [IDefaultReusePool](#idefaultreusepool) \| undefined | 当前组件存在默认复用池时，返回默认复用池，否则返回`undefined`。 |
+
+**示例：**
+
+以下示例中，点击Recycle child按钮可将自定义组件回收进默认复用池，点击Clear按钮可释放默认复用池中的组件。
+
+```ts
+import { UIUtils } from '@kit.ArkUI';
+
+@ReusableV2
+@ComponentV2
+struct ReusableChild {
+  @Param label: string = '';
+  aboutToAppear() {
+    console.info(`ReusableChild [${this.label}] aboutToAppear`);
+  }
+  aboutToDisappear() {
+    console.info(`ReusableChild [${this.label}] aboutToDisappear`);
+  }
+  aboutToRecycle() {
+    console.info(`ReusableChild [${this.label}] aboutToRecycle`);
+  }
+  aboutToReuse() {
+    console.info(`ReusableChild [${this.label}] aboutToReuse`);
+  }
+
+  build() {
+    Text(`ReusableChild: ${this.label}`)
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local showChild: boolean = true;
+
+  clearDefaultPool() {
+    // 获取当前组件的默认复用池
+    const pool = UIUtils.getCustomComponentContext(this).getDefaultReusePool?.();
+    if (!pool) {
+      console.info('No default reuse pool available.');
+      return;
+    }
+    // 清理默认复用池中的全部组件
+    pool.clearCache();
+    // 也可以仅清理reuseId为'A'的组件
+    // pool.clearCache('A');
+  }
+
+  build() {
+    Column() {
+      if (this.showChild) {
+        ReusableChild({ label: 'A' })
+          .reuse({ reuseId: () => 'A' })
+      }
+      Button('Recycle child')
+        .onClick(() => {
+          // 切换if分支，触发子组件回收
+          this.showChild = false;
+        })
+      Button('Clear')
+        .onClick(() => {
+          // 主动清理复用池
+          this.clearDefaultPool();
+        })
+    }
+  }
+}
+```
+
 ## IReusePool
 
 `IReusePool`接口提供自定义组件上的全局复用池的相关功能，包括查询回收组件的当前数量和上限信息、预渲染可复用组件到复用池中等，适用于开发者需要手动管理和优化组件复用效率的场景。
@@ -2458,6 +2550,113 @@ struct CompA {
     if (this.showFullUI) {
       // 这将从池中复用预渲染的实例
       ReusableComponent()
+    }
+  }
+}
+```
+
+## IDefaultReusePool
+
+`IDefaultReusePool`接口提供自定义组件上的默认复用池的相关功能，包括清理复用池中的组件。通过[CustomComponentContext.getDefaultReusePool](#getdefaultreusepool)获取实例。
+
+**起始版本：** 26.2.0
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+### clearCache
+
+clearCache(reuseId?: string): void
+
+清理复用池中的组件。指定`reuseId`时，仅清理该`reuseId`对应的可复用自定义组件；未指定时，清理复用池中的全部组件。
+
+> **说明：**
+>
+> 1. 已从复用池中取出、正参与复用的组件不受影响。
+> 2. 传入不存在或空字符串的`reuseId`时，本次调用不产生效果。
+
+**起始版本：** 26.2.0
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ------ | ---- | -------- |
+| reuseId | string | 否   | 需要清理的复用池中可复用自定义组件的复用标识ID。<br>默认值：undefined，即清理复用池中的全部组件。 |
+
+**示例：**
+
+以下示例中，点击Recycle A按钮或Recycle B按钮可将自定义组件回收进默认复用池，点击Clear All按钮可释放默认复用池中的所有组件，点击Clear A按钮可释放默认复用池中reuseId为A的组件。
+
+```ts
+import { UIUtils } from '@kit.ArkUI';
+
+@ReusableV2
+@ComponentV2
+struct ReusableChild {
+  @Param label: string = '';
+  aboutToAppear() {
+    console.info(`ReusableChild [${this.label}] aboutToAppear`);
+  }
+  aboutToDisappear() {
+    console.info(`ReusableChild [${this.label}] aboutToDisappear`);
+  }
+  aboutToRecycle() {
+    console.info(`ReusableChild [${this.label}] aboutToRecycle`);
+  }
+  aboutToReuse() {
+    console.info(`ReusableChild [${this.label}] aboutToReuse`);
+  }
+
+  build() {
+    Text(`ReusableChild: ${this.label}`)
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local showA: boolean = true;
+  @Local showB: boolean = true;
+
+  build() {
+    Column() {
+      if (this.showA) {
+        ReusableChild({ label: 'A' })
+          .reuse({ reuseId: () => 'A' })
+      }
+      if (this.showB) {
+        ReusableChild({ label: 'B' })
+          .reuse({ reuseId: () => 'B' })
+      }
+      Button('Recycle A')
+        .onClick(() => {
+          // 切换if分支，触发子组件回收
+          this.showA = false;
+        })
+      Button('Recycle B')
+        .onClick(() => {
+          // 切换if分支，触发子组件回收
+          this.showB = false;
+        })
+      Button('Clear All')
+        .onClick(() => {
+          // 清理默认复用池中的全部组件
+          UIUtils.getCustomComponentContext(this).getDefaultReusePool?.()?.clearCache();
+        })
+      Button('Clear A')
+        .onClick(() => {
+          // 仅清理reuseId为'A'的组件
+          UIUtils.getCustomComponentContext(this).getDefaultReusePool?.()?.clearCache('A');
+        })
     }
   }
 }
