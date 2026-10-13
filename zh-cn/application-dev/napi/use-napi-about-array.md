@@ -524,7 +524,7 @@ export const napiDeleteElement: <T>(arr: Array<T>,
 
 ArkTS侧示例代码
 
-index.d.ts需要同时导入前文示例代码中的napiHasElement、napiGetElement接口。
+index.d.ts需要同时导入前文示例代码中的napiHasElement()、napiGetElement()接口。
 
 <!-- @[ark_napi_delete_element](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIArray/entry/src/main/ets/pages/Index.ets) -->
 
