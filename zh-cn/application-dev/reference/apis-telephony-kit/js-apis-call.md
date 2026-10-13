@@ -392,15 +392,15 @@ makeDirectCall\(phoneNumber: string\): Promise\<void\>
 
 允许应用一键拨号。只支持在[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md#uiability)中调用。使用Promise异步回调。
 
-**原子化服务API**：从API version 26.0.1开始，该接口支持在原子化服务中使用。
+**系统能力**：SystemCapability.Telephony.CallManager
 
-**系统能力**：SystemCapability.Applications.Contacts
+**需要权限**：ohos.permission.DIRECT_CALL
 
 **参数：**
 
 | 参数名      | 类型   | 必填 | 说明       |
 | ----------- | ------ | ---- | ---------- |
-| phoneNumber | string | 是   | 电话号码。 |
+| phoneNumber | string | 是   | 电话号码。支持纯数字格式或tel格式，如："138xxxxxxxx"或"tel:138xxxxxxxx"。 |
 
 **返回值：**
 
@@ -419,11 +419,12 @@ makeDirectCall\(phoneNumber: string\): Promise\<void\>
 | 8300002  | Operation failed. Cannot connect to service. |
 | 8300003  | System internal error. |
 | 8300005  | Airplane mode is on. |
-| 8300006  |Network not in service. |
+| 8300006  | Network not in service. |
 
 **示例：**
 
 ```ts
+import { call } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 // 从API15开始支持tel格式电话号码，如："tel:13xxxx"
 call.makeDirectCall("138xxxxxxxx").then(() => {
