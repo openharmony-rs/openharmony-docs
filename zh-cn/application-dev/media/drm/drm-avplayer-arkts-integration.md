@@ -44,32 +44,32 @@
    let mediaKeySystem: drm.MediaKeySystem
    let mediaKeySession: drm.MediaKeySession
    let drmInfoArr: drm.MediaKeySystemInfo[] = mediaKeySystemInfo
-   for (let i = 0; i < drmInfoArr.length; i++) {
-     console.info('drmInfoArr - uuid: ' + drmInfoArr[i].uuid)
-     console.info('drmInfoArr - pssh: ' + drmInfoArr[i].pssh)
+   drmInfoArr.forEach((drmInfo: drm.MediaKeySystemInfo) => {
+     console.info('drmInfoArr - uuid: ' + drmInfo.uuid)
+     console.info('drmInfoArr - pssh: ' + drmInfo.pssh)
      let description: drm.MediaKeySystemDescription[] = drm.getMediaKeySystems();
      let solutionName: string = "com.clearplay.drm"
      for (let item of description) {
-       if (drmInfoArr[i].uuid == item.uuid) {
+       if (drmInfo.uuid == item.uuid) {
          solutionName = item.name
          }
        }
        // 实际开发中应从播放内容的轨道信息（如AVPlayer.getTrackDescription()）或已知媒体源获取mimeType。
-       // drm.MediaKeySystemInfo不包含mimeType字段，无法直接从drmInfoArr[i]获取。
+       // drm.MediaKeySystemInfo不包含mimeType字段，无法直接从drmInfo获取。
        let mimeType: string = "video/mp4";
        let isSupported: boolean = drm.isMediaKeySystemSupported(solutionName, mimeType);
        if (isSupported) {
          mediaKeySystem = drm.createMediaKeySystem(solutionName);
          mediaKeySession = mediaKeySystem.createMediaKeySession();
      }
-     // 媒体密钥请求与处理。
-   }
+   })
    ```
 
 5. 调用[generateMediaKeyRequest](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySession.md#generatemediakeyrequest)生成媒体密钥请求，并调用[processMediaKeyResponse](../../reference/apis-drm-kit/arkts-apis-drm-MediaKeySession.md#processmediakeyresponse)处理媒体密钥响应。
 
    ```ts
-   let initData: Uint8Array = new Uint8Array(drmInfoArr[i].pssh);
+   // 媒体密钥请求与处理。
+   let initData: Uint8Array = new Uint8Array(drmInfo.pssh);
    const optionsData: drm.OptionsData[] = [{
      name: "optionalDataName",
      value: "optionalDataValue"
@@ -81,10 +81,10 @@
      mediaKeySession.processMediaKeyResponse(licenseResponse).then((mediaKeyId: Uint8Array) => {
        console.info("processMediaKeyResponse success");
      }).catch((err:BusinessError) =>{
-       console.error("processMediaKeyResponse err end", err.code);
+       console.error("processMediaKeyResponse failed", err.code);
      });
    }).catch((err:BusinessError) =>{
-     console.error("generateMediaKeyRequest err end", err.code);
+     console.error("generateMediaKeyRequest failed", err.code);
    });
    ```
 
