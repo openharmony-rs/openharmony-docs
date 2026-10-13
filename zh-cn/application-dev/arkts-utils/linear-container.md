@@ -185,7 +185,7 @@ Vector支持增、删、改、查操作，常用API如下：
 | 操作 | 方法 | 描述 |
 | --------- | ------- | ------- |
 | 增加元素 | add(element: T) | 在数组尾部增加一个元素。 |
-| 增加元素 | insert(element: T, index: number) | 在指定位置插入一个元素。 |
+| 增加元素 | insert(index: number, element: T) | 在指定位置插入一个元素。 |
 | 访问元素 | get(index: number) | 获取指定index位置对应的元素。 |
 | 访问元素 | vec[index: number] | 获取指定index位置对应的元素，通过指令获取保证访问速度。 |
 | 访问元素 | getFirst() | 获取第一个元素。 |
