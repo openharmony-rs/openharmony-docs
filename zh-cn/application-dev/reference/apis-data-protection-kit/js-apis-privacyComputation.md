@@ -31,14 +31,14 @@ import { privacyComputation } from '@kit.DataProtectionKit';
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| NONE | 0 | 没有哈希算法。 |
-| SHA256 | 1 | SHA256哈希算法。未显式指定哈希算法时，默认使用此算法。 |
+| NONE | 0 | 没有哈希算法。未显式指定哈希算法时，默认为NONE。 |
+| SHA256 | 1 | SHA256哈希算法。 |
 | SHA384 | 2 | SHA384哈希算法。 |
 | SHA512 | 3 | SHA512哈希算法。 |
 
 ## DataSetSize
 
-枚举隐私协议支持的数据集大小。数据集大小定义单个结果密文可以包含的比较次数，生成的结果密文总数由elements.size÷dataSetSize决定。
+枚举隐私协议支持的数据集大小。数据集大小定义单个结果密文可以包含的比较次数，生成的结果密文总数由⌈elements.size/dataSetSize⌉决定。
 
 请根据隐私搜索中元素的数量与每个结果密文可接受的大小选择合适的取值。
 
@@ -56,7 +56,7 @@ import { privacyComputation } from '@kit.DataProtectionKit';
 
 ## ProtocolType
 
-隐私协议类型的枚举，决定了隐私保护搜索的计算方法。
+隐私协议类型的枚举，决定了隐私保护搜索的算法。
 
 **起始版本**：26.0.1
 
@@ -97,8 +97,8 @@ import { privacyComputation } from '@kit.DataProtectionKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| elemData | Uint8Array | 否 | 否 | 要搜索的目标元素的原始数据。 |
-| hashAlg | [HashAlg](#hashalg) | 否 | 是 | 用于对目标元素计算的哈希算法。未指定时默认使用SHA256。 |
+| elemData | Uint8Array | 否 | 否 | 要搜索的目标元素的原始数据。长度必须不大于1KB。 |
+| hashAlg | [HashAlg](#hashalg) | 否 | 是 | 用于对目标元素计算的哈希算法。未显式指定哈希算法时，默认为NONE。 |
 ## Element
 
 定义隐私搜索使用的数据集元素。每个元素包含一个用于匹配的键、可选的哈希算法，以及用于PIR协议检索的可选附加值。
@@ -111,8 +111,8 @@ import { privacyComputation } from '@kit.DataProtectionKit';
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| elemKey | Uint8Array | 否 | 否 | 数据集元素的键，用于与隐私目标进行匹配。 |
-| hashAlg | [HashAlg](#hashalg) | 否 | 是 | 用于对元素键计算的哈希算法。未指定时默认使用SHA256。 |
+| elemKey | Uint8Array | 否 | 否 | 数据集元素的键，用于与隐私目标进行匹配。长度必须不大于1KB。 |
+| hashAlg | [HashAlg](#hashalg) | 否 | 是 | 用于对元素键计算的哈希算法。未显式指定哈希算法时，默认为NONE。 |
 | elemValue | Uint8Array | 否 | 是 | 与元素键关联的附加值。<br>**说明：** <br>仅在PIR协议中使用，当找到匹配项时检索该附加值。<br>未指定时元素只支持键匹配，不支持值检索。 |
 
 ## PrivacySearchResult
@@ -219,7 +219,7 @@ privacySearch(privacyTarget: Uint8Array, elements: Element[], privacyProtocol: P
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | privacyTarget | Uint8Array | 是 | 由[genPrivacyTarget](#privacycomputationgenprivacytarget)生成的加密隐私目标。 |
-| elements | Element[]| 是 | 要搜索的数据集元素。 |
+| elements | [Element](#element)[] | 是 | 要搜索的数据集元素。 |
 | privacyProtocol | [PrivacyProtocol](#privacyprotocol) | 是 | 隐私协议配置，需与生成隐私目标时一致。 |
 
 **返回值**：
@@ -258,7 +258,7 @@ async function search(privacyTarget: Uint8Array) {
     }
   ];
   const privacyProtocol: privacyComputation.PrivacyProtocol = {
-    dataSetSize: privacyComputation.DataSetSize.SIZE_512,
+    dataSetSize: privacyComputation.DataSetSize.SIZE_256,
     protocolType: privacyComputation.ProtocolType.PIR_PROTOCOL
   };
 
@@ -312,7 +312,7 @@ import { privacyComputation } from '@kit.DataProtectionKit';
 
 async function getResult(searchResult: privacyComputation.PrivacySearchResult) {
   const privacyProtocol: privacyComputation.PrivacyProtocol = {
-    dataSetSize: privacyComputation.DataSetSize.SIZE_512,
+    dataSetSize: privacyComputation.DataSetSize.SIZE_256,
     protocolType: privacyComputation.ProtocolType.PIR_PROTOCOL
   };
 

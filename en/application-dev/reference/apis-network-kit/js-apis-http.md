@@ -709,7 +709,7 @@ Initiates an HTTP network request to a given URL and returns a streaming respons
 
 | Type                                  | Description                             |
 | :------------------------------------- | :-------------------------------- |
-| Promise\<number\> | Promise object that returns the result of initiating the request. For details, see [ResponseCode](#responsecode). |
+| Promise\<number\> | Promise used to return the result of initiating the request. For details, see [ResponseCode](#responsecode). |
 
 **Error codes**
 

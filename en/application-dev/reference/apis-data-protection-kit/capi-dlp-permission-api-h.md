@@ -10,15 +10,15 @@
 
 Defines the APIs for cross-device file access management, encrypted storage, and access authorization.
 
-**Library**: libohdlp_permission.so
+**Library:** libohdlp_permission.so
 
-**File to include**: <DataProtectionKit/dlp_permission_api.h>
+**File to include:** <DataProtectionKit/dlp_permission_api.h>
 
-**System capability**: SystemCapability.Security.DataLossPrevention
+**System capability:** SystemCapability.Security.DataLossPrevention
 
-**Since**: 14
+**Since:** 14
 
-**Related module**: [DlpPermissionApi](capi-dlppermissionapi.md)
+**Related module:** [DlpPermissionApi](capi-dlppermissionapi.md)
 
 ## Summary
 
@@ -52,12 +52,12 @@ enum DLP_ErrCode
 
 Enumerates the DLP error codes.
 
-**Since**: 14
+**Since:** 14
 
 | Enum| Description|
 | -- | -- |
 | ERR_OH_SUCCESS = 0 | The operation is successful.|
-| OH_DLP_NOT_SUPPORTED = 801 | The device does not support the DLP feature.<br>**Since:** 26.0.1|
+| OH_DLP_NOT_SUPPORTED = 801 | This error code is reported when the function is not supported. Possible cause: The vehicle is not supported.<br>**Since:** 26.0.1|
 | ERR_OH_INVALID_PARAMETER = 19100001 | Invalid parameters are specified.|
 | ERR_OH_API_ONLY_FOR_SANDBOX = 19100006 | The caller is not a DLP sandbox application.|
 | ERR_OH_API_NOT_FOR_SANDBOX = 19100007 | The API is not available to a DLP sandbox application.|
@@ -75,7 +75,7 @@ enum DLP_FileAccess
 
 Enumerates the permissions on a DLP file.
 
-**Since**: 14
+**Since:** 14
 
 | Enum| Description|
 | -- | -- |
@@ -95,9 +95,9 @@ DLP_ErrCode OH_DLP_GetDlpPermissionInfo(DLP_FileAccess *dlpFileAccess, uint32_t 
 
 **Description**
 
-Obtains the permission information of this DLP file.
+Obtains the permission information of this DLP sandbox.
 
-**Since**: 14
+**Since:** 14
 
 
 **Parameters**
@@ -111,7 +111,7 @@ Obtains the permission information of this DLP file.
 
 | Type| Description|
 | -- | -- |
-| [DLP_ErrCode](#dlp_errcode) | Returns **0** if the operation is successful.<br>         Returns **801** when the device does not support the DLP feature. (Added in API version 26.0.1.)<br>         Returns **19100001** if invalid parameters are detected.<br>         Returns **19100006** when the access is denied for a non-DLP sandbox application.<br>         Returns **19100011** when the system service is abnormal.<br>         Returns **19100012** if the memory allocation fails.|
+| [DLP_ErrCode](#dlp_errcode) | Returns **0** if the operation is successful.<br>         Returns **801** if the function is not supported. Possible cause: The vehicle is not supported. This error code is returned in API version 26.0.1 or later.<br>         Returns **19100001** if invalid parameters are detected.<br>         Returns **19100006** when the access is denied for a non-DLP sandbox application.<br>         Returns **19100011** when the system service is abnormal.<br>         Returns **19100012** if the memory allocation fails.|
 
 ### OH_DLP_GetOriginalFileName()
 
@@ -130,14 +130,14 @@ Obtains the original file name of a DLP file.
 
 | Parameter| Description|
 | -- | -- |
-| const char *fileName | Pointer to the target file whose original file name is to be obtained. The length cannot exceed 256 characters.|
+| const char *fileName | Pointer to the target file whose original file name is to be obtained. The length cannot exceed 256 bytes.|
 | char **originalFileName | Double pointer to the original file name obtained.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [DLP_ErrCode](#dlp_errcode) | Returns **0** if the operation is successful.<br>         Returns **801** when the device does not support the DLP feature. (Added in API version 26.0.1.)<br>        Returns **19100001** if invalid parameters are detected.<br>         Returns **19100012** if the memory allocation fails.|
+| [DLP_ErrCode](#dlp_errcode) | Returns **0** if the operation is successful.<br>         Returns **801** if the function is not supported. Possible cause: The vehicle is not supported. This error code is returned in API version 26.0.1 or later.<br>        Returns **19100001** if invalid parameters are detected.<br>         Returns **19100012** if the memory allocation fails.|
 
 ### OH_DLP_IsInSandbox()
 
@@ -162,7 +162,7 @@ Checks whether this application is running in a DLP sandbox environment.
 
 | Type| Description|
 | -- | -- |
-| [DLP_ErrCode](#dlp_errcode) | Returns **0** if the operation is successful.<br>         Returns **801** when the device does not support the DLP feature. (Added in API version 26.0.1.)<br>         Returns **19100011** when the system service is abnormal.<br>         Returns **19100012** if the memory allocation fails.|
+| [DLP_ErrCode](#dlp_errcode) | Returns **0** if the operation is successful.<br>         Returns **801** if the function is not supported. Possible cause: The vehicle is not supported. This error code is returned in API version 26.0.1 or later.<br>         Returns **19100011** when the system service is abnormal.<br>         Returns **19100012** if the memory allocation fails.|
 
 ### OH_DLP_SetSandboxAppConfig()
 
@@ -174,7 +174,7 @@ DLP_ErrCode OH_DLP_SetSandboxAppConfig(const char *configInfo)
 
 Sets sandbox application configuration.
 
-**Since**: 14
+**Since:** 14
 
 
 **Parameters**
@@ -187,7 +187,7 @@ Sets sandbox application configuration.
 
 | Type| Description|
 | -- | -- |
-| [DLP_ErrCode](#dlp_errcode) | Returns **0** if the operation is successful.<br>         Returns **801** when the device does not support the DLP feature. (Added in API version 26.0.1.)<br>         Returns **19100001** if invalid parameters are detected.<br>         Returns **19100007** if the API cannot be called by a DLP sandbox application.<br>         Returns **19100011** when the system service is abnormal.<br>         Returns **19100018** if the application is unauthorized.|
+| [DLP_ErrCode](#dlp_errcode) | Returns **0** if the operation is successful.<br>         Returns **801** if the function is not supported. Possible cause: The vehicle is not supported. This error code is returned in API version 26.0.1 or later.<br>         Returns **19100001** if invalid parameters are detected.<br>         Returns **19100007** if the API cannot be called by a DLP sandbox application.<br>         Returns **19100011** when the system service is abnormal.<br>         Returns **19100018** if the application is unauthorized.|
 
 ### OH_DLP_GetSandboxAppConfig()
 
@@ -199,7 +199,7 @@ DLP_ErrCode OH_DLP_GetSandboxAppConfig(char **configInfo)
 
 Obtains the sandbox application configuration.
 
-**Since**: 14
+**Since:** 14
 
 
 **Parameters**
@@ -212,7 +212,7 @@ Obtains the sandbox application configuration.
 
 | Type| Description|
 | -- | -- |
-| [DLP_ErrCode](#dlp_errcode) | Returns **0** if the operation is successful.<br>         Returns **801** when the device does not support the DLP feature. (Added in API version 26.0.1.)<br>         Returns **19100011** when the system service is abnormal.<br>         Returns **19100012** if the memory allocation fails.<br>         Returns **19100018** if the application is unauthorized.|
+| [DLP_ErrCode](#dlp_errcode) | Returns **0** if the operation is successful.<br>         Returns **801** if the function is not supported. Possible cause: The vehicle is not supported. This error code is returned in API version 26.0.1 or later.<br>         Returns **19100011** when the system service is abnormal.<br>         Returns **19100012** if the memory allocation fails.<br>         Returns **19100018** if the application is unauthorized.|
 
 ### OH_DLP_CleanSandboxAppConfig()
 
@@ -224,10 +224,10 @@ DLP_ErrCode OH_DLP_CleanSandboxAppConfig()
 
 Cleans the sandbox application configuration.
 
-**Since**: 14
+**Since:** 14
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| [DLP_ErrCode](#dlp_errcode) | Returns **0** if the operation is successful.<br>         Returns **801** when the device does not support the DLP feature. (Added in API version 26.0.1.)<br>         Returns **19100007** if the API cannot be called by a DLP sandbox application.<br>         Returns **19100011** when the system service is abnormal.<br>         Returns **19100018** if the application is unauthorized.|
+| [DLP_ErrCode](#dlp_errcode) | Returns **0** if the operation is successful.<br>         Returns **801** if the function is not supported. Possible cause: The vehicle is not supported. This error code is returned in API version 26.0.1 or later.<br>         Returns **19100007** if the API cannot be called by a DLP sandbox application.<br>         Returns **19100011** when the system service is abnormal.<br>         Returns **19100018** if the application is unauthorized.|

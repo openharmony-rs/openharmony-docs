@@ -2,10 +2,10 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=4bb0b56d7d67b2ab3ff0955bce487aba3399fade translatedAt=2026-09-22T02:09:41.861Z pushedAt=2026-09-22T08:29:58.360Z -->
+<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-10-08T02:18:43.054Z pushedAt=2026-10-08T09:16:59.053Z -->
 
 Describes the [notification flags](../../notification/notification-glossary.md#notification-flags). An application can use `NotificationFlags` to reduce the notification reminder methods as needed.
 
@@ -38,4 +38,3 @@ Enumerates the notification flag states.
 | TYPE_NONE      | 0   | Default flag when no flag is set. It has the same effect as **TYPE_OPEN**.     |
 | TYPE_OPEN      | 1   | The notification flag is opened.                    |
 | TYPE_CLOSE     | 2   | The notification flag is closed.                    |
-<!--no_check-->

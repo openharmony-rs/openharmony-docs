@@ -67,7 +67,9 @@ export let a = "this is A";
 export function A() {
   return new Animal();
 }
+```
 
+``` typescript
 // B.ets
 import { a } from './A'
 

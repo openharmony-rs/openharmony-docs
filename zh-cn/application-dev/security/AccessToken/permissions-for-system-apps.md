@@ -2591,7 +2591,7 @@
 
 **是否支持证书授权**：true
 
-**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car | SmartHomeHost
 
 **起始版本**：10
 
@@ -2605,7 +2605,7 @@
 
 **是否支持证书授权**：true
 
-**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car | SmartHomeHost
 
 **起始版本**：10
 
@@ -9506,6 +9506,20 @@
 
 **起始版本**：26.0.1
 
+## ohos.permission.AUDIO_USER_MICROPHONE_INDICATOR
+ 
+允许应用指定音频的实际使用主体，按照指定的主体点亮隐私指示器。
+ 
+**权限级别**：system_core
+ 
+**授权方式**：系统授权（system_grant）
+ 
+**是否支持证书授权**：true
+ 
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+ 
+**起始版本**：26.2.0
+
 ## ohos.permission.ALLOW_INSTALL_DEBUG_HAP
 
 允许应用安装其他debug类型的应用。
@@ -9533,3 +9547,143 @@
 **支持设备**：PC/2in1 | Tablet
 
 **起始版本**：26.2.0
+
+## ohos.permission.vehicle.INNER_NETWORK
+
+允许应用访问车机内部网络。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.2.0
+
+## ohos.permission.vehicle.LOGIN_TSP
+
+允许应用调用“车云移动服务”应用的登录、登出接口。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+ 
+**起始版本**：26.0.1
+
+## ohos.permission.vehicle.GET_TSP_ACCOUNT_INFO
+
+允许应用获取车云账号信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.1
+
+## ohos.permission.vehicle.GET_TSP_SERVICE_TOKEN
+
+允许应用获取车云账号业务Token。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.1
+
+## ohos.permission.vehicle.GET_TSP_VEHICLE_APP_TOKEN
+
+允许应用获取车云车辆应用Token。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.1
+
+## ohos.permission.vehicle.GET_TSP_ACCOUNT_ROLE
+
+允许应用获取车云账号角色。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+ 
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.1
+
+## ohos.permission.vehicle.GET_DRIVING_HABIT
+ 
+允许应用获取当前登录账号下驾驶员的驾驶习惯。
+ 
+**权限级别**：system_basic
+ 
+**授权方式**：系统授权（system_grant）
+ 
+**是否支持证书授权**：true
+ 
+**支持设备**：Car
+ 
+**起始版本**：26.0.1
+ 
+## ohos.permission.vehicle.MANAGE_DRIVING_HABIT
+ 
+允许应用管理当前登录账号下驾驶员的驾驶习惯。
+ 
+**权限级别**：system_basic
+ 
+**授权方式**：系统授权（system_grant）
+ 
+**是否支持证书授权**：true
+ 
+**支持设备**：Car
+ 
+**起始版本**：26.0.1
+
+## ohos.permission.vehicle.PUBLISH_ACMSCORE_EVENT
+
+允许应用发布“车云移动服务”应用事件。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.1
+
+## ohos.permission.vehicle.SUBSCRIBE_ACMSCORE_EVENT
+
+允许应用订阅“车云移动服务”应用事件。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**是否支持证书授权**：true
+
+**支持设备**：Car
+
+**起始版本**：26.0.1

@@ -32,9 +32,9 @@ ArkGraphics 3D以自定义场景模式为核心能力，支持开发者自行构
 - 接口层：基于引擎的ECS Framework，通过NAPI层对数据进行组织处理，向开发者暴露简单易用的3D渲染接口，支持开发者使用少量代码完成3D场景的开发。
 
 
-## 约束限制
-
-使用ArkGraphics 3D模块需要硬件设备支持OpenGL ES 3.2以上或者Vulkan 1.0以上的GPU驱动。
-
 <!--RP1-->
+## 约束与限制
+
+硬件设备需支持OpenGL ES 3.2以上或者Vulkan 1.0以上的GPU驱动，才能正常使用ArkGraphics 3D相关能力。
+
 <!--RP1End-->

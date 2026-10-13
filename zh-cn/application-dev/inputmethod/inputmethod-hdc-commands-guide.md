@@ -11,7 +11,7 @@ Ime为开发者提供在开发者模式下管理系统输入法应用的能力�
 > **说明：**
 >
 > Ime工具从API version 20开始支持。
-> Ime工具在防作弊模式下切换输入法命令无效。
+> Ime工具在[评估管理](../reference/apis-assessment-kit/js-apis-customization-assessment.md)开启时无法使用切换命令切换到其他输入法。
 
 **环境要求**<br/>
 

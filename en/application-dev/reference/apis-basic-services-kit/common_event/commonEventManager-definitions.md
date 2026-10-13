@@ -2,10 +2,10 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=f1df35e744e8be0a80ac7cb20765106cc0424535 translatedAt=2026-09-23T02:10:22.948Z pushedAt=2026-09-23T10:54:49.442Z -->
+<!-- md-trans-meta sourceCommit=b6f1e82f07f1124235a02ebd2a7f0c3b8249ff5a translatedAt=2026-09-29T09:39:18.418Z pushedAt=2026-10-08T02:39:02.473Z -->
 
 This document provides a list of system-defined common events.
 Common event types are defined in [Support enumeration of the ohos.commonEventManager module](../js-apis-commonEventManager.md#support).
@@ -238,7 +238,7 @@ When an application program containing a skill is installed, updated, or uninsta
 > 
 > By default, an application can only receive the skill change event of its own application.
 > 
-> After applying for the ohos.permission.MANAGE_SKILL_PRIVILEGE permission, an application can receive the skill change events of its own application and other applications.
+> After applying for the ohos.permission.MANAGE_SKILL permission, an application can receive the skill change events of its own application and other applications.
 
 **Since**: 26.0.0
 
@@ -321,7 +321,7 @@ When any of the following actions is performed, the event notification service i
 
 ### COMMON_EVENT_SLOT_CHANGE
 
-Indicates that the [notification slot](../../../notification/notification-glossary.md#notification-slot) or notification switch settings have changed.
+  Indicates that the [notification slot](../../../notification/notification-glossary.md#notification-slot) or notification switch settings have changed.
 
   When the [notification slot settings](../../../notification/notification-glossary.md#notification-setting) (including the switch) change or the notification feature is enabled or disabled, the notification service is triggered to publish this [system common event](../../../basic-services/common-event/common-event-glossary.md#system-common-event).
 

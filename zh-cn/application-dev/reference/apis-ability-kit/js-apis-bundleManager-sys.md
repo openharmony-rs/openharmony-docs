@@ -3999,6 +3999,73 @@ try {
 }
 ```
 
+## bundleManager.getAppProvisionInfoInDevice
+
+getAppProvisionInfoInDevice(bundleName: string, userId: number): Promise\<Array\<AppProvisionInfo\>\>
+
+根据bundleName和userId获取应用的[Provision](js-apis-bundleManager-AppProvisionInfo-sys.md)配置文件信息。使用Promise异步回调。
+
+**起始版本：** 26.0.1
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED 或 (ohos.permission.GET_BUNDLE_INFO_PRIVILEGED 和 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS)。
+
+ - 获取当前用户下应用的provision配置文件信息时，需要申请权限ohos.permission.GET_BUNDLE_INFO_PRIVILEGED。
+
+ - 获取其他用户下应用的provision配置文件信息时，需要申请权限ohos.permission.GET_BUNDLE_INFO_PRIVILEGED和ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**参数：**
+
+| 参数名   | 类型         | 必填 | 说明          |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| bundleName | string | 是 | 指定的bundleName。 |
+| userId | number | 是 | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。<br>取值范围：大于等于0。 |
+
+
+**返回值：**
+
+| 类型                                                         | 说明                                |
+| ------------------------------------------------------------ | ----------------------------------- |
+| Promise\<Array\<[AppProvisionInfo](js-apis-bundleManager-AppProvisionInfo-sys.md#appprovisioninfo)\>\> | Promise对象，返回应用的provision配置文件信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                               |
+| -------- | -------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Permission denied, non-system app called system api. |
+| 17700001 | The specified bundleName is not found. |
+| 17700004 | The specified user ID is not found. |
+
+**示例：**
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let bundleName = "com.ohos.myapplication";
+let userId = 100;
+
+try {
+  bundleManager.getAppProvisionInfoInDevice(bundleName, userId).then((data) => {
+    hilog.info(0x0000, 'testTag', 'getAppProvisionInfoInDevice successfully. Data: %{public}s', JSON.stringify(data));
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'testTag', 'getAppProvisionInfoInDevice failed. Cause: %{public}s', err.message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getAppProvisionInfoInDevice failed. Cause: %{public}s', message);
+}
+```
+
 ## bundleManager.getAllAppProvisionInfo<sup>23+</sup>
 
 getAllAppProvisionInfo(userId?: number): Promise\<Array\<AppProvisionInfo\>\>
@@ -4067,6 +4134,70 @@ try {
 } catch (err) {
   let message = (err as BusinessError).message;
   hilog.error(0x0000, 'testTag', 'getAllAppProvisionInfo failed. Cause: %{public}s', message);
+}
+```
+
+## bundleManager.getAllAppProvisionInfoInDevice
+
+getAllAppProvisionInfoInDevice(userId: number): Promise\<Array\<AppProvisionInfo\>\>
+
+根据userId获取指定用户下所有应用的[Provision](js-apis-bundleManager-AppProvisionInfo-sys.md)配置文件信息。使用Promise异步回调。
+
+**起始版本：** 26.0.1
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.GET_INSTALLED_BUNDLE_LIST 或 (ohos.permission.GET_INSTALLED_BUNDLE_LIST 和 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS)
+
+ - 获取当前用户下所有应用的provision配置文件信息时，需要申请权限ohos.permission.GET_INSTALLED_BUNDLE_LIST。
+
+ - 获取其他用户下所有应用的provision配置文件信息时，需要申请权限ohos.permission.GET_INSTALLED_BUNDLE_LIST和ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS。
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**参数：**
+
+| 参数名   | 类型         | 必填 | 说明          |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| userId | number | 是 | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。<br>取值范围：大于等于0。 |
+
+
+**返回值：**
+
+| 类型                                                         | 说明                                |
+| ------------------------------------------------------------ | ----------------------------------- |
+| Promise\<Array\<[AppProvisionInfo](js-apis-bundleManager-AppProvisionInfo-sys.md#appprovisioninfo)\>\> | Promise对象，返回应用的provision配置文件信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                               |
+| -------- | -------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Permission denied. A non-system application is not allowed to call a system API. |
+| 17700004 | The specified user ID is not found. |
+
+**示例：**
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let userId = 100;
+
+try {
+  bundleManager.getAllAppProvisionInfoInDevice(userId).then((data) => {
+    hilog.info(0x0000, 'testTag', 'getAllAppProvisionInfoInDevice successfully. Data: %{public}s', JSON.stringify(data));
+  }).catch((err: BusinessError) => {
+    hilog.error(0x0000, 'testTag', 'getAllAppProvisionInfoInDevice failed. Cause: %{public}s', err.message);
+  });
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getAllAppProvisionInfoInDevice failed. Cause: %{public}s', message);
 }
 ```
 
@@ -4496,7 +4627,7 @@ try {
 
 setAdditionalInfo(bundleName: string, additionalInfo: string): void
 
-设置指定应用的额外信息。此接口仅供应用市场调用。
+设置指定应用的自定义扩展管理信息。该接口仅供应用市场调用，用于写入其业务运营所需的专有管理字段（如内部版本号等）。
 
 **系统接口：** 此接口为系统接口。
 
@@ -4509,7 +4640,7 @@ setAdditionalInfo(bundleName: string, additionalInfo: string): void
 | 参数名                | 类型                             | 必填 | 说明                                               |
 | --------------------- | ------------------------------- | ---- | -------------------------------------------------- |
 | bundleName            | string                          | 是   | 指定应用的包名。                                    |
-| additionalInfo        | string                          | 是   | 需要设置的应用的额外信息。                           |
+| additionalInfo        | string                          | 是   | 需要设置的应用的自定义扩展管理信息。                           |
 
 **错误码：**
 
@@ -4539,6 +4670,62 @@ try {
 } catch (err) {
   let message = (err as BusinessError).message;
   hilog.error(0x0000, 'testTag', 'setAdditionalInfo failed. Cause: %{public}s', message);
+}
+```
+
+## bundleManager.setAdditionalInfoByIndex
+
+setAdditionalInfoByIndex(bundleName: string, additionalInfo: string, appIndex: number): void
+
+设置指定应用的自定义扩展管理信息。该接口仅供应用市场调用，用于写入其业务运营所需的专有管理字段（如内部版本号等）。
+
+**起始版本：** 26.0.1
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**参数：**
+
+| 参数名                | 类型                             | 必填 | 说明                                               |
+| --------------------- | ------------------------------- | ---- | -------------------------------------------------- |
+| bundleName            | string                          | 是   | 指定应用的包名。                                    |
+| additionalInfo        | string                          | 是   | 需要设置的应用的自定义扩展管理信息。                           |
+| appIndex              | number  | 是   | 指定的应用分身索引。取值范围：0或10000。                  |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                                                    |
+| -------- | ---------------------------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Permission denied, non-system app called system api. |
+| 17700001 | The specified bundleName is not found.                     |
+| 17700053 | The caller is not AppGallery.                                     |
+| 17700061 | AppIndex not in valid range.                                     |
+
+**示例：**
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let bundleName = "com.example.myapplication";
+let additionalInfo = "xxxxxxxxx,formUpdateLevel:4";
+let appIndex = 0;
+
+try {
+  bundleManager.setAdditionalInfoByIndex(bundleName, additionalInfo, appIndex);
+  hilog.info(0x0000, 'testTag', 'setAdditionalInfoByIndex successfully.');
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'setAdditionalInfoByIndex failed. Cause: %{public}s', message);
 }
 ```
 
