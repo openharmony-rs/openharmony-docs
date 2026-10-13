@@ -57,7 +57,7 @@
     - [Input_CursorInfo](capi-input-input-cursorinfo.md)
 - 错误码<!--input-arkts-errcode-->
   <!--Del-->
-  - [键鼠穿越管理错误码](errorcode-cooperator.md)
+  - [键鼠穿越管理错误码（待停用）](errorcode-cooperator.md)
   - [按键前置监听错误码](errorcode-inputmonitor.md)
   <!--DelEnd-->
   - [全局快捷键管理错误码](errorcode-inputconsumer.md)
