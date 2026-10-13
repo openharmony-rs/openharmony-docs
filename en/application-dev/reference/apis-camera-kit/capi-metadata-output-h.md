@@ -1,12 +1,11 @@
 # metadata_output.h
-
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=56cdd06d96371b9d5dfb0c72df61265d9cc8c54d translatedAt=2026-08-11T02:01:55.104Z pushedAt=2026-08-12T03:29:13.544Z -->
+<!-- md-trans-meta sourceCommit=e81bd57e6474ec1e0118bfd49561b247c2d5a27c translatedAt=2026-10-12T12:01:16.495Z pushedAt=2026-10-13T04:58:00.901Z -->
 
 ## Overview
 
@@ -98,6 +97,7 @@ Defines the callback defined in the [MetadataOutput_Callbacks](capi-oh-camera-me
 **See also**
 
 [CAMERA_SERVICE_FATAL_ERROR](capi-camera-h.md#camera_errorcode)
+
 
 ### OH_MetadataOutput_RegisterCallback()
 
@@ -330,7 +330,7 @@ Registers a callback to listen for metadata object reporting events. This callba
 | -- | -- |
 | [Camera_MetadataOutput](capi-oh-camera-camera-metadataoutput.md)* metadataOutput | Pointer to a **MetadataOutput** instance.|
 | void* context | Context pointer provided by the user.|
-| [OH_MetadataOutput_OnMetadataObjectExtAvailable](capi-metadata-output-h.md#oh_metadataoutput_onmetadataobjectextavailable)* callback | Pointer to the callback used to listen for metadata object reporting events.|
+| [OH_MetadataOutput_OnMetadataObjectExtAvailable](capi-metadata-output-h.md#oh_metadataoutput_onmetadataobjectextavailable) callback | Pointer to the callback used to listen for metadata object reporting events. |
 
 **Returns**
 
@@ -356,7 +356,7 @@ Unregisters the callback used to listen for metadata object reporting events.
 | -- | -- |
 | [Camera_MetadataOutput](capi-oh-camera-camera-metadataoutput.md)* metadataOutput | Pointer to a **MetadataOutput** instance.|
 | void* context | Context pointer provided by the user.|
-| [OH_MetadataOutput_OnMetadataObjectExtAvailable](capi-metadata-output-h.md#oh_metadataoutput_onmetadataobjectextavailable)* callback | Pointer to the callback used to listen for metadata object reporting events.|
+| [OH_MetadataOutput_OnMetadataObjectExtAvailable](capi-metadata-output-h.md#oh_metadataoutput_onmetadataobjectextavailable) callback | Pointer to the callback used to listen for metadata object reporting events. |
 
 **Returns**
 
@@ -382,7 +382,7 @@ Registers a callback to listen for error events. This callback can be unregister
 | -- | -- |
 | [Camera_MetadataOutput](capi-oh-camera-camera-metadataoutput.md)* metadataOutput | Pointer to a **MetadataOutput** instance.|
 | void* context | Context pointer provided by the user.|
-| [OH_MetadataOutput_OnErrorExt](capi-metadata-output-h.md#oh_metadataoutput_onerrorext)* callback | Pointer to the callback used to listen for error events.|
+| [OH_MetadataOutput_OnErrorExt](capi-metadata-output-h.md#oh_metadataoutput_onerrorext) callback | Pointer to the callback used to listen for error events. |
 
 **Returns**
 
@@ -408,7 +408,7 @@ Unregisters the callback used to listen for error events.
 | -- | -- |
 | [Camera_MetadataOutput](capi-oh-camera-camera-metadataoutput.md)* metadataOutput | Pointer to a **MetadataOutput** instance.|
 | void* context | Context pointer provided by the user.|
-| [OH_MetadataOutput_OnErrorExt](capi-metadata-output-h.md#oh_metadataoutput_onerrorext)* callback | Pointer to the callback used to listen for error events.|
+| [OH_MetadataOutput_OnErrorExt](capi-metadata-output-h.md#oh_metadataoutput_onerrorext) callback | Pointer to the callback used to listen for error events. |
 
 **Returns**
 
@@ -432,7 +432,7 @@ Checks whether the device supports the function of locking a metadata object (su
 
 | Name| Description|
 | -- | -- |
-| [Camera_MetadataOutput](capi-oh-camera-camera-metadataoutput.md)* metadataOutput | Pointer to a **MetadataOutput** instance.|
+| const [Camera_MetadataOutput](capi-oh-camera-camera-metadataoutput.md)* metadataOutput | Pointer to a **MetadataOutput** instance. |
 
 **Returns**
 
@@ -488,3 +488,5 @@ Unlocks the metadata object (such as a cat or dog face) for tracking.
 | Type| Description|
 | -- | -- |
 | [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SESSION_NOT_CONFIG**: The capture session is not configured.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
+
+

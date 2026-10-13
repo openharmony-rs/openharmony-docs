@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-MediaAssetDataHandler is a media asset handler used to customize the media asset processing logic in **onDataPrepared**.
+Provides a media asset handler used to customize the media asset processing logic in **onDataPrepared**.
 
 > **NOTE**
 >
@@ -25,8 +25,6 @@ onDataPrepared(data: T, map?: Map<string, string>): void
 
 Called when the requested media asset is ready. If an error occurs, **data** returned by the callback is **undefined**. Each media asset request corresponds to a callback.
 
-**T** supports the following data types: ArrayBuffer, [ImageSource](../apis-image-kit/arkts-apis-image-ImageSource.md), [MovingPhoto](arkts-apis-photoAccessHelper-MovingPhoto.md), and boolean. ArrayBuffer indicates the image or video asset data, [ImageSource](../apis-image-kit/arkts-apis-image-ImageSource.md) indicates the image source, [MovingPhoto](arkts-apis-photoAccessHelper-MovingPhoto.md) indicates a moving photo object, and boolean indicates whether the image or video is successfully written to the application sandbox directory. The value **true** indicates success, and the value **false** indicates failure.
-
 Information returned by **map**:
 
 | Map Key | Description|
@@ -39,7 +37,7 @@ Information returned by **map**:
 
 | Name | Type| Mandatory| Description                                                                           |
 |------|---| ---- |-------------------------------------------------------------------------------|
-| data | T | Yes  | Data of the image asset that is ready. It is of the generic type and supports the following data types: ArrayBuffer, [ImageSource](../apis-image-kit/arkts-apis-image-ImageSource.md), [MovingPhoto](arkts-apis-photoAccessHelper-MovingPhoto.md), and boolean.|
+| data | T | Yes  | Data of the image/video asset that is ready.<br>If an error occurs, the parameter returned by the callback is **undefined**.<br>The following data types are supported: ArrayBuffer, [ImageSource](../apis-image-kit/arkts-apis-image-ImageSource.md), [MovingPhoto](arkts-apis-photoAccessHelper-MovingPhoto.md), and boolean.<br>When the parameter type is boolean, the value **true** indicates success and **false** indicates failure.|
 | map<sup>12+</sup> | Map<string, string> | No  | Additional information about the image asset, such as the image quality. Currently, only **quality** is supported.|
 
 **Example**
@@ -54,7 +52,7 @@ class MediaHandler implements photoAccessHelper.MediaAssetDataHandler<image.Imag
       return;
     }
     // Customize the processing logic for ImageSource.
-    console.info('on image data prepared, photo quality is ' + map['quality']);
+    console.info('on image data prepared, photo quality is ' + map.get('quality'));
   }
 }
 
@@ -65,7 +63,7 @@ class MediaDataHandler implements photoAccessHelper.MediaAssetDataHandler<ArrayB
       return;
     }
     // Customize the processing logic for ArrayBuffer.
-    console.info('on image data prepared, photo quality is ' + map['quality']);
+    console.info('on image data prepared, photo quality is ' + map.get('quality'));
   }
 }
 
@@ -76,7 +74,7 @@ class MovingPhotoHandler implements photoAccessHelper.MediaAssetDataHandler<phot
       return;
     }
     // Customize the processing logic for MovingPhoto.
-    console.info('on image data prepared, photo quality is ' + map['quality']);
+    console.info('on image data prepared, photo quality is ' + map.get('quality'));
   }
 }
 ```

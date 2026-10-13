@@ -6,6 +6,7 @@
 <!--Designer: @gcw_nDnzjzHO;@wei-guoning-->
 <!--Tester: @sd_yinjian-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=78fb6d277634036465889d9375393ad47ef282fd translatedAt=2026-10-12T12:09:30.683Z pushedAt=2026-10-13T04:58:00.923Z -->
 
 ```c
 typedef struct ContentEmbed_Stream ContentEmbed_Stream

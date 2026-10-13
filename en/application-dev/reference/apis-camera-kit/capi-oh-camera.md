@@ -5,6 +5,7 @@
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=cd4357b68447c1487f33822bf9bf7926e7646e70 translatedAt=2026-10-12T12:02:30.053Z pushedAt=2026-10-13T04:58:00.909Z -->
 
 ## Overview
 
@@ -43,3 +44,4 @@ You can refer to the corresponding development guide and samples based on your d
 | [photo_output.h](capi-photo-output-h.md) | Declares the photo output concepts.|
 | [preview_output.h](capi-preview-output-h.md) | Declares the preview output concepts.|
 | [video_output.h](capi-video-output-h.md) | Declares the video output concepts.|
+| [metadata_object_ext.h](capi-metadata-object-ext-h.md) | Declares the metadata object extension concepts.<br>**Since:** 26.0.0 |

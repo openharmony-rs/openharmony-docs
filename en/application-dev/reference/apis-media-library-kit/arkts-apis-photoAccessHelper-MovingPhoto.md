@@ -92,7 +92,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 requestContent(imageFileUri: string, videoFileUri: string): Promise\<void>
 
-Requests the image data and video data of this moving photo and writes them to the specified URIs, respectively. This API uses a promise to return the result.
+Requests the image data and video data of a moving photo and writes them to the specified URIs, respectively. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -108,7 +108,7 @@ Requests the image data and video data of this moving photo and writes them to t
 | Name  | Type                                                                  | Mandatory| Description                     |
 | -------- |----------------------------------------------------------------------| ---- | ------------------------- |
 | imageFileUri | string                      | Yes  | URI to which the image data of the moving photo is to be written. Example: **"file://com.example.temptest/data/storage/el2/base/haps/ImageFile.jpg"**.|
-| videoFileUri | string                                            | Yes  | URI to which the video data of the moving photo is to be written. Example: **"file://com.example.temptest/data/storage/el2/base/haps/VideoFile.mp4"**.|
+| videoFileUri | string                                            | Yes  | URI to which the video data of the moving photo is to be written. The value must be a valid and writable file path in the app sandbox. Example: **"file://com.example.temptest/data/storage/el2/base/haps/VideoFile.mp4"**.|
 
 **Return value**
 
@@ -124,7 +124,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ---------------------------------------- |
 | 201      |  Permission denied   |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011 |  System inner fail.        |
+| 14000011 |  System inner fail.<br>Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out.  |
 
 **Example**
 
@@ -202,7 +202,7 @@ Requests the moving photo content of the specified resource type and writes it t
 | Name  | Type                                                                  | Mandatory| Description                     |
 | -------- |----------------------------------------------------------------------| ---- | ------------------------- |
 | resourceType | [ResourceType](arkts-apis-photoAccessHelper-e.md#resourcetype11)                      | Yes  | Resource type of the moving photo content to request.|
-| fileUri | string                                                    | Yes  |URI to which the moving photo content is to be written.|
+| fileUri | string                                                    | Yes  | URI to which the moving photo content is to be written. The value must be a valid and writable file path in the app sandbox.|
 
 **Return value**
 
@@ -218,7 +218,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ---------------------------------------- |
 | 201      |  Permission denied   |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011 |  System inner fail.        |
+| 14000011 |  System inner fail.<br>Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out.  |
 
 **Example**
 
@@ -306,7 +306,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ---------------------------------------- |
 | 201      |  Permission denied   |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 14000011 |  System inner fail.        |
+| 14000011 |  System inner fail.<br>Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out.       |
 
 **Example**
 

@@ -14,7 +14,7 @@ typedef struct MediaLibrary_RequestOptions {...} MediaLibrary_RequestOptions
 
 The struct defines how media assets are requested and processed.
 
-You can use this struct to set options related to the media asset quality, delivery mode, and more.
+This method is used to configure the request policy mode for media assets.
 
 **Since**: 12
 
@@ -28,4 +28,4 @@ You can use this struct to set options related to the media asset quality, deliv
 
 | Name| Description|
 | -- | -- |
-| [MediaLibrary_DeliveryMode](capi-media-asset-base-capi-h.md#medialibrary_deliverymode) deliveryMode | Delivery mode of the requested media asset.|
+| [MediaLibrary_DeliveryMode](capi-media-asset-base-capi-h.md#medialibrary_deliverymode) deliveryMode | Delivery mode of the requested media asset. |

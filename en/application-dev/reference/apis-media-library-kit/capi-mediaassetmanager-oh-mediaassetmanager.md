@@ -16,7 +16,7 @@ The struct describes the media asset manager.
 
 You can use this struct to create a media asset manager instance.
 
-If the creation fails, nullptr is returned.
+A null pointer is returned if the struct instance fails to be created.
 
 **Since**: 12
 
