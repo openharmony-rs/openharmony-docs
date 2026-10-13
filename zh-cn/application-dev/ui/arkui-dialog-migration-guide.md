@@ -36,16 +36,16 @@
 
 > **说明：** `DialogBaseOptions` 还包含系统接口属性 `distortionMode`（@systemapi）和 `edgeLightMode`（@systemapi），详见 [系统接口](../reference/apis-arkui/js-apis-dialog-sys.md)。
 
-## 新老接口能力差异
+## 新老接口差异
 
 ### 差异总览
 
-新老接口在以下维度存在差异，按"属性差异"和"使用差异"两类分述（详见下方对应小节）：
+新老接口在以下维度存在差异，按"属性差异"和"使用方式差异"两类分述（详见下方对应小节）：
 
 | 差异类型 | 对比维度 | 老接口 | 新接口（`@ohos.arkui.dialog`） |
 |---------|---------|---------|----------------------------|
 | 属性差异 | 高级动画 | `customStyle` + `openAnimation`/`closeAnimation`（`AnimateParam`） | `dialogTransition` + `maskTransition`（`TransitionEffect`） |
-| 使用差异 | 取消回调 | `cancel` / `onWillDismiss` | `onWillDismiss: Callback<DialogDismissal>` |
+| 使用方式差异 | 取消回调 | `cancel` / `onWillDismiss` | `onWillDismiss: Callback<DialogDismissal>` |
 
 ### 属性差异
 
@@ -277,9 +277,9 @@
 
 老接口使用 `customStyle: boolean` 控制是否使用自定义样式，`openAnimation` / `closeAnimation`（`AnimateParam`）控制打开和关闭动画。新接口使用 `dialogTransition: TransitionEffect` 控制内容区动画，`maskTransition: TransitionEffect` 控制蒙层动画。两者参数类型不同，**不存在等效映射**，迁移时需按新接口 `TransitionEffect` 重写动画参数。
 
-### 使用差异
+### 使用方式差异
 
-老接口[openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12)，不支持系统材质，不支持弹出后动态修改弹窗位置。
+新接口可以支持一些新的使用方式而老接口不能使用，比如老接口不支持弹出后动态修改弹窗位置，新接口可以；老接口在自定义场景不能使用系统材质，新接口可以。
 
 老接口示例：
 
@@ -482,799 +482,99 @@ struct Index {
 
 ![新接口示例图](figures/CustomDialogNewInterface.gif)
 
-## 适配指导
+## 典型场景适配指导
 
-以下每个"迁移后示例（新接口）"代码块均为完整的可编译示例。
-
-> 示例工程路径：`applications_app_samples/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/`
-
-| 示例页面 | 对应章节 |
-|---------|---------|
-| `Index.ets` | 迁移映射入口 |
-| `CustomDialogMigrationPage.ets` | CustomDialog 迁移 |
-| `AlertDialogMigrationPage.ets` | AlertDialog 迁移 |
-| `DialogStatePage.ets` | 能力介绍（DialogBaseController/DialogState） |
-
-### CustomDialog → DialogPresenter.present（自定义弹窗）
-
-| 老接口签名 | 新接口签名 | 说明 |
-|-----------|-----------|------|
-| `new CustomDialogController({ builder, alignment, offset, customStyle, autoCancel, maskColor, ... }).open()` | `presenter.present(content: CustomBuilder \| CustomBuilderWithId \| ComponentContent<Object>, options?: DialogCustomOptions)` | 编程模型从 Controller 改为 Presenter + Promise |
-| `controller.close()` | `controller.close()` 或 `presenter.dismiss(target)` | 新接口支持 controller.close() 和 dismiss(id\|content) 两种方式 |
-| `onCancel: () => void` | `onWillDismiss: Callback<DialogDismissal>` | 取消回调改版 |
+### 全局自定义弹出框
 
 **迁移前示例（老接口）：**
 
-```typescript
-@CustomDialog
-struct CustomDialogExample {
-  controller?: CustomDialogController
-  build() {
-    Column() {
-      Text('自定义弹窗内容')
-      Button('关闭').onClick(() => { this.controller?.close() })
-    }
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  dialogController: CustomDialogController = new CustomDialogController({
-    builder: CustomDialogExample(),
-    alignment: DialogAlignment.Center,
-    autoCancel: true,
-    maskColor: 0x33000000
-  })
-  build() {
-    Column() {
-      Button('打开弹窗').onClick(() => { this.dialogController.open() })
-    }
-    .width('100%')
-    .height('100%')
-    .justifyContent(FlexAlign.Center)
-  }
-}
-```
-
-![迁移前示例图](figures/CustomDialogBeforeMigrate.png)
+[完整示例](arkts-uicontext-custom-dialog.md#完整示例)
 
 **迁移后示例（新接口）：**
 
 ```typescript
-import { DialogPresenter, DialogBaseAlignment, DialogResult, ComponentContent } from '@kit.ArkUI';
+// DialogPresenterClassNew.ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { ComponentContent, dialog, DialogResult, UIContext } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
-// 定义参数类，用于向自定义弹出框内容传递数据
-class Params {
-  text: string = '';
+const DOMAIN = 0x0000;
 
-  constructor(text: string) {
-    this.text = text;
+export class DialogPresenterClassNew {
+  static ctx: UIContext;
+  static contentNode: ComponentContent<Object>;
+  static options: dialog.DialogBaseOptions;
+
+  static setContext(context: UIContext) {
+    DialogPresenterClassNew.ctx = context;
   }
-}
 
-// 自定义弹出框内容的构建器函数
-@Builder
-function buildText(params: Params) {
-  Column({ space: 20 }) {
-    Text(params.text)
-      .fontSize(30)
-      .fontWeight(FontWeight.Bold)
-      .margin({ bottom: 36 })
-    // 关闭弹出框按钮，通过ComponentContent引用关闭弹出框
-    Button('关闭弹窗')
-      .onClick(() => {
-        dialogPresenter?.dismiss(contentNode)
-          .then(() => {
-            console.info('dismiss success');
-          })
-          .catch((error: BusinessError) => {
-            console.error(`dismiss error code is ${error.code}, message is ${error.message}`);
-          })
+  static setContentNode(node: ComponentContent<Object>) {
+    DialogPresenterClassNew.contentNode = node;
+  }
+
+  static setOptions(options: dialog.DialogBaseOptions) {
+    DialogPresenterClassNew.options = options;
+  }
+
+  // 打开弹窗
+  static openDialog() {
+    if (DialogPresenterClassNew.contentNode !== null) {
+      // [Start dialog_presenter_class_open_custom_dialog]
+      DialogPresenterClassNew.ctx.getDialogPresenter()?.present(this.contentNode, DialogPresenterClassNew.options)
+        .then((result: DialogResult) => {
+          hilog.info(DOMAIN, 'testTag', 'testTag', 'OpenCustomDialog complete.');
+        }).catch((error: BusinessError) => {
+        let message = (error as BusinessError).message;
+        let code = (error as BusinessError).code;
+        hilog.error(DOMAIN, 'testTag', 'testTag', `OpenCustomDialog args error code is ${code}, message is ${message}`);
       })
-  }
-}
-
-let contentNode: ComponentContent<Object> | null = null;
-// 全局变量，保存DialogPresenter实例
-let dialogPresenter: DialogPresenter | null = null;
-
-@Entry
-@Component
-struct CustomDialogMigrationPage {
-  @State result: string = '';
-
-  aboutToAppear(): void {
-    // 获取DialogPresenter实例
-    dialogPresenter = this.getUIContext().getDialogPresenter();
-    // 创建ComponentContent，绑定自定义构建器函数和参数
-    contentNode = new ComponentContent(this.getUIContext(), wrapBuilder(buildText), new Params("自定义弹窗内容"));
-  }
-
-  build() {
-    Row() {
-      Column() {
-        Text('CustomDialog 迁移示例')
-          .fontSize(18)
-          .fontWeight(FontWeight.Bold)
-          .margin({ bottom: 20 })
-
-        Button('老接口：@CustomDialog + CustomDialogController')
-          .width('90%')
-          .margin({ bottom: 10 })
-          .onClick(() => {
-            this.showOldCustomDialog();
-          })
-
-        Button('新接口：DialogPresenter.present（自定义弹窗）')
-          .width('90%')
-          .margin({ bottom: 10 })
-          .onClick(() => {
-            this.showNewCustomDialog();
-          })
-
-        if (this.result) {
-          Text(this.result)
-            .fontSize(14)
-            .margin({ top: 10 })
-        }
-      }
-      .width('100%')
+      // [End dialog_presenter_class_open_custom_dialog]
     }
-    .height('100%')
   }
 
-  private showOldCustomDialog(): void {
-    this.result = '老接口示例请参考 DialogProject 工程';
-  }
-
-  private showNewCustomDialog(): void {
-    dialogPresenter?.present(contentNode, {
-      alignment: DialogBaseAlignment.CENTER,
-      autoCancel: true,
-      maskColor: 0x33000000
-    }).then((result: DialogResult) => {
-      this.result = 'present success, dialogId: ' + result.dialogId;
-    }).catch((error: BusinessError) => {
-      this.result = `present error: ${error.code}`;
-    });
-  }
-}
-```
-
-![迁移后示例图](figures/CustomDialogAfterMigrate.png)
-
-### AlertDialog → DialogPresenter.present（固定样式弹窗）
-
-| 老接口签名 | 新接口签名 | 说明 |
-|-----------|-----------|------|
-| `this.getUIContext().showAlertDialog({ title, message, buttons, alignment, ... })` | `presenter.present(options?: DialogStyleOptions)` | 命令式调用改 Presenter + Promise |
-| `buttons: Array<{ value, action }>` | `buttons: Array<DialogButton>` | 按钮属性扩展 |
-| `confirm: (value) => void` / `primaryButton.action` | `DialogButton.action` + Promise 结果 | 确认回调改 Promise |
-| `cancel: () => void` | `onWillDismiss: Callback<DialogDismissal>` | 取消回调改版 |
-
-**迁移前示例（老接口）：**
-
-```typescript
-@Entry
-@Component
-struct Index {
-  @State result: string = '';
-
-  build() {
-    Column() {
-      Button('打开 AlertDialog')
-        .onClick(() => {
-          this.getUIContext().showAlertDialog({
-            title: '提示',
-            message: '确认删除？',
-            autoCancel: true,
-            buttons: [
-              { value: '取消', action: () => { this.result = '取消'; } },
-              { value: '确认', action: () => { this.result = '确认'; } }
-            ],
-            cancel: () => { this.result = 'cancel'; }
-          });
+  // 关闭弹窗
+  static closeDialog() {
+    if (DialogPresenterClassNew.contentNode !== null) {
+      DialogPresenterClassNew.ctx.getDialogPresenter()?.dismiss(this.contentNode)
+        .then(() => {
+          hilog.info(DOMAIN, 'testTag', 'testTag', 'CloseCustomDialog complete.');
         })
-
-      if (this.result) {
-        Text(this.result)
-          .fontSize(14)
-          .margin({ top: 10 })
-      }
-    }
-    .width('100%')
-    .height('100%')
-    .justifyContent(FlexAlign.Center)
-  }
-}
-```
-
-![迁移前示例图](figures/AlertDialogBeforeMigrate.png)
-
-**迁移后示例（新接口）：**
-
-```typescript
-import { DialogBaseAlignment, DialogDismissal, DialogPresenter, DialogResult } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct AlertDialogMigrationPage {
-  private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
-  @State result: string = '';
-
-  build() {
-    Row() {
-      Column() {
-        Text('AlertDialog 迁移示例')
-          .fontSize(18)
-          .fontWeight(FontWeight.Bold)
-          .margin({ bottom: 20 })
-
-        Button('老接口：showAlertDialog')
-          .width('90%')
-          .margin({ bottom: 10 })
-          .onClick(() => {
-            this.result = '老接口示例请参考 ts-methods-alert-dialog-box.md';
-          })
-
-        Button('新接口：DialogPresenter.present（固定样式弹窗）')
-          .width('90%')
-          .margin({ bottom: 10 })
-          .onClick(() => {
-            this.showNewAlertDialog();
-          })
-
-        if (this.result) {
-          Text(this.result)
-            .fontSize(14)
-            .margin({ top: 10 })
-        }
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-
-  private showNewAlertDialog(): void {
-    this.presenter.present({
-      title: '提示',
-      message: { content: '确认删除？' },
-      buttons: [
-        {
-          value: '取消', action: () => {
-          this.result = '用户点击取消';
-        }
-        },
-        {
-          value: '确认', action: () => {
-          this.result = '用户点击确认';
-        }
-        }
-      ],
-      alignment: DialogBaseAlignment.BOTTOM,
-      onWillDismiss: (dismissal: DialogDismissal) => {
-        this.result = 'onWillDismiss, reason: ' + dismissal.reason;
-        dismissal.dismiss();
-      }
-    }).then((result: DialogResult) => {
-      this.result = 'present success, dialogId: ' + result.dialogId;
-    }).catch((error: BusinessError) => {
-      this.result = `present error: ${error.code}`;
-    });
-  }
-}
-```
-
-![迁移后示例图](figures/AlertDialogAfterMigrate.png)
-
-### ActionSheet → DialogPresenter.present（列表选择弹窗）
-
-| 老接口签名 | 新接口签名 | 说明 |
-|-----------|-----------|------|
-| `this.getUIContext().showActionSheet({ title, message, sheets, confirm, cancel, alignment, ... })` | `presenter.present(options?: DialogStyleOptions)` | 命令式调用改 Presenter + Promise |
-| `sheets: Array<SheetInfo>` | `sheets: Array<DialogSheet>` | 选项结构扩展 |
-| `confirm.action: VoidCallback` | `DialogButton.action` + Promise 结果 | 确认回调改 Promise |
-| `cancel: () => void` | `onWillDismiss: Callback<DialogDismissal>` | 取消回调改版 |
-
-**迁移前示例（老接口）：**
-
-```typescript
-@Entry
-@Component
-struct Index {
-  @State result: string = '';
-
-  build() {
-    Column() {
-      Button('打开 ActionSheet')
-        .onClick(() => {
-          this.getUIContext().showActionSheet({
-            title: '选择操作',
-            message: '请选择一个操作',
-            autoCancel: true,
-            sheets: [
-              { title: '复制', action: () => { this.result = '复制'; } },
-              { title: '删除', action: () => { this.result = '删除'; } }
-            ],
-            cancel: () => { this.result = '取消'; }
-          });
-        })
-
-      if (this.result) {
-        Text(this.result)
-          .fontSize(14)
-          .margin({ top: 10 })
-      }
-    }
-    .width('100%')
-    .height('100%')
-    .justifyContent(FlexAlign.Center)
-  }
-}
-```
-
-![迁移前示例图](figures/ActionSheetBeforeMigrate.png)
-
-**迁移后示例（新接口）：**
-
-```typescript
-import { DialogDismissal, DialogPresenter, DialogResult } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct ActionSheetMigrationPage {
-  private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
-  @State result: string = '';
-
-  build() {
-    Row() {
-      Column() {
-        Text('ActionSheet 迁移示例')
-          .fontSize(18)
-          .fontWeight(FontWeight.Bold)
-          .margin({ bottom: 20 })
-
-        Button('老接口：showActionSheet')
-          .width('90%')
-          .margin({ bottom: 10 })
-          .onClick(() => {
-            this.result = '老接口示例请参考 ts-methods-action-sheet.md';
-          })
-
-        Button('新接口：DialogPresenter.present（列表选择弹窗）')
-          .width('90%')
-          .margin({ bottom: 10 })
-          .onClick(() => {
-            this.showNewActionSheet();
-          })
-
-        if (this.result) {
-          Text(this.result)
-            .fontSize(14)
-            .margin({ top: 10 })
-        }
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-
-  private showNewActionSheet(): void {
-    this.presenter.present({
-      title: '选择操作',
-      message: { content: '请选择一个操作' },
-      autoCancel: true,
-      sheets: [
-        { title: '复制', action: () => { this.result = '复制'; } },
-        { title: '删除', action: () => { this.result = '删除'; } }
-      ],
-      onWillDismiss: (dismissal: DialogDismissal) => {
-        this.result = '取消';
-        dismissal.dismiss();
-      }
-    }).then((result: DialogResult) => {
-      this.result = 'present success, dialogId: ' + result.dialogId;
-    }).catch((error: BusinessError) => {
-      this.result = `present error: ${error.code}`;
-    });
-  }
-}
-```
-
-![迁移后示例图](figures/ActionSheetAfterMigrate.png)
-
-### promptAction.showDialog → DialogPresenter.present（对话框）
-
-| 老接口签名 | 新接口签名 | 说明 |
-|-----------|-----------|------|
-| `this.getUIContext().getPromptAction().showDialog({ title, message, buttons, ... })` | `presenter.present(options?: DialogStyleOptions)` | 命令式调用改 Presenter + Promise |
-| `buttons: Array<Button>`（仅 text + color） | `buttons: Array<DialogButton>`（含 value/fontColor/backgroundColor/enabled/primary/style/action） | 按钮属性扩展 |
-| 返回 `Promise<ShowDialogSuccessResponse>`（仅 index） | 返回 `Promise<DialogResult>`（含 dialogId） | 返回值扩展 |
-
-**迁移前示例（老接口）：**
-
-```typescript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct Index {
-  @State result: string = '';
-
-  build() {
-    Column() {
-      Button('打开 showDialog')
-        .onClick(() => {
-          this.getUIContext().getPromptAction().showDialog({
-            title: '提示',
-            message: '确认删除？',
-            buttons: [
-              { text: '取消', color: '#666666' },
-              { text: '确认', color: '#0000FF' }
-            ]
-          }).then((data) => {
-            this.result = 'click button index: ' + data.index;
-          }).catch((error: BusinessError) => {
-            this.result = `showDialog error: ${error.code}`;
-          });
-        })
-
-      if (this.result) {
-        Text(this.result)
-          .fontSize(14)
-          .margin({ top: 10 })
-      }
-    }
-    .width('100%')
-    .height('100%')
-    .justifyContent(FlexAlign.Center)
-  }
-}
-```
-
-![迁移前示例图](figures/ShowDialogBeforeMigrate.png)
-
-**迁移后示例（新接口）：**
-
-```typescript
-import { DialogPresenter, DialogResult } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct ShowDialogMigrationPage {
-  private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
-  @State result: string = '';
-
-  build() {
-    Row() {
-      Column() {
-        Text('showDialog 迁移示例')
-          .fontSize(18)
-          .fontWeight(FontWeight.Bold)
-          .margin({ bottom: 20 })
-
-        Button('老接口：promptAction.showDialog')
-          .width('90%')
-          .margin({ bottom: 10 })
-          .onClick(() => {
-            this.result = '老接口示例请参考 js-apis-promptAction.md';
-          })
-
-        Button('新接口：DialogPresenter.present（对话框）')
-          .width('90%')
-          .margin({ bottom: 10 })
-          .onClick(() => {
-            this.showNewDialog();
-          })
-
-        if (this.result) {
-          Text(this.result)
-            .fontSize(14)
-            .margin({ top: 10 })
-        }
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-
-  private showNewDialog(): void {
-    this.presenter.present({
-      title: '提示',
-      message: { content: '确认删除？' },
-      buttons: [
-        { value: '取消', action: () => { this.result = '取消'; } },
-        { value: '确认', action: () => { this.result = '确认'; } }
-      ]
-    }).then((result: DialogResult) => {
-      this.result = 'present success, dialogId: ' + result.dialogId;
-    }).catch((error: BusinessError) => {
-      this.result = `present error: ${error.code}`;
-    });
-  }
-}
-```
-
-![迁移后示例图](figures/ShowDialogAfterMigrate.png)
-
-### promptAction.showActionMenu → DialogPresenter.present（操作菜单）
-
-| 老接口签名 | 新接口签名 | 说明 |
-|-----------|-----------|------|
-| `this.getUIContext().getPromptAction().showActionMenu({ title, buttons, ... })` | `presenter.present(options?: DialogStyleOptions)` | 命令式调用改 Presenter + Promise |
-| `buttons: [Button, ...]`（1-6 个，仅 text + color） | `buttons: Array<DialogButton>`（无数量限制，含 value/fontColor/backgroundColor/enabled/primary/style/action） | 按钮属性扩展 |
-| 返回 `Promise<ActionMenuSuccessResponse>`（仅 index） | 返回 `Promise<DialogResult>`（含 dialogId） | 返回值扩展 |
-
-**迁移前示例（老接口）：**
-
-```typescript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct Index {
-  @State result: string = '';
-
-  build() {
-    Column() {
-      Button('打开 showActionMenu')
-        .onClick(() => {
-          this.getUIContext().getPromptAction().showActionMenu({
-            title: '选择操作',
-            buttons: [
-              { text: '保存', color: '#0000FF' },
-              { text: '分享', color: '#0000FF' },
-              { text: '删除', color: '#FF0000' }
-            ]
-          }).then((data) => {
-            this.result = 'click button index: ' + data.index;
-          }).catch((error: BusinessError) => {
-            this.result = `showActionMenu error: ${error.code}`;
-          });
-        })
-
-      if (this.result) {
-        Text(this.result)
-          .fontSize(14)
-          .margin({ top: 10 })
-      }
-    }
-    .width('100%')
-    .height('100%')
-    .justifyContent(FlexAlign.Center)
-  }
-}
-```
-
-![迁移前示例图](figures/ActionMenuBeforeMigrate.png)
-
-**迁移后示例（新接口）：**
-
-```typescript
-import { DialogPresenter, DialogResult } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct ShowActionMenuMigrationPage {
-  private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
-  @State result: string = '';
-
-  build() {
-    Row() {
-      Column() {
-        Text('showActionMenu 迁移示例')
-          .fontSize(18)
-          .fontWeight(FontWeight.Bold)
-          .margin({ bottom: 20 })
-
-        Button('老接口：promptAction.showActionMenu')
-          .width('90%')
-          .margin({ bottom: 10 })
-          .onClick(() => {
-            this.result = '老接口示例请参考 js-apis-promptAction.md';
-          })
-
-        Button('新接口：DialogPresenter.present（操作菜单）')
-          .width('90%')
-          .margin({ bottom: 10 })
-          .onClick(() => {
-            this.showNewActionMenu();
-          })
-
-        if (this.result) {
-          Text(this.result)
-            .fontSize(14)
-            .margin({ top: 10 })
-        }
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-
-  private showNewActionMenu(): void {
-    this.presenter.present({
-      title: '选择操作',
-      buttons: [
-        { value: '保存', action: () => { this.result = '保存'; } },
-        { value: '分享', action: () => { this.result = '分享'; } },
-        { value: '删除', action: () => { this.result = '删除'; } }
-      ]
-    }).then((result: DialogResult) => {
-      this.result = 'present success, dialogId: ' + result.dialogId;
-    }).catch((error: BusinessError) => {
-      this.result = `present error: ${error.code}`;
-    });
-  }
-}
-```
-
-![迁移后示例图](figures/ActionMenuAfterMigrate.png)
-
-### promptAction.presentCustomDialog → DialogPresenter.present（自定义弹窗）
-
-| 老接口签名 | 新接口签名 | 说明 |
-|-----------|-----------|------|
-| `this.getUIContext().getPromptAction().presentCustomDialog(builder, controller?, options?)` | `presenter.present(content, options?: DialogCustomOptions)` | 编程模型从 PromptAction 改为 DialogPresenter |
-| `promptAction.DialogController` | `dialog.DialogBaseController` | 控制器类型变更 |
-| `options: DialogOptions`（继承 `BaseDialogOptions`） | `options: DialogCustomOptions`（继承 `DialogBaseOptions`） | 选项类型变更 |
-| 返回 `Promise<number>`（dialogId） | 返回 `Promise<DialogResult>`（含 dialogId） | 返回值扩展 |
-
-**迁移前示例（老接口）：**
-
-```typescript
-import { promptAction } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct Index {
-  private dialogController: promptAction.DialogController = new promptAction.DialogController();
-  @State result: string = '';
-
-  @Builder customDialogComponent() {
-    Column() {
-      Text('自定义弹窗内容')
-        .fontSize(16)
-        .margin({ bottom: 10 })
-      Button('关闭弹窗')
-        .onClick(() => {
-          this.dialogController.close();
+        .catch((error: BusinessError) => {
+          let message = (error as BusinessError).message;
+          let code = (error as BusinessError).code;
+          hilog.error(DOMAIN, 'testTag', 'testTag', `CloseCustomDialog args error code is ${code}, message is ${message}`);
         })
     }
-    .padding(20)
   }
 
-  build() {
-    Column() {
-      Button('打开 presentCustomDialog')
-        .onClick(() => {
-          this.getUIContext().getPromptAction().presentCustomDialog(() => {
-            this.customDialogComponent()
-          }, this.dialogController, { autoCancel: true })
-            .then((dialogId: number) => {
-              this.result = 'present success, dialogId: ' + dialogId;
-            })
-            .catch((error: BusinessError) => {
-              this.result = `present error: ${error.code}`;
-            });
+  // 更新弹窗
+  static updateDialog(options: dialog.DialogBaseOptions) {
+    if (DialogPresenterClassNew.contentNode !== null) {
+      // [Start dialog_presenter_class_update_options]
+      DialogPresenterClassNew.ctx.getDialogPresenter()?.update(this.contentNode, options)
+        .then(() => {
+          hilog.info(DOMAIN, 'testTag', 'testTag', 'UpdateCustomDialog complete.');
         })
-
-      if (this.result) {
-        Text(this.result)
-          .fontSize(14)
-          .margin({ top: 10 })
-      }
+        .catch((error: BusinessError) => {
+          let message = (error as BusinessError).message;
+          let code = (error as BusinessError).code;
+          hilog.error(DOMAIN, 'testTag', 'testTag', `UpdateCustomDialog args error code is ${code}, message is ${message}`);
+        })
+      // [End dialog_presenter_class_update_options]
     }
-    .width('100%')
-    .height('100%')
-    .justifyContent(FlexAlign.Center)
   }
 }
 ```
 
-![迁移前示例图](figures/PresentCustomDialogBeforeMigrate.png)
-
-**迁移后示例（新接口）：**
-
 ```typescript
-import { DialogBaseController, DialogPresenter, DialogResult } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct PresentCustomDialogMigrationPage {
-  private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
-  private controller: DialogBaseController = new DialogBaseController();
-  @State result: string = '';
-
-  build() {
-    Row() {
-      Column() {
-        Text('presentCustomDialog 迁移示例')
-          .fontSize(18)
-          .fontWeight(FontWeight.Bold)
-          .margin({ bottom: 20 })
-
-        Button('老接口：promptAction.presentCustomDialog')
-          .width('90%')
-          .margin({ bottom: 10 })
-          .onClick(() => {
-            this.result = '老接口示例请参考 arkts-apis-uicontext-promptaction.md';
-          })
-
-        Button('新接口：DialogPresenter.present（自定义弹窗）')
-          .width('90%')
-          .margin({ bottom: 10 })
-          .onClick(() => {
-            this.showNewCustomDialog();
-          })
-
-        if (this.result) {
-          Text(this.result)
-            .fontSize(14)
-            .margin({ top: 10 })
-        }
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-
-  @Builder
-  CustomComponentContent() {
-    Column() {
-      Text('自定义弹窗内容')
-        .fontSize(16)
-        .margin({ bottom: 10 })
-      Button('关闭弹窗')
-        .onClick(() => {
-          this.controller.close();
-        })
-    }
-    .padding(20)
-  }
-
-  private showNewCustomDialog(): void {
-    this.presenter.present(() => {
-      this.CustomComponentContent()
-    }, {
-      controller: this.controller,
-      autoCancel: true
-    }).then((result: DialogResult) => {
-      this.result = 'present success, dialogId: ' + result.dialogId;
-    }).catch((error: BusinessError) => {
-      this.result = `present error: ${error.code}`;
-    });
-  }
-}
-```
-
-![迁移后示例图](figures/PresentCustomDialogAfterMigrate.png)
-
-### promptAction.openCustomDialogWithController → DialogPresenter.present（带控制器的自定义弹窗）
-
-| 老接口签名 | 新接口签名 | 说明 |
-|-----------|-----------|------|
-| `this.getUIContext().getPromptAction().openCustomDialogWithController(content, controller, options?)` | `presenter.present(content, options?: DialogCustomOptions)` | 编程模型从 PromptAction 改为 DialogPresenter |
-| `promptAction.DialogController` | `dialog.DialogBaseController` | 控制器类型变更 |
-| `options: BaseDialogOptions` | `options: DialogCustomOptions`（继承 `DialogBaseOptions`） | 选项类型变更，新增 backgroundColor/borderRadius/borderWidth/shadow/width/height 等属性 |
-| 返回 `Promise<void>` | 返回 `Promise<DialogResult>`（含 dialogId） | 返回值扩展 |
-
-**迁移前示例（老接口）：**
-
-```typescript
-import { ComponentContent, promptAction } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
+// Index.ets
+import { ComponentContent, DialogBaseAlignment } from '@kit.ArkUI';
+import { DialogPresenterClassNew } from '../../common/DialogPresenterClassNew';
 
 class Params {
-  text: string = '';
+  public text: string = '';
+
   constructor(text: string) {
     this.text = text;
   }
@@ -1284,127 +584,267 @@ class Params {
 function buildText(params: Params) {
   Column() {
     Text(params.text)
-      .fontSize(16)
-      .margin({ bottom: 10 })
-    Button('关闭弹窗')
+      .fontSize(50)
+      .fontWeight(FontWeight.Bold)
+      .margin({ bottom: 36 })
+    Button('Close')
       .onClick(() => {
+        DialogPresenterClassNew.closeDialog();
       })
-  }
-  .padding(20)
+  }.backgroundColor('#FFF0F0F0')
 }
 
 @Entry
 @Component
-struct Index {
-  private dialogController: promptAction.DialogController = new promptAction.DialogController();
-  @State result: string = '';
+export struct OpenDialogAndUpdate {
+  @State message: string = 'hello';
+  private ctx: UIContext = this.getUIContext();
+  // [Start open_dialog_and_update_create_componentContent]
+  private contentNode: ComponentContent<Object> =
+    new ComponentContent(this.ctx, wrapBuilder(buildText), new Params(this.message));
+  // [End open_dialog_and_update_create_componentContent]
+  aboutToAppear(): void {
+    DialogPresenterClassNew.setContext(this.ctx);
+    DialogPresenterClassNew.setContentNode(this.contentNode);
+    DialogPresenterClassNew.setOptions({ alignment: DialogBaseAlignment.TOP, offset: { dx: 0, dy: 50 } });
+  }
 
   build() {
-    Column() {
-      Button('打开 openCustomDialogWithController')
-        .onClick(() => {
-          let contentNode = new ComponentContent(this.getUIContext(), wrapBuilder(buildText),
-            new Params('自定义弹窗内容'));
-          this.getUIContext().getPromptAction().openCustomDialogWithController(contentNode,
-            this.dialogController, {
-              autoCancel: true,
-              alignment: DialogAlignment.Center
-            }).then(() => {
-              this.result = 'opened';
-            }).catch((error: BusinessError) => {
-              this.result = `open error: ${error.code}`;
-            });
-        })
+    NavDestination() {
+      Row() {
+        Column() {
+          Button('open dialog and update options')
+            .margin({ top: 50 })
+            .onClick(() => {
+              DialogPresenterClassNew.openDialog();
 
-      if (this.result) {
-        Text(this.result)
-          .fontSize(14)
-          .margin({ top: 10 })
+              setTimeout(() => {
+                DialogPresenterClassNew.updateDialog({
+                  alignment: DialogBaseAlignment.BOTTOM,
+                  offset: { dx: 0, dy: -50 }
+                });
+              }, 1500)
+            })
+          Button('open dialog and update content')
+            .margin({ top: 50 })
+            .onClick(() => {
+              DialogPresenterClassNew.openDialog();
+
+              setTimeout(() => {
+                // [Start open_dialog_and_update_content]
+                this.contentNode.update(new Params('update'));
+                // [End open_dialog_and_update_content]
+              }, 1500)
+            })
+        }
+        .width('100%')
+        .height('100%')
       }
+      .height('100%')
     }
-    .width('100%')
-    .height('100%')
-    .justifyContent(FlexAlign.Center)
   }
 }
 ```
 
-![迁移前示例图](figures/OpenCustomDialogWithControllerBeforeMigrate.png)
+
+### 页面级弹出框
+
+**迁移前示例（老接口）：**
+
+[完整示例](arkts-embedded-dialog.md#完整示例)
 
 **迁移后示例（新接口）：**
 
+下述示例为基于Router路由模式下的页面级弹出框。
+
 ```typescript
-import { DialogBaseAlignment, DialogBaseController, DialogPresenter, DialogResult } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
+// PageLevelDialogBox.ets
+import { LevelMode, ImmersiveMode } from '@kit.ArkUI';
+
+let customDialogId: number = 0;
+
+@Builder
+function customDialogBuilder(uiContext: UIContext) {
+  Column() {
+    Text('Custom dialog Message').fontSize(20).height(100)
+    Row() {
+      Button('Next').onClick(() => {
+        // 在弹窗内部进行路由跳转。
+        uiContext.getRouter().pushUrl({ url: 'pages/Next' });
+      })
+      Blank().width(50)
+      Button('Close').onClick(() => {
+        uiContext.getDialogPresenter()?.dismiss(customDialogId);
+      })
+    }
+  }.padding(20)
+}
 
 @Entry
 @Component
-struct OpenCustomDialogWithControllerMigrationPage {
-  private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
-  private controller: DialogBaseController = new DialogBaseController();
-  @State result: string = '';
+export struct PageLevelDialogBox {
+  @State message: string = 'Hello World';
+
+  @Builder
+  customDialogComponent() {
+    customDialogBuilder(this.getUIContext());
+  }
+
+  build() {
+    NavDestination() {
+      Row() {
+        Column() {
+          // [Start test_text]
+          // [Start dialog_embedded]
+          Text(this.message).id('test_text')
+            .fontSize(50)
+            .fontWeight(FontWeight.Bold)
+            .onClick(() => {
+              const node: FrameNode | null = this.getUIContext().getFrameNodeById('test_text') || null;
+              // [Start open_custom_dialog]
+              this.getUIContext().getDialogPresenter()?.present(this.customDialogComponent(), {
+                levelMode: LevelMode.EMBEDDED, // 启用页面级弹出框
+                // [StartExclude open_custom_dialog]
+                levelUniqueId: node?.getUniqueId(), // 设置页面级弹出框所在页面的任意节点ID
+                // [StartExclude test_text]
+                immersiveMode: ImmersiveMode.EXTEND, // 设置页面级弹出框蒙层的显示模式
+                // [EndExclude test_text]
+                // [EndExclude open_custom_dialog]
+              })
+              // [End open_custom_dialog]
+                .then((dialogId: number) => {
+                  customDialogId = dialogId;
+                });
+            })
+          // [End dialog_embedded]
+          // [End test_text]
+        }
+        .width('100%')
+      }
+      .height('100%')
+    }
+  }
+}
+```
+
+```typescript
+// Next.ets
+// Next.ets
+@Entry
+@Component
+struct Next {
+  @State message: string = 'Back';
 
   build() {
     Row() {
       Column() {
-        Text('openCustomDialogWithController 迁移示例')
-          .fontSize(18)
+        Button(this.message)
+          .fontSize(20)
           .fontWeight(FontWeight.Bold)
-          .margin({ bottom: 20 })
-
-        Button('老接口：promptAction.openCustomDialogWithController')
-          .width('90%')
-          .margin({ bottom: 10 })
           .onClick(() => {
-            this.result = '老接口示例请参考 arkts-apis-uicontext-promptaction.md';
+            this.getUIContext().getRouter().back();
           })
-
-        Button('新接口：DialogPresenter.present（自定义弹窗）')
-          .width('90%')
-          .margin({ bottom: 10 })
-          .onClick(() => {
-            this.showNewCustomDialog();
-          })
-
-        if (this.result) {
-          Text(this.result)
-            .fontSize(14)
-            .margin({ top: 10 })
-        }
       }
       .width('100%')
     }
     .height('100%')
   }
-
-  @Builder
-  CustomContent() {
-    Column() {
-      Text('自定义弹窗内容')
-        .fontSize(16)
-        .margin({ bottom: 10 })
-      Button('关闭弹窗')
-        .onClick(() => {
-          this.controller.close();
-        })
-    }
-    .padding(20)
-  }
-
-  private showNewCustomDialog(): void {
-    this.presenter.present(() => {
-      this.CustomContent()
-    }, {
-      controller: this.controller,
-      autoCancel: true,
-      alignment: DialogBaseAlignment.CENTER
-    }).then((result: DialogResult) => {
-      this.result = 'present success, dialogId: ' + result.dialogId;
-    }).catch((error: BusinessError) => {
-      this.result = `present error: ${error.code}`;
-    });
-  }
 }
 ```
 
-![迁移后示例图](figures/OpenCustomDialogWithControllerAfterMigrate.png)
+下述示例为基于Navigation导航模式下的页面级弹出框。使用本示例前需要参考[Navigation使用NavDestination作为导航页](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#示例16navigation使用navdestination作为导航页)文档完成Index首页和router_map.json的创建与配置。并使用下述示例代码中的PageLevelDialogInNavigation和PageLevelDialogInNavigationTestTwo组件替换Navigation参考文档中的PageHome和PageOne组件。
+
+```typescript
+// PageLevelDialogInNavigation.ets
+import { LevelMode, ImmersiveMode } from '@kit.ArkUI';
+
+let customDialogId: number = 0;
+
+@Builder
+function customDialogBuilder(uiContext: UIContext, stack: NavPathStack | undefined) {
+  Column() {
+    Text('Custom dialog Message').fontSize(20).height(100)
+    Row() {
+      Button('Next').onClick(() => {
+        // 在弹窗内部进行路由跳转。
+        if (stack) {
+          stack.pushPath({ name: 'Custom_ROUTE_PREFIX/PageLevelDialogInNavigationPageTwo'})
+        }
+      })
+      Blank().width(50)
+      Button('Close').onClick(() => {
+        uiContext.getDialogPresenter()?.dismiss(customDialogId);
+      })
+    }
+  }.padding(20)
+}
+
+@Component
+export struct PageLevelDialogInNavigation {
+  private stack: NavPathStack | undefined = undefined;
+  private uiContext: UIContext = this.getUIContext();
+  @State message: string = 'Hello World';
+
+  @Builder
+  customDialogComponent() {
+    customDialogBuilder(this.uiContext, this.stack);
+  }
+
+  build() {
+    NavDestination() {
+      Stack({alignContent: Alignment.Center}) {
+        Column() {
+          Text(this.message).id('test_text')
+            .fontSize(50)
+            .fontWeight(FontWeight.Bold)
+            .onClick(() => {
+              const node: FrameNode | null = this.getUIContext().getFrameNodeById('test_text') || null;
+              this.uiContext.getDialogPresenter()?.present(this.customDialogComponent(), {
+                levelMode: LevelMode.EMBEDDED, // 启用页面级弹出框
+                levelUniqueId: node?.getUniqueId(), // 设置页面级弹出框所在页面的任意节点ID
+                immersiveMode: ImmersiveMode.EXTEND, // 设置页面级弹出框蒙层的显示模式
+              }).then((dialogId: number) => {
+                customDialogId = dialogId;
+              })
+            })
+        }
+        .width('100%')
+      }.width('100%').height('100%')
+    }
+    .width('100%').height('100%')
+    .title('PageOne')
+    .onReady((ctx: NavDestinationContext) => {
+      this.stack = ctx.pathStack;
+    })
+  }
+}
+
+@Component
+export struct PageLevelDialogInNavigationTestTwo {
+  @State message: string = 'Back';
+  private stack: NavPathStack | undefined = undefined;
+
+  build() {
+    NavDestination() {
+      Stack({alignContent: Alignment.Center}) {
+        Column() {
+          Button(this.message)
+            .fontSize(20)
+            .fontWeight(FontWeight.Bold)
+            .onClick(() => {
+              if (this.stack) {
+                this.stack.pop()
+              }
+            })
+        }
+        .width('100%')
+      }.width('100%').height('100%')
+    }
+    .width('100%').height('100%')
+    .title('PageTwo')
+    .onReady((ctx: NavDestinationContext) => {
+      this.stack = ctx.pathStack;
+    })
+  }
+}
+```
