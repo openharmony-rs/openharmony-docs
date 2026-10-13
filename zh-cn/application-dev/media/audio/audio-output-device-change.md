@@ -217,7 +217,7 @@ let audioRendererOptions: audio.AudioRendererOptions = {
         audioRenderer = renderer;
         // ...
       } else {
-        console.info(`Failed to create audio renderer. Code: ${err.code}, message: ${err.message}`);
+        console.error(`Failed to create audio renderer. Code: ${err.code}, message: ${err.message}`);
         // ...
       }
     });
