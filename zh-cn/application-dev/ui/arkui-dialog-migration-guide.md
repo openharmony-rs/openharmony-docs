@@ -71,7 +71,9 @@
 | 悬浮模式 | `enableHoverMode` + `hoverModeArea` | `enableHoverMode` + `hoverModeArea` |
 | 层级模式 | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` |
 | 系统材质 | `systemMaterial: SystemUiMaterial` | `systemMaterial: SystemUiMaterial` |
+<!--Del-->
 | 系统接口属性 | `distortionMode`（@systemapi）、`edgeLightMode`（@systemapi）——见 [系统接口](../reference/apis-arkui/ts-methods-custom-dialog-box-sys.md) | `distortionMode`（@systemapi）、`edgeLightMode`（@systemapi）——见 [系统接口](../reference/apis-arkui/js-apis-dialog-sys.md) |
+<!--DelEnd-->
 
 **迁移前示例（老接口）：**
 
