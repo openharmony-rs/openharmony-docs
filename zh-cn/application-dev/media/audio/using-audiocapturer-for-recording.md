@@ -108,14 +108,20 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
      }
    }
    
-   let audioCapturerOptions: AudioCapturerOptionsCompat = new AudioCapturerOptionsCompat(audioStreamInfo, audioCapturerInfo);
+   let audioCapturerOptions: audio.AudioCapturerOptions = {
+     streamInfo: audioStreamInfo,
+     capturerInfo: audioCapturerInfo
+   };
    
    let audioRendererInfo: audio.AudioRendererInfo = {
      usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
      rendererFlags: 0
    };
    
-   let audioRendererOptions: AudioRendererOptionsCompat = new AudioRendererOptionsCompat(audioStreamInfo, audioRendererInfo);
+   let audioRendererOptions: audio.AudioRendererOptions = {
+     streamInfo: audioStreamInfo,
+     rendererInfo: audioRendererInfo
+   };
    
    let file: fs.File | undefined = undefined;
    let readDataCallback: Callback<ArrayBuffer> = (_buffer: ArrayBuffer): void => {};
@@ -131,7 +137,7 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
      return firstResult === 0;
    }
    
-   // 采集回调将麦克风数据写入缓存PCM文件，供渲染侧读取。
+   // 采集回调将麦克风数据写入缓存 PCM 文件，供渲染侧读取。
    async function initArguments(context: common.UIAbilityContext): Promise<void> {
      let bufferSize: long = 0;
      let path = context.cacheDir;
@@ -190,7 +196,7 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
      try {
        let renderer = await audio.createAudioRenderer(audioRendererOptions);
        if (renderer === null) {
-         console.info(`${TAG}: creating AudioRenderer failed, renderer is null`);
+         console.error(`${TAG}: creating AudioRenderer failed, renderer is null`);
          return;
        }
        console.info(`${TAG}: creating AudioRenderer success`);
@@ -198,7 +204,7 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
        renderer.onWriteData(writeDataCallback);
      } catch (err) {
        let error = err as BusinessError;
-       console.info(`${TAG}: creating AudioRenderer failed, error: ${error.message}`);
+       console.error(`${TAG}: creating AudioRenderer failed, error: ${error.message}`);
      }
    }
    
@@ -221,13 +227,87 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
      }
    }
    
+   // 应用级快照：同时写入缓存文件并输出到 Hilog。
+   async function printAppSnapshot(context: common.UIAbilityContext,
+     updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
+     try {
+       let path = context.cacheDir + '/app_snapshot.txt';
+       let snapshotFile = fs.openSync(path, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE | fs.OpenMode.TRUNC);
+       audio.getAudioManager().getDebuggingManager().printAppInfo(snapshotFile.fd);
+       fs.closeSync(snapshotFile);
+       audio.getAudioManager().getDebuggingManager().printAppInfo(-1);
+       if (updateCallback) {
+         updateCallback(`App snapshot printed to system log and ${path}.`, false);
+       }
+     } catch (err) {
+       let error = err as BusinessError;
+       if (updateCallback) {
+         updateCallback(`Print app snapshot failed: ${error.message}`, true);
+       }
+     }
+   }
+   
+   // 录音快照：同时写入缓存文件并输出到 Hilog。
+   async function printCapturerSnapshot(context: common.UIAbilityContext,
+     updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
+     let capturer = audioCapturer;
+     if (capturer === undefined) {
+       if (updateCallback) {
+         updateCallback('AudioCapturer is not created.', true);
+       }
+       return;
+     }
+     try {
+       let path = context.cacheDir + '/capturer_snapshot.txt';
+       let snapshotFile = fs.openSync(path, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE | fs.OpenMode.TRUNC);
+       audio.getAudioManager().getDebuggingManager().printCapturerInfo(capturer, snapshotFile.fd);
+       fs.closeSync(snapshotFile);
+       audio.getAudioManager().getDebuggingManager().printCapturerInfo(capturer, -1);
+       if (updateCallback) {
+         updateCallback(`Capturer snapshot printed to system log and ${path}.`, false);
+       }
+     } catch (err) {
+       let error = err as BusinessError;
+       if (updateCallback) {
+         updateCallback(`Print capturer snapshot failed: ${error.message}`, true);
+       }
+     }
+   }
+   
+   // 播放快照：同时写入缓存文件并输出到 Hilog。
+   async function printRendererSnapshot(context: common.UIAbilityContext,
+     updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
+     let renderer = audioRenderer;
+     if (renderer === undefined) {
+       if (updateCallback) {
+         updateCallback('AudioRenderer is not created.', true);
+       }
+       return;
+     }
+     try {
+       let path = context.cacheDir + '/renderer_snapshot.txt';
+       let snapshotFile = fs.openSync(path, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE | fs.OpenMode.TRUNC);
+       audio.getAudioManager().getDebuggingManager().printRendererInfo(renderer, snapshotFile.fd);
+       fs.closeSync(snapshotFile);
+       audio.getAudioManager().getDebuggingManager().printRendererInfo(renderer, -1);
+       if (updateCallback) {
+         updateCallback(`Renderer snapshot printed to system log and ${path}.`, false);
+       }
+     } catch (err) {
+       let error = err as BusinessError;
+       if (updateCallback) {
+         updateCallback(`Print renderer snapshot failed: ${error.message}`, true);
+       }
+     }
+   }
+   
    // 停止音频渲染，文件句柄在 release 阶段统一关闭。
    async function stopRender(updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
      let renderer = audioRenderer;
      if (renderer !== undefined) {
        let state = renderer.state;
        if (state !== audio.AudioState.STATE_RUNNING && state !== audio.AudioState.STATE_PAUSED) {
-         console.info('Renderer is not running or paused.');
+         console.error('Renderer is not running or paused.');
          return;
        }
        try {
@@ -244,7 +324,7 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
      let renderer = audioRenderer;
      if (renderer !== undefined) {
        if (renderer.state === audio.AudioState.STATE_RELEASED) {
-         console.info('Renderer already released');
+         console.error('Renderer already released');
          return;
        }
        try {
