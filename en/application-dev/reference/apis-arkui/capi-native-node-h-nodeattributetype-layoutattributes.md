@@ -27,7 +27,7 @@ Enumerates the layout attribute types that can be set by ArkUI on the native sid
 NODE_WIDTH = 0
 ```
 
-Width attribute, which can be (through [setAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setattribute)), reset (through [resetAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#resetattribute)), and obtained (through [getAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getattribute)) as required.<br>
+Width attribute, which can be set (through [setAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setattribute)), reset (through [resetAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#resetattribute)), and obtained (through [getAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getattribute)) as required.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
