@@ -106,7 +106,7 @@ ArkTS卡片提供卡片页面编辑能力，支持实现用户自定义卡片内
    ```
 
    - 半模态二级编辑页Ability的实现。
-   <!-- @[FormEditDemo_FormEditSecPageAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/entryformeditability/FormEditSecPageAbility.ets) --> 
+   <!-- @[FormEditDemo_FormEditSecPageAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/entryformeditability/FormEditSecPageAbility.ets) -->
    
    ``` TypeScript
    // entry/src/main/ets/entryformeditability/FormEditSecPageAbility.ets
