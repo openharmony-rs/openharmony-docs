@@ -134,7 +134,7 @@
       import { autoFillManager } from '@kit.AbilityKit';
 
       // 将需要回填的数据组装到viewData中，并通过callback的onSuccess带回到客户端用于自动填充
-      function successFunc(data: autoFillManager.ViewData, target: string, fillCallback?: autoFillManager.FillRequestCallback) {
+      function SuccessFunc(data: autoFillManager.ViewData, target: string, fillCallback?: autoFillManager.FillRequestCallback) {
         console.info(`data.pageNodeInfos.length`, data.pageNodeInfos.length);
         for (let i = 0; i < data.pageNodeInfos.length; i++) {
           console.info(`data.pageNodeInfos[i].isFocus`, data.pageNodeInfos[i].isFocus);
@@ -187,7 +187,7 @@
               Column() {
                 List({ space: 10, initialIndex: 0 }) {
                   ListItem() {
-                    Text('15501212262')
+                    Text('155xxxxxxxx')
                       .width('100%')
                       .height(40)
                       .fontSize(16)
@@ -197,7 +197,7 @@
                   .onClick(() => {
                     if (this.viewData != undefined) {
                       // 将选择的账号信息回填到客户端
-                      successFunc(this.viewData, '15501212262', this.fillCallback);
+                      SuccessFunc(this.viewData, '155xxxxxxxx', this.fillCallback);
                     }
                   })
                 }
