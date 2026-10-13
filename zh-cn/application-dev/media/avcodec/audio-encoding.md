@@ -155,9 +155,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    }
    ```
 
-   > **说明：**
-   >
-   > OnNeedInputBuffer()中的UpdateEncoderFirstInputDescription()为视频编码首帧的信息获取逻辑（内部调用OH_VideoEncoder_GetInputDescription()），音频编码场景不会生效，可忽略。
+   OnNeedInputBuffer()中的UpdateEncoderFirstInputDescription()为视频编码首帧的信息获取逻辑（内部调用OH_VideoEncoder_GetInputDescription()），音频编码场景不会生效，可忽略。
 
    <!-- @[SampleCallback::OnNewOutputBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/common/sample_callback.cpp) -->
    

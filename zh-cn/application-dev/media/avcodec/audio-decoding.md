@@ -170,10 +170,8 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
            codecUserData->widthStride, codecUserData->heightStride, pixelFormat);
    }
    ```
-
-   > **说明：**
-   >
-   > 示例函数同时服务于音视频编解码，其中UpdateVideoOutputInfo()为视频宽高、像素格式等信息的更新逻辑；OnNeedInputBuffer()中的UpdateEncoderFirstInputDescription()为视频编码首帧的信息获取逻辑（内部调用OH_VideoEncoder_GetInputDescription()）。音频解码场景均不会生效，可忽略。
+   
+   示例函数同时服务于音视频编解码，其中UpdateVideoOutputInfo()为视频宽高、像素格式等信息的更新逻辑；OnNeedInputBuffer()中的UpdateEncoderFirstInputDescription()为视频编码首帧的信息获取逻辑（内部调用OH_VideoEncoder_GetInputDescription()）。音频解码场景均不会生效，可忽略。
 
    <!-- @[SampleCallback::OnNeedInputBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/common/sample_callback.cpp) -->
    
