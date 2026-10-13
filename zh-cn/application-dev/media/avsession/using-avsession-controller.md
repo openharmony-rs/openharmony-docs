@@ -122,6 +122,7 @@
    }
    ```
 
+
 4. 监听媒体会话提供方的媒体信息变化及会话其他事件，从而应用可以根据回调及时刷新播放的曲目及播放状态。
 
    <!-- @[listenControllerInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionController/entry/src/main/ets/feature/MediaController.ets) --> 
@@ -248,8 +249,8 @@
 
 7. 媒体会话退出时，媒体会话控制方应及时取消监听，并释放资源。
 
-   <!-- @[listenAVSessionDestroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionController/entry/src/main/ets/feature/MediaController.ets) -->
-
+   <!-- @[listenAVSessionDestroy](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionController/entry/src/main/ets/feature/MediaController.ets) --> 
+   
    ``` TypeScript
    async listenAVSessionDestroy(): Promise<void> {
      try {
