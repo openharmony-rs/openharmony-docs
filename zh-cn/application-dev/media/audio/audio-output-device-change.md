@@ -57,7 +57,7 @@
 
   ArkTS-Dyn示例：
 
-  <!-- @[onOutputDeviceChangeWithInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceChange.ets) -->
+  <!-- @[onOutputDeviceChangeWithInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceChange.ets) -->  
   
   ``` TypeScript
   import { audio } from '@kit.AudioKit';
@@ -124,7 +124,7 @@
 
 ArkTS-Sta示例：
 
-<!-- @[onOutputDeviceChangeWithInfo](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRoutingAndVolumeManagerSample-Sta/entry/src/main/ets/pages/AudioOutputDeviceChange.ets) -->  
+<!-- @[onOutputDeviceChangeWithInfo](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRoutingAndVolumeManagerSample-Sta/entry/src/main/ets/pages/AudioOutputDeviceChange.ets) -->    
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
@@ -183,7 +183,7 @@ let audioRendererOptions: audio.AudioRendererOptions = {
 
   ArkTS-Dyn示例：
 
-  <!-- @[onCurrentOutputDeviceChanged](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceChange.ets) -->
+  <!-- @[onCurrentOutputDeviceChanged](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingAndVolumeSample/entry/src/main/ets/pages/AudioOutputDeviceChange.ets) -->    
   
   ``` TypeScript
   import { audio } from '@kit.AudioKit';
@@ -269,7 +269,7 @@ let audioRendererOptions: audio.AudioRendererOptions = {
 
   ArkTS-Sta示例：
 
-  <!-- @[onCurrentOutputDeviceChanged](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRoutingAndVolumeManagerSample-Sta/entry/src/main/ets/pages/AudioOutputDeviceChange.ets) -->  
+  <!-- @[onCurrentOutputDeviceChanged](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioRoutingAndVolumeManagerSample-Sta/entry/src/main/ets/pages/AudioOutputDeviceChange.ets) -->    
   
   ``` TypeScript
   import { audio } from '@kit.AudioKit';
