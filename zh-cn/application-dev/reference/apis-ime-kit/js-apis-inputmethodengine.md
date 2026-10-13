@@ -50,7 +50,7 @@ keyboardDelegate.on('selectionChange', (oldBegin, oldEnd, newBegin, newEnd) => {
 });
 
 // 3. 订阅输入法绑定事件，获取KeyboardController和InputClient
-inputMethodAbility.on('inputStart', (kbController, inputClient) => {
+inputMethodAbility.on('inputStart', (keyboardController, inputClient) => {
 
   // 4. 创建输入法面板
   let panelInfo = { type: inputMethodEngine.PanelType.SOFT_KEYBOARD, flag: inputMethodEngine.PanelFlag.FLG_FIXED };
@@ -68,7 +68,7 @@ inputMethodAbility.on('inputStart', (kbController, inputClient) => {
   inputClient.moveCursor(inputMethodEngine.CURSOR_RIGHT);
 
   // 8. 通过KeyboardController隐藏键盘
-  kbController.hide();
+  keyboardController.hide();
 });
 
 // 9. 订阅输入法解绑事件
@@ -294,7 +294,7 @@ type SizeChangeCallback = (size: window.Size, keyboardArea?: KeyboardArea) => vo
 
 ### IMAInputStartCallback<sup>23+</sup>
 
-type IMAInputStartCallback = (kbController: KeyboardController, inputClient: InputClient) => void
+type IMAInputStartCallback = (keyboardController: KeyboardController, inputClient: InputClient) => void
 
 输入法绑定成功事件的回调函数类型，用于定义inputStart事件触发时执行的回调函数格式。
 
@@ -310,7 +310,7 @@ type IMAInputStartCallback = (kbController: KeyboardController, inputClient: Inp
 
 | 参数名       | 类型                                                 | 必填 | 说明                             |
 | ------------ | ---------------------------------------------------- | ---- | -------------------------------- |
-| kbController     | [KeyboardController](#keyboardcontroller) | 是   | 回调函数，返回输入法操作相关实例。                 |
+| keyboardController     | [KeyboardController](#keyboardcontroller) | 是   | 回调函数，返回输入法操作相关实例。                 |
 | inputClient  | [InputClient](#inputclient9) | 是   | 输入法操作相关实例。 |
 
 ### KeyEventCallback<sup>23+</sup>
@@ -431,7 +431,7 @@ type OnMessageCallback = (msgId: string, msgParam?: ArrayBuffer) => void
 
 ### on('inputStart')<sup>(deprecated)</sup>
 
-on(type: 'inputStart', callback: (kbController: KeyboardController, textInputClient: TextInputClient) => void): void
+on(type: 'inputStart', callback: (keyboardController: KeyboardController, textInputClient: TextInputClient) => void): void
 
 订阅输入法绑定成功事件。使用callback异步回调。
 
@@ -448,7 +448,7 @@ on(type: 'inputStart', callback: (kbController: KeyboardController, textInputCli
 | 参数名   | 类型                            | 必填 | 说明                                                         |
 | -------- | ------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                        | 是   | 设置监听类型，固定取值为'inputStart'。 |
-| callback | (kbController: [KeyboardController](#keyboardcontroller), textInputClient: [TextInputClient](#textinputclientdeprecated)) => void | 是 | 回调函数，返回订阅输入法的KeyboardController和TextInputClient实例。 |
+| callback | (keyboardController: [KeyboardController](#keyboardcontroller), textInputClient: [TextInputClient](#textinputclientdeprecated)) => void | 是 | 回调函数，返回订阅输入法的KeyboardController和TextInputClient实例。 |
 
 **示例：**
 
@@ -456,13 +456,13 @@ on(type: 'inputStart', callback: (kbController: KeyboardController, textInputCli
 inputMethodEngine.getInputMethodEngine()
   .on('inputStart',
     (keyboardController: inputMethodEngine.KeyboardController, textInputClient: inputMethodEngine.TextInputClient) => {
-      // 使用kbController和textClient进行相关操作
+      // 使用keyboardController和textClient进行相关操作
     });
 ```
 
 ### off('inputStart')<sup>(deprecated)</sup>
 
-off(type: 'inputStart', callback?: (kbController: KeyboardController, textInputClient: TextInputClient) => void): void
+off(type: 'inputStart', callback?: (keyboardController: KeyboardController, textInputClient: TextInputClient) => void): void
 
 取消订阅输入法绑定成功事件。
 
@@ -479,14 +479,14 @@ off(type: 'inputStart', callback?: (kbController: KeyboardController, textInputC
 | 参数名   | 类型                 | 必填 | 说明                     |
 | -------- | -------------------- | ---- | ------------------------ |
 | type | string                                                       | 是   | 设置监听类型，固定取值为'inputStart'。 |
-| callback | (kbController: [KeyboardController](#keyboardcontroller), textInputClient: [TextInputClient](#textinputclientdeprecated)) => void | 否 | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。|
+| callback | (keyboardController: [KeyboardController](#keyboardcontroller), textInputClient: [TextInputClient](#textinputclientdeprecated)) => void | 否 | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。|
 
 **示例：**
 
 ```ts
 inputMethodEngine.getInputMethodEngine()
   .off('inputStart',
-    (kbController: inputMethodEngine.KeyboardController, textClient: inputMethodEngine.TextInputClient) => {
+    (keyboardController: inputMethodEngine.KeyboardController, textClient: inputMethodEngine.TextInputClient) => {
       console.info('delete inputStart notification.');
     });
 ```
@@ -575,7 +575,7 @@ InputMethodAbility是输入法应用的核心能力对象，提供输入法生�
 
 ### on('inputStart')<sup>9+</sup>
 
-on(type: 'inputStart', callback: (kbController: KeyboardController, inputClient: InputClient) => void): void
+on(type: 'inputStart', callback: (keyboardController: KeyboardController, inputClient: InputClient) => void): void
 
 订阅输入法绑定成功事件。使用callback异步回调。
 
@@ -592,7 +592,7 @@ on(type: 'inputStart', callback: (kbController: KeyboardController, inputClient:
 | 参数名   | 类型                            | 必填 | 说明                                                         |
 | -------- | ------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                        | 是   | 设置监听类型，固定取值为'inputStart'。 |
-| callback | (kbController: [KeyboardController](#keyboardcontroller), inputClient: [InputClient](#inputclient9)) => void | 是 | 回调函数，返回输入法操作相关实例。 |
+| callback | (keyboardController: [KeyboardController](#keyboardcontroller), inputClient: [InputClient](#inputclient9)) => void | 是 | 回调函数，返回输入法操作相关实例。 |
 
 **示例：**
 
@@ -600,13 +600,13 @@ on(type: 'inputStart', callback: (kbController: KeyboardController, inputClient:
 inputMethodEngine.getInputMethodAbility()
   .on('inputStart',
     (keyboardController: inputMethodEngine.KeyboardController, inputClient: inputMethodEngine.InputClient) => {
-      // 使用kbController和client进行相关操作
+      // 使用keyboardController和client进行相关操作
     });
 ```
 
 ### off('inputStart')<sup>9+</sup>
 
-off(type: 'inputStart', callback?: (kbController: KeyboardController, inputClient: InputClient) => void): void
+off(type: 'inputStart', callback?: (keyboardController: KeyboardController, inputClient: InputClient) => void): void
 
 取消订阅输入法绑定成功事件。使用callback异步回调。
 
@@ -623,7 +623,7 @@ off(type: 'inputStart', callback?: (kbController: KeyboardController, inputClien
 | 参数名   | 类型                 | 必填 | 说明                     |
 | -------- | -------------------- | ---- | ------------------------ |
 | type | string                                                       | 是   | 设置监听类型，固定取值为'inputStart'。 |
-| callback | (kbController: [KeyboardController](#keyboardcontroller), inputClient: [InputClient](#inputclient9)) => void | 否 | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。|
+| callback | (keyboardController: [KeyboardController](#keyboardcontroller), inputClient: [InputClient](#inputclient9)) => void | 否 | 取消订阅的回调函数。参数不填写时，取消订阅type对应的所有回调事件。|
 
 **示例：**
 
@@ -1427,8 +1427,8 @@ onInputStart(callback: IMAInputStartCallback): void
 let inputMethodAbility = inputMethodEngine.getInputMethodAbility();
 
 inputMethodAbility!
-.onInputStart((kbController: inputMethodEngine.KeyboardController, client: inputMethodEngine.InputClient) => {
-  let keyboardController = kbController;
+.onInputStart((keyboardController: inputMethodEngine.KeyboardController, client: inputMethodEngine.InputClient) => {
+  let keyboardController = keyboardController;
   let inputClient = client;
 });
 
@@ -1460,7 +1460,7 @@ offInputStart(callback?: IMAInputStartCallback): void
 let inputMethodAbility = inputMethodEngine.getInputMethodAbility();
 
 inputMethodAbility!
-  .offInputStart((kbController: inputMethodEngine.KeyboardController, textClient: inputMethodEngine.InputClient) => {
+  .offInputStart((keyboardController: inputMethodEngine.KeyboardController, textClient: inputMethodEngine.InputClient) => {
   console.info('delete inputStart notification.');
 });
 ```
@@ -7173,7 +7173,7 @@ sendPrivateCommand(commandData: Record&lt;string, CommandDataType&gt;): Promise&
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-inputMethodEngine.getInputMethodAbility().on('inputStart', (kbController, textInputClient) => {
+inputMethodEngine.getInputMethodAbility().on('inputStart', (keyboardController, textInputClient) => {
   let record: Record<string, inputMethodEngine.CommandDataType> = {
     "valueString1": "abcdefg",
     "valueString2": true,
@@ -7499,7 +7499,7 @@ recvMessage(msgHandler?: MessageHandler): void;
 ```ts
 inputMethodEngine.getInputMethodAbility()
   .on('inputStart',
-    (kbController: inputMethodEngine.KeyboardController, client: inputMethodEngine.InputClient) => {
+    (keyboardController: inputMethodEngine.KeyboardController, client: inputMethodEngine.InputClient) => {
       // 创建消息处理器，用于接收编辑框应用发送的自定义通信数据
       let messageHandler: inputMethodEngine.MessageHandler = {
         onTerminated(): void {
@@ -7666,8 +7666,8 @@ let attachOptionsDidChangeCallback = (attachOptions: inputMethodEngine.AttachOpt
 };
 
 inputMethodEngine.getInputMethodAbility()
-  .onInputStart((kbController: inputMethodEngine.KeyboardController, client: inputMethodEngine.InputClient) => {
-  let keyboardController = kbController;
+  .onInputStart((keyboardController: inputMethodEngine.KeyboardController, client: inputMethodEngine.InputClient) => {
+  let keyboardController = keyboardController;
   let inputClient = client;
   inputClient.onAttachOptionsDidChange(attachOptionsDidChangeCallback);
   console.info(`attachOptionsDidChangeCallback subscribed to attachOptionsDidChange`);
@@ -7704,8 +7704,8 @@ let attachOptionsDidChangeCallback = (attachOptions: inputMethodEngine.AttachOpt
 };
 
 inputMethodEngine.getInputMethodAbility()
-  .onInputStart((kbController: inputMethodEngine.KeyboardController, client: inputMethodEngine.InputClient) => {
-  let keyboardController = kbController;
+  .onInputStart((keyboardController: inputMethodEngine.KeyboardController, client: inputMethodEngine.InputClient) => {
+  let keyboardController = keyboardController;
   let inputClient = client;
   inputClient.onAttachOptionsDidChange(attachOptionsDidChangeCallback);
   console.info(`attachOptionsDidChangeCallback subscribed to attachOptionsDidChange`);
@@ -8140,7 +8140,7 @@ getString(): string
 ArkTS-Dyn示例：
 
 ```ts
-inputMethodEngine.getInputMethodAbility()
+inputMethodEngine.getInputMethodAbility()!
   .on('inputStart',
     (keyboardController: inputMethodEngine.KeyboardController, inputClient: inputMethodEngine.InputClient) => {
       let length: number = 5;
@@ -8154,7 +8154,7 @@ ArkTS-Sta示例：
 
 ```ts
 inputMethodEngine.getInputMethodAbility()!.onInputStart(
-  (kbController: inputMethodEngine.KeyboardController, inputClient: inputMethodEngine.InputClient) => {
+  (keyboardController: inputMethodEngine.KeyboardController, inputClient: inputMethodEngine.InputClient) => {
     let length: int = 5;
     let richText: inputMethodEngine.InputMethodRichText = inputClient!.getLeftRichTextSync(length);
     let plainText: string = richText.getString();
@@ -8187,7 +8187,7 @@ getSpans(): Array&lt;[RichTextSpan](#richtextspan)&gt;
 ArkTS-Dyn示例：
 
 ```ts
-inputMethodEngine.getInputMethodAbility()
+inputMethodEngine.getInputMethodAbility()!
   .on('inputStart',
     (keyboardController: inputMethodEngine.KeyboardController, inputClient: inputMethodEngine.InputClient) => {
       let length: number = 5;
@@ -8207,7 +8207,7 @@ ArkTS-Sta示例：
 
 ```ts
 inputMethodEngine.getInputMethodAbility()!.onInputStart(
-  (kbController: inputMethodEngine.KeyboardController, inputClient: inputMethodEngine.InputClient) => {
+  (keyboardController: inputMethodEngine.KeyboardController, inputClient: inputMethodEngine.InputClient) => {
     let length: int = 5;
     let richText: inputMethodEngine.InputMethodRichText = inputClient!.getLeftRichTextSync(length);
     let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
@@ -8258,7 +8258,7 @@ getType(): [SpanType](#spantype)
 ArkTS-Dyn示例：
 
 ```ts
-inputMethodEngine.getInputMethodAbility()
+inputMethodEngine.getInputMethodAbility()!
   .on('inputStart',
     (keyboardController: inputMethodEngine.KeyboardController, inputClient: inputMethodEngine.InputClient) => {
       let length: number = 5;
@@ -8275,7 +8275,7 @@ ArkTS-Sta示例：
 
 ```ts
 inputMethodEngine.getInputMethodAbility()!.onInputStart(
-  (kbController: inputMethodEngine.KeyboardController, inputClient: inputMethodEngine.InputClient) => {
+  (keyboardController: inputMethodEngine.KeyboardController, inputClient: inputMethodEngine.InputClient) => {
     let length: int = 5;
     let richText: inputMethodEngine.InputMethodRichText = inputClient!.getLeftRichTextSync(length);
     let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
@@ -8315,7 +8315,7 @@ getContent(): string
 ArkTS-Dyn示例：
 
 ```ts
-inputMethodEngine.getInputMethodAbility()
+inputMethodEngine.getInputMethodAbility()!
   .on('inputStart',
     (keyboardController: inputMethodEngine.KeyboardController, inputClient: inputMethodEngine.InputClient) => {
       let length: number = 5;
@@ -8332,7 +8332,7 @@ ArkTS-Sta示例：
 
 ```ts
 inputMethodEngine.getInputMethodAbility()!.onInputStart(
-  (kbController: inputMethodEngine.KeyboardController, inputClient: inputMethodEngine.InputClient) => {
+  (keyboardController: inputMethodEngine.KeyboardController, inputClient: inputMethodEngine.InputClient) => {
     let length: int = 5;
     let richText: inputMethodEngine.InputMethodRichText = inputClient!.getLeftRichTextSync(length);
     let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
@@ -8368,7 +8368,7 @@ getRange(): [Range](#range10)
 ArkTS-Dyn示例：
 
 ```ts
-inputMethodEngine.getInputMethodAbility()
+inputMethodEngine.getInputMethodAbility()!
   .on('inputStart',
     (keyboardController: inputMethodEngine.KeyboardController, inputClient: inputMethodEngine.InputClient) => {
       let length: number = 5;
@@ -8385,7 +8385,7 @@ ArkTS-Sta示例：
 
 ```ts
 inputMethodEngine.getInputMethodAbility()!.onInputStart(
-  (kbController: inputMethodEngine.KeyboardController, inputClient: inputMethodEngine.InputClient) => {
+  (keyboardController: inputMethodEngine.KeyboardController, inputClient: inputMethodEngine.InputClient) => {
     let length: int = 5;
     let richText: inputMethodEngine.InputMethodRichText = inputClient!.getLeftRichTextSync(length);
     let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
