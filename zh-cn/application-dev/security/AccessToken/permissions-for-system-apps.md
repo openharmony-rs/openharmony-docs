@@ -9506,6 +9506,20 @@
 
 **起始版本**：26.0.1
 
+## ohos.permission.AUDIO_USER_MICROPHONE_INDICATOR
+ 
+允许应用指定音频的实际使用主体，按照指定的主体点亮隐私指示器。
+ 
+**权限级别**：system_core
+ 
+**授权方式**：系统授权（system_grant）
+ 
+**是否支持证书授权**：true
+ 
+**支持设备**：Phone | PC/2in1 | Tablet | TV | Wearable | Car
+ 
+**起始版本**：26.2.0
+
 ## ohos.permission.ALLOW_INSTALL_DEBUG_HAP
 
 允许应用安装其他debug类型的应用。

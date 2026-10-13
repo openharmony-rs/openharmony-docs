@@ -9479,6 +9479,20 @@ Allows an application to get information related to instrument cluster personali
 
 **Valid since**: 26.0.1
 
+## ohos.permission.AUDIO_USER_MICROPHONE_INDICATOR
+
+Allows an application to specify the actual entity using the audio and activate the privacy indicator accordingly.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Certificate-based authorization**: true
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
+
+**Valid since**: 26.2.0
+
 ## ohos.permission.ALLOW_INSTALL_DEBUG_HAP
 
 Allows an application to install other applications of the debug type.
