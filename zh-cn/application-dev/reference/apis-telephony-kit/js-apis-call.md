@@ -426,9 +426,8 @@ makeDirectCall\(phoneNumber: string\): Promise\<void\>
 ```ts
 import { call } from '@kit.TelephonyKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-// 从API15开始支持tel格式电话号码，如："tel:13xxxx"
 call.makeDirectCall("138xxxxxxxx").then(() => {
-    console.info(`makeCallWithToken success`);
+    console.info(`makeDirectCall success`);
 }).catch((err: BusinessError) => {
     console.error(`makeDirectCall fail, promise: err->Code${err.code}, message:${err.message}`);
 });
