@@ -7361,29 +7361,29 @@
 						"start_line":38
 					},
 					{
-						"end_line":74,
+						"end_line":75,
 						"name":"requestSerialRight",
 						"start_line":53
 					},
 					{
-						"end_line":88,
+						"end_line":90,
 						"name":"openSerialDevice",
-						"start_line":78
+						"start_line":79
 					},
 					{
-						"end_line":119,
+						"end_line":123,
 						"name":"serialRead",
-						"start_line":92
+						"start_line":94
 					},
 					{
-						"end_line":150,
+						"end_line":156,
 						"name":"serialWrite",
-						"start_line":123
+						"start_line":127
 					},
 					{
-						"end_line":195,
+						"end_line":209,
 						"name":"closeSerialDevice",
-						"start_line":185
+						"start_line":198
 					}
 				]
 			}
@@ -7406,24 +7406,24 @@
 						"start_line":38
 					},
 					{
-						"end_line":74,
+						"end_line":75,
 						"name":"requestSerialRight",
 						"start_line":53
 					},
 					{
-						"end_line":88,
+						"end_line":90,
 						"name":"openSerialDevice",
-						"start_line":78
+						"start_line":79
 					},
 					{
-						"end_line":165,
+						"end_line":172,
 						"name":"getSerialConfig",
-						"start_line":154
+						"start_line":160
 					},
 					{
-						"end_line":186,
+						"end_line":194,
 						"name":"setSerialConfig",
-						"start_line":169
+						"start_line":176
 					}
 				]
 			}
@@ -20138,34 +20138,34 @@
 						"start_line":18
 					},
 					{
-						"end_line":113,
+						"end_line":114,
 						"name":"getDevices",
 						"start_line":44
 					},
 					{
-						"end_line":133,
+						"end_line":135,
 						"name":"requestRight",
-						"start_line":117
+						"start_line":118
 					},
 					{
-						"end_line":176,
+						"end_line":179,
 						"name":"connectDevice",
-						"start_line":137
+						"start_line":139
 					},
 					{
-						"end_line":220,
+						"end_line":230,
 						"name":"bulkTransfer",
-						"start_line":175
+						"start_line":183
 					},
 					{
-						"end_line":250,
+						"end_line":261,
 						"name":"controlTransfer",
-						"start_line":224
+						"start_line":234
 					},
 					{
-						"end_line":535,
+						"end_line":589,
 						"name":"closePipe",
-						"start_line":515
+						"start_line":568
 					}
 				]
 			}
@@ -20208,29 +20208,29 @@
 						"start_line":18
 					},
 					{
-						"end_line":113,
+						"end_line":114,
 						"name":"getDevices",
 						"start_line":44
 					},
 					{
-						"end_line":133,
+						"end_line":135,
 						"name":"requestRight",
-						"start_line":117
+						"start_line":118
 					},
 					{
-						"end_line":176,
+						"end_line":179,
 						"name":"connectDevice",
-						"start_line":137
+						"start_line":139
 					},
 					{
-						"end_line":220,
+						"end_line":230,
 						"name":"bulkTransfer",
-						"start_line":175
+						"start_line":183
 					},
 					{
-						"end_line":535,
+						"end_line":589,
 						"name":"closePipe",
-						"start_line":515
+						"start_line":568
 					}
 				]
 			}
@@ -20273,29 +20273,29 @@
 						"start_line":18
 					},
 					{
-						"end_line":113,
+						"end_line":114,
 						"name":"getDevices",
 						"start_line":44
 					},
 					{
-						"end_line":133,
+						"end_line":135,
 						"name":"requestRight",
-						"start_line":117
+						"start_line":118
 					},
 					{
-						"end_line":176,
+						"end_line":179,
 						"name":"connectDevice",
-						"start_line":137
+						"start_line":139
 					},
 					{
-						"end_line":250,
+						"end_line":261,
 						"name":"controlTransfer",
-						"start_line":224
+						"start_line":234
 					},
 					{
-						"end_line":535,
+						"end_line":589,
 						"name":"closePipe",
-						"start_line":515
+						"start_line":568
 					}
 				]
 			}
@@ -20333,24 +20333,24 @@
 						"start_line":18
 					},
 					{
-						"end_line":113,
+						"end_line":114,
 						"name":"getDevices",
 						"start_line":44
 					},
 					{
-						"end_line":133,
+						"end_line":135,
 						"name":"requestRight",
-						"start_line":117
+						"start_line":118
 					},
 					{
-						"end_line":176,
+						"end_line":179,
 						"name":"connectDevice",
-						"start_line":137
+						"start_line":139
 					},
 					{
-						"end_line":535,
+						"end_line":589,
 						"name":"closePipe",
-						"start_line":515
+						"start_line":568
 					}
 				]
 			}
@@ -20398,34 +20398,34 @@
 						"start_line":18
 					},
 					{
-						"end_line":113,
+						"end_line":114,
 						"name":"getDevices",
 						"start_line":44
 					},
 					{
-						"end_line":133,
+						"end_line":135,
 						"name":"requestRight",
-						"start_line":117
+						"start_line":118
 					},
 					{
-						"end_line":315,
+						"end_line":322,
 						"name":"interruptTransfer_getEndpoint",
-						"start_line":259
+						"start_line":265
 					},
 					{
-						"end_line":326,
+						"end_line":344,
 						"name":"interruptTransfer_claimInterface",
-						"start_line":306
+						"start_line":323
 					},
 					{
-						"end_line":370,
+						"end_line":379,
 						"name":"interruptTransfer_interruptTransfer",
-						"start_line":337
+						"start_line":345
 					},
 					{
-						"end_line":395,
+						"end_line":404,
 						"name":"interruptTransfer_release",
-						"start_line":371
+						"start_line":380
 					}
 				]
 			}
@@ -20473,34 +20473,34 @@
 						"start_line":18
 					},
 					{
-						"end_line":113,
+						"end_line":114,
 						"name":"getDevices",
 						"start_line":44
 					},
 					{
-						"end_line":133,
+						"end_line":135,
 						"name":"requestRight",
-						"start_line":117
+						"start_line":118
 					},
 					{
-						"end_line":455,
+						"end_line":466,
 						"name":"isochronousTransfer_getEndpoint",
-						"start_line":399
+						"start_line":408
 					},
 					{
-						"end_line":464,
+						"end_line":504,
 						"name":"isochronousTransfer_claimInterface",
-						"start_line":429
+						"start_line":467
 					},
 					{
-						"end_line":525,
+						"end_line":539,
 						"name":"isochronousTransfer_isochronousTransfer",
-						"start_line":492
+						"start_line":505
 					},
 					{
-						"end_line":550,
+						"end_line":564,
 						"name":"isochronousTransfer_release",
-						"start_line":526
+						"start_line":540
 					}
 				]
 			}
