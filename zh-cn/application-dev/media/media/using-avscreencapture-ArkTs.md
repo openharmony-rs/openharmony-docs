@@ -1,3 +1,16 @@
+---
+kit: Media Kit
+shortdes: 介绍使用AVScreenCaptureRecorder实现屏幕录制写文件
+keywords:
+  - AVScreenCaptureRecorder
+  - 屏幕录制
+  - ArkTS
+  - 录屏文件
+  - 隐私窗口
+doctype: guide
+status: active
+---
+
 # 使用AVScreenCaptureRecorder录屏写文件(ArkTS)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->

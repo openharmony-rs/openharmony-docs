@@ -1,3 +1,16 @@
+---
+kit: Media Kit
+shortdes: 介绍使用AVScreenCapture实现窗口级录屏
+keywords:
+  - AVScreenCapture
+  - 窗口录屏
+  - C/C++
+  - Picker
+  - 指定窗口
+doctype: guide
+status: active
+---
+
 # 使用AVScreenCapture实现窗口级录屏(C/C++)
 <!--Kit: Media Kit-->
 <!--Subsystem: Multimedia-->
