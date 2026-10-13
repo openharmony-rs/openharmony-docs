@@ -1643,11 +1643,11 @@ struct ListExample {
 
 ![scrollBarMargin_list](figures/scrollBarMargin_list.gif)
 
-### 示例 5（设置鼠标左键按下拖动滚动）
+### 示例5（设置鼠标左键按下拖动滚动）
 
 该示例通过设置[enableScrollWithMouse](#enablescrollwithmouse)属性，实现了鼠标左键按下拖动滚动的效果。属性初始值设置为undefined，表示使用默认效果。
 
-从API版本26.0.0开始，滚动组件新增enableScrollWithMouse属性，默认值为false；从API版本26.2.0开始，当可滚动组件水平滚动时，默认值为true，否则为false。
+从API版本26.0.0开始，滚动组件新增enableScrollWithMouse属性。
 
 ListDataSource说明及完整代码参考[示例1（添加滚动事件）](./ts-container-list.md#示例1添加滚动事件)。
 
