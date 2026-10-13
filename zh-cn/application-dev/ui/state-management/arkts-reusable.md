@@ -543,6 +543,85 @@ struct Index {
 
 \@Reusable装饰器不建议嵌套使用，会增加内存，降低复用效率，加大维护难度。嵌套使用会导致额外缓存池的生成，各缓存池拥有相同树状结构，复用效率低下。此外，嵌套使用会使生命周期管理复杂，资源和变量共享困难。
 
+## 主动清理复用池
+
+从API version 26.2.0开始，当开发者需要主动释放复用池中的组件时，可以通过[UIUtils.getCustomComponentContext](../../reference/apis-arkui/js-apis-stateManagement.md#getcustomcomponentcontext)获取当前组件的[CustomComponentContext](../../reference/apis-arkui/js-apis-stateManagement.md#customcomponentcontext)，调用CustomComponentContext的[getDefaultReusePool](../../reference/apis-arkui/js-apis-stateManagement.md#getdefaultreusepool)方法获取默认复用池[IDefaultReusePool](../../reference/apis-arkui/js-apis-stateManagement.md#idefaultreusepool)，并调用IDefaultReusePool的[clearCache](../../reference/apis-arkui/js-apis-stateManagement.md#clearcache)方法实现。
+
+> **说明：**
+>
+> 1. 指定reuseId时，仅清理该reuseId对应的可复用自定义组件；未指定时，清理复用池中的全部组件。
+> 2. 已从复用池中取出、正参与复用的组件不受影响。
+> 3. 传入不存在或空字符串的`reuseId`时，本次调用不产生效果。
+
+以下示例中，点击Recycle A按钮或Recycle B按钮可将自定义组件回收进默认复用池，点击Clear All按钮可释放默认复用池中的所有组件，点击Clear A按钮可释放默认复用池中reuseId为A的组件。
+
+<!-- @[defaultreusablepool_clearcache](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ReusableComponent/entry/src/main/ets/pages/DefaultReusePoolClearCache.ets) -->
+
+``` TypeScript
+import { UIUtils } from '@kit.ArkUI';
+
+@Reusable
+@Component
+struct ReusableChild {
+  @State label: string = '';
+  aboutToAppear() {
+    console.info(`ReusableChild [${this.label}] aboutToAppear`);
+  }
+  aboutToDisappear() {
+    console.info(`ReusableChild [${this.label}] aboutToDisappear`);
+  }
+  aboutToRecycle() {
+    console.info(`ReusableChild [${this.label}] aboutToRecycle`);
+  }
+  aboutToReuse() {
+    console.info(`ReusableChild [${this.label}] aboutToReuse`);
+  }
+
+  build() {
+    Text(`ReusableChild: ${this.label}`)
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State showA: boolean = true;
+  @State showB: boolean = true;
+
+  build() {
+    Column() {
+      if (this.showA) {
+        ReusableChild({ label: 'A' })
+          .reuseId('A')
+      }
+      if (this.showB) {
+        ReusableChild({ label: 'B' })
+          .reuseId('B')
+      }
+      Button('Recycle A')
+        .onClick(() => {
+          // 切换if分支，触发子组件回收
+          this.showA = false;
+        })
+      Button('Recycle B')
+        .onClick(() => {
+          // 切换if分支，触发子组件回收
+          this.showB = false;
+        })
+      Button('Clear All')
+        .onClick(() => {
+          // 清理默认复用池中的全部组件
+          UIUtils.getCustomComponentContext(this).getDefaultReusePool?.()?.clearCache();
+        })
+      Button('Clear A')
+        .onClick(() => {
+          // 仅清理reuseId为'A'的组件
+          UIUtils.getCustomComponentContext(this).getDefaultReusePool?.()?.clearCache('A');
+        })
+    }
+  }
+}
+```
 
 ## 使用场景
 
