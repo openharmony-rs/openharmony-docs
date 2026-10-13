@@ -6,6 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=e852a9793c23f1c08716ebd417cc0b132ef00a32 translatedAt=2026-10-12T08:40:28.808Z pushedAt=2026-10-13T06:55:17.709Z -->
 
 ## Overview
 
@@ -15,10 +16,7 @@ Defines enums, structs, macros, and error codes in HUKS.
 
 **Library**: libhuks_ndk.z.so
 
-**System capability:**
-
-- API version 20+: SystemCapability.Security.Huks.Core
-- API version 9-19: SystemCapability.Security.Huks
+**System capability**: SystemCapability.Security.Huks.Core
 
 **Since**: 9
 
@@ -296,7 +294,7 @@ Key material format for **OH_HUKS_UNWRAP_SUITE_SM2_SM4_ECB_NOPADDING**:
 | -- | -- |
 | OH_HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING = 1 | Key material in Length-Value format, using X25519 for key agreement and AES-256-GCM for encryption and decryption. For details about the material format, see the preceding description.|
 | OH_HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING = 2 | Key material in Length-Value format, using ECDH-p256 for key agreement and AES-256-GCM for encryption and decryption. For details about the material format, see the preceding description.|
-| OH_HUKS_UNWRAP_SUITE_SM2_SM4_ECB_NOPADDING = 5 | Key material in Length-Value format, using the temporary SM4 key to encrypt the imported key and using the SM2 key that has been imported to HUKS to encrypt the SM4 key. For details about the material format, see the preceding description.<br>**Since**: 23|
+| OH_HUKS_UNWRAP_SUITE_SM2_SM4_ECB_NOPADDING = 5 | Key material in Length-Value format, using the temporary SM4 key to encrypt the imported key and the SM2 key already imported into HUKS to encrypt the SM4 key. For details about the material format, see the preceding description.<br>**Since:** 23 |
 ### OH_Huks_KeyGenerateType
 
 ```c
@@ -656,7 +654,7 @@ Enumerates the tags contained in a parameter set.<br> 1 to 200: key parameter ta
 | OH_HUKS_TAG_AGREE_PRIVATE_KEY_ALIAS = OH_HUKS_TAG_TYPE_BYTES \| 21 | Alias of the private key used for key agreement.|
 | OH_HUKS_TAG_AGREE_PUBLIC_KEY = OH_HUKS_TAG_TYPE_BYTES \| 22 | Public key used for key agreement.|
 | OH_HUKS_TAG_KEY_ALIAS = OH_HUKS_TAG_TYPE_BYTES \| 23 | Key alias.|
-| OH_HUKS_TAG_DERIVE_KEY_SIZE = OH_HUKS_TAG_TYPE_UINT \| 24 | Size of the derived key, in bytes.|
+| OH_HUKS_TAG_DERIVE_KEY_SIZE = OH_HUKS_TAG_TYPE_UINT \| 24 | Size of the derived key, in bytes. |
 | OH_HUKS_TAG_IMPORT_KEY_TYPE = OH_HUKS_TAG_TYPE_UINT \| 25 | Type of the imported key. For details, see [OH_Huks_ImportKeyType](capi-native-huks-type-h.md#oh_huks_importkeytype).|
 | OH_HUKS_TAG_UNWRAP_ALGORITHM_SUITE = OH_HUKS_TAG_TYPE_UINT \| 26 | Suite of the imported encryption key. For details, see [OH_Huks_AlgSuite](capi-native-huks-type-h.md#oh_huks_algsuite).|
 | OH_HUKS_TAG_DERIVED_AGREED_KEY_STORAGE_FLAG = OH_HUKS_TAG_TYPE_UINT \| 29 | Storage type of the derived key or key produced after key agreement. For details, see [OH_Huks_KeyStorageType](capi-native-huks-type-h.md#oh_huks_keystoragetype).|
@@ -676,12 +674,13 @@ Enumerates the tags contained in a parameter set.<br> 1 to 200: key parameter ta
 | OH_HUKS_TAG_USER_AUTH_MODE = OH_HUKS_TAG_TYPE_UINT \| 319 | User authentication mode in key access control. For details, see [OH_Huks_UserAuthMode](capi-native-huks-type-h.md#oh_huks_userauthmode).<br>**Since**: 12|
 | OH_HUKS_TAG_ATTESTATION_CHALLENGE = OH_HUKS_TAG_TYPE_BYTES \| 501 | Challenge value used in the attestation.|
 | OH_HUKS_TAG_ATTESTATION_APPLICATION_ID = OH_HUKS_TAG_TYPE_BYTES \| 502 | ID of the application that has the key during key authentication.|
-| OH_HUKS_TAG_ATTESTATION_ID_ALIAS = OH_HUKS_TAG_TYPE_BYTES \| 511 | Alias used in key attestation.|
+| OH_HUKS_TAG_ATTESTATION_ID_ALIAS = OH_HUKS_TAG_TYPE_BYTES \| 511 | Alias used in key authentication.|
 | OH_HUKS_TAG_ATTESTATION_ID_SEC_LEVEL_INFO = OH_HUKS_TAG_TYPE_BYTES \| 514 | Security level used in key attestation.|
 | OH_HUKS_TAG_ATTESTATION_ID_VERSION_INFO = OH_HUKS_TAG_TYPE_BYTES \| 515 | Version information used in key attestation.|
 | OH_HUKS_TAG_KEY_OVERRIDE = OH_HUKS_TAG_TYPE_BOOL \| 520 | Whether to overwrite the key with the same name.<br>**Since**: 20|
-| OH_HUKS_TAG_AE_TAG_LEN = OH_HUKS_TAG_TYPE_UINT \| 521 | Length of the specified AEAD in CCM mode.<br>**Since**: 22|
+| OH_HUKS_TAG_AE_TAG_LEN = OH_HUKS_TAG_TYPE_UINT \| 521 | AEAD length specified in CCM mode, in bytes.<br>**Since:** 22 |
 | OH_HUKS_TAG_KEY_CLASS = OH_HUKS_TAG_TYPE_UINT \| 522 | Key type, which is used to distinguish the key managed by HUKS on the device from the key stored in an external device.<br>**Since**: 22|
+| OH_HUKS_TAG_TIMEOUT = OH_HUKS_TAG_TYPE_UINT \| 529 | Asynchronous timeout, in seconds, which can be customized by the service logic.<br>**Since:** 26.0.1 |
 | OH_HUKS_TAG_KEY_ACCESS_GROUP = OH_HUKS_TAG_TYPE_BYTES \| 523 | Group ID. Keys can be shared among the same group of developers with the same developer ID.<br>**Since**: 23|
 | OH_HUKS_TAG_IS_KEY_ALIAS = OH_HUKS_TAG_TYPE_BOOL \| 1001 | Whether it is a key alias.|
 | OH_HUKS_TAG_KEY_STORAGE_FLAG = OH_HUKS_TAG_TYPE_UINT \| 1002 | Key storage mode. For details, see [OH_Huks_KeyStorageType](capi-native-huks-type-h.md#oh_huks_keystoragetype).|
@@ -697,3 +696,5 @@ Enumerates the tags contained in a parameter set.<br> 1 to 200: key parameter ta
 | OH_HUKS_TAG_SYMMETRIC_KEY_DATA = OH_HUKS_TAG_TYPE_BYTES \| 20001 | Symmetric key data.|
 | OH_HUKS_TAG_ASYMMETRIC_PUBLIC_KEY_DATA = OH_HUKS_TAG_TYPE_BYTES \| 20002 | Public key data of the asymmetric key pair.|
 | OH_HUKS_TAG_ASYMMETRIC_PRIVATE_KEY_DATA = OH_HUKS_TAG_TYPE_BYTES \| 20003 | Private key data of the asymmetric key pair.|
+
+
