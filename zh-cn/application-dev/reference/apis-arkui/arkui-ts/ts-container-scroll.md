@@ -1217,7 +1217,7 @@ getFrameNode(): FrameNode | undefined
 
 ### getScrollState
 
-getScrollState(): [ScrollState](ts-container-list.md#scrollstate枚举说明)
+getScrollState(): ScrollState
 
 获取滚动组件的当前滚动状态。
 
