@@ -9481,7 +9481,7 @@ Allows an application to get information related to instrument cluster personali
 
 ## ohos.permission.AUDIO_USER_MICROPHONE_INDICATOR
 
-Allows an application to specify the actual entity that uses the audio and light up the privacy indicator based on the specified entity.
+Allows an application to specify the actual entity using the audio and activate the privacy indicator accordingly.
 
 **Permission level**: system_core
 
