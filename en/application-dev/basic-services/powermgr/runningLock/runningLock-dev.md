@@ -65,7 +65,7 @@ Use the **RunningLockType.BACKGROUND_USER_IDLE** running lock. The following is 
 
 2. Import the related modules.
 
-   <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/powermgr/runningLock/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/powermgr/RunningLock/entry/src/main/ets/pages/Index.ets) -->
 
    ``` TypeScript
    // Import the runningLock and commonEventManager modules.
@@ -76,7 +76,7 @@ Use the **RunningLockType.BACKGROUND_USER_IDLE** running lock. The following is 
 
 3. Develop the common event utility class and running lock utility class.
 
-   <!-- @[common_event_utility_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/powermgr/runningLock/entry/src/main/ets/pages/CommonEventHelper.ets) -->
+   <!-- @[common_event_utility_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/powermgr/RunningLock/entry/src/main/ets/pages/CommonEventHelper.ets) -->
 
    ``` TypeScript
    // CommonEventHelper.ets
@@ -132,7 +132,7 @@ Use the **RunningLockType.BACKGROUND_USER_IDLE** running lock. The following is 
    }
    ```
 
-   <!-- @[running_lock_utility_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/powermgr/runningLock/entry/src/main/ets/pages/RunningLockUtil.ets) -->
+   <!-- @[running_lock_utility_class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/powermgr/RunningLock/entry/src/main/ets/pages/RunningLockUtil.ets) -->
    
    ``` TypeScript
    // RunningLockUtil.ets
@@ -199,7 +199,7 @@ Use the **RunningLockType.BACKGROUND_USER_IDLE** running lock. The following is 
 
 4. Implement idle tasks of the background system required by services.
 
-   <!-- @[Implement_Background_Idle_Tasks](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/powermgr/runningLock/entry/src/main/ets/pages/UserIdleTask.ets) -->
+   <!-- @[Implement_Background_Idle_Tasks](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/powermgr/RunningLock/entry/src/main/ets/pages/UserIdleTask.ets) -->
 
    ``` TypeScript
    // UserIdleTask.ets
