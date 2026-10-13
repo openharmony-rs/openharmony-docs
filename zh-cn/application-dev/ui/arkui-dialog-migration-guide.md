@@ -1,4 +1,4 @@
-# 弹窗迁移指南（@ohos.arkui.dialog）
+# 弹出框迁移指南（@ohos.arkui.dialog）
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @houguobiao-->
@@ -8,48 +8,41 @@
 
 ## 概述
 
-本文档帮助开发者了解 `@ohos.arkui.dialog` 新接口与老接口（[CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller)、[showAlertDialog](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showalertdialog)、[showActionSheet](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showactionsheet)、[promptAction.showDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog)、[promptAction.showActionMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showactionmenu)、[promptAction.openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog)、[promptAction.openCustomDialogWithController](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18)、[promptAction.presentCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18)）的能力差异，并按弹窗类别提供从老接口到新接口的迁移映射。
+本文档帮助开发者了解[@ohos.arkui.dialog (弹出框)](../reference/apis-arkui/js-apis-dialog.md)新接口与老接口（[CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller)、[showAlertDialog](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showalertdialog)、[showActionSheet](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showactionsheet)、[promptAction.showDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog)、[promptAction.showActionMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showactionmenu)、[promptAction.openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog)、[promptAction.openCustomDialogWithController](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18)、[promptAction.presentCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18)）的能力差异，并按弹窗类别提供从老接口到新接口的迁移映射。
 
-> **适用版本：** 从API版本26.0.1开始，`@ohos.arkui.dialog` 提供 Unified Dialog API。版本状态以 [`@ohos.arkui.dialog.d.ts`](../reference/apis-arkui/js-apis-dialog.md) 实际 `@since` 标注为准。
+> 从API版本26.0.1开始，[@ohos.arkui.dialog (弹出框)](../reference/apis-arkui/js-apis-dialog.md)提供统一的Dialog类型声明能力。版本状态以 [`@ohos.arkui.dialog.d.ts`](../reference/apis-arkui/js-apis-dialog.md) 实际 `@since` 标注为准。
 
 ## 能力介绍
 
-`@ohos.arkui.dialog` 新接口在完全兼容老接口能力的基础上，新增支持返回错误码的能力。
+[@ohos.arkui.dialog (弹出框)](../reference/apis-arkui/js-apis-dialog.md)新接口在完全兼容老接口能力的基础上，新增支持返回错误码的能力。
 
-### 接口说明
-
-| 接口名 | 类型 | 说明 | 参考文档 |
-|--------|------|------|---------|
-| DialogTextStyleOptions | 选项类型 | 文本样式选项，控制弹窗消息内容的断行方式，作为 `DialogMessage` 的基类。 | [js-apis-dialog.md#dialogtextstyleoptions](../reference/apis-arkui/js-apis-dialog.md#dialogtextstyleoptions) |
-| DialogButton | 选项类型 | 弹窗按钮配置，用于 `DialogStyleOptions.buttons` 数组元素。 | [js-apis-dialog.md#dialogbutton](../reference/apis-arkui/js-apis-dialog.md#dialogbutton) |
-| DialogSheet | 选项类型 | Action-sheet 风格的菜单项，用于 `DialogStyleOptions.sheets` 数组元素。 | [js-apis-dialog.md#dialogsheet](../reference/apis-arkui/js-apis-dialog.md#dialogsheet) |
-| DialogBaseOptions | 选项类型 | 所有弹窗样式的基类选项，承载通用样式和行为配置，被 `DialogStyleOptions` 和 `DialogCustomOptions` 继承。 | [js-apis-dialog.md#dialogbaseoptions](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) |
-| DialogMessage | 选项类型 | 消息内容与文本样式，继承自 `DialogTextStyleOptions`，用于 `DialogStyleOptions.message`。 | [js-apis-dialog.md#dialogmessage](../reference/apis-arkui/js-apis-dialog.md#dialogmessage) |
-| DialogStyleOptions | 选项类型 | 固定样式弹窗选项，继承自 `DialogBaseOptions`，用于 `DialogPresenter.present(options)`。 | [js-apis-dialog.md#dialogstyleoptions](../reference/apis-arkui/js-apis-dialog.md#dialogstyleoptions) |
-| DialogCustomOptions | 选项类型 | 自定义样式弹窗选项，继承自 `DialogBaseOptions`，用于 `DialogPresenter.present(content, options)`。 | [js-apis-dialog.md#dialogcustomoptions](../reference/apis-arkui/js-apis-dialog.md#dialogcustomoptions) |
-| DialogBaseController | 控制器 | 弹窗控制器类，通过 `DialogBaseOptions.controller` 传入，提供 `close()` 和 `getState()` 方法。 | [js-apis-dialog.md#dialogbasecontroller](../reference/apis-arkui/js-apis-dialog.md#dialogbasecontroller) |
-| DialogResult | 结果 | 弹窗操作结果，`present()` 的 Promise 返回值，包含 `dialogId`。 | [js-apis-dialog.md#dialogresult](../reference/apis-arkui/js-apis-dialog.md#dialogresult) |
-| DialogDismissal | 结果 | 弹窗关闭信息，`onWillDismiss` 回调参数，包含 `dismiss` 和 `reason`。 | [js-apis-dialog.md#dialogdismissal](../reference/apis-arkui/js-apis-dialog.md#dialogdismissal) |
-| DialogBaseAlignment | 枚举 | 弹窗对齐方式枚举（TOP/CENTER/BOTTOM/DEFAULT 等 10 种）。 | [js-apis-dialog.md#dialogbasealignment](../reference/apis-arkui/js-apis-dialog.md#dialogbasealignment) |
-| DialogButtonOrientation | 枚举 | 按钮排列方向枚举（AUTO/HORIZONTAL/VERTICAL）。 | [js-apis-dialog.md#dialogbuttonorientation](../reference/apis-arkui/js-apis-dialog.md#dialogbuttonorientation) |
-| DialogState | 枚举 | 弹窗状态枚举（UNINITIALIZED~DISAPPEARED），通过 `DialogBaseController.getState()` 查询。 | [js-apis-dialog.md#dialogstate](../reference/apis-arkui/js-apis-dialog.md#dialogstate) |
-
-> **说明：** `DialogBaseOptions` 还包含系统接口属性 `distortionMode`（@systemapi）和 `edgeLightMode`（@systemapi），详见 [系统接口](../reference/apis-arkui/js-apis-dialog-sys.md)。
+| 接口名 | 说明 |
+|--------|------|
+| [DialogTextStyleOptions](../reference/apis-arkui/js-apis-dialog.md#dialogtextstyleoptions) | 文本样式选项，控制弹窗消息内容的断行方式，作为 `DialogMessage` 的基类。 |
+| [DialogButton](../reference/apis-arkui/js-apis-dialog.md#dialogbutton) | 弹窗按钮配置，用于 `DialogStyleOptions.buttons` 数组元素。 |
+| [DialogSheet](../reference/apis-arkui/js-apis-dialog.md#dialogsheet) | Action-sheet 风格的菜单项，用于 `DialogStyleOptions.sheets` 数组元素。 |
+| [DialogBaseOptions](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) | 所有弹窗样式的基类选项，承载通用样式和行为配置，被 `DialogStyleOptions` 和 `DialogCustomOptions` 继承。 |
+| [DialogMessage](../reference/apis-arkui/js-apis-dialog.md#dialogmessage) | 消息内容与文本样式，继承自 `DialogTextStyleOptions`，用于 `DialogStyleOptions.message`。 |
+| [DialogStyleOptions](../reference/apis-arkui/js-apis-dialog.md#dialogstyleoptions) | 固定样式弹窗选项，继承自 `DialogBaseOptions`，用于 `DialogPresenter.present(options)`。 |
+| [DialogCustomOptions](../reference/apis-arkui/js-apis-dialog.md#dialogcustomoptions) | 自定义样式弹窗选项，继承自 `DialogBaseOptions`，用于 `DialogPresenter.present(content, options)`。 |
+| [DialogBaseController](../reference/apis-arkui/js-apis-dialog.md#dialogbasecontroller) | 弹窗控制器类，通过 `DialogBaseOptions.controller` 传入，提供 `close()` 和 `getState()` 方法。 |
+| [DialogResult](../reference/apis-arkui/js-apis-dialog.md#dialogresult) | 弹窗操作结果，`present()` 的 Promise 返回值，包含 `dialogId`。 |
+| [DialogDismissal](../reference/apis-arkui/js-apis-dialog.md#dialogdismissal) | 弹窗关闭信息，`onWillDismiss` 回调参数，包含 `dismiss` 和 `reason`。 |
+| [DialogBaseAlignment](../reference/apis-arkui/js-apis-dialog.md#dialogbasealignment) | 弹窗对齐方式枚举（TOP/CENTER/BOTTOM/DEFAULT 等 10 种）。 |
+| [DialogButtonOrientation](../reference/apis-arkui/js-apis-dialog.md#dialogbuttonorientation) | 按钮排列方向枚举（AUTO/HORIZONTAL/VERTICAL）。 |
+| [DialogState](../reference/apis-arkui/js-apis-dialog.md#dialogstate) | 弹窗状态枚举（UNINITIALIZED~DISAPPEARED），通过 `DialogBaseController.getState()` 查询。 |
 
 ## 新老接口差异
 
 ### 差异总览
 
-新老接口在以下维度存在差异，按"属性差异"和"使用方式差异"两类分述（详见下方对应小节）：
-
-| 差异类型 | 对比维度 | 老接口 | 新接口（`@ohos.arkui.dialog`） |
-|---------|---------|---------|----------------------------|
-| 属性差异 | 高级动画 | `customStyle` + `openAnimation`/`closeAnimation`（`AnimateParam`） | `dialogTransition` + `maskTransition`（`TransitionEffect`） |
-| 使用方式差异 | 取消回调 | `cancel` / `onWillDismiss` | `onWillDismiss: Callback<DialogDismissal>` |
+新老接口在“属性”和“使用方式”两个维度存在一定差异，详见下方对应小节：
 
 ### 属性差异
 
 #### 1. CustomDialog（自定义弹窗）
+
+老接口使用CustomDialogController的open和close接口打开和关闭弹出框，新接口使用DialogPresenter的present和dismiss接口打开和关闭弹出框，具体示例见表格下方。
 
 | 属性 | 老接口（@CustomDialog + CustomDialogController） | 新接口（DialogPresenter.present + DialogCustomOptions） |
 |------|------|------|
@@ -58,7 +51,7 @@
 | 样式控制 | `customStyle: boolean`（CustomDialogControllerOptions） | `DialogCustomOptions.customStyle: boolean` |
 | 打开 | `controller.open()` | `presenter.present(content, options): Promise<DialogResult>` |
 | 关闭 | `controller.close()` | `DialogBaseController.close()` 或 `presenter.dismiss(target)` |
-| 状态查询 | `controller.getState(): PromptActionCommonState`（API 20+） | `DialogBaseController.getState(): DialogState` |
+| 状态查询 | `controller.getState(): PromptActionCommonState` | `DialogBaseController.getState(): DialogState` |
 | 对齐 | `alignment: DialogAlignment` | `alignment: DialogBaseAlignment` |
 | 偏移 | `offset: { dx, dy }` | `offset: Offset` |
 | 自动取消 | `autoCancel: boolean` | `autoCancel: boolean` |
@@ -66,18 +59,18 @@
 | 蒙层区域 | `maskRect: Rectangle` | `maskRect: Rectangle` |
 | 模态 | `isModal: boolean` | `isModal: boolean` |
 | 子窗口 | `showInSubWindow: boolean` | `showInSubWindow: boolean` |
-| 焦点 | `focusable: boolean`（可配置，默认 true，API 19+） | `focusable: boolean`（可配置，默认 true） |
-| 打开动画回调 | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear`（API 19+） | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` |
-| 取消回调 | `cancel: () => void` + `onWillDismiss: Callback<DismissDialogAction>`（API 12+） | `onWillDismiss: Callback<DialogDismissal>` |
-| 背景模糊 | `backgroundBlurStyle`（API 12+） + `backgroundBlurStyleOptions`（API 19+） + `backgroundEffect`（API 19+） | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` |
-| 边框 | `cornerRadius`（API 10+）/ `borderWidth`（API 12+）/ `borderColor`（API 12+）/ `borderStyle`（API 12+） | `borderRadius` / `borderWidth` / `borderColor` / `borderStyle`（`cornerRadius` 更名为 `borderRadius`，其余同名） |
-| 阴影 | `shadow: ShadowOptions \| ShadowStyle`（API 12+） | `shadow: ShadowOptions \| ShadowStyle` |
-| 内容区动画 | `openAnimation` + `closeAnimation`（`AnimateParam`，API 10+） | `dialogTransition: TransitionEffect` |
+| 焦点 | `focusable: boolean`（可配置，默认 true） | `focusable: boolean`（可配置，默认 true） |
+| 打开动画回调 | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` |
+| 取消回调 | `cancel: () => void` + `onWillDismiss: Callback<DismissDialogAction>` | `onWillDismiss: Callback<DialogDismissal>` |
+| 背景模糊 | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` |
+| 边框 | `cornerRadius` / `borderWidth` / `borderColor` / `borderStyle` | `borderRadius` / `borderWidth` / `borderColor` / `borderStyle`（`cornerRadius` 更名为 `borderRadius`，其余同名） |
+| 阴影 | `shadow: ShadowOptions \| ShadowStyle` | `shadow: ShadowOptions \| ShadowStyle` |
+| 内容区动画 | `openAnimation` + `closeAnimation`（`AnimateParam`） | `dialogTransition: TransitionEffect` |
 | 蒙层动画 | 无 | `maskTransition: TransitionEffect` |
-| 键盘避让 | `keyboardAvoidMode`（API 12+） + `keyboardAvoidDistance`（API 15+） | `keyboardAvoidMode` + `keyboardAvoidDistance` |
-| 悬浮模式 | `enableHoverMode`（API 14+） + `hoverModeArea`（API 14+） | `enableHoverMode` + `hoverModeArea` |
-| 层级模式 | `levelMode`（API 15+） + `levelUniqueId`（API 15+） + `immersiveMode`（API 15+） + `levelOrder`（API 18+） | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` |
-| 系统材质 | `systemMaterial: SystemUiMaterial`（API 26+） | `systemMaterial: SystemUiMaterial` |
+| 键盘避让 | `keyboardAvoidMode` + `keyboardAvoidDistance` | `keyboardAvoidMode` + `keyboardAvoidDistance` |
+| 悬浮模式 | `enableHoverMode` + `hoverModeArea` | `enableHoverMode` + `hoverModeArea` |
+| 层级模式 | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` |
+| 系统材质 | `systemMaterial: SystemUiMaterial` | `systemMaterial: SystemUiMaterial` |
 | 系统接口属性 | `distortionMode`（@systemapi）、`edgeLightMode`（@systemapi）——见 [系统接口](../reference/apis-arkui/ts-methods-custom-dialog-box-sys.md) | `distortionMode`（@systemapi）、`edgeLightMode`（@systemapi）——见 [系统接口](../reference/apis-arkui/js-apis-dialog-sys.md) |
 
 **迁移前示例（老接口）：**
@@ -222,38 +215,40 @@ struct CustomDialogMigrationPage {
 
 ![迁移后示例图](figures/CustomDialogAfterMigrate.png)
 
-#### 2. AlertDialog（确认弹窗）
+#### 2. AlertDialog（告警弹出框）
+
+老接口使用UIContext.showAlertDialog弹出告警框，新接口使用DialogPresenter.present弹出告警框，具体示例见表格下方。
 
 | 属性 | 老接口（AlertDialog.show） | 新接口（DialogPresenter.present + DialogStyleOptions） |
 |------|------|------|
 | 编程模型 | `AlertDialog.show(options)` 命令式调用 | `presenter.present(options): Promise<DialogResult>` |
 | 标题 | `title: ResourceStr` | `title: ResourceStr` |
-| 副标题 | `subtitle: ResourceStr`（API 10+） | `subtitle: ResourceStr` |
+| 副标题 | `subtitle: ResourceStr` | `subtitle: ResourceStr` |
 | 消息内容 | `message: ResourceStr` | `message: DialogMessage`（content + wordBreak） |
-| 文本样式 | `textStyle: TextStyle`（API 12+） | `message.wordBreak: WordBreak`（通过 DialogMessage 设置） |
-| 按钮 | `confirm`（单个）/ `primaryButton` + `secondaryButton`（两个）/ `buttons: Array<AlertDialogButtonOptions>`（多个，API 10+） | `buttons: Array<DialogButton>`（含 value/fontColor/backgroundColor/enabled/primary/style/action） |
-| 按钮排列 | `buttonDirection: DialogButtonDirection`（API 10+） | `buttonDirection: DialogButtonOrientation` |
+| 文本样式 | `textStyle: TextStyle` | `message.wordBreak: WordBreak`（通过 DialogMessage 设置） |
+| 按钮 | `confirm`（单个）/ `primaryButton` + `secondaryButton`（两个）/ `buttons: Array<AlertDialogButtonOptions>`（多个） | `buttons: Array<DialogButton>`（含 value/fontColor/backgroundColor/enabled/primary/style/action） |
+| 按钮排列 | `buttonDirection: DialogButtonDirection` | `buttonDirection: DialogButtonOrientation` |
 | 操作菜单 | 无 | `sheets: Array<DialogSheet>`（action-sheet 风格） |
 | 网格数 | `gridCount: number` | `gridCount: number` |
 | 确认回调 | `confirm` / `primaryButton.action` / `secondaryButton.action` / `buttons[].action` | `DialogButton.action`（通过 Promise 结果） |
-| 取消回调 | `cancel: VoidCallback` + `onWillDismiss: Callback<DismissDialogAction>`（API 12+） | `onWillDismiss: Callback<DialogDismissal>` |
+| 取消回调 | `cancel: VoidCallback` + `onWillDismiss: Callback<DismissDialogAction>` | `onWillDismiss: Callback<DialogDismissal>` |
 | 对齐 | `alignment: DialogAlignment` | `alignment: DialogBaseAlignment` |
 | 偏移 | `offset: Offset` | `offset: Offset` |
 | 自动取消 | `autoCancel: boolean` | `autoCancel: boolean` |
-| 蒙层区域 | `maskRect: Rectangle`（API 10+） | `maskRect: Rectangle` |
-| 模态 | `isModal: boolean`（API 11+） | `isModal: boolean` |
-| 子窗口 | `showInSubWindow: boolean`（API 11+） | `showInSubWindow: boolean` |
-| 背景色 | `backgroundColor`（API 11+） | `backgroundColor` |
-| 背景模糊 | `backgroundBlurStyle`（API 11+） + `backgroundBlurStyleOptions`（API 19+） + `backgroundEffect`（API 19+） | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` |
-| 边框 | `cornerRadius`（API 12+）/ `borderWidth`（API 12+）/ `borderColor`（API 12+）/ `borderStyle`（API 12+） | `borderRadius` / `borderWidth` / `borderColor` / `borderStyle`（`cornerRadius` 更名为 `borderRadius`） |
-| 阴影 | `shadow: ShadowOptions \| ShadowStyle`（API 12+） | `shadow: ShadowOptions \| ShadowStyle` |
-| 尺寸 | `width`（API 12+） / `height`（API 12+） | `width` / `height` |
-| 过渡动画 | `transition: TransitionEffect`（API 12+） | `dialogTransition: TransitionEffect` |
+| 蒙层区域 | `maskRect: Rectangle` | `maskRect: Rectangle` |
+| 模态 | `isModal: boolean` | `isModal: boolean` |
+| 子窗口 | `showInSubWindow: boolean` | `showInSubWindow: boolean` |
+| 背景色 | `backgroundColor` | `backgroundColor` |
+| 背景模糊 | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` |
+| 边框 | `cornerRadius` / `borderWidth` / `borderColor` / `borderStyle` | `borderRadius` / `borderWidth` / `borderColor` / `borderStyle`（`cornerRadius` 更名为 `borderRadius`） |
+| 阴影 | `shadow: ShadowOptions \| ShadowStyle` | `shadow: ShadowOptions \| ShadowStyle` |
+| 尺寸 | `width` / `height` | `width` / `height` |
+| 过渡动画 | `transition: TransitionEffect` | `dialogTransition: TransitionEffect` |
 | 蒙层动画 | 无 | `maskTransition: TransitionEffect` |
-| 打开动画回调 | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear`（API 19+） | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` |
-| 悬浮模式 | `enableHoverMode`（API 14+） + `hoverModeArea`（API 14+） | `enableHoverMode` + `hoverModeArea` |
-| 层级模式 | `levelMode`（API 15+） + `levelUniqueId`（API 15+） + `immersiveMode`（API 15+） + `levelOrder`（API 18+） | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` |
-| 系统材质 | `systemMaterial: SystemUiMaterial`（API 26+） | `systemMaterial: SystemUiMaterial` |
+| 打开动画回调 | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` |
+| 悬浮模式 | `enableHoverMode` + `hoverModeArea` | `enableHoverMode` + `hoverModeArea` |
+| 层级模式 | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` |
+| 系统材质 | `systemMaterial: SystemUiMaterial` | `systemMaterial: SystemUiMaterial` |
 
 **迁移前示例（老接口）：**
 
@@ -373,35 +368,37 @@ struct AlertDialogMigrationPage {
 
 #### 3. ActionSheet（列表选择弹窗）
 
+老接口使用UIContext.showActionSheet弹出列表选择弹出框，新接口使用DialogPresenter.present弹出列表选择弹出框，具体示例见表格下方。
+
 | 属性 | 老接口（ActionSheet.show） | 新接口（DialogPresenter.present + DialogStyleOptions） |
 |------|------|------|
 | 编程模型 | `ActionSheet.show(options)` 命令式调用 | `presenter.present(options): Promise<DialogResult>` |
 | 标题 | `title: string \| Resource` | `title: ResourceStr` |
-| 副标题 | `subtitle: ResourceStr`（API 10+） | `subtitle: ResourceStr` |
+| 副标题 | `subtitle: ResourceStr` | `subtitle: ResourceStr` |
 | 消息内容 | `message: string \| Resource` | `message: DialogMessage`（content + wordBreak） |
 | 按钮 | `confirm: ActionSheetButtonOptions`（单个确认按钮） | `buttons: Array<DialogButton>` |
 | 按钮排列 | 无 | `buttonDirection: DialogButtonOrientation` |
 | 操作菜单 | `sheets: Array<SheetInfo>`（title/icon/action） | `sheets: Array<DialogSheet>`（title/icon/action） |
 | 网格数 | 无 | `gridCount: number` |
 | 确认回调 | `confirm.action: VoidCallback` | `DialogButton.action` |
-| 取消回调 | `cancel: VoidCallback` + `onWillDismiss: Callback<DismissDialogAction>`（API 12+） | `onWillDismiss: Callback<DialogDismissal>` |
+| 取消回调 | `cancel: VoidCallback` + `onWillDismiss: Callback<DismissDialogAction>` | `onWillDismiss: Callback<DialogDismissal>` |
 | 对齐 | `alignment: DialogAlignment` | `alignment: DialogBaseAlignment` |
-| 偏移 | `offset: ActionSheetOffset`（API 18+，含 dx/dy） | `offset: Offset`（含 dx/dy） |
+| 偏移 | `offset: ActionSheetOffset`（含 dx/dy） | `offset: Offset`（含 dx/dy） |
 | 自动取消 | `autoCancel: boolean` | `autoCancel: boolean` |
-| 蒙层区域 | `maskRect: Rectangle`（API 10+） | `maskRect: Rectangle` |
-| 模态 | `isModal: boolean`（API 11+） | `isModal: boolean` |
-| 子窗口 | `showInSubWindow: boolean`（API 11+） | `showInSubWindow: boolean` |
-| 背景色 | `backgroundColor`（API 11+） | `backgroundColor` |
-| 背景模糊 | `backgroundBlurStyle`（API 11+） + `backgroundBlurStyleOptions`（API 19+） + `backgroundEffect`（API 19+） | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` |
-| 边框 | `cornerRadius`（API 12+）/ `borderWidth`（API 12+）/ `borderColor`（API 12+）/ `borderStyle`（API 12+） | `borderRadius` / `borderWidth` / `borderColor` / `borderStyle`（`cornerRadius` 更名为 `borderRadius`） |
-| 阴影 | `shadow: ShadowOptions \| ShadowStyle`（API 12+） | `shadow: ShadowOptions \| ShadowStyle` |
-| 尺寸 | `width`（API 12+） / `height`（API 12+） | `width` / `height` |
-| 过渡动画 | `transition: TransitionEffect`（API 12+） | `dialogTransition: TransitionEffect` |
+| 蒙层区域 | `maskRect: Rectangle` | `maskRect: Rectangle` |
+| 模态 | `isModal: boolean` | `isModal: boolean` |
+| 子窗口 | `showInSubWindow: boolean` | `showInSubWindow: boolean` |
+| 背景色 | `backgroundColor` | `backgroundColor` |
+| 背景模糊 | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` |
+| 边框 | `cornerRadius` / `borderWidth` / `borderColor` / `borderStyle` | `borderRadius` / `borderWidth` / `borderColor` / `borderStyle`（`cornerRadius` 更名为 `borderRadius`） |
+| 阴影 | `shadow: ShadowOptions \| ShadowStyle` | `shadow: ShadowOptions \| ShadowStyle` |
+| 尺寸 | `width` / `height` | `width` / `height` |
+| 过渡动画 | `transition: TransitionEffect` | `dialogTransition: TransitionEffect` |
 | 蒙层动画 | 无 | `maskTransition: TransitionEffect` |
-| 打开动画回调 | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear`（API 19+） | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` |
-| 悬浮模式 | `enableHoverMode`（API 14+） + `hoverModeArea`（API 14+） | `enableHoverMode` + `hoverModeArea` |
-| 层级模式 | `levelMode`（API 15+） + `levelUniqueId`（API 15+） + `immersiveMode`（API 15+） + `levelOrder`（API 18+） | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` |
-| 系统材质 | `systemMaterial: SystemUiMaterial`（API 26+） | `systemMaterial: SystemUiMaterial` |
+| 打开动画回调 | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` |
+| 悬浮模式 | `enableHoverMode` + `hoverModeArea` | `enableHoverMode` + `hoverModeArea` |
+| 层级模式 | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` |
+| 系统材质 | `systemMaterial: SystemUiMaterial` | `systemMaterial: SystemUiMaterial` |
 
 **迁移前示例（老接口）：**
 
@@ -513,6 +510,8 @@ struct ActionSheetMigrationPage {
 
 #### 4. promptAction.showDialog（对话框）
 
+老接口使用promptAction.showDialog弹出对话框，新接口使用DialogPresenter.present弹出对话框，具体示例见表格下方。
+
 | 属性 | 老接口（promptAction.showDialog） | 新接口（DialogPresenter.present + DialogStyleOptions） |
 |------|------|------|
 | 编程模型 | `promptAction.showDialog(options): Promise<ShowDialogSuccessResponse>` | `presenter.present(options): Promise<DialogResult>` |
@@ -525,24 +524,24 @@ struct ActionSheetMigrationPage {
 | 网格数 | 无 | `gridCount: number` |
 | 确认回调 | 通过 `ShowDialogSuccessResponse.index` 获取按钮索引 | `DialogButton.action` + Promise 结果 |
 | 取消回调 | 无 | `onWillDismiss: Callback<DialogDismissal>` |
-| 对齐 | `alignment: DialogAlignment`（API 10+） | `alignment: DialogBaseAlignment` |
-| 偏移 | `offset: Offset`（API 10+） | `offset: Offset` |
+| 对齐 | `alignment: DialogAlignment` | `alignment: DialogBaseAlignment` |
+| 偏移 | `offset: Offset` | `offset: Offset` |
 | 自动取消 | 无 | `autoCancel: boolean` |
 | 蒙层颜色 | 无 | `maskColor: ResourceColor` |
-| 蒙层区域 | `maskRect: Rectangle`（API 10+） | `maskRect: Rectangle` |
-| 模态 | `isModal: boolean`（API 11+） | `isModal: boolean` |
-| 子窗口 | `showInSubWindow: boolean`（API 11+） | `showInSubWindow: boolean` |
-| 背景色 | `backgroundColor`（API 12+） | `backgroundColor` |
-| 背景模糊 | `backgroundBlurStyle`（API 12+） + `backgroundBlurStyleOptions`（API 19+） + `backgroundEffect`（API 19+） | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` |
+| 蒙层区域 | `maskRect: Rectangle` | `maskRect: Rectangle` |
+| 模态 | `isModal: boolean` | `isModal: boolean` |
+| 子窗口 | `showInSubWindow: boolean` | `showInSubWindow: boolean` |
+| 背景色 | `backgroundColor` | `backgroundColor` |
+| 背景模糊 | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` |
 | 边框 | 无 | `borderRadius` / `borderWidth` / `borderColor` / `borderStyle` |
-| 阴影 | `shadow: ShadowOptions \| ShadowStyle`（API 12+） | `shadow: ShadowOptions \| ShadowStyle` |
+| 阴影 | `shadow: ShadowOptions \| ShadowStyle` | `shadow: ShadowOptions \| ShadowStyle` |
 | 尺寸 | 无 | `width` / `height` |
 | 过渡动画 | 无 | `dialogTransition: TransitionEffect` |
 | 蒙层动画 | 无 | `maskTransition: TransitionEffect` |
-| 打开动画回调 | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear`（API 19+） | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` |
-| 悬浮模式 | `enableHoverMode`（API 14+） + `hoverModeArea`（API 14+） | `enableHoverMode` + `hoverModeArea` |
-| 层级模式 | `levelMode`（API 15+） + `levelUniqueId`（API 15+） + `immersiveMode`（API 15+） + `levelOrder`（API 18+） | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` |
-| 系统材质 | `systemMaterial: SystemUiMaterial`（API 26+） | `systemMaterial: SystemUiMaterial` |
+| 打开动画回调 | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` |
+| 悬浮模式 | `enableHoverMode` + `hoverModeArea` | `enableHoverMode` + `hoverModeArea` |
+| 层级模式 | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` |
+| 系统材质 | `systemMaterial: SystemUiMaterial` | `systemMaterial: SystemUiMaterial` |
 
 **迁移前示例（老接口）：**
 
@@ -653,6 +652,8 @@ struct ShowDialogMigrationPage {
 
 #### 5. promptAction.showActionMenu（操作菜单）
 
+老接口使用promptAction.showActionMenu弹出操作菜单，新接口使用DialogPresenter.present弹出操作菜单，具体示例见表格下方。
+
 | 属性 | 老接口（promptAction.showActionMenu） | 新接口（DialogPresenter.present + DialogStyleOptions） |
 |------|------|------|
 | 编程模型 | `promptAction.showActionMenu(options): Promise<ActionMenuSuccessResponse>` | `presenter.present(options): Promise<DialogResult>` |
@@ -670,8 +671,8 @@ struct ShowDialogMigrationPage {
 | 自动取消 | 无 | `autoCancel: boolean` |
 | 蒙层颜色 | 无 | `maskColor: ResourceColor` |
 | 蒙层区域 | 无 | `maskRect: Rectangle` |
-| 模态 | `isModal: boolean`（API 11+） | `isModal: boolean` |
-| 子窗口 | `showInSubWindow: boolean`（API 11+） | `showInSubWindow: boolean` |
+| 模态 | `isModal: boolean` | `isModal: boolean` |
+| 子窗口 | `showInSubWindow: boolean` | `showInSubWindow: boolean` |
 | 背景色 | 无 | `backgroundColor` |
 | 背景模糊 | 无 | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` |
 | 边框 | 无 | `borderRadius` / `borderWidth` / `borderColor` / `borderStyle` |
@@ -679,10 +680,10 @@ struct ShowDialogMigrationPage {
 | 尺寸 | 无 | `width` / `height` |
 | 过渡动画 | 无 | `dialogTransition: TransitionEffect` |
 | 蒙层动画 | 无 | `maskTransition: TransitionEffect` |
-| 打开动画回调 | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear`（API 20+） | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` |
+| 打开动画回调 | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` |
 | 悬浮模式 | 无 | `enableHoverMode` + `hoverModeArea` |
-| 层级模式 | `levelMode`（API 15+） + `levelUniqueId`（API 15+） + `immersiveMode`（API 15+） | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` |
-| 系统材质 | `systemMaterial: SystemUiMaterial`（API 26+） | `systemMaterial: SystemUiMaterial` |
+| 层级模式 | `levelMode` + `levelUniqueId` + `immersiveMode` | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` |
+| 系统材质 | `systemMaterial: SystemUiMaterial` | `systemMaterial: SystemUiMaterial` |
 
 **迁移前示例（老接口）：**
 
@@ -793,34 +794,36 @@ struct ShowActionMenuMigrationPage {
 
 #### 6. promptAction.presentCustomDialog（自定义弹窗）
 
+老接口使用promptAction.presentCustomDialog弹出自定义弹窗，新接口使用DialogPresenter.present弹出自定义弹窗，具体示例见表格下方。
+
 | 属性 | 老接口（promptAction.presentCustomDialog） | 新接口（DialogPresenter.present + DialogCustomOptions） |
 |------|------|------|
 | 编程模型 | `promptAction.presentCustomDialog(builder, controller?, options?): Promise<number>` | `presenter.present(content, options?: DialogCustomOptions): Promise<DialogResult>` |
 | 内容构建 | `CustomBuilder` / `CustomBuilderWithId` | `CustomBuilder` / `CustomBuilderWithId` / `ComponentContent<Object>` |
-| 控制器 | `promptAction.DialogController`（API 18+） | `DialogBaseController` |
+| 控制器 | `promptAction.DialogController` | `DialogBaseController` |
 | 选项类型 | `DialogOptions`（继承 `BaseDialogOptions`） | `DialogCustomOptions`（继承 `DialogBaseOptions`） |
 | 样式控制 | 无 `customStyle` 属性（内容样式完全由 builder 决定） | `customStyle: boolean` |
 | 对齐 | `alignment: DialogAlignment` | `alignment: DialogBaseAlignment` |
 | 偏移 | `offset: Offset` | `offset: Offset` |
-| 自动取消 | `autoCancel: boolean`（API 12+） | `autoCancel: boolean` |
-| 蒙层颜色 | `maskColor: ResourceColor`（API 12+） | `maskColor: ResourceColor` |
+| 自动取消 | `autoCancel: boolean` | `autoCancel: boolean` |
+| 蒙层颜色 | `maskColor: ResourceColor` | `maskColor: ResourceColor` |
 | 蒙层区域 | `maskRect: Rectangle` | `maskRect: Rectangle` |
 | 模态 | `isModal: boolean` | `isModal: boolean` |
 | 子窗口 | `showInSubWindow: boolean` | `showInSubWindow: boolean` |
 | 背景色 | `backgroundColor`（`DialogOptions`） | `backgroundColor` |
-| 背景模糊 | `backgroundBlurStyle`（`DialogOptions`） + `backgroundBlurStyleOptions`（API 19+） + `backgroundEffect`（API 19+） | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` |
+| 背景模糊 | `backgroundBlurStyle`（`DialogOptions`） + `backgroundBlurStyleOptions` + `backgroundEffect` | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` |
 | 边框 | `cornerRadius` / `borderWidth` / `borderColor` / `borderStyle`（`DialogOptions`） | `borderRadius` / `borderWidth` / `borderColor` / `borderStyle`（`cornerRadius` 更名为 `borderRadius`） |
 | 阴影 | `shadow`（`DialogOptions`） | `shadow: ShadowOptions \| ShadowStyle` |
 | 尺寸 | `width` / `height`（`DialogOptions`） | `width` / `height` |
-| 过渡动画 | `transition: TransitionEffect`（API 12+） / `dialogTransition`（API 19+） | `dialogTransition: TransitionEffect` |
-| 蒙层动画 | `maskTransition: TransitionEffect`（API 19+） | `maskTransition: TransitionEffect` |
-| 焦点 | `focusable: boolean`（API 19+） | `focusable: boolean` |
-| 打开动画回调 | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear`（API 12+） | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` |
-| 取消回调 | `onWillDismiss: Callback<DismissDialogAction>`（API 12+） | `onWillDismiss: Callback<DialogDismissal>` |
-| 键盘避让 | `keyboardAvoidMode`（API 12+） + `keyboardAvoidDistance`（API 15+） | `keyboardAvoidMode` + `keyboardAvoidDistance` |
-| 悬浮模式 | `enableHoverMode`（API 14+） + `hoverModeArea`（API 14+） | `enableHoverMode` + `hoverModeArea` |
-| 层级模式 | `levelMode`（API 15+） + `levelUniqueId`（API 15+） + `immersiveMode`（API 15+） + `levelOrder`（API 18+） | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` |
-| 系统材质 | `systemMaterial: SystemUiMaterial`（API 26+） | `systemMaterial: SystemUiMaterial` |
+| 过渡动画 | `transition: TransitionEffect` / `dialogTransition` | `dialogTransition: TransitionEffect` |
+| 蒙层动画 | `maskTransition: TransitionEffect` | `maskTransition: TransitionEffect` |
+| 焦点 | `focusable: boolean` | `focusable: boolean` |
+| 打开动画回调 | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` |
+| 取消回调 | `onWillDismiss: Callback<DismissDialogAction>` | `onWillDismiss: Callback<DialogDismissal>` |
+| 键盘避让 | `keyboardAvoidMode` + `keyboardAvoidDistance`  | `keyboardAvoidMode` + `keyboardAvoidDistance` |
+| 悬浮模式 | `enableHoverMode`  + `hoverModeArea`  | `enableHoverMode` + `hoverModeArea` |
+| 层级模式 | `levelMode`  + `levelUniqueId`  + `immersiveMode`  + `levelOrder`  | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` |
+| 系统材质 | `systemMaterial: SystemUiMaterial`  | `systemMaterial: SystemUiMaterial` |
 
 **迁移前示例（老接口）：**
 
@@ -956,34 +959,36 @@ struct PresentCustomDialogMigrationPage {
 
 #### 7. promptAction.openCustomDialogWithController（带控制器的自定义弹窗）
 
+老接口使用promptAction.openCustomDialogWithController弹出带控制器的自定义弹窗，新接口使用DialogPresenter.present弹出带控制器的自定义弹窗，具体示例见表格下方。
+
 | 属性 | 老接口（promptAction.openCustomDialogWithController） | 新接口（DialogPresenter.present + DialogCustomOptions） |
 |------|------|------|
 | 编程模型 | `promptAction.openCustomDialogWithController(content, controller, options?): Promise<void>` | `presenter.present(content, options?: DialogCustomOptions): Promise<DialogResult>` |
 | 内容构建 | `ComponentContent<Object>` | `CustomBuilder` / `CustomBuilderWithId` / `ComponentContent<Object>` |
-| 控制器 | `promptAction.DialogController`（API 18+） | `DialogBaseController` |
-| 选项类型 | `BaseDialogOptions`（API 11+） | `DialogCustomOptions`（继承 `DialogBaseOptions`） |
+| 控制器 | `promptAction.DialogController`  | `DialogBaseController` |
+| 选项类型 | `BaseDialogOptions` | `DialogCustomOptions`（继承 `DialogBaseOptions`） |
 | 样式控制 | 无 `customStyle` 属性（内容样式完全由 ComponentContent 决定） | `customStyle: boolean` |
 | 对齐 | `alignment: DialogAlignment` | `alignment: DialogBaseAlignment` |
 | 偏移 | `offset: Offset` | `offset: Offset` |
-| 自动取消 | `autoCancel: boolean`（API 12+） | `autoCancel: boolean` |
-| 蒙层颜色 | `maskColor: ResourceColor`（API 12+） | `maskColor: ResourceColor` |
+| 自动取消 | `autoCancel: boolean`  | `autoCancel: boolean` |
+| 蒙层颜色 | `maskColor: ResourceColor`  | `maskColor: ResourceColor` |
 | 蒙层区域 | `maskRect: Rectangle` | `maskRect: Rectangle` |
 | 模态 | `isModal: boolean` | `isModal: boolean` |
 | 子窗口 | `showInSubWindow: boolean` | `showInSubWindow: boolean` |
 | 背景色 | 无（`BaseDialogOptions` 不含 `backgroundColor`） | `backgroundColor` |
-| 背景模糊 | `backgroundBlurStyleOptions`（API 19+） + `backgroundEffect`（API 19+） | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` |
+| 背景模糊 | `backgroundBlurStyleOptions`  + `backgroundEffect`  | `backgroundBlurStyle` + `backgroundBlurStyleOptions` + `backgroundEffect` |
 | 边框 | 无（`BaseDialogOptions` 不含边框属性） | `borderRadius` / `borderWidth` / `borderColor` / `borderStyle` |
 | 阴影 | 无（`BaseDialogOptions` 不含 `shadow`） | `shadow: ShadowOptions \| ShadowStyle` |
 | 尺寸 | 无（`BaseDialogOptions` 不含 `width` / `height`） | `width` / `height` |
-| 过渡动画 | `transition: TransitionEffect`（API 12+） / `dialogTransition`（API 19+） | `dialogTransition: TransitionEffect` |
-| 蒙层动画 | `maskTransition: TransitionEffect`（API 19+） | `maskTransition: TransitionEffect` |
-| 焦点 | `focusable: boolean`（API 19+） | `focusable: boolean` |
-| 打开动画回调 | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear`（API 12+） | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` |
-| 取消回调 | `onWillDismiss: Callback<DismissDialogAction>`（API 12+） | `onWillDismiss: Callback<DialogDismissal>` |
-| 键盘避让 | `keyboardAvoidMode`（API 12+） + `keyboardAvoidDistance`（API 15+） | `keyboardAvoidMode` + `keyboardAvoidDistance` |
-| 悬浮模式 | `enableHoverMode`（API 14+） + `hoverModeArea`（API 14+） | `enableHoverMode` + `hoverModeArea` |
-| 层级模式 | `levelMode`（API 15+） + `levelUniqueId`（API 15+） + `immersiveMode`（API 15+） + `levelOrder`（API 18+） | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` |
-| 系统材质 | `systemMaterial: SystemUiMaterial`（API 26+） | `systemMaterial: SystemUiMaterial` |
+| 过渡动画 | `transition: TransitionEffect`  / `dialogTransition`  | `dialogTransition: TransitionEffect` |
+| 蒙层动画 | `maskTransition: TransitionEffect`  | `maskTransition: TransitionEffect` |
+| 焦点 | `focusable: boolean`  | `focusable: boolean` |
+| 打开动画回调 | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear`  | `onWillAppear` / `onDidAppear` / `onWillDisappear` / `onDidDisappear` |
+| 取消回调 | `onWillDismiss: Callback<DismissDialogAction>`  | `onWillDismiss: Callback<DialogDismissal>` |
+| 键盘避让 | `keyboardAvoidMode`  + `keyboardAvoidDistance`  | `keyboardAvoidMode` + `keyboardAvoidDistance` |
+| 悬浮模式 | `enableHoverMode`  + `hoverModeArea`  | `enableHoverMode` + `hoverModeArea` |
+| 层级模式 | `levelMode`  + `levelUniqueId`  + `immersiveMode`  + `levelOrder`  | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` |
+| 系统材质 | `systemMaterial: SystemUiMaterial`  | `systemMaterial: SystemUiMaterial` |
 
 **迁移前示例（老接口）：**
 
@@ -1128,7 +1133,7 @@ struct OpenCustomDialogWithControllerMigrationPage {
 
 ![迁移后示例图](figures/OpenCustomDialogWithControllerAfterMigrate.png)
 
-#### 高级动画参数差异
+#### 8. 高级动画参数差异
 
 老接口使用 `customStyle: boolean` 控制是否使用自定义样式，`openAnimation` / `closeAnimation`（`AnimateParam`）控制打开和关闭动画。新接口使用 `dialogTransition: TransitionEffect` 控制内容区动画，`maskTransition: TransitionEffect` 控制蒙层动画。两者参数类型不同，**不存在等效映射**，迁移时需按新接口 `TransitionEffect` 重写动画参数。
 
@@ -1235,8 +1240,6 @@ struct Index {
 ```
 
 ![老接口示例图](figures/CustomDialogOldInterface.gif)
-
-新接口`@ohos.arkui.dialog`支持`ComponentContent`与系统材质属性一起使用，支持弹出后动态修改弹窗位置。
 
 新接口示例：
 
