@@ -741,12 +741,11 @@ let dialogInfo: certificateManagerDialog.UkeyAuthDialogInfo = {
 let keyUri: string = 'test';
 /* 传入Ukey鉴权对话框的自定义数据，此处仅为示例 */
 let customData: Uint8Array = new Uint8Array([0x01, 0x02, 0x03]);
-/* Ukey认证对话框的操作超时时间，单位为秒，取值范围为[180, 600]内的整数 */
-let timeoutDuration: number = 300;
 let ukeyAuthRequest: certificateManagerDialog.UkeyAuthRequest = {
   keyUri: keyUri,
   customData: customData,
-  timeoutDuration: timeoutDuration
+  /* Ukey认证对话框的操作超时时间，单位为秒，取值范围为[180, 600]内的整数 */
+  timeoutDuration: 300
 };
 try {
   certificateManagerDialog.openAuthDialogForUkeyProvider(dialogInfo, ukeyAuthRequest).then(() => {
