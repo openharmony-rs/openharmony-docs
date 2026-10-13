@@ -348,18 +348,16 @@ parseSendable(text: string, reviver?: SendableTransformer, options?: ParseOption
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [ISendable](#isendable) \| null | 返回与JSON文本对应的Sendable对象；当JSON文本为'null'时返回null；当options.parseReturnType为[ParseReturnType.MAP](#parsereturntype)时返回collections.Map。 |
+| [ISendable](#isendable) \| null | 返回与JSON字符串对应的Sendable对象；当JSON字符串为'null'时返回null；当options.parseReturnType为[ParseReturnType.MAP](#parsereturntype)时返回collections.Map。 |
 
-**数字键存储规则：**
-
-- 取值范围在"0"到"4294967294"之间的数字字符串键会作为元素下标存储，任意属性数量下所有键值均可完整访问与枚举。
-- 前导零（如"00"、"01"）、带符号（如"-0"、"+1"）、小数或指数形式（如"1.0"、"1e2"）、超出数组下标范围（如"4294967295"）的键作为普通属性名存储。
-- 重复键以后值为准，且枚举位置保持在首次出现的位置。
-
-**OBJECT与MAP返回说明：**
-
-- [ParseReturnType.OBJECT](#parsereturntype)（默认）：返回不可扩展的Sendable对象，其已有属性可更新、不可新增或删除。
-- [ParseReturnType.MAP](#parsereturntype)：返回collections.Map，支持任意条数的增删操作，键始终为字符串（"1"不会被转换为数值键）。
+> **数字键存储规则：**
+> - 取值范围在"0"到"4294967294"之间的数字字符串键会作为元素下标存储，任意属性数量下所有键值均可完整访问与枚举。
+> - 前导零（如"00"、"01"）、带符号（如"-0"、"+1"）、小数或指数形式（如"1.0"、"1e2"）、超出数组下标范围（如"4294967295"）的键作为普通属性名存储。
+> - 重复键以后值为准，且枚举位置保持在首次出现的位置。
+> 
+> **OBJECT与MAP返回说明：**
+> - [ParseReturnType.OBJECT](#parsereturntype)（默认）：返回不可扩展的Sendable对象，其已有属性可更新、不可新增或删除。
+> - [ParseReturnType.MAP](#parsereturntype)：返回collections.Map，支持任意条数的增删操作，键始终为字符串（"1"不会转换为数值键）。
 
 **示例：**
 
@@ -429,13 +427,13 @@ try {
 | 名称 | 值 | 说明 |
 | ------ | ------ | --------------- |
 | OBJECT | 0 | 解析结果为不可扩展的Sendable对象，其已有属性可更新、不可新增或删除。 |
-| MAP | 1 | 解析结果为Sendable Map，支持任意条数的增删操作。 |
+| MAP | 1 | 解析结果为collections.Map，支持任意条数的增删操作。 |
 
 ## ISendable
 
 type ISendable = lang.ISendable
 
-本模块对lang.ISendable的别名定义。ISendable是所有Sendable类型（除`null`和`undefined`）的父类型，自身不定义任何方法和属性。
+ISendable是所有Sendable类型（除`null`和`undefined`）的父类型，自身不定义任何方法和属性。
 
 **起始版本：** 26.0.1
 
@@ -453,7 +451,7 @@ type ISendable = lang.ISendable
 
 type SendableTransformer = (this: ISendable, key: string, value: ISendable | undefined | null) => ISendable | undefined | null
 
-用于Sendable JSON解析转换结果的函数类型，与[ArkTSUtils.ASON.Transformer](arkts-apis-arkts-utils-ASON.md#transformer)一致：this、value及返回值均为ISendable（而非Object），因为parseSendable的产物为可跨并发实例传递的Sendable对象。
+用于Sendable JSON解析转换结果的函数类型，与[ArkTSUtils.ASON.Transformer](arkts-apis-arkts-utils-ASON.md#transformer)一致：this、value及返回值均为ISendable（而非Object），因为parseSendable的产物为可跨线程共享的Sendable对象。
 
 **起始版本：** 26.0.1
 

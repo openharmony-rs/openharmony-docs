@@ -2,10 +2,10 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=4bb0b56d7d67b2ab3ff0955bce487aba3399fade translatedAt=2026-09-23T02:12:51.247Z pushedAt=2026-09-24T01:42:56.500Z -->
+<!-- md-trans-meta sourceCommit=54656b3da3e41e2ba7f2b57573523f0dbf41c1e3 translatedAt=2026-10-08T09:10:51.716Z pushedAt=2026-10-09T03:03:08.705Z -->
 
 This module provides system APIs to publish common events to specified users, remove [sticky common events](../../basic-services/common-event/common-event-glossary.md#sticky-common-event), enable or disable [static subscription](../../basic-services/common-event/common-event-glossary.md#static-subscription) events.
 
@@ -25,15 +25,6 @@ import { commonEventManager } from '@kit.BasicServicesKit';
 
 [System common events](../../basic-services/common-event/common-event-glossary.md#system-common-event) refer to events released by system services or system apps. Subscribing to these events requires specific permissions. To publish or subscribe to this type of event, you must follow the event-specific definitions.
 
-
-
-
-
-
-
-
-
-
 For details about the enums of all system common events, see [System Common Events (System API)](./common_event/commonEventManager-definitions-sys.md).
 
 ## commonEventManager.publishAsUser
@@ -50,7 +41,7 @@ Publishes a common event to a specified user. This API uses an asynchronous call
 
 | Name    | Type                | Mandatory| Description                              |
 | -------- | -------------------- | ---- | ---------------------------------- |
-| event    | string               | Yes  | Name of the common event to publish. For details, see [System Common Events (System API)](./common_event/commonEventManager-definitions-sys.md).            |
+| event    | string               | Yes   | Common event to publish. For details, see [System Common Events (System API)](./common_event/commonEventManager-definitions-sys.md). The value can contain a maximum of 254 bytes. Excess content will be truncated. |
 | userId   | number               | Yes  | ID of the user who will receive the common event.|
 | callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.            |
 
@@ -104,7 +95,7 @@ Publishes a common event to a specified user and specifies the information to be
 
 | Name    | Type                  | Mandatory| Description                  |
 | -------- | ---------------------- | ---- | ---------------------- |
-| event    | string                 | Yes  | Name of the common event to publish. For details, see [System Common Events (System API)](./common_event/commonEventManager-definitions-sys.md). |
+| event    | string                 | Yes   | Common event to publish. For details, see [System Common Events (System API)](./common_event/commonEventManager-definitions-sys.md). The value can contain a maximum of 254 bytes. Excess content will be truncated. |
 | userId   | number | Yes| ID of the user who will receive the common event.|
 | options  | [CommonEventPublishData](./js-apis-inner-commonEvent-commonEventPublishData.md) | Yes  | Properties of the common event to publish.|
 | callback | AsyncCallback\<void>   | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object. |
@@ -166,7 +157,7 @@ Removes a [sticky common event](../../basic-services/common-event/common-event-g
 
 | Name  | Type                | Mandatory| Description                            |
 | -------- | -------------------- | ---- | -------------------------------- |
-| event    | string               | Yes  | Sticky common event to remove. For details, see [System Common Events (System API)](./common_event/commonEventManager-definitions-sys.md).      |
+| event    | string               | Yes   | Sticky common event to remove. For details, see [System Common Events (System API)](./common_event/commonEventManager-definitions-sys.md). The value can contain a maximum of 254 bytes. Excess content will be truncated. |
 | callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the sticky common event is successfully removed, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
@@ -212,7 +203,7 @@ Removes a published [sticky common event](../../basic-services/common-event/comm
 
 | Name| Type  | Mandatory| Description                      |
 | ------ | ------ | ---- | -------------------------- |
-| event  | string | Yes  | Sticky common event to remove. For details, see [System Common Events](./common_event/commonEventManager-definitions.md).|
+| event  | string | Yes   | Sticky common event to remove. For details, see [System Common Events (System API)](./common_event/commonEventManager-definitions-sys.md). The value can contain a maximum of 254 bytes. Excess content will be truncated. |
 
 **Return value**
 
@@ -385,4 +376,3 @@ commonEventManager.setStaticSubscriberState(true, eventName).then(() => {
   console.error(`setStaticSubscriberState failed, errCode: ${err.code}, errMsg: ${err.message}`);
 });
 ```
-<!--no_check-->

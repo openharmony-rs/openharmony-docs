@@ -170,8 +170,7 @@ requestSerialRight(portId: number): Promise&lt;boolean&gt;
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { serialManager, BusinessError } from '@kit.BasicServicesKit';
 
 // 获取串口列表
 function requestSerialRightExample() {
@@ -243,8 +242,7 @@ open(portId: number): void
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { serialManager, BusinessError } from '@kit.BasicServicesKit';
 
 // 获取串口列表
 async function openExample() {
@@ -335,8 +333,7 @@ getAttribute(portId: number): Readonly&lt;SerialAttribute&gt;
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { serialManager, BusinessError } from '@kit.BasicServicesKit';
 
 // 获取串口列表
 async function getAttributeExample() {
@@ -435,8 +432,7 @@ setAttribute(portId: number, attribute: SerialAttribute): void
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { serialManager, BusinessError } from '@kit.BasicServicesKit';
 
 // 获取串口列表
 async function setAttributeExample() {
@@ -545,8 +541,7 @@ read(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&gt
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { serialManager, BusinessError } from '@kit.BasicServicesKit';
 
 // 获取串口列表
 async function readExample() {
@@ -659,8 +654,7 @@ readSync(portId: number, buffer: Uint8Array, timeout?: number): number
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { serialManager, BusinessError } from '@kit.BasicServicesKit';
 
 // 获取串口列表
 async function readSyncExample() {
@@ -763,10 +757,8 @@ write(portId: number, buffer: Uint8Array, timeout?: number): Promise&lt;number&g
 
 <!--code_no_check-->
 ```ts
-import { JSON } from '@kit.ArkTS';
-import { buffer } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { JSON, buffer } from '@kit.ArkTS';
+import { serialManager, BusinessError } from '@kit.BasicServicesKit';
 
 // 获取串口列表
 async function writeExample() {
@@ -878,10 +870,8 @@ writeSync(portId: number, buffer: Uint8Array, timeout?: number): number
 
 <!--code_no_check-->
 ```ts
-import { JSON } from '@kit.ArkTS';
-import { buffer } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { JSON, buffer } from '@kit.ArkTS';
+import { serialManager, BusinessError } from '@kit.BasicServicesKit';
 
 // 获取串口列表
 async function writeSyncExample() {
@@ -980,8 +970,7 @@ close(portId: number): void
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { serialManager, BusinessError } from '@kit.BasicServicesKit';
 
 // 获取串口列表
 async function closeExample() {
@@ -1070,8 +1059,7 @@ cancelSerialRight(portId: number): void
 <!--code_no_check-->
 ```ts
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { serialManager, BusinessError } from '@kit.BasicServicesKit';
 
 // 获取串口列表
 async function cancelSerialRightExample() {

@@ -33,6 +33,8 @@ constructor()
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+**示例：**
+
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';

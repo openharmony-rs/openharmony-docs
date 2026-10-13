@@ -735,7 +735,7 @@ static JSVM_PropertyDescriptor descriptor[] = {
 
 // 样例测试js
 const char *SRC_CALL_NATIVE = R"JS(
-    let obj = '{ data: 0, message: "hello world", 50: 1}';
+    let obj = { data: 0, message: "hello world", 50: 1};
     let script = getAllPropertyNames(obj);
 )JS";
 ```

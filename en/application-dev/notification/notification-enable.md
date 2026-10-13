@@ -1,25 +1,25 @@
 # Requesting Notification Authorization
-
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
-<!--Owner: @peixu-->
-<!--Designer: @dongqingran; @wulong158-->
+<!--Owner: @HuYueRong-->
+<!--Designer: @dongqingran-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=4bb0b56d7d67b2ab3ff0955bce487aba3399fade translatedAt=2026-09-29T11:07:44.970Z pushedAt=2026-09-30T07:40:46.812Z -->
 
-Your application can send notifications only after obtaining user authorization. Before publishing a notification, the application should call the [requestEnableNotification()](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanagerrequestenablenotification10-1) API to display a dialog box for the user to determine whether to allow notification sending. If the user rejects the authorization, the dialog box cannot be displayed again. To request another notification authorization from the user, the application can call the [openNotificationSettings](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanageropennotificationsettings13) API to display the semi-modal dialog box for notification management.
+An app must obtain user authorization before it can send notifications. Before publishing a notification, call [requestEnableNotification()](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanagerrequestenablenotification10-1) to display a dialog box for the user to choose whether to allow notifications. If the user denies authorization, the dialog box cannot be displayed again through this API. If the app needs to request [notification authorization](notification-glossary.md#notification-authorization) from the user again, it can use [openNotificationSettingsWithResult](../reference/apis-notification-kit/js-apis-notificationManager.md#notificationmanageropennotificationsettingswithresult) to display a semi-modal dialog for notification management.
 
 ## Available APIs
 
 For details about the APIs, see [@ohos.notificationManager (NotificationManager)](../reference/apis-notification-kit/js-apis-notificationManager.md).
 
-**Table 1** Notification authorization APIs
+**Table 1** [Notification authorization](notification-glossary.md#notification-authorization) API description
 
 | **API** | **Description**|
 | -------- | -------- |
-| isNotificationEnabled():Promise\<boolean\>       | Checks whether notification is enabled. |
-| requestEnableNotification(context: UIAbilityContext): Promise\<void\> | Requests notification to be enabled. When called for the first time, this API displays a dialog box prompting the user to select.    |
-| openNotificationSettings(context: UIAbilityContext): Promise\<void\>  | Opens a dialog box for notification management.|
+| isNotificationEnabled():Promise\<boolean\>       | Checks whether notifications are enabled. |
+| requestEnableNotification(context: UIAbilityContext): Promise\<void\> | Requests permission to send notifications. When called for the first time, this API displays a dialog box prompting the user to choose.    |
+| openNotificationSettingsWithResult(context: UIAbilityContext): Promise\<NotificationSetting\>  | Launches the notification management dialog and returns the setting result after the user completes the settings.|
 
 
 ## How to Develop
@@ -38,7 +38,7 @@ For details about the APIs, see [@ohos.notificationManager (NotificationManager)
    const DOMAIN_NUMBER: number = 0xFF00;
    ```
 
-2. Display a dialog box to request notification authorization from the user.
+2. Display the notification dialog box to request [notification authorization](notification-glossary.md#notification-authorization) from the user.
 
    You can determine whether the user has authorized the request based on the error code of **requestEnableNotification**. If the error code **1600004** is returned, the authorization is rejected.
 
@@ -69,18 +69,22 @@ For details about the APIs, see [@ohos.notificationManager (NotificationManager)
 
 3. (Optional) Display a semi-modal dialog box to request notification authorization from the user again.
 
-   <!-- @[reapply_notify_auth_halfmodal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/RequestEnableNotification.ets) -->
+   After the user completes authorization, the setting result is returned, which includes the notification authorization switch and the setting results of the lock screen, banner, badge, ringtone, and vibration switches.
+
+   <!-- @[reapply_notify_auth_halfModal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/RequestEnableNotification.ets) -->    
    
    ``` TypeScript
    let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
    notificationManager.isNotificationEnabled().then((data: boolean) => {
      hilog.info(DOMAIN_NUMBER, TAG, `isNotificationEnabled success, data:  ${data}`);
      if (!data) {
-       notificationManager.openNotificationSettings(context).then(() => {
-         hilog.info(DOMAIN_NUMBER, TAG, `[ANS] openNotificationSettings success`);
+       notificationManager.openNotificationSettingsWithResult(context)
+       .then((result: notificationManager.NotificationSetting) => {
+         // result is the current setting result.
+         hilog.info(DOMAIN_NUMBER, TAG, `[ANS] openNotificationSettingsWithResult success, result: ${JSON.stringify(result)}`);
        }).catch((err: BusinessError) => {
          hilog.error(DOMAIN_NUMBER, TAG,
-           `[ANS] openNotificationSettings failed, code is ${err.code}, message is ${err.message}`);
+           `[ANS] openNotificationSettingsWithResult failed, code is ${err.code}, message is ${err.message}`);
        });
      }
    }).catch((err: BusinessError) => {
@@ -88,3 +92,6 @@ For details about the APIs, see [@ohos.notificationManager (NotificationManager)
        `isNotificationEnabled fail, code is ${err.code}, message is ${err.message}`);
    });
    ```
+
+
+

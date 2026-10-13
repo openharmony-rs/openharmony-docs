@@ -9,6 +9,8 @@
 
 本模块提供了星闪服务交互协议（SparkLink Service Access Protocol，SSAP）连接功能，包括创建客户端与服务端、连接管理、服务发现、属性读写与通知、MTU协商等。
 
+**起始版本：** 26.0.0
+
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 ## 导入模块
@@ -41,6 +43,8 @@ createClient(address: string): Client
 
 创建SSAP客户端实例。
 
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -67,8 +71,8 @@ createClient(address: string): Client
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 801 | Capability not supported because the chip does not support it. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100003 | NearLink disabled. |
 | 36100041 | Invalid address. |
 | 36100099 | Operation failed. |
@@ -95,6 +99,8 @@ createServer(): Server
 
 创建SSAP服务端实例。
 
+调用此接口前，您可以调用[isNearLinkSupported](js-apis-nearlink-manager.md#managerisnearlinksupported)查询设备是否支持星闪。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -115,8 +121,8 @@ createServer(): Server
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 801 | Capability not supported because the chip does not support it. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
@@ -177,7 +183,7 @@ connect(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
@@ -227,7 +233,7 @@ disconnect(): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
@@ -276,7 +282,7 @@ close(): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
@@ -322,7 +328,7 @@ getServices(): Promise&lt;Service[]&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
@@ -386,7 +392,7 @@ readProperty(property: Property): Promise&lt;Property&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 36100003 | NearLink disabled. |
 | 36100043 | Invalid UUID in property. |
 | 36100044 | NearLink standard UUID not allowed. |
@@ -462,7 +468,7 @@ writeProperty(property: Property, writeType: PropertyWriteType): Promise&lt;void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 36100003 | NearLink disabled. |
 | 36100043 | Invalid UUID in property. |
 | 36100044 | NearLink standard UUID not allowed. |
@@ -539,7 +545,7 @@ setPropertyNotification(property: Property, enable: boolean): Promise&lt;void&gt
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 36100003 | NearLink disabled. |
 | 36100043 | Invalid UUID in property. |
 | 36100044 | NearLink standard UUID not allowed. |
@@ -614,7 +620,7 @@ requestMtuSize(mtu: number): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
@@ -914,7 +920,7 @@ addService(service: Service): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 36100003 | NearLink disabled. |
 | 36100043 | Invalid UUID. |
 | 36100044 | NearLink standard UUID not allowed. |
@@ -1007,7 +1013,7 @@ removeService(serviceUuid: string): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 36100003 | NearLink disabled. |
 | 36100043 | Invalid UUID. |
 | 36100044 | NearLink standard UUID not allowed. |
@@ -1050,7 +1056,7 @@ close(): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 36100003 | NearLink disabled. |
 | 36100099 | Operation failed. |
 
@@ -1102,7 +1108,7 @@ notifyPropertyChanged(address: string, property: Property): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 36100003 | NearLink disabled. |
 | 36100041 | Invalid address. |
 | 36100043 | Invalid UUID in property. |
@@ -1175,7 +1181,7 @@ sendResponse(response: ServerResponse): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
 | 36100003 | NearLink disabled. |
 | 36100041 | Invalid address. |
 | 36100099 | Operation failed. |

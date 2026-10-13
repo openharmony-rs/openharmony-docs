@@ -2,10 +2,10 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=4bb0b56d7d67b2ab3ff0955bce487aba3399fade translatedAt=2026-09-22T02:10:03.152Z pushedAt=2026-09-22T08:29:58.361Z -->
+<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-10-08T02:19:42.710Z pushedAt=2026-10-08T09:17:01.235Z -->
 
 Notification information in the [onReceiveMessage](js-apis-notificationSubscriberExtensionAbility.md#onreceivemessage) callback of the [notification subscription](../../notification/notification-glossary.md#notification-subscription) extension ability.
 
@@ -27,4 +27,3 @@ Notification information in the [onReceiveMessage](js-apis-notificationSubscribe
 | appName              | string | Yes   | Yes   | Name of the application that creates the notification.                          |
 | deliveryTime         | number | Yes   | Yes   | Timestamp when the notification is published.<br>Data format: timestamp.<br>Unit: milliseconds.|
 | groupName            | string | Yes   | Yes   | Name of the notification group.                                     |
-<!--no_check-->
