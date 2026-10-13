@@ -35,7 +35,7 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
    > 当设置Mic音频源（即[SourceType](../../reference/apis-audio-kit/arkts-apis-audio-e.md#sourcetype8)为SOURCE_TYPE_MIC、SOURCE_TYPE_VOICE_RECOGNITION、SOURCE_TYPE_VOICE_COMMUNICATION、SOURCE_TYPE_VOICE_MESSAGE、SOURCE_TYPE_LIVE（从API version 20开始支持））时，需要申请麦克风权限ohos.permission.MICROPHONE，申请方式参考：[向用户申请授权](../../security/AccessToken/request-user-authorization.md)。
 
    ArkTS-Dyn示例：
-   <!-- @[create_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) --> 
+   <!-- @[create_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->    
    
    ``` TypeScript
    import { audio } from '@kit.AudioKit';
@@ -72,7 +72,7 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
    ```
 
    ArkTS-Sta示例：
-   <!-- @[create_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/AudioCapture.ets) -->  
+   <!-- @[create_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/AudioCapture.ets) -->    
    
    ``` TypeScript
    let audioStreamInfo: audio.AudioStreamInfo = {
@@ -387,7 +387,7 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
    >   2. 业务允许静音期间不再采集数据：由应用主动停止录音流，后续需要录音时再重新启动，以停止采集替代静音处理。
 
    ArkTS-Dyn示例：
-   <!-- @[listen_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
+   <!-- @[listen_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->    
    
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -425,7 +425,7 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
    ```
 
    ArkTS-Sta示例：
-   <!-- @[listen_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/AudioCapture.ets) -->
+   <!-- @[listen_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/AudioCapture.ets) -->    
    
    ``` TypeScript
    capturer.onReadData(readDataCallback);
@@ -435,7 +435,7 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
 3. 调用[start](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#start8)方法进入running状态，开始录制音频。
 
    ArkTS-Dyn示例：
-   <!-- @[start_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) --> 
+   <!-- @[start_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->    
    
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -452,7 +452,7 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
    ```
 
    ArkTS-Sta示例：
-   <!-- @[start_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/AudioCapture.ets) -->  
+   <!-- @[start_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/AudioCapture.ets) -->    
    
    ``` TypeScript
    async function start(updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
@@ -491,7 +491,7 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
 4. 调用[stop](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#stop8)方法停止录制。
 
    ArkTS-Dyn示例：
-   <!-- @[stop_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) --> 
+   <!-- @[stop_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->    
    
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -508,7 +508,7 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
    ```
 
    ArkTS-Sta示例：
-   <!-- @[stop_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/AudioCapture.ets) -->  
+   <!-- @[stop_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/AudioCapture.ets) -->    
    
    ``` TypeScript
    async function stop(updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
@@ -545,7 +545,7 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
 5. 调用[release](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md#release8)方法销毁实例，释放资源。
 
    ArkTS-Dyn示例：
-   <!-- @[release_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->
+   <!-- @[release_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->    
    
    ``` TypeScript
    import { BusinessError } from '@kit.BasicServicesKit';
@@ -566,7 +566,7 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
    ```
 
    ArkTS-Sta示例：
-   <!-- @[release_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/AudioCapture.ets) -->  
+   <!-- @[release_AudioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/AudioCapture.ets) -->    
    
    ``` TypeScript
    async function release(updateCallback?: (msg: string, isError: boolean) => void): Promise<void> {
@@ -610,7 +610,7 @@ AudioCapturer是音频采集器，用于录制PCM（Pulse Code Modulation）音�
 下面展示了使用AudioCapturer录制音频的完整示例代码。
 
 ArkTS-Dyn示例：
-<!-- @[all_audioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->  
+<!-- @[all_audioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS/entry/src/main/ets/pages/AudioCapture.ets) -->    
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit';
@@ -922,7 +922,7 @@ async function release(updateCallback?: (msg: string, isError: boolean) => void)
 ```
 
 ArkTS-Sta示例：
-<!-- @[all_audioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/AudioCapture.ets) -->  
+<!-- @[all_audioCapturer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/Audio/AudioCaptureSampleJS-Sta/entry/src/main/ets/pages/AudioCapture.ets) -->    
 
 ``` TypeScript
 import audio from '@ohos.multimedia.audio';
