@@ -1462,7 +1462,7 @@ VoIP呼叫状态信息。
 
 ## VoIPCallType
 
-VoIP呼叫类型
+VoIP呼叫类型的枚举。
 
 **起始版本：** 26.0.1
 
@@ -1474,6 +1474,8 @@ VoIP呼叫类型
 | VIDEO     | 1    | 视频通话。           |
 
 ## VoIPCallState
+
+VoIP通话状态。  
 
 **起始版本：** 26.0.1
 
