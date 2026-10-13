@@ -190,7 +190,7 @@ struct AppearExample {
 }
 ```
 
-![onDisAppear](figures/onDisAppear.gif)
+![attach_and_detach](figures/onDisAppear.gif)
 
 ### 示例2（onAppear和onDisAppear事件）
 

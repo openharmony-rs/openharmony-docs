@@ -822,12 +822,11 @@ display，position，z-index，visibility，opacity, background-color，backgrou
 应用侧代码。
 
   ArkTS-Dyn示例：
-  <!-- @[set_web_peer_render](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) -->
+  <!-- @[set_web_peer_render](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets) --> 
   
   ``` TypeScript
   import { webview } from '@kit.ArkWeb';
-  import { UIContext } from '@kit.ArkUI';
-  import { NodeController, BuilderNode, NodeRenderType, FrameNode } from '@kit.ArkUI';
+  import { UIContext, NodeController, BuilderNode, NodeRenderType, FrameNode } from '@kit.ArkUI';
   
   @Observed
   declare class Params{
@@ -963,7 +962,7 @@ display，position，z-index，visibility，opacity, background-color，backgrou
             }, (embedId: string) => embedId)
             // Web组件加载本地test2.html页面。
             Web({src: $rawfile('test2.html'), controller: this.browserTabController})
-            // 注册同层标签为'object'，类型为'test'前缀
+              // 注册同层标签为'object'，类型为'test'前缀
               .registerNativeEmbedRule('object', 'test')
               // 配置同层渲染开关开启。
               .enableNativeEmbedMode(true)
@@ -2050,12 +2049,11 @@ display，position，z-index，visibility，opacity, background-color，backgrou
 - 应用侧代码：
 
 ArkTS-Dyn示例：
-<!-- @[native_embed_overlay](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/NativeEmbedOverlay.ets) -->
+<!-- @[native_embed_overlay](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/NativeEmbedOverlay.ets) --> 
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
-import { UIContext } from '@kit.ArkUI';
-import { NodeController, BuilderNode, NodeRenderType, FrameNode } from '@kit.ArkUI';
+import { UIContext, NodeController, BuilderNode, NodeRenderType, FrameNode } from '@kit.ArkUI';
 
 @Observed
 declare class Params{
@@ -2617,8 +2615,7 @@ ArkWeb同层渲染场景下的私有属性`arkwebnativestyle`，仅在开启同�
   ```ts
     // 创建NodeController
     import { webview } from '@kit.ArkWeb';
-    import { UIContext } from '@kit.ArkUI';
-    import { NodeController, BuilderNode, NodeRenderType, FrameNode } from '@kit.ArkUI';
+    import { UIContext, NodeController, BuilderNode, NodeRenderType, FrameNode } from '@kit.ArkUI';
 
     @Observed
     declare class Params{

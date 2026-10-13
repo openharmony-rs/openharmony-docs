@@ -106,6 +106,7 @@
       - [ConcurrentQueue (并发队列)](arkts-sta-concurrentqueue.md)
       - [ConcurrentHashMap (并发哈希表)](arkts-sta-concurrenthashmap.md)
       - [StdProcess (进程管理标准库)](arkts-sta-std_process.md)
+      - [静态并发状态信息检测](arkts-sta-concurrency-state-detection.md)
       - [taskpool (启动任务池)](arkts-sta-taskpool.md)
       - [Promise (异步操作)](arkts-sta-promise.md)
       - [Timer (定时器)](arkts-sta-timer.md)

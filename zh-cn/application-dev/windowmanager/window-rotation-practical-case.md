@@ -4,7 +4,7 @@
 <!--Subsystem: Window-->
 <!--Owner: @lizihao_73-->
 <!--Designer: @zhoulin_-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
 
 窗口旋转提供了丰富的旋转策略，可以支持应用在各种场景下适配方向。

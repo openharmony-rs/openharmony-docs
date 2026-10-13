@@ -1557,7 +1557,6 @@ struct example {
 
 ArkTS-Sta示例：
 ```ts
-'use static'
 import {
   Entry,
   Component,
@@ -1662,7 +1661,6 @@ struct example {
 
 ArkTS-Sta示例：
 ```ts
-'use static'
 import {
   Entry,
   Component,
@@ -2199,6 +2197,210 @@ struct Index {
     .justifyContent(FlexAlign.Center)
     .height('100%')
     .width('100%')
+  }
+}
+```
+
+### glassMarbleEffect
+
+glassMarbleEffect(material: GlassMarbleMaterialParam, marbleShell: GlassMarbleSphereParam | Mask, content?: GlassMarbleContentParam): VisualEffect
+
+为组件添加玻璃弹珠效果。玻璃弹珠效果是将玻璃弹珠与材质参数以及可选的内容层进行合成，产生具有折射、色散、光晕、阴影和发光的真实玻璃质感视觉效果。
+
+> **说明：**
+>
+> - 作用于组件的背景层。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本:** 26.0.1
+
+**ArkTS-Sta起始版本:** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名      | 类型                                                        | 必填 | 说明                                                                                                  |
+| ----------- | ----------------------------------------------------------- | ---- | ----------------------------------------------------------------------------------------------------- |
+| material    | [GlassMarbleMaterialParam](#glassmarblematerialparam)       | 是   | 材质参数，控制背景色、透明度、反射贴图、阴影、焦散和形状缩放。                                          |
+| marbleShell | [GlassMarbleSphereParam](#glassmarblesphereparam) \| [Mask](#mask20) | 是   | 必选的形状参数，可以是球体几何参数（圆心和半径），也可以是预置的资源图遮罩。                              |
+| content     | [GlassMarbleContentParam](#glassmarblecontentparam)         | 否   | 可选的内容参数，包括内容遮罩、混合内容的着色颜色、缩放、饱和度和色散。不设置时，不混合附加内容。            |
+
+**返回值：**
+
+| 类型                          | 说明                                     |
+| ----------------------------- | ---------------------------------------- |
+| [VisualEffect](#visualeffect) | 返回附加了玻璃弹珠效果的VisualEffect。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { image } from '@kit.ImageKit';
+import { uiEffect } from '@kit.ArkGraphics2D';
+import { common } from '@kit.AbilityKit';
+
+@Entry
+@Component
+struct GlassMarbleEffectExample {
+  @State reflectionMap: image.PixelMap | null = null;
+  @State contentMask: image.PixelMap | null = null;
+
+  aboutToAppear(): void {
+    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+    context.resourceManager.getMediaContent($r('app.media.reflection').id).then((val: Uint8Array) => {
+      let buffer: ArrayBuffer = val.buffer.slice(0, val.buffer.byteLength);
+      let imageSource: image.ImageSource = image.createImageSource(buffer);
+      imageSource.createPixelMap().then((pixelMap: image.PixelMap) => {
+        this.reflectionMap = pixelMap;
+      });
+    });
+    context.resourceManager.getMediaContent($r('app.media.content_mask').id).then((val: Uint8Array) => {
+      let buffer: ArrayBuffer = val.buffer.slice(0, val.buffer.byteLength);
+      let imageSource: image.ImageSource = image.createImageSource(buffer);
+      imageSource.createPixelMap().then((pixelMap: image.PixelMap) => {
+        this.contentMask = pixelMap;
+      });
+    });
+  }
+
+  build() {
+    Column() {
+      Image($r('app.media.bg'))
+        .width('100%')
+        .height('100%')
+        // 为组件添加玻璃弹珠效果。
+        .visualEffect(uiEffect.createEffect().glassMarbleEffect(
+          {
+            averageBgColor: { red: 0.5, green: 0.5, blue: 0.5, alpha: 1.0 },
+            opacity: 0.8,
+            shadowOffset: 0.1,
+            shadowRadius: 0.5,
+            shadowEdgeSoftness: 0.5,
+            shadowOpacity: 0.5,
+            causticOffset: 0.0,
+            causticRadius: 0.5,
+            causticEdgeSoftness: 0.5,
+            causticOpacity: 0.5,
+            shapeScale: 0.9,
+            reflectionMap: this.reflectionMap!
+          },
+          { center: [0.5, 0.5], radius: 0.5 },
+          {
+            contentMask: uiEffect.Mask.createPixelMapMask(this.contentMask!),
+            contentTintColor: { red: 1.0, green: 1.0, blue: 1.0, alpha: 0.5 },
+            contentScale: 0.8,
+            contentSaturation: 0.8,
+            contentDispersion: 0.2
+          }
+        ))
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import {
+  Entry,
+  Component,
+  State,
+  Column,
+  Stack,
+  Text,
+  Color,
+  ColumnOptions,
+} from '@kit.ArkUI';
+
+import { uiEffect } from '@kit.ArkGraphics2D';
+import image from '@ohos.multimedia.image';
+
+@Entry
+@Component
+struct GlassMarbleMinimalDemo {
+  private reflectionMap: image.PixelMap | null = null;
+  @State ready: boolean = false;
+
+  aboutToAppear(): void {
+    const ctx = this.getUIContext().getHostContext();
+    if (ctx === undefined) {
+      return;
+    }
+    const buffer: Uint8Array = ctx!.resourceManager.getRawFileContentSync('reflection.webp');
+    const imageSource = image.createImageSource(buffer.buffer);
+    if (imageSource === undefined) {
+      return;
+    }
+    const pixelMap = imageSource.createPixelMapSync();
+    imageSource.release();
+    if (pixelMap === undefined) {
+      return;
+    }
+    this.reflectionMap = pixelMap;
+    this.ready = true;
+  }
+
+  build(): void {
+    Column({} as ColumnOptions) {
+      if (this.ready) {
+        Stack() {
+          Column()
+            .width(300)
+            .height(300)
+            .backgroundColor('#ACB7CE')
+
+          Column()
+            .width(300)
+            .height(300)
+            .visualEffect(this.getGlassEffect())
+        }
+        .width('100%')
+        .aspectRatio(1.0)
+      } else {
+        Text('加载中...')
+          .fontSize(16)
+          .fontColor('#999999')
+          .margin({ top: 180 })
+      }
+
+      Text('GlassMarbleEffect SPHERE Demo')
+        .fontSize(14)
+        .fontColor(Color.Gray)
+        .margin({ top: 12 })
+    }
+    .width('100%')
+    .height('100%')
+  }
+
+  private getGlassEffect(): uiEffect.VisualEffect {
+    const bgColor: uiEffect.Color = { red: 0.675, green: 0.718, blue: 0.808, alpha: 1.0 };
+    const material: uiEffect.GlassMarbleMaterialParam = {
+      averageBgColor: bgColor,
+      opacity: 1.0,
+      shapeScale: 1.0,
+      shadowOffset: 0.5,
+      shadowRadius: 1.0,
+      shadowEdgeSoftness: 0.0,
+      shadowOpacity: 0.15,
+      causticOffset: 0.5,
+      causticRadius: 0.5,
+      causticEdgeSoftness: 0.0,
+      causticOpacity: 0.43,
+      reflectionMap: this.reflectionMap!,
+    };
+
+    const sphereParam: uiEffect.GlassMarbleSphereParam = {
+      center: [0.5, 0.5],
+      radius: 0.5,
+    };
+
+    const effect = uiEffect.createEffect();
+    return effect.glassMarbleEffect(material, sphereParam);
   }
 }
 ```
@@ -2960,8 +3162,6 @@ struct SweepRefractionExample {
 
 ArkTS-Sta示例：
 ```ts
-'use static'
-
 import { Entry, Component, Column, Row, HitTestMode, BlendMode } from '@ohos.arkui.component'
 import uiEffect from '@ohos.graphics.uiEffect'
 import common2D from '@ohos.graphics.common2D'
@@ -3100,7 +3300,6 @@ struct example {
 
 ArkTS-Sta示例：
 ```ts
-'use static'
 import {
   Entry,
   Component,
@@ -3214,8 +3413,6 @@ struct Index {
 
 ArkTS-Sta示例：
 ```ts
-'use static'
-
 import { Entry, Component, Stack, Image } from '@ohos.arkui.component'
 import { State } from '@ohos.arkui.stateManagement'
 import { DrawableDescriptor } from '@ohos.arkui.drawableDescriptor'
@@ -3326,8 +3523,6 @@ struct Index {
 
 ArkTS-Sta示例：
 ```ts
-'use static'
-
 import { Entry, Component, Stack, Image } from '@ohos.arkui.component'
 import { State } from '@ohos.arkui.stateManagement'
 import { DrawableDescriptor } from '@ohos.arkui.drawableDescriptor'
@@ -3367,6 +3562,239 @@ struct Index {
       .height('100%')
     }
     .width('100%').height('100%')
+  }
+}
+```
+
+### createAtlasFrameMask
+
+static createAtlasFrameMask(atlasInfo: drawing.AtlasImage): Mask
+
+创建用于精灵图集（[Sprite Sheet](../../graphics/graphic-term.md#sprite-sheet精灵图集)）序列帧动画的图集帧遮罩。该遮罩携带用于驱动图集序列帧动画的图集帧参数。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本:** 26.0.1
+
+**ArkTS-Sta起始版本:** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名     | 类型                                                        | 必填 | 说明                       |
+| ---------- | ----------------------------------------------------------- | ---- | -------------------------- |
+| atlasInfo  | [drawing.AtlasImage](js-apis-graphics-drawing-sys.md#atlasimage) | 是   | 图集帧参数。包含图集图片、行列数、单帧宽高、帧间距、帧索引和总帧数等信息，用于驱动精灵图序列帧动画。 |
+
+**返回值：**
+
+| 类型            | 说明                                   |
+| --------------- | -------------------------------------- |
+| [Mask](#mask20) | 返回携带图集帧参数的Mask实例。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { image } from '@kit.ImageKit';
+import { uiEffect, drawing } from '@kit.ArkGraphics2D';
+
+@Entry
+@Component
+struct AtlasFrameMaskDemo {
+  @State contentFrameState: drawing.AtlasImage | null = null;
+
+  private contentAtlasMap: image.PixelMap | null = null;
+  private reflectionMap: image.PixelMap | null = null;
+
+  private async loadPixelMapFromRawfile(fileName: string): Promise<image.PixelMap | null> {
+    try {
+      const ctx = getContext(this);
+      const buf: Uint8Array = await ctx.resourceManager.getRawFileContent(fileName);
+      const src = image.createImageSource(buf.buffer);
+      const pm = await src.createPixelMap();
+      src.release();
+      return pm;
+    } catch (e) {
+      console.error(`AtlasFrameMaskDemo load failed: ${e}`);
+      return null;
+    }
+  }
+
+  private makeContentFrameParam(frame: number): drawing.AtlasImage {
+    return {
+      mode: drawing.AtlasInterpolationMode.NONE, rows: 17, cols: 18,
+      frameWidth: 80, frameHeight: 80, padding: 0,
+      frameIndex: frame, totalFrame: 300, atlasImage: this.contentAtlasMap!
+    };
+  }
+
+  private getEffect(): uiEffect.VisualEffect | undefined {
+    if (this.contentFrameState === null) return undefined;
+    const contentMask = uiEffect.Mask.createAtlasFrameMask(this.contentFrameState);
+    const material: uiEffect.GlassMarbleMaterialParam = {
+      averageBgColor: { red: 0.675, green: 0.718, blue: 0.808, alpha: 1.0 },
+      opacity: 1.0, shapeScale: 1.0, shadowOffset: 0.5,
+      shadowRadius: 1.0, shadowEdgeSoftness: 0.0, shadowOpacity: 0.15,
+      causticOffset: 0.5, causticRadius: 0.5, causticEdgeSoftness: 0.0, causticOpacity: 0.43,
+      reflectionMap: this.reflectionMap!
+    };
+    const sphereParam: uiEffect.GlassMarbleSphereParam = {
+      center: [0.5, 0.5],
+      radius: 0.5,
+    };
+    const contentParam: uiEffect.GlassMarbleContentParam = {
+      contentMask: contentMask,
+      contentTintColor: { red: 1.0, green: 0.75, blue: 0.5, alpha: 0.25 },
+      contentScale: 0.5, contentSaturation: 0.81, contentDispersion: 0.0
+    };
+    const effect = uiEffect.createEffect();
+    effect.glassMarbleEffect(material, sphereParam, contentParam);
+    return effect;
+  }
+
+  async aboutToAppear(): Promise<void> {
+    this.contentAtlasMap = await this.loadPixelMapFromRawfile('content_atlas.webp');
+    this.reflectionMap = await this.loadPixelMapFromRawfile('reflection.webp');
+    this.contentFrameState = this.makeContentFrameParam(0);
+
+    // 单次播放：0 → 299
+    animateTo({ duration: 4000, curve: Curve.Linear }, () => {
+      this.contentFrameState = this.makeContentFrameParam(299);
+    });
+  }
+
+  build(): void {
+    Column() {
+      Stack() {
+        Column()
+          .width(300)
+          .height(300)
+          .backgroundColor('#ACB7CE')
+        Column()
+          .width(300)
+          .height(300)
+          .visualEffect(this.getEffect())
+      }
+      .width('100%')
+      .aspectRatio(1.0)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { Entry, Component, Column, Stack,
+  Curve } from '@ohos.arkui.component'
+import { State } from '@ohos.arkui.stateManagement'
+import uiEffect from '@ohos.graphics.uiEffect'
+import drawing from '@ohos.graphics.drawing'
+import image from '@ohos.multimedia.image'
+
+@Entry
+@Component
+struct AtlasFrameMaskDemoTaihe {
+  @State contentFrameState: drawing.AtlasImage | null = null;
+
+  private contentAtlasMap: image.PixelMap | null = null;
+  private reflectionMap: image.PixelMap | null = null;
+
+  private loadPixelMapFromRawfile(fileName: string): image.PixelMap | undefined {
+    try {
+      const hostContext = this.getUIContext().getHostContext()
+      if (!hostContext) { return undefined }
+      const buffer: Uint8Array = hostContext.resourceManager.getRawFileContentSync(fileName)
+      const imageSource = image.createImageSource(buffer.buffer)
+      if (!imageSource) { return undefined }
+      const pixelMap = imageSource.createPixelMapSync()
+      imageSource.release()
+      return pixelMap
+    } catch (e) {
+      console.error(`AtlasFrameMaskDemo load failed: ${e}`)
+      return undefined
+    }
+  }
+
+  private makeContentFrameParam(frame: number): drawing.AtlasImage {
+    return {
+      mode: drawing.AtlasInterpolationMode.NONE,
+      rows: 17,
+      cols: 18,
+      frameWidth: 80,
+      frameHeight: 80,
+      padding: 0,
+      frameIndex: frame,
+      totalFrame: 300,
+      atlasImage: this.contentAtlasMap!
+    };
+  }
+
+  private getEffect(): uiEffect.VisualEffect | undefined {
+    const contentFrame = this.contentFrameState
+    if (contentFrame === null) { return undefined }
+    const reflectionPm = this.reflectionMap
+    if (reflectionPm === null) { return undefined }
+
+    const contentMask: uiEffect.Mask =
+      uiEffect.Mask.createAtlasFrameMask(contentFrame);
+    const material: uiEffect.GlassMarbleMaterialParam = {
+      averageBgColor: { red: 0.675, green: 0.718, blue: 0.808, alpha: 1.0 },
+      opacity: 1.0, shapeScale: 1.0, shadowOffset: 0.5,
+      shadowRadius: 1.0, shadowEdgeSoftness: 0.0, shadowOpacity: 0.15,
+      causticOffset: 0.5, causticRadius: 0.5, causticEdgeSoftness: 0.0, causticOpacity: 0.43,
+      reflectionMap: reflectionPm
+    };
+    const sphereParam: uiEffect.GlassMarbleSphereParam = {
+      center: [0.5, 0.5],
+      radius: 0.5,
+    };
+    const contentParam: uiEffect.GlassMarbleContentParam = {
+      contentMask: contentMask,
+      contentTintColor: { red: 1.0, green: 0.75, blue: 0.5, alpha: 0.25 },
+      contentScale: 0.5, contentSaturation: 0.81, contentDispersion: 0.0
+    };
+    const effect = uiEffect.createEffect();
+    effect.glassMarbleEffect(material, sphereParam, contentParam);
+    return effect;
+  }
+
+  aboutToAppear(): void {
+    this.contentAtlasMap = this.loadPixelMapFromRawfile('content_atlas.webp') ?? null;
+    this.reflectionMap = this.loadPixelMapFromRawfile('reflection.webp') ?? null;
+    if (this.contentAtlasMap === null) { return; }
+    this.contentFrameState = this.makeContentFrameParam(0);
+  }
+
+  onPageShow(): void {
+    if (this.contentFrameState === null) { return; }
+    // 单次播放：0 → 299
+    this.getUIContext().animateTo({ duration: 4000, curve: Curve.Linear }, (): void => {
+      this.contentFrameState = this.makeContentFrameParam(299);
+    });
+  }
+
+  build(): void {
+    Column() {
+      Stack() {
+        Column()
+          .width(300)
+          .height(300)
+          .backgroundColor('#ACB7CE')
+        Column()
+          .width(300)
+          .height(300)
+          .visualEffect(this.getEffect())
+      }
+      .width('100%')
+      .aspectRatio(1.0)
+    }
+    .width('100%')
+    .height('100%')
   }
 }
 ```
@@ -3521,3 +3949,73 @@ BrightnessBlender参数列表。
 | prismHeight   | ArkTS-Dyn: number<br>ArkTS-Sta: double                                        | 否   | 是   | 棱镜的归一化高度。取值范围为[0.01, 2.0]，默认值为1.0，超出该区间的值将被自动截断至最近边界值。值为1.0时，表示棱镜的归一化高度等于组件高度。                   |
 | sweepCenterX  | ArkTS-Dyn: number<br>ArkTS-Sta: double                                        | 否   | 是   | 扫光中心的归一化X坐标。取值范围为[0.0, 1.0]，默认值为0.0，超出该区间的值将被自动截断至最近边界值。0.0表示左边缘。1.0表示右边缘。 |
 | sweepCenterY  | ArkTS-Dyn: number<br>ArkTS-Sta: double                                        | 否   | 是   | 扫光中心的归一化Y坐标。取值范围为[0.0, 1.0]，默认值为0.0，超出该区间的值将被自动截断至最近边界值。0.0表示上边缘，1.0表示下边缘。                                    |
+
+## GlassMarbleMaterialParam
+
+玻璃弹珠的材质参数。控制材质属性（背景色、透明度、阴影、焦散等）以及形状缩放。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本:** 26.0.1
+
+**ArkTS-Sta起始版本:** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+| 名称                | 类型                                      | 只读 | 可选 | 说明                                                                                          |
+| ------------------- | ----------------------------------------- | ---- | ---- | --------------------------------------------------------------------------------------------- |
+| averageBgColor      | [Color](#color20)                         | 否   | 否   | 玻璃弹珠背景代表色，用于材质着色计算。不使用alpha通道。                                                                  |
+| opacity             | ArkTS-Dyn: number<br>ArkTS-Sta: double    | 否   | 否   | 玻璃弹珠效果的整体透明度。取值范围为[0, 1]，0表示完全透明，1表示完全不透明，超出范围的值将在内部被截断。 |
+| shadowOffset        | ArkTS-Dyn: number<br>ArkTS-Sta: double    | 否   | 否   | 阴影的垂直偏移量，按形状半径归一化。取值范围为[-1, 1]，超出范围的值将在内部被截断。             |
+| shadowRadius        | ArkTS-Dyn: number<br>ArkTS-Sta: double    | 否   | 否   | 阴影的半径，按形状半径归一化。取值范围为[0, 1]，超出范围的值将在内部被截断。                   |
+| shadowEdgeSoftness  | ArkTS-Dyn: number<br>ArkTS-Sta: double    | 否   | 否   | 阴影的边缘柔和度。取值范围为[0, 1]，0产生硬边缘，1产生完全柔和的边缘，超出范围的值将在内部被截断。 |
+| shadowOpacity       | ArkTS-Dyn: number<br>ArkTS-Sta: double    | 否   | 否   | 阴影的整体透明度。取值范围为[0, 1]，0表示完全透明，1表示完全不透明，超出范围的值将在内部被截断。                               |
+| causticOffset       | ArkTS-Dyn: number<br>ArkTS-Sta: double    | 否   | 否   | 焦散（聚焦光线）的垂直偏移量，按形状半径归一化。取值范围为[-1, 1]，超出范围的值将在内部被截断。 |
+| causticRadius       | ArkTS-Dyn: number<br>ArkTS-Sta: double    | 否   | 否   | 焦散（聚焦光线）的半径，按形状半径归一化。取值范围为[0, 1]，超出范围的值将在内部被截断。       |
+| causticEdgeSoftness | ArkTS-Dyn: number<br>ArkTS-Sta: double    | 否   | 否   | 焦散（聚焦光线）的边缘柔和度。取值范围为[0, 1]，0产生硬边缘，1产生完全柔和的边缘，超出范围的值将在内部被截断。 |
+| causticOpacity      | ArkTS-Dyn: number<br>ArkTS-Sta: double    | 否   | 否   | 焦散（聚焦光线）的整体透明度。取值范围为[0, 1]，0表示完全透明，1表示完全不透明，超出范围的值将在内部被截断。                   |
+| shapeScale          | ArkTS-Dyn: number<br>ArkTS-Sta: double    | 否   | 否   | 应用于玻璃弹珠形状的缩放系数。取值范围为[0, 1]，0表示形状缩放为0（不可见），1表示形状保持原始大小，超出范围的值将在内部被截断。                       |
+| reflectionMap       | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 是   | 用于玻璃弹珠表面环境反射的反射贴图。不设置时，默认值为undefined，不应用反射效果。|
+
+## GlassMarbleContentParam
+
+玻璃弹珠的内容参数。控制内容在玻璃弹珠内部的混合方式，包括内容遮罩本身、着色颜色、缩放和饱和度等。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本:** 26.0.1
+
+**ArkTS-Sta起始版本:** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+| 名称              | 类型                | 只读 | 可选 | 说明                                                                                                    |
+| ----------------- | ------------------- | ---- | ---- | ------------------------------------------------------------------------------------------------------- |
+| contentMask       | [Mask](#mask20)     | 否   | 否   | 用于在玻璃弹珠内部混合附加内容的内容遮罩。将该遮罩采样后与玻璃材质合成。                    |
+| contentTintColor  | [Color](#color20)   | 否   | 否   | 应用于玻璃弹珠内部混合内容的着色颜色。alpha通道用作原始内容颜色与着色颜色之间的混合系数。                  |
+| contentScale      | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 应用于玻璃弹珠内部混合内容的缩放系数。取值范围为[0, 1]，0表示内容缩放为0（不显示），1表示内容保持原始大小，超出范围的值将在内部被截断。                       |
+| contentSaturation | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 玻璃弹珠内部混合内容的饱和度。取值范围为[0, 1]，超出范围的值将在内部被截断。                               |
+| contentDispersion | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 玻璃弹珠内部混合内容的色散。控制内容边缘的颜色分离程度。取值范围为[0, 1]，超出范围的值将在内部被截断。     |
+
+## GlassMarbleSphereParam
+
+玻璃弹珠的球体形状参数。通过圆心位置和半径定义玻璃形状的几何结构，均采用相对于组件边界的归一化坐标。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**ArkTS-Dyn起始版本:** 26.0.1
+
+**ArkTS-Sta起始版本:** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+| 名称   | 类型              | 只读 | 可选 | 说明                                                                                                  |
+| ------ | ----------------- | ---- | ---- | ----------------------------------------------------------------------------------------------------- |
+| center | ArkTS-Dyn: [number, number]<br>ArkTS-Sta: [double, double] | 否   | 否   | 球体形状的归一化圆心位置。[0, 0]表示组件边界的左上角，[1, 1]表示组件边界的右下角。超出[0, 1]范围的值将在内部被截断。 |
+| radius | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 球体形状的归一化半径。取值范围为[0, 1]，超出范围的值将在内部被截断。值为0表示半径为0（不可见），值为1表示球的直径等于组件宽度和高度的较小值。 |

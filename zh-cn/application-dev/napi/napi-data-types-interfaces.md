@@ -459,8 +459,8 @@ Node-API接口在Node.js提供的原生模块基础上扩展，目前支持部�
 | napi_throw_range_error | 抛出一个带文本信息的ArkTS RangeError。 |
 | napi_is_error | 判断napi_value是否表示为一个error对象。 |
 | napi_create_error | 创建并获取一个带文本信息的ArkTS Error。 |
-| napi_create_type_error | 创建并获取一个带文本信息的ArkTS Error对象 |
-| napi_create_range_error | 创建并获取一个带文本信息的ArkTS Error对象。 |
+| napi_create_type_error | 创建并获取一个带文本信息的ArkTS TypeError对象。 |
+| napi_create_range_error | 创建并获取一个带文本信息的ArkTS RangeError对象。 |
 | napi_get_and_clear_last_exception | 获取并清除最近一次出现的异常。 |
 | napi_is_exception_pending | 判断是否出现了异常。 |
 | napi_fatal_error | 引发致命错误以立即终止进程。 |
@@ -577,6 +577,7 @@ Node-API接口在Node.js提供的原生模块基础上扩展，目前支持部�
 | napi_delete_strong_sendable_reference | 删除Sendable强引用。 |
 | napi_get_strong_sendable_reference_value | 根据Sendable强引用获取其关联的ArkTS对象值。 |
 | napi_throw_business_error | 抛出一个带文本信息的ArkTS Error，其错误对象的code属性类型为number。 |
+| napi_get_global_handle_count | 遍历并获取global handle数量。 |
  
 **napi_queue_async_work_with_qos**
 
@@ -902,6 +903,12 @@ napi_status napi_get_strong_sendable_reference_value(napi_env env,
 napi_status napi_throw_business_error(napi_env env,
                                       int32_t errorCode,
                                       const char* msg);
+```
+
+**napi_get_global_handle_count**
+
+```c
+napi_status napi_get_global_handle_count(napi_env env, size_t* count);
 ```
 
 ### 其他实用工具

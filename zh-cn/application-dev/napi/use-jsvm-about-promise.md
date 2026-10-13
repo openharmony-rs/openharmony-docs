@@ -268,7 +268,7 @@ static int PromiseRegisterHandler(JSVM_VM vm, JSVM_Env env) {
 
 static void RunDemo(JSVM_VM vm, JSVM_Env env) {
     if (PromiseRegisterHandler(vm, env) != 0) {
-        OH_LOG_INFO(LOG_APP, "Run PromiseRegisterHandler failed");
+        OH_LOG_ERROR(LOG_APP, "Run PromiseRegisterHandler failed");
     }
 }
 ```

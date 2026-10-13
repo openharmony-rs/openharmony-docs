@@ -210,7 +210,7 @@
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称    | 值   | 说明                               |
 | ------- | ---- | ---------------------------------- |
@@ -1149,7 +1149,7 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 ## InputEventInterceptAction
 
-输入事件拦截动作枚举。
+输入事件拦截动作枚举，用于控制输入事件是否继续传递到UI框架，适用于需要按业务规则允许或阻止输入事件继续传递的场景。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -1410,7 +1410,7 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 ## GestureCollectIntervention
 
-定义手势和事件收集的干预操作类型。
+定义手势和事件收集的干预操作类型，适用于手势和事件收集过程中需要按优先级保留或丢弃部分手势的场景。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
@@ -1852,7 +1852,7 @@ type Nullable\<T> = T | undefined
 
 ## CompetitionStrategy<sup>24+</sup>
 
-定义分发的事件是否为竞争手势，竞争场景手势原始节点和目标节点只有一个节点会响应手势，非竞争场景可以同时响应。
+定义分发的事件是否为竞争手势，竞争场景下手势原始节点和目标节点只有一个节点会响应手势，非竞争场景下手势原始节点和目标节点可以同时响应。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

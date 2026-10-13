@@ -46,11 +46,11 @@ startWork(work: WorkInfo): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
+| 401 | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 9700001 | Memory operation failed. |
 | 9700002 | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
 | 9700003 | System service operation failed. |
-| 9700004 | Check on workInfo failed. |
+| 9700004 | Input param failed. |
 | 9700005 | Calling startWork failed. |
 
 **示例：**
@@ -137,11 +137,11 @@ stopWork(work: WorkInfo, needCancel?: boolean): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
+| 401 | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 9700001 | Memory operation failed. |
 | 9700002 | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
 | 9700003 | System service operation failed. |
-| 9700004 | Check on workInfo failed. |
+| 9700004 | Input param failed. |
 
 **示例：**
 
@@ -230,11 +230,11 @@ ArkTS-Sta: getWorkStatus(workId: int, callback : AsyncCallback\<WorkInfo>): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401 | Parameter error. Possible causes: Parameter verification failed. |
+| 401 | [Async] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 9700001 | Memory operation failed. |
 | 9700002 | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
 | 9700003 | System service operation failed. |
-| 9700004 | Check on workInfo failed. |
+| 9700004 | Input param failed. |
 
 **示例：**
 
@@ -300,11 +300,11 @@ ArkTS-Sta: getWorkStatus(workId: int): Promise\<WorkInfo>
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401 | Parameter error. Possible causes: Parameter verification failed. |
+| 401 | [Async] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 9700001 | Memory operation failed. |
 | 9700002 | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
 | 9700003 | System service operation failed. |
-| 9700004 | Check on workInfo failed. |
+| 9700004 | Input param failed. |
 
 **示例：**
 
@@ -363,7 +363,7 @@ obtainAllWorks(callback: AsyncCallback\<void>) : Array\<WorkInfo>
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| 401 | [Async] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 9700001 | Memory operation failed. |
 | 9700002 | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
 | 9700003 | System service operation failed. |
@@ -392,7 +392,7 @@ obtainAllWorks(callback: AsyncCallback&lt;Array&lt;WorkInfo&gt;&gt;): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| 401 | [Async] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 9700001 | Memory operation failed. |
 | 9700002 | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
 | 9700003 | System service operation failed. |
@@ -453,7 +453,7 @@ obtainAllWorks(): Promise\<Array\<WorkInfo>>
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| 401 | [Async] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 9700001 | Memory operation failed. |
 | 9700002 | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
 | 9700003 | System service operation failed. |
@@ -503,7 +503,7 @@ stopAndClearWorks(): void
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| 401 | [Sync] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 9700001 | Memory operation failed. |
 | 9700002 | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
 | 9700003 | System service operation failed. |
@@ -551,11 +551,11 @@ isLastWorkTimeOut(workId: number, callback : AsyncCallback\<void>): boolean
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401 | Parameter error. Possible causes: Parameter verification failed. |
+| 401 | [Async] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 9700001 | Memory operation failed. |
 | 9700002 | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
 | 9700003 | System service operation failed. |
-| 9700004 | Check on workInfo failed. |
+| 9700004 | Input param failed. |
 
 ## workScheduler.isLastWorkTimeOut<sup>10+</sup>
 
@@ -584,11 +584,11 @@ ArkTS-Sta: isLastWorkTimeOut(workId: int, callback: AsyncCallback\<boolean>): vo
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401 | Parameter error. Possible causes: Parameter verification failed. |
+| 401 | [Async] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 9700001 | Memory operation failed. |
 | 9700002 | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
 | 9700003 | System service operation failed. |
-| 9700004 | Check on workInfo failed. |
+| 9700004 | Input param failed. |
 
 **示例：**
 
@@ -654,11 +654,11 @@ ArkTS-Sta: isLastWorkTimeOut(workId: int): Promise\<boolean>
 
 | 错误码ID  | 错误信息             |
 | ---- | --------------------- |
-| 401 | Parameter error. Possible causes: Parameter verification failed. |
+| 401 | [Async] Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 9700001 | Memory operation failed. |
 | 9700002 | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
 | 9700003 | System service operation failed. |
-| 9700004 | Check on workInfo failed. |
+| 9700004 | Input param failed. |
 
 **示例：**
 
