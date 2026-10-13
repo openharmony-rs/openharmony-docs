@@ -8361,7 +8361,7 @@ for (let i = 0; i < spans.length; i++) {
 }
 ```
 
-### CapitalizeMode<sup>20+</sup>
+## CapitalizeMode<sup>20+</sup>
 
 枚举，定义了文本首字母大写的不同模式。
 
@@ -8378,7 +8378,7 @@ for (let i = 0; i < spans.length; i++) {
 | WORDS | 2 | 每个单词的首字母大写。|
 | CHARACTERS | 3 | 每个字母都大写。|
 
-### EditorAttribute
+## EditorAttribute
 
 编辑框属性值。
 
