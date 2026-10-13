@@ -979,7 +979,7 @@ console.info(`has sim card: ` + hasSimCard);
 
 getSimAccountInfo\(slotId: number, callback: AsyncCallback\<IccAccountInfo\>\): void
 
-获取SIM卡账户信息。使用callback异步回调。
+获取SIM卡账户信息，对于支持eSIM的设备，可获取指定slotID对应eSIM的激活状态，slotID与eSIM号码的对应关系需调用getSimLabel接口动态查询。使用callback异步回调。
 
 **需要权限**：ohos.permission.GET_TELEPHONY_STATE
 
@@ -993,7 +993,7 @@ getSimAccountInfo\(slotId: number, callback: AsyncCallback\<IccAccountInfo\>\): 
 
 | 参数名   | 类型                                                | 必填 | 说明                                   |
 | -------- | --------------------------------------------------- | ---- | -------------------------------------- |
-| slotId   | number                                              | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId   | number                                              | 是   | 卡槽ID。对于支持eSIM的设备，该值表示逻辑卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 | callback | AsyncCallback&lt;[IccAccountInfo](#iccaccountinfo10)&gt; | 是   | 回调函数。返回指定卡槽SIM卡的账户信息。                             |
 
 **错误码：**
@@ -1030,7 +1030,7 @@ sim.getSimAccountInfo(0, (err:BusinessError , data: sim.IccAccountInfo) => {
 
 getSimAccountInfo\(slotId: number\): Promise\<IccAccountInfo\>
 
-获取SIM卡账户信息。使用Promise异步回调。
+获取SIM卡账户信息，对于支持eSIM的设备，可获取指定slotID对应eSIM的激活状态，slotID与eSIM号码的对应关系需调用getSimLabel接口动态查询。使用Promise异步回调。
 
 **需要权限**：ohos.permission.GET_TELEPHONY_STATE
 
@@ -1044,7 +1044,7 @@ getSimAccountInfo\(slotId: number\): Promise\<IccAccountInfo\>
 
 | 参数名 | 类型   | 必填 | 说明                                   |
 | ------ | ------ | ---- | -------------------------------------- |
-| slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId | number | 是   | 卡槽ID。对于支持eSIM的设备，该值表示逻辑卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 
 **返回值：**
 
@@ -1531,7 +1531,7 @@ promise.then((data: number) => {
 
 getSimLabel(slotId: number, callback: AsyncCallback\<SimLabel\>): void
 
-获取SIM卡的标签信息。使用callback异步回调。
+获取SIM卡的标签信息，对于支持eSIM的设备，可获取指定slotID对应eSIM的激活状态，slotID与eSIM号码的对应关系需调用getSimLabel接口动态查询。使用callback异步回调。
 
 **系统能力**：SystemCapability.Telephony.CoreService
 
@@ -1539,7 +1539,7 @@ getSimLabel(slotId: number, callback: AsyncCallback\<SimLabel\>): void
 
 | 参数名   | 类型                     | 必填 | 说明                                     |
 | -------- | ------------------------ | ---- | ---------------------------------------- |
-| slotId | number                      | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId | number                      | 是   | 卡槽ID。对于支持eSIM的设备，该值表示逻辑卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 | callback | AsyncCallback\<[SimLabel](#simlabel20)\> | 是   | 回调函数。获取SIM卡标签信息。 |
 
 **错误码：**
@@ -1573,7 +1573,7 @@ sim.getSimLabel(0, (err: BusinessError, data: sim.SimLabel) => {
 
 getSimLabel(slotId: number): Promise\<SimLabel\>
 
-获取SIM卡的标签信息。使用Promise异步回调。
+获取SIM卡的标签信息，对于支持eSIM的设备，可获取指定slotID对应eSIM的激活状态，slotID与eSIM号码的对应关系需调用getSimLabel接口动态查询。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Telephony.CoreService
 
@@ -1582,7 +1582,7 @@ getSimLabel(slotId: number): Promise\<SimLabel\>
 
 | 参数名   | 类型                     | 必填 | 说明                                     |
 | -------- | ------------------------ | ---- | ---------------------------------------- |
-| slotId | number                      | 是   | 卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
+| slotId | number                      | 是   | 卡槽ID。对于支持eSIM的设备，该值表示逻辑卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。 |
 
 **返回值：**
 
@@ -1711,7 +1711,7 @@ Icc账户信息。
 | 名称       | 类型    | 只读|可选| 说明             |
 | ---------- | ------- | ---- |--- |---------------- |
 | simId      | number  |  否 |否 | SIM卡ID。与SIM卡绑定，从1开始递增。          |
-| slotIndex  | number  |  否  |否 | 卡槽ID。 <br/>- 0：卡槽1。<br/>- 1：卡槽2。|
+| slotIndex  | number  |  否  |否 | 卡槽ID。对于支持eSIM的设备，该值表示逻辑卡槽ID。<br/>- 0：卡槽1。<br/>- 1：卡槽2。|
 | isEsim     | boolean |  否 | 否| 标记卡是否是eSIM。<br/>- true：是eSIM。<br/>- false：不是eSIM。 |
 | isActive   | boolean |  否 | 否| 卡是否被激活。<br/>- true：激活。<br/>- false：未激活。  |
 | iccId      | string  |  否 | 否| ICCID号码。        |
