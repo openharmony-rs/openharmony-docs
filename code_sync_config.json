@@ -68424,5 +68424,40 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/form/arkts-ui-widget-event-formeditextensionability.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/pages/FormEditExtension.ets",
+				"functions":[
+					{
+						"end_line":136,
+						"name":"FormEditDemo_FormEditExtension",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Form/FormEditDemo/entry/src/main/ets/entryformability/EntryFormAbility.ets",
+				"functions":[
+					{
+						"end_line":49,
+						"name":"FormEditDemo_EntryFormAbility",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Form/FormEditUIAbility/entry/src/main/ets/pages/FormEditIndex.ets",
+				"functions":[
+					{
+						"end_line":85,
+						"name":"FormEditUIAbility_FormEditIndex",
+						"start_line":15
+					}
+				]
+			}
+		]
 	}
 ]
