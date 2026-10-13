@@ -15,16 +15,19 @@
     {
       "forms": [
         {
-          "name": "WidgetUpdateByStatus",
-          "description": "$string:UpdateByStatusFormAbility_desc",
-          "src": "./ets/widgetupdatebystatus/pages/WidgetUpdateByStatusCard.ets",
+          "name": "widget",
+          "displayName": "$string:widget_display_name",
+          "description": "$string:widget_desc",
+          "src": "./ets/widget/pages/WidgetCard.ets",
           "uiSyntax": "arkts",
           "window": {
             "designWidth": 720,
             "autoDesignWidth": true
           },
+          "colorMode": "auto",
+          "isDynamic": true,
           "isDefault": true,
-          "updateEnabled": true,
+          "updateEnabled": false,
           "scheduledUpdateTime": "10:30",
           "updateDuration": 0,
           "defaultDimension": "2*2",
