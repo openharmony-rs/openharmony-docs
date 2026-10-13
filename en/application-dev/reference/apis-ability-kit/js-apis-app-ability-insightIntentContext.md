@@ -4,10 +4,11 @@
 <!--Subsystem: Ability-->
 <!--Owner: @linjunjie6-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=3fd4ce7a5c67181f86ea16d43fd6b218e3e30f2f translatedAt=2026-10-09T10:55:35.106Z pushedAt=2026-10-12T07:34:49.873Z -->
 
-The module provides the context for intent execution. It is used as a property in both the [intent execution base class](./js-apis-app-ability-insightIntentExecutor.md) and [base class decorated with @InsightIntentEntry](./js-apis-app-ability-InsightIntentEntryExecutor.md), offering essential capabilities for intent implementation, for example, starting [UIAbility components](./js-apis-app-ability-uiAbility.md) within the same application.
+This module provides the intent execution context, which is an attribute of the [intent execution base class](./js-apis-app-ability-insightIntentExecutor.md) and the [intent execution base class of @InsightIntentEntry](./js-apis-app-ability-InsightIntentEntryExecutor.md). It provides basic capabilities for intent execution, for example, starting a [UIAbility](./js-apis-app-ability-uiAbility.md#uiability) component in the current application.
 
 > **NOTE**
 >
@@ -57,12 +58,12 @@ import { InsightIntentContext } from '@kit.AbilityKit';
             console.info('testTag setExecuteResult success');
           })
           .catch((error: BusinessError) => {
-            console.error(`testTag setExecuteResult fail1, error code: ${JSON.stringify(error)}`);
+            console.error(`Failed to setExecuteResult. Code: ${error.code}, message: ${error.message}`);
           });
       } catch (e) {
         let code = (e as BusinessError).code;
         let msg = (e as BusinessError).message;
-        console.error(`testTag setExecuteResult fail2, error code: ${JSON.stringify(code)}, error msg: ${JSON.stringify(msg)}`);
+        console.error(`testTag setExecuteResult fail2, error code: ${code}, error msg: ${msg}`);
       }
       return result;
     }
@@ -121,7 +122,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, Object>,
       pageLoader: window.WindowStage): insightIntent.ExecuteResult {
       let want: Want = {
-        bundleName: 'com.ohos.intentExecuteDemo',
+        bundleName: 'com.ohos.intentExecuteDemo', // This is only an example. In actual use, developers need to replace it with the real bundle name.
         moduleName: 'entry',
         abilityName: 'AnotherAbility',
       };
@@ -135,7 +136,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
           }
         })
       } catch (error) {
-        hilog.error(0x0000, 'testTag', 'Start ability error caught %{public}s', JSON.stringify(error));
+        const err: BusinessError = error as BusinessError;
+        console.error(`Failed to start ability. Code: ${err.code}, message: ${err.message}`);
       }
 
       let result: insightIntent.ExecuteResult = {
@@ -206,7 +208,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     async onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, Object>,
       pageLoader: window.WindowStage): Promise<insightIntent.ExecuteResult> {
       let want: Want = {
-        bundleName: 'com.ohos.intentExecuteDemo',
+        bundleName: 'com.ohos.intentExecuteDemo', // This is only an example. Replace it with the actual bundle name in real development.
         moduleName: 'entry',
         abilityName: 'AnotherAbility',
       };
@@ -215,7 +217,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
         await this.context.startAbility(want);
         hilog.info(0x0000, 'testTag', '%{public}s', 'Start ability finished');
       } catch (error) {
-        hilog.error(0x0000, 'testTag', 'Start ability error caught %{public}s', JSON.stringify(error));
+        const err: BusinessError = error as BusinessError;
+        console.error(`Failed to start ability. Code: ${err.code}, message: ${err.message}`);
       }
 
       let result: insightIntent.ExecuteResult = {
@@ -235,9 +238,9 @@ setReturnModeForUIAbilityForeground(returnMode: insightIntent.ReturnMode): void
 
 Sets the return mode of the intent execution result. This API is applicable to intents with the execution mode set to [UI_ABILITY_FOREGROUND](./js-apis-app-ability-insightIntent.md#executemode).
 
-**Model restriction**: This API can be used only in the stage model.
-
 **Atomic service API**: This API can be used in atomic services since API version 23.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
@@ -261,6 +264,7 @@ For details about the error codes, see [Ability Error Codes](errorcode-ability.m
   import { InsightIntentExecutor, insightIntent } from '@kit.AbilityKit';
   import { window } from '@kit.ArkUI';
   import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
 
   export default class InsightIntentExecutorUI extends InsightIntentExecutor {
     onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, Object>,
@@ -277,9 +281,8 @@ For details about the error codes, see [Ability Error Codes](errorcode-ability.m
       try {
         this.context.setReturnModeForUIAbilityForeground(insightIntent.ReturnMode.FUNCTION);
       } catch (error) {
-        let code = (error as BusinessError).code;
-        let msg = (error as BusinessError).message;
-        console.error(`testTag setReturnModeForUIAbilityForeground fail, error code: ${code}, err msg: ${msg}.`);
+        const err: BusinessError = error as BusinessError;
+        console.error(`Failed to setReturnModeForUIAbilityForeground. Code: ${err.code}, message: ${err.message}`);
       }
 
       let localStorageData: Record<string, number> = {
@@ -329,6 +332,7 @@ For details about the error codes, see [Ability Error Codes](errorcode-ability.m
   ```ts
   import { InsightIntentExecutor, insightIntent, UIExtensionContentSession } from '@kit.AbilityKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
 
   export default class InsightIntentExecutorUI extends InsightIntentExecutor {
     onExecuteInUIExtensionAbility(name: string, param: Record<string, Object>,
@@ -357,9 +361,8 @@ For details about the error codes, see [Ability Error Codes](errorcode-ability.m
         storage.setOrCreate('session', pageLoader);
         pageLoader.loadContent('pages/UIExtensionPage', storage);
       } catch (err) {
-        let code = (err as BusinessError).code;
-        let msg = (err as BusinessError).message;
-        console.info(`testTag loadContent error code: ${code}, error msg: ${msg}.`);
+        const error: BusinessError = err as BusinessError;
+        console.error(`Failed to loadContent. Code: ${error.code}, message: ${error.message}`);
       }
       return result;
     }
