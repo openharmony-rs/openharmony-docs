@@ -86,7 +86,7 @@ target_link_libraries(sample PUBLIC libOpenSLES.so)
    (*engineObject)->Realize(engineObject, SL_BOOLEAN_FALSE);
    ```
 
-3. 获取SL_IID_ENGINE接口。
+3. 获取SL_IID_ENGINE对应的引擎接口句柄。
      
    ```cpp
    SLEngineItf engineItf = nullptr;
@@ -131,7 +131,7 @@ target_link_libraries(sample PUBLIC libOpenSLES.so)
    (*pcmCapturerObject)->Realize(pcmCapturerObject, SL_BOOLEAN_FALSE);
    ```
 
-5. 获取SL_IID_RECORD对应的录音接口实例，并将其保存到recordItf变量中。
+5. 获取SL_IID_RECORD对应的录音接口句柄。
      
    ```cpp
    SLRecordItf  recordItf;
