@@ -6,6 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=4a0d60c413ad51190440217475c8f9ea1644f828 translatedAt=2026-10-13T01:50:23.510Z pushedAt=2026-10-13T02:01:17.556Z -->
 
 This topic uses AES-128, RSA-2048, SM2, and DES64 as examples to describe the encryption and decryption workflows. For details about the scenarios and supported algorithms, see [Supported Algorithms](huks-encryption-decryption-overview.md#supported-algorithms).
 
@@ -1104,7 +1105,7 @@ async function deleteKey() {
    * 1. Call deleteKeyItem to delete the key.
    */
   await huks.deleteKeyItem(rsaKeyAlias, emptyOptions)
-    .then((data) => {
+    .then(() => {
       console.info(`promise: delete data success`);
     }).catch((error: BusinessError) => {
       console.error(`promise: delete data failed, errCode : ${error.code}, errMsg : ${error.message}`);

@@ -6,7 +6,7 @@
 <!--Designer: @yangcan18-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=89088668461d692ecc85a9b5fcd1dff18d08f4fe translatedAt=2026-08-01T00:30:35.750Z pushedAt=2026-08-03T03:06:38.641Z -->
+<!-- md-trans-meta sourceCommit=485c49665b1165bb81113c1b8eb962f9b8520f99 translatedAt=2026-10-12T09:28:47.061Z pushedAt=2026-10-13T08:39:26.698Z -->
 
 This component is supported since API version 18. An arc list is a specialized list designed for circular screens. It can efficiently display information in a structured and scrollable form. For details, see [ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md).
 
@@ -32,13 +32,13 @@ ArcList({
 }
 ```
 
->**NOTE**
+> **NOTE**
 >
->The child components of the [ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md) must be [ArcListItem](../reference/apis-arkui/arkui-ts/ts-container-arclistitem.md). [ArcListItem](../reference/apis-arkui/arkui-ts/ts-container-arclistitem.md) must be used in conjunction with [ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md).
+> [ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md) supports only [ArcListItem](../reference/apis-arkui/arkui-ts/ts-container-arclistitem.md) and [custom components](state-management/arkts-create-custom-components.md) as child components. ArcListItem must be used together with ArcList. When using a custom component, use ArcListItem as the top-level component of the custom component. Do not set attributes and event methods directly on the custom component, because ArcList manages the layout and event handling of child components through ArcListItem. Setting them directly may cause some features to not work properly.
 
 ## Displaying Data in the ArcList Component
 
-The **ArcList** component displays a collection of items vertically and provides scrolling functionality when items exceed the screen boundaries. This makes it ideal for displaying large datasets. In the simplest form of an **ArcList**, the list items, **ArcListItem**, are statically created within the **ArcList**.
+The [ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md) component displays a collection of items vertically and provides scrolling functionality when items exceed the screen boundaries. This makes it ideal for displaying large datasets. In the simplest form of an **ArcList**, the list items, [ArcListItem](../reference/apis-arkui/arkui-ts/ts-container-arclistitem.md), are statically created within the **ArcList**.
 
 <!-- @[arcListShow_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListShow.ets) -->
 
@@ -248,7 +248,7 @@ You can add a custom header to an ArcList using the [header](../reference/apis-a
 1. Construct the custom header component, **customHeader**.
 
    <!-- @[create_customHeader_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListStyles.ets) -->
-
+   
    ``` TypeScript
    @Builder
    function customHeader() {
@@ -263,7 +263,7 @@ You can add a custom header to an ArcList using the [header](../reference/apis-a
 2. Wrap the custom header component. This step is required because the [header](../reference/apis-arkui/arkui-ts/ts-container-arclist.md#arklistoptions) parameter expects a [ComponentContent](../reference/apis-arkui/js-apis-arkui-ComponentContent.md) type.
 
    <!-- @[componentContent_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListStyles.ets) -->
-
+   
    ``` TypeScript
    context: UIContext = this.getUIContext();
    arcListHeader: ComponentContent<Object> = new ComponentContent(this.context, wrapBuilder(customHeader));
@@ -272,7 +272,7 @@ You can add a custom header to an ArcList using the [header](../reference/apis-a
 3. Set the **arcListHeader** to the **ArcList** component using the [header](../reference/apis-arkui/arkui-ts/ts-container-arclist.md#arklistoptions) parameter.
 
    <!-- @[arcListHeader_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListStyles.ets) -->
-
+   
    ``` TypeScript
    ArcList({ header: this.arcListHeader }) {
      ArcListItem() {
@@ -342,7 +342,7 @@ ArcList({ header: this.arcListHeader }) {
 .scrollBarColor(ColorMetrics.numeric(Color.White))
 ```
 
-  **Figure 6** Built-in scrollbar of the ArcList component
+  **Figure 6** Built-in scrollbar of the ArcList component 
 
 ![arcList_scrollBar](figures/arcList_scrollBar.gif)
 
@@ -353,7 +353,7 @@ To add an external scrollbar to an [ArcList](../reference/apis-arkui/arkui-ts/ts
 1. Create a [Scroller](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scroller) object named **arcListScroller**.
 
    <!-- @[create_arcListScroller_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListAcrScrollBar.ets) -->
-
+   
    ``` TypeScript
    private arcListScroller: Scroller = new Scroller();
    ```
@@ -361,7 +361,7 @@ To add an external scrollbar to an [ArcList](../reference/apis-arkui/arkui-ts/ts
 2. Bind the **arcListScroller** object to the **ArcList** component using the [scroller](../reference/apis-arkui/arkui-ts/ts-container-arclist.md#arklistoptions) parameter.
 
    <!-- @[bind_arcList_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListAcrScrollBar.ets) -->
-
+   
    ``` TypeScript
    // Use arcListScroller to initialize the scroller parameter to bind it with the ArcList component.
    ArcList({ scroller: this.arcListScroller, header: this.arcListHeader }) {
@@ -372,13 +372,13 @@ To add an external scrollbar to an [ArcList](../reference/apis-arkui/arkui-ts/ts
 3. Bind the **arcListScroller** object to the **ArcScrollBar** component using the [scroller](../reference/apis-arkui/arkui-ts/ts-basic-components-arcscrollbar.md#arcscrollbaroptions) parameter.
 
    <!-- @[bind_arcScrollBar_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListAcrScrollBar.ets) -->
-
+   
    ``` TypeScript
    // Use arcListScroller to initialize the scroller parameter to bind it with the ArcScrollBar component.
    ArcScrollBar({ scroller: this.arcListScroller })
    ```
 
-  **Figure 7** External scrollbar of the ArcList component
+  **Figure 7** External scrollbar of the ArcList component 
 
 ![arcScrollBar](figures/arcScrollBar.gif)
 
@@ -394,7 +394,8 @@ As shown in Figure 8, when the list scrolls from contacts starting with "A" to t
 
 During list scrolling, the corresponding letter position **indexerIndex** in the alphabet index bar is recalculated based on the current index position **centerIndex** of the list. Since the [ArcAlphabetIndexer](../reference/apis-arkui/arkui-ts/ts-container-arc-alphabet-indexer.md) component sets the selected item index through the [selected](../reference/apis-arkui/arkui-ts/ts-container-arc-alphabet-indexer.md#selected) attribute, a change in **indexerIndex** triggers the [ArcAlphabetIndexer](../reference/apis-arkui/arkui-ts/ts-container-arc-alphabet-indexer.md) component to re-render, thereby displaying the corresponding letter in the selected state.
 
-When an index item is selected, the selected item index (**index**) is used to recalculate the corresponding position in the list. The list is then scrolled to that position using the [scrollToIndex](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scrolltoindex) API of the bound scroll controller (**arcListScroller**). The [ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md) component can be bound to a [Scroller](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scroller) (scroll controller) object using the [scroller](../reference/apis-arkui/arkui-ts/ts-container-arclist.md#arklistoptions) parameter.
+When an index item is selected, the selected item index (**index**) is used to recalculate the corresponding position in the list. The list is then scrolled to that position using the [scrollToIndex](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scrolltoindex) API of the bound scroller (**arcListScroller**). The [ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md) component can be bound to a [Scroller](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#scroller) (scroller) object using the [scroller](../reference/apis-arkui/arkui-ts/ts-container-arclist.md#arklistoptions) parameter.
+
 
 <!-- @[arcAlphabetIndexer_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListArcIndexerBar.ets) -->
 
@@ -460,6 +461,7 @@ export struct ArcListArcIndexerBar {
 }
 ```
 
+
   **Figure 8** Interaction between the ArcList and ArcAlphabetIndexer
 
 ![arcAlphabetIndexer](figures/arcAlphabetIndexer.gif)
@@ -473,7 +475,7 @@ In the contact list, the **end** parameter specifies the custom component that s
 1. Build the component that appears from the end edge when the list item is swiped left.
 
    <!-- @[create_SideSlip_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListSideSlip.ets) -->
-
+   
    ``` TypeScript
    @Builder
    itemEnd(item: Contact) {
@@ -502,10 +504,12 @@ In the contact list, the **end** parameter specifies the custom component that s
    }
    ```
 
+
 2. Bind the [swipeAction](../reference/apis-arkui/arkui-ts/ts-container-arclistitem.md#swipeaction) attribute to the **ArcListItem** that can be swiped left.
 
-   <!-- @[bind_swipeAction_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListSideSlip.ets) -->
 
+   <!-- @[bind_swipeAction_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListSideSlip.ets) -->
+   
    ``` TypeScript
    // When constructing an ArcList component, use ForEach to render list items based on the data source this.contacts.
    ArcListItem() {
@@ -521,6 +525,7 @@ In the contact list, the **end** parameter specifies the custom component that s
    }) // Set the swipe action.
    ```
 
+
   **Figure 9** Swipe-to-delete feature
 
 ![arcListItem_swipeAction](figures/arcListItem_swipeAction.gif)
@@ -531,6 +536,7 @@ While [ForEach](../ui/rendering-control/arkts-rendering-control-foreach.md) is s
 
 When the list is rendered in lazy loading mode, to improve the list scrolling experience and minimize white blocks during list scrolling, you can use the [cachedCount](../reference/apis-arkui/arkui-ts/ts-container-arclist.md#cachedcount) attribute of the [ArcList](../reference/apis-arkui/arkui-ts/ts-container-arclist.md) component. This attribute sets the number of cached list items and is valid only in [LazyForEach](../ui/rendering-control/arkts-rendering-control-lazyforeach.md).
 
+
 <!-- @[arcLongList_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcLongList.ets) -->
 
 ``` TypeScript
@@ -538,6 +544,7 @@ ArcList() {
   // ···
 }.cachedCount(3)
 ```
+
 
 >**NOTE**
 >
@@ -548,6 +555,10 @@ ArcList() {
 ## Responding to Digital Crown Rotations
 
 On wearable devices, the **ArcList** component can respond to digital crown rotations when it is in focus. Users can scroll through the list items by rotating the crown. To make the **ArcList** the default focus on the page and enable it to respond to crown rotations, you can use the following [focus control](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md) attributes:
+
+> **NOTE**
+>
+> Setting only the default focus-related attributes does not guarantee that ArcList gains focus. ArcList must also contain a focusable leaf node component. For details, see [Setting Whether a Component Can Gain Focus](arkts-common-events-focus-event.md#setting-whether-a-component-is-focusable).
 
 <!-- @[arcListCrown_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcList/ArcListCrown.ets) -->
 

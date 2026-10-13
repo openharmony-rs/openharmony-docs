@@ -32,7 +32,7 @@
 
       - [Importing a Key in Plaintext (C/C++)](huks-import-key-in-plaintext-ndk.md)
 
-      - [Importing Keys in Secure Mode (ArkTS)](huks-import-wrapped-key-arkts.md)
+      - [Importing a Key in Secure Mode (ArkTS)](huks-import-wrapped-key-arkts.md)
 
       - [Importing a Key in Secure Mode (C/C++)](huks-import-wrapped-key-ndk.md)
 

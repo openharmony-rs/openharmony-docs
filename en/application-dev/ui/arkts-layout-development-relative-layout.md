@@ -1,12 +1,11 @@
 # Relative Layout (RelativeContainer)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @fenglinbailu-->
-<!--Designer: @lanshouren-->
+<!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=c8954d33bacbdec6df88d8586db7cc9b9d8a799e translatedAt=2026-08-04T06:34:51.336Z pushedAt=2026-08-04T07:32:59.686Z -->
+<!-- md-trans-meta sourceCommit=658da9133a9f18875ee10ae0571197f654869bb4 translatedAt=2026-10-12T09:32:11.992Z pushedAt=2026-10-13T07:11:57.066Z -->
 
 ## Overview
 
@@ -14,11 +13,14 @@ During app development, complex UIs often require nesting multiple components of
 
 The relative layout, implemented using the **RelativeContainer** container component, is used to lay out child elements in relative positions. It is applicable to element alignment in complex scenarios. A child element can use either the container itself or another child element as an anchor to determine its relative position. When using anchors, pay attention to the relative positions of child elements to prevent misplacement or overlapping. The following figure illustrates the concept of **RelativeContainer**, where the dotted lines indicate positional dependencies.
 
-  **Figure 1** Relative layout 
+
+  **Figure 1** Relative layout
 
 ![relative-layout](figures/relative-layout.png)
 
+
 A child element does not necessarily adopt the dependency shown above to determine its relative position. For example, Item4 may use Item2 or the **RelativeContainer** parent container as a dependency anchor.
+
 
 ## Basic Concepts
 
@@ -33,6 +35,7 @@ A child element does not necessarily adopt the dependency shown above to determi
 - Guideline: virtual horizontal or vertical anchors created within a container to facilitate even alignment of elements along a specified offset.
 
 - Barrier: the outermost boundary of a group of specified components in a particular direction within a container. For example, the barrier below a group of components corresponds to the bottom boundary of those components.
+
 
 ## Setting Dependencies
 
@@ -62,7 +65,7 @@ To properly define an anchor, each child element in **RelativeContainer** must h
 - The parent **RelativeContainer** component serves as an anchor, with __container__ representing the parent container's component ID.
 
   <!-- @[RelativeContainerParentComponentId_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerParentComponentId.ets) -->
-
+  
   ``` TypeScript
   let alignRus: Record<string, Record<string, string | VerticalAlign | HorizontalAlign>> = {
     'top': { 'anchor': '__container__', 'align': VerticalAlign.Top },
@@ -111,7 +114,7 @@ To properly define an anchor, each child element in **RelativeContainer** must h
 - Example of using a sibling element as the anchor:
 
   <!-- @[RelativeContainerSiblingComponentId_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerSiblingComponentId.ets) -->
-
+  
   ``` TypeScript
   let alignRus001: Record<string, Record<string, string | VerticalAlign | HorizontalAlign>> = {
     'top': { 'anchor': '__container__', 'align': VerticalAlign.Top },
@@ -160,7 +163,7 @@ To properly define an anchor, each child element in **RelativeContainer** must h
 - Make sure the anchors of a child component do not depend on each other.
 
   <!-- @[RelativeContainerChildComponentId_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerChildComponentId.ets) -->
-
+  
   ``` TypeScript
   @Entry
   @Component
@@ -247,7 +250,7 @@ Vertical alignment modes include top, center, and bottom, implemented using **Ve
 After relative alignment, a child component may not yet reach the target position. You can set an additional offset as needed. When a component whose position is adjusted using offset serves as an anchor, the alignment position is the position before the offset is applied. Starting from API version 11, the [Bias](../reference/apis-arkui/arkui-ts/ts-types.md#bias11) object is introduced. It is recommended to use bias to set additional offsets in API version 11 and later. For an example of using bias, see [Example 4: Applying Vertical Offsets](../reference/apis-arkui/arkui-ts/ts-container-relativecontainer.md#example-4-applying-vertical-offsets).
 
   <!-- @[RelativeContainerChildComponentOffset_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerChildComponentOffset.ets) -->
-
+  
   ``` TypeScript
   @Entry
   @Component
@@ -371,7 +374,7 @@ After relative alignment, a child component may not yet reach the target positio
 You can set components in multiple layout components, such as [Row](../reference/apis-arkui/arkui-ts/ts-container-row.md), [Column](../reference/apis-arkui/arkui-ts/ts-container-column.md), [Flex](../reference/apis-arkui/arkui-ts/ts-container-flex.md), and [Stack](../reference/apis-arkui/arkui-ts/ts-container-stack.md), to be aligned based on the **RelativeContainer** rules.
 
   <!-- @[RelativeContainerDifferentComponentId_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerDifferentComponentId.ets) -->
-
+  
   ``` TypeScript
   @Entry
   @Component
@@ -453,7 +456,6 @@ When both the child component size and relative layout rules are specified in th
 >
 > * If the child component size cannot be determined based on constraints and the component's **size** attribute, the component will not be rendered.
 > * When two or more anchors are set in the same direction, if the positional sequence of these anchors is incorrect, the child component will be treated as having a zero size and will not be rendered.
-
 <!-- @[RelativeContainerComponentSize_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MultipleLayoutProject/entry/src/main/ets/pages/relativecontainerlayout/RelativeContainerComponentSize.ets) -->
 
 ``` TypeScript
@@ -552,12 +554,11 @@ struct RelativeAlignRulesExample {
 
   ![Simplify-Component-Layout](figures/arkts-simplify-component-layout-image4.png)
 
+
 ## Creating a Component Chain
 
 Chain formation relies on associations between components. Consider a basic horizontal chain comprising components A and B. The dependency relationship is as follows: Anchor 1 <-- Component A <---> Component B --> Anchor 2, where A has a left anchor, B has a right anchor, A's right anchor aligns with B's [HorizontalAlign](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#horizontalalign).Start, and B's left anchor aligns with A's [HorizontalAlign](../reference/apis-arkui/arkui-ts/ts-appendix-enums.md#horizontalalign).End.
-
 * The chain direction and format are declared in the [chainMode](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#chainmode12) API of the chain header component. The **bias** attribute for all elements within the chain is ignored, with only the chain header element's **bias** attribute taking effect as the bias for the entire chain. The chain header is the first component that satisfies chain formation rules. It starts from the left in horizontal layouts (or from the right in mirrored language layouts), and from the top in vertical layouts.
-
 * If the total size of all elements in a chain exceeds the anchor constraints of the chain, the excess is evenly distributed to both sides of the chain. In a [PACKED](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#chainstyle12) chain, you can use [Bias](../reference/apis-arkui/arkui-ts/ts-types.md#bias11) to set the distribution of the excess.
 
 In the following example, nine **Row** components within the container are grouped into three horizontal chains using **alignRules** and **chainMode**. Components **row1**, **row2**, and **row3** are top-aligned and form a SPREAD chain horizontally; components within the chain are evenly distributed between anchors. Components **row4**, **row5**, and **row6** are centered vertically based on the container and form a SPREAD_INSIDE chain horizontally; the first and last components are aligned with anchors, and others are evenly distributed within the chain. Components **row7**, **row8**, and **row9** are bottom-aligned and form a PACKED chain horizontally; components within the chain have no gaps between them.
@@ -716,9 +717,7 @@ struct RelativeChainModeExample {
 Guidelines are virtual horizontal or vertical anchors within a container, designed to align components at specific offset positions.
 
 Guidelines are categorized into vertical and horizontal types. For vertical guidelines, the **start** and **end** attributes define the distances from the container's left and right sides, respectively. For horizontal guidelines, these attributes specify distances from the container's top and bottom sides, respectively.
-
 * If both **start** and **end** attributes are set, the **start** attribute takes precedence when the two rules conflict.
-
 * If the container size in a particular direction is set to **"auto"**, the guideline position in that direction must be specified using the **start** attribute, and the value cannot be a percentage.
 
 In the following example code, a vertical guideline named **guideline1** is positioned 50 vp from the container's left side, and a horizontal guideline named **guideline2** is positioned 50 vp from the container's top. Row1 is aligned using these two guidelines, requiring no additional bias configuration.
@@ -885,5 +884,3 @@ struct Index {
 ```
 
 ![relative container](figures/relativecontainer10.png)
-
-<!--no_check-->

@@ -5,6 +5,7 @@
 <!--Designer: @zhanghaibo0-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=dfc4b4cbbfd636b15b323266c14e73471edab887 translatedAt=2026-10-12T09:37:53.903Z pushedAt=2026-10-13T03:41:08.699Z -->
 
 The [Menu](arkts-popup-and-menu-components-menu.md) component is a great option for creating menus, but it relies on a bound UI component to work. Since API version 18, however, the global API [openMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#openmenu18) offers a more flexible solution. This API can be used directly or encapsulated in scenarios where no bound UI components are available, making it ideal for use cases such as event callbacks or when integrating with external systems.
 

@@ -6,7 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=ffc5e2859dca1ab6a17f6a8a1c145390f67cf1d5 translatedAt=2026-10-10T03:28:25.530Z pushedAt=2026-10-10T03:30:42.216Z -->
+<!-- md-trans-meta sourceCommit=4a0d60c413ad51190440217475c8f9ea1644f828 translatedAt=2026-10-13T01:52:12.654Z pushedAt=2026-10-13T02:56:28.144Z -->
 
 This topic describes how to import a key, using AES256, RSA2048, and X25519 keys as examples. For details about the scenarios and supported algorithm specifications, see [Supported Algorithms](huks-key-import-overview.md#supported-algorithms).
 
@@ -28,7 +28,7 @@ This topic describes how to import a key, using AES256, RSA2048, and X25519 keys
 
 ``` TypeScript
 
-/* Import an AES 256-bit key in plaintext. This example uses callback-based APIs. */
+/* The following uses the callback operation for importing an AES-256 key as an example. */
 import { huks } from '@kit.UniversalKeystoreKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -62,15 +62,11 @@ async function importKeyItem(keyAlias: string, huksOptions: huks.HuksOptions): P
   console.info('promise: enter importKeyItem');
   let ret: boolean = false;
   try {
-    await huks.importKeyItem(keyAlias, huksOptions)
-      .then(() => {
-        console.info(`promise: importKeyItem success`);
-        ret = true;
-      }).catch((error: BusinessError) => {
-        console.error(`promise: importKeyItem failed errCode : ${error.code}, errMsg : ${error.message}`);
-      })
+    await huks.importKeyItem(keyAlias, huksOptions);
+    console.info(`promise: importKeyItem success`);
+    ret = true;
   } catch (error) {
-    console.error(`promise: importKeyItem input arg invalid`);
+    console.error(`promise: importKeyItem failed errCode : ${(error as BusinessError).code}, errMsg : ${(error as BusinessError).message}`);
   }
   return ret;
 }
@@ -90,7 +86,7 @@ async function testImport() {
 <!-- @[import_keys_in_plaintext_RSA2048](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/ImportKeyPlainText/entry/src/main/ets/pages/RSA2048.ets) -->
 
 ``` TypeScript
-/* Import an RSA 2048-bit key in plaintext. This example uses callback-based APIs. */
+/*The following uses the callback operation for importing an RSA2048 key as an example. */
 import { huks } from '@kit.UniversalKeystoreKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -168,15 +164,11 @@ async function importKeyItem(keyAlias: string, huksOptions: huks.HuksOptions): P
   console.info('promise: enter importKeyItem');
   let ret: boolean = false;
   try {
-    await huks.importKeyItem(keyAlias, huksOptions)
-      .then(() => {
-        console.info(`promise: importKeyItem success`);
-        ret = true;
-      }).catch((error: BusinessError) => {
-        console.error(`promise: importKeyItem failed errCode : ${error.code}, errMsg : ${error.message}`);
-      })
+    await huks.importKeyItem(keyAlias, huksOptions);
+    console.info(`promise: importKeyItem success`);
+    ret = true;
   } catch (error) {
-    console.error(`promise: importKeyItem input arg invalid`);
+    console.error(`promise: importKeyItem failed errCode : ${(error as BusinessError).code}, errMsg : ${(error as BusinessError).message}`);
   }
   return ret;
 }
@@ -196,7 +188,7 @@ async function testImport() {
 <!-- @[import_keys_in_plaintext_X25519](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/ImportKeyPlainText/entry/src/main/ets/pages/X25519.ets) -->
 
 ``` TypeScript
-/* Import the public key of an X25519 key pair. This example uses callback-based APIs. */
+/* The following uses the callback operation for importing an X25519 key as an example. */
 import { huks } from '@kit.UniversalKeystoreKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -236,15 +228,11 @@ async function importKeyItem(keyAlias: string, huksOptions: huks.HuksOptions): P
   console.info('promise: enter importKeyItem');
   let ret: boolean = false;
   try {
-    await huks.importKeyItem(keyAlias, huksOptions)
-      .then(() => {
-        console.info(`promise: importKeyItem success`);
-        ret = true;
-      }).catch((error: BusinessError) => {
-        console.error(`promise: importKeyItem failed errCode : ${error.code}, errMsg : ${error.message}`);
-      })
+    await huks.importKeyItem(keyAlias, huksOptions);
+    console.info(`promise: importKeyItem success`);
+    ret = true;
   } catch (error) {
-    console.error(`promise: importKeyItem input arg invalid`);
+    console.error(`promise: importKeyItem failed errCode : ${(error as BusinessError).code}, errMsg : ${(error as BusinessError).message}`);
   }
   return ret;
 }
