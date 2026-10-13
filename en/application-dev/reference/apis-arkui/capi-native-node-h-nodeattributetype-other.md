@@ -5,6 +5,7 @@
 <!--Designer: @piggyguy; @wangyang2022-->
 <!--Tester: @fredyuan912-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=5507e1768242465b3f1ec979da43223587d3e82f translatedAt=2026-10-10T09:53:39.983Z pushedAt=2026-10-13T01:33:29.845Z -->
 
 ```c
 enum ArkUI_NodeAttributeType
@@ -26,7 +27,7 @@ Enumerates the attribute types that can be set by ArkUI on the native side, incl
 NODE_ENABLED = 6
 ```
 
-Interactivity attribute, which can be set, reset, and obtained as required through APIs.<br>
+Whether the component can interact with users. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
@@ -35,13 +36,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Whether the component can interact with users. The value **true** indicates that the component can interact with users, and **false** indicates the opposite.|
+| .value[0].i32 | Whether the component can interact with users. The value **1** indicates that the component can interact with users, and **0** indicates the opposite. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Whether the component can interact with users. The value **1** indicates that the component can interact with users, and **0** indicates the opposite.|
+| .value[0].i32 | Whether the component can interact with users. The value **1** indicates that the component can interact with users, and **0** indicates the opposite. |
 
 ## NODE_FOCUSABLE
 
@@ -49,7 +50,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_FOCUSABLE = 39
 ```
 
-Focus attribute, which can be set, reset, and obtained as required through APIs.<br>
+Whether the component is focusable. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
@@ -58,13 +59,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Whether the component is focusable. The value **1** indicates that the component is focusable, and **0** indicates the opposite. The default value is **0**.|
+| .value[0].i32 | Whether the component is focusable. The value **1** indicates that the component is focusable, and **0** indicates the opposite. The default value is **0**. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Whether the component is focusable. The value **1** indicates that the component is focusable, and **0** indicates the opposite.|
+| .value[0].i32 | Whether the component is focusable. The value **1** indicates that the component is focusable, and **0** indicates the opposite. |
 
 ## NODE_RENDER_GROUP
 
@@ -81,13 +82,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Whether the component and its child components are rendered off the screen and then drawn together with its parent. The value **1** means that the component and its child components are rendered off the screen and then drawn together with its parent, and **0** means the opposite. The default value is **0**.|
+| .value[0].i32 | Whether the component and its child components are rendered off the screen and then drawn together with its parent. The value **1** means that the component and its child components are rendered off the screen and then drawn together with its parent, and **0** means the opposite. The default value is **0**. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Whether the component and its child components are rendered off the screen and then drawn together with its parent. The value **1** means that the component and its child components are rendered off the screen and then drawn together with its parent, and **0** means the opposite.|
+| .value[0].i32 | Whether the component and its child components are rendered off the screen and then drawn together with its parent. The value **1** means that the component and its child components are rendered off the screen and then drawn together with its parent, and **0** means the opposite. |
 
 ## NODE_CLICK_DISTANCE
 
@@ -104,7 +105,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].f32 | Allowed moving distance of a finger, in vp.|
+| .value[0].f32 | Distance threshold within which the finger is allowed to move when a click gesture is recognized, in vp. The value range is [0, +∞). |
 
 ## NODE_ALLOW_FORCE_DARK
 
