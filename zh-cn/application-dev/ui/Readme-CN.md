@@ -169,6 +169,7 @@
     - [进度条 (Progress)](arkts-common-components-progress-indicator.md)
   - 使用弹窗<!--arkts-use-dialog-->
      - [弹窗概述](arkts-dialog-overview.md)
+     - [弹窗迁移指南（@ohos.arkui.dialog）](arkui-dialog-migration-guide.md)
      - 弹出框 (Dialog)<!--arkts-use-dialogs-->
        - [弹出框概述](arkts-base-dialog-overview.md)
        - [不依赖UI组件的全局自定义弹出框 (openCustomDialog)](arkts-uicontext-custom-dialog.md)
