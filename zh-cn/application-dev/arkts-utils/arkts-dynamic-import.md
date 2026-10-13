@@ -1,8 +1,16 @@
+---
+kits: ["ArkTS Kit / 方舟编程语言"]
+description: "介绍动态import机制及其技术适用场景，说明通过动态import实现条件延迟加载、部分反射功能以及加载HSP/HAR/ohpm包/Native库的方法，并阐述HAR模块间变量动态import实现依赖解耦。"
+keywords: [动态import, 动态加载, 条件延迟加载, 反射, HAR模块, 模块解耦, HSP模块]
+doctype: guide
+status: active
+---
+
 # 动态加载
 
 <!--Kit: ArkTS-->
 <!--Subsystem: ArkCompiler-->
-<!--Owner: @jokerxd-liu; @zmw1-->
+<!--Owner: @jokerxd-liu-->
 <!--Designer: @huyunhui1; @zmw1-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
