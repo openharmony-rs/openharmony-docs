@@ -90,8 +90,8 @@ queryFunctions(): Promise\<Array\<FunctionInfo>>
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 201      | Permission denied.                                           |
-| 202      | Not system application.                                      |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.                                           |
+| 202      | Permission verification failed. A non-system application calls a system API.                                      |
 | 35600050 | System Error. 1. Connect to system service failed; 2. System service failed to communicate with dependency module. |
 
 **示例：**
@@ -149,8 +149,8 @@ invokeFunction(functionNamespace: string, functionName: string, args: Record\<st
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 35600050 | System Error. 1. Failed to connect to the system service; 2. The system service failed to communicate with the dependent module. |
 | 35600060 | The function does not exist. |

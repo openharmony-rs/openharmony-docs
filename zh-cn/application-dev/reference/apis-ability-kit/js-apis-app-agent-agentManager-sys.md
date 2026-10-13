@@ -49,8 +49,8 @@ getAllAgentCards(): Promise\<Array\<AgentCard>>
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 16000050 | Internal error. Possible causes: 1.Connect to system service failed. 2.System service failed to communicate with dependency module. |
 
 **示例：**
@@ -100,8 +100,8 @@ getAgentCardsByBundleName(bundleName: string): Promise\<Array\<AgentCard>>
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 16000050 | Internal error. Possible causes: 1.Connect to system service failed. 2.System service failed to communicate with dependency module. |
 | 18500001 | The bundle does not exist or no patch has been applied. |
 
@@ -155,8 +155,8 @@ getAgentCardByAgentId(bundleName: string, agentId: string): Promise\<AgentCard>
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 16000050 | Internal error. Possible causes: 1.Connect to system service failed. 2.System service failed to communicate with dependency module. |
 | 18500001 | The bundle does not exist or no patch has been applied. |
 | 35600001 | The specified agentId does not exist. |
@@ -224,8 +224,8 @@ connectAgentExtensionAbility(want: Want, agentId: string, callback: AgentExtensi
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201      | Permission denied. |
-| 202      | Not system application. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
 | 16000004 | Cannot start an invisible component. |
@@ -333,8 +333,8 @@ notifyLowCodeAgentComplete(agentId: string): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201      | Permission denied. |
-| 202      | Not system application. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 16000050 | Internal error. Possible causes: 1.Connect to system service failed. 2.System service failed to communicate with dependency module. |
 | 35600001 | The specified agentId does not exist. |
 
@@ -399,7 +399,7 @@ ArkTS-Sta: connectServiceExtensionAbility(context: AgentExtensionContext, want: 
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 202      | Not system application. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
 | 16000004 | Cannot start an invisible component. |
@@ -528,7 +528,7 @@ ArkTS-Dyn: disconnectServiceExtensionAbility(context: AgentExtensionContext, con
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 202      | Not system application. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 16000011 | The context does not exist. |
 | 16000050 | Internal error. Possible causes: 1.Connect to system service failed. 2.System service failed to communicate with dependency module. |
 
@@ -616,8 +616,8 @@ registerAgentCard(agentCard: AgentCard): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201      | Permission denied. |
-| 202      | Not system application. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
 | 16000050 | Internal error. Possible causes: 1.Connect to system service failed. 2.System service failed to communicate with dependency module. |
@@ -702,8 +702,8 @@ updateAgentCard(agentCard: AgentCard): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201      | Permission denied. |
-| 202      | Not system application. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 16000001 | The specified ability does not exist. |
 | 16000002 | Incorrect ability type. |
 | 16000050 | Internal error. Possible causes: 1.Connect to system service failed. 2.System service failed to communicate with dependency module. |
@@ -785,8 +785,8 @@ deleteAgentCard(bundleName: string, agentId: string): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201      | Permission denied. |
-| 202      | Not system application. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 16000050 | Internal error. Possible causes: 1.Connect to system service failed. 2.System service failed to communicate with dependency module. |
 | 35600001 | The specified agentId does not exist. |
 
@@ -840,8 +840,8 @@ disconnectAgentExtensionAbility(proxy: AgentProxy): Promise\<void>
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201      | Permission denied. |
-| 202      | Not system application. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 16000050 | Internal error. Possible causes: 1.Connect to system service failed. 2.System service failed to communicate with dependency module. |
 
 **示例：**
