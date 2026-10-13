@@ -2845,51 +2845,51 @@ struct Index {
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
+
 ### 属性
  
 | 名称                  | 类型                                                             | 只读 | 可选 | 说明             |
 |----------------------|--------------------------------------------------------------------|------|------|-------------------|
-| accessibilityFocused | boolean | 是 | 是 | 表示元素是否因无障碍目的获得焦点。true表示已获得焦点，false表示未获得焦点。<br>默认值：false。|
-| checkable | boolean | 是 | 是 | 元素是否可勾选。true表示可勾选，false表示不可勾选。<br>默认值：false。|
-| isChecked | boolean | 是 | 是 | 元素是否已勾选。true表示已勾选，false表示未勾选。<br>默认值：false。|
-| clickable | boolean | 是 | 是 | 元素是否可点击。true表示可点击，false表示不可点击。<br>默认值：false。|
-| componentId | number | 是 | 是 | 元素所属组件的ID。-1表示的是一个非法的组件ID。<br>默认值：-1。|
-| componentType | string | 是  | 是  | 元素所属组件的类型。默认值为空。<br>例如：<br>- 按钮Button类型->'Button'。<br>- 图片Image类型->'Image'。|
+| accessibilityFocused | boolean | 是 | 是 | 表示元素是否因无障碍目的获得焦点。<br>默认值为false。true表示已获得焦点，false表示未获得焦点。|
+| checkable | boolean | 是 | 是 | 元素是否可勾选。true表示可勾选，false表示不可勾选。<br>默认值为false。|
+| isChecked | boolean | 是 | 是 | 元素是否已勾选。true表示已勾选，false表示未勾选。<br>默认值为false。|
+| clickable | boolean | 是 | 是 | 元素是否可点击。true表示可点击，false表示不可点击。<br>默认值为false。|
+| componentId | number | 是 | 是 | 元素所属组件的ID。<br>默认值为-1。-1表示的是一个非法的组件ID。|
+| componentType | string | 是  | 是  | 元素所属组件的类型。默认值为空。<br>例如：<br>- 按钮Button类型的元素，该属性值为'Button'。<br>- 图片Image类型的元素，该属性值为'Image'。|
 | accessibilityDescription | string | 是  | 是  | 元素的描述信息。|
-| editable | boolean | 是 | 是 | 元素是否可编辑。true表示可编辑，false表示不可编辑。<br>默认值：false。|
-| error | string | 否  | 是  | 元素的错误状态。|
-| focusable | boolean | 是 | 是 | 元素是否可获得焦点。true表示可获得焦点，false表示不可获得焦点。<br>默认值：false。|
-| hintText | string | 是  | 是  | 提示文本。|
-| identifier | string | 是  | 是  | 检查器键。|
-| isActive | boolean | 是 | 是 | 元素是否处于活动状态。true表示活动状态，false表示非活动状态。<br>默认值：true。|
-| isEnabled | boolean | 是 | 是 | 元素是否启用。true表示启用，false表示未启用。<br>默认值：false。|
-| isFocused | boolean | 是 | 是 | 表示元素是否已获得焦点。true表示已获得焦点，false表示未获得焦点。<br>默认值：false。|
-| isVisible | boolean | 是 | 是 | 元素是否可见。true表示元素可见，false表示元素不可见。<br>默认值：false。|
-| longClickable | boolean | 是 | 是 | 元素是否可长按。true表示可长按，false表示不可长按。<br>默认值：false。|
-| pageId | number | 是 | 是 | 页面ID。-1表示非法的页面ID。<br>默认值：-1。|
+| editable | boolean | 是 | 是 | 元素是否可编辑。true表示可编辑，false表示不可编辑。<br>默认值为false。|
+| error | string | 否  | 是  | 当元素处于错误状态时显示的错误文本。|
+| focusable | boolean | 是 | 是 | 元素是否可获得焦点。true表示可获得焦点，false表示不可获得焦点。<br>默认值为false。|
+| hintText | string | 是  | 是  | 输入框无输入时的提示文本。。|
+| identifier | string | 是  | 是  | 开发者自行设置的元素标识字段。|
+| isActive | boolean | 是 | 是 | 元素是否处于活动状态。true表示活动状态，false表示非活动状态。<br>默认值为true。|
+| isEnabled | boolean | 是 | 是 | 元素是否被启用。true表示启用，false表示未启用。<br>默认值为false。|
+| isFocused | boolean | 是 | 是 | 表示元素是否已获得焦点。true表示已获得焦点，false表示未获得焦点。<br>默认值为false。|
+| isVisible | boolean | 是 | 是 | 元素是否可见。true表示元素可见，false表示元素不可见。<br>默认值为false。|
+| longClickable | boolean | 是 | 是 | 元素是否可长按。true表示可长按，false表示不可长按。<br>默认值为false。|
+| pageId | number | 是 | 是 | 页面ID。<br>默认值为-1。-1表示非法的面ID页。|
 | rect                | [UIRect](#uirect)  | 是  | 是  | 元素的区域。|
-| scrollable          | boolean | 是  | 是  | 元素是否可滚动。true表示元素可滚动，false表示不可滚动。<br>默认值：false。|
-| selected         | boolean | 是 | 是  | 元素是否已选中。true表示已选中，false表示未选中。<br>默认值：false。|
+| scrollable          | boolean | 是  | 是  | 元素是否可滚动。true表示元素可滚动，false表示不可滚动。<br>默认值为false。|
+| selected         | boolean | 是 | 是  | 元素是否已选中。true表示已选中，false表示未选中。<br>默认值为false。|
 | text                 | string | 是  | 是  | 元素的文本内容。|
-| textLengthLimit      | number | 是  | 是  | 元素的最大文本长度。<br>默认值：0。|
-| valueMax             | number | 是  | 是  | 滑块组件的最大值。<br>默认值：0。|
-| valueMin            | number | 是  | 是  | 滑块组件的最小值。<br>默认值：0。|
-| valueNow            | number | 是  | 是  | 滑块组件的当前值。<br>默认值：0。|
-| offset            | number | 是 | 是  | 内容区域相对于可滚动组件（如List和Grid）顶部坐标的像素偏移量，单位为像素（px）。<br>默认值：0。|
+| textLengthLimit      | number | 是  | 是  | 元素的最大文本长度。<br>默认值为0，单位为字节。|
+| valueMax             | number | 是  | 是  | 滑块组件的最大值。<br>默认值为0。|
+| valueMin            | number | 是  | 是  | 滑块组件的最小值。<br>默认值为0。|
+| valueNow            | number | 是  | 是  | 滑块组件的当前值。<br>默认值为0。|
+| offset            | number | 是 | 是  | 内容区域相对于可滚动组件（如List和Grid）顶部坐标的像素偏移量，单位为像素（px）。<br>默认值为0。|
 | accessibilityText | string | 是  | 是  | 元素的无障碍文本信息。|
 | accessibilityStateDescription | string | 是 | 是  | 元素的自定义无障碍状态播报文本信息。|
 | accessibilityRole             | string  | 是 | 是  | 自定义组件类型。|
-| accessibilityNextFocusId            | number                | 是 | 是  | 下一个要获得焦点的组件的ID。<br>默认值：-1。|
-| accessibilityPreviousFocusId             | number                | 是 | 是  | 上一个要获得焦点的组件的ID。<br>默认值：-1。|
-| accessibilityScrollable            | boolean                 | 是 | 是  | 元素是否因无障碍目的而可滚动。此属性优先级高于scrollable。<br>true表示元素可滚动，false表示元素不可滚动。<br>默认值：true。|
-| accessibilityGroup  | boolean | 是 | 是  | 元素是否为无障碍组。true表示元素是无障碍组，false表示元素不是无障碍组。<br>默认值：false。|
-| accessibilityLevel             | string | 是 | 是  | 组件的无障碍级别。<br>- `auto`：当前组件由无障碍分组服务和ArkUI进行综合判断组件是否可被辅助功能识别。<br>- `yes`：当前组件可被辅助功能识别。<br>- `no`：当前组件不可被辅助功能识别。<br>'no-hide-descendants'：当前组件及其所有子组件不可被辅助功能识别。|
-| accessibilityVisible  | boolean | 是 | 是  | 该组件是否对辅助功能可见。与 isVisible 属性不同，该值是根据组件的可见性、屏幕坐标以及在辅助功能场景中的边框计算得出的。true表示可见，false表示不可见。<br>默认值：true|
-| parentId             | number | 是 | 是  | 组件的父元素ID。-1表示当前组件没有父元素。默认值：-1|
-| childrenIds             | Array\<number> | 是 | 是  | 组件的子元素ID列表。<br>默认值：空数组|
+| accessibilityNextFocusId            | number                | 是 | 是  | 下一个要获得焦点的组件的ID。<br>默认值为-1。-1表示没有设置下一个要获得焦点的组件ID。|
+| accessibilityPreviousFocusId             | number                | 是 | 是  | 上一个要获得焦点的组件的ID。<br>默认值为-1。-1表示没有设置下一个要获得焦点的组件ID。|
+| accessibilityScrollable            | boolean                 | 是 | 是  | 元素是否因无障碍目的而可滚动。此属性优先级高于scrollable，这意味着当此属性和scrollable属性值冲突时，此属性的值优先生效。<br>true表示元素可滚动，false表示元素不可滚动。<br>默认值为true。|
+| accessibilityGroup  | boolean | 是 | 是  | 元素是否为无障碍组。true表示元素是无障碍组，false表示元素不是无障碍组。<br>默认值为false。|
+| accessibilityLevel             | string | 是 | 是  | 组件的无障碍级别。<br>- `auto`：当前组件由无障碍分组服务和ArkUI进行综合判断组件是否可被辅助功能识别。<br>- `yes`：当前组件可被辅助功能识别。<br>- `no`：当前组件不可被辅助功能识别。<br>- `no-hide-descendants`：当前组件及其所有子组件不可被辅助功能识别。|
+| accessibilityVisible  | boolean | 是 | 是  | 该组件是否对辅助功能可见。true表示可见，false表示不可见。<br>与isVisible属性不同，该值是根据组件的可见性、屏幕坐标以及在辅助功能场景中的边框计算得出的。<br>默认值为true|
+| parentId             | number | 是 | 是  | 组件的父元素ID。-1表示当前组件没有父元素。默认值为-1|
+| childrenIds             | Array\<number> | 是 | 是  | 组件的子元素ID列表。<br>默认值为空数组|
 | customActions             | Array\<string>  | 是 | 是  | 元素支持的自定义操作列表。|
-
-**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 ## UIAccessibilityFocusChangeInfo
  
@@ -2924,7 +2924,7 @@ getFocusedUIAccessibilityElement(): Promise&lt;UIAccessibilityElement | undefine
 
 | 类型                                  | 说明                     |
 | ----------------------------------- | ---------------------- |
-| Promise&lt;UIAccessibilityElement \| undefined&gt; | Promise对象，返回当前应用内部无障碍聚焦节点的信息；结果为undefined时说明当前应用内部没有无障碍聚焦节点。 |
+| Promise&lt;[UIAccessibilityElement](#uiaccessibilityelement)\| undefined&gt; | Promise对象，返回当前应用内部无障碍聚焦节点的信息；结果为undefined时说明当前应用内部没有无障碍聚焦节点。 |
 
 **错误码：**
 
