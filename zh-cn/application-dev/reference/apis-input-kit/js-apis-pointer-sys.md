@@ -1,4 +1,4 @@
-# @ohos.multimodalInput.pointer (鼠标光标)(系统接口)
+# @ohos.multimodalInput.pointer (鼠标光标和光标类的外设)(系统接口)
 
 <!--Kit: Input Kit-->
 <!--Subsystem: MultimodalInput-->
@@ -7,13 +7,13 @@
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
 
-鼠标光标管理模块，用于查询和设置鼠标光标相关属性。
+本模块提供鼠标光标和光标类型外设的管理功能，用于查询和设置鼠标光标和光标类型外设的相关属性。
 
 > **说明**：
 >
 > - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.multimodalInput.pointer (鼠标光标)](js-apis-pointer.md)。
+> - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.multimodalInput.pointer (鼠标光标和光标类的外设)](js-apis-pointer.md)。
 
 ## 导入模块
 
