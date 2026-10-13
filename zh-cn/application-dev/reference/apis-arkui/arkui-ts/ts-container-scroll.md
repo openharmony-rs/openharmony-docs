@@ -1510,7 +1510,7 @@ getFrameNode(): FrameNode | undefined
 
 getScrollState(): [ScrollState](ts-container-list.md#scrollstate枚举说明)
 
-获取绑定到此Scroller的可滚动组件的当前滚动状态。
+获取滚动组件的当前滚动状态。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
 
