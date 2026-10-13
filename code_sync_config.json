@@ -26782,6 +26782,26 @@
 						"start_line":17
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets",
+				"functions":[
+					{
+						"end_line":277,
+						"name":"set_web_peer_render",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/NativeEmbedOverlay.ets",
+				"functions":[
+					{
+						"end_line":269,
+						"name":"native_embed_overlay",
+						"start_line":16
+					}
+				]
 			}
 		]
 	},
