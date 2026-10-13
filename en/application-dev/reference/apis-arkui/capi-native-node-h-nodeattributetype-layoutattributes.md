@@ -2,9 +2,10 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3; @zju_ljz; @camlostshi-->
-<!--Designer: @hehongyang3; @lanshouren-->
+<!--Designer: @hehongyang3; @fenglinbailu-->
 <!--Tester: @liuli0427; @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=57a52d2139f4e46425b5e67653d1d8a67878aa18 translatedAt=2026-10-10T09:44:20.117Z pushedAt=2026-10-12T08:39:08.833Z -->
 
 ```c
 enum ArkUI_NodeAttributeType
@@ -12,7 +13,7 @@ enum ArkUI_NodeAttributeType
 
 ## Overview
 
-Enumerates the layout attribute types that can be set by ArkUI on the native side, including size, size in percentage, paddings, margins, borders, positions, alignment, directions, constraints, Flex parameters, layout rules, and attributes related to layout components.
+Enumerates the layout attribute types that can be set by ArkUI on the native side, including size, size in percentage, paddings, margins, borders, positions, alignment, directions, constraints, Flex parameters, layout rules, and attributes related to layout components. It is applicable to scenarios requiring fine-grained component layout control, responsive layout adaptation, and complex layout on the native side. With these attributes, you can flexibly control the position, size, and alignment of components, solving layout issues such as component positioning, size adaptation, and alignment adjustment, thereby improving layout efficiency and flexibility.
 
 **Since**: 12
 
@@ -26,7 +27,7 @@ Enumerates the layout attribute types that can be set by ArkUI on the native sid
 NODE_WIDTH = 0
 ```
 
-Width attribute, which can be set, reset, and obtained as required through APIs.<br>
+Width attribute, which can be set (through [setAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setattribute)), reset (through [resetAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#resetattribute)), and obtained (through [getAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getattribute)) as required.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
@@ -35,7 +36,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].f32 | Width, in vp.|
+| .value[0].f32 | Width, in vp. Value range: [0, +∞). When an invalid value is set, the default value is used for display or the component size is abnormal. |
 
 **Returns**
 
@@ -49,7 +50,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_HEIGHT = 1
 ```
 
-Height attribute, which can be set, reset, and obtained as required through APIs.<br>
+Height attribute, which can be set (through [setAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setattribute)), reset (through [resetAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#resetattribute)), and obtained (through [getAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getattribute)) as required.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
@@ -58,7 +59,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].f32 | Height, in vp.|
+| .value[0].f32 | Height, in vp. Value range: [0, +∞). When an invalid value is set, the default value is displayed or the component size is abnormal. |
 
 **Returns**
 
@@ -72,27 +73,30 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_PADDING = 4
 ```
 
-Padding attribute, which can be set, reset, and obtained as required through APIs.<br>
+Padding attribute, which can be set (through [setAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setattribute)), reset (through [resetAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#resetattribute)), and obtained (through [getAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getattribute)) as required.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+**size** in the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) is invalid, and the actual returned **value** array length is always 4.<br>
 
 **Since**: 12
 
 **Parameters**
 
-1: Specify the same padding for the four directions.<br>
+One or four parameters can be passed:
+
+1: Specify the same padding for the four directions (top, bottom, left, and right).<br>
 
 | Name| Description|
 | -- | -- |
-| .value[0].f32 | Padding, in vp.|
+| .value[0].f32 | Padding for the four directions (top, bottom, left, and right), in vp. Value range: [0, +∞). When an invalid value is set, the default value **0vp** is used for display. |
 
-2: Specify different paddings for the four directions.<br>
+2: Specify different padding values for the four directions (top, bottom, left, and right).<br>
 
 | Name| Description|
 | -- | -- |
-| .value[0].f32 | Top padding, in vp. The default value is **0**.|
-| .value[1].f32 | Right padding, in vp. The default value is **0**.|
-| .value[2].f32 | Bottom padding, in vp. The default value is **0**.|
-| .value[3].f32 | Left padding, in vp. The default value is **0**.|
+| .value[0].f32 | Top padding, in vp. The default value is **0vp**. Value range: [0, +∞). When an invalid value is set, the default value **0vp** is used. |
+| .value[1].f32 | Right padding, in vp. The default value is **0vp**. Value range: [0, +∞). When an invalid value is set, the default value **0vp** is used. |
+| .value[2].f32 | Bottom padding, in vp. The default value is **0vp**. Value range: [0, +∞). When an invalid value is set, the default value **0vp** is used. |
+| .value[3].f32 | Left padding, in vp. The default value is **0vp**. Value range: [0, +∞). When an invalid value is set, the default value **0vp** is used. |
 
 **Returns**
 
@@ -109,27 +113,30 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_MARGIN = 7
 ```
 
-Margin attribute, which can be set, reset, and obtained as required through APIs.<br>
+Margin attribute, which can be set (through [setAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setattribute)), reset (through [resetAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#resetattribute)), and obtained (through [getAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getattribute)) as required.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+**size** in the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) is invalid, and the actual returned **value** array length is always 4.<br>
 
 **Since**: 12
 
 **Parameters**
 
-1: Specify the same margin for the four directions.<br>
+One or four parameters can be passed:
+
+1: Specify the same margin for the four directions (top, bottom, left, and right).<br>
 
 | Name| Description|
 | -- | -- |
-| .value[0].f32 | Margin, in vp.|
+| .value[0].f32 | Margin for the four directions (top, bottom, left, and right), in vp. Value range: [0, +∞). When an invalid value is set, the default value **0vp** is used for display. |
 
-2: Specify different margins for the four directions.<br>
+2: Specify different margins for the four directions (top, bottom, left, and right).<br>
 
 | Name| Description|
 | -- | -- |
-| .value[0].f32 | Top margin, in vp. The default value is **0**.|
-| .value[1].f32 | Right margin, in vp. The default value is **0**.|
-| .value[2].f32 | Bottom margin, in vp. The default value is **0**.|
-| .value[3].f32 | Left margin, in vp. The default value is **0**.|
+| .value[0].f32 | Top margin, in vp. The default value is **0vp**. Value range: [0, +∞). When an invalid value is set, the default value **0vp** is used for display. |
+| .value[1].f32 | Right margin, in vp. The default value is **0vp**. Value range: [0, +∞). When an invalid value is set, the default value **0vp** is used for display. |
+| .value[2].f32 | Bottom margin, in vp. The default value is **0vp**. Value range: [0, +∞). When an invalid value is set, the default value **0vp** is used for display. |
+| .value[3].f32 | Left margin, in vp. The default value is **0vp**. Value range: [0, +∞). When an invalid value is set, the default value **0vp** is used for display. |
 
 **Returns**
 
@@ -146,7 +153,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_ALIGNMENT = 15
 ```
 
-Alignment attribute, which can be set, reset, and obtained as required through APIs.<br>
+Alignment attribute for component content in the element drawing area, which can be set (through [setAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setattribute)), reset (through [resetAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#resetattribute)), and obtained (through [getAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getattribute)) as required.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
@@ -155,13 +162,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Alignment mode. The parameter type is [ArkUI_Alignment](capi-native-type-h.md#arkui_alignment). The default value is **ARKUI_ALIGNMENT_CENTER**.|
+| .value[0].i32 | Alignment mode. The parameter type is [ArkUI_Alignment](capi-layout-h.md#arkui_alignment). The default value is **ARKUI_ALIGNMENT_CENTER**. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Alignment mode. The parameter type is [ArkUI_Alignment](capi-native-type-h.md#arkui_alignment).|
+| .value[0].i32 | Alignment mode. The type is [ArkUI_Alignment](capi-layout-h.md#arkui_alignment). |
 
 ## NODE_BORDER_WIDTH
 
@@ -169,35 +176,38 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_BORDER_WIDTH = 17
 ```
 
-Border width attribute, which can be set, reset, and obtained as required through APIs.<br>
+Border width attribute, which can be set (through [setAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setattribute)), reset (through [resetAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#resetattribute)), and obtained (through [getAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getattribute)) as required.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+**size** in the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) is invalid, and the actual returned **value** array length is always 4.<br>
 
 **Since**: 12
 
 **Parameters**
 
-1. Specify the same width for the four borders.<br>
+One or four parameters can be passed:
+
+1: Specify the same width for the four borders.<br>
 | Name| Description|
 | -- | -- |
-| 1. .value[0].f32 | Width.|
+| .value[0].f32 | Width for the four borders, in vp. Value range: [0, +∞). The default value is **0vp**. | |
 
-2. Specify different width values for the four borders.<br>
+2: Specify different width values for the four borders.<br>
 
 | Name| Description|
 | -- | -- |
-| .value[0].f32 | Width of the top border.|
-| .value[1].f32 | Width of the right border.|
-| .value[2].f32 | Width of the bottom border.|
-| .value[3].f32 | Width of the left border.|
+| .value[0].f32 | Width of the top border, in vp. The default value is **0vp**. Value range: [0, +∞). |
+| .value[1].f32 | Width of the right border, in vp. The default value is **0vp**. Value range: [0, +∞). |
+| .value[2].f32 | Width of the bottom border, in vp. The default value is **0vp**. Value range: [0, +∞). |
+| .value[3].f32 | Width of the left border, in vp. The default value is **0vp**. Value range: [0, +∞). |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].f32 | Width of the top border.|
-| .value[1].f32 | Width of the right border.|
-| .value[2].f32 | Width of the bottom border.|
-| .value[3].f32 | Width of the left border.|
+| .value[0].f32 | Width of the top border, in vp. |
+| .value[1].f32 | Width of the right border, in vp. |
+| .value[2].f32 | Width of the bottom border, in vp. |
+| .value[3].f32 | Width of the left border, in vp. |
 
 ## NODE_BORDER_RADIUS
 
@@ -205,8 +215,9 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_BORDER_RADIUS = 18
 ```
 
-Border corner radius attribute, which can be set, reset, and obtained as required through APIs.<br>
+Border corner radius attribute, which can be set (through [setAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setattribute)), reset (through [resetAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#resetattribute)), and obtained (through [getAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getattribute)) as required.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+**size** in the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) is invalid, and the actual returned **value** array length is always 4.<br>
 
 **Since**: 12
 
@@ -214,29 +225,29 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 One or four parameters can be passed:
 
-Specify the same corner radius for the four borders.<br>
+1. Specify the same corner radius for the four borders.<br>
 
 | Name| Description|
 | -- | -- |
-| .value[0].f32 | Corner radius.|
+| .value[0].f32 | Corner radius for the four borders, in vp. Value range: [0, +∞). The default value is **0vp**. |
 
-Specify different corner radii for the four borders.<br>
+2. Specify different corner radii for the four borders.<br>
 
 | Name| Description|
 | -- | -- |
-| .value[0].f32 | Radius of the upper left corner.|
-| .value[1].f32 | Radius of the upper right corner.|
-| .value[2].f32 | Radius of the lower left corner.|
-| .value[3].f32 | Radius of the lower right corner.|
+| .value[0].f32 | Radius of the upper left corner, in vp. The default value is **0vp**. Value range: [0, +∞). |
+| .value[1].f32 | Radius of the upper right corner, in vp. The default value is **0vp**. Value range: [0, +∞). |
+| .value[2].f32 | Radius of the lower left corner, in vp. The default value is **0vp**. Value range: [0, +∞). |
+| .value[3].f32 | Radius of the lower right corner, in vp. The default value is **0vp**. Value range: [0, +∞). |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].f32 | Radius of the upper left corner.|
-| .value[1].f32 | Radius of the upper right corner.|
-| .value[2].f32 | Radius of the lower left corner.|
-| .value[3].f32 | Radius of the lower right corner.|
+| .value[0].f32 | Radius of the upper left corner, in vp. |
+| .value[1].f32 | Radius of the upper right corner, in vp. |
+| .value[2].f32 | Radius of the lower left corner, in vp. |
+| .value[3].f32 | Radius of the lower right corner, in vp. |
 
 ## NODE_BORDER_COLOR
 
@@ -244,45 +255,9 @@ Specify different corner radii for the four borders.<br>
 NODE_BORDER_COLOR = 19
 ```
 
-Border color attribute, which can be set, reset, and obtained as required through APIs.<br>
+Border color attribute, which can be set (through [setAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setattribute)), reset (through [resetAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#resetattribute)), and obtained (through [getAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getattribute)) as required.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
-
-**Since**: 12
-
-**Parameters**
-
-1. Specify the same color for the four borders.<br>
-
-| Name| Description|
-| -- | -- |
-| .value[0].u32 | Border color, in 0xARGB format, for example, **0xFFFF11FF**.|
-
-2. Specify different colors for the four borders.<br>
-
-| Name| Description|
-| -- | -- |
-| .value[0].u32 | Color of the top border, in 0xARGB format. The default value is **0xFF000000**.|
-| .value[1].u32 | Color of the right border, in 0xARGB format. The default value is **0xFF000000**.|
-| .value[2].u32 | Color of the bottom border, in 0xARGB format. The default value is **0xFF000000**.|
-| .value[3].u32 | Color of the left border, in 0xARGB format. The default value is **0xFF000000**.|
-
-**Returns**
-
-| Type| Description|
-| -- | -- |
-| .value[0].u32 | Color of the top border, in 0xARGB format, for example, **0xFFFF11FF**.|
-| .value[1].u32 | Color of the right border, in 0xARGB format, for example, **0xFFFF11FF**.|
-| .value[2].u32 | Color of the bottom border, in 0xARGB format, for example, **0xFFFF11FF**.|
-| .value[3].u32 | Color of the left border, in 0xARGB format, for example, **0xFFFF11FF**.|
-
-## NODE_BORDER_STYLE
-
-```c
-NODE_BORDER_STYLE = 20
-```
-
-Border line style attribute, which can be set, reset, and obtained as required through APIs.<br>
-The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+**size** in the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) is invalid, and the actual returned **value** array length is always 4.<br>
 
 **Since**: 12
 
@@ -290,13 +265,53 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 One or four parameters can be passed:
 
-Specify the same line style for the four borders.<br>
+1: Specify the same color for the four borders.<br>
+
+| Name| Description|
+| -- | -- |
+| .value[0].u32 | Color for the four borders, in 0xARGB format, for example, `0xFFFF11FF`. |
+
+2: Specify different colors for the four borders.<br>
+
+| Name| Description|
+| -- | -- |
+| .value[0].u32 | Color of the top border, in 0xARGB format. The default value is `0xFF000000`. |
+| .value[1].u32 | Color of the right border, in 0xARGB format. The default value is `0xFF000000`. |
+| .value[2].u32 | Color of the bottom border, in 0xARGB format. The default value is `0xFF000000`. |
+| .value[3].u32 | Color of the left border, in 0xARGB format. The default value is `0xFF000000`. |
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| .value[0].u32 | Color of the top border, in 0xARGB format, for example, `0xFFFF11FF`. |
+| .value[1].u32 | Color of the right border, in 0xARGB format, for example, `0xFFFF11FF`. |
+| .value[2].u32 | Color of the bottom border, in 0xARGB format, for example, `0xFFFF11FF`. |
+| .value[3].u32 | Color of the left border, in 0xARGB format, for example, `0xFFFF11FF`. |
+
+## NODE_BORDER_STYLE
+
+```c
+NODE_BORDER_STYLE = 20
+```
+
+Border line style attribute, which can be set (through [setAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setattribute)), reset (through [resetAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#resetattribute)), and obtained (through [getAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getattribute)) as required.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+**size** in the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) is invalid, and the actual returned **value** array length is always 4.<br>
+
+**Since**: 12
+
+**Parameters**
+
+One or four parameters can be passed:
+
+1: Specify the same line style for the four borders.<br>
 
 | Name| Description|
 | -- | -- |
 | .value[0].i32 | Border line style. The parameter type is [ArkUI_BorderStyle](capi-native-type-h.md#arkui_borderstyle). The default value is **ARKUI_BORDER_STYLE_SOLID**.|
 
-Specify different line styles for the four borders.<br>
+2: Specify different line styles for the four borders.<br>
 
 | Name| Description|
 | -- | -- |
@@ -309,10 +324,10 @@ Specify different line styles for the four borders.<br>
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Line style of the top border.|
-| .value[1].i32 | Line style of the right border.|
-| .value[2].i32 | Line style of the bottom border.|
-| .value[3].i32 | Line style of the left border.|
+| .value[0].i32 | Line style of the top border. The parameter type is [ArkUI_BorderStyle](capi-native-type-h.md#arkui_borderstyle). |
+| .value[1].i32 | Line style of the right border. The parameter type is [ArkUI_BorderStyle](capi-native-type-h.md#arkui_borderstyle). |
+| .value[2].i32 | Line style of the bottom border. The parameter type is [ArkUI_BorderStyle](capi-native-type-h.md#arkui_borderstyle). |
+| .value[3].i32 | Line style of the left border. The parameter type is [ArkUI_BorderStyle](capi-native-type-h.md#arkui_borderstyle). |
 
 ## NODE_POSITION
 
@@ -320,8 +335,9 @@ Specify different line styles for the four borders.<br>
 NODE_POSITION = 27
 ```
 
-Offset of the component's upper left corner relative to the parent container's. This attribute can be set, reset, and obtained as required through APIs.<br>
+Offset of the component's upper left corner relative to the parent container's. This attribute can be set (through [setAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setattribute)), reset (through [resetAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#resetattribute)), and obtained (through [getAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#getattribute)) as required.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+**size** in the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) is invalid, and the actual returned **value** array length is always 4.<br>
 
 **Since**: 12
 
@@ -329,15 +345,15 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].f32 | X-coordinate.|
-| .value[1].f32 | Y-coordinate.|
+| .value[0].f32 | X-coordinate, in vp. Value range: (-∞, +∞). |
+| .value[1].f32 | Y-coordinate, in vp. Value range: (-∞, +∞). |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].f32 | X-coordinate.|
-| .value[1].f32 | Y-coordinate.|
+| .value[0].f32 | X-coordinate, in vp. |
+| .value[1].f32 | Y-coordinate, in vp. |
 
 ## NODE_DIRECTION
 
@@ -345,7 +361,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_DIRECTION = 47
 ```
 
-Direction of the main axis. This attribute can be set, reset, and obtained as required through APIs.<br>
+Direction of the main axis within the container element. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
@@ -354,13 +370,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Direction of the main axis. The parameter type is [ArkUI_Direction](capi-native-type-h.md#arkui_direction). The default value is **ARKUI_DIRECTION_AUTO**.|
+| .value[0].i32 | Direction of the main axis, which is used to set the arrangement direction of child components in the container. The parameter type is [ArkUI_Direction](capi-layout-h.md#arkui_direction). The default value is **ARKUI_DIRECTION_AUTO**. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Direction of the main axis. The parameter type is [ArkUI_Direction](capi-native-type-h.md#arkui_direction).|
+| .value[0].i32 | Direction of the main axis. The parameter type is [ArkUI_Direction](capi-layout-h.md#arkui_direction). |
 
 ## NODE_CONSTRAINT_SIZE
 
@@ -368,8 +384,9 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_CONSTRAINT_SIZE = 48
 ```
 
-Size constraints. This attribute can be set, reset, and obtained as required through APIs.<br>
+Size constraint attribute, used to restrict the size range during component layout. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+**size** in the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) is invalid, and the actual returned **value** array length is always 4.<br>
 
 **Since**: 12
 
@@ -377,10 +394,10 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].f32 | Minimum width, in vp.|
-| .value[1].f32 | Maximum width, in vp.|
-| .value[2].f32 | Minimum height, in vp.|
-| .value[3].f32 | Maximum height, in vp.|
+| .value[0].f32 | Minimum width, in vp. Value range: [0, +∞). Default value: **0**. |
+| .value[1].f32 | Maximum width, in vp. Value range: [0, +∞). Default value: no limit. |
+| .value[2].f32 | Minimum height, in vp. Value range: [0, +∞). Default value: **0**. |
+| .value[3].f32 | Maximum height, in vp. Value range: [0, +∞). Default value: no limit. |
 
 **Returns**
 
@@ -397,7 +414,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_OFFSET = 54
 ```
 
-Offset of the component's child relative to the component. This attribute can be set, reset, and obtained as required through APIs.<br>
+Additional offset of a component's child element relative to the component itself. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
@@ -406,15 +423,15 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].f32 | Offset along the x-axis, in vp.|
-| .value[1].f32 | Offset along the y-axis, in vp.|
+| .value[0].f32 | Offset along the x-axis, in vp. Value range: (-∞, +∞). Default value: **0**. |
+| .value[1].f32 | Offset along the y-axis, in vp. Value range: (-∞, +∞). Default value: **0**. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].f32 | Offset along the x-axis, in vp.|
-| .value[1].f32 | Offset along the y-axis, in vp.|
+| .value[0].f32 | X-axis offset relative to the component itself, in vp. |
+| .value[1].f32 | Y-axis offset relative to the component itself, in vp. |
 
 ## NODE_MARK_ANCHOR
 
@@ -422,7 +439,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_MARK_ANCHOR = 55
 ```
 
-Anchor for locating the component's child. This attribute can be set, reset, and obtained as required through APIs.<br>
+Anchor of a component's child element during locating. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
@@ -431,15 +448,15 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].f32 | X-coordinate of the anchor, in vp.|
-| .value[1].f32 | Y-coordinate of the anchor, in vp.|
+| .value[0].f32 | X-coordinate of the anchor, in vp. Value range: (-∞, +∞). Default value: **0**. |
+| .value[1].f32 | Y-coordinate of the anchor, in vp. Value range: (-∞, +∞). Default value: **0**. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].f32 | X-coordinate of the anchor, in vp.|
-| .value[1].f32 | Y-coordinate of the anchor, in vp.|
+| .value[0].f32 | X-coordinate of the anchor in the component's coordinate system, in vp. |
+| .value[1].f32 | Y-coordinate of the anchor in the component's coordinate system, in vp. |
 
 ## NODE_ALIGN_RULES
 
@@ -447,7 +464,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_ALIGN_RULES = 57
 ```
 
-Alignment rules of the child components in the relative container. This attribute can be set, reset, and obtained as required through APIs.<br>
+Alignment rules of the child components in the relative container. This attribute can be set, reset, and obtained as required through APIs. This attribute takes effect only when the parent container is a RelativeContainer.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
@@ -456,7 +473,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .object | Alignment rules of the child components in the relative container. The parameter type is [ArkUI_AlignmentRuleOption](capi-arkui-nativemodule-arkui-alignmentruleoption.md).|
+| .object | Alignment rules of the child components in the relative container. The parameter type is [ArkUI_AlignmentRuleOption](capi-arkui-nativemodule-arkui-alignmentruleoption.md). |
 
 **Returns**
 
@@ -470,7 +487,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_ALIGN_SELF = 58
 ```
 
-Alignment mode of the child components along the cross axis of the parent container. This attribute can be set, reset, and obtained as required through APIs.<br>
+Alignment mode of the child component along the cross axis of the parent container. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
@@ -479,13 +496,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Alignment mode of the child components along the cross axis of the parent container. The parameter type is [ArkUI_ItemAlignment](capi-native-type-h.md#arkui_itemalignment). The default value is **ARKUI_ITEM_ALIGNMENT_AUTO**.|
+| .value[0].i32 | Alignment mode of the child component along the cross axis of the parent container, used to change the position of the child component along the cross axis. The parameter type is [ArkUI_ItemAlignment](capi-layout-h.md#arkui_itemalignment). The default value is **ARKUI_ITEM_ALIGNMENT_AUTO**. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Alignment mode of the child components along the cross axis of the parent container. The parameter type is [ArkUI_ItemAlignment](capi-native-type-h.md#arkui_itemalignment).|
+| .value[0].i32 | Alignment mode of the child component along the cross axis of the parent container. The parameter type is [ArkUI_ItemAlignment](capi-layout-h.md#arkui_itemalignment). |
 
 ## NODE_FLEX_GROW
 
@@ -502,7 +519,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].f32 | Percentage of the parent container's remaining space that is allocated to the component.|
+| .value[0].f32 | Percentage of the parent container's remaining space that is allocated to the component. Value range: [0, +∞). Default value: **0**. |
 
 **Returns**
 
@@ -525,7 +542,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].f32 | Percentage of the parent container's shrink size that is allocated to the current component.|
+| .value[0].f32 | Percentage of the parent container's shrink size that is allocated to the current component. Value range: [0, +∞). Default value: **1**. |
 
 **Returns**
 
@@ -548,13 +565,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].f32 | Base size of the component on the main axis of the parent container.|
+| .value[0].f32 | Base size of the component on the main axis of the parent container, in vp. Value range: [0, +∞). Default value: **auto**. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].f32 | Base size of the component on the main axis of the parent container.|
+| .value[0].f32 | Base size of the component on the main axis of the parent container, in vp. |
 
 ## NODE_ASPECT_RATIO
 
@@ -571,13 +588,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].f32 | Aspect ratio of the component, in width/height format.|
+| .value[0].f32 | Aspect ratio of the component, in width/height format. Value range: (0, +∞). Default value: no aspect ratio constraint is set. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].f32 | Aspect ratio of the component, in width/height format.|
+| .value[0].f32 | Aspect ratio of the component, in width/height format. After being set, the component adjusts its size based on this ratio. |
 
 ## NODE_LAYOUT_WEIGHT
 
@@ -594,13 +611,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].u32 | Weight of the component along the main axis.|
+| .value[0].u32 | Layout weight of the component along the main axis, which determines the allocation ratio of the component in the remaining space. Value range: [0, +∞). Default value: **0**. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].u32 | Weight of the component along the main axis.|
+| .value[0].u32 | Layout weight of the component along the main axis, which determines the allocation ratio of the component in the remaining space. |
 
 ## NODE_DISPLAY_PRIORITY
 
@@ -618,13 +635,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].u32 | Display priority of the component in the layout container.|
+| .value[0].u32 | Display priority of the component in the layout container. Value range: [0, +∞). |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].u32 | Display priority of the component in the layout container.|
+| .value[0].u32 | Display priority of the component in the layout container. A larger value indicates a higher priority. When space is insufficient, components with higher priority are displayed first. |
 
 ## NODE_OUTLINE_WIDTH
 
@@ -632,7 +649,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_OUTLINE_WIDTH = 70
 ```
 
-Outline width of an element, which can be set, reset, and obtained as required through APIs.<br>
+Width of the outline of an element. The outline is not involved in component layout calculation and does not affect the component size. It is different from the border width. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
@@ -641,10 +658,10 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].f32 | Width of the left outline, in vp.|
-| .value[1].f32 | Width of the top outline, in vp.|
-| .value[2].f32 | Width of the right outline, in vp.|
-| .value[3].f32 | Width of the bottom outline, in vp.|
+| .value[0].f32 | Width of the left outline, in vp. Value range: [0, +∞). Default value: **0**. |
+| .value[1].f32 | Width of the top outline, in vp. Value range: [0, +∞). Default value: **0**. |
+| .value[2].f32 | Width of the right outline, in vp. Value range: [0, +∞). Default value: **0**. |
+| .value[3].f32 | Width of the bottom outline, in vp. Value range: [0, +∞). Default value: **0**. |
 
 **Returns**
 
@@ -670,7 +687,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].f32 | Width, in percentage.|
+| .value[0].f32 | Width, in percentage. Value range: (0, +∞). There is no default value. When not set, the size is determined by the component layout, using the width required by the child component's own content. When an invalid value is set, an error code is returned. |
 
 **Returns**
 
@@ -693,7 +710,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].f32 | Height, in percentage.|
+| .value[0].f32 | Height, in percentage. Value range: (0, +∞). There is no default value. When not set, the size is determined by the component layout, using the height required by the child component's own content. When an invalid value is set, an error code is returned. |
 
 **Returns**
 
@@ -709,18 +726,28 @@ NODE_PADDING_PERCENT = 73
 
 Padding attribute, which can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+**size** in the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) is invalid, and the actual returned **value** array length is always 4.<br>
 
 **Since**: 12
 
 **Parameters**
 
+One or four parameters can be passed:
+
+1: Specify the same padding for the four directions (top, bottom, left, and right).<br>
+
+| Name | Description |
+| -- | -- |
+| .value[0].f32 | Padding for the four directions, in percentage. The default value is **0**. Value range: [0, +∞). When an invalid value is set, the default value is used for display. |
+
+2: Specify different padding values for the four directions (top, bottom, left, and right).<br>
+
 | Name| Description|
 | -- | -- |
-| 1. .value[0].f32 | Padding, which is the same for the four directions, in percentage.|
-| 2. .value[0].f32 | Top padding, in percentage.|
-| .value[1].f32 | Right padding, in percentage.|
-| .value[2].f32 | Bottom padding, in percentage.|
-| .value[3].f32 | Left padding, in percentage.|
+| .value[0].f32 | Top padding, in percentage. Default value: **0**. Value range: [0, +∞). When an invalid value is set, the default value is used for display. |
+| .value[1].f32 | Right padding, in percentage. Default value: **0**. Value range: [0, +∞). When an invalid value is set, the default value is used for display. |
+| .value[2].f32 | Bottom padding, in percentage. Default value: **0**. Value range: [0, +∞). When an invalid value is set, the default value is used for display. |
+| .value[3].f32 | Left padding, in percentage. Default value: **0**. Value range: [0, +∞). When an invalid value is set, the default value is used for display. |
 
 **Returns**
 
@@ -739,18 +766,28 @@ NODE_MARGIN_PERCENT = 74
 
 Margin attribute, which can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+**size** in the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) is invalid, and the actual returned **value** array length is always 4.<br>
 
 **Since**: 12
 
 **Parameters**
 
+One or four parameters can be passed:
+
+1: Specify the same margin for the four directions (top, bottom, left, and right).<br>
+
+| Name | Description |
+| -- | -- |
+| .value[0].f32 | Margin for the four directions, in percentage. Default value: **0**. Value range: [0, +∞). When an invalid value is set, the default value is used for display. |
+
+2: Specify different margins for the four directions (top, bottom, left, and right).<br>
+
 | Name| Description|
 | -- | -- |
-| 1. .value[0].f32 | Margin, which is the same for the four directions, in percentage.|
-| 2. .value[0].f32 | Top margin, in percentage.|
-| .value[1].f32 | Right margin, in percentage.|
-| .value[2].f32 | Bottom margin, in percentage.|
-| .value[3].f32 | Left margin, in percentage.|
+| .value[0].f32 | Top margin, in percentage. Default value: **0**. Value range: [0, +∞). When an invalid value is set, the default value is used for display. |
+| .value[1].f32 | Right margin, in percentage. Default value: **0**. Value range: [0, +∞). When an invalid value is set, the default value is used for display. |
+| .value[2].f32 | Bottom margin, in percentage. Default value: **0**. Value range: [0, +∞). When an invalid value is set, the default value is used for display. |
+| .value[3].f32 | Left margin, in percentage. Default value: **0**. Value range: [0, +∞). When an invalid value is set, the default value is used for display. |
 
 **Returns**
 
@@ -767,7 +804,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_RELATIVE_LAYOUT_CHAIN_MODE = 76
 ```
 
-Parameters of the chain in which the component is the head. This attribute can be set, reset, and obtained as required through APIs. This attribute has effect only when the parent container is **RelativeContainer**.<br>
+Parameters of the chain in which the component is the head, used to control the distribution of multiple child components along the main axis or cross axis within a RelativeContainer. It is commonly used to implement scenarios where multiple components are evenly distributed along the same direction and maintain fixed spacing or alignment mode. This attribute can be set, reset, and obtained as required through APIs. This attribute takes effect only when the parent container is a RelativeContainer.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
@@ -776,15 +813,15 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Direction of the chain. The value is an enumerated value of [ArkUI_Axis](capi-native-type-h.md#arkui_axis).|
-| .value[1].i32 | Style of the chain. The value is an enumerated value of [ArkUI_RelativeLayoutChainStyle](capi-native-type-h.md#arkui_relativelayoutchainstyle).|
+| .value[0].i32 | Direction of the chain, used to set whether the chain is arranged horizontally or vertically. The value is an enumerated value of [ArkUI_Axis](capi-layout-h.md#arkui_axis). |
+| .value[1].i32 | Style of the chain, used to set the distribution mode of components within the chain. The value is an enumerated value of [ArkUI_RelativeLayoutChainStyle](capi-layout-h.md#arkui_relativelayoutchainstyle). |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Direction of the chain. The value is an enumerated value of [ArkUI_Axis](capi-native-type-h.md#arkui_axis).|
-| .value[1].i32 | Style of the chain. The value is an enumerated value of [ArkUI_RelativeLayoutChainStyle](capi-native-type-h.md#arkui_relativelayoutchainstyle).|
+| .value[0].i32 | Direction of the chain. The parameter type is [ArkUI_Axis](capi-layout-h.md#arkui_axis). |
+| .value[1].i32 | Style of the chain. The parameter type is [ArkUI_RelativeLayoutChainStyle](capi-layout-h.md#arkui_relativelayoutchainstyle). |
 
 ## NODE_SIZE
 
@@ -794,6 +831,7 @@ NODE_SIZE = 79
 
 Size attribute, which can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+**size** in the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) is invalid, and the actual returned **value** array length is always 4.<br>
 
 **Since**: 12
 
@@ -801,8 +839,8 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].f32 | Width, in vp.|
-| .value[1].f32 | Height, in vp.|
+| .value[0].f32 | Width, in vp. Value range: [0, +∞). |
+| .value[1].f32 | Height, in vp. Value range: [0, +∞). |
 
 **Returns**
 
@@ -826,10 +864,10 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | X-coordinate of the component, in px.|
-| .value[1].i32 | Y-coordinate of the component, in px.|
-| .value[2].i32 | Width of the component, in px.|
-| .value[3].i32 | Height of the component, in px.|
+| .value[0].i32 | X-coordinate of the component, in px. Value range: (-∞, +∞). |
+| .value[1].i32 | Y-coordinate of the component, in px. Value range: (-∞, +∞). |
+| .value[2].i32 | Width of the component, in px. Value range: [0, +∞). |
+| .value[3].i32 | Height of the component, in px. Value range: [0, +∞). |
 
 **Returns**
 
@@ -848,27 +886,37 @@ NODE_BORDER_WIDTH_PERCENT = 85
 
 Border width attribute, which can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+**size** in the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) is invalid, and the actual returned **value** array length is always 4.<br>
 
 **Since**: 12
 
 **Parameters**
 
+One or four parameters can be passed:
+
+1: Specify the same width for the four borders.<br>
+
+| Name | Description |
+| -- | -- |
+| .value[0].f32 | Width for the four borders, in percentage. Value range: [0, +∞). Default value: **0**. |
+
+2: Specify different width values for the four borders.<br>
+
 | Name| Description|
 | -- | -- |
-| 1. .value[0].f32 | Width, which is the same for the four borders, in percentage.|
-| 2. .value[0].f32 | Width of the top border, in percentage.|
-| .value[1].f32 | Width of the right border, in percentage.|
-| .value[2].f32 | Width of the bottom border, in percentage.|
-| .value[3].f32 | Width of the left border, in percentage.|
+| .value[0].f32 | Width of the top border, in percentage. Value range: [0, +∞). Default value: **0**. |
+| .value[1].f32 | Width of the right border, in percentage. Value range: [0, +∞). Default value: **0**. |
+| .value[2].f32 | Width of the bottom border, in percentage. Value range: [0, +∞). Default value: **0**. |
+| .value[3].f32 | Width of the left border, in percentage. Value range: [0, +∞). Default value: **0**. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].f32 | Width of the top border, in percentage.|
-| .value[1].f32 | Width of the right border, in percentage.|
-| .value[2].f32 | Width of the bottom border, in percentage.|
-| .value[3].f32 | Width of the left border, in percentage.|
+| .value[0].f32 | Width of the top border, in percentage. |
+| .value[1].f32 | Width of the right border, in percentage.  |
+| .value[2].f32 | Width of the bottom border, in percentage. |
+| .value[3].f32 | Width of the left border, in percentage. |
 
 ## NODE_BORDER_RADIUS_PERCENT
 
@@ -878,27 +926,37 @@ NODE_BORDER_RADIUS_PERCENT = 86
 
 Border corner radius attribute, which can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+**size** in the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) is invalid, and the actual returned **value** array length is always 4.<br>
 
 **Since**: 12
 
 **Parameters**
 
+One or four parameters can be passed:
+
+1. Specify the same corner radius for the four borders.<br>
+
+| Name | Description |
+| -- | -- |
+| .value[0].f32 | Corner radius for the four borders, in percentage. Value range: [0, +∞). Default value: **0**. |
+
+2. Specify different corner radii for the four borders.<br>
+
 | Name| Description|
 | -- | -- |
-| 1. .value[0].f32 | Radius, which is the same for the four corners, in percentage.|
-| 2. .value[0].f32 | Radius of the upper left corner, in percentage.|
-| .value[1].f32 | Radius of the upper right corner, in percentage.|
-| .value[2].f32 | Radius of the lower left corner, in percentage.|
-| .value[3].f32 | Radius of the lower right corner, in percentage.|
+| .value[0].f32 | Radius of the upper left corner, in percentage. Value range: [0, +∞). Default value: **0**. |
+| .value[1].f32 | Radius of the upper right corner, in percentage. Value range: [0, +∞). Default value: **0**. |
+| .value[2].f32 | Radius of the lower left corner, in percentage. Value range: [0, +∞). Default value: **0**. |
+| .value[3].f32 | Radius of the lower right corner, in percentage. Value range: [0, +∞). Default value: **0**. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].f32 | Radius of the upper left corner, in percentage.|
-| .value[1].f32 | Radius of the upper right corner, in percentage.|
-| .value[2].f32 | Radius of the lower left corner, in percentage.|
-| .value[3].f32 | Radius of the lower right corner, in percentage.|
+| .value[0].f32 | Radius of the upper left corner, in percentage. |
+| .value[1].f32 | Radius of the upper right corner, in percentage. |
+| .value[2].f32 | Radius of the lower left corner, in percentage. |
+| .value[3].f32 | Radius of the lower right corner, in percentage. |
 
 ## NODE_WIDTH_LAYOUTPOLICY
 
@@ -915,13 +973,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Layout policy. The parameter type is [ArkUI_LayoutPolicy](capi-native-type-h.md#arkui_layoutpolicy).|
+| .value[0].i32 | Width layout policy of the component. The parameter type is [ArkUI_LayoutPolicy](capi-layout-h.md#arkui_layoutpolicy). Default value: **ARKUI_LAYOUT_POLICY_WRAP_CONTENT**. When an invalid value is set, the default value is used for display. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Layout policy. The parameter type is [ArkUI_LayoutPolicy](capi-native-type-h.md#arkui_layoutpolicy).|
+| .value[0].i32 | Width layout policy of the component. The parameter type is [ArkUI_LayoutPolicy](capi-layout-h.md#arkui_layoutpolicy). Default value: **ARKUI_LAYOUT_POLICY_WRAP_CONTENT**. When an invalid value is set, the default value is used. |
 
 ## NODE_HEIGHT_LAYOUTPOLICY
 
@@ -938,13 +996,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Layout policy. The parameter type is [ArkUI_LayoutPolicy](capi-native-type-h.md#arkui_layoutpolicy).|
+| .value[0].i32 | Height layout policy of the component. The parameter type is [ArkUI_LayoutPolicy](capi-layout-h.md#arkui_layoutpolicy). Default value: **ARKUI_LAYOUT_POLICY_WRAP_CONTENT**. When an invalid value is set, the default value is used for display. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Layout policy. The parameter type is [ArkUI_LayoutPolicy](capi-native-type-h.md#arkui_layoutpolicy).|
+| .value[0].i32 | Height layout policy of the component. The parameter type is [ArkUI_LayoutPolicy](capi-layout-h.md#arkui_layoutpolicy). Default value: **ARKUI_LAYOUT_POLICY_WRAP_CONTENT**. When an invalid value is set, the default value is used for display. |
 
 ## NODE_POSITION_EDGES
 
@@ -961,7 +1019,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .object | Position of the component relative to the edges of the container's content area. The parameter type is [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md).|
+| .object | Position of the component relative to the edges of the container's content area. The parameter type is [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md). |
 
 **Returns**
 
@@ -975,8 +1033,9 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_CHAIN_WEIGHT = 118
 ```
 
-Layout location of components that have formed a chain when the parent component is **RelativeContainer**. This attribute can be set, reset, and obtained as required through APIs.<br>
+Layout location of components that have formed a chain when the parent component is a RelativeContainer. This attribute is used to control the proportion of space occupied by each component in the chain along the chain direction, commonly applied to scenarios where components in the same chain are allocated remaining space by weight ratio. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+**size** in the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) is invalid, and the actual returned **value** array length is always 4.<br>
 
 **Since:** 23
 
@@ -984,15 +1043,15 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].f32 | Layout weight of the component in the horizontal direction. The default value is **0**. If an invalid value is set, the default value is used.|
-| .value[1].f32 | Layout weight of the component in the vertical direction. The default value is **0**. If an invalid value is set, the default value is used.|
+| .value[0].f32 | Layout weight of the component in the horizontal direction. Default value: **0**. A larger weight value indicates a larger proportion of space the component occupies in the chain. Value range: [0, +∞). When an invalid value is set, the default value is used for display. |
+| .value[1].f32 | Layout weight of the component in the vertical direction. Default value: **0**. A larger weight value indicates a larger proportion of space the component occupies in the chain. Value range: [0, +∞). When an invalid value is set, the default value is used for display. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].f32 | Layout weight of the component in the horizontal direction.|
-| .value[1].f32 | Layout weight of the component in the vertical direction.|
+| .value[0].f32 | Layout weight of the component in the horizontal direction. A larger weight value indicates a larger proportion of space the component occupies in the chain. |
+| .value[1].f32 | Layout weight of the component in the vertical direction. A larger weight value indicates a larger proportion of space the component occupies in the chain. |
 
 ## NODE_IGNORE_LAYOUT_SAFE_AREA
 
@@ -1000,8 +1059,9 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_IGNORE_LAYOUT_SAFE_AREA = 119
 ```
 
-Safe area to be ignored when extending the layout of the component. This attribute can be set, reset, and obtained as required through APIs.<br>
+Safe area to be ignored when expanding the layout of the component, allowing components to extend into system UI areas such as the system status bar and navigation bar. This attribute is commonly used in scenarios requiring full-screen display, such as immersive video playback, full-screen games, and image viewers. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+**size** in the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) is invalid, and the actual returned **value** array length is always 4.<br>
 
 **Since:** 23
 
@@ -1009,15 +1069,15 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].u32 | Type for expanding the safe area. The parameter type is [ArkUI_LayoutSafeAreaType](capi-native-type-h.md#arkui_layoutsafeareatype). The default value is **ARKUI_LAYOUT_SAFE_AREA_TYPE_SYSTEM**. If an invalid value is set, the default value is used.|
-| .value[1].u32 | Edge for expanding the safe area. The parameter type is [ArkUI_LayoutSafeAreaEdge](capi-native-type-h.md#arkui_layoutsafeareaedge). The default value is **ARKUI_LAYOUT_SAFE_AREA_EDGE_ALL**. Example: **ARKUI_LAYOUT_SAFE_AREA_EDGE_TOP \| ARKUI_LAYOUT_SAFE_AREA_EDGE_BOTTOM**. If an invalid value is set, the default value is used.|
+| .value[0].u32 | Type of the safe area. The parameter type is [ArkUI_LayoutSafeAreaType](capi-layout-h.md#arkui_layoutsafeareatype). The default value is **ARKUI_LAYOUT_SAFE_AREA_TYPE_SYSTEM**. If an invalid value is set, the default value is used. |
+| .value[1].u32 | Edges for expanding the safe area. The parameter type is [ArkUI_LayoutSafeAreaEdge](capi-layout-h.md#arkui_layoutsafeareaedge). The default value is **ARKUI_LAYOUT_SAFE_AREA_EDGE_ALL**. Example: **ARKUI_LAYOUT_SAFE_AREA_EDGE_TOP \| ARKUI_LAYOUT_SAFE_AREA_EDGE_BOTTOM**. If an invalid value is set, the default value is used. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].u32 | Type for expanding the safe area.|
-| .value[1].u32 | Edge for expanding the safe area.|
+| .value[0].u32 | Type of the safe area. The parameter type is [ArkUI_LayoutSafeAreaType](capi-layout-h.md#arkui_layoutsafeareatype). |
+| .value[1].u32 | Edges for expanding the safe area. The parameter type is [ArkUI_LayoutSafeAreaEdge](capi-layout-h.md#arkui_layoutsafeareaedge). |
 
 ## NODE_DASH_WIDTH
 
@@ -1025,8 +1085,9 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_DASH_WIDTH = 120
 ```
 
-Length of the dashed line when the border style is set to dashed. This attribute can be set, reset, and obtained as required through APIs.<br>
+Length of the dashed line when the border style is set to dashed (**ArkUI_BorderStyle** is set to **ARKUI_BORDER_STYLE_DASHED**). The default value is the border width value of the **NODE_BORDER_WIDTH** attribute. This attribute takes effect only when the border style is dashed. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+**size** in the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) is invalid, and the actual returned **value** array length is always 4.<br>
 
 **Since:** 23
 
@@ -1034,10 +1095,10 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].f32 | Length of the top border, in vp. Value range: [0, +∞). If an abnormal value is set, the default dashed line effect is displayed.|
-| .value[1].f32 | Length of the right border, in vp. Value range: [0, +∞). If an abnormal value is set, the default dashed line effect is displayed.|
-| .value[2].f32 | Length of the bottom border, in vp. Value range: [0, +∞). If an abnormal value is set, the default dashed line effect is displayed.|
-| .value[3].f32 | Length of the left border, in vp. Value range: [0, +∞). If an abnormal value is set, the default dashed line effect is displayed.|
+| .value[0].f32 | Length of the dashed line on the top border, in vp. Value range: [0, +∞). Default value: the border width value of the **NODE_BORDER_WIDTH** attribute. When an invalid value is set, the default dashed line effect is displayed. |
+| .value[1].f32 | Length of the dashed line on the right border, in vp. Value range: [0, +∞). Default value: the border width value of the **NODE_BORDER_WIDTH** attribute. When an invalid value is set, the default dashed line effect is displayed. |
+| .value[2].f32 | Length of the dashed line on the bottom border, in vp. Value range: [0, +∞). Default value: the border width value of the **NODE_BORDER_WIDTH** attribute. When an invalid value is set, the default dashed line effect is displayed. |
+| .value[3].f32 | Length of the dashed line on the left border, in vp. Value range: [0, +∞). Default value: the border width value of the **NODE_BORDER_WIDTH** attribute. When an invalid value is set, the default dashed line effect is displayed. |
 
 **Returns**
 
@@ -1054,8 +1115,9 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_DASH_GAP = 121
 ```
 
-Gap between dashes on the dashed line when the border style is set to dashed. This attribute can be set, reset, and obtained as required through APIs.<br>
-The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
+Gap between dashes on the dashed line when the border style is set to dashed (**ArkUI_BorderStyle** is set to **ARKUI_BORDER_STYLE_DASHED**). The default value is the border width value of the **NODE_BORDER_WIDTH** attribute. This attribute takes effect only when the border style is dashed. This attribute can be set, reset, and obtained as required through APIs.<br>
+The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and format of the return value **ArkUI_AttributeItem** are as follows.<br>
+**size** in the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) is invalid, and the actual returned **value** array length is always 4.<br>
 
 **Since:** 23
 
@@ -1063,10 +1125,10 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].f32 | Gap between dashes on the top border, in vp. Value range: [0, +∞). If an abnormal value is set, the default dashed line effect is displayed.|
-| .value[1].f32 | Gap between dashes on the right border, in vp. Value range: [0, +∞). If an abnormal value is set, the default dashed line effect is displayed.|
-| .value[2].f32 | Gap between dashes on the bottom border, in vp. Value range: [0, +∞). If an abnormal value is set, the default dashed line effect is displayed.|
-| .value[3].f32 | Gap between dashes on the left border, in vp. Value range: [0, +∞). If an abnormal value is set, the default dashed line effect is displayed.|
+| .value[0].f32 | Gap between dashes on the dash line of the top border, in vp. Value range: [0, +∞). Default value: the border width value of the **NODE_BORDER_WIDTH** attribute. When an invalid value is set, the default dashed line effect is displayed. |
+| .value[1].f32 | Gap between dashes on the dash line of the right border, in vp. Value range: [0, +∞). Default value: the border width value of the **NODE_BORDER_WIDTH** attribute. When an invalid value is set, the default dashed line effect is displayed. |
+| .value[2].f32 | Gap between dashes on the dash line of the bottom border, in vp. Value range: [0, +∞). Default value: the border width value of the **NODE_BORDER_WIDTH** attribute. When an invalid value is set, the default dashed line effect is displayed. |
+| .value[3].f32 | Gap between dashes on the dash line of the left border, in vp. Value range: [0, +∞). Default value: the border width value of the **NODE_BORDER_WIDTH** attribute. When an invalid value is set, the default dashed line effect is displayed. |
 
 **Returns**
 
@@ -1092,13 +1154,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Alignment rule of the child components in the **Stack** container. The parameter type is [ArkUI_LocalizedAlignment](capi-native-type-h.md#arkui_localizedalignment). The default value is **ARKUI_ALIGNMENT_CENTER**. If an invalid value is set, the default value is used.|
+| .value[0].i32 | Alignment rule of the child components in the **Stack** container, determining the position of child components in the **Stack** container. The parameter type is [ArkUI_LocalizedAlignment](capi-layout-h.md#arkui_localizedalignment). The default value is **ARKUI_ALIGNMENT_CENTER**. When an invalid value is set, the default value is used for display. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Alignment rule of the child components in the **Stack** container. The parameter type is [ArkUI_LocalizedAlignment](capi-native-type-h.md#arkui_localizedalignment).|
+| .value[0].i32 | Alignment rule of the child components in the **Stack** container. The parameter type is [ArkUI_LocalizedAlignment](capi-layout-h.md#arkui_localizedalignment). |
 
 ## NODE_BORDER_RADIUS_TYPE
 
@@ -1115,13 +1177,13 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Mode for drawing rounded corners of the component. The parameter type is [ArkUI_RenderStrategy](capi-native-type-h.md#arkui_renderstrategy). The default value is **ARKUI_RENDERSTRATEGY_FAST**. If an invalid value is set, the default value is used.|
+| .value[0].i32 | Mode for rendering rounded corners of the component, which affects the rendering effect and performance of rounded corners. The parameter type is [ArkUI_RenderStrategy](capi-native-type-h.md#arkui_renderstrategy). The default value is **ARKUI_RENDERSTRATEGY_FAST**. In FAST mode, rounded corners are directly clipped, prioritizing rendering performance. In OFFSCREEN mode, offscreen rendering is used to optimize the rounded corner effect, which may affect performance. When an invalid value is set, the default value is used for display. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Mode for drawing rounded corners of the component. The parameter type is [ArkUI_RenderStrategy](capi-native-type-h.md#arkui_renderstrategy).|
+| .value[0].i32 | Mode for rendering rounded corners of the component. The parameter type is [ArkUI_RenderStrategy](capi-native-type-h.md#arkui_renderstrategy). |
 
 ## NODE_ACCESSIBILITY_NEXT_FOCUS_ID
 
@@ -1129,7 +1191,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 NODE_ACCESSIBILITY_NEXT_FOCUS_ID = 124
 ```
 
-[Node ID](capi-native-node-h-nodeattributetype-base.md#node_id) of the next focus component for accessibility of this component. After the node ID of the component is set, the accessibility service searches for the component whose node ID is the same as that of the next focus component on the current page. If no such component exists, the setting is invalid. This attribute can be set, reset, and obtained as required through APIs.
+[NODE_ID](capi-native-node-h-nodeattributetype-base.md#node_id) of the next focus component for accessibility of this component. After the node ID of the component is set, the accessibility service searches for the component whose node ID is the same as that of the next focus component on the current page. If no such component exists, the setting is invalid. This attribute can be set, reset, and obtained as required through APIs.
 
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.
 
@@ -1163,10 +1225,10 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .value[0].i32 | Default accessibility focus. The value can be **0** or **1**. The value **1** indicates that the component is defined as the default focus in the accessibility service, and **0** indicates that the component is not defined as the default focus in the accessibility service.|
+| .value[0].i32 | Default accessibility focus. The value can be **0** or **1**. The value **1** indicates that the component is defined as the default focus in the accessibility service, and **0** indicates that the component is not defined as the default focus in the accessibility service. When other values are passed, the default value **0** is used. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| .value[0].i32 | Default accessibility focus. The value can be **0** or **1**. The value **1** indicates that the component is defined as the default focus in the accessibility service, and **0** indicates that the component is not defined as the default focus in the accessibility service.|
+| .value[0].i32 | Default accessibility focus. The value can be **0** or **1**. The value **1** indicates that the component is defined as the default focus in the accessibility service, and **0** indicates that the component is not defined as the default focus in the accessibility service. When other values are passed, the default value **0** is used. |

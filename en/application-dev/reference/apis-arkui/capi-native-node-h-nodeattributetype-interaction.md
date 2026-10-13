@@ -2,9 +2,10 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3; @zju_ljz-->
-<!--Designer: @hehongyang3; @lanshouren-->
+<!--Designer: @hehongyang3; @fenglinbailu-->
 <!--Tester: @liuli0427; @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=2dada4ccfcf5209ad3a03618f9ef1e13f0b077ba translatedAt=2026-10-10T09:33:40.010Z pushedAt=2026-10-12T07:09:52.455Z -->
 
 ```c
 enum ArkUI_NodeAttributeType
@@ -115,7 +116,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Name| Description|
 | -- | -- |
-| .string | Overlay text.|
+| .string | Overlay text. |
 | .value[0]?.i32 | Position of the overlay relative to the component. This parameter is optional. The parameter type is [ArkUI_Alignment](capi-native-type-h.md#arkui_alignment). The default value is **ARKUI_ALIGNMENT_TOP_START**.|
 | .value[1]?.f32 | Offset of the overlay relative to the upper left corner of itself on the x-axis, in vp. This parameter is optional. The default value is **0** vp.|
 | .value[2]?.f32 | Offset of the overlay relative to the upper left corner of itself on the y-axis, in vp. This parameter is optional. The default value is **0** vp.|
@@ -126,7 +127,7 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 | Type| Description|
 | -- | -- |
-| .string | Overlay text.|
+| .string | Overlay text. |
 | .value[0].i32 | Position of the overlay relative to the component. The parameter type is [ArkUI_Alignment](capi-native-type-h.md#arkui_alignment). The default value is **ARKUI_ALIGNMENT_TOP_START**.|
 | .value[1].f32 | Offset of the overlay relative to the upper left corner of itself on the x-axis, in vp.|
 | .value[2].f32 | Offset of the overlay relative to the upper left corner of itself on the y-axis, in vp.|
@@ -216,7 +217,7 @@ NODE_VISIBLE_AREA_CHANGE_RATIO = 93
 Visible area ratio (visible area/total area of the component) threshold for invoking the visible area change event of the component.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
-**Since**: 22
+**Since**: 12
 
 **Parameters**
 
@@ -427,11 +428,15 @@ The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributei
 
 **Since:** 23
 
+> **NOTE**
+>
+> If finger movement exceeds the preset distance limit, click event recognition will fail.
+
 **Parameters**
 
 | Name| Description|
 | -- | -- |
-| .value[0].f32 | Movement threshold for click events. The value range is (0, +∞). The default value is **+∞**. The unit is vp.|
+| .value[0].f32 | Movement threshold for click events. If the value specified is less than or equal to 0, it will be converted to the default value. The value range is (0, +∞). The default value is **+∞**. The unit is vp. |
 
 **Returns**
 
