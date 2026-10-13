@@ -10,7 +10,7 @@
 
 PIR协议（隐私信息检索，Private Information Retrieval）适用于在不暴露查询条件的前提下从对方数据集中获取匹配项附加值的场景，例如根据标识查询配置信息、根据凭证查询权益信息等。
 
-通过PIR协议进行隐私信息检索，包含[生成隐私目标](../../reference/apis-data-protection-kit/js-apis-privacyComputation.md#privacycomputationgenprivacytarget)、[隐私搜索](../../reference/apis-data-protection-kit/js-apis-privacyComputation.md#privacycomputationprivacysearch)、[获取搜索结果](../../reference/apis-data-protection-kit/js-apis-privacyComputation.md#privacycomputationgetsearchresult)三个步骤。PIR协议在命中时返回匹配元素的附加值。
+通过PIR协议进行隐私信息检索，包含生成隐私目标[genPrivacyTarget](../../reference/apis-data-protection-kit/js-apis-privacyComputation.md#privacycomputationgenprivacytarget)、隐私搜索[privacySearch](../../reference/apis-data-protection-kit/js-apis-privacyComputation.md#privacycomputationprivacysearch)、获取搜索结果[getSearchResult](../../reference/apis-data-protection-kit/js-apis-privacyComputation.md#privacycomputationgetsearchresult)三个步骤。PIR协议在命中时返回匹配元素的附加值。
 
 ## 开发步骤
 
