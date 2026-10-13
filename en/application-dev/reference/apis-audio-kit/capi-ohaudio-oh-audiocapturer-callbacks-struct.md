@@ -1,18 +1,19 @@
 # OH_AudioCapturer_Callbacks_Struct
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @zyy0412-->
+<!--Designer: @weixin_41398971-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=a4fa8d65bbefb8940663c6fc6a7a343208031a92 translatedAt=2026-10-08T12:40:42.038Z pushedAt=2026-10-13T05:58:29.229Z -->
 
 ```c
-typedef struct OH_AudioCapturer_Callbacks_Struct {...} OH_AudioCapturer_Callbacks
+typedef struct OH_AudioCapturer_Callbacks_Struct {...} OH_AudioCapturer_Callbacks;
 ```
 
 ## Overview
 
-The struct defines a pointer to the callback functions related to an audio capturer.
+Describes a pointer to the callbacks related to an audio capturer.
 
 To avoid unexpected behavior, ensure that every member variable of the struct is initialized by a custom callback method or a null pointer when setting the audio callback functions. For details, see [(Recommended) Using OHAudio for Audio Recording (C/C++)](../../media/audio/using-ohaudio-for-recording.md).
 
@@ -24,7 +25,7 @@ To avoid unexpected behavior, ensure that every member variable of the struct is
 
 Use the following callback types for substitute:
 
-[OH_AudioCapturer_OnReadDataCallback](capi-native-audiocapturer-h.md#oh_audiocapturer_onreaddatacallback), [OH_AudioCapturer_OnDeviceChangeCallback](capi-native-audiocapturer-h.md#oh_audiocapturer_ondevicechangecallback), [OH_AudioCapturer_OnInterruptCallback](capi-native-audiocapturer-h.md#oh_audiocapturer_oninterruptcallback), and [OH_AudioCapturer_OnErrorCallback](capi-native-audiocapturer-h.md#oh_audiocapturer_onerrorcallback)
+[OH_AudioCapturer_OnReadDataCallback](capi-native-audiocapturer-h.md#oh_audiocapturer_onreaddatacallback), [OH_AudioCapturer_OnDeviceChangeCallback](capi-native-audiocapturer-h.md#oh_audiocapturer_ondevicechangecallback), [OH_AudioCapturer_OnInterruptCallback](capi-native-audiocapturer-h.md#oh_audiocapturer_oninterruptcallback), and [OH_AudioCapturer_OnErrorCallback](capi-native-audiocapturer-h.md#oh_audiocapturer_onerrorcallback).
 
 **Related module**: [OHAudio](capi-ohaudio.md)
 
@@ -147,3 +148,4 @@ Defines a function pointer to the callback function used to process audio record
 | [OH_AudioCapturer](capi-ohaudio-oh-audiocapturerstruct.md)* capturer | Pointer to an audio capturer instance, which is created by calling [OH_AudioStreamBuilder_GenerateCapturer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generatecapturer).|
 | void* userData | Pointer to the data storage area customized by the application.|
 | [OH_AudioStream_Result](capi-native-audiostream-base-h.md#oh_audiostream_result) error | Audio recording error result, which may be **AUDIOSTREAM_ERROR_INVALID_PARAM**, **AUDIOSTREAM_ERROR_ILLEGAL_STATE**, or **AUDIOSTREAM_ERROR_SYSTEM**.|
+

@@ -1,10 +1,11 @@
 # ringtonePlayer (Ringtone Player) (System API)
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @boxwall-->
+<!--Designer: @magekkkk-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=6482e1478c8300c06759225778677b39973d7297 translatedAt=2026-10-08T12:53:21.243Z pushedAt=2026-10-13T08:01:18.232Z -->
 
 The ringtonePlayer module provides APIs for playing, configuring, and obtaining ringtones.
 

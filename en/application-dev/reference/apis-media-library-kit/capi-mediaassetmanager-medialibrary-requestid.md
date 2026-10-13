@@ -16,7 +16,7 @@ Defines a struct for the request ID.
 
 A value of this type is returned when a media asset is requested.
 
-The request ID can be used to cancel a request.
+The request ID can be used to cancel the corresponding media asset request.
 
 If a request fails, an all-zero value, for example, **00000000-0000-0000-0000-000000000000** is returned.
 
@@ -32,4 +32,4 @@ If a request fails, an all-zero value, for example, **00000000-0000-0000-0000-00
 
 | Name| Description|
 | -- | -- |
-| char requestId[UUID_STR_MAX_LENGTH] | Request ID.|
+| char requestId[UUID_STR_MAX_LENGTH] | Request ID, which is used to identify a media library resource request and can be used to cancel the request.|
