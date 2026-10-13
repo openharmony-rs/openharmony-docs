@@ -7789,7 +7789,7 @@ ArkTS-Sta示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let length: int = 5;
-inputClient.getLeftRichText(length).then((richText: inputMethodEngine.InputMethodRichText) => {
+inputClient?.getLeftRichText(length).then((richText: inputMethodEngine.InputMethodRichText) => {
   let plainText: string = richText.getString();
   console.info(`Succeeded in getting left rich text, plainText: ${plainText}`);
   let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
@@ -7800,8 +7800,9 @@ inputClient.getLeftRichText(length).then((richText: inputMethodEngine.InputMetho
     let range: inputMethodEngine.Range = span.getRange();
     console.info(`span[${i}]: type=${type}, content=${content}, range={start:${range.start}, end:${range.end}}`);
   }
-}).catch((err: BusinessError) => {
-  console.error(`Failed to getLeftRichText. Code is ${err.code}, message is ${err.message}`);
+}).catch((err: Object) => {
+  let error = err as BusinessError;
+  console.error(`Failed to getLeftRichText. Code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -7881,7 +7882,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let length: int = 5;
-  let richText: inputMethodEngine.InputMethodRichText = inputClient.getLeftRichTextSync(length);
+  let richText: inputMethodEngine.InputMethodRichText = inputClient!.getLeftRichTextSync(length);
   let plainText: string = richText.getString();
   console.info(`Succeeded in getting left rich text sync, plainText: ${plainText}`);
   let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
@@ -7893,7 +7894,7 @@ try {
     console.info(`span[${i}]: type=${type}, content=${content}, range={start:${range.start}, end:${range.end}}`);
   }
 } catch (err) {
-  let error: BusinessError = err as BusinessError;
+  let error = err as BusinessError;
   console.error(`Failed to getLeftRichTextSync. Code is ${error.code}, message is ${error.message}`);
 }
 ```
@@ -7973,7 +7974,7 @@ ArkTS-Sta示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let length: int = 5;
-inputClient.getRightRichText(length).then((richText: inputMethodEngine.InputMethodRichText) => {
+inputClient?.getRightRichText(length).then((richText: inputMethodEngine.InputMethodRichText) => {
   let plainText: string = richText.getString();
   console.info(`Succeeded in getting right rich text, plainText: ${plainText}`);
   let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
@@ -7984,8 +7985,9 @@ inputClient.getRightRichText(length).then((richText: inputMethodEngine.InputMeth
     let range: inputMethodEngine.Range = span.getRange();
     console.info(`span[${i}]: type=${type}, content=${content}, range={start:${range.start}, end:${range.end}}`);
   }
-}).catch((err: BusinessError) => {
-  console.error(`Failed to getRightRichText. Code is ${err.code}, message is ${err.message}`);
+}).catch((err: Object) => {
+  let error = err as BusinessError;
+  console.error(`Failed to getRightRichText. Code is ${error.code}, message is ${error.message}`);
 });
 ```
 
@@ -8065,7 +8067,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let length: int = 5;
-  let richText: inputMethodEngine.InputMethodRichText = inputClient.getRightRichTextSync(length);
+  let richText: inputMethodEngine.InputMethodRichText = inputClient!.getRightRichTextSync(length);
   let plainText: string = richText.getString();
   console.info(`Succeeded in getting right rich text sync, plainText: ${plainText}`);
   let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
@@ -8077,7 +8079,7 @@ try {
     console.info(`span[${i}]: type=${type}, content=${content}, range={start:${range.start}, end:${range.end}}`);
   }
 } catch (err) {
-  let error: BusinessError = err as BusinessError;
+  let error = err as BusinessError;
   console.error(`Failed to getRightRichTextSync. Code is ${error.code}, message is ${error.message}`);
 }
 ```
@@ -8148,7 +8150,7 @@ ArkTS-Sta示例：
 
 ```ts
 let length: int = 5;
-let richText: inputMethodEngine.InputMethodRichText = inputClient.getLeftRichTextSync(length);
+let richText: inputMethodEngine.InputMethodRichText = inputClient!.getLeftRichTextSync(length);
 let plainText: string = richText.getString();
 console.info(`plainText: ${plainText}`);
 ```
@@ -8194,7 +8196,7 @@ ArkTS-Sta示例：
 
 ```ts
 let length: int = 5;
-let richText: inputMethodEngine.InputMethodRichText = inputClient.getLeftRichTextSync(length);
+let richText: inputMethodEngine.InputMethodRichText = inputClient!.getLeftRichTextSync(length);
 let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
 for (let i = 0; i < spans.length; i++) {
   let span: inputMethodEngine.RichTextSpan = spans[i];
@@ -8255,7 +8257,7 @@ ArkTS-Sta示例：
 
 ```ts
 let length: int = 5;
-let richText: inputMethodEngine.InputMethodRichText = inputClient.getLeftRichTextSync(length);
+let richText: inputMethodEngine.InputMethodRichText = inputClient!.getLeftRichTextSync(length);
 let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
 for (let i = 0; i < spans.length; i++) {
   let type: inputMethodEngine.SpanType = spans[i].getType();
@@ -8305,7 +8307,7 @@ ArkTS-Sta示例：
 
 ```ts
 let length: int = 5;
-let richText: inputMethodEngine.InputMethodRichText = inputClient.getLeftRichTextSync(length);
+let richText: inputMethodEngine.InputMethodRichText = inputClient!.getLeftRichTextSync(length);
 let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
 for (let i = 0; i < spans.length; i++) {
   let content: string = spans[i].getContent();
@@ -8351,7 +8353,7 @@ ArkTS-Sta示例：
 
 ```ts
 let length: int = 5;
-let richText: inputMethodEngine.InputMethodRichText = inputClient.getLeftRichTextSync(length);
+let richText: inputMethodEngine.InputMethodRichText = inputClient!.getLeftRichTextSync(length);
 let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
 for (let i = 0; i < spans.length; i++) {
   let range: inputMethodEngine.Range = spans[i].getRange();
