@@ -2317,3 +2317,4 @@ struct ScrollExample {
   }
 }
 ```
+![scrollGetScrollState](figures/scrollGetScrollState.jpeg)
