@@ -412,7 +412,7 @@ dumpJsHeapData(filename: string): void
 
 > **说明**：
 > 
-> 从API version 9支持，从API version 26开始废弃，建议使用[hidebug.dumpJsRawHeapData](#hidebugdumpjsrawheapdata18)替代。
+> 从API version 9支持，从API version 26.0.1开始废弃，建议使用[hidebug.dumpJsRawHeapData](#hidebugdumpjsrawheapdata18)替代。
 
 > **注意**：
 >
@@ -459,7 +459,7 @@ dumpJsHeapData(filename: string, needClean: boolean): void
 
 > **说明**：
 > 
-> 从API version 24支持，从API version 26开始废弃，建议使用[hidebug.dumpJsRawHeapData](#hidebugdumpjsrawheapdata24)替代。
+> 从API version 24支持，从API version 26.0.1开始废弃，建议使用[hidebug.dumpJsRawHeapData](#hidebugdumpjsrawheapdata24)替代。
 
 > **注意**：
 >
