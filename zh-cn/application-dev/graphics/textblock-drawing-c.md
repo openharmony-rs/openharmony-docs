@@ -381,25 +381,16 @@ for (uint32_t i = 0; i < textBlobsCount; i++) {
 // 销毁字块数组
 OH_Drawing_TextBlobsArrayDestroy(textBlobs, textBlobsCount);
 // 释放字型对象
-OH_Drawing_FontDestroy(font);
-// 释放字体对象
-OH_Drawing_TypefaceDestroy(typeface);
-```
-    OH_Drawing_CanvasDrawTextBlob(canvas, textBlobs[i], value200_, value800_);
-}
-// 销毁字块数组
-OH_Drawing_TextBlobsArrayDestroy(textBlobs, textBlobsCount);
-// 释放字体对象
-OH_Drawing_FontDestroy(font);
-```
-
-使用`OH_Drawing_TextBlobCreateFromPosTextWithFallback`接口从文本和坐标点数组创建支持字体回退的字块数组并绘制的示例代码如下：
-
 <!-- @[ndk_graphics_draw_textblob_postext_fallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 ``` C++
+// 通过文件创建字体对象
+OH_Drawing_Typeface *typeface = OH_Drawing_TypefaceCreateFromFile(
+    "/system/fonts/NotoSansArmenian[wdth,wght].ttf", 0);
 // 创建字型对象
 OH_Drawing_Font *font = OH_Drawing_FontCreate();
+// 为字型设置字体
+OH_Drawing_FontSetTypeface(font, typeface);
 // 设置字体大小
 OH_Drawing_FontSetTextSize(font, value100_);
 // 需要绘制的文字
@@ -407,17 +398,40 @@ const char *text = "Hello世界";
 uint32_t byteLength = strlen(text);
 // 获取glyph数量
 int glyphCount = OH_Drawing_FontCountText(font, text, byteLength, TEXT_ENCODING_UTF8);
+// 校验glyph数量合法性，避免申请非法大小的内存
+if (glyphCount <= 0) {
+    SAMPLE_LOGE("DrawTextBlobPosTextFallback: glyphCount is invalid");
+    OH_Drawing_FontDestroy(font);
+    OH_Drawing_TypefaceDestroy(typeface);
+    return;
+}
 // 为每个字符指定坐标位置
 OH_Drawing_Point2D *points = new OH_Drawing_Point2D[glyphCount];
 float xOffset = 0;
 for (int i = 0; i < glyphCount; i++) {
     points[i].x = value200_ + xOffset;
     points[i].y = value800_;
-    xOffset += 60;
+    xOffset += value100_;
 }
 // 声明输出参数
 OH_Drawing_TextBlob **textBlobs = nullptr;
 uint32_t textBlobsCount = 0;
+// 创建支持字体回退的字块数组
+OH_Drawing_TextBlobCreateFromPosTextWithFallback(text, byteLength, points, font,
+    TEXT_ENCODING_UTF8, &textBlobs, &textBlobsCount);
+// 遍历字块数组并绘制
+for (uint32_t i = 0; i < textBlobsCount; i++) {
+    OH_Drawing_CanvasDrawTextBlob(canvas, textBlobs[i], 0, 0);
+}
+// 销毁字块数组
+OH_Drawing_TextBlobsArrayDestroy(textBlobs, textBlobsCount);
+// 释放坐标点数组
+delete[] points;
+// 释放字型对象
+OH_Drawing_FontDestroy(font);
+// 释放字体对象
+OH_Drawing_TypefaceDestroy(typeface);
+```
 // 创建支持字体回退的字块数组
 OH_Drawing_TextBlobCreateFromPosTextWithFallback(text, byteLength, points, font,
     TEXT_ENCODING_UTF8, &textBlobs, &textBlobsCount);
