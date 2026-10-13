@@ -6385,9 +6385,9 @@
 						"start_line":16
 					},
 					{
-						"end_line":78,
+						"end_line":88,
 						"name":"build_project1",
-						"start_line":40
+						"start_line":50
 					},
 					{
 						"end_line":542,
@@ -6415,7 +6415,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Exploitation_case/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":545,
+						"end_line":546,
 						"name":"build_project5",
 						"start_line":18
 					}
@@ -6490,7 +6490,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/DefaultNetworkBtn.ets",
 				"functions":[
 					{
-						"end_line":116,
+						"end_line":115,
 						"name":"get_default_network_methods",
 						"start_line":16
 					}
