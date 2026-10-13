@@ -59449,9 +59449,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/common/sample_callback.cpp",
 				"functions":[
 					{
-						"end_line":422,
+						"end_line":416,
 						"name":"quick_start",
-						"start_line":370
+						"start_line":364
 					}
 				]
 			}
@@ -67972,24 +67972,24 @@
 				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/common/sample_callback.cpp",
 				"functions":[
 					{
-						"end_line":317,
+						"end_line":311,
 						"name":"SampleCallback::OnCodecError",
-						"start_line":307
+						"start_line":301
 					},
 					{
-						"end_line":350,
+						"end_line":344,
 						"name":"SampleCallback::OnCodecFormatChange",
-						"start_line":319
+						"start_line":313
 					},
 					{
-						"end_line":368,
+						"end_line":362,
 						"name":"SampleCallback::OnNeedInputBuffer",
-						"start_line":352
+						"start_line":346
 					},
 					{
-						"end_line":421,
+						"end_line":415,
 						"name":"SampleCallback::OnNewOutputBuffer",
-						"start_line":390
+						"start_line":384
 					}
 				]
 			},
@@ -68092,19 +68092,19 @@
 				"file_name":"openharmony/applications_app_samples/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/common/sample_callback.cpp",
 				"functions":[
 					{
-						"end_line":317,
+						"end_line":311,
 						"name":"SampleCallback::OnCodecError",
-						"start_line":307
+						"start_line":301
 					},
 					{
-						"end_line":368,
+						"end_line":362,
 						"name":"SampleCallback::OnNeedInputBuffer",
-						"start_line":352
+						"start_line":346
 					},
 					{
-						"end_line":421,
+						"end_line":415,
 						"name":"SampleCallback::OnNewOutputBuffer",
-						"start_line":390
+						"start_line":384
 					}
 				]
 			},
