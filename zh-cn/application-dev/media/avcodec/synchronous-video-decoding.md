@@ -90,7 +90,6 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
    };
 
    OH_AVCodec *decoder_ = nullptr;
-   std::unique_ptr<CodecUserData> videoDecContext_ = nullptr;
    ```
 
    <!-- @[codec_buffer_info](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/common/codec_buffer.h)-->
@@ -250,7 +249,6 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
    ```c++
    while (isStarted_) {
-
            CHECK_AND_BREAK_LOG(isStarted_, "Decoder input thread out");
            std::unique_lock<std::mutex> lock(videoDecContext_->inputMutex);
            CodecBufferInfo bufferInfo;
