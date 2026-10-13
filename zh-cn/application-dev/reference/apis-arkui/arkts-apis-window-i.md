@@ -360,10 +360,10 @@
 
 | 名称      | 类型   | 只读 | 可选 | 说明                                                         |
 | :-------- | :----- | :--- | :--- | :----------------------------------------------------------- |
-| maxWidth  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 窗口的最大宽度。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23 |
-| maxHeight | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 窗口的最大高度。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23 |
-| minWidth  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 窗口的最小宽度。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23 |
-| minHeight | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 窗口的最小高度。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23 |
+| maxWidth  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 窗口的最大宽度。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23。<br>在<!--RP3-->OpenHarmony 6.1<!--RP3End-->之前，此参数必填。<br>从<!--RP3-->OpenHarmony 6.1<!--RP3End-->开始，此参数可选，默认值为0。 |
+| maxHeight | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 窗口的最大高度。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23。<br>在<!--RP3-->OpenHarmony 6.1<!--RP3End-->之前，此参数必填。<br>从<!--RP3-->OpenHarmony 6.1<!--RP3End-->开始，此参数可选，默认值为0。 |
+| minWidth  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 窗口的最小宽度。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23。<br>在<!--RP3-->OpenHarmony 6.1<!--RP3End-->之前，此参数必填。<br>从<!--RP3-->OpenHarmony 6.1<!--RP3End-->开始，此参数可选，默认值为0。 |
+| minHeight | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 是   | 窗口的最小高度。 <br>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 11<br>**ArkTS-Sta起始版本：** 23。<br>在<!--RP3-->OpenHarmony 6.1<!--RP3End-->之前，此参数必填。<br>从<!--RP3-->OpenHarmony 6.1<!--RP3End-->开始，此参数可选，默认值为0。 |
 | pixelUnit<sup>22+</sup> | [PixelUnit](arkts-apis-window-e.md#pixelunit22) | 否 | 是 | 窗口尺寸限制的单位，默认为px。可显式设置为px或vp。<br>**ArkTS-Dyn起始版本：** 22<br>**ArkTS-Sta起始版本：** 23 |
 
 ## TitleButtonRect<sup>11+</sup>
