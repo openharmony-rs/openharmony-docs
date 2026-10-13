@@ -353,18 +353,16 @@ for (uint32_t i = 0; i < textBlobsCount; i++) {
 // 销毁字块数组
 OH_Drawing_TextBlobsArrayDestroy(textBlobs, textBlobsCount);
 // 释放字型对象
-OH_Drawing_FontDestroy(font);
-// 释放字体对象
-OH_Drawing_TypefaceDestroy(typeface);
-```
-
-使用`OH_Drawing_TextBlobCreateFromTextWithFallback`接口从文本创建支持字体回退的字块数组并绘制的示例代码如下：
-
 <!-- @[ndk_graphics_draw_textblob_text_fallback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 ``` C++
+// 通过文件创建字体对象
+OH_Drawing_Typeface *typeface = OH_Drawing_TypefaceCreateFromFile(
+    "/system/fonts/NotoSansArmenian[wdth,wght].ttf", 0);
 // 创建字型对象
 OH_Drawing_Font *font = OH_Drawing_FontCreate();
+// 为字型设置字体
+OH_Drawing_FontSetTypeface(font, typeface);
 // 设置字体大小
 OH_Drawing_FontSetTextSize(font, value100_);
 // 需要绘制的文字
@@ -378,6 +376,15 @@ OH_Drawing_TextBlobCreateFromTextWithFallback(text, byteLength, font, TEXT_ENCOD
     &textBlobs, &textBlobsCount);
 // 遍历字块数组并绘制
 for (uint32_t i = 0; i < textBlobsCount; i++) {
+    OH_Drawing_CanvasDrawTextBlob(canvas, textBlobs[i], value200_, value800_);
+}
+// 销毁字块数组
+OH_Drawing_TextBlobsArrayDestroy(textBlobs, textBlobsCount);
+// 释放字型对象
+OH_Drawing_FontDestroy(font);
+// 释放字体对象
+OH_Drawing_TypefaceDestroy(typeface);
+```
     OH_Drawing_CanvasDrawTextBlob(canvas, textBlobs[i], value200_, value800_);
 }
 // 销毁字块数组
