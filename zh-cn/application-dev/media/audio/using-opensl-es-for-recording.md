@@ -131,7 +131,7 @@ target_link_libraries(sample PUBLIC libOpenSLES.so)
    (*pcmCapturerObject)->Realize(pcmCapturerObject, SL_BOOLEAN_FALSE);
    ```
 
-5. 获取录音接口SL_IID_RECORD的recordItf()接口实例。
+5. 获取录音接口SL_IID_RECORD的recordItf接口实例。
      
    ```cpp
    SLRecordItf  recordItf;
