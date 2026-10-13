@@ -1215,6 +1215,34 @@ getFrameNode(): FrameNode | undefined
 | --- | --- |
 | [FrameNode](../js-apis-arkui-frameNode.md) \| undefined | 当Scroller已绑定到Scroll、List、Grid、WaterFlow等滚动类组件时，返回对应组件的FrameNode；如果Scroller未绑定组件，则返回undefined。 |
 
+### getScrollState
+
+getScrollState(): [ScrollState](ts-container-list.md#scrollstate枚举说明)
+
+获取绑定到此Scroller的可滚动组件的当前滚动状态。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**起始版本：** 26.2.0
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| [ScrollState](ts-container-list.md#scrollstate枚举说明) | 当前滚动状态。 |
+
+**错误码**：
+
+以下错误码详细介绍请参考[滚动类组件错误码](../errorcode-scroll.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 100004   | Controller not bound to a component. |
+
 ## OffsetResult<sup>11+</sup>对象说明
 
 滑动偏移量对象。
