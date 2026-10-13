@@ -652,29 +652,32 @@ let audioRendererOptions: audio.AudioRendererOptions = {
 };
 
 let file: fs.File;
+let recordingFile: fs.File;
 let onReadData: Callback<ArrayBuffer>;
 let writeDataCallback: audio.AudioRendererWriteDataCallback;
+let pendingRecordingWrite: Promise<void> = Promise.resolve();
 
 // ...
 
 async function initRecordingResources(context: common.UIAbilityContext): Promise<void> {
   let writtenBytes: number = 0;
+  pendingRecordingWrite = Promise.resolve();
   let path = context.cacheDir;
   let filePath = path + '/S16LE_2_48000.pcm';
-  file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+  recordingFile = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
   onReadData = (buffer: ArrayBuffer) => {
-    if (capturerMuteHintEnabledByApp) {
-      let view = new DataView(buffer);
-      for (let i = 0; i < buffer.byteLength; i++) {
-        view.setUint8(i, 0);
-      }
-    }
+    let recordingBuffer = buffer.slice(0);
+    let writeOffset = writtenBytes;
+    writtenBytes += recordingBuffer.byteLength;
     let options: Options = {
-      offset: writtenBytes,
-      length: buffer.byteLength
+      offset: writeOffset,
+      length: recordingBuffer.byteLength
     }
-    fs.writeSync(file.fd, buffer, options);
-    writtenBytes += buffer.byteLength;
+    pendingRecordingWrite = pendingRecordingWrite.then(async () => {
+      await fs.write(recordingFile.fd, recordingBuffer, options);
+    }).catch((error: BusinessError) => {
+      console.error(`${TAG}: Write recording data failed, code: ${error.code}, message: ${error.message}`);
+    });
   };
 }
 
@@ -697,7 +700,7 @@ async function initRender(context: common.UIAbilityContext) {
       if (bufferLength < buffer.byteLength) {
         let view = new DataView(buffer);
         for (let i = bufferLength; i < buffer.byteLength; i++) {
-          // 空白区域填充静音数据。当使用音频采样格式为SAMPLE_FORMAT_U8时0x7F为静音数据，使用其他采样格式时0为静音数据。
+          // 空白区域填充静音数据。当使用音频采样格式为SAMPLE_FORMAT_U8时0x80为静音数据，使用其他采样格式时0为静音数据。本示例采样格式为SAMPLE_FORMAT_S16LE，因此静音数据填充0。
           view.setUint8(i, 0);
         }
       }
@@ -718,7 +721,7 @@ async function initRender(context: common.UIAbilityContext) {
         audioRenderer.on('writeData', writeDataCallback);
       }
     } else {
-      console.info(`${TAG}: creating AudioRenderer failed, error: ${err.message}`);
+      console.error(`${TAG}: creating AudioRenderer failed, error: ${err.message}`);
     }
   });
 }
@@ -748,7 +751,7 @@ async function stopRender(updateCallback?: (msg: string, isError: boolean) => vo
     // 只有渲染器状态为running或paused的时候才可以停止。
     if (audioRenderer.state.valueOf() !== audio.AudioState.STATE_RUNNING &&
       audioRenderer.state.valueOf() !== audio.AudioState.STATE_PAUSED) {
-      console.info('Renderer is not running or paused.');
+      console.error('Renderer is not running or paused.');
       return;
     }
     // 停止渲染。
@@ -767,7 +770,7 @@ async function releaseRender(updateCallback?: (msg: string, isError: boolean) =>
   if (audioRenderer !== undefined) {
     // 渲染器状态不是released状态，才能release。
     if (audioRenderer.state.valueOf() === audio.AudioState.STATE_RELEASED) {
-      console.info('Renderer already released');
+      console.error('Renderer already released');
       return;
     }
     // 释放资源。
@@ -871,7 +874,7 @@ async function stop(updateCallback?: (msg: string, isError: boolean) => void): P
     // 只有采集器状态为STATE_RUNNING或STATE_PAUSED的时候才可以停止。
     if (audioCapturer.state.valueOf() !== audio.AudioState.STATE_RUNNING &&
       audioCapturer.state.valueOf() !== audio.AudioState.STATE_PAUSED) {
-      console.info(`${TAG}: Capturer is not running or paused`);
+      console.error(`${TAG}: Capturer is not running or paused`);
       // ...
       return;
     }
@@ -895,7 +898,7 @@ async function release(updateCallback?: (msg: string, isError: boolean) => void)
     // 采集器状态不是STATE_RELEASED或STATE_NEW状态,才能release。
     if (audioCapturer.state.valueOf() === audio.AudioState.STATE_RELEASED ||
       audioCapturer.state.valueOf() === audio.AudioState.STATE_NEW) {
-      console.info(`${TAG}: Capturer already released`);
+      console.error(`${TAG}: Capturer already released`);
       // ...
       return;
     }
@@ -911,7 +914,8 @@ async function release(updateCallback?: (msg: string, isError: boolean) => void)
       // ...
       console.error(`${TAG}: Capturer release failed, code: ${error.code}, message: ${error.message}`);
     } finally {
-      fs.closeSync(file.fd);
+      await pendingRecordingWrite;
+      fs.closeSync(recordingFile.fd);
     }
   }
 }
