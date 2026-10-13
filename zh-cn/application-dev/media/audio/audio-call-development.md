@@ -312,7 +312,7 @@ async function initArguments(context: common.UIAbilityContext) {
         let startIndex = bufferLength.toInt();
         let endIndex = buffer.byteLength.toInt();
         for (let i: int = startIndex; i < endIndex; i++) {
-          // 空白区域填充静音数据。当使用音频采样格式为SAMPLE_FORMAT_U8时0x7F为静音数据，使用其他采样格式时0为静音数据。
+          // 空白区域填充静音数据。当使用音频采样格式为SAMPLE_FORMAT_U8时0x80为静音数据，使用其他采样格式时0为静音数据。本示例采样格式为SAMPLE_FORMAT_S16LE，因此静音数据填充0。
           view.setUint8(i, 0);
         }
       }
@@ -337,7 +337,7 @@ async function init() {
     let renderer = await audio.createAudioRenderer(createAudioRendererOptions()); // 创建AudioRenderer实例。
     if (renderer === null) {
       const errorMsg = `${TAG}: creating AudioRenderer failed, renderer is null`;
-      console.info(errorMsg);
+      console.error(errorMsg);
       if (globalLogUpdate) {
         globalLogUpdate(errorMsg, true);
       }
@@ -348,7 +348,7 @@ async function init() {
     audioRenderer = renderer;
     renderer.onWriteData(writeDataCallback);
   } catch (error) {
-    console.info(`${TAG}: creating AudioRenderer failed, error: ${error}`);
+    console.error(`${TAG}: creating AudioRenderer failed, error: ${error}`);
     // ...
   }
 }
@@ -386,7 +386,7 @@ async function pause() {
   }
   // 只有渲染器状态为running的时候才能暂停。
   if (renderer.state !== audio.AudioState.STATE_RUNNING) {
-    console.info('Renderer is not running');
+    console.error('Renderer is not running');
     // ...
     return;
   }
@@ -411,7 +411,7 @@ async function stop() {
   // 只有渲染器状态为running或paused时才可以停止。
   if (state !== audio.AudioState.STATE_RUNNING &&
     state !== audio.AudioState.STATE_PAUSED) {
-    console.info('Renderer is not running or paused.');
+    console.error('Renderer is not running or paused.');
     // ...
     return;
   }
@@ -439,7 +439,7 @@ async function release() {
   }
   // 渲染器状态不是released状态，才能release。
   if (renderer.state === audio.AudioState.STATE_RELEASED) {
-    console.info('Renderer already released');
+    console.error('Renderer already released');
     // ...
     return;
   }
