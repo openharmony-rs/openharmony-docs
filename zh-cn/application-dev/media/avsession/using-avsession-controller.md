@@ -93,6 +93,34 @@
 3. 获取媒体会话提供方传递的当前播放曲目及播放状态等。
 
    <!-- @[getControllerInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionController/entry/src/main/ets/feature/MediaController.ets) --> 
+   
+   ``` TypeScript
+   async getControllerInfo(): Promise<void> {
+     // 获取会话元数据。
+     this.currentController?.getAVMetadata((error: BusinessError, metadata: avSession.AVMetadata) => {
+       if (error) {
+         Log.error(TAG, 'Failed to get AV metadata, code: ' + error.code + ', message: ' + error.message);
+         return;
+       }
+       Log.info(TAG, 'Succeeded in getting AV metadata, assetId: ' + metadata.assetId);
+       if (metadata?.mediaImage && metadata?.title && metadata?.artist) {
+         this.metaDataLink?.set(metadata);
+       }
+     });
+   
+     // 获取播放状态。
+     this.currentController?.getAVPlaybackState((error: BusinessError, state: avSession.AVPlaybackState) => {
+       if (error) {
+         Log.error(TAG, 'Failed to get AV playback state, code: ' + error.code + ', message: ' + error.message);
+         return;
+       }
+       Log.info(TAG, 'Succeeded in getting AV playback state.');
+       this.playbackStateLink?.set(state?.state);
+     });
+   
+     // ...
+   }
+   ```
 
 4. 监听媒体会话提供方的媒体信息变化及会话其他事件，从而应用可以根据回调及时刷新播放的曲目及播放状态。
 
