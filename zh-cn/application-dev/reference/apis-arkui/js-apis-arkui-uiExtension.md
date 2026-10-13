@@ -364,7 +364,7 @@ createSubWindowWithOptions(name: string, subWindowOptions: window.SubWindowOptio
 
 创建该WindowProxy实例下的子窗口，使用Promise异步回调。
 <!--Del -->
-当组件（EmbeddedComponent或UIExtensionComponent）的宿主为系统窗口时，创建的子窗称为系统子窗，系统子窗仅支持[getWindowAvoidArea](arkts-apis-window-Window.md#getwindowavoidarea9)、[on('avoidAreaChange)](arkts-apis-window-Window.md#onavoidareachange9)、[off('avoidAreaChange)](arkts-apis-window-Window.md#offavoidareachange9)、[on('windowSizeChange)](arkts-apis-window-Window.md#onwindowsizechange7)、[off('windowSizeChange)](arkts-apis-window-Window.md#offwindowsizechange7)、[on('windowRectChange)](arkts-apis-window-Window.md#onwindowrectchange12)、[off('windowRectChange)](arkts-apis-window-Window.md#offwindowrectchange12)接口
+当组件（EmbeddedComponent或UIExtensionComponent）的宿主为系统窗口时，创建的子窗称为系统子窗，该系统子窗仅支持[getWindowAvoidArea](arkts-apis-window-Window.md#getwindowavoidarea9)、[on('avoidAreaChange)](arkts-apis-window-Window.md#onavoidareachange9)、[off('avoidAreaChange)](arkts-apis-window-Window.md#offavoidareachange9)、[on('windowSizeChange)](arkts-apis-window-Window.md#onwindowsizechange7)、[off('windowSizeChange)](arkts-apis-window-Window.md#offwindowsizechange7)、[on('windowRectChange)](arkts-apis-window-Window.md#onwindowrectchange12)、[off('windowRectChange)](arkts-apis-window-Window.md#offwindowrectchange12)接口
 - OpenHarmony 7.1 版本之前，宿主窗口为系统窗口时，该接口在Phone设备可正常调用，在其他设备中返回1300002错误码。
 - OpenHarmony 7.1 开始，宿主窗口为系统窗口时，该接口在Phone、Tablet、PC/2in1和TV设备可正常调用，在其他设备中返回1300002错误码。
 <!--DelEnd -->
