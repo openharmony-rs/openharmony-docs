@@ -5513,7 +5513,7 @@ getString(): string
 **示例：**
 
 ```ts
-inputMethodEngine.getInputMethodAbility()
+inputMethodEngine.getInputMethodAbility()!
   .on('inputStart',
     (keyboardController: inputMethodEngine.KeyboardController, inputClient: inputMethodEngine.InputClient) => {
       let length: number = 5;
@@ -5544,7 +5544,7 @@ getSpans(): Array&lt;[RichTextSpan](#richtextspan)&gt;
 **示例：**
 
 ```ts
-inputMethodEngine.getInputMethodAbility()
+inputMethodEngine.getInputMethodAbility()!
   .on('inputStart',
     (keyboardController: inputMethodEngine.KeyboardController, inputClient: inputMethodEngine.InputClient) => {
       let length: number = 5;
@@ -5591,7 +5591,7 @@ getType(): [SpanType](#spantype)
 **示例：**
 
 ```ts
-inputMethodEngine.getInputMethodAbility()
+inputMethodEngine.getInputMethodAbility()!
   .on('inputStart',
     (keyboardController: inputMethodEngine.KeyboardController, inputClient: inputMethodEngine.InputClient) => {
       let length: number = 5;
@@ -5629,7 +5629,7 @@ getContent(): string
 **示例：**
 
 ```ts
-inputMethodEngine.getInputMethodAbility()
+inputMethodEngine.getInputMethodAbility()!
   .on('inputStart',
     (keyboardController: inputMethodEngine.KeyboardController, inputClient: inputMethodEngine.InputClient) => {
       let length: number = 5;
@@ -5663,7 +5663,7 @@ getRange(): [Range](#range10)
 **示例：**
 
 ```ts
-inputMethodEngine.getInputMethodAbility()
+inputMethodEngine.getInputMethodAbility()!
   .on('inputStart',
     (keyboardController: inputMethodEngine.KeyboardController, inputClient: inputMethodEngine.InputClient) => {
       let length: number = 5;
