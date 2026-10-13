@@ -186,6 +186,65 @@
 6. 控制媒体会话行为，例如发送用户对当前曲目的操作（播放/暂停/上一首/下一首等）命令。
 
    <!-- @[commands](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionController/entry/src/main/ets/pages/PresentPage.ets) --> 
+   
+   ``` TypeScript
+   changeCallback() {
+     this.canPlay = !!this.validCommands?.includes('play');
+     this.canPause = !!this.validCommands?.includes('pause');
+     this.canNext = !!this.validCommands?.includes('playNext');
+     this.canPrevious = !!this.validCommands?.includes('playPrevious');
+   }
+   
+   @Builder
+   commandBuild() {
+     Image($r('app.media.previous'))
+       .width('24vp').height('24vp')
+       .id('Previous')
+       .onClick(async () => {
+         if (this.canPrevious) {
+           let command: avSession.AVControlCommand = {
+             command: 'playPrevious', // 上一首指令。
+           }
+           await this.currentController?.sendControlCommand(command);
+           Log.info(TAG, 'on previous click');
+         }
+       })
+     Image(this.playbackState == avSession.PlaybackState.PLAYBACK_STATE_PLAY ? $r('app.media.stopmusic') : $r('app.media.playmusic'))
+       .width('24vp')
+       .height('24vp')
+       .id('PlayOrPause:')
+       .onClick(async () => {
+         if (this.playbackState == avSession.PlaybackState.PLAYBACK_STATE_PLAY) {
+           if (this.canPause) {
+             let command: avSession.AVControlCommand = {
+               command: 'pause', // 暂停指令。
+             }
+             await this.currentController?.sendControlCommand(command);
+           }
+         } else {
+           if (this.canPlay) {
+             let command: avSession.AVControlCommand = {
+               command: 'play', // 播放指令。
+             }
+             await this.currentController?.sendControlCommand(command);
+           }
+         }
+         Log.info(TAG, 'on play/pause click');
+       })
+     Image($r('app.media.next'))
+       .width('24vp').height('24vp')
+       .id('Next')
+       .onClick(async () => {
+         if (this.canNext) {
+           let command: avSession.AVControlCommand = {
+             command: 'playNext', // 下一首指令。
+           }
+           await this.currentController?.sendControlCommand(command);
+           Log.info(TAG, 'on next click ');
+         }
+       })
+   }
+   ```
 
 7. 媒体会话退出时，媒体会话控制方应及时取消监听，并释放资源。
 
