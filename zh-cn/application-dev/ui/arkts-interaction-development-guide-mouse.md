@@ -562,7 +562,7 @@ mouse2TouchEventMode可配置字段说明。
 
 ### 配置鼠标右键转长按
 
-通过配置easy_go.json第二层contextMenuOptions字段，可以将对应设备类型下的鼠标右键事件转换成长按事件发送给应用，从而达到类似手机上手指长按的效果。
+从API版本26.0.1开始，支持contextMenuOptions字段。通过配置easy_go.json第二层contextMenuOptions字段，可以将对应设备类型下的鼠标右键事件转换成长按事件发送给应用，从而达到类似手机上手指长按的效果。
 
 在PC/2in1设备上，配置所有ArkUI组件的鼠标右键事件转换成长按事件，示例如下。
 
