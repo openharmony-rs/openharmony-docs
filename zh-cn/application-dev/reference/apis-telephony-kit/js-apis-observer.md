@@ -1381,7 +1381,7 @@ let callback: (data: observer.VoIPCallStateInfo) => void = (data: observer.VoIPC
     );
 }
 
-//订阅三方VoIP通话状态变化
+// 订阅三方VoIP通话状态变化
 try {
     observer.onVoIPStateChange(callback);
 } catch (err) {
@@ -1429,14 +1429,14 @@ let callback: (data: observer.VoIPCallStateInfo) => void = (data: observer.VoIPC
     );
 }
 
-//取消订阅：指定回调取消单条订阅
+// 取消订阅：指定回调取消单条订阅
 try {
     observer.offVoIPStateChange(callback);
 } catch (err) {
     console.error(`observer.offVoIPStateChange failed: ${JSON.stringify(err)}`);
 }
 
-//取消订阅：不带参数取消全部订阅
+// 取消订阅：不带参数取消全部订阅
 try {
     observer.offVoIPStateChange();
 } catch (err) {
@@ -1458,7 +1458,7 @@ VoIP呼叫状态信息。
 | contactName | string  |  否  |  否  | VoIP呼叫的联系人姓名。 |
 | callType | [VoIPCallType](#voipcalltype)  |  否  |  否  | VoIP呼叫类型。 |
 | VoIPCallState | [VoIPCallState](#voipcallstate)  |  否  |  否  | VoIP呼叫状态。 |
-| isVoiceAnswerSupported | boolean  |  否  |  否  | VoIP应用是否支持将当前呼叫作为语音呼叫接听。 |
+| isVoiceAnswerSupported | boolean  |  否  |  否  | VoIP应用是否支持将当前呼叫作为语音呼叫接听。<br>- true：支持语音接听。<br>- false：不支持语音接听。 |
 
 ## VoIPCallType
 
