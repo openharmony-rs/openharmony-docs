@@ -454,7 +454,7 @@ clearplay :: host {
     }
 }
 ```
-设备上`/etc/drm/drm_plugin_lazyloading.cfg`为 DRM 框架服务懒加载列表配置文件，键值对形式，DRM 解决方案插件解决方案名为键，DRM解决方案服务名为值：
+设备上`/etc/drm/drm_plugin_lazyloading.cfg`为 DRM 框架服务懒加载列表配置文件，键值对形式，DRM解决方案名为键，DRM解决方案服务名为值：
 ```json
 {
     "plugin_services": {
