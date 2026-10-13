@@ -1,12 +1,11 @@
 # native_audio_accessory_common.h
-
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
-<!--Designer: @hao-liangfei; @zhanganxiang-->
+<!--Designer: @zhanganxiang1-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=fea09459a0476f095195448c2ce1ed787d76ab6a translatedAt=2026-08-31T02:31:45.829Z pushedAt=2026-08-31T08:07:46.799Z -->
+<!-- md-trans-meta sourceCommit=231a0f852838e757ab03536e79d2ff209c5f5457 translatedAt=2026-10-08T12:13:46.122Z pushedAt=2026-10-12T10:49:43.422Z -->
 
 ## Overview
 

@@ -1,12 +1,11 @@
 # div
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @fenglinbailu-->
 <!--Designer: @fenglinbailu-->
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=45ec2d938cfede23d9ca90fe41c0d1f3e7b2b01d translatedAt=2026-08-11T01:55:13.475Z pushedAt=2026-08-11T02:10:50.101Z -->
+<!-- md-trans-meta sourceCommit=0ecae94d626da9cde906e5f54f440c6cad85eadc translatedAt=2026-10-12T04:02:08.533Z pushedAt=2026-10-12T06:46:04.273Z -->
 
 The **\<div>** component is a basic container that is used as the root node of the page structure or is used to group the content.
 
@@ -18,9 +17,11 @@ The **\<div>** component is a basic container that is used as the root node of t
 
 Supported.
 
+
 ## Attributes
 
 The [universal attributes](js-service-widget-common-attributes.md) are supported.
+
 
 ## Styles
 
@@ -30,8 +31,8 @@ In addition to the [universal styles](js-service-widget-common-styles.md), the f
 | -------- | -------- | -------- | -------- | -------- |
 | flex-direction | string | row | No| Main axis direction of the flex container, which defines how items are placed in the container. Available values are as follows:<br>- **column**: Items are placed vertically from top to bottom.<br>- **row**: Items are placed horizontally from left to right.|
 | flex-wrap | string | nowrap | No| Whether items in the flex container are displayed in a single line or multiple lines. The value cannot be dynamically updated. Available values are as follows:<br>- **nowrap**: Flex items are displayed in a single line.<br>- **wrap**: Flex items are displayed in multiple lines.|
-| justify-content | string | flex-start | No| How items are aligned along the main axis of the flex container. Available values are as follows:<br>- **flex-start**: Items are packed toward the start edge of the container along the main axis.<br>- **flex-end**: Items are packed toward the end edge of the container along the main axis.<br>- **center**: Items are packed toward the center of the container along the main axis.<br>- **space-between**: Items are positioned with space between the rows.<br>- **space-around**: Items are positioned with space before, between, and after the rows.<br>- **space-evenly**<sup>5+</sup>: Items are distributed within the container along the main axis, with even space between each two.|
-| align-items | string | stretch | No| How items are aligned along the cross axis in a flex container. Available values are as follows:<br>- **stretch**: Items are stretched to the same height or width as the container along the cross axis.<br>- **flex-start**: Items are packed toward the start edge of the cross axis.<br>- **flex-end**: Items are packed toward the end edge of the cross axis.<br>- **center**: Items are packed toward the center of the cross axis.|
+| justify-content | string | flex-start | No | How items are aligned along the main axis of the flex container. Available values are as follows:<br/>-&nbsp;**flex-start**: Items are packed toward the start edge of the container.<br/>-&nbsp;**flex-end**: Items are packed toward the end edge of the container.<br/>-&nbsp;**center**: Items are packed toward the center of the container.<br/>-&nbsp;**space-between**: Items are positioned with space between the rows.<br/>-&nbsp;**space-around**: Items are positioned with space before, between, and after the rows.<br/>-&nbsp;**space-evenly**<sup>5+</sup>:&nbsp;&nbsp;Items are distributed evenly, with equal space between each two. |
+| align-items | string | stretch | No | How items are aligned along the cross axis of the container:<br/>-&nbsp;**stretc**h: The content of the flex container is stretched along the cross axis to the same height or width as the container.<br/>-&nbsp;**flex-start**: Items in the flex layout container are aligned toward the cross-axis start.<br/>-&nbsp;**flex-end**: Items in the flex layout container are aligned toward the cross-axis end.<br/>-&nbsp;**center**: Items in the flex layout container are aligned at the center of the cross axis.<br/>-&nbsp;**baseline**: If the flex layout is arranged vertically, this value is equivalent to 'flex-start'. In a horizontal layout, if the content items contain text, they are aligned along the text baseline; otherwise, they are aligned at the bottom. |
 | align-content | string | flex-start | No| Multi-row alignment mode when there is extra space in the cross axis. Available values are as follows:<br>- **flex-start**: All rows are packed toward the start edge of the cross axis. The start edge of the cross axis of the first row is aligned with the start edge of the cross axis of the container. All subsequent rows are aligned with the previous row.<br>- **flex-end**: All rows are packed toward the end edge of the cross axis. The end of the cross axis of the last row is aligned with the end of the cross axis of the container. All subsequent rows are aligned with the previous row.<br>- **center**: All rows are packed toward the center of the cross axis. Rows are close to each other and aligned with the center of the container. The spacing between the start edge of the container's cross axis and the first row is equal to the spacing between the end edge of the container's cross axis and the last row.<br>- **space-between**: All rows are evenly distributed in the container. The spacing between two adjacent rows is the same. The start and end edges of the container's cross axis are aligned with the edges of the first and last rows, respectively.<br>- **space-around**: All rows are evenly distributed in the container. The spacing between two adjacent rows is the same. The spacing between the start edge of the container's cross axis and the first row and that between the end edge and the last row are half of the spacing between two adjacent rows.|
 | display | string | flex | No| Type of the view box of the item. The value cannot be dynamically updated. Available values are as follows:<br>- **flex**: flexible layout<br>- **none**: not rendered|
 | grid-template-[columns\|rows] | string | 1 row, 1 column| No| Number of rows and columns in the current grid layout. If this attribute is not set, one row and one column are displayed by default. This attribute is valid only when **display** is set to **grid**.<br>Below are some example values of **grid-template-columns**:<br>- **50px 100px 60px**: There are three columns. The first column is 50 px, the second column is 100 px, and the third column is 60 px.<br>- **1fr 1fr 2fr**: There are three columns, and the width allowed by the parent component is divided into four equal shares. The first column occupies one share, the second column occupies one share, and the third column occupies two shares.<br>- **30% 20% 50%**: There are three columns. The first column occupies 30% of the total width allowed by the parent component, the second column occupies 20%, and the third column occupies 50%.<br>- **repeat (2,100px)**: There are two columns. The first column is 100 px, and the second column is 100 px.<br>- **repeat(auto-fill,100px)**<sup>5+</sup>: Each column is 100 px and repeats to fill the cross axis. The number of columns is calculated based on the column size and the cross axis size.<br>- **auto 1fr 1fr**: There are three columns. The first column is adaptive to the width required by its child components. The remaining space is divided into two equal shares, one share occupied by each of the rest two columns.|
@@ -39,16 +40,16 @@ In addition to the [universal styles](js-service-widget-common-styles.md), the f
 | grid-row-[start\|end] | number | - | No| Start and end row numbers of the current item in the grid layout. This attribute is valid only when the item's parent component is a **\<div>** container whose **display** style is set to **grid**.|
 | grid-column-[start\|end] | number | - | No| Start and end column numbers of the current item in the grid layout. This attribute is valid only when the item's parent component is a **\<div>** container whose **display** style is set to **grid**.|
 | grid-auto-flow | string | - | No| How grid items are laid out automatically. Available values are as follows:<br>- **row**: Elements are filled row by row. When there is no horizontal space in a row, a new row is added.<br>- **column**: Elements are filled column by column. When there is no vertical space in a column, a new column is added.|
-| align-items | string | - | No| How items are aligned along the cross axis in a flex container. Available values are as follows:<br>- **stretch**: Items are stretched to the same height or width as the flex container along the cross axis.<br>- **flex-start**: Items are aligned to the start of the cross axis.<br>- **flex-end**: Items are aligned to the end of the cross axis.<br>- **center**: Items are aligned in the center of the cross axis.<br>- **baseline**: In a vertical layout, items are aligned to the start of the cross axis, which means that this value is equivalent of **flex-start**. In a horizontal layout, items are aligned with the text baseline if there is text involved, and aligned to the bottom otherwise.|
 
 ## Events
 
 The [universal events](js-service-widget-common-events.md) are supported.
 
+
 ## Example
 
 1. Flex style
-
+  
    ```html
    <!-- xxx.hml -->
    <div class="container">
@@ -60,6 +61,7 @@ The [universal events](js-service-widget-common-events.md) are supported.
    </div>
    ```
 
+   
    ```css
    /* xxx.css */
    .container {
@@ -91,13 +93,12 @@ The [universal events](js-service-widget-common-events.md) are supported.
      background-color: #41ba41;
    }
    ```
-
     **2 x 4 widget**
 
     ![en-us_Flex-example](figures/Flex-example.png)
 
 2. Flex wrap style
-
+  
    ```html
    <!-- xxx.hml -->
    <div class="container">
@@ -109,6 +110,7 @@ The [universal events](js-service-widget-common-events.md) are supported.
    </div>
    ```
 
+   
    ```css
    /* xxx.css */
    .container {
@@ -141,7 +143,7 @@ The [universal events](js-service-widget-common-events.md) are supported.
      background-color: #41ba41;
    }
    ```
-
    **4 x 4 widget**
 
    ![en-us_Flex-Wrap-example](figures/Flex-Wrap-example.png)
+

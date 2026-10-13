@@ -1,12 +1,11 @@
 # Interface (AudioCapturer)
-
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @zyy0412-->
 <!--Designer: @weixin_41398971-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=a560ca455272b87c773fafec048564b7357cd71d translatedAt=2026-08-10T01:22:21.301Z pushedAt=2026-08-10T02:59:26.429Z -->
+<!-- md-trans-meta sourceCommit=4d1b3ad6de802e96ea2dba644ca7d60992013b31 translatedAt=2026-10-08T12:02:20.951Z pushedAt=2026-10-12T02:04:30.406Z -->
 
 This interface provides APIs for audio capture.
 
@@ -68,6 +67,7 @@ audioCapturer.getCapturerInfo((err: BusinessError, capturerInfo: audio.AudioCapt
   }
 });
 ```
+
 
 ## getCapturerInfo<sup>8+</sup>
 
@@ -330,6 +330,7 @@ audioCapturer.start((err: BusinessError) => {
 });
 ```
 
+
 ## start<sup>8+</sup>
 
 start(): Promise<void\>
@@ -421,6 +422,7 @@ audioCapturer.stop((err: BusinessError) => {
 });
 ```
 
+
 ## stop<sup>8+</sup>
 
 stop(): Promise<void\>
@@ -478,6 +480,7 @@ audioCapturer.release((err: BusinessError) => {
 });
 ```
 
+
 ## release<sup>8+</sup>
 
 release(): Promise<void\>
@@ -502,9 +505,10 @@ audioCapturer.release().then(() => {
   console.info('AudioFrameworkRecLog: Capturer release : SUCCESS');
   console.info(`AudioFrameworkRecLog: AudioCapturer : STATE : ${audioCapturer.state}`);
 }).catch((err: BusinessError) => {
-  console.error(`AudioFrameworkRecLog: Capturer stop: ERROR: ${err}`);
+  console.error(`AudioFrameworkRecLog: Capturer release: ERROR: ${err}`);
 });
 ```
+
 
 ## getAudioTime<sup>8+</sup>
 
@@ -939,7 +943,6 @@ audioCapturer.on('inputDeviceChange', (deviceChangeInfo: audio.AudioDeviceDescri
   console.info(`inputDevice deviceType: ${deviceChangeInfo[0].deviceType}`);
 });
 ```
-
 ## off('inputDeviceChange')<sup>11+</sup>
 
 off(type: 'inputDeviceChange', callback?: Callback\<AudioDeviceDescriptors>): void
@@ -1420,7 +1423,7 @@ Sets whether to [mute the current audio recording stream when an audio interrupt
 
 | Name    | Type            | Mandatory  | Description                                                     |
 | ---------- |---------------- | ------ |---------------------------------------------------------|
-| muteWhenInterrupted | boolean  | Yes | Whether to mute the current audio recording stream during an audio interruption. **true** to mute, **false** otherwise.|
+| muteWhenInterrupted | boolean  | Yes  | Sets whether to enable the mute interruption mode for the current recording audio stream. The value **true** means to enable it, and **false** means not to enable it, keeping the default interruption mode. |
 
 **Return value**
 
@@ -1641,14 +1644,13 @@ Sets the noise reduction mode of the current recording stream. You are advised t
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Audio Error Codes](errorcode-audio.md).
+For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
 
 | ID | Error Message |
 | ------- | --------------------------------------------|
-| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 6800101 | Parameter verification failed. |
 | 6800103 | Illegal state, audio capturer is in running or released state. |
-| 6800104 | The set mode is not supported. |
+| 6800104 | The setted mode is not supported. |
 | 6800301 | Audio server process died. |
 
 **Example**

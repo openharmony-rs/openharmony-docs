@@ -1,12 +1,11 @@
 # Interface (FocusQuery)
-
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=f0e09e3de648081eea4659387ebc6bc9008f04fc translatedAt=2026-08-11T01:58:54.515Z pushedAt=2026-08-11T10:29:08.333Z -->
+<!-- md-trans-meta sourceCommit=8b512243901c55915aa61df5cc70cfb3620f6e97 translatedAt=2026-10-08T13:03:34.015Z pushedAt=2026-10-12T11:40:19.260Z -->
 
 FocusQuery provides APIs to check whether a focus mode is supported.
 
@@ -35,7 +34,7 @@ Checks whether a focus mode is supported.
 
 | Name     | Type                    | Mandatory| Description                             |
 | -------- | ----------------------- | ---- | -------------------------------- |
-| afMode   | [FocusMode](arkts-apis-camera-e.md#focusmode) | Yes  | Focus mode. If the input parameter is null or undefined, it is treated as 0 and manual focus is used.                   |
+| afMode   | [FocusMode](arkts-apis-camera-e.md#focusmode) | Yes   | Specified focus mode. If the input parameter is **null** or **undefined**, it is treated as **0** and manual focus is used.                    |
 
 **Return value**
 

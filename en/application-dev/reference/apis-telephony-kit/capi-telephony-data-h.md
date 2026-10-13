@@ -50,4 +50,4 @@ Obtains the default SIM card used for mobile data.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Default SIM card used for mobile data. The value **0** indicates card slot 1, and the value **1** indicates card slot 2.|
+| int32_t | Default card slot used for mobile data. The value **0** indicates card slot 1, and the value **1** indicates card slot 2.|

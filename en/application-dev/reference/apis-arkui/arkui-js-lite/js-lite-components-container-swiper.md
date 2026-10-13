@@ -25,7 +25,7 @@ All child components except **\<list>** are supported.
 | -------- | -------- | -------- | -------- | -------- |
 | index | number | 0 | No| Index of the child component currently displayed in the container.|
 | loop | boolean | true | No| Whether to enable looping. The value **true** means to enable looping, and **false** means the opposite.|
-| duration | number | - | No| Duration of the autoplay for child component switching.|
+| duration | number | - | No| Duration of the animation for child component switching.|
 | vertical | boolean | false | No| Whether the swipe gesture is performed vertically. A vertical swipe uses the vertical indicator. The value **true** means vertical swiping, and **false** means horizontal swiping.<br>The value cannot be dynamically updated.|
 | id | string | - | No| Unique ID of the component.|
 | style | string | - | No| Style declaration of the component.|

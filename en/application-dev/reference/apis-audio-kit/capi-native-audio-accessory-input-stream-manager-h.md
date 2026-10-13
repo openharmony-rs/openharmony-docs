@@ -1,12 +1,11 @@
 # native_audio_accessory_input_stream_manager.h
-
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @hao-liangfei; @zhanganxiang-->
+<!--Owner: @zyy0412-->
+<!--Designer: @weixin_41398971-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=f6b98329623e60d030164db3f328ee8bd5405051 translatedAt=2026-08-31T02:33:31.041Z pushedAt=2026-09-01T00:20:16.917Z -->
+<!-- md-trans-meta sourceCommit=231a0f852838e757ab03536e79d2ff209c5f5457 translatedAt=2026-10-08T12:14:55.345Z pushedAt=2026-10-12T10:49:48.324Z -->
 
 ## Overview
 
