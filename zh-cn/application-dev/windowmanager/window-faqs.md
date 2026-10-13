@@ -851,3 +851,35 @@ windowClass.on('avoidAreaChange', (data) => {
 - 应用内容布局的刷新管理运行在应用进程中，需要经过跨进程尺寸通知、应用侧计算与重排等环节才能完成。
 
 由上述设计可知，快速拖动窗口边框的过程中窗口外框与应用布局短暂不同步属于设计预期；拖拽操作结束后，系统会将最终窗口大小同步至应用进程，待应用侧完成布局重排后，二者即保持一致。
+
+## 如何设置应用可在锁屏页面启动
+
+当设备处于锁屏状态时，默认情况下系统会阻止应用窗口的启动和前台显示。如果应用需要在锁屏状态下被启动，需要申请权限`ohos.permission.START_WINDOW_BELOW_LOCK_SCREEN`。
+
+该权限允许应用在锁屏状态下被启动。获取该权限后，应用可以在锁屏状态下被启动，设备解锁后可直接看到应用启动界面。权限声明需要在[module.json5配置文件](../quick-start/module-configuration-file.md)的requestPermissions标签中声明，详细声明方式请参考[声明权限](../security/AccessToken/declare-permissions.md)。
+
+> **说明：**
+> 
+> - `ohos.permission.START_WINDOW_BELOW_LOCK_SCREEN`为normal级别权限，授权方式为系统授权，应用安装后即获得授权，无需用户手动确认。
+> 
+> - 该权限仅支持在PC/2in1设备上申请，起始版本为API version 21。在其他设备类型上申请不生效。
+> 
+> - 在开发跨设备应用时，建议通过[canIUse()](../reference/common/js-apis-syscap.md#caniuse)接口判断当前设备是否支持该权限所对应的系统能力，避免在不支持的设备上产生非预期行为。
+> 
+> - 该权限的详细说明请参考[应用权限列表](../security/AccessToken/permissions-for-all.md#ohospermissionstart_window_below_lock_screen)。
+
+示例代码如下所示：
+
+```json5
+{
+  "module": {
+    // ···
+    // ohos.permission.START_WINDOW_BELOW_LOCK_SCREEN为system_grant权限，reason和usedScene为选填字段。
+    "requestPermissions": [
+      {
+        "name": "ohos.permission.START_WINDOW_BELOW_LOCK_SCREEN"
+      }
+    ]
+  }
+}
+```
