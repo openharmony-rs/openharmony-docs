@@ -2958,18 +2958,14 @@ try {
   });
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
-}   
+}
 ```
 
 ## formHost.on('getLiveFormStatus')<sup>20+</sup>
 
 on(type: 'getLiveFormStatus', callback: formInfo.GetLiveFormStatusCallback): void
 
-订阅卡片卸载事件。使用callback异步回调。
-
-> **说明：**
-> 
-> 卡片卸载与卡片移除不同。当应用卸载时，对应的卡片会自动卸载。
+订阅所有实时卡片的运行状态查询事件。使用callback异步回调。
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -2980,7 +2976,7 @@ on(type: 'getLiveFormStatus', callback: formInfo.GetLiveFormStatusCallback): voi
 | 参数名 | 类型    | 必填 | 说明                                                   |
 | ------ | ------ | ---- |------------------------------------------------------|
 | type | string | 是   | 事件回调类型，支持的事件为'getLiveFormStatus'，表示在线卡片状态查询。|
-| callback |[formInfo.GetLiveFormStatusCallback](js-apis-app-form-formInfo-sys.md#getformrectinfocallback20) | 是 | 回调函数，卡片使用方对查询请求进行处理，返回卡片相对屏幕左上角的位置信息和卡片尺寸信息。|
+| callback |[formInfo.GetLiveFormStatusCallback](js-apis-app-form-formInfo-sys.md#getformrectinfocallback20) | 是 | 回调函数，卡片使用方对查询请求进行处理，返回所有实时卡片的运行状态。|
 
 **错误码：**
 
@@ -3007,11 +3003,7 @@ formHost.on('getLiveFormStatus', (): Record<string, string> => {
 
 off(type: 'getLiveFormStatus', callback?: formInfo.GetLiveFormStatusCallback): void
 
-取消订阅卡片卸载事件。使用callback异步回调。
-
-> **说明：**
-> 
-> 卡片卸载与卡片移除不同。当应用卸载时，对应的卡片会自动卸载。
+取消订阅所有实时卡片的运行状态查询事件。使用callback异步回调。
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -3022,7 +3014,7 @@ off(type: 'getLiveFormStatus', callback?: formInfo.GetLiveFormStatusCallback): v
 | 参数名 | 类型    | 必填 | 说明                                                   |
 | ------ | ------ | ---- |------------------------------------------------------|
 | type | string | 是   | 事件回调类型，支持的事件为'getLiveFormStatus'，表示卡片位置尺寸查询。|
-| callback |[formInfo.GetLiveFormStatusCallback](js-apis-app-form-formInfo-sys.md#getformrectinfocallback20) | 是 | 回调函数，卡片使用方对查询请求进行处理，返回卡片相对屏幕左上角的位置信息和卡片尺寸信息。|
+| callback |[formInfo.GetLiveFormStatusCallback](js-apis-app-form-formInfo-sys.md#getformrectinfocallback20) | 是 | 回调函数，对应已订阅卡片位置尺寸查询请求。缺省时，表示注销所有实时卡片的运行状态查询事件回调。|
 
 **错误码：**
 
@@ -3037,10 +3029,7 @@ off(type: 'getLiveFormStatus', callback?: formInfo.GetLiveFormStatusCallback): v
 ```ts
 import { formHost } from '@kit.FormKit';
 
-formHost.off('getLiveFormStatus', (): Record<string, string> => {
-  console.info('FMS 注销全部监听');
-  return liveFormStatusMap;
-});
+formHost.off('getLiveFormStatus');
 ```
 
 ## formHost.on('changeSceneAnimationState')<sup>20+</sup>
