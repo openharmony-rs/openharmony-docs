@@ -3856,14 +3856,14 @@ struct Index {
 | editable | boolean | 是 | 是 | 元素是否可编辑。true表示可编辑，false表示不可编辑。<br>默认值为false。|
 | error | string | 否  | 是  | 当元素处于错误状态时显示的错误文本。|
 | focusable | boolean | 是 | 是 | 元素是否可获得焦点。true表示可获得焦点，false表示不可获得焦点。<br>默认值为false。|
-| hintText | string | 是  | 是  | 输入框无输入时的提示文本。。|
+| hintText | string | 是  | 是  | 输入框无输入时的提示文本。|
 | identifier | string | 是  | 是  | 开发者自行设置的元素标识字段。|
 | isActive | boolean | 是 | 是 | 元素是否处于活动状态。true表示活动状态，false表示非活动状态。<br>默认值为true。|
 | isEnabled | boolean | 是 | 是 | 元素是否被启用。true表示启用，false表示未启用。<br>默认值为false。|
 | isFocused | boolean | 是 | 是 | 表示元素是否已获得焦点。true表示已获得焦点，false表示未获得焦点。<br>默认值为false。|
 | isVisible | boolean | 是 | 是 | 元素是否可见。true表示元素可见，false表示元素不可见。<br>默认值为false。|
 | longClickable | boolean | 是 | 是 | 元素是否可长按。true表示可长按，false表示不可长按。<br>默认值为false。|
-| pageId | number | 是 | 是 | 页面ID。<br>默认值为-1。-1表示非法的面ID页。|
+| pageId | number | 是 | 是 | 页面ID。<br>默认值为-1。-1表示非法的页面ID。|
 | rect                | [UIRect](#uirect)  | 是  | 是  | 元素的区域。|
 | scrollable          | boolean | 是  | 是  | 元素是否可滚动。true表示元素可滚动，false表示不可滚动。<br>默认值为false。|
 | selected         | boolean | 是 | 是  | 元素是否已选中。true表示已选中，false表示未选中。<br>默认值为false。|
