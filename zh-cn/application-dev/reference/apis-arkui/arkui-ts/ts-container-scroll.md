@@ -2254,3 +2254,66 @@ struct Index {
   }
 }
 ```
+
+### 示例14（获取滚动状态）
+
+从API版本26.2.0开始，该示例实现了获取滚动状态的功能。
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct ScrollExample {
+  scroller: Scroller = new Scroller();
+  private arr: number[] = []
+
+  aboutToAppear() { for (let j = 0; j < 10; j++) { this.arr.push(j); } }
+
+  @State scrollStateStr: string = 'Idle';
+
+  build() {
+    Column() {
+      Text('设置scroller控制器和ForEach')
+      Row() {
+        // 点击按钮来调用getScrollState函数获取当前滚动状态
+        Button('GetScrollState')
+          .onClick(() => {
+            // Scroller未绑定组件时会抛异常，需要加上try catch保护
+            try {
+              // 通过调用getScrollState函数获取当前滚动状态
+              const state: ScrollState = this.scroller.getScrollState();
+              // 将滚动状态转换为可读文本
+              this.scrollStateStr = state === ScrollState.Idle ? 'Idle' :
+                state === ScrollState.Scroll ? 'Scroll' : 'Fling';
+            } catch (error) {
+              let err: BusinessError = error as BusinessError;
+              console.error(`Failed to get scrollState. Code: ${err.code}, message: ${err.message}`);
+            }
+          })
+        // 将获取到的滚动状态信息通过文本进行呈现
+        Text('ScrollState：' + this.scrollStateStr)
+          .fontColor(Color.Red)
+          .height(50)
+      }
+
+      Stack({ alignContent: Alignment.TopStart }) {
+        Scroll(this.scroller) {
+          Column() {
+            ForEach(this.arr, (item: number) => {
+              Text('item value: ' + item)
+                .width('100%').height(100).fontSize(16)
+                .border({ width: 1, color: Color.Blue })
+                .borderRadius(10)
+                .backgroundColor(Color.Pink)
+                .textAlign(TextAlign.Center)
+            }, (item: number) => item.toString())
+          }
+        }
+        .scrollable(ScrollDirection.Vertical)
+        .scrollBar(BarState.On)
+      }
+    }
+  }
+}
+```
