@@ -229,3 +229,87 @@ export default class ExampleFormEditAbility extends FormEditExtensionAbility {
   }
 }
 ```
+
+### setWindowBackgroundColor
+
+setWindowBackgroundColor(color: string): Promise&lt;void&gt;
+
+设置卡片编辑页的背景色。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**ArkTS-Dyn起始版本：** 26.2.0
+
+**ArkTS-Sta起始版本：** 26.2.0
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                                   |
+| ------ | ------ | ---- | ------------------------------------- |
+| color  | string | 是   | 要设置的背景颜色。该值是一个十六进制RGB或ARGB颜色代码，不区分大小写，例如`#00FF00`或`#FF00FF00`。它也可以是一个资源字符串。|
+
+**返回值：**
+
+| 类型 | 说明    |
+| ------ | ------ |
+| Promise&lt;void&gt;   |  Promise对象，无返回结果。  |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[卡片错误码](errorcode-form.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 16500050 | An IPC connection error happened.                            |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { FormEditExtensionAbility } from '@kit.FormKit';
+import { UIExtensionContentSession, Want } from '@kit.AbilityKit';
+
+const TAG: string = '[testTag] ExampleFormEditExtensionAbility'
+
+export default class ExampleFormEditAbility extends FormEditExtensionAbility {
+  onSessionCreate(want: Want, session: UIExtensionContentSession): void {
+    try {
+      // 设置编辑页背景为透明
+      this.context.setWindowBackgroundColor('#00FFFFFF').then(() => {
+        console.info(TAG, `setWindowBackgroundColor success`);
+      });
+    } catch (e) {
+      console.error(TAG, `setWindowBackgroundColor failed, code: ${e.code}, message: ${e.message}`);
+      return
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+'use static'
+
+import { FormEditExtensionAbility } from '@kit.FormKit';
+import { Want, UIExtensionContentSession } from '@kit.AbilityKit';
+
+const TAG: string = '[testTag] ExampleFormEditExtensionAbility'
+
+export default class ExampleFormEditAbility extends FormEditExtensionAbility {
+  onSessionCreate(want: Want, session: UIExtensionContentSession) {
+    try {
+      // 设置编辑页背景为透明
+      this.context.setWindowBackgroundColor('#00FFFFFF').then(() => {
+        console.info(TAG, `setWindowBackgroundColor success`);
+      });
+    } catch (error) {
+      console.error(TAG, `setWindowBackgroundColor failed: code: ${error.code} message: ${error.message}`)
+      return
+    }
+  }
+}
+```
