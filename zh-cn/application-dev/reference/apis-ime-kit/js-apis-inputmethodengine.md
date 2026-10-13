@@ -8153,14 +8153,13 @@ inputMethodEngine.getInputMethodAbility()
 ArkTS-Sta示例：
 
 ```ts
-inputMethodEngine.getInputMethodAbility()
-  .on('inputStart',
-    (keyboardController: inputMethodEngine.KeyboardController, inputClient: inputMethodEngine.InputClient) => {
-      let length: int = 5;
-      let richText: inputMethodEngine.InputMethodRichText = inputClient!.getLeftRichTextSync(length);
-      let plainText: string = richText.getString();
-      console.info(`plainText: ${plainText}`);
-    });
+inputMethodEngine.getInputMethodAbility()!.onInputStart(
+  (kbController: inputMethodEngine.KeyboardController, inputClient: inputMethodEngine.InputClient) => {
+    let length: int = 5;
+    let richText: inputMethodEngine.InputMethodRichText = inputClient!.getLeftRichTextSync(length);
+    let plainText: string = richText.getString();
+    console.info(`plainText: ${plainText}`);
+  });
 ```
 
 ### getSpans
@@ -8207,20 +8206,19 @@ inputMethodEngine.getInputMethodAbility()
 ArkTS-Sta示例：
 
 ```ts
-inputMethodEngine.getInputMethodAbility()
-  .on('inputStart',
-    (keyboardController: inputMethodEngine.KeyboardController, inputClient: inputMethodEngine.InputClient) => {
-      let length: int = 5;
-      let richText: inputMethodEngine.InputMethodRichText = inputClient!.getLeftRichTextSync(length);
-      let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
-      for (let i = 0; i < spans.length; i++) {
-        let span: inputMethodEngine.RichTextSpan = spans[i];
-        let type: inputMethodEngine.SpanType = span.getType();
-        let content: string = span.getContent();
-        let range: inputMethodEngine.Range = span.getRange();
-        console.info(`span[${i}]: type=${type}, content=${content}, range={start:${range.start}, end:${range.end}}`);
-      }
-    });
+inputMethodEngine.getInputMethodAbility()!.onInputStart(
+  (kbController: inputMethodEngine.KeyboardController, inputClient: inputMethodEngine.InputClient) => {
+    let length: int = 5;
+    let richText: inputMethodEngine.InputMethodRichText = inputClient!.getLeftRichTextSync(length);
+    let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
+    for (let i = 0; i < spans.length; i++) {
+      let span: inputMethodEngine.RichTextSpan = spans[i];
+      let type: inputMethodEngine.SpanType = span.getType();
+      let content: string = span.getContent();
+      let range: inputMethodEngine.Range = span.getRange();
+      console.info(`span[${i}]: type=${type}, content=${content}, range={start:${range.start}, end:${range.end}}`);
+    }
+  });
 ```
 
 ## RichTextSpan
@@ -8276,17 +8274,16 @@ inputMethodEngine.getInputMethodAbility()
 ArkTS-Sta示例：
 
 ```ts
-inputMethodEngine.getInputMethodAbility()
-  .on('inputStart',
-    (keyboardController: inputMethodEngine.KeyboardController, inputClient: inputMethodEngine.InputClient) => {
-      let length: int = 5;
-      let richText: inputMethodEngine.InputMethodRichText = inputClient!.getLeftRichTextSync(length);
-      let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
-      for (let i = 0; i < spans.length; i++) {
-        let type: inputMethodEngine.SpanType = spans[i].getType();
-        console.info(`span[${i}] type: ${type}`);
-      }
-    });
+inputMethodEngine.getInputMethodAbility()!.onInputStart(
+  (kbController: inputMethodEngine.KeyboardController, inputClient: inputMethodEngine.InputClient) => {
+    let length: int = 5;
+    let richText: inputMethodEngine.InputMethodRichText = inputClient!.getLeftRichTextSync(length);
+    let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
+    for (let i = 0; i < spans.length; i++) {
+      let type: inputMethodEngine.SpanType = spans[i].getType();
+      console.info(`span[${i}] type: ${type}`);
+    }
+  });
 ```
 
 ### getContent
@@ -8334,17 +8331,16 @@ inputMethodEngine.getInputMethodAbility()
 ArkTS-Sta示例：
 
 ```ts
-inputMethodEngine.getInputMethodAbility()
-  .on('inputStart',
-    (keyboardController: inputMethodEngine.KeyboardController, inputClient: inputMethodEngine.InputClient) => {
-      let length: int = 5;
-      let richText: inputMethodEngine.InputMethodRichText = inputClient!.getLeftRichTextSync(length);
-      let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
-      for (let i = 0; i < spans.length; i++) {
-        let content: string = spans[i].getContent();
-        console.info(`span[${i}] content: ${content}`);
-      }
-    });
+inputMethodEngine.getInputMethodAbility()!.onInputStart(
+  (kbController: inputMethodEngine.KeyboardController, inputClient: inputMethodEngine.InputClient) => {
+    let length: int = 5;
+    let richText: inputMethodEngine.InputMethodRichText = inputClient!.getLeftRichTextSync(length);
+    let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
+    for (let i = 0; i < spans.length; i++) {
+      let content: string = spans[i].getContent();
+      console.info(`span[${i}] content: ${content}`);
+    }
+  });
 ```
 
 ### getRange
@@ -8388,17 +8384,16 @@ inputMethodEngine.getInputMethodAbility()
 ArkTS-Sta示例：
 
 ```ts
-inputMethodEngine.getInputMethodAbility()
-  .on('inputStart',
-    (keyboardController: inputMethodEngine.KeyboardController, inputClient: inputMethodEngine.InputClient) => {
-      let length: int = 5;
-      let richText: inputMethodEngine.InputMethodRichText = inputClient!.getLeftRichTextSync(length);
-      let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
-      for (let i = 0; i < spans.length; i++) {
-        let range: inputMethodEngine.Range = spans[i].getRange();
-        console.info(`span[${i}] range: {start:${range.start}, end:${range.end}}`);
-      }
-    });
+inputMethodEngine.getInputMethodAbility()!.onInputStart(
+  (kbController: inputMethodEngine.KeyboardController, inputClient: inputMethodEngine.InputClient) => {
+    let length: int = 5;
+    let richText: inputMethodEngine.InputMethodRichText = inputClient!.getLeftRichTextSync(length);
+    let spans: Array<inputMethodEngine.RichTextSpan> = richText.getSpans();
+    for (let i = 0; i < spans.length; i++) {
+      let range: inputMethodEngine.Range = spans[i].getRange();
+      console.info(`span[${i}] range: {start:${range.start}, end:${range.end}}`);
+    }
+  });
 ```
 
 ## CapitalizeMode<sup>20+</sup>
