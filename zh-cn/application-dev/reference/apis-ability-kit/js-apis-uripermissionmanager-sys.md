@@ -301,7 +301,7 @@ revokeUriPermission(uri: string, targetBundleName: string, callback: AsyncCallba
 
   | 错误码ID | 错误信息 |
   | ------- | -------------------------------- |
-  | 201 | Permission verification failed. The application does not have the permission required to call the API. |
+  | 201 | Permission verification failed. The application does not have the permission required to call the API. <br>适用版本：10 - 11 |
   | 202 | Permission verification failed. A non-system application calls a system API. |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
   | 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. <br>适用版本：19+ |
@@ -363,7 +363,7 @@ revokeUriPermission(uri: string, targetBundleName: string): Promise&lt;number&gt
 
   | 错误码ID | 错误信息 |
   | ------- | -------------------------------- |
-  | 201 | Permission verification failed. The application does not have the permission required to call the API. |
+  | 201 | Permission verification failed. The application does not have the permission required to call the API. <br>适用版本：10 - 11 |
   | 202 | Permission verification failed. A non-system application calls a system API. |
   | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
   | 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. <br>适用版本：19+ |
@@ -511,7 +511,7 @@ grantUriPermissionByKey(key: string, flag: wantConstant.Flags, targetTokenId: nu
   | 错误码ID | 错误信息 |
   | ------- | -------------------------------- |
   | 202 | Permission verification failed. A non-system application calls a system API. |
-  | 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
+  | 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. <br>适用版本：19+ |
   | 16000050 | Internal error. |
   | 16000058 | Invalid URI flag. |
   | 16000060 | A sandbox application cannot grant URI permission. |
@@ -589,7 +589,7 @@ grantUriPermissionByKeyAsCaller(key: string, flag: wantConstant.Flags, callerTok
   | ------- | -------------------------------- |
   | 201 | Permission verification failed. The application does not have the permission required to call the API. |
   | 202 | Permission verification failed. A non-system application calls a system API. |
-  | 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.|
+  | 801 | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. <br>适用版本：19+ |
   | 16000050 | Internal error. |
   | 16000058 | Invalid URI flag. |
   | 16000060 | A sandbox application cannot grant URI permission. |
