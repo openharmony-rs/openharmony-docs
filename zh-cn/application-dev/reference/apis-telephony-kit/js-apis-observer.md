@@ -1416,11 +1416,13 @@ onVoIPStateChange\(callback: Callback\<VoIPCallStateInfo\>\): void
 
 订阅VoIP通话状态变化事件，使用callback方式作为异步方法。
 
-**起始版本：** 26.0.1
-
 **需要权限**：ohos.permission.MANAGE_CALL_FOR_DEVICES
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Dyn起始版本**： 26.0.1
+
+**ArkTS-Sta起始版本**： 26.0.1
 
 **参数：**
 
@@ -1463,11 +1465,13 @@ offVoIPStateChange\(callback?: Callback\<VoIPCallStateInfo\>\): void
 
 取消订阅VoIP通话状态变化事件，使用callback方式作为异步方法。
 
-**起始版本：** 26.0.1
-
 **需要权限**：ohos.permission.MANAGE_CALL_FOR_DEVICES
 
 **系统能力**：SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Dyn起始版本**： 26.0.1
+
+**ArkTS-Sta起始版本**： 26.0.1
 
 **参数：**
 
@@ -1515,9 +1519,11 @@ try {
 
 VoIP呼叫状态信息。
 
-**起始版本：** 26.0.1
-
 **系统能力：** SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Dyn起始版本**： 26.0.1
+
+**ArkTS-Sta起始版本**： 26.0.1
 
 | 名称 | 类型                                   |  只读 | 可选 | 说明 |
 | ----- |--------------------------------------| ----- | ---- | -----|
@@ -1531,9 +1537,11 @@ VoIP呼叫状态信息。
 
 VoIP呼叫类型的枚举。
 
-**起始版本：** 26.0.1
-
 **系统能力：** SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Dyn起始版本**： 26.0.1
+
+**ArkTS-Sta起始版本**： 26.0.1
 
 | 名称        | 值   | 说明              |
 | ----------- | ---- | ----------------- |
@@ -1544,9 +1552,11 @@ VoIP呼叫类型的枚举。
 
 VoIP通话状态。  
 
-**起始版本：** 26.0.1
-
 **系统能力：** SystemCapability.Telephony.StateRegistry
+
+**ArkTS-Dyn起始版本**： 26.0.1
+
+**ArkTS-Sta起始版本**： 26.0.1
 
 | 名称        | 值   | 说明              |
 | ----------- | ---- | ----------------- |
