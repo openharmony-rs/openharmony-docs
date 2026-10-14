@@ -38,7 +38,7 @@
 
 ### 属性差异
 
-#### 1. CustomDialog（自定义弹窗）
+1. CustomDialog（自定义弹窗）
 
 老接口使用CustomDialogController的open和close接口打开和关闭弹出框，新接口使用DialogPresenter的present和dismiss接口打开和关闭弹出框，具体示例见表格下方。
 
@@ -215,7 +215,7 @@ struct CustomDialogMigrationPage {
 
 ![迁移后示例图](figures/CustomDialogAfterMigrate.png)
 
-#### 2. AlertDialog（告警弹出框）
+2. AlertDialog（告警弹出框）
 
 老接口使用UIContext.showAlertDialog弹出告警框，新接口使用DialogPresenter.present弹出告警框，具体示例见表格下方。
 
@@ -366,7 +366,7 @@ struct AlertDialogMigrationPage {
 
 ![迁移后示例图](figures/AlertDialogAfterMigrate.png)
 
-#### 3. ActionSheet（列表选择弹窗）
+3. ActionSheet（列表选择弹窗）
 
 老接口使用UIContext.showActionSheet弹出列表选择弹出框，新接口使用DialogPresenter.present弹出列表选择弹出框，具体示例见表格下方。
 
@@ -508,7 +508,7 @@ struct ActionSheetMigrationPage {
 
 ![迁移后示例图](figures/ActionSheetAfterMigrate.png)
 
-#### 4. promptAction.showDialog（对话框）
+4. promptAction.showDialog（对话框）
 
 老接口使用promptAction.showDialog弹出对话框，新接口使用DialogPresenter.present弹出对话框，具体示例见表格下方。
 
@@ -650,7 +650,7 @@ struct ShowDialogMigrationPage {
 
 ![迁移后示例图](figures/ShowDialogAfterMigrate.png)
 
-#### 5. promptAction.showActionMenu（操作菜单）
+5. promptAction.showActionMenu（操作菜单）
 
 老接口使用promptAction.showActionMenu弹出操作菜单，新接口使用DialogPresenter.present弹出操作菜单，具体示例见表格下方。
 
@@ -792,7 +792,7 @@ struct ShowActionMenuMigrationPage {
 
 ![迁移后示例图](figures/ActionMenuAfterMigrate.png)
 
-#### 6. promptAction.presentCustomDialog（自定义弹窗）
+6. promptAction.presentCustomDialog（自定义弹窗）
 
 老接口使用promptAction.presentCustomDialog弹出自定义弹窗，新接口使用DialogPresenter.present弹出自定义弹窗，具体示例见表格下方。
 
@@ -957,7 +957,7 @@ struct PresentCustomDialogMigrationPage {
 
 ![迁移后示例图](figures/PresentCustomDialogAfterMigrate.png)
 
-#### 7. promptAction.openCustomDialogWithController（带控制器的自定义弹窗）
+7. promptAction.openCustomDialogWithController（带控制器的自定义弹窗）
 
 老接口使用promptAction.openCustomDialogWithController弹出带控制器的自定义弹窗，新接口使用DialogPresenter.present弹出带控制器的自定义弹窗，具体示例见表格下方。
 
@@ -1133,7 +1133,7 @@ struct OpenCustomDialogWithControllerMigrationPage {
 
 ![迁移后示例图](figures/OpenCustomDialogWithControllerAfterMigrate.png)
 
-#### 8. 高级动画参数差异
+8. 高级动画参数差异
 
 老接口使用 `customStyle: boolean` 控制是否使用自定义样式，`openAnimation` / `closeAnimation`（`AnimateParam`）控制打开和关闭动画。新接口使用 `dialogTransition: TransitionEffect` 控制内容区动画，`maskTransition: TransitionEffect` 控制蒙层动画。两者参数类型不同，**不存在等效映射**，迁移时需按新接口 `TransitionEffect` 重写动画参数。
 
