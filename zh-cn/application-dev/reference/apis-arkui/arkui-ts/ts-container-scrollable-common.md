@@ -1444,7 +1444,7 @@ calculateApproachOffset(velocity: number, decayOffset: number): number
 
 用于计算惯性阶段滚动距离的回调，在惯性滚动开始时调用一次。
 
-返回非有限数值（如NaN或Infinity）、负数，或回调抛出异常时，该阶段按默认的惯性滑行距离滚动，随后正常进入限位动画阶段。
+当返回值为负数、NaN或Infinity，或回调抛出异常时，该阶段按默认的惯性滑行距离滚动，随后正常进入限位动画阶段。
 
 **起始版本：** 26.2.0
 
@@ -1465,7 +1465,7 @@ calculateApproachOffset(velocity: number, decayOffset: number): number
 
 | 类型    | 说明       |
 | ------- | ---------- |
-| number  | 惯性阶段的滚动距离，必须为非负有限数值，可以超过decayOffset。<br/>单位：vp<br/>取值范围：[0, +∞) |
+| number  | 惯性阶段的滚动距离，不能为NaN或Infinity，可以超过decayOffset。<br/>单位：vp<br/>取值范围：[0, +∞) |
 
 ### calculateSnapOffset
 
@@ -1473,7 +1473,7 @@ calculateSnapOffset(velocity: number): number
 
 用于计算最终吸附位置的回调，在惯性阶段结束、限位动画开始前调用一次。
 
-返回非有限数值（如NaN或Infinity）或回调抛出异常时，Grid在当前滚动位置停止。
+当返回值为NaN或Infinity，或回调抛出异常时，Grid在当前滚动位置停止。
 
 **起始版本：** 26.2.0
 
@@ -1493,7 +1493,7 @@ calculateSnapOffset(velocity: number): number
 
 | 类型    | 说明       |
 | ------- | ---------- |
-| number  | 最终吸附位置相对内容起点的滚动偏移量，必须为有限数值，0也是有效值。超出组件可滚动范围时，目标位置会限制在范围内。<br/>单位：vp<br/>取值范围：[0, 合法滚动范围最大偏移量] |
+| number  | 最终吸附位置相对内容起点的滚动偏移量，不能为NaN或Infinity，0也是有效值。超出组件可滚动范围时，目标位置会限制在范围内。<br/>单位：vp<br/>取值范围：[0, 合法滚动范围最大偏移量] |
 
 ## 示例
 
