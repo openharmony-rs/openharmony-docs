@@ -3664,7 +3664,7 @@ struct GridSnapExample {
           }
         }, (index: number) => index.toString())
       }
-      .columnsTemplate('1fr 1fr 1fr 1fr 1fr')
+      .columnsTemplate('1fr 1fr')
       .columnsGap(10)
       .rowsGap(20)
       .height('90%')
