@@ -2321,7 +2321,7 @@ struct ScrollExample {
     Column() {
       // 实时展示getScrollState获取到的滚动状态，每4ms自动刷新
       Text('ScrollState：' + this.scrollStateStr)
-        .fontColor(Color.Red)
+        .fontColor(Color.Black)
         .height(50)
 
       Stack({ alignContent: Alignment.TopStart }) {
