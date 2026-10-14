@@ -2645,7 +2645,6 @@ struct ScrollExample {
 
   build() {
     Column() {
-      Text('设置scroller控制器和ForEach')
       // 实时展示getScrollState获取到的滚动状态，每4ms自动刷新
       Text('ScrollState：' + this.scrollStateStr)
         .fontColor(Color.Red)
