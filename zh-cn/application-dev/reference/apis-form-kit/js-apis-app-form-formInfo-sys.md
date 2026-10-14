@@ -408,10 +408,6 @@ type GetLiveFormStatusCallback = () => Record&lt;string, string&gt;
 
 **系统接口：** 此接口为系统接口。
 
-**ArkTS-Dyn起始版本：** 20
-
-**ArkTS-Sta起始版本：** 23
-
 **返回值：**
 
 | 类型 | 说明 |
@@ -427,8 +423,6 @@ type GetLiveFormStatusCallback = () => Record&lt;string, string&gt;
 | 202   | The application is not a system application.                                                              |
 
 **示例：**
-
-ArkTS-Dyn示例：
 
 ```ts
 import { formInfo } from '@kit.FormKit';
