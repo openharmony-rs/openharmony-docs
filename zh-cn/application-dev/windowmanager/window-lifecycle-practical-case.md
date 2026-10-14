@@ -13,7 +13,7 @@
 
 ## PC应用从托盘区恢复主窗
 
-在PC/2in1设备上，应用主窗口进入后台状态后，可通过DeskTopExtensionKit提供的[statusBarManager](../reference/apis-ability-kit/js-apis-app-ability-statusBarManager.md)接口将应用图标注册到状态栏托盘区，并监听托盘图标的点击事件。当用户点击托盘图标时，应用可调用[restore()](../reference/apis-arkui/arkts-apis-window-Window.md#restore14)接口将主窗口恢复到前台显示，并恢复到进入后台状态之前的大小和位置。
+在PC/2in1设备上，可通过DeskTopExtensionKit提供的[statusBarManager](../reference/apis-ability-kit/js-apis-app-ability-statusBarManager.md)接口将应用图标注册到状态栏托盘区，并监听托盘图标的点击事件。应用主窗口进入后台状态后，当用户点击托盘图标时，应用可调用[restore()](../reference/apis-arkui/arkts-apis-window-Window.md#restore14)接口将主窗口恢复到前台显示，并恢复到进入后台状态之前的大小和位置。
 
 > **说明：**
 >
