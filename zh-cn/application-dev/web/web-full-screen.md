@@ -29,6 +29,7 @@ import { webview } from '@kit.ArkWeb';
 struct ShortWebPage {
   controller: webview.WebviewController = new webview.WebviewController();
   CONSTANT_HEIGHT = 100;
+  @State marginTop: number = this.CONSTANT_HEIGHT;
   @State isVisible: boolean = true; // 自定义标志位isVisible，来控制是否需要显示组件
 
   build() {
