@@ -2605,42 +2605,42 @@ import { BusinessError } from '@kit.BasicServicesKit';
 @Entry
 @Component
 struct ScrollExample {
-  // 当前滚动状态（Idle：空闲、Scroll：手指拖动、Fling：惯性滚动）。
+  // 当前滚动状态（Idle：空闲、Scroll：手指拖动、Fling：惯性滚动）
   @State scrollStateStr: string = 'Idle';
-  // 滚动控制器，用于绑定Scroll组件并查询滚动状态。
+  // 滚动控制器，用于绑定Scroll组件并查询滚动状态
   scroller: Scroller = new Scroller();
-  // 定时器ID，用于页面销毁时清除定时器。
+  // 定时器ID，用于页面销毁时清除定时器
   private timerId: number = -1;
-  // 列表数据。
+  // 列表数据
   private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
   aboutToAppear() {
-    // 每4ms自动查询一次滚动状态，实现近乎实时的展示。
+    // 每4ms自动查询一次滚动状态，实现近乎实时的展示
     this.timerId = setInterval(() => {
       this.queryScrollState();
     }, 4);
   }
 
   aboutToDisappear() {
-    // 页面销毁时清除定时器，避免资源泄漏。
+    // 页面销毁时清除定时器，避免资源泄漏
     clearInterval(this.timerId);
   }
 
-  // 获取当前滚动状态并更新展示文本。
+  // 获取当前滚动状态并更新展示文本
   private queryScrollState(): void {
     try {
-      // 通过调用getScrollState函数获取当前滚动状态。
+      // 通过调用getScrollState函数获取当前滚动状态
       const state: ScrollState = this.scroller.getScrollState();
-      // 将滚动状态转换为可读文本。
+      // 将滚动状态转换为可读文本
       this.scrollStateStr = this.scrollStateToStr(state);
     } catch (error) {
-      // Scroller未绑定组件时会抛异常，需要加上try catch保护。
+      // Scroller未绑定组件时会抛异常，需要加上try catch保护
       let err: BusinessError = error as BusinessError;
       console.error(`Failed to get scrollState. Code: ${err.code}, message: ${err.message}`);
     }
   }
 
-  // 将滚动状态枚举转换为可读文本。
+  // 将滚动状态枚举转换为可读文本
   private scrollStateToStr(state: ScrollState): string {
     return state === ScrollState.Idle ? 'Idle' :
       state === ScrollState.Scroll ? 'Scroll' : 'Fling';
@@ -2648,7 +2648,7 @@ struct ScrollExample {
 
   build() {
     Column() {
-      // 实时展示getScrollState获取到的滚动状态，每4ms自动刷新。
+      // 实时展示getScrollState获取到的滚动状态，每4ms自动刷新
       Text('ScrollState：' + this.scrollStateStr)
         .fontColor(Color.Red)
         .height(50)
