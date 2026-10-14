@@ -760,15 +760,15 @@ struct WebComponent {
   build() {
     Column() {
       Row() {
-        Button('红色')
+        Button('Red')
           .onClick(() => {
             this.caretColorValue = '#FFFF0000';
           })
-        Button('绿色')
+        Button('Green')
           .onClick(() => {
             this.caretColorValue = '#FF00FF00';
           })
-        Button('重置')
+        Button('Reset')
           .onClick(() => {
             this.caretColorValue = '#00000000';
           })
@@ -787,7 +787,7 @@ Place the following HTML file at `entry/src/main/resources/rawfile/caret_color.h
 ```html
 <!-- caret_color.html -->
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -800,7 +800,7 @@ Place the following HTML file at `entry/src/main/resources/rawfile/caret_color.h
   </style>
 </head>
 <body>
-  <input value="点击输入文字，或长按选择这些文字">
+  <input value="Tap to enter text, or touch and hold to select this text">
 </body>
 </html>
 ```
