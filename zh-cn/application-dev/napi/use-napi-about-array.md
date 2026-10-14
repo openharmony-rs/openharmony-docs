@@ -781,7 +781,7 @@ static napi_value GetTypedarrayInfo(napi_env env, napi_callback_info info)
             result = int8_type;
             break;
         case INFO_LENGTH:
-            // TypedArray中元素的字节长度
+            // TypedArray中元素的数量
             napi_value napiLength;
             napi_create_int32(env, length, &napiLength);
             result = napiLength;
