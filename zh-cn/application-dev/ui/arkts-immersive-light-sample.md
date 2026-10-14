@@ -40,7 +40,7 @@
      @Builder
      tabExploreContent() {
        // 通过系统路由表的方式配置对应的页面跳转
-       Navigation(this.exploreStack, {name: 'explore'})
+       Navigation(this.exploreStack, { name: 'explore' })
          .hideTitleBar(true)
          .expandSafeArea([SafeAreaType.SYSTEM])
      }
@@ -48,7 +48,7 @@
      @Builder
      tabGameContent() {
        // 通过系统路由表的方式配置对应的页面跳转
-       Navigation(this.gameStack, {name: 'game'})
+       Navigation(this.gameStack, { name: 'game' })
          .hideTitleBar(true)
          .expandSafeArea([SafeAreaType.SYSTEM])
      }
@@ -76,7 +76,10 @@
        .barMode(BarMode.Fixed)
        .barOverlap(true)
        .barHeight(56)
-       .barFloatingStyle({ barBottomMargin: 8, systemMaterial: new uiMaterial.ImmersiveMaterial({}) })
+       .barFloatingStyle({
+         barBottomMargin: 8,
+         systemMaterial: new uiMaterial.ImmersiveMaterial({})
+       })
        .scrollable(true)
        .expandSafeArea([SafeAreaType.SYSTEM])
        .onChange((index: number) => {
