@@ -2237,6 +2237,252 @@ try {
 }
 ```
 
+## systemManager.createExactTimer
+
+createExactTimer(config: ExactTimerConfig): Promise&lt;number&gt;
+
+创建精确定时器。适用于企业设备需要精确定时执行任务的场景，例如定时巡检、定时数据上报、定时策略下发等，帮助企业管理员实现设备任务的自动化定时执行。使用Promise异步回调。
+
+> **说明：**
+>
+> 1. 该接口需与[systemManager.destroyExactTimer](#systemmanagerdestroyexacttimer)接口配合使用，否则会导致内存泄漏。
+>
+> 2. 当设备管理应用被取消激活或进程终止时，EDM服务会自动销毁该设备管理应用创建的所有定时器。
+>
+> 3. 若创建的定时器名称与已存在的定时器名称相同，则先前的同名定时器将被自动停止并销毁，新创建的定时器将被分配新的定时器ID，与被销毁的定时器ID不同。
+>
+> 4. 单个设备管理应用最多可创建5个同时生效的定时器，超出上限时返回9201053错误码。
+
+**起始版本：** 26.0.1
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在Phone和Tablet中可正常调用，在其他设备中返回801错误码。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型                                                    | 必填 | 说明                   |
+| ------ | ------------------------------------------------------- | ---- | ---------------------- |
+| config  | [ExactTimerConfig](#exacttimerconfig) | 是   | 定时器初始化配置，包括是否为循环定时器、触发间隔、回调和名称。 |
+
+**返回值：**
+
+| 类型   | 说明                                |
+| ------ | ----------------------------------- |
+| Promise&lt;number&gt; | Promise对象，返回定时器ID。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 9200016  | Service timeout. |
+| 9201053  | The number of timers has reached the upper limit. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+import { systemManager } from '@kit.MDMKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let config: systemManager.ExactTimerConfig = {
+  name: 'timer1',
+  repeat: true,
+  interval: 5000,
+  callback: () => {
+    console.info('Timer expired.');
+  }
+};
+systemManager.createExactTimer(config).then((timerId: number) => {
+  console.info(`Succeeded in creating exact timer, timerId: ${timerId}.`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to create exact timer. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## systemManager.startExactTimer
+
+startExactTimer(timer: number, triggerTime: number): Promise&lt;void&gt;
+
+启动精确定时器。定时器到期时将触发创建定时器时配置的回调函数。对于循环定时器，到达触发时间后，将按配置的interval周期性触发回调；对于单次定时器，到达触发时间后触发一次回调。适用于启动定时任务的场景。使用Promise异步回调。
+
+**起始版本：** 26.0.1
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在Phone和Tablet中可正常调用，在其他设备中返回801错误码。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型                                                    | 必填 | 说明                   |
+| ------ | ------------------------------------------------------- | ---- | ---------------------- |
+| timer  | number | 是   | 定时器ID，由[systemManager.createExactTimer](#systemmanagercreateexacttimer)接口获取。 |
+| triggerTime  | number | 是   | 定时器触发时间，单位：毫秒。该值为目标触发时刻的系统启动后经过时间，需在当前系统启动后经过的时间基础上加上期望的延迟时长。例如，期望5秒后触发定时器，可通过[systemDateTime.getUptime](../apis-basic-services-kit/js-apis-date-time.md#systemdatetimegetuptime10)（传入[TimeType.STARTUP](../apis-basic-services-kit/js-apis-date-time.md#timetype10)）获取当前系统启动后经过的时间，再加上5s。 |
+
+**返回值：**
+
+| 类型   | 说明                                |
+| ------ | ----------------------------------- |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。当启动定时器失败时，会抛出错误对象。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 9200016  | Service timeout. |
+| 9201054  | The specified timer does not exist or does not belong to the current administrator. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+import { systemManager } from '@kit.MDMKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { systemDateTime } from '@kit.BasicServicesKit';
+
+// 需根据实际情况进行替换，timerId由createExactTimer接口获取
+let timerId: number = 1;
+// 10秒后开始触发定时器
+let triggerTime: number = systemDateTime.getUptime(systemDateTime.TimeType.STARTUP) + 10000;
+systemManager.startExactTimer(timerId, triggerTime).then(() => {
+  console.info('Succeeded in starting exact timer.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to start exact timer. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## systemManager.stopExactTimer
+
+stopExactTimer(timer: number): Promise&lt;void&gt;
+
+停止精确定时器。停止后定时器将不再触发回调，但定时器资源不会被释放，可通过[systemManager.startExactTimer](#systemmanagerstartexacttimer)接口重新启动。适用于暂停定时任务的场景。使用Promise异步回调。
+
+**起始版本：** 26.0.1
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在Phone和Tablet中可正常调用，在其他设备中返回801错误码。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型                                                    | 必填 | 说明                   |
+| ------ | ------------------------------------------------------- | ---- | ---------------------- |
+| timer  | number | 是   | 定时器ID，由[systemManager.createExactTimer](#systemmanagercreateexacttimer)接口获取。 |
+
+**返回值：**
+
+| 类型   | 说明                                |
+| ------ | ----------------------------------- |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。当停止定时器失败时，会抛出错误对象。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200016  | Service timeout. |
+| 9201054  | The specified timer does not exist or does not belong to the current administrator. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+import { systemManager } from '@kit.MDMKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 需根据实际情况进行替换，timerId由createExactTimer接口获取
+let timerId: number = 1;
+systemManager.stopExactTimer(timerId).then(() => {
+  console.info('Succeeded in stopping exact timer.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to stop exact timer. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## systemManager.destroyExactTimer
+
+destroyExactTimer(timer: number): Promise&lt;void&gt;
+
+销毁精确定时器。销毁后定时器资源将被释放，定时器ID将失效，无法再用于启动或停止定时器。适用于不再需要定时任务的场景，帮助企业管理员及时释放系统资源。使用Promise异步回调。
+
+**起始版本：** 26.0.1
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SYSTEM
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在Phone和Tablet中可正常调用，在其他设备中返回801错误码。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型                                                    | 必填 | 说明                   |
+| ------ | ------------------------------------------------------- | ---- | ---------------------- |
+| timer  | number | 是   | 定时器ID，由[systemManager.createExactTimer](#systemmanagercreateexacttimer)接口获取。 |
+
+**返回值：**
+
+| 类型   | 说明                                |
+| ------ | ----------------------------------- |
+| Promise&lt;void&gt; | 无返回结果的Promise对象。当销毁定时器失败时，会抛出错误对象。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200016  | Service timeout. |
+| 9201054  | The specified timer does not exist or does not belong to the current administrator. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+import { systemManager } from '@kit.MDMKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 需根据实际情况进行替换，timerId由createExactTimer接口获取
+let timerId: number = 1;
+systemManager.destroyExactTimer(timerId).then(() => {
+  console.info('Succeeded in destroying exact timer.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to destroy exact timer. Code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## SystemUpdateInfo
 
 待更新的系统版本信息。
@@ -2492,3 +2738,39 @@ try {
 | keyCode       | [KeyCode](#keycode23) | 否 | 否 | 按键编码。   |
 | pressed       | boolean  | 否 | 否 | 按键动作。按键是否被按下。true：按下；false：抬起  |
 | downTime      | number | 否 | 否 | 按键动作发生时间，系统开机后微秒级时间戳。导航按键不支持组合扩展，发生时间显示为0。 |
+
+## ExactTimerConfig
+
+精确定时器初始化配置。创建精确定时器[systemManager.createExactTimer](#systemmanagercreateexacttimer)接口的入参，用于配置定时器名称、是否循环触发、触发间隔和到期回调函数。
+
+**起始版本：** 26.0.1
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+### 属性
+
+**起始版本：** 26.0.1
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称                | 类型     | 只读  | 可选 | 说明            |
+| ----------------- | ------ | ------ | ------ | ------------- |
+| name       | string | 否 | 否 | 定时器名称。最大长度为64字节，不能为空。   |
+| repeat       | boolean | 否 | 否 | 是否为循环定时器。true表示循环定时器，false表示单次定时器。   |
+| interval       | number | 否 | 否 | 定时器触发时间间隔。循环定时器时，interval最小值为1000ms，最大值为86400000ms；单次定时器时，该值为0。单位：毫秒（ms）。   |
+
+### callback
+
+callback(): void
+
+定时器到期时触发的回调函数。
+
+**起始版本：** 26.0.1
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。

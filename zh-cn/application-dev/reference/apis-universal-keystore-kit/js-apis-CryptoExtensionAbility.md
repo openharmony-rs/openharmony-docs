@@ -141,7 +141,7 @@ onOpenResource(resourceId: string, params: Array\<huksExternalCrypto.HuksExterna
 
 | 类型 | 说明 |
 | ---------- | ----------- |
-| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise对象。当调用成功时，resultCode为0，handle携带资源句柄信息。调用失败时，resultCode携带错误码信息。<br>可能返回的错误码值：<br>34800000 密钥扩展错误。<br>34800001 UKey不存在。<br>34800002 UKey驱动错误。<br>34800004 句柄不存在。<br>具体含义可查询[HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode)。 |
+| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise对象。当调用成功时，resultCode为0，handle携带资源句柄信息。调用失败时，resultCode携带错误码信息。<br>可能返回的错误码值：<br>34800000 密钥扩展错误。<br>34800001 UKey不存在。<br>34800002 UKey驱动错误。<br>34800004 资源ID不存在。<br>具体含义可查询[HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode)。 |
 
 **示例：**
 
@@ -543,7 +543,7 @@ onExportCertificate(resourceId: string, params?: Array\<huksExternalCrypto.HuksE
 
 | 类型  | 说明  |
 | ---------- | --------- |
-| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise对象。当调用成功时，certs成员非空，包含获取的单本证书。调用失败时，resultCode携带错误码信息。<br>可能返回的错误码值：<br>34800000 密钥扩展错误。<br>34800001 UKey不存在。<br>34800002 UKey驱动错误。<br>34800004 句柄不存在。<br>具体含义可查询[HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode)。 |
+| Promise\<[HuksCryptoExtensionResult](#hukscryptoextensionresult)> | Promise对象。当调用成功时，certs成员非空，包含获取的单本证书。调用失败时，resultCode携带错误码信息。<br>可能返回的错误码值：<br>34800000 密钥扩展错误。<br>34800001 UKey不存在。<br>34800002 UKey驱动错误。<br>34800004 资源ID不存在。<br>具体含义可查询[HuksCryptoExtensionResultCode](#hukscryptoextensionresultcode)。 |
 
 **示例：**
 
@@ -994,7 +994,7 @@ CryptoExtensionAbility不支持以下模块的引用。
 | Network Kit | [@ohos.net.networkSecurity (网络安全校验)](../../reference/apis-network-kit/js-apis-networkSecurity.md) |
 | Network Kit | [@ohos.net.policy (网络策略管理)](../../reference/apis-network-kit/js-apis-net-policy.md) |
 | Network Kit | [@ohos.net.sharing (网络共享管理)](../../reference/apis-network-kit/js-apis-net-sharing.md) |
-| Network Kit | [@ohos.net.socket (Socket连接)](../../reference/apis-network-kit/js-apis-socket.md) |
+| Network Kit | [@ohos.net.socket (Socket连接)](../../reference/apis-network-kit/js-apis-socket.md)<br>适用版本：22-26.0.0|
 | Network Kit | [@ohos.net.statistics (流量管理)](../../reference/apis-network-kit/js-apis-net-statistics.md) |
 | Network Kit | [@ohos.net.vpn (VPN管理)](../../reference/apis-network-kit/js-apis-net-vpn.md) |
 | Network Kit | [@ohos.net.vpnExtension (VPN增强管理)](../../reference/apis-network-kit/js-apis-net-vpnExtension.md) |

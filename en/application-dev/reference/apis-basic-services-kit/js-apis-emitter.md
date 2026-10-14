@@ -5,7 +5,7 @@
 <!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-09-29T09:44:04.185Z pushedAt=2026-10-08T02:39:02.491Z -->
+<!-- md-trans-meta sourceCommit=54656b3da3e41e2ba7f2b57573523f0dbf41c1e3 translatedAt=2026-10-08T09:13:59.229Z pushedAt=2026-10-09T03:03:08.717Z -->
 
 This module provides APIs for sending and processing events between threads in a process or within a thread. You can use the APIs of this module to subscribe to events (continuous subscription or one-shot subscription), cancel event subscription, send events to the event queue, and query the number of subscribed events. In this way, event communication between different threads in the same process and within the same thread can be implemented. It is applicable to scenarios such as cross-thread communication, module decoupling, and the event-driven mode, helping developers implement a lightweight publish-subscribe pattern, reduce coupling between components, and improve code maintainability and scalability.
 
@@ -47,7 +47,7 @@ Subscribes to an event in persistent manner and executes a callback after the ev
 | Name  | Type                               | Mandatory| Description                                                        |
 | -------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
 | event    | [InnerEvent](#innerevent)           | Yes  | Event to subscribe to in persistent manner. The [EventPriority](#eventpriority) parameter is not required and does not take effect.|
-| callback | Callback\<[EventData](#eventdata)\> | Yes  | Callback to be invoked when the event is received.                      |
+| callback | Callback\<[EventData](#eventdata)\> | Yes | Callback used to return the data object passed when the event is sent. |
 
 **Example**
 
@@ -81,7 +81,7 @@ Subscribes to an event in persistent manner and executes a callback after the ev
 | Name  | Type                               | Mandatory| Description                                  |
 | -------- | ----------------------------------- | ---- | -------------------------------------- |
 | eventId    | string                              | Yes  | Event ID,<br>which cannot be empty or exceed 10,240 bytes. Excess content will be truncated.                      |
-| callback | Callback\<[EventData](#eventdata)\> | Yes  | Callback to be invoked when the event is received.|
+| callback | Callback\<[EventData](#eventdata)\> | Yes | Callback used to return the data object passed when the event is sent. |
 
 **Example**
 
@@ -110,7 +110,7 @@ Subscribes to an event in persistent manner and executes a callback after the ev
 | Name  | Type                               | Mandatory| Description                                  |
 | -------- | ----------------------------------- | ---- | -------------------------------------- |
 | eventId    | string                              | Yes  | Event ID,<br>which cannot be empty or exceed 10,240 bytes. Excess content will be truncated.                      |
-| callback | Callback\<[GenericEventData<T\>](#genericeventdatat12)\> | Yes  | Callback to be invoked when the event is received.|
+| callback | Callback\<[GenericEventData<T\>](#genericeventdatat12)\> | Yes | Callback used to return the generic data object passed when the event is sent. |
 
 **Example**
 
@@ -153,7 +153,7 @@ Subscribes to an event in one-shot manner and unsubscribes from it after the eve
 | Name  | Type                               | Mandatory| Description                                                        |
 | -------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
 | event    | [InnerEvent](#innerevent)           | Yes  | Event to subscribe to in one-shot manner. The [EventPriority](#eventpriority) parameter is not required and does not take effect.|
-| callback | Callback\<[EventData](#eventdata)\> | Yes  | Callback to be invoked when the event is received.                      |
+| callback | Callback\<[EventData](#eventdata)\> | Yes | Callback used to return the data object passed when the event is sent. |
 
 **Example**
 
@@ -186,7 +186,7 @@ Subscribes to an event in one-shot manner and unsubscribes from it after the eve
 | Name  | Type                               | Mandatory| Description                                  |
 | -------- | ----------------------------------- | ---- | -------------------------------------- |
 | eventId    | string                              | Yes  | Event ID,<br>which cannot be empty or exceed 10,240 bytes. Excess content will be truncated.                      |
-| callback | Callback\<[EventData](#eventdata)\> | Yes  | Callback to be invoked when the event is received.|
+| callback | Callback\<[EventData](#eventdata)\> | Yes   | Callback used to return the data object passed when the event is sent. |
 
 **Example**
 
@@ -215,7 +215,7 @@ Subscribes to an event in one-shot manner and unsubscribes from it after the eve
 | Name  | Type                               | Mandatory| Description                                  |
 | -------- | ----------------------------------- | ---- | -------------------------------------- |
 | eventId    | string                              | Yes  | Event ID,<br>which cannot be empty or exceed 10,240 bytes. Excess content will be truncated.                      |
-| callback | Callback\<[GenericEventData<T\>](#genericeventdatat12)\> | Yes  | Callback to be invoked when the event is received.|
+| callback | Callback\<[GenericEventData<T\>](#genericeventdatat12)\> | Yes | Callback used to return the generic data object passed when the event is sent. |
 
 **Example**
 
@@ -310,7 +310,7 @@ After this API is used to unsubscribe from an event, the event that has been pub
 | Name | Type  | Mandatory| Description  |
 | ------- | ------ | ---- | ------ |
 | eventId | number | Yes  | Event ID.|
-| callback | Callback\<[EventData](#eventdata)\> | Yes  | Callback to unregister, which must be the same as the callback used during registration. |
+| callback | Callback\<[EventData](#eventdata)\> | Yes | Callback used to return the data object passed when the event is sent, which must be the same as the callback used during registration. |
 
 **Example**
 
@@ -342,7 +342,7 @@ After this API is used to unsubscribe from an event, the event that has been pub
 | Name  | Type                               | Mandatory| Description                      |
 | -------- | ----------------------------------- | ---- | -------------------------- |
 | eventId  | string                              | Yes  | Event ID,<br>which cannot be empty or exceed 10,240 bytes. Excess content will be truncated.                  |
-| callback | Callback\<[EventData](#eventdata)\> | Yes  | Callback to unregister, which must be the same as the callback used during registration.|
+| callback | Callback\<[EventData](#eventdata)\> | Yes | Callback used to return the data object passed when the event is sent, which must be the same as the callback used during registration. |
 
 **Example**
 
@@ -374,7 +374,7 @@ After this API is used to unsubscribe from an event, the event that has been pub
 | Name  | Type                               | Mandatory| Description                      |
 | -------- | ----------------------------------- | ---- | -------------------------- |
 | eventId  | string                              | Yes  | Event ID,<br>which cannot be empty or exceed 10,240 bytes. Excess content will be truncated.                  |
-| callback | Callback\<[GenericEventData<T\>](#genericeventdatat12)\> | Yes  | Callback to unregister, which must be the same as the callback used during registration.|
+| callback | Callback\<[GenericEventData<T\>](#genericeventdatat12)\> | Yes | Callback used to return the generic data object passed when the event is sent, which must be the same as the callback used during registration. |
 
 **Example**
 
@@ -736,7 +736,7 @@ Subscribes to an event specified by the Emitter instance in persistent manner an
 | Name  | Type                               | Mandatory| Description                                  |
 | -------- | ----------------------------------- | ---- | -------------------------------------- |
 | eventId  | string                              | Yes  | Event ID,<br>which cannot be empty or exceed 10,240 bytes. Excess content will be truncated.                      |
-| callback | Callback\<[EventData](#eventdata)\> | Yes  |  Callback to be invoked when the event is received.|
+| callback | Callback\<[EventData](#eventdata)\> | Yes | Callback used to return the data object passed when the event is sent. |
 
 **Example**
 
@@ -767,7 +767,7 @@ Subscribes to an event specified by the Emitter instance in persistent manner an
 | Name  | Type                               | Mandatory| Description                                  |
 | -------- | ----------------------------------- | ---- | -------------------------------------- |
 | eventId  | string                              | Yes  | Event ID,<br>which cannot be empty or exceed 10,240 bytes. Excess content will be truncated.                      |
-| callback | Callback\<[GenericEventData<T\>](#genericeventdatat12)\> | Yes  | Callback to be invoked when the event is received.|
+| callback | Callback\<[GenericEventData<T\>](#genericeventdatat12)\> | Yes | Callback used to return the generic data object passed when the event is sent. |
 
 **Example**
 
@@ -812,7 +812,7 @@ Subscribes to an event specified by the Emitter instance in one-shot manner and 
 | Name  | Type                               | Mandatory| Description                                  |
 | -------- | ----------------------------------- | ---- | -------------------------------------- |
 | eventId  | string                              | Yes  | Event ID,<br>which cannot be empty or exceed 10,240 bytes. Excess content will be truncated.                      |
-| callback | Callback\<[EventData](#eventdata)\> | Yes  | Callback to be invoked when the event is received.|
+| callback | Callback\<[EventData](#eventdata)\> | Yes | Callback used to return the data object passed when the event is sent. |
 
 **Example**
 
@@ -843,7 +843,7 @@ Subscribes to an event specified by the Emitter instance in one-shot manner and 
 | Name  | Type                               | Mandatory| Description                                  |
 | -------- | ----------------------------------- | ---- | -------------------------------------- |
 | eventId  | string                              | Yes  | Event ID,<br>which cannot be empty or exceed 10,240 bytes. Excess content will be truncated.                      |
-| callback | Callback\<[GenericEventData<T\>](#genericeventdatat12)\> | Yes  | Callback to be invoked when the event is received.|
+| callback | Callback\<[GenericEventData<T\>](#genericeventdatat12)\> | Yes | Callback used to return the generic data object passed when the event is sent. |
 
 **Example**
 
@@ -916,7 +916,7 @@ After this API is used to unsubscribe from an event, the event that has been pub
 | Name  | Type                               | Mandatory| Description                      |
 | -------- | ----------------------------------- | ---- | -------------------------- |
 | eventId  | string                              | Yes  | Event ID,<br>which cannot be empty or exceed 10,240 bytes. Excess content will be truncated.                  |
-| callback | Callback\<[EventData](#eventdata)\> | Yes  |  Callback to unregister.|
+| callback | Callback\<[EventData](#eventdata)\> | Yes   | Callback used to return the data object passed when the event is sent. |
 
 **Example**
 
@@ -949,7 +949,7 @@ After this API is used to unsubscribe from an event, the event that has been pub
 | Name  | Type                               | Mandatory| Description                      |
 | -------- | ----------------------------------- | ---- | -------------------------- |
 | eventId  | string                              | Yes  | Event ID,<br>which cannot be empty or exceed 10,240 bytes. Excess content will be truncated.                  |
-| callback | Callback\<[GenericEventData<T\>](#genericeventdatat12)\> | Yes  | Callback to unregister.|
+| callback | Callback\<[GenericEventData<T\>](#genericeventdatat12)\> | Yes | Callback used to return the generic data object passed when the event is sent. |
 
 **Example**
 

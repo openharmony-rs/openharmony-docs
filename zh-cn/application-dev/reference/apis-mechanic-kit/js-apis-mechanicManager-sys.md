@@ -608,6 +608,131 @@ mechanicManager.searchTarget(targetInfo,
     console.info(`'result:' ${searchResult}`);
 });
 ```
+
+## mechanicManager.onBatteryLevelChange
+
+onBatteryLevelChange(mechId: number, callback: Callback&lt;BatteryLevelInfo&gt;): void
+
+订阅目标设备的电池电量变化信息。使用callback异步回调。
+
+**起始版本**：26.2.0
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+**参数：**
+
+| 参数名     | 类型                    | 必填 | 说明   |
+| ---------- | ---------------------- | ---- | ----- |
+| mechId | number | 是 | 需要订阅的设备ID。 |
+| callback | Callback\<[BatteryLevelInfo](#batterylevelinfo)> | 是 | 回调函数，电池电量变化的回调函数。 |
+
+**错误码：**
+
+以下的错误码的详细介绍请参见[机械体控制模块错误码](errorcode-mechanic.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息           |
+| -------- | ----------------- |
+| 202 | Not system application. |
+| 33300001 | Service exception. |
+| 33300002 | Device not connected. |
+| 33300003 | Feature not supported. |
+
+**示例：**
+
+```ts
+console.info('Register Battery Change listener');
+let mechId: number = 0;  
+mechanicManager.onBatteryLevelChange(mechId, (result: mechanicManager.BatteryLevelInfo) => {
+  console.info(`'result:' ${result}`);
+});
+console.info('Successful registration');
+```
+
+## mechanicManager.offBatteryLevelChange
+
+offBatteryLevelChange(mechId: number, callback?: Callback&lt;BatteryLevelInfo&gt;): void
+
+取消订阅电池电量变化信息。使用callback异步回调。
+  
+**起始版本**：26.2.0
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+**参数：**
+
+| 参数名     | 类型                    | 必填 | 说明   |
+| ---------- | ---------------------- | ---- | ----- |
+| mechId | number | 是 | 需要取消订阅的设备ID。 |
+| callback | Callback\<[BatteryLevelInfo](#batterylevelinfo)> | 否 |  mechanicManager.offBatteryLevelChange(mechId)注册的回调函数。不填时默认取消所有注册的回调函数。 |
+
+**错误码：**
+
+以下的错误码的详细介绍请参见[机械体控制模块错误码](errorcode-mechanic.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息           |
+| -------- | ----------------- |
+| 202 | Not system application. |
+| 33300001 | Service exception. |
+| 33300002 | Device not connected. |
+| 33300003 | Feature not supported. |
+
+**示例：**
+
+```ts
+console.info('Unregister Battery Change listener');
+let mechId: number = 0;  
+mechanicManager.offBatteryLevelChange(mechId, (result: mechanicManager.BatteryLevelInfo) => {
+  console.info(`'result:' ${result}`);
+});
+console.info('Unregister successfully');
+```
+
+## mechanicManager.getDeviceAdsorbState
+
+getDeviceAdsorbState(mechId: number): AdsorbState
+
+获取对应的设备吸附状态。
+  
+**起始版本**：26.2.0
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+**参数：**
+
+| 参数名     | 类型                    | 必填 | 说明   |
+| ---------- | ---------------------- | ---- | ----- |
+| mechId | number | 是 | 机械体设备ID。 |
+
+**返回值：**
+
+| 类型                                        | 说明        |
+| ------------------------------------------- | --------- |
+| [AdsorbState](#adsorbstate) | 设备吸附状态。|
+
+**错误码：**
+
+以下的错误码的详细介绍请参见[机械体控制模块错误码](errorcode-mechanic.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息           |
+| -------- | ----------------- |
+| 202 | Not system application. |
+| 33300001 | Service exception. |
+| 33300002 | Device not connected. |
+
+**示例：**
+
+```ts
+console.info('Query the adsorb state');
+let adsorbState: mechanicManager.AdsorbState = mechanicManager.getDeviceAdsorbState(0);
+console.info(`'Query the adsorb state successfully, adsorb state:' ${adsorbState}`);
+```
+  
 ## RotationAngles
 
 相对当前位置的旋转角度。
@@ -778,8 +903,7 @@ mechanicManager.searchTarget(targetInfo,
 | 名称   | 类型 | 只读 | 可选 | 说明|
 | ----- | ---- | ---- | --- | --- |
 | targetType | [TargetType](#targettype21) | 否 | 否 | 搜索目标的相关信息。 |
-  
-  
+ 
  
 ## SearchParams<sup>21+<sup>
 
@@ -804,3 +928,37 @@ mechanicManager.searchTarget(targetInfo,
 | 名称   | 类型 | 只读 | 可选 | 说明|
 | ----- | ---- | ---- | --- | --- |
 | targetCount | number | 否 | 否 | 搜索到的目标数量。 |
+
+
+## BatteryLevelInfo
+
+电量状态变化信息。
+  
+**起始版本**：26.2.0
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+| 名称   | 类型 | 只读 | 可选 | 说明|
+| ----- | ---- | ---- | --- | --- |
+| mechId | number | 否 | 否 | 机械体设备ID。 |
+| batteryLevel | number | 否 | 否 | 设备电量。 |
+| isCharging | boolean | 否 | 否 | 是否充电中。 |
+
+
+## AdsorbState  
+
+设备吸附状态的枚举。
+  
+**起始版本**：26.2.0
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+| 名称 | 类型 | 值 | 说明 |
+| ----------- | ------|---- | --------------- |
+| UNKNOWN  | int | -1 | 未知状态。 |
+| ADSORBED  | int | 0 | 已吸附。 |
+| UNADSORBED   | int | 1 | 未吸附。 |

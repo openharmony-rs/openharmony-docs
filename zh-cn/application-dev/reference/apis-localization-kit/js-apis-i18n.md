@@ -2726,11 +2726,10 @@ transform(text: string): string
   import { i18n } from '@kit.LocalizationKit';
 
   let transliterator: i18n.Transliterator = i18n.Transliterator.getInstance('Any-Latn');
-  let wordArray: string[] = ['中国', '德国', '美国', '法国']
-  for (let i = 0; i < wordArray.length; i++) {
-    let transliterateLatn: string =
-      transliterator.transform(wordArray[i]); // transliterateLatn依次为：'zhōng guó', 'dé guó', 'měi guó', 'fǎ guó'
-  }
+  let wordArray: string[] = ['中国', '德国', '美国', '法国'];
+  wordArray.forEach((word: string): void => {
+    let transliterateLatn: string = transliterator.transform(word); // transliterateLatn依次为：'zhōng guó', 'dé guó', 'měi guó', 'fǎ guó'
+  });
 
   // 汉语音译去声调
   transliterator = i18n.Transliterator.getInstance('Any-Latn;Latin-Ascii');

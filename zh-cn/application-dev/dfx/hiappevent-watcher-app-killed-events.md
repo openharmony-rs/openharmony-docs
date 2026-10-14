@@ -35,6 +35,8 @@ HiAppEvent提供接口用于订阅应用终止事件。
 | foreground | boolean | 应用是否处于前台状态。true表示应用处于前台；false表示应用处于后台。 |
 | app_running_unique_id | string | 应用运行时唯一关联的id。<br>**说明**：从API version 24开始支持该参数。 |
 | bundle_version | string | 应用版本信息。<br>**说明**：从API version 24开始支持该参数。 |
+| calling_pid | string | 发起终止操作的进程ID。<br>**说明**：从API版本26.2.0开始支持该参数。 |
+| calling_process_name | string | 发起终止操作的进程名称。<br>**说明**：从API版本26.2.0开始支持该参数。 |
 | last_exit_detail_info | string | 应用退出前的详细信息，详见[last_exit_detail_info字段说明](#last_exit_detail_info字段说明)。<br>**说明**：从API版本26.0.0开始支持该参数。 |
 
 ### reason字段说明
@@ -69,6 +71,8 @@ HiAppEvent提供接口用于订阅应用终止事件。
 | Logout                        | 用户注销时，卸载应用沙箱。                   |
 | PermissionUpdate              | 应用权限更新。                          |
 | aaForceStop                   | 通过aa命令强制停止应用。                    |
+| signalKill                    | 应用收到SIGKILL等信号被终止。<br>**说明**：从API版本26.2.0开始支持该参数。                    |
+| signalExit                    | 应用进程通过exit()系统调用主动退出。<br>**说明**：从API版本26.2.0开始支持该参数。                    |
 | ThreadBlock6S                 | 应用主线程卡死超时。                       |
 | AppInputBlock                 | 用户输入响应超时。                        |
 | LifecycleTimeout              | 应用生命周期超时。                        |

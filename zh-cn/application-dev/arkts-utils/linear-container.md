@@ -86,7 +86,7 @@ LinkedList和[ArrayList](../reference/apis-arkts/js-apis-arraylist.md)相比，L
 | 操作 | 方法 | 描述 |
 | --------- | ------- | ------- |
 | 增加元素 | add(element: T) | 在数组尾部增加一个元素。 |
-| 增加元素 | insert(element: T, index: number) | 在指定位置插入一个元素。 |
+| 增加元素 | insert(index: number, element: T) | 在指定位置插入一个元素。 |
 | 访问元素 | get(index: number) | 获取指定index位置对应的元素。 |
 | 访问元素 | list[index: number] | 获取指定index位置对应的元素，若索引超出数组范围（index < 0 或 index >= list.length），或者数组是稀疏数组（存在未赋值的索引），则返回undefined。 |
 | 访问元素 | getFirst() | 获取第一个元素。 |

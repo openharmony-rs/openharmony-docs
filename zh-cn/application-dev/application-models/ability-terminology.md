@@ -137,7 +137,7 @@ UIAbility生命周期是指一个UIAbility组件从创建到销毁的完整过�
 
 ### UIAbility热启动
 
-UIAbility热启动发生在实例已启动并切换至后台后再次被启动时。由于实例无需完全重建，系统可快速恢复其原有状态，其生命周期会跳过初始创建阶段，直接触发onNewWant回调，随后UIAbility进入前台状态并触发onForeground回调。
+UIAbility热启动发生在实例已启动并切换至后台后再次被启动时。由于实例无需完全重建，系统可快速恢复其原有状态，其生命周期会跳过初始创建阶段，直接触发onNewWant()回调，随后UIAbility进入前台状态并触发onForeground()回调。
 
 
 ## X

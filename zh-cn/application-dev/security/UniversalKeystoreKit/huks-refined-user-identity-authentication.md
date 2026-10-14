@@ -93,11 +93,11 @@ const KEY_GENERATION_PROPERTIES: huks.HuksParam[] = [
 function generateKeyItem(keyAlias: string, huksOptions: huks.HuksOptions, throwObject: ThrowObject): Promise<void> {
   return new Promise<void>((resolve, reject) => {
     try {
-      huks.generateKeyItem(keyAlias, huksOptions, (error, data) => {
+      huks.generateKeyItem(keyAlias, huksOptions, (error) => {
         if (error) {
           reject(error);
         } else {
-          resolve(data);
+          resolve();
         }
       });
     } catch (error) {
@@ -118,8 +118,8 @@ async function step1GenerateKey(): Promise<void> {
   let throwObject: ThrowObject = { isThrow: true };
   try {
     await generateKeyItem(KEY_ALIAS, generateOptions, throwObject)
-      .then((data) => {
-        console.info(`密钥生成成功: ${JSON.stringify(data)}`);
+      .then(() => {
+        console.info(`密钥生成成功`);
       })
       .catch((error: Error) => {
         if (throwObject.isThrow) {

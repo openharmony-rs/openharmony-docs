@@ -5,7 +5,7 @@
 <!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-09-29T09:44:37.590Z pushedAt=2026-10-08T02:39:02.497Z -->
+<!-- md-trans-meta sourceCommit=54656b3da3e41e2ba7f2b57573523f0dbf41c1e3 translatedAt=2026-10-08T09:12:30.008Z pushedAt=2026-10-09T03:03:08.711Z -->
 
 Describes the data of a common event. The **CommonEventData** module is used to carry the common event data received by subscribers in common event subscription scenarios. The data includes the event name, publisher bundle name, code, data, and additional parameters. This module is applicable to scenarios where apps subscribe to and process common events and parse the data carried in the events.
 
@@ -21,8 +21,8 @@ Describes the data of a common event. The **CommonEventData** module is used to 
 
 | Name      | Type                | Read Only| Optional| Description                                                   |
 | ---------- |-------------------- | ---- | ---- |  ------------------------------------------------------- |
-| event      | string               | No | No | Name of the common event that is being received.                             |
-| bundleName | string               | No | Yes | Bundle name of the common event publisher. The default value is an empty string.              |
+| event      | string               | No  | No  | Name of the common event that is being received. The value can contain a maximum of 254 bytes. Excess content will be truncated. |
+| bundleName | string               | No  | Yes  | Bundle name of the common event publisher. The default value is an empty string. The value can contain a maximum of 254 bytes. Excess content will be truncated. |
 | code       | number               | No  | Yes  | Common event data received by the subscriber. The value of this field is the same as that of the **code** field in [CommonEventPublishData](./js-apis-inner-commonEvent-commonEventPublishData.md) when the publisher uses [commonEventManager.publish](./js-apis-commonEventManager.md#commoneventmanagerpublish-1) to publish a common event. The value ranges from –2147483648 to 2147483647. The default value is **0**.           |
 | data       | string               | No  | Yes  | Common event data received by the subscriber. The data size cannot exceed 64 KB. The value of this field is the same as that of the **data** field in [CommonEventPublishData](./js-apis-inner-commonEvent-commonEventPublishData.md) when the publisher uses [commonEventManager.publish](./js-apis-commonEventManager.md#commoneventmanagerpublish-1) to publish a common event. |
 | parameters | {[key: string]: any} | No  | Yes  | Additional information about the common event received by the subscriber. The value of this field is the same as that of the **data** field in [CommonEventPublishData](./js-apis-inner-commonEvent-commonEventPublishData.md) when the publisher uses [commonEventManager.publish](./js-apis-commonEventManager.md#commoneventmanagerpublish-1) to publish a common event.           |

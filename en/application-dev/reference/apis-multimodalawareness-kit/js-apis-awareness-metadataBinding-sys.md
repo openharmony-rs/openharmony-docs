@@ -49,7 +49,7 @@ For details about the error codes, see [Metadata Binding Error Codes](errorcode-
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-|   202    | Permission check failed. A non-system application uses the system API. |
+|   202    | Permission verification failed. A non-system application calls a system API. |
 | 32100001 | Internal handling failed. |
 | 32100002 | Encode process fail. Possible causes: 1. Image processing error; 2. Channel coding error. |
 
@@ -98,7 +98,7 @@ For details about the error codes, see [Metadata Binding Error Codes](errorcode-
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-|   202    | Permission check failed. A non-system application uses the system API. |
+|   202    | Permission verification failed. A non-system application calls a system API. |
 | 32100001 | Internal handling failed. |
 | 32100003 | Decode process fail. Possible causes: 1. Image is not an encoded Image; 2. Image destroyed, decoding failed. |
 
@@ -146,7 +146,7 @@ For details about the error codes, see [Metadata Binding Error Codes](errorcode-
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-|   202    | Permission check failed. A non-system application uses the system API. |
+|   202    | Permission verification failed. A non-system application calls a system API. |
 | 32100001 | Internal handling failed. |
 
 **Example**

@@ -1,4 +1,4 @@
-# 手电筒使用(C++)
+# 手电筒使用(C/C++)
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->

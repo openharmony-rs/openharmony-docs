@@ -145,8 +145,7 @@ verifyAuthToken(authToken: Uint8Array, allowableDuration: number): Promise\<Auth
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { cryptoFramework } from '@kit.CryptoArchitectureKit';
-import { userAccessCtrl } from '@kit.UserAuthenticationKit';
-import { userAuth } from '@kit.UserAuthenticationKit';
+import { userAccessCtrl, userAuth } from '@kit.UserAuthenticationKit';
 
 try {
   const rand = cryptoFramework.createRandom();

@@ -2705,6 +2705,115 @@ struct WebComponent {
 }
 ```
 
+## setZoomFactor
+
+setZoomFactor(zoomFactor: number): void
+
+设置当前网页的页面缩放倍率。页面缩放会同时缩放文字和图片，并触发页面重新布局以适应Web组件宽度。
+
+> **说明：**
+>
+> - `zoomFactor`仅作用于当前Web组件实例。同一Web组件通过同一Controller加载另一网页后，已设置的页面缩放倍率会自动应用到新网页；新建Web组件不会继承该倍率。
+> - [zoomControlAccess](./arkts-basic-components-web-attributes.md#zoomcontrolaccess22)是Web组件的用户缩放开关：设置为`true`时，用户可通过Ctrl+'-/+'或Ctrl+鼠标滚轮/触摸板调整页面缩放倍率；设置为`false`时，上述用户操作无效。该开关不限制本接口的程序化设置。
+> - 需要按指定倍率调整页面布局时，建议使用本接口；[zoom](#zoom)、[zoomIn](#zoomin)、[zoomOut](#zoomout)适用于视觉缩放，[textZoomRatio](./arkts-basic-components-web-attributes.md#textzoomratio9)适用于文字缩放，三者相互独立。
+> - 本接口需在Controller关联Web组件后调用，无需等待网页加载完成。若浏览器实例尚未创建，设置的倍率会在缩放控制器可用后应用。
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| zoomFactor | number | 是 | 要设置的页面缩放倍率。`1`表示不缩放，小于`1`表示缩小，大于`1`表示放大。取值范围为[0.25, 5]；有限数值超出范围时按边界裁剪。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 17100001 | Init error. The WebviewController must be associated with a Web component. |
+
+**示例：**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('set zoom factor to 1.5')
+        .onClick(() => {
+          this.controller.setZoomFactor(1.5);
+        })
+      Web({ src: 'https://www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
+## getZoomFactor
+
+getZoomFactor(): number
+
+获取当前网页的页面缩放倍率。
+
+> **说明：**
+>
+> - 浏览器实例尚未创建时，`getZoomFactor`返回默认值`1.0`，不会返回尚待应用的设置值。
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| number | 当前页面缩放倍率。`1`表示不缩放，小于`1`表示缩小，大于`1`表示放大。取值范围为[0.25, 5]。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 17100001 | Init error. The WebviewController must be associated with a Web component. |
+
+**示例：**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Button('get zoom factor')
+        .onClick(() => {
+          console.info(`zoom factor: ${this.controller.getZoomFactor()}`);
+        })
+      Web({ src: 'https://www.example.com', controller: this.controller })
+    }
+  }
+}
+```
+
 ## getWebId
 
 getWebId(): number
