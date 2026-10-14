@@ -114,7 +114,7 @@ AVPlayer是音视频播放组件，提供完整的播放控制和高级功能（
 | [OH_AVFormat *OH_AVPlayer_GetTrackFormat(OH_AVPlayer *player, uint32_t trackIndex)](#oh_avplayer_gettrackformat) | - | 通过索引获取播放器轨道信息。此接口仅可在AVPlayer处于prepared、playing、paused或completed状态时调用。<br> 需要注意返回值OH_AVFormat指针对象的生命周期需要用户手动释放。 |
 | [OH_AVFormat *OH_AVPlayer_GetPlaybackStatisticMetrics(OH_AVPlayer *player)](#oh_avplayer_getplaybackstatisticmetrics) | - | 获取当前播放器的统计指标信息。设置完播放资源，并且当播放处于prepared、playing、paused、completed或stopped状态时，可调用该接口。<br> 需要注意返回值[OH_AVFormat](../apis-avcodec-kit/capi-core-oh-avformat.md)指针对象的生命周期需要用户手动释放。 |
 | [OH_AVErrCode OH_AVPlayer_SetPCMOutputCallback(OH_AVPlayer *player, OH_AVPlayerPCMOutputCallback callback, void *userData)](#oh_avplayer_setpcmoutputcallback) | - | 设置音频PCM数据输出回调。当播放处于idle或initialized状态时，可调用此接口。适用于需要获取音频原始数据的场景，如音频数据分析、音频录制、音频处理、音频可视化等。 |
-| [OH_AVPlayerVideoOutput* OH_AVPlayer_SetVideoSideOutput(OH_AVPlayer *player, OHNativeWindow *window)](#oh_avplayer_setvideosideoutput) | - | 设置视频解码帧输出回调。当播放处于idle或initialized状态时，可调用此接口。适用于需要获取视频解密帧的场景，如视频帧分析、视频滤镜处理、视频截图、视频特效处理等。 |
+| [OH_AVPlayerVideoOutput* OH_AVPlayer_SetVideoSideOutput(OH_AVPlayer *player, OHNativeWindow *window)](#oh_avplayer_setvideosideoutput) | - | 设置视频解码帧输出回调。当播放处于idle或initialized状态时，可调用此接口。适用于需要获取视频解码帧的场景，如视频帧分析、视频滤镜处理、视频截图、视频特效处理等。 |
 | [OH_VideoOutputResult OH_AVPlayerVideoOutput_GetNewestVideoSample(OH_AVPlayerVideoOutput *videoOutput)](#oh_avplayervideooutput_getnewestvideosample) | - | 获得一个视频解码帧。当播放处于paused或playing状态时，可调用此接口。适用于需要获取当前视频帧的场景，如视频帧捕获、视频帧分析、视频截图、视频帧处理等。 |
 | [OH_AVErrCode OH_AVPlayer_SetPCMProcessorCallback(OH_AVPlayer *player, OH_AVPlayerPCMProcessorCallback callback, void *userData)](#oh_avplayer_setpcmprocessorcallback) | - | 设置音频PCM数据后处理回调。当播放处于idle或initialized状态时，可调用此接口。 |
 | [OH_AVErrCode OH_AVPlayer_SetPCMProcessorMaxLen(OH_AVPlayer *player, int32_t maxProcessedPCMLen)](#oh_avplayer_setpcmprocessormaxlen) | - | 设置音频后处理回调函数单次可返回的最大数据量。允许缓存部分数据，并与下一次返回的PCM数据一并输出。<br> 当播放处于idle或initialized状态时，可调用此接口。 |
@@ -2168,7 +2168,7 @@ OH_AVPlayerVideoOutput* OH_AVPlayer_SetVideoSideOutput(OH_AVPlayer *player, OHNa
 
 **描述**
 
-设置视频解码帧输出回调。当播放处于idle或initialized状态时，可调用此接口。适用于需要获取视频解密帧的场景，如视频帧分析、视频滤镜处理、视频截图、视频特效处理等。
+设置视频解码帧输出回调。当播放处于idle或initialized状态时，可调用此接口。适用于需要获取视频解码帧的场景，如视频帧分析、视频滤镜处理、视频截图、视频特效处理等。
 
 **起始版本：** 26.0.0
 
