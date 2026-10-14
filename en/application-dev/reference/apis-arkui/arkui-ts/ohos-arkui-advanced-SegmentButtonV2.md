@@ -34,25 +34,6 @@ The [universal attributes](ts-component-general-attributes.md) are not supported
 
 The [universal events](ts-component-general-events.md) are not supported.
 
-## SegmentButtonV2InteractionMode<sup>26.2.0+</sup>
-
-Defines the drag interaction modes of single-selection segmented buttons.
-
-**Since**: 26.2.0
-
-**Atomic service API**: This API can be used in atomic services since API version 26.2.0.
-
-**System capability**: SystemCapability.ArkUI.ArkUI.Full
-
-**Model restriction**: This API can be used only in the stage model.
-
-**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
-
-| Name | Value | Description |
-| --- | --- | --- |
-| FOLLOWING_DRAG | 0 | Following drag. When dragging from the currently selected item, the background of the selected item continuously follows the finger. The selected index remains unchanged during dragging and is updated when the finger is released. Enabling this mode does not add material deformation or light effects when **backgroundSystemMaterial** is not configured. |
-| NORMAL_DRAG | 1 | Normal drag. When dragging from the currently selected item, the background of the selected item transitions between item positions, and the selected index is updated as the finger moves across items. Only drag positioning and selection update timing differ from following drag. The original material feedback, including configured light effects, is retained. |
-
 ## TabSegmentButtonV2
 
 ```ts
@@ -480,6 +461,25 @@ Defines a callback invoked when the selected segmented button items change.
 | Name         | Type    | Mandatory| Description                  |
 | --------------- | -------- | ---- | ---------------------- |
 | selectedIndexes | number[] | Yes | Indexes of the selected items in the segmented button. The first item is numbered 0, and subsequent items are numbered in ascending order. |
+
+## SegmentButtonV2InteractionMode<sup>26.2.0+</sup>
+
+Defines the drag interaction modes of single-selection segmented buttons.
+
+**Since**: 26.2.0
+
+**Atomic service API**: This API can be used in atomic services since API version 26.2.0.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
+
+| Name | Value | Description |
+| --- | --- | --- |
+| FOLLOWING_DRAG | 0 | Following drag. When dragging from the currently selected item, the background of the selected item continuously follows the finger. The selected index remains unchanged during dragging and is updated when the finger is released. Enabling this mode does not add material deformation or light effects when **backgroundSystemMaterial** is not configured. |
+| NORMAL_DRAG | 1 | Normal drag. When dragging from the currently selected item, the background of the selected item transitions between item positions, and the selected index is updated as the finger moves across items. Only drag positioning and selection update timing differ from following drag. The original material feedback, including configured light effects, is retained. |
 
 ## Example
 
