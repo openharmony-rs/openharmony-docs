@@ -110,9 +110,9 @@ ohos-window list-windows [options]
 | `--windowId <id>` | 指定查询的窗口ID，可选，默认查询所有窗口。|
 | `--displayId <id>` | 指定查询的屏幕ID，可选，默认查询所有屏幕。|
 | `--filter <visible\|excludeSystem\|foreground>` | 指定窗口过滤条件，可组合使用，可选，默认不过滤任何窗口。其中：visible表示返回可见窗口，excludeSystem表示不返回桌面、壁纸等系统窗口，foreground表示返回前台窗口。|
-| `--type <ui\|display\|layout\|meta>` | 指定返回的[窗口信息类别](#窗口信息类别说明)，可组合使用，可选，默认返回所有类别信息。其中：ui表示返回uiInfo信息，display表示返回displayInfo信息，layout表示返回layoutInfo信息，meta表示返回metaInfo信息。|
+| `--type <ui\|display\|layout\|meta>` | 指定返回的[窗口信息类别](#窗口信息类别)，可组合使用，可选，默认返回所有类别信息。其中：ui表示返回uiInfo信息，display表示返回displayInfo信息，layout表示返回layoutInfo信息，meta表示返回metaInfo信息。|
 
-### 窗口信息类别说明
+### 窗口信息类别
 
 每种类别代表不同的窗口信息，可根据`--type`参数指定。
 
@@ -145,16 +145,17 @@ ohos-window list-windows [options]
 | abilityName | 应用Ability名。|
 | appIndex | 多实例应用的索引，用于区分相同应用的不同实例。|
 | pid | 应用的进程号。|
-| windowType | 窗口类型，各数值含义见[WindowType](#WindowType)。|
-| windowMode | 窗口模式，各数值含义见[WindowMode](#WindowMode)。|
+| windowType | 窗口类型，各数值含义见[WindowType](#windowtype)。|
+| windowMode | 窗口模式，各数值含义见[WindowMode](#windowmode)。|
 | isFocused | 窗口是否是获焦状态。true表示获焦，false表示未获焦。|
 | isTouchable | 窗口是否可触摸。true表示可触摸，false表示不可触摸。|
 
 ### WindowType
+
 | 值 | 说明 |
 |--------|------|
-| 1 | 应用主窗。|
-| 1001 | 应用子窗。|
+| 1 | 应用主窗口。|
+| 1001 | 应用子窗口。|
 | 2000 | 壁纸。|
 | 2001 | 桌面。|
 | 2101 | Dock栏。|
@@ -176,6 +177,7 @@ ohos-window list-windows [options]
 | 2129 | 画中画。|
 
 ### WindowMode
+
 | 值 | 说明 |
 |--------|------|
 | 1 | 全屏。|
