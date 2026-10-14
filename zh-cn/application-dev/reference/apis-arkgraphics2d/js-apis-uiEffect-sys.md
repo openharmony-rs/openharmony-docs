@@ -480,8 +480,8 @@ ArkTS-Sta: radiusGradientBlur(radius: double, gradientParam: LinearGradientBlurO
 **参数：**
 | 参数名         | 类型                  | 必填 | 说明                       |
 | ------------- | --------------------- | ---- | ------------------------- |
-| value  | ArkTS-Dyn: number<br>ArkTS-Sta: double         | 是   | 模糊半径，单位为px，模糊半径越大越模糊。取值范围为[0, 128]。模糊半径设置为0时不模糊；模糊半径设置小于0的值时，按值为0处理；设置大于128的值时，按值为128处理。|
-| options  | [LinearGradientBlurOptions](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#lineargradientbluroptions12)         | 是   | 线性渐变参数，包含两个部分fractionStops和direction。|
+| radius  | ArkTS-Dyn: number<br>ArkTS-Sta: double         | 是   | 模糊半径，单位为px，模糊半径越大越模糊。取值范围为[0, 128]。模糊半径设置为0时不模糊；模糊半径设置小于0的值时，按值为0处理；设置大于128的值时，按值为128处理。|
+| gradientParam  | [LinearGradientBlurOptions](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#lineargradientbluroptions12)         | 是   | 线性渐变参数，包含两个部分fractionStops和direction。|
 
 **返回值：**
 
@@ -1021,9 +1021,9 @@ struct DisplacementDistort {
 ```
 
 ### maskDispersion<sup>20+</sup>
-ArkTS-Dyn: maskDispersion(dispersionMask: Mask, alpha: number, rFactor?: [number, number], gFactor?: [number, number], bFactor?: [number, number]): Filter
+ArkTS-Dyn: maskDispersion(dispersionMap: Mask, alpha: number, rFactor?: [number, number], gFactor?: [number, number], bFactor?: [number, number]): Filter
 
-ArkTS-Sta: maskDispersion(dispersionMask: Mask, alpha: double, rFactor?: [double, double], gFactor?: [double, double], bFactor?: [double, double]): Filter
+ArkTS-Sta: maskDispersion(dispersionMap: Mask, alpha: double, rFactor?: [double, double], gFactor?: [double, double], bFactor?: [double, double]): Filter
 
 为组件内容添加由置换贴图控制的色散效果。
 
@@ -1038,7 +1038,7 @@ ArkTS-Sta: maskDispersion(dispersionMask: Mask, alpha: double, rFactor?: [double
 **参数：**
 | 参数名         | 类型                  | 必填 | 说明                       |
 | ------------- | --------------------- | ---- | ------------------------- |
-| dispersionMask  | [Mask](#mask20)         | 是   | 置换贴图，用于控制色散的强度、方向和透明度。建议使用PixelMapMask类型的置换贴图。|
+| dispersionMap  | [Mask](#mask20)         | 是   | 置换贴图，用于控制色散的强度、方向和透明度。建议使用PixelMapMask类型的置换贴图。|
 | alpha  | ArkTS-Dyn: number<br>ArkTS-Sta: double         | 是   | 色散整体透明度，透明度越小效果越透明。取值范围为[0, 1.0]。透明度设置为0时色散效果不生效；透明度设置小于0的值时，按值为0处理；设置大于1.0的值时，按值为1.0处理。|
 | rFactor  | ArkTS-Dyn: [number, number]<br>ArkTS-Sta: [double, double]         | 否   | X/Y方向上R通道的色散基础偏移，偏移越大红色色散效果越明显。每个方向上的取值范围为[-1.0, 1.0]。偏移设置小于-1.0的值时，按值为-1.0处理；设置大于1.0的值时，按值为1.0处理。|
 | gFactor  | ArkTS-Dyn: [number, number]<br>ArkTS-Sta: [double, double]         | 否   | X/Y方向上G通道的色散基础偏移，偏移越大绿色色散效果越明显。取值范围同rFactor。|
@@ -3801,6 +3801,8 @@ struct AtlasFrameMaskDemoTaihe {
 
 ## BrightnessBlenderParam
 BrightnessBlender参数列表。
+
+**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
