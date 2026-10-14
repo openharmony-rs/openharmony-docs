@@ -50,7 +50,7 @@
         isTorchModeSupport = cameraManager.isTorchModeSupported(torchMode);
       } catch (error) {
         let err = error as BusinessError;
-        console.error('Failed to set the torch mode. errorCode = ' + err.code);
+        console.error('Failed to check the torch mode. errorCode = ' + err.code);
       }
       return isTorchModeSupport;
     }

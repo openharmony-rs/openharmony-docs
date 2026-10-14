@@ -45,7 +45,6 @@ HashMap支持增、删、改、查操作，常用API如下：
 | 访问元素 | forEach(callbackFn: (value?: V, key?: K, map?: HashMap<K, V>) => void, thisArg?: Object) | 遍历访问整个map的元素。 |
 | 访问元素 | ArkTS-Dyn: \[Symbol.iterator]():IterableIterator&lt;[K,V]&gt; <br/> ArkTS-Sta: $_iterator(): IterableIterator&lt;[K,V]&gt; | 创建迭代器以访问数据。 |
 | 修改元素 | replace(key: K, newValue: V) | 修改指定key对应的value值。 |
-| 修改元素 | forEach(callbackFn: (value?: V, key?: K, map?: HashMap<K, V>) => void, thisArg?: Object) | 遍历并修改整个map的元素。 |
 | 删除元素 | remove(key: K) | 删除map中匹配到的键值对。 |
 | 删除元素 | clear() | 清空整个map。 |
 

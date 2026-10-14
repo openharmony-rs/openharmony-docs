@@ -16,11 +16,11 @@ Notification Kit（[用户通知服务](notification-glossary.md#notification-ki
 ## 能力范围
 Notification Kit支持的能力主要包括：
  - 发布文本、进度条等类型通知。
- - 携带或更新应用通知数字角标。
+ - 携带或更新应用通知角标。
  - 取消曾经发布的某条或全部通知。
  - 查询已发布的通知列表。
  - 查询应用自身通知开关状态。
- - 应用通知用户的能力默认关闭，开发者可拉起授权框，请求用户授权发布通知。
+ - 应用发布通知的能力默认关闭，开发者可拉起授权框，请求用户授权发布通知。
 
  ![notification_introduction](figures/notification_introduction.png) 
 
