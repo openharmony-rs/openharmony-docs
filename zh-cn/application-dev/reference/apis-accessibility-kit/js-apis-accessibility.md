@@ -2882,7 +2882,7 @@ struct Index {
 | accessibilityStateDescription | string | 是 | 是  | 元素的自定义无障碍状态播报文本信息。|
 | accessibilityRole             | string  | 是 | 是  | 自定义组件类型。|
 | accessibilityNextFocusId            | number                | 是 | 是  | 下一个要获得焦点的组件的ID。<br>默认值为-1。-1表示没有设置下一个要获得焦点的组件ID。|
-| accessibilityPreviousFocusId             | number                | 是 | 是  | 上一个要获得焦点的组件的ID。<br>默认值为-1。-1表示没有设置下一个要获得焦点的组件ID。|
+| accessibilityPreviousFocusId             | number                | 是 | 是  | 上一个要获得焦点的组件的ID。<br>默认值为-1。-1表示没有设置上一个要获得焦点的组件ID。|
 | accessibilityScrollable            | boolean                 | 是 | 是  | 表示无障碍模式下，控件元素是否可滚动。<br>此属性优先级高于scrollable，即此属性和scrollable属性值冲突时，此属性的值优先生效。<br>true表示元素可滚动，false表示元素不可滚动。<br>默认值为true。|
 | accessibilityGroup  | boolean | 是 | 是  | 元素是否为无障碍组。true表示元素是无障碍组，false表示元素不是无障碍组。<br>默认值为false。|
 | accessibilityLevel             | string | 是 | 是  | 组件的无障碍级别。<br>- `auto`：当前组件由无障碍分组服务和ArkUI进行综合判断组件是否可被辅助功能识别。<br>- `yes`：当前组件可被辅助功能识别。<br>- `no`：当前组件不可被辅助功能识别。<br>- `no-hide-descendants`：当前组件及其所有子组件不可被辅助功能识别。|
