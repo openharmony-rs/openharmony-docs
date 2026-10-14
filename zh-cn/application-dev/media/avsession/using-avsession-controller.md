@@ -125,6 +125,32 @@
 4. 监听媒体会话提供方的媒体信息变化及会话其他事件，从而应用可以根据回调及时刷新播放的曲目及播放状态。
 
    <!-- @[listenControllerInfo](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionController/entry/src/main/ets/feature/MediaController.ets) -->    
+   
+   ``` TypeScript
+   async listenControllerInfo(): Promise<void> {
+     try {
+       // 设置元数据变化的监听事件。
+       this.currentController?.on('metadataChange', 'all', (metadata: avSession.AVMetadata) => {
+         Log.info(TAG, 'on metadataChange assetId: ' + metadata.assetId);
+         if (metadata?.mediaImage && metadata?.title && metadata?.artist) {
+           this.metaDataLink?.set(metadata);
+         }
+       });
+   
+       // 设置播放状态变化的监听事件。
+       this.currentController?.on('playbackStateChange', ['state'], (playbackState: avSession.AVPlaybackState) => {
+         Log.info(TAG, 'on playbackStateChange state: ' + playbackState.state);
+         this.playbackStateLink?.set(playbackState.state);
+       });
+   
+       // ...
+     } catch (error) {
+       if (error) {
+         Log.error(TAG, `listenControllerInfo Error: Code: ${error.code}, message: ${error.message}`);
+       }
+     }
+   }
+   ```
 
 5. 获取会话支持的有效命令，从而应用可以感知媒体会话提供方支持的命令。
 
