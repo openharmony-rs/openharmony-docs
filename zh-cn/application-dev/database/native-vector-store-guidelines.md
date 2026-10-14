@@ -57,7 +57,7 @@ libnative_rdb_ndk.z.so
 #include <database/rdb/relational_store_error_code.h>
 ```
 
-1. 调用[OH_Rdb_GetSupportedDbType()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_getsupporteddbtype)接口获取当前系统支持的所有数据库类型，遍历其中元素查找是否支持目标数据库类型。若包含[RDB_SQLITE](../reference/apis-arkdata/capi-relational-store-h.md#rdb_dbtype)，则表示当前系统支持SQLite数据库。 若包含[RDB_CAYLEY](../reference/apis-arkdata/capi-relational-store-h.md#rdb_dbtype)，则表示当前系统支持向量数据库。示例代码如下：
+1. 调用[OH_Rdb_GetSupportedDbType()](../reference/apis-arkdata/capi-relational-store-h.md#oh_rdb_getsupporteddbtype)接口获取当前系统支持的所有数据库类型，遍历其中元素查找是否支持目标数据库类型。若包含[RDB_SQLITE](../reference/apis-arkdata/capi-relational-store-h.md#rdb_dbtype)，则表示当前系统支持SQLite数据库。若包含[RDB_CAYLEY](../reference/apis-arkdata/capi-relational-store-h.md#rdb_dbtype)，则表示当前系统支持向量数据库。示例代码如下：
 
    <!--@[vector_OH_Rdb_GetSupportedDbType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/VectorStore/entry/src/main/cpp/napi_init.cpp)--> 
    
