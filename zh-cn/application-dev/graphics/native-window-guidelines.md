@@ -1,5 +1,5 @@
 ---
-kit: ArkGraphics 2D
+kits: ["ArkGraphics 2D / 方舟2D图形服务"]
 shortdes: "介绍NativeWindow作为图形队列生产者端申请、填充并提交Buffer的完整流程，覆盖Buffer属性配置与内存映射操作，适用于视频播放、相机预览、游戏渲染等C/C++图形密集型应用。"
 keywords: [NativeWindow, 生产者端, 图形队列, 申请Buffer, mmap, XComponent, 图形渲染, 相机预览]
 doctype: guide
