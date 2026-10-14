@@ -1223,7 +1223,7 @@ getScrollState(): ScrollState
 
 > **说明：**
 >
-> 通过鼠标滚轮滚动设置了scrollSnapAlign的List时，限位吸附动画滚动期间返回FLING。
+> 通过鼠标滚轮滚动设置了[scrollSnapAlign](ts-container-list.md#scrollsnapalign10枚举说明)的List时，限位吸附动画滚动期间返回[FLING](ts-container-list.md#scrollstate枚举说明)。
 
 **起始版本：** 26.2.0
 
