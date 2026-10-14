@@ -165,8 +165,7 @@ getSessionDescriptorsForAudioZone(userId: int): Promise\<Array\<Readonly\<AVSess
 | -------- | ---------------------------------------- | 
 | 201 | permission denied. | 
 | 202 | Not System App. |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
-| 6600101  |Session service exception. | 
+| 6700101  |Session service is not running. | 
 
 **示例：** 
 
@@ -599,6 +598,7 @@ startAVPlaybackForAudioZone(userId: int, bundleName: string, assetId: string, in
 | bundleName   | string         | 是   | 指定应用包名。   |
 | assetId      | string         | 是   | 指定媒体ID。    |
 | info         | CommandInfo    | 否   | 发送到会话的命令信息。 |
+| extraInfo | ExtraInfo    | 否 |  冷启动扩展信息。 |
 
 **返回值：**
 
@@ -614,8 +614,8 @@ startAVPlaybackForAudioZone(userId: int, bundleName: string, assetId: string, in
 | -------- | ---------------------------------------- |
 | 201 | permission denied. |
 | 202 | Not System App. Interface caller is not a system app. |
-| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
-| 6600101  | Session service exception. |
+| 801 | Capability not supported. Possible causes:  1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
+| 6700101  | Session service is not runni. |
 
 **示例：**
 
