@@ -93,3 +93,44 @@ try {
     console.error(`Failed to set brightness. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+## brightness.setValue
+
+setValue(value: number, continuous: boolean, displayId: number): void
+
+设置指定屏幕的亮度。用于连续调节亮度的场景，在连续调节亮度过程中，设置continuous为true可减少不必要的系统亮度刷新，结束时设置continuous为false恢复正常刷新模式，从而提升连续调节时的流畅度。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.PowerManager.DisplayPowerManager
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                    |
+| ------ | ------ | ---- | ----------------------- |
+| value  | number | 是   | 亮度的值。取值范围：[0, 255]。超出时会设置为系统定义的亮度最小或最大值。 |
+| continuous  | boolean | 是   | 亮度调节是否连续。true表示亮度调节连续，false表示亮度调节不连续。 |
+| displayId  | number | 是   | 屏幕ID。取值范围：[0, 10000]。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[屏幕亮度错误码](errorcode-brightness.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID   | 错误信息    |
+|---------|---------|
+| 202     | Permission verification failed. A non-system application calls a system API.  |
+| 4700101 | Failed to connect to the service. |
+
+**示例：**
+
+```js
+try {
+    brightness.setValue(128, true, 0);
+} catch (err) {
+    console.error(`Failed to set brightness. Code: ${err.code}, message: ${err.message}`);
+}
+```
