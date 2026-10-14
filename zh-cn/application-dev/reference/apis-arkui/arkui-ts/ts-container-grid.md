@@ -3656,10 +3656,10 @@ struct GridSnapExample {
         LazyForEach(this.numbers, (item: string) => {
           GridItem() {
             Text(item)
-              .fontSize(16)
+              .fontSize(20)
               .backgroundColor(0xF9CF93)
               .width('100%')
-              .height(80)
+              .height(150)
               .textAlign(TextAlign.Center)
           }
         }, (index: number) => index.toString())
@@ -3667,7 +3667,7 @@ struct GridSnapExample {
       .columnsTemplate('1fr 1fr')
       .columnsGap(10)
       .rowsGap(20)
-      .height('90%')
+      .height(400)
       .scrollSnapStrategy(ScrollSnapAlign.CENTER)
     }.width('100%').margin({ top: 5 })
   }
