@@ -3813,13 +3813,13 @@ struct Index {
 
 表示矩形区域。
 
-**ArkTS-Dyn起始版本：** 26.0.1
-
-**ArkTS-Sta起始版本：** 26.0.1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
+
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
 
 | 名称     | 类型     | 只读   | 可选   | 说明        |
 | ------ | ------ | ---- | ---- | --------- |
@@ -3834,13 +3834,13 @@ struct Index {
 
 可通过[accessibility.getFocusedUIAccessibilityElement](#accessibilitygetfocuseduiaccessibilityelement)获取实例
 
-**ArkTS-Dyn起始版本：** 26.0.1
-
-**ArkTS-Sta起始版本：** 26.0.1
-
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
+
+**ArkTS-Dyn起始版本：** 26.0.1
+
+**ArkTS-Sta起始版本：** 26.0.1
 
 ### 属性
  
