@@ -62,9 +62,9 @@
    
    ``` TypeScript
    // 导入usbManager模块
-   import { usbManager } from '@kit.BasicServicesKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
+   import { usbManager, BusinessError } from '@kit.BasicServicesKit';
    import { JSON } from '@kit.ArkTS';
+   
    ```
 
    ArkTS-Sta示例：   
@@ -77,22 +77,24 @@
    import { State } from '@ohos.arkui.stateManagement'
    import hilog from '@ohos.hilog'
    import usbManager from '@ohos.usbManager';
-   import { BusinessError } from '@kit.BasicServicesKit';
+   import { BusinessError } from '@ohos.base';
+   
    ```
 
 2. 获取设备列表。
 
    ArkTS-Dyn示例：
-   <!-- @[getDevices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
-
+   <!-- @[getDevices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
+   
    ``` TypeScript
    // 获取设备列表。
    let deviceList: usbManager.USBDevice[] = [];
    try {
      deviceList = usbManager.getDevices();
    } catch (error) {
-       console.error(`USB getDevices failed: ${error}`);
-       this.logInfo_ += '\n[ERROR] USB getDevices failed: ' + JSON.stringify(error);
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`USB getDevices failed: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] USB getDevices failed: code=' + errorObj.code + ', message=' + errorObj.message;
    }
    
    console.info(`deviceList: ${deviceList}`);
@@ -157,7 +159,7 @@
    ```
 
    ArkTS-Sta示例：   
-   <!-- @[getDevices](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[getDevices](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    // 获取设备列表。
@@ -165,8 +167,9 @@
    try {
      deviceList = usbManager.getDevices();
    } catch (error) {
-     console.error(`USB getDevices failed: ${error}`);
-     this.logInfo_ += '\n[ERROR] USB getDevices failed: ' + JSON.stringify(error);
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`USB getDevices failed: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] USB getDevices failed: code=' + errorObj.code + ', message=' + errorObj.message;
    }
    
    console.info(`deviceList: ${deviceList}`);
@@ -233,8 +236,8 @@
 3. 获取设备操作权限。
 
    ArkTS-Dyn示例：
-   <!-- @[requestRight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
-
+   <!-- @[requestRight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
+   
    ``` TypeScript
    if (this.deviceList_ === undefined || this.deviceList_.length === 0) {
      console.error('deviceList is empty');
@@ -248,13 +251,13 @@
      console.info('usb device request right result: ' + hasRight);
      this.logInfo_ += '\n[INFO] usb device request right result: ' + JSON.stringify(hasRight);
    }).catch((error: BusinessError) => {
-     console.error(`usb device request right failed : ${error}`);
-     this.logInfo_ += '\n[ERROR] usb device request right failed: ' + JSON.stringify(error);
+     console.error(`usb device request right failed : code=${error.code}, message=${error.message}`);
+     this.logInfo_ += '\n[ERROR] usb device request right failed: code=' + error.code + ', message=' + error.message;
    });
    ```
 
    ArkTS-Sta示例：
-   <!-- @[requestRight](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[requestRight](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    if (this.deviceList_ === undefined || this.deviceList_.length === 0) {
@@ -268,21 +271,22 @@
    usbManager.requestRight(deviceName).then((hasRight: boolean) => {
      console.info('usb device request right result: ' + hasRight);
      this.logInfo_ += '\n[INFO] usb device request right result: ' + JSON.stringify(hasRight);
-   }).catch((error: Error) => {
-     console.error(`usb device request right failed : ${error}`);
-     this.logInfo_ += '\n[ERROR] usb device request right failed: ' + JSON.stringify(error);
+   }).catch((error) => {
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`usb device request right failed : code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] usb device request right failed: code=' + errorObj.code + ', message=' + errorObj.message;
    });
    ```
 
 4. 获取通过中断传输读取数据的端点。
 
    ArkTS-Dyn示例：
-   <!-- @[interruptTransfer_getEndpoint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[interruptTransfer_getEndpoint](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    if (this.deviceList_ === undefined || this.deviceList_.length === 0) {
-     console.error('deviceList_ is empty');
-     this.logInfo_ += '\n[ERROR] deviceList_ is empty';
+     console.error('deviceList is empty');
+     this.logInfo_ += '\n[ERROR] deviceList is empty';
      return;
    }
    let usbDevice: usbManager.USBDevice = this.deviceList_[0];
@@ -293,22 +297,24 @@
        return;
      }
    } catch (error) {
-     console.error(`USB hasRight failed: ${error}`);
-     this.logInfo_ += '\n[ERROR] USB hasRight failed: ' + JSON.stringify(error);
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`USB hasRight failed: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] USB hasRight failed: code=' + errorObj.code + ', message=' + errorObj.message;
      return;
    }
    
    let devicePipe: usbManager.USBDevicePipe;
    try {
-      devicePipe = usbManager.connectDevice(usbDevice);
-      if (!devicePipe) {
-        console.error('connectDevice failed, pipe is undefined');
-        this.logInfo_ += '\n[ERROR] connectDevice failed, pipe is undefined';
-        return;
-      }
-    } catch (error) {
-      console.error(`USB connectDevice failed: ${error}`);
-     this.logInfo_ += '\n[ERROR] USB connectDevice failed: ' + JSON.stringify(error);
+     devicePipe = usbManager.connectDevice(usbDevice);
+     if (!devicePipe) {
+       console.error('connectDevice failed, pipe is undefined');
+       this.logInfo_ += '\n[ERROR] connectDevice failed, pipe is undefined';
+       return;
+     }
+   } catch (error) {
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`USB connectDevice failed: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] USB connectDevice failed: code=' + errorObj.code + ', message=' + errorObj.message;
      return;
    }
    
@@ -343,12 +349,12 @@
    ```
 
    ArkTS-Sta示例：   
-   <!-- @[interruptTransfer_getEndpoint](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[interruptTransfer_getEndpoint](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    if (this.deviceList_ === undefined || this.deviceList_.length === 0) {
-     console.error('deviceList_ is empty');
-     this.logInfo_ += '\n[ERROR] deviceList_ is empty';
+     console.error('deviceList is empty');
+     this.logInfo_ += '\n[ERROR] deviceList is empty';
      return;
    }
    let usbDevice: usbManager.USBDevice = this.deviceList_[0];
@@ -359,8 +365,9 @@
        return;
      }
    } catch (error) {
-     console.error(`USB hasRight failed: ${error}`);
-     this.logInfo_ += '\n[ERROR] USB hasRight failed: ' + JSON.stringify(error);
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`USB hasRight failed: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] USB hasRight failed: code=' + errorObj.code + ', message=' + errorObj.message;
      return;
    }
    
@@ -373,11 +380,11 @@
        return;
      }
    } catch (error) {
-     console.error(`USB connectDevice failed: ${error}`);
-     this.logInfo_ += '\n[ERROR] USB connectDevice failed: ' + JSON.stringify(error);
-     return;
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`connectDevice failed: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] connectDevice: code=' + errorObj.code + ', message=' + errorObj.message;
+     return
    }
-   
    let usbConfigs: usbManager.USBConfiguration[] = usbDevice.configs;
    let usbInterfaces: usbManager.USBInterface[] = [];
    let usbInterface: usbManager.USBInterface | undefined = undefined;
@@ -406,7 +413,7 @@
 5. 连接设备，注册通信接口。
 
    ArkTS-Dyn示例：
-   <!-- @[interruptTransfer_claimInterface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[interruptTransfer_claimInterface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    // 注册通信接口，注册成功返回0，注册失败返回其他错误码。
@@ -431,14 +438,16 @@
        }
      }
    } catch (error) {
-     console.error(`USB claimInterface failed: ${error}`);
-     this.logInfo_ += '\n[ERROR] USB claimInterface failed: ' + JSON.stringify(error);
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`USB claimInterface failed: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] USB claimInterface failed: code=' + errorObj.code + ', message=' + errorObj.message;
      return;
    }
+   
    ```
 
    ArkTS-Sta示例：   
-   <!-- @[interruptTransfer_claimInterface](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[interruptTransfer_claimInterface](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    if (usbInterface === undefined) {
@@ -455,10 +464,12 @@
        return;
      }
    } catch (error) {
-     console.error(`USB claimInterface failed: ${error}`);
-     this.logInfo_ += '\n[ERROR] USB claimInterface failed: ' + JSON.stringify(error);
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`USB claimInterface failed: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] USB claimInterface failed: code=' + errorObj.code + ', message=' + errorObj.message;
      return;
    }
+   
    ```
 
 6. 传输数据。
@@ -496,13 +507,14 @@
      console.info('USB transfer request submitted.');
      this.logInfo_ += '\n[INFO] USB transfer request submitted.';
    } catch (error) {
-     console.error(`USB transfer failed: ${error}`);
-     this.logInfo_ += '\n[ERROR] USB transfer failed: ' + JSON.stringify(error);
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`USB transfer failed: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] USB transfer failed: code=' + errorObj.code + ', message=' + errorObj.message;
    }
    ```
 
    ArkTS-Sta示例：   
-   <!-- @[interruptTransfer_interruptTransfer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[interruptTransfer_interruptTransfer](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    let transferParams: usbManager.UsbDataTransferParams | undefined = undefined;
@@ -534,63 +546,69 @@
      console.info('USB transfer request submitted.');
      this.logInfo_ += '\n[INFO] USB transfer request submitted.';
    } catch (error) {
-     console.error(`USB transfer failed: ${error}`);
-     this.logInfo_ += '\n[ERROR] USB transfer failed: ' + JSON.stringify(error);
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`USB transfer failed: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] USB transfer failed: code=' + errorObj.code + ', message=' + errorObj.message;
    }
    ```
 
 7. 取消传输，释放接口，关闭设备消息控制通道。
 
    ArkTS-Dyn示例：
-   <!-- @[interruptTransfer_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[interruptTransfer_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
-    try {
-      usbManager.usbCancelTransfer(transferParams);
-    } catch (error) {
-      console.error(`usbCancelTransfer failed: ${error}`);
-      this.logInfo_ += '\n[ERROR] usbCancelTransfer failed: ' + JSON.stringify(error);
-    }
-    try {
-      usbManager.releaseInterface(devicePipe, usbInterface);
-    } catch (error) {
-      console.error(`releaseInterface failed: ${error}`);
-      this.logInfo_ += '\n[ERROR] releaseInterface failed: ' + JSON.stringify(error);
-    }
-    try {
-      usbManager.closePipe(devicePipe);
-    } catch (error) {
-      console.error(`closePipe failed: ${error}`);
-      this.logInfo_ += '\n[ERROR] closePipe failed: ' + JSON.stringify(error);
-    }
-   ```
-
-   ArkTS-Sta示例：   
-   <!-- @[interruptTransfer_release](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
-   
-   ``` TypeScript
-   if (transferParams === undefined) {
-     console.error('transferParams is undefined');
-     this.logInfo_ += '\n[ERROR] transferParams is undefined';
-     return;
-   }
    try {
-     usbManager.usbCancelTransfer(transferParams);
+     if (transferParams) {
+       usbManager.usbCancelTransfer(transferParams);
+     }
    } catch (error) {
-     console.error(`usbCancelTransfer failed: ${error}`);
-     this.logInfo_ += '\n[ERROR] usbCancelTransfer failed: ' + JSON.stringify(error);
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`usbCancelTransfer failed: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] usbCancelTransfer failed: code=' + errorObj.code + ', message=' + errorObj.message;
    }
    try {
      usbManager.releaseInterface(devicePipe, usbInterface);
    } catch (error) {
-     console.error(`releaseInterface failed: ${error}`);
-     this.logInfo_ += '\n[ERROR] releaseInterface failed: ' + JSON.stringify(error);
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`releaseInterface failed: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] releaseInterface failed: code=' + errorObj.code + ', message=' + errorObj.message;
    }
    try {
      usbManager.closePipe(devicePipe);
    } catch (error) {
-     console.error(`closePipe failed: ${error}`);
-     this.logInfo_ += '\n[ERROR] closePipe failed: ' + JSON.stringify(error);
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`closePipe failed: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] closePipe failed: code=' + errorObj.code + ', message=' + errorObj.message;
+   }
+   ```
+
+   ArkTS-Sta示例：   
+   <!-- @[interruptTransfer_release](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
+   
+   ``` TypeScript
+   try {
+     if (transferParams) {
+       usbManager.usbCancelTransfer(transferParams);
+     }
+   } catch (error) {
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`usbCancelTransfer failed: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] usbCancelTransfer failed: code=' + errorObj.code + ', message=' + errorObj.message;
+   }
+   try {
+     usbManager.releaseInterface(devicePipe, usbInterface);
+   } catch (error) {
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`releaseInterface failed: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] releaseInterface failed: code=' + errorObj.code + ', message=' + errorObj.message;
+   }
+   try {
+     usbManager.closePipe(devicePipe);
+   } catch (error) {
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`closePipe failed: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] closePipe failed: code=' + errorObj.code + ', message=' + errorObj.message;
    }
    ```
    

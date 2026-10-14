@@ -62,9 +62,9 @@
    
    ``` TypeScript
    // 导入usbManager模块
-   import { usbManager } from '@kit.BasicServicesKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
+   import { usbManager, BusinessError } from '@kit.BasicServicesKit';
    import { JSON } from '@kit.ArkTS';
+   
    ```
 
    ArkTS-Sta示例：   
@@ -77,13 +77,14 @@
    import { State } from '@ohos.arkui.stateManagement'
    import hilog from '@ohos.hilog'
    import usbManager from '@ohos.usbManager';
-   import { BusinessError } from '@kit.BasicServicesKit';
+   import { BusinessError } from '@ohos.base';
+   
    ```
 
 2. 获取设备列表。
 
    ArkTS-Dyn示例：
-   <!-- @[getDevices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[getDevices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    // 获取设备列表。
@@ -91,8 +92,9 @@
    try {
      deviceList = usbManager.getDevices();
    } catch (error) {
-       console.error(`USB getDevices failed: ${error}`);
-       this.logInfo_ += '\n[ERROR] USB getDevices failed: ' + JSON.stringify(error);
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`USB getDevices failed: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] USB getDevices failed: code=' + errorObj.code + ', message=' + errorObj.message;
    }
    
    console.info(`deviceList: ${deviceList}`);
@@ -156,7 +158,7 @@
    this.deviceList_ = deviceList;
    ```
 
-   <!-- @[getDevices](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[getDevices](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    // 获取设备列表。
@@ -164,8 +166,9 @@
    try {
      deviceList = usbManager.getDevices();
    } catch (error) {
-     console.error(`USB getDevices failed: ${error}`);
-     this.logInfo_ += '\n[ERROR] USB getDevices failed: ' + JSON.stringify(error);
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`USB getDevices failed: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] USB getDevices failed: code=' + errorObj.code + ', message=' + errorObj.message;
    }
    
    console.info(`deviceList: ${deviceList}`);
@@ -232,8 +235,8 @@
 3. 获取设备操作权限。
 
    ArkTS-Dyn示例：
-   <!-- @[requestRight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
-
+   <!-- @[requestRight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
+   
    ``` TypeScript
    if (this.deviceList_ === undefined || this.deviceList_.length === 0) {
      console.error('deviceList is empty');
@@ -247,12 +250,12 @@
      console.info('usb device request right result: ' + hasRight);
      this.logInfo_ += '\n[INFO] usb device request right result: ' + JSON.stringify(hasRight);
    }).catch((error: BusinessError) => {
-     console.error(`usb device request right failed : ${error}`);
-     this.logInfo_ += '\n[ERROR] usb device request right failed: ' + JSON.stringify(error);
+     console.error(`usb device request right failed : code=${error.code}, message=${error.message}`);
+     this.logInfo_ += '\n[ERROR] usb device request right failed: code=' + error.code + ', message=' + error.message;
    });
    ```
 
-   <!-- @[requestRight](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[requestRight](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    if (this.deviceList_ === undefined || this.deviceList_.length === 0) {
@@ -266,9 +269,10 @@
    usbManager.requestRight(deviceName).then((hasRight: boolean) => {
      console.info('usb device request right result: ' + hasRight);
      this.logInfo_ += '\n[INFO] usb device request right result: ' + JSON.stringify(hasRight);
-   }).catch((error: Error) => {
-     console.error(`usb device request right failed : ${error}`);
-     this.logInfo_ += '\n[ERROR] usb device request right failed: ' + JSON.stringify(error);
+   }).catch((error) => {
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`usb device request right failed : code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] usb device request right failed: code=' + errorObj.code + ', message=' + errorObj.message;
    });
    ```
 
@@ -279,8 +283,8 @@
    
    ``` TypeScript
    if (this.deviceList_ === undefined || this.deviceList_.length === 0) {
-     console.error('deviceList_ is empty');
-     this.logInfo_ += '\n[ERROR] deviceList_ is empty';
+     console.error('deviceList is empty');
+     this.logInfo_ += '\n[ERROR] deviceList is empty';
      return;
    }
    let usbDevice: usbManager.USBDevice = this.deviceList_[0];
@@ -291,62 +295,64 @@
        return;
      }
    } catch (error) {
-     console.error(`USB hasRight failed: ${error}`);
-     this.logInfo_ += '\n[ERROR] USB hasRight failed: ' + JSON.stringify(error);
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`USB hasRight failed: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] USB hasRight failed: code=' + errorObj.code + ', message=' + errorObj.message;
      return;
    }
    
    let devicePipe: usbManager.USBDevicePipe;
    try {
      devicePipe = usbManager.connectDevice(usbDevice);
-      if (!devicePipe) {
-        console.error('connectDevice failed, pipe is undefined');
-        this.logInfo_ += '\n[ERROR] connectDevice failed, pipe is undefined';
-        return;
-      }
-    } catch (error) {
-      console.error(`connectDevice failed ${error}`);
-      this.logInfo_ += '\n[ERROR] connectDevice: ' + JSON.stringify(error);
-      return
-    }
-    let usbConfigs: usbManager.USBConfiguration[] = usbDevice.configs;
-    let usbInterfaces: usbManager.USBInterface[] = [];
-    let usbInterface: usbManager.USBInterface | undefined = undefined;
-    let usbEndpoints: usbManager.USBEndpoint[] = [];
-    let usbEndpoint: usbManager.USBEndpoint | undefined = undefined;
-    for (let i = 0; i < usbConfigs?.length; i++) {
-      usbInterfaces = usbConfigs[i]?.interfaces;
-      for (let j = 0; j < usbInterfaces?.length; j++) {
-        usbEndpoints = usbInterfaces[j]?.endpoints;
-        usbEndpoint = usbEndpoints?.find((value) => {
-          // direction为请求方向，0表示写入数据，128表示读取数据
-          return value.direction === 128 && value.type === usbManager.UsbEndpointTransferType.TRANSFER_TYPE_ISOCHRONOUS;
-        })
-        if (usbEndpoint !== undefined) {
-          usbInterface = usbInterfaces[j];
-          break;
-        }
-      }
-    }
-    if (usbEndpoint === undefined) {
-      console.error(`get usbEndpoint error`);
-      this.logInfo_ += '\n[ERROR] get usbEndpoint error';
-      return;
-    }
-    if (usbInterface === undefined) {
-      console.error(`get usbInterface error`);
-      this.logInfo_ += '\n[ERROR] get usbInterface error';
-      return;
-    }
-    ```
+     if (!devicePipe) {
+       console.error('connectDevice failed, pipe is undefined');
+       this.logInfo_ += '\n[ERROR] connectDevice failed, pipe is undefined';
+       return;
+     }
+   } catch (error) {
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`connectDevice failed: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] connectDevice: code=' + errorObj.code + ', message=' + errorObj.message;
+     return
+   }
+   let usbConfigs: usbManager.USBConfiguration[] = usbDevice.configs;
+   let usbInterfaces: usbManager.USBInterface[] = [];
+   let usbInterface: usbManager.USBInterface | undefined = undefined;
+   let usbEndpoints: usbManager.USBEndpoint[] = [];
+   let usbEndpoint: usbManager.USBEndpoint | undefined = undefined;
+   for (let i = 0; i < usbConfigs?.length; i++) {
+     usbInterfaces = usbConfigs[i]?.interfaces;
+     for (let j = 0; j < usbInterfaces?.length; j++) {
+       usbEndpoints = usbInterfaces[j]?.endpoints;
+       usbEndpoint = usbEndpoints?.find((value) => {
+         // direction为请求方向，0表示写入数据，128表示读取数据
+         return value.direction === 128 && value.type === usbManager.UsbEndpointTransferType.TRANSFER_TYPE_ISOCHRONOUS;
+       })
+       if (usbEndpoint !== undefined) {
+         usbInterface = usbInterfaces[j];
+         break;
+       }
+     }
+   }
+   if (usbEndpoint === undefined) {
+     console.error(`get usbEndpoint error`);
+     this.logInfo_ += '\n[ERROR] get usbEndpoint error';
+     return;
+   }
+   if (usbInterface === undefined) {
+     console.error(`get usbInterface error`);
+     this.logInfo_ += '\n[ERROR] get usbInterface error';
+     return;
+   }
+   ```
 
    ArkTS-Sta示例：   
-   <!-- @[isochronousTransfer_getEndpoint](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[isochronousTransfer_getEndpoint](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    if (this.deviceList_ === undefined || this.deviceList_.length === 0) {
-     console.error('deviceList_ is empty');
-     this.logInfo_ += '\n[ERROR] deviceList_ is empty';
+     console.error('deviceList is empty');
+     this.logInfo_ += '\n[ERROR] deviceList is empty';
      return;
    }
    let usbDevice: usbManager.USBDevice = this.deviceList_[0];
@@ -357,99 +363,103 @@
        return;
      }
    } catch (error) {
-     console.error(`USB hasRight failed: ${error}`);
-     this.logInfo_ += '\n[ERROR] USB hasRight failed: ' + JSON.stringify(error);
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`USB hasRight failed: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] USB hasRight failed: code=' + errorObj.code + ', message=' + errorObj.message;
      return;
    }
    
    let devicePipe: usbManager.USBDevicePipe;
    try {
-      devicePipe = usbManager.connectDevice(usbDevice);
-      if (!devicePipe) {
-        console.error('connectDevice failed, pipe is undefined');
-        this.logInfo_ += '\n[ERROR] connectDevice failed, pipe is undefined';
-        return;
-      }
-    } catch (error) {
-      console.error(`connectDevice failed ${error}`);
-      this.logInfo_ += '\n[ERROR] connectDevice: ' + JSON.stringify(error);
-      return
-    }
-    let usbConfigs: usbManager.USBConfiguration[] = usbDevice.configs;
-    let usbInterfaces: usbManager.USBInterface[] = [];
-    let usbInterface: usbManager.USBInterface | undefined = undefined;
-    let usbEndpoints: usbManager.USBEndpoint[] = [];
-    let usbEndpoint: usbManager.USBEndpoint | undefined = undefined;
-    for (let i = 0; i < usbConfigs?.length; i++) {
-      usbInterfaces = usbConfigs[i]?.interfaces;
-      for (let j = 0; j < usbInterfaces?.length; j++) {
-        usbEndpoints = usbInterfaces[j]?.endpoints;
-        usbEndpoint = usbEndpoints?.find((value) => {
-          // direction为请求方向，0表示写入数据，128表示读取数据
-          return value.direction === 128 && value.type === usbManager.UsbEndpointTransferType.TRANSFER_TYPE_ISOCHRONOUS;
-        })
-        if (usbEndpoint !== undefined) {
-          usbInterface = usbInterfaces[j];
-          break;
-        }
-      }
-    }
-    if (usbEndpoint === undefined) {
-      console.error(`get usbEndpoint error`);
-      this.logInfo_ += '\n[ERROR] get usbEndpoint error';
-      return;
-    }
-    ```
+     devicePipe = usbManager.connectDevice(usbDevice);
+     if (!devicePipe) {
+       console.error('connectDevice failed, pipe is undefined');
+       this.logInfo_ += '\n[ERROR] connectDevice failed, pipe is undefined';
+       return;
+     }
+   } catch (error) {
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`connectDevice failed: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] connectDevice: code=' + errorObj.code + ', message=' + errorObj.message;
+     return
+   }
+   let usbConfigs: usbManager.USBConfiguration[] = usbDevice.configs;
+   let usbInterfaces: usbManager.USBInterface[] = [];
+   let usbInterface: usbManager.USBInterface | undefined = undefined;
+   let usbEndpoints: usbManager.USBEndpoint[] = [];
+   let usbEndpoint: usbManager.USBEndpoint | undefined = undefined;
+   for (let i = 0; i < usbConfigs?.length; i++) {
+     usbInterfaces = usbConfigs[i]?.interfaces;
+     for (let j = 0; j < usbInterfaces?.length; j++) {
+       usbEndpoints = usbInterfaces[j]?.endpoints;
+       usbEndpoint = usbEndpoints?.find((value) => {
+         // direction为请求方向，0表示写入数据，128表示读取数据
+         return value.direction === 128 && value.type === usbManager.UsbEndpointTransferType.TRANSFER_TYPE_ISOCHRONOUS;
+       })
+       if (usbEndpoint !== undefined) {
+         usbInterface = usbInterfaces[j];
+         break;
+       }
+     }
+   }
+   if (usbEndpoint === undefined) {
+     console.error(`get usbEndpoint error`);
+     this.logInfo_ += '\n[ERROR] get usbEndpoint error';
+     return;
+   }
+   ```
 
 5. 连接设备，注册通信接口。
 
    ArkTS-Dyn示例：
    <!-- @[isochronousTransfer_claimInterface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
    
-    ``` TypeScript
-    // 注册通信接口，注册成功返回0，注册失败返回其他错误码。
-    try {
-      if (this.isExclusiveClaim_) {
-        usbManager.claimInterfaceExclusive(devicePipe, usbInterface, true,
-          (conflict: usbManager.InterfaceConflictInfo) => {
-          // 其他应用claim同一接口时的异步冲突通知
-          const conflictMsg = `busNum = ${conflict.busNum}, devAddr = ${conflict.devAddr}, ` +
-            `interfaceId = ${conflict.interfaceId}`;
-          console.info(`interface conflict: ${conflictMsg}`);
-          this.logInfo_ += `\n[INFO] interface conflict: ${conflictMsg}`;
-        });
-        console.info('claimInterfaceExclusive success');
-        this.logInfo_ += '\n[INFO] claimInterfaceExclusive success';
-      } else {
-        let claimInterfaceResult: number = usbManager.claimInterface(devicePipe, usbInterface, true);
-        if (claimInterfaceResult !== 0) {
-          console.error(`claimInterface error = ${claimInterfaceResult}`)
-          this.logInfo_ += '\n[ERROR] claimInterface error = ' + JSON.stringify(claimInterfaceResult);
-          return;
-        }
-      }
-    } catch (error) {
-      console.error(`USB claimInterface failed: ${error}`);
-      this.logInfo_ += '\n[ERROR] USB claimInterface failed: ' + JSON.stringify(error);
-      return;
-    }
-
-    // 传输类型为“实时传输”时，需设置设备接口。设置成功返回0，注册失败返回其他错误码。
-    if (usbEndpoint.type === usbManager.UsbEndpointTransferType.TRANSFER_TYPE_ISOCHRONOUS) {
-      try {
-        let setInterfaceResult = usbManager.setInterface(devicePipe, usbInterface);
-        if (setInterfaceResult !== 0) {
-          console.error(`setInterfaceResult error = ${setInterfaceResult}`)
-          this.logInfo_ += '\n[ERROR] setInterfaceResult error = ' + JSON.stringify(setInterfaceResult);
-          return;
-        }
-      } catch (error) {
-        console.error(`USB setInterface failed: ${error}`);
-        this.logInfo_ += '\n[ERROR] USB setInterface failed: ' + JSON.stringify(error);
-        return;
-      }
-    }
-    ```
+   ``` TypeScript
+   // 注册通信接口，注册成功返回0，注册失败返回其他错误码。
+   try {
+     if (this.isExclusiveClaim_) {
+       usbManager.claimInterfaceExclusive(devicePipe, usbInterface, true,
+         (conflict: usbManager.InterfaceConflictInfo) => {
+         // 其他应用claim同一接口时的异步冲突通知
+         const conflictMsg = `busNum = ${conflict.busNum}, devAddr = ${conflict.devAddr}, ` +
+           `interfaceId = ${conflict.interfaceId}`;
+         console.info(`interface conflict: ${conflictMsg}`);
+         this.logInfo_ += `\n[INFO] interface conflict: ${conflictMsg}`;
+       });
+       console.info('claimInterfaceExclusive success');
+       this.logInfo_ += '\n[INFO] claimInterfaceExclusive success';
+     } else {
+       let claimInterfaceResult: number = usbManager.claimInterface(devicePipe, usbInterface, true);
+       if (claimInterfaceResult !== 0) {
+         console.error(`claimInterface error = ${claimInterfaceResult}`)
+         this.logInfo_ += '\n[ERROR] claimInterface error = ' + JSON.stringify(claimInterfaceResult);
+         return;
+       }
+     }
+   } catch (error) {
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`USB claimInterface failed: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] USB claimInterface failed: code=' + errorObj.code + ', message=' + errorObj.message;
+     return;
+   }
+   
+   // 传输类型为“实时传输”时，需设置设备接口。设置成功返回0，注册失败返回其他错误码。
+   if (usbEndpoint.type === usbManager.UsbEndpointTransferType.TRANSFER_TYPE_ISOCHRONOUS) {
+     try {
+       let setInterfaceResult = usbManager.setInterface(devicePipe, usbInterface);
+       if (setInterfaceResult !== 0) {
+         console.error(`setInterfaceResult error = ${setInterfaceResult}`)
+         this.logInfo_ += '\n[ERROR] setInterfaceResult error = ' + JSON.stringify(setInterfaceResult);
+         return;
+       }
+     } catch (error) {
+       let errorObj: BusinessError = error as BusinessError;
+       console.error(`USB setInterface failed: code=${errorObj.code}, message=${errorObj.message}`);
+       this.logInfo_ += '\n[ERROR] USB setInterface failed: code=' + errorObj.code + ', message=' + errorObj.message;
+       return;
+     }
+   }
+   ```
 
    ArkTS-Sta示例：   
    <!-- @[isochronousTransfer_claimInterface](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
@@ -469,8 +479,9 @@
        return;
      }
    } catch (error) {
-     console.error(`USB claimInterface failed: ${error}`);
-     this.logInfo_ += '\n[ERROR] USB claimInterface failed: ' + JSON.stringify(error);
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`USB claimInterface failed: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] USB claimInterface failed: code=' + errorObj.code + ', message=' + errorObj.message;
      return;
    }
    
@@ -484,8 +495,9 @@
          return;
        }
      } catch (error) {
-       console.error(`USB setInterface failed: ${error}`);
-       this.logInfo_ += '\n[ERROR] USB setInterface failed: ' + JSON.stringify(error);
+       let errorObj: BusinessError = error as BusinessError;
+       console.error(`USB setInterface failed: code=${errorObj.code}, message=${errorObj.message}`);
+       this.logInfo_ += '\n[ERROR] USB setInterface failed: code=' + errorObj.code + ', message=' + errorObj.message;
        return;
      }
    }
@@ -507,7 +519,7 @@
        type: usbManager.UsbEndpointTransferType.TRANSFER_TYPE_ISOCHRONOUS,
        timeout: 2000,
        length: 10,
-        callback: (err: BusinessError , callBackData: usbManager.SubmitTransferCallback) => {
+       callback: (err: BusinessError , callBackData: usbManager.SubmitTransferCallback) => {
          if (err) {
            console.error(`transfer error: ${err}`);
            this.logInfo_ += '\n[ERROR] transfer error: ' + JSON.stringify(err);
@@ -526,8 +538,9 @@
      console.info('USB transfer request submitted.');
      this.logInfo_ += '\n[INFO] USB transfer request submitted.';
    } catch (error) {
-     console.error(`USB transfer failed: ${error}`);
-     this.logInfo_ += '\n[ERROR] USB transfer failed: ' + JSON.stringify(error);
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`USB transfer failed: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] USB transfer failed: code=' + errorObj.code + ', message=' + errorObj.message;
    }
    ```
 
@@ -545,27 +558,28 @@
        type: usbManager.UsbEndpointTransferType.TRANSFER_TYPE_ISOCHRONOUS,
        timeout: 2000,
        length: 10,
-         callback: (err: BusinessError | null, callBackData: usbManager.SubmitTransferCallback | undefined) => {
-          if (err) {
-            console.error(`transfer error: ${err}`);
-            this.logInfo_ += '\n[ERROR] transfer error: ' + JSON.stringify(err);
-            return;
-          }
-          console.info(`callBackData = ${callBackData}`);
-          this.logInfo_ += '\n[INFO] callBackData = ' + JSON.stringify(callBackData);
-          console.info('transfer success,result = ' + transferParams?.buffer.toString());
-          this.logInfo_ += '\n[INFO] transfer success,result = ' + transferParams?.buffer.toString();
-        },
-        userData: new Uint8Array(10),
-        buffer: new Uint8Array(10),
-        isoPacketCount: 2,
-      };
-      usbManager.usbSubmitTransfer(transferParams);
-      console.info('USB transfer request submitted.');
-      this.logInfo_ += '\n[INFO] USB transfer request submitted.';
+       callback: (err: BusinessError | null, callBackData: usbManager.SubmitTransferCallback | undefined) => {
+         if (err) {
+           console.error(`transfer error: ${err}`);
+           this.logInfo_ += '\n[ERROR] transfer error: ' + JSON.stringify(err);
+           return;
+         }
+         console.info(`callBackData = ${callBackData}`);
+         this.logInfo_ += '\n[INFO] callBackData = ' + JSON.stringify(callBackData);
+         console.info('transfer success,result = ' + transferParams?.buffer.toString());
+         this.logInfo_ += '\n[INFO] transfer success,result = ' + transferParams?.buffer.toString();
+       },
+       userData: new Uint8Array(10),
+       buffer: new Uint8Array(10),
+       isoPacketCount: 2,
+     };
+     usbManager.usbSubmitTransfer(transferParams);
+     console.info('USB transfer request submitted.');
+     this.logInfo_ += '\n[INFO] USB transfer request submitted.';
    } catch (error) {
-     console.error(`USB transfer failed: ${error}`);
-     this.logInfo_ += '\n[ERROR] USB transfer failed: ' + JSON.stringify(error);
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`USB transfer failed: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] USB transfer failed: code=' + errorObj.code + ', message=' + errorObj.message;
    }
    ```
 
@@ -575,54 +589,59 @@
    <!-- @[isochronousTransfer_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
-    try {
-      usbManager.usbCancelTransfer(transferParams);
-    } catch (error) {
-      console.error(`usbCancelTransfer failed: ${error}`);
-      this.logInfo_ += '\n[ERROR] usbCancelTransfer failed: ' + JSON.stringify(error);
-    }
-    try {
-      usbManager.releaseInterface(devicePipe, usbInterface);
-    } catch (error) {
-      console.error(`releaseInterface failed: ${error}`);
-      this.logInfo_ += '\n[ERROR] releaseInterface failed: ' + JSON.stringify(error);
-    }
-    try {
-      usbManager.closePipe(devicePipe);
-    } catch (error) {
-      console.error(`closePipe failed: ${error}`);
-      this.logInfo_ += '\n[ERROR] closePipe failed: ' + JSON.stringify(error);
-    }
+   try {
+     if (transferParams) {
+       usbManager.usbCancelTransfer(transferParams);
+     }
+   } catch (error) {
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`usbCancelTransfer failed: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] usbCancelTransfer failed: code=' + errorObj.code + ', message=' + errorObj.message;
+   }
+   try {
+     usbManager.releaseInterface(devicePipe, usbInterface);
+   } catch (error) {
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`releaseInterface failed: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] releaseInterface failed: code=' + errorObj.code + ', message=' + errorObj.message;
+   }
+   try {
+     usbManager.closePipe(devicePipe);
+   } catch (error) {
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`closePipe failed: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] closePipe failed: code=' + errorObj.code + ', message=' + errorObj.message;
+   }
    ```
 
    ArkTS-Sta示例：   
    <!-- @[isochronousTransfer_release](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/USB/USBManagerSample/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
-    if (transferParams === undefined) {
-      console.error('transferParams is undefined');
-      this.logInfo_ += '\n[ERROR] transferParams is undefined';
-      return;
-    }
-    try {
-      usbManager.usbCancelTransfer(transferParams);
-    } catch (error) {
-      console.error(`usbCancelTransfer failed: ${error}`);
-      this.logInfo_ += '\n[ERROR] usbCancelTransfer failed: ' + JSON.stringify(error);
-    }
-    try {
-      usbManager.releaseInterface(devicePipe, usbInterface);
-    } catch (error) {
-      console.error(`releaseInterface failed: ${error}`);
-      this.logInfo_ += '\n[ERROR] releaseInterface failed: ' + JSON.stringify(error);
-    }
-    try {
-      usbManager.closePipe(devicePipe);
-    } catch (error) {
-      console.error(`closePipe failed: ${error}`);
-      this.logInfo_ += '\n[ERROR] closePipe failed: ' + JSON.stringify(error);
-    }
-    ```
+   try {
+     if (transferParams) {
+       usbManager.usbCancelTransfer(transferParams);
+     }
+   } catch (error) {
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`usbCancelTransfer failed: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] usbCancelTransfer failed: code=' + errorObj.code + ', message=' + errorObj.message;
+   }
+   try {
+     usbManager.releaseInterface(devicePipe, usbInterface);
+   } catch (error) {
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`releaseInterface failed: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] releaseInterface failed: code=' + errorObj.code + ', message=' + errorObj.message;
+   }
+   try {
+     usbManager.closePipe(devicePipe);
+   } catch (error) {
+     let errorObj: BusinessError = error as BusinessError;
+     console.error(`closePipe failed: code=${errorObj.code}, message=${errorObj.message}`);
+     this.logInfo_ += '\n[ERROR] closePipe failed: code=' + errorObj.code + ', message=' + errorObj.message;
+   }
+   ```
 
 ### 调测验证
 
