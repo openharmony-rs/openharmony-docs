@@ -118,37 +118,37 @@ ohos-window list-windows [options]
 
 - **uiInfo**
 
-| 字段名 | 说明 |
-|--------|------|
-|visibilityState| 窗口可见性，0表示完全可见，1表示部分可见，2表示完全不可见。|
+    | 字段名 | 说明 |
+    |--------|------|
+    |visibilityState| 窗口可见性，0表示完全可见，1表示部分可见，2表示完全不可见。|
 
 - **displayInfo**
 
-| 字段名 | 说明 |
-|--------|------|
-| displayId | 屏幕ID。|
+    | 字段名 | 说明 |
+    |--------|------|
+    | displayId | 屏幕ID。|
 
 - **layoutInfo**
 
-| 字段名 | 说明 |
-|--------|------|
-| rect | 窗口尺寸大小。|
-| zOrder | 窗口层级，值越大代表层级越高。|
+    | 字段名 | 说明 |
+    |--------|------|
+    | rect | 窗口尺寸大小。|
+    | zOrder | 窗口层级，值越大代表层级越高。|
 
 - **metaInfo**
 
-| 字段名 | 说明 |
-|--------|------|
-| windowId | 窗口ID。|
-| windowName | 窗口名。|
-| bundleName | 应用包名。|
-| abilityName | 应用Ability名。|
-| appIndex | 多实例应用的索引，用于区分相同应用的不同实例。|
-| pid | 应用的进程号。|
-| windowType | 窗口类型，各数值含义见[WindowType](#windowtype)。|
-| windowMode | 窗口模式，各数值含义见[WindowMode](#windowmode)。|
-| isFocused | 窗口是否是获焦状态。true表示获焦，false表示未获焦。|
-| isTouchable | 窗口是否可触摸。true表示可触摸，false表示不可触摸。|
+    | 字段名 | 说明 |
+    |--------|------|
+    | windowId | 窗口ID。|
+    | windowName | 窗口名。|
+    | bundleName | 应用包名。|
+    | abilityName | 应用Ability名。|
+    | appIndex | 多实例应用的索引，用于区分相同应用的不同实例。|
+    | pid | 应用的进程号。|
+    | windowType | 窗口类型，各数值含义见[WindowType](#windowtype)。|
+    | windowMode | 窗口模式，各数值含义见[WindowMode](#windowmode)。|
+    | isFocused | 窗口是否是获焦状态。true表示获焦，false表示未获焦。|
+    | isTouchable | 窗口是否可触摸。true表示可触摸，false表示不可触摸。|
 
 ### WindowType
 
