@@ -80,11 +80,11 @@ struct Index {
 
 下面是使用静态模糊对图片进行模糊处理的场景示例。主要步骤如下：
 
-1.通过createPixelMap创建图片的PixelMap。
+1. 通过createPixelMap创建图片的PixelMap。
 
-2.通过createEffect创建Filter实例。
+2. 通过createEffect创建Filter实例。
 
-3.通过Filter图像效果类中的blur，为Image添加模糊效果。
+3. 通过Filter图像效果类中的blur，为Image添加模糊效果。
 
 ```ts
 import { image } from '@kit.ImageKit'; // 导入图片处理模块
