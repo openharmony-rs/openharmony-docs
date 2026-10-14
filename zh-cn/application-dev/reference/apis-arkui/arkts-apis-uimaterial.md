@@ -70,7 +70,7 @@ static get empty(): Material
 
 返回空材质对象，用于组件单独关闭沉浸式系统材质效果。使用方式为`uiMaterial.Material.empty`。
 
-可通过设置`systemMaterial(uiMaterial.Material.empty)`来单独关闭某个组件的沉浸式系统材质效果，适用于ENABLE使能模式下默认开启的组件，以及DEFAULT模式下默认开启的弹窗类组件。如果组件未支持组件级沉浸式系统材质接口，则无法通过此方法关闭材质效果。
+可通过设置`systemMaterial(uiMaterial.Material.empty)`来单独关闭某个组件的沉浸式系统材质效果，如果组件未支持组件级沉浸式系统材质接口，则无法通过此方法关闭材质效果。
 
 **起始版本：** 26.0.0
 
