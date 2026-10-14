@@ -3252,6 +3252,88 @@ try {
 }
 ```
 
+## formHost.on('getLiveFormStatus')<sup>20+</sup>
+
+on(type: 'getLiveFormStatus', callback: formInfo.GetLiveFormStatusCallback): void
+
+订阅所有实时卡片的运行状态查询事件。使用callback异步回调。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                                                   |
+| ------ | ------ | ---- |------------------------------------------------------|
+| type | string | 是   | 事件回调类型，支持的事件为'getLiveFormStatus'，表示在线卡片状态查询。|
+| callback |[formInfo.GetLiveFormStatusCallback](js-apis-app-form-formInfo-sys.md#getliveformstatuscallback20) | 是 | 回调函数，卡片使用方对查询请求进行处理，返回所有实时卡片的运行状态。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 202 | The application is not a system application. |
+
+**示例：**
+
+```ts
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formHost.on('getLiveFormStatus', (): Record<string, string> => {
+    // 卡片使用方需要对查询请求进行处理，计算并返回状态信息
+    return { "status": "active" };
+  });
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
+## formHost.off('getLiveFormStatus')<sup>20+</sup>
+
+off(type: 'getLiveFormStatus', callback?: formInfo.GetLiveFormStatusCallback): void
+
+取消订阅所有实时卡片的运行状态查询事件。使用callback异步回调。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                                                   |
+| ------ | ------ | ---- |------------------------------------------------------|
+| type | string | 是   | 事件回调类型，支持的事件为'getLiveFormStatus'，表示卡片位置尺寸查询。|
+| callback |[formInfo.GetLiveFormStatusCallback](js-apis-app-form-formInfo-sys.md#getliveformstatuscallback20) | 是 | 回调函数，对应已订阅卡片位置尺寸查询请求。缺省时，表示注销所有实时卡片的运行状态查询事件回调。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 202 | The application is not a system application. |
+
+**示例：**
+
+```ts
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formHost.off('getLiveFormStatus', (): Record<string, string> => {
+    // 卡片使用方需要对查询请求进行处理，计算并返回状态信息
+    return { "status": "inactive" };
+  });
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## formHost.getAllTemplateFormsInfo<sup>23+</sup>
 
 getAllTemplateFormsInfo(): Promise&lt;Array&lt;formInfo.FormInfo&gt;&gt;
