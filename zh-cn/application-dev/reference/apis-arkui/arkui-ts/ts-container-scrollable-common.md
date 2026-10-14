@@ -1718,4 +1718,10 @@ struct Index {
 }
 ```
 
-![enableScrollWithMouse](figures/enableScrollWithMouse.gif)
+API版本26.2.0之前，enableScrollWithMouse属性的默认值为false，效果图如下：
+
+![enableScrollWithMouse_before](figures/enableScrollWithMouse_before.gif)
+
+从API版本26.2.0开始，当可滚动组件水平滚动时，enableScrollWithMouse属性的默认值为true，否则为false，效果图如下：
+
+![enableScrollWithMouse_after](figures/enableScrollWithMouse_after.gif)
