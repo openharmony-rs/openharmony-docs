@@ -715,9 +715,18 @@ enableEditMode(enabled: boolean | undefined)
 
 scrollSnapStrategy(strategy?: ScrollSnapAlign | ScrollSnapOffsetProvider)
 
-设置Grid的限位滚动策略，惯性滚动结束后自动吸附对齐到指定位置，使用方法可以参考[示例23](#示例23设置滚动吸附对齐)。限位滚动分为两个阶段：先按惯性自然滚动到趋近位置，再通过限位动画滚动到最终吸附位置。
+设置Grid的限位滚动策略。设置后，惯性滚动结束时Grid不会直接停在松手后的自然停止位置，而是自动吸附对齐到指定位置。使用方法可以参考[示例23](#示例23设置滚动吸附对齐)。
 
-START、CENTER、END分别将item对齐到滚动轴方向视口的起始、中间和末尾位置。自定义提供方（即实现[ScrollSnapOffsetProvider](ts-container-scrollable-common.md#scrollsnapoffsetprovider)接口的对象）通过[calculateApproachOffset](ts-container-scrollable-common.md#calculateapproachoffset)计算趋近距离，通过[calculateSnapOffset](ts-container-scrollable-common.md#calculatesnapoffset)计算最终位置。设置为NONE或undefined时清除策略，恢复默认滚动行为。存在跨行跨列（不规则）节点的布局不支持限位滚动。吸附目标受合法滚动范围限制。
+限位滚动分两步进行：先按惯性自然滚动一段距离，到达趋近位置后，再通过一段限位动画平滑滚动到最终吸附位置。
+
+- 传入[ScrollSnapAlign](ts-container-list.md#scrollsnapalign10枚举说明)枚举时，按内置方式对齐：START、CENTER、END分别将item对齐到滚动方向视口的起始、中间和末尾位置。
+- 传入自定义提供方（即实现[ScrollSnapOffsetProvider](ts-container-scrollable-common.md#scrollsnapoffsetprovider)接口的对象）时，滚动行为由开发者决定：[calculateApproachOffset](ts-container-scrollable-common.md#calculateapproachoffset)决定惯性阶段滚动多远，[calculateSnapOffset](ts-container-scrollable-common.md#calculatesnapoffset)决定最终停在哪里。
+- 传入NONE或undefined时清除限位策略，Grid恢复默认滚动行为。
+
+> **说明：**
+>
+> - 存在跨行跨列（不规则）节点的布局不支持限位滚动。
+> - 最终吸附位置始终在合法滚动范围内。
 
 **起始版本：** 26.2.0
 
@@ -731,7 +740,7 @@ START、CENTER、END分别将item对齐到滚动轴方向视口的起始、中�
 
 | 参数名 | 类型   | 必填 | 说明                                 |
 | ------ | ------ | ---- | ------------------------------------ |
-| strategy  | [ScrollSnapAlign](ts-container-list.md#scrollsnapalign10枚举说明) \| [ScrollSnapOffsetProvider](ts-container-scrollable-common.md#scrollsnapoffsetprovider) | 否   | 内置对齐策略或自定义提供方（实现[ScrollSnapOffsetProvider](ts-container-scrollable-common.md#scrollsnapoffsetprovider)接口的对象）。<br/>未设置时，不启用限位滚动，保持默认滚动行为。 |
+| strategy  | [ScrollSnapAlign](ts-container-list.md#scrollsnapalign10枚举说明) \| [ScrollSnapOffsetProvider](ts-container-scrollable-common.md#scrollsnapoffsetprovider) | 否   | 限位滚动策略，可传入内置对齐枚举或自定义提供方（实现[ScrollSnapOffsetProvider](ts-container-scrollable-common.md#scrollsnapoffsetprovider)接口的对象）。<br/>不设置或传入undefined时，不启用限位滚动，Grid保持默认滚动行为。 |
 
 ## GridItemAlignment<sup>12+</sup>枚举说明
 
@@ -3625,7 +3634,7 @@ struct GridOnMoveExample {
 
 ### 示例23（设置滚动吸附对齐）
 
-该示例通过[scrollSnapStrategy](#scrollsnapstrategy)接口，实现了Grid组件设置限位滚动策略，惯性滚动结束后item对齐到视口中间位置。
+该示例通过[scrollSnapStrategy](#scrollsnapstrategy)接口设置Grid的限位滚动策略，惯性滚动结束后item自动对齐到视口中间位置。
 
 从API版本26.2.0开始，新增scrollSnapStrategy接口。
 
