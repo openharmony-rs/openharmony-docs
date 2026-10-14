@@ -1412,14 +1412,14 @@ type OnVisibleIndexesChangeCallback = (start: number, end: number) => void
 
 ## ScrollSnapOffsetProvider
 
-提供可滚动组件两阶段滚动限位偏移量。偏移量单位为vp，速度单位为vp/s。回调在UI线程同步调用，且必须是纯计算，不能触发布局或状态更新。不提供布局快照，自定义提供方需要自行维护或推导item几何信息。
+提供可滚动组件限位滚动的偏移量。自定义提供方是实现了本接口的对象，通过两个回调分别参与限位滚动的两个阶段：calculateApproachOffset计算趋近阶段的滚动距离，calculateSnapOffset计算最终限位位置的偏移量。偏移量单位为vp，速度单位为vp/s。回调在UI线程同步调用，且必须是纯计算，不能触发布局或状态更新。不提供布局快照，自定义提供方需要自行维护或推导item几何信息。
 
 当前仅[Grid](ts-container-grid.md)组件的[scrollSnapStrategy](ts-container-grid.md#scrollsnapstrategy)属性支持传入自定义提供方。
 
 > **说明：**
 >
-> - velocity为逻辑内容滚动偏移量对时间的导数，向内容末端为正；组件负责归一化反向布局和RTL方向。
-> - decayOffset为自然摩擦衰减距离的非负幅值。
+> - velocity为当前滚动速度，向内容末端为正方向；组件负责归一化反向布局和RTL方向。
+> - decayOffset为自然摩擦衰减距离，为非负数值。
 
 **起始版本：** 26.2.0
 
@@ -1450,13 +1450,13 @@ calculateApproachOffset(velocity: number, decayOffset: number): number
 | 参数名   | 类型                            | 必填   | 说明                   |
 | ---- | ----------------------------- | ---- | -------------------- |
 | velocity | number | 是    | 当前惯性滚动速度，向内容末端为正。<br/>单位：vp/s |
-| decayOffset | number | 是    | 自然摩擦衰减距离的非负幅值。<br/>单位：vp<br/>取值范围：[0, +∞) |
+| decayOffset | number | 是    | 自然摩擦衰减距离，为非负数值。<br/>单位：vp<br/>取值范围：[0, +∞) |
 
 **返回值：**
 
 | 类型    | 说明       |
 | ------- | ---------- |
-| number  | 趋近偏移量大小，非负有限距离幅值，可以大于或等于decayOffset。<br/>单位：vp<br/>取值范围：[0, +∞) |
+| number  | 趋近偏移量的大小，为非负有限数值，可以大于或等于decayOffset。<br/>单位：vp<br/>取值范围：[0, +∞) |
 
 ### calculateSnapOffset
 

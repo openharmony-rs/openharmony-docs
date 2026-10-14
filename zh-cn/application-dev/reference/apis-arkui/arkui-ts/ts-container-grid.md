@@ -715,9 +715,9 @@ enableEditMode(enabled: boolean | undefined)
 
 scrollSnapStrategy(strategy?: ScrollSnapAlign | ScrollSnapOffsetProvider)
 
-设置Grid的两阶段滚动吸附策略，使用方法可以参考[示例23](#示例23设置滚动吸附对齐)。
+设置Grid的限位滚动策略，惯性滚动结束后自动吸附对齐到指定位置，使用方法可以参考[示例23](#示例23设置滚动吸附对齐)。限位滚动分为两个阶段：先按惯性自然滚动到趋近位置，再通过限位动画滚动到最终吸附位置。
 
-START、CENTER、END分别将item对齐到滚动轴方向视口的起始、中间和末尾位置。自定义提供方通过[calculateApproachOffset](ts-container-scrollable-common.md#calculateapproachoffset)计算趋近距离，通过[calculateSnapOffset](ts-container-scrollable-common.md#calculatesnapoffset)计算最终目标。设置为NONE或undefined时清除策略，恢复默认滚动行为。不支持的布局不启用吸附，吸附目标受合法滚动范围限制。
+START、CENTER、END分别将item对齐到滚动轴方向视口的起始、中间和末尾位置。自定义提供方（即实现[ScrollSnapOffsetProvider](ts-container-scrollable-common.md#scrollsnapoffsetprovider)接口的对象）通过[calculateApproachOffset](ts-container-scrollable-common.md#calculateapproachoffset)计算趋近距离，通过[calculateSnapOffset](ts-container-scrollable-common.md#calculatesnapoffset)计算最终位置。设置为NONE或undefined时清除策略，恢复默认滚动行为。存在跨行跨列（不规则）节点的布局不支持限位滚动。吸附目标受合法滚动范围限制。
 
 **起始版本：** 26.2.0
 
@@ -731,7 +731,7 @@ START、CENTER、END分别将item对齐到滚动轴方向视口的起始、中�
 
 | 参数名 | 类型   | 必填 | 说明                                 |
 | ------ | ------ | ---- | ------------------------------------ |
-| strategy  | [ScrollSnapAlign](ts-container-list.md#scrollsnapalign10枚举说明) \| [ScrollSnapOffsetProvider](ts-container-scrollable-common.md#scrollsnapoffsetprovider) | 否   | 内置对齐策略或自定义提供方。<br/>未设置时，不启用滚动吸附，保持默认滚动行为。 |
+| strategy  | [ScrollSnapAlign](ts-container-list.md#scrollsnapalign10枚举说明) \| [ScrollSnapOffsetProvider](ts-container-scrollable-common.md#scrollsnapoffsetprovider) | 否   | 内置对齐策略或自定义提供方（实现[ScrollSnapOffsetProvider](ts-container-scrollable-common.md#scrollsnapoffsetprovider)接口的对象）。<br/>未设置时，不启用限位滚动，保持默认滚动行为。 |
 
 ## GridItemAlignment<sup>12+</sup>枚举说明
 
@@ -3625,7 +3625,7 @@ struct GridOnMoveExample {
 
 ### 示例23（设置滚动吸附对齐）
 
-该示例通过[scrollSnapStrategy](#scrollsnapstrategy)接口，实现了Grid组件设置两阶段滚动吸附策略，惯性滚动结束后item对齐到视口中间位置。
+该示例通过[scrollSnapStrategy](#scrollsnapstrategy)接口，实现了Grid组件设置限位滚动策略，惯性滚动结束后item对齐到视口中间位置。
 
 从API版本26.2.0开始，新增scrollSnapStrategy接口。
 
