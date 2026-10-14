@@ -1,3 +1,11 @@
+---
+kits: ["AVCodec Kit / 音视频编解码服务"]
+description: "介绍异步模式视频解码的核心流程与状态机调用关系，覆盖Surface与Buffer两种输出模式，将H.264、H.265等码流解码为原始图像数据，适用于视频播放、实时预览及视频编辑场景。"
+keywords: [视频解码, 异步模式, Surface模式, Buffer模式, OH_VideoDecoder, 状态机, H.264, H.265, YUV]
+doctype: guide
+status: active
+---
+
 # 异步模式视频解码
 
 <!--Kit: AVCodec Kit-->

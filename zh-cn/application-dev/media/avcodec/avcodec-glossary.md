@@ -1,3 +1,11 @@
+---
+kits: ["AVCodec Kit / 音视频编解码服务"]
+description: "汇总AVCodec Kit开发中的常用术语，涵盖I/P/B帧、GOP、码控模式、参考帧、Surface模式、Annex B等音视频编解码概念，帮助开发者快速理解指南文档与API的含义。"
+keywords: [术语, 帧类型, GOP, 码控模式, 参考帧, Surface模式, Annex B, 码率, 分辨率]
+doctype: glossary
+status: active
+---
+
 # AVCodec Kit术语
 
 <!--Kit: AVCodec Kit-->

@@ -1,3 +1,11 @@
+---
+kits: ["AVCodec Kit / 音视频编解码服务"]
+description: "介绍将编码后的音视频数据按mp4、m4a、flv等格式封装为媒体文件的开发流程，支持音视频轨添加、封面与文件级元数据设置，适用于录像录音、编辑导出与转码保存场景。"
+keywords: [媒体数据封装, 封装器, OH_AVMuxer, mp4, m4a, flv, 音视频轨, 封面, 文件元数据]
+doctype: guide
+status: active
+---
+
 # 媒体数据封装
 
 <!--Kit: AVCodec Kit-->
