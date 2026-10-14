@@ -33,7 +33,7 @@ Enumerates the bundle flags, which indicate the type of bundle information to ob
 | GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY        | 0x00000008 | Used to obtain the bundle information with ExtensionAbility information. The obtained information does not contain information about the signature, application, ability, or permission. It must be used together with **GET_BUNDLE_INFO_WITH_HAP_MODULE**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION     | 0x00000010 | Used to obtain the bundle information with permission information. The obtained information does not contain information about the signature, application, HAP module, ability, or ExtensionAbility.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | GET_BUNDLE_INFO_WITH_METADATA                 | 0x00000020 | Used to obtain the metadata contained in the application, module, ability, or ExtensionAbility information. It must be used together with **GET_BUNDLE_INFO_WITH_APPLICATION**, **GET_BUNDLE_INFO_WITH_HAP_MODULE**, **GET_BUNDLE_INFO_WITH_ABILITY**, and **GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY**.<br>- To obtain the metadata contained in the application information, it must be used together with **GET_BUNDLE_INFO_WITH_APPLICATION**.<br>- To obtain the metadata contained in the module information, it must be used together with **GET_BUNDLE_INFO_WITH_HAP_MODULE**.<br>- To obtain the metadata contained in the ability information, it must be used together with **GET_BUNDLE_INFO_WITH_HAP_MODULE** and **GET_BUNDLE_INFO_WITH_ABILITY**.<br>- To obtain the metadata contained in the ExtensionAbility information, it must be used together with **GET_BUNDLE_INFO_WITH_HAP_MODULE** and **GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| GET_BUNDLE_INFO_WITH_DISABLE                  | 0x00000040 | Used to obtain the information about disabled bundles and abilities of a bundle. The obtained information does not contain information about the signature, application, HAP module, ability, ExtensionAbility, or permission.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| GET_BUNDLE_INFO_WITH_DISABLE                  | 0x00000040 | Used to obtain the information about disabled bundles and abilities of a bundle. The obtained information does not contain information about the signature, application, HAP module, ExtensionAbility, or permission.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | GET_BUNDLE_INFO_WITH_SIGNATURE_INFO           | 0x00000080 | Used to obtain the bundle information with signature information. The obtained information does not contain information about the application, HAP module, ability, ExtensionAbility, or permission.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | GET_BUNDLE_INFO_WITH_MENU<sup>11+</sup>       | 0x00000100 | Used to obtain the bundle information with the file context menu configuration. It must be used together with **GET_BUNDLE_INFO_WITH_HAP_MODULE**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | GET_BUNDLE_INFO_WITH_ROUTER_MAP<sup>12+</sup> | 0x00000200 | Used to obtain the bundle information with the router map. It must be used together with **GET_BUNDLE_INFO_WITH_HAP_MODULE**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
@@ -140,7 +140,7 @@ Enumerates the types of ability components.
 
 |  Name  | Value  |                            Description                           |
 | :-----: | ---- | :--------------------------------------------------------: |
-| PAGE    | 1    | Ability that has the UI. FA developed using the Page template to provide the capability of interacting with users.       |
+| PAGE    | 1    | Ability that has the UI. FA(Feature Ability) developed using the Page template to provide the capability of interacting with users.       |
 | SERVICE | 2    | Ability of the background service type, without a UI. It represents a [ParticleAbility](js-apis-ability-particleAbility.md) developed based on the Service template, used to provide the capability of running background tasks, such as background download or music playback.  |
 |  DATA   | 3    | It represents a [ParticleAbility](js-apis-ability-particleAbility.md) developed based on the Data template, used to provide a unified data access object to the outside. |
 
@@ -1298,6 +1298,7 @@ import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
+// Replace uid with the UID of the corresponding application.
 let uid = 20010005;
 try {
   bundleManager.getBundleNameByUid(uid, (err, data) => {
@@ -1355,6 +1356,7 @@ import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
+// Replace uid with the UID of the corresponding application.
 let uid = 20010005;
 try {
   bundleManager.getBundleNameByUid(uid).then((data) => {
@@ -1410,6 +1412,7 @@ import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
+// Replace uid with the UID of the corresponding application.
 let uid = 20010005;
 try {
   let data = bundleManager.getBundleNameByUidSync(uid);
@@ -1462,6 +1465,7 @@ import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
+// Replace uid with the UID of the corresponding application.
 let uid = 20010005;
 
 try {
@@ -1779,15 +1783,11 @@ import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-try {
-  bundleManager.getApplicationLabel('com.hap.myapplication', 1).then((data: string) => {
-    hilog.info(0x0000, 'testTag', 'getApplicationLabel succeed: Data: %{public}s', data);
-  }).catch((err: BusinessError) => {
-    hilog.error(0x0000, 'testTag', 'getApplicationLabel failed: %{public}d  %{public}s', err.code, err.message);
-  });
-} catch (err) {
-  hilog.error(0x0000, 'testTag', 'getApplicationLabel failed: error %{public}d  %{public}s', err.code, err.message);
-}
+bundleManager.getApplicationLabel('com.hap.myapplication', 1).then((data: string) => {
+  hilog.info(0x0000, 'testTag', 'getApplicationLabel succeed: Data: %{public}s', data);
+}).catch((err: BusinessError) => {
+  hilog.error(0x0000, 'testTag', 'getApplicationLabel failed: %{public}d  %{public}s', err.code, err.message);
+});
 ```
 
 ## bundleManager.getInstalledBundleList
@@ -1979,6 +1979,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message |
 | -------- | -------- |
 | 201 | Permission denied. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 
 **Example**
 
@@ -2239,9 +2240,9 @@ Skill information.
 | ------------------------------------------------------------ | -------------- |
 | [_Skill.Skill](js-apis-bundleManager-skill.md#skill-1) |Skill information. |
 
-## SkillUrl<sup>12+</sup>
+## SkillUri<sup>12+</sup>
 
-type SkillUrl = _Skill.SkillUri
+type SkillUri = _Skill.SkillUri
 
 Defines the SkillUri information.
 
@@ -2253,7 +2254,7 @@ Defines the SkillUri information.
 | ------------------------------------------------------------ | -------------- |
 | [_Skill.SkillUri](js-apis-bundleManager-skill.md#skilluri) |SkillUri information.|
 
-## AppCloneIdentity<sup>15+</sup>
+## AppCloneIdentity<sup>14+</sup>
 
 type AppCloneIdentity = _BundleInfo.AppCloneIdentity
 

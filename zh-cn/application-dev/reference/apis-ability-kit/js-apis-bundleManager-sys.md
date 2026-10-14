@@ -4392,7 +4392,7 @@ queryExtensionAbilityInfoSync(want: Want, extensionAbilityType: string, extensio
 | 参数名                | 类型                            | 必填 | 说明                                                      |
 | --------------------- | ------------------------------- | ---- | --------------------------------------------------------- |
 | want                  | [Want](js-apis-app-ability-want.md)      | 是   | 表示包含要查询的应用Bundle名称的Want。                    |
-| extensionAbilityType  | string                          | 是   | 表示自定义extensionAbility的类型。                        |
+| extensionAbilityType  | string                          | 是   | 表示自定义extensionAbility的类型，取值为module.json5中配置的自定义extensionAbility类型名称。                        |
 | extensionAbilityFlags | number| 是   | 表示返回的ExtensionAbilityInfo对象中需要包含的信息标志，具体取值及不同含义参考[ExtensionAbilityFlag](#extensionabilityflag)。 |
 | userId                | number                          | 否   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。 |
 
@@ -4842,7 +4842,7 @@ queryExtensionAbilityInfoSync(extensionAbilityType: string, extensionAbilityFlag
 
 | 参数名                | 类型                            | 必填 | 说明                                                      |
 | --------------------- | ------------------------------- | ---- | --------------------------------------------------------- |
-| extensionAbilityType  | string                          | 是   | 表示自定义extensionAbility的类型。                        |
+| extensionAbilityType  | string                          | 是   | 表示自定义extensionAbility的类型，取值为module.json5中配置的自定义extensionAbility类型名称。                        |
 | extensionAbilityFlags | number| 是   | 表示返回的ExtensionAbilityInfo对象中需要包含的信息标志，具体取值及不同含义参考[ExtensionAbilityFlag](#extensionabilityflag)。 |
 | userId                | number                          | 否   | 表示用户ID，可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户ID。取值范围：大于等于0。 |
 
@@ -6187,7 +6187,7 @@ getAllDynamicIconInfo(userId?: number): Promise\<Array\<DynamicIconInfo>>
 
 **系统接口：** 此接口为系统接口。
 
-**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED and ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED 或 (ohos.permission.GET_BUNDLE_INFO_PRIVILEGED 和 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS)
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 

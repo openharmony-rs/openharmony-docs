@@ -32,7 +32,7 @@ import { bundleManager } from '@kit.AbilityKit';
 | GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY        | 0x00000008 | 用于获取包含extensionAbility的bundleInfo，获取的bundleInfo不包含signatureInfo、applicationInfo、ability 和permission的信息。单独使用不生效，需要与GET_BUNDLE_INFO_WITH_HAP_MODULE一起使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | GET_BUNDLE_INFO_WITH_REQUESTED_PERMISSION     | 0x00000010 | 用于获取包含permission的bundleInfo。获取的bundleInfo不包含signatureInfo、applicationInfo、hapModuleInfo、extensionAbility和ability的信息。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | GET_BUNDLE_INFO_WITH_METADATA                 | 0x00000020 | 用于获取applicationInfo、moduleInfo、abilityInfo和extensionAbilityInfo中包含的metadata。单独使用不生效，它需要与GET_BUNDLE_INFO_WITH_APPLICATION、GET_BUNDLE_INFO_WITH_HAP_MODULE、GET_BUNDLE_INFO_WITH_ABILITY、GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY配合使用，其中：<br/>-&nbsp;获取applicationInfo中包含的metadata，需要与GET_BUNDLE_INFO_WITH_APPLICATION一起使用。<br/>-&nbsp;获取moduleInfo中包含的metadata，需要与GET_BUNDLE_INFO_WITH_HAP_MODULE一起使用。<br/>-&nbsp;获取abilityInfo中包含的metadata，需要与GET_BUNDLE_INFO_WITH_HAP_MODULE、GET_BUNDLE_INFO_WITH_ABILITY一起使用。<br/>-&nbsp;获取extensionAbilityInfo中包含的metadata，需要与GET_BUNDLE_INFO_WITH_HAP_MODULE、GET_BUNDLE_INFO_WITH_EXTENSION_ABILITY一起使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| GET_BUNDLE_INFO_WITH_DISABLE                  | 0x00000040 | 用于获取application被禁用的BundleInfo和被禁用的Ability信息。获取的bundleInfo不包含signatureInfo、applicationInfo、hapModuleInfo、ability、extensionAbility和permission的信息。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| GET_BUNDLE_INFO_WITH_DISABLE                  | 0x00000040 | 用于获取application被禁用的BundleInfo和被禁用的Ability信息。获取的bundleInfo不包含signatureInfo、applicationInfo、hapModuleInfo、extensionAbility和permission的信息。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | GET_BUNDLE_INFO_WITH_SIGNATURE_INFO           | 0x00000080 | 用于获取包含signatureInfo的bundleInfo。获取的bundleInfo不包含applicationInfo、hapModuleInfo、extensionAbility、ability和permission的信息。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | GET_BUNDLE_INFO_WITH_MENU<sup>11+</sup>       | 0x00000100 | 用于获取包含fileContextMenuConfig的bundleInfo。单独使用不生效，需要与GET_BUNDLE_INFO_WITH_HAP_MODULE一起使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | GET_BUNDLE_INFO_WITH_ROUTER_MAP<sup>12+</sup> | 0x00000200 | 用于获取包含routerMap的bundleInfo。单独使用不生效，需要与GET_BUNDLE_INFO_WITH_HAP_MODULE一起使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
@@ -140,7 +140,7 @@ import { bundleManager } from '@kit.AbilityKit';
 
 |  名称   | 值   |                            说明                            |
 | :-----: | ---- | :--------------------------------------------------------: |
-| PAGE    | 1    | UI界面类型的Ability。表示基于Page模板开发的FA模型，用于提供与用户交互的能力。        |
+| PAGE    | 1    | UI界面类型的Ability。表示基于Page模板开发的FA（Feature Ability）模型，用于提供与用户交互的能力。        |
 | SERVICE | 2    | 后台服务类型的Ability，无UI界面。表示基于Service模板开发的[ParticleAbility](js-apis-ability-particleAbility.md)，用于提供后台运行任务的能力，例如后台下载或者播放音乐。  |
 |  DATA   | 3    | 表示基于Data模板开发的[ParticleAbility](js-apis-ability-particleAbility.md)，用于对外部提供统一的数据访问对象。 |
 
@@ -1298,6 +1298,7 @@ import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
+// uid需要替换为实际应用对应的UID
 let uid = 20010005;
 try {
   bundleManager.getBundleNameByUid(uid, (err, data) => {
@@ -1355,6 +1356,7 @@ import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
+// uid需要替换为实际应用对应的UID
 let uid = 20010005;
 try {
   bundleManager.getBundleNameByUid(uid).then((data) => {
@@ -1410,6 +1412,7 @@ import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
+// uid需要替换为实际应用对应的UID
 let uid = 20010005;
 try {
   let data = bundleManager.getBundleNameByUidSync(uid);
@@ -1462,6 +1465,7 @@ import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
+// uid需要替换为实际应用对应的UID
 let uid = 20010005;
 
 try {
@@ -1779,15 +1783,11 @@ import { bundleManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
-try {
-  bundleManager.getApplicationLabel('com.hap.myapplication', 1).then((data: string) => {
-    hilog.info(0x0000, 'testTag', 'getApplicationLabel succeed: Data: %{public}s', data);
-  }).catch((err: BusinessError) => {
-    hilog.error(0x0000, 'testTag', 'getApplicationLabel failed: %{public}d  %{public}s', err.code, err.message);
-  });
-} catch (err) {
-  hilog.error(0x0000, 'testTag', 'getApplicationLabel failed: error %{public}d  %{public}s', err.code, err.message);
-}
+bundleManager.getApplicationLabel('com.hap.myapplication', 1).then((data: string) => {
+  hilog.info(0x0000, 'testTag', 'getApplicationLabel succeed: Data: %{public}s', data);
+}).catch((err: BusinessError) => {
+  hilog.error(0x0000, 'testTag', 'getApplicationLabel failed: %{public}d  %{public}s', err.code, err.message);
+});
 ```
 
 ## bundleManager.getInstalledBundleList
@@ -1979,6 +1979,7 @@ getBundleInstallStatus(bundleName: string): BundleInstallStatus
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 201 | Permission denied. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 
 **示例：**
 
@@ -2239,9 +2240,9 @@ Skill信息。
 | ------------------------------------------------------------ | -------------- |
 | [_Skill.Skill](js-apis-bundleManager-skill.md#skill-1) |Skill信息。 |
 
-## SkillUrl<sup>12+</sup>
+## SkillUri<sup>12+</sup>
 
-type SkillUrl = _Skill.SkillUri
+type SkillUri = _Skill.SkillUri
 
 SkillUri信息。
 
@@ -2253,7 +2254,7 @@ SkillUri信息。
 | ------------------------------------------------------------ | -------------- |
 | [_Skill.SkillUri](js-apis-bundleManager-skill.md#skilluri) |SkillUri信息。 |
 
-## AppCloneIdentity<sup>15+</sup>
+## AppCloneIdentity<sup>14+</sup>
 
 type AppCloneIdentity = _BundleInfo.AppCloneIdentity
 
