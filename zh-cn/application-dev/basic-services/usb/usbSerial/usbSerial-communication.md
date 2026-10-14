@@ -49,7 +49,6 @@ USB串口通信服务中通过Host设备的USB接口连接串口设备的串口�
    // 导入serialManager模块
    import { serialManager, BusinessError } from '@kit.BasicServicesKit';
    import { buffer, JSON } from '@kit.ArkTS';
-   
    ```
 
    ArkTS-Sta示例：
@@ -64,7 +63,6 @@ USB串口通信服务中通过Host设备的USB接口连接串口设备的串口�
    import serialManager from '@ohos.usbManager.serial';
    import { BusinessError } from '@ohos.base';
    import { buffer } from '@kit.ArkTS';
-   
    ```
 
 2. 获取设备列表。

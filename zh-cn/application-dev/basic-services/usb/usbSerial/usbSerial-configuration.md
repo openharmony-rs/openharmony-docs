@@ -65,7 +65,6 @@ USB串口配置管理中，波特率、数据位、校验位和停止位是串�
    // 导入serialManager模块
    import { serialManager, BusinessError } from '@kit.BasicServicesKit';
    import { buffer, JSON } from '@kit.ArkTS';
-   
    ```
    
    ArkTS-Sta示例：
@@ -80,7 +79,6 @@ USB串口配置管理中，波特率、数据位、校验位和停止位是串�
    import serialManager from '@ohos.usbManager.serial';
    import { BusinessError } from '@ohos.base';
    import { buffer } from '@kit.ArkTS';
-   
    ```
 
 2. 获取设备列表。

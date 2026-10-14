@@ -77,7 +77,6 @@
    import hilog from '@ohos.hilog'
    import usbManager from '@ohos.usbManager';
    import { BusinessError } from '@ohos.base';
-   
    ```
 
 2. 获取设备列表。

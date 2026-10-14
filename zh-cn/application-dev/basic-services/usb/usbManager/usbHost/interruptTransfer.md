@@ -443,7 +443,6 @@
      this.logInfo_ += '\n[ERROR] USB claimInterface failed: code=' + errorObj.code + ', message=' + errorObj.message;
      return;
    }
-   
    ```
 
    ArkTS-Sta示例：   
@@ -469,7 +468,6 @@
      this.logInfo_ += '\n[ERROR] USB claimInterface failed: code=' + errorObj.code + ', message=' + errorObj.message;
      return;
    }
-   
    ```
 
 6. 传输数据。
