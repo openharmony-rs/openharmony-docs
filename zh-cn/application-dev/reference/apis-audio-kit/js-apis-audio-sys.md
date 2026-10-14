@@ -5099,36 +5099,18 @@ audioRecordingManager.offSystemRecordControllerEnabledChange();
 | highQualityRecordingSupported<sup>21+</sup>    | boolean                     | 是   | 是 | 是否支持高品质录音。true表示支持，false表示不支持。<br> **系统能力：** SystemCapability.Multimedia.Audio.Core<br>**ArkTS-Dyn起始版本：** 21<br>**ArkTS-Sta起始版本：** 23|
 | dmDeviceInfo<sup>23+</sup>    | string                     | 是   | 是 | 分布式设备扩展信息，包括设备是否支持立体声、设备序列号等。<br> **模型约束：** 此接口仅可在Stage模型下使用。<br> **系统能力：** SystemCapability.Multimedia.Audio.Core<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23|
 
-## AudioRendererFilter<sup>9+</sup>
+## AudioRendererFilter
 
 音频渲染器过滤条件。
 
 **系统接口：** 此接口为系统接口。
 
-**ArkTS-Dyn起始版本：** 9
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称          | 类型                                     | 只读 | 可选 | 说明          |
 | -------------| ---------------------------------------- | ---- |---| -------------- |
-| uid          | ArkTS-Dyn: number<br>ArkTS-Sta: int                                   |  否  | 是 | 表示应用ID。<br> **系统能力：** SystemCapability.Multimedia.Audio.Core|
-| rendererInfo | [AudioRendererInfo](arkts-apis-audio-i.md#audiorendererinfo8) |  否  | 是 | 表示渲染器信息。<br> **系统能力：** SystemCapability.Multimedia.Audio.Renderer|
-| rendererId   | ArkTS-Dyn: number<br>ArkTS-Sta: int                                   |  否  | 是 | 音频流唯一id。<br> **系统能力：** SystemCapability.Multimedia.Audio.Renderer|
-
-**示例：**
-
-```ts
-import { audio } from '@kit.AudioKit';
-
-let outputAudioRendererFilter: audio.AudioRendererFilter = {
-  uid : 20010041,
-  rendererInfo : {
-    usage : audio.StreamUsage.STREAM_USAGE_MUSIC,
-    rendererFlags : 0
-  },
-  rendererId : 0
-};
-```
+| uid          | ArkTS-Dyn: number<br>ArkTS-Sta: int                                   |  否  | 是 | 表示应用ID。**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23<br> **系统能力：** SystemCapability.Multimedia.Audio.Core|
+| rendererInfo | [AudioRendererInfo](arkts-apis-audio-i.md#audiorendererinfo8) |  否  | 是 | 表示渲染器信息。**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23<br> **系统能力：** SystemCapability.Multimedia.Audio.Renderer|
+| rendererId   | ArkTS-Dyn: number<br>ArkTS-Sta: int                                   |  否  | 是 | 音频流唯一id。**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23<br> **系统能力：** SystemCapability.Multimedia.Audio.Renderer|
+| blockFirstOverrode   | boolean |  否  | 是 | 保持首次设备选择不被清除。默认值：false。**ArkTS-Dyn起始版本：** 26.0.1<br>**ArkTS-Sta起始版本：** 26.0.1<br> **系统能力：** SystemCapability.Multimedia.Audio.Renderer|
 
 ## AudioCapturerFilter<sup>18+</sup>
 
