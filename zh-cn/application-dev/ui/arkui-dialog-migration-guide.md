@@ -32,9 +32,7 @@
 | [DialogButtonOrientation](../reference/apis-arkui/js-apis-dialog.md#dialogbuttonorientation) | 按钮排列方向枚举（AUTO/HORIZONTAL/VERTICAL）。 |
 | [DialogState](../reference/apis-arkui/js-apis-dialog.md#dialogstate) | 弹窗状态枚举（UNINITIALIZED~DISAPPEARED），通过 `DialogBaseController.getState()` 查询。 |
 
-## 新老接口差异
-
-### 差异总览
+## Dialog新老接口差异
 
 新老接口在“属性”和“使用方式”两个维度存在一定差异，详见下方对应小节：
 
@@ -1342,9 +1340,9 @@ struct Index {
 
 ![新接口示例图](figures/CustomDialogNewInterface.gif)
 
-## 典型场景适配指导
+## 典型场景迁移指导
 
-### 全局自定义弹出框
+### 全局自定义弹出框迁移
 
 **迁移前示例（老接口）：**
 
@@ -1509,7 +1507,7 @@ export struct OpenDialogAndUpdate {
 ![全局自定义弹出框](figures/GlobalDialogBasePresenter.gif)
 
 
-### 页面级弹出框
+### 页面级弹出框迁移
 
 **迁移前示例（老接口）：**
 
