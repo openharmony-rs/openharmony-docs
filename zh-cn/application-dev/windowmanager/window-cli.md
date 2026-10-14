@@ -133,7 +133,7 @@ ohos-window list-windows [options]
 | 字段名 | 说明 |
 |--------|------|
 | rect | 窗口尺寸大小。|
-| zOrder | 窗口层级。|
+| zOrder | 窗口层级，值越大代表层级越高。|
 
 - **metaInfo**
 
