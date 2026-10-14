@@ -36,7 +36,7 @@
   - [@ohos.nearlink.advertising (星闪广播能力)](js-apis-nearlink-advertising.md)
   - [@ohos.nearlink.scan (星闪扫描能力)](js-apis-nearlink-scan.md)
   - [@ohos.nearlink.ssap (星闪SSAP连接能力)](js-apis-nearlink-ssap.md)
-  - [@ohos.nearlink.dataTransfer (星闪数传能力)](js-apis-nearlink-data-transfer-api.md)
+  - [@ohos.nearlink.dataTransfer (星闪数据传输能力)](js-apis-nearlink-data-transfer-api.md)
   - [@ohos.nearlink.cdsm (星闪合作设备集合管理能力)](js-apis-nearlink-cdsm.md)
   - [@ohos.nearlink.constant (星闪公共常量定义)](js-apis-nearlink-constant.md)
   <!--Del-->
@@ -75,6 +75,8 @@
   - 头文件<!--connectivity-headerfile-->
     - [oh_bluetooth.h](capi-oh-bluetooth-h.md)
     - [oh_wifi.h](capi-oh-wifi-h.md)
+  - 结构体<!--connectivity-struct-->
+       - [OH_WifiLinkedInfo](capi-wifi-oh-wifilinkedinfo.md)
 - 错误码<!--connectivity-arkts-errcode-->
   - [蓝牙服务子系统错误码](errorcode-bluetoothManager.md)
   - [Wi-Fi错误码](errorcode-wifi.md)

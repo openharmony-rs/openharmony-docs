@@ -2,7 +2,7 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
@@ -20,7 +20,7 @@ NotificationCommonDef中定义了通知相关接口中使用的通用数据结�
 
 | 名称   | 类型   | 只读 | 可选 | 说明   |
 | ------ | ------ | ----| -- |  ------ |
-| bundle | string | 否  | 否 | 应用的包名。 |
+| bundle | string | 否  | 否 | 应用的包名。字符串长度不超过202字节，超出部分会被截断。 |
 | uid    | number | 否  | 是 | 应用的UID。从[ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1)获取，默认为0。 应用分身<!--Del-->或车机<!--DelEnd-->场景下，此参数为必填项。|
 
 ## GrantedBundleInfo<sup>22+</sup>

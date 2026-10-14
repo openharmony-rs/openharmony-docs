@@ -5,7 +5,7 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=3efb4ba336409dd0731ba011e1e227786db57fa2 translatedAt=2026-07-22T02:06:55.606Z pushedAt=2026-07-23T11:21:33.828Z -->
+<!-- md-trans-meta sourceCommit=59c43aed2026bf661a322032daecc86d61224e0f translatedAt=2026-09-21T11:16:28.923Z pushedAt=2026-09-23T09:07:19.840Z -->
 
 To enable a variable to be initialized only once from an external source without accepting subsequent synchronization changes, you can use the [\@Once](../../reference/apis-arkui/arkui-ts/ts-state-management-once.md#once) decorator together with the \@Param decorator.
 

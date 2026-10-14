@@ -15,7 +15,7 @@ typedef struct OH_AbilityRuntime_ChildProcessInfos *OH_AbilityRuntime_ChildProce
 
 指向子进程信息集合的句柄。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **相关模块：** [ChildProcess](capi-childprocess.md)
 

@@ -5,6 +5,7 @@
 <!--Designer: @junathuawei1; @zph000-->
 <!--Tester: @lj_liujing; @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=6c1e7e2e5d533038514aef8a59f6b9dd1cac085e translatedAt=2026-09-04T03:07:18.271Z pushedAt=2026-09-09T09:11:03.685Z -->
 
 ## Overview
 
@@ -103,7 +104,7 @@ Declares the unified data types.
 | UDMF_META_TAR_ARCHIVE "general.tar-archive"                  | TAR.<br>This type belongs to **ARCHIVE**.<br>**Since**: 12   |
 | UDMF_META_ZIP_ARCHIVE "general.zip-archive"                  | ZIP.<br>This type belongs to **ARCHIVE**.<br>**Since**: 12   |
 | UDMF_META_JAVA_ARCHIVE "com.sun.java-archive"                | JAR (Java archive).<br>This type belongs to **ARCHIVE** and **EXECUTABLE**.<br>**Since**: 12|
-| UDMF_META_GNU_TAR_ARCHIVE "org.gnu.gnu-tar-archive"          | GUN archive.<br>This type belongs to **ARCHIVE**.<br>**Since**: 12   |
+| UDMF_META_GNU_TAR_ARCHIVE "org.gnu.gnu-tar-archive"          | GNU archive file type, whose ownership type is **ARCHIVE**.<br>**Since:** 12    |
 | UDMF_META_GNU_ZIP_ARCHIVE "org.gnu.gnu-zip-archive"          | GZIP archive.<br>This type belongs to **ARCHIVE**.<br>**Since**: 12  |
 | UDMF_META_GNU_ZIP_TAR_ARCHIVE "org.gnu.gnu-zip-tar-archive"  | GZIP TAR.<br>This type belongs to **ARCHIVE**.<br>**Since**: 12|
 | UDMF_META_CALENDAR "general.calendar"                        | Generic calendar type.<br>This type belongs to **OBJECT**.<br>**Since**: 12|

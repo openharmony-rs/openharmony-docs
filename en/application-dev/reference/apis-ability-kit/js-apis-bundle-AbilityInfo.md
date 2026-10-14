@@ -3,18 +3,19 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @memghaiyang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=1bd317f06f1afd85920306c4a4cf71333749080f translatedAt=2026-09-03T11:01:40.197Z pushedAt=2026-09-05T10:47:30.512Z -->
 
 The module provides information about an ability. Unless otherwise specified, the information is obtained through [bundle.getAbilityInfo](js-apis-Bundle.md#bundlegetabilityinfodeprecated).
 
 > **NOTE**
-> 
-> The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> The APIs of this module have been deprecated since API version 9. You are advised to use [bundleManager-AbilityInfo](js-apis-bundleManager-abilityInfo.md) instead.
+> The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with the superscript to indicate their earliest API version.
+>
+> Since API version 9, this module is no longer maintained. You are advised to use [bundleManager-AbilityInfo](js-apis-bundleManager-abilityInfo.md) instead.
 
-## AbilityInfo<sup>(deprecated)<sup>
+## AbilityInfo<sup>(deprecated)</sup>
 
 > **NOTE**
 >
@@ -49,5 +50,5 @@ The module provides information about an ability. Unless otherwise specified, th
 | uri                   | string                                                       | Yes  | No  | URI of the ability.<br>**Model restriction**: This API can be used only in the FA model.|
 | labelId               | number                                                       | Yes  | No  | ID of the ability label.                                           |
 | subType               | bundle.AbilitySubType                                               | Yes  | No  | Subtype of the template that can be used by the ability.<br>**Model restriction**: This API can be used only in the FA model.|
-| metaData<sup>8+</sup> | Array\<[CustomizeData](js-apis-bundle-CustomizeData.md)>     | Yes  | No  | Metadata of the ability.<br>The value is obtained by passing in GET_ABILITY_INFO_WITH_METADATA to [bundle.getAbilityInfo](js-apis-Bundle.md#bundlegetabilityinfodeprecated).|
-| enabled<sup>8+</sup>  | boolean                                                      | Yes  | No  | Whether the ability is enabled. **true** if enabled, **false** otherwise.                                           |
+| metaData<sup>8+</sup> | Array\<[CustomizeData](js-apis-bundle-CustomizeData.md)>     | Yes   | No   | Metadata of the ability.<br />Obtained by calling the [bundle.getAbilityInfo](js-apis-Bundle.md#bundlegetabilityinfodeprecated) API and passing in GET_ABILITY_INFO_WITH_METADATA. |
+| enabled<sup>8+</sup>  | boolean                                                      | Yes   | No   | Whether the ability is available. The value true indicates that the ability is available, and the value false indicates that the ability is unavailable.                                            |

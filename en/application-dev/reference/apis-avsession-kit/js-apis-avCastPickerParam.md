@@ -5,8 +5,9 @@
 <!--Designer: @ccfriend-->
 <!--Tester:@chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=3bb4c97ba607c5353ac0e05f41ee04555a22e644 translatedAt=2026-09-01T13:12:03.801Z pushedAt=2026-09-07T11:29:57.572Z -->
 
-**avCastPickerParam** provides the enumerated values for the [@ohos.multimedia.avCastPicker](ohos-multimedia-avcastpicker.md) component states.
+**avCastPickerParam** provides the enumerated parameters of the [@ohos.multimedia.avCastPicker](ohos-multimedia-avcastpicker.md) components.
 
 > **NOTE**
 >

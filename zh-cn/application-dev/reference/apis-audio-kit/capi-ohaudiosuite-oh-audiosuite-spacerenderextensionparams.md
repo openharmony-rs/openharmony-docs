@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```c
-struct OH_AudioSuite_SpaceRenderExtensionParams {...}
+struct OH_AudioSuite_SpaceRenderExtensionParams {...} OH_AudioSuite_SpaceRenderExtensionParams
 ```
 
 ## 概述

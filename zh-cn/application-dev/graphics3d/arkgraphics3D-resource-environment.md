@@ -6,9 +6,9 @@
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->
 
-环境（Environment）：环境是3D场景背景的一种描述，可以基于图片进行创建。通过将一张图片进行正方体或者球体的映射处理，将图片贴在正方体或者球体上，在3D场景中模拟真实的环境。
+环境（Environment）：用于定义3D场景背景，可基于图片创建。它将环境贴图映射到立方体或球体表面（如等距柱状投影），以模拟真实环境背景；同时提供基于图像的光照（Image-Based Lighting，IBL），通过间接漫反射等方式影响物体环境光照，使物体更自然地融入场景，提升渲染真实感。
 
-ArkGraphics 3D支持用户创建环境资源，定义3D场景的背景。
+ArkGraphics 3D支持开发者创建环境资源，用于定义3D场景背景。
 
 ## 开发步骤
 1. 导入相关模块。
@@ -30,10 +30,10 @@ ArkGraphics 3D支持用户创建环境资源，定义3D场景的背景。
    
    ``` TypeScript
    if (this.scene === null) {
-     // Switched from .gltf to .glb; same content, different format
+     // 从 .gltf 切换为 .glb；内容相同，格式不同
      Scene.load($rawfile('gltf/CubeWithFloor/glTF/AnimatedCube.glb'))
        .then(async (result: Scene) => {
-         // Assign loaded scene to globalScene for unified resource creation
+         // 将加载的场景赋值给globalScene，以便统一创建资源
          globalScene = result;
          this.scene = result;
          this.sceneOpt = { scene: this.scene, modelType: ModelType.SURFACE } as SceneOptions;
@@ -67,7 +67,7 @@ ArkGraphics 3D支持用户创建环境资源，定义3D场景的背景。
    ``` TypeScript
    this.geom = this.scene.getNodeByPath('rootNode_/Unnamed Node 1/AnimatedCube') as Geometry;
    
-   // record original material
+   // 记录原始材质
    this.originalMat = this.geom.mesh.subMeshes[0].material;
    ```
 
@@ -80,28 +80,28 @@ ArkGraphics 3D支持用户创建环境资源，定义3D场景的背景。
    ``` TypeScript
    function createEnvironmentPromise() : Promise<Environment> {
      return new Promise((resolve, reject) => {
-       // Ensure the scene is loaded before accessing sceneFactory
+       // 确保在访问sceneFactory之前场景已加载
        if (globalScene) {
          let sceneFactory: SceneResourceFactory = globalScene.getResourceFactory();
    
-         // Manually load environment maps (.ktx/.jpg/.png etc.)
+         // 手动加载环境贴图（.ktx/.jpg/.png等）
          let sceneImageParameter: SceneResourceParameters = { name: 'image', uri: $rawfile('image/Cube_BaseColor.png') };
          let image: Promise<Image> = sceneFactory.createImage(sceneImageParameter);
          image.then(async (imageEntity: Image) => {
-           // Create Environment
+           // 创建环境
            let sceneEnvironmentParameter: SceneResourceParameters = { name: 'env' };
            let env: Promise<Environment> = sceneFactory.createEnvironment(sceneEnvironmentParameter);
            env.then(async (envEntity: Environment) => {
              envEntity.backgroundType = EnvironmentBackgroundType.BACKGROUND_EQUIRECTANGULAR;
              envEntity.environmentImage  = imageEntity;
-             // Set environment related properties
+             // 设置环境相关属性
              envEntity.indirectDiffuseFactor.x = 1;
              envEntity.indirectDiffuseFactor.y = 1;
              envEntity.indirectDiffuseFactor.z = 1;
              envEntity.indirectDiffuseFactor.w = 1;
              resolve(envEntity);
            }).catch((err: string) => {
-             console.error('Environment mapping material create failed: ' + err + '.');
+             console.error('Environment create failed: ' + err + '.');
              reject(err);
            });
          }).catch((err: string) => {
@@ -125,7 +125,7 @@ ArkGraphics 3D支持用户创建环境资源，定义3D场景的背景。
    Button('Add to Environment')
      // ...
      .onClick(async (): Promise<void> => {
-       console.info('Start to replace with a material of image');
+       console.info('Start to add environment to scene');
    
        if (!this.scene || !this.cam) {
          return;

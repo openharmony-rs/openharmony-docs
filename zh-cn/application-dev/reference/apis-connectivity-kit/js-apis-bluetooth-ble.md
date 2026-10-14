@@ -154,6 +154,7 @@ createGattClientDevice(deviceId: string, setting: GattSetting): GattClientDevice
 - 通过该实例可以操作client端行为，如调用[connect](#connect)向对端设备发起连接，调用[getServices](#getservices)获取对端设备支持的所有服务能力。
 - 创建该实例所需要的设备地址表示server端设备。可以通过[ble.startBLEScan](#blestartblescan)或[BleScanner](#blescanner15)的[startScan](#startscan15)接口获取server端设备地址，且需保证server端设备的BLE广播是可连接的。
 - 通过[GattSetting](#gattsetting)设置连接的传输类型transport时，若不清楚设备的传输类型[BluetoothTransport](js-apis-bluetooth-connection.md#bluetoothtransport)，默认为[TRANSPORT_LE](js-apis-bluetooth-connection.md#bluetoothtransport)，但不能设置为[TRANSPORT_UNKNOWN](js-apis-bluetooth-connection.md#bluetoothtransport)（未知的设备传输方式），否则无法成功创建[GattClientDevice](#gattclientdevice)实例。
+- 若支持远端设备可用时自动连接，即GattSetting参数autoConnect设为true时，对端的[蓝牙设备地址类型](../../connectivity/bluetooth/bluetooth-overview.md#蓝牙设备地址类型)须为Public Address（公共设备地址）、Static Random Address（静态随机地址）或者是通过[connection.pairDevice](js-apis-bluetooth-connection.md#connectionpairdevice)配对后的Resolvable Private Address（可解析私有地址）。未配对的Resolvable Private Address（可解析私有地址）不支持远端设备可用时自动连接，调用connect也无法连接到对端设备。
 
 **起始版本**：26.0.0
 
@@ -207,9 +208,7 @@ getConnectedBLEDevices(): Array&lt;string&gt;
 获取和本机设备已连接GATT的BLE设备集合。
 - 建议给server端使用，client端使用返回的设备地址集合为空。
 
-**需要权限**：
-- API版本26.0.0+：ohos.permission.ACCESS_BLUETOOTH 或 (ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_PEERS_MAC)
-- API版本10-24：ohos.permission.ACCESS_BLUETOOTH
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
 
@@ -254,7 +253,6 @@ getConnectedBLEDevices(profile: BleProfile): Array&lt;string&gt;
 - 若指定本机设备同时作为client端和server端，则返回与本机设备连接的所有client端和server端设备地址集合。
 
 **需要权限**：
-- API版本26.0.0+：ohos.permission.ACCESS_BLUETOOTH 或 (ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_PEERS_MAC)
 - API版本21-24：ohos.permission.ACCESS_BLUETOOTH
 
 **系统能力**：SystemCapability.Communication.Bluetooth.Core
@@ -1507,9 +1505,7 @@ on(type: 'BLEDeviceFind', callback: Callback&lt;Array&lt;ScanResult&gt;&gt;): vo
 
 订阅BLE设备扫描结果上报事件。使用Callback异步回调。
 
-**需要权限**：
-- API版本26.0.0+：ohos.permission.ACCESS_BLUETOOTH 或 (ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_PEERS_MAC)
-- API版本10-24：ohos.permission.ACCESS_BLUETOOTH
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2213,9 +2209,7 @@ on(type: 'characteristicRead', callback: Callback&lt;CharacteristicReadRequest&g
 
 server端订阅client的特征值读请求事件，server端收到该事件后需要调用[sendResponse](#sendresponse)接口回复client。使用Callback异步回调。
 
-**需要权限**：
-- API版本26.0.0+：ohos.permission.ACCESS_BLUETOOTH 或 (ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_PEERS_MAC)
-- API版本10-24：ohos.permission.ACCESS_BLUETOOTH
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2316,9 +2310,7 @@ on(type: 'characteristicWrite', callback: Callback&lt;CharacteristicWriteRequest
 
 server端订阅client的特征值写请求事件，server端收到该事件后需要根据[CharacteristicWriteRequest](#characteristicwriterequest)中的needRsp决定是否调用[sendResponse](#sendresponse)接口回复client。
 
-**需要权限**：
-- API版本26.0.0+：ohos.permission.ACCESS_BLUETOOTH 或 (ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_PEERS_MAC)
-- API版本10-24：ohos.permission.ACCESS_BLUETOOTH
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2422,9 +2414,7 @@ on(type: 'descriptorRead', callback: Callback&lt;DescriptorReadRequest&gt;): voi
 
 server端订阅client的描述符读请求事件，server端收到该事件后需要调用[sendResponse](#sendresponse)接口回复client。
 
-**需要权限**：
-- API版本26.0.0+：ohos.permission.ACCESS_BLUETOOTH 或 (ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_PEERS_MAC)
-- API版本10-24：ohos.permission.ACCESS_BLUETOOTH
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2525,9 +2515,7 @@ on(type: 'descriptorWrite', callback: Callback&lt;DescriptorWriteRequest&gt;): v
 
 server端订阅client的描述符写请求事件，server端收到该事件后需要根据[DescriptorWriteRequest](#descriptorwriterequest)里的needRsp决定是否调用[sendResponse](#sendresponse)接口回复client。
 
-**需要权限**：
-- API版本26.0.0+：ohos.permission.ACCESS_BLUETOOTH 或 (ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_PEERS_MAC)
-- API版本10-24：ohos.permission.ACCESS_BLUETOOTH
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2631,9 +2619,7 @@ on(type: 'connectionStateChange', callback: Callback&lt;BLEConnectionChangeState
 
 server端订阅GATT profile协议的连接状态变化事件。使用Callback异步回调。
 
-**需要权限**：
-- API版本26.0.0+：ohos.permission.ACCESS_BLUETOOTH 或 (ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_PEERS_MAC)
-- API版本10-24：ohos.permission.ACCESS_BLUETOOTH
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -4132,6 +4118,7 @@ setBLEMtuSize(mtu: number): void
 
 client端同server端协商[MTU](../../connectivity/bluetooth/terminology.md#mtu)（最大传输单元）大小。<br>
 - 需先调用[connect](#connect)方法，等GATT profile连接成功后才能使用。<br>
+- 应用调用该接口后，本端设备会向对端设备发起MTU协商请求。<br>
 - 通过[on('BLEMtuChange')](#onblemtuchange-1)，订阅MTU协商结果。<br>
 - 如果未协商，MTU大小默认为23字节。
 
@@ -4180,6 +4167,7 @@ setBLEMtu(mtu: number): Promise&lt;number&gt;
 
 client端同server端协商[MTU](../../connectivity/bluetooth/terminology.md#mtu)（最大传输单元）大小。与[setBLEMtuSize](#setblemtusize)相比，本接口直接通过Promise返回实际协商成功的MTU结果，无需额外订阅[on('BLEMtuChange')](#onblemtuchange-1)事件获取协商结果。<br>
 - 需先调用[connect](#connect-1)方法，等GATT profile连接成功后才能使用。<br>
+- 应用调用该接口后，本端设备会向对端设备发起MTU协商请求。
 - 需保证入参符合取值范围，不在取值范围内会直接返回异常。<br>
 - 如果未协商，MTU大小默认为23字节。
 
@@ -5339,9 +5327,7 @@ on(type: 'BLEDeviceFind', callback: Callback&lt;ScanReport&gt;): void
 
 订阅BLE设备扫描结果上报事件。使用Callback异步回调。
 
-**需要权限**：
-- API版本26.0.0+：ohos.permission.ACCESS_BLUETOOTH 或 (ohos.permission.ACCESS_BLUETOOTH 和 ohos.permission.GET_BLUETOOTH_PEERS_MAC)
-- API版本15-24：ohos.permission.ACCESS_BLUETOOTH
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
 **原子化服务API**：从API version 15开始，该接口支持在原子化服务中使用。
 

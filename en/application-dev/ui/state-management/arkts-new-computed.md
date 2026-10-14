@@ -1,12 +1,11 @@
 # \@Computed Decorator: Declaring Computed Properties
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @liwenzhen3-->
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=3efb4ba336409dd0731ba011e1e227786db57fa2 translatedAt=2026-07-22T02:05:29.024Z pushedAt=2026-07-24T00:59:55.837Z -->
+<!-- md-trans-meta sourceCommit=b4c16a3481f0a0bf24de133bf760018019cda10c translatedAt=2026-09-21T11:09:18.715Z pushedAt=2026-09-23T08:46:56.081Z -->
 
 When you use the same computation logic repeatedly bound to the UI, to prevent redundant computation, they can use the [\@Computed](../../reference/apis-arkui/arkui-ts/ts-state-management-computed.md#computed) computed property. When the state variables that the computed property depends on change, the computation is performed only once. This resolves the redundant computation and performance issues caused by the UI reusing the property multiple times. See the following example.
 
@@ -18,7 +17,6 @@ get sum() {
   return this.count1 + this.count2 + this.count3;
 }
 ```
-
 <!-- @[computed_property_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/ComputedProperty.ets) -->
 
 ``` TypeScript
@@ -45,7 +43,6 @@ Before reading this topic, it is advised to familiarize yourself with [\@Compone
 For simple calculations, using @Computed is not recommended due to its inherent overhead. For complex computations, \@Computed provides significant performance benefits.
 
 ## Decorator Description
-
 \@Computed syntax:
 
 ```ts
@@ -60,7 +57,7 @@ get varName(): T {
 | Supported Type          | Getter accessor.|
 | Initialization from the parent component    | Forbidden.|
 | Child component initialization    | [\@Param](./arkts-new-param.md). |
-| Execution time      | In \@ComponentV2, \@Computed is initialized when the custom component is created, triggering computation.<br>In @ObservedV2 decorated classes, \@Computed is initialized asynchronously after the class instance is created, triggering computation.<br>Recomputation occurs when state variables used in the \@Computed calculation are modified.|
+| Execution timing | In \@ComponentV2, \@Computed is initialized when the custom component is created, triggering \@Computed computation. In </br>\@ObservedV2 decorated classes, \@Computed is initialized asynchronously after the \@ObservedV2 decorated class instance is created, triggering \@Computed computation.</br>When state variables used in the \@Computed calculation are modified, the computed property is recalculated. |
 | Value assignment allowed      | No. @Computed decorated properties are read-only. For details, see [Constraints](#constraints).|
 
 ## Constraints
@@ -77,7 +74,6 @@ get varName(): T {
   func() { // Incorrect usage. An error is reported during compilation.
   }
   ```
-
 - Methods decorated with \@Computed only recompute during initialization or when the state variables used in their calculations change. Avoid performing logic operations other than data retrieval in \@Computed decorated getter methods, as shown in the example below.
 
   ```ts
@@ -164,7 +160,7 @@ get varName(): T {
   }
   ```
 
-- \@Computed cannot be used together with [!! for two-way binding](./arkts-new-binding.md#overview). Properties decorated with \@Computed are getter accessors. They are not synchronized by child components and cannot be assigned. Custom setter implementations for computed properties will not take effect and will result in a compilation error.
+- \@Computed cannot be used together with [!! for two-way binding](./arkts-new-binding.md#overview). Properties decorated with \@Computed are getter accessors. They are not synchronized by child components and cannot be assigned. Custom setter implementations for computed properties will not take effect and will result in a compile-time error.
 
   ```ts
   @ComponentV2
@@ -210,7 +206,6 @@ get varName(): T {
   ```
 
 - \@Computed is a feature of state management V2 and can only be used in @ComponentV2 and @ObservedV2.
-
 - When using multiple \@Computed decorated properties together, avoid circular dependencies to prevent infinite loops during computation.
 
   ```ts
@@ -226,19 +221,13 @@ get varName(): T {
   ```
 
 ## Use Cases
-
 ### The \@Computed Decorated Getter is Evaluated Only Once Upon Property Change
-
 1. Using a computed property in a custom component
 
    - Clicking the first button changes the value of **lastName**, triggering a recomputation of the \@Computed decorated property **fullName**.
-
    - **this.fullName** is bound to two **Text** components. The **fullName** log shows that the computation occurs only once.
-
    - For the first two **Text** components, the **this.lastName +' '+ this.firstName** logic is evaluated twice.
-
    - If multiple UI elements require the same computed logic **this.lastName +' '+ this.firstName**, you can use a computed property to reduce redundant calculations.
-
    - Clicking the second button increments the value of **age**, but the UI remains unchanged. This is because **age** is not a state variable, and only changes to observed variables can trigger the recomputation of the \@Computed decorated property **fullName**.
 
    <!-- @[custom_component_use](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/CustomComponentUse.ets) --> 
@@ -260,7 +249,7 @@ get varName(): T {
      @Computed
      get fullName() {
        hilog.info(DOMAIN, TAG, BUNDLE + '---------Computed----------');
-       return this.firstName + ' ' + this.lastName + this.age;
+       return this.lastName + ' ' + this.firstName + this.age;
      }
    
      build() {
@@ -301,8 +290,7 @@ get varName(): T {
    Computed properties inherently introduce performance overhead. In practical development, note the following:
 
    - For simple logic, avoid computed properties and compute directly.
-
-   - If the logic is used only once in the view, skip the computed property and evaluate inline.
+   - If the logic is used only once in the view, do not use a computed property and compute the result directly.
 
 2. Using a computed property in an \@ObservedV2 decorated class
 
@@ -360,11 +348,8 @@ get varName(): T {
    ![computed-sync-2](./figures/computed-sync-2.gif)
 
 ### \@Monitor Can Listen for the Changes of the \@Computed Decorated Properties
-
-The following example shows how to convert **celsius** to **fahrenheit** and **kelvin** Example:
-
+The following example shows how to use computed properties to calculate `fahrenheit` and `kelvin`, and use \@Monitor to listen for the changes of the computed properties:
 - Clicking **-** decrements **celsius**, updates **fahrenheit**, then updates **kelvin**, which triggers **onKelvinMonitor**.
-
 - Clicking **+** increments **celsius++**, updates **fahrenheit**, then updates **kelvin**, which triggers **onKelvinMonitor**.
 
   <!-- @[Computing_Property_Resolution](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/ComputingPropertyResolution.ets) --> 
@@ -427,13 +412,9 @@ The following example shows how to convert **celsius** to **fahrenheit** and **k
   ![computed-sync-3](./figures/computed-sync-3.gif)
 
 ### \@Computed Decorated Properties Can Initialize \@Param
-
 The following example shows how to use an \@Computed decorated property to initialize \@Param.
-
 - Clicking **Button('-')** and **Button('+')** changes the value of **quantity**, which is decorated with \@Trace and can be observed when it is changed.
-
 - The change of **quantity** triggers the recomputation of **total** and **qualifiesForDiscount**.
-
 - The change of **total** and **qualifiesForDiscount** triggers the update of the **Text** component corresponding to the **Child** component.
 
   <!-- @[Computed_Init_Param](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArktsNewComputed/entry/src/main/ets/pages/ComputedInitParam.ets) -->  

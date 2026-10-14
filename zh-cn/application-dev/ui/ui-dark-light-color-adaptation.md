@@ -111,7 +111,7 @@
 
 5. 应用监听深浅色模式切换事件
 
-    应用可以主动监听系统深浅色模式变化，进行其他类型的资源初始化等自定义逻辑。应用使用[setColorMode](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#setcolormode18)手动设置深浅色的情况下，将不会收到onConfigurationUpdate回调。除此之外，无论应用是否跟随系统深浅色模式变化，该监听方式均可生效。
+    应用可以主动监听系统深浅色模式变化，进行其他类型的资源初始化等自定义逻辑。应用使用[setColorMode](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#setcolormode18)手动设置深浅色的情况下，将不会收到onConfigurationUpdate()回调。除此之外，无论应用是否跟随系统深浅色模式变化，该监听方式均可生效。
 
     a. 在 AbilityStage的[onCreate()](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#oncreate)生命周期中获取APP当前的颜色模式并保存到[AppStorage](../reference/apis-arkui/arkui-ts/ts-state-management.md#appstorage)。
 
@@ -181,7 +181,7 @@
 
     通过[WithTheme](../reference/apis-arkui/arkui-ts/ts-container-with-theme.md)可以设置三种[颜色模式](../reference/apis-arkui/arkui-ts/ts-universal-attributes-foreground-blur-style.md#themecolormode枚举说明)，分别为：跟随系统深浅色模式、固定使用浅色模式和固定使用深色模式。
 
-    在WithTheme作用范围内，组件的样式资源值将依据指定模式，读取对应的深浅色模式系统和应用资源值。这表明，在WithTheme作用范围内，组件的配色将根据指定的深浅模式进行调整。详情请参阅[设置应用页面局部深浅色](./theme_skinning.md#设置应用页面局部深浅色)。
+    在WithTheme作用范围内，组件的样式资源值将依据指定模式，读取对应的深浅色模式系统和应用资源值。这表明，在WithTheme作用范围内，组件的配色将根据指定的深浅模式进行调整。详情请参阅[设置应用页面局部深浅色](./theme-skinning.md#设置应用页面局部深浅色)。
 
 ## 应用主动设置深浅色模式
 
@@ -207,9 +207,9 @@ onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
 
 ## 系统判定应用深浅色模式的规则
 
-1. 如果应用调用上述setColorMode接口主动设置了深浅色，则以接口效果优先。
+1. 如果应用调用上述setColorMode()接口主动设置了深浅色，则以接口效果优先。
 
-2. 应用没有调用setColorMode接口时：
+2. 应用没有调用setColorMode()接口时：
 
    - 如果应用工程dark目录下有深色资源，则系统组件在深色模式下会自动切换成为深色。
 

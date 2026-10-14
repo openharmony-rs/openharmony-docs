@@ -2,20 +2,21 @@
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
-<!--Designer: @widecode; @htt1997-->
-<!--Tester: @yippo; @logic42-->
+<!--Designer: @htt1997-->
+<!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=68d7b8030be7ba5da7e711fc0d0ad9a1a6eb2337 translatedAt=2026-09-04T03:40:56.110Z pushedAt=2026-09-09T09:11:03.723Z -->
 
-The relational database (RDB) store manages data based on relational models. It provides a complete mechanism for managing local databases based on the underlying SQLite. To satisfy different needs in complicated scenarios, the RDB store offers a series of APIs for performing operations such as adding, deleting, modifying, and querying data, and supports direct execution of SQL statements. The worker threads are not supported.
+A relational database (RDB) is a database that manages data based on the relational model. Based on the SQLite component, the relational database provides a complete mechanism for managing local databases and a series of APIs for adding, deleting, modifying, and querying data. It can also directly execute SQL statements entered by users to meet complex scenario requirements. Worker threads are not supported.
 
-ArkTS supports the following basic data types: number, string, binary data, and boolean. The maximum size of a data record is 2 MB. If a data record exceeds 2 MB, it can be inserted successfully but cannot be read.
+The basic data types supported on the ArkTS side are number, string, binary data, and boolean. To ensure successful data insertion and reading, the size of a single data record must be strictly less than 2 MB. If this size limit is exceeded, the insertion operation still succeeds, but subsequent reading will fail.
 
 The **relationalStore** module provides the following functions:
 
 - [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md): provides predicates indicating the nature, feature, or relationship of a data entity in an RDB store. It is used to define the operation conditions for an RDB store.
 - [RdbStore](arkts-apis-data-relationalStore-RdbStore.md): provides APIs for managing data in an RDB store.
 - [ResultSet](arkts-apis-data-relationalStore-ResultSet.md): provides APIs for accessing the result set obtained from the RDB store.
-- [LiteResultSet](arkts-apis-data-relationalStore-LiteResultSet.md): provides APIs for accessing the result set obtained from the RDB store.
+- [LiteResultSet](arkts-apis-data-relationalStore-LiteResultSet.md): provides the result set returned after a user calls the relational database query API.
 
 > **NOTE**
 > 
@@ -37,8 +38,9 @@ Defines the configuration of an RDB store.
 
 | Name| Type| Read-Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| isSearchable<sup>11+</sup> | boolean | No| Yes| Whether the RDB store is searchable. The value **true** means the RDB store is searchable; the value **false** means the opposite. The default value is **false**.<br>**System API**: This is a system API.<br>This parameter is supported since API version 11.<br>|
-| haMode<sup>12+</sup> | [HAMode](#hamode12) | No| Yes| High availability (HA) mode.<br>The value **SINGLE** means data can be written only to a single RDB store. The value **MAIN_REPLICA** means data can be written to the main and replica RDB stores to ensure HA. However, this mode is not supported in encryption and attach scenarios. The default value is **SINGLE**. The value **MAIN_REPLICA** may affect the database write performance.<br>**System API**: This is a system API.<br>This parameter is supported since API version 12.<br>|
+| isSearchable<sup>11+</sup> | boolean | No| Yes| Whether the RDB store is searchable. The value **true** means the RDB store is searchable; the value **false** means the opposite. The default value is **false**.<br>**System API**: This is a system API.<br>This parameter is supported since API version 11.|
+| haMode<sup>12+</sup> | [HAMode](#hamode12) | No| Yes| High availability (HA) mode.<br>The value **SINGLE** means data can be written only to a single RDB store. The value **MAIN_REPLICA** means data can be written to the main and replica RDB stores to ensure HA. However, this mode is not supported in encryption and attach scenarios. The default value is **SINGLE**. The value **MAIN_REPLICA** may affect the database write performance.<br>**System API**: This is a system API.<br>This parameter is supported since API version 12.|
+| autoCleanDeviceDirtyData | boolean | No | Yes | Whether the local device automatically cleans up the data synchronized from the remote device after the remote device deletes it. The value **true** indicates automatic cleanup, and **false** indicates manual cleanup. The default value is **true**. If this parameter is set to **false**, you need to actively call [cleanDeviceDirtyData](#cleandevicedirtydata) to clean up dirty data.<br/>The distributed data table configuration does not take effect in the [multi-device collaborative table mode](../../database/data-sync-of-rdb-store.md#data-sync-storage-mechanism).<br/>**System API:** This API is a system API.<br/>**Since:** 26.0.0<br/>**Model constraint:** This API is only used in the Stage model.<br/> |
 
 ## HAMode<sup>12+</sup>
 
@@ -46,10 +48,12 @@ Enumerates the HA modes of an RDB store.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
+**System API**: This is a system API.
+
 | Name                             | Value  | Description            |
 | ------------------------------- | --- | -------------- |
-| SINGLE      | 0 | Allows data to be written to a single RDB store.     |
-| MAIN_REPLICA | 1 | Allows data to be written to the main and replica RDB stores for HA. This mode is not supported in encryption and attach scenarios.|
+| SINGLE      | 0 | The data is to be written to a single RDB store.     |
+| MAIN_REPLICA | 1 | The data is written to both the primary relational database storage and the replica relational database storage. Encryption scenarios and attach scenarios are not supported, which degrades database write performance. |
 
 ## Reference<sup>11+</sup>
 
@@ -75,6 +79,22 @@ Defines the configuration of the distributed mode of tables.
 | -------- | ------- | ----  | ---- | ------------------------------------------------------------ |
 | references<sup>11+</sup> | Array&lt;[Reference](#reference11)&gt; | No| Yes  | References between tables. You can reference multiple fields, and their values must be the same in the source and target tables. By default, database tables are not referenced with each other.<br>**System API**: This is a system API.<br>This parameter is supported since API version 11.|
 
+## CloudSyncConfig
+
+Defines the cloud sync configuration information.
+
+**Since**: 26.0.0
+
+**System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+| Name | Type | Read-Only | Optional | Description |
+|------|------|------|------|----------------------------------------------------------------------------|
+| downloadOnly | boolean | No | Yes | Whether to download only cloud data to the local device. The value **true** means to download only cloud data to the local device, and **false** means to first download cloud data to the local device and then upload local data to the cloud. The default value is **false**. |
+
 ## RdbStore
 
 Provides APIs for managing data in an RDB store.
@@ -99,10 +119,10 @@ Updates data based on the specified **DataSharePredicates** object. This API use
 
 | Name    | Type                                                        | Mandatory| Description                                                        |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| table      | string                                                       | Yes  | Name of the target table.                                            |
+| table      | string                                                       | Yes   | Name of the specified target table. It cannot be an empty string.                                             |
 | values     | [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)                                | Yes  | Rows of data to update in the RDB store. The key-value pair is associated with the column name in the target table.|
 | predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes  | Update conditions specified by the **DataSharePredicates** object.               |
-| callback   | AsyncCallback&lt;number&gt;                                  | Yes  | Callback used to return the number of rows updated.                  |
+| callback   | AsyncCallback&lt;number&gt;                                  | Yes   | Callback function used to return the number of affected rows.                   |
 
 **Error codes**
 
@@ -192,7 +212,7 @@ Updates data based on the specified **DataSharePredicates** object. This API use
 
 | Name    | Type                                                        | Mandatory| Description                                                        |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| table      | string                                                       | Yes  | Name of the target table.                                            |
+| table      | string                                                       | Yes   | Name of the specified target table. It cannot be an empty string.                                             |
 | values     | [ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)                                | Yes  | Rows of data to update in the RDB store. The key-value pair is associated with the column name in the target table.|
 | predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes  | Update conditions specified by the **DataSharePredicates** object.               |
 
@@ -200,7 +220,7 @@ Updates data based on the specified **DataSharePredicates** object. This API use
 
 | Type                 | Description                                     |
 | --------------------- | ----------------------------------------- |
-| Promise&lt;number&gt; | Promise used to return the number of rows updated.|
+| Promise&lt;number&gt; | Promise object used to return the affected row count. |
 
 **Error codes**
 
@@ -265,7 +285,7 @@ const valueBucket3: ValuesBucket = {
 let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.equalTo("NAME", "Lisa");
 if (store != undefined) {
-  (store as relationalStore.RdbStore).update("EMPLOYEE", valueBucket1, predicates).then(async (rows: number) => {
+  (store as relationalStore.RdbStore).update("EMPLOYEE", valueBucket1, predicates).then((rows: number) => {
     console.info(`Updated row count: ${rows}`);
   }).catch((err: BusinessError) => {
     console.error(`Updated failed, code is ${err.code}, message is ${err.message}`);
@@ -291,7 +311,7 @@ Deletes data from the RDB store based on the specified **DataSharePredicates** o
 | ---------- | ------------------------------------------------------------ | ---- | --------------------------------------------- |
 | table      | string                                                       | Yes  | Name of the target table, which cannot be an empty string.             |
 | predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes  | Deletion conditions specified by the **DataSharePredicates** object.|
-| callback   | AsyncCallback&lt;number&gt;                                  | Yes  | Callback used to return the number of rows deleted.|
+| callback   | AsyncCallback&lt;number&gt;                                  | Yes   | Callback function. If the data is deleted successfully, **err** is **undefined** and **data** is the number of affected rows; otherwise, it is an error object. |
 
 **Error codes**
 
@@ -355,7 +375,7 @@ Deletes data from the RDB store based on the specified **DataSharePredicates** o
 
 | Name    | Type                                                        | Mandatory| Description                                         |
 | ---------- | ------------------------------------------------------------ | ---- | --------------------------------------------- |
-| table      | string                                                       | Yes  | Name of the target table.                             |
+| table      | string                                                       | Yes   | Specified target table name, which cannot be an empty string.                              |
 | predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes  | Deletion conditions specified by the **DataSharePredicates** object.|
 
 **Return value**
@@ -425,9 +445,9 @@ Queries data from the RDB store based on specified conditions. This API uses an 
 
 | Name    | Type                                                        | Mandatory| Description                                                       |
 | ---------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
-| table      | string                                                       | Yes  | Name of the target table.                                           |
+| table      | string                                                       | Yes   | Name of the specified target table, which cannot be an empty string.                                            |
 | predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes  | Query conditions specified by the **DataSharePredicates** object.              |
-| callback   | AsyncCallback&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Yes  | Callback used to return the result. If the operation is successful, a **ResultSet** object will be returned.|
+| callback   | AsyncCallback&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Yes   | Callback used to return the **ResultSet** object. |
 
 **Error codes**
 
@@ -485,10 +505,10 @@ Queries data from the RDB store based on specified conditions (for example, colu
 
 | Name    | Type                                                        | Mandatory| Description                                                       |
 | ---------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
-| table      | string                                                       | Yes  | Name of the target table.                                           |
+| table      | string                                                       | Yes   | Name of the specified target table. It cannot be an empty string.                                            |
 | predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes  | Query conditions specified by the **DataSharePredicates** object.              |
 | columns    | Array&lt;string&gt;                                          | Yes  | Columns to query. If this parameter is not specified, the query applies to all columns.           |
-| callback   | AsyncCallback&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Yes  | Callback used to return the result. If the operation is successful, a **ResultSet** object will be returned.|
+| callback   | AsyncCallback&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Yes   | Callback used to return the **ResultSet** object. |
 
 **Error codes**
 
@@ -546,7 +566,7 @@ Queries data from the RDB store based on specified conditions. This API uses a p
 
 | Name    | Type                                                        | Mandatory| Description                                            |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------------------------------------ |
-| table      | string                                                       | Yes  | Name of the target table.                                |
+| table      | string                                                       | Yes   | Name of the specified target table. It cannot be an empty string.                                 |
 | predicates | [dataSharePredicates.DataSharePredicates](js-apis-data-dataSharePredicates.md#datasharepredicates) | Yes  | Query conditions specified by the **DataSharePredicates** object.   |
 | columns    | Array&lt;string&gt;                                          | No  | Columns to query. If this parameter is not specified, the query applies to all columns.|
 
@@ -554,7 +574,7 @@ Queries data from the RDB store based on specified conditions. This API uses a p
 
 | Type                                                   | Description                                              |
 | ------------------------------------------------------- | -------------------------------------------------- |
-| Promise&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Promise used to return the result. If the operation is successful, a **ResultSet** object will be returned.|
+| Promise&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Returns a **ResultSet** object. |
 
 **Error codes**
 
@@ -618,7 +638,7 @@ Manually performs device-cloud sync based on specified conditions. This API uses
 | mode        | [SyncMode](arkts-apis-data-relationalStore-e.md#syncmode)          | Yes  | Sync mode of the database.                  |
 | predicates  | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md)                  | Yes  | Conditions for data sync.                 |
 | progress    | Callback&lt;[ProgressDetails](arkts-apis-data-relationalStore-i.md#progressdetails10)&gt; | Yes  | Callback used to process database sync details.          |
-| callback    | AsyncCallback&lt;void&gt;      | Yes  | Callback used to return the sync result to the caller.|
+| callback    | AsyncCallback&lt;void&gt;      | Yes   | Callback function. When the synchronization succeeds, **err** is **undefined**; otherwise, it is an error object. |
 
 **Error codes**
 
@@ -704,7 +724,7 @@ Manually performs device-cloud sync based on specified conditions. This API uses
 
 | Type               | Description                                   |
 | ------------------- | --------------------------------------- |
-| Promise&lt;void&gt; | Promise used to return the sync result.|
+| Promise&lt;void&gt; | Promise used to return the synchronization result. |
 
 **Error codes**
 
@@ -766,7 +786,7 @@ if (store != undefined) {
 
 querySharingResource(predicates: RdbPredicates, columns?: Array&lt;string&gt;): Promise&lt;ResultSet&gt;
 
-Queries the shared resource of the data matching the specified conditions. This API uses a promise to return the result set, which includes the shared resource ID and the column names if the column names are specified.
+Finds the shared resource of the data records that match the specified predicates and returns the result set. If columns are specified, the result set also contains the field values of the corresponding columns. This API uses a promise to return the result asynchronously. To use this API, the device-cloud sync capability must be implemented.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -781,9 +801,9 @@ Queries the shared resource of the data matching the specified conditions. This 
 
 **Return value**
 
-| Name   | Description                                              |
+| Type | Description |
 | -------- | ------------------------------------------------- |
-| Promise&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Promise used to return the result set.  |
+| Promise&lt;[ResultSet](arkts-apis-data-relationalStore-ResultSet.md)&gt; | Promise used to return the query result set. |
 
 **Error codes**
 
@@ -829,6 +849,7 @@ if (store != undefined) {
     const res = resultSet.getString(resultSet.getColumnIndex(relationalStore.Field.SHARING_RESOURCE_FIELD));
     console.info(`sharing resource: ${res}`);
     sharingResource = res;
+    resultSet.close();
   }).catch((err: BusinessError) => {
     console.error(`query sharing resource failed, code is ${err.code}, message is ${err.message}`);
   });
@@ -839,7 +860,7 @@ if (store != undefined) {
 
 querySharingResource(predicates: RdbPredicates, callback: AsyncCallback&lt;ResultSet&gt;): void
 
-Queries the shared resource of the data matching the specified conditions. This API uses an asynchronous callback to return the result set.
+Finds the shared resource of the data records that match the specified predicates and returns the result set. This API uses an asynchronous callback to return the result. To use this API, the device-cloud sync capability must be implemented.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -899,6 +920,7 @@ if (store != undefined) {
     const res = resultSet.getString(resultSet.getColumnIndex(relationalStore.Field.SHARING_RESOURCE_FIELD));
     console.info(`sharing resource: ${res}`);
     sharingResource = res;
+    resultSet.close();
   });
 }
 ```
@@ -907,7 +929,7 @@ if (store != undefined) {
 
 querySharingResource(predicates: RdbPredicates, columns: Array&lt;string&gt;, callback: AsyncCallback&lt;ResultSet&gt;): void
 
-Queries the shared resource of the data matching the specified conditions. This API uses an asynchronous callback to return the shared resource ID and the column names specified.
+Finds the shared resources of the data records that match the specified predicates, returns the result set of the found shared resources, and also returns the field values of the specified columns that match the predicates in the result set. This API uses an asynchronous callback to return the result. To use this API, the device-cloud sync capability must be implemented.
 
 **System capability**: SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -968,6 +990,7 @@ if (store != undefined) {
     const res = resultSet.getString(resultSet.getColumnIndex(relationalStore.Field.SHARING_RESOURCE_FIELD));
     console.info(`sharing resource: ${res}`);
     sharingResource = res;
+    resultSet.close();
   });
 }
 ```
@@ -991,7 +1014,7 @@ Manually locks the cloud database of an application. This API uses a promise to 
 
 | Type               | Description                                   |
 | ------------------- | ---------------------------------------|
-| Promise&lt;number&gt; | Promise used to return the lock validity period (in ms) if the operation is successful. If the operation fails, **0** is returned.|
+| Promise&lt;number&gt; | Promise object. If the lock is successful, returns the valid duration of the lock; if the lock fails, returns **0**, unit: ms. |
 
 **Error codes**
 
@@ -1029,7 +1052,7 @@ Manually unlocks the cloud database of an application. This API uses a promise t
 
 | Type               | Description                                   |
 | ------------------- | --------------------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
@@ -1067,7 +1090,7 @@ Restores data from a replica RDB store file. This API uses a promise to return t
 
 | Type               | Description                     |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
@@ -1111,15 +1134,249 @@ if (store != undefined) {
 }
 ```
 
+### retainDeviceData<sup>24+</sup>
+
+retainDeviceData(retainDevices?: Record\<string, Array\<string>>): Promise\<void>
+
+Retains the data synchronized from the corresponding devices in the distributed data table of the [single-version table mode](../../database/data-sync-of-rdb-store.md#data-sync-storage-mechanism), and deletes the data synchronized from other devices. This API uses a promise to return the result asynchronously.
+
+Deletion is not supported for the distributed data table of the [multi-device collaborative table mode](../../database/data-sync-of-rdb-store.md#data-sync-storage-mechanism).
+
+The more data to be deleted, the longer the execution takes.
+
+> **NOTE**
+>
+> The input parameter can be empty, and the device ID list corresponding to a database table name can also be empty. However, neither the database table name nor the device ID can be an empty string.
+>
+> If the input parameter is empty, all data synchronized from other devices in all single-version distributed tables of the current database is deleted.
+>
+> If the device ID list corresponding to a database table name in the input parameter is empty, all data synchronized from other devices in the table is deleted.
+>
+> Data written locally and data synchronized from the device IDs passed in are retained, while data synchronized from other device IDs is deleted.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**Parameters**
+
+| Name       | Type                                                               | Mandatory | Description                                       |
+| ------------ | ----------------------------------------------------------------- | ---- | ----------------------------------------- |
+| retainDevices  | Record<string, Array\<string>> |  No  | Distributed database table names and corresponding device IDs to retain. There is no default value. If this parameter is not passed in, all synchronized data in all single-version distributed tables of the current database is deleted.|
+
+**Return value**
+
+| Type          | Description                       |
+| -------------- | ------------------------ |
+| Promise\<void> | Promise object that returns no value.  |
+
+**Error codes:**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [RDB Error Codes](errorcode-data-rdb.md).
+
+| **Error Code ID** | **Error Message**                                                             |
+| ------------ | ----------------------------------------------------------------------- |
+| 202          | Permission verification failed, application which is not a system application uses system API.|
+| 14800001     | Invalid arguments. Possible causes: 1. Parameter is out of valid range.  |
+| 14800011     | The current operation failed because the database is corrupted.                    |
+| 14800014     | The target instance is already closed.                            |
+| 14800021     | SQLite: Generic error. |
+| 14800024     | SQLite: The database file is locked.                                    |
+| 14800042     | The database does not exist. Possible causes: 1. The database is deleted; 2. The database is not created. |
+| 14800043     | The database does not support this scenario. Possible causes: 1. The database type is not supported;2. The table type is not supported; 3. This is a read-only database.|
+
+**Example**
+
+```ts
+import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+
+async function retainDeviceData(store : relationalStore.RdbStore){
+  const deviceManager = distributedDeviceManager.createDeviceManager('com.example.myapplication4');
+  const deviceList = deviceManager.getAvailableDeviceListSync();
+  const devices: string[] = [];
+  deviceList.forEach(item => {
+    if (item.networkId) {
+      devices.push(item.networkId);
+    }
+  });
+  console.info(`retainDeviceData, length is ${devices.length}`);
+  if (store != undefined) {
+    try {
+      const retainDevices: Record<string, string[]> = {};
+      retainDevices['EMPLOYEE'] = devices;
+      await store.retainDeviceData(retainDevices);
+      console.info(`retainDeviceData success`);
+    } catch (e) {
+      console.error(`retainDeviceData failed, code is ${e.code},message is ${e.message}`);
+    }
+  }
+}
+```
+
+### updateDistributedInfo<sup>24+</sup>
+
+updateDistributedInfo(info: DistributedInfo, predicates: RdbPredicates): Promise&lt;number&gt;
+
+Updates distributed information. This API supports only the single-version table mode and uses a promise to return the result asynchronously.
+
+It does not support updating distributed data tables in the multi-device collaborative table mode.
+
+The more data to update, the longer the execution takes.
+
+> **NOTE**
+>
+> If the device ID is passed in the input parameter **info**, it must be the ID of a device that has established a network connection with the current device.
+>
+> If [ORIGIN_ORIDEVICE](#distributedfield24) is passed in the input parameter **predicates**, only the equal-to-empty or not-equal-to-empty condition is allowed.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**Parameters**
+
+| Name       | Type                                                               | Required | Description                                       |
+| ------------ | ----------------------------------------------------------------- | ---- | ----------------------------------------- |
+| info  | [DistributedInfo](#distributedinfo24) |  Yes  | Distributed information to update.|
+| predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Yes   | Query conditions specified by the **RdbPredicates** instance object.        |
+
+**Return value**
+
+| Type          | Description                       |
+| -------------- | ------------------------ |
+| Promise&lt;number&gt; | Promise used to return the number of updated data records. |
+
+**Error codes:**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [RDB Error Codes](errorcode-data-rdb.md).
+
+| **Error Code ID** | **Error Message**                                                             |
+| ------------ | ----------------------------------------------------------------------- |
+| 202          | Permission verification failed, application which is not a system application uses system API.|
+| 14800001     | Invalid arguments. Possible causes: 1. Parameter is out of valid range.  |
+| 14800011     | The current operation failed because the database is corrupted.                    |
+| 14800014     | The target instance is already closed.                            |
+| 14800015     | The database does not respond. |
+| 14800021     | SQLite: Generic error. |
+| 14800024     | SQLite: The database file is locked.                                    |
+| 14800043     | The database does not support this scenario. Possible causes: 1. The database type is not supported;2. The table type is not supported; 3. This is a read-only database.|
+
+**Example**
+
+```ts
+import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+async function updateDistributedInfoInsert(store : relationalStore.RdbStore){
+  const deviceManager = distributedDeviceManager.createDeviceManager('com.example.myapplication4');
+  const deviceList = deviceManager.getAvailableDeviceListSync();
+  const devices: string[] = [];
+  deviceList.forEach(item => {
+    if (item.networkId) {
+      devices.push(item.networkId);
+    }
+  });
+  console.info(`updateDistributedInfoInsert, length is ${devices.length}`);
+  if (store != undefined && devices.length > 0) {
+    try {
+      const DISTRIBUTEDINFOINSERT:relationalStore.DistributedInfo = {
+        flag: relationalStore.DistributedOrigin.ORI_REMOTE,
+        oriDevice: devices[0]
+      }
+      const predicates = new relationalStore.RdbPredicates('EMPLOYEE');
+      predicates.equalTo(relationalStore.DistributedField.ORIGIN, relationalStore.DistributedOrigin.ORI_LOCAL);
+      predicates.equalTo(relationalStore.DistributedField.ORIGIN_ORIDEVICE, "");
+      await store.updateDistributedInfo(DISTRIBUTEDINFOINSERT, predicates);
+      console.info(`updateDistributedInfoInsert success`);
+    } catch (e) {
+      console.error(`updateDistributedInfoInsert failed, code is ${e.code},message is ${e.message}`);
+    }
+  }
+}
+
+async function updateDistributedInfoUpdate(store : relationalStore.RdbStore){
+  if (store != undefined) {
+    try {
+      const DISTRIBUTEDINFOUPDATE:relationalStore.DistributedInfo = {
+        flag: relationalStore.DistributedOrigin.ORI_REMOTE,
+      }
+      const predicates = new relationalStore.RdbPredicates('EMPLOYEE');
+      predicates.equalTo(relationalStore.DistributedField.ORIGIN, relationalStore.DistributedOrigin.ORI_LOCAL);
+      predicates.notEqualTo(relationalStore.DistributedField.ORIGIN_ORIDEVICE, "");
+      await store.updateDistributedInfo(DISTRIBUTEDINFOUPDATE, predicates);
+      console.info(`updateDistributedInfoUpdate success`);
+    } catch (e) {
+      console.error(`updateDistributedInfoUpdate failed, code is ${e.code},message is ${e.message}`);
+    }
+  }
+}
+```
+
+## cleanDeviceDirtyData
+
+cleanDeviceDirtyData(table: string, cursor?: number): Promise&lt;void&gt;
+
+Manually cleans up the data synchronized from the peer device after the peer device deletes it. This API uses a promise to return the result asynchronously.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**Parameters**
+
+| Name   | Type                                                  | Mandatory | Description                                               |
+| -------- | ----------------------------------------------------- | ---- | -------------------------------------------------- |
+| table     | string           | Yes   | Name of the database table to be cleaned up. The table name can contain only letters, digits, and underscores, and its length ranges from 1 to 256.           |
+| cursor    | number           | No   | Data cursor. Dirty data whose cursor is not greater than this value will be cleaned up. It is an integer greater than 0. If a value less than or equal to 0 is passed in, an exception is thrown with the message indicating invalid parameters. If this parameter is not specified, all dirty data in the current table is cleaned up. |
+
+**Return value**
+
+| Type     | Description                                              |
+| -------- | ------------------------------------------------- |
+| Promise\<void> | Promise object that returns no value.        |
+
+**Error code:**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [RDB Error Codes](errorcode-data-rdb.md).
+
+| **Error Code ID** | **Error Message**     |
+|-----------|---------------|
+| 202       | Permission verification failed, application which is not a system application uses system API. |
+| 14800001  | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
+| 14800015  | The database does not respond. |
+| 14800021  | SQLite: Generic error. |
+| 14800024  | SQLite: The database file is locked. |
+| 14800043  | The database does not support this scenario. Possible causes: 1. The database type is not support;2. The table type is not supported; 3. This is a read-only database.|
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+if (store != undefined) {
+  (store as relationalStore.RdbStore).cleanDeviceDirtyData('test_table', 100).then(() => {
+    console.info('Succeeded in cleaning device dirty data.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to clean device dirty data: code is ${err.code}, message is ${err.message}.`);
+  });
+}
+```
+
 ## ResultSet
 
-Provides APIs to access the result set obtained by querying the RDB store. This result set is the collection of results returned with the **query()** method called.
+Provides APIs to access the **resultSet** object returned by **query()**.
 
 ### getFloat32Array<sup>12+</sup>
 
 getFloat32Array(columnIndex: number): Float32Array
 
-Obtains the value from the specified column in the current row and outputs it in a Float32Array (array of 32-bit floating-point numbers). This API is available only for a [vector database](#storeconfig).
+Obtains the value of the specified column in the current row as a floating-point array. This API is available only in a vector database (configured with **vector** set to **true** in [StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)).
+
+**System API**: This is a system API.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1165,47 +1422,48 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 let resultSet: relationalStore.ResultSet | undefined;
-if (resultSet != undefined) {
-  const id = (resultSet as relationalStore.ResultSet).getFloat32Array(0);
-}
+
+const id = (resultSet as relationalStore.ResultSet).getFloat32Array(0);
 ```
 
 ## LiteResultSet<sup>23+</sup>
 
-Provides APIs to access the result set obtained by querying the RDB store. This result set is the collection of results returned with the **query()** method called.
+Provides access methods for the database result set generated by querying the database. A result set is the collection of results returned after a user calls the relational database query API. It provides multiple flexible data access methods for users to obtain various data.
 
 ### getFloat32Array<sup>23+</sup>
 
 getFloat32Array(columnIndex: number): Float32Array
 
-Obtains the value from the specified column in the current row and outputs it in a floating-point array.
+Obtains the value of the specified column in the current row as a float array. This API is available only in a vector database (with **vector** set to **true** in [StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)).
 
 **Model restriction**: This API can be used only in the stage model.
 
-**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+**System API**: This is a system API.
+
+**System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Parameters**
 
-| Name     | Type  | Mandatory| Description                   |
-| ----------- | ------ | ---- | ----------------------- |
-| columnIndex | number | Yes  | Index of the target column, starting from 0.|
+| Name        | Type   | Required | Description                              |
+| ----------- | ------ | -------- | ---------------------------------------- |
+| columnIndex | number | Yes      | Index of the target column, starting from 0. |
 
 **Return value**
 
-| Type      | Description                            |
-| ---------- | -------------------------------- |
-| Float32Array | Value obtained, in a Float32Array.|
+| Type         | Description                                        |
+| ------------ | -------------------------------------------------- |
+| Float32Array | Value of the specified column returned as a float array. |
 
-**Error codes**
+**Error Codes**
 
-For details about the error codes, see [RDB Error Codes](errorcode-data-rdb.md).
+For details about the following error codes, see [RDB Error Codes](errorcode-data-rdb.md).
 
-| **ID**| **Error Message**                                                |
-|-----------| ------------------------------------------------------------ |
-| 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800013  | Column index is out of bounds. |
-| 14800014  | The target instance is already closed. |
-| 14800041  | Type conversion failed. |
+| **Error Code ID** | **Error Message**                                             |
+| ----------------- | ------------------------------------------------------------ |
+| 14800012          | ResultSet is empty or pointer index is out of bounds. |
+| 14800013          | Column index is out of bounds. |
+| 14800014          | The target instance is already closed. |
+| 14800041          | Type conversion failed. |
 
 **Example**
 
@@ -1217,10 +1475,52 @@ async function getFloat32ArrayExample(store : relationalStore.RdbStore) {
     if (resultSet != undefined) {
       resultSet.goToNextRow();
       const name = resultSet.getFloat32Array(resultSet.getColumnIndex("FLOATARRAY"));
+      resultSet.close();
     }
   } catch (err) {
     console.error(`failed, code is ${err.code}, message is ${err.message}`);
   }
 }
 ```
-<!--no_check-->
+
+## DistributedOrigin<sup>24+</sup>
+
+Represents the data origin. Use the enum name instead of the enum value.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+| Name           | Value | Description                               |
+| -------------- | ---- | ---------------------------------- |
+| ORI_LOCAL       |  0  | Local data.      |
+| ORI_CLOUD       |  1  | Data synchronized from the cloud.     |
+| ORI_REMOTE      |  2  | Data synchronized between devices. |
+
+## DistributedField<sup>24+</sup>
+
+Represents the special fields used for predicate query conditions. Use the enum names instead of the enum values.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+| Name           | Value   | Description                               |
+| -------------- | ---- | ---------------------------------- |
+| ORIGIN      | '#_origin'     | Field name used to specify the data source during lookup or update.    |
+| ORIGIN_ORIDEVICE  | '#_ori_device' | Device ID of the data producer specified during lookup or update. If this value is empty, it indicates the local device; if not empty, it indicates another networked device.|
+| CURSOR_FIELD      | '#_cursor'     | Field name used for cursor lookup.<br/>**Since:** 26.0.0<br/> |
+| DELETED_FLAG_FIELD  | '#_deleted_flag' | Field filled in when the result set returned by cursor lookup is returned. **true** indicates data deleted by the peer device and synchronized to the local device. **false** indicates data written or updated by the peer device and synchronized to the local device, or data written or updated by the local device.<br/>**Since:** 26.0.0<br/> |
+
+## DistributedInfo<sup>24+</sup>
+
+Records distributed information.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+| Name | Type | Read-Only | Optional | Description |
+| ---- | ---- | ---- | ---- | ---- |
+| flag | [DistributedOrigin](#distributedorigin24) | No | Yes | Data source. If not passed, the original value is retained. |
+| oriDevice | string | No | Yes | Device ID of the data producer. If not passed, the original device ID is retained. |

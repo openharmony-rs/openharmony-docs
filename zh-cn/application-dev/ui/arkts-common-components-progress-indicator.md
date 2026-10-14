@@ -19,7 +19,9 @@ Progress(options: {value: number, total?: number, type?: ProgressType})
 
 其中，value用于设置当前进度值，total用于设置进度总长度，type用于设置Progress样式。
 
-```ts
+<!-- @[progress_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InfoComponent/ProgressProject/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 Progress({ value: 24, total: 100, type: ProgressType.Linear }) // 创建一个进度总长为100，当前进度值为24的线性进度条
 ```
 

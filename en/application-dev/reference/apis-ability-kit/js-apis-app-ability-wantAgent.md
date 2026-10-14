@@ -4,8 +4,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @linjunjie6-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=266d341a80ade4257c60fe7a7780215fc70fbb41 translatedAt=2026-09-03T10:41:50.808Z pushedAt=2026-09-05T10:47:30.466Z -->
 
 The WantAgent module encapsulates a [Want](./js-apis-app-ability-want.md) object, enabling an application to trigger a WantAgent object to perform specified operations (such as starting an ability or publishing a common event) at a future time.
 
@@ -36,7 +37,7 @@ Obtains a WantAgent object. This API uses an asynchronous callback to return the
 | Name    | Type                      | Mandatory| Description                   |
 | -------- | -------------------------- | ---- | ----------------------- |
 | info     | [WantAgentInfo](js-apis-inner-wantAgent-wantAgentInfo.md)              | Yes  | Configuration information required for creating the WantAgent object, including the target UIAbility, operation type, and request code. In **WantAgentInfo**, a third-party application is only allowed to specify its own UIAbility.|
-| callback | AsyncCallback\<WantAgent\> | Yes  | Callback used to return the result. If the API call is successful, **code** in **err** is **0** and **data** is the WantAgent object obtained. Otherwise, **err** contains the corresponding error code and error information.|
+| callback | AsyncCallback\<WantAgent\> | Yes | Callback function. When the WantAgent is created successfully, err is undefined and data is the created WantAgent; otherwise, err is an error object. |
 
 **Error codes**
 
@@ -86,16 +87,17 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
 };
 
 // getWantAgent callback.
-function getWantAgentCallback(err: BusinessError, data: WantAgent) {
+let getWantAgentCallback = (err: BusinessError, data: WantAgent) => {
   if (err.code) {
-    console.error(`getWantAgent failed, code: ${JSON.stringify(err.code)}, message: ${JSON.stringify(err.message)}`);
-  } else {
-    wantAgentData = data;
-  }
+      console.error(`getWantAgent failed, code: ${err.code}, message: ${err.message}`);
+    } else {
+      wantAgentData = data;
+    }
 }
 
 try {
-  wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
+  // Call the getWantAgent API to create a WantAgent object.
+wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
 } catch (err) {
   console.error(`getWantAgent failed, error: ${JSON.stringify(err)}`);
 }
@@ -105,7 +107,7 @@ try {
 
 getWantAgent(info: WantAgentInfo): Promise\<WantAgent\>
 
-Obtains a WantAgent object. This API uses a promise to return the result. If the creation fails, a null value is returned.
+Creates a WantAgent instance for triggering a specified operation later. This API uses a promise to return the result. If the creation succeeds, the WantAgent object is returned; otherwise, null is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -171,6 +173,7 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
 
 try {
   wantAgent.getWantAgent(wantAgentInfo).then((data) => {
+    // Create the WantAgent successfully and save the returned WantAgent object.
     wantAgentData = data;
   }).catch((err: BusinessError) => {
     console.error(`getWantAgent failed, code: ${JSON.stringify(err.code)}, message: ${JSON.stringify(err.message)}`);
@@ -197,7 +200,7 @@ Obtains the bundle name of the application to which the WantAgent object belongs
 | Name    | Type                   | Mandatory| Description                             |
 | -------- | ----------------------- | ---- | --------------------------------- |
 | agent    | WantAgent               | Yes  | Target WantAgent object.                    |
-| callback | AsyncCallback\<string\> | Yes  | Callback used to return the result. If the API call is successful, **err** is **undefined** and **data** is the WantAgent object obtained. Otherwise, **err** contains the corresponding error code and error information.|
+| callback | AsyncCallback\<string\> | Yes | Callback function. When the bundle name is obtained successfully, err is undefined and data is the obtained bundle name; otherwise, err is an error object. |
 
 **Error codes**
 
@@ -247,10 +250,11 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
 };
 
 // getWantAgent callback.
-function getWantAgentCallback(err: BusinessError, data: WantAgent) {
+let getWantAgentCallback = (err: BusinessError, data: WantAgent) => {
   if (err) {
     console.error(`getWantAgent failed, code: ${JSON.stringify(err.code)}, message: ${JSON.stringify(err.message)}`);
   } else {
+    // Create the WantAgent successfully and save the returned WantAgent object.
     wantAgentData = data;
   }
   // getBundleName callback.
@@ -262,6 +266,7 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
     }
   }
   try {
+    // Call the getBundleName API to obtain the package name of the WantAgent instance.
     wantAgent.getBundleName(wantAgentData, getBundleNameCallback);
   } catch (err) {
     console.error(`getBundleName failed! ${err.code} ${err.message}`);
@@ -269,6 +274,7 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
 }
 
 try {
+  // Call the getWantAgent API to create a WantAgent object.
   wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
 } catch (err) {
   console.error(`getWantAgent failed! ${err.code} ${err.message}`);
@@ -345,16 +351,18 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
 };
 
 // getWantAgent callback.
-function getWantAgentCallback(err: BusinessError, data: WantAgent) {
+let getWantAgentCallback = (err: BusinessError, data: WantAgent) => {
   if (err) {
     console.error(`getWantAgent failed, code: ${JSON.stringify(err.code)}, message: ${JSON.stringify(err.message)}`);
   } else {
+    // Create the WantAgent successfully and save the returned WantAgent object.
     wantAgentData = data;
   }
   try {
-    wantAgent.getBundleName(wantAgentData).then((data)=>{
+    // Obtain the bundle name of the WantAgent instance using Promise.
+    wantAgent.getBundleName(wantAgentData).then((data) => {
       console.info(`getBundleName ok! ${JSON.stringify(data)}`);
-    }).catch((err: BusinessError)=>{
+    }).catch((err: BusinessError) => {
       console.error(`getBundleName failed! ${err.code} ${err.message}`);
     });
   } catch(err){
@@ -362,6 +370,7 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
   }
 }
 try {
+  // Call the getWantAgent API to create a WantAgent object.
   wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
 } catch(err) {
   console.error(`getWantAgent failed! ${err.code} ${err.message}`);
@@ -433,10 +442,11 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
 };
 
 // getWantAgent callback.
-function getWantAgentCallback(err: BusinessError, data: WantAgent) {
+let getWantAgentCallback = (err: BusinessError, data: WantAgent) => {
   if (err) {
     console.error(`getWantAgent failed, code: ${err.code}, message: ${err.message}.`);
   } else {
+    // Create the WantAgent successfully and save the returned WantAgent object.
     wantAgentData = data;
   }
   // getUid callback.
@@ -448,6 +458,7 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
     }
   }
   try {
+    // Call the getUid API to obtain the UID of the application to which the WantAgent instance belongs.
     wantAgent.getUid(wantAgentData, getUidCallback);
   } catch (err) {
     let code = (err as BusinessError).code;
@@ -457,6 +468,7 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
 }
 
 try {
+  // Call the getWantAgent API to create a WantAgent object.
   wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
 } catch (err) {
   let code = (err as BusinessError).code;
@@ -535,13 +547,15 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
 };
 
 // getWantAgent callback.
-function getWantAgentCallback(err: BusinessError, data: WantAgent) {
+let getWantAgentCallback = (err: BusinessError, data: WantAgent) => {
   if (err) {
     console.error(`getWantAgent failed, err code: ${err.code}, err msg: ${err.message}.`);
   } else {
+    // Create the WantAgent successfully and save the returned WantAgent object.
     wantAgentData = data;
   }
   try {
+    // Obtain the UID of the application to which the WantAgent instance belongs by using Promise.
     wantAgent.getUid(wantAgentData).then((data) => {
       console.info(`getUid ok, data: ${JSON.stringify(data)}.`);
     }).catch((err: BusinessError) => {
@@ -555,6 +569,7 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
 }
 
 try {
+  // Call the getWantAgent API to create a WantAgent object.
   wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
 } catch (err) {
   let code = (err as BusinessError).code;
@@ -567,7 +582,7 @@ try {
 
 cancel(agent: WantAgent, callback: AsyncCallback\<void\>): void
 
-Cancels a WantAgent object. This API uses an asynchronous callback to return the result.
+Cancels a WantAgent instance. After cancellation, the instance cannot be triggered. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -578,7 +593,7 @@ Cancels a WantAgent object. This API uses an asynchronous callback to return the
 | Name    | Type                 | Mandatory| Description                       |
 | -------- | --------------------- | ---- | --------------------------- |
 | agent    | WantAgent             | Yes  | Target WantAgent object.              |
-| callback | AsyncCallback\<void\> | Yes  | Callback used to return the result.|
+| callback | AsyncCallback\<void\> | Yes | Callback function. When the WantAgent instance is canceled successfully, err is undefined and data is undefined; otherwise, err is an error object. |
 
 **Error codes**
 
@@ -628,10 +643,11 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
 };
 
 // getWantAgent callback.
-function getWantAgentCallback(err: BusinessError, data: WantAgent) {
+let getWantAgentCallback = (err: BusinessError, data: WantAgent) => {
   if (err) {
     console.error(`getWantAgent failed, err code: ${err.code}, err msg: ${err.message}.`);
   } else {
+    // Create the WantAgent successfully and save the returned WantAgent object.
     wantAgentData = data;
   }
   // cancel callback.
@@ -639,10 +655,11 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
     if (err) {
       console.error(`cancel failed, err code: ${err.code}, err msg: ${err.message}.`);
     } else {
-      console.info(`cancel sucecss.`);
+      console.info(`cancel success.`);
     }
   }
   try {
+    // Call the cancel API to cancel the WantAgent instance.
     wantAgent.cancel(wantAgentData, cancelCallback);
   } catch (err) {
     let code = (err as BusinessError).code;
@@ -652,6 +669,7 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
 }
 
 try {
+  // Call the getWantAgent API to create a WantAgent object.
   wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
 } catch (err) {
   let code = (err as BusinessError).code;
@@ -664,7 +682,7 @@ try {
 
 cancel(agent: WantAgent): Promise\<void\>
 
-Cancels a WantAgent object. This API uses a promise to return the result.
+Cancels a WantAgent instance. After cancellation, the instance cannot be triggered. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -730,13 +748,15 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
 };
 
 // getWantAgent callback.
-function getWantAgentCallback(err: BusinessError, data: WantAgent) {
+let getWantAgentCallback = (err: BusinessError, data: WantAgent) => {
   if (err) {
     console.error(`getWantAgent failed, err code: ${err.code}, err msg: ${err.message}.`);
   } else {
+    // Create the WantAgent successfully and save the returned WantAgent object.
     wantAgentData = data;
   }
   try {
+    // Cancel the WantAgent instance using Promise.
     wantAgent.cancel(wantAgentData).then((data) => {
       console.info('cancel success.');
     }).catch((err: BusinessError) => {
@@ -750,6 +770,7 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
 }
 
 try {
+  // Call getWantAgent to create a WantAgent object.
   wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
 } catch (err) {
   let code = (err as BusinessError).code;
@@ -776,7 +797,7 @@ The operation to perform is specified by the **actionType** property in the [Wan
 | ----------- | ----------------------------- | ---- | ------------------------------- |
 | agent       | WantAgent                     | Yes  | Target WantAgent object.                  |
 | triggerInfo | [TriggerInfo](js-apis-inner-wantAgent-triggerInfo.md)                   | Yes  | Information carried when the WantAgent object is triggered, for example, **extraInfos**.|
-| callback    | AsyncCallback\<[CompleteData](#completedata)\> | No  | Callback used to return the result.|
+| callback    | AsyncCallback\<[CompleteData](#completedata)\> | No   | Callback function. When the WantAgent instance is actively triggered successfully, err is undefined and data is the data returned by the active trigger; otherwise, err is an error object. |
 
 **Error codes**
 
@@ -828,10 +849,11 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
 };
 
 // getWantAgent callback.
-function getWantAgentCallback(err: BusinessError, data: WantAgent) {
+let getWantAgentCallback = (err: BusinessError, data: WantAgent) => {
   if (err) {
-    console.info(`getWantAgent failed, code: ${err.code}, message: ${err.message}`);
+    console.error(`getWantAgent failed, code: ${err.code}, message: ${err.message}`);
   } else {
+    // Create the WantAgent successfully and save the returned WantAgent object.
     wantAgentData = data;
   }
   // trigger callback
@@ -843,6 +865,7 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
     }
   }
   try {
+    // Call the trigger API to trigger the WantAgent instance to perform the specified operation.
     wantAgent.trigger(wantAgentData, triggerInfo, triggerCallback);
   } catch (err) {
     let code = (err as BusinessError).code;
@@ -852,6 +875,7 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
 }
 
 try {
+  // Call the getWantAgent API to create a WantAgent object.
   wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
 } catch (err) {
   let code = (err as BusinessError).code;
@@ -927,10 +951,11 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
 };
 
 // getWantAgent callback.
-function getWantAgentCallback(err: BusinessError, data: WantAgent) {
+let getWantAgentCallback = (err: BusinessError, data: WantAgent) => {
   if (err) {
     console.error(`getWantAgent failed, code: ${JSON.stringify(err.code)}, message: ${JSON.stringify(err.message)}`);
   } else {
+    // Create the WantAgent successfully and save the returned WantAgent object.
     wantAgent1 = data;
     wantAgent2 = data;
   }
@@ -943,6 +968,7 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
     }
   }
   try {
+    // Call the equal API to determine whether two WantAgent instances are equal.
     wantAgent.equal(wantAgent1, wantAgent2, equalCallback);
   } catch (err) {
     console.error(`equal failed! ${(err as BusinessError).code} ${(err as BusinessError).message}`);
@@ -950,6 +976,7 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
 }
 
 try {
+  // Call the getWantAgent API to create a WantAgent object.
   wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
 } catch (err) {
   console.error(`getWantAgent failed! ${(err as BusinessError).code} ${(err as BusinessError).message}`);
@@ -962,7 +989,7 @@ equal(agent: WantAgent, otherAgent: WantAgent): Promise\<boolean\>
 
 Checks whether two WantAgent objects are equal, so as to determine whether the same operation is from the same application. This API uses a promise to return the result.
 
-Two WantAgent objects are considered equal if they are created by the same application under the current user using identical [WantAgentInfo](js-apis-inner-wantAgent-wantAgentInfo.md) parameters, and neither of them has been canceled using [cancel](#wantagentcancel). In notification scenarios (where notifications carry WantAgent objects), when a notification is updated, the system compares the WantAgent objects from the old and new notifications. If they are not equal, the system removes the WantAgent object from the old notification.
+Two WantAgent instances are equal if they are created by the same application under the current user with the same [WantAgentInfo](js-apis-inner-wantAgent-wantAgentInfo.md) information and neither instance has been canceled by [cancel](#wantagentcancel). In the notification scenario (where notifications carry WantAgent instances), when a notification is updated, the WantAgent instances in the two notifications are compared. If they are not equal, the WantAgent instance in the old notification is deleted.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -972,7 +999,7 @@ Two WantAgent objects are considered equal if they are created by the same appli
 
 | Name      | Type     | Mandatory| Description         |
 | ---------- | --------- | ---- | ------------- |
-| agent      | WantAgent | Yes  | The first WantAgent object.|
+| agent      | [WantAgent](#wantagent) | Yes   | WantAgent object. |
 | otherAgent | WantAgent | Yes  | Target WantAgent object.|
 
 **Return value**
@@ -1028,25 +1055,28 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
 };
 
 // getWantAgent callback.
-function getWantAgentCallback(err: BusinessError, data: WantAgent) {
+let getWantAgentCallback = (err: BusinessError, data: WantAgent) => {
   if (err) {
     console.error(`getWantAgent failed, code: ${JSON.stringify(err.code)}, message: ${JSON.stringify(err.message)}`);
   } else {
+    // Create the WantAgent successfully and save the returned WantAgent object.
     wantAgent1 = data;
     wantAgent2 = data;
   }
   try {
+    // Use Promise to determine whether two WantAgent instances are equal.
     wantAgent.equal(wantAgent1, wantAgent2).then((data) => {
       console.info(`equal ok! ${JSON.stringify(data)}`);
     }).catch((err: BusinessError) => {
-      console.error(`equal failed! ${err.code} ${err.message}`);
-    })
+    console.error(`equal failed! ${err.code} ${err.message}`);
+  });
   } catch (err) {
     console.error(`equal failed! ${(err as BusinessError).code} ${(err as BusinessError).message}`);
   }
 }
 
 try {
+  // Call the getWantAgent API to create a WantAgent object.
   wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
 } catch (err) {
   console.error(`getWantAgent failed! ${(err as BusinessError).code} ${(err as BusinessError).message}`);
@@ -1055,7 +1085,7 @@ try {
 
 ## wantAgent.getOperationType
 
-getOperationType(agent: WantAgent, callback: AsyncCallback\<number>): void
+getOperationType(agent: WantAgent, callback: AsyncCallback\<number\>): void
 
 Obtains the [operation type](#operationtype) of a WantAgent object. This API uses an asynchronous callback to return the result.
 
@@ -1068,7 +1098,7 @@ Obtains the [operation type](#operationtype) of a WantAgent object. This API use
 | Name      | Type                    | Mandatory| Description                                   |
 | ---------- | ------------------------ | ---- | --------------------------------------- |
 | agent      | WantAgent                | Yes  | Target WantAgent object.                          |
-| callback   | AsyncCallback\<number> | Yes  | Callback used to return the operation type.|
+| callback   | AsyncCallback\<number\> | Yes   | Callback function. When the OperationType information is obtained successfully, err is undefined and data is the value of OperationType; otherwise, err is an error object. |
 
 **Error codes**
 
@@ -1119,10 +1149,11 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
 };
 
 // getWantAgent callback.
-function getWantAgentCallback(err: BusinessError, data: WantAgent) {
+let getWantAgentCallback = (err: BusinessError, data: WantAgent) => {
   if (err) {
     console.error(`getWantAgent failed, code: ${JSON.stringify(err.code)}, message: ${JSON.stringify(err.message)}`);
   } else {
+    // Create the WantAgent successfully and save the returned WantAgent object.
     wantAgentData = data;
   }
   // getOperationTypeCallback callback
@@ -1134,6 +1165,7 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
     }
   }
   try {
+    // Call the getOperationType API to obtain the operation type of the WantAgent instance.
     wantAgent.getOperationType(wantAgentData, getOperationTypeCallback);
   } catch (err) {
     console.error(`getOperationTypeCallback failed! ${(err as BusinessError).code} ${(err as BusinessError).message}`);
@@ -1141,6 +1173,7 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
 }
 
 try {
+  // Call the getWantAgent API to create a WantAgent object.
   wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
 } catch (err) {
   console.error(`getWantAgent failed! ${(err as BusinessError).code} ${(err as BusinessError).message}`);
@@ -1161,13 +1194,13 @@ Obtains the [operation type](#operationtype) of a WantAgent object. This API use
 
 | Name      | Type     | Mandatory| Description         |
 | ---------- | --------- | ---- | ------------- |
-| agent      | WantAgent | Yes  | Target WantAgent object.|
+| agent      | [WantAgent](#wantagent) | Yes   | WantAgent object. |
 
 **Return value**
 
 | Type                                                       | Description                                                        |
 | ----------------------------------------------------------- | ------------------------------------------------------------ |
-| Promise\<number> | Promise used to return the result.|
+| Promise\<number\> | Promise object used to return the OperationType result. |
 
 **Error codes**
 
@@ -1218,13 +1251,15 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
 };
 
 // getWantAgent callback.
-function getWantAgentCallback(err: BusinessError, data: WantAgent) {
+let getWantAgentCallback = (err: BusinessError, data: WantAgent) => {
   if (err) {
     console.error(`getWantAgent failed, code: ${JSON.stringify(err.code)}, message: ${JSON.stringify(err.message)}`);
   } else {
+    // Create the WantAgent successfully and save the returned WantAgent object.
     wantAgentData = data;
   }
   try {
+    // Obtain the operation type of the WantAgent instance using Promise.
     wantAgent.getOperationType(wantAgentData).then((data) => {
       console.info(`getOperationType ok! ${JSON.stringify(data)}`);
     }).catch((err: BusinessError) => {
@@ -1236,6 +1271,7 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
 }
 
 try {
+  // Call the getWantAgent API to create a WantAgent object.
   wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
 } catch (err) {
   console.error(`getWantAgent failed! ${(err as BusinessError).code} ${(err as BusinessError).message}`);

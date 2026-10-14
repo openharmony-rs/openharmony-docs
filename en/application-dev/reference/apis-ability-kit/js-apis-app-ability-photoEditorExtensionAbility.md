@@ -5,7 +5,8 @@
 <!--Owner: @liusu23-->
 <!--Designer: @xukeke-->
 <!--Tester: @lusq-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=e0214054a7df2ce46c1cc90c27d2ee8fbbb7a19d translatedAt=2026-09-03T10:27:24.495Z pushedAt=2026-09-05T10:47:30.414Z -->
 
 The PhotoEditorExtensionAbility enables your application to provide an image editing page for applications that do not have the image editing capability. It inherits from the [ExtensionAbility](js-apis-app-ability-extensionAbility.md). After an application uses [startAbilityByType](js-apis-inner-application-uiAbilityContext.md#startability) to start a vertical domain panel with available image editing applications that have implemented the PhotoEditorExtensionAbility, the user can select one of the applications on the panel to display an image editing page.
 

@@ -6,6 +6,7 @@
 <!--Designer: @yangzhongkai-->
 <!--Tester: @liangchengguang-->
 <!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=f5bb08366bded218f62af03ccb8ad7ccd6ffbbd1 translatedAt=2026-09-03T08:43:24.873Z pushedAt=2026-09-05T10:47:30.102Z -->
 
 ## Overview
 
@@ -34,7 +35,7 @@ Provides the type declaration of the ExtensionAbility callback function and the 
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [typedef void AbilityRuntime_Extension_CreateFunc(AbilityRuntime_ExtensionInstanceHandle handle, const char *abilityName);](#abilityruntime_extension_createfunc) | AbilityRuntime_Extension_CreateFunc | Type of the callback function for ExtensionAbility creation. Callback function that must be implemented in the ExtensionAbility, which is used to instantiate the ExtensionAbility.|
+| [typedef void AbilityRuntime_Extension_CreateFunc(AbilityRuntime_ExtensionInstanceHandle handle, const char *abilityName);](#abilityruntime_extension_createfunc) | AbilityRuntime_Extension_CreateFunc | Defines the callback function type that must be implemented in ExtensionAbility to instantiate the ExtensionAbility. |
 
 ### Variable
 
@@ -60,7 +61,7 @@ Defines the callback function type for ExtensionAbility creation. Callback funct
 
 | Name| Description|
 |--------|------|
-| [AbilityRuntime_ExtensionInstanceHandle](capi-abilityruntime-extensioninstance8h.md) handle | Pointer to the AbilityRuntime_ExtensionInstanceHandle instance passed by the callback function.|
+| [AbilityRuntime_ExtensionInstanceHandle](capi-abilityruntime-extensioninstance8h.md) handle | Instance handle passed in by the callback function. |
 | const char *abilityName | Name of the ExtensionAbility passed by the callback function.|
 
 ## Variable Description

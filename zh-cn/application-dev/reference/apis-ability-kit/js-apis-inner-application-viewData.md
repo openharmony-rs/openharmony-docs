@@ -1,4 +1,4 @@
-# ViewData
+# ViewData (视图数据)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
@@ -31,5 +31,5 @@ import { autoFillManager } from '@kit.AbilityKit';
 | ------------- | ------ | ---- | ---- | --------- |
 | bundleName    | string | 否   | 否   | 应用的包名。 |
 | pageUrl       | string | 否   | 否   | 页面的url。 |
-| pageNodeInfos | Array\<[PageNodeInfo](js-apis-inner-application-pageNodeInfo.md)> | 否   | 否   | 页面节点的信息。 |
-| pageRect      | [AutoFillRect](js-apis-inner-application-autoFillRect.md)         | 否   | 否   | 页面的位置坐标与宽高信息。在PC/2in1设备上，密码保险箱以弹窗形式展示，为保证弹窗位置跟随输入框，left和top需置为0。 |
+| pageNodeInfos | Array\<[PageNodeInfo](js-apis-inner-application-pageNodeInfo.md)> | 否 | 否 | 页面节点的信息。 |
+| pageRect | [AutoFillRect](js-apis-inner-application-autoFillRect.md) | 否 | 否 | 页面的位置坐标与宽高信息。在PC/2in1设备上，密码保险箱以弹窗形式展示，为保证弹窗位置跟随输入框，left和top需置为0。 |

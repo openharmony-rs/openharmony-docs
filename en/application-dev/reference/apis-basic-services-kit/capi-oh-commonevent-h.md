@@ -2,9 +2,10 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-09-29T09:40:42.685Z pushedAt=2026-10-08T02:39:02.483Z -->
 
 ## Overview
 
@@ -28,7 +29,7 @@ This module provides APIs for three processes: subscription, publishing, and ord
 
 > If no additional property is required, you can call **OH_CommonEvent_Publish(event)** to publish the event.
 
-**Combination 3: processing ordered common events**
+**Combination 3: processing [ordered common events](../../basic-services/common-event/common-event-glossary.md#ordered-common-event)**
 
 Ordered common events are controlled by the subscriber handle in the subscription callback. The subscriber handle must be saved when the subscriber is created so that it can be used in the callback.
 
@@ -125,7 +126,7 @@ Note that this module follows the typical lifecycle of creation, use, and releas
 | [CommonEvent_ErrCode OH_CommonEvent_SetDoubleArrayToParameters(CommonEvent_Parameters* param, const char* key,const double* value, size_t num)](#oh_commonevent_setdoublearraytoparameters) | - | Sets the double array with a specific key for the additional information of a common event.|
 | [CommonEvent_ErrCode OH_CommonEvent_Publish(const char* event)](#oh_commonevent_publish) | - | Publishes a common event.|
 | [CommonEvent_ErrCode OH_CommonEvent_PublishWithInfo(const char* event, const CommonEvent_PublishInfo* info)](#oh_commonevent_publishwithinfo) | - | Publishes a common event with specified properties.|
-| [bool OH_CommonEvent_IsOrderedCommonEvent(const CommonEvent_Subscriber* subscriber)](#oh_commonevent_isorderedcommonevent) | - | Checks whether a common event is an ordered one.|
+| [bool OH_CommonEvent_IsOrderedCommonEvent(const CommonEvent_Subscriber* subscriber)](#oh_commonevent_isorderedcommonevent) | - | Checks whether the current common event is an [ordered common event](../../basic-services/common-event/common-event-glossary.md#ordered-common-event). |
 | [bool OH_CommonEvent_FinishCommonEvent(CommonEvent_Subscriber* subscriber)](#oh_commonevent_finishcommonevent) | - | Finishes an ordered common event.|
 | [bool OH_CommonEvent_GetAbortCommonEvent(const CommonEvent_Subscriber* subscriber)](#oh_commonevent_getabortcommonevent) | - | Checks whether an ordered common event is aborted.|
 | [bool OH_CommonEvent_AbortCommonEvent(CommonEvent_Subscriber* subscriber)](#oh_commonevent_abortcommonevent) | - | Aborts an ordered common event when used with [OH_CommonEvent_FinishCommonEvent](#oh_commonevent_finishcommonevent). After the abort, the common event is not sent to the next subscriber.|
@@ -152,9 +153,10 @@ Enumerates the error codes.
 | Value| Description|
 | -- | -- |
 | COMMONEVENT_ERR_OK = 0 | Operation successful.|
+| COMMONEVENT_ERR_PERMISSION_ERROR = 201 | Permission error. |
 | COMMONEVENT_ERR_INVALID_PARAMETER = 401 | Invalid parameter. The parameter is invalid. Check the parameter type, value range, and whether the parameter is empty.|
 | COMMONEVENT_ERR_SENDING_LIMIT_EXCEEDED = 1500003| Event sending frequency is too high. Check whether the application sends common events too frequently. If more than 20 common events are sent every 5 milliseconds, reduce the common event sending frequency or increase the sending interval and try again.<br>**Since**: 20|
-| COMMONEVENT_ERR_NOT_SYSTEM_SERVICE = 1500004 | The third-party application fails to send system common events. Check whether the current application is a system application or whether the current service is a system service.|
+| COMMONEVENT_ERR_NOT_SYSTEM_SERVICE = 1500004 | Third-party applications cannot send [system common events](../../basic-services/common-event/common-event-glossary.md#system-common-event). Check whether the current application is a system application or whether the current service is a system service. |
 | COMMONEVENT_ERR_SENDING_REQUEST_FAILED = 1500007 | Failed to send IPC requests. Do not set up connections frequently. Try again later.|
 | COMMONEVENT_ERR_INIT_UNDONE = 1500008 | Services not initialized. Try again later.|
 | COMMONEVENT_ERR_OBTAIN_SYSTEM_PARAMS = 1500009 | System error. Try again later.|
@@ -201,7 +203,7 @@ Creates the subscriber information.
 | Name| Description|
 | -- | -- |
 | const char* events[] | Pointer to the common events. The actual number of subscribed common events is the smaller value between **eventsNum** and **events**.|
-| int32_t eventsNum | Number of common events to subscribe to. The value is a non-negative integer and is the length of the **events** array.|
+| int32_t eventsNum | Number of common events to subscribe to. The value is a non-negative integer and should be the same as the actual length of the **events** array. |
 
 **Returns**
 
@@ -253,7 +255,7 @@ Sets the publisher bundle name.
 | Name| Description|
 | -- | -- |
 | [CommonEvent_SubscribeInfo](capi-oh-commonevent-commonevent-subscribeinfo.md)* info | Pointer to the subscriber information object for which the publisher permission is to be set.|
-| const char* bundleName | Pointer to the bundle name. This parameter is used to specify that the subscriber receives only public events published by the publisher with the specified bundle name. If this parameter is not set, the subscriber can receive all public events published by the app.|
+| const char* bundleName | Pointer to the bundle name to set. After this parameter is set, only the subscriber with the specified bundle name can receive the common event. If this parameter is left empty, all subscribers can receive the common event. |
 
 **Returns**
 
@@ -348,7 +350,7 @@ Subscribes to a common event.
 
 | Type| Description|
 | -- | -- |
-| [CommonEvent_ErrCode](#commonevent_errcode) | Returns an execution result.<br>         [COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode): Operation is successful.<br>         [COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode): The parameter is invalid.<br>         [COMMONEVENT_ERR_SENDING_REQUEST_FAILED](capi-oh-commonevent-h.md#commonevent_errcode): Failed to send IPC requests.<br>         [COMMONEVENT_ERR_INIT_UNDONE](capi-oh-commonevent-h.md#commonevent_errcode): The common event service is not initialized.<br>         [COMMONEVENT_ERR_SUBSCRIBER_NUM_EXCEEDED](capi-oh-commonevent-h.md#commonevent_errcode): The number of subscribers in the process exceeds the system limit (200).<br>         [COMMONEVENT_ERR_ALLOC_MEMORY_FAILED](capi-oh-commonevent-h.md#commonevent_errcode): Failed to allocate memory.|
+| [CommonEvent_ErrCode](#commonevent_errcode) | Returns an execution result.<br>         [COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode): Operation is successful.<br>         [COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode): The parameter subscriber is invalid.<br>         [COMMONEVENT_ERR_SENDING_REQUEST_FAILED](capi-oh-commonevent-h.md#commonevent_errcode): Failed to send IPC requests.<br>         [COMMONEVENT_ERR_INIT_UNDONE](capi-oh-commonevent-h.md#commonevent_errcode): [COMMONEVENT_ERR_INIT_UNDONE](capi-oh-commonevent-h.md#commonevent_errcode): The [common event service](../../basic-services/common-event/common-event-glossary.md#common-event-service-ces) is not initialized.<br>         [COMMONEVENT_ERR_SUBSCRIBER_NUM_EXCEEDED](capi-oh-commonevent-h.md#commonevent_errcode): The number of subscribers in the process exceeds the system limit (200).<br>         [COMMONEVENT_ERR_ALLOC_MEMORY_FAILED](capi-oh-commonevent-h.md#commonevent_errcode): Failed to allocate memory. |
 
 ### OH_CommonEvent_UnSubscribe()
 
@@ -517,7 +519,7 @@ Creates a property object of a common event.
 
 | Name| Description|
 | -- | -- |
-| bool ordered | Whether the common event is an ordered one.<br> - **true**: ordered common event.<br> - **false**: unordered common event.|
+| bool ordered | Whether the event is an [ordered common event](../../basic-services/common-event/common-event-glossary.md#ordered-common-event).<br> - **true**: ordered common event.<br> - **false**: [unordered common event](../../basic-services/common-event/common-event-glossary.md#unordered-common-event) |
 
 **Returns**
 
@@ -562,7 +564,7 @@ Sets the bundle name of a common event.
 | Name| Description|
 | -- | -- |
 | [CommonEvent_PublishInfo](capi-oh-commonevent-commonevent-publishinfo.md)* info | Pointer to the property object of a common event.|
-| const char* bundleName | Pointer to the bundle name to set.|
+| const char* bundleName | Subscriber bundle name to set. After setting, only subscribers with the specified bundle name can receive this common event. When this parameter is empty, all subscribers can receive it. |
 
 **Returns**
 
@@ -642,7 +644,7 @@ Sets the result data (string type) of a common event.
 | -- | -- |
 | [CommonEvent_PublishInfo](capi-oh-commonevent-commonevent-publishinfo.md)* info | Pointer to the property object of a common event.|
 | const char* data | Pointer to the result data to set. The value is a string. The valid data length is the smaller value between **length** and **data**.|
-| size_t length | Length of the result data. The value is the length of the **data** string.|
+| size_t length | Length of the result data. The value should be the same as the actual length of the **data** string. |
 
 **Returns**
 
@@ -747,7 +749,7 @@ int OH_CommonEvent_GetIntFromParameters(const CommonEvent_Parameters* para, cons
 
 **Description**
 
-Obtains the int data with a specific key from the additional information of a common event. 
+Obtains the int data with a specific key from the additional information of a common event.
 
 **Since**: 12
 
@@ -1307,7 +1309,7 @@ Publishes a common event.
 
 | Type| Description|
 | -- | -- |
-| [CommonEvent_ErrCode](#commonevent_errcode) | Returns an execution result.<br>         [COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode): Operation is successful.<br>         [COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode): The parameter is invalid.<br>         [COMMONEVENT_ERR_SENDING_LIMIT_EXCEEDED](capi-oh-commonevent-h.md#commonevent_errcode): Event sending frequency is too high.<br>   [COMMONEVENT_ERR_SENDING_REQUEST_FAILED](capi-oh-commonevent-h.md#commonevent_errcode): Failed to send IPC requests.<br>         [COMMONEVENT_ERR_INIT_UNDONE](capi-oh-commonevent-h.md#commonevent_errcode): The common event service is not initialized.         [COMMONEVENT_ERR_NOT_SYSTEM_SERVICE](capi-oh-commonevent-h.md#commonevent_errcode): The third-party app cannot send system common events.|
+| [CommonEvent_ErrCode](#commonevent_errcode) | Returns an execution result.<br>         [COMMONEVENT_ERR_OK](capi-oh-commonevent-h.md#commonevent_errcode): Operation is successful.<br>         [COMMONEVENT_ERR_INVALID_PARAMETER](capi-oh-commonevent-h.md#commonevent_errcode): The parameter is invalid.<br>         [COMMONEVENT_ERR_SENDING_LIMIT_EXCEEDED](capi-oh-commonevent-h.md#commonevent_errcode): Event sending frequency is too high.<br>   [COMMONEVENT_ERR_SENDING_REQUEST_FAILED](capi-oh-commonevent-h.md#commonevent_errcode): Failed to send IPC requests.<br>         [COMMONEVENT_ERR_INIT_UNDONE](capi-oh-commonevent-h.md#commonevent_errcode): The common event service is not initialized. |
 
 ### OH_CommonEvent_PublishWithInfo()
 
@@ -1555,10 +1557,12 @@ Sets the result data (string type) of an ordered common event.
 | -- | -- |
 | [CommonEvent_Subscriber](#variables)* subscriber| Pointer to the common event subscriber.|
 | const char* data | Pointer to the result data to set. The valid data length is the smaller value between **length** and **data**.|
-| size_t length | Length of the data to be transferred, in bytes. The value is the length of the **data** string.|
+| size_t length | Length of the data to be transferred, in bytes. The value should be the same as the actual length of the **data** string. |
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
 | bool | Returns **true** if the operation is successful; returns **false** otherwise.|
+
+

@@ -355,7 +355,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
   let ctx = offCanvas.getContext('2d');
   
   class DrawingRenderNode extends RenderNode {
-
+  
     async draw(context: DrawContext) {
       const canvas = context.canvas;
       let pixelMap = ctx.getPixelMap(0, 0, 150, 150);
@@ -426,7 +426,7 @@ viewPort(value: { x?: number | string, y?: number | string, width?: number | str
           .height(150)
           .backgroundColor(Color.Grey)
           .onClick(() => {
-            this.meshArray = [0, 0, 50, 0, 410, 0, 0, 180, 50, 180, 410, 180, 0, 360, 50, 360, 410, 360, 0];
+            this.meshArray = [0, 0, 50, 0, 410, 0, 0, 180, 50, 180, 410, 180, 0, 360, 50, 360, 410, 360];
           })
         Button('change mesh')
           .margin(5)

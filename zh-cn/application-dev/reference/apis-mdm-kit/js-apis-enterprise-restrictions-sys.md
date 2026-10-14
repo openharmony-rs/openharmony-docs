@@ -1,4 +1,4 @@
-# @ohos.enterprise.restrictions（限制类策略）(系统接口)
+# @ohos.enterprise.restrictions (限制类策略)(系统接口)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima; @weizai16-->

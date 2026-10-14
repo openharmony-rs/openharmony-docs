@@ -6,10 +6,11 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=4a27fe9fcb9698d710b4ee8875dc73cdcfac03c3 translatedAt=2026-09-14T02:02:13.024Z pushedAt=2026-09-14T12:25:44.018Z -->
 
 ## Overview
 
-Provides APIs for symmetric key operations.
+Describes the APIs provided by OpenHarmony for managing symmetric keys.
 
 **Since**: 12
 

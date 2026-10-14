@@ -47,7 +47,7 @@ showAd(ad: Advertisement, options: AdDisplayOptions, context?: common.UIAbilityC
 
 | 错误码ID | 错误信息 | 
 | -------- | -------- |
-| 401 | Invalid input parameter. Possible causes:<br/>1. Mandatory parameters are left unspecified. | 
+| 401 | Parameter error. Possible causes:<br/>1. Mandatory parameters are left unspecified. | 
 | 21800001 | System internal error. | 
 | 21800004 | Failed to display the ad. | 
 
@@ -101,8 +101,8 @@ getAdRequestBody(adParams: AdRequestParams[], adOptions: AdOptions): Promise&lt;
 
 | 错误码ID | 错误信息 | 
 | -------- | -------- |
-| 401 | Invalid input parameter. Possible causes:<br/>1. Mandatory parameters are left unspecified.<br/>2. Incorrect parameter types.<br/>3. Parameter verification failed. | 
-| 801 | Device not supported. | 
+| 401 | Parameter error. Possible causes:<br/>1. Mandatory parameters are left unspecified.<br/>2. Incorrect parameter types.<br/>3. Parameter verification failed. | 
+| 801 | Capability not supported. | 
 | 21800001 | System internal error. | 
 
 **示例：**
@@ -138,7 +138,7 @@ parseAdResponse(adResponse: string, listener: MultiSlotsAdLoadListener, context:
 | -------- | -------- | -------- | -------- |
 | adResponse | string | 是 | 广告响应体。 | 
 | listener | [MultiSlotsAdLoadListener](js-apis-advertising.md#multislotsadloadlistener) | 是 | 请求广告回调监听。 | 
-| context    | common.[UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是 | UIAbility的上下文环境。 | 
+| context | common.[UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是 | UIAbility的上下文环境。 |
 
 **错误码：**
 
@@ -146,8 +146,8 @@ parseAdResponse(adResponse: string, listener: MultiSlotsAdLoadListener, context:
 
 | 错误码ID | 错误信息 | 
 | -------- | -------- |
-| 401 | Invalid input parameter. Possible causes:<br/>1. Mandatory parameters are left unspecified.<br/>2. Incorrect parameter types.<br/>3. Parameter verification failed. | 
-| 801 | Device not supported. | 
+| 401 | Parameter error. Possible causes:<br/>1. Mandatory parameters are left unspecified.<br/>2. Incorrect parameter types.<br/>3. Parameter verification failed. | 
+| 801 | Capability not supported. | 
 | 21800001 | System internal error. | 
 | 21800005 | Failed to parse the ad response. | 
 
@@ -194,7 +194,7 @@ registerWebAdInterface(controller: web_webview.WebviewController, context: commo
 | 参数名 | 类型 | 必填 | 说明 | 
 | -------- | -------- | -------- | -------- |
 | controller | web_webview.[WebviewController](../apis-arkweb/arkts-apis-webview-WebviewController.md) | 是 | Web组件控制器。 |
-| context    | common.[UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是 | UIAbility的上下文环境。 |
+| context | common.[UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是 | UIAbility的上下文环境。 |
 
 **错误码：**
 
@@ -202,7 +202,7 @@ registerWebAdInterface(controller: web_webview.WebviewController, context: commo
 
 | 错误码ID | 错误信息 | 
 | -------- | -------- |
-| 401 | Invalid input parameter. Possible causes:<br/>1. Mandatory parameters are left unspecified. | 
+| 401 | Parameter error. Possible causes:<br/>1. Mandatory parameters are left unspecified. | 
 | 21800001 | System internal error. | 
 
 **示例：**
@@ -250,7 +250,7 @@ registerWebAdInterface(controller: web_webview.WebviewController, context: commo
 | 参数名 | 类型 | 必填 | 说明 | 
 | -------- | -------- | -------- | -------- |
 | controller  | web_webview.[WebviewController](../apis-arkweb/arkts-apis-webview-WebviewController.md) | 是 | Web组件控制器。 |
-| context     | common.[UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是 | UIAbility的上下文环境。 |
+| context | common.[UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是 | UIAbility的上下文环境。 |
 | needRefresh | boolean | 是 | 是否需要刷新页面（true: 需要；false: 不需要）。 | 
 
 **错误码：**
@@ -259,7 +259,7 @@ registerWebAdInterface(controller: web_webview.WebviewController, context: commo
 
 | 错误码ID | 错误信息 | 
 | -------- | -------- |
-| 401 | Invalid input parameter. Possible causes: Mandatory parameters are left unspecified. | 
+| 401 | Parameter error. Possible causes: Mandatory parameters are left unspecified. | 
 | 21800001 | System internal error. | 
 
 **示例：**
@@ -315,7 +315,7 @@ deleteWebAdInterface(controller: web_webview.WebviewController, needRefresh: boo
 
 | 错误码ID | 错误信息 | 
 | -------- | -------- |
-| 401 | Invalid input parameter. Possible causes: Mandatory parameters are left unspecified. | 
+| 401 | Parameter error. Possible causes: Mandatory parameters are left unspecified. | 
 | 21800001 | System internal error. | 
 
 **示例：**
@@ -409,8 +409,8 @@ loadAd(adParam: AdRequestParams, adOptions: AdOptions, listener: AdLoadListener)
 
 | 错误码ID | 错误信息 | 
 | -------- | -------- |
-| 401 | Invalid input parameter. Possible causes:<br/>1. Mandatory parameters are left unspecified.<br/>2. Incorrect parameter types.<br/>3. Parameter verification failed. | 
-| 801 | Device not supported.<br>适用版本：12+ | 
+| 401 | Parameter error. Possible causes:<br/>1. Mandatory parameters are left unspecified.<br/>2. Incorrect parameter types.<br/>3. Parameter verification failed. | 
+| 801 | Capability not supported.<br>适用版本：12+ | 
 | 21800001 | System internal error. | 
 | 21800003 | Failed to load the ad request. | 
 
@@ -470,8 +470,8 @@ loadAdWithMultiSlots(adParams: AdRequestParams[], adOptions: AdOptions, listener
 
 | 错误码ID | 错误信息 | 
 | -------- | -------- |
-| 401 | Invalid input parameter. Possible causes:<br/>1. Mandatory parameters are left unspecified.<br/>2. Incorrect parameter types.<br/>3. Parameter verification failed. | 
-| 801 | Device not supported.<br>适用版本：12+ | 
+| 401 | Parameter error. Possible causes:<br/>1. Mandatory parameters are left unspecified.<br/>2. Incorrect parameter types.<br/>3. Parameter verification failed. | 
+| 801 | Capability not supported.<br>适用版本：12+ | 
 | 21800001 | System internal error. | 
 | 21800003 | Failed to load the ad request. | 
 

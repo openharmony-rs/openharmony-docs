@@ -1,4 +1,4 @@
-# @ohos.enterprise.deviceInfo（设备信息管理）
+# @ohos.enterprise.deviceInfo (设备信息管理)
 <!--Kit: MDM Kit-->
 <!--Subsystem: Customization-->
 <!--Owner: @huanleima; @weizai16-->

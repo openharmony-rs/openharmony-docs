@@ -1,4 +1,4 @@
-# AutoFillRequest (系统接口)
+# AutoFillRequest (自动填充请求)(系统接口)
 
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
@@ -13,7 +13,7 @@
 > 
 > 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 当前页面仅包含本模块的系统接口，其他公开接口参见[AutoFillRequest](js-apis-inner-application-autoFillRequest.md)。
+> 当前页面仅包含本模块的系统接口，其他公开接口参见[AutoFillRequest (自动填充请求)](js-apis-inner-application-autoFillRequest.md)。
 
 ## 导入模块
 
@@ -31,7 +31,7 @@ import { autoFillManager } from '@kit.AbilityKit';
 
 | 名称        | 类型                 | 只读 | 可选 | 说明                                                         |
 | ----------- | -------------------- | ---- | ---- | ------------------------------------------------------------ |
-| customData<sup>13+</sup>    | [CustomData](js-apis-inner-application-customData-sys.md)               | 否   | 否   | 自定义数据。             |
+| customData<sup>13+</sup> | [CustomData](js-apis-inner-application-customData-sys.md) | 否 | 否 | 自定义数据。 |
 | isPopup<sup>12+</sup>    | boolean               | 否   | 否   | 自动填充服务是否拉起popup窗口。<br>true：当前拉起popup窗口。<br>false：当前拉起模态窗。        |
 
 ## UpdateRequest<sup>12+</sup>
@@ -44,7 +44,7 @@ import { autoFillManager } from '@kit.AbilityKit';
 
 | 名称        | 类型                 | 只读 | 可选 | 说明                                                         |
 | ----------- | -------------------- | ---- | ---- | ------------------------------------------------------------ |
-| viewData    | [ViewData](js-apis-inner-application-viewData-sys.md)               | 否   | 否   | 页面数据，包含页面的节点信息、字段属性和对应的值等结构信息。    |
+| viewData | [ViewData](js-apis-inner-application-viewData-sys.md) | 否 | 否 | 页面数据，包含页面的节点信息、字段属性和对应的值等结构信息。 |
 
 ## FillResponse
 
@@ -56,7 +56,7 @@ import { autoFillManager } from '@kit.AbilityKit';
 
 | 名称        | 类型                 | 只读 | 可选 | 说明                                                         |
 | ----------- | -------------------- | ---- | ---- | ------------------------------------------------------------ |
-| viewData    | [ViewData](js-apis-inner-application-viewData-sys.md)               | 否   | 否   | 页面数据，包含页面的节点信息、字段属性和对应的值等结构信息。    |
+| viewData | [ViewData](js-apis-inner-application-viewData-sys.md) | 否 | 否 | 页面数据，包含页面的节点信息、字段属性和对应的值等结构信息。 |
 
 ## FillRequestCallback
 
@@ -86,7 +86,7 @@ onSuccess(response: FillResponse): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 202  | Permission denied, non-system app called system api. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
 | 401  | Mandatory parameters are left unspecified. |
 | 16000050 | Internal error. |
 
@@ -183,7 +183,7 @@ onFailure(): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 202 | Permission denied, non-system app called system api. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 16000050 | Internal error. |
 
 **示例：**
@@ -278,7 +278,7 @@ onCancel(fillContent?: string): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 202  | Permission denied, non-system app called system api. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
 | 401  | Parameter error. Possible causes: 1. The input parameter is not valid parameter;2. Mandatory parameters are left unspecified. <br>适用版本：12+|
 | 16000050 | Internal error. |
 
@@ -374,7 +374,7 @@ setAutoFillPopupConfig(autoFillPopupConfig: AutoFillPopupConfig ): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 202  | Permission denied, non-system app called system api. |
+| 202  | Permission verification failed. A non-system application calls a system API. |
 | 401  | Mandatory parameters are left unspecified. |
 | 16000050 | Internal error. |
 
@@ -512,7 +512,7 @@ onSuccess(): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 202 | Permission denied, non-system app called system api. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 16000050 | Internal error. |
 
 **示例：**
@@ -601,7 +601,7 @@ onFailure(): void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 202 | Permission denied, non-system app called system api. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 16000050 | Internal error. |
 
 **示例：**

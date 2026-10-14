@@ -5,12 +5,15 @@
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=8aa8522c1582655206875d9c89c21656113a2dda translatedAt=2026-09-03T03:49:11.036Z pushedAt=2026-09-07T07:10:01.719Z -->
 
-The **DataPanel** component is used to display proportions in a chart.
+The **DataPanel** component is used to display the proportions of multiple data items in a chart. It supports two display types: circle and linear. You can customize visual effects such as the color, shadow, and background. It is applicable to data visualization scenarios such as storage capacity, task progress, and resource proportions, helping users intuitively understand data distribution.
 
 >  **NOTE**
 >
-> This component is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
+>
+> - This component supports [WithTheme](./ts-container-with-theme.md) since API version 26.0.0.
 
 
 ## Child Components
@@ -34,7 +37,7 @@ Creates a data panel component.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| options |  [DataPanelOptions](#datapaneloptions)| Yes| Parameters of the data panel.|
+| options | [DataPanelOptions](#datapaneloptions) | Yes | Data panel configuration options, used to set the data value list, maximum value, and type of the data panel. |
 
 ## DataPanelOptions
 
@@ -48,9 +51,9 @@ Defines data panel configuration options.
 
 | Name           | Type  | Read-Only| Optional| Description|
 | ----------------- | -------- | ----- | -------- | -------- |
-| values            | number[]   | No  | No | Data value list. A maximum of nine values are supported. If more than nine values are set, only the first nine ones are used. A value less than 0 evaluates to the value **0**.|
-| max               | number     | No  | Yes  |   - When set to a value greater than 0, this parameter indicates the maximum value in the **values** list.<br>- When set to a value equal to or smaller than 0, this parameter indicates the sum of values in the **values** list, and the values are displayed proportionally based on their relative sizes.<br>Default value: **100**|
-| type<sup>8+</sup> | [DataPanelType](#datapaneltype8) | No| Yes| Type of the data panel (dynamic modification is not supported).<br>Default value: **DataPanelType.Circle**|
+| values            | number[]   | No   | No  | Data value list. The array length range is [0, 9]. If more than nine values are set, only the first nine ones are used. A value less than 0 evaluates to the value **0**. |
+| max               | number     | No   | Yes   |   - When set to a value greater than 0, this parameter indicates the maximum value in the **values** list.<br>- When set to a value equal to or smaller than 0, this parameter indicates the sum of values in the **values** list, and the values are displayed proportionally.<br>Default Value: **100**|
+| type<sup>8+</sup> | [DataPanelType](#datapaneltype8) | No | Yes | Type of the data panel (dynamic modification is not supported).<br>The value options are as follows: **DataPanelType.Line** (linear data panel, suitable for displaying comparisons of multiple data segments in limited space) and **DataPanelType.Circle** (circle data panel, suitable for intuitively displaying data proportion relationships).<br>If not passed, the default value is **DataPanelType.Circle**.|
 
 
 ## DataPanelType<sup>8+</sup>
@@ -65,7 +68,7 @@ Enumerates data panel types.
 
 | Name| Value| Description|
 | -------| - | ------------ |
-| Line   | 0 | Line data panel.|
+| Line   | 0 | Linear data panel. |
 | Circle | 4 | Circle data panel.|
 
 
@@ -77,7 +80,7 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 
 closeEffect(value: boolean)
 
-Sets whether to disable the rotation and shadow effects for the component. When the [trackShadow](#trackshadow10) attribute is not configured, this attribute controls the shadow effect. If the shadow effect is enabled, the default shadow style is applied. When **trackShadow** is explicitly set, the **trackShadow** configuration takes precedence.
+Sets whether to disable the rotation and shadow effects for the data proportion chart. When the [trackShadow](#trackshadow10) attribute is not set, this attribute controls the shadow effect. When **closeEffect** is set to **false** (shadow enabled), the default shadow effect is used. When the **trackShadow** attribute is set, the shadow effect is controlled by the value of the **trackShadow** attribute.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -89,7 +92,7 @@ Sets whether to disable the rotation and shadow effects for the component. When 
 
 | Name| Type   | Mandatory| Description                                                  |
 | ------ | ------- | ---- | ------------------------------------------------------ |
-| value  | boolean | Yes  | Whether to disable the rotation and shadow effects for the component.<br>Default value: **false**. **true**: Disable the rotation and shadow effects. **false**: Enable the rotation and shadow effects.|
+| value  | boolean | Yes   | Whether to disable the rotation and shadow effects for the data proportion chart.<br>Default value: **false**, which means the rotation and shadow effects are enabled. The value **true** means the rotation and shadow effects are disabled. |
 
 ### valueColors<sup>10+</sup>
 
@@ -99,13 +102,15 @@ Sets an array of data segment colors.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                                                        | Mandatory| Description                                                       |
 | ------ | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
-| value  | Array<[ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient](#lineargradient10)> | Yes  | Array of data segment colors. A value of the **ResourceColor** type indicates a solid color, and a value of the **LinearGradient** type indicates a color gradient. The array defaults to gradient colors.<br>Default colors for the nine data segments: [{ color: '#F7CE00', offset: 0 }, { color: '#F99B11', offset: 1 }], [{ color: '#F76223', offset: 0 }, { color: '#F2400A', offset: 1 }], [{ color: '#F772AC', offset: 0 }, { color: '#E65392', offset: 1 }], [{ color: '#A575EB', offset: 0 }, { color: '#A12DF7', offset: 1 }], [{ color: '#7B79F7', offset: 0 }, { color: '#4B48F7', offset: 1 }], [{ color: '#4B8AF3', offset: 0 }, { color: '#007DFF', offset: 1 }], [{ color: '#73C1E6', offset: 0 }, { color: '#4FB4E3', offset: 1 }], [{ color: '#A5D61D', offset: 0 }, { color: '#69D14F', offset: 1 }], [{ color: '#A2A2B0', offset: 0 }, { color: '#8E8E93', offset: 1 }]|
+| value  | Array<[ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient](#lineargradient10)> | Yes   | Array of data segment colors. A value of the **ResourceColor** type indicates a solid color, and a value of the **LinearGradient** type indicates a color gradient. The array defaults to gradient colors. The default colors for the nine data segments are: [{ color: '#F7CE00', offset: 0 }, { color: '#F99B11', offset: 1 }], [{ color: '#F76223', offset: 0 }, { color: '#F2400A', offset: 1 }], [{ color: '#F772AC', offset: 0 }, { color: '#E65392', offset: 1 }], [{ color: '#A575EB', offset: 0 }, { color: '#A12DF7', offset: 1 }], [{ color: '#7B79F7', offset: 0 }, { color: '#4B48F7', offset: 1 }], [{ color: '#4B8AF3', offset: 0 }, { color: '#007DFF', offset: 1 }], [{ color: '#73C1E6', offset: 0 }, { color: '#4FB4E3', offset: 1 }], [{ color: '#A5D61D', offset: 0 }, { color: '#69D14F', offset: 1 }], [{ color: '#A2A2B0', offset: 0 }, { color: '#8E8E93', offset: 1 }].<br>**Note:**<br>If the number of colors set is less than the number of data segments, the remaining data segments automatically match the colors in the corresponding order in the default color list. If the number of colors set is greater than the number of data segments, the number of colors displayed is the same as the number of data segments, and the extra colors are ignored. |
 
 ### trackBackgroundColor<sup>10+</sup>
 
@@ -115,13 +120,15 @@ Sets the background color.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                                      | Mandatory| Description                                                        |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Background color.<br>The value is in hexadecimal ARGB notation. The first two digits indicate transparency. Default value: **'#08182431'**|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes   | Background color.<br>Default value: **'#08182431'**, in hexadecimal ARGB format, where the first two digits indicate the transparency. |
 
 ### strokeWidth<sup>10+</sup>
 
@@ -131,21 +138,26 @@ Sets the stroke width of the border. This attribute does not take effect when th
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                        | Mandatory| Description                                                        |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
-| value | [Length](ts-types.md#length) | Yes| Stroke width of the border.<br>Default value: **24**<br>Unit: vp<br>When string values are provided without explicit units, the default unit px will be applied. For example, '10' is equivalent to '10px'.<br>**NOTE**<br>If a value less than 0 is set, the default value is used.<br>If the value exceeds the radius of the ring, the thickness will automatically be adjusted to 12% of the ring's radius to prevent visual issues. Excessively large values may cause the ring to become invisible.|
+| value | [Length](ts-types.md#length) | Yes | Stroke width of the border.<br>Default value: **24**<br>Unit: vp<br>When string values are provided without explicit units, the default unit px will be applied. For example, '10' is equivalent to '10px'.<br>**Note:**<br>This parameter does not take effect when the data panel type is **DataPanelType.Line**.<br>If a value less than 0 is set, the default value is used.<br>If the value is greater than the ring radius, the ring thickness is automatically set to 12% of the ring radius. If the value is too large, the ring may disappear. |
+
 
 ### trackShadow<sup>10+</sup>
 
 trackShadow(value: DataPanelShadowOptions)
 
-Sets the shadow style.
+Sets the shadow style. If this attribute is set, the shadow effect is controlled by this attribute, and the control of **closeEffect** over the shadow effect no longer takes effect (the control of **closeEffect** over the rotation effect is not affected).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -153,7 +165,7 @@ Sets the shadow style.
 
 | Name| Type                                                       | Mandatory| Description                                                 |
 | ------ | ----------------------------------------------------------- | ---- | ----------------------------------------------------- |
-| value  | [DataPanelShadowOptions](#datapanelshadowoptions10) | Yes  | Shadow style.<br>**NOTE**<br>If this parameter is set to **null**, the shadow effect is disabled.|
+| value  | [DataPanelShadowOptions](#datapanelshadowoptions10) | Yes   | Shadow style.<br>**Note:** <br>When set to null, the shadow effect is not enabled. |
 
 ### contentModifier<sup>12+</sup>
 
@@ -163,13 +175,15 @@ Creates a content modifier.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
 
 | Name| Type                                         | Mandatory| Description                                            |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | [ContentModifier](./ts-universal-attributes-content-modifier.md#contentmodifiert)[\<DataPanelConfiguration>](#datapanelconfiguration12)| Yes  | Content modifier to apply to the current component.<br>**modifier**: content modifier. You need a custom class to implement the **ContentModifier** API.|
+| modifier  | [ContentModifier](./ts-universal-attributes-content-modifier.md#contentmodifiert)\<[DataPanelConfiguration](#datapanelconfiguration12) | Yes   | Content modifier to apply to the **DataPanel** component. After this parameter, the content you define replaces the original content displayed by **DataPanel**.<br>**modifier**: content modifier. You need to define a custom class to implement the **ContentModifier** API. |
 
 
 ## DataPanelShadowOptions<sup>10+</sup>
@@ -178,11 +192,13 @@ Inherits from [MultiShadowOptions](ts-information-display-common.md#multishadowo
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name         | Type| Read-Only| Optional| Description|
 | ------------- | ------- | ---- | -------- | -------- |
-| colors | Array<[ResourceColor](ts-types.md#resourcecolor) \| [LinearGradient](#lineargradient10)> | No| Yes| Array of shadow colors for data segments.<br>Default value: same as the value of **valueColors**<br>**NOTE**<br>If the number of the set shadow colors is less than that of the data segments, the number of the displayed shadow colors is the same as the former.<br>If the number of the set shadow colors is greater than that of the data segments, the number of the displayed shadow colors is the same as the latter.|
+| colors | Array<[ResourceColor](ts-types.md#resourcecolor) \| [LinearGradient](#lineargradient10)> | No | Yes | Array of shadow colors for data segments. <br>Default value: same as the value of **valueColors** <br>**Note:** <br>If the number of the set shadow colors is less than that of the data segments, the number of the displayed shadow colors is the same as the former.<br>If the number of the set shadow colors is greater than that of the data segments, the number of the displayed shadow colors is the same as the latter.|
 
 ## LinearGradient<sup>10+</sup>
 
@@ -193,6 +209,8 @@ constructor(colorStops: ColorStop[])
 Describes the linear gradient.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -209,25 +227,29 @@ Describes the gradient color stop.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name         | Type| Read-Only| Optional| Description|
 | ------------- | ------- | ---- | -------- | -------- |
 | color | [ResourceColor](ts-types.md#resourcecolor) | No| No| Color value at the gradient color stop.|
-| offset | [Length](ts-types.md#length) | No| No| Gradient color stop (proportion value between 0 and 1). A value less than 0 evaluates to the value **0**. A value greater than 1 evaluates to the value **1**.<br>**NOTE**<br>If the value is a string that represents a number, it will be converted to a number.<br>For example, **'10vp'** is converted to 10, and **'10%'** is converted to 0.1.|
+| offset | [Length](ts-types.md#length) | No | No | Gradient color stop (proportion value between 0 and 1). A value less than 0 evaluates to the value **0**. A value greater than 1 evaluates to the value **1**.<br>**Note:** <br>If the value is a string that represents a number, it will be converted to a number.<br>For example, **'10vp'** is converted to 10, and **'10%'** is converted to 0.1. |
 
 ## DataPanelConfiguration<sup>12+</sup>
 
-You need a custom class to implement the **ContentModifier** API. Inherits from [CommonConfiguration](ts-universal-attributes-content-modifier.md#commonconfigurationt).
+You need a custom class to implement the **ContentModifier** API. It inherits from [CommonConfiguration](ts-universal-attributes-content-modifier.md#commonconfigurationt).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name | Type   |    Read-Only   |    Optional  |  Description             |
 | ------ | ------ | ------ |-------------------------------- |-------------------------------- |
-| values | number[] | No| No| Current values of the data panel.<br>The length of the array should be within the range of [0, 9].<br>**NOTE**<br>If the array length is greater than 9, the first nine items are used.|
-| maxValue | number | No| No| Maximum value displayed in the data panel.<br>Default value: **100**<br>**NOTE**<br>If the value is less than or equal to 0, **maxValue** is set to the sum of all items in the **values** array and displayed proportionally.|
+| values | number[] | No | No | Current values of the data panel.<br>The array length range is [0, 9].<br>**Note:**<br>If the array length is greater than 9, only the first nine items are used.|
+| maxValue | number | No | No | Maximum value displayed in the data panel.<br>Default value: **100**<br>**Note:** <br>If the value is less than or equal to 0, **maxValue** is set to the sum of all items in the **values** array, and the values are displayed proportionally. |
 
 ## Example
 
@@ -240,7 +262,7 @@ This example shows how to set the data panel type using the **type** attribute o
 @Entry
 @Component
 struct DataPanelExample {
-  public valueArr: number[] = [10, 10, 10, 10, 10, 10, 10, 10, 10]
+  public valueArr: number[] = [10, 10, 10, 10, 10, 10, 10, 10, 10];
 
   build() {
     Column({ space: 5 }) {
@@ -296,28 +318,28 @@ This example demonstrates how to set gradient colors and shadows using the [valu
 @Entry
 @Component
 struct LinearGradientDataPanelExample {
-  public values1: number[] = [20, 20, 20, 20]
+  public values1: number[] = [20, 20, 20, 20];
   public color1: LinearGradient =
-    new LinearGradient([{ color: '#65EEC9A3', offset: 0 }, { color: '#FFEF629F', offset: 1 }])
+      new LinearGradient([{ color: '#65EEC9A3', offset: 0 }, { color: '#FFEF629F', offset: 1 }]);
   public color2: LinearGradient =
-    new LinearGradient([{ color: '#FF67F9D4', offset: 0 }, { color: '#FFFF9554', offset: 1 }])
+      new LinearGradient([{ color: '#FF67F9D4', offset: 0 }, { color: '#FFFF9554', offset: 1 }]);
   public colorShadow1: LinearGradient =
-    new LinearGradient([{ color: '#65EEC9A3', offset: 0 }, { color: '#65EF629F', offset: 1 }])
+      new LinearGradient([{ color: '#65EEC9A3', offset: 0 }, { color: '#65EF629F', offset: 1 }]);
   public colorShadow2: LinearGradient =
-    new LinearGradient([{ color: '#65e26709', offset: 0 }, { color: '#65efbd08', offset: 1 }])
+      new LinearGradient([{ color: '#65e26709', offset: 0 }, { color: '#65efbd08', offset: 1 }]);
   public colorShadow3: LinearGradient =
-    new LinearGradient([{ color: '#6572B513', offset: 0 }, { color: '#6508efa6', offset: 1 }])
+      new LinearGradient([{ color: '#6572B513', offset: 0 }, { color: '#6508efa6', offset: 1 }]);
   public colorShadow4: LinearGradient =
-    new LinearGradient([{ color: '#65ed08f5', offset: 0 }, { color: '#65ef0849', offset: 1 }])
+      new LinearGradient([{ color: '#65ed08f5', offset: 0 }, { color: '#65ef0849', offset: 1 }]);
   @State shadowColorArray: Array<LinearGradient | ResourceColor> =
-    [this.colorShadow1, this.colorShadow2, this.colorShadow3, this.colorShadow4]
-  @State color3: string = '#00FF00'
-  @State color4: string = '#20FF0000'
-  @State colorArray: Array<LinearGradient | ResourceColor> = [this.color1, this.color2, this.color3, this.color4]
-  @State bgColor: string = '#08182431'
-  @State offsetX: number = 15
-  @State offsetY: number = 15
-  @State radius: number = 5
+      [this.colorShadow1, this.colorShadow2, this.colorShadow3, this.colorShadow4];
+  @State color3: string = '#00FF00';
+  @State color4: string = '#20FF0000';
+  @State colorArray: Array<LinearGradient | ResourceColor> = [this.color1, this.color2, this.color3, this.color4];
+  @State bgColor: string = '#08182431';
+  @State offsetX: number = 15;
+  @State offsetY: number = 15;
+  @State radius: number = 5;
 
   build() {
     Column({ space: 5 }) {
@@ -348,35 +370,22 @@ struct LinearGradientDataPanelExample {
 
 ### Example 3: Disabling Animations and Shadows
 
-This example demonstrates how to disable animations and shadows using the [closeEffect](#closeeffect) attribute.
+This example demonstrates how to disable the rotation and shadow effects for the data proportion chart using the [closeEffect](#closeeffect) API.
 
 ```ts
 // xxx.ets
 @Entry
 @Component
 struct LinearGradientDataPanelExample {
-  public values1: number[] = [20, 20, 20, 20]
+  public values1: number[] = [20, 20, 20, 20];
   public color1: LinearGradient =
-    new LinearGradient([{ color: '#65EEC9A3', offset: 0 }, { color: '#FFEF629F', offset: 1 }])
+    new LinearGradient([{ color: '#65EEC9A3', offset: 0 }, { color: '#FFEF629F', offset: 1 }]);
   public color2: LinearGradient =
-    new LinearGradient([{ color: '#FF67F9D4', offset: 0 }, { color: '#FFFF9554', offset: 1 }])
-  public colorShadow1: LinearGradient =
-    new LinearGradient([{ color: '#65EEC9A3', offset: 0 }, { color: '#65EF629F', offset: 1 }])
-  public colorShadow2: LinearGradient =
-    new LinearGradient([{ color: '#65e26709', offset: 0 }, { color: '#65efbd08', offset: 1 }])
-  public colorShadow3: LinearGradient =
-    new LinearGradient([{ color: '#6572B513', offset: 0 }, { color: '#6508efa6', offset: 1 }])
-  public colorShadow4: LinearGradient =
-    new LinearGradient([{ color: '#65ed08f5', offset: 0 }, { color: '#65ef0849', offset: 1 }])
-  @State shadowColorArray: Array<LinearGradient | ResourceColor> =
-    [this.colorShadow1, this.colorShadow2, this.colorShadow3, this.colorShadow4]
-  @State color3: string = '#00FF00'
-  @State color4: string = '#20FF0000'
-  @State colorArray: Array<LinearGradient | ResourceColor> = [this.color1, this.color2, this.color3, this.color4]
-  @State bgColor: string = '#08182431'
-  @State offsetX: number = 15
-  @State offsetY: number = 15
-  @State radius: number = 5
+    new LinearGradient([{ color: '#FF67F9D4', offset: 0 }, { color: '#FFFF9554', offset: 1 }]);
+  @State color3: string = '#00FF00';
+  @State color4: string = '#20FF0000';
+  @State colorArray: Array<LinearGradient | ResourceColor> = [this.color1, this.color2, this.color3, this.color4];
+  @State bgColor: string = '#08182431';
 
   build() {
     Column({ space: 5 }) {
@@ -464,7 +473,7 @@ struct ChildItem {
   public color4: string = '#6595ff00'
   public color5: string = '#65000dff'
   public color6: string = '#650099ff'
-  public colorArray: Array<string> = [this.color1, this.color2, this.color3, this.color4, this.color5, this.color6]
+  public colorArray: Array<string> = [this.color1, this.color2, this.color3, this.color4, this.color5, this.color6];
 
   build() {
     RelativeContainer() {
@@ -483,4 +492,4 @@ struct ChildItem {
   }
 }
 ```
-![LinearGradientDataPanel](figures/ContentModifierDataPanel.jpg)
+![ContentModifierDataPanel](figures/ContentModifierDataPanel.jpg)

@@ -1,4 +1,4 @@
-# ArkGraphics 3D场景动画控制以及管理
+# 场景动画控制与管理
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @jason_stark-->
@@ -6,7 +6,7 @@
 <!--Tester: @zhangyue283-->
 <!--Adviser: @ge-yafang-->
 
-动画（animation）：动画是3D场景中重要的资源类型，用于控制场景中各种元素的运动。比如想要场景中的人物进行走路这个动作，每帧计算人物每一个关节的旋转角并进行设置是难以实现的。所以在完成类似的要求时，3D场景资源的制作者会将动画制作好，在模型文件中保存动画的关键帧数据以及关键帧间的插值器类型。
+动画（animation）：3D场景中重要的资源类型，用于控制场景中各种元素的运动。例如，要让场景中的人物完成走路动作，逐帧计算并设置人物每个关节的旋转角是难以实现的。因此，针对这类复杂的动画需求，3D场景资源的制作者会预先制作好动画，在模型文件中保存动画的关键帧数据以及关键帧之间的插值器类型。
 
 ArkGraphics 3D提供播放并控制场景动画的能力，支持开发者灵活地控制动画的状态，达到预期的渲染效果。
 
@@ -52,7 +52,7 @@ ArkGraphics 3D提供播放并控制场景动画的能力，支持开发者灵活
    this.anim = this.scene.animations[0];
    if (this.anim) {
      this.anim.enabled = true;
-     // Register callback function
+     // 注册回调函数
      this.anim.onStarted(() => {
        // ...
        this.animationCallbackInvoked = 'animation on start';
@@ -75,9 +75,9 @@ ArkGraphics 3D提供播放并控制场景动画的能力，支持开发者灵活
    <!-- @[anim_camera_sceneopt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/arkgraphic/animation.ets) -->
    
    ``` TypeScript
-   // create a new camera.
+   // 创建一个新相机。
    this.cam = await rf.createCamera({ name: 'Camera' });
-   // set the camera.
+   // 设置相机。
    this.cam.enabled = true;
    this.cam.position.z = 5;
    this.sceneOpt = { scene: this.scene, modelType: ModelType.SURFACE } as SceneOptions;
@@ -155,7 +155,7 @@ ArkGraphics 3D提供播放并控制场景动画的能力，支持开发者灵活
          return;
        }
        this.anim = this.scene.animations[0];
-       // seek to 30%
+       // 定位到 30% 处
        this.anim.seek(0.3);
      });
    ```

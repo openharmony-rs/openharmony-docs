@@ -31,6 +31,7 @@
     - [Class (PathIterator)](arkts-apis-graphics-drawing-PathIterator.md)
     - [Class (Pen)](arkts-apis-graphics-drawing-Pen.md)
     - [Class (PointUtils)](arkts-apis-graphics-drawing-PointUtils.md)
+    - [Class (RecordCmdUtils)](arkts-apis-graphics-drawing-RecordCmdUtils.md)
     - [Class (RectUtils)](arkts-apis-graphics-drawing-RectUtils.md)
     - [Class (Region)](arkts-apis-graphics-drawing-Region.md)
     - [Class (RoundRect)](arkts-apis-graphics-drawing-RoundRect.md)
@@ -43,6 +44,9 @@
     - [Class (TypefaceArguments)](arkts-apis-graphics-drawing-TypefaceArguments.md)
     - [Interfaces (其他)](arkts-apis-graphics-drawing-i.md)
     - [Enums](arkts-apis-graphics-drawing-e.md)
+  <!--Del-->
+  - [@ohos.graphics.drawing (绘制模块)(系统接口)](js-apis-graphics-drawing-sys.md)
+  <!--DelEnd-->
   - [@ohos.graphics.hdrCapability (HDR能力)](js-apis-hdrCapability.md)
   - [@ohos.graphics.text (文本模块)](js-apis-graphics-text.md)
   - [@ohos.graphics.uiEffect (效果级联)](js-apis-uiEffect.md)
@@ -217,6 +221,7 @@
     - [OH_Drawing_RecordCmdUtils](capi-drawing-oh-drawing-recordcmdutils.md)
     - [OH_Drawing_RecordCmd](capi-drawing-oh-drawing-recordcmd.md)
     - [OH_Drawing_Array](capi-drawing-oh-drawing-array.md)
+    - [OH_Drawing_TypefaceFallbackInfo](capi-drawing-oh-drawing-typefacefallbackinfo.md)
     - [OH_Filter](capi-effectkit-oh-filter.md)
     - [OH_NativeImage](capi-oh-nativeimage-oh-nativeimage.md)
     - [NativeWindow](capi-nativewindow-nativewindow.md)

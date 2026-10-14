@@ -7,7 +7,7 @@
 <!--Adviser: @HelloShuo-->
 
 - [ArkWeb简介](web-component-overview.md)
-- [ArkWeb进程](web_component_process.md)
+- [ArkWeb进程](web-component-process.md)
 - [Web组件的生命周期](web-event-sequence.md)
 - 设置基本属性和事件<!--web-set-attributes-events-->
   - [User-Agent开发指导](web-default-userAgent.md)
@@ -57,7 +57,7 @@
   - [在Web中打开摄像头和麦克风](web-rtc.md)
   - [托管网页中的媒体播放](app-takeovers-web-media.md)
   - [Web组件支持画中画](web-picture-in-picture.md)
-  - [Web组件支持视频沉浸式全屏播放](web_full_screen.md)
+  - [Web组件支持视频沉浸式全屏播放](web-full-screen.md)
 - 处理网页内容<!--web-process-page-content-->
   - [使用Web组件打印前端页面](web-print.md)
   - [使用Web组件保存前端页面为PDF](web-createpdf.md)

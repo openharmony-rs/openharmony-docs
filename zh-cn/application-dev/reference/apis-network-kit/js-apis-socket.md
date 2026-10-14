@@ -496,7 +496,7 @@ udp.bind(bindAddr, (err: BusinessError) => {
     console.error('bind fail');
     return;
   }
-  console.error('bind success');
+  console.info('bind success');
   udp.getState((err: BusinessError, data: socket.SocketStateBase) => {
     if (err) {
       console.error('getState fail');
@@ -1010,7 +1010,7 @@ udp.off('error');
 | -------- | ---------------------------------------------- | ---- | --- | ---------------------- |
 | address<sup>11+</sup> | string | 否   | 否   | IP地址。                                           |
 | port    | number | 否   | 否   | 端口号 ，范围0~65535。如果不指定系统随机分配端口。           |
-| family  | number | 否   | 否   | 网络协议类型，可选类型：<br />- 1：IPv4。默认为1。<br />- 2：IPv6。地址为IPv6类型，该字段必须被显式指定为2。<br />- 3：Domain<sup>18+</sup>。地址为Domain类型，该字段必须被显式指定为3。当前仅支持[TCPSocket.connect](#connect)和[TLSSocket.connect](#connect9)。|
+| family  | number | 否   | 否   | 网络协议类型，可选类型：<br />- 1：IPv4。默认为1。<br />- 2：IPv6。地址为IPv6类型，该字段必须被显式指定为2。<br />- 3：Domain（从API version 18开始支持）。地址为Domain类型，该字段必须被显式指定为3。当前仅支持[TCPSocket.connect](#connect)和[TLSSocket.connect](#connect9)。|
 
 ## ProxyOptions<sup>18+</sup>
 
@@ -1203,7 +1203,7 @@ addMembership(multicastAddress: NetAddress, callback: AsyncCallback\<void\>): vo
 | 201     | Permission denied.      |
 | 2301022 | Invalid argument.       |
 | 2301088 | Not a socket.           |
-| 2301098 | Address in use.         |
+| 2301098 | Address in use. |
 
 **示例：**
 
@@ -1259,7 +1259,7 @@ addMembership(multicastAddress: NetAddress): Promise\<void\>
 | 401     | Parameter error.        |
 | 201     | Permission denied.      |
 | 2301088 | Not a socket.           |
-| 2301098 | Address in use.         |
+| 2301098 | Address in use. |
 
 **示例：**
 
@@ -1308,7 +1308,7 @@ dropMembership(multicastAddress: NetAddress, callback: AsyncCallback\<void\>): v
 | 401     | Parameter error.        |
 | 201     | Permission denied.      |
 | 2301088 | Not a socket.           |
-| 2301098 | Address in use.         |
+| 2301098 | Address in use. |
 
 **示例：**
 
@@ -1364,7 +1364,7 @@ dropMembership(multicastAddress: NetAddress): Promise\<void\>
 | 401     | Parameter error.        |
 | 201     | Permission denied.      |
 | 2301088 | Not a socket.           |
-| 2301098 | Address in use.         |
+| 2301098 | Address in use. |
 
 **示例：**
 
@@ -4102,7 +4102,7 @@ getRemoteAddress(): Promise\<NetAddress\>
 
 | 类型                               | 说明                                        |
 |  --------------------------------- |  ------------------------------------------ |
-| Promise\<[NetAddress](#netaddress)\> | Promise对象，返回获取本地socket地址的结果。 |
+| Promise\<[NetAddress](#netaddress)\> | Promise对象，返回获取对端socket地址的结果。 |
 
 **错误码：**
 
@@ -7612,7 +7612,7 @@ getRemoteAddress(): Promise\<NetAddress\>
 
 | 类型                                        | 说明                                        |
 |  ------------------------------------------ |  ------------------------------------------ |
-| Promise\<[NetAddress](#netaddress)\> | Promise对象，返回获取本地socket地址的结果。失败返回错误码，错误信息。 |
+| Promise\<[NetAddress](#netaddress)\> | Promise对象，返回获取对端socket地址的结果。失败返回错误码，错误信息。 |
 
 **错误码：**
 
@@ -8282,10 +8282,10 @@ TLS安全相关操作。当本地证书cert和私钥key不为空时，开启双�
 | 名称   | 类型                                           | 只读 | 可选 |说明                    |
 | -------- | ---------------------------------------------- | ---- | --- | ---------------------- |
 | ca                    | string \| Array\<string\> | 否   | 是 | 服务端的ca证书，用于认证校验服务端的数字证书。默认为系统预置CA证书<sup>12+</sup>。最多支持设置1000本证书。 |
-| cert                  | string \| Array\<string\>         | 否   | 是 | 本地客户端的数字证书。从API Version 24开始支持传入数组，最多支持设置1000本证书。                 |
+| cert                  | string \| Array\<string\>         | 否   | 是 | 本地客户端的数字证书。从API version 24开始支持传入数组，最多支持设置1000本证书。                 |
 | key                   | string                                                  | 否   | 是 | 本地数字证书的私钥。                   |
 | password                | string                                                  | 否   | 是 | 读取私钥的密码。                      |
-| protocols             | [Protocol](#protocol9) \|Array\<[Protocol](#protocol9)\> | 否   | 是| TLS的协议版本，默认为"TLSv1.2"。                  |
+| protocols             | [Protocol](#protocol9) \| Array\<[Protocol](#protocol9)\> | 否   | 是| TLS的协议版本，默认为"TLSv1.2"。                  |
 | useRemoteCipherPrefer | boolean                                                 | 否   | 是 | 优先使用对等方的密码套件。true：优先使用对等方的密码套件；false：不优先使用对等方的密码套件。        |
 | signatureAlgorithms   | string                                                 | 否   | 是 | 通信过程中的签名算法，默认为"" 。              |
 | cipherSuite           | string                                                 | 否   | 是 | 通信过程中的加密套件，默认为"" 。              |
@@ -9832,7 +9832,7 @@ getRemoteAddress(): Promise\<NetAddress\>
 
 | 类型                                 | 说明                                                         |
 |  ----------------------------------- |  ----------------------------------------------------------- |
-| Promise\<[NetAddress](#netaddress)\> | Promise对象，返回获取本地socket地址的结果。失败返回错误码，错误信息。 |
+| Promise\<[NetAddress](#netaddress)\> | Promise对象，返回获取对端socket地址的结果。失败返回错误码，错误信息。 |
 
 **错误码：**
 

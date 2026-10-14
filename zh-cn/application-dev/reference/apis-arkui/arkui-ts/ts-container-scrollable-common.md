@@ -248,7 +248,7 @@ enableScrollInteraction(value: boolean): T
 
 friction(value: number | Resource): T
 
-设置摩擦系数，手动划动滚动区域时生效，仅影响惯性滚动过程，对惯性滚动过程中嵌套滚动组件间的联动效果（如List组件的链式动效[chainAnimation](ts-container-list.md#chainanimation)）有间接影响，适用于需要调整惯性滚动减速快慢的场景。设置为小于等于0的值时，按默认值处理。
+设置摩擦系数，手动滑动滚动区域时生效，仅影响惯性滚动过程，对惯性滚动过程中嵌套滚动组件间的联动效果（如List组件的链式动效[chainAnimation](ts-container-list.md#chainanimation)）有间接影响，适用于需要调整惯性滚动减速快慢的场景。设置为小于等于0的值时，按默认值处理。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -316,7 +316,7 @@ fadingEdge(enabled: Optional&lt;boolean&gt;, options?: FadingEdgeOptions): T
 >
 > fadingEdge生效时，建议不在设置fadingEdge属性的组件以及其子组件上设置[systemMaterial](ts-universal-attributes-image-effect.md#systemmaterial)相关属性，会影响系统材质的显示效果，导致材质效果与预期效果不一致。
 >
-> fadingEdge生效时，设置fadingEdge属性的组件会裁剪到边界，在该组件上设置[clip](ts-universal-attributes-sharp-clipping.md#clip12)属性为false不生效。
+> fadingEdge生效时，设置fadingEdge属性的组件会裁剪到边界，不建议将[clip](ts-universal-attributes-sharp-clipping.md#clip12)属性设置为false，或将[cachedCount](ts-container-list.md#cachedcount14)属性的show参数设置为true。
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
@@ -524,7 +524,7 @@ contentStartOffset + contentEndOffset超过滚动组件内容区长度后content
 
 enableScrollWithMouse(enabled: boolean | undefined): T
 
-设置是否支持鼠标左键按下拖动滚动。未通过该接口设置时，默认不支持鼠标左键按下拖动滚动。
+设置是否支持鼠标左键按下拖动滚动。
 
 **起始版本：** 26.0.0
 
@@ -539,7 +539,7 @@ enableScrollWithMouse(enabled: boolean | undefined): T
 
 | 参数名 | 类型   | 必填 | 说明                                          |
 | ------ | ------ | ---- | --------------------------------------------- |
-| enabled  | boolean \| undefined | 是   | 是否支持鼠标左键按下拖动滚动。<br/>true：支持鼠标左键按下拖动滚动。<br/>false：不支持鼠标左键按下拖动滚动。<br/>undefined：不支持鼠标左键按下拖动滚动。 |
+| enabled  | boolean \| undefined | 是   | 是否支持鼠标左键按下拖动滚动。<br/>true：支持鼠标左键按下拖动滚动。<br/>false：不支持鼠标左键按下拖动滚动。<br/>undefined：使用默认值。<br/>默认值：API版本26.2.0之前为false。从API版本26.2.0开始，当可滚动组件水平滚动时为true，否则为false。 |
 
 **返回值：**
 
@@ -555,7 +555,7 @@ onReachStart(event: () => void): T
 
 滚动组件到达起始位置时触发。
 
-滚动组件初始化时会触发一次，滚动到起始位置时触发一次。边缘效果为弹簧效果时，划动经过起始位置时触发一次，回弹回起始位置时再触发一次。
+滚动组件初始化时会触发一次，滚动到起始位置时触发一次。边缘效果为弹簧效果时，滑动经过起始位置时触发一次，回弹回起始位置时再触发一次。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -581,7 +581,7 @@ onReachEnd(event: () => void): T
 
 滚动组件到达末尾位置时触发。
 
-滚动组件初始化时，若已处于末尾位置则会触发一次。边缘效果为弹簧效果时，划动经过末尾位置时触发一次，回弹回末尾位置时再触发一次。
+滚动组件初始化时，若已处于末尾位置则会触发一次。边缘效果为弹簧效果时，滑动经过末尾位置时触发一次，回弹回末尾位置时再触发一次。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -781,7 +781,7 @@ onWillStartDragging(handler: VoidCallback): T
 
 onWillStopDragging(handler: OnWillStopDraggingCallback): T
 
-滚动组件划动离手时触发，使用鼠标滚轮划动时不会触发。
+滚动组件滑动离手时触发，使用鼠标滚轮滑动时不会触发。
 
 **卡片能力：** 从API version 20开始，该接口支持在ArkTS卡片中使用。
 
@@ -795,7 +795,7 @@ onWillStopDragging(handler: OnWillStopDraggingCallback): T
 
 | 参数名  | 类型                                                        | 必填 | 说明                         |
 | ------- | ----------------------------------------------------------- | ---- | ---------------------------- |
-| handler | [OnWillStopDraggingCallback](#onwillstopdraggingcallback20) | 是   | 滚动组件划动离手时触发的回调。 |
+| handler | [OnWillStopDraggingCallback](#onwillstopdraggingcallback20) | 是   | 滚动组件滑动离手时触发的回调。 |
 
 **返回值：**
 
@@ -1348,7 +1348,7 @@ setOnScrollFrameBegin(callback: OnScrollFrameBeginCallback | undefined): void
 
 type OnWillStopDraggingCallback = (velocity: number) => void
 
-滚动组件划动离手时触发的回调。
+滚动组件滑动离手时触发的回调。
 
 **卡片能力：** 从API version 20开始，该接口支持在ArkTS卡片中使用。
 
@@ -1362,7 +1362,7 @@ type OnWillStopDraggingCallback = (velocity: number) => void
 
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
-| velocity | number | 是   | 划动离手速度，滚动组件的内容向上滚动时速度为正，向下滚动时速度为负。<br/>单位vp/s。 |
+| velocity | number | 是   | 滑动离手速度，滚动组件的内容向上滚动时速度为正，向下滚动时速度为负。<br/>单位vp/s。 |
 
 ## OnDidStopDraggingCallback<sup>21+</sup>
 
@@ -1642,3 +1642,86 @@ struct ListExample {
 ```
 
 ![scrollBarMargin_list](figures/scrollBarMargin_list.gif)
+
+### 示例5（设置鼠标左键按下拖动滚动）
+
+该示例通过设置[enableScrollWithMouse](#enablescrollwithmouse)属性（从API版本26.0.0开始新增），实现了鼠标左键按下拖动滚动的效果。属性初始值设置为undefined，表示使用默认效果。
+
+ListDataSource说明及完整代码参考[示例1（添加滚动事件）](./ts-container-list.md#示例1添加滚动事件)。
+
+<!--code_no_check-->
+```ts
+// xxx.ets
+import { ListDataSource } from './ListDataSource';
+
+@Entry
+@Component
+struct Index {
+  private verticalData: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  private horizontalData: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  @State verticalMouseScroll: boolean | undefined = undefined;
+  @State horizontalMouseScroll: boolean | undefined = undefined;
+
+  build() {
+    Column({ space: 12 }) {
+      Button(`enableScrollWithMouse(vertical): ${this.verticalMouseScroll}`)
+        .onClick(() => {
+          this.verticalMouseScroll = !this.verticalMouseScroll;
+        }).margin({ top: 40 })
+
+      List({ space: 10 }) {
+        LazyForEach(this.verticalData, (item: number) => {
+          ListItem() {
+            Text(item.toString())
+              .width('100%')
+              .height(80)
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
+              .borderRadius(10)
+              .backgroundColor(0xFFFFFF)
+          }
+        }, (item: number) => item.toString())
+      }
+      .listDirection(Axis.Vertical)
+      .enableScrollWithMouse(this.verticalMouseScroll)
+      .height(190)
+      .width('90%')
+
+      Button(`enableScrollWithMouse(horizontal): ${this.horizontalMouseScroll}`)
+        .onClick(() => {
+          this.horizontalMouseScroll = !this.horizontalMouseScroll;
+        }).margin({ top: 40 })
+
+      List({ space: 10 }) {
+        LazyForEach(this.horizontalData, (item: number) => {
+          ListItem() {
+            Text(item.toString())
+              .width(160)
+              .height(80)
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
+              .borderRadius(10)
+              .backgroundColor(0xFFFFFF)
+          }
+        }, (item: number) => item.toString())
+      }
+      .listDirection(Axis.Horizontal)
+      .enableScrollWithMouse(this.horizontalMouseScroll)
+      .height(100)
+      .width('90%')
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(0xDCDCDC)
+    .padding({ top: 12, bottom: 12 })
+  }
+}
+```
+
+API版本26.2.0之前，enableScrollWithMouse属性的默认值为false，效果图如下：
+
+![enableScrollWithMouse_before](figures/enableScrollWithMouse_before.gif)
+
+从API版本26.2.0开始，当可滚动组件水平滚动时，enableScrollWithMouse属性的默认值为true，否则为false，效果图如下：
+
+![enableScrollWithMouse_after](figures/enableScrollWithMouse_after.gif)

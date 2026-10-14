@@ -3,16 +3,17 @@
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
-<!--Tester: @kongjing2-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Tester: @memghaiyang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=1bd317f06f1afd85920306c4a4cf71333749080f translatedAt=2026-09-03T11:05:21.625Z pushedAt=2026-09-05T10:47:30.526Z -->
 
-The module provides element name information, which can be obtained through [Context.getElementName](js-apis-inner-app-context.md).
+ElementName information, which can be obtained through [Context.getElementName](js-apis-inner-app-context.md#contextgetelementname7).
 
 > **NOTE**
 > 
 > The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> The APIs of this module have been deprecated since API version 9. You are advised to use [bundleManager-ElementName](js-apis-bundleManager-elementName.md) instead.
+> Since API version 9, this module is no longer maintained. You are advised to use [bundleManager-ElementName](js-apis-bundleManager-elementName.md) instead.
 
 ## ElementName<sup>(deprecated)</sup>
 
@@ -20,7 +21,7 @@ The module provides element name information, which can be obtained through [Con
 >
 > This API has been supported since API version 7 and deprecated since API version 9. You are advised to use [bundleManager-ElementName](js-apis-bundleManager-elementName.md#elementname-1) instead.
 
-Describes the element name information, which identifies the basic information about an ability and is obtained through [Context.getElementName](js-apis-inner-app-context.md).
+ElementName information, which identifies the basic information of an ability and can be obtained through [Context.getElementName](js-apis-inner-app-context.md#contextgetelementname7).
 
 **System capability**: SystemCapability.BundleManager.BundleFramework
 

@@ -3,16 +3,17 @@
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @enjoy_sunshine-->
-<!--Designer: @chengguohong; @tangjia15-->
+<!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=1275b89181ca8fc1862130ee865235369b412dd3 translatedAt=2026-09-15T02:59:06.625Z pushedAt=2026-09-16T10:54:55.247Z -->
 
-The **Bluetooth** module provides classic Bluetooth capabilities and Bluetooth Low Energy (BLE) scan and advertising.
+The **Bluetooth** module provides classic Bluetooth capabilities and [Bluetooth Low Energy (BLE)](../../connectivity/bluetooth/terminology.md#ble) scan and advertising.
 
 > **NOTE**
 >
 > The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> The APIs provided by this module are no longer maintained since API version 10. You are advised to use profile APIs of [@ohos.bluetooth.ble](js-apis-bluetooth-ble.md).
+> The APIs provided by this module are no longer maintained since API version 10. You are advised to use profile APIs of [@ohos.bluetooth.ble (Bluetooth BLE Module)](js-apis-bluetooth-ble.md).
 
 
 
@@ -2607,8 +2608,8 @@ panProfile.off('connectionStateChange', onReceiveEvent);
 
 Implements the Generic Attribute Profile (GATT) server. Before using an API of this class, you need to create a **GattServer** instance using **createGattServer()**.
 
-> **NOTE**<br>
-> This API is supported since API version 9 and deprecated since API version 10. You are advised to use [ble.GattServer](js-apis-bluetooth-ble.md#gattserver) instead. 
+> **NOTE**<br/>
+> This API is supported since API version 9 and deprecated since API version 10. You are advised to use [ble.GattServer](js-apis-bluetooth-ble.md#gattserver) instead.
 
 
 ### startAdvertising<sup>(deprecated)</sup>
@@ -2617,8 +2618,8 @@ startAdvertising(setting: AdvertiseSetting, advData: AdvertiseData, advResponse?
 
 Starts BLE advertising.
 
-> **NOTE**<br>
-> This API is supported since API version 9 and deprecated since API version 10. You are advised to use [ble.startAdvertising](js-apis-bluetooth-ble.md#blestartadvertising) instead. 
+> **NOTE**<br/>
+> This API is supported since API version 9 and deprecated since API version 10. You are advised to use [ble.startAdvertising](js-apis-bluetooth-ble.md#blestartadvertising) instead.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -2628,9 +2629,9 @@ Starts BLE advertising.
 
 | Name        | Type                                   | Mandatory  | Description            |
 | ----------- | ------------------------------------- | ---- | -------------- |
-| setting     | [AdvertiseSetting](#advertisesettingdeprecated) | Yes   | Settings related to BLE advertising.   |
-| advData     | [AdvertiseData](#advertisedatadeprecated)       | Yes   | Content of the BLE advertisement packet.     |
-| advResponse | [AdvertiseData](#advertisedatadeprecated)       | No   | Response to the BLE scan request.|
+| setting     | [AdvertiseSetting](#advertisesettingdeprecated) | Yes    | Advertising settings.    |
+| advData     | [AdvertiseData](#advertisedatadeprecated)       | Yes    | Advertising data.      |
+| advResponse | [AdvertiseData](#advertisedatadeprecated)       | No    | Advertising response. |
 
 **Error codes**
 
@@ -3684,7 +3685,7 @@ try {
 
 getServices(): Promise&lt;Array&lt;GattService&gt;&gt;
 
-Obtains all services of the remote BLE device on the client. This API uses a promise to return the result.
+Obtains all services of the peer BLE device. This method uses a promise to return the result.
 
 > **NOTE**<br>
 > This API is supported since API version 9 and deprecated since API version 10. You are advised to use [ble.GattClientDevice#getServices](js-apis-bluetooth-ble.md#getservices-1) instead.
@@ -3870,7 +3871,7 @@ try {
 
 readDescriptorValue(descriptor: BLEDescriptor, callback: AsyncCallback&lt;BLEDescriptor&gt;): void
 
-Reads the descriptor contained in the specific characteristic of the remote BLE device on the client. This API uses an asynchronous callback to return the result.
+Reads the descriptor contained in the specific characteristic of the remote BLE device on the client.
 
 > **NOTE**<br>
 > This API is supported since API version 9 and deprecated since API version 10. You are advised to use [ble.GattClientDevice#readDescriptorValue](js-apis-bluetooth-ble.md#readdescriptorvalue) instead.
@@ -3933,7 +3934,7 @@ try {
 
 readDescriptorValue(descriptor: BLEDescriptor): Promise&lt;BLEDescriptor&gt;
 
-Reads the descriptor contained in the specific characteristic of the remote BLE device on the client. This API uses a promise to return the result.
+Reads the descriptor contained in the specific characteristic of the remote BLE device on the client.
 
 > **NOTE**<br>
 > This API is supported since API version 9 and deprecated since API version 10. You are advised to use [ble.GattClientDevice#readDescriptorValue](js-apis-bluetooth-ble.md#readdescriptorvalue-1) instead.
@@ -4621,7 +4622,7 @@ Defines the SPP configuration parameters.
 
 | Name    | Type               | Read-Only  | Optional  | Description         |
 | ------ | ------------------- | ---- | ---- | ----------- |
-| uuid   | string              | No   | No   | UUID of the SPP.|
+| uuid   | string              | No    | No    | Service UUID of the socket link type. |
 | secure | boolean             | No   | No   | Whether it is a secure channel.   |
 | type   | [SppType](#spptypedeprecated) | No   | No   | Type of the SPP link.   |
 
@@ -4957,7 +4958,7 @@ Defines the BLE advertising parameters.
 | Name         | Type   | Read-Only  | Optional  | Description                                      |
 | ----------- | ------- | ---- | ---- | ---------------------------------------- |
 | interval    | number  | No   | Yes   | Interval for BLE advertising. The minimum value is **32** slots (20 ms). The maximum value is **16384** slots. The default value is **1600** slots (1s).|
-| txPower     | number  | No   | Yes   | Transmit power, in dBm. The value range is -127 to 1. The default value is **-7**.  |
+| txPower     | number  | No    | Yes    | Transmit power, in dBm. The value range is –127 to 1. The default value is **-7**.   |
 | connectable | boolean | No   | Yes   | Whether the advertisement is connectable. The default value is **true**.                  |
 
 
@@ -5124,7 +5125,7 @@ Enumerates the major and minor classes of Bluetooth devices.
 | NETWORK_60_TO_67_UTILIZED                | 0x0380 | Device used on network 60 to 67. |
 | NETWORK_67_TO_83_UTILIZED                | 0x03A0 | Device used on network 67 to 83. |
 | NETWORK_83_TO_99_UTILIZED                | 0x03C0 | Device used on network 83 to 99. |
-| NETWORK_NO_SERVICE                       | 0x03E0 | Device without network service     |
+| NETWORK_NO_SERVICE                       | 0x03E0 | Device without network service.     |
 | AUDIO_VIDEO_UNCATEGORIZED                | 0x0400 | Unclassified audio or video device.   |
 | AUDIO_VIDEO_WEARABLE_HEADSET             | 0x0404 | Wearable audio or video headset.  |
 | AUDIO_VIDEO_HANDSFREE                    | 0x0408 | Hands-free audio or video device.    |
@@ -5148,8 +5149,8 @@ Enumerates the major and minor classes of Bluetooth devices.
 | PERIPHERAL_KEYBOARD_POINTING             | 0x05C0 | Keyboard pointing device.    |
 | PERIPHERAL_UNCATEGORIZED                 | 0x0500 | Unclassified peripheral device.     |
 | PERIPHERAL_JOYSTICK                      | 0x0504 | Peripheral joystick.     |
-| PERIPHERAL_GAMEPAD                       | 0x0508 | Peripheral game pad     |
-| PERIPHERAL_REMOTE_CONTROL                | 0x05C0 | Peripheral remote control device    |
+| PERIPHERAL_GAMEPAD                       | 0x0508 | Peripheral game pad.     |
+| PERIPHERAL_REMOTE_CONTROL                | 0x05C0 | Peripheral remote control device.    |
 | PERIPHERAL_SENSING_DEVICE                | 0x0510 | Peripheral sensing device.    |
 | PERIPHERAL_DIGITIZER_TABLET              | 0x0514 | Peripheral digitizer tablet.|
 | PERIPHERAL_CARD_READER                   | 0x0518 | Peripheral card reader.     |
@@ -5181,9 +5182,9 @@ Enumerates the major and minor classes of Bluetooth devices.
 | HEALTH_PULSE_OXIMETER                    | 0x0914 | Pulse oximeter.   |
 | HEALTH_PULSE_RATE                        | 0x0918 | Heart rate monitor.     |
 | HEALTH_DATA_DISPLAY                      | 0x091C | Health data display.    |
-| HEALTH_STEP_COUNTER                      | 0x0920 | Step counter.   |
+| HEALTH_STEP_COUNTER                      | 0x0920 | Step counter.    |
 | HEALTH_BODY_COMPOSITION_ANALYZER         | 0x0924 | Body composition analyzer. |
-| HEALTH_PEAK_FLOW_MONITOR                  | 0x0928 | Hygrometer.     |
+| HEALTH_PEAK_FLOW_MONITOR                  | 0x0928 | Peak flow monitor.      |
 | HEALTH_MEDICATION_MONITOR                | 0x092C | Medication monitor.   |
 | HEALTH_KNEE_PROSTHESIS                   | 0x0930 | Prosthetic knee.    |
 | HEALTH_ANKLE_PROSTHESIS                  | 0x0934 | Prosthetic ankle.    |
@@ -5202,8 +5203,8 @@ Enumerates the A2DP playing states.
 
 | Name               | Value   | Description     |
 | ----------------- | ------ | ------- |
-| STATE_NOT_PLAYING | 0x0000 | Not playing. |
-| STATE_PLAYING     | 0x0001 | Playing.|
+| STATE_NOT_PLAYING | 0 | Not playing. |
+| STATE_PLAYING     | 1 | Playing. |
 
 
 ## ProfileId<sup>(deprecated)</sup>

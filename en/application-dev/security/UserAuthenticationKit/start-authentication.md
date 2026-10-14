@@ -81,7 +81,7 @@ The user authentication widget supports the following types of authentication:
 
 > **NOTE**
 >
-> Starting from API version 26.1.0, in the enterprise account scenario, if the user has enabled enterprise account authentication unlock but has not registered a lock screen password, the lock screen password authentication initiated by the app is automatically switched to enterprise account password authentication.
+> Starting from API version 26.0.1, in the enterprise account scenario, if the user has enabled enterprise account authentication unlock but has not registered a lock screen password, the lock screen password authentication initiated by the app is automatically switched to enterprise account password authentication.
 
 ## How to Develop
 

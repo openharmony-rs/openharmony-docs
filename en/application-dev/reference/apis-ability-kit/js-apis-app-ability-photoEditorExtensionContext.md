@@ -5,7 +5,8 @@
 <!--Owner: @liusu23-->
 <!--Designer: @xukeke-->
 <!--Tester: @lusq-->
-<!--Adviser: @huipeizi-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=e0214054a7df2ce46c1cc90c27d2ee8fbbb7a19d translatedAt=2026-09-03T10:28:00.179Z pushedAt=2026-09-05T10:47:30.418Z -->
 
 PhotoEditorExtensionContext provides the context environment for the PhotoEditorExtensionAbility. It inherits from ExtensionContext and provides PhotoEditorExtensionAbility related configuration and APIs for saving images.
 > **NOTE**
@@ -123,7 +124,7 @@ Saves the passed PixelMap object, which is an edited image. This API uses a prom
 | Name | Type | Mandatory | Description |
 | ------------ | ------------ | ------------ | ------------ |
 | pixeMap | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)  | Yes | Edited image, which is an image.PixelMap object. |
-| option  | [image.PackingOption](..//apis-image-kit/arkts-apis-image-i.md#packingoption)  |  Yes| Option for image packing. |
+| option  | [image.PackingOption](../apis-image-kit/arkts-apis-image-i.md#packingoption)  |  Yes| Option for image packing. |
 
 **Return value**
 |  Type| Description |

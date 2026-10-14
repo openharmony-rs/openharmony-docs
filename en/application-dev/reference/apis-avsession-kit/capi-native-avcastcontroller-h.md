@@ -5,6 +5,7 @@
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=6562fbd401d378f77bd26dc6da64bda65c04a650 translatedAt=2026-09-01T12:58:38.135Z pushedAt=2026-09-07T08:24:03.203Z -->
 
 ## Overview
 
@@ -36,11 +37,11 @@ Declares the definitions of the playback controller.
 | [typedef AVSessionCallback_Result(\*OH_AVCastControllerCallback_MediaItemChange)(OH_AVCastController* avcastcontroller, OH_AVSession_AVQueueItem* avQueueItem, void* userData)](#oh_avcastcontrollercallback_mediaitemchange) | OH_AVCastControllerCallback_MediaItemChange | Triggered when the media item changes.|
 | [typedef AVSessionCallback_Result(\*OH_AVCastControllerCallback_PlayNext)(OH_AVCastController* avcastcontroller, void* userData)](#oh_avcastcontrollercallback_playnext) | OH_AVCastControllerCallback_PlayNext | Triggered when the next track is played.|
 | [typedef AVSessionCallback_Result(\*OH_AVCastControllerCallback_PlayPrevious)(OH_AVCastController* avcastcontroller, void* userData)](#oh_avcastcontrollercallback_playprevious) | OH_AVCastControllerCallback_PlayPrevious | Triggered when the previous track is played.|
-| [typedef AVSessionCallback_Result(\*OH_AVCastControllerCallback_SeekDone)(OH_AVCastController* avcastcontroller, int32_t position, void* userData)](#oh_avcastcontrollercallback_seekdone) | OH_AVCastControllerCallback_SeekDone | Triggered when the seek is complete.|
+| [typedef AVSessionCallback_Result(\*OH_AVCastControllerCallback_SeekDone)(OH_AVCastController* avcastcontroller, int32_t position, void* userData)](#oh_avcastcontrollercallback_seekdone) | OH_AVCastControllerCallback_SeekDone | Triggered when the seek is complete. |
 | [typedef AVSessionCallback_Result(\*OH_AVCastControllerCallback_EndOfStream)(OH_AVCastController* avcastcontroller, void* userData)](#oh_avcastcontrollercallback_endofstream) | OH_AVCastControllerCallback_EndOfStream | Triggered when the playback stream ends.|
 | [typedef AVSessionCallback_Result(\*OH_AVCastControllerCallback_Error)(OH_AVCastController* avcastcontroller, void* userData, AVSession_ErrCode error)](#oh_avcastcontrollercallback_error) | OH_AVCastControllerCallback_Error | Triggered when a playback error occurs.|
 | [AVSession_ErrCode OH_AVCastController_Destroy(OH_AVCastController* avcastcontroller)](#oh_avcastcontroller_destroy) | - | Requests to destroy the playback controller object.|
-| [AVSession_ErrCode OH_AVCastController_GetPlaybackState(OH_AVCastController* avcastcontroller, OH_AVSession_AVPlaybackState** playbackState)](#oh_avcastcontroller_getplaybackstate) | - | Obtains the playback state of the current player. Do not release the **playbackState** pointer separately.<br> When [OH_AVCastController_Destroy](capi-native-avcastcontroller-h.md#oh_avcastcontroller_destroy) is called, the playback controller will be destroyed.|
+| [AVSession_ErrCode OH_AVCastController_GetPlaybackState(OH_AVCastController* avcastcontroller, OH_AVSession_AVPlaybackState** playbackState)](#oh_avcastcontroller_getplaybackstate) | - | Obtains the playback state of the current player. Do not release the **playbackState** pointer separately.<br> When [OH_AVCastController_Destroy](#oh_avcastcontroller_destroy) is called, this pointer will be destroyed together with the playback controller. |
 | [AVSession_ErrCode OH_AVCastController_RegisterPlaybackStateChangedCallback(OH_AVCastController* avcastcontroller, int32_t filter, OH_AVCastControllerCallback_PlaybackStateChanged callback, void* userData)](#oh_avcastcontroller_registerplaybackstatechangedcallback) | - | Requests to register a callback for playback state changes.|
 | [AVSession_ErrCode OH_AVCastController_UnregisterPlaybackStateChangedCallback(OH_AVCastController* avcastcontroller, OH_AVCastControllerCallback_PlaybackStateChanged callback)](#oh_avcastcontroller_unregisterplaybackstatechangedcallback) | - | Requests to unregister a callback for playback state changes.|
 | [AVSession_ErrCode OH_AVCastController_RegisterMediaItemChangedCallback(OH_AVCastController* avcastcontroller, OH_AVCastControllerCallback_MediaItemChange callback, void* userData)](#oh_avcastcontroller_registermediaitemchangedcallback) | - | Requests to register a callback for changes to the media item being played.|
@@ -49,20 +50,20 @@ Declares the definitions of the playback controller.
 | [AVSession_ErrCode OH_AVCastController_UnregisterPlayNextCallback(OH_AVCastController* avcastcontroller, OH_AVCastControllerCallback_PlayNext callback)](#oh_avcastcontroller_unregisterplaynextcallback) | - | Requests to unregister a callback for the next track request sent by the remote device or media center.|
 | [AVSession_ErrCode OH_AVCastController_RegisterPlayPreviousCallback(OH_AVCastController* avcastcontroller, OH_AVCastControllerCallback_PlayPrevious callback, void* userData)](#oh_avcastcontroller_registerplaypreviouscallback) | - | Requests to register a callback for the previous track request sent by the remote device or media center.|
 | [AVSession_ErrCode OH_AVCastController_UnregisterPlayPreviousCallback(OH_AVCastController* avcastcontroller, OH_AVCastControllerCallback_PlayPrevious callback)](#oh_avcastcontroller_unregisterplaypreviouscallback) | - | Requests to unregister a callback for the previous track request sent by the remote device or media center.|
-| [AVSession_ErrCode OH_AVCastController_RegisterSeekDoneCallback(OH_AVCastController* avcastcontroller, OH_AVCastControllerCallback_SeekDone callback, void* userData)](#oh_avcastcontroller_registerseekdonecallback) | - | Requests to register a callback for the seek completion.|
-| [AVSession_ErrCode OH_AVCastController_UnregisterSeekDoneCallback(OH_AVCastController* avcastcontroller, OH_AVCastControllerCallback_SeekDone callback)](#oh_avcastcontroller_unregisterseekdonecallback) | - | Requests to unregister a callback for the seek completion.|
+| [AVSession_ErrCode OH_AVCastController_RegisterSeekDoneCallback(OH_AVCastController* avcastcontroller, OH_AVCastControllerCallback_SeekDone callback, void* userData)](#oh_avcastcontroller_registerseekdonecallback) | - | Requests to register a callback for the seek completion. |
+| [AVSession_ErrCode OH_AVCastController_UnregisterSeekDoneCallback(OH_AVCastController* avcastcontroller, OH_AVCastControllerCallback_SeekDone callback)](#oh_avcastcontroller_unregisterseekdonecallback) | - | Requests to unregister the callback for the seek completion. |
 | [AVSession_ErrCode OH_AVCastController_RegisterEndOfStreamCallback(OH_AVCastController* avcastcontroller, OH_AVCastControllerCallback_EndOfStream callback, void* userData)](#oh_avcastcontroller_registerendofstreamcallback) | - | Requests to register a callback for the end of stream. |
 | [AVSession_ErrCode OH_AVCastController_UnregisterEndOfStreamCallback(OH_AVCastController* avcastcontroller, OH_AVCastControllerCallback_EndOfStream callback)](#oh_avcastcontroller_unregisterendofstreamcallback) | - | Requests to unregister a callback for the end of stream.|
 | [AVSession_ErrCode OH_AVCastController_RegisterErrorCallback(OH_AVCastController* avcastcontroller, OH_AVCastControllerCallback_Error callback, void* userData)](#oh_avcastcontroller_registererrorcallback) | - | Requests to register a callback for the playback error event.|
 | [AVSession_ErrCode OH_AVCastController_UnregisterErrorCallback(OH_AVCastController* avcastcontroller, OH_AVCastControllerCallback_Error callback)](#oh_avcastcontroller_unregistererrorcallback) | - | Requests to unregister a callback for the playback error event.|
 | [AVSession_ErrCode OH_AVCastController_SendCommonCommand(OH_AVCastController* avcastcontroller, AVSession_AVCastControlCommandType* avCastControlcommand)](#oh_avcastcontroller_sendcommoncommand) | - | Requests to send a common command to the remote device. Only commands such as play, pause, stop, next, and previous are supported.|
-| [AVSession_ErrCode OH_AVCastController_SendSeekCommand(OH_AVCastController* avcastcontroller, int32_t seekTimeMS)](#oh_avcastcontroller_sendseekcommand) | - | Requests to send a search command to the remote device.|
+| [AVSession_ErrCode OH_AVCastController_SendSeekCommand(OH_AVCastController* avcastcontroller, int32_t seekTimeMS)](#oh_avcastcontroller_sendseekcommand) | - | Requests to send a seek command to the remote device. |
 | [AVSession_ErrCode OH_AVCastController_SendFastForwardCommand(OH_AVCastController* avcastcontroller, int32_t forwardTimeS)](#oh_avcastcontroller_sendfastforwardcommand) | - | Requests to send a fast-forward command to the remote device.|
-| [AVSession_ErrCode OH_AVCastController_SendRewindCommand(OH_AVCastController* avcastcontroller, int32_t rewindTimeS)](#oh_avcastcontroller_sendrewindcommand) | - | Requests to send a rewind command to the remote device.|
+| [AVSession_ErrCode OH_AVCastController_SendRewindCommand(OH_AVCastController* avcastcontroller, int32_t rewindTimeS)](#oh_avcastcontroller_sendrewindcommand) | - | Requests to send a rewind command to the remote device. |
 | [AVSession_ErrCode OH_AVCastController_SendSetSpeedCommand(OH_AVCastController* avcastcontroller, AVSession_PlaybackSpeed speed)](#oh_avcastcontroller_sendsetspeedcommand) | - | Requests to send a speed setting command to the remote device.|
 | [AVSession_ErrCode OH_AVCastController_SendVolumeCommand(OH_AVCastController* avcastcontroller, int32_t volume)](#oh_avcastcontroller_sendvolumecommand) | - | Requests to send a volume control command to the remote device.|
-| [AVSession_ErrCode OH_AVCastController_Prepare(OH_AVCastController* avcastcontroller, OH_AVSession_AVQueueItem* avqueueItem)](#oh_avcastcontroller_prepare) | - | Requests to prepare the current playback queue item. This operation is a prerequisite for displaying output media information.|
-| [AVSession_ErrCode OH_AVCastController_Start(OH_AVCastController* avcastcontroller, OH_AVSession_AVQueueItem* avqueueItem)](#oh_avcastcontroller_start) | - | Requests to play the current item.  It should contain media resources; otherwise, playback will fail.|
+| [AVSession_ErrCode OH_AVCastController_Prepare(OH_AVCastController* avcastcontroller, OH_AVSession_AVQueueItem* avqueueItem)](#oh_avcastcontroller_prepare) | - | Requests to prepare the current audio or video playback queue item. This operation is a prerequisite for displaying output media information. |
+| [AVSession_ErrCode OH_AVCastController_Start(OH_AVCastController* avcastcontroller, OH_AVSession_AVQueueItem* avqueueItem)](#oh_avcastcontroller_start) | - | Requests to play the current item. It should contain media resources; otherwise, playback will fail. |
 
 ## Function Description
 
@@ -182,7 +183,7 @@ AVSession_ErrCode OH_AVCastController_GetPlaybackState(OH_AVCastController* avca
 
 **Description**
 
-Obtains the playback state of the current player. Do not release the **playbackState** pointer separately. When [OH_AVCastController_Destroy](capi-native-avcastcontroller-h.md#oh_avcastcontroller_destroy) is called, the playback controller will be destroyed.
+Obtains the playback state of the current player. Do not release the **playbackState** pointer separately. When [OH_AVCastController_Destroy](#oh_avcastcontroller_destroy) is called, this pointer will be destroyed together with the playback controller.
 
 **Since:** 23
 
@@ -438,7 +439,7 @@ AVSession_ErrCode OH_AVCastController_UnregisterSeekDoneCallback(OH_AVCastContro
 
 **Description**
 
-Requests to unregister a callback for the seek completion.
+Requests to unregister the callback for the seek completion.
 
 **Since:** 23
 
@@ -590,7 +591,7 @@ AVSession_ErrCode OH_AVCastController_SendSeekCommand(OH_AVCastController* avcas
 
 **Description**
 
-Requests to send a search command to the remote device.
+Requests to send a seek command to the remote device.
 
 **Since:** 23
 
@@ -599,7 +600,7 @@ Requests to send a search command to the remote device.
 | Name| Description|
 | -- | -- |
 | [OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md)* avcastcontroller | Pointer to the instance object of the playback controller.|
-| int32_t seekTimeMS | Seek time. The unit is milliseconds.|
+| int32_t seekTimeMS | Seek time, in milliseconds. |
 
 **Return value**
 
@@ -624,7 +625,7 @@ Requests to send a fast-forward command to the remote device.
 | Name| Description|
 | -- | -- |
 | [OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md)* avcastcontroller | Pointer to the instance object of the playback controller.|
-| int32_t forwardTimeS | Fast-forward time. The unit is second.|
+| int32_t forwardTimeS | Fast-forward time, in seconds. |
 
 **Return value**
 
@@ -649,7 +650,7 @@ Requests to send a rewind command to the remote device.
 | Name| Description|
 | -- | -- |
 | [OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md)* avcastcontroller | Pointer to the instance object of the playback controller.|
-| int32_t rewindTimeS | Rewind time. The unit is second.|
+| int32_t rewindTimeS | Rewind time, in seconds. |
 
 **Return value**
 
@@ -699,7 +700,7 @@ Requests to send a volume control command to the remote device.
 | Name| Description|
 | -- | -- |
 | [OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md)* avcastcontroller | Pointer to the instance object of the playback controller.|
-| int32_t volume | Volume control.|
+| int32_t volume | Volume. |
 
 **Return value**
 
@@ -715,7 +716,7 @@ AVSession_ErrCode OH_AVCastController_Prepare(OH_AVCastController* avcastcontrol
 
 **Description**
 
-Requests to prepare the current playback queue item. This operation is a prerequisite for displaying the output media information.
+Requests to prepare the current audio or video playback queue item. This operation is a prerequisite for displaying output media information.
 
 **Since:** 23
 
@@ -740,7 +741,7 @@ AVSession_ErrCode OH_AVCastController_Start(OH_AVCastController* avcastcontrolle
 
 **Description**
 
-Requests to play the current item.  It should contain media resources; otherwise, playback will fail.
+Requests to play the current item. The parameter should contain media resources; otherwise, playback will fail.
 
 **Since:** 23
 
@@ -756,3 +757,5 @@ Requests to play the current item.  It should contain media resources; otherwise
 | Type| Description|
 | -- | -- |
 | [AVSession_ErrCode](capi-native-avsession-errors-h.md#avsession_errcode) | **AV_SESSION_ERR_SUCCESS**: The function is executed successfully.<br>         **AV_SESSION_ERR_SERVICE_EXCEPTION**: Internal server error.<br>         **AV_SESSION_ERR_INVALID_PARAMETER**:<br>                                         1. The **avcastcontroller** parameter is **nullptr**.<br>                                         2. The **avqueueItem** parameter is **nullptr**.|
+
+

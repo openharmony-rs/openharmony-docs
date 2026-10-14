@@ -4,10 +4,11 @@
 <!--Subsystem: Ability-->
 <!--Owner: @xialiangwei-->
 <!--Designer: @yzkp-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=83eb20b2da17b66d3089c14abb21986b856a3985 translatedAt=2026-09-03T11:33:22.870Z pushedAt=2026-09-05T10:47:30.639Z -->
 
-The module defines process information. You can use [getProcessInfo](js-apis-inner-app-context.md#contextgetprocessinfo7) to obtain information about the processes running on the current ability.
+Process information object. Developers can use [getProcessInfo](js-apis-inner-app-context.md#contextgetprocessinfo7) to obtain the process information of the current Ability in scenarios such as debugging, performance monitoring, and multi-process management.
 
 > **NOTE**
 > 
@@ -44,3 +45,4 @@ context.getProcessInfo((error, data) => {
     }
 });
 ```
+

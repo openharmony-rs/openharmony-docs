@@ -20,6 +20,8 @@ DatePickerDialog提供了系统级的日期滑动选择器弹窗，支持设置�
 
 日期滑动选择器弹窗选项。DatePickerDialog通过弹窗方式展示日期滑动选择器，提供系统材质动画效果。
 
+继承自[DatePickerOptions](ts-basic-components-datepicker.md#datepickeroptions对象说明)。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |

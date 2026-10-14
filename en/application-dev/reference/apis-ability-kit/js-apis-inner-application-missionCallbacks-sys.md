@@ -1,10 +1,11 @@
-# MissionCallback (System API)
+# MissionCallbacks (System API)
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @hobbycao-->
 <!--Designer: @gsxiaowen-->
 <!--Tester: @hanjiawei-->
 <!--Adviser: @hu-zhiqiong-->
+<!-- md-trans-meta sourceCommit=165f415429b5c50e77e8467a2b377e5000c44425 translatedAt=2026-09-03T11:59:32.505Z pushedAt=2026-09-05T10:47:30.842Z -->
 
 The module defines the callbacks invoked after synchronization starts. These callbacks can be used as input parameters in [registerMissionListener](js-apis-distributedMissionManager-sys.md#distributedmissionmanagerregistermissionlistener).
 
@@ -24,7 +25,9 @@ import { distributedMissionManager } from '@kit.AbilityKit';
 
 notifyMissionsChanged(deviceId: string): void
 
-Called to notify that the list of missions has changed.
+notifyMissionsChanged is a callback function for mission listening, used to notify mission changes. It is used to listen for mission status changes on remote devices in multi-device collaboration scenarios, such as the task manager and multi-screen collaboration. For example, cross-device mission switching and mission list synchronization.
+
+**Device behavior difference** This API does not take effect on Wearable devices that do not support distributed service.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -38,25 +41,29 @@ Called to notify that the list of missions has changed.
 
 | Name| Template| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| deviceId |  string | Yes| Device ID in the callback that notifies a mission change.|
+| deviceId | string | Yes | Device ID, indicating the remote device where the mission change occurred. |
 
 **Example**
 
 ```ts
 import { distributedMissionManager } from '@kit.AbilityKit';
 
+// Register the mission listener.
 distributedMissionManager.registerMissionListener(
   {
     deviceId: '123456'
   },
   {
+    // Callback invoked when the mission changes, receiving the device ID.
     notifyMissionsChanged: (deviceId: string) => {
       console.info(`notifyMissionsChanged deviceId: ${JSON.stringify(deviceId)}`);
     },
+    // Callback invoked when the snapshot changes, receiving the device ID and mission ID.
     notifySnapshot: (deviceId: string, mission: number) => {
       console.info(`notifySnapshot deviceId: ${JSON.stringify(deviceId)}`);
       console.info(`notifySnapshot mission: ${JSON.stringify(mission)}`);
     },
+    // Callback invoked when the network is disconnected, receiving the device ID and network status.
     notifyNetDisconnect: (deviceId: string, state: number) => {
       console.info(`notifyNetDisconnect deviceId: ${JSON.stringify(deviceId)}`);
       console.info(`notifyNetDisconnect state: ${JSON.stringify(state)}`);
@@ -69,7 +76,9 @@ distributedMissionManager.registerMissionListener(
 
 notifySnapshot(deviceId: string, mission: number): void
 
-Called to notify that the snapshot has changed.
+notifySnapshot is a callback function for mission listening, used to notify mission snapshot changes. This callback is triggered when the snapshot of a mission (that is, the snapshot of the current UI state of the mission) changes. It is used to listen for mission snapshot changes on remote devices in multi-device collaboration scenarios, such as mission switching and mission restoration. For example, mission switching animation synchronization and real-time mission snapshot preview.
+
+**Device behavior difference** This API does not take effect on Wearable devices that do not support distributed service.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -83,25 +92,29 @@ Called to notify that the snapshot has changed.
 
 | Name| Template| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| deviceId |  string | Yes| Device ID in the callback that notifies a snapshot change.|
-| mission |  number | Yes| Mission ID in the callback that notifies a snapshot change.|
+| deviceId |  string | Yes | Device ID of the remote device whose snapshot changes. |
+| mission |  number | Yes | Mission ID of the mission whose snapshot changes. |
 
 **Example**
 ```ts
 import { distributedMissionManager } from '@kit.AbilityKit';
 
+// Register the mission listener.
 distributedMissionManager.registerMissionListener(
   {
     deviceId: '123456'
   },
   {
+    // Callback invoked when the mission changes, receiving the device ID.
     notifyMissionsChanged: (deviceId: string) => {
       console.info(`notifyMissionsChanged deviceId: ${JSON.stringify(deviceId)}`);
     },
+    // Callback invoked when the snapshot changes, receiving the device ID and mission ID.
     notifySnapshot: (deviceId: string, mission: number) => {
       console.info(`notifySnapshot deviceId: ${JSON.stringify(deviceId)}`);
       console.info(`notifySnapshot mission: ${JSON.stringify(mission)}`);
     },
+    // Callback invoked when the network is disconnected, receiving the device ID and network status.
     notifyNetDisconnect: (deviceId: string, state: number) => {
       console.info(`notifyNetDisconnect deviceId: ${JSON.stringify(deviceId)}`);
       console.info(`notifyNetDisconnect state: ${JSON.stringify(state)}`);
@@ -114,7 +127,9 @@ distributedMissionManager.registerMissionListener(
 
 notifyNetDisconnect(deviceId: string, state: number): void
 
-Called to notify that the network connection is interrupted.
+notifyNetDisconnect is a callback function for mission listening, used to notify disconnection. It is used to listen for network connection status changes on remote devices in multi-device collaboration scenarios. This callback is triggered when a device is disconnected, and is used to clean up related resources or prompt the user. For example, releasing session resources and displaying a disconnection prompt upon disconnection.
+
+**Device behavior difference** This API does not take effect on Wearable devices that do not support distributed service.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -128,26 +143,30 @@ Called to notify that the network connection is interrupted.
 
 | Name| Template| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| deviceId |  string | Yes| Device ID in the callback that notifies disconnection.|
-| state |  number | Yes| Network status in the callback that notifies disconnection. The fixed value **0** is returned, indicating network disconnection.|
+| deviceId |  string | Yes | Device ID of the remote device whose network is disconnected. |
+| state |  number | Yes | Network connection status. The value is fixed at 0, indicating that the network connection is disconnected. |
 
 **Example**
 
 ```ts
 import { distributedMissionManager } from '@kit.AbilityKit';
 
+// Register the mission listener.
 distributedMissionManager.registerMissionListener(
   {
     deviceId: '123456'
   },
   {
+    // Callback invoked when the mission changes, receiving the device ID.
     notifyMissionsChanged: (deviceId: string) => {
       console.info(`notifyMissionsChanged deviceId: ${JSON.stringify(deviceId)}`);
     },
+    // Callback invoked when the snapshot changes, receiving the device ID and mission ID.
     notifySnapshot: (deviceId: string, mission: number) => {
       console.info(`notifySnapshot deviceId: ${JSON.stringify(deviceId)}`);
       console.info(`notifySnapshot mission: ${JSON.stringify(mission)}`);
     },
+    // Callback invoked when the network is disconnected, receiving the device ID and network status.
     notifyNetDisconnect: (deviceId: string, state: number) => {
       console.info(`notifyNetDisconnect deviceId: ${JSON.stringify(deviceId)}`);
       console.info(`notifyNetDisconnect state: ${JSON.stringify(state)}`);

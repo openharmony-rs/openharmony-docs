@@ -1,14 +1,13 @@
 # NotificationFlags
-
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=9aa812250f4e9aa6e205822b2fc097b3c5b2a47d translatedAt=2026-07-21T01:08:31.066Z pushedAt=2026-07-21T09:31:51.864Z -->
+<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-10-08T02:18:43.054Z pushedAt=2026-10-08T09:16:59.053Z -->
 
-The **NotificationFlags** module describes the notification flags. An application can use **NotificationFlags** to reduce the notification reminder types as needed.
+Describes the [notification flags](../../notification/notification-glossary.md#notification-flags). An application can use `NotificationFlags` to reduce the notification reminder methods as needed.
 
 > **NOTE**
 >
@@ -16,7 +15,7 @@ The **NotificationFlags** module describes the notification flags. An applicatio
 
 ## NotificationFlags
 
-Defines the notification flags.
+Describes the [notification flags](../../notification/notification-glossary.md#notification-flags).
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -26,6 +25,7 @@ Defines the notification flags.
 | vibrationEnabled | [NotificationFlagStatus](#notificationflagstatus11) | No | Yes| Settings of vibration for the notification. The default value is **TYPE_NONE**. This parameter becomes writable starting from API version 23. Only [TYPE_CLOSE](#notificationflagstatus11) takes effect.|
 | bannerEnabled<sup>23+</sup> | [NotificationFlagStatus](#notificationflagstatus11) | No | Yes| Settings of banner for the notification. The default value is **TYPE_NONE**. Only [TYPE_CLOSE](#notificationflagstatus11) takes effect.|
 | lockScreenEnabled<sup>23+</sup> | [NotificationFlagStatus](#notificationflagstatus11) | No | Yes| Settings of screen lock for the notification. The default value is **TYPE_NONE**. Only [TYPE_CLOSE](#notificationflagstatus11) takes effect.|
+
 
 ## NotificationFlagStatus<sup>11+</sup>
 

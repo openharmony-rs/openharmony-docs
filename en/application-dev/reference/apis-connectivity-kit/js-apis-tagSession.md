@@ -1,11 +1,12 @@
-# tagSession (Standard NFC Tag Session) 
+# tagSession (Standard NFC Tag Session)
 
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
-<!--Owner: @amunra03-->
+<!--Owner: @yh1719-->
 <!--Designer: @wenxiaolin-->
 <!--Tester: @zs_111-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=37e87e28b1f57566fffb557016c871f107cbe03a translatedAt=2026-09-08T07:26:43.345Z pushedAt=2026-09-08T11:29:56.615Z -->
 
 The **tagSession** module provides common APIs for establishing connections and transferring data.
 
@@ -29,7 +30,7 @@ Provides common APIs for establishing connections and transferring data. **TagSe
 
 A child class instance is required to access the following interfaces. You can use **get** API to obtain a child class instance.
 
-The specific API varies with the NFC tag technology in use. For details, see [NFC Tags](js-apis-nfcTag.md).
+The specific API varies with the NFC tag technology in use. For details, see [nfc-Tag](js-apis-nfcTag.md).
 
 ### getTagInfo<sup>(deprecated)</sup>
 
@@ -64,7 +65,7 @@ console.info("tag tagInfo: " + tagInfo);
 
 ### connectTag<sup>(deprecated)</sup>
 
-connectTag(): boolean;
+connectTag(): boolean
 
 Connects to this tag. Call this API to set up a connection before reading data from or writing data to a tag.
 
@@ -95,7 +96,7 @@ console.info("connectStatus: " + connectStatus);
 
 ### connect<sup>9+</sup>
 
-connect(): void;
+connect(): void
 
 Connects to this tag. Call this API to set up a connection before reading data from or writing data to a tag.
 
@@ -523,7 +524,7 @@ Sends data to the tag. This API uses a promise to return the result.
 **Example**
 
 ```js
-import tag from '@kit.ConnectivityKit';
+import { tag } from '@kit.ConnectivityKit';
 import { BusinessError } from '@ohos.base';
 
 // tagInfo is the object provided by the NFC service when allocating a tag. For details, see tag.TagInfo in @ohos.nfc.tag. 
@@ -540,9 +541,9 @@ function tagSessionDemo() {
 
     let cmdData = [0x01, 0x02, 0x03, 0x04]; // Set command data correctly.
     tag.getIsoDep(tagInfo).sendData(cmdData).then((response) => {
-    console.info("tagSession sendData Promise response: " + response);
-    }).catch((err : BusinessError)=> {
-    console.error("tagSession sendData Promise err: " + err);
+        console.info("tagSession sendData Promise response: " + response);
+    }).catch((err : BusinessError) => {
+        console.error("tagSession sendData Promise err: " + err);
     });
 }
 ```
@@ -585,7 +586,7 @@ function tagSessionDemo() {
     }
 
     let cmdData = [0x01, 0x02, 0x03, 0x04]; // Set command data correctly.
-    tag.getIsoDep(tagInfo).sendData(cmdData, (err, response)=> {
+    tag.getIsoDep(tagInfo).sendData(cmdData, (err, response) => {
         if (err) {
             console.error("tagSession sendData AsyncCallback err: " + err);
         } else {
@@ -641,7 +642,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // getter API, which can be getIsoDep, getNdef, getMifareClassic, and so on.
 
 function tagSessionDemo() {
-// Connect the tag if it has not been connected.
+    // Connect the tag if it has not been connected.
     try {
         if (!tag.getIsoDep(tagInfo).isConnected()) {
             tag.getIsoDep(tagInfo).connect();
@@ -653,9 +654,9 @@ function tagSessionDemo() {
 
     let cmdData = [0x01, 0x02, 0x03, 0x04]; // Set command data correctly.
     try {
-    tag.getIsoDep(tagInfo).transmit(cmdData).then((response) => {
+        tag.getIsoDep(tagInfo).transmit(cmdData).then((response) => {
         console.info("tagSession transmit Promise response: " + response);
-    }).catch((err : BusinessError)=> {
+    }).catch((err : BusinessError) => {
         console.error("tagSession transmit Promise err: " + err);
     });
     } catch (businessError) {
@@ -694,7 +695,7 @@ For details about the error codes, see [NFC Error Codes](errorcode-nfc.md).
 |401 | The parameter check failed. Possible causes: <br>1. Mandatory parameters are left unspecified.<br>2. Incorrect parameters types.<br>3. Parameter verification failed. |
 |801 | Capability not supported.          |
 | 3100201 | The tag running state is abnormal in the service. |
-| 3100204 | The tag I/O operation failed.. |
+| 3100204 | The tag I/O operation failed. |
 
 **Example**
 
@@ -717,7 +718,7 @@ function tagSessionDemo() {
 
     let cmdData = [0x01, 0x02, 0x03, 0x04]; // Set command data correctly.
     try {
-        tag.getIsoDep(tagInfo).transmit(cmdData, (err, response)=> {
+        tag.getIsoDep(tagInfo).transmit(cmdData, (err, response) => {
             if (err) {
                 console.error("tagSession transmit AsyncCallback err: " + err);
             } else {

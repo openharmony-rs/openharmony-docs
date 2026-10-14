@@ -6,8 +6,9 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=4ff4b1a586822a28b0a8974a90632e60f35ea2fc translatedAt=2026-09-02T11:25:22.374Z pushedAt=2026-09-03T02:34:19.944Z -->
 
-**@Trace** is a property decorator used in state management V2. **@ObservedV2** and **@Trace** are used together to decorate classes and class properties, enhancing the observation capability for decorated classes and properties. That is, they can recursively observe changes in property values of nested objects and trigger automatic UI refresh. They are applicable to scenarios where precise observation and management of class property changes are required.
+**\@Trace** is a property decorator used in [state management V2](../../../ui/state-management/arkts-state-management-overview.md#state-management-v2). [@ObservedV2](./ts-state-management-observedv2.md) and **\@Trace** are used together to decorate classes and class properties, enhancing the observation capability for decorated classes and properties. That is, they can recursively observe changes in property values of nested objects and trigger automatic UI refresh. They are applicable to scenarios where precise observation and management of class property changes are required.
 
 For details, see [@ObservedV2 and @Trace Decorators: Observing Class Property Changes](../../../ui/state-management/arkts-new-observedV2-and-trace.md).
 
@@ -19,7 +20,7 @@ For details, see [@ObservedV2 and @Trace Decorators: Observing Class Property Ch
 
 const Trace: PropertyDecorator
 
-Declares an observable property. **@Trace** must be used together with **@ObservedV2** and takes effect only in classes decorated with **@ObservedV2**.
+Declares an observable property. **\@Trace** must be used together with **\@ObservedV2** and takes effect only in classes decorated with **\@ObservedV2**.
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -58,3 +59,4 @@ struct Index {
   }
 }
 ```
+

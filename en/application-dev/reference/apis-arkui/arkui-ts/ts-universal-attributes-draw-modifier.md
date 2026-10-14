@@ -1,16 +1,19 @@
 # Drawing Modifier
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
+<!--Owner: @wangyang2022-->
+<!--Designer: @wangyang2022-->
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
+<!-- md-trans-meta sourceCommit=aacbe0ecdb6d917ab568af42254d52ee08ae5829 translatedAt=2026-09-01T12:26:51.728Z -->
 
-If the drawn content of some components does not meet the requirements, you can use the custom drawing features to draw part or all of the components to achieve the expected effect. For example, you can create buttons in special shapes or icons that mix text and imagery. The drawing modifier offers higher flexibility in your custom drawing.
+When the drawn content of a component does not meet the requirements, you can use the custom component drawing feature to draw part of the component on the basis of the original component, or draw the entire component by yourself, so as to achieve the expected effect. For example, a unique button shape, an icon that combines text and images, and so on. The custom component drawing feature provides a custom drawing modifier to implement more flexible component drawing.
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
+>
+> - The APIs of this module can be used only in the stage model.
 
 ## drawModifier
 
@@ -26,7 +29,7 @@ Creates a drawing modifier.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-**Supported components:**
+**Supported components**
 
 [AlphabetIndexer](ts-container-alphabet-indexer.md), [Badge](ts-container-badge.md), [Blank](ts-basic-components-blank.md), [Button](ts-basic-components-button.md), [CalendarPicker](ts-basic-components-calendarpicker.md), [Checkbox](ts-basic-components-checkbox.md), [CheckboxGroup](ts-basic-components-checkboxgroup.md), [Circle](ts-drawing-components-circle.md), [Column](ts-container-column.md), [ColumnSplit](ts-container-columnsplit.md), [Counter](ts-container-counter.md), [DataPanel](ts-basic-components-datapanel.md), [DatePicker](ts-basic-components-datepicker.md), [Ellipse](ts-drawing-components-ellipse.md), [Flex](ts-container-flex.md), [FlowItem](ts-container-flowitem.md), [FolderStack](ts-container-folderstack.md), [FormLink](ts-container-formlink.md), [Gauge](ts-basic-components-gauge.md), [Grid](ts-container-grid.md), [GridCol](ts-container-gridcol.md), [GridItem](ts-container-griditem.md), [GridRow](ts-container-gridrow.md), [Hyperlink](ts-container-hyperlink.md), [Image](ts-basic-components-image.md), [ImageAnimator](ts-basic-components-imageanimator.md), [ImageSpan](ts-basic-components-imagespan.md), [Line](ts-drawing-components-line.md), [List](ts-container-list.md), [ListItem](ts-container-listitem.md), [ListItemGroup](ts-container-listitemgroup.md), [LoadingProgress](ts-basic-components-loadingprogress.md), [Marquee](ts-basic-components-marquee.md), [Menu](ts-basic-components-menu.md), [MenuItem](ts-basic-components-menuitem.md), [MenuItemGroup](ts-basic-components-menuitemgroup.md), [NavDestination](ts-basic-components-navdestination.md), [Navigation](ts-basic-components-navigation.md), [Navigator](ts-container-navigator.md), [NavRouter](ts-basic-components-navrouter.md), [NodeContainer](ts-basic-components-nodecontainer.md), [Path](ts-drawing-components-path.md), [PatternLock](ts-basic-components-patternlock.md), [Polygon](ts-drawing-components-polygon.md), [Polyline](ts-drawing-components-polyline.md), [Progress](ts-basic-components-progress.md), [QRCode](ts-basic-components-qrcode.md), [Radio](ts-basic-components-radio.md), [Rating](ts-basic-components-rating.md), [Rect](ts-drawing-components-rect.md), [Refresh](ts-container-refresh.md), [RelativeContainer](ts-container-relativecontainer.md), [RichEditor](ts-basic-components-richeditor.md), [Row](ts-container-row.md), [RowSplit](ts-container-rowsplit.md), [Scroll](ts-container-scroll.md), [ScrollBar](ts-basic-components-scrollbar.md), [Search](ts-basic-components-search.md), [Select](ts-basic-components-select.md), [Shape](ts-drawing-components-shape.md), [SideBarContainer](ts-container-sidebarcontainer.md), [Slider](ts-basic-components-slider.md), [Stack](ts-container-stack.md), [Stepper](ts-basic-components-stepper.md), [StepperItem](ts-basic-components-stepperitem.md), [Swiper](ts-container-swiper.md), [SymbolGlyph](ts-basic-components-symbolGlyph.md), [TabContent](ts-container-tabcontent.md), [Tabs](ts-container-tabs.md), [Text](ts-basic-components-text.md), [TextArea](ts-basic-components-textarea.md), [TextClock](ts-basic-components-textclock.md), [TextInput](ts-basic-components-textinput.md), [TextPicker](ts-basic-components-textpicker.md), [TextTimer](ts-basic-components-texttimer.md), [TimePicker](ts-basic-components-timepicker.md), [Toggle](ts-basic-components-toggle.md), [WaterFlow](ts-container-waterflow.md), [XComponent](ts-basic-components-xcomponent.md)
 
@@ -34,21 +37,25 @@ Creates a drawing modifier.
 
 | Name| Type                                                | Mandatory| Description                                                        |
 | ------ | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| modifier  | &nbsp;[DrawModifier](#drawmodifier-1)&nbsp;\|&nbsp;undefined | Yes  | Custom drawing modifier, which defines the logic of custom drawing.<br> Default value: **undefined**<br>**NOTE**<br> A custom modifier applies only to the [FrameNode](../js-apis-arkui-frameNode.md) of the currently bound component, not to its subnodes.|
+| modifier  | &nbsp;[DrawModifier](#drawmodifier-1)&nbsp;\|&nbsp;undefined | Yes   | Custom drawing modifier, which defines the logic of custom drawing. <br> Default value: **undefined**. If no custom drawing modifier is set, the component uses the original default drawing behavior and does not perform custom drawing. <br>**Note:** <br> Each custom drawing modifier takes effect only on the [FrameNode](../js-apis-arkui-frameNode.md) of the currently bound component, and does not take effect on its child nodes. Each DrawModifier instance can be set to only one component, and repeated setting is prohibited. |
 
 **Return value**
 
 | Type| Description|
 | --- | --- |
-| T | Current component.|
+| T | Current component, used for chained calls. |
 
 ## DrawModifier
 
-Implements a **DrawModifier** instance for using the **drawOverlay**, **drawForeground**, **drawFront**, **drawContent**, and **drawBehind** APIs for custom drawing as well as the [invalidate](#invalidate) API for redrawing. Each **DrawModifier** instance can be set for only one component. Repeated setting is not allowed.
+DrawModifier can set the drawing methods of the mask layer (drawOverlay<sup>23+</sup>), foreground (drawForeground<sup>20+</sup>), content foreground (drawFront), content (drawContent), and content background (drawBehind), and also provides the [invalidate](#invalidate) method to actively trigger redrawing. Each DrawModifier instance can be set to only one component, and repeated setting is prohibited.
+
+> **NOTE**
+>
+> The drawing order from bottom to top is: content background (drawBehind) → content (drawContent) → content foreground (drawFront) → foreground (drawForeground) → mask layer (drawOverlay). Each layer is drawn independently, and the methods of each layer are optional to implement.
 
 The figure below shows the custom drawing layers.
 
-![drawModifier.gif](figures/drawModifier.png)
+![drawModifier.png](figures/drawModifier.png)
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -58,7 +65,7 @@ The figure below shows the custom drawing layers.
 
 drawFront?(drawContext: DrawContext): void
 
-Draws the content foreground. Override this method to implement custom content foreground drawing.
+Draws the content foreground. Override this method to implement custom content foreground drawing. The content foreground is located between the content and the foreground, and is suitable for scenarios where drawing content needs to be added above the component content and below the component foreground. The Canvas in the [DrawContext](../js-apis-arkui-graphics.md#drawcontext) of this API is a temporary canvas used to record instructions, not the actual canvas of the node. For usage, see [Adjusting the Transformation Matrix of the Custom Drawing Canvas](../../../ui/arkts-user-defined-extension-drawModifier.md#adjusting-the-transformation-matrix-of-the-custom-drawing-canvas).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -68,7 +75,7 @@ Draws the content foreground. Override this method to implement custom content f
 
 | Name | Type                                                  | Mandatory| Description            |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| drawContext | [DrawContext](#drawcontext) | Yes  | Graphics drawing context.|
+| drawContext | [DrawContext](#drawcontext) | Yes | Graphics drawing context that provides properties such as canvas (canvas object) and size (drawing area size), used to perform specific drawing operations in custom drawing methods. |
 
 **Example**
 
@@ -78,9 +85,7 @@ See [Example 1: Implementing Custom Drawing Through DrawModifier](#example-1-imp
 
 drawContent?(drawContext: DrawContext): void
 
-Draws the content. Override this method to implement custom content drawing, which will replace the component's default content drawing function.
-
-Note: The Canvas provided in the [DrawContext](../js-apis-arkui-graphics.md#drawcontext) parameter is a temporary command-recording canvas, not the actual rendering canvas of the node. For usage instructions, see [Adjusting the Transformation Matrix of the Custom Drawing Canvas](../../../ui/arkts-user-defined-extension-drawModifier.md#adjusting-the-transformation-matrix-of-the-custom-drawing-canvas).
+Draws the content. Override this method to implement custom content drawing, which will replace the component's default content drawing function. It is suitable for scenarios where the component content drawing needs to be fully customized and the component's original content drawing logic is not used. The Canvas in the [DrawContext](../js-apis-arkui-graphics.md#drawcontext) of this API is a temporary canvas used to record instructions, not the actual canvas of the node. For usage, see [Adjusting the Transformation Matrix of the Custom Drawing Canvas](../../../ui/arkts-user-defined-extension-drawModifier.md#adjusting-the-transformation-matrix-of-the-custom-drawing-canvas).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -90,7 +95,7 @@ Note: The Canvas provided in the [DrawContext](../js-apis-arkui-graphics.md#draw
 
 | Name | Type                                                  | Mandatory| Description            |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| drawContext | [DrawContext](#drawcontext) | Yes  | Graphics drawing context.|
+| drawContext | [DrawContext](#drawcontext) | Yes | Graphics drawing context that provides properties such as canvas (canvas object) and size (drawing area size), used to perform specific drawing operations in custom drawing methods. |
 
 **Example**
 
@@ -100,7 +105,7 @@ See [Example 1: Implementing Custom Drawing Through DrawModifier](#example-1-imp
 
 drawBehind?(drawContext: DrawContext): void
 
-Draws the background. Override this method to implement custom background drawing operations.
+Draws the content background. Override this method to implement custom content background drawing. The background is located below the component content layer, and is suitable for scenarios where decorative background elements need to be added at the bottom layer of the component. The Canvas in the [DrawContext](../js-apis-arkui-graphics.md#drawcontext) of this API is a temporary canvas used to record instructions, not the actual canvas of the node. For usage, see [Adjusting the Transformation Matrix of the Custom Drawing Canvas](../../../ui/arkts-user-defined-extension-drawModifier.md#adjusting-the-transformation-matrix-of-the-custom-drawing-canvas).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -110,7 +115,7 @@ Draws the background. Override this method to implement custom background drawin
 
 | Name | Type                                                  | Mandatory| Description            |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| drawContext | [DrawContext](#drawcontext) | Yes  | Graphics drawing context.|
+| drawContext | [DrawContext](#drawcontext) | Yes | Graphics drawing context that provides properties such as canvas (canvas object) and size (drawing area size), used to perform specific drawing operations in custom drawing methods. |
 
 **Example**
 
@@ -120,7 +125,7 @@ See [Example 1: Implementing Custom Drawing Through DrawModifier](#example-1-imp
 
 drawForeground(drawContext: DrawContext): void
 
-Draws the foreground. Override this method to implement custom drawing operations on the foreground layer of the component.
+Draws the foreground. Override this method to implement custom foreground drawing. Compared with [drawFront](#drawfront) (content foreground), drawForeground is at a higher layer and is drawn above the content foreground and below the mask layer. drawFront is suitable for drawing the foreground effect of the component content itself, while drawForeground is suitable for scenarios where an additional foreground effect needs to be added above the content foreground. The Canvas in the [DrawContext](../js-apis-arkui-graphics.md#drawcontext) of this API is a temporary canvas used to record instructions, not the actual canvas of the node. For usage, see [Adjusting the Transformation Matrix of the Custom Drawing Canvas](../../../ui/arkts-user-defined-extension-drawModifier.md#adjusting-the-transformation-matrix-of-the-custom-drawing-canvas).
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -130,7 +135,7 @@ Draws the foreground. Override this method to implement custom drawing operation
 
 | Name | Type                                                  | Mandatory| Description            |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| drawContext | [DrawContext](#drawcontext) | Yes  | Graphics drawing context.|
+| drawContext | [DrawContext](#drawcontext) | Yes | Graphics drawing context that provides properties such as canvas (canvas object) and size (drawing area size), used to perform specific drawing operations in custom drawing methods. |
 
 **Example**
 
@@ -140,7 +145,7 @@ See [Example 2: Implementing Custom Foreground Drawing for a Container Through D
 
 drawOverlay(drawContext: DrawContext): void
 
-Draws the overlay. Override this method to implement custom overlay drawing operations in this component.
+Interface for custom drawing of the mask. If this method is overridden, custom drawing of the mask can be performed. The mask is the topmost drawing layer, suitable for scenarios where a mask effect (such as highlighting or masking) needs to be added to the topmost layer of a component. The Canvas in [DrawContext](../js-apis-arkui-graphics.md#drawcontext) of this interface is a temporary canvas used to record instructions, not the actual canvas of the node. For usage, see [Adjusting the Transformation Matrix of the Custom Drawing Canvas](../../../ui/arkts-user-defined-extension-drawModifier.md#adjusting-the-transformation-matrix-of-the-custom-drawing-canvas).
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
@@ -150,7 +155,7 @@ Draws the overlay. Override this method to implement custom overlay drawing oper
 
 | Name | Type                                                  | Mandatory| Description            |
 | ------- | ------------------------------------------------------ | ---- | ---------------- |
-| drawContext | [DrawContext](#drawcontext) | Yes  | Graphics drawing context.|
+| drawContext | [DrawContext](#drawcontext) | Yes | Graphics drawing context that provides properties such as canvas (canvas object) and size (drawing area size), used to perform specific drawing operations in custom drawing methods. |
 
 **Example**
 
@@ -159,7 +164,7 @@ Draws the overlay. Override this method to implement custom overlay drawing oper
 // test.ets
 import { drawing } from '@kit.ArkGraphics2D';
 
-class MyForegroundDrawModifier extends DrawModifier {
+class MyOverlayDrawModifier extends DrawModifier {
   public scaleX: number = 3;
   public scaleY: number = 3;
   uiContext: UIContext;
@@ -169,7 +174,7 @@ class MyForegroundDrawModifier extends DrawModifier {
     this.uiContext = uiContext;
   }
 
-  // Override the drawOverlay method to customize the foreground drawing of overlay.
+  // Override the drawOverlay method to implement custom drawing of the overlay layer.
   drawOverlay(context: DrawContext): void {
     const brush = new drawing.Brush();
     brush.setColor({
@@ -193,8 +198,8 @@ class MyForegroundDrawModifier extends DrawModifier {
 @Entry
 @Component
 struct DrawModifierExample {
-  // Instantiate the foreground drawing class of the overlay, passing the UIContext instance.
-  private overlayModifier: MyForegroundDrawModifier = new MyForegroundDrawModifier(this.getUIContext());
+  // Instantiate the class for the custom drawing overlay layer and pass in the UIContext instance.
+  private overlayModifier: MyOverlayDrawModifier = new MyOverlayDrawModifier(this.getUIContext());
 
   build() {
     Column() {
@@ -208,7 +213,7 @@ struct DrawModifierExample {
     .width(280)
     .height(300)
     .backgroundColor(0x87CEEB)
-    // Apply custom foreground drawing by passing the DrawModifier instance.
+    // Call this API and pass in the class instance of the custom drawing overlay layer to implement the custom drawing overlay layer.
     .drawModifier(this.overlayModifier)
   }
 }
@@ -218,7 +223,7 @@ struct DrawModifierExample {
 
 invalidate(): void
 
-Triggers redrawing of the bound component. No overloading is allowed or needed.
+Interface for proactively triggering redrawing. Developers do not need to and cannot override this method. Calling it triggers redrawing of the bound component. When the attributes that custom drawing depends on (such as size, color, and position) change, for example, when drawing parameters are dynamically updated during an animation, call this method to make the latest drawing effect take effect.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -228,9 +233,9 @@ Triggers redrawing of the bound component. No overloading is allowed or needed.
 
 See [Example 1: Implementing Custom Drawing Through DrawModifier](#example-1-implementing-custom-drawing-through-drawmodifier).
 
-### DrawContext
+## DrawContext
 
-type DrawContext = DrawContext
+type DrawContext = import('../api/arkui/Graphics').DrawContext
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -238,7 +243,7 @@ type DrawContext = DrawContext
 
 | Type                                                     | Description                   |
 | --------------------------------------------------------- | ----------------------- |
-| [DrawContext](../js-apis-arkui-graphics.md#drawcontext) | Graphics drawing context.|
+| import('../api/arkui/Graphics').[DrawContext](../js-apis-arkui-graphics.md#drawcontext) | Graphics drawing context used to perform custom drawing operations. |
 
 ## Example
 
@@ -370,6 +375,7 @@ struct DrawModifierExample {
       begin: 0,
       end: 2
     });
+    // Set the frame callback to dynamically update the scale value and trigger redraw.
     this.drawAnimator.onFrame = (value: number) => {
       console.info('frame value =', value);
       const tempModifier = self.modifier as MyFullDrawModifier | MyFrontDrawModifier;

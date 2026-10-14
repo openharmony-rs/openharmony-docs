@@ -13,7 +13,7 @@ typedef struct OH_CryptoKeyAgreement OH_CryptoKeyAgreement
 
 ## 概述
 
-定义密钥协商结构。
+密钥协商结构体，表示密钥协商上下文。
 
 **起始版本：** 20
 

@@ -60,6 +60,7 @@ target_link_libraries(sample PUBLIC libnative_drm.so)
 2. 获取设备支持的DRM解决方案名称和唯一标识的列表。
 
     ```c++
+    #include <cstring>
     uint32_t count = 3; // count是当前设备实际支持的DRM插件的个数，用户根据实际情况设置。
     DRM_MediaKeySystemDescription descriptions[3];
     memset(descriptions, 0, sizeof(descriptions));
@@ -121,14 +122,8 @@ target_link_libraries(sample PUBLIC libnative_drm.so)
     if (info.initDataLen <= sizeof(info.initData)) {
     memcpy(info.initData, initData, info.initDataLen);
     }
-    if (sizeof("optionalDataName") <= sizeof(info.optionName[0])) {
-    memcpy(info.optionName[0], "optionalDataName", sizeof("optionalDataName"));
-    }
-
-    if (sizeof("optionalDataValue") <= sizeof(info.optionData[0])) {
-    memcpy(info.optionData[0], "optionalDataValue", sizeof("optionalDataValue"));
-    }
-    info.optionsCount = 1;
+    // 若DRM解决方案需要可选数据，请按实际设置optionName、optionData，并令optionsCount为实际选项数量。
+    info.optionsCount = 0;
     ret = OH_MediaKeySession_GenerateMediaKeyRequest(mediaKeySession, &info, &mediaKeyRequest);
     if (ret != DRM_ERR_OK) {
         printf("OH_MediaKeySession_GenerateMediaKeyRequest failed.");

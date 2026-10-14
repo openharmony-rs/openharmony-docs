@@ -20,6 +20,8 @@
 
 日历选择器弹窗选项。
 
+继承自[CalendarOptions](ts-basic-components-calendarpicker.md#calendaroptions对象说明)。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称       | 类型                                            | 只读 | 可选 | 说明                                                        |

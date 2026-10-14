@@ -1,9 +1,9 @@
 # Core File Kit简介
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
-<!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
-<!--Designer: @gsl_1234; @wangke25-->
-<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Owner: @bao-yangyang; @maokelong95-->
+<!--Designer: @Hun_Dun-->
+<!--Tester: @zsyztt; @yue-ye2; @juxiaopang-->
 <!--Adviser: @jinqiuheng-->
 
 Core File Kit（文件基础服务）为开发者提供一套访问和管理应用文件和用户文件的能力。帮助用户更高效地管理、查找和备份各类文件，使用户能够轻松应对各种文件管理的需求。
@@ -38,6 +38,8 @@ Core File Kit（文件基础服务）为开发者提供一套访问和管理应�
 
 - 缓冲区压缩：支持缓冲区数据压缩和解压。
 
+在Core File Kit套件中提供[网盘服务底座](clouddisk-overview.md)能力，提供实现文件夹云同步相关能力，将云端文件以占位符文件形式映射到本地，支持同步根管理、文件变更监听与同步状态管理、占位符文件生命周期管理、按需水合/脱水等能力。
+
 ## Kit使用场景
 
 Core File Kit常见的使用场景：
@@ -61,6 +63,7 @@ Core File Kit常见的使用场景：
 - 支持跨设备的文件访问和拷贝能力。
 - 支持文件和目录的归档压缩和解压，支持流式和缓冲区数据的压缩和解压。
 <!--RP3--><!--RP3End-->
+- 支持网盘应用创建云同步文件夹，将云端文件以占位符文件形式映射到本地，提供同步根管理、文件变更监听与同步状态管理、占位符文件生命周期管理、按需水合/脱水等能力。
 
 ## 亮点/特征
 

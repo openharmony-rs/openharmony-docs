@@ -301,7 +301,7 @@ postMessageWithSharedSendable(message: Object, transfer?: ArrayBuffer[]): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --------- | ----------------------------------------- | ---- | ------------------------------------------------------------ |
 | message | Object | 是 | 发送至Worker的数据，该数据对象必须是可序列化对象，序列化支持类型见[序列化支持类型](#序列化支持类型)。如果需要共享数据，支持类型见[Sendable支持的数据类型](../../arkts-utils/arkts-sendable.md#sendable支持的数据类型)。|
-| transfer | ArrayBuffer[] | 否 | 可转移的ArrayBuffer实例对象数组。该数组中对象的所有权将转移到Worker线程，在宿主线程中变为不可用，仅在Worker线程中可用，数组不可传入null。默认值为undefined。|
+| transfer | ArrayBuffer[] | 否 | 可转移的ArrayBuffer实例对象数组。该数组中对象的所有权将转移到Worker线程，在宿主线程中变为不可用，仅在Worker线程中可用，数组不可传入null。默认值为空数组。|
 
 **错误码：**
 
@@ -2213,7 +2213,9 @@ const workerInstance = new worker.ThreadWorker("workers/worker.ets");
 workerInstance.postMessage("message from main thread to worker");
 workerInstance.onmessage = (d: MessageEvents): void => {
   // 当Worker线程传递myModel时，data即为myModel。data没有init的方法
-  let data: string  = d.data;
+  let data: Record<string, Object> = d.data as Record<string, Object>;
+  console.info('name:', data.name);// name: default name
+  console.info('init:', data.init === undefined);// init: true
 }
 ```
 ```ts
@@ -2222,7 +2224,7 @@ import { worker, MessageEvents, ErrorEvent } from '@kit.ArkTS';
 
 const workerPort = worker.workerPort;
 class MyModel {
-    name = "undefined";
+    name = "default name";
     init() {
         this.name = "MyModel";
     }

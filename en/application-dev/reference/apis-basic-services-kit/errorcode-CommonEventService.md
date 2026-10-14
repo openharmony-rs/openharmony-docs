@@ -2,9 +2,10 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=1ded46b3f2c6157598c112b16f192beb1f37cf1d translatedAt=2026-09-29T09:40:39.904Z pushedAt=2026-10-08T02:39:02.477Z -->
 
 > **NOTE**
 >
@@ -72,7 +73,7 @@ A third-party application cannot send system common events.
 
 **Description**
 
-The third-party application fails to send system common events.
+Third-party applications cannot send [system common events](../../basic-services/common-event/common-event-glossary.md#system-common-event).
 
 **Possible Causes**
 
@@ -94,7 +95,7 @@ This error code is reported when the subscriber cannot be found.
 
 **Possible Causes**
 
-The subscriber has canceled the subscription and is deleted by the system.
+The subscriber has canceled the subscription or the subscriber is deleted by the system.
 
 **Solution**
 
@@ -145,7 +146,7 @@ Failed to initialize the common event service.
 
 **Description**
 
-An error occurs in the initialization process of the common event server.
+An error occurs in the initialization process of the [common event service](../../basic-services/common-event/common-event-glossary.md#common-event-service-ces).
 
 **Possible Causes**
 
@@ -177,7 +178,7 @@ Try again later.
 
 **Error Message**
 
-The count of subscriber exceed system specification.
+The count of subscriber exceeds system specification.
 
 **Description**
 

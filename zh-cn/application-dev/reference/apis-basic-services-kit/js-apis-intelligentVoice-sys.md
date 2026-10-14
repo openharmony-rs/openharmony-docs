@@ -1134,7 +1134,7 @@ enrollForResult(isLast: boolean, callback: AsyncCallback&lt;EnrollCallbackInfo&g
 
 获取注册结果，使用callback异步回调。
 
-**需要权限：** ohos.permission.MANAGE_INTELLIGENT_VOICE
+**需要权限：** ohos.permission.MANAGE_INTELLIGENT_VOICE, ohos.permission.MICROPHONE
 
 **系统能力：** SystemCapability.AI.IntelligentVoice.Core
 
@@ -1180,7 +1180,7 @@ enrollForResult(isLast: boolean): Promise&lt;EnrollCallbackInfo&gt;
 
 获取注册结果，使用Promise异步回调。
 
-**需要权限：** ohos.permission.MANAGE_INTELLIGENT_VOICE
+**需要权限：** ohos.permission.MANAGE_INTELLIGENT_VOICE, ohos.permission.MICROPHONE
 
 **系统能力：** SystemCapability.AI.IntelligentVoice.Core
 
@@ -2397,7 +2397,7 @@ startCapturer(channels: number): Promise\<void\>
 
 启动捕获器，使用Promise异步回调。
 
-**需要权限：** ohos.permission.MANAGE_INTELLIGENT_VOICE
+**需要权限：** ohos.permission.MANAGE_INTELLIGENT_VOICE, ohos.permission.MICROPHONE
 
 **系统能力：** SystemCapability.AI.IntelligentVoice.Core
 
@@ -2421,7 +2421,7 @@ startCapturer(channels: number): Promise\<void\>
 | ------- | --------------------------------------------|
 | 201 | Permission denied.                              |
 | 202 | Not system application.                             |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.|
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
 | 22700102 | Invalid parameter.                         |
 | 22700105 | Start capturer failed.                          |
 | 22700107 | System error.                          |

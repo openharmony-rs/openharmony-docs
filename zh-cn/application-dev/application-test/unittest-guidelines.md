@@ -5,7 +5,7 @@
 <!--Owner: @inter515-->
 <!--Designer: @inter515-->
 <!--Tester: @laonie666-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Adviser: @chen8281-->
 
 ## 概述
 
@@ -661,6 +661,7 @@ MockKit是Mock的基础类，用于指定需要Mock的实例和函数。
 | ignoreMock | 使用ignoreMock可以还原实例中被Mock后的函数，对被Mock后的函数有效。                                                                                                   |
 | clear | 用例执行完毕后，对被Mock对象实例进行还原处理（还原之后对象恢复被Mock之前的功能）。                                                                       |
 | clearAll | 用例执行完毕后，进行数据和内存清理，不会还原实例中被Mock后的函数。                                  |
+| isMocked | 查询实例上的指定方法或属性是否处于Mock状态（方法需已通过when设置桩行为；属性需已调用mockProperty，与设置值是否等于原始值无关）。为只读查询，不修改Mock状态。<br/>**说明**：从@ohos/hypium 1.0.29版本开始支持。 |
 
 **VerificationMode**
 
@@ -699,10 +700,22 @@ ArgumentMatchers用于用户自定义函数参数，当开发者想基于某类�
 | anyFunction | 设定用户传任何function类型参数，执行的结果都是预期的值，使用ArgumentMatchers.anyFunction方式调用。                                                                             |
 | anyNumber | 设定用户传任何数字类型参数，执行的结果都是预期的值，使用ArgumentMatchers.anyNumber方式调用。                                                                                     |
 | anyObj | 设定用户传任何对象类型参数，执行的结果都是预期的值，使用ArgumentMatchers.anyObj方式调用。 |
+| notString | 设定用户传任何非字符串参数，执行的结果都是预期的值，使用ArgumentMatchers.notString方式调用。<br/> **说明**：从@ohos/hypium 1.0.28版本开始支持。 |
+| notBoolean | 设定用户传任何非boolean类型参数，执行的结果都是预期的值，使用ArgumentMatchers.notBoolean方式调用。<br/> **说明**：从@ohos/hypium 1.0.28版本开始支持。 |
+| notNumber | 设定用户传任何非数字类型参数，执行的结果都是预期的值，使用ArgumentMatchers.notNumber方式调用。<br/> **说明**：从@ohos/hypium 1.0.28版本开始支持。 |
+| notObj | 设定用户传任何非对象类型参数，执行的结果都是预期的值，使用ArgumentMatchers.notObj方式调用。<br/> **说明**：从@ohos/hypium 1.0.28版本开始支持。 |
+| notFunction | 设定用户传任何非function类型参数，执行的结果都是预期的值，使用ArgumentMatchers.notFunction方式调用。<br/> **说明**：从@ohos/hypium 1.0.28版本开始支持。 |
 
 | 接口名 | 功能说明    |
-| --- |--------------|                                           
+| --- |--------------|
 | matchRegexs | 设定用户传任何符合正则表达式验证的参数，执行的结果都是预期的值，使用ArgumentMatchers.matchRegexs(Regex)方式调用。 |
+| notMatchRegexs | 设定用户传任何不符合正则表达式验证的参数，执行的结果都是预期的值，使用ArgumentMatchers.notMatchRegexs(RegExp)方式调用。<br/> **说明**：从@ohos/hypium 1.0.28版本开始支持。 |
+| containSubstring | 设定用户传任何包含特定子串的字符串参数，执行的结果都是预期的值，使用ArgumentMatchers.containSubstring(subString)方式调用。<br/> **说明**：从@ohos/hypium 1.0.28版本开始支持。 |
+| notContainSubstring | 设定用户传任何不包含特定子串的字符串参数，执行的结果都是预期的值，使用ArgumentMatchers.notContainSubstring(subString)方式调用。<br/> **说明**：从@ohos/hypium 1.0.28版本开始支持。 |
+| containSubArray | 设定用户传任何包含特定数组的数组参数，执行的结果都是预期的值，使用ArgumentMatchers.containSubArray(subArray)方式调用。<br/> **说明**：从@ohos/hypium 1.0.28版本开始支持。 |
+| notContainSubArray | 设定用户传任何不包含特定数组的数组参数，执行的结果都是预期的值，使用ArgumentMatchers.notContainSubArray(subArray)方式调用。<br/> **说明**：从@ohos/hypium 1.0.28版本开始支持。 |
+| containValue | 设定用户传任何包含特定值的数组参数，执行的结果都是预期的值，使用ArgumentMatchers.containValue(value)方式调用。<br/> **说明**：从@ohos/hypium 1.0.28版本开始支持。 |
+| notContainValue | 设定用户传任何不包含特定值的数组参数，执行的结果都是预期的值，使用ArgumentMatchers.notContainValue(value)方式调用。<br/> **说明**：从@ohos/hypium 1.0.28版本开始支持。 |
 
 
 > **说明：**
@@ -1240,6 +1253,55 @@ export default function staticTest() {
 }
 ```
 
+**示例代码14**：使用isMocked查询实例上的指定方法或属性是否处于Mock状态（从@ohos/hypium 1.0.29版本开始支持）
+
+<!-- @[isMocked_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/mock/IsMocked.test.ets) --> 
+
+``` TypeScript
+import { describe, expect, it, MockKit, when } from '@ohos/hypium';
+
+class ClassName {
+  constructor() {
+  }
+  count = 0;
+  method_1(arg: string) {
+    return '888888';
+  }
+}
+
+export default function isMockedTest() {
+  describe('isMockedTest', () => {
+    it('isMocked_method', 0, () => {
+      // 1.创建一个Mock能力的对象MockKit
+      let mocker: MockKit = new MockKit();
+      // 2.创建一个对象claser
+      let claser: ClassName = new ClassName();
+      // 3.进行Mock操作，对ClassName类的method_1函数进行Mock并设置桩行为
+      let mockfunc: Function = mocker.mockFunc(claser, claser.method_1);
+      when(mockfunc)('test').afterReturn('1');
+      // 4.查询method_1是否处于Mock状态，返回true
+      expect(mocker.isMocked(claser, 'method_1')).assertTrue();
+      // 5.clear还原后查询，返回false
+      mocker.clear(claser);
+      expect(mocker.isMocked(claser, 'method_1')).assertFalse();
+    })
+
+    it('isMocked_property', 0, () => {
+      // 1.创建一个Mock能力的对象MockKit
+      let mocker: MockKit = new MockKit();
+      // 2.创建一个对象claser
+      let claser: ClassName = new ClassName();
+      // 3.Mock ClassName对象的成员变量count
+      mocker.mockProperty(claser, "count", 999);
+      // 4.查询count是否处于Mock状态，返回true
+      expect(mocker.isMocked(claser, 'count')).assertTrue();
+      // 5.ignoreMock还原后查询，返回false
+      mocker.ignoreMock(claser, "count");
+      expect(mocker.isMocked(claser, 'count')).assertFalse();
+    })
+  })
+}
+```
 ### 数据驱动
 
 单元测试框架的数据驱动能力从[@ohos/hypium 1.0.2版本](https://ohpm.openharmony.cn/#/cn/detail/@ohos%2Fhypium)开始支持。开发者可以复用测试用例代码，通过数据配置文件配置输入数据和预期结果数据，在用例实现中获取数据进行相应实现和断言处理，减少冗余测试代码。
@@ -1318,6 +1380,35 @@ export default class TestAbility extends UIAbility {
     Hypium.setData(data);
     Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite);
   }
+
+  onDestroy() {
+    Logger.info('testTag', '%{public}s', 'TestAbility onDestroy');
+  }
+
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    Logger.info(TAG, 'TestAbility onWindowStageCreate');
+    windowStage.loadContent('testability/pages/Index', (err, data) => {
+      if (err.code) {
+        Logger.error(TAG, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
+        return;
+      }
+      Logger.info(TAG, 'Succeeded in loading the content. Data: %{public}s',
+        JSON.stringify(data) ?? '');
+    });
+  }
+
+  onWindowStageDestroy() {
+    Logger.info('testTag', '%{public}s', 'TestAbility onWindowStageDestroy');
+  }
+
+  onForeground() {
+    Logger.info('testTag', '%{public}s', 'TestAbility onForeground');
+  }
+
+  onBackground() {
+    Logger.info('testTag', '%{public}s', 'TestAbility onBackground');
+  }
+}
 ```
 
  <!-- @[dataDriver_sample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Test/jsunit/entry/src/ohosTest/ets/test/dataDriver/DataDriver.test.ets) --> 
@@ -1341,7 +1432,7 @@ export default class TestAbility extends UIAbility {
    value: string
  }
  ```
- 
+
 > **说明：** 
 >
 > 若要使用数据驱动传入参数功能，测试用例`it`的`func`必须传入两个参数：`done`和`data`，且入参顺序不可调整。若不使用数据驱动传入参数功能，`func`可以不传参或仅传入`done`。

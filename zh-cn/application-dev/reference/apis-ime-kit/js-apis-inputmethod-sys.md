@@ -23,6 +23,10 @@ switchInputMethod(bundleName: string, subtypeId?: string): Promise&lt;void&gt;
 
 切换输入法，使用promise异步回调。
 
+> **说明：**
+>
+> 该接口在[评估管理](../apis-assessment-kit/js-apis-customization-assessment.md)开启时无法切换到其他输入法应用。
+
 **需要权限：** ohos.permission.CONNECT_IME_ABILITY
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
@@ -48,8 +52,8 @@ switchInputMethod(bundleName: string, subtypeId?: string): Promise&lt;void&gt;
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 201      | permissions check fails.  |
-| 202      | not system application.  |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.  |
+| 202      | Permission verification failed. A non-system application calls a system API.  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed.           |
 | 12800005 | configuration persistence error. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
@@ -123,7 +127,7 @@ on(type: 'imeShow', callback: (info: Array\<InputWindowInfo>) => void): void
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API.  |
 
 **示例：**
 
@@ -161,7 +165,7 @@ on(type: 'imeHide', callback: (info: Array\<InputWindowInfo>) => void): void
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API.  |
 
 
 **示例：**
@@ -246,7 +250,7 @@ isPanelShown(panelInfo: PanelInfo): boolean
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API.  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
@@ -299,7 +303,7 @@ isPanelShown(panelInfo: PanelInfo, displayId: number): boolean
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API.  |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
 **示例：**
@@ -353,8 +357,8 @@ enableInputMethod(bundleName: string, extensionName: string, enabledState: Enabl
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 201      | permissions check fails. |
-| 202      | not system application. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception.  |
 | 12800018 | input method is not found. |
 | 12800019 | current operation cannot be applied to the preconfigured default input method. |
@@ -420,7 +424,7 @@ getCursorInfo(userId?: number): CursorInfo
 
 | 错误码ID | 错误信息 |
 | -------- | -------------------------------------- |
-| 202      | not system application. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 12800003 | input method client error. Possible causes: 1. No edit box is bound to the current input method application under the specified user. |
 | 12800008 | input method manager service error. Possible causes: a system error, such as null pointer, IPC exception. |
 | 12800023 | the specified user does not exist. |
@@ -467,7 +471,7 @@ getDefaultInputMethodAbility(): InputMethodProperty
 
 | 错误码ID | 错误信息 |
 | -------- | -------------------------------------- |
-| 202      | not system application. |
+| 202      | Permission verification failed. A non-system application calls a system API. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
 **示例：**
@@ -481,389 +485,6 @@ try {
 } catch (err) {
   let error = err as BusinessError;
   console.error(`Failed to getDefaultInputMethodAbility. Code: ${error.code}, message: ${error.message}`);
-}
-```
-
-## InputMethodController
-
-下列API示例中都需使用[getController](./js-apis-inputmethod.md#inputmethodgetcontroller9)获取到InputMethodController实例，再通过实例调用对应方法。
-
-### showSoftKeyboard<sup>23+</sup>
-
-showSoftKeyboard(displayId: number): Promise&lt;void&gt;
-
-在指定屏幕上显示输入法软键盘。使用Promise异步回调。
-
-配合使用：
-- 此方法与hideSoftKeyboard配合使用，可实现对软键盘的显示和隐藏控制
-- 通常在调用showSoftKeyboard显示软键盘后，可在需要时调用hideSoftKeyboard隐藏软键盘
-- 需要编辑框与输入法绑定时才能调用
-
-> **说明：**
->
-> 该接口需要编辑框与输入法绑定时才能调用，即点击编辑控件后，才可调用显示当前输入法的软键盘。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**需要权限：** ohos.permission.CONNECT_IME_ABILITY，仅系统应用可用。
-
-**系统能力：**  SystemCapability.MiscServices.InputMethodFramework
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名   | 类型  | 必填 | 说明       |
-| -------- | ------------------------- | ---- | ---------- |
-| displayId | number | 是   | 屏幕ID。|
-
-**返回值：**
-
-| 类型           | 说明                     |
-| -------------- | ----------------------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                             |
-| -------- | -------------------------------------- |
-| 201      | permissions check fails.  |
-| 202      | not system application.  |
-| 12800003 | input method client error. Possible causes: 1. the edit box is not focused. 2. no edit box is bound to current input method application. 3. ipc failed due to the large amount of data transferred or other reasons.|
-| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
-
-**示例：**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let displayId: number = 20;
-inputMethod.getController().showSoftKeyboard(displayId).then(() => {
-  console.info('Succeeded in showing softKeyboard.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to show softKeyboard, code: ${err.code}, message: ${err.message}`);
-});
-```
-
-### hideSoftKeyboard<sup>23+</sup>
-
-hideSoftKeyboard(displayId: number): Promise&lt;void&gt;
-
-隐藏指定屏幕上的输入法软键盘。使用Promise异步回调。
-
-> **说明：**
->
-> 该接口需要编辑框与输入法绑定时才能调用，即点击编辑控件后，才可调用隐藏当前输入法的软键盘。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**需要权限：** ohos.permission.CONNECT_IME_ABILITY，仅系统应用可用。
-
-**系统能力：**  SystemCapability.MiscServices.InputMethodFramework
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名   | 类型  | 必填 | 说明       |
-| -------- | ------------------------- | ---- | ---------- |
-| displayId | number | 是   | 屏幕ID。|
-
-**返回值：**
-
-| 类型                | 说明                      |
-| ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise对象，无返回结果。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                             |
-| -------- | -------------------------------------- |
-| 201      | permissions check fails.  |
-| 202      | not system application.  |
-| 12800003 | input method client error. Possible causes: 1. the edit box is not focused. 2. no edit box is bound to current input method application. 3. ipc failed due to the large amount of data transferred or other reasons.|
-| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
-
-**示例：**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let displayId: number = 30;
-inputMethod.getController().hideSoftKeyboard(displayId).then(() => {
-  console.info('Succeeded in hiding softKeyboard.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to hide softKeyboard, code: ${err.code}, message: ${err.message}`);
-});
-```
-
-## inputMethod.getDefaultInputMethod
-
-getDefaultInputMethod(userId?: number): InputMethodProperty
-
-获取指定用户的默认输入法。
-
-**起始版本：** 26.0.0
-
-**系统能力：** SystemCapability.MiscServices.InputMethodFramework
-
-**系统接口：** 此接口为系统接口。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| userId | number | 否 | 用户ID。取值范围为有效用户的ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
-
-**返回值：**
-
-| 类型                                         | 说明                     |
-| -------------------------------------------- | ------------------------ |
-| [InputMethodProperty](js-apis-inputmethod.md#inputmethodproperty8) | 返回默认输入法属性对象。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                             |
-| -------- | -------------------------------------- |
-| 202 | not system application. |
-| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
-| 12800023 | the specified user does not exist. |
-| 12800024 | the specified user is not in the foreground. |
-| 12800025 | cross-user operation denied. Only user 0 applications are authorized for this operation. |
-
-**示例：**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let defaultIme: inputMethod.InputMethodProperty = inputMethod.getDefaultInputMethod(100);
-  console.info('Succeeded in getting default input method, name: ' + defaultIme.name + ', id: ' + defaultIme.id);
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`Failed to getDefaultInputMethod. Code: ${error.code}, message: ${error.message}`);
-}
-```
-
-## inputMethod.getSystemInputMethodConfigAbility
-
-getSystemInputMethodConfigAbility(userId?: number): ElementName
-
-获取指定用户的系统输入法设置界面Ability信息。用于启动系统输入法配置界面。
-
-**起始版本：** 26.0.0
-
-**系统能力：** SystemCapability.MiscServices.InputMethodFramework
-
-**系统接口：** 此接口为系统接口。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| userId | number | 否 | 用户ID。取值范围为有效用户的ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
-
-**返回值：**
-
-| 类型                                         | 说明                     |
-| -------------------------------------------- | ------------------------ |
-| [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md) | 系统输入法设置界面Ability的ElementName。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                             |
-| -------- | -------------------------------------- |
-| 202 | not system application. |
-| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
-| 12800023 | the specified user does not exist. |
-| 12800024 | the specified user is not in the foreground. |
-| 12800025 | cross-user operation denied. Only user 0 applications are authorized for this operation. |
-
-**示例：**
-
-```ts
-import { bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let inputMethodConfig: bundleManager.ElementName = inputMethod.getSystemInputMethodConfigAbility(100);
-  console.info('Succeeded in getting system input method config ability, bundleName: ' + inputMethodConfig.bundleName);
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`Failed to getSystemInputMethodConfigAbility. Code: ${error.code}, message: ${error.message}`);
-}
-```
-
-## inputMethod.switchInputMethodWithUserId
-
-switchInputMethodWithUserId(bundleName: string, subtypeId?: string, userId?: number): Promise&lt;void&gt;
-
-切换输入法，使用promise异步回调。
-
-**起始版本：** 26.0.0
-
-**需要权限：** ohos.permission.CONNECT_IME_ABILITY
-
-**系统能力：** SystemCapability.MiscServices.InputMethodFramework
-
-**系统接口：** 此接口为系统接口。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| bundleName | string | 是 | 目标输入法的包名。 |
-| subtypeId | string | 否 | 输入法子类型的ID。如果不设置该参数，则切换到使用默认子类型的目标输入法。 |
-| userId | number | 否 | 用户ID。取值范围为有效用户的ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
-
-**返回值：**
-
-| 类型                                      | 说明                         |
-| ----------------------------------------- | ---------------------------- |
-| Promise&lt;void&gt;  | Promise对象，无返回结果。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                             |
-| -------- | -------------------------------------- |
-| 201 | permissions check fails. |
-| 202 | not system application. |
-| 12800005 | configuration persistence error. |
-| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
-| 12800023 | the specified user does not exist. |
-| 12800024 | the specified user is not in the foreground. |
-| 12800025 | cross-user operation denied. Only user 0 applications are authorized for this operation. |
-
-**示例：**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-inputMethod.switchInputMethodWithUserId('com.example.keyboard', 'subtype_001', 100).then(() => {
-  console.info('Succeeded in switching input method.');
-}).catch((err: BusinessError) => {
-  console.error(`Failed to switchInputMethodWithUserId, code: ${err.code}, message: ${err.message}`);
-});
-```
-
-## inputMethod.getCurrentInputMethod
-
-getCurrentInputMethod(userId?: number): InputMethodProperty
-
-获取指定用户的当前输入法。
-
-**起始版本：** 26.0.0
-
-**系统能力：** SystemCapability.MiscServices.InputMethodFramework
-
-**系统接口：** 此接口为系统接口。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| userId | number | 否 | 用户ID。取值范围为有效用户的ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
-
-**返回值：**
-
-| 类型                                         | 说明                     |
-| -------------------------------------------- | ------------------------ |
-| [InputMethodProperty](js-apis-inputmethod.md#inputmethodproperty8) | 返回当前输入法属性对象。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                             |
-| -------- | -------------------------------------- |
-| 202 | not system application. |
-| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
-| 12800023 | the specified user does not exist. |
-| 12800024 | the specified user is not in the foreground. |
-| 12800025 | cross-user operation denied. Only user 0 applications are authorized for this operation. |
-
-**示例：**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let currentIme: inputMethod.InputMethodProperty = inputMethod.getCurrentInputMethod(100);
-  console.info('Succeeded in getting current input method, name: ' + currentIme.name + ', id: ' + currentIme.id);
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`Failed to getCurrentInputMethod. Code: ${error.code}, message: ${error.message}`);
-}
-```
-
-## inputMethod.getCurrentInputMethodSubtype
-
-getCurrentInputMethodSubtype(userId?: number): InputMethodSubtype
-
-获取指定用户的当前输入法子类型。
-
-**起始版本：** 26.0.0
-
-**系统能力：** SystemCapability.MiscServices.InputMethodFramework
-
-**系统接口：** 此接口为系统接口。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| userId | number | 否 | 用户ID。取值范围为有效用户的ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
-
-**返回值：**
-
-| 类型                                         | 说明                     |
-| -------------------------------------------- | ------------------------ |
-| [InputMethodSubtype](./js-apis-inputmethod-subtype.md#inputmethodsubtype) | 返回当前输入法子类型对象。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                             |
-| -------- | -------------------------------------- |
-| 202 | not system application. |
-| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
-| 12800023 | the specified user does not exist. |
-| 12800024 | the specified user is not in the foreground. |
-| 12800025 | cross-user operation denied. Only user 0 applications are authorized for this operation. |
-
-**示例：**
-
-```ts
-import { InputMethodSubtype } from '@kit.IMEKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  let currentImeSubType: InputMethodSubtype = inputMethod.getCurrentInputMethodSubtype(100);
-  console.info('Succeeded in getting current input method subtype, id: ' + currentImeSubType.id);
-} catch (err) {
-  let error = err as BusinessError;
-  console.error(`Failed to getCurrentInputMethodSubtype. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -904,8 +525,8 @@ enableInputMethod(bundleName: string, extensionName: string, enabledState: Enabl
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 201 | permissions check fails. |
-| 202 | not system application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800018 | input method is not found. |
 | 12800019 | current operation cannot be applied to the preconfigured default input method. |
@@ -957,7 +578,7 @@ getAllInputMethodsSync(userId?: number): Array&lt;InputMethodProperty&gt;
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 202 | not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12800001 | bundle manager error. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800023 | the specified user does not exist. |
@@ -1011,7 +632,7 @@ getInputMethodSubtypes(bundleName: string, userId?: number): Array&lt;InputMetho
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 202 | not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12800001 | bundle manager error. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800023 | the specified user does not exist. |
@@ -1033,7 +654,6 @@ try {
   console.error(`Failed to getInputMethodSubtypes. Code: ${error.code}, message: ${error.message}`);
 }
 ```
-
 ### getInputMethodsSync
 
 getInputMethodsSync(enable: boolean, userId?: number): Array&lt;InputMethodProperty&gt;
@@ -1073,7 +693,7 @@ getInputMethodsSync(enable: boolean, userId?: number): Array&lt;InputMethodPrope
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 202 | not system application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 12800001 | bundle manager error. |
 | 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 | 12800023 | the specified user does not exist. |
@@ -1125,7 +745,7 @@ onImeChangeWithUserId(callback: ImeChangeWithUserIdCallback): void
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API.  |
 
 **示例：**
 
@@ -1164,12 +784,399 @@ offImeChangeWithUserId(callback?: ImeChangeWithUserIdCallback): void
 
 | 错误码ID | 错误信息                             |
 | -------- | -------------------------------------- |
-| 202      | not system application.  |
+| 202      | Permission verification failed. A non-system application calls a system API.  |
 
 **示例：**
 
 ```ts
 inputMethod.getSetting().offImeChangeWithUserId();
+```
+
+## InputMethodController
+
+下列API示例中都需使用[getController](./js-apis-inputmethod.md#inputmethodgetcontroller9)获取到InputMethodController实例，再通过实例调用对应方法。
+
+### showSoftKeyboard<sup>23+</sup>
+
+showSoftKeyboard(displayId: number): Promise&lt;void&gt;
+
+在指定屏幕上显示输入法软键盘。使用Promise异步回调。
+
+配合使用：
+- 此方法与hideSoftKeyboard配合使用，可实现对软键盘的显示和隐藏控制
+- 通常在调用showSoftKeyboard显示软键盘后，可在需要时调用hideSoftKeyboard隐藏软键盘
+- 需要编辑框与输入法绑定时才能调用
+
+> **说明：**
+>
+> 该接口需要编辑框与输入法绑定时才能调用，即点击编辑控件后，才可调用显示当前输入法的软键盘。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.CONNECT_IME_ABILITY，仅系统应用可用。
+
+**系统能力：**  SystemCapability.MiscServices.InputMethodFramework
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型  | 必填 | 说明       |
+| -------- | ------------------------- | ---- | ---------- |
+| displayId | number | 是   | 屏幕ID。|
+
+**返回值：**
+
+| 类型           | 说明                     |
+| -------------- | ----------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                             |
+| -------- | -------------------------------------- |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.  |
+| 202      | Permission verification failed. A non-system application calls a system API.  |
+| 12800003 | input method client error. Possible causes: 1. the edit box is not focused. 2. no edit box is bound to current input method application. 3. ipc failed due to the large amount of data transferred or other reasons.|
+| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let displayId: number = 20;
+inputMethod.getController().showSoftKeyboard(displayId).then(() => {
+  console.info('Succeeded in showing softKeyboard.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to show softKeyboard, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+### hideSoftKeyboard<sup>23+</sup>
+
+hideSoftKeyboard(displayId: number): Promise&lt;void&gt;
+
+隐藏指定屏幕上的输入法软键盘。使用Promise异步回调。
+
+> **说明：**
+>
+> 该接口需要编辑框与输入法绑定时才能调用，即点击编辑控件后，才可调用隐藏当前输入法的软键盘。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.CONNECT_IME_ABILITY，仅系统应用可用。
+
+**系统能力：**  SystemCapability.MiscServices.InputMethodFramework
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名   | 类型  | 必填 | 说明       |
+| -------- | ------------------------- | ---- | ---------- |
+| displayId | number | 是   | 屏幕ID。|
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                             |
+| -------- | -------------------------------------- |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.  |
+| 202      | Permission verification failed. A non-system application calls a system API.  |
+| 12800003 | input method client error. Possible causes: 1. the edit box is not focused. 2. no edit box is bound to current input method application. 3. ipc failed due to the large amount of data transferred or other reasons.|
+| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let displayId: number = 30;
+inputMethod.getController().hideSoftKeyboard(displayId).then(() => {
+  console.info('Succeeded in hiding softKeyboard.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to hide softKeyboard, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## inputMethod.getDefaultInputMethod
+
+getDefaultInputMethod(userId?: number): InputMethodProperty
+
+获取指定用户的默认输入法。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| userId | number | 否 | 用户ID。取值范围为有效用户的ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
+
+**返回值：**
+
+| 类型                                         | 说明                     |
+| -------------------------------------------- | ------------------------ |
+| [InputMethodProperty](js-apis-inputmethod.md#inputmethodproperty8) | 返回默认输入法属性对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                             |
+| -------- | -------------------------------------- |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+| 12800023 | the specified user does not exist. |
+| 12800024 | the specified user is not in the foreground. |
+| 12800025 | cross-user operation denied. Only user 0 applications are authorized for this operation. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let defaultIme: inputMethod.InputMethodProperty = inputMethod.getDefaultInputMethod(100);
+  console.info('Succeeded in getting default input method, name: ' + defaultIme.name + ', id: ' + defaultIme.id);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to getDefaultInputMethod. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+## inputMethod.getSystemInputMethodConfigAbility
+
+getSystemInputMethodConfigAbility(userId?: number): ElementName
+
+获取指定用户的系统输入法设置界面Ability信息。用于启动系统输入法配置界面。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| userId | number | 否 | 用户ID。取值范围为有效用户的ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
+
+**返回值：**
+
+| 类型                                         | 说明                     |
+| -------------------------------------------- | ------------------------ |
+| [ElementName](../apis-ability-kit/js-apis-bundleManager-elementName.md) | 系统输入法设置界面Ability的ElementName。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                             |
+| -------- | -------------------------------------- |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+| 12800023 | the specified user does not exist. |
+| 12800024 | the specified user is not in the foreground. |
+| 12800025 | cross-user operation denied. Only user 0 applications are authorized for this operation. |
+
+**示例：**
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let inputMethodConfig: bundleManager.ElementName = inputMethod.getSystemInputMethodConfigAbility(100);
+  console.info('Succeeded in getting system input method config ability, bundleName: ' + inputMethodConfig.bundleName);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to getSystemInputMethodConfigAbility. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+## inputMethod.switchInputMethodWithUserId
+
+switchInputMethodWithUserId(bundleName: string, subtypeId?: string, userId?: number): Promise&lt;void&gt;
+
+切换输入法，使用promise异步回调。
+
+> **说明：**
+>
+> 该接口在[评估管理](../apis-assessment-kit/js-apis-customization-assessment.md)开启时无法切换到其他输入法应用。
+
+**起始版本：** 26.0.0
+
+**需要权限：** ohos.permission.CONNECT_IME_ABILITY
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| bundleName | string | 是 | 目标输入法的包名。 |
+| subtypeId | string | 否 | 输入法子类型的ID。如果不设置该参数，则切换到使用默认子类型的目标输入法。 |
+| userId | number | 否 | 用户ID。取值范围为有效用户的ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
+
+**返回值：**
+
+| 类型                                      | 说明                         |
+| ----------------------------------------- | ---------------------------- |
+| Promise&lt;void&gt;  | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                             |
+| -------- | -------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 12800005 | configuration persistence error. |
+| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+| 12800023 | the specified user does not exist. |
+| 12800024 | the specified user is not in the foreground. |
+| 12800025 | cross-user operation denied. Only user 0 applications are authorized for this operation. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+inputMethod.switchInputMethodWithUserId('com.example.keyboard', 'subtype_001', 100).then(() => {
+  console.info('Succeeded in switching input method.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to switchInputMethodWithUserId, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## inputMethod.getCurrentInputMethod
+
+getCurrentInputMethod(userId?: number): InputMethodProperty
+
+获取指定用户的当前输入法。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| userId | number | 否 | 用户ID。取值范围为有效用户的ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
+
+**返回值：**
+
+| 类型                                         | 说明                     |
+| -------------------------------------------- | ------------------------ |
+| [InputMethodProperty](js-apis-inputmethod.md#inputmethodproperty8) | 返回当前输入法属性对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                             |
+| -------- | -------------------------------------- |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+| 12800023 | the specified user does not exist. |
+| 12800024 | the specified user is not in the foreground. |
+| 12800025 | cross-user operation denied. Only user 0 applications are authorized for this operation. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let currentIme: inputMethod.InputMethodProperty = inputMethod.getCurrentInputMethod(100);
+  console.info('Succeeded in getting current input method, name: ' + currentIme.name + ', id: ' + currentIme.id);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to getCurrentInputMethod. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+## inputMethod.getCurrentInputMethodSubtype
+
+getCurrentInputMethodSubtype(userId?: number): InputMethodSubtype
+
+获取指定用户的当前输入法子类型。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| userId | number | 否 | 用户ID。取值范围为有效用户的ID。如果不提供：<br>- 如果调用者不是用户0的应用，该值默认为调用者的用户ID。<br>- 如果调用者是用户0的应用，该值默认为主屏幕的前台用户ID。 |
+
+**返回值：**
+
+| 类型                                         | 说明                     |
+| -------------------------------------------- | ------------------------ |
+| [InputMethodSubtype](./js-apis-inputmethod-subtype.md#inputmethodsubtype) | 返回当前输入法子类型对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                             |
+| -------- | -------------------------------------- |
+| 202 | Permission verification failed. A non-system application calls a system API. |
+| 12800008 | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
+| 12800023 | the specified user does not exist. |
+| 12800024 | the specified user is not in the foreground. |
+| 12800025 | cross-user operation denied. Only user 0 applications are authorized for this operation. |
+
+**示例：**
+
+```ts
+import { InputMethodSubtype } from '@kit.IMEKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let currentImeSubType: InputMethodSubtype = inputMethod.getCurrentInputMethodSubtype(100);
+  console.info('Succeeded in getting current input method subtype, id: ' + currentImeSubType.id);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to getCurrentInputMethodSubtype. Code: ${error.code}, message: ${error.message}`);
+}
 ```
 
 ## ImeChangeWithUserIdCallback

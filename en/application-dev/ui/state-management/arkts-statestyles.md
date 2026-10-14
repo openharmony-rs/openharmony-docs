@@ -1,14 +1,14 @@
 # stateStyles: Applying Polymorphic Styles
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=c6d2a51ae0d4d741fa9801df0b2e84e58290f6c1 translatedAt=2026-07-24T01:21:35.328Z pushedAt=2026-07-24T03:22:43.813Z -->
+<!-- md-trans-meta sourceCommit=3477505f92eade71c49719bd32fb8ac4fd5eef96 translatedAt=2026-09-21T11:42:02.793Z pushedAt=2026-09-23T09:30:40.339Z -->
 
-Unlike \@Styles, which are used to reuse styles only on static pages, stateStyles enables you to set dynamic, state-specific styles. This topic explores the implementation of polymorphic styles through stateStyles.
+
+\@Styles is only used for style reuse on static pages, whereas **stateStyles** can quickly set different styles based on a component's internal state. This is what this chapter introduces: **stateStyles** (also known as polymorphic styles).
 
 > **NOTE**
 >
@@ -16,7 +16,7 @@ Unlike \@Styles, which are used to reuse styles only on static pages, stateStyle
 
 ## Overview
 
-stateStyles is an attribute method that sets the style based on the internal state of a component. It is similar to a CSS pseudo-class, with different syntax. ArkUI provides the following states:
+**stateStyles** is an attribute method that sets styles based on the internal state of the UI, similar to CSS pseudo-classes but with different syntax. ArkUI provides the following seven states:
 
 - focused
 
@@ -30,11 +30,15 @@ stateStyles is an attribute method that sets the style based on the internal sta
 
 - selected<sup>10+</sup>
 
+- hovered: hovered state. **Since:** 26.0.0
+
 > **NOTE**
 >
 > Currently, the focused state can be triggered only by pressing the **Tab** or arrow keys on an external keyboard. Triggering through key presses in nested scrollable components is not supported.
 
+
 ## Use Scenarios
+
 
 ### Common Scenarios
 
@@ -78,13 +82,17 @@ struct StateStylesSample {
 }
 ```
 
+
+
   **Figure 1** Focused and pressed states 
 
 ![Video_2023-03-17_120758](figures/Video_2023-03-17_120758.gif)
 
+
 ### Combined Use of \@Styles and stateStyles
 
 The following example uses \@Styles to specify different states of stateStyles.
+
 
 <!-- @[normal_style](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/StateStyle/entry/src/main/ets/pages/NormalStyle/MyComponent.ets) -->
 
@@ -116,6 +124,7 @@ struct MyComponent {
   **Figure 2** Normal and pressed states 
 
 ![Video_2023-03-17_144824](figures/Video_2023-03-17_144824.gif)
+
 
 ### Using Regular Variables and State Variables in stateStyles
 

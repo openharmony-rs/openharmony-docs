@@ -6,7 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=574e1b97c419a831e3ff5b620b1254fe667a5306 translatedAt=2026-06-12T02:24:25.854Z pushedAt=2026-06-12T08:25:55.309Z -->
+<!-- md-trans-meta sourceCommit=6ff193a1258b05452b4935e34a160adf6db64d7a translatedAt=2026-09-11T01:17:37.943Z pushedAt=2026-09-11T03:26:13.086Z -->
 
 The **keyEvent** module provides key events reported by a device. It is inherited from [InputEvent](js-apis-inputevent.md).
 
@@ -61,7 +61,7 @@ Key event.
 | action      | [Action](#action)   | No  | No  | Key event type.                      |
 | key         | [Key](#key)      | No  | No  | Defines a key.            |
 | unicodeChar | number   | No  | No  | Unicode character corresponding to the key.         |
-| keys        | [Key](#key) []    | No  | No  | List of pressed keys.    |
+| keys        | [Key](#key)[]    | No   | No   | List of keys that are currently in the pressed state.     |
 | ctrlKey     | boolean  | No  | No  | Whether ctrlKey is being pressed.<br>The value **true** indicates that the key is pressed, and the value **false** indicates the opposite.|
 | altKey      | boolean  | No  | No  | Whether altKey is being pressed.<br>The value **true** indicates that the key is pressed, and the value **false** indicates the opposite.    |
 | shiftKey    | boolean  | No  | No  | Whether shiftKey is being pressed.<br>The value **true** indicates that the key is pressed, and the value **false** indicates the opposite.  |

@@ -37,7 +37,7 @@ import { insightIntent } from '@kit.AbilityKit';
 
 意图执行的返回结果。
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 **系统接口**：此接口为系统接口。
 
@@ -51,7 +51,7 @@ import { insightIntent } from '@kit.AbilityKit';
 
 定义当前意图执行完成后需要展示的交互界面的信息。
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -67,7 +67,7 @@ import { insightIntent } from '@kit.AbilityKit';
 
 定义当意图执行完成时模态UIExtension要显示为交互界面的信息，不支持分布式。继承自[InteractionUI](#interactionui)。
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -85,11 +85,29 @@ import { insightIntent } from '@kit.AbilityKit';
 | uri | string | 否 | 否 | 传递给目标UIExtension的URI信息。 |
 | parameters | Record\<string, Object\> | 否 | 否 | 传递给目标UIExtension的参数。 |
 
+## InteractionText
+
+定义当意图执行完成时嵌入式文本要显示为交互界面的信息，不支持分布式。继承自[InteractionUI](#interactionui)。
+
+**起始版本**：26.0.1
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| interactionUIType | string | 否 | 否 | 交互界面的类型，固定为'TEXT'。 |
+| parameters | Record\<string, Object\> | 否 | 否 | 传递给目标TEXT的参数。 |
+| buttons | Array\<string\> | 否 | 是 | 传递给目标TEXT的按钮列表。 |
+
 ## InteractionInfo
 
 定义当前意图执行完成后返回的交互信息。
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 **模型约束**：此接口仅可在Stage模型下使用。
 

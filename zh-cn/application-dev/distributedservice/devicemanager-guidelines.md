@@ -312,7 +312,7 @@ getAvailableDeviceListSync(): Array&lt;DeviceBasicInfo&gt;;
        this.trustedDeviceList = this.deviceManager.getAvailableDeviceListSync();
        // ...
      } catch (error) {
-       logger.error('[DeviceManager.RemoteDeviceModel] getTrustedDeviceList error: ${error}' + error.toString());
+       logger.error(`[DeviceManager.RemoteDeviceModel] getTrustedDeviceList error: ${error}`);
        this.showErrMsg('getTrustedDeviceList failed');
      }
    }

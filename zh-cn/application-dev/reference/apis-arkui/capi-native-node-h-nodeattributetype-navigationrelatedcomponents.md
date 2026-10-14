@@ -648,7 +648,7 @@ NODE_ARC_ALPHABET_INDEXER_ARRAY = MAX_NODE_SCOPE_NUM * ARKUI_NODE_ARC_ALPHABET_I
 设置索引字符串数组，支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -671,13 +671,13 @@ NODE_ARC_ALPHABET_INDEXER_COLOR = 23001
 设置索引项在非选中状态下的文本颜色，支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].u32 | 文本颜色，0xargb格式。默认值为0xFFFFFFFF，表示白色。 |
+| .value[0].u32 | 文本颜色，0xargb格式。默认值为0x99182431，表示略带透明的深暗蓝色。 |
 
 **返回：**
 
@@ -694,13 +694,13 @@ NODE_ARC_ALPHABET_INDEXER_SELECTED_COLOR = 23002
 设置索引项在选中状态下的文本颜色，支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].u32 | 文本颜色，0xargb格式。默认值为0xFFFFFFFF，表示白色。 |
+| .value[0].u32 | 文本颜色，0xargb格式。默认值为0xFF007DFF，表示蓝色。 |
 
 **返回：**
 
@@ -717,13 +717,13 @@ NODE_ARC_ALPHABET_INDEXER_POPUP_COLOR = 23003
 设置提示弹窗的文本颜色，支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].u32 | 文本颜色，0xargb格式。默认值为0xFFFFFFFF，表示白色。 |
+| .value[0].u32 | 文本颜色，0xargb格式。默认值为0xFF007DFF，表示蓝色。 |
 
 **返回：**
 
@@ -740,13 +740,13 @@ NODE_ARC_ALPHABET_INDEXER_SELECTED_BACKGROUND_COLOR = 23004
 设置索引项在选中状态下的背景颜色，支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].u32 | 背景颜色，0xargb格式。默认值为0xFF1F71FF，表示蓝色。 |
+| .value[0].u32 | 背景颜色，0xargb格式。默认值为0xFF1F71FF，表示深蓝色。 |
 
 **返回：**
 
@@ -763,13 +763,13 @@ NODE_ARC_ALPHABET_INDEXER_POPUP_BACKGROUND_COLOR = 23005
 设置提示弹窗的背景颜色，支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].u32 | 背景颜色，0xargb格式。默认值为0xD8404040，表示深灰色。 |
+| .value[0].u32 | 背景颜色，0xargb格式。默认值为0xD8404040，表示微透明的深灰色。 |
 
 **返回：**
 
@@ -786,7 +786,7 @@ NODE_ARC_ALPHABET_INDEXER_USE_POPUP = 23006
 设置是否使用提示弹窗，支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -809,14 +809,14 @@ NODE_ARC_ALPHABET_SELECTED_FONT = 23007
 设置选中索引项的字体样式，支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
 | .string | 字体族，多个字体使用','进行分割，为可选参数。默认值为“HarmonyOS Sans”。 |
-| .value[0].f32 | 字体大小，单位为fp，为可选参数，默认值为13。 |
+| .value[0].f32 | 字体大小，单位为fp，为可选参数，默认值为13.0。 |
 | .value[1].i32 | 字体粗细，为可选参数，参数类型[ArkUI_FontWeight](capi-text-h.md#arkui_fontweight)，默认值为ARKUI_FONT_WEIGHT_W500。 |
 | .value[2].i32 | 字体样式，为可选参数，参数类型[ArkUI_FontStyle](capi-text-h.md#arkui_fontstyle)，默认值为ARKUI_FONT_STYLE_NORMAL。 |
 
@@ -838,14 +838,14 @@ NODE_ARC_ALPHABET_INDEXER_POPUP_FONT = 23008
 设置提示弹窗的字体样式，支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
 | .string | 字体族，多个字体使用','进行分割，为可选参数。默认值为“HarmonyOS Sans”。 |
-| .value[0].f32 | 字体大小，单位为fp，为可选参数，默认值为19。 |
+| .value[0].f32 | 字体大小，单位为fp，为可选参数，默认值为19.0。 |
 | .value[1].i32 | 字体粗细，为可选参数，参数类型[ArkUI_FontWeight](capi-text-h.md#arkui_fontweight)，默认值为ARKUI_FONT_WEIGHT_W500。 |
 | .value[2].i32 | 字体样式，为可选参数，参数类型[ArkUI_FontStyle](capi-text-h.md#arkui_fontstyle)，默认值为ARKUI_FONT_STYLE_NORMAL。 |
 
@@ -867,14 +867,14 @@ NODE_ARC_ALPHABET_FONT = 23009
 设置索引项的默认字体样式，支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
 | .string | 字体族，多个字体使用','进行分割，为可选参数。默认值为“HarmonyOS Sans”。 |
-| .value[0].f32 | 字体大小，单位为fp，为可选参数，默认值为13。 |
+| .value[0].f32 | 字体大小，单位为fp，为可选参数，默认值为13.0。 |
 | .value[1].i32 | 字体粗细，为可选参数，参数类型[ArkUI_FontWeight](capi-text-h.md#arkui_fontweight)，默认值为ARKUI_FONT_WEIGHT_W500。 |
 | .value[2].i32 | 字体样式，为可选参数，参数类型[ArkUI_FontStyle](capi-text-h.md#arkui_fontstyle)，默认值为ARKUI_FONT_STYLE_NORMAL。 |
 
@@ -896,13 +896,13 @@ NODE_ARC_ALPHABET_INDEXER_ITEM_SIZE = 23010
 设置字母索引条字母区域大小，支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].f32 | 字母区域为圆形，设置该圆形的直径，单位为vp，默认值为24。 |
+| .value[0].f32 | 字母区域为圆形，设置该圆形的直径，单位为vp，默认值为24.0。 |
 
 **返回：**
 
@@ -919,7 +919,7 @@ NODE_ARC_ALPHABET_INDEXER_SELECTED = 23011
 设置选中项的索引，支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -942,7 +942,7 @@ NODE_ARC_ALPHABET_AUTO_COLLAPSE = 23012
 设置当索引条空间不足以显示全部字符时是否折叠字符，支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -965,7 +965,7 @@ NODE_ARC_ALPHABET_POPUP_BACKGROUND_BLUR_STYLE = 23013
 设置提示弹窗的背景模糊样式，支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -988,13 +988,13 @@ NODE_ARC_SWIPER_INDEX = MAX_NODE_SCOPE_NUM * ARKUI_NODE_ARC_SWIPER = 1022000
 设置当前在ArcSwiper容器中显示的子组件的索引，支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 子组件的索引值，默认值为0。 |
+| .value[0].i32 | 子组件的索引值，默认值为0。当index值小于0或大于等于子组件数量时，按照默认值0处理。 |
 
 **返回：**
 
@@ -1011,7 +1011,7 @@ NODE_ARC_SWIPER_INDICATOR = 1022001
 设置ArcSwiper的导航点指示器，支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -1044,13 +1044,13 @@ NODE_ARC_SWIPER_DURATION = 1022002
 设置子组件切换的动画时长，支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 子组件切换的动画时长，单位为毫秒，取值范围[0, +∞)。未设置时，默认值为400。 |
+| .value[0].i32 | 子组件切换的动画时长，单位为毫秒，取值范围[0, +∞)。默认值为400。设置范围外的值时，按照默认值400处理。 |
 
 **返回：**
 
@@ -1067,7 +1067,7 @@ NODE_ARC_SWIPER_VERTICAL = 1022003
 设置是否为纵向滑动，支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -1090,7 +1090,7 @@ NODE_ARC_SWIPER_DISABLE_SWIPE = 1022004
 设置是否禁用滑动功能，支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -1113,7 +1113,7 @@ NODE_ARC_SWIPER_DIGITAL_CROWN_SENSITIVITY = 1022005
 设置转动表冠的灵敏度，支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -1136,7 +1136,7 @@ NODE_ARC_SWIPER_EFFECT_MODE = 1022006
 设置滑动到可滚动内容的边界时ArcSwiper边缘的滑动效果，支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
@@ -1159,13 +1159,13 @@ NODE_ARC_SWIPER_DISABLE_TRANSITION_ANIMATION = 1022007
 设置是否禁用转场动画，支持属性设置，属性重置和属性获取接口。<br>
 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| .value[0].i32 | 是否禁用转场动画，1表示禁用转场动画，0表示不禁用，默认值为0。 |
+| .value[0].i32 | 是否禁用转场动画，1表示禁用转场动画，0表示不禁用，默认值为0。传入范围外的值时，按默认值0处理。 |
 
 **返回：**
 

@@ -3,16 +3,17 @@
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @enjoy_sunshine-->
-<!--Designer: @chengguohong; @tangjia15-->
+<!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=cc0fc565309f1feee1e8ea853938538a7ace0021 translatedAt=2026-09-15T02:54:06.221Z pushedAt=2026-09-16T09:42:14.492Z -->
 
 The **socket** module provides the Bluetooth socket function, which can be used to implement inter-device connection and data transmission. When two devices communicate via Bluetooth sockets, they can be distinguished as client and server based on their respective functions.
 
-The supported socket connections can be classified into two types, namely, [Radio Frequency Communication Protocol (RFCOMM)](../../connectivity/terminology.md#rfcomm) and [Logical Link Control and Adaptation Protocol (L2CAP)](../../connectivity/terminology.md#l2cap).
+The supported socket connections can be classified into two types, namely, [Radio Frequency Communication Protocol (RFCOMM)](../../connectivity/bluetooth/terminology.md#rfcomm) and [Logical Link Control and Adaptation Protocol (L2CAP)](../../connectivity/bluetooth/terminology.md#l2cap).
 
-- RFCOMM is also known as Serial Port Profile ([SPP](../../connectivity/terminology.md#spp)) and applies to Bluetooth Classic, which is also referred to as [basic rate (BR)](../../connectivity/terminology.md#br)/[enhanced data rate (EDR)](../../connectivity/terminology.md#edr).
-- L2CAP applies to Bluetooth Classic (BR/EDR) and Bluetooth Low Energy ([BLE](../../connectivity/terminology.md#ble)).
+- RFCOMM is also known as Serial Port Profile ([SPP](../../connectivity/bluetooth/terminology.md#spp)) and applies to Bluetooth Classic, which is also referred to as [basic rate (BR)](../../connectivity/bluetooth/terminology.md#br)/[enhanced data rate (EDR)](../../connectivity/bluetooth/terminology.md#edr).
+- L2CAP applies to Bluetooth Classic (BR/EDR) and Bluetooth Low Energy ([BLE](../../connectivity/bluetooth/terminology.md#ble)).
 
 To create a client socket and initiate a connection to the server, use [socket.sppConnect](#socketsppconnect).
 
@@ -93,7 +94,7 @@ try {
 ## socket.getL2capPsm<sup>20+</sup>
 getL2capPsm(serverSocket: number): number
 
-Obtains the (Protocol/Service Multiplexer [PSM](../../connectivity/terminology.md#psm)) value of the L2CAP socket on the server. The PSM value is used to identify a specific service data transmission channel.
+Obtains the (Protocol/Service Multiplexer [PSM](../../connectivity/bluetooth/terminology.md#psm)) value of the L2CAP socket on the server. The PSM value is used to identify a specific service data transmission channel.
 
 >**NOTE**
 >
@@ -132,11 +133,12 @@ sppAccept(serverSocket: number, callback: AsyncCallback&lt;number&gt;): void
 
 Accepts the socket connection request from the client. This API uses an asynchronous callback to return the result.
 - This API can be called to listen for the client connection request only after the server socket is created by calling [socket.sppListen](#socketspplisten).
+- This API is in blocking mode until a connection request is received from the client.
 - The client can send a connection request to the server by calling [socket.sppConnect](#socketsppconnect).
 - After the connection is established, the server can send data to the client by calling APIs such as [socket.sppWrite](#socketsppwrite), [socket.sppWriteAsync](#socketsppwriteasync18) and [socket.sppReadAsync](#socketsppreadasync18).
 - If the connection is no longer needed, the server can call [socket.sppCloseClientSocket](#socketsppcloseclientsocket) to disconnect the specified client socket.
 
-**System capability**: SystemCapability.Communication.Bluetooth.Core
+**System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **Parameters**
 
@@ -144,6 +146,7 @@ Accepts the socket connection request from the client. This API uses an asynchro
 | ------------ | --------------------------- | ---- | ----------------------- |
 | serverSocket | number                      | Yes   | ID of the server socket.<br>You can obtain the value from the asynchronous callback returned after [socket.sppListen](#socketspplisten) is called.          |
 | callback     | AsyncCallback&lt;number&gt; | Yes   | Callback used to return the result. If the connection is established successfully, **err** is **undefined**, and **data** is the ID (a non-negative number) of the client socket that initiates the connection request. Otherwise, **err** is an error object.|
+
 **Error codes**
 
 For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoothManager.md).
@@ -189,7 +192,7 @@ Creates a client socket and sends a connection request to the specific service o
 - The **type** parameter in [SppOptions](#sppoptions) indicates the type of the service to be connected.
 - Ensure that the service to be connected is available on the server. The server can use [socket.sppListen](#socketspplisten) to subscribe to connection requests from the client.
 - After the connection is established, the client can call [socket.sppWrite](#socketsppwrite) or [socket.sppWriteAsync](#socketsppwriteasync18) to transmit data with the server.
-- If the connection is no longer needed, the client can call [socket.sppCloseclientSocket](#socketsppcloseclientsocket) to disconnect the connection.
+- If the connection is no longer needed, the client can call [socket.sppCloseClientSocket](#socketsppcloseclientsocket) to disconnect the connection.
 
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -246,7 +249,7 @@ try {
 
 getDeviceId(clientSocket: number): string
 
-Obtains the Bluetooth address of the peer end in the socket connection. This API can be used on both the client and server.
+Obtains the Bluetooth address of the peer end in the socket connection. This API can be used on both the client and server. To use this API on the client, make sure that a connection has been established successfully after [socket.sppConnect](#socketsppconnect) is called. To use this API on the server, make sure that a connection has been established successfully after [socket.sppAccept](#socketsppaccept) is called.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
@@ -260,7 +263,7 @@ Obtains the Bluetooth address of the peer end in the socket connection. This API
 
 | Type                                      | Description                        |
 | ---------------------------------------- | -------------------------- |
-| string | IP address of the peer device.<br>For security purposes, the device addresses obtained are virtual MAC addresses.<br>- The virtual address of a paired Bluetooth device will not change.<br>- If Bluetooth is disabled and then enabled again, the virtual address will change immediately.<br>- If the pairing is canceled, the Bluetooth subsystem will determine when to change the address based on the actual usage of the address. If the address is being used by another application, the address will not change immediately.|
+| string | IP address of the peer device.<br>For security reasons, the device address obtained is a virtual MAC address.<br>- The address of a paired device will not change.<br>- If Bluetooth is disabled and then enabled again, the virtual address will change immediately.<br>- If the pairing is canceled, the Bluetooth subsystem will determine when to change the address based on whether the address is still being used by another app. If the address is being used by another app, the address will not be changed immediately. When no app is using the address, the address will be reclaimed and a new virtual address will be allocated the next time it is requested. |
 
 **Error codes**
 
@@ -397,7 +400,7 @@ Sends data to the peer end. This API can be used on both the client and server.
 | Name         | Type         | Mandatory  | Description           |
 | ------------ | ----------- | ---- | ------------- |
 | clientSocket | number      | Yes   | ID of the client socket.<br>You can obtain the value from the asynchronous callback returned after [socket.sppAccept](#socketsppaccept) or [socket.sppConnect](#socketsppconnect) is called.|
-| data         | ArrayBuffer | Yes   | Data to write.       |
+| data         | ArrayBuffer | Yes    | Data to write.<br>For an L2CAP link (**SPP_L2CAP** or **SPP_L2CAP_BLE**), the data size cannot exceed the maximum size of data that can be sent over the current link. You can obtain the maximum size by calling [socket.getMaxTransmitDataSize](#socketgetmaxtransmitdatasize22).        |
 
 **Error codes**
 
@@ -484,6 +487,10 @@ off(type: 'sppRead', clientSocket: number, callback?: Callback&lt;ArrayBuffer&gt
 
 Unsubscribes from socket read request events.
 
+- This API can be called to cancel the subscription only after [socket.on('sppRead')](#socketonsppread) is successfully called.
+- To use this API on the client, make sure that a connection has been established successfully after [socket.sppConnect](#socketsppconnect) is called.
+- To use this API on the server, make sure that a connection has been established successfully after [socket.sppAccept](#socketsppaccept) is called.
+
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
 **Parameters**
@@ -521,7 +528,7 @@ try {
 
 sppWriteAsync(clientSocket: number, data: ArrayBuffer): Promise&lt;void&gt;
 
-Sends data to the peer end. This API can be used on both the client and server. This API uses a promise to return the result. If the connection is disconnected, this API will throw and return an error code.
+Sends data to the peer end. This API can be used on both the client and server. This API uses a promise to return the result. When the connection is terminated, this API throws and returns an error code.
 - This API is valid only after the connection between the client and server is successfully established.
 - To use this API on the client, make sure that a connection has been established successfully after [socket.sppConnect](#socketsppconnect) is called.
 - To use this API on the server, make sure that a connection has been established successfully after [socket.sppAccept](#socketsppaccept) is called.
@@ -576,7 +583,7 @@ try {
 
 sppReadAsync(clientSocket: number): Promise&lt;ArrayBuffer&gt;
 
-Reads data sent by the peer end. This API can be used on both the client and server. This API uses a promise to return the result. If the connection is disconnected, this API will throw and return an error code.
+Reads data sent by the peer end. This API can be used on both the client and server. This API uses a promise to return the result. When the connection is terminated, this API throws and returns an error code.
 
 - To use this API on the client, make sure that a connection has been established successfully after [socket.sppConnect](#socketsppconnect) is called.
 - To use this API on the server, make sure that a connection has been established successfully after [socket.sppAccept](#socketsppaccept) is called.
@@ -637,11 +644,11 @@ async function readAsync(clientNumber: number) {
 
 getMaxReceiveDataSize(clientSocket: number): number
 
-Obtains the maximum size of data that can be received on the current socket link type. This API can be used by both the client and server.
+Obtains the maximum size of data that can be received on the current socket link type. This API can be used by both the client and server. When data is received through [socket.sppReadAsync](#socketsppreadasync18) or [socket.on('sppRead')](#socketonsppread), the size of data received at a time cannot exceed the return value of this API. This limitation does not apply to the **SPP_RFCOMM** link type. For example, when a large amount of data needs to be received, such as file transfer and data synchronization, you can call this API to obtain the maximum amount of data that can be received at a time, so that the received data can be fragmented.
 
 - To use this API on the client, make sure that a connection has been established successfully after [socket.sppConnect](#socketsppconnect) is called.
 - To use this API on the server, make sure that a connection has been established successfully after [socket.sppAccept](#socketsppaccept) is called.
-- The returned value is **0** if the socket link type is [SPP_RFCOMM](#spptype), indicating that the maximum size of received data is unlimited.
+- The return value is **0** if the socket link type is [SPP_RFCOMM](#spptype), indicating that the maximum size of received data is unlimited.
 
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
@@ -676,11 +683,11 @@ try {
 
 getMaxTransmitDataSize(clientSocket: number): number
 
-Obtains the maximum size of data that can be sent on the current socket link type. This API can be used by both the client and server.
+Obtains the maximum size of data that can be sent on the current socket link type. This API can be used by both the client and server. When [socket.sppWrite](#socketsppwrite) or [socket.sppWriteAsync](#socketsppwriteasync18) is called to send data, the size of data sent at a time cannot exceed the return value of this API. This limitation does not apply to the **SPP_RFCOMM** link type. For example, when a large amount of data needs to be sent, such as file transfer and audio/video data transmission, you can call this API to obtain the maximum amount of data that can be sent at a time, so that the data to be sent can be fragmented.
 
 - To use this API on the client, make sure that a connection has been established successfully after [socket.sppConnect](#socketsppconnect) is called.
 - To use this API on the server, make sure that a connection has been established successfully after [socket.sppAccept](#socketsppaccept) is called.
-- The returned value is **0** if the socket link type is [SPP_RFCOMM](#spptype), indicating that the maximum size of data to be sent is unlimited.
+- The return value is **0** if the socket link type is [SPP_RFCOMM](#spptype), indicating that the maximum size of data to be sent is unlimited.
 
 **System capability**: SystemCapability.Communication.Bluetooth.Core
 
@@ -756,12 +763,12 @@ Defines the socket configuration parameters.
 | uuid   | string              | No   | No   | Service UUID of the RFCOMM socket, for example, **00001101-0000-1000-8000-00805F9B34FB**.<br>- You are advised to use a custom service UUID (which can be generated using the [util.generateRandomUUID](../apis-arkts/js-apis-util.md#utilgeneraterandomuuid9)) or the Serial Port UUID (00001101-0000-1000-8000-00805F9B34FB) defined in the standard protocol.<br>- This parameter is mandatory when **SppType** is set to **SPP_RFCOMM**.<br>- This parameter is set to an empty string when **SppType** is set to **SPP_L2CAP** or **SPP_L2CAP_BLE**.|
 | secure | boolean             | No   | No   | Whether it is a secure channel. The value **true** indicates a secure channel, and the value **false** indicates a non-secure channel.   |
 | type   | [SppType](#spptype)            | No   | No   | Bluetooth socket type.   |
-| psm<sup>20+</sup>   | number              | No   | Yes   |PSM value, which is used to identify a specific service data transmission channel. If this parameter is not set, the default value **-1** is used.<br>For the client:<br>- If **SppType** is set to **SPP_RFCOMM**, this parameter is left empty.<br>- If **SppType** is set to **SPP_L2CAP_BLE** or **SPP_L2CAP**, the value of this parameter must be the same as that of the server.<br>For the server:<br>- If **SppType** is set to **SPP_RFCOMM**, this parameter is left empty.<br>- If **SppType** is set to **SPP_L2CAP_BLE**, the value of this parameter must be automatically allocated by the system. The valid value range is [0x01, 0xFF].<br>- If **SppType** is set to **SPP_L2CAP**, the value of this parameter can be manually set or automatically allocated by the Bluetooth subsystem. If the value is set, the valid value range is [0x00, 0xFFFF], and the least significant bit of the least significant byte must be **1**, and the least significant bit of the most significant byte must be **0**. If the value is allocated by the Bluetooth subsystem, this parameter is left unspecified. You can obtain the value of this parameter by calling [socket.getL2capPsm](#socketgetl2cappsm20).|
+| psm<sup>20+</sup>   | number              | No    | Yes    |PSM value, which is used to identify a specific service data transmission channel. If this parameter is not set, the default value **-1** is used.<br>For the client:<br>- If **SppType** is set to **SPP_RFCOMM**, this parameter is left empty.<br>- If **SppType** is set to **SPP_L2CAP_BLE** or **SPP_L2CAP**, the value of this parameter must be the same as that of the server.<br>For the server:<br>- If **SppType** is set to **SPP_RFCOMM**, this parameter is left empty.<br>- If **SppType** is set to **SPP_L2CAP_BLE**, the value of this parameter must be automatically allocated by the system. The valid value range is [0x01, 0xFF].<br>- If **SppType** is set to **SPP_L2CAP**, the value of this parameter can be manually set or automatically allocated by the Bluetooth subsystem. If the value is set, the valid value range is [0x01, 0xFEFF], and the least significant bit of the least significant byte must be **1**, and the least significant bit of the most significant byte must be **0**. If the value is allocated by the Bluetooth subsystem, this parameter is left unspecified. You can obtain the value of this parameter by calling [socket.getL2capPsm](#socketgetl2cappsm20).|
 
 
 
 
-## SppType 
+## SppType
 
 Enumerates the Bluetooth socket types.
 

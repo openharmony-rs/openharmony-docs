@@ -40,8 +40,8 @@ getCount(): number
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 13900020 | Invalid parameter. Possible causes:<br>The object is not a valid instance. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>The query result set has been closed via close() or is in an invalid state, please re-execute the query. |
 
 **示例：**
 
@@ -85,8 +85,8 @@ isAfterLast(): boolean
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 13900020 | Invalid parameter. Possible causes:<br>The object is not a valid instance. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>The query result set has been closed via close() or is in an invalid state, please re-execute the query. |
 
 **示例：**
 
@@ -131,8 +131,8 @@ close(): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 13900020 | Invalid argument. Possible causes: <br>1. Parameter count exceeds the limit; 2. The current object is invalid |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -180,8 +180,8 @@ getFirstObject(callback: AsyncCallback&lt;T&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 13900020 | Invalid parameter. Possible causes:<br>1. Parameter count exceeds the limit.<br>2. The object is not a valid instance. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -230,8 +230,8 @@ getFirstObject(): Promise&lt;T&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 13900020 | Invalid parameter. Possible causes:<br>1. Parameter count exceeds the limit.<br>2. The object is not a valid instance. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -277,8 +277,8 @@ getNextObject(callback: AsyncCallback&lt;T&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 13900020 | Invalid parameter. Possible causes:<br>1. Parameter count exceeds the limit.<br>2. The object is not a valid instance. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -332,8 +332,8 @@ getNextObject(): Promise&lt;T&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 13900020 | Invalid parameter. Possible causes:<br>1. Parameter count exceeds the limit.<br>2. The object is not a valid instance. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -380,8 +380,8 @@ getLastObject(callback: AsyncCallback&lt;T&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 13900020 | Invalid parameter. Possible causes:<br>1. Parameter count exceeds the limit.<br>2. The object is not a valid instance. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -430,8 +430,8 @@ getLastObject(): Promise&lt;T&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 13900020 | Invalid parameter. Possible causes:<br>1. Parameter count exceeds the limit.<br>2. The object is not a valid instance. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -476,8 +476,8 @@ getObjectByPosition(index: number, callback: AsyncCallback&lt;T&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 13900020 | Invalid parameter. Possible causes:<br>1. Parameter count exceeds the limit.<br>2. The object is not a valid instance. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -532,8 +532,8 @@ getObjectByPosition(index: number): Promise&lt;T&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 13900020 | Invalid parameter. Possible causes:<br>1. Parameter count exceeds the limit.<br>2. The object is not a valid instance. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -581,8 +581,8 @@ getAllObjects(callback: AsyncCallback&lt;Array&lt;T&gt;&gt;): void
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 13900020 | Invalid parameter. Possible causes:<br>1. Parameter count exceeds the limit.<br>2. The object is not a valid instance. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -631,8 +631,8 @@ getAllObjects(): Promise&lt;Array&lt;T&gt;&gt;
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.         |
+| 13900020 | Invalid parameter. Possible causes:<br>1. Parameter count exceeds the limit.<br>2. The object is not a valid instance. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error. Possible causes:1. Database exception; 2. IPC timeout. Please retry and check logs. |
 
 **示例：**
 
@@ -733,7 +733,7 @@ getObjectsByIndexSet(indexSet: number[]): Promise\<T[]\>
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 23800151       | The scenario parameter verification fails. Possible causes: 1.The indexSet is null,undefined or empty. 2.The indexSet length is bigger than 500. 3.The max value of indexSet is equal or bigger than the fetch result length. 4.The min value of indexSet is less than 0.          |
+| 23800151 | Invalid parameter. Possible causes:<br>1. The parameter is not an array.<br>2. indexSet is null or undefined. |
 
 **示例：**
 
@@ -836,7 +836,7 @@ getRangeObjects(index: number, offset: number): Promise\<T[]\>
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 23800151       | The scenario parameter verification fails. Possible causes: index or offset validity check failed.          |
+| 23800151 | Invalid parameter. Possible causes:<br>1. The index is out of range, must be within [0, count).<br>2. The FetchResType is not supported, must be a valid FetchResType enum value. |
 | 23800301       | Internal system error. You are advised to retry and check the logs. Possible causes: 1. The database is corrupted. 2. The file system is abnormal.         |
 
 **示例：**

@@ -1,14 +1,13 @@
 # Class (RdbPredicates)
-
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
 <!--Owner: @baijidong-->
 <!--Designer: @htt1997-->
 <!--Tester: @logic42-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=8af95004d9117739e6649a82566e8756f994e75a translatedAt=2026-07-14T10:32:49.056Z pushedAt=2026-07-17T09:25:07.499Z -->
+<!-- md-trans-meta sourceCommit=795678d6d6efd468f2c7707f1e103147c856438a translatedAt=2026-09-04T02:36:54.461Z pushedAt=2026-09-09T09:11:03.623Z -->
 
-Defines the predicates for an RDB store. This class determines whether the conditional expression for the RDB store is true or false. Multiple predicates statements can be concatenated by using **and()** by default. **RdbPredicates** cannot be passed across threads using Sendable.
+Defines the predicates for an RDB store. This class determines whether the conditional expression for the RDB store is true or false. Multiple predicate statements can be concatenated by using **and()** by default. **RdbPredicates** cannot be passed across threads using Sendable.
 
 > **NOTE**
 > 
@@ -24,7 +23,7 @@ import { relationalStore } from '@kit.ArkData';
 
 constructor(name: string)
 
-Defines a constructor used to create an **RdbPredicates** object.
+A constructor used to create an **RdbPredicates** object.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -112,6 +111,7 @@ inAllDevices(): RdbPredicates
 
 Creates an **RdbPredicates** object to specify all remote devices on the network to connect during distributed RDB store sync.
 
+
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Return value**
@@ -164,6 +164,7 @@ let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
 predicates.equalTo("NAME", "Lisa");
 ```
 
+
 ## notEqualTo
 
 notEqualTo(field: string, value: ValueType): RdbPredicates
@@ -200,6 +201,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
 predicates.notEqualTo("NAME", "Lisa");
 ```
+
 
 ## beginWrap
 
@@ -257,7 +259,7 @@ predicates.equalTo("NAME", "Lisa")
 
 or(): RdbPredicates
 
-Creates an **RdbPredicates** object to add the OR condition.
+Adds the OR condition to the predicate.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -281,7 +283,7 @@ predicates.equalTo("NAME", "Lisa")
 
 and(): RdbPredicates
 
-Creates an **RdbPredicates** object to add the AND condition.
+Adds the AND condition to the predicate.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -289,7 +291,7 @@ Creates an **RdbPredicates** object to add the AND condition.
 
 | Type                                | Description                     |
 | ------------------------------------ | ------------------------- |
-| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Predicate with AND conditions. |
+| [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | Predicate with the AND condition. |
 
 **Example**:
 
@@ -514,7 +516,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**:
 
 ```ts
-// Find all the records that are similar to "os" in the NAME column, for example, Rose.
+// Query the data in the NAME column that contains the substring "os", for example, Rose.
 let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
 predicates.like("NAME", "%os%");
 ```
@@ -1015,7 +1017,7 @@ predicates.indexedBy("SALARY");
 
 in(field: string, value: Array&lt;ValueType&gt;): RdbPredicates
 
-Creates an **RdbPredicates** object to search for the records in the specified column whose value are within the given value set. This method is equivalent to **IN** in SQL statements.
+Creates an **RdbPredicates** object to search for the records in the specified column whose values are within the given value set. This method is equivalent to **IN** in SQL statements.
 
 > **NOTE**
 >
@@ -1056,7 +1058,7 @@ predicates.in("AGE", [18, 20]);
 
 notIn(field: string, value: Array&lt;ValueType&gt;): RdbPredicates
 
-Creates an **RdbPredicates** object to search for the records in the specified column whose value are not within the given value set. This method is equivalent to **NOT IN** in SQL statements.
+Creates an **RdbPredicates** object to search for the records in the specified column whose values are not within the given value set. This method is equivalent to **NOT IN** in SQL statements.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1158,7 +1160,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**:
 
 ```ts
-// Find all the records that are not similar to "os" in the NAME column, for example, Lisa.
+// Find all the records that do not contain the substring "os" in the NAME column, for example, Lisa.
 let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
 predicates.notLike("NAME", "%os%");
 ```
@@ -1200,7 +1202,6 @@ let predicates = new relationalStore.RdbPredicates("EMPLOYEE");
 predicates.groupBy(["AGE"]);
 predicates.having("NAME = 'zhangsan'");
 ```
-
 **Example 2**:
 
 ```ts

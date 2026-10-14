@@ -172,45 +172,33 @@ function stringToUint8Array(str: string): Uint8Array {
 }
 
 // 自定义PIN弹窗UIExtensionAbility列表
-const abilityInfoList: Array<{ abilityName: string; index: string }> = [
+interface AbilityInfo {
+  abilityName: string;
+  index: string;
+}
+
+const abilityInfoList: AbilityInfo[] = [
   { abilityName: 'UiAbility1', index: '' },
   { abilityName: 'UiAbility2', index: 'string2' },
 ];
 
 // 注册Provider并注册自定义PIN弹窗UIExtensionAbility
 async function registerProvider(): Promise<void> {
-  try {
-    /* 1.构造注册参数ability name */
-    const providerName = "testProvider";
-    /* 2.构造ability info */
-    const abilityInfo = '[' +
-       '{"abilityName":"UiAbility1","index":""},' +
-       '{"abilityName":"UiAbility2","index":"string2"}]';
-    const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
-      {
-        tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_ABILITY_NAME,
-        value: StringToUint8Array("CryptoExtension")
-      }, {
-        tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_ABILITY_INFO,
-        value: StringToUint8Array(abilityInfo)
-      }
-    ];
-
+  const providerName = "testProvider";
   const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
     {
       tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_ABILITY_NAME,
-      value: stringToUint8Array(abilityName),
-    },
+      value: stringToUint8Array("CryptoExtension")
+    }
   ];
 
   // API版本26.0.0开始，支持自定义PIN弹窗注册
   if (deviceInfo.sdkApiVersion >= 26) {
     extProperties.push({
-       tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_ABILITY_INFO,
-       value: stringToUint8Array(JSON.stringify(abilityInfoList)),
+      tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_ABILITY_INFO,
+      value: stringToUint8Array(JSON.stringify(abilityInfoList)),
     });
   }
-
   try {
     await huksExternalCrypto.registerProvider(providerName, extProperties);
     console.info('promise: registerProvider success.');
@@ -295,12 +283,6 @@ async function testUnregisterProvider(): Promise<void> {
 ```ts
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { util } from '@kit.ArkTS';
-
-// 字符串 → UTF-8字节流
-function stringToUint8Array(str: string): Uint8Array {
-  return new util.TextEncoder().encodeInto(str);
-}
 
 // 批量注销：注销providerName下的所有CryptoExtensionAbility
 async function unregisterProvider(): Promise<void> {

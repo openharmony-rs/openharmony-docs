@@ -6,8 +6,7 @@
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
-
-## Overview
+<!-- md-trans-meta sourceCommit=50713b5507bc1dd76af41b33f945afecf178d99e translatedAt=2026-09-01T11:40:56.151Z -->
 
 **PasteButton** is a security component that provides paste functionality. When users tap this component, the application temporarily gains pasteboard read permissions.
 
@@ -19,9 +18,9 @@
 
 ### Key Enums
 
-- [PasteIconStyle](#pasteiconstyle): Enumeration of icon styles for the paste button. Specifies the icon style displayed.
-- [PasteDescription](#pastedescription): Enumeration of text descriptions for the paste button. Specifies the text description displayed.
-- [PasteButtonOnClickResult](#pastebuttononclickresult): Enumeration of click results for the paste button. Indicates whether authorization succeeds after a click.
+- [PasteIconStyle](#pasteiconstyle): Enum of icon styles for the paste button. Specifies the icon style displayed.
+- [PasteDescription](#pastedescription): Enum of text descriptions for the paste button. Specifies the text description displayed.
+- [PasteButtonOnClickResult](#pastebuttononclickresult): Enum of click results for the paste button. Indicates whether authorization succeeds after a click.
 
 ### Key APIs
 
@@ -204,7 +203,7 @@ struct Index {
   build() {
     Row() {
       Column({ space: 10 }) {
-        // Create a default SaveButton component with an icon, text, and background.
+        // Create a default PasteButton component with an icon, text, and background.
         PasteButton().onClick(this.handlePasteButtonClick)
         // Whether an element is contained depends on whether the parameter corresponding to the element is specified. If buttonType is not passed in, the button uses the ButtonType.Capsule settings.
         PasteButton({ icon: PasteIconStyle.LINES })

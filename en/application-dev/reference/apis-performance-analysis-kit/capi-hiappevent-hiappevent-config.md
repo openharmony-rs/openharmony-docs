@@ -6,6 +6,7 @@
 <!--Designer: @jiangwenhao-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
+<!-- md-trans-meta sourceCommit=7addffc63d219ad1e54baac60e90c00085674e53 translatedAt=2026-09-16T10:09:21.123Z pushedAt=2026-09-20T09:01:52.221Z -->
 
 ```c
 typedef struct HiAppEvent_Config HiAppEvent_Config
@@ -13,10 +14,11 @@ typedef struct HiAppEvent_Config HiAppEvent_Config
 
 ## Overview
 
-Defines the configuration object used to set the conditions for triggering system events.
+Defines a configuration object for setting the custom specification of system events. It can be used to customize system event specification parameters. For parameter list settings, see [macro definitions](capi-hiappevent-param-h.md#macros) of application events.
 
 **Since**: 15
 
 **Related module**: [HiAppEvent](capi-hiappevent.md)
 
 **Header file**: [hiappevent.h](capi-hiappevent-h.md)
+

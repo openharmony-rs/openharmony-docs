@@ -57,6 +57,7 @@ import { formInfo } from '@kit.FormKit';
 | TEMPLATE_FORM_DESCRIPTION<sup>23+</sup>    | 'ohos.extra.param.key.template_form_description'   | 模板卡片描述。 <br>**系统接口：** 此接口为系统接口。  |
 | FORM_FONT_SIZE_SCALE_KEY    | 'ohos.extra.param.key.form_font_size_scale'   | 卡片字体大小缩放键值。 <br>**系统接口：** 此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**起始版本：** 26.0.0  |
 | FORM_FONT_WEIGHT_SCALE_KEY    | 'ohos.extra.param.key.form_font_weight_scale'   | 卡片字重缩放键值。 <br>**系统接口：** 此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**起始版本：** 26.0.0  |
+| FORM_EDIT_COLOR_MODE_KEY    | 'ohos.extra.param.key.form_edit_color_mode'   | 卡片编辑能力颜色模式键值。 <br/>-1：表示自动跟随系统。<br/>0：表示深色模式。<br/>1：表示浅色模式。 <br>**系统接口：** 此接口为系统接口。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**起始版本：** 26.2.0  |
 
 ## FormUsageState<sup>11+</sup>
 
@@ -166,8 +167,8 @@ import { formInfo } from '@kit.FormKit';
 | NO_SPACE       | 1    | 表示没有空间添加卡片。           |
 | PARAM_ERROR    | 2    | 表示参数检查失败。               |
 | INTERNAL_ERROR | 3    | 表示卡片处理过程中出现内部错误。 |
-| NOT_SUPPORT    | 4    | 表示卡片不支持发布。<br/>**起始版本：** 26.1.0 |
-| HOST_FORM_LIMIT | 5   | 表示添加到使用方的卡片数量超过上限。<br/>**起始版本：** 26.1.0 |
+| NOT_SUPPORT    | 4    | 表示卡片不支持发布。<br/>**起始版本：** 26.0.1 |
+| HOST_FORM_LIMIT | 5   | 表示添加到使用方的卡片数量超过上限。<br/>**起始版本：** 26.0.1 |
 
 ## RenderingMode<sup>18+</sup>
 
@@ -547,7 +548,7 @@ let deleteFormsCallback: formInfo.DeleteFormsCallback =
 
 卡片使用方服务信息。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -566,7 +567,7 @@ let deleteFormsCallback: formInfo.DeleteFormsCallback =
 
 远端卡片使用方服务信息。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -588,7 +589,7 @@ let deleteFormsCallback: formInfo.DeleteFormsCallback =
 
 跨设备发布卡片的结果。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

@@ -1,7 +1,7 @@
 # 使用扩展的Node-API接口在当前线程中创建、切换和销毁上下文环境
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
@@ -229,7 +229,7 @@
 |napi_delete_strong_sendable_reference | napi_invalid_arg |
 |napi_get_strong_sendable_reference_value | napi_invalid_arg |
 
-### 示例代码
+## 示例代码
 - 模块注册
     ```c++
     // napi_init.cpp

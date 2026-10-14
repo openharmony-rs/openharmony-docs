@@ -1,14 +1,15 @@
 # @ohos.data.preferences (User Preferences)
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @ding_dong_dong-->
-<!--Designer: @ding_dong_dong-->
+<!--Owner: @cuile44-->
+<!--Designer: @cuile44-->
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=baacd5e603827a8080bb1e15309bc06852b1fd80 translatedAt=2026-09-04T03:41:58.490Z pushedAt=2026-09-09T09:11:03.726Z -->
 
 The **Preferences** module provides APIs for processing data in the form of key-value (KV) pairs, including querying, modifying, and persisting KV pairs.
 
-The key is of string type, and the value can be a number, string, boolean value, or an array of numbers, strings, or boolean values.
+Data is stored in the form of key-value (KV) pairs, where the key is a string and the value can be a number, string, boolean, array, Uint8Array, object, or bigint.
 
 The user preference persistent files are stored in the [preferencesDir](../../application-models/application-context-stage.md#obtaining-application-file-paths) directory. Before creating a preferences object, ensure that the **preferencesDir** directory is readable and writeable. The [encryption level](../apis-ability-kit/js-apis-app-ability-contextConstant.md#areamode) of the persistent file directory determines the access to the files. For details, see [Application File Directory and Application File Path](../../file-management/app-sandbox-directory.md#application-file-directory-and-application-file-path).
 
@@ -40,7 +41,9 @@ import { preferences } from '@kit.ArkData';
 
 getPreferences(context: Context, name: string, callback: AsyncCallback&lt;Preferences&gt;): void
 
-Obtains a **Preferences** instance. This API uses an asynchronous callback to return the result.
+Obtains a **Preferences** instance with the parameters set by **name**. This API uses an asynchronous callback to return the result.
+
+After the first application launch calls this API to obtain a **Preferences** instance, the instance is cached. Subsequent calls do not read from the persistent file again but directly obtain the **Preferences** instance from the cache.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -51,7 +54,7 @@ Obtains a **Preferences** instance. This API uses an asynchronous callback to re
 | Name  | Type                                            | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | context  | Context            | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).                                                |
-| name     | string                                           | Yes  | Name of the **Preferences** instance.                                     |
+| name     | string                                           | Yes   | Name of the **Preferences** instance. The name length must be greater than 0 and less than or equal to 255 bytes. The name cannot contain '/' and cannot end with '/'. |
 | callback | AsyncCallback&lt;[Preferences](#preferences)&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and the **Preferences** instance obtained is returned. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -61,7 +64,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                       |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>Applicable versions: 11+                   |
 
 **Example**
 
@@ -77,7 +80,7 @@ let dataPreferences: preferences.Preferences | null = null;
 
 preferences.getPreferences(context, 'myStore', (err: BusinessError, val: preferences.Preferences) => {
   if (err) {
-    console.error("Failed to get preferences. code =" + err.code + ", message =" + err.message);
+    console.error("Failed to get preferences. Code = " + err.code + ", message = " + err.message);
     return;
   }
   dataPreferences = val;
@@ -98,7 +101,7 @@ class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     preferences.getPreferences(this.context, 'myStore', (err: BusinessError, val: preferences.Preferences) => {
       if (err) {
-        console.error("Failed to get preferences. code =" + err.code + ", message =" + err.message);
+        console.error("Failed to get preferences. Code = " + err.code + ", message = " + err.message);
         return;
       }
       dataPreferences = val;
@@ -112,7 +115,9 @@ class EntryAbility extends UIAbility {
 
 getPreferences(context: Context, name: string): Promise&lt;Preferences&gt;
 
-Obtains a **Preferences** instance. This API uses a promise to return the result.
+Obtains a **Preferences** instance with the parameters set by **name**. This API uses a promise to return the result.
+
+After the first application launch calls this API to obtain a **Preferences** instance, the instance is cached. Subsequent calls do not read from the persistent file again but directly obtain the **Preferences** instance from the cache.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -123,7 +128,7 @@ Obtains a **Preferences** instance. This API uses a promise to return the result
 | Name | Type                                 | Mandatory| Description                   |
 | ------- | ------------------------------------- | ---- | ----------------------- |
 | context | Context | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).           |
-| name    | string                                | Yes  | Name of the **Preferences** instance.|
+| name    | string                                | Yes   | Name of the **Preferences** instance. The name length must be greater than 0 and less than or equal to 255 bytes. The name cannot contain '/' and cannot end with '/'. |
 
 **Return value**
 
@@ -138,7 +143,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                       |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>Applicable versions: 11+                   |
 
 **Example**
 
@@ -153,12 +158,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let context = featureAbility.getContext();
 
 let dataPreferences: preferences.Preferences | null = null;
-let promise = preferences.getPreferences(context, 'myStore');
-promise.then((object: preferences.Preferences) => {
+let sp = preferences.getPreferences(context, 'myStore');
+sp.then((object: preferences.Preferences) => {
   dataPreferences = object;
   console.info("Succeeded in getting preferences.");
 }).catch((err: BusinessError) => {
-  console.error("Failed to get preferences. code =" + err.code + ", message =" + err.message);
+  console.error("Failed to get preferences. Code = " + err.code + ", message = " + err.message);
 })
 ```
 
@@ -173,12 +178,12 @@ let dataPreferences: preferences.Preferences | null = null;
 
 class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
-    let promise = preferences.getPreferences(this.context, 'myStore');
-    promise.then((object: preferences.Preferences) => {
+    let sp = preferences.getPreferences(this.context, 'myStore');
+    sp.then((object: preferences.Preferences) => {
       dataPreferences = object;
       console.info("Succeeded in getting preferences.");
     }).catch((err: BusinessError) => {
-      console.error("Failed to get preferences. code =" + err.code + ", message =" + err.message);
+      console.error("Failed to get preferences. Code = " + err.code + ", message = " + err.message);
     })
   }
 }
@@ -188,7 +193,9 @@ class EntryAbility extends UIAbility {
 
 getPreferences(context: Context, options: Options, callback: AsyncCallback&lt;Preferences&gt;): void
 
-Obtains a **Preferences** instance. This API uses an asynchronous callback to return the result.
+Obtains a **Preferences** instance with the parameters set by **Options**. This API uses an asynchronous callback to return the result.
+
+After the first application launch calls this API to obtain a **Preferences** instance, the instance is cached. Subsequent calls do not read from the persistent file again but directly obtain the **Preferences** instance from the cache.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -199,7 +206,7 @@ Obtains a **Preferences** instance. This API uses an asynchronous callback to re
 | Name  | Type                                         | Mandatory| Description                                                                                                                                                                          |
 | -------- | --------------------------------------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | context  | Context                                       | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
-| options  | [Options](#options10)                              | Yes  | Configuration options of the **Preferences** instance.                                                                                                                                             |
+| options  | [Options](#options10)                              | Yes   | Configuration options related to the **Preferences** instance. The **name** field is mandatory. The name length must be greater than 0 and less than or equal to 255 bytes. The name cannot contain '/' or end with '/'. **dataGroupId** and **storageType** are optional fields.                                                                                                                                              |
 | callback | AsyncCallback&lt;[Preferences](#preferences)&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and the **Preferences** instance obtained is returned. Otherwise, **err** is an error object.                                                                                   |
 
 **Error codes**
@@ -210,7 +217,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
 | 801      | Capability not supported.     |
-| 15500000 | Inner error.                  |
+| 15500000 | Inner error. <br>Applicable versions: 11+                  |
 | 15501001 | The operations is supported in stage mode only. |
 | 15501002 | Invalid dataGroupId.     |
 
@@ -230,7 +237,7 @@ let dataPreferences: preferences.Preferences | null = null;
 let options: preferences.Options = { name: 'myStore' };
 preferences.getPreferences(context, options, (err: BusinessError, val: preferences.Preferences) => {
   if (err) {
-    console.error("Failed to get preferences. code =" + err.code + ", message =" + err.message);
+    console.error("Failed to get preferences. Code = " + err.code + ", message = " + err.message);
     return;
   }
   dataPreferences = val;
@@ -253,7 +260,7 @@ class EntryAbility extends UIAbility {
     let options: preferences.Options = { name: 'myStore' };
     preferences.getPreferences(this.context, options, (err: BusinessError, val: preferences.Preferences) => {
       if (err) {
-        console.error("Failed to get preferences. code =" + err.code + ", message =" + err.message);
+        console.error("Failed to get preferences. Code = " + err.code + ", message = " + err.message);
         return;
       }
       dataPreferences = val;
@@ -267,7 +274,9 @@ class EntryAbility extends UIAbility {
 
 getPreferences(context: Context, options: Options): Promise&lt;Preferences&gt;
 
-Obtains a **Preferences** instance. This API uses a promise to return the result.
+Obtains a **Preferences** instance with the parameters set by **Options**. This API uses a promise to return the result.
+
+After the first application launch calls this API to obtain a **Preferences** instance, the instance is cached. Subsequent calls do not read from the persistent file again but directly obtain the **Preferences** instance from the cache.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -294,7 +303,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
 | 801      | Capability not supported.     |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>Applicable versions: 11+                   |
 | 15501001 | The operations is supported in stage mode only. |
 | 15501002 | Invalid dataGroupId.     |
 
@@ -312,12 +321,12 @@ let context = featureAbility.getContext();
 
 let dataPreferences: preferences.Preferences | null = null;
 let options: preferences.Options = { name: 'myStore' };
-let promise = preferences.getPreferences(context, options);
-promise.then((object: preferences.Preferences) => {
+let sp = preferences.getPreferences(context, options);
+sp.then((object: preferences.Preferences) => {
   dataPreferences = object;
   console.info("Succeeded in getting preferences.");
 }).catch((err: BusinessError) => {
-  console.error("Failed to get preferences. code =" + err.code + ", message =" + err.message);
+  console.error("Failed to get preferences. Code = " + err.code + ", message = " + err.message);
 })
 ```
 
@@ -333,12 +342,12 @@ let dataPreferences: preferences.Preferences | null = null;
 class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     let options: preferences.Options = { name: 'myStore' };
-    let promise = preferences.getPreferences(this.context, options);
-    promise.then((object: preferences.Preferences) => {
+    let sp = preferences.getPreferences(this.context, options);
+    sp.then((object: preferences.Preferences) => {
       dataPreferences = object;
       console.info("Succeeded in getting preferences.");
     }).catch((err: BusinessError) => {
-      console.error("Failed to get preferences. code =" + err.code + ", message =" + err.message);
+      console.error("Failed to get preferences. Code = " + err.code + ", message = " + err.message);
     })
   }
 }
@@ -349,6 +358,8 @@ class EntryAbility extends UIAbility {
 getPreferencesSync(context: Context, options: Options): Preferences
 
 Obtains a **Preferences** instance. This API returns the result synchronously.
+
+After the first application launch calls this API to obtain a **Preferences** instance, the instance is cached. Subsequent calls do not read from the persistent file again but directly obtain the **Preferences** instance from the cache.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -375,7 +386,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
 | 801      | Capability not supported.     |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>Applicable versions: 11+                   |
 | 15501001 | The operations is supported in stage mode only.   |
 | 15501002 | Invalid dataGroupId. |
 
@@ -415,7 +426,7 @@ class EntryAbility extends UIAbility {
 
 deletePreferences(context: Context, name: string, callback: AsyncCallback&lt;void&gt;): void
 
-Deletes a specified **Preferences** instance from the cache. If the **Preferences** instance has a corresponding persistent file, the persistent file is also deleted. This API uses an asynchronous callback to return the result.
+Deletes the specified **Preferences** instance from the cache. If the **Preferences** instance has a corresponding persistent file, the persistent file is also deleted. This API uses **name** as the parameter and an asynchronous callback to return the result.
 
 Avoid using a removed **Preferences** instance to perform data operations, which may cause data inconsistency. Instead, set the removed **Preferences** instance to null. The system will reclaim them in a unified manner.
 
@@ -430,7 +441,7 @@ This API cannot be called concurrently with other **preferences** APIs.
 | Name  | Type                                 | Mandatory| Description                                                |
 | -------- | ------------------------------------- | ---- | ---------------------------------------------------- |
 | context  | Context | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).                                        |
-| name     | string                                | Yes  | Name of the **Preferences** instance.                             |
+| name     | string                                | Yes   | Name of the **Preferences** instance. The name length must be greater than 0 and less than or equal to 255 bytes. The name cannot contain '/' and cannot end with '/'. |
 | callback | AsyncCallback&lt;void&gt;             | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -440,7 +451,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                       |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>Applicable versions: 11+                   |
 | 15500010 | Failed to delete the user preferences persistence file. |
 
 **Example**
@@ -457,7 +468,7 @@ let context = featureAbility.getContext();
 
 preferences.deletePreferences(context, 'myStore', (err: BusinessError) => {
   if (err) {
-    console.error("Failed to delete preferences. code =" + err.code + ", message =" + err.message);
+    console.error("Failed to delete preferences. Code = " + err.code + ", message = " + err.message);
     return;
   }
   console.info("Succeeded in deleting preferences.");
@@ -475,7 +486,7 @@ class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     preferences.deletePreferences(this.context, 'myStore', (err: BusinessError) => {
       if (err) {
-        console.error("Failed to delete preferences. code =" + err.code + ", message =" + err.message);
+        console.error("Failed to delete preferences. Code = " + err.code + ", message = " + err.message);
         return;
       }
       console.info("Succeeded in deleting preferences.");
@@ -488,7 +499,7 @@ class EntryAbility extends UIAbility {
 
 deletePreferences(context: Context, name: string): Promise&lt;void&gt;
 
-Deletes a specified **Preferences** instance from the cache. If the **Preferences** instance has a corresponding persistent file, the persistent file is also deleted. This API uses a promise to return the result.
+Deletes the specified **Preferences** instance from the cache. If the **Preferences** instance has a corresponding persistent file, the persistent file is also deleted. This API uses **name** as the parameter and a promise to return the result.
 
 Avoid using a removed **Preferences** instance to perform data operations, which may cause data inconsistency. Instead, set the removed **Preferences** instance to null. The system will reclaim them in a unified manner.
 
@@ -503,7 +514,7 @@ This API cannot be called concurrently with other **preferences** APIs.
 | Name | Type                                 | Mandatory| Description                   |
 | ------- | ------------------------------------- | ---- | ----------------------- |
 | context | Context | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).           |
-| name    | string                                | Yes  | Name of the **Preferences** instance.|
+| name    | string                                | Yes   | Name of the **Preferences** instance. The name length must be greater than 0 and less than or equal to 255 bytes. The name cannot contain '/' and cannot end with '/'. |
 
 **Return value**
 
@@ -518,7 +529,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                       |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>Applicable versions: 11+                   |
 | 15500010 | Failed to delete the user preferences persistence file. |
 
 **Example**
@@ -533,11 +544,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let context = featureAbility.getContext();
 
-let promise = preferences.deletePreferences(context, 'myStore');
-promise.then(() => {
+let sp = preferences.deletePreferences(context, 'myStore');
+sp.then(() => {
   console.info("Succeeded in deleting preferences.");
 }).catch((err: BusinessError) => {
-  console.error("Failed to delete preferences. code =" + err.code + ", message =" + err.message);
+  console.error("Failed to delete preferences. Code = " + err.code + ", message = " + err.message);
 })
 ```
 
@@ -550,11 +561,11 @@ import { window } from '@kit.ArkUI';
 
 class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
-    let promise = preferences.deletePreferences(this.context, 'myStore');
-    promise.then(() => {
+    let sp = preferences.deletePreferences(this.context, 'myStore');
+    sp.then(() => {
       console.info("Succeeded in deleting preferences.");
     }).catch((err: BusinessError) => {
-      console.error("Failed to delete preferences. code =" + err.code + ", message =" + err.message);
+      console.error("Failed to delete preferences. code =" + err.code + ", message = " + err.message);
     })
   }
 }
@@ -564,7 +575,7 @@ class EntryAbility extends UIAbility {
 
 deletePreferences(context: Context, options: Options, callback: AsyncCallback&lt;void&gt;): void
 
-Deletes a specified **Preferences** instance from the cache. If the **Preferences** instance has a corresponding persistent file, the persistent file is also deleted. This API uses an asynchronous callback to return the result.
+Deletes the specified **Preferences** instance from the cache. If the **Preferences** instance has a corresponding persistent file, the persistent file is also deleted. This API uses **Options** as the parameter and an asynchronous callback to return the result.
 
 Avoid using a removed **Preferences** instance to perform data operations, which may cause data inconsistency. Instead, set the removed **Preferences** instance to null. The system will reclaim them in a unified manner.
 
@@ -590,7 +601,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
 | 801      | Capability not supported.     |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>Applicable versions: 11+                   |
 | 15500010 | Failed to delete the user preferences persistence file. |
 | 15501001 | The operations is supported in stage mode only. |
 | 15501002 | Invalid dataGroupId. |
@@ -610,7 +621,7 @@ let context = featureAbility.getContext();
 let options: preferences.Options = { name: 'myStore' };
 preferences.deletePreferences(context, options, (err: BusinessError) => {
   if (err) {
-    console.error("Failed to delete preferences. code =" + err.code + ", message =" + err.message);
+    console.error("Failed to delete preferences. code =" + err.code + ", message = " + err.message);
     return;
   }
   console.info("Succeeded in deleting preferences.");
@@ -629,7 +640,7 @@ class EntryAbility extends UIAbility {
     let options: preferences.Options = { name: 'myStore' };
     preferences.deletePreferences(this.context, options, (err: BusinessError) => {
       if (err) {
-        console.error("Failed to delete preferences. code =" + err.code + ", message =" + err.message);
+        console.error("Failed to delete preferences. code =" + err.code + ", message = " + err.message);
         return;
       }
       console.info("Succeeded in deleting preferences.");
@@ -643,7 +654,7 @@ class EntryAbility extends UIAbility {
 
 deletePreferences(context: Context, options: Options): Promise&lt;void&gt;
 
-Deletes a specified **Preferences** instance from the cache. If the **Preferences** instance has a corresponding persistent file, the persistent file is also deleted. This API uses a promise to return the result.
+Deletes the specified **Preferences** instance from the cache. If the **Preferences** instance has a corresponding persistent file, the persistent file is also deleted. This API uses **Options** as the parameter and a promise to return the result.
 
 Avoid using a removed **Preferences** instance to perform data operations, which may cause data inconsistency. Instead, set the removed **Preferences** instance to null. The system will reclaim them in a unified manner.
 
@@ -674,7 +685,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
 | 801      | Capability not supported.     |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>Applicable versions: 11+                   |
 | 15500010 | Failed to delete the user preferences persistence file. |
 | 15501001 | The operations is supported in stage mode only. |
 | 15501002 | Invalid dataGroupId. |
@@ -692,11 +703,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let context = featureAbility.getContext();
 
 let options: preferences.Options = { name: 'myStore' };
-let promise = preferences.deletePreferences(context, options);
-promise.then(() => {
+let sp = preferences.deletePreferences(context, options);
+sp.then(() => {
   console.info("Succeeded in deleting preferences.");
 }).catch((err: BusinessError) => {
-  console.error("Failed to delete preferences. code =" + err.code + ", message =" + err.message);
+  console.error("Failed to delete preferences. code =" + err.code + ", message = " + err.message);
 })
 ```
 
@@ -710,11 +721,11 @@ import { window } from '@kit.ArkUI';
 class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     let options: preferences.Options = { name: 'myStore' };
-    let promise = preferences.deletePreferences(this.context, options);
-    promise.then(() => {
+    let sp = preferences.deletePreferences(this.context, options);
+    sp.then(() => {
       console.info("Succeeded in deleting preferences.");
     }).catch((err: BusinessError) => {
-      console.error("Failed to delete preferences. code =" + err.code + ", message =" + err.message);
+      console.error("Failed to delete preferences. code =" + err.code + ", message = " + err.message);
     })
   }
 }
@@ -725,7 +736,7 @@ class EntryAbility extends UIAbility {
 
 removePreferencesFromCache(context: Context, name: string, callback: AsyncCallback&lt;void&gt;): void
 
-Removes a **Preferences** instance from the cache. This API uses an asynchronous callback to return the result.
+Removes the specified **Preferences** instance from the cache. This API uses **name** as the parameter and an asynchronous callback to return the result.
 
 After an application calls [getPreferences](#preferencesgetpreferences) for the first time to obtain a **Preferences** instance, the obtained **Preferences** instance is cached. When the application calls [getPreferences](#preferencesgetpreferences) again, the **Preferences** instance will be read from the cache instead of from the persistent file. After this API is called to remove the instance from the cache, calling **getPreferences** again will read data from the persistent file and create a **Preferences** instance.
 
@@ -742,7 +753,7 @@ If [GSKV](../../database/data-persistence-by-preferences.md#gskv) is used, you a
 | Name  | Type                                 | Mandatory| Description                                                |
 | -------- | ------------------------------------- | ---- | ---------------------------------------------------- |
 | context  | Context | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).                                        |
-| name     | string                                | Yes  | Name of the **Preferences** instance.                             |
+| name     | string                                | Yes   | Name of the **Preferences** instance. The name length must be greater than 0 and less than or equal to 255 bytes. The name cannot contain '/' and cannot end with '/'. |
 | callback | AsyncCallback&lt;void&gt;             | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -752,7 +763,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                       |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>Applicable versions: 11+                   |
 
 **Example**
 
@@ -767,7 +778,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let context = featureAbility.getContext();
 preferences.removePreferencesFromCache(context, 'myStore', (err: BusinessError) => {
   if (err) {
-    console.error("Failed to remove preferences. code =" + err.code + ", message =" + err.message);
+    console.error("Failed to remove preferences. code =" + err.code + ", message = " + err.message);
     return;
   }
   console.info("Succeeded in removing preferences.");
@@ -785,7 +796,7 @@ class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     preferences.removePreferencesFromCache(this.context, 'myStore', (err: BusinessError) => {
       if (err) {
-        console.error("Failed to remove preferences. code =" + err.code + ", message =" + err.message);
+        console.error("Failed to remove preferences. code =" + err.code + ", message = " + err.message);
         return;
       }
       console.info("Succeeded in removing preferences.");
@@ -798,7 +809,7 @@ class EntryAbility extends UIAbility {
 
 removePreferencesFromCache(context: Context, name: string): Promise&lt;void&gt;
 
-Removes a **Preferences** instance from the cache. This API uses a promise to return the result.
+Removes the specified **Preferences** instance from the cache. This API uses **name** as the parameter and a promise to return the result.
 
 After an application calls [getPreferences](#preferencesgetpreferences) for the first time to obtain a **Preferences** instance, the obtained **Preferences** instance is cached. When the application calls [getPreferences](#preferencesgetpreferences) again, the **Preferences** instance will be read from the cache instead of from the persistent file. After this API is called to remove the instance from the cache, calling **getPreferences** again will read data from the persistent file and create a **Preferences** instance.
 
@@ -815,7 +826,7 @@ If [GSKV](../../database/data-persistence-by-preferences.md#gskv) is used, you a
 | Name | Type                                 | Mandatory| Description                   |
 | ------- | ------------------------------------- | ---- | ----------------------- |
 | context | Context | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).           |
-| name    | string                                | Yes  | Name of the **Preferences** instance.|
+| name    | string                                | Yes   | Name of the **Preferences** instance. The name length must be greater than 0 and less than or equal to 255 bytes. The name cannot contain '/' and cannot end with '/'. |
 
 **Return value**
 
@@ -830,7 +841,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                       |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>Applicable versions: 11+                   |
 
 **Example**
 
@@ -843,11 +854,11 @@ import { featureAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let context = featureAbility.getContext();
-let promise = preferences.removePreferencesFromCache(context, 'myStore');
-promise.then(() => {
+let sp = preferences.removePreferencesFromCache(context, 'myStore');
+sp.then(() => {
   console.info("Succeeded in removing preferences.");
 }).catch((err: BusinessError) => {
-  console.error("Failed to remove preferences. code =" + err.code + ", message =" + err.message);
+  console.error("Failed to remove preferences. code =" + err.code + ", message = " + err.message);
 })
 ```
 
@@ -860,11 +871,11 @@ import { window } from '@kit.ArkUI';
 
 class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
-    let promise = preferences.removePreferencesFromCache(this.context, 'myStore');
-    promise.then(() => {
+    let sp = preferences.removePreferencesFromCache(this.context, 'myStore');
+    sp.then(() => {
       console.info("Succeeded in removing preferences.");
     }).catch((err: BusinessError) => {
-      console.error("Failed to remove preferences. code =" + err.code + ", message =" + err.message);
+      console.error("Failed to remove preferences. code =" + err.code + ", message = " + err.message);
     })
   }
 }
@@ -874,11 +885,11 @@ class EntryAbility extends UIAbility {
 
 removePreferencesFromCacheSync(context: Context, name: string): void
 
-Removes a **Preferences** instance from the cache. This API returns the result synchronously.
+Removes the specified **Preferences** instance from the cache. This API uses **name** as the parameter and is a synchronous API.
 
 After an application calls [getPreferences](#preferencesgetpreferences) for the first time to obtain a **Preferences** instance, the obtained **Preferences** instance is cached. When the application calls [getPreferences](#preferencesgetpreferences) again, the **Preferences** instance will be read from the cache instead of from the persistent file. After this API is called to remove the instance from the cache, calling **getPreferences** again will read data from the persistent file and create a **Preferences** instance.
 
-Avoid using a removed **Preferences** instance to perform data operations, which may cause data inconsistency. Instead, set the removed **Preferences** instance to null. The system will reclaim them in a unified manner.
+Avoid using a removed **Preferences** instance to perform data operations, which may cause data inconsistency. Instead, set the removed **Preferences** instance to null. The system will reclaim it in a unified manner.
 
 If [GSKV](../../database/data-persistence-by-preferences.md#gskv) is used, you are advised to manually call this API once when the process exits. This operation writes the data cache page to the disk, which can reduce the time required for calling the **getPreferences** API next time. Otherwise, data restoration is required at the bottom layer when the **getPreferences** API is called. The time required for data restoration depends on the number of data cache pages that are not written to the disk.
 
@@ -891,7 +902,7 @@ If [GSKV](../../database/data-persistence-by-preferences.md#gskv) is used, you a
 | Name | Type                                 | Mandatory| Description                   |
 | ------- | ------------------------------------- | ---- | ----------------------- |
 | context | Context | Yes  | Application context.<br>For details about the application context of the FA model, see [Context](../apis-ability-kit/js-apis-inner-app-context.md).<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).           |
-| name    | string                                | Yes  | Name of the **Preferences** instance.|
+| name    | string                                | Yes   | Name of the **Preferences** instance. The name length must be greater than 0 and less than or equal to 255 bytes. The name cannot contain '/' and cannot end with '/'. |
 
 **Error codes**
 
@@ -900,7 +911,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                       |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>Applicable versions: 11+                   |
 
 **Example**
 
@@ -910,6 +921,7 @@ FA model:
 ```ts
 // Obtain the context.
 import { featureAbility } from '@kit.AbilityKit';
+
 let context = featureAbility.getContext();
 preferences.removePreferencesFromCacheSync(context, 'myStore');
 ```
@@ -931,13 +943,13 @@ class EntryAbility extends UIAbility {
 
 removePreferencesFromCache(context: Context, options: Options, callback: AsyncCallback&lt;void&gt;): void
 
-Removes a **Preferences** instance from the cache. This API uses an asynchronous callback to return the result.
+Removes the specified **Preferences** instance from the cache. This API uses **Options** as the parameter and an asynchronous callback to return the result.
 
 After an application calls [getPreferences](#preferencesgetpreferences) for the first time to obtain a **Preferences** instance, the obtained **Preferences** instance is cached. When the application calls [getPreferences](#preferencesgetpreferences) again, the **Preferences** instance will be read from the cache instead of from the persistent file. After this API is called to remove the instance from the cache, calling **getPreferences** again will read data from the persistent file and create a **Preferences** instance.
 
 Avoid using a removed **Preferences** instance to perform data operations, which may cause data inconsistency. Instead, set the removed **Preferences** instance to null. The system will reclaim them in a unified manner.
 
-If [GSKV](../../database/data-persistence-by-preferences.md#gskv) is used, you are advised to manually call this API once when the process exits. This operation writes the data cache page to the disk, which can reduce the time required for calling the **getPreferences** API next time. Otherwise, data restoration is required at the bottom layer when the **getPreferences** API is called. The time required for data restoration depends on the number of data cache pages that are not written to the disk.
+If [GSKV](../../database/data-persistence-by-preferences.md#gskv) is used, you are advised to manually call this API once when the process exits. This operation writes the data cache pages to the disk, which can reduce the time required for calling the **getPreferences** API next time. Otherwise, data restoration is required at the bottom layer when the **getPreferences** API is called. The time required for data restoration depends on the number of data cache pages that are not written to the disk.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -959,7 +971,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
 | 801      | Capability not supported.     |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>Applicable versions: 11+                   |
 | 15501001 | The operations is supported in stage mode only. |
 | 15501002 | Invalid dataGroupId.     |
 
@@ -977,7 +989,7 @@ let context = featureAbility.getContext();
 let options: preferences.Options = { name: 'myStore' };
 preferences.removePreferencesFromCache(context, options, (err: BusinessError) => {
   if (err) {
-    console.error("Failed to remove preferences. code =" + err.code + ", message =" + err.message);
+    console.error("Failed to remove preferences. code =" + err.code + ", message = " + err.message);
     return;
   }
   console.info("Succeeded in removing preferences.");
@@ -996,7 +1008,7 @@ class EntryAbility extends UIAbility {
     let options: preferences.Options = { name: 'myStore' };
     preferences.removePreferencesFromCache(this.context, options, (err: BusinessError) => {
       if (err) {
-        console.error("Failed to remove preferences. code =" + err.code + ", message =" + err.message);
+        console.error("Failed to remove preferences. code =" + err.code + ", message = " + err.message);
         return;
       }
       console.info("Succeeded in removing preferences.");
@@ -1009,11 +1021,11 @@ class EntryAbility extends UIAbility {
 
 removePreferencesFromCache(context: Context, options: Options): Promise&lt;void&gt;
 
-Removes a **Preferences** instance from the cache. This API uses a promise to return the result.
+Removes the specified **Preferences** instance from the cache. This API uses **Options** as the parameter and a promise to return the result.
 
 After an application calls [getPreferences](#preferencesgetpreferences) for the first time to obtain a **Preferences** instance, the obtained **Preferences** instance is cached. When the application calls [getPreferences](#preferencesgetpreferences) again, the **Preferences** instance will be read from the cache instead of from the persistent file. After this API is called to remove the instance from the cache, calling **getPreferences** again will read data from the persistent file and create a **Preferences** instance.
 
-Avoid using a removed **Preferences** instance to perform data operations, which may cause data inconsistency. Instead, set the removed **Preferences** instance to null. The system will reclaim them in a unified manner.
+Avoid using a removed **Preferences** instance to perform data operations, which may cause data inconsistency. Instead, set the removed **Preferences** instance to null. The system will reclaim it in a unified manner.
 
 If [GSKV](../../database/data-persistence-by-preferences.md#gskv) is used, you are advised to manually call this API once when the process exits. This operation writes the data cache page to the disk, which can reduce the time required for calling the **getPreferences** API next time. Otherwise, data restoration is required at the bottom layer when the **getPreferences** API is called. The time required for data restoration depends on the number of data cache pages that are not written to the disk.
 
@@ -1042,7 +1054,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
 | 801      | Capability not supported.     |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>Applicable versions: 11+                   |
 | 15501001 | The operations is supported in stage mode only. |
 | 15501002 | Invalid dataGroupId.     |
 
@@ -1058,11 +1070,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let context = featureAbility.getContext();
 let options: preferences.Options = { name: 'myStore' };
-let promise = preferences.removePreferencesFromCache(context, options);
-promise.then(() => {
+let sp = preferences.removePreferencesFromCache(context, options);
+sp.then(() => {
   console.info("Succeeded in removing preferences.");
 }).catch((err: BusinessError) => {
-  console.error("Failed to remove preferences. code =" + err.code + ", message =" + err.message);
+  console.error("Failed to remove preferences. code =" + err.code + ", message = " + err.message);
 })
 ```
 
@@ -1076,11 +1088,11 @@ import { window } from '@kit.ArkUI';
 class EntryAbility extends UIAbility {
   onWindowStageCreate(windowStage: window.WindowStage) {
     let options: preferences.Options = { name: 'myStore' };
-    let promise = preferences.removePreferencesFromCache(this.context, options);
-    promise.then(() => {
+    let sp = preferences.removePreferencesFromCache(this.context, options);
+    sp.then(() => {
       console.info("Succeeded in removing preferences.");
     }).catch((err: BusinessError) => {
-      console.error("Failed to remove preferences. code =" + err.code + ", message =" + err.message);
+      console.error("Failed to remove preferences. code =" + err.code + ", message = " + err.message);
     })
   }
 }
@@ -1088,9 +1100,9 @@ class EntryAbility extends UIAbility {
 
 ## preferences.removePreferencesFromCacheSync<sup>10+</sup>
 
-removePreferencesFromCacheSync(context: Context, options: Options):void
+removePreferencesFromCacheSync(context: Context, options: Options): void
 
-Removes a **Preferences** instance from the cache. This API returns the result synchronously.
+Removes the specified **Preferences** instance from the cache. This API uses **Options** to set parameters and is a synchronous API.
 
 After an application calls [getPreferences](#preferencesgetpreferences) for the first time to obtain a **Preferences** instance, the obtained **Preferences** instance is cached. When the application calls [getPreferences](#preferencesgetpreferences) again, the **Preferences** instance will be read from the cache instead of from the persistent file. After this API is called to remove the instance from the cache, calling **getPreferences** again will read data from the persistent file and create a **Preferences** instance.
 
@@ -1117,7 +1129,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
 | 801      | Capability not supported.     |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>Applicable versions: 11+                   |
 | 15501001 | The operations is supported in stage mode only.   |
 | 15501002 | Invalid dataGroupId. |
 
@@ -1129,6 +1141,7 @@ FA model:
 ```ts
 // Obtain the context.
 import { featureAbility } from '@kit.AbilityKit';
+
 let context = featureAbility.getContext();
 let options: preferences.Options = { name: 'myStore' };
 preferences.removePreferencesFromCacheSync(context, options);
@@ -1157,15 +1170,15 @@ Enumerates the storage types of preferences.
 
 | Name| Value  | Description|
 | ---- | ---- | ---- |
-| XML |  0    | [XML](../../database/data-persistence-by-preferences.md#xml) format, which is the default storage type of **Preferences**.<br>In this mode, data is stored in XML format. Data operations are performed in the memory. To persist data, call **flush()**.    |
-| GSKV |  1    |[GSKV](../../database/data-persistence-by-preferences.md#gskv) format.<br>Data is stored in GSKV mode. Data operations are flushed on a real-time basis without calling **flush()**.     |
+| XML |  0    | [XML storage mode](../../database/data-persistence-by-preferences.md#xml), which is the default storage mode of **Preferences**.<br>**Features:** Data is stored in XML format. Operations on data are performed in memory, and the [flush](#flush) API must be called to persist the data to disk.     |
+| GSKV |  1    |Indicates the [GSKV storage mode](../../database/data-persistence-by-preferences.md#gskv).<br>**Features:** Data is stored in GSKV database mode. Operations on data are persisted to disk in real time, and there is no need to call the [flush](#flush) API to persist the data to disk.      |
 
 
 > **NOTE**
->   - Before using this mode, you are advised to call **isStorageTypeSupported** to check whether this storage type is supported.
->   - Once the storage type is selected and data instances are obtained via **getPreferences()**, the storage type cannot be changed.
->   - Data cannot be directly migrated between the **Preferences** instances that use different storage types. To migrate data between them, you need to read the data to be migrated and then write the data.
->   - If you need to change the storage directory of preferences, you cannot move or overwrite files. Instead, you need to read the data and then write the data.
+>   - Before selecting a storage mode, you are advised to call [isStorageTypeSupported](#preferencesisstoragetypesupported18) to check whether the current platform supports the corresponding storage mode.
+>   - After an instance is obtained through [preferences.getPreferences](#preferencesgetpreferences) in a certain mode, switching the mode midway is not allowed.
+>   - Preferences does not support data migration between different modes. To switch data from one mode to another, migrate the data by reading from and writing to the preferences.
+>   - To change the storage path of preferences, do not move or overwrite files. Instead, migrate the data by reading from and writing to the preferences.
 
 ## preferences.isStorageTypeSupported<sup>18+</sup>
 isStorageTypeSupported(type: StorageType): boolean
@@ -1216,9 +1229,9 @@ Represents the configuration of a **Preferences** instance.
 
 | Name       | Type  | Read-Only| Optional| Description                                                        |
 | ----------- | ------ | ---- | ----| ------------------------------------------------------------ |
-| name        | string | No | No| Name of the **Preferences** instance. It must be longer than 0 bytes and less than or equal to 255 bytes, and cannot contain or end with slashes (/).<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>                                   |
-| dataGroupId | string\|null\|undefined | No | Yes| Application group ID. <!--RP1-->Currently, this parameter is not supported.<!--RP1End--><br>This parameter is optional. A **Preferences** instance will be created in the sandbox path corresponding to the specified **dataGroupId**. If this parameter is not specified, the **Preferences** instance is created in the sandbox directory of the application.<br> **Model restriction**: This attribute can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>|
-| storageType<sup>18+</sup> | [StorageType](#storagetype18)\|null\|undefined | No| Yes| Storage mode to be used by the **Preferences** instance. This parameter is optional. If this parameter is left blank, the XML storage type is used by default. After the storage type is set for a **Preferences** instance, it cannot be changed.<br>**Atomic service API**: This API can be used in atomic services since API version 18.<br>|
+| name        | string | No  | No | Name of the **Preferences** instance. The name length must be greater than 0 and less than or equal to 255 bytes. The name cannot contain '/' and cannot end with '/'. <br>**Atomic service API:** Since API version 11, this parameter is supported in atomic services.                                    |
+| dataGroupId | string \| null \| undefined | No  | Yes | Application group ID. <!--RP1-->Currently, specifying **dataGroupId** to create a Preferences instance in the corresponding shared sandbox path is not supported.<!--RP1End--><br>This is an optional parameter. It specifies to create a **Preferences** instance in the sandbox path corresponding to this **dataGroupId**. If this parameter is not specified, a **Preferences** instance is created in the application sandbox directory by default.<br> **Model constraint:** This attribute is available only in the stage model.<br>**Atomic service API:** Since API version 11, this parameter is supported in atomic services. |
+| storageType<sup>18+</sup> | [StorageType](#storagetype18) \| null \| undefined | No | Yes | Storage mode. This is an optional parameter. It indicates the storage mode to be used by the current **Preferences** instance. If this parameter is not specified, the XML storage mode is used by default. After a **Preferences** instance is created with a storage mode, switching the storage mode midway is not supported. <br>**Atomic service API:** Since API version 18, this parameter is supported in atomic services. |
 
 
 ## Preferences
@@ -1253,7 +1266,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                       |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>Applicable versions: 11+                   |
 
 **Example**
 
@@ -1262,7 +1275,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 dataPreferences.get('startup', 'default', (err: BusinessError, val: preferences.ValueType) => {
   if (err) {
-    console.error("Failed to get value of 'startup'. code =" + err.code + ", message =" + err.message);
+    console.error("Failed to get value of 'startup'. code =" + err.code + ", message = " + err.message);
     return;
   }
   console.info("Succeeded in getting value of 'startup'. val: " + val);
@@ -1299,18 +1312,18 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                       |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>Applicable versions: 11+                   |
 
 **Example**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let promise = dataPreferences.get('startup', 'default');
-promise.then((data: preferences.ValueType) => {
+let data = dataPreferences.get('startup', 'default');
+data.then((data: preferences.ValueType) => {
   console.info("Succeeded in getting value of 'startup'. Data: " + data);
 }).catch((err: BusinessError) => {
-  console.error("Failed to get value of 'startup'. code =" + err.code + ", message =" + err.message);
+  console.error("Failed to get value of 'startup'. code =" + err.code + ", message = " + err.message);
 })
 ```
 
@@ -1344,7 +1357,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                       |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>Applicable versions: 11+                   |
 
 **Example**
 
@@ -1375,7 +1388,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                       |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Mandatory parameters are left unspecified.|
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>Applicable versions: 11+                   |
 
 **Example**
 
@@ -1391,7 +1404,7 @@ function getObjKeys(obj: Object): string[] {
 
 dataPreferences.getAll((err: BusinessError, value: Object) => {
   if (err) {
-    console.error("Failed to get all key-values. code =" + err.code + ", message =" + err.message);
+    console.error("Failed to get all key-values. code =" + err.code + ", message = " + err.message);
     return;
   }
   let allKeys = getObjKeys(value);
@@ -1405,7 +1418,7 @@ dataPreferences.getAll((err: BusinessError, value: Object) => {
 
 getAll(): Promise&lt;Object&gt;
 
-Obtains all KV pairs from this **Preferences** instance. This API uses a promise to return the result.
+Obtains all key-value data in the cached **Preferences** instance. This API uses a promise to return the result asynchronously.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1423,7 +1436,7 @@ For details about the error codes, see [User Preference Error Codes](errorcode-p
 
 | ID| Error Message                       |
 | -------- | ------------------------------ |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>Applicable versions: 11+                   |
 
 **Example**
 
@@ -1437,13 +1450,13 @@ function getObjKeys(obj: Object): string[] {
   return keys;
 }
 
-let promise = dataPreferences.getAll();
-promise.then((value: Object) => {
+let allData = dataPreferences.getAll();
+allData.then((value: Object) => {
   let allKeys = getObjKeys(value);
   console.info('getAll keys = ' + allKeys);
   console.info("getAll object = " + JSON.stringify(value));
 }).catch((err: BusinessError) => {
-  console.error("Failed to get all key-values. code =" + err.code + ", message =" + err.message);
+  console.error("Failed to get all key-values. code =" + err.code + ", message = " + err.message);
 })
 ```
 
@@ -1469,7 +1482,7 @@ For details about the error codes, see [User Preference Error Codes](errorcode-p
 
 | ID| Error Message                       |
 | -------- | ------------------------------ |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>Applicable versions: 11+                   |
 
 **Example**
 
@@ -1518,7 +1531,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                       |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>Applicable versions: 11+                   |
 
 **Example**
 
@@ -1527,7 +1540,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 dataPreferences.put('startup', 'auto', (err: BusinessError) => {
   if (err) {
-    console.error("Failed to put value of 'startup'. code =" + err.code + ", message =" + err.message);
+    console.error("Failed to put value of 'startup'. code =" + err.code + ", message = " + err.message);
     return;
   }
   console.info("Succeeded in putting value of 'startup'.");
@@ -1571,18 +1584,18 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                       |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>Applicable versions: 11+                   |
 
 **Example**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let promise = dataPreferences.put('startup', 'auto');
-promise.then(() => {
+let putStartupPref = dataPreferences.put('startup', 'auto');
+putStartupPref.then(() => {
   console.info("Succeeded in putting value of 'startup'.");
 }).catch((err: BusinessError) => {
-  console.error("Failed to put value of 'startup'. code =" + err.code + ", message =" + err.message);
+  console.error("Failed to put value of 'startup'. code =" + err.code + ", message = " + err.message);
 })
 ```
 
@@ -1617,7 +1630,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                       |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>Applicable versions: 11+                   |
 
 **Example**
 
@@ -1640,8 +1653,8 @@ Checks whether this **Preferences** instance contains the KV pair of the given k
 
 | Name  | Type                        | Mandatory| Description                                                        |
 | -------- | ---------------------------- | ---- | ------------------------------------------------------------ |
-| key      | string                       | Yes  | Key to be checked. The value cannot be empty. For details about its maximum length, see [MAX_KEY_LENGTH](#constants).                             |
-| callback | AsyncCallback&lt;boolean&gt; | Yes  | Callback used to return the result. If the **Preferences** instance contains the KV pair, **true** will be returned. Otherwise, **false** will be returned.|
+| key      | string                       | Yes  | Name of the storage key to check. It cannot be empty, and its maximum length is limited by [MAX_KEY_LENGTH](#constants).                              |
+| callback | AsyncCallback&lt;boolean&gt; | Yes  | Callback function. Returns whether the **Preferences** instance contains the key-value pair of the given key. The value **true** indicates that the key exists, and **false** indicates that it does not. |
 
 **Error codes**
 
@@ -1650,7 +1663,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                       |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>Applicable versions: 11+                   |
 
 **Example**
 
@@ -1659,7 +1672,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 dataPreferences.has('startup', (err: BusinessError, val: boolean) => {
   if (err) {
-    console.error("Failed to check the key 'startup'. code =" + err.code + ", message =" + err.message);
+    console.error("Failed to check the key 'startup'. code =" + err.code + ", message = " + err.message);
     return;
   }
   if (val) {
@@ -1685,13 +1698,13 @@ Checks whether this **Preferences** instance contains the KV pair of the given k
 
 | Name| Type  | Mandatory| Description                           |
 | ------ | ------ | ---- | ------------------------------- |
-| key    | string | Yes  | Key to be checked. The value cannot be empty. For details about its maximum length, see [MAX_KEY_LENGTH](#constants).|
+| key    | string | Yes   | Storage key name to check. It cannot be empty. The maximum length is limited by [MAX_KEY_LENGTH](#constants). |
 
 **Return value**
 
 | Type                  | Description                                                        |
 | ---------------------- | ------------------------------------------------------------ |
-| Promise&lt;boolean&gt; | Promise used to return the result. If the **Preferences** instance contains the KV pair, **true** will be returned. Otherwise, **false** will be returned.|
+| Promise&lt;boolean&gt; | Promise object used to return whether the **Preferences** instance contains the key-value pair of the given key. The value **true** indicates that it exists, and **false** indicates that it does not exist. |
 
 **Error codes**
 
@@ -1700,22 +1713,22 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                       |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>Applicable versions: 11+                   |
 
 **Example**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let promise = dataPreferences.has('startup');
-promise.then((val: boolean) => {
+let isStartupSet = dataPreferences.has('startup');
+isStartupSet.then((val: boolean) => {
   if (val) {
     console.info("The key 'startup' is contained.");
   } else {
     console.info("The key 'startup' does not contain.");
   }
 }).catch((err: BusinessError) => {
-  console.error("Failed to check the key 'startup'. code =" + err.code + ", message =" + err.message);
+  console.error("Failed to check the key 'startup'. code =" + err.code + ", message = " + err.message);
 })
 ```
 
@@ -1734,13 +1747,13 @@ Checks whether this **Preferences** instance contains the KV pair of the given k
 
 | Name| Type  | Mandatory| Description                           |
 | ------ | ------ | ---- | ------------------------------- |
-| key    | string | Yes  | Key to be checked. The value cannot be empty. For details about its maximum length, see [MAX_KEY_LENGTH](#constants).|
+| key    | string | Yes   | Name of the storage key to check. It cannot be empty and its maximum length is limited by [MAX_KEY_LENGTH](#constants). |
 
 **Return value**
 
 | Type                  | Description                                                        |
 | ---------------------- | ------------------------------------------------------------ |
-| boolean | If the **Preferences** instance contains the KV pair, **true** will be returned. Otherwise, **false** will be returned.|
+| boolean | Whether the **Preferences** instance contains the key-value pair with the given key. **true** indicates that it exists, and **false** indicates that it does not. |
 
 **Error codes**
 
@@ -1749,7 +1762,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                       |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>Applicable versions: 11+                   |
 
 **Example**
 
@@ -1787,7 +1800,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                       |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>Applicable versions: 11+                   |
 
 **Example**
 
@@ -1796,7 +1809,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 dataPreferences.delete('startup', (err: BusinessError) => {
   if (err) {
-    console.error("Failed to delete the key 'startup'. code =" + err.code + ", message =" + err.message);
+    console.error("Failed to delete the key 'startup'. code =" + err.code + ", message = " + err.message);
     return;
   }
   console.info("Succeeded in deleting the key 'startup'.");
@@ -1818,7 +1831,7 @@ Deletes a KV pair from this **Preferences** instance. This API uses a promise to
 
 | Name| Type  | Mandatory| Description                           |
 | ------ | ------ | ---- | ------------------------------- |
-| key    | string | Yes  | Key to be deleted. The value cannot be empty. For details about its maximum length, see [MAX_KEY_LENGTH](#constants).|
+| key    | string | Yes   | Key name to delete. It cannot be empty, and its maximum length is limited by [MAX_KEY_LENGTH](#constants). |
 
 **Return value**
 
@@ -1833,18 +1846,18 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                       |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>Applicable versions: 11+                   |
 
 **Example**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let promise = dataPreferences.delete('startup');
-promise.then(() => {
+let deleteStartupPromise = dataPreferences.delete('startup');
+deleteStartupPromise.then(() => {
   console.info("Succeeded in deleting the key 'startup'.");
 }).catch((err: BusinessError) => {
-  console.error("Failed to delete the key 'startup'. code =" + err.code +", message =" + err.message);
+  console.error("Failed to delete the key 'startup'. code =" + err.code +", message = " + err.message);
 })
 ```
 
@@ -1863,7 +1876,7 @@ Deletes a KV pair from this **Preferences** instance. This API returns the resul
 
 | Name| Type  | Mandatory| Description                           |
 | ------ | ------ | ---- | ------------------------------- |
-| key    | string | Yes  | Key to be deleted. The value cannot be empty. For details about its maximum length, see [MAX_KEY_LENGTH](#constants).|
+| key    | string | Yes   | Key of the stored data to delete. It cannot be empty and its length cannot exceed [MAX_KEY_LENGTH](#constants). |
 
 **Error codes**
 
@@ -1872,7 +1885,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                       |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>Applicable versions: 11+                   |
 
 **Example**
 
@@ -1910,7 +1923,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                       |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Mandatory parameters are left unspecified.                       |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>Applicable versions: 11+                   |
 
 **Example**
 
@@ -1919,7 +1932,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 dataPreferences.flush((err: BusinessError) => {
   if (err) {
-    console.error("Failed to flush. code =" + err.code + ", message =" + err.message);
+    console.error("Failed to flush. code =" + err.code + ", message = " + err.message);
     return;
   }
   console.info("Succeeded in flushing.");
@@ -1955,18 +1968,18 @@ For details about the error codes, see [User Preference Error Codes](errorcode-p
 
 | ID| Error Message                       |
 | -------- | ------------------------------ |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>Applicable versions: 11+                   |
 
 **Example**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let promise = dataPreferences.flush();
-promise.then(() => {
+let flushResult = dataPreferences.flush();
+flushResult.then(() => {
   console.info("Succeeded in flushing.");
 }).catch((err: BusinessError) => {
-  console.error("Failed to flush. code =" + err.code + ", message =" + err.message);
+  console.error("Failed to flush. code =" + err.code + ", message = " + err.message);
 })
 ```
 
@@ -2021,7 +2034,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                       |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Mandatory parameters are left unspecified.                       |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>Applicable versions: 11+                   |
 
 **Example**
 
@@ -2030,7 +2043,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 dataPreferences.clear((err: BusinessError) =>{
   if (err) {
-    console.error("Failed to clear. code =" + err.code + ", message =" + err.message);
+    console.error("Failed to clear. code =" + err.code + ", message = " + err.message);
     return;
   }
   console.info("Succeeded in clearing.");
@@ -2060,7 +2073,7 @@ For details about the error codes, see [User Preference Error Codes](errorcode-p
 
 | ID| Error Message                       |
 | -------- | ------------------------------ |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>Applicable versions: 11+                   |
 
 **Example**
 
@@ -2071,7 +2084,7 @@ let promise = dataPreferences.clear();
 promise.then(() => {
   console.info("Succeeded in clearing.");
 }).catch((err: BusinessError) => {
-  console.error("Failed to clear. code =" + err.code + ", message =" + err.message);
+  console.error("Failed to clear. code =" + err.code + ", message = " + err.message);
 })
 ```
 
@@ -2097,7 +2110,15 @@ dataPreferences.clearSync();
 
 on(type: 'change', callback: Callback&lt;string&gt;): void
 
-Subscribes to data changes. The registered callback will be invoked to return the new value if the data change is [flushed](#flush).
+Subscribes to data changes. When the value of a subscribed key changes and the [flush](#flush) method is executed, the callback is invoked.
+
+> **NOTE**
+> **Comparison of subscription methods:**
+> - **on('change')**: Subscribes to changes of all keys. It is suitable for scenarios where global data change awareness is required.
+> - **on('dataChange')**: Precisely subscribes to changes of specified keys. It is suitable for scenarios that focus on specific data and can return the specific value through the callback.
+> - **on('multiProcessChange')**: Subscribes to multi-process data changes. It is suitable for scenarios where multiple processes share the same preferences file.
+> 
+> **Selection suggestions:** For single-process applications, **on('change')** or **on('dataChange')** is recommended. For multi-process data synchronization, use **on('multiProcessChange')**. When you need to precisely know the change of a specific key and obtain the new value, use **on('dataChange')**.
 
   > **NOTE**
   >
@@ -2112,7 +2133,7 @@ Subscribes to data changes. The registered callback will be invoked to return th
 | Name  | Type    | Mandatory| Description                                    |
 | -------- | -------- | ---- | ---------------------------------------- |
 | type     | string   | Yes  | Event type. The value is **'change'**, which indicates data changes.|
-| callback | Callback&lt;string&gt; | Yes  | Callback used to return the data change.    |
+| callback | Callback&lt;string&gt; | Yes | Callback function used to receive data change notifications. The callback parameter is a key string, indicating the name of the changed key. |
 
 **Error codes**
 
@@ -2121,7 +2142,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                       |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>Applicable versions: 11+                   |
 
 **Example**
 
@@ -2135,7 +2156,7 @@ dataPreferences.on('change', observer);
 dataPreferences.putSync('startup', 'manual');
 dataPreferences.flush((err: BusinessError) => {
   if (err) {
-    console.error("Failed to flush. Cause: " + err);
+    console.error("Failed to flush. code =" + err.code + ", message = " + err.message);
     return;
   }
   console.info("Succeeded in flushing.");
@@ -2148,13 +2169,13 @@ on(type: 'multiProcessChange', callback: Callback&lt;string&gt;): void
 
 Subscribes to data changes between processes. When multiple processes hold the same preference file, calling [flush](#flush) in any process (including the current process) will trigger the callback in this API.
 
-This API is provided for applications that have applied for [dataGroupId](#options10). Avoid using this API for the applications that have not applied for **dataGroupId** because calling it in multiple process may damage the persistent files and cause data loss.
+This API is provided for applications that have applied for [dataGroupId](#options10). It is not recommended for applications that have not applied for it (data changes cannot be listened to). Multi-process operations may damage the persistent file and cause data loss.
 
   > **NOTE**
   >
-  > The maximum number of subscriptions for inter-process data change of the same persistent file for the current process is 50. Once the limit is reached, the subscription will fail. You are advised to cancel the subscription in a timely manner after the callback is triggered.
+  > The maximum number of multi-process data change subscriptions for the same persistent file in the current process is 50. Subscriptions beyond this limit will fail. You are advised to cancel the subscription in a timely manner after the callback is triggered.
   >
-  > After [removePreferencesFromCache](#preferencesremovepreferencesfromcache) or [deletePreferences](#preferencesdeletepreferences) is called, the data change subscription will be automatically canceled. After [getPreferences](#preferencesgetpreferences) is called again, you need to subscribe to data changes again.
+  > After [removePreferencesFromCache](#preferencesremovepreferencesfromcache) or [deletePreferences](#preferencesdeletepreferences) is called, the subscribed data change is automatically unsubscribed. After [getPreferences](#preferencesgetpreferences) is called again, you need to subscribe to the data change again.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2165,7 +2186,7 @@ This API is provided for applications that have applied for [dataGroupId](#optio
 | Name  | Type    | Mandatory| Description                                                        |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | Yes  | Event type. The value is **'multiProcessChange'**, which indicates inter-process data changes.|
-| callback | Callback&lt;string&gt; | Yes  | Callback used to return the data change.                        |
+| callback | Callback&lt;string&gt; | Yes | Callback invoked when data changes between multiple processes. The callback parameter is the key string that has changed. |
 
 **Error codes**
 
@@ -2174,7 +2195,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                               |
 | -------- | -------------------------------------- |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 15500000 | Inner error.                           |
+| 15500000 | Inner error. <br>Applicable versions: 11+                           |
 | 15500019 | Failed to obtain the subscription service. |
 
 **Example**
@@ -2189,7 +2210,7 @@ dataPreferences.on('multiProcessChange', observer);
 dataPreferences.putSync('startup', 'manual');
 dataPreferences.flush((err: BusinessError) => {
   if (err) {
-    console.error("Failed to flush. Cause: " + err);
+    console.error("Failed to flush. code =" + err.code + ", message = " + err.message);
     return;
   }
   console.info("Succeeded in flushing.");
@@ -2200,7 +2221,7 @@ dataPreferences.flush((err: BusinessError) => {
 
 on(type: 'dataChange', keys: Array&lt;string&gt;,  callback: Callback&lt;Record&lt;string, ValueType&gt;&gt;): void
 
-Subscribes to changes of specific data. The registered callback will be invoked only after the values of the specified keys are changed and [flushed](#flush).
+Precisely subscribes to data changes. Only when the value of a subscribed key changes and the [flush](#flush) method is executed, the callback is invoked.
 
   > **NOTE**
   >
@@ -2215,8 +2236,8 @@ Subscribes to changes of specific data. The registered callback will be invoked 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. The value is **'dataChange'**, which indicates data changes.          |
-| keys     | Array&lt;string&gt;                                          | Yes  | Array of the keys to be observed.                                         |
-| callback | Callback&lt;Record&lt;string, [ValueType](#valuetype)&gt;&gt; | Yes  | Callback used to return the changed data, in an array of KV pairs. The keys identify the data changed, and the values are the new values. The values support the following data types: number, string, boolean, Array\<number>, Array\<string>, Array\< boolean>, Uint8Array, and object.|
+| keys     | Array&lt;string&gt;                                          | Yes   | Set of keys to subscribe to.                                          |
+| callback | Callback&lt;Record&lt;string, [ValueType](#valuetype)&gt;&gt; | Yes   | Callback invoked to return multiple key-value pairs, where the key is the subscribed key that has changed, of the string type, and the value is the changed data, of the [ValueType](#valuetype) type. |
 
 **Error codes**
 
@@ -2244,7 +2265,7 @@ dataPreferences.putSync('name', 'xiaohong');
 dataPreferences.putSync('weight', 125);
 dataPreferences.flush((err: BusinessError) => {
   if (err) {
-    console.error("Failed to flush. Cause: " + err);
+    console.error("Failed to flush. code =" + err.code + ", message = " + err.message);
     return;
   }
   console.info("Succeeded in flushing.");
@@ -2266,7 +2287,7 @@ Unsubscribes from data changes.
 | Name  | Type    | Mandatory| Description                                                        |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | Yes  | Event type. The value is **'change'**, which indicates data changes.                    |
-| callback | Callback&lt;string&gt; | No  | Callback to unregister. If this parameter is not specified, this API unregisters all callbacks for data changes.|
+| callback | Callback&lt;string&gt; | No | Callback to unregister. If this parameter is not specified, all registered callbacks are unregistered; if specified, only the specified callback is unregistered. |
 
 **Error codes**
 
@@ -2275,7 +2296,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                       |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>Applicable versions: 11+                   |
 
 **Example**
 
@@ -2289,7 +2310,7 @@ dataPreferences.on('change', observer);
 dataPreferences.putSync('startup', 'auto');
 dataPreferences.flush((err: BusinessError) => {
   if (err) {
-    console.error("Failed to flush. Cause: " + err);
+    console.error("Failed to flush. code =" + err.code + ", message = " + err.message);
     return;
   }
   console.info("Succeeded in flushing.");
@@ -2303,7 +2324,7 @@ off(type: 'multiProcessChange', callback?: Callback&lt;string&gt;): void
 
 Unsubscribes from inter-process data changes.
 
-This API is provided for applications that have applied for [dataGroupId](#options10). Avoid using this API for the applications that have not applied for **dataGroupId** because calling it in multiple process may damage the persistent files and cause data loss.
+This API is provided for applications that have applied for [dataGroupId](#options10). It is not recommended for applications that have not applied for it (data changes cannot be listened to). Multi-process operations may damage the persistent file and cause data loss.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2314,7 +2335,7 @@ This API is provided for applications that have applied for [dataGroupId](#optio
 | Name  | Type    | Mandatory| Description                                                        |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | Yes  | Event type. The value is **'multiProcessChange'**, which indicates inter-process data changes.|
-| callback | Callback&lt;string&gt; | No  | Callback to unregister. If this parameter is not specified, this API unregisters all callbacks for data changes.|
+| callback | Callback&lt;string&gt; | No | Callback for the event to cancel. If this parameter is not specified, all registered callbacks are canceled; if it is specified, only the specified callback is canceled. |
 
 **Error codes**
 
@@ -2323,7 +2344,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                       |
 | -------- | ------------------------------ |
 | 401      | Parameter error. Possible causes:1. Mandatory parameters are left unspecified;2. Incorrect parameter types;3. Parameter verification failed.                       |
-| 15500000 | Inner error.                   |
+| 15500000 | Inner error. <br>Applicable versions: 11+                   |
 
 **Example**
 
@@ -2337,7 +2358,7 @@ dataPreferences.on('multiProcessChange', observer);
 dataPreferences.putSync('startup', 'auto');
 dataPreferences.flush((err: BusinessError) => {
   if (err) {
-    console.error("Failed to flush. Cause: " + err);
+    console.error("Failed to flush. code =" + err.code + ", message = " + err.message);
     return;
   }
   console.info("Succeeded in flushing.");
@@ -2350,6 +2371,10 @@ off(type: 'dataChange', keys: Array&lt;string&gt;,  callback?: Callback&lt;Recor
 
 Unsubscribes from changes of specific data.
 
+**Paired call**
+- Used together with [on('dataChange')](#ondatachange12) to cancel the precise data change subscription.
+- If you do not need to listen to data changes of a specific key, call off in a timely manner to unsubscribe.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.DistributedDataManager.Preferences.Core
@@ -2359,8 +2384,8 @@ Unsubscribes from changes of specific data.
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. The value is **'dataChange'**, which indicates data changes.          |
-| keys     | Array&lt;string&gt;                                          | Yes  | Array of keys to be unsubscribed from. If this parameter is left empty, all keys are unsubscribed from.|
-| callback | Callback&lt;Record&lt;string, [ValueType](#valuetype)&gt;&gt; | No  | Callback to unregister. If this parameter is not specified, this API unregisters all callbacks for the changes of the specified data.|
+| keys     | Array&lt;string&gt;                                          | Yes   | Set of keys to unsubscribe from. When the **keys** array is empty, all keys are unsubscribed from. When the **keys** array is not empty, only the keys in the set are unsubscribed from. |
+| callback | Callback&lt;Record&lt;string, [ValueType](#valuetype)&gt;&gt; | No   | Callback to unsubscribe. If this parameter is not specified, all registered callbacks are unsubscribed from. If this parameter is specified, only the specified callback is unsubscribed from. |
 
 **Error codes**
 
@@ -2388,7 +2413,7 @@ dataPreferences.putSync('name', 'xiaohong');
 dataPreferences.putSync('weight', 125);
 dataPreferences.flush((err: BusinessError) => {
   if (err) {
-    console.error("Failed to flush. Cause: " + err);
+    console.error("Failed to flush. code =" + err.code + ", message = " + err.message);
     return;
   }
   console.info("Succeeded in flushing.");

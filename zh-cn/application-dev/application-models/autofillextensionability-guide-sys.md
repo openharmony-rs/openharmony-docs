@@ -20,7 +20,7 @@
 
 ## 接口说明
 
-自动填充功能主要接口如下。其他接口介绍详情参见[AutoFillRequest](../reference/apis-ability-kit/js-apis-inner-application-autoFillRequest-sys.md)、[AutoFillExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-autoFillExtensionAbility-sys.md)。
+自动填充功能主要接口如下。其他接口介绍详情参见[AutoFillRequest (自动填充请求)](../reference/apis-ability-kit/js-apis-inner-application-autoFillRequest-sys.md)、[AutoFillExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-autoFillExtensionAbility-sys.md)。
 
 | 接口名称                                                     | 说明                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -134,7 +134,7 @@
       import { autoFillManager } from '@kit.AbilityKit';
 
       // 将需要回填的数据组装到viewData中，并通过callback的onSuccess带回到客户端用于自动填充
-      function successFunc(data: autoFillManager.ViewData, target: string, fillCallback?: autoFillManager.FillRequestCallback) {
+      function SuccessFunc(data: autoFillManager.ViewData, target: string, fillCallback?: autoFillManager.FillRequestCallback) {
         console.info(`data.pageNodeInfos.length`, data.pageNodeInfos.length);
         for (let i = 0; i < data.pageNodeInfos.length; i++) {
           console.info(`data.pageNodeInfos[i].isFocus`, data.pageNodeInfos[i].isFocus);
@@ -187,7 +187,7 @@
               Column() {
                 List({ space: 10, initialIndex: 0 }) {
                   ListItem() {
-                    Text('15501212262')
+                    Text('155xxxxxxxx')
                       .width('100%')
                       .height(40)
                       .fontSize(16)
@@ -197,7 +197,7 @@
                   .onClick(() => {
                     if (this.viewData != undefined) {
                       // 将选择的账号信息回填到客户端
-                      successFunc(this.viewData, '15501212262', this.fillCallback);
+                      SuccessFunc(this.viewData, '155xxxxxxxx', this.fillCallback);
                     }
                   })
                 }
@@ -304,7 +304,7 @@
 
 ### 实现情景化自动填充功能
 
-情景化自动填充的具体类型可参考[AutoFillType](../reference/apis-ability-kit/js-apis-inner-application-autoFillType-sys.md)。
+情景化自动填充的具体类型可参考[AutoFillType (自动填充类型)](../reference/apis-ability-kit/js-apis-inner-application-autoFillType-sys.md)。
 
 开发者在实现情景化自动填充服务时，需要在DevEco Studio工程中手动新建一个SmartAutoFillExtensionAbility，具体步骤如下。
 

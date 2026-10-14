@@ -12,9 +12,13 @@
 >
 > - 子组件需要设置[空间效果](./ts-universal-attributes-spatial-effect-sys.md)，才能与景深组件的背景产生交互效果。
 >
+> - 空间效果不支持[Web](../../../web/web-component-overview.md)、[XComponent](./ts-basic-components-xcomponent.md)、[RichEditor](./ts-basic-components-richeditor.md)、[RichText](./ts-basic-components-richtext.md)、[Video](./ts-media-components-video.md)、[Component3D](./ts-basic-components-component3d.md)、[EmbeddedComponent](./ts-container-embedded-component.md)组件。
+>
 > - 具备基本的计算机图形学知识有助于更好地使用该组件。
 >
 > - 本模块为系统接口。
+>
+> - 完整的组件约束与限制、常见问题排查及参数调优建议，请参考[景深组件开发指南](../../../ui/arkts-depth-components-sys.md#约束与限制)。
 
 **起始版本：** 26.0.0
 
@@ -34,7 +38,7 @@ DepthComponent(background: ResourceStr | PixelMap, options?: DepthComponentOptio
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -42,8 +46,8 @@ DepthComponent(background: ResourceStr | PixelMap, options?: DepthComponentOptio
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| background | [ResourceStr](ts-types.md#resourcestr) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 是 | 背景资源。支持静态图片或3D模型。<br>静态图支持加载PixelMap和ResourceStr的数据源，引用方式请参考[加载图片资源](../../../ui/arkts-graphics-display.md#加载图片资源)。<br>3D模型仅支持加载ResourceStr的数据源，仅支持glTF和glb的3D模型格式。ResourceStr包含Resource和string格式。其中string格式可用于加载本地3D模型，支持绝对路径或file://前缀的沙箱URI，不支持网络资源的加载；Resource格式可以跨包/跨模块访问模型资源文件，推荐以该方式加载本地3D模型。 |
-| options | [DepthComponentOptions](#depthcomponentoptions) | 否 | 景深组件配置项。默认值：`{ depthSpace: DepthSpaceType.INSTANCE }`。 |
+| background | [ResourceStr](ts-types.md#resourcestr) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) | 是 | 背景资源。支持静态图片或3D模型。<br/>静态图支持加载PixelMap和ResourceStr的数据源，引用方式请参考[加载图片资源](../../../ui/arkts-graphics-display.md#加载图片资源)。<br/>3D模型仅支持加载ResourceStr的数据源，仅支持glTF和glb的3D模型格式。ResourceStr包含Resource和string格式。其中string格式可用于加载本地3D模型，支持绝对路径或file://前缀的沙箱URI，不支持网络资源的加载；Resource格式可以跨包/跨模块访问模型资源文件，推荐以该方式加载本地3D模型。 |
+| options | [DepthComponentOptions](#depthcomponentoptions) | 否 | 景深组件配置项。默认值：`{ depthSpace: DepthSpaceType.INSTANCE, render3DScale: 1.0, colorSpace: colorSpaceManager.ColorSpace.SRGB }`。 |
 
 ## DepthComponentOptions
 
@@ -55,13 +59,13 @@ DepthComponent(background: ResourceStr | PixelMap, options?: DepthComponentOptio
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统接口：** 此接口为系统接口。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| depthSpace | [DepthSpaceType](#depthspacetype) | 否 | 是 | 景深空间类型。 |
+| depthSpace | [DepthSpaceType](#depthspacetype) | 否 | 是 | 景深空间类型。默认值：`DepthSpaceType.INSTANCE`。传入非枚举定义的值时该参数不生效，保持默认值`DepthSpaceType.INSTANCE`。 |
 | render3DScale | number | 否 | 是 | 3D渲染窗口的缩放比例，同时作用于宽度和高度。取值范围：(0.0, 1.0]，超出该范围的值无效（继承之前的取值，如果之前未设置取默认值）。默认值：1.0。 |
 | colorSpace | import('../api/@ohos.graphics.colorSpaceManager').default.[ColorSpace](../../apis-arkgraphics2d/js-apis-colorSpaceManager.md#colorspace) | 否 | 是 | 渲染表面的色域。设置时作为色域信息应用到底层渲染表面；未设置时不应用色域信息，渲染表面保持默认色域。默认值：colorSpaceManager.ColorSpace.SRGB。 |
 
@@ -79,7 +83,7 @@ DepthComponent(background: ResourceStr | PixelMap, options?: DepthComponentOptio
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -100,7 +104,7 @@ depthMap(depthMap: ResourceStr | PixelMap, callback?: DepthMapCallback)
 
 > **说明：**
 >
-> 深度图是用于描述在3D空间中，背景中每个像素点与相机距离的二维矩阵图像。
+> 深度图是用于描述在三维空间中，背景中每个像素点与相机距离的二维矩阵图像。
 > 其数据格式为灰阶图，灰度值越大（颜色越白）的像素点距离相机越近。
 
 **起始版本：** 26.0.0
@@ -109,7 +113,7 @@ depthMap(depthMap: ResourceStr | PixelMap, callback?: DepthMapCallback)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -136,7 +140,7 @@ camera(camera: DepthCameraParams)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -158,7 +162,7 @@ light(light: DepthLightParams)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -182,7 +186,7 @@ onComplete(callback: DepthComponentCompleteCallback)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -204,7 +208,7 @@ onError(callback: DepthComponentErrorCallback)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -226,7 +230,7 @@ type DepthMapCallback = (error: BusinessError&lt;void&gt;) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -246,17 +250,17 @@ type DepthMapCallback = (error: BusinessError&lt;void&gt;) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统接口：** 此接口为系统接口。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| position | [DepthVector3](ts-universal-attributes-spatial-effect-sys.md#depthvector3) | 否 | 否 | 相机在三维空间中的位置。无单位，其值表示3D空间中的坐标。 |
-| quaternion | [DepthVector4](ts-universal-attributes-spatial-effect-sys.md#depthvector4) | 否 | 否 | 相机旋转四元数，按(x, y, z, w)表示。无单位。 |
-| yFov | number | 否 | 否 | 相机垂直方向视场角，单位为弧度。 |
-| zNear | number | 否 | 否 | 近裁剪面距离。无单位。必须为正数。 |
-| zFar | number | 否 | 否 | 远裁剪面距离。无单位。必须为正数。 |
+| position | [DepthVector3](ts-universal-attributes-spatial-effect-sys.md#depthvector3) | 否 | 否 | 相机在三维空间中的位置。无单位，其值表示三维空间中的坐标。 |
+| quaternion | [DepthVector4](ts-universal-attributes-spatial-effect-sys.md#depthvector4) | 否 | 否 | 相机旋转四元数，按(x, y, z, w)表示。无单位。其中(0, 0, 0, 1)为单位四元数，表示无旋转，相机保持默认朝向（默认看向-Z方向）；需要改变朝向时，绕Y轴旋转可左右调整朝向、绕X轴旋转可俯仰、绕Z轴旋转可滚转，可由旋转轴与角度换算，公式为(x, y, z, w)=(旋转轴向量·sin(θ/2), cos(θ/2))。 |
+| yFov | number | 否 | 否 | 相机垂直方向视场角，单位为弧度。组件仅提供垂直视场角，水平视场角由yFov与组件宽高比自动导出，无法单独设置。 |
+| zNear | number | 否 | 否 | 近裁剪面距离。无单位。必须为正数，且应小于zFar；取0或负数时参数无效，当zNear大于或等于zFar时可视范围为空、画面不渲染。 |
+| zFar | number | 否 | 否 | 远裁剪面距离。无单位。必须为正数，且应大于zNear；取0或负数时参数无效，当zNear大于或等于zFar时可视范围为空、画面不渲染。 |
 | cameraBufferCrop | [CameraBufferCrop](#camerabuffercrop) | 否 | 是 | 相机移轴裁剪参数。未设置时默认使用组件布局尺寸作为默认图像基准大小，裁剪偏移量为(0, 0)，缩放比例为1.0。 |
 
 ## CameraBufferCrop
@@ -269,7 +273,7 @@ type DepthMapCallback = (error: BusinessError&lt;void&gt;) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -278,7 +282,7 @@ type DepthMapCallback = (error: BusinessError&lt;void&gt;) => void
 | bufferWidth | number | 否 | 否 | 基准图宽度，单位为像素。需确保传入图片的宽度与实际图片宽度一致，否则可能导致显示异常，如位置偏移。 |
 | bufferHeight | number | 否 | 否 | 基准图高度，单位为像素。需确保传入图片的高度与实际图片高度一致，否则可能导致显示异常，如位置偏移。 |
 | cropOffset | [CropOffset](#cropoffset) | 否 | 否 | 裁剪区域偏移量。 |
-| cropScale | number | 否 | 否 | 裁剪区域缩放比例，裁剪区基础大小为DepthComponent组件大小。 |
+| cropScale | number | 否 | 否 | 裁剪区域缩放比例，裁剪区基础大小为DepthComponent组件大小。取值范围：(0, +∞)，小于1表示裁剪区域更小、对应放大局部，大于1表示裁剪区域更大、对应缩小内容。默认值：1.0。 |
 
 ## CropOffset
 
@@ -290,7 +294,7 @@ type DepthMapCallback = (error: BusinessError&lt;void&gt;) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -309,15 +313,15 @@ type DepthMapCallback = (error: BusinessError&lt;void&gt;) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统接口：** 此接口为系统接口。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| direction | [DepthVector3](ts-universal-attributes-spatial-effect-sys.md#depthvector3) | 否 | 否 | 光照方向向量。无单位，其值表示3D空间中的坐标。 |
+| direction | [DepthVector3](ts-universal-attributes-spatial-effect-sys.md#depthvector3) | 否 | 否 | 光照方向向量，表示光的传播方向（从光源指向被照物）。无单位。示例{ x: 0, y: 0, z: -1 }表示光朝-Z方向照射，被照亮的面是其法线朝+Z（迎着光源）的面。 |
 | color | [DepthColorRGB](ts-universal-attributes-spatial-effect-sys.md#depthcolorrgb) | 否 | 否 | 光照颜色。 |
-| intensity | number | 否 | 否 | 光照强度。无单位，取值范围[0, +∞)。<br>建议取值范围[0, 1]，当设置为0时，无光照。 |
+| intensity | number | 否 | 否 | 光照强度。无单位，取值范围[0, +∞)。<br/>建议取值范围[0, 1]，当设置为0时，无光照；超出1时光照过强，可能在受光面形成局部高亮的光斑，导致显示效果与预期不一致，不建议超出该范围。 |
 
 ## DepthComponentCompleteCallback
 
@@ -331,7 +335,7 @@ type DepthComponentCompleteCallback = (event: DepthComponentCompleteEvent) => vo
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -351,14 +355,14 @@ type DepthComponentCompleteCallback = (event: DepthComponentCompleteEvent) => vo
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统接口：** 此接口为系统接口。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| componentWidth | number | 是 | 否 | 组件宽度，单位为vp。 |
-| componentHeight | number | 是 | 否 | 组件高度，单位为vp。 |
+| componentWidth | number | 否 | 否 | 组件宽度，单位为vp。 |
+| componentHeight | number | 否 | 否 | 组件高度，单位为vp。 |
 
 ## DepthComponentErrorCallback
 
@@ -372,7 +376,7 @@ type DepthComponentErrorCallback = (error: DepthComponentErrorEvent) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统接口：** 此接口为系统接口。
 
@@ -392,15 +396,15 @@ type DepthComponentErrorCallback = (error: DepthComponentErrorEvent) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**原子化服务API:** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统接口：** 此接口为系统接口。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| componentWidth | number | 是 | 否 | 组件宽度，单位为vp。 |
-| componentHeight | number | 是 | 否 | 组件高度，单位为vp。 |
-| error | [BusinessError](../../apis-basic-services-kit/js-apis-base.md#businesserror)&lt;void&gt; | 是 | 是 | 加载失败的错误信息。 |
+| componentWidth | number | 否 | 否 | 组件宽度，单位为vp。 |
+| componentHeight | number | 否 | 否 | 组件高度，单位为vp。 |
+| error | [BusinessError](../../apis-basic-services-kit/js-apis-base.md#businesserror)&lt;void&gt; | 否 | 是 | 加载失败的错误信息。 |
 
 ## 示例
 
@@ -413,6 +417,7 @@ type DepthComponentErrorCallback = (error: DepthComponentErrorEvent) => void
 ```ts
 // xxx.ets
 import { colorSpaceManager } from '@kit.ArkGraphics2D';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -423,7 +428,7 @@ struct DepthComponentInstanceExample {
       DepthComponent($r('app.media.background'), {
         colorSpace: colorSpaceManager.ColorSpace.DISPLAY_P3
       }) {
-        Text('Spatial Effect')
+        Text('Depth Component')
           .fontSize(100)
           .spatialEffect({
             position: {
@@ -472,7 +477,7 @@ struct DepthComponentInstanceExample {
   }
 }
 ```
-![toggle](figures/DepthComponent_position_1.png)
+![文字视觉倾斜与遮挡效果](figures/DepthComponent-2D.png)
 
 ### 示例2（实现文字部分仅设置深度遮挡效果）
 
@@ -517,7 +522,7 @@ struct DepthComponentInstanceExample {
   }
 }
 ```
-![toggle](figures/DepthComponent_position_2.png)
+![仅设置深度的文字遮挡效果](figures/DepthComponent-depthonly.png)
 
 ### 示例3（实现截取部分渲染内容）
 
@@ -568,4 +573,4 @@ struct DepthComponentInstanceExample {
   }
 }
 ```
-![toggle](figures/DepthComponent_cameraBufferCrop_1.png)
+![移轴裁剪截取局部渲染效果](figures/DepthComponent-cameraCrop.png)

@@ -54,7 +54,7 @@ createVideoRecorder(callback: AsyncCallback\<VideoRecorder>): void
 
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
-| 202      | Not system App.                |
+| 202      | Not System App. <br>适用版本：12+               |
 | 5400101  | No memory. Return by callback. |
 
 **示例：**
@@ -95,7 +95,7 @@ createVideoRecorder(): Promise\<VideoRecorder>
 
 | 错误码ID | 错误信息                      |
 | -------- | ----------------------------- |
-| 202      | Not system App.               |
+| 202      | Not System App. <br>适用版本：12+              |
 | 5400101  | No memory. Return by promise. |
 
 **示例：**
@@ -525,16 +525,6 @@ avRecorder.setWatermark(watermark, watermarkConfig).then(() => {
 });
 ```
 
-## AVRecorderProfile<sup>9+</sup>
-
-音视频录制的配置文件。
-
-**系统能力：** SystemCapability.Multimedia.Media.AVRecorder
-
-| 名称             | 类型                                         | 只读 | 可选 | 说明                                                         |
-| ---------------- | -------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| enableStableQualityMode<sup>18+</sup>            | boolean                        | 否   | 是   | 视频录制是否选择稳定质量模式，选择视频录制时选填，enableStableQualityMode默认为false。设置为true时，启用视频编码策略以实现质量稳定的编码。<br>**系统接口：** 该接口为系统接口。|
-
 ## VideoRecorder<sup>9+</sup>
 
 > **说明：**
@@ -578,7 +568,7 @@ prepare(config: VideoRecorderConfig, callback: AsyncCallback\<void>): void
 | 错误码ID | 错误信息                                   |
 | -------- | ------------------------------------------ |
 | 201      | Permission denied. Return by callback.     |
-| 202      | Not system App.                            |
+| 202      | Not System App. <br>适用版本：12+           |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.       |
 | 5400102  | Operation not allowed. Return by callback. |
 | 5400105  | Service died. Return by callback.          |
@@ -652,7 +642,7 @@ prepare(config: VideoRecorderConfig): Promise\<void>
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
 | 201      | Permission denied. Return by promise.     |
-| 202      | Not system App.                           |
+| 202      | Not System App. <br>适用版本：12+          |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.       |
 | 5400102  | Operation not allowed. Return by promise. |
 | 5400105  | Service died. Return by promise.          |
@@ -721,7 +711,7 @@ getInputSurface(callback: AsyncCallback\<string>): void
 
 | 错误码ID | 错误信息                                   |
 | -------- | ------------------------------------------ |
-| 202      | Not system App.                            |
+| 202      | Not System App. <br>适用版本：12+           |
 | 5400102  | Operation not allowed. Return by callback. |
 | 5400103  | I/O error. Return by callback.             |
 | 5400105  | Service died. Return by callback.          |
@@ -771,7 +761,7 @@ getInputSurface(): Promise\<string>;
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 202      | Not system App.                           |
+| 202      | Not System App. <br>适用版本：12+          |
 | 5400102  | Operation not allowed. Return by promise. |
 | 5400103  | I/O error. Return by promise.             |
 | 5400105  | Service died. Return by promise.          |
@@ -815,7 +805,7 @@ start(callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息                                   |
 | -------- | ------------------------------------------ |
-| 202      | Not system App.                            |
+| 202      | Not System App. <br>适用版本：12+           |
 | 5400102  | Operation not allowed. Return by callback. |
 | 5400103  | I/O error. Return by callback.             |
 | 5400105  | Service died. Return by callback.          |
@@ -859,7 +849,7 @@ start(): Promise\<void>
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 202      | Not system App.                           |
+| 202      | Not System App. <br>适用版本：12+          |
 | 5400102  | Operation not allowed. Return by promise. |
 | 5400103  | I/O error. Return by promise.             |
 | 5400105  | Service died. Return by promise.          |
@@ -901,7 +891,7 @@ pause(callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息                                   |
 | -------- | ------------------------------------------ |
-| 202      | Not system App.                            |
+| 202      | Not System App. <br>适用版本：12+           |
 | 5400102  | Operation not allowed. Return by callback. |
 | 5400103  | I/O error. Return by callback.             |
 | 5400105  | Service died. Return by callback.          |
@@ -945,7 +935,7 @@ pause(): Promise\<void>
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 202      | Not system App.                           |
+| 202      | Not System App. <br>适用版本：12+          |
 | 5400102  | Operation not allowed. Return by promise. |
 | 5400103  | I/O error. Return by promise.             |
 | 5400105  | Service died. Return by promise.          |
@@ -985,7 +975,7 @@ resume(callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息                                   |
 | -------- | ------------------------------------------ |
-| 202      | Not system App.                            |
+| 202      | Not System App. <br>适用版本：12+           |
 | 5400102  | Operation not allowed. Return by callback. |
 | 5400103  | I/O error. Return by callback.             |
 | 5400105  | Service died. Return by callback.          |
@@ -1027,7 +1017,7 @@ resume(): Promise\<void>
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 202      | Not system App.                           |
+| 202      | Not System App. <br>适用版本：12+          |
 | 5400102  | Operation not allowed. Return by promise. |
 | 5400103  | I/O error. Return by promise.             |
 | 5400105  | Service died. Return by promise.          |
@@ -1069,7 +1059,7 @@ stop(callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息                                   |
 | -------- | ------------------------------------------ |
-| 202      | Not system App.                            |
+| 202      | Not System App. <br>适用版本：12+           |
 | 5400102  | Operation not allowed. Return by callback. |
 | 5400103  | I/O error. Return by callback.             |
 | 5400105  | Service died. Return by callback.          |
@@ -1113,7 +1103,7 @@ stop(): Promise\<void>
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
-| 202      | Not system App.                           |
+| 202      | Not System App. <br>适用版本：12+          |
 | 5400102  | Operation not allowed. Return by promise. |
 | 5400103  | I/O error. Return by promise.             |
 | 5400105  | Service died. Return by promise.          |
@@ -1153,7 +1143,7 @@ release(callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息                          |
 | -------- | --------------------------------- |
-| 202      | Not system App.                   |
+| 202      | Not System App. <br>适用版本：12+  |
 | 5400105  | Service died. Return by callback. |
 
 **示例：**
@@ -1193,8 +1183,8 @@ release(): Promise\<void>
 
 | 错误码ID | 错误信息                          |
 | -------- | --------------------------------- |
-| 202      | Not system App.                   |
-| 5400105  | Service died. Return by callback. |
+| 202      | Not System App. <br>适用版本：12+  |
+| 5400105  | Service died. Return by promise. |
 
 **示例：**
 
@@ -1233,7 +1223,7 @@ reset(callback: AsyncCallback\<void>): void
 
 | 错误码ID | 错误信息                          |
 | -------- | --------------------------------- |
-| 202      | Not system App.                   |
+| 202      | Not System App. <br>适用版本：12+  |
 | 5400103  | I/O error. Return by callback.    |
 | 5400105  | Service died. Return by callback. |
 
@@ -1276,7 +1266,7 @@ reset(): Promise\<void>
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
-| 202      | Not system App.                  |
+| 202      | Not System App. <br>适用版本：12+ |
 | 5400103  | I/O error. Return by promise.    |
 | 5400105  | Service died. Return by promise. |
 
@@ -1316,8 +1306,8 @@ on(type: 'error', callback: ErrorCallback): void
 
 | 错误码ID | 错误信息                          |
 | -------- | --------------------------------- |
-| 201      | permission denied.                |
-| 202      | Not system App.                   |
+| 201      | permission denied. <br>适用版本：12+  |
+| 202      | Not System App. <br>适用版本：12+  |
 | 5400103  | I/O error. Return by callback.    |
 | 5400105  | Service died. Return by callback. |
 
@@ -1333,6 +1323,8 @@ videoRecorder.on('error', (error: BusinessError) => { // 设置'error'事件回�
 ```
 
 ## VideoRecordState<sup>9+</sup>
+
+type VideoRecordState = 'idle' | 'prepared' | 'playing' | 'paused' | 'stopped' | 'error'
 
 视频录制的状态机。可通过state属性获取当前状态。
 
@@ -1495,6 +1487,7 @@ screenCaptureMonitor.off('systemScreenRecorder');
 | ------------------------ | --------------- | ------------------------------------------------------------ |
 | SCREENCAPTURE_STARTED       | 0   | 表示系统录屏应用开始录屏。                       |
 | SCREENCAPTURE_STOPPED        | 1    | 表示系统录屏应用停止录屏。 |
+| SCREENCAPTURE_DIED<sup>23+</sup>           | 2    | 表示录屏框架服务死亡。 |
 
 ## enableDeviceLevelCapture<sup>20+</sup>
 

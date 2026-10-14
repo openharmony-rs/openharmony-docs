@@ -1,7 +1,7 @@
 # 使用Node-API接口产生的异常日志/崩溃分析
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
@@ -335,7 +335,7 @@ napi_call_threadsafe_function 和 napi_release_threadsafe_function 的示例代�
                     [](napi_env, void *, void *) {}, nullptr,                           \
                     [](napi_env, napi_value, void *, void *) {}, &tsfn);                \
                 if (status != napi_ok) {                                                \
-                    OH_INFO_ERROR(LOG_APP,"napi_create_threadsafe_function failed");    \
+                    OH_LOG_ERROR(LOG_APP,"napi_create_threadsafe_function failed");     \
                     return nullptr;                                                     \
                 }                                                                       \
                 if (!localEnv.RecreateSame()) {                                         \

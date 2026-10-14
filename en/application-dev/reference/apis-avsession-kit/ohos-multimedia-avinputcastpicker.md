@@ -5,15 +5,16 @@
 <!--Designer: @ccfriend-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=3bb4c97ba607c5353ac0e05f41ee04555a22e644 translatedAt=2026-09-01T13:13:53.287Z pushedAt=2026-09-07T12:14:09.473Z -->
 
 The module provides the functionality to create an **AVInputCastPicker** component, which offers a unified entry for discovering and connecting recording devices.
 
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 20. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> - The Preview in DevEco Studio does not support actual recording device selection. To see the real effect, test on a real device.<!--Del-->
+> - The Preview in DevEco Studio does not support actual recording device selection. To see the real effect, test on a real device. <!--Del-->
 > - This component can only be used from the recording device selection screen, which needs to be implemented by OEM vendors.
-> - This component can only be used on PCs.<!--DelEnd-->
+> - In versions earlier than API version 26.0.0, this component can only be used on PCs and 2-in-1 devices. In API version 26.0.0 and later, this component can also be used on mobile phones and tablets. <!--DelEnd-->
 
 ## Modules to Import
 
@@ -48,7 +49,7 @@ This component is a custom component. Some basic knowledge of [@Component](../..
 
 | Name| Type| Mandatory| Decorator| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| customPicker | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8) | No| @Prop | Custom style. You are advised to customize a component style for higher component rendering performance.|
+| customPicker | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8) | No | @Prop | Custom style. You are advised to customize a component style for higher component rendering performance. |
 | onStateChange | [OnPickerStateCallback](#onpickerstatecallback) | No| - | Callback invoked when the device list state changes.|
 
 ## OnPickerStateCallback

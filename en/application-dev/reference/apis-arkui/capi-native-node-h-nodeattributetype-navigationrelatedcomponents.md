@@ -625,7 +625,7 @@ NODE_ARC_ALPHABET_INDEXER_ARRAY = MAX_NODE_SCOPE_NUM * ARKUI_NODE_ARC_ALPHABET_I
 Index string array. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **Parameters**
 
@@ -648,7 +648,7 @@ NODE_ARC_ALPHABET_INDEXER_COLOR = 23001
 Text color of the index item in the unselected state. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **Parameters**
 
@@ -671,7 +671,7 @@ NODE_ARC_ALPHABET_INDEXER_SELECTED_COLOR = 23002
 Text color of the index item in the selected state. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **Parameters**
 
@@ -694,7 +694,7 @@ NODE_ARC_ALPHABET_INDEXER_POPUP_COLOR = 23003
 Text color of the popup. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **Parameters**
 
@@ -717,7 +717,7 @@ NODE_ARC_ALPHABET_INDEXER_SELECTED_BACKGROUND_COLOR = 23004
 Background color of the index item in the selected state. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **Parameters**
 
@@ -740,7 +740,7 @@ NODE_ARC_ALPHABET_INDEXER_POPUP_BACKGROUND_COLOR = 23005
 Background color of the popup. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **Parameters**
 
@@ -763,7 +763,7 @@ NODE_ARC_ALPHABET_INDEXER_USE_POPUP = 23006
 Whether to use the popup. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **Parameters**
 
@@ -786,7 +786,7 @@ NODE_ARC_ALPHABET_SELECTED_FONT = 23007
 Font style of the selected index item. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **Parameters**
 
@@ -815,7 +815,7 @@ NODE_ARC_ALPHABET_INDEXER_POPUP_FONT = 23008
 Font style of the popup. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **Parameters**
 
@@ -844,7 +844,7 @@ NODE_ARC_ALPHABET_FONT = 23009
 Default font style of the index item. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **Parameters**
 
@@ -873,7 +873,7 @@ NODE_ARC_ALPHABET_INDEXER_ITEM_SIZE = 23010
 Size of the letter area of the alphabet index bar. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **Parameters**
 
@@ -896,7 +896,7 @@ NODE_ARC_ALPHABET_INDEXER_SELECTED = 23011
 Index of the selected item. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **Parameters**
 
@@ -919,7 +919,7 @@ NODE_ARC_ALPHABET_AUTO_COLLAPSE = 23012
 Whether to collapse the characters when the space of the index bar is insufficient to display all characters. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **Parameters**
 
@@ -942,7 +942,7 @@ NODE_ARC_ALPHABET_POPUP_BACKGROUND_BLUR_STYLE = 23013
 Background blur style of the popup. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **Parameters**
 
@@ -965,7 +965,7 @@ NODE_ARC_SWIPER_INDEX = MAX_NODE_SCOPE_NUM * ARKUI_NODE_ARC_SWIPER = 1022000
 Index of the child component currently displayed in the **ArcSwiper** container. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **Parameters**
 
@@ -988,7 +988,7 @@ NODE_ARC_SWIPER_INDICATOR = 1022001
 Navigation dot indicator of the **ArcSwiper** component. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **Parameters**
 
@@ -1021,7 +1021,7 @@ NODE_ARC_SWIPER_DURATION = 1022002
 Animation duration for child component switching. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **Parameters**
 
@@ -1044,7 +1044,7 @@ NODE_ARC_SWIPER_VERTICAL = 1022003
 Whether to use vertical swiping. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **Parameters**
 
@@ -1067,7 +1067,7 @@ NODE_ARC_SWIPER_DISABLE_SWIPE = 1022004
 Whether to disable swiping. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **Parameters**
 
@@ -1090,7 +1090,7 @@ NODE_ARC_SWIPER_DIGITAL_CROWN_SENSITIVITY = 1022005
 Sensitivity of rotating the digital crown. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **Parameters**
 
@@ -1113,7 +1113,7 @@ NODE_ARC_SWIPER_EFFECT_MODE = 1022006
 Edge swipe effect of the **ArcSwiper** component when swiping to the boundary of the scrollable content. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **Parameters**
 
@@ -1136,7 +1136,7 @@ NODE_ARC_SWIPER_DISABLE_TRANSITION_ANIMATION = 1022007
 Whether to disable the transition animation. This attribute can be set, reset, and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
-**Since**: 26.1.0
+**Since**: 26.0.1
 
 **Parameters**
 

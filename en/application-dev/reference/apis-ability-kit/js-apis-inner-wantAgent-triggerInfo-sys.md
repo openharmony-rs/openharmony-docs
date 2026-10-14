@@ -4,10 +4,11 @@
 <!--Subsystem: Ability-->
 <!--Owner: @linjunjie6-->
 <!--Designer: @li-weifeng2024-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=b3bc27a342923ac4fafa55153b55c4f3b627330f translatedAt=2026-09-03T12:20:45.633Z pushedAt=2026-09-05T10:47:30.901Z -->
 
-The module defines the information required for triggering the WantAgent. The information is used as an input parameter of [trigger](js-apis-app-ability-wantAgent.md#wantagenttrigger).
+As an input parameter of [trigger](js-apis-app-ability-wantAgent.md#wantagenttrigger), defines the information required to trigger the execution of a wantAgent.
 
 > **NOTE**
 > 
@@ -27,4 +28,4 @@ import { wantAgent } from '@kit.AbilityKit';
 
 | Name      | Type                | Read-Only| Optional| Description       |
 | ---------- | ------------------- | ---- | ---- | ----------- |
-| startOptions<sup>12+<sup>|[StartOptions](js-apis-app-ability-startOptions.md)         | No| Yes| Start options in wantAgent used to start an ability.|
+| startOptions<sup>12+</sup>|[StartOptions](js-apis-app-ability-startOptions.md)         | No | Yes | Specifies the startup parameters when the wantAgent is triggered to start an Ability.<br>**Model restriction**: This API can be used only in the stage model. |

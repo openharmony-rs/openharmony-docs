@@ -4,8 +4,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @littlejerry1-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=17d3b236d2c2a3bbfc7bc46d7fe0f1415b7b5049 translatedAt=2026-09-03T09:52:54.492Z pushedAt=2026-09-07T03:53:47.957Z -->
 
 AbilityConstant provides enums related to abilities, including application launch reasons ([LaunchReason](#launchreason)), last exit reasons ([LastExitReason](#lastexitreason)), and migration results ([OnContinueResult](#oncontinueresult)).
 
@@ -89,13 +90,13 @@ Enumerates the reasons for the last exit of the ability. You can use it together
 | Name                         | Value  | Description                                                        |
 | ----------------------------- | ---- | ------------------------------------------------------------ |
 | UNKNOWN          | 0    | Unknown reason.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| ABILITY_NOT_RESPONDING<sup>(deprecated)</sup> | 1    | The ability does not respond.<br>Note: This enum is supported since API version 9 and deprecated since API version 10. You are advised to use **APP_FREEZE**.|
-| NORMAL | 2    | The ability exits normally because the user closes the application.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>Note: If the application process is forcibly terminated using methods not provided by Ability Kit, such as calling [process.exit()](../apis-arkts/js-apis-process.md#processexitdeprecated) or using the kernel **kill** command, the reason for the last exit is also reported as **NORMAL**.|
+| ABILITY_NOT_RESPONDING<sup>(deprecated)</sup> | 1    | The Ability component does not respond.<br>**Note:** Supported since API version 9 and deprecated since API version 10. Use APP_FREEZE instead.|
+| NORMAL | 2    | The user proactively closes the application, and the application exits normally.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Note:** When the developer directly calls [process.exit()](../apis-arkts/js-apis-process.md#processexitdeprecated), the kernel kill command, or other capabilities not provided by Ability Kit to forcibly terminate the application process, NORMAL is also returned. |
 | CPP_CRASH<sup>10+</sup>  | 3    | The ability exits due to [process crash](../../dfx/cppcrash-guidelines.md).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | JS_ERROR<sup>10+</sup>  | 4    | The ability exits due to a JS_ERROR fault triggered when an application has a JS syntax error that is not captured by developers.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | APP_FREEZE<sup>10+</sup>  | 5    | The ability exits due to [application freeze](../../dfx/appfreeze-guidelines.md).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | PERFORMANCE_CONTROL<sup>10+</sup>  | 6    | The ability exits due to system performance problems, for example, insufficient device memory.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>Note: This API will be deprecated. You are advised to use **RESOURCE_CONTROL** instead.|
-| RESOURCE_CONTROL<sup>10+</sup>  | 7    | The ability exits due to improper use of system resources. The specific error cause can be obtained through [LaunchParam.lastExitMessage](#launchparam). The possible causes are as follows:<br> - **CPU Highload**: The CPU load is high.<br> - **CPU_EXT Highload**: A fast CPU load detection is carried out.<br> - **IO Manage Control**: An I/O management and control operation is carried out.<br> - **App Memory Deterioration**: The application memory usage exceeds the threshold.<br> - **Temperature Control**: The temperature is too high or too low.<br> - **Memory Pressure**: The system is low on memory, triggering process termination in ascending order of priority.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| RESOURCE_CONTROL<sup>10+</sup>  | 7    | The application exits due to improper use of system resources. The specific error cause can be obtained through [LaunchParam.lastExitMessage](#launchparam). Possible causes are as follows: <br> - CPU Highload, high CPU load.<br> - CPU_EXT Highload, fast CPU load detection.<br> - IO Manage Control, I/O control.<br> - App Memory Deterioration, application memory over-limit deterioration.<br> - Temperature Control, temperature control.<br> - Memory Pressure, low memory of the entire device triggers process termination by priority from low to high.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | UPGRADE<sup>10+</sup>  | 8    | The application exits due to an upgrade.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | USER_REQUEST<sup>18+</sup>  | 9    | The ability exits because it receives a request from the multitasking center.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 | SIGNAL<sup>18+</sup>  | 10    | The ability exits because it receives a kill signal from the system.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
@@ -108,7 +109,7 @@ import { UIAbility, Want, AbilityConstant } from '@kit.AbilityKit';
 export default class MyAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     if (launchParam.lastExitReason === AbilityConstant.LastExitReason.APP_FREEZE) {
-      console.info('The ability has exit last because the ability was not responding.');
+      console.info('The ability has exited last because the ability was not responding.');
     }
     if (launchParam.lastExitReason === AbilityConstant.LastExitReason.RESOURCE_CONTROL) {
       console.info(`The ability has exited last because the rss control, the lastExitReason is ${launchParam.lastExitReason}, the lastExitMessage is ${launchParam.lastExitMessage}.`);
@@ -134,6 +135,47 @@ Describes the key runtime information of the process where the ability last exit
 | pss | number | No| No| Actual physical memory usage of the process, in KB.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 | timestamp | number | No| No| Exact time when the ability last exited.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 | processState<sup>20+</sup> | [appManager.ProcessState](js-apis-app-ability-appManager.md#processstate10) | No| Yes| Process status of the ability when it last exited.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| killReason<sup>24+</sup> | string | No | Yes | Reason why the Ability last exited. For details about the values, see [reason field description of the app termination event](../../dfx/hiappevent-watcher-app-killed-events.md#reason).<br/>**Atomic service API**: Since API version 24, this API is supported in atomic services. |
+
+> **NOTE**
+>
+> You are advised to use [App Killed](../../dfx/appkilled-guidelines.md) detection to obtain the information about abnormal application exit. It is no longer recommended to use exitSubReason to obtain the information.
+>
+> The values of exitSubReason are described as follows:
+>
+> - When [LastExitReason](#lastexitreason) is NORMAL:
+>   - 9: The kernel forcibly terminates the process, with the termination signal SIGKILL.
+>   - 15: The kernel forcibly terminates the process, with the termination signal SIGTERM.
+>
+> - When [LastExitReason](#lastexitreason) is PERFORMANCE_CONTROL:
+>   - 100: The process is killed when entering outdoor mode.
+>   - 101: The process is killed when exiting outdoor mode.
+>   - 102: The process is killed in outdoor mode.
+>   - 3000: The process is killed due to abnormal freeze control, where unreasonable subscriptions in the background cause callback wakeup.
+>   - 3001: The process is killed due to abnormal freeze control, where unreasonable subscriptions in the background cause the application to hang when processing callbacks.
+>   - 3002: The process is killed due to abnormal GNSS operation.
+>   - 3003: The process is killed due to abnormal Bluetooth operation.
+>   - 3004: The process is killed due to abnormal RunningLock holding.
+>   - 3005: The process is killed due to abnormal kernel lock.
+>   - 3006: The process is killed in power saving mode.
+>   - 3007: The process is killed due to abnormal high power consumption of a module.
+>   - 3042: The process is killed in emergency mode or super power saving mode. The specific error cause can be distinguished through [LaunchParam.lastExitMessage](#launchparam).
+>
+> - When [LastExitReason](#lastexitreason) is RESOURCE_CONTROL:
+>   - 101: The application does not apply for a proper background task, but a large amount of audio is played in the background.
+>   - 102: The application does not apply for a proper background task, but recording is performed in the background.
+>   - 103: The application has a high CPU load in the background.
+>   - 105: The application exceeds the I/O limit.
+>   - 106: The process is killed due to ION memory leak control or malicious use of background tasks. The specific error cause can be distinguished through [LaunchParam.lastExitMessage](#launchparam).
+>   - 107: The memory usage of the background application exceeds twice the detection threshold, with PSS accounting for the highest proportion.
+>   - 108: The memory usage of the background application exceeds a specific threshold, with PSS accounting for the highest proportion.
+>   - 110: The process is killed due to GPU memory leak control.
+>   - 111: The process is killed due to VMA memory leak control.
+>   - 112: The process is killed due to handle leak control.
+>   - 113: The process is killed due to thread leak control.
+>   - 114: The process is killed due to ASHMEM memory leak control.
+>   - 117: The process is killed due to page table leak control.
+>   - 301: The process is killed due to GPU memory exceeding the limit or thermal cleanup. The specific error cause can be distinguished through [LaunchParam.lastExitMessage](#launchparam).
 
 **Example**
 
@@ -151,14 +193,15 @@ export default class MyAbility extends UIAbility {
       \n rss: ${launchParam.lastExitDetailInfo.rss}
       \n pss: ${launchParam.lastExitDetailInfo.pss}
       \n timestamp: ${launchParam.lastExitDetailInfo.timestamp}
-      \n processState: ${launchParam.lastExitDetailInfo.processState}.`
+      \n processState: ${launchParam.lastExitDetailInfo.processState}
+      \n killReason: ${launchParam.lastExitDetailInfo?.killReason}.`
       );
     }
   }
 }
 ```
 
-## OnContinueResult 
+## OnContinueResult
 
 Enumerates the ability continuation results. You can use it in [onContinue()](js-apis-app-ability-uiAbility.md#oncontinue) of the UIAbility to complete different operations.
 
@@ -192,16 +235,23 @@ Enumerates the memory levels of the entire device. You can use it in [onMemoryLe
 
 | Name                        | Value| Description               |
 | ---                         | --- | ---           |
-| MEMORY_LEVEL_MODERATE       | 0   | Indicates that the system has a moderate amount of available memory. Due to differences in system-wide memory thresholds across devices, the actual performance may vary by product. For details, please refer to the notes below.<br>**Atomic service API**: This API can be used in atomic services since API version 11.| 
-| MEMORY_LEVEL_LOW            | 1   | Indicates that the system has low available memory. Due to differences in system-wide memory thresholds across devices, the actual performance may vary by product. For details, please refer to the notes below.<br>**Atomic service API**: This API can be used in atomic services since API version 11.| 
-| MEMORY_LEVEL_CRITICAL       | 2   | Indicates that the system has critically low available memory. Due to differences in system-wide memory thresholds across devices, the actual performance may vary by product. For details, please refer to the notes below.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| MEMORY_LEVEL_MODERATE       | 0   | Indicates that the system has a moderate amount of available memory. Due to differences in system-wide memory thresholds across devices, the actual performance may vary by product. For details, please refer to the notes below.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| MEMORY_LEVEL_LOW            | 1   | Indicates that the system has low available memory. Due to differences in system-wide memory thresholds across devices, the actual performance may vary by product. For details, please refer to the notes below.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| MEMORY_LEVEL_CRITICAL       | 2   | Indicates that the available memory of the entire device is extremely low. Due to different memory watermarks of the entire device, the behavior may vary on different products. For details, see the description below.<br>**Atomic service API**: This API is supported in atomic services since API version 11. |
+| MEMORY_LEVEL_UI_HIDDEN<sup>24+</sup>      | 3   | Indicates that all UI of the application is invisible, and some resources should be released. This enum takes effect only for applications that switch from the foreground to the background.<br>**Atomic service API**: This API is supported in atomic services since API version 24.<br>**Constraints**: In actual scenarios, this memory level is triggered only on Phone devices. However, the [send-memory-level](../../tools/aa-tool.md#send-memory-level) debug command can trigger this memory level on all devices. |
+| MEMORY_LEVEL_BACKGROUND_MODERATE<sup>24+</sup>     | 4   | Indicates that the application has just been used, that is, it is at the head of the least recently used (LRU) list, and will not be cleaned up by the system for the time being. This enum takes effect only for background applications.<br>**Atomic service API**: This API is supported in atomic services since API version 24.<br>**Constraints**: In actual scenarios, this memory level is triggered only on Phone devices. However, the [send-memory-level](../../tools/aa-tool.md#send-memory-level) debug command can trigger this memory level on all devices. |
+| MEMORY_LEVEL_BACKGROUND_LOW<sup>24+</sup>    | 5   | Indicates that the application has not been used for a period of time, that is, it is in the middle of the least recently used (LRU) list, and is at risk of being cleaned up by the system. This enum takes effect only for background applications.<br>**Atomic service API**: This API is supported in atomic services since API version 24.<br>**Constraints**: In actual scenarios, this memory level is triggered only on Phone devices. However, the [send-memory-level](../../tools/aa-tool.md#send-memory-level) debug command can trigger this memory level on all devices. |
+| MEMORY_LEVEL_BACKGROUND_CRITICAL<sup>24+</sup>    | 6   | Indicates that the application has not been used for a long time, that is, it is at the tail of the least recently used (LRU) list, and will be cleaned up by the system first. This enum takes effect only for background applications.<br>**Atomic service API**: This API is supported in atomic services since API version 24.<br>**Constraints**: In actual scenarios, this memory level is triggered only on Phone devices. However, the [send-memory-level](../../tools/aa-tool.md#send-memory-level) debug command can trigger this memory level on all devices. |
 
 > **NOTE**
-> 
-> - The trigger conditions may differ across various devices. For example, on a standard device with 12 GB of memory:
->   - When the available memory of the entire device drops to 1700 MB to 1800 MB, the **onMemoryLevel** callback with a value of **0** is triggered, indicating that the available memory is moderate.
->   - When the available memory of the entire device drops to 1600 MB to 1700 MB, the **onMemoryLevel** callback with a value of **1** is triggered, indicating that the available memory is low.
->   - When the available memory of the entire device drops below 1600 MB, the **onMemoryLevel** callback with a value of **2** is triggered, indicating that the available memory is critically low.
+>
+> - The trigger conditions may differ across various products. For example, on a standard device with 12 GB of memory:
+>   - When the available memory of the entire device drops to 1700 MB to 1800 MB, the onMemoryLevel callback with the value 0 is triggered, indicating that the available memory of the entire device is moderate.
+>   - When the available memory of the entire device drops to 1600 MB to 1700 MB, the onMemoryLevel callback with the value 1 is triggered, indicating that the available memory of the entire device is low.
+>   - When the available memory of the entire device drops below 1600 MB, the onMemoryLevel callback with the value 2 is triggered, indicating that the available memory of the entire device is very low.
+>
+> - LRU: a linked list that sorts applications by their most recent usage order. The most recently used application is usually placed at the head of the linked list (front), and the least frequently used application is placed at the tail (back). When memory is insufficient, applications at the back are cleared first.
+> - When the LRU changes, background applications trigger the onMemoryLevel callback of the corresponding MemoryLevel (MEMORY_LEVEL_BACKGROUND_MODERATE, MEMORY_LEVEL_BACKGROUND_LOW, and MEMORY_LEVEL_BACKGROUND_CRITICAL) based on their positions in the application usage sorting linked list (LRU). If an application is frozen, it receives the corresponding onMemoryLevel callback when it is woken up. Therefore, you are advised not to perform time-consuming operations in this callback.
 
 **Example**
 
@@ -226,8 +276,9 @@ Enumerates the window modes in which a UIAbility can be displayed at startup. Yo
 | Name                       | Value| Description                |
 | ---                         | --- | ---                  |
 | WINDOW_MODE_FULLSCREEN      | 1   | Full-screen mode. It takes effect only on 2-in-1 devices and tablets. |
-| WINDOW_MODE_SPLIT_PRIMARY   | 100 | Primary screen (left screen in the case of horizontal orientation) in split-screen mode. It is valid only in intra-app redirection scenarios. It takes effect only on foldable devices and tablets.  |
-| WINDOW_MODE_SPLIT_SECONDARY | 101 | Secondary screen (right screen in the case of horizontal orientation) in split-screen mode. It is valid only in intra-app redirection scenarios. It takes effect only on foldable devices and tablets.  |
+| WINDOW_MODE_SPLIT_PRIMARY   | 100 | Supports setting the split-screen mode when an ability is started within the application, with the window on the left side of the split screen. This takes effect only on tablets, PCs/2-in-1 devices, and foldable devices that support a landscape home screen and are in the expanded state.   |
+| WINDOW_MODE_SPLIT_SECONDARY | 101 | Supports setting the split-screen mode when an ability is started within the application, with the window on the right side of the split screen. This takes effect only on tablets, PCs/2-in-1 devices, and foldable devices that support a landscape home screen and are in the expanded state.   |
+| WINDOW_MODE_SPLIT | 105 | Supports setting the split-screen mode when an ability is started within the application. The newly created window is displayed on the right side of the focused window by default. This takes effect only on foldable devices and tablets.<br>**Since:** 26.0.0   |
 
 **Example**
 
@@ -235,7 +286,7 @@ Enumerates the window modes in which a UIAbility can be displayed at startup. Yo
 import { UIAbility, StartOptions, Want, AbilityConstant } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let want: Want = {
+let targetWant: Want = {
   bundleName: 'com.example.myapplication',
   abilityName: 'EntryAbility'
 };
@@ -246,7 +297,7 @@ let option: StartOptions = {
 // Ensure that the context is obtained.
 export default class MyAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-    this.context.startAbility(want, option).then(() => {
+    this.context.startAbility(targetWant, option).then(() => {
       console.info('Succeed to start ability.');
     }).catch((error: BusinessError) => {
       console.error(`Failed to start ability with error: ${JSON.stringify(error)}`);
@@ -305,7 +356,7 @@ import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
 export default class MyAbility extends UIAbility {
   onSaveState(reason: AbilityConstant.StateType, wantParam: Record<string, Object>) {
     if (reason === AbilityConstant.StateType.CONTINUATION) {
-      console.info('Save the ability data when the ability continuation.');
+      console.info('Save the ability data when the ability is continuing.');
     }
     return AbilityConstant.OnSaveResult.ALL_AGREE;
   }
@@ -319,6 +370,8 @@ Enumerates the mission continuation states of the application. It is used in the
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
+**Device behavior difference:** This API does not take effect on Wearable devices that do not support distributed services.
 
 | Name          | Value      | Description                                                        |
 | ------------- | --------- | ------------------------------------------------------------ |
@@ -373,7 +426,7 @@ Enumerates the actions triggered when an application is closed by the user. You 
 
 | Name| Value| Description|
 | ------------- | --------- | ----------- |
-| TERMINATE_IMMEDIATELY | 0 | Executes the termination action immediately. This is the default behavior.|
+| TERMINATE_IMMEDIATELY | 0 | Immediately performs the termination action. |
 | CANCEL | 1 | Cancels the termination action.|
 
 **Example**

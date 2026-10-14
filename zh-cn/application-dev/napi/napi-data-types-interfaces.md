@@ -1,7 +1,7 @@
 # Node-API支持的数据类型和接口
 <!--Kit: ArkTS-->
 <!--Subsystem: arkcompiler-->
-<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Owner: @shilei123; @liudachuan3-->
 <!--Designer: @shilei123-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @k1ngqaquuu-->
@@ -463,8 +463,8 @@ Node-API接口在Node.js提供的原生模块基础上扩展，目前支持部�
 | napi_throw_range_error | 抛出一个带文本信息的ArkTS RangeError。 |
 | napi_is_error | 判断napi_value是否表示为一个error对象。 |
 | napi_create_error | 创建并获取一个带文本信息的ArkTS Error。 |
-| napi_create_type_error | 创建并获取一个带文本信息的ArkTS Error对象 |
-| napi_create_range_error | 创建并获取一个带文本信息的ArkTS Error对象。 |
+| napi_create_type_error | 创建并获取一个带文本信息的ArkTS TypeError对象。 |
+| napi_create_range_error | 创建并获取一个带文本信息的ArkTS RangeError对象。 |
 | napi_get_and_clear_last_exception | 获取并清除最近一次出现的异常。 |
 | napi_is_exception_pending | 判断是否出现了异常。 |
 | napi_fatal_error | 引发致命错误以立即终止进程。 |
@@ -480,7 +480,7 @@ Node-API接口在Node.js提供的原生模块基础上扩展，目前支持部�
 | napi_get_property | 获取给定Object的给定属性。 |
 | napi_has_property | 判断给定对象中是否存在给定属性。 |
 | napi_delete_property | 尝试从给定Object中删除给定key属性。 |
-| napi_has_own_property | 判断给定Object中是否有名为key的own property。 |
+| napi_has_own_property | 与napi_has_property行为一致，判断给定Object中是否存在给定属性。 |
 | napi_set_named_property | 对给定Object设置一个给定名称的属性。 |
 | napi_get_named_property | 获取给定Object中指定名称的属性。 |
 | napi_has_named_property | 判断给定Object中是否有给定名称的属性。 |

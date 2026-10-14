@@ -68,8 +68,8 @@ enum CryptoSm2CiphertextSpec_item
 | -- | -- |
 | CRYPTO_SM2_CIPHERTEXT_C1_X = 0 | 公钥x，也称为C1x。 |
 | CRYPTO_SM2_CIPHERTEXT_C1_Y = 1 | 公钥y，也称为C1y。 |
-| CRYPTO_SM2_CIPHERTEXT_C2 = 2 | 哈希值，也称为C2。 |
-| CRYPTO_SM2_CIPHERTEXT_C3 = 3 | 密文数据，也称为C3。 |
+| CRYPTO_SM2_CIPHERTEXT_C2 = 2 | 密文数据，也称为C2。 |
+| CRYPTO_SM2_CIPHERTEXT_C3 = 3 | 消息摘要（哈希值），也称为C3。 |
 
 
 ## 函数说明

@@ -103,7 +103,7 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 |  hardwareVersion | string |  否   | 否  |  硬件版本。          |
 |  softwareVersion | string |  否  | 否  |  软件版本。          |
 |  protocolType    | number |  否   | 否  |  协议类型。          |
-|  setupType       | number |  否   | 否  |  设备类型。          |
+|  setupType       | number |  否   | 否  |  设置类型。          |
 |  wiseDeviceId    | string |  否   | 否  |  已注册设备标识。        |
 |  wiseUserId      | string |  否   | 否  |  已注册用户标识。        |
 |  registerTime    | string |  否   | 否  |  注册时间。          |
@@ -130,7 +130,7 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 |  productId      | string  | 否 | 否   |  设备所属产品ID。          |
 |  subProductId   | string  | 否 | 是   |  设备所属产品子ID。默认为空。      |
 |  imageType      | string  | 否 | 否   |  图片类型。固定值为"ID"，表示产品实物图。 |
-|  specName       | string  | 否 | 否   |  图片规格名称。取值范围：<br />- lg：大图，尺寸为1016064px。<br />- sm：小图，尺寸为65536px。         |
+|  specName       | string  | 否 | 否   |  图片规格名称。取值范围：<br />- lg：大图（尺寸：1008×1008像素）。<br />- sm：小图（尺寸：256×256像素）。         |
 |  internalModel  | string  | 否 | 是   |  设备所属产品的内部型号。默认为空。        |
 
 ## DeviceIconInfo<sup>18+</sup>
@@ -148,7 +148,7 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 |  productId      | string  | 否 | 否   |  设备所属产品ID。          |
 |  subProductId   | string  | 否 | 是   |  设备所属产品子ID。默认为空字符。     |
 |  imageType      | string  | 否 | 否   |  图片类型。固定值为"ID"，表示产品实物图。        |
-|  specName       | string  | 否 | 否   |  图片规格名称。取值范围：<br />- lg：大图，尺寸为1016064px。<br />- sm：小图，尺寸为65536px。         |
+|  specName       | string  | 否 | 否   |  图片规格名称。取值范围：<br />- lg：大图（尺寸：1008×1008像素）。<br />- sm：小图（尺寸：256×256像素）。         |
 |  url            | string  | 否 | 否   |  URL。          |
 |  icon           | ArrayBuffer | 否| 否 | 图标。         |
 |  internalModel  | string  | 否 | 是   |  设备所属产品的内部型号。默认为空。         |
@@ -172,8 +172,6 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 用于分布式设备识别的结构体。
 
-**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC、ohos.permission.ACCESS_SERVICE_DM和ohos.permission.sec.ACCESS_UDID
-
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
 **设备行为差异**：该接口在不支持分布式业务的Wearable设备上调用会返回801错误码。
@@ -185,7 +183,7 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 | 名称       | 类型  | 只读 | 可选              | 说明          |
 |----------| ---- | ------ | --------- |-------------|
 | deviceId | string  | 否 | 否   | 应用获取的匿名化设备ID。 |
-| udid     | string  | 否 | 否   | 设备唯一标识。     |
+| udid     | string  | 否 | 否   | 设备唯一标识。**需要权限**：ohos.permission.DISTRIBUTED_DATASYNC、ohos.permission.ACCESS_SERVICE_DM和ohos.permission.sec.ACCESS_UDID。     |
 
 ## DeviceManager
 
@@ -832,7 +830,7 @@ getIdentificationByDeviceIds(deviceIds: Array&lt;string&gt;): Array&lt;DeviceIde
 
 根据设备ID查询设备标识。
 
-**需要权限**：ohos.permission.ACCESS_SERVICE_DM，ohos.permission.DISTRIBUTED_DATASYNC，ohos.permission.sec.ACCESS_UDID
+**需要权限**：ohos.permission.ACCESS_SERVICE_DM、ohos.permission.DISTRIBUTED_DATASYNC和ohos.permission.sec.ACCESS_UDID
 
 **系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
@@ -860,8 +858,8 @@ getIdentificationByDeviceIds(deviceIds: Array&lt;string&gt;): Array&lt;DeviceIde
 
 | 错误码ID    | 错误信息                                                                                                              |
 |----------|-------------------------------------------------------------------------------------------------------------------|
-| 201      | User permission verify failed.            |
-| 202      | The caller is not a system application.                                    |
+| 201      | Permission verification failed. The application does not have the permission required to call the API.            |
+| 202      | Permission verification failed. A non-system application calls a system API.                                    |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types;3. Parameter verification failed; |
 | 11600101 | Failed to execute the function.                                                                        |
 
@@ -981,7 +979,7 @@ getOsTypeByNetworkId(networkId: string): number
 
 **系统接口**：此接口为系统接口。
 
-**起始版本**：26.1.0
+**起始版本**：26.0.1
 
 **参数：**
 

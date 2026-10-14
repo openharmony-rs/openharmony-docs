@@ -218,6 +218,7 @@ static napi_value CloseResource(napi_env env, napi_callback_info info)
 ```ts
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { util } from '@kit.ArkTS';
 
 let providerName: string = 'testProviderName';
 let abilityName: string = 'CryptoExtensionAbility1';
@@ -225,36 +226,29 @@ let bundleName: string = 'com.example.cryptoapplication';
 // 资源信息，格式和内容由密钥管理扩展服务实现方定义
 let resourceInfo: string = 'vendor_defined_resource_info';
 
-function StringToUint8Array(str: string): Uint8Array {
-  const encoder = new util.TextEncoder();
-  return encoder.encodeInto(str);
+function stringToUint8Array(str: string): Uint8Array {
+  return new util.TextEncoder().encodeInto(str);
 }
 
 async function getResourceId(): Promise<string> {
   const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
     {
       tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_ABILITY_NAME,
-      value: StringToUint8Array(abilityName),
+      value: stringToUint8Array(abilityName),
     },
     {
       tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_BUNDLE_NAME,
-      value: StringToUint8Array(bundleName),
+      value: stringToUint8Array(bundleName),
     },
     {
       tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_RESOURCE_INFO,
-      value: StringToUint8Array(resourceInfo),
+      value: stringToUint8Array(resourceInfo),
     },
   ];
 
-  try {
-    const resourceId: string = await huksExternalCrypto.getResourceId(providerName, extProperties);
-    console.info(`promise: getResourceId success, resourceId: ${resourceId}`);
-    return resourceId;
-  } catch (error) {
-    const e = error as BusinessError;
-    console.error(`promise: getResourceId failed, errCode: ${e.code}, errMsg: ${e.message}`);
-    throw error;
-  }
+  const resourceId: string = await huksExternalCrypto.getResourceId(providerName, extProperties);
+  console.info(`promise: getResourceId success, resourceId: ${resourceId}`);
+  return resourceId;
 }
 ```
 
@@ -508,10 +502,10 @@ getErrorInfo接口返回值类型为[HuksExternalErrorInfo](../../reference/apis
 
 ```ts
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
+import { util } from '@kit.ArkTS';
 
-function StringToUint8Array(str: string): Uint8Array {
-  const encoder = new util.TextEncoder();
-  return encoder.encodeInto(str);
+function stringToUint8Array(str: string): Uint8Array {
+  return new util.TextEncoder().encodeInto(str);
 }
 
 async function testExtensionError(): Promise<void> {
@@ -530,13 +524,13 @@ async function testExtensionError(): Promise<void> {
   const params: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
     {
       tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_UKEY_PIN,
-      value: StringToUint8Array(pin)
+      value: stringToUint8Array(pin)
     }
   ];
   
   /* 3.验证PIN码失败后获取错误信息 */
   try {
-    await huksExternalCrypto.authUkeyPin(testResourceId, params);
+    await huksExternalCrypto.getUkeyPinAuthState(testResourceId, params);
   } catch (error) {
     const errorInfo = huksExternalCrypto.getErrorInfo();
     if (errorInfo.errno !== 0) {

@@ -13,7 +13,7 @@ typedef struct OH_CryptoKeyPair OH_CryptoKeyPair
 
 ## 概述
 
-定义密钥对结构体。
+密钥对结构体，表示密钥对。
 
 **起始版本：** 12
 

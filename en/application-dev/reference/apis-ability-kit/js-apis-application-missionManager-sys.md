@@ -4,8 +4,9 @@
 <!--Subsystem: Ability-->
 <!--Owner: @littlejerry1-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=1e2bfcc9b4f85d9126c23f626a7a73b4bb891227 translatedAt=2026-09-03T11:03:17.007Z pushedAt=2026-09-05T10:47:30.520Z -->
 
 The missionManager module provides APIs to lock, unlock, and clear missions, and switch a mission to the foreground.
 
@@ -41,13 +42,13 @@ Registers a listener to observe the mission status.
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | listener | [MissionListener](js-apis-inner-application-missionListener-sys.md) | Yes| Mission status listener to register.|
+  | listener | [MissionListener](js-apis-inner-application-missionListener-sys.md) | Yes | System mission listener used to listen for system mission status changes, including mission creation, destruction, and switching. |
 
 **Return value**
 
   | Type| Description|
   | -------- | -------- |
-  | number | Index of the mission status listener, which is created by the system and allocated when the listener is registered.|
+  | number | Index of the listener, which is created by the system and assigned when the system mission status listener is registered. It has a one-to-one correspondence with the listener. |
 
 **Example**
 
@@ -55,6 +56,7 @@ Registers a listener to observe the mission status.
 import missionManager from '@ohos.application.missionManager';
 
 console.info('registerMissionListener');
+// Register a system mission status listener.
 let listenerId = missionManager.registerMissionListener({
   onMissionCreated: (mission) => {
     console.info('--------onMissionCreated-------');
@@ -98,12 +100,13 @@ Unregisters a mission status listener. This API uses an asynchronous callback to
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | listenerId | number | Yes| Index of the mission status listener to unregister. It is returned by **registerMissionListener()**.|
-  | callback | AsyncCallback&lt;void&gt; | Yes| Callback used to return the result.|
+  | callback | AsyncCallback&lt;void&gt; | Yes | Callback for the unregistration result. If the unregistration is successful, err is undefined and data is undefined. If the unregistration fails, err is an error object. |
 
 **Example**
 
 ```ts
 import missionManager from '@ohos.application.missionManager';
+import { BusinessError } from '@ohos.base';
 
 console.info('registerMissionListener');
 let listenerId = missionManager.registerMissionListener({
@@ -130,8 +133,10 @@ let listenerId = missionManager.registerMissionListener({
   }
 });
 
+// Unregister a system mission status listener.
 missionManager.unregisterMissionListener(listenerId, (error) => {
-  console.error(`unregisterMissionListener fail, error: ${JSON.stringify(error)}`);
+  let err = error as BusinessError;
+  console.error(`unregisterMissionListener failed. Code: ${err.code}, message: ${err.message}.`);
 });
 ```
 
@@ -191,12 +196,13 @@ let listenerId = missionManager.registerMissionListener({
   }
 });
 
+// Unregister the system mission status listener.
 missionManager.unregisterMissionListener(listenerId)
   .then(() => {
     console.info(`UnregisterMissionListener success.`)
   })
   .catch((error: BusinessError) => {
-    console.error(`UnregisterMissionListener fail, error: ${JSON.stringify(error)}.`);
+    console.error(`unregisterMissionListener failed. Code: ${error.code}, message: ${error.message}.`);
   });
 ```
 
@@ -219,7 +225,7 @@ Obtains the information about a given mission. This API uses an asynchronous cal
   | -------- | -------- | -------- | -------- |
   | deviceId | string | Yes| Device ID. It is a null string by default for the local device.|
   | missionId | number | Yes| Mission ID.|
-  | callback | AsyncCallback&lt;[MissionInfo](js-apis-inner-application-missionInfo-sys.md)&gt; | Yes| Callback used to return the mission information obtained.|
+  | callback | AsyncCallback&lt;[MissionInfo](js-apis-inner-application-missionInfo-sys.md)&gt; | Yes | Callback invoked to return the mission information. If the operation is successful, err is undefined and data is the mission snapshot information. If the operation fails, err is an error object. |
 
 **Example**
 
@@ -228,6 +234,7 @@ Obtains the information about a given mission. This API uses an asynchronous cal
 
   let missionId: number = 0;
 
+  // Obtain information about the specified mission.
   missionManager.getMissionInfo('', missionId, (error, mission) => {
     if (error.code) {
       console.error(`getMissionInfo failed, error.code: ${error.code}, error.message: ${error.message}`);
@@ -277,6 +284,7 @@ Obtains the information about a given mission. This API uses a promise to return
 
   let testMissionId = 1;
   try {
+    // Obtain information about the specified mission.
     missionManager.getMissionInfo('', testMissionId).then((data) => {
       console.info(`getMissionInfo successfully. Data: ${JSON.stringify(data)}`);
     }).catch((error: BusinessError) => {
@@ -306,13 +314,14 @@ Obtains information about all missions. This API uses an asynchronous callback t
   | -------- | -------- | -------- | -------- |
   | deviceId | string | Yes| Device ID. It is a null string by default for the local device.|
   | numMax | number | Yes| Maximum number of missions whose information can be obtained.|
-  | callback | AsyncCallback&lt;Array&lt;[MissionInfo](js-apis-inner-application-missionInfo-sys.md)&gt;&gt; | Yes| Callback used to return the array of mission information obtained.|
+  | callback | AsyncCallback&lt;Array&lt;[MissionInfo](js-apis-inner-application-missionInfo-sys.md)&gt;&gt; | Yes | Callback invoked to return an array of mission information. If the operation is successful, err is undefined and data is the mission snapshot information. If the operation fails, err is an error object. |
 
 **Example**
 
   ```ts
   import missionManager from '@ohos.application.missionManager';
 
+  // Obtain all mission information.
   missionManager.getMissionInfos('', 10, (error, missions) => {
     if (error.code) {
       console.error(`getMissionInfos failed, error.code: ${error.code}, error.message: ${error.message}`);
@@ -356,6 +365,7 @@ Obtains information about all missions. This API uses a promise to return the re
   import { BusinessError } from '@ohos.base';
 
   try {
+    // Obtain all mission information.
     missionManager.getMissionInfos('', 10).then((data) => {
       console.info(`getMissionInfos successfully. Data: ${JSON.stringify(data)}`);
     }).catch((error: BusinessError) => {
@@ -385,24 +395,27 @@ Obtains the snapshot of a given mission. This API uses an asynchronous callback 
   | -------- | -------- | -------- | -------- |
   | deviceId | string | Yes| Device ID. It is a null string by default for the local device.|
   | missionId | number | Yes| Mission ID.|
-  | callback | AsyncCallback&lt;[MissionSnapshot](js-apis-inner-application-missionSnapshot-sys.md)&gt; | Yes| Callback used to return the snapshot information obtained.|
+  | callback | AsyncCallback&lt;[MissionSnapshot](js-apis-inner-application-missionSnapshot-sys.md)&gt; | Yes | Callback function used to return the mission snapshot information. If the operation is successful, err is undefined and data is the mission snapshot information. If the operation fails, err is an error object. |
 
 **Example**
 
   ```ts
   import missionManager from '@ohos.application.missionManager';
+  import { BusinessError } from '@ohos.base';
 
   let testMissionId = 2;
   try {
+    // Obtain the mission snapshot.
     missionManager.getMissionSnapShot('', testMissionId, (err, data) => {
       if (err) {
-        console.error(`getMissionSnapShot failed: ${err.message}`);
+        console.error(`getMissionSnapShot failed. Code: ${err.code}, message: ${err.message}.`);
       } else {
-        console.info(`getMissionSnapShot successfully: ${JSON.stringify(data)}`);
+        console.info(`getMissionSnapShot successfully. Data: ${JSON.stringify(data)}`);
       }
     });
   } catch (err) {
-    console.error(`getMissionSnapShot failed: ${err.message}`);
+    let error = err as BusinessError;
+    console.error(`getMissionSnapShot sync failed. Code: ${error.code}, message: ${error.message}.`);
   }
   ```
 
@@ -440,6 +453,7 @@ Obtains the snapshot of a given mission. This API uses a promise to return the r
 
   let testMissionId = 2;
   try {
+    // Obtain the mission snapshot.
     missionManager.getMissionSnapShot('', testMissionId).then((data) => {
       console.info(`getMissionSnapShot successfully. Data: ${JSON.stringify(data)}`);
     }).catch((error: BusinessError) => {
@@ -473,18 +487,21 @@ Locks a given mission. This API uses an asynchronous callback to return the resu
 
   ```ts
   import missionManager from '@ohos.application.missionManager';
+  import { BusinessError } from '@ohos.base';
 
   let testMissionId = 2;
   try {
+    // Lock the specified mission.
     missionManager.lockMission(testMissionId, (err, data) => {
       if (err) {
-        console.error(`lockMission failed: ${err.message}`);
+        console.error(`lockMission failed. Code: ${err.code}, message: ${err.message}.`);
       } else {
-        console.info(`lockMission successfully: ${JSON.stringify(data)}`);
+        console.info(`lockMission successfully. Data: ${JSON.stringify(data)}`);
       }
     });
   } catch (err) {
-    console.error(`lockMission failed: ${err.message}`);
+    let error = err as BusinessError;
+    console.error(`lockMission sync failed. Code: ${error.code}, message: ${error.message}.`);
   }
   ```
 
@@ -521,13 +538,15 @@ Locks a given mission. This API uses a promise to return the result.
 
   let testMissionId = 2;
   try {
+    // Lock the specified mission.
     missionManager.lockMission(testMissionId).then((data) => {
       console.info(`lockMission successfully. Data: ${JSON.stringify(data)}`);
     }).catch((error: BusinessError) => {
-      console.error(`lockMission failed. Cause: ${error.message}`);
+      console.error(`lockMission failed. Code: ${error.code}, message: ${error.message}.`);
     });
   } catch (error) {
-    console.error(`lockMission failed. Cause: ${error.message}`);
+    let err = error as BusinessError;
+    console.error(`lockMission sync failed. Code: ${err.code}, message: ${err.message}.`);
   }
   ```
 
@@ -555,18 +574,21 @@ Unlocks a given mission. This API uses an asynchronous callback to return the re
 
   ```ts
   import missionManager from '@ohos.application.missionManager';
+  import { BusinessError } from '@ohos.base';
 
   let testMissionId = 2;
   try {
+    // Unlock the specified mission.
     missionManager.unlockMission(testMissionId, (err, data) => {
       if (err) {
-        console.error(`unlockMission failed: ${err.message}`);
+        console.error(`unlockMission failed. Code: ${err.code}, message: ${err.message}.`);
       } else {
-        console.info(`unlockMission successfully: ${JSON.stringify(data)}`);
+        console.info(`unlockMission successfully. Data: ${JSON.stringify(data)}`);
       }
     });
   } catch (err) {
-    console.error(`unlockMission failed: ${err.message}`);
+    let error = err as BusinessError;
+    console.error(`unlockMission sync failed. Code: ${error.code}, message: ${error.message}.`);
   }
   ```
 
@@ -603,13 +625,15 @@ Unlocks a given mission. This API uses a promise to return the result.
 
   let testMissionId = 2;
   try {
+    // Unlock the specified mission.
     missionManager.unlockMission(testMissionId).then((data) => {
       console.info(`unlockMission successfully. Data: ${JSON.stringify(data)}`);
     }).catch((error: BusinessError) => {
-      console.error(`unlockMission failed. Cause: ${error.message}`);
+      console.error(`unlockMission failed. Code: ${error.code}, message: ${error.message}.`);
     });
   } catch (error) {
-    console.error(`unlockMission failed. Cause: ${error.message}`);
+    let err = error as BusinessError;
+    console.error(`unlockMission sync failed. Code: ${err.code}, message: ${err.message}.`);
   }
   ```
 
@@ -637,18 +661,21 @@ Clears a given mission, regardless of whether it is locked. This API uses an asy
 
   ```ts
   import missionManager from '@ohos.application.missionManager';
+  import { BusinessError } from '@ohos.base';
 
   let testMissionId = 2;
   try {
+    // Clear the specified mission.
     missionManager.clearMission(testMissionId, (err, data) => {
       if (err) {
-        console.error(`clearMission failed: ${err.message}`);
+        console.error(`clearMission failed. Code: ${err.code}, message: ${err.message}.`);
       } else {
-        console.info(`clearMission successfully: ${JSON.stringify(data)}`);
+        console.info(`clearMission successfully. Data: ${JSON.stringify(data)}`);
       }
     });
   } catch (err) {
-    console.error(`clearMission failed: ${err.message}`);
+    let error = err as BusinessError;
+    console.error(`clearMission sync failed. Code: ${error.code}, message: ${error.message}.`);
   }
   ```
 
@@ -685,13 +712,15 @@ Clears a given mission, regardless of whether it is locked. This API uses a prom
 
   let testMissionId = 2;
   try {
+    // Clear the specified mission.
     missionManager.clearMission(testMissionId).then((data) => {
       console.info(`clearMission successfully. Data: ${JSON.stringify(data)}`);
     }).catch((error: BusinessError) => {
-      console.error(`clearMission failed. Cause: ${error.message}`);
+      console.error(`clearMission failed. Code: ${error.code}, message: ${error.message}.`);
     });
   } catch (error) {
-    console.error(`clearMission failed. Cause: ${error.message}`);
+    let err = error as BusinessError;
+    console.error(`clearMission sync failed. Code: ${err.code}, message: ${err.message}.`);
   }
   ```
 
@@ -717,18 +746,21 @@ Clears all unlocked missions. This API uses an asynchronous callback to return t
 **Example**
 
   ```ts
-  import missionManager from '@ohos.application.missionManager'
+  import missionManager from '@ohos.application.missionManager';
+  import { BusinessError } from '@ohos.base';
 
   try {
+    // Clear all unlocked missions.
     missionManager.clearAllMissions(err => {
       if (err) {
-        console.error('clearAllMissions failed: ${err.message}');
+        console.error(`clearAllMissions failed: ${err.message}`);
       } else {
         console.info('clearAllMissions successfully.');
       }
     });
   } catch (err) {
-    console.error('clearAllMissions failed: ${err.message}');
+    let error = err as BusinessError;
+    console.error(`clearAllMissions sync failed. Code: ${error.code}, message: ${error.message}.`);
   }
   ```
 
@@ -758,13 +790,15 @@ Clears all unlocked missions. This API uses a promise to return the result.
   import { BusinessError } from '@ohos.base';
 
   try {
+    // Clear all unlocked missions.
     missionManager.clearAllMissions().then((data) => {
       console.info(`clearAllMissions successfully. Data: ${JSON.stringify(data)}`);
     }).catch((err: BusinessError) => {
-      console.error(`clearAllMissions failed: ${err.message}`);
+      console.error(`clearAllMissions failed. Code: ${err.code}, message: ${err.message}.`);
     });
   } catch (err) {
-    console.error(`clearAllMissions failed: ${err.message}`);
+    let error = err as BusinessError;
+    console.error(`clearAllMissions sync failed. Code: ${error.code}, message: ${error.message}.`);
   }
   ```
 
@@ -792,9 +826,11 @@ Switches a given mission to the foreground. This API uses an asynchronous callba
 
   ```ts
   import missionManager from '@ohos.application.missionManager';
+  import { BusinessError } from '@ohos.base';
 
   let testMissionId = 2;
   try {
+    // Switch the specified mission to the foreground.
     missionManager.moveMissionToFront(testMissionId, (err, data) => {
       if (err) {
         console.error(`moveMissionToFront failed: ${err.message}`);
@@ -803,7 +839,8 @@ Switches a given mission to the foreground. This API uses an asynchronous callba
       }
     });
   } catch (err) {
-    console.error(`moveMissionToFront failed: ${err.message}`);
+    let error = err as BusinessError;
+    console.error(`moveMissionToFront failed. Code: ${error.code}, message: ${error.message}.`);
   }
   ```
 
@@ -832,18 +869,21 @@ Switches a given mission to the foreground, with the startup parameters for the 
 
   ```ts
   import missionManager from '@ohos.application.missionManager';
+  import { BusinessError } from '@ohos.base';
 
   let testMissionId = 2;
   try {
+    // Switch the specified mission to the foreground and specify the window mode.
     missionManager.moveMissionToFront(testMissionId, { windowMode: 101 }, (err, data) => {
       if (err) {
-        console.error(`moveMissionToFront failed: ${err.message}`);
+        console.error(`moveMissionToFront failed. Code: ${err.code}, message: ${err.message}.`);
       } else {
-        console.info(`moveMissionToFront successfully: ${JSON.stringify(data)}`);
+        console.info(`moveMissionToFront successfully. Data: ${JSON.stringify(data)}`);
       }
     });
   } catch (err) {
-    console.error(`moveMissionToFront failed: ${err.message}`);
+    let error = err as BusinessError;
+    console.error(`moveMissionToFront sync failed. Code: ${error.code}, message: ${error.message}.`);
   }
   ```
 
@@ -865,7 +905,7 @@ Switches a given mission to the foreground, with the startup parameters for the 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | missionId | number | Yes| Mission ID.|
-  | options | [StartOptions](js-apis-app-ability-startOptions.md) | No| Startup parameters, which are used to specify the window mode and device ID for switching the mission to the foreground.|
+  | options | [StartOptions](js-apis-app-ability-startOptions.md) | No | Startup parameter options, used to specify the window mode and device ID when the mission is switched to the foreground. If not specified, the system default startup parameters are used. |
 
 **Return value**
 
@@ -881,6 +921,7 @@ Switches a given mission to the foreground, with the startup parameters for the 
 
   let testMissionId = 2;
   try {
+    // Switch the specified mission to the foreground.
     missionManager.moveMissionToFront(testMissionId).then((data) => {
       console.info(`moveMissionToFront successfully. Data: ${JSON.stringify(data)}`);
     }).catch((error: BusinessError) => {

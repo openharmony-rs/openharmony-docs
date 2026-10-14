@@ -48,6 +48,7 @@ import { insightIntentDriver } from '@kit.AbilityKit';
 | flags<sup>18+</sup> | number | 否 | 是 | 意图调用时，意图调用方给意图执行方授权的uris的[flags](js-apis-app-ability-wantConstant.md#flags)。 <br>**说明：**<br>该参数仅支持FLAG_AUTH_READ_URI_PERMISSION、FLAG_AUTH_WRITE_URI_PERMISSION、FLAG_AUTH_READ_URI_PERMISSION\|FLAG_AUTH_WRITE_URI_PERMISSION。|
 | userId<sup>23+</sup> | number | 否 | 是 | 目标意图所属的用户ID。<br>**说明：**<br>如果调用方应用的用户ID与目标意图所属的用户ID不同，则需要申请权限`ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS`。    |
 | deviceId | string | 否 | 是 | 连接的目标设备ID。<br>**说明：**<br>如果调用方应用的设备ID与目标意图所属的设备ID不同，则需要申请权限`ohos.permission.EXECUTE_DISTRIBUTED_INTENT`。<br>**起始版本：** 26.0.0    |
+| toolCallId | string | 否 | 是 | 工具调用ID，用于将本次意图执行与调用方的维测步骤进行关联。<br>**说明：**<br>调用方未传入该字段或传入空字符串时，意图执行方通过[InsightIntentContext.toolCallId](js-apis-app-ability-insightIntentContext-sys.md#属性)获取到的值为undefined。<br>**起始版本：** 26.2.0 |
 
 ## InsightIntentInfoFilter<sup>23+</sup>
 

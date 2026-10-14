@@ -1167,7 +1167,7 @@ struct MenuExample {
 
 ![preview-builder](figures/image-backgroundEffect.png)
 
-### Sample 13: Configuring Lift-Finger Interruption for a Shared Element Transition
+### Example 13: Configuring Lift-Finger Interruption for a Shared Element Transition
 
 This example demonstrates how to implement a shared element transition by setting the **previewAnimationOptions** property in [ContextMenuOptions](#contextmenuoptions10) for **bindContextMenu** and how to control whether lifting the finger after a long press can cancel the menu pop-up by setting **hoverScaleInterruption**.
 
@@ -1226,7 +1226,7 @@ struct Index {
 
 ![hoverScaleInterruption](figures/hoverScaleInterruption.gif)
 
-### Sample 14: Setting the Radius of the Rounded Corners of the Preview Image Border
+### Example 14: Setting the Radius of the Rounded Corners of the Preview Image Border
 
 This example demonstrates how to implement the function using **bindContextMenu** with [responseType](ts-appendix-enums.md#responsetype8).LongPress set. In addition, the [MenuPreviewMode](#menupreviewmode11) type of the **preview** property in [ContextMenuOptions](#contextmenuoptions10) is set to determine the menu preview mode. **previewBorderRadius** is set to implement the radius of the rounded corners of the preview image.
 
@@ -1273,7 +1273,7 @@ struct Index {
 
 ![hoverScaleInterruption](figures/menuPreviewBorderRadius.jpg)
 
-### Sample 15: Configuring Lifecycle Callbacks for bindMenu
+### Example 15: Configuring Lifecycle Callbacks for bindMenu
 
 This sample shows how to configure lifecycle callbacks for **bindMenu**<sup>11+</sup>.
 
@@ -1493,7 +1493,7 @@ struct Index {
 
 ![bindMenu-CustomBuilder](figures/bindMenuWithCustomBuilder.gif)
 
-### Sample 19: Displaying Different Menus Based on the Trigger Mode
+### Example 19: Displaying Different Menus Based on the Trigger Mode
 
 This example demonstrates how to bind a menu to the target component by passing **CustomBuilderT\<ResponseType>** to [bindContextMenuWithResponse](#bindcontextmenuwithresponse23). The component returns the mode of triggering menu display in the UI function. You can implement differentiated display based on the returned trigger mode.
 
@@ -1684,7 +1684,7 @@ struct Index {
 
 ![anchorPositionMenu](figures/anchorPositionMenu.gif)
 
-### Sample 22: Setting the Maximum Height of a Menu
+### Example 22: Setting the Maximum Height of a Menu
 
 This sample shows how to use the **maxHeight** attribute in [ContextMenuOptions](#contextmenuoptions10) to set the maximum height of a menu.
 
@@ -1792,7 +1792,9 @@ struct Alone {
 
 ### Example 24: Setting the System Material of a Menu
 
-This example sets the system material of a menu by setting the **systemMaterial** attribute in [ContextMenuOptions](#contextmenuoptions10).
+This example uses the systemMaterial attribute in [ContextMenuOptions](#contextmenuoptions10) to set the system material of the component, thereby achieving the immersive light effect for the menu.
+
+The immersive light effect of the component will be automatically adjusted based on the device computing power and the immersive light effect set by the user in the system. You do not need to perform additional adaptation.
 
 The **systemMaterial** attribute is added to **ContextMenuOptions** as of API version 26.0.0.
 
@@ -1822,17 +1824,18 @@ struct Index {
     }
     .height('100%')
     .width('100%')
-    .backgroundColor(Color.Gray)
+    // Replace it with the actual resource file.
+    .backgroundImage($r("app.media.img"))
   }
 }
 ```
 Menu without system material
 
-![menuWithoutNewMaterial](figures/menuWithoutNewMaterial.PNG)
+<!--Del--> <!--DelEnd-->
 
 Menu with system material
 
-![menuNewMaterial](figures/menuNewMaterial.PNG)
+<!--Del--> <!--DelEnd-->
 
 ### Example 25: Setting a Grid Menu Using gridStyle
 

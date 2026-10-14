@@ -6,8 +6,9 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=627767fa3527b3e4ea03a35d3df7c7dd0cac695b translatedAt=2026-09-02T11:23:13.143Z pushedAt=2026-09-03T02:00:26.696Z -->
 
-**@Param** is used in state management V2 to receive external input and implement unidirectional data synchronization between parent and child components. This is applicable to scenarios where a parent component needs to pass state data to its child component in a unidirectional manner. It simplifies communication between components and ensures a clear data flow direction. Variables decorated with **@Param** cannot be directly modified in a component. If a child component needs to synchronize data to its parent component, use **@Param** together with **@Event**.
+**@Param** is used in [state management V2](../../../ui/state-management/arkts-state-management-overview.md#state-management-v2) to receive external input and implement unidirectional data synchronization between parent and child components. This is applicable to scenarios where a parent component needs to pass state data to its child component in a unidirectional manner. It simplifies communication between components and ensures a clear data flow direction. Variables decorated with **@Param** cannot be directly modified in a component. If a child component needs to synchronize data to its parent component, use **@Param** together with [@Event](./ts-state-management-event.md).
 
 For details, see [@Param Decorator: Inputting External Parameters to Components](../../../ui/state-management/arkts-new-param.md).
 
@@ -58,3 +59,4 @@ struct Index {
   }
 }
 ```
+

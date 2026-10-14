@@ -11,7 +11,7 @@
 
 Declares the APIs for implementing application access control.
 
-**Library**: ability_access_control.so
+**Library**: libability_access_control.so
 
 **File to include**: <accesstoken/ability_access_control.h>
 

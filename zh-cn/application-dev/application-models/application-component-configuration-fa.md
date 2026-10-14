@@ -33,74 +33,74 @@
 
 ### 入口图标和标签配置
 
-1.入口图标和标签配置方法
+1. 入口图标和标签配置方法
 
-FA模型的入口图标和标签是Page类型的Ability配置的icon和label。
+   FA模型的入口图标和标签是Page类型的Ability配置的icon和label。
 
-PageAbility的图标和标签配置请参见[PageAbility组件配置](pageability-configuration.md)。需在config.json文件的abilities标签下做如下配置：
-* 配置icon字段，标签值为资源文件的索引。图标需要在配置DevEco Studio的资源文件中，路径为/resources/base/media。取值示例：$media:ability_icon。
-* 配置label字段，标签值为资源文件的索引，标识Ability对用户显示的名称。取值可以是Ability名称，也可以是对该名称的资源索引，以支持多语言。
+   PageAbility的图标和标签配置请参见[PageAbility组件配置](pageability-configuration.md)。需在config.json文件的abilities标签下做如下配置：
+     * 配置icon字段，标签值为资源文件的索引。图标需要在配置DevEco Studio的资源文件中，路径为/resources/base/media。取值示例：$media:ability_icon。
+     * 配置label字段，标签值为资源文件的索引，标识Ability对用户显示的名称。取值可以是Ability名称，也可以是对该名称的资源索引，以支持多语言。
 
-如果在该PageAbility的skills属性中，actions的取值包含 "action.system.home"，entities取值中包含"entity.system.home"，则该Ability的icon和label将同时作为应用的icon和label。如果存在多个符合条件的Ability，则取位置靠前的Ability的icon和label作为应用的icon和label。图标和标签配置可以参考[abilities标签说明](../quick-start/module-structure.md)。
+   如果在该PageAbility的skills属性中，actions的取值包含 "action.system.home"，entities取值中包含"entity.system.home"，则该Ability的icon和label将同时作为应用的icon和label。如果存在多个符合条件的Ability，则取位置靠前的Ability的icon和label作为应用的icon和label。图标和标签配置可以参考[abilities标签说明](../quick-start/module-structure.md)。
 
-```json
-{
-  "module": {
-    "abilities": [
-      {
-        "skills": [
-          {
-            "entities": [
-              "entity.system.home"
-            ],
-            "actions": [
-              "action.system.home"
-            ]
-          }
-        ],
-        "orientation": "unspecified",
-        "formsEnabled": false,
-        "name": ".MainAbility",
-        "srcLanguage": "ets",
-        "srcPath": "MainAbility",
-        "icon": "$media:icon",
-        "description": "$string:MainAbility_desc",
-        "label": "$string:MainAbility_label",
-        "type": "page",
-        "visible": true,
-        "launchType": "singleton"
-      }
-    ]
-  }
-}
-```
+   ```json
+   {
+     "module": {
+       "abilities": [
+         {
+           "skills": [
+             {
+               "entities": [
+                 "entity.system.home"
+               ],
+               "actions": [
+                 "action.system.home"
+               ]
+             }
+           ],
+           "orientation": "unspecified",
+           "formsEnabled": false,
+           "name": ".MainAbility",
+           "srcLanguage": "ets",
+           "srcPath": "MainAbility",
+           "icon": "$media:icon",
+           "description": "$string:MainAbility_desc",
+           "label": "$string:MainAbility_label",
+           "type": "page",
+           "visible": true,
+           "launchType": "singleton"
+         }
+       ]
+     }
+   }
+   ```
 
-2.入口图标和标签管控规则
+2. 入口图标和标签管控规则
 
-系统对无图标应用实施严格管控，防止一些恶意应用故意配置无入口图标，导致用户找不到软件所在的位置，无法操作卸载应用，在一定程度上保证用户终端设备的安全。
+   系统对无图标应用实施严格管控，防止一些恶意应用故意配置无入口图标，导致用户找不到软件所在的位置，无法操作卸载应用，在一定程度上保证用户终端设备的安全。
 
-如果应用确需隐藏入口图标，需要配置AllowAppDesktopIconHide应用特权<!--Del-->，具体配置方式参考[应用特权配置指南](../../device-dev/subsystems/subsys-app-privilege-config-guide.md)<!--DelEnd-->。详细的入口图标及入口标签的显示规则如下。
+   如果应用确需隐藏入口图标，需要配置AllowAppDesktopIconHide应用特权<!--Del-->，具体配置方式参考[应用特权配置指南](../../device-dev/subsystems/subsys-app-privilege-config-guide.md)<!--DelEnd-->。详细的入口图标及入口标签的显示规则如下。
 
-* HAP中包含PageAbility
-  * 在config.json配置文件的abilities标签中设置了入口图标
-    * 该应用没有隐藏图标的特权
-      * 系统将使用该PageAbility配置的icon作为入口图标，并显示在桌面上。用户点击该图标，页面跳转到该PageAbility首页。
-      * 系统将使用该PageAbility配置的label作为入口标签，并显示在桌面上，如果没有配置label，系统将使用应用的bundleName作为入口标签，并显示在桌面上。
-    * 该应用具有隐藏图标的特权
-      * 桌面应用查询时不返回应用信息，不会在桌面上显示对应的入口图标和标签。
-  * 在config.json配置文件的abilities标签中未设置入口图标
-    * 该应用没有隐藏图标的特权
-      * 系统将使用系统资源中的icon作为入口图标，并显示在桌面上。用户点击该图标，页面跳转到应用管理中对应的应用详情页面。
-      * 系统将使用该PageAbility配置的label作为入口标签，并显示在桌面上，如果没有配置label，系统将使用应用的bundleName作为入口标签，并显示在桌面上。
-    * 该应用具有隐藏图标的特权
+   * HAP中包含PageAbility
+    * 在config.json配置文件的abilities标签中设置了入口图标
+      * 该应用没有隐藏图标的特权
+        * 系统将使用该PageAbility配置的icon作为入口图标，并显示在桌面上。用户点击该图标，页面跳转到该PageAbility首页。
+        * 系统将使用该PageAbility配置的label作为入口标签，并显示在桌面上，如果没有配置label，系统将使用应用的bundleName作为入口标签，并显示在桌面上。
+      * 该应用具有隐藏图标的特权
+        * 桌面应用查询时不返回应用信息，不会在桌面上显示对应的入口图标和标签。
+    * 在config.json配置文件的abilities标签中未设置入口图标
+      * 该应用没有隐藏图标的特权
+        * 系统将使用系统资源中的icon作为入口图标，并显示在桌面上。用户点击该图标，页面跳转到应用管理中对应的应用详情页面。
+        * 系统将使用该PageAbility配置的label作为入口标签，并显示在桌面上，如果没有配置label，系统将使用应用的bundleName作为入口标签，并显示在桌面上。
+      * 该应用具有隐藏图标的特权
         * 桌面应用查询时不返回应用信息，不会在桌面上显示对应的入口图标和标签。
 
-* HAP中不包含PageAbility
-  * 该应用没有隐藏图标的特权
-    * 系统将使用系统资源中的icon作为入口图标，并显示在桌面上。用户点击该图标，页面跳转到应用管理中对应的应用详情页面。
-    * 系统将使用应用的bundleName作为入口标签，并显示在桌面上。
-  * 该应用具有隐藏图标的特权
-    * 桌面应用查询时不返回应用信息，不会在桌面上显示对应的入口图标和标签。
+   * HAP中不包含PageAbility
+    * 该应用没有隐藏图标的特权
+      * 系统将使用系统资源中的icon作为入口图标，并显示在桌面上。用户点击该图标，页面跳转到应用管理中对应的应用详情页面。
+      * 系统将使用应用的bundleName作为入口标签，并显示在桌面上。
+    * 该应用具有隐藏图标的特权
+      * 桌面应用查询时不返回应用信息，不会在桌面上显示对应的入口图标和标签。
 
 ## 应用版本声明配置
 

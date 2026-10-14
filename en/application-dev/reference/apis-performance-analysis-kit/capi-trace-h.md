@@ -923,7 +923,7 @@ int32_t OH_HiTrace_RegisterTraceListener(OH_HiTrace_TraceEventListener callback)
 
 **Description**
 
-Registers a callback to notify whether the application trace capture is enabled. This API uses a synchronous callback to return the result.
+Registers a callback to notify whether the application trace capture is enabled. This API uses an asynchronous callback to return the result.
 
 After the registration is successful, the callback is executed immediately. Subsequent callbacks are executed when the application trace capture status changes.
 

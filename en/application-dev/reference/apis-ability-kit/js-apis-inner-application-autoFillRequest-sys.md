@@ -4,16 +4,17 @@
 <!--Subsystem: Ability-->
 <!--Owner: @hanchen45; @Luobniz21-->
 <!--Designer: @ccllee1-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=e2c3267fc728379ed661f6395560cc18d085c54a translatedAt=2026-09-03T11:47:10.270Z pushedAt=2026-09-05T10:47:30.694Z -->
 
 The module provides page data and callbacks when a callback is triggered for the AutoFillExtensionAbility.
 
 > **NOTE**
-> 
+>
 > The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> The APIs provided by this module are system APIs.
-> The APIs of this module can be used only in the stage model.
+>
+> This page contains only the system APIs of this module. For details about other public APIs, see [AutoFillRequest](js-apis-inner-application-autoFillRequest.md).
 
 ## Modules to Import
 
@@ -27,23 +28,12 @@ Defines the information about an auto-fill request.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.AbilityCore
 
+**Model restriction:** This API can be used only in the stage model.
+
 | Name       | Type                | Read-Only| Optional| Description                                                        |
 | ----------- | -------------------- | ---- | ---- | ------------------------------------------------------------ |
-| type        | [AutoFillType](js-apis-inner-application-autoFillType-sys.md)       | No  | No  | Type of the element to be automatically filled in.         |
-| viewData    | [ViewData](js-apis-inner-application-viewData-sys.md)               | No  | No  | Page data.             |
 | customData<sup>13+</sup>    | [CustomData](js-apis-inner-application-customData-sys.md)               | No  | No  | Custom data.            |
 | isPopup<sup>12+</sup>    | boolean               | No  | No  | Whether a dialog box is displayed for the auto-fill request.<br>**true**: A dialog box is displayed<br>**false**: A modal window is displayed             |
-| triggerType<sup>23+</sup> | [AutoFillTriggerType](js-apis-inner-application-autoFillTriggerType-sys.md) | No| Yes| Trigger type for the autofill service.|
-
-## SaveRequest
-
-Defines the information about an auto-saving request.
-
-**System capability**: SystemCapability.Ability.AbilityRuntime.AbilityCore
-
-| Name       | Type                | Read-Only| Optional| Description                                                        |
-| ----------- | -------------------- | ---- | ---- | ------------------------------------------------------------ |
-| viewData    | [ViewData](js-apis-inner-application-viewData-sys.md)               | No  | No  | Page data.             |
 
 ## UpdateRequest<sup>12+</sup>
 
@@ -51,9 +41,11 @@ Defines the information about an auto-update request.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.AbilityCore
 
+**Model restriction:** This API can be used only in the stage model.
+
 | Name       | Type                | Read-Only| Optional| Description                                                        |
 | ----------- | -------------------- | ---- | ---- | ------------------------------------------------------------ |
-| viewData    | [ViewData](js-apis-inner-application-viewData-sys.md)               | No  | No  | Page data.             |
+| viewData    | [ViewData](js-apis-inner-application-viewData-sys.md)               | No   | No   | Page data, including the node information, field attributes, corresponding values, and other structural information of the page.    |
 
 ## FillResponse
 
@@ -61,13 +53,17 @@ Defines the information about the response to an auto-fill request.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.AbilityCore
 
+**Model restriction:** This API can be used only in the stage model.
+
 | Name       | Type                | Read-Only| Optional| Description                                                        |
 | ----------- | -------------------- | ---- | ---- | ------------------------------------------------------------ |
-| viewData    | [ViewData](js-apis-inner-application-viewData-sys.md)               | No  | No  | Page data.             |
+| viewData    | [ViewData](js-apis-inner-application-viewData-sys.md)               | No   | No   | Page data, including structural information such as the node information, field attributes, and corresponding values of the page.    |
 
 ## FillRequestCallback
 
 Implements callbacks for an auto-fill request, which is used to automatically fill in or generate a password. The callbacks can be used to notify the client of the success or failure of the request.
+
+**Model restriction:** This API can be used only in the stage model.
 
 ### onSuccess
 
@@ -77,11 +73,13 @@ Called when an auto-fill request is successfully processed.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.AbilityCore
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Parameters**
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | ------------------------------ |
-| response | [FillResponse](#fillresponse)  | Yes| Information about the response to the auto-fill request.|
+| response | [FillResponse](#fillresponse)  | Yes | Auto-fill response information, which contains the filled page data and related status information, and is used to notify the client of the result of the auto-fill operation. |
 
 **Error codes**
 
@@ -106,6 +104,7 @@ class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
     callback: autoFillManager.FillRequestCallback) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'autofill onFillRequest');
     try {
+      // Initialize LocalStorage.
       let storageData: Record<string, string | autoFillManager.FillRequestCallback | autoFillManager.ViewData> = {
         'fillCallback': callback,
         'message': 'AutoFill Page',
@@ -134,6 +133,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 @Component
 struct AutoFillPage {
   storage: LocalStorage | undefined = this.getUIContext().getSharedLocalStorage();
+  // Pass fillCallback and viewData to LocalStorage through the onFillRequest callback of AutoFillExtensionAbility.
   fillCallback: autoFillManager.FillRequestCallback | undefined =
     this.storage?.get<autoFillManager.FillRequestCallback>('fillCallback');
   viewData: autoFillManager.ViewData | undefined = this.storage?.get<autoFillManager.ViewData>('viewData');
@@ -175,6 +175,8 @@ onFailure(): void
 Called when an auto-fill request fails to be processed.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**Model restriction:** This API can be used only in the stage model.
 
 **Error codes**
 
@@ -226,6 +228,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 @Component
 struct AutoFillPage {
   storage: LocalStorage | undefined = this.getUIContext().getSharedLocalStorage();
+  // Pass fillCallback to LocalStorage through the onFillRequest callback of AutoFillExtensionAbility.
   fillCallback: autoFillManager.FillRequestCallback | undefined =
     this.storage?.get<autoFillManager.FillRequestCallback>('fillCallback');
   
@@ -254,7 +257,7 @@ struct AutoFillPage {
 }
 ```
 
-### onCancel<sup>11+</sup>
+### onCancel
 
 onCancel(fillContent?: string): void
 
@@ -262,11 +265,13 @@ Called when an auto-fill request is canceled.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.AbilityCore
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Parameters**
 
 | Name                   | Type  | Mandatory| Description                |
 | ------------------------- | ------ | ---- | -------------------- |
-| fillContent | string | No  | Content returned to the input method framework when the auto-fill request is canceled.|
+| fillContent | string | No | Fill content returned to the input method framework after notification auto-fill is canceled. If this parameter is not passed or is undefined, an empty string is returned. |
 
 **Error codes**
 
@@ -275,7 +280,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message|
 | ------- | -------------------------------- |
 | 202  | Permission denied, non-system app called system api. |
-| 401  | Parameter error. Possible causes: 1. The input parameter is not valid parameter;2. Mandatory parameters are left unspecified. |
+| 401  | Parameter error. Possible causes: 1. The input parameter is not valid parameter;2. Mandatory parameters are left unspecified. <br>Applicable version: 12+|
 | 16000050 | Internal error. |
 
 **Example**
@@ -319,13 +324,14 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 @Component
 struct AutoFillPage {
   storage: LocalStorage | undefined = this.getUIContext().getSharedLocalStorage();
+  // fillCallback is passed into LocalStorage by the onFillRequest callback of AutoFillExtensionAbility.
   fillCallback: autoFillManager.FillRequestCallback | undefined =
     this.storage?.get<autoFillManager.FillRequestCallback>('fillCallback');
 
   build() {
     Row() {
       Column() {
-        Text('Hello World')
+        Text('AutoFill Page')
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
       }
@@ -354,6 +360,8 @@ setAutoFillPopupConfig(autoFillPopupConfig: AutoFillPopupConfig ): void
 Sets the size and position of an auto-fill pop-up.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**Model restriction:** This API can be used only in the stage model.
 
 **Parameters**
 
@@ -435,6 +443,7 @@ export default class AutoFillAbility extends AutoFillExtensionAbility {
     console.info(`testTag. Get fill request type: ${JSON.stringify(request.type)}.`);
 
     try {
+      // Initialize LocalStorage to store the save callback.
       let localStorageData: Record<string, string | autoFillManager.FillRequestCallback | autoFillManager.ViewData | autoFillManager.AutoFillType> =
         {
           'message': 'AutoFill Page',
@@ -464,6 +473,7 @@ export default class AutoFillAbility extends AutoFillExtensionAbility {
     callback: autoFillManager.SaveRequestCallback) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'autofill onSaveRequest');
     try {
+      // Initialize LocalStorage to store the save callback.
       let localStorageData: Record<string, string | autoFillManager.SaveRequestCallback> = {
         'message': 'AutoFill Page',
         'saveCallback': callback
@@ -485,6 +495,8 @@ export default class AutoFillAbility extends AutoFillExtensionAbility {
 
 Implements callbacks for an automatic or a manual saving request.
 
+**Model restriction:** This API can be used only in the stage model.
+
 ### SaveRequestCallback.onSuccess
 
 onSuccess(): void
@@ -492,6 +504,8 @@ onSuccess(): void
 Called when a saving request is successfully processed.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**Model restriction:** This API can be used only in the stage model.
 
 **Error codes**
 
@@ -543,6 +557,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 @Component
 struct SavePage {
   storage: LocalStorage | undefined = this.getUIContext().getSharedLocalStorage();
+  // Pass saveCallback into LocalStorage via the onSaveRequest callback of AutoFillExtensionAbility.
   saveCallback: autoFillManager.SaveRequestCallback | undefined =
     this.storage?.get<autoFillManager.SaveRequestCallback>('saveCallback');
 
@@ -579,6 +594,8 @@ Called when a saving request fails to be processed.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.AbilityCore
 
+**Model restriction:** This API can be used only in the stage model.
+
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Ability Error Codes](errorcode-ability.md).
@@ -629,6 +646,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 @Component
 struct SavePage {
   storage: LocalStorage | undefined = this.getUIContext().getSharedLocalStorage();
+  // Pass saveCallback into LocalStorage via the onSaveRequest callback of AutoFillExtensionAbility.
   saveCallback: autoFillManager.SaveRequestCallback | undefined =
     this.storage?.get<autoFillManager.SaveRequestCallback>('saveCallback');
 

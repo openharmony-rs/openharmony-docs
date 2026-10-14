@@ -1,14 +1,11 @@
 # Color Effect
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @CCFFWW-->
-<!--Designer: @CCFFWW-->
+<!--Owner: @hehongyang3-->
+<!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=da3a5a40e76f5686f03b0be3e550b8f8145d6e87 translatedAt=2026-07-29T12:43:07.473Z pushedAt=2026-07-30T02:08:44.443Z -->
-
-## Color
+<!-- md-trans-meta sourceCommit=542a3d52d73f91f27c1d27c45ce87a23dc4f174e translatedAt=2026-09-21T02:39:15.959Z pushedAt=2026-09-21T09:34:05.535Z -->
 
 You can use the color gradient APIs to apply a background color gradient effect to a component.
 
@@ -18,7 +15,9 @@ You can use the color gradient APIs to apply a background color gradient effect 
 | [sweepGradient](../reference/apis-arkui/arkui-ts/ts-universal-attributes-gradient-color.md#sweepgradient) | Applies a sweep gradient effect to the component.|
 | [radialGradient](../reference/apis-arkui/arkui-ts/ts-universal-attributes-gradient-color.md#radialgradient) | Applies a radial gradient effect to the component.|
 
+
 ## Applying Linear Gradient Effect
+
 
   <!-- @[Linear_Gradient_Effect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GradientEffect/entry/src/main/ets/homePage/LinearGradientEffect.ets) -->
 
@@ -111,7 +110,9 @@ You can use the color gradient APIs to apply a background color gradient effect 
 
 ![color-linear-gradient](figures/color-linear-gradient.png)
 
+
 ## Applying Sweep Gradient Effect
+
 
   <!-- @[Direction_Gradient_Effect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GradientEffect/entry/src/main/ets/homePage/DirectionGradientEffect.ets) -->  
 
@@ -134,7 +135,7 @@ You can use the color gradient APIs to apply a background color gradient effect 
             center: [50, 50], // Center point of the sweep gradient.
             start: 0, // Start point of the sweep gradient.
             end: 360, // End point of the sweep gradient.
-            repeating: true, // The gradients are repeated.
+            repeating: true, // The gradient effect repeats.
             colors: [
               // Based on the center point, start point, and end point settings,
               // the color changes from color stop 1 to color stop 2 in the area within angles from 0 to 0.125;
@@ -226,7 +227,9 @@ You can use the color gradient APIs to apply a background color gradient effect 
 
 ![color-sweep-gradient](figures/color-sweep-gradient.png)
 
+
 ## Applying Radial Gradient Effect
+
 
   <!-- @[Radial_Gradient_Effect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/GradientEffect/entry/src/main/ets/homePage/RadialGradientEffect.ets) -->
 

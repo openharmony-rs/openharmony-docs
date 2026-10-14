@@ -891,7 +891,35 @@ Allows an MDM application to add widgets to the home screen.
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
-**Since**: 26.1.0
+**Since**: 26.0.1
+
+## ohos.permission.vehicle.GET_DRIVING_HABIT
+ 
+Allows an application to obtain the driving habits of the driver under the current login account.
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Certificate-based authorization**: true
+ 
+**Supported devices**: cars
+ 
+**Valid since**: 26.0.1
+ 
+## ohos.permission.vehicle.MANAGE_DRIVING_HABIT
+ 
+Allows an application to manage the driving habits of the driver under the current login account.
+ 
+**Permission level**: system_basic
+ 
+**Authorization mode**: system_grant
+ 
+**Certificate-based authorization**: true
+ 
+**Supported devices**: cars
+ 
+**Valid since**: 26.0.1
 
 ## ohos.permission.ENTERPRISE_ENCRYPT_BLOCK_DEVICE
 
@@ -908,4 +936,21 @@ Allows an MDM application to mount and unmount the encrypted partition and swap 
 
 **Supported devices**: PCs/2-in-1 devices
 
-**Since**: 26.1.0
+**Since**: 26.0.1
+
+## ohos.permission.ENTERPRISE_EXTERNAL_READ
+
+Allows an MDM application to copy large files from USB drives during the OOBE phase.
+
+<!--RP1--><!--RP1End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+<!--Del-->
+**Certificate-based authorization**: true<!--DelEnd-->
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.0.1

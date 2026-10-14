@@ -6,7 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=574e1b97c419a831e3ff5b620b1254fe667a5306 translatedAt=2026-06-12T02:24:18.955Z pushedAt=2026-06-12T08:24:27.880Z -->
+<!-- md-trans-meta sourceCommit=6ff193a1258b05452b4935e34a160adf6db64d7a translatedAt=2026-09-11T01:13:13.489Z pushedAt=2026-09-11T03:39:12.879Z -->
 
 The **keyCode** module provides key codes of key devices, including keyboards, CDs, and gamepads.
 
@@ -33,12 +33,12 @@ Enumerates the key codes.
 | KEYCODE_HOME                     |  1 | Function (Home) key                 |
 | KEYCODE_BACK                     |  2 | Back key                        |
 | KEYCODE_SEARCH<sup>13+</sup> | 9 | Search key|
-| KEYCODE_MEDIA_PLAY_PAUSE        |  10 | Play/Pause key<br>Difference between this key and **KEYCODE_PLAYPAUSE**:<br>**KEYCODE_PLAYPAUSE** is an earlier definition, while **KEYCODE_MEDIA_PLAY_PAUSE** is designed for modern media key devices.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                 |
-| KEYCODE_MEDIA_STOP               |  11 | Media: Stop Key<br>**Atomic service API**: This API can be used in atomic services since API version 12.                    |
-| KEYCODE_MEDIA_NEXT               |  12 | Next key<br>**Atomic service API**: This API can be used in atomic services since API version 12.                   |
-| KEYCODE_MEDIA_PREVIOUS           |  13 | Previous key<br>**Atomic service API**: This API can be used in atomic services since API version 12.                   |
-| KEYCODE_MEDIA_REWIND            |  14 | Rewind key<br>**Atomic service API**: This API can be used in atomic services since API version 12.                    |
-| KEYCODE_MEDIA_FAST_FORWARD       |  15 | Fast forward key<br>**Atomic service API**: This API can be used in atomic services since API version 12.                    |
+| KEYCODE_MEDIA_PLAY_PAUSE        |  10 | Media key: Play/Pause key<br>Difference between this key and **KEYCODE_PLAYPAUSE**:<br>**KEYCODE_PLAYPAUSE** is an earlier definition, while **KEYCODE_MEDIA_PLAY_PAUSE** is designed for modern media key devices.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                 |
+| KEYCODE_MEDIA_STOP               |  11 | Media key: Stop key<br>**Atomic service API**: This API can be used in atomic services since API version 12.                    |
+| KEYCODE_MEDIA_NEXT               |  12 |Media key:  Next key<br>**Atomic service API**: This API can be used in atomic services since API version 12.                   |
+| KEYCODE_MEDIA_PREVIOUS           |  13 | Media key: Previous key<br>**Atomic service API**: This API can be used in atomic services since API version 12.                   |
+| KEYCODE_MEDIA_REWIND            |  14 | Media key: Rewind key<br>**Atomic service API**: This API can be used in atomic services since API version 12.                    |
+| KEYCODE_MEDIA_FAST_FORWARD       |  15 | Media key: Fast forward key<br>**Atomic service API**: This API can be used in atomic services since API version 12.                    |
 | KEYCODE_VOLUME_UP                |  16 | Volume Up key                      |
 | KEYCODE_VOLUME_DOWN              |  17 | Volume Down key                      |
 | KEYCODE_POWER                    |  18 | Power key                       |
@@ -110,7 +110,7 @@ Enumerates the key codes.
 | KEYCODE_RIGHT_BRACKET            |  2060 | Key ]                      |
 | KEYCODE_BACKSLASH                |  2061 | Key \\                      |
 | KEYCODE_SEMICOLON                |  2062 | Key ;                      |
-| KEYCODE_APOSTROPHE               |  2063 | Key '                |
+| KEYCODE_APOSTROPHE               |  2063 | Key ''' (single quote)                 |
 | KEYCODE_SLASH                    |  2064 | Key /                      |
 | KEYCODE_AT                       |  2065 | Key @                      |
 | KEYCODE_PLUS                     |  2066 | Key +                      |
@@ -197,13 +197,13 @@ Enumerates the key codes.
 | KEYCODE_MACRO                    |  2610 | Macro key                         |
 | KEYCODE_NUMPAD_PLUSMINUS         |  2611 | Plus/Minus key on the numeric keypad               |
 | KEYCODE_SCALE                    |  2612 | Scale key                        |
-| KEYCODE_HANGUEL                  |  2613 | Hanguel key                      |
-| KEYCODE_HANJA                    |  2614 | Hanja key                      |
+| KEYCODE_HANGUEL                  |  2613 | Hangul key                       |
+| KEYCODE_HANJA                    |  2614 | Hanja key                       |
 | KEYCODE_YEN                      |  2615 | Yen key                        |
 | KEYCODE_STOP                     |  2616 | Stop key                        |
 | KEYCODE_AGAIN                    |  2617 | Again key                        |
 | KEYCODE_PROPS                    |  2618 | Props key                        |
-| KEYCODE_UNDO                     |  2619 | Undo key                        |
+| KEYCODE_UNDO                     |  2619 | Undo key                         |
 | KEYCODE_COPY                     |  2620 | Copy key                        |
 | KEYCODE_OPEN                     |  2621 | Open key                        |
 | KEYCODE_PASTE                    |  2622 | Paste key                        |
@@ -269,10 +269,10 @@ Enumerates the key codes.
 | KEYCODE_VIDEO                    |  2683 | Video key                        |
 | KEYCODE_MEMO                     |  2684 | Memo key                       |
 | KEYCODE_CALENDAR                 |  2685 | Calendar key                        |
-| KEYCODE_RED                      |  2686 | Red indicator.                      |
-| KEYCODE_GREEN                    |  2687 | Green indicator.                      |
-| KEYCODE_YELLOW                   |  2688 | Yellow indicator.                      |
-| KEYCODE_BLUE                     |  2689 | Blue indicator.                      |
+| KEYCODE_RED                      |  2686 | Red indicator key                       |
+| KEYCODE_GREEN                    |  2687 | Green indicator key                       |
+| KEYCODE_YELLOW                   |  2688 | Yellow indicator key                       |
+| KEYCODE_BLUE                     |  2689 | Blue indicator key                       |
 | KEYCODE_CHANNELUP                |  2690 | Channel Up key                      |
 | KEYCODE_CHANNELDOWN              |  2691 | Channel Down key                      |
 | KEYCODE_LAST                     |  2692 | Last key                        |
@@ -291,16 +291,16 @@ Enumerates the key codes.
 | KEYCODE_PRESENTATION             |  2705 | Presentation key                      |
 | KEYCODE_DATABASE                 |  2706 | Database key                      |
 | KEYCODE_NEWS                     |  2707 | News key                        |
-| KEYCODE_VOICEMAIL                |  2708 | Voicemail key                       |
-| KEYCODE_ADDRESSBOOK              |  2709 | Address book key                        |
+| KEYCODE_VOICEMAIL                |  2708 | Voicemail key                        |
+| KEYCODE_ADDRESSBOOK              |  2709 | Address book key                         |
 | KEYCODE_MESSENGER                |  2710 | Messenger key                        |
 | KEYCODE_BRIGHTNESS_TOGGLE        |  2711 | Brightness Toggle key                      |
 | KEYCODE_SPELLCHECK               |  2712 | Spell Check key                     |
-| KEYCODE_COFFEE                   |  2713 | Coffee key, which is used to launch screen lock or screen saver                 |
+| KEYCODE_COFFEE                   |  2713 | Terminal lock/screen saver key                  |
 | KEYCODE_MEDIA_REPEAT             |  2714 | Media Repeat key                      |
 | KEYCODE_IMAGES                   |  2715 | Images key                        |
 | KEYCODE_BUTTONCONFIG             |  2716 | Button Configuration key                      |
-| KEYCODE_TASKMANAGER              |  2717 | Task Manager key                      |
+| KEYCODE_TASKMANAGER              |  2717 | Task manager key                       |
 | KEYCODE_JOURNAL                  |  2718 | Log key                       |
 | KEYCODE_CONTROLPANEL             |  2719 | Control Panel key                      |
 | KEYCODE_APPSELECT                |  2720 | App Select key                    |
@@ -318,7 +318,7 @@ Enumerates the key codes.
 | KEYCODE_MOUSE_ASSISTANT    |  2732 | Mouse AI assistant key.<br/>**Starting Version:** 26.0.0<br/>**Model constraint:** This API can only be used in the stage model.          |
 | KEYCODE_MOUSE_INTELLIGENCE_SELECTION    |  2733 | Mouse smart selection key.<br/>**Starting Version:** 26.0.0<br/>**Model constraint:** This API can only be used in the stage model.          |
 | KEYCODE_AOD_SINGLE_CLICK         |  2740 | Phone touchscreen single-click event, used in Always-On Display (AOD) mode.<br/>**Starting Version:** 26.0.0<br/>**Model constraint:** This API can only be used in the stage model.|
-| KEYCODE_FRONT                    |  2800 | Front key, which is used to launch the windshield defogger                  |
+| KEYCODE_FRONT                    |  2800 | Windshield defogger on/off key                   |
 | KEYCODE_SETUP                    |  2801 | Setup key                        |
 | KEYCODE_WAKEUP                   |  2802 | Wakeup key                        |
 | KEYCODE_SENDFILE                 |  2803 | Send File key                     |
@@ -348,7 +348,7 @@ Enumerates the key codes.
 | KEYCODE_F24                      |  2827 | F24 key                    |
 | KEYCODE_PROG3                    |  2828 | Program key 3                       |
 | KEYCODE_PROG4                    |  2829 | Program key 4                       |
-| KEYCODE_DASHBOARD                |  2830 | Dashboard key                        |
+| KEYCODE_DASHBOARD                |  2830 | Dashboard key                         |
 | KEYCODE_SUSPEND                  |  2831 | Suspend key                        |
 | KEYCODE_HP                       |  2832 | HP key                      |
 | KEYCODE_SOUND                    |  2833 | Sound key                        |
@@ -363,18 +363,18 @@ Enumerates the key codes.
 | KEYCODE_WLAN                     |  2844 | WLAN key                      |
 | KEYCODE_UWB                      |  2845 | Ultra-wideband key                   |
 | KEYCODE_WWAN_WIMAX               |  2846 | Mobile Network Control key               |
-| KEYCODE_RFKILL                   |  2847 | RF Kill key                  |
+| KEYCODE_RFKILL                   |  2847 | Key that controls all wireless devices                   |
 | KEYCODE_CHANNEL                  |  3001 | Channel key                      |
-| KEYCODE_BTN_0                    |  3100 | Button 0                        |
-| KEYCODE_BTN_1                    |  3101 | Button 1                        |
-| KEYCODE_BTN_2                    |  3102 | Button 2                        |
-| KEYCODE_BTN_3                    |  3103 | Button 3                        |
-| KEYCODE_BTN_4                    |  3104 | Button 4                        |
-| KEYCODE_BTN_5                    |  3105 | Button 5                        |
-| KEYCODE_BTN_6                    |  3106 | Button 6                        |
-| KEYCODE_BTN_7                    |  3107 | Button 7                        |
-| KEYCODE_BTN_8                    |  3108 | Button 8                        |
-| KEYCODE_BTN_9                    |  3109 | Button 9                        |
+| KEYCODE_BTN_0                    |  3100 | Button '0'                         |
+| KEYCODE_BTN_1                    |  3101 | Button '1'                         |
+| KEYCODE_BTN_2                    |  3102 | Button '2'                         |
+| KEYCODE_BTN_3                    |  3103 | Button '3'                         |
+| KEYCODE_BTN_4                    |  3104 | Button '4'                         |
+| KEYCODE_BTN_5                    |  3105 | Button '5'                         |
+| KEYCODE_BTN_6                    |  3106 | Button '6'                         |
+| KEYCODE_BTN_7                    |  3107 | Button '7'                         |
+| KEYCODE_BTN_8                    |  3108 | Button '8'                         |
+| KEYCODE_BTN_9                    |  3109 | Button '9'                         |
 | KEYCODE_DAGGER_CLICK<sup>18+</sup> | 3211 | Single tapping the smart watch's X-TAP sensor|
 | KEYCODE_DAGGER_DOUBLE_CLICK<sup>18+</sup> | 3212 | Double tapping the smart watch's X-TAP sensor|
 | KEYCODE_DAGGER_LONG_PRESS<sup>18+</sup> | 3213 | Long-pressing the smart watch's X-TAP sensor|

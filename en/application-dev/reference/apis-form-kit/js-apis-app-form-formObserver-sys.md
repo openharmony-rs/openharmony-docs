@@ -1,12 +1,11 @@
 # @ohos.app.form.formObserver (formObserver) (System API)
-
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @Qian-Win-->
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
-<!-- md-trans-meta sourceCommit=d4511e00f2585cc001e7987579963a134102f59c translatedAt=2026-07-31T08:22:26.734Z pushedAt=2026-08-01T01:19:02.360Z -->
+<!-- md-trans-meta sourceCommit=cf2cb165decd48d84d7a723412e384906aba9d24 translatedAt=2026-09-15T01:46:52.106Z pushedAt=2026-09-15T07:47:27.067Z -->
 
 The **formObserver** module provides APIs related to widget listeners. You can use the APIs to subscribe to and unsubscribe from widget addition, removal, and visibility change events, and obtain information about running widgets.
 
@@ -21,9 +20,9 @@ The **formObserver** module provides APIs related to widget listeners. You can u
 import { formObserver } from '@kit.FormKit';
 ```
 
-## on('formAdd')
+## formObserver.on('formAdd')
 
- on(type: 'formAdd', observerCallback: Callback&lt;formInfo.RunningFormInfo&gt;): void
+on(type: 'formAdd', observerCallback: Callback&lt;formInfo.RunningFormInfo&gt;): void
 
 Subscribes to widget addition events. This API uses an asynchronous callback to return the information about the new widget.
 
@@ -59,7 +58,7 @@ let callback = (data: formInfo.RunningFormInfo) => {
 formObserver.on('formAdd', callback);
 ```
 
-## on('formAdd')
+## formObserver.on('formAdd')
 
  on(type: 'formAdd', hostBundleName: string, observerCallback: Callback&lt;formInfo.RunningFormInfo&gt;): void
 
@@ -100,7 +99,7 @@ let callback = (data: formInfo.RunningFormInfo) => {
 formObserver.on('formAdd', bundleName, callback);
 ```
 
-## off('formAdd')
+## formObserver.off('formAdd')
 
 off(type: 'formAdd', hostBundleName?: string, observerCallback?: Callback<formInfo.RunningFormInfo>): void;
 
@@ -140,14 +139,13 @@ let callback = (data: formInfo.RunningFormInfo) => {
 
 formObserver.off('formAdd', bundleName, callback);
 ```
-
 > **NOTE**
 >
 > **on('formAdd', callback)** and **off('formAdd', callback)** must be used in pairs.
 > **on('formAdd', bundleName, callback)** and **off('formAdd', bundleName, callback)** must be used in pairs.
 > An event subscribed to using **on()** can only be unsubscribed using its corresponding **off()**.
 
-## on('formRemove')
+## formObserver.on('formRemove')
 
  on(type: 'formRemove', observerCallback: Callback&lt;formInfo.RunningFormInfo&gt;): void
 
@@ -185,7 +183,7 @@ let callback = (data: formInfo.RunningFormInfo) => {
 formObserver.on('formRemove', callback);
 ```
 
-## on('formRemove')
+## formObserver.on('formRemove')
 
  on(type: 'formRemove', hostBundleName: string, observerCallback: Callback&lt;formInfo.RunningFormInfo&gt;): void
 
@@ -226,7 +224,7 @@ let callback = (data: formInfo.RunningFormInfo) => {
 formObserver.on('formRemove', bundleName, callback);
 ```
 
-## off('formRemove')
+## formObserver.off('formRemove')
 
 off(type: 'formRemove', hostBundleName?: string, observerCallback?: Callback&lt;formInfo.RunningFormInfo&gt;): void
 
@@ -266,20 +264,19 @@ let callback = (data: formInfo.RunningFormInfo) => {
 
 formObserver.off('formRemove', bundleName, callback);
 ```
-
 > **NOTE**
 >
 > - **on('formRemove', callback)** and **off('formRemove', callback)** must be used in pairs.
 > - **on('formRemove', bundleName, callback)** and **off('formRemove', bundleName, callback)** must be used in pairs.
 > - An event subscribed to using **on()** can only be unsubscribed using its corresponding **off()**.
 
-## on('notifyVisible')
+## formObserver.on('notifyVisible')
 
  on(type: 'notifyVisible', observerCallback: Callback&lt;Array&lt;formInfo.RunningFormInfo&gt;&gt;): void
 
 Subscribes to events indicating that a widget becomes visible. This API uses an asynchronous callback to return the result.
 
-​The event is triggered when [notifyVisibleForms](js-apis-app-form-formHost-sys.md#notifyvisibleforms) is called to notify that the widget becomes visible.
+The event is triggered when [notifyVisibleForms](js-apis-app-form-formHost-sys.md#formhostnotifyvisibleforms) is called to notify that the corresponding widget becomes visible.
 
 **Required permissions**: ohos.permission.OBSERVE_FORM_RUNNING
 
@@ -315,13 +312,13 @@ let callback = (data: formInfo.RunningFormInfo[]) => {
 formObserver.on('notifyVisible', callback);
 ```
 
-## on('notifyVisible')
+## formObserver.on('notifyVisible')
 
  on(type: 'notifyVisible', hostBundleName: string, observerCallback: Callback&lt;Array&lt;formInfo.RunningFormInfo&gt;&gt;): void
 
 Subscribes to events indicating that a widget becomes visible. This API uses an asynchronous callback to return the result.
 
-​The event is triggered when [notifyVisibleForms](js-apis-app-form-formHost-sys.md#notifyvisibleforms) is called to notify that the widget becomes visible.
+The event is triggered when [notifyVisibleForms](js-apis-app-form-formHost-sys.md#formhostnotifyvisibleforms) is called to notify that the corresponding widget becomes visible.
 
 **Required permissions**: ohos.permission.OBSERVE_FORM_RUNNING
 
@@ -344,6 +341,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202      | The application is not a system application.                                    |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 
+
 **Example**
 
 ```ts
@@ -360,7 +358,7 @@ let callback = (data: formInfo.RunningFormInfo[]) => {
 formObserver.on('notifyVisible', bundleName, callback);
 ```
 
-## off('notifyVisible')
+## formObserver.off('notifyVisible')
 
  off(type: 'notifyVisible', hostBundleName?: string, observerCallback?: Callback&lt;Array&lt;formInfo.RunningFormInfo&gt;&gt;): void
 
@@ -409,13 +407,13 @@ formObserver.off('notifyVisible', bundleName, callback);
 > - **on('notifyVisible', bundleName, callback)** and **off('notifyVisible', bundleName, callback)** must be used in pairs.
 > - An event subscribed to using **on()** can only be unsubscribed using its corresponding **off()**.
 
-## on('notifyInvisible')
+## formObserver.on('notifyInvisible')
 
  on(type: 'notifyInvisible', observerCallback: Callback&lt;Array&lt;formInfo.RunningFormInfo&gt;>): void
 
 Subscribes to events indicating that a widget becomes invisible. This API uses an asynchronous callback to return the result.
 
-​The event is triggered when [notifyInvisibleForms](js-apis-app-form-formHost-sys.md#notifyinvisibleforms) is called to notify that the widget becomes invisible.
+The event is triggered when [notifyInvisibleForms](js-apis-app-form-formHost-sys.md#formhostnotifyinvisibleforms) is called to notify that the widget becomes invisible.
 
 **Required permissions**: ohos.permission.OBSERVE_FORM_RUNNING
 
@@ -451,13 +449,14 @@ let callback = (data: formInfo.RunningFormInfo[]) => {
 formObserver.on('notifyInvisible', callback);
 ```
 
-## on('notifyInvisible')
+
+## formObserver.on('notifyInvisible')
 
  on(type: 'notifyInvisible', hostBundleName: string, observerCallback: Callback&lt;Array&lt;formInfo.RunningFormInfo&gt;>): void
 
 Subscribes to events indicating that a widget becomes invisible. This API uses an asynchronous callback to return the result.
 
-​The event is triggered when [notifyInvisibleForms](js-apis-app-form-formHost-sys.md#notifyinvisibleforms) is called to notify that the widget becomes invisible.
+The event is triggered when [notifyInvisibleForms](js-apis-app-form-formHost-sys.md#formhostnotifyinvisibleforms) is called to notify that the corresponding widget becomes invisible.
 
 **Required permissions**: ohos.permission.OBSERVE_FORM_RUNNING
 
@@ -496,7 +495,7 @@ let callback = (data: formInfo.RunningFormInfo[]) => {
 formObserver.on('notifyInvisible', bundleName, callback);
 ```
 
-## off('notifyInvisible')
+## formObserver.off('notifyInvisible')
 
  off(type: 'notifyInvisible', hostBundleName?: string, observerCallback?: Callback&lt;Array&lt;formInfo.RunningFormInfo>&gt;): void
 
@@ -545,7 +544,8 @@ formObserver.off('notifyInvisible', bundleName, callback);
 > - **on('notifyInvisible', bundleName, callback)** and **off('notifyInvisible', bundleName, callback)** must be used in pairs.
 > - An event subscribed to using **on()** can only be unsubscribed using its corresponding **off()**.
 
-## getRunningFormInfos
+
+## formObserver.getRunningFormInfos
 
 getRunningFormInfos(callback: AsyncCallback&lt;Array&lt;formInfo.RunningFormInfo&gt;&gt;, hostBundleName?: string): void
 
@@ -595,7 +595,7 @@ try {
 }
 ```
 
-## getRunningFormInfos<sup>11+</sup>
+## formObserver.getRunningFormInfos<sup>11+</sup>
 
 getRunningFormInfos(callback: AsyncCallback&lt;Array&lt;formInfo.RunningFormInfo&gt;&gt;, isUnusedIncluded: boolean, hostBundleName?: string): void
 
@@ -646,7 +646,7 @@ try {
 }
 ```
 
-## getRunningFormInfos
+## formObserver.getRunningFormInfos
 
 getRunningFormInfos(hostBundleName?: string):  Promise&lt;Array&lt;formInfo.RunningFormInfo&gt;&gt;
 
@@ -697,7 +697,7 @@ try {
 }
 ```
 
-## getRunningFormInfos<sup>11+</sup>
+## formObserver.getRunningFormInfos<sup>11+</sup>
 
 getRunningFormInfos(isUnusedIncluded: boolean, hostBundleName?: string):  Promise&lt;Array&lt;formInfo.RunningFormInfo&gt;&gt;
 
@@ -749,7 +749,7 @@ try {
 }
 ```
 
-## getRunningFormInfosByFilter
+## formObserver.getRunningFormInfosByFilter
 
 getRunningFormInfosByFilter(formProviderFilter: formInfo.FormProviderFilter): Promise&lt;Array&lt;formInfo.RunningFormInfo&gt;&gt;
 
@@ -786,6 +786,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 16500100 | Failed to obtain the configuration information. |
 | 16501000  | An internal functional error occurred. |
 
+
 ```ts
 import { formInfo, formObserver } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -809,7 +810,7 @@ try {
 }
 ```
 
-## getRunningFormInfosByFilter
+## formObserver.getRunningFormInfosByFilter
 
 getRunningFormInfosByFilter(formProviderFilter: formInfo.FormProviderFilter, callback: AsyncCallback&lt;Array&lt;formInfo.RunningFormInfo&gt;&gt;): void
 
@@ -869,7 +870,7 @@ try {
 }
 ```
 
-## getRunningFormInfoById
+## formObserver.getRunningFormInfoById
 
 getRunningFormInfoById(formId: string): Promise&lt;formInfo.RunningFormInfo&gt;
 
@@ -924,7 +925,7 @@ try {
 }
 ```
 
-## getRunningFormInfoById<sup>11+</sup>
+## formObserver.getRunningFormInfoById<sup>11+</sup>
 
 getRunningFormInfoById(formId: string, isUnusedIncluded: boolean): Promise&lt;formInfo.RunningFormInfo&gt;
 
@@ -980,7 +981,7 @@ try {
 }
 ```
 
-## getRunningFormInfoById
+## formObserver.getRunningFormInfoById
 
 getRunningFormInfoById(formId: string, callback: AsyncCallback&lt;formInfo.RunningFormInfo&gt;): void
 
@@ -1032,7 +1033,7 @@ try {
 }
 ```
 
-## getRunningFormInfoById<sup>11+</sup>
+## formObserver.getRunningFormInfoById<sup>11+</sup>
 
 getRunningFormInfoById(formId: string, isUnusedIncluded: boolean, callback: AsyncCallback&lt;formInfo.RunningFormInfo&gt;): void
 
@@ -1050,7 +1051,7 @@ Obtains the information about the widget based on the widget ID. This API uses a
 | ----------- | --------------- | ---- | -------------------------------- |
 | formId     | string | Yes  | Widget ID.|
 | isUnusedIncluded     | boolean | Yes  | Whether the unused widget is included.<br>**true**: The unused widget is included.<br>**false**: The unused widget is not included.|
-| callback | AsyncCallback&lt;[formInfo.RunningFormInfo](js-apis-app-form-formInfo-sys.md#runningforminfo10)&gt; | Yes | Callback used to return the result. If the operation is successful, **error** is **undefined**, and **data** is the queried form information. Otherwise, **error** is an error object. |
+| callback | AsyncCallback&lt;[formInfo.RunningFormInfo](js-apis-app-form-formInfo-sys.md#runningforminfo10)&gt; | Yes | Callback used to return the result. If the operation is successful, **error** is **undefined**, and **data** is the queried widget information. Otherwise, **error** is an error object. |
 
 **Error codes**
 
@@ -1085,7 +1086,7 @@ try {
 }
 ```
 
-## on('router')<sup>11+</sup>
+## formObserver.on('router')<sup>11+</sup>
 
  on(type: 'router', observerCallback: Callback&lt;formInfo.RunningFormInfo&gt;): void
 
@@ -1122,7 +1123,7 @@ let callback = (data: formInfo.RunningFormInfo) => {
 formObserver.on('router', callback);
 ```
 
-## on('router')<sup>11+</sup>
+## formObserver.on('router')<sup>11+</sup>
 
  on(type: 'router', hostBundleName: string, observerCallback: Callback&lt;formInfo.RunningFormInfo&gt;): void
 
@@ -1161,7 +1162,7 @@ let callback = (data: formInfo.RunningFormInfo) => {
 formObserver.on('router', hostBundleName, callback);
 ```
 
-## off('router')<sup>11+</sup>
+## formObserver.off('router')<sup>11+</sup>
 
  off(type: 'router', hostBundleName?: string, observerCallback?: Callback&lt;formInfo.RunningFormInfo&gt;): void
 
@@ -1200,7 +1201,7 @@ let callback = (data: formInfo.RunningFormInfo) => {
 formObserver.off('router', hostBundleName, callback);
 ```
 
-## on('message')<sup>11+</sup>
+## formObserver.on('message')<sup>11+</sup>
 
  on(type: 'message', observerCallback: Callback&lt;formInfo.RunningFormInfo&gt;): void
 
@@ -1237,7 +1238,7 @@ let callback = (data: formInfo.RunningFormInfo) => {
 formObserver.on('message', callback);
 ```
 
-## on('message')<sup>11+</sup>
+## formObserver.on('message')<sup>11+</sup>
 
  on(type: 'message', hostBundleName: string, observerCallback: Callback&lt;formInfo.RunningFormInfo&gt;): void
 
@@ -1276,7 +1277,7 @@ let callback = (data: formInfo.RunningFormInfo) => {
 formObserver.on('message', hostBundleName, callback);
 ```
 
-## off('message')<sup>11+</sup>
+## formObserver.off('message')<sup>11+</sup>
 
  off(type: 'message', hostBundleName?: string, observerCallback?: Callback&lt;formInfo.RunningFormInfo&gt;): void
 
@@ -1315,7 +1316,7 @@ let callback = (data: formInfo.RunningFormInfo) => {
 formObserver.off('message', hostBundleName, callback);
 ```
 
-## on('call')<sup>11+</sup>
+## formObserver.on('call')<sup>11+</sup>
 
  on(type: 'call', observerCallback: Callback&lt;formInfo.RunningFormInfo&gt;): void
 
@@ -1352,7 +1353,7 @@ let callback = (data: formInfo.RunningFormInfo) => {
 formObserver.on('call', callback);
 ```
 
-## on('call')<sup>11+</sup>
+## formObserver.on('call')<sup>11+</sup>
 
  on(type: 'call', hostBundleName: string, observerCallback: Callback&lt;formInfo.RunningFormInfo&gt;): void
 
@@ -1391,7 +1392,7 @@ let callback = (data: formInfo.RunningFormInfo) => {
 formObserver.on('call', hostBundleName, callback);
 ```
 
-## off('call')<sup>11+</sup>
+## formObserver.off('call')<sup>11+</sup>
 
  off(type: 'call', hostBundleName?: string, observerCallback?: Callback&lt;formInfo.RunningFormInfo&gt;): void
 
@@ -1429,3 +1430,4 @@ let callback = (data: formInfo.RunningFormInfo) => {
 };
 formObserver.off('call', hostBundleName, callback);
 ```
+<!--no_check-->

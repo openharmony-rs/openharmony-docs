@@ -1,9 +1,9 @@
 # 通过DataShareExtensionAbility实现数据共享 (ArkTS)(仅对系统应用开放)
 <!--Kit: ArkData-->
 <!--Subsystem: DistributedDataManager-->
-<!--Owner: @woodenarow-->
-<!--Designer: @woodenarow; @xuelei3-->
-<!--Tester: @chenwan188; @logic42-->
+<!--Owner: @lvcong_oh-->
+<!--Designer: @lvcong_oh-->
+<!--Tester: @hanjiawei; @logic42-->
 <!--Adviser: @ge-yafang-->
 
 
@@ -87,7 +87,6 @@
    export default class DataShareExtAbility extends DataShareExtensionAbility {
      // 重写onCreate接口
      onCreate(want: Want, callback: Function) {
-       result = this.context.cacheDir + '/datashare.txt';
        // 业务实现使用RDB
        relationalStore.getRdbStore(this.context, {
          name: DB_NAME,

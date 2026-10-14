@@ -5,6 +5,7 @@
 <!--Designer: @cuile44; @fysun17; @AnruiWang-->
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=f357ad4bf8e21ca38a4fe32686c2e588bbe381f6 translatedAt=2026-09-04T03:17:35.933Z pushedAt=2026-09-09T09:11:03.698Z -->
 
 > NOTE
 >
@@ -18,13 +19,14 @@ Inner error.
 
 **Description**
 
-An internal service error occurs when an ArkData Intelligence Platform (AIP) interface is called.
+This error code is reported when an internal service exception occurs while calling APIs of the smart data platform module, for example, a model fails to be loaded occasionally due to high memory usage or high CPU load.
 
 **Possible Causes**
 
-The internal service is in abnormal status. For example, the application calls **getEmbedding()** without loading the embedding model.
+1. The application does not load the corresponding embedding model.
+2. Memory allocation fails.
 
 **Solution**
 
-1. Check whether the APIs are called correctly. If not, apply necessary corrections.
-2. Try again at specific intervals, for example, at 1s intervals or at exponentially increasing intervals. If the problem persists, ask the user to restart or update the application or update the device.
+1. Before using the APIs related to the vectorization capability, ensure that the corresponding model resources are loaded.
+2. For issues such as high memory usage and CPU load, retry the operation. If the problem persists, prompt the user to restart the application, upgrade the application, or upgrade the device version.

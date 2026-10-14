@@ -28,7 +28,7 @@ Memory operation failed.
 
 请检查内存是否泄漏。
 
-## 10000002 IPC parcel write failed
+## 10000002 IPC序列化失败
 
 **错误信息**
 

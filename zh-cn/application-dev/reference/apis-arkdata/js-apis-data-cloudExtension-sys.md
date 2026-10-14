@@ -55,6 +55,8 @@ import { cloudExtension } from '@kit.ArkData';
 
 ## CloudAssets
 
+type CloudAssets = Array&lt;CloudAsset&gt;
+
 表示[CloudAsset](#cloudasset)类型的数组。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
@@ -103,6 +105,8 @@ import { cloudExtension } from '@kit.ArkData';
 | operation  | [Flag](#flag)   | 是   | 否   | 对行数据所做的操作。 |
 
 ## CloudType
+
+type CloudType = null | number | string | boolean | Uint8Array | CloudAsset | CloudAssets
 
 表示云数据字段可使用的类型。各接口参数的实际类型视其功能而定。
 

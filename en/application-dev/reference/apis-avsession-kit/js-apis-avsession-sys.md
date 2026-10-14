@@ -1,8 +1,8 @@
 # @ohos.multimedia.avsession (AVSession Management) (System API)
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @devil_red-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester:@chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -43,7 +43,7 @@ Obtains the descriptors of all sessions that have been configured with media inf
 
 | Name  | Type                                                        | Mandatory| Description                                      | 
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------ | 
-| callback | AsyncCallback<Array<Readonly<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)\>\>\> | Yes  | Callback used to return an array of AVSessionDescriptor objects, each of which is read only.| 
+| callback | AsyncCallback<Array<Readonly<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor23)\>\>\> | Yes  | Callback used to return an array of AVSessionDescriptor objects, each of which is read only.| 
 
 **Error codes**
 
@@ -108,7 +108,7 @@ Obtains the session descriptors based on the session category. This API uses a p
 
 | Type                                                                       | Description                                  |
 | --------------------------------------------------------------------------- | -------------------------------------- |
-| Promise\<Array\<Readonly\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)\>\>\> | Promise used to return an array of **AVSessionDescriptor** objects of the corresponding category, each of which is read only.|
+| Promise\<Array\<Readonly\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor23)\>\>\> | Promise used to return an array of **AVSessionDescriptor** objects of the corresponding category, each of which is read only.|
 
 **Error codes**
 
@@ -155,7 +155,7 @@ Obtains the descriptors of all historical sessions. This API uses a promise to r
 
 | Type                                                                       | Description                                  |
 | --------------------------------------------------------------------------- | -------------------------------------- |
-| Promise\<Array\<Readonly\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)\>\>\> | Promise used to return an array of AVSessionDescriptor objects, each of which is read only.|
+| Promise\<Array\<Readonly\<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor23)\>\>\> | Promise used to return an array of AVSessionDescriptor objects, each of which is read only.|
 
 **Error codes**
 
@@ -200,7 +200,7 @@ Obtains the descriptors of all historical sessions. This API uses an asynchronou
 | Name  | Type                                                                           | Mandatory| Description                                                            |
 | -------- | ------------------------------------------------------------------------------ | ---- |-----------------------------------------------------------------|
 | maxSize  | number                                                                         | Yes | Maximum number of descriptors to obtain. The value ranges from 0 to 10.|
-| callback | AsyncCallback<Array<Readonly<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)\>\>\> | Yes  | Callback used to return an array of AVSessionDescriptor objects, each of which is read only.                             |
+| callback | AsyncCallback<Array<Readonly<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor23)\>\>\> | Yes  | Callback used to return an array of AVSessionDescriptor objects, each of which is read only.                             |
 
 **Error codes**
 
@@ -230,9 +230,9 @@ avSession.getHistoricalSessionDescriptors(1, (descriptors: avSession.AVSessionDe
 
 ## avSession.getHistoricalAVQueueInfos<sup>11+</sup>
 
-getHistoricalAVQueueInfos(maxSize: number, maxAppSize: number) : Promise\<Array\<Readonly\<AVQueueInfo>>>
+getHistoricalAVQueueInfos(maxSize: number, maxAppSize: number): Promise\<Array\<Readonly\<AVQueueInfo>>>
 
-Obtains all the historical playlists. This API uses a promise to return the result.
+Obtains historical playlists based on the specified quantity limit. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.MANAGE_MEDIA_RESOURCES
 
@@ -274,7 +274,7 @@ avSession.getHistoricalAVQueueInfos(3, 5).then((avQueueInfos: avSession.AVQueueI
 
 getHistoricalAVQueueInfos(maxSize: number, maxAppSize: number, callback: AsyncCallback\<Array\<Readonly\<AVQueueInfo>>>): void;
 
-Obtains all the historical playlists. This API uses an asynchronous callback to return the result.
+Obtains historical playlists based on the specified quantity limit. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.MANAGE_MEDIA_RESOURCES
 
@@ -286,8 +286,8 @@ Obtains all the historical playlists. This API uses an asynchronous callback to 
 
 | Name  | Type                                                                           | Mandatory| Description                                                            |
 | -------- | ----------------------------------------------------------------------------- | ---- |---------------------------------------------------------------|
-| maxSize  | number                                                                        | Yes  | Maximum number of playlists that can be obtained. Currently, the maximum number is restricted by the system.                     |
-| maxAppSize | number                                                                      | Yes  | Maximum number of applications to which the playlists to be obtained belong. Currently, the maximum number is restricted by the system.              |
+| maxSize  | number                                                                        | Yes  | Maximum number of playlists that can be obtained.                     |
+| maxAppSize | number                                                                      | Yes  | Maximum number of applications to which the playlists to be obtained belong.              |
 | callback | AsyncCallback<Array<Readonly<[AVQueueInfo](#avqueueinfo11)\>\>\> | Yes  | Callback used to return all the read-only historical playlists.                             |
 
 **Error codes**
@@ -356,9 +356,9 @@ struct Index {
           .onClick(()=>{
             avSession.getAllSessionDescriptors().then((descriptors: avSession.AVSessionDescriptor[]) => {
               console.info(`Succeeded in getting all session descriptors, length: ${descriptors.length}`);
-              if (descriptors.length > 0 ) {
-avSession.createController(descriptors[0]?.sessionId, (avcontroller: avSession.AVSessionController) => { 
-                    console.info('Succeeded in creating controller.'); 
+              if (descriptors.length > 0) {
+                avSession.createController(descriptors[0]?.sessionId, (avcontroller: avSession.AVSessionController) => { 
+                  console.info('Succeeded in creating controller.'); 
                 });
               }
             });
@@ -421,13 +421,12 @@ let audioDevices: audio.AudioDeviceDescriptors | undefined = undefined;
 audioRoutingManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG).then((data) => {
   audioDevices = data;
   console.info('Promise returned to indicate that the device list is obtained.');
+  if (audioDevices !== undefined) {
+    avSession.castAudio('all', audioDevices as audio.AudioDeviceDescriptors).then(() => {
+      console.info('Succeeded in casting audio.');
+    });
+  }
 });
-
-if (audioDevices !== undefined) {
-  avSession.castAudio('all', audioDevices as audio.AudioDeviceDescriptors).then(() => {
-    console.info('Succeeded in creating controller.');
-  });
-}
 ```
 
 ## avSession.castAudio
@@ -523,7 +522,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-import { audio } from '@kit.AudioKit';
+import { avSession } from '@kit.AVSessionKit';
 
 avSession.startAVPlayback("com.example.myapplication", "121278").then(() => {
   console.info('Succeeded in starting AV playback.');
@@ -607,7 +606,7 @@ Subscribes to session creation events. This API uses an asynchronous callback to
 | Name   | Type                  | Mandatory| Description                                                        |
 | -------- | ---------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                 | Yes  | Event type. The event **'sessionCreate'** is triggered when a session is created.|
-| callback | (session: [AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)) => void | Yes  | Callback used to report the session descriptor.|
+| callback | (session: [AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor23)) => void | Yes  | Callback used to report the session descriptor.|
 
 **Error codes**
 
@@ -661,7 +660,7 @@ Subscribes to session destroy events. This API uses an asynchronous callback to 
 | Name  | Type           | Mandatory| Description                                                        |
 | -------- | ---------------| ---- | ------------------------------------------------------------ |
 | type     | string         | Yes  | Event type. The event **'sessionDestroy'** is triggered when a session is destroyed.|
-| callback | (session: [AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)) => void | Yes  | Callback used to report the session descriptor.|
+| callback | (session: [AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor23)) => void | Yes  | Callback used to report the session descriptor.|
 
  **Error codes**
 
@@ -713,7 +712,7 @@ Subscribes to the top session change events. This API uses an asynchronous callb
 | Name  | Type                | Mandatory| Description                                                        |
 | -------- | --------------------| ---- | ------------------------------------------------------------ |
 | type     | string      | Yes  | Event type. The event **'topSessionChange'** is triggered when the top session is changed.|
-| callback | (session: [AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)) => void | Yes  | Callback used to report the session descriptor.|
+| callback | (session: [AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor23)) => void | Yes  | Callback used to report the session descriptor.|
 
 **Error codes**
 
@@ -767,7 +766,7 @@ Unsubscribes from session creation events. After unsubscription, the event will 
 | Name  | Type      | Mandatory| Description      |
 | -------- | ----------| ---- | ----------|
 | type     | string    | Yes  | Event type, which is **'sessionCreate'** in this case.|
-| callback | (session: [AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)) => void | No  | Callback used for unsubscription. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object.<br>The **session** parameter in the callback describes a media session. The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.                              |
+| callback | (session: [AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor23)) => void | No  | Callback to be canceled, which must be the same as that registered using the **on** API. If this parameter is not specified, all registered callbacks are canceled.                              |
 
 **Error codes**
 
@@ -819,7 +818,7 @@ Unsubscribes from session destroy events. After unsubscription, the event will n
 | Name  | Type       | Mandatory| Description                     |
 | -------- | -----------| ---- | -------------------------|
 | type     | string     | Yes  | Event type, which is **'sessionDestroy'** in this case.|
-| callback | (session: [AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)) => void | No  | Callback used for unsubscription. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object.<br>The **session** parameter in the callback describes a media session. The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
+| callback | (session: [AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor23)) => void | No  | Callback to be canceled, which must be the same as that registered using the **on** API. If this parameter is not specified, all registered callbacks are canceled.|
 
 **Error codes**
 
@@ -871,7 +870,7 @@ Unsubscribes from the top session change events. After unsubscription, the event
 | Name  | Type             | Mandatory| Description                       |
 | -------- | -----------------| ---- | ---------------------------- |
 | type     | string           | Yes  | Event type, which is **'topSessionChange'** in this case.|
-| callback | (session: [AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)) => void | No  | Callback used for unsubscription. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object.<br>The **session** parameter in the callback describes a media session. The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
+| callback | (session: [AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor23)) => void | No  | Callback to be canceled, which must be the same as that registered using the **on** API. If this parameter is not specified, all registered callbacks are canceled.|
 
 **Error codes**
 
@@ -923,7 +922,7 @@ Subscribes to session service death events. Upon receiving this event, the appli
 | Name  | Type                | Mandatory| Description                                                        |
 | -------- | -------------------- | ---- | ------------------------------------------------------------ |
 | type     | string               | Yes  | Event type. The event **'sessionServiceDie'** is triggered when the session service dies.|
-| callback | callback: () => void | Yes  | Callback used for subscription. If the subscription is successful, **err** is **undefined**; otherwise, **err** is an error object.                               |
+| callback | callback: () => void | Yes  | Callback invoked when the session service dies.                               |
 
 **Error codes**
 
@@ -939,7 +938,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 avSession.on('sessionServiceDie', () => {
-  console.info('on sessionServiceDie  : session is  Died ');
+  console.info('on sessionServiceDie : session is dead ');
 });
 ```
 
@@ -958,7 +957,7 @@ Unsubscribes from session service death events.
 | Name   | Type                   | Mandatory |      Description                                              |
 | ------   | ---------------------- | ---- | ------------------------------------------------------- |
 | type     | string                 | Yes   | Event type. The event **'sessionServiceDie'** is triggered when the session service dies.|
-| callback | callback: () => void   | No   | Callback used for unsubscription. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object.<br>The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.           |
+| callback | callback: () => void   | No   | Callback to be canceled, which must be the same as that registered using the **on** API. If this parameter is not specified, all registered callbacks are canceled.           |
 
 **Error codes**
 
@@ -1033,7 +1032,7 @@ Unsubscribes from the latest distributed remote session change events.
 | -------- |-------------------------------------------------------------------------------------|----|---------------------------------------------------------------|
 | type     | string                                                                              | Yes | Event type. The event **'distributedSessionChange'** is triggered when the latest distributed session is changed.                   |
 | distributedSessionType     | [DistributedSessionType](#distributedsessiontype18)             | Yes | Remote session type.                                                      |
-| callback | Callback<Array<[AVSessionController](arkts-apis-avsession-AVSessionController.md)\>> | No | Callback used to return an array of session controller instances of the corresponding type. You can view the session ID, send commands and events to the session, and obtain metadata and playback status information.|
+| callback | Callback<Array<[AVSessionController](arkts-apis-avsession-AVSessionController.md)\>> | No | Callback to be canceled, which must be the same as that registered using the **on** API. If this parameter is not specified, all registered callbacks are canceled.|
 
 **Error codes**
 
@@ -1187,7 +1186,7 @@ let cmd : avSession.AVControlCommandType = 'play';
 // let cmd : avSession.AVControlCommandType = 'fastForward';
 // let cmd : avSession.AVControlCommandType = 'rewind';
 let avcommand: avSession.AVControlCommand = {command:cmd};
-// let cmd : avSession.AVControlCommandType = 'seek';
+// let cmd: avSession.AVControlCommandType = 'seek';
 // let avcommand = {command:cmd, parameter:10};
 // let cmd : avSession.AVControlCommandType = 'setSpeed';
 // let avcommand = {command:cmd, parameter:2.6};
@@ -1333,7 +1332,7 @@ Starts cast-enabled device discovery with filter criteria specified. This API us
 
 | Name  | Type                                 | Mandatory| Description                                 |
 | -------- | ------------------------------------- | ---- | ------------------------------------- |
-| filter | number | Yes| Filter criteria for device discovery. The value consists of **ProtocolType**s.|
+| filter | number | Yes| Filter criteria for device discovery. The value consists of **ProtocolType**s obtained from the bitwise OR operation..|
 | callback | AsyncCallback\<void>                  | Yes  | Callback used to return the result. If the command is sent and device discovery starts, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
@@ -1369,7 +1368,7 @@ Starts cast-enabled device discovery. This API uses a promise to return the resu
 
 | Name  | Type                                 | Mandatory| Description                                 |
 | -------- | ------------------------------------- | ---- | ------------------------------------- |
-| filter | number | No| Filter criteria for device discovery. The value consists of **ProtocolType**s.|
+| filter | number | No| Filter criteria for device discovery. The value consists of **ProtocolType**s obtained from the bitwise OR operation..|
 | drmSchemes | Array\<string> | No| Filter criteria for discovering devices that support DRM resource playback. The value consists of DRM UUIDs.<br>This parameter is supported since API version 12.|
 
 **Return value**
@@ -1554,7 +1553,7 @@ Subscribes to device discovery events.
 | Name  | Type                | Mandatory| Description                                                        |
 | -------- | -------------------- | ---- | ------------------------------------------------------------ |
 | type     | string               | Yes  | Event type. The event **'deviceAvailable'** is triggered when a device is discovered.|
-| callback | (device: [OutputDeviceInfo](arkts-apis-avsession-i.md#outputdeviceinfo10)) => void | Yes  | Callback used for subscription. If the subscription is successful, **err** is **undefined**; otherwise, **err** is an error object.                               |
+| callback | (device: [OutputDeviceInfo](arkts-apis-avsession-i.md#outputdeviceinfo10)) => void | Yes  | Callback used to return the result. The **device** parameter in the callback indicates the available device information.                               |
 
 **Error codes**
 
@@ -1590,7 +1589,7 @@ Unsubscribes from device discovery events.
 | Name   | Type                   | Mandatory |      Description                                              |
 | ------   | ---------------------- | ---- | ------------------------------------------------------- |
 | type     | string                 | Yes   | Event type. The event **'deviceAvailable'** is triggered when a device is discovered.|
-| callback     | (device: [OutputDeviceInfo](arkts-apis-avsession-i.md#outputdeviceinfo10)) => void                 | No   | Callback used to return the device information.|
+| callback     | (device: [OutputDeviceInfo](arkts-apis-avsession-i.md#outputdeviceinfo10)) => void                 | No   | Callback to be canceled, which must be the same as that registered using the **on** API. If this parameter is not specified, all registered callbacks are canceled.|
 
 **Error codes**
 
@@ -1622,7 +1621,7 @@ Subscribes to device offline events.
 | Name  | Type                | Mandatory| Description                                                        |
 | -------- | -------------------- | ---- | ------------------------------------------------------------ |
 | type     | string               | Yes  | Event type. The event **'deviceOffline'** is triggered when a device gets offline.|
-| callback | (deviceId: string) => void | Yes  | Callback used to return the result. The **deviceId** parameter in the callback indicates the device ID. If the subscription is successful, **err** is **undefined**; otherwise, **err** is an error object. |
+| callback | (deviceId: string) => void | Yes  | Callback used to return the result. The **deviceId** parameter in the callback indicates the device ID. |
 
 **Error codes**
 
@@ -1649,8 +1648,6 @@ off(type: 'deviceOffline', callback?: (deviceId: string) => void): void
 
 Unsubscribes from device offline events.
 
-**Required permissions**: ohos.permission.MANAGE_MEDIA_RESOURCES
-
 **System capability**: SystemCapability.Multimedia.AVSession.AVCast
 
 **System API**: This is a system API.
@@ -1660,7 +1657,7 @@ Unsubscribes from device offline events.
 | Name   | Type                   | Mandatory |      Description                                              |
 | ------   | ---------------------- | ---- | ------------------------------------------------------- |
 | type     | string                 | Yes   | Event type, which is **'deviceOffline'** in this case.|
-| callback | (deviceId: string) => void | No  | Callback used to return the result. The **deviceId** parameter in the callback indicates the device ID. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object. The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
+| callback | (deviceId: string) => void | No  | Callback to be canceled, which must be the same as that registered using the **on** API. If this parameter is not specified, all registered callbacks are canceled. The **deviceId** parameter in the callback indicates the device ID.|
 
 **Error codes**
 
@@ -1707,8 +1704,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201 | permission denied. |
 | 202 | Not System App. |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
-| 6600101  | Session service exception |
-| 6600102  | session does not exist |
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
 
 **Example**
 
@@ -1723,16 +1720,20 @@ struct Index {
   build() {
     Column() {
       Text(this.message)
-        .onClick(() => {
-          let currentAVSession: avSession.AVSession | undefined = undefined;
-          let tag = "createNewSession";
-          let context = this.getUIContext().getHostContext() as Context;
-          let sessionId: string = ""; // Used as an input parameter of subsequent functions.
+        .onClick(async () => {
+          // Obtain the descriptors of all sessions in the system.
+          let descriptors = await AVSessionManager.getAllSessionDescriptors();
+          if (descriptors.length === 0) {
+            console.error(`No session in system, can not create controller.`);
+            return;
+          }
+          // Obtain the session ID of the target session to create a controller.
+          let sessionId = descriptors[0].sessionId;
 
           let avCastController: avSession.AVCastController;
           avSession.getAVCastController(sessionId, (avcontroller: avSession.AVCastController) => {
-              avCastController = avcontroller;
-              console.info('Succeeded in getting AV cast controller.');
+            avCastController = avcontroller;
+            console.info('Succeeded in getting AV cast controller.');
           });
         })
     }
@@ -1777,8 +1778,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 201 | permission denied. |
 | 202 | Not System App. |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
-| 6600101  | server exception |
-| 6600102  | The session does not exist |
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
 
 **Example**
 
@@ -1793,11 +1794,15 @@ struct Index {
   build() {
     Column() {
       Text(this.message)
-        .onClick(() => {
-          let currentAVSession: avSession.AVSession | undefined = undefined;
-          let tag = "createNewSession";
-          let context = this.getUIContext().getHostContext() as Context;
-          let sessionId: string = ""; // Used as an input parameter of subsequent functions.
+        .onClick(async () => {
+          // Obtain the descriptors of all sessions in the system.
+          let descriptors = await AVSessionManager.getAllSessionDescriptors();
+          if (descriptors.length === 0) {
+            console.error(`No session in system, can not create controller.`);
+            return;
+          }
+          // Obtain the session ID of the target session to create a controller.
+          let sessionId = descriptors[0].sessionId;
 
           let avCastController: avSession.AVCastController;
           avSession.getAVCastController(sessionId).then((avcontroller: avSession.AVCastController) => {
@@ -1842,12 +1847,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Not System App. |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | 6600101  | Session service exception. |
-| 6600108 | Device connection failed.       |
+| 6600108 | Device connecting failed.       |
 
 **Example**
 
 ```ts
 
+let sessionId = 'xxx'; // Obtain the session ID after creating a session using avSession.createAVSession.
 let myToken: avSession.SessionToken = {
   sessionId: sessionId,
 }
@@ -1899,12 +1905,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | Not System App. |
 | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | 6600101  | Session service exception. |
-| 6600108 | Device connection failed.       |
+| 6600108 | Device connecting failed.       |
 
 **Example**
 
 ```ts
 
+let sessionId = 'xxx'; // Obtain the session ID after creating a session using avSession.createAVSession.
 let myToken: avSession.SessionToken = {
   sessionId: sessionId,
 }
@@ -1951,6 +1958,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 
+let sessionId = 'xxx'; // Obtain the session ID after creating a session using avSession.createAVSession.
 let myToken: avSession.SessionToken = {
   sessionId: sessionId,
 }
@@ -1995,6 +2003,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 
+let sessionId = 'xxx'; // Obtain the session ID after creating a session using avSession.createAVSession.
 let myToken: avSession.SessionToken = {
   sessionId: sessionId,
 }
@@ -2042,11 +2051,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { fileIo } from '@kit.CoreFileKit';
 
-let file = await fileIo.open("filePath");
-let url = file.fd.toString();
-avSession.startDeviceLogging(url, 2048).then(() => {
-  console.info('Succeeded in starting device logging.');
-})
+async function startDeviceLogging() {
+  let file = await fileIo.open("filePath");
+  let url = file.fd.toString();
+  avSession.startDeviceLogging(url, 2048).then(() => {
+    console.info('Succeeded in starting device logging.');
+  });
+}
 ```
 
 ## avSession.stopDeviceLogging<sup>13+</sup>
@@ -2079,7 +2090,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 avSession.stopDeviceLogging().then(() => {
-  console.info('Succeeded in stopping casting.');
+  console.info('Succeeded in stopping device logging.');
 });
 ```
 
@@ -2133,8 +2144,8 @@ Unsubscribes from device log events.
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- |------------------------------------------------------------ |
-| type     | string                                                       | Yes  | Event type, which is **'deviceLogEvent'** in this case.|
-| callback | (callback: [DeviceLogEventCode](#devicelogeventcode13)) => void        | No | Callback used for unsubscription. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object. The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.           |
+| type     | string                                                       | Yes  | Type of the event to be unsubscribed from. Currently, only the **'deviceLogEvent'** event is supported.|
+| callback | (callback: [DeviceLogEventCode](#devicelogeventcode13)) => void        | No | Callback to be canceled, which must be the same as that registered using the **on** API. If this parameter is not specified, all registered callbacks are canceled.           |
 
 **Error codes**
 
@@ -2221,8 +2232,8 @@ Unsubscribes from casting device connection state events.
 
 | Name  | Type                                                         | Mandatory | Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                                                       | Yes  | Event type, which is **'deviceStateChanged'** in this case. This event is triggered when the connection state of the casting device changes.|
-| callback | (callback: [DeviceState](#devicestate20)) => void            | No  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object. The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
+| type     | string                                                       | Yes  | Type of the event to be unsubscribed from. Currently, only the **'deviceStateChanged'** event is supported, which is the callback for device connection status changes.|
+| callback | (callback: [DeviceState](#devicestate20)) => void            | No  | Callback to be canceled, which must be the same as that registered using the **on** API. If this parameter is not specified, all registered callbacks are canceled.|
 
 **Error codes**
 
@@ -2286,6 +2297,7 @@ media.createAVRecorder().then((avRecorder) => {
     console.info('Succeeded in getting input surface.');
     surfaceID = surfaceId;
     if (surfaceID) {
+      // Obtain the avCastController instance through avSession.getAVCastController.
       avCastController.setDisplaySurface(surfaceID).then(() => {
         console.info('Succeeded in setting display surface.');
       });
@@ -2332,6 +2344,7 @@ media.createAVRecorder().then((avRecorder) => {
     console.info('Succeeded in getting input surface.');
     surfaceID = surfaceId;
     if (surfaceID) {
+      // Obtain the avCastController instance through avSession.getAVCastController.
       avCastController.setDisplaySurface(surfaceID, () => {
           console.info('Succeeded in setting display surface.');
       });
@@ -2369,6 +2382,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// Obtain the avCastController instance through avSession.getAVCastController.
 avCastController.on('videoSizeChange', (width: number, height: number) => {
   console.info(`width : ${width} `);
   console.info(`height: ${height} `);
@@ -2389,7 +2403,7 @@ Unsubscribes from video size changes.
 
 | Name  | Type    | Mandatory| Description     |
 | -------- | ------------------------------------------------------------ | ---- |---- |
-| type     | string  | Yes  | Event type, which is **'videoSizeChange'** in this case.   |
+| type     | string  | Yes  | Type of the event to be unsubscribed from. Currently, only the **'videoSizeChange'** event is supported.   |
 
 **Error codes**
 
@@ -2480,7 +2494,7 @@ Unsubscribes from changes to the session that can be displayed in the system con
 
 | Name  | Type                | Mandatory| Description                                                        |
 | -------- | --------------------| ---- | ------------------------------------------------------------ |
-| callback | Callback\<Array\<[AVSessionDescriptor](#avsessiondescriptor)\>\> | No  | Callback used for unsubscription. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object.<br>This parameter is optional. If it is not specified, the change events of all sessions that can be displayed in the system control entry are unsubscribed. |
+| callback | Callback\<Array\<[AVSessionDescriptor](#avsessiondescriptor)\>\> | No  | Callback used to return the sessions that can be displayed in the system control entry.<br>This parameter is optional. If it is not specified, the change events of all sessions that can be displayed in the system control entry are unsubscribed. |
 
 **Error codes**
 
@@ -2531,7 +2545,7 @@ Defines the attributes of a playlist.
 | avQueueName     | string                  | No| No  | Playlist name.                                                   |
 | avQueueId       | string                  | No| No  | Unique ID of the playlist.                                              |
 | avQueueImage    | image.PixelMap &#124; string |No| No  | Cover image of the playlist, which can be pixel data of an image or an image path (local path or Internet path).    |
-| lastPlayedTime  | number                  | No|Yes | Last time when the playlist is played.                                                       |
+| lastPlayedTime  | number                  | No|Yes | Last time when the playlist is played. The unit is milliseconds. Reference: Unix timestamp.                                                       |
 
 ## DeviceInfo<sup>10+</sup>
 
@@ -2582,3 +2596,41 @@ Enumerates the session categories in different scenarios.
 | CATEGORY_ACTIVE     |  1   | Session category that can be displayed in the system control entry.|
 | CATEGORY_NOT_ACTIVE |  2   | Session category that cannot be displayed in the system control entry.|
 | CATEGORY_ALL        |  3   | All session categories.|
+
+## ConnectionState
+
+Enumerates the connection states. Only the system APIs are included. For details, see [ConnectionState](arkts-apis-avsession-e.md#connectionstate10).
+
+**Since:** 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
+| Name                       | Value  | Description        |
+| --------------------------- | ---- | ----------- |
+| STATE_AUTHENTICATING      | 10    | The connection to the remote device is being authenticated.|
+| STATE_MIRROR_TO_STREAM      | 11    | Switch from mirror mode to cast audio and video.|
+| STATE_STREAM_TO_MIRROR      | 12    | Switch from cast audio and video to mirror mode.|
+
+## ExtraKey
+
+Enumerates the extra keys used in different scenarios. Only system APIs are included. For details, see [ExtraKey](arkts-apis-avsession-e.md#extrakey).
+
+**Since:** 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
+| Name                       | Value  | Description        |
+| --------------------------- | ---- | ----------- |
+| LIVE_VIEW_HIDDEN_WHEN_KEYGUARD      | 'hw_live_view_hidden_when_keyguard'    | It is used as a key passed to the [setExtras](arkts-apis-avsession-AVSession.md#setextras10) API. The value is a list of Boolean values, indicating whether to hide the live view widget when the screen is locked.|

@@ -1940,47 +1940,47 @@ layoutMode(mode: WebLayoutMode)
 
 **示例：**
 
-  1、指明layoutMode为`WebLayoutMode.FIT_CONTENT`模式，为避免默认渲染模式下(`RenderMode.ASYNC_RENDER`)视口高度超过7680px导致页面渲染出错，需要显式指明渲染模式(`RenderMode.SYNC_RENDER`)。
-  ```ts
-  // xxx.ets
-  import { webview } from '@kit.ArkWeb';
+  1. 指明layoutMode为`WebLayoutMode.FIT_CONTENT`模式，为避免默认渲染模式下(`RenderMode.ASYNC_RENDER`)视口高度超过7680px导致页面渲染出错，需要显式指明渲染模式(`RenderMode.SYNC_RENDER`)。
+     ```ts
+     // xxx.ets
+     import { webview } from '@kit.ArkWeb';
 
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
-    mode: WebLayoutMode = WebLayoutMode.FIT_CONTENT;
+     @Entry
+     @Component
+     struct WebComponent {
+       controller: webview.WebviewController = new webview.WebviewController();
+       mode: WebLayoutMode = WebLayoutMode.FIT_CONTENT;
 
-    build() {
-      Column() {
-        Web({ src: 'www.example.com', controller: this.controller, renderMode: RenderMode.SYNC_RENDER })
-          .layoutMode(this.mode)
-      }
-    }
-  }
-  ```
+       build() {
+         Column() {
+           Web({ src: 'www.example.com', controller: this.controller, renderMode: RenderMode.SYNC_RENDER })
+             .layoutMode(this.mode)
+         }
+       }
+     }
+     ```
 
-  2、指明layoutMode为`WebLayoutMode.FIT_CONTENT`模式，为避免嵌套滚动场景下，Web滚动到边缘时会优先触发过滚动的过界回弹效果影响用户体验，建议指定[overScrollMode](#overscrollmode11)为`OverScrollMode.NEVER`。
-  ```ts
-  // xxx.ets
-  import { webview } from '@kit.ArkWeb';
+  2. 指明layoutMode为`WebLayoutMode.FIT_CONTENT`模式，为避免嵌套滚动场景下，Web滚动到边缘时会优先触发过滚动的过界回弹效果影响用户体验，建议指定[overScrollMode](#overscrollmode11)为`OverScrollMode.NEVER`。
+     ```ts
+     // xxx.ets
+     import { webview } from '@kit.ArkWeb';
 
-  @Entry
-  @Component
-  struct WebComponent {
-    controller: webview.WebviewController = new webview.WebviewController();
-    layoutMode: WebLayoutMode = WebLayoutMode.FIT_CONTENT;
-    @State overScrollMode: OverScrollMode = OverScrollMode.NEVER;
+     @Entry
+     @Component
+     struct WebComponent {
+       controller: webview.WebviewController = new webview.WebviewController();
+       layoutMode: WebLayoutMode = WebLayoutMode.FIT_CONTENT;
+       @State overScrollMode: OverScrollMode = OverScrollMode.NEVER;
 
-    build() {
-      Column() {
-        Web({ src: 'www.example.com', controller: this.controller, renderMode: RenderMode.SYNC_RENDER })
-          .layoutMode(this.layoutMode)
-          .overScrollMode(this.overScrollMode)
-      }
-    }
-  }
-  ```
+       build() {
+         Column() {
+           Web({ src: 'www.example.com', controller: this.controller, renderMode: RenderMode.SYNC_RENDER })
+             .layoutMode(this.layoutMode)
+             .overScrollMode(this.overScrollMode)
+         }
+       }
+     }
+     ```
 
 ## nestedScroll<sup>11+</sup>
 
@@ -3367,8 +3367,9 @@ enableWebAVSession(enabled: boolean)
 
 设置是否支持应用对接到播控中心。当属性没有显式设置时，默认支持应用对接到播控中心。
 
-<!--RP2-->
-<!--RP2End-->
+> **说明：**
+>
+> - 当enabled为false时，Web音视频不接入播控中心。若应用退至后台后，网页音频继续播放，Web组件代理申请AUDIO_PLAYBACK类型长时任务。API版本26.0.0及以上，系统会在通知栏显示对应的[长时任务](../../task-management/continuous-task.md)通知；删除该通知会停止对应的长时任务。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -4135,6 +4136,7 @@ enableDrag(value: boolean)
 | 参数名 | 类型    | 必填 | 说明                              |
 | ------ | ------- | ---- | --------------------------------- |
 | value  | boolean | 是   | 是否启用网页拖拽功能，true表示启用，false表示不启用。传入undefined或null时为true。 |
+
 **示例：**
 
   ```ts

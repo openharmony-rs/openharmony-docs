@@ -3,10 +3,11 @@
 <!--Subsystem: Ability-->
 <!--Owner: @SKY2001-->
 <!--Designer: @yzkp-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
+<!-- md-trans-meta sourceCommit=83eb20b2da17b66d3089c14abb21986b856a3985 translatedAt=2026-09-03T12:02:10.326Z pushedAt=2026-09-05T10:47:30.856Z -->
 
-The module defines process data. If a lifecycle change listener is registered by calling [appManager.on('applicationState')](js-apis-app-ability-appManager.md#appmanageronapplicationstate14), the [onProcessCreated](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronprocesscreated) callback in [ApplicationStateObserver](js-apis-inner-application-applicationStateObserver.md) is invoked when the lifecycle of an application or ability changes.
+Defines the process data object. After the lifecycle change listener is registered using [appManager.on('applicationState')](js-apis-app-ability-appManager.md#appmanageronapplicationstate14), when the lifecycle of an application or component changes, the system reports ProcessData to the developer through methods such as [onProcessCreated](js-apis-inner-application-applicationStateObserver.md#applicationstateobserveronprocesscreated) of [ApplicationStateObserver](js-apis-inner-application-applicationStateObserver.md).
 
 > **NOTE**
 > 
@@ -28,8 +29,8 @@ import { appManager } from '@kit.AbilityKit';
 | bundleName  | string   | No  | No| Bundle name of the application.                 |
 | uid         | number   | No  | No|UID of the application.                 |
 | isContinuousTask | boolean   | No  | No| Whether the task is a continuous task. **true** if yes, **false** otherwise.                |
-| isKeepAlive      | boolean   | No  | No|Whether the process is a resident task. **true** if yes, **false** otherwise.                  |
-| state       | number   | No  |  No|Application state. The options are as follows:<br>**0**: The application process is being initialized.<br>**1**: The application process has been initialized and is ready.<br>**2**: The application is running in the foreground.<br>**4**: The application is running in the background.<br>**5**: The application process is terminated.    |
+| isKeepAlive      | boolean   | No   | No | Whether the process is a resident process. The value **true** means the process is a resident process, and **false** means the opposite.                   |
+| state       | number   | No   |  No | State of the process. The value can be:<br>0 - Initial state. The process is being initialized.<br>1 - Ready state. The process has been initialized.<br>2 - Foreground.<br>4 - Background.<br>5 - Terminated.     |
 
 **Example**
 ```ts

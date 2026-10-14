@@ -3,9 +3,10 @@
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @enjoy_sunshine-->
-<!--Designer: @chengguohong; @tangjia15-->
+<!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=4f824c67b9f4e04b01e793c0dcb9c04799653b39 translatedAt=2026-09-15T02:55:02.386Z pushedAt=2026-09-16T09:47:52.985Z -->
 
 The **bluetooth.wearDetection** module provides APIs for checking whether a Bluetooth audio device (such as a Bluetooth earphone) supports wear detection and whether wear detection is enabled, and enabling or disabling wear detection for a device.
 
@@ -234,7 +235,7 @@ Checks whether the device supports wearing detection. This API uses an asynchron
 | Name   | Type    | Mandatory  | Description     |
 | ------ | ------ | ---- | ------- |
 | deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
-| callback | AsyncCallback&lt;boolean&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **data** is the result indicating support for wearing detection. Otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;boolean&gt; | Yes | Callback used to return the result. If the API is successfully called, **err** is **undefined**. If **data** is **true**, it indicates that the wearing detection capability is supported. If **data** is **false**, the wearing detection capability is not supported. If the API call fails, **err** is an error object. |
 
 **Error codes**
 
@@ -329,7 +330,7 @@ Checks whether wearing detection is enabled for a device. This API uses an async
 | Name   | Type    | Mandatory  | Description     |
 | ------ | ------ | ---- | ------- |
 | deviceId | string | Yes   | Address of the remote device, for example, XX:XX:XX:XX:XX:XX.|
-| callback | AsyncCallback&lt;boolean&gt; | Yes   | Callback used to return the result. If the operation is successful, **err** is **undefined**, and **data** is the result indicating whether wearing detection is enabled. Otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;boolean&gt; | Yes | If the API is successfully called, **err** is **undefined**. If **data** is **true**, it indicates that the wearing detection capability is enabled. If **data** is **false**, the wearing detection capability is disabled. If the API call fails, **err** is an error object. |
 
 **Error codes**
 

@@ -66,8 +66,7 @@ addSerialRight(tokenId: number, portId: number): void
 **示例：**
 ```ts
 import { bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { serialManager } from '@kit.BasicServicesKit';
+import { serialManager, BusinessError } from '@kit.BasicServicesKit';
 
 
 function addSerialRight() {

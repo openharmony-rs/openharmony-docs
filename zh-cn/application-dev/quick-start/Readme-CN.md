@@ -33,6 +33,7 @@
     - [创建应用分身](app-clone.md)
     - [创建应用多实例](multiInstance.md)
     - [配置应用图标和名称](layered-image.md)
+    - [配置应用右键扩展菜单（PC/2in1）](right-click-menu.md)
     - [HAR转HSP指导](har-to-hsp.md)
     - [HSP转HAR指导](hsp-to-har.md)
     - [HAP转HAR指导](hap-to-har.md)

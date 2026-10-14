@@ -3,15 +3,17 @@
 <!--Subsystem: Ability-->
 <!--Owner: @SKY2001-->
 <!--Designer: @yzkp-->
-<!--Tester: @lixueqing513-->
-<!--Adviser: @huipeizi-->
+<!--Tester: @liangchengguang-->
+<!--Adviser: @HelloCrease-->
 <!--deprecated_code_no_check-->
+<!-- md-trans-meta sourceCommit=b8128bc63f81dd586f2cdead7dfccd2fcdec2559 translatedAt=2026-09-03T12:02:44.936Z pushedAt=2026-09-05T10:47:30.860Z -->
 
-The module defines the running information of a process. The information can be obtained through [getProcessRunningInfos](js-apis-application-appManager.md#appmanagergetprocessrunninginfosdeprecated) of appManager.
+ProcessRunningInfo defines the process running information, including the process ID, application UID, process name, and names of all running Bundles in the process. The information can be obtained through [getProcessRunningInfos](js-apis-application-appManager.md#appmanagergetprocessrunninginfosdeprecated) in appManager.
 
 > **NOTE**
-> - The APIs provided by this module are deprecated since API version 9. You are advised to use [ProcessInformation<sup>9+</sup>](js-apis-inner-application-processInformation.md) instead.
-> - The initial APIs of this module are supported since API version 8.
+>
+> - The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The APIs are supported since API version 8 and deprecated since API version 9. You are advised to use [ProcessInformation<sup>9+</sup>](js-apis-inner-application-processInformation.md) instead.
 
 ## Modules to Import
 
@@ -26,7 +28,7 @@ import appManager from '@ohos.application.appManager';
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | pid | number | No| No| Process ID.|
-| uid | number | No| No| UID of the application.|
+| uid | number | No | No | UID of the application. |
 | processName | string | No| No| Process name.|
 | bundleNames | Array&lt;string&gt; | No| No| Names of all running bundles in the process.|
 

@@ -6,8 +6,11 @@
 <!--Designer: @zhangboren-->
 <!--Tester: @TerryTsao-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=59c43aed2026bf661a322032daecc86d61224e0f translatedAt=2026-09-02T12:32:48.940Z -->
 
-**@LocalBuilder** provides the same functionality as the local [@Builder](./ts-universal-builder-dynamic.md), and can better determine the parent-child relationships of components and state management than the local `@Builder`. For the development guide, see [@LocalBuilder Decorator: Maintaining Component Relationships](../../../ui/state-management/arkts-localBuilder.md).
+`@LocalBuilder` provides the same functionality as the local [@Builder](./ts-universal-builder-dynamic.md#builder), and can better determine the parent-child relationships of components and state management than the local `@Builder`. It is applicable to scenarios where the parent-child relationships of components need to be maintained in custom build functions and state management synchronization needs to be kept.
+
+For details about the development guide, see [@LocalBuilder Decorator: Maintaining Component Relationships](../../../ui/state-management/arkts-localBuilder.md).
 
 > **NOTE**
 >
