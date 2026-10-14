@@ -7396,6 +7396,46 @@
 						"start_line":198
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":21,
+						"name":"head",
+						"start_line":16
+					},
+					{
+						"end_line":41,
+						"name":"getPortList",
+						"start_line":30
+					},
+					{
+						"end_line":66,
+						"name":"requestSerialRight",
+						"start_line":45
+					},
+					{
+						"end_line":81,
+						"name":"openSerialDevice",
+						"start_line":70
+					},
+					{
+						"end_line":113,
+						"name":"serialRead",
+						"start_line":85
+					},
+					{
+						"end_line":145,
+						"name":"serialWrite",
+						"start_line":117
+					},
+					{
+						"end_line":198,
+						"name":"closeSerialDevice",
+						"start_line":187
+					}
+				]
 			}
 		]
 	},
@@ -7434,6 +7474,41 @@
 						"end_line":194,
 						"name":"setSerialConfig",
 						"start_line":176
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/USB/USBManagerSerialSample/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":21,
+						"name":"head",
+						"start_line":16
+					},
+					{
+						"end_line":41,
+						"name":"getPortList",
+						"start_line":30
+					},
+					{
+						"end_line":66,
+						"name":"requestSerialRight",
+						"start_line":45
+					},
+					{
+						"end_line":81,
+						"name":"openSerialDevice",
+						"start_line":70
+					},
+					{
+						"end_line":161,
+						"name":"getSerialConfig",
+						"start_line":149
+					},
+					{
+						"end_line":183,
+						"name":"setSerialConfig",
+						"start_line":165
 					}
 				]
 			}
@@ -20206,6 +20281,16 @@
 						"end_line":503,
 						"name":"closePipe",
 						"start_line":483
+					},
+					{
+						"end_line":102,
+						"name":"getDevices",
+						"start_line":32
+					},
+					{
+						"end_line":122,
+						"name":"requestRight",
+						"start_line":106
 					}
 				]
 			},
@@ -20271,6 +20356,16 @@
 						"end_line":503,
 						"name":"closePipe",
 						"start_line":483
+					},
+					{
+						"end_line":102,
+						"name":"getDevices",
+						"start_line":32
+					},
+					{
+						"end_line":264,
+						"name":"controlTransfer",
+						"start_line":238
 					}
 				]
 			},
@@ -20331,6 +20426,16 @@
 						"end_line":159,
 						"name":"connectDevice",
 						"start_line":125
+					},
+					{
+						"end_line":122,
+						"name":"requestRight",
+						"start_line":106
+					},
+					{
+						"end_line":619,
+						"name":"closePipe",
+						"start_line":598
 					}
 				]
 			},
@@ -20396,6 +20501,16 @@
 						"end_line":351,
 						"name":"interruptTransfer_release",
 						"start_line":342
+					},
+					{
+						"end_line":102,
+						"name":"getDevices",
+						"start_line":32
+					},
+					{
+						"end_line":122,
+						"name":"requestRight",
+						"start_line":106
 					}
 				]
 			},
@@ -20471,6 +20586,16 @@
 						"end_line":479,
 						"name":"isochronousTransfer_release",
 						"start_line":470
+					},
+					{
+						"end_line":102,
+						"name":"getDevices",
+						"start_line":32
+					},
+					{
+						"end_line":122,
+						"name":"requestRight",
+						"start_line":106
 					}
 				]
 			},
