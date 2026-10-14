@@ -84,9 +84,9 @@ struct ShortWebPage {
       Text('TextTextTextText')
         .width('100%')
         .height(this.marginTop)
-        .backgroundColor('#e1dede') // 当isVisible标志位为true的时候，组件状态为可见，否则组件状态为不可见，不参与布局、不进行占位
+        .backgroundColor('#e1dede')
         .visibility(this.isVisible ? Visibility.Visible :
-          Visibility.None)
+          Visibility.None) // 当isVisible标志位为true的时候，组件状态为可见，否则组件状态为不可见，不参与布局、不进行占位
       Web({
         src: $rawfile('FullScreen.html'), // 示例网址
         controller: this.controller
