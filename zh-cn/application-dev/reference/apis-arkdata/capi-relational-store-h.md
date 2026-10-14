@@ -76,7 +76,7 @@
 | [int OH_Rdb_IsTokenizerSupported(Rdb_Tokenizer tokenizer, bool *isSupported)](#oh_rdb_istokenizersupported) | - | 判断当前平台是否支持传入的分词器。 |
 | [int OH_Rdb_SetTokenizer(OH_Rdb_ConfigV2 *config, Rdb_Tokenizer tokenizer)](#oh_rdb_settokenizer) | - | 给指定的数据库文件配置设置分词器类型。 |
 | [int OH_Rdb_SetPersistent(OH_Rdb_ConfigV2 *config, bool isPersistent)](#oh_rdb_setpersistent) | - | 指定数据库是否需要持久化。 |
-| [const int *OH_Rdb_GetSupportedDbType(int *typeCount)](#oh_rdb_getsupporteddbtype) | - | 获得支持的数据库类型[Rdb_DBType](capi-relational-store-h.md#rdb_dbtype)。 |
+| [const int *OH_Rdb_GetSupportedDbType(int *typeCount)](#oh_rdb_getsupporteddbtype) | - | 获取当前系统支持的所有数据库类型。 |
 | [OH_VObject *OH_Rdb_CreateValueObject()](#oh_rdb_createvalueobject) | - | 创建[OH_VObject](capi-rdb-oh-vobject.md)实例。 |
 | [OH_VBucket *OH_Rdb_CreateValuesBucket()](#oh_rdb_createvaluesbucket) | - | 创建[OH_VBucket](capi-rdb-oh-vbucket.md)实例。 |
 | [OH_Predicates *OH_Rdb_CreatePredicates(const char *table)](#oh_rdb_createpredicates) | - | 创建[OH_Predicates](capi-rdb-oh-predicates.md)实例。 |
@@ -200,7 +200,7 @@ enum Rdb_DBType
 
 | 枚举项 | 描述 |
 | -- | -- |
-| RDB_SQLITE = 1 | 表示使用sqlite作为数据库内核。 |
+| RDB_SQLITE = 1 | 表示使用SQLite作为数据库内核。 |
 | RDB_CAYLEY = 2 | 表示使用凯莱数据库作为数据库内核。 |
 | DBTYPE_BUTT = 64 | 表示内核类型枚举值允许取值的最大值，这是一个非法值。 |
 
@@ -809,7 +809,7 @@ const int *OH_Rdb_GetSupportedDbType(int *typeCount)
 
 **描述**
 
-获得支持的数据库类型[Rdb_DBType](capi-relational-store-h.md#rdb_dbtype)。
+获取当前系统支持的所有数据库类型。
 
 **起始版本：** 14
 
@@ -818,13 +818,13 @@ const int *OH_Rdb_GetSupportedDbType(int *typeCount)
 
 | 参数项 | 描述 |
 | -- | -- |
-| int *typeCount | 表示支持的数据库类型的数组的长度，作为出参使用。 |
+| int *typeCount | 返回当前系统支持的数据库类型个数，即返回值的数组长度。typeCount为nullptr时返回nullptr。 |
 
 **返回：**
 
 | 类型         | 说明 |
 |------------| -- |
-| const int * | 返回操作是否成功，出错时返回对应的错误码。<br>RDB_OK 表示成功。<br>RDB_E_INVALID_ARGS 表示无效参数。详细信息请参阅[OH_Rdb_ErrCode](capi-relational-store-error-code-h.md#oh_rdb_errcode)。 |
+| const int * | 返回当前系统支持的所有数据库类型，元素为[Rdb_DBType](#rdb_dbtype)枚举值，个数由typeCount返回。 |
 
 ### OH_Rdb_CreateValueObject()
 
@@ -2316,7 +2316,7 @@ OH_Cursor *OH_Rdb_QuerySqlWithoutRowCount(OH_Rdb_Store *store, const char *sql, 
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Cursor *](capi-rdb-oh-cursor.md) * | 如果查询成功则返回一个指向[OH_Cursor](capi-rdb-oh-cursor.md)结构体实例的指针。如果SQL语句无效或内存分配失败，则返回nullptr。 |
+| [OH_Cursor](capi-rdb-oh-cursor.md) * | 如果查询成功则返回一个指向[OH_Cursor](capi-rdb-oh-cursor.md)结构体实例的指针。如果SQL语句无效或内存分配失败，则返回nullptr。 |
 
 ### OH_Rdb_BatchInsertWithReturning()
 
