@@ -1308,7 +1308,7 @@ try {
   let state = cloudSync.getFileSyncState(uri);
 } catch (err) {
   let error:BusinessError = err as BusinessError;
-  console.error("getFileSyncStatefailed with error: " + JSON.stringify(error));
+  console.error("getFileSyncState failed with error: " + JSON.stringify(error));
 }
 ```
 
