@@ -836,7 +836,7 @@ smartperf工具暂时不支持该插件的trace数据解析，若需分析networ
 
 ## 常用命令
 
-### 抓取chromium/cef/electron框架V8（JavaScript 引擎）与 PartitionAlloc（Chromium 的高性能定制内存分配器）内存调用栈
+### 抓取chromium/cef/electron框架V8 JS堆内存分配栈和PartitionAlloc分配器内存调用栈
 
 通过restrace_tag抓取chromium/cef/electron框架V8 JS堆内存分配栈和PartitionAlloc分配器内存跟踪数据。
 
