@@ -155,6 +155,33 @@
 5. 获取会话支持的有效命令，从而应用可以感知媒体会话提供方支持的命令。
 
    <!-- @[getAVSessionValidCommands](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Media/AVSession/LocalAVSession/AVSessionController/entry/src/main/ets/feature/MediaController.ets) -->    
+   
+   ``` TypeScript
+   async getAVSessionValidCommands(): Promise<void> {
+     try {
+       // 获取会话支持的有效命令。
+       this.currentController?.getValidCommands((error: BusinessError,
+         validCommands: avSession.AVControlCommandType[]) => {
+         if (error) {
+           Log.error(TAG, 'Failed to get valid commands, code: ' + error.code + ', message: ' + error.message);
+           return;
+         }
+         Log.info(TAG, 'Succeeded in getting valid commands, size: ' + validCommands.length);
+         this.validCommandsLink?.set(validCommands);
+       });
+   
+       // 会话支持的有效命令变化监听事件。
+       this.currentController?.on('validCommandChange', (validCommands: avSession.AVControlCommandType[]) => {
+         Log.info(TAG, 'Succeeded in valid command change, size: ' + validCommands.length);
+         this.validCommandsLink?.set(validCommands);
+       });
+     } catch (error) {
+       if (error) {
+         Log.error(TAG, `validCommand Error: Code: ${error.code}, message: ${error.message}`);
+       }
+     }
+   }
+   ```
 
 6. 控制媒体会话行为，例如发送用户对当前曲目的操作（播放/暂停/上一首/下一首等）命令。
 
