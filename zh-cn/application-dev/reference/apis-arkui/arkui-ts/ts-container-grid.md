@@ -3627,6 +3627,8 @@ struct GridOnMoveExample {
 
 该示例通过[scrollSnapStrategy](#scrollsnapstrategy)接口，实现了Grid组件设置两阶段滚动吸附策略，惯性滚动结束后item对齐到视口中间位置。
 
+从API版本26.2.0开始，新增scrollSnapStrategy接口。
+
 GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
 
 <!--code_no_check-->
@@ -3674,4 +3676,4 @@ struct GridSnapExample {
 }
 ```
 
-![scrollSnapStrategy_grid](figures/scrollSnapStrategy_grid.gif)
+![scrollSnapStrategy-grid](figures/scrollSnapStrategy-grid.gif)

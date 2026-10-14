@@ -1435,7 +1435,7 @@ calculateApproachOffset(velocity: number, decayOffset: number): number
 
 每次惯性滚动期间仅调用一次，用于计算趋近偏移量。
 
-返回值为非负有限距离幅值，可以大于或等于decayOffset。返回非有限值、负数或回调异常时，回退到自然衰减偏移量。
+返回非有限值、负数或回调异常时，回退到自然衰减偏移量。
 
 **起始版本：** 26.2.0
 
@@ -1456,7 +1456,7 @@ calculateApproachOffset(velocity: number, decayOffset: number): number
 
 | 类型    | 说明       |
 | ------- | ---------- |
-| number  | 趋近偏移量大小。<br/>单位：vp<br/>取值范围：[0, +∞) |
+| number  | 趋近偏移量大小，非负有限距离幅值，可以大于或等于decayOffset。<br/>单位：vp<br/>取值范围：[0, +∞) |
 
 ### calculateSnapOffset
 
@@ -1464,7 +1464,7 @@ calculateSnapOffset(velocity: number): number
 
 每次趋近运动切换到最终限位动画时仅调用一次，用于计算目标偏移量。
 
-返回值为绝对内容滚动目标，0是合法目标；有限目标超出合法滚动范围时，会被限制到合法滚动范围内。返回非有限值或回调异常时，使用组件的兜底目标。Grid自定义策略保持在趋近阶段结束位置，不返回手势起始位置。
+返回非有限值或回调异常时，使用组件的兜底目标。Grid自定义策略保持在趋近阶段结束位置，不返回手势起始位置。
 
 **起始版本：** 26.2.0
 
@@ -1484,7 +1484,7 @@ calculateSnapOffset(velocity: number): number
 
 | 类型    | 说明       |
 | ------- | ---------- |
-| number  | 目标滚动绝对偏移量。<br/>单位：vp |
+| number  | 目标滚动绝对偏移量，0是合法目标，超出合法滚动范围的有限值会被限制到范围内。<br/>单位：vp<br/>取值范围：[0, 合法滚动范围最大偏移量] |
 
 ## 示例
 
