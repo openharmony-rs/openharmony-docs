@@ -305,7 +305,7 @@ media.createAVPlayer((err: BusinessError, player: media.AVPlayer) => {
 | dateTime | string | 否 | 是 | 媒体资源的创建时间。不支持AVRecorder设置该属性。<br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
 | dateTimeFormat | string | 否 | 是 | 媒体资源的创建时间，按YYYY-MM-DD HH:mm:ss格式输出。不支持AVRecorder设置该属性。<br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
 | composer | string | 否 | 是 | 媒体资源的作曲家。不支持AVRecorder设置该属性。<br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
-| duration | string | 否 | 是 | 媒体资源的时长。不支持AVRecorder设置该属性。<br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
+| duration | string | 否 | 是 | 媒体资源的时长，单位为毫秒（ms）。不支持AVRecorder设置该属性。<br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
 | genre | string | 否 | 是 | 媒体资源的类型或体裁。<br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
 | hasAudio | string | 否 | 是 | 媒体资源是否包含音频。不支持AVRecorder设置该属性。<br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
 | hasVideo | string | 否 | 是 | 媒体资源是否包含视频。不支持AVRecorder设置该属性。<br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
