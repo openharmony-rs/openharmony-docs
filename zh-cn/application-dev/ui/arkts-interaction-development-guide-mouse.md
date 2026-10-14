@@ -16,7 +16,7 @@
 > - 例如当我们需要开发单击[Button](../reference/apis-arkui/arkui-ts/ts-basic-components-button.md)跳转页面的功能、且需要支持手指点击和鼠标左键点击，那么只绑定一个点击事件（[onClick](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#onclick)）就可以实现该效果；
 > - 若需要针对手指和鼠标左键的点击实现不一样的效果，可以在onClick回调中，使用回调参数中的source字段判断当前触发事件的来源是手指还是鼠标。
 
-此外，对PC/2in1、Tablet类型设备上没有针对鼠标操作适配的应用，系统会提供兜底方案，将鼠标左键的点击和滑动，以及滚轮事件转换为触摸事件。并且对开发者开放了通过配置文件自行控制是否转换事件的能力。
+此外，针对PC/2in1、Tablet类型设备上没有适配鼠标操作的应用，可以通过配置文件自行控制是否转换事件，将鼠标左键的点击、滑动以及滚轮事件，转换为触摸事件，将鼠标右键事件转换为长按事件。
 
 ## 处理鼠标移动
 
@@ -36,8 +36,6 @@ onMouse(event: (event?: MouseEvent) => void)
 > **说明：**
 >
 > 按键（MouseButton）的值：Left/Right/Middle/Back/Forward均对应鼠标上的实体按键，当这些按键被按下或松开时触发这些按键的事件。None表示没有鼠标按键按下或松开的状态下，仅移动鼠标所触发的事件。
-
-ArkTS-Dyn示例：
 
 <!-- @[mouse_move](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/mouseMove/MouseMove.ets) --> 
 
@@ -92,76 +90,6 @@ struct MouseMove {
 }
 ```
 
-ArkTS-Sta示例：
-
-<!-- @[mouse_move](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/InterActionSta/entry/src/main/ets/pages/mouseMove/MouseMove.ets) -->
-
-``` TypeScript
-import {
-  Entry,
-  Component,
-  State,
-  Column,
-  Button,
-  Divider,
-  Text,
-  Color,
-  MouseEvent,
-  ButtonType,
-  HorizontalAlign,
-  FlexAlign
-} from '@kit.ArkUI';
-
-@Entry
-@Component
-struct MouseMove {
-  @State buttonText: string = '';
-  @State columnText: string = '';
-  @State text: string = 'OnMouse Sample Button';
-  @State color: Color = Color.Gray;
-
-  build() {
-    Column() {
-      Button(this.text, { type: ButtonType.Capsule })
-        .width(200)
-        .height(100)
-        .backgroundColor(this.color)
-        .onMouse((event?: MouseEvent) => { // 设置Button的onMouse回调
-          if (event) {
-            this.buttonText = 'Button onMouse:\n' + '' +
-              'button = ' + event.button + '\n' +
-              'action = ' + event.action + '\n' +
-              'x,y = ' + '\n' + '(' + event.x + ',' + event.y + ')' + '\n' +
-              'windowXY=' + '\n' + '(' + event.windowX + ',' + event.windowY + ')';
-          }
-        })
-      Column() {
-        Divider()
-        Text(this.buttonText).fontColor(Color.Green).padding(5)
-        Divider()
-        Text(this.columnText).fontColor(Color.Red).padding(5)
-      }
-      .width('100%')
-      .alignItems(HorizontalAlign.Start)
-    }
-    .width('100%')
-    .height('100%')
-    .justifyContent(FlexAlign.Center)
-    .borderWidth(2)
-    .borderColor(Color.Red)
-    .onMouse((event?: MouseEvent) => { // Set the onMouse callback for the column.
-      if (event) {
-        this.columnText = 'Column onMouse:\n' + '' +
-          'button = ' + event.button + '\n' +
-          'action = ' + event.action + '\n' +
-          'x,y = ' + '\n' + '(' + event.x + ',' + event.y + ')' + '\n' +
-          'windowXY=' + '\n' + '(' + event.windowX + ',' + event.windowY + ')';
-      }
-    })
-  }
-}
-```
-
 上面的示例中给Button绑定onMouse接口。在回调中，打印出鼠标事件的button/action等回调参数值。同时，在外层的Column容器上，也做相同的设置。整个过程可以分为以下两个动作：
 
 1. 移动鼠标：在鼠标从Button外部移入Button内部前，仅触发了Column的onMouse回调；当鼠标移入到Button内部后，由于onMouse事件默认是冒泡的，所以此时会同时响应Column的onMouse回调和Button的onMouse回调。此过程中，由于鼠标仅有移动动作而没有点击动作，因此打印信息中的button均为0（MouseButton.None的枚举值）、action均为3（MouseAction.Move的枚举值）。
@@ -176,9 +104,6 @@ struct MouseMove {
 ![onMouse1](figures/onMouse_1.gif)
 
 如果需要阻止鼠标事件冒泡，可以通过调用stopPropagation方法进行设置。
-
-ArkTS-Dyn示例：
-
 <!-- @[stop_propagation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/stopPropagation/StopPropagation.ets) -->
 
 ``` TypeScript
@@ -232,65 +157,6 @@ struct StopPropagation {
   }
 }
 ```
-
-ArkTS-Sta示例：
-
-<!-- @[stop_propagation](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/InterActionSta/entry/src/main/ets/pages/stopPropagation/StopPropagation.ets) -->
-
-``` TypeScript
-import { Entry, Component, State, Column, Button, Divider, Text, Color, MouseEvent, ButtonType, HorizontalAlign, FlexAlign } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct StopPropagation {
-  @State buttonText: string = '';
-  @State columnText: string = '';
-  @State text: string = 'OnMouse Sample Button';
-  @State color: Color = Color.Gray;
-
-  build() {
-    Column() {
-      Button(this.text, { type: ButtonType.Capsule })
-        .width(200)
-        .height(100)
-        .backgroundColor(this.color)
-        .onMouse((event?: MouseEvent) => { // 设置Button的onMouse回调
-          if (event) {
-            event.stopPropagation(); // 在Button的onMouse事件中设置阻止冒泡
-            this.buttonText = 'Button onMouse:\n' + '' +
-              'button = ' + event.button + '\n' +
-              'action = ' + event.action + '\n' +
-              'x,y = ' + '\n' + '(' + event.x + ',' + event.y + ')' + '\n' +
-              'windowXY=' + '\n' + '(' + event.windowX + ',' + event.windowY + ')';
-          }
-        })
-      Column() {
-        Divider()
-        Text(this.buttonText).fontColor(Color.Green).padding(5)
-        Divider()
-        Text(this.columnText).fontColor(Color.Red).padding(5)
-      }
-      .width('100%')
-      .alignItems(HorizontalAlign.Start)
-    }
-    .width('100%')
-    .height('100%')
-    .justifyContent(FlexAlign.Center)
-    .borderWidth(2)
-    .borderColor(Color.Red)
-    .onMouse((event?: MouseEvent) => { // 设置Column的onMouse回调
-      if (event) {
-        this.columnText = 'Column onMouse:\n' + '' +
-          'button = ' + event.button + '\n' +
-          'action = ' + event.action + '\n' +
-          'x,y = ' + '\n' + '(' + event.x + ',' + event.y + ')' + '\n' +
-          'windowXY=' + '\n' + '(' + event.windowX + ',' + event.windowY + ')';
-      }
-    })
-  }
-}
-```
-
 ![onMouse2](figures/onMouse_2.gif)
 
 在子组件（Button）的onMouse中，通过回调参数event调用stopPropagation回调方法（如上）即可阻止Button子组件的鼠标事件冒泡到父组件Column上。
@@ -308,43 +174,9 @@ onHover(event: (isHover: boolean) => void)
 
 若组件绑定了该接口，当鼠标指针从组件外部进入到该组件的瞬间会触发事件回调，参数isHover等于true；鼠标指针离开组件的瞬间也会触发该事件回调，参数isHover等于false。
 
-ArkTS-Dyn示例：
-
 <!-- @[on_hover](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/onHover/OnHover.ets) -->
 
 ``` TypeScript
-@Entry
-@Component
-struct OnHover {
-  @State hoverText: string = 'Not Hover';
-  @State color: Color = Color.Gray;
-
-  build() {
-    Column() {
-      Button(this.hoverText)
-        .width(200).height(100)
-        .backgroundColor(this.color)
-        .onHover((isHover?: boolean) => { // 使用onHover接口监听鼠标是否悬浮在Button组件上
-          if (isHover) {
-            this.hoverText = 'Hovered!';
-            this.color = Color.Green;
-          } else {
-            this.hoverText = 'Not Hover';
-            this.color = Color.Gray;
-          }
-        })
-    }.width('100%').height('100%').justifyContent(FlexAlign.Center)
-  }
-}
-```
-
-ArkTS-Sta示例：
-
-<!-- @[on_hover](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/InterActionSta/entry/src/main/ets/pages/onHover/OnHover.ets) -->
-
-``` TypeScript
-import { Entry, Component, State, Column, Button, Color, FlexAlign } from '@kit.ArkUI';
-
 @Entry
 @Component
 struct OnHover {
@@ -384,8 +216,6 @@ struct OnHover {
 当用户按下鼠标上的按键时，会产生鼠标按下事件，可以通过[MouseEvent](../reference/apis-arkui/arkui-ts/ts-universal-mouse-key.md#mouseevent对象说明)访问事件的一些重要信息，如发生时间，鼠标按键（MouseButton：左键/右键等），也可以通过[getModifierKeyState](../reference/apis-arkui/arkui-ts/ts-universal-events-click.md#getmodifierkeystate12)接口获取到用户在使用鼠标时，物理键盘上的**ctrl/alt/shift**这几个修饰键的按下状态，可以通过组合判断它们的状态来实现一些便捷操作。
 
 以下是一个通过处理鼠标按键实现快速多选的示例：
-
-ArkTS-Dyn示例：
 
 <!-- @[mouse_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/MouseButton/MouseButton.ets) -->   
 
@@ -521,160 +351,6 @@ struct ListExample {
 }
 ```
 
-ArkTS-Sta示例：
-
-<!-- @[mouse_button](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/InterActionSta/entry/src/main/ets/pages/MouseButton/MouseButton.ets) -->
-
-``` TypeScript
-import {
-  Entry,
-  Component,
-  State,
-  Builder,
-  CommonMethod,
-  CustomStyles,
-  Column,
-  List,
-  ListItem,
-  LazyForEach,
-  Text,
-  Color,
-  MouseEvent,
-  MouseButton,
-  MouseAction,
-  IDataSource,
-  DataChangeListener,
-  Axis,
-  BarState,
-  EdgeEffect,
-  Padding,
-  TextAlign
-} from '@kit.ArkUI';
-
-class ListDataSource implements IDataSource<int> {
-  private list: int[] = [];
-  private listeners: DataChangeListener[] = [];
-
-  constructor(list: int[]) {
-    this.list = list;
-  }
-
-  totalCount(): int {
-    return this.list.length;
-  }
-
-  getData(index: int): int {
-    return this.list[index];
-  }
-
-  registerDataChangeListener(listener: DataChangeListener): void {
-    if (this.listeners.indexOf(listener) < 0) {
-      this.listeners.push(listener);
-    }
-  }
-
-  unregisterDataChangeListener(listener: DataChangeListener): void {
-    let pos: int = this.listeners.indexOf(listener);
-    if (pos >= 0) {
-      this.listeners.splice(pos, 1);
-    }
-  }
-
-  // 通知控制器数据删除
-  notifyDataDelete(index: int): void {
-    this.listeners.forEach(listener => {
-      listener.onDataDelete(index);
-    });
-  }
-
-  // 在指定索引位置删除一个元素
-  public deleteItem(index: int): void {
-    this.list.splice(index, 1);
-    this.notifyDataDelete(index);
-  }
-}
-
-@Entry
-@Component
-struct ListExample {
-  private arr: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
-  private allSelectedItems: Array<int> = new Array<int>();
-  @State isSelected: boolean[] = [false, false, false, false, false, false, false, false, false, false];
-  selectedStyle: CustomStyles = (instance: CommonMethod): void => {
-    instance.backgroundColor(Color.Blue);
-  }
-
-  isItemSelected(item: int): boolean {
-    for (let i: int = 0; i < this.allSelectedItems.length; i++) {
-      if (this.allSelectedItems[i] === item) {
-        this.isSelected[item] = true;
-        return true;
-      }
-    }
-    this.isSelected[item] = false;
-    return false;
-  }
-
-  build() {
-    Column() {
-      List({ space: 10, initialIndex: 0 }) {
-        LazyForEach(this.arr, (index: int) => {
-          ListItem() {
-            Text('' + index)
-              .width('100%')
-              .height(100)
-              .fontSize(16)
-              .fontColor(this.isSelected[index] ? Color.White : Color.Black)
-              .textAlign(TextAlign.Center)
-          }
-          .backgroundColor(Color.White)
-          .selectable(true)
-          .selected(this.isSelected[index])
-          .stateStyles({
-            selected: this.selectedStyle
-          })
-          .onMouse((event: MouseEvent) => {
-            // 判断是否按下鼠标左键
-            if (event.button === MouseButton.Left && event.action === MouseAction.Press) {
-              // 判断之前是否已经是选中状态
-              let isSelected: boolean = this.isItemSelected(index);
-              // 判断修饰键状态
-              let isCtrlPressing: boolean = false;
-              if (event.getModifierKeyState) {
-                isCtrlPressing = event.getModifierKeyState!(['Ctrl']);
-              }
-              // 如果没有按着ctrl键点鼠标，则强制清理掉其他选中的条目并只让当前条目选中
-              if (!isCtrlPressing) {
-                this.allSelectedItems = [];
-                for (let i: int = 0; i < this.isSelected.length; i++) {
-                  this.isSelected[i] = false;
-                }
-              }
-              if (isSelected) {
-                this.allSelectedItems = this.allSelectedItems.filter(item => item !== index);
-                this.isSelected[index] = false;
-              } else {
-                this.allSelectedItems.push(index);
-                this.isSelected[index] = true;
-              }
-            }
-          })
-        }, (item: int) => item.toString())
-      }
-      .listDirection(Axis.Vertical)
-      .scrollBar(BarState.Off)
-      .friction(0.6)
-      .edgeEffect(EdgeEffect.Spring)
-      .width('90%')
-    }
-    .width('100%')
-    .height('100%')
-    .backgroundColor(0xDCDCDC)
-    .padding({ top: 5 } as Padding)
-  }
-}
-```
-
 ![ChangeMouse](figures/ChangeMouse.gif)
 
 ## 处理滚轮
@@ -698,8 +374,6 @@ struct ListExample {
 > 3. 但只要指针下有一个可以响应纵向滚动，则会优先处理纵向，不再处理横向。
 
 以下是纵向和横向的List响应滚轮的示例：
-
-ArkTS-Dyn示例：
 
 <!-- @[list_data_source](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/InterAction/entry/src/main/ets/pages/MouseWheel/ListDataSource.ets) -->
 
@@ -824,193 +498,113 @@ struct MouseWheel {
 }
 ```
 
-ArkTS-Sta示例：
-
-<!-- @[list_data_source](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/InterActionSta/entry/src/main/ets/pages/MouseWheel/ListDataSource.ets) -->
-
-``` TypeScript
-import { IDataSource, DataChangeListener } from '@kit.ArkUI';
-
-export class ListDataSource implements IDataSource<number> {
-  private list: number[] = [];
-  private listeners: DataChangeListener[] = [];
-
-  constructor(list: number[]) {
-    this.list = list;
-  }
-
-  totalCount(): int {
-    return this.list.length;
-  }
-
-  getData(index: int): number {
-    return this.list[index];
-  }
-
-  registerDataChangeListener(listener: DataChangeListener): void {
-    if (this.listeners.indexOf(listener) < 0) {
-      this.listeners.push(listener);
-    }
-  }
-
-  unregisterDataChangeListener(listener: DataChangeListener): void {
-    let pos: int = this.listeners.indexOf(listener);
-    if (pos >= 0) {
-      this.listeners.splice(pos, 1);
-    }
-  }
-
-  // 通知控制器数据删除
-  notifyDataDelete(index: int): void {
-    this.listeners.forEach(listener => {
-      listener.onDataDelete(index);
-    });
-  }
-
-  // 通知控制器添加数据
-  notifyDataAdd(index: int): void {
-    this.listeners.forEach(listener => {
-      listener.onDataAdd(index);
-    });
-  }
-
-  // 在指定索引位置删除一个元素
-  public deleteItem(index: int): void {
-    this.list.splice(index, 1);
-    this.notifyDataDelete(index);
-  }
-
-  // 在指定索引位置插入一个元素
-  public insertItem(index: int, data: number): void {
-    this.list.splice(index, 0, data);
-    this.notifyDataAdd(index);
-  }
-}
-```
-
-<!-- @[mouse_wheel](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkUISample-Sta/InterActionSta/entry/src/main/ets/pages/MouseWheel/MouseWheel.ets) -->
-
-``` TypeScript
-import { Entry, Component, State, Column, Button, Text, List, ListItem, LazyForEach, MouseEvent, MouseAction, Axis, BarState, EdgeEffect, Padding, PanGesture, PanDirection, TextAlign, Margin } from '@kit.ArkUI';
-import { ListDataSource } from './ListDataSource';
-
-@Entry
-@Component
-struct MouseWheel {
-  private arr: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
-  @State dir1: Axis = Axis.Vertical;
-
-  build() {
-    Column() {
-      Button('Click to Change ListDirection')
-        .margin({ top: 20, right: 20, bottom: 20, left: 20 } as Margin)
-        .onMouse((event: MouseEvent) => {
-          if (event && event.action === MouseAction.Press) {
-            if (this.dir1 === Axis.Vertical) {
-              this.dir1 = Axis.Horizontal
-            } else {
-              this.dir1 = Axis.Vertical
-            }
-          }
-        })
-      List({ space: 20, initialIndex: 0 }) {
-        LazyForEach(this.arr, (item: number) => {
-          ListItem() {
-            Text('' + item)
-              .width('100%')
-              .height(100)
-              .fontSize(16)
-              .textAlign(TextAlign.Center)
-              .borderRadius(10)
-              .backgroundColor(0xFFFFFF)
-          }
-          .margin({ top: 20, right: 20, bottom: 20, left: 20 } as Margin)
-        }, (item: number) => item.toString())
-      }
-      .borderWidth(1)
-      .listDirection(this.dir1) // 排列方向
-      .scrollBar(BarState.Off)
-      .friction(0.6)
-      .divider({
-        strokeWidth: 2,
-        color: 0xFFFFFF,
-        startMargin: 20,
-        endMargin: 20
-      }) // 每行之间的分界线
-      .edgeEffect(EdgeEffect.Spring) // 边缘效果设置为Spring
-      .width('90%')
-    }
-    .width('100%')
-    .height('100%')
-    .backgroundColor(0xDCDCDC)
-    .padding({ top: 20, right: 20, bottom: 20, left: 20 } as Margin)
-  }
-}
-```
 ![ListAxis](figures/listAxis.gif)
 
 ## 鼠标事件转换
-如果开发者在开发应用时，只考虑实现了触控操作场景，没有针对PC/2in1、Tablet设备使用鼠标操作的场景做适配，会导致出现应用在使用鼠标操作时发生实际行为与预期不一致、甚至无法操作的情况。针对该场景，系统提供兜底，会默认将鼠标左键事件、轴事件转换成触摸事件发送给应用，从而达到类似手机上的操作体验。
 
-此外，如果开发者期望控制上述转换行为，系统开放了自定义配置能力，开发者可以通过在应用中新增配置文件的方式来控制是否将鼠标事件转换成触摸事件。
+如果开发者在开发应用时，只考虑实现触控操作场景，没有针对PC/2in1、Tablet设备使用鼠标操作的场景做适配，会导致应用使用鼠标操作时实际行为与预期不一致、甚至无法操作。针对该场景，开发者可以通过在应用中新增配置文件，控制是否将鼠标事件转换成触摸事件。转换后鼠标事件可以触发触摸事件效果，从而解决上述问题。
 
-### 开发步骤
-**1. 增加配置文件**
-
-在应用的entry/src/main/resources/base/profile目录下创建配置文件easy_go.json（示例文件名，可自行命名）。在[module.json5](../quick-start/module-configuration-file.md)配置文件中添加easyGo字段，并指向引用的easy_go.json配置文件。
+### 增加配置文件
+在应用的entry/src/main/resources/base/profile目录下创建配置文件easy_go.json（示例文件名，可自行命名）。在[module.json5](../quick-start/module-configuration-file.md)配置文件中添加easyGo字段，并指向引用的easy_go.json配置文件。easy_go.json是一个标准的Object类型JSON文件，整体结构分为两层。第一层配置[鼠标事件转换生效的设备类型](#配置鼠标左键或轴事件转触摸)；第二层可在对应设备类型下配置[鼠标左键或轴事件转触摸](#配置鼠标左键或轴事件转触摸)、[鼠标右键转长按](#配置鼠标右键转长按)的相关参数。
 
 ![easy_go](figures/easy_go.png)
 
-**2. 增加事件转换配置**
+### 配置生效设备类型
 
-在easy_go.json配置文件中，配置事件转换的相关属性。
+通过easy_go.json第一层的配置，选择鼠标事件转换生效的设备类型。
 
-### 配置内容说明
-easy_go.json是一个标准的Object类型JSON文件，整体结构分为两层。第一层配置设备类型；第二层配置对应设备类型下的鼠标事件转换模式。
-
-**1. 设备类型**
-
-第一层配置，设置鼠标事件转换在不同设备类型下的表现。
 ``` json
-{ 
+{
   "common": {},
   "phone": {},
   "2in1": {},
   "tablet": {}
 }
 ```
-| 枚举值 | 说明 | 可选 |
-| --- | --- | --- |
-| common | 通用设备配置，为所有设备类型提供基础默认配置。 | 否 |
-| phone | Phone类型设备上生效的配置，配置后common配置在Phone类型设备上不再生效。 | 是 |
-| 2in1 | PC/2in1类型设备上生效的配置，配置后common配置在PC/2in1类型设备上不再生效。 | 是 |
-| tablet | Tablet类型设备上生效的配置，配置后common配置在Tablet类型设备上不再生效。 | 是 |
 
-**2. 多模态输入选项**
+| 枚举值 | 说明                                                         | 可选 |
+| ------ | ------------------------------------------------------------ | ---- |
+| common | 通用设备配置，为所有设备类型提供基础默认配置。               | 否   |
+| phone  | Phone类型设备上生效的配置，配置后common配置在Phone类型设备上不再生效。 | 是   |
+| 2in1   | PC/2in1类型设备上生效的配置，配置后common配置在PC/2in1类型设备上不再生效。 | 是   |
+| tablet | Tablet类型设备上生效的配置，配置后common配置在Tablet类型设备上不再生效。 | 是   |
 
-第二层配置multiModalInputOptions字段，设置事件输入选项。内部字段说明如下：
-| 字段名 | 说明 | 可选 |
-| --- | --- | --- |
-| mouse2TouchEventMode | 配置鼠标事件转触摸事件模式。 | 是 |
+### 配置鼠标左键或轴事件转触摸
 
-mouse2TouchEventMode可配置字段说明：
+通过配置easy_go.json第二层multiModalInputOptions字段，将对应设备类型下的鼠标左键事件、轴事件转换成触摸事件发送给应用，从而达到类似手机上点击和触摸的效果。
 
-| 枚举值 | 说明 |
-| --- | --- |
-| all | 表示鼠标事件全部都转换成触摸事件。 |
-| xcomponentAndWebOnly | 表示鼠标事件在XComponent和Web组件里需要转换成触摸事件。 |
-| disabled | 表示鼠标事件全部都不转换成触摸事件。 |
+在PC/2in1设备上，配置为鼠标事件不转换成触摸事件，示例如下。
 
-**3. 配置示例**
-
-在PC/2in1设备上，配置为鼠标事件不转换成触摸事件，示例如下：
 ``` json
 {
   "common": {},
   "2in1": {
-    "multiModalInputOptions": {
-      "mouse2TouchEventMode": "disabled"
+      "multiModalInputOptions": {
+         "mouse2TouchEventMode": "disabled"
+      }
+  }
+}
+```
+
+第一层的2in1表示在PC/2in1类型的设备上鼠标左键或轴事件可转换成触摸事件。2in1第二层的multiModalInputOptions字段，用来设置事件输入选项。内部字段说明如下。
+
+| 字段名              | 类型 | 说明                         | 可选 |
+| -------------------- | ---- | ---------------------------- | ---- |
+| mouse2TouchEventMode | string | 配置鼠标事件转触摸事件模式。 | 是   |
+
+mouse2TouchEventMode可配置字段说明。
+
+| 枚举值               | 说明                                                    |
+| -------------------- | ------------------------------------------------------- |
+| "all"                  | 表示鼠标事件全部都转换成触摸事件。                      |
+| "xcomponentAndWebOnly" | 表示鼠标事件在XComponent和Web组件里需要转换成触摸事件。 |
+| "disabled"             | 表示鼠标事件全部都不转换成触摸事件。                    |
+
+### 配置鼠标右键转长按
+
+从API版本26.0.1开始，支持contextMenuOptions字段。通过配置easy_go.json第二层contextMenuOptions字段，可以将对应设备类型下的鼠标右键事件转换成长按事件发送给应用，从而达到类似手机上手指长按的效果。
+
+在PC/2in1设备上，配置所有ArkUI组件的鼠标右键事件转换成长按事件，示例如下。
+
+``` json
+{
+  "common": {},
+  "2in1": {
+    "contextMenuOptions": {
+      "rightMouse2LongPress": true,
+      "needTransferComponent": ["All"]
     }
   }
 }
 ```
+
+第一层的2in1表示在PC/2in1类型的设备上鼠标右键可转换成长按事件。2in1第二层的contextMenuOptions字段，用来配置鼠标右键转换长按事件生效规则。因为只有PC/2in1设备和Tablet设备支持右键转长按，所以common和phone的第二层不可配置contextMenuOptions字段。contextMenuOptions内部字段说明如下。
+
+| 字段名              | 类型 | 说明                         | 可选 |
+| -------------------- | ---- | ---------------------------- | ---- |
+| rightMouse2LongPress | boolean | 是否启用右键转长按策略。取值范围：true表示启用右键转长按策略，右键点击事件将被转换为长按事件；false表示不启用，右键点击事件将按系统默认行为处理。当取值为false时，needTransferComponent配置不生效。 | 否   |
+| needTransferComponent | string[] | 指定生效组件列表，决定哪些组件上的右键事件会被转换为长按事件。数组可为空，为空时表示不转换任何组件的右键事件。数组元素必须为下方枚举值之一。不配置时默认为空数组。needTransferComponent为空数组时，即使 rightMouse2LongPress为true，也不会转换任何组件的右键事件。 | 是   |
+
+needTransferComponent数组中可选枚举类型说明。
+| 枚举值            | 说明           |
+| ----------------- | -------------- |
+| "TextInput"         | 文本输入框     |
+| "TextArea"          | 多行文本输入框 |
+| "RichEditor"        | 富文本编辑器   |
+| "RichText"          | 富文本         |
+| "Text"              | 文本           |
+| "RenderNode"        | 渲染节点       |
+| "XComponent"        | 自绘制组件     |
+| "Image"             | 图片           |
+| "RelativeContainer" | 相对布局容器   |
+| "All"               | 所有ArkUI组件   |
+
+needTransferComponent字段额外说明。
+| 规则               | 说明                                                         |
+| ------------------ | ------------------------------------------------------------ |
+| 全部生效           | 设置 `"needTransferComponent": ["All"]` 表示所有 ArkUI 组件均生效。|
+| 大小写敏感         | 组件名称区分大小写，必须严格按照上述列表填写，否则编译时会报错。|
+| 不允许重复         | 组件列表中不允许出现重复的组件名，否则编译时会报错。|
+| All 与其他组件共存 | 当列表中同时包含具体组件名和 "All" 时，具体组件名将被忽略，等价于仅配置 "All"。建议仅使用 "All" 以简化配置。|
+| 合法值             | 列表中的值只能是上述 9 种组件名 + "All"（共 10 种），填写其它值编译会报错。|
+ 
