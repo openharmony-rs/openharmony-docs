@@ -421,6 +421,8 @@ call.makeCallWithToken("138xxxxxxxx", makeOptions).then(() => {
 makeDirectCall\(phoneNumber: string\): Promise\<void\>
  
 允许应用一键拨号。只支持在[UIAbility](../apis-ability-kit/js-apis-app-ability-uiAbility.md#uiability)中调用。使用Promise异步回调。
+
+**起始版本：** 26.0.1
  
 **系统能力**：SystemCapability.Telephony.CallManager
  
