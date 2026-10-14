@@ -2037,7 +2037,7 @@ try {
   let state = cloudSync.getFileSyncState(uri);
 } catch (err) {
   let error:BusinessError = err as BusinessError;
-  console.error("getFileSyncStatefailed with error: " + JSON.stringify(error));
+  console.error("getFileSyncState failed with error: " + JSON.stringify(error));
 }
 ```
 
@@ -2052,7 +2052,7 @@ let uri: string = fileUri.getUriFromPath(path);
 try {
   let state = cloudSync.getFileSyncState(uri);
 } catch (err) {
-  console.error("getFileSyncStatefailed with error: " + JSON.stringify(err));
+  console.error("getFileSyncState failed with error: " + JSON.stringify(err));
 }
 ```
 
