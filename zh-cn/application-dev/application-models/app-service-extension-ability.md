@@ -379,32 +379,32 @@ AppServiceExtensionAbility组件当前仅支持2in1设备。
 - 使用[disconnectAppServiceExtensionAbility()](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#disconnectappserviceextensionability20)断开与后台服务的连接。
 
   <!-- @[app_ext_service_four_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AppServiceExtensionAbility/entry/src/main/ets/pages/DisConnectAppServiceExt.ets) -->
-
+  
   ``` TypeScript
   import { common } from '@kit.AbilityKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   const TAG: string = '[DisConnectAppServiceExt]';
   const DOMAIN_NUMBER: number = 0xFF00;
-
+  
   let connectionId: number;
-
+  
   @Entry
   @Component
   struct DisConnectAppServiceExt {
     build() {
       Column() {
-      // ···
+        // ...
         List({ initialIndex: 0 }) {
           ListItem() {
             Row() {
-              // ···
+              // ...
             }
-          // ···
+            // ...
             .onClick(() => {
               let context = this.getUIContext().getHostContext() as common.UIAbilityContext; // UIAbilityContext
-              // connectionId为调用connectServiceExtensionAbility接口时的返回值，需开发者自行维护
+              // connectionId为调用connectAppServiceExtensionAbility接口时的返回值，需开发者自行维护
               context.disconnectAppServiceExtensionAbility(connectionId).then(() => {
                 hilog.info(DOMAIN_NUMBER, TAG, 'disconnectAppServiceExtensionAbility success');
                 // 成功断连后台服务
@@ -416,14 +416,14 @@ AppServiceExtensionAbility组件当前仅支持2in1设备。
               });
             })
           }
-
-          // ···
+  
+          // ...
         }
-
-      // ···
+  
+        // ...
       }
-
-      // ···
+  
+      // ...
     }
   }
   ```
