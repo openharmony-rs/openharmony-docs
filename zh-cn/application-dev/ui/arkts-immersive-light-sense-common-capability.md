@@ -156,7 +156,7 @@ struct MaterialColorExample {
 沉浸式系统材质支持设置交互形变和点光源效果：
 
 - **交互形变**：通过[interactive](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)开启交互形变，组件在按压时产生弹性形变，松手后自动恢复，增强交互的视觉反馈。
-- **点光源**：通过[lightEffect](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)开启点光源，用户手指触摸组件时会产生流光跟随效果。lightEffect传入有效对象即启用，传入null则显式禁用，不传入时默认为undefined跟随组件默认行为（当前仅Select下拉按钮在应用级ENABLE模式下默认开启，其他组件均不开启）；对象中的color字段自定义流光颜色，默认值为Color.White。
+- **点光源**：通过[lightEffect](../reference/apis-arkui/arkts-apis-uimaterial.md#immersiveoptions)开启点光源，用户手指触摸组件时会产生流光跟随效果。lightEffect传入有效对象即启用，传入null则显式禁用，不传入时默认为undefined跟随组件默认行为；对象中的color字段自定义流光颜色，默认值为Color.White。
 
 以下示例为高算力设备均衡档位的交互形变与点光源的效果：设置interactive为true并传入lightEffect对象后，按压组件时产生弹性形变，手指触摸时产生流光跟随效果。
 
