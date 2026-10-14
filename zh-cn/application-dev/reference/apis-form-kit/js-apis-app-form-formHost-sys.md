@@ -5075,6 +5075,10 @@ on(type: 'getLiveFormStatus', callback: formInfo.GetLiveFormStatusCallback): voi
 
 **系统接口：** 此接口为系统接口。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 20
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明                                                   |
@@ -5161,6 +5165,10 @@ off(type: 'getLiveFormStatus', callback?: formInfo.GetLiveFormStatusCallback): v
 **系统能力：** SystemCapability.Ability.Form
 
 **系统接口：** 此接口为系统接口。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
