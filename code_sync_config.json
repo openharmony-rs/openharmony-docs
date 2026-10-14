@@ -66882,7 +66882,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/arktsImmersiveLightSense/entry/src/main/ets/pages/MaterialScopeAdaptExample.ets",
 				"functions":[
 					{
-						"end_line":105,
+						"end_line":108,
 						"name":"material_scope_adapt",
 						"start_line":15
 					}
