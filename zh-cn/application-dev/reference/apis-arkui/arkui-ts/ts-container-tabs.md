@@ -631,6 +631,46 @@ sidebarHeader(header: Optional\<ComponentContent>)
 | ------ | -------- | ---- | --------- |
 | header   | Optional\<[ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)> | 是 | 侧边页签栏的头部内容，<br/>设置undefined时，侧边页签栏不显示自定义头部区域。 |
 
+### sidebarFooter
+
+sidebarFooter(footer: Optional\<ComponentContent>)
+
+设置侧边页签栏的尾部内容，该区域随页签列表滚动，未通过该接口设置时，侧边页签栏不显示自定义尾部区域。
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | -------- | ---- | --------- |
+| footer   | Optional\<[ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)> | 是 | 侧边页签栏的尾部内容，该区域随页签列表滚动。<br/>设置undefined时，侧边页签栏不显示自定义尾部区域。 |
+
+### sidebarBottomBar
+
+sidebarBottomBar(bottomBar: Optional\<ComponentContent>)
+
+设置侧边页签栏的固定底部内容，未通过该接口设置时，侧边页签栏不显示自定义固定底部区域。
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | -------- | ---- | --------- |
+| bottomBar   | Optional\<[ComponentContent](../js-apis-arkui-ComponentContent.md#componentcontent-1)> | 是 | 侧边页签栏的固定底部内容。<br/>设置undefined时，侧边页签栏不显示自定义固定底部区域。 |
+
 ### sidebarSearchable
 
 sidebarSearchable(searchOptions?: TabsSidebarSearchableOptions)
@@ -4021,9 +4061,9 @@ struct TabsFloatingStyleExample {
 
 ### 示例25（设置侧边页签栏样式）
 
-本示例展示了通过[barStyle](#barstyle)接口设置页签栏的显示样式，包括固定底部页签栏样式、固定侧边页签栏样式、自适应侧边页签栏样式；通过[sidebarPosition](#sidebarposition)接口设置侧边页签栏的显示位置；通过[sidebarHeader](#sidebarheader)接口在侧边页签栏头部设置自定义内容；通过[sidebarSearchable](#sidebarsearchable)接口开启侧边页签栏的搜索功能；通过[onBarDisplayModeChange](#onbardisplaymodechange)接口注册显示模式切换的监听函数。
+本示例展示了通过[barStyle](#barstyle)接口设置页签栏的显示样式，包括固定底部页签栏样式、固定侧边页签栏样式、自适应侧边页签栏样式。通过[sidebarPosition](#sidebarposition)接口设置侧边页签栏的显示位置，通过[sidebarHeader](#sidebarheader)接口在侧边页签栏头部设置自定义内容，通过[sidebarFooter](#sidebarfooter)接口在侧边页签栏页签列表尾部设置随页签列表滚动的自定义内容，通过[sidebarBottomBar](#sidebarbottombar)接口在侧边页签栏固定底部设置自定义内容。通过[sidebarSearchable](#sidebarsearchable)接口开启侧边页签栏的搜索功能，通过[onBarDisplayModeChange](#onbardisplaymodechange)接口注册显示模式切换的监听函数。
 
-从API版本26.2.0开始，新增barStyle、sidebarPosition、sidebarHeader、sidebarSearchable、onBarDisplayModeChange接口。
+从API版本26.2.0开始，新增barStyle、sidebarPosition、sidebarHeader、sidebarFooter、sidebarBottomBar、sidebarSearchable、onBarDisplayModeChange接口。
 
 ```ts
 // xxx.ets
@@ -4035,12 +4075,40 @@ function TestHeaderBuilder() {
     Stack({alignContent: Alignment.Center}) {
     }
     .width(64)
-    .height(64)
+    .height(32)
     .backgroundColor('#ff2787d9')
   }
   .width('100%')
-  .height(128)
-  .border({width: 1, color: '#ffd9d9d9' })
+  .height(64)
+  .border({width: 1, color: '#ffd9d9d9'})
+}
+
+@Builder
+function TestFooterBuilder() {
+  Stack({alignContent: Alignment.Center}) {
+    Stack({alignContent: Alignment.Center}) {
+    }
+    .width(64)
+    .height(16)
+    .backgroundColor('#ff2787d9')
+  }
+  .width('100%')
+  .height(24)
+  .border({width: 1, color: '#ffd9d9d9'})
+}
+
+@Builder
+function TestBottomBarBuilder() {
+  Stack({alignContent: Alignment.Center}) {
+    Stack({alignContent: Alignment.Center}) {
+    }
+    .width(64)
+    .height(32)
+    .backgroundColor('#ff2787d9')
+  }
+  .width('100%')
+  .height(64)
+  .border({width: 1, color: '#ffd9d9d9'})
 }
 
 @Entry
@@ -4112,6 +4180,10 @@ struct TabsSidebarExample {
       .sidebarPosition(BarPosition.Start)
       // 设置侧边页签栏头部内容
       .sidebarHeader(new ComponentContent(this.getUIContext(), wrapBuilder(TestHeaderBuilder)))
+      // 设置侧边页签栏页签列表尾部内容
+      .sidebarFooter(new ComponentContent(this.getUIContext(), wrapBuilder(TestFooterBuilder)))
+      // 设置侧边页签栏固定底部内容
+      .sidebarBottomBar(new ComponentContent(this.getUIContext(), wrapBuilder(TestBottomBarBuilder)))
       // 设置侧边页签栏搜索选项
       .sidebarSearchable({
         placeholder: 'Search tabs',
