@@ -3673,3 +3673,5 @@ struct GridSnapExample {
   }
 }
 ```
+
+![scrollSnapStrategy_grid](figures/scrollSnapStrategy_grid.gif)
