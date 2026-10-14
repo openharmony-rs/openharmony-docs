@@ -567,52 +567,7 @@ try {
 }
 ```
 
-
-## formProvider.offPublishFormCrossBundleControl<sup>23+</sup>
-
-offPublishFormCrossBundleControl(callback?: formInfo.PublishFormCrossBundleControlCallback): void
-
-取消订阅跨应用加桌管控。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**需要权限**：ohos.permission.PUBLISH_FORM_CROSS_BUNDLE_CONTROL
-
-**系统能力：** SystemCapability.Ability.Form
-
-**系统接口：** 此接口为系统接口。
-
-**参数：**
-
-| 参数名 | 类型    | 必填 | 说明    |
-| ------ | ------ | ---- |-------|
-| callback | [formInfo.PublishFormCrossBundleControlCallback](js-apis-app-form-formInfo-sys.md#publishformcrossbundlecontrolcallback23) | 否 | 跨应用加桌管控的回调函数，不传则取消所有已订阅的回调。|
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[卡片错误码](errorcode-form.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 201 | Permissions denied. |
-| 202 | The application is not a system application. |
-| 16500050 | IPC connection error. |
-
-**示例：**
-
-```ts
-import { formProvider } from '@kit.FormKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  formProvider.offPublishFormCrossBundleControl();
-  console.info(`offPublishFormCrossBundleControl success`);
-} catch (error) {
-  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
-}
-```
-
-## formProvider.openFormManagerCrossBundle<sup>18+</sup>
+## formProvider.openFormManagerCrossBundle<sup>20+</sup>
 
 openFormManagerCrossBundle(want: Want): void
 
@@ -657,6 +612,50 @@ const want: Want = {
 };
 try {
   formProvider.openFormManagerCrossBundle(want);
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+## formProvider.offPublishFormCrossBundleControl<sup>23+</sup>
+
+offPublishFormCrossBundleControl(callback?: formInfo.PublishFormCrossBundleControlCallback): void
+
+取消订阅跨应用加桌管控。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限**：ohos.permission.PUBLISH_FORM_CROSS_BUNDLE_CONTROL
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明    |
+| ------ | ------ | ---- |-------|
+| callback | [formInfo.PublishFormCrossBundleControlCallback](js-apis-app-form-formInfo-sys.md#publishformcrossbundlecontrolcallback23) | 否 | 跨应用加桌管控的回调函数，不传则取消所有已订阅的回调。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[卡片错误码](errorcode-form.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permissions denied. |
+| 202 | The application is not a system application. |
+| 16500050 | IPC connection error. |
+
+**示例：**
+
+```ts
+import { formProvider } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formProvider.offPublishFormCrossBundleControl();
+  console.info(`offPublishFormCrossBundleControl success`);
 } catch (error) {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
