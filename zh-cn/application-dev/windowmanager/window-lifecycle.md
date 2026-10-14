@@ -90,11 +90,13 @@ Stage模型下主窗口的生命周期状态包括前台状态（SHOWN）、前�
 
   - 针对不支持在phone设备运行的应用，窗口从前台进入后台状态，不会驱动UIAbility为后台状态。
 
-- **支持[电脑模式](window-terminology.md#pc-mode电脑模式)的Phone/Tablet类型设备上：** 设备开启电脑模式后，处于解锁状态时，针对不支持在Phone设备上运行、支持在PC/2in1设备上运行的应用，窗口从前台进入后台状态，不会驱动UIAbility为后台状态；其他应用窗口从前台进入后台状态，会驱动UIAbility为后台状态。
-
 > **说明：**
 > 
-> [电脑模式](window-terminology.md#pc-mode电脑模式)与[自由多窗模式](window-terminology.md#free-windows自由多窗模式)是两种独立的模式。切换电脑模式会关闭大部分应用，切换自由多窗模式不会关闭已有应用。
+> - 在支持[电脑模式](window-terminology.md#pc-mode电脑模式)的Phone/Tablet类型设备上，开启电脑模式并处于解锁状态时：
+>   - 针对不支持在phone设备上运行且支持在PC/2in1设备上运行的应用，窗口从前台进入后台状态，不会驱动UIAbility为后台状态。
+>   - 其他应用窗口从前台进入后台状态，会驱动UIAbility为后台状态。
+> 
+> - [电脑模式](window-terminology.md#pc-mode电脑模式)与[自由多窗模式](window-terminology.md#free-windows自由多窗模式)是两种独立的模式。切换电脑模式会关闭大部分应用，具体未关闭的应用白名单请参考[应用白名单](https://consumer.huawei.com/cn/support/content/zh-cn16095616/)。切换自由多窗模式不会关闭已有应用。
 
 ## 管理辅助窗口的生命周期
 

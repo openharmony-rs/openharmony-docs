@@ -852,11 +852,11 @@ windowClass.on('avoidAreaChange', (data) => {
 
 由上述设计可知，快速拖动窗口边框的过程中窗口外框与应用布局短暂不同步属于设计预期；拖拽操作结束后，系统会将最终窗口大小同步至应用进程，待应用侧完成布局重排后，二者即保持一致。
 
-## 如何设置应用可在锁屏页面启动
+## 如何设置PC设备上的应用可在锁屏页面启动
 
-当设备处于锁屏状态时，默认情况下系统会阻止应用窗口的启动和前台显示。如果应用需要在锁屏状态下被启动，需要申请权限`ohos.permission.START_WINDOW_BELOW_LOCK_SCREEN`。
+在PC设备上，如果应用需要在锁屏状态下被启动，需要申请权限`ohos.permission.START_WINDOW_BELOW_LOCK_SCREEN`。
 
-该权限允许应用在锁屏状态下被启动。获取该权限后，应用可以在锁屏状态下被启动，设备解锁后可直接看到应用启动界面。权限声明需要在[module.json5配置文件](../quick-start/module-configuration-file.md)的requestPermissions标签中声明，详细声明方式请参考[声明权限](../security/AccessToken/declare-permissions.md)。
+该权限允许应用在PC设备的锁屏状态下被启动。获取该权限后，应用可以在锁屏状态下被启动，PC设备解锁后可直接看到应用启动界面。权限声明需要在[module.json5配置文件](../quick-start/module-configuration-file.md)的requestPermissions标签中声明，详细声明方式请参考[声明权限](../security/AccessToken/declare-permissions.md)。
 
 > **说明：**
 > 
