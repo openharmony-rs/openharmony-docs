@@ -261,7 +261,7 @@
          .backgroundColor(Color.Transparent)
          .systemMaterial(new uiMaterial.ImmersiveMaterial({
              lightEffect: { color: Color.White },
-             materialColor: '#d3d3d3'
+             materialColor: '#80d3d3d3'
            }))
        }.expandSafeArea([SafeAreaType.SYSTEM])
        .width('100%')
