@@ -874,7 +874,6 @@ windowClass.on('avoidAreaChange', (data) => {
 {
   "module": {
     // ···
-    // ohos.permission.START_WINDOW_BELOW_LOCK_SCREEN为system_grant权限，reason和usedScene为选填字段。
     "requestPermissions": [
       {
         "name": "ohos.permission.START_WINDOW_BELOW_LOCK_SCREEN"
