@@ -6503,7 +6503,7 @@ try {
 
 设备模式分发策略枚举，用于指定应用程序如何分发到设备上。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 
@@ -6529,13 +6529,15 @@ filterBundleListByDeviceModeDistributionPolicies(policies: Array\<DeviceModeDist
 
 支持按设备模式分发策略过滤应用列表。使用Promise异步回调。
 
-**起始版本：** 26.1.0
+**起始版本：** 26.0.1
 
 **系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.SWITCH_MULTI_MODE_BUNDLE
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**设备行为差异：** 该接口在PC/2in1、Tablet设备中可正常调用，在其他设备中返回201错误码。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

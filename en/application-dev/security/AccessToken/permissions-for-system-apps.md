@@ -6677,6 +6677,7 @@ Allows an application to manage clone preferences.
 **Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | wearables | cars
  	 
 **Valid since**: 26.0.0
+
 ## ohos.permission.SWITCH_MULTI_MODE_BUNDLE
 
 Allows an application to switch the list of displayable applications on multi-mode devices.
@@ -6689,4 +6690,4 @@ Allows an application to switch the list of displayable applications on multi-mo
 
 **Supported devices**: tablets | PCs/2-in-1 devices
 
-**Valid since**: 26.1.0
+**Valid since**: 26.0.1
