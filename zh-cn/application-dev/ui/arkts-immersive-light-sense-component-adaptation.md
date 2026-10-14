@@ -92,7 +92,7 @@ Popup和Tips支持通过组件级开启方式开启沉浸光感。
 
 弹出框支持通过应用级开启、组件级开启方式开启沉浸光感。
 
-应用级开启：应用级开关处于[ENABLE](../reference/apis-arkui/arkts-apis-uimaterial.md#materialstate)模式下，[AlertDialog](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md)、[CustomDialog](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md)、[ActionSheet](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md)及各类PickerDialog弹出框默认开启沉浸光感，沉浸式系统材质样式默认取值为ULTRA_THICK。
+应用级开启：应用级开关处于[ENABLE](../reference/apis-arkui/arkts-apis-uimaterial.md#materialstate)模式下，弹出框默认开启沉浸光感，沉浸式系统材质样式默认取值为ULTRA_THICK。
 
 组件级开启：弹出框支持通过弹出框options参数中的systemMaterial字段设置沉浸光感效果，如[CustomDialogControllerOptions](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明)、[AlertDialogParam](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam对象说明)、[ActionSheetOptions](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#actionsheetoptions对象说明)等。如果未主动设置背景色、背景模糊等自定义样式属性且未设置systemMaterial字段，弹出框沉浸式系统材质样式ImmersiveStyle默认取值为ImmersiveStyle.ULTRA_THICK。
 
@@ -102,13 +102,13 @@ Popup和Tips支持通过组件级开启方式开启沉浸光感。
 
 组件开启沉浸光感的效果请参见[示例9（设置弹窗的沉浸光感效果）](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md#示例9设置弹窗的沉浸光感效果)、[示例14（设置弹窗的沉浸光感效果）](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#示例14设置弹窗的沉浸光感效果)和[示例9（设置弹窗的沉浸光感效果）](../reference/apis-arkui/arkui-ts/ts-methods-action-sheet.md#示例9设置弹窗的沉浸光感效果)。
 
-## bind_sheet组件
+### 半模态（BindSheet）
 
-bind_sheet半模态转场支持通过组件级开启方式开启沉浸光感。
+BindSheet半模态转场仅支持通过组件级开启方式开启沉浸光感。
 
-应用级开启：应用级开关处于[ENABLE](../reference/apis-arkui/arkts-apis-uimaterial.md#materialstate)模式下，bind_sheet半模态转场不会默认开启沉浸光感，半模态页面的背板样式仍由已设置的[backgroundColor](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、背景模糊等属性决定。
+应用级开启：应用级开关处于[ENABLE](../reference/apis-arkui/arkts-apis-uimaterial.md#materialstate)模式下，BindSheet半模态转场不会默认开启沉浸光感，半模态页面的背板样式仍由已设置的[backgroundColor](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、背景模糊等属性决定。
 
-组件级开启：bind_sheet支持通过[SheetOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions)中的systemMaterial字段设置沉浸光感效果。systemMaterial默认值为undefined，无默认沉浸光感效果，需显式设置后生效；设置systemMaterial后，其影响的背景色[backgroundColor](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](../reference/apis-arkui/arkui-ts/ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](../reference/apis-arkui/arkui-ts/ts-universal-attributes-border.md#borderwidth)、阴影[shadow](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadow)等属性不再生效，不建议与上述属性一起使用。
+组件级开启：BindSheet支持通过[SheetOptions](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#sheetoptions)中的systemMaterial字段设置沉浸光感效果。systemMaterial默认值为undefined，无默认沉浸光感效果，需显式设置后生效；设置systemMaterial后，其影响的背景色[backgroundColor](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](../reference/apis-arkui/arkui-ts/ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](../reference/apis-arkui/arkui-ts/ts-universal-attributes-border.md#borderwidth)、阴影[shadow](../reference/apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#shadow)等属性不再生效，不建议与上述属性一起使用。
 
 组件开启沉浸光感的效果请参见[示例10（半模态设置系统材质）](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md#示例10半模态设置系统材质)。
 
