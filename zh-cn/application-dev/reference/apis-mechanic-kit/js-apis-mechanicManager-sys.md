@@ -611,7 +611,7 @@ mechanicManager.searchTarget(targetInfo,
 
 ## mechanicManager.move
 
-stopMoving(mechId: number): Promise&lt;Result&gt;
+move(mechId: int, params: MoveParams): Promise&lt;Result&gt;
 
 以特定参数移动一个具身设备。
 
@@ -630,7 +630,42 @@ stopMoving(mechId: number): Promise&lt;Result&gt;
 
 | 类型                                        | 说明        |
 | ------------------------------------------- | --------- |
-| Promise&lt;Result&gt; | Promise对象，返回旋转执行结果。 |
+| Promise&lt;[Result](#result)&gt; | Promise对象，返回旋转执行结果。 |
+
+**错误码：**
+
+以下的错误码的详细介绍请参见[机械体控制模块错误码](errorcode-mechanic.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息           |
+| -------- | ----------------- |
+| 202 | Not system application. |
+| 33300001 | Service exception. |
+| 33300002 | Device not connected. |
+| 33300003 | Feature not supported. |
+
+## mechanicManager.moveBySpeed
+
+moveBySpeed(mechId: int, params: SpeedParams, duration: int): Promise&lt;Result&gt;
+
+以特定速度移动一个具身设备。
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+**参数：**
+
+| 参数名     | 类型                    | 必填 | 说明   |
+| ---------- | ---------------------- | ---- | ----- |
+| mechId | number | 是 | 机械体设备ID。 |
+| params | [MoveParams](#moveparams) | 是 | 移动参数。|
+| mechId | number | 是 | 移动时长，单位ms。 |
+
+**返回值：**
+
+| 类型                                        | 说明        |
+| ------------------------------------------- | --------- |
+| Promise&lt;[Result](#result)&gt;| Promise对象，返回旋转执行结果。 |
 
 **错误码：**
 
