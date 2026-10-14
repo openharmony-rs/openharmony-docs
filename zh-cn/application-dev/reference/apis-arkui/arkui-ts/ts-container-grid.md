@@ -715,7 +715,7 @@ enableEditMode(enabled: boolean | undefined)
 
 scrollSnapStrategy(strategy?: ScrollSnapAlign | ScrollSnapOffsetProvider)
 
-设置Grid的两阶段滚动吸附策略。
+设置Grid的两阶段滚动吸附策略，使用方法可以参考[示例23](#示例23设置滚动吸附对齐)。
 
 START、CENTER、END分别将item对齐到滚动轴方向视口的起始、中间和末尾位置。自定义提供方通过[calculateApproachOffset](ts-container-scrollable-common.md#calculateapproachoffset)计算趋近距离，通过[calculateSnapOffset](ts-container-scrollable-common.md#calculatesnapoffset)计算最终目标。设置为NONE或undefined时清除策略，恢复默认滚动行为。不支持的布局不启用吸附，吸附目标受合法滚动范围限制。
 
@@ -3622,3 +3622,54 @@ struct GridOnMoveExample {
 ```
 
 ![grid-onmove-drag](figures/grid-onmove-drag.gif)
+
+### 示例23（设置滚动吸附对齐）
+
+该示例通过[scrollSnapStrategy](#scrollsnapstrategy)接口，实现了Grid组件设置两阶段滚动吸附策略，惯性滚动结束后item对齐到视口中间位置。
+
+GridDataSource说明及完整代码参考[示例2（可滚动Grid和滚动事件）](#示例2可滚动grid和滚动事件)。
+
+<!--code_no_check-->
+```ts
+// xxx.ets
+// 该示例实现了Grid组件设置滚动吸附策略为ScrollSnapAlign.CENTER，惯性滚动结束后item对齐到视口中间位置
+import { GridDataSource } from './GridDataSource';
+
+@Entry
+@Component
+struct GridSnapExample {
+  numbers: GridDataSource = new GridDataSource([]);
+  scroller: Scroller = new Scroller();
+
+  aboutToAppear() {
+    let list: string[] = [];
+    for (let i = 0; i < 50; i++) {
+      list.push(i.toString());
+    }
+    this.numbers = new GridDataSource(list);
+  }
+
+  build() {
+    Column({ space: 5 }) {
+      Text('Grid').fontColor(0x000000).fontSize(16).width('90%')
+      Grid(this.scroller) {
+        LazyForEach(this.numbers, (item: string) => {
+          GridItem() {
+            Text(item)
+              .fontSize(16)
+              .backgroundColor(0xF9CF93)
+              .width('100%')
+              .height(80)
+              .textAlign(TextAlign.Center)
+          }
+        }, (index: number) => index.toString())
+      }
+      .columnsTemplate('1fr 1fr 1fr 1fr 1fr')
+      .columnsGap(10)
+      .rowsGap(20)
+      .height('90%')
+      .scrollSnapStrategy(ScrollSnapAlign.CENTER)
+    }.width('100%').margin({ top: 5 })
+  }
+}
+```
