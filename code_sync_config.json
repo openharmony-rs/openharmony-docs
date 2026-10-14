@@ -6072,6 +6072,16 @@
 						"start_line":137
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Basic-Services-Kit/common_event/CommonEvent/entry/src/main/ets/filemanager/CreatSubscribeInfo.ets",
+				"functions":[
+					{
+						"end_line":21,
+						"name":"ImportModule",
+						"start_line":15
+					}
+				]
 			}
 		]
 	},
@@ -32366,6 +32376,16 @@
 						"end_line":127,
 						"name":"update_badge_count_idempotent",
 						"start_line":112
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationBadges.ets",
+				"functions":[
+					{
+						"end_line":24,
+						"name":"manage_notification_badges_header",
+						"start_line":16
 					}
 				]
 			}
