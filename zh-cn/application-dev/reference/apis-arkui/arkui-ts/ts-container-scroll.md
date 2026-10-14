@@ -2588,7 +2588,9 @@ struct Index {
 
 ### 示例14（获取滚动状态）
 
-该示例通过[getScrollState](#getscrollstate)接口，实现了获取滚动状态的功能。从API版本26.2.0开始，新增getScrollState接口。
+该示例通过[getScrollState](#getscrollstate)接口，实现了获取滚动状态的功能。
+
+从API版本26.2.0开始，新增getScrollState接口。
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
