@@ -68,6 +68,9 @@ Web页面加载失败问题复杂多样，本文详细列举常见问题的排�
       开发者应使用HTTP或HTTPS协议替代file或resource协议，确保Web组件能够成功访问跨域资源。替代的URL域名应为自定义构造，仅限于个人或组织使用，以防止与互联网上的实际域名冲突。此外，开发者需要利用Web组件的[onInterceptRequest](../reference/apis-arkweb/arkts-basic-components-web-events.md#oninterceptrequest9)方法，对本地资源进行拦截和相应替换。
 
       以下结合示例说明如何使用HTTP或HTTPS等协议解决本地资源跨域访问失败的问题。其中，index.html和js/script.js文件置于工程的rawfile目录下。当使用resource协议访问index.html时，js/script.js文件因跨域而被拦截，无法加载。在示例中，使用https:\//www\.example.com/域名替换了原有的resource协议，同时利用onInterceptRequest接口替换资源，确保js/script.js文件可以成功加载，从而解决跨域拦截问题。
+
+    <!-- @[CrossDomainIntercept](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/ets/pages/CrossDomainIntercept.ets) -->
+
     ```ts
     // main/ets/pages/Index.ets
     import { webview } from '@kit.ArkWeb';
@@ -142,6 +145,8 @@ Web页面加载失败问题复杂多样，本文详细列举常见问题的排�
     </body>
     </html>
     ```
+
+    <!-- @[script](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/resources/rawfile/js/script.js) -->
 
     ```js
     // main/resources/rawfile/js/script.js
@@ -261,6 +266,8 @@ Web页面加载失败问题复杂多样，本文详细列举常见问题的排�
     </html>
     ```
 
+    <!-- @[script2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry2/src/main/resources/resfile/js/script.js) -->
+    
     ```javascript
     // main/resources/resfile/js/script.js
     const body = document.body;

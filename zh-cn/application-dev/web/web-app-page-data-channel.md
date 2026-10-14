@@ -14,6 +14,7 @@
 
 
 - 应用侧代码。
+  <!-- @[create_a_message_port_to_implement_communication_between_the_two_ends](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry3/src/main/ets/pages/Index.ets) -->
 
   ```ts
   // xxx.ets
