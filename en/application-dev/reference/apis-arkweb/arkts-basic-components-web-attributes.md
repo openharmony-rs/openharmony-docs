@@ -731,7 +731,7 @@ Sets the color of the text input caret and text selection handles in the Web com
 > - This attribute affects the input caret, the outer ring of the selection handles, and their connecting lines. It does not change the inner ring or the text selection background.
 > - Applications must provide appropriate colors for light and dark modes, for example through theme-specific color resources or by listening for mode changes and setting a new color. This attribute does not automatically choose suitable colors or guarantee contrast.
 
-**Since:** 26.1.0
+**Since:** 26.2.0
 
 **Model restriction:** This API can be used only in the stage model.
 
