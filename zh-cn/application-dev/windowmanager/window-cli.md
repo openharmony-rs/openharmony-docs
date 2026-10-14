@@ -62,12 +62,26 @@ ohos-window restore-window [options]
 
 ### 示例代码
 
+- **命令示例：**
+
 ```bash
 # 恢复指定主窗口到前台
 ohos-window restore-window --windowId 100
 
 # 查看restore-window命令帮助
 ohos-window restore-window --help
+```
+
+- **输出示例**
+
+```json
+{
+  "type": "result",
+  "status": "success",
+  "data": {
+    "message": "restore main window to foreground successfully."
+  }
+}
 ```
 
 ## list-windows
@@ -90,51 +104,85 @@ ohos-window list-windows [options]
 
 ### 参数说明
 
-| 参数 | 是否必填 | 说明 |
-|------|------|------|
-| `--windowId <id>` | 否 | 仅查询指定窗口的信息，默认查询所有窗口。|
-| `--displayId <id>` | 否 | 仅查询指定屏幕上的窗口的信息，默认查询所有屏幕。|
-| `--filter <visible\|excludeSystem\|foreground>` | 否 | 窗口过滤条件，可组合使用，默认不过滤任何窗口。其中：visible表示返回可见窗口，excludeSystem表示不返回桌面壁纸等零层控件窗口，foreground表示返回前台窗口。|
-| `--type <ui\|display\|layout\|meta>` | 否 | 返回的[窗口信息类别](#窗口信息类别说明)，可组合使用，默认返回所有类别信息。其中：ui表示返回[uiInfo](#uiInfo)信息，display表示返回[displayInfo](#displayInfo)信息，layout表示返回[layoutInfo](#layoutInfo)信息，meta表示返回[metaInfo](#metaInfo)信息 |
-| `--help` | 否 | 查看帮助信息。|
+| 参数名 | 说明 |
+|------|------|
+| `--help` | 查看帮助信息，可选，指定本参数时会忽略其他参数。|
+| `--windowId <id>` | 指定查询的窗口ID，可选，默认查询所有窗口。|
+| `--displayId <id>` | 指定查询的屏幕ID，可选，默认查询所有屏幕。|
+| `--filter <visible\|excludeSystem\|foreground>` | 指定窗口过滤条件，可组合使用，可选，默认不过滤任何窗口。其中：visible表示返回可见窗口，excludeSystem表示不返回桌面、壁纸等系统窗口，foreground表示返回前台窗口。|
+| `--type <ui\|display\|layout\|meta>` | 指定返回的[窗口信息类别](#窗口信息类别说明)，可组合使用，可选，默认返回所有类别信息。其中：ui表示返回uiInfo信息，display表示返回displayInfo信息，layout表示返回layoutInfo信息，meta表示返回metaInfo信息。|
 
 ### 窗口信息类别说明
 
-每种类别代表不同的窗口信息，可根据“--type”参数指定。
+每种类别代表不同的窗口信息，可根据`--type`参数指定。
 
-#### uiInfo
+- **uiInfo**
 
 | 字段名 | 说明 |
 |--------|------|
-|visibilityState| 窗口可见性值，0表示完全可见，1表示部分可见，2表示不可见。|
+|visibilityState| 窗口可见性，0表示完全可见，1表示部分可见，2表示完全不可见。|
 
-#### displayInfo
+- **displayInfo**
 
 | 字段名 | 说明 |
 |--------|------|
 | displayId | 屏幕ID。|
 
-#### layoutInfo
+- **layoutInfo**
 
 | 字段名 | 说明 |
 |--------|------|
 | rect | 窗口尺寸大小。|
 | zOrder | 窗口层级。|
 
-#### metaInfo
+- **metaInfo**
 
 | 字段名 | 说明 |
 |--------|------|
-| windowId | 窗口ID |
-| windowName | 窗口名 |
-| bundleName | 应用包名 |
-| abilityName | 应用Ability名 |
-| appIndex | 应用索引号 |
-| pid | 应用的进程号 |
-| windowType | 窗口类型 |
-| windowMode | 窗口模式 |
-| isFocused | 是否是获焦状态 |
-| isTouchable | 是否可触摸 |
+| windowId | 窗口ID。|
+| windowName | 窗口名。|
+| bundleName | 应用包名。|
+| abilityName | 应用Ability名。|
+| appIndex | 多实例应用的索引，用于区分相同应用的不同实例。|
+| pid | 应用的进程号。|
+| windowType | 窗口类型，各数值含义见[WindowType](#WindowType)。|
+| windowMode | 窗口模式，各数值含义见[WindowMode](#WindowMode)。|
+| isFocused | 窗口是否是获焦状态。true表示获焦，false表示未获焦。|
+| isTouchable | 窗口是否可触摸。true表示可触摸，false表示不可触摸。|
+
+### WindowType
+| 值 | 说明 |
+|--------|------|
+| 1 | 应用主窗。|
+| 1001 | 应用子窗。|
+| 2000 | 壁纸。|
+| 2001 | 桌面。|
+| 2101 | Dock栏。|
+| 2102 | 来电通知。|
+| 2103 | 搜索栏。|
+| 2104 | 系统告警弹框。|
+| 2105 | 输入法。|
+| 2106 | 应用悬浮窗。|
+| 2108 | 状态栏。|
+| 2109 | 面板。|
+| 2110 | 键盘锁。|
+| 2111 | 音量条。|
+| 2112 | 导航条。|
+| 2122 | 对话框。|
+| 2123 | 截屏。|
+| 2124 | 输入法状态栏。|
+| 2125 | 全局搜索框。|
+| 2128 | 系统悬浮窗。|
+| 2129 | 画中画。|
+
+### WindowMode
+| 值 | 说明 |
+|--------|------|
+| 1 | 全屏。|
+| 100 | 主分屏。|
+| 101 | 副分屏。|
+| 102 | 悬浮窗。|
+| 103 | 画中画。|
 
 ### 错误码
 
@@ -146,8 +194,10 @@ ohos-window list-windows [options]
 
 ### 示例代码
 
+- **命令示例：**
+
 ```bash
-# 查询所有可见窗口，但不包括零层控件窗口
+# 查询所有可见窗口，但不包括桌面等系统窗口
 ohos-window list-windows --filter visible --filter excludeSystem
 
 # 查询指定窗口的元数据信息
@@ -157,7 +207,7 @@ ohos-window list-windows --type meta --windowId 100
 ohos-window list-windows --displayId 0 --type layout --type meta
 ```
 
-### 输出示例
+- **输出示例**
 
 ```json
 {
