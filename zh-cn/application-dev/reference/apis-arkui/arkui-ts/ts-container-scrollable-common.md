@@ -1412,15 +1412,16 @@ type OnVisibleIndexesChangeCallback = (start: number, end: number) => void
 
 ## ScrollSnapOffsetProvider
 
-滚动组件限位滚动的偏移量提供方。开发者实现本接口后，可以把限位滚动的两个阶段交给自己决定：惯性阶段滚动多远由calculateApproachOffset决定，最终停在哪里由calculateSnapOffset决定。
+自定义限位滚动规则。开发者编写一个实现本接口的类，将实例传给[Grid](ts-container-grid.md)组件的[scrollSnapStrategy](ts-container-grid.md#scrollsnapstrategy)属性（当前唯一支持本接口的入口），滚动位置的计算就从组件内置逻辑换成开发者自己的代码：
+
+- calculateApproachOffset：惯性阶段开始时调用一次，返回本次惯性滚动多远。
+- calculateSnapOffset：进入最终限位动画前调用一次，返回Grid最终停在哪里。
 
 实现本接口时需要注意：
 
 - 偏移量的单位是vp，速度的单位是vp/s。
 - 两个回调都在UI线程同步调用，只应做纯计算，不要在回调里修改布局或状态。
 - 回调参数中不携带布局快照，item的位置和大小信息需要开发者自行维护或推导。
-
-当前仅[Grid](ts-container-grid.md)组件的[scrollSnapStrategy](ts-container-grid.md#scrollsnapstrategy)属性支持传入自定义提供方。
 
 > **说明：**
 >
