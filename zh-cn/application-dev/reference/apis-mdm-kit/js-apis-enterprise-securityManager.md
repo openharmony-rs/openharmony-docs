@@ -2165,6 +2165,115 @@ try {
 }
 ```
 
+## securityManager.setWeakPinEnable
+ 
+setWeakPinEnable(isEnable: boolean, fd?: number): void
+ 
+设置锁屏弱密码校验的弱密码库。设置弱密码库后，用户设置锁屏密码时，系统会根据弱密码库中的弱密码列表对用户设置的密码进行校验，如果密码存在于弱密码列表中，将拒绝设置该密码，防止用户设置过于简单的密码。适用于企业安全合规场景，如防止员工使用常见弱密码（如123456、000000等），提升设备安全防护能力。取消弱密码库后，用户设置锁屏密码时将不再进行弱密码校验。弱密码校验是在已有密码校验逻辑基础上的补充，不会替代已有的校验规则（如密码长度、复杂度等），设置和取消弱密码库，都不会影响已有的密码校验逻辑。
+ 
+**起始版本：** 26.0.1
+ 
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
+ 
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+ 
+**模型约束：** 此接口仅可在Stage模型下使用。
+ 
+**参数：**
+ 
+| 参数名   | 类型    | 必填 | 说明                                                         |
+| -------- | ------- | ---- | ------------------------------------------------------------ |
+| isEnable | boolean | 是   | 是否设置弱密码库。true表示设置，false表示取消。            |
+| fd       | number  | 否   | 弱密码库文件的文件描述符。设置弱密码库时必填，取消弱密码库时忽略。<br>弱密码库文件需要放置于应用沙箱路径（应用沙箱路径和真实路径的对应关系可参见：[应用沙箱路径和真实物理路径的对应关系](../../file-management/app-sandbox-directory.md#应用沙箱路径和真实物理路径的对应关系)）等应用有权限访问的路径下。<br>文件每行对应一个弱密码。<br>文件大小不能超过16MB。 |
+ 
+**错误码**：
+ 
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+ 
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 9200016  | Service timeout. |
+ 
+**示例：**
+ 
+弱密码库文件示例（weak_pin.txt），每行对应一个弱密码：
+ 
+```txt
+123456
+000000
+111111
+888888
+666666
+```
+ 
+代码示例：
+ 
+```ts
+import { securityManager } from '@kit.MDMKit';
+import { fileIo } from '@kit.CoreFileKit';
+ 
+// 需根据实际情况进行替换，弱密码文件需要放置在应用沙箱目录下
+// 弱密码文件格式：每行对应一个弱密码，如123456、000000等
+const filePath = '/data/storage/el1/base/weak_pin.txt';
+let fd: number = fileIo.openSync(filePath, fileIo.OpenMode.READ_ONLY).fd;
+try {
+  securityManager.setWeakPinEnable(true, fd);
+  console.info(`Succeeded in setting weak pin enable.`);
+} catch (err) {
+  console.error(`Failed to set weak pin enable. Code: ${err.code}, message: ${err.message}`);
+} finally {
+  fileIo.closeSync(fd);
+}
+```
+ 
+## securityManager.isWeakPinEnabled
+ 
+isWeakPinEnabled(): boolean
+ 
+查询锁屏弱密码库是否已设置。企业可通过此接口查询当前弱密码库的状态，用于策略审计和合规性检查。
+ 
+**起始版本：** 26.0.1
+ 
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SECURITY
+ 
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+ 
+**模型约束：** 此接口仅可在Stage模型下使用。
+ 
+**返回值：**
+ 
+| 类型    | 说明                                                         |
+| ------- | ------------------------------------------------------------ |
+| boolean | 返回true表示弱密码库已设置，false表示未设置。              |
+ 
+**错误码**：
+ 
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+ 
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200016  | Service timeout. |
+ 
+**示例：**
+ 
+```ts
+import { securityManager } from '@kit.MDMKit';
+ 
+try {
+  let result: boolean = securityManager.isWeakPinEnabled();
+  console.info(`Succeeded in checking weak pin enabled, result: ${result}`);
+} catch (err) {
+  console.error(`Failed to check weak pin enabled. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## CertBlob
 
 证书信息。
