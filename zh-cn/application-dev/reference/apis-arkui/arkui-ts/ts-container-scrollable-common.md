@@ -1412,21 +1412,23 @@ type OnVisibleIndexesChangeCallback = (start: number, end: number) => void
 
 ## ScrollSnapOffsetProvider
 
-自定义限位滚动规则。开发者编写一个实现本接口的类，将实例传给[Grid](ts-container-grid.md)组件的[scrollSnapStrategy](ts-container-grid.md#scrollsnapstrategy)属性（当前唯一支持本接口的入口），滚动位置的计算就从组件内置逻辑换成开发者自己的代码：
+用于自定义限位滚动的距离和吸附位置。目前仅[Grid](ts-container-grid.md)组件的[scrollSnapStrategy](ts-container-grid.md#scrollsnapstrategy)属性支持此接口。开发者实现该接口后，将对象传入scrollSnapStrategy即可使用。
 
-- calculateApproachOffset：惯性阶段开始时调用一次，返回本次惯性滚动多远。
-- calculateSnapOffset：进入最终限位动画前调用一次，返回Grid最终停在哪里。
+自定义限位滚动分为两个阶段：先按指定的距离惯性滚动，再通过限位动画滚动到目标吸附位置。两个回调分别用于计算这两个阶段的距离和位置：
+
+- calculateApproachOffset：惯性滚动开始时调用一次，返回该阶段的滚动距离。
+- calculateSnapOffset：惯性阶段结束、限位动画开始前调用一次，返回最终吸附位置相对内容起点的滚动偏移量。
 
 实现本接口时需要注意：
 
 - 偏移量的单位是vp，速度的单位是vp/s。
-- 两个回调都在UI线程同步调用，只应做纯计算，不要在回调里修改布局或状态。
-- 回调参数中不携带布局快照，item的位置和大小信息需要开发者自行维护或推导。
+- 两个回调均在UI线程同步调用，应仅用于计算，不应修改组件布局或应用状态。
+- 回调不提供item的位置和尺寸，开发者需要自行记录或计算这些信息。
 
 > **说明：**
 >
-> - velocity表示当前滚动速度，朝内容末端滚动时为正；反向布局和RTL方向已由组件统一处理。
-> - decayOffset表示不做干预时惯性自然滑过的距离，不会小于0。
+> - velocity表示惯性滚动开始时的速度，朝内容末端滚动时为正；反向布局和RTL方向由组件统一处理。
+> - decayOffset表示按默认惯性滚动预测的滑行距离，数值不小于0。
 
 **起始版本：** 26.2.0
 
@@ -1440,9 +1442,9 @@ type OnVisibleIndexesChangeCallback = (start: number, end: number) => void
 
 calculateApproachOffset(velocity: number, decayOffset: number): number
 
-计算惯性阶段滚动距离的回调。手指松开后惯性滚动开始时调用一次，返回值就是本次惯性阶段要滚动的距离。
+计算惯性阶段的滚动距离。该回调在惯性滚动开始时调用一次，返回值用于确定该阶段的滚动距离。
 
-返回值不是有限数字、小于0，或回调抛出异常时，返回值不生效，Grid按默认的惯性滚动继续滑行至停止。
+返回非有限数值（如NaN或Infinity）、负数，或回调抛出异常时，该阶段按默认的惯性滑行距离滚动，随后正常进入限位动画阶段。
 
 **起始版本：** 26.2.0
 
@@ -1456,22 +1458,22 @@ calculateApproachOffset(velocity: number, decayOffset: number): number
 
 | 参数名   | 类型                            | 必填   | 说明                   |
 | ---- | ----------------------------- | ---- | -------------------- |
-| velocity | number | 是    | 本次惯性滚动的初速度，朝内容末端滚动时为正。<br/>单位：vp/s |
-| decayOffset | number | 是    | 不做干预时惯性自然滑过的距离，不会小于0。<br/>单位：vp<br/>取值范围：[0, +∞) |
+| velocity | number | 是    | 惯性滚动开始时的速度，朝内容末端滚动时为正。<br/>单位：vp/s |
+| decayOffset | number | 是    | 按默认惯性滚动预测的滑行距离，数值不小于0。<br/>单位：vp<br/>取值范围：[0, +∞) |
 
 **返回值：**
 
 | 类型    | 说明       |
 | ------- | ---------- |
-| number  | 本次惯性阶段的滚动距离，允许大于等于decayOffset。<br/>单位：vp<br/>取值范围：[0, +∞) |
+| number  | 惯性阶段的滚动距离，必须为非负有限数值，可以超过decayOffset。<br/>单位：vp<br/>取值范围：[0, +∞) |
 
 ### calculateSnapOffset
 
 calculateSnapOffset(velocity: number): number
 
-计算最终停留位置的回调。惯性动画结束、即将进入限位动画时调用一次，返回值就是Grid最终要停到的位置（目标滚动偏移量），返回0也是合法的。
+计算最终吸附位置。该回调在惯性阶段结束、限位动画开始前调用一次，返回值为目标位置相对内容起点的滚动偏移量。返回0也是有效值。
 
-返回值不是有限数字或回调抛出异常时，返回值不生效，Grid停在默认的停止位置。限位动画从惯性动画结束的位置直接滚向目标位置。
+返回非有限数值（如NaN或Infinity）或回调抛出异常时，Grid停留在惯性阶段结束的位置。返回有效值时，限位动画从惯性阶段结束的位置滚动到目标位置。
 
 **起始版本：** 26.2.0
 
@@ -1485,13 +1487,13 @@ calculateSnapOffset(velocity: number): number
 
 | 参数名   | 类型                            | 必填   | 说明                   |
 | ---- | ----------------------------- | ---- | -------------------- |
-| velocity | number | 是    | 限位动画开始时（即惯性动画结束时）的速度，朝内容末端滚动时为正。<br/>单位：vp/s |
+| velocity | number | 是    | 惯性滚动开始时的速度，朝内容末端滚动时为正。<br/>单位：vp/s |
 
 **返回值：**
 
 | 类型    | 说明       |
 | ------- | ---------- |
-| number  | Grid最终停留位置相对内容起点的滚动偏移量，超出合法滚动范围时会被限制到范围内。<br/>单位：vp<br/>取值范围：[0, 合法滚动范围最大偏移量] |
+| number  | 最终吸附位置相对内容起点的滚动偏移量，必须为有限数值。超出组件可滚动范围时，目标位置会限制在范围内。<br/>单位：vp<br/>取值范围：[0, 合法滚动范围最大偏移量] |
 
 ## 示例
 
