@@ -495,8 +495,11 @@ import { fileIo as fs } from '@kit.CoreFileKit';
   let filePath = context.filesDir + '/audio_session_info.txt';
   let fd = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.WRITE_ONLY | fs.OpenMode.TRUNC).fd;
   // 输出到文件。
-  audioDebuggingManager.printSessionInfo(audioSessionManager, fd);
-  fs.closeSync(fd);
+  try {
+    audioDebuggingManager.printSessionInfo(audioSessionManager, fd);
+  } finally {
+    fs.closeSync(fd);
+  }
 ```
 
 **输出示例：**
