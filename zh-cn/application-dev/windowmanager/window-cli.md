@@ -62,7 +62,7 @@ ohos-window restore-window [options]
 
 ### 示例代码
 
-- **命令示例：**
+**命令示例：**
 
 ```bash
 # 恢复指定主窗口到前台
@@ -72,15 +72,15 @@ ohos-window restore-window --windowId 100
 ohos-window restore-window --help
 ```
 
-- **输出示例**
+**输出示例：**
 
 ```json
 {
-  "type": "result",
-  "status": "success",
-  "data": {
-    "message": "restore main window to foreground successfully."
-  }
+    "type": "result",
+    "status": "success",
+    "data": {
+        "message": "restore main window to foreground successfully."
+    }
 }
 ```
 
@@ -193,7 +193,7 @@ ohos-window list-windows [options]
 
 ### 示例代码
 
-- **命令示例：**
+**命令示例：**
 
 ```bash
 # 查询所有可见窗口，但不包括桌面等系统窗口
@@ -206,7 +206,7 @@ ohos-window list-windows --type meta --windowId 100
 ohos-window list-windows --displayId 0 --type layout --type meta
 ```
 
-- **输出示例**
+**输出示例：**
 
 ```json
 {
