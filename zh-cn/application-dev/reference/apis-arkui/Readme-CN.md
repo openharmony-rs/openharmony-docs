@@ -744,6 +744,7 @@
     - [text_area.h](capi-text-area-h.md)
     - [swiper.h](capi-swiper-h.md)
     - [water_flow.h](capi-water-flow-h.md)
+    - [ui_event_injection.h](capi-ui-event-injection-h.md)
     - [ui_input_event.h](capi-ui-input-event-h.md)
     - [oh_window.h](capi-oh-window-h.md)
     - [oh_window_comm.h](capi-oh-window-comm-h.md)
