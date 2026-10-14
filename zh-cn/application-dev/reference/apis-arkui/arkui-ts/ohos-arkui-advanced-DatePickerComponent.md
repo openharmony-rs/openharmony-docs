@@ -154,10 +154,10 @@ CommonOptions定义日期时间选择器的通用选项。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| start | Date | 否 | 是 | 选择器的起始日期或时间。<br>默认值：Date('1970-01-01T00:00:00')<br>取值范围：\[Date('0001-01-01T00:00:00'), Date('9999-12-31T23:59:59')] <br>**说明：**<br>设置了start且为有效值的场景下，loop不生效。|
-| end | Date | 否 | 是 | 选择器的结束日期或时间。<br>默认值：Date('2100-12-31T23:59:59')<br>取值范围：\[Date('0001-01-01T00:00:00'), Date('9999-12-31T23:59:59')] <br>**说明：**<br>设置了end且为有效值的场景下，loop不生效。|
+| start | Date | 否 | 是 | 选择器的起始日期或时间。<br>默认值：Date('1970-01-01T00:00:00')<br>取值范围：\[Date('0001-01-01T00:00:00'), Date('9999-12-31T23:59:59')] <br>**说明：**<br>设置了start且为有效值的场景下，API版本26.2.0之前loop不生效，从API版本26.2.0开始，loop对非边界列生效，对边界列不生效。|
+| end | Date | 否 | 是 | 选择器的结束日期或时间。<br>默认值：Date('2100-12-31T23:59:59')<br>取值范围：\[Date('0001-01-01T00:00:00'), Date('9999-12-31T23:59:59')] <br>**说明：**<br>设置了end且为有效值的场景下，API版本26.2.0之前loop不生效，从API版本26.2.0开始，loop对非边界列生效，对边界列不生效。|
 | selected | Date | 否 | 是 | 选中的日期或时间，设置后作为初始选中值显示。<br>默认值为当前系统日期或时间。<br>**说明：**<br>在DateMode.MONTH_AND_DAY模式下，仅month和day字段参与选择；年份取selected指定值，未指定时取当前系统年份，滚动过程中保持不变。 |
-| loop | boolean | 否 | 是 | 设置是否启用循环模式。<br>- true：启用循环模式，支持滚动到边界时继续循环选择。<br>- false：不启用循环模式，滚动到边界时停止。<br>默认值：true<br>**使用场景：**<br>循环模式适用于需要连续滚动选择的场景，如快速浏览年月；非循环模式适用于需要明确边界范围的场景。<br>**说明：**<br>设置了[start](#commonoptions)或[end](#commonoptions)且为有效值的场景下，本参数不生效。 |
+| loop | boolean | 否 | 是 | 设置是否启用循环模式。<br>- true：启用循环模式，支持滚动到边界时继续循环选择。<br>- false：不启用循环模式，滚动到边界时停止。<br>默认值：true<br>**使用场景：**<br>循环模式适用于需要连续滚动选择的场景，如快速浏览年月；非循环模式适用于需要明确边界范围的场景。 |
 | onChange | [Callback](ts-types.md#callback12)<[DatePickerComponentResult](#datepickercomponentresult)> | 否 | 是 | 选择日期或时间后触发该回调。 |
 | onScrollStop | [Callback](ts-types.md#callback12)<[DatePickerComponentResult](#datepickercomponentresult)> | 否 | 是 | 选择器项被选中且滚动停止时触发该回调。 |
 | enableHapticFeedback | boolean | 否 | 是 | 设置是否启用触控反馈。<br>默认值：true<br>- true：启用触控反馈，适用于需要增强用户交互体验的场景，如游戏、乐器类应用等。<br>- false：不启用触控反馈，适用于不需要触觉反馈或需要节省设备资源的场景。<br>**说明：**<br>1. 设置为true后，其生效情况取决于系统的硬件是否支持。<br>2. 启用触控反馈时，需要在工程的[module.json5](../../../quick-start/module-configuration-file.md)中配置requestPermissions字段以开启振动权限，配置如下：<br>"requestPermissions": [{"name": "ohos.permission.VIBRATE"}] |
