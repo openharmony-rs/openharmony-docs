@@ -52,10 +52,10 @@
   // ···
   
   let wantInfo: Want = {
-    // uncomment line below if wish to implicitly query only in the specific bundle.
+    // 如果只想在特定应用包内进行隐式查询，请取消下面这行的注释。
     // bundleName: 'com.example.myapplication',
     action: 'ohos.want.action.search',
-    // entities can be omitted
+    // entities可以省略。
     entities: ['entity.system.browsable'],
     uri: 'https://www.test.com:8080/query/student',
     type: 'text/plain',
