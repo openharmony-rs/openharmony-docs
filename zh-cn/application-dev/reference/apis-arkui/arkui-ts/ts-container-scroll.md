@@ -1526,6 +1526,10 @@ getScrollState(): ScrollState
 | --- | --- |
 | [ScrollState](ts-container-list.md#scrollstate枚举说明) | 当前滚动状态。 |
 
+> **说明：**
+>
+> - 通过鼠标滚轮滚动具有限位对齐效果(如List设置scrollSnapAlign)的组件时,滚轮滚动阶段返回SCROLL;随后的限位吸附对齐动画阶段按动画滚动语义处理,返回FLING。
+
 **错误码**：
 
 以下错误码详细介绍请参考[滚动类组件错误码](../errorcode-scroll.md)。
