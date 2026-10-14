@@ -222,7 +222,7 @@ onWillDismiss: ((DismissSheetAction: DismissSheetAction) => {
 }),
 ```
 
-同理可以结合`onWillSpringBackWhenDismiss`接口实现更好的下滑体验。
+同理可以结合`onWillSpringBackWhenDismiss`实现更好的下滑体验。
 
 类比`onWillDismiss`，在声明了`onWillSpringBackWhenDismiss`后，半模态下滑时的回弹操作需要使用 `SpringBackAction.springBack()`处理，无此逻辑则不会回弹。
 
