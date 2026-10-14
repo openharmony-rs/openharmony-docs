@@ -432,7 +432,7 @@ makeDirectCall\(phoneNumber: string\): Promise\<void\>
  
 | 参数名      | 类型   | 必填 | 说明       |
 | ----------- | ------ | ---- | ---------- |
-| phoneNumber | string | 是   | 电话号码。支持纯数字格式或tel格式，如："138xxxxxxxx"或"tel:138xxxxxxxx"。 |
+| phoneNumber | string | 是   | 电话号码。 |
  
 **返回值：**
  
