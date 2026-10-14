@@ -137,7 +137,7 @@ private changeOrientation(isLandscape: boolean) {
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
-import { window, router } from '@kit.ArkUI';
+import { window } from '@kit.ArkUI';
 import { common } from '@kit.AbilityKit';
 
 @Entry
