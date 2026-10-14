@@ -4160,7 +4160,7 @@ No permission is required for obtaining the caller's own information.
 | Name               | Type                           | Mandatory| Description                                                     |
 | --------------------- | ------------------------------- | ---- | --------------------------------------------------------- |
 | want                  | [Want](js-apis-app-ability-want.md)      | Yes  | Want containing the bundle name to query.                   |
-| extensionAbilityType  | string                          | Yes  | Type of the custom ExtensionAbility.The value is the name of the custom ExtensionAbility type configured in module.json5                       |
+| extensionAbilityType  | string                          | Yes  | Type of the custom ExtensionAbility. The value is the name of the custom ExtensionAbility type configured in module.json5                       |
 | extensionAbilityFlags | number| Yes   | Information flags to be included in the returned ExtensionAbilityInfo object. For details about the values and their meanings, see [ExtensionAbilityFlag](#extensionabilityflag). |
 | userId                | number                          | No  | User ID, which can be obtained by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9). The default value is the user ID of the caller. The value must be greater than or equal to 0.|
 
@@ -4554,7 +4554,7 @@ No permission is required for obtaining the caller's own information.
 
 | Name               | Type                           | Mandatory| Description                                                     |
 | --------------------- | ------------------------------- | ---- | --------------------------------------------------------- |
-| extensionAbilityType  | string                          | Yes  | Type of the custom ExtensionAbility.The value is the name of the custom ExtensionAbility type configured in module.json5                       |
+| extensionAbilityType  | string                          | Yes  | Type of the custom ExtensionAbility. The value is the name of the custom ExtensionAbility type configured in module.json5                       |
 | extensionAbilityFlags | number| Yes   | Information flags to be included in the returned ExtensionAbilityInfo object. For details about the values and their meanings, see [ExtensionAbilityFlag](#extensionabilityflag). |
 | userId                | number                          | No  | User ID, which can be obtained by calling [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9). The default value is the user ID of the caller. The value must be greater than or equal to 0.|
 
