@@ -1221,23 +1221,23 @@ getScrollState(): ScrollState
 
 获取滚动组件的当前滚动状态。
 
+> **说明：**
+>
+> 通过鼠标滚轮滚动设置了scrollSnapAlign的List时，限位吸附动画滚动期间返回FLING。
+
+**起始版本：** 26.2.0
+
 **原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.2.0
-
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
 | [ScrollState](ts-container-list.md#scrollstate枚举说明) | 当前滚动状态。 |
-
-> **说明：**
->
-> - 通过鼠标滚轮滚动设置了scrollSnapAlign的List时,限位吸附动画滚动期间返回FLING。
 
 **错误码**：
 
@@ -2261,7 +2261,7 @@ struct Index {
 
 ### 示例14（获取滚动状态）
 
-从API版本26.2.0开始，该示例实现了获取滚动状态的功能。
+该示例通过[getScrollState](#getscrollstate)接口，实现了获取滚动状态的功能。从API版本26.2.0开始，新增getScrollState接口。
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -2269,8 +2269,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 /**
  * 滚动状态查询示例
  *
- * 通过 Scroller.getScrollState() 获取当前滚动状态，并利用定时器
- * 每4ms自动查询一次，实时展示滚动过程中的状态变化。
+ * 通过Scroller.getScrollState()获取当前滚动状态，并利用定时器每4ms自动查询一次，实时展示滚动过程中的状态变化。
  */
 @Entry
 @Component
@@ -2345,4 +2344,5 @@ struct ScrollExample {
   }
 }
 ```
+
 ![scrollGetScrollState](figures/scrollGetScrollState.gif)

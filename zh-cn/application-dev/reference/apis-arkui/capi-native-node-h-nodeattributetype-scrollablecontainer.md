@@ -750,6 +750,7 @@ NODE_SCROLL_STATE = 1002030
 
 获取当前滚动状态。<br>
 该属性可以根据需要通过API获取。<br>
+作为属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br>
 
 **起始版本：** 26.2.0
 
