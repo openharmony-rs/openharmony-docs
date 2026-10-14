@@ -711,6 +711,28 @@ enableEditMode(enabled: boolean | undefined)
 | ------ | ------ | ---- | ---------------------------------------- |
 | enabled  | boolean \| undefined | 是   | 是否启用编辑模式，该参数支持[!!](../../../ui/state-management/arkts-new-binding.md)双向绑定变量。设置为true时启用编辑模式，可以滑动多选，设置为false或undefined时关闭编辑模式，不可滑动多选。 |
 
+### scrollSnapStrategy
+
+scrollSnapStrategy(strategy?: ScrollSnapAlign | ScrollSnapOffsetProvider)
+
+设置Grid的两阶段滚动吸附策略。
+
+START、CENTER、END分别将item对齐到滚动轴方向视口的起始、中间和末尾位置。自定义提供方通过[calculateApproachOffset](ts-container-scrollable-common.md#calculateapproachoffset)计算趋近距离，通过[calculateSnapOffset](ts-container-scrollable-common.md#calculatesnapoffset)计算最终目标。设置为NONE或undefined时清除策略，恢复默认滚动行为。不支持的布局不启用吸附，吸附目标受合法滚动范围限制。
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                 |
+| ------ | ------ | ---- | ------------------------------------ |
+| strategy  | [ScrollSnapAlign](ts-container-list.md#scrollsnapalign10枚举说明) \| [ScrollSnapOffsetProvider](ts-container-scrollable-common.md#scrollsnapoffsetprovider) | 否   | 内置对齐策略或自定义提供方。<br/>未设置时，不启用滚动吸附，保持默认滚动行为。 |
+
 ## GridItemAlignment<sup>12+</sup>枚举说明
 
 GridItem的对齐方式枚举。
