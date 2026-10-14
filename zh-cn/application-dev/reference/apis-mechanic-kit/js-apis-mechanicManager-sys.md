@@ -609,6 +609,40 @@ mechanicManager.searchTarget(targetInfo,
 });
 ```
 
+## mechanicManager.move
+
+stopMoving(mechId: number): Promise&lt;Result&gt;
+
+以特定参数移动一个具身设备。
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+**参数：**
+
+| 参数名     | 类型                    | 必填 | 说明   |
+| ---------- | ---------------------- | ---- | ----- |
+| mechId | number | 是 | 机械体设备ID。 |
+| params | [MoveParams](#moveparams) | 是 | 移动参数。 |
+
+**返回值：**
+
+| 类型                                        | 说明        |
+| ------------------------------------------- | --------- |
+| Promise&lt;Result&gt; | Promise对象，返回旋转执行结果。 |
+
+**错误码：**
+
+以下的错误码的详细介绍请参见[机械体控制模块错误码](errorcode-mechanic.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息           |
+| -------- | ----------------- |
+| 202 | Not system application. |
+| 33300001 | Service exception. |
+| 33300002 | Device not connected. |
+| 33300003 | Feature not supported. |
+
 ## mechanicManager.onBatteryLevelChange
 
 onBatteryLevelChange(mechId: number, callback: Callback&lt;BatteryLevelInfo&gt;): void
@@ -863,6 +897,8 @@ console.info(`'Query the adsorb state successfully, adsorb state:' ${adsorbState
 | INTERRUPTED | 1 | 执行被打断。 |
 | LIMITED | 2 | 执行受最大旋转角度限制。 |
 | TIMEOUT | 3 | 执行超时。 |
+| TERMINATE_OBSTACLE | 4 | 障碍物导致终止。 |
+| TERMINATE_CLIFF | 5 | 悬崖导致终止。 |
 | SYSTEM_ERROR | 100 | 系统错误。 |
 
 ## TargetType<sup>21+<sup>
@@ -930,6 +966,24 @@ console.info(`'Query the adsorb state successfully, adsorb state:' ${adsorbState
 | targetCount | number | 否 | 否 | 搜索到的目标数量。 |
 
 
+## MoveParams
+
+设备移动参数。
+  
+**起始版本**：26.0.0
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+| 名称   | 类型 | 只读 | 可选 | 说明|
+| ----- | ---- | ---- | --- | --- |
+| distance | number | 否 | 否 | 移动距离（取值限定为整数）。|
+| angle | double | 否 | 否 | 转动角度。|
+| speedGear | [SpeedGear](#speedgear) | 否 | 是 | 速度档位。|
+| mode | [MarchingMode](#marchingmode) | 否 | 是 | 行进方式。|
+
+
 ## BatteryLevelInfo
 
 电量状态变化信息。
@@ -962,3 +1016,36 @@ console.info(`'Query the adsorb state successfully, adsorb state:' ${adsorbState
 | UNKNOWN  | int | -1 | 未知状态。 |
 | ADSORBED  | int | 0 | 已吸附。 |
 | UNADSORBED   | int | 1 | 未吸附。 |
+
+
+## SpeedGear  
+
+速度档位枚举。
+  
+**起始版本**：26.0.0
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+| 名称 | 类型 | 值 | 说明 |
+| ----------- | ------|---- | --------------- |
+| LOW_SPEED  | int | 0 | 低速档定义。 |
+| MIDDLE_SPEED  | int | 1 | 中速档定义，默认值即为中速。 |
+| HIGH_SPEED   | int | -1 | 高速档定义。 |
+
+
+## MarchingMode  
+
+行进模式枚举。
+  
+**起始版本**：26.0.0
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+| 名称 | 类型 | 值 | 说明 |
+| ----------- | ------|---- | --------------- |
+| TURN_THEN_MOVE  | int | 0 | 先转动再移动。 |
+| TURNING_MOVING  | int | 1 | 边移动边转动。 |
