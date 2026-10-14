@@ -67,8 +67,8 @@ uint64_t fdsan_create_owner_tag(enum fdsan_owner_type type, uint64_t tag);
 
 | 名称                       | 说明                                                         |
 | -------------------------- | ------------------------------------------------------------ |
-| `FDSAN_OWNER_TYPE_GENERIC_00` | 默认未使用fd对应的type值。     |
-| `FDSAN_OWNER_TYPE_GENERIC_FF` | 默认非法fd对应的type值。 |
+| `FDSAN_OWNER_TYPE_DEFAULT` | 默认未使用fd对应的type值。     |
+| `FDSAN_OWNER_TYPE_MAX` | 默认非法fd对应的type值。 |
 | `FDSAN_OWNER_TYPE_FILE` | 默认普通文件对应的type值，使用fopen或fdopen打开的文件具有该类型。 |
 | `FDSAN_OWNER_TYPE_DIRECTORY` | 默认文件夹对应的type值，使用opendir或fdopendir打开的文件具有该类型。 |
 | `FDSAN_OWNER_TYPE_UNIQUE_FD` | 默认unique_fd对应的type值，保留暂未使用。 |
