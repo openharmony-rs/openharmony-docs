@@ -40,7 +40,7 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| const char * OH_MD_KEY_VIDEO_METADATA_ROI_TOP | 用于描述单个ROI（感兴趣区域）矩形顶部坐标（y）的键，值类型为int32_t。坐标系的原点位于视频的左上角。取值范围为[0, OH_MD_KEY_VIDEO_METADATA_ROI_BOTTOM)。这是配置ROI参数时的必填键。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
+| const char * OH_MD_KEY_VIDEO_METADATA_ROI_TOP | 用于描述单个ROI（感兴趣区域）矩形顶部坐标（y）的键，值类型为int32_t。坐标系的原点位于视频的左上角。取值范围为[0, OH_MD_KEY_VIDEO_METADATA_ROI_BOTTOM)。这是配置ROI参数时的必填键。<br>**起始版本：** 26.0.0 |
 | const char * OH_MD_KEY_VIDEO_METADATA_ROI_LEFT | 用于描述单个ROI矩形左侧坐标（x）的键，值类型为 int32_t。坐标系的原点位于视频的左上角。取值范围为[0, OH_MD_KEY_VIDEO_METADATA_ROI_RIGHT)。这是配置ROI参数时的必填键。<br>**起始版本：** 26.0.0 |
 | const char * OH_MD_KEY_VIDEO_METADATA_ROI_BOTTOM | 用于描述单个ROI矩形底部坐标（y）的键，值类型为int32_t。坐标系的原点位于视频的左上角。取值范围为(OH_MD_KEY_VIDEO_METADATA_ROI_TOP, OH_MD_KEY_VIDEO_HEIGHT]。这是配置ROI参数时的必填键。<br>**起始版本：** 26.0.0 |
 | const char * OH_MD_KEY_VIDEO_METADATA_ROI_RIGHT | 用于描述单个ROI矩形右侧坐标（x）的键，值类型为int32_t。坐标系的原点位于视频的左上角。取值范围为(OH_MD_KEY_VIDEO_METADATA_ROI_LEFT, OH_MD_KEY_VIDEO_WIDTH]。这是配置ROI参数时的必填键。<br>**起始版本：** 26.0.0 |
