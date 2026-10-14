@@ -1440,9 +1440,9 @@ type OnVisibleIndexesChangeCallback = (start: number, end: number) => void
 
 calculateApproachOffset(velocity: number, decayOffset: number): number
 
-惯性滚动开始后调用一次，返回本次惯性阶段要滚动的距离（即趋近偏移量）。
+计算惯性阶段滚动距离的回调。手指松开后惯性滚动开始时调用一次，返回值就是本次惯性阶段要滚动的距离。
 
-返回值不是有限数字、小于0，或回调抛出异常时，Grid退回默认行为，按自然摩擦减速滑行至停止。
+返回值不是有限数字、小于0，或回调抛出异常时，返回值不生效，Grid按默认的惯性滚动继续滑行至停止。
 
 **起始版本：** 26.2.0
 
@@ -1469,9 +1469,9 @@ calculateApproachOffset(velocity: number, decayOffset: number): number
 
 calculateSnapOffset(velocity: number): number
 
-趋近阶段结束、即将进入最终限位动画时调用一次，返回值就是Grid最终要停到的位置（目标滚动偏移量），返回0也是合法的。
+计算最终停留位置的回调。惯性动画结束、即将进入限位动画时调用一次，返回值就是Grid最终要停到的位置（目标滚动偏移量），返回0也是合法的。
 
-返回值不是有限数字或回调抛出异常时，组件使用默认的兜底位置。限位动画从当前位置（趋近阶段的结束位置）出发滚向目标，不会先回到手势开始的位置再滚动。
+返回值不是有限数字或回调抛出异常时，返回值不生效，Grid停在默认的停止位置。限位动画从惯性动画结束的位置直接滚向目标位置。
 
 **起始版本：** 26.2.0
 
@@ -1485,7 +1485,7 @@ calculateSnapOffset(velocity: number): number
 
 | 参数名   | 类型                            | 必填   | 说明                   |
 | ---- | ----------------------------- | ---- | -------------------- |
-| velocity | number | 是    | 限位动画开始时（即趋近阶段结束时）的速度，朝内容末端滚动时为正。<br/>单位：vp/s |
+| velocity | number | 是    | 限位动画开始时（即惯性动画结束时）的速度，朝内容末端滚动时为正。<br/>单位：vp/s |
 
 **返回值：**
 

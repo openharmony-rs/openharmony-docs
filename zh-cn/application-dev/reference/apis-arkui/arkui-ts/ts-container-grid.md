@@ -717,15 +717,16 @@ scrollSnapStrategy(strategy?: ScrollSnapAlign | ScrollSnapOffsetProvider)
 
 设置Grid的限位滚动策略。设置后，惯性滚动结束时Grid不会直接停在松手后的自然停止位置，而是自动吸附对齐到指定位置。使用方法可以参考[示例23](#示例23设置滚动吸附对齐)。
 
-限位滚动分两步进行：先按惯性自然滚动一段距离，到达趋近位置后，再通过一段限位动画平滑滚动到最终吸附位置。
+限位滚动分两步进行：松手后，Grid先按惯性继续自然滑行一段距离；滑行结束后，再用一段限位动画平滑滚动到最终吸附位置。
 
 - 传入[ScrollSnapAlign](ts-container-list.md#scrollsnapalign10枚举说明)枚举时，按内置方式对齐：START、CENTER、END分别将item对齐到滚动方向视口的起始、中间和末尾位置。
 - 传入实现[ScrollSnapOffsetProvider](ts-container-scrollable-common.md#scrollsnapoffsetprovider)接口的对象时，滚动位置由开发者自己计算：Grid惯性滚动开始时回调[calculateApproachOffset](ts-container-scrollable-common.md#calculateapproachoffset)，由返回值决定本次滚动多远；进入限位动画前回调[calculateSnapOffset](ts-container-scrollable-common.md#calculatesnapoffset)，由返回值决定最终停在哪里。
 - 传入NONE或undefined时清除限位策略，Grid恢复默认滚动行为。
 
+存在跨行跨列（不规则）节点的布局不支持本限位滚动接口。
+
 > **说明：**
 >
-> - 存在跨行跨列（不规则）节点的布局不支持限位滚动。
 > - 最终吸附位置始终在合法滚动范围内。
 
 **起始版本：** 26.2.0
