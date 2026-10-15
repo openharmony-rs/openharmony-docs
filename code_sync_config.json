@@ -25806,6 +25806,11 @@
 						"end_line":25,
 						"name":"vector_include",
 						"start_line":19
+					},
+					{
+						"end_line":219,
+						"name":"vector_OH_Rdb_GetSupportedDbType",
+						"start_line":209
 					}
 				]
 			}
