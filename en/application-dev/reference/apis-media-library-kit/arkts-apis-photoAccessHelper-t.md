@@ -5,6 +5,7 @@
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=c6d13cedef60f965b8688311cf452d6bc7d88cf1 translatedAt=2026-10-08T03:12:59.551Z pushedAt=2026-10-15T05:51:55.604Z -->
 
 > **NOTE**
 >
@@ -14,7 +15,7 @@
 
 type MemberType = number | string | boolean
 
-Defines the types of the PhotoAsset members.
+Defines the types of the **PhotoAsset** members.
 
 The member types are the union of the types listed in the following table.
 
@@ -23,7 +24,7 @@ The member types are the union of the types listed in the following table.
 | Type| Description|
 | ---- | ---- |
 | number | The member value is any number.|
-| string | The member value is any string.|
+| string | The value can be any string. |
 | boolean | The member value is true or false.|
 
 ## PhotoAssetParams<sup>21+</sup>
@@ -52,6 +53,6 @@ Defines the values needed for matching different predicates.
 
 | Type                   | Description                         |
 | ---------------------- | -------------------------------- |
-| number    | Used for numeric fields. It can be any value.|
-| string    | Used for string fields. It can be any value.|
-| boolean   | Used for boolean fields.|
+| number    | The member value is any number. |
+| string    | The value can be any string. |
+| boolean   | The member value is true or false. |
