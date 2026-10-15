@@ -1344,21 +1344,19 @@ export struct CustomDialogOldInterface {
 
 <!-- @[custom_dialog_new_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/CustomDialogNewInterface.ets) -->
 
-```
+``` TypeScript
+// Index.ets
 import {
   ComponentContent,
   DialogPresenter,
   DialogResult,
-  DialogBaseAlignment,
-  LevelMode,
-  ImmersiveMode,
   uiMaterial
 } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 定义参数类，用于向自定义弹出框内容传递数据
 class Params {
-  text: string = '';
+  public text: string = '';
 
   constructor(text: string) {
     this.text = text;
@@ -1407,7 +1405,7 @@ let contentNode: ComponentContent<Object> | null = null;
 
 @Entry
 @Component
-struct Index {
+export struct CustomDialogNewInterface {
   @State message: string = 'custom dialog';
 
   aboutToAppear(): void {
@@ -1418,23 +1416,28 @@ struct Index {
   }
 
   build() {
-    Column({ space: 10 }) {
-      Button('Present custom dialog')
-        .id("PresentDialog")
-        .onClick(() => {
-          // 弹出自定义样式弹出框，传入ComponentContent和配置选项
-          dialogPresenter?.present(contentNode, {
-            systemMaterial: new uiMaterial.ImmersiveMaterial({ style: uiMaterial.ImmersiveStyle.REGULAR })
-          })
-          // 弹出成功，获取弹出框ID
-            .then((result: DialogResult) => {
-              console.info('present success, dialogId: ' + result.dialogId);
+    NavDestination() {
+      Row() {
+        Column({ space: 10 }) {
+          Button('Present custom dialog')
+            .id('PresentDialog')
+            .onClick(() => {
+              // 弹出自定义样式弹出框，传入ComponentContent和配置选项
+              dialogPresenter?.present(contentNode, {
+                systemMaterial: new uiMaterial.ImmersiveMaterial({ style: uiMaterial.ImmersiveStyle.REGULAR })
+              })
+              // 弹出成功，获取弹出框ID
+                .then((result: DialogResult) => {
+                  console.info('present success, dialogId: ' + result.dialogId);
+                })
+                .catch((error: BusinessError) => {
+                  console.error(`present error code is ${error.code}, message is ${error.message}`);
+                })
             })
-            .catch((error: BusinessError) => {
-              console.error(`present error code is ${error.code}, message is ${error.message}`);
-            })
-        })
-    }.width('100%').height('100%').justifyContent(FlexAlign.Center)
+        }.width('100%').height('100%').justifyContent(FlexAlign.Center)
+      }
+      .height('100%')
+    }
   }
 }
 ```
