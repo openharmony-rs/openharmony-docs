@@ -96,7 +96,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
 
 1. 引入[dlpPermission](../../reference/apis-data-protection-kit/js-apis-dlppermission.md)模块。
 
-    <!-- @[dlp_include_dlpPermission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[dlp_include_dlpPermission](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     import { dlpPermission } from '@kit.DataProtectionKit';
@@ -114,7 +114,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
 
     2.3 调用context的[startAbility](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability)方法传入want参数，打开dlp文件。
 
-    <!-- @[dlp_prepareForOpenDlpFile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[dlp_prepareForOpenDlpFile](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     openDlpFile(dlpUri: string, fileName: string, fd: number) {
@@ -160,7 +160,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
 
     以上代码需要在module.json5文件中增加ohos.want.action.viewData：
    
-    <!-- @[dlp_configurationModule](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/module.json5) -->
+    <!-- @[dlp_configurationModule](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/module.json5) -->
     
     ``` JSON5
     "skills": [
@@ -177,7 +177,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
     ```
     
     2.4 应用内使用文件Picker进行文件加密分享。
-    <!-- @[dlp_callFilePicker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[dlp_callFilePicker](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     async callFilePicker(): Promise<void> {
@@ -207,7 +207,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
 
     3.1.2 以无边框形式打开DLP权限管理应用。此方法只能在UIAbility上下文中调用。调用[startDLPManagerForResult](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissionstartdlpmanagerforresult11)，拉起DLP管理应用的设置权限页面，输入相关的授权账号信息，点击保存，在拉起的filepicker中选择DLP文件的保存路径，保存DLP文件。
 
-    <!-- @[dlp_generateDlpFiles](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[dlp_generateDlpFiles](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     generateDlpFiles() {
@@ -245,7 +245,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
 
     3.2.1 如果当前的账号是DLP文档的创建者，则该用户拥有修改这个DLP文件权限或者解除这个DLP文档权限还原为普通文件的能力，调用[startDLPManagerForResult](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissionstartdlpmanagerforresult11)，拉起DLP管理应用的设置权限页面，在该页面中选择更改加密进行权限修改或者解除加密；如果当前账号拥有DLP文档只读或者编辑权限，调用以下代码则可以查看当前用户权限内容。
 
-    <!-- @[dlp_startDLPManagerForResult](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[dlp_startDLPManagerForResult](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     startDLPManagerForResult() {
@@ -281,7 +281,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
    
     在应用中调用[isInSandbox](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissionisinsandbox)接口判断当前是否是DLP沙箱分身，如果是DLP沙箱分身则可以结合调用接口查询权限的结果进行对应功能按钮的置灰或屏蔽。比如：如果只有只读权限，则编辑保存入口可以置灰，如果是只读或者编辑权限，则修改权限入口可以置灰。
 
-    <!-- @[dlp_isInSandBox](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[dlp_isInSandBox](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     isInSandbox() {
@@ -305,7 +305,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
    
      使用该接口的前置条件：由demo应用打开DLP文件。
 
-    <!-- @[dlp_getDLPPermissionInfo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[dlp_getDLPPermissionInfo](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     getDLPPermissionInfo() {
@@ -329,7 +329,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
 
     [getDLPSupportedFileTypes](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissiongetdlpsupportedfiletypes)用于应用判断当前文件能否生成进行加密。
 
-    <!-- @[dlp_getDLPSupportedFileTypes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[dlp_getDLPSupportedFileTypes](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     getDLPSupportedFileTypes() {
@@ -351,7 +351,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
 
     [isDLPFile](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissionisdlpfile)用于判断当前打开文件是否是DLP文件。
 
-    <!-- @[dlp_isCurrentDlpFile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[dlp_isCurrentDlpFile](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     isCurrentDlpFile() {
@@ -395,7 +395,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
 
     使用该接口的前置条件：由demo应用打开DLP文件。
 
-    <!-- @[dlp_getDLPFileAccessRecords](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[dlp_getDLPFileAccessRecords](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     getDLPFileAccessRecords() {
@@ -418,7 +418,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
 
     DLP沙箱分身有打开DLP文件场景：普通应用可以订阅[on](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissiononopendlpfile)或者取消[off](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissionoffopendlpfile)订阅本应用的DLP沙箱分身打开DLP文件的事件。
 
-    <!-- @[dlp_subscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[dlp_subscribe](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     event(info: dlpPermission.AccessedDLPFileInfo) {
@@ -465,7 +465,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
 
     9.1 调用接口[setRetentionState](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissionsetretentionstate)设置保留沙箱，传入参数为本沙箱内打开的dlp文件的URI列表，该接口只允许在沙箱中调用。
 
-    <!-- @[dlp_setRetentionState](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[dlp_setRetentionState](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     async setRetentionState() {
@@ -487,7 +487,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
 
    9.2 调用接口[cancelRetentionState](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissioncancelretentionstate)取消保留沙箱。
 
-    <!-- @[dlp_cancelRetentionState](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[dlp_cancelRetentionState](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     async cancelRetentionState() {
@@ -511,7 +511,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
 
     使用该接口的前置条件：由demo应用打开DLP文件。
 
-    <!-- @[dlp_getRetentionSandboxList](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[dlp_getRetentionSandboxList](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     getRetentionSandboxList() {
@@ -552,7 +552,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
 
     把需要保存的配置信息转成string类型，调用[setSandboxAppConfig](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissionsetsandboxappconfig11)接口设置配置信息。
 
-    <!-- @[dlp_setSandboxAppConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[dlp_setSandboxAppConfig](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     setSandboxAppConfig() {
@@ -577,7 +577,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
 
     该接口只允许普通应用中调用。
 
-    <!-- @[dlp_cleanSandboxAppConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[dlp_cleanSandboxAppConfig](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     cleanSandboxAppConfig() {
@@ -603,7 +603,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
 
     普通应用和DLP沙箱分身都可以调用。
 
-    <!-- @[dlp_getSandboxAppConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[dlp_getSandboxAppConfig](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     getSandboxAppConfig() {
@@ -628,7 +628,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
 
     [isDLPFeatureProvided](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissionisdlpfeatureprovided12)用于查询当前系统是否提供DLP特性。
     
-    <!-- @[dlp_isDLPFeature](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[dlp_isDLPFeature](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     isDLPFeature() {
@@ -653,7 +653,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
 
     12.1 打开DLP文件时，应用被安装为DLP沙箱分身应用（后续简称为分身），分身会收到want请求，分身可以对其中一些字段进行解析：
 
-    <!-- @[dlp_PrepareOpenFuseFile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[dlp_PrepareOpenFuseFile](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
 
     ``` TypeScript
     interface DLPUriObj {
@@ -686,7 +686,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
 
     12.2 分身可以通过把want.uri打开为fd，获取FUSE文件的内容：
 
-    <!-- @[dlp_OpenFuseFile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[dlp_OpenFuseFile](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     function readFileContent(dlpFuseUri: string): string {
@@ -737,7 +737,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
  
     12.3 如果有FUSE文件的读写权限，也可以更新FUSE文件内容：
  
-    <!-- @[dlp_WriteFuseFile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[dlp_WriteFuseFile](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     function writeFileContent(dlpFuseUri: string, content: string): void {
@@ -766,7 +766,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
 
     [getOriginalFileName](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissiongetoriginalfilename)用于获取dlp文件原始名。
 
-    <!-- @[dlp_getOriginalFileName](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[dlp_getOriginalFileName](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     getOriginalFileName() {
@@ -788,7 +788,7 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
 
     [getDLPSuffix](../../reference/apis-data-protection-kit/js-apis-dlppermission.md#dlppermissiongetdlpsuffix)用于获取dlp文件的后缀名。
 
-    <!-- @[dlp_getDLPSuffix](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[dlp_getDLPSuffix](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/Security/DataProtectionKit/DLP/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     getDLPSuffix() {
@@ -806,11 +806,11 @@ DLP文件所涉及的重要模块及其交互，如下图所示。文件所有�
     }
     ```
 ## 常见问题
-
+ 
 ### FUSE文件无法打开
-
+ 
 **问题描述**：应用可以打开正常文件，无法打开FUSE文件。
-
+ 
 **解决方法**：
 - 排查是否对want做了特定限制，导致DLP沙箱分身无法获取到FUSE文件。
 - 排查是否以读写权限打开了只读的FUSE文件。
