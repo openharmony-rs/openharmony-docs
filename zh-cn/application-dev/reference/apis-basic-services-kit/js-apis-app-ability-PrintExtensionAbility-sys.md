@@ -2,9 +2,9 @@
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Print-->
-<!--Owner: @guoshengbang-->
+<!--Owner: @Zouhaifeng1-->
 <!--Designer: @baozewei-->
-<!--Tester: @guoshengbang-->
+<!--Tester: @baozewei-->
 <!--Adviser: @fang-jinxu-->
 
 该模块提供调用打印扩展能力的接口。PrintExtensionAbility是打印扩展的基类，由系统打印服务在需要打印预览等场景时回调开发者实现的扩展方法，开发者需继承该类并实现相关回调方法以提供自定义的打印扩展能力。相关打印框架信息请参见 [@ohos.print (打印)](js-apis-print.md)。
