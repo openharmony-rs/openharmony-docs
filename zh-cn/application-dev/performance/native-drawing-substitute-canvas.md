@@ -77,14 +77,14 @@ Canvas 的 CanvasRenderingContext2D 绘制使用 [globalCompositeOperation](../r
     import { hiTraceMeter } from '@kit.PerformanceAnalysisKit';
     /**
      * 玻璃蒙层效果
-    */
+     */
 
     @Preview
     @Component
     export default struct GlassCoverView {
       /**
        * 位置列表，x、y都在[0,1]之间
-      */
+       */
       @Prop
       @Watch('onDraw')
       pointsToDraw: number[][] = [];
@@ -160,7 +160,7 @@ Canvas 的 CanvasRenderingContext2D 绘制使用 [globalCompositeOperation](../r
 
     [drawing_canvas.h](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md) 主要使用分层接口[OH_Drawing_CanvasSaveLayer](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md#oh_drawing_canvassavelayer) 和融合接口[OH_Drawing_BrushSetBlendMode](../reference/apis-arkgraphics2d/capi-drawing-brush-h.md#oh_drawing_brushsetblendmode) 来实现多图融合效果。通过在前端创建一个自绘制节点[RenderNode](../reference/apis-arkui/js-apis-arkui-renderNode.md)，并将图形绘制上下文及背景图参数通过Native侧暴露的接口传入，由Native侧使用相应的Drawing接口进行绘制，具体实现步骤如下：
 ### 前端实现
-1.前端定义一个 [RenderNode](../reference/apis-arkui/js-apis-arkui-renderNode.md) 自绘制渲染节点，将背景图 this.pMap 和图形绘制上下文 context 传入 Native，调用 Native 侧的 nativeOnDraw 接口进行绘制。
+1. 前端定义一个 [RenderNode](../reference/apis-arkui/js-apis-arkui-renderNode.md) 自绘制渲染节点，将背景图 this.pMap 和图形绘制上下文 context 传入 Native，调用 Native 侧的 nativeOnDraw 接口进行绘制。
 
     ```ts
     // entry\src\main\ets\pages\Index.ets

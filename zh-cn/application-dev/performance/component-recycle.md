@@ -1,5 +1,12 @@
 # 组件复用实践
 
+<!--Kit: Common-->
+<!--Subsystem: Demo&Sample-->
+<!--Owner: @mgy917-->
+<!--Designer: @jiangwensai-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @huipeizi-->
+
 若开发者的应用中存在以下场景，并成为UI线程的帧率瓶颈，应该考虑使用组件复用机制提升应用性能：
 
 1. 滑动场景下对同一类自定义组件的实例进行频繁的创建与销毁。
@@ -249,7 +256,7 @@ struct GoodItems {
 
 ![using reuse](./figures/using-recycle.png)
 
-|                | 创建组件时间 |
+|        /       | 创建组件时间 |
 | -------------- | ------------ |
 | 不使能组件复用 | 1813us       |
 | 使能组件复用   | 570us        |
