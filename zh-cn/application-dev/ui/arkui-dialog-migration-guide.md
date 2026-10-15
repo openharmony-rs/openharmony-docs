@@ -1456,8 +1456,8 @@ export struct CustomDialogNewInterface {
 
 <!-- @[dialog_presenter_class_new](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/common/DialogPresenterClassNew.ts) -->
 
-```typescript
-// DialogPresenterClassNew.ts
+``` TypeScript
+// DialogPresenterClassNew.ets
 import { BusinessError } from '@kit.BasicServicesKit';
 import { ComponentContent, dialog, DialogResult, UIContext } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -1484,7 +1484,6 @@ export class DialogPresenterClassNew {
   // 打开弹窗
   static openDialog() {
     if (DialogPresenterClassNew.contentNode !== null) {
-      // [Start dialog_presenter_class_open_custom_dialog]
       DialogPresenterClassNew.ctx.getDialogPresenter()?.present(this.contentNode, DialogPresenterClassNew.options)
         .then((result: DialogResult) => {
           hilog.info(DOMAIN, 'testTag', 'testTag', 'OpenCustomDialog complete.');
@@ -1492,8 +1491,7 @@ export class DialogPresenterClassNew {
         let message = (error as BusinessError).message;
         let code = (error as BusinessError).code;
         hilog.error(DOMAIN, 'testTag', 'testTag', `OpenCustomDialog args error code is ${code}, message is ${message}`);
-      })
-      // [End dialog_presenter_class_open_custom_dialog]
+      });
     }
   }
 
@@ -1508,14 +1506,13 @@ export class DialogPresenterClassNew {
           let message = (error as BusinessError).message;
           let code = (error as BusinessError).code;
           hilog.error(DOMAIN, 'testTag', 'testTag', `CloseCustomDialog args error code is ${code}, message is ${message}`);
-        })
+        });
     }
   }
 
   // 更新弹窗
   static updateDialog(options: dialog.DialogBaseOptions) {
     if (DialogPresenterClassNew.contentNode !== null) {
-      // [Start dialog_presenter_class_update_options]
       DialogPresenterClassNew.ctx.getDialogPresenter()?.update(this.contentNode, options)
         .then(() => {
           hilog.info(DOMAIN, 'testTag', 'testTag', 'UpdateCustomDialog complete.');
@@ -1524,8 +1521,7 @@ export class DialogPresenterClassNew {
           let message = (error as BusinessError).message;
           let code = (error as BusinessError).code;
           hilog.error(DOMAIN, 'testTag', 'testTag', `UpdateCustomDialog args error code is ${code}, message is ${message}`);
-        })
-      // [End dialog_presenter_class_update_options]
+        });
     }
   }
 }
