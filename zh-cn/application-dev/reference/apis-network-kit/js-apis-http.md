@@ -163,7 +163,7 @@ createHttp(): HttpRequest
 创建一个HTTP请求，里面包括发起请求、中断请求、订阅/取消订阅HTTP Response Header事件。当发起多个HTTP请求时，需为每个HTTP请求创建对应HttpRequest对象。每一个HttpRequest对象对应一个HTTP请求。
 
 > **说明：**
-> 当该请求使用完毕时，需调用destroy方法释放资源，否则会出现内存泄露问题。
+> 当该请求使用完毕时，需调用destroy方法释放资源，否则会出现内存泄漏问题。
 
 **原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。
 
