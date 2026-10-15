@@ -49,7 +49,7 @@ API的详细介绍请参见[ohos.file.statvfs](../reference/apis-core-file-kit/j
   import { common } from '@kit.AbilityKit';
   
   ```
-  <!--@[storageStatistics_statfs_getFreeSize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->     
+  <!--@[storageStatistics_statfs_getFreeSize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->      
 
    ``` TypeScript
    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -89,7 +89,7 @@ API的详细介绍请参见[ohos.file.statvfs](../reference/apis-core-file-kit/j
   import { storageStatistics } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   ```
-  <!--@[storageStatistics_getTotalSize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->     
+  <!--@[storageStatistics_getTotalSize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->      
   
   ``` TypeScript
   storageStatistics.getTotalSize().then((number: number) => {
@@ -125,7 +125,7 @@ API的详细介绍请参见[ohos.file.statvfs](../reference/apis-core-file-kit/j
   import { storageStatistics } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   ```
-  <!--@[storageStatistics_getFreeSize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->      
+  <!--@[storageStatistics_getFreeSize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->       
   
   ``` TypeScript
   storageStatistics.getFreeSize().then((number: number) => {
