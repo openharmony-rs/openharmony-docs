@@ -692,7 +692,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
    示例中的变量size、offset、pts、frameData、flags说明与Surface模式相同，此处不再赘述。
 
-   解码器送帧处理循环:
+   解码器送帧处理循环：
 
    <!-- @[decoder_sync_input_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/sample/player/output/video/PlayerVideoOutput.cpp)-->
 
