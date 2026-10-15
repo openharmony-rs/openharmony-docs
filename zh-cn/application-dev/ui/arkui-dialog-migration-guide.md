@@ -1619,8 +1619,7 @@ export struct OpenDialogAndUpdate {
 
 <!-- @[page_level_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/customdialog/pageleveldialogbox/PageLevelDialogBox.ets) -->
 
-```typescript
-// PageLevelDialogBox.ets
+``` TypeScript
 import { LevelMode, ImmersiveMode, DialogResult } from '@kit.ArkUI';
 
 let customDialogId: number = 0;
@@ -1656,30 +1655,20 @@ export struct PageLevelDialogBox {
     NavDestination() {
       Row() {
         Column() {
-          // [Start test_text]
-          // [Start dialog_embedded]
           Text(this.message).id('test_text')
             .fontSize(50)
             .fontWeight(FontWeight.Bold)
             .onClick(() => {
               const node: FrameNode | null = this.getUIContext().getFrameNodeById('test_text') || null;
-              // [Start open_custom_dialog]
               this.getUIContext().getDialogPresenter()?.present(() => this.customDialogComponent(), {
                 levelMode: LevelMode.EMBEDDED, // 启用页面级弹出框
-                // [StartExclude open_custom_dialog]
                 levelUniqueId: node?.getUniqueId(), // 设置页面级弹出框所在页面的任意节点ID
-                // [StartExclude test_text]
                 immersiveMode: ImmersiveMode.EXTEND, // 设置页面级弹出框蒙层的显示模式
-                // [EndExclude test_text]
-                // [EndExclude open_custom_dialog]
               })
-              // [End open_custom_dialog]
                 .then((result: DialogResult) => {
                   customDialogId = result.dialogId;
                 });
             })
-          // [End dialog_embedded]
-          // [End test_text]
         }
         .width('100%')
       }
