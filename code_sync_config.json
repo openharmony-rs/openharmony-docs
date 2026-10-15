@@ -56990,9 +56990,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp",
 				"functions":[
 					{
-						"end_line":1050,
+						"end_line":1080,
 						"name":"screenCapture_startScreenCapture_rectangular",
-						"start_line":1022
+						"start_line":1052
 					}
 				]
 			}
