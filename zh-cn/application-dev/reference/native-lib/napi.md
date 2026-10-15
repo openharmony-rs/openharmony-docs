@@ -2110,7 +2110,7 @@ napi_status napi_throw_business_error(napi_env env,
 
 **返回：**
 
-- napi_ok：如果API成功，则返回napi_ok。
+- napi_ok：API调用成功时返回。
 
 - napi_invalid_arg：入参env或msg为nullptr时返回。
 
