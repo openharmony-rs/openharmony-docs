@@ -85,6 +85,12 @@
    
    ``` C++
    int errorCode = OH_Drawing_RegisterFont(fontCollection, fontFamily, fontPath);
+   // 0表示注册成功，非0表示注册失败，失败时打印错误码并释放字体集对象后返回
+   if (errorCode != 0) {
+       DRAWING_LOGE("OH_Drawing_RegisterFont failed, errorCode: %{public}d", errorCode);
+       OH_Drawing_DestroyFontCollection(fontCollection);
+       return;
+   }
    ```
 
 6. 确保自定义字体注册成功后，使用OH_Drawing_CreateTextStyle()接口创建文本样式对象，并使用OH_Drawing_SetTextStyleFontFamilies()接口加入自定义字体。
@@ -124,6 +130,9 @@
    OH_Drawing_TypographyLayout(typography, maxWidth);
    // 将文本绘制到画布(0,100)上
    OH_Drawing_TypographyPaint(typography, cCanvas_, 0, 100);
+   // 释放段落对象和段落生成器
+   OH_Drawing_DestroyTypography(typography);
+   OH_Drawing_DestroyTypographyHandler(handler);
    ```
 
 8. 如果需要释放自定义字体，可以使用OH_Drawing_UnregisterFont接口。
@@ -144,4 +153,10 @@
    OH_Drawing_TypographyLayout(typography1, maxWidth);
    // 将文本绘制到画布(0,300)上
    OH_Drawing_TypographyPaint(typography1, cCanvas_, 0, 300);
+   // 释放内存
+   OH_Drawing_DestroyTypography(typography1);
+   OH_Drawing_DestroyTypographyHandler(handler1);
+   OH_Drawing_DestroyTypographyStyle(typographyStyle);
+   OH_Drawing_DestroyTextStyle(textStyle);
+   OH_Drawing_DestroyFontCollection(fontCollection);
    ```

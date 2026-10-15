@@ -122,9 +122,8 @@
        OH_Drawing_Array *advances = OH_Drawing_GetRunGlyphAdvances(run, 0, 0);
    
        OH_Drawing_TextBlobBuilder *builder = OH_Drawing_TextBlobBuilderCreate();
-       // 创建一个20*20的矩形
-       OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 20, 20);
-       const OH_Drawing_RunBuffer *buffer = OH_Drawing_TextBlobBuilderAllocRunPos(builder, font, glyphsLength, rect);
+       const OH_Drawing_RunBuffer *buffer = OH_Drawing_TextBlobBuilderAllocRunPos(
+           builder, font, glyphsLength, nullptr);
    
        // 创建字形buffer，通过drawing接口进行字形独立绘制
        int x = 0;
@@ -153,7 +152,6 @@
        OH_Drawing_DestroyRunGlyphAdvances(advances);
        OH_Drawing_DestroyRunGlyphs(glyphs);
        OH_Drawing_TextBlobBuilderDestroy(builder);
-       OH_Drawing_RectDestroy(rect);
    }
    ```
 
