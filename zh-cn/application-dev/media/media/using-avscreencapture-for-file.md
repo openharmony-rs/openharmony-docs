@@ -1,12 +1,7 @@
 ---
-kit: Media Kit
-shortdes: 介绍使用AVScreenCapture录屏写文件的C/C++开发
-keywords:
-  - AVScreenCapture
-  - 录屏写文件
-  - C/C++
-  - OH_CAPTURE_FILE
-  - 屏幕录制
+kits: ["Media Kit / 媒体服务"]
+description: "介绍如何使用AVScreenCapture的C API接口完成屏幕录制并写入文件，涵盖实例创建、音视频采集参数配置、录屏启停及资源释放等全流程，适用于文件形式分享屏幕内容的场景。"
+keywords: [AVScreenCapture, 录屏写文件, C/C++, NDK, 屏幕录制, 音视频采集, 麦克风权限, 长时任务]
 doctype: guide
 status: active
 ---

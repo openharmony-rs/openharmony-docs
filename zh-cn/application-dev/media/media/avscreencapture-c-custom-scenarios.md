@@ -1,12 +1,7 @@
 ---
-kit: Media Kit
-shortdes: 介绍AVScreenCapture录屏的自定义场景配置
-keywords:
-  - AVScreenCapture
-  - 录屏策略
-  - 旋转适配
-  - 隐私设置
-  - 内容过滤
+kits: ["Media Kit / 媒体服务"]
+description: "介绍AVScreenCapture的场景化自定义配置，涵盖蜂窝通话保持录屏、B帧编码设置、屏幕捕获Picker弹出等策略配置方法。"
+keywords: [AVScreenCapture, 录屏自定义场景, 蜂窝通话录屏, B帧编码, 屏幕捕获Picker, CaptureStrategy, 录屏策略]
 doctype: guide
 status: active
 ---

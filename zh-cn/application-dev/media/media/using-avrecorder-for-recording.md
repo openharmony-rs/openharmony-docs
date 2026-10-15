@@ -1,12 +1,7 @@
 ---
-kit: Media Kit
-shortdes: 介绍使用AVRecorder实现音频录制的完整流程
-keywords:
-  - AVRecorder
-  - 音频录制
-  - ArkTS
-  - 麦克风
-  - 状态机
+kits: ["Media Kit / 媒体服务"]
+description: "介绍如何使用AVRecorder实现音频录制功能，涵盖创建实例、配置录制参数、开始/暂停/恢复/停止录制等全流程，适用于开发音频录制类应用。"
+keywords: [AVRecorder, 音频录制, ArkTS, 录制状态机, 麦克风权限, 音频编码, 录制参数配置]
 doctype: guide
 status: active
 ---
