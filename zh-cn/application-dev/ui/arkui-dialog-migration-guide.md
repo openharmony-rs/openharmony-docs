@@ -320,47 +320,49 @@ export struct AlertDialogBeforeMigrate {
 
 <!-- @[alert_dialog_after_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/AlertDialogAfterMigrate.ets) -->
 
-```typescript
+``` TypeScript
 import { DialogBaseAlignment, DialogDismissal, DialogPresenter, DialogResult } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
-struct AlertDialogMigrationPage {
+export struct AlertDialogAfterMigrate {
   private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
   @State result: string = '';
 
   build() {
-    Row() {
-      Column() {
-        Text('AlertDialog 迁移示例')
-          .fontSize(18)
-          .fontWeight(FontWeight.Bold)
-          .margin({ bottom: 20 })
+    NavDestination() {
+      Row() {
+        Column() {
+          Text('AlertDialog 迁移示例')
+            .fontSize(18)
+            .fontWeight(FontWeight.Bold)
+            .margin({ bottom: 20 })
 
-        Button('老接口：showAlertDialog')
-          .width('90%')
-          .margin({ bottom: 10 })
-          .onClick(() => {
-            this.result = '老接口示例请参考 ts-methods-alert-dialog-box.md';
-          })
+          Button('老接口：showAlertDialog')
+            .width('90%')
+            .margin({ bottom: 10 })
+            .onClick(() => {
+              this.result = '老接口示例请参考 ts-methods-alert-dialog-box.md';
+            })
 
-        Button('新接口：DialogPresenter.present（固定样式弹窗）')
-          .width('90%')
-          .margin({ bottom: 10 })
-          .onClick(() => {
-            this.showNewAlertDialog();
-          })
+          Button('新接口：DialogPresenter.present（固定样式弹窗）')
+            .width('90%')
+            .margin({ bottom: 10 })
+            .onClick(() => {
+              this.showNewAlertDialog();
+            })
 
-        if (this.result) {
-          Text(this.result)
-            .fontSize(14)
-            .margin({ top: 10 })
+          if (this.result) {
+            Text(this.result)
+              .fontSize(14)
+              .margin({ top: 10 })
+          }
         }
+        .width('100%')
       }
-      .width('100%')
+      .height('100%')
     }
-    .height('100%')
   }
 
   private showNewAlertDialog(): void {
