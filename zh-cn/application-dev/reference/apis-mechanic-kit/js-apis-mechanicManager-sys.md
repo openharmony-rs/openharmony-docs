@@ -814,7 +814,7 @@ try {
 
 ## mechanicManager.doAction
 
-function doAction(mechId: int, actionType: ActionType): Promise&lt;Result&gt;
+doAction(mechId: int, actionType: ActionType): Promise&lt;Result&gt;
 
 执行一个动作序列。
 
@@ -854,7 +854,88 @@ let actionType = mechanicManager.ActionType.HEAD_UP;
 try {
   mechanicManager.doAction(mechId, actionType).then((result) => {
     console.info(`'result:' ${result}`);
-  })
+  });
+} catch (e) {
+  console.error(`Code is ${e.code}, message is ${e.message}`);
+}
+```
+
+## mechanicManager.subscribe
+
+subscribe(events: MechEventType[], callback: Callback&lt;MechEvent&gt;): void
+
+订阅机械体设备事件回调。
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+**参数：**
+
+| 参数名     | 类型                    | 必填 | 说明   |
+| ---------- | ---------------------- | ---- | ----- |
+| events | [MechEventType](#mecheventtype) | 是 | 订阅的事件列表。 |
+| callback | Callback&lt;[MechEvent](#mechevent)&gt; | 是 | 动作序列类型。|
+
+**错误码：**
+
+以下的错误码的详细介绍请参见[机械体控制模块错误码](errorcode-mechanic.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息           |
+| -------- | ----------------- |
+| 202 | Not system application. |
+| 33300001 | Service exception. |
+| 33300002 | Device not connected. |
+| 33300003 | Feature not supported. |
+
+**示例：**
+
+```ts
+let eventsSet: Set<mechanicManager.MechEventType> = new Set();
+let events = Array.from(eventsSet);
+try {
+  mechanicManager.subscribe(events, (event: mechanicManager.MechEvent) => {
+    console.info('subscribe callback');
+  });
+} catch (e) {
+  console.error(`Code is ${e.code}, message is ${e.message}`);
+}
+```
+
+## mechanicManager.unSubscribe
+
+unSubscribe(events: MechEventType[]): void
+
+取消事件注册。
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+**参数：**
+
+| 参数名     | 类型                    | 必填 | 说明   |
+| ---------- | ---------------------- | ---- | ----- |
+| events | [MechEventType](#mecheventtype) | 是 | 订阅的事件列表。 |
+
+**错误码：**
+
+以下的错误码的详细介绍请参见[机械体控制模块错误码](errorcode-mechanic.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息           |
+| -------- | ----------------- |
+| 202 | Not system application. |
+| 33300001 | Service exception. |
+| 33300002 | Device not connected. |
+| 33300003 | Feature not supported. |
+
+**示例：**
+
+```ts
+let eventsSet: Set<mechanicManager.MechEventType> = new Set();
+let events = Array.from(eventsSet);
+try {
+  mechanicManager.unSubscribe(events);
 } catch (e) {
   console.error(`Code is ${e.code}, message is ${e.message}`);
 }
@@ -1321,3 +1402,36 @@ console.info(`'Query the adsorb state successfully, adsorb state:' ${adsorbState
 | SLEEP  | int | 2004 | 休眠动作。 |
 | LOW_POWER  | int | 2005 | 低电量动作。 |
 | THINKING  | int | 2006 | 思考中动作。 |
+
+## MechEvent  
+
+机械体设备事件定义。
+  
+**起始版本**：26.0.0
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+| 名称   | 类型 | 只读 | 可选 | 说明|
+| ----- | ---- | ---- | --- | --- |
+| mechId | number | 否 | 否 | 机械体设备ID。 |
+| event | [MechEventType](#mecheventtype) | 否 | 否 | 事件类型。 |
+
+## MechEventType  
+
+机械体设备事件定义。
+  
+**起始版本**：26.0.0
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+| 名称 | 类型 | 值 | 说明 |
+| ----------- | ------|---- | --------------- |
+| DEVICE_ADSORBED  | int | 0 | 吸附事件。 |
+| DEVICE_UNADSORBED  | int | 1 | 未吸附事件。 |
+| REACH_CLIFF  | int | 2 | 移动中遇到悬崖。 |
+| REACH_OBSTACLE  | int | 3 | 移动中遇到障碍。 |
+| LOW_POWER  | int | 4 | 设备低电量。 |
