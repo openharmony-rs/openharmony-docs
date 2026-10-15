@@ -647,13 +647,13 @@ move(mechId: int, params: MoveParams): Promise&lt;Result&gt;
 
 ```ts
 let mechId: number = 0;
-let param: mechanicManager.MoveParams = {
+let moveParams: mechanicManager.MoveParams = {
     distance: 0,
     angle: 0,
     speedGear: undefined,
     mode: undefined
 };
-mechanicManager.move(mechId, param).then((result) => {
+mechanicManager.move(mechId, moveParams).then((result) => {
     console.info(`'result:' ${result}`);
 });
 ```
@@ -674,7 +674,7 @@ moveBySpeed(mechId: int, params: SpeedParams, duration: int): Promise&lt;Result&
 | ---------- | ---------------------- | ---- | ----- |
 | mechId | number | 是 | 机械体设备ID。 |
 | params | [SpeedParams](#speedparams) | 是 | 移动参数。|
-| mechId | number | 是 | 移动时长，单位ms。 |
+| duration | number | 是 | 移动时长，单位ms。 |
 
 **返回值：**
 
@@ -706,6 +706,98 @@ let duration: number = 1;
 mechanicManager.moveBySpeed(mechId, speedParams, duration).then((result) => {
     console.info(`'result:' ${result}`);
 });
+```
+
+## mechanicManager.turnBySpeed
+
+turnBySpeed(mechId: int, angleSpeed: double, duration: int): Promise&lt;Result&gt;
+
+以固定速度原地旋转。
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+**参数：**
+
+| 参数名     | 类型                    | 必填 | 说明   |
+| ---------- | ---------------------- | ---- | ----- |
+| mechId | number | 是 | 机械体设备ID。 |
+| angleSpeed | double | 是 | 角速度。|
+| duration | number | 是 | 转动时长，单位ms。 |
+
+**返回值：**
+
+| 类型                                        | 说明        |
+| ------------------------------------------- | --------- |
+| Promise&lt;[Result](#result)&gt;| Promise对象，返回旋转执行结果。 |
+
+**错误码：**
+
+以下的错误码的详细介绍请参见[机械体控制模块错误码](errorcode-mechanic.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息           |
+| -------- | ----------------- |
+| 202 | Not system application. |
+| 33300001 | Service exception. |
+| 33300002 | Device not connected. |
+| 33300003 | Feature not supported. |
+
+**示例：**
+
+```ts
+let mechId: number = 0;
+let angleSpeed: number = 1.2;
+let duration: number = 1;
+mechanicManager.turnBySpeed(mechId, angleSpeed, duration).then((result) => {
+    console.info(`'result:' ${result}`);
+});
+```
+
+## mechanicManager.isSupportAction
+
+isSupportAction(mechId: int, actionType: ActionType): boolean
+
+判断是否支持某个动作。
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+**参数：**
+
+| 参数名     | 类型                    | 必填 | 说明   |
+| ---------- | ---------------------- | ---- | ----- |
+| mechId | number | 是 | 机械体设备ID。 |
+| actionType | [ActionType](#actiontype) | 是 | 动作序列类型。|
+
+**返回值：**
+
+| 类型                                        | 说明        |
+| ------------------------------------------- | --------- |
+| boolean | 是否支持该特定动作。true表示支持，false表示不支持。 |
+
+**错误码：**
+
+以下的错误码的详细介绍请参见[机械体控制模块错误码](errorcode-mechanic.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息           |
+| -------- | ----------------- |
+| 202 | Not system application. |
+| 33300001 | Service exception. |
+| 33300002 | Device not connected. |
+
+**示例：**
+
+```ts
+let mechId: number = 0;
+let actionType = mechanicManager.ActionType.HEAD_UP;
+try {
+  let isSupported = mechanicManager.isSupportAction(mechId, actionType);
+  console.info(`isSupported: ${isSupported}`);
+} catch (e) {
+  console.error(`Code is ${e.code}, message is ${e.message}`);
+}
 ```
 
 ## mechanicManager.onBatteryLevelChange
@@ -1131,3 +1223,41 @@ console.info(`'Query the adsorb state successfully, adsorb state:' ${adsorbState
 | ----------- | ------|---- | --------------- |
 | TURN_THEN_MOVE  | int | 0 | 先转动再移动。 |
 | TURNING_MOVING  | int | 1 | 边移动边转动。 |
+
+## ActionType  
+
+动作序列类型枚举。
+  
+**起始版本**：26.0.0
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+| 名称 | 类型 | 值 | 说明 |
+| ----------- | ------|---- | --------------- |
+| LANDSCAPE_PORTRAIT_SWITCH  | int | 0 | 横竖屏旋转。 |
+| PATROL_MODE  | int | 1 | 巡桌模式。 |
+| GREET_MODE  | int | 2 | 迎人模式。 |
+| HEAD_UP  | int | 3 | 仰头。 |
+| HEAD_UP_SLIGHTLY  | int | 4 | 微抬。 |
+| EYE_LEVEL  | int | 5 | 平视。 |
+| HEAD_DOWN_SLIGHTLY  | int | 6 | 微低。 |
+| HEAD_DOWN  | int | 7 | 下俯到底。 |
+| HEAD_WIGGLE  | int | 8 | 晃头。 |
+| NOD  | int | 9 | 点头。 |
+| HEAD_SHAKE  | int | 10 | 摇头。 |
+| HEAD_TURN_TO_BASE  | int | 11 | 头向底座回正。 |
+| BASE_TURN_TO_HEAD  | int | 12 | 底座向头回正。 |
+| FRONT_TO_BACK_FLIP  | int | 13 | 云台前后方向翻转。 |
+| HAPPY  | int | 1000 | 开心动作。 |
+| ANGRY  | int | 1001 | 生气动作。 |
+| SAD  | int | 1002 | 悲伤动作。 |
+| SCARED  | int | 1003 | 惊吓动作。 |
+| DANCE  | int | 2000 | 舞蹈动作。 |
+| ACTING_CUTE  | int | 2001 | 卖萌动作。 |
+| CELEBRATE  | int | 2002 | 庆祝动作。 |
+| WAKEUP  | int | 2003 | 唤醒动作。 |
+| SLEEP  | int | 2004 | 休眠动作。 |
+| LOW_POWER  | int | 2005 | 低电量动作。 |
+| THINKING  | int | 2006 | 思考中动作。 |
