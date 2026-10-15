@@ -621,7 +621,7 @@ CloudDisk_ErrorCode OH_CloudDisk_HydratePlaceholder(const CloudDisk_SyncFolderPa
 
 **描述**
 
-主动水合占位符文件或取消水合。启动水合后在任务排队后返回，不等待回调或文件水合完成。
+主动水合占位符文件或取消水合，具体行为由[type](#oh_clouddisk_callbacktype)参数决定：取值为OH_CLOUD_DISK_CALLBACK_TYPE_FETCH_DATA时执行水合，取值为OH_CLOUD_DISK_CALLBACK_TYPE_CANCEL_FETCH_DATA时取消水合。该函数在任务提交后返回，不等待回调或文件水合完成。
 
 **起始版本：** 26.0.1
 
