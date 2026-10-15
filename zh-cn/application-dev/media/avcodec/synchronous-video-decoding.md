@@ -243,7 +243,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
    - flags：缓冲区标记的类别，请参考[OH_AVCodecBufferFlags](../../reference/apis-avcodec-kit/capi-native-avbuffer-info-h.md#oh_avcodecbufferflags)。
    - timeoutUs：超时时长，单位为微秒。负值：无限等待；0：立即退出；正值：等待指定时长后退出。
 
-   解码器送帧处理循环:
+   解码器送帧处理循环：
 
    <!-- @[decoder_sync_input_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/sample/player/output/video/PlayerVideoOutput.cpp)-->
 
