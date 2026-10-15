@@ -2,9 +2,9 @@
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Print-->
-<!--Owner: @guoshengbang-->
+<!--Owner: @Zouhaifeng1-->
 <!--Designer: @baozewei-->
-<!--Tester:@baozewei-->
+<!--Tester: @baozewei-->
 <!--Adviser: @fang-jinxu-->
 
 该模块为扫描框架的js-api接口文档，提供发现、添加、删除扫描仪以及获取已添加扫描仪列表的能力，同时支持监听扫描仪设备的添加和删除事件，适用于需要在应用内集成扫描仪设备管理并实时感知设备状态变化的场景。扫描框架通过发现模式发现扫描仪设备，添加设备后可通过事件监听设备的添加和删除状态，完成扫描任务后可删除设备，帮助开发者便捷地完成扫描仪的接入与生命周期管理。

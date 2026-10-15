@@ -2,9 +2,9 @@
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Print-->
-<!--Owner: @guoshengbang-->
+<!--Owner: @Zouhaifeng1-->
 <!--Designer: @gcw_4D6e0BBd-->
-<!--Tester: @guoshengbang-->
+<!--Tester: @baozewei-->
 <!--Adviser: @fang-jinxu-->
 
 该模块为打印管理的系统接口，提供查询打印机扩展服务、打印机发现与管理、设置打印机首选项与默认打印机、打印任务管理、监听状态变化事件等功能。
