@@ -563,7 +563,7 @@ dumpHeapData(filename: string): void
 
 > **说明**：
 > 
-> 从API version 8支持，从API version 9开始废弃，建议使用[hidebug.dumpJsHeapData](#hidebugdumpjsheapdata9)替代。
+> 从API version 8支持，从API version 9开始废弃，建议使用[hidebug.dumpJsRawHeapData](#hidebugdumpjsrawheapdata18)替代。
 
 虚拟机堆数据转储，生成`filename.heapsnapshot`文件。
 
