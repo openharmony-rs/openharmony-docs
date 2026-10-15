@@ -4068,7 +4068,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 struct Index {
   @State message: string = 'Hello World';
 
-  // 监听器回调
+  // 监听器回调。
   static onFocusChanged(data: accessibility.UIAccessibilityFocusChangeInfo): void {
     console.info('focusedElement: ' + JSON.stringify(data.focusedElement));
     console.info('unfocusedElement: ' + JSON.stringify(data.unfocusedElement));
@@ -4086,7 +4086,7 @@ struct Index {
 
   aboutToDisappear(): void {
     try {
-      // 注销监听器
+      // 注销监听器。
       accessibility.offUIAccessibilityFocusChanged(Index.onFocusChanged);
     } catch (error) {
       let err = error as BusinessError;
