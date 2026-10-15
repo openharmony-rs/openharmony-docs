@@ -3429,6 +3429,67 @@ try {
 ```
 
 
+### refreshServices<sup>26.2.0+</sup>
+
+refreshServices(): Promise&lt;void&gt;
+
+client端刷新已连接server端设备的服务缓存。使用Promise异步回调。
+
+- 刷新后会清空并重新发现server端服务的缓存。刷新请求下发到服务后Promise即兑现，重新服务发现异步进行。可通过[getServices](#getservices)方法获取刷新后的服务列表。
+- 需先调用[connect](#connect)方法，等GATT profile连接成功后才能使用。
+
+**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力**：SystemCapability.Communication.Bluetooth.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**返回值**：
+
+| 类型                                       | 说明                          |
+| ---------------------------------------- | --------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------- |
+|201 | Permission denied.                 |
+|801 | Capability not supported.          |
+|2900099 | Operation failed.                        |
+|2901003 | The connection is not established.                        |
+
+**示例**：
+
+```js
+import { ble, constant } from '@kit.ConnectivityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+// Promise 模式。
+let device: ble.GattClientDevice = ble.createGattClientDevice("11:22:33:44:55:66");
+function ConnectStateChanged(state: ble.BLEConnectionChangeState) {
+    console.info('bluetooth connect state changed');
+    let connectState: ble.ProfileConnectionState = state.state;
+    if (connectState == constant.ProfileConnectionState.STATE_CONNECTED) {
+        device.refreshServices().then(() => {
+            console.info('refreshServices successfully');
+            device.getServices().then((result: Array<ble.GattService>) => {
+                console.info('getServices successfully:' + JSON.stringify(result));
+            });
+        }).catch((err: BusinessError) => {
+            console.error('errCode: ' + err.code + ', errMessage: ' + err.message);
+        });
+    }
+}
+try {
+    device.connect();
+} catch (err) {
+    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+}
+```
+
+
 ### readCharacteristicValue
 
 readCharacteristicValue(characteristic: BLECharacteristic, callback: AsyncCallback&lt;BLECharacteristic&gt;): void
