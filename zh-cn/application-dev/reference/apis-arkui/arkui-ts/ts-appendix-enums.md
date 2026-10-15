@@ -2151,3 +2151,22 @@ type Nullable\<T> = T | undefined
 | COMPONENT<sup>(deprecated)</sup>|1 | 使用[XComponent](../../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)作为容器组件，支持在其中执行非UI逻辑以动态加载显示内容。<br/>**说明：**<br/>从API version 10开始支持，从API version 12开始废弃，建议使用其他容器组件替代。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 10 |
 | TEXTURE | 2 | 用于EGL/OpenGLES和媒体数据写入，开发者定制的绘制内容将与XComponent组件的内容合成后展示到屏幕上。1、保持帧同步，保持在同一帧将图形处理器（GPU）纹理和ArkUI其他的绘制指令统一发给渲染服务(RenderService)。2、动效和系统组件统一。3、走图形处理器（GPU）合成，相比surface可能走显示子系统（DSS）功耗更高。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
 | NODE<sup>(deprecated)</sup> | 3 | 用于Native UI节点的占位容器，开发者通过Native接口开发的页面组件可展示在此容器区域内。<br/>**说明：**<br/>从API version 12开始支持，从API version 20开始废弃，推荐使用[ContentSlot](../../../ui/rendering-control/arkts-rendering-control-contentslot.md)组件替代。<br/>**原子化服务API（仅ArkTS-Dyn）：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 10 |
+
+## ImmersiveStrategy
+
+安全区域的沉浸式策略。
+
+**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.2.0
+
+**ArkTS-Sta起始版本：** 26.2.0
+
+| 名称   | 值   | 说明       |
+| ------ | ---- | ---------- |
+| AVOID_CUTOUT | 0 | 避让挖孔区域。<br/>该策略的优先级比module.json5中的avoid_cutout配置项低，如果在module.json5的metadata中配置了avoid_cutout，该配置项的效果会优先生效，具体配置方式请参考[安全区域](ts-universal-attributes-expand-safe-area.md)文档说明。 |
+| AVOID_FLOAT_NAV | 1 | 避让三键导航栏区域。 |
